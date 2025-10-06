@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Área Restrita - Conteúdo Protegido</title>
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/secure/assets/style.css">
+  
+  <style>
+    body { 
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%); 
+      min-height: 100vh;
+    }
+    
+    section, header { 
+      background: rgba(255,255,255,0.85); 
+      border-radius: 18px; 
+      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.03); 
+      margin-bottom: 2rem; 
+      padding-top: 1.5rem; 
+      padding-bottom: 1.5rem; 
+    }
+    
+    .navbar { 
+      background: rgba(33,37,41,0.98) !important; 
+      border-radius: 0 0 18px 18px; 
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.06); 
+    }
+    
+    .hero-illustration { 
+      max-width: 320px; 
+      filter: drop-shadow(0 12px 28px rgba(15, 23, 42, 0.18)); 
+    }
+    
+    .badge-soft { 
+      display: inline-flex; 
+      align-items: center; 
+      gap: 0.4rem; 
+      background: rgba(79, 163, 255, 0.15); 
+      color: #2563eb; 
+      border-radius: 999px; 
+      padding: 0.35rem 0.85rem; 
+      font-size: 0.9rem; 
+      font-weight: 600; 
+      letter-spacing: 0.3px; 
+      text-transform: uppercase; 
+    }
+    
+    .badge-role { 
+      font-size: 0.95rem; 
+    }
+    
+    .status-hint { 
+      color: #475569; 
+    }
+    
+    .content-card {
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .access-denied-screen {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .access-denied-screen.active {
+      display: flex;
+    }
+  </style>
+</head>
+<body>
+  <!-- Tela de acesso negado -->
+  <div id="accessDeniedScreen" class="access-denied-screen oidc-container">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <div class="logout-icon">
+          <i class="bi bi-shield-x"></i>
+        </div>
+        <h1 class="auth-card-title">Acesso Negado</h1>
+        <p class="auth-card-subtitle">
+          Você precisa estar autenticado para acessar esta página
+        </p>
+      </div>
+      
+      <div class="auth-alert auth-alert-error">
+        <i class="bi bi-exclamation-triangle me-2"></i>
+        Para acessar esta página, é preciso entrar na área segura.
+      </div>
+      
+      <div class="text-center">
+        <a href="/secure/" class="btn-provider btn-provider-google">
+          <i class="bi bi-shield-lock me-2"></i>
+          Ir para a página de login
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="/">Cara Core Informática</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Alternar navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="/index.html#home">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="/index.html#servicos">Serviços</a></li>
+          <li class="nav-item"><a class="nav-link" href="/index.html#sobre">Sobre</a></li>
+          <li class="nav-item"><a class="nav-link" href="/index.html#diferenciais">Diferenciais</a></li>
+          <li class="nav-item"><a class="nav-link" href="/index.html#contato">Contato</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/secure/" title="Área restrita">
+              <i class="bi bi-shield-lock" aria-hidden="true"></i>
+              <span class="ms-1">Área 51</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Conteúdo principal -->
+  <main id="mainContent" style="display: none;">
+    <header id="area51-hero" class="bg-light text-dark py-5 mt-5">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7">
+            <span class="badge badge-soft mb-3"><i class="bi bi-shield-lock me-1"></i> Conteúdo restrito</span>
+            <h1 class="display-5 mb-3">Bem-vindo à Área Restrita</h1>
+            <p class="lead mb-4">Aqui estão os conteúdos protegidos da Cara Core. Seu acesso foi autenticado com sucesso.</p>
+            <div class="d-flex flex-wrap gap-2">
+              <span class="badge bg-primary fs-6 px-3 py-2"><i class="bi bi-cloud-check me-1"></i> Microsoft Entra ID</span>
+              <span class="badge bg-success fs-6 px-3 py-2"><i class="bi bi-google me-1"></i> Google Workspace</span>
+              <span class="badge bg-info text-dark fs-6 px-3 py-2"><i class="bi bi-lock-fill me-1"></i> Sessões monitoradas</span>
+            </div>
+          </div>
+          <div class="col-lg-5 text-center">
+            <img src="/images/security.png" alt="Ilustração de segurança da informação" class="img-fluid hero-illustration">
+          </div>
+        </div>
+        
+        <!-- Informações do usuário autenticado -->
+        <div class="d-flex flex-wrap align-items-center gap-3 mt-4">
+          <div id="userBadge" class="user-info-card" style="display: none;">
+            <div class="d-flex align-items-center gap-3">
+              <img id="userAvatar" src="" alt="Avatar" class="user-avatar" style="width: 50px; height: 50px;">
+              <div>
+                <div id="userName" class="user-name"></div>
+                <div id="userEmail" class="user-email"></div>
+              </div>
+              <div id="userProvider" class="user-provider-badge"></div>
+            </div>
+          </div>
+          
+          <a class="btn btn-outline-secondary ms-md-auto" href="/secure/logout.html">
+            <i class="bi bi-box-arrow-left me-1"></i> Encerrar sessão
+          </a>
+        </div>
+        
+        <div id="statusPanel" class="alert alert-success mt-3" role="alert" style="display: none;"></div>
+        <p class="status-hint mt-3 mb-0">Você está autenticado. Aproveite os conteúdos exclusivos.</p>
+      </div>
+    </header>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="text-center mb-5">Conteúdo Protegido</h2>
+        
+        <div class="row g-4">
+          <!-- Card 1 - Documentação Técnica -->
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card">
+              <div class="text-center mb-3">
+                <i class="bi bi-file-earmark-text text-primary" style="font-size: 3rem;"></i>
+              </div>
+              <h5 class="text-center mb-3">Documentação Técnica</h5>
+              <p class="text-muted text-center">
+                Acesse manuais, especificações e documentação técnica exclusiva.
+              </p>
+              <div class="text-center">
+                <a href="#" class="btn btn-outline-primary">
+                  <i class="bi bi-folder-open me-1"></i> Acessar
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 2 - Dashboard Analytics -->
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card">
+              <div class="text-center mb-3">
+                <i class="bi bi-graph-up text-success" style="font-size: 3rem;"></i>
+              </div>
+              <h5 class="text-center mb-3">Dashboard Analytics</h5>
+              <p class="text-muted text-center">
+                Visualize relatórios e métricas em tempo real do sistema.
+              </p>
+              <div class="text-center">
+                <a href="#" class="btn btn-outline-success">
+                  <i class="bi bi-bar-chart me-1"></i> Visualizar
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 3 - Configurações -->
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card">
+              <div class="text-center mb-3">
+                <i class="bi bi-gear text-warning" style="font-size: 3rem;"></i>
+              </div>
+              <h5 class="text-center mb-3">Configurações</h5>
+              <p class="text-muted text-center">
+                Gerencie configurações avançadas e preferências do sistema.
+              </p>
+              <div class="text-center">
+                <a href="#" class="btn btn-outline-warning">
+                  <i class="bi bi-sliders me-1"></i> Configurar
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 4 - Arquivos Protegidos -->
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card">
+              <div class="text-center mb-3">
+                <i class="bi bi-shield-lock text-danger" style="font-size: 3rem;"></i>
+              </div>
+              <h5 class="text-center mb-3">Arquivos Protegidos</h5>
+              <p class="text-muted text-center">
+                Downloads de arquivos e recursos exclusivos para usuários autenticados.
+              </p>
+              <div class="text-center">
+                <a href="#" class="btn btn-outline-danger">
+                  <i class="bi bi-download me-1"></i> Download
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 5 - Suporte Premium -->
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card">
+              <div class="text-center mb-3">
+                <i class="bi bi-headset text-info" style="font-size: 3rem;"></i>
+              </div>
+              <h5 class="text-center mb-3">Suporte Premium</h5>
+              <p class="text-muted text-center">
+                Acesso direto ao suporte técnico especializado da Cara Core.
+              </p>
+              <div class="text-center">
+                <a href="#" class="btn btn-outline-info">
+                  <i class="bi bi-chat-dots me-1"></i> Contatar
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Card 6 - API & Integrações -->
+          <div class="col-md-6 col-lg-4">
+            <div class="content-card">
+              <div class="text-center mb-3">
+                <i class="bi bi-code-slash text-secondary" style="font-size: 3rem;"></i>
+              </div>
+              <h5 class="text-center mb-3">API & Integrações</h5>
+              <p class="text-muted text-center">
+                Documentação da API e ferramentas de integração.
+              </p>
+              <div class="text-center">
+                <a href="#" class="btn btn-outline-secondary">
+                  <i class="bi bi-code me-1"></i> Explorar
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="https://unpkg.com/oidc-client-ts@3.0.1/dist/browser/oidc-client-ts.min.js"></script>
+  <script type="module" src="/secure/logger.js"></script>
+  <script type="module" src="/secure/auth.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+      const accessDeniedScreen = document.getElementById('accessDeniedScreen');
+      const mainContent = document.getElementById('mainContent');
+      
+      try {
+        // Aguardar inicialização do OIDC
+        if (typeof window.OIDCAuth === 'undefined') {
+          await new Promise(resolve => {
+            const checkOIDC = () => {
+              if (typeof window.OIDCAuth !== 'undefined') {
+                resolve();
+              } else {
+                setTimeout(checkOIDC, 100);
+              }
+            };
+            checkOIDC();
+          });
+        }
+        
+        // Verificar autenticação
+        const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+        
+        if (isAuthenticated) {
+          // Usuário autenticado - mostrar conteúdo
+          await showUserInfo();
+          showMainContent();
+        } else {
+          // Usuário não autenticado - mostrar tela de acesso negado
+          showAccessDenied();
+        }
+        
+      } catch (error) {
+        console.error('Erro ao verificar autenticação:', error);
+        showAccessDenied();
+      }
+    });
+    
+    function showMainContent() {
+      document.getElementById('mainContent').style.display = 'block';
+      document.getElementById('accessDeniedScreen').classList.remove('active');
+    }
+    
+    function showAccessDenied() {
+      document.getElementById('accessDeniedScreen').classList.add('active');
+      document.getElementById('mainContent').style.display = 'none';
+    }
+    
+    async function showUserInfo() {
+      try {
+        const userProfile = await window.OIDCAuth.getUserProfile();
+        const storedInfo = window.OIDCAuth.getStoredUserInfo();
+        
+        if (userProfile) {
+          const userBadge = document.getElementById('userBadge');
+          const userAvatar = document.getElementById('userAvatar');
+          const userName = document.getElementById('userName');
+          const userEmail = document.getElementById('userEmail');
+          const userProvider = document.getElementById('userProvider');
+          const statusPanel = document.getElementById('statusPanel');
+          
+          // Avatar
+          if (userProfile.picture) {
+            userAvatar.src = userProfile.picture;
+            userAvatar.style.display = 'block';
+          } else {
+            userAvatar.style.display = 'none';
+          }
+          
+          // Nome e email
+          userName.textContent = userProfile.name || 'Usuário';
+          userEmail.textContent = userProfile.email || '';
+          
+          // Provedor
+          if (storedInfo?.provider) {
+            const providerName = storedInfo.provider === 'google' ? 'Google' : 'Microsoft';
+            const providerIcon = storedInfo.provider === 'google' ? 'bi-google' : 'bi-microsoft';
+            userProvider.innerHTML = `<i class="bi ${providerIcon}"></i> ${providerName}`;
+          }
+          
+          // Status
+          statusPanel.textContent = `Autenticado como: ${userProfile.email}`;
+          statusPanel.style.display = 'block';
+          
+          // Mostrar badge do usuário
+          userBadge.style.display = 'block';
+        }
+      } catch (error) {
+        console.error('Erro ao exibir informações do usuário:', error);
+      }
+    }
+  </script>
+</body>
+</html>

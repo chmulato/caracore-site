@@ -1,0 +1,58 @@
+.vscode/
+job/
+security/monitor_log.csv
+security/monitor.log
+security/dist/monitor_exe.exe
+publications/articles/docx/
+publications/articles/md/
+!publications/articles/md/README.md
+publications/articles/images/
+*.docx
+personal/docx/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+!.env.example
+*.jsonl
+prompt_oidc.txt
+.tmp*
+oidc_logs*
+
+# Backend logs (JSONL daily files)
+backend/logs/
+package_backend_2*.log
+!backend/logs_samples/
+
+
+# Python tooling caches
+.pytest_cache/
+.mypy_cache/
+.coverage
+*.coverage
+htmlcov/
+
+# OS junk files
+.DS_Store
+Thumbs.db
+
+# Node.js/npm artifacts
+node_modules/
+npm-debug.log*
+package-lock.json
+package.json
+
+
+# MSAL vendor files (generated/minified)
+js/vendor/msal-browser.min.js
+temp_secure.html
+server.log
+log/deploy_*.log
+.python*
+docker/backend.env
+infra_*
+log_*.log
+backend.zip
+e-mail_google*.txt
+resposta_*.txt

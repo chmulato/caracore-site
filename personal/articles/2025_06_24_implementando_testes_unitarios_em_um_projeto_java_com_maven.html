@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementando Testes Unitários Em Um Projeto Java Com Maven - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre Implementando Testes Unitários Em Um Projeto Java Com Maven">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Desenvolvimento, Tecnologia">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">Implementando Testes Unitários Em Um Projeto Java Com Maven</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-06-24">24/06/2025</time>
+                        <span class="post-author">Por Christian Mulato</span>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img class="hero-image" alt="Implementando Testes Unitários com JaCoCo" src="assets/img/2025_06_24_IMAGE_001.png" class="hero-image" /></p>
+<p><em>Implementando Testes Unitários com JaCoCo</em></p>
+<p><strong>Implementando Testes Unitários em um Projeto Java com Maven</strong></p>
+<p>Este artigo aborda a implementação de testes unitários em um projeto Java utilizando Maven, com foco na classe <strong>FileBackup</strong> e na geração de relatórios de cobertura de código com <strong>JaCoCo</strong>. Vamos explorar como estruturar o projeto, escrever testes eficazes e garantir a qualidade do código.</p>
+<p><strong>Por que Escrever Testes Unitários?</strong></p>
+<p>Testes unitários garantem que cada parte do seu código funciona como esperado, facilitando a manutenção, <strong><em>refatoração</em></strong> e evolução do projeto. Eles ajudam a identificar rapidamente bugs e reduzem o custo de correção de erros.</p>
+<p><strong>Estrutura de Pastas Padrão</strong></p>
+<p>Para projetos Java seguindo o padrão Maven, a estrutura recomendada é:</p>
+<p>project-root/</p>
+<p>│</p>
+<p>├── src/</p>
+<p>│ ├── main/</p>
+<p>│ │ └── java/</p>
+<p>│ │ └── com/</p>
+<p>│ │ └── mulato/</p>
+<p>│ │ └── FileBackup.java</p>
+<p>│ └── test/</p>
+<p>│ └── java/</p>
+<p>│ └── com/</p>
+<p>│ └── mulato/</p>
+<p>│ └── FileBackupTest.java</p>
+<p><strong>Boas Práticas para Testes Unitários</strong></p>
+<ul>
+<li>
+<p><strong>Nomeie os métodos de teste de forma clara</strong>: O nome deve indicar o que está sendo testado e o resultado esperado.</p>
+</li>
+<li>
+<p><strong>Teste apenas uma lógica por método</strong>: Cada teste deve validar um único comportamento.</p>
+</li>
+<li>
+<p><strong>Evite dependências externas</strong>: Use mocks para simular recursos externos (banco de dados, arquivos, etc).</p>
+</li>
+<li>
+<p><strong>Garanta independência dos testes</strong>: Os testes devem poder ser executados em qualquer ordem.</p>
+</li>
+<li>
+<p><strong>Mantenha os testes rápidos</strong>: Testes lentos dificultam a integração contínua.</p>
+</li>
+</ul>
+<p><strong>Configurando Dependências no Maven</strong></p>
+<p>No arquivo pom.xml, adicione as dependências do <strong>JUnit 5</strong> para testes e do <strong>JaCoCo</strong> para cobertura de código:</p>
+<p>\&lt;dependency&gt;</p>
+<p>\&lt;groupId&gt;org.junit.jupiter\&lt;/groupId&gt;</p>
+<p>\&lt;artifactId&gt;junit-jupiter\&lt;/artifactId&gt;</p>
+<p>\&lt;version&gt;5.10.2\&lt;/version&gt;</p>
+<p>\&lt;scope&gt;test\&lt;/scope&gt;</p>
+<p>\&lt;/dependency&gt;</p>
+<p>E o plugin do <strong>JaCoCo</strong> dentro da seção \&lt;build&gt;:</p>
+<p>\&lt;plugin&gt;</p>
+<p>\&lt;groupId&gt;org.jacoco\&lt;/groupId&gt;</p>
+<p>\&lt;artifactId&gt;jacoco-maven-plugin\&lt;/artifactId&gt;</p>
+<p>\&lt;version&gt;0.8.11\&lt;/version&gt;</p>
+<p>\&lt;executions&gt;</p>
+<p>\&lt;execution&gt;</p>
+<p>\&lt;goals&gt;</p>
+<p>\&lt;goal&gt;prepare-agent\&lt;/goal&gt;</p>
+<p>\&lt;/goals&gt;</p>
+<p>\&lt;/execution&gt;</p>
+<p>\&lt;execution&gt;</p>
+<p>\&lt;id&gt;report\&lt;/id&gt;</p>
+<p>\&lt;phase&gt;test\&lt;/phase&gt;</p>
+<p>\&lt;goals&gt;</p>
+<p>\&lt;goal&gt;report\&lt;/goal&gt;</p>
+<p>\&lt;/goals&gt;</p>
+<p>\&lt;/execution&gt;</p>
+<p>\&lt;/executions&gt;</p>
+<p>\&lt;/plugin&gt;</p>
+<p><strong>Tornando Métodos Testáveis</strong></p>
+<p>Para que os métodos possam ser testados, eles não devem ser private. Altere para static (sem modificador) ou public:</p>
+<p>// Antes</p>
+<p>private static void copyDirectory(...);</p>
+<p>private static int countFiles(...);</p>
+<p>// Depois</p>
+<p>static void copyDirectory(...);</p>
+<p>static int countFiles(...);</p>
+<p><strong>Exemplos de Asserts no JUnit</strong></p>
+<p>Além do <strong>assertEquals</strong> e <strong>assertTrue</strong>, o <strong>JUnit</strong> oferece outros métodos úteis:</p>
+<p>assertFalse(condition);</p>
+<p>assertNull(object);</p>
+<p>assertNotNull(object);</p>
+<p>assertThrows(Exception.class, () -&gt; { /* código */ });</p>
+<p><strong>Utilizando Mocks em Testes</strong></p>
+<p>Para testar métodos que dependem de recursos externos, utilize bibliotecas como <strong>Mockito</strong>:</p>
+<p>\&lt;dependency&gt;</p>
+<p>\&lt;groupId&gt;org.mockito\&lt;/groupId&gt;</p>
+<p>\&lt;artifactId&gt;mockito-core\&lt;/artifactId&gt;</p>
+<p>\&lt;version&gt;5.2.0\&lt;/version&gt;</p>
+<p>\&lt;scope&gt;test\&lt;/scope&gt;</p>
+<p>\&lt;/dependency&gt;</p>
+<p>Exemplo de uso:</p>
+<p>import static org.mockito.Mockito.*;</p>
+<p>MyService service = mock(MyService.class);</p>
+<p>when(service.doSomething()).thenReturn(\"resultado\");</p>
+<p><strong>Integração Contínua e Testes Automatizados</strong></p>
+<p>Configure pipelines de CI (como GitHub Actions, GitLab CI, Jenkins) para rodar os testes automaticamente a cada push. Isso garante que novas alterações não quebrem funcionalidades existentes.</p>
+<p><strong>Exemplo de pipeline com GitHub Actions</strong></p>
+<p>name: Java CI</p>
+<p>on: [push, pull_request]</p>
+<p>jobs:</p>
+<p>build:</p>
+<p>runs-on: ubuntu-latest</p>
+<p>steps:</p>
+<p>- uses: actions/checkout@v4</p>
+<p>- name: Set up JDK 21</p>
+<p>uses: actions/setup-java@v4</p>
+<p>with:</p>
+<p>distribution: \'temurin\'</p>
+<p>java-version: \'21\'</p>
+<p>- name: Build with Maven</p>
+<p>run: mvn clean test</p>
+<p><strong>Testes Parametrizados com JUnit 5</strong></p>
+<p>import org.junit.jupiter.params.ParameterizedTest;</p>
+<p>import org.junit.jupiter.params.provider.ValueSource;</p>
+<p>\@ParameterizedTest</p>
+<p>\@ValueSource(strings = {\"file1.txt\", \"file2.txt\"})</p>
+<p>void testFileNames(String fileName) {</p>
+<p>assertTrue(fileName.startsWith(\"file\"));</p>
+<p>}</p>
+<p><strong>Exemplo de Classe de Teste Unitário</strong></p>
+<p>package com.mulato;</p>
+<p>import org.junit.jupiter.api.Test;</p>
+<p>import java.io.*;</p>
+<p>import java.util.concurrent.atomic.AtomicInteger;</p>
+<p>import static org.junit.jupiter.api.Assertions.*;</p>
+<p>class FileBackupTest {</p>
+<p>\@Test</p>
+<p>void testCountFilesEmptyFolder() throws IOException {</p>
+<p>File tempDir = new File(\"testDirEmpty\");</p>
+<p>tempDir.mkdir();</p>
+<p>try {</p>
+<p>int count = FileBackup.countFiles(tempDir);</p>
+<p>assertEquals(0, count);</p>
+<p>} finally {</p>
+<p>tempDir.delete();</p>
+<p>}</p>
+<p>}</p>
+<p>\@Test</p>
+<p>void testCopyDirectory() throws IOException {</p>
+<p>File sourceDir = new File(\"sourceDir\");</p>
+<p>File destDir = new File(\"destDir\");</p>
+<p>sourceDir.mkdir();</p>
+<p>destDir.mkdir();</p>
+<p>File file = new File(sourceDir, \"file.txt\");</p>
+<p>try (FileWriter fw = new FileWriter(file)) {</p>
+<p>fw.write(\"test\");</p>
+<p>}</p>
+<p>AtomicInteger filesProcessed = new AtomicInteger(0);</p>
+<p>try {</p>
+<p>FileBackup.copyDirectory(sourceDir, destDir, filesProcessed);</p>
+<p>File copiedFile = new File(destDir, \"file.txt\");</p>
+<p>assertTrue(copiedFile.exists());</p>
+<p>assertEquals(1, filesProcessed.get());</p>
+<p>} finally {</p>
+<p>file.delete();</p>
+<p>sourceDir.delete();</p>
+<p>for (File f : destDir.listFiles()) f.delete();</p>
+<p>destDir.delete();</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p><strong>Testando o Método Main</strong></p>
+<p>Para garantir que o método main executa sem lançar exceções:</p>
+<p>package com.mulato;</p>
+<p>import org.junit.jupiter.api.Test;</p>
+<p>import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;</p>
+<p>public class MainTest {</p>
+<p>\@Test</p>
+<p>void testMainRunsWithoutException() {</p>
+<p>assertDoesNotThrow(() -&gt; Main.main(new String[]{}));</p>
+<p>}</p>
+<p>}</p>
+<p><strong>Gerando Relatórios de Cobertura com JaCoCo</strong></p>
+<p>Após configurar o plugin, execute:</p>
+<p>mvn clean test</p>
+<p>O relatório será gerado em: target/site/jacoco/index.html</p>
+<p>Abra esse arquivo no navegador para visualizar a cobertura dos testes.</p>
+<p><img alt="Conteúdo do artigo" src="assets/img/2025_06_24_IMAGE_003.png" /></p>
+<p>Exemplo de relatório JaCoCo</p>
+<p><strong>Recursos e Leituras Complementares</strong></p>
+<ul>
+<li>
+<p><a href="https://junit.org/junit5/docs/current/user-guide/"><strong>Documentação Oficial do JUnit 5</strong></a></p>
+</li>
+<li>
+<p><a href="https://site.mockito.org/"><strong>Mockito - Site Oficial</strong></a></p>
+</li>
+<li>
+<p><a href="https://www.jacoco.org/jacoco/trunk/doc/"><strong>Guia de Cobertura de Código com JaCoCo</strong></a></p>
+</li>
+<li>
+<p><a href="https://martinfowler.com/bliki/UnitTest.html"><strong>Boas Práticas de Testes Unitários (Martin Fowler)</strong></a></p>
+</li>
+</ul>
+<hr />
+<p><strong>Resumo:</strong></p>
+<ul>
+<li>
+<p>Estruture seu projeto conforme o padrão Maven.</p>
+</li>
+<li>
+<p>Adicione <strong>JUnit</strong> e <strong>JaCoCo</strong> ao pom.xml.</p>
+</li>
+<li>
+<p>Torne métodos utilitários testáveis (não privados).</p>
+</li>
+<li>
+<p>Escreva testes unitários para métodos de lógica.</p>
+</li>
+<li>
+<p>Gere e consulte o relatório de cobertura com <strong>JaCoCo</strong>.</p>
+</li>
+<li>
+<p>Considere automatizar seus testes com pipelines de CI modernos.</p>
+</li>
+<li>
+<p>Compartilhe suas experiências e dúvidas nos comentários!</p>
+</li>
+</ul>
+<hr />
+<p><strong>Adendo: Hospedando o Código no GitHub e Publicando em Ambiente Produtivo</strong></p>
+<p>Além de implementar e testar seu projeto localmente, você pode hospedar o código no GitHub e publicar em ambientes produtivos. Veja como:</p>
+<p><strong>1. Hospedando no GitHub</strong></p>
+<ul>
+<li>
+<p>Crie um repositório no GitHub.</p>
+</li>
+<li>
+<p>Faça o commit do seu projeto local e envie para o repositório remoto:</p>
+</li>
+</ul>
+<p>git init</p>
+<p>git add .</p>
+<p>git commit -m \"Primeiro commit\"</p>
+<p>git remote add origin https://github.com/SEU_USUARIO/NOME_DO_REPOSITORIO.git</p>
+<p>git push -u origin main</p>
+<p><strong>2. Publicando em Ambiente Produtivo</strong></p>
+<p>O método de publicação depende do tipo de aplicação:</p>
+<ul>
+<li>
+<p><strong>Aplicação Desktop Java</strong></p>
+</li>
+<li>
+<p>Gere um JAR executável com Maven:</p>
+</li>
+</ul>
+<p>mvn clean package</p>
+<ul>
+<li>
+<p>Transfira o arquivo .jar para o servidor ou máquina onde será executado.</p>
+</li>
+<li>
+<p>Execute com:</p>
+</li>
+</ul>
+<p>java -jar nome-do-arquivo.jar</p>
+<ul>
+<li>
+<p><strong>Aplicação Web Java</strong></p>
+</li>
+<li>
+<p>Gere um arquivo .war ou .jar e faça o deploy em um servidor de aplicação (Tomcat, WildFly, etc.) ou em serviços de nuvem (Azure, AWS, Heroku, etc.).</p>
+</li>
+<li>
+<p><strong>Automação com CI/CD</strong></p>
+</li>
+<li>
+<p>Use GitHub Actions para automatizar testes, builds e até deploys para ambientes de produção.</p>
+</li>
+</ul>
+<p><strong>Resumo:</strong></p>
+<ul>
+<li>
+<p>GitHub serve para versionamento, colaboração e integração contínua.</p>
+</li>
+<li>
+<p>O deploy em produção depende do tipo de aplicação e do ambiente escolhido.</p>
+</li>
+<li>
+<p>Você pode automatizar o processo de build e deploy usando pipelines de CI/CD.</p>
+</li>
+</ul>
+<p>Se quiser um exemplo de workflow de deploy ou dicas para um ambiente específico, deixe sua dúvida nos comentários!</p>
+<p>Código-fonte no GitHub: <a href="https://github.com/chmulato/backup_files"><strong>chmulato/backup_files</strong></a></p>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

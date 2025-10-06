@@ -1,0 +1,23 @@
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    platform: linux/amd64
+    container_name: cara-core-backend
+    env_file:
+      - backend.env
+    environment:
+      PORT: ${PORT:-8000}
+      FLASK_ENV: ${FLASK_ENV:-production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      ORIGIN_ALLOWED: ${ORIGIN_ALLOWED:-http://host.docker.internal:8080}
+      OAUTH_REDIRECT_URI: ${OAUTH_REDIRECT_URI:-http://localhost:8000/secure/callback.html}
+      PYTHONUNBUFFERED: ${PYTHONUNBUFFERED:-1}
+      PYTHONIOENCODING: ${PYTHONIOENCODING:-utf-8}
+    ports:
+      - "5051:8000"
+    volumes:
+      - ../backend:/workspace/backend
+      - ../requirements.txt:/workspace/requirements.txt:ro
+    restart: unless-stopped

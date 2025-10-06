@@ -1,0 +1,433 @@
+/**
+ * style.css - Estilos personalizados para páginas de autenticação OIDC
+ * Cara Core Informática - Sistema de autenticação unificado
+ */
+
+/* ============ RESET E BASE ============ */
+* {
+    box-sizing: border-box;
+}
+
+.oidc-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* ============ CARDS DE AUTENTICAÇÃO ============ */
+.auth-card {
+    background: rgba(255, 255, 255, 0.95);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    padding: 3rem 2.5rem;
+    max-width: 450px;
+    width: 100%;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.auth-card-header {
+    margin-bottom: 2.5rem;
+}
+
+.auth-card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+}
+
+.auth-card-subtitle {
+    color: #718096;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* ============ LOGO E BRANDING ============ */
+.auth-logo {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4299e1 0%, #667eea 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(66, 153, 225, 0.3);
+}
+
+.auth-logo svg,
+.auth-logo .icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    color: white;
+}
+
+/* ============ BOTÕES DE PROVEDOR ============ */
+.provider-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.btn-provider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-provider:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn-provider:hover:before {
+    left: 100%;
+}
+
+.btn-provider-google {
+    background: linear-gradient(135deg, #db4437 0%, #ea4335 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(219, 68, 55, 0.3);
+}
+
+.btn-provider-google:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(219, 68, 55, 0.4);
+    color: white;
+}
+
+.btn-provider-microsoft {
+    background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(16, 110, 190, 0.3);
+}
+
+.btn-provider-microsoft:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(16, 110, 190, 0.4);
+    color: white;
+}
+
+.provider-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* ============ ESTADOS DE CARREGAMENTO ============ */
+.loading-spinner {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.btn-provider.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.btn-provider.loading .provider-text {
+    opacity: 0.7;
+}
+
+/* ============ ALERTAS E MENSAGENS ============ */
+.auth-alert {
+    padding: 1rem 1.25rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.auth-alert-error {
+    background: linear-gradient(135deg, #fed7d7 0%, #feb2b2 100%);
+    color: #c53030;
+    border: 1px solid #fed7d7;
+}
+
+.auth-alert-success {
+    background: linear-gradient(135deg, #c6f6d5 0%, #9ae6b4 100%);
+    color: #2f855a;
+    border: 1px solid #c6f6d5;
+}
+
+.auth-alert-info {
+    background: linear-gradient(135deg, #bee3f8 0%, #90cdf4 100%);
+    color: #2c5282;
+    border: 1px solid #bee3f8;
+}
+
+/* ============ INFORMAÇÕES DO USUÁRIO ============ */
+.user-info-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    object-fit: cover;
+}
+
+.user-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.25rem;
+}
+
+.user-email {
+    color: #718096;
+    font-size: 0.95rem;
+}
+
+.user-provider-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(66, 153, 225, 0.1);
+    color: #2c5282;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 0.75rem;
+}
+
+/* ============ PERMISSÕES E SCOPES ============ */
+.permissions-section {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.permissions-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.permissions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.permissions-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.permissions-list li:last-child {
+    border-bottom: none;
+}
+
+.permissions-icon {
+    width: 20px;
+    height: 20px;
+    color: #48bb78;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.permissions-text {
+    color: #4a5568;
+    font-size: 0.95rem;
+}
+
+/* ============ AÇÕES SECUNDÁRIAS ============ */
+.auth-footer {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.auth-footer-text {
+    color: #718096;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.auth-footer-link {
+    color: #4299e1;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-footer-link:hover {
+    color: #3182ce;
+    text-decoration: underline;
+}
+
+/* ============ LOGOUT ESPECÍFICO ============ */
+.logout-card {
+    max-width: 400px;
+}
+
+.logout-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1.5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f56565 0%, #e53e3e 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 15px 35px rgba(245, 101, 101, 0.3);
+}
+
+.logout-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.logout-message {
+    color: #4a5568;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* ============ RESPONSIVIDADE ============ */
+@media (max-width: 768px) {
+    .auth-card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+    }
+    
+    .auth-card-title {
+        font-size: 1.75rem;
+    }
+    
+    .provider-buttons {
+        gap: 0.75rem;
+    }
+    
+    .btn-provider {
+        padding: 0.875rem 1.25rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .oidc-container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .auth-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .auth-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .auth-logo i {
+        font-size: 1.5rem;
+    }
+}
+
+/* ============ ANIMAÇÕES ============ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.btn-provider {
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.btn-provider:nth-child(1) { animation-delay: 0.1s; }
+.btn-provider:nth-child(2) { animation-delay: 0.2s; }
+
+/* ============ MODO ESCURO (OPCIONAL) ============ */
+@media (prefers-color-scheme: dark) {
+    .auth-card {
+        background: rgba(26, 32, 44, 0.95);
+        color: #e2e8f0;
+    }
+    
+    .auth-card-title {
+        color: #f7fafc;
+    }
+    
+    .auth-card-subtitle {
+        color: #a0aec0;
+    }
+    
+    .user-info-card {
+        background: rgba(45, 55, 72, 0.3);
+    }
+    
+    .user-name {
+        color: #f7fafc;
+    }
+    
+    .user-email {
+        color: #a0aec0;
+    }
+    
+    .permissions-text {
+        color: #cbd5e0;
+    }
+    
+    .auth-footer-text {
+        color: #a0aec0;
+    }
+}

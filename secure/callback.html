@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Validando login - Cara Core</title>
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/secure/assets/style.css" />
+  <style>
+    :root {
+      --brand-dark: #0f172a;
+      --brand-light: #f8fafc;
+      --brand-primary: #2563eb;
+      --brand-secondary: #4f46e5;
+      --brand-accent: #38bdf8;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --surface: rgba(255,255,255,0.9);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin:0; padding:0; min-height:100%; font-family:"Inter", "Segoe UI", system-ui, -apple-system, sans-serif; color:var(--text-dark); background:linear-gradient(120deg, #f8fafc 0%, #dbeafe 100%); }
+    .site-shell { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2.5rem 1.5rem; }
+    .card { background:var(--surface); border-radius:24px; padding:2.75rem 2.5rem; max-width:520px; width:100%; text-align:center; box-shadow:0 30px 60px rgba(15,23,42,0.16); position:relative; overflow:hidden; }
+    .card::before { content:""; position:absolute; inset:0; background:linear-gradient(140deg, rgba(37,99,235,0.12), rgba(79,70,229,0.12)); opacity:0.72; pointer-events:none; }
+    .card-inner { position:relative; z-index:1; display:flex; flex-direction:column; gap:1.5rem; align-items:center; }
+    .card-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.45rem 1.2rem; border-radius:999px; background:rgba(37,99,235,0.18); color:var(--brand-primary); font-weight:600; letter-spacing:0.02em; text-transform:uppercase; font-size:0.82rem; }
+    .card-badge svg { width:1rem; height:1rem; }
+    h1 { margin:0; font-size:clamp(1.8rem, 4vw, 2.4rem); }
+    p { margin:0; color:var(--text-muted); font-size:1.05rem; line-height:1.75; }
+    .spinner { width:64px; height:64px; border-radius:999px; border:6px solid rgba(37,99,235,0.18); border-top-color:var(--brand-primary); animation:spin 1s linear infinite; }
+    .footer-link { margin-top:1.25rem; font-size:0.95rem; }
+    .footer-link a { color:var(--brand-primary); text-decoration:none; font-weight:600; }
+    .footer-link a:hover, .footer-link a:focus-visible { text-decoration:underline; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    .icon { width:1em; height:1em; display:inline-block; }
+    .icon-sprite { position:absolute; width:0; height:0; overflow:hidden; }
+  </style>
+</head>
+<body>
+  <svg aria-hidden="true" focusable="false" class="icon-sprite">
+    <symbol id="icon-shield" viewBox="0 0 24 24">
+      <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <div class="site-shell" role="main">
+    <div class="card" aria-live="polite">
+      <div class="card-inner">
+        <span class="card-badge">
+          <svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>
+          Validando credenciais
+        </span>
+        <div class="spinner" role="status" aria-label="Processando autenticação"></div>
+        <div>
+          <h1>Em instantes você estará na Área 51</h1>
+          <p>Estamos confirmando sua identidade com o provedor selecionado. Esse processo leva apenas alguns segundos.</p>
+        </div>
+        <div class="footer-link" id="fallbackLink" hidden>
+          <a href="/secure/index.html">Voltar para o início da Área 51</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script defer src="/secure/log-config.js?v=20251001"></script>
+  <script defer src="/secure/logger.js?v=20250930"></script>
+  <script defer src="/secure/dynamic-config.js?v=20250930"></script>
+  <script defer src="/js/vendor/oidc-client-ts.js?v=20250930"></script>
+  <script defer src="/secure/auth-standalone.js?v=20251001b"></script>
+  <script defer src="/secure/fix-redirect-uri-detection.js?v=20250930"></script>
+  <script>
+    (function(){
+      const params = new URLSearchParams(window.location.search);
+      if (!params.has('code')) {
+        const link = document.getElementById('fallbackLink');
+        if (link) link.hidden = false;
+      }
+
+      // Caso o script standalone já tenha processado e redirecionado, exibimos um fallback após timeout
+      setTimeout(() => {
+        const link = document.getElementById('fallbackLink');
+        if (link && link.hidden) {
+          link.hidden = false;
+        }
+      }, 10000);
+    })();
+  </script>
+</body>
+</html>

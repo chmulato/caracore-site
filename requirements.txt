@@ -1,0 +1,17 @@
+# Dependências Python do projeto Cara Core
+# As três primeiras linhas cobrem todas as bibliotecas usadas em `backend/app.py`
+Flask==3.0.3
+Authlib==1.3.1
+requests==2.32.3
+
+# Utilitários opcionais utilizados por scripts e execução local
+python-dotenv==1.0.1
+gunicorn>=21.2.0
+playwright>=1.35.0
+
+# Ferramentas de automação Azure (deploy_helpers.py, infra_to_azure.py etc.)
+azure-identity>=1.17.0
+azure-mgmt-resource>=23.1.0
+azure-mgmt-web>=7.1.0
+azure-mgmt-keyvault>=10.3.0
+azure-keyvault-secrets>=4.7.0

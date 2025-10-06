@@ -1,0 +1,251 @@
+{
+  "informazioniPersonali": {
+    "nome": "Christian Mulato",
+    "titolo": "Sviluppatore Java Senior (Agenti AI) | Specialista Back-end | Jakarta, Spring Boot, REST API, Docker | Ingegnere Chimico",
+    "posizione": "Campo Largo, Paraná, Brasile",
+    "contatto": {
+      "cellulare": "+5541999097797",
+      "email": "chmulato@hotmail.com",
+      "linkedin": "https://www.linkedin.com/in/chmulato",
+      "sitoWebAziendale": "https://www.caracore.com.br",
+      "portfolio": "https://github.com/chmulato"
+    }
+  },
+  "riepilogo": "Ho una formazione universitaria in ingegneria presso l'UFPR, esperienza professionale in informatica e esperienza all'estero (Italia e Inghilterra). Specializzazioni in Informatica e Tecnologia Java presso l'UTFPR. Conoscenza pratica della logica di programmazione orientata agli oggetti, strutturata, UML, database (MS-Access, VBA, SQL Server, Firebird, MySQL, Oracle, MongoDB e linguaggio SQL) e automazione dei processi (RPA). Fluente in italiano e inglese post-intermedio (B2).",
+  "competenzePrincipali": [
+    "Istituzioni finanziarie",
+    "Servizi bancari",
+    "Lavoro di squadra"
+  ],
+  "lingue": [
+    {
+      "lingua": "Italiano",
+      "competenza": "Madrelingua o Bilingue"
+    },
+    {
+      "lingua": "Portoghese",
+      "competenza": "Madrelingua o Bilingue"
+    },
+    {
+      "lingua": "Inglese",
+      "competenza": "Livello Professionale Completo"
+    }
+  ],
+  "certificazioni": [
+    "Angular 14: Evoluzione di un'applicazione SPA",
+    "Workshop Gratuito Fullstack Angular e Spring",
+    "Devops Cloud Week",
+    "Hello Bot: Introduzione all'RPA",
+    "RPA: Automazione dei processi con strumenti NO/LOW Code"
+  ],
+  "onorificenzePremi": [
+    "Java Software Support Engineer"
+  ],
+  "patenti": [
+    "Patente di guida Tipo B"
+  ],
+  "esperienza": [
+    {
+      "azienda": "Cara Core Informática",
+  "posizione": "Consulente e Sviluppatore di Sistemi",
+  "durata": "gennaio 2016 - Presente (9 anni 8 mesi)",
+  "localita": "Curitiba e Regione, Brasile",
+  "descrizione": "Attività come Consulente e Sviluppatore di Sistemi, responsabile dello sviluppo, automazione e gestione di soluzioni tecnologiche per aziende e uffici. I sistemi del portafoglio (Delivery Control, POS e Dental) sono progetti open source, aperti alla collaborazione e all'investimento di appassionati e partner. Esperienza in test, validazione, automazione VBA/Office 365, infrastruttura, sicurezza, supporto remoto e integrazione tecnologica. Lavori svolti come libero professionista (PJ/CNPJ), con attenzione all'innovazione e alla comunità collaborativa.",
+      "progetti": [
+        {
+          "nome": "Delivery Control",
+          "url": "https://github.com/chmulato/csonline"
+        },
+        {
+          "nome": "Cara-Core PDV",
+          "url": "https://github.com/chmulato/caracore-pdv"
+        },
+        {
+          "nome": "Cara-Core Dental",
+          "url": "https://github.com/chmulato/caracore-dental"
+        }
+      ]
+    },
+    {
+      "azienda": "Develcode Tecnologia em Sistemas",
+      "posizione": "Sviluppatore Java Senior",
+      "durata": "marzo 2023 - luglio 2025 (2 anni 5 mesi)",
+      "localita": "Campo Largo, Paraná, Brasile",
+      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - RD Saúde).",
+      "tecnologie": [
+        "Java EE",
+        "EJB",
+        "JSF",
+        "Hibernate",
+        "Entity",
+        "Spring Boot",
+        "Rest API",
+        "GraphQL",
+        "OpenAPI",
+        "Rabbit MQ",
+        "MongoDB",
+        "Docker",
+        "database Oracle",
+        "Git",
+        "Visual Studio Code",
+        "IDE Eclipse"
+      ]
+    },
+    {
+      "azienda": "RPerformance Group",
+      "posizione": "Sviluppatore Java Senior",
+      "durata": "settembre 2022 - marzo 2023 (7 mesi)",
+      "localita": "Campo Largo, Paraná, Brasile",
+      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - RD Saúde).",
+      "tecnologie": [
+        "Java EE",
+        "EJB",
+        "JSF",
+        "Hibernate",
+        "Entity",
+        "Spring Boot",
+        "Rest API",
+        "Rabbit MQ",
+        "Docker",
+        "database Oracle",
+        "Git",
+        "Visual Studio Code",
+        "IDE Eclipse"
+      ]
+    },
+    {
+      "azienda": "EY",
+      "posizione": "Senior Java Software Engineer",
+      "durata": "ottobre 2021 - agosto 2022 (11 mesi)",
+      "localita": "Campo Largo, Paraná, Brasile",
+      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end, front-end, Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - Banco do Brasil Bradesco Saúde).",
+      "tecnologie": [
+        "IDE Eclipse",
+        "Maven",
+        "Git",
+        "SVN",
+        "Java EE",
+        "server WebSphere",
+        "database Oracle",
+        "metodologia agile"
+      ]
+    },
+    {
+      "azienda": "Atos",
+      "posizione": "Senior Java Software Engineer",
+      "durata": "ottobre 2020 - settembre 2021 (1 anno)",
+      "localita": "Campo Largo, Paraná, Brasile",
+      "descrizione": "Sono stato sviluppatore Java EE per il supporto di applicazioni nell'intranet del cliente. (Lavoro Remoto - Outsourcing - Gruppo Volkswagen). (*) Nei primi tre mesi sono stato esternalizzato da PSM Company.",
+      "tecnologie": [
+        "IDE IntelliJ",
+        "Maven",
+        "Git",
+        "Java SE",
+        "server Tomcat",
+        "database Oracle",
+        "metodologia agile"
+      ]
+    },
+    {
+      "azienda": "Sigma Dataserv Informática S/A",
+      "posizione": "Analista Programmatore Java",
+      "durata": "maggio 2020 - settembre 2020 (5 mesi)",
+      "localita": "Curitiba, Paraná",
+      "descrizione": "Supporto e sviluppo in tecnologie Java e Web. (Lavoro Remoto Outsourcing - Funasa)",
+      "tecnologie": [
+        "SQL Oracle Developer",
+        "database Oracle",
+        "Eclipse IDE",
+        "GWT Framework",
+        "Java EE",
+        "riunioni giornaliere di monitoraggio"
+      ]
+    },
+    {
+      "azienda": "WASYS",
+      "posizione": "Analista Programmatore Java",
+      "durata": "dicembre 2019 - aprile 2020 (5 mesi)",
+      "localita": "Curitiba e Regione, Brasile",
+      "descrizione": "Sviluppatore di sistemi Java utilizzando Java EE, Framework Spring e altre librerie standard.",
+      "tecnologie": [
+        "IDE IntelliJ",
+        "Maven",
+        "Git",
+        "Java SE",
+        "architettura MVC",
+        "server Tomcat",
+        "database PostgreSQL",
+        "Jira",
+        "riunioni giornaliere di monitoraggio"
+      ]
+    },
+    {
+      "azienda": "Wipro Limited",
+      "posizioni": [
+        {
+          "posizione": "Specialista in automazione dei processi (RPA)",
+          "durata": "gennaio 2019 - novembre 2019 (11 mesi)",
+          "localita": "Curitiba e Regione, Brasile",
+          "descrizione": "Sono stato responsabile dell'analisi e dello sviluppo nell'automazione d'ufficio in codice Visual Basic for Application (VBA). Ho sviluppato codice nativo per auditare automaticamente le tassazioni fiscali delle fatture. Ho sviluppato in codice nativo l'emissione di report di produttività per l'inserimento di fatture all'interno di Microsoft Office.",
+          "tecnologie": [
+            "Power BI",
+            "Selenium WebDriver",
+            "Microsoft Office",
+            "linguaggio di programmazione VBA"
+          ]
+        },
+        {
+          "posizione": "Analista Sviluppatore Java",
+          "durata": "marzo 2018 - dicembre 2018 (10 mesi)",
+          "localita": "Curitiba, Paraná",
+          "descrizione": "Ho sviluppato servizi (back-end) web utilizzando tecnologia JavaEE e Spring per un operatore mondiale di carte di credito, l'azienda Mastercard.",
+          "tecnologie": [
+            "Framework Agile/Scrum",
+            "IDE Eclipse",
+            "Java EE",
+            "Spring Boot",
+            "Spring Data",
+            "BitBucket Repository (Git)",
+            "Database Oracle",
+            "JUnit",
+            "Mockito"
+          ]
+        }
+      ]
+    },
+    {
+      "azienda": "UniSistemas Tecnologia em Finanças",
+      "posizione": "Sviluppatore Java Web",
+      "durata": "maggio 2017 - gennaio 2018 (9 mesi)",
+      "localita": "Curitiba, Paraná",
+      "descrizione": "Sviluppo, supporto, correzioni e implementazione di nuove funzionalità di applicazioni web.",
+      "tecnologie": [
+        "Java EE",
+        "Spring",
+        "Web Service SOAP",
+        "REST",
+        "Jasper Reports",
+        "Bollettini Bancari (JRimum)",
+        "AngularJS",
+        "Bootstrap",
+        "Database Oracle",
+        "Firebird",
+        "server di applicazione Tomcat"
+      ]
+    }
+  ],
+  "formazioneAccademica": [
+    {
+      "istituzione": "Universidade Federal do Paraná",
+      "titolo": "Ingegnere Chimico",
+      "campo": "Ingegneria",
+      "periodo": "1991 - 2000"
+    },
+    {
+      "istituzione": "Universidade Tecnológica Federal do Paraná",
+      "titolo": "Specialista in Tecnologia Java",
+      "campo": "Sviluppo di Sistemi",
+      "periodo": "2007 - 2008"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernização dirigindo o legado: REST sobre SOAP com baixo atrito - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Como construir uma fachada REST estável sobre um backend SOAP com baixo atrito, mock controlado e observabilidade desde o dia zero.">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Modernização, REST, SOAP, Integração, APIs, Observabilidade, POC">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+    <link rel="icon" href="assets/img/favicon.ico">
+    <meta property="og:title" content="Modernização dirigindo o legado: REST sobre SOAP com baixo atrito">
+    <meta property="og:description" content="Fachada REST sobre SOAP com mock, alternância segura e telemetria desde o início.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="assets/img/2025_10_19_IMAGE_001.png">
+    <meta property="og:locale" content="pt_BR">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+    <nav class="main-nav">
+      <a href="../index.html">Início</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </div>
+ </header>
+ <main class="main-content">
+  <div class="container">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">Modernização dirigindo o legado: REST sobre SOAP com baixo atrito</h1>
+        <div class="post-meta">
+          <time datetime="2025-10-19">19/10/2025</time>
+          <span class="post-author">Por Christian Mulato</span>
+        </div>
+      </header>
+      <div class="post-content">
+        <p><img src="assets/img/2025_10_19_IMAGE_001.png" class="hero-image" alt="Modernização dirigindo o legado"></p>
+        <p><em>Figura — Modernização dirigindo o legado.</em></p>
+
+        <p>Por que alguns projetos de modernização deslancham enquanto outros ficam presos no atoleiro? Na maioria das vezes, não é por falta de tecnologia — é por falta de estratégia. Este é o relato de uma POC que optou por uma integração evolutiva: uma fachada REST consistente sobre um <em>backend</em> SOAP, com telemetria desde o início e alternância segura entre <em>mock</em> e serviço real.</p>
+
+        <p>Começamos com um desafio comum: expor uma API REST simples e clara sobre um serviço que “<strong>só fala SOAP</strong>”. A pergunta certa não era “como trocamos o legado?”, e sim “como conversamos melhor com ele?”. A resposta nasceu em três princípios práticos:</p>
+
+        <ul>
+          <li><strong>Cautela estratégica</strong>: primeiro um <em>mock</em> controlado, depois o real. Montamos um serviço SOAP local, com contrato explícito (WSDL) e respostas previsíveis, para experimentar rápido, reduzir risco e ganhar confiança do time.</li>
+          <li><strong>Atrito mínimo</strong>: uma fachada REST que traduz intenções do negócio em chamadas ao serviço legado, sem inventar moda. O objetivo não era mudar o <em>backend</em>; era deixar o <em>frontend</em> e os consumidores mais livres.</li>
+          <li><strong>Observabilidade desde o dia zero</strong>: logs claros, testes fumegando (smoke tests) e um botão para ligar/desligar o <em>mock</em>. Sem “caixa preta”.</li>
+        </ul>
+
+        <p>O roteiro foi simples e eficaz. Em poucas horas, a ponte estava de pé: um <em>mock</em> SOAP local respondendo “OK”, uma camada REST que fala a língua dos clientes e um mecanismo de orquestração que sobe, testa e derruba tudo com um comando. Ajustes cirúrgicos — como tratar cabeçalhos HTTP e usar roteamento em ponte — eliminaram erros 500 e estabilizaram o tráfego. Quando o primeiro GET a um cliente de exemplo voltou com 200 OK e um JSON limpo, sabíamos que tínhamos algo valioso: o legado continuava onde sempre esteve, mas a conversa com ele ficou muito melhor.</p>
+
+        <p>O que fez diferença não foram <em>buzzwords</em> — foram escolhas de engenharia com impacto estratégico:</p>
+        <ul>
+          <li><strong>Entregas incrementais</strong>: a POC foi pensada para virar produto sem retrabalho. Cada passo agrega valor por si só, com um caminho claro de evolução.</li>
+          <li><strong>Contratos na frente</strong>: REST como porta de entrada e documentação viva; o legado permanece protegido por trás da fachada.</li>
+          <li><strong>Alternativas reversíveis</strong>: um “<em>toggle</em>” que permite trocar o <em>mock</em> pelo <em>backend</em> real em segundos. Sem cerimônia, sem intervenção heróica.</li>
+          <li><strong>Disciplina de simplicidade</strong>: menos acoplamento, mais clareza. O sistema que já funciona não precisa ser reescrito para que o restante avance.</li>
+        </ul>
+
+        <p>O sinal de maturidade apareceu nos detalhes: tratamos cabeçalhos e roteamento com cuidado (removendo variáveis de caminho do contexto HTTP e habilitando a ponte do <em>endpoint</em>), aceitamos que o XML do mundo legado pode continuar existindo e deixamos o JSON nascer somente na borda onde faz sentido. Em outras palavras: respeitamos a conversa de cada lado.</p>
+
+        <p>Por que isso importa? Porque modernização não é um evento, é uma trajetória. Quando você cria uma ponte robusta e fácil de manter, abre espaço para que as equipes entreguem valor sem esperar o “projeto grande” terminar. Dá para conectar produtos, testar hipóteses e capturar resultados hoje — enquanto o plano de longo prazo segue em frente.</p>
+
+        <h2>O que aprendemos nesta POC</h2>
+        <ul>
+          <li>Modernizar é reduzir atrito, não aumentar complexidade.</li>
+          <li><em>Mock</em> não é gambiarra: é um acelerador estratégico de entendimento e qualidade.</li>
+          <li>Observabilidade é um requisito de negócio, não apenas técnico.</li>
+          <li>O melhor legado é aquele que continua útil, mas menos invasivo.</li>
+        </ul>
+
+        <p>Se você está diante de um sistema “que só fala SOAP”, a tentação de reescrever tudo pode ser grande. Mas às vezes o caminho mais inteligente é construir uma ponte — rápida, observável e reversível. Foi isso que fizemos aqui. E funcionou.</p>
+
+        <h2>Próximos passos</h2>
+        <p>Transformar a POC em trilha de modernização: contratos evolutivos, métricas de uso, e pequenas iterações que não param o negócio. Modernização com menos teoria e mais entrega.</p>
+
+        <p>Quer trocar ideias sobre como adaptar esse desenho à sua realidade? Vamos conversar.</p>
+
+        <h2>Resumo</h2>
+        <ul>
+          <li><strong>Objetivo</strong>: entregar uma fachada REST estável sobre um <em>backend</em> SOAP, com <em>mock</em> local para acelerar testes e alternância segura para o serviço real.</li>
+          <li><strong>Abordagem</strong>: integração evolutiva, contratos na frente e observabilidade desde o dia zero; ajustes finos em <em>headers</em> e roteamento para reduzir atrito.</li>
+          <li><strong>Resultado</strong>: respostas 200 consistentes em JSON, execução automatizada (subir/testar/derrubar) e caminho claro para evoluir sem reescrever o legado.</li>
+          <li><strong>Aprendizado</strong>: modernizar é construir pontes reversíveis e medíveis — menos atrito, mais entrega.</li>
+        </ul>
+
+        <p><strong>Hashtags</strong>: #ModernizaçãoDeSistemas #ArquiteturaDeSoftware #Integração #APIs #REST #SOAP #POC #Observabilidade #EngenhariaDeSoftware</p>
+      </div>
+      <footer class="post-footer">
+        <div class="author-info">
+          <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+          <div class="author-details">
+            <strong>Christian Mulato</strong>
+            <p>Desenvolvedor Java e Arquiteto de Software</p>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </div>
+ </main>
+ <footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+  </div>
+ </footer>
+ <script src="assets/js/main.js"></script>
+</body>
+</html>

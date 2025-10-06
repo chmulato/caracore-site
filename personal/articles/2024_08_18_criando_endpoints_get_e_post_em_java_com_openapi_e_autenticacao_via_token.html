@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criando Endpoints Get E Post Em Java Com Openapi E Autenticação Via Token - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre Criando Endpoints Get E Post Em Java Com Openapi E Autenticação Via Token">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Desenvolvimento, Tecnologia">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">Criando Endpoints Get E Post Em Java Com Openapi E Autenticação Via Token</h1>
+                    <div class="post-meta">
+                        <time datetime="2024-08-18">18/08/2024</time>
+                        <span class="post-author">Por Christian Mulato</span>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img alt="Endpoint com Framework Spring Boot utilizando linguagem Java." src="assets/img/2024_08_18_IMAGE_001.png" class="hero-image" /></p>
+<p><em>Endpoint com Framework Spring Boot utilizando linguagem Java.</em></p>
+<p><strong>Criando Endpoints GET e POST em Java com OpenAPI e Autenticação via Token</strong></p>
+<p><strong>1. Introdução</strong></p>
+<p>Neste artigo, vamos aprender a criar <strong><em>endpoints</em></strong> <strong>GET</strong> e em uma aplicação Java utilizando Spring Boot e OpenAPI. Além disso, vamos configurar a autenticação via <strong>token JWT</strong> para proteger nossos <strong><em>endpoints</em></strong>.</p>
+<p><strong>2. Configuração do Projeto</strong></p>
+<p>Primeiro, vamos configurar nosso projeto <strong><em>Spring Boot</em></strong> *[vide rodapé]. No pom.xml, adicione as seguintes dependências:</p>
+<p><img alt="" src="assets/img/2024_08_18_IMAGE_003.png" /></p>
+<p>Importando as dependências das bibliotecas necessárias para o Spring Boot.</p>
+<p><strong>3. Criando o Endpoint GET</strong></p>
+<p>Vamos criar um <strong><em>endpoint</em></strong> <strong>GET</strong> que retorna uma lista de itens. Primeiro, crie um controlador:</p>
+<p><img alt="" src="assets/img/2024_08_18_IMAGE_004.png" /></p>
+<p>Classe Java para a criação do endpoint GET</p>
+<p><strong>4. Criando o Endpoint POST</strong></p>
+<p>Agora, vamos criar um <strong><em>endpoint</em></strong> <strong>POST</strong> que adiciona um novo item:</p>
+<p><img alt="" src="assets/img/2024_08_18_IMAGE_005.png" /></p>
+<p>Classe Java para a criação do endpoint POST</p>
+<p><strong>5. Configurando a Autenticação via Token JWT</strong></p>
+<p>Para proteger nossos <strong><em>endpoints</em></strong>, vamos configurar a autenticação via <strong>token JWT</strong>. Primeiro, crie uma classe para gerar e validar tokens JWT:</p>
+<p><img alt="" src="assets/img/2024_08_18_IMAGE_006.png" /></p>
+<p>Classe Java para a criação do Token de autenticação.</p>
+<p><strong>6. Configurando o Spring Security</strong></p>
+<p>Agora, configure o <strong>Spring Security</strong> para usar o JWT:</p>
+<p><img alt="" src="assets/img/2024_08_18_IMAGE_007.png" /></p>
+<p>Classe Java para o controle de acesso ao endpoint.</p>
+<p><strong>7. Documentando com OpenAPI</strong></p>
+<p>Finalmente, vamos documentar nossos <strong><em>endpoints</em></strong> com <strong>OpenAPI</strong>. Adicione as anotações no controlador:</p>
+<p><img alt="" src="assets/img/2024_08_18_IMAGE_008.png" /></p>
+<p>Classe Java com os endpoint GET e POST.</p>
+<p><strong>8. Conclusão</strong></p>
+<p>Neste artigo, aprendemos a criar <strong><em>endpoints</em></strong> <strong>GET</strong> e <strong>POST</strong> em Java utilizando <strong>Spring Boot</strong> e <strong>OpenAPI</strong>, além de configurar a autenticação via <strong>token JWT</strong> para proteger nossos <strong><em>endpoints</em></strong>. Com essas ferramentas, podemos criar APIs seguras e bem documentadas.</p>
+<hr />
+<p>Nota:</p>
+<ul>
+<li><strong><em>Spring Boot</em></strong> é um <em>framework</em> baseado no <a href="https://spring.io/"><em>Spring</em></a> que simplifica o desenvolvimento de aplicações Java, eliminando a necessidade de configurações extensas. Ele oferece uma abordagem opinativa para a configuração, permitindo que os desenvolvedores criem rapidamente aplicações robustas e prontas para produção com configurações padrão sensatas. Com recursos como inicializadores automáticos, servidores embutidos e uma vasta gama de bibliotecas integradas, o Spring Boot facilita a criação de micros serviços e aplicações web escaláveis e de alta performance.</li>
+</ul>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

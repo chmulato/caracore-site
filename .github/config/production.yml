@@ -1,0 +1,30 @@
+# Configuração de produção para GitHub Pages
+# Este arquivo é usado durante o build do GitHub Actions
+
+site:
+  name: "Cara Core Informática"
+  url: "https://chmulato.github.io/cara-core"
+  base_path: "/cara-core"
+
+oidc:
+  production_url: "https://chmulato.github.io/cara-core"
+  redirect_paths:
+    callback: "/secure/index.html"
+    logout: "/secure/logout.html"
+    restricted: "/secure/restrita.html"
+
+providers:
+  google:
+    client_id: "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com"
+    authority: "https://accounts.google.com"
+    
+  microsoft:
+    client_id: "***AZURE_SECRET_REDACTED***"
+    tenant_id: "consumers"
+    authority: "https://login.microsoftonline.com/consumers/v2.0"
+
+logging:
+  level: "WARN"  # Produção usa apenas WARN e ERROR
+  console: false
+  debug_panel: false
+  auto_save: true

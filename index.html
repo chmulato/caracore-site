@@ -1,0 +1,688 @@
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cara Core Informática | Microsoft 365, Automação Python e Suporte em TI</title>
+  <!-- Chave de Validação do Google -->
+  <meta name="google-site-verification" content="T6BcDFv-PDWoXJ3G-zVDcpQbWVd7BErU4Jjef28p7mo" />
+  <meta name="description" content="Consultoria, automação, suporte técnico e treinamentos em Microsoft 365, Python e TI para empresas. Atendimento personalizado, segurança e experiência comprovada.">
+  <meta name="keywords" content="Microsoft 365, Automação, Python, Suporte Técnico, Consultoria, Treinamento, TI, Pequenas Empresas, Segurança Digital, Desenvolvimento, Campo Largo, Curitiba">
+  <meta name="author" content="Cara Core Informática">
+  <link rel="icon" href="images/favicon.ico" type="image/ico">
+  <link rel="canonical" href="https://caracore.com.br/">
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Cara Core Informática | Microsoft 365, Automação Python e Suporte em TI">
+  <meta property="og:description" content="Consultoria, automação, suporte técnico e treinamentos em Microsoft 365, Python e TI para empresas. Atendimento personalizado, segurança e experiência comprovada.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://caracore.com.br/">
+  <meta property="og:image" content="https://caracore.com.br/images/logo.png">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cara Core Informática | Microsoft 365, Automação Python e Suporte em TI">
+  <meta name="twitter:description" content="Consultoria, automação, suporte técnico e treinamentos em Microsoft 365, Python e TI para empresas. Atendimento personalizado, segurança e experiência comprovada.">
+  <meta name="twitter:image" content="https://caracore.com.br/images/logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Adicione este bloco <style> dentro do <head> do seu index.html -->
+  <style>
+    body {
+      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+    }
+    section, header {
+      background: rgba(255,255,255,0.85);
+      border-radius: 18px;
+      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.03);
+      margin-bottom: 2rem;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    #servicos {
+      background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
+    }
+    #diferenciais {
+      background: linear-gradient(120deg, #43cea2 0%, #185a9d 100%);
+      color: #fff;
+    }
+    #sobre {
+      background: linear-gradient(120deg, #36d1c4 0%, #5b86e5 100%);
+      color: #fff;
+    }
+    #contato {
+      background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+      color: #fff;
+    }
+    #contato .contact-link {
+      display: inline-block;
+      background: rgba(255,255,255,0.85);
+      color: #b91d73 !important;
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    #contato .contact-link i {
+      margin-right: 6px;
+      font-size: 1.2em;
+      vertical-align: middle;
+    }
+    #contato .contact-link:hover {
+      background: #fff;
+      color: #f953c6 !important;
+    } 
+    #contato .contact-link i.bi-whatsapp {
+      color: #25d366 !important; /* verde WhatsApp */
+    }
+    #contato .contact-link i.bi-telegram {
+      color: #229ed9 !important; /* azul Telegram */
+    }
+    #contato .contact-link i.bi-envelope-fill {
+      color: #b91d73 !important; /* cor do gradiente */
+    }
+    #contato .contact-link {
+      color: #222 !important; /* texto escuro para contraste */
+      background: rgba(255,255,255,0.92);
+    }
+    #contato .contact-link:hover {
+      background: #fff;
+      color: #b91d73 !important;
+    }   
+    #contato .contact-link,
+    .contact-link {
+      display: inline-block;
+      background: rgba(255,255,255,0.85);
+      color: #b91d73 !important;
+      border-radius: 8px;
+      padding: 8px 16px;
+      margin-bottom: 8px;
+      font-weight: 500;
+      transition: background 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+    .contact-link:hover {
+      background: #fff;
+      color: #f953c6 !important;
+    }        
+    /* Navbar fixo com leve transparência */
+    .navbar {
+      background: rgba(33,37,41,0.98) !important;
+      border-radius: 0 0 18px 18px;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.06);
+    }
+    /* Suaviza o efeito dos cards de serviços */
+    .card {
+      border: none;
+      background: rgba(255,255,255,0.93);
+      border-radius: 16px;
+      transition: transform 0.15s;
+    }
+    .card:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+    }
+
+    .btn-outline-secondary {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+        color: #2d3e50;
+        border: 2px solid #4fa3ff;
+        border-radius: 8px;
+        padding: 0.8rem 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-outline-secondary:hover {
+        background: linear-gradient(120deg, #4fa3ff 0%, #2d3e50 100%);
+        color: #fff;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        text-decoration: none;
+    }
+
+    .btn-outline-secondary i {
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+    }
+    
+    /* Responsividade para logo */
+    @media (max-width: 576px) {
+      .navbar-brand img {
+        max-width: 120px;
+      }
+      section, header {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+    }
+    /* Botão de contato */
+    .btn-contato {
+      background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+      color: #fff !important;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-weight: 500;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .btn-contato:hover {
+      background: linear-gradient(120deg, #5f2c82 0%, #8f6ed5 100%);
+      color: #fff !important;
+      text-decoration: none;
+    }
+    /* Estilo para os botões de recursos no formato de redes sociais */
+    #contato .recursos-link {
+      color: #222; /* Cor do texto */
+      font-size: 1.2rem; /* Tamanho dos ícones ajustado */
+      margin-right: 8px; /* Espaçamento entre os ícones */
+      text-decoration: none; /* Remove o sublinhado */
+      transition: color 0.3s ease; /* Transição suave para hover */
+    }
+
+    #contato .recursos-link:hover {
+      color: #007bff; /* Cor ao passar o mouse */
+    }
+    /* Estilo da tabela de horários */
+    .horario-tabela {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px 0 rgba(33, 37, 41, 0.07);
+      font-size: 1.05rem;
+    }
+    .horario-tabela th, .horario-tabela td {
+      border: 1px solid #d1d5db !important;
+      padding: 0.65rem 0.75rem;
+      vertical-align: middle;
+    }
+    .horario-tabela th {
+      background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+      color: #fff;
+      font-weight: 600;
+      text-align: left;
+      letter-spacing: 0.5px;
+    }
+    .horario-tabela tr:nth-child(even) td {
+      background: #f6f7fb;
+    }
+    .horario-tabela tr:hover td {
+      background: #ede7f6;
+      transition: background 0.2s;
+    }
+    .horario-tabela td {
+      color: #333;
+    }
+    @media (max-width: 576px) {
+      .horario-tabela th, .horario-tabela td {
+        font-size: 0.97rem;
+        padding: 0.5rem 0.4rem;
+      }
+      .horario-tabela {
+        font-size: 0.97rem;
+      }
+    }        
+  </style>  
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Cara Core Inform&aacute;tica</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
+        <li class="nav-item"><a class="nav-link" href="#diferenciais">Diferenciais</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+        <li class="nav-item">
+          <a class="nav-link" href="secure/" title="Área restrita">
+            <i class="bi bi-shield-lock" aria-hidden="true"></i>
+            <span class="ms-1">Área 51</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Seção Home -->
+<header id="home" class="bg-light text-dark py-5 mt-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Logo à esquerda -->
+      <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+        <img src="images/logo.png" alt="Logotipo Cara-Core Informática - Consultoria, Automação e Suporte em TI" class="img-fluid" style="max-width: 500px;">
+      </div>
+      <!-- Texto à direita -->
+      <div class="col-md-8 text-center text-md-start">
+        <h1 class="display-4 mb-3">Soluções em Microsoft 365 e Automação com Python</h1>
+        <p class="lead mb-4">
+          Tecnologia, automação e suporte para transformar o seu negócio.<br>
+          Consultoria, desenvolvimento, treinamento e atendimento personalizado para empresas de todos os portes.
+        </p>
+        <!-- ... -->
+        <div class="d-flex flex-wrap gap-3 mb-4 justify-content-center justify-content-md-start">
+          <a href="#diferenciais" class="text-decoration-none">
+            <span class="badge bg-primary fs-6 px-3 py-2"><i class="bi bi-person-check"></i> Atendimento personalizado</span>
+          </a>
+          <a href="#diferenciais" class="text-decoration-none">
+            <span class="badge bg-success fs-6 px-3 py-2"><i class="bi bi-lightning-charge"></i> Resposta rápida</span>
+          </a>
+          <a href="#diferenciais" class="text-decoration-none">
+            <span class="badge bg-info text-dark fs-6 px-3 py-2"><i class="bi bi-shield-lock"></i> Segurança</span>
+          </a>
+          <a href="#diferenciais" class="text-decoration-none">
+            <span class="badge bg-warning text-dark fs-6 px-3 py-2"><i class="bi bi-award"></i> Experiência comprovada</span>
+          </a>
+          <a href="#contato" class="text-decoration-none btn-contato">
+            <span class="badge fs-6 px-3 py-2">
+              <i class="bi bi-award"></i> Fale Conosco
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- Seção Serviços -->
+<section id="servicos" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Nossos Serviços</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-cloud-arrow-up display-4 text-primary mb-3"></i>
+            <h5 class="card-title">Consultoria Microsoft 365</h5>
+            <p class="card-text">Implantação, configuração, migração e treinamento em Microsoft 365, Teams, OneDrive, SharePoint e Office Online.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-gear-wide-connected display-4 text-success mb-3"></i>
+            <h5 class="card-title">Automação com Python</h5>
+            <p class="card-text">Automatize tarefas, integre sistemas, gere relatórios e otimize processos com soluções sob medida em Python.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-tools display-4 text-warning mb-3"></i>
+            <h5 class="card-title">Suporte Técnico</h5>
+            <p class="card-text">
+              Atendimento remoto, backup, antivírus, segurança da informação e orientação em tecnologia para pequenas empresas e profissionais.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-code-slash display-4 text-danger mb-3"></i>
+            <h5 class="card-title">Desenvolvimento Personalizado</h5>
+            <p class="card-text">Sistemas web, aplicativos, bots e ferramentas para controle, gestão e automação conforme a necessidade do seu negócio.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-shield-lock display-4 text-info mb-3"></i>
+            <h5 class="card-title">Segurança Digital</h5>
+            <p class="card-text">Backup em nuvem, proteção de dados, firewall, antivírus e orientação em boas práticas de segurança.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <i class="bi bi-mortarboard display-4 text-secondary mb-3"></i>
+            <h5 class="card-title">Treinamentos e Capacitação</h5>
+            <p class="card-text">Cursos e workshops em Microsoft 365, Excel, Python, automação e produtividade digital para equipes e empresas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+<!-- Seção Diferenciais -->
+<section id="diferenciais" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Nossos Diferenciais</h2>
+    <div class="row g-4">
+      <div class="col-md-3 text-center">
+        <i class="bi bi-person-check display-4 text-primary mb-3"></i>
+        <h5>Atendimento Personalizado</h5>
+        <p>Entendemos a necessidade de cada cliente e oferecemos soluções sob medida, acompanhando de perto cada etapa do projeto.</p>
+      </div>
+      <div class="col-md-3 text-center">
+        <i class="bi bi-lightning-charge display-4 text-success mb-3"></i>
+        <h5>Resposta Rápida</h5>
+        <p>Priorizamos agilidade no atendimento e na resolução de demandas, garantindo que você nunca fique sem suporte quando mais precisa.</p>
+      </div>
+      <div class="col-md-3 text-center">
+        <i class="bi bi-shield-lock display-4 text-info mb-3"></i>
+        <h5>Segurança</h5>
+        <p>Seus dados e sistemas protegidos com as melhores práticas e ferramentas de segurança digital do mercado.</p>
+      </div>
+      <div class="col-md-3 text-center">
+        <i class="bi bi-award display-4 text-warning mb-3"></i>
+        <h5>Experiência Comprovada</h5>
+        <p>Mais de uma década de atuação, atendendo empresas de todos os portes com excelência e resultados reconhecidos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Seção Sobre -->
+<section id="sobre" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-4">Sobre a Cara-Core Informática</h2>
+    <div class="row align-items-center">
+      <div class="col-md-7">
+        <p>
+          A Cara-Core Informática oferece <strong>treinamentos especializados em TI</strong>, assistência técnica e serviços de tecnologia para empresas de todos os portes. Nossa equipe é formada por profissionais experientes, prontos para atender desde pequenas empresas até grandes organizações.
+        </p>
+        <p>
+          Atuamos desde 2010 com <strong>websites, material gráfico e soluções digitais</strong> para clientes nacionais, multinacionais e governamentais. Todos os nossos serviços são prestados com competência, seriedade e foco nas necessidades do cliente.
+        </p>
+        <ul >
+          <li class="mb-3">Atendimento personalizado e planos flexíveis</li>
+          <li class="mb-3">Visitas técnicas e suporte remoto/presencial</li>
+          <li class="mb-3">Todos os planos incluem website profissional</li>
+        </ul>
+        <p>
+          <strong>Missão:</strong> Oferecer soluções tecnológicas de qualidade, promovendo inovação, produtividade e segurança para nossos clientes.
+        </p>
+      </div>
+      <div class="col-md-5 text-center">
+        <img src="images/logo.png" alt="Logotipo Cara-Core Informática - Microsoft 365, Automação Python e Suporte" class="img-fluid mb-3" style="max-width: 220px;">
+        <h5 class="mt-3">Nossa Equipe</h5>
+        <ul class="list-unstyled">
+          <li><strong>Christian Mulato</strong> – Técnico em Informática, Programador Java, Engenheiro Químico</li>
+          <li><strong>Guilherme Mulato</strong> – Técnico Web-Designer, Designer Gráfico e Ilustrador</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section> 
+<!-- Seção Planos -->
+<section id="planos" class="py-5" style="display:none;">
+  <div class="container">
+    <h2 class="text-center mb-5">Planos de Desenvolvimento de Sites</h2>
+    <!-- Cole os cards dos planos aqui -->
+    <div class="row g-4 justify-content-center">
+      <!-- Plano Essencial -->
+      <div class="col-12 col-md-4 d-flex">
+        <div class="card h-100 shadow-sm flex-fill">
+          <div class="card-body text-center">
+            <h5 class="card-title">Essencial</h5>
+            <h6 class="card-price mb-3">R$ 990</h6>
+            <ul class="list-unstyled mb-4">
+              <li><i class="bi bi-check-circle text-success"></i> Site institucional (até 4 páginas)</li>
+              <li><i class="bi bi-check-circle text-success"></i> Layout responsivo</li>
+              <li><i class="bi bi-check-circle text-success"></i> Formulário de contato</li>
+              <li><i class="bi bi-check-circle text-success"></i> Integração com WhatsApp</li>
+              <li><i class="bi bi-check-circle text-success"></i> Otimização SEO básica</li>
+              <li><i class="bi bi-check-circle text-success"></i> 1 ano de hospedagem grátis</li>
+            </ul>
+            <a href="#contato" class="btn btn-primary">Quero este plano</a>
+          </div>
+        </div>
+      </div>
+      <!-- Plano Profissional -->
+      <div class="col-12 col-md-4 d-flex">
+        <div class="card h-100 shadow flex-fill">
+          <div class="card-body text-center">
+            <h5 class="card-title">Profissional</h5>
+            <h6 class="card-price mb-3">R$ 1.790</h6>
+            <ul class="list-unstyled mb-4">
+              <li><i class="bi bi-check-circle text-success"></i> Tudo do Essencial</li>
+              <li><i class="bi bi-check-circle text-success"></i> Até 8 páginas</li>
+              <li><i class="bi bi-check-circle text-success"></i> Galeria de fotos/portfólio</li>
+              <li><i class="bi bi-check-circle text-success"></i> Blog ou área de notícias</li>
+              <li><i class="bi bi-check-circle text-success"></i> Integração com redes sociais</li>
+              <li><i class="bi bi-check-circle text-success"></i> Suporte técnico por 1 ano</li>
+            </ul>
+            <a href="#contato" class="btn btn-success">Quero este plano</a>
+          </div>
+        </div>
+      </div>
+      <!-- Plano Premium -->
+      <div class="col-12 col-md-4 d-flex">
+        <div class="card h-100 shadow-lg border-primary flex-fill">
+          <div class="card-body text-center">
+            <h5 class="card-title">Premium</h5>
+            <h6 class="card-price mb-3">R$ 2.990</h6>
+            <ul class="list-unstyled mb-4">
+              <li><i class="bi bi-check-circle text-success"></i> Tudo do Profissional</li>
+              <li><i class="bi bi-check-circle text-success"></i> Área administrativa (gerencie seu conteúdo)</li>
+              <li><i class="bi bi-check-circle text-success"></i> Integração com sistemas externos</li>
+              <li><i class="bi bi-check-circle text-success"></i> Treinamento para equipe</li>
+              <li><i class="bi bi-check-circle text-success"></i> Suporte técnico por 2 anos</li>
+              <li><i class="bi bi-check-circle text-success"></i> Personalização avançada</li>
+            </ul>
+            <a href="#contato" class="btn btn-outline-primary">Quero este plano</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Fim dos cards dos planos -->
+    <div class="text-center mt-4">
+      <button id="fechar-planos" class="btn btn-outline-secondary">Fechar</button>
+    </div>
+  </div>
+</section>
+<!-- Seção Contato -->
+<section id="contato" class="py-5 bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        <h2 class="mb-3">Contato</h2>
+        <p>Entre em contato conosco, estamos sempre à disposição para atendê-lo da melhor maneira possível.</p>
+        <ul class="list-unstyled fs-5">
+          <li class="mb-2">
+            <span class="fw-semibold">+55 41 9 9909-7797</span>
+            <a href="https://wa.me/5541999097797" class="contact-link ms-2" target="_blank" title="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://t.me/+5541999097797" class="contact-link ms-1" target="_blank" title="Telegram">
+              <i class="bi bi-telegram"></i>
+            </a>
+          </li>
+          <li class="mb-2">
+            <span class="fw-semibold">+55 41 9 9896-4818</span>
+            <a href="https://wa.me/554198964818" class="contact-link ms-2" target="_blank" title="WhatsApp">
+              <i class="bi bi-whatsapp"></i>
+            </a>
+            <a href="https://t.me/+554198964818" class="contact-link ms-1" target="_blank" title="Telegram">
+              <i class="bi bi-telegram"></i>
+            </a>
+          </li>
+          <li class="mb-2">
+            <i class="bi bi-envelope-fill"></i>
+            <a href="mailto:suporte@caracore.com.br" class="contact-link ms-1">suporte@caracore.com.br</a>
+          </li>
+        </ul>
+        <h5 class="mt-4 mb-2">Cara-Core Informática</h5>
+        <p class="mb-1">Vamos até você. Agende a nossa visita.</p>
+        <address>
+          <i class="bi bi-geo-alt-fill"></i>
+          R. Joanim Stroparo, 560, Apt. 205 B - Vila Bancária - Campo Largo, PR, Cep 83.601-460
+        </address>
+        <!-- Mapa Google -->
+        <div class="mb-3">
+          <iframe
+            width="100%"
+            height="250"
+            style="border:2px solid #000; border-radius:12px;"
+            src="https://www.google.com/maps?q=R.+Joanim+Stroparo,+560,+Apt.+205+B+-+Vila+Bancária,+Campo+Largo,+PR,+83601-460&output=embed"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div class="mt-2 text-end">
+            <a href="https://www.google.com/maps/place/R.+Dom+Pedro+II,+1600,+Apt.+22+-+Centro,+Campo+Largo+-+PR,+83601-160"
+              target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">
+              Ver mapa ampliado
+              <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+        <!-- Recursos -->
+        <div class="mt-3">
+          <h5 class="mb-2">Recursos e Planos:</h5>
+          <a href="personal/index.html" target="_blank" class="recursos-link" title="Ver página pessoal">
+            <i class="bi bi-person"></i>
+          </a>
+          <a href="cv/public/index.html" target="_blank" class="recursos-link" title="Ver Resume">
+            <i class="bi bi-briefcase"></i>
+          </a>
+          <a href="publications/articles.html" target="_blank" class="recursos-link" title="Ver publicações">
+            <i class="bi bi-collection"></i>
+          </a>
+          <a href="publications/livros/python_escritorios.html" target="_blank" class="recursos-link" title="Ver Livro Python Escritórios">
+            <i class="bi bi-book"></i>
+          </a>
+          <a href="publications/livros/python_engenharia.html" target="_blank" class="recursos-link" title="Ver livro Python Engenharia">
+            <i class="bi bi-book"></i>
+          </a>
+          <a href="publications/livros/apostila_ms365.html" target="_blank" class="recursos-link" title="Ver Apostila MS365">
+            <i class="bi bi-journal-bookmark"></i>
+          </a>
+          <a href="publications/livros/guia_de_servicos.html" target="_blank" class="recursos-link" title="Ver Guia de Serviços">
+            <i class="bi bi-journal-bookmark"></i>
+          </a>
+          <a href="folders/folder_py.html" target="_blank" class="recursos-link" title="Ver folder digital">
+            <i class="bi bi-file-earmark-text"></i>
+          </a>
+          <a href="#planos" id="mostrar-planos" class="recursos-link" title="Ver planos flexíveis">
+            <i class="bi bi-card-list"></i>
+          </a>
+          <!--
+          <a href="publications/livros/tcc.html" target="_blank" class="recursos-link" title="Ver TCC">
+            <i class="bi bi-mortarboard"></i>
+          </a>
+          -->
+        </div>
+        <!-- Horário de Atendimento -->
+        <div class="mt-4">
+          <h5 class="mb-3">Horários de Atendimento:</h5>
+          <div class="table-responsive" style="max-width: 420px;">
+            <table class="table table-bordered horario-tabela align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th>Dia</th>
+                  <th>Horário</th>
+                  <th>Atendimento</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Segunda-feira</td>
+                  <td>18h às 20h</td>
+                  <td rowspan="5" class="align-middle">Com agendamento<br>ou<br>Vamos até você</td>
+                </tr>
+                <tr>
+                  <td>Terça-feira</td>
+                  <td>18h às 20h</td>
+                </tr>
+                <tr>
+                  <td>Quarta-feira</td>
+                  <td>18h às 20h</td>
+                </tr>
+                <tr>
+                  <td>Quinta-feira</td>
+                  <td>18h às 20h</td>
+                </tr>
+                <tr>
+                  <td>Sexta-feira</td>
+                  <td>18h às 20h</td>
+                </tr>
+                <tr>
+                  <td>Sábado</td>
+                  <td>8h às 17h</td>
+                  <td>Com agendamento<br>ou<br>Vamos até você</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-2 mb-0">
+            <i class="bi bi-calendar-check text-primary"></i>
+            Entre em contato para agendar seu atendimento presencial ou remoto.
+          </p>
+        </div>
+        <!-- Redes Sociais -->
+        <div class="mt-3">
+          <h5 class="mb-2">Redes Sociais:</h5>
+          <a href="https://www.facebook.com/caracoreinformatica/" class="text-dark ms-2" target="_blank"><i class="bi bi-facebook"></i></a>
+          <!--<a href="#" class="text-dark ms-2"><i class="bi bi-instagram"></i></a>-->
+          <a href="https://www.youtube.com/@caracoreinformatica7704" class="text-dark ms-2" target="_blank"><i class="bi bi-youtube"></i></a>
+          <a href="https://pt.linkedin.com/company/cara-core" class="text-dark ms-2" target="_blank"><i class="bi bi-linkedin"></i></a>
+          <a href="https://github.com/chmulato" class="text-dark ms-2" target="_blank"><i class="bi bi-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Rodapé -->
+<footer class="py-3 mt-4" style="background: #e3f6fd; border-top: 2px solid #b6d8e6; border-radius: 0 0 18px 18px;">
+  <div class="container text-center">
+    <span class="fw-semibold text-secondary">
+      Cara-Core Informática - CNPJ: 23.969.028/0001-37<br>
+    </span>
+    <div class="mt-2">
+      <a href="politica/politica-privacidade.html" class="text-decoration-none text-primary fw-semibold me-3">
+        <i class="bi bi-shield-lock"></i> Política de Privacidade
+      </a>
+      <a href="politica/termos-servico.html" class="text-decoration-none text-primary fw-semibold">
+        <i class="bi bi-file-text"></i> Termos de Serviço
+      </a>
+    </div>
+  </div>
+</footer>
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Scripts -->
+<script>
+  // Adiciona evento ao botão "Planos Flexíveis"
+  document.getElementById('mostrar-planos').addEventListener('click', function(e) {
+    e.preventDefault(); // Evita o comportamento padrão do link
+    const planosSection = document.getElementById('planos');
+    planosSection.style.display = 'block'; // Exibe a seção de planos
+    window.scrollTo({ top: planosSection.offsetTop - 60, behavior: 'smooth' }); // Rola suavemente até a seção
+  });
+
+  // Adiciona evento ao botão "Fechar" na seção de planos
+  document.getElementById('fechar-planos').addEventListener('click', function() {
+    const planosSection = document.getElementById('planos');
+    planosSection.style.display = 'none'; // Oculta a seção de planos
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Rola suavemente para o topo
+  });
+</script>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-MKFC9G3CL0');
+</script>
+</body>
+</html>

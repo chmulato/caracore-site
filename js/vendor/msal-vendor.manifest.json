@@ -1,0 +1,12 @@
+{
+  "library": "@azure/msal-browser",
+  "version": "4.24.0",
+  "sources": [
+    "/js/vendor/msal-browser.min.js",
+    "https://cdn.jsdelivr.net/npm/@azure/msal-browser@4.24.0/lib/msal-browser.min.js",
+    "https://unpkg.com/@azure/msal-browser@4.24.0/lib/msal-browser.min.js"
+  ],
+  "localPath": "/js/vendor/msal-browser.min.js",
+  "sha256": "832A42691FEAE89A4A9D89A7511F8F0A22092CD1849F5EDBC3167CFF319500AB",
+  "notes": "Update this manifest when you bump MSAL version or change CDN priorities."
+}

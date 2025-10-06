@@ -83,9 +83,11 @@ class SecureTestRunner:
 
         os.chdir(self.test_dir)
         
+        verbose = self.verbose  # Captura o valor para uso na classe interna
+        
         class QuietHTTPRequestHandler(SimpleHTTPRequestHandler):
             def log_message(self, format, *args):
-                if self.verbose:
+                if verbose:
                     super().log_message(format, *args)
         
         Handler = QuietHTTPRequestHandler if not self.verbose else SimpleHTTPRequestHandler

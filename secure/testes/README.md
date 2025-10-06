@@ -70,6 +70,7 @@ npm test
 ## 📊 Tipos de Teste
 
 ### 1. Framework de Testes (`test-framework.js`)
+
 - ✅ Classe TestFramework
 - ✅ Sistema de assertions (Expect)
 - ✅ Helpers para mocks
@@ -77,6 +78,7 @@ npm test
 - ✅ Runner global
 
 ### 2. Validação de Configurações (`test-config-validation.js`)
+
 - ✅ URLs de redirect válidas/inválidas
 - ✅ Validação de Client IDs
 - ✅ Authorities corretas
@@ -86,6 +88,7 @@ npm test
 - ✅ Configurações de segurança
 
 ### 3. Validação JWT (`test-jwt-validation.js`)
+
 - ✅ Estrutura de token (3 partes)
 - ✅ Claims obrigatórios
 - ✅ Validação de issuer
@@ -95,6 +98,7 @@ npm test
 - ✅ Manipulação segura de tokens
 
 ### 4. Tratamento de Erros (`test-error-handling.js`)
+
 - ✅ Erros de configuração
 - ✅ Erros de autorização (access_denied, etc.)
 - ✅ Erros de token (invalid_grant, etc.)
@@ -105,6 +109,7 @@ npm test
 - ✅ Logging sanitizado
 
 ### 5. Autenticação Google (`test-google-auth.js`)
+
 - ✅ Configuração OAuth correta
 - ✅ URL de autorização
 - ✅ Callback com parâmetros
@@ -113,6 +118,7 @@ npm test
 - ✅ Integração com backend
 
 ### 6. Autenticação Entra ID (`test-entra-auth.js`)
+
 - ✅ Configuração Entra correta
 - ✅ Authority URLs
 - ✅ Tenant configuration
@@ -121,6 +127,7 @@ npm test
 - ✅ Consent flow
 
 ### 7. Integração Dual (`test-dual-auth.js`)
+
 - ✅ Configuração dual
 - ✅ Seleção de provedor
 - ✅ Alternância entre provedores
@@ -131,18 +138,21 @@ npm test
 ## 📈 Relatórios
 
 ### Execução Manual (Web)
+
 - Interface visual com resultados em tempo real
 - Contadores de pass/fail por categoria
 - Resumo total consolidado
 - Logs detalhados de erros
 
 ### Execução Headless
+
 - Resultados coletados via Selenium
 - Arquivo JSON com estatísticas completas
 - Taxa de sucesso calculada
 - Timestamp de execução
 
 ### Formato do Relatório JSON
+
 ```json
 {
   "timestamp": "2025-10-05T22:17:41.123Z",
@@ -167,15 +177,18 @@ npm test
 ## 🔧 Dependências
 
 ### Para Execução Básica
+
 - Python 3.6+
 - Navegador web moderno
 
 ### Para Modo Headless
+
 ```bash
 pip install selenium
 ```
 
 ### Para Node.js (Opcional)
+
 ```bash
 npm install
 ```
@@ -194,21 +207,25 @@ Os testes validam aspectos críticos de segurança:
 ## 🐛 Troubleshooting
 
 ### Problema: Porta ocupada
+
 ```bash
 # Use porta diferente
 python executar_ut_secure.py --port 9000
 ```
 
 ### Problema: Selenium não instalado
+
 ```bash
 pip install selenium
 ```
 
 ### Problema: Arquivos não encontrados
+
 - Verifique se está executando da raiz do projeto
 - Confirme que o diretório `secure/testes` existe
 
 ### Problema: Testes falhando
+
 - Execute com `--verbose` para logs detalhados
 - Verifique console do navegador
 - Confirme configurações OIDC
@@ -226,6 +243,7 @@ Para adicionar novos testes:
 ## 📄 Licença
 
 Parte do projeto CaraCore - Sistema de Autenticação OIDC
+
 ## 🚀 Como Executar os Testes
 
 ### Método 1: Via Servidor HTTP Local
@@ -250,6 +268,7 @@ http://localhost:8080/test-runner.html
 ## 🧪 Categorias de Teste
 
 ### 1. Framework de Testes (test-framework.js)
+
 - ✅ Validação da classe TestFramework
 - ✅ Sistema de assertions (Expect)
 - ✅ Suporte a mocks e helpers
@@ -257,6 +276,7 @@ http://localhost:8080/test-runner.html
 - ✅ Runner global de testes
 
 ### 2. Validação de Configurações (test-config-validation.js)
+
 - ✅ URLs de redirect válidas/inválidas
 - ✅ Validação de scopes OIDC
 - ✅ Formato de Client IDs (Google/Entra)
@@ -267,6 +287,7 @@ http://localhost:8080/test-runner.html
 - ✅ Validação de segurança (HTTPS/CORS)
 
 ### 3. Validação de JWT (test-jwt-validation.js)
+
 - ✅ Estrutura básica do JWT (3 partes)
 - ✅ Validação base64url
 - ✅ Claims obrigatórios do ID Token
@@ -281,6 +302,7 @@ http://localhost:8080/test-runner.html
 - ✅ Integração com provedores
 
 ### 4. Tratamento de Erros (test-error-handling.js)
+
 - ✅ Erros de configuração inválida
 - ✅ Erros de autorização (access_denied, invalid_request)
 - ✅ Erros de token (invalid_grant, expiração)
@@ -291,6 +313,7 @@ http://localhost:8080/test-runner.html
 - ✅ Logging seguro de erros
 
 ### 5. Autenticação Google (test-google-auth.js)
+
 - ✅ Configuração específica do Google
 - ✅ URL de autorização
 - ✅ Callback e parâmetros
@@ -299,6 +322,7 @@ http://localhost:8080/test-runner.html
 - ✅ Tratamento de erros específicos
 
 ### 6. Autenticação Microsoft Entra (test-entra-auth.js)
+
 - ✅ Configuração específica do Entra ID
 - ✅ Authority URLs corretas
 - ✅ Configuração de tenant
@@ -309,6 +333,7 @@ http://localhost:8080/test-runner.html
 - ✅ Integração com backend
 
 ### 7. Integração Dual (test-dual-auth.js)
+
 - ✅ Configuração simultânea de provedores
 - ✅ Seleção de provedor
 - ✅ Alternância entre provedores
@@ -379,24 +404,28 @@ createMock(returnValue)        // Criar função mock
 ## 🎯 Objetivos dos Testes
 
 ### Segurança
+
 - ✅ Validar configurações seguras
 - ✅ Prevenir ataques CSRF
 - ✅ Validar tokens corretamente
 - ✅ Sanitizar logs sensíveis
 
 ### Compatibilidade
+
 - ✅ Funcionar com Google OAuth
 - ✅ Funcionar com Microsoft Entra ID
 - ✅ Suportar múltiplos ambientes
 - ✅ Fallbacks para recursos indisponíveis
 
 ### Robustez
+
 - ✅ Tratar todos os tipos de erro
 - ✅ Recuperar de falhas temporárias
 - ✅ Manter estado consistente
 - ✅ Logging adequado para debug
 
 ### Usabilidade
+
 - ✅ Interface clara de testes
 - ✅ Feedback visual imediato
 - ✅ Execução individual ou completa
@@ -405,18 +434,21 @@ createMock(returnValue)        // Criar função mock
 ## 🚨 Cenários de Teste Críticos
 
 ### Segurança OIDC
+
 1. **Validação de State (CSRF)** - Previne ataques cross-site
 2. **Validação de Issuer** - Evita tokens de fontes maliciosas
 3. **Validação de Audience** - Garante tokens para nossa aplicação
 4. **Verificação de Expiração** - Evita uso de tokens expirados
 
 ### Tratamento de Erros
+
 1. **Configuração Inválida** - Detecta problemas de setup
 2. **Falhas de Rede** - Handles de conectividade
 3. **Erros de Autorização** - Trata rejeições do usuário
 4. **Storage Indisponível** - Fallbacks quando storage falha
 
 ### Integração
+
 1. **Múltiplos Provedores** - Google e Entra funcionando juntos
 2. **Ambientes Diferentes** - Dev, staging, produção
 3. **Browsers Diferentes** - Compatibilidade cross-browser
@@ -461,18 +493,21 @@ Para adicionar novos testes:
 ## 🏆 Melhores Práticas
 
 ### Organização
+
 - ✅ Um arquivo por categoria de teste
 - ✅ Nomes descritivos para testes
 - ✅ Agrupamento lógico em suites
 - ✅ Setup/teardown consistentes
 
 ### Implementação
+
 - ✅ Testes independentes e isolados
 - ✅ Mocks para dependências externas
 - ✅ Assertions claras e específicas
 - ✅ Tratamento de casos extremos
 
 ### Manutenção
+
 - ✅ Atualizar testes com mudanças de código
 - ✅ Revisar periodicamente a cobertura
 - ✅ Refatorar testes duplicados

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte I - Fundamentos Do Apache Kafka - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre Parte I - Fundamentos Do Apache Kafka">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Desenvolvimento, Tecnologia">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">Parte I - Fundamentos Do Apache Kafka</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-06-30">30/06/2025</time>
+                        <span class="post-author">Por Christian Mulato</span>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img class="hero-image" alt="Apache Kafka com Java - Gerenciamento de Filas." src="assets/img/2025_06_30_IMAGE_001.png" class="hero-image" /></p>
+<p><em>Apache Kafka com Java - Gerenciamento de Filas.</em></p>
+<p><strong>Parte I: Fundamentos do Apache Kafka</strong></p>
+<p><strong>Introdução</strong></p>
+<p>Esta parte apresenta os conceitos essenciais do Apache Kafka, sua arquitetura, principais componentes e comandos básicos para quem está começando.</p>
+<p><strong>O que é Apache Kafka?</strong></p>
+<p>Apache Kafka é uma plataforma distribuída de streaming de eventos, projetada para alta performance, escalabilidade e tolerância a falhas. É amplamente utilizada para processamento de dados em tempo real, integração entre sistemas e pipelines de dados.</p>
+<p><strong>Conceitos Principais</strong></p>
+<ul>
+<li>
+<p>Broker: Servidor Kafka responsável por armazenar e entregar mensagens.</p>
+</li>
+<li>
+<p>Topic: Canal lógico onde as mensagens são publicadas e consumidas.</p>
+</li>
+<li>
+<p>Partition: Subdivisão de um tópico para escalabilidade e paralelismo.</p>
+</li>
+<li>
+<p>Producer: Aplicação que envia mensagens para o Kafka.</p>
+</li>
+<li>
+<p>Consumer: Aplicação que lê mensagens do Kafka.</p>
+</li>
+<li>
+<p>Consumer Group: Grupo de consumidores que compartilham a leitura de partições.</p>
+</li>
+<li>
+<p>Offset: Posição sequencial de uma mensagem dentro de uma partição.</p>
+</li>
+</ul>
+<p><strong>Arquitetura Básica</strong></p>
+<ol>
+<li>
+<p>Producers publicam mensagens em tópicos.</p>
+</li>
+<li>
+<p>Brokers armazenam as mensagens.</p>
+</li>
+<li>
+<p>Consumers leem as mensagens dos tópicos.</p>
+</li>
+<li>
+<p>O Kafka garante alta disponibilidade e escalabilidade por meio de partições e replicação.</p>
+</li>
+</ol>
+<p><strong>Instalação Rápida com Docker</strong></p>
+<pre><code>docker-compose up -d
+</code></pre>
+<p><strong>Comandos Essenciais</strong></p>
+<ul>
+<li>Criar um tópico:</li>
+</ul>
+<pre><code>kafka-topics --create --topic meu-topico --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+</code></pre>
+<ul>
+<li>Produzir mensagens:</li>
+</ul>
+<pre><code>kafka-console-producer --topic meu-topico --bootstrap-server localhost:9092
+</code></pre>
+<ul>
+<li>Consumir mensagens:</li>
+</ul>
+<pre><code>kafka-console-consumer --topic meu-topico --from-beginning --bootstrap-server localhost:9092
+</code></pre>
+<p><strong>Exercícios Práticos</strong></p>
+<ol>
+<li>
+<p>Suba o ambiente Kafka localmente.</p>
+</li>
+<li>
+<p>Crie tópicos com diferentes números de partições.</p>
+</li>
+<li>
+<p>Produza e consuma mensagens usando o terminal.</p>
+</li>
+<li>
+<p>Experimente criar múltiplos consumidores em um mesmo grupo.</p>
+</li>
+</ol>
+<p><strong>Recursos Recomendados</strong></p>
+<ul>
+<li>
+<p><a href="https://kafka.apache.org/documentation/"><strong>Documentação Oficial do Apache Kafka</strong></a></p>
+</li>
+<li>
+<p>Livro: Kafka: The Definitive Guide (O\'Reilly)</p>
+</li>
+</ul>
+<hr />
+<p><strong>Exemplo Java: Producer e Consumer Simples</strong></p>
+<p>A seguir, você encontra exemplos didáticos de um Producer e um Consumer em Java, ideais para quem está começando a experimentar o Apache Kafka na prática. Os arquivos completos estão disponíveis em: parte1-fundamentos/src/main/java/SimpleProducer.java e parte1-fundamentos/src/main/java/SimpleConsumer.java.</p>
+<p><strong>Como executar os exemplos</strong></p>
+<ol>
+<li><strong>Garanta que o Kafka está rodando em</strong> localhost:9092</li>
+</ol>
+<p>Utilize o docker-compose.yml fornecido na pasta parte1-fundamentos/ para subir o ambiente local rapidamente:</p>
+<p>docker-compose up -d</p>
+<p>2. <strong>Crie o tópico</strong> meu-topico se necessário</p>
+<p>Execute o comando abaixo para criar o tópico no seu cluster Kafka local:</p>
+<p>docker exec -it \&lt;nome_do_container_kafka&gt; kafka-topics --bootstrap-server localhost:9092 --create --topic meu-topico --partitions 1 --replication-factor 1</p>
+<p>Substitua \&lt;nome_do_container_kafka&gt; pelo nome real do container Kafka em execução (ex: kafka ou kafka1).</p>
+<p>3. <strong>Compile e execute os exemplos Java usando Maven</strong></p>
+<p>O projeto já possui um pom.xml pronto na pasta parte1-fundamentos com todas as dependências necessárias. Basta rodar:</p>
+<p>mvn compile</p>
+<p>mvn exec:java -Dexec.mainClass=SimpleProducer</p>
+<p>mvn exec:java -Dexec.mainClass=SimpleConsumer</p>
+<pre><code>import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import java.util.Properties;
+
+public class SimpleProducer {
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put("bootstrap.servers", "localhost:9092");
+        props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
+        try (KafkaProducer<String, String> producer = new KafkaProducer<>(props)) {
+            producer.send(new ProducerRecord<>("meu-topico", "mensagem de exemplo"));
+            System.out.println("Mensagem enviada!");
+        }
+    }
+}
+</code></pre>
+<p>}</p>
+<p>}</p>
+<pre><code>import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import java.util.Collections;
+import java.util.Properties;
+
+public class SimpleConsumer {
+    public static void main(String[] args) {
+        Properties props = new Properties();
+        props.put("bootstrap.servers", "localhost:9092");
+        props.put("group.id", "grupo-exemplo");
+        props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+        try (KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props)) {
+            consumer.subscribe(Collections.singletonList("meu-topico"));
+            ConsumerRecords<String, String> records = consumer.poll(java.time.Duration.ofSeconds(5));
+            for (ConsumerRecord<String, String> record : records) {
+                System.out.printf("Recebido: %s%n", record.value());
+            }
+        }
+    }
+}
+</code></pre>
+<p><strong>Dica:</strong> Você pode modificar os exemplos para enviar e consumir múltiplas mensagens, testar diferentes tópicos ou experimentar com múltiplos consumidores para entender o funcionamento dos consumer groups.</p>
+<p>Esses exemplos são apenas para fins didáticos e funcionam em ambientes locais com o Kafka rodando no padrão (localhost:9092).</p>
+<hr />
+<p><strong>Exercícios Práticos</strong></p>
+<p>Para praticar e aprofundar os conceitos desta parte, consulte também o arquivo auxiliar:</p>
+<ul>
+<li>parte1-fundamentos/exercicios-parte1.md --- Exercícios de fundamentos, comandos básicos, experimentação inicial e espaço para anotações.</li>
+</ul>
+<hr />
+<p><strong>Código-Fonte e Exemplos</strong></p>
+<p>Todo o conteúdo, exemplos práticos e arquivos de configuração deste artigo estão disponíveis no repositório oficial do projeto no GitHub:</p>
+<p><a href="https://github.com/chmulato/kafka-java-mastery"><strong>🔗</strong></a> <a href="http://github.com/chmulato/kafka-java-mastery"><strong>github.com/chmulato/kafka-java-mastery</strong></a></p>
+<p><strong>Acesse, explore e contribua!</strong></p>
+                </div>
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

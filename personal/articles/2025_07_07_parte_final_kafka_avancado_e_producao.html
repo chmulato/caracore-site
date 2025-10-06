@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte Final - Kafka Avançado E Produção - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre Parte Final - Kafka Avançado E Produção">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Desenvolvimento, Tecnologia">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">Parte Final - Kafka Avançado E Produção</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-07-07">07/07/2025</time>
+                        <span class="post-author">Por Christian Mulato</span>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img alt="Kafka Avançado e Produção" src="assets/img/2025_07_07_IMAGE_001.png" class="hero-image" /></p>
+<p>Kafka Avançado e Produção</p>
+
+<p><strong>Visão Geral</strong></p>
+<p>Esta parte é dedicada a tópicos avançados, integração com o ecossistema Kafka, monitoramento, segurança e práticas recomendadas para ambientes de produção.</p>
+<p><strong>Artefatos Práticos</strong></p>
+<p>Os principais artefatos para colocar em prática os tópicos avançados desta parte estão organizados na pasta artefatos-final/ do repositório:</p>
+<ul>
+<li>
+<p>docker-compose-multibroker.yml: Exemplo de configuração de cluster Kafka com múltiplos brokers</p>
+</li>
+<li>
+<p>monitoramento/: Scripts e exemplos para Prometheus e Grafana</p>
+</li>
+<li>
+<p>seguranca/: Arquivos de configuração de autenticação/autorização (SASL/SSL, ACLs)</p>
+</li>
+<li>
+<p>schema-registry/: Exemplo de schema Avro</p>
+</li>
+<li>
+<p>kafka-connect/: Exemplo de configuração de conector JDBC</p>
+</li>
+<li>
+<p>backup-e-automacao/: Script de backup de tópicos</p>
+</li>
+<li>
+<p>boas-praticas/: Checklist de produção</p>
+</li>
+</ul>
+<p>Consulte cada subpasta para exemplos práticos e adapte conforme o seu ambiente.</p>
+<p><strong>Processamento Avançado</strong></p>
+<p><strong>Kafka Streams</strong></p>
+<ul>
+<li>
+<p>Processamento de dados em tempo real diretamente no Kafka</p>
+</li>
+<li>
+<p>Exemplo de uso para agregações, joins e transformações</p>
+</li>
+</ul>
+<p><strong>Kafka Connect</strong></p>
+<ul>
+<li>
+<p>Integração com bancos de dados, sistemas legados e APIs</p>
+</li>
+<li>
+<p>Uso de conectores prontos (JDBC, Elasticsearch, etc.)</p>
+</li>
+</ul>
+<p><strong>Schema Registry</strong></p>
+<ul>
+<li>
+<p>Gerenciamento de esquemas de dados (Avro, Protobuf, JSON Schema)</p>
+</li>
+<li>
+<p>Evolução de schemas e compatibilidade</p>
+</li>
+</ul>
+<p><strong>Monitoramento e Observabilidade</strong></p>
+<ul>
+<li>
+<p>Monitoramento de brokers, tópicos e consumidores</p>
+</li>
+<li>
+<p>Uso de JMX, Prometheus e Grafana para métricas</p>
+</li>
+<li>
+<p>Monitoramento de lag de consumidores</p>
+</li>
+<li>
+<p>Alertas e dashboards</p>
+</li>
+</ul>
+<p><strong>Segurança</strong></p>
+<ul>
+<li>
+<p>Autenticação (SASL, SSL/TLS)</p>
+</li>
+<li>
+<p>Autorização (ACLs)</p>
+</li>
+<li>
+<p>Boas práticas para ambientes corporativos</p>
+</li>
+</ul>
+<p><strong>Deploy e Operação</strong></p>
+<ul>
+<li>
+<p>Deploy em cluster (alta disponibilidade e replicação)</p>
+</li>
+<li>
+<p>Kafka em nuvem (Confluent Cloud, AWS MSK, Azure Event Hubs)</p>
+</li>
+<li>
+<p>Backup, restauração e upgrades</p>
+</li>
+<li>
+<p>Gerenciamento de recursos e tuning de performance</p>
+</li>
+</ul>
+<p><strong>Boas Práticas para Produção</strong></p>
+<ul>
+<li>
+<p>Configuração de retenção de dados</p>
+</li>
+<li>
+<p>Estratégias de particionamento</p>
+</li>
+<li>
+<p>Políticas de replicação</p>
+</li>
+<li>
+<p>Testes de resiliência e failover</p>
+</li>
+<li>
+<p>Documentação e automação de operações</p>
+</li>
+</ul>
+<p><strong>Exercícios Sugeridos</strong></p>
+<p>Para fixar o aprendizado e experimentar cenários reais de produção, pratique os seguintes desafios:</p>
+<ol>
+<li>
+<p><strong>Configurar um cluster Kafka com múltiplos brokers</strong> Monte um ambiente distribuído usando o docker-compose-multibroker.yml e explore como funcionam replicação, failover e balanceamento de partições.</p>
+</li>
+<li>
+<p><strong>Implementar monitoramento com Prometheus e Grafana</strong> Utilize os exemplos de configuração para coletar métricas do Kafka e visualize-as em dashboards prontos. Experimente criar alertas para lag de consumidores e uso de disco.</p>
+</li>
+<li>
+<p><strong>Configurar autenticação e autorização</strong> Ative SSL/SASL e defina ACLs para controlar o acesso aos tópicos. Teste diferentes cenários de permissão e bloqueio.</p>
+</li>
+<li>
+<p><strong>Realizar testes de failover e recuperação</strong> Simule a queda de um broker e observe como o cluster se comporta. Teste a restauração de dados a partir de backups.</p>
+</li>
+<li>
+<p><strong>Integrar Kafka com outros sistemas usando Kafka Connect</strong> Configure conectores para importar/exportar dados de bancos relacionais, arquivos ou APIs. Experimente transformar dados em trânsito.</p>
+</li>
+</ol>
+<p><strong>Exercícios Práticos</strong></p>
+<p>Para praticar e aprofundar os tópicos avançados, consulte também o arquivo auxiliar:</p>
+<ul>
+<li>parte-final-avancado/exercicios-parte-final.md --- Desafios práticos de produção, automação, monitoramento e segurança, com espaço para anotações e roteiro de estudos.</li>
+</ul>
+<hr />
+<p><strong>Parabéns! Você concluiu o guia completo.</strong></p>
+<p>Agora você está pronto para atuar com Apache Kafka em ambientes profissionais, dominando desde a arquitetura básica até práticas avançadas de produção, automação, segurança e monitoramento.</p>
+<hr />
+<p><strong>Saiba que:</strong></p>
+<p>Todo o conteúdo, exemplos práticos e arquivos de configuração desta parte estão disponíveis no repositório oficial do projeto no GitHub:</p>
+<p><strong><a href="https://github.com/chmulato/kafka-java-mastery">🔗</a> <a href="http://github.com/chmulato/kafka-java-mastery">github.com/chmulato/kafka-java-mastery</a></strong></p>
+<p>Acesse, explore e contribua!</p>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

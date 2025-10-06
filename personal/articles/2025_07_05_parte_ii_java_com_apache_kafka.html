@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte Ii - Java Com Apache Kafka - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre Parte Ii - Java Com Apache Kafka">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Desenvolvimento, Tecnologia">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">Parte Ii - Java Com Apache Kafka</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-07-05">05/07/2025</time>
+                        <span class="post-author">Por Christian Mulato</span>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img alt="Apache Kafka com Java: Producers, Consumers e Integração Prática." src="assets/img/2025_07_05_IMAGE_001.png" class="hero-image" /></p>
+
+<p><strong>Visão Geral</strong></p>
+<p>Esta parte mostra como integrar aplicações Java ao Apache Kafka, cobrindo desde a configuração do cliente até exemplos práticos de producers e consumers.</p>
+<p><strong>Estrutura de Pastas e Artefatos</strong></p>
+<p>Os principais arquivos e diretórios desta parte estão em parte2-java/:</p>
+<ul>
+<li>
+<p>docker-compose.yml: ambiente Kafka para testes locais</p>
+</li>
+<li>
+<p>pom.xml: dependências Maven do projeto Java</p>
+</li>
+<li>
+<p>src/main/java/com/mulato/: código-fonte dos Producers e Consumers</p>
+</li>
+<li>
+<p>src/test/java/com/mulato/: testes automatizados</p>
+</li>
+<li>
+<p>target/: arquivos compilados e JAR gerado após build</p>
+</li>
+</ul>
+<p>Consulte cada pasta para exemplos completos e adapte conforme seu ambiente.</p>
+<p><strong>Configuração do Ambiente Java</strong></p>
+<ul>
+<li>
+<p>Java 11+ (recomendado Java 17+)</p>
+</li>
+<li>
+<p>Gerenciador de dependências: Maven ou Gradle</p>
+</li>
+<li>
+<p>Dependência principal: org.apache.kafka:kafka-clients</p>
+</li>
+</ul>
+<p><strong>Exemplo de dependência Maven</strong></p>
+<p>\&lt;dependency&gt;</p>
+<p>\&lt;groupId&gt;org.apache.kafka\&lt;/groupId&gt;</p>
+<p>\&lt;artifactId&gt;kafka-clients\&lt;/artifactId&gt;</p>
+<p>\&lt;version&gt;3.7.0\&lt;/version&gt;</p>
+<p>\&lt;/dependency&gt;</p>
+<p><strong>Producer em Java</strong></p>
+<p>Exemplo básico de envio de mensagens para um tópico Kafka:</p>
+<p>Properties props = new Properties();</p>
+<p>props.put(\"bootstrap.servers\", \"localhost:9092\");</p>
+<p>props.put(\"key.serializer\", \"org.apache.kafka.common.serialization.StringSerializer\");</p>
+<p>props.put(\"value.serializer\", \"org.apache.kafka.common.serialization.StringSerializer\");</p>
+<p>KafkaProducer\&lt;String, String&gt; producer = new KafkaProducer\&lt;&gt;(props);</p>
+<p>ProducerRecord\&lt;String, String&gt; record = new ProducerRecord\&lt;&gt;(\"meu-topico\", \"chave\", \"mensagem\");</p>
+<p>producer.send(record);</p>
+<p>producer.close();</p>
+<p><strong>Consumer em Java</strong></p>
+<p>Exemplo básico de leitura de mensagens de um tópico:</p>
+<p>Properties props = new Properties();</p>
+<p>props.put(\"bootstrap.servers\", \"localhost:9092\");</p>
+<p>props.put(\"group.id\", \"meu-grupo\");</p>
+<p>props.put(\"key.deserializer\", \"org.apache.kafka.common.serialization.StringDeserializer\");</p>
+<p>props.put(\"value.deserializer\", \"org.apache.kafka.common.serialization.StringDeserializer\");</p>
+<p>KafkaConsumer\&lt;String, String&gt; consumer = new KafkaConsumer\&lt;&gt;(props);</p>
+<p>consumer.subscribe(Collections.singletonList(\"meu-topico\"));</p>
+<p>while (true) {</p>
+<p>ConsumerRecords\&lt;String, String&gt; records = consumer.poll(Duration.ofMillis(100));</p>
+<p>for (ConsumerRecord\&lt;String, String&gt; record : records) {</p>
+<p>System.out.printf(\"offset = %d, key = %s, value = %s%n\", record.offset(), record.key(), record.value());</p>
+<p>}</p>
+<p>}</p>
+<p><strong>Exemplo Prático: Producer e Consumer em Java</strong></p>
+<p>A seguir, você encontra exemplos didáticos de Producer e Consumer em Java, ideais para quem está começando a integrar aplicações com o Apache Kafka. Os arquivos completos estão em:</p>
+<p>parte2-java/src/main/java/com/mulato/PedidoProducer.java</p>
+<p>e</p>
+<p>parte2-java/src/main/java/com/mulato/PedidoConsumer.java</p>
+<p><strong>Como executar os exemplos</strong></p>
+<p>1.<strong>Garanta que o Kafka está rodando em</strong> localhost:9092</p>
+<p>Utilize o docker-compose.yml fornecido na pasta parte2-java/ para subir o ambiente local rapidamente:</p>
+<p>docker-compose up -d</p>
+<p>2.<strong>Compile o projeto Java com Maven</strong></p>
+<p>O projeto já possui um pom.xml pronto com todas as dependências necessárias. Basta rodar:</p>
+<p>mvn clean compile</p>
+<p>3.<strong>Execute o Producer para enviar mensagens</strong></p>
+<p>mvn exec:java -Dexec.mainClass=\"com.mulato.PedidoProducer\"</p>
+<p>O Producer simula o envio de pedidos para o tópico Kafka.</p>
+<p>4.<strong>Execute o Consumer para ler as mensagens</strong></p>
+<p>mvn exec:java -Dexec.mainClass=\"com.mulato.PedidoConsumer\"</p>
+<p>O Consumer consome e imprime os pedidos recebidos.</p>
+<p><strong>Producer Java --- Enviando pedidos</strong></p>
+<p>O Producer é responsável por publicar mensagens (pedidos) em um tópico Kafka. Veja um exemplo básico:</p>
+<p>Properties props = new Properties();</p>
+<p>props.put(\"bootstrap.servers\", \"localhost:9092\");</p>
+<p>props.put(\"key.serializer\", \"org.apache.kafka.common.serialization.StringSerializer\");</p>
+<p>props.put(\"value.serializer\", \"org.apache.kafka.common.serialization.StringSerializer\");</p>
+<p>KafkaProducer\&lt;String, String&gt; producer = new KafkaProducer\&lt;&gt;(props);</p>
+<p>ProducerRecord\&lt;String, String&gt; record = new ProducerRecord\&lt;&gt;(\"meu-topico\", \"chave\", \"mensagem\");</p>
+<p>producer.send(record);</p>
+<p>producer.close();</p>
+<p><strong>Consumer Java --- Lendo pedidos do tópico</strong></p>
+<p>O Consumer é responsável por ler as mensagens publicadas no tópico. Veja um exemplo básico:</p>
+<p>Properties props = new Properties();</p>
+<p>props.put(\"bootstrap.servers\", \"localhost:9092\");</p>
+<p>props.put(\"group.id\", \"meu-grupo\");</p>
+<p>props.put(\"key.deserializer\", \"org.apache.kafka.common.serialization.StringDeserializer\");</p>
+<p>props.put(\"value.deserializer\", \"org.apache.kafka.common.serialization.StringDeserializer\");</p>
+<p>KafkaConsumer\&lt;String, String&gt; consumer = new KafkaConsumer\&lt;&gt;(props);</p>
+<p>consumer.subscribe(Collections.singletonList(\"meu-topico\"));</p>
+<p>while (true) {</p>
+<p>ConsumerRecords\&lt;String, String&gt; records = consumer.poll(Duration.ofMillis(100));</p>
+<p>for (ConsumerRecord\&lt;String, String&gt; record : records) {</p>
+<p>System.out.printf(\"offset = %d, key = %s, value = %s%n\", record.offset(), record.key(), record.value());</p>
+<p>}</p>
+<p>}</p>
+<p><strong>Dica:</strong> Experimente rodar múltiplos consumers no mesmo grupo para ver como o Kafka distribui as mensagens entre eles.</p>
+<p>Esses exemplos são apenas para fins didáticos e funcionam em ambientes locais com o Kafka rodando no padrão (localhost:9092).</p>
+<p><strong>Teste Integrado: Producer e Consumer na Prática</strong></p>
+<p>Para garantir que sua aplicação Java está realmente se comunicando com o Kafka, é fundamental realizar testes de integração. O projeto já inclui um exemplo realista em</p>
+<p>parte2-java/src/test/java/com/mulato/KafkaIntegrationTest.java</p>
+<p>Esse teste automatizado:</p>
+<ul>
+<li>
+<p>Sobe o ambiente Kafka local (use docker-compose up -d na pasta parte2-java/).</p>
+</li>
+<li>
+<p>Envia uma mensagem para o tópico pedidos usando um Producer.</p>
+</li>
+<li>
+<p>Consome a mensagem usando um Consumer e valida se ela foi recebida corretamente.</p>
+</li>
+</ul>
+<p><strong>Como executar o teste integrado</strong></p>
+<p>1.<strong>Suba o ambiente Kafka e Zookeeper</strong></p>
+<p>No terminal, dentro da pasta parte2-java/</p>
+<p>docker-compose up -d</p>
+<p>2.<strong>Garanta que o tópico</strong> pedidos existe</p>
+<p>Se necessário, crie o tópico executando dentro do container Kafka:</p>
+<p>docker exec -it \&lt;nome_do_container_kafka&gt; kafka-topics --bootstrap-server localhost:9092 --create --topic pedidos --partitions 1 --replication-factor 1</p>
+<p>Use docker ps para descobrir o nome do container Kafka.</p>
+<p>3.<strong>Execute o teste com Maven</strong></p>
+<p>mvn test</p>
+<p>O teste irá:</p>
+<ul>
+<li>
+<p>Enviar uma mensagem para o tópico pedidos.</p>
+</li>
+<li>
+<p>Consumir a mensagem e validar se ela foi recebida corretamente.</p>
+</li>
+</ul>
+<p>4.<strong>Finalize o ambiente</strong></p>
+<p>Após os testes, pare os containers:</p>
+<p>docker-compose down</p>
+<p>O teste é didático e pode ser adaptado para outros tópicos, mensagens ou cenários de integração.</p>
+<hr />
+<p><strong>Exercícios Práticos</strong></p>
+<p>Para praticar e aprofundar os conceitos desta parte, consulte também o arquivo auxiliar:</p>
+<ul>
+<li>exercicios-parte2.md --- Exercícios práticos de integração Java + Kafka, implementação de Producer/Consumer, testes e espaço para anotações.</li>
+</ul>
+<hr />
+<p><strong>Boas Práticas</strong></p>
+<ul>
+<li>
+<p>Use consumer groups para escalabilidade</p>
+</li>
+<li>
+<p>Gerencie offsets de forma adequada (automático/manual)</p>
+</li>
+<li>
+<p>Implemente tratamento de exceções e retries</p>
+</li>
+<li>
+<p>Utilize serialização adequada (String, JSON, Avro)</p>
+</li>
+</ul>
+<p><strong>Exercícios Sugeridos</strong></p>
+<ol>
+<li>
+<p>Crie um projeto Java com <strong><em>Maven</em></strong> ou <strong><em>Gradle</em></strong></p>
+</li>
+<li>
+<p>Implemente um producer que envia mensagens simulando pedidos</p>
+</li>
+<li>
+<p>Implemente um consumer que lê e imprime esses pedidos</p>
+</li>
+<li>
+<p>Experimente usar consumer groups e múltiplas partições</p>
+</li>
+</ol>
+<p><strong>Recursos Recomendados</strong></p>
+<ul>
+<li>
+<p><a href="https://kafka.apache.org/documentation/#producerapi"><strong>Kafka Java Client API</strong></a></p>
+</li>
+<li>
+<p>Exemplos oficiais: <a href="https://kafka.apache.org/quickstart"><strong>https://kafka.apache.org/quickstart</strong></a></p>
+</li>
+</ul>
+<hr />
+<p><strong>Código-Fonte e Exemplos</strong></p>
+<p>Todo o conteúdo, exemplos práticos e arquivos de configuração desta parte estão disponíveis no repositório oficial do projeto no GitHub:</p>
+<p><a href="https://github.com/chmulato/kafka-java-mastery"><strong>🔗</strong></a> <a href="http://github.com/chmulato/kafka-java-mastery"><strong>github.com/chmulato/kafka-java-mastery</strong></a></p>
+<p>Acesse, explore e contribua!</p>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

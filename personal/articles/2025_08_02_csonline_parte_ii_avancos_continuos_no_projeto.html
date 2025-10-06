@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Csonline - Parte Ii - Avanços Contínuos No Projeto - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre Csonline - Parte Ii - Avanços Contínuos No Projeto">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Desenvolvimento, Tecnologia">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">Csonline - Parte Ii - Avanços Contínuos No Projeto</h1>
+                    <div class="post-meta">
+                        <time datetime="2025-08-02">02/08/2025</time>
+                        <span class="post-author">Por Christian Mulato</span>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img alt="Acompanhe o progresso" src="assets/img/2025_08_02_IMAGE_001.png" class="hero-image" /></p>
+<p>Acompanhe o progresso</p>
+<p><strong>Avanços contínuos no projeto</strong></p>
+<p>Desde nosso último artigo, o <strong>CSOnline</strong> tem avançado rapidamente. O que começou como uma aplicação JSF legado agora está se transformando em uma arquitetura moderna e distribuída, com uma clara separação entre <strong><em>backend</em></strong> e <strong><em>frontend</em></strong>. Esta evolução reflete nosso compromisso com boas práticas de desenvolvimento e preparação para os desafios do mercado atual.</p>
+<hr />
+<p><strong>Backend: Solidez e Maturidade</strong></p>
+<p>Nosso <strong><em>backend</em></strong> Jakarta EE 10 está mais robusto do que nunca:</p>
+<ul>
+<li>
+<p><strong>Migração completa para Jakarta EE</strong>: Atualizamos todos os pacotes javax.* para jakarta.*, garantindo compatibilidade com os servidores de aplicação mais recentes</p>
+</li>
+<li>
+<p><strong>Persistência aprimorada</strong>: Consolidamos o HSQLDB como nossa solução exclusiva de banco de dados, simplificando a configuração e implantação</p>
+</li>
+<li>
+<p><strong>Inicialização de dados otimizada</strong>: Implementamos um DataInitializer com suporte a múltiplos scripts SQL, proporcionando uma experiência de desenvolvimento mais fluida</p>
+</li>
+<li>
+<p><strong>Documentação extensiva</strong>: Swagger/OpenAPI completamente integrado, permitindo testes interativos de todas as APIs REST</p>
+</li>
+<li>
+<p><strong>Flexibilidade de configuração</strong>: Suporte a ambientes com JTA (produção) e RESOURCE_LOCAL (desenvolvimento), documentados detalhadamente</p>
+</li>
+</ul>
+<p>Os endpoints REST agora estão 100% funcionais, com testes unitários abrangentes garantindo a confiabilidade de cada operação CRUD.</p>
+<hr />
+<p><strong>Frontend: A revolução em Vue.js</strong></p>
+<p>O grande destaque desta fase é nosso novo <strong><em>frontend</em></strong> SPA desenvolvido em Vue.js 3:</p>
+<ul>
+<li>
+<p><strong>Arquitetura Composition API</strong>: Utilizando o que há de mais moderno no ecossistema Vue</p>
+</li>
+<li>
+<p><strong>Módulos independentes</strong>: Separação clara entre gestão de usuários, entregadores, empresas, entregas, equipes, SMS/WhatsApp e preços</p>
+</li>
+<li>
+<p><strong>Interface responsiva</strong>: Design moderno que se adapta a qualquer dispositivo</p>
+</li>
+<li>
+<p><strong>Vite como build tool</strong>: Garantindo carregamento rápido e otimizado</p>
+</li>
+<li>
+<p><strong>Sistema completo de navegação</strong>: Fluxo intuitivo desde o login até o logout</p>
+</li>
+</ul>
+<p>O <strong><em>frontend</em></strong> já está 100% funcional com dados simulados, pronto para integração com os endpoints REST do <strong><em>backend</em></strong>. A experiência do usuário foi cuidadosamente elaborada para garantir produtividade e facilidade de uso.</p>
+<hr />
+<p><strong>Integração e Deploy</strong></p>
+<p>Desenvolvemos scripts PowerShell que automatizam todo o processo de build e deploy:</p>
+<ul>
+<li>
+<p><strong>Build integrado</strong>: <strong><em>Frontend</em></strong> e <strong><em>backend</em></strong> em um único comando</p>
+</li>
+<li>
+<p><strong>Configuração do WildFly 31</strong>: Scripts para DataSource JDBC e HTTPS/SSL</p>
+</li>
+<li>
+<p><strong>Documentação detalhada</strong>: Instruções passo a passo para desenvolvedores e usuários finais</p>
+</li>
+</ul>
+<p>Nossa documentação inclui diagramas de sequência, guias de configuração e tutoriais completos para quem deseja explorar ou contribuir com o projeto.</p>
+<hr />
+<p><strong>Próximos passos e oportunidades</strong></p>
+<p>Estamos prestes a iniciar a fase de integração entre o <strong><em>frontend</em></strong> Vue.js e o <strong><em>backend</em></strong> Jakarta EE. Esta é uma excelente oportunidade para:</p>
+<ul>
+<li>
+<p><strong>Desenvolvedores frontend</strong>: Contribuir com componentes Vue.js, ajustes de UX/UI e animações</p>
+</li>
+<li>
+<p><strong>Especialistas em Jakarta EE</strong>: Refinar endpoints REST, otimizar queries e melhorar a segurança</p>
+</li>
+<li>
+<p><strong>DevOps</strong>: Aprimorar pipelines de CI/CD e estratégias de deploy</p>
+</li>
+<li>
+<p><strong>QA</strong>: Desenvolver testes automatizados E2E com Cypress ou similares</p>
+</li>
+</ul>
+<p>O <strong>CSOnline</strong> está se tornando não apenas um sistema de gestão de entregas, mas uma plataforma completa que demonstra as melhores práticas em desenvolvimento fullstack moderno.</p>
+<hr />
+<p><strong>Como participar</strong></p>
+<p>Se você se interessou por este projeto:</p>
+<ol>
+<li>
+<p>Faça um fork do repositório: <a href="https://github.com/chmulato/csonline"><strong>https://github.com/chmulato/csonline</strong></a></p>
+</li>
+<li>
+<p>Explore a documentação em doc/INDEX.md</p>
+</li>
+<li>
+<p>Veja o sistema em funcionamento seguindo o guia no README.md</p>
+</li>
+<li>
+<p>Proponha melhorias através de Pull Requests ou discussões no Issues</p>
+</li>
+</ol>
+<p>Acreditamos que o desenvolvimento colaborativo gera não apenas software de melhor qualidade, mas também comunidades mais fortes e desenvolvedores mais experientes.</p>
+<hr />
+<p>Acompanhe a evolução do <strong>CSOnline</strong> e faça parte desta jornada de transformação tecnológica!</p>
+<hr />
+<h1 id="java-jakartaee-vuejs-spa-frontend-backend-fullstack-opensource-hsqldb-wildfly-devops-linkedin-devcommunity">java #jakartaee #vuejs #spa #frontend #backend #fullstack #opensource #hsqldb #wildfly #devops #linkedin #devcommunity</h1>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+

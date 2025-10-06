@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Containers No Desenvolvimento De Aplicações - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre Containers No Desenvolvimento De Aplicações">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Desenvolvimento, Tecnologia">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">Containers No Desenvolvimento De Aplicações</h1>
+                    <div class="post-meta">
+                        <time datetime="2024-06-30">30/06/2024</time>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img alt="Desenvolvimento de aplicações Java com Containers" src="assets/img/2024_06_30_IMAGE_001.png" class="hero-image" /></p>
+<p><em>Desenvolvimento de aplicações Java com Containers</em></p>
+<p><strong>Containers no Desenvolvimento de Aplicações</strong></p>
+<p>Os containers têm se tornado uma parte essencial do desenvolvimento de aplicações modernas. Eles oferecem isolamento, portabilidade e escalabilidade, permitindo que as aplicações sejam executadas de maneira consistente em diferentes ambientes. Neste artigo, exploraremos os conceitos-chave relacionados a containers e como eles podem ser aplicados no contexto do desenvolvimento de software.</p>
+<p>A ideia principal ao aplicar o desenvolvimento de aplicações utilizando containers é criar unidades isoladas que empacotam a aplicação e suas dependências em um único pacote. Esses containers oferecem portabilidade, escalabilidade e eficiência, permitindo que as aplicações sejam executadas consistentemente em diferentes ambientes. Isso simplifica a implantação e facilita o gerenciamento de recursos, tornando o desenvolvimento mais ágil e flexível.</p>
+<p><strong>O que são Containers?</strong></p>
+<p><strong>Definição:</strong> Containers são unidades de software que empacotam uma aplicação e suas dependências em um único pacote.</p>
+<p><strong>Isolamento:</strong> Cada container executa em um ambiente isolado, garantindo que não haja conflitos com outras aplicações.</p>
+<p><strong>Eficiência:</strong> Os containers compartilham o mesmo kernel do sistema operacional, tornando-os mais leves que máquinas virtuais tradicionais.</p>
+<p><strong>Benefícios dos Containers</strong></p>
+<p><strong>Portabilidade:</strong></p>
+<p>Os containers podem ser movidos facilmente entre diferentes <em>hosts</em> (servidores) e ambientes (desenvolvimento, teste, produção). Para os desenvolvedores Java é possível criar imagens de containers com suas aplicações e distribuí-las consistentemente.</p>
+<p><strong>Orquestração:</strong></p>
+<p>Ferramentas como o <strong>Kubernetes</strong> (<strong>k8s</strong>) permitem gerenciar clusters de containers. Para os desenvolvedores Java é possível definir implantações, escalabilidade e balanceamento de carga usando manifestos <strong>YAML</strong>.</p>
+<p><strong>Desenvolvimento Local:</strong></p>
+<p>Containers facilitam a configuração de ambientes de desenvolvimento consistentes.</p>
+<p>Desenvolvedores Java podem usar <strong>Docker Compose</strong> para orquestrar vários containers localmente.</p>
+<p><strong>Exemplo Prático</strong></p>
+<p>Vamos começar com a instalação de uma ferramenta para a criação de containers, no caso aqui o <strong>Docker</strong>.</p>
+<p>A maneira de encontrar o Docker para instalar no seu sistema operacional depende do sistema operacional que você está usando:</p>
+<p><strong>- Windows:</strong></p>
+<p>- Acesse o site oficial do <a href="https://www.docker.com/">Docker</a> e clique em \"Getting Started\" para baixar o instalador do <strong>Docker Desktop</strong>.</p>
+<p>- Execute o instalador baixado e siga as instruções de instalação.</p>
+<p><strong>- Ubuntu (Linux):</strong></p>
+<p>- Abra o terminal e execute os seguintes comandos:</p>
+<p><em>sudo apt update</em></p>
+<p><em>sudo apt install docker</em></p>
+<p>- O Docker estará disponível após a instalação.</p>
+<p>Para um exemplo prático, suponha que você esteja criando uma aplicação Spring Boot que se conecta a um banco de dados PostgreSQL. Aqui estão os passos:</p>
+<p><strong>Dockerfile:</strong></p>
+<p>Crie um arquivo chamado <em>Dockerfile</em> na raiz do seu projeto Java.</p>
+<p><img alt="" src="assets/img/2024_06_30_IMAGE_003.png" /></p>
+<p>Exemplo de um dockerfile para um ambiente Java 11 OpenJDK</p>
+<p>Este <em>Dockerfile</em> começa com a imagem base <em>openjdk:11-jdk-slim</em>, que é uma imagem Docker oficial do OpenJDK que inclui os seguintes ambientes Java na imagem padrão: o <strong>JRE</strong> (Java Runtime Environment) e o <strong>JDK</strong> (Java Development Kit).</p>
+<p>Em seguida, copia o arquivo JAR do seu aplicativo (neste caso de exemplo o aquivo, <em>meu-aplicativo.jar</em>) para o contêiner.</p>
+<p>O comando WORKDIR muda o diretório de trabalho para o local onde o arquivo JAR foi copiado.</p>
+<p>Finalmente, o ENTRYPOINT especifica o comando que será executado quando o contêiner Docker for iniciado. Neste caso, ele inicia o aplicativo Java.</p>
+<p>Lembre-se de substituir <em>meu-aplicativo.jar</em> pelo nome do seu arquivo JAR. E certifique-se de que o <em>Dockerfile</em> esteja no mesmo diretório do seu arquivo JAR quando você construir a imagem Docker.</p>
+<p>Copie o arquivo JAR da sua aplicação para o container.</p>
+<p>Defina o comando para executar a aplicação.</p>
+<p><strong>Build da Imagem:</strong></p>
+<p>Execute o comando <em>docker build -t minha-aplicacao .</em> para criar a imagem do container.</p>
+<p><strong>Docker Compose:</strong></p>
+<p>Crie um arquivo YAML <em>docker-compose.yml</em>.</p>
+<p><img alt="" src="assets/img/2024_06_30_IMAGE_004.png" /></p>
+<p>Exemplo de um arquivo YAML docker-compose.yml</p>
+<p>Neste exemplo, o serviço db é o banco de dados PostgreSQL e o serviço app é a aplicação Java. As variáveis de ambiente necessárias para a conexão com o banco de dados são definidas no serviço app.</p>
+<p>Para o seu exemplo, substitua exemplo_senha, exemplo_usuario, exemplo_db, exemplo_imagem_java:tag pelos valores reais que você deseja usar.</p>
+<p>Lembre-se de que você precisa construir sua imagem Docker para a aplicação Java e referenciá-la corretamente no serviço app (no campo image). A tag da imagem (neste exemplo, tag) deve corresponder à versão da sua aplicação.</p>
+<p><strong>Execução:</strong></p>
+<p>Execute <em>docker-compose up</em> para iniciar os containers.</p>
+<p>Sua aplicação Java estará disponível em [http://localhost:8080]</p>
+<p>Agora você tem uma aplicação Java empacotada em um container, com o banco de dados também em um container.</p>
+<p>Isso facilita a configuração do ambiente local e a implantação consistente em outros ambientes.</p>
+<p><strong>Curiosidades</strong></p>
+<p>Os containers oferecem diversos benefícios no desenvolvimento de aplicações. Eles proporcionam isolamento, permitindo que cada aplicação execute em seu próprio ambiente sem conflitos. Além disso, os containers são portáteis, facilitando a implantação em diferentes ambientes e a migração entre servidores. Sua eficiência e escalabilidade também são vantagens, tornando-os ideais para ambientes de nuvem e orquestração, como o <strong>Kubernetes (K8s)</strong>.</p>
+<p>A orquestração de containers é o processo de automação de grande parte do esforço operacional para executar serviços e fluxos de trabalho organizados em containers. O Kubernetes, uma plataforma de código aberto, portável e extensível, é uma ferramenta popular para essa tarefa. Ele permite agrupar contêineres em unidades lógicas chamadas \"pods\", escalonando-os automaticamente com base na carga de trabalho ou substituindo-os se falharem. Além disso, o k8s oferece recursos como descoberta de serviço, balanceamento de carga, orquestração de armazenamento e gerenciamento de configurações e segredos, revolucionando a maneira como as aplicações são implantadas e mantidas.</p>
+<p>Um <strong>pod</strong> do Kubernetes é um conjunto de um ou mais containers Linux, sendo a menor unidade de uma aplicação Kubernetes. Os pods são compostos por um container nos casos de uso mais comuns ou por vários containers fortemente acoplados em cenários mais avançados. Esses containers compartilham os mesmos recursos de computação, agrupados na forma de clusters, resultando em um sistema distribuído mais inteligente e eficiente para a execução de aplicações. Os pods permitem que os containers se comuniquem como se compartilhassem o mesmo hardware físico, enquanto mantêm um certo nível de isolamento. Essa organização é a base para funcionalidades como replicação e escalabilidade no Kubernetes.</p>
+<p>Uma das implementações mais comuns para o uso de containers no desenvolvimento de aplicações é a implantação de micro-serviços. Nesse modelo, cada micro-serviço é empacotado em um container independente. Isso permite que os desenvolvedores criem, testem e implantem serviços de forma modular e escalável. Além disso, os containers facilitam a orquestração desses micro-serviços usando ferramentas como o Kubernetes (k8s), garantindo alta disponibilidade e flexibilidade.</p>
+<p>Resumidamente, os containers são uma ferramenta poderosa para simplificar o desenvolvimento, implantação e escalabilidade de aplicações. No mundo do desenvolvimento Java podemos aproveitar esses benefícios para criar soluções mais eficientes e flexíveis.</p>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
+
+

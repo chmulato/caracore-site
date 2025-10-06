@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub De Integração De APIs Para Varejo &amp; Delivery Uma Visão Prática Em Java - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Hub de Integração de APIs para Varejo & Delivery — uma visão prática em Java">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Integração, APIs, Varejo, Delivery, Arquitetura, Kafka, Microservices">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+    <nav class="main-nav">
+      <a href="../index.html">Início</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </div>
+</header>
+<main class="main-content">
+  <div class="container">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">Hub de Integração de APIs para Varejo &amp; Delivery — uma visão prática em Java</h1>
+        <div class="post-meta">
+          <time datetime="2025-09-21">21/09/2025</time>
+          <span class="post-author">Por Christian Mulato</span>
+        </div>
+      </header>
+      <div class="post-content">
+        <p><img src="assets/img/2025_09_21_IMAGE_001.png" class="hero-image" alt="Hub de integração de APIs para varejo e delivery"></p>
+        
+        <h2>Por que o varejo brasileiro precisa de um "único lugar" para integrar tudo</h2>
+        
+        <p>Nos últimos anos, o ecossistema de vendas e entregas no Brasil se fragmentou: marketplaces (Magalu, Mercado Livre, Amazon, Shopee), apps de delivery (iFood, Rappi, Cornershop), e-commerces próprios, ERPs, TMS e last-mile. O resultado? Custos altos de integração, dados dispersos e decisões lentas.</p>
+        
+        <p>A tese deste artigo é simples: há espaço para uma startup de <strong>Integração de APIs</strong> (um <em>hub</em>) que unifique <strong>pedidos, catálogo, estoque e logística</strong> em uma <strong>API única</strong> — começando enxuto (MVP), mas pronta para escalar. E dá para fazer isso <strong>em Java</strong>, com um stack moderno, resiliente e observável.</p>
+        
+        <hr />
+        
+        <h2>O problema (em 5 linhas)</h2>
+        
+        <ol>
+          <li>Cada canal tem sua própria API, contrato e SLA</li>
+          <li>Lojistas e redes gastam tempo "traduzindo" dados</li>
+          <li>Ruptura por falta de sincronização de estoque</li>
+          <li>Duplicidade de integrações entre times e fornecedores</li>
+          <li>Falta de visão unificada (KPIs, margem por canal, O2O)</li>
+        </ol>
+        
+        <p><strong>Oportunidade</strong>: oferecer uma <strong>API única</strong> e <strong>conectores prontos</strong> para os principais players, reduzindo <em>time-to-market</em> e aumentando a confiabilidade.</p>
+        
+        <h2>A proposta</h2>
+        
+        <p>Um <strong>SaaS B2B</strong> que centraliza integrações e expõe <strong>um contrato padronizado</strong>:</p>
+        
+        <ul>
+          <li><strong>Order Ingest</strong>: normaliza pedidos vindos de qualquer canal</li>
+          <li><strong>Catalog &amp; Stock Sync</strong>: SKU unificado, preço por canal, promoções</li>
+          <li><strong>Logistics Orchestration</strong>: cotação, SLA, roteirização, tracking</li>
+          <li><strong>Analytics</strong>: vendas por canal, <em>fill rate</em>, OTIF, cancelamentos</li>
+          <li><strong>Console</strong>: painel para monitoração, alertas e gestão de chaves/API</li>
+        </ul>
+        
+        <p><strong>Modelo de negócio</strong>: assinatura por loja/filial + <em>overage</em> por volume de pedidos, com planos <em>Basic/Pro/Enterprise</em>.</p>
+        
+        <h2>Arquitetura de referência (Java)</h2>
+        
+        <ul>
+          <li><strong>Edge/API Gateway</strong>: Spring Cloud Gateway + Rate Limiting (Redis)</li>
+          <li><strong>BFF/Orquestração</strong>: Spring Boot (WebFlux) para I/O reativo</li>
+          <li><strong>Conectores</strong> ("adapters") por parceiro: Spring Boot + Resilience4j (timeouts, circuit breaker, retries)</li>
+          <li><strong>Mensageria</strong>: Apache Kafka para ingestão assíncrona e <em>event sourcing</em></li>
+          <li><strong>Persistência</strong>: PostgreSQL (OLTP) + Elastic (busca) + Redis (cache)</li>
+          <li><strong>Observabilidade</strong>: Micrometer + OpenTelemetry (traces/metrics/logs)</li>
+          <li><strong>Infra</strong>: Kubernetes, Horizontal Pod Autoscaler, <strong>12-Factor</strong></li>
+          <li><strong>Segurança</strong>: OAuth2/OIDC (Keycloak), mTLS entre serviços</li>
+          <li><strong>Contrato</strong>: OpenAPI 3.0, <em>schema registry</em> (Avro/JSON Schema) para eventos</li>
+        </ul>
+        
+        <blockquote>
+          <p>Estilo arquitetural: <strong>Hexagonal</strong> (Ports &amp; Adapters) + <strong>SAGA</strong> para coordenação de fluxos multi-serviço (ex.: pedido → reserva de estoque → pagamento → despacho).</p>
+        </blockquote>
+        
+        <h2>Domínio mínimo viável (MVP)</h2>
+        
+        <p><strong>Agregados</strong>:</p>
+        <ul>
+          <li><code>Order</code> (pedido unificado)</li>
+          <li><code>CatalogItem</code> (SKU, preço, atributos)</li>
+          <li><code>Inventory</code> (estoque por localidade/canal)</li>
+          <li><code>Shipment</code> (cotações, tracking, SLA)</li>
+        </ul>
+        
+        <p><strong>Fluxos críticos</strong>:</p>
+        <ol>
+          <li><strong>Receber pedido</strong> de qualquer canal → normalizar → publicar evento <code>order.created</code> no Kafka</li>
+          <li><strong>Reservar estoque</strong> → confirmar/cancelar</li>
+          <li><strong>Despachar</strong> (selecionar transportadora, gerar etiqueta, tracking)</li>
+          <li><strong>Atualizar status</strong> (webhooks → eventos <code>order.updated</code>)</li>
+        </ol>
+        
+        <hr />
+        
+        <h2>Especificação de API (trecho)</h2>
+        <pre><code class="language-yaml">openapi: 3.0.3
+info:
+  title: Retail Integration Hub API
+  version: 1.0.0
+paths:
+  /v1/orders:
+    post:
+      summary: Ingestão de pedido unificado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UnifiedOrder'
+      responses:
+        '202': { description: Aceito e processado assíncronamente }
+  /v1/orders/{id}:
+    get:
+      summary: Consultar pedido
+      responses:
+        '200': { description: OK }
+components:
+  schemas:
+    UnifiedOrder:
+      type: object
+      required: [channel, externalId, items, customer]
+      properties:
+        channel: { type: string, example: 'IFOOD' }
+        externalId: { type: string }
+        items:
+          type: array
+          items:
+            type: object
+            required: [sku, qty, price]
+            properties:
+              sku: { type: string }
+              qty: { type: integer }
+              price: { type: number, format: double }
+        customer:
+          type: object
+          properties:
+            document: { type: string }
+            name: { type: string }
+            address: { type: string }
+</code></pre>
+        
+        <hr />
+        
+        <h2>Exemplo de implementação (Spring Boot WebFlux)</h2>
+        <pre><code class="language-java">@RestController
+@RequestMapping("/v1/orders")
+@RequiredArgsConstructor
+public class OrderController {
+  private final OrderIngestService service;
+
+  @PostMapping
+  public Mono&lt;ResponseEntity&lt;Void&gt;&gt; ingest(@RequestBody Mono&lt;UnifiedOrder&gt; body) {
+    return body
+      .flatMap(service::ingest)
+      .thenReturn(ResponseEntity.accepted().build());
+  }
+
+  @GetMapping("/{id}")
+  public Mono&lt;UnifiedOrderView&gt; get(@PathVariable String id) {
+    return service.findById(id);
+  }
+}
+</code></pre>
+        
+        <p><strong>Adapter para um canal (ex.: iFood/Rappi) com Resilience4j</strong></p>
+        <pre><code class="language-java">@Component
+@RequiredArgsConstructor
+public class RappiAdapter implements OrderPullPort {
+  private final WebClient webClient;
+
+  @TimeLimiter(name = "rappi")
+  @Retry(name = "rappi")
+  @CircuitBreaker(name = "rappi")
+  public Flux&lt;ChannelOrder&gt; pullNewOrders() {
+    return webClient.get()
+      .uri("/partner/orders?status=NEW")
+      .retrieve()
+      .bodyToFlux(ChannelOrder.class);
+  }
+}
+</code></pre>
+        
+        <p><strong>Publicação no Kafka</strong></p>
+        <pre><code class="language-java">@Service
+@RequiredArgsConstructor
+public class OrderIngestService {
+  private final KafkaTemplate&lt;String, UnifiedOrderEvent&gt; kafka;
+  private final OrderRepository repo;
+
+  public Mono&lt;Void&gt; ingest(UnifiedOrder order) {
+    return repo.save(order.toEntity())
+      .doOnSuccess(saved -> kafka.send("order.created", saved.getId(), UnifiedOrderEvent.from(saved)))
+      .then();
+  }
+}
+</code></pre>
+        
+        <hr />
+        
+        <h2>Segurança, LGPD e compliance</h2>
+        
+        <ul>
+          <li><strong>PII minimizada</strong>: armazene somente o necessário, com <em>tokenization</em> para documentos e cartões</li>
+          <li><strong>Criptografia</strong>: TLS em trânsito, AES-256 em repouso</li>
+          <li><strong>Auditoria</strong>: trilhas de acesso (quem/quando/onde), retenção configurável</li>
+          <li><strong>Consentimento</strong>: registre bases legais e finalidades (LGPD Art. 7º)</li>
+          <li><strong>Segregação de dados</strong>: <em>multi-tenant</em> com <em>row-level security</em></li>
+        </ul>
+        
+        <h2>SLOs e observabilidade</h2>
+        
+        <ul>
+          <li><strong>SLO ingestão</strong>: P95 &lt; 500 ms no edge, P99 &lt; 2 s no fluxo assíncrono</li>
+          <li><strong>Disponibilidade</strong>: 99,9% (multi-AZ)</li>
+          <li><strong>KPIs de negócio</strong>: <em>fill rate</em>, tempo de ciclo, % cancelamento por canal</li>
+          <li><strong>Alertas</strong>: erro por conector, latência por parceiro, <em>dead letter queues</em></li>
+        </ul>
+        
+        <h2>Roadmap sugerido</h2>
+        
+        <p><strong>Mês 1–2 (MVP)</strong>: Ingestão de pedidos + conectores de 2 canais + webhook de status<br>
+           <strong>Mês 3–4</strong>: Catálogo/estoque unificado + conectores de logística<br>
+           <strong>Mês 5–6</strong>: Console self-service, chaves API, faturação, relatórios<br>
+           <strong>Enterprise</strong>: SAGA completa, <em>rate cards</em> de frete, roteirização e <em>what-if pricing</em></p>
+        
+        <h2>Diferenciais para o Brasil</h2>
+        
+        <ul>
+          <li>Conectores prontos para <strong>fiscais</strong> (NFe/NFCe/CFOP), meios de pagamento locais e <em>split</em></li>
+          <li>Tratamento de <strong>endereços</strong> e <strong>CEP</strong> (geocodificação/normalização)</li>
+          <li>Otimização para <strong>pico</strong> (datas sazonais e campanhas regionais)</li>
+          <li>Suporte a <strong>lojas físicas</strong> (O2O: <em>ship-from-store</em>, <em>click &amp; collect</em>)</li>
+        </ul>
+        
+        <hr />
+        
+        <h2>Chamado à ação</h2>
+        
+        <p>Se você é do <strong>varejo</strong> ou <strong>logística</strong> e já cansou de "reinventar integração" a cada novo canal, vamos conversar. A ideia é construir <strong>um hub único, em Java</strong>, que reduza complexidade e acelere o go-live em semanas, não meses.</p>
+        
+        <p><em>Curtiu a tese? Comenta aqui, envia DM ou marque alguém que precisa ler isso.</em></p>
+        <p><strong>Hashtags</strong>: #Java #APIs #Integração #Varejo #Delivery #ArquiteturaDeSoftware #Kafka #Microsserviços #OpenAPI #WebFlux #Observabilidade #Kubernetes</p>
+      </div>
+      <footer class="post-footer">
+        <div class="author-info">
+          <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+          <div class="author-details">
+            <strong>Christian Mulato</strong>
+            <p>Desenvolvedor Java e Arquiteto de Software</p>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2025 Christian Mulato. Todos os direitos reservados.</p>
+  </div>
+</footer>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

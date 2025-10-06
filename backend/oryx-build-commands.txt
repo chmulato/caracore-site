@@ -1,0 +1,2 @@
+PlatformWithVersion=Python 3.11.7
+BuildCommands=/tmp/oryx/platforms/python/3.11.7/bin/python3.11 -m venv pythonenv3.11 --copies

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-oidc-provider="google">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Área Restrita - Cara Core</title>
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/secure/assets/style.css">
+  <style>
+    :root {
+      --brand-dark: #0f172a;
+      --brand-light: #f8fafc;
+      --brand-primary: #2563eb;
+      --brand-secondary: #4f46e5;
+      --brand-accent: #38bdf8;
+      --text-dark: #1e293b;
+      --text-muted: #64748b;
+      --surface: rgba(255,255,255,0.88);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin:0; padding:0; font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif; color: var(--text-dark); background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%); min-height:100%; }
+    a { color: inherit; }
+  .visually-hidden { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    .mb-3 { margin-bottom:1rem; }
+    .site-shell { min-height: 100vh; display: flex; flex-direction: column; }
+    .site-nav { background: rgba(15, 23, 42, 0.95); color: #fff; position: sticky; top: 0; z-index: 50; box-shadow: 0 6px 16px rgba(15, 23, 42, 0.15); }
+    .nav-inner { max-width: 1120px; margin: 0 auto; padding: 0.75rem 1.25rem; display:flex; align-items:center; justify-content: space-between; gap: 1rem; }
+    .nav-brand { display:flex; align-items:center; gap:0.65rem; font-weight: 600; letter-spacing: 0.02em; text-decoration:none; color:inherit; }
+    .nav-brand svg { width:1.6rem; height:1.6rem; color: #38bdf8; }
+    .nav-toggle { display:none; background:none; border: none; color: inherit; cursor:pointer; padding:0.5rem; border-radius:0.5rem; transition: background 0.2s ease; }
+    .nav-toggle:focus-visible { outline:2px solid var(--brand-accent); outline-offset:2px; }
+    .nav-toggle span { display:block; width:1.5rem; height:0.125rem; background:currentColor; position:relative; transition: transform 0.2s ease; }
+    .nav-toggle span::before,
+    .nav-toggle span::after { content:""; position:absolute; left:0; width:100%; height:100%; background:currentColor; transition: transform 0.2s ease; }
+    .nav-toggle span::before { top:-0.4rem; }
+    .nav-toggle span::after { top:0.4rem; }
+    .nav-links { display:flex; align-items:center; gap:1.25rem; }
+    .nav-link { color:rgba(255,255,255,0.86); text-decoration:none; font-size:0.95rem; transition: color 0.2s ease; }
+    .nav-link:hover, .nav-link:focus-visible { color:#fff; }
+    .nav-link.active { color: var(--brand-accent); font-weight:600; }
+    .nav-cta { display:flex; align-items:center; gap:0.4rem; padding:0.45rem 0.9rem; border-radius:999px; background: rgba(56, 189, 248, 0.15); color:#e0f2fe; }
+    .nav-cta svg { color:#38bdf8; width:1.2rem; height:1.2rem; }
+    @media (max-width: 960px) {
+      .nav-toggle { display:block; }
+      .nav-links { position:absolute; top:100%; left:0; right:0; flex-direction:column; align-items:flex-start; background: rgba(15, 23, 42, 0.98); padding:1rem 1.25rem; border-bottom-left-radius:1rem; border-bottom-right-radius:1rem; gap:0.75rem; max-height:0; overflow:hidden; transition:max-height 0.25s ease; }
+      .nav-links.open { max-height:320px; }
+      .nav-link, .nav-cta { width:100%; }
+    }
+    .page-content { flex:1; padding: 6rem 1rem 3rem; }
+    .container { max-width:1120px; margin:0 auto; }
+    .hero { background: var(--surface); border-radius: 20px; padding:3rem; box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12); display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:3rem; align-items:center; }
+    .hero-media { text-align:center; }
+    .hero-media img { max-width:320px; width:100%; filter: drop-shadow(0 20px 32px rgba(15, 23, 42, 0.18)); }
+    .hero-badge { display:inline-flex; align-items:center; gap:0.5rem; background: rgba(37, 99, 235, 0.12); color: var(--brand-primary); padding:0.35rem 0.85rem; border-radius:999px; font-weight:600; margin-bottom:1.5rem; }
+    .hero-title { font-size: clamp(2rem, 5vw, 2.8rem); margin:0 0 1rem; }
+    .hero-text { color: var(--text-muted); font-size:1.05rem; line-height:1.7; margin-bottom:2rem; }
+    .cta-group { display:flex; flex-wrap:wrap; gap:1rem; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:0.65rem; padding:0.85rem 1.5rem; border-radius:12px; font-weight:600; border:none; cursor:pointer; text-decoration:none; transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease; }
+    .btn-primary { background: linear-gradient(135deg, var(--brand-primary), var(--brand-secondary)); color:#fff; box-shadow:0 12px 26px rgba(37, 99, 235, 0.25); }
+    .btn-primary:hover, .btn-primary:focus-visible { transform: translateY(-1px); box-shadow:0 18px 36px rgba(37, 99, 235, 0.32); }
+    .btn-ghost { background:rgba(14,165,233,0.12); color: var(--brand-primary); box-shadow:none; }
+    .btn-ghost:hover, .btn-ghost:focus-visible { background:rgba(14,165,233,0.22); }
+    .auth-screen { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+  .loading-overlay { position:fixed; top:0; left:0; width:100%; height:100%; -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); background: rgba(255,255,255,0.9); display:none; align-items:center; justify-content:center; z-index: 120; }
+    .loading-overlay.active { display:flex; }
+    .loading-content { text-align:center; padding:2rem 2.5rem; background:#fff; border-radius:18px; box-shadow:0 18px 40px rgba(15, 23, 42, 0.12); }
+    .loading-content h5 { margin-bottom:0.5rem; font-size:1.1rem; }
+    .loading-content p { margin:0; color: var(--text-muted); }
+    .provider-buttons { margin-bottom: 1.5rem; }
+    .provider-buttons .btn-provider { border:none; }
+    .provider-icon { width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .provider-icon svg { width:100%; height:100%; }
+    .provider-icon-microsoft svg { border-radius:6px; }
+    .auth-footer { font-size:0.85rem; color: var(--text-muted); }
+    .auth-footer a { color: var(--brand-accent); text-decoration:none; }
+    .auth-footer a:hover { text-decoration:underline; }
+  .auth-certified { margin-top:1.25rem; font-size:0.82rem; color: var(--text-muted); display:flex; gap:0.65rem; align-items:flex-start; background: rgba(15, 23, 42, 0.04); border-radius:12px; padding:0.85rem 1rem; border:1px solid rgba(37, 99, 235, 0.12); }
+  .auth-certified svg { color: var(--brand-primary); flex-shrink:0; margin-top:0.15rem; }
+    .user-info-card { background: rgba(226, 232, 240, 0.45); border:1px solid rgba(148, 163, 184, 0.3); border-radius:16px; padding:1.5rem; display:flex; flex-direction:column; gap:0.65rem; align-items:flex-start; }
+    .user-info-card img { border-radius:50%; width:72px; height:72px; object-fit:cover; border:2px solid rgba(59,130,246,0.4); }
+    .user-provider-badge svg { width:1rem; height:1rem; }
+    .auth-alert { display:flex; align-items:center; gap:0.85rem; }
+    .auth-alert svg { width:1.25rem; height:1.25rem; flex-shrink:0; }
+    .d-none { display:none !important; }
+    .icon { width:1em; height:1em; display:inline-block; }
+    .icon-xl { width:2.4rem; height:2.4rem; }
+    .icon-lg { width:1.4rem; height:1.4rem; }
+    .icon-sm { width:0.95rem; height:0.95rem; }
+  .icon-sprite { position:absolute; width:0; height:0; overflow:hidden; }
+  #mainContent { display:none; }
+    @media (max-width: 768px) {
+      .hero { padding:2.25rem; }
+      .hero-media img { max-width:240px; }
+    }
+    @media (max-width: 560px) {
+      .page-content { padding-top:5rem; }
+      .hero { padding:2rem; }
+      .cta-group { flex-direction:column; width:100%; }
+      .btn { width:100%; }
+    }
+  </style>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-shield-lock" viewBox="0 0 24 24">
+      <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+      <path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-warning" viewBox="0 0 24 24">
+      <path d="M12 4 3 20h18L12 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 10v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="12" cy="16.5" r="1" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-gear" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4.7 9.4a7.5 7.5 0 0 0 0 5.2l2.1.4a5.5 5.5 0 0 0 1.2 2l-0.5 2a7.5 7.5 0 0 0 4.8 0l0.5-2a5.5 5.5 0 0 0 2-1.2l2 .5a7.5 7.5 0 0 0 0-5.2l-2-.5a5.5 5.5 0 0 0-1.2-2l0.5-2a7.5 7.5 0 0 0-4.8 0l-0.5 2a5.5 5.5 0 0 0-2 1.2l-2-.4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-google" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.4c-.2 1.2-.9 2.2-1.9 2.8v2.3h3.1c1.8-1.7 2.9-4.2 2.9-6.8z"/>
+      <path fill="#34A853" d="M12 22c2.6 0 4.9-.9 6.5-2.5l-3.1-2.3c-.9.6-2 .9-3.4.9-2.6 0-4.7-1.8-5.5-4.2H3.4v2.7A10 10 0 0 0 12 22z"/>
+      <path fill="#FBBC05" d="M6.5 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.3H3.4A10 10 0 0 0 2 12c0 1.6.4 3.1 1.4 4.7L6.5 14z"/>
+      <path fill="#EA4335" d="M12 6.5c1.4 0 2.6.5 3.5 1.5l2.6-2.5C16.9 3.5 14.6 2.4 12 2.4c-3.6 0-6.6 2.1-8.1 5l3.1 2.4c.7-2.4 2.9-4.3 5-4.3z"/>
+    </symbol>
+    <symbol id="icon-microsoft" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="9.5" height="9.5" fill="#f35325"/>
+      <rect x="12.5" y="2" width="9.5" height="9.5" fill="#81bc06"/>
+      <rect x="2" y="12.5" width="9.5" height="9.5" fill="#05a6f0"/>
+      <rect x="12.5" y="12.5" width="9.5" height="9.5" fill="#ffba08"/>
+    </symbol>
+  </svg>
+
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+      <div class="loading-spinner mb-3" aria-hidden="true"></div>
+      <h5>Verificando autenticação...</h5>
+      <p>Aguarde um momento</p>
+    </div>
+  </div>
+
+  <div id="authScreen" class="auth-screen oidc-container">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <div class="auth-logo">
+          <svg class="icon icon-xl" aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+        </div>
+        <h1 class="auth-card-title">Acesso Restrito</h1>
+        <p class="auth-card-subtitle">Escolha seu provedor de identidade para continuar</p>
+      </div>
+
+      <div class="permissions-section">
+        <h3 class="permissions-title">Este aplicativo solicita permissão para:</h3>
+        <ul class="permissions-list">
+          <li>
+            <span class="permissions-icon">✔</span>
+            <span class="permissions-text">Autenticar sua identidade com OpenID Connect</span>
+          </li>
+          <li>
+            <span class="permissions-icon">✔</span>
+            <span class="permissions-text">Acessar informações básicas do seu perfil</span>
+          </li>
+          <li>
+            <span class="permissions-icon">✔</span>
+            <span class="permissions-text">Confirmar seu endereço de e-mail</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="provider-buttons">
+        <button id="btnLoginGoogle" class="btn btn-provider btn-provider-google" type="button">
+          <span class="provider-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-google"></use></svg></span>
+          <span class="provider-text">Continuar com Google</span>
+          <div class="loading-spinner d-none" aria-hidden="true"></div>
+        </button>
+
+        <button id="btnLoginMicrosoft" class="btn btn-provider btn-provider-microsoft" type="button">
+          <span class="provider-icon provider-icon-microsoft" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-microsoft"></use></svg></span>
+          <span class="provider-text">Continuar com Microsoft</span>
+          <div class="loading-spinner d-none" aria-hidden="true"></div>
+        </button>
+      </div>
+
+      <div class="auth-alert" role="alert">
+        <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-warning"></use></svg>
+        <div>
+          Somente contas pessoais Microsoft (@outlook.com, @hotmail.com, Xbox, etc.) e contas pessoais Google podem acessar esta Área 51. Contas corporativas ou escolares são bloqueadas pelas políticas do provedor.
+        </div>
+      </div>
+
+      <div class="auth-certified" role="note">
+        <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-warning"></use></svg>
+        <div>
+          Para manter o fluxo de login/logout estável, utilize os navegadores certificados: Chrome ou Microsoft Edge (versão atual), Firefox 118+ e Safari 17+ em macOS/iOS. Antes de testar novamente, limpe sessões antigas ou use janela anônima para evitar bloqueios de cookies.
+        </div>
+      </div>
+
+      <div id="authAlerts"></div>
+
+      <div class="auth-footer">
+        Ao continuar, você aceita nossos
+        <a href="/politica/termos-servico.html">Termos de Uso</a> e
+        <a href="/politica/politica-privacidade.html">Política de Privacidade</a>.
+      </div>
+    </div>
+  </div>
+
+  <div class="site-shell">
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="nav-brand" href="/" aria-label="Página inicial Cara Core">
+          <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+          <span>Cara Core Informática</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="navLinks" aria-expanded="false" id="navToggle">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav-links" id="navLinks">
+          <a class="nav-link" href="/index.html#home">Início</a>
+          <a class="nav-link" href="/index.html#servicos">Serviços</a>
+          <a class="nav-link" href="/index.html#sobre">Sobre</a>
+          <a class="nav-link" href="/index.html#diferenciais">Diferenciais</a>
+          <a class="nav-link" href="/index.html#contato">Contato</a>
+          <span class="nav-cta">
+            <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+            <span>Área 51</span>
+          </span>
+        </nav>
+      </div>
+    </header>
+
+  <main id="mainContent" class="page-content">
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="hero-badge">
+              <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-check-circle"></use></svg>
+              Autenticado
+            </span>
+            <h1 class="hero-title">Bem-vindo à Área Restrita</h1>
+            <p class="hero-text">
+              Sua identidade foi confirmada com sucesso. Em instantes você será redirecionado para o conteúdo protegido da Cara Core.
+            </p>
+            <div id="userInfo" class="user-info-card d-none">
+              <img id="userAvatar" src="" alt="Avatar do usuário">
+              <div>
+                <div id="userName" class="user-name"></div>
+                <div id="userEmail" class="user-email"></div>
+                <div id="userProvider" class="user-provider-badge"></div>
+              </div>
+            </div>
+            <div class="cta-group">
+              <a href="/secure/restrita.html" class="btn btn-primary">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+                Acessar conteúdo protegido
+              </a>
+              <a href="/secure/admin-logs.html" class="btn btn-ghost">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-gear"></use></svg>
+                Logs do sistema
+              </a>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img src="/images/security.png" alt="Ilustração de segurança">
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    (function() {
+      const toggle = document.getElementById('navToggle');
+      const links = document.getElementById('navLinks');
+      if (!toggle || !links) return;
+      toggle.addEventListener('click', () => {
+        const isOpen = links.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', isOpen);
+      });
+    })();
+  </script>
+
+  <script defer src="/secure/log-config.js?v=20251001"></script>
+  <script defer src="/secure/logger.js?v=20250929"></script>
+  <script defer src="/secure/dynamic-config.js?v=20250929"></script>
+  <script defer src="/js/vendor/oidc-client-ts.js"></script>
+  <script defer src="/secure/auth-standalone.js?v=20251001b"></script>
+  <script defer src="/secure/log-microsoft-fix.js?v=20250929"></script>
+  <script defer src="/secure/diagnose-redirect-uri.js?v=20250929"></script>
+  <script defer src="/secure/fix-redirect-uri-detection.js?v=20250929"></script>
+  <script defer src="/secure/show-current-uris.js?v=20250929"></script>
+  <script defer src="/secure/fix-caracore-domain.js?v=20250929"></script>
+  <script defer src="/secure/caracore-instructions.js?v=20250929"></script>
+  <script defer src="/secure/copy-google-config.js?v=20250929"></script>
+
+  <script>
+    const icon = (name, extraClass = '') => `<svg class="icon ${extraClass}" aria-hidden="true"><use href="#icon-${name}"></use></svg>`;
+
+    document.addEventListener('DOMContentLoaded', async function() {
+      const loadingOverlay = document.getElementById('loadingOverlay');
+      const authScreen = document.getElementById('authScreen');
+      const mainContent = document.getElementById('mainContent');
+      const authAlerts = document.getElementById('authAlerts');
+
+      loadingOverlay.classList.add('active');
+
+      try {
+        if (typeof window.OIDCAuth === 'undefined') {
+          await new Promise(resolve => {
+            const checkOIDC = () => {
+              if (typeof window.OIDCAuth !== 'undefined') {
+                resolve();
+              } else {
+                setTimeout(checkOIDC, 100);
+              }
+            };
+            checkOIDC();
+          });
+        }
+
+        const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+
+        if (isAuthenticated) {
+          await showUserInfo();
+          showMainContent();
+          setTimeout(() => {
+            window.location.href = '/secure/restrita.html';
+          }, 2000);
+        } else {
+          showAuthScreen();
+        }
+
+      } catch (error) {
+        console.error('Erro na inicialização:', error);
+        showError('Erro ao inicializar sistema de autenticação');
+        showAuthScreen();
+      } finally {
+        loadingOverlay.classList.remove('active');
+      }
+
+      document.getElementById('btnLoginGoogle').addEventListener('click', () => loginWithProvider('google'));
+      document.getElementById('btnLoginMicrosoft').addEventListener('click', () => loginWithProvider('entra'));
+
+      function showAuthScreen() {
+        authScreen.classList.add('active');
+        mainContent.style.display = 'none';
+      }
+
+      function showMainContent() {
+        authScreen.classList.remove('active');
+        mainContent.style.display = 'block';
+      }
+
+      async function loginWithProvider(provider) {
+        const button = provider === 'google'
+          ? document.getElementById('btnLoginGoogle')
+          : document.getElementById('btnLoginMicrosoft');
+
+        try {
+          button.classList.add('loading');
+          button.disabled = true;
+
+          clearAlerts();
+
+          await window.OIDCAuth.switchProvider(provider);
+          await window.OIDCAuth.login();
+        } catch (error) {
+          console.error('Erro no login:', error);
+          showError(resolveLoginError(provider, error));
+        } finally {
+          button.classList.remove('loading');
+          button.disabled = false;
+        }
+      }
+
+      async function showUserInfo() {
+        try {
+          const userProfile = await window.OIDCAuth.getUserProfile();
+          const storedInfo = window.OIDCAuth.getStoredUserInfo && window.OIDCAuth.getStoredUserInfo();
+
+          if (userProfile) {
+            const userInfo = document.getElementById('userInfo');
+            const userAvatar = document.getElementById('userAvatar');
+            const userName = document.getElementById('userName');
+            const userEmail = document.getElementById('userEmail');
+            const userProvider = document.getElementById('userProvider');
+
+            if (userProfile.picture) {
+              userAvatar.src = userProfile.picture;
+              userAvatar.style.display = 'block';
+            } else {
+              userAvatar.style.display = 'none';
+            }
+
+            userName.textContent = userProfile.name || 'Usuário';
+            userEmail.textContent = userProfile.email || '';
+
+            if (storedInfo?.provider) {
+              const providerName = storedInfo.provider === 'google' ? 'Google' : 'Microsoft';
+              const providerIcon = storedInfo.provider === 'google' ? icon('google', 'icon-sm') : icon('microsoft', 'icon-sm');
+              userProvider.innerHTML = `${providerIcon} ${providerName}`;
+            }
+
+            userInfo.classList.remove('d-none');
+          }
+        } catch (error) {
+          console.error('Erro ao exibir informações do usuário:', error);
+        }
+      }
+
+      function showError(message) {
+        authAlerts.innerHTML = `
+          <div class="auth-alert auth-alert-error">
+            ${icon('warning', 'icon-sm')}
+            ${message}
+          </div>
+        `;
+      }
+
+      function showSuccess(message) {
+        authAlerts.innerHTML = `
+          <div class="auth-alert auth-alert-success">
+            ${icon('check-circle', 'icon-sm')}
+            ${message}
+          </div>
+        `;
+      }
+
+      function clearAlerts() {
+        authAlerts.innerHTML = '';
+      }
+
+      function resolveLoginError(provider, error) {
+        const providerName = provider === 'google' ? 'Google' : 'Microsoft';
+        const rawDetails = [
+          typeof error === 'string' ? error : null,
+          error?.message,
+          error?.error_description,
+          error?.error
+        ].filter(Boolean).join(' | ');
+
+        const normalizedDetails = rawDetails.toLowerCase();
+        if (provider !== 'google' && (normalizedDetails.includes('aadsts9002346') || normalizedDetails.includes('/consumers endpoint'))) {
+          return 'Não foi possível entrar com uma conta Microsoft corporativa ou escolar. Esta Área 51 aceita apenas contas pessoais Microsoft (@outlook.com, @hotmail.com, Xbox Live). Troque para uma conta pessoal e tente novamente.';
+        }
+
+        const technicalDetail = error?.message ? ` Detalhe técnico: ${error.message}` : '';
+        return `Erro ao conectar com ${providerName}. Somente contas pessoais Microsoft e Google são aceitas.${technicalDetail}`;
+      }
+    });
+  </script>
+</body>
+</html>

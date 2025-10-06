@@ -1,0 +1,648 @@
+#!/usr/bin/env python3
+"""
+Minimal Flask backend to exchange Google OAuth2 authorization code for tokens.
+
+Endpoints:
+  - GET /health                      -> simple health check
+  - OPTIONS/POST /oauth/google/token -> proxy to Google's token endpoint, adding client_secret
+
+Environment variables:
+  - APP_SECRET_KEY          : Flask secret key
+  - PORT                     : Port to run locally (default 5051)
+  - ORIGIN_ALLOWED           : CORS allowed origin (e.g., https://www.caracore.com.br)
+  - GOOGLE_CLIENT_ID         : Google OAuth2 Client ID
+  - GOOGLE_CLIENT_SECRET     : Google OAuth2 Client Secret
+  - OAUTH_REDIRECT_URI       : The redirect URI used in the auth flow (must match Google Console)
+
+Notes:
+  - Do NOT expose client_secret to the front-end; this backend adds it server-side.
+  - For production, host this under your API domain (e.g., https://api.caracore.com.br)
+"""
+from __future__ import annotations
+
+import base64
+import hashlib
+import json
+import logging
+import os
+import sys
+import time
+from dataclasses import dataclass
+from pathlib import Path
+from typing import Any, Dict, Optional, cast
+from urllib import parse, request as urlrequest, error as urlerror
+
+APP_ROOT = Path(__file__).resolve().parent
+SITE_PACKAGES = APP_ROOT / ".python_packages" / "lib" / "site-packages"
+if SITE_PACKAGES.exists():
+    sys.path.insert(0, str(SITE_PACKAGES))
+
+import requests
+from authlib.jose import JsonWebKey, jwt
+from authlib.jose.errors import JoseError
+from flask import Flask, jsonify, make_response, request
+
+
+GOOGLE_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token"
+AZURE_TOKEN_ENDPOINT_TEMPLATE = "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+DEFAULT_AZURE_SCOPE = "openid profile email"
+
+
+logger = logging.getLogger("cara-core-backend")
+if not logger.handlers:
+    handler = logging.StreamHandler()
+    handler.setFormatter(logging.Formatter("%(asctime)s %(levelname)s %(message)s"))
+    logger.addHandler(handler)
+logger.setLevel(logging.INFO)
+
+
+class HTTPRequestError(RuntimeError):
+    """Raised when the token exchange HTTP call fails."""
+
+
+class IDTokenValidationError(RuntimeError):
+    """Raised when ID token validation fails."""
+
+    def __init__(self, code: str, description: str = "") -> None:
+        super().__init__(description or code)
+        self.code = code
+        self.description = description or code
+
+
+@dataclass
+class SimpleHTTPResponse:
+    status_code: int
+    headers: dict[str, str]
+    _body: bytes
+
+    @property
+    def text(self) -> str:
+        return self._body.decode("utf-8", errors="replace")
+
+    def json(self) -> dict:
+        return json.loads(self.text)
+
+
+def post_form(url: str, data: dict[str, str], *, timeout: int = 15) -> SimpleHTTPResponse:
+    encoded = parse.urlencode({k: v for k, v in data.items() if v is not None}).encode("utf-8")
+    req = urlrequest.Request(url, data=encoded, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+    try:
+        with urlrequest.urlopen(req, timeout=timeout) as resp:
+            body = resp.read()
+            headers = {k: v for k, v in resp.headers.items()}
+            return SimpleHTTPResponse(resp.status, headers, body)
+    except urlerror.HTTPError as exc:
+        body = exc.read() if exc.fp else b""
+        headers = {k: v for k, v in exc.headers.items()} if exc.headers else {}
+        return SimpleHTTPResponse(exc.code, headers, body)
+    except urlerror.URLError as exc:
+        raise HTTPRequestError(str(exc)) from exc
+
+
+JWKS_CACHE: Dict[str, Dict[str, Any]] = {}
+DEFAULT_JWKS_TTL = max(int(os.getenv("JWKS_CACHE_TTL_SECONDS", "300")), 60)
+
+
+def _parse_cache_control(header_value: Optional[str]) -> Optional[int]:
+    if not header_value:
+        return None
+    directives = [part.strip() for part in header_value.split(",")]
+    for directive in directives:
+        if directive.startswith("max-age="):
+            try:
+                return max(int(directive.split("=", 1)[1]), 60)
+            except (ValueError, TypeError):
+                return None
+    return None
+
+
+def fetch_jwks(url: str) -> Dict[str, Any]:
+    now = time.time()
+    cached = JWKS_CACHE.get(url)
+    if cached and cached.get("expires_at", 0) > now:
+        return cached["jwks"]
+
+    logger.debug("Fetching JWKS", extra={"jwks_url": url})
+    response = requests.get(url, timeout=10)
+    response.raise_for_status()
+    jwks = response.json()
+    ttl = _parse_cache_control(response.headers.get("Cache-Control")) or DEFAULT_JWKS_TTL
+    JWKS_CACHE[url] = {"jwks": jwks, "expires_at": now + ttl}
+    return jwks
+
+
+def _status_from_validation_error(error: IDTokenValidationError) -> int:
+    if error.code in {"unauthorized_domain", "tenant_mismatch"}:
+        return 403
+    if error.code in {"invalid_request", "missing_id_token"}:
+        return 400
+    return 502
+
+
+def response_from_validation_error(error: IDTokenValidationError) -> tuple[dict[str, str], int]:
+    body = {
+        "error": error.code,
+        "error_description": error.description or error.code,
+    }
+    return body, _status_from_validation_error(error)
+
+
+def _hash_name_from_alg(alg: Optional[str]) -> Optional[str]:
+    if not alg:
+        return None
+    alg = alg.upper()
+    if alg.endswith("256"):
+        return "sha256"
+    if alg.endswith("384"):
+        return "sha384"
+    if alg.endswith("512"):
+        return "sha512"
+    return None
+
+
+def _validate_at_hash(
+    access_token: Optional[str],
+    claims: Dict[str, Any],
+    header: Dict[str, Any],
+) -> None:
+    if not access_token:
+        return
+    at_hash_claim = claims.get("at_hash")
+    if not at_hash_claim:
+        return
+    hash_name = _hash_name_from_alg(header.get("alg"))
+    if not hash_name:
+        raise IDTokenValidationError(
+            "unsupported_at_hash_alg",
+            f"Algoritmo {header.get('alg')} não suportado para validar at_hash",
+        )
+    digest = hashlib.new(hash_name, access_token.encode("utf-8")).digest()
+    truncated = digest[: len(digest) // 2]
+    computed = base64.urlsafe_b64encode(truncated).rstrip(b"=").decode("ascii")
+    if computed != at_hash_claim:
+        raise IDTokenValidationError(
+            "at_hash_mismatch",
+            "at_hash do ID token não corresponde ao access token recebido",
+        )
+
+
+def _validate_nonce(claims: Dict[str, Any], expected_nonce: Optional[str]) -> None:
+    if expected_nonce is None:
+        return
+    expected = expected_nonce.strip()
+    if not expected:
+        return
+    token_nonce = str(claims.get("nonce") or "").strip()
+    if not token_nonce:
+        raise IDTokenValidationError("missing_nonce", "ID token não contém nonce para validação")
+    if token_nonce != expected:
+        raise IDTokenValidationError(
+            "nonce_mismatch",
+            "Nonce recebido no ID token não corresponde ao esperado",
+        )
+
+
+def validate_google_id_token(
+    token: str,
+    audience: str,
+    *,
+    allowed_domains: Optional[list[str]] = None,
+    expected_nonce: Optional[str] = None,
+    access_token: Optional[str] = None,
+) -> Dict[str, Any]:
+    if not token:
+        raise IDTokenValidationError("missing_id_token", "Resposta do Google não contém id_token")
+
+    jwks = fetch_jwks("https://www.googleapis.com/oauth2/v3/certs")
+    keys = JsonWebKey.import_key_set(jwks)
+    try:
+        claims = jwt.decode(
+            token,
+            keys,
+            claims_options={
+                "aud": {"essential": True, "values": [audience]},
+                "exp": {"essential": True},
+                "iat": {"essential": True},
+            },
+        )
+        claims.validate(leeway=60)
+    except JoseError as exc:
+        raise IDTokenValidationError("invalid_id_token", str(exc)) from exc
+
+    header = getattr(claims, "header", {}) or {}
+    issuer = claims.get("iss")
+    if issuer not in {"https://accounts.google.com", "accounts.google.com"}:
+        raise IDTokenValidationError("invalid_issuer", f"Issuer inesperado: {issuer}")
+
+    claims_dict = dict(claims)
+    _validate_nonce(claims_dict, expected_nonce)
+    _validate_at_hash(access_token, claims_dict, header)
+
+    if allowed_domains:
+        hd_claim = (claims_dict.get("hd") or "").lower()
+        if not hd_claim or hd_claim not in allowed_domains:
+            raise IDTokenValidationError(
+                "unauthorized_domain",
+                f"Domínio {hd_claim or '<vazio>'} não autorizado para login Google",
+            )
+
+    return claims_dict
+
+
+def validate_microsoft_id_token(
+    token: str,
+    audience: str,
+    *,
+    tenant_hint: Optional[str] = None,
+    expected_tenant: Optional[str] = None,
+    expected_nonce: Optional[str] = None,
+    access_token: Optional[str] = None,
+) -> Dict[str, Any]:
+    if not token:
+        raise IDTokenValidationError("missing_id_token", "Resposta da Microsoft não contém id_token")
+
+    tenant_value = (tenant_hint or expected_tenant or "common").strip() or "common"
+    jwks_url = f"https://login.microsoftonline.com/{tenant_value}/discovery/v2.0/keys"
+    jwks = fetch_jwks(jwks_url)
+    keys = JsonWebKey.import_key_set(jwks)
+    try:
+        claims = jwt.decode(
+            token,
+            keys,
+            claims_options={
+                "aud": {"essential": True, "values": [audience]},
+                "exp": {"essential": True},
+                "iat": {"essential": True},
+            },
+        )
+        claims.validate(leeway=60)
+    except JoseError as exc:
+        raise IDTokenValidationError("invalid_id_token", str(exc)) from exc
+
+    header = getattr(claims, "header", {}) or {}
+    claims_dict = dict(claims)
+    _validate_nonce(claims_dict, expected_nonce)
+    _validate_at_hash(access_token, claims_dict, header)
+
+    issuer = claims.get("iss")
+    if not (isinstance(issuer, str) and issuer.startswith("https://login.microsoftonline.com/") and issuer.endswith("/v2.0")):
+        raise IDTokenValidationError("invalid_issuer", f"Issuer inesperado: {issuer}")
+
+    token_tid = (claims_dict.get("tid") or "").lower()
+    if expected_tenant and expected_tenant.lower() not in {"common", "organizations", "consumers"}:
+        if token_tid and token_tid != expected_tenant.lower():
+            raise IDTokenValidationError(
+                "tenant_mismatch",
+                f"Token emitido para tenant {token_tid}, esperado {expected_tenant.lower()}",
+            )
+
+    return claims_dict
+
+
+def create_app() -> Flask:
+    app = Flask(__name__)
+    app.secret_key = os.getenv("APP_SECRET_KEY", os.urandom(32))
+
+    allowed_origin = os.getenv("ORIGIN_ALLOWED", "*")
+    google_client_id = os.getenv("GOOGLE_CLIENT_ID")
+    google_client_secret = os.getenv("GOOGLE_CLIENT_SECRET")
+    google_allowed_domains_env = os.getenv("GOOGLE_ALLOWED_DOMAINS", "")
+    default_redirect = os.getenv("OAUTH_REDIRECT_URI")
+    azure_client_id = os.getenv("AZURE_CLIENT_ID")
+    azure_client_secret = os.getenv("AZURE_CLIENT_SECRET")
+    azure_tenant_id = os.getenv("AZURE_TENANT_ID")
+    azure_scope_env = os.getenv("AZURE_SCOPE")
+    azure_token_endpoint_env = os.getenv("AZURE_TOKEN_ENDPOINT")
+
+    def resolve_azure_token_endpoint(tenant_override: Optional[str] = None) -> str:
+        tenant_value = tenant_override or azure_tenant_id or "common"
+        template = azure_token_endpoint_env or AZURE_TOKEN_ENDPOINT_TEMPLATE
+        if "{tenant}" in template:
+            return template.format(tenant=tenant_value)
+        return template
+
+    azure_default_scope = azure_scope_env or DEFAULT_AZURE_SCOPE
+
+    google_allowed_domains_list = [entry.strip().lower() for entry in google_allowed_domains_env.split(",") if entry.strip()]
+    google_allowed_domains = google_allowed_domains_list or None
+
+    logger.info("Backend inicializado. allowed_origin=%s", allowed_origin or "<empty>")
+    if google_client_id:
+        logger.info("GOOGLE_CLIENT_ID configurado (valor oculto)")
+    else:
+        logger.warning("GOOGLE_CLIENT_ID not set - OAuth flow will fail")
+    if google_client_secret:
+        logger.info("GOOGLE_CLIENT_SECRET carregado do ambiente")
+    else:
+        logger.warning("GOOGLE_CLIENT_SECRET not set - /oauth/google/token will return HTTP 500")
+    if google_allowed_domains:
+        logger.info("Google allowed domains restritos a: %s", ", ".join(google_allowed_domains))
+    if azure_client_id:
+        logger.info("AZURE_CLIENT_ID configurado (valor oculto)")
+    else:
+        logger.warning("AZURE_CLIENT_ID nao definido - login Microsoft falhara")
+    if azure_client_secret:
+        logger.info("AZURE_CLIENT_SECRET carregado do ambiente")
+    else:
+        logger.warning("AZURE_CLIENT_SECRET nao definido - /oauth/microsoft/token retornara erro 500")
+    if azure_tenant_id:
+        logger.info("AZURE_TENANT_ID definido (valor oculto)")
+    else:
+        logger.warning("AZURE_TENANT_ID nao definido - usando tenant 'common'")
+    logger.info("Token endpoint Microsoft configurado: %s", resolve_azure_token_endpoint())
+    if not default_redirect:
+        logger.warning("OAUTH_REDIRECT_URI not set - using value provided by client")
+
+    def add_cors(resp):
+        # Basic CORS: limit to configured origin if provided, else '*'
+        origin = request.headers.get("Origin")
+        if allowed_origin and allowed_origin != "*":
+            # Allow if matches configured origin exactly
+            if origin == allowed_origin:
+                resp.headers["Access-Control-Allow-Origin"] = allowed_origin
+            else:
+                # If strict, do not add CORS for other origins
+                pass
+        else:
+            resp.headers["Access-Control-Allow-Origin"] = "*"
+        resp.headers["Vary"] = "Origin"
+        resp.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
+        resp.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
+        # We are not using cookies by default in this minimal example
+        # resp.headers["Access-Control-Allow-Credentials"] = "true"
+        return resp
+
+    @app.route("/health", methods=["GET"])  # simple probe
+    def health():
+        return add_cors(make_response(jsonify({"status": "ok"}), 200))
+
+    @app.route("/oauth/google/token", methods=["OPTIONS"])  # CORS preflight
+    def google_token_options():
+        return add_cors(make_response("", 204))
+
+    @app.route("/oauth/google/token", methods=["POST"])  # code exchange
+    def google_token():
+        logger.info(
+            "Recebido POST /oauth/google/token de %s (content-type=%s)",
+            request.remote_addr,
+            request.content_type,
+        )
+        # Accept both JSON and x-www-form-urlencoded
+        payload = {}
+        if request.content_type and request.content_type.startswith("application/json"):
+            try:
+                payload = request.get_json(force=True) or {}
+            except Exception:
+                logger.warning("Falha ao decodificar JSON recebido no token endpoint", exc_info=True)
+                payload = {}
+        else:
+            # Read form values
+            payload = request.form.to_dict() if request.form else {}
+
+        # Extract required fields
+        code = payload.get("code")
+        code_verifier = payload.get("code_verifier")
+        grant_type = payload.get("grant_type", "authorization_code")
+        redirect_uri = payload.get("redirect_uri") or default_redirect
+
+        # Basic validation
+        missing = [k for k in ("code", "code_verifier") if not payload.get(k)]
+        if missing:
+            logger.warning("Invalid request - missing fields: %s", ", ".join(missing))
+            resp = make_response(jsonify({
+                "error": "invalid_request",
+                "error_description": f"Missing fields: {', '.join(missing)}"
+            }), 400)
+            return add_cors(resp)
+
+        if not google_client_id or not google_client_secret:
+            logger.error("Credenciais Google ausentes no ambiente - respondendo erro 500")
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Server not configured with Google client credentials"
+            }), 500)
+            return add_cors(resp)
+
+        # Forward to Google token endpoint with server-side client_secret
+        client_id = cast(str, google_client_id)
+        data = {
+            "client_id": client_id,
+            "client_secret": google_client_secret,
+            "code": code,
+            "code_verifier": code_verifier,
+            "grant_type": grant_type,
+            "redirect_uri": redirect_uri,
+        }
+
+        logger.info(
+            "[Step5] Iniciando troca de token com Google (redirect_uri=%s, code_len=%s)",
+            redirect_uri,
+            len(code or ""),
+        )
+
+        try:
+            g_resp = post_form(GOOGLE_TOKEN_ENDPOINT, data, timeout=15)
+        except HTTPRequestError as e:
+            logger.error("Falha ao chamar Google Token Endpoint: %s", e)
+            resp = make_response(jsonify({
+                "error": "network_error",
+                "error_description": str(e)
+            }), 502)
+            return add_cors(resp)
+
+        # Pass-through response
+        body: dict[str, Any]
+        try:
+            parsed_body = g_resp.json()
+            if isinstance(parsed_body, dict):
+                body = cast(dict[str, Any], parsed_body)
+            else:
+                logger.warning("Resposta do Google nao é um objeto JSON. Encapsulando em 'raw'.")
+                body = {"raw": parsed_body}
+        except Exception:
+            logger.warning("Google response was not JSON (status=%s)", g_resp.status_code)
+            # If Google returns non-JSON, forward text
+            body = {"raw": g_resp.text}
+
+        if g_resp.status_code == 200:
+            logger.info(
+                "[Step5] Troca concluida com sucesso (scope=%s, expires_in=%s, id_token=%s, access_token=%s)",
+                body.get("scope"),
+                body.get("expires_in"),
+                "presente" if body.get("id_token") else "ausente",
+                "presente" if body.get("access_token") else "ausente",
+            )
+            if body.get("id_token"):
+                try:
+                    allowed_domains = google_allowed_domains or None
+                    claims = validate_google_id_token(
+                        body["id_token"],
+                        client_id,
+                        allowed_domains=allowed_domains,
+                        expected_nonce=payload.get("nonce"),
+                        access_token=body.get("access_token"),
+                    )
+                    logger.info(
+                        "ID token Google validado com sucesso (sub=%s, email=%s)",
+                        claims.get("sub"),
+                        claims.get("email"),
+                    )
+                except IDTokenValidationError as exc:
+                    logger.error(
+                        "Falha ao validar ID token Google: %s - %s",
+                        exc.code,
+                        exc.description,
+                    )
+                    error_body, status_code = response_from_validation_error(exc)
+                    resp = make_response(jsonify(error_body), status_code)
+                    return add_cors(resp)
+        else:
+            logger.warning(
+                "[Step5] Google retornou status %s - error=%s description=%s",
+                g_resp.status_code,
+                body.get("error"),
+                body.get("error_description"),
+            )
+
+        logger.info("Resposta do Google encaminhada com status %s", g_resp.status_code)
+        resp = make_response(jsonify(body), g_resp.status_code)
+        resp.headers["Content-Type"] = "application/json"
+        return add_cors(resp)
+
+    @app.route("/oauth/microsoft/token", methods=["OPTIONS"])  # CORS preflight
+    def microsoft_token_options():
+        return add_cors(make_response("", 204))
+
+    @app.route("/oauth/microsoft/token", methods=["POST"])  # code exchange
+    def microsoft_token():
+        logger.info(
+            "Recebido POST /oauth/microsoft/token de %s (content-type=%s)",
+            request.remote_addr,
+            request.content_type,
+        )
+        payload = {}
+        if request.content_type and request.content_type.startswith("application/json"):
+            try:
+                payload = request.get_json(force=True) or {}
+            except Exception:
+                logger.warning("Falha ao decodificar JSON recebido no token endpoint Microsoft", exc_info=True)
+                payload = {}
+        else:
+            payload = request.form.to_dict() if request.form else {}
+
+        code = payload.get("code")
+        code_verifier = payload.get("code_verifier")
+        grant_type = payload.get("grant_type", "authorization_code")
+        redirect_uri = payload.get("redirect_uri") or default_redirect
+        scope = payload.get("scope") or azure_default_scope
+        tenant_override = payload.get("tenant")
+
+        missing = [k for k in ("code", "code_verifier") if not payload.get(k)]
+        if missing:
+            logger.warning("Requisicao invalida para Microsoft - campos ausentes: %s", ", ".join(missing))
+            resp = make_response(jsonify({
+                "error": "invalid_request",
+                "error_description": f"Missing fields: {', '.join(missing)}"
+            }), 400)
+            return add_cors(resp)
+
+        if not azure_client_id or not azure_client_secret:
+            logger.error("Credenciais Microsoft ausentes no ambiente - respondendo erro 500")
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Server not configured with Microsoft Entra client credentials"
+            }), 500)
+            return add_cors(resp)
+
+        token_endpoint = resolve_azure_token_endpoint(tenant_override)
+        client_id = cast(str, azure_client_id)
+
+        data = {
+            "client_id": client_id,
+            "client_secret": azure_client_secret,
+            "code": code,
+            "code_verifier": code_verifier,
+            "grant_type": grant_type,
+            "redirect_uri": redirect_uri,
+        }
+        if scope:
+            data["scope"] = scope
+
+        try:
+            ms_resp = post_form(token_endpoint, data, timeout=15)
+        except HTTPRequestError as e:
+            logger.error("Falha ao chamar Microsoft Token Endpoint: %s", e)
+            resp = make_response(jsonify({
+                "error": "network_error",
+                "error_description": str(e)
+            }), 502)
+            return add_cors(resp)
+
+        body: dict[str, Any]
+        try:
+            parsed_ms_body = ms_resp.json()
+            if isinstance(parsed_ms_body, dict):
+                body = cast(dict[str, Any], parsed_ms_body)
+            else:
+                logger.warning("Resposta da Microsoft nao é um objeto JSON. Encapsulando em 'raw'.")
+                body = {"raw": parsed_ms_body}
+        except Exception:
+            logger.warning("Resposta da Microsoft nao estava em JSON (status=%s)", ms_resp.status_code)
+            body = {"raw": ms_resp.text}
+
+        if ms_resp.status_code == 200:
+            logger.info(
+                "Troca com Microsoft concluida (scope=%s, expires_in=%s, id_token=%s, access_token=%s)",
+                body.get("scope"),
+                body.get("expires_in"),
+                "presente" if body.get("id_token") else "ausente",
+                "presente" if body.get("access_token") else "ausente",
+            )
+            if body.get("id_token"):
+                try:
+                    claims = validate_microsoft_id_token(
+                        body["id_token"],
+                        client_id,
+                        tenant_hint=tenant_override,
+                        expected_tenant=azure_tenant_id,
+                        expected_nonce=payload.get("nonce"),
+                        access_token=body.get("access_token"),
+                    )
+                    logger.info(
+                        "ID token Microsoft validado com sucesso (oid=%s, preferred_username=%s)",
+                        claims.get("oid"),
+                        claims.get("preferred_username"),
+                    )
+                except IDTokenValidationError as exc:
+                    logger.error(
+                        "Falha ao validar ID token Microsoft: %s - %s",
+                        exc.code,
+                        exc.description,
+                    )
+                    error_body, status_code = response_from_validation_error(exc)
+                    resp = make_response(jsonify(error_body), status_code)
+                    return add_cors(resp)
+        else:
+            logger.warning(
+                "Microsoft retornou status %s - error=%s description=%s",
+                ms_resp.status_code,
+                body.get("error"),
+                body.get("error_description"),
+            )
+
+        logger.info("Resposta da Microsoft encaminhada com status %s", ms_resp.status_code)
+        resp = make_response(jsonify(body), ms_resp.status_code)
+        resp.headers["Content-Type"] = "application/json"
+        return add_cors(resp)
+
+
+    return app
+
+
+app = create_app()
+
+
+if __name__ == "__main__":
+    port = int(os.getenv("PORT", "5051"))
+    app.run(host="0.0.0.0", port=port)

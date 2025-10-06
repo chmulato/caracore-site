@@ -1,0 +1,265 @@
+Contato
+ +5541999097797 (Mobile)
+ chmulato@hotmail.com
+ www.linkedin.com/in/chmulato
+ (LinkedIn)
+ www.caracore.com.br (Company)
+ github.com/chmulato (Portfolio)
+ www.caracore.com.br/cv/public/
+ index.html (Personal)
+ Principais competências
+ Instituições financeiras
+ Serviços bancários
+ Trabalho em equipe
+ Languages
+ Italiano (Native or Bilingual)
+ Português (Native or Bilingual)
+ Inglês (Full Professional)
+ Certifications
+ Angular 14: Evoluindo uma
+ aplicação SPA
+ Workshop Gratuito do Fullstack
+ Angular e Spring
+ Devops Cloud Week
+ Hello Bot: Introduction To RPA
+ RPA: Automatização de processos
+ com ferramenta NO/LOW Code
+ Honors-Awards
+ Java Software Support Engineer
+ Patents
+ CNH Tipo B
+ Christian Mulato
+ Desenvolvedor Java Sênior (Agentes de IA) | Especialista em
+ Back-end | Jakarta, Spring Boot, REST APIs, Docker | Engenheiro
+ Químico
+ Campo Largo, Paraná, Brasil
+ Resumo
+ Possuo formação universitária em engenharia pela UFPR,
+ experiência profissional em informática e vivência no exterior do país
+ (Itália e Inglaterra). Especializações em Informática e Tecnologia
+ Java pela UTFPR. Conhecimento prático em lógica de programação
+ orientada a objeto, estruturada, UML, banco de dados (MS-Access,
+ VBA, SQL Server, Firebird, MySQL, Oracle, MongoDB e linguagem
+ SQL) e automação de processos (RPA). Fluência no idioma italiano
+ e inglês pós intermediário (B2).
+ Experiência
+ Cara Core Informática
+ Técnico em Informática
+ janeiro de 2016 - Present (9 anos 8 meses)
+ Curitiba e Região, Brasil- Técnico em informática, cadastro de informações, testes e validações
+ de software, automação de escritórios VBA/Office 365, formatação e
+ configuração de computadores, gestão de cópias de segurança, configuração
+ de antivírus, firewall, configuração de impressoras, compartilhamento de
+ informações em rede e suporte remoto.
+ Sistemas de cadastros de informações e seus códigos-fontes abertos
+ publicados no GitHub:
+ Delivery Control:   https://github.com/chmulato/csonline
+ Cara-Core PDV:     https://github.com/chmulato/caracore-pdv
+ Cara-Core Dental: https://github.com/chmulato/caracore-dental
+ Develcode Tecnologia em Sistemas
+ Desenvolvedor Java Sênior
+ março de 2023 - julho de 2025 (2 anos 5 meses)
+ Campo Largo, Paraná, Brasil
+ Page 1 of 8
+  
+Fui consultor em desenvolvimento em aplicações back-end Java EE e outras
+ tecnologias. (Trabalho Remoto - Outsourcing - RD Saúde).
+ Tecnologias e ferramentas: Java EE, EJB, JSF, Hibernate, Entity, Spring Boot,
+ Rest API, GraphQL, OpenAPI, Rabbit MQ, MongoDB, Docker, banco de dados
+ Oracle, Git, Visual Studio Code e IDE Eclipse.
+ RPerformance Group
+ Desenvolvedor Java  Sênior
+ setembro de 2022 - março de 2023 (7 meses)
+ Campo Largo, Paraná, Brasil
+ Fui consultor em desenvolvimento em aplicações back-end Java EE e outras
+ tecnologias. (Trabalho Remoto - Outsourcing - RD Saúde).
+ Tecnologias e ferramentas: Java EE, EJB, JSF, Hibernate, Entity, Spring Boot,
+ Rest API, Rabbit MQ, Docker, banco de dados Oracle, Git, Visual Studio Code
+ e IDE Eclipse.
+ EY
+ Senior Java Software Engineer
+ outubro de 2021 - agosto de 2022 (11 meses)
+ Campo Largo, Paraná, Brasil
+ • Fui consultor em desenvolvimento em aplicações back-end, front-end, Java
+ EE e outras tecnologias. (Trabalho Remoto - Outsourcing - Banco do Brasil 
+Bradesco Saúde).
+ • Ferramentas utilizadas: IDE Eclipse, Maven, Git, SVN, Java EE, servidor
+ WebSphere, banco de dados Oracle e metodologia ágil.
+ Atos
+ Senior Java Software Engineer
+ outubro de 2020 - setembro de 2021 (1 ano)
+ Campo Largo, Paraná, Brasil
+ Fui desenvolvedor Java EE para suporte de aplicações na intranet do cliente.
+ (Trabalho Remoto - Outsourcing - Grupo Volkswagen).
+ Ferramentas utilizadas: IDE IntelliJ, Maven, Git, Java SE, servidor Tomcat,
+ banco de dados Oracle e metodologia ágil. 
+(*) Nos primeiros três meses fui terceirizado pela PSM Company.
+ Sigma Dataserv Informática S/A
+ Analista Programador Java
+ maio de 2020 - setembro de 2020 (5 meses)
+ Curitiba, Paraná
+ Page 2 of 8
+  - Suporte e desenvolvimento em tecnologias Java e Web. (Trabalho Remoto 
+Outsourcing - Funasa)
+ Ferramentas utilizadas: SQL Oracle Developer, banco de dados
+ Oracle, Eclipse IDE, GWT Framework, Java EE e reuniões diárias de
+ acompanhamento.
+ WASYS
+ Analista Programador Java
+ dezembro de 2019 - abril de 2020 (5 meses)
+ Curitiba e Região, Brasil- Desenvolvedor de sistemas Java utilizando Java EE, Framework Spring e
+ outras bibliotecas padrões.- Ferramentas utilizadas: IDE IntelliJ, Maven, Git, Java SE, arquitetura MVC,
+ servidor Tomcat, banco de dados PostgreSQL, Jira e reuniões diárias de
+ acompanhamento.
+ Wipro Limited
+ 1 ano 9 meses
+ Especialista em automação de processos (RPA)
+ janeiro de 2019 - novembro de 2019 (11 meses)
+ Curitiba e Região, Brasil- Fui responsável pela análise e desenvolvimento em automação de escritório
+ em código Visual Basic for Application (VBA).- Desenvolvi código nativo para auditar automaticamente tributações fiscais de
+ faturas.- Desenvolvi em código nativo a emissão de relatórios de produtividade de
+ lançamento de notas fiscais dentro do Microsoft Office.- Ferramentas utilizadas: Power BI, Selenium WebDriver, Microsoft Office com
+ linguagem de programação VBA.
+ Analista Desenvolvedor Java
+ março de 2018 - dezembro de 2018 (10 meses)
+ Curitiba, Paraná- Desenvolvi serviços (back-end) web utilizando tecnologia JavaEE e Spring
+ para uma operadora mundial de cartão de crédito, empresa Mastercard.- Ferramentas utilizadas: Framework Agile/Scrum, IDE Eclipse, Java EE,
+ Spring Boot, Spring Data, BitBucket Repository (Git), Banco de Dados Oracle,
+ JUnit e Mockito.
+ UniSistemas Tecnologia em Finanças
+ Desenvolvedor Java Web
+ Page 3 of 8
+  
+maio de 2017 - janeiro de 2018 (9 meses)
+ Curitiba, Paraná- Desenvolvimento, suporte, correções e implantação de novas
+ funcionalidades de aplicações web. 
+Tecnologias principais utilizadas:- Java EE, Spring, Web Service SOAP, REST, Jasper Reports, Boletos
+ Bancários (JRimum), AngularJS, Bootstrap, Banco de dados Oracle, Firebird e
+ servidor de aplicação Tomcat.
+ GFT Group
+ Desenvolvedor Java Sênior
+ setembro de 2016 - abril de 2017 (8 meses)
+ Curitiba e Região, Brasil- Tecnologias: Java EE e serviços legados.- Experiência internacional no cliente Banco UBI, a Bérgamo, Itália (3 meses).- Treinamento e atualização nas tecnologias: Html5, CSS3, Javascript,
+ Bootstrap, Spring MVC e Web Services RESTful com Spring Framework.
+ Visionnaire
+ Analista de Sistemas Java (PJ)
+ dezembro de 2015 - agosto de 2016 (9 meses)
+ Curitiba e Região, Brasil- Desenvolvimento, manutenção e suporte em aplicações Java EE.- Ferramentas utilizadas: Eclipse, Maven e Bitbucket (Git/Jira) como
+ repositório.- Tecnologias: Java EE, (Servlet/JSP), JPA, JSF e Javascript.- Bancos de dados: Oracle e MySQL.- Servidores de aplicação: JBoss (WildFly) e Tomcat 7.
+ i-Serv Consultoria Empresarial Ltda.
+ Analista de Sistemas (Java Sênior)
+ agosto de 2015 - novembro de 2015 (4 meses)- Desenvolvimento de aplicações e serviços para Internet utilizando
+ tecnologias inovadoras.- Ferramentas utilizadas: Eclipse, Maven e GitHub como repositório. - Tecnologias: Spring, AngularJS, Web Service RESTful, JSON, JPA com
+ Hibernate. - Banco de dados: MySQL.- Cloud computing: Amazon Web Services (AWS).
+ Page 4 of 8
+  
+Softpartech Tecnologia
+ Analista de Sistemas (Java Pleno)
+ abril de 2015 - julho de 2015 (4 meses)
+ Curitiba e Região, Brasil- Trabalhei no desenvolvimento, manutenção e suporte em aplicações
+ modulares em Java FX e Web Services;- Desenvolvimento, manutenção e suporte em procedures e SQL Standard;- Banco de dados: SQL Server, PostgreSQL e Sybase.
+ HSBC Global Technology Brazil
+ Analista de Software Júnior
+ outubro de 2012 - março de 2015 (2 anos 6 meses)
+ Curitiba e Região, Brasil- Trabalhei junto a equipe de serviços do Portal de Seguros e Previdência. Os
+ serviços do portal são orientados a tarefas (BPM) e baseados em tecnologias,
+ como: XML-RPC, Web Services, JMS, Spring Templates, arquitetura em
+ camadas (BO, Service, DAO, VO/DTO, Factory) e banco de dados Sybase;
+ Desenvolvi testes unitários com JUnit e Mockito;- Participei do projeto do portal durante o desenvolvimento web. Usei
+ tecnologias baseadas em Spring e JSF;- Participei também na execução de testes da aplicação, das etapas de SIT e
+ UAT;- Ferramentas utilizadas: HP Quality Center, IBM Rational Application
+ Developer (RAD), IBM WebSphere Application Server (WAS) e IBM
+ WebSphere Portal (WSP).
+ WB4B Negócios Online
+ Programador Web
+ junho de 2012 - setembro de 2012 (4 meses)
+ Curitiba e Região, Brasil- Realizei manutenção e suporte de aplicação Web para auditoria, faturamento
+ e guias médicas no padrão TISS da Agência Nacional de Saúde;-Tecnologias utilizadas: PHP/MySQL, JavaScript e AJAX. Utilizei plataforma
+ Linux e repositório GitHub (GIT).
+ UniSistemas Tecnologia em Finanças
+ Programador Pleno
+ fevereiro de 2011 - maio de 2012 (1 ano 4 meses)
+ Curitiba e Região, Brasil
+ Page 5 of 8
+  - Programei sistemas financeiros p/ web utilizando tecnologias Java J2EE.
+ Foram: SimecNET2 e SaqueNET, os quais utilizavam banco de dados,
+ Oracle e Firebird (Open Source), respectivamente. Usei frameworks como:
+ JSF, Richfaces, Primefaces, Spring, Hibernate, relatórios em JasperReports
+ (iReport) e boletos bancários (JRimum). Servidor de aplicação Web Tomcat,
+ Web Services (SOAP) e arquitetura de sistemas em camadas.
+ LH Tecnologia
+ Programador Java
+ março de 2010 - janeiro de 2011 (11 meses)
+ Curitiba e Região, Brasil- Programei aplicações Web (HTML, Javascript, CSS). Foram elas: LH Report
+ e LH Gravador;- Utilizei tecnologias Java e padrões de projetos, como: JSP/Servlet, MVC,
+ JSF, Facelets, EJB3, Hibernate, Facade, VO, query SQL Oracle entre outros;- Utilizei também framework Spring e relatórios em JasperReports (iReport).
+ Servidores de aplicação: JBoss e Tomcat;-  Ressalto: as aplicações foram projetadas em equipe seguindo requisitos e
+ especificações do cliente.
+ WASYS
+ Analista Programador Java (PJ)
+ novembro de 2009 - fevereiro de 2010 (4 meses)
+ Curitiba e Região, Brasil- Programei aplicação Web; Tecnologias e padrões utilizados: Click
+ Framework, Hibernate, Repository, Service Layer, VO, query SQL Oracle
+ entre outros;- Participei de projeto desenvolvido p/ empresa Renault Concessionária do
+ Brasil SA.
+ BRQ
+ Programador Java
+ abril de 2009 - junho de 2009 (3 meses)
+ Curitiba e Região, Brasil- Programei aplicações Web. Tecnologias e padrões utilizados: JSF, EJB,
+ Business Delegate, Façades, Web Services, Factory, DAO, TO, JavaScript,
+ SQL Oracle, entre outras;- Participei de projeto desenvolvido p/ empresa BR-Petrobrás Distribuidora SA.
+ CINQ Technologies
+ Page 6 of 8
+  
+Programador Java
+ março de 2008 - fevereiro de 2009 (1 ano)
+ Curitiba e Região, Brasil- Programei aplicações Web;
+ Tecnologias e padrões utilizados: Servelt/JSP, EJB, Web Services, DAO, BO,
+ Spring, SQL, JavaScript entre outras;- Participei de vários projetos desenvolvidos p/ empresas HSBC Bank Brasil
+ SA e GVT Telecomunicações;- Elaborei testes unitários (UT), de sistemas (SIT), de códigos (JUnit) e casos
+ de testes.
+ eWave
+ Estagiário (Programador)
+ junho de 2007 - fevereiro de 2008 (9 meses)
+ Curitiba e Região, Brasil- Programei scripts em VBA e Visual Basic para gerar relatórios UML do
+ Enterprise Architect. Projeto finalizado na empresa GVT Telecomunicações.- Iniciei estudo da especificação J2EE, para programação de aplicação Web
+ (MVC, DAO, Servlet/JSP, JavaBeans e JSF);
+ Agenzia Brasitalia - Di Imir Mulato
+ Auxiliar de Pesquisas Genealógicas
+ julho de 2005 - setembro de 2006 (1 ano 3 meses)
+ Ceggia, Veneza, Itália- Auxiliar de pesquisas genealógicas, controle informatizado de buscas, visitas
+ agendadas em arquivos de estados, comunes e paróquias;- Desenvolvi um sistema para controle de buscas com o cadastro
+ informatizado dos 8200 comunes da Itália. Ferramenta utilizada: Microsoft
+ Access 2003 com VBA;- Desenvolvi o primeiro site da agência de pesquisa. Ferramenta utilizada:
+ Microsoft Front Page 2003.
+ T.D Packaging
+ Production Operator
+ novembro de 2004 - junho de 2005 (8 meses)
+ Swindon, Wiltshire, Reino Unido- Auxiliar e empacotador de produção (picks and packs).
+ OSMAP S.R.L.
+ Carrelista
+ setembro de 2001 - outubro de 2004 (3 anos 2 meses)
+ Page 7 of 8
+  
+Santo Stino di Livenza, Veneza, Itália-  Operador de empilhadeira, auxiliar de almoxarifado, controle de entrada e
+ saída, carga e descarga.
+ Clinipam - Clínica Paranaense de Assistência Médica
+ Técnico em Informática
+ março de 1996 - julho de 2001 (5 anos 5 meses)
+ Curitiba e Região, Brasil- Controlei exames periódicos dos associados via software de gestão;- Utilizei diariamente software gráfico Corel Draw p/ desenhos de mapas de
+ riscos;- Treinei e implantei software administrativo p/ medicina ocupacional junto ao
+ setor;- Digitei relatórios técnicos (PPRA e PCMSO);- Elaborei balanços mensais com levantamento de dados em linguagem SQL.
+ Formação acadêmica
+ Universidade Tecnológica Federal do Paraná
+ Especialista em Tecnologia Java, Desenvolvimento de
+ Sistemas · (2007 - 2008)
+ Festo Italiana - UFPR - Centro de Cultura Italiana
+ Operador em Informática, Especialista CAD/CAE, Setor
+ Automotivo · (2000 - 2001)
+ Universidade Federal do Paraná
+ Engenheiro Químico, Engenharia · (1991 - 2000)
+ Colégio Positivo - Curitiba - Paraná
+ Terceirão e Pré Vestibular, Propedêutico · (1988 - 1989)
+ Colégio Nossa Senhora Auxiliadora - Cascavel - Paraná
+ Ensino Médio, Propedêutico · (1986 - 1987)
+ Page 8 of 8

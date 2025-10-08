@@ -1,0 +1,1170 @@
+{
+  "timestamp": "2025-10-07T23:46:41.127735",
+  "pages": {
+    "admin-logs.html": {
+      "type": "html",
+      "size": 51485,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "authentication:token",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra",
+        "providers:azure",
+        "config:clientId",
+        "config:redirectUri",
+        "ui_flows:redirect"
+      ],
+      "critical_functions": [],
+      "security_elements": [
+        "access_token"
+      ],
+      "test_priority": "critical"
+    },
+    "callback.html": {
+      "type": "html",
+      "size": 5198,
+      "oidc_features": [
+        "authentication:login",
+        "ui_flows:redirect"
+      ],
+      "critical_functions": [],
+      "security_elements": [],
+      "test_priority": "critical"
+    },
+    "index.html": {
+      "type": "html",
+      "size": 23945,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra",
+        "ui_flows:redirect"
+      ],
+      "critical_functions": [
+        "loginWithProvider",
+        "resolveLoginError",
+        "showAuthScreen",
+        "OIDCAuth.login"
+      ],
+      "security_elements": [],
+      "test_priority": "critical"
+    },
+    "logout.html": {
+      "type": "html",
+      "size": 10526,
+      "oidc_features": [
+        "authentication:logout"
+      ],
+      "critical_functions": [
+        ".logout",
+        ".logout",
+        ".logout",
+        ".logout",
+        ".logout"
+      ],
+      "security_elements": [],
+      "test_priority": "critical"
+    },
+    "restrita.html": {
+      "type": "html",
+      "size": 20850,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra"
+      ],
+      "critical_functions": [
+        "waitForAuth"
+      ],
+      "security_elements": [],
+      "test_priority": "critical"
+    },
+    "api-logs.js": {
+      "type": "javascript",
+      "size": 3640,
+      "oidc_features": [],
+      "functions": [
+        "createLogsAPI",
+        "getOIDCLogs",
+        "log",
+        "log"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "medium"
+    },
+    "auth-standalone.js": {
+      "type": "javascript",
+      "size": 25187,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "authentication:token",
+        "providers:google",
+        "providers:entra",
+        "security:state",
+        "security:nonce",
+        "config:authority",
+        "config:scope",
+        "error_handling:expired",
+        "ui_flows:callback"
+      ],
+      "functions": [
+        "generateNonce",
+        "persistProvider",
+        "clearStoredProvider",
+        "readStoredProvider",
+        "clearOidcStorage",
+        "isAuthorityMismatchError",
+        "isHttpStatusError",
+        "waitForOidc",
+        "patchedSignin",
+        "handleCallback",
+        "key",
+        "user",
+        "error",
+        "patchedSignin",
+        "handleCallback"
+      ],
+      "api_calls": [
+        "code"
+      ],
+      "security_checks": [],
+      "test_priority": "critical"
+    },
+    "auth.js": {
+      "type": "javascript",
+      "size": 8552,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "providers:google",
+        "providers:entra",
+        "error_handling:expired",
+        "ui_flows:redirect"
+      ],
+      "functions": [
+        "waitForOidc",
+        "sanitizeReturnTo",
+        "persistProvider",
+        "readStoredProvider",
+        "persistUser",
+        "readStoredUser",
+        "clearStoredUser",
+        "loadConfig",
+        "getManager",
+        "init",
+        "login",
+        "handleSigninCallback",
+        "getUser",
+        "isAuthenticated",
+        "requireAuth",
+        "logout",
+        "logoutLocal",
+        "loadConfig",
+        "getManager",
+        "init",
+        "login",
+        "handleSigninCallback",
+        "getUser",
+        "isAuthenticated",
+        "requireAuth",
+        "logout",
+        "logoutLocal"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "critical"
+    },
+    "caracore-instructions.js": {
+      "type": "javascript",
+      "size": 7678,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra",
+        "providers:azure",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "functions": [
+        "showCaracoreInstructions",
+        "copyAllUris",
+        "checkIfFixed",
+        "checkPropagationStatus",
+        "showCaracoreInstructions",
+        "copyAllUris"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "copy-google-config.js": {
+      "type": "javascript",
+      "size": 7101,
+      "oidc_features": [
+        "authentication:login",
+        "providers:google",
+        "config:clientId",
+        "config:redirectUri",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "functions": [
+        "copyGoogleCloudConfig",
+        "copyCaracoreOnly",
+        "compareCurrentWithRequired",
+        "generateStepByStepInstructions",
+        "copyGoogleCloudConfig",
+        "copyCaracoreOnly"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "diagnose-redirect-uri.js": {
+      "type": "javascript",
+      "size": 8224,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "providers:google",
+        "providers:microsoft",
+        "providers:azure",
+        "config:authority",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "functions": [
+        "diagnoseRedirectUri",
+        "testSpecificUri",
+        "listRequiredUris",
+        "diagnoseRedirectUri"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "dynamic-config.js": {
+      "type": "javascript",
+      "size": 9212,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "authentication:token",
+        "authentication:authorize",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra",
+        "config:authority",
+        "config:clientId",
+        "config:scope",
+        "ui_flows:callback"
+      ],
+      "functions": [
+        "resolveOidcPaths",
+        "generateGoogleConfig",
+        "resolveMicrosoftAuthorityBase",
+        "generateMicrosoftConfig",
+        "getProviderConfig",
+        "getProviderConfig"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "fix-caracore-domain.js": {
+      "type": "javascript",
+      "size": 9696,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra",
+        "providers:azure",
+        "config:clientId",
+        "config:redirectUri",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "functions": [
+        "fixCaracoreDomain",
+        "copyCaracoreUri",
+        "generateAllRequiredUris",
+        "checkUriRegistration",
+        "logCaracoreConfiguration",
+        "copyCaracoreUri"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "fix-redirect-uri-detection.js": {
+      "type": "javascript",
+      "size": 9071,
+      "oidc_features": [
+        "authentication:login",
+        "authentication:logout",
+        "providers:google",
+        "providers:microsoft",
+        "config:redirectUri",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "functions": [
+        "improvedEnvironmentDetection",
+        "validateRedirectUri",
+        "fixOidcConfigWithEnvironment",
+        "reinitializeAuthManager",
+        "fixOidcConfigWithEnvironment",
+        "reinitializeAuthManager"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "log-config.js": {
+      "type": "javascript",
+      "size": 349,
+      "oidc_features": [],
+      "functions": [],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "medium"
+    },
+    "log-microsoft-fix.js": {
+      "type": "javascript",
+      "size": 1618,
+      "oidc_features": [
+        "authentication:login",
+        "providers:microsoft",
+        "providers:entra",
+        "config:authority",
+        "config:clientId"
+      ],
+      "functions": [
+        "logMicrosoftFix"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "logger.js": {
+      "type": "javascript",
+      "size": 19411,
+      "oidc_features": [
+        "authentication:token"
+      ],
+      "functions": [
+        "k",
+        "log",
+        "log"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "show-current-uris.js": {
+      "type": "javascript",
+      "size": 9455,
+      "oidc_features": [
+        "authentication:logout",
+        "providers:google",
+        "providers:microsoft",
+        "providers:azure",
+        "config:authority",
+        "config:clientId",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "functions": [
+        "showCurrentUris",
+        "copyUrisToClipboard",
+        "showCurrentUris",
+        "copyUrisToClipboard"
+      ],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    },
+    "js/config.example.js": {
+      "type": "javascript",
+      "size": 1384,
+      "oidc_features": [
+        "authentication:login",
+        "providers:google",
+        "config:scope"
+      ],
+      "functions": [],
+      "api_calls": [],
+      "security_checks": [],
+      "test_priority": "high"
+    }
+  },
+  "tests": {
+    "test-config-validation.js": {
+      "type": "test",
+      "size": 9189,
+      "test_count": 25,
+      "covered_features": [
+        "authentication:login",
+        "authentication:token",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra",
+        "config:authority",
+        "config:scope",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "test_cases": [
+        "deve validar URLs de redirect corretas",
+        "deve rejeitar URLs de redirect inválidas",
+        "deve validar configuração de scope OIDC",
+        "deve validar formato do Client ID do Google",
+        "deve validar formato do Client ID do Microsoft Entra",
+        "deve validar authority do Google",
+        "deve validar authority do Microsoft Entra",
+        "deve usar response_type code para fluxo authorization code",
+        "deve rejeitar response types inseguros",
+        "deve detectar ambiente de desenvolvimento",
+        "deve detectar ambiente de produção",
+        "deve verificar disponibilidade do sessionStorage",
+        "deve verificar disponibilidade do localStorage",
+        "deve testar operações básicas de storage",
+        "deve validar uso de HTTPS em produção",
+        "deve permitir HTTP apenas em desenvolvimento",
+        "deve validar configuração CORS para diferentes ambientes",
+        "Validação de Configurações OIDC",
+        "Validação de URLs e Endpoints",
+        "Validação de Client IDs",
+        "Validação de Authorities",
+        "Validação de Response Types",
+        "Validação de Configuração de Ambiente",
+        "Validação de Storage e Persistência",
+        "Validação de Segurança"
+      ],
+      "assertions": 63
+    },
+    "test-dual-auth.js": {
+      "type": "test",
+      "size": 19324,
+      "test_count": 28,
+      "covered_features": [
+        "authentication:login",
+        "authentication:logout",
+        "authentication:token",
+        "authentication:authorize",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra",
+        "providers:azure",
+        "security:state",
+        "config:authority",
+        "config:scope",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "test_cases": [
+        "deve configurar ambos os provedores simultaneamente",
+        "deve detectar ambiente e configurar endpoints corretamente",
+        "deve resolver caminhos OIDC únicos para ambos provedores",
+        "deve permitir alternar entre provedores",
+        "deve validar provedor persistido no callback",
+        "deve detectar mismatch de authority no callback",
+        "deve manter estado independente por provedor",
+        "deve limpar estado apenas do provedor ativo no logout",
+        "deve classificar erros por provedor",
+        "deve sugerir correções específicas por provedor",
+        "deve rotear para endpoint correto baseado no provedor",
+        "deve validar payloads de troca de token por provedor",
+        "deve exibir ambos botões de login",
+        "deve mostrar provedor ativo na área restrita",
+        "deve permitir logout por provedor específico",
+        "deve permitir mudança de Google para Entra",
+        "deve detectar conflito de sessões simultâneas",
+        "deve simular fluxo completo Google",
+        "deve simular fluxo completo Entra",
+        "Autenticação Dual (Google + Entra ID)",
+        "Configuração Dual de Provedores",
+        "Seleção de Provedor",
+        "Gerenciamento de Estado Dual",
+        "Tratamento de Erros Dual",
+        "Integração de Backend Dual",
+        "UI e UX Dual",
+        "Cenários de Troca de Provedor",
+        "Testes de Integração E2E"
+      ],
+      "assertions": 88
+    },
+    "test-entra-auth.js": {
+      "type": "test",
+      "size": 16160,
+      "test_count": 31,
+      "covered_features": [
+        "authentication:login",
+        "authentication:logout",
+        "authentication:token",
+        "authentication:authorize",
+        "providers:microsoft",
+        "providers:entra",
+        "providers:azure",
+        "security:state",
+        "security:nonce",
+        "config:authority",
+        "config:scope",
+        "ui_flows:callback",
+        "ui_flows:redirect"
+      ],
+      "test_cases": [
+        "deve gerar configuração Entra corretamente",
+        "deve detectar configuração de tenant corretamente",
+        "deve configurar scopes Entra corretamente",
+        " ",
+        "deve persistir provedor Entra corretamente",
+        "deve gerar state e nonce para Entra",
+        "deve construir URL de autorização Entra válida",
+        "deve detectar callback Entra corretamente",
+        "deve validar estrutura de ID token Entra",
+        "deve validar diferentes tipos de conta Entra",
+        "deve configurar endpoint de troca de token Entra",
+        "deve simular payload de troca de token Entra",
+        "deve simular resposta bem-sucedida do token Entra",
+        "deve detectar erro de authority mismatch",
+        "deve detectar erro AADSTS50011 (redirect_uri mismatch)",
+        "deve detectar erro de consentimento necessário",
+        "deve detectar erro de acesso negado Entra",
+        "deve suportar configuração de tenant específico",
+        "deve suportar scopes adicionais Entra",
+        " ",
+        "deve validar configuração de prompt Entra",
+        "deve detectar sessão Entra existente",
+        "deve limpar sessão Entra no logout",
+        "Autenticação Microsoft Entra ID",
+        "Configuração Microsoft Entra",
+        "Fluxo de Autenticação Entra",
+        "Validação de Token Entra",
+        "Integração com Backend Entra",
+        "Tratamento de Erros Entra",
+        "Configurações Específicas Entra",
+        "Gerenciamento de Sessão Entra"
+      ],
+      "assertions": 89
+    },
+    "test-error-handling.js": {
+      "type": "test",
+      "size": 15582,
+      "test_count": 34,
+      "covered_features": [
+        "authentication:token",
+        "providers:google",
+        "security:jwt",
+        "security:state",
+        "security:csrf",
+        "config:clientId",
+        "error_handling:expired",
+        "error_handling:network_error",
+        "ui_flows:callback",
+        "ui_flows:popup",
+        "ui_flows:redirect"
+      ],
+      "test_cases": [
+        "deve detectar configuração inválida",
+        "deve detectar client_id ausente ou inválido",
+        "deve detectar redirect_uri malformada",
+        "deve tratar erro access_denied do provedor",
+        "deve tratar erro invalid_request",
+        "deve tratar erro unauthorized_client",
+        "deve validar state parameter contra CSRF",
+        "deve tratar erro invalid_grant na troca de código",
+        "deve tratar token expirado",
+        "deve tratar JWT malformado",
+        ".",
+        "deve tratar timeout de requisição",
+        "deve tratar erro 500 do servidor",
+        "deve tratar erro 401 não autorizado",
+        "deve tratar erro de conectividade",
+        "deve tratar QuotaExceededError do localStorage",
+        "deve funcionar quando localStorage não está disponível",
+        "deve tratar sessionStorage indisponível",
+        "deve tratar popup bloqueado",
+        "deve tratar fechamento prematuro do popup",
+        "deve tentar novamente após erro temporário",
+        "deve limpar estado após erro crítico",
+        "deve redirecionar para página de erro apropriada",
+        "deve logar erros com contexto adequado",
+        "deve sanitizar informações sensíveis nos logs",
+        "Tratamento de Erros OIDC",
+        "Erros de Configuração",
+        "Erros de Autorização",
+        "Erros de Token",
+        "Erros de Rede",
+        "Erros de Storage",
+        "Erros de Popup e Janela",
+        "Recuperação de Erros",
+        "Logging de Erros"
+      ],
+      "assertions": 59
+    },
+    "test-framework.js": {
+      "type": "test",
+      "size": 7496,
+      "test_count": 1,
+      "covered_features": [
+        "ui_flows:callback"
+      ],
+      "test_cases": [
+        "\\n"
+      ],
+      "assertions": 2
+    },
+    "test-google-auth.js": {
+      "type": "test",
+      "size": 12864,
+      "test_count": 23,
+      "covered_features": [
+        "authentication:login",
+        "authentication:logout",
+        "authentication:token",
+        "providers:google",
+        "security:state",
+        "security:nonce",
+        "config:authority",
+        "config:scope",
+        "error_handling:expired",
+        "ui_flows:callback"
+      ],
+      "test_cases": [
+        "deve gerar configuração Google corretamente",
+        "deve detectar ambiente de produção corretamente",
+        "deve configurar endpoint de token corretamente",
+        "deve persistir provedor Google corretamente",
+        "deve gerar nonce válido para Google",
+        "deve construir URL de autorização Google válida",
+        "deve validar estrutura de ID token Google",
+        "deve validar domínio autorizado (se configurado)",
+        "@",
+        "deve configurar endpoint de troca de token corretamente",
+        "deve simular resposta de troca de token bem-sucedida",
+        "deve simular tratamento de erro na troca de token",
+        "deve limpar estado após logout Google",
+        "deve detectar sessão Google existente",
+        "deve detectar erro de redirect_uri inválido",
+        "deve detectar erro de acesso negado",
+        "Autenticação Google OIDC",
+        "Configuração Google",
+        "Fluxo de Autenticação Google",
+        "Validação de Token Google",
+        "Integração com Backend",
+        "Gerenciamento de Estado",
+        "Tratamento de Erros Google"
+      ],
+      "assertions": 69
+    },
+    "test-jwt-validation.js": {
+      "type": "test",
+      "size": 11840,
+      "test_count": 35,
+      "covered_features": [
+        "authentication:login",
+        "authentication:logout",
+        "authentication:token",
+        "providers:google",
+        "providers:microsoft",
+        "providers:entra",
+        "security:jwt",
+        "config:clientId",
+        "config:scope"
+      ],
+      "test_cases": [
+        "deve validar estrutura básica do JWT (3 partes separadas por ponto)",
+        ".",
+        "deve validar que as partes são strings base64url válidas",
+        ".",
+        "deve validar claims obrigatórios do ID Token",
+        "deve validar issuer (iss) para Google",
+        "deve validar issuer (iss) para Microsoft Entra",
+        "deve validar audience (aud) corresponde ao client_id",
+        "deve validar que o token não está expirado",
+        "deve validar formato do subject (sub)",
+        "deve validar claims de perfil básico",
+        "deve validar formato do email",
+        "deve validar email_verified quando presente",
+        "deve validar URL da picture quando presente",
+        "deve armazenar token no sessionStorage de forma segura",
+        "deve limpar tokens ao fazer logout",
+        "deve renovar tokens antes da expiração",
+        "deve rejeitar tokens com issuer inválido",
+        "deve rejeitar tokens expirados",
+        "deve rejeitar tokens com audience incorreto",
+        "deve validar tempo de vida do token",
+        "deve decodificar header do JWT corretamente",
+        ".",
+        "deve tratar erros de decodificação graciosamente",
+        ".",
+        "deve processar resposta de autorização do Google",
+        "deve processar resposta de autorização do Microsoft Entra",
+        "Validação de Tokens JWT",
+        "Estrutura de Token JWT",
+        "Validação de Claims do ID Token",
+        "Validação de Claims de Perfil",
+        "Manipulação de Tokens",
+        "Validação de Segurança",
+        "Decodificação de JWT",
+        "Integração com Provedores"
+      ],
+      "assertions": 75
+    }
+  },
+  "coverage": {
+    "by_feature": {
+      "config:clientId": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "copy-google-config.js",
+          "dynamic-config.js",
+          "fix-caracore-domain.js",
+          "log-microsoft-fix.js",
+          "show-current-uris.js"
+        ],
+        "tests": [
+          "test-error-handling.js",
+          "test-jwt-validation.js"
+        ]
+      },
+      "ui_flows:callback": {
+        "tested": true,
+        "pages": [
+          "auth-standalone.js",
+          "caracore-instructions.js",
+          "copy-google-config.js",
+          "diagnose-redirect-uri.js",
+          "dynamic-config.js",
+          "fix-caracore-domain.js",
+          "fix-redirect-uri-detection.js",
+          "show-current-uris.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-error-handling.js",
+          "test-framework.js",
+          "test-google-auth.js"
+        ]
+      },
+      "providers:microsoft": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "index.html",
+          "restrita.html",
+          "caracore-instructions.js",
+          "diagnose-redirect-uri.js",
+          "dynamic-config.js",
+          "fix-caracore-domain.js",
+          "fix-redirect-uri-detection.js",
+          "log-microsoft-fix.js",
+          "show-current-uris.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-jwt-validation.js"
+        ]
+      },
+      "providers:google": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "index.html",
+          "restrita.html",
+          "auth-standalone.js",
+          "auth.js",
+          "caracore-instructions.js",
+          "copy-google-config.js",
+          "diagnose-redirect-uri.js",
+          "dynamic-config.js",
+          "fix-caracore-domain.js",
+          "fix-redirect-uri-detection.js",
+          "show-current-uris.js",
+          "js/config.example.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-error-handling.js",
+          "test-google-auth.js",
+          "test-jwt-validation.js"
+        ]
+      },
+      "providers:azure": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "caracore-instructions.js",
+          "diagnose-redirect-uri.js",
+          "fix-caracore-domain.js",
+          "show-current-uris.js"
+        ],
+        "tests": [
+          "test-dual-auth.js",
+          "test-entra-auth.js"
+        ]
+      },
+      "ui_flows:redirect": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "callback.html",
+          "index.html",
+          "auth.js",
+          "caracore-instructions.js",
+          "copy-google-config.js",
+          "diagnose-redirect-uri.js",
+          "fix-caracore-domain.js",
+          "fix-redirect-uri-detection.js",
+          "show-current-uris.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-error-handling.js"
+        ]
+      },
+      "providers:entra": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "index.html",
+          "restrita.html",
+          "auth-standalone.js",
+          "auth.js",
+          "caracore-instructions.js",
+          "dynamic-config.js",
+          "fix-caracore-domain.js",
+          "log-microsoft-fix.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-jwt-validation.js"
+        ]
+      },
+      "security:state": {
+        "tested": true,
+        "pages": [
+          "auth-standalone.js"
+        ],
+        "tests": [
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-error-handling.js",
+          "test-google-auth.js"
+        ]
+      },
+      "security:nonce": {
+        "tested": true,
+        "pages": [
+          "auth-standalone.js"
+        ],
+        "tests": [
+          "test-entra-auth.js",
+          "test-google-auth.js"
+        ]
+      },
+      "config:redirectUri": {
+        "tested": false,
+        "pages": [
+          "admin-logs.html",
+          "copy-google-config.js",
+          "fix-caracore-domain.js",
+          "fix-redirect-uri-detection.js"
+        ],
+        "tests": []
+      },
+      "config:scope": {
+        "tested": true,
+        "pages": [
+          "auth-standalone.js",
+          "dynamic-config.js",
+          "js/config.example.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-google-auth.js",
+          "test-jwt-validation.js"
+        ]
+      },
+      "error_handling:expired": {
+        "tested": true,
+        "pages": [
+          "auth-standalone.js",
+          "auth.js"
+        ],
+        "tests": [
+          "test-error-handling.js",
+          "test-google-auth.js"
+        ]
+      },
+      "authentication:authorize": {
+        "tested": true,
+        "pages": [
+          "dynamic-config.js"
+        ],
+        "tests": [
+          "test-dual-auth.js",
+          "test-entra-auth.js"
+        ]
+      },
+      "authentication:login": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "callback.html",
+          "index.html",
+          "restrita.html",
+          "auth-standalone.js",
+          "auth.js",
+          "caracore-instructions.js",
+          "copy-google-config.js",
+          "diagnose-redirect-uri.js",
+          "dynamic-config.js",
+          "fix-caracore-domain.js",
+          "fix-redirect-uri-detection.js",
+          "log-microsoft-fix.js",
+          "js/config.example.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-google-auth.js",
+          "test-jwt-validation.js"
+        ]
+      },
+      "authentication:token": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "auth-standalone.js",
+          "dynamic-config.js",
+          "logger.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-error-handling.js",
+          "test-google-auth.js",
+          "test-jwt-validation.js"
+        ]
+      },
+      "config:authority": {
+        "tested": true,
+        "pages": [
+          "auth-standalone.js",
+          "diagnose-redirect-uri.js",
+          "dynamic-config.js",
+          "log-microsoft-fix.js",
+          "show-current-uris.js"
+        ],
+        "tests": [
+          "test-config-validation.js",
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-google-auth.js"
+        ]
+      },
+      "authentication:logout": {
+        "tested": true,
+        "pages": [
+          "admin-logs.html",
+          "index.html",
+          "logout.html",
+          "restrita.html",
+          "auth-standalone.js",
+          "auth.js",
+          "caracore-instructions.js",
+          "diagnose-redirect-uri.js",
+          "dynamic-config.js",
+          "fix-caracore-domain.js",
+          "fix-redirect-uri-detection.js",
+          "show-current-uris.js"
+        ],
+        "tests": [
+          "test-dual-auth.js",
+          "test-entra-auth.js",
+          "test-google-auth.js",
+          "test-jwt-validation.js"
+        ]
+      }
+    },
+    "by_file": {
+      "admin-logs.html": {
+        "total_features": 10,
+        "covered_features": 9,
+        "coverage_percentage": 90.0,
+        "uncovered": [
+          "config:redirectUri"
+        ]
+      },
+      "callback.html": {
+        "total_features": 2,
+        "covered_features": 2,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "index.html": {
+        "total_features": 6,
+        "covered_features": 6,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "logout.html": {
+        "total_features": 1,
+        "covered_features": 1,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "restrita.html": {
+        "total_features": 5,
+        "covered_features": 5,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "api-logs.js": {
+        "total_features": 0,
+        "covered_features": 0,
+        "coverage_percentage": 0,
+        "uncovered": []
+      },
+      "auth-standalone.js": {
+        "total_features": 11,
+        "covered_features": 11,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "auth.js": {
+        "total_features": 6,
+        "covered_features": 6,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "caracore-instructions.js": {
+        "total_features": 8,
+        "covered_features": 8,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "copy-google-config.js": {
+        "total_features": 6,
+        "covered_features": 5,
+        "coverage_percentage": 83.33333333333334,
+        "uncovered": [
+          "config:redirectUri"
+        ]
+      },
+      "diagnose-redirect-uri.js": {
+        "total_features": 8,
+        "covered_features": 8,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "dynamic-config.js": {
+        "total_features": 11,
+        "covered_features": 11,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "fix-caracore-domain.js": {
+        "total_features": 10,
+        "covered_features": 9,
+        "coverage_percentage": 90.0,
+        "uncovered": [
+          "config:redirectUri"
+        ]
+      },
+      "fix-redirect-uri-detection.js": {
+        "total_features": 7,
+        "covered_features": 6,
+        "coverage_percentage": 85.71428571428571,
+        "uncovered": [
+          "config:redirectUri"
+        ]
+      },
+      "log-config.js": {
+        "total_features": 0,
+        "covered_features": 0,
+        "coverage_percentage": 0,
+        "uncovered": []
+      },
+      "log-microsoft-fix.js": {
+        "total_features": 5,
+        "covered_features": 5,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "logger.js": {
+        "total_features": 1,
+        "covered_features": 1,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "show-current-uris.js": {
+        "total_features": 8,
+        "covered_features": 8,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      },
+      "js/config.example.js": {
+        "total_features": 3,
+        "covered_features": 3,
+        "coverage_percentage": 100.0,
+        "uncovered": []
+      }
+    },
+    "overall": {
+      "total_features": 17,
+      "covered_features": 16,
+      "coverage_percentage": 94.11764705882352
+    }
+  },
+  "gaps": [
+    {
+      "type": "missing_test",
+      "severity": "high",
+      "feature": "config:redirectUri",
+      "pages": [
+        "admin-logs.html",
+        "copy-google-config.js",
+        "fix-caracore-domain.js",
+        "fix-redirect-uri-detection.js"
+      ],
+      "recommendation": "Criar testes para 'config:redirectUri'"
+    }
+  ],
+  "summary": {
+    "total_pages": 19,
+    "total_tests": 7,
+    "total_test_cases": 177,
+    "coverage_percentage": 94.11764705882352,
+    "critical_gaps": 0,
+    "recommendations": 1
+  }
+}

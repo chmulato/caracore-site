@@ -43,7 +43,7 @@ class SecureTestRunner:
         self.output = output
         self.server = None
         self.server_thread = None
-        self.test_dir = Path(__file__).parent / 'secure' / 'testes'
+        self.test_dir = Path(__file__).parent.parent / 'secure' / 'testes'
         self.results = {
             'timestamp': datetime.now().isoformat(),
             'tests': {},
@@ -89,8 +89,19 @@ class SecureTestRunner:
             def log_message(self, format, *args):
                 if verbose:
                     super().log_message(format, *args)
+            
+            def handle(self):
+                """Override handle para capturar ConnectionResetError"""
+                try:
+                    super().handle()
+                except ConnectionResetError:
+                    # Selenium fecha conexões abruptamente - isso é normal
+                    pass
+                except Exception as e:
+                    if verbose:
+                        self.log_message(f"Erro de conexão (ignorado): {e}")
         
-        Handler = QuietHTTPRequestHandler if not self.verbose else SimpleHTTPRequestHandler
+        Handler = QuietHTTPRequestHandler
         self.server = HTTPServer(('localhost', self.port), Handler)
         
         def run_server():
@@ -172,6 +183,7 @@ class SecureTestRunner:
             
             for test_type in test_types:
                 try:
+                    from selenium.webdriver.common.by import By
                     total_elem = driver.find_element(By.ID, f"{test_type}-total")
                     pass_elem = driver.find_element(By.ID, f"{test_type}-pass")
                     fail_elem = driver.find_element(By.ID, f"{test_type}-fail")

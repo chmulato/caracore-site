@@ -53,7 +53,7 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 - **[Inventário de Scripts Python](scripts/README_PY.md)** - Documentação completa de todos os scripts Python organizados na pasta `scripts/`
 - **[Execução Rápida](run_script.py)** - Use `python run_script.py list` para ver todos os scripts disponíveis
 - **[Testes Unitários OIDC](scripts/executar_ut_secure.py)** - Execute `python run_script.py executar_ut_secure.py --help` para opções
-- **[📁 Reorganização Scripts](docs/REORGANIZACAO_SCRIPTS_PYTHON.md)** - Documentação da migração e organização dos scripts Python
+- **[Reorganização Scripts](docs/REORGANIZACAO_SCRIPTS_PYTHON.md)** - Documentação da migração e organização dos scripts Python
 
 ### Configuração e Deploy
 
@@ -70,9 +70,9 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 - **[Checklist OIDC Entra ID](docs/CHECKLIST_OIDC_ENTRA.md)** - Lista de verificação para configuração Microsoft Entra ID
 - **[Validação OIDC Google](docs/VALIDATED_OIDC_GOOGLE.md)** - Relatório de validação Google OAuth
 - **[Validação OIDC Entra ID](docs/VALIDATED_OIDC_ENTRA_ID.md)** - Relatório de validação Microsoft Entra ID
-- **[✅ Validação Final Entra ID](docs/VALIDACAO_ENTRA_ID_FINAL.md)** - **Confirmação operacional: Portal Área 51 configurado apenas para contas pessoais Microsoft**
+- **[Validação Final Entra ID](docs/VALIDACAO_ENTRA_ID_FINAL.md)** - **Confirmação operacional: Portal Área 51 configurado apenas para contas pessoais Microsoft**
 - **[Configuração Entra ID Contas Pessoais](docs/ENTRA_ID_CONTAS_PESSOAIS.md)** - Documentação técnica da configuração para contas pessoais
-- **[📊 Cobertura de Testes OIDC](docs/VALIDACAO_COBERTURA_TESTES_OIDC.md)** - **Validação automática de cobertura de testes unitários (94.1%)**
+- **[Cobertura de Testes OIDC](docs/VALIDACAO_COBERTURA_TESTES_OIDC.md)** - **Validação automática de cobertura de testes unitários (94.1%)**
 - **[Teste e Correção Microsoft](docs/TESTE-CORRECAO-MICROSOFT.md)** - Procedimentos de teste e correção Microsoft
 
 ### Arquitetura e Soluções

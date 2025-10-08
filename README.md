@@ -50,7 +50,10 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 
 ### Scripts Python
 
-- **[Inventário de Scripts Python](README_PY.md)** - Documentação completa de todos os 52 scripts Python do projeto, suas funções e inter-relacionamentos
+- **[Inventário de Scripts Python](scripts/README_PY.md)** - Documentação completa de todos os scripts Python organizados na pasta `scripts/`
+- **[Execução Rápida](run_script.py)** - Use `python run_script.py list` para ver todos os scripts disponíveis
+- **[Testes Unitários OIDC](scripts/executar_ut_secure.py)** - Execute `python run_script.py executar_ut_secure.py --help` para opções
+- **[📁 Reorganização Scripts](docs/REORGANIZACAO_SCRIPTS_PYTHON.md)** - Documentação da migração e organização dos scripts Python
 
 ### Configuração e Deploy
 
@@ -67,6 +70,9 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 - **[Checklist OIDC Entra ID](docs/CHECKLIST_OIDC_ENTRA.md)** - Lista de verificação para configuração Microsoft Entra ID
 - **[Validação OIDC Google](docs/VALIDATED_OIDC_GOOGLE.md)** - Relatório de validação Google OAuth
 - **[Validação OIDC Entra ID](docs/VALIDATED_OIDC_ENTRA_ID.md)** - Relatório de validação Microsoft Entra ID
+- **[✅ Validação Final Entra ID](docs/VALIDACAO_ENTRA_ID_FINAL.md)** - **Confirmação operacional: Portal Área 51 configurado apenas para contas pessoais Microsoft**
+- **[Configuração Entra ID Contas Pessoais](docs/ENTRA_ID_CONTAS_PESSOAIS.md)** - Documentação técnica da configuração para contas pessoais
+- **[📊 Cobertura de Testes OIDC](docs/VALIDACAO_COBERTURA_TESTES_OIDC.md)** - **Validação automática de cobertura de testes unitários (94.1%)**
 - **[Teste e Correção Microsoft](docs/TESTE-CORRECAO-MICROSOFT.md)** - Procedimentos de teste e correção Microsoft
 
 ### Arquitetura e Soluções
@@ -441,25 +447,25 @@ python package_backend.py --overwrite
 - **Docker**: Deploy para produção, CI/CD, máxima compatibilidade
 - **Cross-platform**: Desenvolvimento local, testes rápidos, sem Docker
 
-O script gera `backend.zip` na raiz, removendo `logs/`, `__pycache__/` e arquivos compilados. Como alternativa manual, gere o pacote a partir de uma cópia limpa da pasta `backend/`, sem `logs/` ou `__pycache__/`.
+O script gera `scripts/backend.zip` (na pasta scripts), removendo `logs/`, `__pycache__/` e arquivos compilados. Como alternativa manual, gere o pacote a partir de uma cópia limpa da pasta `backend/`, sem `logs/` ou `__pycache__/`.
 
 **PowerShell (Windows):**
 
 ```powershell
-Remove-Item -Force -ErrorAction SilentlyContinue backend.zip
+Remove-Item -Force -ErrorAction SilentlyContinue scripts/backend.zip
 Remove-Item -Recurse -Force -ErrorAction SilentlyContinue backend-deploy
 robocopy backend backend-deploy /MIR /XD logs __pycache__
-Compress-Archive -Path backend-deploy\* -DestinationPath backend.zip
+Compress-Archive -Path backend-deploy\* -DestinationPath scripts/backend.zip
 Remove-Item -Recurse -Force backend-deploy
 ```
 
 **bash (Linux/macOS):**
 
 ```bash
-rm -f backend.zip
+rm -f scripts/backend.zip
 rm -rf backend-deploy
 rsync -a backend/ backend-deploy/ --exclude logs --exclude __pycache__
-(cd backend-deploy && zip -r ../backend.zip .)
+(cd backend-deploy && zip -r ../scripts/backend.zip .)
 rm -rf backend-deploy
 ```
 
@@ -474,7 +480,7 @@ Para validar rapidamente, execute `python teste_end_point_local.py` enquanto o c
 1. Execute `py -3.13 .\deploy_to_azure.py` para provisionar/atualizar Resource Group, App Service Plan (Linux) e Web App (Python 3.11).
    - O script identifica Subscription/Tenant via `az account show` e pergunta se o segredo do Google deve ser salvo no Key Vault.
    - Use a opção `--store-google-secret` para criar a referência segura `@Microsoft.KeyVault(...)` diretamente no App Setting.
-   - Para execução sem prompt, passe os parâmetros de linha de comando (`--resource-group`, `--app-name`, `--zip backend.zip`, etc.).
+   - Para execução sem prompt, passe os parâmetros de linha de comando (`--resource-group`, `--app-name`, `--zip scripts/backend.zip`, etc.).
 1. Após o deploy, reinicie o Web App se alterar App Settings críticos:
 
    ```powershell

@@ -246,7 +246,7 @@ def parse_args(argv: list[str]) -> argparse.Namespace:
     )
     parser.add_argument(
         "--output-zip",
-        default="backend.zip",
+        default="scripts/backend.zip",
         help="Caminho do arquivo ZIP gerado (relativo ao repositório).",
     )
     parser.add_argument(

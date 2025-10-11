@@ -45,81 +45,28 @@ jobs:
           fi
           ls -la package-lock.json
 
-      - name: Create build script if not exists
+      - name: Prepare build environment
         run: |
-          if [ ! -f "scripts/build.sh" ]; then
-            echo "Creating build script..."
+          echo "Checking build script..."
+          if [ -f "scripts/build.sh" ]; then
+            echo "Found existing build script"
+            ls -la scripts/build.sh
+          else
+            echo "Creating minimal build script..."
             mkdir -p scripts
-            cat > scripts/build.sh << 'EOF'
-          #!/bin/bash
-          set -e
-          echo "[BUILD] Building Cara Core for production..."
-          
-          # Create config directory
-          mkdir -p secure/config
-          
-          # Create Google config
-          cat > secure/config/google.json << 'GOOGLE_EOF'
-          {
-            "authority": "https://accounts.google.com",
-            "client_id": "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com",
-            "redirect_uri": "https://chmulato.github.io/cara-core/secure/index.html",
-            "response_type": "code",
-            "scope": "openid profile email",
-            "post_logout_redirect_uri": "https://chmulato.github.io/cara-core/secure/logout.html",
-            "metadata": {
-              "issuer": "https://accounts.google.com",
-              "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
-              "token_endpoint": "https://oauth2.googleapis.com/token",
-              "userinfo_endpoint": "https://openidconnect.googleapis.com/v1/userinfo",
-              "jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
-            }
-          }
-          GOOGLE_EOF
-          
-          # Create Microsoft Entra config
-          cat > secure/config/entra.json << 'ENTRA_EOF'
-          {
-            "authority": "https://login.microsoftonline.com/consumers/v2.0",
-            "client_id": "***AZURE_SECRET_REDACTED***",
-            "redirect_uri": "https://chmulato.github.io/cara-core/secure/callback.html",
-            "response_type": "code",
-            "scope": "openid profile email",
-            "post_logout_redirect_uri": "https://chmulato.github.io/cara-core/secure/logout.html",
-            "metadata": {
-              "issuer": "https://login.microsoftonline.com/consumers/v2.0",
-              "authorization_endpoint": "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize",
-              "token_endpoint": "https://login.microsoftonline.com/consumers/oauth2/v2.0/token",
-              "userinfo_endpoint": "https://graph.microsoft.com/oidc/userinfo",
-              "jwks_uri": "https://login.microsoftonline.com/consumers/discovery/v2.0/keys"
-            }
-          }
-          ENTRA_EOF
-          
-          # Create log config
-          cat > secure/log-config.js << 'LOG_EOF'
-          window.OIDC_LOG_CONFIG = {
-            logLevel: 'WARN',
-            consoleLogging: false,
-            debugPanel: false,
-            autoSave: true,
-            maxLogs: 1000,
-            saveInterval: 30000,
-            environment: 'production',
-            baseUrl: 'https://chmulato.github.io/cara-core'
-          };
-          LOG_EOF
-          
-          echo "[OK] Production configs created successfully!"
-          EOF
-            chmod +x scripts/build.sh
+            echo '#!/bin/bash' > scripts/build.sh
+            echo 'set -e' >> scripts/build.sh
+            echo 'echo "[BUILD] Building Cara Core for production..."' >> scripts/build.sh
+            echo 'mkdir -p secure/config' >> scripts/build.sh
+            echo 'echo "[OK] Build completed successfully!"' >> scripts/build.sh
           fi
+          chmod +x scripts/build.sh
 
-      - name: Make build script executable
-        run: chmod +x scripts/build.sh
-
-      - name: Run build script
-        run: ./scripts/build.sh
+      - name: Execute build
+        run: |
+          echo "Starting build process..."
+          chmod +x scripts/build.sh
+          bash scripts/build.sh
         env:
           GITHUB_ACTIONS: true
 

@@ -5,15 +5,6 @@ on:
     branches:
       - main
 
-env:
-  # Configurações OIDC para produção
-  AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-  AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-  AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-  ENTRA_CLIENT_SECRET: ${{ secrets.ENTRA_CLIENT_SECRET }}
-  GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,41 +18,19 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: |
-          echo "Checking dependencies..."
-          if [ -f "package-lock.json" ]; then
-            echo "Found package-lock.json, using npm ci"
-            npm ci
-          else
-            echo "No package-lock.json found, using npm install"
-            npm install
-          fi
-          
-      - name: Verify package-lock.json
-        run: |
-          if [ ! -f "package-lock.json" ]; then
-            echo "Generating package-lock.json..."
-            npm install --package-lock-only
-          fi
-          ls -la package-lock.json
+        run: npm install --no-package-lock || npm install
 
-      - name: Prepare build environment
+      - name: Simple build
         run: |
-          echo "Checking build environment..."
-          ls -la scripts/
-          
-      - name: Execute build
-        run: |
-          echo "Building for GitHub Pages..."
-          mkdir -p secure/config
-          echo "Build completed successfully!"
-        env:
-          GITHUB_ACTIONS: true
+          echo "Building Cara Core for GitHub Pages..."
+          echo "Creating required directories..."
+          mkdir -p secure/config || true
+          echo "Build process completed!"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./ # Deploy da raiz do projeto
+          path: ./
 
   deploy:
     needs: build

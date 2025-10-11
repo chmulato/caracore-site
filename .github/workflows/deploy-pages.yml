@@ -28,11 +28,22 @@ jobs:
 
       - name: Install dependencies
         run: |
+          echo "Checking dependencies..."
           if [ -f "package-lock.json" ]; then
+            echo "Found package-lock.json, using npm ci"
             npm ci
           else
+            echo "No package-lock.json found, using npm install"
             npm install
           fi
+          
+      - name: Verify package-lock.json
+        run: |
+          if [ ! -f "package-lock.json" ]; then
+            echo "Generating package-lock.json..."
+            npm install --package-lock-only
+          fi
+          ls -la package-lock.json
 
       - name: Create build script if not exists
         run: |

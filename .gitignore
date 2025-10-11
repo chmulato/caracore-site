@@ -18,6 +18,18 @@ venv/
 *.jsonl
 prompt_oidc.txt
 .tmp*
+
+# Credenciais e Secrets (Segurança)
+*secret*.json
+*backup*.json
+*.key
+*.pem
+*.p12
+*.pfx
+*credentials*.json
+*config*.json.bak
+.secrets/
+secrets/
 oidc_logs*
 
 # Backend logs (JSONL daily files)

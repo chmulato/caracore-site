@@ -1,0 +1,25 @@
+name: Deploy to GitHub Pages - Emergency Simple
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-direct:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        
+      - name: Deploy directly without build
+        uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages
+          token: ${{ github.token }}
+        continue-on-error: true

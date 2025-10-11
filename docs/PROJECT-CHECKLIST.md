@@ -21,7 +21,7 @@ Este checklist resume o que ainda falta ser feito para manter o ambiente Cara Co
 - [ ] `FLASK_ENV=production`.
 - [ ] `LOG_LEVEL=INFO` (ajuste conforme necessário).
 - [ ] `GOOGLE_CLIENT_ID=1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com`.
-- [ ] `GOOGLE_CLIENT_SECRET=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` (valor direto no App Service).
+- [ ] `GOOGLE_CLIENT_SECRET=GOCSPX-************************` (valor configurado no App Service).
 - [ ] `ORIGIN_ALLOWED=https://www.caracore.com.br`.
 - [ ] `OAUTH_REDIRECT_URI=https://www.caracore.com.br/secure/callback.html`.
 - [ ] `APP_SECRET_KEY` configurado com valor seguro.

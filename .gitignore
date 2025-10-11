@@ -56,3 +56,4 @@ log_*.log
 backend.zip
 e-mail_google*.txt
 resposta_*.txt
+deploy_temp*

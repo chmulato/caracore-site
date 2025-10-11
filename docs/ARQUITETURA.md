@@ -19,7 +19,7 @@ Essa separação garante que o deploy do site estático seja rápido e barato, e
 | Segredos do Google (`GOOGLE_OAUTH_CLIENT_ID`, `GOOGLE_OAUTH_CLIENT_SECRET`) | App Settings do Azure App Service | Ficam protegidos do lado do servidor |
 | Deploy automações | GitHub Actions | Um fluxo diferente para o front (estático) e outro para o backend |
 
-> Em produção, `secure/log-config.js` detecta o ambiente e força o fluxo de troca de token para `https://api-caracore.azurewebsites.net`. Em homologação/local, o mesmo script usa o backend local (`server.py`). O comportamento pode ser sobrescrito configurando `window.CARA_CORE_CONFIG.backendBaseUrl` antes de carregar os scripts OIDC.
+> Em produção, `js/config.js` detecta o ambiente e aponta o fluxo de troca de token para `https://caracore-backend.azurewebsites.net`. Em homologação/local, o mesmo script usa o backend local (`server.py`). O comportamento pode ser sobrescrito configurando `window.CARA_CORE_CONFIG_OVERRIDE` antes de carregar os scripts OIDC.
 
 > O arquivo `secure/auth-standalone.js` armazena o provedor de login escolhido (Google/Entra) entre redirecionamentos para garantir que o callback utilize a mesma authority. Se alternar provedores no mesmo navegador, use o botão apropriado da UI ou limpe `sessionStorage`/`localStorage`.
 

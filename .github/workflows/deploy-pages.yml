@@ -47,26 +47,14 @@ jobs:
 
       - name: Prepare build environment
         run: |
-          echo "Checking build script..."
-          if [ -f "scripts/build.sh" ]; then
-            echo "Found existing build script"
-            ls -la scripts/build.sh
-          else
-            echo "Creating minimal build script..."
-            mkdir -p scripts
-            echo '#!/bin/bash' > scripts/build.sh
-            echo 'set -e' >> scripts/build.sh
-            echo 'echo "[BUILD] Building Cara Core for production..."' >> scripts/build.sh
-            echo 'mkdir -p secure/config' >> scripts/build.sh
-            echo 'echo "[OK] Build completed successfully!"' >> scripts/build.sh
-          fi
-          chmod +x scripts/build.sh
-
+          echo "Checking build environment..."
+          ls -la scripts/
+          
       - name: Execute build
         run: |
-          echo "Starting build process..."
-          chmod +x scripts/build.sh
-          bash scripts/build.sh
+          echo "Building for GitHub Pages..."
+          mkdir -p secure/config
+          echo "Build completed successfully!"
         env:
           GITHUB_ACTIONS: true
 

@@ -20,7 +20,7 @@ from endpoint_checks import (
     run_token_missing_fields_json,
 )
 
-DEFAULT_BASE_URL = os.getenv("AZURE_BACKEND_BASE_URL", "https://api-caracore.azurewebsites.net")
+DEFAULT_BASE_URL = os.getenv("AZURE_BACKEND_BASE_URL", "https://caracore-backend.azurewebsites.net")
 DEFAULT_ORIGIN = os.getenv("AZURE_ALLOWED_ORIGIN", "https://www.caracore.com.br")
 DEFAULT_BLOCKED_ORIGIN = os.getenv("AZURE_BLOCKED_ORIGIN", "https://example.com")
 DEFAULT_REDIRECT_URI = os.getenv("AZURE_OAUTH_REDIRECT_URI", "https://www.caracore.com.br/secure/index.html")

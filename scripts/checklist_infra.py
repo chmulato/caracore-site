@@ -21,11 +21,9 @@ Example usage (PowerShell):
 python checklist_infra.py `
   --subscription-id $env:AZURE_SUBSCRIPTION_ID `
   --resource-group rg-caracore `
-  --plan-name plan-caracore `
-  --app-name api-caracore `
-  --keyvault-name kv-caracore `
-  --check-secret GOOGLE-CLIENT-SECRET `
-  --health-url https://api-caracore.azurewebsites.net/health
+  --plan-name caracore-plan `
+  --app-name caracore-backend `
+  --health-url https://caracore-backend.azurewebsites.net/health
 ```
 """
 from __future__ import annotations
@@ -277,7 +275,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Valida infraestrutura Azure para CaraCore")
     parser.add_argument("--subscription-id", default=os.getenv("AZURE_SUBSCRIPTION_ID"), help="ID da subscription Azure")
     parser.add_argument("--resource-group", default="rg-caracore", help="Resource Group do App Service")
-    parser.add_argument("--plan-name", default="plan-caracore", help="Nome do App Service Plan")
+    parser.add_argument("--plan-name", default="caracore-plan", help="Nome do App Service Plan")
     parser.add_argument("--app-name", default="api-caracore", help="Nome do Web App")
     parser.add_argument("--expected-runtime", default="PYTHON|3.11", help="Runtime esperado (linuxFxVersion)")
     parser.add_argument("--required-setting", dest="required_settings", action="append", default=[

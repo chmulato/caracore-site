@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Script para testar integração Azure Key Vault (versão Windows compatível).
+Script específico para testar a integração com Azure Key Vault.
 Valida se o GOOGLE_CLIENT_SECRET está sendo carregado corretamente do Key Vault na API do Azure.
 """
 from __future__ import annotations
@@ -26,7 +26,7 @@ def test_keyvault_integration(base_url: str, timeout: int = 30) -> dict:
     
     try:
         # 1. Verificar health endpoint
-        print(">>> Verificando health endpoint...")
+        print("🔍 Verificando health endpoint...")
         health_url = f"{base_url}/health"
         health_response = session.get(health_url, timeout=timeout)
         
@@ -38,10 +38,10 @@ def test_keyvault_integration(base_url: str, timeout: int = 30) -> dict:
             }
         
         health_data = health_response.json()
-        print(f"OK: Health endpoint funcionando: {health_data.get('status', 'unknown')}")
+        print(f"✅ Health endpoint OK: {health_data.get('status', 'unknown')}")
         
         # 2. Testar endpoint Google OAuth que requer client_secret
-        print(">>> Testando integração Key Vault via endpoint Google OAuth...")
+        print("🔐 Testando integração Key Vault via endpoint Google OAuth...")
         google_url = f"{base_url}/oauth/google/token"
         
         # Payload de teste (vai falhar, mas queremos ver o tipo de erro)
@@ -62,7 +62,7 @@ def test_keyvault_integration(base_url: str, timeout: int = 30) -> dict:
             timeout=timeout
         )
         
-        print(f">>> Resposta OAuth Google: status {oauth_response.status_code}")
+        print(f"📋 Resposta OAuth Google: status {oauth_response.status_code}")
         
         # Analisar resposta para determinar se Key Vault está funcionando
         if oauth_response.status_code == 500:
@@ -119,7 +119,7 @@ def test_keyvault_integration(base_url: str, timeout: int = 30) -> dict:
                 ]):
                     return {
                         "success": True,
-                        "message": "SUCCESS: Key Vault integração OK - GOOGLE_CLIENT_SECRET está sendo carregado corretamente",
+                        "message": "✅ Key Vault integração OK - GOOGLE_CLIENT_SECRET está sendo carregado corretamente",
                         "details": {
                             "status_code": oauth_response.status_code,
                             "error_type": "expected_oauth_error",
@@ -166,7 +166,7 @@ def main():
     )
     parser.add_argument(
         "--base-url", 
-        default="https://api-caracore.azurewebsites.net",
+        default="https://caracore-backend.azurewebsites.net",
         help="URL base da API no Azure"
     )
     parser.add_argument(
@@ -183,35 +183,35 @@ def main():
     
     args = parser.parse_args()
     
-    print("TESTE DE INTEGRACAO AZURE KEY VAULT")
+    print("🔐 TESTE DE INTEGRAÇÃO AZURE KEY VAULT")
     print("=" * 50)
-    print(f"API: {args.base_url}")
-    print(f"Timeout: {args.timeout}s")
+    print(f"🎯 API: {args.base_url}")
+    print(f"⏱️  Timeout: {args.timeout}s")
     print("=" * 50)
     print()
     
     result = test_keyvault_integration(args.base_url, args.timeout)
     
-    print("RESULTADO:")
+    print("📊 RESULTADO:")
     print("-" * 30)
     
     if result["success"]:
-        print(f"SUCCESS: {result['message']}")
+        print(f"✅ {result['message']}")
     else:
-        print(f"FAILED: {result['message']}")
+        print(f"❌ {result['message']}")
     
     if args.verbose or not result["success"]:
-        print("\nDETALHES:")
+        print("\n📋 DETALHES:")
         print(json.dumps(result["details"], indent=2, ensure_ascii=False))
     
     print("\n" + "=" * 50)
     
     if result["success"]:
-        print("INTEGRACAO KEY VAULT FUNCIONANDO!")
-        print("O GOOGLE_CLIENT_SECRET está sendo carregado corretamente do Azure Key Vault")
+        print("🎉 INTEGRAÇÃO KEY VAULT FUNCIONANDO!")
+        print("✅ O GOOGLE_CLIENT_SECRET está sendo carregado corretamente do Azure Key Vault")
     else:
-        print("PROBLEMA NA INTEGRACAO KEY VAULT!")
-        print("Verifique:")
+        print("⚠️  PROBLEMA NA INTEGRAÇÃO KEY VAULT!")
+        print("💡 Verifique:")
         print("   - Se o Key Vault foi criado e configurado")
         print("   - Se o GOOGLE_CLIENT_SECRET foi adicionado ao Key Vault")
         print("   - Se a Managed Identity tem permissão para acessar o Key Vault")

@@ -1,0 +1,67 @@
+﻿[
+  {
+    "name": "AZURE_CLIENT_ID",
+    "slotSetting": false,
+    "value": "8ef17663-438f-4777-99ca-c5ad5b2a2993"
+  },
+  {
+    "name": "AZURE_CLIENT_SECRET",
+    "slotSetting": false,
+    "value": "l2a8Q~SL_Rb2Efx1BCgpZag87cMrTJIq7uXhaaYy"
+  },
+  {
+    "name": "AZURE_TENANT_ID",
+    "slotSetting": false,
+    "value": "189c46ad-e437-48bd-bc87-050ef735c2c7"
+  },
+  {
+    "name": "FLASK_ENV",
+    "slotSetting": false,
+    "value": "production"
+  },
+  {
+    "name": "GOOGLE_CLIENT_ID",
+    "slotSetting": false,
+    "value": "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com"
+  },
+  {
+    "name": "GOOGLE_CLIENT_SECRET",
+    "slotSetting": false,
+    "value": "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"
+  },
+  {
+    "name": "LOG_LEVEL",
+    "slotSetting": false,
+    "value": "INFO"
+  },
+  {
+    "name": "OAUTH_REDIRECT_URI",
+    "slotSetting": false,
+    "value": "https://www.caracore.com.br/secure/callback.html"
+  },
+  {
+    "name": "ORIGIN_ALLOWED",
+    "slotSetting": false,
+    "value": "https://www.caracore.com.br"
+  },
+  {
+    "name": "PYTHONIOENCODING",
+    "slotSetting": false,
+    "value": "utf-8"
+  },
+  {
+    "name": "PYTHONPATH",
+    "slotSetting": false,
+    "value": "/home/site/wwwroot/backend:/home/site/wwwroot/backend/.python_packages/lib/site-packages"
+  },
+  {
+    "name": "PYTHONUNBUFFERED",
+    "slotSetting": false,
+    "value": "1"
+  },
+  {
+    "name": "SCM_DO_BUILD_DURING_DEPLOYMENT",
+    "slotSetting": false,
+    "value": "0"
+  }
+]

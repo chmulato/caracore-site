@@ -21,7 +21,7 @@ const OIDC_CONFIGS = {
     postLogoutRedirectUri: window.location.origin + "/secure/logout.html",
     cacheLocation: "sessionStorage",
     scopes: ["openid", "profile", "email"],
-    tokenEndpoint: "/oauth/google/token"
+    tokenEndpoint: "https://caracore-backend.azurewebsites.net/oauth/google/token"
   }
 };
 
@@ -34,7 +34,7 @@ const CARA_CORE_DEFAULT_CONFIG = {
   oidc: OIDC_CONFIGS[OIDC_PROVIDER],
   // logging is opt-in; configure a full HTTPS endpoint when available (e.g., App Insights collector)
   logsEndpoint: null,
-  googleTokenEndpoint: '/oauth/google/token',
+  googleTokenEndpoint: 'https://caracore-backend.azurewebsites.net/oauth/google/token',
   pseudoSaltHint: "set-server-side",
   environment: (location.protocol === 'https:') ? 'prod' : 'dev',
 };

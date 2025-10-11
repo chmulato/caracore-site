@@ -1,90 +1,195 @@
-# SOLUÇÃO: Erro redirect_uri inválido
+# 🔧 SOLUÇÃO: Erro redirect_uri inválido - ENTRA ID
 
 ## 🚨 Problema Identificado
 
 **Erro:** `invalid_request: The provided value for the input parameter 'redirect_uri' is not valid`
 
-**Causa:** As URIs de redirecionamento não estão registradas nos consoles dos provedores (Google e/ou Microsoft).
+**URI Problemática:** `https://www.caracore.com.br/secure/callback.html`
 
-## ✅ Solução Implementada
+**Causa:** O redirect URI de PRODUÇÃO não está registrado no Azure App Registration do Entra ID.
 
-### 📊 Scripts de Diagnóstico Criados:
+**Client ID:** `8ef17663-438f-4777-99ca-c5ad5b2a2993`
 
-1. **`diagnose-redirect-uri.js`** - Diagnóstico completo
-2. **`fix-redirect-uri-detection.js`** - Correção de detecção de ambiente  
-3. **`show-current-uris.js`** - Mostra URIs atuais (AUTO-EXECUTA)
+## ✅ Solução Passo a Passo
 
-### 🔧 URIs que DEVEM estar registradas:
+### 🎯 **AÇÃO IMEDIATA NECESSÁRIA - AZURE PORTAL**
 
-#### Google Cloud Console:
+#### **1️⃣ Acesse o Azure Portal**
 
 ```text
-http://localhost:8000/secure/callback.html
-http://127.0.0.1:8000/secure/callback.html  
-https://chmulato.github.io/cara-core/secure/callback.html
+🌐 URL: https://portal.azure.com
+👤 Login: Use sua conta Microsoft/Azure
 ```
 
-#### Microsoft Azure Portal:
+#### **2️⃣ Navegue até App Registrations**
 
 ```text
-http://localhost:8000/secure/callback.html
-http://127.0.0.1:8000/secure/callback.html
-https://chmulato.github.io/cara-core/secure/callback.html
+📍 Caminho: Portal → Azure Active Directory → App registrations
 ```
 
-## 🎯 AÇÃO NECESSÁRIA
+#### **3️⃣ Localize sua Aplicação**
 
-### 1. Verificar URIs Atuais
-
-- Acesse a área restrita
-- Abra o console do navegador
-- O script `show-current-uris.js` executará automaticamente
-- Copie as URIs mostradas
-
-### 2. Registrar no Google Cloud Console
-
-1. Acesse: <https://console.cloud.google.com/>
-2. APIs & Services > Credentials
-3. Client ID: `1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com`
-4. Adicione as URIs na seção "Authorized redirect URIs"
-5. Save
-
-### 3. Registrar no Microsoft Azure Portal  
-
-1. Acesse: [https://portal.azure.com/]
-2. Azure Active Directory > App registrations
-3. App: Cara Core Área 51 (`8ef17663-438f-4777-99ca-c5ad5b2a2993`)
-4. Authentication > Redirect URIs
-5. Adicione as URIs
-6. Save
-
-### 4. Testar
-
-- Aguarde 2-5 minutos para propagação
-- Tente fazer login novamente
-- Verifique se o erro desapareceu
-
-## 🧪 Comandos de Teste
-
-```javascript
-// Verificar URIs atuais
-await window.showCurrentUris();
-
-// Copiar URIs para clipboard
-await window.copyUrisToClipboard();
-
-// Diagnóstico completo
-await window.redirectUriDiagnostic.diagnose();
-
-// Corrigir configuração
-await window.redirectUriFix.fixConfig();
+```text
+🔍 Busque por Client ID: 8ef17663-438f-4777-99ca-c5ad5b2a2993
+📱 Ou nome: cara-core (ou similar)
 ```
 
-## 📞 Status
+#### **4️⃣ Entre em Authentication**
 
-**🔧 IMPLEMENTADO:** Scripts de diagnóstico e correção  
-**⏳ PENDENTE:** Registrar URIs nos consoles dos provedores  
-**🎯 PRÓXIMO:** Testar login após registro das URIs
+```text
+⚙️ Menu lateral → Authentication
+📱 Seção: Platform configurations → Web
+```
+
+#### **5️⃣ Adicione as URIs de Redirecionamento**
+
+**🚨 URIs OBRIGATÓRIAS para PRODUÇÃO:**
+
+```text
+✅ https://www.caracore.com.br/secure/callback.html
+✅ https://caracore.com.br/secure/callback.html
+✅ https://www.caracore.com.br/secure/logout.html
+✅ https://caracore.com.br/secure/logout.html
+```
+
+#### **🔥 IMPORTANTE: Configure também o Front-channel logout URL**
+
+Na mesma página **Authentication**, role para baixo até encontrar:
+
+**Front-channel logout URL:**
+
+```text
+✅ https://www.caracore.com.br/secure/logout.html
+```
+
+> ⚠️ **CRÍTICO**: Este campo é obrigatório para Single Sign-Out funcionar corretamente!
+
+**🔧 URIs OPCIONAIS para DESENVOLVIMENTO:**
+
+```text
+✅ http://localhost:8000/secure/callback.html
+✅ http://localhost:8000/secure/logout.html
+✅ http://localhost:8080/secure/callback.html
+✅ http://localhost:8080/secure/logout.html
+✅ http://127.0.0.1:8000/secure/callback.html
+✅ http://127.0.0.1:8080/secure/callback.html
+```
+
+#### **6️⃣ Salve as Alterações**
+
+```text
+💾 Clique em "Save" no topo da página
+⏳ Aguarde confirmação (2-5 minutos para propagação)
+```
 
 ---
-O erro será resolvido assim que as URIs forem registradas nos consoles do Google e Microsoft.
+
+## 🧪 **TESTE RÁPIDO APÓS CORREÇÃO**
+
+### **URL de Teste Direto:**
+
+```text
+https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?client_id=8ef17663-438f-4777-99ca-c5ad5b2a2993&redirect_uri=https://www.caracore.com.br/secure/callback.html&response_type=code&scope=openid profile email
+```
+
+**✅ Sucesso:** Não aparece erro de redirect_uri  
+**❌ Falha:** Ainda aparece "invalid redirect_uri"
+
+### **Teste no Site Real:**
+
+1. Acesse: `https://www.caracore.com.br/secure/`
+2. Clique em "Login with Microsoft"
+3. Deve redirecionar sem erro
+
+---
+
+## 📊 Scripts de Diagnóstico Criados
+
+1.**`scripts/corrigir_redirect_uri_entra.py`** - Diagnóstico e instruções completas
+
+```bash
+python scripts/corrigir_redirect_uri_entra.py --fix
+```
+
+2.**Auto-execução de verificação** - URIs atuais mostradas no console
+
+---
+
+## ⚠️ **PONTOS CRÍTICOS**
+
+### **Case Sensitive**
+
+``` text
+❌ ERRADO: /Secure/Callback.html
+✅ CORRETO: /secure/callback.html
+```
+
+### **Protocolo Correto**
+
+```text
+❌ ERRADO: http://www.caracore.com.br (produção)
+✅ CORRETO: https://www.caracore.com.br (produção)
+```
+
+### **Tempo de Propagação**
+
+```text
+⏳ Aguarde 2-5 minutos após salvar no Azure
+🔄 Pode levar até 10 minutos em alguns casos
+```
+
+## 🆘 **TROUBLESHOOTING**
+
+### **Problema: Não encontra a aplicação no Azure**
+
+```text
+🔍 Busque por: 8ef17663-438f-4777-99ca-c5ad5b2a2993
+📂 Verifique: "All applications" (não apenas "Owned applications")
+👤 Confirme: Permissões de administrador Azure
+```
+
+### **Problema: URIs não salvam**
+
+```text
+🔄 Atualize a página do Azure Portal
+⏳ Aguarde alguns minutos
+💾 Confirme se clicou em "Save"
+🔐 Verifique permissões de edição
+```
+
+### **Problema: Ainda aparece erro após registro**
+
+```text
+⏰ Aguarde até 10 minutos para propagação
+🔄 Limpe cache do navegador
+🧪 Teste URL direta primeiro
+📝 Confirme URIs exatas (case-sensitive)
+```
+
+---
+
+## ✅ **CHECKLIST FINAL ATUALIZADO**
+
+- [ ] Acessou Azure Portal ([https://portal.azure.com])
+- [ ] Encontrou app por Client ID: `8ef17663-438f-4777-99ca-c5ad5b2a2993`
+- [ ] **Redirect URIs** - Adicionou URI: `https://www.caracore.com.br/secure/callback.html`
+- [ ] **Redirect URIs** - Adicionou URI: `https://caracore.com.br/secure/callback.html`
+- [ ] **Redirect URIs** - Adicionou URIs de logout também
+- [ ] **⭐ Front-channel logout URL** - Configurou: `https://www.caracore.com.br/secure/logout.html`
+- [ ] Clicou em "Save" e confirmou
+- [ ] Aguardou 5+ minutos para propagação
+- [ ] Testou URL direta (sem erro)
+- [ ] Testou login no site (funcionando)
+- [ ] **Testou logout** (Single Sign-Out funcionando)
+
+---
+
+## 📞 **STATUS**
+
+**🔧 IMPLEMENTADO:** Script de correção `scripts/corrigir_redirect_uri_entra.py`  
+**⏳ PENDENTE:** Registrar URIs no Azure Portal (ação manual)  
+**🎯 PRÓXIMO:** Testar login após registro das URIs
+
+**Resolução**: O erro será resolvido assim que as URIs forem registradas no Azure Portal do Entra ID.
+
+**Script de Ajuda**: `python scripts/corrigir_redirect_uri_entra.py --validate`

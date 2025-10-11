@@ -9,7 +9,7 @@ Este documento descreve como fazer deploy do site Cara Core com autenticação O
 
 ### Destaques recentes
 
-- **Proxy de token inteligente** – o frontend detecta automaticamente quando está em produção e encaminha `/oauth/google/token` para `https://api-caracore.azurewebsites.net`. Em desenvolvimento local, a troca de código continua usando o `server.py`. Para domínios alternativos, defina `window.CARA_CORE_CONFIG.backendBaseUrl` antes de carregar `secure/log-config.js`.
+- **Proxy de token inteligente** – o frontend detecta automaticamente quando está em produção e encaminha `/oauth/google/token` para `https://caracore-backend.azurewebsites.net`. Em desenvolvimento local, a troca de código continua usando o `server.py`. Para domínios alternativos, defina `window.CARA_CORE_CONFIG_OVERRIDE` antes de carregar `js/config.js`.
 - **Persistência de provedor** – `secure/auth-standalone.js` armazena o último provedor selecionado (Google ou Microsoft Entra) para aplicar a mesma authority durante o callback. Ao alternar provedores em um único navegador, limpe `sessionStorage`/`localStorage` ou reutilize os botões da interface para sobrescrever a escolha.
 
 ## Variáveis Secretas Configuradas no GitHub
@@ -94,7 +94,7 @@ npm run build:prod
 - **Log Level:** `WARN`
 - **Console Logging:** `false`
 - **Debug Panel:** `false`
-- **Token Endpoint (auto):** `https://api-caracore.azurewebsites.net/oauth/google/token`
+- **Token Endpoint (auto):** `https://caracore-backend.azurewebsites.net/oauth/google/token`
 
 #### Ajustando o backend em ambientes personalizados
 
@@ -361,16 +361,13 @@ python infra_to_azure.py `
   --subscription-id $env:AZURE_SUBSCRIPTION_ID `
   --resource-group rg-caracore `
   --location brazilsouth `
-  --plan-name plan-caracore `
-  --sku B1 `
-  --app-name api-caracore `
+  --plan-name caracore-plan `
+  --sku F1 `
+  --app-name caracore-backend `
   --python-version 3.11 `
-  --keyvault-name kv-caracore `
-  --kv-auth-mode auto `
   --allowed-origins "https://www.caracore.com.br,https://chmulato.github.io" `
   --setting FLASK_ENV=production `
   --setting LOG_LEVEL=INFO `
-  --store-google-secret `
   --no-prompt
 ```
 
@@ -437,7 +434,7 @@ Você pode informar manualmente o caminho do ZIP (`--zip backend.zip`). Sem o pa
 python deploy_to_azure.py `
   --subscription-id $env:AZURE_SUBSCRIPTION_ID `
   --resource-group rg-caracore `
-  --app-name api-caracore `
+  --app-name caracore-backend `
   --backend-dir ./backend `
   --output-zip ./backend.zip `
   --bundle-backend-deps `
@@ -468,14 +465,14 @@ O script executa `az webapp deployment source config-zip` e registra logs em `lo
 - Execute o smoke test de produção:
 
   ```powershell
-  python teste_end_point_azure.py --base-url https://api-caracore.azurewebsites.net
+  python teste_end_point_azure.py --base-url https://caracore-backend.azurewebsites.net
   ```
 
   Ajuste `--base-url` ou a variável `AZURE_BACKEND_BASE_URL` para slots ou domínios customizados.
 - Reinicie o Web App quando alterar comando de inicialização ou configurações críticas:
 
   ```powershell
-  az webapp restart --resource-group rg-caracore --name api-caracore
+  az webapp restart --resource-group rg-caracore --name caracore-backend
   ```
 
 - Verifique `https://<app-name>.azurewebsites.net/health`

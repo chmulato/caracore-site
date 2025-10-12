@@ -28,6 +28,7 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
   - [Detalhes Técnicos](#detalhes-técnicos)
     - [Sistema de Autenticação OIDC](#sistema-de-autenticação-oidc-1)
       - [Documentação do Sistema de Autenticação](#documentação-do-sistema-de-autenticação)
+      - [Sistema de Tratamento de Erros e Timeouts](docs/SISTEMA-TIMEOUT-ERROS.md)
     - [Configuração OIDC (Azure / Google)](#configuração-oidc-azure--google)
       - [Fluxo recomendado de redirecionamento](#fluxo-recomendado-de-redirecionamento)
       - [Persistência do provedor selecionado](#persistência-do-provedor-selecionado)

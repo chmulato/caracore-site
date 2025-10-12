@@ -52,6 +52,12 @@ class AuthUIFeedback {
     // Adicionar classe padrão ao body
     this.elements.body.classList.add(this.stateClasses.idle);
     
+    // Verificar se o Force Recognition está sendo usado
+    if (typeof window.forceAuthRecognition === 'function') {
+      console.log('🔐 Force Recognition detectado - UI Feedback integrado');
+      this.hasForceRecognition = true;
+    }
+    
     console.log('✅ UI Feedback inicializado');
   }
 
@@ -327,6 +333,35 @@ class AuthUIFeedback {
   loginSuccess(message) {
     this.updateState('success', { message });
     return this;
+  }
+  
+  /**
+   * Força reconhecimento da autenticação quando necessário
+   * Isso integrará com o sistema auth-force-recognition.js
+   * @param {boolean} silent - Se verdadeiro, não exibe mensagens de UI
+   */
+  forceAuthRecognition(silent = false) {
+    if (typeof window.forceAuthRecognition === 'function') {
+      if (!silent) {
+        this.showSuccess('Reconhecendo autenticação existente...');
+      }
+      try {
+        window.forceAuthRecognition();
+        if (!silent) {
+          setTimeout(() => {
+            this.loginSuccess('Autenticação reconhecida com sucesso!');
+          }, 1000);
+        }
+        return true;
+      } catch (error) {
+        console.error('Erro ao forçar reconhecimento de autenticação:', error);
+        if (!silent) {
+          this.showError('Não foi possível reconhecer a autenticação existente');
+        }
+        return false;
+      }
+    }
+    return false;
   }
 }
 

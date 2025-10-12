@@ -110,6 +110,9 @@ class AuthErrorHandler {
     let code = 'unknown_error';
     let message = 'Erro desconhecido';
     
+    // Verificar se temos o auth-force-recognition disponível como fallback
+    const hasForceRecognition = typeof window.forceAuthRecognition === 'function';
+    
     // Normaliza o erro em uma string para análise
     const errorString = typeof error === 'string' 
       ? error 
@@ -184,11 +187,30 @@ class AuthErrorHandler {
     
     this.config.logger.error('Erro processado:', categorizedError);
     
+    // Verificar se temos o auth-force-recognition disponível como fallback
+    const hasForceRecognition = typeof window.forceAuthRecognition === 'function';
+    
     // Determina se o erro é recuperável
     let isRecoverable = [
       this.errorCategories.TIMEOUT,
       this.errorCategories.NETWORK
     ].includes(categorizedError.category);
+    
+    // Para erros de autenticação e autorização, verificar se podemos usar o force-recognition
+    if ([this.errorCategories.AUTHENTICATION, this.errorCategories.AUTHORIZATION].includes(categorizedError.category)) {
+      if (hasForceRecognition) {
+        isRecoverable = true;
+        this.config.logger.info('Force Recognition disponível para recuperação de autenticação');
+        
+        // Tentar recuperar com Force Recognition
+        try {
+          window.forceAuthRecognition();
+          this.config.logger.info('Force Recognition aplicado');
+        } catch (forceError) {
+          this.config.logger.error('Erro ao aplicar Force Recognition:', forceError);
+        }
+      }
+    }
     
     // Aumenta contador de tentativas para erros recuperáveis
     if (isRecoverable) {
@@ -202,6 +224,17 @@ class AuthErrorHandler {
       } else {
         isRecoverable = false;
         this.config.logger.error('Número máximo de tentativas excedido');
+        
+        // Última tentativa com Force Recognition se disponível
+        if (hasForceRecognition && !context.includes('force_recognition')) {
+          this.config.logger.info('Tentando recuperação final com Force Recognition');
+          try {
+            window.forceAuthRecognition();
+            setTimeout(() => window.location.reload(), 1500);
+          } catch (forceError) {
+            this.config.logger.error('Erro na recuperação final com Force Recognition:', forceError);
+          }
+        }
       }
     }
 

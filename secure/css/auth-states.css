@@ -1,0 +1,160 @@
+/* auth-states.css - Estilos para os diferentes estados de autenticação */
+
+/* Estados gerais de autenticação */
+/* .auth-state-idle - estado padrão, sem estilos específicos */
+
+.auth-state-loading .loading-overlay {
+  display: flex;
+}
+
+.auth-state-authenticating .btn-provider.loading {
+  position: relative;
+}
+
+.auth-state-authenticating .btn-provider.loading .provider-text {
+  visibility: hidden;
+}
+
+.auth-state-authenticating .btn-provider.loading .loading-spinner {
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+}
+
+/* .auth-state-redirecting - sem estilos específicos além dos herdados */
+
+/* .auth-state-success - sem estilos específicos além dos herdados */
+
+/* Estados de erro e timeout */
+.auth-state-error .auth-alert-error,
+.auth-state-timeout .auth-alert-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #b91c1c;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.auth-state-error .auth-alert-error svg,
+.auth-state-timeout .auth-alert-error svg {
+  color: #b91c1c;
+}
+
+.auth-state-success .auth-alert-success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #15803d;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.auth-state-success .auth-alert-success svg {
+  color: #15803d;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(59, 130, 246, 0.2);
+  border-radius: 50%;
+  border-top-color: var(--brand-primary);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Animação de pulso para os botões durante tentativa */
+.auth-state-authenticating .btn-provider:not(.loading),
+.auth-state-redirecting .btn-provider:not(.loading) {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+}
+
+/* Timeout indicator */
+.auth-state-timeout .auth-alert-error {
+  border-left: 4px solid #b91c1c;
+}
+
+/* Botões durante estados específicos */
+.auth-state-error .btn-provider,
+.auth-state-timeout .btn-provider {
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.auth-state-error .btn-provider:hover,
+.auth-state-timeout .btn-provider:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
+}
+
+/* Botão de "Tentar novamente" exibido em casos de erro e timeout */
+.retry-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(59, 130, 246, 0.1);
+  color: var(--brand-primary);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 0.65rem 1.25rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.retry-button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Timer visual para feedback de timeout */
+.auth-timeout-timer {
+  width: 100%;
+  height: 4px;
+  background: rgba(59, 130, 246, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.auth-timeout-timer-progress {
+  height: 100%;
+  background: var(--brand-primary);
+  width: 100%;
+  animation: timer-countdown 30s linear;
+}
+
+@keyframes timer-countdown {
+  0% { width: 100%; }
+  100% { width: 0%; }
+}

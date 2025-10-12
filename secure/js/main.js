@@ -1,5 +1,6 @@
 /**
  * main.js - Código principal para autenticação Cara Core
+ * Versão com gerenciamento de erros e timeouts
  */
 
 // Função para gerar ícones SVG
@@ -11,63 +12,48 @@ document.addEventListener('DOMContentLoaded', async function() {
   const authScreen = document.getElementById('authScreen');
   const mainContent = document.getElementById('mainContent');
   const authAlerts = document.getElementById('authAlerts');
-
-  // Mostrar overlay de carregamento
-  loadingOverlay.classList.add('active');
+  
+  // Aguardar inicialização dos componentes
+  await waitForComponents(['OIDCAuth', 'AuthErrorHandler', 'AuthUIFeedback']);
+  
+  // Mostrar feedback de carregamento
+  window.AuthUIFeedback.updateState('loading');
+  
+  // Configurar error handler
+  window.AuthErrorHandler.config.onCriticalError = (error) => {
+    const friendlyMessage = window.AuthErrorHandler.getFriendlyErrorMessage(error);
+    window.AuthUIFeedback.loginFailed(friendlyMessage);
+  };
 
   try {
-    // Aguardar inicialização do OIDCAuth
-    if (typeof window.OIDCAuth === 'undefined') {
-      await new Promise(resolve => {
-        const checkOIDC = () => {
-          if (typeof window.OIDCAuth !== 'undefined') {
-            resolve();
-          } else {
-            setTimeout(checkOIDC, 100);
-          }
-        };
-        checkOIDC();
-      });
-    }
-
     // Verificar se o usuário já está autenticado
     const isAuthenticated = await window.OIDCAuth.isAuthenticated();
 
     if (isAuthenticated) {
+      window.AuthUIFeedback.loginSuccess('Autenticado com sucesso!');
       await showUserInfo();
-      showMainContent();
+      window.AuthUIFeedback.updateState('success');
       setTimeout(() => {
         window.location.href = '/secure/restrita.html';
       }, 2000);
     } else {
-      showAuthScreen();
+      window.AuthUIFeedback.updateState('idle');
     }
 
   } catch (error) {
     console.error('Erro na inicialização:', error);
-    showError('Erro ao inicializar sistema de autenticação');
-    showAuthScreen();
-  } finally {
-    loadingOverlay.classList.remove('active');
+    const processedError = window.AuthErrorHandler.processError(
+      error, 
+      'initialization'
+    );
+    window.AuthUIFeedback.loginFailed(
+      window.AuthErrorHandler.getFriendlyErrorMessage(processedError)
+    );
   }
 
   // Configurar event listeners para os botões de login
   const btnLoginGoogle = document.getElementById('btnLoginGoogle');
   const btnLoginMicrosoft = document.getElementById('btnLoginMicrosoft');
-  
-  // Função auxiliar para garantir que os botões estejam em estado utilizável
-  function resetButtonState(btn) {
-    if (btn) {
-      btn.disabled = false;
-      btn.style.pointerEvents = 'auto';
-      btn.style.opacity = '1';
-      btn.classList.remove('loading');
-    }
-  }
-  
-  // Garantir que os botões estejam em estado utilizável
-  resetButtonState(btnLoginGoogle);
-  resetButtonState(btnLoginMicrosoft);
   
   if (btnLoginGoogle) {
     btnLoginGoogle.addEventListener('click', (event) => {
@@ -92,62 +78,134 @@ document.addEventListener('DOMContentLoaded', async function() {
   } else {
     console.error('❌ Botão Microsoft não encontrado');
   }
+  
+  // Verificar se há parâmetros de erro na URL
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.has('error')) {
+    const errorReason = urlParams.get('reason') || 'unknown';
+    console.error('🔴 Erro detectado na URL:', errorReason);
+    window.AuthUIFeedback.loginFailed(`Ocorreu um erro na autenticação: ${errorReason}`);
+  }
 
   // Funções auxiliares
-
-  function showAuthScreen() {
-    authScreen.classList.add('active');
-    mainContent.style.display = 'none';
-  }
-
-  function showMainContent() {
-    authScreen.classList.remove('active');
-    mainContent.style.display = 'block';
-  }
-
-  async function loginWithProvider(provider) {
-    const button = provider === 'google'
-      ? document.getElementById('btnLoginGoogle')
-      : document.getElementById('btnLoginMicrosoft');
-
-    try {
-      button.classList.add('loading');
-      button.disabled = true;
-      // Garantir que pointer-events não bloqueie o botão após tentativas anteriores
-      button.style.pointerEvents = 'auto';
-
-      clearAlerts();
-
-      // Aguardar OIDCAuth estar disponível
-      if (!window.OIDCAuth) {
-        console.log('⏳ Aguardando OIDCAuth carregar...');
-        await new Promise(resolve => {
-          const poll = () => {
-            if (window.OIDCAuth) {
-              console.log('✅ OIDCAuth carregado');
-              resolve();
-              return;
+  
+  /**
+   * Aguarda que componentes específicos estejam disponíveis no window
+   */
+  async function waitForComponents(componentNames, maxWaitTime = 10000) {
+    const startTime = Date.now();
+    const components = new Map();
+    
+    componentNames.forEach(name => components.set(name, false));
+    
+    return new Promise((resolve, reject) => {
+      const checkComponents = () => {
+        let allAvailable = true;
+        
+        components.forEach((available, name) => {
+          if (!available) {
+            if (typeof window[name] !== 'undefined') {
+              components.set(name, true);
+              console.log(`✅ ${name} disponível`);
+            } else {
+              allAvailable = false;
             }
-            setTimeout(poll, 100);
-          };
-          poll();
+          }
         });
-      }
+        
+        if (allAvailable) {
+          resolve();
+          return;
+        }
+        
+        if (Date.now() - startTime > maxWaitTime) {
+          const missing = [];
+          components.forEach((available, name) => {
+            if (!available) missing.push(name);
+          });
+          reject(new Error(`Tempo limite excedido aguardando: ${missing.join(', ')}`));
+          return;
+        }
+        
+        setTimeout(checkComponents, 100);
+      };
+      
+      checkComponents();
+    });
+  }
 
+  /**
+   * Processo de login com um provedor específico
+   */
+  async function loginWithProvider(provider) {
+    try {
+      // Atualizar estado da UI
+      window.AuthUIFeedback.startLogin(provider);
+      
+      // Limpar qualquer tentativa anterior
+      window.AuthErrorHandler.resetRetryCount();
+      
+      // Iniciar timeout para o redirecionamento
+      const timeoutId = window.AuthErrorHandler.startRedirectTimeout(
+        `${provider}-login`,
+        (timeoutError, retryCount) => {
+          console.log(`🕒 Timeout detectado no login com ${provider}, tentativa ${retryCount}`);
+          // Se ainda temos tentativas, tentar novamente
+          if (retryCount <= window.AuthErrorHandler.config.maxAutoRetries) {
+            window.AuthUIFeedback.loginTimeout(
+              `Tempo limite excedido ao tentar conectar com ${provider === 'google' ? 'Google' : 'Microsoft'}. ` +
+              `Tentando novamente (${retryCount}/${window.AuthErrorHandler.config.maxAutoRetries})...`
+            );
+            // Tentar novamente após o intervalo
+            setTimeout(() => loginWithProvider(provider), 1000);
+          } else {
+            // Sem mais tentativas, mostrar erro
+            window.AuthUIFeedback.loginTimeout(
+              `Não foi possível conectar com ${provider === 'google' ? 'Google' : 'Microsoft'} após várias tentativas. ` +
+              `Verifique sua conexão e tente novamente mais tarde.`
+            );
+          }
+        }
+      );
+      
       console.log(`🔐 Iniciando login com ${provider}...`);
+      
+      // Trocar o provedor
       await window.OIDCAuth.switchProvider(provider);
+      
+      // Atualizar UI para estado de redirecionamento
+      window.AuthUIFeedback.updateState('redirecting', { provider });
+      
+      // Iniciar login (será redirecionado para o provedor)
       await window.OIDCAuth.login();
+      
+      // Se chegamos aqui, o redirecionamento não ocorreu como esperado
+      throw new Error('Redirecionamento para o provedor de autenticação falhou');
+      
     } catch (error) {
       console.error('Erro no login:', error);
-      showError(resolveLoginError(provider, error));
-    } finally {
-      button.classList.remove('loading');
-      button.disabled = false;
-      button.style.pointerEvents = 'auto';
-      button.style.opacity = '1';
+      // Processar erro e obter mensagem amigável
+      const processedError = window.AuthErrorHandler.processError(
+        error, 
+        `${provider}-login`,
+        (recoveredError, retryCount) => {
+          console.log(`🔄 Tentando recuperar de erro (${retryCount}/${window.AuthErrorHandler.config.maxAutoRetries})`, recoveredError);
+          setTimeout(() => loginWithProvider(provider), 2000);
+        }
+      );
+      
+      // Atualizar UI apenas se o erro não for recuperável
+      if (!processedError.isRecoverable) {
+        window.AuthUIFeedback.loginFailed(
+          window.AuthErrorHandler.getFriendlyErrorMessage(processedError)
+        );
+      }
     }
   }
 
+  /**
+   * Exibe informações do usuário logado
+   */
   async function showUserInfo() {
     try {
       const userProfile = await window.OIDCAuth.getUserProfile();
@@ -180,46 +238,17 @@ document.addEventListener('DOMContentLoaded', async function() {
       }
     } catch (error) {
       console.error('Erro ao exibir informações do usuário:', error);
+      
+      // Usar error handler para processar o erro
+      const processedError = window.AuthErrorHandler.processError(
+        error, 
+        'user-profile'
+      );
+      
+      window.AuthUIFeedback.showError(
+        'Não foi possível carregar informações do usuário. ' +
+        window.AuthErrorHandler.getFriendlyErrorMessage(processedError)
+      );
     }
-  }
-
-  function showError(message) {
-    authAlerts.innerHTML = `
-      <div class="auth-alert auth-alert-error">
-        ${icon('warning', 'icon-sm')}
-        ${message}
-      </div>
-    `;
-  }
-
-  function showSuccess(message) {
-    authAlerts.innerHTML = `
-      <div class="auth-alert auth-alert-success">
-        ${icon('check-circle', 'icon-sm')}
-        ${message}
-      </div>
-    `;
-  }
-
-  function clearAlerts() {
-    authAlerts.innerHTML = '';
-  }
-
-  function resolveLoginError(provider, error) {
-    const providerName = provider === 'google' ? 'Google' : 'Microsoft';
-    const rawDetails = [
-      typeof error === 'string' ? error : null,
-      error?.message,
-      error?.error_description,
-      error?.error
-    ].filter(Boolean).join(' | ');
-
-    const normalizedDetails = rawDetails.toLowerCase();
-    if (provider !== 'google' && (normalizedDetails.includes('aadsts9002346') || normalizedDetails.includes('/consumers endpoint'))) {
-      return 'Não foi possível entrar com uma conta Microsoft corporativa ou escolar. Esta área aceita apenas contas pessoais Microsoft (@outlook.com, @hotmail.com, Xbox Live). Troque para uma conta pessoal e tente novamente.';
-    }
-
-    const technicalDetail = error?.message ? ` Detalhe técnico: ${error.message}` : '';
-    return `Erro ao conectar com ${providerName}. Somente contas pessoais Microsoft e Google são aceitas.${technicalDetail}`;
   }
 });

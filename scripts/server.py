@@ -16,9 +16,9 @@ import mimetypes
 from datetime import datetime, timezone, timedelta
 
 # Porta padrão (use a variável de ambiente PORT se desejar)
-PORT = int(os.getenv("PORT", "8000"))
-# Diretório raiz do site (pasta onde este arquivo está)
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+PORT = int(os.getenv("PORT", "8080"))  # Alterado para 8080 para corresponder à URI de redirecionamento registrada
+# Diretório raiz do site (pasta pai da pasta scripts)
+PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 LOG_DIR = os.path.join(PROJECT_ROOT, 'backend', 'logs')
 os.makedirs(LOG_DIR, exist_ok=True)
 LOG_RETENTION_DAYS = int(os.getenv("LOG_RETENTION_DAYS", "60"))
@@ -713,6 +713,7 @@ def main():
         with socketserver.ThreadingTCPServer(("", PORT), handler_class) as httpd:
             logger.info("--- Servidor Local Iniciado ---")
             logger.info(f"Pasta raiz do projeto: {PROJECT_ROOT}")
+            logger.info(f"Servindo arquivos de: {PROJECT_ROOT}")
             if purged:
                 logger.info(f"Caches Python limpos: {purged} itens removidos")
             else:
@@ -721,6 +722,7 @@ def main():
             vendor_src = (info_vendor.get('source') or 'existing' if info_vendor.get('size') else 'n/a') if isinstance(info_vendor, dict) else 'n/a'
             logger.info(f"Vendor MSAL: ok={ok_vendor} path={getattr(info_vendor, 'get', lambda *_: None)('path') if isinstance(info_vendor, dict) else 'n/a'} source={vendor_src} error={(info_vendor.get('error') if isinstance(info_vendor, dict) else None)}")
             logger.info(f"Abra: http://localhost:{PORT}/index.html")
+            logger.info(f"URLs OAuth registradas devem usar porta {PORT} (exemplo: http://localhost:{PORT}/secure/callback.html)")
             logger.info("Pressione Ctrl+C para parar o servidor.")
             logger.info("---------------------------------")
             try:

@@ -343,9 +343,9 @@
 
               const name = index === 0 ? 'Google' : 'Microsoft';
               btn.disabled = false;
-              btn.style.pointerEvents = 'auto';
-              btn.style.opacity = '1';
               btn.classList.remove('loading');
+              btn.style.pointerEvents = '';
+              btn.style.opacity = '';
               console.log(`🔧 Botão ${name} habilitado e pronto para clique`);
             });
           }, 100);
@@ -363,38 +363,39 @@
       function setupButtonListeners() {
         const btnLoginGoogle = document.getElementById('btnLoginGoogle');
         const btnLoginMicrosoft = document.getElementById('btnLoginMicrosoft');
-        
+
         console.log('🔍 Configurando event listeners dos botões...');
-        
+
         if (btnLoginGoogle) {
-          // Remover listeners existentes para evitar duplicação
-          const newGoogleBtn = btnLoginGoogle.cloneNode(true);
-          btnLoginGoogle.parentNode.replaceChild(newGoogleBtn, btnLoginGoogle);
-          
-          newGoogleBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            console.log('🔵 Clique no botão Google detectado');
-            loginWithProvider('google');
-          });
-          console.log('✅ Event listener Google configurado');
+          if (!btnLoginGoogle.dataset.listenerAttached) {
+            btnLoginGoogle.addEventListener('click', (event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              console.log('🔵 Clique no botão Google detectado');
+              loginWithProvider('google');
+            });
+            btnLoginGoogle.dataset.listenerAttached = 'true';
+            console.log('✅ Event listener Google configurado');
+          } else {
+            console.log('ℹ️ Listener Google já configurado, ignorando duplicação');
+          }
         } else {
           console.error('❌ Botão Google não encontrado');
         }
-        
-        const btnLoginMicrosoftUpdated = document.getElementById('btnLoginMicrosoft');
-        if (btnLoginMicrosoftUpdated) {
-          // Remover listeners existentes para evitar duplicação
-          const newMicrosoftBtn = btnLoginMicrosoftUpdated.cloneNode(true);
-          btnLoginMicrosoftUpdated.parentNode.replaceChild(newMicrosoftBtn, btnLoginMicrosoftUpdated);
-          
-          newMicrosoftBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            console.log('🔵 Clique no botão Microsoft detectado');
-            loginWithProvider('entra');
-          });
-          console.log('✅ Event listener Microsoft configurado');
+
+        if (btnLoginMicrosoft) {
+          if (!btnLoginMicrosoft.dataset.listenerAttached) {
+            btnLoginMicrosoft.addEventListener('click', (event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              console.log('🔵 Clique no botão Microsoft detectado');
+              loginWithProvider('entra');
+            });
+            btnLoginMicrosoft.dataset.listenerAttached = 'true';
+            console.log('✅ Event listener Microsoft configurado');
+          } else {
+            console.log('ℹ️ Listener Microsoft já configurado, ignorando duplicação');
+          }
         } else {
           console.error('❌ Botão Microsoft não encontrado');
         }

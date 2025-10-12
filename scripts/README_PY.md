@@ -41,60 +41,76 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 ## Scripts de Teste e Validação
 
-### `endpoint_checks.py`
+### `endpoint_checks.py` (ARQUIVADO)
 
-**Função:** Biblioteca comum para testes de endpoints
+**Função:** (Obsoleto - Arquitetura Anterior)
 
-- Classe `CheckResult` para resultados de testes
-- Funções helper para testes CORS, health check
-- Validação de encaminhamento para provedores OAuth
-- **Relacionamentos:** Usado por todos os scripts de teste
+- Substituído por novos testes compatíveis com a arquitetura simplificada
+- Arquivo original disponível em `arquivados_testes_2025_10_12/endpoint_checks.py.deprecated`
+- **Motivo:** Incompatível com a arquitetura simplificada (outubro 2025)
 
-### `teste_end_point_azure.py`
+### `teste_end_point_azure.py` (ARQUIVADO)
 
-**Função:** Suite completa de testes para API Azure (caracore-backend)
+**Função:** (Obsoleto - Arquitetura Anterior)
 
-- Testes de health check no caracore-backend.azurewebsites.net
-- Validação de App Service Settings (substituiu Key Vault)
-- Testes CORS para Google e Microsoft
-- Validação de campos obrigatórios
-- Testes de encaminhamento OAuth
+- Substituído por novos testes compatíveis com a arquitetura simplificada
+- Arquivo original disponível em `arquivados_testes_2025_10_12/teste_end_point_azure.py.deprecated`
+- **Motivo:** Incompatível com a arquitetura simplificada (outubro 2025)
 
-- **Relacionamentos:** Usa `endpoint_checks.py`
+### `teste_end_point_local.py` (ARQUIVADO)
 
-### `teste_end_point_local.py`
+**Função:** (Obsoleto - Arquitetura Anterior)
 
-**Função:** Testes para backend local/desenvolvimento
+- Substituído por novos testes compatíveis com a arquitetura simplificada
+- Arquivo original disponível em `arquivados_testes_2025_10_12/teste_end_point_local.py.deprecated`
+- **Motivo:** Incompatível com a arquitetura simplificada (outubro 2025)
 
-- Similar ao Azure mas para ambiente local
-- Testes com/sem configuração OAuth
-- Validação de docker backend
-- **Relacionamentos:** Usa `endpoint_checks.py`
+### `smoke_teste_local.py` (ARQUIVADO)
 
-### `smoke_teste_local.py`
+**Função:** (Obsoleto - Arquitetura Anterior)
 
-**Função:** Testes rápidos para desenvolvimento local
+- Substituído por novos testes compatíveis com a arquitetura simplificada
+- Arquivo original disponível em `arquivados_testes_2025_10_12/smoke_teste_local.py.deprecated`
+- **Motivo:** Incompatível com a arquitetura simplificada (outubro 2025)
 
-- Validação básica de funcionalidade
-- Auto-detecção de configuração
-- **Relacionamentos:** Usa `teste_end_point_local.py`
+### `validar_api_azure.py` (ARQUIVADO)
 
-### `validar_api_azure.py`
+**Função:** (Obsoleto - Arquitetura Anterior)
 
-**Função:** Executor principal para todos os testes Azure
+- Substituído por novos testes compatíveis com a arquitetura simplificada
+- Arquivo original disponível em `arquivados_testes_2025_10_12/validar_api_azure.py.deprecated`
+- **Motivo:** Incompatível com a arquitetura simplificada (outubro 2025)
 
-- Testes consolidados do caracore-backend
-- Relatório consolidado de status
-- **Relacionamentos:** Executa `teste_end_point_azure.py`
+### `executar_testes_azure.py` / `executar_testes_azure_simples.py` (ARQUIVADO)
 
-### `executar_testes_azure.py` / `executar_testes_azure_simples.py`
+**Função:** (Obsoleto - Arquitetura Anterior)
 
-**Função:** Scripts executores alternativos para testes Azure
+- Substituído por novos testes compatíveis com a arquitetura simplificada
+- Arquivos originais disponíveis em `arquivados_testes_2025_10_12/`
+- **Motivo:** Incompatível com a arquitetura simplificada (outubro 2025)
 
-- Versões com/sem emojis Unicode
-- **Relacionamentos:** Executam os scripts de teste
+### `teste_centralizacao_frontend.py`
 
-- **Relacionamentos:** Executam os scripts de teste
+**Função:** Testes unitários para centralização de frontend
+
+- Framework unittest para validação sistemática
+- Verificação de existência de diretórios e arquivos
+- Validação de referências em HTML com parâmetros de versão
+- Detecção de CSS/JS inline não permitido
+- Testes automatizados compatíveis com nova arquitetura
+
+- **Relacionamentos:** Complementa `verificar_centralizacao.py`
+
+### `teste_servidor_simplificado.py`
+
+**Função:** Testes de inicialização do servidor na arquitetura simplificada
+
+- Inicialização e verificação do servidor local sem dependência Docker
+- Validação de acesso a arquivos estáticos (CSS/JS centralizados)
+- Verificação da área segura do site
+- Compatível com nova arquitetura (pós migração outubro/2025)
+
+- **Relacionamentos:** Substitui `smoke_teste_local.py` para nova arquitetura
 
 ## Scripts de Deploy e Infraestrutura
 
@@ -234,6 +250,29 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 - **Relacionamentos:** Script independente de validação
 
+### `scripts/teste_centralizacao_frontend.py`
+
+**Função:** Testes unitários para centralização de frontend
+
+- Framework unittest para validação sistemática
+- Verificação de existência de diretórios e arquivos
+- Validação de referências em HTML com parâmetros de versão
+- Detecção de CSS/JS inline não permitido
+- Testes automatizados compatíveis com nova arquitetura
+
+- **Relacionamentos:** Complementa `verificar_centralizacao.py`
+
+### `scripts/teste_servidor_simplificado.py`
+
+**Função:** Testes de inicialização do servidor na arquitetura simplificada
+
+- Inicialização e verificação do servidor local sem dependência Docker
+- Validação de acesso a arquivos estáticos (CSS/JS centralizados)
+- Verificação da área segura do site
+- Compatível com nova arquitetura (pós migração outubro/2025)
+
+- **Relacionamentos:** Substitui `smoke_teste_local.py` para nova arquitetura
+
 ### `scripts/diagnostico_auth_producao.py`
 
 **Função:** Diagnóstico de problemas de autenticação em produção
@@ -245,11 +284,11 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 - **Relacionamentos:** Ferramenta independente de diagnóstico
 
-## Scripts Arquivados (Migração 2025-10-11)
+## Scripts Arquivados
+
+### Scripts de Migração (2025-10-11)
 
 Os seguintes scripts foram movidos para `arquivo_migracao_2025_10_11/` após a migração para arquitetura simplificada:
-
-### Scripts de Migração Arquivados
 
 - `analisar_recursos_legados.py` - Análise de recursos para remoção
 - `configurar_google_secret_azure.py` - Configuração Key Vault (obsoleto)
@@ -258,6 +297,34 @@ Os seguintes scripts foram movidos para `arquivo_migracao_2025_10_11/` após a m
 - `reconfigurar_azure_vars.ps1` - Reconfiguração PowerShell usada na migração
 - `remover_recursos_redundantes.py` - Remoção de recursos legados executada
 - `testar_configuracao_final.py` - Testes finais da migração
+
+### Scripts de Teste Removidos (2025-10-12)
+
+Os seguintes scripts foram completamente removidos por incompatibilidade com a nova arquitetura:
+
+- `endpoint_checks.py` - Biblioteca para testes de endpoints (arquitetura anterior)
+- `teste_end_point_azure.py` - Testes para API Azure na arquitetura anterior
+- `teste_end_point_local.py` - Testes para backend local na arquitetura anterior
+- `smoke_teste_local.py` - Testes de fumaça para ambiente local
+- `validar_api_azure.py` - Executor de testes Azure 
+- `executar_testes_azure.py` - Scripts executores de testes Azure
+- `executar_testes_azure_simples.py` - Versão simplificada de execução de testes
+
+**Razão da Remoção:** Incompatibilidade com a nova arquitetura simplificada. Substituídos por:
+- `teste_centralizacao_frontend.py` - Testes unitários para centralização de frontend
+- `teste_servidor_simplificado.py` - Testes de inicialização sem dependência Docker
+
+- `endpoint_checks.py.deprecated` - Biblioteca para testes de endpoints (arquitetura anterior)
+- `teste_end_point_azure.py.deprecated` - Testes para API Azure na arquitetura anterior
+- `teste_end_point_local.py.deprecated` - Testes para backend local na arquitetura anterior
+- `smoke_teste_local.py.deprecated` - Testes de fumaça para ambiente local
+- `validar_api_azure.py.deprecated` - Executor de testes Azure 
+- `executar_testes_azure.py.deprecated` - Scripts executores de testes Azure
+- `executar_testes_azure_simples.py.deprecated` - Versão simplificada de execução de testes
+
+**Razão do Arquivamento:** Incompatibilidade com a nova arquitetura simplificada. Substituídos por:
+- `teste_centralizacao_frontend.py` - Testes unitários para centralização de frontend
+- `teste_servidor_simplificado.py` - Testes de inicialização sem dependência Docker
 
 ### Scripts Descontinuados
 
@@ -397,16 +464,20 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 - `scripts/snapshot_and_diff.py`
 - `scripts/generate_prod_diffs.py`
 - `scripts/verificar_centralizacao.py`
+- `scripts/teste_centralizacao_frontend.py`
+- `scripts/teste_servidor_simplificado.py`
 - `scripts/diagnostico_auth_producao.py`
 - `security/monitor_exe.py`
 - `wi_fi/get_wi_fi.py`
 
 ---
 
-**Total de Scripts Python Ativos:** 47 arquivos
+**Total de Scripts Python Ativos:** 49 arquivos
 **Scripts Arquivados:** 9 arquivos em `arquivo_migracao_2025_10_11/`
+**Scripts Removidos:** 7 scripts de teste da arquitetura anterior
 **Arquitetura:** Simplificada (App Service Settings, sem Key Vault)
 **CSS/JS:** Centralizado em pastas /secure/css/ e /secure/js/ (out/2025)
+**Testes Frontend:** Framework unittest para validação da centralização
 **Última Atualização:** Campo Largo, 12 de outubro de 2025
  
  

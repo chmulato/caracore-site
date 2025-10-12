@@ -3,9 +3,9 @@
 ## Sistema de Autenticação (OIDC)
 
 ### Melhorias Críticas
-- [ ] Implementar tratamento de erro mais detalhado para falhas de autenticação
-- [ ] Adicionar timeout para evitar espera infinita caso a autenticação falhe silenciosamente
-- [ ] Implementar mecanismo de retry para reconexão em caso de falhas temporárias
+- [x] Implementar tratamento de erro mais detalhado para falhas de autenticação
+- [x] Adicionar timeout para evitar espera infinita caso a autenticação falhe silenciosamente
+- [x] Implementar mecanismo de retry para reconexão em caso de falhas temporárias
 - [ ] Revisar tratamento de redirecionamentos em diferentes ambientes (localhost, produção, file://)
 
 ### Otimizações
@@ -25,7 +25,7 @@
 ### Melhorias Críticas
 - [ ] Corrigir responsividade em dispositivos móveis (especialmente em telas pequenas)
 - [ ] Resolver problemas de acessibilidade (contraste, navegação por teclado)
-- [ ] Garantir feedback visual claro durante estados de carregamento
+- [x] Garantir feedback visual claro durante estados de carregamento
 
 ### Otimizações
 - [ ] Refatorar CSS para melhor organização (talvez usando metodologia BEM)
@@ -57,9 +57,9 @@
 ## Documentação
 
 ### Melhorias Críticas
-- [ ] Documentar processo de autenticação completo
+- [x] Documentar processo de autenticação completo
 - [ ] Criar guia de configuração detalhado para novos ambientes
-- [ ] Documentar estrutura e organização do código
+- [x] Documentar estrutura e organização do código
 
 ### Otimizações
 - [ ] Criar documentação de API com exemplos
@@ -90,7 +90,14 @@
 
 ## Correções Recentes
 
-### Problema com Botões de Login (Resolvido)
+### Sistema de Tratamento de Erros e Timeouts (Implementado em 12/10/2025)
+- [x] Implementação de detecção de timeout para redirecionamento (30s) e respostas do servidor (15s)
+- [x] Sistema de categorização e tratamento de erros com mensagens amigáveis
+- [x] Mecanismo automático de retry para falhas recuperáveis (até 2 tentativas)
+- [x] Feedback visual aprimorado durante estados de autenticação
+- [x] Documentação detalhada do sistema em `/docs/SISTEMA-TIMEOUT-ERROS.md`
+
+### Problema com Botões de Login (Resolvido em 11/10/2025)
 - [x] Extrair CSS inline para arquivo separado
 - [x] Extrair JavaScript inline para arquivos modulares
 - [x] Corrigir problema de origem (origin) para autenticação via file://

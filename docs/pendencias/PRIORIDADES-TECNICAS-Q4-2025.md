@@ -28,6 +28,7 @@ Este documento lista as prioridades técnicas para o quarto trimestre de 2025 no
 - Teste de penetração no fluxo de autenticação
 - Análise de configurações de CORS
 - Verificação de proteção contra ataques comuns (CSRF, XSS)
+- Revisão do sistema de tratamento de erros e timeouts implementado
 
 **Entregáveis:**
 - Relatório de vulnerabilidades
@@ -73,6 +74,7 @@ Este documento lista as prioridades técnicas para o quarto trimestre de 2025 no
 - **Acessibilidade:** Conformidade com WCAG 2.2 AA verificada por auditoria externa
 - **Qualidade de Código:** Cobertura de testes > 80%
 - **UX:** Redução de 30% na taxa de abandono durante autenticação
+- **Resiliência:** Redução de 90% nos casos de falha silenciosa de autenticação
 
 ## Dependências e Riscos
 
@@ -94,5 +96,5 @@ Este documento lista as prioridades técnicas para o quarto trimestre de 2025 no
 
 ---
 
-**Última atualização:** 11 de Outubro de 2025  
+**Última atualização:** 12 de Outubro de 2025  
 **Próxima revisão:** 1 de Novembro de 2025

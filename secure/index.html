@@ -328,7 +328,27 @@
             window.location.href = '/secure/restrita.html';
           }, 2000);
         } else {
+          console.log('🔐 Usuário não autenticado, mostrando tela de login');
           showAuthScreen();
+
+          // Garante que os botões não fiquem travados ao exibir a tela
+          setTimeout(() => {
+            const googleBtn = document.getElementById('btnLoginGoogle');
+            const microsoftBtn = document.getElementById('btnLoginMicrosoft');
+
+            [googleBtn, microsoftBtn].forEach((btn, index) => {
+              if (!btn) {
+                return;
+              }
+
+              const name = index === 0 ? 'Google' : 'Microsoft';
+              btn.disabled = false;
+              btn.style.pointerEvents = 'auto';
+              btn.style.opacity = '1';
+              btn.classList.remove('loading');
+              console.log(`🔧 Botão ${name} habilitado e pronto para clique`);
+            });
+          }, 100);
         }
 
       } catch (error) {
@@ -339,29 +359,99 @@
         loadingOverlay.classList.remove('active');
       }
 
-      // Configurar event listeners para os botões de login
-      const btnLoginGoogle = document.getElementById('btnLoginGoogle');
-      const btnLoginMicrosoft = document.getElementById('btnLoginMicrosoft');
-      
-      if (btnLoginGoogle) {
-        btnLoginGoogle.addEventListener('click', () => {
-          console.log('🔵 Clique no botão Google detectado');
-          loginWithProvider('google');
-        });
-        console.log('✅ Event listener Google configurado');
-      } else {
-        console.error('❌ Botão Google não encontrado');
+      // Configurar event listeners para os botões de login com retry
+      function setupButtonListeners() {
+        const btnLoginGoogle = document.getElementById('btnLoginGoogle');
+        const btnLoginMicrosoft = document.getElementById('btnLoginMicrosoft');
+        
+        console.log('🔍 Configurando event listeners dos botões...');
+        
+        if (btnLoginGoogle) {
+          // Remover listeners existentes para evitar duplicação
+          const newGoogleBtn = btnLoginGoogle.cloneNode(true);
+          btnLoginGoogle.parentNode.replaceChild(newGoogleBtn, btnLoginGoogle);
+          
+          newGoogleBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            console.log('🔵 Clique no botão Google detectado');
+            loginWithProvider('google');
+          });
+          console.log('✅ Event listener Google configurado');
+        } else {
+          console.error('❌ Botão Google não encontrado');
+        }
+        
+        const btnLoginMicrosoftUpdated = document.getElementById('btnLoginMicrosoft');
+        if (btnLoginMicrosoftUpdated) {
+          // Remover listeners existentes para evitar duplicação
+          const newMicrosoftBtn = btnLoginMicrosoftUpdated.cloneNode(true);
+          btnLoginMicrosoftUpdated.parentNode.replaceChild(newMicrosoftBtn, btnLoginMicrosoftUpdated);
+          
+          newMicrosoftBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            event.stopPropagation();
+            console.log('🔵 Clique no botão Microsoft detectado');
+            loginWithProvider('entra');
+          });
+          console.log('✅ Event listener Microsoft configurado');
+        } else {
+          console.error('❌ Botão Microsoft não encontrado');
+        }
+        
+        // Verificar se os botões estão realmente clicáveis
+        setTimeout(() => {
+          const googleBtn = document.getElementById('btnLoginGoogle');
+          const microsoftBtn = document.getElementById('btnLoginMicrosoft');
+          
+          [
+            { name: 'Google', btn: googleBtn },
+            { name: 'Microsoft', btn: microsoftBtn }
+          ].forEach(({ name, btn }) => {
+            if (btn) {
+              const style = window.getComputedStyle(btn);
+              const rect = btn.getBoundingClientRect();
+              const elementAtCenter = document.elementFromPoint(
+                rect.left + rect.width / 2,
+                rect.top + rect.height / 2
+              );
+              
+              console.log(`🔍 Botão ${name}:`);
+              console.log(`  - Disabled: ${btn.disabled}`);
+              console.log(`  - Pointer events: ${style.pointerEvents}`);
+              console.log(`  - Display: ${style.display}`);
+              console.log(`  - Visibility: ${style.visibility}`);
+              console.log(`  - Opacity: ${style.opacity}`);
+              console.log(`  - Element at center: ${elementAtCenter === btn || btn.contains(elementAtCenter) ? 'OK' : 'BLOCKED'}`);
+              
+              if (elementAtCenter !== btn && !btn.contains(elementAtCenter)) {
+                console.warn(`⚠️ Elemento sobreposto detectado no botão ${name}:`, elementAtCenter);
+              }
+            }
+          });
+        }, 500);
       }
       
-      if (btnLoginMicrosoft) {
-        btnLoginMicrosoft.addEventListener('click', () => {
-          console.log('🔵 Clique no botão Microsoft detectado');
-          loginWithProvider('entra');
-        });
-        console.log('✅ Event listener Microsoft configurado');
-      } else {
-        console.error('❌ Botão Microsoft não encontrado');
+      // Executar setup com retry
+      let setupAttempts = 0;
+      const maxSetupAttempts = 5;
+      
+      function attemptSetup() {
+        setupAttempts++;
+        const btnGoogle = document.getElementById('btnLoginGoogle');
+        const btnMicrosoft = document.getElementById('btnLoginMicrosoft');
+        
+        if (btnGoogle && btnMicrosoft) {
+          setupButtonListeners();
+        } else if (setupAttempts < maxSetupAttempts) {
+          console.log(`⏳ Tentativa ${setupAttempts}/${maxSetupAttempts} - Aguardando botões aparecerem...`);
+          setTimeout(attemptSetup, 200);
+        } else {
+          console.error('❌ Falha ao encontrar botões após múltiplas tentativas');
+        }
       }
+      
+      attemptSetup();
 
       function showAuthScreen() {
         authScreen.classList.add('active');

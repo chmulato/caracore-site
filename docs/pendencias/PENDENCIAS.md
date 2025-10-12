@@ -96,7 +96,3 @@
 - [x] Corrigir problema de origem (origin) para autenticação via file://
 - [x] Garantir que os botões de login não fiquem em estado "travado"
 - [x] Ajustar configurações de log para ambiente de produção
-
----
-
-**Última atualização:** 11 de Outubro de 2025

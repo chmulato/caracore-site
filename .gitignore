@@ -55,7 +55,6 @@ npm-debug.log*
 package-lock.json
 package.json
 
-
 # MSAL vendor files (generated/minified)
 js/vendor/msal-browser.min.js
 temp_secure.html
@@ -72,3 +71,4 @@ deploy_temp*
 backend_deploy.zip
 deploy_*.zip
 arquivo_migracao_*/
+test_results*.json

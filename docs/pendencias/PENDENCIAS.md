@@ -74,8 +74,8 @@
 ## Testes
 
 ### Melhorias Críticas
-- [ ] Implementar testes unitários para funções críticas
-- [ ] Criar testes de integração para fluxos de autenticação
+- [x] Implementar testes unitários para funções críticas
+- [x] Criar testes de integração para fluxos de autenticação
 - [ ] Implementar testes E2E para simulação de usuários reais
 
 ### Otimizações

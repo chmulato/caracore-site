@@ -5,36 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Validando login - Cara Core</title>
   <link rel="icon" href="/images/favicon.ico" />
-  <link rel="stylesheet" href="/secure/assets/style.css" />
-  <style>
-    :root {
-      --brand-dark: #0f172a;
-      --brand-light: #f8fafc;
-      --brand-primary: #2563eb;
-      --brand-secondary: #4f46e5;
-      --brand-accent: #38bdf8;
-      --text-dark: #1e293b;
-      --text-muted: #64748b;
-      --surface: rgba(255,255,255,0.9);
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin:0; padding:0; min-height:100%; font-family:"Inter", "Segoe UI", system-ui, -apple-system, sans-serif; color:var(--text-dark); background:linear-gradient(120deg, #f8fafc 0%, #dbeafe 100%); }
-    .site-shell { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; padding:2.5rem 1.5rem; }
-    .card { background:var(--surface); border-radius:24px; padding:2.75rem 2.5rem; max-width:520px; width:100%; text-align:center; box-shadow:0 30px 60px rgba(15,23,42,0.16); position:relative; overflow:hidden; }
-    .card::before { content:""; position:absolute; inset:0; background:linear-gradient(140deg, rgba(37,99,235,0.12), rgba(79,70,229,0.12)); opacity:0.72; pointer-events:none; }
-    .card-inner { position:relative; z-index:1; display:flex; flex-direction:column; gap:1.5rem; align-items:center; }
-    .card-badge { display:inline-flex; align-items:center; gap:0.5rem; padding:0.45rem 1.2rem; border-radius:999px; background:rgba(37,99,235,0.18); color:var(--brand-primary); font-weight:600; letter-spacing:0.02em; text-transform:uppercase; font-size:0.82rem; }
-    .card-badge svg { width:1rem; height:1rem; }
-    h1 { margin:0; font-size:clamp(1.8rem, 4vw, 2.4rem); }
-    p { margin:0; color:var(--text-muted); font-size:1.05rem; line-height:1.75; }
-    .spinner { width:64px; height:64px; border-radius:999px; border:6px solid rgba(37,99,235,0.18); border-top-color:var(--brand-primary); animation:spin 1s linear infinite; }
-    .footer-link { margin-top:1.25rem; font-size:0.95rem; }
-    .footer-link a { color:var(--brand-primary); text-decoration:none; font-weight:600; }
-    .footer-link a:hover, .footer-link a:focus-visible { text-decoration:underline; }
-    @keyframes spin { to { transform:rotate(360deg); } }
-    .icon { width:1em; height:1em; display:inline-block; }
-    .icon-sprite { position:absolute; width:0; height:0; overflow:hidden; }
-  </style>
+  <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251012" />
+  <link rel="stylesheet" href="/secure/css/secure-callback.css?v=20251012" />
+  <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251012" />
 </head>
 <body>
   <svg aria-hidden="true" focusable="false" class="icon-sprite">
@@ -73,23 +46,10 @@
   <script defer src="/secure/logger.js?v=20250930"></script>
   <script defer src="/secure/dynamic-config.js?v=20250930"></script>
   <script defer src="/secure/oauth-callback-auto-fix.js?v=20251011"></script>
+  <script defer src="/secure/js/error-handler.js?v=20251012"></script>
+  <script defer src="/secure/js/enhanced-error-handler.js?v=20251012"></script>
   <script defer src="/secure/auth-standalone.js?v=20251001b"></script>
-  <script>
-    (function(){
-      const params = new URLSearchParams(window.location.search);
-      if (!params.has('code')) {
-        const link = document.getElementById('fallbackLink');
-        if (link) link.hidden = false;
-      }
-
-      // Caso o script standalone já tenha processado e redirecionado, exibimos um fallback após timeout
-      setTimeout(() => {
-        const link = document.getElementById('fallbackLink');
-        if (link && link.hidden) {
-          link.hidden = false;
-        }
-      }, 15000);
-    })();
+  <script defer src="/secure/js/callback-helpers.js?v=20251012"></script>
   </script>
 </body>
 </html>

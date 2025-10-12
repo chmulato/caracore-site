@@ -79,15 +79,44 @@ document.addEventListener('DOMContentLoaded', async function() {
     console.error('❌ Botão Microsoft não encontrado');
   }
   
-  // Verificar se há parâmetros de erro na URL
+    // Verificar se há parâmetros de erro na URL
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has('error')) {
     const errorReason = urlParams.get('reason') || 'unknown';
     console.error('🔴 Erro detectado na URL:', errorReason);
-    window.AuthUIFeedback.loginFailed(`Ocorreu um erro na autenticação: ${errorReason}`);
+    
+    // Verificar se podemos usar force recognition para recuperação
+    if (typeof window.forceAuthRecognition === 'function' && 
+        (errorReason.includes('auth') || errorReason.includes('timeout') || errorReason.includes('recognition'))) {
+      console.log('🔄 Tentando recuperar com Force Recognition...');
+      window.AuthUIFeedback.forceAuthRecognition(false);
+    } else {
+      window.AuthUIFeedback.loginFailed(`Ocorreu um erro na autenticação: ${errorReason}`);
+    }
   }
-
-  // Funções auxiliares
+  
+  // Adicionar botão de recuperação para páginas restritas
+  if (window.location.pathname.includes('/secure/') && typeof window.forceAuthRecognition === 'function') {
+    const authAlerts = document.getElementById('authAlerts');
+    if (authAlerts) {
+      const recoverButton = document.createElement('button');
+      recoverButton.type = 'button';
+      recoverButton.className = 'retry-button';
+      recoverButton.innerHTML = '<svg class="icon icon-sm" aria-hidden="true"><use href="#icon-shield-lock"></use></svg> Forçar reconhecimento de autenticação';
+      recoverButton.addEventListener('click', () => {
+        window.AuthUIFeedback.forceAuthRecognition(false);
+        setTimeout(() => {
+          window.location.reload();
+        }, 1500);
+      });
+      
+      // Adicionar o botão em uma div separada
+      const buttonContainer = document.createElement('div');
+      buttonContainer.className = 'auth-recovery-actions';
+      buttonContainer.appendChild(recoverButton);
+      authAlerts.appendChild(buttonContainer);
+    }
+  }  // Funções auxiliares
   
   /**
    * Aguarda que componentes específicos estejam disponíveis no window

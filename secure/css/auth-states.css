@@ -137,6 +137,30 @@
   height: 1rem;
 }
 
+/* Container para ações de recuperação */
+.auth-recovery-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+/* Estilo específico para botão de force recognition */
+.auth-recovery-actions .retry-button {
+  background: rgba(14, 165, 233, 0.12);
+  border: 1px solid rgba(14, 165, 233, 0.3);
+  color: #0284c7;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  width: 100%;
+  max-width: 350px;
+}
+
+.auth-recovery-actions .retry-button:hover {
+  background: rgba(14, 165, 233, 0.2);
+}
+
 /* Timer visual para feedback de timeout */
 .auth-timeout-timer {
   width: 100%;

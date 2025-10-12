@@ -10,6 +10,7 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 - `caracore-plan` (App Service Plan)
 
 **Arquitetura Simplificada:** Migração completa de Key Vault para App Service Settings, com redução de custos e complexidade.
+**Frontend Otimizado:** CSS/JS centralizado em pastas dedicadas com controle de versão (v=20251012).
 
 ## Arquivos Principais (Raiz)
 
@@ -137,6 +138,32 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 - **Relacionamentos:** Complementa `infra_to_azure.py`
 
+## Scripts de Otimização e Frontend
+
+### `scripts/verificar_centralizacao.py`
+
+**Função:** Validação da estratégia de centralização de CSS/JS
+
+- Verifica a existência e integridade de arquivos centralizados:
+  - `/secure/css/` - secure-layout.css, secure-restrita.css, secure-callback.css, secure-logout.css, secure-admin-logs.css
+  - `/secure/js/` - nav-controls.js, secure-auth-ui.js, callback-helpers.js, admin-logs.js
+- Validação de referências corretas nos arquivos HTML com regex
+- Verificação de parâmetros de versão (v=20251012) para controle de cache
+- Identificação de referências ausentes ou incorretas
+- **Relacionamentos:** Independente, parte da estratégia de otimização
+
+### `scripts/diagnostico_auth_producao.py`
+
+**Função:** Diagnóstico de problemas de autenticação OIDC
+
+- Análise de arquivos de configuração JavaScript em produção
+- Identificação de problemas com URIs de redirecionamento
+- Detecção de loops de refresh em auth-force-recognition.js
+- Validação de Client IDs Google/Microsoft
+- Verificações de cross-domain para autenticação
+
+- **Relacionamentos:** Independente, auxilia na correção de problemas de autenticação
+
 ## Scripts de Utilidades e Ferramentas
 
 ### `organizar_scripts_pos_migracao.py`
@@ -196,6 +223,27 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 - Comparação entre desenvolvimento e produção
 - **Relacionamentos:** Complementa `snapshot_and_diff.py`
+
+### `scripts/verificar_centralizacao.py`
+
+**Função:** Validação da centralização de CSS e JS
+
+- Verifica existência dos arquivos CSS/JS centralizados
+- Valida referências corretas nos arquivos HTML
+- Verificação de parâmetros de versão (v=20251012)
+
+- **Relacionamentos:** Script independente de validação
+
+### `scripts/diagnostico_auth_producao.py`
+
+**Função:** Diagnóstico de problemas de autenticação em produção
+
+- Análise de configuração OIDC em produção
+- Validação de URIs de redirecionamento
+- Detecção de loops de refresh infinito
+- Verificação de Client IDs
+
+- **Relacionamentos:** Ferramenta independente de diagnóstico
 
 ## Scripts Arquivados (Migração 2025-10-11)
 
@@ -348,13 +396,17 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 
 - `scripts/snapshot_and_diff.py`
 - `scripts/generate_prod_diffs.py`
+- `scripts/verificar_centralizacao.py`
+- `scripts/diagnostico_auth_producao.py`
 - `security/monitor_exe.py`
 - `wi_fi/get_wi_fi.py`
 
 ---
 
-**Total de Scripts Python Ativos:** 45 arquivos
+**Total de Scripts Python Ativos:** 47 arquivos
 **Scripts Arquivados:** 9 arquivos em `arquivo_migracao_2025_10_11/`
 **Arquitetura:** Simplificada (App Service Settings, sem Key Vault)
-**Última Atualização:** Campo Largo, 11 de outubro de 2025 
+**CSS/JS:** Centralizado em pastas /secure/css/ e /secure/js/ (out/2025)
+**Última Atualização:** Campo Largo, 12 de outubro de 2025
+ 
  

@@ -119,9 +119,47 @@ class AuthErrorHandler {
       : (error?.message || error?.error_description || JSON.stringify(error));
     
     const normalizedError = errorString.toLowerCase();
-
+    
+    // Detecta popups bloqueados ou fechados
+    if (normalizedError.includes('popup') && (normalizedError.includes('block') || normalizedError.includes('denied'))) {
+      category = this.errorCategories.AUTHENTICATION;
+      code = 'popup_blocked';
+      message = 'Popup de autenticação bloqueado pelo navegador';
+    }
+    else if (normalizedError.includes('popup') && normalizedError.includes('closed')) {
+      category = this.errorCategories.AUTHENTICATION;
+      code = 'popup_closed';
+      message = 'Popup de autenticação fechado antes da conclusão';
+    }
+    // Detecta timeout de redirecionamento
+    else if ((normalizedError.includes('timeout') || normalizedError.includes('timed out')) && 
+             normalizedError.includes('redirect')) {
+      category = this.errorCategories.TIMEOUT;
+      code = 'redirect_timeout';
+      message = 'Timeout no redirecionamento para o provedor de identidade';
+    }
+    // Detecta timeout de resposta
+    else if ((normalizedError.includes('timeout') || normalizedError.includes('timed out')) && 
+             (normalizedError.includes('response') || normalizedError.includes('server'))) {
+      category = this.errorCategories.TIMEOUT;
+      code = 'response_timeout';
+      message = 'Timeout na resposta do servidor de autenticação';
+    }
+    // Detecta problemas de cookies
+    else if (normalizedError.includes('cookie') || normalizedError.includes('third party') || 
+             normalizedError.includes('3rd party') || normalizedError.includes('storage access')) {
+      category = this.errorCategories.AUTHENTICATION;
+      code = 'cookie_blocked';
+      message = 'Cookies necessários para autenticação estão bloqueados';
+    }
+    // Detecta problemas CORS
+    else if (normalizedError.includes('cors') || normalizedError.includes('cross-origin')) {
+      category = this.errorCategories.NETWORK;
+      code = 'cors_error';
+      message = 'Erro de política de segurança do navegador (CORS)';
+    }
     // Detecta problemas de rede
-    if (normalizedError.includes('network') || 
+    else if (normalizedError.includes('network') || 
         normalizedError.includes('connection') ||
         normalizedError.includes('offline') ||
         normalizedError.includes('unreachable') ||
@@ -161,6 +199,13 @@ class AuthErrorHandler {
       category = this.errorCategories.AUTHORIZATION;
       code = 'microsoft_account_type_error';
       message = 'Conta Microsoft corporativa não permitida. Use apenas contas pessoais (@outlook.com, @hotmail.com)';
+    }
+    
+    // Erros específicos do Google
+    if (normalizedError.includes('idpiframe') || normalizedError.includes('gsi')) {
+      category = this.errorCategories.AUTHENTICATION;
+      code = 'google_auth_error';
+      message = 'Erro na biblioteca de autenticação do Google';
     }
 
     // Retorna o erro categorizado
@@ -266,27 +311,67 @@ class AuthErrorHandler {
   getFriendlyErrorMessage(error = this.lastError) {
     if (!error) return 'Ocorreu um erro inesperado';
     
+    // Obter o código e a mensagem original para análise mais detalhada
+    const code = error.code || '';
+    const originalMessage = typeof error.originalError === 'string' 
+      ? error.originalError.toLowerCase() 
+      : (error.originalError?.message || '').toLowerCase();
+    
     switch (error.category) {
       case this.errorCategories.TIMEOUT:
+        if (originalMessage.includes('redirect')) {
+          return 'O redirecionamento para o provedor está demorando muito. Isso pode ocorrer devido à sua conexão ou cookies bloqueados. Tente verificar suas configurações de privacidade.';
+        } else if (originalMessage.includes('server')) {
+          return 'O servidor de autenticação está demorando para responder. Tente novamente em alguns instantes.';
+        }
         return 'O tempo limite de espera foi excedido. Verifique sua conexão com a internet e tente novamente.';
       
       case this.errorCategories.NETWORK:
+        if (originalMessage.includes('cors')) {
+          return 'Bloqueio de segurança de navegador detectado. Verifique se você está usando HTTPS ou se está em um ambiente permitido.';
+        } else if (originalMessage.includes('ssl') || originalMessage.includes('certificate')) {
+          return 'Problema de segurança na conexão. Verifique se seu navegador está atualizado ou tente outro navegador.';
+        } else if (originalMessage.includes('offline') || originalMessage.includes('disconnected')) {
+          return 'Você parece estar offline. Verifique sua conexão com a internet e tente novamente.';
+        }
         return 'Não foi possível conectar ao servidor de autenticação. Verifique sua conexão com a internet.';
       
       case this.errorCategories.AUTHENTICATION:
+        if (code === 'popup_closed') {
+          return 'A janela de autenticação foi fechada antes da conclusão. Por favor, mantenha a janela aberta até o final do processo.';
+        } else if (code === 'popup_blocked') {
+          return 'O bloqueador de pop-ups impediu a abertura da janela de autenticação. Por favor, permita pop-ups para este site e tente novamente.';
+        } else if (originalMessage.includes('token') && originalMessage.includes('expired')) {
+          return 'Sua sessão expirou. Por favor, faça login novamente.';
+        } else if (originalMessage.includes('invalid_grant')) {
+          return 'O código de autorização expirou ou é inválido. Isso geralmente ocorre quando o processo de login demora muito. Tente novamente.';
+        } else if (originalMessage.includes('cookies') || originalMessage.includes('third party')) {
+          return 'Seu navegador pode estar bloqueando cookies necessários para autenticação. Verifique suas configurações de privacidade.';
+        }
         return 'Houve um problema no processo de autenticação. Tente novamente ou use outro provedor.';
       
       case this.errorCategories.AUTHORIZATION:
-        if (error.code === 'microsoft_account_type_error') {
+        if (code === 'microsoft_account_type_error') {
           return 'Esta área requer contas pessoais Microsoft (@outlook.com, @hotmail.com). Contas corporativas não são permitidas.';
+        } else if (code === 'google_account_type_error') {
+          return 'Esta conta do Google não tem permissão para acessar este recurso. Tente outra conta ou método de autenticação.';
+        } else if (originalMessage.includes('access_denied')) {
+          return 'Acesso negado pelo provedor de identidade. Você pode ter recusado permissão ou sua conta não tem acesso.';
+        } else if (originalMessage.includes('scope')) {
+          return 'Permissões insuficientes para acessar este recurso. Tente fazer login novamente aceitando todas as permissões.';
         }
         return 'Você não tem autorização para acessar esta área.';
       
       case this.errorCategories.CONFIGURATION:
-        return 'Existe um problema na configuração do sistema de autenticação. Entre em contato com o suporte.';
+        if (originalMessage.includes('client_id')) {
+          return 'Configuração incorreta do sistema de autenticação. Por favor, informe ao administrador sobre um problema com o Client ID.';
+        } else if (originalMessage.includes('redirect_uri')) {
+          return 'Configuração incorreta do sistema de autenticação. Por favor, informe ao administrador sobre um problema com a URL de redirecionamento.';
+        }
+        return 'Existe um problema na configuração do sistema de autenticação. Entre em contato com o suporte técnico.';
       
       default:
-        return 'Ocorreu um erro inesperado. Tente novamente mais tarde.';
+        return 'Ocorreu um erro inesperado. Tente novamente mais tarde ou contate o suporte se o problema persistir.';
     }
   }
 }

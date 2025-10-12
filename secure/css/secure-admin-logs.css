@@ -1,0 +1,38 @@
+/* Admin Logs - Estilização */
+.log-level-ERROR { color: #dc3545; font-weight: bold; }
+.log-level-WARN { color: #fd7e14; font-weight: bold; }
+.log-level-INFO { color: #0d6efd; }
+.log-level-DEBUG { color: #6c757d; }
+.log-level-TRACE { color: #adb5bd; }
+
+.log-entry {
+    border-left: 3px solid #dee2e6;
+    padding: 0.5rem;
+    margin: 0.25rem 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.875rem;
+}
+
+.log-entry.ERROR { border-left-color: #dc3545; background-color: #f8d7da; }
+.log-entry.WARN { border-left-color: #fd7e14; background-color: #fff3cd; }
+.log-entry.INFO { border-left-color: #0d6efd; background-color: #d1ecf1; }
+.log-entry.DEBUG { border-left-color: #6c757d; background-color: #f8f9fa; }
+.log-entry.TRACE { border-left-color: #adb5bd; background-color: #f8f9fa; }
+
+.log-data {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    white-space: pre-wrap;
+    font-size: 0.8rem;
+}
+
+.stats-card {
+    transition: transform 0.2s;
+}
+
+.stats-card:hover {
+    transform: translateY(-2px);
+}

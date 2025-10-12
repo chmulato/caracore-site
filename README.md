@@ -10,6 +10,7 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
     - [Scripts Python](#scripts-python)
     - [Configuração e Deploy](#configuração-e-deploy)
     - [Testes e Validação](#testes-e-validação)
+    - [Sistema de Autenticação (OIDC)](#sistema-de-autenticação-oidc)
     - [Arquitetura e Soluções](#arquitetura-e-soluções)
   - [Conteúdo do Site - Visão Geral](#conteúdo-do-site---visão-geral)
     - [Visual da Página Principal](#visual-da-página-principal)
@@ -25,7 +26,8 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
   - [Observações](#observações)
   - [Contato](#contato)
   - [Detalhes Técnicos](#detalhes-técnicos)
-    - [Sistema de Autenticação OIDC](#sistema-de-autenticação-oidc)
+    - [Sistema de Autenticação OIDC](#sistema-de-autenticação-oidc-1)
+      - [Documentação do Sistema de Autenticação](#documentação-do-sistema-de-autenticação)
     - [Configuração OIDC (Azure / Google)](#configuração-oidc-azure--google)
       - [Fluxo recomendado de redirecionamento](#fluxo-recomendado-de-redirecionamento)
       - [Persistência do provedor selecionado](#persistência-do-provedor-selecionado)
@@ -68,6 +70,15 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 
 - **[Checklist OIDC Google](docs/CHECKLIST_OIDC_GOOGLE.md)** - Lista de verificação para configuração Google OAuth
 - **[Checklist OIDC Entra ID](docs/CHECKLIST_OIDC_ENTRA.md)** - Lista de verificação para configuração Microsoft Entra ID
+
+### Sistema de Autenticação (OIDC)
+
+- **[Status Atual](docs/STATUS-ATUAL.md)** - Resumo do estado atual do sistema de autenticação
+- **[Guia do Desenvolvedor - Auth](docs/GUIA-DESENVOLVEDOR-AUTH.md)** - Guia técnico para desenvolvedores trabalhando na autenticação
+- **[Próximos Passos](docs/PROXIMOS-PASSOS.md)** - Próximas etapas recomendadas para evolução do sistema
+- **[Pendências](docs/pendencias/PENDENCIAS.md)** - Lista categorizada de pendências em diferentes áreas
+- **[Checklist de Segurança OIDC](docs/pendencias/CHECKLIST-SEGURANCA-OIDC.md)** - Checklist completo de segurança para OIDC
+- **[Prioridades Técnicas Q4 2025](docs/pendencias/PRIORIDADES-TECNICAS-Q4-2025.md)** - Roadmap de prioridades técnicas
 - **[Validação OIDC Google](docs/VALIDATED_OIDC_GOOGLE.md)** - Relatório de validação Google OAuth
 - **[Validação OIDC Entra ID](docs/VALIDATED_OIDC_ENTRA_ID.md)** - Relatório de validação Microsoft Entra ID
 - **[Validação Final Entra ID](docs/VALIDACAO_ENTRA_ID_FINAL.md)** - **Confirmação operacional: Portal Área 51 configurado apenas para contas pessoais Microsoft**
@@ -259,6 +270,14 @@ A administração pode acompanhar eventos em tempo real pela página `secure/adm
 - **Persistência de provedor:** `secure/auth-standalone.js` grava o último provedor usado (Google/Entra) para garantir que o callback utilize a mesma authority. Após rotações de testes, limpe `sessionStorage`/`localStorage` ou selecione explicitamente outro provedor pelo botão da interface.
 - **Interface responsiva:** componentes próprios, sem dependências de CDN.
 - **Layout unificado:** as três páginas da Área 51 compartilham sprite SVG, menu responsivo e mesma paleta.
+
+#### Documentação do Sistema de Autenticação
+
+- **[Status Atual](docs/STATUS-ATUAL.md)** - Resumo do estado atual e correções implementadas
+- **[Guia do Desenvolvedor](docs/GUIA-DESENVOLVEDOR-AUTH.md)** - Guia técnico detalhado para trabalhar com o sistema
+- **[Checklist de Segurança](docs/pendencias/CHECKLIST-SEGURANCA-OIDC.md)** - Checklist para garantir segurança na implementação OIDC
+- **[Correções Recentes](docs/pendencias/CORRECOES-AUTENTICACAO.md)** - Histórico de correções implementadas
+- **[Próximos Passos](docs/PROXIMOS-PASSOS.md)** - Etapas recomendadas para evolução do sistema
 
 | URL | Descrição |
 |-----|-----------|

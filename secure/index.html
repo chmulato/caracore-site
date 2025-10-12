@@ -293,8 +293,6 @@
   <script defer src="/secure/logger.js?v=20250929"></script>
   <script defer src="/secure/dynamic-config.js?v=20250929"></script>
   <script defer src="/secure/auth-standalone.js?v=20251001b"></script>
-  <script defer src="/secure/caracore-instructions.js?v=20250929"></script>
-  <script defer src="/secure/copy-google-config.js?v=20250929"></script>
 
   <script>
     const icon = (name, extraClass = '') => `<svg class="icon ${extraClass}" aria-hidden="true"><use href="#icon-${name}"></use></svg>`;
@@ -341,8 +339,29 @@
         loadingOverlay.classList.remove('active');
       }
 
-      document.getElementById('btnLoginGoogle').addEventListener('click', () => loginWithProvider('google'));
-      document.getElementById('btnLoginMicrosoft').addEventListener('click', () => loginWithProvider('entra'));
+      // Configurar event listeners para os botões de login
+      const btnLoginGoogle = document.getElementById('btnLoginGoogle');
+      const btnLoginMicrosoft = document.getElementById('btnLoginMicrosoft');
+      
+      if (btnLoginGoogle) {
+        btnLoginGoogle.addEventListener('click', () => {
+          console.log('🔵 Clique no botão Google detectado');
+          loginWithProvider('google');
+        });
+        console.log('✅ Event listener Google configurado');
+      } else {
+        console.error('❌ Botão Google não encontrado');
+      }
+      
+      if (btnLoginMicrosoft) {
+        btnLoginMicrosoft.addEventListener('click', () => {
+          console.log('🔵 Clique no botão Microsoft detectado');
+          loginWithProvider('entra');
+        });
+        console.log('✅ Event listener Microsoft configurado');
+      } else {
+        console.error('❌ Botão Microsoft não encontrado');
+      }
 
       function showAuthScreen() {
         authScreen.classList.add('active');
@@ -365,6 +384,23 @@
 
           clearAlerts();
 
+          // Aguardar OIDCAuth estar disponível
+          if (!window.OIDCAuth) {
+            console.log('⏳ Aguardando OIDCAuth carregar...');
+            await new Promise(resolve => {
+              const poll = () => {
+                if (window.OIDCAuth) {
+                  console.log('✅ OIDCAuth carregado');
+                  resolve();
+                  return;
+                }
+                setTimeout(poll, 100);
+              };
+              poll();
+            });
+          }
+
+          console.log(`🔐 Iniciando login com ${provider}...`);
           await window.OIDCAuth.switchProvider(provider);
           await window.OIDCAuth.login();
         } catch (error) {

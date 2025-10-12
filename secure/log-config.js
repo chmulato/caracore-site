@@ -1,13 +1,13 @@
-// Configuração de logging para development
+// Configuração de logging para produção
 window.OIDC_LOG_CONFIG = {
-  logLevel: 'DEBUG',
+  logLevel: 'INFO',
   consoleLogging: true,
-  debugPanel: true,
+  debugPanel: false,
   autoSave: true,
   maxLogs: 1000,
   saveInterval: 30000, // 30 segundos
-  environment: 'development',
-  baseUrl: 'http://localhost:8000'
+  environment: 'production',
+  baseUrl: window.location.origin || 'https://www.caracore.com.br'
 };
 
 // Configuração para desenvolvimento

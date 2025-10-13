@@ -25,14 +25,14 @@
 |---|-------------------|:------:|--------------------------|
 | 1 | Fluxo Authorization Code + PKCE e tipo de aplicativo | ✅ | `dynamic-config.js` força `response_type=code`; `oidc-client-ts` usa PKCE; backend (`backend/app.py`) exige `code_verifier` na troca de token. |
 | 2 | Redirect URIs exatas (AADSTS50011) | ⚠️ | Scripts `dynamic-config.js`, `diagnose-redirect-uri.js`, `fix-caracore-domain.js`, `show-current-uris.js` listam URIs corretas, porém é necessário confirmar cadastro no portal (dev/homolog/prod, logout). |
-| 3 | Single-tenant vs multi-tenant e autoridade | ⚠️ | Em `fix-caracore-domain.js` o domínio `www.caracore.com.br` força tenant `189c46ad-…` (single-tenant); demais ambientes caem em `common`. Conferir **Supported account types** no portal. |
+| 3 | Single-tenant vs multi-tenant e autoridade | ✅ | O código `dynamic-config.js` força o uso de `consumers` para contas pessoais Microsoft, consistente com a configuração **Personal Microsoft accounts only** no portal Azure. |
 | 4 | Escopos, consentimento e admin consent | ⚠️ | Front solicita `openid profile email`; backend aceita escopos adicionais. Revisar em **API permissions** se há consentimento administrativo e escopos privilegiados aprovados. |
 | 5 | Validação de tokens (`state`, `nonce`, assinatura JWKS) | ✅ | O endpoint `/oauth/microsoft/token` valida a assinatura do ID token, confere `aud`, `iss`, `exp`/`iat`, `tid` (quando single-tenant) e também verifica `nonce`/`at_hash` com os valores agora fornecidos tanto pelo `oidc-client-ts` quanto pelo fallback. `state` continua tratado pelo `oidc-client-ts`. |
 | 6 | Logout e SSO (front-channel / post_logout_redirect_uri) | ⚠️ | Existe página `secure/logout.html` e scripts lembrando do registro, mas é preciso validar no portal se URIs de logout constam e se o fluxo multiapp está testado. |
 | 7 | Cookies, SameSite, CORS e storage | ⚠️ | O fluxo utiliza `localStorage` (SPA). Backend adiciona CORS básico (`backend/app.py`). A UI agora orienta navegadores certificados e limpeza de sessões, mas ainda são necessários testes com ITP (Safari/iOS) e cenários com cookies restritos. |
 | 8 | Diferença entre ID token e Access token | ⚠️ | Código front distingue provedores, mas não há garantia nas APIs. A checklist operacional em `secure/admin-logs.html` agora cobra evidências de que serviços backend aceitam apenas access tokens válidos e de que há plano de rotação/revogação de refresh tokens. |
 | 9 | Claims e Token configuration | ⚠️ | Não foram encontrados scripts que adicionem claims opcionais no Entra. Revisar **Token configuration** (inclusão de `email`, `upn`, etc.) e se os atributos existam para todos os usuários. |
-| 10 | Ambientes, domínios e `authority` | ⚠️ | `dynamic-config.js` + `fix-caracore-domain.js` trocam `authority`/URIs conforme ambiente. Confirmar que cada ambiente possui `client_id` e URIs registrados corretamente e segregados. |
+| 10 | Ambientes, domínios e `authority` | ✅ | `dynamic-config.js` configura consistentemente o uso de `consumers` como tenant para todos os ambientes, sempre usando `https://login.microsoftonline.com/consumers/v2.0` como authority. |
 | 11 | Ferramentas de diagnóstico rápidas | ✅ | Scripts (`diagnose-redirect-uri.js`, `show-current-uris.js`, `copy-google-config.js`) fornecem diagnósticos e instruções para URIs. |
 
 Legenda: ✅ Conforme • ⚠️ Revisão manual/portal necessária • ❓ Investigação adicional/implementação pendente.
@@ -41,7 +41,7 @@ Legenda: ✅ Conforme • ⚠️ Revisão manual/portal necessária • ❓ Inve
 
 1. **Portal Microsoft Entra**
    - Revisar cada item marcado como ⚠️/❓ no checklist, anexando evidências (screenshots) do portal após os ajustes.
-   - Confirmar cadastro de todas as URIs de redirect/logout e verificar `Supported account types`/tenants conforme ambientes.
+   - Confirmar cadastro de todas as URIs de redirect/logout e verificar que `Supported account types` está configurado como **Personal Microsoft accounts only**.
 2. **Paridade com Google e navegação**
    - Repetir a conferência de URIs também no Google Cloud Console para manter paridade entre provedores.
    - Executar testes de login/logout em navegadores certificados (Chrome/Edge atuais, Firefox 118+, Safari 17+/iOS) utilizando janela anônima quando necessário, documentando resultados especialmente sobre ITP e cookies restritos.

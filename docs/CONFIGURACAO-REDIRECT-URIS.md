@@ -83,8 +83,8 @@ https://www.caracore.com.br/secure/logout.html
    - `http://127.0.0.1:8000/secure/logout.html`
    - `https://chmulato.github.io/cara-core/secure/logout.html`
    - `https://www.caracore.com.br/secure/logout.html`
-7. Em **Supported account types**, selecione **Contas neste diretório organizacional apenas (single tenant)**
-8. Confirme que a autoridade utilizada no front-end aponta para o tenant específico: `https://login.microsoftonline.com/189c46ad-e437-48bd-bc87-050ef735c2c7/v2.0`
+7. Em **Supported account types**, selecione **Personal Microsoft accounts only**
+8. Confirme que a autoridade utilizada no front-end aponta para: `https://login.microsoftonline.com/consumers/v2.0`
 9. Clique em **Save**
 
 ## 🧪 Como Testar a Configuração
@@ -176,9 +176,10 @@ window.logOIDC.exportLogs('json');
 
 ## 🆔 Microsoft Entra ID - Audience e Authority
 
-- A aplicação **Cara Core Área 51** está configurada como **single-tenant** (userAudience `AzureADMyOrg`).
-- Utilize sempre a URL de autoridade com o tenant específico: `https://login.microsoftonline.com/189c46ad-e437-48bd-bc87-050ef735c2c7/v2.0`.
-- Se desejar aceitar contas pessoais (`/consumers` ou `/common`), é necessário atualizar o App Registration para **Accounts in any organizational directory and personal Microsoft accounts** e revisar a configuração de segurança.
+- A aplicação **Cara Core Área 51** está configurada para **Personal Microsoft accounts only**.
+- Utilize sempre a URL de autoridade para contas pessoais Microsoft: `https://login.microsoftonline.com/consumers/v2.0`.
+- Esta configuração permite que qualquer pessoa com conta Microsoft pessoal (outlook.com, hotmail.com, etc.) faça login na aplicação.
+- Se desejar restringir para apenas contas da sua organização, seria necessário atualizar o App Registration para **Accounts in this organizational directory only (Single tenant)** e revisar a configuração de segurança.
 
 ---
 **Status:** 🔧 **EM CORREÇÃO** - Aguardando configuração dos provedores

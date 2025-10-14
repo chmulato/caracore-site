@@ -46,7 +46,8 @@ function resolveOidcPaths() {
 function generateGoogleConfig() {
     const baseUrl = window.CARA_CORE_ENV?.baseUrl || window.location.origin;
     const paths = resolveOidcPaths();
-    const serverTokenEndpoint = (window.CARA_CORE_CONFIG && window.CARA_CORE_CONFIG.googleTokenEndpoint) || '/oauth/google/token';
+    // Usar o endpoint direto no backend, já que estamos no domínio personalizado com CORS configurado
+    const serverTokenEndpoint = (window.CARA_CORE_CONFIG && window.CARA_CORE_CONFIG.googleTokenEndpoint) || "https://caracore-backend.azurewebsites.net/oauth/google/token";
     
     return {
         authority: "https://accounts.google.com",
@@ -180,7 +181,8 @@ function generateMicrosoftConfig() {
     const authority = authorityBase.endsWith('/v2.0') ? authorityBase : `${authorityBase}/v2.0`;
     const tenantBase = authority.replace(/\/v2\.0$/, '');
 
-    const microsoftTokenEndpoint = window.CARA_CORE_CONFIG?.microsoftTokenEndpoint || '/oauth/microsoft/token';
+    // Usar o endpoint local através do proxy configurado no web.config
+    const microsoftTokenEndpoint = window.CARA_CORE_CONFIG?.microsoftTokenEndpoint || "https://caracore-backend.azurewebsites.net/oauth/microsoft/token";
     let resolvedMicrosoftTokenEndpoint;
     try {
         resolvedMicrosoftTokenEndpoint = new URL(microsoftTokenEndpoint, baseUrl).toString();

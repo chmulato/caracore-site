@@ -1,0 +1,20 @@
+{
+    "redirects": [
+        {
+            "source": "/oauth/google/token",
+            "destination": "https://caracore-backend.azurewebsites.net/oauth/google/token"
+        },
+        {
+            "source": "/oauth/microsoft/token",
+            "destination": "https://caracore-backend.azurewebsites.net/oauth/microsoft/token"
+        },
+        {
+            "source": "/secure/*",
+            "destination": "/secure/index.html"
+        },
+        {
+            "source": "/*",
+            "destination": "/index.html"
+        }
+    ]
+}

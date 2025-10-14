@@ -1,0 +1,24 @@
+# Configuração GitHub Pages
+title: Cara Core
+description: Plataforma Cara Core com autenticação OIDC
+url: "https://www.caracore.com.br"
+baseurl: ""
+
+# Configuração 404
+permalink: pretty
+
+# Excluir arquivos da build
+exclude:
+  - docker/
+  - backend/
+  - web.config
+  - README_PY.md
+  - deploy_*.py
+  - infra_*.py
+  - executar_testes_*.py
+  - teste_*.py
+  - validar_*.py
+  - checklist_*.py
+  - requirements.txt
+  - __pycache__/
+  - log/

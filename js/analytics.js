@@ -21,7 +21,11 @@ function initializeGoogleAnalytics() {
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', GA_MEASUREMENT_ID);
+    gtag('config', GA_MEASUREMENT_ID, {
+        'cookie_domain': 'caracore.com.br',
+        'cookie_flags': 'SameSite=None;Secure',
+        'cookie_update': true
+    });
     
     console.log('Google Analytics inicializado com ID:', GA_MEASUREMENT_ID);
 }

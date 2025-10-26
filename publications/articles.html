@@ -8,7 +8,7 @@
         <style>
             /* Local styles for search/filter UI */
             .filter-section { margin:1rem 0 1.25rem; }
-            .filter-section summary { list-style:none; cursor:pointer; user-select:none; padding:.6rem .9rem; border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb; display:flex; align-items:center; gap:.5rem; font-weight:600; }
+            .filter-section summary { list-style:none; cursor:pointer; user-select: none; padding:.6rem .9rem; border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb; display:flex; align-items:center; gap:.5rem; font-weight:600; }
             .filter-section summary::-webkit-details-marker { display:none; }
             .filter-section[open] summary { background:#eef2ff; border-color:#c7d2fe; }
             .filter-section .summary-count { margin-left:auto; font-weight:400; color:#6b7280; font-size:.85rem; }
@@ -16,7 +16,7 @@
             .filter-bar { display:flex; flex-wrap:wrap; gap:.75rem; align-items:center; margin:1rem 0 1.25rem; }
             .filter-input { flex:1 1 260px; padding:.6rem .8rem; border:1px solid #e5e7eb; border-radius:8px; font-size:.95rem; }
             .chips { display:flex; flex-wrap:wrap; gap:.5rem; }
-            .chip { padding:.4rem .7rem; border:1px solid #e5e7eb; border-radius:999px; background:#f9fafb; cursor:pointer; font-size:.85rem; user-select:none; }
+            .chip { padding:.4rem .7rem; border:1px solid #e5e7eb; border-radius:999px; background:#f9fafb; cursor:pointer; font-size:.85rem; user-select: none; }
             .chip[aria-pressed="true"] { background:#e0f2fe; border-color:#7dd3fc; color:#075985; }
             .result-count { font-size:.85rem; color:#6b7280; margin-left:auto; }
             .is-hidden { display:none !important; }
@@ -48,6 +48,7 @@
                   <button class="chip" type="button" data-tag="github actions" aria-pressed="false" aria-label="Filtrar por GitHub Actions">GitHub Actions</button>
                   <button class="chip" type="button" data-tag="oidc" aria-pressed="false" aria-label="Filtrar por OIDC">OIDC</button>
                   <button class="chip" type="button" data-tag="ia" aria-pressed="false" aria-label="Filtrar por IA">IA</button>
+                  <button class="chip" type="button" data-tag="lgpd" aria-pressed="false" aria-label="Filtrar por LGPD">LGPD</button>
               </div>
               <div id="resultCount" class="result-count" aria-live="polite"></div>
           </div>
@@ -58,6 +59,12 @@
             <div class="month-group">
                 <div class="month-title">Novembro</div>
                 <ul class="article-list">
+                        <li class="article-item" data-tags="segurança,lgpd,criptografia,auditoria,incidentes,storytelling,ceo,vantagem competitiva,dados,compliance,gestão,estratégia,leadership,transformação digital">
+                            <span class="article-date">09/11</span>
+                            <a class="article-title" href="articles/2025_11_09_article_57.html">
+                                A Jornada de Ana: Como Uma CEO Transformou a Segurança de Dados em Vantagem Competitiva
+                            </a>
+                        </li>
                     <li class="article-item" data-tags="ia,chatgpt,oidc,oauth2,autenticação,limitações,aprendizado,transparência,debugging,gestão">
                         <span class="article-date">03/11</span>
                         <a class="article-title" href="articles/2025_11_03_article_56.html">

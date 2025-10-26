@@ -46,11 +46,21 @@
   ],
   "esperienza": [
     {
+      "azienda": "Compass UOL",
+      "posizione": "Sviluppatore Java Senior",
+      "durata": "settembre 2025 - presente · 2 mesi",
+      "localita": "Passo Fundo, Rio Grande do Sul, Brasile · Remoto",
+      "descrizione": "- Ha lavorato su un progetto back-end con Jakarta EE, Spring Boot, SOAP, REST.\n- Consegne agili, automazione di processi critici e integrazione di sistemi aziendali.\n- (Lavoro Remoto - Outsourcing - Caixa Seguradora).",
+      "tecnologie": [
+        "Jakarta EE"
+      ]
+    },
+    {
       "azienda": "Cara Core Informática",
-  "posizione": "Consulente e Sviluppatore di Sistemi",
-  "durata": "gennaio 2016 - Presente (9 anni 8 mesi)",
-  "localita": "Curitiba e Regione, Brasile",
-  "descrizione": "Attività come Consulente e Sviluppatore di Sistemi, responsabile dello sviluppo, automazione e gestione di soluzioni tecnologiche per aziende e uffici. I sistemi del portafoglio (Delivery Control, POS e Dental) sono progetti open source, aperti alla collaborazione e all'investimento di appassionati e partner. Esperienza in test, validazione, automazione VBA/Office 365, infrastruttura, sicurezza, supporto remoto e integrazione tecnologica. Lavori svolti come libero professionista (PJ/CNPJ), con attenzione all'innovazione e alla comunità collaborativa.",
+      "posizione": "Consulente e Sviluppatore di Sistemi",
+      "durata": "gennaio 2016 - Presente (9 anni 8 mesi)",
+      "localita": "Curitiba e Regione, Brasile",
+      "descrizione": "Attività come Consulente e Sviluppatore di Sistemi, responsabile dello sviluppo, automazione e gestione di soluzioni tecnologiche per aziende e uffici. I sistemi del portafoglio (Delivery Control, POS e Dental) sono progetti open source, aperti alla collaborazione e all'investimento di appassionati e partner. Esperienza in test, validazione, automazione VBA/Office 365, infrastruttura, sicurezza, supporto remoto e integrazione tecnologica. Lavori svolti come libero professionista (PJ/CNPJ), con attenzione all'innovazione e alla comunità collaborativa.",
       "progetti": [
         {
           "nome": "Delivery Control",

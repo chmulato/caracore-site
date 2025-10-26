@@ -44,7 +44,29 @@
     "coverLetterLinkText": "Leggi Lettera di Presentazione",
     "coverLetterContent": "Al team di reclutamento,\n\nSono lieto di candidarmi per la posizione di Sviluppatore Java Senior, offrendo la mia consolidata esperienza in progetti robusti nel settore tecnologico, con una forte padronanza dello stack Java EE e framework moderni come Spring Boot, Hibernate e JSF.\n\nNegli ultimi cinque anni, ho lavorato continuamente in consulenze di alto livello, concentrandomi sullo sviluppo di sistemi aziendali, API REST, messaggistica con RabbitMQ, uso estensivo di Docker, oltre a database Oracle e pratiche di integrazione continua con Git e Maven. Ho partecipato a progetti rilevanti per aziende come RD Saúde, Banco do Brasil, Bradesco Saúde, Volkswagen e Funasa, consegnando sempre con qualità e rispettando gli standard aziendali richiesti.\n\nOltre alla pratica tecnica, ho un profilo autonomo, proattivo e comunicativo, con facilità a lavorare in ambienti agili e distribuiti. La mia formazione in Ingegneria, unita alla mia specializzazione in Java, mi permette di comprendere le sfide aziendali in modo sistemico, proponendo soluzioni con valore reale per il cliente.\n\nSarei molto lieto di contribuire al team della vostra azienda, portando la mia esperienza con le tecnologie Java, la visione del prodotto e l'impegno per i risultati. Sono disponibile per un colloquio e per presentare meglio come posso contribuire al team.\n\nCordiali saluti,\nChristian V. U. Mulato.",
     "skillsList": [
-        "Java SE/EE", "Spring Boot", "JSF", "EJB", "RESTful APIs", "JPA", "Hibernate", "RabbitMQ", "GraphQL", "OpenAPI", "Oracle", "PostgreSQL", "SQL Server", "MySQL", "MongoDB", "Firebird", "Docker", "Git", "CI/CD", "Microservices", "Agile/Scrum", "Automazione con Python e AI"
+        "Java SE/EE",
+        "Spring Boot",
+        "JSF",
+        "EJB",
+        "RESTful APIs",
+        "JPA",
+        "Hibernate",
+        "RabbitMQ",
+        "GraphQL",
+        "OpenAPI",
+        "Oracle",
+        "PostgreSQL",
+        "SQL Server",
+        "MySQL",
+        "MongoDB",
+        "Firebird",
+        "Docker",
+        "Git",
+        "CI/CD",
+        "Microservices",
+        "Agile/Scrum",
+        "Automazione con Python e AI",
+        "Jakarta EE"
     ],
     "skills": {
         "Java SE/EE": "Piattaforma robusta per lo sviluppo di applicazioni enterprise, dai desktop ai sistemi web complessi con servlet ed EJB.",
@@ -68,7 +90,8 @@
         "CI/CD": "(Continuous Integration/Continuous Delivery) Pratiche DevOps per automatizzare la compilazione, il test e il rilascio del software.",
         "Microservices": "Approccio architetturale per costruire un'applicazione come una raccolta di piccoli servizi indipendenti e comunicabili.",
         "Agile/Scrum": "Metodologie di gestione dei progetti che promuovono lo sviluppo iterativo, la collaborazione e la risposta rapida ai cambiamenti.",
-        "Automazione con Python e AI": "Automazione di processi aziendali e flussi di lavoro utilizzando Python e tecnologie di Intelligenza Artificiale. Esperienza nella creazione di soluzioni personalizzate per l'efficienza operativa, l'integrazione di sistemi e l'analisi dei dati."
+        "Automazione con Python e AI": "Automazione di processi aziendali e flussi di lavoro utilizzando Python e tecnologie di Intelligenza Artificiale. Esperienza nella creazione di soluzioni personalizzate per l'efficienza operativa, l'integrazione di sistemi e l'analisi dei dati.",
+        "Jakarta EE": "È l'evoluzione di Java EE, una piattaforma open source per lo sviluppo di applicazioni Java moderne, cloud-native e basate su microservizi."
     },
     "downloadPdfText": "PDF",
     "showFullResume": "Visualizza CV Completo",

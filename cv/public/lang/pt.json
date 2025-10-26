@@ -44,7 +44,29 @@
     "coverLetterLinkText": "Ler Carta de Apresentação",
     "coverLetterContent": "À equipe de recrutamento,\n\nTenho o prazer de me candidatar à vaga de Desenvolvedor Java Sênior, colocando à disposição minha experiência consolidada em projetos robustos no setor de tecnologia, com forte domínio da stack Java EE e frameworks modernos como Spring Boot, Hibernate e JSF.\n\nNos últimos cinco anos, atuei de forma contínua em consultorias de alto nível, com foco em desenvolvimento de sistemas corporativos, APIs REST, mensageria com RabbitMQ, uso extensivo de Docker, além de banco de dados Oracle e práticas de integração contínua com Git e Maven. Participei de projetos relevantes para empresas como RD Saúde, Banco do Brasil, Bradesco Saúde, Volkswagen e Funasa, sempre entregando com qualidade e dentro dos padrões corporativos exigidos.\n\nAlém da prática técnica, tenho perfil autônomo, proativo e comunicativo, com facilidade para atuar em ambientes ágeis e distribuídos. Minha formação em Engenharia, somada à especialização em Java, me permite compreender os desafios de negócio de forma sistêmica, propondo soluções com valor real para o cliente.\n\nGostaria muito de contribuir com a equipe da sua empresa, trazendo minha experiência com tecnologias Java, visão de produto, e compromisso com resultados. Estou disponível para conversarmos e apresentar mais sobre como posso somar ao time.\n\nAtenciosamente,\nChristian V. U. Mulato.",
     "skillsList": [
-        "Java SE/EE", "Spring Boot", "JSF", "EJB", "RESTful APIs", "JPA", "Hibernate", "RabbitMQ", "GraphQL", "OpenAPI", "Oracle", "PostgreSQL", "SQL Server", "MySQL", "MongoDB", "Firebird", "Docker", "Git", "CI/CD", "Microservices", "Agile/Scrum", "Automação com Python e IA"
+        "Java SE/EE",
+        "Spring Boot",
+        "JSF",
+        "EJB",
+        "RESTful APIs",
+        "JPA",
+        "Hibernate",
+        "RabbitMQ",
+        "GraphQL",
+        "OpenAPI",
+        "Oracle",
+        "PostgreSQL",
+        "SQL Server",
+        "MySQL",
+        "MongoDB",
+        "Firebird",
+        "Docker",
+        "Git",
+        "CI/CD",
+        "Microservices",
+        "Agile/Scrum",
+        "Automação com Python e IA",
+        "Jakarta EE"
     ],
     "skills": {
         "Java SE/EE": "Plataforma robusta para desenvolvimento de aplicações corporativas, desde desktops a sistemas web complexos com servlets e EJB.",
@@ -68,7 +90,8 @@
         "CI/CD": "(Integração Contínua/Entrega Contínua) Práticas de DevOps para automatizar a construção, teste e implantação de software.",
         "Microservices": "Abordagem de arquitetura para construir uma aplicação como uma coleção de pequenos serviços independentes e comunicáveis.",
         "Agile/Scrum": "Metodologias de gerenciamento de projetos que promovem o desenvolvimento iterativo, a colaboração e a resposta rápida a mudanças.",
-        "Automação com Python e IA": "Utilização de scripts Python e bibliotecas de IA para automatizar tarefas, manipular dados e criar soluções inteligentes."
+        "Automação com Python e IA": "Utilização de scripts Python e bibliotecas de IA para automatizar tarefas, manipular dados e criar soluções inteligentes.",
+        "Jakarta EE": "É a evolução do Java EE, uma plataforma de código aberto para desenvolvimento de aplicações Java modernas, nativas na nuvem e baseadas em microserviços."
     },
     "downloadPdfText": "PDF",
     "showFullResume": "Ver Currículo Completo",

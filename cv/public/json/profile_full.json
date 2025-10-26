@@ -46,6 +46,16 @@
   ],
   "experiencia": [
     {
+      "empresa": "Compass UOL",
+      "posicao": "Desenvolvedor Java Sênior",
+      "duracao": "setembro de 2025 - o momento · 2 meses",
+      "localizacao": "Passo Fundo, Rio Grande do Sul, Brasil · Remota",
+      "descricao": "- Atuação em projeto back-end com Jakarta EE, Spring Boot, SOAP, REST.\n- Entregas ágeis, automação de processos críticos e integração de sistemas corporativos.\n- (Trabalho Remoto - Outsourcing - Caixa Seguradora).",
+      "tecnologias": [
+        "Jakarta EE"
+      ]
+    },
+    {
       "empresa": "Cara Core Informática",
   "posicao": "Consultor e Desenvolvedor de Sistemas",
   "duracao": "janeiro de 2016 - Presente (9 anos 8 meses)",

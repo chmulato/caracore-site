@@ -46,6 +46,16 @@
   ],
   "experience": [
     {
+      "company": "Compass UOL",
+      "position": "Senior Java Developer",
+      "duration": "September 2025 - present · 2 months",
+      "location": "Passo Fundo, Rio Grande do Sul, Brazil · Remote",
+      "description": "- Worked on a back-end project with Jakarta EE, Spring Boot, SOAP, REST.\n- Agile deliveries, automation of critical processes, and integration of corporate systems.\n- (Remote Work - Outsourcing - Caixa Seguradora).",
+      "technologies": [
+        "Jakarta EE"
+      ]
+    },
+    {
       "company": "Cara Core Informática",
   "position": "Consultant and Systems Developer",
   "duration": "January 2016 - Present (9 years 8 months)",

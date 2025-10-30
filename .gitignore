@@ -72,3 +72,4 @@ backend_deploy.zip
 deploy_*.zip
 arquivo_migracao_*/
 test_results*.json
+docs_old/

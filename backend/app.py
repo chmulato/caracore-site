@@ -1139,6 +1139,143 @@ def create_app() -> Flask:
             }), 500)
             return add_cors(resp)
     
+    @app.route("/api/consent/register", methods=["OPTIONS"])
+    def consent_register_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/api/consent/register", methods=["POST"])
+    @rate_limit("/api/consent/register")
+    def consent_register():
+        """
+        Endpoint para registrar consentimento do usuário
+        
+        Registra quando usuário consente em compartilhar dados
+        conforme LGPD e GDPR
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        try:
+            data = request.get_json() or {}
+            provider = data.get("provider", "")
+            user_email = data.get("user_email", "")
+            permissions = data.get("permissions", [])
+            timestamp = data.get("timestamp", "")
+            
+            if not provider or not user_email:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "provider e user_email são obrigatórios"
+                }), 400)
+                return add_cors(resp)
+            
+            # Log de consentimento (LGPD/GDPR compliance)
+            logger.info("User consent registered", extra={
+                "provider": provider,
+                "user_email": user_email,
+                "permissions": permissions,
+                "timestamp": timestamp,
+                "client_ip": client_ip,
+                "event": "consent_granted"
+            })
+            
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_auth_attempt(
+                    provider=provider,
+                    success=True,
+                    client_ip=client_ip,
+                    user_id=user_email,
+                    event_type="consent_granted"
+                )
+            
+            # Em produção, salvar em banco de dados
+            # consent_record = {
+            #     "user_email": user_email,
+            #     "provider": provider,
+            #     "permissions": permissions,
+            #     "timestamp": timestamp,
+            #     "ip_address": client_ip,
+            #     "revoked": False
+            # }
+            # db.consents.insert_one(consent_record)
+            
+            resp = make_response(jsonify({
+                "success": True,
+                "message": "Consentimento registrado com sucesso",
+                "consent_id": f"{provider}_{user_email}_{timestamp}"  # ID único
+            }), 200)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error("Consent registration exception", extra={"error": str(e), "client_ip": client_ip}, exc_info=True)
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno do servidor"
+            }), 500)
+            return add_cors(resp)
+    
+    @app.route("/api/consent/revoke", methods=["OPTIONS"])
+    def consent_revoke_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/api/consent/revoke", methods=["POST"])
+    @rate_limit("/api/consent/revoke")
+    def consent_revoke():
+        """
+        Endpoint para revogar consentimento do usuário
+        
+        Permite que usuário revogue consentimento previamente dado
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        try:
+            data = request.get_json() or {}
+            consent_id = data.get("consent_id", "")
+            user_email = data.get("user_email", "")
+            
+            if not consent_id or not user_email:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "consent_id e user_email são obrigatórios"
+                }), 400)
+                return add_cors(resp)
+            
+            # Log de revogação de consentimento
+            logger.info("User consent revoked", extra={
+                "consent_id": consent_id,
+                "user_email": user_email,
+                "client_ip": client_ip,
+                "event": "consent_revoked"
+            })
+            
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_auth_attempt(
+                    provider="system",
+                    success=True,
+                    client_ip=client_ip,
+                    user_id=user_email,
+                    event_type="consent_revoked"
+                )
+            
+            # Em produção, atualizar em banco de dados
+            # db.consents.update_one(
+            #     {"consent_id": consent_id, "user_email": user_email},
+            #     {"$set": {"revoked": True, "revoked_at": datetime.utcnow()}}
+            # )
+            
+            resp = make_response(jsonify({
+                "success": True,
+                "message": "Consentimento revogado com sucesso"
+            }), 200)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error("Consent revocation exception", extra={"error": str(e), "client_ip": client_ip}, exc_info=True)
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno do servidor"
+            }), 500)
+            return add_cors(resp)
+    
     # Aplicar security headers em todas as respostas
     @app.after_request
     def apply_security_headers(response):

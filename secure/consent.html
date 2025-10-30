@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consentimento de Autenticação - Cara Core</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .consent-container {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 500px;
+      width: 100%;
+      padding: 40px;
+      animation: slideUp 0.4s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo h1 {
+      color: #667eea;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .provider-info {
+      background: #f7fafc;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .provider-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .provider-icon img {
+      width: 32px;
+      height: 32px;
+    }
+
+    .provider-details h2 {
+      font-size: 18px;
+      color: #2d3748;
+      margin-bottom: 4px;
+    }
+
+    .provider-details p {
+      font-size: 14px;
+      color: #718096;
+    }
+
+    .consent-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #2d3748;
+      margin-bottom: 12px;
+    }
+
+    .consent-description {
+      font-size: 15px;
+      color: #4a5568;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .permissions {
+      margin-bottom: 24px;
+    }
+
+    .permissions-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 12px;
+    }
+
+    .permission-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px;
+      background: #f7fafc;
+      border-radius: 8px;
+      margin-bottom: 8px;
+    }
+
+    .permission-icon {
+      color: #667eea;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .permission-text {
+      flex: 1;
+    }
+
+    .permission-text strong {
+      color: #2d3748;
+      font-size: 14px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .permission-text span {
+      color: #718096;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .consent-agreement {
+      background: #fffaf0;
+      border: 1px solid #fbd38d;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .consent-agreement p {
+      font-size: 13px;
+      color: #744210;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      margin-top: 2px;
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .checkbox-wrapper label {
+      font-size: 14px;
+      color: #744210;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: #667eea;
+      color: white;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      background: #5568d3;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:disabled {
+      background: #cbd5e0;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background: #edf2f7;
+      color: #4a5568;
+    }
+
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+
+    .privacy-note {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #e2e8f0;
+      text-align: center;
+    }
+
+    .privacy-note p {
+      font-size: 12px;
+      color: #718096;
+      line-height: 1.5;
+    }
+
+    .privacy-note a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .privacy-note a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .consent-container {
+        padding: 24px;
+      }
+
+      .consent-title {
+        font-size: 20px;
+      }
+
+      .actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="consent-container">
+    <div class="logo">
+      <h1>🔐 Cara Core</h1>
+    </div>
+
+    <div class="provider-info" id="provider-info">
+      <div class="provider-icon">
+        <img src="" alt="Provider" id="provider-icon">
+      </div>
+      <div class="provider-details">
+        <h2 id="provider-name">Carregando...</h2>
+        <p id="user-email">Verificando autenticação...</p>
+      </div>
+    </div>
+
+    <h3 class="consent-title">Autorizar Acesso</h3>
+    <p class="consent-description">
+      A aplicação Cara Core está solicitando permissão para acessar suas informações de perfil. 
+      Revise cuidadosamente as permissões abaixo antes de continuar.
+    </p>
+
+    <div class="permissions">
+      <div class="permissions-title">Permissões Solicitadas:</div>
+      
+      <div class="permission-item">
+        <div class="permission-icon">✓</div>
+        <div class="permission-text">
+          <strong>Informações básicas do perfil</strong>
+          <span>Nome, foto e identificador único da conta</span>
+        </div>
+      </div>
+
+      <div class="permission-item">
+        <div class="permission-icon">✓</div>
+        <div class="permission-text">
+          <strong>Endereço de e-mail</strong>
+          <span>Usado para comunicação e recuperação de conta</span>
+        </div>
+      </div>
+
+      <div class="permission-item">
+        <div class="permission-icon">✓</div>
+        <div class="permission-text">
+          <strong>Manter você conectado</strong>
+          <span>Permitir autenticação contínua conforme OAuth 2.1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="consent-agreement">
+      <p>
+        <strong>⚠️ Importante:</strong> Ao autorizar, você concorda que a Cara Core possa acessar 
+        e processar as informações listadas acima de acordo com nossa política de privacidade.
+      </p>
+      <div class="checkbox-wrapper">
+        <input type="checkbox" id="consent-checkbox" required>
+        <label for="consent-checkbox">
+          Li e concordo com os <a href="/politica/termos-servico.html" target="_blank">Termos de Serviço</a> 
+          e a <a href="/politica/politica-privacidade.html" target="_blank">Política de Privacidade</a>
+        </label>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-secondary" id="btn-cancel">Cancelar</button>
+      <button class="btn btn-primary" id="btn-authorize" disabled>Autorizar</button>
+    </div>
+
+    <div class="privacy-note">
+      <p>
+        Suas informações serão protegidas de acordo com as melhores práticas de segurança.<br>
+        Você pode revogar o acesso a qualquer momento através de suas configurações.
+      </p>
+    </div>
+  </div>
+
+  <!-- Session Manager -->
+  <script src="/js/session-manager.js"></script>
+
+  <script>
+    (function() {
+      'use strict';
+
+      const consentCheckbox = document.getElementById('consent-checkbox');
+      const btnAuthorize = document.getElementById('btn-authorize');
+      const btnCancel = document.getElementById('btn-cancel');
+      const providerName = document.getElementById('provider-name');
+      const providerIcon = document.getElementById('provider-icon');
+      const userEmail = document.getElementById('user-email');
+
+      // Habilitar botão apenas se checkbox marcado
+      consentCheckbox.addEventListener('change', function() {
+        btnAuthorize.disabled = !this.checked;
+      });
+
+      // Obter informações do provedor da URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const provider = urlParams.get('provider') || 'google';
+      const returnUrl = urlParams.get('return_url') || '/secure/estrita.html';
+
+      // Configurar UI baseado no provedor
+      if (provider === 'google') {
+        providerName.textContent = 'Google';
+        providerIcon.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjNDI4NUY0IiBkPSJNMjEuNiAxMi4yYzAtLjctLjEtMS4zLS4yLTEuOUgxMnYzLjZoNS40Yy0uMiAxLjItLjkgMi4yLTEuOSAyLjh2Mi4zaDMuMWMxLjgtMS43IDIuOS00LjIgMi45LTYuOHoiLz48cGF0aCBmaWxsPSIjMzRBODUzIiBkPSJNMTIgMjJjMi42IDAgNC45LS45IDYuNS0yLjVsLTMuMS0yLjNjLS45LjYtMiAuOS0zLjQuOS0yLjYgMC00LjctMS44LTUuNS00LjJIMy40djIuN0ExMCAxMCAwIDAgMCAxMiAyMnoiLz48cGF0aCBmaWxsPSIjRkJCQzA1IiBkPSJNNi41IDE0Yy0uMi0uNi0uMy0xLjMtLjMtMnMuMS0xLjQuMy0yVjcuM0gzLjRBMTAgMTAgMCAwIDAgMiAxMmMwIDEuNi40IDMuMSAxLjQgNC43TDYuNSAxNHoiLz48cGF0aCBmaWxsPSIjRUE0MzM1IiBkPSJNMTIgNi41YzEuNSAwIDIuNy41IDMuNyAxLjVsMi44LTIuOEMxNi45IDMuNSAxNC42IDIuNCAxMiAyLjRjLTMuNiAwLTYuNiAyLjEtOC4xIDVMNi41IDEwYy44LTIuNCAyLjktNC4yIDUuNS00LjJ6Ii8+PC9zdmc+';
+      } else if (provider === 'microsoft') {
+        providerName.textContent = 'Microsoft';
+        providerIcon.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBmaWxsPSIjRjI1MDIyIiBkPSJNMiAyaDlzOWgxNXYxNWgtOXoiLz48cGF0aCBmaWxsPSIjN0ZCQTAwIiBkPSJNMTMgMmg5djloLTl6Ii8+PHBhdGggZmlsbD0iIzAwQTRFRiIgZD0iTTIgMTNoOXY5SDJ6Ii8+PHBhdGggZmlsbD0iI0ZGQjkwMCIgZD0iTTEzIDEzaDl2OWgtOXoiLz48L3N2Zz4=';
+      }
+
+      // Verificar se usuário já está autenticado
+      if (SessionManager.isAuthenticated()) {
+        const userInfo = SessionManager.getUserInfo();
+        if (userInfo && userInfo.email) {
+          userEmail.textContent = userInfo.email;
+        }
+      } else {
+        userEmail.textContent = 'Nenhuma sessão ativa';
+      }
+
+      // Handler do botão Autorizar
+      btnAuthorize.addEventListener('click', async function() {
+        if (!consentCheckbox.checked) {
+          alert('Por favor, aceite os termos antes de continuar.');
+          return;
+        }
+
+        btnAuthorize.disabled = true;
+        btnAuthorize.textContent = 'Autorizando...';
+
+        try {
+          // Registrar consentimento no backend
+          const response = await fetch('/api/consent/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              provider: provider,
+              user_email: userEmail.textContent,
+              permissions: ['profile', 'email'],
+              timestamp: new Date().toISOString(),
+              ip_address: 'client-ip' // Backend vai capturar o IP real
+            })
+          });
+
+          if (response.ok) {
+            console.log('[Consent] Consentimento registrado com sucesso');
+            
+            // Redirecionar para a página de retorno
+            window.location.href = returnUrl;
+          } else {
+            throw new Error('Falha ao registrar consentimento');
+          }
+        } catch (error) {
+          console.error('[Consent] Erro ao registrar consentimento:', error);
+          alert('Erro ao processar autorização. Por favor, tente novamente.');
+          btnAuthorize.disabled = false;
+          btnAuthorize.textContent = 'Autorizar';
+        }
+      });
+
+      // Handler do botão Cancelar
+      btnCancel.addEventListener('click', function() {
+        // Redirecionar para página inicial ou login
+        if (confirm('Deseja cancelar a autorização? Você será redirecionado para a página inicial.')) {
+          window.location.href = '/secure/index.html';
+        }
+      });
+
+      console.log('[Consent] Tela de consentimento carregada');
+    })();
+  </script>
+</body>
+</html>

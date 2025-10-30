@@ -767,6 +767,342 @@ def create_app() -> Flask:
         return add_cors(resp)
 
 
+    @app.route("/auth/token/refresh", methods=["OPTIONS"])
+    def refresh_token_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/auth/token/refresh", methods=["POST"])
+    def refresh_token():
+        """
+        Endpoint para refresh token rotation (OAuth 2.1)
+        
+        Aceita refresh_token e retorna novo access_token + novo refresh_token
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        try:
+            data = request.get_json() or {}
+            refresh_token_val = data.get("refresh_token", "")
+            provider = data.get("provider", "")  # google ou microsoft
+            
+            if not refresh_token_val or not provider:
+                if PKCE_VALIDATION_ENABLED:
+                    AuditLogger.log_suspicious_activity(
+                        activity_type="refresh_missing_params",
+                        details=f"refresh_token ou provider ausente",
+                        client_ip=client_ip
+                    )
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "refresh_token e provider são obrigatórios"
+                }), 400)
+                return add_cors(resp)
+            
+            # Preparar requisição para provedor OAuth
+            if provider.lower() == "google":
+                token_url = GOOGLE_TOKEN_ENDPOINT
+                payload = {
+                    "client_id": os.getenv("GOOGLE_CLIENT_ID"),
+                    "client_secret": os.getenv("GOOGLE_CLIENT_SECRET"),
+                    "refresh_token": refresh_token_val,
+                    "grant_type": "refresh_token"
+                }
+            elif provider.lower() == "microsoft":
+                tenant = os.getenv("AZURE_TENANT_ID", "common")
+                token_url = AZURE_TOKEN_ENDPOINT_TEMPLATE.format(tenant=tenant)
+                payload = {
+                    "client_id": os.getenv("MICROSOFT_CLIENT_ID"),
+                    "client_secret": os.getenv("MICROSOFT_CLIENT_SECRET"),
+                    "refresh_token": refresh_token_val,
+                    "grant_type": "refresh_token",
+                    "scope": DEFAULT_AZURE_SCOPE
+                }
+            else:
+                if PKCE_VALIDATION_ENABLED:
+                    AuditLogger.log_suspicious_activity(
+                        activity_type="refresh_invalid_provider",
+                        details=f"Provider inválido: {provider}",
+                        client_ip=client_ip
+                    )
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": f"Provider não suportado: {provider}"
+                }), 400)
+                return add_cors(resp)
+            
+            # Trocar refresh_token por novo access_token
+            logger.info("Refresh token request", extra={"provider": provider, "client_ip": client_ip})
+            response = post_form(token_url, payload)
+            
+            if response.status_code != 200:
+                error_body = response.text
+                logger.warning("Refresh token failed", extra={
+                    "provider": provider,
+                    "status": response.status_code,
+                    "error": error_body,
+                    "client_ip": client_ip
+                })
+                if PKCE_VALIDATION_ENABLED:
+                    AuditLogger.log_token_exchange(
+                        provider=provider,
+                        success=False,
+                        has_pkce=False,
+                        client_ip=client_ip,
+                        error=error_body
+                    )
+                resp = make_response(jsonify({
+                    "error": "invalid_grant",
+                    "error_description": "Refresh token inválido ou expirado"
+                }), 400)
+                return add_cors(resp)
+            
+            token_response = response.json()
+            
+            # Log de sucesso
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_token_exchange(
+                    provider=provider,
+                    success=True,
+                    has_pkce=False,
+                    client_ip=client_ip
+                )
+            
+            logger.info("Refresh token success", extra={"provider": provider, "client_ip": client_ip})
+            
+            resp = make_response(jsonify(token_response), 200)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error("Refresh token exception", extra={"error": str(e), "client_ip": client_ip}, exc_info=True)
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_suspicious_activity(
+                    activity_type="refresh_exception",
+                    details=str(e),
+                    client_ip=client_ip
+                )
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno do servidor"
+            }), 500)
+            return add_cors(resp)
+    
+    @app.route("/auth/validate", methods=["OPTIONS"])
+    def validate_session_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/auth/validate", methods=["POST"])
+    def validate_session():
+        """
+        Endpoint para validar sessão/token
+        
+        Aceita access_token e valida se ainda é válido
+        Retorna informações do usuário se válido
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        try:
+            data = request.get_json() or {}
+            access_token = data.get("access_token", "")
+            provider = data.get("provider", "")
+            
+            if not access_token or not provider:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "access_token e provider são obrigatórios"
+                }), 400)
+                return add_cors(resp)
+            
+            # Validar token com provedor
+            if provider.lower() == "google":
+                # Google tokeninfo endpoint
+                info_url = f"https://oauth2.googleapis.com/tokeninfo?access_token={access_token}"
+                response = requests.get(info_url, timeout=10)
+                
+                if response.status_code != 200:
+                    logger.info("Token validation failed", extra={"provider": provider, "client_ip": client_ip})
+                    resp = make_response(jsonify({
+                        "valid": False,
+                        "error": "invalid_token"
+                    }), 200)
+                    return add_cors(resp)
+                
+                token_info = response.json()
+                
+                # Verificar se token pertence ao nosso client_id
+                expected_client_id = os.getenv("GOOGLE_CLIENT_ID")
+                if token_info.get("aud") != expected_client_id:
+                    logger.warning("Token validation - wrong audience", extra={
+                        "provider": provider,
+                        "expected": expected_client_id,
+                        "actual": token_info.get("aud"),
+                        "client_ip": client_ip
+                    })
+                    resp = make_response(jsonify({
+                        "valid": False,
+                        "error": "invalid_token"
+                    }), 200)
+                    return add_cors(resp)
+                
+                # Token válido
+                resp = make_response(jsonify({
+                    "valid": True,
+                    "user": {
+                        "id": token_info.get("sub"),
+                        "email": token_info.get("email"),
+                        "email_verified": token_info.get("email_verified") == "true",
+                        "expires_in": int(token_info.get("exp", 0)) - int(time.time())
+                    }
+                }), 200)
+                return add_cors(resp)
+            
+            elif provider.lower() == "microsoft":
+                # Microsoft usa UserInfo endpoint
+                userinfo_url = "https://graph.microsoft.com/oidc/userinfo"
+                headers = {"Authorization": f"Bearer {access_token}"}
+                response = requests.get(userinfo_url, headers=headers, timeout=10)
+                
+                if response.status_code != 200:
+                    logger.info("Token validation failed", extra={"provider": provider, "client_ip": client_ip})
+                    resp = make_response(jsonify({
+                        "valid": False,
+                        "error": "invalid_token"
+                    }), 200)
+                    return add_cors(resp)
+                
+                userinfo = response.json()
+                
+                # Token válido
+                resp = make_response(jsonify({
+                    "valid": True,
+                    "user": {
+                        "id": userinfo.get("sub"),
+                        "email": userinfo.get("email"),
+                        "name": userinfo.get("name"),
+                        "email_verified": userinfo.get("email_verified", False)
+                    }
+                }), 200)
+                return add_cors(resp)
+            
+            else:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": f"Provider não suportado: {provider}"
+                }), 400)
+                return add_cors(resp)
+        
+        except Exception as e:
+            logger.error("Validate session exception", extra={"error": str(e), "client_ip": client_ip}, exc_info=True)
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno do servidor"
+            }), 500)
+            return add_cors(resp)
+    
+    @app.route("/auth/logout", methods=["OPTIONS"])
+    def logout_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/auth/logout", methods=["POST"])
+    def logout():
+        """
+        Endpoint para logout com revogação de token
+        
+        Revoga access_token e/ou refresh_token no provedor
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        try:
+            data = request.get_json() or {}
+            access_token = data.get("access_token", "")
+            refresh_token_val = data.get("refresh_token", "")
+            provider = data.get("provider", "")
+            
+            if not provider:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "provider é obrigatório"
+                }), 400)
+                return add_cors(resp)
+            
+            if not access_token and not refresh_token_val:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "access_token ou refresh_token é obrigatório"
+                }), 400)
+                return add_cors(resp)
+            
+            # Revogar token com provedor
+            revoked = False
+            
+            if provider.lower() == "google":
+                # Google revocation endpoint
+                revoke_url = "https://oauth2.googleapis.com/revoke"
+                token = refresh_token_val if refresh_token_val else access_token
+                
+                try:
+                    response = requests.post(
+                        revoke_url,
+                        data={"token": token},
+                        headers={"Content-Type": "application/x-www-form-urlencoded"},
+                        timeout=10
+                    )
+                    
+                    if response.status_code == 200:
+                        revoked = True
+                        logger.info("Token revoked", extra={"provider": provider, "client_ip": client_ip})
+                    else:
+                        logger.warning("Token revocation failed", extra={
+                            "provider": provider,
+                            "status": response.status_code,
+                            "client_ip": client_ip
+                        })
+                except Exception as e:
+                    logger.error("Token revocation error", extra={
+                        "provider": provider,
+                        "error": str(e),
+                        "client_ip": client_ip
+                    })
+            
+            elif provider.lower() == "microsoft":
+                # Microsoft não tem endpoint de revogação padrão
+                # Tokens expiram automaticamente
+                logger.info("Logout Microsoft (tokens expiram automaticamente)", extra={
+                    "provider": provider,
+                    "client_ip": client_ip
+                })
+                revoked = True
+            
+            else:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": f"Provider não suportado: {provider}"
+                }), 400)
+                return add_cors(resp)
+            
+            # Log de logout
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_auth_attempt(
+                    provider=provider,
+                    success=True,
+                    client_ip=client_ip,
+                    event_type="logout"
+                )
+            
+            resp = make_response(jsonify({
+                "success": True,
+                "revoked": revoked,
+                "message": "Logout realizado com sucesso"
+            }), 200)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error("Logout exception", extra={"error": str(e), "client_ip": client_ip}, exc_info=True)
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno do servidor"
+            }), 500)
+            return add_cors(resp)
+    
     return app
 
 

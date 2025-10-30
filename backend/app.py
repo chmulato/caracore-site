@@ -55,6 +55,15 @@ if not logger.handlers:
     logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
+# Import auth_manager para validação PKCE e logging
+try:
+    from auth_manager import PKCEValidator, AuditLogger
+    PKCE_VALIDATION_ENABLED = True
+    logger.info("Auth manager carregado - validação PKCE habilitada")
+except ImportError:
+    PKCE_VALIDATION_ENABLED = False
+    logger.warning("auth_manager não disponível - validação PKCE desabilitada")
+
 
 class HTTPRequestError(RuntimeError):
     """Raised when the token exchange HTTP call fails."""
@@ -403,18 +412,77 @@ def create_app() -> Flask:
         # Extract required fields
         code = payload.get("code")
         code_verifier = payload.get("code_verifier")
+        code_challenge = payload.get("code_challenge")  # Para validação PKCE
         grant_type = payload.get("grant_type", "authorization_code")
         redirect_uri = payload.get("redirect_uri") or default_redirect
+
+        # Log tentativa de autenticação
+        client_ip = request.remote_addr
+        if PKCE_VALIDATION_ENABLED:
+            AuditLogger.log_token_exchange(
+                provider="google",
+                success=False,  # Será atualizado depois
+                has_pkce=bool(code_verifier),
+                client_ip=client_ip
+            )
 
         # Basic validation
         missing = [k for k in ("code", "code_verifier") if not payload.get(k)]
         if missing:
             logger.warning("Invalid request - missing fields: %s", ", ".join(missing))
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_token_exchange(
+                    provider="google",
+                    success=False,
+                    has_pkce=bool(code_verifier),
+                    client_ip=client_ip,
+                    error_code="invalid_request"
+                )
             resp = make_response(jsonify({
                 "error": "invalid_request",
                 "error_description": f"Missing fields: {', '.join(missing)}"
             }), 400)
             return add_cors(resp)
+
+        # Validação PKCE (OAuth 2.1 obrigatório)
+        # TODO: Implementar armazenamento de code_challenge durante authorization
+        # Por enquanto, aceita code_challenge no request para validação
+        if PKCE_VALIDATION_ENABLED and code_challenge:
+            pkce_result = PKCEValidator.validate(
+                code_verifier=code_verifier,
+                code_challenge=code_challenge,
+                method="S256"
+            )
+            
+            if not pkce_result.valid:
+                logger.warning(
+                    "PKCE validation failed: %s - %s",
+                    pkce_result.error_code,
+                    pkce_result.error_description
+                )
+                AuditLogger.log_suspicious_activity(
+                    activity_type="pkce_validation_failed",
+                    details=pkce_result.error_description or "Invalid PKCE",
+                    client_ip=client_ip
+                )
+                resp = make_response(jsonify({
+                    "error": pkce_result.error_code,
+                    "error_description": pkce_result.error_description
+                }), 400)
+                return add_cors(resp)
+            
+            logger.info("PKCE validation successful")
+        elif PKCE_VALIDATION_ENABLED:
+            # PKCE é obrigatório mas code_challenge não foi fornecido
+            # Isso indica que o cliente não implementou PKCE corretamente
+            logger.warning("PKCE required but code_challenge not provided")
+            # Por ora, apenas log - para não quebrar clientes existentes
+            # Em produção, descomentar abaixo para forçar PKCE:
+            # resp = make_response(jsonify({
+            #     "error": "invalid_request",
+            #     "error_description": "PKCE is required (code_challenge missing)"
+            # }), 400)
+            # return add_cors(resp)
 
         if not google_client_id or not google_client_secret:
             logger.error("Credenciais Google ausentes no ambiente - respondendo erro 500")
@@ -488,6 +556,14 @@ def create_app() -> Flask:
                         claims.get("sub"),
                         claims.get("email"),
                     )
+                    # Log sucesso da autenticação
+                    if PKCE_VALIDATION_ENABLED:
+                        AuditLogger.log_auth_attempt(
+                            provider="google",
+                            success=True,
+                            client_ip=client_ip,
+                            user_id=claims.get("sub")
+                        )
                 except IDTokenValidationError as exc:
                     logger.error(
                         "Falha ao validar ID token Google: %s - %s",
@@ -533,19 +609,65 @@ def create_app() -> Flask:
 
         code = payload.get("code")
         code_verifier = payload.get("code_verifier")
+        code_challenge = payload.get("code_challenge")  # Para validação PKCE
         grant_type = payload.get("grant_type", "authorization_code")
         redirect_uri = payload.get("redirect_uri") or default_redirect
         scope = payload.get("scope") or azure_default_scope
         tenant_override = payload.get("tenant")
 
+        # Log tentativa de autenticação
+        client_ip = request.remote_addr
+        if PKCE_VALIDATION_ENABLED:
+            AuditLogger.log_token_exchange(
+                provider="microsoft",
+                success=False,  # Será atualizado depois
+                has_pkce=bool(code_verifier),
+                client_ip=client_ip
+            )
+
         missing = [k for k in ("code", "code_verifier") if not payload.get(k)]
         if missing:
             logger.warning("Requisicao invalida para Microsoft - campos ausentes: %s", ", ".join(missing))
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_token_exchange(
+                    provider="microsoft",
+                    success=False,
+                    has_pkce=bool(code_verifier),
+                    client_ip=client_ip,
+                    error_code="invalid_request"
+                )
             resp = make_response(jsonify({
                 "error": "invalid_request",
                 "error_description": f"Missing fields: {', '.join(missing)}"
             }), 400)
             return add_cors(resp)
+
+        # Validação PKCE (OAuth 2.1 obrigatório)
+        if PKCE_VALIDATION_ENABLED and code_challenge:
+            pkce_result = PKCEValidator.validate(
+                code_verifier=code_verifier,
+                code_challenge=code_challenge,
+                method="S256"
+            )
+            
+            if not pkce_result.valid:
+                logger.warning(
+                    "PKCE validation failed (Microsoft): %s - %s",
+                    pkce_result.error_code,
+                    pkce_result.error_description
+                )
+                AuditLogger.log_suspicious_activity(
+                    activity_type="pkce_validation_failed",
+                    details=f"Microsoft: {pkce_result.error_description}",
+                    client_ip=client_ip
+                )
+                resp = make_response(jsonify({
+                    "error": pkce_result.error_code,
+                    "error_description": pkce_result.error_description
+                }), 400)
+                return add_cors(resp)
+            
+            logger.info("PKCE validation successful (Microsoft)")
 
         if not azure_client_id or not azure_client_secret:
             logger.error("Credenciais Microsoft ausentes no ambiente - respondendo erro 500")
@@ -614,6 +736,14 @@ def create_app() -> Flask:
                         claims.get("oid"),
                         claims.get("preferred_username"),
                     )
+                    # Log sucesso da autenticação
+                    if PKCE_VALIDATION_ENABLED:
+                        AuditLogger.log_auth_attempt(
+                            provider="microsoft",
+                            success=True,
+                            client_ip=client_ip,
+                            user_id=claims.get("oid")
+                        )
                 except IDTokenValidationError as exc:
                     logger.error(
                         "Falha ao validar ID token Microsoft: %s - %s",

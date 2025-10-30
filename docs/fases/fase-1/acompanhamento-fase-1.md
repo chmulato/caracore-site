@@ -7,7 +7,7 @@
 
 ## Status Geral
 
-**Progresso:** 0%  
+**Progresso:** 75%  
 **Status:** 🟡 Em Andamento
 
 ## Itens da Fase
@@ -15,8 +15,8 @@
 ### Item 1: Autenticação OAuth 2.1 + OIDC
 
 **Responsável:** Desenvolvedor Backend + Frontend  
-**Status:** 🟡 Em Andamento  
-**Progresso:** 85%
+**Status:** ✅ Concluído  
+**Progresso:** 100%
 
 **Tarefas:**
 
@@ -26,9 +26,10 @@
 - [x] Implementar validação de tokens no backend (issuer, audience, expiração)
 - [x] Criar novos endpoints `/auth/token/refresh`, `/auth/validate`, `/auth/logout`
 - [x] Implementar testes unitários completos (23 testes - todos passando)
-- [ ] Garantir HTTPS obrigatório em todos os endpoints
-- [ ] Validar escopos mínimos necessários
-- [ ] Implementar rate limiting
+- [x] Garantir HTTPS obrigatório em todos os endpoints
+- [x] Validar escopos mínimos necessários
+- [x] Implementar rate limiting (10-30 req/min por endpoint)
+- [x] Adicionar security headers (HSTS, CSP, X-Frame-Options, etc)
 
 **Observações:**
 ✅ **30/10/2025 - Manhã:** Criado módulo `auth_manager.py` com:
@@ -61,38 +62,51 @@
 ### Item 2: Controle de Sessão
 
 **Responsável:** Desenvolvedor Frontend + Backend  
-**Status:** ⚪ Não Iniciado  
-**Progresso:** 0%
+**Status:** ✅ Concluído  
+**Progresso:** 100%
 
 **Tarefas:**
 
-- [ ] Implementar verificação de autenticação para `estrita.html`
-- [ ] Criar redirecionamento automático para login quando não autenticado
-- [ ] Implementar expiração automática de sessão/token
-- [ ] Implementar refresh token rotation conforme OAuth 2.1
-- [ ] Testar fluxos de sessão em diferentes cenários
+- [x] Implementar verificação de autenticação para `estrita.html`
+- [x] Criar redirecionamento automático para login quando não autenticado
+- [x] Implementar expiração automática de sessão/token
+- [x] Implementar refresh token rotation conforme OAuth 2.1
+- [x] Testar fluxos de sessão em diferentes cenários
 
 **Observações:**
-Aguardando conclusão do Item 1 para iniciar desenvolvimento.
+✅ **30/10/2025:** Criado `session-manager.js`:
+
+- Validação automática a cada 60 segundos
+- Auto-refresh 5min antes de expirar
+- Timeout de inatividade (1 hora)
+- Logout com revogação de token
+- Monitoramento de atividade do usuário
+- Integrado em `estrita.html` (página protegida)
 
 ---
 
 ### Item 8: Segurança e Proteção de Dados
 
 **Responsável:** Desenvolvedor Backend + DevOps  
-**Status:** ⚪ Não Iniciado  
-**Progresso:** 0%
+**Status:** ✅ Concluído  
+**Progresso:** 100%
 
 **Tarefas:**
 
-- [ ] Implementar cabeçalhos de segurança HTTP (CSP, HSTS, X-Frame-Options)
-- [ ] Configurar HTTPS exclusivo para endpoints de autenticação
-- [ ] Implementar rate limiting para prevenir ataques de força bruta
-- [ ] Validar e sanitizar entradas de dados no backend
-- [ ] Implementar proteção contra CSRF com tokens adequados
+- [x] Implementar cabeçalhos de segurança HTTP (CSP, HSTS, X-Frame-Options)
+- [x] Configurar HTTPS exclusivo para endpoints de autenticação
+- [x] Implementar rate limiting para prevenir ataques de força bruta
+- [x] Validar e sanitizar entradas de dados no backend
+- [x] Implementar proteção contra CSRF com tokens adequados
 
 **Observações:**
-Programado para execução paralela com itens 1 e 2.
+✅ **30/10/2025:** Criado `rate_limiter.py` e `security.py`:
+
+- Rate limiting: 10-30 req/min por endpoint
+- HTTPS enforcement obrigatório em produção
+- Security headers: HSTS, CSP, X-Frame-Options, X-Content-Type-Options
+- Proteção contra clickjacking, XSS, MIME sniffing
+- Integrado em todos endpoints OAuth/Auth via decorators
 
 ---
 

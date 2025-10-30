@@ -64,6 +64,34 @@ except ImportError:
     PKCE_VALIDATION_ENABLED = False
     logger.warning("auth_manager não disponível - validação PKCE desabilitada")
 
+# Import rate_limiter para proteção contra força bruta
+try:
+    from rate_limiter import rate_limit, get_rate_limiter
+    RATE_LIMITING_ENABLED = True
+    logger.info("Rate limiter carregado - proteção contra força bruta habilitada")
+except ImportError:
+    RATE_LIMITING_ENABLED = False
+    logger.warning("rate_limiter não disponível - rate limiting desabilitado")
+    # Dummy decorator se não disponível
+    def rate_limit(endpoint=None):
+        def decorator(f):
+            return f
+        return decorator
+
+# Import security para HTTPS enforcement e headers
+try:
+    from security import add_security_headers, require_https, log_security_event
+    SECURITY_HEADERS_ENABLED = True
+    logger.info("Security module carregado - HTTPS enforcement e headers habilitados")
+except ImportError:
+    SECURITY_HEADERS_ENABLED = False
+    logger.warning("security module não disponível - security headers desabilitados")
+    # Dummy decorator se não disponível
+    def require_https(f):
+        return f
+    def add_security_headers(response):
+        return response
+
 
 class HTTPRequestError(RuntimeError):
     """Raised when the token exchange HTTP call fails."""
@@ -391,6 +419,8 @@ def create_app() -> Flask:
         return add_cors(make_response("", 204))
 
     @app.route("/oauth/google/token", methods=["POST"])  # code exchange
+    @require_https
+    @rate_limit("/oauth/google/token")
     def google_token():
         logger.info(
             "Recebido POST /oauth/google/token de %s (content-type=%s)",
@@ -591,6 +621,8 @@ def create_app() -> Flask:
         return add_cors(make_response("", 204))
 
     @app.route("/oauth/microsoft/token", methods=["POST"])  # code exchange
+    @require_https
+    @rate_limit("/oauth/microsoft/token")
     def microsoft_token():
         logger.info(
             "Recebido POST /oauth/microsoft/token de %s (content-type=%s)",
@@ -772,6 +804,8 @@ def create_app() -> Flask:
         return add_cors(make_response("", 204))
     
     @app.route("/auth/token/refresh", methods=["POST"])
+    @require_https
+    @rate_limit("/auth/token/refresh")
     def refresh_token():
         """
         Endpoint para refresh token rotation (OAuth 2.1)
@@ -891,6 +925,7 @@ def create_app() -> Flask:
         return add_cors(make_response("", 204))
     
     @app.route("/auth/validate", methods=["POST"])
+    @rate_limit("/auth/validate")
     def validate_session():
         """
         Endpoint para validar sessão/token
@@ -1003,6 +1038,7 @@ def create_app() -> Flask:
         return add_cors(make_response("", 204))
     
     @app.route("/auth/logout", methods=["POST"])
+    @rate_limit("/auth/logout")
     def logout():
         """
         Endpoint para logout com revogação de token
@@ -1102,6 +1138,14 @@ def create_app() -> Flask:
                 "error_description": "Erro interno do servidor"
             }), 500)
             return add_cors(resp)
+    
+    # Aplicar security headers em todas as respostas
+    @app.after_request
+    def apply_security_headers(response):
+        """Aplica headers de segurança em todas as respostas"""
+        if SECURITY_HEADERS_ENABLED:
+            response = add_security_headers(response)
+        return response
     
     return app
 

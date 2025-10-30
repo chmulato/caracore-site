@@ -150,6 +150,47 @@
     </main>
   </div>
 
+  <!-- Session Manager - Controle de Sessão OAuth 2.1 -->
+  <script src="/js/session-manager.js"></script>
+  
+  <!-- Script de proteção de página -->
+  <script>
+    // Proteger página - requer autenticação
+    (function() {
+      'use strict';
+      
+      // Verificar autenticação imediatamente
+      if (!SessionManager.requireAuth()) {
+        // requireAuth já redireciona se não autenticado
+        return;
+      }
+      
+      // Exibir informações do usuário
+      const userInfo = SessionManager.getUserInfo();
+      if (userInfo) {
+        console.log('[Estrita] Usuário autenticado:', userInfo.email || userInfo.name);
+        
+        // Opcional: Exibir nome do usuário na UI
+        const userDisplayElement = document.getElementById('user-display');
+        if (userDisplayElement) {
+          userDisplayElement.textContent = userInfo.email || userInfo.name || 'Usuário';
+        }
+      }
+      
+      // Configurar botão de logout (se existir)
+      const logoutBtn = document.getElementById('logout-btn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          await SessionManager.logout();
+          SessionManager.redirectToLogin();
+        });
+      }
+      
+      console.log('[Estrita] Página protegida carregada com sucesso');
+    })();
+  </script>
+  
   <script defer src="/secure/log-config.js"></script>
   <script defer src="/secure/logger.js"></script>
   <script defer src="/secure/dynamic-config.js"></script>

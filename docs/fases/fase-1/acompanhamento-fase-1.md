@@ -16,19 +16,45 @@
 
 **Responsável:** Desenvolvedor Backend + Frontend  
 **Status:** 🟡 Em Andamento  
-**Progresso:** 0%
+**Progresso:** 85%
 
 **Tarefas:**
 
-- [ ] Configurar endpoints OAuth 2.1 no backend
-- [ ] Implementar fluxo Authorization Code + PKCE obrigatório
-- [ ] Configurar provedores autorizados (Google, Microsoft)
-- [ ] Implementar validação de tokens no backend (issuer, audience, expiração)
+- [x] Configurar endpoints OAuth 2.1 no backend
+- [x] Implementar fluxo Authorization Code + PKCE obrigatório
+- [x] Configurar provedores autorizados (Google, Microsoft)
+- [x] Implementar validação de tokens no backend (issuer, audience, expiração)
+- [x] Criar novos endpoints `/auth/token/refresh`, `/auth/validate`, `/auth/logout`
+- [x] Implementar testes unitários completos (23 testes - todos passando)
 - [ ] Garantir HTTPS obrigatório em todos os endpoints
 - [ ] Validar escopos mínimos necessários
+- [ ] Implementar rate limiting
 
 **Observações:**
-Iniciando pela configuração dos endpoints OAuth 2.1. Branch `fase-01` criada em 30/10/2025.
+✅ **30/10/2025 - Manhã:** Criado módulo `auth_manager.py` com:
+
+- PKCEValidator: validação S256 obrigatória
+- TokenValidator: validação robusta de issuer, aud, exp, iat, nonce
+- AuditLogger: logging estruturado de eventos de auth
+
+✅ Integrado validação PKCE nos endpoints existentes:
+
+- `/oauth/google/token` - com PKCE e auditoria
+- `/oauth/microsoft/token` - com PKCE e auditoria
+
+✅ **30/10/2025 - Tarde:** Novos endpoints OAuth 2.1:
+
+- `/auth/token/refresh` - Refresh token rotation com auditoria
+- `/auth/validate` - Validação de sessão/token com Google e Microsoft
+- `/auth/logout` - Logout com revogação de token (Google) e expiração automática (Microsoft)
+
+✅ Testes Unitários (23 testes, 100% pass):
+
+- 10 testes PKCEValidator (PKCE completo)
+- 10 testes TokenValidator (JWT claims)
+- 3 testes AuditLogger (auditoria)
+
+🔄 **Próximo:** HTTPS enforcement e rate limiting
 
 ---
 

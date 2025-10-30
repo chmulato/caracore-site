@@ -6,7 +6,13 @@
 
 ## Objetivos da Fase
 
-Implementar fluxos de consentimento do usuário, logout seguro e sistema de feedback para melhorar a experiência do usuário.
+Implementar fluxos de consentimento do usuário, logout seguro e sistema de feedback para melhorar a experiência do usuário nas páginas HTML da pasta `secure/`:
+
+### Páginas Alvo:
+- **`secure/index.html`** - Melhorar interface de consentimento e feedback
+- **`secure/estrita.html`** - Implementar logout seguro e mensagens de status
+- **`secure/logout.html`** - Aprimorar processo de logout federado
+- **`secure/callback.html`** - Adicionar feedback durante processamento OAuth
 
 ## Itens a Desenvolver
 

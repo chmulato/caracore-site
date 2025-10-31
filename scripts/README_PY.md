@@ -399,6 +399,7 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 **Formato:** JSONL (JSON Lines) - um evento por linha
 
 **Estrutura dos Logs:**
+
 ```json
 {
   "timestamp": "2025-10-31T10:15:00Z",
@@ -413,6 +414,7 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 ```
 
 **Eventos Registrados:**
+
 - `login` - Tentativas de login (sucesso/falha)
 - `logout` - Eventos de logout (local/federado)
 - `token_exchange` - Troca de authorization code por token
@@ -421,6 +423,7 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 - `error` - Erros do sistema
 
 **Características:**
+
 - Arquivos diários: `YYYY-MM-DD.jsonl`
 - Retenção: 90 dias (configurável)
 - Rotação automática: Pendente implementação
@@ -622,6 +625,7 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 - `scripts/validate_oidc_endpoints.py`
 
 **Arquivados (arquitetura anterior):**
+
 - `endpoint_checks.py.deprecated`
 - `teste_end_point_azure.py.deprecated`
 - `teste_end_point_local.py.deprecated`
@@ -666,12 +670,14 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 ### Novos Componentes:
 
 **Backend:**
+
 - ✅ Endpoint `/health/detailed` - Health check avançado (120 linhas)
 - ✅ Endpoint `/api/admin/logs` - API de logs com paginação (100 linhas)
 - ✅ Sistema de logs JSONL diários (`backend/logs/`)
 - ✅ Metadados completos (timestamp, user, IP, provider, event_type)
 
 **Frontend:**
+
 - ✅ Dashboard de Auditoria (`secure/admin-logs.html` - 330 linhas)
 - ✅ JavaScript do Dashboard (`secure/js/audit-dashboard.js` - 462 linhas)
 - ✅ Filtros dinâmicos (data, tipo de evento, busca)
@@ -680,22 +686,26 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 - ✅ Integração com wiki Área 51
 
 **Testes:**
+
 - ✅ `backend/test_admin_logs.py` - Testes de endpoints de auditoria (102 linhas)
 - ✅ `backend/validar_dashboard.py` - Validação E2E (249 linhas, 4/4 testes passando)
 
 **Documentação:**
+
 - ✅ `docs/AZURE_DEPLOY.md` - Guia completo de deploy
 - ✅ `docs/fases/fase-3/README.md` - Documentação da Fase 3
 - ✅ `docs/fases/fase-3/RESUMO-EXECUTIVO.md` - Resumo executivo
 - ✅ `docs/fases/fase-3/acompanhamento-fase-3.md` - Tracking detalhado
 
 **Status Fase 3:**
+
 - Item 6 (Auditoria): 95% concluído
 - Item 7 (Backend Azure): 90% concluído
 - Item 9 (Testes): 30% concluído
 - **Progresso Total: 70%**
 
 **Pendências:**
+
 - Rotação automática de logs (4h)
 - Testes E2E automatizados (3 dias)
 - CI/CD Pipeline (GitHub Actions)
@@ -714,5 +724,3 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 **Python Version:** 3.11 (Azure App Service)
 **WSGI Server:** Gunicorn com timeout 600s
 **Última Atualização:** Campo Largo, 31 de outubro de 2025 - Fase 3 (70% concluída)
- 
- 

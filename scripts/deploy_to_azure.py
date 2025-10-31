@@ -178,6 +178,76 @@ def restart_webapp(resource_group: str, app_name: str) -> None:
     log("Restart solicitado.")
 
 
+def validate_app_settings(resource_group: str, app_name: str) -> None:
+    """Valida se as configurações críticas estão presentes no App Service."""
+    log("Validando configurações do App Service...")
+    
+    required_settings = [
+        "APP_SECRET_KEY",
+        "ORIGIN_ALLOWED",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "OAUTH_REDIRECT_URI",
+        "AZURE_TENANT_ID",      # Alterado de TENANT_ID
+        "AZURE_CLIENT_ID",      # Alterado de CLIENT_ID
+        "AZURE_CLIENT_SECRET",  # Alterado de CLIENT_SECRET
+    ]
+    
+    result = run_cli([
+        "az",
+        "webapp",
+        "config",
+        "appsettings",
+        "list",
+        "--resource-group",
+        resource_group,
+        "--name",
+        app_name,
+    ])
+    
+    if result.stdout:
+        try:
+            settings = json.loads(result.stdout)
+            setting_names = {s.get("name") for s in settings}
+            missing = [name for name in required_settings if name not in setting_names]
+            
+            if missing:
+                log(f"AVISO: Configurações faltando no App Service: {', '.join(missing)}")
+                log("Execute o comando de configuração antes do deploy:")
+                log("az webapp config appsettings set --name caracore-backend --resource-group rg-caracore --settings ...")
+            else:
+                log("✓ Todas as configurações críticas estão presentes.")
+        except json.JSONDecodeError:
+            logger.warning("Não foi possível validar as configurações do App Service.")
+
+
+def set_startup_command(resource_group: str, app_name: str, startup_file: Path) -> None:
+    """Configura o startup command do App Service a partir do arquivo startup.txt."""
+    if not startup_file.is_file():
+        raise FileNotFoundError(f"Arquivo startup.txt não encontrado: {startup_file}")
+    
+    with open(startup_file, "r", encoding="utf-8") as f:
+        startup_cmd = f.read().strip()
+    
+    if not startup_cmd:
+        raise ValueError("O arquivo startup.txt está vazio.")
+    
+    log(f"Configurando startup command: {startup_cmd}")
+    run_cli([
+        "az",
+        "webapp",
+        "config",
+        "set",
+        "--resource-group",
+        resource_group,
+        "--name",
+        app_name,
+        "--startup-file",
+        startup_cmd,
+    ])
+    log("✓ Startup command configurado com sucesso.")
+
+
 def run_smoke_tests(
     app_name: str,
     base_url: Optional[str],
@@ -252,9 +322,9 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Realiza zip deploy da API CaraCore no Azure App Service.")
     parser.add_argument("--subscription-id", default=os.getenv("AZURE_SUBSCRIPTION_ID"), help="ID da subscription Azure (usado pelo Azure CLI)")
     parser.add_argument("--resource-group", default="rg-caracore", help="Resource Group do App Service")
-    parser.add_argument("--app-name", default="api-caracore", help="Nome do App Service")
+    parser.add_argument("--app-name", default="caracore-backend", help="Nome do App Service")
     parser.add_argument("--zip", dest="zip_path", default=None, help="Caminho para um ZIP existente (opcional)")
-    parser.add_argument("--backend-dir", default=str(Path(__file__).resolve().parent / "backend"), help="Diretório do backend para gerar ZIP se necessário")
+    parser.add_argument("--backend-dir", default=str(Path(__file__).resolve().parent.parent / "backend"), help="Diretório do backend para gerar ZIP se necessário")
     parser.add_argument("--output-zip", default=str(Path(__file__).resolve().parent / "backend.zip"), help="Arquivo ZIP de saída caso o ZIP seja gerado automaticamente")
     parser.add_argument(
         "--bundle-backend-deps",
@@ -282,6 +352,7 @@ def main() -> None:
     parser.add_argument("--tests-insecure", action="store_true", help="Desabilita verificação SSL nos smoke tests")
     parser.add_argument("--tests-wait", type=int, default=5, help="Segundos para aguardar antes de rodar os smoke tests (padrão: 5)")
     parser.add_argument("--tests-python", dest="tests_python", default=None, help="Executável Python a usar nos smoke tests (padrão: mesmo Python deste script)")
+    parser.add_argument("--set-startup-command", action="store_true", help="Configure o startup command no Azure a partir do arquivo startup.txt")
 
     args = parser.parse_args()
 
@@ -305,6 +376,29 @@ def main() -> None:
 
     backend_dir = Path(args.backend_dir)
     output_zip = Path(args.output_zip)
+    
+    # Validar configurações do App Service
+    try:
+        validate_app_settings(args.resource_group, args.app_name)
+    except Exception as exc:
+        log(f"Aviso: Não foi possível validar as configurações: {exc}")
+    
+    # Verificar se startup.txt existe
+    startup_file = backend_dir / "startup.txt"
+    if startup_file.is_file():
+        with open(startup_file, "r", encoding="utf-8") as f:
+            startup_cmd = f.read().strip()
+            log(f"✓ Startup command encontrado: {startup_cmd}")
+        
+        if args.set_startup_command:
+            try:
+                set_startup_command(args.resource_group, args.app_name, startup_file)
+            except Exception as exc:
+                log(f"Erro ao configurar startup command: {exc}")
+                sys.exit(1)
+    else:
+        log("AVISO: arquivo startup.txt não encontrado no diretório do backend.")
+        log("Crie o arquivo backend/startup.txt com o comando: gunicorn --bind=0.0.0.0 --timeout 600 app:app")
 
     if args.zip_path:
         zip_path = Path(args.zip_path)
@@ -337,8 +431,18 @@ def main() -> None:
             python_executable=args.tests_python,
         )
 
-    log("Deploy concluído.")
+    log("=" * 80)
+    log("Deploy concluído com sucesso!")
     log(f"App publicado em: https://{args.app_name}.azurewebsites.net")
+    log("")
+    log("Endpoints disponíveis:")
+    log(f"  - Health check: https://{args.app_name}.azurewebsites.net/health")
+    log(f"  - OAuth Google: https://{args.app_name}.azurewebsites.net/oauth/google/token")
+    log(f"  - OAuth Microsoft: https://{args.app_name}.azurewebsites.net/oauth/microsoft/token")
+    log("")
+    log("Para visualizar logs em tempo real:")
+    log(f"  az webapp log tail --name {args.app_name} --resource-group {args.resource_group}")
+    log("=" * 80)
 
 
 if __name__ == "__main__":

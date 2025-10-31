@@ -73,3 +73,7 @@ deploy_*.zip
 arquivo_migracao_*/
 test_results*.json
 docs_old/
+deploy_*.log
+startup.txt
+Azure_Static_*.md
+configure_azure_secrets*.ps1

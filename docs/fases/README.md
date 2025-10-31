@@ -1,6 +1,18 @@
 # Fases de Desenvolvimento - OAuth 2.1 + OIDC
 
-Este diretório contém a organização por fases do desenvolvimento do sistema de autenticação OAuth 2.1 + OIDC para acesso à Área Restrita.
+Este diretório contém a organização por fases do desenvolvimento do sistema de autenticação OAuth 2.1 + OIDC para as páginas HTML da pasta `secure/` (Área Restrita).
+
+## Páginas HTML em Escopo
+
+### Principais:
+- **`secure/index.html`** - Página de login/entrada
+- **`secure/estrita.html`** - Conteúdo protegido principal
+- **`secure/callback.html`** - Processamento de callback OAuth
+- **`secure/logout.html`** - Página de logout
+- **`secure/admin-logs.html`** - Logs administrativos
+
+### Adicionais:
+- **`secure/privado/historia.html`** - Conteúdo protegido adicional
 
 ## Estrutura das Fases
 

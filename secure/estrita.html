@@ -106,10 +106,10 @@
             <div class="session-meta">
               <span id="roleBadge" class="badge badge-pill badge-role d-none">Usuário autenticado</span>
               <span id="currentProvider" class="provider-note"></span>
-              <a class="btn btn-primary" href="../secure/logout.html" id="logoutButton">
+              <button class="btn btn-primary" type="button" id="logoutButton">
                 <svg aria-hidden="true"><use href="#icon-box-arrow-left"></use></svg>
                 Encerrar sessão
-              </a>
+              </button>
               <a href="../secure/admin-logs.html" class="btn btn-outline btn-sm">
                 <svg aria-hidden="true"><use href="#icon-journal"></use></svg>
                 Logs do sistema
@@ -150,6 +150,64 @@
     </main>
   </div>
 
+  <!-- Sistema de Notificações (Fase 2 - Item 5) -->
+  <script src="/secure/js/notification-manager.js"></script>
+  <script src="/secure/js/error-messages.js"></script>
+  <script src="/secure/js/notification-bridge.js"></script>
+
+  <!-- Session Manager - Controle de Sessão OAuth 2.1 -->
+  <script src="/js/session-manager.js"></script>
+  
+  <!-- Logout Modal (Fase 2 - Item 4) -->
+  <script src="/js/logout-modal.js"></script>
+  
+  <!-- Script de proteção de página -->
+  <script>
+    // Proteger página - requer autenticação
+    (function() {
+      'use strict';
+      
+      // Verificar autenticação imediatamente
+      if (!SessionManager.requireAuth()) {
+        // requireAuth já redireciona se não autenticado
+        return;
+      }
+      
+      // Exibir informações do usuário
+      const userInfo = SessionManager.getUserInfo();
+      const provider = localStorage.getItem('auth_provider');
+      
+      if (userInfo) {
+        console.log('[Estrita] Usuário autenticado:', userInfo.email || userInfo.name);
+        
+        // Opcional: Exibir nome do usuário na UI
+        const userDisplayElement = document.getElementById('user-display');
+        if (userDisplayElement) {
+          userDisplayElement.textContent = userInfo.email || userInfo.name || 'Usuário';
+        }
+      }
+      
+      // Configurar botão de logout com LogoutModal
+      const logoutBtn = document.getElementById('logoutButton');
+      if (logoutBtn && typeof LogoutModal !== 'undefined') {
+        logoutBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          LogoutModal.show(provider);
+        });
+        console.log('[Estrita] LogoutModal configurado');
+      } else if (logoutBtn) {
+        // Fallback se LogoutModal não estiver disponível
+        logoutBtn.addEventListener('click', async (e) => {
+          e.preventDefault();
+          await SessionManager.logout();
+        });
+        console.warn('[Estrita] LogoutModal não encontrado, usando logout padrão');
+      }
+      
+      console.log('[Estrita] Página protegida carregada com sucesso');
+    })();
+  </script>
+  
   <script defer src="/secure/log-config.js"></script>
   <script defer src="/secure/logger.js"></script>
   <script defer src="/secure/dynamic-config.js"></script>

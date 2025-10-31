@@ -1,15 +1,15 @@
 # Checklist Geral do Projeto - OAuth 2.1 + OIDC
 
 **Projeto:** Sistema de Autenticação para Área Restrita  
-**Data de Início:** [A definir]  
-**Data Prevista de Conclusão:** [A definir + 8 semanas]  
-**Status Geral:** 🟡 Planejamento
+**Data de Início:** 30 de outubro de 2025  
+**Data Prevista de Conclusão:** 25 de dezembro de 2025 (8 semanas)  
+**Status Geral:** 🟡 Em Desenvolvimento
 
 ## Resumo do Progresso
 
 | Fase | Status | Progresso | Data Início | Data Fim |
 |------|--------|-----------|-------------|----------|
-| Fase 1 | 🟡 Planejada | 0% | - | - |
+| Fase 1 | 🟡 Em Andamento | 0% | 30/10/2025 | 13/11/2025 |
 | Fase 2 | ⚪ Aguardando | 0% | - | - |
 | Fase 3 | ⚪ Aguardando | 0% | - | - |
 | Fase 4 | ⚪ Aguardando | 0% | - | - |

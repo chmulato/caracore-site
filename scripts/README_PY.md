@@ -28,16 +28,83 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 ### `backend/app.py`
 
-**Função:** Backend Flask para troca de tokens OAuth (deployado como caracore-backend)
+**Função:** Backend Flask OAuth 2.1 + OIDC (deployado como caracore-backend)
 
-- Endpoint `/health` para verificação de saúde
-- Endpoint `/oauth/google/token` para troca de código por token Google
-- Endpoint `/oauth/microsoft/token` para troca de código por token Microsoft  
-- Validação de ID tokens usando JWKS
-- Suporte a CORS configurável
+- **Endpoints de Autenticação:**
+  - `/health` - Health check
+  - `/oauth/google/token` - Token exchange Google
+  - `/oauth/microsoft/token` - Token exchange Microsoft Entra ID
+  - `/auth/validate` - Validação de tokens
+  - `/auth/token/refresh` - Refresh de tokens
+  - `/auth/logout` - Logout seguro
+  - `/api/consent/register` - Registro de consentimento
+  - `/api/consent/revoke` - Revogação de consentimento
+
+- **Segurança:**
+  - PKCE (S256) obrigatório
+  - Validação JWKS automática
+  - Rate limiting (10-30 req/min por endpoint)
+  - HTTPS enforcement
+  - Security headers (CSP, HSTS, X-Frame-Options)
+  - CORS configurável
+  - Audit logging
+
+- **Módulos:**
+  - `auth_manager.py` - PKCEValidator, TokenValidator, AuditLogger
+  - `rate_limiter.py` - Rate limiting por IP
+  - `security.py` - Headers e HTTPS enforcement
+  - `startup.txt` - Gunicorn startup command
+
 - **Deployed URL:** `caracore-backend.azurewebsites.net`
+- **Python Version:** 3.11
+- **WSGI Server:** Gunicorn (timeout 600s)
 
 - **Relacionamentos:** Usado por `server.py` local e frontend OIDC em produção
+
+### `backend/auth_manager.py`
+
+**Função:** Gerenciamento de autenticação OAuth 2.1 + OIDC
+
+- **PKCEValidator:** Validação de code_verifier vs code_challenge (S256)
+- **TokenValidator:** Validação de ID tokens usando JWKS
+- **AuditLogger:** Logging estruturado de eventos de autenticação
+- Cache de JWKS com TTL configurável (600s padrão)
+- Suporte a Google OAuth2 e Microsoft Entra ID
+
+- **Relacionamentos:** Usado por `backend/app.py`
+
+### `backend/rate_limiter.py`
+
+**Função:** Rate limiting para proteção de APIs
+
+- Limite por IP e por endpoint
+- Configurações: 10-30 requisições por minuto
+- Resposta HTTP 429 quando limite excedido
+- Cleanup automático de registros antigos
+
+- **Relacionamentos:** Usado por `backend/app.py`
+
+### `backend/security.py`
+
+**Função:** Security headers e enforcement
+
+- HTTPS enforcement (redirect automático)
+- Content Security Policy (CSP)
+- HSTS (HTTP Strict Transport Security)
+- X-Frame-Options, X-Content-Type-Options
+- Referrer-Policy
+
+- **Relacionamentos:** Usado por `backend/app.py`
+
+### `backend/startup.txt`
+
+**Função:** Comando de inicialização do Gunicorn no Azure
+
+- Conteúdo: `gunicorn --bind=0.0.0.0 --timeout 600 app:app`
+- Usado pelo Azure App Service para iniciar a aplicação
+- Timeout de 600s para operações OAuth
+
+- **Relacionamentos:** Referenciado por `deploy_to_azure.py`
 
 ## Scripts de Teste e Validação
 
@@ -126,14 +193,41 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 ### `deploy_to_azure.py`
 
-**Função:** Deploy da aplicação para Azure App Service
+**Função:** Deploy da aplicação para Azure App Service (caracore-backend)
 
-- Gera backend.zip com dependências Python
-- Upload via Azure CLI para caracore-backend
+- Gera backend.zip com dependências Python em `.python_packages`
+- Upload via Azure CLI (`az webapp deployment source config-zip`)
+- Validação automática de App Settings críticos (OAuth, secrets)
+- Verificação e configuração do startup command (gunicorn)
 - Reinicialização opcional do App Service
-- Execução opcional de smoke tests
+- Execução opcional de smoke tests pós-deploy
 
-- **Relacionamentos:** Usa `deploy_helpers.py`, executa `teste_end_point_azure.py`
+- **Configurações validadas:**
+  - `APP_SECRET_KEY`, `ORIGIN_ALLOWED`
+  - `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`
+  - `TENANT_ID`, `CLIENT_ID`, `CLIENT_SECRET`
+  - `OAUTH_REDIRECT_URI`, `COOKIE_SECURE`
+
+- **Opções de deploy:**
+  - `--set-startup-command`: Configura gunicorn automaticamente
+  - `--restart`: Reinicia após deploy
+  - `--run-tests`: Executa smoke tests
+  - `--bundle-backend-deps`: Instala dependências (padrão: habilitado)
+
+- **Exemplo de uso:**
+
+  ```powershell
+  # Deploy completo com validação e restart
+  python scripts/deploy_to_azure.py --set-startup-command --restart
+  
+  # Deploy com smoke tests
+  python scripts/deploy_to_azure.py --restart --run-tests --tests-wait 10
+  
+  # Deploy rápido (ZIP pré-existente)
+  python scripts/deploy_to_azure.py --zip backend.zip --restart
+  ```
+
+- **Relacionamentos:** Usa `deploy_helpers.py`, requer `backend/startup.txt`
 
 ### `deploy_helpers.py`
 
@@ -395,13 +489,24 @@ smoke_teste_local.py -> teste_end_point_local.py -> endpoint_checks.py
 infra_to_azure.py (provisiona caracore-plan + caracore-backend)
     |
     v
-scripts/package_backend_with_docker.py OU deploy_helpers.py
+[Configurar App Settings via Azure CLI]
+az webapp config appsettings set --name caracore-backend ...
     |
     v
-deploy_to_azure.py -> caracore-backend.azurewebsites.net
+deploy_to_azure.py (valida configs + startup.txt)
     |
     v
-validar_api_azure.py -> teste_end_point_azure.py
+deploy_helpers.py (bundle_backend_dependencies + build_backend_zip)
+    |
+    v
+az webapp deployment source config-zip
+    |
+    v
+caracore-backend.azurewebsites.net (Python 3.11 + Gunicorn)
+    |
+    v
+[Smoke Tests Opcionais]
+teste_end_point_azure.py
 ```
 
 ### Validação de Produção
@@ -476,8 +581,12 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 **Scripts Arquivados:** 9 arquivos em `arquivo_migracao_2025_10_11/`
 **Scripts Removidos:** 7 scripts de teste da arquitetura anterior
 **Arquitetura:** Simplificada (App Service Settings, sem Key Vault)
+**Backend:** OAuth 2.1 + OIDC com PKCE, rate limiting, security headers
+**Deploy:** Azure CLI com validação automática de configurações
 **CSS/JS:** Centralizado em pastas /secure/css/ e /secure/js/ (out/2025)
 **Testes Frontend:** Framework unittest para validação da centralização
-**Última Atualização:** Campo Largo, 12 de outubro de 2025
+**Python Version:** 3.11 (Azure App Service)
+**WSGI Server:** Gunicorn com timeout 600s
+**Última Atualização:** Campo Largo, 30 de outubro de 2025
  
  

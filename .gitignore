@@ -77,3 +77,6 @@ deploy_*.log
 startup.txt
 Azure_Static_*.md
 configure_azure_secrets*.ps1
+bfg.jar
+secrets.txt
+.bfg-report/

@@ -1120,8 +1120,7 @@ def create_app() -> Flask:
                 AuditLogger.log_auth_attempt(
                     provider=provider,
                     success=True,
-                    client_ip=client_ip,
-                    event_type="logout"
+                    client_ip=client_ip
                 )
             
             resp = make_response(jsonify({

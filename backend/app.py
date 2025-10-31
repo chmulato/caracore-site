@@ -414,6 +414,128 @@ def create_app() -> Flask:
     def health():
         return add_cors(make_response(jsonify({"status": "ok"}), 200))
 
+    @app.route("/health/detailed", methods=["GET"])  # detailed health check
+    def health_detailed():
+        """
+        Endpoint de health check detalhado com verificações de:
+        - Dependências Python
+        - Variáveis de ambiente (secrets)
+        - Conectividade com provedores OAuth
+        - Status do sistema
+        """
+        import sys
+        from datetime import datetime
+        
+        health_status = {
+            "status": "healthy",
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "checks": {},
+            "version": {
+                "python": sys.version.split()[0],
+            }
+        }
+        
+        # 1. Verificar dependências
+        try:
+            import flask
+            import authlib
+            import requests as req_module
+            health_status["checks"]["dependencies"] = {
+                "status": "ok",
+                "versions": {
+                    "flask": flask.__version__,
+                    "authlib": authlib.__version__,
+                    "requests": req_module.__version__,
+                }
+            }
+        except ImportError as e:
+            health_status["checks"]["dependencies"] = {
+                "status": "error",
+                "error": f"Missing dependency: {str(e)}"
+            }
+            health_status["status"] = "unhealthy"
+        
+        # 2. Verificar variáveis de ambiente (secrets)
+        required_env_vars = [
+            "GOOGLE_CLIENT_ID",
+            "GOOGLE_CLIENT_SECRET",
+            "MICROSOFT_CLIENT_ID",
+            "MICROSOFT_CLIENT_SECRET",
+            "MICROSOFT_TENANT_ID",
+        ]
+        
+        env_status = {}
+        for var in required_env_vars:
+            value = os.getenv(var)
+            if value:
+                # Mostrar apenas primeiros 8 caracteres (mascarado)
+                masked = value[:8] + "..." if len(value) > 8 else "***"
+                env_status[var] = {"status": "ok", "value": masked}
+            else:
+                env_status[var] = {"status": "missing"}
+                health_status["status"] = "degraded"
+        
+        health_status["checks"]["environment"] = env_status
+        
+        # 3. Verificar conectividade com provedores OAuth (opcional, pode ser lento)
+        # Apenas verificar se os endpoints estão acessíveis (sem autenticar)
+        oauth_providers = {
+            "google": "https://accounts.google.com/.well-known/openid-configuration",
+            "microsoft": f"https://login.microsoftonline.com/{os.getenv('MICROSOFT_TENANT_ID', 'common')}/.well-known/openid-configuration"
+        }
+        
+        provider_status = {}
+        for provider, url in oauth_providers.items():
+            try:
+                resp = requests.get(url, timeout=5)
+                if resp.status_code == 200:
+                    provider_status[provider] = {
+                        "status": "ok",
+                        "response_time_ms": int(resp.elapsed.total_seconds() * 1000)
+                    }
+                else:
+                    provider_status[provider] = {
+                        "status": "error",
+                        "http_status": resp.status_code
+                    }
+                    health_status["status"] = "degraded"
+            except Exception as e:
+                provider_status[provider] = {
+                    "status": "error",
+                    "error": str(e)
+                }
+                health_status["status"] = "degraded"
+        
+        health_status["checks"]["oauth_providers"] = provider_status
+        
+        # 4. Verificar sistema de logs
+        try:
+            log_dir = APP_ROOT / "logs"
+            if log_dir.exists():
+                log_files = list(log_dir.glob("*.jsonl"))
+                health_status["checks"]["logging"] = {
+                    "status": "ok",
+                    "log_directory": str(log_dir),
+                    "log_files_count": len(log_files)
+                }
+            else:
+                health_status["checks"]["logging"] = {
+                    "status": "warning",
+                    "message": "Log directory does not exist"
+                }
+        except Exception as e:
+            health_status["checks"]["logging"] = {
+                "status": "error",
+                "error": str(e)
+            }
+        
+        # Determinar código de status HTTP baseado no health_status
+        status_code = 200 if health_status["status"] == "healthy" else 503
+        if health_status["status"] == "degraded":
+            status_code = 200  # Still operational but with warnings
+        
+        return add_cors(make_response(jsonify(health_status), status_code))
+
     @app.route("/oauth/google/token", methods=["OPTIONS"])  # CORS preflight
     def google_token_options():
         return add_cors(make_response("", 204))
@@ -1275,6 +1397,99 @@ def create_app() -> Flask:
             }), 500)
             return add_cors(resp)
     
+    @app.route("/api/admin/logs", methods=["GET"])
+    @require_https
+    @rate_limit("/api/admin/logs")
+    def admin_logs():
+        """
+        Endpoint protegido para visualização de logs de auditoria.
+        
+        Query Parameters:
+        - date: Data dos logs (formato: YYYY-MM-DD), default: hoje
+        - event_type: Filtrar por tipo de evento (login, logout, token_refresh, etc.)
+        - limit: Número máximo de registros (default: 100, max: 1000)
+        - offset: Offset para paginação (default: 0)
+        
+        Retorna logs em formato JSON com paginação.
+        """
+        from datetime import datetime, date
+        import json
+        
+        # TODO: Implementar autenticação/autorização de admin
+        # Por enquanto, apenas rate limiting como proteção básica
+        
+        # Parâmetros de query
+        log_date = request.args.get("date", date.today().strftime("%Y-%m-%d"))
+        event_type = request.args.get("event_type", None)
+        limit = min(int(request.args.get("limit", 100)), 1000)
+        offset = int(request.args.get("offset", 0))
+        
+        # Validar formato de data
+        try:
+            datetime.strptime(log_date, "%Y-%m-%d")
+        except ValueError:
+            resp = make_response(jsonify({
+                "error": "invalid_date_format",
+                "error_description": "Data deve estar no formato YYYY-MM-DD"
+            }), 400)
+            return add_cors(resp)
+        
+        # Caminho do arquivo de log
+        log_file = APP_ROOT / "logs" / f"{log_date}.jsonl"
+        
+        if not log_file.exists():
+            resp = make_response(jsonify({
+                "logs": [],
+                "total": 0,
+                "date": log_date,
+                "limit": limit,
+                "offset": offset,
+                "message": "Nenhum log encontrado para esta data"
+            }), 200)
+            return add_cors(resp)
+        
+        # Ler e filtrar logs
+        logs = []
+        try:
+            with open(log_file, "r", encoding="utf-8") as f:
+                for line in f:
+                    try:
+                        log_entry = json.loads(line.strip())
+                        
+                        # Filtrar por event_type se especificado
+                        if event_type:
+                            entry_type = log_entry.get("event_type", log_entry.get("message", ""))
+                            if event_type.lower() not in entry_type.lower():
+                                continue
+                        
+                        logs.append(log_entry)
+                    except json.JSONDecodeError:
+                        continue
+        except Exception as e:
+            logger.error(f"Erro ao ler logs: {str(e)}")
+            resp = make_response(jsonify({
+                "error": "internal_error",
+                "error_description": "Erro ao ler logs"
+            }), 500)
+            return add_cors(resp)
+        
+        # Aplicar paginação
+        total = len(logs)
+        paginated_logs = logs[offset:offset + limit]
+        
+        # Resposta
+        response_data = {
+            "logs": paginated_logs,
+            "total": total,
+            "date": log_date,
+            "limit": limit,
+            "offset": offset,
+            "has_more": (offset + limit) < total
+        }
+        
+        resp = make_response(jsonify(response_data), 200)
+        return add_cors(resp)
+
     # Aplicar security headers em todas as respostas
     @app.after_request
     def apply_security_headers(response):

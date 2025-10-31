@@ -31,7 +31,8 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 **Função:** Backend Flask OAuth 2.1 + OIDC (deployado como caracore-backend)
 
 - **Endpoints de Autenticação:**
-  - `/health` - Health check
+  - `/health` - Health check básico
+  - `/health/detailed` - Health check avançado (dependências, env vars, OAuth, logs) **[NOVO - Fase 3]**
   - `/oauth/google/token` - Token exchange Google
   - `/oauth/microsoft/token` - Token exchange Microsoft Entra ID
   - `/auth/validate` - Validação de tokens
@@ -40,6 +41,13 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
   - `/api/consent/register` - Registro de consentimento
   - `/api/consent/revoke` - Revogação de consentimento
 
+- **Endpoints de Auditoria:** **[NOVO - Fase 3]**
+  - `/api/admin/logs` - API de logs com paginação e filtros
+    - Query params: date, event_type, limit (max 1000), offset
+    - Formato JSONL
+    - Suporte a filtros por tipo de evento
+    - Paginação completa
+
 - **Segurança:**
   - PKCE (S256) obrigatório
   - Validação JWKS automática
@@ -47,7 +55,7 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
   - HTTPS enforcement
   - Security headers (CSP, HSTS, X-Frame-Options)
   - CORS configurável
-  - Audit logging
+  - Audit logging estruturado (JSONL diário)
 
 - **Módulos:**
   - `auth_manager.py` - PKCEValidator, TokenValidator, AuditLogger
@@ -107,6 +115,32 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 - **Relacionamentos:** Referenciado por `deploy_to_azure.py`
 
 ## Scripts de Teste e Validação
+
+### `backend/test_admin_logs.py` **[NOVO - Fase 3]**
+
+**Função:** Testes automatizados para endpoints de auditoria
+
+- Testa endpoint `/api/admin/logs`
+- Validação de filtros (date, event_type)
+- Validação de paginação (limit, offset)
+- Testes de formato de resposta JSON
+- **Relacionamentos:** Testa `backend/app.py` endpoints de auditoria
+
+### `backend/validar_dashboard.py` **[NOVO - Fase 3]**
+
+**Função:** Validação E2E completa da Fase 3
+
+- **4 Testes Principais:**
+  1. Test health_detailed - Valida endpoint `/health/detailed`
+  2. Test admin_logs - Valida endpoint `/api/admin/logs`
+  3. Test filters - Valida filtros por event_type
+  4. Test pagination - Valida paginação (offset/limit)
+
+- Testa contra Azure produção: `caracore-backend.azurewebsites.net`
+- Validação completa de metadados de logs
+- Verifica estrutura JSON de resposta
+- **Status:** 4/4 testes passando
+- **Relacionamentos:** Validação E2E de `backend/app.py` Fase 3
 
 ### `endpoint_checks.py` (ARQUIVADO)
 
@@ -356,6 +390,47 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 - **Relacionamentos:** Complementa `verificar_centralizacao.py`
 
+## Scripts de Auditoria e Monitoramento **[FASE 3]**
+
+### Sistema de Logs de Auditoria
+
+**Localização:** `backend/logs/`
+
+**Formato:** JSONL (JSON Lines) - um evento por linha
+
+**Estrutura dos Logs:**
+
+```json
+{
+  "timestamp": "2025-10-31T10:15:00Z",
+  "event_type": "login",
+  "status": "success",
+  "provider": "google",
+  "user_email": "usuario@exemplo.com",
+  "ip_address": "192.168.1.100",
+  "user_agent": "Mozilla/5.0...",
+  "message": "Login realizado com sucesso"
+}
+```
+
+**Eventos Registrados:**
+
+- `login` - Tentativas de login (sucesso/falha)
+- `logout` - Eventos de logout (local/federado)
+- `token_exchange` - Troca de authorization code por token
+- `token_refresh` - Renovação de tokens
+- `validation` - Validações de token/sessão
+- `error` - Erros do sistema
+
+**Características:**
+
+- Arquivos diários: `YYYY-MM-DD.jsonl`
+- Retenção: 90 dias (configurável)
+- Rotação automática: Pendente implementação
+- Acesso: Via endpoint `/api/admin/logs`
+
+**Relacionamentos:** Usado por `backend/app.py`, consumido por dashboard de auditoria
+
 ### `scripts/teste_servidor_simplificado.py`
 
 **Função:** Testes de inicialização do servidor na arquitetura simplificada
@@ -408,6 +483,8 @@ Os seguintes scripts foram completamente removidos por incompatibilidade com a n
 
 - `teste_centralizacao_frontend.py` - Testes unitários para centralização de frontend
 - `teste_servidor_simplificado.py` - Testes de inicialização sem dependência Docker
+- `backend/test_admin_logs.py` - Testes de endpoints de auditoria **[Fase 3]**
+- `backend/validar_dashboard.py` - Validação E2E completa **[Fase 3]**
 
 - `endpoint_checks.py.deprecated` - Biblioteca para testes de endpoints (arquitetura anterior)
 - `teste_end_point_azure.py.deprecated` - Testes para API Azure na arquitetura anterior
@@ -539,13 +616,23 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 
 ### **Testing & Validation:**
 
-- `endpoint_checks.py`
-- `teste_end_point_azure.py`
-- `teste_end_point_local.py`
-- `smoke_teste_local.py`
-- `validar_api_azure.py`
-- `executar_testes_azure.py`
-- `executar_testes_azure_simples.py`
+- `backend/test_admin_logs.py` **[NOVO - Fase 3]**
+- `backend/validar_dashboard.py` **[NOVO - Fase 3]**
+- `scripts/teste_centralizacao_frontend.py`
+- `scripts/teste_servidor_simplificado.py`
+- `scripts/test_oidc_login.py`
+- `scripts/test_oidc_login_full.py`
+- `scripts/validate_oidc_endpoints.py`
+
+**Arquivados (arquitetura anterior):**
+
+- `endpoint_checks.py.deprecated`
+- `teste_end_point_azure.py.deprecated`
+- `teste_end_point_local.py.deprecated`
+- `smoke_teste_local.py.deprecated`
+- `validar_api_azure.py.deprecated`
+- `executar_testes_azure.py.deprecated`
+- `executar_testes_azure_simples.py.deprecated`
 
 ### **Deployment & Infrastructure:**
 
@@ -578,16 +665,62 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 
 ---
 
-**Total de Scripts Python Ativos:** 49 arquivos
+## Fase 3 - Sistema de Auditoria (Outubro 2025)
+
+### Novos Componentes:
+
+**Backend:**
+
+- ✅ Endpoint `/health/detailed` - Health check avançado (120 linhas)
+- ✅ Endpoint `/api/admin/logs` - API de logs com paginação (100 linhas)
+- ✅ Sistema de logs JSONL diários (`backend/logs/`)
+- ✅ Metadados completos (timestamp, user, IP, provider, event_type)
+
+**Frontend:**
+
+- ✅ Dashboard de Auditoria (`secure/admin-logs.html` - 330 linhas)
+- ✅ JavaScript do Dashboard (`secure/js/audit-dashboard.js` - 462 linhas)
+- ✅ Filtros dinâmicos (data, tipo de evento, busca)
+- ✅ Paginação client-side (100 logs/página)
+- ✅ Export JSON e CSV
+- ✅ Integração com wiki Área 51
+
+**Testes:**
+
+- ✅ `backend/test_admin_logs.py` - Testes de endpoints de auditoria (102 linhas)
+- ✅ `backend/validar_dashboard.py` - Validação E2E (249 linhas, 4/4 testes passando)
+
+**Documentação:**
+
+- ✅ `docs/AZURE_DEPLOY.md` - Guia completo de deploy
+- ✅ `docs/fases/fase-3/README.md` - Documentação da Fase 3
+- ✅ `docs/fases/fase-3/RESUMO-EXECUTIVO.md` - Resumo executivo
+- ✅ `docs/fases/fase-3/acompanhamento-fase-3.md` - Tracking detalhado
+
+**Status Fase 3:**
+
+- Item 6 (Auditoria): 95% concluído
+- Item 7 (Backend Azure): 90% concluído
+- Item 9 (Testes): 30% concluído
+- **Progresso Total: 70%**
+
+**Pendências:**
+
+- Rotação automática de logs (4h)
+- Testes E2E automatizados (3 dias)
+- CI/CD Pipeline (GitHub Actions)
+
+---
+
+**Total de Scripts Python Ativos:** 51 arquivos (+2 novos)
 **Scripts Arquivados:** 9 arquivos em `arquivo_migracao_2025_10_11/`
 **Scripts Removidos:** 7 scripts de teste da arquitetura anterior
 **Arquitetura:** Simplificada (App Service Settings, sem Key Vault)
-**Backend:** OAuth 2.1 + OIDC com PKCE, rate limiting, security headers
+**Backend:** OAuth 2.1 + OIDC com PKCE, rate limiting, security headers, **auditoria completa**
 **Deploy:** Azure CLI com validação automática de configurações
 **CSS/JS:** Centralizado em pastas /secure/css/ e /secure/js/ (out/2025)
-**Testes Frontend:** Framework unittest para validação da centralização
+**Testes:** Framework unittest para validação + testes E2E de auditoria
+**Auditoria:** Sistema de logs JSONL com dashboard avançado **[Fase 3]**
 **Python Version:** 3.11 (Azure App Service)
 **WSGI Server:** Gunicorn com timeout 600s
-**Última Atualização:** Campo Largo, 30 de outubro de 2025
- 
- 
+**Última Atualização:** Campo Largo, 31 de outubro de 2025 - Fase 3 (70% concluída)

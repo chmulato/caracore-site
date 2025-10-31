@@ -7,6 +7,11 @@
  * - Redirecionamento para login quando não autenticado
  * - Expiração automática de sessão
  * - Logout com revogação de token
+ * 
+ * Integração com NotificationBridge (opcional):
+ * - Exibe notificações visuais para eventos de sessão
+ * - Login bem-sucedido, logout, refresh, erros
+ * - Funciona mesmo se NotificationBridge não estiver carregado
  */
 
 const SessionManager = (function() {
@@ -103,6 +108,11 @@ const SessionManager = (function() {
         updateLastActivity();
         
         console.log('[SessionManager] Sessão salva com sucesso');
+        
+        // Notificação de login bem-sucedido (se NotificationBridge disponível)
+        if (typeof NotificationBridge !== 'undefined' && user) {
+            NotificationBridge.loginSuccess();
+        }
     }
     
     /**
@@ -135,6 +145,12 @@ const SessionManager = (function() {
         
         if (elapsed > CONFIG.SESSION_TIMEOUT) {
             console.log('[SessionManager] Timeout de inatividade');
+            
+            // Notificação de timeout
+            if (typeof NotificationBridge !== 'undefined') {
+                NotificationBridge.inactivityTimeout(5);
+            }
+            
             return true;
         }
         
@@ -193,10 +209,22 @@ const SessionManager = (function() {
                 return { valid: true };
             } else {
                 console.log('[SessionManager] Token inválido');
+                
+                // Notificação de sessão inválida
+                if (typeof NotificationBridge !== 'undefined') {
+                    NotificationBridge.sessionExpired();
+                }
+                
                 return { valid: false, reason: 'invalid_token' };
             }
         } catch (error) {
             console.error('[SessionManager] Erro ao validar sessão:', error);
+            
+            // Notificação de erro de rede
+            if (typeof NotificationBridge !== 'undefined') {
+                NotificationBridge.showError('network_error');
+            }
+            
             return { valid: false, reason: 'network_error' };
         }
     }
@@ -227,13 +255,43 @@ const SessionManager = (function() {
             
             if (!response.ok) {
                 console.error('[SessionManager] Erro ao fazer refresh:', response.status);
+                
+                // Notificação de falha no refresh
+                if (typeof NotificationBridge !== 'undefined') {
+                    NotificationBridge.showError('refresh_failed');
+                }
+                
                 await logout();
                 return false;
             }
             
             const data = await response.json();
             
-            // Salvar novos tokens
+            // Salvar novos tokens (não mostra notificação de login, apenas de refresh)
+            const oldSaveSession = saveSession;
+            saveSession = function(sessionData) {
+                const { access_token, refresh_token, provider, expires_in } = sessionData;
+                
+                if (access_token) {
+                    localStorage.setItem(CONFIG.STORAGE_KEYS.ACCESS_TOKEN, access_token);
+                }
+                
+                if (refresh_token) {
+                    localStorage.setItem(CONFIG.STORAGE_KEYS.REFRESH_TOKEN, refresh_token);
+                }
+                
+                if (provider) {
+                    localStorage.setItem(CONFIG.STORAGE_KEYS.PROVIDER, provider);
+                }
+                
+                if (expires_in) {
+                    const expiresAt = Math.floor(Date.now() / 1000) + expires_in;
+                    localStorage.setItem(CONFIG.STORAGE_KEYS.EXPIRES_AT, expiresAt.toString());
+                }
+                
+                updateLastActivity();
+            };
+            
             saveSession({
                 access_token: data.access_token,
                 refresh_token: data.refresh_token || refreshTokenVal,
@@ -241,10 +299,24 @@ const SessionManager = (function() {
                 expires_in: data.expires_in
             });
             
+            saveSession = oldSaveSession;
+            
             console.log('[SessionManager] Token refresh bem-sucedido');
+            
+            // Notificação de sessão renovada
+            if (typeof NotificationBridge !== 'undefined') {
+                NotificationBridge.sessionRefreshed();
+            }
+            
             return true;
         } catch (error) {
             console.error('[SessionManager] Erro ao fazer refresh:', error);
+            
+            // Notificação de erro de rede no refresh
+            if (typeof NotificationBridge !== 'undefined') {
+                NotificationBridge.showError('network_error');
+            }
+            
             return false;
         }
     }
@@ -282,6 +354,11 @@ const SessionManager = (function() {
                 }
             } catch (error) {
                 console.error('[SessionManager] Erro ao revogar tokens:', error);
+                
+                // Notificação de falha parcial no logout (se não for silencioso)
+                if (!silent && typeof NotificationBridge !== 'undefined') {
+                    NotificationBridge.showWarning('logout_partial');
+                }
             }
         }
         
@@ -302,6 +379,11 @@ const SessionManager = (function() {
         
         if (!silent) {
             console.log('[SessionManager] Logout local completo');
+            
+            // Notificação de logout bem-sucedido
+            if (typeof NotificationBridge !== 'undefined') {
+                NotificationBridge.logoutSuccess();
+            }
         }
         
         return true;

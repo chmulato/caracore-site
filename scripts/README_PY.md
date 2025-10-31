@@ -405,6 +405,7 @@ Os seguintes scripts foram completamente removidos por incompatibilidade com a n
 - `executar_testes_azure_simples.py` - Versão simplificada de execução de testes
 
 **Razão da Remoção:** Incompatibilidade com a nova arquitetura simplificada. Substituídos por:
+
 - `teste_centralizacao_frontend.py` - Testes unitários para centralização de frontend
 - `teste_servidor_simplificado.py` - Testes de inicialização sem dependência Docker
 

@@ -18,9 +18,12 @@
             <a class="navbar-brand" href="/">
                 <i class="bi bi-shield-check"></i> Cara Core
             </a>
-            <span class="navbar-text">
+            <span class="navbar-text me-3">
                 <i class="bi bi-file-text"></i> Logs OIDC
             </span>
+            <button class="btn btn-outline-light btn-sm ms-auto" type="button" id="logoutButton">
+                <i class="bi bi-box-arrow-right"></i> Sair
+            </button>
         </div>
     </nav>
 
@@ -219,10 +222,47 @@
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     
+    <!-- Sistema de Notificações (Fase 2 - Item 5) -->
+    <script src="/secure/js/notification-manager.js"></script>
+    <script src="/secure/js/error-messages.js"></script>
+    <script src="/secure/js/notification-bridge.js"></script>
+    
+    <!-- Session Manager - Controle de Sessão OAuth 2.1 -->
+    <script src="/js/session-manager.js"></script>
+    
+    <!-- Logout Modal (Fase 2 - Item 4) -->
+    <script src="/js/logout-modal.js"></script>
+    
     <!-- Sistema OIDC Cara Core -->
     <script src="/secure/log-config.js"></script>
     <script src="/secure/logger.js"></script>
     <script src="/secure/js/nav-controls.js?v=20251012"></script>
     <script src="/secure/js/admin-logs.js?v=20251012"></script>
+    
+    <!-- Script de logout -->
+    <script>
+      (function() {
+        'use strict';
+        
+        // Configurar botão de logout com LogoutModal
+        const logoutBtn = document.getElementById('logoutButton');
+        const provider = localStorage.getItem('auth_provider');
+        
+        if (logoutBtn && typeof LogoutModal !== 'undefined') {
+          logoutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            LogoutModal.show(provider);
+          });
+          console.log('[AdminLogs] LogoutModal configurado');
+        } else if (logoutBtn && typeof SessionManager !== 'undefined') {
+          // Fallback se LogoutModal não estiver disponível
+          logoutBtn.addEventListener('click', async (e) => {
+            e.preventDefault();
+            await SessionManager.logout();
+          });
+          console.warn('[AdminLogs] LogoutModal não encontrado, usando logout padrão');
+        }
+      })();
+    </script>
 </body>
 </html>

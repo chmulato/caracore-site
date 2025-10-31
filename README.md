@@ -100,11 +100,11 @@ O site destaca os principais serviços da empresa, reúne materiais para demonst
 
 ### Visual da Página Principal
 
-![Página inicial do site Cara-Core](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/pagina_inicial_01.png)
+![Página inicial do site Cara-Core](docs/img/pagina_inicial_01.png)
 
 ### Visual da Página de Login - Área 51
 
-![Fluxo OIDC simplificado da Área 51](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/area_51_oidc.png)
+![Fluxo OIDC simplificado da Área 51](docs/img/area_51_oidc.png)
 
 ---
 
@@ -147,7 +147,7 @@ sequenceDiagram
 
 #### Log de Console do OIDC da Área 51
 
-![Log de Console do OIDC da Área 51](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/area_51_oidc_full.png)
+![Log de Console do OIDC da Área 51](docs/img/area_51_oidc_full.png)
 
 ---
 
@@ -402,7 +402,7 @@ Os provedores devem ter **obrigatoriamente** o callback cadastrado; mantenha `/s
 - Logs são estruturados em JSON e podem ser conferidos pelo **Log Stream** do App Service ou via `az webapp log tail`.
 - O arquivo `backend/allowlist.json` controla quem pode concluir o login na Área 51.
 
-![API Cara-Core em produção](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/pagina_da_api_caracore.png)
+![API Cara-Core em produção](docs/img/pagina_da_api_caracore.png)
 
 #### Gerar o pacote `backend.zip`
 
@@ -494,7 +494,7 @@ Para validar rapidamente, execute `python teste_end_point_local.py` enquanto o c
 
 ### Deploy no Azure
 
-![Recursos Azure do projeto Cara-Core](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/pagina_de_recursos_azure.png)
+![Recursos Azure do projeto Cara-Core](docs/img/pagina_de_recursos_azure.png)
 
 1. Execute `py -3.13 .\deploy_to_azure.py` para provisionar/atualizar Resource Group, App Service Plan (Linux) e Web App (Python 3.11).
    - O script identifica Subscription/Tenant via `az account show` e pergunta se o segredo do Google deve ser salvo no Key Vault.

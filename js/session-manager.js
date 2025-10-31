@@ -250,9 +250,14 @@ const SessionManager = (function() {
     }
     
     /**
-     * Logout com revogação de token
+     * Logout LOCAL - Revoga tokens e limpa sessão local
+     * @param {boolean} silent - Se true, não mostra mensagens
      */
-    async function logout() {
+    async function logoutLocal(silent = false) {
+        if (!silent) {
+            console.log('[SessionManager] Iniciando logout local...');
+        }
+        
         const accessToken = localStorage.getItem(CONFIG.STORAGE_KEYS.ACCESS_TOKEN);
         const refreshTokenVal = localStorage.getItem(CONFIG.STORAGE_KEYS.REFRESH_TOKEN);
         const provider = localStorage.getItem(CONFIG.STORAGE_KEYS.PROVIDER);
@@ -271,19 +276,81 @@ const SessionManager = (function() {
                         provider: provider
                     })
                 });
-                console.log('[SessionManager] Logout realizado no backend');
+                
+                if (!silent) {
+                    console.log('[SessionManager] Tokens revogados no backend');
+                }
             } catch (error) {
-                console.error('[SessionManager] Erro ao fazer logout no backend:', error);
+                console.error('[SessionManager] Erro ao revogar tokens:', error);
             }
         }
         
-        // Limpar sessão local
+        // Limpar TODA a sessão local
         clearSession();
+        
+        // Limpar sessionStorage também
+        sessionStorage.clear();
+        
+        // Limpar cookies (se existirem)
+        document.cookie.split(";").forEach(cookie => {
+            const name = cookie.split("=")[0].trim();
+            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/";
+        });
         
         // Parar verificações
         stopSessionCheck();
         
-        console.log('[SessionManager] Logout completo');
+        if (!silent) {
+            console.log('[SessionManager] Logout local completo');
+        }
+        
+        return true;
+    }
+    
+    /**
+     * Logout FEDERADO - Faz logout também no provedor OAuth
+     * @param {string} provider - Provedor OAuth (google ou microsoft)
+     * @param {string} returnUrl - URL para retornar após logout federado
+     */
+    async function logoutFederated(provider, returnUrl) {
+        console.log(`[SessionManager] Iniciando logout federado com ${provider}...`);
+        
+        // Primeiro fazer logout local
+        await logoutLocal(true);
+        
+        // URLs de logout dos provedores
+        const logoutUrls = {
+            'google': 'https://accounts.google.com/Logout',
+            'microsoft': 'https://login.microsoftonline.com/common/oauth2/v2.0/logout'
+        };
+        
+        // Redirecionar para logout do provedor
+        const logoutUrl = logoutUrls[provider?.toLowerCase()];
+        
+        if (logoutUrl) {
+            const post_logout_redirect_uri = returnUrl || window.location.origin + '/secure/index.html';
+            
+            // Microsoft aceita post_logout_redirect_uri
+            if (provider === 'microsoft') {
+                window.location.href = `${logoutUrl}?post_logout_redirect_uri=${encodeURIComponent(post_logout_redirect_uri)}`;
+            } else {
+                // Google não aceita redirect, apenas faz logout
+                window.location.href = logoutUrl;
+            }
+        } else {
+            console.warn('[SessionManager] Provedor não suportado para logout federado:', provider);
+            // Fallback para logout local apenas
+            redirectToLogin();
+        }
+    }
+    
+    /**
+     * Logout com opção de escolha (local ou federado)
+     * Mantém compatibilidade com código existente
+     */
+    async function logout() {
+        await logoutLocal();
+        redirectToLogin();
     }
     
     /**
@@ -372,7 +439,9 @@ const SessionManager = (function() {
         clearSession,
         validateSession,
         refreshToken,
-        logout,
+        logout,                // Logout padrão (local + redirect)
+        logoutLocal,          // Logout local apenas
+        logoutFederated,      // Logout federado (provedor + local)
         redirectToLogin,
         requireAuth,
         startSessionCheck,

@@ -1397,6 +1397,10 @@ def create_app() -> Flask:
             }), 500)
             return add_cors(resp)
     
+    @app.route("/api/admin/logs", methods=["OPTIONS"])  # CORS preflight
+    def admin_logs_preflight():
+        return add_cors(make_response("", 204))
+    
     @app.route("/api/admin/logs", methods=["GET"])
     @require_https
     @rate_limit("/api/admin/logs")

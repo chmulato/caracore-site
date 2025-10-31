@@ -77,6 +77,8 @@ deploy_*.log
 startup.txt
 Azure_Static_*.md
 configure_azure_secrets*.ps1
+
+# BFG Repo-Cleaner artifacts
 bfg.jar
 secrets.txt
 .bfg-report/

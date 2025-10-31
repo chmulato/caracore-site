@@ -3,10 +3,12 @@
 ## 📦 Componentes Implementados (Fase 2)
 
 ### Item 4: Logout Seguro
+
 - **js/logout-modal.js** (395 linhas) - Modal UI para logout local/federado
 - **js/session-manager.js** (modificado) - Funções `logoutLocal()` e `logoutFederated()`
 
 ### Item 5: Sistema de Feedback Visual
+
 - **secure/js/notification-manager.js** (580 linhas) - Sistema de toasts
 - **secure/js/error-messages.js** (450 linhas) - Dicionário de mensagens pt-BR/en-US
 - **secure/js/notification-bridge.js** (265 linhas) - Bridge de integração
@@ -34,6 +36,7 @@
 ```
 
 **⚠️ IMPORTANTE:**
+
 - Notificações devem carregar ANTES do SessionManager
 - LogoutModal deve carregar DEPOIS do SessionManager
 - Ordem correta garante integração automática
@@ -45,6 +48,7 @@
 ### Passo 1: Converter link/botão de logout
 
 **Antes (link estático):**
+
 ```html
 <a class="btn btn-primary" href="../secure/logout.html" id="logoutButton">
   Sair
@@ -52,6 +56,7 @@
 ```
 
 **Depois (botão com modal):**
+
 ```html
 <button class="btn btn-primary" type="button" id="logoutButton">
   Sair
@@ -91,12 +96,14 @@
 ## 📄 Páginas Já Integradas
 
 ### ✅ secure/estrita.html
+
 - ✅ Sistema de notificações carregado
 - ✅ LogoutModal carregado
 - ✅ Botão de logout configurado
 - ✅ Fallback implementado
 
 ### ✅ secure/admin-logs.html
+
 - ✅ Sistema de notificações carregado
 - ✅ LogoutModal carregado
 - ✅ Botão de logout adicionado no navbar
@@ -109,11 +116,13 @@
 O SessionManager agora exibe notificações automaticamente nos seguintes eventos:
 
 ### Eventos de Sucesso
+
 - ✅ **Login bem-sucedido** - `loginSuccess()`
 - ✅ **Logout completo** - `logoutSuccess()`
 - ✅ **Sessão renovada** - `sessionRefreshed()` (silencioso)
 
 ### Eventos de Erro
+
 - ✅ **Sessão expirada** - `sessionExpired()`
 - ✅ **Timeout de inatividade** - `inactivityTimeout(5)` (avisa 5s antes)
 - ✅ **Falha no refresh** - `showError('refresh_failed')`
@@ -145,13 +154,16 @@ fetch('/api/endpoint')
 ## 🌍 Suporte a Idiomas
 
 ### Idiomas Suportados
+
 - **pt-BR** (padrão) - Português do Brasil
 - **en-US** - English (United States)
 
 ### Auto-detecção
+
 O sistema detecta automaticamente o idioma do navegador e configura as mensagens.
 
 ### Configuração Manual
+
 ```javascript
 // Alterar idioma
 ErrorMessages.setLanguage('en-US');
@@ -246,6 +258,7 @@ NotificationBridge.dismissAll();
 ## 📝 Próximas Páginas a Integrar
 
 ### Páginas ainda sem integração:
+
 - secure/index.html (página inicial de login)
 - secure/callback.html (callback OAuth)
 - secure/consent.html (já tem session-manager, adicionar notificações)
@@ -284,21 +297,25 @@ NotificationBridge.dismissAll();
 ## 🐛 Troubleshooting
 
 ### Notificações não aparecem
+
 - ✅ Verificar se `notification-manager.js` carregou ANTES dos outros scripts
 - ✅ Abrir console e verificar erros JavaScript
 - ✅ Testar manualmente: `NotificationBridge.showSuccess('login_success')`
 
 ### LogoutModal não abre
+
 - ✅ Verificar se `logout-modal.js` carregou DEPOIS do `session-manager.js`
 - ✅ Verificar se botão tem ID correto (`logoutButton`)
 - ✅ Testar manualmente: `LogoutModal.show('google')`
 
 ### SessionManager não exibe notificações
+
 - ✅ Verificar ordem de carregamento (notificações ANTES do SessionManager)
 - ✅ Verificar console: `typeof NotificationBridge` deve retornar `'object'`
 - ✅ SessionManager funciona mesmo sem NotificationBridge (fallback)
 
 ### Mensagens em inglês quando deveria ser português
+
 - ✅ Verificar idioma do navegador
 - ✅ Forçar idioma: `ErrorMessages.setLanguage('pt-BR')`
 

@@ -100,13 +100,11 @@ O site destaca os principais serviços da empresa, reúne materiais para demonst
 
 ### Visual da Página Principal
 
-![Logo Cara-Core](https://raw.githubusercontent.com/chmulato/cara-core/main/images/logo.png)
-
-> 📸 **Nota:** Capturas de tela da interface serão adicionadas em breve.
+![Página inicial do site Cara-Core](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/pagina_inicial_01.png)
 
 ### Visual da Página de Login - Área 51
 
-> 📸 **Nota:** Diagrama visual do fluxo OIDC será adicionado em breve.
+![Fluxo OIDC simplificado da Área 51](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/area_51_oidc.png)
 
 ---
 
@@ -149,7 +147,7 @@ sequenceDiagram
 
 #### Log de Console do OIDC da Área 51
 
-> 📸 **Nota:** Screenshot do console será adicionado em breve.
+![Log de Console do OIDC da Área 51](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/area_51_oidc_full.png)
 
 ---
 
@@ -404,7 +402,7 @@ Os provedores devem ter **obrigatoriamente** o callback cadastrado; mantenha `/s
 - Logs são estruturados em JSON e podem ser conferidos pelo **Log Stream** do App Service ou via `az webapp log tail`.
 - O arquivo `backend/allowlist.json` controla quem pode concluir o login na Área 51.
 
-> 📸 **Nota:** Screenshot da API em produção será adicionado em breve.
+![API Cara-Core em produção](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/pagina_da_api_caracore.png)
 
 #### Gerar o pacote `backend.zip`
 
@@ -496,7 +494,7 @@ Para validar rapidamente, execute `python teste_end_point_local.py` enquanto o c
 
 ### Deploy no Azure
 
-> 📸 **Nota:** Screenshot dos recursos Azure será adicionado em breve.
+![Recursos Azure do projeto Cara-Core](https://raw.githubusercontent.com/chmulato/cara-core/main/docs/img/pagina_de_recursos_azure.png)
 
 1. Execute `py -3.13 .\deploy_to_azure.py` para provisionar/atualizar Resource Group, App Service Plan (Linux) e Web App (Python 3.11).
    - O script identifica Subscription/Tenant via `az account show` e pergunta se o segredo do Google deve ser salvo no Key Vault.

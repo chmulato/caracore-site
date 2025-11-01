@@ -11,12 +11,14 @@
 **Objetivo:** Validar lógica de PKCE e Token validation
 
 **Comando:**
+
 ```bash
 cd backend
 python -m unittest tests/test_auth_manager.py -v
 ```
 
 **Resultado Esperado:**
+
 - 23 testes passando (PKCEValidator, TokenValidator, AuditLogger)
 
 ---
@@ -26,12 +28,14 @@ python -m unittest tests/test_auth_manager.py -v
 **Objetivo:** Validar rate limiting
 
 **Comando:**
+
 ```bash
 cd backend
 python -m unittest tests/test_rate_limiter.py -v
 ```
 
 **Resultado Esperado:**
+
 - Testes de rate limiting com contexto Flask
 - Bloqueio ao exceder limite
 
@@ -44,6 +48,7 @@ python -m unittest tests/test_rate_limiter.py -v
 **Objetivo:** Validar troca de código OAuth por tokens com PKCE
 
 **Teste Manual:**
+
 ```bash
 curl -X POST http://localhost:5051/oauth/google/token \
   -H "Content-Type: application/json" \
@@ -57,6 +62,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 ```
 
 **Validações:**
+
 - ✅ PKCE validation S256
 - ✅ Audit logging
 - ✅ Rate limiting headers
@@ -69,6 +75,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 **Objetivo:** Validar refresh token rotation
 
 **Teste Manual:**
+
 ```bash
 curl -X POST http://localhost:5051/auth/token/refresh \
   -H "Content-Type: application/json" \
@@ -79,6 +86,7 @@ curl -X POST http://localhost:5051/auth/token/refresh \
 ```
 
 **Validações:**
+
 - ✅ Novo access_token retornado
 - ✅ Rate limiting (20 req/min)
 - ✅ Audit logging
@@ -90,6 +98,7 @@ curl -X POST http://localhost:5051/auth/token/refresh \
 **Objetivo:** Validar sessão/token
 
 **Teste Manual:**
+
 ```bash
 curl -X POST http://localhost:5051/auth/validate \
   -H "Content-Type: application/json" \
@@ -100,6 +109,7 @@ curl -X POST http://localhost:5051/auth/validate \
 ```
 
 **Validações:**
+
 - ✅ Validação com provedor OAuth
 - ✅ Retorno de user info se válido
 - ✅ Rate limiting (30 req/min)
@@ -111,6 +121,7 @@ curl -X POST http://localhost:5051/auth/validate \
 **Objetivo:** Logout com revogação de token
 
 **Teste Manual:**
+
 ```bash
 curl -X POST http://localhost:5051/auth/logout \
   -H "Content-Type: application/json" \
@@ -122,6 +133,7 @@ curl -X POST http://localhost:5051/auth/logout \
 ```
 
 **Validações:**
+
 - ✅ Token revogado no provedor
 - ✅ Audit logging de logout
 - ✅ Rate limiting
@@ -135,6 +147,7 @@ curl -X POST http://localhost:5051/auth/logout \
 **Objetivo:** Validar proteção contra força bruta
 
 **Teste:**
+
 ```bash
 # Enviar 15 requisições em 60 segundos (limite: 10)
 for i in {1..15}; do
@@ -145,6 +158,7 @@ done
 ```
 
 **Resultado Esperado:**
+
 - Primeiras 10 requisições: 200/400
 - Requisições 11-15: 429 Too Many Requests
 - Header `Retry-After` presente
@@ -156,12 +170,14 @@ done
 **Objetivo:** Validar redirecionamento HTTP → HTTPS
 
 **Teste:**
+
 ```bash
 # Testar em ambiente de produção
 curl -I http://api.caracore.com.br/oauth/google/token
 ```
 
 **Resultado Esperado:**
+
 - Status: 301 Moved Permanently
 - Location: https://api.caracore.com.br/oauth/google/token
 
@@ -172,11 +188,13 @@ curl -I http://api.caracore.com.br/oauth/google/token
 **Objetivo:** Validar headers de segurança
 
 **Teste:**
+
 ```bash
 curl -I http://localhost:5051/health
 ```
 
 **Headers Esperados:**
+
 - ✅ `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
 - ✅ `Content-Security-Policy: ...`
 - ✅ `X-Frame-Options: DENY`
@@ -190,6 +208,7 @@ curl -I http://localhost:5051/health
 **Objetivo:** Validar rejeição de PKCE inválido
 
 **Teste:**
+
 ```bash
 # Enviar code_verifier incorreto
 curl -X POST http://localhost:5051/oauth/google/token \
@@ -202,6 +221,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 ```
 
 **Resultado Esperado:**
+
 - Status: 400
 - Error: `invalid_grant`
 - Log de atividade suspeita
@@ -215,11 +235,13 @@ curl -X POST http://localhost:5051/oauth/google/token \
 **Objetivo:** Testar validação periódica de sessão
 
 **Teste:**
-1. Abrir `secure/estrita.html`
+
+1. Abrir `secure/restrita.html`
 2. Verificar console: `[SessionManager] Sessão inválida, redirecionando...`
 3. Validar redirecionamento para `/secure/index.html`
 
 **Validações:**
+
 - ✅ Verificação a cada 60 segundos
 - ✅ Redirect se não autenticado
 
@@ -230,11 +252,13 @@ curl -X POST http://localhost:5051/oauth/google/token \
 **Objetivo:** Testar refresh automático de token
 
 **Teste:**
+
 1. Login com token próximo da expiração (< 5min)
 2. Aguardar verificação automática
 3. Verificar console: `[SessionManager] Token refresh bem-sucedido`
 
 **Validações:**
+
 - ✅ Refresh 5min antes de expirar
 - ✅ Novo token salvo no localStorage
 
@@ -245,11 +269,13 @@ curl -X POST http://localhost:5051/oauth/google/token \
 **Objetivo:** Testar logout por inatividade
 
 **Teste:**
+
 1. Login e ficar inativo por 1 hora
 2. Verificar console: `[SessionManager] Timeout de inatividade`
 3. Validar logout automático
 
 **Validações:**
+
 - ✅ Logout após 1h de inatividade
 - ✅ Sessão limpa
 - ✅ Redirect para login
@@ -261,11 +287,13 @@ curl -X POST http://localhost:5051/oauth/google/token \
 **Objetivo:** Validar proteção de página
 
 **Teste:**
+
 1. Limpar localStorage
 2. Tentar acessar `/secure/estrita.html` diretamente
 3. Verificar redirecionamento imediato
 
 **Validações:**
+
 - ✅ `requireAuth()` bloqueia acesso
 - ✅ Redirect para `/secure/index.html`
 - ✅ URL de retorno salva
@@ -277,6 +305,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 ### 5.1 Fluxo Completo de Login
 
 **Passos:**
+
 1. Acessar `/secure/index.html`
 2. Clicar em "Login com Google"
 3. Completar OAuth flow
@@ -284,6 +313,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 5. Verificar user info exibido
 
 **Validações:**
+
 - ✅ Fluxo intuitivo
 - ✅ Feedback visual claro
 - ✅ Sem erros no console
@@ -293,6 +323,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 ### 5.2 Fluxo Completo de Logout
 
 **Passos:**
+
 1. Estar autenticado
 2. Clicar em botão de logout
 3. Verificar revogação de token
@@ -300,6 +331,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 5. Verificar redirect para login
 
 **Validações:**
+
 - ✅ Logout imediato
 - ✅ Tokens revogados
 - ✅ localStorage limpo
@@ -313,6 +345,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 **Objetivo:** Validar latência dos endpoints
 
 **Teste:**
+
 ```bash
 # Medir tempo de resposta
 time curl -X POST http://localhost:5051/auth/validate \
@@ -321,6 +354,7 @@ time curl -X POST http://localhost:5051/auth/validate \
 ```
 
 **Resultado Esperado:**
+
 - < 200ms para endpoints locais
 - < 1s para validação com provedor externo
 
@@ -331,6 +365,7 @@ time curl -X POST http://localhost:5051/auth/validate \
 **Objetivo:** Validar comportamento sob carga
 
 **Teste:**
+
 ```bash
 # Apache Bench - 100 requisições, 10 concorrentes
 ab -n 100 -c 10 -p post_data.json \
@@ -339,6 +374,7 @@ ab -n 100 -c 10 -p post_data.json \
 ```
 
 **Validações:**
+
 - ✅ Rate limiting ativo
 - ✅ Sem crashes
 - ✅ Respostas consistentes
@@ -348,6 +384,7 @@ ab -n 100 -c 10 -p post_data.json \
 ## 7. Checklist Final
 
 ### Backend
+
 - [ ] Todos testes unitários passando (23/23)
 - [ ] Rate limiting funcionando
 - [ ] HTTPS enforcement ativo (produção)
@@ -357,6 +394,7 @@ ab -n 100 -c 10 -p post_data.json \
 - [ ] CORS configurado corretamente
 
 ### Frontend
+
 - [ ] Session manager validando automaticamente
 - [ ] Auto-refresh de tokens funcionando
 - [ ] Timeout de inatividade ativo

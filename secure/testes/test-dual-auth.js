@@ -73,7 +73,7 @@ describe('Autenticação Dual (Google + Entra ID)', () => {
             const oidcPaths = {
                 login: '/secure/index.html',
                 callback: '/secure/callback.html',
-                restrita: '/secure/restrita.html',
+                estrita: '/secure/estrita.html',
                 logout: '/secure/logout.html',
                 postLogoutLanding: '/index.html'
             };
@@ -405,8 +405,8 @@ describe('Autenticação Dual (Google + Entra ID)', () => {
             expect(tokenResponse.access_token).toBeDefined();
             
             // 5. Redirecionamento para área restrita
-            const restrictedUrl = 'http://localhost:8000/secure/restrita.html';
-            expect(restrictedUrl).toContain('/secure/restrita.html');
+            const restrictedUrl = 'http://localhost:8000/secure/estrita.html';
+            expect(restrictedUrl).toContain('/secure/estrita.html');
         });
 
         it('deve simular fluxo completo Entra', async () => {
@@ -428,8 +428,8 @@ describe('Autenticação Dual (Google + Entra ID)', () => {
             expect(tokenResponse.access_token).toBeDefined();
             
             // 5. Redirecionamento para área restrita
-            const restrictedUrl = 'http://localhost:8000/secure/restrita.html';
-            expect(restrictedUrl).toContain('/secure/restrita.html');
+            const restrictedUrl = 'http://localhost:8000/secure/estrita.html';
+            expect(restrictedUrl).toContain('/secure/estrita.html');
         });
     });
 });

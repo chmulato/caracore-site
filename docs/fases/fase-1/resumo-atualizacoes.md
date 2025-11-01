@@ -8,7 +8,7 @@
 
 ### 1. Correção de Nomenclatura
 
-- ✅ **Renomeado:** `secure/restrita.html` → `secure/estrita.html`
+- ✅ **Renomeado:** `secure/estrita.html` → `secure/estrita.html`
 - ✅ **Atualizadas todas as referências** nos documentos de fase
 
 ### 2. Foco Específico nas Páginas HTML da Pasta `secure/`
@@ -106,7 +106,7 @@ git checkout -b fase-01
 git push -u origin fase-01
 
 # Renomeação do arquivo
-move secure/restrita.html secure/estrita.html
+move secure/estrita.html secure/estrita.html
 
 # Commit das mudanças
 git add .

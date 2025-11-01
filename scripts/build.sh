@@ -109,7 +109,7 @@ REQUIRED_FILES=(
     "secure/auth.js"
     "secure/logger.js"
     "secure/index.html"
-    "secure/restrita.html"
+    "secure/estrita.html"
     "secure/logout.html"
     "secure/assets/style.css"
 )

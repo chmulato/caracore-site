@@ -6,9 +6,10 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 
 - [Cara-Core Informática](#cara-core-informática)
   - [Índice](#índice)
-  - [Documentação Técnica](#documentação-técnica)
+  - [📚 Documentação Técnica](#-documentação-técnica)
+    - [🚀 Deploy e Operações (ATUALIZADO 01/11/2025)](#-deploy-e-operações-atualizado-01112025)
     - [Scripts Python](#scripts-python)
-    - [Configuração e Deploy](#configuração-e-deploy)
+    - [Configuração e Arquitetura](#configuração-e-arquitetura)
     - [Testes e Validação](#testes-e-validação)
     - [Sistema de Autenticação (OIDC)](#sistema-de-autenticação-oidc)
     - [Arquitetura e Soluções](#arquitetura-e-soluções)
@@ -28,7 +29,6 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
   - [Detalhes Técnicos](#detalhes-técnicos)
     - [Sistema de Autenticação OIDC](#sistema-de-autenticação-oidc-1)
       - [Documentação do Sistema de Autenticação](#documentação-do-sistema-de-autenticação)
-      - [Sistema de Tratamento de Erros e Timeouts](docs/SISTEMA-TIMEOUT-ERROS.md)
     - [Configuração OIDC (Azure / Google)](#configuração-oidc-azure--google)
       - [Fluxo recomendado de redirecionamento](#fluxo-recomendado-de-redirecionamento)
       - [Persistência do provedor selecionado](#persistência-do-provedor-selecionado)
@@ -138,7 +138,7 @@ sequenceDiagram
    participant I as /secure/index.html
    participant P as Provedor (Google/Microsoft)
    participant C as /secure/callback.html
-   participant R as /secure/restrita.html
+   participant R as /secure/estrita.html
    participant L as /secure/logout.html
    participant Bk as Backend (opcional)
 
@@ -229,14 +229,14 @@ cara-core/
 A Área 51 é a seção restrita do site, voltada a clientes, parceiros e ações internas. Ela oferece:
 
 - **Autenticação via OIDC** (Microsoft e Google) com fluxo Authorization Code + PKCE.
-- **Experiência consistente e local:** as páginas `secure/index.html`, `secure/callback.html`, `secure/restrita.html` e `secure/logout.html` utilizam sprite SVG, navegação responsiva e apenas arquivos CSS/JS hospedados no próprio domínio.
+- **Experiência consistente e local:** as páginas `secure/index.html`, `secure/callback.html`, `secure/estrita.html` e `secure/logout.html` utilizam sprite SVG, navegação responsiva e apenas arquivos CSS/JS hospedados no próprio domínio.
 - **Controle por allowlist:** o arquivo `backend/allowlist.json` define quem pode acessar.
 
 | Página | Descrição |
 |--------|-----------|
 | `/secure/index.html` | Tela de login com seleção de provedores |
 | `/secure/callback.html` | Callback dedicado que processa o retorno do provedor e conduz à área restrita |
-| `/secure/restrita.html` | Área autenticada com conteúdos exclusivos |
+| `/secure/estrita.html` | Área autenticada com conteúdos exclusivos |
 | `/secure/logout.html` | Confirmação de saída com recomendações de acesso |
 
 A administração pode acompanhar eventos em tempo real pela página `secure/admin-logs.html`.
@@ -302,7 +302,7 @@ A administração pode acompanhar eventos em tempo real pela página `secure/adm
 |-----|-----------|
 | `/secure/index.html` | Página de login principal |
 | `/secure/callback.html` | Página intermediária que valida o retorno do provedor |
-| `/secure/restrita.html` | Área restrita autenticada |
+| `/secure/estrita.html` | Área restrita autenticada |
 | `/secure/logout.html` | Página de logout |
 
 Para documentação aprofundada do fluxo, variáveis de ambiente e troubleshooting, consulte **[secure/README.md](secure/README.md)**.
@@ -333,7 +333,7 @@ Para documentação aprofundada do fluxo, variáveis de ambiente e troubleshooti
 
 1. O usuário inicia o login em [`/secure/index.html`](https://www.caracore.com.br/secure/index.html), escolhe o provedor e é redirecionado para Google ou Microsoft.
 2. O provedor retorna para [`/secure/callback.html`](https://www.caracore.com.br/secure/callback.html), que processa o `code` de autorização via `auth-standalone.js`.
-3. Após validar e armazenar o token, a página de callback encaminha o usuário autenticado para [`/secure/restrita.html`](https://www.caracore.com.br/secure/restrita.html).
+3. Após validar e armazenar o token, a página de callback encaminha o usuário autenticado para [`/secure/estrita.html`](https://www.caracore.com.br/secure/estrita.html).
 4. Dentro da área restrita existe um link para [`/secure/logout.html`](https://www.caracore.com.br/secure/logout.html); ao concluir o logout com o provedor, a navegação retorna para [`/index.html`](https://www.caracore.com.br/index.html).
 
 O arquivo `secure/dynamic-config.js` gera esses caminhos automaticamente usando `resolveOidcPaths()`. Para personalizar os endpoints (ex.: ambientes de homologação), defina `window.CARA_CORE_CONFIG.oidcPaths` antes de carregar os scripts:

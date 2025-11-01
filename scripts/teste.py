@@ -4,7 +4,7 @@ O script inicia um servidor HTTP local apontando para a raiz do projeto,
 realiza requisições a páginas-chave e verifica conteúdos essenciais:
 
 - `index.html` deve responder com HTTP 200 e conter o link "Área 51".
-- `/secure/index.html`, `/secure/callback.html`, `/secure/restrita.html` e `/secure/logout.html`
+- `/secure/index.html`, `/secure/callback.html`, `/secure/estrita.html` e `/secure/logout.html`
   devem responder com HTTP 200 e conter textos característicos.
 
 Uso:
@@ -148,19 +148,19 @@ def run_tests(port: int) -> List[TestResult]:
     except urllib.error.URLError as exc:
         results.append(TestResult("secure/callback.html ok", False, f"erro: {exc}"))
 
-    # 5. secure/restrita.html responde 200 e contém mensagem de sessão
+    # 5. secure/estrita.html responde 200 e contém mensagem de sessão
     try:
-        status, body_restrita = fetch("/secure/restrita.html", port)
+        status, body_restrita = fetch("/secure/estrita.html", port)
         contains_text = "Conteúdo Protegido" in body_restrita or "Sessão ativa" in body_restrita
         results.append(
             TestResult(
-                "secure/restrita.html ok",
+                "secure/estrita.html ok",
                 status == 200 and contains_text,
                 f"status={status}; contains_text={contains_text}",
             )
         )
     except urllib.error.URLError as exc:
-        results.append(TestResult("secure/restrita.html ok", False, f"erro: {exc}"))
+        results.append(TestResult("secure/estrita.html ok", False, f"erro: {exc}"))
 
     # 6. secure/logout.html responde 200 e sinaliza sessão encerrada
     try:

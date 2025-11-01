@@ -69,7 +69,7 @@
       "security_elements": [],
       "test_priority": "critical"
     },
-    "restrita.html": {
+    "estrita.html": {
       "type": "html",
       "size": 20850,
       "oidc_features": [
@@ -768,7 +768,7 @@
         "pages": [
           "admin-logs.html",
           "index.html",
-          "restrita.html",
+          "estrita.html",
           "caracore-instructions.js",
           "diagnose-redirect-uri.js",
           "dynamic-config.js",
@@ -789,7 +789,7 @@
         "pages": [
           "admin-logs.html",
           "index.html",
-          "restrita.html",
+          "estrita.html",
           "auth-standalone.js",
           "auth.js",
           "caracore-instructions.js",
@@ -849,7 +849,7 @@
         "pages": [
           "admin-logs.html",
           "index.html",
-          "restrita.html",
+          "estrita.html",
           "auth-standalone.js",
           "auth.js",
           "caracore-instructions.js",
@@ -938,7 +938,7 @@
           "admin-logs.html",
           "callback.html",
           "index.html",
-          "restrita.html",
+          "estrita.html",
           "auth-standalone.js",
           "auth.js",
           "caracore-instructions.js",
@@ -997,7 +997,7 @@
           "admin-logs.html",
           "index.html",
           "logout.html",
-          "restrita.html",
+          "estrita.html",
           "auth-standalone.js",
           "auth.js",
           "caracore-instructions.js",
@@ -1042,7 +1042,7 @@
         "coverage_percentage": 100.0,
         "uncovered": []
       },
-      "restrita.html": {
+      "estrita.html": {
         "total_features": 5,
         "covered_features": 5,
         "coverage_percentage": 100.0,

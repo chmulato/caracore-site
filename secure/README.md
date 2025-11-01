@@ -7,7 +7,7 @@ Este documento descreve a implementacao do fluxo OpenID Connect (OIDC) utilizado
 ```text
 secure/
 ├── index.html        # Tela de consentimento e escolha do provedor
-├── restrita.html     # Conteudo protegido; exige sessao valida
+├── estrita.html     # Conteudo protegido; exige sessao valida
 ├── logout.html       # Mensagem de encerramento e limpeza local
 ├── auth.js           # Modulo central de autenticacao (window.CaraCoreOIDC)
 ├── config/

@@ -114,11 +114,11 @@ if not exist "secure\index.html" (
     echo    [OK] secure\index.html
 )
 
-if not exist "secure\restrita.html" (
-    echo    [ERRO] secure\restrita.html ^(FALTANDO^)
+if not exist "secure\estrita.html" (
+    echo    [ERRO] secure\estrita.html ^(FALTANDO^)
     set FILES_OK=0
 ) else (
-    echo    [OK] secure\restrita.html
+    echo    [OK] secure\estrita.html
 )
 
 if not exist "secure\logout.html" (

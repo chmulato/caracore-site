@@ -239,7 +239,7 @@ def check_production_environment():
     log_info("   Solução: Verifique se os parâmetros de versão (?v=XXXXXXXX) estão corretos e atualizados.")
     
     log_info("\n5. VERIFICAÇÃO MANUAL RECOMENDADA:")
-    log_info("   Acesse https://www.caracore.com.br/secure/restrita.html e verifique o console do navegador")
+    log_info("   Acesse https://www.caracore.com.br/secure/estrita.html e verifique o console do navegador")
     log_info("   para identificar erros JavaScript que possam estar ocorrendo.")
     log_info("=" * 80)
     

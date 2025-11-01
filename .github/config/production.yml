@@ -11,7 +11,7 @@ oidc:
   redirect_paths:
     callback: "/secure/index.html"
     logout: "/secure/logout.html"
-    restricted: "/secure/restrita.html"
+    restricted: "/secure/estrita.html"
 
 providers:
   google:

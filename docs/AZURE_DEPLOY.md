@@ -1,8 +1,8 @@
 # Guia de Deploy - Azure App Service
 
 **Backend Python/Flask da Área 51**  
-**Versão:** 1.0.0  
-**Última Atualização:** 31/10/2025
+**Versão:** 2.0.0  
+**Última Atualização:** 01/11/2025
 
 ---
 
@@ -21,10 +21,11 @@ Este documento descreve o processo completo de deploy do backend Python/Flask no
 - **Runtime:** Python 3.11 (Linux Container)
 - **Region:** Brazil South
 
-**Staging:** (A ser configurado)
+**Arquitetura:**
 
-- **Nome:** `caracore-backend-staging`
-- **URL:** https://caracore-backend-staging.azurewebsites.net
+- **2 Ambientes:** Local (desenvolvimento) e Produção (Azure)
+- **Sem Staging:** Deploy direto para produção com backups automáticos
+- **Scripts Automatizados:** Python para deploy e rollback
 
 ---
 
@@ -171,36 +172,38 @@ az webapp config appsettings list --name caracore-backend --resource-group rg-ca
 
 ## 🚀 Deploy para Produção
 
-### Método 1: Azure CLI (Recomendado)
+### Método 1: Script Automatizado (Recomendado) ✨ NOVO
+
+O deploy agora é feito através de script Python automatizado com verificações de segurança.
 
 ```powershell
-# 1. Navegar para o diretório do backend
-cd d:\dev\site\cara-core\backend
+# Deploy completo com todas as verificações
+cd d:\dev\site\cara-core
+python scripts/deploy_production.py
 
-# 2. Verificar se está no diretório correto
-ls  # Deve mostrar app.py, requirements.txt
+# Deploy pulando testes (mais rápido)
+python scripts/deploy_production.py --skip-tests
 
-# 3. Deploy usando az webapp up
-az webapp up `
-  --name caracore-backend `
-  --resource-group rg-caracore `
-  --plan caracore-plan `
-  --runtime "PYTHON:3.11" `
-  --location brazilsouth `
-  --sku B1
-
-# 4. Aguardar conclusão
-# Saída esperada:
-# - Creating zip...
-# - Getting scm site credentials...
-# - Starting zip deployment...
-# - Deployment successful
-# - You can launch the app at https://caracore-backend.azurewebsites.net
+# Deploy forçado (ignora avisos de branch/uncommitted)
+python scripts/deploy_production.py --force
 ```
 
-**Tempo estimado:** 30-60 segundos
+**O que o script faz:**
+- ✅ Verifica Azure CLI instalado e autenticado
+- ✅ Valida branch Git (avisa se não for main)
+- ✅ Detecta mudanças não commitadas
+- ✅ Executa testes pytest (opcional)
+- ✅ Cria backup automático (backups/backup_TIMESTAMP.zip)
+- ✅ Cria pacote ZIP excluindo __pycache__, logs, .env
+- ✅ Deploy via `az webapp deployment source config-zip`
+- ✅ Health check (aguarda 30s + testa /health)
+- ✅ Teste de autenticação (/api/admin/logs deve retornar 401)
+- ✅ Cleanup de arquivos temporários
+- ✅ Log estruturado em JSON (backend/logs/deploys.jsonl)
 
-### Método 2: GitHub Actions (CI/CD)
+**Tempo estimado:** 2-3 minutos (inclui warm-up)
+
+### Método 2: Azure CLI (Manual)
 
 ```yaml
 # .github/workflows/deploy-backend.yml
@@ -279,25 +282,51 @@ az webapp log tail --name caracore-backend --resource-group rg-caracore
 
 ## 🔄 Processo de Rollback
 
-### Opção 1: Slot Swap (Produção ↔ Staging)
+### Script Automatizado de Rollback ✨ NOVO
+
+O rollback agora é feito através de script Python com confirmação obrigatória.
+
+**Listar backups disponíveis:**
 
 ```powershell
-# Reverter para versão anterior via slot swap
-az webapp deployment slot swap `
-  --name caracore-backend `
-  --resource-group rg-caracore `
-  --slot staging `
-  --target-slot production
+cd d:\dev\site\cara-core
+python scripts/rollback.py --list
 ```
 
-### Opção 2: Deploy de Commit Anterior
+**Reverter para último backup:**
 
 ```powershell
-# 1. Verificar histórico de commits
-git log --oneline -10
+python scripts/rollback.py --latest
+# Digite "ROLLBACK" para confirmar
+```
 
-# 2. Fazer checkout do commit funcional
-git checkout <commit-hash>
+**Reverter para backup específico:**
+
+```powershell
+python scripts/rollback.py --backup backup_20251101_153045.zip
+# Digite "ROLLBACK" para confirmar
+```
+
+**Reverter para commit Git específico:**
+
+```powershell
+python scripts/rollback.py --commit abc1234
+# Digite "ROLLBACK" para confirmar
+# Cria branch temporária, faz deploy, volta para branch original
+```
+
+**O que o script faz:**
+- ✅ Lista backups disponíveis (data/hora, arquivo)
+- ✅ Mostra últimos 10 deploys do log
+- ✅ Confirmação obrigatória (digitar "ROLLBACK")
+- ✅ Cria backup de segurança antes de reverter (pre_rollback_*.zip)
+- ✅ Deploy do backup via config-zip
+- ✅ Health check pós-rollback (30s warm-up + teste)
+- ✅ Validação de existência de backup/commit
+
+**Tempo estimado:** 2-3 minutos
+
+### Rollback Manual (Backup via ZIP)
 
 # 3. Re-deploy
 cd backend
@@ -506,7 +535,33 @@ az webapp config appsettings set `
 
 ## 📝 Checklist de Deploy
 
-Antes de cada deploy, verificar:
+### Usando Script Automatizado (deploy_production.py)
+
+O script já faz a maioria das verificações automaticamente:
+
+**Verificações Automáticas (feitas pelo script):**
+- ✅ Azure CLI instalado e autenticado
+- ✅ Branch Git atual (avisa se não for main)
+- ✅ Mudanças não commitadas (avisa)
+- ✅ Testes pytest (opcional com --skip-tests)
+- ✅ Backup automático criado
+- ✅ Health check pós-deploy
+- ✅ Teste de autenticação
+
+**Verificações Manuais (antes de rodar o script):**
+- [ ] Código testado localmente
+- [ ] `requirements.txt` atualizado (se adicionou dependências)
+- [ ] Secrets configurados no Azure (primeira vez apenas)
+- [ ] Commit com mensagem descritiva
+
+**Comando:**
+```powershell
+python scripts/deploy_production.py
+```
+
+### Deploy Manual (se necessário)
+
+Antes de cada deploy:
 
 - [ ] Código testado localmente
 - [ ] Testes automatizados passando (6/6)

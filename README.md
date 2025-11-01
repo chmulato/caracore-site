@@ -48,7 +48,26 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 
 ---
 
-## Documentação Técnica
+## 📚 Documentação Técnica
+
+> **🔖 Índice Completo:** [docs/INDEX.md](docs/INDEX.md) - Navegue por toda a documentação do projeto
+
+### 🚀 Deploy e Operações (ATUALIZADO 01/11/2025)
+
+- **[Guia de Deploy Azure](docs/AZURE_DEPLOY.md)** ⭐ - Guia completo de deploy, rollback e troubleshooting
+- **[Versões de Dependências](docs/VERSOES.md)** - Python, Flask, Gunicorn e todas as dependências
+
+**Scripts Automatizados:**
+```powershell
+# Deploy para produção
+python scripts/deploy_production.py
+
+# Rollback em emergência
+python scripts/rollback.py --latest
+
+# Listar backups disponíveis
+python scripts/rollback.py --list
+```
 
 ### Scripts Python
 
@@ -57,11 +76,10 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 - **[Testes Unitários OIDC](scripts/executar_ut_secure.py)** - Execute `python run_script.py executar_ut_secure.py --help` para opções
 - **[Reorganização Scripts](docs/REORGANIZACAO_SCRIPTS_PYTHON.md)** - Documentação da migração e organização dos scripts Python
 
-### Configuração e Deploy
+### Configuração e Arquitetura
 
 - **[Arquitetura do Sistema](docs/ARQUITETURA.md)** - Visão geral da arquitetura técnica do projeto
-- **[Guia de Deploy](docs/DEPLOY.md)** - Procedimentos para deploy em produção
-- **[Status de Deploy](docs/DEPLOY-STATUS.md)** - Status atual do deploy e configurações
+- **[Status Atual do Projeto](docs/pendencias/STATUS-ATUAL.md)** - Progresso detalhado de todas as fases
 - **[Configuração de Redirect URIs](docs/CONFIGURACAO-REDIRECT-URIS.md)** - Guia para configurar URIs de redirecionamento
 - **[Configuração Google Cloud](docs/GOOGLE-CLOUD-CONFIG.md)** - Configurações específicas do Google Cloud Console
 - **[Logs de Produção](docs/LOG-PRODUCAO.md)** - Documentação sobre logs em ambiente de produção

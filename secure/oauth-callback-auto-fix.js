@@ -230,7 +230,7 @@
             // Fallback: redirecionar mesmo assim
             const fallback = confirm('Erro no processamento automático. Deseja tentar acessar a área restrita?');
             if (fallback) {
-                window.location.href = '/secure/restrita.html';
+                window.location.href = '/secure/estrita.html';
             }
             return false;
         }

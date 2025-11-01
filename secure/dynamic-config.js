@@ -13,7 +13,7 @@ function resolveOidcPaths() {
     const defaults = {
         login: '/secure/index.html',
         callback: '/secure/callback.html',
-        restrita: '/secure/restrita.html',
+        restrita: '/secure/estrita.html',
         logout: '/secure/logout.html',
         postLogoutLanding: '/index.html'
     };

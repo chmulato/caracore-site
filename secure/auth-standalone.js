@@ -580,7 +580,7 @@
                 await window.OIDCAuth.handleAuthCallback();
                 
                 // Redirecionar para área restrita após sucesso
-                window.location.href = '/secure/restrita.html';
+                window.location.href = '/secure/estrita.html';
             } catch (error) {
                 console.error('Erro no callback de autenticação:', error);
                 let reason = 'unknown';

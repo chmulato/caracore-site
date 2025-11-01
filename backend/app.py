@@ -1397,6 +1397,101 @@ def create_app() -> Flask:
             }), 500)
             return add_cors(resp)
     
+    def require_auth(f):
+        """
+        Decorator para exigir autenticação via Authorization header.
+        
+        Valida Bearer token usando os mesmos mecanismos de /auth/validate.
+        Retorna 401 se sem token, 403 se token inválido.
+        """
+        from functools import wraps
+        
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+            auth_header = request.headers.get("Authorization", "")
+            
+            # Verificar se Authorization header existe
+            if not auth_header or not auth_header.startswith("Bearer "):
+                logger.warning("Admin endpoint accessed without auth", extra={
+                    "endpoint": request.path,
+                    "client_ip": client_ip
+                })
+                resp = make_response(jsonify({
+                    "error": "unauthorized",
+                    "error_description": "Token de autenticação obrigatório"
+                }), 401)
+                return add_cors(resp)
+            
+            # Extrair token
+            access_token = auth_header[7:]  # Remove "Bearer "
+            
+            # Validar token com Google (assumindo Google por padrão)
+            # TODO: detectar provider do token ou permitir header X-Provider
+            try:
+                info_url = f"https://oauth2.googleapis.com/tokeninfo?access_token={access_token}"
+                response = requests.get(info_url, timeout=10)
+                
+                if response.status_code != 200:
+                    logger.warning("Admin endpoint accessed with invalid token", extra={
+                        "endpoint": request.path,
+                        "client_ip": client_ip,
+                        "status_code": response.status_code
+                    })
+                    resp = make_response(jsonify({
+                        "error": "forbidden",
+                        "error_description": "Token inválido ou expirado"
+                    }), 403)
+                    return add_cors(resp)
+                
+                token_info = response.json()
+                
+                # Verificar se token pertence ao nosso client_id
+                expected_client_id = os.getenv("GOOGLE_CLIENT_ID")
+                if token_info.get("aud") != expected_client_id:
+                    logger.warning("Admin endpoint accessed with wrong audience", extra={
+                        "endpoint": request.path,
+                        "client_ip": client_ip,
+                        "expected": expected_client_id,
+                        "actual": token_info.get("aud")
+                    })
+                    resp = make_response(jsonify({
+                        "error": "forbidden",
+                        "error_description": "Token não autorizado"
+                    }), 403)
+                    return add_cors(resp)
+                
+                # Token válido - prosseguir com request
+                logger.info("Admin endpoint accessed", extra={
+                    "endpoint": request.path,
+                    "user_id": token_info.get("sub"),
+                    "email": token_info.get("email"),
+                    "client_ip": client_ip
+                })
+                
+                # Injetar user_info no request context para uso posterior
+                request.user_info = {
+                    "id": token_info.get("sub"),
+                    "email": token_info.get("email"),
+                    "email_verified": token_info.get("email_verified") == "true"
+                }
+                
+                return f(*args, **kwargs)
+                
+            except Exception as e:
+                logger.error("Auth validation error", extra={
+                    "endpoint": request.path,
+                    "error": str(e),
+                    "client_ip": client_ip
+                }, exc_info=True)
+                resp = make_response(jsonify({
+                    "error": "server_error",
+                    "error_description": "Erro ao validar autenticação"
+                }), 500)
+                return add_cors(resp)
+        
+        return decorated_function
+    
     @app.route("/api/admin/logs", methods=["OPTIONS"])  # CORS preflight
     def admin_logs_preflight():
         return add_cors(make_response("", 204))
@@ -1404,9 +1499,12 @@ def create_app() -> Flask:
     @app.route("/api/admin/logs", methods=["GET"])
     @require_https
     @rate_limit("/api/admin/logs")
+    @require_auth
     def admin_logs():
         """
         Endpoint protegido para visualização de logs de auditoria.
+        
+        Requer autenticação via Authorization: Bearer <access_token>
         
         Query Parameters:
         - date: Data dos logs (formato: YYYY-MM-DD), default: hoje
@@ -1418,9 +1516,6 @@ def create_app() -> Flask:
         """
         from datetime import datetime, date
         import json
-        
-        # TODO: Implementar autenticação/autorização de admin
-        # Por enquanto, apenas rate limiting como proteção básica
         
         # Parâmetros de query
         log_date = request.args.get("date", date.today().strftime("%Y-%m-%d"))

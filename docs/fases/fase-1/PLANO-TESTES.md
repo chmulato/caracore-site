@@ -289,7 +289,7 @@ curl -X POST http://localhost:5051/oauth/google/token \
 **Teste:**
 
 1. Limpar localStorage
-2. Tentar acessar `/secure/estrita.html` diretamente
+2. Tentar acessar `/secure/restrita.html` diretamente
 3. Verificar redirecionamento imediato
 
 **Validações:**

@@ -77,24 +77,6 @@
                         <h2 class="section-title">🏠 Visão Geral</h2>
                         
                         <!-- Alerta de Atualização Recente -->
-                        <div class="alert alert-warning border-warning" style="border-left: 4px solid #ffc107;">
-                            <div class="d-flex align-items-center mb-2">
-                                <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
-                                <strong class="fs-5">🔥 ATUALIZAÇÃO 01/11/2025 - Correções Críticas em Produção</strong>
-                            </div>
-                            <p class="mb-2">Aplicamos correções importantes no backend Azure e sistema de configuração:</p>
-                            <ul class="mb-2">
-                                <li><strong>CORS Fix:</strong> Adicionado handler OPTIONS para preflight requests no endpoint <code>/api/admin/logs</code></li>
-                                <li><strong>Azure Port Config:</strong> Configurado <code>WEBSITES_PORT=8000</code> e startup command com <code>$PORT</code> dinâmico</li>
-                                <li><strong>Script de Automação:</strong> Criado <code>configure_azure_all_settings.ps1</code> para configuração rápida de 25+ variáveis</li>
-                                <li><strong>Template de Secrets:</strong> Novo arquivo <code>secrets.txt.template</code> com todas as variáveis necessárias</li>
-                            </ul>
-                            <p class="mb-0">
-                                <a href="#fase-3-update" class="alert-link fw-bold">Ver detalhes da Fase 3 ↓</a> | 
-                                <a href="../docs/ATUALIZACAO_DOCUMENTACAO_01NOV2025.md" class="alert-link" target="_blank">Relatório completo <i class="bi bi-box-arrow-up-right small"></i></a>
-                            </p>
-                        </div>
-                        
                         <p class="lead">
                             A <strong>Área 51</strong> é um sistema de autenticação enterprise implementando 
                             os padrões mais modernos de segurança: <strong>OAuth 2.1</strong> e 
@@ -281,6 +263,14 @@
                             <span class="tech-badge">PowerShell 7</span>
                             <span class="tech-badge">Python unittest</span>
                         </div>
+
+                        <h3 class="h5 mt-4">Automação Deploy <span class="badge bg-success">Novo</span></h3>
+                        <div class="tech-stack">
+                            <span class="tech-badge"><i class="bi bi-rocket-takeoff"></i> deploy_production.py (350 linhas)</span>
+                            <span class="tech-badge"><i class="bi bi-arrow-counterclockwise"></i> rollback.py (350 linhas)</span>
+                            <span class="tech-badge"><i class="bi bi-gear"></i> configure_azure_all_settings.ps1</span>
+                            <span class="tech-badge"><i class="bi bi-graph-up"></i> configure_azure_monitor.ps1</span>
+                        </div>
                     </section>
 
                     <!-- Fases -->
@@ -327,32 +317,43 @@
                             </div>
 
                             <div class="timeline-item" id="fase-3-update">
-                                <h4>Fase 3 - Correções Críticas e Automação <span class="badge bg-success">✅ Concluído</span></h4>
-                                <p><strong>Data:</strong> 01/11/2025</p>
+                                <h4>Fase 3 - Auditoria, Deploy e Automação <span class="badge bg-success">✅ 100% Concluído</span></h4>
+                                <p><strong>Data:</strong> 01/11/2025 | <strong>Progresso:</strong> 7/7 itens CORE</p>
                                 <ul>
-                                    <li><strong>Dashboard de Auditoria:</strong> 100% funcional em produção (15+ eventos registrados)</li>
-                                    <li><strong>CORS Preflight Fix:</strong> Adicionado handler OPTIONS para <code>/api/admin/logs</code> (status 204)</li>
-                                    <li><strong>Azure App Service Fix:</strong> Configurado <code>WEBSITES_PORT=8000</code> + startup command com <code>$PORT</code> dinâmico</li>
-                                    <li><strong>Script de Automação:</strong> <code>scripts/configure_azure_all_settings.ps1</code> (78 linhas, configura 25+ variáveis)</li>
-                                    <li><strong>Template de Configuração:</strong> <code>secrets.txt.template</code> com todas as env vars necessárias</li>
-                                    <li><strong>Documentação Completa:</strong> +405 linhas em STATUS-ATUAL.md, AZURE_DEPLOY.md e guia de troubleshooting</li>
-                                    <li><strong>Merge para Main:</strong> Commit <code>df75959</code> com todas as novidades entregue</li>
+                                    <li><strong>Dashboard de Auditoria:</strong> 100% funcional em produção (sistema de logs JSONL completo)</li>
+                                    <li><strong>CORS Preflight Fix:</strong> Handler OPTIONS para <code>/api/admin/logs</code> (status 204)</li>
+                                    <li><strong>Azure Configuration:</strong> <code>WEBSITES_PORT=8000</code> + startup command dinâmico</li>
+                                    <li><strong>Deploy Automatizado:</strong> <code>deploy_production.py</code> (350 linhas) - safety checks, tests, backup, health check</li>
+                                    <li><strong>Rollback System:</strong> <code>rollback.py</code> (350 linhas) - 4 modos (latest, backup, commit, list)</li>
+                                    <li><strong>Azure Monitor:</strong> Documentação completa (430 linhas) + script automatizado (6 alertas críticos)</li>
+                                    <li><strong>Documentação:</strong> VERSOES.md, AZURE_MONITOR.md, INDEX.md, limpeza de 17 scripts obsoletos</li>
+                                    <li><strong>Merge Successful:</strong> Commit <code>8ede8ca</code> fase-01 → main entregue</li>
                                 </ul>
                                 <div class="alert alert-info mt-2">
-                                    <strong>Troubleshooting Quick Reference:</strong>
+                                    <strong>🚀 Deploy em 2-3 minutos:</strong>
                                     <ul class="mb-0 mt-2">
-                                        <li>Testar CORS OPTIONS: <code>curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I</code></li>
-                                        <li>Verificar WEBSITES_PORT: <code>az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --query "[?name=='WEBSITES_PORT']"</code></li>
-                                        <li>Configurar variáveis: <code>.\scripts\configure_azure_all_settings.ps1</code> (requer <code>secrets.txt</code> preenchido)</li>
+                                        <li>Deploy: <code>python scripts/deploy_production.py</code></li>
+                                        <li>Rollback: <code>python scripts/rollback.py --latest</code></li>
+                                        <li>Config Azure: <code>.\scripts\configure_azure_all_settings.ps1</code></li>
+                                        <li>Monitor: <code>.\scripts\configure_azure_monitor.ps1</code></li>
                                     </ul>
                                 </div>
+                            </div>
+
+                            <div class="timeline-item">
+                                <h4>Fase 4 - Monitoramento e Manutenção <span class="badge bg-warning text-dark">🔄 Em Progresso</span></h4>
+                                <p><strong>Estimativa:</strong> 10 dias | <strong>Status:</strong> Planejamento</p>
+                                <ul>
+                                    <li><strong>Item 10:</strong> Monitoramento e Alertas (4 dias) - Azure Monitor + Application Insights</li>
+                                    <li><strong>Item 11:</strong> Documentação Final (3 dias) - Screenshots, vídeos, guias completos</li>
+                                    <li><strong>Item 12:</strong> Manutenção e Suporte (3 dias) - Backup automation, disaster recovery</li>
+                                </ul>
                             </div>
                         </div>
 
                         <div class="alert alert-success mt-4">
                             <i class="bi bi-check-circle-fill me-2"></i>
-                            <strong>Todas as fases concluídas!</strong> Sistema 100% operacional, testado em produção e com troubleshooting documentado.
-                        </div>
+                            <strong>Fase 3 CORE 100% Completa!</strong> Deploy automatizado (2-3 min), rollback system, Azure Monitor documentado, scripts limpos (-47%).</div>
                     </section>
 
                     <!-- Métricas -->
@@ -374,15 +375,19 @@
                                         </tr>
                                         <tr>
                                             <td><strong>Documentação Markdown</strong></td>
-                                            <td class="text-end">50+ arquivos</td>
+                                            <td class="text-end">60+ arquivos</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Scripts Python Ativos</strong></td>
+                                            <td class="text-end">24 arquivos <span class="badge bg-success">-47%</span></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Scripts PowerShell</strong></td>
-                                            <td class="text-end">78 linhas <span class="badge bg-info">Novo</span></td>
+                                            <td class="text-end">3 arquivos <span class="badge bg-info">Automação</span></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Total</strong></td>
-                                            <td class="text-end"><strong>~4.500 linhas</strong></td>
+                                            <td class="text-end"><strong>~5.200 linhas</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -401,7 +406,11 @@
                                         </tr>
                                         <tr>
                                             <td><strong>Validação Dashboard</strong></td>
-                                            <td class="text-end">4/4 ✅ <span class="badge bg-info">01/11</span></td>
+                                            <td class="text-end">4/4 ✅</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Deploy Automation</strong></td>
+                                            <td class="text-end">2-3 min ✅ <span class="badge bg-success">Novo</span></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Security Headers</strong></td>
@@ -445,6 +454,32 @@
                     <section id="deploy" class="mt-5">
                         <h2 class="section-title">☁️ Deploy e Infraestrutura</h2>
 
+                        <div class="alert alert-success mb-4">
+                            <h5 class="alert-heading"><i class="bi bi-rocket-takeoff me-2"></i>Deploy Automatizado em 2-3 minutos</h5>
+                            <p class="mb-2">Sistema completo de deploy e rollback implementado (Fase 3 CORE):</p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <strong>Deploy Production:</strong>
+                                    <ul class="mb-0">
+                                        <li>Safety checks (branch, uncommitted, Azure auth)</li>
+                                        <li>Execução automática de testes pytest</li>
+                                        <li>Backup automático antes de deploy</li>
+                                        <li>Health check pós-deploy</li>
+                                        <li>Log estruturado em JSON</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <strong>Rollback System:</strong>
+                                    <ul class="mb-0">
+                                        <li>4 modos: latest, backup, commit, list</li>
+                                        <li>Confirmação obrigatória</li>
+                                        <li>Safety backup antes do rollback</li>
+                                        <li>Correlação com logs de deploy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="card">
@@ -456,8 +491,9 @@
                                         <p><strong>Runtime:</strong> Python 3.11.13 + Gunicorn 23.0.0</p>
                                         <p><strong>Plan:</strong> Basic B1 ($13.14/mês)</p>
                                         <p><strong>Region:</strong> Brazil South</p>
-                                        <p><strong>Port:</strong> <code>WEBSITES_PORT=8000</code> <span class="badge bg-info">01/11</span></p>
+                                        <p><strong>Port:</strong> <code>WEBSITES_PORT=8000</code></p>
                                         <p><strong>Startup:</strong> <code>gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app</code></p>
+                                        <p><strong>Deploy Time:</strong> 2-3 min <span class="badge bg-success">Automatizado</span></p>
                                         <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Online (100% funcional)</span></p>
                                     </div>
                                 </div>
@@ -479,17 +515,31 @@
                             </div>
                         </div>
 
-                        <div class="alert alert-success mt-4">
-                            <h4 class="alert-heading"><i class="bi bi-terminal me-2"></i>Configuração Automatizada (Novo 01/11)</h4>
-                            <p>Criado script PowerShell para configurar todas as 25+ variáveis de ambiente no Azure:</p>
+                        <div class="alert alert-info mt-4">
+                            <h4 class="alert-heading"><i class="bi bi-terminal me-2"></i>Comandos de Deploy</h4>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Deploy para Produção:</strong></p>
+                                    <pre class="bg-dark text-light p-2 rounded"><code>python scripts/deploy_production.py</code></pre>
+                                    <p class="small mb-0">Opções: <code>--skip-tests</code>, <code>--force</code>, <code>--message "descrição"</code></p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Rollback:</strong></p>
+                                    <pre class="bg-dark text-light p-2 rounded"><code>python scripts/rollback.py --latest</code></pre>
+                                    <p class="small mb-0">Modos: <code>--latest</code>, <code>--backup</code>, <code>--commit HASH</code>, <code>--list</code></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-warning mt-3">
+                            <h5 class="alert-heading"><i class="bi bi-gear me-2"></i>Configuração Azure</h5>
+                            <p class="mb-2">Scripts de configuração automatizada:</p>
                             <ol class="mb-2">
-                                <li>Copie <code>secrets.txt.template</code> para <code>secrets.txt</code></li>
-                                <li>Preencha com valores reais (nunca commitar!)</li>
-                                <li>Execute: <code>.\scripts\configure_azure_all_settings.ps1</code></li>
-                                <li>Aguarde ~2 minutos (configura 25 variáveis automaticamente)</li>
+                                <li><strong>App Settings:</strong> <code>.\scripts\configure_azure_all_settings.ps1</code> (25+ variáveis)</li>
+                                <li><strong>Azure Monitor:</strong> <code>.\scripts\configure_azure_monitor.ps1</code> (6 alertas críticos)</li>
                             </ol>
                             <p class="mb-0">
-                                <strong>Arquivos:</strong> 
+                                <strong>Documentação:</strong> 
                                 <a href="../secrets.txt.template" target="_blank" class="alert-link">secrets.txt.template</a> | 
                                 <a href="../scripts/configure_azure_all_settings.ps1" target="_blank" class="alert-link">configure_azure_all_settings.ps1</a> | 
                                 <a href="../docs/AZURE_DEPLOY.md" target="_blank" class="alert-link">Guia completo</a>
@@ -549,8 +599,27 @@
                         </div>
                     </section>
 
+                    <!-- Atualização 01/11/2025 -->
+                    <div class="alert alert-warning alert-update border-warning mt-5">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                            <strong class="fs-5">🔥 ATUALIZAÇÃO 01/11/2025 - Correções Críticas em Produção</strong>
+                        </div>
+                        <p class="mb-2">Aplicamos correções importantes no backend Azure e sistema de configuração:</p>
+                        <ul class="mb-2">
+                            <li><strong>CORS Fix:</strong> Adicionado handler OPTIONS para preflight requests no endpoint <code>/api/admin/logs</code></li>
+                            <li><strong>Azure Port Config:</strong> Configurado <code>WEBSITES_PORT=8000</code> e startup command com <code>$PORT</code> dinâmico</li>
+                            <li><strong>Script de Automação:</strong> Criado <code>configure_azure_all_settings.ps1</code> para configuração rápida de 25+ variáveis</li>
+                            <li><strong>Template de Secrets:</strong> Novo arquivo <code>secrets.txt.template</code> com todas as variáveis necessárias</li>
+                        </ul>
+                        <p class="mb-0">
+                            <a href="#fase-3-update" class="alert-link fw-bold">Ver detalhes da Fase 3 ↓</a> | 
+                            <a href="../docs/ATUALIZACAO_DOCUMENTACAO_01NOV2025.md" class="alert-link" target="_blank">Relatório completo <i class="bi bi-box-arrow-up-right small"></i></a>
+                        </p>
+                    </div>
+
                     <!-- CTA -->
-                    <div class="alert alert-primary mt-5" role="alert">
+                    <div class="alert alert-primary mt-4" role="alert">
                         <h4 class="alert-heading"><i class="bi bi-rocket-takeoff me-2"></i>Projeto Open Source</h4>
                         <p>Esta é uma implementação de referência de OAuth 2.1 + OIDC seguindo as melhores práticas de segurança da indústria.</p>
                         <hr>

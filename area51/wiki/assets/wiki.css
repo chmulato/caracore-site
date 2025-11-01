@@ -204,6 +204,10 @@ code {
     background: #d1e7dd;
 }
 
+.alert-update {
+    border-left: 4px solid #ffc107;
+}
+
 .footer {
     background: var(--dark-bg);
     color: white;

@@ -168,7 +168,7 @@
     function redirectToRestricted() {
         console.log('🚀 Redirecionando para área restrita...');
         setTimeout(() => {
-            window.location.href = '/secure/restrita.html';
+            window.location.href = '/secure/estrita.html';
         }, 1500);
     }
     

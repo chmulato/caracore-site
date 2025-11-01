@@ -68,6 +68,11 @@ Viabilizar autenticação e controle de acesso conforme requisitos de segurança
 - Garantir que os logs estejam protegidos e acessíveis apenas para administradores.
 - Registrar data, hora, usuário, IP e tipo de evento para cada ação relevante.
 - Utilizar mecanismos seguros de armazenamento e rotação de logs conforme boas práticas.
+- **Rotação de Logs Obrigatória:** Implementar rotação automática de logs considerando o limite de 10GB do Azure App Service B1:
+  - Comprimir logs com mais de 7 dias (formato gzip)
+  - Deletar logs com mais de 60 dias (configurável via `LOG_RETENTION_DAYS`)
+  - Monitorar uso de disco periodicamente
+  - Alertar quando disco atingir 80% de capacidade (8GB)
 
 ### 7. Atualização do Back-end Python no Azure
 
@@ -76,6 +81,12 @@ Viabilizar autenticação e controle de acesso conforme requisitos de segurança
 - Garantir que todas as dependências (ex: `requests`, `authlib`, etc.) estejam compatíveis com a imagem base do Azure.
 - Testar o deploy em ambiente de staging antes de produção.
 - Atualizar documentação técnica sempre que houver mudança na imagem ou versão do Python.
+- **Limitações do Plano B1 (Basic):**
+  - Armazenamento limitado a 10GB (incluindo logs, código e dependências)
+  - Always On não disponível (cold start de 45-60 segundos esperado)
+  - Configurar `WEBSITES_PORT=8000` obrigatório
+  - Startup command deve usar `$PORT` dinâmico: `gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app`
+  - Considerar upgrade para S1 (Standard) se precisar de Always On ou mais de 10GB
 
 ### 8. Segurança e Proteção de Dados
 

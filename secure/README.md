@@ -84,6 +84,48 @@ No portal Azure:
 - O deploy estatico deve consumir apenas client_id, authority, redirect_uri e scope.
 - Atualize os arquivos JSON em tempo de build se precisar alternar entre ambiente de teste e producao.
 
+## ATUALIZAÇÃO 01/11/2025 — Correções e recomendações importantes
+
+Em 01/11/2025 aplicamos correções críticas em produção e atualizamos o processo de configuração no repositório. Resumo das mudanças relevantes para a `Área 51`:
+
+- CORS: Corrigido problema de *preflight* (OPTIONS) no backend. Se o dashboard de auditoria não carregar, verifique se o endpoint `/api/admin/logs` tem handler OPTIONS e devolve 204.
+- Azure App Service: Obrigatório configurar `WEBSITES_PORT=8000` e usar `--bind=0.0.0.0:$PORT` no startup command do Gunicorn. Sem isso o Azure pode não rotear requisições para o processo WSGI.
+- Script de automação: `scripts/configure_azure_all_settings.ps1` foi criado para injetar todas as variáveis de ambiente no App Service a partir de um arquivo local `secrets.txt` (que deve ser gitignored).
+- Template de secrets: `secrets.txt.template` introduzido no repositório com todas as chaves/variáveis necessárias (use-o como referência, não contenha valores reais).
+
+Passos rápidos de verificação (úteis para o time):
+
+1. Testar preflight CORS (deve retornar 204):
+
+```powershell
+curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I
+```
+
+2. Verificar `WEBSITES_PORT` no App Settings:
+
+```powershell
+az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --query "[?name=='WEBSITES_PORT']"
+```
+
+3. Confirmar startup command usa `$PORT` dinâmico:
+
+```powershell
+az webapp config set --name caracore-backend --resource-group rg-caracore --startup-file "gunicorn --bind=0.0.0.0:`$PORT --timeout 600 app:app"
+```
+
+4. Usar o script de configuração (local):
+
+```powershell
+# Preencha secrets.txt com as variáveis (use secrets.txt.template como referência)
+.\scripts\configure_azure_all_settings.ps1
+```
+
+Recomendações de segurança rápidas:
+
+- Nunca commitar `secrets.txt` (o repositório já contém `secrets.txt.template`).
+- Se algum secret for comprometido, rotacione-o imediatamente no provedor e atualize as App Settings do Azure.
+- Registre cada rotação em changelog interno e atualize `docs/pendencias/STATUS-ATUAL.md` com a data da rotação.
+
 ## Desenvolvimento local
 
 Para testar em [http://localhost], crie variantes dos arquivos de configuracao (ex.: google.local.json) com URIs de redirecionamento locais e sirva o site via HTTPS (o PKCE requer contexto seguro). Em seguida, troque o caminho no script ou utilize um mecanismo de build que copie o arquivo correto para config/google.json antes do deploy.

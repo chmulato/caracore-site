@@ -73,7 +73,7 @@ describe('Autenticação Dual (Google + Entra ID)', () => {
             const oidcPaths = {
                 login: '/secure/index.html',
                 callback: '/secure/callback.html',
-                restrita: '/secure/restrita.html',
+                estrita: '/secure/restrita.html',
                 logout: '/secure/logout.html',
                 postLogoutLanding: '/index.html'
             };

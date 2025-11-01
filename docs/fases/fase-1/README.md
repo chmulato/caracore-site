@@ -9,8 +9,9 @@
 Implementar os fundamentos do sistema de autenticação OAuth 2.1 + OIDC com foco em segurança robusta para as páginas HTML da pasta `secure/`:
 
 ### Páginas Alvo:
+
 - **`secure/index.html`** - Implementar interface de login OAuth 2.1 + OIDC
-- **`secure/estrita.html`** - Garantir acesso apenas para usuários autenticados
+- **`secure/restrita.html`** - Garantir acesso apenas para usuários autenticados
 - **`secure/callback.html`** - Processar callback de autenticação OAuth
 - **`secure/privado/historia.html`** - Aplicar controle de acesso adicional
 
@@ -43,7 +44,7 @@ Implementar os fundamentos do sistema de autenticação OAuth 2.1 + OIDC com foc
 
 #### Tarefas:
 
-- [ ] Implementar verificação de autenticação para `estrita.html`
+- [ ] Implementar verificação de autenticação para `restrita.html`
 - [ ] Criar redirecionamento automático para login quando não autenticado
 - [ ] Implementar expiração automática de sessão/token
 - [ ] Implementar refresh token rotation conforme OAuth 2.1

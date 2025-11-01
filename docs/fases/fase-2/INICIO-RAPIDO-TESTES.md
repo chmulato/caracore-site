@@ -44,7 +44,7 @@ location.reload();
 
 ### **TESTE 1: Login + Notificação** ⭐ (5 min)
 
-1. ✅ Acessar: `http://localhost:5500/secure/estrita.html`
+1. ✅ Acessar: `http://localhost:5500/secure/restrita.html`
 2. ✅ Clicar em "Entrar com Google" ou "Entrar com Microsoft"
 3. ✅ Fazer login
 4. ✅ **VERIFICAR:** Notificação verde "Login Realizado" aparece no canto superior direito
@@ -273,7 +273,7 @@ console.log(typeof NotificationBridge); // deve ser 'object'
 // Testar manualmente
 NotificationBridge.showSuccess('login_success');
 
-// Se não funcionar, verificar ordem de scripts em estrita.html
+// Se não funcionar, verificar ordem de scripts em restrita.html
 // Ordem correta:
 // 1. notification-manager.js
 // 2. error-messages.js

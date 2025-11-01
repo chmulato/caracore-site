@@ -201,7 +201,7 @@ Documentados em `INICIO-RAPIDO-TESTES.md`:
 ### Páginas HTML
 
 - `secure/consent.html` - Tela de consentimento
-- `secure/estrita.html` - Integração completa (notificações + logout modal)
+- `secure/restrita.html` - Integração completa (notificações + logout modal)
 - `secure/admin-logs.html` - Integração completa
 
 ### Scripts Python

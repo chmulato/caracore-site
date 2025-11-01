@@ -100,7 +100,7 @@ Removido parâmetro inválido em `app.py` linha 1120
 
 - ⏳ **session-manager.js**: Testes manuais pendentes
 - ⏳ **consent.html**: Validação de UI pendente
-- ⏳ **estrita.html**: Teste de proteção pendente
+- ⏳ **restrita.html**: Teste de proteção pendente
 
 ## Recomendações
 

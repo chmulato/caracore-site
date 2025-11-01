@@ -95,7 +95,7 @@
 
 ## 📄 Páginas Já Integradas
 
-### ✅ secure/estrita.html
+### ✅ secure/restrita.html
 
 - ✅ Sistema de notificações carregado
 - ✅ LogoutModal carregado
@@ -330,7 +330,7 @@ NotificationBridge.dismissAll();
 | notification-bridge.js | ✅ 100% | 265 | API unificada |
 | session-manager.js | ✅ 100% | +83 | 8 pontos de integração |
 | logout-modal.js | ✅ 100% | 395 | Modal acessível |
-| estrita.html | ✅ 100% | - | Integrado |
+| restrita.html | ✅ 100% | - | Integrado |
 | admin-logs.html | ✅ 100% | - | Integrado |
 
 ---

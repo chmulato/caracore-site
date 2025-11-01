@@ -6,9 +6,10 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 
 - [Cara-Core Informática](#cara-core-informática)
   - [Índice](#índice)
-  - [Documentação Técnica](#documentação-técnica)
+  - [📚 Documentação Técnica](#-documentação-técnica)
+    - [🚀 Deploy e Operações (ATUALIZADO 01/11/2025)](#-deploy-e-operações-atualizado-01112025)
     - [Scripts Python](#scripts-python)
-    - [Configuração e Deploy](#configuração-e-deploy)
+    - [Configuração e Arquitetura](#configuração-e-arquitetura)
     - [Testes e Validação](#testes-e-validação)
     - [Sistema de Autenticação (OIDC)](#sistema-de-autenticação-oidc)
     - [Arquitetura e Soluções](#arquitetura-e-soluções)

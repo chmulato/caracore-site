@@ -168,7 +168,7 @@
     function redirectToRestricted() {
         console.log('🚀 Redirecionando para área restrita...');
         setTimeout(() => {
-            window.location.href = '/secure/estrita.html';
+            window.location.href = '/secure/restrita.html';
         }, 1500);
     }
     
@@ -230,7 +230,7 @@
             // Fallback: redirecionar mesmo assim
             const fallback = confirm('Erro no processamento automático. Deseja tentar acessar a área restrita?');
             if (fallback) {
-                window.location.href = '/secure/estrita.html';
+                window.location.href = '/secure/restrita.html';
             }
             return false;
         }

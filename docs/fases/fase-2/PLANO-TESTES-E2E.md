@@ -48,7 +48,8 @@ location.reload();
 **Pré-condição:** Usuário não autenticado
 
 **Passos:**
-1. Acessar `http://localhost:5500/secure/estrita.html`
+
+1. Acessar `http://localhost:5500/secure/restrita.html`
 2. Verificar redirecionamento para `/secure/index.html`
 3. Clicar no botão "Entrar com Google"
 4. Fazer login com credenciais Google
@@ -56,10 +57,11 @@ location.reload();
 6. Aguardar redirecionamento
 
 **Resultado Esperado:**
+
 - ✅ Redirecionamento para página de login
 - ✅ Botão "Entrar com Google" visível e clicável
 - ✅ Autenticação bem-sucedida no Google
-- ✅ Redirecionamento para `/secure/estrita.html`
+- ✅ Redirecionamento para `/secure/restrita.html`
 - ✅ **Notificação toast "Login Realizado" aparece** (verde, 3s)
 - ✅ Conteúdo protegido carregado
 - ✅ Botão "Encerrar sessão" visível
@@ -86,7 +88,8 @@ console.log('Provider:', localStorage.getItem('auth_provider'));
 **Pré-condição:** Usuário não autenticado
 
 **Passos:**
-1. Acessar `http://localhost:5500/secure/estrita.html`
+
+1. Acessar `http://localhost:5500/secure/restrita.html`
 2. Verificar redirecionamento para `/secure/index.html`
 3. Clicar no botão "Entrar com Microsoft"
 4. Fazer login com credenciais Microsoft (Entra ID)
@@ -94,16 +97,18 @@ console.log('Provider:', localStorage.getItem('auth_provider'));
 6. Aguardar redirecionamento
 
 **Resultado Esperado:**
+
 - ✅ Redirecionamento para página de login
 - ✅ Botão "Entrar com Microsoft" visível e clicável
 - ✅ Autenticação bem-sucedida no Microsoft
-- ✅ Redirecionamento para `/secure/estrita.html`
+- ✅ Redirecionamento para `/secure/restrita.html`
 - ✅ **Notificação toast "Login Realizado" aparece** (verde, 3s)
 - ✅ Conteúdo protegido carregado
 - ✅ Botão "Encerrar sessão" visível
 - ✅ Console sem erros JavaScript
 
 **Critério de Aceitação:**
+
 - [ ] Login completo em menos de 15 segundos (Microsoft pode ser mais lento)
 - [ ] Notificação "Login Realizado" exibida automaticamente
 - [ ] Token salvo no localStorage
@@ -154,9 +159,10 @@ fetch('https://api.caracore.com.br/api/consent/status', {
 
 ### **CT-04: Logout Local (Sair deste site)**
 
-**Pré-condição:** Usuário autenticado em `estrita.html`
+**Pré-condição:** Usuário autenticado em `restrita.html`
 
 **Passos:**
+
 1. Clicar no botão "Encerrar sessão"
 2. Verificar abertura do LogoutModal
 3. Ler as 2 opções apresentadas
@@ -164,6 +170,7 @@ fetch('https://api.caracore.com.br/api/consent/status', {
 5. Aguardar processamento
 
 **Resultado Esperado:**
+
 - ✅ Modal aparece com animação suave (fadeIn 0.2s)
 - ✅ 2 opções claramente diferenciadas:
   - "Sair deste site" (azul)
@@ -196,12 +203,13 @@ console.log('Token depois:', localStorage.getItem('auth_access_token'));
 
 ### **CT-05: Logout Federado (Sair de todas as contas - Google)**
 
-**Pré-condição:** Usuário autenticado com Google em `estrita.html`
+**Pré-condição:** Usuário autenticado com Google em `restrita.html`
 
 **Passos:**
+
 1. Abrir nova aba: `https://myaccount.google.com/`
 2. Verificar que está logado no Google
-3. Voltar para `estrita.html`
+3. Voltar para `restrita.html`
 4. Clicar no botão "Encerrar sessão"
 5. Verificar abertura do LogoutModal
 6. Clicar em **"Sair de todas as contas"** (logout federado)
@@ -229,12 +237,13 @@ console.log('Token depois:', localStorage.getItem('auth_access_token'));
 
 ### **CT-06: Logout Federado (Sair de todas as contas - Microsoft)**
 
-**Pré-condição:** Usuário autenticado com Microsoft em `estrita.html`
+**Pré-condição:** Usuário autenticado com Microsoft em `restrita.html`
 
 **Passos:**
+
 1. Abrir nova aba: `https://account.microsoft.com/`
 2. Verificar que está logado no Microsoft
-3. Voltar para `estrita.html`
+3. Voltar para `restrita.html`
 4. Clicar no botão "Encerrar sessão"
 5. Verificar abertura do LogoutModal
 6. Clicar em **"Sair de todas as contas"** (logout federado)
@@ -421,9 +430,10 @@ for (let i = 0; i < 50; i++) {
 
 ### **CT-12: Acessibilidade - Navegação por Teclado**
 
-**Pré-condição:** Usuário autenticado em `estrita.html`
+**Pré-condição:** Usuário autenticado em `restrita.html`
 
 **Passos:**
+
 1. **NÃO usar o mouse**
 2. Pressionar `Tab` repetidamente
 3. Navegar até o botão "Encerrar sessão"
@@ -435,6 +445,7 @@ for (let i = 0; i < 50; i++) {
 9. Pressionar `Enter` para confirmar
 
 **Resultado Esperado:**
+
 - ✅ Todos os elementos interativos acessíveis via `Tab`
 - ✅ Focus visível (outline azul)
 - ✅ LogoutModal abre com `Enter`
@@ -445,6 +456,7 @@ for (let i = 0; i < 50; i++) {
 - ✅ Notificações anunciadas (ARIA live region)
 
 **Critério de Aceitação:**
+
 - [ ] 100% navegável por teclado
 - [ ] Focus visível em todos os elementos
 - [ ] ESC fecha modal
@@ -458,6 +470,7 @@ for (let i = 0; i < 50; i++) {
 **Pré-condição:** NVDA ou JAWS instalado e ativo
 
 **Passos:**
+
 1. Ativar screen reader (NVDA: Ctrl+Alt+N)
 2. Navegar pela página com setas
 3. Ouvir anúncios de notificações
@@ -467,6 +480,7 @@ for (let i = 0; i < 50; i++) {
 7. Executar logout
 
 **Resultado Esperado:**
+
 - ✅ Notificações anunciadas automaticamente (aria-live="polite")
 - ✅ Erros anunciados com prioridade (aria-live="assertive")
 - ✅ LogoutModal anunciado: "Dialog: Encerrar Sessão"
@@ -477,6 +491,7 @@ for (let i = 0; i < 50; i++) {
 - ✅ Estado do modal (aberto/fechado) anunciado
 
 **Critério de Aceitação:**
+
 - [ ] Todas as notificações anunciadas
 - [ ] Modal anunciado corretamente
 - [ ] Botões descritos claramente
@@ -489,11 +504,13 @@ for (let i = 0; i < 50; i++) {
 **Ambiente:** Windows 10/11, Chrome 120+
 
 **Passos:**
+
 1. Executar todos os casos de teste CT-01 a CT-13
 2. Verificar console (F12)
 3. Verificar performance (Lighthouse)
 
 **Resultado Esperado:**
+
 - ✅ Todos os testes passam
 - ✅ Sem erros JavaScript no console
 - ✅ Sem avisos de segurança
@@ -502,6 +519,7 @@ for (let i = 0; i < 50; i++) {
 - ✅ Animações suaves (60fps)
 
 **Critério de Aceitação:**
+
 - [ ] 100% funcional no Chrome
 - [ ] Performance otimizada
 - [ ] Sem erros críticos
@@ -513,11 +531,13 @@ for (let i = 0; i < 50; i++) {
 **Ambiente:** Windows 10/11, Firefox 120+
 
 **Passos:**
+
 1. Executar todos os casos de teste CT-01 a CT-13
 2. Verificar console (F12)
 3. Verificar comportamento específico do Firefox
 
 **Resultado Esperado:**
+
 - ✅ Todos os testes passam
 - ✅ Sem erros JavaScript no console
 - ✅ CSS funciona corretamente (prefix -moz-)
@@ -525,6 +545,7 @@ for (let i = 0; i < 50; i++) {
 - ✅ CORS funcionando
 
 **Critério de Aceitação:**
+
 - [ ] 100% funcional no Firefox
 - [ ] Comportamento idêntico ao Chrome
 - [ ] Sem erros críticos
@@ -536,8 +557,11 @@ for (let i = 0; i < 50; i++) {
 **Pré-condição:** Usuário autenticado
 
 **Passos:**
+
 1. Abrir console do navegador
+
 2. Executar rapidamente:
+
 ```javascript
 NotificationBridge.showSuccess('login_success');
 NotificationBridge.showError('invalid_token');
@@ -549,6 +573,7 @@ NotificationBridge.showWarning('logout_partial');
 ```
 
 **Resultado Esperado:**
+
 - ✅ Máximo de 5 notificações visíveis simultaneamente
 - ✅ Notificações mais antigas removidas automaticamente
 - ✅ Fila gerenciada corretamente (FIFO)
@@ -558,6 +583,7 @@ NotificationBridge.showWarning('logout_partial');
 - ✅ Todas empilhadas verticalmente com gap de 12px
 
 **Critério de Aceitação:**
+
 - [ ] Máximo 5 notificações por vez
 - [ ] Fila gerenciada (FIFO)
 - [ ] Layout não quebra
@@ -570,18 +596,22 @@ NotificationBridge.showWarning('logout_partial');
 **Pré-condição:** Usuário autenticado
 
 **Passos:**
+
 1. Verificar idioma atual no console:
+
 ```javascript
 console.log('Idioma:', ErrorMessages.getLanguage());
 ```
 
 2. Testar notificação em pt-BR:
+
 ```javascript
 NotificationBridge.showError('invalid_token');
 // Esperado: "Token Inválido" / "Sua sessão expirou..."
 ```
 
 3. Alterar para inglês:
+
 ```javascript
 ErrorMessages.setLanguage('en-US');
 NotificationBridge.showError('invalid_token');
@@ -589,11 +619,13 @@ NotificationBridge.showError('invalid_token');
 ```
 
 4. Voltar para português:
+
 ```javascript
 ErrorMessages.setLanguage('pt-BR');
 ```
 
 **Resultado Esperado:**
+
 - ✅ Idioma detectado automaticamente (navegador)
 - ✅ pt-BR: "Token Inválido" / "Sua sessão expirou ou o token é inválido..."
 - ✅ en-US: "Invalid Token" / "Your session has expired or the token is invalid..."
@@ -601,6 +633,7 @@ ErrorMessages.setLanguage('pt-BR');
 - ✅ Todas as mensagens traduzidas
 
 **Critério de Aceitação:**
+
 - [ ] Auto-detecção funciona
 - [ ] pt-BR completo
 - [ ] en-US completo
@@ -613,6 +646,7 @@ ErrorMessages.setLanguage('pt-BR');
 **Pré-condição:** Navegador com DevTools
 
 **Passos:**
+
 1. Abrir DevTools (F12)
 2. Ativar modo responsivo (Ctrl+Shift+M)
 3. Testar em resoluções:
@@ -624,6 +658,7 @@ ErrorMessages.setLanguage('pt-BR');
 6. Testar touch (cliques)
 
 **Resultado Esperado:**
+
 - ✅ Notificações adaptam para largura da tela
 - ✅ Container: `max-width: calc(100% - 32px)`
 - ✅ Notificações centralizadas em mobile
@@ -633,6 +668,7 @@ ErrorMessages.setLanguage('pt-BR');
 - ✅ Sem scroll horizontal
 
 **Critério de Aceitação:**
+
 - [ ] Funciona em 375px (mínimo)
 - [ ] Layout responsivo
 - [ ] Touch-friendly
@@ -666,6 +702,7 @@ ErrorMessages.setLanguage('pt-BR');
 | CT-18 | Responsividade | ⬜ | ⬜ | 🔲 | |
 
 **Legenda:**
+
 - ✅ Passou
 - ❌ Falhou
 - ⚠️ Parcial
@@ -719,6 +756,7 @@ ErrorMessages.setLanguage('pt-BR');
 ### Dicas para Testes Eficientes
 
 1. **Limpar estado entre testes:**
+
 ```javascript
 localStorage.clear();
 sessionStorage.clear();
@@ -726,10 +764,12 @@ location.reload();
 ```
 
 2. **Verificar logs do backend:**
+
 - Acessar `/secure/admin-logs.html`
 - Filtrar por eventos relevantes
 
 3. **Usar console para debug:**
+
 ```javascript
 // Verificar estado
 console.table({
@@ -741,10 +781,12 @@ console.table({
 ```
 
 4. **Testar em janela anônima:**
+
 - Sem cache ou cookies anteriores
 - Simula primeiro acesso
 
 5. **Screenshots e vídeos:**
+
 - Capturar evidências de sucesso/falha
 - Facilita troubleshooting
 

@@ -294,7 +294,7 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 
 - ✅ Página de login (`secure/index.html`)
 - ✅ Callback handler (`secure/callback.html`)
-- ✅ Página segura (`secure/estrita.html`)
+- ✅ Página segura (`secure/restrita.html`)
 - ✅ Logout (`secure/logout.html`)
 - ✅ CSS/JS centralizado com versionamento
 - ✅ Tratamento de erros robusto

@@ -95,25 +95,25 @@ Em 01/11/2025 aplicamos correções críticas em produção e atualizamos o proc
 
 Passos rápidos de verificação (úteis para o time):
 
-1. Testar preflight CORS (deve retornar 204):
+1.Testar preflight CORS (deve retornar 204):
 
 ```powershell
 curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I
 ```
 
-2. Verificar `WEBSITES_PORT` no App Settings:
+2.Verificar `WEBSITES_PORT` no App Settings:
 
 ```powershell
 az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --query "[?name=='WEBSITES_PORT']"
 ```
 
-3. Confirmar startup command usa `$PORT` dinâmico:
+3.Confirmar startup command usa `$PORT` dinâmico:
 
 ```powershell
 az webapp config set --name caracore-backend --resource-group rg-caracore --startup-file "gunicorn --bind=0.0.0.0:`$PORT --timeout 600 app:app"
 ```
 
-4. Usar o script de configuração (local):
+4.Usar o script de configuração (local):
 
 ```powershell
 # Preencha secrets.txt com as variáveis (use secrets.txt.template como referência)

@@ -26,8 +26,19 @@
     };
 
     // Inicialização
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
         console.log('[AuditDashboard] Inicializando...');
+        
+        // Verificar autenticação antes de carregar
+        const isAuthenticated = await checkAuthentication();
+        if (!isAuthenticated) {
+            console.warn('[AuditDashboard] Usuário não autenticado. Redirecionando...');
+            showError('Você precisa estar autenticado para acessar o dashboard. Redirecionando...');
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 2000);
+            return;
+        }
         
         // Configurar data inicial (hoje)
         document.getElementById('dateFilter').value = state.filters.date;
@@ -38,6 +49,51 @@
         // Carregar logs iniciais
         loadLogs();
     });
+
+    /**
+     * Verificar autenticação do usuário
+     */
+    async function checkAuthentication() {
+        try {
+            // Verificar se SessionManager está disponível
+            if (typeof SessionManager !== 'undefined' && SessionManager.isSessionValid) {
+                return SessionManager.isSessionValid();
+            }
+            
+            // Fallback: verificar se há tokens no localStorage
+            const accessToken = localStorage.getItem('access_token');
+            const idToken = localStorage.getItem('id_token');
+            
+            if (!accessToken && !idToken) {
+                console.warn('[AuditDashboard] Nenhum token encontrado');
+                return false;
+            }
+            
+            // Tentar validar sessão no backend
+            const response = await fetch(`${API_BASE_URL}/auth/validate`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken || idToken}`
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    access_token: accessToken,
+                    id_token: idToken
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                return data.valid === true;
+            }
+            
+            return false;
+        } catch (error) {
+            console.error('[AuditDashboard] Erro ao verificar autenticação:', error);
+            return false;
+        }
+    }
 
     /**
      * Configurar event listeners
@@ -90,10 +146,14 @@
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                credentials: 'include'  // Incluir cookies de sessão (auth token)
             });
             
             if (!response.ok) {
+                if (response.status === 401) {
+                    throw new Error('Não autorizado. Sua sessão pode ter expirado. Por favor, faça login novamente.');
+                }
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }
             

@@ -45,6 +45,28 @@
                             <i class="bi bi-clipboard-data me-2"></i>Dashboard de Auditoria
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
+                        
+                        <hr class="my-3">
+                        
+                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
+                            <i class="bi bi-file-earmark-text me-1"></i> Documentação Nova
+                        </div>
+                        <a class="nav-link" href="../docs/ATUALIZACAO_DOCUMENTACAO_01NOV2025.md" target="_blank">
+                            <i class="bi bi-journal-text me-2"></i>Atualização 01/11/2025
+                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+                        <a class="nav-link" href="../docs/AZURE_DEPLOY.md" target="_blank">
+                            <i class="bi bi-cloud-upload me-2"></i>Guia Deploy Azure
+                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+                        <a class="nav-link" href="../secrets.txt.template" target="_blank">
+                            <i class="bi bi-key me-2"></i>Template Secrets
+                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+                        <a class="nav-link" href="../scripts/configure_azure_all_settings.ps1" target="_blank">
+                            <i class="bi bi-terminal me-2"></i>Script Configuração
+                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
                     </nav>
                 </div>
 
@@ -53,6 +75,25 @@
                     <!-- Visão Geral -->
                     <section id="visao-geral">
                         <h2 class="section-title">🏠 Visão Geral</h2>
+                        
+                        <!-- Alerta de Atualização Recente -->
+                        <div class="alert alert-warning border-warning" style="border-left: 4px solid #ffc107;">
+                            <div class="d-flex align-items-center mb-2">
+                                <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
+                                <strong class="fs-5">🔥 ATUALIZAÇÃO 01/11/2025 - Correções Críticas em Produção</strong>
+                            </div>
+                            <p class="mb-2">Aplicamos correções importantes no backend Azure e sistema de configuração:</p>
+                            <ul class="mb-2">
+                                <li><strong>CORS Fix:</strong> Adicionado handler OPTIONS para preflight requests no endpoint <code>/api/admin/logs</code></li>
+                                <li><strong>Azure Port Config:</strong> Configurado <code>WEBSITES_PORT=8000</code> e startup command com <code>$PORT</code> dinâmico</li>
+                                <li><strong>Script de Automação:</strong> Criado <code>configure_azure_all_settings.ps1</code> para configuração rápida de 25+ variáveis</li>
+                                <li><strong>Template de Secrets:</strong> Novo arquivo <code>secrets.txt.template</code> com todas as variáveis necessárias</li>
+                            </ul>
+                            <p class="mb-0">
+                                <a href="#fase-3-update" class="alert-link fw-bold">Ver detalhes da Fase 3 ↓</a> | 
+                                <a href="../docs/ATUALIZACAO_DOCUMENTACAO_01NOV2025.md" class="alert-link" target="_blank">Relatório completo <i class="bi bi-box-arrow-up-right small"></i></a>
+                            </p>
+                        </div>
                         
                         <p class="lead">
                             A <strong>Área 51</strong> é um sistema de autenticação enterprise implementando 
@@ -69,20 +110,23 @@
                         <div class="row mt-4">
                             <div class="col-md-4">
                                 <div class="stat-card">
-                                    <h3>2.500+</h3>
+                                    <h3>3.000+</h3>
                                     <p>Linhas de Código</p>
+                                    <small class="text-muted">+405 linhas (01/11)</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="stat-card">
                                     <h3>100%</h3>
                                     <p>Taxa de Sucesso</p>
+                                    <small class="text-muted">Dashboard funcional</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="stat-card">
-                                    <h3>29</h3>
+                                    <h3>33</h3>
                                     <p>Testes Automatizados</p>
+                                    <small class="text-muted">+4 validação (01/11)</small>
                                 </div>
                             </div>
                         </div>
@@ -281,11 +325,33 @@
                                     <li>Validação: 0 segredos expostos</li>
                                 </ul>
                             </div>
+
+                            <div class="timeline-item" id="fase-3-update">
+                                <h4>Fase 3 - Correções Críticas e Automação <span class="badge bg-success">✅ Concluído</span></h4>
+                                <p><strong>Data:</strong> 01/11/2025</p>
+                                <ul>
+                                    <li><strong>Dashboard de Auditoria:</strong> 100% funcional em produção (15+ eventos registrados)</li>
+                                    <li><strong>CORS Preflight Fix:</strong> Adicionado handler OPTIONS para <code>/api/admin/logs</code> (status 204)</li>
+                                    <li><strong>Azure App Service Fix:</strong> Configurado <code>WEBSITES_PORT=8000</code> + startup command com <code>$PORT</code> dinâmico</li>
+                                    <li><strong>Script de Automação:</strong> <code>scripts/configure_azure_all_settings.ps1</code> (78 linhas, configura 25+ variáveis)</li>
+                                    <li><strong>Template de Configuração:</strong> <code>secrets.txt.template</code> com todas as env vars necessárias</li>
+                                    <li><strong>Documentação Completa:</strong> +405 linhas em STATUS-ATUAL.md, AZURE_DEPLOY.md e guia de troubleshooting</li>
+                                    <li><strong>Merge para Main:</strong> Commit <code>df75959</code> com todas as novidades entregue</li>
+                                </ul>
+                                <div class="alert alert-info mt-2">
+                                    <strong>Troubleshooting Quick Reference:</strong>
+                                    <ul class="mb-0 mt-2">
+                                        <li>Testar CORS OPTIONS: <code>curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I</code></li>
+                                        <li>Verificar WEBSITES_PORT: <code>az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --query "[?name=='WEBSITES_PORT']"</code></li>
+                                        <li>Configurar variáveis: <code>.\scripts\configure_azure_all_settings.ps1</code> (requer <code>secrets.txt</code> preenchido)</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="alert alert-success mt-4">
                             <i class="bi bi-check-circle-fill me-2"></i>
-                            <strong>Todas as fases concluídas!</strong> Sistema 100% operacional e pronto para produção.
+                            <strong>Todas as fases concluídas!</strong> Sistema 100% operacional, testado em produção e com troubleshooting documentado.
                         </div>
                     </section>
 
@@ -311,8 +377,12 @@
                                             <td class="text-end">50+ arquivos</td>
                                         </tr>
                                         <tr>
+                                            <td><strong>Scripts PowerShell</strong></td>
+                                            <td class="text-end">78 linhas <span class="badge bg-info">Novo</span></td>
+                                        </tr>
+                                        <tr>
                                             <td><strong>Total</strong></td>
-                                            <td class="text-end"><strong>~4.000 linhas</strong></td>
+                                            <td class="text-end"><strong>~4.500 linhas</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -328,6 +398,10 @@
                                         <tr>
                                             <td><strong>Testes Deploy Azure</strong></td>
                                             <td class="text-end">6/6 ✅</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Validação Dashboard</strong></td>
+                                            <td class="text-end">4/4 ✅ <span class="badge bg-info">01/11</span></td>
                                         </tr>
                                         <tr>
                                             <td><strong>Security Headers</strong></td>
@@ -379,10 +453,12 @@
                                     </div>
                                     <div class="card-body">
                                         <p><strong>URL:</strong> <code>caracore-backend.azurewebsites.net</code></p>
-                                        <p><strong>Runtime:</strong> Python 3.11 (Linux Container)</p>
-                                        <p><strong>Plan:</strong> Basic B1</p>
+                                        <p><strong>Runtime:</strong> Python 3.11.13 + Gunicorn 23.0.0</p>
+                                        <p><strong>Plan:</strong> Basic B1 ($13.14/mês)</p>
                                         <p><strong>Region:</strong> Brazil South</p>
-                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Online</span></p>
+                                        <p><strong>Port:</strong> <code>WEBSITES_PORT=8000</code> <span class="badge bg-info">01/11</span></p>
+                                        <p><strong>Startup:</strong> <code>gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app</code></p>
+                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Online (100% funcional)</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -393,13 +469,31 @@
                                     </div>
                                     <div class="card-body">
                                         <p><strong>URL:</strong> <code>www.caracore.com.br</code></p>
-                                        <p><strong>Branch:</strong> main</p>
+                                        <p><strong>Branch:</strong> main (commit <code>df75959</code>)</p>
                                         <p><strong>SSL:</strong> Automático (GitHub)</p>
                                         <p><strong>CDN:</strong> Global</p>
-                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-warning text-dark">⏳ Pendente Merge</span></p>
+                                        <p><strong>Dashboard:</strong> <a href="/secure/admin-logs.html" target="_blank">admin-logs.html</a> <span class="badge bg-success">100%</span></p>
+                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Produção (15+ eventos)</span></p>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="alert alert-success mt-4">
+                            <h4 class="alert-heading"><i class="bi bi-terminal me-2"></i>Configuração Automatizada (Novo 01/11)</h4>
+                            <p>Criado script PowerShell para configurar todas as 25+ variáveis de ambiente no Azure:</p>
+                            <ol class="mb-2">
+                                <li>Copie <code>secrets.txt.template</code> para <code>secrets.txt</code></li>
+                                <li>Preencha com valores reais (nunca commitar!)</li>
+                                <li>Execute: <code>.\scripts\configure_azure_all_settings.ps1</code></li>
+                                <li>Aguarde ~2 minutos (configura 25 variáveis automaticamente)</li>
+                            </ol>
+                            <p class="mb-0">
+                                <strong>Arquivos:</strong> 
+                                <a href="../secrets.txt.template" target="_blank" class="alert-link">secrets.txt.template</a> | 
+                                <a href="../scripts/configure_azure_all_settings.ps1" target="_blank" class="alert-link">configure_azure_all_settings.ps1</a> | 
+                                <a href="../docs/AZURE_DEPLOY.md" target="_blank" class="alert-link">Guia completo</a>
+                            </p>
                         </div>
 
                         <h3 class="h5 mt-4">Endpoints Públicos</h3>

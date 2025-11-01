@@ -215,6 +215,78 @@ Este documento lista todos os scripts Python do repositório CaraCore, suas fun�
 
 ## Scripts de Deploy e Infraestrutura
 
+### `scripts/deploy_production.py` **[NOVO - Fase 3 CORE]**
+
+**Função:** Script Python de deploy automatizado para produção
+
+- **Verificações de Segurança:**
+  - Verifica Azure CLI instalado e autenticado
+  - Valida branch Git atual (avisa se não for main)
+  - Detecta mudanças não commitadas
+  - Execução opcional de testes via pytest
+
+- **Workflow de Deploy:**
+  1. Criar diretório de backups automaticamente
+  2. Criar pacote ZIP excluindo __pycache__, logs, .env, .git
+  3. Deploy via `az webapp deployment source config-zip`
+  4. Aguardar 30s para warm-up do backend
+  5. Health check (GET /health, valida status=ok)
+  6. Teste de autenticação (GET /api/admin/logs, espera 401)
+  7. Cleanup de arquivos temporários
+  8. Log estruturado em JSON (backend/logs/deploys.jsonl)
+
+- **Parâmetros:**
+  - `--skip-tests`: Pular execução de testes pytest
+  - `--force`: Forçar deploy mesmo com avisos (branch, uncommitted)
+  - `--message`: Mensagem customizada do deploy
+
+- **Logs de Deploy:**
+  - Timestamp, branch, commit, commit message
+  - Duração do deploy
+  - Localização do backup
+
+- **Output:**
+  - Colorizado (ANSI) para melhor visualização
+  - URLs de produção (backend, health, dashboard)
+  - Comandos sugeridos para próximos passos
+
+- **Relacionamentos:** Usa subprocess (Azure CLI, Git), zipfile, requests (health check), JSON logging
+
+### `scripts/rollback.py` **[NOVO - Fase 3 CORE]**
+
+**Função:** Script Python de rollback para versão anterior em emergência
+
+- **Modos de Rollback:**
+  - `--latest`: Reverte para último backup disponível
+  - `--backup <arquivo>`: Reverte para backup específico
+  - `--commit <hash>`: Reverte para commit Git específico (cria branch temporária)
+  - `--list`: Lista backups e deploys disponíveis
+
+- **Segurança:**
+  - Confirmação obrigatória (digitar "ROLLBACK")
+  - Backup de segurança antes de reverter (pre_rollback_*.zip)
+  - Validação de existência de backup/commit
+
+- **Workflow de Rollback:**
+  1. Listar backups disponíveis (backups/*.zip)
+  2. Confirmar operação com usuário
+  3. Criar backup de segurança do estado atual
+  4. Deploy do backup selecionado via config-zip
+  5. Aguardar 30s para warm-up
+  6. Health check pós-rollback
+
+- **Integração com Logs:**
+  - Lê backend/logs/deploys.jsonl
+  - Mostra últimos 10 deploys com timestamp, branch, commit, mensagem
+  - Correlaciona backups com deploys
+
+- **Output:**
+  - Interface colorizada (vermelho para destaque de perigo)
+  - Lista formatada de backups e deploys
+  - URLs de verificação pós-rollback
+
+- **Relacionamentos:** Usa subprocess (Azure CLI, Git), requests (health check), importa funções de deploy_production.py para rollback via commit
+
 ### `infra_to_azure.py`
 
 **Função:** Provisiona infraestrutura Azure para CaraCore
@@ -641,6 +713,8 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 - `deploy_helpers.py`
 - `checklist_infra.py`
 - `scripts/package_backend_with_docker.py`
+- `scripts/deploy_production.py` **[NOVO - Fase 3 CORE]**
+- `scripts/rollback.py` **[NOVO - Fase 3 CORE]**
 
 ### **Migration & Organization:**
 
@@ -702,25 +776,45 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 - Item 6 (Auditoria): 95% concluído
 - Item 7 (Backend Azure): 90% concluído
 - Item 9 (Testes): 30% concluído
-- **Progresso Total: 70%**
+- **Progresso Fase 3 Total: 70%**
+- **Progresso Fase 3 CORE: 30%** (VERSOES.md ✅, deploy_production.py ✅, rollback.py ✅)
 
-**Pendências:**
+**Fase 3 CORE - Scripts de Automação:**
+
+- ✅ `docs/VERSOES.md` - Documentação de versões de dependências (Python, Flask, Gunicorn, etc.)
+- ✅ `scripts/deploy_production.py` - Deploy automatizado Python (350+ linhas)
+- ✅ `scripts/rollback.py` - Rollback automatizado Python (350+ linhas)
+- ⏳ `scripts/deploy_staging.py` - Deploy para staging (pendente)
+- ⏳ Ambiente staging no Azure (pendente)
+- ⏳ Azure Monitor + Application Insights (pendente)
+- ⏳ Consolidação de documentação (pendente)
+
+**Pendências Fase 3:**
 
 - Rotação automática de logs (4h)
 - Testes E2E automatizados (3 dias)
 - CI/CD Pipeline (GitHub Actions)
 
+**Pendências Fase 3 CORE (10h restantes):**
+
+- Deploy staging script (2h)
+- Ambiente staging Azure (2h)
+- Azure Monitor configuração (2h)
+- Consolidação documentação (2h)
+- Atualizar STATUS-ATUAL.md (30min)
+
 ---
 
-**Total de Scripts Python Ativos:** 51 arquivos (+2 novos)
+**Total de Scripts Python Ativos:** 53 arquivos (+4 novos: VERSOES.md, deploy_production.py, rollback.py)
 **Scripts Arquivados:** 9 arquivos em `arquivo_migracao_2025_10_11/`
 **Scripts Removidos:** 7 scripts de teste da arquitetura anterior
 **Arquitetura:** Simplificada (App Service Settings, sem Key Vault)
 **Backend:** OAuth 2.1 + OIDC com PKCE, rate limiting, security headers, **auditoria completa**
-**Deploy:** Azure CLI com validação automática de configurações
+**Deploy:** Azure CLI com validação automática + **scripts Python automatizados**
+**Rollback:** **Sistema de rollback automatizado com backups e commits Git**
 **CSS/JS:** Centralizado em pastas /secure/css/ e /secure/js/ (out/2025)
 **Testes:** Framework unittest para validação + testes E2E de auditoria
 **Auditoria:** Sistema de logs JSONL com dashboard avançado **[Fase 3]**
-**Python Version:** 3.11 (Azure App Service)
+**Python Version:** 3.11 (Azure App Service), 3.13.7 (local dev)
 **WSGI Server:** Gunicorn com timeout 600s
-**Última Atualização:** Campo Largo, 31 de outubro de 2025 - Fase 3 (70% concluída)
+**Última Atualização:** Campo Largo, 01 de novembro de 2025 - Fase 3 (70%), Fase 3 CORE (30%)

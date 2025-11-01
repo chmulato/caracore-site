@@ -567,6 +567,7 @@ Os seguintes scripts foram completamente removidos por incompatibilidade com a n
 - `executar_testes_azure_simples.py.deprecated` - Versão simplificada de execução de testes
 
 **Razão do Arquivamento:** Incompatibilidade com a nova arquitetura simplificada. Substituídos por:
+
 - `teste_centralizacao_frontend.py` - Testes unitários para centralização de frontend
 - `teste_servidor_simplificado.py` - Testes de inicialização sem dependência Docker
 
@@ -806,7 +807,6 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 ---
 
 **Total de Scripts Python Ativos:** 53 arquivos (+4 novos: VERSOES.md, deploy_production.py, rollback.py)
-**Scripts Arquivados:** 9 arquivos em `arquivo_migracao_2025_10_11/`
 **Scripts Removidos:** 7 scripts de teste da arquitetura anterior
 **Arquitetura:** Simplificada (App Service Settings, sem Key Vault)
 **Backend:** OAuth 2.1 + OIDC com PKCE, rate limiting, security headers, **auditoria completa**
@@ -817,4 +817,4 @@ caracore-backend.azurewebsites.net/health (App Service Settings)
 **Auditoria:** Sistema de logs JSONL com dashboard avançado **[Fase 3]**
 **Python Version:** 3.11 (Azure App Service), 3.13.7 (local dev)
 **WSGI Server:** Gunicorn com timeout 600s
-**Última Atualização:** Campo Largo, 01 de novembro de 2025 - Fase 3 (70%), Fase 3 CORE (30%)
+**Última Atualização:** Campo Largo, Sábado, 01 de novembro de 2025 - Fase 3 (70%), Fase 3 CORE (30%)

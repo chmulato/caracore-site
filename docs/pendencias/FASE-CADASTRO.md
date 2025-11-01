@@ -40,6 +40,7 @@ Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 5
 - [ ] **1.1** Criar diretório `backend/data/`
 - [ ] **1.2** Criar arquivo `backend/data/authorized_users.json`
 - [ ] **1.3** Definir estrutura JSON completa:
+
   ```json
   {
     "version": "1.0",
@@ -48,6 +49,7 @@ Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 5
     "pending_requests": [...]
   }
   ```
+
 - [ ] **1.4** Adicionar usuários iniciais (pelo menos 1 admin)
 
 **Entregável:** Arquivo JSON com estrutura definida e funcional
@@ -247,9 +249,11 @@ Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 5
 
 - [ ] **7.4** Modificar `area51/wiki/index.html`
   - Adicionar link na sidebar admin:
+  
     ```html
     <li><a href="/secure/admin-users.html">👥 Gerenciar Usuários</a></li>
     ```
+  
   - Adicionar ícone e tooltip
   - Validar permissão admin antes de exibir
 
@@ -417,7 +421,7 @@ Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 5
   - Documentar processo
 
 - [ ] **12.5** Estabelecer canais de suporte para usuários
-  - Email: suporte@caracore.com.br
+  - Email: [suporte@caracore.com.br]
   - Ticket system (GitHub Issues)
   - SLA: 24h úteis
 
@@ -456,6 +460,7 @@ Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 5
 ### Arquivos a Criar/Modificar
 
 **Novos Arquivos (13):**
+
 1. `backend/data/authorized_users.json`
 2. `backend/authorization.py`
 3. `secure/access-denied.html`
@@ -471,6 +476,7 @@ Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 5
 13. `docs/SUPPORT-SLA.md`
 
 **Arquivos Modificados (5):**
+
 1. `backend/app.py` (+150 linhas)
 2. `secure/callback.html` (+ verificação)
 3. `secure/restrita.html` (+ verificação)
@@ -549,17 +555,20 @@ Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 5
 ## 🎯 PRÓXIMOS PASSOS IMEDIATOS
 
 ### Passo 1: Preparar Ambiente
+
 - [ ] Confirmar branch `fase-01` ativa
 - [ ] Garantir backend rodando localmente
 - [ ] Verificar que OAuth está funcional
 
 ### Passo 2: Iniciar Item 13 (Manhã - 4h)
+
 - [ ] Criar `backend/data/` e `authorized_users.json`
 - [ ] Criar `backend/authorization.py` com 5 funções
 - [ ] Adicionar 5 endpoints em `backend/app.py`
 - [ ] Testar endpoints com Postman/curl
 
 ### Passo 3: Continuar Item 13 (Tarde - 4h)
+
 - [ ] Criar `secure/access-denied.html`
 - [ ] Criar `secure/request-access.html`
 - [ ] Criar `secure/admin-users.html`

@@ -67,7 +67,7 @@
 
 **Tarefas:**
 
-- [x] Implementar verificação de autenticação para `estrita.html`
+- [x] Implementar verificação de autenticação para `restrita.html`
 - [x] Criar redirecionamento automático para login quando não autenticado
 - [x] Implementar expiração automática de sessão/token
 - [x] Implementar refresh token rotation conforme OAuth 2.1
@@ -81,7 +81,7 @@
 - Timeout de inatividade (1 hora)
 - Logout com revogação de token
 - Monitoramento de atividade do usuário
-- Integrado em `estrita.html` (página protegida)
+- Integrado em `restrita.html` (página protegida)
 
 ---
 

@@ -5,18 +5,21 @@ Este diretório contém a organização por fases do desenvolvimento do sistema 
 ## Páginas HTML em Escopo
 
 ### Principais:
+
 - **`secure/index.html`** - Página de login/entrada
-- **`secure/estrita.html`** - Conteúdo protegido principal
+- **`secure/restrita.html`** - Conteúdo protegido principal
 - **`secure/callback.html`** - Processamento de callback OAuth
 - **`secure/logout.html`** - Página de logout
 - **`secure/admin-logs.html`** - Logs administrativos
 
 ### Adicionais:
+
 - **`secure/privado/historia.html`** - Conteúdo protegido adicional
 
 ## Estrutura das Fases
 
 ### 📁 [Fase 1](./fase-1/) - Autenticação Básica e Segurança (Semanas 1-2)
+
 - **Itens:** 1, 2 e 8
 - **Foco:** Autenticação OAuth 2.1 + OIDC, Controle de Sessão e Segurança
 - **Duração:** 2 semanas

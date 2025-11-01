@@ -7,7 +7,7 @@ Este documento descreve a implementacao do fluxo OpenID Connect (OIDC) utilizado
 ```text
 secure/
 ├── index.html        # Tela de consentimento e escolha do provedor
-├── estrita.html     # Conteudo protegido; exige sessao valida
+├── restrita.html     # Conteudo protegido; exige sessao valida
 ├── logout.html       # Mensagem de encerramento e limpeza local
 ├── auth.js           # Modulo central de autenticacao (window.CaraCoreOIDC)
 ├── config/
@@ -26,8 +26,8 @@ Arquivos auxiliares antigos permanecem na pasta para referencia historica, mas o
 3. Ao clicar em **Autorizar com Google** ou **Autorizar com Microsoft**, a pagina chama CaraCoreOIDC.login(provider) e redireciona para o provedor selecionado.
 4. Depois do consentimento, o provedor devolve o usuario para index.html com os parametros code e state.
 5. CaraCoreOIDC.handleSigninCallback() troca o code pelo token utilizando o fluxo Authorization Code com PKCE (o oidc-client-ts gera e valida o code_verifier nos bastidores).
-6. O perfil e o access token sao armazenados em sessionStorage; a pessoa e enviada para estrita.html.
-7. estrita.html executa CaraCoreOIDC.requireAuth() e so libera o conteudo se o token estiver valido.
+6. O perfil e o access token sao armazenados em sessionStorage; a pessoa e enviada para restrita.html.
+7. restrita.html executa CaraCoreOIDC.requireAuth() e so libera o conteudo se o token estiver valido.
 8. logout.html remove tokens locais (logoutLocal) e apresenta a confirmacao. Caso o signoutRedirect tenha sido concluido, o provedor redireciona para essa mesma pagina.
 
 ## Configuracao dos provedores

@@ -11,8 +11,9 @@
 Implementar sistema de auditoria, atualizar backend para Azure e criar suite completa de testes automatizados focado nas páginas HTML da pasta `secure/`:
 
 ### Páginas Alvo:
+
 - **`secure/index.html`** - Implementar auditoria de tentativas de login
-- **`secure/estrita.html`** - Registrar acessos e eventos de sessão
+- **`secure/restrita.html`** - Registrar acessos e eventos de sessão
 - **`secure/callback.html`** - Auditar processamento de callbacks OAuth
 - **`secure/logout.html`** - Registrar eventos de logout
 - **`secure/admin-logs.html`** - Configurar visualização de logs de auditoria

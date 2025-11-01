@@ -8,7 +8,7 @@
 
 ### 1. Correção de Nomenclatura
 
-- ✅ **Renomeado:** `secure/estrita.html` → `secure/estrita.html`
+- ✅ **Renomeado:** `secure/restrita.html` → `secure/restrita.html`
 - ✅ **Atualizadas todas as referências** nos documentos de fase
 
 ### 2. Foco Específico nas Páginas HTML da Pasta `secure/`
@@ -16,7 +16,7 @@
 #### Páginas Principais em Escopo:
 
 - **`secure/index.html`** - Página de login/entrada da área restrita
-- **`secure/estrita.html`** - Conteúdo protegido principal
+- **`secure/restrita.html`** - Conteúdo protegido principal
 - **`secure/callback.html`** - Página de callback OAuth
 - **`secure/logout.html`** - Página de logout
 - **`secure/admin-logs.html`** - Logs administrativos
@@ -31,7 +31,7 @@
 
 - ✅ Objetivos específicos para cada página HTML definidos
 - ✅ Foco em implementar OAuth 2.1 + OIDC para `secure/index.html`
-- ✅ Controle de acesso para `secure/estrita.html`
+- ✅ Controle de acesso para `secure/restrita.html`
 - ✅ Processamento de callback em `secure/callback.html`
 
 #### **Fase 2** - Consentimento, Logout e Feedback
@@ -43,7 +43,7 @@
 #### **Fase 3** - Auditoria, Backend e Testes
 
 - ✅ Auditoria de login em `secure/index.html`
-- ✅ Registro de acessos em `secure/estrita.html`
+- ✅ Registro de acessos em `secure/restrita.html`
 - ✅ Logs de callback em `secure/callback.html`
 - ✅ Visualização de logs em `secure/admin-logs.html`
 
@@ -90,7 +90,7 @@
 ```text
 secure/
 ├── index.html          # Login/Entrada (Fase 1 - Item 1)
-├── estrita.html        # Conteúdo Protegido (Fase 1 - Item 2)
+├── restrita.html       # Conteúdo Protegido (Fase 1 - Item 2)
 ├── callback.html       # Callback OAuth (Fase 1 - Item 1)
 ├── logout.html         # Logout (Fase 2 - Item 4)
 ├── admin-logs.html     # Logs Admin (Fase 3 - Item 6)
@@ -106,18 +106,18 @@ git checkout -b fase-01
 git push -u origin fase-01
 
 # Renomeação do arquivo
-move secure/estrita.html secure/estrita.html
+move secure/restrita.html secure/restrita.html
 
 # Commit das mudanças
 git add .
-git commit -m "feat: foco nas páginas HTML da pasta secure/ e correção restrita->estrita"
+git commit -m "feat: foco nas páginas HTML da pasta secure/ e correção estrita->restrita"
 git push
 ```
 
 ## Validação
 
 ✅ **Branch fase-01 criada e ativa**  
-✅ **Arquivo estrita.html renomeado com sucesso**  
+✅ **Arquivo restrita.html renomeado com sucesso**  
 ✅ **Todas as referências atualizadas**  
 ✅ **Documentação de todas as fases atualizada**  
 ✅ **Cronograma definido e iniciado**  

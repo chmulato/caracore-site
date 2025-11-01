@@ -9,8 +9,9 @@
 Implementar monitoramento completo, finalizar documentação e estabelecer processos de manutenção e suporte para todas as páginas HTML da pasta `secure/`:
 
 ### Páginas Alvo:
+
 - **`secure/index.html`** - Monitorar performance de login e disponibilidade
-- **`secure/estrita.html`** - Monitorar acessos e tempo de carregamento
+- **`secure/restrita.html`** - Monitorar acessos e tempo de carregamento
 - **`secure/callback.html`** - Monitorar taxa de sucesso de callbacks OAuth
 - **`secure/logout.html`** - Monitorar efetividade do logout
 - **`secure/admin-logs.html`** - Implementar dashboards de monitoramento

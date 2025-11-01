@@ -1,7 +1,7 @@
 
 # FASE NOVA — Orientações para Desenvolvimento de Acesso à Área Restrita
 
-Este documento orienta o que precisa ser desenvolvido para garantir o acesso seguro às páginas HTML da pasta `secure/`, especialmente `secure/estrita.html`, `secure/index.html`, `secure/callback.html` e `secure/privado/historia.html`, atendendo todos os critérios de aceite definidos em [`CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md`](CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md), sem alterar o layout HTML ou o CSS global do site.
+Este documento orienta o que precisa ser desenvolvido para garantir o acesso seguro às páginas HTML da pasta `secure/`, especialmente `secure/restrita.html`, `secure/index.html`, `secure/callback.html` e `secure/privado/historia.html`, atendendo todos os critérios de aceite definidos em [`CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md`](CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md), sem alterar o layout HTML ou o CSS global do site.
 
 ---
 
@@ -12,13 +12,15 @@ Viabilizar autenticação e controle de acesso conforme requisitos de segurança
 ## Páginas em Escopo
 
 ### Páginas Principais:
+
 - **`secure/index.html`** - Página de login/entrada da área restrita
-- **`secure/estrita.html`** - Conteúdo protegido principal  
+- **`secure/restrita.html`** - Conteúdo protegido principal  
 - **`secure/callback.html`** - Página de callback OAuth
 - **`secure/logout.html`** - Página de logout
 - **`secure/privado/historia.html`** - Conteúdo adicional protegido
 
 ### Arquivos de Suporte:
+
 - Scripts JS existentes (`auth.js`, `auth-standalone.js`, etc.)
 - CSS específico da área segura
 - Configurações e logs
@@ -40,7 +42,7 @@ Viabilizar autenticação e controle de acesso conforme requisitos de segurança
 
 ### 2. Controle de Sessão
 
-- Exigir autenticação válida para acessar `estrita.html`.
+- Exigir autenticação válida para acessar `restrita.html`.
 - Redirecionar para login se não houver sessão válida.
 - Implementar expiração automática de sessão/token.
 - Implementar refresh token rotation conforme OAuth 2.1.

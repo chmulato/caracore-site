@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       await showUserInfo();
       window.AuthUIFeedback.updateState('success');
       setTimeout(() => {
-        window.location.href = '/secure/estrita.html';
+        window.location.href = '/secure/restrita.html';
       }, 2000);
     } else {
       window.AuthUIFeedback.updateState('idle');

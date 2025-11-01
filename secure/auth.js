@@ -29,18 +29,18 @@
 
     function sanitizeReturnTo(value) {
         if (!value) {
-            return "/secure/estrita.html";
+            return "/secure/restrita.html";
         }
         const trimmed = String(value).trim();
         const normalized = trimmed.toLowerCase();
         if (!trimmed) {
-            return "/secure/estrita.html";
+            return "/secure/restrita.html";
         }
         if (/^https?:/.test(normalized)) {
-            return "/secure/estrita.html";
+            return "/secure/restrita.html";
         }
         if (!trimmed.startsWith("/")) {
-            return "/secure/estrita.html";
+            return "/secure/restrita.html";
         }
         return trimmed;
     }

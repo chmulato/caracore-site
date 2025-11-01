@@ -35,7 +35,7 @@ jobs:
         zip -r ../backend-deploy.zip . -x "*.pyc" -x "__pycache__/*" -x "logs/*" -x "*.log"
     
     - name: Deploy to Azure Web App
-      uses: azure/webapps-deploy@v3
+      uses: azure/webapps-deploy@v2
       with:
         app-name: 'caracore-backend'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}

@@ -83,3 +83,5 @@ configure_azure_secrets*.ps1
 bfg.jar
 secrets.txt
 .bfg-report/
+obsoletos_2025_11_01/
+arquivo_correcoes_2025_10/

@@ -126,7 +126,7 @@ ALLOWED_ORIGINS="https://www.caracore.com.br"
 3. Clicar em "+ New application setting"
 4. Adicionar cada variável
 
-**Via CLI:**
+**Via CLI (Manual):**
 
 ```powershell
 az webapp config appsettings set `
@@ -134,6 +134,38 @@ az webapp config appsettings set `
   --resource-group rg-caracore `
   --settings GOOGLE_CLIENT_ID="valor" GOOGLE_CLIENT_SECRET="valor"
 ```
+
+**Via Script Automatizado (Recomendado):**
+
+Para configurar **todas as 25 variáveis** de uma vez, use o script PowerShell:
+
+```powershell
+# 1. Criar arquivo secrets.txt (git-ignored) com todas as variáveis
+# Exemplo: secrets.txt
+GOOGLE_CLIENT_ID=1023942712021-xxxxx.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=GOCSPX-xxxxx
+AZURE_CLIENT_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+AZURE_CLIENT_SECRET=xxxxx
+AZURE_TENANT_ID=189c46ad-e437-48bd-bc87-050ef735c2c7
+ORIGIN_ALLOWED=https://www.caracore.com.br
+OAUTH_REDIRECT_URI=https://www.caracore.com.br/secure/callback.html
+APP_SECRET_KEY=xxxxx
+WEBSITES_PORT=8000
+# ... mais 16 variáveis
+
+# 2. Executar script de configuração
+cd d:\dev\site\cara-core
+.\scripts\configure_azure_all_settings.ps1
+
+# 3. Verificar se todas foram configuradas
+az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --output table
+```
+
+**⚠️ IMPORTANTE:**
+- `secrets.txt` está no `.gitignore` para não expor credenciais
+- Use o template `secrets.txt.template` como referência
+- Script lê linha por linha e configura cada variável automaticamente
+- Total de ~25 variáveis configuradas em <2 minutos
 
 ---
 
@@ -299,18 +331,50 @@ cd backend
 az webapp up --name caracore-backend --runtime PYTHON:3.11
 ```
 
-### Erro: "Application Timeout"
+### Erro: "Application Timeout" ou Backend Não Responde
 
-**Problema:** Gunicorn timeout muito curto
+**Problema:** Gunicorn timeout muito curto OU Azure não consegue rotear requisições
 
-**Solução:**
+**⚠️ IMPORTANTE:** Azure App Service Python **requer** configuração específica de porta:
+
+**Solução 1: Configurar WEBSITES_PORT**
 
 ```powershell
-# Configurar timeout no Azure
+# OBRIGATÓRIO: Definir porta que Azure vai usar
+az webapp config appsettings set `
+  --name caracore-backend `
+  --resource-group rg-caracore `
+  --settings WEBSITES_PORT=8000
+```
+
+**Solução 2: Configurar Startup Command com $PORT dinâmico**
+
+```powershell
+# ❌ ERRADO (porta hardcoded)
+--startup-file "gunicorn --bind=0.0.0.0:8000 --timeout 600 app:app"
+
+# ✅ CORRETO (usa variável $PORT do Azure)
 az webapp config set `
   --name caracore-backend `
   --resource-group rg-caracore `
-  --startup-file "gunicorn --timeout 600 --bind=0.0.0.0:8000 app:app"
+  --startup-file "gunicorn --bind=0.0.0.0:`$PORT --timeout 600 app:app"
+```
+
+**Por que isso é necessário:**
+- Azure App Service injeta a variável `$PORT` no runtime container
+- `WEBSITES_PORT` informa ao proxy do Azure qual porta esperar
+- Sem essas configurações, Azure não consegue rotear HTTP → Gunicorn
+
+**Verificação:**
+
+```powershell
+# 1. Verificar WEBSITES_PORT configurado
+az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --query "[?name=='WEBSITES_PORT']"
+
+# 2. Testar health endpoint (deve responder em <5 segundos)
+curl https://caracore-backend.azurewebsites.net/health
+
+# 3. Cold start pode demorar 45-60 segundos (B1 tier)
 ```
 
 ### Erro: "503 Service Unavailable"
@@ -330,16 +394,53 @@ az webapp restart --name caracore-backend --resource-group rg-caracore
 curl https://caracore-backend.azurewebsites.net/health
 ```
 
-### Erro: CORS Issues
+### Erro: CORS Preflight Blocked
 
-**Problema:** Frontend não consegue acessar backend
+**Problema:** Console do navegador mostra `blocked by CORS policy: Response to preflight request doesn't pass access control check`
+
+**Sintomas:**
+- `curl` e Postman funcionam normalmente
+- Dashboard frontend não consegue fazer requisições
+- Backend responde 200 OK mas navegador bloqueia a resposta
+
+**Causa Raiz:**
+- Falta handler OPTIONS para requisições preflight CORS
 
 **Solução:**
 
 ```python
-# Verificar em app.py:
-# - ALLOWED_ORIGINS deve incluir https://www.caracore.com.br
-# - Não usar wildcards (*) em produção
+# backend/app.py
+# OBRIGATÓRIO: Todo endpoint de API precisa de handler OPTIONS
+
+@app.route("/api/admin/logs", methods=["OPTIONS"])
+def admin_logs_preflight():
+    """Handler para CORS preflight"""
+    return '', 204  # Retorna vazio com status 204
+
+@app.route("/api/admin/logs", methods=["GET"])
+@add_cors
+def admin_logs():
+    """Endpoint principal"""
+    # ... lógica do endpoint
+```
+
+**Verificar em app.py:**
+- `ORIGIN_ALLOWED` deve estar configurado (não usar wildcard `*` em produção)
+- Todos os endpoints de API devem ter handler OPTIONS
+- Function `add_cors()` deve estar aplicada em ambos (OPTIONS e GET/POST)
+
+**Verificação:**
+
+```powershell
+# 1. Testar OPTIONS (deve retornar 204)
+curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I
+
+# 2. Verificar headers CORS
+curl -H "Origin: https://www.caracore.com.br" -I https://caracore-backend.azurewebsites.net/api/admin/logs
+
+# Deve incluir:
+# Access-Control-Allow-Origin: https://www.caracore.com.br
+# Access-Control-Allow-Methods: GET, POST, OPTIONS
 ```
 
 ---

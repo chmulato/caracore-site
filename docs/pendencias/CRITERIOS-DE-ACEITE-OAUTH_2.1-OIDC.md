@@ -1,6 +1,6 @@
 # Critérios de Aceite — OAuth 2.1 + OIDC para Área Restrita
 
-Este documento orienta os requisitos mínimos para conformidade da área restrita (`secure/restrita.html`) com OAuth 2.1 e OIDC.
+Este documento orienta os requisitos mínimos para conformidade da área restrita (`secure/estrita.html`) com OAuth 2.1 e OIDC.
 
 ---
 

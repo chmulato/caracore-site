@@ -92,22 +92,25 @@
                         <div class="row mt-4">
                             <div class="col-md-4">
                                 <div class="stat-card">
-                                    <h3>3.000+</h3>
+                                    <h3>3.100+</h3>
                                     <p>Linhas de Código</p>
-                                    <small class="text-muted">+405 linhas (01/11)</small>
+                                    <small class="text-muted">+GitHub Actions Docker (02/11)</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="stat-card">
                                     <h3>100%</h3>
                                     <p>Taxa de Sucesso</p>
-                                    <small class="text-muted">Dashboard funcional</small>
+                                    <small class="text-muted">Docker deploy validado</small>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="stat-card">
-                                    <h3>33</h3>
+                                    <h3>37</h3>
                                     <p>Testes Automatizados</p>
+                                    <small class="text-muted">+Pipeline CI/CD (02/11)</small>
+                                </div>
+                            </div>
                                     <small class="text-muted">+4 validação (01/11)</small>
                                 </div>
                             </div>
@@ -264,12 +267,12 @@
                             <span class="tech-badge">Python unittest</span>
                         </div>
 
-                        <h3 class="h5 mt-4">Automação Deploy <span class="badge bg-success">Novo</span></h3>
+                        <h3 class="h5 mt-4">Automação Deploy <span class="badge bg-success">Atualizado</span></h3>
                         <div class="tech-stack">
-                            <span class="tech-badge"><i class="bi bi-rocket-takeoff"></i> deploy_production.py (350 linhas)</span>
-                            <span class="tech-badge"><i class="bi bi-arrow-counterclockwise"></i> rollback.py (350 linhas)</span>
-                            <span class="tech-badge"><i class="bi bi-gear"></i> configure_azure_all_settings.ps1</span>
-                            <span class="tech-badge"><i class="bi bi-graph-up"></i> configure_azure_monitor.ps1</span>
+                            <span class="tech-badge"><i class="bi bi-github"></i> GitHub Actions (Docker)</span>
+                            <span class="tech-badge"><i class="bi bi-box"></i> Azure Container Registry</span>
+                            <span class="tech-badge"><i class="bi bi-cloud-upload"></i> Azure Web App (Docker)</span>
+                            <span class="tech-badge"><i class="bi bi-check-circle"></i> Health Validation</span>
                         </div>
                     </section>
 
@@ -455,26 +458,27 @@
                         <h2 class="section-title">☁️ Deploy e Infraestrutura</h2>
 
                         <div class="alert alert-success mb-4">
-                            <h5 class="alert-heading"><i class="bi bi-rocket-takeoff me-2"></i>Deploy Automatizado em 2-3 minutos</h5>
-                            <p class="mb-2">Sistema completo de deploy e rollback implementado (Fase 3 CORE):</p>
+                            <h5 class="alert-heading"><i class="bi bi-rocket-takeoff me-2"></i>Deploy Automatizado via GitHub Actions</h5>
+                            <p class="mb-2">Sistema completo de deploy Docker automatizado (Atualizado Nov 2024):</p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <strong>Deploy Production:</strong>
+                                    <strong>GitHub Actions Docker Deploy:</strong>
                                     <ul class="mb-0">
-                                        <li>Safety checks (branch, uncommitted, Azure auth)</li>
-                                        <li>Execução automática de testes pytest</li>
-                                        <li>Backup automático antes de deploy</li>
-                                        <li>Health check pós-deploy</li>
-                                        <li>Log estruturado em JSON</li>
+                                        <li>Build automático no push para main</li>
+                                        <li>Push para Azure Container Registry</li>
+                                        <li>Deploy automático para Azure Web App</li>
+                                        <li>Health check e validação pós-deploy</li>
+                                        <li>Authorization API validation</li>
                                     </ul>
                                 </div>
                                 <div class="col-md-6">
-                                    <strong>Rollback System:</strong>
+                                    <strong>Pipeline Features:</strong>
                                     <ul class="mb-0">
-                                        <li>4 modos: latest, backup, commit, list</li>
-                                        <li>Confirmação obrigatória</li>
-                                        <li>Safety backup antes do rollback</li>
-                                        <li>Correlação com logs de deploy</li>
+                                        <li>Docker multi-stage build</li>
+                                        <li>Azure Container Registry integration</li>
+                                        <li>Automated deployment validation</li>
+                                        <li>Production health checks</li>
+                                        <li>Repository secrets management</li>
                                     </ul>
                                 </div>
                             </div>
@@ -484,17 +488,17 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header bg-primary text-white">
-                                        <i class="bi bi-server me-2"></i>Backend (Azure App Service)
+                                        <i class="bi bi-server me-2"></i>Backend (Azure Web App + Docker)
                                     </div>
                                     <div class="card-body">
-                                        <p><strong>URL:</strong> <code>caracore-backend.azurewebsites.net</code></p>
-                                        <p><strong>Runtime:</strong> Python 3.11.13 + Gunicorn 23.0.0</p>
+                                        <p><strong>URL:</strong> <code>caracore-backend-docker.azurewebsites.net</code></p>
+                                        <p><strong>Container:</strong> Azure Container Registry</p>
+                                        <p><strong>Registry:</strong> <code>caracoreregistry.azurecr.io</code></p>
+                                        <p><strong>Runtime:</strong> Python 3.11 + Gunicorn (Docker)</p>
                                         <p><strong>Plan:</strong> Basic B1 ($13.14/mês)</p>
                                         <p><strong>Region:</strong> Brazil South</p>
-                                        <p><strong>Port:</strong> <code>WEBSITES_PORT=8000</code></p>
-                                        <p><strong>Startup:</strong> <code>gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app</code></p>
-                                        <p><strong>Deploy Time:</strong> 2-3 min <span class="badge bg-success">Automatizado</span></p>
-                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Online (100% funcional)</span></p>
+                                        <p><strong>Deploy:</strong> GitHub Actions + Docker <span class="badge bg-success">Automatizado</span></p>
+                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Online (Authorization API validated)</span></p>
                                     </div>
                                 </div>
                             </div>
@@ -516,33 +520,41 @@
                         </div>
 
                         <div class="alert alert-info mt-4">
-                            <h4 class="alert-heading"><i class="bi bi-terminal me-2"></i>Comandos de Deploy</h4>
+                            <h4 class="alert-heading"><i class="bi bi-github me-2"></i>GitHub Actions Deploy</h4>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <p><strong>Deploy para Produção:</strong></p>
-                                    <pre class="bg-dark text-light p-2 rounded"><code>python scripts/deploy_production.py</code></pre>
-                                    <p class="small mb-0">Opções: <code>--skip-tests</code>, <code>--force</code>, <code>--message "descrição"</code></p>
+                                    <p><strong>Deploy Automático:</strong></p>
+                                    <pre class="bg-dark text-light p-2 rounded"><code>git push origin main</code></pre>
+                                    <p class="small mb-0">Triggers: Push em <code>backend/</code> ou <code>main</code></p>
                                 </div>
                                 <div class="col-md-6">
-                                    <p><strong>Rollback:</strong></p>
-                                    <pre class="bg-dark text-light p-2 rounded"><code>python scripts/rollback.py --latest</code></pre>
-                                    <p class="small mb-0">Modos: <code>--latest</code>, <code>--backup</code>, <code>--commit HASH</code>, <code>--list</code></p>
+                                    <p><strong>Deploy Manual:</strong></p>
+                                    <pre class="bg-dark text-light p-2 rounded"><code>Actions → "Deploy Docker to Azure" → Run workflow</code></pre>
+                                    <p class="small mb-0">Disponível em: <a href="https://github.com/chmulato/cara-core/actions" target="_blank" rel="noopener" class="alert-link">GitHub Actions</a></p>
                                 </div>
+                            </div>
+                            <div class="mt-2">
+                                <p class="mb-1"><strong>Pipeline Steps:</strong></p>
+                                <span class="badge bg-secondary me-1">Docker Build</span>
+                                <span class="badge bg-secondary me-1">Push to ACR</span>
+                                <span class="badge bg-secondary me-1">Deploy to Azure</span>
+                                <span class="badge bg-success">Health Check</span>
                             </div>
                         </div>
 
                         <div class="alert alert-warning mt-3">
-                            <h5 class="alert-heading"><i class="bi bi-gear me-2"></i>Configuração Azure</h5>
+                            <h5 class="alert-heading"><i class="bi bi-gear me-2"></i>Configuração Azure & GitHub</h5>
                             <p class="mb-2">Scripts de configuração automatizada:</p>
                             <ol class="mb-2">
                                 <li><strong>App Settings:</strong> <code>.\scripts\configure_azure_all_settings.ps1</code> (25+ variáveis)</li>
                                 <li><strong>Azure Monitor:</strong> <code>.\scripts\configure_azure_monitor.ps1</code> (6 alertas críticos)</li>
+                                <li><strong>GitHub Secrets:</strong> ACR_USERNAME, ACR_PASSWORD, AZURE_WEBAPP_DOCKER_PUBLISH_PROFILE</li>
                             </ol>
                             <p class="mb-0">
                                 <strong>Documentação:</strong> 
-                                <a href="../secrets.txt.template" target="_blank" class="alert-link">secrets.txt.template</a> | 
-                                <a href="../scripts/configure_azure_all_settings.ps1" target="_blank" class="alert-link">configure_azure_all_settings.ps1</a> | 
-                                <a href="../docs/AZURE_DEPLOY.md" target="_blank" class="alert-link">Guia completo</a>
+                                <a href="../secrets.txt.template" target="_blank" rel="noopener" class="alert-link">secrets.txt.template</a> | 
+                                <a href="../docs/GITHUB_SECRETS_SETUP.md" target="_blank" rel="noopener" class="alert-link">GitHub Secrets Setup</a> | 
+                                <a href="../.github/workflows/azure-docker-deploy.yml" target="_blank" rel="noopener" class="alert-link">GitHub Actions Workflow</a>
                             </p>
                         </div>
 
@@ -597,10 +609,59 @@
                                 </tbody>
                             </table>
                         </div>
+
+                        <h3 class="h5 mt-4">🐳 Infraestrutura Docker</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header bg-dark text-white">
+                                        <i class="bi bi-box me-2"></i>Azure Container Registry
+                                    </div>
+                                    <div class="card-body">
+                                        <p><strong>Registry:</strong> <code>caracoreregistry.azurecr.io</code></p>
+                                        <p><strong>Repository:</strong> <code>caracore-backend</code></p>
+                                        <p><strong>Latest Tag:</strong> <code>latest</code></p>
+                                        <p><strong>Build:</strong> GitHub Actions automatizado</p>
+                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Operacional</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header bg-success text-white">
+                                        <i class="bi bi-gear me-2"></i>Container Configuration
+                                    </div>
+                                    <div class="card-body">
+                                        <p><strong>Base Image:</strong> <code>python:3.11-slim</code></p>
+                                        <p><strong>Exposed Port:</strong> <code>8000</code></p>
+                                        <p><strong>Health Check:</strong> <code>/health</code> endpoint</p>
+                                        <p><strong>Multi-stage:</strong> Production optimized</p>
+                                        <p class="mb-0"><strong>Deploy Time:</strong> <span class="badge bg-info">~3 min</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </section>
 
+                    <!-- Atualização 02/11/2025 -->
+                    <div class="alert alert-success alert-update border-success mt-5">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="bi bi-rocket-takeoff-fill me-2 fs-5"></i>
+                            <strong class="fs-5">🚀 ATUALIZAÇÃO 02/11/2025 - Deploy Docker Automatizado</strong>
+                        </div>
+                        <p class="mb-2">Implementação completa do sistema de deploy Docker via GitHub Actions:</p>
+                        <ul class="mb-2">
+                            <li><strong>GitHub Actions:</strong> Pipeline automatizado de build, push para ACR e deploy</li>
+                            <li><strong>Azure Container Registry:</strong> <code>caracoreregistry.azurecr.io</code> configurado</li>
+                            <li><strong>Docker Deployment:</strong> Web App <code>caracore-backend-docker</code> operacional</li>
+                            <li><strong>Health Validation:</strong> Endpoints testados automaticamente pós-deploy</li>
+                            <li><strong>Repository Secrets:</strong> ACR credentials e publish profile configurados</li>
+                        </ul>
+                        <p class="mb-1"><strong>Status:</strong> <span class="badge bg-success">✅ Produção</span> | <strong>Deploy Time:</strong> ~3 min | <strong>URL:</strong> <code>caracore-backend-docker.azurewebsites.net</code></p>
+                    </div>
+
                     <!-- Atualização 01/11/2025 -->
-                    <div class="alert alert-warning alert-update border-warning mt-5">
+                    <div class="alert alert-warning alert-update border-warning mt-3">
                         <div class="d-flex align-items-center mb-2">
                             <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
                             <strong class="fs-5">🔥 ATUALIZAÇÃO 01/11/2025 - Correções Críticas em Produção</strong>

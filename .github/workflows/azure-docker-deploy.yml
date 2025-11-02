@@ -42,28 +42,15 @@ jobs:
         cache-to: type=gha,mode=max
     
     - name: Deploy to Azure Web App for Containers
-      uses: azure/login@v1
-      with:
-        publish-profile: ${{ secrets.AZURE_WEBAPP_DOCKER_PUBLISH_PROFILE }}
-    
-    - name: Update Web App Container Image
       run: |
-        echo "🔄 Updating container image..."
-        az webapp config container set \
-          --name caracore-backend-docker \
-          --resource-group rg-caracore \
-          --docker-custom-image-name caracoreregistry.azurecr.io/caracore-backend:latest \
-          --docker-registry-server-url https://caracoreregistry.azurecr.io \
-          --docker-registry-server-user ${{ secrets.ACR_USERNAME }} \
-          --docker-registry-server-password ${{ secrets.ACR_PASSWORD }}
-        
-        echo "🔄 Restarting web app..."
-        az webapp restart --name caracore-backend-docker --resource-group rg-caracore
-        
-        echo "✅ Deploy completed!"
+        echo "🚀 Image pushed to ACR successfully!"
+        echo "✅ Azure Web App will automatically pull the new image"
+        echo "ℹ️  The webhook is configured to trigger deployment on image updates"
     
-    - name: Wait for deployment to complete
-      run: sleep 45
+    - name: Wait for automatic deployment
+      run: |
+        echo "⏳ Waiting for Azure Web App to pull the new image..."
+        sleep 60
     
     - name: Health check
       run: |

@@ -1,0 +1,69 @@
+{
+  "timestamp": "2025-11-02T15:01:17.034308",
+  "summary": {
+    "total_suites": 5,
+    "passed_suites": 3,
+    "failed_suites": 2,
+    "total_tests": 30,
+    "passed_tests": 28,
+    "failed_tests": 2,
+    "skipped_tests": 0
+  },
+  "suites": [
+    {
+      "name": "Testes Unitários - Auth Manager",
+      "file": "tests/test_auth_manager.py",
+      "status": "passed",
+      "tests": 23,
+      "passed": 23,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 0.07039785385131836,
+      "output": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.3.3, pluggy-1.6.0 -- C:\\Users\\chmul\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\ncachedir: .pytest_cache\nmetadata: {'Python': '3.13.7', 'Platform': 'Windows-11-10.0.26200-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'requests-mock': '1.11.0'}, 'JAVA_HOME': 'C:\\\\Program Files\\\\Java\\\\jdk-17'}\nrootdir: D:\\dev\\site\\cara-core\\backend\nconfigfile: pytest.ini\nplugins: cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, requests-mock-1.11.0\ncollecting ... collected 23 items\n\ntests/test_auth_manager.py::TestPKCEValidator::test_invalid_challenge PASSED [  4%]\ntests/test_auth_manager.py::TestPKCEValidator::test_missing_challenge PASSED [  8%]\ntests/test_auth_manager.py::TestPKCEValidator::test_missing_verifier PASSED [ 13%]\ntests/test_auth_manager.py::TestPKCEValidator::test_valid_pkce PASSED    [ 17%]\ntests/test_auth_manager.py::TestPKCEValidator::test_verifier_too_long PASSED [ 21%]\ntests/test_auth_manager.py::TestPKCEValidator::test_verifier_too_short PASSED [ 26%]\ntests/test_auth_manager.py::TestPKCEValidator::test_wrong_method PASSED  [ 30%]\ntests/test_auth_manager.py::TestTokenValidator::test_audience_as_list PASSED [ 34%]\ntests/test_auth_manager.py::TestTokenValidator::test_expired_token PASSED [ 39%]\ntests/test_auth_manager.py::TestTokenValidator::test_future_issued_at PASSED [ 43%]\ntests/test_auth_manager.py::TestTokenValidator::test_missing_audience PASSED [ 47%]\ntests/test_auth_manager.py::TestTokenValidator::test_missing_expiration PASSED [ 52%]\ntests/test_auth_manager.py::TestTokenValidator::test_missing_issuer PASSED [ 56%]\ntests/test_auth_manager.py::TestTokenValidator::test_missing_nonce PASSED [ 60%]\ntests/test_auth_manager.py::TestTokenValidator::test_token_too_old PASSED [ 65%]\ntests/test_auth_manager.py::TestTokenValidator::test_valid_nonce PASSED  [ 69%]\ntests/test_auth_manager.py::TestTokenValidator::test_valid_token PASSED  [ 73%]\ntests/test_auth_manager.py::TestTokenValidator::test_wrong_audience PASSED [ 78%]\ntests/test_auth_manager.py::TestTokenValidator::test_wrong_issuer PASSED [ 82%]\ntests/test_auth_manager.py::TestTokenValidator::test_wrong_nonce PASSED  [ 86%]\ntests/test_auth_manager.py::TestAuditLogger::test_log_auth_attempt PASSED [ 91%]\ntests/test_auth_manager.py::TestAuditLogger::test_log_suspicious_activity PASSED [ 95%]\ntests/test_auth_manager.py::TestAuditLogger::test_log_token_exchange PASSED [100%]\n\n--------------------------------- JSON report ---------------------------------\nreport saved to: temp_result.json\n============================= 23 passed in 0.07s ==============================\n"
+    },
+    {
+      "name": "Testes E2E - Endpoints",
+      "file": "tests/test_e2e.py::TestEndpoints",
+      "status": "passed",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 3.03564453125,
+      "output": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.3.3, pluggy-1.6.0 -- C:\\Users\\chmul\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\ncachedir: .pytest_cache\nmetadata: {'Python': '3.13.7', 'Platform': 'Windows-11-10.0.26200-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'requests-mock': '1.11.0'}, 'JAVA_HOME': 'C:\\\\Program Files\\\\Java\\\\jdk-17'}\nrootdir: D:\\dev\\site\\cara-core\\backend\nconfigfile: pytest.ini\nplugins: cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, requests-mock-1.11.0\ncollecting ... collected 4 items\n\ntests/test_e2e.py::TestEndpoints::test_azure_health_endpoint PASSED      [ 25%]\ntests/test_e2e.py::TestEndpoints::test_azure_health_detailed_endpoint PASSED [ 50%]\ntests/test_e2e.py::TestEndpoints::test_azure_admin_logs_protected PASSED [ 75%]\ntests/test_e2e.py::TestEndpoints::test_cors_headers PASSED               [100%]\n\n--------------------------------- JSON report ---------------------------------\nreport saved to: temp_result.json\n============================== 4 passed in 3.03s ==============================\n"
+    },
+    {
+      "name": "Testes E2E - Security Headers",
+      "file": "tests/test_e2e.py::TestSecurityHeaders",
+      "status": "passed",
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "duration": 0.6244065761566162,
+      "output": "============================= test session starts =============================\nplatform win32 -- Python 3.13.7, pytest-8.3.3, pluggy-1.6.0 -- C:\\Users\\chmul\\AppData\\Local\\Programs\\Python\\Python313\\python.exe\ncachedir: .pytest_cache\nmetadata: {'Python': '3.13.7', 'Platform': 'Windows-11-10.0.26200-SP0', 'Packages': {'pytest': '8.3.3', 'pluggy': '1.6.0'}, 'Plugins': {'cov': '5.0.0', 'html': '4.1.1', 'json-report': '1.5.0', 'metadata': '3.1.1', 'requests-mock': '1.11.0'}, 'JAVA_HOME': 'C:\\\\Program Files\\\\Java\\\\jdk-17'}\nrootdir: D:\\dev\\site\\cara-core\\backend\nconfigfile: pytest.ini\nplugins: cov-5.0.0, html-4.1.1, json-report-1.5.0, metadata-3.1.1, requests-mock-1.11.0\ncollecting ... collected 1 item\n\ntests/test_e2e.py::TestSecurityHeaders::test_security_headers_present PASSED [100%]\n\n--------------------------------- JSON report ---------------------------------\nreport saved to: temp_result.json\n============================== 1 passed in 0.62s ==============================\n"
+    },
+    {
+      "name": "Validação Dashboard Azure",
+      "file": "validar_dashboard.py",
+      "status": "failed",
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "duration": 0,
+      "output": "\n\nSTDERR:\nTraceback (most recent call last):\n  File \"D:\\dev\\site\\cara-core\\backend\\validar_dashboard.py\", line 249, in <module>\n    main()\n    ~~~~^^\n  File \"D:\\dev\\site\\cara-core\\backend\\validar_dashboard.py\", line 213, in main\n    print(\"\\n\" + \"\\U0001f3af\"*35)\n    ~~~~~^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\chmul\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\encodings\\cp1252.py\", line 19, in encode\n    return codecs.charmap_encode(input,self.errors,encoding_table)[0]\n           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nUnicodeEncodeError: 'charmap' codec can't encode characters in position 2-36: character maps to <undefined>\n"
+    },
+    {
+      "name": "Teste Site Estático",
+      "file": "scripts/teste.py",
+      "status": "failed",
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "duration": 0,
+      "output": "[ERRO] index.html não encontrado na raiz do projeto.\n"
+    }
+  ]
+}

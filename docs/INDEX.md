@@ -1,6 +1,6 @@
 # Índice de Documentação - CaraCore
 
-**Última Atualização:** 02/11/2025 - Docker Deployment & Fase 4 Concluída
+**Última Atualização:** 02/11/2025 - Docker Deployment & Análise de Custos Azure
 
 Este documento serve como índice central para toda a documentação do projeto CaraCore.
 
@@ -21,8 +21,9 @@ Este documento serve como índice central para toda a documentação do projeto 
 | Documento | Descrição | Status |
 |-----------|-----------|--------|
 | [AZURE_DEPLOY.md](./AZURE_DEPLOY.md) | Guia completo de deploy e rollback no Azure | ✅ Atualizado |
-| [VERSOES.md](./VERSOES.md) | Controle de versões de dependências | ✅ Atualizado |
+| **[AZURE-CUSTO.md](./AZURE-CUSTO.md)** | **Análise executiva de custos da infraestrutura Azure** | ✅ **NOVO** |
 | [AZURE_MONITOR.md](./AZURE_MONITOR.md) | Configuração de monitoramento e alertas | ✅ Disponível |
+| [VERSOES.md](./VERSOES.md) | Controle de versões de dependências | ✅ Atualizado |
 
 ### 📊 Documentação por Fase
 
@@ -42,9 +43,43 @@ Este documento serve como índice central para toda a documentação do projeto 
 
 ---
 
+## 💰 Gestão de Custos e ROI
+
+### Análise Financeira Azure
+
+| Documento | Descrição | Público-Alvo |
+|-----------|-----------|--------------|
+| **[AZURE-CUSTO.md](./AZURE-CUSTO.md)** | **Análise executiva de custos operacionais Azure** | **Executivos/Gestores** |
+
+### Resumo Executivo de Custos
+
+**Cenário Atual (Desenvolvimento):**
+
+- Azure Container Registry (Basic): USD 5,00/mês
+- App Service (F1 Free): USD 0,00/mês
+- **Total**: USD 5,00/mês
+
+**Cenário Recomendado (Produção):**
+
+- Azure Container Registry (Basic): USD 5,00/mês  
+- App Service (B1 Basic): USD 13,14/mês
+- **Total**: USD 18,14/mês
+
+**ROI Justificativa:**
+
+- SLA 99,95% vs. limitações do tier gratuito
+- Custo por usuário: USD 0,18/mês (base 100 usuários)
+- Break-even: 1 incidente crítico evitado por trimestre
+- Sistema OAuth enterprise por menos de USD 220/ano
+
+**Documentação completa:** [AZURE-CUSTO.md](./AZURE-CUSTO.md)
+
+---
+
 ## 🎯 **MARCOS ALCANÇADOS**
 
 ### ✅ **Sistema de Autorização (Fase 4) - CONCLUÍDO**
+
 - **Data**: 02/11/2025
 - **Status**: 100% implementado e funcionando em produção
 - **Documentação**: [FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)
@@ -55,6 +90,7 @@ Este documento serve como índice central para toda a documentação do projeto 
   - Testes: Cobertura 80%+ implementada
 
 ### ✅ **Deploy Docker - FUNCIONANDO**
+
 - **Data**: 02/11/2025  
 - **Status**: Aplicação rodando em produção Azure
 - **URL**: https://caracore-backend-docker.azurewebsites.net
@@ -78,6 +114,7 @@ Este documento serve como índice central para toda a documentação do projeto 
    - [FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md) - Sistema de autorização
    - [DEPLOY_SUCCESS_SUMMARY.md](./DEPLOY_SUCCESS_SUMMARY.md) - Deploy Docker
    - [AZURE_DEPLOY.md](./AZURE_DEPLOY.md) - Operações Azure
+   - [AZURE-CUSTO.md](./AZURE-CUSTO.md) - Análise de custos executiva
    - [VERSOES.md](./VERSOES.md) - Dependências
 
 3. **Configure o ambiente local**
@@ -126,6 +163,7 @@ docs/
 │
 ├── 🚀 OPERAÇÕES
 ├── AZURE_DEPLOY.md                   # Guia de deploy e operações
+├── AZURE-CUSTO.md                    # Análise executiva de custos Azure
 ├── AZURE_MONITOR.md                  # Monitoramento e alertas
 ├── VERSOES.md                        # Controle de versões
 │
@@ -152,6 +190,7 @@ docs/
 **Problema:** `https://caracore-backend-docker.azurewebsites.net/health` não responde
 
 **Causas:**
+
 - Container Registry não acessível
 - Imagem Docker com problemas
 - Environment variables não configuradas
@@ -354,8 +393,8 @@ cd d:\dev\site\cara-core
 
 ### Contatos
 
-- **Desenvolvedor:** Carlos H. Mulato
-- **Email:** [seu-email]
+- **Desenvolvedor:** Christian Vladimir Uhdre Mulato
+- **Email:** [suporte@caracore.com.br]
 - **Repositório:** <https://github.com/chmulato/cara-core>
 
 ### Documentação Adicional

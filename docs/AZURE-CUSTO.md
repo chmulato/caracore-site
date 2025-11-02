@@ -22,12 +22,14 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 ### Infraestrutura Implementada
 
 **Azure Container Registry (ACR)**
+
 - SKU: Basic
 - Localização: East US
 - Armazenamento: 10 GB incluídos
 - Status: Operacional
 
 **Azure App Service**
+
 - SKU: F1 (Free Tier)
 - Localização: Brazil South
 - RAM: 1 GB
@@ -35,6 +37,7 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 - Status: Operacional com limitações
 
 **Aplicação Docker**
+
 - Base Image: Python 3.10-slim
 - Tamanho Estimado: 200-300 MB
 - Dependências: Otimizadas (5 packages principais)
@@ -46,7 +49,8 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 
 ### 1. Azure Container Registry
 
-**Tier Atual: Basic**
+**Tier Atual: [Basic]**
+
 - Custo mensal: USD 5,00
 - Armazenamento incluído: 10 GB
 - Transferência de dados: Ilimitada
@@ -54,13 +58,15 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 - Geo-replicação: Não disponível
 
 **Justificativa do Tier:**
+
 - Capacidade de 10 GB suporta aproximadamente 30-50 versões da imagem
 - Sem necessidade de geo-replicação para escopo atual
 - Webhooks essenciais para automação de deploy
 
 ### 2. Azure App Service
 
-**Configuração Atual: F1 Free**
+**Configuração Atual: [F1 Free]**
+
 - Custo mensal: USD 0,00
 - Limitações críticas:
   - 60 minutos CPU/dia
@@ -69,6 +75,7 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
   - Sem SSL customizado
 
 **Limitações de Produção:**
+
 - Indisponibilidade durante sleep periods
 - Performance inconsistente
 - Não adequado para ambiente corporativo
@@ -86,6 +93,7 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 | **Total** | | **USD 5,00** |
 
 **Limitações:**
+
 - Disponibilidade não garantida
 - Sleep automático
 - Performance limitada
@@ -99,6 +107,7 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 | **Total** | | **USD 18,14** |
 
 **Benefícios:**
+
 - SLA 99,95%
 - 1,75 GB RAM
 - 1 Core CPU dedicado
@@ -114,6 +123,7 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 | **Total** | | **USD 78,00** |
 
 **Recursos Adicionais:**
+
 - Auto-scaling (até 10 instâncias)
 - 50 GB armazenamento
 - Backup automático
@@ -132,6 +142,7 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 | DigitalOcean | App Platform | USD 12-18 | 99,0% |
 
 **Análise:**
+
 - Azure apresenta custo competitivo
 - SLA adequado para ambiente corporativo
 - Integração nativa com ferramentas Microsoft
@@ -143,16 +154,19 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 ### Eficiência de Imagem Docker
 
 **Base Image Otimizada:**
+
 - Python 3.10-slim vs. full Python (redução ~70% tamanho)
 - Multi-stage build eliminando ferramentas de desenvolvimento
 - Cache de layers otimizado para builds incrementais
 
 **Dependências Minimalistas:**
+
 - 5 packages essenciais vs. 20+ packages típicos
 - Remoção de bibliotecas de desenvolvimento
 - Validação de compatibilidade entre versões
 
 **Resultado:**
+
 - Tamanho da imagem: ~250 MB (vs. ~800 MB típico)
 - Build time: ~2 minutos (vs. ~8 minutos típico)
 - Transfer time: ~30 segundos (vs. ~2 minutos típico)
@@ -160,10 +174,12 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 ### Localização Estratégica
 
 **Azure Container Registry:**
+
 - East US (custo 15% menor que Brazil South)
 - Transferência para Brazil South sem cobrança adicional
 
 **App Service:**
+
 - Brazil South (latência otimizada para usuários brasileiros)
 - Redução de 40-60ms vs. US regions
 
@@ -172,14 +188,16 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 ## Projeção de Custos Anuais
 
 ### Cenário Conservador (B1)
-```
+
+```text
 Custo mensal: USD 18,14
 Custo anual: USD 217,68
 Custo por usuário/mês (100 usuários): USD 0,18
 ```
 
 ### Cenário Crescimento (S1)
-```
+
+```text
 Custo mensal: USD 78,00
 Custo anual: USD 936,00
 Custo por usuário/mês (500 usuários): USD 0,16
@@ -188,11 +206,13 @@ Custo por usuário/mês (500 usuários): USD 0,16
 ### Análise ROI
 
 **Benefícios Quantificáveis:**
+
 - Redução de downtime: 99,95% SLA vs. ~90% free tier
 - Economia de recursos TI: Deploy automatizado
 - Segurança enterprise: OAuth 2.1 + PKCE compliance
 
 **Custo por Incidente Evitado:**
+
 - 1 hora downtime ~ USD 500-2000 (dependendo do negócio)
 - Investimento anual B1: USD 217,68
 - Break-even: 1 incidente crítico evitado a cada 3-12 meses
@@ -239,6 +259,7 @@ Custo por usuário/mês (500 usuários): USD 0,16
 A configuração atual de USD 5,00/mês é adequada para desenvolvimento, mas requer upgrade para USD 18,14/mês (B1) para atender requisitos de produção empresarial.
 
 **Principais Fatores:**
+
 - SLA 99,95% essencial para aplicação crítica de autenticação
 - Custo por usuário extremamente baixo (USD 0,18/mês)
 - ROI positivo com prevenção de um único incidente por trimestre

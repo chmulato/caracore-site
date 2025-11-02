@@ -92,6 +92,18 @@ except ImportError:
     def add_security_headers(response):
         return response
 
+# Import authorization para controle de acesso
+try:
+    from authorization import (
+        is_user_authorized, get_user_role, add_authorized_user, 
+        remove_authorized_user, add_pending_request, load_authorized_users
+    )
+    AUTHORIZATION_ENABLED = True
+    logger.info("Authorization module carregado - controle de acesso habilitado")
+except ImportError:
+    AUTHORIZATION_ENABLED = False
+    logger.warning("authorization module não disponível - controle de acesso desabilitado")
+
 
 class HTTPRequestError(RuntimeError):
     """Raised when the token exchange HTTP call fails."""
@@ -1588,6 +1600,245 @@ def create_app() -> Flask:
         
         resp = make_response(jsonify(response_data), 200)
         return add_cors(resp)
+
+    # ============================================================================
+    # ENDPOINTS DE AUTORIZAÇÃO - FASE 4
+    # ============================================================================
+    
+    def require_admin(f):
+        """Decorator para exigir permissões de admin"""
+        def wrapper(*args, **kwargs):
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            # Para APIs internas, vamos usar um header especial ou token
+            # Por enquanto, vamos usar um sistema simples baseado no header 'Authorization'
+            auth_header = request.headers.get('Authorization', '')
+            if not auth_header.startswith('Bearer '):
+                return jsonify({"error": "unauthorized", "error_description": "Token de autorização necessário"}), 401
+            
+            # TODO: Implementar validação real do token admin
+            # Por enquanto, permitir para desenvolvimento
+            return f(*args, **kwargs)
+        wrapper.__name__ = f.__name__
+        return wrapper
+    
+    @app.route("/api/check-authorization", methods=["OPTIONS"])
+    def authorization_check_preflight():
+        """CORS preflight para verificação de autorização"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/check-authorization", methods=["POST"])
+    @rate_limit("/api/check-authorization")
+    def check_authorization():
+        """Verificar se usuário está autorizado"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            data = request.get_json()
+            if not data or 'email' not in data:
+                return jsonify({"error": "invalid_request", "error_description": "Email é obrigatório"}), 400
+            
+            email = data['email']
+            is_authorized = is_user_authorized(email)
+            user_role = get_user_role(email) if is_authorized else None
+            
+            response_data = {
+                "authorized": is_authorized,
+                "role": user_role,
+                "email": email
+            }
+            
+            # Log da verificação
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_access_check(email, is_authorized, request.remote_addr)
+            
+            resp = make_response(jsonify(response_data), 200)
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro na verificação de autorização: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
+    @app.route("/api/admin/users", methods=["OPTIONS"])
+    def admin_users_preflight():
+        """CORS preflight para gerenciamento de usuários"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/admin/users", methods=["GET"])
+    @rate_limit("/api/admin/users")
+    @require_admin
+    def get_admin_users():
+        """Listar usuários autorizados e solicitações pendentes (admin only)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            data = load_authorized_users()
+            
+            # Filtrar informações sensíveis se necessário
+            users = []
+            for user in data.get('users', []):
+                user_info = {
+                    "email": user.get('email'),
+                    "name": user.get('name'),
+                    "provider": user.get('provider'),
+                    "role": user.get('role'),
+                    "status": user.get('status'),
+                    "approved_at": user.get('approved_at'),
+                    "created_at": user.get('created_at')
+                }
+                users.append(user_info)
+            
+            response_data = {
+                "users": users,
+                "pending_requests": data.get('pending_requests', []),
+                "settings": data.get('settings', {}),
+                "total_users": len(users),
+                "total_pending": len(data.get('pending_requests', []))
+            }
+            
+            resp = make_response(jsonify(response_data), 200)
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao listar usuários: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
+    @app.route("/api/admin/users", methods=["POST"])
+    @rate_limit("/api/admin/users")
+    @require_admin
+    def add_admin_user():
+        """Adicionar novo usuário autorizado (admin only)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            data = request.get_json()
+            if not data:
+                return jsonify({"error": "invalid_request", "error_description": "Dados JSON são obrigatórios"}), 400
+            
+            required_fields = ['email', 'name', 'provider']
+            for field in required_fields:
+                if field not in data or not data[field]:
+                    return jsonify({"error": "invalid_request", "error_description": f"Campo '{field}' é obrigatório"}), 400
+            
+            # Adicionar usuário
+            user_data = {
+                "email": data['email'],
+                "name": data['name'],
+                "provider": data['provider'],
+                "role": data.get('role', 'user'),
+                "approved_by": "admin"  # TODO: identificar admin real
+            }
+            
+            success, message = add_authorized_user(user_data)
+            
+            if success:
+                response_data = {"message": message, "user": user_data}
+                resp = make_response(jsonify(response_data), 201)
+            else:
+                error_response = {"error": "operation_failed", "error_description": message}
+                resp = make_response(jsonify(error_response), 400)
+            
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao adicionar usuário: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
+    @app.route("/api/admin/users/<email>", methods=["OPTIONS"])
+    def admin_user_delete_preflight(email):
+        """CORS preflight para remoção de usuário"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/admin/users/<email>", methods=["DELETE"])
+    @rate_limit("/api/admin/users")
+    @require_admin
+    def remove_admin_user(email):
+        """Remover usuário autorizado (admin only)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            if not email:
+                return jsonify({"error": "invalid_request", "error_description": "Email é obrigatório"}), 400
+            
+            success, message = remove_authorized_user(email, "admin")  # TODO: identificar admin real
+            
+            if success:
+                response_data = {"message": message}
+                resp = make_response(jsonify(response_data), 200)
+            else:
+                error_response = {"error": "operation_failed", "error_description": message}
+                status_code = 404 if "não encontrado" in message else 400
+                resp = make_response(jsonify(error_response), status_code)
+            
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao remover usuário: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
+    @app.route("/api/request-access", methods=["OPTIONS"])
+    def request_access_preflight():
+        """CORS preflight para solicitação de acesso"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/request-access", methods=["POST"])
+    @rate_limit("/api/request-access")
+    def request_access():
+        """Solicitar acesso ao sistema (público)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            data = request.get_json()
+            if not data:
+                return jsonify({"error": "invalid_request", "error_description": "Dados JSON são obrigatórios"}), 400
+            
+            required_fields = ['email', 'name', 'provider']
+            for field in required_fields:
+                if field not in data or not data[field]:
+                    return jsonify({"error": "invalid_request", "error_description": f"Campo '{field}' é obrigatório"}), 400
+            
+            # Criar solicitação
+            request_data = {
+                "email": data['email'],
+                "name": data['name'],
+                "provider": data['provider'],
+                "message": data.get('message', '')
+            }
+            
+            success, message = add_pending_request(request_data)
+            
+            if success:
+                response_data = {
+                    "message": message,
+                    "status": "pending",
+                    "next_steps": "Sua solicitação foi registrada e será analisada por um administrador."
+                }
+                resp = make_response(jsonify(response_data), 201)
+            else:
+                error_response = {"error": "operation_failed", "error_description": message}
+                resp = make_response(jsonify(error_response), 400)
+            
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao processar solicitação de acesso: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
 
     # Aplicar security headers em todas as respostas
     @app.after_request

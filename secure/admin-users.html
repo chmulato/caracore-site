@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gerenciar Usuários - Administração</title>
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251102" />
+  <link rel="stylesheet" href="/secure/css/secure-restrita.css?v=20251102" />
+  <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251102" />
+  <style>
+    .admin-header {
+      background: linear-gradient(135deg, #1f2937, #374151);
+      color: white;
+      padding: 2rem 0;
+      margin-bottom: 2rem;
+    }
+    
+    .admin-title {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .admin-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border-left: 4px solid;
+    }
+    
+    .stat-card.users { border-left-color: #3b82f6; }
+    .stat-card.pending { border-left-color: #f59e0b; }
+    .stat-card.admins { border-left-color: #10b981; }
+    .stat-card.requests { border-left-color: #8b5cf6; }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    
+    .stat-label {
+      color: #6b7280;
+      font-size: 0.875rem;
+      margin: 0.25rem 0 0 0;
+    }
+    
+    .section-card {
+      background: white;
+      border-radius: 0.75rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    
+    .section-header {
+      padding: 1.5rem;
+      border-bottom: 1px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .badge {
+      background: #f3f4f6;
+      color: #374151;
+      padding: 0.25rem 0.75rem;
+      border-radius: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+    
+    .badge.pending { background: #fef3c7; color: #92400e; }
+    .badge.admin { background: #d1fae5; color: #065f46; }
+    .badge.user { background: #dbeafe; color: #1e40af; }
+    
+    .controls-bar {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .search-input {
+      width: 100%;
+      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .search-icon {
+      position: absolute;
+      left: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9ca3af;
+      width: 1rem;
+      height: 1rem;
+    }
+    
+    .filter-select {
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      background: white;
+    }
+    
+    .btn {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    
+    .btn-primary {
+      background: #3b82f6;
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+    
+    .btn-success {
+      background: #10b981;
+      color: white;
+    }
+    
+    .btn-success:hover {
+      background: #059669;
+    }
+    
+    .btn-danger {
+      background: #ef4444;
+      color: white;
+    }
+    
+    .btn-danger:hover {
+      background: #dc2626;
+    }
+    
+    .btn-secondary {
+      background: #6b7280;
+      color: white;
+    }
+    
+    .btn-secondary:hover {
+      background: #4b5563;
+    }
+    
+    .table-container {
+      overflow-x: auto;
+    }
+    
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    
+    .data-table th,
+    .data-table td {
+      padding: 0.75rem;
+      text-align: left;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    
+    .data-table th {
+      background: #f9fafb;
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.875rem;
+    }
+    
+    .data-table td {
+      font-size: 0.875rem;
+    }
+    
+    .data-table tr:hover {
+      background: #f9fafb;
+    }
+    
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    
+    .user-avatar {
+      width: 2rem;
+      height: 2rem;
+      background: #e5e7eb;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.75rem;
+    }
+    
+    .user-details {
+      flex: 1;
+    }
+    
+    .user-name {
+      font-weight: 500;
+      margin: 0;
+    }
+    
+    .user-email {
+      color: #6b7280;
+      font-size: 0.75rem;
+      margin: 0;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .btn-sm {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+    }
+    
+    .pending-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .pending-header {
+      display: flex;
+      justify-content: between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    
+    .pending-info {
+      flex: 1;
+    }
+    
+    .pending-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    
+    .request-message {
+      background: #f9fafb;
+      border-radius: 0.375rem;
+      padding: 0.75rem;
+      font-size: 0.875rem;
+      color: #374151;
+      margin-top: 0.5rem;
+    }
+    
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    
+    .modal-content {
+      background: white;
+      border-radius: 0.75rem;
+      padding: 2rem;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0;
+    }
+    
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #6b7280;
+    }
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-label {
+      display: block;
+      font-weight: 500;
+      color: #374151;
+      margin-bottom: 0.5rem;
+      font-size: 0.875rem;
+    }
+    
+    .form-input, .form-select {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      box-sizing: border-box;
+    }
+    
+    .empty-state {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #6b7280;
+    }
+    
+    .empty-icon {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto 1rem;
+      color: #d1d5db;
+    }
+    
+    .loading {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
+    .icon-sm {
+      width: 1rem;
+      height: 1rem;
+    }
+    
+    .refresh-indicator {
+      display: none;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .auto-refresh {
+      font-size: 0.75rem;
+      color: #6b7280;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-shield-lock" viewBox="0 0 24 24">
+      <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24">
+      <circle cx="9" cy="7" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.85" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M21 21l-4.35-4.35" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24">
+      <path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path d="M20 6L9 17l-5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24">
+      <path d="M18 6L6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-edit" viewBox="0 0 24 24">
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M18.5 2.5a2.12 2.12 0 0 1 3 3L12 15l-4 1 1-4z" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24">
+      <path d="M1 4v6h6M23 20v-6h-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="icon-google" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.4c-.2 1.2-.9 2.2-1.9 2.8v2.3h3.1c1.8-1.7 2.9-4.2 2.9-6.8z"/>
+      <path fill="#34A853" d="M12 22c2.6 0 4.9-.9 6.5-2.5l-3.1-2.3c-.9.6-2 .9-3.4.9-2.6 0-4.7-1.8-5.5-4.2H3.4v2.7A10 10 0 0 0 12 22z"/>
+      <path fill="#FBBC05" d="M6.5 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.3H3.4A10 10 0 0 0 2 12c0 1.6.4 3.1 1.4 4.7L6.5 14z"/>
+      <path fill="#EA4335" d="M12 6.5c1.4 0 2.6.5 3.5 1.5l2.6-2.5C16.9 3.5 14.6 2.4 12 2.4c-3.6 0-6.6 2.1-8.1 5l3.1 2.4c.7-2.4 2.9-4.3 5-4.3z"/>
+    </symbol>
+    <symbol id="icon-microsoft" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="8" height="8" fill="#f25022"/>
+      <rect x="13" y="3" width="8" height="8" fill="#7fba00"/>
+      <rect x="3" y="13" width="8" height="8" fill="#00a4ef"/>
+      <rect x="13" y="13" width="8" height="8" fill="#ffb900"/>
+    </symbol>
+  </svg>
+
+  <div class="site-shell">
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="nav-brand" href="/">
+          <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+          <span>Cara Core Informática</span>
+        </a>
+        <nav class="nav-links">
+          <a class="nav-link" href="/secure/restrita.html">Área 51</a>
+          <span class="nav-cta" style="background: #3b82f6;">
+            <svg aria-hidden="true"><use href="#icon-users"></use></svg>
+            <span>Admin</span>
+          </span>
+        </nav>
+      </div>
+    </header>
+
+    <main id="mainContent" class="page-content">
+      <div class="admin-header">
+        <div class="container">
+          <h1 class="admin-title">
+            <div class="admin-icon">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-users"></use></svg>
+            </div>
+            Gerenciar Usuários
+          </h1>
+          <div class="auto-refresh">
+            <svg class="icon-sm refresh-indicator" aria-hidden="true"><use href="#icon-refresh"></use></svg>
+            <span>Atualização automática a cada 30s</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <!-- Estatísticas -->
+        <div class="stats-grid">
+          <div class="stat-card users">
+            <p class="stat-number" id="totalUsers">-</p>
+            <p class="stat-label">Usuários Autorizados</p>
+          </div>
+          <div class="stat-card pending">
+            <p class="stat-number" id="totalPending">-</p>
+            <p class="stat-label">Solicitações Pendentes</p>
+          </div>
+          <div class="stat-card admins">
+            <p class="stat-number" id="totalAdmins">-</p>
+            <p class="stat-label">Administradores</p>
+          </div>
+          <div class="stat-card requests">
+            <p class="stat-number" id="totalRequests">-</p>
+            <p class="stat-label">Solicitações Hoje</p>
+          </div>
+        </div>
+
+        <!-- Solicitações Pendentes -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-check"></use></svg>
+              Solicitações Pendentes
+              <span class="badge pending" id="pendingBadge">0</span>
+            </h2>
+            <button class="btn btn-secondary" id="refreshBtn">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-refresh"></use></svg>
+              Atualizar
+            </button>
+          </div>
+          <div id="pendingContainer">
+            <div class="empty-state" id="noPendingState">
+              <svg class="empty-icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+              <p>Nenhuma solicitação pendente</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Usuários Autorizados -->
+        <div class="section-card">
+          <div class="section-header">
+            <h2 class="section-title">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-users"></use></svg>
+              Usuários Autorizados
+            </h2>
+            <button class="btn btn-primary" id="addUserBtn">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-plus"></use></svg>
+              Adicionar Usuário
+            </button>
+          </div>
+          
+          <div style="padding: 0 1.5rem 1rem;">
+            <div class="controls-bar">
+              <div class="search-box">
+                <svg class="search-icon" aria-hidden="true"><use href="#icon-search"></use></svg>
+                <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nome ou email...">
+              </div>
+              <select class="filter-select" id="roleFilter">
+                <option value="">Todos os roles</option>
+                <option value="admin">Administradores</option>
+                <option value="user">Usuários</option>
+              </select>
+              <select class="filter-select" id="providerFilter">
+                <option value="">Todos os provedores</option>
+                <option value="google">Google</option>
+                <option value="microsoft">Microsoft</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="table-container">
+            <table class="data-table" id="usersTable">
+              <thead>
+                <tr>
+                  <th>Usuário</th>
+                  <th>Provedor</th>
+                  <th>Role</th>
+                  <th>Aprovado em</th>
+                  <th>Ações</th>
+                </tr>
+              </thead>
+              <tbody id="usersTableBody">
+                <!-- Conteúdo será preenchido via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal Adicionar/Editar Usuário -->
+  <div class="modal" id="userModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Adicionar Usuário</h3>
+        <button class="modal-close" id="modalClose">&times;</button>
+      </div>
+      <form id="userForm">
+        <div class="form-group">
+          <label for="userEmail" class="form-label">Email *</label>
+          <input type="email" id="userEmail" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="userName" class="form-label">Nome Completo *</label>
+          <input type="text" id="userName" class="form-input" required>
+        </div>
+        <div class="form-group">
+          <label for="userProvider" class="form-label">Provedor *</label>
+          <select id="userProvider" class="form-select" required>
+            <option value="">Selecione...</option>
+            <option value="google">Google</option>
+            <option value="microsoft">Microsoft</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="userRole" class="form-label">Role *</label>
+          <select id="userRole" class="form-select" required>
+            <option value="user">Usuário</option>
+            <option value="admin">Administrador</option>
+          </select>
+        </div>
+        <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+          <button type="button" class="btn btn-secondary" id="cancelBtn">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="saveBtn">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/secure/js/admin-users-manager.js?v=20251102"></script>
+  <script>
+    // Inicializar o dashboard quando a página carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof AdminUsersManager !== 'undefined') {
+        AdminUsersManager.init();
+      } else {
+        console.error('AdminUsersManager não carregado');
+      }
+    });
+  </script>
+</body>
+</html>

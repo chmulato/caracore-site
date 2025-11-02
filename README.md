@@ -46,18 +46,21 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
       - [3. Executar o Ambiente](#3-executar-o-ambiente)
       - [4. Verificação do Ambiente](#4-verificação-do-ambiente)
       - [5. Testes Automatizados](#5-testes-automatizados)
-      - [Troubleshooting](#troubleshooting)
+      - [6. Troubleshooting](#6-troubleshooting)
     - [Backend Flask (Azure App Service)](#backend-flask-azure-app-service)
-      - [Gerar o pacote `backend.zip`](#gerar-o-pacote-backendzip)
-      - [Método Recomendado: Docker (Linux-compatible)](#método-recomendado-docker-linux-compatible)
-      - [Método Alternativo: Utilitário Cross-platform](#método-alternativo-utilitário-cross-platform)
+      - [Empacotamento para Deploy](#empacotamento-para-deploy)
+        - [Método Recomendado: Docker (Linux-compatible)](#método-recomendado-docker-linux-compatible)
+        - [Método Alternativo: Utilitário Cross-platform](#método-alternativo-utilitário-cross-platform)
     - [Deploy no Azure](#deploy-no-azure)
-    - [Logs Seguros (Área 51)](#logs-seguros-área-51)
-    - [Resolvendo "redirect\_uri is not valid"](#resolvendo-redirect_uri-is-not-valid)
-      - [Erro `callback_failed&reason=authority mismatch` (Microsoft Entra)](#erro-callback_failedreasonauthority-mismatch-microsoft-entra)
-      - [Google Cloud Console](#google-cloud-console)
-      - [Microsoft Azure/Entra (App Registration)](#microsoft-azureentra-app-registration)
-    - [Compilar Scripts Python em Executáveis](#compilar-scripts-python-em-executáveis)
+    - [Monitoramento e Logs](#monitoramento-e-logs)
+      - [Logs Estruturados (Área 51)](#logs-estruturados-área-51)
+    - [Troubleshooting](#troubleshooting)
+      - [Resolvendo "redirect\_uri is not valid"](#resolvendo-redirect_uri-is-not-valid)
+      - [Erro "authority mismatch" (Microsoft Entra)](#erro-authority-mismatch-microsoft-entra)
+      - [Verificar Configuração Google Cloud Console](#verificar-configuração-google-cloud-console)
+      - [Verificar Configuração Microsoft Azure/Entra](#verificar-configuração-microsoft-azureentra)
+    - [Ferramentas e Utilitários](#ferramentas-e-utilitários)
+      - [Compilar Scripts Python em Executáveis](#compilar-scripts-python-em-executáveis)
       - [Compilando `monitor_exe.py`](#compilando-monitor_exepy)
       - [Compilando `get_wi_fi.py`](#compilando-get_wi_fipy)
 
@@ -215,14 +218,14 @@ cara-core/
 ├── vercel.json                 # Configuração Vercel (opcional)
 ├── package.json                # Dependências Node.js (se aplicável)
 ├── requirements.txt            # Dependências Python do projeto
-├── run_script.py               # Launcher de scripts Python
-├── server.py                   # Servidor local de desenvolvimento
-├── teste.py                    # Testes do site estático
-├── teste_end_point_local.py    # Testes do backend local
-├── teste_end_point_azure.py    # Testes do backend Azure
-├── deploy_to_azure.py          # Script de deploy automatizado
+├── run_script.py               # Launcher de scripts Python (executa scripts/)
 ├── README.md                   # Este arquivo
 ├── LICENSE                     # Licença de uso
+│
+├── area51/                     # Documentação complementar
+│   └── wiki/                   # Wiki da Área 51
+│       ├── index.html          # Página principal da wiki
+│       └── assets/             # Recursos da wiki (CSS, JS, imagens)
 │
 ├── secure/                     # Área 51 (páginas autenticadas)
 │   ├── index.html              # Página de login OIDC
@@ -250,31 +253,38 @@ cara-core/
 │   ├── docker-entrypoint.sh    # Script de inicialização
 │   └── backend.env.sample      # Template de variáveis Docker
 │
-├── scripts/                    # Scripts de automação e deploy
-│   ├── README_PY.md            # Documentação dos scripts
-│   ├── package_backend_with_docker.py  # Empacotamento Docker
-│   ├── deploy_production.py    # Deploy automatizado
-│   ├── rollback.py             # Rollback de versões
-│   ├── executar_ut_secure.py   # Testes unitários OIDC
-│   └── backend.zip             # Pacote gerado para deploy
+├── scripts/                                # Scripts de automação e deploy
+│   ├── README_PY.md                        # Documentação completa dos scripts
+│   ├── server.py                           # Servidor local de desenvolvimento
+│   ├── teste.py                            # Testes do site estático
+│   ├── deploy_to_azure.py                  # Deploy manual para Azure
+│   ├── deploy_production.py                # Deploy automatizado com backup
+│   ├── rollback.py                         # Rollback de versões
+│   ├── package_backend_with_docker.py      # Empacotamento Docker
+│   ├── executar_ut_secure.py               # Testes unitários OIDC
+│   ├── verificar_backend_azure_simples.py  # Verificação Azure
+│   ├── verificar_producao.py               # Diagnóstico completo produção
+│   ├── configurar_backend_azure.py         # Configuração Azure
+│   └── backend.zip                         # Pacote gerado para deploy
 │
-├── docs/                       # Documentação técnica completa
-│   ├── INDEX.md                # Índice geral da documentação
-│   ├── ARQUITETURA.md          # Arquitetura do sistema
-│   ├── AZURE_DEPLOY.md         # Guia de deploy Azure
-│   ├── STATUS-ATUAL.md         # Status atual do projeto
-│   ├── GUIA-DESENVOLVEDOR-AUTH.md  # Guia de autenticação
-│   ├── VERSOES.md              # Versões de dependências
-│   ├── fases/                  # Documentação por fase
-│   │   ├── fase-1/             # Fase 1: Fundação OAuth 2.1
-│   │   ├── fase-2/             # Fase 2: Consentimento e Logout
-│   │   ├── fase-3/             # Fase 3: Auditoria e Testes
-│   │   └── fase-4/             # Fase 4: Controle de Acesso
-│   ├── pendencias/             # Pendências e roadmap
-│   │   ├── FASE-CADASTRO.md    # Enumeração Fase 4
-│   │   ├── CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md
-│   │   └── CHECKLIST-SEGURANCA-OIDC.md
-│   └── img/                    # Imagens da documentação
+├── docs/                                # Documentação técnica completa
+│   ├── INDEX.md                         # Índice geral da documentação
+│   ├── AZURE_DEPLOY.md                  # Guia de deploy Azure
+│   ├── AZURE_MONITOR.md                 # Monitoramento e observabilidade
+│   ├── VERSOES.md                       # Versões de dependências
+│   ├── GITHUB_ACTIONS_SETUP.md          # Configuração CI/CD
+│   ├── DEPLOY_STATUS_GITHUB_ACTIONS.md  # Status pipelines
+│   ├── fases/                           # Documentação por fase
+│   │   ├── README.md                    # Visão geral das fases
+│   │   ├── fase-1/                      # Fase 1: OAuth 2.1 + OIDC (100%)
+│   │   ├── fase-2/                      # Fase 2: Logout e Segurança (100%)
+│   │   ├── fase-3/                      # Fase 3: Auditoria e Backend (90%)
+│   │   └── fase-4/                      # Fase 4: Monitoramento (planejado)
+│   ├── pendencias/                      # Status e pendências
+│   │   ├── STATUS-ATUAL.md              # Status detalhado do projeto
+│   │   ├── FASE-CADASTRO.md             # Enumeração Fase 4
+│   │   └── CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md
+│   └── img/                             # Imagens da documentação
 │
 ├── css/                        # Folhas de estilo CSS
 │   └── additional-styles.css   # Estilos customizados
@@ -388,7 +398,7 @@ A administração pode acompanhar eventos em tempo real pela página `secure/adm
 
 ## Detalhes Técnicos
 
-Esta seção contém informações técnicas detalhadas sobre configuração, desenvolvimento e deploy do sistema.
+Esta seção contém informações técnicas detalhadas sobre configuração, desenvolvimento e deploy do sistema. O conteúdo está organizado em ordem lógica de implementação: autenticação, configuração, desenvolvimento, deploy e troubleshooting.
 
 ### Sistema de Autenticação OIDC
 
@@ -747,7 +757,7 @@ python teste_end_point_azure.py --base-url https://sua-api.azurewebsites.net
 
 **Saída esperada:** Todas verificações marcadas como `OK` e mensagem final **"Todos os testes passaram."**
 
-#### Troubleshooting
+#### 6. Troubleshooting
 
 **[Problema]: Python não encontrado**
 
@@ -770,7 +780,7 @@ docker ps
 start "C:\Program Files\Docker\Docker\Docker Desktop.exe"
 ```
 
-**[Problema: Porta em uso**
+**[Problema]: Porta em uso**
 
 ```powershell
 # Verificar porta 8080
@@ -786,8 +796,7 @@ taskkill /PID <PID> /F
 # Garantir que está no ambiente virtual
 .\.venv\Scripts\Activate.ps1
 
-# Reinstalar
- dependências
+# Reinstalar dependências
 python -m pip install -r requirements.txt --force-reinstall
 ```
 
@@ -801,9 +810,9 @@ python -m pip install -r requirements.txt --force-reinstall
 
 ![API Cara-Core em produção](docs/img/pagina_da_api_caracore.png)
 
-#### Gerar o pacote `backend.zip`
+#### Empacotamento para Deploy
 
-#### Método Recomendado: Docker (Linux-compatible)
+##### Método Recomendado: Docker (Linux-compatible)
 
 **Para garantir máxima compatibilidade com Azure App Service**, use o script que gera o pacote dentro de um contêiner Linux:
 
@@ -850,7 +859,7 @@ python scripts/package_backend_with_docker.py --backend-dir="custom-backend"
 - **Builds lentos**: O primeiro download da imagem `python:3.11-bullseye` pode demorar
 - **Logs detalhados**: Sempre disponíveis em `log/package_backend_YYYYMMDD_HHMMSS.log`
 
-#### Método Alternativo: Utilitário Cross-platform
+##### Método Alternativo: Utilitário Cross-platform
 
 Para casos simples ou quando Docker não estiver disponível:
 
@@ -909,42 +918,80 @@ Para validar rapidamente, execute `python teste_end_point_local.py` enquanto o c
 
 > Dica: habilite **Run From Package** ou utilize **Deployment Slots** para fazer deploy sem downtime quando publicar novas versões do `backend.zip`.
 
-### Logs Seguros (Área 51)
+### Monitoramento e Logs
 
-- O endpoint `/logs` aceita eventos JSON com campos autorizados (`ts`, `event`, `session_id`, etc.).
-- Dados sensíveis (tokens, authorization codes, PII) são bloqueados tanto no cliente quanto no servidor.
-- `LOG_RETENTION_DAYS` controla a retenção; os arquivos ficam em `backend/logs/*.jsonl`.
-- Cookies de sessão seguem boas práticas (`HttpOnly`, `Secure`, `SameSite=Strict`).
+#### Logs Estruturados (Área 51)
 
-### Resolvendo "redirect_uri is not valid"
+- O endpoint `/logs` aceita eventos JSON com campos autorizados (`ts`, `event`, `session_id`, etc.)
+- Dados sensíveis (tokens, authorization codes, PII) são bloqueados tanto no cliente quanto no servidor
+- `LOG_RETENTION_DAYS` controla a retenção; os arquivos ficam em `backend/logs/*.jsonl`
+- Cookies de sessão seguem boas práticas (`HttpOnly`, `Secure`, `SameSite=Strict`)
+
+**Visualizar logs:**
+
+```powershell
+# Logs locais
+Get-Content backend\logs\*.jsonl -Tail 20
+
+# Logs Azure (tempo real)
+az webapp log tail --name <APP_NAME> --resource-group <RG>
+```
+
+### Troubleshooting
+
+#### Resolvendo "redirect_uri is not valid"
 
 Problemas comuns de configuração provocam erros "redirect_uri is not valid" (Google) ou `AADSTS9002346` (Microsoft). Ajuste conforme abaixo.
 
-#### Erro `callback_failed&reason=authority mismatch` (Microsoft Entra)
+#### Erro "authority mismatch" (Microsoft Entra)
 
 Esse erro indica que o callback retornou para um provedor diferente do usado no início do fluxo.
 
-1. Certifique-se de iniciar o login com o botão "Continuar com Microsoft".
-2. Se estiver alternando entre Google e Entra no mesmo navegador, limpe o item `cara_core_oidc_provider` do `sessionStorage`/`localStorage` ou execute `window.sessionStorage.removeItem('cara_core_oidc_provider')` no console.
-3. Garanta que a aplicação do Entra possui `https://www.caracore.com.br/secure/callback.html` e `https://chmulato.github.io/cara-core/secure/callback.html` cadastrados.
-4. Após ajustes, force o recarregamento (`Ctrl + F5`) para carregar o `auth-standalone.js` atualizado.
+**Solução:**
 
-#### Google Cloud Console
+1. Certifique-se de iniciar o login com o botão "Continuar com Microsoft"
+2. Se estiver alternando entre Google e Entra no mesmo navegador, limpe o provedor armazenado:
 
-1. Acesse [Google Cloud Console – Credentials](https://console.cloud.google.com/apis/credentials?project=chmulato-web-oauth2).
-2. Abra o OAuth 2.0 Client ID: `1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com`.
-3. Em **Authorized JavaScript origins**, inclua `<https://www.caracore.com.br>` e, se estiver testando localmente com HTTPS, adicione `<http://localhost:8000>`.
-4. Em **Authorized redirect URIs**, inclua `<http://localhost:8000/secure/callback.html>`, `<http://127.0.0.1:8000/secure/callback.html>`, `<https://chmulato.github.io/cara-core/secure/callback.html>` e `<https://www.caracore.com.br/secure/callback.html>`.
-5. Salve e teste novamente.
+   ```javascript
+   window.sessionStorage.removeItem('cara_core_oidc_provider');
+   window.localStorage.removeItem('cara_core_oidc_provider');
+   ```
 
-#### Microsoft Azure/Entra (App Registration)
+3. Garanta que a aplicação do Entra possui as Redirect URIs corretas cadastradas
+4. Force o recarregamento (`Ctrl + F5`) para carregar o `auth-standalone.js` atualizado
 
-1. Acesse [Azure Portal – App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
-2. Localize o app com Client ID `***AZURE_SECRET_REDACTED***`.
-3. Em **Authentication > Platform configurations > Web**, adicione `https://www.caracore.com.br/secure/callback.html`.
-4. Salve e repita o login.
+#### Verificar Configuração Google Cloud Console
 
-### Compilar Scripts Python em Executáveis
+**Checklist de Redirect URIs:**
+
+1. Acesse [Google Cloud Console – Credentials](https://console.cloud.google.com/apis/credentials?project=chmulato-web-oauth2)
+2. Abra o OAuth 2.0 Client ID: `1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com`
+3. Verifique **Authorized JavaScript origins**:
+   - `https://www.caracore.com.br`
+   - `http://localhost:8000` (desenvolvimento)
+4. Verifique **Authorized redirect URIs**:
+   - `http://localhost:8000/secure/callback.html`
+   - `http://127.0.0.1:8000/secure/callback.html`
+   - `https://chmulato.github.io/cara-core/secure/callback.html`
+   - `https://www.caracore.com.br/secure/callback.html`
+5. Salve e teste novamente
+
+#### Verificar Configuração Microsoft Azure/Entra
+
+**Checklist de Redirect URIs:**
+
+1. Acesse [Azure Portal – App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+2. Localize o app com Client ID `***AZURE_SECRET_REDACTED***`
+3. Em **Authentication > Platform configurations > Web**, verifique as Redirect URIs:
+   - `http://localhost:8000/secure/callback.html`
+   - `http://127.0.0.1:8000/secure/callback.html`
+   - `https://chmulato.github.io/cara-core/secure/callback.html`
+   - `https://www.caracore.com.br/secure/callback.html`
+4. Salve e repita o login
+
+### Ferramentas e Utilitários
+
+#### Compilar Scripts Python em Executáveis
 
 Se desejar distribuir as ferramentas internas em formato `.exe`, utilize o PyInstaller.
 

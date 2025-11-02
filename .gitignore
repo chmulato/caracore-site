@@ -22,6 +22,8 @@ prompt_oidc.txt
 # Credenciais e Secrets (Segurança)
 *secret*.json
 *backup*.json
+backup-*-settings.json
+*-settings.json.backup
 *.key
 *.pem
 *.p12
@@ -85,3 +87,5 @@ secrets.txt
 .bfg-report/
 obsoletos_*/
 arquivo_correcoes_*/
+backend*.zip
+*log*.zip

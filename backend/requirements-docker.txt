@@ -1,0 +1,17 @@
+# Dependências do Backend CaraCore - Docker Version (sem JOSE/JWT temporário)
+# Versões testadas e estáveis para produção
+
+# Framework Web
+Flask==3.0.3
+
+# HTTP Client para troca de tokens
+requests==2.32.3
+
+# WSGI Server
+gunicorn==23.0.0
+
+# Carregamento de variáveis de ambiente
+python-dotenv==1.0.1
+
+# Utilitários para logs e debugging
+colorama==0.4.6

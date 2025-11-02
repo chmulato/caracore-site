@@ -21,10 +21,24 @@ from typing import Dict, List, Optional, Tuple, Any
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Caminho para o arquivo de dados
-DATA_DIR = os.path.join(os.path.dirname(__file__), 'data')
+# Caminho para o arquivo de dados com logs de debug
+BASE_DIR = os.path.dirname(__file__)
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 AUTHORIZED_USERS_FILE = os.path.join(DATA_DIR, 'authorized_users.json')
 BACKUP_DIR = os.path.join(DATA_DIR, 'backups')
+
+# Debug inicial para verificar caminhos em Azure
+logger.info(f"Authorization module - BASE_DIR: {BASE_DIR}")
+logger.info(f"Authorization module - DATA_DIR: {DATA_DIR}")
+logger.info(f"Authorization module - AUTHORIZED_USERS_FILE: {AUTHORIZED_USERS_FILE}")
+logger.info(f"Authorization module - File exists: {os.path.exists(AUTHORIZED_USERS_FILE)}")
+
+if os.path.exists(AUTHORIZED_USERS_FILE):
+    logger.info(f"Authorization file found with size: {os.path.getsize(AUTHORIZED_USERS_FILE)} bytes")
+else:
+    logger.error(f"Authorization file NOT FOUND at: {AUTHORIZED_USERS_FILE}")
+    logger.info(f"Directory contents of {DATA_DIR}: {os.listdir(DATA_DIR) if os.path.exists(DATA_DIR) else 'Directory not found'}")
+    logger.info(f"Directory contents of {BASE_DIR}: {os.listdir(BASE_DIR) if os.path.exists(BASE_DIR) else 'Directory not found'}")
 
 
 class AuthorizationError(Exception):

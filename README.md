@@ -1,10 +1,50 @@
 # Cara-Core Informática
 
-Este repositório abriga o site institucional da **Cara-Core Informática**. Aqui você encontra as páginas públicas com serviços, materiais de apoio, apresentações comerciais e a Área 51 — a experiência de login restrito para clientes e parceiros.
+Sistema completo de autenticação OAuth 2.1 + OIDC com controle de acesso granular para área restrita corporativa.
+
+## Sobre o Projeto
+
+O projeto Cara-Core é uma implementação completa de sistema de autenticação e autorização baseado em OAuth 2.1 e OpenID Connect (OIDC). O sistema oferece controle de acesso granular para área restrita, dashboard administrativo e integração com provedores OAuth populares.
+
+**Status:** Produção estável  
+**Versão:** 1.0.0  
+**Ambiente:** [https://caracore-backend-docker.azurewebsites.net]  
+**Frontend:** [https://www.caracore.com.br]
+
+## Características Principais
+
+### Sistema de Autenticação
+
+- **OAuth 2.1 + OIDC:** Implementação completa conforme especificações
+- **PKCE Obrigatório:** Todos os fluxos usam Proof Key for Code Exchange
+- **Múltiplos Provedores:** Google OAuth e Microsoft Entra ID
+- **Tokens JWT:** Validação completa (issuer, audience, expiração)
+- **Logout Federado:** Limpeza segura de sessões
+
+### Sistema de Autorização
+
+- **Controle Granular:** Usuários, roles e permissões
+- **Dashboard Administrativo:** Interface completa para gestão
+- **API REST:** 4 endpoints para operações CRUD
+- **Solicitação de Acesso:** Formulário integrado com aprovação
+- **Auditoria Completa:** Logs estruturados de todas as operações
+
+### Infraestrutura
+
+- **Docker Production:** Azure Container Registry
+- **CI/CD:** GitHub Actions automatizado
+- **Monitoramento:** Azure Application Insights
+- **Backup Automático:** Sistema de backup antes de atualizações
+- **Health Checks:** Monitoramento de saúde da aplicação
 
 ## Índice
 
 - [Cara-Core Informática](#cara-core-informática)
+  - [Sobre o Projeto](#sobre-o-projeto)
+  - [Características Principais](#características-principais)
+    - [Sistema de Autenticação](#sistema-de-autenticação)
+    - [Sistema de Autorização](#sistema-de-autorização)
+    - [Infraestrutura](#infraestrutura)
   - [Índice](#índice)
   - [Documentação Técnica](#documentação-técnica)
     - [Deploy e Operações](#deploy-e-operações)
@@ -27,7 +67,7 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
   - [Contato](#contato)
   - [Detalhes Técnicos](#detalhes-técnicos)
     - [Sistema de Autenticação OIDC](#sistema-de-autenticação-oidc-1)
-      - [Características Principais](#características-principais)
+      - [Características Principais](#características-principais-1)
       - [Páginas e Endpoints](#páginas-e-endpoints)
       - [Documentação Complementar](#documentação-complementar)
     - [Configuração dos Provedores OIDC](#configuração-dos-provedores-oidc)
@@ -679,7 +719,7 @@ O script automaticamente:
 
 - Inicia Docker Desktop (se necessário)
 - Sobe o backend via `docker compose`
-- Serve o site estático em http://localhost:8080
+- Serve o site estático em [http://localhost:8080]
 
 Para desabilitar o início automático do Docker:
 

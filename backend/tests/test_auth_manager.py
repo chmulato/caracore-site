@@ -10,6 +10,12 @@ import unittest
 import hashlib
 import base64
 import time
+import sys
+import os
+
+# Adicionar o diretório pai ao path para importar módulos do backend
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from auth_manager import PKCEValidator, TokenValidator, AuditLogger
 
 

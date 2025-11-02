@@ -5,7 +5,13 @@ Testa rate limiting para proteção contra força bruta
 """
 import unittest
 import time
+import sys
+import os
 from unittest.mock import Mock, patch
+
+# Adicionar o diretório pai ao path para importar módulos do backend
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from rate_limiter import RateLimiter, RateLimitConfig
 
 

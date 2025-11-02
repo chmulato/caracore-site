@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Solicitar Acesso - Área 51</title>
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251102" />
+  <link rel="stylesheet" href="/secure/css/secure-restrita.css?v=20251102" />
+  <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251102" />
+  <style>
+    .request-form-container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+    
+    .form-header {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .form-header-icon {
+      width: 3rem;
+      height: 3rem;
+      margin: 0 auto 1rem;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .form-header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+    }
+    
+    .form-header p {
+      margin: 0;
+      opacity: 0.9;
+      font-size: 1rem;
+    }
+    
+    .form-body {
+      padding: 2rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .form-label.required::after {
+      content: " *";
+      color: #dc2626;
+    }
+    
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #d1d5db;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      transition: all 0.2s;
+      box-sizing: border-box;
+    }
+    
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+    
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    
+    .form-error {
+      color: #dc2626;
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    
+    .form-input.error, .form-select.error, .form-textarea.error {
+      border-color: #dc2626;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+    
+    .provider-selector {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    
+    .provider-option {
+      position: relative;
+    }
+    
+    .provider-radio {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .provider-label {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #f9fafb;
+    }
+    
+    .provider-radio:checked + .provider-label {
+      border-color: #3b82f6;
+      background: #eff6ff;
+    }
+    
+    .provider-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    
+    .provider-name {
+      font-weight: 600;
+      color: #374151;
+    }
+    
+    .btn-submit {
+      width: 100%;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-submit:hover:not(:disabled) {
+      background: #2563eb;
+      transform: translateY(-1px);
+    }
+    
+    .btn-submit:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .btn-back {
+      width: 100%;
+      background: transparent;
+      color: #6b7280;
+      border: 1px solid #d1d5db;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .btn-back:hover {
+      background: #f9fafb;
+      border-color: #9ca3af;
+    }
+    
+    .loading-spinner {
+      width: 1.25rem;
+      height: 1.25rem;
+      border: 2px solid transparent;
+      border-top: 2px solid currentColor;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      display: none;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .success-message, .error-message {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 1.5rem;
+      display: none;
+    }
+    
+    .success-message {
+      background: #dcfce7;
+      border: 1px solid #86efac;
+      color: #166534;
+    }
+    
+    .error-message {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+    
+    .char-counter {
+      font-size: 0.8rem;
+      color: #6b7280;
+      text-align: right;
+      margin-top: 0.25rem;
+    }
+    
+    .icon-sm {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-shield-lock" viewBox="0 0 24 24">
+      <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+      <path d="M3 6h18l-9 9-9-9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <rect x="2" y="6" width="20" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+    </symbol>
+    <symbol id="icon-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24">
+      <path d="M22 2 11 13M22 2l-7 20-4-9-9-4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="M19 12H5M12 19l-7-7 7-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-google" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.4c-.2 1.2-.9 2.2-1.9 2.8v2.3h3.1c1.8-1.7 2.9-4.2 2.9-6.8z"/>
+      <path fill="#34A853" d="M12 22c2.6 0 4.9-.9 6.5-2.5l-3.1-2.3c-.9.6-2 .9-3.4.9-2.6 0-4.7-1.8-5.5-4.2H3.4v2.7A10 10 0 0 0 12 22z"/>
+      <path fill="#FBBC05" d="M6.5 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.3H3.4A10 10 0 0 0 2 12c0 1.6.4 3.1 1.4 4.7L6.5 14z"/>
+      <path fill="#EA4335" d="M12 6.5c1.4 0 2.6.5 3.5 1.5l2.6-2.5C16.9 3.5 14.6 2.4 12 2.4c-3.6 0-6.6 2.1-8.1 5l3.1 2.4c.7-2.4 2.9-4.3 5-4.3z"/>
+    </symbol>
+    <symbol id="icon-microsoft" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="8" height="8" fill="#f25022"/>
+      <rect x="13" y="3" width="8" height="8" fill="#7fba00"/>
+      <rect x="3" y="13" width="8" height="8" fill="#00a4ef"/>
+      <rect x="13" y="13" width="8" height="8" fill="#ffb900"/>
+    </symbol>
+  </svg>
+
+  <div class="site-shell">
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="nav-brand" href="/">
+          <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+          <span>Cara Core Informática</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="navLinks" aria-expanded="false" id="navToggle">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav-links" id="navLinks">
+          <a class="nav-link" href="/index.html#home">Início</a>
+          <a class="nav-link" href="/index.html#servicos">Serviços</a>
+          <a class="nav-link" href="/index.html#sobre">Sobre</a>
+          <a class="nav-link" href="/index.html#diferenciais">Diferenciais</a>
+          <a class="nav-link" href="/index.html#contato">Contato</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="mainContent" class="page-content">
+      <div class="container">
+        <div class="request-form-container">
+          <div class="form-header">
+            <div class="form-header-icon">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-mail"></use></svg>
+            </div>
+            <h1>Solicitar Acesso</h1>
+            <p>Preencha o formulário abaixo para solicitar autorização de acesso à Área 51</p>
+          </div>
+          
+          <div class="form-body">
+            <div id="successMessage" class="success-message">
+              <svg class="icon-sm" aria-hidden="true" style="display: inline; margin-right: 0.5rem;"><use href="#icon-check-circle"></use></svg>
+              <span></span>
+            </div>
+            
+            <div id="errorMessage" class="error-message">
+              <span></span>
+            </div>
+            
+            <form id="requestForm" novalidate>
+              <div class="form-group">
+                <label for="email" class="form-label required">Email</label>
+                <input type="email" id="email" name="email" class="form-input" 
+                       placeholder="seu.email@empresa.com" required>
+                <div class="form-error" id="emailError"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="name" class="form-label required">Nome Completo</label>
+                <input type="text" id="name" name="name" class="form-input" 
+                       placeholder="Seu nome completo" required>
+                <div class="form-error" id="nameError"></div>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label required">Provedor de Autenticação</label>
+                <div class="provider-selector">
+                  <div class="provider-option">
+                    <input type="radio" id="google" name="provider" value="google" class="provider-radio" required>
+                    <label for="google" class="provider-label">
+                      <svg class="provider-icon" aria-hidden="true"><use href="#icon-google"></use></svg>
+                      <span class="provider-name">Google</span>
+                    </label>
+                  </div>
+                  <div class="provider-option">
+                    <input type="radio" id="microsoft" name="provider" value="microsoft" class="provider-radio" required>
+                    <label for="microsoft" class="provider-label">
+                      <svg class="provider-icon" aria-hidden="true"><use href="#icon-microsoft"></use></svg>
+                      <span class="provider-name">Microsoft</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="form-error" id="providerError"></div>
+              </div>
+              
+              <div class="form-group">
+                <label for="message" class="form-label">Motivo da Solicitação</label>
+                <textarea id="message" name="message" class="form-textarea" 
+                          placeholder="Descreva brevemente por que você precisa acessar a Área 51..." 
+                          maxlength="500"></textarea>
+                <div class="char-counter">
+                  <span id="charCount">0</span>/500 caracteres
+                </div>
+                <div class="form-error" id="messageError"></div>
+              </div>
+              
+              <button type="submit" class="btn-submit" id="submitBtn">
+                <svg class="icon-sm" aria-hidden="true"><use href="#icon-send"></use></svg>
+                <div class="loading-spinner" id="loadingSpinner"></div>
+                <span id="submitText">Enviar Solicitação</span>
+              </button>
+            </form>
+            
+            <a href="/secure/access-denied.html" class="btn-back">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-arrow-left"></use></svg>
+              Voltar
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <div class="footer-brand">
+            <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+            <span>Cara Core Informática</span>
+          </div>
+          <p class="footer-desc">
+            Soluções tecnológicas com foco em segurança e inovação.
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Segurança</h4>
+          <ul class="footer-links">
+            <li><a href="/politica/politica-privacidade.html">Política de Privacidade</a></li>
+            <li><a href="/politica/termos-servico.html">Termos de Serviço</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Suporte</h4>
+          <ul class="footer-links">
+            <li><a href="/index.html#contato">Contato</a></li>
+            <li><a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 Cara Core Informática. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('requestForm');
+      const submitBtn = document.getElementById('submitBtn');
+      const loadingSpinner = document.getElementById('loadingSpinner');
+      const submitText = document.getElementById('submitText');
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      const messageTextarea = document.getElementById('message');
+      const charCount = document.getElementById('charCount');
+      
+      // Pre-fill com dados do OAuth se disponível
+      const urlParams = new URLSearchParams(window.location.search);
+      const userEmail = urlParams.get('email') || localStorage.getItem('user_email');
+      const provider = urlParams.get('provider') || localStorage.getItem('auth_provider');
+      
+      if (userEmail) {
+        document.getElementById('email').value = userEmail;
+      }
+      
+      if (provider) {
+        const providerRadio = document.getElementById(provider);
+        if (providerRadio) {
+          providerRadio.checked = true;
+        }
+      }
+      
+      // Character counter para textarea
+      messageTextarea.addEventListener('input', function() {
+        const currentLength = this.value.length;
+        charCount.textContent = currentLength;
+        
+        if (currentLength > 450) {
+          charCount.style.color = '#dc2626';
+        } else if (currentLength > 400) {
+          charCount.style.color = '#f59e0b';
+        } else {
+          charCount.style.color = '#6b7280';
+        }
+      });
+      
+      // Validação em tempo real
+      function validateField(field, errorElement, validator) {
+        field.addEventListener('blur', function() {
+          const error = validator(this.value);
+          if (error) {
+            this.classList.add('error');
+            errorElement.textContent = error;
+            errorElement.style.display = 'block';
+          } else {
+            this.classList.remove('error');
+            errorElement.style.display = 'none';
+          }
+        });
+        
+        field.addEventListener('input', function() {
+          if (this.classList.contains('error')) {
+            const error = validator(this.value);
+            if (!error) {
+              this.classList.remove('error');
+              errorElement.style.display = 'none';
+            }
+          }
+        });
+      }
+      
+      // Validators
+      validateField(
+        document.getElementById('email'),
+        document.getElementById('emailError'),
+        function(value) {
+          if (!value.trim()) return 'Email é obrigatório';
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(value)) return 'Email inválido';
+          return null;
+        }
+      );
+      
+      validateField(
+        document.getElementById('name'),
+        document.getElementById('nameError'),
+        function(value) {
+          if (!value.trim()) return 'Nome é obrigatório';
+          if (value.trim().length < 2) return 'Nome deve ter pelo menos 2 caracteres';
+          return null;
+        }
+      );
+      
+      // Submit form
+      form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Validar todos os campos
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+        
+        let hasErrors = false;
+        
+        // Validar email
+        if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+          document.getElementById('email').classList.add('error');
+          document.getElementById('emailError').textContent = 'Email válido é obrigatório';
+          document.getElementById('emailError').style.display = 'block';
+          hasErrors = true;
+        }
+        
+        // Validar nome
+        if (!data.name || data.name.trim().length < 2) {
+          document.getElementById('name').classList.add('error');
+          document.getElementById('nameError').textContent = 'Nome completo é obrigatório';
+          document.getElementById('nameError').style.display = 'block';
+          hasErrors = true;
+        }
+        
+        // Validar provider
+        if (!data.provider) {
+          document.getElementById('providerError').textContent = 'Selecione o provedor de autenticação';
+          document.getElementById('providerError').style.display = 'block';
+          hasErrors = true;
+        }
+        
+        if (hasErrors) {
+          return;
+        }
+        
+        // Mostrar loading
+        submitBtn.disabled = true;
+        loadingSpinner.style.display = 'block';
+        submitText.textContent = 'Enviando...';
+        errorMessage.style.display = 'none';
+        successMessage.style.display = 'none';
+        
+        try {
+          const response = await fetch('/api/request-access', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: data.email.trim(),
+              name: data.name.trim(),
+              provider: data.provider,
+              message: data.message ? data.message.trim() : ''
+            })
+          });
+          
+          const result = await response.json();
+          
+          if (response.ok) {
+            // Sucesso
+            successMessage.querySelector('span').textContent = 
+              result.message + ' ' + (result.next_steps || '');
+            successMessage.style.display = 'block';
+            form.reset();
+            charCount.textContent = '0';
+            
+            // Redirecionar após 3 segundos
+            setTimeout(() => {
+              window.location.href = '/secure/access-denied.html?requested=true';
+            }, 3000);
+          } else {
+            // Erro
+            errorMessage.querySelector('span').textContent = 
+              result.error_description || 'Erro ao enviar solicitação';
+            errorMessage.style.display = 'block';
+          }
+          
+        } catch (error) {
+          console.error('Erro na solicitação:', error);
+          errorMessage.querySelector('span').textContent = 
+            'Erro de conexão. Tente novamente em alguns momentos.';
+          errorMessage.style.display = 'block';
+        } finally {
+          // Esconder loading
+          submitBtn.disabled = false;
+          loadingSpinner.style.display = 'none';
+          submitText.textContent = 'Enviar Solicitação';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

@@ -6,13 +6,12 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 
 - [Cara-Core Informática](#cara-core-informática)
   - [Índice](#índice)
-  - [📚 Documentação Técnica](#-documentação-técnica)
-    - [🚀 Deploy e Operações (ATUALIZADO 01/11/2025)](#-deploy-e-operações-atualizado-01112025)
+  - [Documentação Técnica](#documentação-técnica)
+    - [Deploy e Operações](#deploy-e-operações)
     - [Scripts Python](#scripts-python)
-    - [Configuração e Arquitetura](#configuração-e-arquitetura)
-    - [Testes e Validação](#testes-e-validação)
+    - [Fases do Projeto](#fases-do-projeto)
+    - [Status e Progresso](#status-e-progresso)
     - [Sistema de Autenticação (OIDC)](#sistema-de-autenticação-oidc)
-    - [Arquitetura e Soluções](#arquitetura-e-soluções)
   - [Conteúdo do Site - Visão Geral](#conteúdo-do-site---visão-geral)
     - [Visual da Página Principal](#visual-da-página-principal)
     - [Visual da Página de Login - Área 51](#visual-da-página-de-login---área-51)
@@ -21,18 +20,33 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
     - [Serviços Oferecidos](#serviços-oferecidos)
     - [Área de Segurança](#área-de-segurança)
     - [Materiais Digitais e Apostilas](#materiais-digitais-e-apostilas)
-    - [Estrutura do Site](#estrutura-do-site)
+    - [Estrutura do Repositório](#estrutura-do-repositório)
   - [Área 51 (Visão Geral)](#área-51-visão-geral)
   - [Como Visualizar](#como-visualizar)
   - [Observações](#observações)
   - [Contato](#contato)
   - [Detalhes Técnicos](#detalhes-técnicos)
     - [Sistema de Autenticação OIDC](#sistema-de-autenticação-oidc-1)
-      - [Documentação do Sistema de Autenticação](#documentação-do-sistema-de-autenticação)
-    - [Configuração OIDC (Azure / Google)](#configuração-oidc-azure--google)
-      - [Fluxo recomendado de redirecionamento](#fluxo-recomendado-de-redirecionamento)
-      - [Persistência do provedor selecionado](#persistência-do-provedor-selecionado)
-    - [Desenvolvimento Local (Windows/PowerShell + VS Code)](#desenvolvimento-local-windowspowershell--vs-code)
+      - [Características Principais](#características-principais)
+      - [Páginas e Endpoints](#páginas-e-endpoints)
+      - [Documentação Complementar](#documentação-complementar)
+    - [Configuração dos Provedores OIDC](#configuração-dos-provedores-oidc)
+      - [Redirect URIs Essenciais](#redirect-uris-essenciais)
+      - [Microsoft Entra ID (Azure)](#microsoft-entra-id-azure)
+      - [Google OAuth (Gmail)](#google-oauth-gmail)
+      - [Verificação da Configuração](#verificação-da-configuração)
+    - [Fluxo de Autenticação](#fluxo-de-autenticação)
+      - [Sequência do Fluxo OAuth 2.1 + PKCE](#sequência-do-fluxo-oauth-21--pkce)
+      - [Configuração Personalizada](#configuração-personalizada)
+      - [Persistência de Sessão](#persistência-de-sessão)
+    - [Desenvolvimento Local](#desenvolvimento-local)
+      - [Requisitos](#requisitos)
+      - [1. Ambiente Virtual Python](#1-ambiente-virtual-python)
+      - [2. Configuração do Backend](#2-configuração-do-backend)
+      - [3. Executar o Ambiente](#3-executar-o-ambiente)
+      - [4. Verificação do Ambiente](#4-verificação-do-ambiente)
+      - [5. Testes Automatizados](#5-testes-automatizados)
+      - [Troubleshooting](#troubleshooting)
     - [Backend Flask (Azure App Service)](#backend-flask-azure-app-service)
       - [Gerar o pacote `backend.zip`](#gerar-o-pacote-backendzip)
       - [Método Recomendado: Docker (Linux-compatible)](#método-recomendado-docker-linux-compatible)
@@ -49,16 +63,20 @@ Este repositório abriga o site institucional da **Cara-Core Informática**. Aqu
 
 ---
 
-## 📚 Documentação Técnica
+## Documentação Técnica
 
-> **🔖 Índice Completo:** [docs/INDEX.md](docs/INDEX.md) - Navegue por toda a documentação do projeto
+> **Índice Completo:** [docs/INDEX.md](docs/INDEX.md) - Navegue por toda a documentação do projeto
 
-### 🚀 Deploy e Operações (ATUALIZADO 01/11/2025)
+### Deploy e Operações
 
-- **[Guia de Deploy Azure](docs/AZURE_DEPLOY.md)** ⭐ - Guia completo de deploy, rollback e troubleshooting
+- **[Guia de Deploy Azure](docs/AZURE_DEPLOY.md)** - Deploy, rollback e troubleshooting completo
 - **[Versões de Dependências](docs/VERSOES.md)** - Python, Flask, Gunicorn e todas as dependências
+- **[Azure Monitor](docs/AZURE_MONITOR.md)** - Monitoramento e observabilidade no Azure
+- **[GitHub Actions Setup](docs/GITHUB_ACTIONS_SETUP.md)** - Configuração de CI/CD
+- **[Status de Deploy](docs/DEPLOY_STATUS_GITHUB_ACTIONS.md)** - Status das pipelines
 
 **Scripts Automatizados:**
+
 ```powershell
 # Deploy para produção
 python scripts/deploy_production.py
@@ -72,44 +90,35 @@ python scripts/rollback.py --list
 
 ### Scripts Python
 
-- **[Inventário de Scripts Python](scripts/README_PY.md)** - Documentação completa de todos os scripts Python organizados na pasta `scripts/`
-- **[Execução Rápida](run_script.py)** - Use `python run_script.py list` para ver todos os scripts disponíveis
-- **[Testes Unitários OIDC](scripts/executar_ut_secure.py)** - Execute `python run_script.py executar_ut_secure.py --help` para opções
-- **[Reorganização Scripts](docs/REORGANIZACAO_SCRIPTS_PYTHON.md)** - Documentação da migração e organização dos scripts Python
+- **[Inventário de Scripts Python](scripts/README_PY.md)** - Documentação completa de todos os scripts
+- **[Execução Rápida](run_script.py)** - Use `python run_script.py list` para listar scripts disponíveis
 
-### Configuração e Arquitetura
+### Fases do Projeto
 
-- **[Arquitetura do Sistema](docs/ARQUITETURA.md)** - Visão geral da arquitetura técnica do projeto
+- **[Fase 1: OAuth 2.1 + OIDC](docs/fases/fase-1/)** - Fundação da autenticação (100% completo)
+- **[Fase 2: Logout e Segurança](docs/fases/fase-2/)** - Melhorias de segurança (100% completo)
+- **[Fase 3: Auditoria e Backend](docs/fases/fase-3/)** - Logs e observabilidade (90% completo)
+- **[Fase 4: Monitoramento](docs/fases/fase-4/)** - Monitoramento avançado (planejado)
+
+### Status e Progresso
+
 - **[Status Atual do Projeto](docs/pendencias/STATUS-ATUAL.md)** - Progresso detalhado de todas as fases
-- **[Configuração de Redirect URIs](docs/CONFIGURACAO-REDIRECT-URIS.md)** - Guia para configurar URIs de redirecionamento
-- **[Configuração Google Cloud](docs/GOOGLE-CLOUD-CONFIG.md)** - Configurações específicas do Google Cloud Console
-- **[Logs de Produção](docs/LOG-PRODUCAO.md)** - Documentação sobre logs em ambiente de produção
-
-### Testes e Validação
-
-- **[Checklist OIDC Google](docs/CHECKLIST_OIDC_GOOGLE.md)** - Lista de verificação para configuração Google OAuth
-- **[Checklist OIDC Entra ID](docs/CHECKLIST_OIDC_ENTRA.md)** - Lista de verificação para configuração Microsoft Entra ID
+- **[Critérios de Aceite OAuth 2.1](docs/pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md)** - Critérios de validação
+- **[Fase Cadastro](docs/pendencias/FASE-CADASTRO.md)** - Enumeração da Fase 4
 
 ### Sistema de Autenticação (OIDC)
 
-- **[Status Atual](docs/STATUS-ATUAL.md)** - Resumo do estado atual do sistema de autenticação
-- **[Guia do Desenvolvedor - Auth](docs/GUIA-DESENVOLVEDOR-AUTH.md)** - Guia técnico para desenvolvedores trabalhando na autenticação
-- **[Próximos Passos](docs/PROXIMOS-PASSOS.md)** - Próximas etapas recomendadas para evolução do sistema
-- **[Pendências](docs/pendencias/PENDENCIAS.md)** - Lista categorizada de pendências em diferentes áreas
-- **[Checklist de Segurança OIDC](docs/pendencias/CHECKLIST-SEGURANCA-OIDC.md)** - Checklist completo de segurança para OIDC
-- **[Prioridades Técnicas Q4 2025](docs/pendencias/PRIORIDADES-TECNICAS-Q4-2025.md)** - Roadmap de prioridades técnicas
-- **[Validação OIDC Google](docs/VALIDATED_OIDC_GOOGLE.md)** - Relatório de validação Google OAuth
-- **[Validação OIDC Entra ID](docs/VALIDATED_OIDC_ENTRA_ID.md)** - Relatório de validação Microsoft Entra ID
-- **[Validação Final Entra ID](docs/VALIDACAO_ENTRA_ID_FINAL.md)** - **Confirmação operacional: Portal Área 51 configurado apenas para contas pessoais Microsoft**
-- **[Configuração Entra ID Contas Pessoais](docs/ENTRA_ID_CONTAS_PESSOAIS.md)** - Documentação técnica da configuração para contas pessoais
-- **[Cobertura de Testes OIDC](docs/VALIDACAO_COBERTURA_TESTES_OIDC.md)** - **Validação automática de cobertura de testes unitários (94.1%)**
-- **[Teste e Correção Microsoft](docs/TESTE-CORRECAO-MICROSOFT.md)** - Procedimentos de teste e correção Microsoft
+A documentação completa do sistema de autenticação OAuth 2.1 + OIDC está organizada por fases:
 
-### Arquitetura e Soluções
+- **[Fase 1: OAuth 2.1 + OIDC](docs/fases/fase-1/)** - Implementação base (100% completo)
+- **[Fase 2: Logout e Segurança](docs/fases/fase-2/)** - Melhorias de segurança (100% completo)
+- **[Fase 3: Auditoria e Logs](docs/fases/fase-3/)** - Sistema de logging estruturado (90% completo)
 
-- **[Solução CaraCore](docs/SOLUCAO-CARACORE.md)** - Documentação da solução técnica implementada
-- **[Solução Redirect URI](docs/SOLUCAO-REDIRECT-URI.md)** - Solução para problemas de Redirect URI
-- **[Checklist do Projeto](docs/PROJECT-CHECKLIST.md)** - Lista geral de verificação do projeto
+**Documentação de Referência:**
+
+- **[Critérios de Aceite OAuth 2.1](docs/pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md)** - Critérios de validação completos
+- **[Status Atual](docs/pendencias/STATUS-ATUAL.md)** - Estado detalhado do sistema
+- **[secure/README.md](secure/README.md)** - Documentação técnica da Área 51
 
 ---
 
@@ -193,33 +202,132 @@ As duas soluções ajudam a identificar acessos suspeitos, documentar atividades
 - `folders/folder_py.html`: folder digital com exportação para PDF (ideal para apresentações comerciais).
 - Pasta `handbook/`: manuais, apostilas e scripts de conversão para HTML responsivo, incluindo o HANDBOOK e o SERVICEGUIDE.
 
-### Estrutura do Site
+### Estrutura do Repositório
 
 ```text
 cara-core/
 ├── index.html                  # Página principal do site
-├── planos.html                 # Página de planos de desenvolvimento de sites
-├── folders/
-│   ├── folder_py.html          # Folder digital com opção de exportar para PDF
-│   └── apresentacao.md         # Apresentação institucional em Markdown
-├── images/                     # Imagens e logotipos utilizados no site
-├── fonts/                      # Fontes utilizadas no site
-├── js/                         # Scripts JavaScript utilizados no site
-├── security/
-│   └── monitor_exe.py          # Script de monitoramento de conexões de rede
-├── wi_fi/
-│   └── get_wi_fi.py            # Script para listar redes Wi-Fi salvas e senhas
-├── handbook/                   # Apostilas, manuais e scripts de conversão para HTML
-│   ├── HANDBOOK.md             # Apostila Microsoft 365 (editável)
-│   ├── HANDBOOK.html           # Apostila convertida para HTML responsivo
-│   ├── HANDBOOK.py             # Script para converter e ajustar a apostila
-│   ├── SERVICEGUIDE.md         # Manual de serviços (editável)
-│   ├── SERVICEGUIDE.html       # Manual de serviços convertido para HTML responsivo
-│   ├── SERVICEGUIDE.py         # Script para converter e ajustar o manual de serviços
-│   ├── images/                 # Imagens e anexos utilizados
-│   └── README.md               # Documentação específica da pasta handbook
+├── planos.html                 # Página de planos e serviços
+├── 404.html                    # Página de erro 404
+├── CNAME                       # Configuração de domínio customizado
+├── _config.yml                 # Configuração Jekyll (GitHub Pages)
+├── _redirects                  # Regras de redirecionamento
+├── vercel.json                 # Configuração Vercel (opcional)
+├── package.json                # Dependências Node.js (se aplicável)
+├── requirements.txt            # Dependências Python do projeto
+├── run_script.py               # Launcher de scripts Python
+├── server.py                   # Servidor local de desenvolvimento
+├── teste.py                    # Testes do site estático
+├── teste_end_point_local.py    # Testes do backend local
+├── teste_end_point_azure.py    # Testes do backend Azure
+├── deploy_to_azure.py          # Script de deploy automatizado
 ├── README.md                   # Este arquivo
-└── LICENSE                     # Licença de uso
+├── LICENSE                     # Licença de uso
+│
+├── secure/                     # Área 51 (páginas autenticadas)
+│   ├── index.html              # Página de login OIDC
+│   ├── callback.html           # Callback OAuth 2.1
+│   ├── restrita.html           # Área restrita (pós-autenticação)
+│   ├── logout.html             # Página de logout
+│   ├── admin-logs.html         # Painel de logs (admin)
+│   ├── auth-standalone.js      # Lógica de autenticação
+│   ├── dynamic-config.js       # Configuração dinâmica de endpoints
+│   ├── log-config.js           # Configuração de logging
+│   └── README.md               # Documentação da Área 51
+│
+├── backend/                    # API Flask (Azure App Service)
+│   ├── app.py                  # Aplicação Flask principal
+│   ├── requirements.txt        # Dependências Python do backend
+│   ├── .env.example            # Template de variáveis de ambiente
+│   ├── allowlist.json          # Controle de acesso (whitelist)
+│   ├── oryx-build-commands.txt # Comandos de build Oryx (Azure)
+│   ├── logs/                   # Logs estruturados (*.jsonl)
+│   └── data/                   # Dados JSON (se aplicável)
+│
+├── docker/                     # Configuração Docker
+│   ├── Dockerfile              # Imagem Docker do backend
+│   ├── docker-compose.yml      # Orquestração de containers
+│   ├── docker-entrypoint.sh    # Script de inicialização
+│   └── backend.env.sample      # Template de variáveis Docker
+│
+├── scripts/                    # Scripts de automação e deploy
+│   ├── README_PY.md            # Documentação dos scripts
+│   ├── package_backend_with_docker.py  # Empacotamento Docker
+│   ├── deploy_production.py    # Deploy automatizado
+│   ├── rollback.py             # Rollback de versões
+│   ├── executar_ut_secure.py   # Testes unitários OIDC
+│   └── backend.zip             # Pacote gerado para deploy
+│
+├── docs/                       # Documentação técnica completa
+│   ├── INDEX.md                # Índice geral da documentação
+│   ├── ARQUITETURA.md          # Arquitetura do sistema
+│   ├── AZURE_DEPLOY.md         # Guia de deploy Azure
+│   ├── STATUS-ATUAL.md         # Status atual do projeto
+│   ├── GUIA-DESENVOLVEDOR-AUTH.md  # Guia de autenticação
+│   ├── VERSOES.md              # Versões de dependências
+│   ├── fases/                  # Documentação por fase
+│   │   ├── fase-1/             # Fase 1: Fundação OAuth 2.1
+│   │   ├── fase-2/             # Fase 2: Consentimento e Logout
+│   │   ├── fase-3/             # Fase 3: Auditoria e Testes
+│   │   └── fase-4/             # Fase 4: Controle de Acesso
+│   ├── pendencias/             # Pendências e roadmap
+│   │   ├── FASE-CADASTRO.md    # Enumeração Fase 4
+│   │   ├── CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md
+│   │   └── CHECKLIST-SEGURANCA-OIDC.md
+│   └── img/                    # Imagens da documentação
+│
+├── css/                        # Folhas de estilo CSS
+│   └── additional-styles.css   # Estilos customizados
+│
+├── js/                         # Scripts JavaScript públicos
+│   ├── analytics.js            # Google Analytics
+│   ├── config.js               # Configuração geral
+│   ├── config-local.js         # Configuração local
+│   ├── logging.js              # Sistema de logs
+│   ├── oidc.js                 # Utilitários OIDC
+│   ├── html2pdf.bundle.min.js  # Geração de PDFs
+│   └── vendor/                 # Bibliotecas de terceiros
+│
+├── images/                     # Imagens e logotipos do site
+├── fonts/                      # Fontes customizadas
+│
+├── folders/                    # Materiais comerciais
+│   ├── folder_py.html          # Folder digital exportável
+│   └── apresentacao.md         # Apresentação institucional
+│
+├── handbook/                   # Apostilas e manuais
+│   ├── HANDBOOK.md             # Apostila Microsoft 365 (fonte)
+│   ├── HANDBOOK.html           # Apostila convertida
+│   ├── HANDBOOK.py             # Script de conversão
+│   ├── SERVICEGUIDE.md         # Manual de serviços (fonte)
+│   ├── SERVICEGUIDE.html       # Manual convertido
+│   ├── SERVICEGUIDE.py         # Script de conversão
+│   ├── images/                 # Imagens dos manuais
+│   ├── business_plan/          # Planos de negócio
+│   └── README.md               # Documentação do handbook
+│
+├── security/                   # Ferramentas de segurança
+│   └── monitor_exe.py          # Monitor de conexões de rede
+│
+├── wi_fi/                      # Utilitários Wi-Fi
+│   └── get_wi_fi.py            # Listagem de redes Wi-Fi salvas
+│
+├── cv/                         # Currículos e portfólio
+│   ├── server.py               # Servidor de desenvolvimento CV
+│   ├── public/                 # Arquivos públicos CV
+│   └── README.md               # Documentação CV
+│
+├── personal/                   # Página pessoal
+│   ├── index.html              # Página principal pessoal
+│   └── articles/               # Artigos e posts
+│
+├── politica/                   # Políticas e termos
+│   ├── politica-privacidade.html
+│   └── termos-servico.html
+│
+├── publications/               # Publicações e papers
+├── log/                        # Logs de execução de scripts
+└── deploy_temp/                # Arquivos temporários de deploy
 ```
 
 ---
@@ -280,63 +388,150 @@ A administração pode acompanhar eventos em tempo real pela página `secure/adm
 
 ## Detalhes Técnicos
 
+Esta seção contém informações técnicas detalhadas sobre configuração, desenvolvimento e deploy do sistema.
+
 ### Sistema de Autenticação OIDC
 
-- **Múltiplos provedores:** Microsoft Entra ID e Google Identity Platform.
-- **Segurança:** Authorization Code Flow + PKCE, cookies `HttpOnly`, `Secure` e `SameSite=Strict` (com exceções automáticas em desenvolvimento).
-- **Logs estruturados:** eventos em JSON, enviados via POST para `/logs` com sanitização por allowlist.
-- **Proxy de token inteligente:** `secure/log-config.js` aponta automaticamente o fluxo `/oauth/google/token` para `https://api-caracore.azurewebsites.net` em produção e utiliza `server.py` durante o desenvolvimento local. Para domínios alternativos, basta definir `window.CARA_CORE_CONFIG.backendBaseUrl` antes de carregar os scripts.
-- **Persistência de provedor:** `secure/auth-standalone.js` grava o último provedor usado (Google/Entra) para garantir que o callback utilize a mesma authority. Após rotações de testes, limpe `sessionStorage`/`localStorage` ou selecione explicitamente outro provedor pelo botão da interface.
-- **Interface responsiva:** componentes próprios, sem dependências de CDN.
-- **Layout unificado:** as três páginas da Área 51 compartilham sprite SVG, menu responsivo e mesma paleta.
+O projeto implementa OAuth 2.1 + OIDC (OpenID Connect) com Authorization Code Flow + PKCE para máxima segurança.
 
-#### Documentação do Sistema de Autenticação
+#### Características Principais
 
-- **[Status Atual](docs/STATUS-ATUAL.md)** - Resumo do estado atual e correções implementadas
-- **[Guia do Desenvolvedor](docs/GUIA-DESENVOLVEDOR-AUTH.md)** - Guia técnico detalhado para trabalhar com o sistema
-- **[Checklist de Segurança](docs/pendencias/CHECKLIST-SEGURANCA-OIDC.md)** - Checklist para garantir segurança na implementação OIDC
-- **[Correções Recentes](docs/pendencias/CORRECOES-AUTENTICACAO.md)** - Histórico de correções implementadas
-- **[Próximos Passos](docs/PROXIMOS-PASSOS.md)** - Etapas recomendadas para evolução do sistema
+- **Múltiplos provedores:** Microsoft Entra ID e Google Identity Platform
+- **Segurança:** Authorization Code Flow + PKCE, cookies `HttpOnly`, `Secure` e `SameSite=Strict`
+- **Logs estruturados:** eventos em JSON com sanitização de dados sensíveis
+- **Proxy de token inteligente:** roteamento automático entre desenvolvimento e produção
+- **Persistência de provedor:** gerenciamento de sessão com `sessionStorage`/`localStorage`
+- **Interface responsiva:** componentes próprios sem dependências de CDN
+- **Layout unificado:** sprite SVG compartilhado entre todas as páginas da Área 51
 
-| URL | Descrição |
-|-----|-----------|
-| `/secure/index.html` | Página de login principal |
-| `/secure/callback.html` | Página intermediária que valida o retorno do provedor |
-| `/secure/restrita.html` | Área restrita autenticada |
-| `/secure/logout.html` | Página de logout |
+#### Páginas e Endpoints
 
-Para documentação aprofundada do fluxo, variáveis de ambiente e troubleshooting, consulte **[secure/README.md](secure/README.md)**.
+| URL | Descrição | Função |
+|-----|-----------|--------|
+| `/secure/index.html` | Página de login | Seleção de provedor OAuth |
+| `/secure/callback.html` | Callback OIDC | Processamento do authorization code |
+| `/secure/restrita.html` | Área autenticada | Conteúdo restrito pós-login |
+| `/secure/logout.html` | Logout | Encerramento de sessão |
+| `/secure/admin-logs.html` | Painel admin | Visualização de logs em tempo real |
 
-### Configuração OIDC (Azure / Google)
+#### Documentação Complementar
 
-1. **Redirect URIs essenciais**
-   - Páginas estáticas (frontend): `<http://localhost:8000/secure/callback.html>`, `<http://127.0.0.1:8000/secure/callback.html>`, `<https://chmulato.github.io/cara-core/secure/callback.html>` e `<https://www.caracore.com.br/secure/callback.html>`.
-   - Backend (quando em uso): `http://localhost:5051/secure/` e o domínio público configurado no backend (`/secure/` ou `/callback`, conforme necessário).
+- **[secure/README.md](secure/README.md)** - Documentação completa da Área 51
+- **[Status Atual](docs/pendencias/STATUS-ATUAL.md)** - Estado detalhado do sistema
+- **[Fase 1: OAuth 2.1](docs/fases/fase-1/)** - Implementação base da autenticação
+- **[Fase 2: Segurança](docs/fases/fase-2/)** - Melhorias de segurança e logout
+- **[Fase 3: Auditoria](docs/fases/fase-3/)** - Logs estruturados e observabilidade
 
-2. **Microsoft Entra ID (Azure)**
-   - Registre um App Registration (ex.: "Cara-Core Area51 Dev").
-   - Em _Web platform_, adicione a Redirect URI (`http://localhost:5051/secure/`).
-   - Em _API permissions_, inclua `openid`, `profile` e `email` (delegated).
-   - Preencha `TENANT_ID`, `CLIENT_ID` e `CLIENT_SECRET` em `backend/.env`.
+### Configuração dos Provedores OIDC
 
-3. **Google OAuth (Gmail)**
-   - Crie um OAuth 2.0 Client ID no Google Cloud Console.
-   - Em **Authorized redirect URIs**, cadastre `<http://localhost:8000/secure/callback.html>`, `<http://127.0.0.1:8000/secure/callback.html>`, `<https://chmulato.github.io/cara-core/secure/callback.html>` (pré-visualização) e `<https://www.caracore.com.br/secure/callback.html>`.
-   - Configure o Client ID no frontend/backend e utilize os escopos `openid profile email`.
+#### Redirect URIs Essenciais
 
-4. **Notas de verificação**
-   - Inicie o backend (`cd backend && python app.py`) e o servidor estático (`python server.py`).
-   - Acesse [http://localhost:8080/secure/](http://localhost:8080/secure/) para validar o fluxo.
-   - Em produção, garanta HTTPS e ajuste as Redirect URIs para o domínio público.
+**Frontend (páginas estáticas):**
 
-#### Fluxo recomendado de redirecionamento
+- `http://localhost:8000/secure/callback.html` (desenvolvimento local)
+- `http://127.0.0.1:8000/secure/callback.html` (desenvolvimento local alternativo)
+- `https://chmulato.github.io/cara-core/secure/callback.html` (GitHub Pages preview)
+- `https://www.caracore.com.br/secure/callback.html` (produção)
 
-1. O usuário inicia o login em [`/secure/index.html`](https://www.caracore.com.br/secure/index.html), escolhe o provedor e é redirecionado para Google ou Microsoft.
-2. O provedor retorna para [`/secure/callback.html`](https://www.caracore.com.br/secure/callback.html), que processa o `code` de autorização via `auth-standalone.js`.
-3. Após validar e armazenar o token, a página de callback encaminha o usuário autenticado para [`/secure/restrita.html`](https://www.caracore.com.br/secure/restrita.html).
-4. Dentro da área restrita existe um link para [`/secure/logout.html`](https://www.caracore.com.br/secure/logout.html); ao concluir o logout com o provedor, a navegação retorna para [`/index.html`](https://www.caracore.com.br/index.html).
+**Backend (quando em uso):**
 
-O arquivo `secure/dynamic-config.js` gera esses caminhos automaticamente usando `resolveOidcPaths()`. Para personalizar os endpoints (ex.: ambientes de homologação), defina `window.CARA_CORE_CONFIG.oidcPaths` antes de carregar os scripts:
+- `http://localhost:5051/secure/` (desenvolvimento)
+- Domínio público do Azure App Service (produção)
+
+#### Microsoft Entra ID (Azure)
+
+**Configuração no Azure Portal:**
+
+1. Acesse [Azure Portal - App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
+2. Crie ou localize o App Registration: Client ID `***AZURE_SECRET_REDACTED***`
+3. Configure **Authentication > Web platform**:
+   - Adicione as Redirect URIs listadas acima
+4. Configure **API permissions**:
+   - `openid` (delegated)
+   - `profile` (delegated)
+   - `email` (delegated)
+5. Preencha `backend/.env`:
+
+   ```env
+   TENANT_ID=seu-tenant-id
+   CLIENT_ID=***AZURE_SECRET_REDACTED***
+   CLIENT_SECRET=seu-client-secret
+   ```
+
+**Documentação complementar:**
+
+- [Fase 1: OAuth 2.1 + OIDC](docs/fases/fase-1/) - Implementação base
+- [Fase 2: Segurança](docs/fases/fase-2/) - Configuração de provedores
+- [Critérios de Aceite](docs/pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md) - Validação completa
+
+#### Google OAuth (Gmail)
+
+**Configuração no Google Cloud Console:**
+
+1. Acesse [Google Cloud Console - Credentials](https://console.cloud.google.com/apis/credentials?project=chmulato-web-oauth2)
+2. Localize o OAuth 2.0 Client ID: `1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com`
+3. Configure **Authorized JavaScript origins**:
+   - `https://www.caracore.com.br`
+   - `http://localhost:8000` (desenvolvimento)
+4. Configure **Authorized redirect URIs**:
+   - Adicione todas as URIs listadas acima
+5. Configure os escopos: `openid profile email`
+6. Preencha `backend/.env`:
+
+   ```env
+   GOOGLE_CLIENT_ID=1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com
+   GOOGLE_CLIENT_SECRET=seu-google-client-secret
+   GOOGLE_ALLOWED_DOMAINS=example.com,anotherdomain.com
+   ```
+
+**Documentação complementar:**
+
+- [Fase 1: OAuth 2.1 + OIDC](docs/fases/fase-1/) - Implementação base
+- [Fase 2: Segurança](docs/fases/fase-2/) - Configuração de provedores
+- [Critérios de Aceite](docs/pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md) - Validação completa
+
+#### Verificação da Configuração
+
+```powershell
+# 1. Inicie o backend
+cd backend
+python app.py
+
+# 2. Em outro terminal, inicie o servidor estático
+python server.py
+
+# 3. Acesse o ambiente local
+# http://localhost:8080/secure/
+
+# 4. Teste o fluxo de autenticação com ambos os provedores
+```
+
+**Checklist de verificação:**
+
+- [ ] Redirect URIs cadastradas em ambos os provedores
+- [ ] Variáveis de ambiente configuradas no `backend/.env`
+- [ ] Backend respondendo em `/health`
+- [ ] Site estático acessível
+- [ ] Login Google funcional
+- [ ] Login Microsoft funcional
+- [ ] Logs sendo gravados corretamente
+
+### Fluxo de Autenticação
+
+#### Sequência do Fluxo OAuth 2.1 + PKCE
+
+1. **Login:** usuário acessa `/secure/index.html` e escolhe provedor (Google ou Microsoft)
+2. **Autorização:** redirecionamento para o provedor com `code_challenge` (PKCE)
+3. **Callback:** provedor retorna para `/secure/callback.html` com authorization code
+4. **Troca de tokens:** `auth-standalone.js` troca code por tokens usando `code_verifier`
+5. **Acesso:** usuário é redirecionado para `/secure/restrita.html` autenticado
+6. **Logout:** via `/secure/logout.html` com encerramento de sessão no provedor
+
+#### Configuração Personalizada
+
+O arquivo `secure/dynamic-config.js` gera os caminhos automaticamente usando `resolveOidcPaths()`.
+
+**Personalizar endpoints:**
 
 ```html
 <script>
@@ -349,69 +544,252 @@ O arquivo `secure/dynamic-config.js` gera esses caminhos automaticamente usando 
 </script>
 ```
 
-Para apontar a troca de tokens para um backend diferente (por exemplo, um domínio corporativo ou um slot do Azure), defina `backendBaseUrl` antes de carregar `secure/log-config.js`. O script ajustará `googleTokenEndpoint` automaticamente se o valor ainda for o padrão:
+**Personalizar backend:**
 
 ```html
 <script>
    window.CARA_CORE_CONFIG = {
       backendBaseUrl: 'https://api-suaempresa.azurewebsites.net',
-      // Opcional: substitua a linha abaixo se quiser definir manualmente o endpoint
-      // googleTokenEndpoint: 'https://api-suaempresa.azurewebsites.net/oauth/google/token'
+      // Opcional: definir manualmente o endpoint de token
+      googleTokenEndpoint: 'https://api-suaempresa.azurewebsites.net/oauth/google/token'
    };
 </script>
 ```
 
-#### Persistência do provedor selecionado
+#### Persistência de Sessão
 
-O fluxo de autenticação guarda o provedor escolhido em `sessionStorage` (com fallback para `localStorage`). Isso evita erros de autoridade quando o callback retorna com Microsoft Entra ID. Caso seja necessário "trocar" de provedor em um mesmo navegador de testes, use o botão correspondente na UI ou limpe manualmente os itens `cara_core_oidc_provider` (session/local storage) antes de reiniciar o login.
+O sistema utiliza `sessionStorage` (com fallback para `localStorage`) para manter o provedor selecionado, evitando erros de "authority mismatch".
 
-Os provedores devem ter **obrigatoriamente** o callback cadastrado; mantenha `/secure/index.html` registrado apenas durante a transição para evitar erros de configuração antigos.
+**Trocar de provedor durante testes:**
 
-### Desenvolvimento Local (Windows/PowerShell + VS Code)
+```javascript
+// Limpar provedor armazenado
+window.sessionStorage.removeItem('cara_core_oidc_provider');
+window.localStorage.removeItem('cara_core_oidc_provider');
 
-1. **Dependências Python**
-    - Opcional: crie um ambiente virtual local (exemplo no Windows PowerShell):
+// Ou selecionar explicitamente o provedor desejado na UI
+```
 
-       ```powershell
-       python -m venv .venv
-       .\.venv\Scripts\Activate.ps1
-       ```
+**Importante:** Os provedores devem ter `/secure/callback.html` obrigatoriamente cadastrado nas Redirect URIs.
 
-    - Atualize o `pip` e instale as dependências do projeto (vale tanto para ambiente global quanto virtual — se estiver em venv, ative antes):
+### Desenvolvimento Local
 
-       ```powershell
-       python -m pip install --upgrade pip
-       python -m pip install -r requirements.txt
-       ```
+Guia completo para configurar o ambiente de desenvolvimento no Windows usando PowerShell e VS Code.
 
-2. **Configuração do backend (OIDC)**
-   - Copie `backend/.env.example` para `backend/.env`.
-   - Preencha as variáveis (`TENANT_ID`, `CLIENT_ID`, `CLIENT_SECRET`, etc.) sem versionar segredos.
-   - Configure `GOOGLE_ALLOWED_DOMAINS` com a lista de domínios autorizados (minúsculos, separados por vírgula) conforme cada ambiente. Deixe vazio se qualquer conta Google puder acessar.
-   - Ajuste `JWKS_CACHE_TTL_SECONDS` (mínimo 60 segundos) para controlar por quanto tempo os JWKS de Google/Microsoft permanecem em cache antes de uma nova busca.
-   - Para o backend em Docker, copie `docker/backend.env.sample` para `docker/backend.env` e informe também as credenciais Google (`GOOGLE_CLIENT_ID`/`GOOGLE_CLIENT_SECRET`) e Microsoft Entra (`AZURE_CLIENT_ID`/`AZURE_CLIENT_SECRET`/`AZURE_TENANT_ID`). Use `AZURE_TENANT_ID=common` apenas em ambientes multi-tenant e ajuste `AZURE_SCOPE` se precisar de escopos adicionais.
+#### Requisitos
 
-3. **Execução pelo VS Code (tasks)**
-   - `Run root server.py`: serve o site estático em [http://localhost:8080](http://localhost:8080) e inicializa automaticamente o backend Linux via `docker/docker-compose.yml` (requer Docker Desktop ativo).
-   - `Run area51 app.py`: sobe o backend Flask em [http://localhost:5051](http://localhost:5051).
-   - `Test: site + area51 link`: teste rápido do link da Área 51.
+- Windows 10/11
+- Python 3.11 ou superior
+- VS Code
+- Docker Desktop (opcional, para backend em container)
+- PowerShell 5.1 ou superior
 
-4. **Execução manual (PowerShell)**
-   - `python server.py` (raiz) para o site estático — o script chama `docker compose up -d backend` e aguarda o contêiner saúde. Defina `AUTO_START_DOCKER_BACKEND=0` se quiser desativar esse comportamento.
-   - `cd docker; docker compose up -d backend` para subir o backend manualmente (útil em diagnósticos ou quando `AUTO_START_DOCKER_BACKEND=0`).
-   - `cd backend` e `python app.py` para executar o backend diretamente sem Docker.
+#### 1. Ambiente Virtual Python
 
-5. **Testes automatizados**
+Crie e ative um ambiente virtual (recomendado):
 
-   - `python teste.py` valida o site estático (status 200, textos chave e link "Área 51").
+```powershell
+# Criar ambiente virtual
+python -m venv .venv
 
-     ```powershell
-     python teste.py
-     ```
+# Ativar ambiente virtual
+.\.venv\Scripts\Activate.ps1
 
-     Saída esperada: todas as verificações marcadas como `OK` e a mensagem final **"Todos os testes passaram."** Caso o launcher da Microsoft Store interfira, utilize `py -3.13 teste.py` ou ajuste `python.defaultInterpreterPath` no VS Code.
-   - `python teste_end_point_local.py` roda os smoke tests do backend dentro do contêiner Linux (verifica `/health`, CORS e respostas sem credenciais Google). Requer Docker ativo e o backend iniciado pelo `server.py` ou `docker compose`.
-   - `python teste_end_point_azure.py` executa os mesmos checks contra o App Service. Passe `--base-url` (ou defina `AZURE_BACKEND_BASE_URL`) se utilizar slots/domínio próprio.
+# Atualizar pip
+python -m pip install --upgrade pip
+
+# Instalar dependências
+python -m pip install -r requirements.txt
+```
+
+**Nota:** Se o launcher da Microsoft Store interferir, use `py -3.13` no lugar de `python`.
+
+#### 2. Configuração do Backend
+
+**Arquivo `.env` principal:**
+
+```powershell
+# Copiar template
+Copy-Item backend\.env.example backend\.env
+
+# Editar arquivo com suas credenciais
+code backend\.env
+```
+
+Preencha as seguintes variáveis em `backend/.env`:
+
+```env
+# Microsoft Entra ID
+TENANT_ID=seu-tenant-id
+CLIENT_ID=***AZURE_SECRET_REDACTED***
+CLIENT_SECRET=seu-client-secret
+
+# Google OAuth
+GOOGLE_CLIENT_ID=1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=seu-google-client-secret
+GOOGLE_ALLOWED_DOMAINS=example.com,anotherdomain.com
+
+# Cache e Segurança
+JWKS_CACHE_TTL_SECONDS=3600
+LOG_RETENTION_DAYS=30
+```
+
+**Arquivo Docker (opcional):**
+
+Se for usar Docker para o backend:
+
+```powershell
+# Copiar template Docker
+Copy-Item docker\backend.env.sample docker\backend.env
+
+# Editar arquivo
+code docker\backend.env
+```
+
+#### 3. Executar o Ambiente
+
+**[Opção A]: Via VS Code Tasks (Recomendado)**
+
+Use os atalhos do VS Code:
+
+- **F5** ou `Run root server.py`: Inicia site estático + backend Docker
+- `Run area51 app.py`: Sobe apenas o backend Flask
+- `Test: site + area51 link`: Testa o link da Área 51
+
+**[Opção B]: Via PowerShell Manual**
+
+**Servidor estático + Backend Docker:**
+
+```powershell
+# Na raiz do projeto
+python server.py
+```
+
+O script automaticamente:
+
+- Inicia Docker Desktop (se necessário)
+- Sobe o backend via `docker compose`
+- Serve o site estático em http://localhost:8080
+
+Para desabilitar o início automático do Docker:
+
+```powershell
+$env:AUTO_START_DOCKER_BACKEND=0
+python server.py
+```
+
+**Backend sem Docker:**
+
+```powershell
+# Executar Flask diretamente
+cd backend
+python app.py
+```
+
+O backend ficará disponível em http://localhost:5051
+
+**Backend Docker manual:**
+
+```powershell
+cd docker
+docker compose up -d backend
+```
+
+#### 4. Verificação do Ambiente
+
+**Verificar serviços:**
+
+```powershell
+# Backend Health Check
+curl http://localhost:5051/health
+
+# Site estático
+start http://localhost:8080
+
+# Área 51
+start http://localhost:8080/secure/
+```
+
+**Acessar URLs:**
+
+- Site estático: [http://localhost:8080]
+- Backend API: [http://localhost:5051]
+- Área 51: [http://localhost:8080/secure/]
+- Health Check: [http://localhost:5051/health]
+
+#### 5. Testes Automatizados
+
+**Teste do site estático:**
+
+```powershell
+python teste.py
+```
+
+Verifica: status 200, textos-chave, link "Área 51"
+
+**Teste do backend local:**
+
+```powershell
+python teste_end_point_local.py
+```
+
+Verifica: `/health`, CORS, endpoints sem credenciais
+
+**Teste do backend Azure:**
+
+```powershell
+# Com URL padrão
+python teste_end_point_azure.py
+
+# Com URL customizada
+python teste_end_point_azure.py --base-url https://sua-api.azurewebsites.net
+```
+
+**Saída esperada:** Todas verificações marcadas como `OK` e mensagem final **"Todos os testes passaram."**
+
+#### Troubleshooting
+
+**[Problema]: Python não encontrado**
+
+```powershell
+# Usar py launcher
+py -3.13 --version
+
+# Ou ajustar no VS Code
+# settings.json: "python.defaultInterpreterPath": "C:\\Python313\\python.exe"
+```
+
+**[Problema]: Docker não inicia**
+
+```powershell
+# Verificar status do Docker
+docker --version
+docker ps
+
+# Iniciar Docker Desktop manualmente
+start "C:\Program Files\Docker\Docker\Docker Desktop.exe"
+```
+
+**[Problema: Porta em uso**
+
+```powershell
+# Verificar porta 8080
+netstat -ano | findstr :8080
+
+# Encerrar processo (use o PID da saída acima)
+taskkill /PID <PID> /F
+```
+
+**[Problema]: Módulos Python não encontrados**
+
+```powershell
+# Garantir que está no ambiente virtual
+.\.venv\Scripts\Activate.ps1
+
+# Reinstalar
+ dependências
+python -m pip install -r requirements.txt --force-reinstall
+```
 
 ### Backend Flask (Azure App Service)
 

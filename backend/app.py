@@ -1979,9 +1979,10 @@ def create_app() -> Flask:
         """Endpoint de teste para verificar se o deploy foi executado"""
         return jsonify({
             "status": "deployed", 
-            "timestamp": "2025-11-03T22:30:00",
+            "timestamp": datetime.utcnow().isoformat(),
             "super_admin_available": True,
-            "version": "1.1.0"
+            "version": "1.1.0",
+            "webhook_configured": True
         })
     
     return app

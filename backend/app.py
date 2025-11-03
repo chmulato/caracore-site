@@ -1973,6 +1973,17 @@ def create_app() -> Flask:
             response = add_security_headers(response)
         return response
     
+    # Endpoint de teste para verificar deploy
+    @app.route("/test-deploy", methods=["GET"])
+    def test_deploy():
+        """Endpoint de teste para verificar se o deploy foi executado"""
+        return jsonify({
+            "status": "deployed", 
+            "timestamp": "2025-11-03T22:30:00",
+            "super_admin_available": True,
+            "version": "1.1.0"
+        })
+    
     return app
 
 

@@ -38,7 +38,7 @@ Este documento serve como índice central para toda a documentação do projeto 
 
 | Documento | Descrição | Última Atualização |
 |-----------|-----------|-------------------|
-| [FASE_4_STATUS_REPORT.md](./FASE_4_STATUS_REPORT.md) | Relatório detalhado da Fase 4 | 02/11/2025 |
+| [pendencias/STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md) | **Status global detalhado** (1219 linhas) - **Fase 4 incluída** | 02/11/2025 |
 | [pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md](./pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md) | Critérios de aceite OAuth | Atualizado |
 
 ---
@@ -159,7 +159,6 @@ docs/
 ├── 🏆 DOCUMENTOS CORE
 ├── FASE-4-CONCLUIDA.md               # Marco: Sistema de Autorização
 ├── DEPLOY_SUCCESS_SUMMARY.md         # Marco: Deploy Docker
-├── FASE_4_STATUS_REPORT.md           # Relatório detalhado Fase 4
 │
 ├── 🚀 OPERAÇÕES
 ├── AZURE_DEPLOY.md                   # Guia de deploy e operações
@@ -177,7 +176,7 @@ docs/
 │   └── fase-4/                       # Sistema de Autorização (CONCLUÍDA)
 │
 └── 📁 pendencias/                    # Status e critérios
-    ├── STATUS-ATUAL.md               # Status global do projeto
+    ├── STATUS-ATUAL.md               # Status global completo (1219 linhas)
     └── CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md  # Critérios OAuth
 ```
 

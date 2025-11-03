@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Minimal Flask backend to exchange Google OAuth2 authorization code for tokens.
+Updated: 2025-11-03 - Force redeploy to include super admin endpoints
 
 Endpoints:
   - GET /health                      -> simple health check

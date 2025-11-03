@@ -179,7 +179,7 @@ curl -I http://api.caracore.com.br/oauth/google/token
 **Resultado Esperado:**
 
 - Status: 301 Moved Permanently
-- Location: https://api.caracore.com.br/oauth/google/token
+- Location: [https://api.caracore.com.br/oauth/google/token]
 
 ---
 

@@ -11,7 +11,9 @@
 
 **Status:** 100% Concluído (3/3 itens)
 
-- [x] **Item 6:** Auditoria e Registro de Eventos (100%) - [x] **Item 7:** Atualização do Backend Python no Azure (100%) - [x] **Item 9:** Testes e Validação (100%) ---
+- [x] **Item 6:** Auditoria e Registro de Eventos (100%)
+- [x] **Item 7:** Atualização do Backend Python no Azure (100%)
+- [x] **Item 9:** Testes e Validação (100%) ---
 
 ## Item 6: Auditoria e Registro de Eventos
 

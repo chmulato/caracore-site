@@ -755,7 +755,7 @@ ErrorMessages.setLanguage('pt-BR');
 
 ### Dicas para Testes Eficientes
 
-1. **Limpar estado entre testes:**
+1.**Limpar estado entre testes:**
 
 ```javascript
 localStorage.clear();
@@ -763,12 +763,12 @@ sessionStorage.clear();
 location.reload();
 ```
 
-2. **Verificar logs do backend:**
+2.**Verificar logs do backend:**
 
 - Acessar `/secure/admin-logs.html`
 - Filtrar por eventos relevantes
 
-3. **Usar console para debug:**
+3.**Usar console para debug:**
 
 ```javascript
 // Verificar estado
@@ -780,12 +780,12 @@ console.table({
 });
 ```
 
-4. **Testar em janela anônima:**
+4.**Testar em janela anônima:**
 
 - Sem cache ou cookies anteriores
 - Simula primeiro acesso
 
-5. **Screenshots e vídeos:**
+5.**Screenshots e vídeos:**
 
 - Capturar evidências de sucesso/falha
 - Facilita troubleshooting
@@ -794,17 +794,19 @@ console.table({
 
 ## Próximos Passos Após Testes
 
-1. **Se todos os testes passarem:**
- - Marcar Fase 2 como 100% completa
- - Criar release tag (v2.0.0)
- - Atualizar documentação
- - Deploy para produção
+1.**Se todos os testes passarem:**
 
-2. **Se houver bugs:**
- - 🐛 Registrar bugs encontrados
- - Priorizar correções
- - 🔄 Re-testar após correções
- - Aprovar quando 100% funcional
+- Marcar Fase 2 como 100% completa
+- Criar release tag (v2.0.0)
+- Atualizar documentação
+- Deploy para produção
+
+2.**Se houver bugs:**
+
+- 🐛 Registrar bugs encontrados
+- Priorizar correções
+- 🔄 Re-testar após correções
+- Aprovar quando 100% funcional
 
 ---
 

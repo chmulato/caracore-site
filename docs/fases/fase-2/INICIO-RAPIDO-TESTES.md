@@ -273,6 +273,7 @@ NotificationBridge.showSuccess('login_success');
 ### Problema 2: LogoutModal não abre
 
 **Solução:**
+
 ```javascript
 // Verificar se LogoutModal carregou
 console.log(typeof LogoutModal); // deve ser 'object'
@@ -287,6 +288,7 @@ document.getElementById('logoutButton'); // deve retornar <button>
 ### Problema 3: Erros de CORS
 
 **Solução:**
+
 - Verificar backend rodando em `localhost:5051`
 - Verificar configuração de CORS no `app.py`
 - Verificar URL no `session-manager.js` (linha 16-18)
@@ -294,6 +296,7 @@ document.getElementById('logoutButton'); // deve retornar <button>
 ### Problema 4: Token não salvo
 
 **Solução:**
+
 ```javascript
 // Verificar callback
 // Deve ter code na URL: ?code=xxxxx
@@ -311,6 +314,7 @@ localStorage.getItem('auth_access_token'); // deve ter valor
 **Se todos os 8 testes passarem:** **Fase 2 - Item 5: Sistema de Feedback Visual - VALIDADO!**
 
 **Próximas ações:**
+
 1. Marcar Fase 2 como 100% completa
 2. Atualizar README com funcionalidades
 3. Criar release tag (v2.0.0-fase-2)
@@ -365,6 +369,7 @@ console.table({
 ## 📞 Suporte
 
 Se encontrar dificuldades:
+
 1. Verificar console do navegador (F12)
 2. Verificar logs do backend (`/secure/admin-logs.html`)
 3. Consultar `GUIA-INTEGRACAO-NOTIFICACOES.md`

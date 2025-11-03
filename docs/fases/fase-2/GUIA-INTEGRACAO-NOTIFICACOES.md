@@ -238,13 +238,15 @@ NotificationBridge.dismissAll();
 
 ### 2. Teste do LogoutModal
 
-1. Fazer login em uma página protegida
-2. Clicar no botão "Sair" / "Encerrar sessão"
-3. Verificar se o modal aparece com 2 opções:
- - "Sair deste site" (logout local)
- - "Sair de todas as contas" (logout federado)
-4. Testar ambas as opções
-5. Verificar notificações de logout
+1.Fazer login em uma página protegida
+2.Clicar no botão "Sair" / "Encerrar sessão"
+3.Verificar se o modal aparece com 2 opções:
+
+- "Sair deste site" (logout local)
+- "Sair de todas as contas" (logout federado)
+
+4.Testar ambas as opções
+5.Verificar notificações de logout
 
 ### 3. Teste de Eventos Automáticos
 

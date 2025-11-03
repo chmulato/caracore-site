@@ -2,77 +2,132 @@
 
 ## Visão Geral
 
-Esta pasta contém scripts para teste, validação e operação do sistema CaraCore, incluindo o backend Flask deployado no Azure App Service (`caracore-backend.azurewebsites.net`).
+Esta pasta contém scripts essenciais para teste, validação e operação do sistema CaraCore após a limpeza e reorganização de novembro 2025.
 
-## Arquitetura do Sistema
+## Arquitetura Atual - Pós Limpeza
 
-### Backend Flask (Produção)
+**Scripts Ativos:** Apenas scripts essenciais mantidos (4 arquivos)
+**Redução:** 87.5% dos scripts removidos (32 → 4)
+**Backend Produção:** `caracore-backend.azurewebsites.net` (Azure App Service)
 
-- **URL:** `https://caracore-backend.azurewebsites.net`
-- **Documentação:** [BACKEND-CARACORE.md](../docs/BACKEND-CARACORE.md)
-- **Recursos Azure:** `caracore-backend` (App Service) + `caracore-plan` (Service Plan)
-- **Funcionalidade:** Token exchange para Google OAuth e Microsoft Entra ID
+## Scripts Ativos
 
-### Desenvolvimento Local
+### `teste.py` - SCRIPT PRINCIPAL
 
-- **Backend Local:** `backend/app.py` via Docker ou Python direto
-- **Frontend:** Servido via `server.py` ou servidor HTTP estático
-- **Testes:** Scripts automatizados para validação end-to-end
+**Função:** Script unificado de testes para todo o projeto CaraCore
 
-## Scripts de Teste OIDC
+**Funcionalidades:**
+- **Testes HTTP:** Validação de páginas principais (index.html, secure/*)
+- **Testes HTML:** Verificação de estrutura e conteúdo das páginas do sistema de gerenciamento de usuários
+- **Testes JavaScript:** Execução automática via Jest dos testes unitários (quando Node.js disponível)
+- **Relatório Consolidado:** Estatísticas detalhadas por categoria de teste
 
-### Teste Interativo com Playwright
-
-**Arquivo:** `test_oidc_login.py`
-
-Playwright-based script que abre o site e clica nos botões de login Google e Microsoft, detectando navegação para provedores de autenticação.
-
-#### Requisitos
-
-- Python 3.8+
-- Playwright e browsers:
-
+**Uso:**
 ```bash
-python -m pip install playwright
-python -m playwright install
+cd D:\dev\site\cara-core
+python scripts/teste.py
 ```
 
-#### Execução
+**Dependências:**
+- Python 3.x (obrigatório)
+- Node.js + npm/npx (opcional, para testes JS)
 
+### `server.py` - SERVIDOR DE DESENVOLVIMENTO
+
+**Função:** Servidor HTTP local para desenvolvimento
+
+**Uso:**
 ```bash
-# Teste com interface gráfica
-python scripts/test_oidc_login.py
+python scripts/server.py
+```
 
-# Teste headless (CI/CD)
-python scripts/test_oidc_login.py --headless
+**Porta:** 8000 (padrão)
 
-# Teste específico para Google OAuth
-python scripts/test_oidc_login.py --provider google
+## Backend de Produção
+
+### `backend/app.py` - BACKEND FLASK
+
+**URL Produção:** `https://caracore-backend.azurewebsites.net`
+**Funcionalidade:** OAuth 2.1 + OIDC com Google e Microsoft Entra ID
+
+**Endpoints Principais:**
+- `/health` - Health check
+- `/oauth/google/token` - Token exchange Google
+- `/oauth/microsoft/token` - Token exchange Microsoft
+- `/auth/validate` - Validação de tokens
+
+## Testes Unitários JavaScript
+
+**Localização:** `/secure/testes/`
+**Framework:** Jest com JSDOM
+**Total:** 75 testes unitários
+
+**Arquivos de Teste:**
+- `super-admin-setup.test.js` - 15 testes
+- `request-access-enhanced.test.js` - 18 testes
+- `approval-requests.test.js` - 20 testes
+- `user-management-navigation.test.js` - 22 testes
+
+**Execução:**
+```bash
+cd secure/testes
+npx jest
+```
 
 # Teste específico para Microsoft Entra ID
 python scripts/test_oidc_login.py --provider microsoft
 ```
 
-#### Funcionalidades
+## Limpeza Realizada (Novembro 2025)
 
-- Detecta redirecionamento para Google OAuth
-- Detecta redirecionamento para Microsoft Entra ID
-- Valida CORS e preflight requests
-- Testa callback handling
-- Suporte a headless mode para CI/CD
+### Scripts Removidos
 
-### Validação de Endpoints HTTP
+**Total Removido:** 32 arquivos obsoletos incluindo:
+- Scripts de deploy manuais
+- Scripts de configuração Azure complexos
+- Múltiplos scripts de teste específicos
+- Scripts de verificação duplicados
+- Utilitários de build obsoletos
 
-**Arquivo:** `validate_oidc_endpoints.py`
+### Justificativa
 
-Script de validação HTTP-only que não precisa de browsers, ideal para ambientes de CI onde Playwright não está disponível.
+1. **Arquitetura Simplificada:** App Service Settings eliminou scripts de configuração complexos
+2. **Testes Unificados:** `teste.py` substitui múltiplos scripts específicos  
+3. **Deploy Automatizado:** GitHub Actions substitui scripts manuais
+4. **Manutenibilidade:** Redução drástica de complexidade
 
-#### Funcionalidades
+## Comandos Essenciais
 
-- Testa endpoints do backend Flask
-- Valida CORS headers
-- Verifica health check (`/health`)
-- Testa token exchange endpoints
+### Desenvolvimento Local
+```bash
+# Iniciar servidor de desenvolvimento
+python scripts/server.py
+
+# Executar todos os testes
+python scripts/teste.py
+```
+
+### Testes JavaScript
+```bash
+cd secure/testes
+npx jest --coverage
+```
+
+## Documentação Complementar
+
+- **README_PY.md** - Documentação técnica detalhada
+- **../docs/BACKEND-CARACORE.md** - Documentação do backend
+- **../secure/testes/EXECUTAR_TESTES.md** - Configuração Jest
+
+## Estrutura Final
+
+```
+scripts/
+├── README.md              # Este guia
+├── README_PY.md           # Documentação técnica detalhada  
+├── server.py              # Servidor de desenvolvimento
+└── teste.py               # Script principal de testes
+```
 - Validação de configuração OAuth
 
 ## Scripts de Operação Backend

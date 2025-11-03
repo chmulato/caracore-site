@@ -105,7 +105,147 @@ Este documento descreve o sistema completo de gestão de usuários implementado 
 
 ## Integração com Sistema Existente
 
-### APIs Requeridas
+### Configuração de Autenticação
+
+O sistema de gestão de usuários integra-se com as configurações OAuth através dos arquivos JSON em `/secure/config/`:
+
+#### Fluxo de Autenticação no Sistema de Gestão
+
+1. **Super Admin Setup** (`super-admin-setup.html`):
+   - Carrega configurações do `google.json` ou `entra.json`
+   - Utiliza as `redirect_uri` configuradas para callback
+   - Valida tokens usando os endpoints de `jwks_uri`
+
+2. **Solicitação de Acesso** (`request-access-enhanced.html`):
+   - Verifica autenticação usando `userinfo_endpoint`
+   - Obtém dados do usuário (nome, email, avatar) via scope `profile email`
+   - Utiliza `client_id` para validação de origem
+
+3. **Aprovação de Solicitações** (`approval-requests.html`):
+   - Requer autenticação de nível admin via claims JWT
+   - Utiliza `authority` para validação de tokens
+   - Implementa logout via `post_logout_redirect_uri`
+
+#### Personalização por Ambiente
+
+**Arquivo de configuração para cada ambiente:**
+
+```javascript
+// Desenvolvimento Local
+{
+  "redirect_uri": "http://localhost:8000/secure/callback.html",
+  "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html"
+}
+
+// Produção
+{
+  "redirect_uri": "https://seu-dominio.com/secure/callback.html", 
+  "post_logout_redirect_uri": "https://seu-dominio.com/secure/logout.html"
+}
+```
+
+#### Validação de Configuração
+
+O sistema inclui validação automática das configurações JSON:
+
+```javascript
+// Verificação de configuração obrigatória
+function validateConfig(config) {
+    const required = ['client_id', 'redirect_uri', 'authority'];
+    return required.every(field => config[field]);
+}
+
+// Carregamento com fallback
+async function loadOAuthConfig(provider) {
+    try {
+        const response = await fetch(`/secure/config/${provider}.json`);
+        const config = await response.json();
+        
+        if (!validateConfig(config)) {
+            throw new Error(`Configuração ${provider} inválida`);
+        }
+        
+        return config;
+    } catch (error) {
+        console.error(`Erro ao carregar configuração ${provider}:`, error);
+        throw error;
+    }
+}
+```
+
+### Mapeamento de Funcionalidades por JSON
+
+#### Google OAuth (`google.json`)
+- **Escopo Principal**: `openid profile email`
+- **Uso no Sistema**: 
+  - Autenticação básica de usuários
+  - Obtenção de foto de perfil via Google Photos API
+  - Verificação de email verificado (`email_verified`)
+  - Claims: `sub`, `name`, `email`, `picture`
+
+#### Microsoft Entra ID (`entra.json`)  
+- **Escopo Principal**: `openid profile email User.Read`
+- **Uso no Sistema**:
+  - Autenticação corporativa/organizacional
+  - Integração com Microsoft Graph
+  - Verificação de grupos/roles organizacionais
+  - Claims: `oid`, `preferred_username`, `name`, `email`
+
+#### Configuração Dinâmica por Tela
+
+**Super Admin Setup** utiliza configuração específica:
+```javascript
+// Configuração para setup inicial
+const setupConfig = {
+    ...baseConfig,
+    scope: 'openid profile email User.ReadWrite.All', // Permissões admin
+    prompt: 'admin_consent' // Consentimento administrativo
+};
+```
+
+**Request Access** utiliza configuração padrão:
+```javascript
+// Configuração para usuários normais
+const userConfig = {
+    ...baseConfig,
+    scope: 'openid profile email',
+    prompt: 'select_account' // Seleção de conta
+};
+```
+
+### Gerenciamento de Estado de Configuração
+
+O sistema mantém estado das configurações ativas:
+
+```javascript
+class ConfigManager {
+    constructor() {
+        this.activeConfig = null;
+        this.provider = null;
+    }
+    
+    async initialize(provider) {
+        this.activeConfig = await loadOAuthConfig(provider);
+        this.provider = provider;
+        localStorage.setItem('oauth_provider', provider);
+        return this.activeConfig;
+    }
+    
+    getRedirectUri() {
+        return this.activeConfig?.redirect_uri;
+    }
+    
+    getClientId() {
+        return this.activeConfig?.client_id;
+    }
+    
+    // Troca dinâmica de provider
+    async switchProvider(newProvider) {
+        await this.initialize(newProvider);
+        window.location.reload(); // Recarrega para aplicar nova config
+    }
+}
+```
 
 ```javascript
 // Verificação de status do Super Admin
@@ -136,6 +276,69 @@ POST /api/admin/access-requests/{id}/reject
 - JWT tokens para autorização
 - Sistema de roles baseado em claims
 - Redirecionamento contextual pós-autenticação
+
+#### Configurações OAuth (secure/config/)
+
+O sistema utiliza arquivos JSON para configurar os provedores de autenticação:
+
+**`secure/config/google.json`** - Configuração Google OAuth
+```json
+{
+  "authority": "https://accounts.google.com",
+  "client_id": "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com",
+  "redirect_uri": "http://localhost:8000/secure/callback.html",
+  "response_type": "code",
+  "scope": "openid profile email",
+  "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html",
+  "metadata": {
+    "issuer": "https://accounts.google.com",
+    "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+    "token_endpoint": "https://oauth2.googleapis.com/token",
+    "userinfo_endpoint": "https://openidconnect.googleapis.com/v1/userinfo",
+    "jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
+  }
+}
+```
+
+**`secure/config/entra.json`** - Configuração Microsoft Entra ID
+```json
+{
+  "authority": "https://login.microsoftonline.com/consumers/v2.0",
+  "client_id": "***AZURE_SECRET_REDACTED***",
+  "redirect_uri": "http://localhost:8000/secure/callback.html",
+  "response_type": "code",
+  "scope": "openid profile email",
+  "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html",
+  "metadata": {
+    "issuer": "https://login.microsoftonline.com/consumers/v2.0",
+    "authorization_endpoint": "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize",
+    "token_endpoint": "https://login.microsoftonline.com/consumers/oauth2/v2.0/token",
+    "userinfo_endpoint": "https://graph.microsoft.com/oidc/userinfo",
+    "jwks_uri": "https://login.microsoftonline.com/consumers/discovery/v2.0/keys"
+  }
+}
+```
+
+#### Carregamento Dinâmico de Configurações
+
+O sistema carrega dinamicamente as configurações OAuth através do arquivo `auth.js`:
+
+```javascript
+const CONFIG_PATH = {
+    google: "/secure/config/google.json",
+    entra: "/secure/config/entra.json"
+};
+
+// Carregamento automático baseado no provedor escolhido
+const configResponse = await fetch(`/secure/config/${provider}.json`);
+const config = await configResponse.json();
+```
+
+#### Ambiente de Desenvolvimento vs Produção
+
+- **Desenvolvimento:** URLs `localhost:8000` para redirect_uri
+- **Produção:** URLs devem ser atualizadas para domínio real
+- **Segurança:** PKCE obrigatório, requer contexto HTTPS em produção
 
 ## Fluxo de Trabalho
 

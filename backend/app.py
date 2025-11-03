@@ -1840,6 +1840,130 @@ def create_app() -> Flask:
             resp = make_response(jsonify(error_response), 500)
             return add_cors(resp)
 
+    # ========================================================================
+    # SUPER ADMIN AUTHENTICATION ENDPOINTS
+    # ========================================================================
+    
+    @app.route("/auth/super-admin", methods=["OPTIONS"])
+    def super_admin_auth_preflight():
+        """CORS preflight para autenticação super admin"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/auth/super-admin", methods=["POST"])
+    @rate_limit("/auth/super-admin")
+    def authenticate_super_admin():
+        """Autenticação do super administrador"""
+        try:
+            data = request.get_json()
+            if not data:
+                return jsonify({"error": "invalid_request", "error_description": "Dados JSON são obrigatórios"}), 400
+            
+            email = data.get('email')
+            password = data.get('password')
+            
+            if not email or not password:
+                return jsonify({"error": "invalid_request", "error_description": "Email e senha são obrigatórios"}), 400
+            
+            # Verificar credenciais do super admin
+            SUPER_ADMIN_EMAIL = 'suporte@caracore.com.br'
+            SUPER_ADMIN_PASSWORD_HASH = os.getenv('SUPER_ADMIN_PASSWORD_HASH')
+            JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+            
+            if not SUPER_ADMIN_PASSWORD_HASH or not JWT_SECRET_KEY:
+                logger.error("Variáveis de ambiente SUPER_ADMIN_PASSWORD_HASH ou JWT_SECRET_KEY não configuradas")
+                return jsonify({"error": "server_error", "error_description": "Configuração do servidor incompleta"}), 500
+            
+            if email.lower() != SUPER_ADMIN_EMAIL.lower():
+                logger.warning(f"Tentativa de login super admin com email não autorizado: {email}")
+                return jsonify({"error": "unauthorized", "error_description": "Email não autorizado"}), 401
+            
+            # Verificar senha hasheada (SHA-256)
+            password_hash = hashlib.sha256(password.encode()).hexdigest()
+            
+            if password_hash != SUPER_ADMIN_PASSWORD_HASH:
+                logger.warning(f"Tentativa de login super admin com senha incorreta: {email}")
+                return jsonify({"error": "unauthorized", "error_description": "Credenciais inválidas"}), 401
+            
+            # Gerar token JWT para super admin
+            from datetime import datetime, timedelta
+            
+            payload = {
+                'email': email,
+                'role': 'super_admin',
+                'iat': datetime.utcnow(),
+                'exp': datetime.utcnow() + timedelta(hours=24)
+            }
+            
+            token = jwt.encode(payload, JWT_SECRET_KEY, algorithm='HS256')
+            
+            logger.info(f"Super admin autenticado com sucesso: {email}")
+            
+            response_data = {
+                'token': token,
+                'email': email,
+                'role': 'super_admin',
+                'expires_in': 86400  # 24 horas em segundos
+            }
+            
+            resp = make_response(jsonify(response_data), 200)
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro na autenticação super admin: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
+    @app.route("/auth/verify-super-admin", methods=["OPTIONS"])
+    def verify_super_admin_preflight():
+        """CORS preflight para verificação super admin"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/auth/verify-super-admin", methods=["POST"])
+    @rate_limit("/auth/verify-super-admin")
+    def verify_super_admin():
+        """Verificar token do super administrador"""
+        try:
+            auth_header = request.headers.get('Authorization')
+            
+            if not auth_header or not auth_header.startswith('Bearer '):
+                return jsonify({"error": "unauthorized", "error_description": "Token não fornecido"}), 401
+            
+            token = auth_header.split(' ')[1]
+            JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
+            
+            if not JWT_SECRET_KEY:
+                logger.error("Variável de ambiente JWT_SECRET_KEY não configurada")
+                return jsonify({"error": "server_error", "error_description": "Configuração do servidor incompleta"}), 500
+            
+            try:
+                payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=['HS256'])
+                
+                if payload.get('role') != 'super_admin':
+                    return jsonify({"error": "forbidden", "error_description": "Token não é de super admin"}), 403
+                
+                response_data = {
+                    'valid': True,
+                    'email': payload.get('email'),
+                    'role': payload.get('role'),
+                    'exp': payload.get('exp')
+                }
+                
+                resp = make_response(jsonify(response_data), 200)
+                return add_cors(resp)
+                
+            except JoseError as e:
+                if 'expired' in str(e).lower():
+                    return jsonify({"error": "token_expired", "error_description": "Token expirado"}), 401
+                else:
+                    return jsonify({"error": "invalid_token", "error_description": "Token inválido"}), 401
+                    
+        except Exception as e:
+            logger.error(f"Erro na verificação super admin: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+
     # Aplicar security headers em todas as respostas
     @app.after_request
     def apply_security_headers(response):

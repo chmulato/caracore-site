@@ -20,6 +20,7 @@ venv/
 
 # Credenciais e Secrets (Segurança)
 *secret*.json
+*SECRET*.txt
 *backup*.json
 backup-*-settings.json
 *-settings.json.backup
@@ -32,6 +33,7 @@ backup-*-settings.json
 .secrets/
 secrets/
 oidc_logs*
+super_admin_config_SECRET.txt
 
 # Backend logs (JSONL daily files)
 backend/logs/

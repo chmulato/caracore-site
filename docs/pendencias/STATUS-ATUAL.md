@@ -170,7 +170,7 @@
 
 **2. Backend Azure Não Respondia**
 
-- **Problema:** Timeout infinito ao acessar `https://caracore-backend.azurewebsites.net/health`
+- **Problema:** Timeout infinito ao acessar `https://caracore-backend-docker.azurewebsites.net/health`
 - **Causas Identificadas:**
  - Startup command sem porta explícita
  - Variável `WEBSITES_PORT` não configurada
@@ -201,7 +201,7 @@
 - `backend/app.py` - Adicionado OPTIONS handler (linhas 1400-1402)
 - `README.md` - Atualizado com instruções de configuração
 
-### Testes Realizados: **Health Endpoint:** `https://caracore-backend.azurewebsites.net/health` → `{"status":"ok"}` **Dashboard de Logs:** `https://www.caracore.com.br/secure/admin-logs.html`
+### Testes Realizados: **Health Endpoint:** `https://caracore-backend-docker.azurewebsites.net/health` → `{"status":"ok"}` **Dashboard de Logs:** `https://www.caracore.com.br/secure/admin-logs.html`
 
 - 15 eventos carregados corretamente
 - Filtros funcionando (data, tipo, busca)
@@ -1003,7 +1003,7 @@ pip install -r requirements.txt
 
 **Sintomas:**
 - Dashboard não carrega logs
-- Console mostra: `Access to fetch at 'https://caracore-backend.azurewebsites.net/api/admin/logs' from origin 'https://www.caracore.com.br' has been blocked by CORS policy`
+- Console mostra: `Access to fetch at 'https://caracore-backend-docker.azurewebsites.net/api/admin/logs' from origin 'https://www.caracore.com.br' has been blocked by CORS policy`
 - Backend responde OK com `curl` ou Postman
 
 **Causa Raiz:**
@@ -1020,7 +1020,7 @@ def admin_logs_preflight():
 **Verificação:**
 ```powershell
 # Deve retornar 204
-curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I
+curl -X OPTIONS https://caracore-backend-docker.azurewebsites.net/api/admin/logs -I
 ```
 
 ---
@@ -1028,7 +1028,8 @@ curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I
 ### Problema: Backend não responde (timeout infinito)
 
 **Sintomas:**
-- `https://caracore-backend.azurewebsites.net/health` não responde
+
+- [https://caracore-backend-docker.azurewebsites.net/health] não responde
 - Azure portal mostra "Application Error"
 - Logs mostram gunicorn iniciando mas sem aceitar requisições
 
@@ -1113,17 +1114,20 @@ ls -lh /home/site/wwwroot/logs/
 ```
 
 **Solução:**
+
 - Realizar pelo menos 1 login no sistema para gerar logs
 - Verificar se `LOG_DIR` está correto nas env vars
 
 **2. Filtros muito restritivos:**
+
 - Verificar se a data selecionada corresponde aos logs existentes
 - Limpar filtros e tentar novamente
 
 **3. Backend retornando 500:**
+
 ```powershell
 # Testar endpoint diretamente
-Invoke-RestMethod -Uri "https://caracore-backend.azurewebsites.net/api/admin/logs?limit=10" -Method GET
+Invoke-RestMethod -Uri "https://caracore-backend-docker.azurewebsites.net/api/admin/logs?limit=10" -Method GET
 ```
 
 ---

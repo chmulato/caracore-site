@@ -98,7 +98,7 @@ Passos rápidos de verificação (úteis para o time):
 1.Testar preflight CORS (deve retornar 204):
 
 ```powershell
-curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I
+curl -X OPTIONS https://caracore-backend-docker.azurewebsites.net/api/admin/logs -I
 ```
 
 2.Verificar `WEBSITES_PORT` no App Settings:

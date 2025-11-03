@@ -152,7 +152,7 @@ JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
 curl http://localhost:5051/health
 
 # Produção
-curl https://caracore-backend.azurewebsites.net/health
+curl https://caracore-backend-docker.azurewebsites.net/health
 ```
 
 **Resultado esperado:** `{"status": "ok"}` ou similar
@@ -170,7 +170,7 @@ $body = @{
 $response = Invoke-RestMethod -Uri "http://localhost:5051/auth/super-admin" -Method POST -Body $body -ContentType "application/json"
 
 # Produção
-$response = Invoke-RestMethod -Uri "https://caracore-backend.azurewebsites.net/auth/super-admin" -Method POST -Body $body -ContentType "application/json"
+$response = Invoke-RestMethod -Uri "https://caracore-backend-docker.azurewebsites.net/auth/super-admin" -Method POST -Body $body -ContentType "application/json"
 
 $response | ConvertTo-Json
 ```

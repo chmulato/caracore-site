@@ -205,8 +205,8 @@ az monitor metrics alert create `
 
 ```powershell
 # 1. Fazer algumas requisições ao backend
-curl https://caracore-backend.azurewebsites.net/health
-curl https://caracore-backend.azurewebsites.net/health/detailed
+curl https://caracore-backend-docker.azurewebsites.net/health
+curl https://caracore-backend-docker.azurewebsites.net/health/detailed
 
 # 2. Aguardar 2-3 minutos para dados aparecerem
 

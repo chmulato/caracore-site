@@ -429,20 +429,21 @@ cd secure/testes
 
 ### URL do Site
 
-```
+```text
 https://www.caracore.com.br
 ```
 
 ### Backend Azure
 
-```
+```text
 https://caracore-backend.azurewebsites.net
 ```
 
 ### Super Administrador
 
 **URL de Acesso:**
-```
+
+```text
 https://www.caracore.com.br/secure/super-admin-setup.html
 ```
 

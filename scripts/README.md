@@ -211,7 +211,7 @@ python scripts/validar_api_azure.py
 
 #### Testes Realizados
 
-- Health check (`https://caracore-backend.azurewebsites.net/health`)
+- Health check (`https://caracore-backend-docker.azurewebsites.net/health`)
 - CORS preflight e headers
 - Google OAuth token exchange
 - Microsoft OAuth token exchange

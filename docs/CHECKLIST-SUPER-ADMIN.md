@@ -146,7 +146,7 @@ $body = @{
  password = "sua_senha_aqui"
 } | ConvertTo-Json
 
-$response = Invoke-RestMethod -Uri "https://caracore-backend.azurewebsites.net/auth/super-admin" -Method POST -Body $body -ContentType "application/json"
+$response = Invoke-RestMethod -Uri "https://caracore-backend-docker.azurewebsites.net/auth/super-admin" -Method POST -Body $body -ContentType "application/json"
 
 $response | ConvertTo-Json
 ```
@@ -199,7 +199,7 @@ python setup_super_admin.py
 **Solução:**
 
 1. Verifique se o App Service está rodando
-2. Acesse [https://caracore-backend.azurewebsites.net/health]
+2. Acesse [https://caracore-backend-docker.azurewebsites.net/health]
 3. Se retornar erro, verifique logs do Azure
 
 ### Token JWT Inválido
@@ -223,29 +223,33 @@ python setup_super_admin.py
 | **Password Hash** | ***PASSWORD_HASH_REDACTED*** |
 | **JWT Secret** | ***JWT_SECRET_REDACTED*** |
 | **URL Login** | [https://www.caracore.com.br/secure/super-admin-setup.html] |
-| **Backend** | [https://caracore-backend.azurewebsites.net/ |
+| **Backend** | [https://caracore-backend-docker.azurewebsites.net/ |
 
 ---
 
 ## Próximos Passos (Após Configuração)
 
-1. **Testar todas as funcionalidades de admin:**
- - Aprovar/rejeitar solicitações de acesso
- - Adicionar usuários autorizados
- - Remover usuários autorizados
- - Visualizar logs de acesso
+1.**Testar todas as funcionalidades de admin:**
 
-2. **Configurar backup de secrets:**
- - Guardar `secrets.txt` em local seguro
- - Considerar usar Azure Key Vault para secrets
+- Aprovar/rejeitar solicitações de acesso
+- Adicionar usuários autorizados
+- Remover usuários autorizados
+- Visualizar logs de acesso
 
-3. **Monitorar logs:**
- - Verificar tentativas de login inválidas
- - Monitorar atividades do super admin
+2.**Configurar backup de secrets:**
 
-4. **Documentar processo para equipe:**
- - Compartilhar `docs/SUPER-ADMIN-AUTH.md`
- - Treinar administradores
+- Guardar `secrets.txt` em local seguro
+- Considerar usar Azure Key Vault para secrets
+
+3.**Monitorar logs:**
+
+- Verificar tentativas de login inválidas
+- Monitorar atividades do super admin
+
+4.**Documentar processo para equipe:**
+
+- Compartilhar `docs/SUPER-ADMIN-AUTH.md`
+- Treinar administradores
 
 ---
 

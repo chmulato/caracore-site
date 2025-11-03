@@ -529,7 +529,7 @@ az webapp config set `
 az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --query "[?name=='WEBSITES_PORT']"
 
 # 2. Testar health endpoint (deve responder em <5 segundos)
-curl https://caracore-backend.azurewebsites.net/health
+curl https://caracore-backend-docker.azurewebsites.net/health
 
 # 3. Cold start pode demorar 45-60 segundos (B1 tier)
 ```
@@ -548,7 +548,7 @@ az webapp log tail --name caracore-backend --resource-group rg-caracore
 az webapp restart --name caracore-backend --resource-group rg-caracore
 
 # 3. Verificar health endpoint
-curl https://caracore-backend.azurewebsites.net/health
+curl https://caracore-backend-docker.azurewebsites.net/health
 ```
 
 ### Erro: CORS Preflight Blocked
@@ -593,10 +593,10 @@ def admin_logs():
 
 ```powershell
 # 1. Testar OPTIONS (deve retornar 204)
-curl -X OPTIONS https://caracore-backend.azurewebsites.net/api/admin/logs -I
+curl -X OPTIONS https://caracore-backend-docker.azurewebsites.net/api/admin/logs -I
 
 # 2. Verificar headers CORS
-curl -H "Origin: https://www.caracore.com.br" -I https://caracore-backend.azurewebsites.net/api/admin/logs
+curl -H "Origin: https://www.caracore.com.br" -I https://caracore-backend-docker.azurewebsites.net/api/admin/logs
 
 # Deve incluir:
 # Access-Control-Allow-Origin: https://www.caracore.com.br

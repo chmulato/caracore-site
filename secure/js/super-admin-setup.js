@@ -1,7 +1,7 @@
 // Super Admin Setup JavaScript
 
 // Configuração
-const BACKEND_URL = 'https://caracore-backend.azurewebsites.net';
+const BACKEND_URL = 'https://caracore-backend-docker.azurewebsites.net';
 const SUPER_ADMIN_EMAIL = 'suporte@caracore.com.br';
 
 // Verificar se já está autenticado ao carregar

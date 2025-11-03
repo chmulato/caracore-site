@@ -22,7 +22,7 @@ const OIDC_CONFIGS = {
     cacheLocation: "sessionStorage",
     scopes: ["openid", "profile", "email"],
     // Usando endpoint direto no backend, já que estamos no domínio personalizado com CORS configurado
-    tokenEndpoint: "https://caracore-backend.azurewebsites.net/oauth/google/token"
+    tokenEndpoint: "https://caracore-backend-docker.azurewebsites.net/oauth/google/token"
   }
 };
 
@@ -35,8 +35,8 @@ const CARA_CORE_DEFAULT_CONFIG = {
   oidc: OIDC_CONFIGS[OIDC_PROVIDER],
   // logging is opt-in; configure a full HTTPS endpoint when available (e.g., App Insights collector)
   logsEndpoint: null,
-  googleTokenEndpoint: 'https://caracore-backend.azurewebsites.net/oauth/google/token',
-  microsoftTokenEndpoint: 'https://caracore-backend.azurewebsites.net/oauth/microsoft/token',
+  googleTokenEndpoint: 'https://caracore-backend-docker.azurewebsites.net/oauth/google/token',
+  microsoftTokenEndpoint: 'https://caracore-backend-docker.azurewebsites.net/oauth/microsoft/token',
   pseudoSaltHint: "set-server-side",
   environment: (location.protocol === 'https:') ? 'prod' : 'dev',
 };

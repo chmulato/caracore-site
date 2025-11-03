@@ -2,11 +2,11 @@
     "redirects": [
         {
             "source": "/oauth/google/token",
-            "destination": "https://caracore-backend.azurewebsites.net/oauth/google/token"
+            "destination": "https://caracore-backend-docker.azurewebsites.net/oauth/google/token"
         },
         {
             "source": "/oauth/microsoft/token",
-            "destination": "https://caracore-backend.azurewebsites.net/oauth/microsoft/token"
+            "destination": "https://caracore-backend-docker.azurewebsites.net/oauth/microsoft/token"
         },
         {
             "source": "/secure/*",

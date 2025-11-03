@@ -7,7 +7,7 @@
 (function() {
     'use strict';
 
-    const API_BASE_URL = 'https://caracore-backend.azurewebsites.net';
+    const API_BASE_URL = 'https://caracore-backend-docker.azurewebsites.net';
     // const API_BASE_URL = 'http://127.0.0.1:5051';  // Desenvolvimento local
     
     // Estado da aplicação

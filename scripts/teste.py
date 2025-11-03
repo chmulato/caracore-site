@@ -1,4 +1,4 @@
-"""Teste rápido para validar páginas principais do site e Área 51.
+"""Teste rápido para validar páginas principais do site, Área 51 e executar testes JS/HTML.
 
 O script inicia um servidor HTTP local apontando para a raiz do projeto,
 realiza requisições a páginas-chave e verifica conteúdos essenciais:
@@ -6,6 +6,8 @@ realiza requisições a páginas-chave e verifica conteúdos essenciais:
 - `index.html` deve responder com HTTP 200 e conter o link "Área 51".
 - `/secure/index.html`, `/secure/callback.html`, `/secure/restrita.html` e `/secure/logout.html`
   devem responder com HTTP 200 e conter textos característicos.
+- Executa todos os testes JavaScript usando Jest
+- Executa testes HTML específicos
 
 Uso:
     python teste.py
@@ -16,7 +18,10 @@ from __future__ import annotations
 
 import contextlib
 import http.server
+import os
 import socketserver
+import subprocess
+import sys
 import threading
 import time
 import urllib.error
@@ -26,7 +31,7 @@ from html.parser import HTMLParser
 from pathlib import Path
 from typing import List
 
-PROJECT_ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent  # Voltar um nível para a raiz do projeto
 HOST = "127.0.0.1"
 
 
@@ -179,27 +184,244 @@ def run_tests(port: int) -> List[TestResult]:
     return results
 
 
+def run_javascript_tests() -> List[TestResult]:
+    """Executa todos os testes JavaScript usando Jest."""
+    results: List[TestResult] = []
+    
+    # Caminho para o diretório de testes
+    test_dir = PROJECT_ROOT / "secure" / "testes"
+    
+    if not test_dir.exists():
+        results.append(TestResult("Diretório de testes JS", False, "secure/testes não encontrado"))
+        return results
+    
+    print("\n🧪 Executando testes JavaScript...")
+    
+    # Verificar se Node.js está disponível
+    try:
+        subprocess.run(["node", "--version"], 
+                      capture_output=True, check=True, cwd=test_dir)
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        results.append(TestResult("Node.js disponível", False, "Node.js não encontrado"))
+        return results
+    
+    results.append(TestResult("Node.js disponível", True))
+    
+    # Verificar se npx está disponível
+    try:
+        subprocess.run(["npx", "--version"], 
+                      capture_output=True, check=True, cwd=test_dir)
+        results.append(TestResult("npx disponível", True))
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        results.append(TestResult("npx disponível", False, "npx não encontrado - testes JS pulados"))
+        print("   ⚠️  npx não encontrado. Testes JavaScript serão pulados.")
+        return results
+    
+    # Instalar dependências se necessário
+    package_json = test_dir / "package.json"
+    if not package_json.exists():
+        # Criar package.json básico se não existir
+        package_content = """{
+  "name": "caracore-tests",
+  "version": "1.0.0",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": ["<rootDir>/test-setup.js"],
+    "testMatch": ["**/*.test.js"],
+    "testTimeout": 10000
+  }
+}"""
+        with open(package_json, 'w', encoding='utf-8') as f:
+            f.write(package_content)
+        results.append(TestResult("package.json criado", True))
+    
+    # Verificar se dependências estão instaladas
+    node_modules = test_dir / "node_modules"
+    if not node_modules.exists():
+        print("   📦 Instalando dependências Jest...")
+        try:
+            result = subprocess.run(["npm", "install"], 
+                                  capture_output=True, text=True, cwd=test_dir)
+            if result.returncode == 0:
+                results.append(TestResult("Dependências instaladas", True))
+            else:
+                results.append(TestResult("Dependências instaladas", False, 
+                                        f"npm install falhou: {result.stderr}"))
+                return results
+        except FileNotFoundError:
+            results.append(TestResult("npm disponível", False, "npm não encontrado"))
+            return results
+    
+    # Executar testes JavaScript
+    test_files = list(test_dir.glob("*.test.js"))
+    if not test_files:
+        results.append(TestResult("Arquivos de teste JS", False, "Nenhum arquivo *.test.js encontrado"))
+        return results
+    
+    results.append(TestResult("Arquivos de teste JS encontrados", True, f"{len(test_files)} arquivos"))
+    
+    print(f"   🎯 Executando {len(test_files)} arquivos de teste...")
+    
+    try:
+        # Executar Jest
+        result = subprocess.run(["npx", "jest", "--verbose", "--no-cache"], 
+                              capture_output=True, text=True, cwd=test_dir, timeout=120)
+        
+        if result.returncode == 0:
+            results.append(TestResult("Execução dos testes JS", True, "Todos os testes passaram"))
+            
+            # Contar testes individuais na saída
+            output_lines = result.stdout.split('\n')
+            passed_tests = [line for line in output_lines if '✓' in line or 'PASS' in line]
+            results.append(TestResult("Testes JS individuais", True, f"{len(passed_tests)} testes passaram"))
+            
+        else:
+            results.append(TestResult("Execução dos testes JS", False, 
+                                    f"Testes falharam (código {result.returncode})"))
+            # Adicionar detalhes do erro
+            if result.stderr:
+                print(f"   ❌ Erro: {result.stderr[:200]}...")
+            
+    except subprocess.TimeoutExpired:
+        results.append(TestResult("Execução dos testes JS", False, "Timeout após 120s"))
+    except Exception as e:
+        results.append(TestResult("Execução dos testes JS", False, f"Erro: {str(e)}"))
+    
+    return results
+
+
+def run_html_tests(port: int) -> List[TestResult]:
+    """Executa testes específicos dos arquivos HTML."""
+    results: List[TestResult] = []
+    
+    print("\n🌐 Executando testes HTML...")
+    
+    # Páginas do sistema de gerenciamento de usuários
+    test_pages = [
+        ("/secure/super-admin-setup.html", "Configuração", ["super", "admin", "configuração"]),
+        ("/secure/request-access-enhanced.html", "Solicitação", ["solicitar", "acesso", "usuário"]),
+        ("/secure/approval-requests.html", "Aprovação", ["aprovação", "solicitações", "admin"]),
+        ("/secure/historia.html", "História", ["história", "área 51", "narrativa"]),
+        ("/secure/testes/test-runner.html", "Test Runner", ["test", "runner", "jest"])
+    ]
+    
+    for path, name, keywords in test_pages:
+        try:
+            status, body = fetch(path, port)
+            
+            # Verificar status HTTP
+            status_ok = status == 200
+            
+            # Verificar se contém palavras-chave relevantes
+            body_lower = body.lower()
+            contains_keywords = any(keyword.lower() in body_lower for keyword in keywords)
+            
+            # Verificar estrutura HTML básica
+            has_html_structure = all(tag in body_lower for tag in ['<html', '<head', '<body'])
+            
+            success = status_ok and contains_keywords and has_html_structure
+            
+            details = f"status={status}; keywords={contains_keywords}; structure={has_html_structure}"
+            
+            results.append(TestResult(f"HTML: {name}", success, details))
+            
+        except urllib.error.URLError as exc:
+            results.append(TestResult(f"HTML: {name}", False, f"erro: {exc}"))
+    
+    return results
+
+
 def main() -> int:
     if not PROJECT_ROOT.joinpath("index.html").exists():
         print("[ERRO] index.html não encontrado na raiz do projeto.")
         return 1
 
+    print("🚀 CaraCore - Execução Completa de Testes")
+    print("=" * 50)
+    
+    all_results = []
+    
+    # 1. Executar testes básicos de páginas (HTTP)
+    print("\n📄 Executando testes básicos de páginas...")
     with start_test_server() as port:
-        results = run_tests(port)
-
-    all_ok = True
-    for result in results:
-        status = "OK" if result.success else "FALHA"
-        details = f" ({result.details})" if result.details else ""
-        print(f"- {status} :: {result.name}{details}")
-        all_ok &= result.success
-
-    if all_ok:
-        print("\nTodos os testes passaram.")
+        basic_results = run_tests(port)
+        all_results.extend(basic_results)
+        
+        # 2. Executar testes HTML específicos
+        html_results = run_html_tests(port)
+        all_results.extend(html_results)
+    
+    # 3. Executar testes JavaScript
+    js_results = run_javascript_tests()
+    all_results.extend(js_results)
+    
+    # Exibir resultados consolidados
+    print("\n" + "=" * 50)
+    print("📊 RELATÓRIO FINAL DE TESTES")
+    print("=" * 50)
+    
+    # Categorizar resultados
+    basic_tests = [r for r in basic_results if r.name.startswith(('index.html', 'Link Área 51', 'secure/'))]
+    html_tests = [r for r in html_results if r.name.startswith('HTML:')]
+    js_tests = [r for r in js_results]
+    
+    # Mostrar estatísticas por categoria
+    def show_category_stats(tests, category_name):
+        if not tests:
+            return
+        
+        passed = sum(1 for t in tests if t.success)
+        total = len(tests)
+        print(f"\n{category_name}: {passed}/{total} passaram")
+        
+        for result in tests:
+            status = "✅ OK" if result.success else "❌ FALHA"
+            details = f" ({result.details})" if result.details else ""
+            print(f"  {status} :: {result.name}{details}")
+    
+    show_category_stats(basic_tests, "🌐 Testes Básicos de Páginas")
+    show_category_stats(html_tests, "📄 Testes HTML Específicos")
+    show_category_stats(js_tests, "🧪 Testes JavaScript")
+    
+    # Resultado geral (excluir falhas de dependências opcionais)
+    optional_failures = ["Node.js disponível", "npx disponível", "npm disponível"]
+    critical_results = [r for r in all_results if r.name not in optional_failures]
+    optional_results = [r for r in all_results if r.name in optional_failures]
+    
+    critical_ok = all(result.success for result in critical_results)
+    total_tests = len(all_results)
+    passed_tests = sum(1 for result in all_results if result.success)
+    
+    print(f"\n{'=' * 50}")
+    
+    # Mostrar status de dependências opcionais
+    if optional_results:
+        failed_optional = [r for r in optional_results if not r.success]
+        if failed_optional:
+            print("⚠️  Dependências opcionais não disponíveis:")
+            for result in failed_optional:
+                print(f"  • {result.name}: {result.details}")
+            print()
+    
+    if critical_ok:
+        print(f"🎉 SUCESSO: Todos os testes críticos passaram!")
+        print(f"📊 Total: {passed_tests}/{total_tests} testes passaram")
         return 0
-
-    print("\nAlguns testes falharam.")
-    return 1
+    else:
+        print(f"❌ FALHAS: {passed_tests}/{total_tests} testes passaram")
+        failed_critical = [r for r in critical_results if not r.success]
+        if failed_critical:
+            print(f"\nTestes críticos que falharam:")
+            for result in failed_critical:
+                print(f"  • {result.name}: {result.details}")
+        return 1
 
 
 if __name__ == "__main__":

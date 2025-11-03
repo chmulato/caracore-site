@@ -23,7 +23,7 @@ Implementar os fundamentos do sistema de autenticação OAuth 2.1 + OIDC com foc
 - **`secure/index.html`** ✅ - Interface de login OAuth 2.1 + OIDC implementada
 - **`secure/restrita.html`** ✅ - Acesso garantido apenas para usuários autenticados
 - **`secure/callback.html`** ✅ - Processamento de callback OAuth funcionando
-- **`secure/privado/historia.html`** ✅ - Controle de acesso adicional aplicado
+- **`secure/historia.html`** ✅ - Controle de acesso adicional aplicado
 
 ## Itens Desenvolvidos ✅ TODOS CONCLUÍDOS
 

@@ -23,7 +23,7 @@
 
 #### Páginas Adicionais:
 
-- **`secure/privado/historia.html`** - Conteúdo protegido adicional
+- **`secure/historia.html`** - Conteúdo protegido adicional
 
 ### 3. Atualizações por Fase
 
@@ -94,8 +94,7 @@ secure/
 ├── callback.html       # Callback OAuth (Fase 1 - Item 1)
 ├── logout.html         # Logout (Fase 2 - Item 4)
 ├── admin-logs.html     # Logs Admin (Fase 3 - Item 6)
-└── privado/
-    └── historia.html   # Conteúdo Adicional (Todas as fases)
+└── historia.html       # Conteúdo Adicional (Todas as fases)
 ```
 
 ## Comandos Executados

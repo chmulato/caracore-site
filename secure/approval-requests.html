@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aprovação de Solicitações - CaraCore Admin</title>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251102" />
+    <link rel="stylesheet" href="/secure/css/secure-restrita.css?v=20251102" />
+    <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251102" />
+    <link rel="stylesheet" href="/secure/css/approval-requests.css?v=20251102" />
+</head>
+<body>
+    <div class="approval-container">
+        <!-- Header -->
+        <div class="approval-header">
+            <div class="header-content">
+                <div>
+                    <h1 class="header-title">Aprovação de Solicitações</h1>
+                    <p class="header-subtitle">Gerencie as solicitações de acesso ao sistema</p>
+                </div>
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span id="pending-count" class="stat-number">-</span>
+                        <span class="stat-label">Pendentes</span>
+                    </div>
+                    <div class="stat-item">
+                        <span id="today-count" class="stat-number">-</span>
+                        <span class="stat-label">Hoje</span>
+                    </div>
+                    <div class="stat-item">
+                        <span id="urgent-count" class="stat-number">-</span>
+                        <span class="stat-label">Urgentes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters-section">
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label class="filter-label" for="status-filter">Status</label>
+                    <select id="status-filter" class="filter-select" title="Filtrar por status">
+                        <option value="">Todos</option>
+                        <option value="pending">Pendente</option>
+                        <option value="approved">Aprovado</option>
+                        <option value="rejected">Rejeitado</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="urgency-filter">Urgência</label>
+                    <select id="urgency-filter" class="filter-select" title="Filtrar por urgência">
+                        <option value="">Todas</option>
+                        <option value="critical">Crítica</option>
+                        <option value="high">Alta</option>
+                        <option value="medium">Média</option>
+                        <option value="low">Baixa</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="access-filter">Nível de Acesso</label>
+                    <select id="access-filter" class="filter-select" title="Filtrar por nível de acesso">
+                        <option value="">Todos</option>
+                        <option value="viewer">Visualizador</option>
+                        <option value="editor">Editor</option>
+                        <option value="admin">Administrador</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Buscar</label>
+                    <input type="text" id="search-filter" class="filter-input" placeholder="Nome ou email...">
+                </div>
+                <div class="filter-group">
+                    <button id="apply-filters" class="filter-button">Aplicar Filtros</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="loading-state">
+            <div class="loading-spinner"></div>
+            <p>Carregando solicitações...</p>
+        </div>
+
+        <!-- Lista de Solicitações -->
+        <div id="requests-container" class="requests-list hidden">
+            <!-- As solicitações serão inseridas aqui pelo JavaScript -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="empty-state hidden">
+            <div class="empty-icon">📋</div>
+            <h3>Nenhuma solicitação encontrada</h3>
+            <p>Não há solicitações de acesso no momento ou que correspondam aos filtros aplicados.</p>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes -->
+    <div id="details-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Detalhes da Solicitação</h3>
+            </div>
+            <div id="modal-body">
+                <!-- Conteúdo será inserido pelo JavaScript -->
+            </div>
+            <div class="modal-actions">
+                <button id="close-modal" class="modal-button modal-secondary">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Rejeição -->
+    <div id="rejection-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Rejeitar Solicitação</h3>
+            </div>
+            <div>
+                <p>Informe o motivo da rejeição (opcional):</p>
+                <textarea id="rejection-reason" rows="4" class="rejection-textarea" placeholder="Motivo da rejeição..."></textarea>
+            </div>
+            <div class="modal-actions">
+                <button id="confirm-rejection" class="modal-button modal-primary reject-button-modal">Confirmar Rejeição</button>
+                <button id="cancel-rejection" class="modal-button modal-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/secure/js/approval-manager.js"></script>
+</body>
+</html>

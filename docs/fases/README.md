@@ -22,7 +22,7 @@ Este diretório contém a organização por fases do desenvolvimento do sistema 
 
 ### Adicionais:
 
-- **`secure/privado/historia.html`** ✅ - Conteúdo protegido adicional
+- **`secure/historia.html`** ✅ - Conteúdo protegido adicional
 
 ## Estrutura das Fases ✅ TODAS CONCLUÍDAS
 

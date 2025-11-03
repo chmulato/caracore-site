@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Solicitar Acesso - CaraCore</title>
+    <link rel="icon" href="/images/favicon.ico" />
+    <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251102" />
+    <link rel="stylesheet" href="/secure/css/secure-restrita.css?v=20251102" />
+    <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251102" />
+    <link rel="stylesheet" href="/secure/css/request-access-enhanced.css?v=20251102" />
+</head>
+<body>
+    <div class="request-container">
+        <div class="request-header">
+            <div class="request-icon">📝</div>
+            <h1 class="request-title">Solicitar Acesso</h1>
+            <p class="request-description">
+                Preencha o formulário abaixo para solicitar acesso ao sistema CaraCore.<br>
+                Sua solicitação será analisada por um administrador.
+            </p>
+        </div>
+
+        <div id="success-message" class="success-message hidden">
+            <strong>Solicitação enviada com sucesso!</strong><br>
+            Você receberá uma notificação por email quando sua solicitação for analisada.
+        </div>
+
+        <div id="user-info" class="user-info hidden">
+            <div class="flex items-center">
+                <img id="user-avatar" class="user-avatar" src="" alt="Avatar" />
+                <div class="user-details">
+                    <div id="user-name" class="user-name"></div>
+                    <div id="user-email" class="user-email"></div>
+                </div>
+            </div>
+        </div>
+
+        <form id="access-request-form">
+            <div class="form-group">
+                <label for="access-level" class="form-label">Nível de Acesso Solicitado</label>
+                <select id="access-level" name="access-level" class="form-select" required>
+                    <option value="">Selecione o nível de acesso</option>
+                    <option value="viewer">Visualizador - Apenas leitura</option>
+                    <option value="editor">Editor - Leitura e edição</option>
+                    <option value="admin">Administrador - Acesso total</option>
+                </select>
+                <div class="form-help">
+                    Escolha o nível de acesso apropriado para suas necessidades
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="department" class="form-label">Departamento/Setor</label>
+                <input type="text" id="department" name="department" class="form-input" 
+                       placeholder="Ex: TI, Recursos Humanos, Financeiro" required />
+                <div class="form-help">
+                    Informe seu departamento ou setor na organização
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="manager-email" class="form-label">Email do Supervisor</label>
+                <input type="email" id="manager-email" name="manager-email" class="form-input" 
+                       placeholder="supervisor@empresa.com" />
+                <div class="form-help">
+                    Email do seu supervisor direto (opcional, mas recomendado)
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="justification" class="form-label">Justificativa</label>
+                <textarea id="justification" name="justification" class="form-textarea" 
+                          placeholder="Descreva brevemente por que você precisa de acesso ao sistema CaraCore..." required></textarea>
+                <div class="form-help">
+                    Explique o motivo da solicitação e como você utilizará o sistema
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="urgency" class="form-label">Urgência</label>
+                <select id="urgency" name="urgency" class="form-select" required>
+                    <option value="">Selecione a urgência</option>
+                    <option value="low">Baixa - Pode aguardar alguns dias</option>
+                    <option value="medium">Média - Necessário em até 48h</option>
+                    <option value="high">Alta - Necessário hoje</option>
+                    <option value="critical">Crítica - Urgente</option>
+                </select>
+                <div class="form-help">
+                    Indique a urgência para priorização da sua solicitação
+                </div>
+            </div>
+
+            <button type="submit" id="submit-button" class="request-button">
+                <span id="button-text">Enviar Solicitação</span>
+                <span id="loading-spinner" class="loading-spinner hidden"></span>
+            </button>
+        </form>
+
+        <div class="info-box">
+            <div class="info-content">
+                <span class="info-icon">ℹ️</span>
+                <div class="info-text">
+                    <strong>Processo de Aprovação:</strong><br>
+                    1. Sua solicitação será enviada para análise<br>
+                    2. Um administrador avaliará sua solicitação<br>
+                    3. Você receberá uma notificação por email com o resultado<br>
+                    4. Se aprovado, você terá acesso imediato ao sistema
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/secure/js/request-access-enhanced.js"></script>
+</body>
+</html>

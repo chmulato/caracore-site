@@ -7,7 +7,7 @@ Este documento descreve o sistema completo de gestão de usuários implementado 
 ### Telas HTML
 
 - **`super-admin-setup.html`** - Configuração inicial do Super Administrador
-- **`request-access-enhanced.html`** - Solicitação de acesso aprimorada  
+- **`request-access-enhanced.html`** - Solicitação de acesso aprimorada 
 - **`approval-requests.html`** - Aprovação de solicitações (Admins)
 - **`admin-users.html`** - Gerenciamento de usuários (existente, aprimorado)
 
@@ -33,10 +33,10 @@ Este documento descreve o sistema completo de gestão de usuários implementado 
 - **Propósito:** Primeira configuração do sistema com criação do Super Admin
 - **Acesso:** Apenas quando não há Super Admin configurado
 - **Funcionalidades:**
-  - Verificação automática de status do Super Admin
-  - Autenticação via Google ou Microsoft
-  - Configuração automática de permissões
-  - Redirecionamento para painel administrativo
+ - Verificação automática de status do Super Admin
+ - Autenticação via Google ou Microsoft
+ - Configuração automática de permissões
+ - Redirecionamento para painel administrativo
 
 ### 2. Solicitação de Acesso Aprimorada
 
@@ -45,12 +45,12 @@ Este documento descreve o sistema completo de gestão de usuários implementado 
 - **Propósito:** Interface moderna para solicitação de acesso ao sistema
 - **Acesso:** Usuários autenticados sem permissões
 - **Funcionalidades:**
-  - Formulário detalhado com validação
-  - Seleção de nível de acesso (Visualizador, Editor, Administrador)
-  - Informações de departamento e supervisor
-  - Sistema de urgência da solicitação
-  - Justificativa obrigatória
-  - Notificação de status da solicitação
+ - Formulário detalhado com validação
+ - Seleção de nível de acesso (Visualizador, Editor, Administrador)
+ - Informações de departamento e supervisor
+ - Sistema de urgência da solicitação
+ - Justificativa obrigatória
+ - Notificação de status da solicitação
 
 ### 3. Aprovação de Solicitações
 
@@ -59,12 +59,12 @@ Este documento descreve o sistema completo de gestão de usuários implementado 
 - **Propósito:** Painel administrativo para gestão de solicitações
 - **Acesso:** Administradores e Super Administradores
 - **Funcionalidades:**
-  - Dashboard com estatísticas em tempo real
-  - Sistema de filtros avançados (status, urgência, nível, busca)
-  - Visualização detalhada de solicitações
-  - Aprovação/rejeição com motivo
-  - Interface responsiva com cards informativos
-  - Modais para detalhes e confirmações
+ - Dashboard com estatísticas em tempo real
+ - Sistema de filtros avançados (status, urgência, nível, busca)
+ - Visualização detalhada de solicitações
+ - Aprovação/rejeição com motivo
+ - Interface responsiva com cards informativos
+ - Modais para detalhes e confirmações
 
 ### 4. Sistema de Navegação Integrado
 
@@ -72,11 +72,11 @@ Este documento descreve o sistema completo de gestão de usuários implementado 
 
 - **Propósito:** Navegação contextual baseada em permissões
 - **Funcionalidades:**
-  - Menu dinâmico baseado no papel do usuário
-  - Badge de notificação para solicitações pendentes
-  - Indicação de página ativa
-  - Atualização automática de contadores
-  - Design responsivo
+ - Menu dinâmico baseado no papel do usuário
+ - Badge de notificação para solicitações pendentes
+ - Indicação de página ativa
+ - Atualização automática de contadores
+ - Design responsivo
 
 ## Estrutura de Permissões
 
@@ -112,19 +112,19 @@ O sistema de gestão de usuários integra-se com as configurações OAuth atrav�
 #### Fluxo de Autenticação no Sistema de Gestão
 
 1. **Super Admin Setup** (`super-admin-setup.html`):
-   - Carrega configurações do `google.json` ou `entra.json`
-   - Utiliza as `redirect_uri` configuradas para callback
-   - Valida tokens usando os endpoints de `jwks_uri`
+ - Carrega configurações do `google.json` ou `entra.json`
+ - Utiliza as `redirect_uri` configuradas para callback
+ - Valida tokens usando os endpoints de `jwks_uri`
 
 2. **Solicitação de Acesso** (`request-access-enhanced.html`):
-   - Verifica autenticação usando `userinfo_endpoint`
-   - Obtém dados do usuário (nome, email, avatar) via scope `profile email`
-   - Utiliza `client_id` para validação de origem
+ - Verifica autenticação usando `userinfo_endpoint`
+ - Obtém dados do usuário (nome, email, avatar) via scope `profile email`
+ - Utiliza `client_id` para validação de origem
 
 3. **Aprovação de Solicitações** (`approval-requests.html`):
-   - Requer autenticação de nível admin via claims JWT
-   - Utiliza `authority` para validação de tokens
-   - Implementa logout via `post_logout_redirect_uri`
+ - Requer autenticação de nível admin via claims JWT
+ - Utiliza `authority` para validação de tokens
+ - Implementa logout via `post_logout_redirect_uri`
 
 #### Personalização por Ambiente
 
@@ -133,14 +133,14 @@ O sistema de gestão de usuários integra-se com as configurações OAuth atrav�
 ```javascript
 // Desenvolvimento Local
 {
-  "redirect_uri": "http://localhost:8000/secure/callback.html",
-  "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html"
+ "redirect_uri": "http://localhost:8000/secure/callback.html",
+ "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html"
 }
 
 // Produção
 {
-  "redirect_uri": "https://seu-dominio.com/secure/callback.html", 
-  "post_logout_redirect_uri": "https://seu-dominio.com/secure/logout.html"
+ "redirect_uri": "https://seu-dominio.com/secure/callback.html", 
+ "post_logout_redirect_uri": "https://seu-dominio.com/secure/logout.html"
 }
 ```
 
@@ -151,25 +151,25 @@ O sistema inclui validação automática das configurações JSON:
 ```javascript
 // Verificação de configuração obrigatória
 function validateConfig(config) {
-    const required = ['client_id', 'redirect_uri', 'authority'];
-    return required.every(field => config[field]);
+ const required = ['client_id', 'redirect_uri', 'authority'];
+ return required.every(field => config[field]);
 }
 
 // Carregamento com fallback
 async function loadOAuthConfig(provider) {
-    try {
-        const response = await fetch(`/secure/config/${provider}.json`);
-        const config = await response.json();
-        
-        if (!validateConfig(config)) {
-            throw new Error(`Configuração ${provider} inválida`);
-        }
-        
-        return config;
-    } catch (error) {
-        console.error(`Erro ao carregar configuração ${provider}:`, error);
-        throw error;
-    }
+ try {
+ const response = await fetch(`/secure/config/${provider}.json`);
+ const config = await response.json();
+ 
+ if (!validateConfig(config)) {
+ throw new Error(`Configuração ${provider} inválida`);
+ }
+ 
+ return config;
+ } catch (error) {
+ console.error(`Erro ao carregar configuração ${provider}:`, error);
+ throw error;
+ }
 }
 ```
 
@@ -178,18 +178,18 @@ async function loadOAuthConfig(provider) {
 #### Google OAuth (`google.json`)
 - **Escopo Principal**: `openid profile email`
 - **Uso no Sistema**: 
-  - Autenticação básica de usuários
-  - Obtenção de foto de perfil via Google Photos API
-  - Verificação de email verificado (`email_verified`)
-  - Claims: `sub`, `name`, `email`, `picture`
+ - Autenticação básica de usuários
+ - Obtenção de foto de perfil via Google Photos API
+ - Verificação de email verificado (`email_verified`)
+ - Claims: `sub`, `name`, `email`, `picture`
 
-#### Microsoft Entra ID (`entra.json`)  
+#### Microsoft Entra ID (`entra.json`) 
 - **Escopo Principal**: `openid profile email User.Read`
 - **Uso no Sistema**:
-  - Autenticação corporativa/organizacional
-  - Integração com Microsoft Graph
-  - Verificação de grupos/roles organizacionais
-  - Claims: `oid`, `preferred_username`, `name`, `email`
+ - Autenticação corporativa/organizacional
+ - Integração com Microsoft Graph
+ - Verificação de grupos/roles organizacionais
+ - Claims: `oid`, `preferred_username`, `name`, `email`
 
 #### Configuração Dinâmica por Tela
 
@@ -197,9 +197,9 @@ async function loadOAuthConfig(provider) {
 ```javascript
 // Configuração para setup inicial
 const setupConfig = {
-    ...baseConfig,
-    scope: 'openid profile email User.ReadWrite.All', // Permissões admin
-    prompt: 'admin_consent' // Consentimento administrativo
+ ...baseConfig,
+ scope: 'openid profile email User.ReadWrite.All', // Permissões admin
+ prompt: 'admin_consent' // Consentimento administrativo
 };
 ```
 
@@ -207,9 +207,9 @@ const setupConfig = {
 ```javascript
 // Configuração para usuários normais
 const userConfig = {
-    ...baseConfig,
-    scope: 'openid profile email',
-    prompt: 'select_account' // Seleção de conta
+ ...baseConfig,
+ scope: 'openid profile email',
+ prompt: 'select_account' // Seleção de conta
 };
 ```
 
@@ -219,31 +219,31 @@ O sistema mantém estado das configurações ativas:
 
 ```javascript
 class ConfigManager {
-    constructor() {
-        this.activeConfig = null;
-        this.provider = null;
-    }
-    
-    async initialize(provider) {
-        this.activeConfig = await loadOAuthConfig(provider);
-        this.provider = provider;
-        localStorage.setItem('oauth_provider', provider);
-        return this.activeConfig;
-    }
-    
-    getRedirectUri() {
-        return this.activeConfig?.redirect_uri;
-    }
-    
-    getClientId() {
-        return this.activeConfig?.client_id;
-    }
-    
-    // Troca dinâmica de provider
-    async switchProvider(newProvider) {
-        await this.initialize(newProvider);
-        window.location.reload(); // Recarrega para aplicar nova config
-    }
+ constructor() {
+ this.activeConfig = null;
+ this.provider = null;
+ }
+ 
+ async initialize(provider) {
+ this.activeConfig = await loadOAuthConfig(provider);
+ this.provider = provider;
+ localStorage.setItem('oauth_provider', provider);
+ return this.activeConfig;
+ }
+ 
+ getRedirectUri() {
+ return this.activeConfig?.redirect_uri;
+ }
+ 
+ getClientId() {
+ return this.activeConfig?.client_id;
+ }
+ 
+ // Troca dinâmica de provider
+ async switchProvider(newProvider) {
+ await this.initialize(newProvider);
+ window.location.reload(); // Recarrega para aplicar nova config
+ }
 }
 ```
 
@@ -284,38 +284,38 @@ O sistema utiliza arquivos JSON para configurar os provedores de autenticação:
 **`secure/config/google.json`** - Configuração Google OAuth
 ```json
 {
-  "authority": "https://accounts.google.com",
-  "client_id": "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com",
-  "redirect_uri": "http://localhost:8000/secure/callback.html",
-  "response_type": "code",
-  "scope": "openid profile email",
-  "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html",
-  "metadata": {
-    "issuer": "https://accounts.google.com",
-    "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
-    "token_endpoint": "https://oauth2.googleapis.com/token",
-    "userinfo_endpoint": "https://openidconnect.googleapis.com/v1/userinfo",
-    "jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
-  }
+ "authority": "https://accounts.google.com",
+ "client_id": "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com",
+ "redirect_uri": "http://localhost:8000/secure/callback.html",
+ "response_type": "code",
+ "scope": "openid profile email",
+ "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html",
+ "metadata": {
+ "issuer": "https://accounts.google.com",
+ "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+ "token_endpoint": "https://oauth2.googleapis.com/token",
+ "userinfo_endpoint": "https://openidconnect.googleapis.com/v1/userinfo",
+ "jwks_uri": "https://www.googleapis.com/oauth2/v3/certs"
+ }
 }
 ```
 
 **`secure/config/entra.json`** - Configuração Microsoft Entra ID
 ```json
 {
-  "authority": "https://login.microsoftonline.com/consumers/v2.0",
-  "client_id": "***AZURE_SECRET_REDACTED***",
-  "redirect_uri": "http://localhost:8000/secure/callback.html",
-  "response_type": "code",
-  "scope": "openid profile email",
-  "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html",
-  "metadata": {
-    "issuer": "https://login.microsoftonline.com/consumers/v2.0",
-    "authorization_endpoint": "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize",
-    "token_endpoint": "https://login.microsoftonline.com/consumers/oauth2/v2.0/token",
-    "userinfo_endpoint": "https://graph.microsoft.com/oidc/userinfo",
-    "jwks_uri": "https://login.microsoftonline.com/consumers/discovery/v2.0/keys"
-  }
+ "authority": "https://login.microsoftonline.com/consumers/v2.0",
+ "client_id": "***AZURE_SECRET_REDACTED***",
+ "redirect_uri": "http://localhost:8000/secure/callback.html",
+ "response_type": "code",
+ "scope": "openid profile email",
+ "post_logout_redirect_uri": "http://localhost:8000/secure/logout.html",
+ "metadata": {
+ "issuer": "https://login.microsoftonline.com/consumers/v2.0",
+ "authorization_endpoint": "https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize",
+ "token_endpoint": "https://login.microsoftonline.com/consumers/oauth2/v2.0/token",
+ "userinfo_endpoint": "https://graph.microsoft.com/oidc/userinfo",
+ "jwks_uri": "https://login.microsoftonline.com/consumers/discovery/v2.0/keys"
+ }
 }
 ```
 
@@ -325,8 +325,8 @@ O sistema carrega dinamicamente as configurações OAuth através do arquivo `au
 
 ```javascript
 const CONFIG_PATH = {
-    google: "/secure/config/google.json",
-    entra: "/secure/config/entra.json"
+ google: "/secure/config/google.json",
+ entra: "/secure/config/entra.json"
 };
 
 // Carregamento automático baseado no provedor escolhido

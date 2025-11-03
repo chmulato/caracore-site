@@ -1,42 +1,42 @@
-# ✅ Checklist de Configuração - Super Admin
+# Checklist de Configuração - Super Admin
 
 ## Status Atual
 
-### ✅ Concluído
+### Concluído
 
 1. **Backend atualizado** (`backend/app.py`)
-   - Endpoints `/auth/super-admin` criado
-   - Endpoint `/auth/verify-super-admin` criado
-   - Validação de credenciais com SHA-256
-   - Geração de tokens JWT
-   - Logging de tentativas de acesso
-   - Rate limiting aplicado
+ - Endpoints `/auth/super-admin` criado
+ - Endpoint `/auth/verify-super-admin` criado
+ - Validação de credenciais com SHA-256
+ - Geração de tokens JWT
+ - Logging de tentativas de acesso
+ - Rate limiting aplicado
 
 2. **Frontend atualizado**
-   - Página de login (`secure/super-admin-setup.html`) reformulada
-   - JavaScript (`secure/js/super-admin-setup.js`) atualizado
-   - Formulário de login direto (sem OAuth)
-   - Gestão de tokens no localStorage
+ - Página de login (`secure/super-admin-setup.html`) reformulada
+ - JavaScript (`secure/js/super-admin-setup.js`) atualizado
+ - Formulário de login direto (sem OAuth)
+ - Gestão de tokens no localStorage
 
 3. **Secrets configurados localmente**
-   - `secrets.txt` atualizado com:
-     - `SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***`
-     - `JWT_SECRET_KEY=***JWT_SECRET_REDACTED***`
-   - `secrets.txt.template` atualizado
-   - `.gitignore` protegendo secrets
+ - `secrets.txt` atualizado com:
+ - `SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***`
+ - `JWT_SECRET_KEY=***JWT_SECRET_REDACTED***`
+ - `secrets.txt.template` atualizado
+ - `.gitignore` protegendo secrets
 
 4. **Script de setup** (`scripts/setup_super_admin.py`)
-   - Geração de hash SHA-256
-   - Geração de JWT secret
-   - Integração com secrets.txt
-   - Documentação completa
+ - Geração de hash SHA-256
+ - Geração de JWT secret
+ - Integração com secrets.txt
+ - Documentação completa
 
 5. **Documentação criada**
-   - `docs/SUPER-ADMIN-AUTH.md` - Guia completo
+ - `docs/SUPER-ADMIN-AUTH.md` - Guia completo
 
 ---
 
-## ⚠️ Pendente - Configuração Azure
+## Pendente - Configuração Azure
 
 ### Passo 1: Acessar Azure Portal
 
@@ -79,8 +79,8 @@ Adicione as variáveis no seu arquivo de configuração Docker:
 
 ```yaml
 environment:
-  - SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***
-  - JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
+ - SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***
+ - JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
 ```
 
 ### Passo 4: Salvar e Reiniciar
@@ -102,7 +102,7 @@ az containerapp show --name caracore-backend-docker --resource-group <seu-resour
 
 ---
 
-## ⚠️ Pendente - Testar Autenticação
+## Pendente - Testar Autenticação
 
 ### Teste 1: Acessar Página de Login
 
@@ -118,7 +118,7 @@ az containerapp show --name caracore-backend-docker --resource-group <seu-resour
 
 **Resultado Esperado:**
 
-- Mensagem: "✅ Autenticado com sucesso! Redirecionando..."
+- Mensagem: " Autenticado com sucesso! Redirecionando..."
 - Redirecionamento para: `/secure/approval-requests.html`
 
 ### Teste 3: Verificar Token
@@ -142,8 +142,8 @@ Teste o endpoint diretamente:
 ```bash
 # PowerShell
 $body = @{
-    email = "suporte@caracore.com.br"
-    password = "sua_senha_aqui"
+ email = "suporte@caracore.com.br"
+ password = "sua_senha_aqui"
 } | ConvertTo-Json
 
 $response = Invoke-RestMethod -Uri "https://caracore-backend.azurewebsites.net/auth/super-admin" -Method POST -Body $body -ContentType "application/json"
@@ -155,16 +155,16 @@ $response | ConvertTo-Json
 
 ```json
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "email": "suporte@caracore.com.br",
-  "role": "super_admin",
-  "expires_in": 86400
+ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+ "email": "suporte@caracore.com.br",
+ "role": "super_admin",
+ "expires_in": 86400
 }
 ```
 
 ---
 
-## 🔍 Troubleshooting
+## Troubleshooting
 
 ### Erro: "Configuração do servidor incompleta"
 
@@ -214,7 +214,7 @@ python setup_super_admin.py
 
 ---
 
-## 📊 Resumo das Credenciais
+## Resumo das Credenciais
 
 | Item | Valor |
 |------|-------|
@@ -227,28 +227,28 @@ python setup_super_admin.py
 
 ---
 
-## 📝 Próximos Passos (Após Configuração)
+## Próximos Passos (Após Configuração)
 
 1. **Testar todas as funcionalidades de admin:**
-   - Aprovar/rejeitar solicitações de acesso
-   - Adicionar usuários autorizados
-   - Remover usuários autorizados
-   - Visualizar logs de acesso
+ - Aprovar/rejeitar solicitações de acesso
+ - Adicionar usuários autorizados
+ - Remover usuários autorizados
+ - Visualizar logs de acesso
 
 2. **Configurar backup de secrets:**
-   - Guardar `secrets.txt` em local seguro
-   - Considerar usar Azure Key Vault para secrets
+ - Guardar `secrets.txt` em local seguro
+ - Considerar usar Azure Key Vault para secrets
 
 3. **Monitorar logs:**
-   - Verificar tentativas de login inválidas
-   - Monitorar atividades do super admin
+ - Verificar tentativas de login inválidas
+ - Monitorar atividades do super admin
 
 4. **Documentar processo para equipe:**
-   - Compartilhar `docs/SUPER-ADMIN-AUTH.md`
-   - Treinar administradores
+ - Compartilhar `docs/SUPER-ADMIN-AUTH.md`
+ - Treinar administradores
 
 ---
 
-**Data:** Novembro 2025  
-**Versão:** 1.0  
-**Status:** Aguardando configuração Azure ⚠️
+**Data:** Novembro 2025 
+**Versão:** 1.0 
+**Status:** Aguardando configuração Azure 

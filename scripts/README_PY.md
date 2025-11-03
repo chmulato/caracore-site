@@ -4,7 +4,7 @@ Este documento lista todos os scripts ativos do repositório CaraCore após a li
 
 ## Arquitetura Atual - Pós Limpeza (Novembro 2025)
 
-**Scripts Ativos:** Apenas scripts essenciais mantidos (4 arquivos ativos)
+**Scripts Ativos:** Apenas scripts essenciais mantidos (5 arquivos ativos)
 **Recursos Azure Ativos:**
 
 - `caracore-backend.azurewebsites.net` (App Service)
@@ -143,6 +143,57 @@ python scripts/server.py
 
 **Status:** ✅ ATIVO - Servidor de desenvolvimento
 
+### `remove_emojis_docs.py` ✅ UTILITÁRIO
+
+**Função:** Remove emojis de todos os arquivos Markdown na pasta docs/
+
+**Funcionalidades:**
+
+- **Limpeza Automática:** Processa todos os arquivos .md recursivamente
+- **40 Emojis Mapeados:** Remove emojis comuns (✅ ❌ ⚠️ 🎯 🔍 🚀 📝 📊 🔐 ⏱️ ☁️ 🐳 🧪 etc)
+- **Preserva Estrutura:** Mantém formatação Markdown intacta
+- **Relatório Detalhado:** Lista arquivos modificados e estatísticas
+- **Profissionalização:** Converte documentação para tom corporativo/enterprise
+
+**Uso:**
+
+```bash
+cd D:\dev\site\cara-core
+python scripts/remove_emojis_docs.py
+```
+
+**Exemplo de Output:**
+
+```
+Processando arquivos Markdown em: D:\dev\site\cara-core\docs
+------------------------------------------------------------
+Encontrados 35 arquivos Markdown
+
+✓ Limpo: D:\dev\site\cara-core\docs\INDEX.md
+✓ Limpo: D:\dev\site\cara-core\docs\RESUMO-SUPER-ADMIN.md
+...
+------------------------------------------------------------
+
+Resumo:
+  Total de arquivos: 35
+  Arquivos modificados: 35
+  Sem alterações: 0
+```
+
+**Emojis Removidos:**
+
+- Checkmarks: ✅ ✓
+- Alertas: ❌ ⚠️ ×
+- Indicadores: 🎯 🔍 ➜
+- Tecnologia: 🚀 💻 🖥️ 📱 🌐
+- Documentação: 📝 📊 📋 📌 📁 📂 📄
+- Segurança: 🔐 🔒 🛡️
+- Cloud/Docker: ☁️ 🐳
+- Desenvolvimento: 🧪 ⚙️ 🔧 🛠️ 🔨 ⚡
+- Outros: 🎉 💡 🔔 🎨 🔗 📡 🏗️
+
+**Status:** ✅ ATIVO - Profissionalização de documentação
+
 ## Arquivos de Backend (Pasta /backend)
 
 ### `app.py` ✅ PRODUÇÃO
@@ -247,11 +298,12 @@ pip install -r secure/testes/requirements.txt
 
 ### Benefícios
 
-- **Redução de 32 → 4 scripts principais** (87.5% de redução)
+- **Redução de 32 → 5 scripts principais** (84.4% de redução)
 - **Manutenção simplificada** 
 - **Onboarding mais rápido** para novos desenvolvedores
 - **Menos pontos de falha**
 - **Documentação focada** em scripts essenciais
+- **Profissionalização automática** da documentação
 
 ## Estrutura Final (Novembro 2025)
 
@@ -262,7 +314,8 @@ scripts/
 ├── requirements.txt       # Dependências Python para testes
 ├── server.py              # Servidor de desenvolvimento
 ├── teste.py               # Script principal de testes
-└── teste_oidc.py          # Validação OAuth 2.1 + OIDC
+├── teste_oidc.py          # Validação OAuth 2.1 + OIDC
+└── remove_emojis_docs.py  # Limpeza de emojis em docs/
 
 backend/
 ├── app.py                 # Backend Flask OAuth (produção)
@@ -328,6 +381,9 @@ python scripts/server.py
 
 # Executar todos os testes do projeto
 python scripts/teste.py
+
+# Limpar emojis da documentação
+python scripts/remove_emojis_docs.py
 ```
 
 ### Validação OAuth 2.1 + OIDC
@@ -362,11 +418,12 @@ cd secure/testes
 - ✅ **Testes Automatizados:** 160 testes totais
 - ✅ **Segurança PKCE:** Validada automaticamente
 - ✅ **Deploy Automatizado:** GitHub Actions
-- ✅ **Scripts Limpos:** 87.5% de redução (32 → 4)
+- ✅ **Scripts Limpos:** 84.4% de redução (32 → 5)
+- ✅ **Documentação Profissional:** Sem emojis, tom corporativo
 - ✅ **Documentação Atualizada:** Refletindo nova estrutura
 
 **Última Atualização:** 03/11/2025  
-**Versão:** 2.1 (Com validação OIDC automatizada)
+**Versão:** 2.2 (Com utilitário de limpeza de documentação)
 
 ## Configuração de Produção
 
@@ -424,8 +481,9 @@ https://www.caracore.com.br/secure/super-admin-setup.html
 
 Os scripts seguem versionamento semântico baseado em funcionalidades:
 
+- **v2.2** - Utilitário de limpeza de emojis adicionado
 - **v2.1** - Validação OIDC automatizada adicionada
-- **v2.0** - Limpeza e simplificação (87.5% redução)
+- **v2.0** - Limpeza e simplificação (84.4% redução)
 - **v1.x** - Versões anteriores (obsoletas)
 
 ## Suporte

@@ -1,16 +1,16 @@
 # Configuração Super Admin - Docker (caracore-backend-docker)
 
-## 🐳 Guia Rápido para Ambiente Docker
+## Guia Rápido para Ambiente Docker
 
 ### Pré-requisitos
 
-- ✅ Código atualizado com endpoints super admin
-- ✅ Script `setup_super_admin.py` disponível
-- ✅ Docker rodando localmente ou no Azure Container Apps
+- Código atualizado com endpoints super admin
+- Script `setup_super_admin.py` disponível
+- Docker rodando localmente ou no Azure Container Apps
 
 ---
 
-## 📝 Configuração Local (Desenvolvimento)
+## Configuração Local (Desenvolvimento)
 
 ### Passo 1: Gerar Credenciais
 
@@ -58,7 +58,7 @@ docker-compose up -d
 
 ---
 
-## ☁️ Configuração Azure Container Apps (Produção)
+## Configuração Azure Container Apps (Produção)
 
 ### Opção 1: Via Azure Portal (Recomendado)
 
@@ -101,8 +101,8 @@ docker-compose up -d
 
 1. Vá em **Log stream** ou **Monitoring** → **Logs**
 2. Procure por:
-   - "Auth manager carregado" (confirmação de módulos)
-   - Erros relacionados a variáveis de ambiente
+ - "Auth manager carregado" (confirmação de módulos)
+ - Erros relacionados a variáveis de ambiente
 
 ---
 
@@ -111,11 +111,11 @@ docker-compose up -d
 ```bash
 # Configurar variáveis no Container App
 az containerapp update \
-  --name caracore-backend-docker \
-  --resource-group <seu-resource-group> \
-  --set-env-vars \
-    SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED*** \
-    JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
+ --name caracore-backend-docker \
+ --resource-group <seu-resource-group> \
+ --set-env-vars \
+ SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED*** \
+ JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
 ```
 
 ---
@@ -126,12 +126,12 @@ Edite `docker/docker-compose.yml` e adicione no `environment`:
 
 ```yaml
 services:
-  backend:
-    # ... outras configurações
-    environment:
-      # ... outras variáveis
-      SUPER_ADMIN_PASSWORD_HASH: ${SUPER_ADMIN_PASSWORD_HASH}
-      JWT_SECRET_KEY: ${JWT_SECRET_KEY}
+ backend:
+ # ... outras configurações
+ environment:
+ # ... outras variáveis
+ SUPER_ADMIN_PASSWORD_HASH: ${SUPER_ADMIN_PASSWORD_HASH}
+ JWT_SECRET_KEY: ${JWT_SECRET_KEY}
 ```
 
 E defina no `docker/backend.env`:
@@ -143,7 +143,7 @@ JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
 
 ---
 
-## 🧪 Testes
+## Testes
 
 ### Teste 1: Verificar Backend está Rodando
 
@@ -162,8 +162,8 @@ curl https://caracore-backend.azurewebsites.net/health
 ```bash
 # PowerShell
 $body = @{
-    email = "suporte@caracore.com.br"
-    password = "SUA_SENHA_AQUI"
+ email = "suporte@caracore.com.br"
+ password = "SUA_SENHA_AQUI"
 } | ConvertTo-Json
 
 # Local
@@ -179,10 +179,10 @@ $response | ConvertTo-Json
 
 ```json
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "email": "suporte@caracore.com.br",
-  "role": "super_admin",
-  "expires_in": 86400
+ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+ "email": "suporte@caracore.com.br",
+ "role": "super_admin",
+ "expires_in": 86400
 }
 ```
 
@@ -196,7 +196,7 @@ $response | ConvertTo-Json
 
 ---
 
-## 🔍 Troubleshooting Docker
+## Troubleshooting Docker
 
 ### Erro: "Configuração do servidor incompleta"
 
@@ -210,9 +210,9 @@ docker exec -it cara-core-backend env | grep SUPER_ADMIN
 
 # Ou via Azure CLI
 az containerapp show \
-  --name caracore-backend-docker \
-  --resource-group <seu-resource-group> \
-  --query "properties.template.containers[0].env"
+ --name caracore-backend-docker \
+ --resource-group <seu-resource-group> \
+ --query "properties.template.containers[0].env"
 ```
 
 ### Erro: Container não inicia após adicionar variáveis
@@ -265,46 +265,46 @@ docker-compose up -d
 
 ---
 
-## 📊 Estrutura de Arquivos Docker
+## Estrutura de Arquivos Docker
 
 ```
 d:\dev\site\cara-core\
 ├── docker\
-│   ├── docker-compose.yml ............... Orquestração de containers
-│   ├── Dockerfile ........................ Imagem do backend
-│   ├── backend.env ....................... Variáveis locais (não versionado)
-│   ├── backend.env.sample ................ Template de variáveis
-│   └── docker-entrypoint.sh .............. Script de inicialização
+│ ├── docker-compose.yml ............... Orquestração de containers
+│ ├── Dockerfile ........................ Imagem do backend
+│ ├── backend.env ....................... Variáveis locais (não versionado)
+│ ├── backend.env.sample ................ Template de variáveis
+│ └── docker-entrypoint.sh .............. Script de inicialização
 ├── backend\
-│   └── app.py ............................ Endpoints super admin
+│ └── app.py ............................ Endpoints super admin
 ├── scripts\
-│   └── setup_super_admin.py .............. Gerador de credenciais
+│ └── setup_super_admin.py .............. Gerador de credenciais
 └── secrets.txt ........................... Secrets gerais (não versionado)
 ```
 
 ---
 
-## 🔐 Segurança em Docker
+## Segurança em Docker
 
 ### Boas Práticas
 
-1. ✅ **Use secrets do Docker/Azure**
-   - JWT_SECRET_KEY deve ser secret, não variável de ambiente
+1. **Use secrets do Docker/Azure**
+ - JWT_SECRET_KEY deve ser secret, não variável de ambiente
 
-2. ✅ **Não commite backend.env**
-   - Já está no .gitignore
-   - Use backend.env.sample como template
+2. **Não commite backend.env**
+ - Já está no .gitignore
+ - Use backend.env.sample como template
 
-3. ✅ **Rotacione secrets periodicamente**
-   - Execute `setup_super_admin.py` novamente
-   - Atualize variáveis no Azure
+3. **Rotacione secrets periodicamente**
+ - Execute `setup_super_admin.py` novamente
+ - Atualize variáveis no Azure
 
-4. ✅ **Use HTTPS em produção**
-   - Backend deve estar atrás de proxy HTTPS (Azure já faz isso)
+4. **Use HTTPS em produção**
+ - Backend deve estar atrás de proxy HTTPS (Azure já faz isso)
 
-5. ✅ **Monitore logs**
-   - Verifique tentativas de login inválidas
-   - Use Azure Monitor ou Log Analytics
+5. **Monitore logs**
+ - Verifique tentativas de login inválidas
+ - Use Azure Monitor ou Log Analytics
 
 ---
 
@@ -318,7 +318,7 @@ d:\dev\site\cara-core\
 
 ---
 
-## ✅ Checklist Final
+## Checklist Final
 
 - [ ] Executar `setup_super_admin.py`
 - [ ] Copiar hash e secret gerados
@@ -333,7 +333,7 @@ d:\dev\site\cara-core\
 
 ---
 
-**Ambiente:** Docker / Azure Container Apps  
-**Container:** caracore-backend-docker  
-**Versão:** 1.0  
+**Ambiente:** Docker / Azure Container Apps 
+**Container:** caracore-backend-docker 
+**Versão:** 1.0 
 **Data:** Novembro 2025

@@ -1,12 +1,12 @@
 # Plano de Testes - Fase 1
 
-**Data:** 30/10/2025  
-**Fase:** 1 - Autenticação Básica e Segurança  
+**Data:** 30/10/2025 
+**Fase:** 1 - Autenticação Básica e Segurança 
 **Status:** Em Execução
 
 ## 1. Testes Unitários
 
-### 1.1 Backend - auth_manager.py ✅
+### 1.1 Backend - auth_manager.py 
 
 **Objetivo:** Validar lógica de PKCE e Token validation
 
@@ -51,22 +51,22 @@ python -m unittest tests/test_rate_limiter.py -v
 
 ```bash
 curl -X POST http://localhost:5051/oauth/google/token \
-  -H "Content-Type: application/json" \
-  -d '{
-    "code": "test_auth_code",
-    "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
-    "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
-    "grant_type": "authorization_code",
-    "redirect_uri": "http://localhost:5051/callback"
-  }'
+ -H "Content-Type: application/json" \
+ -d '{
+ "code": "test_auth_code",
+ "code_verifier": "dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk",
+ "code_challenge": "E9Melhoa2OwvFrEMTJguCHaoeK1t8URWbuGJSstw-cM",
+ "grant_type": "authorization_code",
+ "redirect_uri": "http://localhost:5051/callback"
+ }'
 ```
 
 **Validações:**
 
-- ✅ PKCE validation S256
-- ✅ Audit logging
-- ✅ Rate limiting headers
-- ✅ CORS headers
+- PKCE validation S256
+- Audit logging
+- Rate limiting headers
+- CORS headers
 
 ---
 
@@ -78,18 +78,18 @@ curl -X POST http://localhost:5051/oauth/google/token \
 
 ```bash
 curl -X POST http://localhost:5051/auth/token/refresh \
-  -H "Content-Type: application/json" \
-  -d '{
-    "refresh_token": "test_refresh_token",
-    "provider": "google"
-  }'
+ -H "Content-Type: application/json" \
+ -d '{
+ "refresh_token": "test_refresh_token",
+ "provider": "google"
+ }'
 ```
 
 **Validações:**
 
-- ✅ Novo access_token retornado
-- ✅ Rate limiting (20 req/min)
-- ✅ Audit logging
+- Novo access_token retornado
+- Rate limiting (20 req/min)
+- Audit logging
 
 ---
 
@@ -101,18 +101,18 @@ curl -X POST http://localhost:5051/auth/token/refresh \
 
 ```bash
 curl -X POST http://localhost:5051/auth/validate \
-  -H "Content-Type: application/json" \
-  -d '{
-    "access_token": "test_access_token",
-    "provider": "google"
-  }'
+ -H "Content-Type: application/json" \
+ -d '{
+ "access_token": "test_access_token",
+ "provider": "google"
+ }'
 ```
 
 **Validações:**
 
-- ✅ Validação com provedor OAuth
-- ✅ Retorno de user info se válido
-- ✅ Rate limiting (30 req/min)
+- Validação com provedor OAuth
+- Retorno de user info se válido
+- Rate limiting (30 req/min)
 
 ---
 
@@ -124,19 +124,19 @@ curl -X POST http://localhost:5051/auth/validate \
 
 ```bash
 curl -X POST http://localhost:5051/auth/logout \
-  -H "Content-Type: application/json" \
-  -d '{
-    "access_token": "test_access_token",
-    "refresh_token": "test_refresh_token",
-    "provider": "google"
-  }'
+ -H "Content-Type: application/json" \
+ -d '{
+ "access_token": "test_access_token",
+ "refresh_token": "test_refresh_token",
+ "provider": "google"
+ }'
 ```
 
 **Validações:**
 
-- ✅ Token revogado no provedor
-- ✅ Audit logging de logout
-- ✅ Rate limiting
+- Token revogado no provedor
+- Audit logging de logout
+- Rate limiting
 
 ---
 
@@ -151,9 +151,9 @@ curl -X POST http://localhost:5051/auth/logout \
 ```bash
 # Enviar 15 requisições em 60 segundos (limite: 10)
 for i in {1..15}; do
-  curl -X POST http://localhost:5051/oauth/google/token \
-    -H "Content-Type: application/json" \
-    -d '{"code":"test"}' &
+ curl -X POST http://localhost:5051/oauth/google/token \
+ -H "Content-Type: application/json" \
+ -d '{"code":"test"}' &
 done
 ```
 
@@ -195,11 +195,11 @@ curl -I http://localhost:5051/health
 
 **Headers Esperados:**
 
-- ✅ `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
-- ✅ `Content-Security-Policy: ...`
-- ✅ `X-Frame-Options: DENY`
-- ✅ `X-Content-Type-Options: nosniff`
-- ✅ `Referrer-Policy: strict-origin-when-cross-origin`
+- `Strict-Transport-Security: max-age=31536000; includeSubDomains; preload`
+- `Content-Security-Policy: ...`
+- `X-Frame-Options: DENY`
+- `X-Content-Type-Options: nosniff`
+- `Referrer-Policy: strict-origin-when-cross-origin`
 
 ---
 
@@ -212,12 +212,12 @@ curl -I http://localhost:5051/health
 ```bash
 # Enviar code_verifier incorreto
 curl -X POST http://localhost:5051/oauth/google/token \
-  -H "Content-Type: application/json" \
-  -d '{
-    "code": "test",
-    "code_verifier": "invalid_verifier",
-    "code_challenge": "valid_challenge"
-  }'
+ -H "Content-Type: application/json" \
+ -d '{
+ "code": "test",
+ "code_verifier": "invalid_verifier",
+ "code_challenge": "valid_challenge"
+ }'
 ```
 
 **Resultado Esperado:**
@@ -242,8 +242,8 @@ curl -X POST http://localhost:5051/oauth/google/token \
 
 **Validações:**
 
-- ✅ Verificação a cada 60 segundos
-- ✅ Redirect se não autenticado
+- Verificação a cada 60 segundos
+- Redirect se não autenticado
 
 ---
 
@@ -259,8 +259,8 @@ curl -X POST http://localhost:5051/oauth/google/token \
 
 **Validações:**
 
-- ✅ Refresh 5min antes de expirar
-- ✅ Novo token salvo no localStorage
+- Refresh 5min antes de expirar
+- Novo token salvo no localStorage
 
 ---
 
@@ -276,9 +276,9 @@ curl -X POST http://localhost:5051/oauth/google/token \
 
 **Validações:**
 
-- ✅ Logout após 1h de inatividade
-- ✅ Sessão limpa
-- ✅ Redirect para login
+- Logout após 1h de inatividade
+- Sessão limpa
+- Redirect para login
 
 ---
 
@@ -294,9 +294,9 @@ curl -X POST http://localhost:5051/oauth/google/token \
 
 **Validações:**
 
-- ✅ `requireAuth()` bloqueia acesso
-- ✅ Redirect para `/secure/index.html`
-- ✅ URL de retorno salva
+- `requireAuth()` bloqueia acesso
+- Redirect para `/secure/index.html`
+- URL de retorno salva
 
 ---
 
@@ -314,9 +314,9 @@ curl -X POST http://localhost:5051/oauth/google/token \
 
 **Validações:**
 
-- ✅ Fluxo intuitivo
-- ✅ Feedback visual claro
-- ✅ Sem erros no console
+- Fluxo intuitivo
+- Feedback visual claro
+- Sem erros no console
 
 ---
 
@@ -332,9 +332,9 @@ curl -X POST http://localhost:5051/oauth/google/token \
 
 **Validações:**
 
-- ✅ Logout imediato
-- ✅ Tokens revogados
-- ✅ localStorage limpo
+- Logout imediato
+- Tokens revogados
+- localStorage limpo
 
 ---
 
@@ -349,8 +349,8 @@ curl -X POST http://localhost:5051/oauth/google/token \
 ```bash
 # Medir tempo de resposta
 time curl -X POST http://localhost:5051/auth/validate \
-  -H "Content-Type: application/json" \
-  -d '{"access_token":"test","provider":"google"}'
+ -H "Content-Type: application/json" \
+ -d '{"access_token":"test","provider":"google"}'
 ```
 
 **Resultado Esperado:**
@@ -369,15 +369,15 @@ time curl -X POST http://localhost:5051/auth/validate \
 ```bash
 # Apache Bench - 100 requisições, 10 concorrentes
 ab -n 100 -c 10 -p post_data.json \
-  -T application/json \
-  http://localhost:5051/auth/validate
+ -T application/json \
+ http://localhost:5051/auth/validate
 ```
 
 **Validações:**
 
-- ✅ Rate limiting ativo
-- ✅ Sem crashes
-- ✅ Respostas consistentes
+- Rate limiting ativo
+- Sem crashes
+- Respostas consistentes
 
 ---
 
@@ -414,15 +414,13 @@ ab -n 100 -c 10 -p post_data.json \
 
 ## Resultado dos Testes
 
-**Status:** ✅ CONCLUÍDO  
-**Testes Executados:** 13 / 13  
-**Testes Aprovados:** 9 ✅  
-**Testes Reprovados:** 4 ❌  
-**Taxa de Sucesso:** 69.2%
+**Status:** CONCLUÍDO 
+**Testes Executados:** 13 / 13 
+**Testes Aprovados:** 9 **Testes Reprovados:** 4 **Taxa de Sucesso:** 69.2%
 
 ### Resumo de Aprovação
 
-#### ✅ Testes Aprovados (9)
+#### Testes Aprovados (9)
 
 1. Health Endpoint
 2. CORS Headers
@@ -434,7 +432,7 @@ ab -n 100 -c 10 -p post_data.json \
 8. 404 para endpoint inválido
 9. Rate Limiting (7 bloqueios em 35 requisições)
 
-#### ❌ Testes Reprovados (4)
+#### Testes Reprovados (4)
 
 1. **Strict-Transport-Security Header** - Ausente em ambiente de desenvolvimento HTTP (esperado)
 2. **POST /oauth/google/token** - SSL error devido ao redirect HTTP→HTTPS (funciona em produção)
@@ -448,10 +446,10 @@ Os 4 testes reprovados são **falhas esperadas em ambiente de desenvolvimento lo
 - `Strict-Transport-Security` só é aplicado em produção HTTPS
 - Endpoints OAuth redirecionam HTTP → HTTPS corretamente, mas testes locais não usam certificado SSL
 
-**✅ Todos os testes críticos de funcionalidade passaram**
-**✅ Rate limiting funcionando (limite de 30 req/min)**
-**✅ CORS configurado corretamente**
-**✅ Audit logging funcionando**
+** Todos os testes críticos de funcionalidade passaram**
+** Rate limiting funcionando (limite de 30 req/min)**
+** CORS configurado corretamente**
+** Audit logging funcionando**
 
-**Bloqueadores:** Nenhum  
+**Bloqueadores:** Nenhum 
 **Última Atualização:** 30/10/2025 - 21:05

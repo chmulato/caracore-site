@@ -33,7 +33,6 @@ backup-*-settings.json
 .secrets/
 secrets/
 oidc_logs*
-super_admin_config_SECRET.txt
 
 # Backend logs (JSONL daily files)
 backend/logs/

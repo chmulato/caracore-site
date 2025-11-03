@@ -1,24 +1,25 @@
 # Template de Acompanhamento de Fase
 
-**Fase:** [Número e Nome da Fase]  
-**Data de Início:** [DD/MM/AAAA]  
-**Data Prevista de Término:** [DD/MM/AAAA]  
+**Fase:** [Número e Nome da Fase] 
+**Data de Início:** [DD/MM/AAAA] 
+**Data Prevista de Término:** [DD/MM/AAAA] 
 **Responsável:** [Nome do Responsável Principal]
 
 ## Status Geral
 
-**Progresso:** [0-100]%  
-**Status:** 🔴 Atrasada / 🟡 Em Andamento / 🟢 No Prazo / ✅ Concluída
+**Progresso:** [0-100]% 
+**Status:** 🔴 Atrasada / 🟡 Em Andamento / 🟢 No Prazo / Concluída
 
 ## Itens da Fase
 
 ### Item [Número]: [Nome do Item]
 
-**Responsável:** [Nome]  
-**Status:** ⚪ Não Iniciado / 🟡 Em Andamento / ✅ Concluído  
+**Responsável:** [Nome] 
+**Status:** ⚪ Não Iniciado / 🟡 Em Andamento / Concluído 
 **Progresso:** [0-100]%
 
 **Tarefas:**
+
 - [ ] [Tarefa 1]
 - [ ] [Tarefa 2]
 - [ ] [Tarefa 3]
@@ -30,8 +31,8 @@
 
 ### Item [Número]: [Nome do Item]
 
-**Responsável:** [Nome]  
-**Status:** ⚪ Não Iniciado / 🟡 Em Andamento / ✅ Concluído  
+**Responsável:** [Nome] 
+**Status:** ⚪ Não Iniciado / 🟡 Em Andamento / Concluído 
 **Progresso:** [0-100]%
 
 **Tarefas:**
@@ -83,5 +84,5 @@
 
 ---
 
-**Última Atualização:** [DD/MM/AAAA HH:MM]  
+**Última Atualização:** [DD/MM/AAAA HH:MM] 
 **Atualizado por:** [Nome]

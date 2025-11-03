@@ -69,8 +69,8 @@ Autentica o super administrador e retorna um token JWT.
 
 ```json
 {
-  "email": "suporte@caracore.com.br",
-  "password": "senha_do_admin"
+ "email": "suporte@caracore.com.br",
+ "password": "senha_do_admin"
 }
 ```
 
@@ -78,10 +78,10 @@ Autentica o super administrador e retorna um token JWT.
 
 ```json
 {
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
-  "email": "suporte@caracore.com.br",
-  "role": "super_admin",
-  "expires_in": 86400
+ "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+ "email": "suporte@caracore.com.br",
+ "role": "super_admin",
+ "expires_in": 86400
 }
 ```
 
@@ -104,10 +104,10 @@ Authorization: Bearer <token>
 
 ```json
 {
-  "valid": true,
-  "email": "suporte@caracore.com.br",
-  "role": "super_admin",
-  "exp": 1730678400
+ "valid": true,
+ "email": "suporte@caracore.com.br",
+ "role": "super_admin",
+ "exp": 1730678400
 }
 ```
 
@@ -178,33 +178,33 @@ function logoutSuperAdmin()
 ## Fluxo de Autenticação
 
 ```text
-┌─────────────┐                  ┌──────────────┐                  ┌─────────────┐
-│   Browser   │                  │   Backend    │                  │   Azure     │
-│             │                  │   (Flask)    │                  │ App Service │
-└──────┬──────┘                  └───────┬──────┘                  └──────┬──────┘
-       │                                 │                                │
-       │ 1. Acessar login page           │                                │
-       ├────────────────────────────────>│                                │
-       │                                 │                                │
-       │ 2. Digite email/senha           │                                │
-       │                                 │                                │
-       │ 3. POST /auth/super-admin       │                                │
-       ├────────────────────────────────>│                                │
-       │                                 │                                │
-       │                                 │ 4. Validar credenciais         │
-       │                                 │    - Verificar email           │
-       │                                 │    - Hash senha (SHA-256)      │
-       │                                 │    - Comparar com env var      │
-       │                                 │                                │
-       │                                 │ 5. Gerar token JWT             │
-       │                                 │                                │
-       │ 6. Retornar token               │                                │
-       │<────────────────────────────────┤                                │
-       │                                 │                                │
-       │ 7. Armazenar em localStorage    │                                │
-       │                                 │                                │
-       │ 8. Redirecionar para dashboard  │                                │
-       │                                 │                                │
+┌─────────────┐ ┌──────────────┐ ┌─────────────┐
+│ Browser │ │ Backend │ │ Azure │
+│ │ │ (Flask) │ │ App Service │
+└──────┬──────┘ └───────┬──────┘ └──────┬──────┘
+ │ │ │
+ │ 1. Acessar login page │ │
+ ├────────────────────────────────>│ │
+ │ │ │
+ │ 2. Digite email/senha │ │
+ │ │ │
+ │ 3. POST /auth/super-admin │ │
+ ├────────────────────────────────>│ │
+ │ │ │
+ │ │ 4. Validar credenciais │
+ │ │ - Verificar email │
+ │ │ - Hash senha (SHA-256) │
+ │ │ - Comparar com env var │
+ │ │ │
+ │ │ 5. Gerar token JWT │
+ │ │ │
+ │ 6. Retornar token │ │
+ │<────────────────────────────────┤ │
+ │ │ │
+ │ 7. Armazenar em localStorage │ │
+ │ │ │
+ │ 8. Redirecionar para dashboard │ │
+ │ │ │
 ```
 
 ## Manutenção
@@ -231,9 +231,9 @@ az webapp log tail --name caracore-backend --resource-group <resource-group>
 
 Eventos registrados:
 
-- ✅ `Super admin autenticado com sucesso: suporte@caracore.com.br`
-- ⚠️ `Tentativa de login super admin com email não autorizado: xyz@email.com`
-- ⚠️ `Tentativa de login super admin com senha incorreta: suporte@caracore.com.br`
+- `Super admin autenticado com sucesso: suporte@caracore.com.br`
+- `Tentativa de login super admin com email não autorizado: xyz@email.com`
+- `Tentativa de login super admin com senha incorreta: suporte@caracore.com.br`
 
 ### Revogar Acesso
 
@@ -272,7 +272,7 @@ Para revogar o acesso imediatamente:
 **Para sessões mais longas:** Ajuste a expiração em `app.py`:
 
 ```python
-exp=datetime.utcnow() + timedelta(hours=168)  # 7 dias
+exp=datetime.utcnow() + timedelta(hours=168) # 7 dias
 ```
 
 ## Referências
@@ -298,5 +298,5 @@ exp=datetime.utcnow() + timedelta(hours=168)  # 7 dias
 
 ---
 
-**Última atualização:** Novembro 2025  
+**Última atualização:** Novembro 2025 
 **Versão:** 1.0

@@ -1,13 +1,13 @@
 # Guia de Deploy - Azure Container Registry + Web App
 
-**Backend Python/Flask Dockerizado**  
-**Versão:** 3.0.0  
-**Última Atualização:** 02/11/2025  
+**Backend Python/Flask Dockerizado** 
+**Versão:** 3.0.0 
+**Última Atualização:** 02/11/2025 
 **Arquitetura:** Docker Container + Azure Container Registry
 
 ---
 
-## 📋 Visão Geral
+## Visão Geral
 
 Este documento descreve o processo completo de deploy do backend Python/Flask usando **Docker containers** no Azure, incluindo Azure Container Registry (ACR), GitHub Actions CI/CD, e Web App for Containers.
 
@@ -33,29 +33,29 @@ Este documento descreve o processo completo de deploy do backend Python/Flask us
 
 ---
 
-## 🚀 Pré-requisitos
+## Pré-requisitos
 
 ### Ferramentas Necessárias
 
 1. **Docker** (versão 20.10+)
 
-   ```powershell
-   docker --version
-   # Se não instalado: winget install Docker.DockerDesktop
-   ```
+ ```powershell
+ docker --version
+ # Se não instalado: winget install Docker.DockerDesktop
+ ```
 
 2. **Azure CLI** (versão 2.50+)
 
-   ```powershell
-   az --version
-   # Se não instalado: winget install Microsoft.AzureCLI
-   ```
+ ```powershell
+ az --version
+ # Se não instalado: winget install Microsoft.AzureCLI
+ ```
 
 3. **Git** (para controle de versão e CI/CD)
 
-   ```powershell
-   git --version
-   ```
+ ```powershell
+ git --version
+ ```
 
 ### Login no Azure e Docker
 
@@ -80,14 +80,14 @@ docker pull caracoreregistry.azurecr.io/caracore-backend:latest
 ```text
 cara-core/
 ├── backend/
-│   ├── app.py                     # Aplicação principal Flask
-│   ├── requirements-docker.txt    # Dependências otimizadas (5 packages)
-│   ├── requirements.txt           # Dependências completas (12 packages)
-│   └── logs/                      # Logs JSONL (gitignored)
-├── Dockerfile.azure               # Multi-stage build otimizado
-├── docker-compose.yml             # Desenvolvimento local
+│ ├── app.py # Aplicação principal Flask
+│ ├── requirements-docker.txt # Dependências otimizadas (5 packages)
+│ ├── requirements.txt # Dependências completas (12 packages)
+│ └── logs/ # Logs JSONL (gitignored)
+├── Dockerfile.azure # Multi-stage build otimizado
+├── docker-compose.yml # Desenvolvimento local
 └── .github/workflows/
-    └── azure-docker-deploy.yml    # CI/CD GitHub Actions
+ └── azure-docker-deploy.yml # CI/CD GitHub Actions
 ```
 
 ### Dependências Docker (requirements-docker.txt)
@@ -102,10 +102,10 @@ python-dotenv==1.0.1
 
 **Otimizações:**
 
-- ✅ **5 packages** vs. 12 no requirements.txt completo
-- ✅ **Build 70% mais rápido** (~2 min vs. ~7 min)
-- ✅ **Imagem 60% menor** (~250 MB vs. ~800 MB)
-- ✅ **Base `python:3.10-slim`** para segurança
+- **5 packages** vs. 12 no requirements.txt completo
+- **Build 70% mais rápido** (~2 min vs. ~7 min)
+- **Imagem 60% menor** (~250 MB vs. ~800 MB)
+- **Base `python:3.10-slim`** para segurança
 
 ### Dockerfile Multi-stage
 
@@ -128,7 +128,7 @@ USER appuser
 
 # Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
-  CMD curl -f http://localhost:$PORT/health || exit 1
+ CMD curl -f http://localhost:$PORT/health || exit 1
 
 # Startup
 EXPOSE $PORT
@@ -137,7 +137,7 @@ CMD gunicorn --bind=0.0.0.0:$PORT --workers=1 --timeout=300 app:app
 
 ---
 
-## 🔧 Variáveis de Ambiente (Docker)
+## Variáveis de Ambiente (Docker)
 
 As seguintes variáveis **devem estar configuradas** no Azure Web App for Containers:
 
@@ -167,7 +167,7 @@ DOCKER_REGISTRY_SERVER_PASSWORD="<ACR_PASSWORD>"
 # Application Settings
 FLASK_ENV="production"
 ORIGIN_ALLOWED="https://www.caracore.com.br"
-PORT="8000"  # Dinamicamente definido pelo Azure
+PORT="8000" # Dinamicamente definido pelo Azure
 ```
 
 ### Como Configurar no Azure Web App
@@ -183,21 +183,21 @@ PORT="8000"  # Dinamicamente definido pelo Azure
 ```powershell
 # Configurar aplicação settings
 az webapp config appsettings set `
-  --name caracore-backend-docker `
-  --resource-group rg-caracore `
-  --settings GOOGLE_CLIENT_ID="valor" GOOGLE_CLIENT_SECRET="valor"
+ --name caracore-backend-docker `
+ --resource-group rg-caracore `
+ --settings GOOGLE_CLIENT_ID="valor" GOOGLE_CLIENT_SECRET="valor"
 
 # Configurar container registry
 az webapp config container set `
-  --name caracore-backend-docker `
-  --resource-group rg-caracore `
-  --docker-custom-image-name caracoreregistry.azurecr.io/caracore-backend:latest `
-  --docker-registry-server-url https://caracoreregistry.azurecr.io `
-  --docker-registry-server-user caracoreregistry `
-  --docker-registry-server-password <PASSWORD>
+ --name caracore-backend-docker `
+ --resource-group rg-caracore `
+ --docker-custom-image-name caracoreregistry.azurecr.io/caracore-backend:latest `
+ --docker-registry-server-url https://caracoreregistry.azurecr.io `
+ --docker-registry-server-user caracoreregistry `
+ --docker-registry-server-password <PASSWORD>
 ```
 
-**⚠️ DIFERENÇAS DO DOCKER:**
+** DIFERENÇAS DO DOCKER:**
 
 - **Não precisa** de `WEBSITES_PORT` (Docker usa variável `$PORT` automaticamente)
 - **Precisa** configurar Azure Container Registry credentials
@@ -206,7 +206,7 @@ az webapp config container set `
 
 ---
 
-## 🚀 Deploy Docker para Produção
+## Deploy Docker para Produção
 
 ### Método 1: GitHub Actions CI/CD (Recomendado) ✨ AUTOMATIZADO
 
@@ -217,60 +217,60 @@ O deploy é **totalmente automatizado** via GitHub Actions sempre que há push p
 name: Deploy Docker Backend to Azure
 
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'backend/**'
-      - 'Dockerfile.azure'
-      - '.github/workflows/azure-docker-deploy.yml'
+ push:
+ branches: [main]
+ paths:
+ - 'backend/**'
+ - 'Dockerfile.azure'
+ - '.github/workflows/azure-docker-deploy.yml'
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Build Docker image
-        run: |
-          docker build -f Dockerfile.azure -t caracore-backend:${{ github.sha }} .
-          docker tag caracore-backend:${{ github.sha }} caracoreregistry.azurecr.io/caracore-backend:latest
-          docker tag caracore-backend:${{ github.sha }} caracoreregistry.azurecr.io/caracore-backend:${{ github.sha }}
-      
-      - name: Login to Azure Container Registry
-        run: |
-          echo "${{ secrets.ACR_PASSWORD }}" | docker login caracoreregistry.azurecr.io -u "${{ secrets.ACR_USERNAME }}" --password-stdin
-      
-      - name: Push to ACR
-        run: |
-          docker push caracoreregistry.azurecr.io/caracore-backend:latest
-          docker push caracoreregistry.azurecr.io/caracore-backend:${{ github.sha }}
-      
-      - name: Deploy to Azure Web App
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'caracore-backend-docker'
-          publish-profile: ${{ secrets.AZURE_WEBAPP_DOCKER_PUBLISH_PROFILE }}
-          images: 'caracoreregistry.azurecr.io/caracore-backend:latest'
-      
-      - name: Health Check
-        run: |
-          sleep 60  # Wait for container startup
-          curl -f https://caracore-backend-docker.azurewebsites.net/health
+ deploy:
+ runs-on: ubuntu-latest
+ steps:
+ - uses: actions/checkout@v4
+ 
+ - name: Build Docker image
+ run: |
+ docker build -f Dockerfile.azure -t caracore-backend:${{ github.sha }} .
+ docker tag caracore-backend:${{ github.sha }} caracoreregistry.azurecr.io/caracore-backend:latest
+ docker tag caracore-backend:${{ github.sha }} caracoreregistry.azurecr.io/caracore-backend:${{ github.sha }}
+ 
+ - name: Login to Azure Container Registry
+ run: |
+ echo "${{ secrets.ACR_PASSWORD }}" | docker login caracoreregistry.azurecr.io -u "${{ secrets.ACR_USERNAME }}" --password-stdin
+ 
+ - name: Push to ACR
+ run: |
+ docker push caracoreregistry.azurecr.io/caracore-backend:latest
+ docker push caracoreregistry.azurecr.io/caracore-backend:${{ github.sha }}
+ 
+ - name: Deploy to Azure Web App
+ uses: azure/webapps-deploy@v2
+ with:
+ app-name: 'caracore-backend-docker'
+ publish-profile: ${{ secrets.AZURE_WEBAPP_DOCKER_PUBLISH_PROFILE }}
+ images: 'caracoreregistry.azurecr.io/caracore-backend:latest'
+ 
+ - name: Health Check
+ run: |
+ sleep 60 # Wait for container startup
+ curl -f https://caracore-backend-docker.azurewebsites.net/health
 ```
 
 **Secrets necessários no GitHub:**
 
 - `ACR_USERNAME`: Username do Azure Container Registry
-- `ACR_PASSWORD`: Password do Azure Container Registry  
+- `ACR_PASSWORD`: Password do Azure Container Registry 
 - `AZURE_WEBAPP_DOCKER_PUBLISH_PROFILE`: Publish profile do Web App
 
 **Como funciona:**
 
-1. ✅ **Trigger automático:** Push para `main` com mudanças em `backend/`
-2. ✅ **Build Docker:** Usando `Dockerfile.azure` otimizado
-3. ✅ **Push para ACR:** Tag com `latest` + commit SHA
-4. ✅ **Deploy automático:** Azure Web App pull da nova imagem
-5. ✅ **Health check:** Verificação automática do endpoint `/health`
+1. **Trigger automático:** Push para `main` com mudanças em `backend/`
+2. **Build Docker:** Usando `Dockerfile.azure` otimizado
+3. **Push para ACR:** Tag com `latest` + commit SHA
+4. **Deploy automático:** Azure Web App pull da nova imagem
+5. **Health check:** Verificação automática do endpoint `/health`
 
 **Tempo estimado:** 3-4 minutos (build + push + deploy + warm-up)
 
@@ -302,12 +302,12 @@ docker build -f Dockerfile.azure -t caracore-local .
 
 # 2. Run local (com environment variables)
 docker run -d `
-  -p 8000:8000 `
-  -e GOOGLE_CLIENT_ID="seu_client_id" `
-  -e GOOGLE_CLIENT_SECRET="seu_secret" `
-  -e FLASK_ENV="development" `
-  --name caracore-dev `
-  caracore-local
+ -p 8000:8000 `
+ -e GOOGLE_CLIENT_ID="seu_client_id" `
+ -e GOOGLE_CLIENT_SECRET="seu_secret" `
+ -e FLASK_ENV="development" `
+ --name caracore-dev `
+ caracore-local
 
 # 3. Testar localmente
 curl http://localhost:8000/health
@@ -321,7 +321,7 @@ docker stop caracore-dev && docker rm caracore-dev
 
 ---
 
-## ✅ Verificação Pós-Deploy Docker
+## Verificação Pós-Deploy Docker
 
 ### 1. Health Check Automático
 
@@ -363,10 +363,10 @@ az acr repository show --name caracoreregistry --repository caracore-backend
 
 ```powershell
 # Testar todos os endpoints principais
-curl -I https://caracore-backend-docker.azurewebsites.net/health              # Health check
-curl -I https://caracore-backend-docker.azurewebsites.net/api/admin/users     # Authorization API
-curl -I https://caracore-backend-docker.azurewebsites.net/auth/google         # OAuth Google
-curl -I https://caracore-backend-docker.azurewebsites.net/auth/microsoft      # OAuth Microsoft
+curl -I https://caracore-backend-docker.azurewebsites.net/health # Health check
+curl -I https://caracore-backend-docker.azurewebsites.net/api/admin/users # Authorization API
+curl -I https://caracore-backend-docker.azurewebsites.net/auth/google # OAuth Google
+curl -I https://caracore-backend-docker.azurewebsites.net/auth/microsoft # OAuth Microsoft
 
 # Verificar CORS headers
 curl -H "Origin: https://www.caracore.com.br" -I https://caracore-backend-docker.azurewebsites.net/health
@@ -381,7 +381,7 @@ time curl -f https://caracore-backend-docker.azurewebsites.net/health
 # Memory usage (via Azure portal)
 # Azure Portal > App Services > caracore-backend-docker > Metrics > Memory Percentage
 
-# CPU usage (via Azure portal)  
+# CPU usage (via Azure portal) 
 # Azure Portal > App Services > caracore-backend-docker > Metrics > CPU Percentage
 ```
 
@@ -399,10 +399,10 @@ az acr repository show-tags --name caracoreregistry --repository caracore-backen
 
 # Exemplo de output:
 # [
-#   "latest",
-#   "abc123def456",  # commit SHA
-#   "def789ghi012",  # commit SHA anterior
-#   "v1.2.0"         # tag de release
+# "latest",
+# "abc123def456", # commit SHA
+# "def789ghi012", # commit SHA anterior
+# "v1.2.0" # tag de release
 # ]
 ```
 
@@ -414,9 +414,9 @@ az acr repository show-tags --name caracoreregistry --repository caracore-backen
 
 # 2. Atualizar Web App para usar tag específica
 az webapp config container set `
-  --name caracore-backend-docker `
-  --resource-group rg-caracore `
-  --docker-custom-image-name caracoreregistry.azurecr.io/caracore-backend:def789ghi012
+ --name caracore-backend-docker `
+ --resource-group rg-caracore `
+ --docker-custom-image-name caracoreregistry.azurecr.io/caracore-backend:def789ghi012
 
 # 3. Restart para aplicar nova imagem
 az webapp restart --name caracore-backend-docker --resource-group rg-caracore
@@ -438,8 +438,8 @@ curl https://caracore-backend-docker.azurewebsites.net/health
 
 ```powershell
 # 1. Checkout do commit anterior
-git log --oneline -10  # Ver últimos 10 commits
-git checkout abc123def456  # Commit conhecido funcionando
+git log --oneline -10 # Ver últimos 10 commits
+git checkout abc123def456 # Commit conhecido funcionando
 
 # 2. Build da versão anterior
 docker build -f Dockerfile.azure -t caracore-rollback .
@@ -451,9 +451,9 @@ docker push caracoreregistry.azurecr.io/caracore-backend:rollback-$(date +%Y%m%d
 
 # 4. Update Web App
 az webapp config container set `
-  --name caracore-backend-docker `
-  --resource-group rg-caracore `
-  --docker-custom-image-name caracoreregistry.azurecr.io/caracore-backend:rollback-$(date +%Y%m%d)
+ --name caracore-backend-docker `
+ --resource-group rg-caracore `
+ --docker-custom-image-name caracoreregistry.azurecr.io/caracore-backend:rollback-$(date +%Y%m%d)
 
 # 5. Restart e verificar
 az webapp restart --name caracore-backend-docker --resource-group rg-caracore
@@ -465,10 +465,10 @@ git checkout main
 
 **Vantagens do Rollback Docker:**
 
-- ✅ **Versioning:** Cada deploy gera tag única (commit SHA)
-- ✅ **Rapidez:** Rollback em ~2-3 minutos (pull de imagem existente)
-- ✅ **Consistência:** Exata mesma imagem que funcionou antes
-- ✅ **Auditoria:** Histórico completo no ACR e GitHub Actions
+- **Versioning:** Cada deploy gera tag única (commit SHA)
+- **Rapidez:** Rollback em ~2-3 minutos (pull de imagem existente)
+- **Consistência:** Exata mesma imagem que funcionou antes
+- **Auditoria:** Histórico completo no ACR e GitHub Actions
 
 ---
 
@@ -491,29 +491,29 @@ az webapp up --name caracore-backend --runtime PYTHON:3.11
 
 **Problema:** Gunicorn timeout muito curto OU Azure não consegue rotear requisições
 
-**⚠️ IMPORTANTE:** Azure App Service Python **requer** configuração específica de porta:
+** IMPORTANTE:** Azure App Service Python **requer** configuração específica de porta:
 
 **Solução 1: Configurar WEBSITES_PORT**
 
 ```powershell
 # OBRIGATÓRIO: Definir porta que Azure vai usar
 az webapp config appsettings set `
-  --name caracore-backend `
-  --resource-group rg-caracore `
-  --settings WEBSITES_PORT=8000
+ --name caracore-backend `
+ --resource-group rg-caracore `
+ --settings WEBSITES_PORT=8000
 ```
 
 **Solução 2: Configurar Startup Command com $PORT dinâmico**
 
 ```powershell
-# ❌ ERRADO (porta hardcoded)
+# ERRADO (porta hardcoded)
 --startup-file "gunicorn --bind=0.0.0.0:8000 --timeout 600 app:app"
 
-# ✅ CORRETO (usa variável $PORT do Azure)
+# CORRETO (usa variável $PORT do Azure)
 az webapp config set `
-  --name caracore-backend `
-  --resource-group rg-caracore `
-  --startup-file "gunicorn --bind=0.0.0.0:`$PORT --timeout 600 app:app"
+ --name caracore-backend `
+ --resource-group rg-caracore `
+ --startup-file "gunicorn --bind=0.0.0.0:`$PORT --timeout 600 app:app"
 ```
 
 **Por que isso é necessário:**
@@ -573,14 +573,14 @@ curl https://caracore-backend.azurewebsites.net/health
 
 @app.route("/api/admin/logs", methods=["OPTIONS"])
 def admin_logs_preflight():
-    """Handler para CORS preflight"""
-    return '', 204  # Retorna vazio com status 204
+ """Handler para CORS preflight"""
+ return '', 204 # Retorna vazio com status 204
 
 @app.route("/api/admin/logs", methods=["GET"])
 @add_cors
 def admin_logs():
-    """Endpoint principal"""
-    # ... lógica do endpoint
+ """Endpoint principal"""
+ # ... lógica do endpoint
 ```
 
 **Verificar em app.py:**
@@ -605,7 +605,7 @@ curl -H "Origin: https://www.caracore.com.br" -I https://caracore-backend.azurew
 
 ---
 
-## 🔐 Segurança Docker
+## Segurança Docker
 
 ### Container Security
 
@@ -613,18 +613,18 @@ curl -H "Origin: https://www.caracore.com.br" -I https://caracore-backend.azurew
 
 ```dockerfile
 # Dockerfile.azure - Security best practices
-FROM python:3.10-slim                    # Minimal base image
-RUN groupadd -r appuser && useradd -r -g appuser appuser  # Non-root user
-COPY backend/requirements-docker.txt .   # Minimal dependencies (5 packages)
-RUN chown -R appuser:appuser /app        # Proper file ownership
-USER appuser                             # Run as non-root
+FROM python:3.10-slim # Minimal base image
+RUN groupadd -r appuser && useradd -r -g appuser appuser # Non-root user
+COPY backend/requirements-docker.txt . # Minimal dependencies (5 packages)
+RUN chown -R appuser:appuser /app # Proper file ownership
+USER appuser # Run as non-root
 ```
 
 **Secrets Management:**
-- ✅ **GitHub Secrets:** ACR credentials protegidos
-- ✅ **Azure Container Registry:** Access tokens com escopo limitado
-- ✅ **Web App Environment:** Variables separadas do código
-- ✅ **No hardcoding:** Todas credenciais via environment variables
+- **GitHub Secrets:** ACR credentials protegidos
+- **Azure Container Registry:** Access tokens com escopo limitado
+- **Web App Environment:** Variables separadas do código
+- **No hardcoding:** Todas credenciais via environment variables
 
 ### Validação de Secrets Docker
 
@@ -642,36 +642,36 @@ curl -I https://caracore-backend-docker.azurewebsites.net/auth/microsoft
 
 ---
 
-## 📊 Monitoramento Docker
+## Monitoramento Docker
 
 ### Azure Container Insights
 
 ```powershell
 # Habilitar Container Insights (se disponível)
 az monitor diagnostic-settings create `
-  --name caracore-docker-insights `
-  --resource "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend-docker" `
-  --logs '[{"category":"AppServiceConsoleLogs","enabled":true}]' `
-  --metrics '[{"category":"AllMetrics","enabled":true}]' `
-  --workspace "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.OperationalInsights/workspaces/caracore-workspace"
+ --name caracore-docker-insights `
+ --resource "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend-docker" `
+ --logs '[{"category":"AppServiceConsoleLogs","enabled":true}]' `
+ --metrics '[{"category":"AllMetrics","enabled":true}]' `
+ --workspace "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.OperationalInsights/workspaces/caracore-workspace"
 
 # Verificar métricas do container
 az monitor metrics list `
-  --resource "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend-docker" `
-  --metric "CpuPercentage,MemoryPercentage" `
-  --interval PT1M
+ --resource "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend-docker" `
+ --metric "CpuPercentage,MemoryPercentage" `
+ --interval PT1M
 ```
 
 ### Métricas Importantes Docker
 
 | Métrica | Target | Current | Status |
 |---------|--------|---------|--------|
-| **Container Start Time** | < 90s | ~60s | ✅ |
-| **Response Time** | < 500ms | ~200ms | ✅ |
-| **Memory Usage** | < 80% | ~45% | ✅ |
-| **CPU Usage** | < 70% | ~25% | ✅ |
-| **Image Size** | < 500MB | ~250MB | ✅ |
-| **Build Time** | < 5min | ~2min | ✅ |
+| **Container Start Time** | < 90s | ~60s | |
+| **Response Time** | < 500ms | ~200ms | |
+| **Memory Usage** | < 80% | ~45% | |
+| **CPU Usage** | < 70% | ~25% | |
+| **Image Size** | < 500MB | ~250MB | |
+| **Build Time** | < 5min | ~2min | |
 
 ### Health Monitoring
 
@@ -681,14 +681,14 @@ curl https://caracore-backend-docker.azurewebsites.net/health
 
 # Expected response:
 # {
-#   "status": "ok",
-#   "timestamp": "2025-11-02T12:00:00Z",
-#   "version": "docker",
-#   "container": {
-#     "image": "caracoreregistry.azurecr.io/caracore-backend:latest",
-#     "uptime": "2h 30m",
-#     "memory_usage": "180MB/1GB"
-#   }
+# "status": "ok",
+# "timestamp": "2025-11-02T12:00:00Z",
+# "version": "docker",
+# "container": {
+# "image": "caracoreregistry.azurecr.io/caracore-backend:latest",
+# "uptime": "2h 30m",
+# "memory_usage": "180MB/1GB"
+# }
 # }
 
 # Container logs monitoring
@@ -700,26 +700,26 @@ az webapp log tail --name caracore-backend-docker --resource-group rg-caracore
 ```powershell
 # CPU alert (>80% por 5 minutos)
 az monitor metrics alert create `
-  --name "caracore-docker-high-cpu" `
-  --resource-group rg-caracore `
-  --scopes "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend-docker" `
-  --condition "avg CpuPercentage > 80" `
-  --window-size 5m `
-  --evaluation-frequency 1m
+ --name "caracore-docker-high-cpu" `
+ --resource-group rg-caracore `
+ --scopes "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend-docker" `
+ --condition "avg CpuPercentage > 80" `
+ --window-size 5m `
+ --evaluation-frequency 1m
 
 # Memory alert (>90% por 3 minutos)
 az monitor metrics alert create `
-  --name "caracore-docker-high-memory" `
-  --resource-group rg-caracore `
-  --scopes "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend-docker" `
-  --condition "avg MemoryPercentage > 90" `
-  --window-size 3m `
-  --evaluation-frequency 1m
+ --name "caracore-docker-high-memory" `
+ --resource-group rg-caracore `
+ --scopes "/subscriptions/<sub-id>/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend-docker" `
+ --condition "avg MemoryPercentage > 90" `
+ --window-size 3m `
+ --evaluation-frequency 1m
 ```
 
 ---
 
-## 📝 Checklist de Deploy
+## Checklist de Deploy
 
 ### Usando Script Automatizado (deploy_production.py)
 
@@ -727,13 +727,13 @@ O script já faz a maioria das verificações automaticamente:
 
 **Verificações Automáticas (feitas pelo script):**
 
-- ✅ Azure CLI instalado e autenticado
-- ✅ Branch Git atual (avisa se não for main)
-- ✅ Mudanças não commitadas (avisa)
-- ✅ Testes pytest (opcional com --skip-tests)
-- ✅ Backup automático criado
-- ✅ Health check pós-deploy
-- ✅ Teste de autenticação
+- Azure CLI instalado e autenticado
+- Branch Git atual (avisa se não for main)
+- Mudanças não commitadas (avisa)
+- Testes pytest (opcional com --skip-tests)
+- Backup automático criado
+- Health check pós-deploy
+- Teste de autenticação
 
 **Verificações Manuais (antes de rodar o script):**
 
@@ -772,7 +772,7 @@ Após o deploy:
 
 ---
 
-## 🔗 Links Úteis Docker
+## Links Úteis Docker
 
 ### Azure Resources
 
@@ -830,8 +830,8 @@ Após o deploy:
 
 ---
 
-**Documento mantido por:** Cara Core Informática  
-**Última revisão:** 02/11/2025  
-**Versão:** 3.0.0 (Docker)  
-**Arquitetura:** Docker Container + Azure Container Registry + Web App for Containers  
-**Status:** ✅ Funcionando em produção
+**Documento mantido por:** Cara Core Informática 
+**Última revisão:** 02/11/2025 
+**Versão:** 3.0.0 (Docker) 
+**Arquitetura:** Docker Container + Azure Container Registry + Web App for Containers 
+**Status:** Funcionando em produção

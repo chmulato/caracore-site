@@ -15,7 +15,7 @@
 
 ---
 
-## 🔧 Ordem de Carregamento dos Scripts
+## Ordem de Carregamento dos Scripts
 
 ### Para páginas protegidas em `/secure/`
 
@@ -35,7 +35,7 @@
 <script src="/secure/js/sua-pagina.js"></script>
 ```
 
-**⚠️ IMPORTANTE:**
+** IMPORTANTE:**
 
 - Notificações devem carregar ANTES do SessionManager
 - LogoutModal deve carregar DEPOIS do SessionManager
@@ -43,7 +43,7 @@
 
 ---
 
-## 🎯 Integração do LogoutModal em Páginas
+## Integração do LogoutModal em Páginas
 
 ### Passo 1: Converter link/botão de logout
 
@@ -51,7 +51,7 @@
 
 ```html
 <a class="btn btn-primary" href="../secure/logout.html" id="logoutButton">
-  Sair
+ Sair
 </a>
 ```
 
@@ -59,7 +59,7 @@
 
 ```html
 <button class="btn btn-primary" type="button" id="logoutButton">
-  Sair
+ Sair
 </button>
 ```
 
@@ -67,67 +67,67 @@
 
 ```javascript
 <script>
-  (function() {
-    'use strict';
-    
-    const logoutBtn = document.getElementById('logoutButton');
-    const provider = localStorage.getItem('auth_provider');
-    
-    if (logoutBtn && typeof LogoutModal !== 'undefined') {
-      logoutBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        LogoutModal.show(provider);
-      });
-      console.log('LogoutModal configurado');
-    } else if (logoutBtn && typeof SessionManager !== 'undefined') {
-      // Fallback
-      logoutBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-        await SessionManager.logout();
-      });
-      console.warn('LogoutModal não encontrado, usando logout padrão');
-    }
-  })();
+ (function() {
+ 'use strict';
+ 
+ const logoutBtn = document.getElementById('logoutButton');
+ const provider = localStorage.getItem('auth_provider');
+ 
+ if (logoutBtn && typeof LogoutModal !== 'undefined') {
+ logoutBtn.addEventListener('click', (e) => {
+ e.preventDefault();
+ LogoutModal.show(provider);
+ });
+ console.log('LogoutModal configurado');
+ } else if (logoutBtn && typeof SessionManager !== 'undefined') {
+ // Fallback
+ logoutBtn.addEventListener('click', async (e) => {
+ e.preventDefault();
+ await SessionManager.logout();
+ });
+ console.warn('LogoutModal não encontrado, usando logout padrão');
+ }
+ })();
 </script>
 ```
 
 ---
 
-## 📄 Páginas Já Integradas
+## Páginas Já Integradas
 
-### ✅ secure/restrita.html
+### secure/restrita.html
 
-- ✅ Sistema de notificações carregado
-- ✅ LogoutModal carregado
-- ✅ Botão de logout configurado
-- ✅ Fallback implementado
+- Sistema de notificações carregado
+- LogoutModal carregado
+- Botão de logout configurado
+- Fallback implementado
 
-### ✅ secure/admin-logs.html
+### secure/admin-logs.html
 
-- ✅ Sistema de notificações carregado
-- ✅ LogoutModal carregado
-- ✅ Botão de logout adicionado no navbar
-- ✅ Script de configuração implementado
+- Sistema de notificações carregado
+- LogoutModal carregado
+- Botão de logout adicionado no navbar
+- Script de configuração implementado
 
 ---
 
-## 🔔 Notificações Automáticas Implementadas
+## Notificações Automáticas Implementadas
 
 O SessionManager agora exibe notificações automaticamente nos seguintes eventos:
 
 ### Eventos de Sucesso
 
-- ✅ **Login bem-sucedido** - `loginSuccess()`
-- ✅ **Logout completo** - `logoutSuccess()`
-- ✅ **Sessão renovada** - `sessionRefreshed()` (silencioso)
+- **Login bem-sucedido** - `loginSuccess()`
+- **Logout completo** - `logoutSuccess()`
+- **Sessão renovada** - `sessionRefreshed()` (silencioso)
 
 ### Eventos de Erro
 
-- ✅ **Sessão expirada** - `sessionExpired()`
-- ✅ **Timeout de inatividade** - `inactivityTimeout(5)` (avisa 5s antes)
-- ✅ **Falha no refresh** - `showError('refresh_failed')`
-- ✅ **Erro de rede** - `showError('network_error')`
-- ✅ **Logout parcial** - `showWarning('logout_partial')`
+- **Sessão expirada** - `sessionExpired()`
+- **Timeout de inatividade** - `inactivityTimeout(5)` (avisa 5s antes)
+- **Falha no refresh** - `showError('refresh_failed')`
+- **Erro de rede** - `showError('network_error')`
+- **Logout parcial** - `showWarning('logout_partial')`
 
 ### Uso Manual (em scripts customizados)
 
@@ -140,13 +140,13 @@ NotificationBridge.showError('invalid_token');
 
 // Exibir notificação customizada
 NotificationBridge.showCustom('info', 'Título', 'Mensagem', {
-  duration: 5000,
-  autoDismiss: true
+ duration: 5000,
+ autoDismiss: true
 });
 
 // Processar erro de API automaticamente
 fetch('/api/endpoint')
-  .catch(error => NotificationBridge.handleApiError(error));
+ .catch(error => NotificationBridge.handleApiError(error));
 ```
 
 ---
@@ -177,7 +177,7 @@ ErrorMessages.autoDetectLanguage();
 
 ---
 
-## 🎨 Customização de Notificações
+## Customização de Notificações
 
 ### Posição do Container
 
@@ -198,22 +198,22 @@ NotificationManager.setPosition('top-center');
 
 ```javascript
 NotificationBridge.showSuccess('consent_registered', {
-  duration: 7000, // 7 segundos
-  autoDismiss: true
+ duration: 7000, // 7 segundos
+ autoDismiss: true
 });
 
 // Notificação que não fecha automaticamente
 NotificationBridge.showError('session_expired', {
-  autoDismiss: false,
-  onClick: () => {
-    SessionManager.redirectToLogin();
-  }
+ autoDismiss: false,
+ onClick: () => {
+ SessionManager.redirectToLogin();
+ }
 });
 ```
 
 ---
 
-## 🧪 Testando a Integração
+## Testando a Integração
 
 ### 1. Teste de Notificações no Console
 
@@ -241,8 +241,8 @@ NotificationBridge.dismissAll();
 1. Fazer login em uma página protegida
 2. Clicar no botão "Sair" / "Encerrar sessão"
 3. Verificar se o modal aparece com 2 opções:
-   - "Sair deste site" (logout local)
-   - "Sair de todas as contas" (logout federado)
+ - "Sair deste site" (logout local)
+ - "Sair de todas as contas" (logout federado)
 4. Testar ambas as opções
 5. Verificar notificações de logout
 
@@ -255,7 +255,7 @@ NotificationBridge.dismissAll();
 
 ---
 
-## 📝 Próximas Páginas a Integrar
+## Próximas Páginas a Integrar
 
 ### Páginas ainda sem integração:
 
@@ -282,13 +282,13 @@ NotificationBridge.dismissAll();
 
 <!-- Configuração do botão de logout -->
 <script>
-  const btn = document.getElementById('logoutButton');
-  if (btn) {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      LogoutModal.show(localStorage.getItem('auth_provider'));
-    });
-  }
+ const btn = document.getElementById('logoutButton');
+ if (btn) {
+ btn.addEventListener('click', (e) => {
+ e.preventDefault();
+ LogoutModal.show(localStorage.getItem('auth_provider'));
+ });
+ }
 </script>
 ```
 
@@ -298,44 +298,44 @@ NotificationBridge.dismissAll();
 
 ### Notificações não aparecem
 
-- ✅ Verificar se `notification-manager.js` carregou ANTES dos outros scripts
-- ✅ Abrir console e verificar erros JavaScript
-- ✅ Testar manualmente: `NotificationBridge.showSuccess('login_success')`
+- Verificar se `notification-manager.js` carregou ANTES dos outros scripts
+- Abrir console e verificar erros JavaScript
+- Testar manualmente: `NotificationBridge.showSuccess('login_success')`
 
 ### LogoutModal não abre
 
-- ✅ Verificar se `logout-modal.js` carregou DEPOIS do `session-manager.js`
-- ✅ Verificar se botão tem ID correto (`logoutButton`)
-- ✅ Testar manualmente: `LogoutModal.show('google')`
+- Verificar se `logout-modal.js` carregou DEPOIS do `session-manager.js`
+- Verificar se botão tem ID correto (`logoutButton`)
+- Testar manualmente: `LogoutModal.show('google')`
 
 ### SessionManager não exibe notificações
 
-- ✅ Verificar ordem de carregamento (notificações ANTES do SessionManager)
-- ✅ Verificar console: `typeof NotificationBridge` deve retornar `'object'`
-- ✅ SessionManager funciona mesmo sem NotificationBridge (fallback)
+- Verificar ordem de carregamento (notificações ANTES do SessionManager)
+- Verificar console: `typeof NotificationBridge` deve retornar `'object'`
+- SessionManager funciona mesmo sem NotificationBridge (fallback)
 
 ### Mensagens em inglês quando deveria ser português
 
-- ✅ Verificar idioma do navegador
-- ✅ Forçar idioma: `ErrorMessages.setLanguage('pt-BR')`
+- Verificar idioma do navegador
+- Forçar idioma: `ErrorMessages.setLanguage('pt-BR')`
 
 ---
 
-## 📊 Status de Implementação
+## Status de Implementação
 
 | Componente | Status | Linhas | Observações |
 |-----------|--------|--------|-------------|
-| notification-manager.js | ✅ 100% | 580 | Sistema de toasts completo |
-| error-messages.js | ✅ 100% | 450 | 30+ códigos mapeados |
-| notification-bridge.js | ✅ 100% | 265 | API unificada |
-| session-manager.js | ✅ 100% | +83 | 8 pontos de integração |
-| logout-modal.js | ✅ 100% | 395 | Modal acessível |
-| restrita.html | ✅ 100% | - | Integrado |
-| admin-logs.html | ✅ 100% | - | Integrado |
+| notification-manager.js | 100% | 580 | Sistema de toasts completo |
+| error-messages.js | 100% | 450 | 30+ códigos mapeados |
+| notification-bridge.js | 100% | 265 | API unificada |
+| session-manager.js | 100% | +83 | 8 pontos de integração |
+| logout-modal.js | 100% | 395 | Modal acessível |
+| restrita.html | 100% | - | Integrado |
+| admin-logs.html | 100% | - | Integrado |
 
 ---
 
-## ✅ Checklist de Integração
+## Checklist de Integração
 
 Para integrar em uma nova página protegida:
 
@@ -351,7 +351,7 @@ Para integrar em uma nova página protegida:
 
 ---
 
-**Versão:** 1.0  
-**Data:** 30/10/2025  
-**Fase:** 2 - Item 5 (Sistema de Feedback Visual)  
+**Versão:** 1.0 
+**Data:** 30/10/2025 
+**Fase:** 2 - Item 5 (Sistema de Feedback Visual) 
 **Commit:** 8c35305 (SessionManager) + próximo (integração páginas)

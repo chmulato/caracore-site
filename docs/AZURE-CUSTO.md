@@ -1,9 +1,9 @@
 # Análise de Custos - Infraestrutura Azure Docker
 
-**Documento:** Análise de Custos Operacionais  
-**Sistema:** CaraCore OAuth 2.1 + OIDC  
-**Data:** 02 de novembro de 2025  
-**Versão:** 1.0  
+**Documento:** Análise de Custos Operacionais 
+**Sistema:** CaraCore OAuth 2.1 + OIDC 
+**Data:** 02 de novembro de 2025 
+**Versão:** 1.0 
 
 ---
 
@@ -11,9 +11,9 @@
 
 O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker para hospedar a aplicação de autenticação OAuth 2.1 + OIDC. Este documento apresenta uma análise detalhada dos custos operacionais atuais e projeções para diferentes cenários de utilização.
 
-**Custo Atual:** USD 5,00/mês (desenvolvimento)  
-**Custo Recomendado Produção:** USD 18,14/mês  
-**ROI Estimado:** Excelente para aplicação empresarial  
+**Custo Atual:** USD 5,00/mês (desenvolvimento) 
+**Custo Recomendado Produção:** USD 18,14/mês 
+**ROI Estimado:** Excelente para aplicação empresarial 
 
 ---
 
@@ -69,10 +69,10 @@ O sistema CaraCore utiliza infraestrutura Azure baseada em containers Docker par
 
 - Custo mensal: USD 0,00
 - Limitações críticas:
-  - 60 minutos CPU/dia
-  - Sleep automático após 20 minutos inatividade
-  - Sem SLA garantido
-  - Sem SSL customizado
+ - 60 minutos CPU/dia
+ - Sleep automático após 20 minutos inatividade
+ - Sem SLA garantido
+ - Sem SSL customizado
 
 **Limitações de Produção:**
 
@@ -224,33 +224,33 @@ Custo por usuário/mês (500 usuários): USD 0,16
 ### Imediato (30 dias)
 
 1. **Migração para B1 Basic**
-   - Custo adicional: USD 13,14/mês
-   - Benefício: Disponibilidade 24/7 garantida
-   - Risco: Baixo (rollback em 5 minutos)
+ - Custo adicional: USD 13,14/mês
+ - Benefício: Disponibilidade 24/7 garantida
+ - Risco: Baixo (rollback em 5 minutos)
 
 2. **Implementação de Monitoramento**
-   - Azure Monitor (incluído no B1)
-   - Alertas de performance e disponibilidade
-   - Dashboard executivo
+ - Azure Monitor (incluído no B1)
+ - Alertas de performance e disponibilidade
+ - Dashboard executivo
 
 ### Médio Prazo (90 dias)
 
 1. **Otimização de Custos**
-   - Reserved Instances (desconto 20-30%)
-   - Review de utilização mensal
-   - Cleanup automático de imagens antigas
+ - Reserved Instances (desconto 20-30%)
+ - Review de utilização mensal
+ - Cleanup automático de imagens antigas
 
 2. **Disaster Recovery**
-   - Backup automatizado (incluído S1+)
-   - Geo-redundância se necessário
-   - Procedimentos de restore documentados
+ - Backup automatizado (incluído S1+)
+ - Geo-redundância se necessário
+ - Procedimentos de restore documentados
 
 ### Longo Prazo (12 meses)
 
 1. **Análise de Migração**
-   - Avaliar Azure Functions (serverless)
-   - Container Instances para cargas variáveis
-   - Kubernetes para múltiplas aplicações
+ - Avaliar Azure Functions (serverless)
+ - Container Instances para cargas variáveis
+ - Kubernetes para múltiplas aplicações
 
 ---
 
@@ -269,6 +269,6 @@ A configuração atual de USD 5,00/mês é adequada para desenvolvimento, mas re
 
 ---
 
-**Documento preparado por:** Equipe Técnica CaraCore  
-**Revisão:** 02/11/2025  
+**Documento preparado por:** Equipe Técnica CaraCore 
+**Revisão:** 02/11/2025 
 **Próxima revisão:** 02/02/2026

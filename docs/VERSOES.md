@@ -1,19 +1,19 @@
 # Versões de Dependências - CaraCore
 
-**Data:** 02 de novembro de 2025  
-**Branch:** main  
-**Ambiente:** Produção (Azure App Service F1 → B1 recomendado)  
+**Data:** 02 de novembro de 2025 
+**Branch:** main 
+**Ambiente:** Produção (Azure App Service F1 → B1 recomendado) 
 **Status:** Fase 4 concluída - Sistema de Autorização funcionando
 
 ---
 
 ## 🏆 Marco Atual: Sistema Completo
 
-- ✅ **OAuth 2.1 + OIDC**: Implementado e funcionando
-- ✅ **Sistema de Autorização**: 485 linhas, 4 APIs, dashboard completo
-- ✅ **Deploy Docker**: Container Registry + Web App for Containers
-- ✅ **Análise de Custos**: Documentação executiva disponível
-- 📋 **Custo Atual**: USD 5,00/mês (desenvolvimento) → USD 18,14/mês (produção recomendada)
+- **OAuth 2.1 + OIDC**: Implementado e funcionando
+- **Sistema de Autorização**: 485 linhas, 4 APIs, dashboard completo
+- **Deploy Docker**: Container Registry + Web App for Containers
+- **Análise de Custos**: Documentação executiva disponível
+- **Custo Atual**: USD 5,00/mês (desenvolvimento) → USD 18,14/mês (produção recomendada)
 
 ## 🐍 Python
 
@@ -54,7 +54,7 @@ python --version
 | **requests** | 2.32.3 | HTTP client para APIs externas |
 | **python-dotenv** | 1.0.1 | Carregar variáveis .env |
 
-**Total:** 5 packages (vs. 12 packages no requirements.txt completo)  
+**Total:** 5 packages (vs. 12 packages no requirements.txt completo) 
 **Benefício:** Build Docker 70% mais rápido, imagem 60% menor
 
 ### Desenvolvimento (requirements.txt) - VERSÃO COMPLETA
@@ -78,7 +78,7 @@ python --version
 
 ---
 
-## 🌐 Frontend
+## Frontend
 
 ### JavaScript (Vanilla)
 
@@ -91,14 +91,14 @@ python --version
 
 ---
 
-## ☁️ Azure - Infraestrutura Docker
+## Azure - Infraestrutura Docker
 
 ### Configuração Atual (Produção)
 
 | Componente | SKU/Versão | Custo Mensal | Status |
 |------------|------------|--------------|--------|
-| **Azure Container Registry** | Basic | USD 5,00 | ✅ Funcionando |
-| **Azure App Service** | F1 (Free) | USD 0,00 | ⚠️ Limitado |
+| **Azure Container Registry** | Basic | USD 5,00 | Funcionando |
+| **Azure App Service** | F1 (Free) | USD 0,00 | Limitado |
 | **Total Atual** | | **USD 5,00** | Desenvolvimento |
 
 ### Configuração Recomendada (Produção)
@@ -134,7 +134,7 @@ python --version
 
 ---
 
-## 🔧 Ferramentas de Desenvolvimento
+## Ferramentas de Desenvolvimento
 
 ### Git & GitHub
 
@@ -162,14 +162,14 @@ python --version
 
 | Arquivo | Propósito | Status |
 |---------|-----------|--------|
-| `Dockerfile.azure` | Build otimizado para produção | ✅ Funcionando |
-| `docker-compose.yml` | Desenvolvimento local | ✅ Disponível |
-| `.github/workflows/azure-docker-deploy.yml` | CI/CD automatizado | ✅ Ativo |
-| `requirements-docker.txt` | Dependências produção | ✅ Otimizado |
+| `Dockerfile.azure` | Build otimizado para produção | Funcionando |
+| `docker-compose.yml` | Desenvolvimento local | Disponível |
+| `.github/workflows/azure-docker-deploy.yml` | CI/CD automatizado | Ativo |
+| `requirements-docker.txt` | Dependências produção | Otimizado |
 
 ---
 
-## 📝 Como Atualizar Dependências
+## Como Atualizar Dependências
 
 ### Backend Docker (Produção)
 
@@ -218,11 +218,11 @@ docker push caracoreregistry.azurecr.io/caracore-backend:latest
 
 ---
 
-## ⚠️ Avisos de Segurança
+## Avisos de Segurança
 
 ### Vulnerabilidades Conhecidas (CVEs)
 
-**Status:** ✅ Todas as dependências atualizadas e sem CVEs críticos
+**Status:** Todas as dependências atualizadas e sem CVEs críticos
 
 **Otimização de Segurança Docker:**
 - Base image `python:3.10-slim` (menos superficie de ataque)
@@ -272,10 +272,10 @@ pip install safety
 
 ### Marcos de Desenvolvimento
 
-**✅ Fase 1 (OAuth 2.1 + OIDC):** Autenticação Google/Microsoft  
-**✅ Fase 2 (Logout e Segurança):** Logout seguro e validações  
-**✅ Fase 3 (Auditoria e Backend):** Dashboard de auditoria  
-**✅ Fase 4 (Sistema de Autorização):** Controle de acesso completo  
+** Fase 1 (OAuth 2.1 + OIDC):** Autenticação Google/Microsoft 
+** Fase 2 (Logout e Segurança):** Logout seguro e validações 
+** Fase 3 (Auditoria e Backend):** Dashboard de auditoria 
+** Fase 4 (Sistema de Autorização):** Controle de acesso completo 
 
 ### Próximas Atualizações Planejadas
 

@@ -1,44 +1,44 @@
 # Configuração Azure Monitor + Application Insights
 
-**Backend:** caracore-backend  
-**Resource Group:** rg-caracore  
+**Backend:** caracore-backend 
+**Resource Group:** rg-caracore 
 **Data:** 01/11/2025
 
 ---
 
-## 📊 Visão Geral
+## Visão Geral
 
 Este documento descreve a configuração de monitoramento e alertas para o backend CaraCore usando Azure Monitor e Application Insights.
 
 ### Objetivos
 
-- ✅ Monitorar disponibilidade do backend (uptime)
-- ✅ Alertar sobre erros e falhas
-- ✅ Monitorar performance (tempo de resposta)
-- ✅ Monitorar uso de recursos (CPU, memória, disco)
-- ✅ Notificações por email em eventos críticos
+- Monitorar disponibilidade do backend (uptime)
+- Alertar sobre erros e falhas
+- Monitorar performance (tempo de resposta)
+- Monitorar uso de recursos (CPU, memória, disco)
+- Notificações por email em eventos críticos
 
 ---
 
-## 🚀 Configuração Rápida
+## Configuração Rápida
 
 ### Passo 1: Criar Application Insights
 
 ```powershell
 # 1. Criar recurso Application Insights
 az monitor app-insights component create `
-  --app caracore-backend-insights `
-  --location brazilsouth `
-  --resource-group rg-caracore `
-  --application-type web `
-  --retention-time 90
+ --app caracore-backend-insights `
+ --location brazilsouth `
+ --resource-group rg-caracore `
+ --application-type web `
+ --retention-time 90
 
 # 2. Obter Instrumentation Key
 $instrumentationKey = az monitor app-insights component show `
-  --app caracore-backend-insights `
-  --resource-group rg-caracore `
-  --query instrumentationKey `
-  --output tsv
+ --app caracore-backend-insights `
+ --resource-group rg-caracore `
+ --query instrumentationKey `
+ --output tsv
 
 Write-Host "Instrumentation Key: $instrumentationKey"
 ```
@@ -48,13 +48,13 @@ Write-Host "Instrumentation Key: $instrumentationKey"
 ```powershell
 # Configurar Application Insights no App Service
 az webapp config appsettings set `
-  --name caracore-backend `
-  --resource-group rg-caracore `
-  --settings `
-    APPINSIGHTS_INSTRUMENTATIONKEY=$instrumentationKey `
-    APPLICATIONINSIGHTS_CONNECTION_STRING="InstrumentationKey=$instrumentationKey" `
-    ApplicationInsightsAgent_EXTENSION_VERSION="~3" `
-    XDT_MicrosoftApplicationInsights_Mode="recommended"
+ --name caracore-backend `
+ --resource-group rg-caracore `
+ --settings `
+ APPINSIGHTS_INSTRUMENTATIONKEY=$instrumentationKey `
+ APPLICATIONINSIGHTS_CONNECTION_STRING="InstrumentationKey=$instrumentationKey" `
+ ApplicationInsightsAgent_EXTENSION_VERSION="~3" `
+ XDT_MicrosoftApplicationInsights_Mode="recommended"
 ```
 
 ### Passo 3: Restart do App Service
@@ -66,112 +66,112 @@ az webapp restart --name caracore-backend --resource-group rg-caracore
 
 ---
 
-## 🔔 Configuração de Alertas
+## Configuração de Alertas
 
 ### Criar Action Group (Notificações por Email)
 
 ```powershell
 # Criar action group para notificações
 az monitor action-group create `
-  --name caracore-alerts `
-  --resource-group rg-caracore `
-  --short-name caracore `
-  --action email admin seu-email@exemplo.com
+ --name caracore-alerts `
+ --resource-group rg-caracore `
+ --short-name caracore `
+ --action email admin seu-email@exemplo.com
 ```
 
 ### Alerta 1: Backend Indisponível (Disponibilidade < 95%)
 
 ```powershell
 az monitor metrics alert create `
-  --name "Backend Indisponível" `
-  --resource-group rg-caracore `
-  --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
-  --condition "avg Http2xx < 1" `
-  --window-size 5m `
-  --evaluation-frequency 1m `
-  --action caracore-alerts `
-  --description "Backend não está respondendo com HTTP 2xx" `
-  --severity 0
+ --name "Backend Indisponível" `
+ --resource-group rg-caracore `
+ --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
+ --condition "avg Http2xx < 1" `
+ --window-size 5m `
+ --evaluation-frequency 1m `
+ --action caracore-alerts `
+ --description "Backend não está respondendo com HTTP 2xx" `
+ --severity 0
 ```
 
 ### Alerta 2: Taxa de Erro Elevada (> 5%)
 
 ```powershell
 az monitor metrics alert create `
-  --name "Taxa de Erro Elevada" `
-  --resource-group rg-caracore `
-  --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
-  --condition "avg Http5xx > 5" `
-  --window-size 5m `
-  --evaluation-frequency 1m `
-  --action caracore-alerts `
-  --description "Mais de 5 erros HTTP 5xx em 5 minutos" `
-  --severity 2
+ --name "Taxa de Erro Elevada" `
+ --resource-group rg-caracore `
+ --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
+ --condition "avg Http5xx > 5" `
+ --window-size 5m `
+ --evaluation-frequency 1m `
+ --action caracore-alerts `
+ --description "Mais de 5 erros HTTP 5xx em 5 minutos" `
+ --severity 2
 ```
 
 ### Alerta 3: Tempo de Resposta Alto (> 5 segundos)
 
 ```powershell
 az monitor metrics alert create `
-  --name "Tempo de Resposta Alto" `
-  --resource-group rg-caracore `
-  --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
-  --condition "avg ResponseTime > 5" `
-  --window-size 5m `
-  --evaluation-frequency 1m `
-  --action caracore-alerts `
-  --description "Tempo de resposta acima de 5 segundos" `
-  --severity 3
+ --name "Tempo de Resposta Alto" `
+ --resource-group rg-caracore `
+ --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
+ --condition "avg ResponseTime > 5" `
+ --window-size 5m `
+ --evaluation-frequency 1m `
+ --action caracore-alerts `
+ --description "Tempo de resposta acima de 5 segundos" `
+ --severity 3
 ```
 
 ### Alerta 4: CPU Elevada (> 80%)
 
 ```powershell
 az monitor metrics alert create `
-  --name "CPU Elevada" `
-  --resource-group rg-caracore `
-  --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
-  --condition "avg CpuPercentage > 80" `
-  --window-size 5m `
-  --evaluation-frequency 1m `
-  --action caracore-alerts `
-  --description "CPU acima de 80% por mais de 5 minutos" `
-  --severity 2
+ --name "CPU Elevada" `
+ --resource-group rg-caracore `
+ --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
+ --condition "avg CpuPercentage > 80" `
+ --window-size 5m `
+ --evaluation-frequency 1m `
+ --action caracore-alerts `
+ --description "CPU acima de 80% por mais de 5 minutos" `
+ --severity 2
 ```
 
 ### Alerta 5: Memória Elevada (> 80%)
 
 ```powershell
 az monitor metrics alert create `
-  --name "Memória Elevada" `
-  --resource-group rg-caracore `
-  --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
-  --condition "avg MemoryPercentage > 80" `
-  --window-size 5m `
-  --evaluation-frequency 1m `
-  --action caracore-alerts `
-  --description "Memória acima de 80% por mais de 5 minutos" `
-  --severity 2
+ --name "Memória Elevada" `
+ --resource-group rg-caracore `
+ --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
+ --condition "avg MemoryPercentage > 80" `
+ --window-size 5m `
+ --evaluation-frequency 1m `
+ --action caracore-alerts `
+ --description "Memória acima de 80% por mais de 5 minutos" `
+ --severity 2
 ```
 
 ### Alerta 6: Disco Cheio (> 80% dos 10GB)
 
 ```powershell
 az monitor metrics alert create `
-  --name "Disco Cheio" `
-  --resource-group rg-caracore `
-  --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
-  --condition "avg FileSystemUsage > 8000000000" `
-  --window-size 5m `
-  --evaluation-frequency 1m `
-  --action caracore-alerts `
-  --description "Uso de disco acima de 8GB (80% do limite de 10GB)" `
-  --severity 1
+ --name "Disco Cheio" `
+ --resource-group rg-caracore `
+ --scopes /subscriptions/YOUR_SUBSCRIPTION_ID/resourceGroups/rg-caracore/providers/Microsoft.Web/sites/caracore-backend `
+ --condition "avg FileSystemUsage > 8000000000" `
+ --window-size 5m `
+ --evaluation-frequency 1m `
+ --action caracore-alerts `
+ --description "Uso de disco acima de 8GB (80% do limite de 10GB)" `
+ --severity 1
 ```
 
 ---
 
-## 📊 Métricas Disponíveis
+## Métricas Disponíveis
 
 ### Métricas do App Service
 
@@ -199,7 +199,7 @@ az monitor metrics alert create `
 
 ---
 
-## 🔍 Verificação da Configuração
+## Verificação da Configuração
 
 ### Testar Application Insights
 
@@ -228,9 +228,9 @@ requests
 requests
 | where timestamp > ago(1h)
 | summarize 
-    Total = count(),
-    Sucessos = countif(resultCode < 400),
-    Erros = countif(resultCode >= 400)
+ Total = count(),
+ Sucessos = countif(resultCode < 400),
+ Erros = countif(resultCode >= 400)
 | extend TaxaErro = (Erros * 100.0) / Total
 
 // Tempo médio de resposta
@@ -244,13 +244,13 @@ requests
 ```powershell
 # Listar alertas configurados
 az monitor metrics alert list `
-  --resource-group rg-caracore `
-  --output table
+ --resource-group rg-caracore `
+ --output table
 
 # Verificar action groups
 az monitor action-group list `
-  --resource-group rg-caracore `
-  --output table
+ --resource-group rg-caracore `
+ --output table
 ```
 
 ---
@@ -261,12 +261,12 @@ az monitor action-group list `
 
 1. Acessar: Azure Portal > Dashboards > + New dashboard
 2. Adicionar tiles:
-   - **Availability** (Application Insights)
-   - **Response Time** (App Service)
-   - **Requests** (App Service)
-   - **CPU %** (App Service)
-   - **Memory %** (App Service)
-   - **Disk Usage** (App Service)
+ - **Availability** (Application Insights)
+ - **Response Time** (App Service)
+ - **Requests** (App Service)
+ - **CPU %** (App Service)
+ - **Memory %** (App Service)
+ - **Disk Usage** (App Service)
 
 ### Queries Úteis para Dashboards
 
@@ -294,7 +294,7 @@ requests
 
 ---
 
-## 🎯 Níveis de Severidade dos Alertas
+## Níveis de Severidade dos Alertas
 
 | Severity | Descrição | Ação Requerida | Exemplos |
 |----------|-----------|----------------|----------|
@@ -305,7 +305,7 @@ requests
 
 ---
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Application Insights não está coletando dados
 
@@ -321,9 +321,9 @@ requests
 ```powershell
 # Verificar settings
 az webapp config appsettings list `
-  --name caracore-backend `
-  --resource-group rg-caracore `
-  --query "[?name=='APPINSIGHTS_INSTRUMENTATIONKEY']"
+ --name caracore-backend `
+ --resource-group rg-caracore `
+ --query "[?name=='APPINSIGHTS_INSTRUMENTATIONKEY']"
 
 # Reconfigurar se necessário
 az webapp restart --name caracore-backend --resource-group rg-caracore
@@ -343,9 +343,9 @@ az webapp restart --name caracore-backend --resource-group rg-caracore
 ```powershell
 # Testar action group manualmente
 az monitor action-group test-notifications create `
-  --action-group caracore-alerts `
-  --resource-group rg-caracore `
-  --notification-type Email
+ --action-group caracore-alerts `
+ --resource-group rg-caracore `
+ --notification-type Email
 ```
 
 ---
@@ -363,7 +363,7 @@ az monitor action-group test-notifications create `
 
 ---
 
-## 📝 Checklist de Configuração
+## Checklist de Configuração
 
 - [ ] Application Insights criado
 - [ ] Instrumentation Key obtida
@@ -371,12 +371,12 @@ az monitor action-group test-notifications create `
 - [ ] App Service reiniciado
 - [ ] Action Group criado com email
 - [ ] 6 alertas configurados:
-  - [ ] Backend Indisponível (Sev 0)
-  - [ ] Taxa de Erro Elevada (Sev 2)
-  - [ ] Tempo de Resposta Alto (Sev 3)
-  - [ ] CPU Elevada (Sev 2)
-  - [ ] Memória Elevada (Sev 2)
-  - [ ] Disco Cheio (Sev 1)
+ - [ ] Backend Indisponível (Sev 0)
+ - [ ] Taxa de Erro Elevada (Sev 2)
+ - [ ] Tempo de Resposta Alto (Sev 3)
+ - [ ] CPU Elevada (Sev 2)
+ - [ ] Memória Elevada (Sev 2)
+ - [ ] Disco Cheio (Sev 1)
 - [ ] Dados aparecendo no portal (aguardar 2-3 min)
 - [ ] Alerta de teste disparado com sucesso
 - [ ] Email de teste recebido
@@ -392,5 +392,5 @@ az monitor action-group test-notifications create `
 
 ---
 
-**Última Atualização:** 01/11/2025  
+**Última Atualização:** 01/11/2025 
 **Autor:** Carlos H. Mulato

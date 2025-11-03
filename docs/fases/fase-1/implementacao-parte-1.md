@@ -1,16 +1,16 @@
 # Implementação - Fase 1 Parte 1: Backend OAuth 2.1 + OIDC
 
-**Data Início:** 30/10/2025  
-**Duração:** Dias 1-3 (30/10 - 01/11)  
+**Data Início:** 30/10/2025 
+**Duração:** Dias 1-3 (30/10 - 01/11) 
 **Responsável:** Backend Developer
 
-## 🎯 Objetivo
+## Objetivo
 
 Implementar e validar os endpoints OAuth 2.1 + OIDC no backend Python/Azure com PKCE obrigatório.
 
-## 📋 Status Atual do Backend
+## Status Atual do Backend
 
-### ✅ Já Implementado:
+### Já Implementado:
 - `/health` - Health check
 - `/oauth/google/token` - Troca de código Google (POST)
 - `/oauth/microsoft/token` - Troca de código Microsoft (POST)
@@ -18,7 +18,7 @@ Implementar e validar os endpoints OAuth 2.1 + OIDC no backend Python/Azure com 
 - Cache de JWKS
 - CORS configurado
 
-### 🔧 Necessário Adicionar/Melhorar:
+### Necessário Adicionar/Melhorar:
 
 #### 1. **Endpoints Novos Necessários:**
 - [ ] `/auth/login` - Iniciar fluxo OAuth
@@ -33,7 +33,7 @@ Implementar e validar os endpoints OAuth 2.1 + OIDC no backend Python/Azure com 
 - [ ] Validação robusta de issuer, audience, expiração
 - [ ] Logs de auditoria para todos os endpoints
 
-## 🚀 Plano de Implementação
+## Plano de Implementação
 
 ### **DIA 1 (30/10)** - Estrutura e PKCE
 
@@ -83,7 +83,7 @@ Implementar e validar os endpoints OAuth 2.1 + OIDC no backend Python/Azure com 
 
 ---
 
-## 📝 Checklist Detalhado
+## Checklist Detalhado
 
 ### **Validação PKCE Obrigatória**
 - [ ] Validar presença de `code_verifier` no request
@@ -115,51 +115,51 @@ Implementar e validar os endpoints OAuth 2.1 + OIDC no backend Python/Azure com 
 
 ---
 
-## 🔧 Exemplo de Código - Validação PKCE
+## Exemplo de Código - Validação PKCE
 
 ```python
 import hashlib
 import base64
 
 def validate_pkce(code_verifier: str, code_challenge: str, method: str = "S256") -> bool:
-    """
-    Valida PKCE conforme OAuth 2.1
-    
-    Args:
-        code_verifier: Código enviado pelo cliente
-        code_challenge: Desafio original armazenado
-        method: Método usado (S256 obrigatório)
-    
-    Returns:
-        True se válido, False caso contrário
-    """
-    if not code_verifier or len(code_verifier) < 43 or len(code_verifier) > 128:
-        return False
-    
-    if method != "S256":
-        return False  # OAuth 2.1 requer S256
-    
-    # Calcular SHA256 e converter para base64url
-    sha256 = hashlib.sha256(code_verifier.encode('ascii')).digest()
-    calculated_challenge = base64.urlsafe_b64encode(sha256).decode('ascii').rstrip('=')
-    
-    return calculated_challenge == code_challenge
+ """
+ Valida PKCE conforme OAuth 2.1
+ 
+ Args:
+ code_verifier: Código enviado pelo cliente
+ code_challenge: Desafio original armazenado
+ method: Método usado (S256 obrigatório)
+ 
+ Returns:
+ True se válido, False caso contrário
+ """
+ if not code_verifier or len(code_verifier) < 43 or len(code_verifier) > 128:
+ return False
+ 
+ if method != "S256":
+ return False # OAuth 2.1 requer S256
+ 
+ # Calcular SHA256 e converter para base64url
+ sha256 = hashlib.sha256(code_verifier.encode('ascii')).digest()
+ calculated_challenge = base64.urlsafe_b64encode(sha256).decode('ascii').rstrip('=')
+ 
+ return calculated_challenge == code_challenge
 ```
 
 ---
 
-## 📊 Métricas de Sucesso
+## Métricas de Sucesso
 
-- ✅ 100% dos endpoints OAuth usam PKCE obrigatório
-- ✅ Validação de tokens implementada com todos os checks
-- ✅ Rate limiting funcional em todos os endpoints de auth
-- ✅ Logs de auditoria capturando todos os eventos
-- ✅ Testes unitários com cobertura > 80%
-- ✅ Documentação completa dos endpoints
+- 100% dos endpoints OAuth usam PKCE obrigatório
+- Validação de tokens implementada com todos os checks
+- Rate limiting funcional em todos os endpoints de auth
+- Logs de auditoria capturando todos os eventos
+- Testes unitários com cobertura > 80%
+- Documentação completa dos endpoints
 
 ---
 
-## 🔗 Próximos Passos
+## Próximos Passos
 
 Após conclusão desta parte:
 1. Integração frontend (Parte 2)
@@ -168,5 +168,5 @@ Após conclusão desta parte:
 
 ---
 
-**Atualizado:** 30/10/2025  
+**Atualizado:** 30/10/2025 
 **Próxima Revisão:** 31/10/2025

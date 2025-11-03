@@ -1,8 +1,8 @@
 # Checklist Geral do Projeto - OAuth 2.1 + OIDC
 
-**Projeto:** Sistema de Autenticação para Área Restrita  
-**Data de Início:** 30 de outubro de 2025  
-**Data Prevista de Conclusão:** 25 de dezembro de 2025 (8 semanas)  
+**Projeto:** Sistema de Autenticação para Área Restrita 
+**Data de Início:** 30 de outubro de 2025 
+**Data Prevista de Conclusão:** 25 de dezembro de 2025 (8 semanas) 
 **Status Geral:** 🟡 Em Desenvolvimento
 
 ## Resumo do Progresso
@@ -18,25 +18,25 @@
 
 ## Marcos Principais
 
-### 🎯 Marco 1: Autenticação Básica (Fim da Fase 1)
+### Marco 1: Autenticação Básica (Fim da Fase 1)
 
 - [ ] OAuth 2.1 + OIDC implementado
 - [ ] Controle de sessão funcionando
 - [ ] Segurança básica configurada
 
-### 🎯 Marco 2: Experiência do Usuário (Fim da Fase 2)
+### Marco 2: Experiência do Usuário (Fim da Fase 2)
 
 - [ ] Consentimento implementado
 - [ ] Logout seguro funcionando
 - [ ] Sistema de feedback operacional
 
-### 🎯 Marco 3: Qualidade e Estabilidade (Fim da Fase 3)
+### Marco 3: Qualidade e Estabilidade (Fim da Fase 3)
 
 - [ ] Auditoria completa
 - [ ] Backend atualizado
 - [ ] Testes automatizados
 
-### 🎯 Marco 4: Produção e Suporte (Fim da Fase 4)
+### Marco 4: Produção e Suporte (Fim da Fase 4)
 
 - [ ] Monitoramento ativo
 - [ ] Documentação completa
@@ -81,35 +81,35 @@
 
 ## Equipe e Responsabilidades
 
-### 👨‍💻 Desenvolvedor Backend
+### 👨‍ Desenvolvedor Backend
 
 - [ ] Endpoints OAuth 2.1
 - [ ] Validação de tokens
 - [ ] Sistema de auditoria
 - [ ] Atualização Azure
 
-### 👩‍💻 Desenvolvedor Frontend
+### 👩‍ Desenvolvedor Frontend
 
 - [ ] Interface de login
 - [ ] Controle de acesso
 - [ ] Sistema de feedback
 - [ ] Telas de consentimento
 
-### 🛠️ DevOps
+### DevOps
 
 - [ ] Configuração Azure
 - [ ] Monitoramento
 - [ ] Backup e recuperação
 - [ ] Deploy automatizado
 
-### 🎨 UX/UI Designer
+### UX/UI Designer
 
 - [ ] Interface de consentimento
 - [ ] Mensagens de feedback
 - [ ] Experiência de logout
 - [ ] Acessibilidade
 
-### 🧪 QA/Tester
+### QA/Tester
 
 - [ ] Testes manuais
 - [ ] Testes automatizados
@@ -182,6 +182,6 @@
 
 ---
 
-**Última Atualização:** 30 de outubro de 2025  
-**Responsável:** Equipe Cara Core Informática  
+**Última Atualização:** 30 de outubro de 2025 
+**Responsável:** Equipe Cara Core Informática 
 **Localização:** Campo Largo, PR

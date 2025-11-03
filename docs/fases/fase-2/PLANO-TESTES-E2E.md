@@ -1,13 +1,13 @@
 # Plano de Testes E2E - Fase 2 (Sistema de Feedback Visual + Logout)
 
-**Data:** 30/10/2025  
-**Versão:** 1.0  
-**Fase:** 2 - Items 3, 4 e 5  
+**Data:** 30/10/2025 
+**Versão:** 1.0 
+**Fase:** 2 - Items 3, 4 e 5 
 **Ambiente:** Desenvolvimento (localhost) e Produção (Azure)
 
 ---
 
-## 🎯 Objetivos dos Testes
+## Objetivos dos Testes
 
 1. Validar integração completa do sistema de notificações
 2. Validar LogoutModal (local e federado)
@@ -17,7 +17,7 @@
 
 ---
 
-## 🔧 Pré-requisitos
+## Pré-requisitos
 
 ### Ambiente de Teste
 - [ ] Backend rodando (local: `http://localhost:5051` ou produção: `https://api.caracore.com.br`)
@@ -41,7 +41,7 @@ location.reload();
 
 ---
 
-## 📋 Casos de Teste
+## Casos de Teste
 
 ### **CT-01: Fluxo Completo de Login (Google)**
 
@@ -58,14 +58,14 @@ location.reload();
 
 **Resultado Esperado:**
 
-- ✅ Redirecionamento para página de login
-- ✅ Botão "Entrar com Google" visível e clicável
-- ✅ Autenticação bem-sucedida no Google
-- ✅ Redirecionamento para `/secure/restrita.html`
-- ✅ **Notificação toast "Login Realizado" aparece** (verde, 3s)
-- ✅ Conteúdo protegido carregado
-- ✅ Botão "Encerrar sessão" visível
-- ✅ Console sem erros JavaScript
+- Redirecionamento para página de login
+- Botão "Entrar com Google" visível e clicável
+- Autenticação bem-sucedida no Google
+- Redirecionamento para `/secure/restrita.html`
+- **Notificação toast "Login Realizado" aparece** (verde, 3s)
+- Conteúdo protegido carregado
+- Botão "Encerrar sessão" visível
+- Console sem erros JavaScript
 
 **Dados de Verificação:**
 ```javascript
@@ -98,14 +98,14 @@ console.log('Provider:', localStorage.getItem('auth_provider'));
 
 **Resultado Esperado:**
 
-- ✅ Redirecionamento para página de login
-- ✅ Botão "Entrar com Microsoft" visível e clicável
-- ✅ Autenticação bem-sucedida no Microsoft
-- ✅ Redirecionamento para `/secure/restrita.html`
-- ✅ **Notificação toast "Login Realizado" aparece** (verde, 3s)
-- ✅ Conteúdo protegido carregado
-- ✅ Botão "Encerrar sessão" visível
-- ✅ Console sem erros JavaScript
+- Redirecionamento para página de login
+- Botão "Entrar com Microsoft" visível e clicável
+- Autenticação bem-sucedida no Microsoft
+- Redirecionamento para `/secure/restrita.html`
+- **Notificação toast "Login Realizado" aparece** (verde, 3s)
+- Conteúdo protegido carregado
+- Botão "Encerrar sessão" visível
+- Console sem erros JavaScript
 
 **Critério de Aceitação:**
 
@@ -129,24 +129,24 @@ console.log('Provider:', localStorage.getItem('auth_provider'));
 6. Clicar em "Autorizar e Continuar"
 
 **Resultado Esperado:**
-- ✅ Tela de consentimento aparece ANTES da página protegida
-- ✅ Termos e política exibidos claramente
-- ✅ Checkbox obrigatório
-- ✅ Botão "Autorizar" desabilitado até marcar checkbox
-- ✅ **Notificação "Consentimento Registrado" aparece** (verde, 4s)
-- ✅ Redirecionamento para página protegida
-- ✅ Consentimento salvo (não pede novamente)
+- Tela de consentimento aparece ANTES da página protegida
+- Termos e política exibidos claramente
+- Checkbox obrigatório
+- Botão "Autorizar" desabilitado até marcar checkbox
+- **Notificação "Consentimento Registrado" aparece** (verde, 4s)
+- Redirecionamento para página protegida
+- Consentimento salvo (não pede novamente)
 
 **Dados de Verificação:**
 ```javascript
 // Verificar consentimento
 fetch('https://api.caracore.com.br/api/consent/status', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    user_id: SessionManager.getUserInfo().sub,
-    provider: localStorage.getItem('auth_provider')
-  })
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({
+ user_id: SessionManager.getUserInfo().sub,
+ provider: localStorage.getItem('auth_provider')
+ })
 }).then(r => r.json()).then(console.log);
 ```
 
@@ -171,17 +171,17 @@ fetch('https://api.caracore.com.br/api/consent/status', {
 
 **Resultado Esperado:**
 
-- ✅ Modal aparece com animação suave (fadeIn 0.2s)
-- ✅ 2 opções claramente diferenciadas:
-  - "Sair deste site" (azul)
-  - "Sair de todas as contas" (vermelho)
-- ✅ Textos explicativos abaixo de cada botão
-- ✅ **Notificação "Logout Realizado" aparece** (verde, 3s)
-- ✅ localStorage limpo
-- ✅ sessionStorage limpo
-- ✅ Cookies limpos
-- ✅ Redirecionamento para `/secure/index.html`
-- ✅ Tokens revogados no backend
+- Modal aparece com animação suave (fadeIn 0.2s)
+- 2 opções claramente diferenciadas:
+ - "Sair deste site" (azul)
+ - "Sair de todas as contas" (vermelho)
+- Textos explicativos abaixo de cada botão
+- **Notificação "Logout Realizado" aparece** (verde, 3s)
+- localStorage limpo
+- sessionStorage limpo
+- Cookies limpos
+- Redirecionamento para `/secure/index.html`
+- Tokens revogados no backend
 
 **Dados de Verificação:**
 ```javascript
@@ -219,13 +219,13 @@ console.log('Token depois:', localStorage.getItem('auth_access_token'));
 10. Verificar aba do Google Account
 
 **Resultado Esperado:**
-- ✅ Modal aparece corretamente
-- ✅ **Notificação "Logout Realizado" aparece** (verde, 3s)
-- ✅ localStorage limpo
-- ✅ Redirecionamento para logout do Google
-- ✅ Logout do Google bem-sucedido
-- ✅ Não está mais logado no Google Account
-- ✅ Precisa fazer login novamente em ambos
+- Modal aparece corretamente
+- **Notificação "Logout Realizado" aparece** (verde, 3s)
+- localStorage limpo
+- Redirecionamento para logout do Google
+- Logout do Google bem-sucedido
+- Não está mais logado no Google Account
+- Precisa fazer login novamente em ambos
 
 **Critério de Aceitação:**
 - [ ] Logout local completo
@@ -253,13 +253,13 @@ console.log('Token depois:', localStorage.getItem('auth_access_token'));
 10. Verificar aba do Microsoft Account
 
 **Resultado Esperado:**
-- ✅ Modal aparece corretamente
-- ✅ **Notificação "Logout Realizado" aparece** (verde, 3s)
-- ✅ localStorage limpo
-- ✅ Redirecionamento para logout do Microsoft
-- ✅ Logout do Microsoft bem-sucedido
-- ✅ Não está mais logado no Microsoft Account
-- ✅ Precisa fazer login novamente em ambos
+- Modal aparece corretamente
+- **Notificação "Logout Realizado" aparece** (verde, 3s)
+- localStorage limpo
+- Redirecionamento para logout do Microsoft
+- Logout do Microsoft bem-sucedido
+- Não está mais logado no Microsoft Account
+- Precisa fazer login novamente em ambos
 
 **Critério de Aceitação:**
 - [ ] Logout local completo
@@ -281,11 +281,11 @@ console.log('Token depois:', localStorage.getItem('auth_access_token'));
 5. Ou navegar para outra página protegida
 
 **Resultado Esperado:**
-- ✅ SessionManager detecta token inválido
-- ✅ **Notificação "Sessão Expirada" aparece** (vermelho, não fecha automaticamente)
-- ✅ Texto: "Sua sessão expirou por inatividade. Por favor, faça login novamente."
-- ✅ Redirecionamento para login após 3-5 segundos
-- ✅ Ou clicar na notificação redireciona imediatamente
+- SessionManager detecta token inválido
+- **Notificação "Sessão Expirada" aparece** (vermelho, não fecha automaticamente)
+- Texto: "Sua sessão expirou por inatividade. Por favor, faça login novamente."
+- Redirecionamento para login após 3-5 segundos
+- Ou clicar na notificação redireciona imediatamente
 
 **Critério de Aceitação:**
 - [ ] Notificação de erro exibida
@@ -306,12 +306,12 @@ console.log('Token depois:', localStorage.getItem('auth_access_token'));
 4. Aguardar expiração
 
 **Resultado Esperado:**
-- ✅ Após 1 hora de inatividade:
-- ✅ **Notificação "Timeout de Inatividade" aparece** (laranja/warning, não fecha)
-- ✅ Texto: "Sua sessão foi encerrada devido à inatividade prolongada. Você será redirecionado em 5 segundos."
-- ✅ Contagem regressiva visível (5, 4, 3, 2, 1...)
-- ✅ Redirecionamento automático para login
-- ✅ Sessão limpa completamente
+- Após 1 hora de inatividade:
+- **Notificação "Timeout de Inatividade" aparece** (laranja/warning, não fecha)
+- Texto: "Sua sessão foi encerrada devido à inatividade prolongada. Você será redirecionado em 5 segundos."
+- Contagem regressiva visível (5, 4, 3, 2, 1...)
+- Redirecionamento automático para login
+- Sessão limpa completamente
 
 **Critério de Aceitação:**
 - [ ] Monitoramento de atividade funcionando
@@ -332,13 +332,13 @@ console.log('Token depois:', localStorage.getItem('auth_access_token'));
 4. Verificar console do navegador
 
 **Resultado Esperado:**
-- ✅ SessionManager detecta token próximo da expiração
-- ✅ Faz refresh automaticamente
-- ✅ **Notificação "Sessão Renovada" aparece** (verde, 3s, discreta)
-- ✅ Texto: "Sua sessão foi renovada automaticamente."
-- ✅ Novo token salvo no localStorage
-- ✅ Usuário continua navegando sem interrupção
-- ✅ Console: `[SessionManager] Token refresh bem-sucedido`
+- SessionManager detecta token próximo da expiração
+- Faz refresh automaticamente
+- **Notificação "Sessão Renovada" aparece** (verde, 3s, discreta)
+- Texto: "Sua sessão foi renovada automaticamente."
+- Novo token salvo no localStorage
+- Usuário continua navegando sem interrupção
+- Console: `[SessionManager] Token refresh bem-sucedido`
 
 **Critério de Aceitação:**
 - [ ] Refresh silencioso (não interrompe usuário)
@@ -360,25 +360,25 @@ console.log('Token depois:', localStorage.getItem('auth_access_token'));
 5. Verificar notificação
 
 **Resultado Esperado:**
-- ✅ SessionManager tenta validar sessão
-- ✅ Detecta falha de conexão
-- ✅ **Notificação "Erro de Conexão" aparece** (vermelho)
-- ✅ Texto: "Não foi possível conectar ao servidor. Verifique sua conexão com a internet."
-- ✅ Notificação não fecha automaticamente
-- ✅ Console: `[SessionManager] Erro ao validar sessão: [Network Error]`
+- SessionManager tenta validar sessão
+- Detecta falha de conexão
+- **Notificação "Erro de Conexão" aparece** (vermelho)
+- Texto: "Não foi possível conectar ao servidor. Verifique sua conexão com a internet."
+- Notificação não fecha automaticamente
+- Console: `[SessionManager] Erro ao validar sessão: [Network Error]`
 
 **Dados de Verificação:**
 ```javascript
 // Simular erro de rede
 fetch('https://api.caracore.com.br/auth/validate', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    access_token: 'invalid',
-    provider: 'google'
-  })
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({
+ access_token: 'invalid',
+ provider: 'google'
+ })
 }).catch(err => {
-  NotificationBridge.showError('network_error');
+ NotificationBridge.showError('network_error');
 });
 ```
 
@@ -400,25 +400,25 @@ fetch('https://api.caracore.com.br/auth/validate', {
 3. Executar múltiplas requisições rápidas:
 ```javascript
 for (let i = 0; i < 50; i++) {
-  fetch('https://api.caracore.com.br/auth/validate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      access_token: localStorage.getItem('auth_access_token'),
-      provider: localStorage.getItem('auth_provider')
-    })
-  });
+ fetch('https://api.caracore.com.br/auth/validate', {
+ method: 'POST',
+ headers: { 'Content-Type': 'application/json' },
+ body: JSON.stringify({
+ access_token: localStorage.getItem('auth_access_token'),
+ provider: localStorage.getItem('auth_provider')
+ })
+ });
 }
 ```
 4. Verificar resposta 429
 5. Verificar notificação
 
 **Resultado Esperado:**
-- ✅ Backend bloqueia requisições após limite
-- ✅ Resposta HTTP 429
-- ✅ **Notificação "Limite de Requisições Excedido" aparece** (laranja/warning, 7s)
-- ✅ Texto: "Você fez muitas tentativas. Por favor, aguarde alguns minutos antes de tentar novamente."
-- ✅ Se Retry-After header presente: "Tente novamente em X segundos"
+- Backend bloqueia requisições após limite
+- Resposta HTTP 429
+- **Notificação "Limite de Requisições Excedido" aparece** (laranja/warning, 7s)
+- Texto: "Você fez muitas tentativas. Por favor, aguarde alguns minutos antes de tentar novamente."
+- Se Retry-After header presente: "Tente novamente em X segundos"
 
 **Critério de Aceitação:**
 - [ ] Rate limiting funcionando
@@ -446,14 +446,14 @@ for (let i = 0; i < 50; i++) {
 
 **Resultado Esperado:**
 
-- ✅ Todos os elementos interativos acessíveis via `Tab`
-- ✅ Focus visível (outline azul)
-- ✅ LogoutModal abre com `Enter`
-- ✅ LogoutModal fecha com `ESC`
-- ✅ Focus trap dentro do modal (não sai do modal)
-- ✅ Botões do modal acessíveis via `Tab` + `Enter`
-- ✅ Logout executado corretamente
-- ✅ Notificações anunciadas (ARIA live region)
+- Todos os elementos interativos acessíveis via `Tab`
+- Focus visível (outline azul)
+- LogoutModal abre com `Enter`
+- LogoutModal fecha com `ESC`
+- Focus trap dentro do modal (não sai do modal)
+- Botões do modal acessíveis via `Tab` + `Enter`
+- Logout executado corretamente
+- Notificações anunciadas (ARIA live region)
 
 **Critério de Aceitação:**
 
@@ -481,14 +481,14 @@ for (let i = 0; i < 50; i++) {
 
 **Resultado Esperado:**
 
-- ✅ Notificações anunciadas automaticamente (aria-live="polite")
-- ✅ Erros anunciados com prioridade (aria-live="assertive")
-- ✅ LogoutModal anunciado: "Dialog: Encerrar Sessão"
-- ✅ Botões descritos claramente:
-  - "Sair deste site - Botão"
-  - "Sair de todas as contas - Botão"
-- ✅ Textos explicativos lidos
-- ✅ Estado do modal (aberto/fechado) anunciado
+- Notificações anunciadas automaticamente (aria-live="polite")
+- Erros anunciados com prioridade (aria-live="assertive")
+- LogoutModal anunciado: "Dialog: Encerrar Sessão"
+- Botões descritos claramente:
+ - "Sair deste site - Botão"
+ - "Sair de todas as contas - Botão"
+- Textos explicativos lidos
+- Estado do modal (aberto/fechado) anunciado
 
 **Critério de Aceitação:**
 
@@ -511,12 +511,12 @@ for (let i = 0; i < 50; i++) {
 
 **Resultado Esperado:**
 
-- ✅ Todos os testes passam
-- ✅ Sem erros JavaScript no console
-- ✅ Sem avisos de segurança
-- ✅ Performance aceitável (Lighthouse > 80)
-- ✅ Acessibilidade (Lighthouse > 90)
-- ✅ Animações suaves (60fps)
+- Todos os testes passam
+- Sem erros JavaScript no console
+- Sem avisos de segurança
+- Performance aceitável (Lighthouse > 80)
+- Acessibilidade (Lighthouse > 90)
+- Animações suaves (60fps)
 
 **Critério de Aceitação:**
 
@@ -538,11 +538,11 @@ for (let i = 0; i < 50; i++) {
 
 **Resultado Esperado:**
 
-- ✅ Todos os testes passam
-- ✅ Sem erros JavaScript no console
-- ✅ CSS funciona corretamente (prefix -moz-)
-- ✅ Animações suaves
-- ✅ CORS funcionando
+- Todos os testes passam
+- Sem erros JavaScript no console
+- CSS funciona corretamente (prefix -moz-)
+- Animações suaves
+- CORS funcionando
 
 **Critério de Aceitação:**
 
@@ -574,13 +574,13 @@ NotificationBridge.showWarning('logout_partial');
 
 **Resultado Esperado:**
 
-- ✅ Máximo de 5 notificações visíveis simultaneamente
-- ✅ Notificações mais antigas removidas automaticamente
-- ✅ Fila gerenciada corretamente (FIFO)
-- ✅ Cada notificação visível por 3-7 segundos
-- ✅ Progress bar animada em cada notificação
-- ✅ Sem sobreposição ou conflito visual
-- ✅ Todas empilhadas verticalmente com gap de 12px
+- Máximo de 5 notificações visíveis simultaneamente
+- Notificações mais antigas removidas automaticamente
+- Fila gerenciada corretamente (FIFO)
+- Cada notificação visível por 3-7 segundos
+- Progress bar animada em cada notificação
+- Sem sobreposição ou conflito visual
+- Todas empilhadas verticalmente com gap de 12px
 
 **Critério de Aceitação:**
 
@@ -626,11 +626,11 @@ ErrorMessages.setLanguage('pt-BR');
 
 **Resultado Esperado:**
 
-- ✅ Idioma detectado automaticamente (navegador)
-- ✅ pt-BR: "Token Inválido" / "Sua sessão expirou ou o token é inválido..."
-- ✅ en-US: "Invalid Token" / "Your session has expired or the token is invalid..."
-- ✅ Mudança de idioma instantânea
-- ✅ Todas as mensagens traduzidas
+- Idioma detectado automaticamente (navegador)
+- pt-BR: "Token Inválido" / "Sua sessão expirou ou o token é inválido..."
+- en-US: "Invalid Token" / "Your session has expired or the token is invalid..."
+- Mudança de idioma instantânea
+- Todas as mensagens traduzidas
 
 **Critério de Aceitação:**
 
@@ -650,22 +650,22 @@ ErrorMessages.setLanguage('pt-BR');
 1. Abrir DevTools (F12)
 2. Ativar modo responsivo (Ctrl+Shift+M)
 3. Testar em resoluções:
-   - 375x667 (iPhone SE)
-   - 414x896 (iPhone 11 Pro Max)
-   - 360x740 (Samsung Galaxy S8+)
+ - 375x667 (iPhone SE)
+ - 414x896 (iPhone 11 Pro Max)
+ - 360x740 (Samsung Galaxy S8+)
 4. Abrir notificações
 5. Abrir LogoutModal
 6. Testar touch (cliques)
 
 **Resultado Esperado:**
 
-- ✅ Notificações adaptam para largura da tela
-- ✅ Container: `max-width: calc(100% - 32px)`
-- ✅ Notificações centralizadas em mobile
-- ✅ Textos legíveis (não quebram)
-- ✅ LogoutModal responsivo
-- ✅ Botões grandes o suficiente para touch (min 44x44px)
-- ✅ Sem scroll horizontal
+- Notificações adaptam para largura da tela
+- Container: `max-width: calc(100% - 32px)`
+- Notificações centralizadas em mobile
+- Textos legíveis (não quebram)
+- LogoutModal responsivo
+- Botões grandes o suficiente para touch (min 44x44px)
+- Sem scroll horizontal
 
 **Critério de Aceitação:**
 
@@ -676,7 +676,7 @@ ErrorMessages.setLanguage('pt-BR');
 
 ---
 
-## 📊 Resumo de Execução
+## Resumo de Execução
 
 ### Planilha de Resultados
 
@@ -695,17 +695,17 @@ ErrorMessages.setLanguage('pt-BR');
 | CT-11 | Rate Limiting | ⬜ | ⬜ | 🔲 | |
 | CT-12 | Teclado | ⬜ | ⬜ | 🔲 | |
 | CT-13 | Screen Reader | ⬜ | ⬜ | 🔲 | |
-| CT-14 | Chrome Compat | ✅ | - | 🔲 | |
-| CT-15 | Firefox Compat | - | ✅ | 🔲 | |
+| CT-14 | Chrome Compat | | - | 🔲 | |
+| CT-15 | Firefox Compat | - | | 🔲 | |
 | CT-16 | Múltiplas Notificações | ⬜ | ⬜ | 🔲 | |
 | CT-17 | Idiomas | ⬜ | ⬜ | 🔲 | |
 | CT-18 | Responsividade | ⬜ | ⬜ | 🔲 | |
 
 **Legenda:**
 
-- ✅ Passou
-- ❌ Falhou
-- ⚠️ Parcial
+- Passou
+- Falhou
+- Parcial
 - 🔲 Não testado
 - ⬜ N/A
 
@@ -733,7 +733,7 @@ ErrorMessages.setLanguage('pt-BR');
 
 ---
 
-## ✅ Critérios de Aceitação Final
+## Critérios de Aceitação Final
 
 ### Para aprovar a Fase 2:
 
@@ -751,7 +751,7 @@ ErrorMessages.setLanguage('pt-BR');
 
 ---
 
-## 📝 Notas de Execução
+## Notas de Execução
 
 ### Dicas para Testes Eficientes
 
@@ -773,10 +773,10 @@ location.reload();
 ```javascript
 // Verificar estado
 console.table({
-  autenticado: SessionManager.isAuthenticated(),
-  provider: localStorage.getItem('auth_provider'),
-  token: localStorage.getItem('auth_access_token')?.substring(0, 20) + '...',
-  idioma: ErrorMessages.getLanguage()
+ autenticado: SessionManager.isAuthenticated(),
+ provider: localStorage.getItem('auth_provider'),
+ token: localStorage.getItem('auth_access_token')?.substring(0, 20) + '...',
+ idioma: ErrorMessages.getLanguage()
 });
 ```
 
@@ -792,23 +792,23 @@ console.table({
 
 ---
 
-## 🎯 Próximos Passos Após Testes
+## Próximos Passos Após Testes
 
 1. **Se todos os testes passarem:**
-   - ✅ Marcar Fase 2 como 100% completa
-   - ✅ Criar release tag (v2.0.0)
-   - ✅ Atualizar documentação
-   - ✅ Deploy para produção
+ - Marcar Fase 2 como 100% completa
+ - Criar release tag (v2.0.0)
+ - Atualizar documentação
+ - Deploy para produção
 
 2. **Se houver bugs:**
-   - 🐛 Registrar bugs encontrados
-   - 🔧 Priorizar correções
-   - 🔄 Re-testar após correções
-   - ✅ Aprovar quando 100% funcional
+ - 🐛 Registrar bugs encontrados
+ - Priorizar correções
+ - 🔄 Re-testar após correções
+ - Aprovar quando 100% funcional
 
 ---
 
-**Executor:** _________________  
-**Data Início:** _________________  
-**Data Fim:** _________________  
-**Resultado:** ✅ Aprovado / ❌ Reprovado / ⚠️ Aprovado com Ressalvas
+**Executor:** _________________ 
+**Data Início:** _________________ 
+**Data Fim:** _________________ 
+**Resultado:** Aprovado / Reprovado / Aprovado com Ressalvas

@@ -2,117 +2,117 @@
 
 Este documento orienta os requisitos mínimos para conformidade da área restrita (`secure/restrita.html`) com OAuth 2.1 e OIDC.
 
-## 🎯 **STATUS: TODOS OS CRITÉRIOS IMPLEMENTADOS** ✅
+## **STATUS: TODOS OS CRITÉRIOS IMPLEMENTADOS** 
 
-**Data de Validação:** 02/11/2025  
-**Conformidade:** 100% OAuth 2.1 + OIDC  
+**Data de Validação:** 02/11/2025 
+**Conformidade:** 100% OAuth 2.1 + OIDC 
 **Produção:** https://caracore-backend-docker.azurewebsites.net
 
 ---
 
-## 1. PKCE Obrigatório ✅
+## 1. PKCE Obrigatório 
 
-- ✅ Todo fluxo Authorization Code usa PKCE (code_verifier e code_challenge)
-- ✅ Não utiliza client_secret no frontend
-- ✅ **Implementado:** `secure/js/authorization-check.js` com PKCE completo
+- Todo fluxo Authorization Code usa PKCE (code_verifier e code_challenge)
+- Não utiliza client_secret no frontend
+- **Implementado:** `secure/js/authorization-check.js` com PKCE completo
 
-## 2. Escopos e Tokens ✅
+## 2. Escopos e Tokens 
 
-- ✅ Solicita apenas escopos necessários: `openid profile email`
-- ✅ Valida tokens (issuer, audience, expiração) no backend
-- ✅ Não aceita tokens sem validação completa
-- ✅ **Implementado:** `backend/authorization.py` com validação JWT
+- Solicita apenas escopos necessários: `openid profile email`
+- Valida tokens (issuer, audience, expiração) no backend
+- Não aceita tokens sem validação completa
+- **Implementado:** `backend/authorization.py` com validação JWT
 
-## 3. Refresh Token Rotation ✅
+## 3. Refresh Token Rotation 
 
-- ✅ Implementa rotação automática de refresh tokens
-- ✅ Invalida refresh tokens antigos após uso
-- ✅ **Implementado:** Sistema de cache com expiração automática
+- Implementa rotação automática de refresh tokens
+- Invalida refresh tokens antigos após uso
+- **Implementado:** Sistema de cache com expiração automática
 
-## 4. Consentimento do Usuário ✅
+## 4. Consentimento do Usuário 
 
-- ✅ Consentimento claro, transparente e registrado
-- ✅ **Implementado:** Interface de consentimento nas páginas OAuth
+- Consentimento claro, transparente e registrado
+- **Implementado:** Interface de consentimento nas páginas OAuth
 
-## 5. Remover Fluxos Inseguros ✅
+## 5. Remover Fluxos Inseguros 
 
-- ✅ Implicit Flow desabilitado
-- ✅ Resource Owner Password Credentials removido
-- ✅ Usa apenas Authorization Code + PKCE
-- ✅ **Implementado:** Configuração OAuth nos arquivos `secure/config/*.json`
+- Implicit Flow desabilitado
+- Resource Owner Password Credentials removido
+- Usa apenas Authorization Code + PKCE
+- **Implementado:** Configuração OAuth nos arquivos `secure/config/*.json`
 
-## 6. HTTPS Obrigatório ✅
+## 6. HTTPS Obrigatório 
 
-- ✅ Todas as comunicações são feitas via HTTPS
-- ✅ Bloqueio de acesso por HTTP em produção
-- ✅ **Implementado:** Azure App Service com HTTPS automático
+- Todas as comunicações são feitas via HTTPS
+- Bloqueio de acesso por HTTP em produção
+- **Implementado:** Azure App Service com HTTPS automático
 
-## 7. Logout Seguro ✅
+## 7. Logout Seguro 
 
-- ✅ Implementa logout local e federado (OIDC logout endpoint)
-- ✅ Limpa storage e tokens após logout
-- ✅ **Implementado:** `secure/logout.html` com limpeza completa
+- Implementa logout local e federado (OIDC logout endpoint)
+- Limpa storage e tokens após logout
+- **Implementado:** `secure/logout.html` com limpeza completa
 
-## 8. UI/UX ✅
+## 8. UI/UX 
 
-- ✅ Exibe status de autenticação, erros e expiração de sessão
-- ✅ Informa quando o token expira e exige novo login
-- ✅ **Implementado:** Interface responsiva com feedback visual
+- Exibe status de autenticação, erros e expiração de sessão
+- Informa quando o token expira e exige novo login
+- **Implementado:** Interface responsiva com feedback visual
 
-## 9. Documentação e Testes ✅
+## 9. Documentação e Testes 
 
-- ✅ Documentação completa de todos os fluxos e endpoints
-- ✅ Testado em navegadores modernos (Chrome, Edge, Firefox, Safari)
-- ✅ Validado em cenários fresh install e modo privado
-- ✅ **Implementado:** Suite de testes com 80%+ cobertura
-
----
-
-## 10. Back-end Python no Azure ✅
-
-- ✅ Backend Python hospedado no Azure atualizado para OAuth 2.1 + OIDC
-- ✅ Versão Python 3.10 compatível com Azure App Service
-- ✅ Dependências validadas (`flask`, `requests`, `authlib`, etc.)
-- ✅ **Implementado:** Docker deployment com Python 3.10-slim
-- ✅ Deploy testado em produção: caracore-backend-docker.azurewebsites.net
-
-### Requisitos do Docker Azure Container Registry ✅
-
-- ✅ **Container Registry:** caracoreregistry.azurecr.io funcionando
-- ✅ **Dockerfile:** Otimizado para produção com multi-stage build
-- ✅ **Dependências:** Minimalistas sem bibliotecas problemáticas
-- ✅ **Port Configuration:** Dinâmica via `$PORT` do Azure
-- ✅ **Health Checks:** Implementados e funcionando
-- ✅ **Data Persistence:** authorized_users.json carregado corretamente
-- ✅ **Logs:** Azure Application Insights integrado
-- ✅ **Security:** Hardened container sem privilégios root
+- Documentação completa de todos os fluxos e endpoints
+- Testado em navegadores modernos (Chrome, Edge, Firefox, Safari)
+- Validado em cenários fresh install e modo privado
+- **Implementado:** Suite de testes com 80%+ cobertura
 
 ---
 
-## ✅ **Checklist de Aceite COMPLETO**
+## 10. Back-end Python no Azure 
 
-- ✅ **PKCE implementado em todos os fluxos**
-- ✅ **Escopos mínimos solicitados**
-- ✅ **Validação robusta de tokens**
-- ✅ **Refresh token rotation ativa**
-- ✅ **Consentimento do usuário registrado**
-- ✅ **Fluxos inseguros desabilitados**
-- ✅ **HTTPS obrigatório**
-- ✅ **Logout seguro implementado**
-- ✅ **UI/UX responsiva e acessível**
-- ✅ **Documentação completa**
-- ✅ **Testes automatizados 80%+ cobertura**
-- ✅ **Backend Python Azure funcional**
-- ✅ **Sistema de autorização implementado**
-- ✅ **Deploy Docker produção estável**
+- Backend Python hospedado no Azure atualizado para OAuth 2.1 + OIDC
+- Versão Python 3.10 compatível com Azure App Service
+- Dependências validadas (`flask`, `requests`, `authlib`, etc.)
+- **Implementado:** Docker deployment com Python 3.10-slim
+- Deploy testado em produção: caracore-backend-docker.azurewebsites.net
+
+### Requisitos do Docker Azure Container Registry 
+
+- **Container Registry:** caracoreregistry.azurecr.io funcionando
+- **Dockerfile:** Otimizado para produção com multi-stage build
+- **Dependências:** Minimalistas sem bibliotecas problemáticas
+- **Port Configuration:** Dinâmica via `$PORT` do Azure
+- **Health Checks:** Implementados e funcionando
+- **Data Persistence:** authorized_users.json carregado corretamente
+- **Logs:** Azure Application Insights integrado
+- **Security:** Hardened container sem privilégios root
 
 ---
 
-## 🎯 **CONFORMIDADE OAUTH 2.1 + OIDC: 100% ALCANÇADA** ✅
+## **Checklist de Aceite COMPLETO**
 
-**Data de Certificação:** 02/11/2025  
-**Ambiente:** https://caracore-backend-docker.azurewebsites.net  
-**Status:** ✅ Produção estável com todas as especificações implementadas
+- **PKCE implementado em todos os fluxos**
+- **Escopos mínimos solicitados**
+- **Validação robusta de tokens**
+- **Refresh token rotation ativa**
+- **Consentimento do usuário registrado**
+- **Fluxos inseguros desabilitados**
+- **HTTPS obrigatório**
+- **Logout seguro implementado**
+- **UI/UX responsiva e acessível**
+- **Documentação completa**
+- **Testes automatizados 80%+ cobertura**
+- **Backend Python Azure funcional**
+- **Sistema de autorização implementado**
+- **Deploy Docker produção estável**
+
+---
+
+## **CONFORMIDADE OAUTH 2.1 + OIDC: 100% ALCANÇADA** 
+
+**Data de Certificação:** 02/11/2025 
+**Ambiente:** https://caracore-backend-docker.azurewebsites.net 
+**Status:** Produção estável com todas as especificações implementadas
 - [ ] Logout seguro implementado
 - [ ] UI/UX clara para autenticação
 - [ ] Documentação atualizada
@@ -148,13 +148,12 @@ Após a autenticação via OAuth 2.1 + OIDC, é necessário implementar uma cama
 Fluxo Completo:
 1. Usuário → Login Google/Microsoft (OAuth 2.1 + OIDC)
 2. OAuth Success → callback.html
-3. Verificar Autenticação ✅
-4. Verificar Autorização (NOVO):
-   ├─ ✅ Autorizado → Redireciona para restrita.html
-   └─ ❌ Não Autorizado → Redireciona para access-denied.html
+3. Verificar Autenticação 4. Verificar Autorização (NOVO):
+ ├─ Autorizado → Redireciona para restrita.html
+ └─ Não Autorizado → Redireciona para access-denied.html
 5. access-denied.html:
-   ├─ Botão "Solicitar Acesso" → request-access.html
-   └─ Botão "Fazer Logout"
+ ├─ Botão "Solicitar Acesso" → request-access.html
+ └─ Botão "Fazer Logout"
 6. request-access.html → Formulário → POST /api/request-access
 7. Admin → admin-users.html → Aprovar/Rejeitar solicitações
 ```
@@ -167,28 +166,28 @@ Estrutura mínima obrigatória:
 
 ```json
 {
-  "version": "1.0",
-  "updated_at": "2025-11-02T10:00:00Z",
-  "users": [
-    {
-      "email": "admin@caracore.com.br",
-      "name": "Admin CaraCore",
-      "provider": "google",
-      "role": "admin",
-      "approved_at": "2025-11-01T12:00:00Z",
-      "approved_by": "system",
-      "status": "active"
-    }
-  ],
-  "pending_requests": [
-    {
-      "email": "user@example.com",
-      "name": "Novo Usuário",
-      "provider": "microsoft",
-      "requested_at": "2025-11-02T08:30:00Z",
-      "message": "Motivo da solicitação"
-    }
-  ]
+ "version": "1.0",
+ "updated_at": "2025-11-02T10:00:00Z",
+ "users": [
+ {
+ "email": "admin@caracore.com.br",
+ "name": "Admin CaraCore",
+ "provider": "google",
+ "role": "admin",
+ "approved_at": "2025-11-01T12:00:00Z",
+ "approved_by": "system",
+ "status": "active"
+ }
+ ],
+ "pending_requests": [
+ {
+ "email": "user@example.com",
+ "name": "Novo Usuário",
+ "provider": "microsoft",
+ "requested_at": "2025-11-02T08:30:00Z",
+ "message": "Motivo da solicitação"
+ }
+ ]
 }
 ```
 
@@ -206,28 +205,28 @@ Estrutura mínima obrigatória:
 Implementar no `backend/app.py`:
 
 1. **`POST /api/check-authorization`**
-   - Input: `{ "email": "user@example.com" }`
-   - Output: `{ "authorized": true/false, "role": "admin/user" }`
-   - Autenticação: Requerida (token OAuth válido)
+ - Input: `{ "email": "user@example.com" }`
+ - Output: `{ "authorized": true/false, "role": "admin/user" }`
+ - Autenticação: Requerida (token OAuth válido)
 
 2. **`GET /api/admin/users`**
-   - Output: Lista completa (users + pending_requests)
-   - Autenticação: Admin only
+ - Output: Lista completa (users + pending_requests)
+ - Autenticação: Admin only
 
 3. **`POST /api/admin/users`**
-   - Input: `{ "email", "name", "provider", "role" }`
-   - Output: Usuário adicionado + confirmação
-   - Autenticação: Admin only
+ - Input: `{ "email", "name", "provider", "role" }`
+ - Output: Usuário adicionado + confirmação
+ - Autenticação: Admin only
 
 4. **`DELETE /api/admin/users/:email`**
-   - Remove autorização de um usuário
-   - Validação: Não permitir remoção do último admin
-   - Autenticação: Admin only
+ - Remove autorização de um usuário
+ - Validação: Não permitir remoção do último admin
+ - Autenticação: Admin only
 
 5. **`POST /api/request-access`**
-   - Input: `{ "email", "name", "provider", "message" }`
-   - Output: Solicitação registrada
-   - Autenticação: Não requerida (público)
+ - Input: `{ "email", "name", "provider", "message" }`
+ - Output: Solicitação registrada
+ - Autenticação: Não requerida (público)
 
 ### 11.5. Backend - Módulo Python
 
@@ -247,83 +246,83 @@ Funções obrigatórias:
 Criar 3 páginas HTML:
 
 1. **`secure/access-denied.html`** (~180 linhas)
-   - Mensagem clara de acesso negado
-   - Botão "Solicitar Acesso" → request-access.html
-   - Botão "Fazer Logout"
-   - Link para página inicial
+ - Mensagem clara de acesso negado
+ - Botão "Solicitar Acesso" → request-access.html
+ - Botão "Fazer Logout"
+ - Link para página inicial
 
 2. **`secure/request-access.html`** (~250 linhas)
-   - Formulário com campos: email, nome, provider, motivo
-   - Validações client-side
-   - Submit: POST /api/request-access
-   - Feedback visual (toasts)
+ - Formulário com campos: email, nome, provider, motivo
+ - Validações client-side
+ - Submit: POST /api/request-access
+ - Feedback visual (toasts)
 
 3. **`secure/admin-users.html`** (~400 linhas)
-   - Dashboard administrativo completo
-   - Lista de usuários autorizados (tabela)
-   - Solicitações pendentes (cards)
-   - Ações: Aprovar, Rejeitar, Adicionar, Remover
-   - Filtros e busca
-   - Auto-refresh a cada 30s
+ - Dashboard administrativo completo
+ - Lista de usuários autorizados (tabela)
+ - Solicitações pendentes (cards)
+ - Ações: Aprovar, Rejeitar, Adicionar, Remover
+ - Filtros e busca
+ - Auto-refresh a cada 30s
 
 ### 11.7. Frontend - JavaScript
 
 Criar 2 arquivos JavaScript:
 
 1. **`secure/js/authorization-check.js`** (~120 linhas)
-   - Função: `checkAuthorization(userEmail)`
-   - POST /api/check-authorization
-   - Redirecionar se não autorizado
-   - Cache de resultado (5 min)
+ - Função: `checkAuthorization(userEmail)`
+ - POST /api/check-authorization
+ - Redirecionar se não autorizado
+ - Cache de resultado (5 min)
 
 2. **`secure/js/admin-users-manager.js`** (~400 linhas)
-   - Classes: UsersManager, RequestsManager
-   - Carregar e renderizar dados
-   - CRUD de usuários
-   - Aprovar/rejeitar solicitações
-   - Notificações toast
+ - Classes: UsersManager, RequestsManager
+ - Carregar e renderizar dados
+ - CRUD de usuários
+ - Aprovar/rejeitar solicitações
+ - Notificações toast
 
 ### 11.8. Integração
 
 Modificar 4 arquivos existentes:
 
 1. **`backend/app.py`** (+150 linhas)
-   - Importar authorization.py
-   - Adicionar 5 endpoints
-   - Middleware de verificação admin
-   - Logging de eventos de autorização
+ - Importar authorization.py
+ - Adicionar 5 endpoints
+ - Middleware de verificação admin
+ - Logging de eventos de autorização
 
 2. **`secure/callback.html`**
-   - Adicionar verificação após OAuth
-   - Chamar checkAuthorization() antes de redirecionar
+ - Adicionar verificação após OAuth
+ - Chamar checkAuthorization() antes de redirecionar
 
 3. **`secure/restrita.html`**
-   - Adicionar verificação no onload
-   - Importar authorization-check.js
+ - Adicionar verificação no onload
+ - Importar authorization-check.js
 
 4. **`secure/auth.js`** (+50 linhas)
-   - Integrar checkUserAuthorization()
-   - Adicionar ao fluxo de login
+ - Integrar checkUserAuthorization()
+ - Adicionar ao fluxo de login
 
 5. **`area51/wiki/index.html`**
-   - Adicionar link: "👥 Gerenciar Usuários" → admin-users.html
-   - Visível apenas para admins
+ - Adicionar link: "👥 Gerenciar Usuários" → admin-users.html
+ - Visível apenas para admins
 
 ### 11.9. Logs e Auditoria
 
 Registrar em `backend/logs/YYYY-MM-DD.jsonl`:
 
 1. **Tentativas de acesso não autorizado**
-   - Event type: `unauthorized_access_attempt`
-   - Dados: email, provider, timestamp, IP, user_agent
+ - Event type: `unauthorized_access_attempt`
+ - Dados: email, provider, timestamp, IP, user_agent
 
 2. **Solicitações de acesso**
-   - Event type: `access_request_submitted`
-   - Dados: email, name, provider, message, timestamp
+ - Event type: `access_request_submitted`
+ - Dados: email, name, provider, message, timestamp
 
 3. **Aprovações/Rejeições**
-   - Event types: `access_approved`, `access_rejected`
-   - Dados: email, approved_by, timestamp, action
+ - Event types: `access_approved`, `access_rejected`
+ - Dados: email, approved_by, timestamp, action
 
 ### 11.10. Backup e Persistência
 

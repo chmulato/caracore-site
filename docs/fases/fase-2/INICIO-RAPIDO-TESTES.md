@@ -1,10 +1,8 @@
 # Guia de Início Rápido - Testes E2E
 
-**Pronto para começar os testes!** 🧪
+**Pronto para começar os testes!** ---
 
----
-
-## 🚀 Passo 1: Preparação do Ambiente
+## Passo 1: Preparação do Ambiente
 
 ### 1.1. Verificar Backend
 
@@ -40,25 +38,25 @@ location.reload();
 
 ---
 
-## 🧪 Passo 2: Testes Críticos (Ordem Recomendada)
+## Passo 2: Testes Críticos (Ordem Recomendada)
 
 ### **TESTE 1: Login + Notificação** ⭐ (5 min)
 
-1. ✅ Acessar: `http://localhost:5500/secure/restrita.html`
-2. ✅ Clicar em "Entrar com Google" ou "Entrar com Microsoft"
-3. ✅ Fazer login
-4. ✅ **VERIFICAR:** Notificação verde "Login Realizado" aparece no canto superior direito
-5. ✅ **VERIFICAR:** Duração ~3 segundos, depois desaparece
+1. Acessar: `http://localhost:5500/secure/restrita.html`
+2. Clicar em "Entrar com Google" ou "Entrar com Microsoft"
+3. Fazer login
+4. **VERIFICAR:** Notificação verde "Login Realizado" aparece no canto superior direito
+5. **VERIFICAR:** Duração ~3 segundos, depois desaparece
 
 **Console (F12):**
 ```javascript
 // Verificar estado
 SessionManager.isAuthenticated(); // deve retornar true
-SessionManager.getUserInfo();      // deve retornar objeto com email/name
+SessionManager.getUserInfo(); // deve retornar objeto com email/name
 localStorage.getItem('auth_provider'); // 'google' ou 'microsoft'
 ```
 
-**✅ PASSOU se:**
+** PASSOU se:**
 - Notificação apareceu
 - Login completo
 - Console sem erros
@@ -67,23 +65,23 @@ localStorage.getItem('auth_provider'); // 'google' ou 'microsoft'
 
 ### **TESTE 2: LogoutModal Local** ⭐ (3 min)
 
-1. ✅ Clicar em "Encerrar sessão" na página
-2. ✅ **VERIFICAR:** Modal aparece com 2 opções
-3. ✅ Ler as opções:
-   - "Sair deste site" (azul)
-   - "Sair de todas as contas" (vermelho)
-4. ✅ Clicar em **"Sair deste site"**
-5. ✅ **VERIFICAR:** Notificação verde "Logout Realizado" aparece
-6. ✅ **VERIFICAR:** Redirecionamento para página de login
+1. Clicar em "Encerrar sessão" na página
+2. **VERIFICAR:** Modal aparece com 2 opções
+3. Ler as opções:
+ - "Sair deste site" (azul)
+ - "Sair de todas as contas" (vermelho)
+4. Clicar em **"Sair deste site"**
+5. **VERIFICAR:** Notificação verde "Logout Realizado" aparece
+6. **VERIFICAR:** Redirecionamento para página de login
 
 **Console:**
 ```javascript
 // Após logout, deve retornar null
 localStorage.getItem('auth_access_token'); // null
-SessionManager.isAuthenticated();          // false
+SessionManager.isAuthenticated(); // false
 ```
 
-**✅ PASSOU se:**
+** PASSOU se:**
 - Modal abriu
 - Notificação apareceu
 - Logout completo
@@ -100,15 +98,15 @@ SessionManager.isAuthenticated();          // false
 Verificar que está logado no provedor.
 
 **Passos:**
-1. ✅ Fazer login novamente na aplicação
-2. ✅ Clicar em "Encerrar sessão"
-3. ✅ Clicar em **"Sair de todas as contas"**
-4. ✅ **VERIFICAR:** Notificação "Logout Realizado" aparece
-5. ✅ **VERIFICAR:** Redirecionamento para logout do provedor
-6. ✅ Voltar para aba do Google/Microsoft Account
-7. ✅ **VERIFICAR:** Não está mais logado lá também
+1. Fazer login novamente na aplicação
+2. Clicar em "Encerrar sessão"
+3. Clicar em **"Sair de todas as contas"**
+4. **VERIFICAR:** Notificação "Logout Realizado" aparece
+5. **VERIFICAR:** Redirecionamento para logout do provedor
+6. Voltar para aba do Google/Microsoft Account
+7. **VERIFICAR:** Não está mais logado lá também
 
-**✅ PASSOU se:**
+** PASSOU se:**
 - Modal funcionou
 - Notificação apareceu
 - Logout federado completo
@@ -120,17 +118,17 @@ Verificar que está logado no provedor.
 
 **NÃO USAR O MOUSE!**
 
-1. ✅ Fazer login
-2. ✅ Pressionar `Tab` até chegar no botão "Encerrar sessão"
-3. ✅ Pressionar `Enter` para abrir modal
-4. ✅ **VERIFICAR:** Modal abre
-5. ✅ Pressionar `ESC`
-6. ✅ **VERIFICAR:** Modal fecha
-7. ✅ Pressionar `Tab` + `Enter` novamente para reabrir
-8. ✅ Pressionar `Tab` para navegar entre botões do modal
-9. ✅ Pressionar `Enter` no botão desejado
+1. Fazer login
+2. Pressionar `Tab` até chegar no botão "Encerrar sessão"
+3. Pressionar `Enter` para abrir modal
+4. **VERIFICAR:** Modal abre
+5. Pressionar `ESC`
+6. **VERIFICAR:** Modal fecha
+7. Pressionar `Tab` + `Enter` novamente para reabrir
+8. Pressionar `Tab` para navegar entre botões do modal
+9. Pressionar `Enter` no botão desejado
 
-**✅ PASSOU se:**
+** PASSOU se:**
 - 100% navegável por teclado
 - ESC fecha modal
 - Enter ativa botões
@@ -154,13 +152,13 @@ NotificationBridge.showWarning('logout_partial');
 ```
 
 **VERIFICAR:**
-- ✅ Máximo 5 notificações visíveis ao mesmo tempo
-- ✅ Mais antigas desaparecem automaticamente
-- ✅ Empilhadas verticalmente
-- ✅ Sem sobreposição
-- ✅ Cada uma com progress bar animada
+- Máximo 5 notificações visíveis ao mesmo tempo
+- Mais antigas desaparecem automaticamente
+- Empilhadas verticalmente
+- Sem sobreposição
+- Cada uma com progress bar animada
 
-**✅ PASSOU se:**
+** PASSOU se:**
 - Máximo 5 visíveis
 - Fila gerenciada
 - Layout perfeito
@@ -182,13 +180,13 @@ location.reload();
 ```
 
 **VERIFICAR:**
-- ✅ Notificação vermelha aparece
-- ✅ Título: "Sessão Expirada"
-- ✅ Mensagem: "Sua sessão expirou... faça login novamente"
-- ✅ **NÃO fecha automaticamente** (precisa clicar)
-- ✅ Clicar redireciona para login
+- Notificação vermelha aparece
+- Título: "Sessão Expirada"
+- Mensagem: "Sua sessão expirou... faça login novamente"
+- **NÃO fecha automaticamente** (precisa clicar)
+- Clicar redireciona para login
 
-**✅ PASSOU se:**
+** PASSOU se:**
 - Notificação de erro exibida
 - Não fecha automaticamente
 - Redirecionamento funciona
@@ -215,7 +213,7 @@ NotificationBridge.showError('invalid_token');
 ErrorMessages.setLanguage('pt-BR');
 ```
 
-**✅ PASSOU se:**
+** PASSOU se:**
 - pt-BR: Textos em português
 - en-US: Textos em inglês
 - Mudança instantânea
@@ -224,21 +222,21 @@ ErrorMessages.setLanguage('pt-BR');
 
 ### **TESTE 8: Responsividade Mobile** ⭐ (3 min)
 
-1. ✅ Abrir DevTools (F12)
-2. ✅ Ativar modo responsivo (Ctrl+Shift+M no Chrome)
-3. ✅ Selecionar dispositivo: **iPhone SE (375x667)**
-4. ✅ Fazer login
-5. ✅ **VERIFICAR:** Notificação se adapta à largura
-6. ✅ Abrir LogoutModal
-7. ✅ **VERIFICAR:** Modal responsivo
-8. ✅ Testar botões (touch-friendly)
+1. Abrir DevTools (F12)
+2. Ativar modo responsivo (Ctrl+Shift+M no Chrome)
+3. Selecionar dispositivo: **iPhone SE (375x667)**
+4. Fazer login
+5. **VERIFICAR:** Notificação se adapta à largura
+6. Abrir LogoutModal
+7. **VERIFICAR:** Modal responsivo
+8. Testar botões (touch-friendly)
 
 **Resoluções para testar:**
 - 375x667 (iPhone SE) - MÍNIMO
 - 414x896 (iPhone 11 Pro Max)
 - 360x740 (Samsung Galaxy S8+)
 
-**✅ PASSOU se:**
+** PASSOU se:**
 - Tudo visível e funcional em 375px
 - Layout não quebra
 - Botões clicáveis (touch)
@@ -246,20 +244,11 @@ ErrorMessages.setLanguage('pt-BR');
 
 ---
 
-## 📊 Checklist Rápido de Validação
+## Checklist Rápido de Validação
 
 Após executar os 8 testes acima, marcar:
 
-- [ ] **CT-1:** Login + Notificação ✅
-- [ ] **CT-2:** Logout Local + Notificação ✅
-- [ ] **CT-3:** Logout Federado ✅
-- [ ] **CT-4:** Navegação por Teclado (Tab, Enter, ESC) ✅
-- [ ] **CT-5:** Múltiplas Notificações (máx 5) ✅
-- [ ] **CT-6:** Sessão Expirada (erro vermelho) ✅
-- [ ] **CT-7:** Idiomas (pt-BR e en-US) ✅
-- [ ] **CT-8:** Responsividade Mobile (375px) ✅
-
----
+- [ ] **CT-1:** Login + Notificação - [ ] **CT-2:** Logout Local + Notificação - [ ] **CT-3:** Logout Federado - [ ] **CT-4:** Navegação por Teclado (Tab, Enter, ESC) - [ ] **CT-5:** Múltiplas Notificações (máx 5) - [ ] **CT-6:** Sessão Expirada (erro vermelho) - [ ] **CT-7:** Idiomas (pt-BR e en-US) - [ ] **CT-8:** Responsividade Mobile (375px) ---
 
 ## 🐛 Se Encontrar Problemas
 
@@ -317,10 +306,9 @@ localStorage.getItem('auth_access_token'); // deve ter valor
 
 ---
 
-## ✅ Resultado Final
+## Resultado Final
 
-**Se todos os 8 testes passarem:**
-✅ **Fase 2 - Item 5: Sistema de Feedback Visual - VALIDADO!**
+**Se todos os 8 testes passarem:** **Fase 2 - Item 5: Sistema de Feedback Visual - VALIDADO!**
 
 **Próximas ações:**
 1. Marcar Fase 2 como 100% completa
@@ -330,7 +318,7 @@ localStorage.getItem('auth_access_token'); // deve ter valor
 
 ---
 
-## 📝 Comandos Úteis para Testes
+## Comandos Úteis para Testes
 
 ```javascript
 // === VERIFICAÇÃO DE ESTADO ===
@@ -357,16 +345,16 @@ location.reload();
 
 // === DEBUG ===
 console.table({
-  autenticado: SessionManager.isAuthenticated(),
-  provider: localStorage.getItem('auth_provider'),
-  token: localStorage.getItem('auth_access_token')?.substring(0, 20) + '...',
-  idioma: ErrorMessages.getLanguage()
+ autenticado: SessionManager.isAuthenticated(),
+ provider: localStorage.getItem('auth_provider'),
+ token: localStorage.getItem('auth_access_token')?.substring(0, 20) + '...',
+ idioma: ErrorMessages.getLanguage()
 });
 ```
 
 ---
 
-## 🎯 Tempo Estimado
+## Tempo Estimado
 
 - **Testes Críticos (8 testes):** ~25 minutos
 - **Testes Completos (18 testes):** ~90 minutos
@@ -384,6 +372,4 @@ Se encontrar dificuldades:
 
 ---
 
-**Boa sorte com os testes!** 🚀
-
-Execute os 8 testes acima e reporte os resultados.
+**Boa sorte com os testes!** Execute os 8 testes acima e reporte os resultados.

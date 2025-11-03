@@ -1,0 +1,589 @@
+aplicar este prompt:
+
+Prompt para Implementação de OpenID Connect no Projeto Caracore
+Objetivo
+Implementar autenticação via OpenID Connect com Microsoft Entra ID e Google Identity em um site estático hospedado em www.caracore.com.br, com sistema completo de gerenciamento de usuários e controle de acesso à Área 51:
+
+Páginas principais:
+- Página de entrada autenticada: https://www.caracore.com.br/secure/index.html
+- Página restrita (após login): https://www.caracore.com.br/secure/restrita.html
+- Página de logout: https://www.caracore.com.br/secure/logout.html
+
+Sistema de Gerenciamento de Usuários:
+- Configuração inicial de super administrador: https://www.caracore.com.br/secure/super-admin-setup.html
+- Solicitação de acesso por usuários: https://www.caracore.com.br/secure/request-access-enhanced.html
+- Aprovação de solicitações pelo admin: https://www.caracore.com.br/secure/approval-requests.html
+- Gerenciamento de usuários: https://www.caracore.com.br/secure/admin-users.html
+- Auditoria e logs: https://www.caracore.com.br/secure/admin-logs.html
+
+Autenticação do Super Administrador:
+- E-mail fixo: suporte@caracore.com.br
+- Senha: [DEFINIR SENHA SEGURA] - armazenar como secret no GitHub
+- Autenticação independente dos provedores OAuth (Google/Microsoft)
+- Acesso direto às funcionalidades administrativas sem depender de OAuth externo
+- Sistema híbrido: Super Admin (credenciais próprias) + Usuários (OAuth)
+
+Restrições de UI e Layout (NÃO alterar HTML/CSS)
+- Não modificar o HTML ou CSS das seguintes páginas (classes, ids, estrutura, atributos, estilos inline, arquivos .css, `<style>`, `<link>`, etc.):
+  - c:\dev\site_oidc\cara-core\secure\admin-logs.html
+  - c:\dev\site_oidc\cara-core\secure\callback.html
+  - c:\dev\site_oidc\cara-core\secure\index.html
+  - c:\dev\site_oidc\cara-core\secure\logout.html
+  - c:\dev\site_oidc\cara-core\secure\restrita.html
+- Qualquer lógica de autenticação deve ser implementada em JavaScript (ex.: `auth.js`, `auth-standalone.js`, `dynamic-config.js`) sem alterar os arquivos HTML listados.
+- Não adicionar nem remover elementos HTML que possam impactar o layout ou a experiência visual existente.
+- Para mensagens de status/erros, utilizar elementos já presentes ou sobreposições temporárias injetadas via JS que não alterem a geometria/base do layout e sejam facilmente removidas.
+Solicitação de Permissão
+Este aplicativo solicita permissão para:
+
+Autenticar sua identidade usando OpenID Connect
+Acessar seu perfil
+Acessar seu e-mail
+Você autoriza o acesso?
+
+[Autorizar]  [Cancelar]
+
+Requisitos do Sistema de Gerenciamento de Usuários
+
+Sistema de Autenticação Híbrido:
+**Super Administrador (Autenticação Independente):**
+- E-mail: suporte@caracore.com.br
+- Senha: definida como secret seguro no GitHub
+- Acesso direto via formulário de login personalizado
+- Não depende de provedores OAuth externos
+- Controle total sobre usuários de ambos os provedores (Google + Microsoft)
+- Funcionalidades exclusivas: aprovar/negar acessos, gerenciar listas, auditoria
+
+**Usuários Regulares (OAuth):**
+- Autenticação via Google Identity ou Microsoft Entra ID
+- Precisam de aprovação do super admin para acessar Área 51
+- Separados por provedor para controle granular
+
+Fluxo de Controle de Acesso:
+1. **Acesso Super Admin:**
+   - Login direto com suporte@caracore.com.br + senha
+   - Acesso imediato às páginas administrativas
+   - Não passa por fluxo OAuth externo
+
+2. **Configuração Inicial do Sistema:**
+   - Super admin configura parâmetros iniciais do sistema
+   - Define políticas de aprovação por provedor
+   - Configura notificações e alertas
+
+3. **Solicitação de Acesso por Usuários OAuth:**
+   - Usuários autenticados via Google/Microsoft podem solicitar acesso
+   - Sistema coleta: nome, email, justificativa, provedor de autenticação
+   - Solicitação fica pendente até aprovação do super admin
+   - Usuário recebe feedback sobre status da solicitação
+
+4. **Aprovação pelo Super Administrador:**
+   - Super admin acessa approval-requests.html para ver solicitações pendentes
+   - Pode aprovar, negar ou solicitar mais informações
+   - Sistema mantém log de todas as decisões de aprovação
+   - Usuários aprovados ganham acesso automático à Área 51
+
+5. **Gerenciamento Contínuo:**
+   - admin-users.html: visualizar, editar, remover usuários autorizados de ambos provedores
+   - admin-logs.html: auditoria completa de acessos e ações administrativas
+   - Sistema de notificações para super admin sobre novas solicitações
+
+Armazenamento de Dados de Usuários:
+- **Super Admin:** Credenciais fixas (suporte@caracore.com.br + senha hash)
+- **Usuários OAuth:** Lista de usuários autorizados armazenada em localStorage/sessionStorage
+- Estrutura por provedor: google_authorized_users, microsoft_authorized_users
+- Logs de auditoria com timestamps e ações realizadas
+- Backup e sincronização de dados entre sessões do super admin
+- **Segurança:** Senha do super admin hasheada e armazenada como secret no GitHub
+
+Requisitos Técnicos
+Dica de segurança: Para proteger as chaves (client_id, client_secret) do Google e Entra ID, salve-as como Secrets no GitHub e utilize-as no fluxo de deploy (GitHub Actions). Nunca exponha o client_secret no frontend; use-o apenas em backend ou no pipeline de deploy.
+
+Fluxo de autenticação:
+Utilizar o Authorization Code Flow com PKCE (recomendado para SPAs e sites estáticos).
+Redirecionar o usuário para o provedor de identidade (Google ou Entra ID).
+Após autenticação, redirecionar de volta para index.html com o token de acesso.
+Provedores de identidade:
+Google Identity Platform:
+Criar um projeto no Google Cloud Console
+Ativar OAuth 2.0 e configurar o client ID
+Redirect URI: https://www.caracore.com.br/secure/index.html
+Microsoft Entra ID:
+Registrar o aplicativo no Azure Portal
+Configurar client ID e redirect URI
+Permitir login de contas corporativas e pessoais (se necessário)
+Biblioteca recomendada:
+oidc-client-ts ou OAuth.js
+Alternativas: Firebase Auth, Auth0, Amazon Cognito (caso queira usar um gateway de identidade)
+Gerenciamento de sessão:
+Armazenar o token de acesso em sessionStorage ou localStorage
+Validar o token antes de permitir acesso à restrita.html
+Implementar logout removendo o token e redirecionando para logout.html
+Manutenção dos artefatos:
+Separar configurações por provedor em arquivos .env ou .json
+Centralizar lógica de autenticação em um único módulo JS (auth.js)
+Documentar os fluxos e dependências no README do projeto
+Sugestão de Estrutura de Arquivos
+/secure/
+├── index.html                    # Página de login/autenticação
+├── restrita.html                # Página protegida (acesso após login)
+├── logout.html                  # Página de logout
+├── super-admin-setup.html       # Configuração inicial do super administrador
+├── request-access-enhanced.html # Solicitação de acesso por usuários
+├── approval-requests.html       # Aprovação de solicitações (super admin)
+├── admin-users.html            # Gerenciamento de usuários autorizados
+├── admin-logs.html             # Auditoria e logs do sistema
+├── callback.html               # Callback OAuth (processamento de tokens)
+├── access-denied.html          # Página de acesso negado
+├── consent.html                # Página de consentimento
+├── js/
+│   ├── auth.js                 # Lógica principal de autenticação OIDC
+│   ├── auth-standalone.js      # Autenticação standalone
+│   ├── super-admin-auth.js     # Autenticação específica do super admin
+│   ├── super-admin-setup.js    # Lógica do setup inicial
+│   ├── request-access-enhanced.js # Lógica de solicitação de acesso
+│   ├── approval-manager.js     # Lógica de aprovação de solicitações
+│   ├── admin-users-manager.js  # Gerenciamento de usuários
+│   ├── admin-logs.js          # Sistema de logs e auditoria
+│   ├── user-management-navigation.js # Navegação entre páginas administrativas
+│   ├── notification-manager.js # Sistema de notificações
+│   └── dynamic-config.js      # Configuração dinâmica por ambiente
+├── css/
+│   ├── style.css              # Estilos principais
+│   └── admin-styles.css       # Estilos para páginas administrativas
+├── config/
+│   ├── google.json            # Configuração do Google Identity
+│   └── entra.json             # Configuração do Microsoft Entra ID
+├── img/                       # Imagens e assets
+├── testes/                    # Testes unitários JavaScript
+│   ├── *.test.js              # Arquivos de teste Jest
+│   ├── test-setup.js          # Configuração de testes
+│   └── test-runner.html       # Interface para executar testes
+└── README.md                  # Documentação interna da pasta secure
+Para configurar o OIDC com Google Identity e Microsoft Entra ID, você precisa buscar os seguintes valores em cada portal:
+
+Google Identity Platform
+Client ID: Gerado ao criar o projeto e configurar OAuth 2.0.
+Redirect URI: URL para onde o usuário será redirecionado após login (ex: https://www.caracore.com.br/secure/index.html).
+Authority/Issuer: Normalmente https://accounts.google.com.
+
+Microsoft Entra ID (Azure)
+Client ID: Gerado ao registrar o aplicativo no Azure Portal.
+Tenant ID: Identificador do diretório (tenant) do Azure.
+Redirect URI: URL para onde o usuário será redirecionado após login (ex: https://www.caracore.com.br/secure/index.html).
+Authority/Issuer: Normalmente https://login.microsoftonline.com/{TENANT_ID}/v2.0.
+
+config/google.json
+{
+  "authority": "https://accounts.google.com",
+  "client_id": "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com",
+  "redirect_uri": "https://www.caracore.com.br/secure/index.html",
+  "response_type": "code",
+  "scope": "openid profile email",
+  "automaticSilentRenew": true
+}
+config/entra.json
+{
+  "authority": "https://login.microsoftonline.com/189c46ad-e437-48bd-bc87-050ef735c2c7/v2.0",
+  "client_id": "***AZURE_SECRET_REDACTED***",
+  "redirect_uri": "https://www.caracore.com.br/secure/index.html",
+  "response_type": "code",
+  "scope": "openid profile email",
+  "automaticSilentRenew": true
+}
+auth.js (Exemplo atualizado)
+import { UserManager } from 'oidc-client-ts';
+
+// Carregue a configuração do portal desejado
+const config = /* carregar config/google.json ou config/entra.json dinamicamente */;
+
+const userManager = new UserManager(config);
+
+// Verificar se usuário está autorizado a acessar a Área 51
+function isUserAuthorized(user, provider) {
+  const authorizedUsers = JSON.parse(localStorage.getItem(`${provider}_authorized_users`) || '[]');
+  return authorizedUsers.some(authUser => authUser.email === user.profile.email);
+}
+
+// Para iniciar login
+userManager.signinRedirect();
+
+// Para logout
+userManager.signoutRedirect();
+
+// Para obter usuário autenticado e verificar autorização
+userManager.getUser().then(user => {
+  if (user) {
+    const provider = getCurrentProvider(); // google ou microsoft
+    if (isUserAuthorized(user, provider)) {
+      // Usuário autenticado e autorizado - permitir acesso à Área 51
+      window.location.href = '/secure/restrita.html';
+    } else {
+      // Usuário autenticado mas não autorizado - redirecionar para solicitar acesso
+      window.location.href = '/secure/request-access-enhanced.html';
+    }
+  } else {
+    // Não autenticado - permanecer na página de login
+  }
+});
+
+super-admin-setup.js (Exemplo atualizado)
+// Sistema de autenticação híbrido para super administrador
+class SuperAdminAuth {
+  constructor() {
+    this.backendUrl = 'https://caracore-backend.azurewebsites.net';
+    this.superAdminEmail = 'suporte@caracore.com.br';
+  }
+
+  // Autenticação do super admin (independente de OAuth)
+  async authenticateSuperAdmin(email, password) {
+    if (email !== this.superAdminEmail) {
+      throw new Error('E-mail não autorizado para super admin');
+    }
+
+    try {
+      const response = await fetch(`${this.backendUrl}/auth/super-admin`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Credenciais inválidas');
+      }
+
+      const result = await response.json();
+      
+      // Armazenar token de super admin
+      localStorage.setItem('super_admin_token', result.token);
+      localStorage.setItem('super_admin_email', email);
+      localStorage.setItem('super_admin_authenticated', 'true');
+      
+      return result;
+    } catch (error) {
+      console.error('Erro na autenticação do super admin:', error);
+      throw error;
+    }
+  }
+
+  // Verificar se super admin está autenticado
+  isSuperAdminAuthenticated() {
+    const token = localStorage.getItem('super_admin_token');
+    const authenticated = localStorage.getItem('super_admin_authenticated');
+    return token && authenticated === 'true';
+  }
+
+  // Logout do super admin
+  logoutSuperAdmin() {
+    localStorage.removeItem('super_admin_token');
+    localStorage.removeItem('super_admin_email');
+    localStorage.removeItem('super_admin_authenticated');
+    window.location.href = '/secure/index.html';
+  }
+}
+
+// Configuração inicial do super administrador (primeira vez)
+function setupSuperAdminInterface() {
+  const loginForm = document.getElementById('super-admin-login-form');
+  
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = document.getElementById('admin-email').value;
+      const password = document.getElementById('admin-password').value;
+      
+      const superAuth = new SuperAdminAuth();
+      
+      try {
+        await superAuth.authenticateSuperAdmin(email, password);
+        
+        // Redirecionar para painel administrativo
+        window.location.href = '/secure/approval-requests.html';
+        
+      } catch (error) {
+        showError('Erro na autenticação: ' + error.message);
+      }
+    });
+  }
+}
+
+// Backend - Endpoints necessários para super admin
+Backend Endpoints (Flask - app.py):
+
+@app.route('/auth/super-admin', methods=['POST'])
+def authenticate_super_admin():
+    """Autenticação do super administrador"""
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    
+    # Verificar credenciais do super admin
+    SUPER_ADMIN_EMAIL = 'suporte@caracore.com.br'
+    SUPER_ADMIN_PASSWORD_HASH = os.getenv('SUPER_ADMIN_PASSWORD_HASH')
+    
+    if email != SUPER_ADMIN_EMAIL:
+        return jsonify({'error': 'Email não autorizado'}), 401
+    
+    # Verificar senha hasheada
+    import hashlib
+    password_hash = hashlib.sha256(password.encode()).hexdigest()
+    
+    if password_hash != SUPER_ADMIN_PASSWORD_HASH:
+        return jsonify({'error': 'Senha incorreta'}), 401
+    
+    # Gerar token JWT para super admin
+    import jwt
+    from datetime import datetime, timedelta
+    
+    payload = {
+        'email': email,
+        'role': 'super_admin',
+        'exp': datetime.utcnow() + timedelta(hours=24)
+    }
+    
+    token = jwt.encode(payload, os.getenv('JWT_SECRET_KEY'), algorithm='HS256')
+    
+    return jsonify({
+        'token': token,
+        'email': email,
+        'role': 'super_admin',
+        'expires_in': 86400  # 24 horas
+    })
+
+@app.route('/auth/verify-super-admin', methods=['POST'])
+def verify_super_admin():
+    """Verificar token do super administrador"""
+    auth_header = request.headers.get('Authorization')
+    
+    if not auth_header or not auth_header.startswith('Bearer '):
+        return jsonify({'error': 'Token não fornecido'}), 401
+    
+    token = auth_header.split(' ')[1]
+    
+    try:
+        payload = jwt.decode(token, os.getenv('JWT_SECRET_KEY'), algorithms=['HS256'])
+        
+        if payload.get('role') != 'super_admin':
+            return jsonify({'error': 'Token não é de super admin'}), 403
+            
+        return jsonify({
+            'valid': True,
+            'email': payload.get('email'),
+            'role': payload.get('role')
+        })
+        
+    except jwt.ExpiredSignatureError:
+        return jsonify({'error': 'Token expirado'}), 401
+    except jwt.InvalidTokenError:
+        return jsonify({'error': 'Token inválido'}), 401
+
+approval-manager.js (Exemplo)
+// Gerenciar aprovações de solicitações
+function approvePendingRequest(requestId, provider) {
+  const pendingRequests = JSON.parse(localStorage.getItem(`${provider}_pending_requests`) || '[]');
+  const request = pendingRequests.find(req => req.id === requestId);
+  
+  if (request) {
+    // Adicionar à lista de usuários autorizados
+    const authorizedUsers = JSON.parse(localStorage.getItem(`${provider}_authorized_users`) || '[]');
+    authorizedUsers.push({
+      email: request.email,
+      name: request.name,
+      role: 'user',
+      approvedAt: new Date().toISOString(),
+      approvedBy: getCurrentSuperAdmin(provider)
+    });
+    localStorage.setItem(`${provider}_authorized_users`, JSON.stringify(authorizedUsers));
+    
+    // Remover da lista de pendentes
+    const updatedPending = pendingRequests.filter(req => req.id !== requestId);
+    localStorage.setItem(`${provider}_pending_requests`, JSON.stringify(updatedPending));
+    
+    // Log da ação
+    logAdminAction('approve_request', { requestId, email: request.email, provider });
+  }
+}
+Exemplo em GitHub Actions (Atualizado)
+env:
+  ENTRA_CLIENT_SECRET: ${{ secrets.ENTRA_CLIENT_SECRET }}
+  GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}   
+  AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+  AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+  AZURE_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+  AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+  
+  # Configurações do Super Administrador
+  SUPER_ADMIN_PASSWORD_HASH: ${{ secrets.SUPER_ADMIN_PASSWORD_HASH }}
+  JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
+  SUPER_ADMIN_EMAIL: "suporte@caracore.com.br"
+
+Configuração de Variáveis de Ambiente no Azure App Service:
+
+Variáveis Obrigatórias para Super Admin:
+- SUPER_ADMIN_PASSWORD_HASH: Hash SHA-256 da senha master do super usuário
+- JWT_SECRET_KEY: Chave secreta para assinar tokens JWT
+- SUPER_ADMIN_EMAIL: suporte@caracore.com.br (fixo)
+
+Exemplo de geração do hash da senha:
+```python
+import hashlib
+senha_master = "SUA_SENHA_SUPER_SEGURA_AQUI"
+password_hash = hashlib.sha256(senha_master.encode()).hexdigest()
+print(f"SUPER_ADMIN_PASSWORD_HASH={password_hash}")
+```
+
+Configuração no Azure App Service (caracore-backend):
+1. Acessar Azure Portal → App Services → caracore-backend
+2. Configuration → Application settings
+3. Adicionar novas variáveis:
+   - Name: SUPER_ADMIN_PASSWORD_HASH
+   - Value: [HASH_SHA256_DA_SENHA]
+   - Name: JWT_SECRET_KEY  
+   - Value: [CHAVE_SECRETA_JWT_ALEATORIA]
+   - Name: SUPER_ADMIN_EMAIL
+   - Value: suporte@caracore.com.br
+
+Atualização da página super-admin-setup.html:
+- Remover dependência de OAuth para super admin
+- Adicionar formulário de login tradicional (email + senha)
+- Integrar com backend para autenticação
+- Implementar redirecionamento após autenticação bem-sucedida
+
+Implementação do Formulário de Login Super Admin:
+
+HTML (adicionar ao super-admin-setup.html):
+```html
+<div id="super-admin-login-section">
+  <h2>Acesso Super Administrador</h2>
+  <form id="super-admin-login-form">
+    <div class="form-group">
+      <label for="admin-email">E-mail:</label>
+      <input type="email" id="admin-email" value="suporte@caracore.com.br" readonly required>
+    </div>
+    <div class="form-group">
+      <label for="admin-password">Senha Master:</label>
+      <input type="password" id="admin-password" required>
+    </div>
+    <button type="submit" id="login-btn">Entrar como Super Admin</button>
+  </form>
+  <div id="login-status" class="status-message"></div>
+</div>
+```
+
+JavaScript (integração com backend):
+```javascript
+// Verificar se já está autenticado como super admin
+document.addEventListener('DOMContentLoaded', function() {
+  const superAuth = new SuperAdminAuth();
+  
+  if (superAuth.isSuperAdminAuthenticated()) {
+    // Já autenticado, redirecionar para painel admin
+    window.location.href = '/secure/approval-requests.html';
+    return;
+  }
+  
+  // Configurar formulário de login
+  setupSuperAdminInterface();
+});
+
+function showError(message) {
+  const statusDiv = document.getElementById('login-status');
+  statusDiv.innerHTML = `<div class="error">${message}</div>`;
+}
+
+function showSuccess(message) {
+  const statusDiv = document.getElementById('login-status');
+  statusDiv.innerHTML = `<div class="success">${message}</div>`;
+}
+```
+
+Proteção das Páginas Administrativas:
+Todas as páginas administrativas devem verificar autenticação do super admin:
+
+```javascript
+// Adicionar no início de cada página administrativa
+document.addEventListener('DOMContentLoaded', function() {
+  const superAuth = new SuperAdminAuth();
+  
+  if (!superAuth.isSuperAdminAuthenticated()) {
+    // Não autenticado, redirecionar para login
+    window.location.href = '/secure/super-admin-setup.html';
+    return;
+  }
+  
+  // Continuar com a funcionalidade da página
+  initializeAdminPage();
+});
+```  
+
+Application (client) ID → este será o AZURE_CLIENT_ID.
+
+Directory (tenant) ID → este será o AZURE_TENANT_ID.
+
+Exemplo de IDs (substituir pelos valores reais do ambiente):
+AZURE_CLIENT_ID = ***AZURE_SECRET_REDACTED***
+AZURE_TENANT_ID = 189c46ad-e437-48bd-bc87-050ef735c2c7
+
+Boas práticas para Secrets:
+- NÃO publicar client secrets, tokens ou certificados neste repositório.
+- Armazenar ENTRA_CLIENT_SECRET, GOOGLE_CLIENT_SECRET e demais segredos como GitHub Secrets ou variáveis de ambiente protegidas.
+- Referenciar esses valores apenas via `${{ secrets.NOME_DO_SECRET }}` em pipelines ou variáveis de ambiente locais.
+
+Testes e Validação do Sistema
+
+Testes Unitários JavaScript:
+- Implementar testes Jest para todas as funcionalidades de gerenciamento de usuários
+- Testar fluxos de aprovação, negação e gerenciamento de listas
+- Validar lógica de autorização e controle de acesso
+- Testes de integração entre diferentes provedores (Google/Microsoft)
+
+Arquivos de Teste:
+- /secure/testes/super-admin-setup.test.js (15 testes)
+- /secure/testes/request-access-enhanced.test.js (18 testes)
+- /secure/testes/approval-requests.test.js (20 testes)
+- /secure/testes/user-management-navigation.test.js (22 testes)
+
+Validação Automática:
+- Script /scripts/teste.py para validação completa do sistema
+- Testes de todas as páginas HTML (estrutura e conteúdo)
+- Validação de sintaxe de todos os arquivos JavaScript
+- Execução automática dos testes Jest quando Node.js disponível
+
+Cenários de Teste Críticos:
+1. **Autenticação Super Admin:** suporte@caracore.com.br deve conseguir fazer login com senha master
+2. **Proteção de Páginas:** Páginas administrativas devem exigir autenticação de super admin
+3. **Tokens JWT:** Sistema deve gerar e validar tokens JWT corretamente
+4. **Configuração Backend:** Variáveis de ambiente devem estar configuradas no Azure App Service
+5. **Solicitação de Acesso:** Usuários OAuth podem solicitar acesso independente do super admin
+6. **Aprovação/Negação:** Super admin pode gerenciar solicitações de ambos provedores
+7. **Controle de Acesso:** Apenas usuários autorizados acessam a Área 51
+8. **Auditoria:** Todas as ações administrativas são registradas
+9. **Separação por Provedor:** Google e Microsoft têm listas independentes
+10. **Recuperação:** Sistema funciona após logout/expiração do token super admin
+
+Endpoints Backend Necessários:
+- POST /auth/super-admin - Autenticação do super administrador
+- POST /auth/verify-super-admin - Verificação de token super admin
+- GET /admin/pending-requests - Listar solicitações pendentes
+- POST /admin/approve-request - Aprovar solicitação de acesso
+- POST /admin/deny-request - Negar solicitação de acesso
+- GET /admin/authorized-users - Listar usuários autorizados
+- DELETE /admin/revoke-access - Revogar acesso de usuário
+- GET /admin/audit-logs - Logs de auditoria
+
+Status de Implementação (Novembro 2025):
+✅ Sistema OAuth 2.1 + OIDC implementado e funcional
+✅ Gerenciamento completo de usuários por provedor
+✅ Interface de super administrador operacional
+✅ Sistema de solicitação e aprovação de acesso
+✅ Auditoria e logs implementados
+✅ 75 testes unitários JavaScript cobrindo todo o sistema
+✅ Validação automática via scripts/teste.py
+✅ Documentação técnica completa
+✅ Deploy automatizado via GitHub Actions
+

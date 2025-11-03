@@ -1,13 +1,35 @@
-"""Teste rápido para validar páginas principais do site, Área 51 e executar testes JS/HTML.
+"""Teste rápido para validar todas as páginas do site, Área 51 e executar testes JS/HTML.
 
 O script inicia um servidor HTTP local apontando para a raiz do projeto,
-realiza requisições a páginas-chave e verifica conteúdos essenciais:
+realiza requisições a todas as páginas-chave e verifica conteúdos essenciais:
 
-- `index.html` deve responder com HTTP 200 e conter o link "Área 51".
-- `/secure/index.html`, `/secure/callback.html`, `/secure/restrita.html` e `/secure/logout.html`
-  devem responder com HTTP 200 e conter textos característicos.
-- Executa todos os testes JavaScript usando Jest
-- Executa testes HTML específicos
+Testes Básicos:
+- `index.html` deve responder com HTTP 200 e conter o link "Área 51"
+- Páginas principais do `/secure/`: index.html, callback.html, restrita.html, logout.html
+
+Testes HTML Específicos (validação detalhada):
+- Todas as páginas do sistema de gerenciamento de usuários
+- Páginas administrativas e de controle de acesso
+- Validação de estrutura HTML e palavras-chave específicas
+
+Validação JavaScript:
+- Verifica sintaxe de todos os arquivos .js da aplicação
+- Valida estrutura e balanceamento de símbolos
+- Usa Node.js para validação rigorosa quando disponível
+
+Testes JavaScript (Jest):
+- Executa todos os testes via Jest automaticamente
+- Descobre todos os arquivos *.test.js na pasta secure/testes/
+
+Páginas testadas na pasta /secure/:
+- index.html, callback.html, restrita.html, logout.html
+- super-admin-setup.html, request-access-enhanced.html, request-access.html
+- approval-requests.html, admin-users.html, admin-logs.html
+- historia.html, access-denied.html, consent.html
+- testes/test-runner.html
+
+Arquivos JavaScript validados:
+- Todos os arquivos .js em /secure/js/ e /js/
 
 Uso:
     python teste.py
@@ -297,18 +319,146 @@ def run_javascript_tests() -> List[TestResult]:
     return results
 
 
+def validate_javascript_files() -> List[TestResult]:
+    """Valida todos os arquivos JavaScript da aplicação."""
+    results: List[TestResult] = []
+    
+    print("\n📝 Validando arquivos JavaScript...")
+    
+    # Diretórios onde estão os arquivos JS
+    js_dirs = [
+        PROJECT_ROOT / "secure" / "js",
+        PROJECT_ROOT / "js"
+    ]
+    
+    all_js_files = []
+    for js_dir in js_dirs:
+        if js_dir.exists():
+            js_files = list(js_dir.glob("*.js"))
+            all_js_files.extend(js_files)
+    
+    if not all_js_files:
+        results.append(TestResult("Arquivos JS encontrados", False, "Nenhum arquivo .js encontrado"))
+        return results
+    
+    results.append(TestResult("Arquivos JS encontrados", True, f"{len(all_js_files)} arquivos"))
+    
+    # Verificar se Node.js está disponível para validação de sintaxe
+    node_available = False
+    try:
+        subprocess.run(["node", "--version"], 
+                      capture_output=True, check=True)
+        node_available = True
+        results.append(TestResult("Node.js para validação", True))
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        results.append(TestResult("Node.js para validação", False, "Node.js não disponível - validação sintática limitada"))
+    
+    # Validar cada arquivo JavaScript
+    valid_files = 0
+    for js_file in all_js_files:
+        try:
+            # Validação básica: ler o arquivo e verificar se não está vazio
+            with open(js_file, 'r', encoding='utf-8') as f:
+                content = f.read().strip()
+            
+            if not content:
+                results.append(TestResult(f"JS: {js_file.name}", False, "Arquivo vazio"))
+                continue
+            
+            # Arquivos minificados (.min.js) - validação simplificada
+            if '.min.js' in js_file.name:
+                # Para arquivos minificados, apenas verificar se não estão vazios e têm estrutura JS básica
+                has_js_content = any(keyword in content for keyword in ['function', 'var', 'let', 'const', '=', '{', '}'])
+                if has_js_content:
+                    valid_files += 1
+                    results.append(TestResult(f"JS: {js_file.name}", True, "arquivo minificado válido"))
+                else:
+                    results.append(TestResult(f"JS: {js_file.name}", False, "arquivo minificado sem conteúdo JS"))
+                continue
+            
+            # Verificações básicas de sintaxe JavaScript para arquivos normais
+            basic_checks = []
+            
+            # Verificar se contém estruturas JavaScript válidas
+            js_patterns = [
+                ('function', 'function' in content or '=>' in content),
+                ('variáveis', any(keyword in content for keyword in ['var ', 'let ', 'const '])),
+                ('estruturas', any(keyword in content for keyword in ['if', 'for', 'while', 'class'])),
+            ]
+            
+            for pattern_name, pattern_found in js_patterns:
+                if pattern_found:
+                    basic_checks.append(pattern_name)
+            
+            # Se Node.js disponível, fazer validação de sintaxe mais rigorosa
+            if node_available:
+                try:
+                    # Verificar sintaxe usando Node.js (método mais confiável)
+                    result = subprocess.run(
+                        ["node", "-c", str(js_file)], 
+                        capture_output=True, text=True, timeout=10
+                    )
+                    syntax_valid = result.returncode == 0
+                    if syntax_valid:
+                        # Node.js confirmou que o arquivo é válido
+                        valid_files += 1
+                        details = f"Node.js OK; estruturas={','.join(basic_checks) if basic_checks else 'básica'}"
+                        results.append(TestResult(f"JS: {js_file.name}", True, details))
+                        continue
+                    else:
+                        # Node.js encontrou erro de sintaxe
+                        error_msg = result.stderr.split('\n')[0][:50] if result.stderr else "erro de sintaxe"
+                        results.append(TestResult(f"JS: {js_file.name}", False, f"Erro sintaxe: {error_msg}"))
+                        continue
+                except subprocess.TimeoutExpired:
+                    results.append(TestResult(f"JS: {js_file.name}", False, "Timeout na validação"))
+                    continue
+                except Exception as e:
+                    results.append(TestResult(f"JS: {js_file.name}", False, f"Erro: {str(e)}"))
+                    continue
+            
+            # Fallback: validação básica apenas se Node.js não estiver disponível
+            # Verificar balanceamento básico de chaves/parênteses
+            braces_balanced = content.count('{') == content.count('}')
+            parens_balanced = content.count('(') == content.count(')')
+            brackets_balanced = content.count('[') == content.count(']')
+            
+            syntax_ok = braces_balanced and parens_balanced and brackets_balanced
+            
+            # Arquivo válido
+            if syntax_ok:
+                valid_files += 1
+                details = f"sintaxe_ok={syntax_ok}; estruturas={','.join(basic_checks) if basic_checks else 'básica'}"
+                results.append(TestResult(f"JS: {js_file.name}", True, details))
+            else:
+                results.append(TestResult(f"JS: {js_file.name}", False, "Balanceamento de símbolos incorreto"))
+                
+        except Exception as e:
+            results.append(TestResult(f"JS: {js_file.name}", False, f"Erro ao ler: {str(e)}"))
+    
+    # Resumo da validação
+    results.append(TestResult("Validação JS completa", True, f"{valid_files}/{len(all_js_files)} arquivos válidos"))
+    
+    return results
+
+
 def run_html_tests(port: int) -> List[TestResult]:
     """Executa testes específicos dos arquivos HTML."""
     results: List[TestResult] = []
     
     print("\n🌐 Executando testes HTML...")
     
-    # Páginas do sistema de gerenciamento de usuários
+    # Páginas do sistema de gerenciamento de usuários e outras páginas importantes
     test_pages = [
         ("/secure/super-admin-setup.html", "Configuração", ["super", "admin", "configuração"]),
-        ("/secure/request-access-enhanced.html", "Solicitação", ["solicitar", "acesso", "usuário"]),
+        ("/secure/request-access-enhanced.html", "Solicitação Enhanced", ["solicitar", "acesso", "usuário"]),
         ("/secure/approval-requests.html", "Aprovação", ["aprovação", "solicitações", "admin"]),
+        ("/secure/admin-users.html", "Admin Users", ["admin", "usuários", "gerenciar"]),
+        ("/secure/admin-logs.html", "Admin Logs", ["admin", "logs", "auditoria"]),
         ("/secure/historia.html", "História", ["história", "área 51", "narrativa"]),
+        ("/secure/access-denied.html", "Acesso Negado", ["acesso", "negado", "não autorizado"]),
+        ("/secure/consent.html", "Consentimento", ["consentimento", "termos", "aceitar"]),
+        ("/secure/request-access.html", "Solicitação Básica", ["solicitar", "acesso"]),
         ("/secure/testes/test-runner.html", "Test Runner", ["test", "runner", "jest"])
     ]
     
@@ -358,7 +508,11 @@ def main() -> int:
         html_results = run_html_tests(port)
         all_results.extend(html_results)
     
-    # 3. Executar testes JavaScript
+    # 3. Validar arquivos JavaScript da aplicação
+    js_validation_results = validate_javascript_files()
+    all_results.extend(js_validation_results)
+    
+    # 4. Executar testes JavaScript (Jest)
     js_results = run_javascript_tests()
     all_results.extend(js_results)
     
@@ -370,7 +524,8 @@ def main() -> int:
     # Categorizar resultados
     basic_tests = [r for r in basic_results if r.name.startswith(('index.html', 'Link Área 51', 'secure/'))]
     html_tests = [r for r in html_results if r.name.startswith('HTML:')]
-    js_tests = [r for r in js_results]
+    js_validation_tests = [r for r in js_validation_results]
+    js_jest_tests = [r for r in js_results]
     
     # Mostrar estatísticas por categoria
     def show_category_stats(tests, category_name):
@@ -388,7 +543,8 @@ def main() -> int:
     
     show_category_stats(basic_tests, "🌐 Testes Básicos de Páginas")
     show_category_stats(html_tests, "📄 Testes HTML Específicos")
-    show_category_stats(js_tests, "🧪 Testes JavaScript")
+    show_category_stats(js_validation_tests, "📝 Validação JavaScript")
+    show_category_stats(js_jest_tests, "🧪 Testes JavaScript (Jest)")
     
     # Resultado geral (excluir falhas de dependências opcionais)
     optional_failures = ["Node.js disponível", "npx disponível", "npm disponível"]

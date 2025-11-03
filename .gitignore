@@ -16,7 +16,6 @@ venv/
 .env
 !.env.example
 *.jsonl
-prompt_oidc.txt
 .tmp*
 
 # Credenciais e Secrets (Segurança)
@@ -33,7 +32,6 @@ backup-*-settings.json
 .secrets/
 secrets/
 oidc_logs*
-secrets.txt
 
 # Backend logs (JSONL daily files)
 backend/logs/

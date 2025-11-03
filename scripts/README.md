@@ -56,7 +56,9 @@ python scripts/server.py
 - `/oauth/microsoft/token` - Token exchange Microsoft
 - `/auth/validate` - Validação de tokens
 
-## Testes Unitários JavaScript
+## Testes Automatizados
+
+### Testes Unitários JavaScript
 
 **Localização:** `/secure/testes/`
 **Framework:** Jest com JSDOM
@@ -74,8 +76,46 @@ cd secure/testes
 npx jest
 ```
 
-# Teste específico para Microsoft Entra ID
-python scripts/test_oidc_login.py --provider microsoft
+### `teste_caminho_feliz.py` - VALIDAÇÃO OIDC
+
+**Função:** Validação automatizada completa do fluxo OAuth 2.1 + OpenID Connect
+
+**Funcionalidades:**
+- ✅ 64 validações automáticas do caminho feliz OIDC
+- ✅ Suporte a Google e Microsoft Entra ID
+- ✅ Validação PKCE obrigatória (OAuth 2.1)
+- ✅ Verificação de claims JWT (iss, aud, exp, sub, iat)
+- ✅ Métricas de performance e segurança
+- ✅ Exportação de relatórios JSON
+
+**Uso:**
+```bash
+cd secure/testes
+
+# Teste com Google (padrão)
+python teste_caminho_feliz.py
+
+# Teste com Microsoft Entra ID
+python teste_caminho_feliz.py --provider entra
+
+# Gerar relatório JSON
+python teste_caminho_feliz.py --output relatorio.json
+```
+
+**Dependências:**
+```bash
+pip install -r secure/testes/requirements.txt
+```
+
+## Cobertura Total de Testes
+
+| Categoria | Testes | Ferramenta |
+|-----------|--------|-----------|
+| OAuth 2.1 + OIDC | 64 | `teste_caminho_feliz.py` |
+| JavaScript UI | 75 | Jest |
+| Páginas HTTP | 16 | `teste.py` |
+| HTML Estrutura | 5 | `teste.py` |
+| **TOTAL** | **160** | - |
 ```
 
 ## Limpeza Realizada (Novembro 2025)
@@ -103,8 +143,24 @@ python scripts/test_oidc_login.py --provider microsoft
 # Iniciar servidor de desenvolvimento
 python scripts/server.py
 
-# Executar todos os testes
+# Executar todos os testes do projeto
 python scripts/teste.py
+```
+
+### Validação OAuth 2.1 + OIDC
+```bash
+# Teste completo com Google (64 validações)
+cd secure/testes
+python teste_caminho_feliz.py
+
+# Teste com Microsoft Entra ID
+python teste_caminho_feliz.py --provider entra
+
+# Teste com URL de produção
+python teste_caminho_feliz.py --base-url "https://www.caracore.com.br"
+
+# Gerar relatório detalhado
+python teste_caminho_feliz.py --output relatorio.json
 ```
 
 ### Testes JavaScript

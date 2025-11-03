@@ -137,6 +137,101 @@ npm install
 npx jest
 ```
 
+### `teste_caminho_feliz.py` ✅ NOVO - VALIDAÇÃO OIDC
+
+**Função:** Script automatizado de validação completa do fluxo OAuth 2.1 + OpenID Connect
+
+**Funcionalidades:**
+- **64 Validações Automáticas:** Cobertura completa do caminho feliz OIDC
+- **10 Etapas Validadas:** Pré-requisitos até renovação de tokens
+- **Múltiplos Provedores:** Suporte a Google e Microsoft Entra ID
+- **PKCE Obrigatório:** Validação de segurança OAuth 2.1
+- **Relatório Colorido:** Output detalhado com status visual
+- **Exportação JSON:** Geração de relatórios estruturados
+- **Métricas de Performance:** Medição de tempo de fluxo
+
+**Validações por Etapa:**
+1. **Pré-requisitos (4 testes):** client_id, redirect_uri, endpoints
+2. **Autenticação (9 testes):** URL de autorização completa
+3. **Consentimento (4 testes):** Fluxo de login
+4. **Callback (4 testes):** Código de autorização
+5. **Tokens (12 testes):** Troca de código por tokens
+6. **Validação (8 testes):** Claims JWT (iss, aud, exp, sub, iat)
+7. **Sessão (5 testes):** Estabelecimento de sessão
+8. **Recursos (4 testes):** APIs protegidas
+9. **Renovação (4 testes):** Refresh tokens
+10. **Logs (5 testes):** Monitoramento e performance
+
+**Uso Básico (Simulado):**
+```bash
+cd D:\dev\site\cara-core\secure\testes
+python teste_caminho_feliz.py
+```
+
+**Uso Avançado:**
+```bash
+# Testar com Microsoft Entra ID
+python teste_caminho_feliz.py --provider entra
+
+# Testar com URL de produção
+python teste_caminho_feliz.py --base-url "https://www.caracore.com.br"
+
+# Gerar relatório JSON
+python teste_caminho_feliz.py --output relatorio.json
+
+# Teste com código real (após login manual)
+python teste_caminho_feliz.py --code "4/0AanR..." --real-tokens
+```
+
+**Opções da Linha de Comando:**
+- `--provider` / `-p`: Provedor OIDC (google/entra) [padrão: google]
+- `--base-url` / `-u`: URL base da aplicação [padrão: http://localhost:8000]
+- `--code` / `-c`: Código de autorização real
+- `--real-tokens` / `-r`: Obter tokens reais do provedor
+- `--output` / `-o`: Arquivo para relatório JSON
+
+**Saída:**
+```
+================================================================================
+TESTE AUTOMATIZADO - CAMINHO FELIZ OIDC
+Provedor: GOOGLE | Base URL: http://localhost:8000
+================================================================================
+
+✅ [Pré-requisitos] 1.1: Aplicação cliente configurada com client_id válido
+✅ [Autenticação] 2.7: URL contém code_challenge (PKCE)
+✅ [Tokens] 5.8: Resposta contém id_token (JWT)
+...
+
+================================================================================
+ESTATÍSTICAS:
+  Total de testes: 64
+  ✅ Aprovados: 64
+  ❌ Reprovados: 0
+  Taxa de sucesso: 100.0%
+================================================================================
+
+🎉 TESTE CONCLUÍDO COM SUCESSO!
+```
+
+**Dependências:**
+```bash
+pip install -r secure/testes/requirements.txt
+```
+- `requests>=2.31.0` - Requisições HTTP
+- `PyJWT>=2.8.0` - Decodificação JWT
+- `cryptography>=41.0.0` - Operações criptográficas
+
+**Integração CI/CD:**
+```yaml
+- name: Teste Caminho Feliz OIDC
+  run: |
+    cd secure/testes
+    pip install -r requirements.txt
+    python teste_caminho_feliz.py --output relatorio.json
+```
+
+**Status:** ATIVO - Validação automatizada de segurança OAuth 2.1 + OIDC
+
 ## Scripts de Execução (Pasta /secure/testes)
 
 ### `run-tests.ps1` e `run-tests.sh`
@@ -233,6 +328,8 @@ backend/
 secure/testes/
 ├── *.test.js              # 4 arquivos de teste JavaScript
 ├── test-setup.js          # Configuração Jest
+├── teste_caminho_feliz.py # Validação OIDC automatizada (64 testes)
+├── requirements.txt       # Dependências Python para testes OIDC
 ├── run-tests.ps1          # Script Windows
 └── run-tests.sh           # Script Linux/Mac
 ```
@@ -244,8 +341,21 @@ secure/testes/
 # Iniciar servidor de desenvolvimento
 python scripts/server.py
 
-# Executar todos os testes
+# Executar todos os testes do projeto
 python scripts/teste.py
+```
+
+### Validação OAuth 2.1 + OIDC
+```bash
+# Validação completa do caminho feliz OIDC (Google)
+cd secure/testes
+python teste_caminho_feliz.py
+
+# Validação com Microsoft Entra ID
+python teste_caminho_feliz.py --provider entra
+
+# Gerar relatório JSON
+python teste_caminho_feliz.py --output relatorio.json
 ```
 
 ### Testes JavaScript (Opcional)
@@ -255,17 +365,54 @@ cd secure/testes
 ./run-tests.sh            # Linux/Mac
 ```
 
+## Cobertura de Testes
+
+### Testes Automatizados Ativos
+
+| Categoria | Ferramenta | Testes | Cobertura |
+|-----------|-----------|---------|-----------|
+| **Páginas HTTP** | `teste.py` | 16 | 100% das páginas principais |
+| **HTML Estrutura** | `teste.py` | 5 | Sistema de gerenciamento |
+| **JavaScript UI** | Jest | 75 | Gerenciamento de usuários |
+| **OAuth 2.1 + OIDC** | `teste_caminho_feliz.py` | 64 | Caminho feliz completo |
+| **TOTAL** | - | **160** | **Fluxo completo validado** |
+
+### Cobertura por Funcionalidade
+
+#### Autenticação e Segurança (64 testes)
+- ✅ Pré-requisitos OIDC (4 testes)
+- ✅ Fluxo de autorização com PKCE (9 testes)
+- ✅ Callback e código de autorização (4 testes)
+- ✅ Troca de tokens (12 testes)
+- ✅ Validação JWT (8 testes)
+- ✅ Gerenciamento de sessão (5 testes)
+- ✅ APIs protegidas (4 testes)
+- ✅ Refresh tokens (4 testes)
+- ✅ Logs e monitoramento (5 testes)
+- ✅ Validação final (5 testes)
+
+#### Interface do Usuário (75 testes)
+- ✅ Configuração super admin (15 testes)
+- ✅ Solicitação de acesso (18 testes)
+- ✅ Aprovação de solicitações (20 testes)
+- ✅ Navegação e fluxos (22 testes)
+
+#### Páginas e Estrutura (21 testes)
+- ✅ Páginas principais (16 testes)
+- ✅ Estrutura HTML (5 testes)
+
 ## Status do Projeto
 
-- ✅ **OAuth 2.1 + OIDC:** 100% funcional
-- ✅ **Sistema de Usuários:** 100% funcional  
-- ✅ **Testes Automatizados:** 75 testes unitários
+- ✅ **OAuth 2.1 + OIDC:** 100% funcional (64 validações automáticas)
+- ✅ **Sistema de Usuários:** 100% funcional (75 testes unitários)
+- ✅ **Testes Automatizados:** 160 testes totais
+- ✅ **Segurança PKCE:** Validada automaticamente
 - ✅ **Deploy Automatizado:** GitHub Actions
 - ✅ **Scripts Limpos:** 87.5% de redução
 - ✅ **Documentação Atualizada:** Refletindo nova estrutura
 
-**Última Atualização:** 02/11/2025
-**Versão:** 2.0 (Pós-limpeza)
+**Última Atualização:** 03/11/2025
+**Versão:** 2.1 (Com validação OIDC automatizada)
 - HSTS (HTTP Strict Transport Security)
 - X-Frame-Options, X-Content-Type-Options
 - Referrer-Policy

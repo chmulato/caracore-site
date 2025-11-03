@@ -1,0 +1,6 @@
+# Dependências para teste_caminho_feliz.py
+# Instale com: pip install -r requirements.txt
+
+requests>=2.31.0
+PyJWT>=2.8.0
+cryptography>=41.0.0

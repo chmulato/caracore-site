@@ -27,6 +27,21 @@ async function initializeApprovalManager() {
 }
 
 async function checkAuthorization() {
+    // Verificar se é super admin autenticado
+    const superAdminToken = localStorage.getItem('super_admin_token');
+    const superAdminAuth = localStorage.getItem('super_admin_authenticated');
+    
+    if (superAdminToken && superAdminAuth === 'true') {
+        // Super admin tem acesso total
+        currentUser = {
+            email: localStorage.getItem('super_admin_email') || 'suporte@caracore.com.br',
+            role: 'super_admin',
+            name: 'Super Administrador'
+        };
+        return;
+    }
+    
+    // Senão, verificar token OAuth normal
     const response = await fetch('/api/user/info', {
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('access_token')}`

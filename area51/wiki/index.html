@@ -93,13 +93,11 @@
                         <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
                             <i class="bi bi-link-45deg me-1"></i> Links Úteis
                         </div>
-                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/health" target="_blank" rel="noopener">
-                            <i class="bi bi-heart-pulse me-2 text-success"></i>Health Check Backend
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        <a class="nav-link" href="#metricas">
+                            <i class="bi bi-heart-pulse me-2 text-success"></i>Métricas do Sistema
                         </a>
-                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/api/admin/health" target="_blank" rel="noopener">
-                            <i class="bi bi-shield-check me-2 text-primary"></i>Admin API Status
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        <a class="nav-link" href="#deploy">
+                            <i class="bi bi-shield-check me-2 text-primary"></i>Status de Deploy
                         </a>
                         <a class="nav-link" href="mailto:suporte@caracore.com.br">
                             <i class="bi bi-envelope me-2 text-warning"></i>Suporte Técnico
@@ -287,12 +285,12 @@
                             <i class="bi bi-list-check me-2 text-danger"></i>Monitoramento Sistema
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/health" target="_blank" rel="noopener">
-                            <i class="bi bi-activity me-2 text-primary"></i>Health Check Produção
+                        <a class="nav-link" href="#tecnologias">
+                            <i class="bi bi-activity me-2 text-primary"></i>Stack Técnico
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/api/admin/health" target="_blank" rel="noopener">
-                            <i class="bi bi-cloud-check me-2 text-success"></i>API Admin Status
+                        <a class="nav-link" href="#deploy">
+                            <i class="bi bi-cloud-check me-2 text-success"></i>Infraestrutura
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
                     </nav>
@@ -702,11 +700,11 @@
                                         <i class="bi bi-server me-2"></i>Backend (Azure Web App + Docker)
                                     </div>
                                     <div class="card-body">
-                                        <p><strong>URL:</strong> <code>caracore-backend-docker.azurewebsites.net</code></p>
+                                        <p><strong>URL:</strong> Backend Azure Web App</p>
                                         <p><strong>Container:</strong> Azure Container Registry</p>
-                                        <p><strong>Registry:</strong> <code>caracoreregistry.azurecr.io</code></p>
+                                        <p><strong>Registry:</strong> Azure Container Registry</p>
                                         <p><strong>Runtime:</strong> Python 3.11 + Gunicorn (Docker)</p>
-                                        <p><strong>Plan:</strong> Basic B1 ($13.14/mês)</p>
+                                        <p><strong>Plan:</strong> Basic B1</p>
                                         <p><strong>Region:</strong> Brazil South</p>
                                         <p><strong>Deploy:</strong> CI/CD Pipeline + Docker <span class="badge bg-success">Automatizado</span></p>
                                         <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Online (Authorization API validated)</span></p>
@@ -826,8 +824,8 @@
                                         <i class="bi bi-box me-2"></i>Azure Container Registry
                                     </div>
                                     <div class="card-body">
-                                        <p><strong>Registry:</strong> <code>caracoreregistry.azurecr.io</code></p>
-                                        <p><strong>Repository:</strong> <code>caracore-backend</code></p>
+                                        <p><strong>Registry:</strong> Azure Container Registry</p>
+                                        <p><strong>Repository:</strong> Backend Application</p>
                                         <p><strong>Latest Tag:</strong> <code>latest</code></p>
                                         <p><strong>Build:</strong> Pipeline CI/CD automatizado</p>
                                         <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Operacional</span></p>
@@ -860,12 +858,12 @@
                         <p class="mb-2">Implementação completa do sistema de deploy Docker via Pipeline CI/CD:</p>
                         <ul class="mb-2">
                             <li><strong>Pipeline CI/CD:</strong> Pipeline automatizado de build, push para ACR e deploy</li>
-                            <li><strong>Azure Container Registry:</strong> <code>caracoreregistry.azurecr.io</code> configurado</li>
-                            <li><strong>Docker Deployment:</strong> Web App <code>caracore-backend-docker</code> operacional</li>
+                            <li><strong>Azure Container Registry:</strong> Registry configurado e operacional</li>
+                            <li><strong>Docker Deployment:</strong> Web App com deploy automatizado</li>
                             <li><strong>Health Validation:</strong> Endpoints testados automaticamente pós-deploy</li>
-                            <li><strong>Pipeline Secrets:</strong> ACR credentials e publish profile configurados</li>
+                            <li><strong>Pipeline Secrets:</strong> Credenciais e publish profile configurados</li>
                         </ul>
-                        <p class="mb-1"><strong>Status:</strong> <span class="badge bg-success">✅ Produção</span> | <strong>Deploy Time:</strong> ~3 min | <strong>URL:</strong> <code>caracore-backend-docker.azurewebsites.net</code></p>
+                        <p class="mb-1"><strong>Status:</strong> <span class="badge bg-success">✅ Produção</span> | <strong>Deploy Time:</strong> ~3 min | <strong>Ambiente:</strong> Azure Web App</p>
                     </div>
 
                     <!-- Atualização 01/11/2025 -->

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251102" />
   <link rel="stylesheet" href="/secure/css/secure-restrita.css?v=20251102" />
   <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251102" />
+  <link rel="stylesheet" href="/secure/css/admin-common.css?v=20251104" />
   <style>
     .admin-header {
       background: linear-gradient(135deg, #1f2937, #374151);
@@ -479,12 +480,22 @@
     <main id="mainContent" class="page-content">
       <div class="admin-header">
         <div class="container">
-          <h1 class="admin-title">
-            <div class="admin-icon">
-              <svg class="icon-sm" aria-hidden="true"><use href="#icon-users"></use></svg>
+          <div class="admin-header-flex">
+            <h1 class="admin-title">
+              <div class="admin-icon">
+                <svg class="icon-sm" aria-hidden="true"><use href="#icon-users"></use></svg>
+              </div>
+              Gerenciar Usuários
+            </h1>
+            <div class="admin-nav-actions">
+              <a href="/secure/approval-requests.html" class="admin-nav-link">
+                📋 Solicitações
+              </a>
+              <a href="/secure/super-admin-login.html" id="admin-logout-link" class="admin-nav-link">
+                🚪 Sair
+              </a>
             </div>
-            Gerenciar Usuários
-          </h1>
+          </div>
           <div class="auto-refresh">
             <svg class="icon-sm refresh-indicator" aria-hidden="true"><use href="#icon-refresh"></use></svg>
             <span>Atualização automática a cada 30s</span>
@@ -627,7 +638,8 @@
   </div>
 
   <!-- Scripts -->
-  <script src="/secure/js/admin-users-manager.js?v=20251102"></script>
+  <script src="/secure/js/admin-common.js?v=20251104"></script>
+  <script src="/secure/js/admin-users-manager.js?v=20251104"></script>
   <script>
     // Inicializar o dashboard quando a página carregar
     document.addEventListener('DOMContentLoaded', function() {
@@ -636,6 +648,8 @@
       } else {
         console.error('AdminUsersManager não carregado');
       }
+      
+      // Logout já configurado via admin-common.js
     });
   </script>
 </body>

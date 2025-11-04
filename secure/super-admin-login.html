@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Super Admin - CaraCore</title>
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251102">
+    <link rel="stylesheet" href="/secure/css/super-admin-login.css?v=20251104">
+</head>
+<body>
+    <div class="super-admin-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h1 class="login-title">Super Admin</h1>
+                <p class="login-subtitle">Acesso administrativo ao CaraCore</p>
+            </div>
+
+            <div id="error-message" class="error-message"></div>
+            <div id="success-message" class="success-message"></div>
+
+            <form id="super-admin-form">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input" 
+                        required 
+                        autocomplete="email"
+                        placeholder="suporte@caracore.com.br"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="form-label">Senha</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input" 
+                        required 
+                        autocomplete="current-password"
+                        placeholder="Digite sua senha"
+                    >
+                </div>
+
+                <button type="submit" id="login-button" class="login-button">
+                    <span id="button-text">Entrar</span>
+                    <span id="button-loading" class="hidden">
+                        <span class="loading-spinner"></span>
+                        Entrando...
+                    </span>
+                </button>
+            </form>
+
+            <div class="back-link">
+                <a href="/">← Voltar ao site</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="/secure/js/super-admin-login.js?v=20251104"></script>
+</body>
+</html>

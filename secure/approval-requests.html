@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251102" />
     <link rel="stylesheet" href="/secure/css/secure-restrita.css?v=20251102" />
     <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251102" />
-    <link rel="stylesheet" href="/secure/css/approval-requests.css?v=20251102" />
+    <link rel="stylesheet" href="/secure/css/approval-requests.css?v=20251104" />
+    <link rel="stylesheet" href="/secure/css/admin-common.css?v=20251104" />
 </head>
 <body>
     <div class="approval-container">
@@ -18,6 +19,14 @@
                 <div>
                     <h1 class="header-title">Aprovação de Solicitações</h1>
                     <p class="header-subtitle">Gerencie as solicitações de acesso ao sistema</p>
+                </div>
+                <div class="header-actions">
+                    <a href="/secure/admin-users.html" class="admin-nav-link">
+                        👥 Gestão de Usuários
+                    </a>
+                    <a href="/secure/super-admin-login.html" class="admin-nav-link" id="logout-link">
+                        🚪 Sair
+                    </a>
                 </div>
                 <div class="header-stats">
                     <div class="stat-item">
@@ -112,7 +121,7 @@
     </div>
 
     <!-- Modal de Rejeição -->
-    <div id="rejection-modal" class="modal hidden" style="display: none;">
+    <div id="rejection-modal" class="modal hidden">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Rejeitar Solicitação</h3>
@@ -129,6 +138,7 @@
         </div>
     </div>
 
+    <script src="/secure/js/admin-common.js?v=20251104"></script>
     <script src="/secure/js/approval-manager.js?v=20251104b"></script>
     
     <script>
@@ -169,6 +179,8 @@
                     }
                 });
             }
+            
+            // Modal já está fechado via admin-common.js
         });
     </script>
 </body>

@@ -1791,6 +1791,195 @@ def create_app() -> Flask:
             resp = make_response(jsonify(error_response), 500)
             return add_cors(resp)
     
+    # ========================================================================
+    # ACCESS REQUESTS MANAGEMENT ENDPOINTS (Admin)
+    # ========================================================================
+    
+    @app.route("/api/admin/access-requests", methods=["OPTIONS"])
+    def access_requests_preflight():
+        """CORS preflight para solicitações de acesso"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/admin/access-requests", methods=["GET"])
+    @rate_limit("/api/admin/access-requests")
+    @require_admin
+    def get_access_requests():
+        """Listar todas as solicitações de acesso (admin only)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            data = load_authorized_users()
+            pending_requests = data.get('pending_requests', [])
+            
+            response_data = {
+                "requests": pending_requests,
+                "total": len(pending_requests)
+            }
+            
+            resp = make_response(jsonify(response_data), 200)
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao listar solicitações: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
+    @app.route("/api/admin/access-requests/<request_id>/approve", methods=["OPTIONS"])
+    def approve_request_preflight(request_id):
+        """CORS preflight para aprovação"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/admin/access-requests/<request_id>/approve", methods=["POST"])
+    @rate_limit("/api/admin/access-requests")
+    @require_admin
+    def approve_access_request(request_id):
+        """Aprovar solicitação de acesso (admin only)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            # Carregar dados
+            data = load_authorized_users()
+            pending_requests = data.get('pending_requests', [])
+            
+            # Encontrar solicitação
+            request_to_approve = None
+            for req in pending_requests:
+                if req.get('id') == request_id:
+                    request_to_approve = req
+                    break
+            
+            if not request_to_approve:
+                error_response = {"error": "not_found", "error_description": "Solicitação não encontrada"}
+                resp = make_response(jsonify(error_response), 404)
+                return add_cors(resp)
+            
+            # Obter admin atual (do token)
+            admin_email = request.headers.get('X-User-Email', 'unknown')
+            
+            # Criar novo usuário
+            new_user = {
+                "email": request_to_approve['email'],
+                "name": request_to_approve['name'],
+                "provider": request_to_approve['provider'],
+                "role": "user",
+                "status": "active",
+                "approved_at": datetime.utcnow().isoformat(),
+                "approved_by": admin_email,
+                "created_at": datetime.utcnow().isoformat()
+            }
+            
+            # Adicionar aos usuários
+            data['users'].append(new_user)
+            
+            # Remover das pendentes
+            data['pending_requests'] = [r for r in pending_requests if r.get('id') != request_id]
+            
+            # Atualizar timestamp
+            data['updated_at'] = datetime.utcnow().isoformat()
+            
+            # Salvar
+            save_authorized_users(data)
+            
+            # Log de auditoria
+            audit_entry = {
+                "timestamp": datetime.utcnow().isoformat(),
+                "action": "access_request_approved",
+                "details": f"Solicitação de {new_user['email']} aprovada",
+                "user": admin_email
+            }
+            data['audit_log'].append(audit_entry)
+            save_authorized_users(data)
+            
+            logger.info(f"Solicitação aprovada: {new_user['email']} por {admin_email}")
+            
+            response_data = {
+                "message": "Solicitação aprovada com sucesso",
+                "user": new_user
+            }
+            
+            resp = make_response(jsonify(response_data), 200)
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao aprovar solicitação: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
+    @app.route("/api/admin/access-requests/<request_id>/reject", methods=["OPTIONS"])
+    def reject_request_preflight(request_id):
+        """CORS preflight para rejeição"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/admin/access-requests/<request_id>/reject", methods=["POST"])
+    @rate_limit("/api/admin/access-requests")
+    @require_admin
+    def reject_access_request(request_id):
+        """Rejeitar solicitação de acesso (admin only)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            # Obter motivo da rejeição
+            request_data = request.get_json() or {}
+            reason = request_data.get('reason', 'Não especificado')
+            
+            # Carregar dados
+            data = load_authorized_users()
+            pending_requests = data.get('pending_requests', [])
+            
+            # Encontrar solicitação
+            request_to_reject = None
+            for req in pending_requests:
+                if req.get('id') == request_id:
+                    request_to_reject = req
+                    break
+            
+            if not request_to_reject:
+                error_response = {"error": "not_found", "error_description": "Solicitação não encontrada"}
+                resp = make_response(jsonify(error_response), 404)
+                return add_cors(resp)
+            
+            # Obter admin atual
+            admin_email = request.headers.get('X-User-Email', 'unknown')
+            
+            # Remover das pendentes
+            data['pending_requests'] = [r for r in pending_requests if r.get('id') != request_id]
+            
+            # Atualizar timestamp
+            data['updated_at'] = datetime.utcnow().isoformat()
+            
+            # Log de auditoria
+            audit_entry = {
+                "timestamp": datetime.utcnow().isoformat(),
+                "action": "access_request_rejected",
+                "details": f"Solicitação de {request_to_reject['email']} rejeitada. Motivo: {reason}",
+                "user": admin_email
+            }
+            data['audit_log'].append(audit_entry)
+            
+            # Salvar
+            save_authorized_users(data)
+            
+            logger.info(f"Solicitação rejeitada: {request_to_reject['email']} por {admin_email}")
+            
+            response_data = {
+                "message": "Solicitação rejeitada",
+                "reason": reason
+            }
+            
+            resp = make_response(jsonify(response_data), 200)
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao rejeitar solicitação: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
     @app.route("/api/request-access", methods=["OPTIONS"])
     def request_access_preflight():
         """CORS preflight para solicitação de acesso"""

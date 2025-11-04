@@ -94,18 +94,31 @@ function setupEventListeners() {
     });
 }
 
+function getAuthToken() {
+    // Retorna o token correto: super admin ou OAuth
+    const superAdminToken = localStorage.getItem('super_admin_token');
+    const superAdminAuth = localStorage.getItem('super_admin_authenticated');
+    
+    if (superAdminToken && superAdminAuth === 'true') {
+        return superAdminToken;
+    }
+    
+    return localStorage.getItem('access_token');
+}
+
 async function loadRequests() {
     showLoading(true);
     
     try {
-        const response = await fetch('/api/admin/access-requests', {
+        const response = await fetch('https://caracore-backend-docker.azurewebsites.net/api/admin/access-requests', {
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+                'Authorization': `Bearer ${getAuthToken()}`
             }
         });
 
         if (response.ok) {
-            currentRequests = await response.json();
+            const data = await response.json();
+            currentRequests = data.requests || [];
             updateStats();
             renderRequests(currentRequests);
         } else {
@@ -274,10 +287,10 @@ async function approveRequest(requestId) {
     if (!confirm('Confirma a aprovação desta solicitação?')) return;
     
     try {
-        const response = await fetch(`/api/admin/access-requests/${requestId}/approve`, {
+        const response = await fetch(`https://caracore-backend-docker.azurewebsites.net/api/admin/access-requests/${requestId}/approve`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+                'Authorization': `Bearer ${getAuthToken()}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -312,10 +325,10 @@ async function confirmRejection() {
     const reason = document.getElementById('rejection-reason').value;
     
     try {
-        const response = await fetch(`/api/admin/access-requests/${selectedRequestId}/reject`, {
+        const response = await fetch(`https://caracore-backend-docker.azurewebsites.net/api/admin/access-requests/${selectedRequestId}/reject`, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${localStorage.getItem('access_token')}`,
+                'Authorization': `Bearer ${getAuthToken()}`,
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ reason })

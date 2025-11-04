@@ -112,7 +112,7 @@
     </div>
 
     <!-- Modal de Rejeição -->
-    <div id="rejection-modal" class="modal hidden">
+    <div id="rejection-modal" class="modal hidden" onclick="if(event.target === this) closeRejectionModal()">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Rejeitar Solicitação</h3>
@@ -123,7 +123,7 @@
             </div>
             <div class="modal-actions">
                 <button id="confirm-rejection" class="modal-button modal-primary reject-button-modal">Confirmar Rejeição</button>
-                <button id="cancel-rejection" class="modal-button modal-secondary">Cancelar</button>
+                <button id="cancel-rejection" class="modal-button modal-secondary" onclick="closeRejectionModal()">Cancelar</button>
             </div>
         </div>
     </div>

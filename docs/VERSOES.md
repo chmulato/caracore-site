@@ -1,21 +1,22 @@
 # Versões de Dependências - CaraCore
 
-**Data:** 02 de novembro de 2025 
-**Branch:** main 
-**Ambiente:** Produção (Azure App Service F1 → B1 recomendado) 
-**Status:** Fase 4 concluída - Sistema de Autorização funcionando
+**Data:** 04 de novembro de 2025  
+**Branch:** main  
+**Ambiente:** Produção (Azure App Service B1)  
+**Status:** Fase 5 concluída - Sistema Admin Completo funcionando
 
 ---
 
-## 🏆 Marco Atual: Sistema Completo
+## Marco Atual: Sistema Administrativo Completo
 
 - **OAuth 2.1 + OIDC**: Implementado e funcionando
-- **Sistema de Autorização**: 485 linhas, 4 APIs, dashboard completo
+- **Sistema de Autorização**: Completo com controle de acesso
+- **Sistema Super Admin**: Interface completa de gestão
 - **Deploy Docker**: Container Registry + Web App for Containers
-- **Análise de Custos**: Documentação executiva disponível
-- **Custo Atual**: USD 5,00/mês (desenvolvimento) → USD 18,14/mês (produção recomendada)
+- **Arquitetura CSS/JS**: Centralizada e modularizada
+- **Custo Atual**: USD 18,14/mês (produção B1)
 
-## 🐍 Python
+## Python
 
 - **Versão Local (Dev):** Python 3.13.7
 - **Versão Azure Produção:** Python 3.10-slim (Docker Container)
@@ -42,7 +43,7 @@ python --version
 
 ---
 
-## 📦 Dependências Backend
+## Dependências Backend
 
 ### Produção (requirements-docker.txt) - VERSÃO SIMPLIFICADA
 
@@ -50,12 +51,14 @@ python --version
 |--------|--------|-----------|
 | **Flask** | 3.0.3 | Framework web principal |
 | **gunicorn** | 23.0.0 | WSGI HTTP server (produção) |
-| **Authlib** | 1.3.1 | OAuth 2.1 / OIDC client library |
+| **Authlib** | 1.3.2 | OAuth 2.1 / OIDC client library |
+| **cryptography** | 43.0.3 | Criptografia (dependência Authlib) |
+| **Flask-CORS** | 4.0.2 | Cross-Origin Resource Sharing |
 | **requests** | 2.32.3 | HTTP client para APIs externas |
 | **python-dotenv** | 1.0.1 | Carregar variáveis .env |
 
-**Total:** 5 packages (vs. 12 packages no requirements.txt completo) 
-**Benefício:** Build Docker 70% mais rápido, imagem 60% menor
+**Total:** 7 packages (otimizado para produção)  
+**Benefício:** Build Docker 60% mais rápido, imagem mais segura
 
 ### Desenvolvimento (requirements.txt) - VERSÃO COMPLETA
 
@@ -64,8 +67,9 @@ python --version
 | **Flask** | 3.0.3 | Framework web principal |
 | **Werkzeug** | 3.0.4 | WSGI toolkit (dependência do Flask) |
 | **gunicorn** | 23.0.0 | WSGI HTTP server (produção) |
-| **Authlib** | 1.3.1 | OAuth 2.1 / OIDC client library |
+| **Authlib** | 1.3.2 | OAuth 2.1 / OIDC client library |
 | **cryptography** | 43.0.3 | Criptografia (dependência Authlib) |
+| **Flask-CORS** | 4.0.2 | Cross-Origin Resource Sharing |
 | **cffi** | 1.17.1 | C Foreign Function Interface (dep. cryptography) |
 | **requests** | 2.32.3 | HTTP client para APIs externas |
 | **urllib3** | 2.2.3 | HTTP client (dependência requests) |
@@ -88,6 +92,19 @@ python --version
 ### CSS
 
 - **CSS3** | Nativo | Estilos modernos (Grid, Flexbox, Variables)
+
+### Arquitetura Modularizada (Fase 5)
+
+**CSS Centralizado:**
+- `secure/css/super-admin-login.css` | v20251104 | Estilos da página de login
+- `secure/css/admin-common.css` | v20251104 | Estilos compartilhados
+- `secure/css/approval-requests.css` | v20251104 | Estilos do painel de aprovações
+
+**JavaScript Modularizado:**
+- `secure/js/super-admin-login.js` | v20251104 | Lógica de autenticação
+- `secure/js/admin-common.js` | v20251104 | Funcionalidades compartilhadas
+- `secure/js/approval-manager.js` | v20251104b | Gestão de solicitações
+- `secure/js/admin-users-manager.js` | v20251104 | Gestão de usuários
 
 ---
 
@@ -258,10 +275,11 @@ pip install safety
 
 ---
 
-## 🔄 Histórico de Atualizações
+## Histórico de Atualizações
 
 | Data | Versão | Mudanças | Commit |
 |------|--------|----------|--------|
+| 04/11/2025 | v2.1 | **Fase 5 concluída** - Sistema Admin Completo funcionando | `main` |
 | 02/11/2025 | v2.0 | **Fase 4 concluída** - Sistema de Autorização completo | `main` |
 | 02/11/2025 | v1.9 | Deploy Docker funcionando em produção Azure | `main` |
 | 02/11/2025 | v1.8 | Otimização requirements-docker.txt (5 packages) | `main` |
@@ -272,22 +290,23 @@ pip install safety
 
 ### Marcos de Desenvolvimento
 
-** Fase 1 (OAuth 2.1 + OIDC):** Autenticação Google/Microsoft 
-** Fase 2 (Logout e Segurança):** Logout seguro e validações 
-** Fase 3 (Auditoria e Backend):** Dashboard de auditoria 
-** Fase 4 (Sistema de Autorização):** Controle de acesso completo 
+**Fase 1 (OAuth 2.1 + OIDC):** Autenticação Google/Microsoft 
+**Fase 2 (Logout e Segurança):** Logout seguro e validações 
+**Fase 3 (Auditoria e Backend):** Dashboard de auditoria 
+**Fase 4 (Sistema de Autorização):** Controle de acesso completo 
+**Fase 5 (Sistema Admin Completo):** Interface administrativa com CSS/JS modularizado 
 
 ### Próximas Atualizações Planejadas
 
 | Prioridade | Item | Estimativa |
 |------------|------|------------|
-| **Alta** | Upgrade Azure App Service F1 → B1 | Imediato |
+| **Alta** | Upgrade Azure App Service F1 → B1 | Concluído (04/11/2025) |
 | **Média** | Implementar Azure Monitor alerts | 30 dias |
 | **Baixa** | Migração para Azure Functions (opcional) | 90 dias |
 
 ---
 
-## 📚 Referências
+## Referências
 
 ### Documentação Principal
 

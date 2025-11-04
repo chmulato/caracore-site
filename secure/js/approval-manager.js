@@ -1,13 +1,38 @@
-// Approval Manager JavaScript
+// Approval Manager JavaScript - Versão Robusta
 
 let currentRequests = [];
 let currentUser = null;
 let selectedRequestId = null;
+let isModalOpeningAllowed = false; // Flag para controlar abertura do modal
 
 // Inicialização
 window.addEventListener('DOMContentLoaded', function() {
-    initializeApprovalManager();
+    // Força modal fechado ANTES de qualquer inicialização
+    forceCloseAllModals();
+    
+    // Aguarda um pouco antes de inicializar para evitar race conditions
+    setTimeout(() => {
+        initializeApprovalManager();
+    }, 100);
 });
+
+function forceCloseAllModals() {
+    try {
+        const modals = ['rejection-modal', 'details-modal'];
+        modals.forEach(modalId => {
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.classList.add('hidden');
+                modal.style.display = 'none'; // Força esconder via CSS também
+            }
+        });
+        selectedRequestId = null;
+        isModalOpeningAllowed = false;
+        console.log('Todos os modais forçadamente fechados');
+    } catch (error) {
+        console.warn('Erro ao fechar modais:', error);
+    }
+}
 
 async function initializeApprovalManager() {
     try {
@@ -48,8 +73,11 @@ function ensureModalClosed() {
         const modal = document.getElementById('rejection-modal');
         if (modal) {
             modal.classList.add('hidden');
+            modal.style.display = 'none';
             selectedRequestId = null;
+            isModalOpeningAllowed = false;
         }
+        console.log('Modal garantidamente fechado via ensureModalClosed');
     } catch (error) {
         console.warn('Erro ao fechar modal:', error);
     }
@@ -329,7 +357,7 @@ function createRequestCard(request) {
             <button class="action-button approve-button" onclick="approveRequest('${request.id}')">
                 ✓ Aprovar
             </button>
-            <button class="action-button reject-button" onclick="showRejectionModal('${request.id}')">
+            <button class="action-button reject-button" onclick="authorizeAndShowRejectModal('${request.id}')">>
                 ✗ Rejeitar
             </button>
             <button class="action-button details-button" onclick="showRequestDetails('${request.id}')">
@@ -415,8 +443,26 @@ async function approveRequest(requestId) {
     }
 }
 
+function authorizeAndShowRejectModal(requestId) {
+    try {
+        console.log('Usuário clicou em rejeitar - autorizando abertura do modal');
+        isModalOpeningAllowed = true;
+        showRejectionModal(requestId);
+    } catch (error) {
+        console.error('Erro ao autorizar modal:', error);
+        isModalOpeningAllowed = false;
+        forceCloseAllModals();
+    }
+}
+
 function showRejectionModal(requestId) {
     try {
+        // Só permite abrir se explicitamente autorizado
+        if (!isModalOpeningAllowed) {
+            console.warn('Tentativa de abrir modal bloqueada - não autorizado');
+            return;
+        }
+        
         if (!requestId) {
             console.warn('ID da solicitação não fornecido');
             return;
@@ -439,12 +485,14 @@ function showRejectionModal(requestId) {
         
         selectedRequestId = requestId;
         modal.classList.remove('hidden');
+        modal.style.display = 'block';
         
         console.log('Modal de rejeição aberto para solicitação:', requestId);
         
     } catch (error) {
         console.error('Erro ao abrir modal de rejeição:', error);
         showErrorMessage('Erro ao abrir modal de rejeição');
+        forceCloseAllModals();
     }
 }
 
@@ -453,8 +501,10 @@ function closeRejectionModal() {
         const modal = document.getElementById('rejection-modal');
         if (modal) {
             modal.classList.add('hidden');
+            modal.style.display = 'none';
         }
         selectedRequestId = null;
+        isModalOpeningAllowed = false; // Reset da flag
         
         console.log('Modal de rejeição fechado');
         

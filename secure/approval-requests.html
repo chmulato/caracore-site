@@ -112,11 +112,11 @@
     </div>
 
     <!-- Modal de Rejeição -->
-    <div id="rejection-modal" class="modal hidden" onclick="if(event.target === this) closeRejectionModal()">
+    <div id="rejection-modal" class="modal hidden" style="display: none;">
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="modal-title">Rejeitar Solicitação</h3>
-                <button class="modal-close" onclick="closeRejectionModal()" aria-label="Fechar">&times;</button>
+                <button class="modal-close" id="modal-close-x" aria-label="Fechar">&times;</button>
             </div>
             <div>
                 <p>Informe o motivo da rejeição (opcional):</p>
@@ -124,20 +124,50 @@
             </div>
             <div class="modal-actions">
                 <button id="confirm-rejection" class="modal-button modal-primary reject-button-modal">Confirmar Rejeição</button>
-                <button id="cancel-rejection" class="modal-button modal-secondary" onclick="closeRejectionModal()">Cancelar</button>
+                <button id="cancel-rejection" class="modal-button modal-secondary">Cancelar</button>
             </div>
         </div>
     </div>
 
-    <script src="/secure/js/approval-manager.js?v=20251104"></script>
+    <script src="/secure/js/approval-manager.js?v=20251104b"></script>
     
     <script>
-        // Garantir que modal está fechado no carregamento da página
+        // Garantir que modal está fechado no carregamento da página e configurar event listeners
         document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('rejection-modal');
             if (modal) {
                 modal.classList.add('hidden');
+                modal.style.display = 'none';
                 console.log('Modal garantidamente fechado no load da página');
+            }
+            
+            // Event listeners sem onclick inline
+            const closeBtn = document.getElementById('modal-close-x');
+            const cancelBtn = document.getElementById('cancel-rejection');
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    if (typeof closeRejectionModal === 'function') {
+                        closeRejectionModal();
+                    }
+                });
+            }
+            
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', function() {
+                    if (typeof closeRejectionModal === 'function') {
+                        closeRejectionModal();
+                    }
+                });
+            }
+            
+            // Click fora do modal
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === this && typeof closeRejectionModal === 'function') {
+                        closeRejectionModal();
+                    }
+                });
             }
         });
     </script>

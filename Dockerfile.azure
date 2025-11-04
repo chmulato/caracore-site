@@ -29,9 +29,6 @@ RUN pip install --upgrade pip && \
 # Copiar código da aplicação
 COPY backend/ .
 
-# Usar versão simplificada do app para Docker
-RUN mv app-docker.py app.py
-
 # Verificar estrutura e arquivos
 RUN echo "=== Estrutura da aplicação ===" && \
     ls -la /app/ && \

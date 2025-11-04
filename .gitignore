@@ -89,3 +89,4 @@ arquivo_correcoes_*/
 backend*.zip
 *log*.zip
 azure_logs*/
+test_report*.json

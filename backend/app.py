@@ -2171,6 +2171,146 @@ def create_app() -> Flask:
             resp = make_response(jsonify(error_response), 500)
             return add_cors(resp)
 
+    # ========================================================================
+    # SUPER ADMIN PASSWORD CHANGE ENDPOINT
+    # ========================================================================
+    
+    @app.route("/api/admin/change-password", methods=["OPTIONS"])
+    def change_password_preflight():
+        """CORS preflight para alteração de senha super admin"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/admin/change-password", methods=["POST"])
+    @rate_limit("/api/admin/change-password")
+    def change_super_admin_password():
+        """Alteração segura da senha do super administrador"""
+        try:
+            # Verificar autenticação
+            auth_header = request.headers.get('Authorization')
+            if not auth_header or not auth_header.startswith('Bearer '):
+                return jsonify({"error": "unauthorized", "error_description": "Token de autorização obrigatório"}), 401
+            
+            token = auth_header.split(' ')[1]
+            
+            if not jwt_secret_key:
+                logger.error("JWT_SECRET_KEY não configurado")
+                return jsonify({"error": "server_error", "error_description": "Configuração do servidor incompleta"}), 500
+            
+            try:
+                # Verificar token
+                payload = jwt.decode(token, jwt_secret_key, algorithms=['HS256'])
+                
+                if payload.get('role') != 'super_admin':
+                    return jsonify({"error": "forbidden", "error_description": "Acesso negado"}), 403
+                
+                # Obter dados da requisição
+                data = request.get_json()
+                if not data:
+                    return jsonify({"error": "invalid_request", "error_description": "Dados JSON são obrigatórios"}), 400
+                
+                current_password = data.get('current_password')
+                new_password = data.get('new_password')
+                confirm_password = data.get('confirm_password')
+                
+                if not all([current_password, new_password, confirm_password]):
+                    return jsonify({"error": "invalid_request", "error_description": "Senha atual, nova senha e confirmação são obrigatórias"}), 400
+                
+                # Verificar se nova senha e confirmação coincidem
+                if new_password != confirm_password:
+                    return jsonify({"error": "invalid_request", "error_description": "Nova senha e confirmação não coincidem"}), 400
+                
+                # Validar critérios da nova senha
+                validation_error = validate_password_strength(new_password)
+                if validation_error:
+                    return jsonify({"error": "invalid_password", "error_description": validation_error}), 400
+                
+                # Verificar senha atual
+                SUPER_ADMIN_EMAIL = 'suporte@caracore.com.br'
+                SUPER_ADMIN_PASSWORD_HASH = os.getenv('SUPER_ADMIN_PASSWORD_HASH')
+                
+                if not SUPER_ADMIN_PASSWORD_HASH:
+                    logger.error("SUPER_ADMIN_PASSWORD_HASH não configurado")
+                    return jsonify({"error": "server_error", "error_description": "Configuração do servidor incompleta"}), 500
+                
+                # Verificar senha atual
+                current_password_hash = hashlib.sha256(current_password.encode()).hexdigest()
+                if current_password_hash != SUPER_ADMIN_PASSWORD_HASH:
+                    logger.warning(f"Tentativa de alteração de senha com senha atual incorreta para: {payload.get('email')}")
+                    return jsonify({"error": "unauthorized", "error_description": "Senha atual incorreta"}), 401
+                
+                # Gerar hash da nova senha
+                new_password_hash = hashlib.sha256(new_password.encode()).hexdigest()
+                
+                # Log de auditoria
+                logger.info(f"Alteração de senha super admin solicitada por: {payload.get('email')}")
+                
+                # Retornar novo hash para atualização manual no Azure
+                # NOTA: Em produção, isso seria atualizado automaticamente via Azure API
+                response_data = {
+                    'success': True,
+                    'message': 'Hash da nova senha gerado com sucesso',
+                    'new_password_hash': new_password_hash,
+                    'instructions': [
+                        '1. Copie o hash abaixo',
+                        '2. Atualize a variável SUPER_ADMIN_PASSWORD_HASH no Azure App Service',
+                        '3. Reinicie a aplicação',
+                        '4. A nova senha estará ativa'
+                    ],
+                    'azure_command': f'az webapp config appsettings set --name caracore-backend-docker --resource-group rg-caracore --settings SUPER_ADMIN_PASSWORD_HASH="{new_password_hash}"'
+                }
+                
+                logger.info(f"Hash da nova senha gerado com sucesso para: {payload.get('email')}")
+                
+                resp = make_response(jsonify(response_data), 200)
+                return add_cors(resp)
+                
+            except ExpiredSignatureError:
+                return jsonify({"error": "token_expired", "error_description": "Token expirado"}), 401
+            except InvalidTokenError:
+                return jsonify({"error": "invalid_token", "error_description": "Token inválido"}), 401
+                    
+        except Exception as e:
+            logger.error(f"Erro na alteração de senha super admin: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+
+    def validate_password_strength(password):
+        """Valida critérios de segurança da senha"""
+        if len(password) < 8:
+            return "Senha deve ter pelo menos 8 caracteres"
+        
+        if len(password) > 128:
+            return "Senha deve ter no máximo 128 caracteres"
+        
+        has_upper = any(c.isupper() for c in password)
+        has_lower = any(c.islower() for c in password)
+        has_digit = any(c.isdigit() for c in password)
+        has_special = any(c in "!@#$%^&*()_+-=[]{}|;:,.<>?" for c in password)
+        
+        if not has_upper:
+            return "Senha deve conter pelo menos uma letra maiúscula"
+        
+        if not has_lower:
+            return "Senha deve conter pelo menos uma letra minúscula"
+        
+        if not has_digit:
+            return "Senha deve conter pelo menos um número"
+        
+        if not has_special:
+            return "Senha deve conter pelo menos um caractere especial (!@#$%^&*()_+-=[]{}|;:,.<>?)"
+        
+        # Verificar padrões comuns fracos
+        weak_patterns = [
+            "123456", "password", "admin", "caracore", "super", "admin123",
+            "123456789", "qwerty", "abc123", "senha123"
+        ]
+        
+        if password.lower() in weak_patterns:
+            return "Senha muito comum, escolha uma senha mais segura"
+        
+        return None  # Senha válida
+
     # Aplicar security headers em todas as respostas
     @app.after_request
     def apply_security_headers(response):

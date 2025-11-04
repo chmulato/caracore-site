@@ -29,6 +29,9 @@ RUN pip install --upgrade pip && \
 # Copiar código da aplicação
 COPY backend/ .
 
+# Remover pacotes e cache locais que podem causar conflitos
+RUN rm -rf .python_packages/ __pycache__/ .pytest_cache/ htmlcov/ tests/ *.pyc
+
 # Verificar estrutura e arquivos
 RUN echo "=== Estrutura da aplicação ===" && \
     ls -la /app/ && \

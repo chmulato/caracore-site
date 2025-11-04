@@ -125,7 +125,7 @@ async function checkAuthorization() {
     // Senão, verificar token OAuth normal
     const response = await fetch('/api/user/info', {
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('access_token')}`
+            'Authorization': `Bearer ${getAuthToken()}`
         }
     });
 

@@ -1,0 +1,55 @@
+# Python cache e ambientes virtuais
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.python_packages/
+venv/
+env/
+ENV/
+.venv
+
+# Arquivos de teste e cobertura
+.pytest_cache/
+.coverage
+htmlcov/
+test-requirements.txt
+tests/
+test_*.py
+reports/
+
+# Arquivos de configuração local
+.env
+.env.example
+.azure/
+.deploy-trigger
+
+# Logs
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Docker
+Dockerfile*
+docker-compose*.yml
+
+# Documentação
+*.md
+docs/
+
+# Outros
+*.bak
+*.tmp
+.DS_Store

@@ -99,6 +99,16 @@ class AuthorizationManager:
                     "approved_at": self._get_timestamp(),
                     "approved_by": "system",
                     "created_at": self._get_timestamp()
+                },
+                {
+                    "email": "suporte@caracore.com.br",
+                    "name": "Super Administrador",
+                    "provider": "direct",
+                    "role": "super_admin",
+                    "status": "active",
+                    "approved_at": self._get_timestamp(),
+                    "approved_by": "system",
+                    "created_at": self._get_timestamp()
                 }
             ],
             "pending_requests": [],
@@ -106,13 +116,13 @@ class AuthorizationManager:
                 "require_approval": True,
                 "auto_approve_domains": [],
                 "max_pending_requests": 50,
-                "notification_email": "admin@caracore.com"
+                "notification_email": "suporte@caracore.com.br"
             },
             "audit_log": [
                 {
                     "timestamp": self._get_timestamp(),
                     "action": "system_initialized",
-                    "details": "Sistema de autorização inicializado",
+                    "details": "Sistema de autorização inicializado com super admin",
                     "user": "system"
                 }
             ]

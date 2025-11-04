@@ -1614,16 +1614,42 @@ def create_app() -> Flask:
                 resp = make_response(jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503)
                 return add_cors(resp)
             
-            # Para APIs internas, vamos usar um header especial ou token
-            # Por enquanto, vamos usar um sistema simples baseado no header 'Authorization'
+            # Verificar header Authorization
             auth_header = request.headers.get('Authorization', '')
             if not auth_header.startswith('Bearer '):
                 resp = make_response(jsonify({"error": "unauthorized", "error_description": "Token de autorização necessário"}), 401)
                 return add_cors(resp)
             
-            # TODO: Implementar validação real do token admin
-            # Por enquanto, permitir para desenvolvimento
-            return f(*args, **kwargs)
+            token = auth_header[7:]  # Remove 'Bearer '
+            
+            # Verificar se é um token super admin válido
+            if not JWT_SECRET_KEY:
+                logger.error("Variável JWT_SECRET_KEY não configurada")
+                resp = make_response(jsonify({"error": "server_error", "error_description": "Configuração do servidor incompleta"}), 500)
+                return add_cors(resp)
+            
+            try:
+                payload = jwt.decode(token, JWT_SECRET_KEY, algorithms=['HS256'])
+                
+                # Verificar se é super admin ou admin
+                user_role = payload.get('role')
+                if user_role not in ['super_admin', 'admin']:
+                    resp = make_response(jsonify({"error": "forbidden", "error_description": "Permissões insuficientes"}), 403)
+                    return add_cors(resp)
+                
+                # Adicionar informações do usuário ao request para uso na função
+                request.admin_user = {
+                    'email': payload.get('email'),
+                    'role': user_role
+                }
+                
+                return f(*args, **kwargs)
+                
+            except JoseError as e:
+                logger.error(f"Erro ao validar token: {e}")
+                resp = make_response(jsonify({"error": "unauthorized", "error_description": "Token inválido"}), 401)
+                return add_cors(resp)
+                
         wrapper.__name__ = f.__name__
         return wrapper
     

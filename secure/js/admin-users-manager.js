@@ -139,10 +139,16 @@ class AdminUsersManager {
         this.setLoadingState(true);
         
         try {
+            // Obter token de autenticação correto
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error('Token de autenticação não encontrado');
+            }
+            
             const response = await fetch(this.config.apiEndpoints.getUsers, {
                 method: 'GET',
                 headers: {
-                    'Authorization': 'Bearer admin-token', // TODO: Implementar token real
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             });
@@ -369,10 +375,15 @@ class AdminUsersManager {
         if (!request) return;
         
         try {
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error('Token de autenticação não encontrado');
+            }
+            
             const response = await fetch(this.config.apiEndpoints.addUser, {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Bearer admin-token',
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
@@ -457,10 +468,15 @@ class AdminUsersManager {
         if (!confirm(`Remover acesso de ${user.name} (${email})?`)) return;
         
         try {
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error('Token de autenticação não encontrado');
+            }
+            
             const response = await fetch(`${this.config.apiEndpoints.removeUser}/${encodeURIComponent(email)}`, {
                 method: 'DELETE',
                 headers: {
-                    'Authorization': 'Bearer admin-token',
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 }
             });
@@ -511,10 +527,15 @@ class AdminUsersManager {
      */
     async addUser(userData) {
         try {
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error('Token de autenticação não encontrado');
+            }
+            
             const response = await fetch(this.config.apiEndpoints.addUser, {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'Bearer admin-token',
+                    'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(userData)

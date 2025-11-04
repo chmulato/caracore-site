@@ -35,10 +35,10 @@ class AdminUsersManager {
         this.config = {
             refreshInterval: 30000, // 30 segundos
             apiEndpoints: {
-                getUsers: `${window.APP_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
-                addUser: `${window.APP_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
-                removeUser: `${window.APP_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
-                approveRequest: `${window.APP_CONFIG?.API_BASE_URL || ''}/api/admin/users`
+                getUsers: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
+                addUser: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
+                removeUser: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
+                approveRequest: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`
             }
         };
     }

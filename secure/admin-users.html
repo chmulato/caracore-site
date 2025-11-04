@@ -9,405 +9,7 @@
   <link rel="stylesheet" href="/secure/css/secure-restrita.css?v=20251102" />
   <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251102" />
   <link rel="stylesheet" href="/secure/css/admin-common.css?v=20251104" />
-  <style>
-    .admin-header {
-      background: linear-gradient(135deg, #1f2937, #374151);
-      color: white;
-      padding: 2rem 0;
-      margin-bottom: 2rem;
-    }
-    
-    .admin-title {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 0;
-    }
-    
-    .admin-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-    }
-    
-    .stat-card {
-      background: white;
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      border-left: 4px solid;
-    }
-    
-    .stat-card.users { border-left-color: #3b82f6; }
-    .stat-card.pending { border-left-color: #f59e0b; }
-    .stat-card.admins { border-left-color: #10b981; }
-    .stat-card.requests { border-left-color: #8b5cf6; }
-    
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-      margin: 0;
-    }
-    
-    .stat-label {
-      color: #6b7280;
-      font-size: 0.875rem;
-      margin: 0.25rem 0 0 0;
-    }
-    
-    .section-card {
-      background: white;
-      border-radius: 0.75rem;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-      margin-bottom: 2rem;
-      overflow: hidden;
-    }
-    
-    .section-header {
-      padding: 1.5rem;
-      border-bottom: 1px solid #e5e7eb;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    
-    .section-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .badge {
-      background: #f3f4f6;
-      color: #374151;
-      padding: 0.25rem 0.75rem;
-      border-radius: 1rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-    }
-    
-    .badge.pending { background: #fef3c7; color: #92400e; }
-    .badge.admin { background: #d1fae5; color: #065f46; }
-    .badge.user { background: #dbeafe; color: #1e40af; }
-    
-    .controls-bar {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    
-    .search-box {
-      position: relative;
-      flex: 1;
-      min-width: 200px;
-    }
-    
-    .search-input {
-      width: 100%;
-      padding: 0.5rem 0.75rem 0.5rem 2.5rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-    }
-    
-    .search-icon {
-      position: absolute;
-      left: 0.75rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #9ca3af;
-      width: 1rem;
-      height: 1rem;
-    }
-    
-    .filter-select {
-      padding: 0.5rem 0.75rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      background: white;
-    }
-    
-    .btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      text-decoration: none;
-    }
-    
-    .btn-primary {
-      background: #3b82f6;
-      color: white;
-    }
-    
-    .btn-primary:hover {
-      background: #2563eb;
-    }
-    
-    .btn-success {
-      background: #10b981;
-      color: white;
-    }
-    
-    .btn-success:hover {
-      background: #059669;
-    }
-    
-    .btn-danger {
-      background: #ef4444;
-      color: white;
-    }
-    
-    .btn-danger:hover {
-      background: #dc2626;
-    }
-    
-    .btn-secondary {
-      background: #6b7280;
-      color: white;
-    }
-    
-    .btn-secondary:hover {
-      background: #4b5563;
-    }
-    
-    .table-container {
-      overflow-x: auto;
-    }
-    
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-    
-    .data-table th,
-    .data-table td {
-      padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    
-    .data-table th {
-      background: #f9fafb;
-      font-weight: 600;
-      color: #374151;
-      font-size: 0.875rem;
-    }
-    
-    .data-table td {
-      font-size: 0.875rem;
-    }
-    
-    .data-table tr:hover {
-      background: #f9fafb;
-    }
-    
-    .user-info {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-    
-    .user-avatar {
-      width: 2rem;
-      height: 2rem;
-      background: #e5e7eb;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      color: #374151;
-      font-size: 0.75rem;
-    }
-    
-    .user-details {
-      flex: 1;
-    }
-    
-    .user-name {
-      font-weight: 500;
-      margin: 0;
-    }
-    
-    .user-email {
-      color: #6b7280;
-      font-size: 0.75rem;
-      margin: 0;
-    }
-    
-    .actions {
-      display: flex;
-      gap: 0.5rem;
-    }
-    
-    .btn-sm {
-      padding: 0.25rem 0.5rem;
-      font-size: 0.75rem;
-    }
-    
-    .pending-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 0.5rem;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .pending-header {
-      display: flex;
-      justify-content: between;
-      align-items: flex-start;
-      margin-bottom: 0.75rem;
-    }
-    
-    .pending-info {
-      flex: 1;
-    }
-    
-    .pending-actions {
-      display: flex;
-      gap: 0.5rem;
-    }
-    
-    .request-message {
-      background: #f9fafb;
-      border-radius: 0.375rem;
-      padding: 0.75rem;
-      font-size: 0.875rem;
-      color: #374151;
-      margin-top: 0.5rem;
-    }
-    
-    .modal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    
-    .modal-content {
-      background: white;
-      border-radius: 0.75rem;
-      padding: 2rem;
-      max-width: 500px;
-      width: 90%;
-      max-height: 90vh;
-      overflow-y: auto;
-    }
-    
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    
-    .modal-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin: 0;
-    }
-    
-    .modal-close {
-      background: none;
-      border: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-      color: #6b7280;
-    }
-    
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    
-    .form-label {
-      display: block;
-      font-weight: 500;
-      color: #374151;
-      margin-bottom: 0.5rem;
-      font-size: 0.875rem;
-    }
-    
-    .form-input, .form-select {
-      width: 100%;
-      padding: 0.5rem;
-      border: 1px solid #d1d5db;
-      border-radius: 0.375rem;
-      font-size: 0.875rem;
-      box-sizing: border-box;
-    }
-    
-    .empty-state {
-      text-align: center;
-      padding: 3rem 1rem;
-      color: #6b7280;
-    }
-    
-    .empty-icon {
-      width: 3rem;
-      height: 3rem;
-      margin: 0 auto 1rem;
-      color: #d1d5db;
-    }
-    
-    .loading {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-    
-    .icon-sm {
-      width: 1rem;
-      height: 1rem;
-    }
-    
-    .refresh-indicator {
-      display: none;
-      animation: spin 1s linear infinite;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    
-    .auto-refresh {
-      font-size: 0.75rem;
-      color: #6b7280;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-  </style>
+  <link rel="stylesheet" href="/secure/css/admin-users.css?v=20251104" />
 </head>
 <body>
   <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -469,7 +71,7 @@
         </a>
         <nav class="nav-links">
           <a class="nav-link" href="/secure/restrita.html">Área 51</a>
-          <span class="nav-cta" style="background: #3b82f6;">
+          <span class="nav-cta nav-cta-admin">
             <svg aria-hidden="true"><use href="#icon-users"></use></svg>
             <span>Admin</span>
           </span>
@@ -561,21 +163,23 @@
             </button>
           </div>
           
-          <div style="padding: 0 1.5rem 1rem;">
+          <div class="controls-bar-padding">
             <div class="controls-bar">
               <div class="search-box">
                 <svg class="search-icon" aria-hidden="true"><use href="#icon-search"></use></svg>
                 <input type="text" class="search-input" id="searchInput" placeholder="Buscar por nome ou email...">
               </div>
-              <select class="filter-select" id="roleFilter">
+              <select class="filter-select" id="roleFilter" aria-label="Filtrar por role">
                 <option value="">Todos os roles</option>
+                <option value="super_admin">Super Administradores</option>
                 <option value="admin">Administradores</option>
                 <option value="user">Usuários</option>
               </select>
-              <select class="filter-select" id="providerFilter">
+              <select class="filter-select" id="providerFilter" aria-label="Filtrar por provedor">
                 <option value="">Todos os provedores</option>
                 <option value="google">Google</option>
                 <option value="microsoft">Microsoft</option>
+                <option value="direct">Sistema</option>
               </select>
             </div>
           </div>
@@ -632,7 +236,7 @@
             <option value="admin">Administrador</option>
           </select>
         </div>
-        <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem;">
+        <div class="form-actions">
           <button type="button" class="btn btn-secondary" id="cancelBtn">Cancelar</button>
           <button type="submit" class="btn btn-primary" id="saveBtn">Salvar</button>
         </div>
@@ -641,7 +245,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="/js/config.js?v=20251104"></script>
+  <script src="/secure/js/config.js?v=20251104"></script>
   <script src="/secure/js/admin-common.js?v=20251104"></script>
   <script src="/secure/js/admin-users-manager.js?v=20251104"></script>
   <script>

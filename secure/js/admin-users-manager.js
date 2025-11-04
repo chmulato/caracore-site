@@ -188,7 +188,7 @@ class AdminUsersManager {
         
         const totalUsers = users.length;
         const totalPending = pending.length;
-        const totalAdmins = users.filter(u => u.role === 'admin').length;
+        const totalAdmins = users.filter(u => u.role === 'admin' || u.role === 'super_admin').length;
         
         // Solicitações hoje (últimas 24h)
         const today = new Date();
@@ -326,9 +326,9 @@ class AdminUsersManager {
      * Criar linha da tabela de usuário
      */
     createUserRow(user) {
-        const providerIcon = user.provider === 'microsoft' ? 'icon-microsoft' : 'icon-google';
+        const providerIcon = user.provider === 'microsoft' ? 'icon-microsoft' : (user.provider === 'direct' ? 'icon-shield-lock' : 'icon-google');
         const approvedDate = new Date(user.approved_at).toLocaleDateString('pt-BR');
-        const roleClass = user.role === 'admin' ? 'admin' : 'user';
+        const roleClass = user.role === 'super_admin' ? 'admin' : (user.role === 'admin' ? 'admin' : 'user');
         
         return `
             <td>
@@ -344,11 +344,11 @@ class AdminUsersManager {
                 <svg class="icon-sm" aria-hidden="true" style="margin-right: 0.5rem;">
                     <use href="#${providerIcon}"></use>
                 </svg>
-                ${user.provider === 'microsoft' ? 'Microsoft' : 'Google'}
+                ${user.provider === 'microsoft' ? 'Microsoft' : (user.provider === 'direct' ? 'Sistema' : 'Google')}
             </td>
             <td>
                 <span class="badge ${roleClass}">
-                    ${user.role === 'admin' ? 'Admin' : 'Usuário'}
+                    ${user.role === 'super_admin' ? 'Super Admin' : (user.role === 'admin' ? 'Admin' : 'Usuário')}
                 </span>
             </td>
             <td>${approvedDate}</td>
@@ -459,8 +459,8 @@ class AdminUsersManager {
         if (!user) return;
         
         // Verificar se não é o último admin
-        const adminCount = this.data.users.filter(u => u.role === 'admin').length;
-        if (user.role === 'admin' && adminCount <= 1) {
+        const adminCount = this.data.users.filter(u => u.role === 'admin' || u.role === 'super_admin').length;
+        if ((user.role === 'admin' || user.role === 'super_admin') && adminCount <= 1) {
             this.showError('Não é possível remover o último administrador');
             return;
         }

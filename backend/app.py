@@ -1896,7 +1896,9 @@ def create_app() -> Flask:
                 'exp': datetime.utcnow() + timedelta(hours=24)
             }
             
-            token = jwt.encode(payload, JWT_SECRET_KEY, algorithm='HS256')
+            # authlib usa JsonWebSignature com header
+            header = {'alg': 'HS256'}
+            token = jwt.encode(header, payload, JWT_SECRET_KEY).decode('utf-8') if isinstance(jwt.encode(header, payload, JWT_SECRET_KEY), bytes) else jwt.encode(header, payload, JWT_SECRET_KEY)
             
             logger.info(f"Super admin autenticado com sucesso: {email}")
             

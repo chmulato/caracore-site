@@ -1611,13 +1611,15 @@ def create_app() -> Flask:
         """Decorator para exigir permissões de admin"""
         def wrapper(*args, **kwargs):
             if not AUTHORIZATION_ENABLED:
-                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+                resp = make_response(jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503)
+                return add_cors(resp)
             
             # Para APIs internas, vamos usar um header especial ou token
             # Por enquanto, vamos usar um sistema simples baseado no header 'Authorization'
             auth_header = request.headers.get('Authorization', '')
             if not auth_header.startswith('Bearer '):
-                return jsonify({"error": "unauthorized", "error_description": "Token de autorização necessário"}), 401
+                resp = make_response(jsonify({"error": "unauthorized", "error_description": "Token de autorização necessário"}), 401)
+                return add_cors(resp)
             
             # TODO: Implementar validação real do token admin
             # Por enquanto, permitir para desenvolvimento

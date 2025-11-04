@@ -84,6 +84,14 @@ function setupEventListeners() {
     document.getElementById('rejection-modal').addEventListener('click', function(e) {
         if (e.target === this) closeRejectionModal();
     });
+    
+    // ESC para fechar modais
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+            closeRejectionModal();
+        }
+    });
 }
 
 async function loadRequests() {

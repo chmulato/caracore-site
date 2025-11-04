@@ -1,3 +1,4 @@
+
 # Fase 5 - Sistema Administrativo Completo e Reorganização Frontend
 
 **Data de Início:** 02/11/2025  

@@ -215,3 +215,11 @@ code {
     text-align: center;
     margin-top: 3rem;
 }
+
+.progress-thin {
+    height: 5px;
+}
+
+.progress-thin .progress-bar {
+    width: 77.3%;
+}

@@ -91,26 +91,21 @@
                         <hr class="my-3">
                         
                         <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
-                            <i class="bi bi-file-earmark-text me-1"></i> Documentação Relevante
+                            <i class="bi bi-link-45deg me-1"></i> Links Úteis
                         </div>
-                        <a class="nav-link" href="/docs/pendencias/STATUS-ATUAL.md" target="_blank">
-                            <i class="bi bi-bar-chart-line me-2 text-success"></i>Status Atual do Projeto
+                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/health" target="_blank" rel="noopener">
+                            <i class="bi bi-heart-pulse me-2 text-success"></i>Health Check Backend
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="/docs/pendencias/FASE-CADASTRO.md" target="_blank">
-                            <i class="bi bi-card-checklist me-2 text-primary"></i>Roadmap Fase 6
+                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/api/admin/health" target="_blank" rel="noopener">
+                            <i class="bi bi-shield-check me-2 text-primary"></i>Admin API Status
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="/scripts/README_PY.md" target="_blank">
-                            <i class="bi bi-filetype-py me-2 text-warning"></i>Guia de Scripts Python
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        <a class="nav-link" href="mailto:suporte@caracore.com.br">
+                            <i class="bi bi-envelope me-2 text-warning"></i>Suporte Técnico
                         </a>
-                        <a class="nav-link" href="/docs/ARQUITETURA.md" target="_blank">
-                            <i class="bi bi-diagram-3 me-2 text-danger"></i>Desenho da Arquitetura
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-                        </a>
-                        <a class="nav-link" href="/docs/DEPLOY.md" target="_blank">
-                            <i class="bi bi-cloud-arrow-up me-2 text-info"></i>Guia de Deploy
+                        <a class="nav-link" href="https://www.caracore.com.br" target="_blank" rel="noopener">
+                            <i class="bi bi-house me-2 text-info"></i>Site Principal
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
                     </nav>
@@ -135,7 +130,7 @@
                         <h2><i class="bi bi-diagram-3"></i> Arquitetura</h2>
                         <p>A arquitetura é dividida em dois componentes principais:</p>
                         <ul>
-                            <li><strong>Frontend:</strong> Uma aplicação estática (HTML, CSS, JS) hospedada no GitHub Pages, responsável pela interface do usuário e interação com os provedores OIDC.</li>
+                            <li><strong>Frontend:</strong> Uma aplicação estática (HTML, CSS, JS) hospedada em CDN global, responsável pela interface do usuário e interação com os provedores OIDC.</li>
                             <li><strong>Backend:</strong> Uma API em Python (Flask) rodando em um container Docker no Azure Web App, responsável pela validação de tokens, lógica de negócio e, agora, pela gestão administrativa.</li>
                         </ul>
                         <img src="assets/architecture-diagram.png" alt="Diagrama de Arquitetura" class="img-fluid rounded my-3">
@@ -189,7 +184,7 @@
                                     <li>Azure Web App</li>
                                     <li>Azure Container Registry</li>
                                     <li>Docker</li>
-                                    <li>GitHub Pages</li>
+                                    <li>CDN Global</li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -251,8 +246,8 @@
                                 <div class="metric-card">
                                     <h3>77.3%</h3>
                                     <p>Taxa de Sucesso nos Testes</p>
-                                    <div class="progress" style="height: 5px;">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 77.3%;" aria-valuenow="77.3" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="77.3" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 77.3%" title="Taxa de sucesso nos testes: 77.3%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -275,8 +270,8 @@
                         <h2><i class="bi bi-cloud-upload"></i> Deploy</h2>
                         <p>O deploy é realizado em duas partes:</p>
                         <ol>
-                            <li><strong>Frontend:</strong> O deploy é automático via GitHub Actions para o GitHub Pages a cada push na branch `main`.</li>
-                            <li><strong>Backend:</strong> A imagem Docker é construída e enviada para o Azure Container Registry. A Azure Web App é atualizada para usar a nova imagem. O processo é documentado em <a href="/docs/DEPLOY.md" target="_blank">docs/DEPLOY.md</a>.</li>
+                            <li><strong>Frontend:</strong> O deploy é automático via pipeline CI/CD para CDN global a cada atualização na branch principal.</li>
+                            <li><strong>Backend:</strong> A imagem Docker é construída e enviada para o Azure Container Registry. A Azure Web App é atualizada para usar a nova imagem através de pipeline automatizado.</li>
                         </ol>
                     </section>
                 </div>
@@ -289,19 +284,15 @@
 </body>
 </html>
 
-                            <i class="bi bi-list-check me-2 text-danger"></i>Roadmap Fase 6
+                            <i class="bi bi-list-check me-2 text-danger"></i>Monitoramento Sistema
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="/scripts/teste_api_fase_5.py" target="_blank">
-                            <i class="bi bi-robot me-2 text-primary"></i>Script de Teste Fase 5
+                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/health" target="_blank" rel="noopener">
+                            <i class="bi bi-activity me-2 text-primary"></i>Health Check Produção
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="/scripts/README_PY.md" target="_blank">
-                            <i class="bi bi-filetype-py me-2"></i>Guia de Scripts Python
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-                        </a>
-                        <a class="nav-link" href="/docs/AZURE_DEPLOY.md" target="_blank">
-                            <i class="bi bi-cloud-upload me-2"></i>Guia Deploy Azure
+                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/api/admin/health" target="_blank" rel="noopener">
+                            <i class="bi bi-cloud-check me-2 text-success"></i>API Admin Status
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
                     </nav>
@@ -488,7 +479,7 @@
                                 <h3 class="h5 mt-4">Infraestrutura</h3>
                                 <div class="tech-stack">
                                     <span class="tech-badge"><i class="bi bi-microsoft"></i> Azure App Service</span>
-                                    <span class="tech-badge"><i class="bi bi-github"></i> GitHub Pages</span>
+                                    <span class="tech-badge"><i class="bi bi-cloud"></i> CDN Global</span>
                                     <span class="tech-badge">Linux Container</span>
                                     <span class="tech-badge">SSL/TLS</span>
                                 </div>
@@ -509,7 +500,7 @@
 
                                 <h3 class="h5 mt-4">Automação Deploy <span class="badge bg-success">Atualizado</span></h3>
                                 <div class="tech-stack mb-0">
-                                    <span class="tech-badge"><i class="bi bi-github"></i> GitHub Actions (Docker)</span>
+                                    <span class="tech-badge"><i class="bi bi-gear"></i> Pipeline CI/CD</span>
                                     <span class="tech-badge"><i class="bi bi-box"></i> Azure Container Registry</span>
                                     <span class="tech-badge"><i class="bi bi-cloud-upload"></i> Azure Web App (Docker)</span>
                                     <span class="tech-badge"><i class="bi bi-check-circle"></i> Health Validation</span>
@@ -678,11 +669,11 @@
                         <h2 class="section-title">☁️ Deploy e Infraestrutura</h2>
 
                         <div class="alert alert-success mb-4">
-                            <h5 class="alert-heading"><i class="bi bi-rocket-takeoff me-2"></i>Deploy Automatizado via GitHub Actions</h5>
+                            <h5 class="alert-heading"><i class="bi bi-rocket-takeoff me-2"></i>Deploy Automatizado via Pipeline CI/CD</h5>
                             <p class="mb-2">Sistema completo de deploy Docker automatizado (Atualizado Nov 2024):</p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <strong>GitHub Actions Docker Deploy:</strong>
+                                    <strong>Pipeline Docker Deploy:</strong>
                                     <ul class="mb-0">
                                         <li>Build automático no push para main</li>
                                         <li>Push para Azure Container Registry</li>
@@ -717,7 +708,7 @@
                                         <p><strong>Runtime:</strong> Python 3.11 + Gunicorn (Docker)</p>
                                         <p><strong>Plan:</strong> Basic B1 ($13.14/mês)</p>
                                         <p><strong>Region:</strong> Brazil South</p>
-                                        <p><strong>Deploy:</strong> GitHub Actions + Docker <span class="badge bg-success">Automatizado</span></p>
+                                        <p><strong>Deploy:</strong> CI/CD Pipeline + Docker <span class="badge bg-success">Automatizado</span></p>
                                         <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Online (Authorization API validated)</span></p>
                                     </div>
                                 </div>
@@ -725,12 +716,12 @@
                             <div class="col-md-6">
                                 <div class="card">
                                     <div class="card-header bg-info text-white">
-                                        <i class="bi bi-github me-2"></i>Frontend (GitHub Pages)
+                                        <i class="bi bi-cloud me-2"></i>Frontend (CDN Global)
                                     </div>
                                     <div class="card-body">
                                         <p><strong>URL:</strong> <code>www.caracore.com.br</code></p>
-                                        <p><strong>Branch:</strong> main (commit <code>df75959</code>)</p>
-                                        <p><strong>SSL:</strong> Automático (GitHub)</p>
+                                        <p><strong>Branch:</strong> main (produção)</p>
+                                        <p><strong>SSL:</strong> Automático (Enterprise)</p>
                                         <p><strong>CDN:</strong> Global</p>
                                         <p><strong>Dashboard:</strong> <a href="/secure/admin-logs.html" target="_blank">admin-logs.html</a> <span class="badge bg-success">100%</span></p>
                                         <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Produção (15+ eventos)</span></p>
@@ -740,7 +731,7 @@
                         </div>
 
                         <div class="alert alert-info mt-4">
-                            <h4 class="alert-heading"><i class="bi bi-github me-2"></i>GitHub Actions Deploy</h4>
+                            <h4 class="alert-heading"><i class="bi bi-gear me-2"></i>Pipeline Deploy</h4>
                             <div class="row">
                                 <div class="col-md-6">
                                     <p><strong>Deploy Automático:</strong></p>
@@ -749,8 +740,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p><strong>Deploy Manual:</strong></p>
-                                    <pre class="bg-dark text-light p-2 rounded"><code>Actions → "Deploy Docker to Azure" → Run workflow</code></pre>
-                                    <p class="small mb-0">Disponível em: <a href="https://github.com/chmulato/cara-core/actions" target="_blank" rel="noopener" class="alert-link">GitHub Actions</a></p>
+                                    <pre class="bg-dark text-light p-2 rounded"><code>Azure Portal → Web App → Deployment Center → Manual Deploy</code></pre>
+                                    <p class="small mb-0">Deploy via Azure Portal ou CLI quando necessário</p>
                                 </div>
                             </div>
                             <div class="mt-2">
@@ -763,18 +754,15 @@
                         </div>
 
                         <div class="alert alert-warning mt-3">
-                            <h5 class="alert-heading"><i class="bi bi-gear me-2"></i>Configuração Azure & GitHub</h5>
+                            <h5 class="alert-heading"><i class="bi bi-gear me-2"></i>Configuração Azure & Pipeline</h5>
                             <p class="mb-2">Scripts de configuração automatizada:</p>
                             <ol class="mb-2">
-                                <li><strong>App Settings:</strong> <code>.\scripts\configure_azure_all_settings.ps1</code> (25+ variáveis)</li>
-                                <li><strong>Azure Monitor:</strong> <code>.\scripts\configure_azure_monitor.ps1</code> (6 alertas críticos)</li>
-                                <li><strong>GitHub Secrets:</strong> ACR_USERNAME, ACR_PASSWORD, AZURE_WEBAPP_DOCKER_PUBLISH_PROFILE</li>
+                                <li><strong>App Settings:</strong> Scripts PowerShell para configuração de 25+ variáveis</li>
+                                <li><strong>Azure Monitor:</strong> Configuração automatizada com 6 alertas críticos</li>
+                                <li><strong>Pipeline Secrets:</strong> ACR_USERNAME, ACR_PASSWORD, AZURE_WEBAPP_DOCKER_PUBLISH_PROFILE</li>
                             </ol>
                             <p class="mb-0">
-                                <strong>Documentação:</strong> 
-                                <a href="../secrets.txt.template" target="_blank" rel="noopener" class="alert-link">secrets.txt.template</a> | 
-                                <a href="../docs/GITHUB_SECRETS_SETUP.md" target="_blank" rel="noopener" class="alert-link">GitHub Secrets Setup</a> | 
-                                <a href="../.github/workflows/azure-docker-deploy.yml" target="_blank" rel="noopener" class="alert-link">GitHub Actions Workflow</a>
+                                <strong>Documentação:</strong> Configurações automatizadas via PowerShell e validação contínua de saúde do sistema.
                             </p>
                         </div>
 
@@ -841,7 +829,7 @@
                                         <p><strong>Registry:</strong> <code>caracoreregistry.azurecr.io</code></p>
                                         <p><strong>Repository:</strong> <code>caracore-backend</code></p>
                                         <p><strong>Latest Tag:</strong> <code>latest</code></p>
-                                        <p><strong>Build:</strong> GitHub Actions automatizado</p>
+                                        <p><strong>Build:</strong> Pipeline CI/CD automatizado</p>
                                         <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Operacional</span></p>
                                     </div>
                                 </div>
@@ -869,13 +857,13 @@
                             <i class="bi bi-rocket-takeoff-fill me-2 fs-5"></i>
                             <strong class="fs-5">🚀 ATUALIZAÇÃO 02/11/2025 - Deploy Docker Automatizado</strong>
                         </div>
-                        <p class="mb-2">Implementação completa do sistema de deploy Docker via GitHub Actions:</p>
+                        <p class="mb-2">Implementação completa do sistema de deploy Docker via Pipeline CI/CD:</p>
                         <ul class="mb-2">
-                            <li><strong>GitHub Actions:</strong> Pipeline automatizado de build, push para ACR e deploy</li>
+                            <li><strong>Pipeline CI/CD:</strong> Pipeline automatizado de build, push para ACR e deploy</li>
                             <li><strong>Azure Container Registry:</strong> <code>caracoreregistry.azurecr.io</code> configurado</li>
                             <li><strong>Docker Deployment:</strong> Web App <code>caracore-backend-docker</code> operacional</li>
                             <li><strong>Health Validation:</strong> Endpoints testados automaticamente pós-deploy</li>
-                            <li><strong>Repository Secrets:</strong> ACR credentials e publish profile configurados</li>
+                            <li><strong>Pipeline Secrets:</strong> ACR credentials e publish profile configurados</li>
                         </ul>
                         <p class="mb-1"><strong>Status:</strong> <span class="badge bg-success">✅ Produção</span> | <strong>Deploy Time:</strong> ~3 min | <strong>URL:</strong> <code>caracore-backend-docker.azurewebsites.net</code></p>
                     </div>
@@ -894,8 +882,7 @@
                             <li><strong>Template de Secrets:</strong> Novo arquivo <code>secrets.txt.template</code> com todas as variáveis necessárias</li>
                         </ul>
                         <p class="mb-0">
-                            <a href="#fase-3-update" class="alert-link fw-bold">Ver detalhes da Fase 3 ↓</a> | 
-                            <a href="../docs/ATUALIZACAO_DOCUMENTACAO_01NOV2025.md" class="alert-link" target="_blank">Relatório completo <i class="bi bi-box-arrow-up-right small"></i></a>
+                            Sistema implementado seguindo as melhores práticas de segurança e escalabilidade para ambientes de produção.
                         </p>
                     </div>
 

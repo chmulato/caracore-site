@@ -129,6 +129,17 @@
         </div>
     </div>
 
-    <script src="/secure/js/approval-manager.js?v=20251103"></script>
+    <script src="/secure/js/approval-manager.js?v=20251104"></script>
+    
+    <script>
+        // Garantir que modal está fechado no carregamento da página
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('rejection-modal');
+            if (modal) {
+                modal.classList.add('hidden');
+                console.log('Modal garantidamente fechado no load da página');
+            }
+        });
+    </script>
 </body>
 </html>

@@ -11,6 +11,11 @@ window.addEventListener('DOMContentLoaded', function() {
 
 async function initializeApprovalManager() {
     try {
+        console.log('Inicializando approval manager...');
+        
+        // Garantir que modal está fechado
+        ensureModalClosed();
+        
         // Verificar autorização
         await checkAuthorization();
         
@@ -20,10 +25,58 @@ async function initializeApprovalManager() {
         // Configurar event listeners
         setupEventListeners();
         
+        console.log('Approval manager inicializado com sucesso');
+        
     } catch (error) {
         console.error('Erro na inicialização:', error);
-        window.location.href = '/secure/access-denied.html';
+        
+        // Garantir que modal está fechado mesmo em caso de erro
+        ensureModalClosed();
+        
+        // Mostrar erro de forma controlada sem abrir modal
+        showErrorMessage('Erro ao carregar painel administrativo. Verifique sua conexão.');
+        
+        // Redirecionar após um tempo
+        setTimeout(() => {
+            window.location.href = '/secure/access-denied.html';
+        }, 3000);
     }
+}
+
+function ensureModalClosed() {
+    try {
+        const modal = document.getElementById('rejection-modal');
+        if (modal) {
+            modal.classList.add('hidden');
+            selectedRequestId = null;
+        }
+    } catch (error) {
+        console.warn('Erro ao fechar modal:', error);
+    }
+}
+
+function showErrorMessage(message) {
+    // Criar um alert simples sem usar modal
+    const errorDiv = document.createElement('div');
+    errorDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: #ef4444;
+        color: white;
+        padding: 1rem;
+        border-radius: 8px;
+        z-index: 9999;
+        max-width: 400px;
+    `;
+    errorDiv.textContent = message;
+    document.body.appendChild(errorDiv);
+    
+    setTimeout(() => {
+        if (errorDiv.parentNode) {
+            errorDiv.parentNode.removeChild(errorDiv);
+        }
+    }, 5000);
 }
 
 async function checkAuthorization() {
@@ -61,6 +114,9 @@ async function checkAuthorization() {
 }
 
 function setupEventListeners() {
+    // Garantir que modais estão fechados ao inicializar
+    ensureModalsAreClosed();
+    
     // Filtros
     document.getElementById('apply-filters').addEventListener('click', applyFilters);
     
@@ -72,18 +128,37 @@ function setupEventListeners() {
     });
     
     // Modal controls
-    document.getElementById('close-modal').addEventListener('click', closeModal);
-    document.getElementById('cancel-rejection').addEventListener('click', closeRejectionModal);
-    document.getElementById('confirm-rejection').addEventListener('click', confirmRejection);
+    const closeModalBtn = document.getElementById('close-modal');
+    const cancelRejectionBtn = document.getElementById('cancel-rejection');
+    const confirmRejectionBtn = document.getElementById('confirm-rejection');
+    
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+    
+    if (cancelRejectionBtn) {
+        cancelRejectionBtn.addEventListener('click', closeRejectionModal);
+    }
+    
+    if (confirmRejectionBtn) {
+        confirmRejectionBtn.addEventListener('click', confirmRejection);
+    }
     
     // Click fora do modal para fechar
-    document.getElementById('details-modal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
-    });
+    const detailsModal = document.getElementById('details-modal');
+    const rejectionModal = document.getElementById('rejection-modal');
     
-    document.getElementById('rejection-modal').addEventListener('click', function(e) {
-        if (e.target === this) closeRejectionModal();
-    });
+    if (detailsModal) {
+        detailsModal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    }
+    
+    if (rejectionModal) {
+        rejectionModal.addEventListener('click', function(e) {
+            if (e.target === this) closeRejectionModal();
+        });
+    }
     
     // ESC para fechar modais
     document.addEventListener('keydown', function(e) {
@@ -92,6 +167,23 @@ function setupEventListeners() {
             closeRejectionModal();
         }
     });
+}
+
+function ensureModalsAreClosed() {
+    // Garantir que todos os modais estão fechados ao carregar a página
+    const detailsModal = document.getElementById('details-modal');
+    const rejectionModal = document.getElementById('rejection-modal');
+    
+    if (detailsModal) {
+        detailsModal.classList.add('hidden');
+    }
+    
+    if (rejectionModal) {
+        rejectionModal.classList.add('hidden');
+    }
+    
+    // Limpar estado de seleção
+    selectedRequestId = null;
 }
 
 function getAuthToken() {
@@ -110,6 +202,8 @@ async function loadRequests() {
     showLoading(true);
     
     try {
+        console.log('Carregando solicitações...');
+        
         const response = await fetch('https://caracore-backend-docker.azurewebsites.net/api/admin/access-requests', {
             headers: {
                 'Authorization': `Bearer ${getAuthToken()}`
@@ -119,15 +213,28 @@ async function loadRequests() {
         if (response.ok) {
             const data = await response.json();
             currentRequests = data.requests || [];
+            
+            console.log('Solicitações carregadas:', currentRequests.length);
+            
             updateStats();
             renderRequests(currentRequests);
         } else {
-            throw new Error('Erro ao carregar solicitações');
+            console.error('Erro HTTP:', response.status, response.statusText);
+            throw new Error(`Erro ${response.status}: ${response.statusText}`);
         }
         
     } catch (error) {
-        console.error('Erro:', error);
+        console.error('Erro ao carregar solicitações:', error);
+        
+        // Garantir que modal permanece fechado
+        ensureModalClosed();
+        
+        // Mostrar estado vazio sem abrir modal
         showEmptyState();
+        
+        // Mostrar erro de forma controlada
+        showErrorMessage('Erro ao carregar solicitações. Verifique sua conexão.');
+        
     } finally {
         showLoading(false);
     }
@@ -309,14 +416,51 @@ async function approveRequest(requestId) {
 }
 
 function showRejectionModal(requestId) {
-    selectedRequestId = requestId;
-    document.getElementById('rejection-reason').value = '';
-    document.getElementById('rejection-modal').classList.remove('hidden');
+    try {
+        if (!requestId) {
+            console.warn('ID da solicitação não fornecido');
+            return;
+        }
+        
+        const modal = document.getElementById('rejection-modal');
+        const reasonTextarea = document.getElementById('rejection-reason');
+        
+        if (!modal) {
+            console.error('Modal de rejeição não encontrado');
+            showErrorMessage('Erro interno: modal não encontrado');
+            return;
+        }
+        
+        if (!reasonTextarea) {
+            console.warn('Textarea de motivo não encontrado');
+        } else {
+            reasonTextarea.value = '';
+        }
+        
+        selectedRequestId = requestId;
+        modal.classList.remove('hidden');
+        
+        console.log('Modal de rejeição aberto para solicitação:', requestId);
+        
+    } catch (error) {
+        console.error('Erro ao abrir modal de rejeição:', error);
+        showErrorMessage('Erro ao abrir modal de rejeição');
+    }
 }
 
 function closeRejectionModal() {
-    selectedRequestId = null;
-    document.getElementById('rejection-modal').classList.add('hidden');
+    try {
+        const modal = document.getElementById('rejection-modal');
+        if (modal) {
+            modal.classList.add('hidden');
+        }
+        selectedRequestId = null;
+        
+        console.log('Modal de rejeição fechado');
+        
+    } catch (error) {
+        console.error('Erro ao fechar modal:', error);
+    }
 }
 
 async function confirmRejection() {

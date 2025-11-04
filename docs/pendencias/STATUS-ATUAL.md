@@ -884,12 +884,13 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 **Testes Criados:**
 
 - `backend/test_admin_logs.py` (102 linhas)
- - Testes de endpoints de auditoria
- - Validação de filtros e paginação
+- Testes de endpoints de auditoria
+- Validação de filtros e paginação
  
 - `backend/validar_dashboard.py` (249 linhas)
- - 4 testes E2E completos (100% pass):
- 1. Test health_detailed 2. Test admin_logs 3. Test filters 4. Test pagination **Total de Testes:**
+- 4 testes E2E completos (100% pass):
+
+ 1.Test health_detailed 2. Test admin_logs 3. Test filters 4. Test pagination **Total de Testes:**
 
 - Backend: 6 testes (pytest)
 - Frontend: 23 testes (Jest)
@@ -904,25 +905,27 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 
 **Implementado em 01/11/2025 (commit e58b032):**
 
-1. **Rotação Automática de Logs** (4 horas) CONCLUÍDO
- - Implementado compressão de logs > 7 dias (.jsonl → .jsonl.gz)
- - Implementado retenção configurável (padrão 60 dias via `LOG_RETENTION_DAYS`)
- - Implementado monitoramento de disco (limite 10GB plano B1)
- - Implementado alertas quando disco atinge 80% (8GB)
- - Gera relatório de espaço economizado
- - Testado localmente com sucesso (compressão + deleção funcionando)
- - Arquivo: `backend/log_rotation.py` (289 linhas)
- - Agendamento: Adicionar cron ou Azure Function Timer Trigger
+1.**Rotação Automática de Logs** (4 horas) CONCLUÍDO
 
-2. **Autenticação no Endpoint** (2 horas) CONCLUÍDO
- - Decorator `@require_auth` criado em `backend/app.py`
- - Aplicado ao endpoint GET `/api/admin/logs`
- - Valida `Authorization: Bearer <token>` header
- - Retorna 401 se sem token
- - Retorna 403 se token inválido/expirado
- - Valida audience (client_id) para prevenir token hijacking
- - Loga todos os acessos com user_id e email
- - Injeta `request.user_info` no contexto
+- Implementado compressão de logs > 7 dias (.jsonl → .jsonl.gz)
+- Implementado retenção configurável (padrão 60 dias via `LOG_RETENTION_DAYS`)
+- Implementado monitoramento de disco (limite 10GB plano B1)
+- Implementado alertas quando disco atinge 80% (8GB)
+- Gera relatório de espaço economizado
+- Testado localmente com sucesso (compressão + deleção funcionando)
+- Arquivo: `backend/log_rotation.py` (289 linhas)
+- Agendamento: Adicionar cron ou Azure Function Timer Trigger
+
+2.**Autenticação no Endpoint** (2 horas) CONCLUÍDO
+
+- Decorator `@require_auth` criado em `backend/app.py`
+- Aplicado ao endpoint GET `/api/admin/logs`
+- Valida `Authorization: Bearer <token>` header
+- Retorna 401 se sem token
+- Retorna 403 se token inválido/expirado
+- Valida audience (client_id) para prevenir token hijacking
+- Loga todos os acessos com user_id e email
+- Injeta `request.user_info` no contexto
 
 **Resultado:**
 
@@ -933,26 +936,29 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 
 **Entregas Completas:**
 
-1. **Documentação Técnica** CONCLUÍDO
- - `docs/VERSOES.md` (200+ linhas) - Todas as versões documentadas
- - `docs/INDEX.md` (280+ linhas) - Índice central com troubleshooting
- - `docs/AZURE_DEPLOY.md` (v2.0.0) - Deploy e rollback automatizados
- - `docs/AZURE_MONITOR.md` (430+ linhas) - Monitoramento completo
- - `README.md` - Seção deploy/operações atualizada
+1.**Documentação Técnica** CONCLUÍDO
 
-2. **Scripts de Automação** CONCLUÍDO
- - `scripts/configure_azure_all_settings.ps1` - Config Azure
- - `scripts/deploy_production.py` (350+ linhas) - Deploy automatizado
- - `scripts/rollback.py` (350+ linhas) - Rollback automatizado
- - `scripts/configure_azure_monitor.ps1` (200+ linhas) - Monitor setup
- - **Status:** 4/4 scripts prontos + documentação completa
+- `docs/VERSOES.md` (200+ linhas) - Todas as versões documentadas
+- `docs/INDEX.md` (280+ linhas) - Índice central com troubleshooting
+- `docs/AZURE_DEPLOY.md` (v2.0.0) - Deploy e rollback automatizados
+- `docs/AZURE_MONITOR.md` (430+ linhas) - Monitoramento completo
+- `README.md` - Seção deploy/operações atualizada
 
-3. **Azure Monitor (Documentado, pronto para usar)** CONCLUÍDO
- - Documentação completa em AZURE_MONITOR.md
- - Script automatizado de configuração
- - 6 alertas críticos definidos
- - Análise de custos (grátis!)
- - **Status:** Pronto para configurar quando necessário (custo zero)
+2.**Scripts de Automação** CONCLUÍDO
+
+- `scripts/configure_azure_all_settings.ps1` - Config Azure
+- `scripts/deploy_production.py` (350+ linhas) - Deploy automatizado
+- `scripts/rollback.py` (350+ linhas) - Rollback automatizado
+- `scripts/configure_azure_monitor.ps1` (200+ linhas) - Monitor setup
+- **Status:** 4/4 scripts prontos + documentação completa
+
+3.**Azure Monitor (Documentado, pronto para usar)** CONCLUÍDO
+
+- Documentação completa em AZURE_MONITOR.md
+- Script automatizado de configuração
+- 6 alertas críticos definidos
+- Análise de custos (grátis!)
+- **Status:** Pronto para configurar quando necessário (custo zero)
 
 **Nota:** Não há ambiente de staging - arquitetura simplificada com apenas Local e Produção.
 
@@ -1023,30 +1029,34 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 
 **O que criar:**
 
-1. **Sistema de Monitoramento 24/7**
- - Monitorar disponibilidade de endpoints
- - Monitorar taxa de sucesso/falha de logins
- - Monitorar tempo de resposta
- - Monitorar uso de recursos (CPU, memória, disco)
+1.**Sistema de Monitoramento 24/7**
 
-2. **Sistema de Alertas**
- - Alertas por e-mail/SMS para eventos críticos:
- - Site fora do ar
- - Falhas em massa de login (>10 em 5 min)
- - Comportamento suspeito (tentativas de invasão)
- - Disco cheio
- - Taxa de erro elevada (>5%)
+- Monitorar disponibilidade de endpoints
+- Monitorar taxa de sucesso/falha de logins
+- Monitorar tempo de resposta
+- Monitorar uso de recursos (CPU, memória, disco)
 
-3. **Dashboards de Métricas**
- - Dashboard de uso (quantos logins/dia, pico de acesso)
- - Dashboard de performance (tempo de resposta médio)
- - Dashboard de saúde (status de todos os componentes)
- - Dashboard de segurança (tentativas de ataque)
+2.**Sistema de Alertas**
 
-4. **Ferramentas:**
- - Azure Monitor (alertas e métricas)
- - Application Insights (logs e traces)
- - Dashboards customizados no Azure Portal
+- Alertas por e-mail/SMS para eventos críticos:
+- Site fora do ar
+- Falhas em massa de login (>10 em 5 min)
+- Comportamento suspeito (tentativas de invasão)
+- Disco cheio
+- Taxa de erro elevada (>5%)
+
+3.**Dashboards de Métricas**
+
+- Dashboard de uso (quantos logins/dia, pico de acesso)
+- Dashboard de performance (tempo de resposta médio)
+- Dashboard de saúde (status de todos os componentes)
+- Dashboard de segurança (tentativas de ataque)
+
+4.**Ferramentas:**
+
+- Azure Monitor (alertas e métricas)
+- Application Insights (logs e traces)
+- Dashboards customizados no Azure Portal
 
 **Entregáveis:**
 
@@ -1061,40 +1071,45 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 
 **O que criar:**
 
-1. **Documentação Técnica Completa**
- - Arquitetura detalhada (diagramas, fluxos)
- - Decisões de design e justificativas
- - Segurança e compliance
- - Fluxos de dados (data flow diagrams)
+1.**Documentação Técnica Completa**
 
-2. **Guias de Configuração**
- - Como configurar Google OAuth (passo a passo com screenshots)
- - Como configurar Microsoft Entra ID (passo a passo)
- - Como adicionar novos provedores OIDC
- - Como configurar ambiente de desenvolvimento
+- Arquitetura detalhada (diagramas, fluxos)
+- Decisões de design e justificativas
+- Segurança e compliance
+- Fluxos de dados (data flow diagrams)
 
-3. **Guia de Troubleshooting**
- - Problemas comuns e soluções:
- - "Redirect URI mismatch" - Como resolver
- - "Token validation failed" - Como resolver
- - "CORS error" - Como resolver
- - "Rate limit exceeded" - Como resolver
- - Checklist de diagnóstico
- - Logs de erro mais comuns
+2.**Guias de Configuração**
 
-4. **Manual de Operação**
- - Como acessar logs de auditoria
- - Como exportar relatórios
- - Como adicionar/remover usuários admin
- - Como fazer deploy
- - Como fazer rollback
+- Como configurar Google OAuth (passo a passo com screenshots)
+- Como configurar Microsoft Entra ID (passo a passo)
+- Como adicionar novos provedores OIDC
+- Como configurar ambiente de desenvolvimento
 
-5. **Documentação de APIs**
- - Lista completa de endpoints
- - Exemplos de request/response
- - Códigos de erro e significados
- - Rate limits por endpoint
- - Exemplos de uso (curl, JavaScript, Python)
+3.**Guia de Troubleshooting**
+
+- Problemas comuns e soluções:
+- "Redirect URI mismatch" - Como resolver
+- "Token validation failed" - Como resolver
+- "CORS error" - Como resolver
+- "Rate limit exceeded" - Como resolver
+- Checklist de diagnóstico
+- Logs de erro mais comuns
+
+4.**Manual de Operação**
+
+- Como acessar logs de auditoria
+- Como exportar relatórios
+- Como adicionar/remover usuários admin
+- Como fazer deploy
+- Como fazer rollback
+
+5.**Documentação de APIs**
+
+- Lista completa de endpoints
+- Exemplos de request/response
+- Códigos de erro e significados
+- Rate limits por endpoint
+- Exemplos de uso (curl, JavaScript, Python)
 
 **Entregáveis:**
 
@@ -1109,41 +1124,46 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 
 **O que criar:**
 
-1. **Procedimentos de Backup**
- - Backup automático semanal de:
- - Configurações Azure (App Settings)
- - Logs de auditoria (últimos 90 dias)
- - Documentação
- - Testar restauração de backup
- - Documentar processo de restore
+1.**Procedimentos de Backup**
 
-2. **Plano de Recuperação de Desastres**
- - Cenário 1: Azure fora do ar
- - Cenário 2: Banco de dados corrompido
- - Cenário 3: Configuração quebrada
- - Cenário 4: Código com bug crítico
- - Procedimentos de recuperação para cada cenário
- - Tempo máximo de recuperação (RTO): 4 horas
- - Ponto máximo de perda de dados (RPO): 24 horas
+- Backup automático semanal de:
+- Configurações Azure (App Settings)
+- Logs de auditoria (últimos 90 dias)
+- Documentação
+- Testar restauração de backup
+- Documentar processo de restore
 
-3. **Cronograma de Manutenção**
- - Atualizações de segurança: Toda segunda-feira 8h
- - Revisão de logs: Toda sexta-feira
- - Limpeza de logs antigos: Automático (diário)
- - Revisão de dependências: Mensal
- - Testes de backup: Trimestral
+2.**Plano de Recuperação de Desastres**
 
-4. **Canais de Suporte**
- - E-mail: [suporte@caracore.com.br]
- - Sistema de tickets (ex: GitHub Issues)
- - Telefone para emergências: (41) XXXX-XXXX
- - Horário de atendimento: 9h-18h (dias úteis)
+- Cenário 1: Azure fora do ar
+- Cenário 2: Banco de dados corrompido
+- Cenário 3: Configuração quebrada
+- Cenário 4: Código com bug crítico
+- Procedimentos de recuperação para cada cenário
+- Tempo máximo de recuperação (RTO): 4 horas
+- Ponto máximo de perda de dados (RPO): 24 horas
 
-5. **SLAs (Service Level Agreements)**
- - Disponibilidade: 99.5% (permitido 3.6 horas/mês de downtime)
- - Tempo de resposta inicial: 4 horas (dias úteis)
- - Tempo de resolução de bugs críticos: 24 horas
- - Tempo de resolução de bugs menores: 5 dias úteis
+3.**Cronograma de Manutenção**
+
+- Atualizações de segurança: Toda segunda-feira 8h
+- Revisão de logs: Toda sexta-feira
+- Limpeza de logs antigos: Automático (diário)
+- Revisão de dependências: Mensal
+- Testes de backup: Trimestral
+
+4.**Canais de Suporte**
+
+- E-mail: [suporte@caracore.com.br]
+- Sistema de tickets (ex: GitHub Issues)
+- Telefone para emergências: (41) XXXX-XXXX
+- Horário de atendimento: 9h-18h (dias úteis)
+
+5.**SLAs (Service Level Agreements)**
+
+- Disponibilidade: 99.5% (permitido 3.6 horas/mês de downtime)
+- Tempo de resposta inicial: 4 horas (dias úteis)
+- Tempo de resolução de bugs críticos: 24 horas
+- Tempo de resolução de bugs menores: 5 dias úteis
 
 **Entregáveis:**
 
@@ -1313,14 +1333,19 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 - **Aprendizado:** Todo endpoint de API precisa de OPTIONS handler para CORS **Azure Backend Timeout (01/11/2025)** ⭐ RESOLVIDO
 
 - **Problema:** Backend não respondia, timeout infinito
+
 - **Causas:**
+
  1. Startup command sem porta dinâmica (`--bind=0.0.0.0:8000`)
  2. Variável `WEBSITES_PORT` não configurada
  3. Azure não conseguia rotear HTTP → Gunicorn
+
 - **Soluções:**
+
  1. Adicionado `WEBSITES_PORT=8000` nas App Settings
  2. Corrigido startup command: `--bind=0.0.0.0:$PORT`
  3. Reconfigurado todas as 25 variáveis de ambiente
+
 - **Aprendizado:** Azure App Service Python requer `WEBSITES_PORT` + `$PORT` dinâmico **Environment Variables Lost (01/11/2025)** ⭐ RESOLVIDO
 
 - **Problema:** Variáveis mostravam `value: null` no Azure CLI
@@ -1407,18 +1432,21 @@ pip install -r requirements.txt
 **Prioridade ALTA - Baseada nos Testes Automatizados:**
 
 #### 1. Sistema de Autorização Robusto (0% nos testes)
+
 - Implementar middleware de autorização em todos os endpoints
 - Criar sistema de verificação de usuários autorizados
 - Implementar rejeição adequada de usuários não autorizados
 - Adicionar logs de tentativas de acesso não autorizado
 
 #### 2. Proteção de Endpoints (50% nos testes)
+
 - Fortalecer proteção contra acesso sem token
 - Melhorar validação de tokens inválidos/expirados
 - Implementar resposta consistente para tokens inválidos
 - Adicionar rate limiting por usuário
 
 #### 3. Validação de Credenciais (75% nos testes)
+
 - Calibrar sistema de rejeição de credenciais inválidas
 - Implementar throttling para tentativas de login
 - Adicionar logs de tentativas de login falhadas
@@ -1429,12 +1457,14 @@ pip install -r requirements.txt
 **Baseado na Estrutura Atual:**
 
 #### 1. Dashboard de Monitoramento
+
 - Métricas de uso do sistema administrativo
 - Gráficos de autenticações e acessos
 - Alertas para falhas de segurança
 - Relatórios de atividade de usuários
 
 #### 2. Análise de Performance
+
 - Monitoramento de tempo de resposta de APIs
 - Análise de uso de recursos Azure
 - Otimização de queries e carregamento
@@ -1464,7 +1494,8 @@ pip install -r requirements.txt
 ### 2. Estrutura Reorganizada
 
 **Assets Centralizados:**
-```
+
+```text
 secure/
 ├── css/           # Todos os estilos administrativos
 ├── js/            # Todos os scripts administrativos
@@ -1472,7 +1503,8 @@ secure/
 ```
 
 **Scripts de Teste:**
-```
+
+```text
 scripts/
 ├── teste_api_fase_5.py     # Teste automatizado completo
 ├── secrets.txt             # Credenciais para testes
@@ -1481,12 +1513,13 @@ scripts/
 
 ### 3. Começar Pelo Urgente
 
-**Dia 1: Melhorar Autorização (6h)**
+**[Dia 1]: Melhorar Autorização (6h)**
+
 - Implementar middleware de auth em todos os endpoints protegidos
 - Criar testes para verificação de usuários autorizados
 - Adicionar logs de segurança
 
-**Semana 2: Monitoramento, Docs, Manutenção**
+**[Semana 2]: Monitoramento, Docs, Manutenção**
 
 - Seguir checklist da Fase 4
 - 10 dias de trabalho focado
@@ -1498,14 +1531,17 @@ scripts/
 ### Problema: "CORS policy has blocked..." no console do navegador
 
 **Sintomas:**
+
 - Dashboard não carrega logs
 - Console mostra: `Access to fetch at 'https://caracore-backend-docker.azurewebsites.net/api/admin/logs' from origin 'https://www.caracore.com.br' has been blocked by CORS policy`
 - Backend responde OK com `curl` ou Postman
 
 **Causa Raiz:**
+
 - Falta handler OPTIONS para requisições preflight
 
 **Solução:**
+
 ```python
 # backend/app.py
 @app.route("/api/admin/logs", methods=["OPTIONS"])
@@ -1514,6 +1550,7 @@ def admin_logs_preflight():
 ```
 
 **Verificação:**
+
 ```powershell
 # Deve retornar 204
 curl -X OPTIONS https://caracore-backend-docker.azurewebsites.net/api/admin/logs -I
@@ -1532,17 +1569,20 @@ curl -X OPTIONS https://caracore-backend-docker.azurewebsites.net/api/admin/logs
 **Causas Possíveis:**
 
 **1. Porta não configurada:**
+
 ```powershell
 # Verificar se WEBSITES_PORT está configurado
 az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --query "[?name=='WEBSITES_PORT']"
 ```
 
 **Solução:**
+
 ```powershell
 az webapp config appsettings set --name caracore-backend --resource-group rg-caracore --settings WEBSITES_PORT=8000
 ```
 
 **2. Startup command errado:**
+
 ```bash
 # ERRADO (porta hardcoded)
 gunicorn --bind=0.0.0.0:8000 --timeout 600 app:app
@@ -1552,11 +1592,13 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 ```
 
 **Solução:**
+
 ```powershell
 az webapp config set --name caracore-backend --resource-group rg-caracore --startup-file "gunicorn --bind=0.0.0.0:`$PORT --timeout 600 app:app"
 ```
 
 **3. Cold start (B1 tier):**
+
 - Primeira requisição pode demorar 45-60 segundos
 - Aguardar e tentar novamente
 
@@ -1565,14 +1607,18 @@ az webapp config set --name caracore-backend --resource-group rg-caracore --star
 ### Problema: Variáveis de ambiente perdidas no Azure
 
 **Sintomas:**
+
 - `az webapp config show` mostra `"value": null`
 - Backend retorna 500 por falta de `ORIGIN_ALLOWED`, `CLIENT_ID`, etc.
 
 **Causa Raiz:**
+
 - Comando `az webapp config appsettings set` com múltiplos `--settings` não persiste corretamente
 
 **Solução:**
+
 1. Criar `secrets.txt` (git-ignored):
+
 ```ini
 GOOGLE_CLIENT_ID=123456.apps.googleusercontent.com
 GOOGLE_CLIENT_SECRET=GOCSPX-abc...
@@ -1580,12 +1626,14 @@ ORIGIN_ALLOWED=https://www.caracore.com.br
 # ... outras 22 variáveis
 ```
 
-2. Usar script automatizado:
+1. Usar script automatizado:
+
 ```powershell
 .\scripts\configure_azure_all_settings.ps1
 ```
 
 **Verificação:**
+
 ```powershell
 # Deve mostrar todas as 25 variáveis com valores (não null)
 az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --output table
@@ -1596,6 +1644,7 @@ az webapp config appsettings list --name caracore-backend --resource-group rg-ca
 ### Problema: Dashboard carrega mas não mostra logs
 
 **Sintomas:**
+
 - Dashboard abre sem erros
 - Cards de estatísticas mostram "0"
 - Nenhum log na tabela
@@ -1603,6 +1652,7 @@ az webapp config appsettings list --name caracore-backend --resource-group rg-ca
 **Causas Possíveis:**
 
 **1. Logs vazios no backend:**
+
 ```bash
 # SSH no Azure App Service
 ls -lh /home/site/wwwroot/logs/
@@ -1647,13 +1697,16 @@ O que falta são **otimizações e profissionalização**:
 - ⏳ Rotação de logs (segurança)
 - ⏳ Testes E2E (qualidade)
 - ⏳ Monitoramento 24/7 (confiabilidade)
-**Dia 2: Fortalecer Segurança (4h)**
+
+**[Dia 2]: Fortalecer Segurança (4h)**
+
 - Melhorar proteção de endpoints sem token
 - Implementar validação robusta de tokens inválidos
 - Calibrar rejeição de credenciais inválidas
 - Testar com `teste_api_fase_5.py`
 
-**Dia 3: Monitoramento (4h)**
+**[Dia 3]: Monitoramento (4h)**
+
 - Implementar dashboard básico de métricas
 - Configurar alertas para falhas de segurança
 - Criar relatórios de atividade automáticos
@@ -1670,24 +1723,28 @@ O que falta são **otimizações e profissionalização**:
 ## 🏆 CONQUISTAS ALCANÇADAS
 
 ### ✅ Sistema 100% Funcional em Produção
+
 - CaraCore operacional em https://www.caracore.com.br
 - Backend estável em Azure Container Registry
 - Autenticação OAuth 2.1 + OIDC completamente funcional
 - Interface administrativa completa e organizada
 
 ### ✅ Arquitetura Limpa e Manutenível  
+
 - CSS e JavaScript completamente centralizados
 - Configuração unificada em arquivo único
 - Estrutura de pastas organizada e consistente
 - Zero CSS inline ou JavaScript hardcoded
 
 ### ✅ Validação Automatizada
+
 - 22 testes abrangendo toda funcionalidade
 - Relatórios automáticos em formato JSON
 - Sistema de monitoramento contínuo implementado
 - 77.3% de taxa de sucesso validada
 
 ### ✅ Segurança Implementada
+
 - Autenticação JWT robusta
 - Headers de segurança configurados
 - Rate limiting implementado
@@ -1698,12 +1755,14 @@ O que falta são **otimizações e profissionalização**:
 ## 🔮 VISÃO DE FUTURO
 
 **CaraCore evoluirá para:**
+
 - Sistema de autorização granular (Fase 6)
 - Dashboard de analytics avançado (Fase 7)  
 - API pública para integrações (Fase 8)
 - Mobile app nativo (Fase 9)
 
 **Mantendo sempre:**
+
 - Testes automatizados >90%
 - Arquitetura limpa e organizada
 - Segurança como prioridade #1

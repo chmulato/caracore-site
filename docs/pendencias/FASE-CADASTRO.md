@@ -1,253 +1,345 @@
-# Fase 4 - Sistema de Cadastro e Controle de Acesso
+# Fase 6 - Sistema de Autorização e Melhorias de Segurança
 
-**Documento:** Enumeração de Pendências 
-**Fase:** 4 - Controle de Acesso, Monitoramento e Documentação 
-**Data:** 02/11/2025 
-**Status:** **100% CONCLUÍDA** 
-**Branch de Desenvolvimento:** `main` (merged)
-
----
-
-## **FASE 4 COMPLETAMENTE IMPLEMENTADA** 
-
-### Visão Geral FINAL
-
-| Métrica | Valor |
-|---------|-------|
-| **Total de Itens** | 4 |
-| **Total de Tarefas** | 59 |
-| **Estimativa Total** | 5 dias |
-| **Tempo Real** | 3 dias |
-| **Arquivos Novos** | 8 |
-| **Arquivos Modificados** | 5 |
-| **Linhas de Código** | ~2.500 (superou estimativa) |
-| **Status Produção** | **ONLINE** |
+**Documento:** Enumeração de Pendências - ATUALIZADO
+**Fase:** 6 - Sistema de Autorização Robusto e Melhorias de Segurança
+**Data:** 04/11/2025
+**Status:** **PLANEJADO** (baseado nos resultados dos testes automatizados)
+**Branch de Desenvolvimento:** `main` (estável)
 
 ---
 
-## **ITEM 13: SISTEMA DE CONTROLE DE ACESSO (AUTORIZAÇÃO) - CONCLUÍDO**
+## **CONTEXTO - FASES ANTERIORES CONCLUÍDAS**
+
+### Status das Fases Concluídas
+
+| Fase | Status | Conclusão | Validação |
+|------|--------|-----------|-----------|
+| **Fase 1-3** | ✅ CONCLUÍDAS | Outubro 2025 | Sistema funcional |
+| **Fase 4** | ✅ CONCLUÍDA | 02/11/2025 | Interface admin completa |
+| **Fase 5** | ✅ CONCLUÍDA | 04/11/2025 | CSS/JS reorganizados |
+| **Validação** | ✅ EXECUTADA | 04/11/2025 | 77.3% testes aprovados |
+
+### Resultados dos Testes Automatizados (04/11/2025)
+
+**Sistema Funcional:** ✅ CaraCore operacional em produção
+**Taxa de Sucesso:** 77.3% (17/22 testes aprovados)
+
+**Áreas que Requerem Melhoria (5 testes falharam):**
+
+- 🔴 **Sistema de Autorização:** 0% (0/2 testes) - Não implementado
+- 🟡 **Validação de Credenciais:** 75% (3/4 testes) - Requer calibração
+- 🟡 **Proteção de Endpoints:** 50% (2/4 testes) - Requer fortalecimento
+
+---
+
+## **FASE 6: SISTEMA DE AUTORIZAÇÃO ROBUSTO**
+
+**Prioridade:** 🔴 CRÍTICA
+**Baseado em:** Resultados dos testes automatizados
+**Objetivo:** Elevar taxa de sucesso dos testes de 77.3% para >90%
+**Estimativa:** 1 semana
+**Meta:** Resolver os 5 testes que falharam
+
+---
+
+## **ITEM 1: SISTEMA DE AUTORIZAÇÃO ROBUSTO - CRÍTICO**
 
 **Prioridade:** 🔴 CRÍTICA 
-**Estimativa:** 1 dia (8 horas) 
-**Tempo Real:** 1 dia 
-**Status:** **CONCLUÍDO (38/38 tarefas)** 
-**Responsável:** Backend + Frontend
+**Status:** ⚪ NÃO IMPLEMENTADO (0% nos testes)
+**Estimativa:** 2 dias 
+**Responsável:** Backend + Testes
 
-### Justificativa
+### Problema Identificado
 
-Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 51 após autenticação OAuth. Este item adiciona uma camada de **autorização** para controlar quem pode acessar as páginas protegidas através de uma lista de usuários autorizados.
+**Testes que Falharam:**
+- ❌ Verificação de Usuário Autorizado
+- ❌ Rejeição de Usuário Não Autorizado
 
----
+**Impacto:** Sistema permite acesso a qualquer usuário autenticado, sem verificação de autorização.
 
-### 📦 1. Backend - Estrutura de Dados (0/4)
+### Solução Requerida
 
-- [ ] **1.1** Criar diretório `backend/data/`
-- [ ] **1.2** Criar arquivo `backend/data/authorized_users.json`
-- [ ] **1.3** Definir estrutura JSON completa:
+#### 1. Implementar Middleware de Autorização
 
- ```json
- {
- "version": "1.0",
- "updated_at": "2025-11-02T10:00:00Z",
- "users": [...],
- "pending_requests": [...]
- }
- ```
+**Arquivo:** `backend/authorization_middleware.py` (~200 linhas)
 
-- [ ] **1.4** Adicionar usuários iniciais (pelo menos 1 admin)
+- [ ] **1.1** Criar decorator `@require_authorization`
+- [ ] **1.2** Verificar se usuário está na lista autorizada
+- [ ] **1.3** Retornar 403 Forbidden para usuários não autorizados
+- [ ] **1.4** Adicionar logs de tentativas não autorizadas
 
-**Entregável:** Arquivo JSON com estrutura definida e funcional
+#### 2. Criar Sistema de Usuários Autorizados
 
----
+**Arquivo:** `backend/data/authorized_users.json`
 
-### 🔌 2. Backend - Endpoints API (0/5)
+```json
+{
+  "version": "1.0",
+  "updated_at": "2025-11-04T19:30:00Z",
+  "users": [
+    {
+      "email": "suporte@caracore.com.br",
+      "name": "Super Admin",
+      "role": "super_admin",
+      "provider": "google",
+      "status": "active",
+      "authorized_at": "2025-11-04T19:30:00Z"
+    }
+  ]
+}
+```
 
-- [ ] **2.1** `POST /api/check-authorization`
- - Input: `{ "email": "user@example.com" }`
- - Output: `{ "authorized": true/false, "role": "admin/user" }`
- - Verificar se usuário está autorizado
+#### 3. Aplicar Autorização em Endpoints Protegidos
 
-- [ ] **2.2** `GET /api/admin/users`
- - Requer autenticação admin
- - Output: Lista de todos os usuários autorizados
- - Incluir users + pending_requests
+- [ ] **3.1** `/api/admin/users` - Requer autorização
+- [ ] **3.2** `/api/admin/access-requests` - Requer autorização  
+- [ ] **3.3** `/auth/super-admin` - Manter funcional
+- [ ] **3.4** Páginas admin HTML - Verificar autorização
 
-- [ ] **2.3** `POST /api/admin/users`
- - Requer autenticação admin
- - Input: `{ "email", "name", "provider", "role" }`
- - Output: Usuário adicionado + confirmação
+### Critério de Aceite
 
-- [ ] **2.4** `DELETE /api/admin/users/:email`
- - Requer autenticação admin
- - Remove autorização de um usuário
- - Validar que não é o último admin
-
-- [ ] **2.5** `POST /api/request-access`
- - Público (não requer autenticação)
- - Input: `{ "email", "name", "provider", "message" }`
- - Output: Solicitação registrada
-
-**Entregável:** 5 endpoints funcionais com validações e testes
+- ✅ Teste "Verificação de Usuário Autorizado" deve PASSAR
+- ✅ Teste "Rejeição de Usuário Não Autorizado" deve PASSAR
+- ✅ Usuários não autorizados recebem 403 Forbidden
+- ✅ Logs registram tentativas não autorizadas
 
 ---
 
-### 3. Backend - Módulo Python (0/6)
+## **ITEM 2: PROTEÇÃO DE ENDPOINTS - ALTA PRIORIDADE**
 
-**Arquivo:** `backend/authorization.py` (~250 linhas)
+**Prioridade:** � ALTA
+**Status:** 🟡 PARCIAL (50% nos testes)
+**Estimativa:** 1 dia
+**Responsável:** Backend + Segurança
 
-- [ ] **3.1** `load_authorized_users()` → dict
- - Carregar dados do JSON
- - Retornar estrutura completa (users + pending_requests)
- - Criar arquivo se não existir
+### Problemas Identificados
 
-- [ ] **3.2** `save_authorized_users(data)` → bool
- - Salvar dados no JSON
- - Validar estrutura antes de salvar
- - Fazer backup antes de sobrescrever
+**Testes que Falharam:**
 
-- [ ] **3.3** `is_user_authorized(email)` → bool
- - Verificar se email está na lista de users
- - Verificar se status == "active"
- - Case-insensitive
+- ❌ Proteção Sem Token (Status: NO RESPONSE)
+- ❌ Proteção Token Inválido (Sistema aceitou token inválido)
 
-- [ ] **3.4** `add_authorized_user(user_data)` → dict
- - Adicionar novo usuário à lista
- - Validar campos obrigatórios
- - Prevenir duplicatas
+### Soluções Requeridas
 
-- [ ] **3.5** `remove_authorized_user(email)` → bool
- - Remover usuário da lista
- - Validar que não é o último admin
- - Retornar sucesso/erro
+#### 1. Fortalecer Validação de Token JWT
 
-- [ ] **3.6** `get_user_role(email)` → str
- - Retornar role do usuário (admin/user)
- - Retornar None se não autorizado
+**Arquivo:** `backend/app.py` (modificações)
 
-**Entregável:** Módulo Python completo com funções testadas
+- [ ] **2.1** Validar existência de token em Authorization header
+- [ ] **2.2** Verificar assinatura JWT corretamente
+- [ ] **2.3** Validar expiração do token
+- [ ] **2.4** Retornar 401 Unauthorized para tokens inválidos
 
----
+#### 2. Implementar Proteção Consistente
 
-### 4. Backend - Integração com app.py (0/1)
+- [ ] **2.5** Middleware que intercepta TODAS as requisições protegidas
+- [ ] **2.6** Resposta padronizada para acesso sem token
+- [ ] **2.7** Resposta padronizada para token inválido/expirado
+- [ ] **2.8** Logging de tentativas com tokens inválidos
 
-- [ ] **4.1** Modificar `backend/app.py` (+150 linhas)
- - Importar módulo authorization
- - Adicionar 5 endpoints de API
- - Adicionar middleware de verificação admin
- - Adicionar tratamento de erros
- - Adicionar logging de eventos de autorização
+### Critério de Aceite
 
-**Entregável:** app.py atualizado com todos os endpoints funcionais
+- ✅ Teste "Proteção Sem Token" deve retornar 401 Unauthorized
+- ✅ Teste "Proteção Token Inválido" deve retornar 401 Unauthorized
+- ✅ Todos os endpoints protegidos validam token corretamente
 
 ---
 
-### 5. Frontend - Páginas HTML (0/3)
+## **ITEM 3: VALIDAÇÃO DE CREDENCIAIS - MÉDIA PRIORIDADE**
 
-- [ ] **5.1** `secure/access-denied.html` (~180 linhas)
- - Design: Página de erro amigável
- - Conteúdo:
- - Título: "Acesso Negado"
- - Mensagem: Explicar que o acesso requer autorização
- - Botão: "Solicitar Acesso" → request-access.html
- - Botão: "Fazer Logout"
- - Link: Voltar para página inicial
- - Estilo: Consistente com restrita.html
- - JavaScript: Detectar provedor usado no login
+**Prioridade:** 🟡 MÉDIA
+**Status:** 🟡 PARCIAL (75% nos testes)
+**Estimativa:** 0.5 dia
+**Responsável:** Backend
 
-- [ ] **5.2** `secure/request-access.html` (~250 linhas)
- - Design: Formulário profissional
- - Campos:
- - Email (pré-preenchido se possível)
- - Nome completo
- - Provedor (Google/Microsoft - pré-selecionado)
- - Motivo da solicitação (textarea)
- - Validações client-side
- - Submit: POST /api/request-access
- - Feedback: Toast de sucesso/erro
- - Redirecionamento após envio
+### Problema Identificado
 
-- [ ] **5.3** `secure/admin-users.html` (~400 linhas)
- - Design: Dashboard administrativo completo
- - Seções:
- 1. **Lista de Usuários Autorizados**
- - Tabela com: Email, Nome, Provider, Role, Data Aprovação
- - Ações: Editar role, Remover acesso
- - Filtros: Por provider, por role
- - Busca: Por email/nome
- 2. **Solicitações Pendentes**
- - Cards com: Email, Nome, Provider, Motivo, Data
- - Ações: Aprovar, Rejeitar
- - Badge de contagem de pendentes
- 3. **Adicionar Usuário Manualmente**
- - Formulário rápido
- - Campos: Email, Nome, Provider, Role
- - Integrações:
- - GET /api/admin/users (carregar dados)
- - POST /api/admin/users (adicionar)
- - DELETE /api/admin/users/:email (remover)
- - Real-time: Atualização automática a cada 30s
+**Teste que Falhou:**
+- ❌ Rejeição de Credenciais Inválidas (Sistema não rejeitou credenciais inválidas)
 
-**Entregável:** 3 páginas HTML completas, responsivas e funcionais
+### Solução Requerida
+
+#### 1. Calibrar Sistema de Autenticação
+
+**Arquivo:** `backend/app.py` (endpoint `/auth/super-admin`)
+
+- [ ] **3.1** Verificar se hash da senha está correto
+- [ ] **3.2** Retornar 401 para credenciais inválidas (email ou senha)
+- [ ] **3.3** Adicionar throttling para tentativas consecutivas
+- [ ] **3.4** Logging de tentativas de login falhadas
+
+### Critério de Aceite
+
+- ✅ Teste "Rejeição de Credenciais Inválidas" deve PASSAR
+- ✅ Credenciais incorretas retornam 401 Unauthorized
+- ✅ Sistema registra tentativas de login falhadas
 
 ---
 
-### 6. Frontend - JavaScript (0/2)
+## **ITEM 4: SISTEMA DE MONITORAMENTO E ALERTAS**
 
-- [ ] **6.1** `secure/js/authorization-check.js` (~120 linhas)
- - **Função principal:** `checkAuthorization(userEmail)`
- - **Funcionalidades:**
- - Fazer POST /api/check-authorization
- - Se autorizado: continuar navegação
- - Se não autorizado: redirecionar para access-denied.html
- - Cache: Armazenar resultado por 5 minutos
- - Error handling: Lidar com erros de rede
- - **Integração:**
- - Chamar após login bem-sucedido
- - Chamar ao carregar restrita.html
- - Chamar ao acessar áreas protegidas
+**Prioridade:** 🟢 BAIXA
+**Status:** ⚪ PLANEJADO (para após 90% nos testes)
+**Estimativa:** 1 dia
+**Responsável:** DevOps
 
-- [ ] **6.2** `secure/js/admin-users-manager.js` (~400 linhas)
- - **Classes:**
- - `UsersManager` - Gerenciar lista de usuários
- - `RequestsManager` - Gerenciar solicitações pendentes
- - **Funcionalidades:**
- - Carregar e renderizar usuários autorizados
- - Carregar e renderizar solicitações pendentes
- - Adicionar novo usuário (formulário)
- - Remover usuário (com confirmação)
- - Aprovar solicitação
- - Rejeitar solicitação
- - Filtrar e buscar usuários
- - Paginação (se necessário)
- - Auto-refresh a cada 30s
- - Notificações toast para ações
- - **UI Components:**
- - Tabela de usuários
- - Cards de solicitações
- - Modal de confirmação
- - Formulário de adição
+### Tarefas Futuras
 
-**Entregável:** 2 arquivos JavaScript completos e testados
+- [ ] **4.1** Dashboard de métricas de segurança
+- [ ] **4.2** Alertas para falhas de autenticação em massa
+- [ ] **4.3** Monitoramento de endpoints críticos
+- [ ] **4.4** Relatórios de auditoria automáticos
 
 ---
 
-### 7. Integração Frontend (0/4)
+## **CRONOGRAMA FASE 6**
 
-- [ ] **7.1** Modificar `secure/callback.html`
- - Após OAuth bem-sucedido
- - Antes de redirecionar para restrita.html
- - Adicionar: `await checkAuthorization(userEmail)`
- - Se não autorizado: redirecionar para access-denied.html
+### Semana 1 (04-08/11/2025)
 
-- [ ] **7.2** Modificar `secure/restrita.html`
- - No onload da página
- - Adicionar: `await checkAuthorization(userEmail)`
- - Se não autorizado: redirecionar para access-denied.html
- - Importar authorization-check.js
+| Dia | Item | Atividades | Horas |
+|-----|------|-----------|-------|
+| **Segunda 04/11** | Item 1 | Sistema de Autorização Completo | 8h |
+| **Terça 05/11** | Item 2 | Proteção de Endpoints | 4h |
+| **Terça 05/11** | Item 3 | Validação de Credenciais | 2h |
+| **Quarta 06/11** | Testes | Executar teste_api_fase_5.py e validar >90% | 2h |
+| **Quinta 07/11** | Item 4 | Monitoramento (se testes >90%) | 8h |
 
-- [ ] **7.3** Modificar `secure/auth.js` (+50 linhas)
- - Adicionar função `checkUserAuthorization()`
- - Integrar com SessionManager
+**Meta:** Taxa de sucesso >90% nos testes automatizados
+
+---
+
+## **ARQUIVOS A IMPLEMENTAR/MODIFICAR**
+
+### Novos Arquivos
+
+1. `backend/authorization_middleware.py` (~200 linhas)
+2. `backend/data/authorized_users.json` (estrutura de dados)
+
+### Arquivos a Modificar
+
+1. `backend/app.py` (adicionar middleware e melhorar validações)
+2. `scripts/teste_api_fase_5.py` (se necessário, ajustar testes)
+
+### Estrutura de Dados Autorização
+
+```json
+{
+  "version": "1.0",
+  "updated_at": "2025-11-04T19:30:00Z",
+  "super_admins": [
+    "suporte@caracore.com.br"
+  ],
+  "authorized_users": [
+    {
+      "email": "user@example.com",
+      "name": "Nome do Usuário", 
+      "role": "admin|user|viewer",
+      "provider": "google|microsoft",
+      "status": "active|inactive",
+      "authorized_at": "2025-11-04T19:30:00Z",
+      "authorized_by": "suporte@caracore.com.br"
+    }
+  ],
+  "pending_requests": []
+}
+```
+
+---
+
+## **CRITÉRIOS DE SUCESSO FASE 6**
+
+### Teste Automatizado
+
+- ✅ Taxa de sucesso >90% no `teste_api_fase_5.py`
+- ✅ Todos os 5 testes que falharam devem PASSAR
+- ✅ Sistema mantém funcionalidades existentes
+
+### Funcionalidades
+
+- ✅ Apenas usuários autorizados acessam endpoints protegidos
+- ✅ Tokens inválidos/ausentes são rejeitados consistentemente
+- ✅ Credenciais inválidas são rejeitadas corretamente
+- ✅ Logs de segurança registram todas as tentativas
+
+### Segurança
+
+- ✅ Middleware de autorização funcional
+- ✅ Proteção robusta em todos os endpoints
+- ✅ Validação JWT correta e segura
+- ✅ Auditoria completa de eventos de segurança
+
+---
+
+## **PRÓXIMOS PASSOS IMEDIATOS**
+
+### Passo 1: Análise dos Testes Falhados
+
+- [ ] Revisar output detalhado do `teste_api_fase_5.py`
+- [ ] Identificar exatamente por que cada teste falhou
+- [ ] Mapear correções necessárias
+
+### Passo 2: Implementar Autorização (Prioridade 1)
+
+- [ ] Criar `backend/authorization_middleware.py`
+- [ ] Criar `backend/data/authorized_users.json`
+- [ ] Aplicar middleware nos endpoints protegidos
+- [ ] Testar autorização funcional
+
+### Passo 3: Fortalecer Segurança (Prioridade 2)
+
+- [ ] Melhorar validação de JWT
+- [ ] Implementar proteção consistente sem token
+- [ ] Calibrar rejeição de credenciais inválidas
+- [ ] Executar testes e validar melhorias
+
+### Passo 4: Validação Final
+
+- [ ] Executar `teste_api_fase_5.py`
+- [ ] Confirmar taxa >90%
+- [ ] Documentar mudanças
+- [ ] Deploy para produção
+
+---
+
+## **NOTAS IMPORTANTES**
+
+1. **Meta Clara:** Elevar taxa de 77.3% para >90% nos testes automatizados
+2. **Foco:** Resolver exatamente os 5 testes que falharam
+3. **Manter:** Todas as funcionalidades existentes funcionais
+4. **Validar:** Executar testes após cada implementação
+5. **Documentar:** Mudanças e melhorias implementadas
+
+---
+
+**Baseado em:** Teste automatizado executado em 04/11/2025 19:05:23
+**Atualizado em:** 04/11/2025 19:30:00
+**Responsável:** Equipe Cara Core
+**Status:** 🔴 Pronto para implementação - Meta: >90% nos testes
+---
+
+**Criado em:** 04/11/2025
+**Atualizado em:** 04/11/2025 
+**Responsável:** Equipe Cara Core Informática
+**Branch:** main (estável)
+**Status:** 🔴 Crítico - Implementação necessária para >90% nos testes
+
+## **REFERÊNCIAS**
+
+- **Teste Automatizado:** `scripts/teste_api_fase_5.py`
+- **Relatório Atual:** `test_report_fase5_20251104_190527.json`
+- **Status Sistema:** `docs/pendencias/STATUS-ATUAL.md`
+- **Backend Produção:** https://caracore-backend-docker.azurewebsites.net
+- **Frontend Produção:** https://www.caracore.com.br
+
+## **VALIDAÇÃO CONTÍNUA**
+
+Após cada implementação:
+```bash
+cd d:\dev\site\cara-core
+python scripts\teste_api_fase_5.py
+```
+
+**Meta:** Taxa de sucesso >90% (atual: 77.3%)
  - Adicionar ao fluxo de login existente
  - Logging de tentativas não autorizadas
 
@@ -595,8 +687,26 @@ Atualmente **qualquer pessoa com conta Google/Microsoft** pode acessar a Área 5
 
 ---
 
-**Criado em:** 01/11/2025 
-**Atualizado em:** 01/11/2025 
-**Responsável:** Equipe Cara Core Informática 
-**Branch:** fase-01 
-**Status:** 🔵 Pronto para desenvolvimento
+**Criado em:** 04/11/2025
+**Atualizado em:** 04/11/2025 
+**Responsável:** Equipe Cara Core Informática
+**Branch:** main (estável)
+**Status:** 🔴 Crítico - Implementação necessária para >90% nos testes
+
+## **REFERÊNCIAS**
+
+- **Teste Automatizado:** `scripts/teste_api_fase_5.py`
+- **Relatório Atual:** `test_report_fase5_20251104_190527.json`
+- **Status Sistema:** `docs/pendencias/STATUS-ATUAL.md`
+- **Backend Produção:** https://caracore-backend-docker.azurewebsites.net
+- **Frontend Produção:** https://www.caracore.com.br
+
+## **VALIDAÇÃO CONTÍNUA**
+
+Após cada implementação:
+```bash
+cd d:\dev\site\cara-core
+python scripts\teste_api_fase_5.py
+```
+
+**Meta:** Taxa de sucesso >90% (atual: 77.3%)

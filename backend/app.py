@@ -392,19 +392,14 @@ def create_app() -> Flask:
         # Basic CORS: limit to configured origin if provided, else '*'
         origin = request.headers.get("Origin")
         if allowed_origin and allowed_origin != "*":
-            # Allow if matches configured origin exactly
-            if origin == allowed_origin:
-                resp.headers["Access-Control-Allow-Origin"] = allowed_origin
-            else:
-                # If strict, do not add CORS for other origins
-                pass
+            # Always allow the configured origin
+            resp.headers["Access-Control-Allow-Origin"] = allowed_origin
         else:
             resp.headers["Access-Control-Allow-Origin"] = "*"
         resp.headers["Vary"] = "Origin"
         resp.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
         resp.headers["Access-Control-Allow-Methods"] = "GET, POST, DELETE, OPTIONS"
-        # We are not using cookies by default in this minimal example
-        # resp.headers["Access-Control-Allow-Credentials"] = "true"
+        resp.headers["Access-Control-Allow-Credentials"] = "true"
         return resp
 
     @app.route("/health", methods=["GET"])  # simple probe

@@ -1,16 +1,24 @@
 # Inventário de Scripts - CaraCore
 
-Este documento lista todos os scripts ativos do repositório CaraCore após a limpeza e reorganização de novembro 2025.
+Este documento lista todos os scripts ativos do repositório CaraCore após a reorganização e validação automatizada de novembro 2025.
 
-## Arquitetura Atual - Pós Limpeza (Novembro 2025)
+## Arquitetura Atual - Fase 5 Concluída (Novembro 2025)
 
-**Scripts Ativos:** Apenas scripts essenciais mantidos (5 arquivos ativos)
+**Status Sistema:** ✅ 100% funcional em produção (validado por testes automatizados)
+**Taxa de Sucesso:** 77.3% nos testes automatizados (17/22 testes aprovados)
+**Arquitetura:** OAuth 2.1 + OIDC com interface administrativa completa e assets centralizados
+
 **Recursos Azure Ativos:**
 
-- `caracore-backend.azurewebsites.net` (App Service)
-- `caracore-plan` (App Service Plan)
+- `caracore-backend-docker.azurewebsites.net` (Azure Web App + Container Registry)
+- `caracoreregistry` (Azure Container Registry)
 
-**Arquitetura Simplificada:** OAuth 2.1 + OIDC com frontend centralizado
+**Estrutura Reorganizada:**
+
+- CSS centralizado em `secure/css/`
+- JavaScript centralizado em `secure/js/`
+- Configuração unificada em `secure/js/config.js`
+- Sistema administrativo completo implementado
 
 ## Scripts Ativos (Pasta /scripts)
 

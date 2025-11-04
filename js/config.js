@@ -35,6 +35,8 @@ const CARA_CORE_DEFAULT_CONFIG = {
   oidc: OIDC_CONFIGS[OIDC_PROVIDER],
   // logging is opt-in; configure a full HTTPS endpoint when available (e.g., App Insights collector)
   logsEndpoint: null,
+  // API Base URL for backend services
+  API_BASE_URL: 'https://caracore-backend-docker.azurewebsites.net',
   googleTokenEndpoint: 'https://caracore-backend-docker.azurewebsites.net/oauth/google/token',
   microsoftTokenEndpoint: 'https://caracore-backend-docker.azurewebsites.net/oauth/microsoft/token',
   pseudoSaltHint: "set-server-side",

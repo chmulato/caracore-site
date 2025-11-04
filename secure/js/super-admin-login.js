@@ -38,12 +38,14 @@ async function handleLogin(e) {
     buttonLoading.classList.remove('hidden');
 
     try {
-        const response = await fetch('https://caracore-backend-docker.azurewebsites.net/auth/super-admin', {
+        const apiUrl = window.CARA_CORE_CONFIG?.API_BASE_URL || 'https://caracore-backend-docker.azurewebsites.net';
+        const response = await fetch(`${apiUrl}/api/admin/auth`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password }),
+            credentials: 'include'
         });
 
         const data = await response.json();

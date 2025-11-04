@@ -88,3 +88,4 @@ obsoletos_*/
 arquivo_correcoes_*/
 backend*.zip
 *log*.zip
+azure_logs/

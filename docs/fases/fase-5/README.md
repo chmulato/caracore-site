@@ -41,7 +41,7 @@ Implementar um sistema administrativo completo para o CaraCore, incluindo gestã
 
 **Credenciais:**
 - Email: `suporte@caracore.com.br`
-- Senha: Protegida por hash bcrypt (atualizada para `***TEST_PASSWORD_REDACTED***`)
+- Senha: Protegida por hash bcrypt (atualizada para `NovaSenh@123`)
 
 ### 2. Painel de Gestão de Usuários
 

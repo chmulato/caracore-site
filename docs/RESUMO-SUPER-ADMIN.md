@@ -64,8 +64,8 @@
 - Adicionadas novas variáveis:
 
 ```text
-SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***
-JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
+SUPER_ADMIN_PASSWORD_HASH=d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5
+JWT_SECRET_KEY=If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw
 ```
 
 #### `secrets.txt.template`
@@ -107,8 +107,8 @@ JWT_SECRET_KEY=xxx...
 |------|-------|
 | Email | [suporte@caracore.com.br] |
 | Senha | [Definida via setup_super_admin.py] |
-| Hash SHA-256 | ***PASSWORD_HASH_REDACTED*** |
-| JWT Secret | ***JWT_SECRET_REDACTED*** |
+| Hash SHA-256 | d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5 |
+| JWT Secret | If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw |
 | URL Login | [https://www.caracore.com.br/secure/super-admin-setup.html] |
 
 ---

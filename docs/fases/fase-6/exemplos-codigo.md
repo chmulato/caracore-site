@@ -419,7 +419,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 # Configurar hash da senha super admin
-# IMPORTANTE: Trocar por hash real da senha "***TEST_PASSWORD_REDACTED***"
+# IMPORTANTE: Trocar por hash real da senha "NovaSenh@123"
 SUPER_ADMIN_PASSWORD_HASH = "$2b$12$..."  # Hash bcrypt da senha atual
 
 @app.route('/auth/super-admin', methods=['POST'])
@@ -583,7 +583,7 @@ def verify_password(password, hash_string):
 
 if __name__ == "__main__":
     # Gerar hash para a senha atual
-    current_password = "***TEST_PASSWORD_REDACTED***"
+    current_password = "NovaSenh@123"
     hash_result = generate_password_hash(current_password)
     
     print(f"Senha: {current_password}")

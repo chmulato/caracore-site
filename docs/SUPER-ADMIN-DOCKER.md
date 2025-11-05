@@ -36,8 +36,8 @@ Adicione no final do arquivo:
 
 ```bash
 # SUPER ADMINISTRADOR
-SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***
-JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
+SUPER_ADMIN_PASSWORD_HASH=d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5
+JWT_SECRET_KEY=If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw
 ```
 
 ### Passo 3: Reiniciar Container
@@ -79,7 +79,7 @@ docker-compose up -d
 - Clique em **+ Add**
 - **Name:** `SUPER_ADMIN_PASSWORD_HASH`
 - **Source:** Manual entry
-- **Value:** `***PASSWORD_HASH_REDACTED***`
+- **Value:** `d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5`
 - Clique em **Add**
 
 #### Passo 4: Adicionar JWT_SECRET_KEY
@@ -87,7 +87,7 @@ docker-compose up -d
 - Clique em **+ Add** novamente
 - **Name:** `JWT_SECRET_KEY`
 - **Source:** Reference a secret (RECOMENDADO) ou Manual entry
-- **Value:** `***JWT_SECRET_REDACTED***`
+- **Value:** `If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw`
 - Clique em **Add**
 
 #### Passo 5: Aplicar e Reiniciar
@@ -114,8 +114,8 @@ az containerapp update \
  --name caracore-backend-docker \
  --resource-group <seu-resource-group> \
  --set-env-vars \
- SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED*** \
- JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
+ SUPER_ADMIN_PASSWORD_HASH=d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5 \
+ JWT_SECRET_KEY=If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw
 ```
 
 ---
@@ -137,8 +137,8 @@ services:
 E defina no `docker/backend.env`:
 
 ```bash
-SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***
-JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
+SUPER_ADMIN_PASSWORD_HASH=d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5
+JWT_SECRET_KEY=If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw
 ```
 
 ---

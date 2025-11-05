@@ -60,7 +60,7 @@ No Google Cloud Console:
 ```json
 {
   "authority": "https://login.microsoftonline.com/189c46ad-e437-48bd-bc87-050ef735c2c7/v2.0",
-  "client_id": "***AZURE_SECRET_REDACTED***",
+  "client_id": "8ef17663-438f-4777-99ca-c5ad5b2a2993",
   "redirect_uri": "https://www.caracore.com.br/secure/index.html",
   "post_logout_redirect_uri": "https://www.caracore.com.br/secure/logout.html",
   "response_type": "code",

@@ -20,8 +20,8 @@
 
 3. **Secrets configurados localmente**
  - `secrets.txt` atualizado com:
- - `SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***`
- - `JWT_SECRET_KEY=***JWT_SECRET_REDACTED***`
+ - `SUPER_ADMIN_PASSWORD_HASH=d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5`
+ - `JWT_SECRET_KEY=If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw`
  - `secrets.txt.template` atualizado
  - `.gitignore` protegendo secrets
 
@@ -61,7 +61,7 @@ Para Container Apps com Docker, há duas opções:
 #### Variável 1: SUPER_ADMIN_PASSWORD_HASH
 
 - **Name:** `SUPER_ADMIN_PASSWORD_HASH`
-- **Value:** `***PASSWORD_HASH_REDACTED***`
+- **Value:** `d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5`
 - **Type:** Plain text (ou Secret se disponível)
 - Clique em **Add**
 
@@ -69,7 +69,7 @@ Para Container Apps com Docker, há duas opções:
 
 - Clique em **+ Add** novamente
 - **Name:** `JWT_SECRET_KEY`
-- **Value:** `***JWT_SECRET_REDACTED***`
+- **Value:** `If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw`
 - **Type:** Secret (recomendado) ou Plain text
 - Clique em **Add**
 
@@ -79,8 +79,8 @@ Adicione as variáveis no seu arquivo de configuração Docker:
 
 ```yaml
 environment:
- - SUPER_ADMIN_PASSWORD_HASH=***PASSWORD_HASH_REDACTED***
- - JWT_SECRET_KEY=***JWT_SECRET_REDACTED***
+ - SUPER_ADMIN_PASSWORD_HASH=d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5
+ - JWT_SECRET_KEY=If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw
 ```
 
 ### Passo 4: Salvar e Reiniciar
@@ -220,8 +220,8 @@ python setup_super_admin.py
 |------|-------|
 | **E-mail** | [suporte@caracore.com.br] |
 | **Senha** | [Configurada via setup_super_admin.py] |
-| **Password Hash** | ***PASSWORD_HASH_REDACTED*** |
-| **JWT Secret** | ***JWT_SECRET_REDACTED*** |
+| **Password Hash** | d05cf211ef26207e05c80c909c97886e70ea6d3da5c4b1194a8a8e7599c95ba5 |
+| **JWT Secret** | If7nPQdpHvhX7pspCeZx2y6wVSQhnGGZ1pgkV9ALdrw |
 | **URL Login** | [https://www.caracore.com.br/secure/super-admin-setup.html] |
 | **Backend** | [https://caracore-backend-docker.azurewebsites.net/ |
 

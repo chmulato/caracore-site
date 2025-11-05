@@ -58,8 +58,8 @@ def test_change_password_endpoint(token):
     # Dados de teste
     test_data = {
         "current_password": SUPER_ADMIN_PASSWORD,
-        "new_password": "***TEST_PASSWORD_REDACTED***!",
-        "confirm_password": "***TEST_PASSWORD_REDACTED***!"
+        "new_password": "NovaSenh@123!",
+        "confirm_password": "NovaSenh@123!"
     }
     
     headers = {
@@ -96,7 +96,7 @@ def test_change_password_endpoint(token):
             print(f"   Instruções disponíveis: {len(data.get('instructions', []))}")
             
             # Verificar se o hash está correto
-            expected_hash = hashlib.sha256("***TEST_PASSWORD_REDACTED***!".encode()).hexdigest()
+            expected_hash = hashlib.sha256("NovaSenh@123!".encode()).hexdigest()
             actual_hash = data.get('new_password_hash')
             
             if expected_hash == actual_hash:
@@ -143,7 +143,7 @@ def test_password_validation():
             "name": "Confirmação não confere",
             "data": {
                 "current_password": SUPER_ADMIN_PASSWORD,
-                "new_password": "***TEST_PASSWORD_REDACTED***!",
+                "new_password": "NovaSenh@123!",
                 "confirm_password": "DifferentPass@123!"
             },
             "expected_error": "invalid_request"
@@ -152,8 +152,8 @@ def test_password_validation():
             "name": "Senha atual incorreta",
             "data": {
                 "current_password": "senha_errada",
-                "new_password": "***TEST_PASSWORD_REDACTED***!",
-                "confirm_password": "***TEST_PASSWORD_REDACTED***!"
+                "new_password": "NovaSenh@123!",
+                "confirm_password": "NovaSenh@123!"
             },
             "expected_error": "unauthorized"
         },

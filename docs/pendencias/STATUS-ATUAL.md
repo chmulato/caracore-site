@@ -87,7 +87,7 @@ const CARA_CORE_CONFIG = {
 ### 🧪 Validação por Testes Automatizados
 
 **Script de Teste:** `scripts/teste_api_fase_5.py`
-- **Senha Atualizada:** ***TEST_PASSWORD_REDACTED*** (substitui caracore2024)
+- **Senha Atualizada:** NovaSenh@123 (substitui caracore2024)
 - **Cobertura Completa:** 22 testes abrangendo toda a funcionalidade
 - **Relatório Gerado:** `test_report_fase5_20251104_190527.json`
 
@@ -262,7 +262,7 @@ const CARA_CORE_CONFIG = {
    - ✅ Versionamento para controle de cache
 
 4. **Sistema de Testes Automatizados**
-   - ✅ Atualizado para nova senha "***TEST_PASSWORD_REDACTED***"
+   - ✅ Atualizado para nova senha "NovaSenh@123"
    - ✅ Implementado teste completo de 22 cenários
    - ✅ Geração automática de relatórios JSON
    - ✅ Validação de toda a infraestrutura e funcionalidades

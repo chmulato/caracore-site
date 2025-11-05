@@ -37,7 +37,7 @@
 - ✅ Criação de `secure/change-password.html`
 - ✅ Sistema seguro de alteração de senha
 - ✅ Validação e confirmação de nova senha
-- ✅ Atualização de senha para `***TEST_PASSWORD_REDACTED***`
+- ✅ Atualização de senha para `NovaSenh@123`
 
 ### Dia 3 (04/11/2025)
 **Foco:** Reorganização Frontend e Validação
@@ -83,7 +83,7 @@
 - ✅ **1.4** Credenciais Seguras
   - ✅ Email: `suporte@caracore.com.br`
   - ✅ Senha protegida por hash bcrypt
-  - ✅ Atualização segura para `***TEST_PASSWORD_REDACTED***`
+  - ✅ Atualização segura para `NovaSenh@123`
 
 ### 🟡 ITEM 2: Painel de Gestão de Usuários
 **Status:** ✅ CONCLUÍDO  

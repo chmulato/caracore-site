@@ -6,7 +6,7 @@ const OIDC_CONFIGS = {
   azure: {
     // Microsoft Entra (Azure AD) Application (Client) ID for Cara-Core Area51
     // Obtained from Azure Portal -> App registrations -> Cara-Core Area51 -> Overview -> Application (client) ID
-    clientId: "***AZURE_SECRET_REDACTED***",
+    clientId: "8ef17663-438f-4777-99ca-c5ad5b2a2993",
     // Consumer authority so personal Microsoft accounts (@outlook.com, etc.) can authenticate
     authority: "https://login.microsoftonline.com/consumers/v2.0",
     redirectUri: window.location.origin + "/secure/callback.html",

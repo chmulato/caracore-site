@@ -151,7 +151,7 @@ function generateMicrosoftConfig() {
 
     const clientId = window.CARA_CORE_CONFIG?.azureClientId
         || window.CARA_CORE_ENV?.azureClientId
-        || '***AZURE_SECRET_REDACTED***';
+        || '8ef17663-438f-4777-99ca-c5ad5b2a2993';
 
     const resolveScope = () => {
         const baseScopes = ['openid', 'profile', 'email'];

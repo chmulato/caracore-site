@@ -493,7 +493,7 @@ O projeto implementa OAuth 2.1 + OIDC (OpenID Connect) com Authorization Code Fl
 **Configuração no Azure Portal:**
 
 1. Acesse [Azure Portal - App Registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
-2. Crie ou localize o App Registration: Client ID `***AZURE_SECRET_REDACTED***`
+2. Crie ou localize o App Registration: Client ID `8ef17663-438f-4777-99ca-c5ad5b2a2993`
 3. Configure **Authentication > Web platform**:
    - Adicione as Redirect URIs listadas acima
 4. Configure **API permissions**:
@@ -504,7 +504,7 @@ O projeto implementa OAuth 2.1 + OIDC (OpenID Connect) com Authorization Code Fl
 
    ```env
    TENANT_ID=seu-tenant-id
-   CLIENT_ID=***AZURE_SECRET_REDACTED***
+   CLIENT_ID=8ef17663-438f-4777-99ca-c5ad5b2a2993
    CLIENT_SECRET=seu-client-secret
    ```
 
@@ -671,7 +671,7 @@ Preencha as seguintes variáveis em `backend/.env`:
 ```env
 # Microsoft Entra ID
 TENANT_ID=seu-tenant-id
-CLIENT_ID=***AZURE_SECRET_REDACTED***
+CLIENT_ID=8ef17663-438f-4777-99ca-c5ad5b2a2993
 CLIENT_SECRET=seu-client-secret
 
 # Google OAuth
@@ -1021,7 +1021,7 @@ Esse erro indica que o callback retornou para um provedor diferente do usado no 
 **Checklist de Redirect URIs:**
 
 1. Acesse [Azure Portal – App registrations](https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/ApplicationsListBlade)
-2. Localize o app com Client ID `***AZURE_SECRET_REDACTED***`
+2. Localize o app com Client ID `8ef17663-438f-4777-99ca-c5ad5b2a2993`
 3. Em **Authentication > Platform configurations > Web**, verifique as Redirect URIs:
    - `http://localhost:8000/secure/callback.html`
    - `http://127.0.0.1:8000/secure/callback.html`

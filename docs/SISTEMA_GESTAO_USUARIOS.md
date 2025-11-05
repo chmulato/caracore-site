@@ -304,7 +304,7 @@ O sistema utiliza arquivos JSON para configurar os provedores de autenticação:
 ```json
 {
  "authority": "https://login.microsoftonline.com/consumers/v2.0",
- "client_id": "***AZURE_SECRET_REDACTED***",
+ "client_id": "8ef17663-438f-4777-99ca-c5ad5b2a2993",
  "redirect_uri": "http://localhost:8000/secure/callback.html",
  "response_type": "code",
  "scope": "openid profile email",

@@ -92,7 +92,7 @@ class Config:
         
         # Lista de senhas conhecidas que funcionam
         working_passwords = [
-            "***TEST_PASSWORD_REDACTED***",  # Senha atual que funciona
+            "NovaSenh@123",  # Senha atual que funciona
             "caracore2024",  # Sabemos que esta funciona
             "Caracore2024", 
             "CARACORE2024"
@@ -109,8 +109,8 @@ class Config:
                     return password
         
         # Se não encontrou pelo hash, usar a senha que funcionou nos testes anteriores
-        print(f"{Colors.OKGREEN}✓ Usando senha conhecida que funciona: ***TEST_PASSWORD_REDACTED***{Colors.ENDC}")
-        return "***TEST_PASSWORD_REDACTED***"
+        print(f"{Colors.OKGREEN}✓ Usando senha conhecida que funciona: NovaSenh@123{Colors.ENDC}")
+        return "NovaSenh@123"
 
 # ============================================================================
 # CORES PARA OUTPUT

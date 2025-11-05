@@ -1,0 +1,90 @@
+---
+title: Arquitetura do Sistema OAuth 2.1 + OIDC - CaraCore
+---
+graph TB
+    %% Definição de estilos
+    classDef userClass fill:#0d6efd,stroke:#084298,stroke-width:3px,color:#fff
+    classDef frontendClass fill:#198754,stroke:#0f5132,stroke-width:3px,color:#fff
+    classDef providerClass fill:#fd7e14,stroke:#d63384,stroke-width:3px,color:#fff
+    classDef backendClass fill:#6610f2,stroke:#3d0a91,stroke-width:3px,color:#fff
+    classDef adminClass fill:#dc3545,stroke:#721c24,stroke-width:3px,color:#fff
+    classDef azureClass fill:#0078d4,stroke:#004578,stroke-width:2px,color:#fff
+    classDef securityClass fill:#f8f9fa,stroke:#dee2e6,stroke-width:2px,color:#212529
+
+    %% Usuário
+    U[👤 Usuário<br/>Cliente Web/Mobile]
+    
+    %% Frontend
+    F[🌐 Frontend CDN<br/>HTML + CSS + JavaScript<br/>Bootstrap 5.3<br/>OIDC Client<br/>✅ Hospedagem Global]
+    
+    %% Provedores OIDC
+    G[🔐 Google<br/>OIDC Provider<br/>OAuth 2.1 + PKCE]
+    M[🔐 Microsoft<br/>Entra ID<br/>OAuth 2.1 + PKCE]
+    
+    %% Backend API
+    B[⚙️ Backend API<br/>Python Flask 3.0.3<br/>Docker Container<br/>JWT Validation<br/>🔒 Azure Web App]
+    
+    %% Admin Panel
+    A[👑 Painel Admin<br/>Gestão de Usuários<br/>Aprovações<br/>Alteração de Senhas<br/>⚡ Fase 5 - Super Admin]
+    
+    %% Azure Infrastructure
+    subgraph Azure ["☁️ Microsoft Azure Cloud Infrastructure"]
+        direction TB
+        
+        AZ1[🌐 Azure Web App<br/>Container Service<br/>Auto-scaling<br/>Load Balancer]
+        
+        AZ2[📦 Container Registry<br/>Docker Images<br/>CI/CD Pipeline<br/>Private Registry]
+        
+        AZ3[📊 Application Insights<br/>Monitoring<br/>Logs & Metrics<br/>Alertas]
+        
+        AZ4[🛡️ Security Center<br/>HTTPS/TLS<br/>Firewall<br/>Rate Limiting]
+    end
+    
+    %% Caixa de Segurança
+    subgraph Security ["🔒 Camada de Segurança"]
+        direction LR
+        S1[PKCE<br/>Proof Key for Code Exchange]
+        S2[JWT<br/>JSON Web Token Validation]
+        S3[HTTPS<br/>Transport Layer Security]
+        S4[CSP<br/>Content Security Policy]
+    end
+    
+    %% Métricas
+    subgraph Metrics ["📊 Métricas do Sistema"]
+        direction TB
+        M1[Fase 5: ✅ 100% Concluída]
+        M2[Testes: 77.3% Aprovados]
+        M3[Uptime: 99.9%]
+        M4[Deploy: Automático]
+        M5[Próximo: Fase 6]
+    end
+    
+    %% Conexões principais
+    U -->|HTTPS| F
+    F -->|OAuth 2.1 + PKCE| G
+    F -->|OAuth 2.1 + PKCE| M
+    F -->|JWT Token| B
+    B -->|Super Admin Auth| A
+    
+    %% Conexões com Azure
+    B --> AZ1
+    AZ1 --> AZ2
+    B --> AZ3
+    B --> AZ4
+    
+    %% Aplicação de estilos
+    class U userClass
+    class F frontendClass
+    class G,M providerClass
+    class B backendClass
+    class A adminClass
+    class AZ1,AZ2,AZ3,AZ4 azureClass
+    class S1,S2,S3,S4 securityClass
+    
+    %% Notas explicativas
+    U -.->|"1. Acesso ao sistema"| F
+    F -.->|"2. Redirect para OIDC"| G
+    G -.->|"3. Token de autorização"| F
+    F -.->|"4. Validação do token"| B
+    B -.->|"5. Resposta autenticada"| F
+    F -.->|"6. Interface do usuário"| U

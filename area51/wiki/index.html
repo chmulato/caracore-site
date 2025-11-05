@@ -1,1196 +1,264 @@
-<!DOCTYPE html><!DOCTYPE html>
-
-<html lang="pt-BR"><html lang="pt-BR">
-
-<head><head>
-
-    <meta charset="UTF-8">    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <meta name="description" content="Documentação técnica do sistema de autenticação OAuth 2.1 + OIDC da Área 51 - Cara Core Informática">    <meta name="description" content="Documentação técnica do sistema de autenticação OAuth 2.1 + OIDC da Área 51 - Cara Core Informática">
-
-    <meta name="keywords" content="OAuth 2.1, OIDC, PKCE, autenticação, segurança, Azure, Python, Flask">    <meta name="keywords" content="OAuth 2.1, OIDC, PKCE, autenticação, segurança, Azure, Python, Flask">
-
-    <title>Área 51 Wiki - Autenticação OAuth 2.1 + OIDC | Cara Core</title>    <title>Área 51 Wiki - Autenticação OAuth 2.1 + OIDC | Cara Core</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <link rel="stylesheet" href="assets/wiki.css">    <link rel="stylesheet" href="assets/wiki.css">
-
-</head></head>
-
-<body><body>
-
-    <div class="container">    <div class="container">
-
-        <div class="wiki-container">        <div class="wiki-container">
-
-            <!-- Header -->            <!-- Header -->
-
-            <div class="wiki-header">            <div class="wiki-header">
-
-                <h1><i class="bi bi-shield-lock"></i> Área 51 Wiki</h1>                <h1><i class="bi bi-shield-lock"></i> Área 51 Wiki</h1>
-
-                <p class="subtitle">Documentação Técnica do Sistema de Autenticação OAuth 2.1 + OIDC</p>                <p class="subtitle">Documentação Técnica do Sistema de Autenticação OAuth 2.1 + OIDC</p>
-
-                <div class="mt-3">                <div class="mt-3">
-
-                    <span class="badge-custom bg-success">✅ FASE 5 CONCLUÍDA</span>                    <span class="badge-custom bg-success">✅ FASE 5 CONCLUÍDA</span>
-
-                    <span class="badge-custom bg-primary">📊 77.3% Testes Aprovados</span>                    <span class="badge-custom bg-primary">� 77.3% Testes Aprovados</span>
-
-                    <span class="badge-custom bg-info">🔒 Enterprise Security</span>                    <span class="badge-custom bg-info">🔒 Enterprise Security</span>
-
-                    <span class="badge-custom bg-warning text-dark">☁️ Azure Cloud</span>                    <span class="badge-custom bg-warning text-dark">☁️ Azure Cloud</span>
-
-                </div>                </div>
-
-            </div>            </div>
-
-
-
-            <div class="row g-0">            <div class="row g-0">
-
-                <!-- Sidebar -->                <!-- Sidebar -->
-
-                <div class="col-md-3 wiki-sidebar">                <div class="col-md-3 wiki-sidebar">
-
-                    <nav class="nav flex-column">                    <nav class="nav flex-column">
-
-                        <a class="nav-link active" href="#visao-geral"><i class="bi bi-house-door me-2"></i>Visão Geral</a>                        <a class="nav-link active" href="#visao-geral"><i class="bi bi-house-door me-2"></i>Visão Geral</a>
-
-                        <a class="nav-link" href="#arquitetura"><i class="bi bi-diagram-3 me-2"></i>Arquitetura</a>                        <a class="nav-link" href="#arquitetura"><i class="bi bi-diagram-3 me-2"></i>Arquitetura</a>
-
-                        <a class="nav-link" href="#seguranca"><i class="bi bi-shield-check me-2"></i>Segurança</a>                        <a class="nav-link" href="#seguranca"><i class="bi bi-shield-check me-2"></i>Segurança</a>
-
-                        <a class="nav-link" href="#tecnologias"><i class="bi bi-stack me-2"></i>Stack Técnico</a>                        <a class="nav-link" href="#tecnologias"><i class="bi bi-stack me-2"></i>Stack Técnico</a>
-
-                        <a class="nav-link" href="#fases"><i class="bi bi-clipboard-check me-2"></i>Fases</a>                        <a class="nav-link" href="#fases"><i class="bi bi-clipboard-check me-2"></i>Fases</a>
-
-                        <a class="nav-link" href="#metricas"><i class="bi bi-graph-up me-2"></i>Métricas</a>                        <a class="nav-link" href="#metricas"><i class="bi bi-graph-up me-2"></i>Métricas</a>
-
-                        <a class="nav-link" href="#deploy"><i class="bi bi-cloud-upload me-2"></i>Deploy</a>                        <a class="nav-link" href="#deploy"><i class="bi bi-cloud-upload me-2"></i>Deploy</a>
-
-                                                
-
-                        <hr class="my-3">                        <hr class="my-3">
-
-                                                
-
-                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
-
-                            <i class="bi bi-tools me-1"></i> Ferramentas Super Admin                            <i class="bi bi-tools me-1"></i> Ferramentas Super Admin
-
-                        </div>                        </div>
-
-                                                
-
-                        <!-- Super Admin Login -->                        <!-- Super Admin Login -->
-
-                        <a class="nav-link" href="/secure/super-admin-login.html" target="_blank">                        <a class="nav-link" href="/secure/super-admin-login.html" target="_blank">
-
-                            <i class="bi bi-person-fill-gear me-2 text-danger"></i>Super Admin Login                            <i class="bi bi-person-fill-gear me-2 text-danger"></i>Super Admin Login
-
-                            <span class="badge bg-danger ms-1">Fase 5</span>                            <span class="badge bg-danger ms-1">Fase 5</span>
-
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-
-                        </a>                        </a>
-
-                                                
-
-                        <!-- Gestão de Usuários -->                        <!-- Gestão de Usuários -->
-
-                        <a class="nav-link" href="/secure/admin-users.html" target="_blank">                        <a class="nav-link" href="/secure/admin-users.html" target="_blank">
-
-                            <i class="bi bi-people me-2 text-primary"></i>Gestão de Usuários                            <i class="bi bi-people me-2 text-primary"></i>Gestão de Usuários
-
-                            <span class="badge bg-primary ms-1">Fase 5</span>                            <span class="badge bg-primary ms-1">Fase 5</span>
-
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-
-                        </a>                        </a>
-
-                                                
-
-                        <!-- Aprovação de Solicitações -->                        <!-- Aprovação de Solicitações -->
-
-                        <a class="nav-link" href="/secure/approval-requests.html" target="_blank">                        <a class="nav-link" href="/secure/approval-requests.html" target="_blank">
-
-                            <i class="bi bi-clipboard-check me-2 text-warning"></i>Aprovações                            <i class="bi bi-clipboard-check me-2 text-warning"></i>Aprovações
-
-                            <span class="badge bg-warning text-dark ms-1">Fase 5</span>                            <span class="badge bg-warning text-dark ms-1">Fase 5</span>
-
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-
-                        </a>                        </a>
-
-                                                
-
-                        <!-- Change Password -->                        <!-- Change Password -->
-
-                        <a class="nav-link" href="/secure/change-password.html" target="_blank">                        <a class="nav-link" href="/secure/change-password.html" target="_blank">
-
-                            <i class="bi bi-key me-2 text-success"></i>Alterar Senha                            <i class="bi bi-key me-2 text-success"></i>Alterar Senha
-
-                            <span class="badge bg-success ms-1">Fase 5</span>                            <span class="badge bg-success ms-1">Fase 5</span>
-
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-
-                        </a>                        </a>
-
-
-
-                        <hr class="my-3">                        <hr class="my-3">
-
-
-
-                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
-
-                            <i class="bi bi-person-check me-1"></i> Ferramentas Admin                            <i class="bi bi-person-check me-1"></i> Ferramentas Admin
-
-                        </div>                        </div>
-
-
-
-                        <!-- Dashboard de Auditoria -->                        <!-- Dashboard de Auditoria -->
-
-                        <a class="nav-link" href="/secure/admin-logs.html" target="_blank">                        <a class="nav-link" href="/secure/admin-logs.html" target="_blank">
-
-                            <i class="bi bi-clipboard-data me-2 text-info"></i>Dashboard de Auditoria                            <i class="bi bi-clipboard-data me-2 text-info"></i>Dashboard de Auditoria
-
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-
-                        </a>                        </a>
-
-
-
-                        <!-- Wiki (esta página) -->                        <!-- Wiki (esta página) -->
-
-                        <a class="nav-link" href="#">                        <a class="nav-link" href="#">
-
-                            <i class="bi bi-book me-2"></i>Wiki Técnica                            <i class="bi bi-book me-2"></i>Wiki Técnica
-
-                        </a>                        </a>
-
-                                                
-
-                        <hr class="my-3">                        <hr class="my-3">
-
-                                                
-
-                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
-
-                            <i class="bi bi-link-45deg me-1"></i> Links Úteis                            <i class="bi bi-link-45deg me-1"></i> Links Úteis
-
-                        </div>                        </div>
-
-                        <a class="nav-link" href="#metricas">                        <a class="nav-link" href="#metricas">
-
-                            <i class="bi bi-heart-pulse me-2 text-success"></i>Métricas do Sistema                            <i class="bi bi-heart-pulse me-2 text-success"></i>Métricas do Sistema
-
-                        </a>                        </a>
-
-                        <a class="nav-link" href="#deploy">                        <a class="nav-link" href="#deploy">
-
-                            <i class="bi bi-shield-check me-2 text-primary"></i>Status de Deploy                            <i class="bi bi-shield-check me-2 text-primary"></i>Status de Deploy
-
-                        </a>                        </a>
-
-                        <a class="nav-link" href="mailto:suporte@caracore.com.br">                        <a class="nav-link" href="mailto:suporte@caracore.com.br">
-
-                            <i class="bi bi-envelope me-2 text-warning"></i>Suporte Técnico                            <i class="bi bi-envelope me-2 text-warning"></i>Suporte Técnico
-
-                        </a>                        </a>
-
-                        <a class="nav-link" href="https://www.caracore.com.br" target="_blank" rel="noopener">                        <a class="nav-link" href="https://www.caracore.com.br" target="_blank" rel="noopener">
-
-                            <i class="bi bi-house me-2 text-info"></i>Site Principal                            <i class="bi bi-house me-2 text-info"></i>Site Principal
-
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-
-                        </a>                        </a>
-
-                    </nav>                    </nav>
-
-                </div>                </div>
-
-
-
-                <!-- Main Content -->                <!-- Main Content -->
-
-                <div class="col-md-9 wiki-content">                <div class="col-md-9 wiki-content">
-
-                    <section id="visao-geral">                    <section id="visao-geral">
-
-                        <h2><i class="bi bi-house-door"></i> Visão Geral</h2>                        <h2><i class="bi bi-house-door"></i> Visão Geral</h2>
-
-                        <p>                        <p>
-
-                            Bem-vindo à documentação técnica do <strong>Sistema de Autenticação e Autorização CaraCore</strong>. Este projeto implementa um fluxo de login seguro e moderno utilizando <strong>OAuth 2.1 e OpenID Connect (OIDC)</strong>, com foco em segurança, performance e escalabilidade.                            Bem-vindo à documentação técnica do <strong>Sistema de Autenticação e Autorização CaraCore</strong>. Este projeto implementa um fluxo de login seguro e moderno utilizando <strong>OAuth 2.1 e OpenID Connect (OIDC)</strong>, com foco em segurança, performance e escalabilidade.
-
-                        </p>                        </p>
-
-                        <div class="alert alert-success">                        <div class="alert alert-success">
-
-                            <strong>Fase 5 Concluída!</strong> O sistema agora inclui um painel administrativo completo para gestão de usuários, aprovações e senhas, com uma arquitetura de frontend totalmente reorganizada e centralizada.                            <strong>Fase 5 Concluída!</strong> O sistema agora inclui um painel administrativo completo para gestão de usuários, aprovações e senhas, com uma arquitetura de frontend totalmente reorganizada e centralizada.
-
-                        </div>                        </div>
-
-                        <p>                        <p>
-
-                            O sistema foi validado por um conjunto de <strong>22 testes automatizados</strong>, atingindo uma taxa de sucesso de <strong>77.3%</strong>, o que garante a funcionalidade das principais features em produção.                            O sistema foi validado por um conjunto de <strong>22 testes automatizados</strong>, atingindo uma taxa de sucesso de <strong>77.3%</strong>, o que garante a funcionalidade das principais features em produção.
-
-                        </p>                        </p>
-
-                    </section>                    </section>
-
-
-
-                    <section id="arquitetura">                    <section id="arquitetura">
-
-                        <h2><i class="bi bi-diagram-3"></i> Arquitetura</h2>                        <h2><i class="bi bi-diagram-3"></i> Arquitetura</h2>
-
-                        <p>A arquitetura é dividida em dois componentes principais:</p>                        <p>A arquitetura é dividida em dois componentes principais:</p>
-
-                        <ul>                        <ul>
-
-                            <li><strong>Frontend:</strong> Uma aplicação estática (HTML, CSS, JS) hospedada em CDN global, responsável pela interface do usuário e interação com os provedores OIDC.</li>                            <li><strong>Frontend:</strong> Uma aplicação estática (HTML, CSS, JS) hospedada em CDN global, responsável pela interface do usuário e interação com os provedores OIDC.</li>
-
-                            <li><strong>Backend:</strong> Uma API em Python (Flask) rodando em um container Docker no Azure Web App, responsável pela validação de tokens, lógica de negócio e, agora, pela gestão administrativa.</li>                            <li><strong>Backend:</strong> Uma API em Python (Flask) rodando em um container Docker no Azure Web App, responsável pela validação de tokens, lógica de negócio e, agora, pela gestão administrativa.</li>
-
-                        </ul>                        </ul>
-
-                        <img src="assets/architecture-diagram.png" alt="Diagrama de Arquitetura" class="img-fluid rounded my-3">                        <img src="assets/architecture-diagram.png" alt="Diagrama de Arquitetura" class="img-fluid rounded my-3">
-
-                        <div class="alert alert-info">                        <div class="alert alert-info">
-
-                            <strong>Novidade Fase 5:</strong> A arquitetura agora inclui endpoints administrativos (`/api/admin/*`) protegidos por um token de super admin, garantindo que apenas usuários autorizados possam gerenciar o sistema.                            <strong>Novidade Fase 5:</strong> A arquitetura agora inclui endpoints administrativos (`/api/admin/*`) protegidos por um token de super admin, garantindo que apenas usuários autorizados possam gerenciar o sistema.
-
-                        </div>                        </div>
-
-                    </section>                    </section>
-
-
-
-                    <section id="seguranca">                    <section id="seguranca">
-
-                        <h2><i class="bi bi-shield-check"></i> Segurança</h2>                        <h2><i class="bi bi-shield-check"></i> Segurança</h2>
-
-                        <p>A segurança é o pilar deste projeto. As seguintes medidas foram implementadas:</p>                        <p>A segurança é o pilar deste projeto. As seguintes medidas foram implementadas:</p>
-
-                        <ul>                        <ul>
-
-                            <li><strong>PKCE (Proof Key for Code Exchange):</strong> Previne ataques de interceptação de código de autorização.</li>                            <li><strong>PKCE (Proof Key for Code Exchange):</strong> Previne ataques de interceptação de código de autorização.</li>
-
-                            <li><strong>Validação de Token JWT:</strong> O backend valida a assinatura, expiração e emissor de cada token.</li>                            <li><strong>Validação de Token JWT:</strong> O backend valida a assinatura, expiração e emissor de cada token.</li>
-
-                            <li><strong>HTTPS Obrigatório:</strong> Todo o tráfego é criptografado.</li>                            <li><strong>HTTPS Obrigatório:</strong> Todo o tráfego é criptografado.</li>
-
-                            <li><strong>Content Security Policy (CSP):</strong> Implementado para mitigar ataques XSS.</li>                            <li><strong>Content Security Policy (CSP):</strong> Implementado para mitigar ataques XSS.</li>
-
-                            <li><strong>Autenticação de Super Admin:</strong> Acesso aos painéis administrativos protegido por credenciais separadas e hash de senha seguro (bcrypt).</li>                            <li><strong>Autenticação de Super Admin:</strong> Acesso aos painéis administrativos protegido por credenciais separadas e hash de senha seguro (bcrypt).</li>
-
-                            <li><strong>Rate Limiting:</strong> Proteção contra ataques de força bruta nos endpoints de autenticação.</li>                            <li><strong>Rate Limiting:</strong> Proteção contra ataques de força bruta nos endpoints de autenticação.</li>
-
-                        </ul>                        </ul>
-
-                        <div class="alert alert-warning">                        <div class="alert alert-warning">
-
-                            <strong>Próximos Passos (Fase 6):</strong> Os testes automatizados apontaram a necessidade de fortalecer o sistema de autorização e a proteção de endpoints, que serão o foco da próxima fase de desenvolvimento.                            <strong>Próximos Passos (Fase 6):</strong> Os testes automatizados apontaram a necessidade de fortalecer o sistema de autorização e a proteção de endpoints, que serão o foco da próxima fase de desenvolvimento.
-
-                        </div>                        </div>
-
-                    </section>                    </section>
-
-
-
-                    <section id="tecnologias">                    <section id="tecnologias">
-
-                        <h2><i class="bi bi-stack"></i> Stack Técnico</h2>                        <h2><i class="bi bi-stack"></i> Stack Técnico</h2>
-
-                        <div class="row">                        <div class="row">
-
-                            <div class="col-md-6">                            <div class="col-md-6">
-
-                                <h5>Backend</h5>                                <h5>Backend</h5>
-
-                                <ul>                                <ul>
-
-                                    <li>Python 3.10</li>                                    <li>Python 3.10</li>
-
-                                    <li>Flask 3.0.3</li>                                    <li>Flask 3.0.3</li>
-
-                                    <li>Gunicorn</li>                                    <li>Gunicorn</li>
-
-                                    <li>Authlib</li>                                    <li>Authlib</li>
-
-                                    <li>PyJWT</li>                                    <li>PyJWT</li>
-
-                                    <li>Bcrypt</li>                                    <li>Bcrypt</li>
-
-                                </ul>                                </ul>
-
-                            </div>                            </div>
-
-                            <div class="col-md-6">                            <div class="col-md-6">
-
-                                <h5>Frontend</h5>                                <h5>Frontend</h5>
-
-                                <ul>                                <ul>
-
-                                    <li>HTML5 / CSS3</li>                                    <li>HTML5 / CSS3</li>
-
-                                    <li>JavaScript (ES6+)</li>                                    <li>JavaScript (ES6+)</li>
-
-                                    <li>Bootstrap 5.3</li>                                    <li>Bootstrap 5.3</li>
-
-                                    <li>Bootstrap Icons</li>                                    <li>Bootstrap Icons</li>
-
-                                </ul>                                </ul>
-
-                            </div>                            </div>
-
-                            <div class="col-md-6">                            <div class="col-md-6">
-
-                                <h5>Infraestrutura</h5>                                <h5>Infraestrutura</h5>
-
-                                <ul>                                <ul>
-
-                                    <li>Azure Web App</li>                                    <li>Azure Web App</li>
-
-                                    <li>Azure Container Registry</li>                                    <li>Azure Container Registry</li>
-
-                                    <li>Docker</li>                                    <li>Docker</li>
-
-                                    <li>CDN Global</li>                                    <li>CDN Global</li>
-
-                                </ul>                                </ul>
-
-                            </div>                            </div>
-
-                            <div class="col-md-6">                            <div class="col-md-6">
-
-                                <h5>Testes</h5>                                <h5>Testes</h5>
-
-                                <ul>                                <ul>
-
-                                    <li>Python (requests)</li>                                    <li>Python (requests)</li>
-
-                                    <li>JSON Reports</li>                                    <li>JSON Reports</li>
-
-                                </ul>                                </ul>
-
-                            </div>                            </div>
-
-                        </div>                        </div>
-
-                    </section>                    </section>
-
-
-
-                    <section id="fases">                    <section id="fases">
-
-                        <h2><i class="bi bi-clipboard-check"></i> Fases do Projeto</h2>                        <h2><i class="bi bi-clipboard-check"></i> Fases do Projeto</h2>
-
-                        <div class="accordion" id="accordionFases">                        <div class="accordion" id="accordionFases">
-
-                            <div class="accordion-item">                            <div class="accordion-item">
-
-                                <h2 class="accordion-header" id="headingOne">                                <h2 class="accordion-header" id="headingOne">
-
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-
-                                        <strong>Fase 1-4:</strong> Fundação e Autenticação (Concluídas)                                        <strong>Fase 1-4:</strong> Fundação e Autenticação (Concluídas)
-
-                                    </button>                                    </button>
-
-                                </h2>                                </h2>
-
-                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionFases">                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionFases">
-
-                                    <div class="accordion-body">                                    <div class="accordion-body">
-
-                                        Implementação do fluxo OAuth 2.1 + OIDC com Google e Microsoft, validação de token, deploy em Azure e criação da interface de usuário.                                        Implementação do fluxo OAuth 2.1 + OIDC com Google e Microsoft, validação de token, deploy em Azure e criação da interface de usuário.
-
-                                    </div>                                    </div>
-
-                                </div>                                </div>
-
-                            </div>                            </div>
-
-                            <div class="accordion-item">                            <div class="accordion-item">
-
-                                <h2 class="accordion-header" id="headingTwo">                                <h2 class="accordion-header" id="headingTwo">
-
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-
-                                        <strong>Fase 5:</strong> Sistema Administrativo Completo (Concluída)                                        <strong>Fase 5:</strong> Sistema Administrativo Completo (Concluída)
-
-                                    </button>                                    </button>
-
-                                </h2>                                </h2>
-
-                                <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionFases">                                <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionFases">
-
-                                    <div class="accordion-body">                                    <div class="accordion-body">
-
-                                        Criação do login de super admin, painel de gestão de usuários, painel de aprovação de solicitações e funcionalidade de alteração de senha. Incluiu uma reorganização completa da arquitetura de CSS e JavaScript para um modelo centralizado e modular.                                        Criação do login de super admin, painel de gestão de usuários, painel de aprovação de solicitações e funcionalidade de alteração de senha. Incluiu uma reorganização completa da arquitetura de CSS e JavaScript para um modelo centralizado e modular.
-
-                                    </div>                                    </div>
-
-                                </div>                                </div>
-
-                            </div>                            </div>
-
-                            <div class="accordion-item">                            <div class="accordion-item">
-
-                                <h2 class="accordion-header" id="headingThree">                                <h2 class="accordion-header" id="headingThree">
-
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-
-                                        <strong>Fase 6:</strong> Melhorias de Segurança e Autorização (Planejada)                                        <strong>Fase 6:</strong> Melhorias de Segurança e Autorização (Planejada)
-
-                                    </button>                                    </button>
-
-                                </h2>                                </h2>
-
-                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFases">                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFases">
-
-                                    <div class="accordion-body">                                    <div class="accordion-body">
-
-                                        Foco em resolver os 5 testes que falharam, implementando um sistema de autorização robusto, fortalecendo a proteção de endpoints e calibrando a validação de credenciais. A meta é atingir mais de 90% de aprovação nos testes automatizados.                                        Foco em resolver os 5 testes que falharam, implementando um sistema de autorização robusto, fortalecendo a proteção de endpoints e calibrando a validação de credenciais. A meta é atingir mais de 90% de aprovação nos testes automatizados.
-
-                                    </div>                                    </div>
-
-                                </div>                                </div>
-
-                            </div>                            </div>
-
-                        </div>                        </div>
-
-                    </section>                    </section>
-
-
-
-                    <section id="metricas">                    <section id="metricas">
-
-                        <h2><i class="bi bi-graph-up"></i> Métricas Atuais</h2>                        <h2><i class="bi bi-graph-up"></i> Métricas Atuais</h2>
-
-                        <div class="row text-center">                        <div class="row text-center">
-
-                            <div class="col-md-4">                            <div class="col-md-4">
-
-                                <div class="metric-card">                                <div class="metric-card">
-
-                                    <h3>77.3%</h3>                                    <h3>77.3%</h3>
-
-                                    <p>Taxa de Sucesso nos Testes</p>                                    <p>Taxa de Sucesso nos Testes</p>
-
-                                    <div class="progress progress-thin">                                    <div class="progress progress-thin">
-
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 77.3%" aria-valuenow="77.3" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 77.3%" title="Taxa de sucesso nos testes: 77.3%"></div>                                        <div class="progress-bar bg-primary" role="progressbar" aria-valuenow="77.3" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 77.3%" title="Taxa de sucesso nos testes: 77.3%"></div>
-
-                                    </div>                                    </div>
-
-                                </div>                                </div>
-
-                            </div>                            </div>
-
-                            <div class="col-md-4">                            <div class="col-md-4">
-
-                                <div class="metric-card">                                <div class="metric-card">
-
-                                    <h3>22</h3>                                    <h3>22</h3>
-
-                                    <p>Total de Testes Automatizados</p>                                    <p>Total de Testes Automatizados</p>
-
-                                </div>                                </div>
-
-                            </div>                            </div>
-
-                            <div class="col-md-4">                            <div class="col-md-4">
-
-                                <div class="metric-card">                                <div class="metric-card">
-
-                                    <h3>5</h3>                                    <h3>5</h3>
-
-                                    <p>Fases Concluídas</p>                                    <p>Fases Concluídas</p>
-
-                                </div>                                </div>
-
-                            </div>                            </div>
-
-                        </div>                        </div>
-
-                    </section>                    </section>
-
-
-
-                    <section id="deploy">                    <section id="deploy">
-
-                        <h2><i class="bi bi-cloud-upload"></i> Deploy</h2>                        <h2><i class="bi bi-cloud-upload"></i> Deploy</h2>
-
-                        <p>O deploy é realizado em duas partes:</p>                        <p>O deploy é realizado em duas partes:</p>
-
-                        <ol>                        <ol>
-
-                            <li><strong>Frontend:</strong> O deploy é automático via pipeline CI/CD para CDN global a cada atualização na branch principal.</li>                            <li><strong>Frontend:</strong> O deploy é automático via pipeline CI/CD para CDN global a cada atualização na branch principal.</li>
-
-                            <li><strong>Backend:</strong> A imagem Docker é construída e enviada para o Azure Container Registry. A Azure Web App é atualizada para usar a nova imagem através de pipeline automatizado.</li>                            <li><strong>Backend:</strong> A imagem Docker é construída e enviada para o Azure Container Registry. A Azure Web App é atualizada para usar a nova imagem através de pipeline automatizado.</li>
-
-                        </ol>                        </ol>
-
-                    </section>                    </section>
-
-                </div>                </div>
-
-            </div>            </div>
-
-        </div>        </div>
-
-    </div>    </div>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script src="assets/wiki.js"></script>    <script src="assets/wiki.js"></script>
-
-</body></body>
-
-</html></html>
-
-                            <i class="bi bi-list-check me-2 text-danger"></i>Monitoramento Sistema
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Documentação técnica do sistema de autenticação OAuth 2.1 + OIDC da Área 51 - Cara Core Informática">
+    <meta name="keywords" content="OAuth 2.1, OIDC, PKCE, autenticação, segurança, Azure, Python, Flask">
+    <title>Área 51 Wiki - Autenticação OAuth 2.1 + OIDC | Cara Core</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="assets/wiki.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wiki-container">
+            <div class="wiki-header">
+                <h1><i class="bi bi-shield-lock"></i> Área 51 Wiki</h1>
+                <p class="subtitle">Documentação Técnica do Sistema de Autenticação OAuth 2.1 + OIDC</p>
+                <div class="mt-3">
+                    <span class="badge-custom bg-success"> FASE 5 CONCLUÍDA</span>
+                    <span class="badge-custom bg-primary"> 77.3% Testes Aprovados</span>
+                    <span class="badge-custom bg-info"> Enterprise Security</span>
+                    <span class="badge-custom bg-warning text-dark"> Azure Cloud</span>
+                </div>
+            </div>
+
+            <div class="row g-0">
+                <div class="col-md-3 wiki-sidebar">
+                    <nav class="nav flex-column">
+                        <a class="nav-link active" href="#visao-geral"><i class="bi bi-house-door me-2"></i>Visão Geral</a>
+                        <a class="nav-link" href="#arquitetura"><i class="bi bi-diagram-3 me-2"></i>Arquitetura</a>
+                        <a class="nav-link" href="#seguranca"><i class="bi bi-shield-check me-2"></i>Segurança</a>
+                        <a class="nav-link" href="#tecnologias"><i class="bi bi-stack me-2"></i>Stack Técnico</a>
+                        <a class="nav-link" href="#fases"><i class="bi bi-clipboard-check me-2"></i>Fases</a>
+                        <a class="nav-link" href="#metricas"><i class="bi bi-graph-up me-2"></i>Métricas</a>
+                        <a class="nav-link" href="#deploy"><i class="bi bi-cloud-upload me-2"></i>Deploy</a>
+
+                        <hr class="my-3">
+
+                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
+                            <i class="bi bi-tools me-1"></i> Ferramentas Super Admin
+                        </div>
+                        <a class="nav-link" href="/secure/super-admin-login.html" target="_blank">
+                            <i class="bi bi-person-fill-gear me-2 text-danger"></i>Super Admin Login
+                            <span class="badge bg-danger ms-1">Fase 5</span>
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="#tecnologias">
-                            <i class="bi bi-activity me-2 text-primary"></i>Stack Técnico
+                        <a class="nav-link" href="/secure/admin-users.html" target="_blank">
+                            <i class="bi bi-people me-2 text-primary"></i>Gestão de Usuários
+                            <span class="badge bg-primary ms-1">Fase 5</span>
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+                        <a class="nav-link" href="/secure/approval-requests.html" target="_blank">
+                            <i class="bi bi-clipboard-check me-2 text-warning"></i>Aprovações
+                            <span class="badge bg-warning text-dark ms-1">Fase 5</span>
+                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+                        <a class="nav-link" href="/secure/change-password.html" target="_blank">
+                            <i class="bi bi-key me-2 text-success"></i>Alterar Senha
+                            <span class="badge bg-success ms-1">Fase 5</span>
+                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+
+                        <hr class="my-3">
+
+                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
+                            <i class="bi bi-person-check me-1"></i> Ferramentas Admin
+                        </div>
+                        <a class="nav-link" href="/secure/admin-logs.html" target="_blank">
+                            <i class="bi bi-clipboard-data me-2 text-info"></i>Dashboard de Auditoria
+                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-book me-2"></i>Wiki Técnica
+                        </a>
+
+                        <hr class="my-3">
+
+                        <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
+                            <i class="bi bi-link-45deg me-1"></i> Links Úteis
+                        </div>
+                        <a class="nav-link" href="#metricas">
+                            <i class="bi bi-heart-pulse me-2 text-success"></i>Métricas do Sistema
                         </a>
                         <a class="nav-link" href="#deploy">
-                            <i class="bi bi-cloud-check me-2 text-success"></i>Infraestrutura
+                            <i class="bi bi-shield-check me-2 text-primary"></i>Status de Deploy
+                        </a>
+                        <a class="nav-link" href="mailto:suporte@caracore.com.br">
+                            <i class="bi bi-envelope me-2 text-warning"></i>Suporte Técnico
+                        </a>
+                        <a class="nav-link" href="https://www.caracore.com.br" target="_blank" rel="noopener">
+                            <i class="bi bi-house me-2 text-info"></i>Site Principal
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
                     </nav>
                 </div>
 
-                <!-- Content -->
                 <div class="col-md-9 wiki-content">
-                    <!-- Visão Geral -->
                     <section id="visao-geral">
-                        <h2 class="section-title">🏠 Visão Geral</h2>
-                        
-                        <!-- Alerta de Atualização Recente -->
-                        <p class="lead">
-                            A <strong>Área 51</strong> é um sistema de autenticação enterprise implementando 
-                            os padrões mais modernos de segurança: <strong>OAuth 2.1</strong> e 
-                            <strong>OpenID Connect (OIDC)</strong> com <strong>PKCE obrigatório</strong>.
+                        <h2><i class="bi bi-house-door"></i> Visão Geral</h2>
+                        <p>
+                            Bem-vindo à documentação técnica do <strong>Sistema de Autenticação e Autorização CaraCore</strong>. Este projeto implementa um fluxo de login seguro e moderno utilizando <strong>OAuth 2.1 e OpenID Connect (OIDC)</strong>, com foco em segurança, performance e escalabilidade.
                         </p>
-
-                        <div class="alert alert-custom alert-success">
-                            <i class="bi bi-check-circle-fill me-2"></i>
-                            <strong>Fase 5 Concluída!</strong> Sistema administrativo completo e reorganização de assets finalizados.
+                        <div class="alert alert-success">
+                            <strong>Fase 5 Concluída!</strong> O sistema agora inclui um painel administrativo completo para gestão de usuários, aprovações e senhas, com uma arquitetura de frontend totalmente reorganizada e centralizada.
                         </div>
+                        <p>
+                            O sistema foi validado por um conjunto de <strong>22 testes automatizados</strong>, atingindo uma taxa de sucesso de <strong>77.3%</strong>, o que garante a funcionalidade das principais features em produção.
+                        </p>
+                    </section>
 
-                        <div class="alert alert-custom alert-warning">
-                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
-                            <strong>Validação Automatizada:</strong> 77.3% de aprovação (17/22 testes). Sistema funcional, com melhorias de segurança planejadas para a Fase 6.
-                        </div>
-
-                        <div class="row mt-4">
-                            <div class="col-md-4">
-                                <div class="stat-card">
-                                    <h3>4.500+</h3>
-                                    <p>Linhas de Código</p>
-                                    <small class="text-muted">Incluindo testes e docs</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="stat-card">
-                                    <h3>77.3%</h3>
-                                    <p>Taxa de Sucesso</p>
-                                    <small class="text-muted">Testes Automatizados Fase 5</small>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="stat-card">
-                                    <h3>22</h3>
-                                    <p>Testes Automatizados</p>
-                                    <small class="text-muted">Cobertura completa da Fase 5</small>
-                                </div>
-                            </div>
+                    <section id="arquitetura">
+                        <h2><i class="bi bi-diagram-3"></i> Arquitetura</h2>
+                        <p>A arquitetura é dividida em dois componentes principais:</p>
+                        <ul>
+                            <li><strong>Frontend:</strong> Uma aplicação estática (HTML, CSS, JS) hospedada em CDN global, responsável pela interface do usuário e interação com os provedores OIDC.</li>
+                            <li><strong>Backend:</strong> Uma API em Python (Flask) rodando em um container Docker no Azure Web App, responsável pela validação de tokens, lógica de negócio e, agora, pela gestão administrativa.</li>
+                        </ul>
+                        <img src="assets/architecture-diagram.png" alt="Diagrama de Arquitetura" class="img-fluid rounded my-3">
+                        <div class="alert alert-info">
+                            <strong>Novidade Fase 5:</strong> A arquitetura agora inclui endpoints administrativos (`/api/admin/*`) protegidos por um token de super admin, garantindo que apenas usuários autorizados possam gerenciar o sistema.
                         </div>
                     </section>
 
-                    <!-- Arquitetura -->
-                    <section id="arquitetura" class="mt-4">
-                        <h2 class="section-title">🏗️ Arquitetura do Sistema</h2>
+                    <section id="seguranca">
+                        <h2><i class="bi bi-shield-check"></i> Segurança</h2>
+                        <p>A segurança é o pilar deste projeto. As seguintes medidas foram implementadas:</p>
+                        <ul>
+                            <li><strong>PKCE (Proof Key for Code Exchange):</strong> Previne ataques de interceptação de código de autorização.</li>
+                            <li><strong>Validação de Token JWT:</strong> O backend valida a assinatura, expiração e emissor de cada token.</li>
+                            <li><strong>HTTPS Obrigatório:</strong> Todo o tráfego é criptografado.</li>
+                            <li><strong>Content Security Policy (CSP):</strong> Implementado para mitigar ataques XSS.</li>
+                            <li><strong>Autenticação de Super Admin:</strong> Acesso aos painéis administrativos protegido por credenciais separadas e hash de senha seguro (bcrypt).</li>
+                            <li><strong>Rate Limiting:</strong> Proteção contra ataques de força bruta nos endpoints de autenticação.</li>
+                        </ul>
+                        <div class="alert alert-warning">
+                            <strong>Próximos Passos (Fase 6):</strong> Os testes automatizados apontaram a necessidade de fortalecer o sistema de autorização e a proteção de endpoints, que serão o foco da próxima fase de desenvolvimento.
+                        </div>
+                    </section>
 
-                        <h3 class="h4 mt-4">Componentes Principais</h3>
-
+                    <section id="tecnologias">
+                        <h2><i class="bi bi-stack"></i> Stack Técnico</h2>
                         <div class="row">
                             <div class="col-md-6">
-                                <div class="feature-card">
-                                    <i class="bi bi-server"></i>
-                                    <h4>Backend Python</h4>
-                                    <p>API REST em Flask hospedada no Azure App Service, implementando 8 endpoints OAuth 2.1.</p>
-                                    <ul class="mt-3">
-                                        <li>Validação PKCE obrigatória</li>
-                                        <li>JWT com validação completa</li>
-                                        <li>Rate limiting inteligente</li>
-                                        <li>Auditoria de segurança</li>
-                                    </ul>
-                                </div>
+                                <h5>Backend</h5>
+                                <ul>
+                                    <li>Python 3.10</li>
+                                    <li>Flask 3.0.3</li>
+                                    <li>Gunicorn</li>
+                                    <li>Authlib</li>
+                                    <li>PyJWT</li>
+                                    <li>Bcrypt</li>
+                                </ul>
                             </div>
                             <div class="col-md-6">
-                                <div class="feature-card">
-                                    <i class="bi bi-display"></i>
-                                    <h4>Frontend JavaScript</h4>
-                                    <p>SPA com controle de sessão avançado, notificações visuais e logout seguro.</p>
-                                    <ul class="mt-3">
-                                        <li>Session Manager automático</li>
-                                        <li>Sistema de toasts (30+ msgs)</li>
-                                        <li>Modal de logout (2 opções)</li>
-                                        <li>Acessibilidade WCAG 2.1 AA</li>
-                                    </ul>
-                                </div>
+                                <h5>Frontend</h5>
+                                <ul>
+                                    <li>HTML5 / CSS3</li>
+                                    <li>JavaScript (ES6+)</li>
+                                    <li>Bootstrap 5.3</li>
+                                    <li>Bootstrap Icons</li>
+                                </ul>
                             </div>
-                        </div>
-
-                        <h3 class="h4 mt-4">Fluxo de Autenticação</h3>
-                        <div class="bg-light p-4 rounded">
-                            <ol class="mb-0">
-                                <li>Usuário clica em "Entrar com Google/Microsoft"</li>
-                                <li>Frontend gera code_verifier (PKCE) e redireciona</li>
-                                <li>Usuário autentica no provedor (Google/Microsoft)</li>
-                                <li>Callback retorna com authorization_code</li>
-                                <li>Backend troca code por access_token + id_token</li>
-                                <li>JWT validado (issuer, audience, expiração, PKCE)</li>
-                                <li>Sessão criada com refresh token rotation</li>
-                                <li>Auto-refresh 5 min antes de expirar</li>
-                                <li>Logout revoga tokens no backend e provedor</li>
-                            </ol>
-                        </div>
-                    </section>
-
-                    <!-- Segurança -->
-                    <section id="seguranca" class="mt-4">
-                        <h2 class="section-title">🔒 Segurança Enterprise</h2>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <i class="bi bi-shield-fill-check"></i>
-                                    <h5>PKCE Obrigatório</h5>
-                                    <p class="small">Code challenge SHA-256 em todos os fluxos OAuth</p>
-                                </div>
+                            <div class="col-md-6">
+                                <h5>Infraestrutura</h5>
+                                <ul>
+                                    <li>Azure Web App</li>
+                                    <li>Azure Container Registry</li>
+                                    <li>Docker</li>
+                                    <li>CDN Global</li>
+                                </ul>
                             </div>
-                            <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <i class="bi bi-lock-fill"></i>
-                                    <h5>HTTPS Enforcement</h5>
-                                    <p class="small">Redirecionamento automático HTTP → HTTPS</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <i class="bi bi-shield-slash"></i>
-                                    <h5>Security Headers</h5>
-                                    <p class="small">HSTS, CSP, X-Frame-Options, X-Content-Type-Options</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <i class="bi bi-speedometer2"></i>
-                                    <h5>Rate Limiting</h5>
-                                    <p class="small">10-30 req/min por endpoint, proteção contra brute-force</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <i class="bi bi-file-earmark-lock"></i>
-                                    <h5>Auditoria Completa</h5>
-                                    <p class="small">Logs de todas as operações OAuth com timestamps</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <i class="bi bi-arrow-repeat"></i>
-                                    <h5>Token Rotation</h5>
-                                    <p class="small">Refresh tokens com rotação automática (OAuth 2.1)</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-info mt-4">
-                            <i class="bi bi-info-circle-fill me-2"></i>
-                            <strong>Padrões Seguidos:</strong> OWASP OAuth 2.0 Security Best Practices, 
-                            OAuth 2.1 Draft, OpenID Connect Core 1.0, PKCE (RFC 7636)
-                        </div>
-                    </section>
-
-                    <!-- Stack Técnico -->
-                    <section id="tecnologias" class="mt-4">
-                        <h2 class="section-title">⚙️ Stack Técnico</h2>
-
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body">
-                                <h3 class="h5 mt-0">Backend</h3>
-                                <div class="tech-stack">
-                                    <span class="tech-badge"><i class="bi bi-python"></i> Python 3.11.14</span>
-                                    <span class="tech-badge"><i class="bi bi-flask"></i> Flask 3.0.3</span>
-                                    <span class="tech-badge">Authlib 1.3.1</span>
-                                    <span class="tech-badge">Gunicorn 23.0.0</span>
-                                    <span class="tech-badge">Requests 2.32.3</span>
-                                </div>
-
-                                <h3 class="h5 mt-4">Frontend</h3>
-                                <div class="tech-stack">
-                                    <span class="tech-badge"><i class="bi bi-filetype-js"></i> JavaScript ES6+</span>
-                                    <span class="tech-badge"><i class="bi bi-bootstrap"></i> Bootstrap 5.3</span>
-                                    <span class="tech-badge">Bootstrap Icons 1.11</span>
-                                    <span class="tech-badge">HTML5 + CSS3</span>
-                                </div>
-
-                                <h3 class="h5 mt-4">Infraestrutura</h3>
-                                <div class="tech-stack">
-                                    <span class="tech-badge"><i class="bi bi-microsoft"></i> Azure App Service</span>
-                                    <span class="tech-badge"><i class="bi bi-cloud"></i> CDN Global</span>
-                                    <span class="tech-badge">Linux Container</span>
-                                    <span class="tech-badge">SSL/TLS</span>
-                                </div>
-
-                                <h3 class="h5 mt-4">OAuth Providers</h3>
-                                <div class="tech-stack">
-                                    <span class="tech-badge"><i class="bi bi-google"></i> Google OAuth 2.0</span>
-                                    <span class="tech-badge"><i class="bi bi-microsoft"></i> Microsoft Entra ID</span>
-                                </div>
-
-                                <h3 class="h5 mt-4">Ferramentas de Desenvolvimento</h3>
-                                <div class="tech-stack">
-                                    <span class="tech-badge"><i class="bi bi-git"></i> Git + BFG Repo-Cleaner</span>
-                                    <span class="tech-badge">VS Code</span>
-                                    <span class="tech-badge">PowerShell 7</span>
-                                    <span class="tech-badge">Python unittest</span>
-                                </div>
-
-                                <h3 class="h5 mt-4">Automação Deploy <span class="badge bg-success">Atualizado</span></h3>
-                                <div class="tech-stack mb-0">
-                                    <span class="tech-badge"><i class="bi bi-gear"></i> Pipeline CI/CD</span>
-                                    <span class="tech-badge"><i class="bi bi-box"></i> Azure Container Registry</span>
-                                    <span class="tech-badge"><i class="bi bi-cloud-upload"></i> Azure Web App (Docker)</span>
-                                    <span class="tech-badge"><i class="bi bi-check-circle"></i> Health Validation</span>
-                                </div>
+                            <div class="col-md-6">
+                                <h5>Testes</h5>
+                                <ul>
+                                    <li>Python (requests)</li>
+                                    <li>JSON Reports</li>
+                                </ul>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Fases -->
-                    <section id="fases" class="mt-4">
-                        <h2 class="section-title">🚀 Fases do Projeto</h2>
-                        <div class="accordion" id="fasesAccordion">
-                            <!-- Fase 5 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFive">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="true" aria-controls="collapseFive">
-                                        <strong>Fase 5: Sistema Super Admin e Reorganização (Concluída)</strong>
-                                    </button>
-                                </h2>
-                                <div id="collapseFive" class="accordion-collapse collapse show" aria-labelledby="headingFive" data-bs-parent="#fasesAccordion">
-                                    <div class="accordion-body">
-                                        <p>Implementação de um sistema administrativo completo e reorganização da arquitetura de frontend para maior manutenibilidade.</p>
-                                        <ul>
-                                            <li><strong>Login Super Admin:</strong> Página de autenticação dedicada para administradores.</li>
-                                            <li><strong>Gestão de Usuários:</strong> Interface para listar, filtrar, adicionar e remover usuários.</li>
-                                            <li><strong>Aprovação de Solicitações:</strong> Painel para aprovar ou rejeitar pedidos de acesso.</li>
-                                            <li><strong>Alteração de Senha:</strong> Funcionalidade segura para troca de senha de super admin.</li>
-                                            <li><strong>Centralização de Assets:</strong> CSS e JavaScript movidos para uma estrutura organizada em <code>/secure/css</code> e <code>/secure/js</code>.</li>
-                                            <li><strong>Validação Automatizada:</strong> Criação do script <code>teste_api_fase_5.py</code> com 22 testes.</li>
-                                        </ul>
-                                        <span class="badge bg-success">Concluída em 04/11/2025</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Fase 4 -->
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="headingFour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                        <strong>Fase 4: Controle de Acesso e Logs (Concluída)</strong>
-                                    </button>
-                                </h2>
-                                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#fasesAccordion">
-                                    <div class="accordion-body">
-                                        <p>Criação do sistema de autorização inicial e logs de auditoria.</p>
-                                        <ul>
-                                            <li><strong>Dashboard de Auditoria:</strong> Interface para visualização de logs de segurança.</li>
-                                            <li><strong>Sistema de Autorização (v1):</strong> Lógica inicial para controle de acesso.</li>
-                                        </ul>
-                                        <span class="badge bg-success">Concluída em 02/11/2025</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Fases Anteriores -->
+                    <section id="fases">
+                        <h2><i class="bi bi-clipboard-check"></i> Fases do Projeto</h2>
+                        <div class="accordion" id="accordionFases">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingOne">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                        <strong>Fases 1-3: Fundação OAuth 2.1 + OIDC (Concluídas)</strong>
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        <strong>Fase 1-4:</strong> Fundação e Autenticação (Concluídas)
                                     </button>
                                 </h2>
-                                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#fasesAccordion">
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionFases">
                                     <div class="accordion-body">
-                                        Implementação do fluxo completo de autenticação com Google e Microsoft, incluindo PKCE, JWT, refresh token rotation e logout federado.
-                                        <span class="badge bg-success">Concluídas em 01/11/2025</span>
+                                        Implementação do fluxo OAuth 2.1 + OIDC com Google e Microsoft, validação de token, deploy em Azure e criação da interface de usuário.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                                        <strong>Fase 5:</strong> Sistema Administrativo Completo (Concluída)
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionFases">
+                                    <div class="accordion-body">
+                                        Criação do login de super admin, painel de gestão de usuários, painel de aprovação de solicitações e funcionalidade de alteração de senha. Incluiu uma reorganização completa da arquitetura de CSS e JavaScript para um modelo centralizado e modular.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <strong>Fase 6:</strong> Melhorias de Segurança e Autorização (Planejada)
+                                    </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFases">
+                                    <div class="accordion-body">
+                                        Foco em resolver os 5 testes que falharam, implementando um sistema de autorização robusto, fortalecendo a proteção de endpoints e calibrando a validação de credenciais. A meta é atingir mais de 90% de aprovação nos testes automatizados.
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Métricas -->
-                    <section id="metricas" class="mt-4">
-                        <h2 class="section-title">📊 Métricas de Performance</h2>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <h4 class="h5">Código</h4>
-                                <table class="table table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <td><strong>Backend Python</strong></td>
-                                            <td class="text-end">~2.000 linhas</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Frontend JavaScript</strong></td>
-                                            <td class="text-end">~1.800 linhas</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Documentação Markdown</strong></td>
-                                            <td class="text-end">60+ arquivos</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Scripts Python Ativos</strong></td>
-                                            <td class="text-end">24 arquivos <span class="badge bg-success">-47%</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Scripts PowerShell</strong></td>
-                                            <td class="text-end">3 arquivos <span class="badge bg-info">Automação</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Total</strong></td>
-                                            <td class="text-end"><strong>~5.200 linhas</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div class="col-md-6">
-                                <h4 class="h5">Qualidade</h4>
-                                <table class="table table-bordered">
-                                    <tbody>
-                                        <tr>
-                                            <td><strong>Testes Unitários</strong></td>
-                                            <td class="text-end">23/23 ✅</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Testes Deploy Azure</strong></td>
-                                            <td class="text-end">6/6 ✅</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Validação Dashboard</strong></td>
-                                            <td class="text-end">4/4 ✅</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Deploy Automation</strong></td>
-                                            <td class="text-end">2-3 min ✅ <span class="badge bg-success">Novo</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Security Headers</strong></td>
-                                            <td class="text-end">4/4 ✅</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Taxa de Sucesso</strong></td>
-                                            <td class="text-end"><strong>100%</strong></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="row mt-4">
+                    <section id="metricas">
+                        <h2><i class="bi bi-graph-up"></i> Métricas Atuais</h2>
+                        <div class="row text-center">
                             <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <h3 class="text-primary">2 dias</h3>
-                                    <p class="mb-0">Tempo de Desenvolvimento</p>
-                                    <small class="text-muted">(vs 4 semanas previstas)</small>
+                                <div class="metric-card">
+                                    <h3>77.3%</h3>
+                                    <p>Taxa de Sucesso nos Testes</p>
+                                    <div class="progress progress-thin">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 77.3%" aria-valuenow="77.3" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 77.3%" title="Taxa de sucesso nos testes: 77.3%"></div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <h3 class="text-success">700%</h3>
-                                    <p class="mb-0">Produtividade</p>
-                                    <small class="text-muted">Acima do estimado</small>
+                                <div class="metric-card">
+                                    <h3>22</h3>
+                                    <p>Total de Testes Automatizados</p>
                                 </div>
                             </div>
                             <div class="col-md-4">
-                                <div class="feature-card text-center">
-                                    <h3 class="text-info">0</h3>
-                                    <p class="mb-0">Bugs Críticos</p>
-                                    <small class="text-muted">Em produção</small>
+                                <div class="metric-card">
+                                    <h3>5</h3>
+                                    <p>Fases Concluídas</p>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Deploy -->
-                    <section id="deploy" class="mt-4">
-                        <h2 class="section-title">☁️ Deploy e Infraestrutura</h2>
-
-                        <div class="alert alert-success mb-4">
-                            <h5 class="alert-heading"><i class="bi bi-rocket-takeoff me-2"></i>Deploy Automatizado via Pipeline CI/CD</h5>
-                            <p class="mb-2">Sistema completo de deploy Docker automatizado (Atualizado Nov 2024):</p>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <strong>Pipeline Docker Deploy:</strong>
-                                    <ul class="mb-0">
-                                        <li>Build automático no push para main</li>
-                                        <li>Push para Azure Container Registry</li>
-                                        <li>Deploy automático para Azure Web App</li>
-                                        <li>Health check e validação pós-deploy</li>
-                                        <li>Authorization API validation</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <strong>Pipeline Features:</strong>
-                                    <ul class="mb-0">
-                                        <li>Docker multi-stage build</li>
-                                        <li>Azure Container Registry integration</li>
-                                        <li>Automated deployment validation</li>
-                                        <li>Production health checks</li>
-                                        <li>Repository secrets management</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header bg-primary text-white">
-                                        <i class="bi bi-server me-2"></i>Backend (Azure Web App + Docker)
-                                    </div>
-                                    <div class="card-body">
-                                        <p><strong>URL:</strong> Backend Azure Web App</p>
-                                        <p><strong>Container:</strong> Azure Container Registry</p>
-                                        <p><strong>Registry:</strong> Azure Container Registry</p>
-                                        <p><strong>Runtime:</strong> Python 3.11 + Gunicorn (Docker)</p>
-                                        <p><strong>Plan:</strong> Basic B1</p>
-                                        <p><strong>Region:</strong> Brazil South</p>
-                                        <p><strong>Deploy:</strong> CI/CD Pipeline + Docker <span class="badge bg-success">Automatizado</span></p>
-                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Online (Authorization API validated)</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header bg-info text-white">
-                                        <i class="bi bi-cloud me-2"></i>Frontend (CDN Global)
-                                    </div>
-                                    <div class="card-body">
-                                        <p><strong>URL:</strong> <code>www.caracore.com.br</code></p>
-                                        <p><strong>Branch:</strong> main (produção)</p>
-                                        <p><strong>SSL:</strong> Automático (Enterprise)</p>
-                                        <p><strong>CDN:</strong> Global</p>
-                                        <p><strong>Dashboard:</strong> <a href="/secure/admin-logs.html" target="_blank">admin-logs.html</a> <span class="badge bg-success">100%</span></p>
-                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Produção (15+ eventos)</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-info mt-4">
-                            <h4 class="alert-heading"><i class="bi bi-gear me-2"></i>Pipeline Deploy</h4>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p><strong>Deploy Automático:</strong></p>
-                                    <pre class="bg-dark text-light p-2 rounded"><code>git push origin main</code></pre>
-                                    <p class="small mb-0">Triggers: Push em <code>backend/</code> ou <code>main</code></p>
-                                </div>
-                                <div class="col-md-6">
-                                    <p><strong>Deploy Manual:</strong></p>
-                                    <pre class="bg-dark text-light p-2 rounded"><code>Azure Portal → Web App → Deployment Center → Manual Deploy</code></pre>
-                                    <p class="small mb-0">Deploy via Azure Portal ou CLI quando necessário</p>
-                                </div>
-                            </div>
-                            <div class="mt-2">
-                                <p class="mb-1"><strong>Pipeline Steps:</strong></p>
-                                <span class="badge bg-secondary me-1">Docker Build</span>
-                                <span class="badge bg-secondary me-1">Push to ACR</span>
-                                <span class="badge bg-secondary me-1">Deploy to Azure</span>
-                                <span class="badge bg-success">Health Check</span>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-warning mt-3">
-                            <h5 class="alert-heading"><i class="bi bi-gear me-2"></i>Configuração Azure & Pipeline</h5>
-                            <p class="mb-2">Scripts de configuração automatizada:</p>
-                            <ol class="mb-2">
-                                <li><strong>App Settings:</strong> Scripts PowerShell para configuração de 25+ variáveis</li>
-                                <li><strong>Azure Monitor:</strong> Configuração automatizada com 6 alertas críticos</li>
-                                <li><strong>Pipeline Secrets:</strong> ACR_USERNAME, ACR_PASSWORD, AZURE_WEBAPP_DOCKER_PUBLISH_PROFILE</li>
-                            </ol>
-                            <p class="mb-0">
-                                <strong>Documentação:</strong> Configurações automatizadas via PowerShell e validação contínua de saúde do sistema.
-                            </p>
-                        </div>
-
-                        <h3 class="h5 mt-4">Endpoints Públicos</h3>
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Endpoint</th>
-                                        <th>Método</th>
-                                        <th>Descrição</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><code>/health</code></td>
-                                        <td><span class="badge bg-success">GET</span></td>
-                                        <td>Health check</td>
-                                        <td><span class="badge bg-success">✅</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>/oauth/google/token</code></td>
-                                        <td><span class="badge bg-warning text-dark">POST</span></td>
-                                        <td>Troca authorization code (Google)</td>
-                                        <td><span class="badge bg-success">✅</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>/oauth/microsoft/token</code></td>
-                                        <td><span class="badge bg-warning text-dark">POST</span></td>
-                                        <td>Troca authorization code (Microsoft)</td>
-                                        <td><span class="badge bg-success">✅</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>/auth/validate</code></td>
-                                        <td><span class="badge bg-warning text-dark">POST</span></td>
-                                        <td>Valida sessão/token</td>
-                                        <td><span class="badge bg-success">✅</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>/auth/token/refresh</code></td>
-                                        <td><span class="badge bg-warning text-dark">POST</span></td>
-                                        <td>Refresh token rotation</td>
-                                        <td><span class="badge bg-success">✅</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><code>/auth/logout</code></td>
-                                        <td><span class="badge bg-warning text-dark">POST</span></td>
-                                        <td>Revoga tokens</td>
-                                        <td><span class="badge bg-success">✅</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <h3 class="h5 mt-4">🐳 Infraestrutura Docker</h3>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header bg-dark text-white">
-                                        <i class="bi bi-box me-2"></i>Azure Container Registry
-                                    </div>
-                                    <div class="card-body">
-                                        <p><strong>Registry:</strong> Azure Container Registry</p>
-                                        <p><strong>Repository:</strong> Backend Application</p>
-                                        <p><strong>Latest Tag:</strong> <code>latest</code></p>
-                                        <p><strong>Build:</strong> Pipeline CI/CD automatizado</p>
-                                        <p class="mb-0"><strong>Status:</strong> <span class="badge bg-success">✅ Operacional</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-header bg-success text-white">
-                                        <i class="bi bi-gear me-2"></i>Container Configuration
-                                    </div>
-                                    <div class="card-body">
-                                        <p><strong>Base Image:</strong> <code>python:3.11-slim</code></p>
-                                        <p><strong>Exposed Port:</strong> <code>8000</code></p>
-                                        <p><strong>Health Check:</strong> <code>/health</code> endpoint</p>
-                                        <p><strong>Multi-stage:</strong> Production optimized</p>
-                                        <p class="mb-0"><strong>Deploy Time:</strong> <span class="badge bg-info">~3 min</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <section id="deploy">
+                        <h2><i class="bi bi-cloud-upload"></i> Deploy</h2>
+                        <p>O deploy é realizado em duas partes:</p>
+                        <ol>
+                            <li><strong>Frontend:</strong> O deploy é automático via pipeline CI/CD para CDN global a cada atualização na branch principal.</li>
+                            <li><strong>Backend:</strong> A imagem Docker é construída e enviada para o Azure Container Registry. A Azure Web App é atualizada para usar a nova imagem através de pipeline automatizado.</li>
+                        </ol>
                     </section>
-
-                    <!-- Atualização 02/11/2025 -->
-                    <div class="alert alert-success alert-update border-success mt-4">
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-rocket-takeoff-fill me-2 fs-5"></i>
-                            <strong class="fs-5">🚀 ATUALIZAÇÃO 02/11/2025 - Deploy Docker Automatizado</strong>
-                        </div>
-                        <p class="mb-2">Implementação completa do sistema de deploy Docker via Pipeline CI/CD:</p>
-                        <ul class="mb-2">
-                            <li><strong>Pipeline CI/CD:</strong> Pipeline automatizado de build, push para ACR e deploy</li>
-                            <li><strong>Azure Container Registry:</strong> Registry configurado e operacional</li>
-                            <li><strong>Docker Deployment:</strong> Web App com deploy automatizado</li>
-                            <li><strong>Health Validation:</strong> Endpoints testados automaticamente pós-deploy</li>
-                            <li><strong>Pipeline Secrets:</strong> Credenciais e publish profile configurados</li>
-                        </ul>
-                        <p class="mb-1"><strong>Status:</strong> <span class="badge bg-success">✅ Produção</span> | <strong>Deploy Time:</strong> ~3 min | <strong>Ambiente:</strong> Azure Web App</p>
-                    </div>
-
-                    <!-- Atualização 01/11/2025 -->
-                    <div class="alert alert-warning alert-update border-warning mt-3">
-                        <div class="d-flex align-items-center mb-2">
-                            <i class="bi bi-exclamation-triangle-fill me-2 fs-5"></i>
-                            <strong class="fs-5">🔥 ATUALIZAÇÃO 01/11/2025 - Correções Críticas em Produção</strong>
-                        </div>
-                        <p class="mb-2">Aplicamos correções importantes no backend Azure e sistema de configuração:</p>
-                        <ul class="mb-2">
-                            <li><strong>CORS Fix:</strong> Adicionado handler OPTIONS para preflight requests no endpoint <code>/api/admin/logs</code></li>
-                            <li><strong>Azure Port Config:</strong> Configurado <code>WEBSITES_PORT=8000</code> e startup command com <code>$PORT</code> dinâmico</li>
-                            <li><strong>Script de Automação:</strong> Criado <code>configure_azure_all_settings.ps1</code> para configuração rápida de 25+ variáveis</li>
-                            <li><strong>Template de Secrets:</strong> Novo arquivo <code>secrets.txt.template</code> com todas as variáveis necessárias</li>
-                        </ul>
-                        <p class="mb-0">
-                            Sistema implementado seguindo as melhores práticas de segurança e escalabilidade para ambientes de produção.
-                        </p>
-                    </div>
-
-                    <!-- CTA -->
-                    <div class="alert alert-primary mt-4" role="alert">
-                        <h4 class="alert-heading"><i class="bi bi-rocket-takeoff me-2"></i>Projeto Open Source</h4>
-                        <p>Esta é uma implementação de referência de OAuth 2.1 + OIDC seguindo as melhores práticas de segurança da indústria.</p>
-                        <hr>
-                        <p class="mb-0">
-                            <strong>Quer saber mais?</strong> Entre em contato: 
-                            <a href="mailto:suporte@caracore.com.br" class="alert-link">suporte@caracore.com.br</a>
-                        </p>
-                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <p><strong>Área 51 Wiki</strong> - Sistema de Autenticação OAuth 2.1 + OIDC</p>
-            <p class="mb-0">
-                <a href="https://www.caracore.com.br" class="text-white me-3">www.caracore.com.br</a>
-                <span class="text-white-50">|</span>
-                <a href="mailto:suporte@caracore.com.br" class="text-white ms-3">suporte@caracore.com.br</a>
-            </p>
-            <p class="text-white-50 mt-2 mb-0">
-                <small>© 2025 Cara Core Informática - Todos os direitos reservados</small>
-            </p>
         </div>
     </div>
 

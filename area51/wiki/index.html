@@ -116,7 +116,9 @@
                             <li><strong>Frontend:</strong> Uma aplicação estática (HTML, CSS, JS) hospedada em CDN global, responsável pela interface do usuário e interação com os provedores OIDC.</li>
                             <li><strong>Backend:</strong> Uma API em Python (Flask) rodando em um container Docker no Azure Web App, responsável pela validação de tokens, lógica de negócio e, agora, pela gestão administrativa.</li>
                         </ul>
-                        <img src="assets/architecture-diagram.png" alt="Diagrama de Arquitetura" class="img-fluid rounded my-3">
+                        <div class="text-center my-4">
+                            <img src="assets/architecture-diagram.svg" alt="Diagrama de Arquitetura do Sistema OAuth 2.1 + OIDC CaraCore" class="img-fluid rounded border architecture-diagram">
+                        </div>
                         <div class="alert alert-info">
                             <strong>Novidade Fase 5:</strong> A arquitetura agora inclui endpoints administrativos (`/api/admin/*`) protegidos por um token de super admin, garantindo que apenas usuários autorizados possam gerenciar o sistema.
                         </div>
@@ -230,7 +232,7 @@
                                     <h3>77.3%</h3>
                                     <p>Taxa de Sucesso nos Testes</p>
                                     <div class="progress progress-thin">
-                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 77.3%" aria-valuenow="77.3" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 77.3%" title="Taxa de sucesso nos testes: 77.3%"></div>
+                                        <div class="progress-bar bg-primary progress-success-rate" role="progressbar" aria-valuenow="77.3" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 77.3%" title="Taxa de sucesso nos testes: 77.3%"></div>
                                     </div>
                                 </div>
                             </div>

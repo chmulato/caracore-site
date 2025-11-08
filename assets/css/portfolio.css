@@ -1,0 +1,166 @@
+/**
+ * Cara Core Informática - Estilos do Portfólio
+ * Arquivo de estilos específicos da página de portfólio
+ */
+
+/* Cards de projetos */
+.project-card {
+  background: rgba(255,255,255,0.93);
+  border-radius: 16px;
+  border: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12);
+}
+
+/* Headers dos projetos */
+.project-header {
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.project-header.hub {
+  background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
+}
+
+.project-header.seed {
+  background: linear-gradient(120deg, #43cea2 0%, #185a9d 100%);
+}
+
+.project-header.reino {
+  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+}
+
+.project-header.area51 {
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Badges de tecnologia */
+.tech-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  margin: 0.25rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Container de diagramas */
+.diagram-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.06);
+}
+
+/* Botões de projeto */
+.btn-project {
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-project:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px 0 rgba(102,126,234,0.4);
+  color: white;
+}
+
+/* Lista de features */
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  padding: 0.5rem 0;
+  padding-left: 2rem;
+  position: relative;
+}
+
+.feature-list li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #43cea2;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Seção de contato do portfólio */
+.portfolio-contact {
+  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  color: #fff;
+}
+
+/* Alerts de licenciamento */
+.alert {
+  border-left: 4px solid;
+  font-size: 0.95rem;
+}
+
+.alert-info {
+  background: rgba(13, 110, 253, 0.1);
+  border-left-color: #0d6efd;
+  color: #084298;
+}
+
+.alert-success {
+  background: rgba(25, 135, 84, 0.1);
+  border-left-color: #198754;
+  color: #0a3622;
+}
+
+/* Metric Cards */
+.metric-card {
+  background: rgba(102, 126, 234, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  border: 2px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateY(-4px);
+}
+
+.metric-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #667eea;
+  margin-bottom: 0.5rem;
+}
+
+.metric-label {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  .project-header {
+    padding: 1.5rem;
+  }
+  
+  .diagram-container {
+    padding: 1rem;
+  }
+}

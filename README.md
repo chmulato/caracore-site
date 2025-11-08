@@ -47,6 +47,7 @@ O projeto Cara-Core é uma implementação completa de sistema de autenticação
     - [Infraestrutura](#infraestrutura)
   - [Índice](#índice)
   - [Documentação Técnica](#documentação-técnica)
+    - [Site Corporativo](#site-corporativo)
     - [Deploy e Operações](#deploy-e-operações)
     - [Scripts Python](#scripts-python)
     - [Fases do Projeto](#fases-do-projeto)
@@ -109,6 +110,14 @@ O projeto Cara-Core é uma implementação completa de sistema de autenticação
 ## Documentação Técnica
 
 > **Índice Completo:** [docs/INDEX.md](docs/INDEX.md) - Navegue por toda a documentação do projeto
+
+### Site Corporativo
+
+- **[Portfolio](docs/PORTFOLIO_README.md)** - Documentação da página de portfólio
+- **[Área 51 no Portfolio](docs/AREA51_PORTFOLIO.md)** - Implementação do projeto Área 51
+- **[Google Analytics](docs/GOOGLE_ANALYTICS.md)** - Configuração completa GA4
+- **[Analytics - Resumo](docs/GA_RESUMO.md)** - Resumo executivo da implementação
+- **[Migração de Imagens](docs/MIGRACAO_IMAGENS.md)** - Reorganização da estrutura de assets
 
 ### Deploy e Operações
 

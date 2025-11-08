@@ -1,0 +1,60 @@
+graph TB
+    subgraph "Cliente"
+        U[👤 Usuário<br/>Navegador Web]
+    end
+    
+    subgraph "Frontend - GitHub Pages"
+        L[🔓 Página de Login<br/>secure/index.html]
+        C[🔄 Callback<br/>secure/callback.html]
+        R[🔒 Área Restrita<br/>secure/restrita.html]
+        A[👑 Painel Admin<br/>secure/admin-users.html]
+    end
+    
+    subgraph "Provedores OIDC"
+        G[🔐 Google<br/>OAuth 2.1 + PKCE]
+        M[🔐 Microsoft<br/>Entra ID + PKCE]
+    end
+    
+    subgraph "Backend - Azure Web App"
+        API[⚙️ Flask API<br/>Python 3.11]
+        V[✅ Validação JWT<br/>Token Verification]
+        AUTH[🔑 Autorização<br/>Allowlist Check]
+        LOG[📊 Auditoria<br/>Event Logging]
+    end
+    
+    subgraph "Armazenamento"
+        AL[📋 authorized_users.json<br/>Lista de Acesso]
+        SA[🔐 super_admin.json<br/>Credenciais Admin]
+        LG[📝 audit_logs.json<br/>Histórico Completo]
+    end
+    
+    U -->|1. Acessa| L
+    L -->|2. Redireciona| G
+    L -->|2. Redireciona| M
+    G -->|3. Code + State| C
+    M -->|3. Code + State| C
+    C -->|4. POST /token| API
+    API -->|5. Valida| V
+    V -->|6. Verifica| AUTH
+    AUTH -->|7. Consulta| AL
+    API -->|8. Registra| LOG
+    LOG -->|9. Grava| LG
+    C -->|10. Redireciona autenticado| R
+    R -->|11. Acessa admin| A
+    A -->|12. Gerencia| AL
+    A -->|13. Autentica| SA
+    
+    style U fill:#667eea
+    style L fill:#ffd200
+    style C fill:#ffd200
+    style R fill:#43cea2
+    style A fill:#f7971e
+    style G fill:#ea4335
+    style M fill:#00a4ef
+    style API fill:#764ba2
+    style V fill:#764ba2
+    style AUTH fill:#764ba2
+    style LOG fill:#764ba2
+    style AL fill:#e0e0e0
+    style SA fill:#e0e0e0
+    style LG fill:#e0e0e0

@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <!-- Estilos adicionais -->
   <link rel="stylesheet" href="css/additional-styles.css">
+  <!-- Estilos customizados -->
+  <link rel="stylesheet" href="assets/css/main.css">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,223 +20,25 @@
   <meta name="description" content="Consultoria, automação, suporte técnico e treinamentos em Microsoft 365, Python e TI para empresas. Atendimento personalizado, segurança e experiência comprovada.">
   <meta name="keywords" content="Microsoft 365, Automação, Python, Suporte Técnico, Consultoria, Treinamento, TI, Pequenas Empresas, Segurança Digital, Desenvolvimento, Campo Largo, Curitiba">
   <meta name="author" content="Cara Core Informática">
-  <link rel="icon" href="images/favicon.ico" type="image/ico">
-  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
+  <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://caracore.com.br/">
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Cara Core Informática | Microsoft 365, Automação Python e Suporte em TI">
   <meta property="og:description" content="Consultoria, automação, suporte técnico e treinamentos em Microsoft 365, Python e TI para empresas. Atendimento personalizado, segurança e experiência comprovada.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://caracore.com.br/">
-  <meta property="og:image" content="https://caracore.com.br/images/logo.png">
+  <meta property="og:image" content="https://caracore.com.br/assets/images/logo.png">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Cara Core Informática | Microsoft 365, Automação Python e Suporte em TI">
   <meta name="twitter:description" content="Consultoria, automação, suporte técnico e treinamentos em Microsoft 365, Python e TI para empresas. Atendimento personalizado, segurança e experiência comprovada.">
-  <meta name="twitter:image" content="https://caracore.com.br/images/logo.png">
+  <meta name="twitter:image" content="https://caracore.com.br/assets/images/logo.png">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Adicione este bloco <style> dentro do <head> do seu index.html -->
-  <style>
-    body {
-      background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
-    }
-    section, header {
-      background: rgba(255,255,255,0.85);
-      border-radius: 18px;
-      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.03);
-      margin-bottom: 2rem;
-      padding-top: 1.5rem;
-      padding-bottom: 1.5rem;
-    }
-    #servicos {
-      background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
-    }
-    #diferenciais {
-      background: linear-gradient(120deg, #43cea2 0%, #185a9d 100%);
-      color: #fff;
-    }
-    #sobre {
-      background: linear-gradient(120deg, #36d1c4 0%, #5b86e5 100%);
-      color: #fff;
-    }
-    #contato {
-      background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
-      color: #fff;
-    }
-    #contato .contact-link {
-      display: inline-block;
-      background: rgba(255,255,255,0.85);
-      color: #b91d73 !important;
-      border-radius: 8px;
-      padding: 8px 16px;
-      margin-bottom: 8px;
-      font-weight: 500;
-      transition: background 0.2s, color 0.2s;
-      text-decoration: none;
-    }
-    #contato .contact-link i {
-      margin-right: 6px;
-      font-size: 1.2em;
-      vertical-align: middle;
-    }
-    #contato .contact-link:hover {
-      background: #fff;
-      color: #f953c6 !important;
-    } 
-    #contato .contact-link i.bi-whatsapp {
-      color: #25d366 !important; /* verde WhatsApp */
-    }
-    #contato .contact-link i.bi-telegram {
-      color: #229ed9 !important; /* azul Telegram */
-    }
-    #contato .contact-link i.bi-envelope-fill {
-      color: #b91d73 !important; /* cor do gradiente */
-    }
-    #contato .contact-link {
-      color: #222 !important; /* texto escuro para contraste */
-      background: rgba(255,255,255,0.92);
-    }
-    #contato .contact-link:hover {
-      background: #fff;
-      color: #b91d73 !important;
-    }   
-    #contato .contact-link,
-    .contact-link {
-      display: inline-block;
-      background: rgba(255,255,255,0.85);
-      color: #b91d73 !important;
-      border-radius: 8px;
-      padding: 8px 16px;
-      margin-bottom: 8px;
-      font-weight: 500;
-      transition: background 0.2s, color 0.2s;
-      text-decoration: none;
-    }
-    .contact-link:hover {
-      background: #fff;
-      color: #f953c6 !important;
-    }        
-    /* Navbar fixo com leve transparência */
-    .navbar {
-      background: rgba(33,37,41,0.98) !important;
-      border-radius: 0 0 18px 18px;
-      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.06);
-    }
-    /* Suaviza o efeito dos cards de serviços */
-    .card {
-      border: none;
-      background: rgba(255,255,255,0.93);
-      border-radius: 16px;
-      transition: transform 0.15s;
-    }
-    .card:hover {
-      transform: translateY(-6px) scale(1.03);
-      box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
-    }
-
-    .btn-outline-secondary {
-        display: inline-flex;
-        align-items: center;
-        background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
-        color: #2d3e50;
-        border: 2px solid #4fa3ff;
-        border-radius: 8px;
-        padding: 0.8rem 1.5rem;
-        font-weight: bold;
-        text-decoration: none;
-        transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-outline-secondary:hover {
-        background: linear-gradient(120deg, #4fa3ff 0%, #2d3e50 100%);
-        color: #fff;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-        text-decoration: none;
-    }
-
-    .btn-outline-secondary i {
-        margin-right: 0.5rem;
-        font-size: 1.2rem;
-    }
-    
-    /* Responsividade para logo */
-    @media (max-width: 576px) {
-      .navbar-brand img {
-        max-width: 120px;
-      }
-      section, header {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-      }
-    }
-    /* Botão de contato */
-    .btn-contato {
-      background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
-      color: #fff !important;
-      border-radius: 8px;
-      padding: 8px 16px;
-      font-weight: 500;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-    .btn-contato:hover {
-      background: linear-gradient(120deg, #5f2c82 0%, #8f6ed5 100%);
-      color: #fff !important;
-      text-decoration: none;
-    }
-    /* Estilo para os botões de recursos no formato de redes sociais */
-    #contato .recursos-link {
-      color: #222; /* Cor do texto */
-      font-size: 1.2rem; /* Tamanho dos ícones ajustado */
-      margin-right: 8px; /* Espaçamento entre os ícones */
-      text-decoration: none; /* Remove o sublinhado */
-      transition: color 0.3s ease; /* Transição suave para hover */
-    }
-
-    #contato .recursos-link:hover {
-      color: #007bff; /* Cor ao passar o mouse */
-    }
-    /* Estilo da tabela de horários */
-    .horario-tabela {
-      background: #fff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 2px 12px 0 rgba(33, 37, 41, 0.07);
-      font-size: 1.05rem;
-    }
-    .horario-tabela th, .horario-tabela td {
-      border: 1px solid #d1d5db !important;
-      padding: 0.65rem 0.75rem;
-      vertical-align: middle;
-    }
-    .horario-tabela th {
-      background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
-      color: #fff;
-      font-weight: 600;
-      text-align: left;
-      letter-spacing: 0.5px;
-    }
-    .horario-tabela tr:nth-child(even) td {
-      background: #f6f7fb;
-    }
-    .horario-tabela tr:hover td {
-      background: #ede7f6;
-      transition: background 0.2s;
-    }
-    .horario-tabela td {
-      color: #333;
-    }
-    @media (max-width: 576px) {
-      .horario-tabela th, .horario-tabela td {
-        font-size: 0.97rem;
-        padding: 0.5rem 0.4rem;
-      }
-      .horario-tabela {
-        font-size: 0.97rem;
-      }
-    }        
-  </style>  
+  
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+  <script src="assets/js/analytics-config.js"></script>
 </head>
 <body>
 
@@ -249,6 +53,7 @@
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="#home">Início</a></li>
         <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfólio</a></li>
         <li class="nav-item"><a class="nav-link" href="#sobre">Sobre</a></li>
         <li class="nav-item"><a class="nav-link" href="#diferenciais">Diferenciais</a></li>
         <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
@@ -268,7 +73,7 @@
     <div class="row align-items-center">
       <!-- Logo à esquerda -->
       <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
-        <img src="images/logo.png" alt="Logotipo Cara-Core Informática - Consultoria, Automação e Suporte em TI" class="img-fluid logo-large">
+        <img src="assets/images/logo.png" alt="Logotipo Cara-Core Informática - Consultoria, Automação e Suporte em TI" class="img-fluid logo-large">
       </div>
       <!-- Texto à direita -->
       <div class="col-md-8 text-center text-md-start">
@@ -415,7 +220,7 @@
         </p>
       </div>
       <div class="col-md-5 text-center">
-        <img src="images/logo.png" alt="Logotipo Cara-Core Informática - Microsoft 365, Automação Python e Suporte" class="img-fluid mb-3 logo-medium">
+        <img src="assets/images/logo.png" alt="Logotipo Cara-Core Informática - Microsoft 365, Automação Python e Suporte" class="img-fluid mb-3 logo-medium">
         <h5 class="mt-3">Nossa Equipe</h5>
         <ul class="list-unstyled">
           <li><strong>Christian Mulato</strong> – Técnico em Informática, Programador Java, Engenheiro Químico</li>
@@ -662,38 +467,10 @@
     </div>
   </div>
 </footer>
+
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Scripts -->
-<script>
-  // Adiciona evento ao botão "Planos Flexíveis"
-  document.getElementById('mostrar-planos').addEventListener('click', function(e) {
-    e.preventDefault(); // Evita o comportamento padrão do link
-    const planosSection = document.getElementById('planos');
-    planosSection.classList.remove('d-none'); // Exibe a seção de planos usando Bootstrap
-    window.scrollTo({ top: planosSection.offsetTop - 60, behavior: 'smooth' }); // Rola suavemente até a seção
-  });
+<script src="assets/js/main.js"></script>
 
-  // Adiciona evento ao botão "Fechar" na seção de planos
-  document.getElementById('fechar-planos').addEventListener('click', function() {
-    const planosSection = document.getElementById('planos');
-    planosSection.classList.add('d-none'); // Oculta a seção de planos usando Bootstrap
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // Rola suavemente para o topo
-  });
-</script>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MKFC9G3CL0', {
-    'cookie_domain': 'caracore.com.br',
-    'cookie_flags': 'SameSite=None;Secure',
-    'cookie_update': true
-  });
-</script>
 </body>
 </html>

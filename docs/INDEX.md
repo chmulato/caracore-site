@@ -1,6 +1,6 @@
 # Índice de Documentação - CaraCore
 
-**Última Atualização:** 04/11/2025 - Sistema Admin Completo funcionando
+**Última Atualização:** 08/11/2025 - Documentação do Site Corporativo Adicionada
 
 Este documento serve como índice central para toda a documentação do projeto CaraCore.
 
@@ -15,6 +15,16 @@ Este documento serve como índice central para toda a documentação do projeto 
 | **[FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)** | **Marco: Sistema de Autorização 100% Implementado** | **CONCLUÍDO** |
 | **[DEPLOY_SUCCESS_SUMMARY.md](./DEPLOY_SUCCESS_SUMMARY.md)** | **Marco: Deploy Docker bem-sucedido no Azure** | **FUNCIONANDO** |
 | [pendencias/STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md) | Status global detalhado do projeto (1219 linhas) | Atualizado |
+
+### Site Corporativo
+
+| Documento | Descrição | Status |
+|-----------|-----------|--------|
+| **[PORTFOLIO_README.md](./PORTFOLIO_README.md)** | **Documentação completa da página de portfólio** | **DISPONÍVEL** |
+| **[AREA51_PORTFOLIO.md](./AREA51_PORTFOLIO.md)** | **Implementação do projeto Área 51 no portfólio** | **CONCLUÍDO** |
+| **[GOOGLE_ANALYTICS.md](./GOOGLE_ANALYTICS.md)** | **Implementação completa do Google Analytics GA4** | **OPERACIONAL** |
+| **[GA_RESUMO.md](./GA_RESUMO.md)** | **Resumo executivo da configuração do Analytics** | **DISPONÍVEL** |
+| **[MIGRACAO_IMAGENS.md](./MIGRACAO_IMAGENS.md)** | **Migração de imagens para estrutura padronizada** | **EM ANDAMENTO** |
 
 ### Autenticação e Segurança
 
@@ -193,6 +203,13 @@ docs/
 ├── DOCUMENTOS CORE
 ├── FASE-4-CONCLUIDA.md # Marco: Sistema de Autorização
 ├── DEPLOY_SUCCESS_SUMMARY.md # Marco: Deploy Docker
+│
+├── SITE CORPORATIVO
+├── PORTFOLIO_README.md # Documentação completa do portfólio
+├── AREA51_PORTFOLIO.md # Projeto Área 51 no portfólio
+├── GOOGLE_ANALYTICS.md # Implementação Google Analytics GA4
+├── GA_RESUMO.md # Resumo executivo Analytics
+├── MIGRACAO_IMAGENS.md # Migração de imagens para assets
 │
 ├── AUTENTICAÇÃO E SEGURANÇA
 ├── SUPER-ADMIN-AUTH.md # Guia técnico completo do super admin

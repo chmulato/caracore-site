@@ -1,0 +1,55 @@
+graph TB
+    subgraph "Camada de Apresentação"
+        A[Interface Web HTML5/CSS3/JS]
+        B[Dashboard Executivo]
+    end
+    
+    subgraph "Camada de Aplicação - Jakarta EE 10.1"
+        C[Controllers REST API]
+        D[Business Logic Services]
+        E[DAO/Repository Layer]
+    end
+    
+    subgraph "Integrações Externas"
+        F[API Mercado Livre]
+        G[Webhooks ML]
+        H[Workers Assíncronos]
+    end
+    
+    subgraph "Camada de Dados"
+        I[(PostgreSQL 15)]
+    end
+    
+    subgraph "Infraestrutura"
+        J[Docker Containers]
+        K[Tomcat 10.1]
+        L[WildFly 37]
+    end
+    
+    A --> C
+    B --> C
+    C --> D
+    D --> E
+    E --> I
+    D --> F
+    F --> G
+    G --> H
+    H --> D
+    
+    J --> K
+    J --> L
+    K --> C
+    L --> C
+    
+    style A fill:#ffd200
+    style B fill:#ffd200
+    style C fill:#43cea2
+    style D fill:#43cea2
+    style E fill:#43cea2
+    style F fill:#667eea
+    style G fill:#667eea
+    style H fill:#667eea
+    style I fill:#185a9d
+    style J fill:#764ba2
+    style K fill:#764ba2
+    style L fill:#764ba2

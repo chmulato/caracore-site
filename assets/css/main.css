@@ -1,0 +1,238 @@
+/**
+ * Cara Core Informática - Estilos Customizados
+ * Arquivo de estilos principais do site
+ */
+
+/* Background gradiente principal */
+body {
+  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+}
+
+/* Seções com cards brancos */
+section, header {
+  background: rgba(255,255,255,0.85);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 rgba(0,0,0,0.03);
+  margin-bottom: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+/* Seção de Serviços */
+#servicos {
+  background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
+}
+
+/* Seção de Diferenciais */
+#diferenciais {
+  background: linear-gradient(120deg, #43cea2 0%, #185a9d 100%);
+  color: #fff;
+}
+
+/* Seção Sobre */
+#sobre {
+  background: linear-gradient(120deg, #36d1c4 0%, #5b86e5 100%);
+  color: #fff;
+}
+
+/* Seção de Contato */
+#contato {
+  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  color: #fff;
+}
+
+/* Links de contato */
+#contato .contact-link {
+  display: inline-block;
+  background: rgba(255,255,255,0.85);
+  color: #b91d73 !important;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+#contato .contact-link i {
+  margin-right: 6px;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+
+#contato .contact-link:hover {
+  background: #fff;
+  color: #f953c6 !important;
+} 
+
+#contato .contact-link i.bi-whatsapp {
+  color: #25d366 !important;
+}
+
+#contato .contact-link i.bi-telegram {
+  color: #229ed9 !important;
+}
+
+#contato .contact-link i.bi-envelope-fill {
+  color: #b91d73 !important;
+}
+
+#contato .contact-link {
+  color: #222 !important;
+  background: rgba(255,255,255,0.92);
+}
+
+#contato .contact-link:hover {
+  background: #fff;
+  color: #b91d73 !important;
+}
+
+.contact-link {
+  display: inline-block;
+  background: rgba(255,255,255,0.85);
+  color: #b91d73 !important;
+  border-radius: 8px;
+  padding: 8px 16px;
+  margin-bottom: 8px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  text-decoration: none;
+}
+
+.contact-link:hover {
+  background: #fff;
+  color: #f953c6 !important;
+}        
+
+/* Navbar fixo com leve transparência */
+.navbar {
+  background: rgba(33,37,41,0.98) !important;
+  border-radius: 0 0 18px 18px;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.06);
+}
+
+/* Cards de serviços */
+.card {
+  border: none;
+  background: rgba(255,255,255,0.93);
+  border-radius: 16px;
+  transition: transform 0.15s;
+}
+
+.card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+}
+
+/* Botão outline secundário */
+.btn-outline-secondary {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+  color: #2d3e50;
+  border: 2px solid #4fa3ff;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline-secondary:hover {
+  background: linear-gradient(120deg, #4fa3ff 0%, #2d3e50 100%);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+
+.btn-outline-secondary i {
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+/* Botão de contato */
+.btn-contato {
+  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-contato:hover {
+  background: linear-gradient(120deg, #5f2c82 0%, #8f6ed5 100%);
+  color: #fff !important;
+  text-decoration: none;
+}
+
+/* Links de recursos no formato de redes sociais */
+#contato .recursos-link {
+  color: #222;
+  font-size: 1.2rem;
+  margin-right: 8px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#contato .recursos-link:hover {
+  color: #007bff;
+}
+
+/* Tabela de horários */
+.horario-tabela {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px 0 rgba(33, 37, 41, 0.07);
+  font-size: 1.05rem;
+}
+
+.horario-tabela th, .horario-tabela td {
+  border: 1px solid #d1d5db !important;
+  padding: 0.65rem 0.75rem;
+  vertical-align: middle;
+}
+
+.horario-tabela th {
+  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  letter-spacing: 0.5px;
+}
+
+.horario-tabela tr:nth-child(even) td {
+  background: #f6f7fb;
+}
+
+.horario-tabela tr:hover td {
+  background: #ede7f6;
+  transition: background 0.2s;
+}
+
+.horario-tabela td {
+  color: #333;
+}
+
+/* Responsividade */
+@media (max-width: 576px) {
+  .navbar-brand img {
+    max-width: 120px;
+  }
+  
+  section, header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .horario-tabela th, .horario-tabela td {
+    font-size: 0.97rem;
+    padding: 0.5rem 0.4rem;
+  }
+  
+  .horario-tabela {
+    font-size: 0.97rem;
+  }
+}

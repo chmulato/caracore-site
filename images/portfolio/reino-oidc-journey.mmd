@@ -1,0 +1,50 @@
+graph LR
+    subgraph "Entrada"
+        A[Página Inicial]
+        B[Conheça os Personagens]
+    end
+    
+    subgraph "Narrativa Épica"
+        C[História Parte I<br/>Era das Senhas]
+        D[História Parte II<br/>Era da Confiança]
+        E[História Parte III<br/>Nova Ordem Digital]
+    end
+    
+    subgraph "Aprendizagem Interativa"
+        F[Academia OIDC<br/>60 Flashcards]
+        G[Nível Iniciante<br/>20 perguntas]
+        H[Nível Aventureiro<br/>20 perguntas]
+        I[Nível Mestre<br/>20 perguntas]
+    end
+    
+    subgraph "Recursos Técnicos"
+        J[Mundo do Conhecimento<br/>Guia Técnico]
+        K[Mapas Técnicos<br/>Diagramas]
+        L[Glossário Ilustrado]
+    end
+    
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    
+    A --> J
+    J --> K
+    K --> L
+    
+    style A fill:#8f6ed5
+    style B fill:#8f6ed5
+    style C fill:#ffd200
+    style D fill:#ffd200
+    style E fill:#ffd200
+    style F fill:#43cea2
+    style G fill:#43cea2
+    style H fill:#43cea2
+    style I fill:#43cea2
+    style J fill:#667eea
+    style K fill:#667eea
+    style L fill:#667eea

@@ -48,9 +48,8 @@ async function handleLogin(e) {
             credentials: 'include'
         });
 
-        const data = await response.json();
-
         if (response.ok) {
+            const data = await response.json();
             // Sucesso - salvar token e redirecionar
             localStorage.setItem('super_admin_token', data.token);
             localStorage.setItem('super_admin_authenticated', 'true');
@@ -64,14 +63,37 @@ async function handleLogin(e) {
             }, 1500);
 
         } else {
-            // Erro
-            errorMessage.textContent = data.message || 'Erro ao fazer login. Verifique suas credenciais.';
+            // Erro do servidor (401, 403, 500, etc)
+            let errorMsg = 'Erro ao fazer login. Tente novamente.';
+            
+            try {
+                const data = await response.json();
+                
+                // Mensagens específicas baseadas no erro
+                if (response.status === 401) {
+                    errorMsg = data.error_description || 'Email ou senha incorretos. Verifique suas credenciais.';
+                } else if (response.status === 403) {
+                    errorMsg = 'Acesso negado. Você não tem permissão para acessar esta área.';
+                } else if (response.status === 500) {
+                    errorMsg = 'Erro interno do servidor. Tente novamente mais tarde.';
+                } else {
+                    errorMsg = data.error_description || data.message || errorMsg;
+                }
+            } catch (e) {
+                // Se não conseguir ler JSON, usar mensagem padrão baseada no status
+                if (response.status === 401) {
+                    errorMsg = 'Email ou senha incorretos. Verifique suas credenciais.';
+                }
+            }
+            
+            errorMessage.textContent = errorMsg;
             errorMessage.style.display = 'block';
         }
 
     } catch (error) {
-        console.error('Erro:', error);
-        errorMessage.textContent = 'Erro de conexão. Tente novamente.';
+        console.error('Erro de conexão:', error);
+        // Este é um erro de REDE (não conseguiu nem fazer a requisição)
+        errorMessage.textContent = 'Erro de conexão com o servidor. Verifique sua internet e tente novamente.';
         errorMessage.style.display = 'block';
     } finally {
         // Reset button

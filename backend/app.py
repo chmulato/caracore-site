@@ -395,12 +395,31 @@ def create_app() -> Flask:
             # Always allow the configured origin
             resp.headers["Access-Control-Allow-Origin"] = allowed_origin
         else:
-            resp.headers["Access-Control-Allow-Origin"] = "*"
+            # When wildcard is configured, if the client includes an Origin
+            # and we allow credentials, we must echo the Origin value (browsers
+            # reject '*' when Access-Control-Allow-Credentials is true). Prefer
+            # echoing the request Origin when present; otherwise fall back to '*'.
+            if origin:
+                resp.headers["Access-Control-Allow-Origin"] = origin
+            else:
+                resp.headers["Access-Control-Allow-Origin"] = "*"
         resp.headers["Vary"] = "Origin"
         resp.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
         resp.headers["Access-Control-Allow-Methods"] = "GET, POST, DELETE, OPTIONS"
         resp.headers["Access-Control-Allow-Credentials"] = "true"
         return resp
+
+    # Ensure CORS headers are added to every response as a safety net.
+    # Some error paths or proxies may bypass explicit add_cors() calls; using
+    # after_request guarantees consistent CORS behavior for the configured origin.
+    @app.after_request
+    def _apply_cors(response):
+        try:
+            # Call the same helper used by endpoints to keep behavior consistent
+            return add_cors(response)
+        except Exception:
+            # In case add_cors itself fails, return original response
+            return response
 
     @app.route("/health", methods=["GET"])  # simple probe
     def health():

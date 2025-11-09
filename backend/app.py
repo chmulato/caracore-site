@@ -2359,5 +2359,3 @@ app = create_app()
 if __name__ == "__main__":
     port = int(os.getenv("PORT", "5051"))
     app.run(host="0.0.0.0", port=port)
-#   T r i g g e r   d e p l o y  
- 

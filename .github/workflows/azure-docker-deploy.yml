@@ -41,31 +41,49 @@ jobs:
         cache-from: type=gha
         cache-to: type=gha,mode=max
     
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
     - name: Deploy to Azure Web App for Containers
       run: |
-        echo "🚀 Image pushed to ACR successfully!"
-        echo "✅ Azure Web App will automatically pull the new image"
-        echo "ℹ️  The webhook is configured to trigger deployment on image updates"
+        echo "Image pushed to ACR successfully!"
+        echo "Forcing Azure Web App to pull the new image..."
+        
+        # Atualizar a configuração do container para garantir que está usando Docker
+        az webapp config container set \
+          --name caracore-backend-docker \
+          --resource-group rg-caracore \
+          --container-image-name caracoreregistry.azurecr.io/caracore-backend:latest \
+          --container-registry-url https://caracoreregistry.azurecr.io
+        
+        # Reiniciar o Web App para forçar o pull da nova imagem
+        az webapp restart \
+          --name caracore-backend-docker \
+          --resource-group rg-caracore
+        
+        echo "Deployment triggered successfully"
     
-    - name: Wait for automatic deployment
+    - name: Wait for application startup
       run: |
-        echo "⏳ Waiting for Azure Web App to pull the new image..."
-        sleep 60
+        echo "Waiting for Azure Web App to start with new image..."
+        sleep 45
     
     - name: Health check
       run: |
-        echo "🔄 Checking application health..."
+        echo "Checking application health..."
         for i in {1..5}; do
           response=$(curl -s -o /dev/null -w "%{http_code}" https://caracore-backend-docker.azurewebsites.net/health)
           if [ $response -eq 200 ]; then
-            echo "✅ Backend is healthy (HTTP $response)"
+            echo "Backend is healthy (HTTP $response)"
             break
           else
-            echo "⏳ Attempt $i: Backend health check returned HTTP $response, retrying in 15s..."
+            echo "Attempt $i: Backend health check returned HTTP $response, retrying in 15s..."
             sleep 15
           fi
           if [ $i -eq 5 ]; then
-            echo "❌ Backend health check failed after 5 attempts"
+            echo "Backend health check failed after 5 attempts"
             exit 1
           fi
         done
@@ -73,26 +91,26 @@ jobs:
     - name: Test authorization API
       continue-on-error: true
       run: |
-        echo "🔐 Testing authorization API..."
+        echo "Testing authorization API..."
         response=$(curl -s -o /dev/null -w "%{http_code}" https://caracore-backend-docker.azurewebsites.net/api/admin/users)
         if [ $response -eq 401 ] || [ $response -eq 200 ]; then
-          echo "✅ Authorization API is responding correctly (HTTP $response)"
+          echo "Authorization API is responding correctly (HTTP $response)"
         else
-          echo "⚠️  Authorization API returned unexpected status (HTTP $response)"
+          echo "Authorization API returned unexpected status (HTTP $response)"
         fi
     
     - name: Test deployment endpoint
       run: |
-        echo "� Testing deployment verification endpoint..."
+        echo "Testing deployment verification endpoint..."
         response=$(curl -s https://caracore-backend-docker.azurewebsites.net/test-deploy)
         echo "Response: $response"
         
         # Check if response contains expected fields
         if echo "$response" | jq -e '.status == "deployed"' > /dev/null 2>&1; then
-          echo "✅ Deployment verification successful"
+          echo "Deployment verification successful"
           echo "   Version: $(echo $response | jq -r '.version')"
           echo "   Super Admin Available: $(echo $response | jq -r '.super_admin_available')"
         else
-          echo "⚠️  Deployment verification returned unexpected response"
+          echo "Deployment verification returned unexpected response"
           exit 1
         fi

@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Training - Wiki Cara Core</title>
+    <meta name="description" content="Python Training - Curso completo de Python com foco prático, do básico ao avançado, incluindo desenvolvimento web, APIs, banco de dados e deploy.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Wiki CSS -->
+    <link rel="stylesheet" href="assets/css/wiki.css">
+    <!-- Projeto Python CSS -->
+    <link rel="stylesheet" href="assets/css/projeto-python.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MKFC9G3CL0', {
+            page_title: 'Python Training - Wiki',
+            custom_map: {'custom_parameter_1': 'project_python_training'}
+        });
+    </script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-journal-code"></i> Wiki Cara Core
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWiki" aria-label="Alternar navegação" title="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../portfolio.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="wiki-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Wiki Home</a></li>
+                    <li class="breadcrumb-item"><a href="projetos-overview.html">Projetos</a></li>
+                    <li class="breadcrumb-item active">Python Training</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="wiki-sidebar">
+                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
+                    <ul class="wiki-menu">
+                        <li><a href="index.html"><i class="bi bi-house"></i> Página Inicial</a></li>
+                        <li><a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a></li>
+                        <li>
+                            <span class="wiki-submenu-title"><i class="bi bi-folder"></i> Projetos</span>
+                            <ul class="wiki-submenu">
+                                <li><a href="projeto-hub.html"><i class="bi bi-hdd-network"></i> Cara Core Hub</a></li>
+                                <li><a href="projeto-seed.html"><i class="bi bi-seedling"></i> Cara Core Seed</a></li>
+                                <li><a href="projeto-reino.html"><i class="bi bi-shield-lock"></i> Reino OIDC</a></li>
+                                <li><a href="projeto-area51.html"><i class="bi bi-rocket"></i> Área 51</a></li>
+                                <li><a href="projeto-python.html" class="active"><i class="bi bi-mortarboard"></i> Python Training</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="tecnologias.html"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a></li>
+                        <li><a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
+                        <li><a href="contribuindo.html"><i class="bi bi-git"></i> Como Contribuir</a></li>
+                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
+                    </ul>
+                    
+                    <!-- Navegação do Curso -->
+                    <div class="mt-4">
+                        <h5><i class="bi bi-journal-bookmark"></i> Conteúdo do Curso</h5>
+                        <ul class="python-nav">
+                            <li><a href="#curriculum"><i class="bi bi-list-check"></i> Currículo</a></li>
+                            <li><a href="#modulos"><i class="bi bi-collection"></i> Módulos</a></li>
+                            <li><a href="#projetos"><i class="bi bi-code-slash"></i> Projetos Práticos</a></li>
+                            <li><a href="#recursos"><i class="bi bi-book"></i> Recursos</a></li>
+                            <li><a href="#certificacao"><i class="bi bi-award"></i> Certificação</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="col-lg-9 col-md-8">
+                <div class="wiki-content">
+                    <div class="project-card">
+                        <div class="project-header python">
+                            <h1><i class="bi bi-mortarboard"></i> Python Training</h1>
+                            <p>Curso Completo de Python - Do Básico ao Profissional</p>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-status">
+                                <span class="badge badge-course">Curso</span>
+                                <span class="badge badge-practical">Prático</span>
+                                <span class="badge badge-python">Python</span>
+                                <span class="badge badge-web">Web Dev</span>
+                                <span class="badge badge-api">APIs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Introdução do Curso -->
+                    <section class="mb-5">
+                        <div class="python-intro">
+                            <div class="course-banner">
+                                <div class="banner-content">
+                                    <i class="bi bi-play-circle python-main-icon"></i>
+                                    <div class="course-stats">
+                                        <div class="stat-item">
+                                            <strong>120h</strong><br>
+                                            <small>de conteúdo</small>
+                                        </div>
+                                        <div class="stat-item">
+                                            <strong>15</strong><br>
+                                            <small>projetos práticos</small>
+                                        </div>
+                                        <div class="stat-item">
+                                            <strong>100%</strong><br>
+                                            <small>hands-on</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row align-items-center mt-4">
+                                <div class="col-md-8">
+                                    <h2><i class="bi bi-rocket text-warning"></i> Transforme-se em um Pythonista!</h2>
+                                    <p class="lead">Um curso intensivo e prático que leva você do zero ao nível profissional em Python, com foco em desenvolvimento real de aplicações web, APIs e automação.</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="course-badge">
+                                        <div class="badge-text">
+                                            <strong>Certificação Profissional</strong><br>
+                                            <small>Reconhecida pelo mercado</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Currículo Completo -->
+                    <section id="curriculum" class="mb-5">
+                        <h2><i class="bi bi-list-check text-primary"></i> Currículo do Curso</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="leigos-section">
+                                    <h3><i class="bi bi-person"></i> Para Iniciantes</h3>
+                                    <p>Começando do absoluto zero, sem necessidade de conhecimento prévio em programação:</p>
+                                    
+                                    <div class="learning-path">
+                                        <div class="path-step">
+                                            <div class="step-icon">🎯</div>
+                                            <div class="step-content">
+                                                <h5>Fundamentos</h5>
+                                                <p>Lógica de programação, variáveis, estruturas de controle</p>
+                                                <small>Semanas 1-2</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="path-step">
+                                            <div class="step-icon">🏗️</div>
+                                            <div class="step-content">
+                                                <h5>Estruturas de Dados</h5>
+                                                <p>Listas, dicionários, funções e orientação a objetos</p>
+                                                <small>Semanas 3-4</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="path-step">
+                                            <div class="step-icon">🌐</div>
+                                            <div class="step-content">
+                                                <h5>Desenvolvimento Web</h5>
+                                                <p>Flask, templates, formulários e banco de dados</p>
+                                                <small>Semanas 5-6</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="path-step">
+                                            <div class="step-icon">🚀</div>
+                                            <div class="step-content">
+                                                <h5>Projeto Final</h5>
+                                                <p>Sistema completo do zero ao deploy em produção</p>
+                                                <small>Semanas 7-8</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="estagiario-section">
+                                    <h3><i class="bi bi-mortarboard"></i> Para Desenvolvedores</h3>
+                                    <p>Conteúdo técnico avançado com foco em boas práticas e padrões profissionais:</p>
+                                    
+                                    <div class="tech-curriculum">
+                                        <div class="curriculum-group">
+                                            <h5><i class="bi bi-python"></i> Core Python</h5>
+                                            <ul class="tech-topics">
+                                                <li>Data structures & algorithms</li>
+                                                <li>Decorators, context managers, metaclasses</li>
+                                                <li>Async/await programming</li>
+                                                <li>Performance optimization</li>
+                                                <li>Testing (unittest, pytest, coverage)</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="curriculum-group">
+                                            <h5><i class="bi bi-globe"></i> Web Development</h5>
+                                            <ul class="tech-topics">
+                                                <li>Flask/Django frameworks</li>
+                                                <li>RESTful API design</li>
+                                                <li>Authentication & authorization</li>
+                                                <li>Database design (SQL/NoSQL)</li>
+                                                <li>Caching & performance</li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="curriculum-group">
+                                            <h5><i class="bi bi-tools"></i> DevOps & Deploy</h5>
+                                            <ul class="tech-topics">
+                                                <li>Docker containerization</li>
+                                                <li>CI/CD pipelines</li>
+                                                <li>Cloud deployment (AWS/Azure)</li>
+                                                <li>Monitoring & logging</li>
+                                                <li>Security best practices</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Módulos Detalhados -->
+                    <section id="modulos" class="mb-5">
+                        <h2><i class="bi bi-collection text-success"></i> Módulos do Curso</h2>
+                        
+                        <div class="modules-container">
+                            <div class="module-card beginner">
+                                <div class="module-header">
+                                    <div class="module-number">01</div>
+                                    <div class="module-info">
+                                        <h4>Fundamentos Python</h4>
+                                        <span class="module-duration">16 horas • 2 semanas</span>
+                                    </div>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-topics">
+                                        <h6>Tópicos principais:</h6>
+                                        <ul>
+                                            <li>Sintaxe e estrutura básica</li>
+                                            <li>Variáveis e tipos de dados</li>
+                                            <li>Operadores e expressões</li>
+                                            <li>Estruturas condicionais (if/else)</li>
+                                            <li>Loops (for/while)</li>
+                                        </ul>
+                                    </div>
+                                    <div class="module-project">
+                                        <strong>Projeto:</strong> Calculadora interativa
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card intermediate">
+                                <div class="module-header">
+                                    <div class="module-number">02</div>
+                                    <div class="module-info">
+                                        <h4>Estruturas de Dados</h4>
+                                        <span class="module-duration">18 horas • 2 semanas</span>
+                                    </div>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-topics">
+                                        <h6>Tópicos principais:</h6>
+                                        <ul>
+                                            <li>Listas, tuplas e sets</li>
+                                            <li>Dicionários e comprehensions</li>
+                                            <li>Funções e parâmetros</li>
+                                            <li>Modules e packages</li>
+                                            <li>Tratamento de exceções</li>
+                                        </ul>
+                                    </div>
+                                    <div class="module-project">
+                                        <strong>Projeto:</strong> Sistema de agenda de contatos
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card advanced">
+                                <div class="module-header">
+                                    <div class="module-number">03</div>
+                                    <div class="module-info">
+                                        <h4>Orientação a Objetos</h4>
+                                        <span class="module-duration">20 horas • 2 semanas</span>
+                                    </div>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-topics">
+                                        <h6>Tópicos principais:</h6>
+                                        <ul>
+                                            <li>Classes e objetos</li>
+                                            <li>Herança e polimorfismo</li>
+                                            <li>Encapsulamento</li>
+                                            <li>Métodos especiais</li>
+                                            <li>Design patterns</li>
+                                        </ul>
+                                    </div>
+                                    <div class="module-project">
+                                        <strong>Projeto:</strong> Sistema de biblioteca
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card web">
+                                <div class="module-header">
+                                    <div class="module-number">04</div>
+                                    <div class="module-info">
+                                        <h4>Desenvolvimento Web</h4>
+                                        <span class="module-duration">24 horas • 3 semanas</span>
+                                    </div>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-topics">
+                                        <h6>Tópicos principais:</h6>
+                                        <ul>
+                                            <li>Flask framework</li>
+                                            <li>Templates e Jinja2</li>
+                                            <li>Formulários e validação</li>
+                                            <li>SQLAlchemy ORM</li>
+                                            <li>Authentication & sessions</li>
+                                        </ul>
+                                    </div>
+                                    <div class="module-project">
+                                        <strong>Projeto:</strong> Blog pessoal com admin
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card api">
+                                <div class="module-header">
+                                    <div class="module-number">05</div>
+                                    <div class="module-info">
+                                        <h4>APIs e Banco de Dados</h4>
+                                        <span class="module-duration">22 horas • 3 semanas</span>
+                                    </div>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-topics">
+                                        <h6>Tópicos principais:</h6>
+                                        <ul>
+                                            <li>REST API design</li>
+                                            <li>JSON e serialização</li>
+                                            <li>PostgreSQL e MongoDB</li>
+                                            <li>Migrations e seeding</li>
+                                            <li>API testing</li>
+                                        </ul>
+                                    </div>
+                                    <div class="module-project">
+                                        <strong>Projeto:</strong> API de e-commerce
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="module-card deploy">
+                                <div class="module-header">
+                                    <div class="module-number">06</div>
+                                    <div class="module-info">
+                                        <h4>Deploy e Produção</h4>
+                                        <span class="module-duration">20 horas • 2 semanas</span>
+                                    </div>
+                                </div>
+                                <div class="module-body">
+                                    <div class="module-topics">
+                                        <h6>Tópicos principais:</h6>
+                                        <ul>
+                                            <li>Docker e containerização</li>
+                                            <li>Cloud deployment</li>
+                                            <li>CI/CD com GitHub Actions</li>
+                                            <li>Monitoring e logs</li>
+                                            <li>Security & performance</li>
+                                        </ul>
+                                    </div>
+                                    <div class="module-project">
+                                        <strong>Projeto:</strong> Deploy completo na nuvem
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Projetos Práticos -->
+                    <section id="projetos" class="mb-5">
+                        <h2><i class="bi bi-code-slash text-info"></i> Projetos Práticos</h2>
+                        
+                        <div class="estagiario-section">
+                            <p>Cada módulo inclui projetos hands-on que simulam cenários reais de desenvolvimento:</p>
+                            
+                            <div class="projects-showcase">
+                                <div class="project-highlight">
+                                    <div class="project-image">
+                                        <i class="bi bi-calculator project-icon"></i>
+                                    </div>
+                                    <div class="project-details">
+                                        <h5>Calculadora Científica</h5>
+                                        <p>Primeiro projeto para dominar fundamentos: operações básicas, funções matemáticas, histórico de cálculos e interface user-friendly.</p>
+                                        <div class="project-tech">
+                                            <span class="tech">Python Core</span>
+                                            <span class="tech">Tkinter GUI</span>
+                                            <span class="tech">Math Module</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="project-highlight">
+                                    <div class="project-image">
+                                        <i class="bi bi-journal-text project-icon"></i>
+                                    </div>
+                                    <div class="project-details">
+                                        <h5>Sistema de Blog</h5>
+                                        <p>Blog completo com autenticação, CRUD de posts, sistema de comentários, upload de imagens e painel administrativo.</p>
+                                        <div class="project-tech">
+                                            <span class="tech">Flask</span>
+                                            <span class="tech">SQLAlchemy</span>
+                                            <span class="tech">Bootstrap</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="project-highlight">
+                                    <div class="project-image">
+                                        <i class="bi bi-shop project-icon"></i>
+                                    </div>
+                                    <div class="project-details">
+                                        <h5>API E-commerce</h5>
+                                        <p>API REST completa para e-commerce: produtos, carrinho, pedidos, pagamentos, inventário e relatórios de vendas.</p>
+                                        <div class="project-tech">
+                                            <span class="tech">FastAPI</span>
+                                            <span class="tech">PostgreSQL</span>
+                                            <span class="tech">JWT Auth</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="capstone-project">
+                                <h4><i class="bi bi-trophy text-warning"></i> Projeto Capstone</h4>
+                                <p>O curso culmina com um <strong>projeto final livre</strong> onde você escolhe o tema e implementa uma solução completa:</p>
+                                
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="capstone-option">
+                                            <h6>🏢 Sistema Empresarial</h6>
+                                            <p>ERP, CRM, ou sistema de gestão customizado para uma empresa real</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="capstone-option">
+                                            <h6>📱 Aplicação SaaS</h6>
+                                            <p>Plataforma web escalável com múltiplos usuários e diferentes planos</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="capstone-option">
+                                            <h6>🤖 Automação/IA</h6>
+                                            <p>Sistema inteligente com machine learning ou automação de processos</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recursos de Aprendizado -->
+                    <section id="recursos" class="mb-5">
+                        <h2><i class="bi bi-book text-warning"></i> Recursos de Aprendizado</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="resource-section">
+                                    <h4><i class="bi bi-play-circle text-primary"></i> Conteúdo Multimídia</h4>
+                                    <div class="resource-list">
+                                        <div class="resource-item">
+                                            <i class="bi bi-camera-video"></i>
+                                            <div class="resource-info">
+                                                <h6>Videoaulas HD</h6>
+                                                <p>120+ vídeos em qualidade 4K com legendas e transcrições</p>
+                                            </div>
+                                        </div>
+                                        <div class="resource-item">
+                                            <i class="bi bi-mic"></i>
+                                            <div class="resource-info">
+                                                <h6>Podcasts Técnicos</h6>
+                                                <p>Entrevistas com desenvolvedores sênior e cases reais</p>
+                                            </div>
+                                        </div>
+                                        <div class="resource-item">
+                                            <i class="bi bi-file-text"></i>
+                                            <div class="resource-info">
+                                                <h6>Material Escrito</h6>
+                                                <p>E-books, cheat sheets e documentação técnica</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="resource-section">
+                                    <h4><i class="bi bi-people text-success"></i> Suporte e Comunidade</h4>
+                                    <div class="resource-list">
+                                        <div class="resource-item">
+                                            <i class="bi bi-person-badge"></i>
+                                            <div class="resource-info">
+                                                <h6>Mentoria Individual</h6>
+                                                <p>Sessões 1:1 com instrutores sênior para tirar dúvidas</p>
+                                            </div>
+                                        </div>
+                                        <div class="resource-item">
+                                            <i class="bi bi-chat-dots"></i>
+                                            <div class="resource-info">
+                                                <h6>Comunidade Ativa</h6>
+                                                <p>Discord com 5000+ membros para networking e ajuda</p>
+                                            </div>
+                                        </div>
+                                        <div class="resource-item">
+                                            <i class="bi bi-clock"></i>
+                                            <div class="resource-info">
+                                                <h6>Suporte 24/7</h6>
+                                                <p>Fórum com resposta garantida em até 4 horas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Plataforma de Aprendizado -->
+                        <div class="estagiario-section">
+                            <h4><i class="bi bi-laptop text-info"></i> Plataforma Tecnológica</h4>
+                            <p>Nossa plataforma oferece uma experiência completa de aprendizado:</p>
+                            
+                            <div class="platform-features">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="feature-card">
+                                            <i class="bi bi-code-square"></i>
+                                            <h6>IDE Integrada</h6>
+                                            <p>Ambiente de desenvolvimento completo no browser, sem instalação necessária</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="feature-card">
+                                            <i class="bi bi-git"></i>
+                                            <h6>Git Workflow</h6>
+                                            <p>Integração completa com GitHub para versionamento e portfolio</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="feature-card">
+                                            <i class="bi bi-check-circle"></i>
+                                            <h6>Auto-grading</h6>
+                                            <p>Correção automática de exercícios com feedback instantâneo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Certificação e Carreira -->
+                    <section id="certificacao" class="mb-5">
+                        <h2><i class="bi bi-award text-danger"></i> Certificação e Carreira</h2>
+                        
+                        <div class="certification-overview">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="cert-card">
+                                        <div class="cert-badge">
+                                            <i class="bi bi-patch-check cert-icon"></i>
+                                            <h4>Certificação Profissional</h4>
+                                        </div>
+                                        <div class="cert-details">
+                                            <h5>Certificado Python Developer</h5>
+                                            <p>Reconhecido por mais de 500 empresas no Brasil</p>
+                                            <ul class="cert-benefits">
+                                                <li>✅ Validação de competências técnicas</li>
+                                                <li>✅ Portfolio com 15+ projetos</li>
+                                                <li>✅ LinkedIn endorsement oficial</li>
+                                                <li>✅ Acesso ao programa de carreiras</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="career-section">
+                                        <h4><i class="bi bi-graph-up-arrow"></i> Oportunidades de Carreira</h4>
+                                        <div class="career-stats">
+                                            <div class="stat">
+                                                <span class="stat-number">R$ 8.500</span>
+                                                <span class="stat-label">Salário médio júnior</span>
+                                            </div>
+                                            <div class="stat">
+                                                <span class="stat-number">85%</span>
+                                                <span class="stat-label">Taxa de empregabilidade</span>
+                                            </div>
+                                            <div class="stat">
+                                                <span class="stat-number">3 meses</span>
+                                                <span class="stat-label">Tempo médio até primeira vaga</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="job-roles">
+                                            <h6>Cargos possíveis:</h6>
+                                            <div class="roles-grid">
+                                                <span class="role-tag">Python Developer</span>
+                                                <span class="role-tag">Backend Developer</span>
+                                                <span class="role-tag">Full Stack Developer</span>
+                                                <span class="role-tag">Data Analyst</span>
+                                                <span class="role-tag">DevOps Engineer</span>
+                                                <span class="role-tag">API Developer</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Processo de Avaliação -->
+                        <div class="estagiario-section">
+                            <h4><i class="bi bi-clipboard-check"></i> Processo de Certificação</h4>
+                            <p>A certificação segue critérios rigorosos baseados em competências práticas:</p>
+                            
+                            <div class="assessment-process">
+                                <div class="process-step">
+                                    <div class="step-num">1</div>
+                                    <div class="step-content">
+                                        <h6>Avaliações Contínuas (40%)</h6>
+                                        <p>Exercícios, quizzes e projetos intermediários ao longo do curso</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-num">2</div>
+                                    <div class="step-content">
+                                        <h6>Projeto Capstone (35%)</h6>
+                                        <p>Desenvolvimento completo de aplicação com apresentação técnica</p>
+                                    </div>
+                                </div>
+                                <div class="process-step">
+                                    <div class="step-num">3</div>
+                                    <div class="step-content">
+                                        <h6>Prova Técnica (25%)</h6>
+                                        <p>Exame prático com coding challenges e arquitetura de sistemas</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Depoimentos e Cases -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-chat-quote text-success"></i> Histórias de Sucesso</h2>
+                        
+                        <div class="testimonials-section">
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-header">
+                                            <div class="student-avatar">
+                                                <i class="bi bi-person-circle"></i>
+                                            </div>
+                                            <div class="student-info">
+                                                <h6>Marina Silva</h6>
+                                                <small>De Contadora a Python Developer</small>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-content">
+                                            <p>"Em 6 meses saí de zero conhecimento em programação para uma vaga de desenvolvedora júnior. O curso é muito prático e o suporte é excepcional!"</p>
+                                            <div class="outcome">
+                                                <strong>Resultado:</strong> Contratada na Ambev - R$ 7.800/mês
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-4">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-header">
+                                            <div class="student-avatar">
+                                                <i class="bi bi-person-circle"></i>
+                                            </div>
+                                            <div class="student-info">
+                                                <h6>Carlos Eduardo</h6>
+                                                <small>Engenheiro → Full Stack</small>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-content">
+                                            <p>"Já tinha experiência técnica, mas o curso me deu a confiança e as habilidades específicas para fazer a transição de carreira para tecnologia."</p>
+                                            <div class="outcome">
+                                                <strong>Resultado:</strong> Full Stack na iFood - R$ 12.000/mês
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-4">
+                                    <div class="testimonial-card">
+                                        <div class="testimonial-header">
+                                            <div class="student-avatar">
+                                                <i class="bi bi-person-circle"></i>
+                                            </div>
+                                            <div class="student-info">
+                                                <h6>Ana Beatriz</h6>
+                                                <small>Freelancer → Produto Próprio</small>
+                                            </div>
+                                        </div>
+                                        <div class="testimonial-content">
+                                            <p>"O conhecimento do curso me permitiu criar minha própria startup. Hoje tenho uma plataforma SaaS com mais de 1000 usuários!"</p>
+                                            <div class="outcome">
+                                                <strong>Resultado:</strong> CEO da própria startup - R$ 25k+ MRR
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Próximos Passos -->
+                    <section class="text-center">
+                        <h2><i class="bi bi-rocket-takeoff text-primary"></i> Comece Sua Jornada Python!</h2>
+                        <p class="lead">Transforme sua carreira com o curso mais completo e prático de Python do mercado.</p>
+                        
+                        <div class="cta-section">
+                            <div class="course-offer">
+                                <div class="offer-price">
+                                    <span class="price-old">De R$ 2.997</span>
+                                    <span class="price-current">Por R$ 1.497</span>
+                                    <span class="price-installment">ou 12x de R$ 124,75</span>
+                                </div>
+                                <div class="offer-bonus">
+                                    <h5>🎁 Bônus Exclusivos:</h5>
+                                    <ul class="bonus-list">
+                                        <li>✅ 1 ano de acesso à plataforma</li>
+                                        <li>✅ Grupo VIP no Discord</li>
+                                        <li>✅ 3 sessões de mentoria 1:1</li>
+                                        <li>✅ Garantia de 30 dias</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="https://chmulato.github.io/circuito_python/index.html" class="btn-wiki me-2" target="_blank" rel="noopener">
+                                <i class="bi bi-play-circle"></i> Acessar Curso
+                            </a>
+                            <a href="#curriculum" class="btn-wiki me-2">
+                                <i class="bi bi-list-check"></i> Ver Currículo
+                            </a>
+                            <a href="mailto:contato@caracore.com.br?subject=Dúvida sobre Python Training" class="btn-wiki">
+                                <i class="bi bi-envelope"></i> Tirar Dúvidas
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wiki-footer">
+        <div class="container">
+            <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
+            <p>Python Training - Curso Profissional de Desenvolvimento Python</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Wiki JS -->
+    <script src="assets/js/wiki.js"></script>
+</body>
+</html>

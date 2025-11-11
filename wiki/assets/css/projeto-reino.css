@@ -1,0 +1,339 @@
+﻿/* Estilos espec�ficos para projeto Reino OIDC */
+
+.reino-intro {
+    background: linear-gradient(135deg, var(--reino-color), #764ba2);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+}
+
+.reino-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.badge-text {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.story-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 15px 0;
+    border-left: 4px solid var(--reino-color);
+}
+
+.character-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    height: 100%;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+}
+
+.character-header {
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.character-card.guardian .character-header { background: linear-gradient(135deg, #667eea, #764ba2); }
+.character-card.apprentice .character-header { background: linear-gradient(135deg, #f093fb, #f5576c); }
+.character-card.merchant .character-header { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+.character-card.keeper .character-header { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+
+.character-header i {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.character-body {
+    padding: 20px;
+}
+
+.character-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.character-skills .skill {
+    background: var(--reino-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.journey-timeline {
+    position: relative;
+    margin: 40px 0;
+}
+
+.journey-timeline::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--reino-color);
+}
+
+.journey-step {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 80px;
+}
+
+.step-number {
+    position: absolute;
+    left: 10px;
+    width: 40px;
+    height: 40px;
+    background: var(--reino-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.step-content {
+    background: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--reino-color);
+}
+
+.code-example {
+    margin-top: 15px;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.tech-mapping {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.mapping-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.reino-term {
+    background: var(--reino-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    flex: 1 1 auto;
+    min-width: 150px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.arrow {
+    font-size: 1.5rem;
+    color: var(--reino-color);
+    flex-shrink: 0;
+}
+
+.tech-term {
+    background: #17a2b8;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    flex: 1 1 auto;
+    min-width: 150px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.scenario-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.scenario-header {
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+.scenario-card.beginner .scenario-header { background: linear-gradient(135deg, #56ab2f, #a8e6cf); }
+.scenario-card.intermediate .scenario-header { background: linear-gradient(135deg, #f7971e, #ffd200); }
+.scenario-card.advanced .scenario-header { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+
+.scenario-body {
+    padding: 20px;
+}
+
+.scenario-topics {
+    list-style: none;
+    padding: 0;
+}
+
+.scenario-topics li {
+    padding: 5px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.scenario-topics li:before {
+    content: "📚 ";
+    margin-right: 8px;
+}
+
+.scenario-time {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.resource-card, .use-case-grid {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    height: 100%;
+}
+
+.use-case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.use-case-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.use-case-icon i {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.lab-section {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.lab-section .alert {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.reino-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.reino-nav li {
+    margin-bottom: 8px;
+}
+
+.reino-nav a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    color: var(--wiki-text);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.reino-nav a:hover {
+    background-color: rgba(139, 110, 213, 0.1);
+}
+
+.reino-nav i {
+    margin-right: 8px;
+    color: var(--reino-color);
+}
+
+.reino-main-icon {
+    font-size: 4rem;
+}
+
+@media (max-width: 992px) {
+    .mapping-item {
+        gap: 8px;
+    }
+    
+    .reino-term, .tech-term {
+        min-width: 120px;
+        font-size: 0.9rem;
+        padding: 6px 12px;
+    }
+    
+    .arrow {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .journey-timeline::before {
+        left: 15px;
+    }
+    
+    .journey-step {
+        padding-left: 50px;
+    }
+    
+    .step-number {
+        left: 0;
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+    
+    .mapping-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .reino-term, .tech-term {
+        min-width: auto;
+        width: 100%;
+    }
+    
+    .arrow {
+        transform: rotate(90deg);
+    }
+}

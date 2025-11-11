@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologias Utilizadas - Wiki Cara Core</title>
+    <meta name="description" content="Stack tecnológico completo da Cara Core Informática - Python, Flask, OAuth, Docker e mais.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Wiki CSS -->
+    <link rel="stylesheet" href="assets/css/wiki.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MKFC9G3CL0', {
+            page_title: 'Tecnologias - Wiki',
+            custom_map: {'custom_parameter_1': 'tecnologias'}
+        });
+    </script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-journal-code"></i> Wiki Cara Core
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWiki" aria-label="Alternar navegação" title="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../portfolio.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="wiki-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Wiki Home</a></li>
+                    <li class="breadcrumb-item active">Tecnologias Utilizadas</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="wiki-sidebar">
+                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
+                    <ul class="wiki-menu">
+                        <li><a href="index.html"><i class="bi bi-house"></i> Página Inicial</a></li>
+                        <li><a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a></li>
+                        <li>
+                            <a href="tecnologias.html" class="active"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a>
+                            <ul class="submenu">
+                                <li><a href="#python-flask">Python & Flask</a></li>
+                                <li><a href="#frontend">HTML/CSS/JavaScript</a></li>
+                                <li><a href="#oauth">OAuth 2.1 & OIDC</a></li>
+                                <li><a href="#azure-docker">Azure & Docker</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
+                        <li><a href="contribuindo.html"><i class="bi bi-git"></i> Como Contribuir</a></li>
+                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="col-lg-9 col-md-8">
+                <div class="wiki-content">
+                    <div class="wiki-header">
+                        <h1><i class="bi bi-gear"></i> Tecnologias Utilizadas</h1>
+                        <p>Stack tecnológico completo da Cara Core Informática com explicações para todos os níveis</p>
+                    </div>
+
+                    <!-- Introdução -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-stack text-info"></i> Nossa Stack Tecnológica</h2>
+                        
+                        <div class="leigos-section">
+                            <h3><i class="bi bi-people"></i> O que é "Stack Tecnológica"?</h3>
+                            <p>Imagine que você está construindo uma casa. Você precisa de diferentes materiais: tijolos, cimento, madeira, tinta, etc. Na programação, a "stack" são as diferentes tecnologias (linguagens, ferramentas, serviços) que usamos para construir nossos sistemas.</p>
+                            <p>Cada tecnologia tem uma função específica, como os materiais de construção:</p>
+                            <ul class="feature-list">
+                                <li><strong>Python:</strong> A "linguagem" que usamos para escrever programas</li>
+                                <li><strong>Flask:</strong> A "estrutura" para criar sites e APIs</li>
+                                <li><strong>HTML/CSS:</strong> A "aparência" dos sites</li>
+                                <li><strong>Docker:</strong> A "embalagem" para transportar programas</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Python & Flask -->
+                    <section id="python-flask" class="mb-5">
+                        <div class="project-card">
+                            <div class="project-header python-tool">
+                                <h2><i class="bi bi-code-square"></i> Python & Flask</h2>
+                                <div class="mt-2">
+                                    <span class="tech-badge">Python 3.11+</span>
+                                    <span class="tech-badge">Flask</span>
+                                    <span class="tech-badge">FastAPI</span>
+                                    <span class="tech-badge">SQLAlchemy</span>
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-people text-info"></i> Para Leigos</h4>
+                                        <p><strong>Python</strong> é como o "idioma" que usamos para falar com o computador. É uma linguagem muito popular porque é fácil de aprender e ler - quase como inglês!</p>
+                                        
+                                        <p><strong>Flask</strong> é como um "kit de ferramentas" que nos ajuda a criar sites e sistemas mais rapidamente. Em vez de fazer tudo do zero, o Flask já tem peças prontas que podemos usar.</p>
+                                        
+                                        <div class="alert alert-success">
+                                            <i class="bi bi-lightbulb"></i> <strong>Analogia:</strong> Se Python é o idioma, Flask é como ter um dicionário e guia de conversação prontos!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-code text-warning"></i> Para Estagiários</h4>
+                                        <p><strong>Python</strong> é nossa linguagem principal para backend. Escolhemos Python 3.11+ pelas melhorias de performance e novas funcionalidades de tipagem.</p>
+                                        
+                                        <p><strong>Frameworks utilizados:</strong></p>
+                                        <ul class="feature-list">
+                                            <li><strong>Flask:</strong> APIs REST, webhooks, sistemas web</li>
+                                            <li><strong>FastAPI:</strong> APIs de alta performance (projetos futuros)</li>
+                                            <li><strong>SQLAlchemy:</strong> ORM para banco de dados</li>
+                                            <li><strong>Pytest:</strong> Testes automatizados</li>
+                                        </ul>
+
+                                        <p><strong>Projetos que usam:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>CaraCore Hub (Flask + SQLAlchemy)</li>
+                                            <li>Área 51 (Flask + JWT)</li>
+                                            <li>CaraCore Seed (Template Python)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="estagiario-section mt-4">
+                                    <h4><i class="bi bi-laptop"></i> O que você precisa aprender:</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Básico (Primeira semana):</h5>
+                                            <ul class="feature-list">
+                                                <li>Sintaxe Python básica</li>
+                                                <li>Variáveis, listas, dicionários</li>
+                                                <li>Funções e classes</li>
+                                                <li>Primeiro "Hello World" Flask</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Intermediário (Segunda semana):</h5>
+                                            <ul class="feature-list">
+                                                <li>APIs REST com Flask</li>
+                                                <li>Conectar com banco de dados</li>
+                                                <li>Tratamento de erros</li>
+                                                <li>Testes básicos com Pytest</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Frontend Technologies -->
+                    <section id="frontend" class="mb-5">
+                        <div class="project-card">
+                            <div class="project-header vscode-tool">
+                                <h2><i class="bi bi-palette"></i> Frontend: HTML, CSS & JavaScript</h2>
+                                <div class="mt-2">
+                                    <span class="tech-badge">HTML5</span>
+                                    <span class="tech-badge">CSS3</span>
+                                    <span class="tech-badge">JavaScript ES6+</span>
+                                    <span class="tech-badge">Bootstrap 5</span>
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-people text-info"></i> Para Leigos</h4>
+                                        <p>Se um site fosse uma casa:</p>
+                                        <ul class="feature-list">
+                                            <li><strong>HTML:</strong> É a "estrutura" - as paredes, portas, janelas</li>
+                                            <li><strong>CSS:</strong> É a "decoração" - cores, móveis, estilo</li>
+                                            <li><strong>JavaScript:</strong> É a "funcionalidade" - luz que acende, campainha que toca</li>
+                                        </ul>
+                                        
+                                        <p><strong>Bootstrap</strong> é como comprar uma casa semi-pronta - já vem com decoração básica bonita, você só personaliza os detalhes!</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-code text-warning"></i> Para Estagiários</h4>
+                                        <p>Nosso frontend prioriza <strong>responsividade</strong> e <strong>acessibilidade</strong>:</p>
+                                        
+                                        <p><strong>HTML5:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Semântica correta (header, main, section)</li>
+                                            <li>Acessibilidade (aria-labels, alt text)</li>
+                                            <li>Meta tags para SEO</li>
+                                        </ul>
+                                        
+                                        <p><strong>CSS3:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Flexbox e Grid para layouts</li>
+                                            <li>Variáveis CSS para temas</li>
+                                            <li>Media queries para responsividade</li>
+                                            <li>Animações e transições</li>
+                                        </ul>
+                                        
+                                        <p><strong>JavaScript:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>ES6+ (async/await, arrow functions)</li>
+                                            <li>Fetch API para chamadas HTTP</li>
+                                            <li>DOM manipulation</li>
+                                            <li>Vanilla JS (sem jQuery)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-info mt-4">
+                                    <h5><i class="bi bi-phone"></i> Foco em Mobile-First</h5>
+                                    <p>Todos nossos projetos são desenvolvidos pensando primeiro em celulares, depois adaptados para desktop. Isso garante que funcionem bem em qualquer dispositivo!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- OAuth & Security -->
+                    <section id="oauth" class="mb-5">
+                        <div class="project-card">
+                            <div class="project-header reino">
+                                <h2><i class="bi bi-shield-check"></i> Segurança: OAuth 2.1 & OpenID Connect</h2>
+                                <div class="mt-2">
+                                    <span class="tech-badge">OAuth 2.1</span>
+                                    <span class="tech-badge">OIDC</span>
+                                    <span class="tech-badge">JWT</span>
+                                    <span class="tech-badge">PKCE</span>
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-people text-info"></i> Para Leigos</h4>
+                                        <p>Imagine que você quer entrar em uma festa exclusiva:</p>
+                                        
+                                        <p><strong>OAuth 2.1:</strong> É como ter um "segurança da festa" que verifica sua identidade usando seu RG (Google/Microsoft) em vez de criar uma nova carteirinha só para a festa.</p>
+                                        
+                                        <p><strong>OpenID Connect:</strong> Além de verificar se você é quem diz ser, também pergunta "que informações suas a festa pode usar?" (nome, email, etc.)</p>
+                                        
+                                        <p><strong>Vantagens:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Não precisa criar nova senha</li>
+                                            <li>Mais seguro que senhas tradicionais</li>
+                                            <li>Você controla que dados compartilha</li>
+                                            <li>Se mudar senha do Google, não afeta outros sites</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-code text-warning"></i> Para Estagiários</h4>
+                                        <p>Implementamos as melhores práticas de segurança modernas:</p>
+                                        
+                                        <p><strong>OAuth 2.1 (RFC 6749 atualizada):</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Authorization Code Flow com PKCE</li>
+                                            <li>Sem Implicit Flow (descontinuado)</li>
+                                            <li>Refresh tokens seguros</li>
+                                        </ul>
+                                        
+                                        <p><strong>OpenID Connect:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>ID tokens JWT assinados</li>
+                                            <li>UserInfo endpoint para dados do usuário</li>
+                                            <li>Descoberta automática de endpoints</li>
+                                        </ul>
+                                        
+                                        <p><strong>Implementações:</strong></p>
+                                        <ul class="feature-list">
+                                            <li><strong>Reino OIDC:</strong> Ensina os conceitos</li>
+                                            <li><strong>Área 51:</strong> Implementa em produção</li>
+                                            <li><strong>Python Training:</strong> Explica para jovens</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="estagiario-section mt-4">
+                                    <h4><i class="bi bi-book"></i> Recursos de Aprendizado</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>📚 Teoria:</h5>
+                                            <ul class="feature-list">
+                                                <li><a href="https://chmulato.github.io/reino_oidc/" target="_blank" rel="noopener">Reino OIDC</a> - Aprendizado gamificado</li>
+                                                <li>RFCs oficiais (OAuth 2.1, OIDC Core)</li>
+                                                <li>Documentação Google/Microsoft</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>🔧 Prática:</h5>
+                                            <ul class="feature-list">
+                                                <li>Área 51 - Sistema real em produção</li>
+                                                <li>Laboratório local com Flask</li>
+                                                <li>Testes de segurança e penetração</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cloud & DevOps -->
+                    <section id="azure-docker" class="mb-5">
+                        <div class="project-card">
+                            <div class="project-header github-tool">
+                                <h2><i class="bi bi-cloud"></i> Cloud & DevOps: Azure & Docker</h2>
+                                <div class="mt-2">
+                                    <span class="tech-badge">Azure</span>
+                                    <span class="tech-badge">Docker</span>
+                                    <span class="tech-badge">GitHub Pages</span>
+                                    <span class="tech-badge">CI/CD</span>
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-people text-info"></i> Para Leigos</h4>
+                                        <p><strong>Azure:</strong> É como "alugar computadores na Microsoft" em vez de comprar. Seus programas ficam rodando nos servidores da Microsoft pelo mundo todo.</p>
+                                        
+                                        <p><strong>Docker:</strong> Imagine que você quer mandar um presente pelo correio. Você coloca numa caixa com tudo que precisa (produto + proteção + instruções). Docker faz isso com programas - empacota tudo numa "caixa" que funciona em qualquer computador.</p>
+                                        
+                                        <p><strong>GitHub Pages:</strong> É como um "terreno grátis na internet" onde você pode construir seu site. Ideal para sites simples que não precisam de banco de dados.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-code text-warning"></i> Para Estagiários</h4>
+                                        <p>Nossa infraestrutura prioriza <strong>custo-benefício</strong> e <strong>facilidade de manutenção</strong>:</p>
+                                        
+                                        <p><strong>Azure Web Apps:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Deploy direto do GitHub</li>
+                                            <li>Scaling automático</li>
+                                            <li>SSL/TLS gerenciado</li>
+                                            <li>Logs centralizados</li>
+                                        </ul>
+                                        
+                                        <p><strong>Docker:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Containers para desenvolvimento local</li>
+                                            <li>Docker Compose para multi-container</li>
+                                            <li>Imagens otimizadas (Alpine Linux)</li>
+                                        </ul>
+                                        
+                                        <p><strong>GitHub Pages:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Sites estáticos (Reino OIDC, docs)</li>
+                                            <li>Jekyll para blogs (futuro)</li>
+                                            <li>Custom domains com SSL</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning mt-4">
+                                    <h5><i class="bi bi-exclamation-triangle"></i> Importante para Estagiários</h5>
+                                    <p>Nunca commite credenciais (senhas, chaves API) no Git! Use variáveis de ambiente e Azure Key Vault para segredos em produção.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Tecnologias Complementares -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-plus-circle text-info"></i> Tecnologias Complementares</h2>
+                        
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle"></i> <strong>Nota:</strong> Esta seção enumera tecnologias adicionais usadas na Cara Core. Para aprender mais sobre cada uma, pesquise na documentação oficial ou em tutoriais externos.
+                        </div>
+
+                        <div class="row">
+                            <!-- Linguagens de Programação -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header python-tool">
+                                        <h4><i class="bi bi-code-slash"></i> Linguagens de Programação</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Java 17+:</strong> CaraCore Hub, CaraCore Seed</li>
+                                            <li><strong>Python 3.11+:</strong> Área 51, automações, scripts</li>
+                                            <li><strong>JavaScript (ES6+):</strong> Frontend interativo</li>
+                                            <li><strong>TypeScript:</strong> Projetos frontend futuros</li>
+                                            <li><strong>SQL:</strong> Queries e modelagem de dados</li>
+                                            <li><strong>Shell Script:</strong> Automação de deploy</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Frameworks Backend -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header hub-tool">
+                                        <h4><i class="bi bi-server"></i> Frameworks Backend</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Jakarta EE 10.1:</strong> CaraCore Hub enterprise</li>
+                                            <li><strong>Flask 3.x:</strong> APIs Python leves</li>
+                                            <li><strong>FastAPI:</strong> APIs Python de alta performance</li>
+                                            <li><strong>Express.js:</strong> APIs Node.js (futuro)</li>
+                                            <li><strong>Spring Boot:</strong> Alternativa Java (futuro)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Frameworks Frontend -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header vscode-tool">
+                                        <h4><i class="bi bi-window"></i> Frameworks Frontend</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Bootstrap 5:</strong> UI responsivo (atual)</li>
+                                            <li><strong>Tailwind CSS:</strong> Utility-first CSS (planejado)</li>
+                                            <li><strong>React:</strong> SPAs complexas (futuro)</li>
+                                            <li><strong>Vue.js:</strong> Interfaces interativas (futuro)</li>
+                                            <li><strong>Alpine.js:</strong> Interatividade leve</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bancos de Dados -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header database-tool">
+                                        <h4><i class="bi bi-database"></i> Bancos de Dados</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>PostgreSQL 15+:</strong> Banco principal relacional</li>
+                                            <li><strong>MySQL/MariaDB:</strong> Alternativa SQL</li>
+                                            <li><strong>SQLite:</strong> Desenvolvimento local e testes</li>
+                                            <li><strong>MongoDB:</strong> NoSQL para dados flexíveis (futuro)</li>
+                                            <li><strong>Redis:</strong> Cache e sessões</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ORMs e Data Access -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header seed-tool">
+                                        <h4><i class="bi bi-layers"></i> ORMs & Data Access</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>SQLAlchemy:</strong> ORM Python</li>
+                                            <li><strong>Hibernate:</strong> ORM Java (JPA)</li>
+                                            <li><strong>Prisma:</strong> ORM Node.js (futuro)</li>
+                                            <li><strong>JDBC:</strong> Java Database Connectivity</li>
+                                            <li><strong>Alembic:</strong> Migrations Python</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Servidores de Aplicação -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header azure-tool">
+                                        <h4><i class="bi bi-hdd-rack"></i> Servidores de Aplicação</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Apache Tomcat 10:</strong> Java Servlet</li>
+                                            <li><strong>WildFly 37:</strong> Jakarta EE completo</li>
+                                            <li><strong>Gunicorn:</strong> WSGI Python</li>
+                                            <li><strong>uWSGI:</strong> Servidor Python alternativo</li>
+                                            <li><strong>Nginx:</strong> Reverse proxy e load balancer</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- APIs e Integrações -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header hub-tool">
+                                        <h4><i class="bi bi-plugin"></i> APIs & Integrações</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>REST APIs:</strong> Padrão de comunicação</li>
+                                            <li><strong>GraphQL:</strong> APIs flexíveis (planejado)</li>
+                                            <li><strong>Webhook handlers:</strong> Eventos assíncronos</li>
+                                            <li><strong>API Mercado Livre:</strong> E-commerce</li>
+                                            <li><strong>Microsoft Graph API:</strong> Azure integrations</li>
+                                            <li><strong>Google APIs:</strong> OAuth e serviços</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bibliotecas Python -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header python-tool">
+                                        <h4><i class="bi bi-box"></i> Bibliotecas Python Essenciais</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Requests:</strong> HTTP client</li>
+                                            <li><strong>Pandas:</strong> Análise de dados</li>
+                                            <li><strong>Pillow:</strong> Manipulação de imagens</li>
+                                            <li><strong>Pygame:</strong> Desenvolvimento de jogos</li>
+                                            <li><strong>PyJWT:</strong> JSON Web Tokens</li>
+                                            <li><strong>Cryptography:</strong> Criptografia</li>
+                                            <li><strong>Python-dotenv:</strong> Variáveis de ambiente</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Bibliotecas Java -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header hub-tool">
+                                        <h4><i class="bi bi-file-earmark-code"></i> Bibliotecas Java Essenciais</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Gson/Jackson:</strong> Serialização JSON</li>
+                                            <li><strong>Apache HttpClient:</strong> HTTP requests</li>
+                                            <li><strong>JUnit 5:</strong> Testes unitários</li>
+                                            <li><strong>Mockito:</strong> Mocking para testes</li>
+                                            <li><strong>Log4j/SLF4J:</strong> Logging</li>
+                                            <li><strong>Apache Commons:</strong> Utilitários</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Monitoramento e Logs -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header azure-tool">
+                                        <h4><i class="bi bi-bar-chart"></i> Monitoramento & Logs</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Google Analytics:</strong> Analytics web</li>
+                                            <li><strong>Azure Monitor:</strong> Monitoramento cloud</li>
+                                            <li><strong>Python logging:</strong> Logs estruturados</li>
+                                            <li><strong>Sentry:</strong> Error tracking (planejado)</li>
+                                            <li><strong>ELK Stack:</strong> Logs centralizados (futuro)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ferramentas de Build -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header git-tool">
+                                        <h4><i class="bi bi-hammer"></i> Build & Package</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Maven:</strong> Build Java</li>
+                                            <li><strong>Gradle:</strong> Build Java alternativo</li>
+                                            <li><strong>pip:</strong> Gerenciador de pacotes Python</li>
+                                            <li><strong>Poetry:</strong> Gerenciamento Python avançado</li>
+                                            <li><strong>npm/yarn:</strong> Gerenciador JavaScript</li>
+                                            <li><strong>Webpack/Vite:</strong> Bundlers frontend</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documentação -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header vscode-tool">
+                                        <h4><i class="bi bi-file-text"></i> Documentação</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Markdown:</strong> Documentação textual</li>
+                                            <li><strong>Mermaid.js:</strong> Diagramas como código</li>
+                                            <li><strong>Swagger/OpenAPI:</strong> Documentação de APIs</li>
+                                            <li><strong>JSDoc:</strong> Documentação JavaScript</li>
+                                            <li><strong>Sphinx:</strong> Documentação Python</li>
+                                            <li><strong>JavaDoc:</strong> Documentação Java</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Protocolos e Padrões -->
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header security-tool">
+                                        <h4><i class="bi bi-shield"></i> Protocolos & Padrões</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>HTTP/HTTPS:</strong> Protocolo web</li>
+                                            <li><strong>WebSocket:</strong> Comunicação bidirecional</li>
+                                            <li><strong>REST:</strong> Arquitetura de APIs</li>
+                                            <li><strong>JSON/XML:</strong> Formatos de dados</li>
+                                            <li><strong>JWT:</strong> Tokens de autenticação</li>
+                                            <li><strong>CORS:</strong> Cross-Origin Resource Sharing</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Ferramentas de Desenvolvimento -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-tools text-success"></i> Ferramentas de Desenvolvimento</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header vscode-tool">
+                                        <h4><i class="bi bi-code"></i> Editores & IDEs</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <p><strong>Visual Studio Code (obrigatório):</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Python extension (Microsoft)</li>
+                                            <li>GitLens para Git avançado</li>
+                                            <li>Prettier para formatação</li>
+                                            <li>Live Server para desenvolvimento web</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header git-tool">
+                                        <h4><i class="bi bi-git"></i> Controle de Versão</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <p><strong>Git + GitHub:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Feature branches obrigatórias</li>
+                                            <li>Pull Requests com code review</li>
+                                            <li>GitHub Actions para CI/CD</li>
+                                            <li>Issues para tracking de bugs</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="alert alert-light">
+                                    <h5><i class="bi bi-check2-square text-success"></i> Testes</h5>
+                                    <ul class="feature-list">
+                                        <li><strong>Pytest:</strong> Testes unitários Python</li>
+                                        <li><strong>Coverage.py:</strong> Cobertura de código</li>
+                                        <li><strong>Postman:</strong> Testes de API manual</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="alert alert-light">
+                                    <h5><i class="bi bi-speedometer text-primary"></i> Qualidade de Código</h5>
+                                    <ul class="feature-list">
+                                        <li><strong>Black:</strong> Formatação Python</li>
+                                        <li><strong>Flake8:</strong> Linting Python</li>
+                                        <li><strong>ESLint:</strong> Linting JavaScript</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Roadmap de Aprendizado -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-map text-warning"></i> Roadmap de Aprendizado para Estagiários</h2>
+                        
+                        <div class="estagiario-section">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <div class="alert alert-beginner text-center">
+                                        <h5><i class="bi bi-1-circle text-success"></i> Semana 1</h5>
+                                        <p><strong>Fundamentos</strong></p>
+                                        <ul class="feature-list text-start">
+                                            <li>Python básico</li>
+                                            <li>HTML/CSS</li>
+                                            <li>Git básico</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3">
+                                    <div class="alert alert-intermediate text-center">
+                                        <h5><i class="bi bi-2-circle text-warning"></i> Semana 2</h5>
+                                        <p><strong>Web Development</strong></p>
+                                        <ul class="feature-list text-start">
+                                            <li>Flask básico</li>
+                                            <li>JavaScript</li>
+                                            <li>Bootstrap</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3">
+                                    <div class="alert alert-advanced text-center">
+                                        <h5><i class="bi bi-3-circle text-danger"></i> Semana 3</h5>
+                                        <p><strong>APIs & Security</strong></p>
+                                        <ul class="feature-list text-start">
+                                            <li>APIs REST</li>
+                                            <li>OAuth básico</li>
+                                            <li>Testes</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-3 mb-3">
+                                    <div class="alert alert-info text-center">
+                                        <h5><i class="bi bi-4-circle text-info"></i> Semana 4+</h5>
+                                        <p><strong>DevOps & Advanced</strong></p>
+                                        <ul class="feature-list text-start">
+                                            <li>Docker</li>
+                                            <li>Azure deploy</li>
+                                            <li>CI/CD</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Próximos Passos -->
+                    <section class="text-center">
+                        <h2><i class="bi bi-rocket text-primary"></i> Pronto para Começar?</h2>
+                        <p class="lead">Agora que você conhece nossa stack, vamos colocar a mão na massa!</p>
+                        
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="guia-estagiario.html" class="btn-wiki me-2">
+                                <i class="bi bi-mortarboard"></i> Configurar Ambiente
+                            </a>
+                            <a href="contribuindo.html" class="btn-wiki me-2">
+                                <i class="bi bi-git"></i> Como Contribuir
+                            </a>
+                            <a href="glossario.html" class="btn-wiki">
+                                <i class="bi bi-book"></i> Glossário Técnico
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wiki-footer">
+        <div class="container">
+            <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
+            <p>Wiki criado para orientação de estagiários e divulgação técnica</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Wiki JS -->
+    <script src="assets/js/wiki.js"></script>
+</body>
+</html>

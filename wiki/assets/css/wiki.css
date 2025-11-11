@@ -1,0 +1,510 @@
+﻿/* Wiki - Cara Core Informática */
+/* Estilos responsivos para tablet, celular e desktop */
+
+:root {
+  --primary-color: #0d6efd;
+  --secondary-color: #6c757d;
+  --success-color: #198754;
+  --info-color: #0dcaf0;
+  --warning-color: #ffc107;
+  --danger-color: #dc3545;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --border-radius: 8px;
+  --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  
+  /* Cores específicas dos projetos */
+  --hub-color: #3498db;
+  --seed-color: #27ae60;
+  --reino-color: #8b6ed3;
+  --area51-color: #e74c3c;
+  --python-color: #3498db;
+  --wiki-text: #2c3e50;
+}
+
+/* Reset e Base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+}
+
+/* Navegaçéo */
+.wiki-nav {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  box-shadow: var(--box-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.wiki-nav .navbar-brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* Container Principal */
+.wiki-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Sidebar */
+.wiki-sidebar {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 80px;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.wiki-sidebar h4 {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.wiki-menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wiki-menu li {
+  margin-bottom: 8px;
+}
+
+.wiki-menu a {
+  text-decoration: none;
+  color: var(--dark-color);
+  padding: 8px 12px;
+  border-radius: var(--border-radius);
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.wiki-menu a:hover,
+.wiki-menu a.active {
+  background: var(--primary-color);
+  color: white;
+  transform: translateX(5px);
+}
+
+.wiki-menu .submenu {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+.wiki-menu .submenu a {
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+}
+
+/* Conteúdo Principal */
+.wiki-content {
+  background: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 30px;
+  margin-bottom: 20px;
+}
+
+.wiki-header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--info-color) 100%);
+  color: white;
+  padding: 20px;
+  margin: -30px -30px 30px -30px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.wiki-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.wiki-header p {
+  margin: 10px 0 0 0;
+  opacity: 0.9;
+}
+
+/* Cards de Projeto */
+.project-card {
+  background: white;
+  border: 1px solid #e9ecef;
+  border-radius: var(--border-radius);
+  margin-bottom: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.project-header {
+  padding: 20px;
+  background: linear-gradient(135deg, var(--success-color) 0%, var(--info-color) 100%);
+  color: white;
+}
+
+.project-header.hub {
+  background: linear-gradient(135deg, #43cea2 0%, #185a9d 100%);
+}
+
+.project-header.seed {
+  background: linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+}
+
+.project-header.reino {
+  background: linear-gradient(135deg, #8f6ed5 0%, #d084c9 100%);
+}
+
+.project-header.area51 {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.project-header.python-training {
+  background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+}
+
+.project-header h3 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.project-body {
+  padding: 20px;
+}
+
+/* Badges de Tecnologia */
+.tech-badge {
+  background: var(--light-color);
+  color: var(--dark-color);
+  padding: 4px 8px;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin: 2px;
+  display: inline-block;
+}
+
+/* Alertas */
+.alert {
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+.alert-beginner {
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  border-left: 4px solid var(--success-color);
+}
+
+.alert-intermediate {
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  border-left: 4px solid var(--warning-color);
+}
+
+.alert-advanced {
+  background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+  border-left: 4px solid var(--danger-color);
+}
+
+/* Seções Especiais */
+.leigos-section {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-left: 4px solid var(--info-color);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+}
+
+.estagiario-section {
+  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+  border-left: 4px solid #9c27b0;
+  padding: 20px;
+  border-radius: var(--border-radius);
+  margin: 20px 0;
+}
+
+/* Lista de Recursos */
+.feature-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feature-list li {
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+  padding-left: 25px;
+}
+
+.feature-list li:before {
+  content: "\25B6";
+  color: var(--success-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.feature-list li:last-child {
+  border-bottom: none;
+}
+
+/* Breadcrumb */
+.wiki-breadcrumb {
+  background: rgba(255,255,255,0.9);
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+}
+
+/* Botões */
+.btn-wiki {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--info-color) 100%);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.btn-wiki:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  color: white;
+}
+
+/* Footer */
+.wiki-footer {
+  background: var(--dark-color);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Responsividade */
+
+/* Tablets (768px - 991px) */
+@media (max-width: 991px) {
+  .wiki-container {
+    padding: 15px;
+  }
+  
+  .wiki-sidebar {
+    position: static;
+    max-height: none;
+    margin-bottom: 20px;
+  }
+  
+  .wiki-content {
+    padding: 20px;
+  }
+  
+  .wiki-header {
+    margin: -20px -20px 20px -20px;
+    padding: 15px;
+  }
+  
+  .wiki-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .project-header h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* Celulares (até 767px) */
+@media (max-width: 767px) {
+  .wiki-container {
+    padding: 10px;
+  }
+  
+  .wiki-content {
+    padding: 15px;
+  }
+  
+  .wiki-header {
+    margin: -15px -15px 15px -15px;
+    padding: 15px 10px;
+  }
+  
+  .wiki-header h1 {
+    font-size: 1.3rem;
+  }
+  
+  .project-body {
+    padding: 15px;
+  }
+  
+  .project-header {
+    padding: 15px;
+  }
+  
+  .project-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .wiki-nav .navbar-brand {
+    font-size: 1rem;
+  }
+  
+  .leigos-section,
+  .estagiario-section {
+    padding: 15px;
+    margin: 15px 0;
+  }
+  
+  .btn-wiki {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  .wiki-container {
+    padding: 5px;
+  }
+  
+  .wiki-content {
+    padding: 10px;
+  }
+  
+  .wiki-header {
+    margin: -10px -10px 10px -10px;
+    padding: 10px;
+  }
+  
+  .wiki-header h1 {
+    font-size: 1.1rem;
+  }
+  
+  .project-body {
+    padding: 10px;
+  }
+  
+  .project-header {
+    padding: 10px;
+  }
+  
+  .tech-badge {
+    font-size: 0.7rem;
+    padding: 3px 6px;
+  }
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wiki-content,
+.project-card {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Scrollbar customizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-color);
+}
+
+/* Headers específicos para ferramentas */
+.project-header.python-tool {
+  background: linear-gradient(135deg, #3776ab 0%, #ffd43b 100%);
+}
+
+.project-header.git-tool {
+  background: linear-gradient(135deg, #f05032 0%, #24292e 100%);
+}
+
+/* Headers específicos para projetos */
+.project-header.hub {
+  background: linear-gradient(135deg, var(--hub-color) 0%, #2980b9 100%);
+}
+
+.project-header.seed {
+  background: linear-gradient(135deg, var(--seed-color) 0%, #229954 100%);
+}
+
+.project-header.reino {
+  background: linear-gradient(135deg, var(--reino-color) 0%, #764ba2 100%);
+}
+
+.project-header.area51 {
+  background: linear-gradient(135deg, var(--area51-color) 0%, #c0392b 100%);
+}
+
+.project-header.python {
+  background: linear-gradient(135deg, var(--python-color) 0%, #2980b9 100%);
+}
+
+/* Badges específicos dos projetos */
+.badge-management { background-color: var(--hub-color); }
+.badge-template { background-color: var(--seed-color); }
+.badge-educational { background-color: var(--reino-color); }
+.badge-interactive { background-color: #9b59b6; }
+.badge-oauth { background-color: #e67e22; }
+.badge-oidc { background-color: #3498db; }
+.badge-enterprise { background-color: var(--area51-color); }
+.badge-security { background-color: #34495e; }
+.badge-saml { background-color: #e74c3c; }
+.badge-ldap { background-color: #27ae60; }
+.badge-course { background-color: var(--python-color); }
+.badge-practical { background-color: #e67e22; }
+.badge-python { background-color: #3776ab; }
+.badge-web { background-color: #9b59b6; }
+.badge-api { background-color: #27ae60; }
+
+.project-header.vscode-tool {
+  background: linear-gradient(135deg, #007acc 0%, #005a9e 100%);
+}
+
+.project-header.github-tool {
+  background: linear-gradient(135deg, #24292e 0%, #586069 100%);
+}

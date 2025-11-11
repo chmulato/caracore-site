@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reino OIDC - Wiki Cara Core</title>
+    <meta name="description" content="Reino OIDC - Projeto educativo sobre OAuth 2.0 e OpenID Connect com cenário lúdico e implementação didática para aprendizado de autenticação moderna.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Wiki CSS -->
+    <link rel="stylesheet" href="assets/css/wiki.css">
+    <!-- Projeto Reino CSS -->
+    <link rel="stylesheet" href="assets/css/projeto-reino.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MKFC9G3CL0', {
+            page_title: 'Reino OIDC - Wiki',
+            custom_map: {'custom_parameter_1': 'project_reino'}
+        });
+    </script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-journal-code"></i> Wiki Cara Core
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWiki" aria-label="Alternar navegação" title="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../portfolio.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="wiki-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Wiki Home</a></li>
+                    <li class="breadcrumb-item"><a href="projetos-overview.html">Projetos</a></li>
+                    <li class="breadcrumb-item active">Reino OIDC</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="wiki-sidebar">
+                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
+                    <ul class="wiki-menu">
+                        <li><a href="index.html"><i class="bi bi-house"></i> Página Inicial</a></li>
+                        <li><a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a></li>
+                        <li>
+                            <span class="wiki-submenu-title"><i class="bi bi-folder"></i> Projetos</span>
+                            <ul class="wiki-submenu">
+                                <li><a href="projeto-hub.html"><i class="bi bi-hdd-network"></i> Cara Core Hub</a></li>
+                                <li><a href="projeto-seed.html"><i class="bi bi-seedling"></i> Cara Core Seed</a></li>
+                                <li><a href="projeto-reino.html" class="active"><i class="bi bi-shield-lock"></i> Reino OIDC</a></li>
+                                <li><a href="projeto-area51.html"><i class="bi bi-rocket"></i> Área 51</a></li>
+                                <li><a href="projeto-python.html"><i class="bi bi-mortarboard"></i> Python Training</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="tecnologias.html"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a></li>
+                        <li><a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
+                        <li><a href="contribuindo.html"><i class="bi bi-git"></i> Como Contribuir</a></li>
+                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
+                    </ul>
+                    
+                    <!-- Navegação Temática Reino -->
+                    <div class="mt-4">
+                        <h5><i class="bi bi-compass"></i> Mapa do Reino</h5>
+                        <ul class="reino-nav">
+                            <li><a href="#historia"><i class="bi bi-book"></i> História do Reino</a></li>
+                            <li><a href="#personagens"><i class="bi bi-people"></i> Personagens</a></li>
+                            <li><a href="#jornada"><i class="bi bi-map"></i> Jornada do Aprendiz</a></li>
+                            <li><a href="#mundo-real"><i class="bi bi-gear"></i> Implementação Real</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="col-lg-9 col-md-8">
+                <div class="wiki-content">
+                    <div class="project-card">
+                        <div class="project-header reino">
+                            <h1><i class="bi bi-shield-lock"></i> Reino OIDC</h1>
+                            <p>Aprenda OAuth 2.0 e OpenID Connect através de uma Aventura</p>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-status">
+                                <span class="badge badge-educational">Educacional</span>
+                                <span class="badge badge-interactive">Interativo</span>
+                                <span class="badge badge-oauth">OAuth 2.0</span>
+                                <span class="badge badge-oidc">OIDC</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Introdução Mágica -->
+                    <section class="mb-5">
+                        <div class="reino-intro">
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <h2><i class="bi bi-magic text-warning"></i> Bem-vindo ao Reino OIDC!</h2>
+                                    <p class="lead">Uma terra mágica onde a autenticação e autorização ganham vida através de personagens, aventuras e magia. Aqui, conceitos complexos de OAuth 2.0 e OpenID Connect se transformam em uma jornada épica de aprendizado!</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="reino-badge">
+                                        <i class="bi bi-award text-warning reino-main-icon"></i>
+                                        <div class="badge-text">
+                                            <strong>Projeto Educativo</strong><br>
+                                            <small>Gamificação de Conceitos Técnicos</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- História do Reino -->
+                    <section id="historia" class="mb-5">
+                        <h2><i class="bi bi-book text-info"></i> A História do Reino</h2>
+                        
+                        <div class="story-section">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="leigos-section">
+                                        <h3><i class="bi bi-people"></i> Era Uma Vez...</h3>
+                                        <p>Há muito tempo, em uma terra distante, existia o <strong>Reino OIDC</strong>, onde todos os cidadãos precisavam se identificar para acessar diferentes locais e serviços.</p>
+                                        
+                                        <div class="story-card">
+                                            <h4>🏰 O Problema do Reino</h4>
+                                            <p>No início, cada estabelecimento tinha seu próprio sistema de identificação. Os cidadãos precisavam carregar dezenas de cartões diferentes - um para a biblioteca, outro para o banco, outro para o hospital...</p>
+                                            <p><em>Isso não era muito prático, não é mesmo?</em></p>
+                                        </div>
+
+                                        <div class="story-card">
+                                            <h4>✨ A Solução Mágica</h4>
+                                            <p>Então surgiu a <strong>Grande Aliança OIDC</strong> - um sistema onde você se identifica uma vez com o <strong>Guardião das Identidades</strong> e ele garante sua entrada em todos os estabelecimentos aliados!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="estagiario-section">
+                                        <h3><i class="bi bi-mortarboard"></i> Paralelo Técnico</h3>
+                                        <p>O Reino OIDC é uma metáfora completa para o funcionamento real de sistemas de autenticação modernos:</p>
+                                        
+                                        <div class="tech-mapping">
+                                            <div class="mapping-item">
+                                                <div class="reino-term">🏰 Reino OIDC</div>
+                                                <div class="arrow">→</div>
+                                                <div class="tech-term">Ecosystem OAuth/OIDC</div>
+                                            </div>
+                                            <div class="mapping-item">
+                                                <div class="reino-term">🛡️ Guardião das Identidades</div>
+                                                <div class="arrow">→</div>
+                                                <div class="tech-term">Authorization Server (AS)</div>
+                                            </div>
+                                            <div class="mapping-item">
+                                                <div class="reino-term">👤 Cidadão/Aprendiz</div>
+                                                <div class="arrow">→</div>
+                                                <div class="tech-term">Resource Owner (User)</div>
+                                            </div>
+                                            <div class="mapping-item">
+                                                <div class="reino-term">🏢 Estabelecimentos</div>
+                                                <div class="arrow">→</div>
+                                                <div class="tech-term">Resource Servers</div>
+                                            </div>
+                                            <div class="mapping-item">
+                                                <div class="reino-term">📜 Pergaminho de Acesso</div>
+                                                <div class="arrow">→</div>
+                                                <div class="tech-term">Access Token</div>
+                                            </div>
+                                            <div class="mapping-item">
+                                                <div class="reino-term">🎭 Medalhão de Identidade</div>
+                                                <div class="arrow">→</div>
+                                                <div class="tech-term">ID Token (JWT)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Personagens -->
+                    <section id="personagens" class="mb-5">
+                        <h2><i class="bi bi-people text-success"></i> Personagens do Reino</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="character-card guardian">
+                                    <div class="character-header">
+                                        <i class="bi bi-shield-fill-check"></i>
+                                        <h4>Guardião das Identidades</h4>
+                                        <small>Authorization Server</small>
+                                    </div>
+                                    <div class="character-body">
+                                        <p><strong>Poder:</strong> Verificar identidades e conceder acessos</p>
+                                        <p><strong>Personalidade:</strong> Rigoroso mas justo, nunca erra uma identificação</p>
+                                        <p><strong>Papel Técnico:</strong> Implementa OAuth 2.0/OIDC flows, gera tokens JWT, mantém registro de clients</p>
+                                        <div class="character-skills">
+                                            <span class="skill">Autenticação</span>
+                                            <span class="skill">Autorização</span>
+                                            <span class="skill">JWT Tokens</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="character-card apprentice">
+                                    <div class="character-header">
+                                        <i class="bi bi-person-badge"></i>
+                                        <h4>O Aprendiz (Você!)</h4>
+                                        <small>Resource Owner / End User</small>
+                                    </div>
+                                    <div class="character-body">
+                                        <p><strong>Jornada:</strong> Aprender os segredos da autenticação</p>
+                                        <p><strong>Objetivo:</strong> Dominar os flows OAuth e OIDC</p>
+                                        <p><strong>Papel Técnico:</strong> Usuário final que autoriza acesso a seus recursos através de consent screens</p>
+                                        <div class="character-skills">
+                                            <span class="skill">Curiosidade</span>
+                                            <span class="skill">Aprendizado</span>
+                                            <span class="skill">Experimentação</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="character-card merchant">
+                                    <div class="character-header">
+                                        <i class="bi bi-shop"></i>
+                                        <h4>Comerciantes Aliados</h4>
+                                        <small>Client Applications</small>
+                                    </div>
+                                    <div class="character-body">
+                                        <p><strong>Serviços:</strong> Biblioteca, Banco, Hospital, Loja</p>
+                                        <p><strong>Necessidade:</strong> Verificar identidade sem gerenciar senhas</p>
+                                        <p><strong>Papel Técnico:</strong> Aplicações que confiam no Authorization Server para autenticar usuários</p>
+                                        <div class="character-skills">
+                                            <span class="skill">Confiança</span>
+                                            <span class="skill">Integração</span>
+                                            <span class="skill">Especialização</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="character-card keeper">
+                                    <div class="character-header">
+                                        <i class="bi bi-database"></i>
+                                        <h4>Guardiões dos Tesouros</h4>
+                                        <small>Resource Servers</small>
+                                    </div>
+                                    <div class="character-body">
+                                        <p><strong>Responsabilidade:</strong> Proteger dados e recursos valiosos</p>
+                                        <p><strong>Método:</strong> Só aceitam pergaminhos válidos (tokens)</p>
+                                        <p><strong>Papel Técnico:</strong> APIs que validam tokens e servem recursos protegidos</p>
+                                        <div class="character-skills">
+                                            <span class="skill">Validação</span>
+                                            <span class="skill">Proteção</span>
+                                            <span class="skill">Recursos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Jornada do Aprendiz -->
+                    <section id="jornada" class="mb-5">
+                        <h2><i class="bi bi-map text-warning"></i> A Jornada do Aprendiz</h2>
+                        
+                        <div class="estagiario-section">
+                            <p>Siga os passos do nosso herói através dos diferentes flows OAuth/OIDC:</p>
+                            
+                            <div class="journey-timeline">
+                                <div class="journey-step">
+                                    <div class="step-number">1</div>
+                                    <div class="step-content">
+                                        <h4><i class="bi bi-door-open text-primary"></i> Chegada ao Reino</h4>
+                                        <p><strong>Cenário:</strong> O Aprendiz chega ao Reino e precisa se registrar</p>
+                                        <p><strong>Conceito:</strong> Client Registration - como aplicações se registram no AS</p>
+                                        <div class="code-example">
+                                            <strong>Implementação:</strong>
+                                            <pre><code>// Client Registration
+{
+  "client_name": "Biblioteca Real",
+  "redirect_uris": ["https://biblioteca.reino.com/callback"],
+  "grant_types": ["authorization_code"],
+  "scope": "openid profile email"
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="journey-step">
+                                    <div class="step-number">2</div>
+                                    <div class="step-content">
+                                        <h4><i class="bi bi-key text-success"></i> Primeira Identificação</h4>
+                                        <p><strong>Cenário:</strong> Aprendiz se apresenta ao Guardião das Identidades</p>
+                                        <p><strong>Conceito:</strong> Authorization Code Flow - fluxo mais seguro</p>
+                                        <div class="code-example">
+                                            <strong>Authorization Request:</strong>
+                                            <pre><code>GET /auth?
+  response_type=code&
+  client_id=biblioteca_real&
+  redirect_uri=https://biblioteca.reino.com/callback&
+  scope=openid+profile&
+  state=xyz123</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="journey-step">
+                                    <div class="step-number">3</div>
+                                    <div class="step-content">
+                                        <h4><i class="bi bi-scroll text-warning"></i> Recebendo o Pergaminho</h4>
+                                        <p><strong>Cenário:</strong> Guardião entrega pergaminho mágico após verificação</p>
+                                        <p><strong>Conceito:</strong> Token Exchange - trocar authorization code por tokens</p>
+                                        <div class="code-example">
+                                            <strong>Token Response:</strong>
+                                            <pre><code>{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "id_token": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "refresh_token": "8xLOxBtZp8",
+  "expires_in": 3600,
+  "token_type": "Bearer"
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="journey-step">
+                                    <div class="step-number">4</div>
+                                    <div class="step-content">
+                                        <h4><i class="bi bi-building text-info"></i> Visitando Estabelecimentos</h4>
+                                        <p><strong>Cenário:</strong> Usando pergaminho para acessar diferentes serviços</p>
+                                        <p><strong>Conceito:</strong> Resource Access - usar tokens para acessar APIs protegidas</p>
+                                        <div class="code-example">
+                                            <strong>API Request:</strong>
+                                            <pre><code>GET /api/livros HTTP/1.1
+Host: biblioteca.reino.com
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc...</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="journey-step">
+                                    <div class="step-number">5</div>
+                                    <div class="step-content">
+                                        <h4><i class="bi bi-arrow-clockwise text-danger"></i> Renovando Poderes</h4>
+                                        <p><strong>Cenário:</strong> Pergaminho expira, precisa de renovação automática</p>
+                                        <p><strong>Conceito:</strong> Refresh Token Flow - renovar acesso sem re-autenticar</p>
+                                        <div class="code-example">
+                                            <strong>Refresh Request:</strong>
+                                            <pre><code>POST /token
+grant_type=refresh_token&
+refresh_token=8xLOxBtZp8&
+client_id=biblioteca_real</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Implementação Real -->
+                    <section id="mundo-real" class="mb-5">
+                        <h2><i class="bi bi-gear text-primary"></i> Implementação no Mundo Real</h2>
+                        
+                        <div class="estagiario-section">
+                            <p>O Reino OIDC não é apenas uma história - é um projeto funcional que implementa todos os conceitos!</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-server text-info"></i> Authorization Server</h4>
+                                    <p>Implementado com Flask e bibliotecas OAuth especializadas:</p>
+                                    <pre><code># app/auth_server.py
+from flask import Flask
+from authlib.integrations.flask_oauth2 import AuthorizationServer
+from authlib.oauth2.rfc6749.grants import AuthorizationCodeGrant
+
+app = Flask(__name__)
+authorization = AuthorizationServer(app)
+
+@app.route('/authorize', methods=['GET', 'POST'])
+def authorize():
+    # Implementa authorization endpoint
+    return authorization.create_authorization_response()
+
+@app.route('/token', methods=['POST'])  
+def issue_token():
+    # Implementa token endpoint
+    return authorization.create_token_response()</code></pre>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-shield text-success"></i> Client Application</h4>
+                                    <p>Biblioteca Real implementada como cliente OAuth:</p>
+                                    <pre><code># biblioteca/app.py
+from authlib.integrations.flask_client import OAuth
+
+oauth = OAuth(app)
+reino_oidc = oauth.register(
+    name='reino',
+    client_id='biblioteca_real',
+    client_secret='secret_super_seguro',
+    server_metadata_url='https://reino.oidc.com/.well-known',
+    client_kwargs={'scope': 'openid profile email'}
+)
+
+@app.route('/login')
+def login():
+    redirect_uri = url_for('callback', _external=True)
+    return reino_oidc.authorize_redirect(redirect_uri)</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-success mt-4">
+                                <h5><i class="bi bi-play-circle"></i> Demo Interativa</h5>
+                                <p>Acesse <strong>https://reino.caracore.com.br</strong> para experimentar todos os flows em um ambiente controlado e educativo!</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Cenários de Aprendizado -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-lightbulb text-warning"></i> Cenários de Aprendizado</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="scenario-card beginner">
+                                    <div class="scenario-header">
+                                        <i class="bi bi-star text-success"></i>
+                                        <h4>Iniciante</h4>
+                                    </div>
+                                    <div class="scenario-body">
+                                        <h5>Caminho Feliz</h5>
+                                        <p>Aprenda o fluxo básico OAuth sem complicações. Perfeito para entender os conceitos fundamentais.</p>
+                                        <ul class="scenario-topics">
+                                            <li>Authorization Code Flow</li>
+                                            <li>Redirect URIs</li>
+                                            <li>Access Tokens básicos</li>
+                                            <li>User Info endpoint</li>
+                                        </ul>
+                                        <div class="scenario-time">⏱️ 30-45 minutos</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="scenario-card intermediate">
+                                    <div class="scenario-header">
+                                        <i class="bi bi-gear text-warning"></i>
+                                        <h4>Intermediário</h4>
+                                    </div>
+                                    <div class="scenario-body">
+                                        <h5>Desafios do Reino</h5>
+                                        <p>Enfrente situações mais complexas com múltiplos clients e scopes diferentes.</p>
+                                        <ul class="scenario-topics">
+                                            <li>Multiple Grant Types</li>
+                                            <li>Scope Management</li>
+                                            <li>Refresh Tokens</li>
+                                            <li>JWT Claims customizados</li>
+                                        </ul>
+                                        <div class="scenario-time">⏱️ 1-2 horas</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="scenario-card advanced">
+                                    <div class="scenario-header">
+                                        <i class="bi bi-lightning text-danger"></i>
+                                        <h4>Avançado</h4>
+                                    </div>
+                                    <div class="scenario-body">
+                                        <h5>Mestre do Reino</h5>
+                                        <p>Domine conceitos avançados como PKCE, device flow e federação de identidades.</p>
+                                        <ul class="scenario-topics">
+                                            <li>PKCE Extension</li>
+                                            <li>Device Authorization Grant</li>
+                                            <li>Identity Federation</li>
+                                            <li>Security Best Practices</li>
+                                        </ul>
+                                        <div class="scenario-time">⏱️ 2-3 horas</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recursos Educativos -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-book-half text-info"></i> Recursos Educativos</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="resource-card">
+                                    <h4><i class="bi bi-journal-text text-primary"></i> Material Didático</h4>
+                                    <ul class="feature-list">
+                                        <li>📖 <strong>Guia Ilustrado:</strong> História completa com diagramas</li>
+                                        <li>🎥 <strong>Vídeo Tutoriais:</strong> Flows animados passo a passo</li>
+                                        <li>📝 <strong>Exercícios Práticos:</strong> Implementações guiadas</li>
+                                        <li>🎯 <strong>Quizzes Interativos:</strong> Teste seu conhecimento</li>
+                                        <li>🏆 <strong>Certificação:</strong> Comprove seu aprendizado</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="resource-card">
+                                    <h4><i class="bi bi-code-square text-success"></i> Código de Exemplo</h4>
+                                    <ul class="feature-list">
+                                        <li>🐍 <strong>Python/Flask:</strong> Authorization Server completo</li>
+                                        <li>🌐 <strong>JavaScript:</strong> Client SPA implementation</li>
+                                        <li>📱 <strong>Mobile Examples:</strong> iOS e Android clients</li>
+                                        <li>🔧 <strong>Postman Collection:</strong> Todos os endpoints testáveis</li>
+                                        <li>🐳 <strong>Docker Setup:</strong> Ambiente completo em containers</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <h5><i class="bi bi-download"></i> Download do Reino</h5>
+                            <p>Todo o material está disponível no GitHub com licença MIT. Clone o repositório e comece sua jornada:</p>
+                            <pre><code>git clone https://github.com/cara-core/reino-oidc
+cd reino-oidc
+docker-compose up -d
+# Acesse http://localhost:3000 para começar!</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Casos de Uso Reais -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-building text-success"></i> Casos de Uso Reais</h2>
+                        
+                        <div class="estagiario-section">
+                            <p>Veja como os conceitos do Reino se aplicam em cenários reais:</p>
+                            
+                            <div class="use-case-grid">
+                                <div class="use-case-card">
+                                    <div class="use-case-icon">
+                                        <i class="bi bi-google text-primary"></i>
+                                    </div>
+                                    <h5>Login Social</h5>
+                                    <p>"Login com Google" usa exatamente o mesmo flow que o Reino OIDC - Authorization Code com PKCE.</p>
+                                </div>
+
+                                <div class="use-case-card">
+                                    <div class="use-case-icon">
+                                        <i class="bi bi-building text-info"></i>
+                                    </div>
+                                    <h5>SSO Empresarial</h5>
+                                    <p>Funcionários acessam múltiplas aplicações internas com um único login - como os estabelecimentos do Reino.</p>
+                                </div>
+
+                                <div class="use-case-card">
+                                    <div class="use-case-icon">
+                                        <i class="bi bi-phone text-success"></i>
+                                    </div>
+                                    <h5>APIs Mobile</h5>
+                                    <p>Apps móveis usam refresh tokens para manter sessões ativas - como renovar pergaminhos no Reino.</p>
+                                </div>
+
+                                <div class="use-case-card">
+                                    <div class="use-case-icon">
+                                        <i class="bi bi-cloud text-warning"></i>
+                                    </div>
+                                    <h5>Microserviços</h5>
+                                    <p>Cada serviço valida tokens JWT independentemente - como os Guardiões dos Tesouros.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Laboratório Prático -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-flask text-danger"></i> Laboratório Prático</h2>
+                        
+                        <div class="lab-section">
+                            <div class="alert alert-success">
+                                <h5><i class="bi bi-laptop"></i> Ambiente de Laboratório</h5>
+                                <p>Experimente implementar seu próprio Reino OIDC seguindo nosso tutorial passo a passo!</p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>🏗️ Construindo o Reino</h4>
+                                    <ol>
+                                        <li><strong>Setup do Projeto</strong>
+                                            <pre><code>mkdir meu-reino-oidc
+cd meu-reino-oidc
+python -m venv venv
+pip install flask authlib</code></pre>
+                                        </li>
+                                        <li><strong>Authorization Server Mínimo</strong></li>
+                                        <li><strong>Client de Teste</strong></li>
+                                        <li><strong>Resource Server</strong></li>
+                                        <li><strong>Frontend Interativo</strong></li>
+                                    </ol>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4>🧪 Experimentos</h4>
+                                    <ul class="feature-list">
+                                        <li><strong>Flow Variations:</strong> Teste diferentes grant types</li>
+                                        <li><strong>Security Testing:</strong> Tente ataques comuns</li>
+                                        <li><strong>Performance:</strong> Meça latência de validação</li>
+                                        <li><strong>Customization:</strong> Adicione claims customizados</li>
+                                        <li><strong>Integration:</strong> Conecte com providers reais</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Próximos Passos -->
+                    <section class="text-center">
+                        <h2><i class="bi bi-compass text-primary"></i> Sua Jornada Começa Agora!</h2>
+                        <p class="lead">Pronto para se tornar um mestre da autenticação no Reino OIDC?</p>
+                        
+                        <div class="alert alert-warning">
+                            <h4><i class="bi bi-trophy"></i> Desafio Final</h4>
+                            <p>Complete todos os cenários do Reino e implemente seu próprio Authorization Server. Ao final, você terá dominado OAuth 2.0 e OIDC!</p>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="https://reino.caracore.com.br" class="btn-wiki me-2" target="_blank" rel="noopener">
+                                <i class="bi bi-play-circle"></i> Começar Aventura
+                            </a>
+                            <a href="guia-estagiario.html" class="btn-wiki me-2">
+                                <i class="bi bi-mortarboard"></i> Setup Ambiente
+                            </a>
+                            <a href="https://github.com/cara-core/reino-oidc" class="btn-wiki" target="_blank" rel="noopener">
+                                <i class="bi bi-github"></i> Código Fonte
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wiki-footer">
+        <div class="container">
+            <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
+            <p>Reino OIDC - Projeto Educativo sobre OAuth 2.0 e OpenID Connect</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Wiki JS -->
+    <script src="assets/js/wiki.js"></script>
+</body>
+</html>

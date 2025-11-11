@@ -42,6 +42,10 @@
   background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
 }
 
+.project-header.python-training {
+  background: linear-gradient(120deg, #2E8B57 0%, #228B22 100%);
+}
+
 /* Badges de tecnologia */
 .tech-badge {
   display: inline-block;

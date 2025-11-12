@@ -68,26 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Sistema de busca simples
-    function initSearch() {
-        const searchInput = document.getElementById('wiki-search');
-        if (searchInput) {
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                const cards = document.querySelectorAll('.project-card');
-                
-                cards.forEach(card => {
-                    const text = card.textContent.toLowerCase();
-                    if (text.includes(searchTerm) || searchTerm === '') {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        }
-    }
-    
     // Tooltip para badges de tecnologia
     function initTechBadges() {
         const badges = document.querySelectorAll('.tech-badge');
@@ -194,7 +174,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     initCardAnimations();
     initMobileMenu();
-    initSearch();
     initTechBadges();
     initBreadcrumb();
     initThemeToggle();

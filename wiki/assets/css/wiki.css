@@ -578,20 +578,34 @@ html {
   font-size: 1.2rem;
   padding: 0;
   margin-left: 10px;
+  outline: none;
 }
 
 .theme-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.3);
   border-color: rgba(255, 255, 255, 0.5);
   transform: rotate(20deg) scale(1.1);
+  color: white;
 }
 
 .theme-toggle-btn:active {
   transform: rotate(20deg) scale(0.95);
 }
 
+.theme-toggle-btn:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
 .theme-toggle-btn i {
   transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+/* Garantir que o botão seja visível no nav-item */
+.navbar-nav .nav-item .theme-toggle-btn {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Animação ao trocar de tema */
@@ -603,4 +617,5 @@ html {
 [data-theme="dark"] .theme-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.3);
+  color: white;
 }

@@ -6,8 +6,8 @@
 (function() {
     'use strict';
 
-    // Elementos
-    const themeToggleBtn = document.getElementById('theme-toggle');
+    // Elementos (serão inicializados quando o DOM estiver pronto)
+    let themeToggleBtn = null;
     const htmlElement = document.documentElement;
     
     // Chave para localStorage
@@ -80,12 +80,17 @@
      * Inicializa o tema ao carregar a página
      */
     function initTheme() {
+        // Inicializa o botão apenas quando o DOM estiver pronto
+        themeToggleBtn = document.getElementById('theme-toggle');
+        
         const savedTheme = getSavedTheme();
         setTheme(savedTheme);
         
         // Adiciona listener ao botão
         if (themeToggleBtn) {
             themeToggleBtn.addEventListener('click', toggleTheme);
+        } else {
+            console.warn('WikiTheme: Botão theme-toggle não encontrado no DOM');
         }
         
         // Detecta mudanças na preferência do sistema (opcional)

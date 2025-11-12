@@ -419,7 +419,7 @@
             }
             
             .trust-line::before {
-                content: '†‘†“';
+                content: '↓';
             }
             
             .deployment-metrics .row {
@@ -430,3 +430,255 @@
                 grid-template-columns: 1fr;
             }
         }
+
+/* ===================================
+   TEMA DARK - ÁREA 51
+   =================================== */
+
+[data-theme="dark"] {
+    /* Banner de classificação */
+    --area51-color: #e74c3c;
+}
+
+[data-theme="dark"] .area51-intro {
+    background: linear-gradient(135deg, #1a252f, #2c3e50);
+    border-color: #e74c3c;
+}
+
+[data-theme="dark"] .classification-banner {
+    background: repeating-linear-gradient(
+        45deg,
+        #c0392b,
+        #c0392b 10px,
+        #e74c3c 10px,
+        #e74c3c 20px
+    );
+}
+
+[data-theme="dark"] .analogy-card,
+[data-theme="dark"] .benefits-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: #e74c3c;
+}
+
+[data-theme="dark"] .benefit-list li {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+}
+
+/* Architecture diagram - tema dark */
+[data-theme="dark"] .architecture-diagram {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .layer-title {
+    color: #e74c3c;
+}
+
+/* Auth cards - tema dark */
+[data-theme="dark"] .auth-card {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .auth-body {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .auth-body p {
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .tech-badge {
+    background: #1a252f;
+    color: #ffffff;
+}
+
+/* RBAC example - tema dark */
+[data-theme="dark"] .rbac-example {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .role-card {
+    background: #1a252f;
+    color: #e0e0e0;
+    border-left-color: #e74c3c;
+}
+
+[data-theme="dark"] .role-card h6 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .role-card p,
+[data-theme="dark"] .role-card ul,
+[data-theme="dark"] .role-card li {
+    color: #d0d0d0;
+}
+
+/* Federation cards - tema dark */
+[data-theme="dark"] .federation-card {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .fed-body {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .fed-body p {
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .fed-features .feature {
+    background: #1a252f;
+    color: #ffffff;
+}
+
+/* Federation diagram - tema dark */
+[data-theme="dark"] .federation-diagram {
+    background: #2c3e50;
+}
+
+[data-theme="dark"] .org-box {
+    background: #1a252f;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .area51-box {
+    background: #e74c3c;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .idp,
+[data-theme="dark"] .broker {
+    background: #0f1419;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .area51-box .broker {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+[data-theme="dark"] .protocol {
+    background: #e74c3c;
+    color: #ffffff;
+}
+
+/* Deployment metrics - tema dark */
+[data-theme="dark"] .deployment-metrics {
+    background: linear-gradient(135deg, #006d5b, #008e76);
+}
+
+[data-theme="dark"] .metric-card {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+/* Security cards - tema dark */
+[data-theme="dark"] .security-card {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .security-card h4 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .compliance-list li,
+[data-theme="dark"] .security-measures li {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: #d0d0d0;
+}
+
+/* Use cases - tema dark */
+[data-theme="dark"] .use-case-enterprise {
+    background: #2c3e50;
+    color: #e0e0e0;
+    border-left-color: #e74c3c;
+}
+
+[data-theme="dark"] .use-case-enterprise h5 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .use-case-enterprise p {
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .result-metric {
+    background: #e74c3c;
+    color: #ffffff;
+}
+
+/* ROI section - tema dark */
+[data-theme="dark"] .roi-section {
+    background: linear-gradient(135deg, #006d5b, #008e76);
+}
+
+[data-theme="dark"] .roi-card {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .roi-card li {
+    border-bottom-color: rgba(255, 255, 255, 0.3);
+    color: #e0e0e0;
+}
+
+/* Alert boxes no tema dark */
+[data-theme="dark"] .alert-info {
+    background: rgba(13, 110, 253, 0.15);
+    border-color: rgba(13, 110, 253, 0.3);
+    color: #b8d4ff;
+}
+
+[data-theme="dark"] .alert-info h5,
+[data-theme="dark"] .alert-info p {
+    color: #b8d4ff;
+}
+
+[data-theme="dark"] .alert-info .alert-link {
+    color: #6ea8fe;
+    font-weight: bold;
+}
+
+[data-theme="dark"] .alert-success {
+    background: rgba(25, 135, 84, 0.15);
+    border-color: rgba(25, 135, 84, 0.3);
+    color: #a3cfbb;
+}
+
+[data-theme="dark"] .alert-success h5,
+[data-theme="dark"] .alert-success p {
+    color: #a3cfbb;
+}
+
+[data-theme="dark"] .alert-success .alert-link {
+    color: #75b798;
+    font-weight: bold;
+}
+
+[data-theme="dark"] .alert-warning {
+    background: rgba(255, 193, 7, 0.15);
+    border-color: rgba(255, 193, 7, 0.3);
+    color: #ffda6a;
+}
+
+[data-theme="dark"] .alert-warning h5,
+[data-theme="dark"] .alert-warning p {
+    color: #ffda6a;
+}
+
+/* Área 51 navigation - tema dark */
+[data-theme="dark"] .area51-nav a {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .area51-nav a:hover {
+    background-color: rgba(231, 76, 60, 0.2);
+}
+
+[data-theme="dark"] .area51-nav i {
+    color: #e74c3c;
+}

@@ -161,9 +161,9 @@
                         </div>
                     </section>
 
-                    <!-- Arquitetura do Sistema -->
+                    <!-- Conceitos e Benefícios -->
                     <section id="arquitetura" class="mb-5">
-                        <h2><i class="bi bi-diagram-3 text-primary"></i> Arquitetura do Sistema</h2>
+                        <h2><i class="bi bi-diagram-3 text-primary"></i> Conceitos Fundamentais</h2>
                         
                         <div class="row">
                             <div class="col-md-6">
@@ -193,42 +193,23 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="estagiario-section">
-                                    <h3><i class="bi bi-cpu"></i> Arquitetura Técnica</h3>
-                                    <p>Sistema distribuído baseado em microsserviços com alta disponibilidade:</p>
+                                    <h3><i class="bi bi-shield-lock"></i> Arquitetura de Alta Segurança</h3>
+                                    <p>Sistema empresarial com arquitetura distribuída e redundante:</p>
                                     
-                                    <div class="architecture-diagram">
-                                        <div class="layer">
-                                            <div class="layer-title">Load Balancer</div>
-                                            <div class="component lb">HAProxy + Keepalived</div>
-                                        </div>
-                                        <div class="layer">
-                                            <div class="layer-title">Gateway Layer</div>
-                                            <div class="component gateway">Kong API Gateway</div>
-                                        </div>
-                                        <div class="layer">
-                                            <div class="layer-title">Authentication Services</div>
-                                            <div class="component-row">
-                                                <div class="component auth">OIDC Provider</div>
-                                                <div class="component auth">SAML 2.0 IdP</div>
-                                                <div class="component auth">LDAP Connector</div>
-                                            </div>
-                                        </div>
-                                        <div class="layer">
-                                            <div class="layer-title">Core Services</div>
-                                            <div class="component-row">
-                                                <div class="component core">User Management</div>
-                                                <div class="component core">Policy Engine</div>
-                                                <div class="component core">Audit Service</div>
-                                            </div>
-                                        </div>
-                                        <div class="layer">
-                                            <div class="layer-title">Data Layer</div>
-                                            <div class="component-row">
-                                                <div class="component data">PostgreSQL Cluster</div>
-                                                <div class="component data">Redis Cluster</div>
-                                                <div class="component data">Elasticsearch</div>
-                                            </div>
-                                        </div>
+                                    <div class="benefits-card">
+                                        <h4>🔒 Pilares Técnicos</h4>
+                                        <ul class="benefit-list">
+                                            <li><strong>Microsserviços:</strong> Componentes independentes e escaláveis</li>
+                                            <li><strong>Alta Disponibilidade:</strong> 99.9% uptime garantido</li>
+                                            <li><strong>Redundância:</strong> Sem ponto único de falha</li>
+                                            <li><strong>Monitoramento:</strong> Observabilidade em tempo real</li>
+                                            <li><strong>Auditoria:</strong> Logs completos para compliance</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="alert alert-info mt-3">
+                                        <h5><i class="bi bi-lightbulb"></i> Quer Aprender Mais?</h5>
+                                        <p class="mb-0">Explore os conceitos de <a href="projeto-reino.html" class="alert-link"><strong>autenticação OIDC</strong></a> no projeto <strong>Reino OIDC</strong> para entender as tecnologias por trás do sistema.</p>
                                     </div>
                                 </div>
                             </div>
@@ -300,56 +281,18 @@
                             </div>
                         </div>
 
-                        <!-- Fluxo de Autenticação Avançada -->
-                        <div class="estagiario-section">
-                            <h4><i class="bi bi-flow-chart"></i> Fluxo de Autenticação Adaptativa</h4>
-                            <pre><code># Exemplo: Risk-based Authentication
-def authenticate_user(credentials, context):
-    # 1. Validação Básica
-    user = validate_credentials(credentials)
-    if not user:
-        return AuthResult.DENY
-    
-    # 2. Análise de Risco
-    risk_score = calculate_risk_score(user, context)
-    
-    # 3. Decisão Adaptativa
-    if risk_score < 30:
-        return AuthResult.ALLOW
-    elif risk_score < 70:
-        return AuthResult.REQUIRE_MFA
-    else:
-        return AuthResult.REQUIRE_ADMIN_APPROVAL
-
-def calculate_risk_score(user, context):
-    score = 0
-    
-    # Análise de localização
-    if context.location != user.usual_location:
-        score += 25
-    
-    # Análise de dispositivo
-    if not context.device_known:
-        score += 30
-    
-    # Análise temporal
-    if context.is_unusual_hour(user.work_schedule):
-        score += 20
-    
-    # Machine Learning Score
-    ml_score = ml_model.predict_risk(user, context)
-    score += ml_score
-    
-    return min(score, 100)</code></pre>
-        </div>
-    </section>
+                        <div class="alert alert-info mt-4">
+                            <h5><i class="bi bi-book"></i> Aprenda os Fundamentos</h5>
+                            <p>O <a href="projeto-reino.html" class="alert-link"><strong>Reino OIDC</strong></a> é um projeto educacional completo onde você pode aprender os conceitos de autenticação, OAuth 2.0, OpenID Connect e muito mais!</p>
+                        </div>
+                    </section>
 
                     <!-- Sistema de Autorização -->
                     <section id="authorization" class="mb-5">
                         <h2><i class="bi bi-shield text-info"></i> Controle de Acesso Avançado</h2>
                         
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="leigos-section">
                                     <h3><i class="bi bi-diagram-2"></i> RBAC + ABAC</h3>
                                     <p>Controle de acesso que combina <strong>funções</strong> com <strong>atributos</strong>:</p>
@@ -370,46 +313,13 @@ def calculate_risk_score(user, context):
                                             </ul>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="estagiario-section">
-                                    <h3><i class="bi bi-code-square"></i> Policy Engine</h3>
-                                    <p>Implementação usando Open Policy Agent (OPA) com linguagem Rego:</p>
-                                    
-                                    <pre><code># financial_access.rego
-package financial.access
 
-import future.keywords.in
-
-# Regra: Analistas podem ler relatórios do seu departamento
-allow {
-    input.action == "read"
-    input.resource.type == "financial_report"
-    user_department == resource_department
-    "analyst" in user_roles
-}
-
-# Regra: Aprovação baseada no valor
-allow {
-    input.action == "approve_payment"
-    input.resource.amount <= max_approval_amount
-}
-
-# Função: Calcular limite de aprovação
-max_approval_amount := amount {
-    user_level == "senior"
-    amount := 50000
-} else := amount {
-    user_level == "pleno" 
-    amount := 10000
-} else := 5000
-
-# Helpers
-user_roles := input.user.roles
-user_level := input.user.attributes.level
-user_department := input.user.attributes.department
-resource_department := input.resource.attributes.department</code></pre>
+                                    <div class="alert alert-info mt-4">
+                                        <h5><i class="bi bi-mortarboard"></i> Entenda os Conceitos</h5>
+                                        <p><strong>RBAC (Role-Based Access Control):</strong> Permissões baseadas em funções organizacionais</p>
+                                        <p><strong>ABAC (Attribute-Based Access Control):</strong> Decisões baseadas em atributos dinâmicos</p>
+                                        <p class="mb-0">Explore mais sobre autorização no <a href="projeto-reino.html" class="alert-link"><strong>Reino OIDC</strong></a></p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -486,112 +396,38 @@ resource_department := input.resource.attributes.department</code></pre>
                             </div>
                         </div>
 
-                        <!-- Diagrama de Federação -->
-                        <div class="estagiario-section">
-                            <h4><i class="bi bi-diagram-3"></i> Arquitetura de Federação</h4>
-                            <div class="federation-diagram">
-                                <div class="org-box">
-                                    <h5>Empresa A</h5>
-                                    <div class="idp">Azure AD</div>
-                                    <div class="users">👤 👤 👤</div>
-                                </div>
-                                
-                                <div class="trust-line">
-                                    <div class="protocol">SAML 2.0</div>
-                                </div>
-                                
-                                <div class="area51-box">
-                                    <h5>Área 51</h5>
-                                    <div class="broker">Identity Broker</div>
-                                </div>
-                                
-                                <div class="trust-line">
-                                    <div class="protocol">OIDC</div>
-                                </div>
-                                
-                                <div class="org-box">
-                                    <h5>Empresa B</h5>
-                                    <div class="idp">Google Workspace</div>
-                                    <div class="users">👤 👤 👤</div>
-                                </div>
-                            </div>
+                        <div class="alert alert-success">
+                            <h5><i class="bi bi-book-half"></i> Aprofunde-se nos Protocolos</h5>
+                            <p class="mb-0">O <a href="projeto-reino.html" class="alert-link"><strong>Reino OIDC</strong></a> explica em detalhes os protocolos SAML, OpenID Connect e OAuth 2.0, com exemplos práticos!</p>
                         </div>
                     </section>
 
                     <!-- Implementação e Deploy -->
                     <section id="deployment" class="mb-5">
-                        <h2><i class="bi bi-rocket-takeoff text-success"></i> Deployment e Operações</h2>
+                        <h2><i class="bi bi-rocket-takeoff text-success"></i> Deployment Empresarial</h2>
                         
                         <div class="row">
                             <div class="col-md-6">
-                                <h4><i class="bi bi-docker"></i> Containerização</h4>
-                                <p>Arquitetura baseada em Docker Swarm com alta disponibilidade:</p>
-                                
-                                <pre><code># docker-compose.yml (resumido)
-version: '3.8'
-services:
-  area51-auth:
-    image: caracore/area51-auth:latest
-    deploy:
-      replicas: 3
-      update_config:
-        parallelism: 1
-        delay: 10s
-    environment:
-      - DATABASE_URL=postgresql://area51:***@db-cluster:5432/area51
-      - REDIS_URL=redis://redis-cluster:6379
-    networks:
-      - area51-internal
-    secrets:
-      - jwt_private_key
-      - saml_certificate
-
-  nginx-lb:
-    image: nginx:alpine
-    deploy:
-      replicas: 2
-    ports:
-      - "443:443"
-    configs:
-      - source: nginx_config
-        target: /etc/nginx/nginx.conf</code></pre>
+                                <div class="benefits-card">
+                                    <h4><i class="bi bi-cloud"></i> Cloud Native</h4>
+                                    <ul class="benefit-list">
+                                        <li><strong>Containerização:</strong> Deploy simplificado e consistente</li>
+                                        <li><strong>Orquestração:</strong> Escalabilidade automática</li>
+                                        <li><strong>Alta Disponibilidade:</strong> Redundância em múltiplas zonas</li>
+                                        <li><strong>Zero Downtime:</strong> Deploy sem interrupção</li>
+                                    </ul>
+                                </div>
                             </div>
                             <div class="col-md-6">
-                                <h4><i class="bi bi-cloud"></i> Cloud Native</h4>
-                                <p>Deployment em Kubernetes com Helm charts:</p>
-                                
-                                <pre><code># values.yaml
-area51:
-  replicaCount: 3
-  image:
-    repository: caracore/area51
-    tag: "v2.1.0"
-  
-  autoscaling:
-    enabled: true
-    minReplicas: 3
-    maxReplicas: 10
-    targetCPUUtilizationPercentage: 70
-
-  ingress:
-    enabled: true
-    className: "nginx"
-    annotations:
-      cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    hosts:
-      - host: auth.company.com
-        paths:
-          - path: /
-            pathType: Prefix
-
-postgresql:
-  enabled: true
-  auth:
-    database: area51
-  primary:
-    persistence:
-      enabled: true
-      size: 100Gi</code></pre>
+                                <div class="benefits-card">
+                                    <h4><i class="bi bi-gear-wide-connected"></i> DevOps</h4>
+                                    <ul class="benefit-list">
+                                        <li><strong>CI/CD:</strong> Integração e entrega contínua</li>
+                                        <li><strong>Monitoramento:</strong> Observabilidade em tempo real</li>
+                                        <li><strong>Automação:</strong> Infrastructure as Code</li>
+                                        <li><strong>Backup:</strong> Recuperação automática de desastres</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -659,37 +495,9 @@ postgresql:
                             </div>
                         </div>
 
-                        <!-- Auditoria e Logs -->
-                        <div class="estagiario-section">
-                            <h4><i class="bi bi-journal-text"></i> Sistema de Auditoria</h4>
-                            <p>Logs estruturados com correlação completa para compliance:</p>
-                            
-                            <pre><code>{
-  "timestamp": "2025-01-13T10:30:45.123Z",
-  "event_id": "auth_success",
-  "trace_id": "trace-abc123",
-  "user_id": "user-456789",
-  "session_id": "sess-xyz789",
-  "client_id": "app-financial-system",
-  "ip_address": "192.168.1.100",
-  "user_agent": "Mozilla/5.0...",
-  "location": {
-    "country": "BR",
-    "region": "SP",
-    "city": "São Paulo"
-  },
-  "auth_method": "saml_sso",
-  "risk_score": 15,
-  "compliance": {
-    "gdpr_consent": true,
-    "data_retention_days": 2555
-  },
-  "details": {
-    "mfa_used": true,
-    "device_trusted": true,
-    "unusual_activity": false
-  }
-}</code></pre>
+                        <div class="alert alert-warning mt-4">
+                            <h5><i class="bi bi-exclamation-triangle"></i> Auditoria Completa</h5>
+                            <p class="mb-0">Sistema com <strong>logs estruturados</strong> e <strong>rastreabilidade completa</strong> para atender requisitos de compliance e auditoria corporativa.</p>
                         </div>
                     </section>
 
@@ -814,8 +622,8 @@ postgresql:
                             <a href="mailto:contato@caracore.com.br?subject=Demonstração Área 51" class="btn-wiki me-2">
                                 <i class="bi bi-envelope"></i> Solicitar Demo
                             </a>
-                            <a href="guia-estagiario.html" class="btn-wiki me-2">
-                                <i class="bi bi-mortarboard"></i> Guia Técnico
+                            <a href="projeto-reino.html" class="btn-wiki me-2">
+                                <i class="bi bi-mortarboard"></i> Aprender OIDC
                             </a>
                             <a href="tecnologias.html" class="btn-wiki">
                                 <i class="bi bi-gear"></i> Stack Tecnológico

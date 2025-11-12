@@ -550,6 +550,12 @@ html {
 .badge-python { background-color: #3776ab; }
 .badge-web { background-color: #9b59b6; }
 .badge-api { background-color: #27ae60; }
+.badge-private { background-color: #6c757d; }
+.badge-proprietary { background-color: #dc3545; }
+.badge-active { background-color: #28a745; }
+.badge-stable { background-color: #17a2b8; }
+.badge-flask { background-color: #000000; }
+.badge-docker { background-color: #2496ed; }
 
 .project-header.vscode-tool {
   background: linear-gradient(135deg, #007acc 0%, #005a9e 100%);

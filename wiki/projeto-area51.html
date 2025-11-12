@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área 51 - Wiki Cara Core</title>
+    <meta name="description" content="Área 51 - Sistema de autenticação empresarial avançado com recursos de alta segurança, federação de identidades e controle de acesso granular.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Wiki CSS -->
+    <link rel="stylesheet" href="assets/css/wiki.css">
+    <!-- Projeto Área 51 CSS -->
+    <link rel="stylesheet" href="assets/css/projeto-area51.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MKFC9G3CL0', {
+            page_title: 'Área 51 - Wiki',
+            custom_map: {'custom_parameter_1': 'project_area51'}
+        });
+    </script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-journal-code"></i> Wiki Cara Core
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWiki" aria-label="Alternar navegação" title="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../portfolio.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="wiki-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Wiki Home</a></li>
+                    <li class="breadcrumb-item"><a href="projetos-overview.html">Projetos</a></li>
+                    <li class="breadcrumb-item active">Área 51</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="wiki-sidebar">
+                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
+                    <ul class="wiki-menu">
+                        <li><a href="index.html"><i class="bi bi-house"></i> Página Inicial</a></li>
+                        <li><a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a></li>
+                        <li>
+                            <span class="wiki-submenu-title"><i class="bi bi-folder"></i> Projetos</span>
+                            <ul class="wiki-submenu">
+                                <li><a href="projeto-hub.html"><i class="bi bi-hdd-network"></i> Cara Core Hub</a></li>
+                                <li><a href="projeto-seed.html"><i class="bi bi-seedling"></i> Cara Core Seed</a></li>
+                                <li><a href="projeto-reino.html"><i class="bi bi-shield-lock"></i> Reino OIDC</a></li>
+                                <li><a href="projeto-area51.html" class="active"><i class="bi bi-rocket"></i> Área 51</a></li>
+                                <li><a href="projeto-python.html"><i class="bi bi-mortarboard"></i> Python Training</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="tecnologias.html"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a></li>
+                        <li><a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
+                        <li><a href="contribuindo.html"><i class="bi bi-git"></i> Como Contribuir</a></li>
+                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
+                    </ul>
+                    
+                    <!-- Navegação de Segurança -->
+                    <div class="mt-4">
+                        <h5><i class="bi bi-shield-fill-check"></i> Segurança Avançada</h5>
+                        <ul class="area51-nav">
+                            <li><a href="#arquitetura"><i class="bi bi-diagram-3"></i> Arquitetura</a></li>
+                            <li><a href="#authentication"><i class="bi bi-key"></i> Autenticação</a></li>
+                            <li><a href="#authorization"><i class="bi bi-shield"></i> Autorização</a></li>
+                            <li><a href="#federation"><i class="bi bi-globe"></i> Federação</a></li>
+                            <li><a href="#deployment"><i class="bi bi-rocket-takeoff"></i> Deploy</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="col-lg-9 col-md-8">
+                <div class="wiki-content">
+                    <div class="project-card">
+                        <div class="project-header area51">
+                            <h1><i class="bi bi-rocket"></i> Área 51</h1>
+                            <p>Sistema de Autenticação Empresarial de Alta Segurança</p>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-status">
+                                <span class="badge badge-enterprise">Enterprise</span>
+                                <span class="badge badge-security">Security</span>
+                                <span class="badge badge-saml">SAML 2.0</span>
+                                <span class="badge badge-oidc">OIDC</span>
+                                <span class="badge badge-ldap">LDAP</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Introdução Classificada -->
+                    <section class="mb-5">
+                        <div class="area51-intro">
+                            <div class="classification-banner">
+                                <div class="classification-text">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                    <span>CONFIDENCIAL - ACESSO RESTRITO</span>
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                </div>
+                            </div>
+                            <div class="row align-items-center mt-4">
+                                <div class="col-md-8">
+                                    <h2><i class="bi bi-shield-fill-exclamation text-warning"></i> Projeto Ultra-Secreto</h2>
+                                    <p class="lead">A Área 51 representa o que há de mais avançado em sistemas de autenticação e autorização empresarial. Desenvolvido para organizações que necessitam do mais alto nível de segurança e conformidade.</p>
+                                </div>
+                                <div class="col-md-4 text-center">
+                                    <div class="area51-badge">
+                                        <i class="bi bi-rocket-takeoff area51-main-icon text-danger"></i>
+                                        <div class="badge-text">
+                                            <strong>Nível de Segurança</strong><br>
+                                            <small>MÁXIMO</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Arquitetura do Sistema -->
+                    <section id="arquitetura" class="mb-5">
+                        <h2><i class="bi bi-diagram-3 text-primary"></i> Arquitetura do Sistema</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="leigos-section">
+                                    <h3><i class="bi bi-building"></i> Visão para Gestores</h3>
+                                    <p>Imagine a Área 51 como um <strong>sistema de segurança ultra-avançado</strong> para sua empresa:</p>
+                                    
+                                    <div class="analogy-card">
+                                        <h4>🏢 Como um Edifício Corporativo</h4>
+                                        <p><strong>Recepção Central:</strong> Um único ponto de entrada onde todos se identificam</p>
+                                        <p><strong>Múltiplos Andares:</strong> Diferentes sistemas e aplicações da empresa</p>
+                                        <p><strong>Cartão Universal:</strong> Acesso automático baseado no seu cargo e departamento</p>
+                                        <p><strong>Auditoria Completa:</strong> Registro de quem acessou o quê e quando</p>
+                                    </div>
+
+                                    <div class="benefits-card">
+                                        <h4>💼 Benefícios para o Negócio</h4>
+                                        <ul class="benefit-list">
+                                            <li><strong>Produtividade:</strong> Funcionários fazem login uma vez por dia</li>
+                                            <li><strong>Segurança:</strong> Controle granular de acesso</li>
+                                            <li><strong>Compliance:</strong> Atende SOX, LGPD, GDPR</li>
+                                            <li><strong>Custo:</strong> Reduz help desk em 80%</li>
+                                            <li><strong>Escalabilidade:</strong> Cresce com a empresa</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="estagiario-section">
+                                    <h3><i class="bi bi-cpu"></i> Arquitetura Técnica</h3>
+                                    <p>Sistema distribuído baseado em microsserviços com alta disponibilidade:</p>
+                                    
+                                    <div class="architecture-diagram">
+                                        <div class="layer">
+                                            <div class="layer-title">Load Balancer</div>
+                                            <div class="component lb">HAProxy + Keepalived</div>
+                                        </div>
+                                        <div class="layer">
+                                            <div class="layer-title">Gateway Layer</div>
+                                            <div class="component gateway">Kong API Gateway</div>
+                                        </div>
+                                        <div class="layer">
+                                            <div class="layer-title">Authentication Services</div>
+                                            <div class="component-row">
+                                                <div class="component auth">OIDC Provider</div>
+                                                <div class="component auth">SAML 2.0 IdP</div>
+                                                <div class="component auth">LDAP Connector</div>
+                                            </div>
+                                        </div>
+                                        <div class="layer">
+                                            <div class="layer-title">Core Services</div>
+                                            <div class="component-row">
+                                                <div class="component core">User Management</div>
+                                                <div class="component core">Policy Engine</div>
+                                                <div class="component core">Audit Service</div>
+                                            </div>
+                                        </div>
+                                        <div class="layer">
+                                            <div class="layer-title">Data Layer</div>
+                                            <div class="component-row">
+                                                <div class="component data">PostgreSQL Cluster</div>
+                                                <div class="component data">Redis Cluster</div>
+                                                <div class="component data">Elasticsearch</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recursos de Autenticação -->
+                    <section id="authentication" class="mb-5">
+                        <h2><i class="bi bi-key text-success"></i> Métodos de Autenticação</h2>
+                        
+                        <div class="auth-methods">
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="auth-card primary">
+                                        <div class="auth-header">
+                                            <i class="bi bi-person-badge"></i>
+                                            <h4>Multi-Factor Authentication</h4>
+                                        </div>
+                                        <div class="auth-body">
+                                            <p><strong>Algo que você sabe:</strong> Senha ou PIN</p>
+                                            <p><strong>Algo que você tem:</strong> Token, SMS, App</p>
+                                            <p><strong>Algo que você é:</strong> Biometria, Assinatura</p>
+                                            <div class="auth-tech">
+                                                <span class="tech-badge">TOTP</span>
+                                                <span class="tech-badge">FIDO2</span>
+                                                <span class="tech-badge">WebAuthn</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-4">
+                                    <div class="auth-card social">
+                                        <div class="auth-header">
+                                            <i class="bi bi-globe"></i>
+                                            <h4>Federação de Identidades</h4>
+                                        </div>
+                                        <div class="auth-body">
+                                            <p><strong>Azure AD:</strong> Microsoft 365, Teams</p>
+                                            <p><strong>Google Workspace:</strong> Gmail, Drive</p>
+                                            <p><strong>ADFS:</strong> Active Directory on-premises</p>
+                                            <div class="auth-tech">
+                                                <span class="tech-badge">SAML 2.0</span>
+                                                <span class="tech-badge">OIDC</span>
+                                                <span class="tech-badge">WS-Fed</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 mb-4">
+                                    <div class="auth-card enterprise">
+                                        <div class="auth-header">
+                                            <i class="bi bi-shield-check"></i>
+                                            <h4>Autenticação Adaptativa</h4>
+                                        </div>
+                                        <div class="auth-body">
+                                            <p><strong>Análise de Risco:</strong> IP, Device, Comportamento</p>
+                                            <p><strong>Contexto:</strong> Localização, Horário, Rede</p>
+                                            <p><strong>Machine Learning:</strong> Detecção de anomalias</p>
+                                            <div class="auth-tech">
+                                                <span class="tech-badge">Risk Engine</span>
+                                                <span class="tech-badge">ML Models</span>
+                                                <span class="tech-badge">Threat Intel</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Fluxo de Autenticação Avançada -->
+                        <div class="estagiario-section">
+                            <h4><i class="bi bi-flow-chart"></i> Fluxo de Autenticação Adaptativa</h4>
+                            <pre><code># Exemplo: Risk-based Authentication
+def authenticate_user(credentials, context):
+    # 1. Validação Básica
+    user = validate_credentials(credentials)
+    if not user:
+        return AuthResult.DENY
+    
+    # 2. Análise de Risco
+    risk_score = calculate_risk_score(user, context)
+    
+    # 3. Decisão Adaptativa
+    if risk_score < 30:
+        return AuthResult.ALLOW
+    elif risk_score < 70:
+        return AuthResult.REQUIRE_MFA
+    else:
+        return AuthResult.REQUIRE_ADMIN_APPROVAL
+
+def calculate_risk_score(user, context):
+    score = 0
+    
+    # Análise de localização
+    if context.location != user.usual_location:
+        score += 25
+    
+    # Análise de dispositivo
+    if not context.device_known:
+        score += 30
+    
+    # Análise temporal
+    if context.is_unusual_hour(user.work_schedule):
+        score += 20
+    
+    # Machine Learning Score
+    ml_score = ml_model.predict_risk(user, context)
+    score += ml_score
+    
+    return min(score, 100)</code></pre>
+        </div>
+    </section>
+
+                    <!-- Sistema de Autorização -->
+                    <section id="authorization" class="mb-5">
+                        <h2><i class="bi bi-shield text-info"></i> Controle de Acesso Avançado</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="leigos-section">
+                                    <h3><i class="bi bi-diagram-2"></i> RBAC + ABAC</h3>
+                                    <p>Controle de acesso que combina <strong>funções</strong> com <strong>atributos</strong>:</p>
+                                    
+                                    <div class="rbac-example">
+                                        <h5>Exemplo Prático: Sistema Financeiro</h5>
+                                        <div class="role-card">
+                                            <h6>👤 João - Analista Financeiro</h6>
+                                            <p><strong>Função:</strong> Analista (RBAC)</p>
+                                            <p><strong>Departamento:</strong> Financeiro (Atributo)</p>
+                                            <p><strong>Nível:</strong> Pleno (Atributo)</p>
+                                            <p><strong>Acesso permitido:</strong></p>
+                                            <ul>
+                                                <li>✅ Ler relatórios financeiros</li>
+                                                <li>✅ Criar análises até R$ 10k</li>
+                                                <li>❌ Aprovar pagamentos > R$ 5k</li>
+                                                <li>❌ Acessar dados de RH</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="estagiario-section">
+                                    <h3><i class="bi bi-code-square"></i> Policy Engine</h3>
+                                    <p>Implementação usando Open Policy Agent (OPA) com linguagem Rego:</p>
+                                    
+                                    <pre><code># financial_access.rego
+package financial.access
+
+import future.keywords.in
+
+# Regra: Analistas podem ler relatórios do seu departamento
+allow {
+    input.action == "read"
+    input.resource.type == "financial_report"
+    user_department == resource_department
+    "analyst" in user_roles
+}
+
+# Regra: Aprovação baseada no valor
+allow {
+    input.action == "approve_payment"
+    input.resource.amount <= max_approval_amount
+}
+
+# Função: Calcular limite de aprovação
+max_approval_amount := amount {
+    user_level == "senior"
+    amount := 50000
+} else := amount {
+    user_level == "pleno" 
+    amount := 10000
+} else := 5000
+
+# Helpers
+user_roles := input.user.roles
+user_level := input.user.attributes.level
+user_department := input.user.attributes.department
+resource_department := input.resource.attributes.department</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Federação de Identidades -->
+                    <section id="federation" class="mb-5">
+                        <h2><i class="bi bi-globe text-warning"></i> Federação e Integração</h2>
+                        
+                        <div class="federation-overview">
+                            <div class="alert alert-info">
+                                <h5><i class="bi bi-info-circle"></i> O que é Federação?</h5>
+                                <p><strong>Para Leigos:</strong> Imagine que sua empresa fez uma parceria com outra empresa. Os funcionários de ambas precisam acessar sistemas compartilhados, mas sem criar novas contas. A federação permite que usem suas contas corporativas originais!</p>
+                                <p><strong>Para Técnicos:</strong> Estabelecimento de confiança entre diferentes domínios de identidade, permitindo SSO cross-domain através de protocolos padronizados.</p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="federation-card saml">
+                                    <div class="fed-header">
+                                        <i class="bi bi-file-earmark-code"></i>
+                                        <h4>SAML 2.0</h4>
+                                    </div>
+                                    <div class="fed-body">
+                                        <p><strong>Uso:</strong> Aplicações web enterprise</p>
+                                        <p><strong>Formato:</strong> XML assertions</p>
+                                        <p><strong>Força:</strong> Maturidade e features avançadas</p>
+                                        <div class="fed-features">
+                                            <span class="feature">Encrypted Assertions</span>
+                                            <span class="feature">Attribute Mapping</span>
+                                            <span class="feature">Logout Propagation</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="federation-card oidc">
+                                    <div class="fed-header">
+                                        <i class="bi bi-shield-lock"></i>
+                                        <h4>OpenID Connect</h4>
+                                    </div>
+                                    <div class="fed-body">
+                                        <p><strong>Uso:</strong> APIs modernas e SPAs</p>
+                                        <p><strong>Formato:</strong> JSON Web Tokens</p>
+                                        <p><strong>Força:</strong> Simplicidade e mobilidade</p>
+                                        <div class="fed-features">
+                                            <span class="feature">JWT Tokens</span>
+                                            <span class="feature">REST APIs</span>
+                                            <span class="feature">Mobile Support</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="federation-card ldap">
+                                    <div class="fed-header">
+                                        <i class="bi bi-tree"></i>
+                                        <h4>LDAP/AD</h4>
+                                    </div>
+                                    <div class="fed-body">
+                                        <p><strong>Uso:</strong> Sistemas legados e infraestrutura</p>
+                                        <p><strong>Formato:</strong> Directory queries</p>
+                                        <p><strong>Força:</strong> Integração com Windows/Linux</p>
+                                        <div class="fed-features">
+                                            <span class="feature">Group Sync</span>
+                                            <span class="feature">Kerberos SSO</span>
+                                            <span class="feature">Directory Sync</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diagrama de Federação -->
+                        <div class="estagiario-section">
+                            <h4><i class="bi bi-diagram-3"></i> Arquitetura de Federação</h4>
+                            <div class="federation-diagram">
+                                <div class="org-box">
+                                    <h5>Empresa A</h5>
+                                    <div class="idp">Azure AD</div>
+                                    <div class="users">👤 👤 👤</div>
+                                </div>
+                                
+                                <div class="trust-line">
+                                    <div class="protocol">SAML 2.0</div>
+                                </div>
+                                
+                                <div class="area51-box">
+                                    <h5>Área 51</h5>
+                                    <div class="broker">Identity Broker</div>
+                                </div>
+                                
+                                <div class="trust-line">
+                                    <div class="protocol">OIDC</div>
+                                </div>
+                                
+                                <div class="org-box">
+                                    <h5>Empresa B</h5>
+                                    <div class="idp">Google Workspace</div>
+                                    <div class="users">👤 👤 👤</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Implementação e Deploy -->
+                    <section id="deployment" class="mb-5">
+                        <h2><i class="bi bi-rocket-takeoff text-success"></i> Deployment e Operações</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4><i class="bi bi-docker"></i> Containerização</h4>
+                                <p>Arquitetura baseada em Docker Swarm com alta disponibilidade:</p>
+                                
+                                <pre><code># docker-compose.yml (resumido)
+version: '3.8'
+services:
+  area51-auth:
+    image: caracore/area51-auth:latest
+    deploy:
+      replicas: 3
+      update_config:
+        parallelism: 1
+        delay: 10s
+    environment:
+      - DATABASE_URL=postgresql://area51:***@db-cluster:5432/area51
+      - REDIS_URL=redis://redis-cluster:6379
+    networks:
+      - area51-internal
+    secrets:
+      - jwt_private_key
+      - saml_certificate
+
+  nginx-lb:
+    image: nginx:alpine
+    deploy:
+      replicas: 2
+    ports:
+      - "443:443"
+    configs:
+      - source: nginx_config
+        target: /etc/nginx/nginx.conf</code></pre>
+                            </div>
+                            <div class="col-md-6">
+                                <h4><i class="bi bi-cloud"></i> Cloud Native</h4>
+                                <p>Deployment em Kubernetes com Helm charts:</p>
+                                
+                                <pre><code># values.yaml
+area51:
+  replicaCount: 3
+  image:
+    repository: caracore/area51
+    tag: "v2.1.0"
+  
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 70
+
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations:
+      cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    hosts:
+      - host: auth.company.com
+        paths:
+          - path: /
+            pathType: Prefix
+
+postgresql:
+  enabled: true
+  auth:
+    database: area51
+  primary:
+    persistence:
+      enabled: true
+      size: 100Gi</code></pre>
+                            </div>
+                        </div>
+
+                        <div class="deployment-metrics">
+                            <h4><i class="bi bi-graph-up"></i> Métricas de Performance</h4>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="metric-card">
+                                        <div class="metric-value">99.9%</div>
+                                        <div class="metric-label">Uptime SLA</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="metric-card">
+                                        <div class="metric-value">&lt; 200ms</div>
+                                        <div class="metric-label">Auth Latency</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="metric-card">
+                                        <div class="metric-value">10,000+</div>
+                                        <div class="metric-label">Auth/min</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="metric-card">
+                                        <div class="metric-value">Zero</div>
+                                        <div class="metric-label">Downtime</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Segurança e Compliance -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-shield-fill-check text-danger"></i> Segurança e Compliance</h2>
+                        
+                        <div class="security-overview">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="security-card">
+                                        <h4><i class="bi bi-check-circle text-success"></i> Certificações</h4>
+                                        <ul class="compliance-list">
+                                            <li><strong>ISO 27001:</strong> Gestão de segurança da informação</li>
+                                            <li><strong>SOC 2 Type II:</strong> Controles de segurança auditados</li>
+                                            <li><strong>LGPD/GDPR:</strong> Proteção de dados pessoais</li>
+                                            <li><strong>FIPS 140-2:</strong> Criptografia validada</li>
+                                            <li><strong>Common Criteria:</strong> Avaliação de segurança</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="security-card">
+                                        <h4><i class="bi bi-shield-lock text-warning"></i> Medidas de Segurança</h4>
+                                        <ul class="security-measures">
+                                            <li><strong>Criptografia:</strong> AES-256, RSA-4096, ECDSA</li>
+                                            <li><strong>TLS:</strong> 1.3 com Perfect Forward Secrecy</li>
+                                            <li><strong>HSM:</strong> Hardware Security Modules</li>
+                                            <li><strong>Zero Trust:</strong> Never trust, always verify</li>
+                                            <li><strong>Threat Detection:</strong> ML-based anomaly detection</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Auditoria e Logs -->
+                        <div class="estagiario-section">
+                            <h4><i class="bi bi-journal-text"></i> Sistema de Auditoria</h4>
+                            <p>Logs estruturados com correlação completa para compliance:</p>
+                            
+                            <pre><code>{
+  "timestamp": "2025-01-13T10:30:45.123Z",
+  "event_id": "auth_success",
+  "trace_id": "trace-abc123",
+  "user_id": "user-456789",
+  "session_id": "sess-xyz789",
+  "client_id": "app-financial-system",
+  "ip_address": "192.168.1.100",
+  "user_agent": "Mozilla/5.0...",
+  "location": {
+    "country": "BR",
+    "region": "SP",
+    "city": "São Paulo"
+  },
+  "auth_method": "saml_sso",
+  "risk_score": 15,
+  "compliance": {
+    "gdpr_consent": true,
+    "data_retention_days": 2555
+  },
+  "details": {
+    "mfa_used": true,
+    "device_trusted": true,
+    "unusual_activity": false
+  }
+}</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Casos de Uso Empresariais -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-briefcase text-info"></i> Casos de Uso Empresariais</h2>
+                        
+                        <div class="use-cases-grid">
+                            <div class="use-case-enterprise">
+                                <div class="use-case-icon">
+                                    <i class="bi bi-bank text-primary"></i>
+                                </div>
+                                <h5>Setor Bancário</h5>
+                                <p><strong>Desafio:</strong> Autenticação forte para internet banking com milhões de usuários</p>
+                                <p><strong>Solução:</strong> MFA adaptativo + biometria + análise de risco em tempo real</p>
+                                <div class="results">
+                                    <span class="result-metric">📉 85% redução fraudes</span>
+                                    <span class="result-metric">⚡ 40% menos chamados suporte</span>
+                                </div>
+                            </div>
+
+                            <div class="use-case-enterprise">
+                                <div class="use-case-icon">
+                                    <i class="bi bi-hospital text-success"></i>
+                                </div>
+                                <h5>Saúde</h5>
+                                <p><strong>Desafio:</strong> Acesso seguro a prontuários médicos com compliance HIPAA</p>
+                                <p><strong>Solução:</strong> Role-based access + audit completo + criptografia E2E</p>
+                                <div class="results">
+                                    <span class="result-metric">🔒 100% compliance HIPAA</span>
+                                    <span class="result-metric">📋 Auditoria completa</span>
+                                </div>
+                            </div>
+
+                            <div class="use-case-enterprise">
+                                <div class="use-case-icon">
+                                    <i class="bi bi-gear-wide-connected text-warning"></i>
+                                </div>
+                                <h5>Manufatura</h5>
+                                <p><strong>Desafio:</strong> SSO para sistemas críticos de produção 24/7</p>
+                                <p><strong>Solução:</strong> Federação LDAP + SAML + failover automático</p>
+                                <div class="results">
+                                    <span class="result-metric">🎯 99.99% uptime</span>
+                                    <span class="result-metric">⚡ Zero downtime deploy</span>
+                                </div>
+                            </div>
+
+                            <div class="use-case-enterprise">
+                                <div class="use-case-icon">
+                                    <i class="bi bi-mortarboard text-info"></i>
+                                </div>
+                                <h5>Educação</h5>
+                                <p><strong>Desafio:</strong> Acesso unificado para alunos, professores e funcionários</p>
+                                <p><strong>Solução:</strong> Social login + guest access + self-service</p>
+                                <div class="results">
+                                    <span class="result-metric">👥 200k usuários ativos</span>
+                                    <span class="result-metric">📱 Mobile-first UX</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- ROI e Métricas -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-graph-up-arrow text-success"></i> ROI e Impacto</h2>
+                        
+                        <div class="roi-section">
+                            <div class="alert alert-success">
+                                <h5><i class="bi bi-calculator"></i> Retorno sobre Investimento</h5>
+                                <p>Empresas que implementaram a Área 51 reportam ROI médio de <strong>340% em 18 meses</strong></p>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="roi-card cost-savings">
+                                        <h4>💰 Redução de Custos</h4>
+                                        <ul>
+                                            <li><strong>Help Desk:</strong> -80% chamados de senha</li>
+                                            <li><strong>Licenças:</strong> -60% sistemas de autenticação</li>
+                                            <li><strong>Compliance:</strong> -90% tempo de auditoria</li>
+                                            <li><strong>Desenvolvimento:</strong> -70% tempo integração</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="roi-card productivity">
+                                        <h4>📈 Ganhos de Produtividade</h4>
+                                        <ul>
+                                            <li><strong>Login único:</strong> 5min/dia por usuário</li>
+                                            <li><strong>Onboarding:</strong> De 2 dias para 2 horas</li>
+                                            <li><strong>Automação:</strong> 95% processos manuais</li>
+                                            <li><strong>Self-service:</strong> 80% menos tickets</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="roi-card security">
+                                        <h4>🔒 Melhoria em Segurança</h4>
+                                        <ul>
+                                            <li><strong>Ataques:</strong> -95% tentativas bem-sucedidas</li>
+                                            <li><strong>Detecção:</strong> Anomalias em tempo real</li>
+                                            <li><strong>Resposta:</strong> Mitigação automática</li>
+                                            <li><strong>Compliance:</strong> Auditoria contínua</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Próximos Passos -->
+                    <section class="text-center">
+                        <h2><i class="bi bi-rocket text-primary"></i> Pronto para Decolar?</h2>
+                        <p class="lead">A Área 51 representa o futuro da autenticação empresarial. Segurança máxima com experiência transparente.</p>
+                        
+                        <div class="alert alert-warning">
+                            <h4><i class="bi bi-exclamation-diamond"></i> Acesso Restrito</h4>
+                            <p>Este projeto requer clearance de segurança nível empresarial. Entre em contato para demonstração controlada.</p>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="mailto:contato@caracore.com.br?subject=Demonstração Área 51" class="btn-wiki me-2">
+                                <i class="bi bi-envelope"></i> Solicitar Demo
+                            </a>
+                            <a href="guia-estagiario.html" class="btn-wiki me-2">
+                                <i class="bi bi-mortarboard"></i> Guia Técnico
+                            </a>
+                            <a href="tecnologias.html" class="btn-wiki">
+                                <i class="bi bi-gear"></i> Stack Tecnológico
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wiki-footer">
+        <div class="container">
+            <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
+            <p>Área 51 - Sistema de Autenticação Empresarial de Alta Segurança</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Wiki JS -->
+    <script src="assets/js/wiki.js"></script>
+</body>
+</html>

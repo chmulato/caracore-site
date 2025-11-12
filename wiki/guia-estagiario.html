@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia do Estagiário - Wiki Cara Core</title>
+    <meta name="description" content="Guia completo para novos estagiários da Cara Core Informática - configuração de ambiente, primeiros passos e orientações.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Wiki CSS -->
+    <link rel="stylesheet" href="assets/css/wiki.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MKFC9G3CL0', {
+            page_title: 'Guia Estagiário - Wiki',
+            custom_map: {'custom_parameter_1': 'guia_estagiario'}
+        });
+    </script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-journal-code"></i> Wiki Cara Core
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWiki" aria-label="Alternar navegação" title="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../portfolio.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="wiki-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Wiki Home</a></li>
+                    <li class="breadcrumb-item active">Guia do Estagiário</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="wiki-sidebar">
+                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
+                    <ul class="wiki-menu">
+                        <li><a href="index.html"><i class="bi bi-house"></i> Página Inicial</a></li>
+                        <li><a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a></li>
+                        <li><a href="tecnologias.html"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a></li>
+                        <li><a href="guia-estagiario.html" class="active"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
+                        <li><a href="contribuindo.html"><i class="bi bi-git"></i> Como Contribuir</a></li>
+                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="col-lg-9 col-md-8">
+                <div class="wiki-content">
+                    <div class="wiki-header">
+                        <h1><i class="bi bi-mortarboard"></i> Guia do Estagiário</h1>
+                        <p>Seu primeiro passo na equipe de desenvolvimento da Cara Core Informática</p>
+                    </div>
+
+                    <!-- Bem-vindo -->
+                    <section class="mb-5">
+                        <div class="estagiario-section">
+                            <h2><i class="bi bi-hand-thumbs-up text-success"></i> Bem-vindo à Equipe!</h2>
+                            <p class="lead">
+                                Parabéns por fazer parte da equipe da Cara Core Informática! Este guia vai ajudá-lo a se orientar 
+                                nos nossos projetos, tecnologias e práticas de desenvolvimento.
+                            </p>
+                            <div class="alert alert-info">
+                                <i class="bi bi-lightbulb"></i> <strong>Dica importante:</strong> 
+                                Este Wiki foi criado especialmente para você! Todas as explicações técnicas 
+                                incluem analogias simples para facilitar o entendimento.
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Primeiros Passos -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-list-check text-primary"></i> Seus Primeiros Passos</h2>
+                        <p>Siga esta lista de tarefas para se ambientar rapidamente:</p>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="alert alert-beginner">
+                                    <h4><i class="bi bi-1-circle text-success"></i> Semana 1: Conhecendo os Projetos</h4>
+                                    <ul class="feature-list">
+                                        <li>Leia a <a href="projetos-overview.html" class="alert-link">Visão Geral dos Projetos</a></li>
+                                        <li>Explore cada projeto no <a href="../portfolio.html" class="alert-link">Portfólio</a></li>
+                                        <li>Teste o <a href="https://chmulato.github.io/reino_oidc/" class="alert-link">Reino OIDC</a> (projeto educativo)</li>
+                                        <li>Acesse a <a href="../area51/wiki/index.html" class="alert-link">Área 51</a> (se tiver permissão)</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="alert alert-intermediate">
+                                    <h4><i class="bi bi-2-circle text-warning"></i> Semana 2: Configurando o Ambiente</h4>
+                                    <ul class="feature-list">
+                                        <li>Instalar Python 3.11+ no seu computador</li>
+                                        <li>Configurar Git e GitHub</li>
+                                        <li>Instalar VS Code com extensões Python</li>
+                                        <li>Clonar repositórios de desenvolvimento</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="alert alert-advanced">
+                                    <h4><i class="bi bi-3-circle text-danger"></i> Semana 3: Primeira Contribuição</h4>
+                                    <ul class="feature-list">
+                                        <li>Executar os projetos localmente</li>
+                                        <li>Entender o fluxo de trabalho Git</li>
+                                        <li>Fazer sua primeira correção/melhoria</li>
+                                        <li>Criar seu primeiro Pull Request</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="alert alert-info">
+                                    <h4><i class="bi bi-4-circle text-info"></i> Semana 4+: Desenvolvimento Contínuo</h4>
+                                    <ul class="feature-list">
+                                        <li>Participar de code reviews</li>
+                                        <li>Trabalhar em features completas</li>
+                                        <li>Aprender novas tecnologias</li>
+                                        <li>Mentoria com desenvolvedores seniores</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Configuração de Ambiente -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-laptop text-info"></i> Configuração do Ambiente de Desenvolvimento</h2>
+                        
+                        <div class="leigos-section">
+                            <h3><i class="bi bi-info-circle"></i> O que é "Ambiente de Desenvolvimento"?</h3>
+                            <p>
+                                É como preparar sua "oficina de trabalho" no computador. Assim como um carpinteiro precisa 
+                                de suas ferramentas organizadas, você precisa dos programas certos instalados e configurados 
+                                para trabalhar com nossos projetos.
+                            </p>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="project-card">
+                                    <div class="project-header python-tool">
+                                        <h4><i class="bi bi-code-square"></i> 1. Instalar Python</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <p><strong>O que é:</strong> Python é a linguagem de programação principal que usamos.</p>
+                                        <p><strong>Como instalar:</strong></p>
+                                        <ol>
+                                            <li>Acesse <a href="https://python.org" target="_blank" rel="noopener">python.org</a></li>
+                                            <li>Baixe Python 3.11 ou superior</li>
+                                            <li>Execute o instalador</li>
+                                            <li>✅ Marque "Add Python to PATH"</li>
+                                        </ol>
+                                        <div class="alert alert-warning">
+                                            <small><i class="bi bi-exclamation-triangle"></i> Importante: Sempre marque "Add to PATH" na instalação!</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="project-card">
+                                    <div class="project-header git-tool">
+                                        <h4><i class="bi bi-git"></i> 2. Configurar Git</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <p><strong>O que é:</strong> Git é como um "histórico de versões" do código.</p>
+                                        <p><strong>Como configurar:</strong></p>
+                                        <ol>
+                                            <li>Baixe em <a href="https://git-scm.com" target="_blank" rel="noopener">git-scm.com</a></li>
+                                            <li>Instale com configurações padrão</li>
+                                            <li>Configure seu nome e email:</li>
+                                        </ol>
+                                        <pre><code>git config --global user.name "Seu Nome"
+git config --global user.email "seu@email.com"</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="project-card">
+                                    <div class="project-header vscode-tool">
+                                        <h4><i class="bi bi-code"></i> 3. VS Code</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <p><strong>O que é:</strong> Editor de código - onde você vai escrever e editar programas.</p>
+                                        <p><strong>Extensões obrigatórias:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Python (Microsoft)</li>
+                                            <li>GitLens</li>
+                                            <li>Prettier</li>
+                                            <li>Live Server</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="project-card">
+                                    <div class="project-header github-tool">
+                                        <h4><i class="bi bi-github"></i> 4. GitHub</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <p><strong>O que é:</strong> "Nuvem" onde guardamos todo o código dos projetos.</p>
+                                        <p><strong>Primeiros passos:</strong></p>
+                                        <ul class="feature-list">
+                                            <li>Crie conta no <a href="https://github.com" target="_blank" rel="noopener">GitHub</a></li>
+                                            <li>Solicite acesso aos repositórios</li>
+                                            <li>Configure chave SSH (seu supervisor ajuda)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Nossos Projetos -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-collection text-warning"></i> Entendendo Nossos Projetos</h2>
+                        <p class="text-muted">Aqui está uma explicação simplificada dos 5 projetos principais:</p>
+
+                        <div class="project-card mb-4">
+                            <div class="project-header hub">
+                                <h3>🏢 CaraCore Hub - "O Centro de Controle"</h3>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5><i class="bi bi-people"></i> Para Leigos:</h5>
+                                        <p>Imagine o Hub como a "central telefônica" da empresa. Ele conecta diferentes sistemas e programas, fazendo com que eles conversem entre si. É como ter um assistente que organiza todas as informações da empresa em um só lugar.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5><i class="bi bi-mortarboard"></i> Para Estagiários:</h5>
+                                        <p>Aplicação Python/Flask que funciona como API central. Integra diferentes serviços, gerencia dados e fornece endpoints REST para outros sistemas. Usa Docker para deployment e PostgreSQL como banco de dados.</p>
+                                        <div class="mt-2">
+                                            <span class="tech-badge">Python</span>
+                                            <span class="tech-badge">Flask</span>
+                                            <span class="tech-badge">Docker</span>
+                                            <span class="tech-badge">PostgreSQL</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-info mt-3">
+                                    <i class="bi bi-lightbulb"></i> <strong>Sua missão como estagiário:</strong> 
+                                    Ajudar a criar novos endpoints, melhorar a documentação da API e escrever testes automatizados.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card mb-4">
+                            <div class="project-header python-training">
+                                <h3>🎓 Python Training - "Escola de Programação"</h3>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5><i class="bi bi-people"></i> Para Leigos:</h5>
+                                        <p>É um curso online que ensina jovens a programar. Como uma "escola virtual" onde os alunos aprendem fazendo jogos, criando projetos no Minecraft e até desenvolvendo inteligência artificial!</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5><i class="bi bi-mortarboard"></i> Para Estagiários:</h5>
+                                        <p>Plataforma educacional em HTML/CSS/JS com conteúdo Python. 6 módulos progressivos, sistema de flashcards, integração com Pygame e Minecraft Education Edition. Foco em UX/UI responsivo.</p>
+                                        <div class="mt-2">
+                                            <span class="tech-badge">HTML5</span>
+                                            <span class="tech-badge">CSS3</span>
+                                            <span class="tech-badge">JavaScript</span>
+                                            <span class="tech-badge">Bootstrap</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="alert alert-success mt-3">
+                                    <i class="bi bi-target"></i> <strong>Sua missão como estagiário:</strong> 
+                                    Melhorar a interface do usuário, criar novas animações CSS e implementar funcionalidades JavaScript para os flashcards.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Práticas e Padrões -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-award text-success"></i> Nossas Práticas de Desenvolvimento</h2>
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="alert alert-light">
+                                    <h5><i class="bi bi-git text-danger"></i> Git Flow</h5>
+                                    <p><strong>Regra simples:</strong> Sempre crie uma nova branch para cada tarefa.</p>
+                                    <code>git checkout -b feature/minha-tarefa</code>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="alert alert-light">
+                                    <h5><i class="bi bi-check-square text-success"></i> Code Review</h5>
+                                    <p><strong>Regra simples:</strong> Todo código deve ser revisado por outro desenvolvedor antes de ir para produção.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-4">
+                                <div class="alert alert-light">
+                                    <h5><i class="bi bi-bug text-warning"></i> Testes</h5>
+                                    <p><strong>Regra simples:</strong> Se você criou uma função, crie um teste para ela.</p>
+                                    <code>pytest test_minha_funcao.py</code>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Próximos Passos -->
+                    <section class="text-center">
+                        <h2><i class="bi bi-arrow-right-circle text-primary"></i> Próximos Passos</h2>
+                        <p class="lead">Agora que você leu este guia, é hora de colocar a mão na massa!</p>
+                        <div class="row justify-content-center">
+                            <div class="col-md-8">
+                                <div class="d-grid gap-2 d-md-block">
+                                    <a href="projetos-overview.html" class="btn-wiki me-2">
+                                        <i class="bi bi-collection"></i> Ver Todos os Projetos
+                                    </a>
+                                    <a href="tecnologias.html" class="btn-wiki me-2">
+                                        <i class="bi bi-gear"></i> Aprender Tecnologias
+                                    </a>
+                                    <a href="contribuindo.html" class="btn-wiki">
+                                        <i class="bi bi-git"></i> Como Contribuir
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="alert alert-success mt-4">
+                            <h4><i class="bi bi-headset"></i> Precisa de Ajuda?</h4>
+                            <p>Não hesite em perguntar! Estamos aqui para ajudá-lo a ter sucesso.</p>
+                            <p><strong>Contato:</strong> <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a></p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wiki-footer">
+        <div class="container">
+            <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
+            <p>Wiki criado para orientação de estagiários e divulgação técnica</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Wiki JS -->
+    <script src="assets/js/wiki.js"></script>
+</body>
+</html>

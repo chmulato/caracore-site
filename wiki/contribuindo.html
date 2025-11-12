@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Como Contribuir - Wiki Cara Core</title>
+    <meta name="description" content="Guia completo para contribuir com os projetos da Cara Core Informática - Git flow, code review e boas práticas.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Wiki CSS -->
+    <link rel="stylesheet" href="assets/css/wiki.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MKFC9G3CL0', {
+            page_title: 'Contribuindo - Wiki',
+            custom_map: {'custom_parameter_1': 'contribuindo'}
+        });
+    </script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-journal-code"></i> Wiki Cara Core
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWiki" aria-label="Alternar navegação" title="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../portfolio.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="wiki-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Wiki Home</a></li>
+                    <li class="breadcrumb-item active">Como Contribuir</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="wiki-sidebar">
+                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
+                    <ul class="wiki-menu">
+                        <li><a href="index.html"><i class="bi bi-house"></i> Página Inicial</a></li>
+                        <li><a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a></li>
+                        <li><a href="tecnologias.html"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a></li>
+                        <li><a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
+                        <li><a href="contribuindo.html" class="active"><i class="bi bi-git"></i> Como Contribuir</a></li>
+                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="col-lg-9 col-md-8">
+                <div class="wiki-content">
+                    <div class="wiki-header">
+                        <h1><i class="bi bi-git"></i> Como Contribuir</h1>
+                        <p>Guia completo para contribuir com os projetos da Cara Core Informática</p>
+                    </div>
+
+                    <!-- Introdução -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-handshake text-success"></i> Bem-vindo à Colaboração!</h2>
+                        
+                        <div class="leigos-section">
+                            <h3><i class="bi bi-people"></i> O que significa "Contribuir"?</h3>
+                            <p>Contribuir é como ajudar a melhorar um projeto em equipe. Imagine que vocês estão construindo uma casa juntos - cada pessoa faz uma parte (um pinta, outro faz o telhado, outro a elétrica) e no final fica pronto mais rápido e melhor!</p>
+                            <p>Na programação, contribuir pode ser:</p>
+                            <ul class="feature-list">
+                                <li><strong>Corrigir bugs:</strong> "Consertar coisas que não estão funcionando"</li>
+                                <li><strong>Adicionar features:</strong> "Criar novas funcionalidades"</li>
+                                <li><strong>Melhorar documentação:</strong> "Escrever explicações mais claras"</li>
+                                <li><strong>Fazer testes:</strong> "Verificar se tudo funciona corretamente"</li>
+                            </ul>
+                        </div>
+
+                        <div class="estagiario-section">
+                            <h3><i class="bi bi-mortarboard"></i> Fluxo de Contribuição na Cara Core</h3>
+                            <p>Seguimos um processo estruturado que garante qualidade e permite que múltiplas pessoas trabalhem no mesmo projeto sem conflitos:</p>
+                            <ol>
+                                <li><strong>Issue/Task Assignment:</strong> Receber ou escolher uma tarefa</li>
+                                <li><strong>Branch Creation:</strong> Criar uma branch específica para a tarefa</li>
+                                <li><strong>Development:</strong> Desenvolver a solução localmente</li>
+                                <li><strong>Testing:</strong> Testar e validar as mudanças</li>
+                                <li><strong>Pull Request:</strong> Submeter para revisão</li>
+                                <li><strong>Code Review:</strong> Revisão por pares</li>
+                                <li><strong>Merge:</strong> Integração ao código principal</li>
+                            </ol>
+                        </div>
+                    </section>
+
+                    <!-- Git Flow Detalhado -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-diagram-3 text-info"></i> Git Flow da Cara Core</h2>
+                        
+                        <div class="project-card">
+                            <div class="project-header git-tool">
+                                <h3><i class="bi bi-git"></i> Nosso Git Workflow</h3>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-people text-info"></i> Explicação Simples</h4>
+                                        <p>Git é como um "sistema de versões" do seu projeto. Imagine que você está escrevendo um livro:</p>
+                                        <ul class="feature-list">
+                                            <li><strong>main/master:</strong> É o "livro oficial" publicado</li>
+                                            <li><strong>branches:</strong> São "rascunhos" onde você escreve capítulos novos</li>
+                                            <li><strong>commits:</strong> São "salvamentos" do seu progresso</li>
+                                            <li><strong>pull request:</strong> É pedir para alguém revisar seu capítulo antes de publicar</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-code text-warning"></i> Comandos Práticos</h4>
+                                        <p><strong>1. Começar uma nova tarefa:</strong></p>
+                                        <pre><code># Atualizar main local
+git checkout main
+git pull origin main
+
+# Criar nova branch
+git checkout -b feature/minha-tarefa</code></pre>
+                                        
+                                        <p><strong>2. Trabalhar e salvar progresso:</strong></p>
+                                        <pre><code># Adicionar mudanças
+git add .
+
+# Fazer commit
+git commit -m "feat: adicionar nova funcionalidade"
+
+# Enviar para GitHub
+git push origin feature/minha-tarefa</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Padrões de Commit -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-tag text-warning"></i> Padrões de Commit</h2>
+                        
+                        <div class="estagiario-section">
+                            <p>Usamos o padrão <strong>Conventional Commits</strong> para manter o histórico organizado:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-check-circle text-success"></i> ✅ Commits Corretos</h4>
+                                    <pre><code>feat: adicionar login com Google
+fix: corrigir bug no cadastro de usuários
+docs: atualizar README com instruções
+style: ajustar espaçamento no CSS
+refactor: melhorar função de validação
+test: adicionar testes para API de login</code></pre>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-x-circle text-danger"></i> ❌ Commits Ruins</h4>
+                                    <pre><code>mudanças
+ajustes
+fix
+update
+alterações no código
+corrigido
+melhorias</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-info mt-4">
+                                <h5><i class="bi bi-lightbulb"></i> Tipos de Commit</h5>
+                                <ul class="feature-list">
+                                    <li><strong>feat:</strong> Nova funcionalidade</li>
+                                    <li><strong>fix:</strong> Correção de bug</li>
+                                    <li><strong>docs:</strong> Documentação</li>
+                                    <li><strong>style:</strong> Formatação, espaçamento (sem mudança de lógica)</li>
+                                    <li><strong>refactor:</strong> Melhoria de código sem mudança de comportamento</li>
+                                    <li><strong>test:</strong> Adição ou correção de testes</li>
+                                    <li><strong>chore:</strong> Tarefas de manutenção (build, dependencies)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Pull Request Process -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-arrow-left-right text-primary"></i> Processo de Pull Request</h2>
+                        
+                        <div class="project-card">
+                            <div class="project-header github-tool">
+                                <h3><i class="bi bi-github"></i> Como Fazer um Pull Request</h3>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-people text-info"></i> Passo a Passo Simples</h4>
+                                        <ol>
+                                            <li><strong>Termine sua tarefa</strong> na sua branch</li>
+                                            <li><strong>Teste tudo</strong> para garantir que funciona</li>
+                                            <li><strong>Envie para o GitHub</strong> (git push)</li>
+                                            <li><strong>Abra um Pull Request</strong> no site do GitHub</li>
+                                            <li><strong>Descreva</strong> o que você fez</li>
+                                            <li><strong>Aguarde a revisão</strong> de outro desenvolvedor</li>
+                                            <li><strong>Faça ajustes</strong> se necessário</li>
+                                            <li><strong>Celebre!</strong> Sua contribuição foi aceita</li>
+                                        </ol>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-code text-warning"></i> Template de PR</h4>
+                                        <pre><code>## Descrição
+Breve descrição do que foi implementado/corrigido
+
+## Tipo de mudança
+- [ ] Bug fix
+- [ ] Nova funcionalidade
+- [ ] Breaking change
+- [ ] Documentação
+
+## Como testar
+1. Execute o projeto localmente
+2. Acesse a página X
+3. Teste a funcionalidade Y
+
+## Checklist
+- [ ] Código testado localmente
+- [ ] Testes automatizados passando
+- [ ] Documentação atualizada
+- [ ] Code review solicitado</code></pre>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-success mt-4">
+                                    <h5><i class="bi bi-star text-warning"></i> Dicas para um PR Aprovado</h5>
+                                    <ul class="feature-list">
+                                        <li><strong>Seja específico:</strong> Explique claramente o que mudou</li>
+                                        <li><strong>Mantenha pequeno:</strong> PRs menores são mais fáceis de revisar</li>
+                                        <li><strong>Teste bem:</strong> Verifique se não quebrou nada</li>
+                                        <li><strong>Screenshots:</strong> Para mudanças visuais, inclua antes/depois</li>
+                                        <li><strong>Seja receptivo:</strong> Aceite feedback construtivo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Code Review -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-eye text-info"></i> Code Review</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="leigos-section">
+                                    <h3><i class="bi bi-people"></i> O que é Code Review?</h3>
+                                    <p>É como ter um amigo revisando sua redação antes de entregar para o professor. Outro desenvolvedor lê seu código para:</p>
+                                    <ul class="feature-list">
+                                        <li>Verificar se está correto e funcionando</li>
+                                        <li>Sugerir melhorias</li>
+                                        <li>Garantir que segue os padrões da empresa</li>
+                                        <li>Ensinar e aprender coisas novas</li>
+                                    </ul>
+                                    
+                                    <div class="alert alert-success">
+                                        <i class="bi bi-heart"></i> <strong>Não leve para o pessoal!</strong> Code review é sobre melhorar o código, não sobre julgar você como pessoa.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="estagiario-section">
+                                    <h3><i class="bi bi-mortarboard"></i> Como Dar/Receber Feedback</h3>
+                                    
+                                    <h5><i class="bi bi-chat-left-text text-success"></i> Dando Feedback:</h5>
+                                    <ul class="feature-list">
+                                        <li>Seja construtivo e específico</li>
+                                        <li>Explique o "porquê" das suas sugestões</li>
+                                        <li>Reconheça coisas boas no código</li>
+                                        <li>Sugira alternativas, não apenas critique</li>
+                                    </ul>
+                                    
+                                    <h5><i class="bi bi-ear text-info"></i> Recebendo Feedback:</h5>
+                                    <ul class="feature-list">
+                                        <li>Seja aberto a sugestões</li>
+                                        <li>Faça perguntas se não entender</li>
+                                        <li>Agradeça o tempo do revisor</li>
+                                        <li>Implemente as mudanças sugeridas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Boas Práticas -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-award text-success"></i> Boas Práticas de Desenvolvimento</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header hub">
+                                        <h4><i class="bi bi-code-square"></i> Qualidade de Código</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Nomes descritivos:</strong> <code>calculate_total_price()</code> é melhor que <code>calc()</code></li>
+                                            <li><strong>Funções pequenas:</strong> Máximo 20-30 linhas</li>
+                                            <li><strong>Comentários úteis:</strong> Explique o "porquê", não o "o quê"</li>
+                                            <li><strong>Consistência:</strong> Siga o padrão do projeto</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header python-training">
+                                        <h4><i class="bi bi-shield-check"></i> Segurança</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Nunca commite secrets:</strong> Senhas, API keys, tokens</li>
+                                            <li><strong>Valide inputs:</strong> Sempre verifique dados de usuário</li>
+                                            <li><strong>Use HTTPS:</strong> Especialmente em produção</li>
+                                            <li><strong>Logs seguros:</strong> Não logue informações sensíveis</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header seed">
+                                        <h4><i class="bi bi-check-square"></i> Testes</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>Teste antes de commitar:</strong> Verifique se não quebrou nada</li>
+                                            <li><strong>Escreva testes unitários:</strong> Para funções importantes</li>
+                                            <li><strong>Teste casos extremos:</strong> Valores nulos, limites</li>
+                                            <li><strong>Documente como testar:</strong> No README</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="project-card">
+                                    <div class="project-header area51">
+                                        <h4><i class="bi bi-file-text"></i> Documentação</h4>
+                                    </div>
+                                    <div class="project-body">
+                                        <ul class="feature-list">
+                                            <li><strong>README atualizado:</strong> Como instalar e usar</li>
+                                            <li><strong>Docstrings:</strong> Documente funções públicas</li>
+                                            <li><strong>Changelog:</strong> Registre mudanças importantes</li>
+                                            <li><strong>Exemplos de uso:</strong> Code snippets práticos</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Tipos de Contribuição -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-list-check text-warning"></i> Tipos de Contribuição</h2>
+                        
+                        <div class="estagiario-section">
+                            <p>Existem várias formas de contribuir, independente do seu nível de experiência:</p>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="alert alert-beginner text-center">
+                                        <h5><i class="bi bi-star text-success"></i> Iniciante</h5>
+                                        <ul class="feature-list text-start">
+                                            <li>Corrigir typos na documentação</li>
+                                            <li>Melhorar mensagens de erro</li>
+                                            <li>Adicionar exemplos no README</li>
+                                            <li>Testar e reportar bugs</li>
+                                            <li>Traduzir conteúdo</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4 mb-4">
+                                    <div class="alert alert-intermediate text-center">
+                                        <h5><i class="bi bi-gear text-warning"></i> Intermediário</h5>
+                                        <ul class="feature-list text-start">
+                                            <li>Implementar pequenas features</li>
+                                            <li>Corrigir bugs simples</li>
+                                            <li>Escrever testes unitários</li>
+                                            <li>Melhorar performance</li>
+                                            <li>Refatorar código legado</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-4 mb-4">
+                                    <div class="alert alert-advanced text-center">
+                                        <h5><i class="bi bi-lightning text-danger"></i> Avançado</h5>
+                                        <ul class="feature-list text-start">
+                                            <li>Arquitetar novas funcionalidades</li>
+                                            <li>Otimizar performance crítica</li>
+                                            <li>Implementar integrações complexas</li>
+                                            <li>Revisar PRs de outros</li>
+                                            <li>Mentoriar estagiários</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Ferramentas e Setup -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-tools text-info"></i> Ferramentas para Contribuição</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4><i class="bi bi-check2-square"></i> Checklist de Setup</h4>
+                                <ul class="feature-list">
+                                    <li>✅ Git configurado com seu nome/email</li>
+                                    <li>✅ SSH key configurada no GitHub</li>
+                                    <li>✅ VS Code com extensões necessárias</li>
+                                    <li>✅ Python 3.11+ instalado</li>
+                                    <li>✅ Acesso aos repositórios da empresa</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4><i class="bi bi-terminal"></i> Comandos Úteis</h4>
+                                <pre><code># Ver status do projeto
+git status
+
+# Ver histórico de commits
+git log --oneline
+
+# Trocar de branch
+git checkout nome-da-branch
+
+# Ver diferenças
+git diff
+
+# Desfazer mudanças locais
+git checkout -- arquivo.py</code></pre>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Próximos Passos -->
+                    <section class="text-center">
+                        <h2><i class="bi bi-rocket text-primary"></i> Pronto para Contribuir?</h2>
+                        <p class="lead">Agora você tem todo conhecimento necessário para começar a contribuir!</p>
+                        
+                        <div class="alert alert-success">
+                            <h4><i class="bi bi-lightbulb"></i> Sua Primeira Contribuição</h4>
+                            <p>Recomendamos começar com algo pequeno: corrigir um typo, melhorar um comentário ou adicionar um exemplo. O importante é praticar o fluxo!</p>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="projetos-overview.html" class="btn-wiki me-2">
+                                <i class="bi bi-collection"></i> Escolher Projeto
+                            </a>
+                            <a href="guia-estagiario.html" class="btn-wiki me-2">
+                                <i class="bi bi-mortarboard"></i> Configurar Ambiente
+                            </a>
+                            <a href="../index.html#contato" class="btn-wiki">
+                                <i class="bi bi-envelope"></i> Tirar Dúvidas
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wiki-footer">
+        <div class="container">
+            <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
+            <p>Wiki criado para orientação de estagiários e divulgação técnica</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Wiki JS -->
+    <script src="assets/js/wiki.js"></script>
+</body>
+</html>

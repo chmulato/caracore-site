@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cara Core Seed - Wiki Cara Core</title>
+    <meta name="description" content="Documentação completa do Cara Core Seed - template base para novos projetos Python/Flask com estrutura padronizada e melhores práticas.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Wiki CSS -->
+    <link rel="stylesheet" href="assets/css/wiki.css">
+    <!-- Projeto Seed CSS -->
+    <link rel="stylesheet" href="assets/css/projeto-seed.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MKFC9G3CL0', {
+            page_title: 'Cara Core Seed - Wiki',
+            custom_map: {'custom_parameter_1': 'project_seed'}
+        });
+    </script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-journal-code"></i> Wiki Cara Core
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWiki" aria-label="Alternar navegação" title="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../portfolio.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="wiki-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Wiki Home</a></li>
+                    <li class="breadcrumb-item"><a href="projetos-overview.html">Projetos</a></li>
+                    <li class="breadcrumb-item active">Cara Core Seed</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="wiki-sidebar">
+                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
+                    <ul class="wiki-menu">
+                        <li><a href="index.html"><i class="bi bi-house"></i> Página Inicial</a></li>
+                        <li><a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a></li>
+                        <li>
+                            <span class="wiki-submenu-title"><i class="bi bi-folder"></i> Projetos</span>
+                            <ul class="wiki-submenu">
+                                <li><a href="projeto-hub.html"><i class="bi bi-hdd-network"></i> Cara Core Hub</a></li>
+                                <li><a href="projeto-seed.html" class="active"><i class="bi bi-seedling"></i> Cara Core Seed</a></li>
+                                <li><a href="projeto-reino.html"><i class="bi bi-shield-lock"></i> Reino OIDC</a></li>
+                                <li><a href="projeto-area51.html"><i class="bi bi-rocket"></i> Área 51</a></li>
+                                <li><a href="projeto-python.html"><i class="bi bi-mortarboard"></i> Python Training</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="tecnologias.html"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a></li>
+                        <li><a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
+                        <li><a href="contribuindo.html"><i class="bi bi-git"></i> Como Contribuir</a></li>
+                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="col-lg-9 col-md-8">
+                <div class="wiki-content">
+                    <div class="project-card">
+                        <div class="project-header seed">
+                            <h1><i class="bi bi-seedling"></i> Cara Core Seed</h1>
+                            <p>Template Base para Novos Projetos</p>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-status">
+                                <span class="badge badge-stable">Estável</span>
+                                <span class="badge badge-python">Python 3.11+</span>
+                                <span class="badge badge-flask">Flask</span>
+                                <span class="badge badge-template">Template</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visão Geral -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-eye text-info"></i> Visão Geral</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="leigos-section">
+                                    <h3><i class="bi bi-people"></i> O que é o Seed?</h3>
+                                    <p>O Cara Core Seed é como um "molde" ou "receita básica" para criar novos projetos. Imagine que você tem uma receita de bolo que sempre dá certo - o Seed é isso, mas para criar aplicativos web.</p>
+                                    <p><strong>Por que é importante:</strong></p>
+                                    <ul class="feature-list">
+                                        <li>🏗️ <strong>Base sólida:</strong> Todo projeto novo já nasce organizado</li>
+                                        <li>⚡ <strong>Mais rápido:</strong> Não precisa começar do zero toda vez</li>
+                                        <li>🎯 <strong>Padrão da empresa:</strong> Todos os projetos seguem a mesma estrutura</li>
+                                        <li>🔧 <strong>Já configurado:</strong> Docker, testes, deploy - tudo pronto</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="estagiario-section">
+                                    <h3><i class="bi bi-mortarboard"></i> Arquitetura do Template</h3>
+                                    <p>Boilerplate Flask seguindo Clean Architecture e Domain-Driven Design (DDD). Implementa estrutura modular com separação clara entre camadas e responsabilidades.</p>
+                                    <p><strong>Componentes inclusos:</strong></p>
+                                    <ul class="feature-list">
+                                        <li><strong>Flask App Factory:</strong> Configuração modular da aplicação</li>
+                                        <li><strong>Blueprint System:</strong> Organização por módulos funcionais</li>
+                                        <li><strong>Database Migrations:</strong> Alembic pre-configurado</li>
+                                        <li><strong>Testing Suite:</strong> pytest + coverage setup completo</li>
+                                        <li><strong>Docker Environment:</strong> Multi-stage builds otimizados</li>
+                                        <li><strong>CI/CD Pipeline:</strong> GitHub Actions ready-to-use</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Estrutura do Projeto -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-folder-open text-success"></i> Estrutura do Projeto</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="leigos-section">
+                                    <h3><i class="bi bi-people"></i> Como está organizado</h3>
+                                    <p>A estrutura do Seed é como organizar uma casa bem planejada - cada coisa tem seu lugar e você sempre sabe onde encontrar o que precisa:</p>
+                                    <ul class="feature-list">
+                                        <li>📁 <strong>app/</strong> - O "coração" da aplicação</li>
+                                        <li>🧪 <strong>tests/</strong> - Testes para garantir que tudo funciona</li>
+                                        <li>🐳 <strong>docker/</strong> - Configurações para rodar em qualquer lugar</li>
+                                        <li>📋 <strong>scripts/</strong> - Comandos úteis para desenvolvimento</li>
+                                        <li>📚 <strong>docs/</strong> - Documentação do projeto</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="estagiario-section">
+                                    <h3><i class="bi bi-mortarboard"></i> Estrutura Técnica</h3>
+                                    <pre><code>caracore-seed/
+├── app/
+│   ├── __init__.py          # App factory
+│   ├── config.py            # Configurações por ambiente
+│   ├── models/              # SQLAlchemy models
+│   ├── views/               # Blueprint controllers
+│   ├── services/            # Business logic layer
+│   ├── utils/               # Helper functions
+│   └── static/              # Assets (CSS, JS, images)
+├── tests/
+│   ├── unit/                # Testes unitários
+│   ├── integration/         # Testes de integração
+│   └── fixtures/            # Test data
+├── migrations/              # Alembic migrations
+├── docker/
+│   ├── Dockerfile           # Production image
+│   ├── Dockerfile.dev       # Development image
+│   └── docker-compose.yml   # Services orchestration
+├── scripts/
+│   ├── setup.py             # Environment setup
+│   ├── test.py              # Test runner
+│   └── deploy.py            # Deployment utilities
+└── docs/                    # Project documentation</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Features Incluídas -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-star text-warning"></i> Features Incluídas</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-shield-lock text-primary"></i>
+                                        <h4>Autenticação JWT</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Sistema de login seguro que lembra quem você é sem precisar fazer login toda hora.</p>
+                                        <p><strong>Técnico:</strong> JWT tokens com refresh, middleware de autenticação, decorators para proteção de rotas.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-database text-success"></i>
+                                        <h4>Database ORM</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Sistema que conversa com o banco de dados usando Python normal, sem precisar aprender SQL.</p>
+                                        <p><strong>Técnico:</strong> SQLAlchemy com models, migrations automáticas via Alembic, connection pooling configurado.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-check-circle text-warning"></i>
+                                        <h4>Testes Automáticos</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> "Robôs" que testam o código automaticamente para garantir que nada quebrou.</p>
+                                        <p><strong>Técnico:</strong> pytest suite, fixtures, mocks, coverage reporting, CI integration.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-cloud text-info"></i>
+                                        <h4>Deploy Automático</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> O código vai direto para o "ar" (internet) automaticamente quando você termina uma feature.</p>
+                                        <p><strong>Técnico:</strong> GitHub Actions pipeline, Azure App Service integration, Docker multi-stage builds.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-success">
+                            <h5><i class="bi bi-rocket"></i> Desenvolvimento Acelerado</h5>
+                            <p>Com o Seed, um projeto que normalmente levaria 2-3 dias para configurar fica pronto em 15 minutos!</p>
+                        </div>
+                    </section>
+
+                    <!-- Como Usar o Template -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-play-circle text-primary"></i> Como Usar o Template</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="leigos-section">
+                                    <h3><i class="bi bi-people"></i> Passo a Passo Simples</h3>
+                                    <ol>
+                                        <li><strong>Copiar o template</strong> - Como fazer xerox de uma receita</li>
+                                        <li><strong>Dar um nome</strong> - Trocar "seed" pelo nome do seu projeto</li>
+                                        <li><strong>Configurar</strong> - Ajustar as informações básicas</li>
+                                        <li><strong>Desenvolver</strong> - Adicionar suas funcionalidades específicas</li>
+                                        <li><strong>Testar</strong> - Verificar se está tudo funcionando</li>
+                                        <li><strong>Publicar</strong> - Colocar no ar para todo mundo usar</li>
+                                    </ol>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="estagiario-section">
+                                    <h3><i class="bi bi-mortarboard"></i> Setup Técnico</h3>
+                                    <pre><code># 1. Clonar template
+git clone https://github.com/cara-core/seed meu-projeto
+cd meu-projeto
+
+# 2. Renomear projeto
+python scripts/rename_project.py "MeuProjeto"
+
+# 3. Setup ambiente
+python scripts/setup.py --dev
+
+# 4. Ativar ambiente virtual
+venv\Scripts\activate  # Windows
+source venv/bin/activate  # Linux/Mac
+
+# 5. Instalar dependências
+pip install -r requirements/dev.txt
+
+# 6. Configurar banco
+flask db upgrade
+
+# 7. Seed inicial de dados
+python scripts/seed_data.py
+
+# 8. Executar aplicação
+flask run --debug</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-4">
+                            <h5><i class="bi bi-lightbulb"></i> Dica Pro</h5>
+                            <p>Use o script <code>scripts/new_module.py</code> para gerar automaticamente a estrutura de novos módulos com models, views, services e testes já configurados!</p>
+                        </div>
+                    </section>
+
+                    <!-- Configurações Disponíveis -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-sliders text-warning"></i> Configurações Disponíveis</h2>
+                        
+                        <div class="estagiario-section">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-gear text-info"></i> Ambientes</h4>
+                                    <ul class="tech-list">
+                                        <li><strong>Development:</strong> Debug ativo, hot-reload, SQLite local</li>
+                                        <li><strong>Testing:</strong> Base isolada, mocks, coverage tracking</li>
+                                        <li><strong>Staging:</strong> Ambiente de homologação no Azure</li>
+                                        <li><strong>Production:</strong> Otimizações, PostgreSQL, monitoring</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-database text-success"></i> Databases Suportados</h4>
+                                    <ul class="tech-list">
+                                        <li><strong>SQLite:</strong> Desenvolvimento local rápido</li>
+                                        <li><strong>PostgreSQL:</strong> Produção (recomendado)</li>
+                                        <li><strong>MySQL:</strong> Compatibilidade legacy</li>
+                                        <li><strong>Azure SQL:</strong> Cloud-native option</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h4><i class="bi bi-box text-primary"></i> Variáveis de Ambiente</h4>
+                            <pre><code># .env.example
+FLASK_APP=app
+FLASK_ENV=development
+SECRET_KEY=sua-chave-super-secreta
+DATABASE_URL=sqlite:///app.db
+REDIS_URL=redis://localhost:6379
+JWT_SECRET_KEY=jwt-secret-key
+JWT_ACCESS_TOKEN_EXPIRES=3600
+AZURE_STORAGE_CONNECTION_STRING=...
+SENDGRID_API_KEY=...
+SENTRY_DSN=...</code></pre>
+                        </div>
+                    </section>
+
+                    <!-- Módulos Opcionais -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-puzzle text-success"></i> Módulos Opcionais</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-4 mb-4">
+                                <div class="module-card">
+                                    <div class="module-header">
+                                        <i class="bi bi-envelope text-primary"></i>
+                                        <h5>Email Module</h5>
+                                    </div>
+                                    <p>Envio de emails via SendGrid com templates HTML responsivos.</p>
+                                    <code>flask module add email</code>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="module-card">
+                                    <div class="module-header">
+                                        <i class="bi bi-cloud-upload text-success"></i>
+                                        <h5>File Upload</h5>
+                                    </div>
+                                    <p>Upload seguro para Azure Blob Storage com validação e resize.</p>
+                                    <code>flask module add uploads</code>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="module-card">
+                                    <div class="module-header">
+                                        <i class="bi bi-graph-up text-warning"></i>
+                                        <h5>Analytics</h5>
+                                    </div>
+                                    <p>Tracking de eventos customizado com dashboards integrados.</p>
+                                    <code>flask module add analytics</code>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="module-card">
+                                    <div class="module-header">
+                                        <i class="bi bi-cash text-info"></i>
+                                        <h5>Payments</h5>
+                                    </div>
+                                    <p>Integração com Stripe para pagamentos seguros.</p>
+                                    <code>flask module add payments</code>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="module-card">
+                                    <div class="module-header">
+                                        <i class="bi bi-chat-dots text-success"></i>
+                                        <h5>Real-time Chat</h5>
+                                    </div>
+                                    <p>WebSocket chat com Socket.IO e notificações push.</p>
+                                    <code>flask module add chat</code>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 mb-4">
+                                <div class="module-card">
+                                    <div class="module-header">
+                                        <i class="bi bi-shield-check text-danger"></i>
+                                        <h5>Advanced Security</h5>
+                                    </div>
+                                    <p>2FA, rate limiting, audit logs e security headers.</p>
+                                    <code>flask module add security</code>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Scripts Úteis -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-terminal text-info"></i> Scripts Úteis</h2>
+                        
+                        <div class="estagiario-section">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-play-fill text-success"></i> Desenvolvimento</h4>
+                                    <pre><code># Setup completo
+python scripts/setup.py --dev
+
+# Gerar novo módulo
+python scripts/new_module.py users
+
+# Executar testes
+python scripts/test.py --coverage
+
+# Limpar cache e build
+python scripts/clean.py
+
+# Gerar dados fake para testes
+python scripts/seed_data.py --fake</code></pre>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4><i class="bi bi-cloud text-primary"></i> Deploy</h4>
+                                    <pre><code># Build de produção
+python scripts/build.py --prod
+
+# Deploy para staging
+python scripts/deploy.py --env staging
+
+# Deploy para produção
+python scripts/deploy.py --env production
+
+# Backup do banco
+python scripts/backup.py --database
+
+# Monitorar logs
+python scripts/monitor.py --tail</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="alert alert-success mt-4">
+                                <h5><i class="bi bi-magic"></i> Auto-Generator</h5>
+                                <p>O Seed inclui geradores automáticos de código que criam models, views, testes e documentação baseados em templates. Use <code>flask generate --help</code> para ver todas as opções.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Melhores Práticas -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-award text-warning"></i> Melhores Práticas Incluídas</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="best-practice-card">
+                                    <h4><i class="bi bi-code-square text-primary"></i> Código Limpo</h4>
+                                    <ul class="feature-list">
+                                        <li>Black + isort para formatação automática</li>
+                                        <li>Flake8 + pylint para linting</li>
+                                        <li>Type hints em todas as funções</li>
+                                        <li>Docstrings no padrão Google</li>
+                                        <li>Pre-commit hooks configurados</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="best-practice-card">
+                                    <h4><i class="bi bi-shield-check text-success"></i> Segurança</h4>
+                                    <ul class="feature-list">
+                                        <li>JWT com refresh tokens seguros</li>
+                                        <li>CORS configurado adequadamente</li>
+                                        <li>Rate limiting por endpoint</li>
+                                        <li>Sanitização de inputs</li>
+                                        <li>Security headers obrigatórios</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="best-practice-card">
+                                    <h4><i class="bi bi-speedometer2 text-warning"></i> Performance</h4>
+                                    <ul class="feature-list">
+                                        <li>Connection pooling otimizado</li>
+                                        <li>Caching com Redis integrado</li>
+                                        <li>Queries lazy loading</li>
+                                        <li>Compression gzip automática</li>
+                                        <li>Static files CDN ready</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="best-practice-card">
+                                    <h4><i class="bi bi-bug text-danger"></i> Observabilidade</h4>
+                                    <ul class="feature-list">
+                                        <li>Structured logging com JSON</li>
+                                        <li>Health checks automáticos</li>
+                                        <li>Métricas Prometheus ready</li>
+                                        <li>Error tracking com Sentry</li>
+                                        <li>APM integration disponível</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Projetos que Usam o Seed -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-tree text-success"></i> Projetos Baseados no Seed</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="project-showcase">
+                                    <h4><i class="bi bi-hdd-network text-info"></i> Cara Core Hub</h4>
+                                    <p>Sistema de gerenciamento centralizado baseado no Seed com extensões para orquestração de microserviços.</p>
+                                    <div class="showcase-stats">
+                                        <span class="stat">🚀 Deployment time: 2min</span>
+                                        <span class="stat">📊 +200% dev speed</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="project-showcase">
+                                    <h4><i class="bi bi-rocket text-primary"></i> Área 51 Enterprise</h4>
+                                    <p>Plataforma de autenticação empresarial que aproveitou toda a base de segurança do Seed.</p>
+                                    <div class="showcase-stats">
+                                        <span class="stat">🔒 Zero security issues</span>
+                                        <span class="stat">⚡ Setup em 10min</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info">
+                            <h5><i class="bi bi-graph-up"></i> Estatísticas de Uso</h5>
+                            <div class="row">
+                                <div class="col-md-3 text-center">
+                                    <div class="stat-number">85%</div>
+                                    <div class="stat-label">Redução tempo setup</div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="stat-number">12</div>
+                                    <div class="stat-label">Projetos ativos</div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="stat-number">95%</div>
+                                    <div class="stat-label">Test coverage médio</div>
+                                </div>
+                                <div class="col-md-3 text-center">
+                                    <div class="stat-number">0</div>
+                                    <div class="stat-label">Security incidents</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Contribuição -->
+                    <section class="text-center">
+                        <h2><i class="bi bi-heart text-danger"></i> Como Contribuir</h2>
+                        <p class="lead">O Seed está sempre evoluindo com novas features e melhorias!</p>
+                        
+                        <div class="alert alert-success">
+                            <h4><i class="bi bi-lightbulb"></i> Ideias para Contribuir</h4>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <strong>🧩 Novos Módulos</strong><br>
+                                    Criar módulos reutilizáveis para funcionalidades comuns
+                                </div>
+                                <div class="col-md-4">
+                                    <strong>📚 Documentação</strong><br>
+                                    Melhorar guias e exemplos de uso
+                                </div>
+                                <div class="col-md-4">
+                                    <strong>🧪 Testes</strong><br>
+                                    Aumentar cobertura e criar casos edge
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="guia-estagiario.html" class="btn-wiki me-2">
+                                <i class="bi bi-mortarboard"></i> Guia do Estagiário
+                            </a>
+                            <a href="contribuindo.html" class="btn-wiki me-2">
+                                <i class="bi bi-git"></i> Como Contribuir
+                            </a>
+                            <a href="https://github.com/cara-core/seed" class="btn-wiki" target="_blank" rel="noopener">
+                                <i class="bi bi-github"></i> Ver no GitHub
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wiki-footer">
+        <div class="container">
+            <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
+            <p>Documentação técnica do Cara Core Seed - Template Base para Novos Projetos</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Wiki JS -->
+    <script src="assets/js/wiki.js"></script>
+</body>
+</html>

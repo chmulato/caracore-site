@@ -1,0 +1,112 @@
+/* Estilos específicos para projeto Seed */
+
+/* Module Cards */
+.module-card {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.module-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    flex-direction: column;
+}
+
+.module-header i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.module-header h5 {
+    margin: 0;
+    color: var(--wiki-primary);
+}
+
+.module-card code {
+    background: #f8f9fa;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+/* Best Practice Cards */
+.best-practice-card {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    height: 100%;
+    margin-bottom: 20px;
+}
+
+.best-practice-card h4 {
+    color: var(--seed-color);
+    margin-bottom: 15px;
+}
+
+/* Project Showcase */
+.project-showcase {
+    background: white;
+    border: 1px solid #e9ecef;
+    border-left: 4px solid var(--seed-color);
+    border-radius: 0 8px 8px 0;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.project-showcase h4 {
+    margin-bottom: 15px;
+}
+
+.showcase-stats {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.showcase-stats .stat {
+    background: var(--seed-color);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--seed-color);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #6c757d;
+    font-weight: 500;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .showcase-stats {
+        justify-content: center;
+    }
+    
+    .module-card {
+        margin-bottom: 20px;
+    }
+}

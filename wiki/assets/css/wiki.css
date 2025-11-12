@@ -20,6 +20,50 @@
   --area51-color: #e74c3c;
   --python-color: #3498db;
   --wiki-text: #2c3e50;
+  
+  /* Variáveis de tema claro (padrão) */
+  --bg-color: #f5f7fa;
+  --bg-gradient-start: #f5f7fa;
+  --bg-gradient-end: #c3cfe2;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --card-text: #2c3e50;
+  --border-color: #dee2e6;
+  --hover-bg: rgba(0,0,0,0.05);
+  --code-bg: #f4f4f4;
+  --code-text: #333;
+}
+
+/* Tema Escuro */
+[data-theme="dark"] {
+  --primary-color: #4d94ff;
+  --secondary-color: #8a939b;
+  --success-color: #2ecc71;
+  --info-color: #3498db;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+  --light-color: #2c3e50;
+  --dark-color: #ecf0f1;
+  
+  /* Tema escuro */
+  --bg-color: #1a1a2e;
+  --bg-gradient-start: #1a1a2e;
+  --bg-gradient-end: #16213e;
+  --text-color: #ecf0f1;
+  --card-bg: #2c3e50;
+  --card-text: #ecf0f1;
+  --border-color: #34495e;
+  --hover-bg: rgba(255,255,255,0.1);
+  --code-bg: #34495e;
+  --code-text: #ecf0f1;
+  --box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  
+  /* Ajustes de cores dos projetos para tema escuro */
+  --hub-color: #5dade2;
+  --seed-color: #52c77a;
+  --reino-color: #a389d4;
+  --area51-color: #ec7063;
+  --python-color: #5dade2;
 }
 
 /* Reset e Base */
@@ -30,9 +74,10 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
-  color: var(--dark-color);
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  color: var(--text-color);
+  background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
   min-height: 100vh;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Navegaçéo */
@@ -58,7 +103,8 @@ body {
 
 /* Sidebar */
 .wiki-sidebar {
-  background: white;
+  background: var(--card-bg);
+  color: var(--card-text);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: 20px;
@@ -67,6 +113,7 @@ body {
   top: 80px;
   max-height: calc(100vh - 100px);
   overflow-y: auto;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .wiki-sidebar h4 {
@@ -88,7 +135,7 @@ body {
 
 .wiki-menu a {
   text-decoration: none;
-  color: var(--dark-color);
+  color: var(--card-text);
   padding: 8px 12px;
   border-radius: var(--border-radius);
   display: block;
@@ -114,11 +161,13 @@ body {
 
 /* Conteúdo Principal */
 .wiki-content {
-  background: white;
+  background: var(--card-bg);
+  color: var(--card-text);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
   padding: 30px;
   margin-bottom: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .wiki-header {
@@ -142,12 +191,13 @@ body {
 
 /* Cards de Projeto */
 .project-card {
-  background: white;
-  border: 1px solid #e9ecef;
+  background: var(--card-bg);
+  color: var(--card-text);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
   margin-bottom: 20px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .project-card:hover {
@@ -507,4 +557,50 @@ html {
 
 .project-header.github-tool {
   background: linear-gradient(135deg, #24292e 0%, #586069 100%);
+}
+
+/* ============================================ */
+/* BOTÃO DE ALTERNÂNCIA DE TEMA (Dark/Light)   */
+/* ============================================ */
+
+.theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+  padding: 0;
+  margin-left: 10px;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: rotate(20deg) scale(1.1);
+}
+
+.theme-toggle-btn:active {
+  transform: rotate(20deg) scale(0.95);
+}
+
+.theme-toggle-btn i {
+  transition: transform 0.3s ease;
+}
+
+/* Animação ao trocar de tema */
+[data-theme="dark"] .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }

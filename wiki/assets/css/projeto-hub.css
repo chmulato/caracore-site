@@ -245,3 +245,172 @@
         width: 100%;
     }
 }
+
+/* ===================================
+   TEMA DARK - CARA CORE HUB
+   =================================== */
+
+/* Flow Diagram - tema dark */
+[data-theme="dark"] .flow-step {
+    background: #f8f9fa;
+    border-color: #5dade2;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .flow-step h5 {
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .flow-step p {
+    color: #495057;
+}
+
+[data-theme="dark"] .flow-number {
+    background: #5dade2;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .flow-arrow {
+    color: #5dade2;
+}
+
+/* Architecture Layers - tema dark */
+[data-theme="dark"] .arch-layer {
+    background: #f8f9fa;
+    border-left-color: #5dade2;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .arch-layer h5 {
+    color: #5dade2;
+}
+
+[data-theme="dark"] .arch-layer p,
+[data-theme="dark"] .arch-layer ul,
+[data-theme="dark"] .arch-layer li {
+    color: #495057;
+}
+
+/* Feature Cards - tema dark */
+[data-theme="dark"] .feature-card {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .feature-header h4 {
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .feature-header i {
+    color: #5dade2;
+}
+
+[data-theme="dark"] .feature-card p,
+[data-theme="dark"] .feature-card ul,
+[data-theme="dark"] .feature-card li {
+    color: #495057;
+}
+
+/* Setup Cards - tema dark */
+[data-theme="dark"] .setup-card {
+    background: #f8f9fa;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .setup-card h4 {
+    color: #5dade2;
+}
+
+[data-theme="dark"] .setup-card p,
+[data-theme="dark"] .setup-card ul,
+[data-theme="dark"] .setup-card li {
+    color: #495057;
+}
+
+[data-theme="dark"] .setup-card code {
+    background: #e9ecef;
+    color: #2c3e50;
+}
+
+/* API Documentation - tema dark */
+[data-theme="dark"] .api-section h4 {
+    color: #5dade2;
+    border-bottom-color: #5dade2;
+}
+
+[data-theme="dark"] .api-endpoint {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .api-method.get {
+    background: #d4edda;
+    color: #155724;
+}
+
+[data-theme="dark"] .api-method.post {
+    background: #cce7ff;
+    color: #004085;
+}
+
+[data-theme="dark"] .api-method.put {
+    background: #fff3cd;
+    color: #856404;
+}
+
+[data-theme="dark"] .api-method.delete {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+[data-theme="dark"] .api-path {
+    color: #5dade2;
+}
+
+[data-theme="dark"] .api-description {
+    color: #6c757d;
+}
+
+/* Test Coverage - tema dark */
+[data-theme="dark"] .test-coverage {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .coverage-label {
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .coverage-bar {
+    background: #e9ecef;
+}
+
+[data-theme="dark"] .coverage-fill {
+    background: linear-gradient(90deg, #28a745, #20c997);
+    color: #ffffff;
+}
+
+/* Technology List - tema dark */
+[data-theme="dark"] .tech-list li {
+    border-bottom-color: #dee2e6;
+    color: #495057;
+}
+
+[data-theme="dark"] .tech-list strong {
+    color: #5dade2;
+}
+
+/* Alert boxes - tema dark */
+[data-theme="dark"] .alert-warning {
+    background: #fff3cd;
+    border-color: #ffc107;
+    color: #856404;
+}
+
+[data-theme="dark"] .alert-warning h5,
+[data-theme="dark"] .alert-warning p {
+    color: #856404;
+}

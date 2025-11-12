@@ -110,3 +110,88 @@
         margin-bottom: 20px;
     }
 }
+
+/* ===================================
+   TEMA DARK - CARA CORE SEED
+   =================================== */
+
+/* Module Cards - tema dark */
+[data-theme="dark"] .module-card {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .module-header h5 {
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .module-card p {
+    color: #495057;
+}
+
+[data-theme="dark"] .module-card code {
+    background: #e9ecef;
+    color: #2c3e50;
+}
+
+/* Best Practice Cards - tema dark */
+[data-theme="dark"] .best-practice-card {
+    background: #f8f9fa;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .best-practice-card h4 {
+    color: #52c77a;
+}
+
+[data-theme="dark"] .best-practice-card h5 {
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .best-practice-card p,
+[data-theme="dark"] .best-practice-card ul,
+[data-theme="dark"] .best-practice-card li {
+    color: #495057;
+}
+
+/* Project Showcase - tema dark */
+[data-theme="dark"] .project-showcase {
+    background: #f8f9fa;
+    border-color: #dee2e6;
+    border-left-color: #52c77a;
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .project-showcase h4 {
+    color: #2c3e50;
+}
+
+[data-theme="dark"] .project-showcase p {
+    color: #495057;
+}
+
+[data-theme="dark"] .showcase-stats .stat {
+    background: #52c77a;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .stat-number {
+    color: #52c77a;
+}
+
+[data-theme="dark"] .stat-label {
+    color: #6c757d;
+}
+
+/* Alert boxes - tema dark */
+[data-theme="dark"] .alert-warning {
+    background: #fff3cd;
+    border-color: #ffc107;
+    color: #856404;
+}
+
+[data-theme="dark"] .alert-warning h5,
+[data-theme="dark"] .alert-warning p {
+    color: #856404;
+}

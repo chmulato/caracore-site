@@ -337,3 +337,218 @@
         transform: rotate(90deg);
     }
 }
+
+/* ===================================
+   TEMA DARK - REINO OIDC
+   =================================== */
+
+[data-theme="dark"] .reino-intro {
+    background: linear-gradient(135deg, #8b6ec7, #5a4780);
+}
+
+[data-theme="dark"] .story-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-left-color: #a389d4;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .story-card p,
+[data-theme="dark"] .story-card ul,
+[data-theme="dark"] .story-card li {
+    color: #d0d0d0;
+}
+
+/* Character cards - tema dark */
+[data-theme="dark"] .character-card {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .character-body {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .character-body p,
+[data-theme="dark"] .character-body ul,
+[data-theme="dark"] .character-body li {
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .character-body h5,
+[data-theme="dark"] .character-body h6 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .character-skills .skill {
+    background: #a389d4;
+    color: #ffffff;
+}
+
+/* Journey timeline - tema dark */
+[data-theme="dark"] .journey-timeline::before {
+    background: #a389d4;
+}
+
+[data-theme="dark"] .step-number {
+    background: #a389d4;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .step-content {
+    background: #2c3e50;
+    color: #e0e0e0;
+    border-left-color: #a389d4;
+}
+
+[data-theme="dark"] .step-content h4,
+[data-theme="dark"] .step-content h5 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .step-content p {
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .code-example {
+    background: #1a252f;
+    color: #e0e0e0;
+}
+
+/* Tech mapping - tema dark */
+[data-theme="dark"] .tech-mapping {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .reino-term {
+    background: #a389d4;
+    color: #ffffff;
+}
+
+[data-theme="dark"] .arrow {
+    color: #a389d4;
+}
+
+[data-theme="dark"] .tech-term {
+    background: #5dade2;
+    color: #ffffff;
+}
+
+/* Scenario cards - tema dark */
+[data-theme="dark"] .scenario-card {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .scenario-body {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .scenario-body p,
+[data-theme="dark"] .scenario-body li {
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .scenario-topics li {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .scenario-time {
+    background: #1a252f;
+    color: #e0e0e0;
+}
+
+/* Resource cards - tema dark */
+[data-theme="dark"] .resource-card,
+[data-theme="dark"] .use-case-grid {
+    background: #2c3e50;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .resource-card h4,
+[data-theme="dark"] .resource-card h5 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .resource-card p,
+[data-theme="dark"] .resource-card ul,
+[data-theme="dark"] .resource-card li {
+    color: #d0d0d0;
+}
+
+[data-theme="dark"] .use-case-card {
+    background: #1a252f;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .use-case-card h5 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .use-case-card p {
+    color: #d0d0d0;
+}
+
+/* Lab section - tema dark */
+[data-theme="dark"] .lab-section {
+    background: linear-gradient(135deg, #5a4780, #3d2f5a);
+}
+
+[data-theme="dark"] .lab-section .alert {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .lab-section .alert h5,
+[data-theme="dark"] .lab-section .alert p {
+    color: #e0e0e0;
+}
+
+/* Reino navigation - tema dark */
+[data-theme="dark"] .reino-nav a {
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .reino-nav a:hover {
+    background-color: rgba(163, 137, 212, 0.2);
+}
+
+[data-theme="dark"] .reino-nav i {
+    color: #a389d4;
+}
+
+/* Alert boxes no tema dark */
+[data-theme="dark"] .alert-info {
+    background: rgba(13, 110, 253, 0.15);
+    border-color: rgba(13, 110, 253, 0.3);
+    color: #b8d4ff;
+}
+
+[data-theme="dark"] .alert-info h5,
+[data-theme="dark"] .alert-info p {
+    color: #b8d4ff;
+}
+
+[data-theme="dark"] .alert-success {
+    background: rgba(25, 135, 84, 0.15);
+    border-color: rgba(25, 135, 84, 0.3);
+    color: #a3cfbb;
+}
+
+[data-theme="dark"] .alert-success h5,
+[data-theme="dark"] .alert-success p {
+    color: #a3cfbb;
+}
+
+[data-theme="dark"] .alert-warning {
+    background: rgba(255, 193, 7, 0.15);
+    border-color: rgba(255, 193, 7, 0.3);
+    color: #ffda6a;
+}
+
+[data-theme="dark"] .alert-warning h5,
+[data-theme="dark"] .alert-warning p {
+    color: #ffda6a;
+}

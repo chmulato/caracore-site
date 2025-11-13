@@ -11,6 +11,84 @@
     <link rel="stylesheet" href="assets/css/article.css">
     <link rel="stylesheet" href="assets/css/highlight.css">
     <link rel="icon" href="assets/img/favicon.ico">
+    <style>
+      .chapter {
+        background: var(--card-bg);
+        border: 2px solid var(--border-color);
+        border-radius: 12px;
+        margin: 2rem 0;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.1);
+        position: relative;
+        transition: var(--transition);
+      }
+      .chapter:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+      }
+      .chapter::before {
+        content: '';
+        position: absolute;
+        top: -2px;
+        left: 20px;
+        right: 20px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        border-radius: 2px;
+      }
+      .chapter h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+      .chapter h3 {
+        color: var(--text-color);
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+      .chapter p {
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+      }
+      .chapter ul, .chapter ol {
+        margin: 1.5rem 0;
+        padding-left: 1.5rem;
+      }
+      .chapter li {
+        margin-bottom: 0.5rem;
+        line-height: 1.6;
+      }
+      .chapter table {
+        margin: 1.5rem 0;
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--background);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .chapter th, .chapter td {
+        padding: 0.75rem;
+        border: 1px solid var(--border-color);
+        text-align: left;
+      }
+      .chapter th {
+        background: var(--background-light);
+        font-weight: 600;
+      }
+      .chapter pre {
+        background: var(--code-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1.5rem 0;
+        overflow-x: auto;
+      }
+    </style>
     <meta property="og:title" content="A Revolução Silenciosa: Como uma Empresa Transformou sua Arquitetura de APIs em 90 Dias">
     <meta property="og:description" content="Da crise ao triunfo: a jornada real de migração de APIs que economizou centenas de milhares e criou uma cultura de inovação baseada em evidências.">
     <meta property="og:type" content="article">
@@ -54,6 +132,7 @@
 
         <hr>
 
+        <div class="chapter">
         <h2>Capítulo 1: O Gigante Adormecido</h2>
 
         <h3>A Herança do Passado</h3>
@@ -89,9 +168,9 @@
         </ul>
 
         <p>Mas Maria fez a pergunta que todo CEO faria: "Qual é o risco? E quanto tempo levaríamos para ver resultados?"</p>
+        </div>
 
-        <hr>
-
+        <div class="chapter">
         <h2>Capítulo 2: A Estratégia do Primeiro Passo</h2>
 
         <h3>O Plano Inteligente</h3>
@@ -119,9 +198,9 @@
         <p><strong>Docker + Python:</strong> "Automação completa. Se não pode ser reproduzido por um script, não é profissional."</p>
 
         <p><strong>Stoplight Prism:</strong> "Ambiente de testes que gera mocks automaticamente dos contratos. Testes realistas sem backends complexos."</p>
+        </div>
 
-        <hr>
-
+        <div class="chapter">
         <h2>Capítulo 3: Os Primeiros Obstáculos</h2>
 
         <h3>O Pesadelo dos Contratos Legacy</h3>
@@ -155,9 +234,9 @@
         </ul>
 
         <p>"Era como ter um laboratório completo da AWS rodando no nosso notebook", descreveu Roberto.</p>
+        </div>
 
-        <hr>
-
+        <div class="chapter">
         <h2>Capítulo 4: O Sprint 09 - O Ponto de Virada</h2>
 
         <h3>10 APIs em 14 Dias</h3>
@@ -232,9 +311,9 @@
         </ul>
 
         <p>"Era como descobrir que você podia ensaiar uma sinfonia completa antes de reservar a sala de concertos", analogizou Maria durante a apresentação dos resultados.</p>
+        </div>
 
-        <hr>
-
+        <div class="chapter">
         <h2>Capítulo 5: A Profissionalização da Documentação</h2>
 
         <h3>O Despertar Corporativo</h3>
@@ -266,9 +345,9 @@ RESULTADO: Ambiente AWS local totalmente funcional</code></pre>
           <li><strong>Equipes de negócio</strong> passaram a entender melhor o valor técnico</li>
           <li><strong>Auditoria corporativa</strong> aprovou os padrões documentais</li>
         </ul>
+        </div>
 
-        <hr>
-
+        <div class="chapter">
         <h2>Capítulo 6: A Revelação dos Resultados</h2>
 
         <h3>90 Dias Depois</h3>
@@ -311,9 +390,9 @@ RESULTADO: Ambiente AWS local totalmente funcional</code></pre>
         </ul>
 
         <p>"Não migramos apenas APIs", refletiu Roberto. "Evoluímos nossa forma de trabalhar."</p>
+        </div>
 
-        <hr>
-
+        <div class="chapter">
         <h2>Capítulo 7: O Futuro que se Desenha</h2>
 
         <h3>O Roadmap de Expansão</h3>
@@ -347,9 +426,9 @@ RESULTADO: Ambiente AWS local totalmente funcional</code></pre>
         <p><strong>Escalabilidade:</strong> Capacidade de crescer sem restrições de plataforma</p>
 
         <p><strong>Independência:</strong> Controle total sobre a arquitetura tecnológica</p>
+        </div>
 
-        <hr>
-
+        <div class="chapter">
         <h2>Epilogo: As Lições Aprendidas</h2>
 
         <h3>Para CEOs e Executivos</h3>
@@ -384,9 +463,9 @@ RESULTADO: Ambiente AWS local totalmente funcional</code></pre>
 
         <p><strong>3. Documentação Profissional Abre Portas</strong><br>
         Linguagem técnica adequada facilita comunicação com stakeholders de negócio.</p>
+        </div>
 
-        <hr>
-
+        <div class="chapter">
         <h2>Conclusão: A Transformação Continua</h2>
 
         <h3>O Legado do Sprint 09</h3>
@@ -416,6 +495,7 @@ RESULTADO: Ambiente AWS local totalmente funcional</code></pre>
         <p><em>"Começamos tentando migrar APIs e acabamos migrando nossa mentalidade. LocalStack nos ensinou que você pode testar qualquer coisa localmente antes de investir em produção. Essa lição vale para muito mais que tecnologia."</em></p>
 
         <p>A revolução silenciosa da TechFlow Solutions continua, uma API por vez, um script por vez, uma lição aprendida por vez.</p>
+        </div>
 
         <hr>
 

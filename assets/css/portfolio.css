@@ -3,6 +3,32 @@
  * Arquivo de estilos específicos da página de portfólio
  */
 
+/* Botões de navegação do portfolio */
+.nav-badge-hub {
+  background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
+  color: white;
+}
+
+.nav-badge-seed {
+  background: linear-gradient(120deg, #43cea2 0%, #185a9d 100%);
+  color: white;
+}
+
+.nav-badge-reino {
+  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  color: white;
+}
+
+.nav-badge-area51 {
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.nav-badge-python {
+  background: linear-gradient(120deg, #2E8B57 0%, #228B22 100%);
+  color: white;
+}
+
 /* Cards de projetos */
 .project-card {
   background: rgba(255,255,255,0.93);

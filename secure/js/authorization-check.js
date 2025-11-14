@@ -26,6 +26,7 @@ class AuthorizationChecker {
         this.config = {
             apiEndpoint: '/api/check-authorization',
             accessDeniedUrl: '/secure/access-denied.html',
+            firstAccessUrl: '/secure/first-access.html',
             maxRetries: 3,
             retryDelay: 1000 // 1 segundo
         };
@@ -176,6 +177,12 @@ class AuthorizationChecker {
      */
     handleAuthFailure(userEmail, provider, errorMessage = null) {
         console.log('AuthorizationChecker: Acesso negado para', userEmail);
+        
+        // Verificar se é um caso de primeiro acesso (usuário não registrado)
+        if (this.isFirstAccessCase(errorMessage)) {
+            this.redirectToFirstAccess(userEmail, provider);
+            return;
+        }
         
         // Construir URL de redirecionamento com parâmetros
         const redirectUrl = new URL(this.config.accessDeniedUrl, window.location.origin);
@@ -463,6 +470,85 @@ window.requireAuthorization = async function(options = {}) {
     const showLoading = options.showLoading !== false; // default true
     
     return await authChecker.checkAndRedirect(userEmail, provider, showLoading);
+};
+
+// Adicionar novos métodos à classe AuthorizationChecker
+AuthorizationChecker.prototype.isFirstAccessCase = function(errorMessage) {
+    if (!errorMessage) return false;
+    
+    // Padrões de erro que indicam usuário não registrado
+    const firstAccessPatterns = [
+        'user_not_found',
+        'user_not_registered',
+        'first_access_required',
+        'user not found',
+        'not registered',
+        'no record found'
+    ];
+    
+    const lowerMessage = errorMessage.toLowerCase();
+    return firstAccessPatterns.some(pattern => lowerMessage.includes(pattern));
+};
+
+AuthorizationChecker.prototype.redirectToFirstAccess = function(userEmail, provider) {
+    console.log('AuthorizationChecker: Redirecionando para primeiro acesso:', userEmail);
+    
+    // Construir URL de redirecionamento
+    const redirectUrl = new URL(this.config.firstAccessUrl, window.location.origin);
+    
+    if (userEmail) {
+        redirectUrl.searchParams.set('email', userEmail);
+    }
+    
+    if (provider) {
+        redirectUrl.searchParams.set('provider', provider);
+    }
+    
+    // Adicionar timestamp para evitar cache
+    redirectUrl.searchParams.set('t', Date.now().toString());
+    
+    // Log de auditoria
+    this.logFirstAccessRedirect(userEmail, provider);
+    
+    // Redirecionar
+    window.location.href = redirectUrl.toString();
+};
+
+AuthorizationChecker.prototype.logFirstAccessRedirect = function(userEmail, provider) {
+    const logData = {
+        timestamp: new Date().toISOString(),
+        event: 'first_access_redirect',
+        userEmail: userEmail,
+        provider: provider,
+        userAgent: navigator.userAgent,
+        referrer: document.referrer
+    };
+    
+    console.log('AuthorizationChecker: Log de primeiro acesso:', logData);
+    
+    // Enviar para analytics se disponível
+    if (window.gtag) {
+        window.gtag('event', 'first_access_redirect', {
+            'event_category': 'User Registration',
+            'event_label': userEmail,
+            'custom_parameter_1': provider
+        });
+    }
+    
+    // Armazenar no localStorage para debug
+    try {
+        const logs = JSON.parse(localStorage.getItem('auth_logs') || '[]');
+        logs.push(logData);
+        
+        // Manter apenas os últimos 10 logs
+        if (logs.length > 10) {
+            logs.splice(0, logs.length - 10);
+        }
+        
+        localStorage.setItem('auth_logs', JSON.stringify(logs));
+    } catch (error) {
+        console.warn('Erro ao salvar log no localStorage:', error);
+    }
 };
 
 // Export para uso como módulo

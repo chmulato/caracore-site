@@ -79,6 +79,28 @@
 
     <main id="mainContent" class="page-content">
       <div class="container">
+        <!-- Informações do Usuário Autorizado -->
+        <div id="userInfoCard" class="user-info-card d-none">
+          <div class="user-info-content">
+            <div class="user-avatar">
+              <svg class="icon" aria-hidden="true"><use href="#icon-check-circle"></use></svg>
+            </div>
+            <div class="user-details">
+              <h6 class="user-name" id="userName">Carregando...</h6>
+              <p class="user-email" id="userEmail">Verificando autorização...</p>
+              <span class="user-role badge badge-success" id="userRole">Usuário</span>
+            </div>
+            <div class="user-actions">
+              <button class="btn btn-sm btn-outline" id="refreshAuth" title="Atualizar autorização">
+                <svg class="icon-sm" aria-hidden="true"><use href="#icon-cloud-check"></use></svg>
+              </button>
+              <button class="btn btn-sm btn-danger" id="logoutUser" title="Fazer logout">
+                <svg class="icon-sm" aria-hidden="true"><use href="#icon-box-arrow-left"></use></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        
         <section class="hero">
           <div>
             <span class="badge badge-soft">
@@ -106,10 +128,6 @@
             <div class="session-meta">
               <span id="roleBadge" class="badge badge-pill badge-role d-none">Usuário autenticado</span>
               <span id="currentProvider" class="provider-note"></span>
-              <button class="btn btn-primary" type="button" id="logoutButton">
-                <svg aria-hidden="true"><use href="#icon-box-arrow-left"></use></svg>
-                Encerrar sessão
-              </button>
               <a href="../secure/admin-logs.html" class="btn btn-outline btn-sm">
                 <svg aria-hidden="true"><use href="#icon-journal"></use></svg>
                 Logs do sistema
@@ -187,22 +205,7 @@
         }
       }
       
-      // Configurar botão de logout com LogoutModal
-      const logoutBtn = document.getElementById('logoutButton');
-      if (logoutBtn && typeof LogoutModal !== 'undefined') {
-        logoutBtn.addEventListener('click', (e) => {
-          e.preventDefault();
-          LogoutModal.show(provider);
-        });
-        console.log('[Estrita] LogoutModal configurado');
-      } else if (logoutBtn) {
-        // Fallback se LogoutModal não estiver disponível
-        logoutBtn.addEventListener('click', async (e) => {
-          e.preventDefault();
-          await SessionManager.logout();
-        });
-        console.warn('[Estrita] LogoutModal não encontrado, usando logout padrão');
-      }
+      // Botão de logout removido - usando apenas o do card do usuário
       
       console.log('[Estrita] Página protegida carregada com sucesso');
     })();
@@ -242,25 +245,14 @@
           if (isAuthorized) {
             console.log('Restrita: Usuário autorizado, acesso liberado');
             
-            // Opcional: adicionar indicador visual de autorização
-            const statusDiv = document.createElement('div');
-            statusDiv.className = 'authorization-status';
-            statusDiv.innerHTML = `
-              <div style="position: fixed; top: 10px; right: 10px; background: #dcfce7; color: #166534; 
-                          padding: 8px 12px; border-radius: 6px; font-size: 12px; z-index: 1000;
-                          border: 1px solid #bbf7d0; animation: fadeIn 0.3s ease;">
-                <svg width="14" height="14" style="margin-right: 5px; vertical-align: text-top;">
-                  <use href="#icon-check-circle"></use>
-                </svg>
-                Acesso autorizado
-              </div>
-            `;
-            document.body.appendChild(statusDiv);
+            // Carregar e exibir informações do usuário
+            await loadUserInfo(userEmail, provider);
             
-            // Remover indicador após 3 segundos
-            setTimeout(() => {
-              statusDiv.remove();
-            }, 3000);
+            // Mostrar card de informações do usuário
+            const userInfoCard = document.getElementById('userInfoCard');
+            if (userInfoCard) {
+              userInfoCard.classList.remove('d-none');
+            }
           }
           // Se não autorizado, requireAuthorization já redirecionou
           
@@ -292,12 +284,272 @@
       }
     });
     
-    // CSS para animação do indicador
+    // Função para carregar informações do usuário
+    async function loadUserInfo(email, provider) {
+      try {
+        const userNameEl = document.getElementById('userName');
+        const userEmailEl = document.getElementById('userEmail');
+        const userRoleEl = document.getElementById('userRole');
+        
+        // Definir email imediatamente
+        if (userEmailEl) {
+          userEmailEl.textContent = email;
+        }
+        
+        // Tentar obter informações detalhadas do usuário
+        let userName = email.split('@')[0]; // Fallback para parte antes do @
+        let userRole = 'Usuário';
+        
+        // Verificar se temos informações do OIDC
+        try {
+          if (window.OIDCAuth) {
+            const user = await window.OIDCAuth.getUser();
+            if (user && user.profile) {
+              userName = user.profile.name || user.profile.given_name || userName;
+            }
+          }
+        } catch (oidcError) {
+          console.warn('Erro ao obter dados do OIDC:', oidcError);
+        }
+        
+        // Verificar role do localStorage
+        const storedRole = localStorage.getItem('auth_user_role');
+        if (storedRole) {
+          switch (storedRole.toLowerCase()) {
+            case 'super_admin':
+              userRole = 'Super Admin';
+              break;
+            case 'admin':
+              userRole = 'Administrador';
+              break;
+            case 'user':
+            default:
+              userRole = 'Usuário';
+              break;
+          }
+        }
+        
+        // Atualizar elementos
+        if (userNameEl) {
+          userNameEl.textContent = userName;
+        }
+        
+        if (userRoleEl) {
+          userRoleEl.textContent = userRole;
+          // Ajustar classe do badge baseado no role
+          userRoleEl.className = 'user-role badge ' + 
+            (storedRole === 'super_admin' ? 'badge-warning' : 
+             storedRole === 'admin' ? 'badge-info' : 'badge-success');
+        }
+        
+        console.log('Informações do usuário carregadas:', { userName, email, userRole });
+        
+      } catch (error) {
+        console.error('Erro ao carregar informações do usuário:', error);
+      }
+    }
+    
+    // Event listeners para os botões do card do usuário
+    document.addEventListener('DOMContentLoaded', function() {
+      const refreshAuthBtn = document.getElementById('refreshAuth');
+      const logoutUserBtn = document.getElementById('logoutUser');
+      
+      if (refreshAuthBtn) {
+        refreshAuthBtn.addEventListener('click', async function() {
+          try {
+            const userEmail = localStorage.getItem('auth_user_email');
+            const provider = localStorage.getItem('auth_provider') || 'google';
+            
+            if (userEmail && window.authChecker) {
+              console.log('Atualizando autorização...');
+              refreshAuthBtn.disabled = true;
+              refreshAuthBtn.innerHTML = '<div class="spinner-border spinner-border-sm"></div>';
+              
+              // Forçar nova verificação (ignorar cache)
+              const result = await window.authChecker.checkAuthorization(userEmail, provider, true);
+              
+              if (result.authorized) {
+                await loadUserInfo(userEmail, provider);
+                console.log('Autorização atualizada com sucesso');
+              } else {
+                console.warn('Autorização expirou, redirecionando...');
+                window.location.reload();
+              }
+            }
+          } catch (error) {
+            console.error('Erro ao atualizar autorização:', error);
+          } finally {
+            if (refreshAuthBtn) {
+              refreshAuthBtn.disabled = false;
+              refreshAuthBtn.innerHTML = '<svg class="icon-sm" aria-hidden="true"><use href="#icon-cloud-check"></use></svg>';
+            }
+          }
+        });
+      }
+      
+      if (logoutUserBtn) {
+        logoutUserBtn.addEventListener('click', async function() {
+          try {
+            console.log('Fazendo logout...');
+            
+            // Limpar localStorage
+            localStorage.removeItem('auth_user_email');
+            localStorage.removeItem('auth_user_role');
+            localStorage.removeItem('auth_provider');
+            localStorage.removeItem('user_email');
+            
+            // Tentar logout via OIDC se disponível
+            if (window.OIDCAuth && typeof window.OIDCAuth.logout === 'function') {
+              await window.OIDCAuth.logout();
+            } else {
+              // Fallback: redirecionar para página inicial
+              window.location.href = '/index.html';
+            }
+          } catch (error) {
+            console.error('Erro no logout:', error);
+            // Fallback em caso de erro
+            window.location.href = '/index.html';
+          }
+        });
+      }
+    });
+    
+    // CSS para animação do indicador e card do usuário
     const authStyle = document.createElement('style');
     authStyle.textContent = `
       @keyframes fadeIn {
         from { opacity: 0; transform: translateY(-10px); }
         to { opacity: 1; transform: translateY(0); }
+      }
+      
+      .user-info-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 16px;
+        margin-bottom: 2rem;
+        padding: 0;
+        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        animation: slideInFromTop 0.6s ease-out;
+      }
+      
+      .user-info-content {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.5rem;
+        color: white;
+      }
+      
+      .user-avatar {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        backdrop-filter: blur(10px);
+      }
+      
+      .user-avatar .icon {
+        width: 24px;
+        height: 24px;
+        color: #34d399;
+      }
+      
+      .user-details {
+        flex: 1;
+        min-width: 0;
+      }
+      
+      .user-name {
+        margin: 0 0 0.25rem 0;
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: white;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+      
+      .user-email {
+        margin: 0 0 0.5rem 0;
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.8);
+        word-break: break-word;
+      }
+      
+      .user-role {
+        background: rgba(52, 211, 153, 0.2);
+        color: #34d399;
+        border: 1px solid rgba(52, 211, 153, 0.3);
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 6px;
+        font-weight: 500;
+      }
+      
+      .user-actions {
+        display: flex;
+        gap: 0.5rem;
+      }
+      
+      .user-actions .btn {
+        padding: 0.5rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.2s ease;
+      }
+      
+      .user-actions .btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
+      }
+      
+      .user-actions .btn-danger {
+        background: rgba(239, 68, 68, 0.2);
+        border-color: rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+      }
+      
+      .user-actions .btn-danger:hover {
+        background: rgba(239, 68, 68, 0.3);
+      }
+      
+      @keyframes slideInFromTop {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .user-info-content {
+          padding: 1rem;
+          gap: 0.75rem;
+        }
+        
+        .user-avatar {
+          width: 40px;
+          height: 40px;
+        }
+        
+        .user-name {
+          font-size: 1rem;
+        }
+        
+        .user-email {
+          font-size: 0.8rem;
+        }
+        
+        .user-actions {
+          flex-direction: column;
+          gap: 0.25rem;
+        }
       }
     `;
     document.head.appendChild(authStyle);

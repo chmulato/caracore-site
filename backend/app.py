@@ -48,7 +48,7 @@ from flask import Flask, jsonify, make_response, request
 
 GOOGLE_TOKEN_ENDPOINT = "https://oauth2.googleapis.com/token"
 AZURE_TOKEN_ENDPOINT_TEMPLATE = "https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
-DEFAULT_AZURE_SCOPE = "openid profile email"
+DEFAULT_AZURE_SCOPE = "openid profile email offline_access"
 
 
 logger = logging.getLogger("cara-core-backend")
@@ -698,11 +698,12 @@ def create_app() -> Flask:
 
         if g_resp.status_code == 200:
             logger.info(
-                "[Step5] Troca concluida com sucesso (scope=%s, expires_in=%s, id_token=%s, access_token=%s)",
+                "[Step5] Troca concluida com sucesso (scope=%s, expires_in=%s, id_token=%s, access_token=%s, refresh_token=%s)",
                 body.get("scope"),
                 body.get("expires_in"),
                 "presente" if body.get("id_token") else "ausente",
                 "presente" if body.get("access_token") else "ausente",
+                "presente" if body.get("refresh_token") else "ausente",
             )
             if body.get("id_token"):
                 try:
@@ -880,11 +881,12 @@ def create_app() -> Flask:
 
         if ms_resp.status_code == 200:
             logger.info(
-                "Troca com Microsoft concluida (scope=%s, expires_in=%s, id_token=%s, access_token=%s)",
+                "Troca com Microsoft concluida (scope=%s, expires_in=%s, id_token=%s, access_token=%s, refresh_token=%s)",
                 body.get("scope"),
                 body.get("expires_in"),
                 "presente" if body.get("id_token") else "ausente",
                 "presente" if body.get("access_token") else "ausente",
+                "presente" if body.get("refresh_token") else "ausente",
             )
             if body.get("id_token"):
                 try:

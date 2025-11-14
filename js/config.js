@@ -12,7 +12,7 @@ const OIDC_CONFIGS = {
     redirectUri: window.location.origin + "/secure/callback.html",
     postLogoutRedirectUri: window.location.origin + "/secure/logout.html",
     cacheLocation: "sessionStorage",
-    scopes: ["openid", "profile", "email"]
+    scopes: ["openid", "profile", "email", "offline_access"]  // offline_access habilita refresh_token
   },
   google: {
     clientId: "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com",
@@ -21,6 +21,8 @@ const OIDC_CONFIGS = {
     postLogoutRedirectUri: window.location.origin + "/secure/logout.html",
     cacheLocation: "sessionStorage",
     scopes: ["openid", "profile", "email"],
+    accessType: "offline",  // Habilita refresh_token
+    prompt: "consent",     // Força consentimento para refresh_token
     // Usando endpoint direto no backend, já que estamos no domínio personalizado com CORS configurado
     tokenEndpoint: "https://caracore-backend-docker.azurewebsites.net/oauth/google/token"
   }

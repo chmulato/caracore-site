@@ -1,0 +1,140 @@
+/**
+ * Access Pending Page Styles
+ * Estilos para a página de status de solicitação de acesso
+ * 
+ * @author CaraCore Team
+ * @version 1.0
+ * @date 2025-11-13
+ */
+
+.pending-container {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.pending-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+.card-header-success {
+    background: linear-gradient(120deg, #28a745 0%, #20c997 100%);
+    color: white;
+    padding: 3rem 2rem;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    padding-left: 3rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #dee2e6;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.6rem;
+    top: 0.3rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #28a745;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px #dee2e6;
+}
+
+.timeline-item.completed::before {
+    background: #28a745;
+}
+
+.timeline-item.current::before {
+    background: #ffc107;
+    animation: pulse 1.5s infinite;
+}
+
+.timeline-item.pending::before {
+    background: #6c757d;
+}
+
+.timeline-item.failed::before {
+    background: #fd7e14;
+    box-shadow: 0 0 0 3px #fff3cd;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .pending-container {
+        padding: 1rem 0.5rem;
+    }
+    
+    .pending-card {
+        max-width: 100%;
+        margin: 1rem;
+    }
+    
+    .card-header-success {
+        padding: 2rem 1.5rem;
+    }
+    
+    .success-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+    
+    .timeline {
+        padding-left: 2.5rem;
+    }
+    
+    .timeline::before {
+        left: 0.75rem;
+    }
+    
+    .timeline-item::before {
+        left: -1.35rem;
+        width: 0.8rem;
+        height: 0.8rem;
+    }
+}

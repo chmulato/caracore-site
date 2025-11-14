@@ -30,12 +30,39 @@ document.addEventListener('DOMContentLoaded', async function() {
     const isAuthenticated = await window.OIDCAuth.isAuthenticated();
 
     if (isAuthenticated) {
-      window.AuthUIFeedback.loginSuccess('Autenticado com sucesso!');
-      await showUserInfo();
-      window.AuthUIFeedback.updateState('success');
-      setTimeout(() => {
-        window.location.href = '/secure/restrita.html';
-      }, 2000);
+      // Usuário autenticado - verificar autorização
+      const user = await window.OIDCAuth.getUser();
+      const userEmail = user?.profile?.email;
+      const provider = user?.provider;
+
+      if (!userEmail) {
+        throw new Error('Email do usuário não encontrado');
+      }
+
+      window.AuthUIFeedback.loginSuccess('Verificando permissões...');
+      
+      // Verificar se tem autorização para acessar o sistema
+      if (window.authChecker) {
+        const isAuthorized = await window.authChecker.checkAndRedirect(userEmail, provider, false);
+        
+        if (isAuthorized) {
+          // Autorizado - prosseguir para área restrita
+          await showUserInfo();
+          window.AuthUIFeedback.updateState('success');
+          setTimeout(() => {
+            window.location.href = '/secure/restrita.html';
+          }, 2000);
+        }
+        // Se não autorizado, checkAndRedirect já fez o redirecionamento
+      } else {
+        // Fallback se authChecker não estiver disponível
+        console.warn('AuthChecker não disponível, redirecionando diretamente');
+        await showUserInfo();
+        window.AuthUIFeedback.updateState('success');
+        setTimeout(() => {
+          window.location.href = '/secure/restrita.html';
+        }, 2000);
+      }
     } else {
       window.AuthUIFeedback.updateState('idle');
     }

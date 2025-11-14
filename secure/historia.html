@@ -6,50 +6,8 @@
   <title>História da Área 51 – Cara Core</title>
   <link rel="icon" href="/images/favicon.ico" />
   <link rel="stylesheet" href="/secure/css/style.css" />
-  <style>
-    :root {
-      --brand-dark: #0f172a;
-      --brand-light: #f8fafc;
-      --brand-primary: #2563eb;
-      --brand-secondary: #4f46e5;
-      --brand-accent: #38bdf8;
-      --brand-soft: rgba(37, 99, 235, 0.12);
-      --text-dark: #1e293b;
-      --text-muted: #475569;
-    }
-    *, *::before, *::after { box-sizing: border-box; }
-    html, body { margin:0; padding:0; font-family:"Inter", "Segoe UI", system-ui, -apple-system, sans-serif; background:linear-gradient(130deg,#ede9fe 0%,#e0f2fe 40%,#f8fafc 100%); color:var(--text-dark); }
-    a { color:inherit; text-decoration:none; }
-    body { min-height:100vh; display:flex; flex-direction:column; }
-  header { -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); background:rgba(15,23,42,0.6); color:#fff; position:sticky; top:0; z-index:40; box-shadow:0 16px 45px rgba(15,23,42,0.25); }
-    .header-inner { max-width:960px; margin:0 auto; padding:1rem 1.5rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
-    .brand { display:flex; align-items:center; gap:0.75rem; font-weight:600; letter-spacing:0.02em; }
-    .brand svg { width:1.6rem; height:1.6rem; color:var(--brand-accent); }
-    .back-link { padding:0.45rem 0.9rem; border-radius:999px; background:rgba(255,255,255,0.15); color:#f8fafc; font-weight:500; display:flex; align-items:center; gap:0.4rem; transition:background 0.2s ease; }
-    .back-link:hover, .back-link:focus-visible { background:rgba(56,189,248,0.25); }
-    main { flex:1; }
-    .hero { max-width:960px; margin:0 auto; padding:4.5rem 1.6rem 2.5rem; text-align:center; }
-    .hero h1 { font-size:clamp(2.4rem, 4vw, 3.2rem); margin-bottom:1rem; line-height:1.2; }
-    .hero p { font-size:1.15rem; color:var(--text-muted); max-width:740px; margin:0 auto 1.2rem; line-height:1.8; }
-    .meta { display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap; color:#0ea5e9; font-weight:600; }
-    .sections { max-width:960px; margin:0 auto 4rem; padding:0 1.6rem 3rem; display:grid; gap:2.8rem; }
-    section { background:rgba(255,255,255,0.92); border-radius:28px; padding:2.8rem 2.4rem; box-shadow:0 32px 70px rgba(15,23,42,0.12); position:relative; overflow:hidden; }
-    section::before { content:""; position:absolute; top:-40%; right:-20%; width:360px; height:360px; background:radial-gradient(circle at center, rgba(37,99,235,0.18), rgba(37,99,235,0)); transform:rotate(18deg); }
-    section h2 { margin-top:0; margin-bottom:1rem; font-size:1.9rem; color:var(--brand-primary); position:relative; }
-    section p { position:relative; color:var(--text-muted); font-size:1.02rem; line-height:1.9; margin-bottom:1.2rem; }
-    section strong { color:var(--text-dark); }
-    blockquote { position:relative; margin:2rem auto; padding:1.6rem 2rem; background:rgba(15,23,42,0.08); border-left:6px solid var(--brand-primary); border-radius:18px; font-style:italic; color:var(--text-dark); }
-    blockquote::before { content:"\201C"; font-size:3rem; color:rgba(37,99,235,0.35); position:absolute; top:-18px; left:16px; }
-    .callout { background:var(--brand-soft); border-radius:22px; padding:1.8rem 2rem; box-shadow:0 26px 56px rgba(37,99,235,0.15); color:var(--text-dark); margin-top:2.2rem; position:relative; }
-    .callout h3 { margin-top:0; font-size:1.4rem; color:var(--brand-primary); }
-    footer { background:rgba(15,23,42,0.9); color:#e2e8f0; padding:2.4rem 1.6rem; }
-    footer .footer-inner { max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:1rem; }
-    footer a { color:#bae6fd; }
-    @media (max-width:720px) {
-      section { padding:2.3rem 1.7rem; }
-      .hero { padding-top:3.2rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/historia.css" />
+
 </head>
 <body>
   <header>
@@ -66,6 +24,38 @@
   </header>
 
   <main>
+    <!-- Informações do Usuário Autorizado -->
+    <div id="userInfoCard" class="user-info-card d-none">
+      <div class="user-info-content">
+        <div class="user-avatar">
+          <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="user-details">
+          <h6 class="user-name" id="userName">Carregando...</h6>
+          <p class="user-email" id="userEmail">Verificando autorização...</p>
+          <span class="user-role badge badge-success" id="userRole">Usuário</span>
+        </div>
+        <div class="user-actions">
+          <button class="btn btn-sm btn-outline" id="refreshAuth" title="Atualizar autorização">
+            <svg class="icon-sm" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M7.5 19a4.5 4.5 0 0 1-.6-9 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 16.5 19Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M10.5 13.5 12.5 15.5 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <button class="btn btn-sm btn-danger" id="logoutUser" title="Fazer logout">
+            <svg class="icon-sm" aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 12H9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M4 5h4v14H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <div class="hero">
       <h1>Como construímos a Área 51: uma história sobre confiança digital humana</h1>
       <p>
@@ -109,7 +99,7 @@
         <p>
           A etapa seguinte parecia montar um quebra-cabeça com peças emprestadas. Sabíamos que, nos bastidores, teríamos integrações com gigantes como Google e Microsoft. Mas como explicar isso para quem só quer clicar e continuar a navegar? Criamos uma metáfora simples: a Área 51 seria como um anfitrião que reconhece o visitante porque já o viu entrar pelo portão do Google ou porque eles se cumprimentaram numa festa da Microsoft. Assim o visitante não precisa decorar novas senhas, e o anfitrião tem certeza de quem está ali.
         </p>
-        <img src="img/historia_02.png" alt="Ilustração do processo de construção da Área 51" style="width: 100%; border-radius: 18px; margin-top: 1.5rem;">
+        <img src="img/historia_02.png" alt="Ilustração do processo de construção da Área 51" class="historia-image">
         <p>
           Essa metáfora nos ajudou a definir o tom de voz: menos “verificação de identidade” e mais “boa vindas novamente”. Decidimos que cada botão teria textos calorosos, que toda mensagem de erro explicaria o que fazer em palavras gentis, e que nenhum termo técnico apareceria sem tradução humana ao lado. O planejamento do fluxo se tornou um roteiro de atendimento: “você vai clicar aqui, ver uma janelinha familiar, confirmar que é você e pronto”.
         </p>

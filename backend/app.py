@@ -108,6 +108,23 @@ except ImportError:
     AUTHORIZATION_ENABLED = False
     logger.warning("authorization module não disponível - controle de acesso desabilitado")
 
+# Import authorization_middleware para decorators de proteção (Fase 6)
+try:
+    from authorization_middleware import (
+        require_authorization, require_admin, require_super_admin,
+        is_user_authorized as check_user_authorized, get_current_user
+    )
+    AUTHORIZATION_MIDDLEWARE_ENABLED = True
+    logger.info("Authorization middleware carregado (Fase 6) - proteção robusta de endpoints habilitada")
+except ImportError:
+    AUTHORIZATION_MIDDLEWARE_ENABLED = False
+    logger.warning("authorization_middleware não disponível - usando fallback")
+    # Mantém compatibilidade com decorator antigo
+    def require_authorization(role='user'):
+        def decorator(f):
+            return f
+        return decorator
+
 
 class HTTPRequestError(RuntimeError):
     """Raised when the token exchange HTTP call fails."""
@@ -1603,54 +1620,11 @@ def create_app() -> Flask:
         return add_cors(resp)
 
     # ============================================================================
-    # ENDPOINTS DE AUTORIZAÇÃO - FASE 4
+    # ENDPOINTS DE AUTORIZAÇÃO - FASE 4/6
     # ============================================================================
     
-    def require_admin(f):
-        """Decorator para exigir permissões de admin"""
-        def wrapper(*args, **kwargs):
-            if not AUTHORIZATION_ENABLED:
-                resp = make_response(jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503)
-                return add_cors(resp)
-            
-            # Verificar header Authorization
-            auth_header = request.headers.get('Authorization', '')
-            if not auth_header.startswith('Bearer '):
-                resp = make_response(jsonify({"error": "unauthorized", "error_description": "Token de autorização necessário"}), 401)
-                return add_cors(resp)
-            
-            token = auth_header[7:]  # Remove 'Bearer '
-            
-            # Verificar se é um token super admin válido
-            if not jwt_secret_key:
-                logger.error("Variável JWT_SECRET_KEY não configurada")
-                resp = make_response(jsonify({"error": "server_error", "error_description": "Configuração do servidor incompleta"}), 500)
-                return add_cors(resp)
-            
-            try:
-                payload = jwt.decode(token, jwt_secret_key, algorithms=['HS256'])
-                
-                # Verificar se é super admin ou admin
-                user_role = payload.get('role')
-                if user_role not in ['super_admin', 'admin']:
-                    resp = make_response(jsonify({"error": "forbidden", "error_description": "Permissões insuficientes"}), 403)
-                    return add_cors(resp)
-                
-                # Adicionar informações do usuário ao request para uso na função
-                request.admin_user = {
-                    'email': payload.get('email'),
-                    'role': user_role
-                }
-                
-                return f(*args, **kwargs)
-                
-            except InvalidTokenError as e:
-                logger.error(f"Erro ao validar token: {e}")
-                resp = make_response(jsonify({"error": "unauthorized", "error_description": "Token inválido"}), 401)
-                return add_cors(resp)
-                
-        wrapper.__name__ = f.__name__
-        return wrapper
+    # Decorator require_admin agora é importado do authorization_middleware (Fase 6)
+    # Se não disponível, usa fallback definido nos imports
     
     @app.route("/api/check-authorization", methods=["OPTIONS"])
     def authorization_check_preflight():
@@ -1699,7 +1673,7 @@ def create_app() -> Flask:
     
     @app.route("/api/admin/users", methods=["GET"])
     @rate_limit("/api/admin/users")
-    @require_admin
+    @require_admin()
     def get_admin_users():
         """Listar usuários autorizados e solicitações pendentes (admin only)"""
         try:
@@ -1741,7 +1715,7 @@ def create_app() -> Flask:
     
     @app.route("/api/admin/users", methods=["POST"])
     @rate_limit("/api/admin/users")
-    @require_admin
+    @require_admin()
     def add_admin_user():
         """Adicionar novo usuário autorizado (admin only)"""
         try:
@@ -1790,7 +1764,7 @@ def create_app() -> Flask:
     
     @app.route("/api/admin/users/<email>", methods=["DELETE"])
     @rate_limit("/api/admin/users")
-    @require_admin
+    @require_admin()
     def remove_admin_user(email):
         """Remover usuário autorizado (admin only)"""
         try:
@@ -1829,7 +1803,7 @@ def create_app() -> Flask:
     
     @app.route("/api/admin/access-requests", methods=["GET"])
     @rate_limit("/api/admin/access-requests")
-    @require_admin
+    @require_admin()
     def get_access_requests():
         """Listar todas as solicitações de acesso (admin only)"""
         try:
@@ -1860,7 +1834,7 @@ def create_app() -> Flask:
     
     @app.route("/api/admin/access-requests/<request_id>/approve", methods=["POST"])
     @rate_limit("/api/admin/access-requests")
-    @require_admin
+    @require_admin()
     def approve_access_request(request_id):
         """Aprovar solicitação de acesso (admin only)"""
         try:
@@ -1943,7 +1917,7 @@ def create_app() -> Flask:
     
     @app.route("/api/admin/access-requests/<request_id>/reject", methods=["POST"])
     @rate_limit("/api/admin/access-requests")
-    @require_admin
+    @require_admin()
     def reject_access_request(request_id):
         """Rejeitar solicitação de acesso (admin only)"""
         try:

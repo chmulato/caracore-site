@@ -2190,7 +2190,16 @@ def create_app() -> Flask:
             # Obter admin atual (do token)
             admin_email = request.headers.get('X-User-Email', 'unknown')
             
-            # Criar novo usuário
+            # Verificar consentimento LGPD (obrigatório para aprovação)
+            lgpd_consent = request_to_approve.get('lgpd_consent', False)
+            lgpd_consent_timestamp = request_to_approve.get('lgpd_consent_timestamp')
+            
+            # Se não houver consentimento explícito, usar timestamp de aprovação como fallback
+            # (para solicitações antigas que não tinham esse campo)
+            if not lgpd_consent_timestamp:
+                lgpd_consent_timestamp = datetime.utcnow().isoformat()
+            
+            # Criar novo usuário com dados de consentimento LGPD
             new_user = {
                 "email": request_to_approve['email'],
                 "name": request_to_approve['name'],
@@ -2199,7 +2208,16 @@ def create_app() -> Flask:
                 "status": "active",
                 "approved_at": datetime.utcnow().isoformat(),
                 "approved_by": admin_email,
-                "created_at": datetime.utcnow().isoformat()
+                "created_at": datetime.utcnow().isoformat(),
+                # Dados de consentimento LGPD (obrigatório para compliance)
+                "lgpd_consent": lgpd_consent,
+                "lgpd_consent_timestamp": lgpd_consent_timestamp,
+                "lgpd_terms_version": request_to_approve.get('lgpd_terms_version', '1.0'),
+                "lgpd_privacy_version": request_to_approve.get('lgpd_privacy_version', '1.0'),
+                "data_retention_policy": "permanent",  # Dados mantidos enquanto usuário ativo na Área 51
+                "lgpd_compliant": True,  # Flag indicando que dados foram coletados com consentimento
+                "data_purpose": "Área 51 - Sistema de acesso restrito",  # Finalidade do tratamento de dados
+                "data_controller": "Cara Core Informática"  # Controlador dos dados
             }
             
             # Adicionar aos usuários

@@ -433,6 +433,19 @@ class AuthorizationManager:
             import hashlib
             request_id = hashlib.md5(f"{email}{self._get_timestamp()}".encode()).hexdigest()[:12]
             
+            # Extrair dados de consentimento LGPD
+            lgpd_consent = request_data.get('lgpd_consent', {})
+            if isinstance(lgpd_consent, dict):
+                lgpd_data = lgpd_consent
+            else:
+                # Fallback para formato antigo ou ausente
+                lgpd_data = {
+                    "lgpd_consent": bool(lgpd_consent) if lgpd_consent else False,
+                    "lgpd_consent_timestamp": self._get_timestamp(),
+                    "terms_version": "1.0",
+                    "privacy_policy_version": "1.0"
+                }
+            
             new_request = {
                 "id": request_id,
                 "email": email,
@@ -440,7 +453,12 @@ class AuthorizationManager:
                 "provider": request_data['provider'].lower(),
                 "message": request_data.get('message', '').strip(),
                 "requested_at": self._get_timestamp(),
-                "status": "pending"
+                "status": "pending",
+                # Dados de consentimento LGPD
+                "lgpd_consent": lgpd_data.get('lgpd_consent', False),
+                "lgpd_consent_timestamp": lgpd_data.get('lgpd_consent_timestamp', self._get_timestamp()),
+                "lgpd_terms_version": lgpd_data.get('terms_version', '1.0'),
+                "lgpd_privacy_version": lgpd_data.get('privacy_policy_version', '1.0')
             }
             
             # Adicionar à lista

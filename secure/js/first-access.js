@@ -511,6 +511,18 @@ class FirstAccessManager {
         if (phone) message += `\nTelefone: ${phone}`;
         message += `\nSolicitado em: ${new Date().toLocaleString('pt-BR')}`;
         
+        // Verificar consentimento LGPD
+        const agreeTerms = document.getElementById('agreeTerms');
+        const lgpdConsent = agreeTerms ? agreeTerms.checked : false;
+        
+        // Dados de consentimento LGPD
+        const lgpdConsentData = {
+            lgpd_consent: lgpdConsent,
+            lgpd_consent_timestamp: new Date().toISOString(),
+            terms_version: '1.0',
+            privacy_policy_version: '1.0'
+        };
+        
         return {
             // Campos obrigatórios do backend
             email: email,
@@ -519,6 +531,8 @@ class FirstAccessManager {
             name: fullName,
             provider: this.userProvider || 'desconhecido',
             message: message,
+            // Consentimento LGPD (obrigatório para compliance)
+            lgpd_consent: lgpdConsentData,
             // Campos adicionais para uso interno
             _internal: {
                 firstName,

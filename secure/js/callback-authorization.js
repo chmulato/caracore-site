@@ -4,23 +4,46 @@
  */
 
 // Função para aguardar OAuth completar
-function waitForOAuthCompletion(maxWaitTime = 10000, checkInterval = 200) {
+function waitForOAuthCompletion(maxWaitTime = 20000, checkInterval = 200) {
   return new Promise((resolve, reject) => {
     const startTime = Date.now();
+    let checkCount = 0;
     
     const checkAuth = () => {
+      checkCount++;
       const userEmail = localStorage.getItem('user_email') || 
                        localStorage.getItem('auth_user_email');
       const accessToken = localStorage.getItem('auth_access_token');
+      const userInfo = localStorage.getItem('auth_user_info');
+      
+      // Log a cada 5 verificações (1 segundo)
+      if (checkCount % 5 === 0) {
+        console.log(`⏳ Aguardando OAuth... (${Math.floor((Date.now() - startTime) / 1000)}s)`, {
+          hasEmail: !!userEmail,
+          hasToken: !!accessToken,
+          hasUserInfo: !!userInfo
+        });
+      }
       
       if (userEmail && accessToken) {
-        console.log('✅ OAuth completado - dados encontrados:', { userEmail, hasToken: !!accessToken });
+        console.log('✅ OAuth completado - dados encontrados:', { 
+          userEmail, 
+          hasToken: !!accessToken,
+          hasUserInfo: !!userInfo,
+          checks: checkCount,
+          elapsed: Math.floor((Date.now() - startTime) / 1000) + 's'
+        });
         resolve({ userEmail, accessToken });
         return;
       }
       
       if (Date.now() - startTime > maxWaitTime) {
-        console.warn('⏱️ Timeout aguardando OAuth completar');
+        console.warn('⏱️ Timeout aguardando OAuth completar', {
+          maxWaitTime: maxWaitTime / 1000 + 's',
+          checks: checkCount,
+          hasEmail: !!userEmail,
+          hasToken: !!accessToken
+        });
         reject(new Error('Timeout aguardando OAuth completar'));
         return;
       }

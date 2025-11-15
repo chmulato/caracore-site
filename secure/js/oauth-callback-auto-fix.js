@@ -219,6 +219,12 @@
                     // Aguardar um pouco para garantir que OIDCAuth está pronto
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     
+                    // Restaurar estado OAuth ANTES de inicializar (se necessário)
+                    if (params.state) {
+                        console.log('🔧 Restaurando estado OAuth antes de processar callback...');
+                        restoreOAuthState(params.state, provider);
+                    }
+                    
                     // Inicializar OIDCAuth se ainda não estiver inicializado
                     if (!window.OIDCAuth.isInitialized) {
                         console.log('🔧 Inicializando OIDCAuth com provider:', provider);
@@ -239,11 +245,32 @@
                     
                     // Tentar processar callback com timeout
                     console.log('🔄 Processando callback OAuth...');
-                    const callbackPromise = window.OIDCAuth.handleAuthCallback();
-                    const timeoutPromise = new Promise((_, reject) => 
-                        setTimeout(() => reject(new Error('Timeout ao processar callback OAuth')), 15000)
-                    );
-                    const user = await Promise.race([callbackPromise, timeoutPromise]);
+                    console.log('📋 Estado atual:', {
+                        isInitialized: window.OIDCAuth.isInitialized,
+                        currentProvider: window.OIDCAuth.currentProvider,
+                        hasUserManager: !!window.OIDCAuth.userManager,
+                        code: params.code ? params.code.substring(0, 20) + '...' : 'null',
+                        state: params.state
+                    });
+                    
+                    let user;
+                    try {
+                        const callbackPromise = window.OIDCAuth.handleAuthCallback();
+                        const timeoutPromise = new Promise((_, reject) => 
+                            setTimeout(() => reject(new Error('Timeout ao processar callback OAuth (15s)')), 15000)
+                        );
+                        user = await Promise.race([callbackPromise, timeoutPromise]);
+                        console.log('✅ handleAuthCallback completado:', {
+                            hasUser: !!user,
+                            hasProfile: !!(user && user.profile),
+                            hasAccessToken: !!(user && user.access_token),
+                            email: user?.profile?.email || user?.profile?.preferred_username || 'não encontrado'
+                        });
+                    } catch (callbackError) {
+                        console.error('❌ Erro ao processar callback:', callbackError);
+                        console.error('Stack:', callbackError.stack);
+                        throw callbackError;
+                    }
                     
                     if (user && user.profile) {
                         console.log('✅ Callback processado com sucesso pelo OIDCAuth');
@@ -273,7 +300,14 @@
                     }
                 } catch (oidcError) {
                     console.warn('⚠️ OIDCAuth não conseguiu processar callback, usando auto-fix:', oidcError);
-                    console.error('Detalhes do erro:', oidcError.message, oidcError.stack);
+                    console.error('Detalhes do erro:', {
+                        message: oidcError.message,
+                        stack: oidcError.stack,
+                        name: oidcError.name,
+                        error: oidcError.error,
+                        error_description: oidcError.error_description
+                    });
+                    // Continuar para o fallback (auto-fix)
                 }
             }
             

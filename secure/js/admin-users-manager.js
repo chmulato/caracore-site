@@ -112,6 +112,7 @@ class AdminUsersManager {
         this.elements.searchInput = document.getElementById('searchInput');
         this.elements.roleFilter = document.getElementById('roleFilter');
         this.elements.providerFilter = document.getElementById('providerFilter');
+        this.elements.statusFilter = document.getElementById('statusFilter');
         
         // Modal
         this.elements.userModal = document.getElementById('userModal');
@@ -148,6 +149,7 @@ class AdminUsersManager {
         this.elements.searchInput.addEventListener('input', (e) => this.filterUsers());
         this.elements.roleFilter.addEventListener('change', (e) => this.filterUsers());
         this.elements.providerFilter.addEventListener('change', (e) => this.filterUsers());
+        this.elements.statusFilter.addEventListener('change', (e) => this.filterUsers());
         
         // Detectar provedor automaticamente quando e-mail mudar
         if (this.elements.userEmail) {
@@ -341,6 +343,7 @@ class AdminUsersManager {
         const searchTerm = this.elements.searchInput.value.toLowerCase();
         const roleFilter = this.elements.roleFilter.value;
         const providerFilter = this.elements.providerFilter.value;
+        const statusFilter = this.elements.statusFilter.value;
         
         this.filteredUsers = (this.data.users || []).filter(user => {
             const matchesSearch = !searchTerm || 
@@ -349,8 +352,9 @@ class AdminUsersManager {
             
             const matchesRole = !roleFilter || user.role === roleFilter;
             const matchesProvider = !providerFilter || user.provider === providerFilter;
+            const matchesStatus = !statusFilter || (user.status || 'active') === statusFilter;
             
-            return matchesSearch && matchesRole && matchesProvider;
+            return matchesSearch && matchesRole && matchesProvider && matchesStatus;
         });
         
         this.updateUsersTable();
@@ -366,7 +370,7 @@ class AdminUsersManager {
         if (this.filteredUsers.length === 0) {
             const row = tbody.insertRow();
             row.innerHTML = `
-                <td colspan="5" style="text-align: center; padding: 2rem; color: #6b7280;">
+                <td colspan="6" style="text-align: center; padding: 2rem; color: #6b7280;">
                     Nenhum usuário encontrado
                 </td>
             `;
@@ -389,6 +393,16 @@ class AdminUsersManager {
         const approvedDate = new Date(user.approved_at).toLocaleDateString('pt-BR');
         const roleClass = user.role === 'super_admin' ? 'admin' : (user.role === 'admin' ? 'admin' : 'user');
         
+        // Status do usuário (default: active)
+        const status = user.status || 'active';
+        const isActive = status === 'active';
+        const statusBadgeClass = isActive ? 'badge-success' : 'badge-warning';
+        const statusText = isActive ? 'Ativo' : 'Inativo';
+        const statusIcon = isActive ? 'icon-check-circle' : 'icon-x-circle';
+        const toggleButtonClass = isActive ? 'btn-warning' : 'btn-success';
+        const toggleButtonText = isActive ? 'Desabilitar' : 'Habilitar';
+        const toggleButtonIcon = isActive ? 'icon-x' : 'icon-check';
+        
         return `
             <td>
                 <div class="user-info">
@@ -410,13 +424,24 @@ class AdminUsersManager {
                     ${user.role === 'super_admin' ? 'Super Admin' : (user.role === 'admin' ? 'Admin' : 'Usuário')}
                 </span>
             </td>
+            <td>
+                <span class="badge ${statusBadgeClass}" style="display: inline-flex; align-items: center; gap: 0.25rem;">
+                    <svg class="icon-xs" aria-hidden="true">
+                        <use href="#${statusIcon}"></use>
+                    </svg>
+                    ${statusText}
+                </span>
+            </td>
             <td>${approvedDate}</td>
             <td>
-                <div class="actions">
-                    <button class="btn btn-secondary btn-sm" onclick="AdminUsersManager.editUser('${user.email}')">
+                <div class="actions" style="display: flex; gap: 0.25rem; align-items: center;">
+                    <button class="btn ${toggleButtonClass} btn-sm" onclick="AdminUsersManager.toggleUserStatus('${user.email}', ${!isActive})" title="${toggleButtonText}">
+                        <svg class="icon-sm" aria-hidden="true"><use href="#${toggleButtonIcon}"></use></svg>
+                    </button>
+                    <button class="btn btn-secondary btn-sm" onclick="AdminUsersManager.editUser('${user.email}')" title="Editar">
                         <svg class="icon-sm" aria-hidden="true"><use href="#icon-edit"></use></svg>
                     </button>
-                    <button class="btn btn-danger btn-sm" onclick="AdminUsersManager.removeUser('${user.email}')">
+                    <button class="btn btn-danger btn-sm" onclick="AdminUsersManager.removeUser('${user.email}')" title="Remover">
                         <svg class="icon-sm" aria-hidden="true"><use href="#icon-trash"></use></svg>
                     </button>
                 </div>
@@ -557,6 +582,55 @@ class AdminUsersManager {
         }
         
         this.showModal();
+    }
+    
+    /**
+     * Habilitar/Desabilitar usuário
+     */
+    async toggleUserStatus(email, enable) {
+        const user = this.data.users.find(u => u.email === email);
+        if (!user) {
+            this.showError('Usuário não encontrado');
+            return;
+        }
+        
+        const action = enable ? 'habilitar' : 'desabilitar';
+        const statusText = enable ? 'habilitado' : 'desabilitado';
+        
+        if (!confirm(`${enable ? 'Habilitar' : 'Desabilitar'} acesso de ${user.name} (${email})?`)) {
+            return;
+        }
+        
+        try {
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error('Token de autenticação não encontrado');
+            }
+            
+            const newStatus = enable ? 'active' : 'inactive';
+            const response = await fetch(`${this.config.apiEndpoints.updateUser}/${encodeURIComponent(email)}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    status: newStatus
+                })
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error_description || `Erro ao ${action} usuário`);
+            }
+            
+            this.showSuccess(`Usuário ${user.name} ${statusText} com sucesso`);
+            await this.loadData(); // Recarregar dados
+            
+        } catch (error) {
+            console.error(`Erro ao ${action} usuário:`, error);
+            this.showError(`Erro ao ${action} usuário: ` + error.message);
+        }
     }
     
     /**

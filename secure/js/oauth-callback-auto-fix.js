@@ -314,6 +314,38 @@
             expires_at: expiresAt,
             provider: provider === 'entra' ? 'microsoft' : provider
         });
+        
+        // FASE 7: Criar sessão no backend com refresh token (se disponível)
+        if (refreshToken && window.tokenManager) {
+            try {
+                const normalizedProvider = provider === 'entra' ? 'microsoft' : provider;
+                const userData = {
+                    email: userProfile.email,
+                    name: userProfile.name,
+                    provider: normalizedProvider,
+                    user_id: userId
+                };
+                
+                const tokens = {
+                    access_token: accessToken,
+                    id_token: idToken,
+                    refresh_token: refreshToken,
+                    expires_in: expiresIn
+                };
+                
+                console.log('[OAuth Callback] Criando sessão no backend (Fase 7)...');
+                await window.tokenManager.createSession(userData, tokens);
+                console.log('[OAuth Callback] ✅ Sessão criada com sucesso no backend');
+            } catch (error) {
+                console.warn('[OAuth Callback] ⚠️ Erro ao criar sessão no backend (continuando sem sessão):', error);
+                // Não bloquear o fluxo se falhar - sistema funciona sem sessão também
+            }
+        } else if (!refreshToken) {
+            console.warn('[OAuth Callback] ⚠️ Refresh token não disponível - sessão não será criada');
+        } else if (!window.tokenManager) {
+            console.warn('[OAuth Callback] ⚠️ TokenManager não disponível - certifique-se de que token-manager.js está carregado');
+        }
+        
         return true;
     }
     

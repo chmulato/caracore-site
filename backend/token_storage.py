@@ -51,13 +51,38 @@ class TokenStorage:
         Inicializa TokenStorage.
         
         Args:
-            storage_path: Caminho para arquivo JSON de sessões (default: backend/data/user_sessions.json)
-            backup_dir: Diretório para backups (default: backend/data/backups)
+            storage_path: Caminho para arquivo JSON de sessões (default: detectado automaticamente)
+            backup_dir: Diretório para backups (default: mesmo diretório do storage_path/backups)
         """
-        # Configurar caminhos
+        # Detectar caminho de persistência (mesmo sistema do authorization.py)
         if storage_path is None:
-            app_root = Path(__file__).resolve().parent
-            storage_path = app_root / "data" / "user_sessions.json"
+            # Priorizar variável de ambiente
+            env_path = os.getenv("SESSION_DATA_FILE") or os.getenv("SESSION_FILE")
+            if env_path:
+                storage_path = Path(env_path)
+            else:
+                # Detectar Azure Files mount (mesma lógica do authorization.py)
+                azure_mount_path = os.getenv('AZURE_STORAGE_MOUNT_PATH', '')
+                azure_data_dirs = [
+                    azure_mount_path,
+                    '/home/site/wwwroot/data',
+                    '/home/data',
+                ]
+                
+                data_dir = None
+                for azure_dir in azure_data_dirs:
+                    if azure_dir and os.path.exists(azure_dir) and os.path.isdir(azure_dir):
+                        data_dir = azure_dir
+                        logger.info(f"TokenStorage: Detectado ambiente Azure - usando {data_dir}")
+                        break
+                
+                if not data_dir:
+                    # Fallback: diretório local
+                    app_root = Path(__file__).resolve().parent
+                    data_dir = app_root / "data"
+                    logger.info(f"TokenStorage: Ambiente local - usando {data_dir}")
+                
+                storage_path = Path(data_dir) / "user_sessions.json"
         else:
             storage_path = Path(storage_path)
             

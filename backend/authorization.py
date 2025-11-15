@@ -22,8 +22,24 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Caminho para o arquivo de dados com logs de debug
+# Em Azure Web App, usar /home/data para persistência (Azure Files mount)
+# Em desenvolvimento local, usar diretório relativo
 BASE_DIR = os.path.dirname(__file__)
-DATA_DIR = os.path.join(BASE_DIR, 'data')
+
+# Detectar se está rodando no Azure Web App
+# Azure Web App monta volumes em /home/data quando configurado
+AZURE_DATA_DIR = '/home/data'
+IS_AZURE = os.path.exists(AZURE_DATA_DIR) and os.path.isdir(AZURE_DATA_DIR)
+
+if IS_AZURE:
+    # Usar diretório persistente do Azure
+    DATA_DIR = AZURE_DATA_DIR
+    logger.info("Detectado ambiente Azure - usando /home/data para persistência")
+else:
+    # Usar diretório local
+    DATA_DIR = os.path.join(BASE_DIR, 'data')
+    logger.info(f"Ambiente local - usando {DATA_DIR} para dados")
+
 AUTHORIZED_USERS_FILE = os.path.join(DATA_DIR, 'authorized_users.json')
 BACKUP_DIR = os.path.join(DATA_DIR, 'backups')
 
@@ -95,6 +111,7 @@ class AuthorizationManager:
     
     def __init__(self):
         """Inicializar o gerenciador"""
+        # Garantir que os diretórios existam (importante para Azure Files)
         self._ensure_directories_exist()
         self._data_cache = None
         self._cache_timestamp = None

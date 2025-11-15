@@ -7,6 +7,14 @@
  * @date 2025-11-13
  */
 
+/* Garantir que body e html ocupem toda a altura */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 .first-access-container {
     min-height: 100vh;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -14,6 +22,7 @@
     align-items: center;
     justify-content: center;
     padding: 2rem 1rem;
+    width: 100%;
 }
 
 .first-access-card {
@@ -23,6 +32,8 @@
     overflow: hidden;
     max-width: 600px;
     width: 100%;
+    margin: 0 auto;
+    position: relative;
 }
 
 .card-header-custom {
@@ -69,6 +80,11 @@
 .alert-custom {
     border-radius: 10px;
     border: none;
+}
+
+/* Garantir padding adequado no card-body */
+.first-access-card .card-body {
+    padding: 2rem;
 }
 
 .loading-spinner {

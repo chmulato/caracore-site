@@ -725,7 +725,12 @@ def create_app() -> Flask:
             )
 
         # Basic validation
-        missing = [k for k in ("code", "code_verifier") if not payload.get(k)]
+        # code_verifier é obrigatório apenas se PKCE_VALIDATION_ENABLED estiver habilitado
+        required_fields = ["code"]
+        if PKCE_VALIDATION_ENABLED:
+            required_fields.append("code_verifier")
+        
+        missing = [k for k in required_fields if not payload.get(k)]
         if missing:
             logger.warning("Invalid request - missing fields: %s", ", ".join(missing))
             if PKCE_VALIDATION_ENABLED:
@@ -796,10 +801,12 @@ def create_app() -> Flask:
             "client_id": client_id,
             "client_secret": google_client_secret,
             "code": code,
-            "code_verifier": code_verifier,
             "grant_type": grant_type,
             "redirect_uri": redirect_uri,
         }
+        # Adicionar code_verifier apenas se estiver presente (PKCE)
+        if code_verifier:
+            data["code_verifier"] = code_verifier
 
         logger.info(
             "[Step5] Iniciando troca de token com Google (redirect_uri=%s, code_len=%s)",
@@ -964,7 +971,13 @@ def create_app() -> Flask:
                 client_ip=client_ip
             )
 
-        missing = [k for k in ("code", "code_verifier") if not payload.get(k)]
+        # Validar campos obrigatórios
+        # code_verifier é obrigatório apenas se PKCE_VALIDATION_ENABLED estiver habilitado
+        required_fields = ["code"]
+        if PKCE_VALIDATION_ENABLED:
+            required_fields.append("code_verifier")
+        
+        missing = [k for k in required_fields if not payload.get(k)]
         if missing:
             logger.warning("Requisicao invalida para Microsoft - campos ausentes: %s", ", ".join(missing))
             if PKCE_VALIDATION_ENABLED:
@@ -1023,10 +1036,12 @@ def create_app() -> Flask:
             "client_id": client_id,
             "client_secret": azure_client_secret,
             "code": code,
-            "code_verifier": code_verifier,
             "grant_type": grant_type,
             "redirect_uri": redirect_uri,
         }
+        # Adicionar code_verifier apenas se estiver presente (PKCE)
+        if code_verifier:
+            data["code_verifier"] = code_verifier
         if scope:
             data["scope"] = scope
 

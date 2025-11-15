@@ -85,14 +85,56 @@
                 ? `${backendUrl}/oauth/microsoft/token`
                 : `${backendUrl}/oauth/google/token`;
             
-            // Tentar obter code_verifier do sessionStorage ou localStorage
-            const codeVerifier = sessionStorage.getItem(`${provider}_pkce_verifier`) || 
-                                localStorage.getItem(`${provider}_pkce_verifier`) ||
-                                sessionStorage.getItem('oidc.pkce.code_verifier') ||
-                                null;
+            // Tentar obter code_verifier de múltiplas fontes
+            let codeVerifier = null;
+            
+            // 1. Tentar do sessionStorage com chave específica do provider
+            codeVerifier = sessionStorage.getItem(`${provider}_pkce_verifier`) || 
+                         localStorage.getItem(`${provider}_pkce_verifier`);
+            
+            // 2. Tentar do estado OIDC armazenado (formato oidc-client-ts)
+            if (!codeVerifier && params.state) {
+                try {
+                    const oidcState = sessionStorage.getItem(`oidc.${params.state}`);
+                    if (oidcState) {
+                        const stateData = JSON.parse(oidcState);
+                        codeVerifier = stateData.code_verifier || null;
+                    }
+                } catch (e) {
+                    console.debug('Erro ao ler estado OIDC:', e);
+                }
+            }
+            
+            // 3. Tentar de chaves genéricas
+            if (!codeVerifier) {
+                codeVerifier = sessionStorage.getItem('oidc.pkce.code_verifier') ||
+                             localStorage.getItem('oidc.pkce.code_verifier');
+            }
+            
+            // 4. Tentar buscar em todas as chaves do sessionStorage que contenham 'verifier'
+            if (!codeVerifier) {
+                try {
+                    for (let i = 0; i < sessionStorage.length; i++) {
+                        const key = sessionStorage.key(i);
+                        if (key && (key.includes('verifier') || key.includes('pkce'))) {
+                            const value = sessionStorage.getItem(key);
+                            // Verificar se parece um code_verifier válido (43-128 caracteres)
+                            if (value && value.length >= 43 && value.length <= 128) {
+                                codeVerifier = value;
+                                console.log(`✅ code_verifier encontrado em: ${key}`);
+                                break;
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.debug('Erro ao buscar code_verifier no sessionStorage:', e);
+                }
+            }
             
             if (!codeVerifier) {
                 console.warn('⚠️ code_verifier não encontrado. Tentando sem PKCE...');
+            } else {
+                console.log('✅ code_verifier encontrado');
             }
             
             const requestBody = {

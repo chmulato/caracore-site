@@ -190,7 +190,7 @@ class FirstAccessManager {
     
     async checkUserAuthorization() {
         try {
-            const response = await fetch('/api/check-authorization', {
+            const response = await fetch(`${this.config.backendUrl}/api/check-authorization`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -417,6 +417,12 @@ class FirstAccessManager {
             // Enviar solicitação de registro
             const registrationResult = await this.submitRegistration(formData);
             
+            // Se o usuário já está autorizado, o redirecionamento já foi feito
+            if (registrationResult.alreadyAuthorized) {
+                this.setSubmitting(false);
+                return;
+            }
+            
             // Preparar mensagem para WhatsApp
             const whatsappMessage = this.prepareWhatsAppMessage(formData);
             
@@ -558,7 +564,23 @@ class FirstAccessManager {
         
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
-            throw new Error(errorData.error_description || `Erro HTTP ${response.status}`);
+            const errorMessage = errorData.error_description || `Erro HTTP ${response.status}`;
+            
+            // Se o usuário já está autorizado, redirecionar para área restrita
+            if (errorMessage.includes('já está autorizado') || errorMessage.includes('already authorized')) {
+                console.log('Usuário já autorizado, redirecionando para área restrita');
+                this.showSuccess('Você já está autorizado! Redirecionando para a área restrita...');
+                setTimeout(() => {
+                    window.location.href = '/secure/restrita.html';
+                }, 2000);
+                return {
+                    success: true,
+                    alreadyAuthorized: true,
+                    message: 'Usuário já autorizado'
+                };
+            }
+            
+            throw new Error(errorMessage);
         }
         
         const result = await response.json();

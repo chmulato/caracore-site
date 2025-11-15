@@ -141,13 +141,30 @@ except ImportError:
     logger.warning("authorization module não disponível - controle de acesso desabilitado")
 
 # Import SessionManager para Fase 7 - Refresh Tokens
+# A chave TOKEN_ENCRYPTION_KEY deve estar configurada como variável de ambiente no Azure App Service
+SESSION_MANAGER_ENABLED = False
+SessionManager = None
+
 try:
     from session_manager import SessionManager
-    SESSION_MANAGER_ENABLED = True
-    logger.info("SessionManager carregado - sistema de refresh tokens habilitado")
-except ImportError:
-    SESSION_MANAGER_ENABLED = False
-    logger.warning("session_manager não disponível - sistema de refresh tokens desabilitado")
+    # Verificar se a chave de criptografia está configurada
+    encryption_key = os.getenv('TOKEN_ENCRYPTION_KEY')
+    if not encryption_key:
+        logger.warning("TOKEN_ENCRYPTION_KEY não configurada - sistema de refresh tokens desabilitado")
+    else:
+        # Tentar inicializar para verificar se tudo está OK
+        try:
+            test_manager = SessionManager()
+            SESSION_MANAGER_ENABLED = True
+            logger.info("SessionManager carregado - sistema de refresh tokens habilitado")
+        except ValueError as e:
+            # Chave de criptografia inválida
+            logger.warning(f"SessionManager não pode ser inicializado (chave inválida): {e}")
+        except Exception as e:
+            # Outro erro na inicialização
+            logger.warning(f"Erro ao inicializar SessionManager: {e}", exc_info=True)
+except ImportError as e:
+    logger.warning(f"session_manager não disponível - sistema de refresh tokens desabilitado: {e}")
 
 # Import authorization_middleware para decorators de proteção (Fase 6)
 try:

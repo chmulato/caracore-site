@@ -19,3 +19,14 @@ colorama==0.4.6
 
 # JWT - versão simples sem criptografia complexa
 PyJWT==2.9.0
+
+# OAuth 2.1 / OIDC
+Authlib==1.3.1
+
+# Fase 7 - Sistema de Refresh Tokens
+cryptography>=41.0.0      # Criptografia AES-256
+flask-limiter>=3.5.0      # Rate limiting
+python-dateutil>=2.8.2    # Manipulação de datas
+
+# Documentação API (Swagger/OpenAPI)
+flasgger>=0.9.7.1         # Swagger UI para Flask

@@ -2307,6 +2307,126 @@ def create_app() -> Flask:
             resp = make_response(jsonify(error_response), 500)
             return add_cors(resp)
     
+    @app.route("/api/admin/users/remove-duplicates", methods=["OPTIONS"])
+    def remove_duplicates_preflight():
+        """CORS preflight para remoção de duplicatas"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/admin/users/remove-duplicates", methods=["POST"])
+    @rate_limit("/api/admin/users")
+    @require_admin()
+    def remove_duplicate_users():
+        """Remover usuários duplicados (admin only)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            from collections import defaultdict
+            
+            # Obter admin atual
+            admin_email = request.headers.get('X-User-Email', 'unknown')
+            
+            # Carregar dados
+            data = load_authorized_users()
+            users = data.get('users', [])
+            initial_count = len(users)
+            
+            if initial_count == 0:
+                return jsonify({
+                    "message": "Nenhum usuário encontrado",
+                    "removed": 0,
+                    "before": 0,
+                    "after": 0
+                }), 200
+            
+            # Agrupar por email (case-insensitive)
+            email_groups = defaultdict(list)
+            for i, user in enumerate(users):
+                email_lower = user.get('email', '').lower().strip()
+                if email_lower:
+                    email_groups[email_lower].append((i, user))
+            
+            # Identificar duplicatas
+            duplicates_found = []
+            for email_lower, user_list in email_groups.items():
+                if len(user_list) > 1:
+                    duplicates_found.append((email_lower, user_list))
+            
+            if not duplicates_found:
+                return jsonify({
+                    "message": "Nenhuma duplicata encontrada",
+                    "removed": 0,
+                    "before": initial_count,
+                    "after": initial_count
+                }), 200
+            
+            # Remover duplicatas (manter a mais recente baseada em approved_at ou created_at)
+            indices_to_remove = []
+            duplicates_info = []
+            
+            for email_lower, user_list in duplicates_found:
+                # Ordenar por approved_at ou created_at (mais recente primeiro)
+                user_list.sort(key=lambda x: (
+                    x[1].get('approved_at', '') or x[1].get('created_at', '') or '',
+                ), reverse=True)
+                
+                # Manter o primeiro (mais recente) e marcar os outros para remoção
+                kept_user = user_list[0][1]
+                for idx, user in user_list[1:]:
+                    indices_to_remove.append(idx)
+                    duplicates_info.append({
+                        "email": user.get('email'),
+                        "name": user.get('name'),
+                        "kept": kept_user.get('email')
+                    })
+            
+            # Remover duplicatas (em ordem reversa para não afetar índices)
+            indices_to_remove.sort(reverse=True)
+            removed_users = []
+            for idx in indices_to_remove:
+                removed_user = users.pop(idx)
+                removed_users.append(removed_user.get('email'))
+            
+            # Atualizar dados
+            data['users'] = users
+            data['updated_at'] = datetime.utcnow().isoformat()
+            
+            # Adicionar ao log de auditoria
+            if 'audit_log' not in data:
+                data['audit_log'] = []
+            
+            data['audit_log'].append({
+                "timestamp": datetime.utcnow().isoformat(),
+                "action": "duplicates_removed",
+                "details": f"Removidas {len(indices_to_remove)} duplicatas. Total antes: {initial_count}, depois: {len(users)}",
+                "user": admin_email
+            })
+            
+            # Salvar
+            save_authorized_users(data)
+            
+            final_count = len(users)
+            removed_count = initial_count - final_count
+            
+            logger.info(f"Duplicatas removidas: {removed_count} usuários removidos por {admin_email}")
+            
+            response_data = {
+                "message": f"Duplicatas removidas com sucesso",
+                "removed": removed_count,
+                "before": initial_count,
+                "after": final_count,
+                "duplicates": duplicates_info
+            }
+            
+            resp = make_response(jsonify(response_data), 200)
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao remover duplicatas: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
     # ========================================================================
     # ACCESS REQUESTS MANAGEMENT ENDPOINTS (Admin)
     # ========================================================================

@@ -109,6 +109,7 @@ class AdminUsersManager {
         // Controles
         this.elements.refreshBtn = document.getElementById('refreshBtn');
         this.elements.addUserBtn = document.getElementById('addUserBtn');
+        this.elements.removeDuplicatesBtn = document.getElementById('removeDuplicatesBtn');
         this.elements.searchInput = document.getElementById('searchInput');
         this.elements.roleFilter = document.getElementById('roleFilter');
         this.elements.providerFilter = document.getElementById('providerFilter');
@@ -144,6 +145,11 @@ class AdminUsersManager {
         
         // Adicionar usuário
         this.elements.addUserBtn.addEventListener('click', () => this.openAddUserModal());
+        
+        // Remover duplicatas
+        if (this.elements.removeDuplicatesBtn) {
+            this.elements.removeDuplicatesBtn.addEventListener('click', () => this.removeDuplicates());
+        }
         
         // Busca e filtros
         this.elements.searchInput.addEventListener('input', (e) => this.filterUsers());
@@ -582,6 +588,50 @@ class AdminUsersManager {
         }
         
         this.showModal();
+    }
+    
+    /**
+     * Remover usuários duplicados
+     */
+    async removeDuplicates() {
+        if (!confirm('Deseja remover todos os usuários duplicados? Esta ação manterá apenas a entrada mais recente de cada email.')) {
+            return;
+        }
+        
+        try {
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error('Token de autenticação não encontrado');
+            }
+            
+            const response = await fetch(`${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users/remove-duplicates`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error_description || 'Erro ao remover duplicatas');
+            }
+            
+            const result = await response.json();
+            
+            if (result.removed > 0) {
+                this.showSuccess(`Duplicatas removidas: ${result.removed} usuário(s) removido(s). Total antes: ${result.before}, depois: ${result.after}`);
+            } else {
+                this.showSuccess('Nenhuma duplicata encontrada');
+            }
+            
+            // Recarregar dados para atualizar a lista
+            await this.loadData();
+            
+        } catch (error) {
+            console.error('Erro ao remover duplicatas:', error);
+            this.showError('Erro ao remover duplicatas: ' + error.message);
+        }
     }
     
     /**

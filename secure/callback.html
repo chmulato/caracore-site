@@ -57,6 +57,7 @@
   
   <!-- Sistema de Autorização - Fase 4 -->
   <script src="/secure/js/authorization-check.js?v=20251102"></script>
-  <script src="/secure/js/callback-authorization.js?v=20251115"></script>
+  <!-- callback-authorization.js deve ser carregado DEPOIS do oauth-callback-auto-fix.js processar -->
+  <script defer src="/secure/js/callback-authorization.js?v=20251115"></script>
 </body>
 </html>

@@ -3,55 +3,98 @@
  * Movido de callback.html para arquivo externo devido ao CSP
  */
 
+// Função para aguardar OAuth completar
+function waitForOAuthCompletion(maxWaitTime = 10000, checkInterval = 200) {
+  return new Promise((resolve, reject) => {
+    const startTime = Date.now();
+    
+    const checkAuth = () => {
+      const userEmail = localStorage.getItem('user_email') || 
+                       localStorage.getItem('auth_user_email');
+      const accessToken = localStorage.getItem('auth_access_token');
+      
+      if (userEmail && accessToken) {
+        console.log('✅ OAuth completado - dados encontrados:', { userEmail, hasToken: !!accessToken });
+        resolve({ userEmail, accessToken });
+        return;
+      }
+      
+      if (Date.now() - startTime > maxWaitTime) {
+        console.warn('⏱️ Timeout aguardando OAuth completar');
+        reject(new Error('Timeout aguardando OAuth completar'));
+        return;
+      }
+      
+      setTimeout(checkAuth, checkInterval);
+    };
+    
+    checkAuth();
+  });
+}
+
 // Verificação de autorização após autenticação OAuth bem-sucedida
 document.addEventListener('DOMContentLoaded', function() {
   // Aguardar processamento do OAuth primeiro
-  setTimeout(async function() {
+  (async function() {
     try {
-      // Obter informações do usuário do OAuth
-      const userEmail = localStorage.getItem('user_email') || 
-                       localStorage.getItem('auth_user_email') ||
-                       new URLSearchParams(window.location.search).get('email');
+      console.log('🔄 Callback: Aguardando OAuth completar...');
+      
+      // Aguardar OAuth completar (até 10 segundos)
+      const { userEmail } = await waitForOAuthCompletion(10000);
       
       const provider = localStorage.getItem('auth_provider') || 
                       new URLSearchParams(window.location.search).get('provider') || 
                       'google';
       
-      if (userEmail) {
-        console.log('Callback: Verificando autorização para', userEmail);
+      console.log('✅ Callback: OAuth completado, verificando autorização para', userEmail);
+      
+      // Verificar autorização (com loading indicator)
+      // Esta função já redireciona para first-access.html se necessário
+      const isAuthorized = await requireAuthorization({
+        email: userEmail,
+        provider: provider,
+        showLoading: true
+      });
+      
+      // Se chegou aqui, está autorizado - continuar para restrita.html
+      if (isAuthorized) {
+        console.log('✅ Callback: Usuário autorizado, redirecionando para área restrita');
         
-        // Verificar autorização (com loading indicator)
-        const isAuthorized = await requireAuthorization({
-          email: userEmail,
-          provider: provider,
-          showLoading: true
-        });
-        
-        // Se chegou aqui, está autorizado - continuar para restrita.html
-        if (isAuthorized) {
-          console.log('Callback: Usuário autorizado, redirecionando para área restrita');
-          
-          // Pequeno delay para mostrar sucesso
-          setTimeout(() => {
-            window.location.href = '/secure/restrita.html';
-          }, 1500);
-        }
-        // Se não autorizado, requireAuthorization já redirecionou para access-denied
-        
-      } else {
-        console.warn('Callback: Email do usuário não encontrado');
-        // Fallback para OAuth completar primeiro
+        // Pequeno delay para mostrar sucesso
         setTimeout(() => {
           window.location.href = '/secure/restrita.html';
-        }, 3000);
+        }, 1500);
       }
+      // Se não autorizado, requireAuthorization já redirecionou (access-denied ou first-access)
       
     } catch (error) {
-      console.error('Callback: Erro na verificação de autorização:', error);
-      // Em caso de erro, redirecionar para acesso negado
-      window.location.href = '/secure/access-denied.html?error=' + encodeURIComponent(error.message);
+      console.error('❌ Callback: Erro na verificação de autorização:', error);
+      
+      // Se timeout, tentar usar dados que possam existir
+      const userEmail = localStorage.getItem('user_email') || 
+                       localStorage.getItem('auth_user_email');
+      
+      if (userEmail) {
+        console.log('⚠️ Callback: Timeout, mas email encontrado. Tentando verificar autorização...');
+        try {
+          const provider = localStorage.getItem('auth_provider') || 'google';
+          await requireAuthorization({
+            email: userEmail,
+            provider: provider,
+            showLoading: true
+          });
+        } catch (authError) {
+          console.error('❌ Callback: Erro ao verificar autorização:', authError);
+          // Em caso de erro, redirecionar para primeiro acesso
+          window.location.href = `/secure/first-access.html?email=${encodeURIComponent(userEmail)}`;
+        }
+      } else {
+        // Sem email, redirecionar para login
+        console.error('❌ Callback: Email não encontrado após timeout');
+        window.location.href = '/secure/index.html?error=oauth_timeout';
+      }
     }
-  }, 2000); // Aguardar 2 segundos para OAuth completar
+  })();
 });
 
 // Listener para sucesso de autorização

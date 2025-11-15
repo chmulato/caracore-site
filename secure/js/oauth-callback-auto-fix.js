@@ -266,8 +266,9 @@
                         localStorage.setItem('user_email', user.profile.email || user.profile.preferred_username);
                         localStorage.setItem('auth_user_email', user.profile.email || user.profile.preferred_username);
                         
+                        console.log('✅ Dados salvos no localStorage. Aguardando verificação de autorização...');
                         cleanCallbackUrl();
-                        redirectToRestricted();
+                        // NÃO redirecionar aqui - deixar callback-authorization.js fazer isso após verificar autorização
                         return true;
                     }
                 } catch (oidcError) {
@@ -309,8 +310,9 @@
             
             if (verification.hasAccessToken && verification.hasExpiresAt && verification.hasProvider) {
                 console.log('🎉 Auto-fix aplicado com sucesso!');
+                console.log('✅ Dados salvos no localStorage. Aguardando verificação de autorização...');
                 cleanCallbackUrl();
-                redirectToRestricted();
+                // NÃO redirecionar aqui - deixar callback-authorization.js fazer isso após verificar autorização
                 return true;
             } else {
                 throw new Error('Verificação falhou - dados não salvos corretamente');

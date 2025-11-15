@@ -134,6 +134,11 @@
     <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
     
     <script>
+        // Configuração do backend
+        const backendUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:5051'
+            : 'https://caracore-backend-docker.azurewebsites.net';
+        
         // Gerenciamento de status baseado nos dados de registro
         document.addEventListener('DOMContentLoaded', function() {
             // Ler dados do sessionStorage
@@ -141,6 +146,11 @@
             
             // Atualizar interface baseado no status
             updateStatusInterface(statusData);
+            
+            // Verificar se a solicitação foi persistida no backend
+            if (statusData.userEmail) {
+                checkBackendStatus(statusData.userEmail);
+            }
             
             // Adicionar efeito de pulsação no item atual
             const currentItem = document.querySelector('.timeline-item.current');
@@ -162,6 +172,127 @@
                 });
             }
         });
+        
+        async function checkBackendStatus(email) {
+            try {
+                const response = await fetch(`${backendUrl}/api/request-access/status?email=${encodeURIComponent(email)}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    showBackendStatus(data);
+                } else {
+                    console.error('Erro ao verificar status no backend:', response.status);
+                    showBackendStatusError();
+                }
+            } catch (error) {
+                console.error('Erro ao consultar backend:', error);
+                showBackendStatusError();
+            }
+        }
+        
+        function showBackendStatus(statusData) {
+            const cardBody = document.querySelector('.card-body');
+            if (!cardBody) return;
+            
+            // Remover status anterior se existir
+            const existingStatus = document.getElementById('backend-status-alert');
+            if (existingStatus) {
+                existingStatus.remove();
+            }
+            
+            const statusAlert = document.createElement('div');
+            statusAlert.id = 'backend-status-alert';
+            statusAlert.className = 'mb-4';
+            
+            if (statusData.found) {
+                // Solicitação encontrada no backend
+                statusAlert.innerHTML = `
+                    <div class="alert alert-success">
+                        <i class="bi bi-check-circle-fill"></i>
+                        <strong>✓ Solicitação Persistida com Sucesso!</strong>
+                        <br>
+                        <small class="mt-1 d-block">
+                            Sua solicitação foi confirmada no sistema backend. 
+                            Status: <strong>${statusData.status === 'pending' ? 'Pendente de Aprovação' : statusData.status}</strong>
+                            ${statusData.requested_at ? `<br>Registrada em: ${new Date(statusData.requested_at).toLocaleString('pt-BR')}` : ''}
+                        </small>
+                    </div>
+                `;
+            } else if (statusData.status === 'authorized') {
+                // Usuário já autorizado
+                statusAlert.innerHTML = `
+                    <div class="alert alert-info">
+                        <i class="bi bi-info-circle-fill"></i>
+                        <strong>Usuário Já Autorizado</strong>
+                        <br>
+                        <small class="mt-1 d-block">
+                            Você já possui acesso autorizado ao sistema. Não é necessária nova solicitação.
+                        </small>
+                    </div>
+                `;
+            } else {
+                // Solicitação não encontrada
+                statusAlert.innerHTML = `
+                    <div class="alert alert-warning">
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+                        <strong>Atenção: Solicitação não encontrada no backend</strong>
+                        <br>
+                        <small class="mt-1 d-block">
+                            Não foi possível confirmar a persistência da solicitação no sistema. 
+                            Entre em contato com o suporte se necessário.
+                        </small>
+                    </div>
+                `;
+            }
+            
+            // Inserir no início do card body, após o primeiro elemento
+            const firstChild = cardBody.firstElementChild;
+            if (firstChild) {
+                cardBody.insertBefore(statusAlert, firstChild);
+            } else {
+                cardBody.appendChild(statusAlert);
+            }
+        }
+        
+        function showBackendStatusError() {
+            const cardBody = document.querySelector('.card-body');
+            if (!cardBody) return;
+            
+            // Remover status anterior se existir
+            const existingStatus = document.getElementById('backend-status-alert');
+            if (existingStatus) {
+                existingStatus.remove();
+            }
+            
+            const statusAlert = document.createElement('div');
+            statusAlert.id = 'backend-status-alert';
+            statusAlert.className = 'mb-4';
+            statusAlert.innerHTML = `
+                <div class="alert alert-secondary">
+                    <i class="bi bi-info-circle"></i>
+                    <strong>Verificação de Status</strong>
+                    <br>
+                    <small class="mt-1 d-block">
+                        Não foi possível verificar o status da solicitação no backend no momento. 
+                        Isso não significa que sua solicitação não foi registrada. 
+                        Entre em contato com o suporte se tiver dúvidas.
+                    </small>
+                </div>
+            `;
+            
+            // Inserir no início do card body
+            const firstChild = cardBody.firstElementChild;
+            if (firstChild) {
+                cardBody.insertBefore(statusAlert, firstChild);
+            } else {
+                cardBody.appendChild(statusAlert);
+            }
+        }
         
         function updateStatusInterface(statusData) {
             const cardBody = document.querySelector('.card-body');

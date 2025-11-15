@@ -100,7 +100,7 @@ try:
     from authorization import (
         is_user_authorized, get_user_role, add_authorized_user, 
         remove_authorized_user, add_pending_request, load_authorized_users,
-        save_authorized_users
+        save_authorized_users, get_pending_request_by_email
     )
     AUTHORIZATION_ENABLED = True
     logger.info("Authorization module carregado - controle de acesso habilitado")
@@ -2358,6 +2358,64 @@ def create_app() -> Flask:
             
         except Exception as e:
             logger.error(f"Erro ao processar solicitação de acesso: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
+    
+    @app.route("/api/request-access/status", methods=["OPTIONS"])
+    def request_access_status_preflight():
+        """CORS preflight para consulta de status"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/request-access/status", methods=["GET"])
+    @rate_limit("/api/request-access/status")
+    def request_access_status():
+        """Consultar status de uma solicitação de acesso por email"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            email = request.args.get('email')
+            if not email:
+                return jsonify({"error": "invalid_request", "error_description": "Parâmetro 'email' é obrigatório"}), 400
+            
+            # Buscar solicitação pendente
+            pending_request = get_pending_request_by_email(email)
+            
+            if pending_request:
+                response_data = {
+                    "found": True,
+                    "status": pending_request.get("status", "pending"),
+                    "email": pending_request.get("email"),
+                    "name": pending_request.get("name"),
+                    "provider": pending_request.get("provider"),
+                    "requested_at": pending_request.get("requested_at"),
+                    "message": "Solicitação encontrada no sistema"
+                }
+                resp = make_response(jsonify(response_data), 200)
+            else:
+                # Verificar se o usuário já está autorizado
+                is_authorized = is_user_authorized(email)
+                if is_authorized:
+                    response_data = {
+                        "found": False,
+                        "status": "authorized",
+                        "email": email,
+                        "message": "Usuário já está autorizado no sistema"
+                    }
+                else:
+                    response_data = {
+                        "found": False,
+                        "status": "not_found",
+                        "email": email,
+                        "message": "Nenhuma solicitação encontrada para este email"
+                    }
+                resp = make_response(jsonify(response_data), 200)
+            
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao consultar status da solicitação: {e}")
             error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
             resp = make_response(jsonify(error_response), 500)
             return add_cors(resp)

@@ -131,9 +131,10 @@ def require_authorization(role_required='user'):
                         "message": "Configuração do servidor incompleta"
                     }), 500
                 
-                # Valida a assinatura e expir ação do token
+                # Valida a assinatura e expiração do token
                 decoded = jwt.decode(token, JWT_SECRET_KEY, algorithms=['HS256'])
                 user_email = decoded.get('email')
+                user_role = decoded.get('role')
                 
                 if not user_email:
                     logger.warning("Token não contém email do usuário")
@@ -141,6 +142,34 @@ def require_authorization(role_required='user'):
                         "error": "Unauthorized",
                         "message": "Token inválido - email não encontrado"
                     }), 401
+                
+                # Verificar se é super admin - super admin tem acesso direto sem verificar arquivo JSON
+                if user_role == 'super_admin':
+                    # Verificar hierarquia de roles para super admin
+                    role_hierarchy = {
+                        'user': 0,
+                        'admin': 1,
+                        'super_admin': 2
+                    }
+                    super_admin_level = role_hierarchy.get('super_admin', 0)
+                    required_level = role_hierarchy.get(role_required, 0)
+                    
+                    if super_admin_level >= required_level:
+                        logger.info(f"Super admin {user_email} acessou {request.path}")
+                        # Criar dados do usuário para o request context
+                        request.current_user = {
+                            'email': user_email,
+                            'role': 'super_admin',
+                            'status': 'active'
+                        }
+                        # Super admin tem acesso direto
+                        return f(*args, **kwargs)
+                    else:
+                        logger.warning(f"Super admin {user_email} não tem permissão para {role_required}")
+                        return jsonify({
+                            "error": "Forbidden",
+                            "message": "Permissão insuficiente"
+                        }), 403
                 
             except ExpiredSignatureError:
                 logger.warning(f"Token expirado para endpoint: {request.path}")

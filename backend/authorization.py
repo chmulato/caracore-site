@@ -460,6 +460,33 @@ class AuthorizationManager:
         except Exception as e:
             logger.error(f"Erro ao registrar solicitação: {e}")
             return False, f"Erro interno: {e}"
+    
+    def get_pending_request_by_email(self, email: str) -> Optional[Dict[str, Any]]:
+        """
+        Buscar solicitação pendente por email
+        
+        Args:
+            email: Email do usuário
+            
+        Returns:
+            Dicionário com dados da solicitação ou None se não encontrada
+        """
+        try:
+            if not email:
+                return None
+            
+            data = self.load_authorized_users()
+            email_lower = email.lower().strip()
+            
+            for request in data.get('pending_requests', []):
+                if request.get('email', '').lower() == email_lower:
+                    return request.copy()
+            
+            return None
+            
+        except Exception as e:
+            logger.error(f"Erro ao buscar solicitação para {email}: {e}")
+            return None
 
 
 # Instância global do gerenciador
@@ -493,3 +520,7 @@ def remove_authorized_user(email: str, removed_by: str = "admin") -> Tuple[bool,
 def add_pending_request(request_data: Dict[str, Any]) -> Tuple[bool, str]:
     """Adicionar solicitação de acesso pendente"""
     return auth_manager.add_pending_request(request_data)
+
+def get_pending_request_by_email(email: str) -> Optional[Dict[str, Any]]:
+    """Buscar solicitação pendente por email"""
+    return auth_manager.get_pending_request_by_email(email)

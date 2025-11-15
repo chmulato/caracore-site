@@ -16,8 +16,13 @@ class FirstAccessManager {
         this.isSubmitting = false;
         
         // Configurações
+        const backendUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:5051'
+            : 'https://caracore-backend-docker.azurewebsites.net';
+        
         this.config = {
-            registrationEndpoint: '/api/request-access',
+            backendUrl: backendUrl,
+            registrationEndpoint: `${backendUrl}/api/request-access`,
             logoutEndpoint: '/secure/index.html',
             successRedirect: '/secure/access-pending.html',
             whatsappNumber: '5541999097797',
@@ -395,6 +400,12 @@ class FirstAccessManager {
             // Coletar dados do formulário
             const formData = this.collectFormData();
             
+            // Mostrar aviso sobre WhatsApp Web antes de confirmar
+            const whatsappConfirmed = await this.showWhatsAppRequiredWarning();
+            if (!whatsappConfirmed) {
+                return; // Usuário cancelou
+            }
+            
             // Mostrar confirmação antes de enviar
             const confirmed = await this.showConfirmationModal(formData);
             if (!confirmed) {
@@ -713,6 +724,118 @@ class FirstAccessManager {
         
         // Redirecionar para página de status
         window.location.href = this.config.statusPageUrl;
+    }
+    
+    async checkWhatsAppAvailability() {
+        // Verificar se o navegador suporta abertura de links externos
+        // Tentar abrir uma janela de teste (será bloqueada, mas podemos detectar)
+        try {
+            const testWindow = window.open('https://web.whatsapp.com', '_blank', 'width=1,height=1');
+            
+            if (testWindow) {
+                // Se a janela foi aberta, fechar imediatamente
+                testWindow.close();
+                return true;
+            }
+            
+            // Se a janela foi bloqueada, pode ser popup blocker, mas WhatsApp ainda pode funcionar
+            // Verificar se o usuário está em um ambiente que suporta WhatsApp Web
+            const userAgent = navigator.userAgent.toLowerCase();
+            const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+            
+            // Em mobile, WhatsApp Web pode não funcionar bem, mas ainda é possível
+            // Vamos permitir e avisar o usuário
+            return true; // Sempre permitir, mas avisar sobre requisitos
+        } catch (e) {
+            console.warn('Erro ao verificar WhatsApp:', e);
+            return true; // Em caso de erro, permitir mas avisar
+        }
+    }
+    
+    showWhatsAppRequiredWarning() {
+        return new Promise((resolve) => {
+            const modal = document.createElement('div');
+            modal.className = 'modal fade';
+            modal.tabIndex = -1;
+            modal.innerHTML = `
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header bg-warning text-dark">
+                            <h5 class="modal-title">
+                                <i class="bi bi-exclamation-triangle-fill"></i>
+                                WhatsApp Web Necessário
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="alert alert-warning mb-3">
+                                <i class="bi bi-info-circle"></i>
+                                <strong>Importante:</strong> Para completar seu cadastro, você precisa ter acesso ao WhatsApp Web.
+                            </div>
+                            
+                            <h6>O que você precisa fazer:</h6>
+                            <ol>
+                                <li><strong>Abrir WhatsApp Web</strong> em outra aba do navegador</li>
+                                <li><strong>Fazer login</strong> com seu número de telefone</li>
+                                <li><strong>Continuar</strong> com o envio do formulário</li>
+                            </ol>
+                            
+                            <div class="alert alert-info mt-3">
+                                <small>
+                                    <i class="bi bi-lightbulb"></i>
+                                    <strong>Dica:</strong> Você pode acessar o WhatsApp Web em 
+                                    <a href="https://web.whatsapp.com" target="_blank" class="alert-link">
+                                        https://web.whatsapp.com
+                                    </a>
+                                </small>
+                            </div>
+                            
+                            <p class="text-muted small mb-0 mt-3">
+                                Após abrir o WhatsApp Web, você poderá enviar sua solicitação de acesso automaticamente.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="whatsappCancel">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </button>
+                            <button type="button" class="btn btn-primary" id="whatsappContinue">
+                                <i class="bi bi-check-circle"></i> Entendi, continuar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            const bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+            
+            let resolved = false;
+            
+            // Event listeners
+            modal.querySelector('#whatsappContinue').addEventListener('click', () => {
+                // Abrir WhatsApp Web em nova aba
+                window.open('https://web.whatsapp.com', '_blank');
+                resolved = true;
+                resolve(true); // Continuar com o processo
+                bsModal.hide();
+            });
+            
+            modal.querySelector('#whatsappCancel').addEventListener('click', () => {
+                resolved = true;
+                resolve(false); // Cancelar
+                bsModal.hide();
+            });
+            
+            // Se fechar o modal pelo X ou clicando fora, cancelar
+            modal.addEventListener('hidden.bs.modal', () => {
+                modal.remove();
+                if (!resolved) {
+                    resolve(false);
+                }
+            });
+        });
     }
     
     setSubmitting(submitting) {

@@ -2855,11 +2855,19 @@ def create_app() -> Flask:
     def apply_security_headers(response):
         """Aplica headers de segurança em todas as respostas"""
         if SECURITY_HEADERS_ENABLED:
-            # Para /api-docs, usar CSP mais permissivo se já não foi aplicado
-            if request.path == "/api-docs" and "Content-Security-Policy" not in response.headers:
-                response = add_security_headers(response, use_swagger_csp=True)
-            elif request.path != "/api-docs":
-                response = add_security_headers(response)
+            try:
+                # Para /api-docs, usar CSP mais permissivo se já não foi aplicado
+                if request.path == "/api-docs":
+                    # Se já tem CSP aplicado, não aplicar novamente
+                    if "Content-Security-Policy" not in response.headers:
+                        response = add_security_headers(response, use_swagger_csp=True)
+                else:
+                    # Para outros endpoints, aplicar CSP padrão
+                    if "Content-Security-Policy" not in response.headers:
+                        response = add_security_headers(response)
+            except Exception as e:
+                logger.error(f"Erro ao aplicar security headers no after_request: {e}")
+                # Continuar mesmo se houver erro
         return response
     
     # Endpoint de teste para verificar deploy
@@ -2875,6 +2883,64 @@ def create_app() -> Flask:
         })
     
     # Configurar Swagger/OpenAPI após todas as rotas serem registradas
+    # Sempre criar endpoint alternativo primeiro (fallback garantido)
+    @app.route("/api-docs", methods=["GET"])
+    def swagger_ui_alternative():
+        """Swagger UI alternativo usando CDN"""
+        try:
+            swagger_ui_html = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CaraCore Backend API - Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui.css" />
+    <style>
+        html { box-sizing: border-box; overflow: -moz-scrollbars-vertical; overflow-y: scroll; }
+        *, *:before, *:after { box-sizing: inherit; }
+        body { margin:0; background: #fafafa; }
+    </style>
+</head>
+<body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            const ui = SwaggerUIBundle({
+                url: window.location.origin + "/swagger.yaml",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout"
+            });
+        };
+    </script>
+</body>
+</html>
+            """
+            resp = make_response(swagger_ui_html, 200)
+            resp.headers['Content-Type'] = 'text/html; charset=utf-8'
+            # Aplicar CSP mais permissivo para Swagger UI
+            # Nota: O after_request também aplicará headers, mas verificará se já foram aplicados
+            if SECURITY_HEADERS_ENABLED:
+                try:
+                    resp = add_security_headers(resp, use_swagger_csp=True)
+                except Exception as header_error:
+                    logger.error(f"Erro ao aplicar security headers no Swagger: {header_error}", exc_info=True)
+                    # Continuar mesmo se houver erro nos headers - o after_request tentará aplicar
+            return add_cors(resp)
+        except Exception as e:
+            logger.error(f"Erro ao criar resposta Swagger UI: {e}", exc_info=True)
+            error_resp = make_response(jsonify({"error": "internal_error", "error_description": str(e)}), 500)
+            return add_cors(error_resp)
+    
+    # Tentar usar Flasgger (pode sobrescrever o endpoint acima se funcionar)
     try:
         from flasgger import Swagger
         swagger_config = {
@@ -2924,103 +2990,10 @@ def create_app() -> Flask:
         }
         
         swagger = Swagger(app, config=swagger_config, template=swagger_template)
-        logger.info("Swagger/OpenAPI documentação habilitada em /api-docs")
-    except ImportError as e:
+        logger.info("Swagger/OpenAPI documentação habilitada em /api-docs (Flasgger)")
+    except (ImportError, Exception) as e:
         logger.warning(f"Flasgger não disponível - usando Swagger UI alternativo: {e}")
-        # Criar endpoint alternativo simples para servir Swagger UI via CDN
-        @app.route("/api-docs", methods=["GET"])
-        def swagger_ui_alternative():
-            """Swagger UI alternativo usando CDN (quando Flasgger não está disponível)"""
-            swagger_ui_html = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>CaraCore Backend API - Swagger UI</title>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui.css" />
-    <style>
-        html { box-sizing: border-box; overflow: -moz-scrollbars-vertical; overflow-y: scroll; }
-        *, *:before, *:after { box-sizing: inherit; }
-        body { margin:0; background: #fafafa; }
-    </style>
-</head>
-<body>
-    <div id="swagger-ui"></div>
-    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js"></script>
-    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-standalone-preset.js"></script>
-    <script>
-        window.onload = function() {
-            const ui = SwaggerUIBundle({
-                url: window.location.origin + "/swagger.yaml",
-                dom_id: '#swagger-ui',
-                deepLinking: true,
-                presets: [
-                    SwaggerUIBundle.presets.apis,
-                    SwaggerUIStandalonePreset
-                ],
-                plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl
-                ],
-                layout: "StandaloneLayout"
-            });
-        };
-    </script>
-</body>
-</html>
-            """
-            resp = make_response(swagger_ui_html, 200)
-            resp.headers['Content-Type'] = 'text/html; charset=utf-8'
-            # Aplicar CSP mais permissivo para Swagger UI
-            if SECURITY_HEADERS_ENABLED:
-                resp = add_security_headers(resp, use_swagger_csp=True)
-            return add_cors(resp)
-    except Exception as e:
-        logger.error(f"Erro ao configurar Swagger: {e}")
-        # Mesma alternativa acima em caso de erro
-        @app.route("/api-docs", methods=["GET"])
-        def swagger_ui_fallback():
-            """Swagger UI alternativo usando CDN"""
-            swagger_ui_html = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>CaraCore Backend API - Swagger UI</title>
-    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui.css" />
-    <style>
-        html { box-sizing: border-box; overflow: -moz-scrollbars-vertical; overflow-y: scroll; }
-        *, *:before, *:after { box-sizing: inherit; }
-        body { margin:0; background: #fafafa; }
-    </style>
-</head>
-<body>
-    <div id="swagger-ui"></div>
-    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js"></script>
-    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-standalone-preset.js"></script>
-    <script>
-        window.onload = function() {
-            const ui = SwaggerUIBundle({
-                url: window.location.origin + "/swagger.yaml",
-                dom_id: '#swagger-ui',
-                deepLinking: true,
-                presets: [
-                    SwaggerUIBundle.presets.apis,
-                    SwaggerUIStandalonePreset
-                ],
-                plugins: [
-                    SwaggerUIBundle.plugins.DownloadUrl
-                ],
-                layout: "StandaloneLayout"
-            });
-        };
-    </script>
-</body>
-</html>
-            """
-            resp = make_response(swagger_ui_html, 200)
-            resp.headers['Content-Type'] = 'text/html; charset=utf-8'
-            # Aplicar CSP mais permissivo para Swagger UI
-            if SECURITY_HEADERS_ENABLED:
-                resp = add_security_headers(resp, use_swagger_csp=True)
-            return add_cors(resp)
+        # O endpoint alternativo já foi criado acima, então está garantido
     
     return app
 

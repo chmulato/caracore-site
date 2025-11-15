@@ -119,27 +119,43 @@ def require_https(f):
     return decorated_function
 
 
-def add_security_headers(response):
+def add_security_headers(response, use_swagger_csp=False):
     """
     Adiciona headers de segurança na resposta
+    
+    Args:
+        response: Resposta Flask
+        use_swagger_csp: Se True, usa CSP mais permissivo para Swagger UI
     
     Usage no Flask:
         @app.after_request
         def apply_security_headers(response):
             return add_security_headers(response)
     """
-    
-    # HSTS - Force HTTPS por período longo
-    if is_https(request) and SecurityConfig.ENVIRONMENT == "production":
-        hsts_value = f"max-age={SecurityConfig.HSTS_MAX_AGE}"
-        if SecurityConfig.HSTS_INCLUDE_SUBDOMAINS:
-            hsts_value += "; includeSubDomains"
-        if SecurityConfig.HSTS_PRELOAD:
-            hsts_value += "; preload"
-        response.headers["Strict-Transport-Security"] = hsts_value
-    
-    # Content Security Policy - Previne XSS
-    response.headers["Content-Security-Policy"] = SecurityConfig.CSP_POLICY
+    try:
+        # HSTS - Force HTTPS por período longo
+        try:
+            if is_https(request) and SecurityConfig.ENVIRONMENT == "production":
+                hsts_value = f"max-age={SecurityConfig.HSTS_MAX_AGE}"
+                if SecurityConfig.HSTS_INCLUDE_SUBDOMAINS:
+                    hsts_value += "; includeSubDomains"
+                if SecurityConfig.HSTS_PRELOAD:
+                    hsts_value += "; preload"
+                response.headers["Strict-Transport-Security"] = hsts_value
+        except Exception as hsts_error:
+            logger.warning(f"Erro ao aplicar HSTS: {hsts_error}")
+        
+        # Content Security Policy - Previne XSS
+        # Usa CSP mais permissivo para Swagger UI se solicitado
+        csp_policy = SecurityConfig.CSP_POLICY_SWAGGER if use_swagger_csp else SecurityConfig.CSP_POLICY
+        response.headers["Content-Security-Policy"] = csp_policy
+    except Exception as e:
+        logger.error(f"Erro ao aplicar security headers: {e}", exc_info=True)
+        # Aplicar pelo menos o CSP básico mesmo em caso de erro
+        try:
+            response.headers["Content-Security-Policy"] = SecurityConfig.CSP_POLICY
+        except:
+            pass
     
     # X-Frame-Options - Previne clickjacking
     response.headers["X-Frame-Options"] = "DENY"

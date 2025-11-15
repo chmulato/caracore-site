@@ -1,5 +1,10 @@
 // Approval Manager JavaScript - Versão Robusta
 
+// Configuração do backend
+const backendUrl = window.location.hostname === 'localhost' 
+    ? 'http://localhost:5051'
+    : 'https://caracore-backend-docker.azurewebsites.net';
+
 let currentRequests = [];
 let currentUser = null;
 let selectedRequestId = null;
@@ -230,24 +235,40 @@ async function loadRequests() {
     showLoading(true);
     
     try {
-        console.log('Carregando solicitações...');
+        const token = getAuthToken();
+        if (!token) {
+            throw new Error('Token de autenticação não encontrado');
+        }
         
-        const response = await fetch('https://caracore-backend-docker.azurewebsites.net/api/admin/access-requests', {
+        console.log('Carregando solicitações...');
+        console.log('Backend URL:', backendUrl);
+        console.log('Token presente:', !!token);
+        
+        const response = await fetch(`${backendUrl}/api/admin/access-requests`, {
             headers: {
-                'Authorization': `Bearer ${getAuthToken()}`
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
             }
         });
 
+        console.log('Response status:', response.status);
+        
         if (response.ok) {
             const data = await response.json();
+            console.log('Dados recebidos:', data);
             currentRequests = data.requests || [];
             
             console.log('Solicitações carregadas:', currentRequests.length);
+            if (currentRequests.length > 0) {
+                console.log('Primeira solicitação:', currentRequests[0]);
+            }
             
             updateStats();
             renderRequests(currentRequests);
         } else {
+            const errorText = await response.text();
             console.error('Erro HTTP:', response.status, response.statusText);
+            console.error('Resposta do servidor:', errorText);
             throw new Error(`Erro ${response.status}: ${response.statusText}`);
         }
         
@@ -355,13 +376,13 @@ function createRequestCard(request) {
         ${request.status === 'pending' ? `
         <div class="actions-section">
             <button class="action-button approve-button" onclick="approveRequest('${request.id}')">
-                ✓ Aprovar
+                Aprovar
             </button>
-            <button class="action-button reject-button" onclick="authorizeAndShowRejectModal('${request.id}')">>
-                ✗ Rejeitar
+            <button class="action-button reject-button" onclick="authorizeAndShowRejectModal('${request.id}')">
+                Rejeitar
             </button>
             <button class="action-button details-button" onclick="showRequestDetails('${request.id}')">
-                📋 Detalhes
+                Detalhes
             </button>
         </div>
         ` : ''}
@@ -422,7 +443,7 @@ async function approveRequest(requestId) {
     if (!confirm('Confirma a aprovação desta solicitação?')) return;
     
     try {
-        const response = await fetch(`https://caracore-backend-docker.azurewebsites.net/api/admin/access-requests/${requestId}/approve`, {
+        const response = await fetch(`${backendUrl}/api/admin/access-requests/${requestId}/approve`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${getAuthToken()}`,
@@ -519,7 +540,7 @@ async function confirmRejection() {
     const reason = document.getElementById('rejection-reason').value;
     
     try {
-        const response = await fetch(`https://caracore-backend-docker.azurewebsites.net/api/admin/access-requests/${selectedRequestId}/reject`, {
+        const response = await fetch(`${backendUrl}/api/admin/access-requests/${selectedRequestId}/reject`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${getAuthToken()}`,

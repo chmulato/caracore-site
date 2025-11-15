@@ -1013,21 +1013,21 @@ class FirstAccessManager {
         const timestamp = new Date().toLocaleString('pt-BR');
         const internal = formData._internal || {};
         
-        return `🔐 *SOLICITAÇÃO DE ACESSO - ÁREA 51*
+        return `*SOLICITAÇÃO DE ACESSO - ÁREA 51*
 
-👤 *DADOS DO SOLICITANTE:*
+*DADOS DO SOLICITANTE:*
 • Nome: ${formData.name}
 • Email: ${formData.email}
 • Provedor OAuth: ${this.getProviderDisplayName(formData.provider)}
 ${internal.company ? `• Empresa: ${internal.company}` : ''}
 ${internal.phone ? `• Telefone: ${internal.phone}` : ''}
 
-📝 *MOTIVO DO ACESSO:*
+*MOTIVO DO ACESSO:*
 "${internal.accessReason}"
 
-📅 *DATA/HORA:* ${timestamp}
+*DATA/HORA:* ${timestamp}
 
-🆔 *REQUEST ID:* REQ-${Date.now()}
+*REQUEST ID:* REQ-${Date.now()}
 
 ---
 *Cara Core Informática - Sistema de Acesso Área 51*
@@ -1087,7 +1087,7 @@ Solicitação gerada automaticamente via sistema web.`;
                             <p class="mb-0">Agora você precisa enviar os dados via WhatsApp para nossa equipe.</p>
                         </div>
                         
-                        <h6>📋 Instruções:</h6>
+                        <h6>Instruções:</h6>
                         <ol class="mb-4">
                             <li><strong>Instale o WhatsApp Web</strong> no seu navegador (se ainda não tiver)</li>
                             <li><strong>Clique no botão</strong> "Enviar via WhatsApp" abaixo</li>

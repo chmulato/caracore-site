@@ -69,7 +69,7 @@ async function authenticateSuperAdmin() {
         localStorage.setItem('super_admin_role', result.role);
         localStorage.setItem('super_admin_authenticated', 'true');
         
-        showStatusInfo('✅ Autenticado com sucesso! Redirecionando...', false);
+        showStatusInfo('Autenticado com sucesso! Redirecionando...', false);
         
         // Redirecionar para painel administrativo
         setTimeout(() => {
@@ -78,7 +78,7 @@ async function authenticateSuperAdmin() {
         
     } catch (error) {
         console.error('Erro na autenticação:', error);
-        showError('❌ ' + error.message);
+        showError('Erro: ' + error.message);
         
         // Limpar campo de senha
         document.getElementById('admin-password').value = '';

@@ -6,16 +6,38 @@ Este guia executa os 4 passos necessários para configurar a persistência de da
 
 ## ✅ Passo 1: Configurar Azure Files
 
-### Opção A: Via Script Python (Recomendado)
+### Opção A: Managed Identity (Recomendado - Mais Seguro) ⭐
+
+```bash
+# Executar script Python com Managed Identity
+python scripts/configure_azure_files_managed_identity.py
+```
+
+**Vantagens:**
+- ✅ Sem necessidade de gerenciar Access Keys
+- ✅ Rotação automática de credenciais
+- ✅ Melhor segurança (princípio de menor privilégio)
+
+**Documentação completa:** `docs/AZURE_FILES_MANAGED_IDENTITY.md`
+
+**O que o script faz:**
+- ✅ Habilita Managed Identity (System Assigned) no App Service
+- ✅ Atribui role "Storage File Data SMB Share Contributor"
+- ✅ Configura Application Settings
+- ✅ Reinicia o Web App automaticamente
+
+**Nota:** A montagem do volume pode precisar ser configurada manualmente via Portal (veja documentação completa).
+
+**Tempo estimado:** 5-10 minutos
+
+---
+
+### Opção B: Via Script Python com Access Key
 
 ```bash
 # Executar script Python
 python scripts/configure_azure_files.py
 ```
-
-### Opção B: Manualmente via Azure Portal
-
-Siga o guia completo em: `docs/AZURE_PERSISTENT_STORAGE.md` ou `docs/CONFIGURAR_AZURE_FILES_PORTAL.md`
 
 **O que o script faz:**
 - ✅ Cria Storage Account (se não existir)
@@ -24,6 +46,12 @@ Siga o guia completo em: `docs/AZURE_PERSISTENT_STORAGE.md` ou `docs/CONFIGURAR_
 - ✅ Reinicia o Web App automaticamente
 
 **Tempo estimado:** 2-3 minutos
+
+---
+
+### Opção C: Manualmente via Azure Portal
+
+Siga o guia completo em: `docs/AZURE_PERSISTENT_STORAGE.md` ou `docs/CONFIGURAR_AZURE_FILES_PORTAL.md`
 
 ---
 

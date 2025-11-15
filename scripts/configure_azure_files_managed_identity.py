@@ -21,12 +21,14 @@ class Colors:
     NC = '\033[0m'  # No Color
 
 # Variáveis de configuração (podem ser sobrescritas por variáveis de ambiente)
-RESOURCE_GROUP = os.environ.get("AZ_RESOURCE_GROUP", "rg-caracore")
-STORAGE_ACCOUNT_NAME = os.environ.get("AZ_STORAGE_ACCOUNT", "caracoredata")
-FILE_SHARE_NAME = os.environ.get("AZ_SHARE_NAME", "caracore-data")
+RESOURCE_GROUP = os.environ.get("AZ_RESOURCE_GROUP") or os.environ.get("AZURE_RESOURCE_GROUP", "rg-caracore")
+STORAGE_ACCOUNT_NAME = os.environ.get("AZ_STORAGE_ACCOUNT") or os.environ.get("AZURE_STORAGE_ACCOUNT", "caracoredata")
+FILE_SHARE_NAME = os.environ.get("AZ_SHARE_NAME") or os.environ.get("AZURE_STORAGE_SHARE_NAME", "caracore-data")
 WEB_APP_NAME = os.environ.get("AZ_APP_NAME", "caracore-backend-docker")
-MOUNT_PATH = os.environ.get("AZ_MOUNT_PATH", "/home/site/wwwroot/data")
-MOUNT_NAME = os.environ.get("AZ_MOUNT_ID", "cara-files")
+MOUNT_PATH = os.environ.get("AZ_MOUNT_PATH") or os.environ.get("AZURE_STORAGE_MOUNT_PATH", "/home/site/wwwroot/data")
+MOUNT_NAME = os.environ.get("AZ_MOUNT_ID") or os.environ.get("AZURE_STORAGE_MOUNT_ID", "cara-files")
+STORAGE_ACCESS_KEY = os.environ.get("AZURE_STORAGE_ACCESS_KEY", "")
+STORAGE_ACCESS_TYPE = os.environ.get("AZURE_STORAGE_ACCESS_TYPE", "ManagedIdentity")
 ROLE_NAME = "Storage File Data SMB Share Contributor"
 
 def print_header(text: str):

@@ -9,12 +9,16 @@ secure/
 ├── index.html        # Tela de consentimento e escolha do provedor
 ├── restrita.html     # Conteudo protegido; exige sessao valida
 ├── logout.html       # Mensagem de encerramento e limpeza local
-├── auth.js           # Modulo central de autenticacao (window.CaraCoreOIDC)
+├── callback.html     # Processamento de callback OAuth
+├── js/
+│   ├── auth.js       # Modulo central de autenticacao (window.CaraCoreOIDC)
+│   ├── token-manager.js  # Gerenciamento de sessões e refresh tokens (Fase 7)
+│   └── [outros arquivos JS]
 ├── config/
 │   ├── google.json   # Parametros do Google Identity
 │   └── entra.json    # Parametros do Microsoft Entra ID
-└── assets/
-    └── style.css     # Estilos reutilizados nas telas seguras
+└── css/
+    └── [arquivos de estilo]
 ```
 
 Arquivos auxiliares antigos permanecem na pasta para referencia historica, mas o fluxo oficial considera apenas os itens listados acima.
@@ -29,6 +33,16 @@ Arquivos auxiliares antigos permanecem na pasta para referencia historica, mas o
 6. O perfil e o access token sao armazenados em sessionStorage; a pessoa e enviada para restrita.html.
 7. restrita.html executa CaraCoreOIDC.requireAuth() e so libera o conteudo se o token estiver valido.
 8. logout.html remove tokens locais (logoutLocal) e apresenta a confirmacao. Caso o signoutRedirect tenha sido concluido, o provedor redireciona para essa mesma pagina.
+
+### Fluxo com Refresh Tokens (Fase 7)
+
+A partir da Fase 7, o sistema implementa renovacao automatica de tokens:
+
+1. Apos login bem-sucedido, o backend cria uma sessao e retorna um `session_id`.
+2. O `token-manager.js` armazena o `session_id` e gerencia a renovacao automatica.
+3. Antes do access token expirar (5 minutos antes), o TokenManager renova automaticamente.
+4. O refresh token e armazenado de forma criptografada no backend.
+5. Em caso de falha na renovacao, o usuario e redirecionado para login.
 
 ## Configuracao dos provedores
 
@@ -84,7 +98,33 @@ No portal Azure:
 - O deploy estatico deve consumir apenas client_id, authority, redirect_uri e scope.
 - Atualize os arquivos JSON em tempo de build se precisar alternar entre ambiente de teste e producao.
 
-## ATUALIZAÇÃO 01/11/2025 — Correções e recomendações importantes
+## ATUALIZAÇÃO 15/11/2025 — Fase 7: Sistema de Refresh Tokens
+
+Em 15/11/2025 foi iniciada a implementacao da Fase 7, que adiciona renovacao automatica de tokens:
+
+### Novidades da Fase 7
+
+- **Token Manager JavaScript**: `secure/js/token-manager.js` gerencia sessoes e renovacao automatica
+- **Endpoints REST**: Novos endpoints para criacao, renovacao e revogacao de sessoes
+- **Armazenamento Seguro**: Refresh tokens criptografados no backend (AES-256-CBC)
+- **Renovacao Automatica**: Tokens renovados 5 minutos antes de expirar
+- **Auditoria**: Logs completos de operacoes de sessao
+
+### Configuracao Necessaria
+
+Para habilitar a Fase 7, configure as seguintes variaveis de ambiente no Azure App Service:
+
+- `TOKEN_ENCRYPTION_KEY` (obrigatorio) - Chave de criptografia AES-256
+- `SESSION_TIMEOUT_HOURS` (opcional, default: 24)
+- `MAX_SESSIONS_PER_USER` (opcional, default: 5)
+- `CLEANUP_INTERVAL_HOURS` (opcional, default: 6)
+- `AUDIT_LOG_RETENTION_DAYS` (opcional, default: 90)
+
+**Script de configuracao:** `python scripts/configure_fase7_azure.py`
+
+**Documentacao completa:** `docs/fases/fase-7/README.md`
+
+### ATUALIZAÇÃO 01/11/2025 — Correções e recomendações importantes
 
 Em 01/11/2025 aplicamos correções críticas em produção e atualizamos o processo de configuração no repositório. Resumo das mudanças relevantes para a `Área 51`:
 
@@ -95,25 +135,25 @@ Em 01/11/2025 aplicamos correções críticas em produção e atualizamos o proc
 
 Passos rápidos de verificação (úteis para o time):
 
-1.Testar preflight CORS (deve retornar 204):
+1. Testar preflight CORS (deve retornar 204):
 
 ```powershell
 curl -X OPTIONS https://caracore-backend-docker.azurewebsites.net/api/admin/logs -I
 ```
 
-2.Verificar `WEBSITES_PORT` no App Settings:
+2. Verificar `WEBSITES_PORT` no App Settings:
 
 ```powershell
 az webapp config appsettings list --name caracore-backend --resource-group rg-caracore --query "[?name=='WEBSITES_PORT']"
 ```
 
-3.Confirmar startup command usa `$PORT` dinâmico:
+3. Confirmar startup command usa `$PORT` dinâmico:
 
 ```powershell
 az webapp config set --name caracore-backend --resource-group rg-caracore --startup-file "gunicorn --bind=0.0.0.0:`$PORT --timeout 600 app:app"
 ```
 
-4.Usar o script de configuração (local):
+4. Usar o script de configuração (local):
 
 ```powershell
 # Preencha secrets.txt com as variáveis (use secrets.txt.template como referência)
@@ -145,6 +185,32 @@ Para testar em [http://localhost], crie variantes dos arquivos de configuracao (
 
 Esses metodos podem ser reutilizados em paginas adicionais dentro de /secure/.
 
+## Token Manager (Fase 7)
+
+O `token-manager.js` gerencia sessoes e renovacao automatica de tokens:
+
+### Funcionalidades
+
+- Armazenamento seguro de `session_id` no localStorage
+- Renovacao automatica de access tokens (5 minutos antes de expirar)
+- Monitoramento de expiração de tokens
+- Integracao com sistema OAuth existente
+- Revogacao de sessao no logout
+
+### Metodos Principais
+
+- `initSession(sessionData)`: Inicializa sessao apos login
+- `refreshToken()`: Renova access token automaticamente
+- `getAccessToken()`: Retorna access token atual
+- `logout()`: Revoga sessao e limpa dados locais
+- `scheduleRefresh()`: Agenda proxima renovacao
+
+### Integracao
+
+O TokenManager e automaticamente inicializado apos login bem-sucedido. Ele monitora a expiracao dos tokens e renova automaticamente, melhorando a experiencia do usuario ao evitar reautenticacoes frequentes.
+
+**Documentacao completa:** `docs/fases/fase-7/README.md`
+
 ## Checklist ao publicar
 
 - [ ] Confirmar que redirect_uri e post_logout_redirect_uri estao aprovados nos provedores.
@@ -152,5 +218,10 @@ Esses metodos podem ser reutilizados em paginas adicionais dentro de /secure/.
 - [ ] Garantir HTTPS em [www.caracore.com.br] (requisito do PKCE).
 - [ ] Validar o fluxo completo (login, acesso restrito, logout) para cada provedor em ambiente real.
 - [ ] Auditar os logs de erro do provedor para identificar tentativas de login nao autorizadas.
+- [ ] Configurar variaveis de ambiente da Fase 7 no Azure App Service (se aplicavel).
+- [ ] Validar renovacao automatica de tokens em producao.
 
-Com isso o prompt solicitado esta aplicado ao projeto, mantendo a autenticao centralizada, segura e documentado propositalmente.
+---
+
+**Ultima Atualizacao:** 15/11/2025  
+**Documentacao Fase 7:** `docs/fases/fase-7/README.md`

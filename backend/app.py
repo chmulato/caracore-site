@@ -122,7 +122,8 @@ except ImportError:
     # Dummy decorator se não disponível
     def require_https(f):
         return f
-    def add_security_headers(response):
+    def add_security_headers(response, use_swagger_csp=False):
+        """Dummy function quando security module não está disponível"""
         return response
 
 # Import authorization para controle de acesso
@@ -2860,13 +2861,18 @@ def create_app() -> Flask:
                 if request.path == "/api-docs":
                     # Se já tem CSP aplicado, não aplicar novamente
                     if "Content-Security-Policy" not in response.headers:
-                        response = add_security_headers(response, use_swagger_csp=True)
+                        try:
+                            # Tentar com parâmetro use_swagger_csp (versão nova)
+                            response = add_security_headers(response, use_swagger_csp=True)
+                        except TypeError:
+                            # Se não aceitar o parâmetro, usar versão antiga (compatibilidade retroativa)
+                            response = add_security_headers(response)
                 else:
                     # Para outros endpoints, aplicar CSP padrão
                     if "Content-Security-Policy" not in response.headers:
                         response = add_security_headers(response)
             except Exception as e:
-                logger.error(f"Erro ao aplicar security headers no after_request: {e}")
+                logger.error(f"Erro ao aplicar security headers no after_request: {e}", exc_info=True)
                 # Continuar mesmo se houver erro
         return response
     
@@ -2930,7 +2936,13 @@ def create_app() -> Flask:
             # Nota: O after_request também aplicará headers, mas verificará se já foram aplicados
             if SECURITY_HEADERS_ENABLED:
                 try:
-                    resp = add_security_headers(resp, use_swagger_csp=True)
+                    # Tentar com parâmetro use_swagger_csp (versão nova)
+                    try:
+                        resp = add_security_headers(resp, use_swagger_csp=True)
+                    except TypeError:
+                        # Se não aceitar o parâmetro, usar versão antiga (compatibilidade retroativa)
+                        logger.warning("Versão antiga de security.py detectada - usando add_security_headers sem parâmetro")
+                        resp = add_security_headers(resp)
                 except Exception as header_error:
                     logger.error(f"Erro ao aplicar security headers no Swagger: {header_error}", exc_info=True)
                     # Continuar mesmo se houver erro nos headers - o after_request tentará aplicar

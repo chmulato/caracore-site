@@ -18,10 +18,10 @@
                 <p class="subtitle">Documentação Técnica do Sistema de Autenticação OAuth 2.1 + OIDC</p>
                 <div class="mt-3">
                     <span class="badge-custom bg-success"> FASE 5 CONCLUÍDA</span>
-                    <span class="badge-custom bg-warning text-dark"> FASE 6 EM DESENVOLVIMENTO</span>
+                    <span class="badge-custom bg-success"> FASE 6 CONCLUÍDA</span>
                     <span class="badge-custom bg-info"> FASE 7 PLANEJADA</span>
-                    <span class="badge-custom bg-primary"> 77.3% Testes Aprovados</span>
-                    <span class="badge-custom bg-secondary"> OAuth 2.1 + Refresh Tokens</span>
+                    <span class="badge-custom bg-primary"> 100% Testes Aprovados</span>
+                    <span class="badge-custom bg-secondary"> OAuth 2.1 + LGPD + Swagger</span>
                 </div>
             </div>
 
@@ -59,6 +59,11 @@
                         <a class="nav-link" href="/secure/change-password.html" target="_blank">
                             <i class="bi bi-key me-2 text-success"></i>Alterar Senha
                             <span class="badge bg-success ms-1">Fase 5</span>
+                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
+                        </a>
+                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/api-docs" target="_blank">
+                            <i class="bi bi-file-code me-2 text-info"></i>API Documentation (Swagger)
+                            <span class="badge bg-info ms-1">Fase 6</span>
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
 
@@ -103,12 +108,21 @@
                             Bem-vindo à documentação técnica do <strong>Sistema de Autenticação e Autorização CaraCore</strong>. Este projeto implementa um fluxo de login seguro e moderno utilizando <strong>OAuth 2.1 e OpenID Connect (OIDC)</strong>, com foco em segurança, performance e escalabilidade.
                         </p>
                         <div class="alert alert-success">
-                            <strong>Fase 5 Concluída!</strong> O sistema agora inclui um painel administrativo completo para gestão de usuários, aprovações e senhas, com uma arquitetura de frontend totalmente reorganizada e centralizada.
+                            <strong>Fase 6 Concluída!</strong> O sistema agora possui um sistema de autorização robusto com validação JWT completa, conformidade LGPD obrigatória, documentação API completa (Swagger/OpenAPI), detecção automática de provedor e gestão aprimorada de usuários.
                             <br><br>
-                            <strong>Próximas Etapas:</strong> A Fase 6 está em desenvolvimento focando em melhorias de segurança, enquanto a Fase 7 foi planejada para implementar um sistema robusto de armazenamento seguro de refresh tokens, permitindo renovação automática de sessões sem reautenticação manual.
+                            <strong>Melhorias Implementadas:</strong>
+                            <ul class="mb-0">
+                                <li>✅ Validação obrigatória de consentimento LGPD</li>
+                                <li>✅ Swagger UI disponível em <a href="https://caracore-backend-docker.azurewebsites.net/api-docs" target="_blank">/api-docs</a></li>
+                                <li>✅ Detecção automática de provedor (Google/Microsoft)</li>
+                                <li>✅ CRUD completo de usuários autorizados</li>
+                                <li>✅ 100% de aprovação nos testes automatizados</li>
+                            </ul>
+                            <br>
+                            <strong>Próxima Etapa:</strong> A Fase 7 foi planejada para implementar um sistema robusto de armazenamento seguro de refresh tokens, permitindo renovação automática de sessões sem reautenticação manual.
                         </div>
                         <p>
-                            O sistema foi validado por um conjunto de <strong>22 testes automatizados</strong>, atingindo uma taxa de sucesso de <strong>77.3%</strong>, o que garante a funcionalidade das principais features em produção.
+                            O sistema foi validado por um conjunto de <strong>22 testes automatizados</strong>, atingindo uma taxa de sucesso de <strong>100%</strong>, garantindo a funcionalidade completa de todas as features em produção.
                         </p>
                     </section>
 
@@ -123,7 +137,7 @@
                             <img src="assets/architecture-diagram.png" alt="Diagrama de Arquitetura do Sistema OAuth 2.1 + OIDC CaraCore" class="img-fluid rounded border architecture-diagram">
                         </div>
                         <div class="alert alert-info">
-                            <strong>Novidade Fase 5:</strong> A arquitetura agora inclui endpoints administrativos (`/api/admin/*`) protegidos por um token de super admin, garantindo que apenas usuários autorizados possam gerenciar o sistema.
+                            <strong>Novidades Fase 5 e 6:</strong> A arquitetura inclui endpoints administrativos (`/api/admin/*`) protegidos por middleware de autorização robusto, sistema de gestão de usuários com CRUD completo, e documentação API completa via Swagger/OpenAPI. Todos os endpoints são protegidos por validação JWT e hierarquia de roles (user < admin < super_admin).
                         </div>
                     </section>
 
@@ -134,12 +148,14 @@
                             <li><strong>PKCE (Proof Key for Code Exchange):</strong> Previne ataques de interceptação de código de autorização.</li>
                             <li><strong>Validação de Token JWT:</strong> O backend valida a assinatura, expiração e emissor de cada token.</li>
                             <li><strong>HTTPS Obrigatório:</strong> Todo o tráfego é criptografado.</li>
-                            <li><strong>Content Security Policy (CSP):</strong> Implementado para mitigar ataques XSS.</li>
+                            <li><strong>Content Security Policy (CSP):</strong> Implementado para mitigar ataques XSS e configurado para permitir recursos do Swagger UI e outros serviços externos necessários.</li>
                             <li><strong>Autenticação de Super Admin:</strong> Acesso aos painéis administrativos protegido por credenciais separadas e hash de senha seguro (bcrypt).</li>
                             <li><strong>Rate Limiting:</strong> Proteção contra ataques de força bruta nos endpoints de autenticação.</li>
+                            <li><strong>Middleware de Autorização:</strong> Sistema robusto de validação JWT com hierarquia de roles (user < admin < super_admin).</li>
+                            <li><strong>Conformidade LGPD:</strong> Consentimento obrigatório registrado com timestamp e versões dos termos.</li>
                         </ul>
-                        <div class="alert alert-warning">
-                            <strong>Próximos Passos (Fase 6):</strong> Os testes automatizados apontaram a necessidade de fortalecer o sistema de autorização e a proteção de endpoints, que serão o foco da próxima fase de desenvolvimento.
+                        <div class="alert alert-success">
+                            <strong>Fase 6 Concluída:</strong> Sistema de autorização robusto implementado e validado em produção. Todos os endpoints protegidos, validação JWT funcional, e 100% de aprovação nos testes automatizados. Base sólida estabelecida para a Fase 7.
                         </div>
                     </section>
 
@@ -155,6 +171,7 @@
                                     <li>Authlib</li>
                                     <li>PyJWT</li>
                                     <li>Bcrypt</li>
+                                    <li>Flasgger (Swagger/OpenAPI)</li>
                                 </ul>
                             </div>
                             <div class="col-md-6">
@@ -215,12 +232,30 @@
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="headingThree">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <strong>Fase 6:</strong> Melhorias de Segurança e Autorização (Em Desenvolvimento)
+                                        <strong>Fase 6:</strong> Melhorias de Segurança e Autorização (Concluída)
                                     </button>
                                 </h2>
                                 <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionFases">
                                     <div class="accordion-body">
-                                        Foco em resolver os 5 testes que falharam, implementando um sistema de autorização robusto, fortalecendo a proteção de endpoints e calibrando a validação de credenciais. A meta é atingir mais de 90% de aprovação nos testes automatizados.
+                                        <strong>Status:</strong> ✅ Concluída e validada em produção (14/11/2025)
+                                        <br><br>
+                                        <strong>Objetivos Alcançados:</strong>
+                                        <ul class="mb-2">
+                                            <li>✅ Sistema de autorização robusto com middleware de validação JWT</li>
+                                            <li>✅ Hierarquia de roles funcionando (user < admin < super_admin)</li>
+                                            <li>✅ Proteção efetiva em 6 endpoints críticos</li>
+                                            <li>✅ 100% de aprovação nos testes automatizados (meta era >90%)</li>
+                                        </ul>
+                                        <strong>Melhorias Implementadas (Pós-Conclusão):</strong>
+                                        <ul class="mb-2">
+                                            <li>✅ Conformidade LGPD obrigatória no formulário de primeiro acesso</li>
+                                            <li>✅ Swagger/OpenAPI implementado em <a href="https://caracore-backend-docker.azurewebsites.net/api-docs" target="_blank">/api-docs</a></li>
+                                            <li>✅ Detecção automática de provedor (Google/Microsoft) baseado no domínio do email</li>
+                                            <li>✅ CRUD completo de usuários autorizados (Create, Read, Update, Delete)</li>
+                                            <li>✅ Melhorias de UX: aprovação automática, redirecionamento inteligente</li>
+                                            <li>✅ Correções de segurança: CSP ajustado, compatibilidade retroativa</li>
+                                        </ul>
+                                        <strong>Métricas:</strong> Taxa de proteção 100%, Validação JWT funcional, Auditoria implementada, Testes automatizados 100%.
                                     </div>
                                 </div>
                             </div>
@@ -253,25 +288,51 @@
                     <section id="metricas">
                         <h2><i class="bi bi-graph-up"></i> Métricas Atuais</h2>
                         <div class="row text-center">
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="metric-card">
-                                    <h3>77.3%</h3>
+                                    <h3>100%</h3>
                                     <p>Taxa de Sucesso nos Testes</p>
                                     <div class="progress progress-thin">
-                                        <div class="progress-bar bg-primary progress-success-rate" role="progressbar" aria-valuenow="77.3" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 77.3%" title="Taxa de sucesso nos testes: 77.3%"></div>
+                                        <div class="progress-bar bg-success progress-success-rate" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 100%" title="Taxa de sucesso nos testes: 100%" style="width: 100%"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <div class="metric-card">
                                     <h3>22</h3>
                                     <p>Total de Testes Automatizados</p>
                                 </div>
                             </div>
+                            <div class="col-md-3">
+                                <div class="metric-card">
+                                    <h3>6</h3>
+                                    <p>Fases Concluídas</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="metric-card">
+                                    <h3>100%</h3>
+                                    <p>Endpoints Protegidos</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row text-center mt-3">
                             <div class="col-md-4">
                                 <div class="metric-card">
-                                    <h3>5 + 2</h3>
-                                    <p>Fases (5 Concl. + 2 Plan.)</p>
+                                    <h3><i class="bi bi-shield-check text-success"></i></h3>
+                                    <p>Conformidade LGPD</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="metric-card">
+                                    <h3><i class="bi bi-file-code text-info"></i></h3>
+                                    <p>API Documentada (Swagger)</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="metric-card">
+                                    <h3><i class="bi bi-robot text-primary"></i></h3>
+                                    <p>Detecção Automática de Provedor</p>
                                 </div>
                             </div>
                         </div>

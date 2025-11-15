@@ -255,6 +255,28 @@ class FirstAccessManager {
                 }
             });
         });
+        
+        // Validação em tempo real para checkbox de LGPD
+        const agreeTerms = document.getElementById('agreeTerms');
+        if (agreeTerms) {
+            agreeTerms.addEventListener('change', () => {
+                if (agreeTerms.checked) {
+                    // Remover indicação de erro quando marcado
+                    agreeTerms.classList.remove('is-invalid');
+                    agreeTerms.classList.add('is-valid');
+                    const formCheck = agreeTerms.closest('.form-check');
+                    if (formCheck) {
+                        const existingFeedback = formCheck.querySelector('.lgpd-feedback');
+                        if (existingFeedback) {
+                            existingFeedback.remove();
+                        }
+                    }
+                } else {
+                    // Remover indicação de válido quando desmarcado
+                    agreeTerms.classList.remove('is-valid');
+                }
+            });
+        }
     }
     
     validateField(field) {
@@ -477,11 +499,42 @@ class FirstAccessManager {
             }
         }
         
-        // Validar termos
+        // Validar aceite do termo de LGPD (OBRIGATÓRIO)
         const agreeTerms = document.getElementById('agreeTerms');
-        if (!agreeTerms.checked) {
-            this.showError('Você deve concordar com os Termos de Serviço e Política de Privacidade.');
+        if (!agreeTerms || !agreeTerms.checked) {
+            // Marcar checkbox como inválido visualmente
+            if (agreeTerms) {
+                agreeTerms.classList.add('is-invalid');
+                // Adicionar feedback visual
+                const formCheck = agreeTerms.closest('.form-check');
+                if (formCheck) {
+                    // Remover feedback anterior
+                    const existingFeedback = formCheck.querySelector('.lgpd-feedback');
+                    if (existingFeedback) {
+                        existingFeedback.remove();
+                    }
+                    // Adicionar novo feedback
+                    const feedback = document.createElement('div');
+                    feedback.className = 'lgpd-feedback text-danger small mt-1';
+                    feedback.innerHTML = '<i class="bi bi-exclamation-circle"></i> Você deve aceitar os Termos de Serviço e Política de Privacidade (LGPD) para continuar.';
+                    formCheck.appendChild(feedback);
+                }
+            }
+            this.showError('Você deve aceitar os Termos de Serviço e Política de Privacidade (LGPD) para solicitar acesso. Este consentimento é obrigatório e será registrado no sistema.');
             isValid = false;
+        } else {
+            // Remover indicação de erro se estiver marcado
+            if (agreeTerms) {
+                agreeTerms.classList.remove('is-invalid');
+                agreeTerms.classList.add('is-valid');
+                const formCheck = agreeTerms.closest('.form-check');
+                if (formCheck) {
+                    const existingFeedback = formCheck.querySelector('.lgpd-feedback');
+                    if (existingFeedback) {
+                        existingFeedback.remove();
+                    }
+                }
+            }
         }
         
         return isValid;
@@ -565,6 +618,7 @@ class FirstAccessManager {
         if (!response.ok) {
             const errorData = await response.json().catch(() => ({}));
             const errorMessage = errorData.error_description || `Erro HTTP ${response.status}`;
+            const errorCode = errorData.error || '';
             
             // Se o usuário já está autorizado, redirecionar para área restrita
             if (errorMessage.includes('já está autorizado') || errorMessage.includes('already authorized')) {
@@ -578,6 +632,31 @@ class FirstAccessManager {
                     alreadyAuthorized: true,
                     message: 'Usuário já autorizado'
                 };
+            }
+            
+            // Tratamento específico para erro de consentimento LGPD
+            if (errorCode === 'lgpd_consent_required' || errorMessage.includes('LGPD') || errorMessage.includes('consentimento')) {
+                // Marcar checkbox como inválido
+                const agreeTerms = document.getElementById('agreeTerms');
+                if (agreeTerms) {
+                    agreeTerms.classList.add('is-invalid');
+                    agreeTerms.classList.remove('is-valid');
+                    // Scroll até o checkbox
+                    agreeTerms.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Adicionar feedback visual
+                    const formCheck = agreeTerms.closest('.form-check');
+                    if (formCheck) {
+                        const existingFeedback = formCheck.querySelector('.lgpd-feedback');
+                        if (existingFeedback) {
+                            existingFeedback.remove();
+                        }
+                        const feedback = document.createElement('div');
+                        feedback.className = 'lgpd-feedback text-danger small mt-1';
+                        feedback.innerHTML = '<i class="bi bi-exclamation-circle"></i> ' + errorMessage;
+                        formCheck.appendChild(feedback);
+                    }
+                }
+                throw new Error(errorMessage);
             }
             
             throw new Error(errorMessage);

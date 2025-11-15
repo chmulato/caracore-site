@@ -2485,17 +2485,41 @@ def create_app() -> Flask:
                 if field not in data or not data[field]:
                     return jsonify({"error": "invalid_request", "error_description": f"Campo '{field}' é obrigatório"}), 400
             
+            # Validar consentimento LGPD (OBRIGATÓRIO)
+            lgpd_consent_data = data.get('lgpd_consent')
+            if not lgpd_consent_data:
+                return jsonify({
+                    "error": "lgpd_consent_required", 
+                    "error_description": "Consentimento LGPD é obrigatório. Você deve aceitar os Termos de Serviço e Política de Privacidade para solicitar acesso."
+                }), 400
+            
+            # Verificar se o consentimento foi realmente dado
+            lgpd_consent_value = False
+            if isinstance(lgpd_consent_data, dict):
+                lgpd_consent_value = lgpd_consent_data.get('lgpd_consent', False)
+            elif isinstance(lgpd_consent_data, bool):
+                lgpd_consent_value = lgpd_consent_data
+            else:
+                lgpd_consent_value = bool(lgpd_consent_data)
+            
+            if not lgpd_consent_value:
+                return jsonify({
+                    "error": "lgpd_consent_required", 
+                    "error_description": "Consentimento LGPD é obrigatório. Você deve aceitar os Termos de Serviço e Política de Privacidade para solicitar acesso."
+                }), 400
+            
             # Detectar provedor automaticamente se não fornecido
             provider = data.get('provider')
             if not provider:
                 provider = detect_provider_from_email(data['email'])
             
-            # Criar solicitação
+            # Criar solicitação incluindo dados de LGPD
             request_data = {
                 "email": data['email'],
                 "name": data['name'],
                 "provider": provider,
-                "message": data.get('message', '')
+                "message": data.get('message', ''),
+                "lgpd_consent": lgpd_consent_data  # Incluir dados completos de LGPD
             }
             
             success, message = add_pending_request(request_data)

@@ -314,8 +314,8 @@
         }
         
         if (message) {
-          message.textContent = 'Sua conta foi desativada e você não pode acessar a Área 51 no momento. ' +
-            'Entre em contato com um administrador para reativar sua conta.';
+          message.innerHTML = 'Sua conta foi desativada e você não pode acessar a Área 51 no momento. ' +
+            'Entre em contato com o suporte para reativar sua conta.';
           message.style.color = '#991b1b';
         }
         
@@ -324,8 +324,9 @@
         }
         
         if (infoBoxMessage) {
-          infoBoxMessage.textContent = 'Para reativar sua conta, entre em contato com um administrador do sistema. ' +
-            'Você pode enviar um e-mail para suporte@caracore.com.br solicitando a reativação da sua conta.';
+          infoBoxMessage.innerHTML = 'Para reativar sua conta, entre em contato com o suporte do portal: ' +
+            '<strong style="color: #dc2626;"><a href="mailto:suporte@caracore.com.br" style="color: #dc2626; text-decoration: underline;">suporte@caracore.com.br</a></strong>. ' +
+            'Envie um e-mail solicitando a reativação da sua conta.';
         }
         
         if (infoBox) {

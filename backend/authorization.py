@@ -369,12 +369,14 @@ class AuthorizationManager:
             if 'provider' not in user_data or not user_data['provider']:
                 user_data['provider'] = detect_provider_from_email(email)
             
-            # Verificar se já existe
-            if self.is_user_authorized(email):
-                return False, "Usuário já está autorizado"
-            
             # Carregar dados atuais
             data = self.load_authorized_users()
+            
+            # Verificar se já existe (por email, independente de status)
+            email_lower = email.lower()
+            for existing_user in data['users']:
+                if existing_user.get('email', '').lower() == email_lower:
+                    return False, f"Usuário com email {email} já existe no sistema. Use a opção de editar para atualizar."
             
             # Criar novo usuário
             new_user = {

@@ -2175,6 +2175,18 @@ def create_app() -> Flask:
             if not provider:
                 provider = detect_provider_from_email(data['email'])
             
+            # Verificar se usuário já existe antes de tentar adicionar
+            email_lower = data['email'].lower().strip()
+            existing_data = load_authorized_users()
+            for existing_user in existing_data.get('users', []):
+                if existing_user.get('email', '').lower() == email_lower:
+                    error_response = {
+                        "error": "duplicate_user", 
+                        "error_description": f"Usuário com email {data['email']} já existe no sistema. Use a opção de editar para atualizar."
+                    }
+                    resp = make_response(jsonify(error_response), 409)  # 409 Conflict
+                    return add_cors(resp)
+            
             # Adicionar usuário
             user_data = {
                 "email": data['email'],
@@ -2398,8 +2410,38 @@ def create_app() -> Flask:
                 "data_controller": "Cara Core Informática"  # Controlador dos dados
             }
             
-            # Adicionar aos usuários
-            data['users'].append(new_user)
+            # Verificar se usuário já existe (por email, independente de status)
+            email_lower = new_user['email'].lower()
+            existing_user_index = None
+            for i, existing_user in enumerate(data['users']):
+                if existing_user.get('email', '').lower() == email_lower:
+                    existing_user_index = i
+                    logger.warning(f"Usuário {email_lower} já existe na lista. Atualizando ao invés de duplicar.")
+                    break
+            
+            if existing_user_index is not None:
+                # Atualizar usuário existente ao invés de duplicar
+                existing_user = data['users'][existing_user_index]
+                # Preservar dados importantes do usuário existente
+                existing_user.update({
+                    'name': new_user['name'],
+                    'provider': new_user['provider'],
+                    'role': new_user['role'],
+                    'status': 'active',  # Reativar se estava inativo
+                    'approved_at': new_user['approved_at'],
+                    'approved_by': new_user['approved_by'],
+                    'updated_at': datetime.utcnow().isoformat()
+                })
+                # Preservar campos LGPD se existirem
+                if 'lgpd_consent' in existing_user:
+                    new_user['lgpd_consent'] = existing_user.get('lgpd_consent')
+                if 'lgpd_consent_timestamp' in existing_user:
+                    new_user['lgpd_consent_timestamp'] = existing_user.get('lgpd_consent_timestamp')
+                logger.info(f"Usuário {email_lower} atualizado (não duplicado)")
+            else:
+                # Adicionar novo usuário apenas se não existir
+                data['users'].append(new_user)
+                logger.info(f"Novo usuário {email_lower} adicionado")
             
             # Remover das pendentes (por ID ou email) - garantir comparação correta
             request_email_lower = request_to_approve['email'].lower()

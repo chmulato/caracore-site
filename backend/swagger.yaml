@@ -1,0 +1,907 @@
+openapi: 3.0.0
+info:
+  title: CaraCore Backend API
+  description: |
+    API Backend do sistema CaraCore - Sistema de autenticação OAuth 2.1 + OIDC e gestão de usuários.
+    
+    ## Autenticação
+    A API utiliza OAuth 2.1 com OIDC para autenticação através de Google e Microsoft.
+    Tokens JWT são utilizados para autorização em endpoints protegidos.
+    
+    ## Autorização
+    Endpoints administrativos requerem token JWT válido no header Authorization.
+    Alguns endpoints requerem role específica (admin, super_admin).
+    
+  version: 1.0.0
+  contact:
+    name: CaraCore Team
+    email: suporte@caracore.com.br
+
+servers:
+  - url: https://caracore-backend-docker.azurewebsites.net
+    description: Produção (Azure)
+  - url: http://localhost:5051
+    description: Desenvolvimento Local
+
+tags:
+  - name: Health
+    description: Verificação de saúde do sistema
+  - name: OAuth
+    description: Autenticação OAuth 2.1 (Google e Microsoft)
+  - name: Auth
+    description: Gerenciamento de tokens e sessões
+  - name: Authorization
+    description: Verificação e gestão de autorização de usuários
+  - name: Admin
+    description: Endpoints administrativos (requer autenticação)
+  - name: Access Requests
+    description: Solicitações de acesso ao sistema
+  - name: Super Admin
+    description: Endpoints de super administrador
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Token JWT obtido através do fluxo OAuth
+  
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Código do erro
+        error_description:
+          type: string
+          description: Descrição detalhada do erro
+        message:
+          type: string
+          description: Mensagem de erro amigável
+    
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [ok, healthy, unhealthy]
+        timestamp:
+          type: string
+          format: date-time
+        checks:
+          type: object
+          description: Verificações de saúde detalhadas
+    
+    TokenRequest:
+      type: object
+      required:
+        - code
+        - provider
+      properties:
+        code:
+          type: string
+          description: Código de autorização OAuth
+        provider:
+          type: string
+          enum: [google, microsoft]
+          description: Provedor OAuth
+        redirect_uri:
+          type: string
+          format: uri
+          description: URI de redirecionamento (opcional)
+        code_verifier:
+          type: string
+          description: Code verifier para PKCE (OAuth 2.1)
+    
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+          description: Token de acesso JWT
+        refresh_token:
+          type: string
+          description: Token de refresh (se disponível)
+        id_token:
+          type: string
+          description: ID token (OIDC)
+        expires_in:
+          type: integer
+          description: Tempo de expiração em segundos
+        token_type:
+          type: string
+          default: Bearer
+    
+    RefreshTokenRequest:
+      type: object
+      required:
+        - refresh_token
+      properties:
+        refresh_token:
+          type: string
+          description: Token de refresh
+    
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        provider:
+          type: string
+          enum: [google, microsoft, direct]
+        role:
+          type: string
+          enum: [user, admin, super_admin]
+        status:
+          type: string
+          enum: [active, inactive]
+        approved_at:
+          type: string
+          format: date-time
+        approved_by:
+          type: string
+    
+    AccessRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        provider:
+          type: string
+          enum: [google, microsoft]
+        message:
+          type: string
+        status:
+          type: string
+          enum: [pending, approved, rejected]
+        requested_at:
+          type: string
+          format: date-time
+        lgpd_consent:
+          type: boolean
+        lgpd_consent_timestamp:
+          type: string
+          format: date-time
+    
+    AccessRequestCreate:
+      type: object
+      required:
+        - email
+        - name
+      properties:
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        provider:
+          type: string
+          enum: [google, microsoft]
+          description: Opcional - detectado automaticamente pelo domínio do e-mail
+        message:
+          type: string
+          description: Mensagem/justificativa da solicitação
+        lgpd_consent:
+          type: object
+          properties:
+            lgpd_consent:
+              type: boolean
+            lgpd_consent_timestamp:
+              type: string
+              format: date-time
+            lgpd_terms_version:
+              type: string
+            lgpd_privacy_version:
+              type: string
+    
+    UserCreate:
+      type: object
+      required:
+        - email
+        - name
+      properties:
+        email:
+          type: string
+          format: email
+        name:
+          type: string
+        provider:
+          type: string
+          enum: [google, microsoft]
+          description: Opcional - detectado automaticamente pelo domínio do e-mail
+        role:
+          type: string
+          enum: [user, admin]
+          default: user
+    
+    UserUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        role:
+          type: string
+          enum: [user, admin]
+        status:
+          type: string
+          enum: [active, inactive]
+        provider:
+          type: string
+          enum: [google, microsoft]
+    
+    AuthorizationCheck:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+    
+    AuthorizationResponse:
+      type: object
+      properties:
+        authorized:
+          type: boolean
+        role:
+          type: string
+          enum: [user, admin, super_admin]
+        email:
+          type: string
+          format: email
+
+paths:
+  /health:
+    get:
+      tags: [Health]
+      summary: Health check simples
+      description: Verifica se o servidor está respondendo
+      responses:
+        '200':
+          description: Servidor está funcionando
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+  
+  /health/detailed:
+    get:
+      tags: [Health]
+      summary: Health check detalhado
+      description: Verificação detalhada de saúde do sistema incluindo dependências e conectividade
+      responses:
+        '200':
+          description: Status de saúde do sistema
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+  
+  /oauth/google/token:
+    post:
+      tags: [OAuth]
+      summary: Trocar código de autorização Google por tokens
+      description: |
+        Endpoint para trocar código de autorização OAuth 2.1 por tokens de acesso.
+        Requer PKCE (code_verifier) para OAuth 2.1.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Tokens obtidos com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Autenticação falhou
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /oauth/microsoft/token:
+    post:
+      tags: [OAuth]
+      summary: Trocar código de autorização Microsoft por tokens
+      description: |
+        Endpoint para trocar código de autorização OAuth 2.1 por tokens de acesso.
+        Requer PKCE (code_verifier) para OAuth 2.1.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '200':
+          description: Tokens obtidos com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Requisição inválida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Autenticação falhou
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /auth/token/refresh:
+    post:
+      tags: [Auth]
+      summary: Renovar token de acesso
+      description: Renova o access token usando o refresh token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefreshTokenRequest'
+      responses:
+        '200':
+          description: Token renovado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '401':
+          description: Refresh token inválido ou expirado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /auth/validate:
+    post:
+      tags: [Auth]
+      summary: Validar token de acesso
+      description: Valida se um token JWT é válido e não expirado
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                token:
+                  type: string
+      responses:
+        '200':
+          description: Token válido
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  valid:
+                    type: boolean
+                  claims:
+                    type: object
+        '401':
+          description: Token inválido ou expirado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /auth/logout:
+    post:
+      tags: [Auth]
+      summary: Fazer logout
+      description: Revoga tokens e encerra sessão
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Logout realizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Logout realizado com sucesso
+  
+  /api/check-authorization:
+    post:
+      tags: [Authorization]
+      summary: Verificar autorização de usuário
+      description: Verifica se um usuário está autorizado e qual seu role
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorizationCheck'
+      responses:
+        '200':
+          description: Status de autorização
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorizationResponse'
+        '401':
+          description: Não autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /api/request-access:
+    post:
+      tags: [Access Requests]
+      summary: Solicitar acesso ao sistema
+      description: |
+        Cria uma nova solicitação de acesso pendente.
+        O provedor é detectado automaticamente pelo domínio do e-mail se não fornecido.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccessRequestCreate'
+      responses:
+        '201':
+          description: Solicitação criada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  status:
+                    type: string
+                    example: pending
+        '400':
+          description: Erro na requisição
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /api/request-access/status:
+    get:
+      tags: [Access Requests]
+      summary: Consultar status de solicitação
+      description: Consulta o status de uma solicitação de acesso por e-mail
+      parameters:
+        - name: email
+          in: query
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: Status da solicitação
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  found:
+                    type: boolean
+                  status:
+                    type: string
+                    enum: [pending, approved, rejected, authorized, not_found]
+                  email:
+                    type: string
+                    format: email
+                  message:
+                    type: string
+        '400':
+          description: E-mail não fornecido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /api/admin/users:
+    get:
+      tags: [Admin]
+      summary: Listar usuários autorizados
+      description: Retorna lista de todos os usuários autorizados e solicitações pendentes
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Lista de usuários
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  pending_requests:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AccessRequest'
+        '401':
+          description: Não autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Acesso negado (requer role admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    post:
+      tags: [Admin]
+      summary: Adicionar novo usuário autorizado
+      description: |
+        Adiciona um novo usuário à lista de autorizados.
+        O provedor é detectado automaticamente pelo domínio do e-mail se não fornecido.
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+      responses:
+        '201':
+          description: Usuário adicionado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Erro na requisição
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Não autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Acesso negado (requer role admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /api/admin/users/{email}:
+    put:
+      tags: [Admin]
+      summary: Atualizar usuário autorizado
+      description: Atualiza dados de um usuário autorizado (nome, role, status)
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            format: email
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: Usuário atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: Erro na requisição
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Não autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Acesso negado (requer role admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Usuário não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    
+    delete:
+      tags: [Admin]
+      summary: Remover usuário autorizado
+      description: Remove um usuário da lista de autorizados
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: email
+          in: path
+          required: true
+          schema:
+            type: string
+            format: email
+      responses:
+        '200':
+          description: Usuário removido com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          description: Erro na requisição
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Não autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Acesso negado (requer role admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Usuário não encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /api/admin/access-requests:
+    get:
+      tags: [Admin]
+      summary: Listar solicitações de acesso
+      description: Retorna todas as solicitações de acesso (pendentes, aprovadas, rejeitadas)
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Lista de solicitações
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  requests:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AccessRequest'
+        '401':
+          description: Não autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Acesso negado (requer role admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /api/admin/access-requests/{request_id}/approve:
+    post:
+      tags: [Admin]
+      summary: Aprovar solicitação de acesso
+      description: |
+        Aprova uma solicitação de acesso e adiciona o usuário à lista de autorizados.
+        O provedor é detectado automaticamente pelo domínio do e-mail se não estiver na solicitação.
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da solicitação ou e-mail do solicitante
+      responses:
+        '200':
+          description: Solicitação aprovada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Erro na requisição
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Não autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Acesso negado (requer role admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Solicitação não encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /api/admin/access-requests/{request_id}/reject:
+    post:
+      tags: [Admin]
+      summary: Rejeitar solicitação de acesso
+      description: Rejeita uma solicitação de acesso com motivo
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: request_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: ID da solicitação ou e-mail do solicitante
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - reason
+              properties:
+                reason:
+                  type: string
+                  description: Motivo da rejeição
+      responses:
+        '200':
+          description: Solicitação rejeitada com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  reason:
+                    type: string
+        '400':
+          description: Erro na requisição
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Não autorizado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Acesso negado (requer role admin)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Solicitação não encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  
+  /auth/super-admin:
+    post:
+      tags: [Super Admin]
+      summary: Autenticação de super administrador
+      description: Autentica super administrador com credenciais do sistema
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  format: password
+      responses:
+        '200':
+          description: Autenticação bem-sucedida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    type: string
+                  authenticated:
+                    type: boolean
+        '401':
+          description: Credenciais inválidas
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+

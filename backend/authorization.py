@@ -46,6 +46,50 @@ class AuthorizationError(Exception):
     pass
 
 
+def detect_provider_from_email(email: str) -> str:
+    """
+    Detectar provedor de autenticação baseado no domínio do e-mail.
+    
+    Args:
+        email: Endereço de e-mail do usuário
+        
+    Returns:
+        'microsoft' para domínios Microsoft, 'google' para domínios Google,
+        ou 'google' como padrão
+    """
+    if not email or '@' not in email:
+        return 'google'  # default
+    
+    email_lower = email.lower().strip()
+    domain = email_lower.split('@')[1] if '@' in email_lower else ''
+    
+    if not domain:
+        return 'google'  # default
+    
+    # Domínios Microsoft
+    microsoft_domains = [
+        'outlook.com', 'hotmail.com', 'live.com', 'msn.com',
+        'microsoft.com', 'office365.com', 'outlook.com.br',
+        'hotmail.com.br', 'live.com.br'
+    ]
+    
+    # Domínios Google
+    google_domains = [
+        'gmail.com', 'googlemail.com', 'google.com'
+    ]
+    
+    # Verificar domínios Microsoft
+    if any(d in domain for d in microsoft_domains):
+        return 'microsoft'
+    
+    # Verificar domínios Google
+    if any(d in domain for d in google_domains):
+        return 'google'
+    
+    # Default para Google se não identificar
+    return 'google'
+
+
 class AuthorizationManager:
     """Gerenciador principal do sistema de autorização"""
     
@@ -279,19 +323,23 @@ class AuthorizationManager:
         Adicionar novo usuário autorizado
         
         Args:
-            user_data: Dados do usuário (email, name, provider, role)
+            user_data: Dados do usuário (email, name, provider opcional, role)
             
         Returns:
             Tuple (sucesso, mensagem)
         """
         try:
             # Validar campos obrigatórios
-            required_fields = ['email', 'name', 'provider']
+            required_fields = ['email', 'name']
             for field in required_fields:
                 if field not in user_data or not user_data[field]:
                     return False, f"Campo obrigatório '{field}' não fornecido"
             
             email = user_data['email'].lower().strip()
+            
+            # Detectar provedor automaticamente se não fornecido
+            if 'provider' not in user_data or not user_data['provider']:
+                user_data['provider'] = detect_provider_from_email(email)
             
             # Verificar se já existe
             if self.is_user_authorized(email):
@@ -332,6 +380,68 @@ class AuthorizationManager:
                 
         except Exception as e:
             logger.error(f"Erro ao adicionar usuário: {e}")
+            return False, f"Erro interno: {e}"
+    
+    def update_authorized_user(self, email: str, updates: Dict[str, Any], updated_by: str = "admin") -> Tuple[bool, str]:
+        """
+        Atualizar usuário autorizado
+        
+        Args:
+            email: Email do usuário para atualizar
+            updates: Dicionário com campos a atualizar (name, role, status, etc)
+            updated_by: Quem está atualizando
+            
+        Returns:
+            Tuple (sucesso, mensagem)
+        """
+        try:
+            if not email:
+                return False, "Email não fornecido"
+            
+            email_lower = email.lower().strip()
+            data = self.load_authorized_users()
+            
+            # Encontrar usuário
+            user_found = None
+            for i, user in enumerate(data['users']):
+                if user.get('email', '').lower() == email_lower:
+                    user_found = (i, user)
+                    break
+            
+            if not user_found:
+                return False, "Usuário não encontrado"
+            
+            user_index, user = user_found
+            
+            # Campos permitidos para atualização
+            allowed_fields = ['name', 'role', 'status', 'provider']
+            
+            # Atualizar campos permitidos
+            for field, value in updates.items():
+                if field in allowed_fields and value is not None:
+                    user[field] = value
+            
+            # Atualizar timestamp
+            user['updated_at'] = self._get_timestamp()
+            
+            # Adicionar ao log de auditoria
+            changes = ', '.join([f"{k}={v}" for k, v in updates.items() if k in allowed_fields])
+            data['audit_log'].append({
+                "timestamp": self._get_timestamp(),
+                "action": "user_updated",
+                "details": f"Usuário {email_lower} atualizado: {changes}",
+                "user": updated_by
+            })
+            
+            # Salvar
+            if self.save_authorized_users(data):
+                logger.info(f"Usuário {email_lower} atualizado com sucesso")
+                return True, "Usuário atualizado com sucesso"
+            else:
+                return False, "Erro ao salvar dados"
+                
+        except Exception as e:
+            logger.error(f"Erro ao atualizar usuário: {e}")
             return False, f"Erro interno: {e}"
     
     def remove_authorized_user(self, email: str, removed_by: str = "admin") -> Tuple[bool, str]:
@@ -398,17 +508,21 @@ class AuthorizationManager:
         Adicionar solicitação de acesso pendente
         
         Args:
-            request_data: Dados da solicitação (email, name, provider, message)
+            request_data: Dados da solicitação (email, name, provider opcional, message)
             
         Returns:
             Tuple (sucesso, mensagem)
         """
         try:
             # Validar campos obrigatórios
-            required_fields = ['email', 'name', 'provider']
+            required_fields = ['email', 'name']
             for field in required_fields:
                 if field not in request_data or not request_data[field]:
                     return False, f"Campo obrigatório '{field}' não fornecido"
+            
+            # Detectar provedor automaticamente se não fornecido
+            if 'provider' not in request_data or not request_data['provider']:
+                request_data['provider'] = detect_provider_from_email(request_data['email'])
             
             email = request_data['email'].lower().strip()
             
@@ -450,7 +564,7 @@ class AuthorizationManager:
                 "id": request_id,
                 "email": email,
                 "name": request_data['name'].strip(),
-                "provider": request_data['provider'].lower(),
+                "provider": request_data['provider'].lower() if request_data.get('provider') else detect_provider_from_email(email),
                 "message": request_data.get('message', '').strip(),
                 "requested_at": self._get_timestamp(),
                 "status": "pending",
@@ -538,6 +652,10 @@ def add_authorized_user(user_data: Dict[str, Any]) -> Tuple[bool, str]:
 def remove_authorized_user(email: str, removed_by: str = "admin") -> Tuple[bool, str]:
     """Remover usuário autorizado"""
     return auth_manager.remove_authorized_user(email, removed_by)
+
+def update_authorized_user(email: str, updates: Dict[str, Any], updated_by: str = "admin") -> Tuple[bool, str]:
+    """Atualizar usuário autorizado"""
+    return auth_manager.update_authorized_user(email, updates, updated_by)
 
 def add_pending_request(request_data: Dict[str, Any]) -> Tuple[bool, str]:
     """Adicionar solicitação de acesso pendente"""

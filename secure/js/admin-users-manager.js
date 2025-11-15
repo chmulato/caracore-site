@@ -37,10 +37,44 @@ class AdminUsersManager {
             apiEndpoints: {
                 getUsers: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
                 addUser: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
+                updateUser: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
                 removeUser: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
                 approveRequest: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`
             }
         };
+    }
+    
+    /**
+     * Detectar provedor baseado no domínio do e-mail
+     */
+    detectProviderFromEmail(email) {
+        if (!email) return 'google'; // default
+        
+        const emailLower = email.toLowerCase();
+        const domain = emailLower.split('@')[1];
+        
+        if (!domain) return 'google'; // default
+        
+        // Domínios Microsoft
+        const microsoftDomains = [
+            'outlook.com', 'hotmail.com', 'live.com', 'msn.com',
+            'microsoft.com', 'office365.com', 'outlook.com.br',
+            'hotmail.com.br', 'live.com.br'
+        ];
+        
+        // Domínios Google
+        const googleDomains = [
+            'gmail.com', 'googlemail.com', 'google.com'
+        ];
+        
+        if (microsoftDomains.some(d => domain.includes(d))) {
+            return 'microsoft';
+        } else if (googleDomains.some(d => domain.includes(d))) {
+            return 'google';
+        }
+        
+        // Default para Google se não identificar
+        return 'google';
     }
     
     /**
@@ -85,13 +119,18 @@ class AdminUsersManager {
         this.elements.userForm = document.getElementById('userForm');
         this.elements.userEmail = document.getElementById('userEmail');
         this.elements.userName = document.getElementById('userName');
-        this.elements.userProvider = document.getElementById('userProvider');
         this.elements.userRole = document.getElementById('userRole');
         this.elements.cancelBtn = document.getElementById('cancelBtn');
         this.elements.saveBtn = document.getElementById('saveBtn');
         
         // Indicadores
         this.elements.refreshIndicator = document.querySelector('.refresh-indicator');
+        
+        // Escutar evento de aprovação de usuário (vindo de approval-requests.html)
+        window.addEventListener('userApproved', () => {
+            // Recarregar dados quando um usuário for aprovado em outra página
+            this.loadData();
+        });
     }
     
     /**
@@ -108,6 +147,21 @@ class AdminUsersManager {
         this.elements.searchInput.addEventListener('input', (e) => this.filterUsers());
         this.elements.roleFilter.addEventListener('change', (e) => this.filterUsers());
         this.elements.providerFilter.addEventListener('change', (e) => this.filterUsers());
+        
+        // Detectar provedor automaticamente quando e-mail mudar
+        if (this.elements.userEmail) {
+            this.elements.userEmail.addEventListener('blur', (e) => {
+                const email = e.target.value;
+                if (email) {
+                    const provider = this.detectProviderFromEmail(email);
+                    // Atualizar visualização do provedor (se houver elemento de exibição)
+                    const providerDisplay = document.getElementById('providerDisplay');
+                    if (providerDisplay) {
+                        providerDisplay.textContent = provider === 'microsoft' ? 'Microsoft' : 'Google';
+                    }
+                }
+            });
+        }
         
         // Modal
         this.elements.modalClose.addEventListener('click', () => this.closeModal());
@@ -234,7 +288,9 @@ class AdminUsersManager {
         const div = document.createElement('div');
         div.className = 'pending-card';
         
-        const providerIcon = request.provider === 'microsoft' ? 'icon-microsoft' : 'icon-google';
+        // Detectar provedor pelo e-mail se não estiver definido
+        const provider = request.provider || this.detectProviderFromEmail(request.email);
+        const providerIcon = provider === 'microsoft' ? 'icon-microsoft' : 'icon-google';
         const requestDate = new Date(request.requested_at).toLocaleDateString('pt-BR');
         
         div.innerHTML = `
@@ -326,7 +382,9 @@ class AdminUsersManager {
      * Criar linha da tabela de usuário
      */
     createUserRow(user) {
-        const providerIcon = user.provider === 'microsoft' ? 'icon-microsoft' : (user.provider === 'direct' ? 'icon-shield-lock' : 'icon-google');
+        // Detectar provedor pelo e-mail se não estiver definido
+        const provider = user.provider || this.detectProviderFromEmail(user.email);
+        const providerIcon = provider === 'microsoft' ? 'icon-microsoft' : (provider === 'direct' ? 'icon-shield-lock' : 'icon-google');
         const approvedDate = new Date(user.approved_at).toLocaleDateString('pt-BR');
         const roleClass = user.role === 'super_admin' ? 'admin' : (user.role === 'admin' ? 'admin' : 'user');
         
@@ -344,7 +402,7 @@ class AdminUsersManager {
                 <svg class="icon-sm" aria-hidden="true" style="margin-right: 0.5rem;">
                     <use href="#${providerIcon}"></use>
                 </svg>
-                ${user.provider === 'microsoft' ? 'Microsoft' : (user.provider === 'direct' ? 'Sistema' : 'Google')}
+                ${provider === 'microsoft' ? 'Microsoft' : (provider === 'direct' ? 'Sistema' : 'Google')}
             </td>
             <td>
                 <span class="badge ${roleClass}">
@@ -380,6 +438,9 @@ class AdminUsersManager {
                 throw new Error('Token de autenticação não encontrado');
             }
             
+            // Detectar provedor pelo e-mail se não estiver definido
+            const provider = request.provider || this.detectProviderFromEmail(request.email);
+            
             const response = await fetch(this.config.apiEndpoints.addUser, {
                 method: 'POST',
                 headers: {
@@ -389,7 +450,7 @@ class AdminUsersManager {
                 body: JSON.stringify({
                     email: request.email,
                     name: request.name,
-                    provider: request.provider,
+                    provider: provider,
                     role: 'user'
                 })
             });
@@ -400,7 +461,8 @@ class AdminUsersManager {
             }
             
             this.showSuccess(`Acesso aprovado para ${email}`);
-            this.loadData(); // Recarregar dados
+            // Recarregar dados para atualizar ambas as listas
+            await this.loadData();
             
         } catch (error) {
             console.error('Erro ao aprovar solicitação:', error);
@@ -431,6 +493,13 @@ class AdminUsersManager {
         this.elements.modalTitle.textContent = 'Adicionar Usuário';
         this.elements.userForm.reset();
         this.elements.userEmail.readOnly = false;
+        
+        // Resetar display do provedor
+        const providerDisplay = document.getElementById('providerDisplay');
+        if (providerDisplay) {
+            providerDisplay.textContent = 'Será detectado automaticamente pelo domínio do e-mail';
+        }
+        
         this.showModal();
     }
     
@@ -445,9 +514,16 @@ class AdminUsersManager {
         this.elements.modalTitle.textContent = 'Editar Usuário';
         this.elements.userEmail.value = user.email;
         this.elements.userName.value = user.name;
-        this.elements.userProvider.value = user.provider;
         this.elements.userRole.value = user.role;
         this.elements.userEmail.readOnly = true;
+        
+        // Mostrar provedor detectado (somente leitura)
+        const provider = user.provider || this.detectProviderFromEmail(user.email);
+        const providerDisplay = document.getElementById('providerDisplay');
+        if (providerDisplay) {
+            providerDisplay.textContent = provider === 'microsoft' ? 'Microsoft' : 'Google';
+        }
+        
         this.showModal();
     }
     
@@ -502,15 +578,16 @@ class AdminUsersManager {
         e.preventDefault();
         
         const formData = new FormData(this.elements.userForm);
+        const email = formData.get('email') || this.elements.userEmail.value;
         const userData = {
-            email: formData.get('email') || this.elements.userEmail.value,
+            email: email,
             name: formData.get('name') || this.elements.userName.value,
-            provider: formData.get('provider') || this.elements.userProvider.value,
+            provider: this.detectProviderFromEmail(email), // Detectar automaticamente
             role: formData.get('role') || this.elements.userRole.value
         };
         
         // Validação básica
-        if (!userData.email || !userData.name || !userData.provider || !userData.role) {
+        if (!userData.email || !userData.name || !userData.role) {
             this.showError('Todos os campos são obrigatórios');
             return;
         }
@@ -560,11 +637,40 @@ class AdminUsersManager {
      * Atualizar usuário existente
      */
     async updateUser(userData) {
-        // TODO: Implementar endpoint de atualização
-        // Por enquanto, simular atualização
-        this.showSuccess(`Usuário ${userData.name} atualizado com sucesso`);
-        this.closeModal();
-        this.loadData();
+        try {
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error('Token de autenticação não encontrado');
+            }
+            
+            // Preparar dados de atualização (apenas campos permitidos)
+            const updates = {
+                name: userData.name,
+                role: userData.role
+            };
+            
+            const response = await fetch(`${this.config.apiEndpoints.updateUser}/${encodeURIComponent(userData.email)}`, {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updates)
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error_description || 'Erro ao atualizar usuário');
+            }
+            
+            this.showSuccess(`Usuário ${userData.name} atualizado com sucesso`);
+            this.closeModal();
+            await this.loadData(); // Recarregar dados
+            
+        } catch (error) {
+            console.error('Erro ao atualizar usuário:', error);
+            this.showError('Erro ao atualizar usuário: ' + error.message);
+        }
     }
     
     /**

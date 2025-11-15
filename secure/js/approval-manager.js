@@ -332,7 +332,8 @@ function createRequestCard(request) {
     const requestDate = request.requested_at || request.created_at;
     const requestStatus = request.status || 'pending';
     const requestMessage = request.message || request.justification || 'Sem mensagem';
-    const requestProvider = request.provider || 'unknown';
+    // Detectar provedor pelo e-mail se não estiver definido
+    const requestProvider = request.provider || detectProviderFromEmail(requestEmail);
     
     card.className = `request-card ${getPriorityClass(request.urgency || 'medium')}`;
     
@@ -449,6 +450,36 @@ function formatDate(dateString) {
     });
 }
 
+// Função para detectar provedor pelo domínio do e-mail
+function detectProviderFromEmail(email) {
+    if (!email) return 'google';
+    
+    const emailLower = email.toLowerCase();
+    const domain = emailLower.split('@')[1];
+    
+    if (!domain) return 'google';
+    
+    // Domínios Microsoft
+    const microsoftDomains = [
+        'outlook.com', 'hotmail.com', 'live.com', 'msn.com',
+        'microsoft.com', 'office365.com', 'outlook.com.br',
+        'hotmail.com.br', 'live.com.br'
+    ];
+    
+    // Domínios Google
+    const googleDomains = [
+        'gmail.com', 'googlemail.com', 'google.com'
+    ];
+    
+    if (microsoftDomains.some(d => domain.includes(d))) {
+        return 'microsoft';
+    } else if (googleDomains.some(d => domain.includes(d))) {
+        return 'google';
+    }
+    
+    return 'google';
+}
+
 async function approveRequest(requestId) {
     if (!confirm('Confirma a aprovação desta solicitação?')) return;
     
@@ -462,8 +493,11 @@ async function approveRequest(requestId) {
         });
 
         if (response.ok) {
-            await loadRequests(); // Recarregar lista
-            alert('Solicitação aprovada com sucesso!');
+            await loadRequests(); // Recarregar lista de solicitações pendentes
+            alert('Solicitação aprovada com sucesso! O usuário foi adicionado à lista de usuários autorizados.');
+            
+            // Notificar página de gestão de usuários se estiver aberta (via evento customizado)
+            window.dispatchEvent(new CustomEvent('userApproved', { detail: { requestId } }));
         } else {
             throw new Error('Erro ao aprovar solicitação');
         }

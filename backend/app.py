@@ -129,8 +129,9 @@ except ImportError:
 try:
     from authorization import (
         is_user_authorized, get_user_role, add_authorized_user, 
-        remove_authorized_user, add_pending_request, load_authorized_users,
-        save_authorized_users, get_pending_request_by_email
+        remove_authorized_user, update_authorized_user, add_pending_request, 
+        load_authorized_users, save_authorized_users, get_pending_request_by_email,
+        detect_provider_from_email
     )
     AUTHORIZATION_ENABLED = True
     logger.info("Authorization module carregado - controle de acesso habilitado")
@@ -392,6 +393,60 @@ def validate_microsoft_id_token(
 def create_app() -> Flask:
     app = Flask(__name__)
     app.secret_key = os.getenv("APP_SECRET_KEY", os.urandom(32))
+    
+    # Configurar Swagger/OpenAPI
+    try:
+        from flasgger import Swagger
+        swagger_config = {
+            "headers": [],
+            "specs": [
+                {
+                    "endpoint": "apispec",
+                    "route": "/apispec.json",
+                    "rule_filter": lambda rule: True,
+                    "model_filter": lambda tag: True,
+                }
+            ],
+            "static_url_path": "/flasgger_static",
+            "swagger_ui": True,
+            "specs_route": "/api-docs"
+        }
+        
+        swagger_template = {
+            "swagger": "2.0",
+            "info": {
+                "title": "CaraCore Backend API",
+                "description": "API Backend do sistema CaraCore - Sistema de autenticação OAuth 2.1 + OIDC e gestão de usuários",
+                "version": "1.0.0",
+                "contact": {
+                    "name": "CaraCore Team",
+                    "email": "suporte@caracore.com.br"
+                }
+            },
+            "servers": [
+                {
+                    "url": "https://caracore-backend-docker.azurewebsites.net",
+                    "description": "Produção (Azure)"
+                },
+                {
+                    "url": "http://localhost:5051",
+                    "description": "Desenvolvimento Local"
+                }
+            ],
+            "securityDefinitions": {
+                "BearerAuth": {
+                    "type": "apiKey",
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Token JWT no formato: Bearer {token}"
+                }
+            }
+        }
+        
+        swagger = Swagger(app, config=swagger_config, template=swagger_template)
+        logger.info("Swagger/OpenAPI documentação habilitada em /api-docs")
+    except ImportError:
+        logger.warning("Flasgger não disponível - documentação Swagger desabilitada")
 
     allowed_origin = os.getenv("ORIGIN_ALLOWED", "*")
     google_client_id = os.getenv("GOOGLE_CLIENT_ID")
@@ -477,8 +532,39 @@ def create_app() -> Flask:
             # In case add_cors itself fails, return original response
             return response
 
+    @app.route("/swagger.yaml", methods=["GET"])
+    def swagger_yaml():
+        """Servir arquivo OpenAPI YAML"""
+        try:
+            swagger_file = os.path.join(os.path.dirname(__file__), 'swagger.yaml')
+            with open(swagger_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+            resp = make_response(content, 200)
+            resp.headers['Content-Type'] = 'application/x-yaml'
+            return add_cors(resp)
+        except Exception as e:
+            logger.error(f"Erro ao servir swagger.yaml: {e}")
+            return add_cors(make_response(jsonify({"error": "swagger_file_not_found"}), 404))
+    
     @app.route("/health", methods=["GET"])  # simple probe
     def health():
+        """
+        Health check simples
+        ---
+        tags:
+          - Health
+        summary: Health check simples
+        description: Verifica se o servidor está respondendo
+        responses:
+          200:
+            description: Servidor está funcionando
+            schema:
+              type: object
+              properties:
+                status:
+                  type: string
+                  example: ok
+        """
         return add_cors(make_response(jsonify({"status": "ok"}), 200))
 
     @app.route("/health/detailed", methods=["GET"])  # detailed health check
@@ -2086,16 +2172,21 @@ def create_app() -> Flask:
             if not data:
                 return jsonify({"error": "invalid_request", "error_description": "Dados JSON são obrigatórios"}), 400
             
-            required_fields = ['email', 'name', 'provider']
+            required_fields = ['email', 'name']
             for field in required_fields:
                 if field not in data or not data[field]:
                     return jsonify({"error": "invalid_request", "error_description": f"Campo '{field}' é obrigatório"}), 400
+            
+            # Detectar provedor automaticamente se não fornecido
+            provider = data.get('provider')
+            if not provider:
+                provider = detect_provider_from_email(data['email'])
             
             # Adicionar usuário
             user_data = {
                 "email": data['email'],
                 "name": data['name'],
-                "provider": data['provider'],
+                "provider": provider,
                 "role": data.get('role', 'user'),
                 "approved_by": "admin"  # TODO: identificar admin real
             }
@@ -2121,6 +2212,58 @@ def create_app() -> Flask:
     def admin_user_delete_preflight(email):
         """CORS preflight para remoção de usuário"""
         return add_cors(make_response("", 200))
+    
+    @app.route("/api/admin/users/<email>", methods=["PUT"])
+    @rate_limit("/api/admin/users")
+    @require_admin()
+    def update_admin_user(email):
+        """Atualizar usuário autorizado (admin only)"""
+        try:
+            if not AUTHORIZATION_ENABLED:
+                return jsonify({"error": "authorization_disabled", "error_description": "Sistema de autorização não disponível"}), 503
+            
+            if not email:
+                return jsonify({"error": "invalid_request", "error_description": "Email é obrigatório"}), 400
+            
+            data = request.get_json()
+            if not data:
+                return jsonify({"error": "invalid_request", "error_description": "Dados JSON são obrigatórios"}), 400
+            
+            # Preparar atualizações (apenas campos permitidos)
+            updates = {}
+            if 'name' in data:
+                updates['name'] = data['name']
+            if 'role' in data:
+                updates['role'] = data['role']
+            if 'status' in data:
+                updates['status'] = data['status']
+            # Provider pode ser atualizado, mas se não fornecido, detectar automaticamente
+            if 'provider' in data and data['provider']:
+                updates['provider'] = data['provider']
+            elif 'provider' in data and not data['provider']:
+                # Se provider foi enviado vazio, detectar automaticamente
+                updates['provider'] = detect_provider_from_email(email)
+            
+            if not updates:
+                return jsonify({"error": "invalid_request", "error_description": "Nenhum campo válido para atualizar"}), 400
+            
+            success, message = update_authorized_user(email, updates, "admin")  # TODO: identificar admin real
+            
+            if success:
+                response_data = {"message": message}
+                resp = make_response(jsonify(response_data), 200)
+            else:
+                error_response = {"error": "operation_failed", "error_description": message}
+                status_code = 404 if "não encontrado" in message else 400
+                resp = make_response(jsonify(error_response), status_code)
+            
+            return add_cors(resp)
+            
+        except Exception as e:
+            logger.error(f"Erro ao atualizar usuário: {e}")
+            error_response = {"error": "internal_error", "error_description": "Erro interno do servidor"}
+            resp = make_response(jsonify(error_response), 500)
+            return add_cors(resp)
     
     @app.route("/api/admin/users/<email>", methods=["DELETE"])
     @rate_limit("/api/admin/users")
@@ -2229,11 +2372,16 @@ def create_app() -> Flask:
             if not lgpd_consent_timestamp:
                 lgpd_consent_timestamp = datetime.utcnow().isoformat()
             
+            # Detectar provedor automaticamente pelo domínio do e-mail se não estiver definido
+            provider = request_to_approve.get('provider')
+            if not provider:
+                provider = detect_provider_from_email(request_to_approve['email'])
+            
             # Criar novo usuário com dados de consentimento LGPD
             new_user = {
                 "email": request_to_approve['email'],
                 "name": request_to_approve['name'],
-                "provider": request_to_approve['provider'],
+                "provider": provider,
                 "role": "user",
                 "status": "active",
                 "approved_at": datetime.utcnow().isoformat(),
@@ -2382,16 +2530,21 @@ def create_app() -> Flask:
             if not data:
                 return jsonify({"error": "invalid_request", "error_description": "Dados JSON são obrigatórios"}), 400
             
-            required_fields = ['email', 'name', 'provider']
+            required_fields = ['email', 'name']
             for field in required_fields:
                 if field not in data or not data[field]:
                     return jsonify({"error": "invalid_request", "error_description": f"Campo '{field}' é obrigatório"}), 400
+            
+            # Detectar provedor automaticamente se não fornecido
+            provider = data.get('provider')
+            if not provider:
+                provider = detect_provider_from_email(data['email'])
             
             # Criar solicitação
             request_data = {
                 "email": data['email'],
                 "name": data['name'],
-                "provider": data['provider'],
+                "provider": provider,
                 "message": data.get('message', '')
             }
             

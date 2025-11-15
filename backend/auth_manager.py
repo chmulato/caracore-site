@@ -366,3 +366,21 @@ class AuditLogger:
                 "timestamp": time.time()
             }
         )
+    
+    @staticmethod
+    def log_access_check(
+        email: str,
+        is_authorized: bool,
+        client_ip: Optional[str] = None
+    ) -> None:
+        """Registra verificação de autorização de acesso"""
+        logger.info(
+            f"Access check: email={email}, authorized={is_authorized}",
+            extra={
+                "event": "access_check",
+                "email": email,
+                "authorized": is_authorized,
+                "client_ip": client_ip,
+                "timestamp": time.time()
+            }
+        )

@@ -73,13 +73,13 @@
         return true;
     }
     
-    // Criar autenticação completa
+    // Criar autenticação completa no formato esperado pelo SessionManager
     function createAuthentication(params, provider) {
         const now = Math.floor(Date.now() / 1000);
         const userId = `${provider}_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
         
         let userProfile;
-        if (provider === 'azure') {
+        if (provider === 'azure' || provider === 'entra') {
             userProfile = {
                 sub: userId,
                 oid: userId,
@@ -122,36 +122,60 @@
         const signature = btoa(`${provider}-signature-${params.state || Date.now()}`);
         const idToken = `${header}.${payload}.${signature}`;
         const accessToken = `${provider}_access_${Date.now()}_${Math.random().toString(36)}`;
+        const refreshToken = `${provider}_refresh_${Date.now()}_${Math.random().toString(36)}`;
         
-        // Configurar storage
+        // Calcular expiração em segundos Unix timestamp (formato esperado pelo SessionManager)
+        const expiresIn = 3600; // 1 hora
+        const expiresAt = now + expiresIn;
+        
+        // SALVAR NO FORMATO QUE SessionManager ESPERA (localStorage)
+        localStorage.setItem('auth_access_token', accessToken);
+        localStorage.setItem('auth_refresh_token', refreshToken);
+        localStorage.setItem('auth_provider', provider === 'azure' ? 'microsoft' : provider);
+        localStorage.setItem('auth_user_info', JSON.stringify({
+            email: userProfile.email,
+            name: userProfile.name,
+            provider: provider === 'azure' ? 'microsoft' : provider,
+            user_id: userId
+        }));
+        localStorage.setItem('auth_expires_at', expiresAt.toString());
+        localStorage.setItem('auth_last_activity', now.toString());
+        
+        // Também salvar no formato OIDC para compatibilidade com auth-standalone
         sessionStorage.setItem('cara_core_oidc_provider', provider);
         sessionStorage.setItem('cara_core_id_token', idToken);
         sessionStorage.setItem('cara_core_access_token', accessToken);
         sessionStorage.setItem('cara_core_token_type', 'Bearer');
-        sessionStorage.setItem('cara_core_expires_at', (Date.now() + 86400000).toString());
+        sessionStorage.setItem('cara_core_expires_at', (Date.now() + expiresIn * 1000).toString());
         sessionStorage.setItem('cara_core_user_profile', JSON.stringify(userProfile));
         sessionStorage.setItem('cara_core_auth_time', Date.now().toString());
         
-        localStorage.setItem('cara_core_oidc_provider', provider);
-        localStorage.setItem('cara_core_last_login', new Date().toISOString());
-        localStorage.setItem('cara_core_user_id', userId);
-        
-        // Formato OIDC
+        // Formato OIDC completo
         const oidcUser = {
             id_token: idToken,
             access_token: accessToken,
+            refresh_token: refreshToken,
             token_type: 'Bearer',
             scope: params.scope || 'openid profile email',
             profile: userProfile,
-            expires_at: Date.now() + 86400000,
+            expires_at: (Date.now() + expiresIn * 1000) / 1000, // em segundos
             state: params.state
         };
         sessionStorage.setItem('oidc.user', JSON.stringify(oidcUser));
+        
+        // Salvar email para authorization-check.js
+        localStorage.setItem('user_email', userProfile.email);
+        localStorage.setItem('auth_user_email', userProfile.email);
         
         // Cookies
         document.cookie = `cara_core_auth=${provider}; path=/; max-age=86400; secure; samesite=strict`;
         
         console.log(`✅ Autenticação ${provider.toUpperCase()} criada para:`, userProfile.name);
+        console.log(`✅ Dados salvos no formato SessionManager:`, {
+            access_token: '***',
+            expires_at: expiresAt,
+            provider: provider === 'azure' ? 'microsoft' : provider
+        });
         return true;
     }
     
@@ -188,6 +212,48 @@
             const provider = detectProvider(params.code);
             console.log(`🔍 Provider detectado: ${provider}`);
             
+            // PRIMEIRO: Tentar processar callback OAuth usando auth-standalone se disponível
+            if (window.OIDCAuth && params.code && params.state) {
+                console.log('🔄 Tentando processar callback com OIDCAuth...');
+                try {
+                    // Aguardar um pouco para garantir que OIDCAuth está pronto
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    
+                    // Tentar processar callback
+                    const user = await window.OIDCAuth.handleAuthCallback();
+                    if (user && user.profile) {
+                        console.log('✅ Callback processado com sucesso pelo OIDCAuth');
+                        
+                        // Salvar no formato SessionManager
+                        const expiresIn = user.expires_in || 3600;
+                        const expiresAt = Math.floor(Date.now() / 1000) + expiresIn;
+                        
+                        localStorage.setItem('auth_access_token', user.access_token || '');
+                        localStorage.setItem('auth_refresh_token', user.refresh_token || '');
+                        localStorage.setItem('auth_provider', provider === 'azure' ? 'microsoft' : provider);
+                        localStorage.setItem('auth_user_info', JSON.stringify({
+                            email: user.profile.email || user.profile.preferred_username,
+                            name: user.profile.name,
+                            provider: provider === 'azure' ? 'microsoft' : provider,
+                            user_id: user.profile.sub || user.profile.oid
+                        }));
+                        localStorage.setItem('auth_expires_at', expiresAt.toString());
+                        localStorage.setItem('auth_last_activity', Math.floor(Date.now() / 1000).toString());
+                        localStorage.setItem('user_email', user.profile.email || user.profile.preferred_username);
+                        localStorage.setItem('auth_user_email', user.profile.email || user.profile.preferred_username);
+                        
+                        cleanCallbackUrl();
+                        redirectToRestricted();
+                        return true;
+                    }
+                } catch (oidcError) {
+                    console.warn('⚠️ OIDCAuth não conseguiu processar callback, usando auto-fix:', oidcError);
+                }
+            }
+            
+            // FALLBACK: Se OIDCAuth não funcionou, usar auto-fix
+            console.log('🔧 Usando auto-fix como fallback...');
+            
             // Se não há código, criar autenticação de emergência
             if (!params.code) {
                 console.log('⚠️ Sem código, criando autenticação de emergência...');
@@ -206,22 +272,23 @@
             // Aguardar propagação
             await new Promise(resolve => setTimeout(resolve, 500));
             
-            // Verificar se funcionou
+            // Verificar se funcionou (verificar formato SessionManager)
             const verification = {
-                hasProvider: sessionStorage.getItem('cara_core_oidc_provider') === provider,
-                hasTokens: !!sessionStorage.getItem('cara_core_id_token'),
-                hasOidcState: !!sessionStorage.getItem(`oidc.${params.state}`)
+                hasAccessToken: !!localStorage.getItem('auth_access_token'),
+                hasExpiresAt: !!localStorage.getItem('auth_expires_at'),
+                hasProvider: !!localStorage.getItem('auth_provider'),
+                hasUserInfo: !!localStorage.getItem('auth_user_info')
             };
             
-            console.log('🔍 Verificação:', verification);
+            console.log('🔍 Verificação (SessionManager):', verification);
             
-            if (verification.hasProvider && verification.hasTokens) {
+            if (verification.hasAccessToken && verification.hasExpiresAt && verification.hasProvider) {
                 console.log('🎉 Auto-fix aplicado com sucesso!');
                 cleanCallbackUrl();
                 redirectToRestricted();
                 return true;
             } else {
-                throw new Error('Verificação falhou');
+                throw new Error('Verificação falhou - dados não salvos corretamente');
             }
             
         } catch (error) {

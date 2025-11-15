@@ -144,6 +144,20 @@
     height: 50px;
     border-radius: 50%;
     border: 3px solid #e5e7eb;
+    object-fit: cover;
+}
+
+.user-avatar-fallback {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 3px solid #e5e7eb;
+    background: #f3f4f6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-size: 1.5rem;
 }
 
 .user-info {
@@ -199,6 +213,30 @@
 .urgency-low {
     background: #dcfce7;
     color: #16a34a;
+}
+
+.provider-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.provider-google {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.provider-microsoft {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.provider-unknown {
+    background: #f3f4f6;
+    color: #6b7280;
 }
 
 .request-details {

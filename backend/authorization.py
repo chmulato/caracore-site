@@ -429,8 +429,12 @@ class AuthorizationManager:
             if len(data['pending_requests']) >= max_pending:
                 return False, "Limite de solicitações pendentes atingido"
             
-            # Criar nova solicitação
+            # Criar nova solicitação com ID único
+            import hashlib
+            request_id = hashlib.md5(f"{email}{self._get_timestamp()}".encode()).hexdigest()[:12]
+            
             new_request = {
+                "id": request_id,
                 "email": email,
                 "name": request_data['name'].strip(),
                 "provider": request_data['provider'].lower(),

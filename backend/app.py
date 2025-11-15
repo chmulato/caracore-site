@@ -2175,10 +2175,10 @@ def create_app() -> Flask:
             data = load_authorized_users()
             pending_requests = data.get('pending_requests', [])
             
-            # Encontrar solicitação
+            # Encontrar solicitação por ID ou email (compatibilidade com solicitações antigas)
             request_to_approve = None
             for req in pending_requests:
-                if req.get('id') == request_id:
+                if req.get('id') == request_id or req.get('email', '').lower() == request_id.lower():
                     request_to_approve = req
                     break
             
@@ -2205,8 +2205,11 @@ def create_app() -> Flask:
             # Adicionar aos usuários
             data['users'].append(new_user)
             
-            # Remover das pendentes
-            data['pending_requests'] = [r for r in pending_requests if r.get('id') != request_id]
+            # Remover das pendentes (por ID ou email)
+            data['pending_requests'] = [
+                r for r in pending_requests 
+                if r.get('id') != request_id and r.get('email', '').lower() != request_id.lower()
+            ]
             
             # Atualizar timestamp
             data['updated_at'] = datetime.utcnow().isoformat()
@@ -2262,10 +2265,10 @@ def create_app() -> Flask:
             data = load_authorized_users()
             pending_requests = data.get('pending_requests', [])
             
-            # Encontrar solicitação
+            # Encontrar solicitação por ID ou email (compatibilidade com solicitações antigas)
             request_to_reject = None
             for req in pending_requests:
-                if req.get('id') == request_id:
+                if req.get('id') == request_id or req.get('email', '').lower() == request_id.lower():
                     request_to_reject = req
                     break
             
@@ -2277,8 +2280,11 @@ def create_app() -> Flask:
             # Obter admin atual
             admin_email = request.headers.get('X-User-Email', 'unknown')
             
-            # Remover das pendentes
-            data['pending_requests'] = [r for r in pending_requests if r.get('id') != request_id]
+            # Remover das pendentes (por ID ou email)
+            data['pending_requests'] = [
+                r for r in pending_requests 
+                if r.get('id') != request_id and r.get('email', '').lower() != request_id.lower()
+            ]
             
             # Atualizar timestamp
             data['updated_at'] = datetime.utcnow().isoformat()

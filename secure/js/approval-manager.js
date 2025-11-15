@@ -325,63 +325,65 @@ function renderRequests(requests) {
 
 function createRequestCard(request) {
     const card = document.createElement('div');
-    card.className = `request-card ${getPriorityClass(request.urgency)}`;
+    // Usar email como ID se não tiver id (compatibilidade com solicitações antigas)
+    const requestId = request.id || request.email;
+    const requestName = request.name || request.user_info?.name || 'Usuário';
+    const requestEmail = request.email || request.user_info?.email || '';
+    const requestDate = request.requested_at || request.created_at;
+    const requestStatus = request.status || 'pending';
+    const requestMessage = request.message || request.justification || 'Sem mensagem';
+    const requestProvider = request.provider || 'unknown';
+    
+    card.className = `request-card ${getPriorityClass(request.urgency || 'medium')}`;
+    
+    // Avatar com fallback para ícone SVG
+    const avatarHtml = request.user_info?.picture 
+        ? `<img src="${request.user_info.picture}" alt="Avatar" class="user-avatar" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+           <div class="user-avatar-fallback" style="display:none;"><i class="bi bi-person-circle"></i></div>`
+        : `<div class="user-avatar-fallback"><i class="bi bi-person-circle"></i></div>`;
     
     card.innerHTML = `
         <div class="request-header">
             <div class="request-user">
-                <img src="${request.user_info?.picture || '/images/default-avatar.png'}" 
-                     alt="Avatar" class="user-avatar">
+                ${avatarHtml}
                 <div class="user-info">
-                    <div class="user-name">${request.user_info?.name || 'Usuário'}</div>
-                    <div class="user-email">${request.user_info?.email || ''}</div>
+                    <div class="user-name">${escapeHtml(requestName)}</div>
+                    <div class="user-email">${escapeHtml(requestEmail)}</div>
                 </div>
             </div>
             <div class="request-meta">
-                <div class="request-date">${formatDate(request.created_at)}</div>
-                <span class="urgency-badge urgency-${request.urgency}">
-                    ${getUrgencyLabel(request.urgency)}
+                <div class="request-date">${formatDate(requestDate)}</div>
+                <span class="provider-badge provider-${requestProvider}">
+                    ${requestProvider === 'google' ? 'Google' : requestProvider === 'microsoft' ? 'Microsoft' : 'OAuth'}
                 </span>
             </div>
         </div>
         
         <div class="request-details">
             <div class="detail-item">
-                <span class="detail-label">Nível de Acesso</span>
-                <span class="detail-value">
-                    <span class="access-level-badge access-${request.access_level}">
-                        ${getAccessLevelLabel(request.access_level)}
-                    </span>
-                </span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Departamento</span>
-                <span class="detail-value">${request.department}</span>
-            </div>
-            <div class="detail-item">
-                <span class="detail-label">Supervisor</span>
-                <span class="detail-value">${request.manager_email || 'Não informado'}</span>
+                <span class="detail-label">Provedor</span>
+                <span class="detail-value">${requestProvider === 'google' ? 'Google' : requestProvider === 'microsoft' ? 'Microsoft' : 'Desconhecido'}</span>
             </div>
             <div class="detail-item">
                 <span class="detail-label">Status</span>
-                <span class="detail-value">${getStatusLabel(request.status)}</span>
+                <span class="detail-value">${getStatusLabel(requestStatus)}</span>
             </div>
         </div>
         
         <div class="justification-section">
-            <span class="detail-label">Justificativa</span>
-            <div class="justification-text">${request.justification}</div>
+            <span class="detail-label">Mensagem</span>
+            <div class="justification-text">${escapeHtml(requestMessage)}</div>
         </div>
         
-        ${request.status === 'pending' ? `
+        ${requestStatus === 'pending' ? `
         <div class="actions-section">
-            <button class="action-button approve-button" onclick="approveRequest('${request.id}')">
+            <button class="action-button approve-button" onclick="approveRequest('${escapeHtml(requestId)}')">
                 Aprovar
             </button>
-            <button class="action-button reject-button" onclick="authorizeAndShowRejectModal('${request.id}')">
+            <button class="action-button reject-button" onclick="authorizeAndShowRejectModal('${escapeHtml(requestId)}')">
                 Rejeitar
             </button>
-            <button class="action-button details-button" onclick="showRequestDetails('${request.id}')">
+            <button class="action-button details-button" onclick="showRequestDetails('${escapeHtml(requestId)}')">
                 Detalhes
             </button>
         </div>
@@ -389,6 +391,14 @@ function createRequestCard(request) {
     `;
     
     return card;
+}
+
+// Função auxiliar para escapar HTML
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 
 function getPriorityClass(urgency) {
@@ -564,26 +574,31 @@ async function confirmRejection() {
 }
 
 function showRequestDetails(requestId) {
-    const request = currentRequests.find(r => r.id === requestId);
+    // Buscar por ID ou email (compatibilidade com solicitações antigas)
+    const request = currentRequests.find(r => (r.id === requestId) || (r.email === requestId));
     if (!request) return;
+    
+    const requestName = request.name || request.user_info?.name || 'N/A';
+    const requestEmail = request.email || request.user_info?.email || 'N/A';
+    const requestDate = request.requested_at || request.created_at;
+    const requestProvider = request.provider || 'unknown';
+    const requestMessage = request.message || request.justification || 'Sem mensagem';
     
     const modalBody = document.getElementById('modal-body');
     modalBody.innerHTML = `
         <div style="margin-bottom: 1rem;">
-            <strong>Usuário:</strong> ${request.user_info?.name || 'N/A'}<br>
-            <strong>Email:</strong> ${request.user_info?.email || 'N/A'}<br>
-            <strong>Data da Solicitação:</strong> ${formatDate(request.created_at)}
+            <strong>Nome:</strong> ${escapeHtml(requestName)}<br>
+            <strong>Email:</strong> ${escapeHtml(requestEmail)}<br>
+            <strong>Data da Solicitação:</strong> ${formatDate(requestDate)}
         </div>
         <div style="margin-bottom: 1rem;">
-            <strong>Nível de Acesso:</strong> ${getAccessLevelLabel(request.access_level)}<br>
-            <strong>Departamento:</strong> ${request.department}<br>
-            <strong>Supervisor:</strong> ${request.manager_email || 'Não informado'}<br>
-            <strong>Urgência:</strong> ${getUrgencyLabel(request.urgency)}
+            <strong>Provedor:</strong> ${requestProvider === 'google' ? 'Google' : requestProvider === 'microsoft' ? 'Microsoft' : 'Desconhecido'}<br>
+            <strong>Status:</strong> ${getStatusLabel(request.status || 'pending')}
         </div>
         <div>
-            <strong>Justificativa:</strong><br>
-            <div style="background: #f9fafb; padding: 1rem; border-radius: 6px; margin-top: 0.5rem;">
-                ${request.justification}
+            <strong>Mensagem:</strong><br>
+            <div style="background: #f9fafb; padding: 1rem; border-radius: 6px; margin-top: 0.5rem; white-space: pre-wrap;">
+                ${escapeHtml(requestMessage)}
             </div>
         </div>
     `;

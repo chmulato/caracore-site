@@ -35,6 +35,7 @@
 **Siga o guia:** `docs/CONFIGURAR_AZURE_FILES_PORTAL.md`
 
 **Resumo rápido:**
+
 1. Criar Storage Account no Portal
 2. Criar File Share `caracore-data`
 3. Configurar montagem `/home/data` no Web App

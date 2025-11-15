@@ -8,7 +8,7 @@ Este guia mostra como configurar Azure Files manualmente via Portal Azure.
 
 ## 📋 Passo 1: Criar Storage Account
 
-1. Acesse: https://portal.azure.com
+1. Acesse: [https://portal.azure.com]
 2. No menu superior, clique em **+ Criar um recurso**
 3. Busque por **Storage account**
 4. Clique em **Criar**
@@ -66,25 +66,28 @@ Este guia mostra como configurar Azure Files manualmente via Portal Azure.
 
 1. Azure Portal > App Services > `caracore-backend-docker` > **SSH** (no menu lateral)
 2. Execute:
-   ```bash
-   python3 -c "
-   import json, shutil
-   from pathlib import Path
-   old = Path('/app/data/authorized_users.json')
-   new = Path('/home/data/authorized_users.json')
-   if old.exists() and not new.exists():
-       Path('/home/data').mkdir(parents=True, exist_ok=True)
-       shutil.copy(old, new)
-       print('✅ Dados migrados com sucesso!')
-   else:
-       print('ℹ️ Nenhum dado para migrar ou já migrado')
-   "
-   ```
+
+```bash
+python3 -c "
+import json, shutil
+from pathlib import Path
+old = Path('/app/data/authorized_users.json')
+new = Path('/home/data/authorized_users.json')
+if old.exists() and not new.exists():
+      Path('/home/data').mkdir(parents=True, exist_ok=True)
+      shutil.copy(old, new)
+      print('✅ Dados migrados com sucesso!')
+else:
+      print('ℹ️ Nenhum dado para migrar ou já migrado')
+"
+```
+
 3. Verificar:
-   ```bash
-   ls -la /home/data/
-   cat /home/data/authorized_users.json
-   ```
+
+```bash
+ls -la /home/data/
+cat /home/data/authorized_users.json
+```
 
 ---
 

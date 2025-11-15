@@ -398,6 +398,49 @@ def create_app() -> Flask:
     # Configurar Swagger/OpenAPI será feito após todas as rotas serem registradas
     # Ver final do arquivo onde app é retornado
 
+    # Health + storage check endpoint
+    @app.route("/health/storage", methods=["GET"])
+    def health_storage():
+        """Verifica leitura/gravação no caminho persistente configurado por SESSION_DATA_FILE.
+
+        Retorna JSON com status e detalhes. Não altera dados existentes além do arquivo de teste.
+        """
+        # Path de sessão (preferir variável de ambiente definida no App Service)
+        session_path = os.getenv("SESSION_DATA_FILE") or os.getenv("SESSION_FILE") or "/home/site/wwwroot/data/user_sessions.json"
+        # Garantir pasta
+        try:
+            dirpath = os.path.dirname(session_path)
+            os.makedirs(dirpath, exist_ok=True)
+        except Exception as exc:
+            logger.exception("Falha ao garantir diretório de sessões")
+            return make_response(jsonify({"ok": False, "error": "failed to ensure session dir", "exception": str(exc)}), 500)
+
+        test_file = os.path.join(dirpath, f".health_write_test_{int(time.time())}.tmp")
+        try:
+            # write
+            with open(test_file, "w", encoding="utf-8") as fh:
+                fh.write("health-check")
+            # read
+            with open(test_file, "r", encoding="utf-8") as fh:
+                content = fh.read()
+            # cleanup
+            try:
+                os.remove(test_file)
+            except Exception:
+                logger.warning("Não foi possível remover arquivo de teste %s", test_file)
+
+            ok = content == "health-check"
+            status = 200 if ok else 500
+            return make_response(jsonify({
+                "ok": ok,
+                "session_path": session_path,
+                "test_file": test_file,
+                "content_read": content
+            }), status)
+        except Exception as exc:
+            logger.exception("Erro no health/storage check")
+            return make_response(jsonify({"ok": False, "error": "io_error", "exception": str(exc)}), 500)
+
     allowed_origin = os.getenv("ORIGIN_ALLOWED", "*")
     google_client_id = os.getenv("GOOGLE_CLIENT_ID")
     google_client_secret = os.getenv("GOOGLE_CLIENT_SECRET")

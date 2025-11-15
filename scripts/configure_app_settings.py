@@ -195,9 +195,8 @@ def set_settings(settings: Dict[str, str], dry_run: bool = False, app_name: str 
     app = app_name or WEB_APP_NAME
     rg = resource_group or RESOURCE_GROUP
     
-    # Construir string de settings
+    # Construir lista de settings no formato aceito pelo AZ CLI
     settings_list = [f"{k}={v}" for k, v in settings.items()]
-    settings_string = " ".join(settings_list)
     
     if dry_run:
         print_info("DRY RUN - Variáveis que seriam configuradas:")
@@ -206,11 +205,15 @@ def set_settings(settings: Dict[str, str], dry_run: bool = False, app_name: str 
         return True, "Dry run concluído"
     
     try:
+        command = [
+            "az", "webapp", "config", "appsettings", "set",
+            "--name", app,
+            "--resource-group", rg,
+            "--settings"
+        ] + settings_list
+
         result = subprocess.run(
-            ["az", "webapp", "config", "appsettings", "set",
-             "--name", app,
-             "--resource-group", rg,
-             "--settings", settings_string],
+            command,
             capture_output=True,
             text=True,
             check=True,

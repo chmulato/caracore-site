@@ -39,7 +39,7 @@
 #### Passo a Passo:
 
 1. **Acesse o Azure Portal:**
-   - https://portal.azure.com
+   - [https://portal.azure.com]
 
 2. **Navegue até o App Service:**
    - **App Services** > `caracore-backend-docker`

@@ -4,7 +4,7 @@
  */
 
 // Função para aguardar OAuth completar
-function waitForOAuthCompletion(maxWaitTime = 20000, checkInterval = 200) {
+function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) {
   return new Promise((resolve, reject) => {
     const startTime = Date.now();
     let checkCount = 0;

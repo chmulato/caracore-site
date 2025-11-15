@@ -230,17 +230,28 @@
                         console.log('🔧 Inicializando OIDCAuth com provider:', provider);
                         // Provider já está no formato correto ('entra' ou 'google')
                         try {
-                            // Timeout de 10 segundos para inicialização
+                            // Timeout de 5 segundos para inicialização (mais curto para fallback rápido)
+                            console.log('⏳ Aguardando inicialização do OIDCAuth (timeout: 5s)...');
                             const initPromise = window.OIDCAuth.initialize(provider);
                             const timeoutPromise = new Promise((_, reject) => 
-                                setTimeout(() => reject(new Error('Timeout na inicialização do OIDCAuth')), 10000)
+                                setTimeout(() => reject(new Error('Timeout na inicialização do OIDCAuth (5s)')), 5000)
                             );
                             await Promise.race([initPromise, timeoutPromise]);
-                            console.log('✅ OIDCAuth inicializado com sucesso');
+                            console.log('✅ OIDCAuth inicializado com sucesso', {
+                                isInitialized: window.OIDCAuth.isInitialized,
+                                currentProvider: window.OIDCAuth.currentProvider,
+                                hasUserManager: !!window.OIDCAuth.userManager
+                            });
                         } catch (initError) {
-                            console.error('❌ Erro ao inicializar OIDCAuth:', initError);
-                            throw initError; // Re-throw para cair no catch externo
+                            console.warn('⚠️ Erro ao inicializar OIDCAuth (usando auto-fix):', initError.message);
+                            // Não fazer throw - deixar cair no fallback
+                            throw initError;
                         }
+                    } else {
+                        console.log('✅ OIDCAuth já estava inicializado', {
+                            currentProvider: window.OIDCAuth.currentProvider,
+                            hasUserManager: !!window.OIDCAuth.userManager
+                        });
                     }
                     
                     // Tentar processar callback com timeout
@@ -278,25 +289,39 @@
                         // Salvar no formato SessionManager
                         const expiresIn = user.expires_in || 3600;
                         const expiresAt = Math.floor(Date.now() / 1000) + expiresIn;
+                        const userEmail = user.profile.email || user.profile.preferred_username;
+                        
+                        console.log('💾 Salvando dados no localStorage...', {
+                            email: userEmail,
+                            hasAccessToken: !!user.access_token,
+                            hasRefreshToken: !!user.refresh_token,
+                            expiresAt: expiresAt
+                        });
                         
                         localStorage.setItem('auth_access_token', user.access_token || '');
                         localStorage.setItem('auth_refresh_token', user.refresh_token || '');
                         localStorage.setItem('auth_provider', provider === 'entra' ? 'microsoft' : provider);
                         localStorage.setItem('auth_user_info', JSON.stringify({
-                            email: user.profile.email || user.profile.preferred_username,
+                            email: userEmail,
                             name: user.profile.name,
                             provider: provider === 'entra' ? 'microsoft' : provider,
                             user_id: user.profile.sub || user.profile.oid
                         }));
                         localStorage.setItem('auth_expires_at', expiresAt.toString());
                         localStorage.setItem('auth_last_activity', Math.floor(Date.now() / 1000).toString());
-                        localStorage.setItem('user_email', user.profile.email || user.profile.preferred_username);
-                        localStorage.setItem('auth_user_email', user.profile.email || user.profile.preferred_username);
+                        localStorage.setItem('user_email', userEmail);
+                        localStorage.setItem('auth_user_email', userEmail);
                         
                         console.log('✅ Dados salvos no localStorage. Aguardando verificação de autorização...');
                         cleanCallbackUrl();
                         // NÃO redirecionar aqui - deixar callback-authorization.js fazer isso após verificar autorização
                         return true;
+                    } else {
+                        console.warn('⚠️ Callback processado mas sem user ou profile:', {
+                            hasUser: !!user,
+                            hasProfile: !!(user && user.profile),
+                            user: user ? Object.keys(user) : null
+                        });
                     }
                 } catch (oidcError) {
                     console.warn('⚠️ OIDCAuth não conseguiu processar callback, usando auto-fix:', oidcError);
@@ -365,11 +390,21 @@
     }
     
     // Executar auto-fix quando DOM estiver pronto
+    // Usar timeout para garantir que todos os scripts estejam carregados
+    const executeAutoFix = () => {
+        console.log('🚀 Executando auto-fix callback...');
+        autoFixCallback().catch(error => {
+            console.error('❌ Erro fatal no auto-fix:', error);
+        });
+    };
+    
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', autoFixCallback);
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(executeAutoFix, 500);
+        });
     } else {
-        // DOM já carregado, executar imediatamente
-        setTimeout(autoFixCallback, 100);
+        // DOM já carregado, executar após um pequeno delay
+        setTimeout(executeAutoFix, 500);
     }
     
     // Exposer função globalmente para uso manual se necessário

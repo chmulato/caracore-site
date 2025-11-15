@@ -33,10 +33,23 @@ class SecurityConfig:
     # Content Security Policy
     CSP_POLICY = os.getenv("CSP_POLICY", 
         "default-src 'self'; "
-        "script-src 'self' 'unsafe-inline' https://accounts.google.com https://login.microsoftonline.com; "
-        "style-src 'self' 'unsafe-inline'; "
+        "script-src 'self' 'unsafe-inline' https://accounts.google.com https://login.microsoftonline.com https://unpkg.com; "
+        "style-src 'self' 'unsafe-inline' https://unpkg.com; "
         "img-src 'self' data: https:; "
-        "font-src 'self' data:; "
+        "font-src 'self' data: https://unpkg.com; "
+        "connect-src 'self' https://oauth2.googleapis.com https://login.microsoftonline.com https://graph.microsoft.com; "
+        "frame-ancestors 'none'; "
+        "base-uri 'self'; "
+        "form-action 'self'"
+    )
+    
+    # CSP mais permissivo para Swagger UI
+    CSP_POLICY_SWAGGER = os.getenv("CSP_POLICY_SWAGGER",
+        "default-src 'self'; "
+        "script-src 'self' 'unsafe-inline' https://accounts.google.com https://login.microsoftonline.com https://unpkg.com; "
+        "style-src 'self' 'unsafe-inline' https://unpkg.com; "
+        "img-src 'self' data: https:; "
+        "font-src 'self' data: https://unpkg.com; "
         "connect-src 'self' https://oauth2.googleapis.com https://login.microsoftonline.com https://graph.microsoft.com; "
         "frame-ancestors 'none'; "
         "base-uri 'self'; "

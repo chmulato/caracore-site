@@ -2855,7 +2855,11 @@ def create_app() -> Flask:
     def apply_security_headers(response):
         """Aplica headers de segurança em todas as respostas"""
         if SECURITY_HEADERS_ENABLED:
-            response = add_security_headers(response)
+            # Para /api-docs, usar CSP mais permissivo se já não foi aplicado
+            if request.path == "/api-docs" and "Content-Security-Policy" not in response.headers:
+                response = add_security_headers(response, use_swagger_csp=True)
+            elif request.path != "/api-docs":
+                response = add_security_headers(response)
         return response
     
     # Endpoint de teste para verificar deploy
@@ -2965,6 +2969,9 @@ def create_app() -> Flask:
             """
             resp = make_response(swagger_ui_html, 200)
             resp.headers['Content-Type'] = 'text/html; charset=utf-8'
+            # Aplicar CSP mais permissivo para Swagger UI
+            if SECURITY_HEADERS_ENABLED:
+                resp = add_security_headers(resp, use_swagger_csp=True)
             return add_cors(resp)
     except Exception as e:
         logger.error(f"Erro ao configurar Swagger: {e}")
@@ -3010,6 +3017,9 @@ def create_app() -> Flask:
             """
             resp = make_response(swagger_ui_html, 200)
             resp.headers['Content-Type'] = 'text/html; charset=utf-8'
+            # Aplicar CSP mais permissivo para Swagger UI
+            if SECURITY_HEADERS_ENABLED:
+                resp = add_security_headers(resp, use_swagger_csp=True)
             return add_cors(resp)
     
     return app

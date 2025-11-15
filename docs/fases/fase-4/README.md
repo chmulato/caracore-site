@@ -8,6 +8,7 @@
 ## Status da Fase: 100% COMPLETA
 
 ### **TODAS AS 10 TAREFAS IMPLEMENTADAS**
+
 - **Sistema de Autorização**: 100% funcional
 - **APIs REST**: 4 endpoints ativos
 - **Frontend**: 3 páginas + 2 módulos JS
@@ -15,7 +16,8 @@
 - **Documentação**: Completa
 
 ### **PRODUÇÃO ATIVA**
-- **URL**: https://caracore-backend-docker.azurewebsites.net
+
+- **URL**: [https://caracore-backend-docker.azurewebsites.net]
 - **Docker**: Azure Container Registry
 - **Dados**: 2 usuários admin carregados
 - **Monitoramento**: Azure Application Insights
@@ -48,51 +50,51 @@ Atualmente qualquer usuário com conta Google/Microsoft pode acessar a Área 51 
 **Tarefas:**
 
 - [ ] **Backend - Estrutura de Dados**
- - [ ] Criar arquivo `backend/data/authorized_users.json`
- - [ ] Definir estrutura de dados (email, name, provider, approved_at, role)
- - [ ] Adicionar usuários iniciais (admins)
+- [ ] Criar arquivo `backend/data/authorized_users.json`
+- [ ] Definir estrutura de dados (email, name, provider, approved_at, role)
+- [ ] Adicionar usuários iniciais (admins)
 
 - [ ] **Backend - Endpoints API**
- - [ ] `POST /api/check-authorization` - Verificar se usuário está autorizado
- - [ ] `GET /api/admin/users` - Listar usuários autorizados (admin only)
- - [ ] `POST /api/admin/users` - Adicionar novo usuário autorizado (admin only)
- - [ ] `DELETE /api/admin/users/:email` - Remover autorização (admin only)
- - [ ] `POST /api/request-access` - Solicitar acesso (público)
+- [ ] `POST /api/check-authorization` - Verificar se usuário está autorizado
+- [ ] `GET /api/admin/users` - Listar usuários autorizados (admin only)
+- [ ] `POST /api/admin/users` - Adicionar novo usuário autorizado (admin only)
+- [ ] `DELETE /api/admin/users/:email` - Remover autorização (admin only)
+- [ ] `POST /api/request-access` - Solicitar acesso (público)
 
 - [ ] **Backend - Funções de Autorização**
- - [ ] `load_authorized_users()` - Carregar lista do JSON
- - [ ] `is_user_authorized(email)` - Verificar autorização
- - [ ] `add_authorized_user(user_data)` - Adicionar usuário
- - [ ] `remove_authorized_user(email)` - Remover usuário
- - [ ] Logging de tentativas de acesso não autorizado
+- [ ] `load_authorized_users()` - Carregar lista do JSON
+- [ ] `is_user_authorized(email)` - Verificar autorização
+- [ ] `add_authorized_user(user_data)` - Adicionar usuário
+- [ ] `remove_authorized_user(email)` - Remover usuário
+- [ ] Logging de tentativas de acesso não autorizado
 
 - [ ] **Frontend - Páginas Novas**
- - [ ] `secure/access-denied.html` - Página de acesso negado
- - [ ] `secure/request-access.html` - Formulário de solicitação
- - [ ] `secure/admin-users.html` - Dashboard de gerenciamento (350 linhas)
+- [ ] `secure/access-denied.html` - Página de acesso negado
+- [ ] `secure/request-access.html` - Formulário de solicitação
+- [ ] `secure/admin-users.html` - Dashboard de gerenciamento (350 linhas)
 
 - [ ] **Frontend - JavaScript**
- - [ ] `secure/js/authorization-check.js` - Verificação após OAuth (120 linhas)
- - [ ] `secure/js/admin-users-manager.js` - Gerenciamento de usuários (400 linhas)
- - [ ] Integrar verificação no `auth.js` após login
+- [ ] `secure/js/authorization-check.js` - Verificação após OAuth (120 linhas)
+- [ ] `secure/js/admin-users-manager.js` - Gerenciamento de usuários (400 linhas)
+- [ ] Integrar verificação no `auth.js` após login
 
 - [ ] **Frontend - Integração**
- - [ ] Adicionar verificação em `secure/callback.html`
- - [ ] Adicionar verificação em `secure/restrita.html`
- - [ ] Adicionar link para request-access em access-denied.html
- - [ ] Adicionar link para admin-users no wiki (sidebar admin)
+- [ ] Adicionar verificação em `secure/callback.html`
+- [ ] Adicionar verificação em `secure/restrita.html`
+- [ ] Adicionar link para request-access em access-denied.html
+- [ ] Adicionar link para admin-users no wiki (sidebar admin)
 
 - [ ] **Logs e Auditoria**
- - [ ] Registrar tentativas de acesso não autorizado
- - [ ] Registrar solicitações de acesso
- - [ ] Registrar aprovações/rejeições de acesso
+- [ ] Registrar tentativas de acesso não autorizado
+- [ ] Registrar solicitações de acesso
+- [ ] Registrar aprovações/rejeições de acesso
 
 - [ ] **Testes**
- - [ ] Testar acesso com usuário autorizado
- - [ ] Testar acesso com usuário não autorizado
- - [ ] Testar formulário de solicitação
- - [ ] Testar dashboard de admin
- - [ ] Testar endpoints da API
+- [ ] Testar acesso com usuário autorizado
+- [ ] Testar acesso com usuário não autorizado
+- [ ] Testar formulário de solicitação
+- [ ] Testar dashboard de admin
+- [ ] Testar endpoints da API
 
 **Entregáveis:**
 
@@ -345,18 +347,22 @@ Fluxo Completo com Autorização:
 ## Ordem de Implementação Recomendada
 
 ### Prioridade 1 (Crítico - 1 dia):
-1. **Item 13** - Sistema de Controle de Acesso
- - Implementar backend (JSON + endpoints)
- - Criar páginas de UI (access-denied, request-access, admin-users)
- - Integrar com sistema OAuth existente
- - Testar fluxo completo
+
+1.**Item 13** - Sistema de Controle de Acesso
+
+- Implementar backend (JSON + endpoints)
+- Criar páginas de UI (access-denied, request-access, admin-users)
+- Integrar com sistema OAuth existente
+- Testar fluxo completo
 
 ### Prioridade 2 (Alta - 2 dias):
-2. **Item 10** - Monitoramento e Alertas
-3. **Item 11** - Documentação e Entrega
+
+2.**Item 10** - Monitoramento e Alertas
+3.**Item 11** - Documentação e Entrega
 
 ### Prioridade 3 (Média - 1 dia):
-4. **Item 12** - Manutenção e Suporte
+
+4.**Item 12** - Manutenção e Suporte
 
 **Tempo Total Estimado:** 4-5 dias (vs 10 dias originais)
 

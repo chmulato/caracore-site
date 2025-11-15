@@ -23,8 +23,13 @@ class AuthorizationChecker {
         this.isChecking = false;
         
         // Configurações
+        // Detectar URL do backend (produção ou local)
+        const backendUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:5051'
+            : 'https://caracore-backend-docker.azurewebsites.net';
+        
         this.config = {
-            apiEndpoint: '/api/check-authorization',
+            apiEndpoint: `${backendUrl}/api/check-authorization`,
             accessDeniedUrl: '/secure/access-denied.html',
             firstAccessUrl: '/secure/first-access.html',
             maxRetries: 3,
@@ -110,7 +115,14 @@ class AuthorizationChecker {
                 
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({}));
-                    throw new Error(`HTTP ${response.status}: ${errorData.error_description || response.statusText}`);
+                    const errorMessage = `HTTP ${response.status}: ${errorData.error_description || response.statusText}`;
+                    
+                    // Tratar 405 (Method Not Allowed) e 404 (Not Found) como primeiro acesso
+                    if (response.status === 405 || response.status === 404) {
+                        throw new Error(`user_not_found: ${errorMessage}`);
+                    }
+                    
+                    throw new Error(errorMessage);
                 }
                 
                 const data = await response.json();
@@ -483,7 +495,11 @@ AuthorizationChecker.prototype.isFirstAccessCase = function(errorMessage) {
         'first_access_required',
         'user not found',
         'not registered',
-        'no record found'
+        'no record found',
+        'http 405',
+        'http 404',
+        'method not allowed',
+        'not found'
     ];
     
     const lowerMessage = errorMessage.toLowerCase();

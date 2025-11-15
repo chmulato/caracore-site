@@ -2343,12 +2343,19 @@ def create_app() -> Flask:
             
             # Encontrar solicitação por ID ou email (compatibilidade com solicitações antigas)
             request_to_approve = None
+            request_id_lower = str(request_id).lower()
+            
             for req in pending_requests:
-                if req.get('id') == request_id or req.get('email', '').lower() == request_id.lower():
+                req_id = str(req.get('id', '')).lower()
+                req_email = str(req.get('email', '')).lower()
+                
+                if req_id == request_id_lower or req_email == request_id_lower:
                     request_to_approve = req
+                    logger.info(f"Solicitação encontrada: ID={req.get('id')}, Email={req.get('email')}")
                     break
             
             if not request_to_approve:
+                logger.warning(f"Solicitação não encontrada: request_id={request_id}, total_pending={len(pending_requests)}")
                 error_response = {"error": "not_found", "error_description": "Solicitação não encontrada"}
                 resp = make_response(jsonify(error_response), 404)
                 return add_cors(resp)
@@ -2394,11 +2401,19 @@ def create_app() -> Flask:
             # Adicionar aos usuários
             data['users'].append(new_user)
             
-            # Remover das pendentes (por ID ou email)
+            # Remover das pendentes (por ID ou email) - garantir comparação correta
+            request_email_lower = request_to_approve['email'].lower()
+            request_id_str = str(request_to_approve.get('id', ''))
+            
+            initial_count = len(pending_requests)
             data['pending_requests'] = [
                 r for r in pending_requests 
-                if r.get('id') != request_id and r.get('email', '').lower() != request_id.lower()
+                if str(r.get('id', '')).lower() != request_id_str.lower() 
+                and str(r.get('email', '')).lower() != request_email_lower
             ]
+            removed_count = initial_count - len(data['pending_requests'])
+            
+            logger.info(f"Removendo solicitação pendente: ID={request_id_str}, Email={request_email_lower}, Removidas={removed_count}, Restantes={len(data['pending_requests'])}")
             
             # Atualizar timestamp
             data['updated_at'] = datetime.utcnow().isoformat()

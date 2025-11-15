@@ -222,6 +222,11 @@
             return; // Não continuar
         }
         
+        // VERIFICAR E LIMPAR DADOS DE USUÁRIO ANTERIOR (se for um usuário diferente)
+        if (window.userSessionManager) {
+            window.userSessionManager.handleUserLogin(realUserData.email, provider);
+        }
+        
         const userId = realUserData.profile?.sub || realUserData.profile?.oid || `${provider}_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
         
         let userProfile;

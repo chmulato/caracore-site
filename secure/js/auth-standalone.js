@@ -457,14 +457,28 @@
 
         async logout() {
             if (!this.isInitialized) {
+                // Mesmo sem inicialização, limpar dados locais
+                if (window.userSessionManager) {
+                    window.userSessionManager.handleUserLogout();
+                }
                 return;
             }
 
             try {
                 this.logger.authEvent('logout_started', { provider: this.currentProvider });
+                
+                // Limpar dados do usuário antes do logout
+                if (window.userSessionManager) {
+                    window.userSessionManager.handleUserLogout();
+                }
+                
                 await this.userManager.signoutRedirect();
             } catch (error) {
                 this.logger.authError(error, { context: 'logout', provider: this.currentProvider });
+                // Mesmo com erro, limpar dados locais
+                if (window.userSessionManager) {
+                    window.userSessionManager.handleUserLogout();
+                }
                 throw error;
             }
         }

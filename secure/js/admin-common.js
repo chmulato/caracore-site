@@ -15,9 +15,15 @@ function checkSuperAdminAuth() {
 // Função de logout
 function handleAdminLogout() {
     if (confirm('Tem certeza que deseja sair?')) {
-        localStorage.removeItem('super_admin_token');
-        localStorage.removeItem('super_admin_authenticated');
-        localStorage.removeItem('super_admin_email');
+        // Limpar dados do usuário usando UserSessionManager se disponível
+        if (window.userSessionManager) {
+            window.userSessionManager.handleUserLogout();
+        } else {
+            // Fallback: limpar dados manualmente
+            localStorage.removeItem('super_admin_token');
+            localStorage.removeItem('super_admin_authenticated');
+            localStorage.removeItem('super_admin_email');
+        }
         window.location.href = '/secure/super-admin-login.html';
     }
 }

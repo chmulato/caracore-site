@@ -1025,17 +1025,28 @@ class FirstAccessManager {
     
     async handleLogout() {
         try {
+            // Limpar dados do usuário usando UserSessionManager se disponível
+            if (window.userSessionManager) {
+                window.userSessionManager.handleUserLogout();
+            }
+            
             if (window.OIDCAuth && typeof window.OIDCAuth.logout === 'function') {
                 await window.OIDCAuth.logout();
             } else {
                 // Fallback: limpar storage e redirecionar
-                sessionStorage.clear();
-                localStorage.removeItem('cara_core_oidc_provider');
-                localStorage.removeItem('cara_core_oidc_user');
+                if (!window.userSessionManager) {
+                    sessionStorage.clear();
+                    localStorage.removeItem('cara_core_oidc_provider');
+                    localStorage.removeItem('cara_core_oidc_user');
+                }
                 window.location.href = this.config.logoutEndpoint;
             }
         } catch (error) {
             console.error('Erro no logout:', error);
+            // Mesmo com erro, garantir limpeza
+            if (window.userSessionManager) {
+                window.userSessionManager.handleUserLogout();
+            }
             // Forçar redirecionamento mesmo com erro
             window.location.href = this.config.logoutEndpoint;
         }

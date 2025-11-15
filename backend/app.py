@@ -394,59 +394,8 @@ def create_app() -> Flask:
     app = Flask(__name__)
     app.secret_key = os.getenv("APP_SECRET_KEY", os.urandom(32))
     
-    # Configurar Swagger/OpenAPI
-    try:
-        from flasgger import Swagger
-        swagger_config = {
-            "headers": [],
-            "specs": [
-                {
-                    "endpoint": "apispec",
-                    "route": "/apispec.json",
-                    "rule_filter": lambda rule: True,
-                    "model_filter": lambda tag: True,
-                }
-            ],
-            "static_url_path": "/flasgger_static",
-            "swagger_ui": True,
-            "specs_route": "/api-docs"
-        }
-        
-        swagger_template = {
-            "swagger": "2.0",
-            "info": {
-                "title": "CaraCore Backend API",
-                "description": "API Backend do sistema CaraCore - Sistema de autenticação OAuth 2.1 + OIDC e gestão de usuários",
-                "version": "1.0.0",
-                "contact": {
-                    "name": "CaraCore Team",
-                    "email": "suporte@caracore.com.br"
-                }
-            },
-            "servers": [
-                {
-                    "url": "https://caracore-backend-docker.azurewebsites.net",
-                    "description": "Produção (Azure)"
-                },
-                {
-                    "url": "http://localhost:5051",
-                    "description": "Desenvolvimento Local"
-                }
-            ],
-            "securityDefinitions": {
-                "BearerAuth": {
-                    "type": "apiKey",
-                    "name": "Authorization",
-                    "in": "header",
-                    "description": "Token JWT no formato: Bearer {token}"
-                }
-            }
-        }
-        
-        swagger = Swagger(app, config=swagger_config, template=swagger_template)
-        logger.info("Swagger/OpenAPI documentação habilitada em /api-docs")
-    except ImportError:
-        logger.warning("Flasgger não disponível - documentação Swagger desabilitada")
+    # Configurar Swagger/OpenAPI será feito após todas as rotas serem registradas
+    # Ver final do arquivo onde app é retornado
 
     allowed_origin = os.getenv("ORIGIN_ALLOWED", "*")
     google_client_id = os.getenv("GOOGLE_CLIENT_ID")
@@ -2920,6 +2869,148 @@ def create_app() -> Flask:
             "version": "1.1.0",
             "webhook_configured": True
         })
+    
+    # Configurar Swagger/OpenAPI após todas as rotas serem registradas
+    try:
+        from flasgger import Swagger
+        swagger_config = {
+            "headers": [],
+            "specs": [
+                {
+                    "endpoint": "apispec",
+                    "route": "/apispec.json",
+                    "rule_filter": lambda rule: True,
+                    "model_filter": lambda tag: True,
+                }
+            ],
+            "static_url_path": "/flasgger_static",
+            "swagger_ui": True,
+            "specs_route": "/api-docs"
+        }
+        
+        swagger_template = {
+            "swagger": "2.0",
+            "info": {
+                "title": "CaraCore Backend API",
+                "description": "API Backend do sistema CaraCore - Sistema de autenticação OAuth 2.1 + OIDC e gestão de usuários",
+                "version": "1.0.0",
+                "contact": {
+                    "name": "CaraCore Team",
+                    "email": "suporte@caracore.com.br"
+                }
+            },
+            "servers": [
+                {
+                    "url": "https://caracore-backend-docker.azurewebsites.net",
+                    "description": "Produção (Azure)"
+                },
+                {
+                    "url": "http://localhost:5051",
+                    "description": "Desenvolvimento Local"
+                }
+            ],
+            "securityDefinitions": {
+                "BearerAuth": {
+                    "type": "apiKey",
+                    "name": "Authorization",
+                    "in": "header",
+                    "description": "Token JWT no formato: Bearer {token}"
+                }
+            }
+        }
+        
+        swagger = Swagger(app, config=swagger_config, template=swagger_template)
+        logger.info("Swagger/OpenAPI documentação habilitada em /api-docs")
+    except ImportError as e:
+        logger.warning(f"Flasgger não disponível - usando Swagger UI alternativo: {e}")
+        # Criar endpoint alternativo simples para servir Swagger UI via CDN
+        @app.route("/api-docs", methods=["GET"])
+        def swagger_ui_alternative():
+            """Swagger UI alternativo usando CDN (quando Flasgger não está disponível)"""
+            swagger_ui_html = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CaraCore Backend API - Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui.css" />
+    <style>
+        html { box-sizing: border-box; overflow: -moz-scrollbars-vertical; overflow-y: scroll; }
+        *, *:before, *:after { box-sizing: inherit; }
+        body { margin:0; background: #fafafa; }
+    </style>
+</head>
+<body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            const ui = SwaggerUIBundle({
+                url: window.location.origin + "/swagger.yaml",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout"
+            });
+        };
+    </script>
+</body>
+</html>
+            """
+            resp = make_response(swagger_ui_html, 200)
+            resp.headers['Content-Type'] = 'text/html; charset=utf-8'
+            return add_cors(resp)
+    except Exception as e:
+        logger.error(f"Erro ao configurar Swagger: {e}")
+        # Mesma alternativa acima em caso de erro
+        @app.route("/api-docs", methods=["GET"])
+        def swagger_ui_fallback():
+            """Swagger UI alternativo usando CDN"""
+            swagger_ui_html = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CaraCore Backend API - Swagger UI</title>
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui.css" />
+    <style>
+        html { box-sizing: border-box; overflow: -moz-scrollbars-vertical; overflow-y: scroll; }
+        *, *:before, *:after { box-sizing: inherit; }
+        body { margin:0; background: #fafafa; }
+    </style>
+</head>
+<body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-bundle.js"></script>
+    <script src="https://unpkg.com/swagger-ui-dist@4.15.5/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.onload = function() {
+            const ui = SwaggerUIBundle({
+                url: window.location.origin + "/swagger.yaml",
+                dom_id: '#swagger-ui',
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout"
+            });
+        };
+    </script>
+</body>
+</html>
+            """
+            resp = make_response(swagger_ui_html, 200)
+            resp.headers['Content-Type'] = 'text/html; charset=utf-8'
+            return add_cors(resp)
     
     return app
 

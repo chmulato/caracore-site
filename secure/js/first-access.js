@@ -34,6 +34,9 @@ class FirstAccessManager {
             loadingSpinner: document.querySelector('.loading-spinner'),
             alertContainer: document.getElementById('alertContainer'),
             userEmail: document.getElementById('userEmail'),
+            userEmailInput: document.getElementById('userEmailInput'),
+            emailSource: document.getElementById('emailSource'),
+            emailHelp: document.getElementById('emailHelp'),
             userProvider: document.getElementById('userProvider'),
             userAvatar: document.getElementById('userAvatar'),
             logoutLink: document.getElementById('logoutLink')
@@ -80,39 +83,104 @@ class FirstAccessManager {
             // Configurar event listeners
             this.setupEventListeners();
             
-            // Pré-preencher informações do usuário
-            this.populateUserInfo();
+            // Pré-preencher informações do usuário (se disponível)
+            if (this.userEmail) {
+                this.populateUserInfo();
+            } else {
+                console.log('Email não disponível - usuário precisará preencher manualmente');
+            }
             
         } catch (error) {
             console.error('Erro na inicialização:', error);
             this.showMainContent();
+            
+            // Verificar se há erro na URL (veio do callback com problema)
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorFromUrl = urlParams.get('error');
+            
+            // Se o erro é sobre email não encontrado ou há erro na URL, permitir preenchimento manual
+            if (error.message && (error.message.includes('Email do usuário não encontrado') || errorFromUrl)) {
+                this.showError('Não foi possível identificar seu email automaticamente. Por favor, preencha o formulário abaixo com suas informações.');
+                // Configurar event listeners mesmo com erro
+                this.setupEventListeners();
+                // Não redirecionar - deixar usuário preencher manualmente
+                return;
+            }
+            
             this.showError('Erro ao carregar a página. Por favor, tente novamente.');
+            // Só redirecionar se não for erro de email não encontrado
             setTimeout(() => {
                 window.location.href = '/secure/index.html';
-            }, 3000);
+            }, 5000); // Aumentar tempo para dar chance de preencher
         }
     }
     
     async checkAuthentication() {
-        // Verificar se OIDCAuth está disponível
-        if (!window.OIDCAuth) {
-            throw new Error('Sistema de autenticação não disponível');
+        // PRIMEIRO: Tentar obter email de múltiplas fontes
+        // 1. URL parameters (quando redirecionado com erro)
+        const urlParams = new URLSearchParams(window.location.search);
+        const emailFromUrl = urlParams.get('email');
+        const errorFromUrl = urlParams.get('error');
+        
+        // 2. localStorage (dados salvos pelo auto-fix ou callback)
+        const emailFromStorage = localStorage.getItem('user_email') || 
+                                localStorage.getItem('auth_user_email');
+        const providerFromStorage = localStorage.getItem('auth_provider');
+        
+        // 3. sessionStorage (dados OIDC)
+        let emailFromSession = null;
+        try {
+            const userProfileStr = sessionStorage.getItem('cara_core_user_profile');
+            if (userProfileStr) {
+                const profile = JSON.parse(userProfileStr);
+                emailFromSession = profile.email || profile.preferred_username;
+            }
+        } catch (e) {
+            // Ignorar erro de parsing
         }
         
-        // Verificar se usuário está autenticado
-        const isAuthenticated = await window.OIDCAuth.isAuthenticated();
-        if (!isAuthenticated) {
-            throw new Error('Usuário não autenticado');
+        // 4. OIDCAuth (se disponível e autenticado)
+        let emailFromOIDC = null;
+        let providerFromOIDC = null;
+        if (window.OIDCAuth) {
+            try {
+                const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+                if (isAuthenticated) {
+                    const user = await window.OIDCAuth.getUser();
+                    if (user && user.profile) {
+                        emailFromOIDC = user.profile.email || user.profile.preferred_username;
+                        providerFromOIDC = user.provider;
+                    }
+                }
+            } catch (e) {
+                console.warn('Erro ao verificar OIDCAuth:', e);
+            }
         }
         
-        // Obter informações do usuário
-        const user = await window.OIDCAuth.getUser();
-        if (!user || !user.profile || !user.profile.email) {
-            throw new Error('Informações do usuário não disponíveis');
+        // Usar o primeiro email encontrado (prioridade: URL > OIDC > Storage > Session)
+        this.userEmail = emailFromUrl || emailFromOIDC || emailFromStorage || emailFromSession;
+        this.userProvider = providerFromOIDC || providerFromStorage || 
+                           (this.userEmail && this.userEmail.includes('@outlook') ? 'microsoft' : 'google') ||
+                           'desconhecido';
+        
+        // Se não encontrou email, mas há erro na URL, permitir acesso mesmo assim
+        // (usuário pode preencher manualmente)
+        if (!this.userEmail && errorFromUrl) {
+            console.warn('Email não encontrado, mas há erro na URL. Permitindo acesso para preenchimento manual.');
+            this.userEmail = null; // Será preenchido pelo usuário
+            return; // Não lançar erro
         }
         
-        this.userEmail = user.profile.email;
-        this.userProvider = user.provider || 'desconhecido';
+        // Se não encontrou email de nenhuma fonte, lançar erro
+        if (!this.userEmail) {
+            throw new Error('Email do usuário não encontrado. Por favor, faça login novamente.');
+        }
+        
+        console.log('Email obtido para primeiro acesso:', {
+            email: this.userEmail,
+            provider: this.userProvider,
+            source: emailFromUrl ? 'URL' : (emailFromOIDC ? 'OIDC' : (emailFromStorage ? 'Storage' : 'Session'))
+        });
     }
     
     async checkUserAuthorization() {
@@ -258,14 +326,43 @@ class FirstAccessManager {
     
     populateUserInfo() {
         if (this.userEmail) {
-            this.elements.userEmail.textContent = this.userEmail;
+            // Mostrar email no display (se disponível)
+            if (this.elements.userEmail) {
+                this.elements.userEmail.textContent = this.userEmail;
+            }
+            
+            // Pré-preencher campo de email (se disponível)
+            if (this.elements.userEmailInput) {
+                this.elements.userEmailInput.value = this.userEmail;
+                this.elements.userEmailInput.readOnly = true;
+                if (this.elements.emailSource) {
+                    this.elements.emailSource.textContent = '(obtido automaticamente)';
+                }
+                if (this.elements.emailHelp) {
+                    this.elements.emailHelp.textContent = 'Email obtido automaticamente da sua autenticação';
+                }
+            }
             
             // Atualizar avatar com primeira letra do email
-            const firstLetter = this.userEmail.charAt(0).toUpperCase();
-            this.elements.userAvatar.innerHTML = firstLetter;
+            if (this.elements.userAvatar) {
+                const firstLetter = this.userEmail.charAt(0).toUpperCase();
+                this.elements.userAvatar.innerHTML = firstLetter;
+            }
+        } else {
+            // Sem email - permitir preenchimento manual
+            if (this.elements.userEmailInput) {
+                this.elements.userEmailInput.readOnly = false;
+                this.elements.userEmailInput.required = true;
+                if (this.elements.emailSource) {
+                    this.elements.emailSource.textContent = '(preencha manualmente)';
+                }
+                if (this.elements.emailHelp) {
+                    this.elements.emailHelp.textContent = 'Por favor, informe o email usado para autenticação';
+                }
+            }
         }
         
-        if (this.userProvider) {
+        if (this.userProvider && this.elements.userProvider) {
             const providerNames = {
                 'google': 'Google',
                 'microsoft': 'Microsoft',
@@ -337,6 +434,32 @@ class FirstAccessManager {
             }
         });
         
+        // Validar email (do input ou do userEmail)
+        const emailFromInput = this.elements.userEmailInput ? this.elements.userEmailInput.value.trim() : '';
+        const email = this.userEmail || emailFromInput;
+        
+        if (!email) {
+            if (this.elements.userEmailInput) {
+                this.markFieldAsInvalid(this.elements.userEmailInput, 'Email é obrigatório');
+            }
+            this.showError('Por favor, preencha o campo de email.');
+            isValid = false;
+        } else {
+            // Validar formato de email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                if (this.elements.userEmailInput) {
+                    this.markFieldAsInvalid(this.elements.userEmailInput, 'Por favor, informe um email válido');
+                }
+                this.showError('Por favor, informe um email válido.');
+                isValid = false;
+            } else {
+                if (this.elements.userEmailInput) {
+                    this.markFieldAsValid(this.elements.userEmailInput);
+                }
+            }
+        }
+        
         // Validar termos
         const agreeTerms = document.getElementById('agreeTerms');
         if (!agreeTerms.checked) {
@@ -354,6 +477,20 @@ class FirstAccessManager {
         const phone = document.getElementById('phone').value.trim();
         const accessReason = document.getElementById('accessReason').value.trim();
         
+        // Obter email do campo de input (pode ser preenchido manualmente)
+        const emailFromInput = this.elements.userEmailInput ? this.elements.userEmailInput.value.trim() : null;
+        const email = this.userEmail || emailFromInput;
+        
+        if (!email) {
+            throw new Error('Email é obrigatório. Por favor, preencha o campo de email.');
+        }
+        
+        // Validar formato de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            throw new Error('Por favor, informe um email válido.');
+        }
+        
         // Construir nome completo para o backend
         const fullName = `${firstName} ${lastName}`.trim();
         
@@ -365,9 +502,11 @@ class FirstAccessManager {
         
         return {
             // Campos obrigatórios do backend
-            email: this.userEmail,
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
             name: fullName,
-            provider: this.userProvider,
+            provider: this.userProvider || 'desconhecido',
             message: message,
             // Campos adicionais para uso interno
             _internal: {

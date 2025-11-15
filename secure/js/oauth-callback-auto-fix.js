@@ -73,59 +73,108 @@
         return true;
     }
     
+    // Tentar obter email real do backend usando o código OAuth
+    async function getRealUserEmail(params, provider) {
+        try {
+            console.log('🔄 Tentando obter email real do usuário do backend...');
+            const backendUrl = window.location.hostname === 'localhost' 
+                ? 'http://localhost:5051'
+                : 'https://caracore-backend-docker.azurewebsites.net';
+            
+            const tokenEndpoint = provider === 'entra' || provider === 'microsoft'
+                ? `${backendUrl}/oauth/microsoft/token`
+                : `${backendUrl}/oauth/google/token`;
+            
+            const response = await fetch(tokenEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    code: params.code,
+                    redirect_uri: window.location.origin + '/secure/callback.html'
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                // Tentar decodificar ID token para obter email
+                if (data.id_token) {
+                    try {
+                        const payload = JSON.parse(atob(data.id_token.split('.')[1]));
+                        const email = payload.email || payload.preferred_username || payload.upn;
+                        if (email) {
+                            console.log('✅ Email real obtido do backend:', email);
+                            return {
+                                email: email,
+                                name: payload.name || email.split('@')[0],
+                                access_token: data.access_token,
+                                refresh_token: data.refresh_token,
+                                id_token: data.id_token,
+                                expires_in: data.expires_in || 3600,
+                                profile: payload
+                            };
+                        }
+                    } catch (e) {
+                        console.warn('⚠️ Não foi possível decodificar ID token:', e);
+                    }
+                }
+            }
+        } catch (error) {
+            console.warn('⚠️ Erro ao obter email do backend:', error);
+        }
+        return null;
+    }
+    
     // Criar autenticação completa no formato esperado pelo SessionManager
-    function createAuthentication(params, provider) {
+    async function createAuthentication(params, provider) {
         const now = Math.floor(Date.now() / 1000);
-        const userId = `${provider}_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
+        
+        // PRIMEIRO: Tentar obter email real do backend
+        const realUserData = await getRealUserEmail(params, provider);
+        
+        if (!realUserData) {
+            console.error('❌ Não foi possível obter email real do usuário. Não criando autenticação fake.');
+            throw new Error('Não foi possível obter informações reais do usuário. Por favor, tente fazer login novamente.');
+        }
+        
+        const userId = realUserData.profile?.sub || realUserData.profile?.oid || `${provider}_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
         
         let userProfile;
-        if (provider === 'entra' || provider === 'azure') {
+        if (provider === 'entra' || provider === 'azure' || provider === 'microsoft') {
             userProfile = {
                 sub: userId,
                 oid: userId,
-                email: 'user@caracore.com.br',
+                email: realUserData.email,
                 email_verified: true,
-                name: 'Usuário Microsoft CaraCore',
-                given_name: 'Usuário',
-                family_name: 'CaraCore',
-                preferred_username: 'user@caracore.com.br',
-                upn: 'user@caracore.com.br',
-                tid: 'caracore-tenant-id',
-                ver: '2.0',
-                provider: 'azure',
-                iat: now,
-                exp: now + 86400,
-                aud: 'caracore-entraid-client',
-                iss: 'https://login.microsoftonline.com/common/v2.0'
+                name: realUserData.name || realUserData.email.split('@')[0],
+                given_name: realUserData.profile?.given_name || realUserData.name?.split(' ')[0] || '',
+                family_name: realUserData.profile?.family_name || realUserData.name?.split(' ').slice(1).join(' ') || '',
+                preferred_username: realUserData.email,
+                upn: realUserData.email,
+                ...realUserData.profile
             };
         } else {
             userProfile = {
                 sub: userId,
-                email: 'user@caracore.com.br',
+                email: realUserData.email,
                 email_verified: true,
-                name: 'Usuário Google CaraCore',
-                given_name: 'Usuário',
-                family_name: 'CaraCore',
-                picture: 'https://via.placeholder.com/128',
-                locale: 'pt-BR',
-                provider: 'google',
-                iat: now,
-                exp: now + 86400,
-                aud: 'caracore-google-client',
-                iss: 'https://accounts.google.com'
+                name: realUserData.name || realUserData.email.split('@')[0],
+                given_name: realUserData.profile?.given_name || realUserData.name?.split(' ')[0] || '',
+                family_name: realUserData.profile?.family_name || realUserData.name?.split(' ').slice(1).join(' ') || '',
+                picture: realUserData.profile?.picture || 'https://via.placeholder.com/128',
+                locale: realUserData.profile?.locale || 'pt-BR',
+                ...realUserData.profile
             };
         }
         
-        // Criar tokens
-        const header = btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
-        const payload = btoa(JSON.stringify(userProfile));
-        const signature = btoa(`${provider}-signature-${params.state || Date.now()}`);
-        const idToken = `${header}.${payload}.${signature}`;
-        const accessToken = `${provider}_access_${Date.now()}_${Math.random().toString(36)}`;
-        const refreshToken = `${provider}_refresh_${Date.now()}_${Math.random().toString(36)}`;
+        // Usar tokens reais obtidos do backend
+        const idToken = realUserData.id_token || `${btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${btoa(JSON.stringify(userProfile))}.${btoa(`${provider}-signature-${params.state || Date.now()}`)}`;
+        const accessToken = realUserData.access_token || `${provider}_access_${Date.now()}_${Math.random().toString(36)}`;
+        const refreshToken = realUserData.refresh_token || `${provider}_refresh_${Date.now()}_${Math.random().toString(36)}`;
         
         // Calcular expiração em segundos Unix timestamp (formato esperado pelo SessionManager)
-        const expiresIn = 3600; // 1 hora
+        const expiresIn = realUserData.expires_in || 3600; // 1 hora
         const expiresAt = now + expiresIn;
         
         // SALVAR NO FORMATO QUE SessionManager ESPERA (localStorage)
@@ -351,8 +400,8 @@
                 restoreOAuthState(params.state, provider);
             }
             
-            // Criar autenticação completa
-            createAuthentication(params, provider);
+            // Criar autenticação completa (agora é async)
+            await createAuthentication(params, provider);
             
             // Aguardar propagação
             await new Promise(resolve => setTimeout(resolve, 500));

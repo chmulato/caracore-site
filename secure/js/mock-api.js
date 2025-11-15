@@ -39,11 +39,11 @@ if (isDevelopment) {
 
 console.log(`🎛️ [Mock API] Status: ${useMockAPI ? 'ATIVO' : 'INATIVO'}`);
 
-// Se não deve usar Mock API, sair do script
+// Se não deve usar Mock API, não interceptar nada
 if (!useMockAPI) {
     console.log('📡 [Mock API] Usando backend real em produção');
     // Não interceptar nada, deixar fetch original funcionar
-    return;
+    // Não usar return aqui - envolver código de interceptação em IIFE
 }
 
 // Base de usuários simulada
@@ -161,8 +161,11 @@ function handleFirstAccessRegistration(data) {
 // INTERCEPTAÇÃO DE API (APENAS DESENVOLVIMENTO)
 // ==========================================
 
-// Interceptar requests para simular API
-if (typeof window !== 'undefined' && useMockAPI) {
+// Interceptar requests para simular API (apenas se Mock API estiver ativo)
+(function() {
+    if (typeof window === 'undefined' || !useMockAPI) {
+        return; // Sair da IIFE se não deve usar Mock API
+    }
     console.log('🔄 [Mock API] Interceptando chamadas para backend simulado');
     
     // Sobrescrever fetch para interceptar chamadas da API
@@ -234,7 +237,7 @@ if (typeof window !== 'undefined' && useMockAPI) {
     console.log('✅ [Mock API] Sistema de simulação carregado com sucesso');
     console.log('👥 [Mock API] Usuários disponíveis para teste:', Object.keys(mockUsers));
     console.log('💡 [Mock API] Para desativar, acesse com ?mock=false');
-}
+})(); // Fim da IIFE
 
 // ==========================================
 // FUNÇÕES DE UTILIDADE (DESENVOLVIMENTO)

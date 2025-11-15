@@ -223,11 +223,28 @@
                     if (!window.OIDCAuth.isInitialized) {
                         console.log('🔧 Inicializando OIDCAuth com provider:', provider);
                         // Provider já está no formato correto ('entra' ou 'google')
-                        await window.OIDCAuth.initialize(provider);
+                        try {
+                            // Timeout de 10 segundos para inicialização
+                            const initPromise = window.OIDCAuth.initialize(provider);
+                            const timeoutPromise = new Promise((_, reject) => 
+                                setTimeout(() => reject(new Error('Timeout na inicialização do OIDCAuth')), 10000)
+                            );
+                            await Promise.race([initPromise, timeoutPromise]);
+                            console.log('✅ OIDCAuth inicializado com sucesso');
+                        } catch (initError) {
+                            console.error('❌ Erro ao inicializar OIDCAuth:', initError);
+                            throw initError; // Re-throw para cair no catch externo
+                        }
                     }
                     
-                    // Tentar processar callback
-                    const user = await window.OIDCAuth.handleAuthCallback();
+                    // Tentar processar callback com timeout
+                    console.log('🔄 Processando callback OAuth...');
+                    const callbackPromise = window.OIDCAuth.handleAuthCallback();
+                    const timeoutPromise = new Promise((_, reject) => 
+                        setTimeout(() => reject(new Error('Timeout ao processar callback OAuth')), 15000)
+                    );
+                    const user = await Promise.race([callbackPromise, timeoutPromise]);
+                    
                     if (user && user.profile) {
                         console.log('✅ Callback processado com sucesso pelo OIDCAuth');
                         
@@ -255,6 +272,7 @@
                     }
                 } catch (oidcError) {
                     console.warn('⚠️ OIDCAuth não conseguiu processar callback, usando auto-fix:', oidcError);
+                    console.error('Detalhes do erro:', oidcError.message, oidcError.stack);
                 }
             }
             

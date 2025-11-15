@@ -34,7 +34,7 @@
     // Detectar provider baseado no código
     function detectProvider(code) {
         if (code && code.startsWith('M.C')) {
-            return 'azure'; // Microsoft EntraID
+            return 'entra'; // Microsoft EntraID (usar 'entra' para compatibilidade)
         }
         return 'google'; // Default Google
     }
@@ -46,7 +46,7 @@
         console.log(`🔧 Restaurando estado ${provider}: ${state}`);
         
         const now = Math.floor(Date.now() / 1000);
-        const authority = provider === 'azure' ? 
+        const authority = (provider === 'entra' || provider === 'azure') ? 
             'https://login.microsoftonline.com/common' : 
             'https://accounts.google.com';
         
@@ -79,7 +79,7 @@
         const userId = `${provider}_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
         
         let userProfile;
-        if (provider === 'azure' || provider === 'entra') {
+        if (provider === 'entra' || provider === 'azure') {
             userProfile = {
                 sub: userId,
                 oid: userId,
@@ -131,11 +131,11 @@
         // SALVAR NO FORMATO QUE SessionManager ESPERA (localStorage)
         localStorage.setItem('auth_access_token', accessToken);
         localStorage.setItem('auth_refresh_token', refreshToken);
-        localStorage.setItem('auth_provider', provider === 'azure' ? 'microsoft' : provider);
+        localStorage.setItem('auth_provider', provider === 'entra' ? 'microsoft' : provider);
         localStorage.setItem('auth_user_info', JSON.stringify({
             email: userProfile.email,
             name: userProfile.name,
-            provider: provider === 'azure' ? 'microsoft' : provider,
+            provider: provider === 'entra' ? 'microsoft' : provider,
             user_id: userId
         }));
         localStorage.setItem('auth_expires_at', expiresAt.toString());
@@ -174,7 +174,7 @@
         console.log(`✅ Dados salvos no formato SessionManager:`, {
             access_token: '***',
             expires_at: expiresAt,
-            provider: provider === 'azure' ? 'microsoft' : provider
+            provider: provider === 'entra' ? 'microsoft' : provider
         });
         return true;
     }
@@ -219,6 +219,13 @@
                     // Aguardar um pouco para garantir que OIDCAuth está pronto
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     
+                    // Inicializar OIDCAuth se ainda não estiver inicializado
+                    if (!window.OIDCAuth.isInitialized) {
+                        console.log('🔧 Inicializando OIDCAuth com provider:', provider);
+                        // Provider já está no formato correto ('entra' ou 'google')
+                        await window.OIDCAuth.initialize(provider);
+                    }
+                    
                     // Tentar processar callback
                     const user = await window.OIDCAuth.handleAuthCallback();
                     if (user && user.profile) {
@@ -230,11 +237,11 @@
                         
                         localStorage.setItem('auth_access_token', user.access_token || '');
                         localStorage.setItem('auth_refresh_token', user.refresh_token || '');
-                        localStorage.setItem('auth_provider', provider === 'azure' ? 'microsoft' : provider);
+                        localStorage.setItem('auth_provider', provider === 'entra' ? 'microsoft' : provider);
                         localStorage.setItem('auth_user_info', JSON.stringify({
                             email: user.profile.email || user.profile.preferred_username,
                             name: user.profile.name,
-                            provider: provider === 'azure' ? 'microsoft' : provider,
+                            provider: provider === 'entra' ? 'microsoft' : provider,
                             user_id: user.profile.sub || user.profile.oid
                         }));
                         localStorage.setItem('auth_expires_at', expiresAt.toString());

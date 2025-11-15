@@ -21,7 +21,7 @@ const SessionManager = (function() {
     const CONFIG = {
         BACKEND_URL: window.location.hostname === 'localhost' 
             ? 'http://localhost:5051'
-            : 'https://api.caracore.com.br',
+            : 'https://caracore-backend-docker.azurewebsites.net',
         
         CHECK_INTERVAL: 60000,  // Verificar sessão a cada 60 segundos
         REFRESH_BEFORE: 300,    // Refresh token 5 min antes de expirar
@@ -218,14 +218,24 @@ const SessionManager = (function() {
                 return { valid: false, reason: 'invalid_token' };
             }
         } catch (error) {
-            console.error('[SessionManager] Erro ao validar sessão:', error);
+            console.warn('[SessionManager] Erro ao validar sessão no backend:', error);
             
-            // Notificação de erro de rede
-            if (typeof NotificationBridge !== 'undefined') {
-                NotificationBridge.showError('network_error');
+            // Se for erro de rede (ERR_NAME_NOT_RESOLVED, ERR_FAILED, etc), 
+            // assumir que o token local é válido (modo offline)
+            if (error.message && (
+                error.message.includes('Failed to fetch') || 
+                error.message.includes('ERR_NAME_NOT_RESOLVED') ||
+                error.message.includes('ERR_FAILED') ||
+                error.message.includes('network')
+            )) {
+                console.log('[SessionManager] Erro de rede - assumindo token local válido (modo offline)');
+                // Atualizar última atividade mesmo sem validação no backend
+                updateLastActivity();
+                return { valid: true, reason: 'offline_mode' };
             }
             
-            return { valid: false, reason: 'network_error' };
+            // Para outros erros, considerar inválido
+            return { valid: false, reason: 'validation_error' };
         }
     }
     

@@ -132,7 +132,7 @@ try:
         is_user_authorized, get_user_role, add_authorized_user, 
         remove_authorized_user, update_authorized_user, add_pending_request, 
         load_authorized_users, save_authorized_users, get_pending_request_by_email,
-        detect_provider_from_email
+        detect_provider_from_email, auth_manager
     )
     AUTHORIZATION_ENABLED = True
     logger.info("Authorization module carregado - controle de acesso habilitado")
@@ -2086,10 +2086,17 @@ def create_app() -> Flask:
             is_authorized = is_user_authorized(email)
             user_role = get_user_role(email) if is_authorized else None
             
+            # Verificar se usuário existe mas está inativo
+            user_info = auth_manager.get_user_status(email)
+            user_status = user_info.get('status') if user_info else None
+            is_inactive = user_info is not None and user_status == 'inactive'
+            
             response_data = {
                 "authorized": is_authorized,
                 "role": user_role,
-                "email": email
+                "email": email,
+                "status": user_status,  # 'active', 'inactive', ou None se não encontrado
+                "inactive": is_inactive  # Flag para facilitar verificação no frontend
             }
             
             # Log da verificação

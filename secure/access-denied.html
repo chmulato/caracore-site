@@ -212,9 +212,9 @@
             <svg class="icon-md" aria-hidden="true"><use href="#icon-x-circle"></use></svg>
           </div>
           
-          <h1 class="access-denied-title">Acesso Negado</h1>
+          <h1 class="access-denied-title" id="accessDeniedTitle">Acesso Negado</h1>
           
-          <p class="access-denied-message">
+          <p class="access-denied-message" id="accessDeniedMessage">
             Embora você tenha se autenticado com sucesso, seu acesso à Área 51 requer autorização adicional. 
             Apenas usuários autorizados podem acessar este conteúdo protegido.
           </p>
@@ -225,12 +225,12 @@
           </div>
         </section>
 
-        <div class="info-box">
+        <div class="info-box" id="infoBox">
           <h3>
             <svg class="icon-sm" aria-hidden="true"><use href="#icon-info"></use></svg>
-            Como solicitar acesso
+            <span id="infoBoxTitle">Como solicitar acesso</span>
           </h3>
-          <p>
+          <p id="infoBoxMessage">
             Se você precisa acessar esta área, pode solicitar autorização clicando no botão abaixo. 
             Sua solicitação será analisada por nossa equipe e você receberá uma resposta em breve.
           </p>
@@ -298,6 +298,47 @@
       const urlParams = new URLSearchParams(window.location.search);
       const userEmail = urlParams.get('email') || localStorage.getItem('user_email');
       const provider = urlParams.get('provider') || localStorage.getItem('auth_provider') || 'unknown';
+      const isInactive = urlParams.get('inactive') === 'true';
+      const reason = urlParams.get('reason');
+      
+      // Verificar se usuário está inativo
+      if (isInactive || reason === 'user_inactive') {
+        const title = document.getElementById('accessDeniedTitle');
+        const message = document.getElementById('accessDeniedMessage');
+        const infoBoxTitle = document.getElementById('infoBoxTitle');
+        const infoBoxMessage = document.getElementById('infoBoxMessage');
+        const infoBox = document.getElementById('infoBox');
+        
+        if (title) {
+          title.textContent = 'Conta Desativada';
+        }
+        
+        if (message) {
+          message.textContent = 'Sua conta foi desativada e você não pode acessar a Área 51 no momento. ' +
+            'Entre em contato com um administrador para reativar sua conta.';
+          message.style.color = '#991b1b';
+        }
+        
+        if (infoBoxTitle) {
+          infoBoxTitle.textContent = 'Como reativar sua conta';
+        }
+        
+        if (infoBoxMessage) {
+          infoBoxMessage.textContent = 'Para reativar sua conta, entre em contato com um administrador do sistema. ' +
+            'Você pode enviar um e-mail para suporte@caracore.com.br solicitando a reativação da sua conta.';
+        }
+        
+        if (infoBox) {
+          infoBox.style.background = '#fef3c7';
+          infoBox.style.borderColor = '#fbbf24';
+        }
+        
+        // Ocultar botão de solicitar acesso (não faz sentido para usuário inativo)
+        const requestAccessBtn = document.querySelector('a[href="/secure/request-access.html"]');
+        if (requestAccessBtn) {
+          requestAccessBtn.style.display = 'none';
+        }
+      }
       
       if (userEmail) {
         const userInfo = document.getElementById('userInfo');

@@ -346,6 +346,39 @@ class AuthorizationManager:
             logger.error(f"Erro ao obter role para {email}: {e}")
             return None
     
+    def get_user_status(self, email: str) -> Optional[Dict[str, Any]]:
+        """
+        Obter informações completas do usuário incluindo status
+        
+        Args:
+            email: Email do usuário
+            
+        Returns:
+            Dicionário com informações do usuário (status, role, etc) ou None se não encontrado
+        """
+        try:
+            if not email:
+                return None
+            
+            data = self.load_authorized_users()
+            email_lower = email.lower().strip()
+            
+            for user in data['users']:
+                if user.get('email', '').lower() == email_lower:
+                    return {
+                        'email': user.get('email'),
+                        'name': user.get('name'),
+                        'role': user.get('role', 'user'),
+                        'status': user.get('status', 'active'),
+                        'provider': user.get('provider')
+                    }
+            
+            return None
+            
+        except Exception as e:
+            logger.error(f"Erro ao obter status do usuário para {email}: {e}")
+            return None
+    
     def add_authorized_user(self, user_data: Dict[str, Any]) -> Tuple[bool, str]:
         """
         Adicionar novo usuário autorizado

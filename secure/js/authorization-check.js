@@ -129,7 +129,9 @@ class AuthorizationChecker {
                 
                 return {
                     authorized: data.authorized === true,
-                    role: data.role || null
+                    role: data.role || null,
+                    status: data.status || null,
+                    inactive: data.inactive === true  // Flag indicando se usuário está inativo
                 };
                 
             } catch (error) {
@@ -161,6 +163,13 @@ class AuthorizationChecker {
         try {
             const result = await this.checkAuthorization(userEmail, provider);
             
+            // Verificar se usuário está inativo (existe mas status = 'inactive')
+            if (result.inactive === true) {
+                console.log('AuthorizationChecker: Usuário está inativo:', userEmail);
+                this.handleInactiveUser(userEmail, provider);
+                return false;
+            }
+            
             if (!result.authorized) {
                 this.handleAuthFailure(userEmail, provider, result.error);
                 return false;
@@ -179,6 +188,36 @@ class AuthorizationChecker {
                 this.hideLoadingIndicator();
             }
         }
+    }
+    
+    /**
+     * Lidar com usuário inativo
+     * @param {string} userEmail - Email do usuário
+     * @param {string} provider - Provedor OAuth
+     */
+    handleInactiveUser(userEmail, provider) {
+        console.log('AuthorizationChecker: Redirecionando usuário inativo:', userEmail);
+        
+        // Construir URL de redirecionamento para página de usuário inativo
+        const redirectUrl = new URL(this.config.accessDeniedUrl, window.location.origin);
+        
+        if (userEmail) {
+            redirectUrl.searchParams.set('email', userEmail);
+        }
+        
+        if (provider) {
+            redirectUrl.searchParams.set('provider', provider);
+        }
+        
+        // Adicionar parâmetro especial para identificar usuário inativo
+        redirectUrl.searchParams.set('inactive', 'true');
+        redirectUrl.searchParams.set('reason', 'user_inactive');
+        
+        // Log de auditoria
+        this.logAccessDenied(userEmail, provider, 'Usuário está inativo');
+        
+        // Redirecionar
+        window.location.href = redirectUrl.toString();
     }
     
     /**

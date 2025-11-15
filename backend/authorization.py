@@ -22,20 +22,31 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Caminho para o arquivo de dados com logs de debug
-# Em Azure Web App, usar /home/data para persistência (Azure Files mount)
+# Em Azure Web App, usar caminho persistente (Azure Files mount)
 # Em desenvolvimento local, usar diretório relativo
 BASE_DIR = os.path.dirname(__file__)
 
-# Detectar se está rodando no Azure Web App
-# Azure Web App monta volumes em /home/data quando configurado
-AZURE_DATA_DIR = '/home/data'
-IS_AZURE = os.path.exists(AZURE_DATA_DIR) and os.path.isdir(AZURE_DATA_DIR)
+# Detectar caminho persistente do Azure
+# Prioridade: variável de ambiente > caminhos padrão
+AZURE_MOUNT_PATH = os.getenv('AZURE_STORAGE_MOUNT_PATH', '')
+AZURE_DATA_DIRS = [
+    AZURE_MOUNT_PATH,  # Caminho configurado via variável de ambiente
+    '/home/site/wwwroot/data',  # Caminho padrão do Azure Files mount
+    '/home/data',  # Caminho alternativo (legado)
+]
 
-if IS_AZURE:
-    # Usar diretório persistente do Azure
-    DATA_DIR = AZURE_DATA_DIR
-    logger.info("Detectado ambiente Azure - usando /home/data para persistência")
-else:
+# Detectar se está rodando no Azure Web App
+DATA_DIR = None
+IS_AZURE = False
+
+for azure_dir in AZURE_DATA_DIRS:
+    if azure_dir and os.path.exists(azure_dir) and os.path.isdir(azure_dir):
+        DATA_DIR = azure_dir
+        IS_AZURE = True
+        logger.info(f"Detectado ambiente Azure - usando {DATA_DIR} para persistência")
+        break
+
+if not IS_AZURE:
     # Usar diretório local
     DATA_DIR = os.path.join(BASE_DIR, 'data')
     logger.info(f"Ambiente local - usando {DATA_DIR} para dados")

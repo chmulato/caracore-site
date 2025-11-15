@@ -6,6 +6,8 @@
 
 > **🚀 Guia Rápido:** Para executar os passos rapidamente, veja `docs/QUICK_START_PERSISTENT_STORAGE.md`
 
+> **🔐 Recomendado:** Para melhor segurança, use **Managed Identity** ao invés de Access Keys. Veja `docs/AZURE_FILES_MANAGED_IDENTITY.md`
+
 ---
 
 ## 🎯 Objetivo
@@ -24,9 +26,25 @@ Garantir que os dados em `authorized_users.json` sejam persistidos entre deploys
 
 ## 🔧 Configuração no Azure Portal
 
-### Passo 1: Configurar Azure Files
+### Opções de Configuração
 
-**Opção A: Via Script Python (Recomendado)**
+**Opção A: Managed Identity (Recomendado - Mais Seguro)** ⭐
+
+```bash
+python scripts/configure_azure_files_managed_identity.py
+```
+
+**Vantagens:**
+- ✅ Sem necessidade de gerenciar Access Keys
+- ✅ Rotação automática de credenciais
+- ✅ Melhor segurança (princípio de menor privilégio)
+- ✅ Conformidade com melhores práticas Azure
+
+**Documentação completa:** `docs/AZURE_FILES_MANAGED_IDENTITY.md`
+
+---
+
+**Opção B: Via Script Python com Access Key**
 
 ```bash
 python scripts/configure_azure_files.py
@@ -38,7 +56,7 @@ O script executa automaticamente:
 - Configura montagem `/home/data` no Web App
 - Reinicia o Web App automaticamente
 
-**Opção B: Manualmente via Portal**
+**Opção C: Manualmente via Portal**
 
 1. Azure Portal > **Storage accounts** > **+ Create**
 2. Configurações básicas:

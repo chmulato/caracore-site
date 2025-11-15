@@ -76,7 +76,7 @@ fetch('https://caracore-backend-docker.azurewebsites.net/api/admin/access-reques
 
 Abra diretamente o arquivo:
 
-```
+```bash
 backend/data/authorized_users.json
 ```
 
@@ -110,7 +110,7 @@ Procure pela seção `"pending_requests"`:
 python verificar_solicitacoes.py
 ```
 
-3. **Verifique se aparece na lista** de `pending_requests`
+3.**Verifique se aparece na lista** de `pending_requests`
 
 ### Se não aparecer:
 

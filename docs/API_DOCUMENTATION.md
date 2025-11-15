@@ -7,11 +7,13 @@ A documentação completa da API está disponível através do Swagger UI.
 ### Acessar a Documentação
 
 **Produção:**
+
 - Swagger UI: `https://caracore-backend-docker.azurewebsites.net/api-docs`
 - OpenAPI Spec (JSON): `https://caracore-backend-docker.azurewebsites.net/apispec.json`
 - OpenAPI Spec (YAML): `https://caracore-backend-docker.azurewebsites.net/swagger.yaml`
 
 **Desenvolvimento Local:**
+
 - Swagger UI: `http://localhost:5051/api-docs`
 - OpenAPI Spec (JSON): `http://localhost:5051/apispec.json`
 - OpenAPI Spec (YAML): `http://localhost:5051/swagger.yaml`
@@ -76,10 +78,12 @@ O arquivo `swagger.yaml` contém a especificação completa OpenAPI 3.0.0 da API
 #### Gerar Cliente SDK
 
 Use ferramentas como:
+
 - [OpenAPI Generator](https://openapi-generator.tech/)
 - [Swagger Codegen](https://swagger.io/tools/swagger-codegen/)
 
 Exemplo com OpenAPI Generator:
+
 ```bash
 openapi-generator generate -i swagger.yaml -g python -o ./client-sdk
 ```
@@ -97,4 +101,3 @@ Para atualizar a documentação:
 - A documentação é gerada automaticamente a partir dos docstrings dos endpoints
 - O arquivo `swagger.yaml` serve como referência completa e pode ser usado para importação em outras ferramentas
 - Todos os endpoints que requerem autenticação devem incluir `security: - BearerAuth: []` na documentação
-

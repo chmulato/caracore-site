@@ -5,6 +5,7 @@
 ### ✅ **Funcionalidades Implementadas**
 
 #### 1. **Backend - Endpoint Seguro** (`/api/admin/change-password`)
+
 - **Autenticação**: Validação de token JWT obrigatória
 - **Autorização**: Apenas usuários com role `super_admin`
 - **Validações**:
@@ -14,6 +15,7 @@
   - Proteção contra ataques de força bruta (rate limiting)
 
 #### 2. **Critérios de Segurança da Senha**
+
 - ✅ Mínimo 8 caracteres, máximo 128
 - ✅ Pelo menos uma letra maiúscula
 - ✅ Pelo menos uma letra minúscula  
@@ -22,6 +24,7 @@
 - ✅ Bloqueio de senhas comuns/fracas
 
 #### 3. **Frontend - Interface Administrativa**
+
 - **Página**: `/secure/change-password.html`
 - **Validação em tempo real** dos critérios de senha
 - **Feedback visual** para cada requisito
@@ -29,11 +32,13 @@
 - **Cópia automática** do hash e comando Azure CLI
 
 #### 4. **Integração Administrativa**
+
 - **Link na navegação** das páginas admin
 - **Proteção de acesso** via autenticação de sessão
 - **Redirecionamento automático** se não autenticado
 
 #### 5. **Processo de Alteração**
+
 1. Super admin faz login normal
 2. Acessa "🔐 Alterar Senha" na navegação
 3. Insere senha atual e nova senha
@@ -70,13 +75,15 @@
 ## 🚀 **Como Usar**
 
 ### Para o Super Admin:
-1. Acesse: https://www.caracore.com.br/secure/change-password.html
+
+1. Acesse: [https://www.caracore.com.br/secure/change-password.html]
 2. Faça login com credenciais atuais
 3. Preencha o formulário de alteração
 4. Copie o hash gerado
 5. Execute o comando Azure CLI fornecido
 
 ### Para Ativação da Nova Senha:
+
 ```bash
 az webapp config appsettings set \
   --name caracore-backend-docker \
@@ -87,11 +94,13 @@ az webapp config appsettings set \
 ## 📁 **Arquivos Criados/Modificados**
 
 ### Novos Arquivos:
+
 - `secure/change-password.html` - Interface de alteração de senha
 - `secure/js/change-password.js` - Lógica frontend
 - `scripts/teste_alteracao_senha.py` - Testes automatizados
 
 ### Arquivos Modificados:
+
 - `backend/app.py` - Novo endpoint e validações
 - `secure/admin-users.html` - Link na navegação
 - `secure/approval-requests.html` - Link na navegação

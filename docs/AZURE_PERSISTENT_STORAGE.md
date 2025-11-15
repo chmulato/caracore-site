@@ -24,7 +24,21 @@ Garantir que os dados em `authorized_users.json` sejam persistidos entre deploys
 
 ## 🔧 Configuração no Azure Portal
 
-### Passo 1: Criar Azure Storage Account (se não existir)
+### Passo 1: Configurar Azure Files
+
+**Opção A: Via Script Python (Recomendado)**
+
+```bash
+python scripts/configure_azure_files.py
+```
+
+O script executa automaticamente:
+- Cria Storage Account (se não existir)
+- Cria File Share `caracore-data`
+- Configura montagem `/home/data` no Web App
+- Reinicia o Web App automaticamente
+
+**Opção B: Manualmente via Portal**
 
 1. Azure Portal > **Storage accounts** > **+ Create**
 2. Configurações básicas:
@@ -62,39 +76,15 @@ Garantir que os dados em `authorized_users.json` sejam persistidos entre deploys
 
 ---
 
-## 🔧 Configuração via Azure CLI
+## 🔧 Configuração via Script Python
 
-```powershell
-# 1. Criar Storage Account (se não existir)
-az storage account create \
-  --name caracoredata \
-  --resource-group rg-caracore \
-  --location brazilsouth \
-  --sku Standard_LRS
+**Recomendado:** Use o script Python que automatiza todo o processo:
 
-# 2. Criar File Share
-az storage share create \
-  --name caracore-data \
-  --account-name caracoredata
-
-# 3. Obter chave de acesso
-STORAGE_KEY=$(az storage account keys list \
-  --resource-group rg-caracore \
-  --account-name caracoredata \
-  --query "[0].value" \
-  --output tsv)
-
-# 4. Configurar montagem no Web App
-az webapp config storage-account add \
-  --resource-group rg-caracore \
-  --name caracore-backend-docker \
-  --custom-id data-storage \
-  --storage-type AzureFiles \
-  --account-name caracoredata \
-  --share-name caracore-data \
-  --access-key $STORAGE_KEY \
-  --mount-path /home/data
+```bash
+python scripts/configure_azure_files.py
 ```
+
+O script executa todos os passos automaticamente. Para configuração manual via Azure CLI, veja o código do script em `scripts/configure_azure_files.py`.
 
 ---
 
@@ -102,15 +92,17 @@ az webapp config storage-account add \
 
 ### 1. Verificar se o volume está montado
 
-Após o deploy, verifique os logs do container:
+**Via Script Python (Recomendado):**
 
 ```bash
-# Via Azure Portal
+python scripts/verify_persistent_storage.py
+```
+
+**Ou via Azure Portal:**
+
 Azure Portal > App Services > caracore-backend-docker > Log stream
 
-# Procurar por:
-# "Detectado ambiente Azure - usando /home/data para persistência"
-```
+Procurar por: `"Detectado ambiente Azure - usando /home/data para persistência"`
 
 ### 2. Testar persistência
 

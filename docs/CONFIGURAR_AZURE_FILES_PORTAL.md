@@ -1,6 +1,8 @@
 # Configurar Azure Files via Portal Azure
 
-Como há um problema com a assinatura via CLI, vamos configurar via Portal Azure.
+Este guia mostra como configurar Azure Files manualmente via Portal Azure.
+
+> **💡 Dica:** Para configuração automática, use o script Python: `python scripts/configure_azure_files.py`
 
 ---
 

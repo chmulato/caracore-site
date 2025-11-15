@@ -6,26 +6,16 @@ Este guia executa os 4 passos necessários para configurar a persistência de da
 
 ## ✅ Passo 1: Configurar Azure Files
 
-### Opção A: Via Script (Recomendado - Windows)
-
-```powershell
-# Executar script PowerShell
-.\scripts\configure_azure_files.ps1
-```
-
-### Opção B: Via Script (Linux/Mac)
+### Opção A: Via Script Python (Recomendado)
 
 ```bash
-# Dar permissão de execução
-chmod +x scripts/configure_azure_files.sh
-
-# Executar script
-./scripts/configure_azure_files.sh
+# Executar script Python
+python scripts/configure_azure_files.py
 ```
 
-### Opção C: Manualmente via Azure Portal
+### Opção B: Manualmente via Azure Portal
 
-Siga o guia completo em: `docs/AZURE_PERSISTENT_STORAGE.md`
+Siga o guia completo em: `docs/AZURE_PERSISTENT_STORAGE.md` ou `docs/CONFIGURAR_AZURE_FILES_PORTAL.md`
 
 **O que o script faz:**
 - ✅ Cria Storage Account (se não existir)
@@ -108,14 +98,11 @@ az webapp config container set \
 
 ## ✅ Passo 4: Verificar nos Logs
 
-### Opção A: Via Script (Recomendado)
+### Opção A: Via Script Python (Recomendado)
 
-```powershell
-# Windows
-.\scripts\verify_persistent_storage.ps1
-
-# Linux/Mac
-./scripts/verify_persistent_storage.sh
+```bash
+# Executar script Python
+python scripts/verify_persistent_storage.py
 ```
 
 ### Opção B: Manualmente

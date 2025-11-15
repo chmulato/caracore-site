@@ -85,15 +85,40 @@
                 ? `${backendUrl}/oauth/microsoft/token`
                 : `${backendUrl}/oauth/google/token`;
             
+            // Tentar obter code_verifier do sessionStorage ou localStorage
+            const codeVerifier = sessionStorage.getItem(`${provider}_pkce_verifier`) || 
+                                localStorage.getItem(`${provider}_pkce_verifier`) ||
+                                sessionStorage.getItem('oidc.pkce.code_verifier') ||
+                                null;
+            
+            if (!codeVerifier) {
+                console.warn('⚠️ code_verifier não encontrado. Tentando sem PKCE...');
+            }
+            
+            const requestBody = {
+                code: params.code,
+                redirect_uri: window.location.origin + '/secure/callback.html',
+                grant_type: 'authorization_code'
+            };
+            
+            // Adicionar code_verifier se disponível (PKCE)
+            if (codeVerifier) {
+                requestBody.code_verifier = codeVerifier;
+            }
+            
+            console.log('📤 Enviando requisição para backend:', {
+                endpoint: tokenEndpoint,
+                hasCode: !!params.code,
+                hasCodeVerifier: !!codeVerifier,
+                redirectUri: requestBody.redirect_uri
+            });
+            
             const response = await fetch(tokenEndpoint, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    code: params.code,
-                    redirect_uri: window.location.origin + '/secure/callback.html'
-                })
+                body: JSON.stringify(requestBody)
             });
             
             if (response.ok) {
@@ -119,6 +144,20 @@
                         console.warn('⚠️ Não foi possível decodificar ID token:', e);
                     }
                 }
+            } else {
+                // Log detalhes do erro
+                const errorText = await response.text();
+                let errorData;
+                try {
+                    errorData = JSON.parse(errorText);
+                } catch {
+                    errorData = { error: 'unknown', error_description: errorText };
+                }
+                console.error('❌ Erro do backend:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    error: errorData
+                });
             }
         } catch (error) {
             console.warn('⚠️ Erro ao obter email do backend:', error);
@@ -135,7 +174,10 @@
         
         if (!realUserData) {
             console.error('❌ Não foi possível obter email real do usuário. Não criando autenticação fake.');
-            throw new Error('Não foi possível obter informações reais do usuário. Por favor, tente fazer login novamente.');
+            // Redirecionar para primeiro acesso com mensagem de erro
+            const errorMsg = encodeURIComponent('Não foi possível obter informações do usuário. Por favor, tente fazer login novamente.');
+            window.location.href = `/secure/first-access.html?error=${errorMsg}`;
+            return; // Não continuar
         }
         
         const userId = realUserData.profile?.sub || realUserData.profile?.oid || `${provider}_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;

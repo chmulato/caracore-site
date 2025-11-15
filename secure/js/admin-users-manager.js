@@ -39,7 +39,8 @@ class AdminUsersManager {
                 addUser: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
                 updateUser: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
                 removeUser: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`,
-                approveRequest: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/users`
+                approveRequest: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/access-requests`,
+                rejectRequest: `${window.CARA_CORE_CONFIG?.API_BASE_URL || ''}/api/admin/access-requests`
             }
         };
     }
@@ -430,7 +431,10 @@ class AdminUsersManager {
         if (!confirm(`Aprovar acesso para ${email}?`)) return;
         
         const request = this.data.pending_requests.find(r => r.email === email);
-        if (!request) return;
+        if (!request) {
+            this.showError('Solicitação não encontrada');
+            return;
+        }
         
         try {
             const token = getAuthToken();
@@ -438,21 +442,15 @@ class AdminUsersManager {
                 throw new Error('Token de autenticação não encontrado');
             }
             
-            // Detectar provedor pelo e-mail se não estiver definido
-            const provider = request.provider || this.detectProviderFromEmail(request.email);
-            
-            const response = await fetch(this.config.apiEndpoints.addUser, {
+            // Usar o endpoint correto de aprovação que remove a solicitação pendente
+            // O backend aceita ID ou email como identificador
+            const requestId = request.id || request.email;
+            const response = await fetch(`${this.config.apiEndpoints.approveRequest}/${encodeURIComponent(requestId)}/approve`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${token}`,
                     'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    email: request.email,
-                    name: request.name,
-                    provider: provider,
-                    role: 'user'
-                })
+                }
             });
             
             if (!response.ok) {
@@ -460,8 +458,10 @@ class AdminUsersManager {
                 throw new Error(error.error_description || 'Erro ao aprovar solicitação');
             }
             
+            const result = await response.json();
             this.showSuccess(`Acesso aprovado para ${email}`);
-            // Recarregar dados para atualizar ambas as listas
+            
+            // Recarregar dados para atualizar ambas as listas (remove da pendente e adiciona aos autorizados)
             await this.loadData();
             
         } catch (error) {
@@ -476,13 +476,45 @@ class AdminUsersManager {
     async rejectRequest(email) {
         if (!confirm(`Rejeitar solicitação de ${email}?`)) return;
         
-        // TODO: Implementar endpoint para rejeitar solicitação
-        // Por enquanto, apenas remover da lista local
-        this.data.pending_requests = this.data.pending_requests.filter(r => r.email !== email);
-        this.updatePendingRequests();
-        this.updateStatistics();
+        const request = this.data.pending_requests.find(r => r.email === email);
+        if (!request) {
+            this.showError('Solicitação não encontrada');
+            return;
+        }
         
-        this.showSuccess(`Solicitação de ${email} rejeitada`);
+        try {
+            const token = getAuthToken();
+            if (!token) {
+                throw new Error('Token de autenticação não encontrado');
+            }
+            
+            // Usar o endpoint correto de rejeição que remove a solicitação pendente
+            const requestId = request.id || request.email;
+            const response = await fetch(`${this.config.apiEndpoints.rejectRequest}/${encodeURIComponent(requestId)}/reject`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    reason: 'Rejeitado pelo administrador'
+                })
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error_description || 'Erro ao rejeitar solicitação');
+            }
+            
+            this.showSuccess(`Solicitação de ${email} rejeitada`);
+            
+            // Recarregar dados para atualizar a lista de pendentes
+            await this.loadData();
+            
+        } catch (error) {
+            console.error('Erro ao rejeitar solicitação:', error);
+            this.showError('Erro ao rejeitar solicitação: ' + error.message);
+        }
     }
     
     /**

@@ -60,12 +60,42 @@ logger.setLevel(logging.INFO)
 
 # Import auth_manager para validação PKCE e logging
 try:
-    from auth_manager import PKCEValidator, AuditLogger
+    from auth_manager import PKCEValidator, AuditLogger as AuthManagerAuditLogger
     PKCE_VALIDATION_ENABLED = True
     logger.info("Auth manager carregado - validação PKCE habilitada")
+    # Garantir que AuditLogger tenha o método log_access_check
+    if not hasattr(AuthManagerAuditLogger, 'log_access_check'):
+        def log_access_check(email: str, is_authorized: bool, client_ip: str = None) -> None:
+            """Registra verificação de autorização de acesso"""
+            logger.info(
+                f"Access check: email={email}, authorized={is_authorized}, ip={client_ip}",
+                extra={
+                    "event": "access_check",
+                    "email": email,
+                    "authorized": is_authorized,
+                    "client_ip": client_ip
+                }
+            )
+        AuthManagerAuditLogger.log_access_check = staticmethod(log_access_check)
+    AuditLogger = AuthManagerAuditLogger
 except ImportError:
     PKCE_VALIDATION_ENABLED = False
     logger.warning("auth_manager não disponível - validação PKCE desabilitada")
+    # Classe AuditLogger local como fallback
+    class AuditLogger:
+        """Logger de auditoria local (fallback quando auth_manager não está disponível)"""
+        @staticmethod
+        def log_access_check(email: str, is_authorized: bool, client_ip: str = None) -> None:
+            """Registra verificação de autorização de acesso"""
+            logger.info(
+                f"Access check: email={email}, authorized={is_authorized}, ip={client_ip}",
+                extra={
+                    "event": "access_check",
+                    "email": email,
+                    "authorized": is_authorized,
+                    "client_ip": client_ip
+                }
+            )
 
 # Import rate_limiter para proteção contra força bruta
 try:

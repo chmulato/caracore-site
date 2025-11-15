@@ -108,6 +108,15 @@ except ImportError:
     AUTHORIZATION_ENABLED = False
     logger.warning("authorization module não disponível - controle de acesso desabilitado")
 
+# Import SessionManager para Fase 7 - Refresh Tokens
+try:
+    from session_manager import SessionManager
+    SESSION_MANAGER_ENABLED = True
+    logger.info("SessionManager carregado - sistema de refresh tokens habilitado")
+except ImportError:
+    SESSION_MANAGER_ENABLED = False
+    logger.warning("session_manager não disponível - sistema de refresh tokens desabilitado")
+
 # Import authorization_middleware para decorators de proteção (Fase 6)
 try:
     from authorization_middleware import (
@@ -745,6 +754,44 @@ def create_app() -> Flask:
                             client_ip=client_ip,
                             user_id=claims.get("sub")
                         )
+                    
+                    # Fase 7: Criar sessão se houver refresh_token
+                    if SESSION_MANAGER_ENABLED and body.get("refresh_token"):
+                        try:
+                            session_mgr = SessionManager()
+                            user_agent = request.headers.get("User-Agent", "")
+                            
+                            user_data = {
+                                "email": claims.get("email"),
+                                "name": claims.get("name"),
+                                "provider": "google",
+                                "user_id": claims.get("sub")
+                            }
+                            
+                            tokens = {
+                                "access_token": body.get("access_token"),
+                                "id_token": body.get("id_token"),
+                                "refresh_token": body.get("refresh_token"),
+                                "expires_in": body.get("expires_in", 3600)
+                            }
+                            
+                            session_result = session_mgr.create_session(
+                                user_data=user_data,
+                                tokens=tokens,
+                                ip_address=client_ip,
+                                user_agent=user_agent
+                            )
+                            
+                            # Adicionar session_id à resposta
+                            body["session_id"] = session_result["session_id"]
+                            
+                            logger.info(
+                                f"Sessão criada para Google OAuth: {session_result['session_id']} "
+                                f"({claims.get('email')})"
+                            )
+                        except Exception as e:
+                            # Não falhar o login se criação de sessão falhar
+                            logger.warning(f"Erro ao criar sessão após login Google: {e}")
                 except IDTokenValidationError as exc:
                     logger.error(
                         "Falha ao validar ID token Google: %s - %s",
@@ -928,6 +975,44 @@ def create_app() -> Flask:
                             client_ip=client_ip,
                             user_id=claims.get("oid")
                         )
+                    
+                    # Fase 7: Criar sessão se houver refresh_token
+                    if SESSION_MANAGER_ENABLED and body.get("refresh_token"):
+                        try:
+                            session_mgr = SessionManager()
+                            user_agent = request.headers.get("User-Agent", "")
+                            
+                            user_data = {
+                                "email": claims.get("preferred_username") or claims.get("email"),
+                                "name": claims.get("name"),
+                                "provider": "microsoft",
+                                "user_id": claims.get("oid")
+                            }
+                            
+                            tokens = {
+                                "access_token": body.get("access_token"),
+                                "id_token": body.get("id_token"),
+                                "refresh_token": body.get("refresh_token"),
+                                "expires_in": body.get("expires_in", 3600)
+                            }
+                            
+                            session_result = session_mgr.create_session(
+                                user_data=user_data,
+                                tokens=tokens,
+                                ip_address=client_ip,
+                                user_agent=user_agent
+                            )
+                            
+                            # Adicionar session_id à resposta
+                            body["session_id"] = session_result["session_id"]
+                            
+                            logger.info(
+                                f"Sessão criada para Microsoft OAuth: {session_result['session_id']} "
+                                f"({user_data.get('email')})"
+                            )
+                        except Exception as e:
+                            # Não falhar o login se criação de sessão falhar
+                            logger.warning(f"Erro ao criar sessão após login Microsoft: {e}")
                 except IDTokenValidationError as exc:
                     logger.error(
                         "Falha ao validar ID token Microsoft: %s - %s",
@@ -1287,6 +1372,251 @@ def create_app() -> Flask:
             resp = make_response(jsonify({
                 "error": "server_error",
                 "error_description": "Erro interno do servidor"
+            }), 500)
+            return add_cors(resp)
+    
+    # ============================================================================
+    # FASE 7 - Sistema de Refresh Tokens - Endpoints de Sessão
+    # ============================================================================
+    
+    @app.route("/auth/session/create", methods=["OPTIONS"])
+    def create_session_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/auth/session/create", methods=["POST"])
+    @require_https
+    @rate_limit("/auth/session/create")
+    def create_session():
+        """
+        Endpoint para criar sessão com refresh token (Fase 7)
+        
+        Request:
+        {
+            "user_data": {
+                "email": "user@example.com",
+                "name": "Nome Usuario",
+                "provider": "google",
+                "user_id": "google_123456"
+            },
+            "tokens": {
+                "access_token": "eyJ...",
+                "id_token": "eyJ...",
+                "refresh_token": "1//...",
+                "expires_in": 3600
+            }
+        }
+        
+        Response:
+        {
+            "success": true,
+            "session_id": "sess_abc123...",
+            "access_token": "eyJ...",
+            "id_token": "eyJ...",
+            "expires_in": 3600,
+            "expires_at": "2025-11-15T16:00:00Z"
+        }
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        user_agent = request.headers.get("User-Agent", "")
+        
+        if not SESSION_MANAGER_ENABLED:
+            resp = make_response(jsonify({
+                "error": "service_unavailable",
+                "error_description": "Sistema de sessões não disponível"
+            }), 503)
+            return add_cors(resp)
+        
+        try:
+            data = request.get_json() or {}
+            user_data = data.get("user_data", {})
+            tokens = data.get("tokens", {})
+            
+            # Validação básica
+            if not user_data or not tokens:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "user_data e tokens são obrigatórios"
+                }), 400)
+                return add_cors(resp)
+            
+            if not tokens.get("refresh_token"):
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "refresh_token é obrigatório"
+                }), 400)
+                return add_cors(resp)
+            
+            # Criar sessão
+            session_mgr = SessionManager()
+            session_result = session_mgr.create_session(
+                user_data=user_data,
+                tokens=tokens,
+                ip_address=client_ip,
+                user_agent=user_agent
+            )
+            
+            logger.info(
+                f"Sessão criada: {session_result.get('session_id')} "
+                f"para {user_data.get('email')}"
+            )
+            
+            resp = make_response(jsonify(session_result), 200)
+            return add_cors(resp)
+        
+        except ValueError as e:
+            logger.warning(f"Erro de validação ao criar sessão: {e}")
+            resp = make_response(jsonify({
+                "error": "invalid_request",
+                "error_description": str(e)
+            }), 400)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error(f"Erro ao criar sessão: {e}", exc_info=True)
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno ao criar sessão"
+            }), 500)
+            return add_cors(resp)
+    
+    @app.route("/auth/session/refresh", methods=["OPTIONS"])
+    def refresh_session_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/auth/session/refresh", methods=["POST"])
+    @require_https
+    @rate_limit("/auth/session/refresh")
+    def refresh_session():
+        """
+        Endpoint para renovar tokens de uma sessão (Fase 7)
+        
+        Request:
+        {
+            "session_id": "sess_abc123..."
+        }
+        
+        Response:
+        {
+            "success": true,
+            "access_token": "eyJ...",
+            "id_token": "eyJ...",
+            "expires_in": 3600,
+            "expires_at": "2025-11-15T17:00:00Z"
+        }
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        if not SESSION_MANAGER_ENABLED:
+            resp = make_response(jsonify({
+                "error": "service_unavailable",
+                "error_description": "Sistema de sessões não disponível"
+            }), 503)
+            return add_cors(resp)
+        
+        try:
+            data = request.get_json() or {}
+            session_id = data.get("session_id", "")
+            
+            if not session_id:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "session_id é obrigatório"
+                }), 400)
+                return add_cors(resp)
+            
+            # Renovar tokens
+            session_mgr = SessionManager()
+            refresh_result = session_mgr.refresh_session(
+                session_id=session_id,
+                ip_address=client_ip
+            )
+            
+            logger.info(f"Tokens renovados para sessão: {session_id}")
+            
+            resp = make_response(jsonify(refresh_result), 200)
+            return add_cors(resp)
+        
+        except ValueError as e:
+            logger.warning(f"Erro de validação ao renovar sessão: {e}")
+            resp = make_response(jsonify({
+                "error": "invalid_request",
+                "error_description": str(e)
+            }), 401)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error(f"Erro ao renovar sessão: {e}", exc_info=True)
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno ao renovar tokens"
+            }), 500)
+            return add_cors(resp)
+    
+    @app.route("/auth/session/revoke", methods=["OPTIONS"])
+    def revoke_session_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/auth/session/revoke", methods=["POST"])
+    @require_https
+    @rate_limit("/auth/session/revoke")
+    def revoke_session():
+        """
+        Endpoint para revogar uma sessão (Fase 7)
+        
+        Request:
+        {
+            "session_id": "sess_abc123..."
+        }
+        
+        Response:
+        {
+            "success": true,
+            "message": "Sessão revogada com sucesso"
+        }
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        if not SESSION_MANAGER_ENABLED:
+            resp = make_response(jsonify({
+                "error": "service_unavailable",
+                "error_description": "Sistema de sessões não disponível"
+            }), 503)
+            return add_cors(resp)
+        
+        try:
+            data = request.get_json() or {}
+            session_id = data.get("session_id", "")
+            
+            if not session_id:
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "session_id é obrigatório"
+                }), 400)
+                return add_cors(resp)
+            
+            # Revogar sessão
+            session_mgr = SessionManager()
+            success = session_mgr.revoke_session(session_id=session_id)
+            
+            if success:
+                logger.info(f"Sessão revogada: {session_id}")
+                resp = make_response(jsonify({
+                    "success": True,
+                    "message": "Sessão revogada com sucesso"
+                }), 200)
+            else:
+                resp = make_response(jsonify({
+                    "error": "not_found",
+                    "error_description": "Sessão não encontrada"
+                }), 404)
+            
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error(f"Erro ao revogar sessão: {e}", exc_info=True)
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno ao revogar sessão"
             }), 500)
             return add_cors(resp)
     

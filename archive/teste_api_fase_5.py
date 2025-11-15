@@ -199,16 +199,32 @@ class CaraCoreTestSuite:
         
         for attempt in range(self.config.MAX_RETRIES):
             try:
+                # Permite qualquer status code sem lançar exception
                 response = self.session.request(
                     method=method,
                     url=url,
                     json=data,
                     headers=request_headers,
-                    timeout=self.config.REQUEST_TIMEOUT
+                    timeout=self.config.REQUEST_TIMEOUT,
+                    allow_redirects=True
                 )
                 elapsed = time.time() - start
                 return response, elapsed
                 
+            except requests.exceptions.Timeout:
+                if attempt < self.config.MAX_RETRIES - 1:
+                    time.sleep(self.config.RETRY_DELAY)
+                    continue
+                else:
+                    print(f"{Colors.FAIL}Timeout na requisição{Colors.ENDC}")
+                    return None, time.time() - start
+            except requests.exceptions.ConnectionError as e:
+                if attempt < self.config.MAX_RETRIES - 1:
+                    time.sleep(self.config.RETRY_DELAY)
+                    continue
+                else:
+                    print(f"{Colors.FAIL}Erro de conexão: {str(e)}{Colors.ENDC}")
+                    return None, time.time() - start
             except requests.exceptions.RequestException as e:
                 if attempt < self.config.MAX_RETRIES - 1:
                     time.sleep(self.config.RETRY_DELAY)
@@ -503,8 +519,10 @@ class CaraCoreTestSuite:
         """Testa proteções de segurança"""
         self.print_header("TESTE 5: SEGURANÇA E PROTEÇÕES")
         
-        # Teste 5.1: Acesso sem token
-        response, elapsed = self.make_request("GET", "/api/admin/users")
+        # Teste 5.1: Acesso sem token - NÃO usar auth_required
+        print(f"{Colors.OKBLUE}[DEBUG] Testando endpoint sem token...{Colors.ENDC}")
+        response, elapsed = self.make_request("GET", "/api/admin/users", auth_required=False)
+        print(f"{Colors.OKBLUE}[DEBUG] Response: {response}, Status: {response.status_code if response else 'None'}{Colors.ENDC}")
         
         if response and response.status_code == 401:
             self.print_test("Proteção Sem Token", "PASS",
@@ -517,16 +535,20 @@ class CaraCoreTestSuite:
             self.record_result("Security", "No Token Protection", False)
             
         # Teste 5.2: Acesso com token inválido
+        print(f"{Colors.OKBLUE}[DEBUG] Testando endpoint com token inválido...{Colors.ENDC}")
+        invalid_headers = {"Authorization": "Bearer token_invalido"}
         response, elapsed = self.make_request("GET", "/api/admin/users",
-                                             headers={"Authorization": "Bearer token_invalido"})
+                                             headers=invalid_headers, auth_required=False)
+        print(f"{Colors.OKBLUE}[DEBUG] Response: {response}, Status: {response.status_code if response else 'None'}{Colors.ENDC}")
         
         if response and response.status_code == 401:
             self.print_test("Proteção Token Inválido", "PASS",
                           "Sistema rejeita tokens inválidos")
             self.record_result("Security", "Invalid Token Protection", True)
         else:
+            status = response.status_code if response else "NO RESPONSE"
             self.print_test("Proteção Token Inválido", "FAIL",
-                          "Sistema aceitou token inválido")
+                          f"Sistema aceitou token inválido - Status: {status}")
             self.record_result("Security", "Invalid Token Protection", False)
             
         # Teste 5.3: Headers de segurança

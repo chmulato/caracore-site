@@ -53,21 +53,21 @@ def main():
         
         if password != password_confirm:
             print()
-            print("❌ Erro: As senhas não coincidem!")
+            print("[ERRO] As senhas não coincidem!")
             return
         
         if len(password) < 8:
             print()
-            print("❌ Erro: A senha deve ter pelo menos 8 caracteres!")
+            print("[ERRO] A senha deve ter pelo menos 8 caracteres!")
             return
             
     elif choice == "2":
         # Senha automática
         password = generate_strong_password(16)
         print()
-        print("✅ Senha forte gerada automaticamente!")
+        print("[OK] Senha forte gerada automaticamente!")
         print()
-        print("⚠️  ATENÇÃO: Copie e guarde esta senha em local seguro!")
+        print("[ATENCAO] Copie e guarde esta senha em local seguro!")
         print()
         print(f"Senha gerada: {password}")
         print()
@@ -75,7 +75,7 @@ def main():
         
     else:
         print()
-        print("❌ Opção inválida!")
+        print("[ERRO] Opção inválida!")
         return
     
     # Gerar hash
@@ -86,9 +86,9 @@ def main():
     print("CONFIGURAÇÃO COMPLETA")
     print("=" * 80)
     print()
-    print("✅ Hash SHA-256 gerado com sucesso!")
+    print("[OK] Hash SHA-256 gerado com sucesso!")
     print()
-    print("📋 INFORMAÇÕES PARA CONFIGURAÇÃO NO AZURE:")
+    print("INFORMACOES PARA CONFIGURACAO NO AZURE:")
     print()
     print("-" * 80)
     print("Variável de Ambiente: SUPER_ADMIN_PASSWORD_HASH")
@@ -96,7 +96,7 @@ def main():
     print(password_hash)
     print("-" * 80)
     print()
-    print("🔧 PASSOS PARA CONFIGURAR NO AZURE APP SERVICE:")
+    print("PASSOS PARA CONFIGURAR NO AZURE APP SERVICE:")
     print()
     print("1. Acesse o Portal Azure: https://portal.azure.com")
     print("2. Navegue até: caracore-backend (App Service)")
@@ -109,7 +109,7 @@ def main():
     print("7. Clique em: Save (no topo da página)")
     print("8. Aguarde o App Service reiniciar")
     print()
-    print("⚠️  IMPORTANTE: Também configure JWT_SECRET_KEY se ainda não estiver configurado:")
+    print("[IMPORTANTE] Também configure JWT_SECRET_KEY se ainda não estiver configurado:")
     print()
     
     # Gerar JWT secret
@@ -120,7 +120,7 @@ def main():
     print(jwt_secret)
     print("-" * 80)
     print()
-    print("✅ Após configurar, teste o login em:")
+    print("[OK] Após configurar, teste o login em:")
     print("   https://www.caracore.com.br/secure/super-admin-setup.html")
     print()
     print("   E-mail: suporte@caracore.com.br")
@@ -161,17 +161,17 @@ def main():
                 f.writelines(lines)
             
             print()
-            print(f"✅ Arquivo {secrets_file} atualizado com sucesso!")
+            print(f"[OK] Arquivo {secrets_file} atualizado com sucesso!")
             print()
             
         except FileNotFoundError:
             print()
-            print(f"⚠️  Arquivo {secrets_file} não encontrado.")
+            print(f"[AVISO] Arquivo {secrets_file} não encontrado.")
             print("   Crie o arquivo a partir do template secrets.txt.template")
             print()
         except Exception as e:
             print()
-            print(f"❌ Erro ao atualizar {secrets_file}: {str(e)}")
+            print(f"[ERRO] Erro ao atualizar {secrets_file}: {str(e)}")
             print()
     
     # Salvar referência adicional
@@ -183,8 +183,8 @@ def main():
             f.write("=" * 80 + "\n")
             f.write("CONFIGURAÇÃO DO SUPER ADMINISTRADOR - CaraCore\n")
             f.write("=" * 80 + "\n\n")
-            f.write("⚠️  ATENÇÃO: Este arquivo contém informações sensíveis!\n")
-            f.write("⚠️  Mantenha em local seguro e NÃO faça commit no Git!\n\n")
+            f.write("[ATENCAO] Este arquivo contém informações sensíveis!\n")
+            f.write("[ATENCAO] Mantenha em local seguro e NÃO faça commit no Git!\n\n")
             f.write("-" * 80 + "\n")
             f.write("E-mail: suporte@caracore.com.br\n")
             f.write(f"Senha: {password}\n")
@@ -200,8 +200,8 @@ def main():
             f.write("-" * 80 + "\n")
         
         print()
-        print(f"✅ Cópia de referência salva em: {filename}")
-        print("⚠️  ATENÇÃO: Este arquivo está marcado como SECRET e não será versionado!")
+        print(f"[OK] Cópia de referência salva em: {filename}")
+        print("[ATENCAO] Este arquivo está marcado como SECRET e não será versionado!")
         print()
 
 if __name__ == '__main__':
@@ -210,7 +210,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print()
         print()
-        print("❌ Operação cancelada pelo usuário.")
+        print("[CANCELADO] Operação cancelada pelo usuário.")
     except Exception as e:
         print()
-        print(f"❌ Erro: {str(e)}")
+        print(f"[ERRO] Erro: {str(e)}")

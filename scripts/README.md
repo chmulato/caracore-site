@@ -6,9 +6,9 @@ Esta pasta contém scripts essenciais para teste, validação e operação do si
 
 ## Arquitetura Atual - Pós Limpeza
 
-**Scripts Ativos:** Apenas scripts essenciais mantidos (4 arquivos)
-**Redução:** 87.5% dos scripts removidos (32 → 4)
-**Backend Produção:** `caracore-backend.azurewebsites.net` (Azure App Service)
+**Scripts Ativos:** Apenas scripts essenciais mantidos (5 arquivos Python)
+**Scripts Arquivados:** 5 scripts obsoletos movidos para `archive/` (15/11/2025)
+**Backend Produção:** `caracore-backend-docker.azurewebsites.net` (Azure App Service)
 
 ## Scripts Ativos
 
@@ -120,14 +120,21 @@ pip install -r secure/testes/requirements.txt
 
 ## Limpeza Realizada (Novembro 2025)
 
-### Scripts Removidos
+### Scripts Arquivados (15/11/2025)
 
-**Total Removido:** 32 arquivos obsoletos incluindo:
-- Scripts de deploy manuais
-- Scripts de configuração Azure complexos
-- Múltiplos scripts de teste específicos
-- Scripts de verificação duplicados
-- Utilitários de build obsoletos
+**Total Arquivado:** 5 scripts obsoletos movidos para `archive/`:
+- `teste_rapido_fase6.py` - Fase 6 concluída
+- `teste_api_fase_5.py` - Fase 5 concluída
+- `teste_oidc.py` - OIDC validado
+- `teste_alteracao_senha.py` - Funcionalidade validada
+- `remove_emojis_docs.py` - Utilitário já executado
+
+**Scripts Ativos Mantidos:**
+- `configure_fase7_azure.py` - Configuração Fase 7
+- `generate_encryption_keys.py` - Geração de chaves
+- `setup_super_admin.py` - Configuração super admin
+- `server.py` - Servidor de desenvolvimento
+- `teste.py` - Script principal de testes
 
 ### Justificativa
 
@@ -135,6 +142,9 @@ pip install -r secure/testes/requirements.txt
 2. **Testes Unificados:** `teste.py` substitui múltiplos scripts específicos  
 3. **Deploy Automatizado:** GitHub Actions substitui scripts manuais
 4. **Manutenibilidade:** Redução drástica de complexidade
+5. **Preservação Histórica:** Scripts obsoletos arquivados em `archive/` para referência
+
+**Documentação:** Ver `docs/SCRIPTS_OBSOLETOS.md` e `archive/README.md`
 
 ## Comandos Essenciais
 

@@ -15,3 +15,8 @@ gunicorn==23.0.0
 
 # Carregamento de variáveis de ambiente (desenvolvimento)
 python-dotenv==1.0.1
+
+# Fase 7 - Sistema de Refresh Tokens
+cryptography>=41.0.0      # Criptografia AES-256
+flask-limiter>=3.5.0      # Rate limiting
+python-dateutil>=2.8.2    # Manipulação de datas

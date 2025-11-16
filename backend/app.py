@@ -1105,6 +1105,19 @@ def create_app() -> Flask:
                         exc.description,
                     )
                     error_body, status_code = response_from_validation_error(exc)
+                    
+                    # Se for erro de domínio não autorizado, tentar incluir o email no erro
+                    # para facilitar o redirecionamento no frontend
+                    if exc.code == "unauthorized_domain" and body.get("id_token"):
+                        try:
+                            # Decodificar o ID token para obter o email (já que foi rejeitado)
+                            claims = jwt.decode(body["id_token"], options={"verify_signature": False})
+                            if claims.get("email"):
+                                error_body["email"] = claims.get("email")
+                                logger.info("Email incluído no erro de domínio não autorizado: %s", claims.get("email"))
+                        except Exception as e:
+                            logger.debug("Não foi possível extrair email do ID token rejeitado: %s", e)
+                    
                     resp = make_response(jsonify(error_body), status_code)
                     return add_cors(resp)
         else:

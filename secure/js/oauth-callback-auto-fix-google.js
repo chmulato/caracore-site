@@ -305,6 +305,88 @@
                     status: response.status,
                     error: errorData
                 });
+                
+                // Se for erro 403 de domínio não autorizado, tentar obter email e redirecionar para primeiro acesso
+                if (response.status === 403 && errorData.error === 'unauthorized_domain') {
+                    console.log('🔄 Domínio não autorizado detectado. Tentando obter email para redirecionar...');
+                    
+                    let userEmail = null;
+                    
+                    // PRIORIDADE 0: Email pode vir na resposta de erro do backend
+                    if (errorData.email && errorData.email.includes('@')) {
+                        userEmail = errorData.email;
+                        console.log('✅ Email obtido da resposta de erro do backend:', userEmail);
+                    }
+                    
+                    // PRIORIDADE 1: Tentar obter do OIDCAuth
+                    try {
+                        if (window.OIDCAuth && typeof window.OIDCAuth.getUser === 'function') {
+                            const user = await window.OIDCAuth.getUser();
+                            if (user && user.profile && user.profile.email) {
+                                userEmail = user.profile.email;
+                                console.log('✅ Email obtido do OIDCAuth:', userEmail);
+                            }
+                        }
+                    } catch (e) {
+                        console.debug('OIDCAuth.getUser não disponível ou falhou:', e);
+                    }
+                    
+                    // PRIORIDADE 2: Tentar decodificar ID token do storage
+                    if (!userEmail) {
+                        try {
+                            const storedIdToken = sessionStorage.getItem('cara_core_id_token') || 
+                                                localStorage.getItem('cara_core_id_token');
+                            if (storedIdToken) {
+                                const payload = JSON.parse(atob(storedIdToken.split('.')[1]));
+                                if (payload.email && payload.email.includes('@')) {
+                                    userEmail = payload.email;
+                                    console.log('✅ Email obtido do ID token em storage:', userEmail);
+                                }
+                            }
+                        } catch (e) {
+                            console.debug('Não foi possível decodificar ID token do storage:', e);
+                        }
+                    }
+                    
+                    // PRIORIDADE 3: Tentar obter de outros storages
+                    if (!userEmail) {
+                        userEmail = localStorage.getItem('user_email') || 
+                                   localStorage.getItem('auth_user_email') ||
+                                   sessionStorage.getItem('user_email');
+                        if (userEmail && userEmail.includes('@')) {
+                            console.log('✅ Email obtido de storage:', userEmail);
+                        } else {
+                            userEmail = null;
+                        }
+                    }
+                    
+                    // Validar email antes de usar
+                    const isValidEmail = (email) => {
+                        if (!email) return false;
+                        if (email.includes('user@caracore.com.br') || 
+                            email.includes('example@') ||
+                            email === 'user@caracore.com.br' ||
+                            email.includes('placeholder') ||
+                            email.includes('test@') ||
+                            !email.includes('@') ||
+                            !email.includes('.')) {
+                            return false;
+                        }
+                        return email.length > 5;
+                    };
+                    
+                    // Redirecionar para primeiro acesso
+                    let firstAccessUrl = `/secure/first-access.html?provider=google&t=${Date.now()}`;
+                    if (userEmail && isValidEmail(userEmail)) {
+                        firstAccessUrl = `/secure/first-access.html?email=${encodeURIComponent(userEmail)}&provider=google&t=${Date.now()}`;
+                        console.log('🔄 Redirecionando para primeiro acesso com email:', userEmail);
+                    } else {
+                        console.log('🔄 Redirecionando para primeiro acesso (sem email específico)...');
+                    }
+                    
+                    window.location.href = firstAccessUrl;
+                    return null; // Não retornar dados, pois estamos redirecionando
+                }
             }
         } catch (error) {
             console.warn('⚠️ Erro ao obter email do backend Google:', error);

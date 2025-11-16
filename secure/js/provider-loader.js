@@ -59,7 +59,9 @@
                 console.log('✅ Provider inferido do email salvo: google');
                 return 'google';
             } else if (emailDomain === 'hotmail.com' || emailDomain === 'outlook.com' || 
-                      emailDomain === 'live.com' || emailDomain === 'msn.com') {
+                      emailDomain === 'live.com' || emailDomain === 'msn.com' ||
+                      emailDomain.startsWith('hotmail.') || emailDomain.startsWith('outlook.') || 
+                      emailDomain.startsWith('live.')) {
                 console.log('✅ Provider inferido do email salvo: microsoft');
                 return 'microsoft';
             }

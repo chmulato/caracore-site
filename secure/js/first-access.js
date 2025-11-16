@@ -201,7 +201,9 @@ class FirstAccessManager {
                 this.userProvider = 'google';
                 console.log('✅ Provider inferido do email (Google):', emailDomain);
             } else if (emailDomain === 'hotmail.com' || emailDomain === 'outlook.com' || 
-                      emailDomain === 'live.com' || emailDomain === 'msn.com') {
+                      emailDomain === 'live.com' || emailDomain === 'msn.com' ||
+                      emailDomain.startsWith('hotmail.') || emailDomain.startsWith('outlook.') || 
+                      emailDomain.startsWith('live.')) {
                 this.userProvider = 'microsoft';
                 console.log('✅ Provider inferido do email (Microsoft):', emailDomain);
             } else {

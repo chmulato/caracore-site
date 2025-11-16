@@ -421,7 +421,10 @@
         const isMicrosoftDomain = emailDomain === 'hotmail.com' || 
                                  emailDomain === 'outlook.com' || 
                                  emailDomain === 'live.com' || 
-                                 emailDomain === 'msn.com';
+                                 emailDomain === 'msn.com' ||
+                                 emailDomain.startsWith('hotmail.') || 
+                                 emailDomain.startsWith('outlook.') || 
+                                 emailDomain.startsWith('live.');
         
         if (!isGmailDomain && isMicrosoftDomain) {
             console.error('❌ ERRO CRÍTICO: Email Microsoft detectado com provider Google!', {

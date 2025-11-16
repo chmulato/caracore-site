@@ -382,6 +382,9 @@
                                  emailDomain === 'outlook.com' || 
                                  emailDomain === 'live.com' || 
                                  emailDomain === 'msn.com' ||
+                                 emailDomain.startsWith('hotmail.') || 
+                                 emailDomain.startsWith('outlook.') || 
+                                 emailDomain.startsWith('live.') ||
                                  emailDomain.endsWith('.microsoft.com') ||
                                  emailDomain.endsWith('.microsoftonline.com');
         

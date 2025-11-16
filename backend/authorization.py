@@ -147,8 +147,9 @@ def detect_provider_from_email(email: str) -> str:
     if domain in google_domains:
         return 'google'
     
-    # Domínios Microsoft
-    if domain == 'outlook.com' or domain == 'msn.com':
+    # Domínios Microsoft (verificação explícita dos principais)
+    microsoft_domains = ['outlook.com', 'hotmail.com', 'live.com', 'msn.com']
+    if domain in microsoft_domains:
         return 'microsoft'
     
     # Verificar padrões com wildcard: outlook.*, hotmail.*, live.*

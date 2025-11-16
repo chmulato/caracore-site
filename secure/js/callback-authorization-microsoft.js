@@ -74,7 +74,10 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
                 const isMicrosoftDomain = emailDomain === 'hotmail.com' || 
                                          emailDomain === 'outlook.com' || 
                                          emailDomain === 'live.com' || 
-                                         emailDomain === 'msn.com';
+                                         emailDomain === 'msn.com' ||
+                                         emailDomain.startsWith('hotmail.') || 
+                                         emailDomain.startsWith('outlook.') || 
+                                         emailDomain.startsWith('live.');
                 
                 if (isGmailDomain && !isMicrosoftDomain) {
                   console.warn('⚠️ Callback Microsoft: Incompatibilidade detectada - email Google:', userEmail);

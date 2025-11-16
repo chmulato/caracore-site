@@ -112,8 +112,9 @@ class AdminUsersManager {
             return 'google';
         }
         
-        // Domínios Microsoft
-        if (domain === 'outlook.com' || domain === 'msn.com') {
+        // Domínios Microsoft (verificação explícita dos principais)
+        const microsoftDomains = ['outlook.com', 'hotmail.com', 'live.com', 'msn.com'];
+        if (microsoftDomains.includes(domain)) {
             return 'microsoft';
         }
         

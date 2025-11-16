@@ -181,32 +181,36 @@ class FirstAccessManager {
         this.userEmail = emailFromOIDC || emailFromStorage || emailFromSession || 
                         (isValidEmail(emailFromUrl) ? emailFromUrl : null);
         
-        // Obter provider (prioridade: OIDC > Storage > inferir do email > URL)
-        this.userProvider = providerFromOIDC || providerFromStorage;
+        // Obter provider (prioridade: URL > OIDC > Storage > inferir do email)
+        // URL tem prioridade porque vem diretamente do callback e é mais confiável neste contexto
+        const providerFromUrl = urlParams.get('provider');
         
-        // Se não encontrou provider, tentar inferir do email
-        if (!this.userProvider && this.userEmail) {
+        if (providerFromUrl && (providerFromUrl === 'google' || providerFromUrl === 'microsoft')) {
+            this.userProvider = providerFromUrl;
+            console.log('✅ Provider obtido da URL:', this.userProvider);
+        } else if (providerFromOIDC) {
+            this.userProvider = providerFromOIDC;
+            console.log('✅ Provider obtido do OIDC:', this.userProvider);
+        } else if (providerFromStorage) {
+            this.userProvider = providerFromStorage;
+            console.log('✅ Provider obtido do Storage:', this.userProvider);
+        } else if (this.userEmail) {
+            // Tentar inferir do email
             const emailDomain = this.userEmail.toLowerCase().split('@')[1];
             if (emailDomain === 'gmail.com' || emailDomain === 'googlemail.com') {
                 this.userProvider = 'google';
+                console.log('✅ Provider inferido do email (Google):', emailDomain);
             } else if (emailDomain === 'hotmail.com' || emailDomain === 'outlook.com' || 
                       emailDomain === 'live.com' || emailDomain === 'msn.com') {
                 this.userProvider = 'microsoft';
+                console.log('✅ Provider inferido do email (Microsoft):', emailDomain);
             } else {
-                // Tentar obter da URL se válido
-                const providerFromUrl = urlParams.get('provider');
-                if (providerFromUrl && (providerFromUrl === 'google' || providerFromUrl === 'microsoft')) {
-                    this.userProvider = providerFromUrl;
-                } else {
-                    this.userProvider = 'google'; // Default
-                }
+                this.userProvider = 'google'; // Default
+                console.log('⚠️ Provider não detectado, usando default: google');
             }
-        } else if (!this.userProvider) {
-            // Último recurso: tentar da URL
-            const providerFromUrl = urlParams.get('provider');
-            this.userProvider = (providerFromUrl && (providerFromUrl === 'google' || providerFromUrl === 'microsoft')) 
-                              ? providerFromUrl 
-                              : 'desconhecido';
+        } else {
+            this.userProvider = 'desconhecido';
+            console.warn('⚠️ Provider não encontrado em nenhuma fonte');
         }
         
         // Se não encontrou email, mas há erro na URL, permitir acesso mesmo assim

@@ -2288,6 +2288,65 @@ def create_app() -> Flask:
     # Decorator require_admin agora é importado do authorization_middleware (Fase 6)
     # Se não disponível, usa fallback definido nos imports
     
+    @app.route("/api/audit/access-granted", methods=["OPTIONS"])
+    def access_granted_audit_options():
+        """CORS preflight para auditoria de acesso autorizado"""
+        return add_cors(make_response("", 200))
+    
+    @app.route("/api/audit/access-granted", methods=["POST"])
+    @rate_limit("/api/audit/access-granted")
+    def access_granted_audit():
+        """
+        Endpoint para registrar acesso autorizado (auditoria)
+        
+        Request:
+        {
+            "timestamp": "2025-11-16T15:30:00Z",
+            "action": "access_granted",
+            "email": "user@example.com",
+            "role": "user",
+            "fromCache": false,
+            "page": "/secure/restrita.html",
+            "userAgent": "Mozilla/5.0..."
+        }
+        
+        Response:
+        {
+            "success": true,
+            "message": "Acesso registrado"
+        }
+        """
+        try:
+            data = request.get_json() or {}
+            email = data.get("email", "")
+            role = data.get("role", "")
+            page = data.get("page", "")
+            from_cache = data.get("fromCache", False)
+            
+            if email:
+                logger.info("Acesso autorizado registrado", extra={
+                    "email": email,
+                    "role": role,
+                    "page": page,
+                    "from_cache": from_cache,
+                    "client_ip": request.headers.get("X-Forwarded-For", request.remote_addr),
+                    "event": "access_granted"
+                })
+            
+            resp = make_response(jsonify({
+                "success": True,
+                "message": "Acesso registrado"
+            }), 200)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error(f"Erro ao registrar acesso autorizado: {e}", exc_info=True)
+            resp = make_response(jsonify({
+                "error": "internal_error",
+                "error_description": "Erro ao registrar acesso"
+            }), 500)
+            return add_cors(resp)
+    
     @app.route("/api/check-authorization", methods=["OPTIONS"])
     def authorization_check_preflight():
         """CORS preflight para verificação de autorização"""

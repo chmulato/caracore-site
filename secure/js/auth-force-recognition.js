@@ -149,14 +149,23 @@
             overrideAuthMethods();
             
             // Verificar se a página precisa ser recarregada
+            // Evitar loop infinito: verificar se já tentamos recarregar antes
+            const reloadAttempted = sessionStorage.getItem('auth_force_reload_attempted');
             const isShowingNotAuth = document.body.textContent.includes('Você não está autenticado');
-            if (isShowingNotAuth) {
+            
+            if (isShowingNotAuth && !reloadAttempted) {
                 console.log('🔄 Página mostrando não autenticado, recarregando...');
+                sessionStorage.setItem('auth_force_reload_attempted', 'true');
                 setTimeout(() => {
                     window.location.reload();
                 }, 1000);
+            } else if (isShowingNotAuth && reloadAttempted) {
+                console.warn('⚠️ Já tentamos recarregar antes, evitando loop infinito');
+                sessionStorage.removeItem('auth_force_reload_attempted');
             } else {
                 console.log('✅ Página já mostra como autenticado');
+                // Limpar flag se página está autenticada
+                sessionStorage.removeItem('auth_force_reload_attempted');
             }
             
         } catch (error) {

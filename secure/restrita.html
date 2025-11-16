@@ -303,9 +303,19 @@
         // Verificar se temos informações do OIDC
         try {
           if (window.OIDCAuth) {
-            const user = await window.OIDCAuth.getUser();
-            if (user && user.profile) {
-              userName = user.profile.name || user.profile.given_name || userName;
+            // Tentar getUserProfile primeiro (método padrão)
+            if (typeof window.OIDCAuth.getUserProfile === 'function') {
+              const profile = await window.OIDCAuth.getUserProfile();
+              if (profile && profile.name) {
+                userName = profile.name || profile.given_name || userName;
+              }
+            }
+            // Fallback: tentar userManager.getUser()
+            else if (window.OIDCAuth.userManager && typeof window.OIDCAuth.userManager.getUser === 'function') {
+              const user = await window.OIDCAuth.userManager.getUser();
+              if (user && user.profile) {
+                userName = user.profile.name || user.profile.given_name || userName;
+              }
             }
           }
         } catch (oidcError) {

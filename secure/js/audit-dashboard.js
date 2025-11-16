@@ -55,39 +55,29 @@
      */
     async function checkAuthentication() {
         try {
-            // Verificar se SessionManager está disponível
-            if (typeof SessionManager !== 'undefined' && SessionManager.isSessionValid) {
-                return SessionManager.isSessionValid();
+            // Aguardar OIDCAuth estar disponível
+            let attempts = 0;
+            const maxAttempts = 50; // 5 segundos (50 * 100ms)
+            
+            while (!window.OIDCAuth && attempts < maxAttempts) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+                attempts++;
             }
             
-            // Fallback: verificar se há tokens no localStorage
-            const accessToken = localStorage.getItem('access_token');
-            const idToken = localStorage.getItem('id_token');
-            
-            if (!accessToken && !idToken) {
-                console.warn('[AuditDashboard] Nenhum token encontrado');
+            if (!window.OIDCAuth) {
+                console.warn('[AuditDashboard] OIDCAuth não disponível após aguardar');
                 return false;
             }
             
-            // Tentar validar sessão no backend
-            const response = await fetch(`${API_BASE_URL}/auth/validate`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken || idToken}`
-                },
-                credentials: 'include',
-                body: JSON.stringify({
-                    access_token: accessToken,
-                    id_token: idToken
-                })
-            });
+            // Usar OIDCAuth para verificar autenticação (padrão do sistema)
+            const isAuthenticated = await window.OIDCAuth.isAuthenticated();
             
-            if (response.ok) {
-                const data = await response.json();
-                return data.valid === true;
+            if (isAuthenticated) {
+                console.log('[AuditDashboard] Usuário autenticado via OIDCAuth');
+                return true;
             }
             
+            console.warn('[AuditDashboard] Usuário não autenticado via OIDCAuth');
             return false;
         } catch (error) {
             console.error('[AuditDashboard] Erro ao verificar autenticação:', error);

@@ -64,7 +64,11 @@ document.addEventListener('DOMContentLoaded', async function() {
         }, 2000);
       }
     } else {
+      // Usuário não autenticado - mostrar opções de acesso
       window.AuthUIFeedback.updateState('idle');
+      
+      // Adicionar link para primeiro acesso se não existir
+      addFirstAccessLink();
     }
 
   } catch (error) {
@@ -255,6 +259,55 @@ document.addEventListener('DOMContentLoaded', async function() {
         window.AuthUIFeedback.loginFailed(
           window.AuthErrorHandler.getFriendlyErrorMessage(processedError)
         );
+      }
+    }
+  }
+
+  /**
+   * Adicionar link para primeiro acesso na página
+   */
+  function addFirstAccessLink() {
+    // Verificar se já existe o link
+    const existingLink = document.getElementById('firstAccessLink');
+    if (existingLink) return;
+    
+    // Procurar onde adicionar o link (após os botões de provedor ou no footer)
+    const providerButtons = document.querySelector('.provider-buttons');
+    const authFooter = document.querySelector('.auth-footer');
+    
+    if (providerButtons || authFooter) {
+      // Criar container para o link de primeiro acesso
+      const firstAccessContainer = document.createElement('div');
+      firstAccessContainer.className = 'first-access-link-container';
+      firstAccessContainer.style.cssText = 'margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.1); text-align: center;';
+      
+      const firstAccessLink = document.createElement('a');
+      firstAccessLink.id = 'firstAccessLink';
+      firstAccessLink.href = '/secure/request-access.html';
+      firstAccessLink.className = 'first-access-link';
+      firstAccessLink.style.cssText = 'color: #3b82f6; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; border-radius: 0.5rem; transition: all 0.2s; font-weight: 500;';
+      firstAccessLink.innerHTML = `
+        <svg class="icon icon-sm" aria-hidden="true" style="width: 1rem; height: 1rem; transform: rotate(-90deg);"><use href="#icon-arrow-right"></use></svg>
+        <span>Primeiro acesso? Solicite autorização para a Área 51</span>
+      `;
+      
+      // Adicionar hover effect
+      firstAccessLink.addEventListener('mouseenter', () => {
+        firstAccessLink.style.background = 'rgba(59, 130, 246, 0.1)';
+        firstAccessLink.style.textDecoration = 'underline';
+      });
+      firstAccessLink.addEventListener('mouseleave', () => {
+        firstAccessLink.style.background = 'transparent';
+        firstAccessLink.style.textDecoration = 'none';
+      });
+      
+      firstAccessContainer.appendChild(firstAccessLink);
+      
+      // Adicionar após os botões de provedor ou antes do footer
+      if (providerButtons && providerButtons.parentNode) {
+        providerButtons.parentNode.insertBefore(firstAccessContainer, providerButtons.nextSibling);
+      } else if (authFooter && authFooter.parentNode) {
+        authFooter.parentNode.insertBefore(firstAccessContainer, authFooter);
       }
     }
   }

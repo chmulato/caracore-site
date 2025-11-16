@@ -31,7 +31,7 @@ class AuthorizationChecker {
         this.config = {
             apiEndpoint: `${backendUrl}/api/check-authorization`,
             accessDeniedUrl: '/secure/access-denied.html',
-            firstAccessUrl: '/secure/first-access.html',
+            firstAccessUrl: '/secure/request-access.html', // Página de solicitação de primeiro acesso
             maxRetries: 3,
             retryDelay: 1000 // 1 segundo
         };
@@ -171,7 +171,9 @@ class AuthorizationChecker {
             }
             
             if (!result.authorized) {
-                this.handleAuthFailure(userEmail, provider, result.error);
+                // Se não está autorizado e não há erro específico, é primeiro acesso
+                const errorMsg = result.error || 'user_not_found';
+                this.handleAuthFailure(userEmail, provider, errorMsg);
                 return false;
             }
             
@@ -230,12 +232,15 @@ class AuthorizationChecker {
         console.log('AuthorizationChecker: Acesso negado para', userEmail);
         
         // Verificar se é um caso de primeiro acesso (usuário não registrado)
-        if (this.isFirstAccessCase(errorMessage)) {
+        // Se não há erro específico ou o erro indica usuário não encontrado, é primeiro acesso
+        if (!errorMessage || this.isFirstAccessCase(errorMessage)) {
+            console.log('AuthorizationChecker: Detectado como primeiro acesso, redirecionando para solicitação');
             this.redirectToFirstAccess(userEmail, provider);
             return;
         }
         
-        // Construir URL de redirecionamento com parâmetros
+        // Se há erro específico que não é primeiro acesso (ex: usuário inativo, banido, etc)
+        // Redirecionar para página de acesso negado
         const redirectUrl = new URL(this.config.accessDeniedUrl, window.location.origin);
         
         if (userEmail) {

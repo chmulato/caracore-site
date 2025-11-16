@@ -361,11 +361,20 @@ def validate_google_id_token(
     _validate_at_hash(access_token, claims_dict, header_data or {})
 
     if allowed_domains:
+        # Para contas corporativas, usar o claim 'hd' (hosted domain)
+        # Para contas pessoais (gmail.com), o 'hd' está vazio, então usar o domínio do email
         hd_claim = (claims_dict.get("hd") or "").lower()
-        if not hd_claim or hd_claim not in allowed_domains:
+        email_claim = (claims_dict.get("email") or "").lower()
+        
+        # Extrair domínio do email se hd estiver vazio
+        domain_to_check = hd_claim
+        if not domain_to_check and email_claim and "@" in email_claim:
+            domain_to_check = email_claim.split("@")[1].lower()
+        
+        if not domain_to_check or domain_to_check not in allowed_domains:
             raise IDTokenValidationError(
                 "unauthorized_domain",
-                f"Domínio {hd_claim or '<vazio>'} não autorizado para login Google",
+                f"Domínio {domain_to_check or '<vazio>'} não autorizado para login Google",
             )
 
     return claims_dict

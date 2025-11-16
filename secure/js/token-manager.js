@@ -29,8 +29,10 @@
             this.maxRetries = 3;
             this.retryDelay = 1000; // 1 segundo
             
-            // Endpoints
-            this.baseUrl = window.location.origin;
+            // Endpoints - Detectar URL do backend (produção ou local)
+            this.baseUrl = window.location.hostname === 'localhost' 
+                ? 'http://localhost:5051'
+                : 'https://caracore-backend-docker.azurewebsites.net';
             this.createSessionEndpoint = '/auth/session/create';
             this.refreshSessionEndpoint = '/auth/session/refresh';
             this.revokeSessionEndpoint = '/auth/session/revoke';

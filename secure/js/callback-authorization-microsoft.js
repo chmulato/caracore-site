@@ -11,31 +11,6 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
     const startTime = Date.now();
     let checkCount = 0;
     
-    // Aguardar OIDCAuth estar disponível
-    const waitForOIDCAuth = () => {
-      return new Promise((resolveOIDC) => {
-        if (window.OIDCAuth) {
-          resolveOIDC();
-          return;
-        }
-        const checkOIDC = setInterval(() => {
-          if (window.OIDCAuth) {
-            clearInterval(checkOIDC);
-            resolveOIDC();
-          }
-        }, 100);
-        setTimeout(() => {
-          clearInterval(checkOIDC);
-          resolveOIDC();
-        }, 5000);
-      });
-    };
-    
-    await waitForOIDCAuth();
-    
-    // Aguardar um tempo inicial para o callback processar (2 segundos)
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
     // Função para validar email
     const isValidEmail = (email) => {
       if (!email) return false;
@@ -54,11 +29,20 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
     const checkAuth = async () => {
       checkCount++;
       
-      // PRIORIDADE 1: Obter email diretamente do OIDCAuth (mais confiável)
       let userEmail = null;
       let accessToken = null;
       
-      if (window.OIDCAuth) {
+      // PRIORIDADE 1: Verificar localStorage primeiro (mais rápido, dados do auto-fix)
+      const emailFromStorage = localStorage.getItem('user_email') || 
+                             localStorage.getItem('auth_user_email');
+      if (isValidEmail(emailFromStorage)) {
+        userEmail = emailFromStorage;
+        accessToken = localStorage.getItem('auth_access_token');
+        console.log('✅ Email válido obtido do localStorage (prioridade):', userEmail);
+      }
+      
+      // PRIORIDADE 2: Obter email diretamente do OIDCAuth (se disponível)
+      if (!userEmail && window.OIDCAuth) {
         try {
           const isAuthenticated = await window.OIDCAuth.isAuthenticated();
           if (isAuthenticated) {
@@ -94,24 +78,7 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
             }
           }
         } catch (e) {
-          console.warn('Erro ao obter dados do OIDCAuth:', e);
-        }
-      }
-      
-      // PRIORIDADE 2: Fallback para localStorage (apenas se OIDCAuth não retornou E email for válido)
-      if (!userEmail || !isValidEmail(userEmail)) {
-        const emailFromStorage = localStorage.getItem('user_email') || 
-                               localStorage.getItem('auth_user_email');
-        if (isValidEmail(emailFromStorage)) {
-          userEmail = emailFromStorage;
-          accessToken = accessToken || localStorage.getItem('auth_access_token');
-          console.log('✅ Email válido obtido do localStorage:', userEmail);
-        } else if (emailFromStorage) {
-          console.warn('⚠️ Email inválido encontrado no localStorage, limpando e aguardando...', emailFromStorage);
-          localStorage.removeItem('user_email');
-          localStorage.removeItem('auth_user_email');
-          setTimeout(checkAuth, checkInterval);
-          return;
+          console.debug('OIDCAuth não disponível ou erro:', e);
         }
       }
       
@@ -124,6 +91,7 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
             const emailFromSession = profile.email || profile.preferred_username;
             if (isValidEmail(emailFromSession)) {
               userEmail = emailFromSession;
+              accessToken = accessToken || sessionStorage.getItem('cara_core_access_token');
               console.log('✅ Email válido obtido do sessionStorage:', userEmail);
             }
           }
@@ -132,9 +100,9 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
         }
       }
       
-      // Se ainda não tem email válido, aguardar mais
+      // Se ainda não tem email válido, aguardar mais (mas não muito tempo)
       if (!userEmail || !isValidEmail(userEmail)) {
-        if (Date.now() - startTime < 5000) {
+        if (Date.now() - startTime < 10000) { // Aumentado para 10 segundos
           setTimeout(checkAuth, checkInterval);
           return;
         }
@@ -192,7 +160,10 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       console.log('🔄 Callback Microsoft: Aguardando OAuth completar...');
       
-      const { userEmail, provider } = await waitForOAuthCompletion(15000);
+      // Aguardar um pouco mais para garantir que o auto-fix processou
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      const { userEmail, provider } = await waitForOAuthCompletion(20000);
       
       console.log('✅ Callback Microsoft: OAuth completado, verificando autorização para', userEmail);
       

@@ -18,6 +18,25 @@
       overflow: hidden;
     }
     
+    @media (max-width: 768px) {
+      .request-form-container {
+        margin: 1rem;
+        border-radius: 0.75rem;
+      }
+      
+      .form-header {
+        padding: 1.5rem 1rem;
+      }
+      
+      .form-body {
+        padding: 1.5rem 1rem;
+      }
+      
+      .provider-selector {
+        grid-template-columns: 1fr;
+      }
+    }
+    
     .form-header {
       background: linear-gradient(135deg, #3b82f6, #1d4ed8);
       color: white;
@@ -220,6 +239,8 @@
       border-radius: 0.5rem;
       margin-bottom: 1.5rem;
       display: none;
+      word-wrap: break-word;
+      line-height: 1.5;
     }
     
     .success-message {
@@ -232,6 +253,10 @@
       background: #fef2f2;
       border: 1px solid #fecaca;
       color: #991b1b;
+    }
+    
+    .error-message.show {
+      display: block;
     }
     
     .char-counter {
@@ -443,6 +468,14 @@
       const urlParams = new URLSearchParams(window.location.search);
       const userEmail = urlParams.get('email') || localStorage.getItem('user_email');
       const provider = urlParams.get('provider') || localStorage.getItem('auth_provider');
+      const errorParam = urlParams.get('error');
+      
+      // Exibir mensagem de erro se houver na URL
+      if (errorParam) {
+        const decodedError = decodeURIComponent(errorParam);
+        errorMessage.querySelector('span').textContent = decodedError;
+        errorMessage.classList.add('show');
+      }
       
       if (userEmail) {
         document.getElementById('email').value = userEmail;
@@ -557,7 +590,7 @@
         submitBtn.disabled = true;
         loadingSpinner.style.display = 'block';
         submitText.textContent = 'Enviando...';
-        errorMessage.style.display = 'none';
+        errorMessage.classList.remove('show');
         successMessage.style.display = 'none';
         
         try {
@@ -592,14 +625,14 @@
             // Erro
             errorMessage.querySelector('span').textContent = 
               result.error_description || 'Erro ao enviar solicitação';
-            errorMessage.style.display = 'block';
+            errorMessage.classList.add('show');
           }
           
         } catch (error) {
           console.error('Erro na solicitação:', error);
           errorMessage.querySelector('span').textContent = 
             'Erro de conexão. Tente novamente em alguns momentos.';
-          errorMessage.style.display = 'block';
+          errorMessage.classList.add('show');
         } finally {
           // Esconder loading
           submitBtn.disabled = false;

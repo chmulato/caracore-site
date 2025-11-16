@@ -48,18 +48,47 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await waitForAuth();
-    const isAuthenticated = await window.OIDCAuth.isAuthenticated();
-    if (!isAuthenticated) {
-      showNotLogged();
+    
+    // Verificar se há verificação de autorização em andamento
+    // Aguardar um pouco para permitir que a verificação de autorização seja concluída
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    // Verificar se a página já foi substituída pela mensagem de "não autenticado"
+    // Se sim, não fazer nada (a verificação de autorização já tratou)
+    const isShowingNotAuth = document.body.textContent.includes('Você não está autenticado');
+    if (isShowingNotAuth) {
+      console.log('⚠️ Página já mostra "não autenticado", aguardando verificação de autorização...');
       return;
+    }
+    
+    // Verificar se há dados de autorização no localStorage/sessionStorage
+    const userEmail = localStorage.getItem('user_email') || 
+                     localStorage.getItem('auth_user_email') ||
+                     sessionStorage.getItem('user_email');
+    
+    // Se não há email, verificar autenticação OIDC
+    if (!userEmail) {
+      const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+      if (!isAuthenticated) {
+        // Aguardar mais um pouco antes de mostrar "não autenticado"
+        // para dar tempo da verificação de autorização
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Verificar novamente se a página foi substituída
+        const stillShowingNotAuth = document.body.textContent.includes('Você não está autenticado');
+        if (!stillShowingNotAuth) {
+          showNotLogged();
+        }
+        return;
+      }
     }
 
     const profile = await window.OIDCAuth.getUserProfile();
     const storedInfo = window.OIDCAuth.getStoredUserInfo && window.OIDCAuth.getStoredUserInfo();
 
-    if (profile) {
+    if (profile || userEmail) {
       if (roleBadge) {
-        roleBadge.textContent = profile.email || profile.name || 'Usuário autenticado';
+        roleBadge.textContent = (profile?.email || profile?.name || userEmail) || 'Usuário autenticado';
         roleBadge.classList.remove('d-none');
       }
       if (providerEl && storedInfo?.provider) {
@@ -67,13 +96,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         const providerIcon = storedInfo.provider === 'google' ? icon('google', 'icon-sm') : icon('cloud-check', 'icon-sm');
         providerEl.innerHTML = `${providerIcon} Sessão via ${providerName}`;
       }
-      applyStatus('success', `Autenticado como ${profile.email || profile.name}`);
+      applyStatus('success', `Autenticado como ${profile?.email || profile?.name || userEmail || 'Usuário'}`);
       if (statusHint) statusHint.textContent = 'Você está autenticado. Aproveite os conteúdos exclusivos.';
     } else {
-      showNotLogged();
+      // Só mostrar "não autenticado" se realmente não houver dados
+      // Aguardar mais um pouco para verificação de autorização
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const stillShowingNotAuth = document.body.textContent.includes('Você não está autenticado');
+      if (!stillShowingNotAuth) {
+        showNotLogged();
+      }
     }
   } catch (error) {
     console.error('Erro ao validar sessão restrita:', error);
-    showNotLogged();
+    // Não mostrar "não autenticado" imediatamente em caso de erro
+    // Aguardar verificação de autorização
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const isShowingNotAuth = document.body.textContent.includes('Você não está autenticado');
+    if (!isShowingNotAuth) {
+      showNotLogged();
+    }
   }
 });

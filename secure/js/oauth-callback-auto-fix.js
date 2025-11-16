@@ -137,6 +137,33 @@
                 console.log('✅ code_verifier encontrado');
             }
             
+            // Extrair tenant da authority usada (para Microsoft)
+            let tenant = null;
+            if (provider === 'microsoft' || provider === 'entra') {
+                // Tentar obter da configuração OIDC
+                try {
+                    const config = window.CARA_CORE_CONFIG || {};
+                    const authority = config.azureAuthority || 
+                                    config.microsoftAuthority || 
+                                    window.CARA_CORE_ENV?.azureAuthority ||
+                                    'https://login.microsoftonline.com/consumers';
+                    
+                    // Extrair tenant da authority (consumers, common, ou tenant ID)
+                    const match = authority.match(/login\.microsoftonline\.com\/([^\/]+)/i);
+                    if (match && match[1]) {
+                        tenant = match[1].replace(/\/v2\.0$/i, '').trim();
+                        console.log('✅ Tenant extraído da authority:', tenant);
+                    } else {
+                        // Fallback: usar 'consumers' se não conseguir extrair
+                        tenant = 'consumers';
+                        console.log('⚠️ Não foi possível extrair tenant, usando fallback: consumers');
+                    }
+                } catch (e) {
+                    console.warn('⚠️ Erro ao extrair tenant, usando fallback: consumers', e);
+                    tenant = 'consumers';
+                }
+            }
+            
             const requestBody = {
                 code: params.code,
                 redirect_uri: window.location.origin + '/secure/callback.html',
@@ -146,6 +173,12 @@
             // Adicionar code_verifier se disponível (PKCE)
             if (codeVerifier) {
                 requestBody.code_verifier = codeVerifier;
+            }
+            
+            // Adicionar tenant para Microsoft (importante para contas pessoais)
+            if (tenant && (provider === 'microsoft' || provider === 'entra')) {
+                requestBody.tenant = tenant;
+                console.log('✅ Tenant incluído no request:', tenant);
             }
             
             console.log('📤 Enviando requisição para backend:', {

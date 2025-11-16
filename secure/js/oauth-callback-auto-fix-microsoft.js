@@ -718,6 +718,55 @@
             if (verification.hasAccessToken && verification.hasExpiresAt && verification.hasProvider) {
                 console.log('🎉 Auto-fix Microsoft aplicado com sucesso!');
                 cleanCallbackUrl();
+                
+                // Verificar autorização e redirecionar
+                const userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+                const provider = localStorage.getItem('auth_provider') || 'microsoft';
+                
+                if (userEmail && !userEmail.includes('user@caracore.com.br')) {
+                    console.log('🔄 Verificando autorização para:', userEmail);
+                    
+                    // Aguardar um pouco para garantir que authorization-check.js está carregado
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    
+                    // Verificar autorização usando requireAuthorization se disponível
+                    if (typeof requireAuthorization === 'function') {
+                        try {
+                            const isAuthorized = await requireAuthorization({
+                                email: userEmail,
+                                provider: provider,
+                                showLoading: false,
+                                redirectOnFail: true
+                            });
+                            
+                            if (isAuthorized) {
+                                console.log('✅ Usuário autorizado, redirecionando para área restrita');
+                                setTimeout(() => {
+                                    window.location.href = '/secure/restrita.html';
+                                }, 500);
+                            }
+                            // Se não autorizado, requireAuthorization já redirecionou
+                        } catch (authError) {
+                            console.error('❌ Erro ao verificar autorização:', authError);
+                            // Em caso de erro, tentar redirecionar mesmo assim (pode ser cache)
+                            setTimeout(() => {
+                                window.location.href = '/secure/restrita.html';
+                            }, 1000);
+                        }
+                    } else {
+                        // Se requireAuthorization não estiver disponível, redirecionar diretamente
+                        console.log('⚠️ requireAuthorization não disponível, redirecionando diretamente');
+                        setTimeout(() => {
+                            window.location.href = '/secure/restrita.html';
+                        }, 1000);
+                    }
+                } else {
+                    console.warn('⚠️ Email não encontrado, redirecionando para index');
+                    setTimeout(() => {
+                        window.location.href = '/secure/index.html';
+                    }, 1000);
+                }
+                
                 return true;
             } else {
                 throw new Error('Verificação falhou - dados não salvos corretamente');

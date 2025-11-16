@@ -46,6 +46,51 @@ class AdminUsersManager {
     }
     
     /**
+     * Verificar se o domínio do e-mail é permitido para OIDC
+     * 
+     * Domínios permitidos:
+     * - Google: gmail.com, googlemail.com
+     * - Microsoft: outlook.com, outlook.*, hotmail.*, live.*, msn.com
+     * - Exceção: caracore.com.br, caracore.com (para suporte e admin)
+     */
+    isAllowedEmailDomain(email) {
+        if (!email || !email.includes('@')) {
+            return false;
+        }
+        
+        const emailLower = email.toLowerCase().trim();
+        const domain = emailLower.split('@')[1];
+        
+        if (!domain) {
+            return false;
+        }
+        
+        // Exceção: domínios da Cara Core (suporte e admin)
+        if (domain === 'caracore.com.br' || domain === 'caracore.com') {
+            return true;
+        }
+        
+        // Domínios Google permitidos (apenas pessoais)
+        const googleDomains = ['gmail.com', 'googlemail.com'];
+        if (googleDomains.includes(domain)) {
+            return true;
+        }
+        
+        // Domínios Microsoft permitidos (pessoais)
+        // outlook.com, outlook.*, hotmail.*, live.*, msn.com
+        if (domain === 'outlook.com' || domain === 'msn.com') {
+            return true;
+        }
+        
+        // Verificar padrões com wildcard: outlook.*, hotmail.*, live.*
+        if (domain.startsWith('outlook.') || domain.startsWith('hotmail.') || domain.startsWith('live.')) {
+            return true;
+        }
+        
+        return false;
+    }
+    
+    /**
      * Detectar provedor baseado no domínio do e-mail
      */
     detectProviderFromEmail(email) {
@@ -56,22 +101,25 @@ class AdminUsersManager {
         
         if (!domain) return 'google'; // default
         
-        // Domínios Microsoft
-        const microsoftDomains = [
-            'outlook.com', 'hotmail.com', 'live.com', 'msn.com',
-            'microsoft.com', 'office365.com', 'outlook.com.br',
-            'hotmail.com.br', 'live.com.br'
-        ];
+        // Domínios Cara Core (sistema direto)
+        if (domain === 'caracore.com.br' || domain === 'caracore.com') {
+            return 'direct';
+        }
         
         // Domínios Google
-        const googleDomains = [
-            'gmail.com', 'googlemail.com', 'google.com'
-        ];
-        
-        if (microsoftDomains.some(d => domain.includes(d))) {
-            return 'microsoft';
-        } else if (googleDomains.some(d => domain.includes(d))) {
+        const googleDomains = ['gmail.com', 'googlemail.com'];
+        if (googleDomains.includes(domain)) {
             return 'google';
+        }
+        
+        // Domínios Microsoft
+        if (domain === 'outlook.com' || domain === 'msn.com') {
+            return 'microsoft';
+        }
+        
+        // Verificar padrões com wildcard: outlook.*, hotmail.*, live.*
+        if (domain.startsWith('outlook.') || domain.startsWith('hotmail.') || domain.startsWith('live.')) {
+            return 'microsoft';
         }
         
         // Default para Google se não identificar
@@ -162,12 +210,39 @@ class AdminUsersManager {
             this.elements.userEmail.addEventListener('blur', (e) => {
                 const email = e.target.value;
                 if (email) {
+                    // Validar domínio permitido
+                    if (!this.isAllowedEmailDomain(email)) {
+                        this.elements.userEmail.setCustomValidity('Apenas e-mails do Google (gmail.com, googlemail.com), Microsoft (outlook.com, hotmail.com, live.com, msn.com) ou Cara Core são permitidos');
+                        this.elements.userEmail.reportValidity();
+                        return;
+                    } else {
+                        this.elements.userEmail.setCustomValidity('');
+                    }
+                    
                     const provider = this.detectProviderFromEmail(email);
                     // Atualizar visualização do provedor (se houver elemento de exibição)
                     const providerDisplay = document.getElementById('providerDisplay');
                     if (providerDisplay) {
-                        providerDisplay.textContent = provider === 'microsoft' ? 'Microsoft' : 'Google';
+                        if (provider === 'direct') {
+                            providerDisplay.textContent = 'Sistema (Cara Core)';
+                        } else {
+                            providerDisplay.textContent = 'OIDC (Google ou Microsoft)';
+                        }
                     }
+                }
+            });
+            
+            // Validar em tempo real enquanto digita
+            this.elements.userEmail.addEventListener('input', (e) => {
+                const email = e.target.value;
+                if (email && email.includes('@')) {
+                    if (!this.isAllowedEmailDomain(email)) {
+                        this.elements.userEmail.setCustomValidity('Apenas e-mails do Google (gmail.com, googlemail.com), Microsoft (outlook.com, hotmail.com, live.com, msn.com) ou Cara Core são permitidos');
+                    } else {
+                        this.elements.userEmail.setCustomValidity('');
+                    }
+                } else {
+                    this.elements.userEmail.setCustomValidity('');
                 }
             });
         }
@@ -299,7 +374,8 @@ class AdminUsersManager {
         
         // Detectar provedor pelo e-mail se não estiver definido
         const provider = request.provider || this.detectProviderFromEmail(request.email);
-        const providerIcon = provider === 'microsoft' ? 'icon-microsoft' : 'icon-google';
+        // Usar ícone genérico para todos os provedores OIDC
+        const providerIcon = 'icon-shield-lock';
         const requestDate = new Date(request.requested_at).toLocaleDateString('pt-BR');
         
         div.innerHTML = `
@@ -395,7 +471,8 @@ class AdminUsersManager {
     createUserRow(user) {
         // Detectar provedor pelo e-mail se não estiver definido
         const provider = user.provider || this.detectProviderFromEmail(user.email);
-        const providerIcon = provider === 'microsoft' ? 'icon-microsoft' : (provider === 'direct' ? 'icon-shield-lock' : 'icon-google');
+        // Usar ícone genérico para todos os provedores OIDC
+        const providerIcon = 'icon-shield-lock';
         const approvedDate = new Date(user.approved_at).toLocaleDateString('pt-BR');
         const roleClass = user.role === 'super_admin' ? 'admin' : (user.role === 'admin' ? 'admin' : 'user');
         
@@ -408,6 +485,16 @@ class AdminUsersManager {
         const toggleButtonClass = isActive ? 'btn-warning' : 'btn-success';
         const toggleButtonText = isActive ? 'Desabilitar' : 'Habilitar';
         const toggleButtonIcon = isActive ? 'icon-x' : 'icon-check';
+        
+        // Texto do provedor - genérico para OIDC
+        let providerText = 'OIDC';
+        if (provider === 'direct') {
+            providerText = 'Sistema';
+        } else if (provider === 'microsoft') {
+            providerText = 'OIDC';
+        } else if (provider === 'google') {
+            providerText = 'OIDC';
+        }
         
         return `
             <td>
@@ -423,7 +510,7 @@ class AdminUsersManager {
                 <svg class="icon-sm" aria-hidden="true" style="margin-right: 0.5rem;">
                     <use href="#${providerIcon}"></use>
                 </svg>
-                ${provider === 'microsoft' ? 'Microsoft' : (provider === 'direct' ? 'Sistema' : 'Google')}
+                ${providerText}
             </td>
             <td>
                 <span class="badge ${roleClass}">
@@ -560,7 +647,7 @@ class AdminUsersManager {
         // Resetar display do provedor
         const providerDisplay = document.getElementById('providerDisplay');
         if (providerDisplay) {
-            providerDisplay.textContent = 'Será detectado automaticamente pelo domínio do e-mail';
+            providerDisplay.textContent = 'OIDC (Google ou Microsoft) - será detectado automaticamente pelo domínio do e-mail';
         }
         
         this.showModal();
@@ -584,7 +671,11 @@ class AdminUsersManager {
         const provider = user.provider || this.detectProviderFromEmail(user.email);
         const providerDisplay = document.getElementById('providerDisplay');
         if (providerDisplay) {
-            providerDisplay.textContent = provider === 'microsoft' ? 'Microsoft' : 'Google';
+            if (provider === 'direct') {
+                providerDisplay.textContent = 'Sistema (Cara Core)';
+            } else {
+                providerDisplay.textContent = 'OIDC (Google ou Microsoft)';
+            }
         }
         
         this.showModal();
@@ -735,6 +826,14 @@ class AdminUsersManager {
         
         const formData = new FormData(this.elements.userForm);
         const email = formData.get('email') || this.elements.userEmail.value;
+        
+        // Validação de domínio permitido
+        if (!this.isAllowedEmailDomain(email)) {
+            this.showError('Apenas e-mails do Google (gmail.com, googlemail.com), Microsoft (outlook.com, hotmail.com, live.com, msn.com) ou Cara Core são permitidos');
+            this.elements.userEmail.focus();
+            return;
+        }
+        
         const userData = {
             email: email,
             name: formData.get('name') || this.elements.userName.value,

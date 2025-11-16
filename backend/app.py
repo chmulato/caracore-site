@@ -132,7 +132,7 @@ try:
         is_user_authorized, get_user_role, add_authorized_user, 
         remove_authorized_user, update_authorized_user, add_pending_request, 
         load_authorized_users, save_authorized_users, get_pending_request_by_email,
-        detect_provider_from_email, auth_manager
+        detect_provider_from_email, is_allowed_email_domain, auth_manager
     )
     AUTHORIZATION_ENABLED = True
     logger.info("Authorization module carregado - controle de acesso habilitado")
@@ -2208,6 +2208,16 @@ def create_app() -> Flask:
             for field in required_fields:
                 if field not in data or not data[field]:
                     return jsonify({"error": "invalid_request", "error_description": f"Campo '{field}' é obrigatório"}), 400
+            
+            # Validar domínio do e-mail (apenas Google, Microsoft ou Cara Core)
+            email_lower = data['email'].lower().strip()
+            if not is_allowed_email_domain(email_lower):
+                error_response = {
+                    "error": "invalid_domain",
+                    "error_description": "Apenas e-mails do Google (gmail.com, googlemail.com), Microsoft (outlook.com, hotmail.com, live.com, msn.com) ou Cara Core são permitidos"
+                }
+                resp = make_response(jsonify(error_response), 400)
+                return add_cors(resp)
             
             # Detectar provedor automaticamente se não fornecido
             provider = data.get('provider')

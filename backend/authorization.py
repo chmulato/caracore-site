@@ -73,6 +73,51 @@ class AuthorizationError(Exception):
     pass
 
 
+def is_allowed_email_domain(email: str) -> bool:
+    """
+    Verificar se o domínio do e-mail é permitido para OIDC.
+    
+    Domínios permitidos:
+    - Google: gmail.com, googlemail.com
+    - Microsoft: outlook.com, outlook.*, hotmail.*, live.*, msn.com
+    - Exceção: caracore.com.br, caracore.com (para suporte e admin)
+    
+    Args:
+        email: Endereço de e-mail do usuário
+        
+    Returns:
+        True se o domínio é permitido, False caso contrário
+    """
+    if not email or '@' not in email:
+        return False
+    
+    email_lower = email.lower().strip()
+    domain = email_lower.split('@')[1] if '@' in email_lower else ''
+    
+    if not domain:
+        return False
+    
+    # Exceção: domínios da Cara Core (suporte e admin)
+    if domain in ['caracore.com.br', 'caracore.com']:
+        return True
+    
+    # Domínios Google permitidos (apenas pessoais)
+    google_domains = ['gmail.com', 'googlemail.com']
+    if domain in google_domains:
+        return True
+    
+    # Domínios Microsoft permitidos (pessoais)
+    # outlook.com, outlook.*, hotmail.*, live.*, msn.com
+    if domain == 'outlook.com' or domain == 'msn.com':
+        return True
+    
+    # Verificar padrões com wildcard: outlook.*, hotmail.*, live.*
+    if domain.startswith('outlook.') or domain.startswith('hotmail.') or domain.startswith('live.'):
+        return True
+    
+    return False
+
+
 def detect_provider_from_email(email: str) -> str:
     """
     Detectar provedor de autenticação baseado no domínio do e-mail.
@@ -82,7 +127,7 @@ def detect_provider_from_email(email: str) -> str:
         
     Returns:
         'microsoft' para domínios Microsoft, 'google' para domínios Google,
-        ou 'google' como padrão
+        'direct' para domínios Cara Core, ou 'google' como padrão
     """
     if not email or '@' not in email:
         return 'google'  # default
@@ -93,25 +138,22 @@ def detect_provider_from_email(email: str) -> str:
     if not domain:
         return 'google'  # default
     
-    # Domínios Microsoft
-    microsoft_domains = [
-        'outlook.com', 'hotmail.com', 'live.com', 'msn.com',
-        'microsoft.com', 'office365.com', 'outlook.com.br',
-        'hotmail.com.br', 'live.com.br'
-    ]
+    # Domínios Cara Core (sistema direto)
+    if domain in ['caracore.com.br', 'caracore.com']:
+        return 'direct'
     
     # Domínios Google
-    google_domains = [
-        'gmail.com', 'googlemail.com', 'google.com'
-    ]
+    google_domains = ['gmail.com', 'googlemail.com']
+    if domain in google_domains:
+        return 'google'
     
-    # Verificar domínios Microsoft
-    if any(d in domain for d in microsoft_domains):
+    # Domínios Microsoft
+    if domain == 'outlook.com' or domain == 'msn.com':
         return 'microsoft'
     
-    # Verificar domínios Google
-    if any(d in domain for d in google_domains):
-        return 'google'
+    # Verificar padrões com wildcard: outlook.*, hotmail.*, live.*
+    if domain.startswith('outlook.') or domain.startswith('hotmail.') or domain.startswith('live.'):
+        return 'microsoft'
     
     # Default para Google se não identificar
     return 'google'
@@ -397,6 +439,10 @@ class AuthorizationManager:
                     return False, f"Campo obrigatório '{field}' não fornecido"
             
             email = user_data['email'].lower().strip()
+            
+            # Validar domínio do e-mail (apenas Google, Microsoft ou Cara Core)
+            if not is_allowed_email_domain(email):
+                return False, "Apenas e-mails do Google (gmail.com, googlemail.com), Microsoft (outlook.com, hotmail.com, live.com, msn.com) ou Cara Core são permitidos"
             
             # Detectar provedor automaticamente se não fornecido
             if 'provider' not in user_data or not user_data['provider']:

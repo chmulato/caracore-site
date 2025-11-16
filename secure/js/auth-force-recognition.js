@@ -115,13 +115,10 @@
             console.warn('Erro ao parsear perfil do usuário:', e);
         }
         
-        // Fallback: criar perfil básico
-        return {
-            email: 'user@caracore.com.br',
-            name: 'Usuário CaraCore',
-            sub: 'user_' + Date.now(),
-            provider: sessionStorage.getItem('cara_core_oidc_provider') || 'google'
-        };
+        // Fallback: retornar null em vez de criar perfil falso
+        // Isso força o sistema a buscar dados reais de outras fontes
+        console.warn('⚠️ Não foi possível obter perfil do storage. Retornando null para forçar busca em outras fontes.');
+        return null;
     }
     
     // Override dos métodos de autenticação do OIDCAuth
@@ -210,32 +207,10 @@
             if (!hasValidAuthData()) {
                 console.log('⚠️ Sem dados de autenticação válidos, criando...');
                 
-                // Criar dados básicos de autenticação se não existirem
-                const now = Math.floor(Date.now() / 1000);
-                const userProfile = {
-                    sub: 'force_user_' + Math.random().toString(36).substr(2, 9),
-                    email: 'user@caracore.com.br',
-                    email_verified: true,
-                    name: 'Usuário CaraCore Force',
-                    provider: 'google',
-                    iat: now,
-                    exp: now + 86400
-                };
-                
-                const header = btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
-                const payload = btoa(JSON.stringify(userProfile));
-                const signature = btoa('force-signature-' + Date.now());
-                const idToken = `${header}.${payload}.${signature}`;
-                
-                sessionStorage.setItem('cara_core_oidc_provider', 'google');
-                sessionStorage.setItem('cara_core_id_token', idToken);
-                sessionStorage.setItem('cara_core_access_token', 'force_access_' + Date.now());
-                sessionStorage.setItem('cara_core_user_profile', JSON.stringify(userProfile));
-                
-                localStorage.setItem('cara_core_oidc_provider', 'google');
-                localStorage.setItem('cara_core_last_login', new Date().toISOString());
-                
-                console.log('✅ Dados de autenticação criados');
+                // NÃO criar dados falsos - isso causa problemas
+                // Se não há dados válidos, deixar o sistema buscar de outras fontes
+                console.warn('⚠️ Sem dados de autenticação válidos. Não criando dados falsos - sistema buscará de outras fontes.');
+                return; // Não criar dados falsos
             }
             
             // Aplicar override

@@ -239,12 +239,55 @@ class AuthorizationChecker {
      * @param {string} errorMessage - Mensagem de erro
      */
     handleAuthFailure(userEmail, provider, errorMessage = null) {
-        console.log('AuthorizationChecker: Acesso negado para', userEmail);
+        console.log('AuthorizationChecker: Acesso negado para', userEmail, {
+            provider: provider,
+            errorMessage: errorMessage,
+            hasEmail: !!userEmail,
+            emailValue: userEmail
+        });
+        
+        // Validar email - se for inválido, tentar obter de outras fontes
+        if (!userEmail || userEmail.includes('user@caracore.com.br') || userEmail.includes('example@')) {
+            console.warn('⚠️ Email inválido recebido, tentando obter de outras fontes...');
+            // Tentar obter do localStorage primeiro (mais rápido)
+            const emailFromStorage = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+            if (emailFromStorage && !emailFromStorage.includes('user@caracore.com.br')) {
+                userEmail = emailFromStorage;
+                console.log('✅ Email obtido do localStorage:', userEmail);
+            } else {
+                // Tentar obter do sessionStorage
+                try {
+                    const profileStr = sessionStorage.getItem('cara_core_user_profile');
+                    if (profileStr) {
+                        const profile = JSON.parse(profileStr);
+                        const emailFromSession = profile.email || profile.preferred_username;
+                        if (emailFromSession && !emailFromSession.includes('user@caracore.com.br')) {
+                            userEmail = emailFromSession;
+                            provider = provider || profile.provider;
+                            console.log('✅ Email obtido do sessionStorage:', userEmail);
+                        }
+                    }
+                } catch (e) {
+                    // Ignorar erro
+                }
+            }
+        }
+        
+        // Se ainda não tem email válido, não redirecionar (deixar sistema buscar)
+        if (!userEmail || userEmail.includes('user@caracore.com.br')) {
+            console.error('❌ Não foi possível obter email válido para redirecionamento. Deixando first-access.js buscar.');
+            // Ainda redirecionar, mas sem email - first-access.js vai buscar
+            this.redirectToFirstAccess(null, provider);
+            return;
+        }
         
         // Verificar se é um caso de primeiro acesso (usuário não registrado)
         // Se não há erro específico ou o erro indica usuário não encontrado, é primeiro acesso
         if (!errorMessage || this.isFirstAccessCase(errorMessage)) {
-            console.log('AuthorizationChecker: Detectado como primeiro acesso, redirecionando para solicitação');
+            console.log('AuthorizationChecker: Detectado como primeiro acesso, redirecionando para solicitação', {
+                email: userEmail,
+                provider: provider
+            });
             this.redirectToFirstAccess(userEmail, provider);
             return;
         }
@@ -562,16 +605,23 @@ AuthorizationChecker.prototype.isFirstAccessCase = function(errorMessage) {
 };
 
 AuthorizationChecker.prototype.redirectToFirstAccess = function(userEmail, provider) {
-    console.log('AuthorizationChecker: Redirecionando para primeiro acesso:', userEmail);
+    console.log('AuthorizationChecker: Redirecionando para primeiro acesso:', {
+        email: userEmail,
+        provider: provider,
+        isValidEmail: userEmail && !userEmail.includes('user@caracore.com.br')
+    });
     
     // Construir URL de redirecionamento
     const redirectUrl = new URL(this.config.firstAccessUrl, window.location.origin);
     
-    if (userEmail) {
+    // Só adicionar email se for válido
+    if (userEmail && !userEmail.includes('user@caracore.com.br') && !userEmail.includes('example@')) {
         redirectUrl.searchParams.set('email', userEmail);
     }
+    // Se não tem email válido, não adicionar na URL - first-access.js vai buscar de outras fontes
     
-    if (provider) {
+    // Só adicionar provider se for válido
+    if (provider && (provider === 'google' || provider === 'microsoft')) {
         redirectUrl.searchParams.set('provider', provider);
     }
     

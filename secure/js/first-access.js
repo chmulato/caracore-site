@@ -162,11 +162,52 @@ class FirstAccessManager {
             }
         }
         
-        // Usar o primeiro email encontrado (prioridade: URL > OIDC > Storage > Session)
-        this.userEmail = emailFromUrl || emailFromOIDC || emailFromStorage || emailFromSession;
-        this.userProvider = providerFromOIDC || providerFromStorage || 
-                           (this.userEmail && this.userEmail.includes('@outlook') ? 'microsoft' : 'google') ||
-                           'desconhecido';
+        // Validar email da URL - ignorar se for placeholder ou inválido
+        const isValidEmail = (email) => {
+            if (!email) return false;
+            // Ignorar emails placeholder ou genéricos
+            if (email.includes('user@caracore.com.br') || 
+                email.includes('example@') || 
+                email === 'user@caracore.com.br' ||
+                email.includes('placeholder')) {
+                return false;
+            }
+            // Validar formato básico de email
+            return email.includes('@') && email.includes('.') && email.length > 5;
+        };
+        
+        // Usar o primeiro email válido encontrado (prioridade: OIDC > Storage > Session > URL válida)
+        // Priorizar OIDC porque é a fonte mais confiável
+        this.userEmail = emailFromOIDC || emailFromStorage || emailFromSession || 
+                        (isValidEmail(emailFromUrl) ? emailFromUrl : null);
+        
+        // Obter provider (prioridade: OIDC > Storage > inferir do email > URL)
+        this.userProvider = providerFromOIDC || providerFromStorage;
+        
+        // Se não encontrou provider, tentar inferir do email
+        if (!this.userProvider && this.userEmail) {
+            const emailDomain = this.userEmail.toLowerCase().split('@')[1];
+            if (emailDomain === 'gmail.com' || emailDomain === 'googlemail.com') {
+                this.userProvider = 'google';
+            } else if (emailDomain === 'hotmail.com' || emailDomain === 'outlook.com' || 
+                      emailDomain === 'live.com' || emailDomain === 'msn.com') {
+                this.userProvider = 'microsoft';
+            } else {
+                // Tentar obter da URL se válido
+                const providerFromUrl = urlParams.get('provider');
+                if (providerFromUrl && (providerFromUrl === 'google' || providerFromUrl === 'microsoft')) {
+                    this.userProvider = providerFromUrl;
+                } else {
+                    this.userProvider = 'google'; // Default
+                }
+            }
+        } else if (!this.userProvider) {
+            // Último recurso: tentar da URL
+            const providerFromUrl = urlParams.get('provider');
+            this.userProvider = (providerFromUrl && (providerFromUrl === 'google' || providerFromUrl === 'microsoft')) 
+                              ? providerFromUrl 
+                              : 'desconhecido';
+        }
         
         // Se não encontrou email, mas há erro na URL, permitir acesso mesmo assim
         // (usuário pode preencher manualmente)
@@ -184,7 +225,14 @@ class FirstAccessManager {
         console.log('Email obtido para primeiro acesso:', {
             email: this.userEmail,
             provider: this.userProvider,
-            source: emailFromUrl ? 'URL' : (emailFromOIDC ? 'OIDC' : (emailFromStorage ? 'Storage' : 'Session'))
+            sources: {
+                url: emailFromUrl,
+                oidc: emailFromOIDC,
+                storage: emailFromStorage,
+                session: emailFromSession,
+                final: this.userEmail,
+                finalProvider: this.userProvider
+            }
         });
     }
     

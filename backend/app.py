@@ -577,6 +577,73 @@ def create_app() -> Flask:
         """
         return add_cors(make_response(jsonify({"status": "ok"}), 200))
 
+    @app.route("/health/oauth/google", methods=["GET"])
+    def health_oauth_google():
+        """
+        Endpoint de diagnóstico específico para Google OAuth.
+        Verifica se todas as variáveis de ambiente necessárias estão configuradas.
+        Não expõe valores dos secrets, apenas indica se estão presentes.
+        """
+        from datetime import datetime
+        
+        required_vars = {
+            "GOOGLE_CLIENT_ID": os.getenv("GOOGLE_CLIENT_ID"),
+            "GOOGLE_CLIENT_SECRET": os.getenv("GOOGLE_CLIENT_SECRET"),
+        }
+        
+        optional_vars = {
+            "GOOGLE_ALLOWED_DOMAINS": os.getenv("GOOGLE_ALLOWED_DOMAINS"),
+        }
+        
+        # Verificar status de cada variável
+        var_status = {}
+        all_required_present = True
+        
+        for var_name, var_value in required_vars.items():
+            is_present = bool(var_value)
+            var_status[var_name] = {
+                "configured": is_present,
+                "value_length": len(var_value) if var_value else 0,
+                "status": "ok" if is_present else "missing"
+            }
+            if not is_present:
+                all_required_present = False
+        
+        for var_name, var_value in optional_vars.items():
+            is_present = bool(var_value)
+            var_status[var_name] = {
+                "configured": is_present,
+                "value": var_value if is_present else None,
+                "status": "ok" if is_present else "using_default"
+            }
+        
+        # Token endpoint do Google
+        token_endpoint = GOOGLE_TOKEN_ENDPOINT
+        
+        # Status geral
+        overall_status = "ok" if all_required_present else "error"
+        
+        response_data = {
+            "status": overall_status,
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "google_oauth": {
+                "required_variables": var_status,
+                "token_endpoint": token_endpoint,
+                "all_required_configured": all_required_present
+            },
+            "diagnosis": {
+                "message": "All required Google OAuth variables are configured" if all_required_present 
+                          else "Some required Google OAuth variables are missing",
+                "action_required": not all_required_present,
+                "missing_variables": [var for var, status in var_status.items() 
+                                     if var in required_vars and not status["configured"]]
+            }
+        }
+        
+        status_code = 200 if all_required_present else 503
+        resp = make_response(jsonify(response_data), status_code)
+        return add_cors(resp)
+    
     @app.route("/health/oauth/microsoft", methods=["GET"])
     def health_oauth_microsoft():
         """
@@ -876,10 +943,20 @@ def create_app() -> Flask:
             # return add_cors(resp)
 
         if not google_client_id or not google_client_secret:
-            logger.error("Credenciais Google ausentes no ambiente - respondendo erro 500")
+            logger.error(
+                "Credenciais Google ausentes no ambiente - respondendo erro 500. "
+                "GOOGLE_CLIENT_ID=%s, GOOGLE_CLIENT_SECRET=%s",
+                "presente" if google_client_id else "AUSENTE",
+                "presente" if google_client_secret else "AUSENTE"
+            )
             resp = make_response(jsonify({
                 "error": "server_error",
-                "error_description": "Server not configured with Google client credentials"
+                "error_description": "Server not configured with Google client credentials",
+                "details": {
+                    "google_client_id_configured": bool(google_client_id),
+                    "google_client_secret_configured": bool(google_client_secret),
+                    "hint": "Configure GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET environment variables"
+                }
             }), 500)
             return add_cors(resp)
 

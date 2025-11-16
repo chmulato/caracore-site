@@ -31,6 +31,10 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
     
     await waitForOIDCAuth();
     
+    // Aguardar um tempo inicial para o callback processar (2 segundos)
+    // Isso evita pegar dados antigos do storage antes do OIDCAuth processar
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
     const checkAuth = async () => {
       checkCount++;
       
@@ -90,39 +94,92 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
         }
       }
       
-      // PRIORIDADE 2: Fallback para localStorage (apenas se OIDCAuth não retornou)
-      if (!userEmail) {
-        userEmail = localStorage.getItem('user_email') || 
-                   localStorage.getItem('auth_user_email');
-        provider = provider || localStorage.getItem('auth_provider');
-        accessToken = accessToken || localStorage.getItem('auth_access_token');
+      // Função para validar email
+      const isValidEmail = (email) => {
+        if (!email) return false;
+        if (email.includes('user@caracore.com.br') || 
+            email.includes('example@') || 
+            email === 'user@caracore.com.br' ||
+            email.includes('placeholder') ||
+            email.includes('test@') ||
+            !email.includes('@') ||
+            !email.includes('.')) {
+          return false;
+        }
+        return email.length > 5;
+      };
+      
+      // PRIORIDADE 2: Fallback para localStorage (apenas se OIDCAuth não retornou E email for válido)
+      if (!userEmail || !isValidEmail(userEmail)) {
+        const emailFromStorage = localStorage.getItem('user_email') || 
+                               localStorage.getItem('auth_user_email');
+        // Só usar do localStorage se for válido
+        if (isValidEmail(emailFromStorage)) {
+          userEmail = emailFromStorage;
+          provider = provider || localStorage.getItem('auth_provider');
+          accessToken = accessToken || localStorage.getItem('auth_access_token');
+          console.log('✅ Email válido obtido do localStorage:', userEmail);
+        } else if (emailFromStorage) {
+          // Se tem email inválido no storage, limpar e aguardar mais
+          console.warn('⚠️ Email inválido encontrado no localStorage, limpando e aguardando...', emailFromStorage);
+          localStorage.removeItem('user_email');
+          localStorage.removeItem('auth_user_email');
+          // Aguardar mais para OIDCAuth processar
+          setTimeout(checkAuth, checkInterval);
+          return;
+        }
       }
       
-      // PRIORIDADE 3: Tentar obter do sessionStorage (dados OIDC)
-      if (!userEmail) {
+      // PRIORIDADE 3: Tentar obter do sessionStorage (dados OIDC) - apenas se válido
+      if (!userEmail || !isValidEmail(userEmail)) {
         try {
           const profileStr = sessionStorage.getItem('cara_core_user_profile');
           if (profileStr) {
             const profile = JSON.parse(profileStr);
-            userEmail = profile.email || profile.preferred_username;
-            provider = provider || profile.provider || localStorage.getItem('auth_provider');
+            const emailFromSession = profile.email || profile.preferred_username;
+            if (isValidEmail(emailFromSession)) {
+              userEmail = emailFromSession;
+              provider = provider || profile.provider || localStorage.getItem('auth_provider');
+              console.log('✅ Email válido obtido do sessionStorage:', userEmail);
+            }
           }
         } catch (e) {
           // Ignorar erro
         }
       }
       
+      // Se ainda não tem email válido, aguardar mais (OIDCAuth pode estar processando)
+      if (!userEmail || !isValidEmail(userEmail)) {
+        // Se já passou muito tempo (mais de 3 segundos), pode ser que OIDCAuth não processou
+        // Mas ainda aguardar um pouco mais
+        if (Date.now() - startTime < 5000) {
+          setTimeout(checkAuth, checkInterval);
+          return;
+        }
+      }
+      
       // Log a cada 5 verificações (1 segundo)
       if (checkCount % 5 === 0) {
+        // Verificar autenticação OIDC de forma assíncrona para o log
+        let oidcAuthStatus = false;
+        if (window.OIDCAuth) {
+          window.OIDCAuth.isAuthenticated().then(status => {
+            oidcAuthStatus = status;
+          }).catch(() => {});
+        }
+        
         console.log(`⏳ Aguardando OAuth... (${Math.floor((Date.now() - startTime) / 1000)}s)`, {
           hasEmail: !!userEmail,
+          isValidEmail: userEmail ? isValidEmail(userEmail) : false,
           hasToken: !!accessToken,
           hasProvider: !!provider,
-          source: window.OIDCAuth ? 'OIDCAuth' : 'localStorage'
+          source: window.OIDCAuth ? 'OIDCAuth' : 'localStorage',
+          oidcAuthenticated: oidcAuthStatus
         });
       }
       
-      if (userEmail && accessToken) {
+      // Só resolver se tiver email VÁLIDO e token
+      if (userEmail && isValidEmail(userEmail) && accessToken) {
         console.log('✅ OAuth completado - dados encontrados:', { 
           userEmail, 
           provider: provider || 'unknown',

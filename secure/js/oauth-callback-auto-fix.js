@@ -45,32 +45,53 @@
         
         console.log(`🔧 Restaurando estado ${provider}: ${state}`);
         
+        // PRIMEIRO: Tentar recuperar o estado original do oidc-client-ts antes de criar um novo
+        let existingState = null;
+        try {
+            const existingStateStr = sessionStorage.getItem(`oidc.${state}`) || 
+                                   localStorage.getItem(`oidc.${state}`);
+            if (existingStateStr) {
+                existingState = JSON.parse(existingStateStr);
+                console.log('✅ Estado OIDC original encontrado, preservando code_verifier');
+            }
+        } catch (e) {
+            console.debug('Estado OIDC não encontrado ou inválido, criando novo');
+        }
+        
         const now = Math.floor(Date.now() / 1000);
         const authority = (provider === 'entra' || provider === 'azure') ? 
             'https://login.microsoftonline.com/common' : 
             'https://accounts.google.com';
         
         // Estado no formato que oidc-client-ts espera
+        // Se já existe um estado, preservar o code_verifier original
         const stateData = {
             id: state,
-            created: now,
-            request_type: "si:r",
-            code_verifier: sessionStorage.getItem(`${provider}_pkce_verifier`) || 
+            created: existingState?.created || now,
+            request_type: existingState?.request_type || "si:r",
+            code_verifier: existingState?.code_verifier || 
+                          sessionStorage.getItem(`${provider}_pkce_verifier`) || 
                           localStorage.getItem(`${provider}_pkce_verifier`) || 
-                          `${provider}_verifier_${Math.random().toString(36).substr(2, 43)}`,
-            nonce: sessionStorage.getItem(`${provider}_oauth_nonce`) || 
+                          null, // Não gerar um novo se não existir - deixar o oidc-client-ts fazer isso
+            nonce: existingState?.nonce || 
+                   sessionStorage.getItem(`${provider}_oauth_nonce`) || 
                    localStorage.getItem(`${provider}_oauth_nonce`) || 
                    `${provider}_nonce_${Math.random().toString(36).substr(2, 16)}`,
-            authority: authority,
-            client_id: window.CARA_CORE_CONFIG?.clientId || `caracore-${provider}-client`
+            authority: existingState?.authority || authority,
+            client_id: existingState?.client_id || window.CARA_CORE_CONFIG?.clientId || `caracore-${provider}-client`
         };
         
-        // Armazenar no formato esperado pela biblioteca
-        sessionStorage.setItem(`oidc.${state}`, JSON.stringify(stateData));
-        sessionStorage.setItem(`${provider}_oauth_state`, state);
-        
-        console.log(`✅ Estado restaurado: oidc.${state}`);
-        return true;
+        // Só armazenar se tiver code_verifier (caso contrário, deixar o oidc-client-ts criar)
+        if (stateData.code_verifier) {
+            // Armazenar no formato esperado pela biblioteca
+            sessionStorage.setItem(`oidc.${state}`, JSON.stringify(stateData));
+            sessionStorage.setItem(`${provider}_oauth_state`, state);
+            console.log(`✅ Estado restaurado: oidc.${state} (com code_verifier preservado)`);
+            return true;
+        } else {
+            console.warn('⚠️ code_verifier não encontrado no estado. O oidc-client-ts precisará criar um novo.');
+            return false;
+        }
     }
     
     // Tentar obter email real do backend usando o código OAuth
@@ -85,44 +106,83 @@
                 ? `${backendUrl}/oauth/microsoft/token`
                 : `${backendUrl}/oauth/google/token`;
             
-            // Tentar obter code_verifier de múltiplas fontes
+            // Tentar obter code_verifier do estado OIDC correto (prioridade: usar o state do callback)
             let codeVerifier = null;
             
-            // 1. Tentar do sessionStorage com chave específica do provider
-            codeVerifier = sessionStorage.getItem(`${provider}_pkce_verifier`) || 
-                         localStorage.getItem(`${provider}_pkce_verifier`);
-            
-            // 2. Tentar do estado OIDC armazenado (formato oidc-client-ts)
-            if (!codeVerifier && params.state) {
+            // 1. PRIORIDADE: Tentar do estado OIDC armazenado usando o state do callback (mais confiável)
+            if (params.state) {
                 try {
+                    // Tentar primeiro no formato oidc-client-ts padrão
                     const oidcState = sessionStorage.getItem(`oidc.${params.state}`);
                     if (oidcState) {
                         const stateData = JSON.parse(oidcState);
-                        codeVerifier = stateData.code_verifier || null;
+                        if (stateData.code_verifier) {
+                            codeVerifier = stateData.code_verifier;
+                            console.log('✅ code_verifier encontrado no estado OIDC (state match)');
+                        }
+                    }
+                    
+                    // Se não encontrou, tentar no localStorage também
+                    if (!codeVerifier) {
+                        const oidcStateLocal = localStorage.getItem(`oidc.${params.state}`);
+                        if (oidcStateLocal) {
+                            const stateData = JSON.parse(oidcStateLocal);
+                            if (stateData.code_verifier) {
+                                codeVerifier = stateData.code_verifier;
+                                console.log('✅ code_verifier encontrado no localStorage (state match)');
+                            }
+                        }
                     }
                 } catch (e) {
                     console.debug('Erro ao ler estado OIDC:', e);
                 }
             }
             
-            // 3. Tentar de chaves genéricas
+            // 2. Fallback: Tentar do sessionStorage com chave específica do provider
+            if (!codeVerifier) {
+                codeVerifier = sessionStorage.getItem(`${provider}_pkce_verifier`) || 
+                             localStorage.getItem(`${provider}_pkce_verifier`);
+                if (codeVerifier) {
+                    console.log(`✅ code_verifier encontrado em chave específica do provider`);
+                }
+            }
+            
+            // 3. Fallback: Tentar de chaves genéricas
             if (!codeVerifier) {
                 codeVerifier = sessionStorage.getItem('oidc.pkce.code_verifier') ||
                              localStorage.getItem('oidc.pkce.code_verifier');
+                if (codeVerifier) {
+                    console.log('✅ code_verifier encontrado em chave genérica');
+                }
             }
             
-            // 4. Tentar buscar em todas as chaves do sessionStorage que contenham 'verifier'
+            // 4. Último recurso: Tentar buscar em todas as chaves do sessionStorage que contenham 'verifier'
+            // ATENÇÃO: Isso pode pegar um code_verifier de uma tentativa anterior, causando erro
             if (!codeVerifier) {
                 try {
-                    for (let i = 0; i < sessionStorage.length; i++) {
-                        const key = sessionStorage.key(i);
-                        if (key && (key.includes('verifier') || key.includes('pkce'))) {
-                            const value = sessionStorage.getItem(key);
-                            // Verificar se parece um code_verifier válido (43-128 caracteres)
-                            if (value && value.length >= 43 && value.length <= 128) {
-                                codeVerifier = value;
-                                console.log(`✅ code_verifier encontrado em: ${key}`);
-                                break;
+                    // Buscar apenas chaves que contenham o state atual
+                    const stateKey = params.state ? `oidc.${params.state}` : null;
+                    if (stateKey) {
+                        // Já tentamos acima, então vamos procurar em outras chaves relacionadas
+                        for (let i = 0; i < sessionStorage.length; i++) {
+                            const key = sessionStorage.key(i);
+                            if (key && key.startsWith('oidc.') && key !== stateKey) {
+                                try {
+                                    const value = sessionStorage.getItem(key);
+                                    if (value) {
+                                        const stateData = JSON.parse(value);
+                                        if (stateData.code_verifier && stateData.code_verifier.length >= 43 && stateData.code_verifier.length <= 128) {
+                                            // Verificar se o state corresponde (pode ser de tentativa anterior)
+                                            if (stateData.id === params.state) {
+                                                codeVerifier = stateData.code_verifier;
+                                                console.log(`✅ code_verifier encontrado em estado OIDC alternativo: ${key}`);
+                                                break;
+                                            }
+                                        }
+                                    }
+                                } catch (e) {
+                                    // Ignorar erros de parsing
+                                }
                             }
                         }
                     }

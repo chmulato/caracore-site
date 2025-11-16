@@ -756,6 +756,33 @@ class FirstAccessManager {
     }
     
     createWhatsAppConfirmationModal(message, callback) {
+        const isMobile = this.isMobileDevice();
+        const whatsappText = isMobile ? 'WhatsApp do celular' : 'WhatsApp Web';
+        const buttonText = isMobile ? 'Abrir WhatsApp' : 'Abrir WhatsApp Web';
+        const instructions = isMobile
+            ? `
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Importante:</strong> 
+                    <ul class="mb-0 mt-2">
+                        <li>O WhatsApp do seu celular será aberto automaticamente</li>
+                        <li>A mensagem será preenchida automaticamente</li>
+                        <li>Você precisa clicar em "Enviar" no WhatsApp</li>
+                    </ul>
+                </div>
+            `
+            : `
+                <div class="alert alert-warning">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Importante:</strong> 
+                    <ul class="mb-0 mt-2">
+                        <li>Certifique-se de estar logado no WhatsApp Web</li>
+                        <li>A mensagem será preenchida automaticamente</li>
+                        <li>Você precisa clicar em "Enviar" no WhatsApp</li>
+                    </ul>
+                </div>
+            `;
+        
         const modal = document.createElement('div');
         modal.className = 'modal fade';
         modal.tabIndex = -1;
@@ -771,28 +798,20 @@ class FirstAccessManager {
                     <div class="modal-body">
                         <div class="alert alert-info">
                             <i class="bi bi-info-circle"></i>
-                            <strong>Próximo passo:</strong> Clique no botão abaixo para abrir o WhatsApp Web e enviar sua solicitação automaticamente.
+                            <strong>Próximo passo:</strong> Clique no botão abaixo para abrir o ${whatsappText} e enviar sua solicitação automaticamente.
                         </div>
                         
                         <h6>Mensagem que será enviada:</h6>
                         <div class="bg-light p-3 rounded mb-3" style="font-family: monospace; white-space: pre-wrap; font-size: 0.9em;">${message}</div>
                         
-                        <div class="alert alert-warning">
-                            <i class="bi bi-exclamation-triangle"></i>
-                            <strong>Importante:</strong> 
-                            <ul class="mb-0 mt-2">
-                                <li>Certifique-se de estar logado no WhatsApp Web</li>
-                                <li>A mensagem será preenchida automaticamente</li>
-                                <li>Você precisa clicar em "Enviar" no WhatsApp</li>
-                            </ul>
-                        </div>
+                        ${instructions}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" id="whatsappSkip">
                             <i class="bi bi-x-circle"></i> Pular WhatsApp
                         </button>
                         <button type="button" class="btn btn-success" id="whatsappSend">
-                            <i class="bi bi-whatsapp"></i> Abrir WhatsApp Web
+                            <i class="bi bi-whatsapp"></i> ${buttonText}
                         </button>
                     </div>
                 </div>
@@ -821,13 +840,15 @@ class FirstAccessManager {
         // Atualizar conteúdo do modal para validação
         const modalBody = modal.querySelector('.modal-body');
         const modalFooter = modal.querySelector('.modal-footer');
+        const isMobile = this.isMobileDevice();
+        const whatsappText = isMobile ? 'WhatsApp do celular' : 'WhatsApp';
         
         modalBody.innerHTML = `
             <div class="text-center py-4">
                 <div class="mb-4">
                     <i class="bi bi-whatsapp text-success" style="font-size: 4rem;"></i>
                 </div>
-                <h5>Você conseguiu enviar a mensagem no WhatsApp?</h5>
+                <h5>Você conseguiu enviar a mensagem no ${whatsappText}?</h5>
                 <p class="text-muted mb-4">
                     Confirme se a mensagem foi enviada com sucesso para +55 41 99909-7797
                 </p>
@@ -865,15 +886,24 @@ class FirstAccessManager {
     
     openWhatsAppWeb(message) {
         const encodedMessage = encodeURIComponent(message);
+        const isMobile = this.isMobileDevice();
+        
+        // URL do WhatsApp funciona tanto para mobile (app nativo) quanto desktop (WhatsApp Web)
         const whatsappUrl = `https://wa.me/${this.config.whatsappNumber}?text=${encodedMessage}`;
         
-        // Tentar abrir em nova aba
-        const newWindow = window.open(whatsappUrl, '_blank');
-        
-        // Verificar se a janela foi bloqueada
-        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-            // Fallback: abrir na mesma aba
+        if (isMobile) {
+            // Em mobile, tenta abrir o app nativo diretamente
+            // Se o app não estiver instalado, o link wa.me redireciona para a web
             window.location.href = whatsappUrl;
+        } else {
+            // Em desktop, tentar abrir em nova aba
+            const newWindow = window.open(whatsappUrl, '_blank');
+            
+            // Verificar se a janela foi bloqueada
+            if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                // Fallback: abrir na mesma aba
+                window.location.href = whatsappUrl;
+            }
         }
     }
     
@@ -895,6 +925,12 @@ class FirstAccessManager {
         window.location.href = this.config.statusPageUrl;
     }
     
+    isMobileDevice() {
+        // Detectar se o acesso é por dispositivo móvel
+        const userAgent = navigator.userAgent.toLowerCase();
+        return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+    }
+    
     async checkWhatsAppAvailability() {
         // Verificar se o navegador suporta abertura de links externos
         // Tentar abrir uma janela de teste (será bloqueada, mas podemos detectar)
@@ -908,12 +944,7 @@ class FirstAccessManager {
             }
             
             // Se a janela foi bloqueada, pode ser popup blocker, mas WhatsApp ainda pode funcionar
-            // Verificar se o usuário está em um ambiente que suporta WhatsApp Web
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isMobile = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
-            
-            // Em mobile, WhatsApp Web pode não funcionar bem, mas ainda é possível
-            // Vamos permitir e avisar o usuário
+            // Em mobile, o WhatsApp app nativo será usado automaticamente
             return true; // Sempre permitir, mas avisar sobre requisitos
         } catch (e) {
             console.warn('Erro ao verificar WhatsApp:', e);
@@ -923,6 +954,37 @@ class FirstAccessManager {
     
     showWhatsAppRequiredWarning() {
         return new Promise((resolve) => {
+            const isMobile = this.isMobileDevice();
+            const whatsappText = isMobile 
+                ? 'WhatsApp do celular' 
+                : 'WhatsApp Web';
+            const instructions = isMobile
+                ? `
+                    <h6>O que você precisa fazer:</h6>
+                    <ol>
+                        <li><strong>Certifique-se</strong> de ter o WhatsApp instalado no seu celular</li>
+                        <li><strong>Clique em continuar</strong> para abrir o WhatsApp automaticamente</li>
+                        <li><strong>Envie a mensagem</strong> que será preenchida automaticamente</li>
+                    </ol>
+                `
+                : `
+                    <h6>O que você precisa fazer:</h6>
+                    <ol>
+                        <li><strong>Abrir WhatsApp Web</strong> em outra aba do navegador</li>
+                        <li><strong>Fazer login</strong> com seu número de telefone</li>
+                        <li><strong>Continuar</strong> com o envio do formulário</li>
+                    </ol>
+                    <div class="alert alert-info mt-3">
+                        <small>
+                            <i class="bi bi-lightbulb"></i>
+                            <strong>Dica:</strong> Você pode acessar o WhatsApp Web em 
+                            <a href="https://web.whatsapp.com" target="_blank" class="alert-link">
+                                https://web.whatsapp.com
+                            </a>
+                        </small>
+                    </div>
+                `;
+            
             const modal = document.createElement('div');
             modal.className = 'modal fade';
             modal.tabIndex = -1;
@@ -932,35 +994,23 @@ class FirstAccessManager {
                         <div class="modal-header bg-warning text-dark">
                             <h5 class="modal-title">
                                 <i class="bi bi-exclamation-triangle-fill"></i>
-                                WhatsApp Web Necessário
+                                ${whatsappText} Necessário
                             </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
                             <div class="alert alert-warning mb-3">
                                 <i class="bi bi-info-circle"></i>
-                                <strong>Importante:</strong> Para completar seu cadastro, você precisa ter acesso ao WhatsApp Web.
+                                <strong>Importante:</strong> Para completar seu cadastro, você precisa ter acesso ao ${whatsappText}.
                             </div>
                             
-                            <h6>O que você precisa fazer:</h6>
-                            <ol>
-                                <li><strong>Abrir WhatsApp Web</strong> em outra aba do navegador</li>
-                                <li><strong>Fazer login</strong> com seu número de telefone</li>
-                                <li><strong>Continuar</strong> com o envio do formulário</li>
-                            </ol>
-                            
-                            <div class="alert alert-info mt-3">
-                                <small>
-                                    <i class="bi bi-lightbulb"></i>
-                                    <strong>Dica:</strong> Você pode acessar o WhatsApp Web em 
-                                    <a href="https://web.whatsapp.com" target="_blank" class="alert-link">
-                                        https://web.whatsapp.com
-                                    </a>
-                                </small>
-                            </div>
+                            ${instructions}
                             
                             <p class="text-muted small mb-0 mt-3">
-                                Após abrir o WhatsApp Web, você poderá enviar sua solicitação de acesso automaticamente.
+                                ${isMobile 
+                                    ? 'O WhatsApp do seu celular será aberto automaticamente para enviar sua solicitação.'
+                                    : 'Após abrir o WhatsApp Web, você poderá enviar sua solicitação de acesso automaticamente.'
+                                }
                             </p>
                         </div>
                         <div class="modal-footer">
@@ -984,8 +1034,11 @@ class FirstAccessManager {
             
             // Event listeners
             modal.querySelector('#whatsappContinue').addEventListener('click', () => {
-                // Abrir WhatsApp Web em nova aba
-                window.open('https://web.whatsapp.com', '_blank');
+                // Se for mobile, não precisa abrir WhatsApp Web
+                if (!isMobile) {
+                    // Abrir WhatsApp Web em nova aba apenas para desktop
+                    window.open('https://web.whatsapp.com', '_blank');
+                }
                 resolved = true;
                 resolve(true); // Continuar com o processo
                 bsModal.hide();
@@ -1249,6 +1302,28 @@ Solicitação gerada automaticamente via sistema web.`;
     }
     
     createWhatsAppModal(message) {
+        const isMobile = this.isMobileDevice();
+        const instructions = isMobile
+            ? `
+                <h6>Instruções:</h6>
+                <ol class="mb-4">
+                    <li><strong>Certifique-se</strong> de ter o WhatsApp instalado no seu celular</li>
+                    <li><strong>Clique no botão</strong> "Enviar via WhatsApp" abaixo</li>
+                    <li><strong>O WhatsApp do celular</strong> será aberto automaticamente</li>
+                    <li><strong>Confirme o envio</strong> da mensagem no WhatsApp</li>
+                    <li><strong>Aguarde o retorno</strong> da nossa equipe (1-24h)</li>
+                </ol>
+            `
+            : `
+                <h6>Instruções:</h6>
+                <ol class="mb-4">
+                    <li><strong>Instale o WhatsApp Web</strong> no seu navegador (se ainda não tiver)</li>
+                    <li><strong>Clique no botão</strong> "Enviar via WhatsApp" abaixo</li>
+                    <li><strong>Confirme o envio</strong> da mensagem no WhatsApp</li>
+                    <li><strong>Aguarde o retorno</strong> da nossa equipe (1-24h)</li>
+                </ol>
+            `;
+        
         const modal = document.createElement('div');
         modal.className = 'modal fade';
         modal.tabIndex = -1;
@@ -1267,13 +1342,7 @@ Solicitação gerada automaticamente via sistema web.`;
                             <p class="mb-0">Agora você precisa enviar os dados via WhatsApp para nossa equipe.</p>
                         </div>
                         
-                        <h6>Instruções:</h6>
-                        <ol class="mb-4">
-                            <li><strong>Instale o WhatsApp Web</strong> no seu navegador (se ainda não tiver)</li>
-                            <li><strong>Clique no botão</strong> "Enviar via WhatsApp" abaixo</li>
-                            <li><strong>Confirme o envio</strong> da mensagem no WhatsApp</li>
-                            <li><strong>Aguarde o retorno</strong> da nossa equipe (1-24h)</li>
-                        </ol>
+                        ${instructions}
                         
                         <div class="alert alert-info">
                             <i class="bi bi-info-circle"></i>
@@ -1303,15 +1372,24 @@ Solicitação gerada automaticamente via sistema web.`;
     openWhatsApp(message) {
         // Codificar mensagem para URL
         const encodedMessage = encodeURIComponent(message);
+        const isMobile = this.isMobileDevice();
         
-        // Construir URL do WhatsApp
+        // Construir URL do WhatsApp (funciona para mobile e desktop)
         const whatsappUrl = `https://wa.me/${this.config.whatsappNumber}?text=${encodedMessage}`;
         
-        // Abrir WhatsApp
-        window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        if (isMobile) {
+            // Em mobile, abre o app nativo diretamente
+            window.location.href = whatsappUrl;
+        } else {
+            // Em desktop, abre em nova aba
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        }
         
         // Mostrar sucesso e redirecionar após delay
-        this.showSuccess('WhatsApp aberto! Complete o envio e aguarde nosso retorno.');
+        const successMessage = isMobile 
+            ? 'WhatsApp do celular aberto! Complete o envio e aguarde nosso retorno.'
+            : 'WhatsApp aberto! Complete o envio e aguarde nosso retorno.';
+        this.showSuccess(successMessage);
         
         setTimeout(() => {
             // Adicionar parâmetro para indicar que veio do WhatsApp
@@ -1324,7 +1402,8 @@ Solicitação gerada automaticamente via sistema web.`;
         if (window.gtag) {
             gtag('event', 'whatsapp_message_sent', {
                 'event_category': 'User Registration',
-                'event_label': this.userEmail
+                'event_label': this.userEmail,
+                'device_type': isMobile ? 'mobile' : 'desktop'
             });
         }
     }

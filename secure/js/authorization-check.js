@@ -33,7 +33,7 @@ class AuthorizationChecker {
             apiEndpoint: `${backendUrl}/api/check-authorization`,
             auditEndpoint: `${backendUrl}/api/audit/access-granted`,
             accessDeniedUrl: '/secure/access-denied.html',
-            firstAccessUrl: '/secure/request-access.html', // Página de solicitação de primeiro acesso
+            firstAccessUrl: '/secure/first-access.html', // Página de primeiro acesso
             maxRetries: 3,
             retryDelay: 1000 // 1 segundo
         };
@@ -173,8 +173,16 @@ class AuthorizationChecker {
             }
             
             if (!result.authorized) {
-                // Se não está autorizado e não há erro específico, é primeiro acesso
-                const errorMsg = result.error || 'user_not_found';
+                // Se não está autorizado e status é null (usuário não encontrado), é primeiro acesso
+                // Se status existe mas não é 'active', também pode ser primeiro acesso
+                const isFirstAccess = result.status === null || result.status === undefined;
+                const errorMsg = isFirstAccess ? 'user_not_found' : (result.error || 'unauthorized');
+                console.log('AuthorizationChecker: Usuário não autorizado:', {
+                    email: userEmail,
+                    status: result.status,
+                    isFirstAccess: isFirstAccess,
+                    errorMsg: errorMsg
+                });
                 this.handleAuthFailure(userEmail, provider, errorMsg);
                 return false;
             }

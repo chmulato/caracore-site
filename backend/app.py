@@ -345,6 +345,8 @@ def validate_google_id_token(
     jwks = fetch_jwks("https://www.googleapis.com/oauth2/v3/certs")
     # Temporário: decode sem verificação de assinatura para evitar dependência cryptography
     try:
+        # Decodificar header e payload separadamente para obter o algoritmo
+        header_data = jwt.get_unverified_header(token)
         claims = jwt.decode(token, options={"verify_signature": False})
     except InvalidTokenError as exc:
         raise IDTokenValidationError("invalid_id_token", str(exc)) from exc
@@ -355,7 +357,8 @@ def validate_google_id_token(
 
     claims_dict = dict(claims)
     _validate_nonce(claims_dict, expected_nonce)
-    _validate_at_hash(access_token, claims_dict, {})
+    # Passar o header real para validação do at_hash
+    _validate_at_hash(access_token, claims_dict, header_data or {})
 
     if allowed_domains:
         hd_claim = (claims_dict.get("hd") or "").lower()
@@ -385,13 +388,16 @@ def validate_microsoft_id_token(
     jwks = fetch_jwks(jwks_url)
     # Temporário: decode sem verificação de assinatura para evitar dependência cryptography
     try:
+        # Decodificar header e payload separadamente para obter o algoritmo
+        header_data = jwt.get_unverified_header(token)
         claims = jwt.decode(token, options={"verify_signature": False})
     except InvalidTokenError as exc:
         raise IDTokenValidationError("invalid_id_token", str(exc)) from exc
 
     claims_dict = dict(claims)
     _validate_nonce(claims_dict, expected_nonce)
-    _validate_at_hash(access_token, claims_dict, {})
+    # Passar o header real para validação do at_hash
+    _validate_at_hash(access_token, claims_dict, header_data or {})
 
     issuer = claims.get("iss")
     if not (isinstance(issuer, str) and issuer.startswith("https://login.microsoftonline.com/") and issuer.endswith("/v2.0")):

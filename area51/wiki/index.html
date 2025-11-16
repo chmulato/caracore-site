@@ -16,12 +16,13 @@
             <div class="wiki-header">
                 <h1><i class="bi bi-shield-lock"></i> Área 51 Wiki</h1>
                 <p class="subtitle">Documentação Técnica do Sistema de Autenticação OAuth 2.1 + OIDC</p>
-                <div class="mt-3">
+                        <div class="mt-3">
                     <span class="badge-custom bg-success"> FASE 5 CONCLUÍDA</span>
                     <span class="badge-custom bg-success"> FASE 6 CONCLUÍDA</span>
                     <span class="badge-custom bg-success"> FASE 7 CONCLUÍDA</span>
                     <span class="badge-custom bg-primary"> 100% Testes Aprovados</span>
                     <span class="badge-custom bg-secondary"> OAuth 2.1 + LGPD + Swagger + Refresh Tokens</span>
+                    <span class="badge-custom bg-info"> Correções de Estabilidade (16/11/2025)</span>
                 </div>
             </div>
 
@@ -113,13 +114,14 @@
                                 <strong>Características Principais:</strong>
                             </p>
                             <ul class="mb-3">
-                                <li>🔐 <strong>Autenticação Multi-Provedor:</strong> Integração nativa com Google e Microsoft (Entra ID)</li>
+                                <li>🔐 <strong>Autenticação Multi-Provedor:</strong> Integração nativa com Google e Microsoft (Entra ID), incluindo suporte completo para contas pessoais Microsoft (hotmail.com, outlook.com, live.com)</li>
                                 <li>🔄 <strong>Sessões Persistentes:</strong> Refresh tokens com criptografia AES-256 e renovação automática</li>
                                 <li>👥 <strong>Gestão Completa de Usuários:</strong> CRUD, aprovações, roles e hierarquias</li>
-                                <li>📊 <strong>Auditoria Enterprise:</strong> Logs detalhados de todas as operações de segurança</li>
-                                <li>🛡️ <strong>Segurança Avançada:</strong> PKCE, JWT validation, rate limiting, CSP headers</li>
+                                <li>📊 <strong>Auditoria Enterprise:</strong> Logs detalhados de todas as operações de segurança com endpoint dedicado</li>
+                                <li>🛡️ <strong>Segurança Avançada:</strong> PKCE, JWT validation, rate limiting, CSP headers, validação inteligente de tenant</li>
                                 <li>📖 <strong>API Documentada:</strong> Swagger/OpenAPI completo para todos os endpoints</li>
                                 <li>✅ <strong>Qualidade Garantida:</strong> 100% de aprovação em 22 testes automatizados</li>
+                                <li>🔧 <strong>Estabilidade Aprimorada:</strong> Correções de compatibilidade Microsoft, PKCE e tratamento de erros (16/11/2025)</li>
                             </ul>
                             <p class="mb-0">
                                 <strong>Status:</strong> <span class="badge bg-success">Em Produção</span> | 
@@ -145,6 +147,9 @@
                         </div>
                         <div class="alert alert-info">
                             <strong>Novidades Fase 5, 6 e 7:</strong> A arquitetura inclui endpoints administrativos (`/api/admin/*`) protegidos por middleware de autorização robusto, sistema de gestão de usuários com CRUD completo, documentação API completa via Swagger/OpenAPI, e sistema de refresh tokens com criptografia AES-256. Todos os endpoints são protegidos por validação JWT e hierarquia de roles (user < admin < super_admin). Sessões persistentes garantem continuidade da autenticação sem reautenticação manual.
+                        </div>
+                        <div class="alert alert-success">
+                            <strong>Última Atualização (16/11/2025):</strong> Sistema agora suporta completamente contas pessoais Microsoft com validação inteligente de tenant, correções de PKCE para garantir correspondência correta de code_verifier, e melhorias no tratamento de erros OAuth com diagnóstico detalhado. Endpoint de auditoria (`/api/audit/access-granted`) corrigido e funcional.
                         </div>
                     </section>
 
@@ -293,6 +298,36 @@
                                         <strong>Benefícios Alcançados:</strong> Experiência de usuário melhorada com sessões persistentes, renovação automática de tokens, e conformidade total com OAuth 2.1. Usuários não precisam mais fazer login manualmente quando o token expira.
                                         <br><br>
                                         <strong>Métricas:</strong> Sistema ativo, SessionManager inicializado, TokenStorage funcionando, renovação automática configurada (5 minutos antes de expirar).
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        <strong>Correções Recentes:</strong> Melhorias de Estabilidade e Compatibilidade (16/11/2025)
+                                    </button>
+                                </h2>
+                                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionFases">
+                                    <div class="accordion-body">
+                                        <strong>Status:</strong> ✅ Correções implementadas e validadas em produção (16/11/2025)
+                                        <br><br>
+                                        <strong>Problemas Resolvidos:</strong>
+                                        <ul class="mb-2">
+                                            <li>✅ <strong>Erro 403 (Tenant Mismatch):</strong> Corrigida validação de ID token para aceitar tokens de contas pessoais Microsoft (tenant `/consumers`). Sistema agora reconhece automaticamente tokens do tenant de consumidores quando a autorização foi feita com `/consumers`.</li>
+                                            <li>✅ <strong>Erro 405 (Method Not Allowed):</strong> Corrigido endpoint `/api/audit/access-granted` para usar URL completa do backend em vez de URL relativa, garantindo que requisições de auditoria sejam enviadas corretamente.</li>
+                                            <li>✅ <strong>PKCE Code Verifier Mismatch:</strong> Melhorada recuperação do `code_verifier` priorizando o estado OIDC original armazenado pelo `oidc-client-ts`, evitando sobrescrita de estados válidos e garantindo correspondência correta com o `code_challenge`.</li>
+                                            <li>✅ <strong>Loop de Recarregamento:</strong> Corrigido loop infinito na página restrita causado por `auth-force-recognition.js` substituindo conteúdo antes da verificação de autorização. Sistema agora aguarda verificação antes de decidir exibir mensagens.</li>
+                                            <li>✅ <strong>Erro getUser():</strong> Corrigido uso de `window.OIDCAuth.getUser()` substituído por `getUserProfile()` ou `userManager.getUser()` com fallbacks apropriados.</li>
+                                            <li>✅ <strong>Fluxo de Primeiro Acesso:</strong> Melhorado redirecionamento para página de solicitação de acesso quando usuário autenticado não está autorizado, com pré-preenchimento de email quando disponível.</li>
+                                        </ul>
+                                        <strong>Melhorias Implementadas:</strong>
+                                        <ul class="mb-2">
+                                            <li>✅ <strong>Validação de Tenant Microsoft:</strong> Sistema aceita tokens de contas pessoais (hotmail.com, outlook.com, live.com) e contas corporativas, detectando automaticamente o tenant correto.</li>
+                                            <li>✅ <strong>Logging Aprimorado:</strong> Adicionados logs detalhados para diagnóstico de problemas OAuth, incluindo rastreamento de `code_verifier`, estados OIDC e validação de tenant.</li>
+                                            <li>✅ <strong>Tratamento de Erros:</strong> Melhorado tratamento de erros 400, 403 e 405 com mensagens descritivas e sugestões de solução no console do navegador.</li>
+                                            <li>✅ <strong>Sincronização de Estados:</strong> Sistema preserva estados OIDC originais criados pelo `oidc-client-ts`, evitando corrupção de dados de autenticação.</li>
+                                        </ul>
+                                        <strong>Impacto:</strong> Sistema agora suporta completamente contas pessoais Microsoft, elimina loops de recarregamento, e oferece melhor experiência de usuário com mensagens de erro mais claras e diagnóstico facilitado.
                                     </div>
                                 </div>
                             </div>

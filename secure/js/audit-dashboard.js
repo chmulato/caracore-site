@@ -95,7 +95,20 @@
                 return;
             }
             
-            console.log('[AuditDashboard] Usuário autenticado, carregando dashboard...');
+            console.log('[AuditDashboard] Usuário autenticado, verificando permissões de admin...');
+            
+            // Verificar se tem permissão de admin
+            const hasAdminAccess = await checkAdminAuthorization();
+            if (!hasAdminAccess) {
+                console.warn('[AuditDashboard] Usuário não tem permissão de admin. Redirecionando...');
+                showError('Você não tem permissão para acessar o Dashboard de Auditoria. Apenas administradores podem acessar esta página. Redirecionando...');
+                setTimeout(() => {
+                    window.location.href = '/secure/restrita.html';
+                }, 3000);
+                return;
+            }
+            
+            console.log('[AuditDashboard] Usuário autorizado como admin, carregando dashboard...');
             
             // Configurar data inicial (hoje)
             document.getElementById('dateFilter').value = state.filters.date;
@@ -110,6 +123,104 @@
             showError(`Erro ao inicializar: ${error.message}`);
         }
     });
+
+    /**
+     * Verificar se usuário tem permissão de admin
+     */
+    async function checkAdminAuthorization() {
+        try {
+            // Obter email do usuário
+            let userEmail = null;
+            
+            // Tentar obter do OIDCAuth
+            if (window.OIDCAuth) {
+                try {
+                    const user = await window.OIDCAuth.getUser();
+                    if (user && user.profile) {
+                        userEmail = user.profile.email || user.profile.preferred_username;
+                    }
+                } catch (e) {
+                    console.warn('[AuditDashboard] Erro ao obter usuário do OIDCAuth:', e);
+                }
+            }
+            
+            // Fallback: obter do storage
+            if (!userEmail) {
+                const profileStr = sessionStorage.getItem('cara_core_user_profile');
+                if (profileStr) {
+                    try {
+                        const profile = JSON.parse(profileStr);
+                        userEmail = profile.email || profile.preferred_username;
+                    } catch (e) {
+                        // Ignorar erro de parsing
+                    }
+                }
+            }
+            
+            if (!userEmail) {
+                userEmail = localStorage.getItem('user_email') || 
+                           localStorage.getItem('auth_user_email');
+            }
+            
+            if (!userEmail) {
+                console.warn('[AuditDashboard] Email do usuário não encontrado');
+                return false;
+            }
+            
+            // Normalizar email (lowercase)
+            userEmail = userEmail.toLowerCase().trim();
+            
+            console.log('[AuditDashboard] Verificando permissões de admin para:', userEmail);
+            
+            // Tentar usar authChecker se disponível
+            if (window.authChecker && typeof window.authChecker.isAdmin === 'function') {
+                try {
+                    const isAdmin = await window.authChecker.isAdmin(userEmail);
+                    console.log('[AuditDashboard] Resultado via authChecker:', { 
+                        email: userEmail, 
+                        isAdmin 
+                    });
+                    return isAdmin;
+                } catch (e) {
+                    console.warn('[AuditDashboard] Erro ao usar authChecker, usando API direta:', e);
+                }
+            }
+            
+            // Fallback: verificar autorização via API
+            const response = await fetch('/api/check-authorization', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: userEmail })
+            });
+            
+            if (!response.ok) {
+                console.warn('[AuditDashboard] Erro ao verificar autorização:', response.status);
+                return false;
+            }
+            
+            const data = await response.json();
+            const userRole = data.role || 'user';
+            const isAuthorized = data.authorized === true;
+            
+            console.log('[AuditDashboard] Resultado da verificação:', { 
+                email: userEmail, 
+                role: userRole, 
+                authorized: isAuthorized 
+            });
+            
+            // Verificar se tem role de admin ou super_admin
+            if (isAuthorized && (userRole === 'admin' || userRole === 'super_admin')) {
+                return true;
+            }
+            
+            return false;
+        } catch (error) {
+            console.error('[AuditDashboard] Erro ao verificar autorização de admin:', error);
+            return false;
+        }
+    }
 
     /**
      * Verificar autenticação do usuário

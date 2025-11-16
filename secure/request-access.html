@@ -355,9 +355,10 @@
             form.reset();
             charCount.textContent = '0';
             
-            // Redirecionar após 3 segundos
+            // Redirecionar para página de aguardando aprovação após 3 segundos
             setTimeout(() => {
-              window.location.href = '/secure/access-denied.html?requested=true';
+              const email = data.email.trim();
+              window.location.href = `/secure/access-pending.html?email=${encodeURIComponent(email)}&requested=true`;
             }, 3000);
           } else {
             // Erro

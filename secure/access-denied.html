@@ -90,6 +90,11 @@
             <svg class="icon-sm" aria-hidden="true"><use href="#icon-google"></use></svg>
             <span id="userEmail"></span>
           </div>
+          
+          <div id="requestedMessage" class="alert alert-success" style="display: none; margin-top: 1.5rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            <strong>✅ Solicitação Enviada!</strong>
+            <p style="margin: 0.5rem 0 0 0;">Sua solicitação de acesso foi enviada com sucesso. Nossa equipe analisará sua solicitação e você receberá uma resposta em breve.</p>
+          </div>
         </section>
 
         <div class="info-box" id="infoBox">
@@ -159,6 +164,8 @@
 
   <!-- Scripts -->
   <script src="/js/oidc.js?v=20251102"></script>
+  <script src="/js/user-session-manager.js?v=20251115"></script>
+  <script src="/js/auth-standalone.js?v=20251001b"></script>
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       // Detectar informações do usuário a partir do OAuth
@@ -167,6 +174,28 @@
       const provider = urlParams.get('provider') || localStorage.getItem('auth_provider') || 'unknown';
       const isInactive = urlParams.get('inactive') === 'true';
       const reason = urlParams.get('reason');
+      const requested = urlParams.get('requested') === 'true';
+      
+      // Se a solicitação foi enviada, mostrar mensagem de sucesso
+      if (requested) {
+        const requestedMessage = document.getElementById('requestedMessage');
+        const infoBox = document.getElementById('infoBox');
+        const requestAccessBtn = document.querySelector('a[href="/secure/request-access.html"]');
+        
+        if (requestedMessage) {
+          requestedMessage.style.display = 'block';
+        }
+        
+        // Ocultar ou modificar a caixa de informações
+        if (infoBox) {
+          infoBox.style.display = 'none';
+        }
+        
+        // Ocultar botão de solicitar acesso (já foi solicitado)
+        if (requestAccessBtn) {
+          requestAccessBtn.style.display = 'none';
+        }
+      }
       
       // Verificar se usuário está inativo
       if (isInactive || reason === 'user_inactive') {
@@ -227,22 +256,43 @@
       
       // Configurar botão de logout
       const logoutBtn = document.getElementById('logoutBtn');
-      logoutBtn.addEventListener('click', function() {
+      logoutBtn.addEventListener('click', async function() {
         if (confirm('Tem certeza que deseja fazer logout?')) {
-          // Limpar dados locais
-          localStorage.removeItem('user_email');
-          localStorage.removeItem('auth_provider');
-          localStorage.removeItem('id_token');
-          localStorage.removeItem('access_token');
-          
-          // Redirecionar para logout federado
-          if (provider === 'microsoft') {
-            window.location.href = 'https://login.microsoftonline.com/common/oauth2/v2.0/logout?post_logout_redirect_uri=' + 
-                                  encodeURIComponent(window.location.origin);
-          } else {
-            // Google OAuth logout
-            window.location.href = 'https://accounts.google.com/logout?continue=' + 
-                                  encodeURIComponent(window.location.origin);
+          try {
+            // Fazer logout dentro da aplicação primeiro
+            // Limpar dados usando UserSessionManager se disponível
+            if (window.userSessionManager && typeof window.userSessionManager.handleUserLogout === 'function') {
+              window.userSessionManager.handleUserLogout();
+            }
+            
+            // Limpar dados locais manualmente
+            localStorage.removeItem('user_email');
+            localStorage.removeItem('auth_user_email');
+            localStorage.removeItem('auth_provider');
+            localStorage.removeItem('id_token');
+            localStorage.removeItem('access_token');
+            localStorage.removeItem('auth_user_role');
+            sessionStorage.clear();
+            
+            // Tentar logout via OIDC se disponível (faz logout federado automaticamente)
+            if (window.OIDCAuth && typeof window.OIDCAuth.logout === 'function') {
+              await window.OIDCAuth.logout();
+              // OIDCAuth.logout() já redireciona para logout federado e depois para post_logout_redirect_uri
+              return;
+            }
+            
+            // Fallback: redirecionar para página de logout da aplicação
+            window.location.href = '/secure/logout.html';
+            
+          } catch (error) {
+            console.error('Erro no logout:', error);
+            // Mesmo com erro, limpar dados e redirecionar
+            if (window.userSessionManager && typeof window.userSessionManager.handleUserLogout === 'function') {
+              window.userSessionManager.handleUserLogout();
+            }
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = '/index.html';
           }
         }
       });

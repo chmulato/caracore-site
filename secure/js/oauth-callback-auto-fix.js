@@ -340,13 +340,20 @@
                 redirectUri: requestBody.redirect_uri
             });
             
-            const response = await fetch(tokenEndpoint, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(requestBody)
-            });
+            let response;
+            try {
+                response = await fetch(tokenEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(requestBody),
+                    credentials: 'include' // Incluir cookies se necessário
+                });
+            } catch (networkError) {
+                console.error('❌ Erro de rede ao chamar backend:', networkError);
+                throw new Error(`Erro de conexão: ${networkError.message}`);
+            }
             
             if (response.ok) {
                 const data = await response.json();
@@ -388,9 +395,28 @@
                         hasCode: !!requestBody.code,
                         hasCodeVerifier: !!requestBody.code_verifier,
                         redirectUri: requestBody.redirect_uri,
-                        grantType: requestBody.grant_type
+                        grantType: requestBody.grant_type,
+                        tenant: requestBody.tenant
                     }
                 });
+                
+                // Se for erro 403, pode ser rate limit, CORS, ou autorização
+                if (response.status === 403) {
+                    console.error('❌ Erro 403 (Forbidden) - Possíveis causas:');
+                    console.error('   1. Rate limit excedido (muitas tentativas)');
+                    console.error('   2. CORS bloqueado (Origin não permitido)');
+                    console.error('   3. HTTPS enforcement (requisição não é HTTPS)');
+                    console.error('   4. Middleware de autorização bloqueando');
+                    console.error('   Detalhes:', errorData.error_description || errorData.error || errorText);
+                    
+                    // Verificar se é rate limit
+                    if (errorData.error === 'rate_limit_exceeded' || errorText.includes('rate_limit')) {
+                        const retryAfter = errorData.retry_after || 60;
+                        console.warn(`⚠️ Rate limit excedido. Aguarde ${retryAfter} segundos antes de tentar novamente.`);
+                    }
+                    
+                    throw new Error(`Erro 403: ${errorData.error_description || errorData.error || 'Acesso negado'}`);
+                }
                 
                 // Se for erro 400, pode ser problema com PKCE ou parâmetros
                 if (response.status === 400) {

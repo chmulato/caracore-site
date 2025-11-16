@@ -399,11 +399,21 @@ def validate_microsoft_id_token(
 
     token_tid = (claims_dict.get("tid") or "").lower()
     if expected_tenant and expected_tenant.lower() not in {"common", "organizations", "consumers"}:
+        # Se o expected_tenant é um tenant específico, verificar correspondência
+        # MAS: se o tenant_hint (usado na autorização) for "consumers", aceitar tokens de contas pessoais
         if token_tid and token_tid != expected_tenant.lower():
-            raise IDTokenValidationError(
-                "tenant_mismatch",
-                f"Token emitido para tenant {token_tid}, esperado {expected_tenant.lower()}",
-            )
+            # Verificar se é um token de consumidores (contas pessoais)
+            # O tenant de consumidores da Microsoft é sempre 9188040d-6c67-4c5b-b112-36a304b66dad
+            consumers_tenant_id = "9188040d-6c67-4c5b-b112-36a304b66dad"
+            if tenant_hint and tenant_hint.lower().strip() == "consumers" and token_tid == consumers_tenant_id:
+                # Token de consumidores é válido quando autorização foi feita com /consumers
+                logger.info("Token de consumidores aceito (tenant_hint=consumers, token_tid=%s, expected_tenant=%s)", 
+                           token_tid, expected_tenant)
+            else:
+                raise IDTokenValidationError(
+                    "tenant_mismatch",
+                    f"Token emitido para tenant {token_tid}, esperado {expected_tenant.lower()}",
+                )
 
     return claims_dict
 
@@ -1104,19 +1114,26 @@ def create_app() -> Flask:
     @rate_limit("/oauth/microsoft/token")
     def microsoft_token():
         logger.info(
-            "Recebido POST /oauth/microsoft/token de %s (content-type=%s)",
+            "Recebido POST /oauth/microsoft/token de %s (content-type=%s, origin=%s)",
             request.remote_addr,
             request.content_type,
+            request.headers.get("Origin", "N/A"),
         )
+        
+        # Log detalhado para debug
+        logger.debug("Headers recebidos: %s", dict(request.headers))
+        
         payload = {}
         if request.content_type and request.content_type.startswith("application/json"):
             try:
                 payload = request.get_json(force=True) or {}
-            except Exception:
-                logger.warning("Falha ao decodificar JSON recebido no token endpoint Microsoft", exc_info=True)
+                logger.debug("Payload JSON recebido: %s", {k: v if k != 'code_verifier' else '[REDACTED]' for k, v in payload.items()})
+            except Exception as e:
+                logger.warning("Falha ao decodificar JSON recebido no token endpoint Microsoft: %s", e, exc_info=True)
                 payload = {}
         else:
             payload = request.form.to_dict() if request.form else {}
+            logger.debug("Payload form recebido: %s", {k: v if k != 'code_verifier' else '[REDACTED]' for k, v in payload.items()})
 
         code = payload.get("code")
         code_verifier = payload.get("code_verifier")
@@ -1266,10 +1283,13 @@ def create_app() -> Flask:
             )
             if body.get("id_token"):
                 try:
+                    # Se tenant_override for "consumers", usar isso como tenant_hint para validação
+                    # Isso permite que tokens de contas pessoais sejam aceitos
+                    validation_tenant_hint = tenant_override if tenant_override else None
                     claims = validate_microsoft_id_token(
                         body["id_token"],
                         client_id,
-                        tenant_hint=tenant_override,
+                        tenant_hint=validation_tenant_hint,
                         expected_tenant=azure_tenant_id,
                         expected_nonce=payload.get("nonce"),
                         access_token=body.get("access_token"),

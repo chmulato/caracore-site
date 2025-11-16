@@ -29,7 +29,9 @@ class AuthorizationChecker {
             : 'https://caracore-backend-docker.azurewebsites.net';
         
         this.config = {
+            backendUrl: backendUrl, // Armazenar URL base do backend
             apiEndpoint: `${backendUrl}/api/check-authorization`,
+            auditEndpoint: `${backendUrl}/api/audit/access-granted`,
             accessDeniedUrl: '/secure/access-denied.html',
             firstAccessUrl: '/secure/request-access.html', // Página de solicitação de primeiro acesso
             maxRetries: 3,
@@ -452,8 +454,9 @@ class AuthorizationChecker {
             userAgent: navigator.userAgent
         };
         
+        // Usar o endpoint de auditoria configurado
         // Enviar para endpoint de auditoria (fire-and-forget)
-        fetch('/api/audit/access-granted', {
+        fetch(this.config.auditEndpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(logData)

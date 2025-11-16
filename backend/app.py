@@ -1144,7 +1144,14 @@ def create_app() -> Flask:
         
         missing = [k for k in required_fields if not payload.get(k)]
         if missing:
-            logger.warning("Requisicao invalida para Microsoft - campos ausentes: %s", ", ".join(missing))
+            logger.warning(
+                "Requisicao invalida para Microsoft - campos ausentes: %s. "
+                "Payload recebido: code=%s, code_verifier=%s, redirect_uri=%s",
+                ", ".join(missing),
+                "presente" if code else "ausente",
+                "presente" if code_verifier else "ausente",
+                redirect_uri
+            )
             if PKCE_VALIDATION_ENABLED:
                 AuditLogger.log_token_exchange(
                     provider="microsoft",
@@ -1155,7 +1162,13 @@ def create_app() -> Flask:
                 )
             resp = make_response(jsonify({
                 "error": "invalid_request",
-                "error_description": f"Missing fields: {', '.join(missing)}"
+                "error_description": f"Missing fields: {', '.join(missing)}",
+                "details": {
+                    "missing_fields": missing,
+                    "has_code": bool(code),
+                    "has_code_verifier": bool(code_verifier),
+                    "redirect_uri": redirect_uri
+                }
             }), 400)
             return add_cors(resp)
 

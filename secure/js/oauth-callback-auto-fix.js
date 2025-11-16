@@ -198,8 +198,34 @@
                 console.error('❌ Erro do backend:', {
                     status: response.status,
                     statusText: response.statusText,
-                    error: errorData
+                    error: errorData,
+                    requestBody: {
+                        hasCode: !!requestBody.code,
+                        hasCodeVerifier: !!requestBody.code_verifier,
+                        redirectUri: requestBody.redirect_uri,
+                        grantType: requestBody.grant_type
+                    }
                 });
+                
+                // Se for erro 400, pode ser problema com PKCE ou parâmetros
+                if (response.status === 400) {
+                    console.error('❌ Erro 400 - Possíveis causas:');
+                    console.error('   1. code_verifier faltando ou inválido');
+                    console.error('   2. code_challenge não corresponde ao code_verifier');
+                    console.error('   3. redirect_uri não corresponde ao configurado');
+                    console.error('   4. Código de autorização inválido ou expirado');
+                    
+                    // Se o erro menciona campos faltando, verificar se é code_verifier
+                    if (errorData.error_description && 
+                        (errorData.error_description.includes('code_verifier') || 
+                         errorData.error_description.includes('Missing fields'))) {
+                        console.warn('⚠️ Erro relacionado a PKCE ou campos faltando.');
+                        console.warn('   Detalhes:', errorData.details || errorData.error_description);
+                        
+                        // Se code_verifier está faltando mas PKCE é obrigatório, não há o que fazer
+                        // O sistema tentará verificar autorização usando email salvo
+                    }
+                }
             }
         } catch (error) {
             console.warn('⚠️ Erro ao obter email do backend:', error);
@@ -222,13 +248,70 @@
             const urlParams = new URLSearchParams(window.location.search);
             const emailFromUrl = urlParams.get('email');
             
-            const savedEmail = emailFromUrl ||
-                              localStorage.getItem('user_email') || 
-                              localStorage.getItem('auth_user_email') ||
-                              sessionStorage.getItem('user_email');
+            // Tentar obter email de múltiplas fontes
+            let savedEmail = emailFromUrl ||
+                            localStorage.getItem('user_email') || 
+                            localStorage.getItem('auth_user_email') ||
+                            sessionStorage.getItem('user_email');
+            
+            // Se não encontrou email, tentar buscar em outras chaves do storage
+            if (!savedEmail) {
+                try {
+                    // Buscar em todas as chaves do localStorage e sessionStorage
+                    for (let i = 0; i < localStorage.length; i++) {
+                        const key = localStorage.key(i);
+                        if (key && (key.includes('email') || key.includes('user') || key.includes('profile'))) {
+                            const value = localStorage.getItem(key);
+                            // Verificar se parece um email válido
+                            if (value && value.includes('@') && value.includes('.')) {
+                                // Tentar parsear se for JSON
+                                try {
+                                    const parsed = JSON.parse(value);
+                                    if (parsed.email) {
+                                        savedEmail = parsed.email;
+                                        console.log(`📧 Email encontrado em localStorage[${key}]:`, savedEmail);
+                                        break;
+                                    }
+                                } catch {
+                                    // Não é JSON, usar valor direto
+                                    savedEmail = value;
+                                    console.log(`📧 Email encontrado em localStorage[${key}]:`, savedEmail);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    // Tentar também no sessionStorage
+                    if (!savedEmail) {
+                        for (let i = 0; i < sessionStorage.length; i++) {
+                            const key = sessionStorage.key(i);
+                            if (key && (key.includes('email') || key.includes('user') || key.includes('profile'))) {
+                                const value = sessionStorage.getItem(key);
+                                if (value && value.includes('@') && value.includes('.')) {
+                                    try {
+                                        const parsed = JSON.parse(value);
+                                        if (parsed.email) {
+                                            savedEmail = parsed.email;
+                                            console.log(`📧 Email encontrado em sessionStorage[${key}]:`, savedEmail);
+                                            break;
+                                        }
+                                    } catch {
+                                        savedEmail = value;
+                                        console.log(`📧 Email encontrado em sessionStorage[${key}]:`, savedEmail);
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.debug('Erro ao buscar email no storage:', e);
+                }
+            }
             
             if (savedEmail) {
-                console.log('📧 Email encontrado em storage:', savedEmail);
+                console.log('📧 Email encontrado:', savedEmail);
                 
                 // Verificar se este email está autorizado antes de redirecionar
                 try {
@@ -236,6 +319,7 @@
                         ? 'http://localhost:5051'
                         : 'https://caracore-backend-docker.azurewebsites.net';
                     
+                    console.log('🔍 Verificando autorização para:', savedEmail);
                     const authCheckResponse = await fetch(`${backendUrl}/api/check-authorization`, {
                         method: 'POST',
                         headers: {
@@ -249,6 +333,7 @@
                     
                     if (authCheckResponse.ok) {
                         const authData = await authCheckResponse.json();
+                        console.log('📊 Resultado da verificação de autorização:', authData);
                         
                         if (authData.authorized && !authData.inactive) {
                             console.log('✅ Usuário já está autorizado! Continuando com autenticação...');
@@ -272,21 +357,21 @@
                             console.log('❌ Usuário não está autorizado ou está inativo');
                             // Redirecionar para primeiro acesso
                             const errorMsg = encodeURIComponent('Não foi possível obter informações do usuário. Por favor, tente fazer login novamente.');
-                            window.location.href = `/secure/request-access.html?error=${errorMsg}`;
+                            window.location.href = `/secure/request-access.html?error=${errorMsg}&email=${encodeURIComponent(savedEmail)}`;
                             return;
                         }
                     } else {
                         console.warn('⚠️ Erro ao verificar autorização, assumindo primeiro acesso');
                         // Se não conseguir verificar, assumir primeiro acesso
                         const errorMsg = encodeURIComponent('Não foi possível obter informações do usuário. Por favor, tente fazer login novamente.');
-                        window.location.href = `/secure/request-access.html?error=${errorMsg}`;
+                        window.location.href = `/secure/request-access.html?error=${errorMsg}${savedEmail ? '&email=' + encodeURIComponent(savedEmail) : ''}`;
                         return;
                     }
                 } catch (checkError) {
                     console.error('❌ Erro ao verificar autorização:', checkError);
                     // Em caso de erro na verificação, redirecionar para primeiro acesso
                     const errorMsg = encodeURIComponent('Não foi possível verificar autorização. Por favor, tente fazer login novamente.');
-                    window.location.href = `/secure/request-access.html?error=${errorMsg}`;
+                    window.location.href = `/secure/request-access.html?error=${errorMsg}${savedEmail ? '&email=' + encodeURIComponent(savedEmail) : ''}`;
                     return;
                 }
             } else {

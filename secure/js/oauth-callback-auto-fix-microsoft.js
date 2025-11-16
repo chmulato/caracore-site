@@ -136,30 +136,127 @@
             
             const tokenEndpoint = `${backendUrl}/oauth/microsoft/token`;
             
-            // Tentar obter code_verifier do estado OIDC
-            let codeVerifier = null;
+            // AGUARDAR UM POUCO PARA O OIDCAuth PROCESSAR O CALLBACK PRIMEIRO
+            // Isso garante que o estado OIDC seja criado antes de tentarmos buscar o code_verifier
+            await new Promise(resolve => setTimeout(resolve, 1000));
             
+            // BUSCAR code_verifier DE TODAS AS FONTES POSSÍVEIS
+            let codeVerifier = null;
+            let codeVerifierSource = null;
+            
+            // PRIORIDADE 0: Tentar obter do OIDCAuth diretamente (se disponível)
+            if (window.OIDCAuth && typeof window.OIDCAuth.getState === 'function') {
+                try {
+                    const oidcState = window.OIDCAuth.getState(params.state);
+                    if (oidcState && oidcState.code_verifier) {
+                        codeVerifier = oidcState.code_verifier;
+                        codeVerifierSource = 'OIDCAuth.getState()';
+                        console.log('✅ code_verifier obtido do OIDCAuth diretamente');
+                    }
+                } catch (e) {
+                    console.debug('OIDCAuth.getState não disponível ou falhou:', e);
+                }
+            }
+            
+            // PRIORIDADE 1: Estado OIDC usando o state do callback (mais confiável)
             if (params.state) {
                 try {
                     const stateKey = `oidc.${params.state}`;
-                    const oidcState = sessionStorage.getItem(stateKey);
+                    // Tentar sessionStorage primeiro
+                    let oidcState = sessionStorage.getItem(stateKey);
+                    if (!oidcState) {
+                        // Tentar localStorage
+                        oidcState = localStorage.getItem(stateKey);
+                    }
                     if (oidcState) {
                         const stateData = JSON.parse(oidcState);
                         if (stateData.code_verifier) {
                             codeVerifier = stateData.code_verifier;
-                            console.log('✅ code_verifier encontrado no estado OIDC');
+                            const storageType = sessionStorage.getItem(stateKey) ? 'sessionStorage' : 'localStorage';
+                            codeVerifierSource = `oidc.${params.state} (${storageType})`;
+                            console.log('✅ code_verifier encontrado no estado OIDC:', {
+                                state: params.state,
+                                length: codeVerifier.length,
+                                source: codeVerifierSource
+                            });
                         }
                     }
                 } catch (e) {
-                    console.error('❌ Erro ao ler estado OIDC:', e);
+                    console.warn('⚠️ Erro ao ler estado OIDC:', e);
                 }
             }
             
+            // PRIORIDADE 2: Buscar em todas as chaves oidc.* no sessionStorage/localStorage
+            if (!codeVerifier) {
+                try {
+                    // Buscar em sessionStorage
+                    for (let i = 0; i < sessionStorage.length; i++) {
+                        const key = sessionStorage.key(i);
+                        if (key && key.startsWith('oidc.')) {
+                            try {
+                                const stateData = JSON.parse(sessionStorage.getItem(key));
+                                if (stateData && stateData.code_verifier) {
+                                    codeVerifier = stateData.code_verifier;
+                                    codeVerifierSource = `${key} (sessionStorage)`;
+                                    console.log('✅ code_verifier encontrado em:', codeVerifierSource);
+                                    break;
+                                }
+                            } catch (e) {
+                                // Ignorar chaves que não são JSON válido
+                            }
+                        }
+                    }
+                    
+                    // Se não encontrou, buscar em localStorage
+                    if (!codeVerifier) {
+                        for (let i = 0; i < localStorage.length; i++) {
+                            const key = localStorage.key(i);
+                            if (key && key.startsWith('oidc.')) {
+                                try {
+                                    const stateData = JSON.parse(localStorage.getItem(key));
+                                    if (stateData && stateData.code_verifier) {
+                                        codeVerifier = stateData.code_verifier;
+                                        codeVerifierSource = `${key} (localStorage)`;
+                                        console.log('✅ code_verifier encontrado em:', codeVerifierSource);
+                                        break;
+                                    }
+                                } catch (e) {
+                                    // Ignorar chaves que não são JSON válido
+                                }
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn('⚠️ Erro ao buscar code_verifier em chaves oidc.*:', e);
+                }
+            }
+            
+            // PRIORIDADE 3: Chaves específicas do Microsoft/Entra
             if (!codeVerifier) {
                 codeVerifier = sessionStorage.getItem('microsoft_pkce_verifier') || 
                              localStorage.getItem('microsoft_pkce_verifier') ||
                              sessionStorage.getItem('entra_pkce_verifier') || 
                              localStorage.getItem('entra_pkce_verifier');
+                if (codeVerifier) {
+                    codeVerifierSource = 'microsoft_pkce_verifier ou entra_pkce_verifier';
+                    console.log('✅ code_verifier encontrado em:', codeVerifierSource);
+                }
+            }
+            
+            // PRIORIDADE 4: Chaves genéricas
+            if (!codeVerifier) {
+                codeVerifier = sessionStorage.getItem('oidc.pkce.code_verifier') || 
+                             localStorage.getItem('oidc.pkce.code_verifier');
+                if (codeVerifier) {
+                    codeVerifierSource = 'oidc.pkce.code_verifier';
+                    console.log('✅ code_verifier encontrado em:', codeVerifierSource);
+                }
+            }
+            
+            if (!codeVerifier) {
+                console.warn('⚠️ code_verifier NÃO encontrado em nenhuma fonte. Tentando sem PKCE...');
+                console.log('🔍 Chaves disponíveis no sessionStorage:', Object.keys(sessionStorage).filter(k => k.includes('oidc') || k.includes('microsoft') || k.includes('entra')));
+                console.log('🔍 Chaves disponíveis no localStorage:', Object.keys(localStorage).filter(k => k.includes('oidc') || k.includes('microsoft') || k.includes('entra')));
             }
             
             // Extrair tenant
@@ -188,13 +285,23 @@
             
             if (codeVerifier) {
                 requestBody.code_verifier = codeVerifier;
+                console.log('✅ code_verifier será enviado ao backend:', {
+                    source: codeVerifierSource,
+                    length: codeVerifier.length,
+                    preview: codeVerifier.substring(0, 10) + '...'
+                });
+            } else {
+                console.warn('⚠️ ATENÇÃO: code_verifier NÃO será enviado. O backend pode rejeitar a requisição.');
             }
             
             console.log('📤 Enviando requisição para backend Microsoft:', {
                 endpoint: tokenEndpoint,
                 hasCode: !!params.code,
+                codeLength: params.code?.length || 0,
                 hasCodeVerifier: !!codeVerifier,
-                tenant: tenant
+                codeVerifierSource: codeVerifierSource || 'NÃO ENCONTRADO',
+                tenant: tenant,
+                redirect_uri: requestBody.redirect_uri
             });
             
             const response = await fetch(tokenEndpoint, {

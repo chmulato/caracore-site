@@ -151,7 +151,8 @@
                         const stateData = JSON.parse(oidcState);
                         if (stateData.code_verifier) {
                             codeVerifier = stateData.code_verifier;
-                            codeVerifierSource = `oidc.${params.state} (${oidcState.includes('sessionStorage') ? 'sessionStorage' : 'localStorage'})`;
+                            const storageType = sessionStorage.getItem(stateKey) ? 'sessionStorage' : 'localStorage';
+                            codeVerifierSource = `oidc.${params.state} (${storageType})`;
                             console.log('✅ code_verifier encontrado no estado OIDC:', {
                                 state: params.state,
                                 length: codeVerifier.length,

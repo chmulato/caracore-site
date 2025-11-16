@@ -50,7 +50,6 @@
   <script defer src="/secure/js/dynamic-config.js?v=20250930"></script>
   <script defer src="/secure/js/user-session-manager.js?v=20251115"></script>
   <script defer src="/secure/js/token-manager.js?v=20251115"></script>
-  <script defer src="/secure/js/oauth-callback-auto-fix.js?v=20251011"></script>
   <script defer src="/secure/js/error-handler.js?v=20251012"></script>
   <script defer src="/secure/js/enhanced-error-handler.js?v=20251012"></script>
   <script defer src="/secure/js/auth-standalone.js?v=20251001b"></script>
@@ -59,7 +58,9 @@
   
   <!-- Sistema de Autorização - Fase 4 -->
   <script src="/secure/js/authorization-check.js?v=20251102"></script>
-  <!-- callback-authorization.js deve ser carregado DEPOIS do oauth-callback-auto-fix.js processar -->
-  <script defer src="/secure/js/callback-authorization.js?v=20251115"></script>
+  
+  <!-- Provider Loader - Detecta provider e carrega scripts específicos -->
+  <script src="/secure/js/provider-loader.js?v=20251116"></script>
+  <!-- Scripts específicos do provider serão carregados dinamicamente pelo provider-loader -->
 </body>
 </html>

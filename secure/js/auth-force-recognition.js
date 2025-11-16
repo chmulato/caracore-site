@@ -36,11 +36,80 @@
     }
     
     // Criar perfil de usuário baseado nos dados do storage
-    function getUserProfileFromStorage() {
+    async function getUserProfileFromStorage() {
         try {
+            const provider = sessionStorage.getItem('cara_core_oidc_provider') || 'google';
             const userProfileStr = sessionStorage.getItem('cara_core_user_profile');
+            
             if (userProfileStr) {
-                return JSON.parse(userProfileStr);
+                const profile = JSON.parse(userProfileStr);
+                
+                // VALIDAÇÃO CRÍTICA: Verificar se o email corresponde ao provedor
+                const email = profile.email || profile.preferred_username || '';
+                const emailDomain = email.split('@')[1]?.toLowerCase() || '';
+                
+                // Verificar correspondência entre provider e email
+                const isGoogleProvider = provider === 'google';
+                const isMicrosoftProvider = provider === 'microsoft' || provider === 'entra' || provider === 'azure';
+                
+                const isGmailDomain = emailDomain === 'gmail.com' || emailDomain === 'googlemail.com';
+                const isMicrosoftDomain = emailDomain === 'hotmail.com' || 
+                                         emailDomain === 'outlook.com' || 
+                                         emailDomain === 'live.com' || 
+                                         emailDomain === 'msn.com' ||
+                                         emailDomain.endsWith('.microsoft.com') ||
+                                         emailDomain.endsWith('.microsoftonline.com');
+                
+                // Se há incompatibilidade, tentar obter do OIDCAuth original
+                if ((isGoogleProvider && !isGmailDomain && isMicrosoftDomain) || 
+                    (isMicrosoftProvider && !isMicrosoftDomain && isGmailDomain)) {
+                    console.warn('⚠️ Incompatibilidade detectada entre provider e email:', {
+                        provider: provider,
+                        email: email,
+                        emailDomain: emailDomain
+                    });
+                    
+                    // Limpar dados antigos do storage
+                    console.log('🧹 Limpando dados antigos incompatíveis do storage...');
+                    sessionStorage.removeItem('cara_core_user_profile');
+                    sessionStorage.removeItem('cara_core_id_token');
+                    sessionStorage.removeItem('cara_core_access_token');
+                    localStorage.removeItem('user_email');
+                    localStorage.removeItem('auth_user_email');
+                    
+                    // Tentar obter do OIDCAuth original se disponível
+                    if (window.OIDCAuth && window.OIDCAuth._originalMethods && window.OIDCAuth._originalMethods.getUserProfile) {
+                        console.log('🔄 Tentando obter perfil do OIDCAuth original...');
+                        try {
+                            const originalProfile = await window.OIDCAuth._originalMethods.getUserProfile();
+                            if (originalProfile && originalProfile.email) {
+                                const originalEmailDomain = originalProfile.email.split('@')[1]?.toLowerCase() || '';
+                                const originalIsGmail = originalEmailDomain === 'gmail.com' || originalEmailDomain === 'googlemail.com';
+                                const originalIsMicrosoft = originalEmailDomain === 'hotmail.com' || 
+                                                           originalEmailDomain === 'outlook.com' || 
+                                                           originalEmailDomain === 'live.com' || 
+                                                           originalEmailDomain === 'msn.com';
+                                
+                                // Verificar se o perfil original é compatível
+                                if ((isGoogleProvider && originalIsGmail) || 
+                                    (isMicrosoftProvider && originalIsMicrosoft)) {
+                                    console.log('✅ Perfil original é compatível, usando:', originalProfile.email);
+                                    return originalProfile;
+                                } else {
+                                    console.warn('⚠️ Perfil original também é incompatível');
+                                }
+                            }
+                        } catch (e) {
+                            console.warn('⚠️ Erro ao obter perfil original:', e);
+                        }
+                    }
+                    
+                    // Se não conseguir, retornar null para forçar nova autenticação
+                    console.error('❌ Não foi possível obter perfil válido. Usuário precisa fazer login novamente.');
+                    return null;
+                }
+                
+                return profile;
             }
         } catch (e) {
             console.warn('Erro ao parsear perfil do usuário:', e);
@@ -81,16 +150,40 @@
         };
         
         // Override getUserProfile
-        window.OIDCAuth.getUserProfile = function() {
-            const profile = getUserProfileFromStorage();
+        window.OIDCAuth.getUserProfile = async function() {
+            const profile = await getUserProfileFromStorage();
+            if (profile === null) {
+                // Se retornou null, significa que há incompatibilidade e dados foram limpos
+                // Tentar obter do método original
+                if (window.OIDCAuth._originalMethods && window.OIDCAuth._originalMethods.getUserProfile) {
+                    console.log('🔄 Tentando obter perfil do método original após limpeza...');
+                    return window.OIDCAuth._originalMethods.getUserProfile();
+                }
+                // Se não houver método original, retornar perfil vazio
+                return null;
+            }
             console.log('👤 getUserProfile() override:', profile);
-            return Promise.resolve(profile);
+            return profile;
         };
         
         // Override getStoredUserInfo
-        window.OIDCAuth.getStoredUserInfo = function() {
+        window.OIDCAuth.getStoredUserInfo = async function() {
             const provider = sessionStorage.getItem('cara_core_oidc_provider');
-            const profile = getUserProfileFromStorage();
+            const profile = await getUserProfileFromStorage();
+            
+            if (!profile) {
+                // Se não há perfil válido, tentar obter do método original
+                if (window.OIDCAuth._originalMethods && window.OIDCAuth._originalMethods.getStoredUserInfo) {
+                    return window.OIDCAuth._originalMethods.getStoredUserInfo();
+                }
+                return {
+                    provider: provider || 'google',
+                    email: null,
+                    name: null,
+                    lastLogin: null
+                };
+            }
+            
             const info = {
                 provider: provider,
                 email: profile.email,

@@ -601,6 +601,44 @@
         
         const userId = realUserData.profile?.sub || realUserData.profile?.oid || `${provider}_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
         
+        // VALIDAÇÃO CRÍTICA: Verificar se o email corresponde ao provider
+        const email = realUserData.email || '';
+        const emailDomain = email.split('@')[1]?.toLowerCase() || '';
+        const isGoogleProvider = provider === 'google';
+        const isMicrosoftProvider = provider === 'microsoft' || provider === 'entra' || provider === 'azure';
+        
+        const isGmailDomain = emailDomain === 'gmail.com' || emailDomain === 'googlemail.com';
+        const isMicrosoftDomain = emailDomain === 'hotmail.com' || 
+                                 emailDomain === 'outlook.com' || 
+                                 emailDomain === 'live.com' || 
+                                 emailDomain === 'msn.com' ||
+                                 emailDomain.endsWith('.microsoft.com') ||
+                                 emailDomain.endsWith('.microsoftonline.com');
+        
+        // Verificar incompatibilidade
+        if ((isGoogleProvider && !isGmailDomain && isMicrosoftDomain) || 
+            (isMicrosoftProvider && !isMicrosoftDomain && isGmailDomain)) {
+            console.error('❌ ERRO CRÍTICO: Incompatibilidade entre provider e email!', {
+                provider: provider,
+                email: email,
+                emailDomain: emailDomain,
+                isGoogleProvider: isGoogleProvider,
+                isMicrosoftProvider: isMicrosoftProvider,
+                isGmailDomain: isGmailDomain,
+                isMicrosoftDomain: isMicrosoftDomain
+            });
+            
+            // Limpar dados antigos do storage antes de continuar
+            console.log('🧹 Limpando dados antigos do storage...');
+            sessionStorage.removeItem('cara_core_user_profile');
+            sessionStorage.removeItem('cara_core_id_token');
+            sessionStorage.removeItem('cara_core_access_token');
+            localStorage.removeItem('user_email');
+            localStorage.removeItem('auth_user_email');
+            
+            throw new Error(`Incompatibilidade detectada: Provider ${provider} não corresponde ao email ${email}. Por favor, faça logout e tente novamente.`);
+        }
+        
         let userProfile;
         if (provider === 'entra' || provider === 'azure' || provider === 'microsoft') {
             userProfile = {

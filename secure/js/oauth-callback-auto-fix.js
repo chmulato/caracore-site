@@ -792,6 +792,45 @@
             const provider = detectProvider(params.code);
             console.log(`🔍 Provider detectado: ${provider}`);
             
+            // LIMPAR DADOS ANTIGOS ANTES DE PROCESSAR (especialmente se provider mudou)
+            const previousProvider = localStorage.getItem('auth_provider');
+            const previousEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+            
+            if (previousProvider && previousProvider !== provider) {
+                console.log('🔄 Provider mudou de', previousProvider, 'para', provider, '- limpando dados antigos...');
+                // Limpar dados do provider anterior
+                sessionStorage.removeItem('cara_core_user_profile');
+                sessionStorage.removeItem('cara_core_id_token');
+                sessionStorage.removeItem('cara_core_access_token');
+                localStorage.removeItem('user_email');
+                localStorage.removeItem('auth_user_email');
+                localStorage.removeItem('cara_core_user_profile');
+            } else if (previousEmail) {
+                // Validar compatibilidade do email anterior com o novo provider
+                const emailDomain = previousEmail.toLowerCase().split('@')[1];
+                const isGoogleProvider = provider === 'google';
+                const isMicrosoftProvider = provider === 'microsoft' || provider === 'entra';
+                const isGmailDomain = emailDomain === 'gmail.com' || emailDomain === 'googlemail.com';
+                const isMicrosoftDomain = emailDomain === 'hotmail.com' || 
+                                       emailDomain === 'outlook.com' || 
+                                       emailDomain === 'live.com' || 
+                                       emailDomain === 'msn.com';
+                
+                // Se incompatível, limpar dados antigos
+                if ((isGoogleProvider && isMicrosoftDomain) || (isMicrosoftProvider && isGmailDomain)) {
+                    console.warn('⚠️ Email anterior incompatível com novo provider - limpando dados:', {
+                        previousEmail: previousEmail,
+                        newProvider: provider
+                    });
+                    sessionStorage.removeItem('cara_core_user_profile');
+                    sessionStorage.removeItem('cara_core_id_token');
+                    sessionStorage.removeItem('cara_core_access_token');
+                    localStorage.removeItem('user_email');
+                    localStorage.removeItem('auth_user_email');
+                    localStorage.removeItem('cara_core_user_profile');
+                }
+            }
+            
             // PRIMEIRO: Tentar processar callback OAuth usando auth-standalone se disponível
             if (window.OIDCAuth && params.code && params.state) {
                 console.log('🔄 Tentando processar callback com OIDCAuth...');
@@ -871,8 +910,37 @@
                         const expiresAt = Math.floor(Date.now() / 1000) + expiresIn;
                         const userEmail = user.profile.email || user.profile.preferred_username;
                         
+                        // VALIDAÇÃO CRÍTICA: Verificar compatibilidade entre provider e email ANTES de salvar
+                        if (userEmail) {
+                            const emailDomain = userEmail.toLowerCase().split('@')[1];
+                            const isGoogleProvider = provider === 'google';
+                            const isMicrosoftProvider = provider === 'microsoft' || provider === 'entra';
+                            const isGmailDomain = emailDomain === 'gmail.com' || emailDomain === 'googlemail.com';
+                            const isMicrosoftDomain = emailDomain === 'hotmail.com' || 
+                                                     emailDomain === 'outlook.com' || 
+                                                     emailDomain === 'live.com' || 
+                                                     emailDomain === 'msn.com';
+                            
+                            if ((isGoogleProvider && isMicrosoftDomain) || (isMicrosoftProvider && isGmailDomain)) {
+                                console.error('❌ ERRO CRÍTICO: Email incompatível com provider!', {
+                                    provider: provider,
+                                    email: userEmail,
+                                    emailDomain: emailDomain
+                                });
+                                // Limpar dados antigos e forçar novo login
+                                sessionStorage.removeItem('cara_core_user_profile');
+                                sessionStorage.removeItem('cara_core_id_token');
+                                sessionStorage.removeItem('cara_core_access_token');
+                                localStorage.removeItem('user_email');
+                                localStorage.removeItem('auth_user_email');
+                                localStorage.removeItem('cara_core_user_profile');
+                                throw new Error(`Email ${userEmail} não corresponde ao provider ${provider}. Por favor, faça logout e tente novamente.`);
+                            }
+                        }
+                        
                         console.log('💾 Salvando dados no localStorage...', {
                             email: userEmail,
+                            provider: provider,
                             hasAccessToken: !!user.access_token,
                             hasRefreshToken: !!user.refresh_token,
                             expiresAt: expiresAt

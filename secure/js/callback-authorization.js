@@ -108,8 +108,31 @@ document.addEventListener('DOMContentLoaded', function() {
           });
         } catch (authError) {
           console.error('❌ Callback: Erro ao verificar autorização:', authError);
-          // Em caso de erro, redirecionar para primeiro acesso
-          window.location.href = `/secure/first-access.html?email=${encodeURIComponent(userEmail)}`;
+          // Em caso de erro, verificar se usuário está autorizado antes de redirecionar
+          try {
+            const backendUrl = window.location.hostname === 'localhost' 
+              ? 'http://localhost:5051'
+              : 'https://caracore-backend-docker.azurewebsites.net';
+            
+            const authCheck = await fetch(`${backendUrl}/api/check-authorization`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ email: userEmail, provider: provider })
+            });
+            
+            if (authCheck.ok) {
+              const authData = await authCheck.json();
+              if (authData.authorized && !authData.inactive) {
+                console.log('✅ Usuário autorizado encontrado, redirecionando para área restrita');
+                window.location.href = '/secure/restrita.html';
+                return;
+              }
+            }
+          } catch (checkError) {
+            console.warn('⚠️ Não foi possível verificar autorização:', checkError);
+          }
+          // Se não autorizado ou erro na verificação, redirecionar para solicitação de acesso
+          window.location.href = `/secure/request-access.html?email=${encodeURIComponent(userEmail)}`;
         }
       } else {
         // Sem email, redirecionar para login

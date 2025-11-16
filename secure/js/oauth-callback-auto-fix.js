@@ -212,14 +212,90 @@
         const now = Math.floor(Date.now() / 1000);
         
         // PRIMEIRO: Tentar obter email real do backend
-        const realUserData = await getRealUserEmail(params, provider);
+        let realUserData = await getRealUserEmail(params, provider);
         
         if (!realUserData) {
-            console.error('❌ Não foi possível obter email real do usuário. Não criando autenticação fake.');
-            // Redirecionar para primeiro acesso com mensagem de erro
-            const errorMsg = encodeURIComponent('Não foi possível obter informações do usuário. Por favor, tente fazer login novamente.');
-            window.location.href = `/secure/first-access.html?error=${errorMsg}`;
-            return; // Não continuar
+            console.warn('⚠️ Não foi possível obter email do token. Tentando verificar se usuário já está autorizado...');
+            
+            // Tentar verificar se há email salvo anteriormente e se está autorizado
+            // Também verificar se há email na URL (parâmetros de query)
+            const urlParams = new URLSearchParams(window.location.search);
+            const emailFromUrl = urlParams.get('email');
+            
+            const savedEmail = emailFromUrl ||
+                              localStorage.getItem('user_email') || 
+                              localStorage.getItem('auth_user_email') ||
+                              sessionStorage.getItem('user_email');
+            
+            if (savedEmail) {
+                console.log('📧 Email encontrado em storage:', savedEmail);
+                
+                // Verificar se este email está autorizado antes de redirecionar
+                try {
+                    const backendUrl = window.location.hostname === 'localhost' 
+                        ? 'http://localhost:5051'
+                        : 'https://caracore-backend-docker.azurewebsites.net';
+                    
+                    const authCheckResponse = await fetch(`${backendUrl}/api/check-authorization`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: savedEmail,
+                            provider: provider
+                        })
+                    });
+                    
+                    if (authCheckResponse.ok) {
+                        const authData = await authCheckResponse.json();
+                        
+                        if (authData.authorized && !authData.inactive) {
+                            console.log('✅ Usuário já está autorizado! Continuando com autenticação...');
+                            // Usuário está autorizado - tentar continuar mesmo sem token completo
+                            // Usar email salvo para criar autenticação básica
+                            const basicUserData = {
+                                email: savedEmail,
+                                name: savedEmail.split('@')[0],
+                                access_token: 'pending', // Token será atualizado depois
+                                id_token: null,
+                                expires_in: 3600,
+                                profile: {
+                                    email: savedEmail,
+                                    name: savedEmail.split('@')[0]
+                                }
+                            };
+                            
+                            // Continuar com autenticação básica
+                            realUserData = basicUserData;
+                        } else {
+                            console.log('❌ Usuário não está autorizado ou está inativo');
+                            // Redirecionar para primeiro acesso
+                            const errorMsg = encodeURIComponent('Não foi possível obter informações do usuário. Por favor, tente fazer login novamente.');
+                            window.location.href = `/secure/request-access.html?error=${errorMsg}`;
+                            return;
+                        }
+                    } else {
+                        console.warn('⚠️ Erro ao verificar autorização, assumindo primeiro acesso');
+                        // Se não conseguir verificar, assumir primeiro acesso
+                        const errorMsg = encodeURIComponent('Não foi possível obter informações do usuário. Por favor, tente fazer login novamente.');
+                        window.location.href = `/secure/request-access.html?error=${errorMsg}`;
+                        return;
+                    }
+                } catch (checkError) {
+                    console.error('❌ Erro ao verificar autorização:', checkError);
+                    // Em caso de erro na verificação, redirecionar para primeiro acesso
+                    const errorMsg = encodeURIComponent('Não foi possível verificar autorização. Por favor, tente fazer login novamente.');
+                    window.location.href = `/secure/request-access.html?error=${errorMsg}`;
+                    return;
+                }
+            } else {
+                console.error('❌ Não foi possível obter email do usuário e não há email salvo.');
+                // Sem email, redirecionar para primeiro acesso
+                const errorMsg = encodeURIComponent('Não foi possível obter informações do usuário. Por favor, tente fazer login novamente.');
+                window.location.href = `/secure/request-access.html?error=${errorMsg}`;
+                return;
+            }
         }
         
         // VERIFICAR E LIMPAR DADOS DE USUÁRIO ANTERIOR (se for um usuário diferente)

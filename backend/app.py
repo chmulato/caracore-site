@@ -1039,10 +1039,20 @@ def create_app() -> Flask:
             logger.info("PKCE validation successful (Microsoft)")
 
         if not azure_client_id or not azure_client_secret:
-            logger.error("Credenciais Microsoft ausentes no ambiente - respondendo erro 500")
+            logger.error(
+                "Credenciais Microsoft ausentes no ambiente - respondendo erro 500. "
+                "AZURE_CLIENT_ID=%s, AZURE_CLIENT_SECRET=%s",
+                "presente" if azure_client_id else "AUSENTE",
+                "presente" if azure_client_secret else "AUSENTE"
+            )
             resp = make_response(jsonify({
                 "error": "server_error",
-                "error_description": "Server not configured with Microsoft Entra client credentials"
+                "error_description": "Server not configured with Microsoft Entra client credentials",
+                "details": {
+                    "azure_client_id_configured": bool(azure_client_id),
+                    "azure_client_secret_configured": bool(azure_client_secret),
+                    "hint": "Configure AZURE_CLIENT_ID and AZURE_CLIENT_SECRET environment variables"
+                }
             }), 500)
             return add_cors(resp)
 

@@ -577,6 +577,77 @@ def create_app() -> Flask:
         """
         return add_cors(make_response(jsonify({"status": "ok"}), 200))
 
+    @app.route("/health/oauth/microsoft", methods=["GET"])
+    def health_oauth_microsoft():
+        """
+        Endpoint de diagnóstico específico para Microsoft OAuth.
+        Verifica se todas as variáveis de ambiente necessárias estão configuradas.
+        Não expõe valores dos secrets, apenas indica se estão presentes.
+        """
+        from datetime import datetime
+        
+        required_vars = {
+            "AZURE_CLIENT_ID": os.getenv("AZURE_CLIENT_ID"),
+            "AZURE_CLIENT_SECRET": os.getenv("AZURE_CLIENT_SECRET"),
+            "AZURE_TENANT_ID": os.getenv("AZURE_TENANT_ID"),
+        }
+        
+        optional_vars = {
+            "AZURE_SCOPE": os.getenv("AZURE_SCOPE"),
+            "AZURE_TOKEN_ENDPOINT": os.getenv("AZURE_TOKEN_ENDPOINT"),
+        }
+        
+        # Verificar status de cada variável
+        var_status = {}
+        all_required_present = True
+        
+        for var_name, var_value in required_vars.items():
+            is_present = bool(var_value)
+            var_status[var_name] = {
+                "configured": is_present,
+                "value_length": len(var_value) if var_value else 0,
+                "status": "ok" if is_present else "missing"
+            }
+            if not is_present:
+                all_required_present = False
+        
+        for var_name, var_value in optional_vars.items():
+            is_present = bool(var_value)
+            var_status[var_name] = {
+                "configured": is_present,
+                "value": var_value if is_present else None,
+                "status": "ok" if is_present else "using_default"
+            }
+        
+        # Resolver token endpoint
+        tenant_value = required_vars.get("AZURE_TENANT_ID") or "common"
+        token_endpoint = resolve_azure_token_endpoint(None)
+        
+        # Status geral
+        overall_status = "ok" if all_required_present else "error"
+        
+        response_data = {
+            "status": overall_status,
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "microsoft_oauth": {
+                "required_variables": var_status,
+                "token_endpoint": token_endpoint,
+                "tenant": tenant_value,
+                "all_required_configured": all_required_present
+            },
+            "diagnosis": {
+                "message": "All required Microsoft OAuth variables are configured" if all_required_present 
+                          else "Some required Microsoft OAuth variables are missing",
+                "action_required": not all_required_present,
+                "missing_variables": [var for var, status in var_status.items() 
+                                     if var in required_vars and not status["configured"]]
+            }
+        }
+        
+        status_code = 200 if all_required_present else 503
+        resp = make_response(jsonify(response_data), status_code)
+        return add_cors(resp)
+    
     @app.route("/health/detailed", methods=["GET"])  # detailed health check
     def health_detailed():
         """
@@ -622,9 +693,9 @@ def create_app() -> Flask:
         required_env_vars = [
             "GOOGLE_CLIENT_ID",
             "GOOGLE_CLIENT_SECRET",
-            "MICROSOFT_CLIENT_ID",
-            "MICROSOFT_CLIENT_SECRET",
-            "MICROSOFT_TENANT_ID",
+            "AZURE_CLIENT_ID",  # Usar AZURE_* em vez de MICROSOFT_*
+            "AZURE_CLIENT_SECRET",
+            "AZURE_TENANT_ID",
         ]
         
         env_status = {}
@@ -644,7 +715,7 @@ def create_app() -> Flask:
         # Apenas verificar se os endpoints estão acessíveis (sem autenticar)
         oauth_providers = {
             "google": "https://accounts.google.com/.well-known/openid-configuration",
-            "microsoft": f"https://login.microsoftonline.com/{os.getenv('MICROSOFT_TENANT_ID', 'common')}/.well-known/openid-configuration"
+            "microsoft": f"https://login.microsoftonline.com/{os.getenv('AZURE_TENANT_ID', 'common')}/.well-known/openid-configuration"
         }
         
         provider_status = {}

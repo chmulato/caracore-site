@@ -51,9 +51,44 @@ class AuthorizationChecker {
      * @returns {Promise<{authorized: boolean, role: string|null, cached: boolean}>}
      */
     async checkAuthorization(userEmail, provider = null, forceCheck = false) {
-        if (!userEmail) {
-            console.warn('AuthorizationChecker: Email não fornecido');
-            return { authorized: false, role: null, cached: false };
+        // Validar email - ignorar placeholders
+        const isValidEmail = (email) => {
+            if (!email) return false;
+            if (email.includes('user@caracore.com.br') || 
+                email.includes('example@') || 
+                email === 'user@caracore.com.br' ||
+                email.includes('placeholder')) {
+                return false;
+            }
+            return email.includes('@') && email.includes('.') && email.length > 5;
+        };
+        
+        if (!userEmail || !isValidEmail(userEmail)) {
+            console.warn('AuthorizationChecker: Email não fornecido ou inválido:', userEmail);
+            // Tentar obter email válido de outras fontes
+            if (window.OIDCAuth) {
+                try {
+                    const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+                    if (isAuthenticated) {
+                        const user = await window.OIDCAuth.getUser();
+                        if (user && user.profile) {
+                            const emailFromOIDC = user.profile.email || user.profile.preferred_username;
+                            if (isValidEmail(emailFromOIDC)) {
+                                userEmail = emailFromOIDC;
+                                provider = provider || user.provider;
+                                console.log('✅ AuthorizationChecker: Email obtido do OIDCAuth:', userEmail);
+                            }
+                        }
+                    }
+                } catch (e) {
+                    console.warn('AuthorizationChecker: Erro ao obter email do OIDCAuth:', e);
+                }
+            }
+            
+            // Se ainda não tem email válido, retornar erro
+            if (!userEmail || !isValidEmail(userEmail)) {
+                return { authorized: false, role: null, cached: false, error: 'Email inválido ou não encontrado' };
+            }
         }
         
         // Verificar cache se não forçar verificação
@@ -98,11 +133,30 @@ class AuthorizationChecker {
      * @returns {Promise<{authorized: boolean, role: string|null}>}
      */
     async performAuthCheck(userEmail, provider) {
+        // Validar email antes de enviar ao backend
+        const isValidEmail = (email) => {
+            if (!email) return false;
+            if (email.includes('user@caracore.com.br') || 
+                email.includes('example@') || 
+                email === 'user@caracore.com.br' ||
+                email.includes('placeholder')) {
+                return false;
+            }
+            return email.includes('@') && email.includes('.') && email.length > 5;
+        };
+        
+        if (!isValidEmail(userEmail)) {
+            throw new Error(`Email inválido: ${userEmail}. Não será enviado ao backend.`);
+        }
+        
         let lastError = null;
         
         for (let attempt = 1; attempt <= this.config.maxRetries; attempt++) {
             try {
-                console.log(`AuthorizationChecker: Tentativa ${attempt}/${this.config.maxRetries} para ${userEmail}`);
+                console.log(`AuthorizationChecker: Tentativa ${attempt}/${this.config.maxRetries} para ${userEmail}`, {
+                    provider: provider,
+                    emailValid: isValidEmail(userEmail)
+                });
                 
                 const response = await fetch(this.config.apiEndpoint, {
                     method: 'POST',
@@ -322,9 +376,29 @@ class AuthorizationChecker {
      * @param {boolean} fromCache - Se veio do cache
      */
     onAuthSuccess(userEmail, role, fromCache) {
+        // Validar email antes de salvar - NUNCA salvar emails falsos
+        const isValidEmail = (email) => {
+            if (!email) return false;
+            if (email.includes('user@caracore.com.br') || 
+                email.includes('example@') || 
+                email === 'user@caracore.com.br' ||
+                email.includes('placeholder') ||
+                email.includes('test@') ||
+                !email.includes('@') ||
+                !email.includes('.')) {
+                return false;
+            }
+            return email.length > 5;
+        };
+        
+        if (!isValidEmail(userEmail)) {
+            console.error('❌ ERRO CRÍTICO: Tentativa de salvar email inválido bloqueada:', userEmail);
+            throw new Error(`Email inválido detectado: ${userEmail}. Não será salvo no storage.`);
+        }
+        
         console.log('AuthorizationChecker: Acesso autorizado para', userEmail, `(role: ${role})`);
         
-        // Armazenar informações do usuário no localStorage
+        // Armazenar informações do usuário no localStorage (apenas se email válido)
         localStorage.setItem('auth_user_email', userEmail);
         localStorage.setItem('auth_user_role', role || 'user');
         localStorage.setItem('auth_check_timestamp', Date.now().toString());
@@ -563,21 +637,106 @@ window.isUserAdmin = authChecker.isAdmin.bind(authChecker);
 
 // Função utilitária para integração fácil
 window.requireAuthorization = async function(options = {}) {
-    const userEmail = options.email || 
-                     localStorage.getItem('user_email') || 
-                     localStorage.getItem('auth_user_email');
+    // Função para validar email
+    const isValidEmail = (email) => {
+        if (!email) return false;
+        // Ignorar emails placeholder ou genéricos
+        if (email.includes('user@caracore.com.br') || 
+            email.includes('example@') || 
+            email === 'user@caracore.com.br' ||
+            email.includes('placeholder')) {
+            return false;
+        }
+        // Validar formato básico de email
+        return email.includes('@') && email.includes('.') && email.length > 5;
+    };
     
-    const provider = options.provider || 
-                    localStorage.getItem('auth_provider') || 
-                    'google';
+    let userEmail = options.email;
+    let provider = options.provider;
     
+    // Validar email fornecido nas opções
+    if (userEmail && !isValidEmail(userEmail)) {
+        console.warn('requireAuthorization: Email fornecido nas opções é inválido:', userEmail);
+        userEmail = null;
+    }
+    
+    // Se não tem email válido nas opções, tentar obter de outras fontes
     if (!userEmail) {
-        console.warn('requireAuthorization: Email do usuário não encontrado');
-        window.location.href = '/';
+        // PRIORIDADE 1: Tentar obter do OIDCAuth (mais confiável)
+        if (window.OIDCAuth) {
+            try {
+                const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+                if (isAuthenticated) {
+                    const user = await window.OIDCAuth.getUser();
+                    if (user && user.profile) {
+                        const emailFromOIDC = user.profile.email || user.profile.preferred_username;
+                        if (isValidEmail(emailFromOIDC)) {
+                            userEmail = emailFromOIDC;
+                            provider = provider || user.provider || localStorage.getItem('auth_provider');
+                            console.log('✅ requireAuthorization: Email obtido do OIDCAuth:', userEmail);
+                        }
+                    }
+                }
+            } catch (e) {
+                console.warn('requireAuthorization: Erro ao obter email do OIDCAuth:', e);
+            }
+        }
+        
+        // PRIORIDADE 2: Tentar obter do localStorage (se OIDC não retornou)
+        if (!userEmail) {
+            const emailFromStorage = localStorage.getItem('user_email') || 
+                                   localStorage.getItem('auth_user_email');
+            if (isValidEmail(emailFromStorage)) {
+                userEmail = emailFromStorage;
+                provider = provider || localStorage.getItem('auth_provider');
+                console.log('✅ requireAuthorization: Email obtido do localStorage:', userEmail);
+            }
+        }
+        
+        // PRIORIDADE 3: Tentar obter do sessionStorage
+        if (!userEmail) {
+            try {
+                const profileStr = sessionStorage.getItem('cara_core_user_profile');
+                if (profileStr) {
+                    const profile = JSON.parse(profileStr);
+                    const emailFromSession = profile.email || profile.preferred_username;
+                    if (isValidEmail(emailFromSession)) {
+                        userEmail = emailFromSession;
+                        provider = provider || profile.provider || localStorage.getItem('auth_provider');
+                        console.log('✅ requireAuthorization: Email obtido do sessionStorage:', userEmail);
+                    }
+                }
+            } catch (e) {
+                // Ignorar erro
+            }
+        }
+    }
+    
+    // Validar provider
+    if (!provider) {
+        provider = localStorage.getItem('auth_provider') || 'google';
+    }
+    
+    if (!userEmail || !isValidEmail(userEmail)) {
+        console.error('requireAuthorization: Email do usuário não encontrado ou inválido', {
+            email: userEmail,
+            sources: {
+                options: options.email,
+                localStorage: localStorage.getItem('user_email') || localStorage.getItem('auth_user_email'),
+                oidc: 'checked'
+            }
+        });
+        window.location.href = '/secure/index.html?error=email_not_found';
         return false;
     }
     
     const showLoading = options.showLoading !== false; // default true
+    
+    console.log('requireAuthorization: Verificando autorização para', {
+        email: userEmail,
+        provider: provider,
+        source: options.email ? 'options' : 'storage/oidc'
+    });
     
     return await authChecker.checkAndRedirect(userEmail, provider, showLoading);
 };

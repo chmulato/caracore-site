@@ -362,10 +362,30 @@
             }
             
             // Atualizar referência do usuário atual
+            // Validar email antes de salvar - NUNCA salvar emails falsos
+            const isValidEmail = (email) => {
+                if (!email) return false;
+                if (email.includes('user@caracore.com.br') || 
+                    email.includes('example@') || 
+                    email === 'user@caracore.com.br' ||
+                    email.includes('placeholder') ||
+                    email.includes('test@') ||
+                    !email.includes('@') ||
+                    !email.includes('.')) {
+                    return false;
+                }
+                return email.length > 5;
+            };
+            
+            if (!isValidEmail(email)) {
+                console.error('❌ ERRO CRÍTICO: Tentativa de salvar email inválido bloqueada:', email);
+                throw new Error(`Email inválido detectado: ${email}. Não será salvo no storage.`);
+            }
+            
             this.currentUserEmail = email;
             this.currentUserProvider = normalizedProvider || 'google';
             
-            // Armazenar referência do usuário atual
+            // Armazenar referência do usuário atual (apenas se email válido)
             try {
                 sessionStorage.setItem('cara_core_user_email', email);
                 if (normalizedProvider) {

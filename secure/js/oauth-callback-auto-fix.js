@@ -639,6 +639,26 @@
             throw new Error(`Incompatibilidade detectada: Provider ${provider} não corresponde ao email ${email}. Por favor, faça logout e tente novamente.`);
         }
         
+        // Validar email ANTES de criar o perfil
+        const isValidEmail = (email) => {
+            if (!email) return false;
+            if (email.includes('user@caracore.com.br') || 
+                email.includes('example@') || 
+                email === 'user@caracore.com.br' ||
+                email.includes('placeholder') ||
+                email.includes('test@') ||
+                !email.includes('@') ||
+                !email.includes('.')) {
+                return false;
+            }
+            return email.length > 5;
+        };
+        
+        if (!isValidEmail(realUserData.email)) {
+            console.error('❌ ERRO CRÍTICO: Email inválido detectado antes de criar perfil:', realUserData.email);
+            throw new Error(`Email inválido: ${realUserData.email}. Não será criado perfil nem salvo no storage.`);
+        }
+        
         let userProfile;
         if (provider === 'entra' || provider === 'azure' || provider === 'microsoft') {
             userProfile = {
@@ -689,7 +709,7 @@
         localStorage.setItem('auth_expires_at', expiresAt.toString());
         localStorage.setItem('auth_last_activity', now.toString());
         
-        // Também salvar no formato OIDC para compatibilidade com auth-standalone
+        // Também salvar no formato OIDC para compatibilidade com auth-standalone (email já validado acima)
         sessionStorage.setItem('cara_core_oidc_provider', provider);
         sessionStorage.setItem('cara_core_id_token', idToken);
         sessionStorage.setItem('cara_core_access_token', accessToken);
@@ -711,7 +731,7 @@
         };
         sessionStorage.setItem('oidc.user', JSON.stringify(oidcUser));
         
-        // Salvar email para authorization-check.js
+        // Salvar email para authorization-check.js (email já validado acima)
         localStorage.setItem('user_email', userProfile.email);
         localStorage.setItem('auth_user_email', userProfile.email);
         
@@ -955,6 +975,26 @@
                             provider: provider === 'entra' ? 'microsoft' : provider,
                             user_id: user.profile.sub || user.profile.oid
                         }));
+                        // Validar email antes de salvar - NUNCA salvar emails falsos
+                        const isValidEmail = (email) => {
+                            if (!email) return false;
+                            if (email.includes('user@caracore.com.br') || 
+                                email.includes('example@') || 
+                                email === 'user@caracore.com.br' ||
+                                email.includes('placeholder') ||
+                                email.includes('test@') ||
+                                !email.includes('@') ||
+                                !email.includes('.')) {
+                                return false;
+                            }
+                            return email.length > 5;
+                        };
+                        
+                        if (!isValidEmail(userEmail)) {
+                            console.error('❌ ERRO CRÍTICO: Tentativa de salvar email inválido bloqueada:', userEmail);
+                            throw new Error(`Email inválido detectado: ${userEmail}. Não será salvo no storage.`);
+                        }
+                        
                         localStorage.setItem('auth_expires_at', expiresAt.toString());
                         localStorage.setItem('auth_last_activity', Math.floor(Date.now() / 1000).toString());
                         localStorage.setItem('user_email', userEmail);

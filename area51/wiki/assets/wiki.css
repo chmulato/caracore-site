@@ -103,10 +103,22 @@ body {
 }
 
 .badge-custom {
+    display: inline-block;
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
     font-weight: 600;
     border-radius: 20px;
+    margin: 0.25rem 0.5rem 0.25rem 0;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.wiki-header .mt-3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .stat-card {

@@ -25,29 +25,90 @@
         }
     };
 
+    /**
+     * Aguardar componente estar disponível e inicializado
+     */
+    async function waitForComponent(componentName, maxWaitTime = 10000) {
+        const startTime = Date.now();
+        
+        // Aguardar componente estar disponível
+        while (!window[componentName]) {
+            if (Date.now() - startTime > maxWaitTime) {
+                throw new Error(`Timeout aguardando ${componentName} (${maxWaitTime}ms)`);
+            }
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+        
+        // Se for OIDCAuth, verificar se precisa inicializar
+        if (componentName === 'OIDCAuth' && window.OIDCAuth) {
+            // Verificar se está inicializado
+            const isInitialized = window.OIDCAuth.isInitialized === true;
+            
+            if (!isInitialized && window.OIDCAuth.initialize) {
+                try {
+                    // Tentar obter provider de várias fontes
+                    const provider = window.OIDCAuth.getLastUsedProvider?.() ||
+                                   localStorage.getItem('cara_core_oidc_provider') || 
+                                   sessionStorage.getItem('cara_core_oidc_provider') ||
+                                   localStorage.getItem('auth_provider') ||
+                                   'google';
+                    
+                    console.log('[AuditDashboard] Inicializando OIDCAuth com provider:', provider);
+                    await window.OIDCAuth.initialize(provider);
+                    console.log('[AuditDashboard] OIDCAuth inicializado com sucesso');
+                } catch (initError) {
+                    console.warn('[AuditDashboard] Erro ao inicializar OIDCAuth:', initError);
+                    // Tentar verificar autenticação mesmo assim - pode funcionar sem inicialização explícita
+                }
+            } else if (isInitialized) {
+                console.log('[AuditDashboard] OIDCAuth já está inicializado');
+            }
+            
+            // Aguardar um pouco mais para garantir que está pronto
+            await new Promise(resolve => setTimeout(resolve, 300));
+        } else {
+            // Para outros componentes, apenas aguardar um pouco
+            await new Promise(resolve => setTimeout(resolve, 200));
+        }
+        
+        return window[componentName];
+    }
+
     // Inicialização
     document.addEventListener('DOMContentLoaded', async () => {
         console.log('[AuditDashboard] Inicializando...');
         
-        // Verificar autenticação antes de carregar
-        const isAuthenticated = await checkAuthentication();
-        if (!isAuthenticated) {
-            console.warn('[AuditDashboard] Usuário não autenticado. Redirecionando...');
-            showError('Você precisa estar autenticado para acessar o dashboard. Redirecionando...');
-            setTimeout(() => {
-                window.location.href = '/';
-            }, 2000);
-            return;
+        try {
+            // Aguardar OIDCAuth estar disponível e inicializado
+            console.log('[AuditDashboard] Aguardando OIDCAuth...');
+            await waitForComponent('OIDCAuth', 10000);
+            console.log('[AuditDashboard] OIDCAuth disponível');
+            
+            // Verificar autenticação antes de carregar
+            const isAuthenticated = await checkAuthentication();
+            if (!isAuthenticated) {
+                console.warn('[AuditDashboard] Usuário não autenticado. Redirecionando...');
+                showError('Você precisa estar autenticado para acessar o dashboard. Redirecionando...');
+                setTimeout(() => {
+                    window.location.href = '/secure/index.html';
+                }, 2000);
+                return;
+            }
+            
+            console.log('[AuditDashboard] Usuário autenticado, carregando dashboard...');
+            
+            // Configurar data inicial (hoje)
+            document.getElementById('dateFilter').value = state.filters.date;
+            
+            // Event listeners
+            setupEventListeners();
+            
+            // Carregar logs iniciais
+            loadLogs();
+        } catch (error) {
+            console.error('[AuditDashboard] Erro na inicialização:', error);
+            showError(`Erro ao inicializar: ${error.message}`);
         }
-        
-        // Configurar data inicial (hoje)
-        document.getElementById('dateFilter').value = state.filters.date;
-        
-        // Event listeners
-        setupEventListeners();
-        
-        // Carregar logs iniciais
-        loadLogs();
     });
 
     /**
@@ -55,29 +116,46 @@
      */
     async function checkAuthentication() {
         try {
-            // Aguardar OIDCAuth estar disponível
-            let attempts = 0;
-            const maxAttempts = 50; // 5 segundos (50 * 100ms)
-            
-            while (!window.OIDCAuth && attempts < maxAttempts) {
-                await new Promise(resolve => setTimeout(resolve, 100));
-                attempts++;
+            // Primeiro, tentar usar OIDCAuth se disponível
+            if (window.OIDCAuth) {
+                try {
+                    const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+                    
+                    if (isAuthenticated) {
+                        console.log('[AuditDashboard] Usuário autenticado via OIDCAuth');
+                        return true;
+                    }
+                } catch (oidcError) {
+                    console.warn('[AuditDashboard] Erro ao verificar via OIDCAuth:', oidcError);
+                    // Continuar para fallback
+                }
             }
             
-            if (!window.OIDCAuth) {
-                console.warn('[AuditDashboard] OIDCAuth não disponível após aguardar');
-                return false;
-            }
+            // Fallback: verificar dados de autenticação no storage
+            // Verificar se há tokens ou dados de usuário no storage
+            const hasIdToken = sessionStorage.getItem('cara_core_id_token') || 
+                             localStorage.getItem('id_token');
+            const hasAccessToken = sessionStorage.getItem('cara_core_access_token') || 
+                                 localStorage.getItem('access_token');
+            const hasUserProfile = sessionStorage.getItem('cara_core_user_profile') ||
+                                 localStorage.getItem('user_email') ||
+                                 localStorage.getItem('auth_user_email');
             
-            // Usar OIDCAuth para verificar autenticação (padrão do sistema)
-            const isAuthenticated = await window.OIDCAuth.isAuthenticated();
-            
-            if (isAuthenticated) {
-                console.log('[AuditDashboard] Usuário autenticado via OIDCAuth');
+            if (hasIdToken || hasAccessToken || hasUserProfile) {
+                console.log('[AuditDashboard] Dados de autenticação encontrados no storage (fallback)');
+                // Verificar se o token não expirou (se houver timestamp)
+                const expiresAt = sessionStorage.getItem('cara_core_expires_at');
+                if (expiresAt) {
+                    const expirationTime = parseInt(expiresAt, 10) * 1000;
+                    if (Date.now() > expirationTime) {
+                        console.warn('[AuditDashboard] Token expirado');
+                        return false;
+                    }
+                }
                 return true;
             }
             
-            console.warn('[AuditDashboard] Usuário não autenticado via OIDCAuth');
+            console.warn('[AuditDashboard] Nenhuma evidência de autenticação encontrada');
             return false;
         } catch (error) {
             console.error('[AuditDashboard] Erro ao verificar autenticação:', error);

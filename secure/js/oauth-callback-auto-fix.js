@@ -45,51 +45,81 @@
         
         console.log(`🔧 Restaurando estado ${provider}: ${state}`);
         
-        // PRIMEIRO: Tentar recuperar o estado original do oidc-client-ts antes de criar um novo
-        let existingState = null;
+        const stateKey = `oidc.${state}`;
+        
+        // PRIMEIRO: Verificar se o estado já existe e está completo (não sobrescrever!)
         try {
-            const existingStateStr = sessionStorage.getItem(`oidc.${state}`) || 
-                                   localStorage.getItem(`oidc.${state}`);
+            const existingStateStr = sessionStorage.getItem(stateKey) || 
+                                   localStorage.getItem(stateKey);
             if (existingStateStr) {
-                existingState = JSON.parse(existingStateStr);
-                console.log('✅ Estado OIDC original encontrado, preservando code_verifier');
+                const existingState = JSON.parse(existingStateStr);
+                
+                // Se o estado já existe e tem code_verifier, NÃO sobrescrever!
+                if (existingState.code_verifier) {
+                    console.log('✅ Estado OIDC original já existe e está completo, NÃO sobrescrevendo');
+                    console.log('📋 Estado existente:', {
+                        hasCodeVerifier: !!existingState.code_verifier,
+                        codeVerifierLength: existingState.code_verifier?.length,
+                        created: existingState.created,
+                        request_type: existingState.request_type
+                    });
+                    return true; // Estado já existe, não precisa restaurar
+                } else {
+                    console.warn('⚠️ Estado OIDC existe mas sem code_verifier, tentando restaurar...');
+                }
+            } else {
+                console.log('❌ Estado OIDC não encontrado, tentando criar/restaurar...');
             }
         } catch (e) {
-            console.debug('Estado OIDC não encontrado ou inválido, criando novo');
+            console.debug('Erro ao verificar estado OIDC existente:', e);
         }
         
+        // Se chegou aqui, o estado não existe ou está incompleto
         const now = Math.floor(Date.now() / 1000);
         const authority = (provider === 'entra' || provider === 'azure') ? 
             'https://login.microsoftonline.com/common' : 
             'https://accounts.google.com';
         
+        // Tentar recuperar code_verifier de fontes alternativas
+        let codeVerifier = null;
+        try {
+            const existingStateStr = sessionStorage.getItem(stateKey) || 
+                                   localStorage.getItem(stateKey);
+            if (existingStateStr) {
+                const existingState = JSON.parse(existingStateStr);
+                codeVerifier = existingState.code_verifier;
+            }
+        } catch (e) {
+            // Ignorar
+        }
+        
+        if (!codeVerifier) {
+            codeVerifier = sessionStorage.getItem(`${provider}_pkce_verifier`) || 
+                          localStorage.getItem(`${provider}_pkce_verifier`);
+        }
+        
         // Estado no formato que oidc-client-ts espera
-        // Se já existe um estado, preservar o code_verifier original
         const stateData = {
             id: state,
-            created: existingState?.created || now,
-            request_type: existingState?.request_type || "si:r",
-            code_verifier: existingState?.code_verifier || 
-                          sessionStorage.getItem(`${provider}_pkce_verifier`) || 
-                          localStorage.getItem(`${provider}_pkce_verifier`) || 
-                          null, // Não gerar um novo se não existir - deixar o oidc-client-ts fazer isso
-            nonce: existingState?.nonce || 
-                   sessionStorage.getItem(`${provider}_oauth_nonce`) || 
+            created: now,
+            request_type: "si:r",
+            code_verifier: codeVerifier || null,
+            nonce: sessionStorage.getItem(`${provider}_oauth_nonce`) || 
                    localStorage.getItem(`${provider}_oauth_nonce`) || 
                    `${provider}_nonce_${Math.random().toString(36).substr(2, 16)}`,
-            authority: existingState?.authority || authority,
-            client_id: existingState?.client_id || window.CARA_CORE_CONFIG?.clientId || `caracore-${provider}-client`
+            authority: authority,
+            client_id: window.CARA_CORE_CONFIG?.clientId || `caracore-${provider}-client`
         };
         
         // Só armazenar se tiver code_verifier (caso contrário, deixar o oidc-client-ts criar)
         if (stateData.code_verifier) {
             // Armazenar no formato esperado pela biblioteca
-            sessionStorage.setItem(`oidc.${state}`, JSON.stringify(stateData));
+            sessionStorage.setItem(stateKey, JSON.stringify(stateData));
             sessionStorage.setItem(`${provider}_oauth_state`, state);
-            console.log(`✅ Estado restaurado: oidc.${state} (com code_verifier preservado)`);
+            console.log(`✅ Estado restaurado: ${stateKey} (com code_verifier preservado)`);
             return true;
         } else {
-            console.warn('⚠️ code_verifier não encontrado no estado. O oidc-client-ts precisará criar um novo.');
+            console.warn('⚠️ code_verifier não encontrado. NÃO criando estado - deixando o oidc-client-ts fazer isso.');
             return false;
         }
     }
@@ -112,30 +142,77 @@
             // 1. PRIORIDADE: Tentar do estado OIDC armazenado usando o state do callback (mais confiável)
             if (params.state) {
                 try {
-                    // Tentar primeiro no formato oidc-client-ts padrão
-                    const oidcState = sessionStorage.getItem(`oidc.${params.state}`);
+                    const stateKey = `oidc.${params.state}`;
+                    console.log(`🔍 Buscando estado OIDC com chave: ${stateKey}`);
+                    
+                    // Tentar primeiro no formato oidc-client-ts padrão (sessionStorage)
+                    const oidcState = sessionStorage.getItem(stateKey);
                     if (oidcState) {
+                        console.log('📦 Estado OIDC encontrado no sessionStorage');
                         const stateData = JSON.parse(oidcState);
+                        console.log('📋 Conteúdo do estado:', {
+                            hasCodeVerifier: !!stateData.code_verifier,
+                            codeVerifierLength: stateData.code_verifier?.length,
+                            created: stateData.created,
+                            request_type: stateData.request_type,
+                            id: stateData.id
+                        });
+                        
                         if (stateData.code_verifier) {
                             codeVerifier = stateData.code_verifier;
-                            console.log('✅ code_verifier encontrado no estado OIDC (state match)');
+                            console.log('✅ code_verifier encontrado no estado OIDC (sessionStorage, state match)');
+                        } else {
+                            console.warn('⚠️ Estado OIDC encontrado mas sem code_verifier');
                         }
+                    } else {
+                        console.log('❌ Estado OIDC não encontrado no sessionStorage');
                     }
                     
                     // Se não encontrou, tentar no localStorage também
                     if (!codeVerifier) {
-                        const oidcStateLocal = localStorage.getItem(`oidc.${params.state}`);
+                        const oidcStateLocal = localStorage.getItem(stateKey);
                         if (oidcStateLocal) {
+                            console.log('📦 Estado OIDC encontrado no localStorage');
                             const stateData = JSON.parse(oidcStateLocal);
                             if (stateData.code_verifier) {
                                 codeVerifier = stateData.code_verifier;
                                 console.log('✅ code_verifier encontrado no localStorage (state match)');
                             }
+                        } else {
+                            console.log('❌ Estado OIDC não encontrado no localStorage');
                         }
                     }
+                    
+                    // DEBUG: Listar todos os estados OIDC disponíveis
+                    console.log('🔍 Estados OIDC disponíveis no sessionStorage:');
+                    let foundStates = 0;
+                    for (let i = 0; i < sessionStorage.length; i++) {
+                        const key = sessionStorage.key(i);
+                        if (key && key.startsWith('oidc.')) {
+                            foundStates++;
+                            try {
+                                const value = sessionStorage.getItem(key);
+                                const data = JSON.parse(value);
+                                console.log(`  - ${key}:`, {
+                                    hasCodeVerifier: !!data.code_verifier,
+                                    codeVerifierLength: data.code_verifier?.length,
+                                    id: data.id,
+                                    matchesCurrentState: data.id === params.state
+                                });
+                            } catch (e) {
+                                console.log(`  - ${key}: (erro ao parsear)`);
+                            }
+                        }
+                    }
+                    if (foundStates === 0) {
+                        console.log('  (nenhum estado OIDC encontrado)');
+                    }
+                    
                 } catch (e) {
-                    console.debug('Erro ao ler estado OIDC:', e);
+                    console.error('❌ Erro ao ler estado OIDC:', e);
                 }
+            } else {
+                console.warn('⚠️ params.state não disponível, não é possível buscar estado OIDC específico');
             }
             
             // 2. Fallback: Tentar do sessionStorage com chave específica do provider
@@ -194,7 +271,22 @@
             if (!codeVerifier) {
                 console.warn('⚠️ code_verifier não encontrado. Tentando sem PKCE...');
             } else {
-                console.log('✅ code_verifier encontrado');
+                console.log('✅ code_verifier encontrado', {
+                    length: codeVerifier.length,
+                    firstChars: codeVerifier.substring(0, 10) + '...',
+                    source: 'verificado acima'
+                });
+                
+                // DEBUG: Verificar se o code_verifier corresponde ao code_challenge da URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const codeChallenge = urlParams.get('code_challenge');
+                if (codeChallenge) {
+                    console.log('🔍 Verificando correspondência PKCE:', {
+                        codeChallenge: codeChallenge.substring(0, 20) + '...',
+                        codeVerifierLength: codeVerifier.length,
+                        note: 'O code_challenge deve ser SHA256(code_verifier) em base64url'
+                    });
+                }
             }
             
             // Extrair tenant da authority usada (para Microsoft)

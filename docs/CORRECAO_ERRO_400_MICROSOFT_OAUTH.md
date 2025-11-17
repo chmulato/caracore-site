@@ -112,7 +112,7 @@ AZURE_TENANT_ID=common
 
 **Opção C: Enviar tenant do frontend para o backend**
 
-O código já implementa isso em `oauth-callback-auto-fix-microsoft.js`:
+O código já implementa isso em `oidc-callback-microsoft.js`:
 ```javascript
 // Extrair tenant da authority
 let tenant = 'consumers';

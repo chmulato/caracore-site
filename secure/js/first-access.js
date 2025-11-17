@@ -146,7 +146,7 @@ class FirstAccessManager {
         const emailFromUrl = urlParams.get('email');
         const errorFromUrl = urlParams.get('error');
         
-        // 2. localStorage (dados salvos pelo auto-fix ou callback)
+        // 2. localStorage (dados salvos pelo callback OIDC)
         const emailFromStorage = localStorage.getItem('user_email') || 
                                 localStorage.getItem('auth_user_email');
         const providerFromStorage = localStorage.getItem('auth_provider');

@@ -48,7 +48,7 @@ Se `PKCE_VALIDATION_ENABLED` estiver habilitado, o `code_verifier` é obrigatór
 
 ### 1. Melhorias no Tratamento de Erro 400
 
-**Arquivo:** `secure/js/oauth-callback-auto-fix.js`
+**Arquivo:** `secure/js/oidc-callback-microsoft.js`
 
 - ✅ Logging detalhado do erro 400
 - ✅ Identificação de possíveis causas

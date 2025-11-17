@@ -28,7 +28,7 @@ AADSTS70000121: The passed grant is from a personal Microsoft account and is req
 
 ### 1. Frontend - Extração e Envio do Tenant
 
-Modificado `secure/js/oauth-callback-auto-fix.js` para:
+Modificado `secure/js/oidc-callback-microsoft.js` para:
 - Extrair o tenant da authority usada na autorização
 - Incluir o parâmetro `tenant` no request para o backend
 

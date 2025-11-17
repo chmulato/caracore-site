@@ -32,7 +32,7 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
       let userEmail = null;
       let accessToken = null;
       
-      // PRIORIDADE 1: Verificar localStorage primeiro (mais rápido, dados do auto-fix)
+      // PRIORIDADE 1: Verificar localStorage primeiro (mais rápido, dados do callback OIDC)
       const emailFromStorage = localStorage.getItem('user_email') || 
                              localStorage.getItem('auth_user_email');
       if (isValidEmail(emailFromStorage)) {
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       console.log('🔄 Callback Microsoft: Aguardando OAuth completar...');
       
-      // Aguardar um pouco mais para garantir que o auto-fix processou
+      // Aguardar um pouco mais para garantir que o callback OIDC processou
       await new Promise(resolve => setTimeout(resolve, 2000));
       
       const { userEmail, provider } = await waitForOAuthCompletion(20000);

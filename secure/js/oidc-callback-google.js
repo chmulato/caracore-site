@@ -1,10 +1,11 @@
-// oauth-callback-auto-fix-google.js - Correção automática para callbacks OAuth Google
+// oidc-callback-google.js - Processamento de callbacks OIDC para Google
+// Implementação completa do fluxo OpenID Connect para autenticação Google
 // Versão específica para Google - otimizada e sem lógica Microsoft
 
 (function() {
     'use strict';
     
-    console.log('🔧 OAuth Auto-Fix Google carregado');
+    console.log('🔐 OIDC Callback Google carregado');
     
     const PROVIDER = 'google';
     
@@ -18,7 +19,7 @@
         return;
     }
     
-    console.log('🎯 Página de callback Google detectada, iniciando auto-fix...');
+    console.log('🎯 Página de callback Google detectada, iniciando processamento OIDC...');
     
     // Função para extrair parâmetros da URL
     function getCallbackParams() {
@@ -634,8 +635,8 @@
         }
     }
     
-    // Processo principal de auto-fix (Google)
-    async function autoFixCallback() {
+    // Processo principal de callback OIDC (Google)
+    async function processOidcCallback() {
         try {
             const params = getCallbackParams();
             console.log('📋 Parâmetros extraídos (Google):', params);
@@ -803,15 +804,15 @@
                 } catch (oidcError) {
                     // Timeout é esperado em alguns casos
                     if (oidcError.message && oidcError.message.includes('Timeout')) {
-                        console.debug('⏳ OIDCAuth timeout (esperado), usando auto-fix como fallback');
+                        console.debug('⏳ OIDCAuth timeout (esperado), usando processamento OIDC alternativo como fallback');
                     } else {
-                        console.warn('⚠️ OIDCAuth não conseguiu processar callback Google, usando auto-fix:', oidcError.message || oidcError);
+                        console.warn('⚠️ OIDCAuth não conseguiu processar callback Google, usando processamento OIDC alternativo:', oidcError.message || oidcError);
                     }
                 }
             }
             
-            // FALLBACK: Se OIDCAuth não funcionou, usar auto-fix
-            console.log('🔧 Usando auto-fix Google como fallback...');
+            // FALLBACK: Se OIDCAuth não funcionou, usar processamento OIDC alternativo
+            console.log('🔧 Usando processamento OIDC alternativo para Google...');
             
             if (!params.code) {
                 console.log('⚠️ Sem código, criando autenticação de emergência...');
@@ -837,7 +838,7 @@
             console.log('🔍 Verificação Google (SessionManager):', verification);
             
             if (verification.hasAccessToken && verification.hasExpiresAt && verification.hasProvider) {
-                console.log('🎉 Auto-fix Google aplicado com sucesso!');
+                console.log('🎉 Callback OIDC Google processado com sucesso!');
                 cleanCallbackUrl();
                 return true;
             } else {
@@ -845,30 +846,31 @@
             }
             
         } catch (error) {
-            console.error('❌ Erro no auto-fix Google:', error);
+            console.error('❌ Erro no processamento OIDC Google:', error);
             return false;
         }
     }
     
-    // Executar auto-fix quando DOM estiver pronto
-    const executeAutoFix = () => {
-        console.log('🚀 Executando auto-fix callback Google...');
-        autoFixCallback().catch(error => {
-            console.error('❌ Erro fatal no auto-fix Google:', error);
+    // Executar processamento OIDC quando DOM estiver pronto
+    const executeOidcCallback = () => {
+        console.log('🚀 Executando processamento OIDC callback Google...');
+        processOidcCallback().catch(error => {
+            console.error('❌ Erro fatal no processamento OIDC Google:', error);
         });
     };
     
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(executeAutoFix, 500);
+            setTimeout(executeOidcCallback, 500);
         });
     } else {
-        setTimeout(executeAutoFix, 500);
+        setTimeout(executeOidcCallback, 500);
     }
     
-    window.oauthAutoFix = autoFixCallback;
+    // Expor função globalmente para compatibilidade (se necessário)
+    window.processOidcCallback = processOidcCallback;
     
-    console.log('🔧 OAuth Auto-Fix Google configurado');
+    console.log('🔐 OIDC Callback Google configurado');
     
 })();
 

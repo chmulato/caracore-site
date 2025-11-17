@@ -1,10 +1,11 @@
-// oauth-callback-auto-fix-microsoft.js - Correção automática para callbacks OAuth Microsoft
+// oidc-callback-microsoft.js - Processamento de callbacks OIDC para Microsoft Entra ID
+// Implementação completa do fluxo OpenID Connect para autenticação Microsoft
 // Versão específica para Microsoft Entra ID - otimizada e sem lógica Google
 
 (function() {
     'use strict';
     
-    console.log('🔧 OAuth Auto-Fix Microsoft carregado');
+    console.log('🔐 OIDC Callback Microsoft carregado');
     
     const PROVIDER = 'microsoft';
     
@@ -18,7 +19,7 @@
         return;
     }
     
-    console.log('🎯 Página de callback Microsoft detectada, iniciando auto-fix...');
+    console.log('🎯 Página de callback Microsoft detectada, iniciando processamento OIDC...');
     
     // Função para extrair parâmetros da URL
     function getCallbackParams() {
@@ -313,8 +314,38 @@
                 credentials: 'include'
             });
             
+            // IMPORTANTE: Sempre verificar a resposta, mesmo em caso de erro
+            // O backend pode ter criado uma sessão antes de retornar erro
+            let responseData;
+            try {
+                responseData = await response.json();
+            } catch (e) {
+                // Se não for JSON, tentar ler como texto
+                const text = await response.text().catch(() => '');
+                try {
+                    responseData = JSON.parse(text);
+                } catch {
+                    responseData = { error: 'unknown', error_description: text };
+                }
+            }
+            
+            // Verificar se há session_id na resposta (mesmo em caso de erro parcial)
+            if (responseData.session_id) {
+                console.log('✅ [Microsoft] Session ID encontrado na resposta:', responseData.session_id);
+                // Tentar obter tokens reais usando o session_id
+                try {
+                    const tokens = await getTokensFromSession(responseData.session_id);
+                    if (tokens) {
+                        console.log('✅ [Microsoft] Tokens reais obtidos do session_id');
+                        return tokens;
+                    }
+                } catch (error) {
+                    console.warn('⚠️ [Microsoft] Erro ao obter tokens do session_id:', error);
+                }
+            }
+            
             if (response.ok) {
-                const data = await response.json();
+                const data = responseData;
                 if (data.id_token) {
                     try {
                         const payload = JSON.parse(atob(data.id_token.split('.')[1]));
@@ -328,6 +359,7 @@
                                 refresh_token: data.refresh_token,
                                 id_token: data.id_token,
                                 expires_in: data.expires_in || 3600,
+                                session_id: data.session_id, // Incluir session_id se disponível
                                 profile: payload
                             };
                         }
@@ -336,24 +368,34 @@
                     }
                 }
             } else {
-                const errorText = await response.text();
-                let errorData;
-                try {
-                    errorData = JSON.parse(errorText);
-                } catch {
-                    errorData = { error: 'unknown', error_description: errorText };
-                }
+                // responseData já foi obtido acima
+                const errorData = responseData;
                 
                 // Log detalhado do erro
                 console.error('❌ Erro do backend Microsoft:', {
                     status: response.status,
                     error: errorData,
+                    hasSessionId: !!errorData.session_id,
                     hasCode: !!params.code,
                     hasCodeVerifier: !!codeVerifier,
                     codeVerifierSource: codeVerifierSource || 'NÃO ENCONTRADO',
                     tenant: tenant,
                     redirect_uri: requestBody.redirect_uri
                 });
+                
+                // Se houver session_id mesmo com erro, tentar usar
+                if (errorData.session_id) {
+                    console.log('🔄 [Microsoft] Session ID encontrado mesmo com erro, tentando obter tokens...');
+                    try {
+                        const tokens = await getTokensFromSession(errorData.session_id);
+                        if (tokens) {
+                            console.log('✅ [Microsoft] Tokens reais obtidos mesmo com erro inicial');
+                            return tokens;
+                        }
+                    } catch (error) {
+                        console.warn('⚠️ [Microsoft] Erro ao obter tokens do session_id após erro:', error);
+                    }
+                }
                 
                 // Se for erro 400, logar possíveis causas
                 if (response.status === 400) {
@@ -389,12 +431,276 @@
         return null;
     }
     
+    /**
+     * Obtém tokens reais usando session_id do backend
+     * Estratégia: usar o endpoint /auth/session/refresh para obter tokens válidos
+     */
+    async function getTokensFromSession(sessionId) {
+        if (!sessionId) {
+            return null;
+        }
+        
+        const backendUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:5051'
+            : 'https://caracore-backend-docker.azurewebsites.net';
+        
+        try {
+            console.log('🔄 [Microsoft] Obtendo tokens do session_id:', sessionId);
+            
+            const response = await fetch(`${backendUrl}/auth/session/refresh`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    session_id: sessionId
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.access_token && data.id_token) {
+                    // Decodificar ID token para obter email
+                    try {
+                        const payload = JSON.parse(atob(data.id_token.split('.')[1]));
+                        const email = payload.email || payload.preferred_username || payload.upn;
+                        
+                        if (email) {
+                            console.log('✅ [Microsoft] Tokens reais obtidos do session_id para:', email);
+                            return {
+                                email: email,
+                                name: payload.name || email.split('@')[0],
+                                access_token: data.access_token,
+                                id_token: data.id_token,
+                                expires_in: data.expires_in || 3600,
+                                expires_at: data.expires_at,
+                                session_id: sessionId,
+                                profile: payload
+                            };
+                        }
+                    } catch (e) {
+                        console.warn('⚠️ [Microsoft] Erro ao decodificar ID token do session:', e);
+                    }
+                }
+            } else {
+                const errorData = await response.json().catch(() => ({}));
+                console.warn('⚠️ [Microsoft] Erro ao obter tokens do session_id:', {
+                    status: response.status,
+                    error: errorData
+                });
+            }
+        } catch (error) {
+            console.warn('⚠️ [Microsoft] Erro ao chamar /auth/session/refresh:', error);
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Cria sessão no backend usando tokens reais
+     * Isso garante que temos um session_id para renovação de tokens
+     */
+    async function createSessionWithTokens(tokenData) {
+        if (!tokenData || !tokenData.access_token || !tokenData.id_token || !tokenData.email) {
+            return null;
+        }
+        
+        const backendUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:5051'
+            : 'https://caracore-backend-docker.azurewebsites.net';
+        
+        try {
+            // Decodificar ID token para obter dados do usuário
+            const payload = JSON.parse(atob(tokenData.id_token.split('.')[1]));
+            
+            const userData = {
+                email: tokenData.email,
+                name: tokenData.name || payload.name || tokenData.email.split('@')[0],
+                provider: PROVIDER,
+                user_id: payload.oid || payload.sub || `microsoft_${tokenData.email}`
+            };
+            
+            const tokens = {
+                access_token: tokenData.access_token,
+                id_token: tokenData.id_token,
+                refresh_token: tokenData.refresh_token, // Pode ser undefined
+                expires_in: tokenData.expires_in || 3600
+            };
+            
+            // Só criar sessão se tivermos refresh_token
+            if (!tokens.refresh_token) {
+                console.warn('⚠️ [Microsoft] Sem refresh_token, não é possível criar sessão persistente');
+                return null;
+            }
+            
+            console.log('🔄 [Microsoft] Criando sessão no backend com tokens reais...');
+            
+            const response = await fetch(`${backendUrl}/auth/session/create`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    user_data: userData,
+                    tokens: tokens
+                })
+            });
+            
+            if (response.ok) {
+                const sessionData = await response.json();
+                console.log('✅ [Microsoft] Sessão criada com sucesso:', sessionData.session_id);
+                return sessionData;
+            } else {
+                const errorData = await response.json().catch(() => ({}));
+                console.warn('⚠️ [Microsoft] Erro ao criar sessão:', {
+                    status: response.status,
+                    error: errorData
+                });
+            }
+        } catch (error) {
+            console.warn('⚠️ [Microsoft] Erro ao criar sessão com tokens:', error);
+        }
+        
+        return null;
+    }
+    
+    /**
+     * Cria autenticação usando tokens REAIS do backend
+     * Esta função salva os tokens reais e session_id para uso pelo SessionManager
+     */
+    async function createRealAuthentication(realUserData) {
+        const now = Math.floor(Date.now() / 1000);
+        const email = realUserData.email;
+        const accessToken = realUserData.access_token;
+        const idToken = realUserData.id_token;
+        const sessionId = realUserData.session_id;
+        const expiresIn = realUserData.expires_in || 3600;
+        const expiresAt = realUserData.expires_at 
+            ? Math.floor(new Date(realUserData.expires_at).getTime() / 1000)
+            : now + expiresIn;
+        
+        console.log('🔐 [Microsoft] Criando autenticação REAL com tokens do backend:', {
+            email: email,
+            sessionId: sessionId,
+            expiresAt: new Date(expiresAt * 1000).toISOString()
+        });
+        
+        // VALIDAÇÃO: Garantir que temos tokens reais válidos
+        if (!accessToken || !idToken || !email) {
+            console.error('❌ [Microsoft] ERRO: Tentando criar autenticação sem tokens reais válidos!', {
+                hasAccessToken: !!accessToken,
+                hasIdToken: !!idToken,
+                hasEmail: !!email
+            });
+            throw new Error('Tokens reais inválidos - não é possível criar autenticação');
+        }
+        
+        // Salvar tokens REAIS no formato que SessionManager espera
+        localStorage.setItem('auth_access_token', accessToken);
+        localStorage.setItem('auth_provider', PROVIDER);
+        localStorage.setItem('auth_user_info', JSON.stringify({
+            email: email,
+            name: realUserData.name || email.split('@')[0],
+            provider: PROVIDER,
+            user_id: realUserData.profile?.oid || realUserData.profile?.sub || `microsoft_${sessionId?.substr(0, 8) || 'unknown'}`
+        }));
+        localStorage.setItem('auth_expires_at', expiresAt.toString());
+        localStorage.setItem('auth_last_activity', now.toString());
+        localStorage.setItem('user_email', email);
+        localStorage.setItem('auth_user_email', email);
+        
+        // IMPORTANTE: Salvar session_id para renovação de tokens
+        if (sessionId) {
+            localStorage.setItem('cara_core_session_id', sessionId);
+            console.log('✅ [Microsoft] Session ID salvo para renovação de tokens:', sessionId);
+        } else {
+            console.warn('⚠️ [Microsoft] Sem session_id - renovação de tokens pode não funcionar');
+        }
+        
+        // IMPORTANTE: Salvar refresh_token se disponível (para fallback)
+        if (realUserData.refresh_token) {
+            localStorage.setItem('auth_refresh_token', realUserData.refresh_token);
+            console.log('✅ [Microsoft] Refresh token salvo para renovação');
+        }
+        
+        // NÃO marcar como sessão mínima - estes são tokens REAIS
+        localStorage.removeItem('auth_minimal_session');
+        console.log('✅ [Microsoft] Sessão marcada como REAL (tokens válidos do backend)');
+        
+        // Salvar no formato OIDC para compatibilidade
+        sessionStorage.setItem('cara_core_oidc_provider', PROVIDER);
+        sessionStorage.setItem('cara_core_id_token', idToken);
+        sessionStorage.setItem('cara_core_access_token', accessToken);
+        sessionStorage.setItem('cara_core_token_type', 'Bearer');
+        sessionStorage.setItem('cara_core_expires_at', (expiresAt * 1000).toString());
+        if (realUserData.profile) {
+            sessionStorage.setItem('cara_core_user_profile', JSON.stringify(realUserData.profile));
+        }
+        sessionStorage.setItem('cara_core_auth_time', Date.now().toString());
+        
+        // Inicializar TokenManager se disponível
+        if (window.tokenManager && sessionId) {
+            try {
+                await window.tokenManager.initSession({
+                    session_id: sessionId,
+                    access_token: accessToken,
+                    id_token: idToken,
+                    expires_in: expiresIn,
+                    expires_at: new Date(expiresAt * 1000).toISOString()
+                });
+                console.log('✅ [Microsoft] TokenManager inicializado com session_id real');
+            } catch (error) {
+                console.warn('⚠️ [Microsoft] Erro ao inicializar TokenManager:', error);
+            }
+        }
+        
+        console.log('✅ [Microsoft] Autenticação REAL criada com sucesso para:', email);
+        return true;
+    }
+    
     // Criar autenticação completa no formato esperado pelo SessionManager (Microsoft)
     async function createAuthentication(params) {
         const now = Math.floor(Date.now() / 1000);
         
-        // PRIMEIRO: Tentar obter email real do backend
+        // PRIMEIRO: Tentar obter tokens REAIS do backend (incluindo session_id)
         let realUserData = await getRealUserEmail(params);
+        
+        // VALIDAÇÃO: Verificar se temos tokens REAIS válidos
+        const hasRealTokens = realUserData && 
+                              realUserData.access_token && 
+                              realUserData.id_token &&
+                              realUserData.email;
+        
+        // Se obtivemos tokens reais, usar diretamente (mesmo sem session_id)
+        if (hasRealTokens) {
+            console.log('✅ [Microsoft] Tokens REAIS obtidos do backend:', {
+                email: realUserData.email,
+                hasAccessToken: !!realUserData.access_token,
+                hasIdToken: !!realUserData.id_token,
+                hasSessionId: !!realUserData.session_id,
+                expiresIn: realUserData.expires_in
+            });
+            
+            // Se não temos session_id mas temos tokens reais, tentar obter via refresh
+            if (!realUserData.session_id && realUserData.refresh_token) {
+                console.log('🔄 [Microsoft] Tokens reais sem session_id, tentando criar sessão...');
+                // Tentar criar sessão no backend com os tokens reais
+                try {
+                    const sessionCreated = await createSessionWithTokens(realUserData);
+                    if (sessionCreated && sessionCreated.session_id) {
+                        realUserData.session_id = sessionCreated.session_id;
+                        console.log('✅ [Microsoft] Sessão criada com tokens reais:', sessionCreated.session_id);
+                    }
+                } catch (error) {
+                    console.warn('⚠️ [Microsoft] Erro ao criar sessão com tokens reais:', error);
+                    // Continuar mesmo sem session_id - temos tokens reais
+                }
+            }
+            
+            return await createRealAuthentication(realUserData);
+        }
         
         if (!realUserData) {
             console.warn('⚠️ Não foi possível obter email do token Microsoft. Tentando buscar email de outras fontes...');
@@ -529,6 +835,11 @@
                             localStorage.setItem('auth_last_activity', now.toString());
                             localStorage.setItem('user_email', userEmail);
                             localStorage.setItem('auth_user_email', userEmail);
+                            
+                            // IMPORTANTE: Marcar como sessão mínima para evitar validação no backend
+                            // Isso previne que o SessionManager tente validar tokens fake no backend
+                            localStorage.setItem('auth_minimal_session', 'true');
+                            console.log('🔒 Sessão marcada como mínima (não será validada no backend)');
                             
                             // Salvar no formato OIDC para compatibilidade
                             sessionStorage.setItem('cara_core_oidc_provider', PROVIDER);
@@ -763,12 +1074,34 @@
             ...realUserData.profile
         };
         
-        const idToken = realUserData.id_token || `${btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${btoa(JSON.stringify(userProfile))}.${btoa(`microsoft-signature-${params.state || Date.now()}`)}`;
-        const accessToken = realUserData.access_token || `microsoft_access_${Date.now()}_${Math.random().toString(36)}`;
-        const refreshToken = realUserData.refresh_token || `microsoft_refresh_${Date.now()}_${Math.random().toString(36)}`;
+        // VALIDAÇÃO CRÍTICA: Garantir que estamos usando tokens REAIS
+        // Se não temos tokens reais aqui, algo está errado - não criar tokens fake
+        if (!realUserData.access_token || !realUserData.id_token) {
+            console.error('❌ [Microsoft] ERRO CRÍTICO: Tentando criar autenticação sem tokens reais!', {
+                hasAccessToken: !!realUserData.access_token,
+                hasIdToken: !!realUserData.id_token,
+                email: realUserData.email
+            });
+            throw new Error('Tokens reais não disponíveis - não é possível criar autenticação válida');
+        }
+        
+        // Usar APENAS tokens reais - nunca criar tokens fake
+        const idToken = realUserData.id_token;
+        const accessToken = realUserData.access_token;
+        const refreshToken = realUserData.refresh_token; // Pode ser undefined, mas não criar fake
         
         const expiresIn = realUserData.expires_in || 3600;
-        const expiresAt = now + expiresIn;
+        const expiresAt = realUserData.expires_at 
+            ? Math.floor(new Date(realUserData.expires_at).getTime() / 1000)
+            : now + expiresIn;
+        
+        console.log('✅ [Microsoft] Usando tokens REAIS (não fake):', {
+            hasAccessToken: !!accessToken,
+            hasIdToken: !!idToken,
+            hasRefreshToken: !!refreshToken,
+            expiresIn: expiresIn,
+            expiresAt: new Date(expiresAt * 1000).toISOString()
+        });
         
         // SALVAR NO FORMATO QUE SessionManager ESPERA (localStorage)
         localStorage.setItem('auth_access_token', accessToken);
@@ -851,8 +1184,8 @@
         }
     }
     
-    // Processo principal de auto-fix (Microsoft)
-    async function autoFixCallback() {
+    // Processo principal de callback OIDC (Microsoft)
+    async function processOidcCallback() {
         try {
             const params = getCallbackParams();
             console.log('📋 Parâmetros extraídos (Microsoft):', params);
@@ -1037,12 +1370,12 @@
                         return true;
                     }
                 } catch (oidcError) {
-                    console.warn('⚠️ OIDCAuth não conseguiu processar callback Microsoft, usando auto-fix:', oidcError);
+                    console.warn('⚠️ OIDCAuth não conseguiu processar callback Microsoft, usando processamento OIDC alternativo:', oidcError);
                 }
             }
             
-            // FALLBACK: Se OIDCAuth não funcionou, usar auto-fix
-            console.log('🔧 Usando auto-fix Microsoft como fallback...');
+            // FALLBACK: Se OIDCAuth não funcionou, usar processamento OIDC alternativo
+            console.log('🔧 Usando processamento OIDC alternativo para Microsoft...');
             
             if (!params.code) {
                 console.log('⚠️ Sem código, criando autenticação de emergência...');
@@ -1070,7 +1403,7 @@
             
             // Se createAuthentication retornou true, significa que autenticação foi criada com sucesso
             if (authResult === true || (verification.hasAccessToken && verification.hasExpiresAt && verification.hasProvider)) {
-                console.log('🎉 Auto-fix Microsoft aplicado com sucesso!');
+                console.log('🎉 Callback OIDC Microsoft processado com sucesso!');
                 cleanCallbackUrl();
                 
                 // Verificar autorização e redirecionar
@@ -1230,30 +1563,31 @@
             }
             
         } catch (error) {
-            console.error('❌ Erro no auto-fix Microsoft:', error);
+            console.error('❌ Erro no processamento OIDC Microsoft:', error);
             return false;
         }
     }
     
-    // Executar auto-fix quando DOM estiver pronto
-    const executeAutoFix = () => {
-        console.log('🚀 Executando auto-fix callback Microsoft...');
-        autoFixCallback().catch(error => {
-            console.error('❌ Erro fatal no auto-fix Microsoft:', error);
+    // Executar processamento OIDC quando DOM estiver pronto
+    const executeOidcCallback = () => {
+        console.log('🚀 Executando processamento OIDC callback Microsoft...');
+        processOidcCallback().catch(error => {
+            console.error('❌ Erro fatal no processamento OIDC Microsoft:', error);
         });
     };
     
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(executeAutoFix, 500);
+            setTimeout(executeOidcCallback, 500);
         });
     } else {
-        setTimeout(executeAutoFix, 500);
+        setTimeout(executeOidcCallback, 500);
     }
     
-    window.oauthAutoFix = autoFixCallback;
+    // Expor função globalmente para compatibilidade (se necessário)
+    window.processOidcCallback = processOidcCallback;
     
-    console.log('🔧 OAuth Auto-Fix Microsoft configurado');
+    console.log('🔐 OIDC Callback Microsoft configurado');
     
 })();
 

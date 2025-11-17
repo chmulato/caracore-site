@@ -103,28 +103,28 @@
         const version = '?v=20251116';
         
         if (provider === 'google') {
-            // PRIMEIRO: Carregar oauth-callback-auto-fix-google.js
-            loadScript(`${basePath}/oauth-callback-auto-fix-google.js?v=20251117`, () => {
-                console.log('✅ Google callback script carregado');
+            // PRIMEIRO: Carregar oidc-callback-google.js (processamento OIDC)
+            loadScript(`${basePath}/oidc-callback-google.js?v=20251117`, () => {
+                console.log('✅ Google OIDC callback script carregado');
                 
-                // DEPOIS: Carregar callback-authorization-google.js (deve ser após o auto-fix)
+                // DEPOIS: Carregar callback-authorization-google.js (deve ser após o callback OIDC)
                 setTimeout(() => {
                     loadScript(`${basePath}/callback-authorization-google.js${version}`, () => {
                         console.log('✅ Google authorization script carregado');
                     });
-                }, 500); // Pequeno delay para garantir que o auto-fix processou
+                }, 500); // Pequeno delay para garantir que o callback OIDC processou
             });
         } else if (provider === 'microsoft') {
-            // PRIMEIRO: Carregar oauth-callback-auto-fix-microsoft.js
-            loadScript(`${basePath}/oauth-callback-auto-fix-microsoft.js${version}`, () => {
-                console.log('✅ Microsoft callback script carregado');
+            // PRIMEIRO: Carregar oidc-callback-microsoft.js (processamento OIDC)
+            loadScript(`${basePath}/oidc-callback-microsoft.js${version}`, () => {
+                console.log('✅ Microsoft OIDC callback script carregado');
                 
-                // DEPOIS: Carregar callback-authorization-microsoft.js (deve ser após o auto-fix)
+                // DEPOIS: Carregar callback-authorization-microsoft.js (deve ser após o callback OIDC)
                 setTimeout(() => {
                     loadScript(`${basePath}/callback-authorization-microsoft.js${version}`, () => {
                         console.log('✅ Microsoft authorization script carregado');
                     });
-                }, 500); // Pequeno delay para garantir que o auto-fix processou
+                }, 500); // Pequeno delay para garantir que o callback OIDC processou
             });
         }
     }

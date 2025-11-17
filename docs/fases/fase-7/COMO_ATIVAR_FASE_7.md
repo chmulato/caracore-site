@@ -14,7 +14,7 @@ A Fase 7 está **✅ CONCLUÍDA E ATIVA EM PRODUÇÃO**:
 
 ✅ **Componentes Frontend:**
 - `token-manager.js` - Gerenciamento de sessões ✅
-- Integração com `oauth-callback-auto-fix.js` ✅
+- Integração com `oidc-callback-microsoft.js` e `oidc-callback-google.js` ✅
 - Criação automática de sessão após login ✅
 
 ✅ **Configuração:**

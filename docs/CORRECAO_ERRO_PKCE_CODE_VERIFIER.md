@@ -30,7 +30,7 @@ O `code_verifier` recuperado no callback não corresponde ao `code_challenge` us
 
 ### 1. Priorização da Recuperação do code_verifier
 
-Modificado `secure/js/oauth-callback-auto-fix.js` para:
+Modificado `secure/js/oidc-callback-microsoft.js` para:
 
 1. **PRIORIDADE 1**: Buscar o `code_verifier` do estado OIDC usando o `state` do callback
    - Formato: `oidc.${state}` no sessionStorage ou localStorage

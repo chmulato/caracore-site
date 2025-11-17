@@ -20,7 +20,7 @@ Usuário autorizado (`chmulato@hotmail.com`) foi redirecionado incorretamente pa
 
 ### 1. Verificação de Autorização Antes de Redirecionar
 
-**Arquivo:** `secure/js/oauth-callback-auto-fix.js`
+**Arquivo:** `secure/js/oidc-callback-microsoft.js`
 
 Quando há erro ao obter o token do backend:
 1. ✅ Tenta obter email de fontes alternativas:
@@ -203,7 +203,7 @@ az webapp config appsettings list \
 
 ## Arquivos Modificados
 
-1. ✅ `secure/js/oauth-callback-auto-fix.js` - Verificação de autorização antes de redirecionar
+1. ✅ `secure/js/oidc-callback-microsoft.js` - Verificação de autorização antes de redirecionar
 2. ✅ `secure/js/callback-authorization.js` - Verificação adicional no callback
 3. ✅ `secure/js/authorization-check.js` - URL corrigida para `request-access.html`
 4. ✅ `secure/js/main.js` - Link para primeiro acesso adicionado

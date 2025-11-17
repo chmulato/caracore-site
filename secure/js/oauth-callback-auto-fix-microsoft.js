@@ -357,15 +357,30 @@
                 
                 // Se for erro 400, logar possíveis causas
                 if (response.status === 400) {
+                    const errorDesc = errorData.error_description || '';
+                    const isScopeError = errorDesc.includes('AADSTS70000') || errorDesc.includes('scopes requested are unauthorized') || errorDesc.includes('scope');
+                    const isExpiredCode = errorDesc.includes('expired') || errorDesc.includes('code has expired');
+                    
                     console.warn('⚠️ Erro 400 - Possíveis causas:', {
                         missingCodeVerifier: !codeVerifier,
-                        invalidCodeVerifier: codeVerifier && (errorData.error_description?.includes('code_verifier') || errorData.error_description?.includes('PKCE')),
-                        invalidCode: errorData.error_description?.includes('code') || errorData.error_description?.includes('authorization_code'),
-                        invalidRedirectUri: errorData.error_description?.includes('redirect_uri'),
-                        tenantMismatch: errorData.error_description?.includes('tenant') || errorData.error_description?.includes('AADSTS70000121'),
-                        expiredCode: errorData.error_description?.includes('expired') || errorData.error_description?.includes('invalid_grant'),
+                        invalidCodeVerifier: codeVerifier && (errorDesc.includes('code_verifier') || errorDesc.includes('PKCE')),
+                        invalidCode: errorDesc.includes('code') || errorDesc.includes('authorization_code'),
+                        invalidRedirectUri: errorDesc.includes('redirect_uri'),
+                        tenantMismatch: errorDesc.includes('tenant') || errorDesc.includes('AADSTS70000121'),
+                        expiredCode: isExpiredCode,
+                        scopeUnauthorized: isScopeError,
                         errorDetails: errorData
                     });
+                    
+                    // Se for erro de escopos não autorizados, pode ser que o usuário precise conceder permissões novamente
+                    // ou que seja um usuário novo que precisa ser registrado
+                    if (isScopeError) {
+                        console.warn('⚠️ Erro de escopos não autorizados (AADSTS70000). Isso pode indicar:');
+                        console.warn('   1. Usuário não concedeu todas as permissões necessárias');
+                        console.warn('   2. Permissões expiradas ou revogadas');
+                        console.warn('   3. Usuário novo que precisa ser registrado no sistema');
+                        console.warn('   → Redirecionando para primeiro contato para registro/reaplicação de permissões');
+                    }
                 }
             }
         } catch (error) {
@@ -537,7 +552,22 @@
                     console.warn('⚠️ Erro ao verificar autorização:', authError);
                 }
             } else {
-                console.warn('⚠️ Email não encontrado em nenhuma fonte. Não é possível criar autenticação.');
+                console.warn('⚠️ Email não encontrado em nenhuma fonte. Redirecionando para primeiro contato...');
+                
+                // Se não há email em nenhuma fonte, é provável que seja um usuário novo
+                // Redirecionar para página de primeiro contato
+                const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                redirectUrl.searchParams.set('provider', PROVIDER);
+                redirectUrl.searchParams.set('t', Date.now().toString());
+                
+                console.log('🔄 Redirecionando para primeiro contato (usuário novo):', redirectUrl.toString());
+                
+                // Aguardar um pouco antes de redirecionar para garantir que logs sejam visíveis
+                setTimeout(() => {
+                    window.location.href = redirectUrl.toString();
+                }, 1000);
+                
+                return false; // Retornar false mas não lançar erro - redirecionamento já foi feito
             }
             
             return false;
@@ -966,15 +996,92 @@
                         }, 1000);
                     }
                 } else {
-                    console.warn('⚠️ Email não encontrado, redirecionando para index');
+                    // Se não há email, redirecionar para primeiro contato
+                    console.warn('⚠️ Email não encontrado, redirecionando para primeiro contato');
+                    const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                    redirectUrl.searchParams.set('provider', provider);
+                    redirectUrl.searchParams.set('t', Date.now().toString());
                     setTimeout(() => {
-                        window.location.href = '/secure/index.html';
+                        window.location.href = redirectUrl.toString();
                     }, 1000);
                 }
                 
                 return true;
             } else {
-                throw new Error('Verificação falhou - dados não salvos corretamente');
+                // Se authResult é false e não há dados salvos, pode ser usuário novo
+                // Verificar se já foi redirecionado (createAuthentication pode ter redirecionado)
+                const userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+                
+                if (!userEmail || userEmail.includes('user@caracore.com.br')) {
+                    // Não há email válido - redirecionar para primeiro contato
+                    console.log('🔄 Sem email válido detectado, redirecionando para primeiro contato...');
+                    const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                    redirectUrl.searchParams.set('provider', PROVIDER);
+                    redirectUrl.searchParams.set('t', Date.now().toString());
+                    
+                    setTimeout(() => {
+                        window.location.href = redirectUrl.toString();
+                    }, 1000);
+                    
+                    // Não lançar erro - redirecionamento já foi feito
+                    return false;
+                } else {
+                    // Há email mas autenticação falhou - pode ser erro temporário
+                    console.warn('⚠️ Autenticação falhou mas há email disponível. Tentando verificar autorização...');
+                    
+                    // Tentar verificar autorização mesmo assim
+                    const backendUrl = window.location.hostname === 'localhost' 
+                        ? 'http://localhost:5051'
+                        : 'https://caracore-backend-docker.azurewebsites.net';
+                    
+                    try {
+                        const authResponse = await fetch(`${backendUrl}/api/check-authorization`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                email: userEmail,
+                                provider: PROVIDER
+                            }),
+                            credentials: 'include'
+                        });
+                        
+                        if (authResponse.ok) {
+                            const authData = await authResponse.json();
+                            if (authData.authorized === true) {
+                                // Usuário autorizado mas autenticação falhou - redirecionar para primeiro contato para reautenticar
+                                console.log('✅ Usuário autorizado mas autenticação falhou. Redirecionando para primeiro contato para reautenticar...');
+                                const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                                redirectUrl.searchParams.set('email', userEmail);
+                                redirectUrl.searchParams.set('provider', PROVIDER);
+                                redirectUrl.searchParams.set('t', Date.now().toString());
+                                
+                                setTimeout(() => {
+                                    window.location.href = redirectUrl.toString();
+                                }, 1000);
+                                return false;
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('⚠️ Erro ao verificar autorização:', e);
+                    }
+                    
+                    // Se chegou aqui, redirecionar para primeiro contato
+                    console.log('🔄 Redirecionando para primeiro contato...');
+                    const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                    if (userEmail && !userEmail.includes('user@caracore.com.br')) {
+                        redirectUrl.searchParams.set('email', userEmail);
+                    }
+                    redirectUrl.searchParams.set('provider', PROVIDER);
+                    redirectUrl.searchParams.set('t', Date.now().toString());
+                    
+                    setTimeout(() => {
+                        window.location.href = redirectUrl.toString();
+                    }, 1000);
+                    
+                    return false;
+                }
             }
             
         } catch (error) {

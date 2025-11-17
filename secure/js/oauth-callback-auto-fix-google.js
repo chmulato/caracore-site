@@ -301,14 +301,19 @@
                 } catch {
                     errorData = { error: 'unknown', error_description: errorText };
                 }
-                console.error('❌ Erro do backend Google:', {
-                    status: response.status,
-                    error: errorData
-                });
+                // Se for erro 403 de domínio não autorizado, é esperado e será tratado
+                if (response.status === 403 && errorData.error === 'unauthorized_domain') {
+                    console.log('🔄 Domínio não autorizado detectado (esperado). Tentando obter email para redirecionar...');
+                } else {
+                    // Só mostrar como erro se não for 403 de domínio não autorizado
+                    console.error('❌ Erro do backend Google:', {
+                        status: response.status,
+                        error: errorData
+                    });
+                }
                 
                 // Se for erro 403 de domínio não autorizado, tentar obter email e redirecionar para primeiro acesso
                 if (response.status === 403 && errorData.error === 'unauthorized_domain') {
-                    console.log('🔄 Domínio não autorizado detectado. Tentando obter email para redirecionar...');
                     
                     let userEmail = null;
                     
@@ -402,7 +407,13 @@
         let realUserData = await getRealUserEmail(params);
         
         if (!realUserData) {
-            console.warn('⚠️ Não foi possível obter email do token Google. Tentando verificar se usuário já está autorizado...');
+            // Verificar se foi erro 403 de domínio não autorizado (esperado)
+            const errorFromUrl = new URLSearchParams(window.location.search).get('error');
+            if (errorFromUrl === 'unauthorized_domain' || errorFromUrl === '403') {
+                console.debug('ℹ️ Domínio não autorizado - email será obtido da resposta de erro');
+            } else {
+                console.debug('⚠️ Não foi possível obter email do token Google. Sistema buscará de outras fontes.');
+            }
             // Lógica de fallback similar ao original, mas simplificada para Google
             return;
         }
@@ -625,7 +636,12 @@
                             await Promise.race([initPromise, timeoutPromise]);
                             console.log('✅ OIDCAuth inicializado com sucesso para Google');
                         } catch (initError) {
-                            console.warn('⚠️ Erro ao inicializar OIDCAuth:', initError.message);
+                            // Timeout é esperado em alguns casos (ex: quando OIDCAuth já está inicializando)
+                            if (initError.message.includes('Timeout')) {
+                                console.debug('⏳ Timeout na inicialização do OIDCAuth (pode ser esperado, usando fallback)');
+                            } else {
+                                console.warn('⚠️ Erro ao inicializar OIDCAuth:', initError.message);
+                            }
                             throw initError;
                         }
                     }
@@ -725,7 +741,12 @@
                         return true;
                     }
                 } catch (oidcError) {
-                    console.warn('⚠️ OIDCAuth não conseguiu processar callback Google, usando auto-fix:', oidcError);
+                    // Timeout é esperado em alguns casos
+                    if (oidcError.message && oidcError.message.includes('Timeout')) {
+                        console.debug('⏳ OIDCAuth timeout (esperado), usando auto-fix como fallback');
+                    } else {
+                        console.warn('⚠️ OIDCAuth não conseguiu processar callback Google, usando auto-fix:', oidcError.message || oidcError);
+                    }
                 }
             }
             

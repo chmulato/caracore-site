@@ -208,11 +208,25 @@
             
             // Verificar se há dados de autenticação
             if (!hasValidAuthData()) {
-                console.log('⚠️ Sem dados de autenticação válidos, criando...');
+                // Verificar se é sessão mínima (não precisa de dados OIDC completos)
+                const isMinimalSession = localStorage.getItem('auth_minimal_session') === 'true';
+                const hasUserEmail = localStorage.getItem('user_email') || 
+                                   localStorage.getItem('auth_user_email');
                 
-                // NÃO criar dados falsos - isso causa problemas
-                // Se não há dados válidos, deixar o sistema buscar de outras fontes
-                console.warn('⚠️ Sem dados de autenticação válidos. Não criando dados falsos - sistema buscará de outras fontes.');
+                if (isMinimalSession && hasUserEmail) {
+                    // Sessão mínima - não mostrar aviso, é esperado
+                    console.debug('🔐 Sessão mínima detectada - dados OIDC não necessários');
+                    return;
+                }
+                
+                // Se não é sessão mínima, verificar se há dados em outras fontes antes de avisar
+                if (hasUserEmail) {
+                    console.debug('🔐 Dados de autenticação encontrados em outras fontes');
+                    return;
+                }
+                
+                // Só mostrar aviso se realmente não há dados em nenhuma fonte
+                console.debug('⚠️ Sem dados de autenticação válidos. Sistema buscará de outras fontes.');
                 return; // Não criar dados falsos
             }
             

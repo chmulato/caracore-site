@@ -215,7 +215,12 @@ const NotificationBridge = (function() {
      */
     function integrateWithSessionManager() {
         if (!window.SessionManager) {
-            console.warn('[NotificationBridge] SessionManager não encontrado');
+            // Verificar se é sessão mínima (não precisa de SessionManager)
+            const isMinimalSession = localStorage.getItem('auth_minimal_session') === 'true';
+            if (!isMinimalSession) {
+                // Só mostrar aviso se não for sessão mínima
+                console.debug('[NotificationBridge] SessionManager não encontrado (pode ser sessão mínima)');
+            }
             return;
         }
         

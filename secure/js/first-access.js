@@ -72,6 +72,19 @@ class FirstAccessManager {
             // Verificar se usuário já está autorizado
             const isAuthorized = await this.checkUserAuthorization();
             if (isAuthorized) {
+                // Garantir que email e provider estão salvos antes de redirecionar
+                if (this.userEmail) {
+                    localStorage.setItem('user_email', this.userEmail);
+                    localStorage.setItem('auth_user_email', this.userEmail);
+                    if (this.userProvider) {
+                        localStorage.setItem('auth_provider', this.userProvider);
+                    }
+                    console.log('✅ Dados do usuário salvos antes de redirecionar:', {
+                        email: this.userEmail,
+                        provider: this.userProvider
+                    });
+                }
+                
                 // Mostrar conteúdo principal para exibir mensagem de redirecionamento
                 this.showMainContent();
                 // Se já autorizado, redirecionar para área restrita

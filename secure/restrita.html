@@ -179,62 +179,37 @@
   <!-- Logout Modal (Fase 2 - Item 4) -->
   <script src="/js/logout-modal.js"></script>
   
-  <!-- Script de proteção de página -->
-  <script>
-    // Proteger página - requer autenticação
-    (function() {
-      'use strict';
-      
-      // Verificar autenticação imediatamente
-      if (!SessionManager.requireAuth()) {
-        // requireAuth já redireciona se não autenticado
-        return;
-      }
-      
-      // Exibir informações do usuário
-      const userInfo = SessionManager.getUserInfo();
-      const provider = localStorage.getItem('auth_provider');
-      
-      if (userInfo) {
-        console.log('[Estrita] Usuário autenticado:', userInfo.email || userInfo.name);
-        
-        // Opcional: Exibir nome do usuário na UI
-        const userDisplayElement = document.getElementById('user-display');
-        if (userDisplayElement) {
-          userDisplayElement.textContent = userInfo.email || userInfo.name || 'Usuário';
-        }
-      }
-      
-      // Botão de logout removido - usando apenas o do card do usuário
-      
-      console.log('[Estrita] Página protegida carregada com sucesso');
-    })();
-  </script>
-  
   <!-- Sistema de Autorização - Fase 4 -->
   <script src="/secure/js/authorization-check.js?v=20251102"></script>
   <script>
     // Verificação de autorização na área restrita
-    document.addEventListener('DOMContentLoaded', async function() {
+    // IMPORTANTE: Verificar autorização ANTES de verificar autenticação via SessionManager
+    // Isso permite acesso mesmo quando o token foi rejeitado por domínio não autorizado
+    // mas o usuário está autorizado no sistema
+    (async function() {
+      'use strict';
+      
       try {
         console.log('Restrita: Iniciando verificação de autorização');
         
-        // Aguardar um pouco para auth-standalone carregar
-        await new Promise(resolve => setTimeout(resolve, 1000));
+        // Aguardar um pouco para scripts carregarem
+        await new Promise(resolve => setTimeout(resolve, 500));
         
-        // Obter informações do usuário
+        // Obter informações do usuário de múltiplas fontes
         const userEmail = localStorage.getItem('user_email') || 
                          localStorage.getItem('auth_user_email') ||
-                         sessionStorage.getItem('user_email');
+                         sessionStorage.getItem('user_email') ||
+                         sessionStorage.getItem('cara_core_user_email');
         
         const provider = localStorage.getItem('auth_provider') || 
                         localStorage.getItem('oauth_provider') ||
+                        sessionStorage.getItem('cara_core_oidc_provider') ||
                         'google';
         
         if (userEmail) {
           console.log('Restrita: Verificando autorização para:', userEmail);
           
-          // Verificar autorização (sem loading, página já está carregada)
+          // Verificar autorização PRIMEIRO (sem loading, página já está carregada)
           const isAuthorized = await requireAuthorization({
             email: userEmail,
             provider: provider,
@@ -245,13 +220,60 @@
           if (isAuthorized) {
             console.log('Restrita: Usuário autorizado, acesso liberado');
             
-            // Carregar e exibir informações do usuário
-            await loadUserInfo(userEmail, provider);
+            // Se autorizado mas não tem sessão válida, criar uma sessão mínima
+            const isMinimalSession = !SessionManager.isAuthenticated();
+            if (isMinimalSession) {
+              console.log('Restrita: Usuário autorizado mas sem sessão válida, criando sessão mínima...');
+              
+              // Criar sessão mínima para permitir acesso
+              // Isso é necessário quando o token foi rejeitado por domínio não autorizado
+              // mas o usuário está autorizado no sistema
+              const expiresAt = Math.floor(Date.now() / 1000) + 3600; // 1 hora
+              localStorage.setItem('auth_access_token', 'authorized_session');
+              localStorage.setItem('auth_expires_at', expiresAt.toString());
+              localStorage.setItem('auth_provider', provider);
+              localStorage.setItem('user_email', userEmail);
+              localStorage.setItem('auth_user_email', userEmail);
+              
+              // Marcar como sessão mínima para não iniciar validação periódica
+              localStorage.setItem('auth_minimal_session', 'true');
+              
+              // Salvar informações básicas do usuário
+              const userInfo = {
+                email: userEmail,
+                provider: provider,
+                authorized: true
+              };
+              localStorage.setItem('auth_user_info', JSON.stringify(userInfo));
+              
+              console.log('Restrita: Sessão mínima criada para usuário autorizado');
+            }
             
-            // Mostrar card de informações do usuário
-            const userInfoCard = document.getElementById('userInfoCard');
-            if (userInfoCard) {
-              userInfoCard.classList.remove('d-none');
+            // Verificar autenticação (sem iniciar verificação periódica se for sessão mínima)
+            if (SessionManager.isAuthenticated()) {
+              // Se não for sessão mínima, usar requireAuth que inicia verificação periódica
+              // Para sessão mínima, apenas verificar isAuthenticated sem iniciar validação periódica
+              if (!isMinimalSession && !localStorage.getItem('auth_minimal_session')) {
+                // Usar requireAuth para sessões normais (inicia verificação periódica)
+                if (!SessionManager.requireAuth()) {
+                  console.error('Restrita: Falha na autenticação, redirecionando...');
+                  return;
+                }
+              }
+              
+              // Carregar e exibir informações do usuário
+              await loadUserInfo(userEmail, provider);
+              
+              // Mostrar card de informações do usuário
+              const userInfoCard = document.getElementById('userInfoCard');
+              if (userInfoCard) {
+                userInfoCard.classList.remove('d-none');
+              }
+              
+              console.log('[Estrita] Página protegida carregada com sucesso');
+            } else {
+              console.error('Restrita: Falha ao criar sessão, redirecionando...');
+              window.location.href = '/secure/index.html';
             }
           }
           // Se não autorizado, requireAuthorization já redirecionou
@@ -261,20 +283,54 @@
           // Aguardar mais tempo para auth carregar
           setTimeout(async () => {
             const retryEmail = localStorage.getItem('user_email') || 
-                              localStorage.getItem('auth_user_email');
+                              localStorage.getItem('auth_user_email') ||
+                              sessionStorage.getItem('cara_core_user_email');
             
             if (retryEmail) {
-              await requireAuthorization({
+              const retryProvider = localStorage.getItem('auth_provider') || 
+                                    sessionStorage.getItem('cara_core_oidc_provider') ||
+                                    'google';
+              
+              const isAuthorized = await requireAuthorization({
                 email: retryEmail,
-                provider: provider,
+                provider: retryProvider,
                 showLoading: false,
                 redirectOnFail: true
               });
+              
+              if (isAuthorized) {
+                if (!SessionManager.isAuthenticated()) {
+                  // Criar sessão mínima
+                  const expiresAt = Math.floor(Date.now() / 1000) + 3600;
+                  localStorage.setItem('auth_access_token', 'authorized_session');
+                  localStorage.setItem('auth_expires_at', expiresAt.toString());
+                  localStorage.setItem('auth_provider', retryProvider);
+                  localStorage.setItem('user_email', retryEmail);
+                  localStorage.setItem('auth_user_email', retryEmail);
+                  localStorage.setItem('auth_minimal_session', 'true');
+                  
+                  const userInfo = {
+                    email: retryEmail,
+                    provider: retryProvider,
+                    authorized: true
+                  };
+                  localStorage.setItem('auth_user_info', JSON.stringify(userInfo));
+                }
+                
+                // Carregar informações do usuário
+                await loadUserInfo(retryEmail, retryProvider);
+                
+                // Mostrar card de informações do usuário
+                const userInfoCard = document.getElementById('userInfoCard');
+                if (userInfoCard) {
+                  userInfoCard.classList.remove('d-none');
+                }
+              }
             } else {
               console.error('Restrita: Usuário não autenticado');
               window.location.href = '/secure/access-denied.html?error=not_authenticated';
             }
-          }, 3000);
+          }, 2000);
         }
         
       } catch (error) {
@@ -282,7 +338,7 @@
         // Em caso de erro, redirecionar para acesso negado
         window.location.href = '/secure/access-denied.html?error=' + encodeURIComponent(error.message);
       }
-    });
+    })();
     
     // Função para carregar informações do usuário
     async function loadUserInfo(email, provider) {

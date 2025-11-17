@@ -106,6 +106,88 @@
         }
     }
     
+    /**
+     * Obtém tokens reais usando session_id do backend
+     * Estratégia: usar o endpoint /auth/session/refresh para obter tokens válidos
+     * NOTA: Este método só deve ser usado quando os tokens não estão disponíveis na resposta inicial
+     */
+    async function getTokensFromSession(sessionId) {
+        if (!sessionId) {
+            return null;
+        }
+        
+        const backendUrl = window.location.hostname === 'localhost' 
+            ? 'http://localhost:5051'
+            : 'https://caracore-backend-docker.azurewebsites.net';
+        
+        try {
+            console.log('🔄 [Google] Obtendo tokens do session_id:', sessionId);
+            
+            const response = await fetch(`${backendUrl}/auth/session/refresh`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify({
+                    session_id: sessionId
+                })
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                if (data.access_token && data.id_token) {
+                    // Decodificar ID token para obter email
+                    try {
+                        const payload = JSON.parse(atob(data.id_token.split('.')[1]));
+                        const email = payload.email || payload.preferred_username || payload.upn;
+                        
+                        if (email) {
+                            console.log('✅ [Google] Tokens reais obtidos do session_id para:', email);
+                            return {
+                                email: email,
+                                name: payload.name || email.split('@')[0],
+                                access_token: data.access_token,
+                                id_token: data.id_token,
+                                expires_in: data.expires_in || 3600,
+                                expires_at: data.expires_at,
+                                session_id: sessionId,
+                                profile: payload
+                            };
+                        }
+                    } catch (e) {
+                        console.warn('⚠️ [Google] Erro ao decodificar ID token do session:', e);
+                    }
+                }
+            } else {
+                const errorData = await response.json().catch(() => ({}));
+                const errorMessage = errorData.error || errorData.message || 'Erro desconhecido';
+                
+                // Se for 401, pode ser que a sessão ainda não foi persistida
+                if (response.status === 401) {
+                    console.warn('⚠️ [Google] Sessão não encontrada ou ainda não persistida (401):', {
+                        sessionId: sessionId,
+                        error: errorMessage,
+                        suggestion: 'A sessão pode estar sendo criada. Aguarde e tente novamente.'
+                    });
+                } else {
+                    console.warn('⚠️ [Google] Erro ao obter tokens do session_id:', {
+                        status: response.status,
+                        sessionId: sessionId,
+                        error: errorData
+                    });
+                }
+            }
+        } catch (error) {
+            console.warn('⚠️ [Google] Erro ao chamar /auth/session/refresh:', {
+                error: error.message,
+                sessionId: sessionId
+            });
+        }
+        
+        return null;
+    }
+    
     // Tentar obter email real do backend usando o código OAuth (Google)
     async function getRealUserEmail(params) {
         try {
@@ -272,14 +354,31 @@
                 credentials: 'include'
             });
             
+            // IMPORTANTE: Sempre verificar a resposta, mesmo em caso de erro
+            // O backend pode ter criado uma sessão antes de retornar erro
+            let responseData;
+            try {
+                responseData = await response.json();
+            } catch (e) {
+                // Se não for JSON, tentar ler como texto
+                const errorText = await response.text().catch(() => '');
+                try {
+                    responseData = JSON.parse(errorText);
+                } catch {
+                    responseData = { error: 'unknown', error_description: errorText };
+                }
+            }
+            
+            // PRIORIDADE 1: Se a resposta for OK e contiver tokens, usar diretamente
             if (response.ok) {
-                const data = await response.json();
-                if (data.id_token) {
+                const data = responseData;
+                if (data.id_token && data.access_token) {
                     try {
                         const payload = JSON.parse(atob(data.id_token.split('.')[1]));
                         const email = payload.email;
                         if (email) {
                             console.log('✅ Email real obtido do backend Google:', email);
+                            console.log('✅ [Google] Usando tokens diretamente da resposta (status 200)');
                             return {
                                 email: email,
                                 name: payload.name || email.split('@')[0],
@@ -287,6 +386,7 @@
                                 refresh_token: data.refresh_token,
                                 id_token: data.id_token,
                                 expires_in: data.expires_in || 3600,
+                                session_id: data.session_id, // Incluir session_id se disponível
                                 profile: payload
                             };
                         }
@@ -294,22 +394,69 @@
                         console.warn('⚠️ Não foi possível decodificar ID token:', e);
                     }
                 }
-            } else {
-                const errorText = await response.text();
-                let errorData;
-                try {
-                    errorData = JSON.parse(errorText);
-                } catch {
-                    errorData = { error: 'unknown', error_description: errorText };
+                
+                // Se resposta OK mas sem tokens completos, tentar usar session_id se disponível
+                if (data.session_id && (!data.id_token || !data.access_token)) {
+                    console.log('🔄 [Google] Resposta OK mas tokens incompletos, tentando obter via session_id:', data.session_id);
+                    try {
+                        // Aguardar um pouco para garantir que a sessão foi persistida
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        const tokens = await getTokensFromSession(data.session_id);
+                        if (tokens) {
+                            console.log('✅ [Google] Tokens obtidos via session_id após resposta OK');
+                            return tokens;
+                        }
+                    } catch (error) {
+                        console.warn('⚠️ [Google] Erro ao obter tokens do session_id após resposta OK:', error);
+                    }
                 }
+            } else {
+                // responseData já foi obtido acima
+                const errorData = responseData;
+                
+                // Log detalhado do erro
+                console.error('❌ Erro do backend Google:', {
+                    status: response.status,
+                    error: errorData,
+                    hasSessionId: !!errorData.session_id,
+                    hasCode: !!params.code,
+                    hasCodeVerifier: !!codeVerifier,
+                    codeVerifierSource: codeVerifierSource || 'NÃO ENCONTRADO',
+                    redirect_uri: requestBody.redirect_uri
+                });
+                
+                // PRIORIDADE 2: Se houver session_id mesmo com erro, tentar usar (após aguardar persistência)
+                if (errorData.session_id) {
+                    console.log('🔄 [Google] Session ID encontrado mesmo com erro, tentando obter tokens...');
+                    try {
+                        // Aguardar um pouco para garantir que a sessão foi persistida no backend
+                        await new Promise(resolve => setTimeout(resolve, 1000));
+                        const tokens = await getTokensFromSession(errorData.session_id);
+                        if (tokens) {
+                            console.log('✅ [Google] Tokens reais obtidos mesmo com erro inicial');
+                            return tokens;
+                        }
+                    } catch (error) {
+                        console.warn('⚠️ [Google] Erro ao obter tokens do session_id após erro:', error);
+                    }
+                }
+                
                 // Se for erro 403 de domínio não autorizado, é esperado e será tratado
                 if (response.status === 403 && errorData.error === 'unauthorized_domain') {
                     console.log('🔄 Domínio não autorizado detectado (esperado). Tentando obter email para redirecionar...');
-                } else {
-                    // Só mostrar como erro se não for 403 de domínio não autorizado
-                    console.error('❌ Erro do backend Google:', {
-                        status: response.status,
-                        error: errorData
+                } else if (response.status === 400) {
+                    // Tratamento avançado de erro 400
+                    const errorDesc = errorData.error_description || '';
+                    const isExpiredCode = errorDesc.includes('expired') || errorDesc.includes('code has expired');
+                    const isInvalidCode = errorDesc.includes('invalid_grant') || errorDesc.includes('code');
+                    
+                    console.warn('⚠️ Erro 400 - Possíveis causas:', {
+                        missingCodeVerifier: !codeVerifier,
+                        invalidCodeVerifier: codeVerifier && (errorDesc.includes('code_verifier') || errorDesc.includes('PKCE')),
+                        invalidCode: isInvalidCode,
+                        invalidRedirectUri: errorDesc.includes('redirect_uri'),
+                        expiredCode: isExpiredCode,
+                        errorDetails: errorData
                     });
                 }
                 
@@ -547,9 +694,32 @@
             ...realUserData.profile
         };
         
-        const idToken = realUserData.id_token || `${btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${btoa(JSON.stringify(userProfile))}.${btoa(`google-signature-${params.state || Date.now()}`)}`;
-        const accessToken = realUserData.access_token || `google_access_${Date.now()}_${Math.random().toString(36)}`;
-        const refreshToken = realUserData.refresh_token || `google_refresh_${Date.now()}_${Math.random().toString(36)}`;
+        // VALIDAÇÃO CRÍTICA: Verificar se temos tokens reais
+        if (!realUserData.access_token || !realUserData.id_token) {
+            console.error('❌ [Google] ERRO CRÍTICO: Tentando criar autenticação sem tokens reais!', {
+                hasAccessToken: !!realUserData.access_token,
+                hasIdToken: !!realUserData.id_token,
+                email: realUserData.email
+            });
+            throw new Error('Tokens reais não disponíveis - não é possível criar autenticação válida');
+        }
+        
+        // Usar APENAS tokens reais - nunca criar tokens fake
+        const idToken = realUserData.id_token;
+        const accessToken = realUserData.access_token;
+        const refreshToken = realUserData.refresh_token; // Pode ser undefined, mas não criar fake
+        
+        console.log('✅ [Google] Usando tokens REAIS (não fake):', {
+            hasAccessToken: !!accessToken,
+            hasIdToken: !!idToken,
+            hasRefreshToken: !!refreshToken,
+            expiresIn: realUserData.expires_in || 3600
+        });
+        
+        // Se não houver refresh_token, avisar mas não criar fake
+        if (!refreshToken) {
+            console.warn('⚠️ [Google] Sem refresh_token, não é possível criar sessão persistente');
+        }
         
         const expiresIn = realUserData.expires_in || 3600;
         const expiresAt = now + expiresIn;

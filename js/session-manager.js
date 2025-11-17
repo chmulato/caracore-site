@@ -273,14 +273,21 @@ const SessionManager = (function() {
         }
         
         try {
-            const response = await fetch(`${CONFIG.BACKEND_URL}/auth/token/refresh`, {
+            // Usar endpoint específico por provider
+            const endpoint = provider === 'google' 
+                ? '/auth/token/refresh/google'
+                : provider === 'microsoft'
+                ? '/auth/token/refresh/microsoft'
+                : '/auth/token/refresh'; // Fallback para legado
+            
+            const response = await fetch(`${CONFIG.BACKEND_URL}${endpoint}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    refresh_token: refreshTokenVal,
-                    provider: provider
+                    refresh_token: refreshTokenVal
+                    // Não precisa enviar provider - já está no endpoint
                 })
             });
             

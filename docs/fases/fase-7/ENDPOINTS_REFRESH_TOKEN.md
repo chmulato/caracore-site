@@ -2,19 +2,121 @@
 
 ## 📋 Resumo
 
-O backend possui **dois endpoints** para tratar refresh tokens:
+O backend possui **endpoints separados por provider** para tratar refresh tokens:
 
-1. **`/auth/token/refresh`** - Endpoint direto (legado/compatibilidade)
-2. **`/auth/session/refresh`** - Endpoint da Fase 7 (recomendado)
+1. **`/auth/token/refresh/google`** - Endpoint específico Google (✅ Recomendado)
+2. **`/auth/token/refresh/microsoft`** - Endpoint específico Microsoft (✅ Recomendado)
+3. **`/auth/token/refresh`** - Endpoint genérico (⚠️ Deprecated - legado)
+4. **`/auth/session/refresh`** - Endpoint da Fase 7 (✅ Recomendado - genérico)
 
-Ambos suportam **Google** e **Microsoft Entra ID**.
+**Recomendação:** Use os endpoints específicos por provider para novos desenvolvimentos.
 
 ---
 
-## 🔄 Endpoint 1: `/auth/token/refresh` (Direto)
+## 🔄 Endpoints Específicos por Provider (✅ Recomendados)
+
+### Endpoint 1.1: `/auth/token/refresh/google` - Google
+
+**Rota:**
+```
+POST /auth/token/refresh/google
+```
+
+**Request Body:**
+```json
+{
+  "refresh_token": "1//0eWzCyAzVKwXUCgYIAR..."
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs...",
+  "id_token": "eyJhbGciOiJSUzI1NiIs...",
+  "refresh_token": "1//0eWzCyAzVKwXUCgYIAR...",  // Novo refresh token (se fornecido)
+  "expires_in": 3600,
+  "token_type": "Bearer",
+  "scope": "openid profile email"
+}
+```
+
+**Características:**
+- ✅ Endpoint específico para Google
+- ✅ Não requer parâmetro `provider` (já está no endpoint)
+- ✅ Não requer `scope` no refresh (conforme especificação Google)
+- ✅ Rate limiting específico: `/auth/token/refresh/google`
+
+**Implementação:**
+```python
+token_url = "https://oauth2.googleapis.com/token"
+payload = {
+    "client_id": os.getenv("GOOGLE_CLIENT_ID"),
+    "client_secret": os.getenv("GOOGLE_CLIENT_SECRET"),
+    "refresh_token": refresh_token_val,
+    "grant_type": "refresh_token"
+    # Google não requer scope no refresh
+}
+```
+
+---
+
+### Endpoint 1.2: `/auth/token/refresh/microsoft` - Microsoft
+
+**Rota:**
+```
+POST /auth/token/refresh/microsoft
+```
+
+**Request Body:**
+```json
+{
+  "refresh_token": "0.AXkA..."
+}
+```
+
+**Response (200 OK):**
+```json
+{
+  "access_token": "eyJhbGciOiJSUzI1NiIs...",
+  "id_token": "eyJhbGciOiJSUzI1NiIs...",
+  "refresh_token": "0.AXkA...",  // Novo refresh token (se fornecido)
+  "expires_in": 3600,
+  "token_type": "Bearer",
+  "scope": "openid profile email offline_access"
+}
+```
+
+**Características:**
+- ✅ Endpoint específico para Microsoft
+- ✅ Não requer parâmetro `provider` (já está no endpoint)
+- ✅ Inclui `scope` no refresh (obrigatório para Microsoft)
+- ✅ Rate limiting específico: `/auth/token/refresh/microsoft`
+
+**Implementação:**
+```python
+tenant = os.getenv("AZURE_TENANT_ID", "consumers")
+token_url = f"https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token"
+payload = {
+    "client_id": os.getenv("MICROSOFT_CLIENT_ID") or os.getenv("AZURE_CLIENT_ID"),
+    "client_secret": os.getenv("MICROSOFT_CLIENT_SECRET") or os.getenv("AZURE_CLIENT_SECRET"),
+    "refresh_token": refresh_token_val,
+    "grant_type": "refresh_token",
+    "scope": "openid profile email offline_access"  # Obrigatório para Microsoft
+}
+```
+
+---
+
+## ⚠️ Endpoint Legado (Deprecated)
+
+### Endpoint 1: `/auth/token/refresh` (Genérico - Deprecated)
 
 ### Descrição
-Endpoint direto que aceita `refresh_token` e `provider`, e renova tokens diretamente com o provedor OAuth.
+⚠️ **DEPRECATED** - Use `/auth/token/refresh/google` ou `/auth/token/refresh/microsoft`
+
+Endpoint genérico que aceita `refresh_token` e `provider`, e renova tokens diretamente com o provedor OAuth.
+Mantido apenas para compatibilidade com código legado.
 
 ### Rota
 ```

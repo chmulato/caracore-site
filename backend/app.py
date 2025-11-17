@@ -1453,9 +1453,12 @@ def create_app() -> Flask:
     @rate_limit("/auth/token/refresh")
     def refresh_token():
         """
-        Endpoint para refresh token rotation (OAuth 2.1)
+        Endpoint genérico para refresh token rotation (OAuth 2.1) - DEPRECATED
         
-        Aceita refresh_token e retorna novo access_token + novo refresh_token
+        ⚠️ DEPRECATED: Use /auth/token/refresh/google ou /auth/token/refresh/microsoft
+        
+        Aceita refresh_token e provider, retorna novo access_token + novo refresh_token
+        Mantido para compatibilidade com código legado.
         """
         client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
         
@@ -1557,6 +1560,239 @@ def create_app() -> Flask:
                 AuditLogger.log_suspicious_activity(
                     activity_type="refresh_exception",
                     details=str(e),
+                    client_ip=client_ip
+                )
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno do servidor"
+            }), 500)
+            return add_cors(resp)
+    
+    # ============================================================================
+    # ENDPOINTS ESPECÍFICOS POR PROVIDER - Google
+    # ============================================================================
+    
+    @app.route("/auth/token/refresh/google", methods=["OPTIONS"])
+    def refresh_token_google_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/auth/token/refresh/google", methods=["POST"])
+    @require_https
+    @rate_limit("/auth/token/refresh/google")
+    def refresh_token_google():
+        """
+        Endpoint específico para refresh token do Google (OAuth 2.1)
+        
+        Aceita refresh_token e retorna novo access_token + novo refresh_token
+        
+        Request:
+        {
+            "refresh_token": "1//0eWzCyAzVKwXUCgYIAR..."
+        }
+        
+        Response:
+        {
+            "access_token": "eyJ...",
+            "id_token": "eyJ...",
+            "refresh_token": "1//...",  // Novo refresh token (se fornecido)
+            "expires_in": 3600,
+            "token_type": "Bearer",
+            "scope": "openid profile email"
+        }
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        try:
+            data = request.get_json() or {}
+            refresh_token_val = data.get("refresh_token", "")
+            
+            if not refresh_token_val:
+                if PKCE_VALIDATION_ENABLED:
+                    AuditLogger.log_suspicious_activity(
+                        activity_type="refresh_missing_params",
+                        details="refresh_token ausente (Google)",
+                        client_ip=client_ip
+                    )
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "refresh_token é obrigatório"
+                }), 400)
+                return add_cors(resp)
+            
+            # Preparar requisição para Google OAuth
+            token_url = GOOGLE_TOKEN_ENDPOINT
+            payload = {
+                "client_id": os.getenv("GOOGLE_CLIENT_ID"),
+                "client_secret": os.getenv("GOOGLE_CLIENT_SECRET"),
+                "refresh_token": refresh_token_val,
+                "grant_type": "refresh_token"
+                # Google não requer scope no refresh
+            }
+            
+            # Trocar refresh_token por novo access_token
+            logger.info("Refresh token request (Google)", extra={"client_ip": client_ip})
+            response = post_form(token_url, payload)
+            
+            if response.status_code != 200:
+                error_body = response.text
+                logger.warning("Refresh token failed (Google)", extra={
+                    "status": response.status_code,
+                    "error": error_body,
+                    "client_ip": client_ip
+                })
+                if PKCE_VALIDATION_ENABLED:
+                    AuditLogger.log_token_exchange(
+                        provider="google",
+                        success=False,
+                        has_pkce=False,
+                        client_ip=client_ip,
+                        error=error_body
+                    )
+                resp = make_response(jsonify({
+                    "error": "invalid_grant",
+                    "error_description": "Refresh token inválido ou expirado"
+                }), 400)
+                return add_cors(resp)
+            
+            token_response = response.json()
+            
+            # Log de sucesso
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_token_exchange(
+                    provider="google",
+                    success=True,
+                    has_pkce=False,
+                    client_ip=client_ip
+                )
+            
+            logger.info("Refresh token success (Google)", extra={"client_ip": client_ip})
+            
+            resp = make_response(jsonify(token_response), 200)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error("Refresh token exception (Google)", extra={"error": str(e), "client_ip": client_ip}, exc_info=True)
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_suspicious_activity(
+                    activity_type="refresh_exception",
+                    details=f"Google: {str(e)}",
+                    client_ip=client_ip
+                )
+            resp = make_response(jsonify({
+                "error": "server_error",
+                "error_description": "Erro interno do servidor"
+            }), 500)
+            return add_cors(resp)
+    
+    # ============================================================================
+    # ENDPOINTS ESPECÍFICOS POR PROVIDER - Microsoft
+    # ============================================================================
+    
+    @app.route("/auth/token/refresh/microsoft", methods=["OPTIONS"])
+    def refresh_token_microsoft_options():
+        return add_cors(make_response("", 204))
+    
+    @app.route("/auth/token/refresh/microsoft", methods=["POST"])
+    @require_https
+    @rate_limit("/auth/token/refresh/microsoft")
+    def refresh_token_microsoft():
+        """
+        Endpoint específico para refresh token do Microsoft (OAuth 2.1)
+        
+        Aceita refresh_token e retorna novo access_token + novo refresh_token
+        
+        Request:
+        {
+            "refresh_token": "0.AXkA..."
+        }
+        
+        Response:
+        {
+            "access_token": "eyJ...",
+            "id_token": "eyJ...",
+            "refresh_token": "0.AXkA...",  // Novo refresh token (se fornecido)
+            "expires_in": 3600,
+            "token_type": "Bearer",
+            "scope": "openid profile email offline_access"
+        }
+        """
+        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        
+        try:
+            data = request.get_json() or {}
+            refresh_token_val = data.get("refresh_token", "")
+            
+            if not refresh_token_val:
+                if PKCE_VALIDATION_ENABLED:
+                    AuditLogger.log_suspicious_activity(
+                        activity_type="refresh_missing_params",
+                        details="refresh_token ausente (Microsoft)",
+                        client_ip=client_ip
+                    )
+                resp = make_response(jsonify({
+                    "error": "invalid_request",
+                    "error_description": "refresh_token é obrigatório"
+                }), 400)
+                return add_cors(resp)
+            
+            # Preparar requisição para Microsoft OAuth
+            tenant = os.getenv("AZURE_TENANT_ID", "consumers")
+            token_url = AZURE_TOKEN_ENDPOINT_TEMPLATE.format(tenant=tenant)
+            payload = {
+                "client_id": os.getenv("MICROSOFT_CLIENT_ID") or os.getenv("AZURE_CLIENT_ID"),
+                "client_secret": os.getenv("MICROSOFT_CLIENT_SECRET") or os.getenv("AZURE_CLIENT_SECRET"),
+                "refresh_token": refresh_token_val,
+                "grant_type": "refresh_token",
+                "scope": DEFAULT_AZURE_SCOPE  # Microsoft requer scope no refresh
+            }
+            
+            # Trocar refresh_token por novo access_token
+            logger.info("Refresh token request (Microsoft)", extra={"client_ip": client_ip})
+            response = post_form(token_url, payload)
+            
+            if response.status_code != 200:
+                error_body = response.text
+                logger.warning("Refresh token failed (Microsoft)", extra={
+                    "status": response.status_code,
+                    "error": error_body,
+                    "client_ip": client_ip
+                })
+                if PKCE_VALIDATION_ENABLED:
+                    AuditLogger.log_token_exchange(
+                        provider="microsoft",
+                        success=False,
+                        has_pkce=False,
+                        client_ip=client_ip,
+                        error=error_body
+                    )
+                resp = make_response(jsonify({
+                    "error": "invalid_grant",
+                    "error_description": "Refresh token inválido ou expirado"
+                }), 400)
+                return add_cors(resp)
+            
+            token_response = response.json()
+            
+            # Log de sucesso
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_token_exchange(
+                    provider="microsoft",
+                    success=True,
+                    has_pkce=False,
+                    client_ip=client_ip
+                )
+            
+            logger.info("Refresh token success (Microsoft)", extra={"client_ip": client_ip})
+            
+            resp = make_response(jsonify(token_response), 200)
+            return add_cors(resp)
+        
+        except Exception as e:
+            logger.error("Refresh token exception (Microsoft)", extra={"error": str(e), "client_ip": client_ip}, exc_info=True)
+            if PKCE_VALIDATION_ENABLED:
+                AuditLogger.log_suspicious_activity(
+                    activity_type="refresh_exception",
+                    details=f"Microsoft: {str(e)}",
                     client_ip=client_ip
                 )
             resp = make_response(jsonify({

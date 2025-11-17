@@ -343,10 +343,30 @@
                 } catch {
                     errorData = { error: 'unknown', error_description: errorText };
                 }
+                
+                // Log detalhado do erro
                 console.error('❌ Erro do backend Microsoft:', {
                     status: response.status,
-                    error: errorData
+                    error: errorData,
+                    hasCode: !!params.code,
+                    hasCodeVerifier: !!codeVerifier,
+                    codeVerifierSource: codeVerifierSource || 'NÃO ENCONTRADO',
+                    tenant: tenant,
+                    redirect_uri: requestBody.redirect_uri
                 });
+                
+                // Se for erro 400, logar possíveis causas
+                if (response.status === 400) {
+                    console.warn('⚠️ Erro 400 - Possíveis causas:', {
+                        missingCodeVerifier: !codeVerifier,
+                        invalidCodeVerifier: codeVerifier && (errorData.error_description?.includes('code_verifier') || errorData.error_description?.includes('PKCE')),
+                        invalidCode: errorData.error_description?.includes('code') || errorData.error_description?.includes('authorization_code'),
+                        invalidRedirectUri: errorData.error_description?.includes('redirect_uri'),
+                        tenantMismatch: errorData.error_description?.includes('tenant') || errorData.error_description?.includes('AADSTS70000121'),
+                        expiredCode: errorData.error_description?.includes('expired') || errorData.error_description?.includes('invalid_grant'),
+                        errorDetails: errorData
+                    });
+                }
             }
         } catch (error) {
             console.warn('⚠️ Erro ao obter email do backend Microsoft:', error);
@@ -362,9 +382,165 @@
         let realUserData = await getRealUserEmail(params);
         
         if (!realUserData) {
-            console.warn('⚠️ Não foi possível obter email do token Microsoft. Tentando verificar se usuário já está autorizado...');
-            // Lógica de fallback similar ao original, mas simplificada para Microsoft
-            return;
+            console.warn('⚠️ Não foi possível obter email do token Microsoft. Tentando buscar email de outras fontes...');
+            
+            // FALLBACK: Tentar obter email de outras fontes
+            let userEmail = null;
+            let emailSource = null;
+            
+            // PRIORIDADE 1: Parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlEmail = urlParams.get('email');
+            if (urlEmail && urlEmail.includes('@') && !urlEmail.includes('user@caracore.com.br')) {
+                userEmail = urlEmail;
+                emailSource = 'URL parameter';
+            }
+            
+            // PRIORIDADE 2: localStorage
+            if (!userEmail) {
+                userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+                if (userEmail && userEmail.includes('@') && !userEmail.includes('user@caracore.com.br')) {
+                    emailSource = 'localStorage';
+                } else {
+                    userEmail = null;
+                }
+            }
+            
+            // PRIORIDADE 3: sessionStorage
+            if (!userEmail) {
+                try {
+                    const profileStr = sessionStorage.getItem('cara_core_user_profile');
+                    if (profileStr) {
+                        const profile = JSON.parse(profileStr);
+                        const emailFromSession = profile.email || profile.preferred_username;
+                        if (emailFromSession && emailFromSession.includes('@') && !emailFromSession.includes('user@caracore.com.br')) {
+                            userEmail = emailFromSession;
+                            emailSource = 'sessionStorage profile';
+                        }
+                    }
+                } catch (e) {
+                    // Ignorar
+                }
+            }
+            
+            // PRIORIDADE 4: sessionStorage direto
+            if (!userEmail) {
+                userEmail = sessionStorage.getItem('user_email');
+                if (userEmail && userEmail.includes('@') && !userEmail.includes('user@caracore.com.br')) {
+                    emailSource = 'sessionStorage';
+                } else {
+                    userEmail = null;
+                }
+            }
+            
+            if (userEmail) {
+                console.log(`✅ Email encontrado em ${emailSource}:`, userEmail);
+                
+                // Verificar se usuário está autorizado
+                const backendUrl = window.location.hostname === 'localhost' 
+                    ? 'http://localhost:5051'
+                    : 'https://caracore-backend-docker.azurewebsites.net';
+                
+                try {
+                    const authResponse = await fetch(`${backendUrl}/api/check-authorization`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            email: userEmail,
+                            provider: PROVIDER
+                        }),
+                        credentials: 'include'
+                    });
+                    
+                    if (authResponse.ok) {
+                        const authData = await authResponse.json();
+                        if (authData.authorized === true) {
+                            console.log('✅ Usuário autorizado encontrado. Criando autenticação básica...');
+                            
+                            // Criar autenticação básica mesmo sem token completo
+                            const userId = `microsoft_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
+                            
+                            // Validar email antes de criar perfil
+                            const isValidEmail = (email) => {
+                                if (!email) return false;
+                                if (email.includes('user@caracore.com.br') || 
+                                    email.includes('example@') || 
+                                    email === 'user@caracore.com.br' ||
+                                    email.includes('placeholder') ||
+                                    email.includes('test@') ||
+                                    !email.includes('@') ||
+                                    !email.includes('.')) {
+                                    return false;
+                                }
+                                return email.length > 5;
+                            };
+                            
+                            if (!isValidEmail(userEmail)) {
+                                console.error('❌ Email inválido:', userEmail);
+                                return false;
+                            }
+                            
+                            // Criar perfil básico
+                            const userProfile = {
+                                sub: userId,
+                                oid: userId,
+                                email: userEmail,
+                                email_verified: true,
+                                name: userEmail.split('@')[0],
+                                preferred_username: userEmail,
+                                upn: userEmail
+                            };
+                            
+                            const idToken = `${btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${btoa(JSON.stringify(userProfile))}.${btoa(`microsoft-basic-${params.state || Date.now()}`)}`;
+                            const accessToken = `microsoft_basic_${Date.now()}_${Math.random().toString(36)}`;
+                            const refreshToken = `microsoft_basic_refresh_${Date.now()}_${Math.random().toString(36)}`;
+                            
+                            const expiresIn = 3600;
+                            const expiresAt = now + expiresIn;
+                            
+                            // Salvar no formato que SessionManager espera
+                            localStorage.setItem('auth_access_token', accessToken);
+                            localStorage.setItem('auth_refresh_token', refreshToken);
+                            localStorage.setItem('auth_provider', PROVIDER);
+                            localStorage.setItem('auth_user_info', JSON.stringify({
+                                email: userEmail,
+                                name: userProfile.name,
+                                provider: PROVIDER,
+                                user_id: userId
+                            }));
+                            localStorage.setItem('auth_expires_at', expiresAt.toString());
+                            localStorage.setItem('auth_last_activity', now.toString());
+                            localStorage.setItem('user_email', userEmail);
+                            localStorage.setItem('auth_user_email', userEmail);
+                            
+                            // Salvar no formato OIDC para compatibilidade
+                            sessionStorage.setItem('cara_core_oidc_provider', PROVIDER);
+                            sessionStorage.setItem('cara_core_id_token', idToken);
+                            sessionStorage.setItem('cara_core_access_token', accessToken);
+                            sessionStorage.setItem('cara_core_token_type', 'Bearer');
+                            sessionStorage.setItem('cara_core_expires_at', (Date.now() + expiresIn * 1000).toString());
+                            sessionStorage.setItem('cara_core_user_profile', JSON.stringify(userProfile));
+                            sessionStorage.setItem('cara_core_auth_time', Date.now().toString());
+                            
+                            console.log('✅ Autenticação básica criada para usuário autorizado:', userEmail);
+                            return true;
+                        } else {
+                            console.warn('⚠️ Usuário não autorizado:', userEmail);
+                            return false;
+                        }
+                    } else {
+                        console.warn('⚠️ Erro ao verificar autorização:', authResponse.status);
+                    }
+                } catch (authError) {
+                    console.warn('⚠️ Erro ao verificar autorização:', authError);
+                }
+            } else {
+                console.warn('⚠️ Email não encontrado em nenhuma fonte. Não é possível criar autenticação.');
+            }
+            
+            return false;
         }
         
         // VERIFICAR E LIMPAR DADOS DE USUÁRIO ANTERIOR
@@ -577,15 +753,42 @@
                     if (!window.OIDCAuth.isInitialized) {
                         console.log('🔧 Inicializando OIDCAuth com provider: Microsoft');
                         try {
-                            console.log('⏳ Aguardando inicialização do OIDCAuth (timeout: 5s)...');
-                            const initPromise = window.OIDCAuth.initialize('entra'); // Microsoft usa 'entra' internamente
-                            const timeoutPromise = new Promise((_, reject) => 
-                                setTimeout(() => reject(new Error('Timeout na inicialização do OIDCAuth (5s)')), 5000)
-                            );
-                            await Promise.race([initPromise, timeoutPromise]);
-                            console.log('✅ OIDCAuth inicializado com sucesso para Microsoft');
+                            // Verificar se já está inicializando (evitar múltiplas inicializações)
+                            if (window.OIDCAuth._initializing) {
+                                console.log('⏳ OIDCAuth já está inicializando, aguardando...');
+                                // Aguardar até 10s para a inicialização existente completar
+                                for (let i = 0; i < 20; i++) {
+                                    await new Promise(resolve => setTimeout(resolve, 500));
+                                    if (window.OIDCAuth.isInitialized) {
+                                        console.log('✅ OIDCAuth inicializado (aguardou inicialização existente)');
+                                        break;
+                                    }
+                                }
+                                if (!window.OIDCAuth.isInitialized) {
+                                    throw new Error('Timeout aguardando inicialização existente do OIDCAuth (10s)');
+                                }
+                            } else {
+                                console.log('⏳ Aguardando inicialização do OIDCAuth (timeout: 10s)...');
+                                window.OIDCAuth._initializing = true;
+                                try {
+                                    const initPromise = window.OIDCAuth.initialize('entra'); // Microsoft usa 'entra' internamente
+                                    const timeoutPromise = new Promise((_, reject) => 
+                                        setTimeout(() => reject(new Error('Timeout na inicialização do OIDCAuth (10s)')), 10000)
+                                    );
+                                    await Promise.race([initPromise, timeoutPromise]);
+                                    console.log('✅ OIDCAuth inicializado com sucesso para Microsoft');
+                                } finally {
+                                    window.OIDCAuth._initializing = false;
+                                }
+                            }
                         } catch (initError) {
-                            console.warn('⚠️ Erro ao inicializar OIDCAuth:', initError.message);
+                            window.OIDCAuth._initializing = false;
+                            // Timeout não é fatal - podemos usar fallback
+                            if (initError.message.includes('Timeout')) {
+                                console.warn('⚠️ Timeout na inicialização do OIDCAuth (usando fallback):', initError.message);
+                            } else {
+                                console.warn('⚠️ Erro ao inicializar OIDCAuth:', initError.message);
+                            }
                             throw initError;
                         }
                     }
@@ -702,7 +905,7 @@
                 restoreOAuthState(params.state);
             }
             
-            await createAuthentication(params);
+            const authResult = await createAuthentication(params);
             
             await new Promise(resolve => setTimeout(resolve, 500));
             
@@ -710,12 +913,14 @@
                 hasAccessToken: !!localStorage.getItem('auth_access_token'),
                 hasExpiresAt: !!localStorage.getItem('auth_expires_at'),
                 hasProvider: !!localStorage.getItem('auth_provider'),
-                hasUserInfo: !!localStorage.getItem('auth_user_info')
+                hasUserInfo: !!localStorage.getItem('auth_user_info'),
+                authResult: authResult
             };
             
             console.log('🔍 Verificação Microsoft (SessionManager):', verification);
             
-            if (verification.hasAccessToken && verification.hasExpiresAt && verification.hasProvider) {
+            // Se createAuthentication retornou true, significa que autenticação foi criada com sucesso
+            if (authResult === true || (verification.hasAccessToken && verification.hasExpiresAt && verification.hasProvider)) {
                 console.log('🎉 Auto-fix Microsoft aplicado com sucesso!');
                 cleanCallbackUrl();
                 

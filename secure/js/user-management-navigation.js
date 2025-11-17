@@ -73,9 +73,9 @@ class UserManagementNavigation {
                         <span class="nav-separator-text">Super Administrador</span>
                     </li>
                     <li class="nav-item" data-role="super_admin">
-                        <a href="/secure/super-admin-setup.html" class="nav-link" data-page="super-admin-setup">
-                            <span class="nav-icon">⚙️</span>
-                            <span class="nav-text">Configuração Inicial</span>
+                        <a href="/secure/super-admin-login.html" class="nav-link" data-page="super-admin-login">
+                            <span class="nav-icon">🔐</span>
+                            <span class="nav-text">Login Super Admin</span>
                         </a>
                     </li>
                 </ul>

@@ -11,7 +11,7 @@ O sistema CaraCore implementa um sistema de autenticação híbrido que inclui:
 
 - **E-mail:** `suporte@caracore.com.br`
 - **Senha:** Configurada via script `setup_super_admin.py`
-- **URL de Login:** https://www.caracore.com.br/secure/super-admin-setup.html
+- **URL de Login:** https://www.caracore.com.br/secure/super-admin-login.html
 
 ## Configuração Inicial
 
@@ -50,7 +50,7 @@ JWT_SECRET_KEY=<chave_secreta_gerada>
 
 ### 3. Testar Autenticação
 
-1. Acesse: https://www.caracore.com.br/secure/super-admin-setup.html
+1. Acesse: https://www.caracore.com.br/secure/super-admin-login.html
 2. O e-mail já estará preenchido: `suporte@caracore.com.br`
 3. Digite a senha configurada
 4. Clique em **Entrar como Super Administrador**
@@ -279,8 +279,8 @@ exp=datetime.utcnow() + timedelta(hours=168) # 7 dias
 
 - **Script de Setup:** `scripts/setup_super_admin.py`
 - **Backend:** `backend/app.py` (linhas com `/auth/super-admin`)
-- **Frontend:** `secure/js/super-admin-setup.js`
-- **Página de Login:** `secure/super-admin-setup.html`
+- **Frontend:** `secure/js/super-admin-login.js`
+- **Página de Login:** `secure/super-admin-login.html`
 - **Secrets:** `secrets.txt` (não versionado)
 - **Template:** `secrets.txt.template`
 

@@ -40,7 +40,7 @@ describe('User Management Navigation - Sistema de Navegação', () => {
                         <h2>Gerenciamento de Usuários</h2>
                     </div>
                     <div class="nav-menu" id="nav-menu">
-                        <a href="/secure/super-admin-setup.html" class="nav-link" id="setup-link" data-role="super_admin">
+                        <a href="/secure/super-admin-login.html" class="nav-link" id="setup-link" data-role="super_admin">
                             <span class="nav-icon">⚙️</span>
                             <span class="nav-text">Configuração Inicial</span>
                         </a>
@@ -286,7 +286,7 @@ describe('User Management Navigation - Sistema de Navegação', () => {
             };
 
             const pageMap = {
-                'super-admin-setup': 'Configuração Inicial',
+                'super-admin-login': 'Login Super Admin',
                 'request-access-enhanced': 'Solicitar Acesso',
                 'approval-requests': 'Aprovar Solicitações'
             };

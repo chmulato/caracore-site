@@ -220,8 +220,29 @@
           if (isAuthorized) {
             console.log('Restrita: Usuário autorizado, acesso liberado');
             
+            // Verificar se SessionManager está disponível
+            const hasSessionManager = typeof SessionManager !== 'undefined' && SessionManager !== null;
+            
+            // Verificar se já tem sessão válida
+            let hasValidSession = false;
+            if (hasSessionManager) {
+              try {
+                hasValidSession = SessionManager.isAuthenticated();
+              } catch (e) {
+                console.warn('Erro ao verificar autenticação:', e);
+              }
+            } else {
+              // Se SessionManager não está disponível, verificar manualmente
+              const accessToken = localStorage.getItem('auth_access_token');
+              const expiresAt = localStorage.getItem('auth_expires_at');
+              if (accessToken && expiresAt) {
+                const now = Math.floor(Date.now() / 1000);
+                hasValidSession = now < parseInt(expiresAt);
+              }
+            }
+            
             // Se autorizado mas não tem sessão válida, criar uma sessão mínima
-            const isMinimalSession = !SessionManager.isAuthenticated();
+            const isMinimalSession = !hasValidSession;
             if (isMinimalSession) {
               console.log('Restrita: Usuário autorizado mas sem sessão válida, criando sessão mínima...');
               
@@ -242,27 +263,37 @@
               const userInfo = {
                 email: userEmail,
                 provider: provider,
-                authorized: true
+                authorized: true,
+                name: userEmail.split('@')[0] || 'Usuário'
               };
               localStorage.setItem('auth_user_info', JSON.stringify(userInfo));
               
               console.log('Restrita: Sessão mínima criada para usuário autorizado');
+              hasValidSession = true; // Agora tem sessão válida
             }
             
             // Verificar autenticação (sem iniciar verificação periódica se for sessão mínima)
-            if (SessionManager.isAuthenticated()) {
-              // Se não for sessão mínima, usar requireAuth que inicia verificação periódica
-              // Para sessão mínima, apenas verificar isAuthenticated sem iniciar validação periódica
-              if (!isMinimalSession && !localStorage.getItem('auth_minimal_session')) {
-                // Usar requireAuth para sessões normais (inicia verificação periódica)
-                if (!SessionManager.requireAuth()) {
-                  console.error('Restrita: Falha na autenticação, redirecionando...');
-                  return;
+            if (hasValidSession) {
+              // Se SessionManager está disponível e não é sessão mínima, usar requireAuth
+              if (hasSessionManager && !isMinimalSession && !localStorage.getItem('auth_minimal_session')) {
+                try {
+                  if (!SessionManager.requireAuth()) {
+                    console.error('Restrita: Falha na autenticação, redirecionando...');
+                    return;
+                  }
+                } catch (e) {
+                  console.warn('Erro ao chamar requireAuth:', e);
+                  // Continuar mesmo com erro
                 }
-              } else if (isMinimalSession) {
+              } else if (hasSessionManager && isMinimalSession) {
                 // Para sessão mínima, iniciar verificação periódica mas sem validar no backend
                 // A validação já foi ajustada no SessionManager para tratar sessões mínimas
-                SessionManager.startSessionCheck();
+                try {
+                  SessionManager.startSessionCheck();
+                } catch (e) {
+                  console.warn('Erro ao iniciar verificação de sessão:', e);
+                  // Continuar mesmo com erro
+                }
               }
               
               // Carregar e exibir informações do usuário
@@ -383,6 +414,19 @@
         let userName = email.split('@')[0]; // Fallback para parte antes do @
         let userRole = 'Usuário';
         
+        // Verificar se temos informações do localStorage (sessão mínima)
+        const userInfoStr = localStorage.getItem('auth_user_info');
+        if (userInfoStr) {
+          try {
+            const userInfo = JSON.parse(userInfoStr);
+            if (userInfo.name) {
+              userName = userInfo.name;
+            }
+          } catch (e) {
+            // Ignorar erro
+          }
+        }
+        
         // Verificar se temos informações do OIDC
         try {
           if (window.OIDCAuth) {
@@ -441,6 +485,47 @@
         console.error('Erro ao carregar informações do usuário:', error);
       }
     }
+    
+    // Monitorar expiração da sessão mínima e renovar automaticamente
+    function setupMinimalSessionRenewal() {
+      const isMinimalSession = localStorage.getItem('auth_minimal_session') === 'true';
+      if (!isMinimalSession) return;
+      
+      // Verificar expiração a cada 5 minutos
+      setInterval(async () => {
+        const expiresAt = localStorage.getItem('auth_expires_at');
+        if (!expiresAt) return;
+        
+        const now = Math.floor(Date.now() / 1000);
+        const expiresIn = parseInt(expiresAt) - now;
+        
+        // Se expira em menos de 10 minutos, renovar
+        if (expiresIn < 600) {
+          const userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+          const provider = localStorage.getItem('auth_provider') || 'google';
+          
+          if (userEmail && window.authChecker) {
+            try {
+              const authResult = await window.authChecker.checkAuthorization(userEmail, provider, false);
+              
+              if (authResult.authorized) {
+                // Renovar sessão mínima
+                const newExpiresAt = Math.floor(Date.now() / 1000) + 3600; // 1 hora
+                localStorage.setItem('auth_expires_at', newExpiresAt.toString());
+                console.log('Restrita: Sessão mínima renovada automaticamente');
+              } else {
+                console.warn('Restrita: Usuário não autorizado mais, sessão não renovada');
+              }
+            } catch (error) {
+              console.warn('Restrita: Erro ao renovar sessão mínima:', error);
+            }
+          }
+        }
+      }, 300000); // Verificar a cada 5 minutos
+    }
+    
+    // Iniciar monitoramento de renovação de sessão mínima
+    setupMinimalSessionRenewal();
     
     // Event listeners para os botões do card do usuário
     document.addEventListener('DOMContentLoaded', function() {
@@ -654,7 +739,7 @@
   <script defer src="/secure/js/auth-force-recognition.js?v=20251011"></script>
   <script defer src="/secure/js/auth-standalone.js"></script>
   <script defer src="/secure/js/nav-controls.js?v=20251012"></script>
-  <script defer src="/secure/js/secure-auth-ui.js?v=20251012"></script>
+  <script defer src="/secure/js/secure-auth-ui.js?v=20251117"></script>
   <script defer src="/secure/js/error-handler.js?v=20251012"></script>
   <script defer src="/secure/js/enhanced-error-handler.js?v=20251012"></script>
 <!-- Script de autenticação centralizado em /secure/js/secure-auth-ui.js -->

@@ -99,9 +99,16 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
       // Verificar se o método existe antes de chamar
       if (window.OIDCAuth && typeof window.OIDCAuth.getUserProfile === 'function') {
-        profile = await window.OIDCAuth.getUserProfile();
-      } else if (isMinimalSession) {
-        // Para sessão mínima, criar perfil básico do localStorage
+        try {
+          profile = await window.OIDCAuth.getUserProfile();
+        } catch (e) {
+          console.warn('Erro ao chamar getUserProfile:', e);
+          // Continuar para fallback
+        }
+      }
+      
+      // Se não obteve perfil do OIDC, tentar do localStorage (sessão mínima ou fallback)
+      if (!profile) {
         const userInfoStr = localStorage.getItem('auth_user_info');
         if (userInfoStr) {
           try {
@@ -115,13 +122,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Ignorar erro de parsing
           }
         }
+        
+        // Se ainda não tem perfil, criar básico do email
+        if (!profile && userEmail) {
+          profile = {
+            email: userEmail,
+            name: userEmail.split('@')[0] || 'Usuário',
+            provider: localStorage.getItem('auth_provider') || 'google'
+          };
+        }
       }
       
       // Tentar obter storedInfo
       if (window.OIDCAuth && typeof window.OIDCAuth.getStoredUserInfo === 'function') {
-        storedInfo = await window.OIDCAuth.getStoredUserInfo();
-      } else if (isMinimalSession) {
-        // Para sessão mínima, criar storedInfo básico
+        try {
+          storedInfo = await window.OIDCAuth.getStoredUserInfo();
+        } catch (e) {
+          console.warn('Erro ao chamar getStoredUserInfo:', e);
+          // Continuar para fallback
+        }
+      }
+      
+      // Se não obteve storedInfo, criar básico
+      if (!storedInfo) {
         const provider = localStorage.getItem('auth_provider') || 'google';
         storedInfo = {
           provider: provider,
@@ -132,6 +155,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     } catch (error) {
       console.warn('Erro ao obter perfil do usuário:', error);
       // Continuar mesmo com erro, usar dados do localStorage
+      if (!profile && userEmail) {
+        profile = {
+          email: userEmail,
+          name: userEmail.split('@')[0] || 'Usuário',
+          provider: localStorage.getItem('auth_provider') || 'google'
+        };
+      }
+      if (!storedInfo) {
+        storedInfo = {
+          provider: localStorage.getItem('auth_provider') || 'google',
+          email: userEmail,
+          name: profile?.name || userEmail?.split('@')[0] || 'Usuário'
+        };
+      }
     }
 
     if (profile || userEmail) {

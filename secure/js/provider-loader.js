@@ -104,7 +104,7 @@
         
         if (provider === 'google') {
             // PRIMEIRO: Carregar oauth-callback-auto-fix-google.js
-            loadScript(`${basePath}/oauth-callback-auto-fix-google.js${version}`, () => {
+            loadScript(`${basePath}/oauth-callback-auto-fix-google.js?v=20251117`, () => {
                 console.log('✅ Google callback script carregado');
                 
                 // DEPOIS: Carregar callback-authorization-google.js (deve ser após o auto-fix)

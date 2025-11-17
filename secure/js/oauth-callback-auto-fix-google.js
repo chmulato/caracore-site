@@ -380,7 +380,67 @@
                         return email.length > 5;
                     };
                     
-                    // Redirecionar para primeiro acesso
+                    // ANTES de redirecionar para first-access, verificar se o usuário já está autorizado
+                    if (userEmail && isValidEmail(userEmail)) {
+                        console.log('🔄 Verificando autorização antes de redirecionar...', userEmail);
+                        
+                        // Verificar se AuthorizationChecker está disponível
+                        if (window.authChecker && typeof window.authChecker.checkAuthorization === 'function') {
+                            try {
+                                const authResult = await window.authChecker.checkAuthorization(userEmail, 'google', false);
+                                
+                                if (authResult && authResult.authorized) {
+                                    console.log('✅ Usuário já autorizado, redirecionando diretamente para área restrita');
+                                    // Salvar dados do usuário antes de redirecionar
+                                    localStorage.setItem('user_email', userEmail);
+                                    localStorage.setItem('auth_user_email', userEmail);
+                                    localStorage.setItem('auth_provider', 'google');
+                                    
+                                    // Redirecionar para área restrita
+                                    setTimeout(() => {
+                                        window.location.href = '/secure/restrita.html';
+                                    }, 500);
+                                    return null;
+                                } else {
+                                    console.log('⚠️ Usuário não autorizado, redirecionando para primeiro acesso');
+                                }
+                            } catch (authError) {
+                                console.warn('⚠️ Erro ao verificar autorização, redirecionando para primeiro acesso:', authError);
+                            }
+                        } else if (typeof requireAuthorization === 'function') {
+                            // Tentar usar requireAuthorization se disponível
+                            try {
+                                const isAuthorized = await requireAuthorization({
+                                    email: userEmail,
+                                    provider: 'google',
+                                    showLoading: false,
+                                    redirectOnFail: false // Não redirecionar automaticamente
+                                });
+                                
+                                if (isAuthorized) {
+                                    console.log('✅ Usuário já autorizado, redirecionando diretamente para área restrita');
+                                    // Salvar dados do usuário antes de redirecionar
+                                    localStorage.setItem('user_email', userEmail);
+                                    localStorage.setItem('auth_user_email', userEmail);
+                                    localStorage.setItem('auth_provider', 'google');
+                                    
+                                    // Redirecionar para área restrita
+                                    setTimeout(() => {
+                                        window.location.href = '/secure/restrita.html';
+                                    }, 500);
+                                    return null;
+                                } else {
+                                    console.log('⚠️ Usuário não autorizado, redirecionando para primeiro acesso');
+                                }
+                            } catch (authError) {
+                                console.warn('⚠️ Erro ao verificar autorização, redirecionando para primeiro acesso:', authError);
+                            }
+                        } else {
+                            console.log('⚠️ AuthorizationChecker não disponível, redirecionando para primeiro acesso');
+                        }
+                    }
+                    
+                    // Redirecionar para primeiro acesso apenas se não estiver autorizado
                     let firstAccessUrl = `/secure/first-access.html?provider=google&t=${Date.now()}`;
                     if (userEmail && isValidEmail(userEmail)) {
                         firstAccessUrl = `/secure/first-access.html?email=${encodeURIComponent(userEmail)}&provider=google&t=${Date.now()}`;

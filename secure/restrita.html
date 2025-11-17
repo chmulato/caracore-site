@@ -259,6 +259,10 @@
                   console.error('Restrita: Falha na autenticação, redirecionando...');
                   return;
                 }
+              } else if (isMinimalSession) {
+                // Para sessão mínima, iniciar verificação periódica mas sem validar no backend
+                // A validação já foi ajustada no SessionManager para tratar sessões mínimas
+                SessionManager.startSessionCheck();
               }
               
               // Carregar e exibir informações do usuário
@@ -272,8 +276,31 @@
               
               console.log('[Estrita] Página protegida carregada com sucesso');
             } else {
-              console.error('Restrita: Falha ao criar sessão, redirecionando...');
-              window.location.href = '/secure/index.html';
+              // Se sessão expirou, tentar renovar se ainda autorizado
+              console.log('Restrita: Sessão expirada, verificando se pode renovar...');
+              
+              // Verificar autorização diretamente sem redirecionar
+              if (window.authChecker) {
+                const authResult = await window.authChecker.checkAuthorization(userEmail, provider, true);
+                
+                if (authResult.authorized) {
+                  // Renovar sessão mínima
+                  console.log('Restrita: Usuário ainda autorizado, renovando sessão mínima...');
+                  const expiresAt = Math.floor(Date.now() / 1000) + 3600; // 1 hora
+                  localStorage.setItem('auth_access_token', 'authorized_session');
+                  localStorage.setItem('auth_expires_at', expiresAt.toString());
+                  localStorage.setItem('auth_minimal_session', 'true');
+                  
+                  // Recarregar página para aplicar nova sessão
+                  window.location.reload();
+                } else {
+                  console.error('Restrita: Usuário não autorizado mais, redirecionando...');
+                  window.location.href = '/secure/index.html';
+                }
+              } else {
+                console.error('Restrita: AuthChecker não disponível, redirecionando...');
+                window.location.href = '/secure/index.html';
+              }
             }
           }
           // Se não autorizado, requireAuthorization já redirecionou

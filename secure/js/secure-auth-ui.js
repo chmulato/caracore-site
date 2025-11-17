@@ -64,27 +64,75 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Verificar se há dados de autorização no localStorage/sessionStorage
     const userEmail = localStorage.getItem('user_email') || 
                      localStorage.getItem('auth_user_email') ||
-                     sessionStorage.getItem('user_email');
+                     sessionStorage.getItem('user_email') ||
+                     sessionStorage.getItem('cara_core_user_email');
+    
+    // Verificar se é sessão mínima (quando token foi rejeitado mas usuário está autorizado)
+    const isMinimalSession = localStorage.getItem('auth_minimal_session') === 'true';
     
     // Se não há email, verificar autenticação OIDC
     if (!userEmail) {
-      const isAuthenticated = await window.OIDCAuth.isAuthenticated();
-      if (!isAuthenticated) {
-        // Aguardar mais um pouco antes de mostrar "não autenticado"
-        // para dar tempo da verificação de autorização
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        
-        // Verificar novamente se a página foi substituída
-        const stillShowingNotAuth = document.body.textContent.includes('Você não está autenticado');
-        if (!stillShowingNotAuth) {
-          showNotLogged();
+      try {
+        const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+        if (!isAuthenticated) {
+          // Aguardar mais um pouco antes de mostrar "não autenticado"
+          // para dar tempo da verificação de autorização
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          
+          // Verificar novamente se a página foi substituída
+          const stillShowingNotAuth = document.body.textContent.includes('Você não está autenticado');
+          if (!stillShowingNotAuth) {
+            showNotLogged();
+          }
+          return;
         }
-        return;
+      } catch (error) {
+        console.warn('Erro ao verificar autenticação OIDC:', error);
+        // Continuar mesmo com erro, pode ser sessão mínima
       }
     }
 
-    const profile = await window.OIDCAuth.getUserProfile();
-    const storedInfo = window.OIDCAuth.getStoredUserInfo && window.OIDCAuth.getStoredUserInfo();
+    // Tentar obter perfil do OIDC (pode não existir em sessão mínima)
+    let profile = null;
+    let storedInfo = null;
+    
+    try {
+      // Verificar se o método existe antes de chamar
+      if (window.OIDCAuth && typeof window.OIDCAuth.getUserProfile === 'function') {
+        profile = await window.OIDCAuth.getUserProfile();
+      } else if (isMinimalSession) {
+        // Para sessão mínima, criar perfil básico do localStorage
+        const userInfoStr = localStorage.getItem('auth_user_info');
+        if (userInfoStr) {
+          try {
+            const userInfo = JSON.parse(userInfoStr);
+            profile = {
+              email: userInfo.email || userEmail,
+              name: userInfo.name || userEmail?.split('@')[0] || 'Usuário',
+              provider: userInfo.provider
+            };
+          } catch (e) {
+            // Ignorar erro de parsing
+          }
+        }
+      }
+      
+      // Tentar obter storedInfo
+      if (window.OIDCAuth && typeof window.OIDCAuth.getStoredUserInfo === 'function') {
+        storedInfo = await window.OIDCAuth.getStoredUserInfo();
+      } else if (isMinimalSession) {
+        // Para sessão mínima, criar storedInfo básico
+        const provider = localStorage.getItem('auth_provider') || 'google';
+        storedInfo = {
+          provider: provider,
+          email: userEmail,
+          name: profile?.name || userEmail?.split('@')[0] || 'Usuário'
+        };
+      }
+    } catch (error) {
+      console.warn('Erro ao obter perfil do usuário:', error);
+      // Continuar mesmo com erro, usar dados do localStorage
+    }
 
     if (profile || userEmail) {
       if (roleBadge) {

@@ -165,6 +165,27 @@ const SessionManager = (function() {
             return { valid: false, reason: 'no_token' };
         }
         
+        // Verificar se é sessão mínima (não validar no backend)
+        const isMinimalSession = localStorage.getItem('auth_minimal_session') === 'true';
+        if (isMinimalSession) {
+            // Para sessão mínima, apenas verificar se não expirou localmente
+            const expiresAt = localStorage.getItem(CONFIG.STORAGE_KEYS.EXPIRES_AT);
+            if (expiresAt) {
+                const now = Math.floor(Date.now() / 1000);
+                if (now < parseInt(expiresAt)) {
+                    updateLastActivity();
+                    console.log('[SessionManager] Sessão mínima válida (não validada no backend)');
+                    return { valid: true, reason: 'minimal_session' };
+                } else {
+                    console.log('[SessionManager] Sessão mínima expirada');
+                    return { valid: false, reason: 'minimal_session_expired' };
+                }
+            }
+            // Se não tem expiresAt, considerar válida por enquanto
+            updateLastActivity();
+            return { valid: true, reason: 'minimal_session' };
+        }
+        
         // Verificar timeout de inatividade
         if (checkInactivityTimeout()) {
             await logout();
@@ -463,6 +484,14 @@ const SessionManager = (function() {
         // Verificar imediatamente
         validateSession().then(result => {
             if (!result.valid) {
+                // Para sessão mínima expirada, não redirecionar imediatamente
+                // Deixar a verificação de autorização tratar
+                const isMinimalSession = localStorage.getItem('auth_minimal_session') === 'true';
+                if (result.reason === 'minimal_session_expired' && isMinimalSession) {
+                    console.log('[SessionManager] Sessão mínima expirada, aguardando verificação de autorização...');
+                    // Não redirecionar - deixar verificação de autorização tratar
+                    return;
+                }
                 console.log('[SessionManager] Sessão inválida, redirecionando para login...');
                 redirectToLogin();
             }
@@ -472,6 +501,13 @@ const SessionManager = (function() {
         checkInterval = setInterval(async () => {
             const result = await validateSession();
             if (!result.valid) {
+                // Para sessão mínima expirada, não redirecionar imediatamente
+                const isMinimalSession = localStorage.getItem('auth_minimal_session') === 'true';
+                if (result.reason === 'minimal_session_expired' && isMinimalSession) {
+                    console.log('[SessionManager] Sessão mínima expirada durante verificação periódica');
+                    // Não redirecionar - deixar verificação de autorização tratar
+                    return;
+                }
                 console.log('[SessionManager] Sessão inválida durante verificação periódica');
                 redirectToLogin();
             }

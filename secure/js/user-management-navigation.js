@@ -64,7 +64,7 @@ class UserManagementNavigation {
                         </a>
                     </li>
                     <li class="nav-item" data-role="user">
-                        <a href="/secure/request-access-enhanced.html" class="nav-link" data-page="request-access">
+                        <a href="/secure/first-access.html" class="nav-link" data-page="request-access">
                             <span class="nav-icon">📝</span>
                             <span class="nav-text">Solicitar Acesso</span>
                         </a>

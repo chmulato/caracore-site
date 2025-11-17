@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       
       const firstAccessLink = document.createElement('a');
       firstAccessLink.id = 'firstAccessLink';
-      firstAccessLink.href = '/secure/request-access.html';
+      firstAccessLink.href = '/secure/first-access.html';
       firstAccessLink.className = 'first-access-link';
       firstAccessLink.style.cssText = 'color: #3b82f6; text-decoration: none; font-size: 0.95rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; border-radius: 0.5rem; transition: all 0.2s; font-weight: 500;';
       firstAccessLink.innerHTML = `

@@ -109,7 +109,7 @@
         </div>
 
         <div class="action-buttons">
-          <a href="/secure/request-access.html" class="btn-primary-danger">
+          <a href="/secure/first-access.html" class="btn-primary-danger">
             <svg class="icon-sm" aria-hidden="true"><use href="#icon-mail"></use></svg>
             Solicitar Acesso
           </a>
@@ -180,7 +180,7 @@
       if (requested) {
         const requestedMessage = document.getElementById('requestedMessage');
         const infoBox = document.getElementById('infoBox');
-        const requestAccessBtn = document.querySelector('a[href="/secure/request-access.html"]');
+        const requestAccessBtn = document.querySelector('a[href="/secure/first-access.html"]');
         
         if (requestedMessage) {
           requestedMessage.style.display = 'block';
@@ -231,7 +231,7 @@
         }
         
         // Ocultar botão de solicitar acesso (não faz sentido para usuário inativo)
-        const requestAccessBtn = document.querySelector('a[href="/secure/request-access.html"]');
+        const requestAccessBtn = document.querySelector('a[href="/secure/first-access.html"]');
         if (requestAccessBtn) {
           requestAccessBtn.style.display = 'none';
         }

@@ -555,8 +555,8 @@
                 console.warn('⚠️ Email não encontrado em nenhuma fonte. Redirecionando para primeiro contato...');
                 
                 // Se não há email em nenhuma fonte, é provável que seja um usuário novo
-                // Redirecionar para página de primeiro contato
-                const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                // Redirecionar para página de primeiro contato (com WhatsApp)
+                const redirectUrl = new URL('/secure/first-access.html', window.location.origin);
                 redirectUrl.searchParams.set('provider', PROVIDER);
                 redirectUrl.searchParams.set('t', Date.now().toString());
                 
@@ -996,9 +996,9 @@
                         }, 1000);
                     }
                 } else {
-                    // Se não há email, redirecionar para primeiro contato
+                    // Se não há email, redirecionar para primeiro contato (com WhatsApp)
                     console.warn('⚠️ Email não encontrado, redirecionando para primeiro contato');
-                    const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                    const redirectUrl = new URL('/secure/first-access.html', window.location.origin);
                     redirectUrl.searchParams.set('provider', provider);
                     redirectUrl.searchParams.set('t', Date.now().toString());
                     setTimeout(() => {
@@ -1013,9 +1013,9 @@
                 const userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
                 
                 if (!userEmail || userEmail.includes('user@caracore.com.br')) {
-                    // Não há email válido - redirecionar para primeiro contato
+                    // Não há email válido - redirecionar para primeiro contato (com WhatsApp)
                     console.log('🔄 Sem email válido detectado, redirecionando para primeiro contato...');
-                    const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                    const redirectUrl = new URL('/secure/first-access.html', window.location.origin);
                     redirectUrl.searchParams.set('provider', PROVIDER);
                     redirectUrl.searchParams.set('t', Date.now().toString());
                     
@@ -1052,7 +1052,7 @@
                             if (authData.authorized === true) {
                                 // Usuário autorizado mas autenticação falhou - redirecionar para primeiro contato para reautenticar
                                 console.log('✅ Usuário autorizado mas autenticação falhou. Redirecionando para primeiro contato para reautenticar...');
-                                const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                                const redirectUrl = new URL('/secure/first-access.html', window.location.origin);
                                 redirectUrl.searchParams.set('email', userEmail);
                                 redirectUrl.searchParams.set('provider', PROVIDER);
                                 redirectUrl.searchParams.set('t', Date.now().toString());
@@ -1067,9 +1067,9 @@
                         console.warn('⚠️ Erro ao verificar autorização:', e);
                     }
                     
-                    // Se chegou aqui, redirecionar para primeiro contato
+                    // Se chegou aqui, redirecionar para primeiro contato (com WhatsApp)
                     console.log('🔄 Redirecionando para primeiro contato...');
-                    const redirectUrl = new URL('/secure/request-access.html', window.location.origin);
+                    const redirectUrl = new URL('/secure/first-access.html', window.location.origin);
                     if (userEmail && !userEmail.includes('user@caracore.com.br')) {
                         redirectUrl.searchParams.set('email', userEmail);
                     }

@@ -353,6 +353,30 @@ python scripts/executar_ut_secure.py --output
 
 ## Scripts de Utilidades
 
+### Setup do Favicon (GitHub Pages)
+
+**Arquivos:**
+- `setup-favicon.sh` - Script Bash para Linux/Mac
+- `setup-favicon.ps1` - Script PowerShell para Windows
+
+**Função:** Copia `favicon.ico` de `images/` para a raiz do projeto (necessário para GitHub Pages).
+
+**Uso:**
+```bash
+# Windows
+npm run setup:favicon:windows
+
+# Linux/Mac
+npm run setup:favicon
+```
+
+**Quando executar:**
+- Antes de fazer deploy para produção
+- Após atualizar o favicon em `images/favicon.ico`
+- Antes de commit/push para GitHub
+
+**Documentação:** Ver `scripts/README_FAVICON.md` para detalhes completos.
+
 ### Empacotamento com Docker
 
 **Arquivo:** `package_backend_with_docker.py`

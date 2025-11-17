@@ -552,9 +552,128 @@
                     console.warn('⚠️ Erro ao verificar autorização:', authError);
                 }
             } else {
+                console.warn('⚠️ Email não encontrado em fontes de storage. Tentando obter do OIDCAuth...');
+                
+                // ÚLTIMA TENTATIVA: Tentar obter email diretamente do OIDCAuth
+                // Isso é importante quando o OIDC reconheceu o usuário mas o backend retornou erro 400
+                let emailFromOIDC = null;
+                if (window.OIDCAuth) {
+                    try {
+                        // Aguardar um pouco mais para o OIDCAuth processar completamente
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        const isAuthenticated = await window.OIDCAuth.isAuthenticated();
+                        if (isAuthenticated) {
+                            const user = await window.OIDCAuth.getUser();
+                            if (user && user.profile) {
+                                emailFromOIDC = user.profile.email || user.profile.preferred_username;
+                                console.log('✅ Email obtido do OIDCAuth:', emailFromOIDC);
+                                
+                                // Validar que é um email Microsoft
+                                if (emailFromOIDC) {
+                                    const emailDomain = emailFromOIDC.toLowerCase().split('@')[1];
+                                    const isMicrosoftDomain = emailDomain === 'hotmail.com' || 
+                                                             emailDomain === 'outlook.com' || 
+                                                             emailDomain === 'live.com' || 
+                                                             emailDomain === 'msn.com' ||
+                                                             emailDomain.startsWith('hotmail.') || 
+                                                             emailDomain.startsWith('outlook.') || 
+                                                             emailDomain.startsWith('live.') ||
+                                                             emailDomain.endsWith('.microsoft.com') ||
+                                                             emailDomain.endsWith('.microsoftonline.com');
+                                    
+                                    if (isMicrosoftDomain) {
+                                        // Verificar se usuário está autorizado
+                                        const backendUrl = window.location.hostname === 'localhost' 
+                                            ? 'http://localhost:5051'
+                                            : 'https://caracore-backend-docker.azurewebsites.net';
+                                        
+                                        try {
+                                            const authResponse = await fetch(`${backendUrl}/api/check-authorization`, {
+                                                method: 'POST',
+                                                headers: {
+                                                    'Content-Type': 'application/json'
+                                                },
+                                                body: JSON.stringify({
+                                                    email: emailFromOIDC,
+                                                    provider: PROVIDER
+                                                }),
+                                                credentials: 'include'
+                                            });
+                                            
+                                            if (authResponse.ok) {
+                                                const authData = await authResponse.json();
+                                                if (authData.authorized === true) {
+                                                    console.log('✅ Usuário autorizado encontrado via OIDC. Criando autenticação...');
+                                                    
+                                                    // Criar autenticação básica para usuário autorizado
+                                                    const userId = `microsoft_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
+                                                    
+                                                    const userProfile = {
+                                                        sub: userId,
+                                                        oid: userId,
+                                                        email: emailFromOIDC,
+                                                        email_verified: true,
+                                                        name: user.profile.name || emailFromOIDC.split('@')[0],
+                                                        preferred_username: emailFromOIDC,
+                                                        upn: emailFromOIDC,
+                                                        ...user.profile
+                                                    };
+                                                    
+                                                    const idToken = user.id_token || `${btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${btoa(JSON.stringify(userProfile))}.${btoa(`microsoft-oidc-${params.state || Date.now()}`)}`;
+                                                    const accessToken = user.access_token || `microsoft_oidc_${Date.now()}_${Math.random().toString(36)}`;
+                                                    const refreshToken = user.refresh_token || `microsoft_oidc_refresh_${Date.now()}_${Math.random().toString(36)}`;
+                                                    
+                                                    const expiresIn = user.expires_in || 3600;
+                                                    const expiresAt = Math.floor(Date.now() / 1000) + expiresIn;
+                                                    
+                                                    // Salvar no formato que SessionManager espera
+                                                    localStorage.setItem('auth_access_token', accessToken);
+                                                    localStorage.setItem('auth_refresh_token', refreshToken);
+                                                    localStorage.setItem('auth_provider', PROVIDER);
+                                                    localStorage.setItem('auth_user_info', JSON.stringify({
+                                                        email: emailFromOIDC,
+                                                        name: userProfile.name,
+                                                        provider: PROVIDER,
+                                                        user_id: userId
+                                                    }));
+                                                    localStorage.setItem('auth_expires_at', expiresAt.toString());
+                                                    localStorage.setItem('auth_last_activity', Math.floor(Date.now() / 1000).toString());
+                                                    localStorage.setItem('user_email', emailFromOIDC);
+                                                    localStorage.setItem('auth_user_email', emailFromOIDC);
+                                                    
+                                                    // Salvar no formato OIDC para compatibilidade
+                                                    sessionStorage.setItem('cara_core_oidc_provider', PROVIDER);
+                                                    sessionStorage.setItem('cara_core_id_token', idToken);
+                                                    sessionStorage.setItem('cara_core_access_token', accessToken);
+                                                    sessionStorage.setItem('cara_core_token_type', 'Bearer');
+                                                    sessionStorage.setItem('cara_core_expires_at', (Date.now() + expiresIn * 1000).toString());
+                                                    sessionStorage.setItem('cara_core_user_profile', JSON.stringify(userProfile));
+                                                    sessionStorage.setItem('cara_core_auth_time', Date.now().toString());
+                                                    
+                                                    console.log('✅ Autenticação criada para usuário autorizado via OIDC:', emailFromOIDC);
+                                                    return true; // Sucesso - autenticação criada
+                                                } else {
+                                                    console.warn('⚠️ Usuário não autorizado:', emailFromOIDC);
+                                                }
+                                            }
+                                        } catch (authError) {
+                                            console.warn('⚠️ Erro ao verificar autorização do OIDC:', authError);
+                                        }
+                                    } else {
+                                        console.warn('⚠️ Email do OIDC não é Microsoft:', emailFromOIDC);
+                                    }
+                                }
+                            }
+                        }
+                    } catch (oidcError) {
+                        console.warn('⚠️ Erro ao obter email do OIDCAuth:', oidcError);
+                    }
+                }
+                
+                // Se chegou aqui, não conseguiu obter email nem criar autenticação
                 console.warn('⚠️ Email não encontrado em nenhuma fonte. Redirecionando para primeiro contato...');
                 
-                // Se não há email em nenhuma fonte, é provável que seja um usuário novo
                 // Redirecionar para página de primeiro contato (com WhatsApp)
                 const redirectUrl = new URL('/secure/first-access.html', window.location.origin);
                 redirectUrl.searchParams.set('provider', PROVIDER);
@@ -979,17 +1098,36 @@
                                 setTimeout(() => {
                                     window.location.href = '/secure/restrita.html';
                                 }, 500);
+                                return true;
                             }
                             // Se não autorizado, requireAuthorization já redirecionou
                         } catch (authError) {
                             console.error('❌ Erro ao verificar autorização:', authError);
-                            // Em caso de erro, tentar redirecionar mesmo assim (pode ser cache)
+                            // Se a autenticação foi criada via OIDC (authResult === true), 
+                            // significa que o usuário já foi verificado como autorizado
+                            if (authResult === true) {
+                                console.log('✅ Autenticação criada via OIDC (usuário já verificado como autorizado), redirecionando...');
+                                setTimeout(() => {
+                                    window.location.href = '/secure/restrita.html';
+                                }, 500);
+                                return true;
+                            }
+                            // Em caso de erro e sem autenticação OIDC, tentar redirecionar mesmo assim
                             setTimeout(() => {
                                 window.location.href = '/secure/restrita.html';
                             }, 1000);
                         }
                     } else {
-                        // Se requireAuthorization não estiver disponível, redirecionar diretamente
+                        // Se requireAuthorization não estiver disponível, mas autenticação foi criada via OIDC,
+                        // significa que o usuário já foi verificado como autorizado
+                        if (authResult === true) {
+                            console.log('✅ Autenticação criada via OIDC (usuário já verificado como autorizado), redirecionando...');
+                            setTimeout(() => {
+                                window.location.href = '/secure/restrita.html';
+                            }, 500);
+                            return true;
+                        }
+                        // Se não há requireAuthorization e não foi criado via OIDC, redirecionar diretamente
                         console.log('⚠️ requireAuthorization não disponível, redirecionando diretamente');
                         setTimeout(() => {
                             window.location.href = '/secure/restrita.html';

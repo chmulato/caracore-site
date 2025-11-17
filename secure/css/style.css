@@ -161,6 +161,39 @@
     opacity: 0.7;
 }
 
+/* ============ HINT DISCRETO PARA PROVEDORES ============ */
+.provider-hint {
+    margin: 0.5rem 0 0 0;
+    padding: 0;
+    font-size: 0.75rem;
+    color: #718096;
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+}
+
+.provider-hint:hover {
+    opacity: 1;
+}
+
+.provider-hint-microsoft {
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hint-icon {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.hint-text {
+    font-weight: 400;
+}
+
 /* ============ ALERTAS E MENSAGENS ============ */
 .auth-alert {
     padding: 1rem 1.25rem;
@@ -351,6 +384,11 @@
         padding: 0.875rem 1.25rem;
         font-size: 0.95rem;
     }
+    
+    .provider-hint {
+        font-size: 0.7rem;
+        margin-top: 0.25rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -360,6 +398,15 @@
     
     .auth-card {
         padding: 1.5rem 1rem;
+    }
+    
+    .provider-hint {
+        font-size: 0.65rem;
+        padding: 0 0.5rem;
+    }
+    
+    .hint-text {
+        font-size: 0.65rem;
     }
     
     .auth-logo {

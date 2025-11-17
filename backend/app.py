@@ -496,7 +496,11 @@ def create_app() -> Flask:
     jwt_secret_key = os.getenv("JWT_SECRET_KEY")
 
     def resolve_azure_token_endpoint(tenant_override: Optional[str] = None) -> str:
-        tenant_value = tenant_override or azure_tenant_id or "common"
+        # Usar 'consumers' como padrão para contas pessoais Microsoft (hotmail.com, outlook.com)
+        # Se tenant_override for fornecido (do frontend), usar ele (mais confiável)
+        # Caso contrário, usar AZURE_TENANT_ID se configurado
+        # Fallback para 'consumers' (não 'common') para garantir compatibilidade com contas pessoais
+        tenant_value = tenant_override or azure_tenant_id or "consumers"
         template = azure_token_endpoint_env or AZURE_TOKEN_ENDPOINT_TEMPLATE
         if "{tenant}" in template:
             return template.format(tenant=tenant_value)
@@ -529,7 +533,7 @@ def create_app() -> Flask:
     if azure_tenant_id:
         logger.info("AZURE_TENANT_ID definido (valor oculto)")
     else:
-        logger.warning("AZURE_TENANT_ID nao definido - usando tenant 'common'")
+        logger.warning("AZURE_TENANT_ID nao definido - usando tenant 'consumers' (padrão para contas pessoais)")
     logger.info("Token endpoint Microsoft configurado: %s", resolve_azure_token_endpoint())
     if not default_redirect:
         logger.warning("OAUTH_REDIRECT_URI not set - using value provided by client")
@@ -711,8 +715,8 @@ def create_app() -> Flask:
                 "status": "ok" if is_present else "using_default"
             }
         
-        # Resolver token endpoint
-        tenant_value = required_vars.get("AZURE_TENANT_ID") or "common"
+        # Resolver token endpoint (usar 'consumers' como padrão para contas pessoais)
+        tenant_value = required_vars.get("AZURE_TENANT_ID") or "consumers"
         token_endpoint = resolve_azure_token_endpoint(None)
         
         # Status geral
@@ -807,7 +811,7 @@ def create_app() -> Flask:
         # Apenas verificar se os endpoints estão acessíveis (sem autenticar)
         oauth_providers = {
             "google": "https://accounts.google.com/.well-known/openid-configuration",
-            "microsoft": f"https://login.microsoftonline.com/{os.getenv('AZURE_TENANT_ID', 'common')}/.well-known/openid-configuration"
+            "microsoft": f"https://login.microsoftonline.com/{os.getenv('AZURE_TENANT_ID', 'consumers')}/.well-known/openid-configuration"
         }
         
         provider_status = {}
@@ -1439,7 +1443,7 @@ def create_app() -> Flask:
                     "grant_type": "refresh_token"
                 }
             elif provider.lower() == "microsoft":
-                tenant = os.getenv("AZURE_TENANT_ID", "common")
+                tenant = os.getenv("AZURE_TENANT_ID", "consumers")
                 token_url = AZURE_TOKEN_ENDPOINT_TEMPLATE.format(tenant=tenant)
                 payload = {
                     "client_id": os.getenv("MICROSOFT_CLIENT_ID"),

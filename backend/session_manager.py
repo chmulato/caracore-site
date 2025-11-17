@@ -332,7 +332,7 @@ class SessionManager:
     
     def _refresh_microsoft_token(self, refresh_token: str) -> Dict[str, Any]:
         """Renova tokens via Microsoft OAuth."""
-        tenant = os.getenv("AZURE_TENANT_ID", "common")
+        tenant = os.getenv("AZURE_TENANT_ID", "consumers")
         token_url = AZURE_TOKEN_ENDPOINT_TEMPLATE.format(tenant=tenant)
         
         payload = {

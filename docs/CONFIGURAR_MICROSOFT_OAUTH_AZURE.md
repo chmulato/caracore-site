@@ -58,7 +58,7 @@ Use o mesmo Client ID que está configurado no App Registration do Azure AD.
 **[Variável 3: AZURE_TENANT_ID**
 
 - **Name:** `AZURE_TENANT_ID`
-- **Value:** `189c46ad-e437-48bd-bc87-050ef735c2c7` (ou `common` para contas pessoais)
+- **Value:** `consumers` (para contas pessoais Microsoft - hotmail.com, outlook.com)
 - **Deployment slot setting:** Deixe desmarcado
 
 5.**Salve as alterações:**
@@ -160,16 +160,16 @@ Com base no `secrets.txt.template`:
 |----------|-------|
 | `AZURE_CLIENT_ID` | `8ef17663-438f-4777-99ca-c5ad5b2a2993` (ou verifique no Azure AD) |
 | `AZURE_CLIENT_SECRET` | `<obtenha no Azure AD - veja acima>` |
-| `AZURE_TENANT_ID` | `189c46ad-e437-48bd-bc87-050ef735c2c7` ou `common` |
+| `AZURE_TENANT_ID` | `consumers` (recomendado para contas pessoais) |
 
 **Nota:** O `AZURE_TENANT_ID` pode ser:
 
-- `189c46ad-e437-48bd-bc87-050ef735c2c7` (Tenant específico)
-- `common` (Para aceitar contas pessoais Microsoft)
-- `consumers` (Apenas contas pessoais)
+- `consumers` (Apenas contas pessoais - **RECOMENDADO** para hotmail.com, outlook.com)
+- `common` (Contas pessoais + corporativas - mais flexível)
 - `organizations` (Apenas contas corporativas)
+- Tenant ID específico (ex: `189c46ad-e437-48bd-bc87-050ef735c2c7`)
 
-Para o caso de uso atual (contas pessoais Microsoft), `common` ou `consumers` são apropriados.
+**Para o caso de uso atual (contas pessoais Microsoft), use `consumers`.**
 
 ---
 
@@ -240,8 +240,9 @@ Após configurar, teste o login:
 
 **Solução:**
 
-- Para contas pessoais Microsoft, use `common` ou `consumers`
-- Para contas corporativas, use o Tenant ID específico
+- Para contas pessoais Microsoft, use `consumers` (recomendado)
+- Para contas pessoais + corporativas, use `common`
+- Para contas corporativas apenas, use o Tenant ID específico
 - Verifique o Tenant ID no App Registration → Overview
 
 ### Problema: App Service não reinicia

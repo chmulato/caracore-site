@@ -69,11 +69,13 @@ class FirstAccessManager {
             // Verificar se usuário está autenticado
             await this.checkAuthentication();
             
-            // Verificar se usuário já está autorizado
-            const isAuthorized = await this.checkUserAuthorization();
-            if (isAuthorized) {
-                // Garantir que email e provider estão salvos antes de redirecionar
-                if (this.userEmail) {
+            // Só verificar autorização se temos email
+            // Se não há email, o usuário precisará preencher o formulário primeiro
+            if (this.userEmail) {
+                // Verificar se usuário já está autorizado
+                const isAuthorized = await this.checkUserAuthorization();
+                if (isAuthorized) {
+                    // Garantir que email e provider estão salvos antes de redirecionar
                     localStorage.setItem('user_email', this.userEmail);
                     localStorage.setItem('auth_user_email', this.userEmail);
                     if (this.userProvider) {
@@ -83,16 +85,20 @@ class FirstAccessManager {
                         email: this.userEmail,
                         provider: this.userProvider
                     });
+                    
+                    // Mostrar conteúdo principal para exibir mensagem de redirecionamento
+                    this.showMainContent();
+                    // Se já autorizado, redirecionar para área restrita
+                    this.showAuthorizationRedirect();
+                    setTimeout(() => {
+                        window.location.href = '/secure/restrita.html';
+                    }, 2000);
+                    return;
                 }
-                
-                // Mostrar conteúdo principal para exibir mensagem de redirecionamento
-                this.showMainContent();
-                // Se já autorizado, redirecionar para área restrita
-                this.showAuthorizationRedirect();
-                setTimeout(() => {
-                    window.location.href = '/secure/restrita.html';
-                }, 2000);
-                return;
+            } else {
+                console.log('⚠️ Email não disponível - usuário precisará preencher manualmente');
+                console.log('⚠️ Isso pode ocorrer quando há erro no backend (ex: AADSTS70000)');
+                console.log('⚠️ O usuário pode estar autorizado, mas precisará preencher o formulário para verificar');
             }
             
             // Mostrar conteúdo principal
@@ -105,7 +111,7 @@ class FirstAccessManager {
             if (this.userEmail) {
                 this.populateUserInfo();
             } else {
-                console.log('Email não disponível - usuário precisará preencher manualmente');
+                console.log('📝 Formulário será exibido para preenchimento manual');
             }
             
         } catch (error) {
@@ -228,15 +234,17 @@ class FirstAccessManager {
             console.warn('⚠️ Provider não encontrado em nenhuma fonte');
         }
         
-        // Se não encontrou email, mas há erro na URL, permitir acesso mesmo assim
-        // (usuário pode preencher manualmente)
-        if (!this.userEmail && errorFromUrl) {
-            console.warn('Email não encontrado, mas há erro na URL. Permitindo acesso para preenchimento manual.');
+        // Se não encontrou email, mas há provider na URL, permitir acesso mesmo assim
+        // (usuário pode preencher manualmente - caso comum quando há erro 400 no backend)
+        const providerFromUrl = urlParams.get('provider');
+        if (!this.userEmail && (errorFromUrl || providerFromUrl)) {
+            console.warn('Email não encontrado, mas há provider/erro na URL. Permitindo acesso para preenchimento manual.');
+            console.warn('Isso pode ocorrer quando há erro no backend (ex: AADSTS70000) mas o usuário está autorizado.');
             this.userEmail = null; // Será preenchido pelo usuário
-            return; // Não lançar erro
+            return; // Não lançar erro - permitir que usuário preencha manualmente
         }
         
-        // Se não encontrou email de nenhuma fonte, lançar erro
+        // Se não encontrou email de nenhuma fonte E não há provider/erro na URL, lançar erro
         if (!this.userEmail) {
             throw new Error('Email do usuário não encontrado. Por favor, faça login novamente.');
         }
@@ -256,6 +264,13 @@ class FirstAccessManager {
     }
     
     async checkUserAuthorization() {
+        if (!this.userEmail) {
+            return false;
+        }
+        return await this.checkUserAuthorizationWithEmail(this.userEmail);
+    }
+    
+    async checkUserAuthorizationWithEmail(email) {
         try {
             const response = await fetch(`${this.config.backendUrl}/api/check-authorization`, {
                 method: 'POST',
@@ -263,7 +278,8 @@ class FirstAccessManager {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    email: this.userEmail
+                    email: email,
+                    provider: this.userProvider
                 })
             });
             
@@ -489,6 +505,29 @@ class FirstAccessManager {
             // Coletar dados do formulário
             const formData = this.collectFormData();
             
+            // PRIMEIRO: Verificar se o usuário já está autorizado (antes de pedir WhatsApp)
+            // Isso é importante quando o usuário preencheu o email manualmente após erro 400
+            const emailToCheck = formData.email || this.userEmail;
+            if (emailToCheck) {
+                console.log('🔍 Verificando se usuário já está autorizado antes de solicitar acesso...', emailToCheck);
+                const isAuthorized = await this.checkUserAuthorizationWithEmail(emailToCheck);
+                if (isAuthorized) {
+                    console.log('✅ Usuário já está autorizado! Redirecionando para área restrita...');
+                    // Salvar dados no storage
+                    localStorage.setItem('user_email', emailToCheck);
+                    localStorage.setItem('auth_user_email', emailToCheck);
+                    if (this.userProvider) {
+                        localStorage.setItem('auth_provider', this.userProvider);
+                    }
+                    this.showSuccess('Você já está autorizado! Redirecionando para a área restrita...');
+                    setTimeout(() => {
+                        window.location.href = '/secure/restrita.html';
+                    }, 2000);
+                    return;
+                }
+            }
+            
+            // Se não está autorizado, continuar com o processo normal de solicitação
             // Mostrar aviso sobre WhatsApp Web antes de confirmar
             const whatsappConfirmed = await this.showWhatsAppRequiredWarning();
             if (!whatsappConfirmed) {

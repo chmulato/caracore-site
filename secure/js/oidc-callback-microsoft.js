@@ -329,29 +329,16 @@
                 }
             }
             
-            // Verificar se há session_id na resposta (mesmo em caso de erro parcial)
-            if (responseData.session_id) {
-                console.log('✅ [Microsoft] Session ID encontrado na resposta:', responseData.session_id);
-                // Tentar obter tokens reais usando o session_id
-                try {
-                    const tokens = await getTokensFromSession(responseData.session_id);
-                    if (tokens) {
-                        console.log('✅ [Microsoft] Tokens reais obtidos do session_id');
-                        return tokens;
-                    }
-                } catch (error) {
-                    console.warn('⚠️ [Microsoft] Erro ao obter tokens do session_id:', error);
-                }
-            }
-            
+            // PRIORIDADE 1: Se a resposta for OK e contiver tokens, usar diretamente
             if (response.ok) {
                 const data = responseData;
-                if (data.id_token) {
+                if (data.id_token && data.access_token) {
                     try {
                         const payload = JSON.parse(atob(data.id_token.split('.')[1]));
                         const email = payload.email || payload.preferred_username || payload.upn;
                         if (email) {
                             console.log('✅ Email real obtido do backend Microsoft:', email);
+                            console.log('✅ [Microsoft] Usando tokens diretamente da resposta (status 200)');
                             return {
                                 email: email,
                                 name: payload.name || email.split('@')[0],
@@ -365,6 +352,22 @@
                         }
                     } catch (e) {
                         console.warn('⚠️ Não foi possível decodificar ID token:', e);
+                    }
+                }
+                
+                // Se resposta OK mas sem tokens completos, tentar usar session_id se disponível
+                if (data.session_id && (!data.id_token || !data.access_token)) {
+                    console.log('🔄 [Microsoft] Resposta OK mas tokens incompletos, tentando obter via session_id:', data.session_id);
+                    try {
+                        // Aguardar um pouco para garantir que a sessão foi persistida
+                        await new Promise(resolve => setTimeout(resolve, 500));
+                        const tokens = await getTokensFromSession(data.session_id);
+                        if (tokens) {
+                            console.log('✅ [Microsoft] Tokens obtidos via session_id após resposta OK');
+                            return tokens;
+                        }
+                    } catch (error) {
+                        console.warn('⚠️ [Microsoft] Erro ao obter tokens do session_id após resposta OK:', error);
                     }
                 }
             } else {
@@ -383,10 +386,12 @@
                     redirect_uri: requestBody.redirect_uri
                 });
                 
-                // Se houver session_id mesmo com erro, tentar usar
+                // PRIORIDADE 2: Se houver session_id mesmo com erro, tentar usar (após aguardar persistência)
                 if (errorData.session_id) {
                     console.log('🔄 [Microsoft] Session ID encontrado mesmo com erro, tentando obter tokens...');
                     try {
+                        // Aguardar um pouco para garantir que a sessão foi persistida no backend
+                        await new Promise(resolve => setTimeout(resolve, 1000));
                         const tokens = await getTokensFromSession(errorData.session_id);
                         if (tokens) {
                             console.log('✅ [Microsoft] Tokens reais obtidos mesmo com erro inicial');
@@ -434,6 +439,7 @@
     /**
      * Obtém tokens reais usando session_id do backend
      * Estratégia: usar o endpoint /auth/session/refresh para obter tokens válidos
+     * NOTA: Este método só deve ser usado quando os tokens não estão disponíveis na resposta inicial
      */
     async function getTokensFromSession(sessionId) {
         if (!sessionId) {
@@ -485,13 +491,28 @@
                 }
             } else {
                 const errorData = await response.json().catch(() => ({}));
-                console.warn('⚠️ [Microsoft] Erro ao obter tokens do session_id:', {
-                    status: response.status,
-                    error: errorData
-                });
+                const errorMessage = errorData.error || errorData.message || 'Erro desconhecido';
+                
+                // Se for 401, pode ser que a sessão ainda não foi persistida
+                if (response.status === 401) {
+                    console.warn('⚠️ [Microsoft] Sessão não encontrada ou ainda não persistida (401):', {
+                        sessionId: sessionId,
+                        error: errorMessage,
+                        suggestion: 'A sessão pode estar sendo criada. Aguarde e tente novamente.'
+                    });
+                } else {
+                    console.warn('⚠️ [Microsoft] Erro ao obter tokens do session_id:', {
+                        status: response.status,
+                        sessionId: sessionId,
+                        error: errorData
+                    });
+                }
             }
         } catch (error) {
-            console.warn('⚠️ [Microsoft] Erro ao chamar /auth/session/refresh:', error);
+            console.warn('⚠️ [Microsoft] Erro ao chamar /auth/session/refresh:', {
+                error: error.message,
+                sessionId: sessionId
+            });
         }
         
         return null;

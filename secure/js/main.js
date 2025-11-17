@@ -32,36 +32,137 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (isAuthenticated) {
       // Usuário autenticado - verificar autorização
       const user = await window.OIDCAuth.getUser();
-      const userEmail = user?.profile?.email;
-      const provider = user?.provider;
+      
+      // Obter provider do localStorage ou do perfil OIDC
+      let provider = localStorage.getItem('auth_provider') || user?.provider;
+      
+      // Normalizar provider: 'entra' -> 'microsoft' para consistência
+      if (provider === 'entra') {
+        provider = 'microsoft';
+      }
+      
+      // Processar autenticação usando módulo específico
+      // Os módulos específicos fazem toda a validação de segurança
+      let authData = null;
+      if (provider === 'google' && window.AuthGoogle && window.AuthGoogle.processAuthentication) {
+        authData = await window.AuthGoogle.processAuthentication(user);
+      } else if (provider === 'microsoft' && window.AuthMicrosoft && window.AuthMicrosoft.processAuthentication) {
+        authData = await window.AuthMicrosoft.processAuthentication(user);
+      }
+      
+      // Se módulo específico processou, usar dados processados
+      let userEmail = null;
+      let emailMismatch = false;
+      let emailIntegrityValid = false;
+      let tokenEmail = user?.profile?.email || user?.profile?.preferred_username;
+      
+      if (authData) {
+        userEmail = authData.email;
+        provider = authData.provider;
+        emailMismatch = authData.emailMismatch || false;
+        emailIntegrityValid = authData.emailIntegrityValid || false;
+      } else {
+        // Fallback: usar dados do token se módulo específico não processou
+        userEmail = tokenEmail;
+      }
 
       if (!userEmail) {
-        throw new Error('Email do usuário não encontrado');
+        console.warn('⚠️ Email não encontrado no perfil OIDC, tentando obter do localStorage...');
+        // Última tentativa: buscar do localStorage
+        userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+        
+        if (!userEmail) {
+          throw new Error('Email do usuário não encontrado. Por favor, faça login novamente.');
+        }
       }
+      
+      // SEGURANÇA: Validar correspondência entre provider e email usando módulos específicos
+      if (userEmail && provider) {
+        const detectedProvider = detectProviderFromEmail(userEmail);
+        
+        if (detectedProvider && provider !== detectedProvider) {
+          console.warn('⚠️ SEGURANÇA: Provider não corresponde ao email!', {
+            email: userEmail,
+            provider: provider,
+            detectedProvider: detectedProvider,
+            action: 'Corrigindo provider'
+          });
+          
+          // Corrigir provider baseado no email
+          provider = detectedProvider;
+          localStorage.setItem('auth_provider', provider);
+        }
+      }
+      
+      console.log('✅ Verificando autorização para:', {
+        email: userEmail,
+        provider: provider,
+        emailSource: authData ? authData.emailSource : (tokenEmail ? 'OIDC token' : 'localStorage'),
+        emailMismatch: emailMismatch,
+        emailIntegrityValid: emailIntegrityValid,
+        securityCheck: emailMismatch ? 'FALHOU - Email corrigido' : (emailIntegrityValid ? 'PASSOU' : 'AVISO - Integridade não validada')
+      });
 
       window.AuthUIFeedback.loginSuccess('Verificando permissões...');
       
       // Verificar se tem autorização para acessar o sistema
+      // IMPORTANTE: Para emails Microsoft, o email do localStorage é usado para consultar o backend
       if (window.authChecker) {
         const isAuthorized = await window.authChecker.checkAndRedirect(userEmail, provider, false);
         
         if (isAuthorized) {
           // Autorizado - prosseguir para área restrita
+          console.log('✅ Usuário autorizado! Redirecionando para área restrita...');
           await showUserInfo();
           window.AuthUIFeedback.updateState('success');
           setTimeout(() => {
             window.location.href = '/secure/restrita.html';
           }, 2000);
+        } else {
+          console.log('❌ Usuário não autorizado. Redirecionamento já foi feito pelo authChecker.');
         }
         // Se não autorizado, checkAndRedirect já fez o redirecionamento
       } else {
         // Fallback se authChecker não estiver disponível
-        console.warn('AuthChecker não disponível, redirecionando diretamente');
-        await showUserInfo();
-        window.AuthUIFeedback.updateState('success');
-        setTimeout(() => {
-          window.location.href = '/secure/restrita.html';
-        }, 2000);
+        console.warn('⚠️ AuthChecker não disponível, verificando autorização diretamente...');
+        
+        // Verificar autorização diretamente com o backend
+        const backendUrl = window.location.hostname === 'localhost' 
+          ? 'http://localhost:5051'
+          : 'https://caracore-backend-docker.azurewebsites.net';
+        
+        try {
+          const response = await fetch(`${backendUrl}/api/check-authorization`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: userEmail,
+              provider: provider
+            })
+          });
+          
+          if (response.ok) {
+            const result = await response.json();
+            if (result.authorized === true) {
+              console.log('✅ Usuário autorizado (verificação direta)!');
+              await showUserInfo();
+              window.AuthUIFeedback.updateState('success');
+              setTimeout(() => {
+                window.location.href = '/secure/restrita.html';
+              }, 2000);
+            } else {
+              console.log('❌ Usuário não autorizado. Redirecionando para primeiro acesso...');
+              window.location.href = `/secure/first-access.html?email=${encodeURIComponent(userEmail)}&provider=${provider || 'microsoft'}`;
+            }
+          } else {
+            throw new Error('Erro ao verificar autorização');
+          }
+        } catch (error) {
+          console.error('Erro ao verificar autorização:', error);
+          window.AuthUIFeedback.loginFailed('Erro ao verificar permissões. Tente novamente.');
+        }
       }
     } else {
       // Usuário não autenticado - mostrar opções de acesso
@@ -69,6 +170,9 @@ document.addEventListener('DOMContentLoaded', async function() {
       
       // Adicionar link para primeiro acesso se não existir
       addFirstAccessLink();
+      
+      // Configurar sistema de email obrigatório apenas quando não autenticado
+      setupEmailValidation();
     }
 
   } catch (error) {
@@ -80,8 +184,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     window.AuthUIFeedback.loginFailed(
       window.AuthErrorHandler.getFriendlyErrorMessage(processedError)
     );
+    
+    // Mesmo com erro, configurar email se não autenticado
+    setupEmailValidation();
   }
-
+  
   // Configurar event listeners para os botões de login
   const btnLoginGoogle = document.getElementById('btnLoginGoogle');
   const btnLoginMicrosoft = document.getElementById('btnLoginMicrosoft');
@@ -90,8 +197,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     btnLoginGoogle.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
-      console.log('🔵 Clique no botão Google detectado');
-      loginWithProvider('google');
+      handleProviderLogin('google');
     });
     console.log('✅ Event listener Google configurado');
   } else {
@@ -102,8 +208,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     btnLoginMicrosoft.addEventListener('click', (event) => {
       event.preventDefault();
       event.stopPropagation();
-      console.log('🔵 Clique no botão Microsoft detectado');
-      loginWithProvider('entra');
+      handleProviderLogin('microsoft');
     });
     console.log('✅ Event listener Microsoft configurado');
   } else {
@@ -194,6 +299,225 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
   }
 
+  /**
+   * Detecta o provider baseado no domínio do email
+   * Delega para os módulos específicos
+   */
+  function detectProviderFromEmail(email) {
+    if (!email || !email.includes('@')) {
+      return null;
+    }
+    
+    // Usar módulos específicos para detectar provider
+    if (window.AuthGoogle && window.AuthGoogle.isGoogleEmail(email)) {
+      return 'google';
+    }
+    
+    if (window.AuthMicrosoft && window.AuthMicrosoft.isMicrosoftEmail(email)) {
+      return 'microsoft';
+    }
+    
+    return null;
+  }
+  
+  /**
+   * Configura validação de email e controle dos botões
+   * Coordena os módulos específicos (Google e Microsoft) de forma unificada
+   */
+  function setupEmailValidation() {
+    const emailInput = document.getElementById('userEmailInput');
+    const emailError = document.getElementById('emailError');
+    const emailHint = document.getElementById('emailHint');
+    const btnLoginGoogle = document.getElementById('btnLoginGoogle');
+    const btnLoginMicrosoft = document.getElementById('btnLoginMicrosoft');
+    
+    if (!emailInput) {
+      console.warn('⚠️ Campo de email não encontrado');
+      return;
+    }
+    
+    // Inicialmente desabilitar botões e aplicar estilos visuais
+    if (btnLoginGoogle) {
+      btnLoginGoogle.disabled = true;
+      btnLoginGoogle.style.opacity = '0.5';
+      btnLoginGoogle.style.cursor = 'not-allowed';
+    }
+    if (btnLoginMicrosoft) {
+      btnLoginMicrosoft.disabled = true;
+      btnLoginMicrosoft.style.opacity = '0.5';
+      btnLoginMicrosoft.style.cursor = 'not-allowed';
+    }
+    
+    // Limpar email ao carregar a página
+    emailInput.value = '';
+    
+    // Validar email em tempo real - função unificada que coordena ambos os módulos
+    let validationTimeout = null;
+    emailInput.addEventListener('input', () => {
+      // Limpar erro anterior
+      if (emailError) {
+        emailError.textContent = '';
+        emailError.style.display = 'none';
+      }
+      
+      // Debounce: aguardar 300ms após parar de digitar
+      if (validationTimeout) {
+        clearTimeout(validationTimeout);
+      }
+      
+      validationTimeout = setTimeout(() => {
+        const email = emailInput.value.trim();
+        
+        if (!email) {
+          // Email vazio - desabilitar botões
+          if (btnLoginGoogle) {
+            btnLoginGoogle.disabled = true;
+            btnLoginGoogle.style.opacity = '0.5';
+            btnLoginGoogle.style.cursor = 'not-allowed';
+          }
+          if (btnLoginMicrosoft) {
+            btnLoginMicrosoft.disabled = true;
+            btnLoginMicrosoft.style.opacity = '0.5';
+            btnLoginMicrosoft.style.cursor = 'not-allowed';
+          }
+          if (emailHint) {
+            emailHint.style.display = 'block';
+            emailHint.querySelector('.hint-text').textContent = 'Informe o email que você usa para autenticação';
+          }
+          return;
+        }
+        
+        // Validar formato usando módulo Google (ambos têm a mesma função)
+        const isValid = window.AuthGoogle && window.AuthGoogle.isValidEmail 
+          ? window.AuthGoogle.isValidEmail(email)
+          : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        
+        if (!isValid) {
+          // Email inválido - mostrar erro e desabilitar botões
+          if (emailError) {
+            emailError.textContent = 'Por favor, informe um email válido';
+            emailError.style.display = 'block';
+          }
+          if (btnLoginGoogle) {
+            btnLoginGoogle.disabled = true;
+            btnLoginGoogle.style.opacity = '0.5';
+            btnLoginGoogle.style.cursor = 'not-allowed';
+          }
+          if (btnLoginMicrosoft) {
+            btnLoginMicrosoft.disabled = true;
+            btnLoginMicrosoft.style.opacity = '0.5';
+            btnLoginMicrosoft.style.cursor = 'not-allowed';
+          }
+          return;
+        }
+        
+        // Email válido - detectar provider usando módulos específicos
+        const detectedProvider = detectProviderFromEmail(email);
+        
+        if (detectedProvider === 'google') {
+          // Email Google: habilitar apenas botão Google, desabilitar Microsoft
+          if (btnLoginGoogle) {
+            btnLoginGoogle.disabled = false;
+            btnLoginGoogle.style.opacity = '1';
+            btnLoginGoogle.style.cursor = 'pointer';
+          }
+          if (btnLoginMicrosoft) {
+            btnLoginMicrosoft.disabled = true;
+            btnLoginMicrosoft.style.opacity = '0.5';
+            btnLoginMicrosoft.style.cursor = 'not-allowed';
+          }
+          if (emailHint) {
+            emailHint.style.display = 'block';
+            emailHint.querySelector('.hint-text').textContent = 'Email do Google detectado. Use o botão "Continuar com Google"';
+          }
+          console.log('✅ Email Google detectado - Botão Google habilitado, Microsoft desabilitado');
+        } else if (detectedProvider === 'microsoft') {
+          // Email Microsoft: habilitar apenas botão Microsoft, desabilitar Google
+          if (btnLoginGoogle) {
+            btnLoginGoogle.disabled = true;
+            btnLoginGoogle.style.opacity = '0.5';
+            btnLoginGoogle.style.cursor = 'not-allowed';
+          }
+          if (btnLoginMicrosoft) {
+            btnLoginMicrosoft.disabled = false;
+            btnLoginMicrosoft.style.opacity = '1';
+            btnLoginMicrosoft.style.cursor = 'pointer';
+          }
+          if (emailHint) {
+            emailHint.style.display = 'block';
+            emailHint.querySelector('.hint-text').textContent = 'Email da Microsoft detectado. Use o botão "Continuar com Microsoft"';
+          }
+          console.log('✅ Email Microsoft detectado - Botão Microsoft habilitado, Google desabilitado');
+        } else {
+          // Email válido mas provider não detectado - habilitar ambos
+          if (btnLoginGoogle) {
+            btnLoginGoogle.disabled = false;
+            btnLoginGoogle.style.opacity = '1';
+            btnLoginGoogle.style.cursor = 'pointer';
+          }
+          if (btnLoginMicrosoft) {
+            btnLoginMicrosoft.disabled = false;
+            btnLoginMicrosoft.style.opacity = '1';
+            btnLoginMicrosoft.style.cursor = 'pointer';
+          }
+          if (emailHint) {
+            emailHint.style.display = 'block';
+            emailHint.querySelector('.hint-text').textContent = 'Escolha o provedor de autenticação correspondente ao seu email';
+          }
+        }
+        
+        // Limpar erro se email for válido
+        if (emailError) {
+          emailError.textContent = '';
+          emailError.style.display = 'none';
+        }
+      }, 300);
+    });
+    
+    // Validar ao perder foco
+    emailInput.addEventListener('blur', () => {
+      const email = emailInput.value.trim();
+      const isValid = window.AuthGoogle && window.AuthGoogle.isValidEmail 
+        ? window.AuthGoogle.isValidEmail(email)
+        : /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        
+      if (email && !isValid) {
+        if (emailError) {
+          emailError.textContent = 'Por favor, informe um email válido';
+          emailError.style.display = 'block';
+        }
+        if (btnLoginGoogle) {
+          btnLoginGoogle.disabled = true;
+          btnLoginGoogle.style.opacity = '0.5';
+          btnLoginGoogle.style.cursor = 'not-allowed';
+        }
+        if (btnLoginMicrosoft) {
+          btnLoginMicrosoft.disabled = true;
+          btnLoginMicrosoft.style.opacity = '0.5';
+          btnLoginMicrosoft.style.cursor = 'not-allowed';
+        }
+      }
+    });
+  }
+  
+  /**
+   * Manipula o clique no botão de provider com validação
+   * Delega para os módulos específicos (Google ou Microsoft)
+   */
+  async function handleProviderLogin(provider) {
+    // Delegar para o módulo específico
+    if (provider === 'google' && window.AuthGoogle && window.AuthGoogle.handleLogin) {
+      await window.AuthGoogle.handleLogin();
+    } else if (provider === 'microsoft' && window.AuthMicrosoft && window.AuthMicrosoft.handleLogin) {
+      await window.AuthMicrosoft.handleLogin();
+    } else {
+      console.error(`❌ Módulo de autenticação não encontrado para provider: ${provider}`);
+      if (window.AuthUIFeedback) {
+        window.AuthUIFeedback.loginFailed(`Erro: Módulo de autenticação não disponível para ${provider}`);
+      }
+    }
+  }
+  
   /**
    * Processo de login com um provedor específico
    */

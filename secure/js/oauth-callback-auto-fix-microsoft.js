@@ -1074,27 +1074,34 @@
                 cleanCallbackUrl();
                 
                 // Verificar autorização e redirecionar
+                // IMPORTANTE: Priorizar email do localStorage que foi salvo ANTES do login (na página index.html)
+                // Isso garante que o email informado pelo usuário seja usado para consultar o backend
                 const userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
                 const provider = localStorage.getItem('auth_provider') || 'microsoft';
                 
                 if (userEmail && !userEmail.includes('user@caracore.com.br')) {
-                    console.log('🔄 Verificando autorização para:', userEmail);
+                    console.log('🔄 Verificando autorização para email Microsoft:', {
+                        email: userEmail,
+                        provider: provider,
+                        emailSource: 'localStorage (salvo antes do login)'
+                    });
                     
                     // Aguardar um pouco para garantir que authorization-check.js está carregado
                     await new Promise(resolve => setTimeout(resolve, 1000));
                     
                     // Verificar autorização usando requireAuthorization se disponível
+                    // O email do localStorage será usado para consultar o backend
                     if (typeof requireAuthorization === 'function') {
                         try {
                             const isAuthorized = await requireAuthorization({
-                                email: userEmail,
+                                email: userEmail,  // Email informado pelo usuário (salvo antes do login)
                                 provider: provider,
                                 showLoading: false,
                                 redirectOnFail: true
                             });
                             
                             if (isAuthorized) {
-                                console.log('✅ Usuário autorizado, redirecionando para área restrita');
+                                console.log('✅ Usuário Microsoft autorizado! Redirecionando para área restrita...');
                                 setTimeout(() => {
                                     window.location.href = '/secure/restrita.html';
                                 }, 500);

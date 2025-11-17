@@ -236,7 +236,7 @@ class FirstAccessManager {
         
         // Se não encontrou email, mas há provider na URL, permitir acesso mesmo assim
         // (usuário pode preencher manualmente - caso comum quando há erro 400 no backend)
-        const providerFromUrl = urlParams.get('provider');
+        // providerFromUrl já foi declarado acima na linha 205
         if (!this.userEmail && (errorFromUrl || providerFromUrl)) {
             console.warn('Email não encontrado, mas há provider/erro na URL. Permitindo acesso para preenchimento manual.');
             console.warn('Isso pode ocorrer quando há erro no backend (ex: AADSTS70000) mas o usuário está autorizado.');
@@ -358,6 +358,55 @@ class FirstAccessManager {
                     // Remover indicação de válido quando desmarcado
                     agreeTerms.classList.remove('is-valid');
                 }
+            });
+        }
+        
+        // Verificação de autorização em tempo real quando email é preenchido manualmente
+        const emailInput = this.elements.userEmailInput;
+        if (emailInput && !this.userEmail) {
+            // Só adicionar listener se o email não foi preenchido automaticamente
+            let checkTimeout = null;
+            emailInput.addEventListener('blur', async () => {
+                const email = emailInput.value.trim();
+                
+                // Validar formato básico de email
+                if (!email || !email.includes('@') || !email.includes('.')) {
+                    return;
+                }
+                
+                // Debounce: aguardar 500ms após o usuário parar de digitar
+                if (checkTimeout) {
+                    clearTimeout(checkTimeout);
+                }
+                
+                checkTimeout = setTimeout(async () => {
+                    try {
+                        console.log('🔍 Verificando autorização para email preenchido manualmente:', email);
+                        const isAuthorized = await this.checkUserAuthorizationWithEmail(email);
+                        
+                        if (isAuthorized) {
+                            console.log('✅ Usuário autorizado encontrado! Redirecionando...');
+                            // Salvar dados no storage
+                            localStorage.setItem('user_email', email);
+                            localStorage.setItem('auth_user_email', email);
+                            if (this.userProvider) {
+                                localStorage.setItem('auth_provider', this.userProvider);
+                            }
+                            
+                            // Atualizar o email do objeto
+                            this.userEmail = email;
+                            
+                            // Mostrar mensagem de sucesso e redirecionar
+                            this.showSuccess('Você já está autorizado! Redirecionando para a área restrita...');
+                            setTimeout(() => {
+                                window.location.href = '/secure/restrita.html';
+                            }, 2000);
+                        }
+                    } catch (error) {
+                        console.warn('Erro ao verificar autorização:', error);
+                        // Não mostrar erro ao usuário - apenas continuar com o formulário
+                    }
+                }, 500);
             });
         }
     }

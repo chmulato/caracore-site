@@ -59,6 +59,82 @@ a { color: inherit; }
 .loading-content { text-align:center; padding:2rem 2.5rem; background:#fff; border-radius:18px; box-shadow:0 18px 40px rgba(15, 23, 42, 0.12); }
 .loading-content h5 { margin-bottom:0.5rem; font-size:1.1rem; }
 .loading-content p { margin:0; color: var(--text-muted); }
+.email-input-section {
+  margin-bottom: 1.5rem;
+  padding: 0;
+}
+
+.email-input-section .form-group {
+  margin-bottom: 0;
+}
+
+.email-input-section .form-label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.email-input-section .form-label.required::after {
+  content: ' *';
+  color: #ef4444;
+}
+
+.email-input-section .form-input {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  border: 2px solid rgba(15, 23, 42, 0.15);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.email-input-section .form-input:focus {
+  outline: none;
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.email-input-section .form-input:disabled {
+  background: rgba(15, 23, 42, 0.05);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.email-input-section .form-error {
+  display: none;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.email-input-section .form-error[style*="display: block"] {
+  display: block !important;
+}
+
+.email-input-section .form-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.email-input-section .form-hint .hint-icon {
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.email-input-section .form-hint .hint-text {
+  line-height: 1.5;
+}
+
 .provider-buttons { margin-bottom: 1.5rem; }
 .provider-buttons .btn-provider { border:none; }
 .provider-icon { width:26px; height:26px; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }

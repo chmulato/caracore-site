@@ -838,7 +838,51 @@ def create_app() -> Flask:
         
         health_status["checks"]["oauth_providers"] = provider_status
         
-        # 4. Verificar sistema de logs
+        # 4. Verificar SessionManager (Fase 7)
+        session_manager_status = {
+            "status": "ok" if SESSION_MANAGER_ENABLED else "disabled",
+            "enabled": SESSION_MANAGER_ENABLED
+        }
+        
+        if SESSION_MANAGER_ENABLED:
+            # Verificar se TOKEN_ENCRYPTION_KEY está configurada
+            encryption_key = os.getenv('TOKEN_ENCRYPTION_KEY')
+            if encryption_key:
+                session_manager_status["encryption_key"] = {"status": "ok", "configured": True}
+            else:
+                session_manager_status["encryption_key"] = {"status": "missing", "configured": False}
+                session_manager_status["status"] = "error"
+                health_status["status"] = "degraded"
+            
+            # Verificar se SessionManager pode ser instanciado
+            try:
+                test_manager = SessionManager()
+                session_manager_status["initialization"] = {"status": "ok"}
+            except Exception as e:
+                session_manager_status["initialization"] = {
+                    "status": "error",
+                    "error": str(e)
+                }
+                session_manager_status["status"] = "error"
+                health_status["status"] = "degraded"
+        else:
+            # Verificar motivo da desabilitação
+            encryption_key = os.getenv('TOKEN_ENCRYPTION_KEY')
+            if not encryption_key:
+                session_manager_status["reason"] = "TOKEN_ENCRYPTION_KEY not configured"
+            else:
+                try:
+                    from session_manager import SessionManager as SM
+                    test_manager = SM()
+                    session_manager_status["reason"] = "Unknown (should be enabled)"
+                except ImportError:
+                    session_manager_status["reason"] = "session_manager module not available"
+                except Exception as e:
+                    session_manager_status["reason"] = f"Initialization error: {str(e)}"
+        
+        health_status["checks"]["session_manager"] = session_manager_status
+        
+        # 5. Verificar sistema de logs
         try:
             log_dir = APP_ROOT / "logs"
             if log_dir.exists():

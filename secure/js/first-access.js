@@ -69,12 +69,29 @@ class FirstAccessManager {
             // Verificar se usuário está autenticado
             await this.checkAuthentication();
             
+            // Verificar se há erro de escopos não autorizados na URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasScopeError = urlParams.get('error') === 'scope_unauthorized';
+            
             // Só verificar autorização se temos email
             // Se não há email, o usuário precisará preencher o formulário primeiro
             if (this.userEmail) {
                 // Verificar se usuário já está autorizado
                 const isAuthorized = await this.checkUserAuthorization();
                 if (isAuthorized) {
+                    // IMPORTANTE: Se há erro de escopos, NÃO redirecionar automaticamente
+                    // O usuário precisa conceder permissões novamente primeiro
+                    if (hasScopeError) {
+                        console.warn('⚠️ Usuário autorizado mas com erro de escopos. Mostrando mensagem explicativa.');
+                        this.showMainContent();
+                        this.showScopeErrorWarning();
+                        this.setupEventListeners();
+                        if (this.userEmail) {
+                            this.populateUserInfo();
+                        }
+                        return;
+                    }
+                    
                     // Garantir que email e provider estão salvos antes de redirecionar
                     localStorage.setItem('user_email', this.userEmail);
                     localStorage.setItem('auth_user_email', this.userEmail);
@@ -1182,6 +1199,182 @@ class FirstAccessManager {
     
     showSuccess(message) {
         this.showAlert(message, 'success');
+    }
+    
+    /**
+     * Limpa todos os dados de autenticação OAuth/OIDC do cache
+     * Necessário quando há erro de escopos para garantir redirecionamento correto
+     */
+    clearAuthCache() {
+        console.log('🧹 Limpando cache de autenticação OAuth/OIDC...');
+        
+        // Prefixos de chaves a serem removidas
+        const prefixesToRemove = [
+            // OIDC padrão
+            'oidc.',
+            'oidc.user',
+            'oidc.storage',
+            'oidc.metadata',
+            'oidc.authority',
+            'oidc.client',
+            'oidc.states',
+            'oidc.signin',
+            // Tokens de autenticação
+            'auth_',
+            'cara_core_',
+            // Estados OAuth
+            'microsoft_oauth_',
+            'google_oauth_',
+            'entra_oauth_',
+            // PKCE
+            'oidc.pkce.',
+            // Provider
+            'cara_core_oidc_provider',
+            // Session IDs
+            'cara_core_session_id',
+            'cara_core_token_expires_at',
+            // User data (manter email e provider para pré-preenchimento)
+            'auth_user_info',
+            'auth_expires_at',
+            'auth_last_activity'
+        ];
+        
+        const clearStorage = (storage) => {
+            if (!storage || typeof storage.length !== 'number') return;
+            
+            // Chaves a serem preservadas (para pré-preenchimento)
+            const keysToPreserve = [
+                'user_email',
+                'auth_user_email',
+                'auth_provider'
+            ];
+            
+            try {
+                const keysToRemove = [];
+                for (let i = 0; i < storage.length; i++) {
+                    const key = storage.key(i);
+                    if (!key) continue;
+                    
+                    // Pular chaves que devem ser preservadas
+                    if (keysToPreserve.includes(key)) {
+                        continue;
+                    }
+                    
+                    // Verificar se a chave corresponde a algum prefixo
+                    if (prefixesToRemove.some(prefix => key.startsWith(prefix))) {
+                        keysToRemove.push(key);
+                    }
+                }
+                
+                keysToRemove.forEach(key => {
+                    try {
+                        storage.removeItem(key);
+                        console.log(`  ✅ Removido: ${key}`);
+                    } catch (err) {
+                        console.warn(`  ⚠️ Erro ao remover ${key}:`, err);
+                    }
+                });
+            } catch (err) {
+                console.warn('⚠️ Erro ao iterar storage:', err);
+            }
+        };
+        
+        // Limpar localStorage
+        try {
+            clearStorage(localStorage);
+        } catch (err) {
+            console.warn('⚠️ Erro ao limpar localStorage:', err);
+        }
+        
+        // Limpar sessionStorage
+        try {
+            clearStorage(sessionStorage);
+        } catch (err) {
+            console.warn('⚠️ Erro ao limpar sessionStorage:', err);
+        }
+        
+        // Limpar dados do OIDCAuth se disponível
+        if (window.OIDCAuth && typeof window.OIDCAuth.clearStaleState === 'function') {
+            try {
+                window.OIDCAuth.clearStaleState();
+                console.log('  ✅ Estado OIDCAuth limpo');
+            } catch (err) {
+                console.warn('  ⚠️ Erro ao limpar estado OIDCAuth:', err);
+            }
+        }
+        
+        // Limpar dados do SessionManager se disponível
+        if (window.SessionManager && typeof window.SessionManager.clear === 'function') {
+            try {
+                window.SessionManager.clear();
+                console.log('  ✅ SessionManager limpo');
+            } catch (err) {
+                console.warn('  ⚠️ Erro ao limpar SessionManager:', err);
+            }
+        }
+        
+        console.log('✅ Cache de autenticação limpo com sucesso');
+    }
+    
+    showScopeErrorWarning() {
+        // Limpar cache antes de mostrar a mensagem
+        this.clearAuthCache();
+        
+        // Remover alertas existentes
+        this.elements.alertContainer.innerHTML = '';
+        
+        const alert = document.createElement('div');
+        alert.className = 'alert alert-warning alert-custom';
+        alert.innerHTML = `
+            <h6 class="mb-3">
+                <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+                Permissões Necessárias
+            </h6>
+            <p class="mb-2">
+                <strong>Você está autorizado no sistema, mas precisa conceder as permissões necessárias novamente.</strong>
+            </p>
+            <p class="mb-2">
+                Isso pode acontecer quando:
+            </p>
+            <ul class="mb-3">
+                <li>As permissões foram revogadas ou expiraram</li>
+                <li>Você está fazendo login pela primeira vez após uma atualização</li>
+                <li>O sistema precisa de novas permissões para funcionar corretamente</li>
+            </ul>
+            <div class="d-grid gap-2">
+                <button type="button" 
+                        class="btn btn-primary" 
+                        id="btnRetryLogin">
+                    <i class="bi bi-arrow-repeat"></i> Fazer Login Novamente
+                </button>
+                <p class="text-muted small mb-0 mt-2">
+                    <i class="bi bi-info-circle"></i> O cache foi limpo. Ao fazer login novamente, você será solicitado a conceder as permissões necessárias.
+                </p>
+            </div>
+        `;
+        
+        this.elements.alertContainer.appendChild(alert);
+        
+        // Adicionar event listener ao botão para garantir limpeza antes de redirecionar
+        const retryButton = document.getElementById('btnRetryLogin');
+        if (retryButton) {
+            retryButton.addEventListener('click', () => {
+                // Limpar cache novamente antes de redirecionar (garantia extra)
+                this.clearAuthCache();
+                
+                // Pequeno delay para garantir que a limpeza foi concluída
+                setTimeout(() => {
+                    const email = encodeURIComponent(this.userEmail || '');
+                    const provider = this.userProvider || 'microsoft';
+                    window.location.href = `/secure/index.html?email=${email}&provider=${provider}&clear_cache=true`;
+                }, 200);
+            });
+        }
+        
+        // Scroll até o alerta
+        setTimeout(() => {
+            alert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
     }
     
     showAuthorizationRedirect() {

@@ -6,7 +6,132 @@
 // Função para gerar ícones SVG
 const icon = (name, extraClass = '') => `<svg class="icon ${extraClass}" aria-hidden="true"><use href="#icon-${name}"></use></svg>`;
 
+/**
+ * Limpa todos os dados de autenticação OAuth/OIDC do cache
+ * Necessário quando há erro de escopos para garantir redirecionamento correto
+ */
+function clearAuthCache() {
+    console.log('🧹 Limpando cache de autenticação OAuth/OIDC...');
+    
+    // Prefixos de chaves a serem removidas
+    const prefixesToRemove = [
+        // OIDC padrão
+        'oidc.',
+        'oidc.user',
+        'oidc.storage',
+        'oidc.metadata',
+        'oidc.authority',
+        'oidc.client',
+        'oidc.states',
+        'oidc.signin',
+        // Tokens de autenticação
+        'auth_',
+        'cara_core_',
+        // Estados OAuth
+        'microsoft_oauth_',
+        'google_oauth_',
+        'entra_oauth_',
+        // PKCE
+        'oidc.pkce.',
+        // Provider
+        'cara_core_oidc_provider',
+        // Session IDs
+        'cara_core_session_id',
+        'cara_core_token_expires_at',
+        // User data (mas manter email e provider para pré-preenchimento)
+        'auth_user_info',
+        'auth_expires_at',
+        'auth_last_activity'
+    ];
+    
+    const clearStorage = (storage) => {
+        if (!storage || typeof storage.length !== 'number') return;
+        
+        // Chaves a serem preservadas (para pré-preenchimento)
+        const keysToPreserve = [
+            'user_email',
+            'auth_user_email',
+            'auth_provider'
+        ];
+        
+        try {
+            const keysToRemove = [];
+            for (let i = 0; i < storage.length; i++) {
+                const key = storage.key(i);
+                if (!key) continue;
+                
+                // Pular chaves que devem ser preservadas
+                if (keysToPreserve.includes(key)) {
+                    continue;
+                }
+                
+                // Verificar se a chave corresponde a algum prefixo
+                if (prefixesToRemove.some(prefix => key.startsWith(prefix))) {
+                    keysToRemove.push(key);
+                }
+            }
+            
+            keysToRemove.forEach(key => {
+                try {
+                    storage.removeItem(key);
+                    console.log(`  ✅ Removido: ${key}`);
+                } catch (err) {
+                    console.warn(`  ⚠️ Erro ao remover ${key}:`, err);
+                }
+            });
+        } catch (err) {
+            console.warn('⚠️ Erro ao iterar storage:', err);
+        }
+    };
+    
+    // Limpar localStorage
+    try {
+        clearStorage(localStorage);
+    } catch (err) {
+        console.warn('⚠️ Erro ao limpar localStorage:', err);
+    }
+    
+    // Limpar sessionStorage
+    try {
+        clearStorage(sessionStorage);
+    } catch (err) {
+        console.warn('⚠️ Erro ao limpar sessionStorage:', err);
+    }
+    
+    // Limpar dados do OIDCAuth se disponível
+    if (window.OIDCAuth && typeof window.OIDCAuth.clearStaleState === 'function') {
+        try {
+            window.OIDCAuth.clearStaleState();
+            console.log('  ✅ Estado OIDCAuth limpo');
+        } catch (err) {
+            console.warn('  ⚠️ Erro ao limpar estado OIDCAuth:', err);
+        }
+    }
+    
+    // Limpar dados do SessionManager se disponível
+    if (window.SessionManager && typeof window.SessionManager.clear === 'function') {
+        try {
+            window.SessionManager.clear();
+            console.log('  ✅ SessionManager limpo');
+        } catch (err) {
+            console.warn('  ⚠️ Erro ao limpar SessionManager:', err);
+        }
+    }
+    
+    console.log('✅ Cache de autenticação limpo com sucesso');
+}
+
 document.addEventListener('DOMContentLoaded', async function() {
+  // Verificar se precisa limpar cache (parâmetro na URL)
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('clear_cache') === 'true') {
+    clearAuthCache();
+    // Remover parâmetro da URL para não limpar novamente
+    urlParams.delete('clear_cache');
+    const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+    window.history.replaceState({}, '', newUrl);
+  }
+  
   // Elementos DOM
   const loadingOverlay = document.getElementById('loadingOverlay');
   const authScreen = document.getElementById('authScreen');
@@ -229,20 +354,64 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (errorReason === 'no_real_tokens') {
       userMessage = errorMessage || 'Não foi possível obter tokens de autenticação válidos. Por favor, faça login novamente.';
     } else if (errorReason === 'scope_unauthorized') {
-      userMessage = errorMessage || 'Permissões não autorizadas. Por favor, conceda todas as permissões necessárias.';
+      userMessage = errorMessage || 'É necessário conceder as permissões solicitadas para acessar o sistema. Ao fazer login novamente, você será solicitado a conceder essas permissões.';
     } else if (errorReason === 'unauthorized_domain') {
       userMessage = errorMessage || 'Seu domínio de email não está autorizado para login. Por favor, use uma conta autorizada ou faça login novamente.';
     } else if (errorReason === 'no_valid_session' || errorReason === 'session_expired') {
-      userMessage = errorMessage || 'Sua sessão expirou. Por favor, faça login novamente.';
+      userMessage = errorMessage || 'Sua sessão expirou ou não foi possível criar uma sessão válida. Por favor, faça login novamente para obter uma nova sessão.';
     }
     
-    // Verificar se podemos usar force recognition para recuperação
-    if (typeof window.forceAuthRecognition === 'function' && 
-        (errorReason.includes('auth') || errorReason.includes('timeout') || errorReason.includes('recognition'))) {
-      console.log('🔄 Tentando recuperar com Force Recognition...');
-      window.AuthUIFeedback.forceAuthRecognition(false);
+    // Para erros de escopos ou sessão inválida, limpar cache e mostrar mensagem mais detalhada
+    if (errorReason === 'scope_unauthorized' || errorReason === 'no_valid_session') {
+      // Limpar cache quando há erro de escopos para garantir redirecionamento correto
+      if (errorReason === 'scope_unauthorized') {
+        clearAuthCache();
+      }
+      
+      // Criar alerta mais detalhado
+      const alertContainer = document.getElementById('authAlerts');
+      if (alertContainer) {
+        alertContainer.innerHTML = `
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="d-flex align-items-start">
+              <svg class="icon icon-sm me-2 flex-shrink-0" aria-hidden="true"><use href="#icon-warning"></use></svg>
+              <div class="flex-grow-1">
+                <h6 class="alert-heading mb-2">${errorReason === 'scope_unauthorized' ? 'Permissões Necessárias' : 'Sessão Expirada'}</h6>
+                <p class="mb-2">${userMessage}</p>
+                ${errorReason === 'scope_unauthorized' ? `
+                  <p class="mb-0 small">
+                    <strong>O que fazer:</strong> Faça login novamente e, quando solicitado, <strong>conceda todas as permissões</strong> que o sistema solicitar. 
+                    Isso é necessário para que o sistema possa autenticá-lo corretamente.
+                  </p>
+                ` : `
+                  <p class="mb-0 small">
+                    <strong>O que fazer:</strong> Faça login novamente para criar uma nova sessão válida. 
+                    Se o problema persistir, tente limpar os cookies do navegador ou usar uma janela anônima.
+                  </p>
+                `}
+              </div>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+          </div>
+        `;
+        
+        // Scroll até o alerta
+        setTimeout(() => {
+          alertContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+      
+      // Também usar o sistema de feedback padrão
+      window.AuthUIFeedback.updateState('error', { message: userMessage });
     } else {
-      window.AuthUIFeedback.loginFailed(userMessage);
+      // Verificar se podemos usar force recognition para recuperação
+      if (typeof window.forceAuthRecognition === 'function' && 
+          (errorReason.includes('auth') || errorReason.includes('timeout') || errorReason.includes('recognition'))) {
+        console.log('🔄 Tentando recuperar com Force Recognition...');
+        window.AuthUIFeedback.forceAuthRecognition(false);
+      } else {
+        window.AuthUIFeedback.loginFailed(userMessage);
+      }
     }
   }
   

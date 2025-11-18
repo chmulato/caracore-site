@@ -340,8 +340,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     console.error('❌ Botão Microsoft não encontrado');
   }
   
-    // Verificar se há parâmetros de erro na URL
-  const urlParams = new URLSearchParams(window.location.search);
+  // Verificar se há parâmetros de erro na URL
   if (urlParams.has('error')) {
     const errorReason = urlParams.get('reason') || 'unknown';
     const errorMessage = urlParams.get('message') || null;

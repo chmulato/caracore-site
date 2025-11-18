@@ -70,6 +70,12 @@ function generateGoogleConfig() {
                 return base.join(' ');
             }
         })(),
+        // IMPORTANTE: access_type=offline é necessário para obter refresh_token do Google
+        // Sem este parâmetro, o Google não retorna refresh_token na resposta
+        extraQueryParams: {
+            access_type: 'offline',
+            prompt: 'consent'  // Força novo consentimento para garantir refresh_token mesmo se já tiver consentido antes
+        },
         post_logout_redirect_uri: `${baseUrl}${paths.logout}`,
         automaticSilentRenew: true,
         loadUserInfo: true,

@@ -42,10 +42,29 @@
         }
 
         /**
+         * Verifica se estamos em uma página de callback OAuth
+         */
+        isCallbackPage() {
+            const pathname = window.location.pathname.toLowerCase();
+            const search = window.location.search.toLowerCase();
+            return pathname.includes('callback') || 
+                   search.includes('code=') || 
+                   search.includes('state=') ||
+                   search.includes('error=');
+        }
+
+        /**
          * Carrega sessão salva do localStorage
          */
         loadSavedSession() {
             try {
+                // NÃO carregar sessão antiga se estivermos em callback
+                // Uma nova sessão será criada durante o callback
+                if (this.isCallbackPage()) {
+                    console.log('[TokenManager] Página de callback detectada, não carregando sessão antiga');
+                    return;
+                }
+                
                 const savedSessionId = localStorage.getItem('cara_core_session_id');
                 const savedExpiresAt = localStorage.getItem('cara_core_token_expires_at');
                 
@@ -62,8 +81,10 @@
                         this.accessToken = sessionStorage.getItem('cara_core_access_token');
                         this.idToken = sessionStorage.getItem('cara_core_id_token');
                         
-                        // Agendar renovação se necessário
-                        this.scheduleRefresh();
+                        // Agendar renovação se necessário (apenas se não estiver em callback)
+                        if (!this.isCallbackPage()) {
+                            this.scheduleRefresh();
+                        }
                         
                         console.log('[TokenManager] Sessão restaurada:', this.sessionId);
                     } else {
@@ -85,6 +106,12 @@
             try {
                 if (!sessionData || !sessionData.session_id) {
                     throw new Error('Dados de sessão inválidos');
+                }
+
+                // Limpar sessão antiga se existir (evitar conflito)
+                if (this.sessionId && this.sessionId !== sessionData.session_id) {
+                    console.log('[TokenManager] Limpando sessão antiga antes de criar nova:', this.sessionId);
+                    this.clearSession();
                 }
 
                 this.sessionId = sessionData.session_id;
@@ -113,7 +140,7 @@
                     sessionStorage.setItem('cara_core_id_token', this.idToken);
                 }
 
-                // Agendar renovação
+                // Agendar renovação (apenas se não estiver em callback)
                 this.scheduleRefresh();
 
                 console.log('[TokenManager] Sessão inicializada:', this.sessionId);
@@ -171,6 +198,12 @@
          * Agenda renovação automática de token
          */
         scheduleRefresh() {
+            // NÃO agendar renovação durante callback
+            if (this.isCallbackPage()) {
+                console.log('[TokenManager] Página de callback detectada, não agendando renovação');
+                return;
+            }
+            
             // Cancelar timer anterior se existir
             if (this.refreshTimer) {
                 clearTimeout(this.refreshTimer);
@@ -196,8 +229,10 @@
                     `(expira em ${Math.round(timeUntilExpiry / 1000)}s)`
                 );
             } else {
-                // Já está próximo de expirar, renovar imediatamente
-                this.refreshToken();
+                // Já está próximo de expirar, renovar imediatamente (apenas se não estiver em callback)
+                if (!this.isCallbackPage()) {
+                    this.refreshToken();
+                }
             }
         }
 
@@ -205,6 +240,12 @@
          * Renova access token usando session_id
          */
         async refreshToken(retryCount = 0) {
+            // NÃO tentar renovar durante callback - uma nova sessão está sendo criada
+            if (this.isCallbackPage()) {
+                console.log('[TokenManager] Página de callback detectada, não renovando tokens (nova sessão será criada)');
+                return;
+            }
+            
             if (this.isRefreshing) {
                 console.log('[TokenManager] Renovação já em andamento, aguardando...');
                 return;
@@ -231,23 +272,52 @@
 
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({}));
+                    const errorMessage = errorData.error_description || errorData.error || `HTTP ${response.status}`;
                     
-                    // Se sessão expirada ou inválida, fazer logout
+                    // Se sessão expirada ou inválida (401, 404), limpar sessão local
                     if (response.status === 401 || response.status === 404) {
-                        console.warn('[TokenManager] Sessão expirada ou inválida, fazendo logout');
-                        await this.logout();
+                        console.warn('[TokenManager] Sessão expirada ou inválida:', {
+                            status: response.status,
+                            sessionId: this.sessionId,
+                            error: errorMessage
+                        });
+                        
+                        // Limpar sessão local, mas NÃO fazer logout completo durante callback
+                        if (!this.isCallbackPage()) {
+                            await this.logout();
+                        } else {
+                            // Durante callback, apenas limpar sessão antiga
+                            this.clearSession();
+                            console.log('[TokenManager] Sessão antiga limpa (callback em andamento)');
+                        }
                         return;
                     }
 
-                    // Retry em caso de erro temporário
-                    if (retryCount < this.maxRetries && response.status >= 500) {
-                        console.log(`[TokenManager] Tentativa ${retryCount + 1}/${this.maxRetries} falhou, tentando novamente...`);
-                        await this.delay(this.retryDelay * (retryCount + 1));
-                        this.isRefreshing = false;
-                        return this.refreshToken(retryCount + 1);
+                    // Erro 500 - pode ser erro temporário do servidor ou sessão não encontrada
+                    if (response.status === 500) {
+                        // Se estamos em callback, não tentar retry - nova sessão será criada
+                        if (this.isCallbackPage()) {
+                            console.warn('[TokenManager] Erro 500 durante callback, limpando sessão antiga (nova sessão será criada)');
+                            this.clearSession();
+                            return;
+                        }
+                        
+                        // Retry em caso de erro temporário (apenas se não estiver em callback)
+                        if (retryCount < this.maxRetries) {
+                            console.log(`[TokenManager] Erro 500 (tentativa ${retryCount + 1}/${this.maxRetries}), tentando novamente...`);
+                            await this.delay(this.retryDelay * (retryCount + 1));
+                            this.isRefreshing = false;
+                            return this.refreshToken(retryCount + 1);
+                        }
+                        
+                        // Se todas as tentativas falharam, limpar sessão mas não fazer logout completo
+                        console.error('[TokenManager] Erro 500 persistente após retries, limpando sessão local');
+                        this.clearSession();
+                        return;
                     }
 
-                    throw new Error(errorData.error_description || `HTTP ${response.status}`);
+                    // Outros erros (400, 403, etc.)
+                    throw new Error(errorMessage);
                 }
 
                 const data = await response.json();
@@ -285,6 +355,13 @@
             } catch (error) {
                 console.error('[TokenManager] Erro ao renovar token:', error);
                 
+                // Se estamos em callback, não fazer retry nem logout - nova sessão será criada
+                if (this.isCallbackPage()) {
+                    console.warn('[TokenManager] Erro durante callback, limpando sessão antiga (nova sessão será criada)');
+                    this.clearSession();
+                    return;
+                }
+                
                 // Retry em caso de erro de rede
                 if (retryCount < this.maxRetries && error.message.includes('fetch')) {
                     console.log(`[TokenManager] Erro de rede, tentando novamente... (${retryCount + 1}/${this.maxRetries})`);
@@ -293,7 +370,7 @@
                     return this.refreshToken(retryCount + 1);
                 }
 
-                // Se falhou completamente, fazer logout
+                // Se falhou completamente e não estamos em callback, fazer logout
                 console.error('[TokenManager] Falha ao renovar token, fazendo logout');
                 await this.logout();
             } finally {

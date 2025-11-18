@@ -48,13 +48,34 @@ const SessionManager = (function() {
         const expiresAt = localStorage.getItem(CONFIG.STORAGE_KEYS.EXPIRES_AT);
         
         if (!accessToken || !expiresAt) {
+            console.log('[SessionManager] Token ou expiresAt não encontrado', {
+                hasAccessToken: !!accessToken,
+                hasExpiresAt: !!expiresAt
+            });
             return false;
         }
         
         // Verificar se token expirou
         const now = Math.floor(Date.now() / 1000);
-        if (now >= parseInt(expiresAt)) {
-            console.log('[SessionManager] Token expirado');
+        const expiresAtNum = parseInt(expiresAt);
+        
+        // Validar se expiresAt é um número válido
+        if (isNaN(expiresAtNum) || expiresAtNum <= 0) {
+            console.error('[SessionManager] expiresAt inválido:', expiresAt);
+            return false;
+        }
+        
+        // Verificar se token expirou (com margem de 5 segundos para evitar problemas de timing)
+        const timeUntilExpiry = expiresAtNum - now;
+        
+        if (timeUntilExpiry <= 5) {
+            console.log('[SessionManager] Token expirado ou próximo de expirar', {
+                now: now,
+                expiresAt: expiresAtNum,
+                timeUntilExpiry: timeUntilExpiry,
+                expiresAtString: expiresAt,
+                expiresAtISO: new Date(expiresAtNum * 1000).toISOString()
+            });
             return false;
         }
         

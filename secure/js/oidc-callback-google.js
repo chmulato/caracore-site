@@ -760,9 +760,25 @@
         const expiresIn = realUserData.expires_in || 3600;
         const expiresAt = now + expiresIn;
         
+        // Log detalhado para debug
+        console.log('📝 [Google] Salvando tokens no localStorage:', {
+            now: now,
+            expiresIn: expiresIn,
+            expiresAt: expiresAt,
+            expiresAtISO: new Date(expiresAt * 1000).toISOString(),
+            hasAccessToken: !!accessToken,
+            hasRefreshToken: !!refreshToken
+        });
+        
         // SALVAR NO FORMATO QUE SessionManager ESPERA (localStorage)
         localStorage.setItem('auth_access_token', accessToken);
-        localStorage.setItem('auth_refresh_token', refreshToken);
+        // Só salvar refresh token se existir e for válido
+        if (refreshToken && refreshToken !== 'undefined' && refreshToken !== 'null') {
+            localStorage.setItem('auth_refresh_token', refreshToken);
+        } else {
+            // Remover refresh token antigo se não houver novo
+            localStorage.removeItem('auth_refresh_token');
+        }
         localStorage.setItem('auth_provider', PROVIDER);
         localStorage.setItem('auth_user_info', JSON.stringify({
             email: userProfile.email,
@@ -804,8 +820,8 @@
         
         console.log(`✅ Autenticação Google criada para:`, userProfile.name);
         
-        // Criar sessão no backend com refresh token
-        if (refreshToken && window.tokenManager) {
+        // Criar sessão no backend (tentar mesmo sem refresh token para ter session_id)
+        if (window.tokenManager) {
             try {
                 const userData = {
                     email: userProfile.email,
@@ -817,17 +833,36 @@
                 const tokens = {
                     access_token: accessToken,
                     id_token: idToken,
-                    refresh_token: refreshToken,
+                    refresh_token: refreshToken || null, // Pode ser null
                     expires_in: expiresIn
                 };
                 
-                console.log('[OAuth Callback Google] Criando sessão no backend...');
+                console.log('[OAuth Callback Google] Criando sessão no backend...', {
+                    hasRefreshToken: !!refreshToken
+                });
                 await window.tokenManager.createSession(userData, tokens);
                 console.log('[OAuth Callback Google] ✅ Sessão criada com sucesso no backend');
             } catch (error) {
                 console.warn('[OAuth Callback Google] ⚠️ Erro ao criar sessão no backend:', error);
+                // Não bloquear o fluxo se falhar - tokens já estão salvos no localStorage
             }
+        } else {
+            console.warn('[OAuth Callback Google] ⚠️ TokenManager não disponível - sessão não será criada no backend');
         }
+        
+        // Garantir que os dados foram salvos antes de continuar
+        const savedAccessToken = localStorage.getItem('auth_access_token');
+        const savedEmail = localStorage.getItem('auth_user_email');
+        
+        if (!savedAccessToken || !savedEmail) {
+            console.error('❌ [Google] ERRO: Tokens não foram salvos corretamente!', {
+                hasAccessToken: !!savedAccessToken,
+                hasEmail: !!savedEmail
+            });
+            throw new Error('Falha ao salvar tokens de autenticação');
+        }
+        
+        console.log('✅ [Google] Tokens salvos e validados antes de redirecionar');
         
         return true;
     }

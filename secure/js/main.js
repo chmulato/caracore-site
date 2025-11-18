@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         
         if (!userEmail) {
           throw new Error('Email do usuário não encontrado. Por favor, faça login novamente.');
-        }
+      }
       }
       
       // SEGURANÇA: Validar correspondência entre provider e email usando módulos específicos
@@ -147,11 +147,11 @@ document.addEventListener('DOMContentLoaded', async function() {
             const result = await response.json();
             if (result.authorized === true) {
               console.log('✅ Usuário autorizado (verificação direta)!');
-              await showUserInfo();
-              window.AuthUIFeedback.updateState('success');
-              setTimeout(() => {
-                window.location.href = '/secure/restrita.html';
-              }, 2000);
+        await showUserInfo();
+        window.AuthUIFeedback.updateState('success');
+        setTimeout(() => {
+          window.location.href = '/secure/restrita.html';
+        }, 2000);
             } else {
               console.log('❌ Usuário não autorizado. Redirecionando para primeiro acesso...');
               window.location.href = `/secure/first-access.html?email=${encodeURIComponent(userEmail)}&provider=${provider || 'microsoft'}`;
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Mesmo com erro, configurar email se não autenticado
     setupEmailValidation();
   }
-  
+
   // Configurar event listeners para os botões de login
   const btnLoginGoogle = document.getElementById('btnLoginGoogle');
   const btnLoginMicrosoft = document.getElementById('btnLoginMicrosoft');
@@ -517,7 +517,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       }
     }
   }
-  
+
   /**
    * Processo de login com um provedor específico
    */

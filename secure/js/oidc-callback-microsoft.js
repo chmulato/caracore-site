@@ -427,6 +427,20 @@
                         console.warn('   2. Permissões expiradas ou revogadas');
                         console.warn('   3. Usuário novo que precisa ser registrado no sistema');
                         console.warn('   → Redirecionando para primeiro contato para registro/reaplicação de permissões');
+                        
+                        // Tentar obter email de outras fontes antes de redirecionar
+                        const emailFromStorage = localStorage.getItem('user_email') || 
+                                                localStorage.getItem('auth_user_email') ||
+                                                sessionStorage.getItem('cara_core_user_email');
+                        
+                        if (emailFromStorage) {
+                            console.log('📧 Email encontrado em storage, redirecionando para primeiro acesso:', emailFromStorage);
+                            // Redirecionar para primeiro acesso com o email
+                            setTimeout(() => {
+                                window.location.href = `/secure/first-access.html?email=${encodeURIComponent(emailFromStorage)}&provider=microsoft&error=scope_unauthorized`;
+                            }, 2000);
+                            return null; // Parar processamento
+                        }
                     }
                 }
             }
@@ -493,13 +507,58 @@
                 const errorData = await response.json().catch(() => ({}));
                 const errorMessage = errorData.error || errorData.message || 'Erro desconhecido';
                 
-                // Se for 401, pode ser que a sessão ainda não foi persistida
+                // Se for 401, pode ser que a sessão ainda não foi persistida ou há problema de datetime
                 if (response.status === 401) {
                     console.warn('⚠️ [Microsoft] Sessão não encontrada ou ainda não persistida (401):', {
                         sessionId: sessionId,
                         error: errorMessage,
-                        suggestion: 'A sessão pode estar sendo criada. Aguarde e tente novamente.'
+                        suggestion: 'A sessão pode estar sendo criada ou há problema de validação no backend. Aguarde e tente novamente.',
+                        details: errorData
                     });
+                    
+                    // Se o erro mencionar datetime, pode ser o bug corrigido no backend
+                    if (errorMessage.includes('datetime') || errorMessage.includes('expiração')) {
+                        console.warn('⚠️ [Microsoft] Possível erro de datetime no backend. Aguardando 2s e tentando novamente...');
+                        await new Promise(resolve => setTimeout(resolve, 2000));
+                        
+                        // Retry uma vez
+                        try {
+                            const retryResponse = await fetch(`${backendUrl}/auth/session/refresh`, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                credentials: 'include',
+                                body: JSON.stringify({
+                                    session_id: sessionId
+                                })
+                            });
+                            
+                            if (retryResponse.ok) {
+                                const retryData = await retryResponse.json();
+                                if (retryData.access_token && retryData.id_token) {
+                                    console.log('✅ [Microsoft] Tokens obtidos após retry');
+                                    const payload = JSON.parse(atob(retryData.id_token.split('.')[1]));
+                                    const email = payload.email || payload.preferred_username || payload.upn;
+                                    
+                                    if (email) {
+                                        return {
+                                            email: email,
+                                            name: payload.name || email.split('@')[0],
+                                            access_token: retryData.access_token,
+                                            id_token: retryData.id_token,
+                                            expires_in: retryData.expires_in || 3600,
+                                            expires_at: retryData.expires_at,
+                                            session_id: sessionId,
+                                            profile: payload
+                                        };
+                                    }
+                                }
+                            }
+                        } catch (retryError) {
+                            console.warn('⚠️ [Microsoft] Erro no retry:', retryError);
+                        }
+                    }
                 } else {
                     console.warn('⚠️ [Microsoft] Erro ao obter tokens do session_id:', {
                         status: response.status,

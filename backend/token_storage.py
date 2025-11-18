@@ -11,7 +11,7 @@ import os
 import logging
 import shutil
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from typing import Dict, Optional, Any
 from dateutil import parser as date_parser
 
@@ -385,7 +385,13 @@ class TokenStorage:
         # Verificar expiração
         try:
             expires_at = date_parser.parse(session_data["expires_at"])
-            if datetime.utcnow() > expires_at:
+            # Garantir que ambos os datetimes tenham timezone (offset-aware)
+            now = datetime.utcnow().replace(tzinfo=timezone.utc)
+            # Se expires_at não tiver timezone, assumir UTC
+            if expires_at.tzinfo is None:
+                expires_at = expires_at.replace(tzinfo=timezone.utc)
+            
+            if now > expires_at:
                 logger.warning(f"Sessão expirada: {session_id}")
                 # Marcar como expirada
                 session_data["status"] = "expired"
@@ -393,7 +399,7 @@ class TokenStorage:
                 self._save_sessions(data)
                 return None
         except Exception as e:
-            logger.error(f"Erro ao verificar expiração: {e}")
+            logger.error(f"Erro ao verificar expiração: {e}", exc_info=True)
             return None
         
         # Descriptografar refresh token
@@ -516,7 +522,7 @@ class TokenStorage:
         # Carregar sessões
         data = self._load_sessions()
         
-        now = datetime.utcnow()
+        now = datetime.utcnow().replace(tzinfo=timezone.utc)
         removed_count = 0
         sessions_to_remove = []
         
@@ -524,11 +530,16 @@ class TokenStorage:
             # Verificar se está expirada
             try:
                 expires_at = date_parser.parse(session_data["expires_at"])
+                # Garantir que ambos os datetimes tenham timezone (offset-aware)
+                if expires_at.tzinfo is None:
+                    expires_at = expires_at.replace(tzinfo=timezone.utc)
+                
                 if now > expires_at:
                     sessions_to_remove.append(session_id)
                     continue
-            except Exception:
+            except Exception as e:
                 # Se não conseguir parsear, considerar expirada
+                logger.warning(f"Erro ao parsear expires_at para {session_id}: {e}")
                 sessions_to_remove.append(session_id)
                 continue
             
@@ -536,10 +547,15 @@ class TokenStorage:
             if session_data.get("status") == "revoked":
                 try:
                     revoked_at = date_parser.parse(session_data.get("revoked_at", ""))
+                    # Garantir que ambos os datetimes tenham timezone (offset-aware)
+                    if revoked_at.tzinfo is None:
+                        revoked_at = revoked_at.replace(tzinfo=timezone.utc)
+                    
                     if now > revoked_at + timedelta(hours=1):
                         sessions_to_remove.append(session_id)
-                except Exception:
+                except Exception as e:
                     # Se não conseguir parsear, remover
+                    logger.warning(f"Erro ao parsear revoked_at para {session_id}: {e}")
                     sessions_to_remove.append(session_id)
         
         # Remover sessões

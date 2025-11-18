@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                 <p class="mb-2">${userMessage}</p>
                 ${errorReason === 'scope_unauthorized' ? `
                   <p class="mb-0 small">
-                    <strong>O que fazer:</strong> Faça login novamente e, quando solicitado, <strong>conceda todas as permissões</strong> que o sistema solicitar. 
+                    <strong>O que fazer:</strong> Faça login novamente e, quando solicitado, <strong>conceda todas as permissões</strong> que o provedor (Google ou Microsoft) solicitar. 
                     Isso é necessário para que o sistema possa autenticá-lo corretamente.
                   </p>
                 ` : `

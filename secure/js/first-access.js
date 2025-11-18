@@ -1340,6 +1340,7 @@ class FirstAccessManager {
                 <li>As permissões foram revogadas ou expiraram</li>
                 <li>Você está fazendo login pela primeira vez após uma atualização</li>
                 <li>O sistema precisa de novas permissões para funcionar corretamente</li>
+                <li>Você não concedeu todas as permissões solicitadas durante o login</li>
             </ul>
             <div class="d-grid gap-2">
                 <button type="button" 
@@ -1348,7 +1349,7 @@ class FirstAccessManager {
                     <i class="bi bi-arrow-repeat"></i> Fazer Login Novamente
                 </button>
                 <p class="text-muted small mb-0 mt-2">
-                    <i class="bi bi-info-circle"></i> O cache foi limpo. Ao fazer login novamente, você será solicitado a conceder as permissões necessárias.
+                    <i class="bi bi-info-circle"></i> O cache foi limpo. Ao fazer login novamente, você será solicitado a conceder <strong>todas as permissões</strong> necessárias. ${this.userProvider === 'google' ? 'Certifique-se de aceitar todas as permissões solicitadas pelo Google.' : this.userProvider === 'microsoft' ? 'Certifique-se de aceitar todas as permissões solicitadas pela Microsoft.' : ''}
                 </p>
             </div>
         `;

@@ -446,9 +446,14 @@
                     console.log('🔄 Domínio não autorizado detectado (esperado). Tentando obter email para redirecionar...');
                 } else if (response.status === 400) {
                     // Tratamento avançado de erro 400
-                    const errorDesc = errorData.error_description || '';
+                    const errorDesc = errorData.error_description || errorData.error || '';
                     const isExpiredCode = errorDesc.includes('expired') || errorDesc.includes('code has expired');
                     const isInvalidCode = errorDesc.includes('invalid_grant') || errorDesc.includes('code');
+                    const isScopeError = errorDesc.includes('access_denied') || 
+                                        errorDesc.includes('scope') || 
+                                        errorDesc.includes('permission') ||
+                                        errorDesc.includes('unauthorized') ||
+                                        (errorData.error === 'access_denied');
                     
                     console.warn('⚠️ Erro 400 - Possíveis causas:', {
                         missingCodeVerifier: !codeVerifier,
@@ -456,8 +461,36 @@
                         invalidCode: isInvalidCode,
                         invalidRedirectUri: errorDesc.includes('redirect_uri'),
                         expiredCode: isExpiredCode,
+                        scopeUnauthorized: isScopeError,
                         errorDetails: errorData
                     });
+                    
+                    // Se for erro de escopos não autorizados, redirecionar para primeiro acesso
+                    if (isScopeError) {
+                        console.warn('⚠️ Erro de escopos não autorizados (Google). Isso pode indicar:');
+                        console.warn('   1. Usuário não concedeu todas as permissões necessárias');
+                        console.warn('   2. Permissões expiradas ou revogadas');
+                        console.warn('   3. Usuário novo que precisa ser registrado no sistema');
+                        console.warn('   → Redirecionando para primeiro contato para registro/reaplicação de permissões');
+                        
+                        // Tentar obter email de outras fontes antes de redirecionar
+                        const emailFromStorage = localStorage.getItem('user_email') || 
+                                                localStorage.getItem('auth_user_email') ||
+                                                sessionStorage.getItem('cara_core_user_email');
+                        
+                        if (emailFromStorage) {
+                            console.log('📧 Email encontrado em storage, redirecionando para primeiro acesso:', emailFromStorage);
+                            // Redirecionar para primeiro acesso com o email
+                            // IMPORTANTE: Redirecionar imediatamente para evitar conflito com outros redirecionamentos
+                            window.location.href = `/secure/first-access.html?email=${encodeURIComponent(emailFromStorage)}&provider=google&error=scope_unauthorized`;
+                            return null; // Parar processamento imediatamente
+                        } else {
+                            // Se não houver email, redirecionar para primeiro acesso sem email
+                            console.warn('⚠️ Email não encontrado em storage, redirecionando para primeiro acesso sem email');
+                            window.location.href = `/secure/first-access.html?provider=google&error=scope_unauthorized`;
+                            return null; // Parar processamento imediatamente
+                        }
+                    }
                 }
                 
                 // Se for erro 403 de domínio não autorizado, tentar obter email e redirecionar para primeiro acesso

@@ -1013,6 +1013,20 @@
             if (verification.hasAccessToken && verification.hasExpiresAt && verification.hasProvider) {
                 console.log('🎉 Callback OIDC Google processado com sucesso!');
                 cleanCallbackUrl();
+                
+                // Disparar evento para callback-authorization-google.js detectar
+                // Isso garante que o script de autorização saiba que a autenticação foi concluída
+                if (typeof window.dispatchEvent === 'function') {
+                    window.dispatchEvent(new CustomEvent('googleOAuthCompleted', {
+                        detail: {
+                            email: localStorage.getItem('user_email') || localStorage.getItem('auth_user_email'),
+                            provider: 'google',
+                            hasAccessToken: verification.hasAccessToken,
+                            hasExpiresAt: verification.hasExpiresAt
+                        }
+                    }));
+                }
+                
                 return true;
             } else {
                 throw new Error('Verificação falhou - dados não salvos corretamente');

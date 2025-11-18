@@ -33,8 +33,9 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
     
     await waitForOIDCAuth();
     
-    // Aguardar um tempo inicial para o callback processar (2 segundos)
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    // Aguardar um tempo inicial para o callback processar (reduzido para 500ms)
+    // O callback alternativo salva diretamente no localStorage, então não precisa esperar tanto
+    await new Promise(resolve => setTimeout(resolve, 500));
     
     // Função para validar email
     const isValidEmail = (email) => {
@@ -54,22 +55,32 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
     const checkAuth = async () => {
       checkCount++;
       
-      // PRIORIDADE 1: Obter email diretamente do OIDCAuth (mais confiável)
       let userEmail = null;
       let accessToken = null;
       
-      if (window.OIDCAuth) {
+      // PRIORIDADE 1: Verificar localStorage primeiro (mais rápido, dados do callback OIDC alternativo)
+      // O callback alternativo salva diretamente no localStorage, então verificar primeiro
+      const emailFromStorage = localStorage.getItem('user_email') || 
+                             localStorage.getItem('auth_user_email');
+      if (isValidEmail(emailFromStorage)) {
+        userEmail = emailFromStorage;
+        accessToken = localStorage.getItem('auth_access_token');
+        console.log('✅ Email válido obtido do localStorage (prioridade):', userEmail);
+      }
+      
+      // PRIORIDADE 2: Obter email diretamente do OIDCAuth (se disponível e não encontrou no localStorage)
+      if ((!userEmail || !isValidEmail(userEmail)) && window.OIDCAuth) {
         try {
           const isAuthenticated = await window.OIDCAuth.isAuthenticated();
           if (isAuthenticated) {
             const user = await window.OIDCAuth.getUser();
             if (user && user.profile) {
-              userEmail = user.profile.email;
-              accessToken = user.access_token || localStorage.getItem('auth_access_token');
+              const oidcEmail = user.profile.email;
+              const oidcAccessToken = user.access_token || localStorage.getItem('auth_access_token');
               
               // Validar compatibilidade: Google deve ter email Gmail
-              if (userEmail) {
-                const emailDomain = userEmail.toLowerCase().split('@')[1];
+              if (oidcEmail) {
+                const emailDomain = oidcEmail.toLowerCase().split('@')[1];
                 const isGmailDomain = emailDomain === 'gmail.com' || emailDomain === 'googlemail.com';
                 const isMicrosoftDomain = emailDomain === 'hotmail.com' || 
                                          emailDomain === 'outlook.com' || 
@@ -80,7 +91,7 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
                                          emailDomain.startsWith('live.');
                 
                 if (!isGmailDomain && isMicrosoftDomain) {
-                  console.warn('⚠️ Callback Google: Incompatibilidade detectada - email Microsoft:', userEmail);
+                  console.warn('⚠️ Callback Google: Incompatibilidade detectada - email Microsoft:', oidcEmail);
                   localStorage.removeItem('user_email');
                   localStorage.removeItem('auth_user_email');
                   localStorage.removeItem('cara_core_user_profile');
@@ -90,6 +101,13 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
                   setTimeout(checkAuth, checkInterval);
                   return;
                 }
+                
+                // Se email do OIDCAuth é válido e não temos email do localStorage, usar OIDCAuth
+                if (isValidEmail(oidcEmail) && !userEmail) {
+                  userEmail = oidcEmail;
+                  accessToken = oidcAccessToken;
+                  console.log('✅ Email válido obtido do OIDCAuth:', userEmail);
+                }
               }
             }
           }
@@ -98,14 +116,12 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
         }
       }
       
-      // PRIORIDADE 2: Fallback para localStorage (apenas se OIDCAuth não retornou E email for válido)
+      // PRIORIDADE 3: Fallback para localStorage (se ainda não encontrou)
       if (!userEmail || !isValidEmail(userEmail)) {
-        const emailFromStorage = localStorage.getItem('user_email') || 
-                               localStorage.getItem('auth_user_email');
-        if (isValidEmail(emailFromStorage)) {
+        if (emailFromStorage && isValidEmail(emailFromStorage)) {
           userEmail = emailFromStorage;
           accessToken = accessToken || localStorage.getItem('auth_access_token');
-          console.log('✅ Email válido obtido do localStorage:', userEmail);
+          console.log('✅ Email válido obtido do localStorage (fallback):', userEmail);
         } else if (emailFromStorage) {
           console.warn('⚠️ Email inválido encontrado no localStorage, limpando e aguardando...', emailFromStorage);
           localStorage.removeItem('user_email');
@@ -192,7 +208,43 @@ document.addEventListener('DOMContentLoaded', function() {
     try {
       console.log('🔄 Callback Google: Aguardando OAuth completar...');
       
+      // Listener para evento de OAuth completado (disparado pelo callback OIDC)
+      let oauthCompletedEvent = null;
+      const oauthCompletedListener = (event) => {
+        oauthCompletedEvent = event.detail;
+        console.log('✅ Callback Google: Evento googleOAuthCompleted recebido:', oauthCompletedEvent);
+      };
+      window.addEventListener('googleOAuthCompleted', oauthCompletedListener);
+      
+      // Tentar obter dados imediatamente do localStorage (callback alternativo salva diretamente)
+      const immediateEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+      const immediateToken = localStorage.getItem('auth_access_token');
+      
+      if (immediateEmail && immediateToken && isValidEmail(immediateEmail)) {
+        console.log('✅ Callback Google: Dados encontrados imediatamente no localStorage:', immediateEmail);
+        // Remover listener já que encontramos os dados
+        window.removeEventListener('googleOAuthCompleted', oauthCompletedListener);
+        
+        const isAuthorized = await requireAuthorization({
+          email: immediateEmail,
+          provider: PROVIDER,
+          showLoading: true
+        });
+        
+        if (isAuthorized) {
+          console.log('✅ Callback Google: Usuário autorizado, redirecionando para área restrita');
+          setTimeout(() => {
+            window.location.href = '/secure/restrita.html';
+          }, 1000);
+          return;
+        }
+      }
+      
+      // Se não encontrou imediatamente, aguardar waitForOAuthCompletion
       const { userEmail, provider } = await waitForOAuthCompletion(15000);
+      
+      // Remover listener
+      window.removeEventListener('googleOAuthCompleted', oauthCompletedListener);
       
       console.log('✅ Callback Google: OAuth completado, verificando autorização para', userEmail);
       
@@ -206,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('✅ Callback Google: Usuário autorizado, redirecionando para área restrita');
         setTimeout(() => {
           window.location.href = '/secure/restrita.html';
-        }, 1500);
+        }, 1000);
       }
       
     } catch (error) {

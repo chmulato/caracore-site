@@ -173,17 +173,58 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
         });
       }
       
-      // Só resolver se tiver email VÁLIDO e token
+      // Só resolver se tiver email VÁLIDO e token E tokens são recentes (não expirados)
       if (userEmail && isValidEmail(userEmail) && accessToken) {
-        console.log('✅ OAuth Google completado - dados encontrados:', { 
-          userEmail, 
-          provider: PROVIDER,
-          hasToken: !!accessToken,
-          checks: checkCount,
-          elapsed: Math.floor((Date.now() - startTime) / 1000) + 's'
-        });
-        resolve({ userEmail, accessToken, provider: PROVIDER });
-        return;
+        // Verificar se os tokens são recentes (não expirados)
+        const expiresAt = localStorage.getItem('auth_expires_at');
+        let tokensAreValid = false;
+        
+        if (expiresAt) {
+          const now = Math.floor(Date.now() / 1000);
+          const expiresAtNum = parseInt(expiresAt);
+          const timeUntilExpiry = expiresAtNum - now;
+          
+          // Tokens são válidos se não expiraram e ainda têm pelo menos 5 minutos de vida
+          tokensAreValid = !isNaN(expiresAtNum) && expiresAtNum > 0 && timeUntilExpiry > 300;
+          
+          if (!tokensAreValid) {
+            console.log('⏳ Callback Google: Tokens encontrados estão expirados ou próximos de expirar, aguardando novos tokens...', {
+              now: now,
+              expiresAt: expiresAtNum,
+              timeUntilExpiry: timeUntilExpiry,
+              expiresAtISO: new Date(expiresAtNum * 1000).toISOString(),
+              elapsed: Math.floor((Date.now() - startTime) / 1000) + 's'
+            });
+            
+            // Se ainda não passou muito tempo, aguardar mais para novos tokens serem salvos
+            if (Date.now() - startTime < maxWaitTime) {
+              setTimeout(checkAuth, checkInterval);
+              return;
+            }
+          }
+        } else {
+          // Se não tem expiresAt, pode ser que ainda não foi salvo - aguardar mais
+          if (Date.now() - startTime < 3000) {
+            console.log('⏳ Callback Google: Tokens encontrados mas sem expiresAt, aguardando mais...');
+            setTimeout(checkAuth, checkInterval);
+            return;
+          }
+        }
+        
+        // Se chegou aqui e tokens são válidos, ou se passou muito tempo, retornar
+        if (tokensAreValid || !expiresAt) {
+          console.log('✅ OAuth Google completado - dados encontrados:', { 
+            userEmail, 
+            provider: PROVIDER,
+            hasToken: !!accessToken,
+            tokensAreValid: tokensAreValid,
+            hasExpiresAt: !!expiresAt,
+            checks: checkCount,
+            elapsed: Math.floor((Date.now() - startTime) / 1000) + 's'
+          });
+          resolve({ userEmail, accessToken, provider: PROVIDER });
+          return;
+        }
       }
       
       if (Date.now() - startTime > maxWaitTime) {
@@ -250,11 +291,33 @@ async function initializeCallbackAuthorization() {
       window.addEventListener('googleOAuthCompleted', oauthCompletedListener);
       
       // Tentar obter dados imediatamente do localStorage (callback alternativo salva diretamente)
+      // MAS: Verificar se os tokens são recentes (não expirados) antes de usar
       const immediateEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
       const immediateToken = localStorage.getItem('auth_access_token');
+      const immediateExpiresAt = localStorage.getItem('auth_expires_at');
       
-      if (immediateEmail && immediateToken && isValidEmail(immediateEmail)) {
-        console.log('✅ Callback Google: Dados encontrados imediatamente no localStorage:', immediateEmail);
+      // Verificar se tokens são válidos e recentes (não expirados)
+      let tokensAreValid = false;
+      if (immediateToken && immediateExpiresAt) {
+        const now = Math.floor(Date.now() / 1000);
+        const expiresAt = parseInt(immediateExpiresAt);
+        const timeUntilExpiry = expiresAt - now;
+        
+        // Tokens são válidos se não expiraram e ainda têm pelo menos 5 minutos de vida
+        tokensAreValid = !isNaN(expiresAt) && expiresAt > 0 && timeUntilExpiry > 300;
+        
+        if (!tokensAreValid) {
+          console.log('⚠️ Callback Google: Tokens encontrados no localStorage estão expirados ou próximos de expirar', {
+            now: now,
+            expiresAt: expiresAt,
+            timeUntilExpiry: timeUntilExpiry,
+            expiresAtISO: new Date(expiresAt * 1000).toISOString()
+          });
+        }
+      }
+      
+      if (immediateEmail && immediateToken && isValidEmail(immediateEmail) && tokensAreValid) {
+        console.log('✅ Callback Google: Dados válidos encontrados imediatamente no localStorage:', immediateEmail);
         // Remover listener já que encontramos os dados
         window.removeEventListener('googleOAuthCompleted', oauthCompletedListener);
         
@@ -271,6 +334,9 @@ async function initializeCallbackAuthorization() {
           }, 1000);
           return;
         }
+      } else if (immediateEmail && immediateToken && isValidEmail(immediateEmail) && !tokensAreValid) {
+        console.log('⏳ Callback Google: Tokens antigos encontrados, aguardando novos tokens serem salvos...');
+        // Não retornar - continuar para aguardar waitForOAuthCompletion
       }
       
       // Se não encontrou imediatamente, aguardar waitForOAuthCompletion

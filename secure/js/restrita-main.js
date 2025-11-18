@@ -62,57 +62,72 @@
           }
         }
         
-        // Se autorizado mas não tem sessão válida, criar uma sessão mínima
-        const isMinimalSession = !hasValidSession;
-        if (isMinimalSession) {
-          console.log('Restrita: Usuário autorizado mas sem sessão válida, criando sessão mínima...');
+        // Se autorizado mas não tem sessão válida, tentar usar refresh token antes de redirecionar
+        if (!hasValidSession) {
+          console.log('Restrita: Usuário autorizado mas sem sessão válida.');
           
-          // Criar sessão mínima para permitir acesso
-          // Isso é necessário quando o token foi rejeitado por domínio não autorizado
-          // mas o usuário está autorizado no sistema
-          const expiresAt = Math.floor(Date.now() / 1000) + 3600; // 1 hora
-          localStorage.setItem('auth_access_token', 'authorized_session');
-          localStorage.setItem('auth_expires_at', expiresAt.toString());
-          localStorage.setItem('auth_provider', provider);
-          localStorage.setItem('user_email', userEmail);
-          localStorage.setItem('auth_user_email', userEmail);
+          // TENTAR USAR REFRESH TOKEN ANTES DE REDIRECIONAR
+          // Isso evita redirecionamento desnecessário quando refresh token ainda é válido
+          if (hasSessionManager && typeof SessionManager.refreshToken === 'function') {
+            console.log('🔄 Tentando renovar tokens usando refresh token...');
+            try {
+              const refreshSuccess = await SessionManager.refreshToken();
+              
+              if (refreshSuccess) {
+                console.log('✅ Tokens renovados com sucesso!');
+                // Verificar novamente se agora tem sessão válida
+                const newHasValidSession = SessionManager.isAuthenticated();
+                if (newHasValidSession) {
+                  console.log('✅ Sessão restaurada, recarregando página...');
+                  // Recarregar página para reiniciar fluxo com sessão válida
+                  window.location.reload();
+                  return;
+                } else {
+                  console.warn('⚠️ Refresh token executado, mas sessão ainda não válida.');
+                }
+              } else {
+                console.warn('⚠️ Refresh token não disponível ou inválido.');
+              }
+            } catch (refreshError) {
+              console.warn('⚠️ Erro ao tentar refresh token:', refreshError);
+            }
+          }
           
-          // Marcar como sessão mínima para não iniciar validação periódica
-          localStorage.setItem('auth_minimal_session', 'true');
-          
-          // Salvar informações básicas do usuário
-          const userInfo = {
-            email: userEmail,
-            provider: provider,
-            authorized: true,
-            name: userEmail.split('@')[0] || 'Usuário'
-          };
-          localStorage.setItem('auth_user_info', JSON.stringify(userInfo));
-          
-          console.log('Restrita: Sessão mínima criada para usuário autorizado');
-          hasValidSession = true; // Agora tem sessão válida
+          // Se ainda não tem sessão válida após tentar refresh, redirecionar para reautenticação
+          // Verificar novamente se tem sessão válida após tentativa de refresh
+          const stillNoValidSession = !hasSessionManager || !SessionManager.isAuthenticated();
+          if (stillNoValidSession) {
+            console.log('🔄 Refresh token não disponível ou inválido. Redirecionando para reautenticação...');
+            
+            // RECOMENDAÇÃO PRINCIPAL: Redirecionar para reautenticação ao invés de criar sessão mínima
+            // Isso garante que o usuário tenha tokens reais validados pelo provider
+            const errorMessage = encodeURIComponent('Por favor, faça login novamente para acessar o sistema com segurança');
+            const redirectUrl = `/secure/index.html?email=${encodeURIComponent(userEmail)}&provider=${provider || 'google'}&error=auth_failed&message=${errorMessage}&reason=no_valid_session`;
+            
+            console.log('📤 Redirecionando para:', redirectUrl);
+            setTimeout(() => {
+              window.location.href = redirectUrl;
+            }, 1500);
+            return; // Parar processamento - redirecionamento em andamento
+          }
         }
         
-        // Verificar autenticação (sem iniciar verificação periódica se for sessão mínima)
+        // Verificar autenticação
         if (hasValidSession) {
-          // Se SessionManager está disponível e não é sessão mínima, usar requireAuth
-          if (hasSessionManager && !isMinimalSession && !localStorage.getItem('auth_minimal_session')) {
+          // Se SessionManager está disponível, usar requireAuth
+          if (hasSessionManager) {
             try {
               if (!SessionManager.requireAuth()) {
                 console.error('Restrita: Falha na autenticação, redirecionando...');
+                const errorMessage = encodeURIComponent('Por favor, faça login novamente para acessar o sistema com segurança');
+                const redirectUrl = `/secure/index.html?email=${encodeURIComponent(userEmail)}&provider=${provider || 'google'}&error=auth_failed&message=${errorMessage}&reason=auth_failed`;
+                setTimeout(() => {
+                  window.location.href = redirectUrl;
+                }, 1500);
                 return;
               }
             } catch (e) {
               console.warn('Erro ao chamar requireAuth:', e);
-              // Continuar mesmo com erro
-            }
-          } else if (hasSessionManager && isMinimalSession) {
-            // Para sessão mínima, iniciar verificação periódica mas sem validar no backend
-            // A validação já foi ajustada no SessionManager para tratar sessões mínimas
-            try {
-              SessionManager.startSessionCheck();
-            } catch (e) {
-              console.warn('Erro ao iniciar verificação de sessão:', e);
               // Continuar mesmo com erro
             }
           }
@@ -139,15 +154,52 @@
             const authResult = await window.authChecker.checkAuthorization(userEmail, provider, true);
             
             if (authResult.authorized) {
-              // Renovar sessão mínima
-              console.log('Restrita: Usuário ainda autorizado, renovando sessão mínima...');
-              const expiresAt = Math.floor(Date.now() / 1000) + 3600; // 1 hora
-              localStorage.setItem('auth_access_token', 'authorized_session');
-              localStorage.setItem('auth_expires_at', expiresAt.toString());
-              localStorage.setItem('auth_minimal_session', 'true');
+              console.log('Restrita: Usuário ainda autorizado, mas sessão expirada.');
               
-              // Recarregar página para aplicar nova sessão
-              window.location.reload();
+              // TENTAR USAR REFRESH TOKEN ANTES DE REDIRECIONAR
+              // Este é o caso de uso PRINCIPAL do refresh token (sessão expirada)
+              const hasSessionManager = typeof SessionManager !== 'undefined' && SessionManager !== null;
+              if (hasSessionManager && typeof SessionManager.refreshToken === 'function') {
+                console.log('🔄 Tentando renovar tokens usando refresh token...');
+                try {
+                  const refreshSuccess = await SessionManager.refreshToken();
+                  
+                  if (refreshSuccess) {
+                    console.log('✅ Tokens renovados com sucesso!');
+                    // Verificar novamente se agora tem sessão válida
+                    const newHasValidSession = SessionManager.isAuthenticated();
+                    if (newHasValidSession) {
+                      console.log('✅ Sessão restaurada, recarregando página...');
+                      // Recarregar página para reiniciar fluxo com sessão válida
+                      window.location.reload();
+                      return;
+                    } else {
+                      console.warn('⚠️ Refresh token executado, mas sessão ainda não válida.');
+                    }
+                  } else {
+                    console.warn('⚠️ Refresh token não disponível ou inválido.');
+                  }
+                } catch (refreshError) {
+                  console.warn('⚠️ Erro ao tentar refresh token:', refreshError);
+                }
+              }
+              
+              // Se ainda não tem sessão válida após tentar refresh, redirecionar para reautenticação
+              // Verificar novamente se tem sessão válida após tentativa de refresh
+              const stillNoValidSession = !SessionManager || !SessionManager.isAuthenticated();
+              if (stillNoValidSession) {
+                console.log('🔄 Redirecionando para reautenticação...');
+                
+                // RECOMENDAÇÃO PRINCIPAL: Redirecionar para reautenticação ao invés de renovar sessão mínima
+                const errorMessage = encodeURIComponent('Por favor, faça login novamente para acessar o sistema com segurança');
+                const redirectUrl = `/secure/index.html?email=${encodeURIComponent(userEmail)}&provider=${provider || 'google'}&error=auth_failed&message=${errorMessage}&reason=session_expired`;
+                
+                console.log('📤 Redirecionando para:', redirectUrl);
+                setTimeout(() => {
+                  window.location.href = redirectUrl;
+                }, 1500);
+                return;
+              }
             } else {
               console.error('Restrita: Usuário não autorizado mais, redirecionando...');
               window.location.href = '/secure/index.html';
@@ -182,21 +234,49 @@
           
           if (isAuthorized) {
             if (!SessionManager.isAuthenticated()) {
-              // Criar sessão mínima
-              const expiresAt = Math.floor(Date.now() / 1000) + 3600;
-              localStorage.setItem('auth_access_token', 'authorized_session');
-              localStorage.setItem('auth_expires_at', expiresAt.toString());
-              localStorage.setItem('auth_provider', retryProvider);
-              localStorage.setItem('user_email', retryEmail);
-              localStorage.setItem('auth_user_email', retryEmail);
-              localStorage.setItem('auth_minimal_session', 'true');
+              console.log('Restrita: Usuário autorizado mas sem sessão válida.');
               
-              const userInfo = {
-                email: retryEmail,
-                provider: retryProvider,
-                authorized: true
-              };
-              localStorage.setItem('auth_user_info', JSON.stringify(userInfo));
+              // TENTAR USAR REFRESH TOKEN ANTES DE REDIRECIONAR
+              if (typeof SessionManager.refreshToken === 'function') {
+                console.log('🔄 Tentando renovar tokens usando refresh token...');
+                try {
+                  const refreshSuccess = await SessionManager.refreshToken();
+                  
+                  if (refreshSuccess) {
+                    console.log('✅ Tokens renovados com sucesso!');
+                    // Verificar novamente se agora tem sessão válida
+                    const newHasValidSession = SessionManager.isAuthenticated();
+                    if (newHasValidSession) {
+                      console.log('✅ Sessão restaurada, continuando...');
+                      // Continuar com o fluxo normal (não retornar, deixar continuar)
+                    } else {
+                      console.warn('⚠️ Refresh token executado, mas sessão ainda não válida.');
+                      // Continuar para redirecionar
+                    }
+                  } else {
+                    console.warn('⚠️ Refresh token não disponível ou inválido.');
+                    // Continuar para redirecionar
+                  }
+                } catch (refreshError) {
+                  console.warn('⚠️ Erro ao tentar refresh token:', refreshError);
+                  // Continuar para redirecionar
+                }
+              }
+              
+              // Se ainda não tem sessão válida após tentar refresh, redirecionar para reautenticação
+              if (!SessionManager.isAuthenticated()) {
+                console.log('🔄 Refresh token não disponível ou inválido. Redirecionando para reautenticação...');
+                
+                // RECOMENDAÇÃO PRINCIPAL: Redirecionar para reautenticação ao invés de criar sessão mínima
+                const errorMessage = encodeURIComponent('Por favor, faça login novamente para acessar o sistema com segurança');
+                const redirectUrl = `/secure/index.html?email=${encodeURIComponent(retryEmail)}&provider=${retryProvider}&error=auth_failed&message=${errorMessage}&reason=no_valid_session`;
+                
+                console.log('📤 Redirecionando para:', redirectUrl);
+                setTimeout(() => {
+                  window.location.href = redirectUrl;
+                }, 1500);
+                return;
+              }
             }
             
             // Carregar informações do usuário
@@ -241,7 +321,7 @@ async function loadUserInfo(email, provider) {
     let userName = email.split('@')[0]; // Fallback para parte antes do @
     let userRole = 'Usuário';
     
-    // Verificar se temos informações do localStorage (sessão mínima)
+    // Verificar se temos informações do localStorage
     const userInfoStr = localStorage.getItem('auth_user_info');
     if (userInfoStr) {
       try {
@@ -313,20 +393,33 @@ async function loadUserInfo(email, provider) {
   }
 }
 
-// Monitorar expiração da sessão mínima e renovar automaticamente
-function setupMinimalSessionRenewal() {
-  const isMinimalSession = localStorage.getItem('auth_minimal_session') === 'true';
-  if (!isMinimalSession) return;
-  
-  // Verificar expiração a cada 5 minutos
+// Monitorar expiração da sessão e redirecionar para reautenticação se necessário
+function setupSessionExpirationCheck() {
   setInterval(async () => {
+    const accessToken = localStorage.getItem('auth_access_token');
     const expiresAt = localStorage.getItem('auth_expires_at');
+    
+    // Verificar se não é sessão fake
+    if (accessToken === 'authorized_session') {
+      // Sessão fake detectada - remover e redirecionar
+      console.log('Restrita: Sessão fake detectada, redirecionando para reautenticação...');
+      const userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+      const provider = localStorage.getItem('auth_provider') || 'google';
+      
+      if (userEmail) {
+        const errorMessage = encodeURIComponent('Por favor, faça login novamente para acessar o sistema com segurança');
+        const redirectUrl = `/secure/index.html?email=${encodeURIComponent(userEmail)}&provider=${provider}&error=auth_failed&message=${errorMessage}&reason=invalid_session`;
+        window.location.href = redirectUrl;
+      }
+      return;
+    }
+    
     if (!expiresAt) return;
     
     const now = Math.floor(Date.now() / 1000);
     const expiresIn = parseInt(expiresAt) - now;
     
-    // Se expira em menos de 10 minutos, renovar
+    // Se expira em menos de 10 minutos, verificar e redirecionar se necessário
     if (expiresIn < 600) {
       const userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
       const provider = localStorage.getItem('auth_provider') || 'google';
@@ -336,23 +429,28 @@ function setupMinimalSessionRenewal() {
           const authResult = await window.authChecker.checkAuthorization(userEmail, provider, false);
           
           if (authResult.authorized) {
-            // Renovar sessão mínima
-            const newExpiresAt = Math.floor(Date.now() / 1000) + 3600; // 1 hora
-            localStorage.setItem('auth_expires_at', newExpiresAt.toString());
-            console.log('Restrita: Sessão mínima renovada automaticamente');
+            // RECOMENDAÇÃO PRINCIPAL: Redirecionar para reautenticação ao invés de renovar sessão mínima
+            console.log('Restrita: Sessão expirada. Redirecionando para reautenticação...');
+            
+            const errorMessage = encodeURIComponent('Por favor, faça login novamente para acessar o sistema com segurança');
+            const redirectUrl = `/secure/index.html?email=${encodeURIComponent(userEmail)}&provider=${provider}&error=auth_failed&message=${errorMessage}&reason=session_expired`;
+            
+            console.log('📤 Redirecionando para:', redirectUrl);
+            window.location.href = redirectUrl;
           } else {
-            console.warn('Restrita: Usuário não autorizado mais, sessão não renovada');
+            console.warn('Restrita: Usuário não autorizado mais, redirecionando...');
+            window.location.href = '/secure/index.html';
           }
         } catch (error) {
-          console.warn('Restrita: Erro ao renovar sessão mínima:', error);
+          console.warn('Restrita: Erro ao verificar autorização:', error);
         }
       }
     }
   }, 300000); // Verificar a cada 5 minutos
 }
 
-// Iniciar monitoramento de renovação de sessão mínima
-setupMinimalSessionRenewal();
+// Iniciar monitoramento de expiração de sessão
+setupSessionExpirationCheck();
 
 // Função para configurar logout (pode ser chamada múltiplas vezes)
 function setupLogoutHandler() {

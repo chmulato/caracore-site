@@ -219,7 +219,22 @@ document.addEventListener('DOMContentLoaded', async function() {
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has('error')) {
     const errorReason = urlParams.get('reason') || 'unknown';
+    const errorMessage = urlParams.get('message') || null;
     console.error('🔴 Erro detectado na URL:', errorReason);
+    
+    // Mensagem amigável para o usuário
+    let userMessage = errorMessage || `Ocorreu um erro na autenticação: ${errorReason}`;
+    
+    // Mensagens específicas por tipo de erro
+    if (errorReason === 'no_real_tokens') {
+      userMessage = errorMessage || 'Não foi possível obter tokens de autenticação válidos. Por favor, faça login novamente.';
+    } else if (errorReason === 'scope_unauthorized') {
+      userMessage = errorMessage || 'Permissões não autorizadas. Por favor, conceda todas as permissões necessárias.';
+    } else if (errorReason === 'unauthorized_domain') {
+      userMessage = errorMessage || 'Seu domínio de email não está autorizado para login. Por favor, use uma conta autorizada ou faça login novamente.';
+    } else if (errorReason === 'no_valid_session' || errorReason === 'session_expired') {
+      userMessage = errorMessage || 'Sua sessão expirou. Por favor, faça login novamente.';
+    }
     
     // Verificar se podemos usar force recognition para recuperação
     if (typeof window.forceAuthRecognition === 'function' && 
@@ -227,7 +242,7 @@ document.addEventListener('DOMContentLoaded', async function() {
       console.log('🔄 Tentando recuperar com Force Recognition...');
       window.AuthUIFeedback.forceAuthRecognition(false);
     } else {
-      window.AuthUIFeedback.loginFailed(`Ocorreu um erro na autenticação: ${errorReason}`);
+      window.AuthUIFeedback.loginFailed(userMessage);
     }
   }
   

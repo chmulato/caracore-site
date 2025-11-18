@@ -858,80 +858,20 @@
                     if (authResponse.ok) {
                         const authData = await authResponse.json();
                         if (authData.authorized === true) {
-                            console.log('✅ Usuário autorizado encontrado. Criando autenticação básica...');
+                            console.log('✅ Usuário autorizado, mas não autenticado corretamente.');
+                            console.log('🔄 Redirecionando para reautenticação...');
                             
-                            // Criar autenticação básica mesmo sem token completo
-                            const userId = `microsoft_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
+                            // RECOMENDAÇÃO PRINCIPAL: Redirecionar para reautenticação ao invés de criar sessão mínima
+                            // Isso garante que o usuário tenha tokens reais validados pelo provider
+                            const errorMessage = encodeURIComponent('Por favor, faça login novamente para acessar o sistema com segurança');
+                            const redirectUrl = `/secure/index.html?email=${encodeURIComponent(userEmail)}&provider=microsoft&error=auth_failed&message=${errorMessage}&reason=no_real_tokens`;
                             
-                            // Validar email antes de criar perfil
-                            const isValidEmail = (email) => {
-                                if (!email) return false;
-                                if (email.includes('user@caracore.com.br') || 
-                                    email.includes('example@') || 
-                                    email === 'user@caracore.com.br' ||
-                                    email.includes('placeholder') ||
-                                    email.includes('test@') ||
-                                    !email.includes('@') ||
-                                    !email.includes('.')) {
-                                    return false;
-                                }
-                                return email.length > 5;
-                            };
+                            console.log('📤 Redirecionando para:', redirectUrl);
+                            setTimeout(() => {
+                                window.location.href = redirectUrl;
+                            }, 1500);
                             
-                            if (!isValidEmail(userEmail)) {
-                                console.error('❌ Email inválido:', userEmail);
-                                return false;
-                            }
-                            
-                            // Criar perfil básico
-                            const userProfile = {
-                                sub: userId,
-                                oid: userId,
-                                email: userEmail,
-                                email_verified: true,
-                                name: userEmail.split('@')[0],
-                                preferred_username: userEmail,
-                                upn: userEmail
-                            };
-                            
-                            const idToken = `${btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${btoa(JSON.stringify(userProfile))}.${btoa(`microsoft-basic-${params.state || Date.now()}`)}`;
-                            const accessToken = `microsoft_basic_${Date.now()}_${Math.random().toString(36)}`;
-                            const refreshToken = `microsoft_basic_refresh_${Date.now()}_${Math.random().toString(36)}`;
-                            
-                            const expiresIn = 3600;
-                            const expiresAt = now + expiresIn;
-                            
-                            // Salvar no formato que SessionManager espera
-                            localStorage.setItem('auth_access_token', accessToken);
-                            localStorage.setItem('auth_refresh_token', refreshToken);
-                            localStorage.setItem('auth_provider', PROVIDER);
-                            localStorage.setItem('auth_user_info', JSON.stringify({
-                                email: userEmail,
-                                name: userProfile.name,
-                                provider: PROVIDER,
-                                user_id: userId
-                            }));
-                            localStorage.setItem('auth_expires_at', expiresAt.toString());
-                            localStorage.setItem('auth_last_activity', now.toString());
-                            localStorage.setItem('user_email', userEmail);
-                            localStorage.setItem('auth_user_email', userEmail);
-                            
-                            // IMPORTANTE: Marcar como sessão mínima para evitar validação no backend
-                            // Isso previne que o SessionManager tente validar tokens fake no backend
-                            localStorage.setItem('auth_minimal_session', 'true');
-                            console.log('🔒 Sessão marcada como mínima (não será validada no backend)');
-                            
-                            // Salvar no formato OIDC para compatibilidade
-                            sessionStorage.setItem('cara_core_oidc_provider', PROVIDER);
-                            sessionStorage.setItem('cara_core_id_token', idToken);
-                            sessionStorage.setItem('cara_core_access_token', accessToken);
-                            sessionStorage.setItem('cara_core_token_type', 'Bearer');
-                            sessionStorage.setItem('cara_core_expires_at', (Date.now() + expiresIn * 1000).toString());
-                            sessionStorage.setItem('cara_core_user_profile', JSON.stringify(userProfile));
-                            sessionStorage.setItem('cara_core_auth_time', Date.now().toString());
-                            
-                            console.log('✅ Autenticação básica criada para usuário autorizado:', userEmail);
-                            return true;
+                            return false; // Parar processamento - redirecionamento em andamento
                         } else {
                             console.warn('⚠️ Usuário não autorizado:', userEmail);
                             return false;
@@ -995,55 +935,66 @@
                                             if (authResponse.ok) {
                                                 const authData = await authResponse.json();
                                                 if (authData.authorized === true) {
-                                                    console.log('✅ Usuário autorizado encontrado via OIDC. Criando autenticação...');
+                                                    // Verificar se OIDCAuth retornou tokens REAIS
+                                                    const hasRealTokens = user.id_token && user.access_token && 
+                                                                         !user.id_token.includes('microsoft-oidc-') &&
+                                                                         !user.access_token.includes('microsoft_oidc_');
                                                     
-                                                    // Criar autenticação básica para usuário autorizado
-                                                    const userId = `microsoft_${params.state?.substr(0, 8) || Math.random().toString(36).substr(2, 8)}`;
-                                                    
-                                                    const userProfile = {
-                                                        sub: userId,
-                                                        oid: userId,
-                                                        email: emailFromOIDC,
-                                                        email_verified: true,
-                                                        name: user.profile.name || emailFromOIDC.split('@')[0],
-                                                        preferred_username: emailFromOIDC,
-                                                        upn: emailFromOIDC,
-                                                        ...user.profile
-                                                    };
-                                                    
-                                                    const idToken = user.id_token || `${btoa(JSON.stringify({ alg: 'RS256', typ: 'JWT' }))}.${btoa(JSON.stringify(userProfile))}.${btoa(`microsoft-oidc-${params.state || Date.now()}`)}`;
-                                                    const accessToken = user.access_token || `microsoft_oidc_${Date.now()}_${Math.random().toString(36)}`;
-                                                    const refreshToken = user.refresh_token || `microsoft_oidc_refresh_${Date.now()}_${Math.random().toString(36)}`;
-                                                    
-                                                    const expiresIn = user.expires_in || 3600;
-                                                    const expiresAt = Math.floor(Date.now() / 1000) + expiresIn;
-                                                    
-                                                    // Salvar no formato que SessionManager espera
-                                                    localStorage.setItem('auth_access_token', accessToken);
-                                                    localStorage.setItem('auth_refresh_token', refreshToken);
-                                                    localStorage.setItem('auth_provider', PROVIDER);
-                                                    localStorage.setItem('auth_user_info', JSON.stringify({
-                                                        email: emailFromOIDC,
-                                                        name: userProfile.name,
-                                                        provider: PROVIDER,
-                                                        user_id: userId
-                                                    }));
-                                                    localStorage.setItem('auth_expires_at', expiresAt.toString());
-                                                    localStorage.setItem('auth_last_activity', Math.floor(Date.now() / 1000).toString());
-                                                    localStorage.setItem('user_email', emailFromOIDC);
-                                                    localStorage.setItem('auth_user_email', emailFromOIDC);
-                                                    
-                                                    // Salvar no formato OIDC para compatibilidade
-                                                    sessionStorage.setItem('cara_core_oidc_provider', PROVIDER);
-                                                    sessionStorage.setItem('cara_core_id_token', idToken);
-                                                    sessionStorage.setItem('cara_core_access_token', accessToken);
-                                                    sessionStorage.setItem('cara_core_token_type', 'Bearer');
-                                                    sessionStorage.setItem('cara_core_expires_at', (Date.now() + expiresIn * 1000).toString());
-                                                    sessionStorage.setItem('cara_core_user_profile', JSON.stringify(userProfile));
-                                                    sessionStorage.setItem('cara_core_auth_time', Date.now().toString());
-                                                    
-                                                    console.log('✅ Autenticação criada para usuário autorizado via OIDC:', emailFromOIDC);
-                                                    return true; // Sucesso - autenticação criada
+                                                    if (hasRealTokens) {
+                                                        // Tokens reais do OIDCAuth - usar diretamente
+                                                        console.log('✅ Tokens REAIS obtidos do OIDCAuth para:', emailFromOIDC);
+                                                        
+                                                        const expiresIn = user.expires_in || 3600;
+                                                        const expiresAt = Math.floor(Date.now() / 1000) + expiresIn;
+                                                        
+                                                        // Salvar tokens reais
+                                                        localStorage.setItem('auth_access_token', user.access_token);
+                                                        if (user.refresh_token) {
+                                                            localStorage.setItem('auth_refresh_token', user.refresh_token);
+                                                        }
+                                                        localStorage.setItem('auth_provider', PROVIDER);
+                                                        localStorage.setItem('auth_user_info', JSON.stringify({
+                                                            email: emailFromOIDC,
+                                                            name: user.profile?.name || emailFromOIDC.split('@')[0],
+                                                            provider: PROVIDER,
+                                                            user_id: user.profile?.oid || user.profile?.sub || `microsoft_${emailFromOIDC}`
+                                                        }));
+                                                        localStorage.setItem('auth_expires_at', expiresAt.toString());
+                                                        localStorage.setItem('auth_last_activity', Math.floor(Date.now() / 1000).toString());
+                                                        localStorage.setItem('user_email', emailFromOIDC);
+                                                        localStorage.setItem('auth_user_email', emailFromOIDC);
+                                                        
+                                                        // NÃO marcar como sessão mínima - estes são tokens REAIS
+                                                        localStorage.removeItem('auth_minimal_session');
+                                                        
+                                                        // Salvar no formato OIDC
+                                                        sessionStorage.setItem('cara_core_oidc_provider', PROVIDER);
+                                                        sessionStorage.setItem('cara_core_id_token', user.id_token);
+                                                        sessionStorage.setItem('cara_core_access_token', user.access_token);
+                                                        sessionStorage.setItem('cara_core_token_type', 'Bearer');
+                                                        sessionStorage.setItem('cara_core_expires_at', (Date.now() + expiresIn * 1000).toString());
+                                                        if (user.profile) {
+                                                            sessionStorage.setItem('cara_core_user_profile', JSON.stringify(user.profile));
+                                                        }
+                                                        sessionStorage.setItem('cara_core_auth_time', Date.now().toString());
+                                                        
+                                                        console.log('✅ Autenticação REAL criada para usuário autorizado via OIDC:', emailFromOIDC);
+                                                        return true;
+                                                    } else {
+                                                        // Sem tokens reais - redirecionar para reautenticação
+                                                        console.log('✅ Usuário autorizado via OIDC, mas sem tokens reais.');
+                                                        console.log('🔄 Redirecionando para reautenticação...');
+                                                        
+                                                        const errorMessage = encodeURIComponent('Por favor, faça login novamente para acessar o sistema com segurança');
+                                                        const redirectUrl = `/secure/index.html?email=${encodeURIComponent(emailFromOIDC)}&provider=microsoft&error=auth_failed&message=${errorMessage}&reason=no_real_tokens`;
+                                                        
+                                                        console.log('📤 Redirecionando para:', redirectUrl);
+                                                        setTimeout(() => {
+                                                            window.location.href = redirectUrl;
+                                                        }, 1500);
+                                                        
+                                                        return false; // Parar processamento - redirecionamento em andamento
+                                                    }
                                                 } else {
                                                     console.warn('⚠️ Usuário não autorizado:', emailFromOIDC);
                                                 }

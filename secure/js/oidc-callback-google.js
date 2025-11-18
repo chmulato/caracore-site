@@ -538,16 +538,18 @@
                                 const authResult = await window.authChecker.checkAuthorization(userEmail, 'google', false);
                                 
                                 if (authResult && authResult.authorized) {
-                                    console.log('✅ Usuário já autorizado, redirecionando diretamente para área restrita');
-                                    // Salvar dados do usuário antes de redirecionar
-                                    localStorage.setItem('user_email', userEmail);
-                                    localStorage.setItem('auth_user_email', userEmail);
-                                    localStorage.setItem('auth_provider', 'google');
+                                    console.log('✅ Usuário autorizado, mas não autenticado corretamente (domínio não autorizado).');
+                                    console.log('🔄 Redirecionando para reautenticação...');
                                     
-                                    // Redirecionar para área restrita
+                                    // RECOMENDAÇÃO PRINCIPAL: Redirecionar para reautenticação ao invés de criar sessão mínima
+                                    // Isso garante que o usuário tenha tokens reais validados pelo provider
+                                    const errorMessage = encodeURIComponent('Seu domínio de email não está autorizado para login Google. Por favor, use uma conta @caracore.com.br ou faça login novamente.');
+                                    const redirectUrl = `/secure/index.html?email=${encodeURIComponent(userEmail)}&provider=google&error=auth_failed&message=${errorMessage}&reason=unauthorized_domain`;
+                                    
+                                    console.log('📤 Redirecionando para:', redirectUrl);
                                     setTimeout(() => {
-                                        window.location.href = '/secure/restrita.html';
-                                    }, 500);
+                                        window.location.href = redirectUrl;
+                                    }, 1500);
                                     return null;
                                 } else {
                                     console.log('⚠️ Usuário não autorizado, redirecionando para primeiro acesso');
@@ -566,16 +568,17 @@
                                 });
                                 
                                 if (isAuthorized) {
-                                    console.log('✅ Usuário já autorizado, redirecionando diretamente para área restrita');
-                                    // Salvar dados do usuário antes de redirecionar
-                                    localStorage.setItem('user_email', userEmail);
-                                    localStorage.setItem('auth_user_email', userEmail);
-                                    localStorage.setItem('auth_provider', 'google');
+                                    console.log('✅ Usuário autorizado, mas não autenticado corretamente (domínio não autorizado).');
+                                    console.log('🔄 Redirecionando para reautenticação...');
                                     
-                                    // Redirecionar para área restrita
+                                    // RECOMENDAÇÃO PRINCIPAL: Redirecionar para reautenticação ao invés de criar sessão mínima
+                                    const errorMessage = encodeURIComponent('Seu domínio de email não está autorizado para login Google. Por favor, use uma conta @caracore.com.br ou faça login novamente.');
+                                    const redirectUrl = `/secure/index.html?email=${encodeURIComponent(userEmail)}&provider=google&error=auth_failed&message=${errorMessage}&reason=unauthorized_domain`;
+                                    
+                                    console.log('📤 Redirecionando para:', redirectUrl);
                                     setTimeout(() => {
-                                        window.location.href = '/secure/restrita.html';
-                                    }, 500);
+                                        window.location.href = redirectUrl;
+                                    }, 1500);
                                     return null;
                                 } else {
                                     console.log('⚠️ Usuário não autorizado, redirecionando para primeiro acesso');

@@ -196,12 +196,22 @@ function generateMicrosoftConfig() {
         resolvedMicrosoftTokenEndpoint = microsoftTokenEndpoint;
     }
 
+    // Verificar se estamos em processo de reautorização (precisa de prompt=consent)
+    const isReauthorize = typeof sessionStorage !== 'undefined' && 
+                         sessionStorage.getItem('microsoft_reauthorize') === 'true';
+    
     return {
         authority,
         client_id: clientId,
         redirect_uri: `${baseUrl}${paths.callback}`,
         response_type: 'code',
         scope,
+        // Adicionar prompt=consent se estivermos em processo de reautorização
+        ...(isReauthorize ? {
+            extraQueryParams: {
+                prompt: 'consent'
+            }
+        } : {}),
         post_logout_redirect_uri: `${baseUrl}${paths.logout}`,
         automaticSilentRenew: true,
         loadUserInfo: true,

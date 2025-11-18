@@ -419,14 +419,11 @@
                         errorDetails: errorData
                     });
                     
-                    // Se for erro de escopos não autorizados, pode ser que o usuário precise conceder permissões novamente
-                    // ou que seja um usuário novo que precisa ser registrado
+                    // Se for erro de escopos não autorizados (AADSTS70000), redirecionar para página de reautorização
+                    // Esta é uma situação específica que requer prompt=consent e não deve ser tratada como erro genérico
                     if (isScopeError) {
-                        console.warn('⚠️ Erro de escopos não autorizados (AADSTS70000). Isso pode indicar:');
-                        console.warn('   1. Usuário não concedeu todas as permissões necessárias');
-                        console.warn('   2. Permissões expiradas ou revogadas');
-                        console.warn('   3. Usuário novo que precisa ser registrado no sistema');
-                        console.warn('   → Redirecionando para primeiro contato para registro/reaplicação de permissões');
+                        console.warn('⚠️ Erro de escopos não autorizados (AADSTS70000). Redirecionando para reautorização...');
+                        console.warn('   → Parando fluxo normal e redirecionando para página de reautorização');
                         
                         // Tentar obter email de outras fontes antes de redirecionar
                         const emailFromStorage = localStorage.getItem('user_email') || 
@@ -434,15 +431,15 @@
                                                 sessionStorage.getItem('cara_core_user_email');
                         
                         if (emailFromStorage) {
-                            console.log('📧 Email encontrado em storage, redirecionando para primeiro acesso:', emailFromStorage);
-                            // Redirecionar para primeiro acesso com o email
-                            // IMPORTANTE: Redirecionar imediatamente para evitar conflito com outros redirecionamentos
-                            window.location.href = `/secure/first-access.html?email=${encodeURIComponent(emailFromStorage)}&provider=microsoft&error=scope_unauthorized`;
+                            console.log('📧 Email encontrado em storage, redirecionando para reautorização:', emailFromStorage);
+                            // Redirecionar para página de reautorização com o email
+                            // IMPORTANTE: Parar o fluxo normal completamente
+                            window.location.href = `/secure/reauthorize-microsoft.html?email=${encodeURIComponent(emailFromStorage)}&provider=microsoft`;
                             return null; // Parar processamento imediatamente
                         } else {
-                            // Se não houver email, redirecionar para primeiro acesso sem email
-                            console.warn('⚠️ Email não encontrado em storage, redirecionando para primeiro acesso sem email');
-                            window.location.href = `/secure/first-access.html?provider=microsoft&error=scope_unauthorized`;
+                            // Se não houver email, redirecionar para reautorização sem email
+                            console.warn('⚠️ Email não encontrado em storage, redirecionando para reautorização sem email');
+                            window.location.href = `/secure/reauthorize-microsoft.html?provider=microsoft`;
                             return null; // Parar processamento imediatamente
                         }
                     }
@@ -1484,11 +1481,41 @@
                             });
                             
                             if (isAuthorized) {
-                                console.log('✅ Usuário Microsoft autorizado! Redirecionando para área restrita...');
-                                setTimeout(() => {
-                                    window.location.href = '/secure/restrita.html';
-                                }, 500);
-                                return true;
+                                // Verificar se estamos vindo de uma reautorização
+                                const isReauthorize = sessionStorage.getItem('microsoft_reauthorize') === 'true';
+                                
+                                if (isReauthorize) {
+                                    // Verificar se temos tokens válidos antes de redirecionar
+                                    // Verificar tokens em storage (salvos pelo createRealAuthentication)
+                                    const accessToken = sessionStorage.getItem('cara_core_access_token') || 
+                                                      localStorage.getItem('auth_access_token');
+                                    const idToken = sessionStorage.getItem('cara_core_id_token');
+                                    const hasValidTokens = accessToken && idToken;
+                                    
+                                    if (hasValidTokens) {
+                                        console.log('✅ Reautorização bem-sucedida! Tokens válidos obtidos. Redirecionando para área restrita...');
+                                        // Limpar flag de reautorização
+                                        sessionStorage.removeItem('microsoft_reauthorize');
+                                        sessionStorage.removeItem('microsoft_reauthorize_email');
+                                        setTimeout(() => {
+                                            window.location.href = '/secure/restrita.html';
+                                        }, 500);
+                                        return true;
+                                    } else {
+                                        console.error('❌ Reautorização falhou: tokens não obtidos. Redirecionando para reautorização novamente...');
+                                        const reauthEmail = sessionStorage.getItem('microsoft_reauthorize_email') || userEmail;
+                                        sessionStorage.removeItem('microsoft_reauthorize');
+                                        sessionStorage.removeItem('microsoft_reauthorize_email');
+                                        window.location.href = `/secure/reauthorize-microsoft.html?email=${encodeURIComponent(reauthEmail)}&provider=microsoft&error=no_tokens`;
+                                        return false;
+                                    }
+                                } else {
+                                    console.log('✅ Usuário Microsoft autorizado! Redirecionando para área restrita...');
+                                    setTimeout(() => {
+                                        window.location.href = '/secure/restrita.html';
+                                    }, 500);
+                                    return true;
+                                }
                             }
                             // Se não autorizado, requireAuthorization já redirecionou
                         } catch (authError) {
@@ -1496,11 +1523,38 @@
                             // Se a autenticação foi criada via OIDC (authResult === true), 
                             // significa que o usuário já foi verificado como autorizado
                             if (authResult === true) {
-                                console.log('✅ Autenticação criada via OIDC (usuário já verificado como autorizado), redirecionando...');
-                                setTimeout(() => {
-                                    window.location.href = '/secure/restrita.html';
-                                }, 500);
-                                return true;
+                                // Verificar se estamos vindo de uma reautorização
+                                const isReauthorize = sessionStorage.getItem('microsoft_reauthorize') === 'true';
+                                
+                                if (isReauthorize) {
+                                    // Verificar se temos tokens válidos
+                                    const accessToken = sessionStorage.getItem('cara_core_access_token') || 
+                                                      localStorage.getItem('auth_access_token');
+                                    const idToken = sessionStorage.getItem('cara_core_id_token');
+                                    
+                                    if (accessToken && idToken) {
+                                        console.log('✅ Reautorização bem-sucedida! Tokens válidos obtidos. Redirecionando para área restrita...');
+                                        sessionStorage.removeItem('microsoft_reauthorize');
+                                        sessionStorage.removeItem('microsoft_reauthorize_email');
+                                        setTimeout(() => {
+                                            window.location.href = '/secure/restrita.html';
+                                        }, 500);
+                                        return true;
+                                    } else {
+                                        console.error('❌ Reautorização falhou: tokens não encontrados. Redirecionando para reautorização novamente...');
+                                        const email = sessionStorage.getItem('microsoft_reauthorize_email') || email;
+                                        sessionStorage.removeItem('microsoft_reauthorize');
+                                        sessionStorage.removeItem('microsoft_reauthorize_email');
+                                        window.location.href = `/secure/reauthorize-microsoft.html?email=${encodeURIComponent(email)}&provider=microsoft&error=no_tokens`;
+                                        return false;
+                                    }
+                                } else {
+                                    console.log('✅ Autenticação criada via OIDC (usuário já verificado como autorizado), redirecionando...');
+                                    setTimeout(() => {
+                                        window.location.href = '/secure/restrita.html';
+                                    }, 500);
+                                    return true;
+                                }
                             }
                             // Em caso de erro e sem autenticação OIDC, tentar redirecionar mesmo assim
                             setTimeout(() => {

@@ -5,6 +5,21 @@
 
 const PROVIDER = 'google';
 
+// Função para validar email (disponível globalmente)
+function isValidEmail(email) {
+  if (!email) return false;
+  if (email.includes('user@caracore.com.br') || 
+      email.includes('example@') || 
+      email === 'user@caracore.com.br' ||
+      email.includes('placeholder') ||
+      email.includes('test@') ||
+      !email.includes('@') ||
+      !email.includes('.')) {
+    return false;
+  }
+  return email.length > 5;
+}
+
 // Função para aguardar OAuth completar e obter dados corretos (Google)
 async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) {
   return new Promise(async (resolve, reject) => {
@@ -36,21 +51,6 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
     // Aguardar um tempo inicial para o callback processar (reduzido para 500ms)
     // O callback alternativo salva diretamente no localStorage, então não precisa esperar tanto
     await new Promise(resolve => setTimeout(resolve, 500));
-    
-    // Função para validar email
-    const isValidEmail = (email) => {
-      if (!email) return false;
-      if (email.includes('user@caracore.com.br') || 
-          email.includes('example@') || 
-          email === 'user@caracore.com.br' ||
-          email.includes('placeholder') ||
-          email.includes('test@') ||
-          !email.includes('@') ||
-          !email.includes('.')) {
-        return false;
-      }
-      return email.length > 5;
-    };
     
     const checkAuth = async () => {
       checkCount++;
@@ -203,10 +203,43 @@ async function waitForOAuthCompletion(maxWaitTime = 30000, checkInterval = 200) 
 }
 
 // Verificação de autorização após autenticação OAuth Google bem-sucedida
-document.addEventListener('DOMContentLoaded', function() {
+console.log('📋 callback-authorization-google.js carregado');
+
+// Função principal de inicialização
+async function initializeCallbackAuthorization() {
+  console.log('📋 callback-authorization-google.js: Inicializando...');
+  
+  // Aguardar um pouco para garantir que outros scripts foram carregados
+  // authorization-check.js precisa estar carregado antes de usar requireAuthorization
+  await new Promise(resolve => setTimeout(resolve, 500));
+  
   (async function() {
     try {
       console.log('🔄 Callback Google: Aguardando OAuth completar...');
+      
+      // Verificar se requireAuthorization está disponível
+      if (typeof requireAuthorization !== 'function') {
+        console.warn('⚠️ Callback Google: requireAuthorization não está disponível, aguardando...');
+        // Aguardar até requireAuthorization estar disponível
+        let waitCount = 0;
+        while (typeof requireAuthorization !== 'function' && waitCount < 50) {
+          await new Promise(resolve => setTimeout(resolve, 100));
+          waitCount++;
+        }
+        if (typeof requireAuthorization !== 'function') {
+          console.error('❌ Callback Google: requireAuthorization não está disponível após aguardar');
+          // Tentar redirecionar mesmo assim se tiver email
+          const userEmail = localStorage.getItem('user_email') || localStorage.getItem('auth_user_email');
+          if (userEmail && isValidEmail(userEmail)) {
+            console.log('⚠️ Callback Google: Redirecionando diretamente sem verificação de autorização');
+            setTimeout(() => {
+              window.location.href = '/secure/restrita.html';
+            }, 1000);
+          }
+          return;
+        }
+      }
+      console.log('✅ Callback Google: requireAuthorization disponível');
       
       // Listener para evento de OAuth completado (disparado pelo callback OIDC)
       let oauthCompletedEvent = null;
@@ -285,7 +318,15 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   })();
-});
+}
+
+// Executar imediatamente se DOM já estiver pronto, senão aguardar DOMContentLoaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeCallbackAuthorization);
+} else {
+  // DOM já está pronto, executar imediatamente
+  initializeCallbackAuthorization();
+}
 
 // Listener para sucesso de autorização
 document.addEventListener('authorizationSuccess', function(event) {

@@ -436,10 +436,14 @@
                         if (emailFromStorage) {
                             console.log('📧 Email encontrado em storage, redirecionando para primeiro acesso:', emailFromStorage);
                             // Redirecionar para primeiro acesso com o email
-                            setTimeout(() => {
-                                window.location.href = `/secure/first-access.html?email=${encodeURIComponent(emailFromStorage)}&provider=microsoft&error=scope_unauthorized`;
-                            }, 2000);
-                            return null; // Parar processamento
+                            // IMPORTANTE: Redirecionar imediatamente para evitar conflito com outros redirecionamentos
+                            window.location.href = `/secure/first-access.html?email=${encodeURIComponent(emailFromStorage)}&provider=microsoft&error=scope_unauthorized`;
+                            return null; // Parar processamento imediatamente
+                        } else {
+                            // Se não houver email, redirecionar para primeiro acesso sem email
+                            console.warn('⚠️ Email não encontrado em storage, redirecionando para primeiro acesso sem email');
+                            window.location.href = `/secure/first-access.html?provider=microsoft&error=scope_unauthorized`;
+                            return null; // Parar processamento imediatamente
                         }
                     }
                 }
@@ -783,6 +787,14 @@
         }
         
         if (!realUserData) {
+            // Verificar se já foi redirecionado para first-access.html (erro AADSTS70000)
+            // Se sim, não continuar processando para evitar redirecionamentos conflitantes
+            const currentUrl = window.location.href;
+            if (currentUrl.includes('first-access.html') || currentUrl.includes('scope_unauthorized')) {
+                console.log('✅ Já redirecionado para first-access.html, parando processamento');
+                return false;
+            }
+            
             console.warn('⚠️ Não foi possível obter email do token Microsoft. Tentando buscar email de outras fontes...');
             
             // FALLBACK: Tentar obter email de outras fontes
@@ -858,6 +870,13 @@
                     if (authResponse.ok) {
                         const authData = await authResponse.json();
                         if (authData.authorized === true) {
+                            // Verificar novamente se não foi redirecionado para first-access.html
+                            const currentUrlCheck = window.location.href;
+                            if (currentUrlCheck.includes('first-access.html') || currentUrlCheck.includes('scope_unauthorized')) {
+                                console.log('✅ Já redirecionado para first-access.html, não redirecionando novamente');
+                                return false;
+                            }
+                            
                             console.log('✅ Usuário autorizado, mas não autenticado corretamente.');
                             console.log('🔄 Redirecionando para reautenticação...');
                             

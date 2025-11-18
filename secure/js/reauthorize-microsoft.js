@@ -130,6 +130,22 @@
     }
 
     /**
+     * Aguardar OIDCAuth estar disponível
+     */
+    async function waitForOIDCAuth(timeout = 10000) {
+        const startTime = Date.now();
+        while (!window.OIDCAuth) {
+            if (Date.now() - startTime > timeout) {
+                throw new Error('Timeout aguardando OIDCAuth inicializar');
+            }
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+        // Aguardar um pouco mais para garantir que está totalmente inicializado
+        await new Promise(resolve => setTimeout(resolve, 300));
+        return window.OIDCAuth;
+    }
+
+    /**
      * Iniciar processo de reautorização
      */
     async function handleReauthorize() {
@@ -154,30 +170,6 @@
             // Aguardar um pouco para garantir que o cache foi limpo
             await new Promise(resolve => setTimeout(resolve, 500));
 
-            // Obter configuração Microsoft com prompt=consent
-            const baseUrl = window.CARA_CORE_ENV?.baseUrl || window.location.origin;
-            const config = await getMicrosoftConfigWithConsent(baseUrl);
-
-            // Inicializar OIDCAuth se necessário
-            if (!window.OIDCAuth) {
-                throw new Error('OIDCAuth não disponível. Por favor, recarregue a página.');
-            }
-
-            // Trocar para provider Microsoft
-            await window.OIDCAuth.switchProvider('entra');
-
-            // Configurar OIDCAuth com prompt=consent
-            // Nota: oidc-client-ts usa extraQueryParams para adicionar parâmetros à URL de autorização
-            const currentConfig = window.OIDCAuth.getConfig();
-            if (currentConfig) {
-                // Adicionar prompt=consent via extraQueryParams
-                currentConfig.extraQueryParams = {
-                    ...(currentConfig.extraQueryParams || {}),
-                    prompt: 'consent'
-                };
-                console.log('✅ Configurado prompt=consent para forçar novo consentimento');
-            }
-
             // Marcar que estamos em processo de reautorização ANTES de iniciar o login
             // Isso garante que a configuração dinâmica inclua prompt=consent
             sessionStorage.setItem('microsoft_reauthorize', 'true');
@@ -187,6 +179,16 @@
 
             // Aguardar um pouco para garantir que a flag foi salva
             await new Promise(resolve => setTimeout(resolve, 200));
+
+            // Aguardar OIDCAuth estar disponível
+            console.log('⏳ Aguardando OIDCAuth estar disponível...');
+            await waitForOIDCAuth();
+            console.log('✅ OIDCAuth disponível');
+
+            // Trocar para provider Microsoft
+            console.log('🔄 Trocando para provider Microsoft...');
+            await window.OIDCAuth.switchProvider('entra');
+            console.log('✅ Provider Microsoft configurado');
 
             // Iniciar login - a configuração dinâmica já incluirá prompt=consent
             console.log('🔐 Iniciando login Microsoft com prompt=consent (via configuração dinâmica)...');

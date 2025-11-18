@@ -220,6 +220,18 @@
                 this.currentProvider = resolvedProvider;
                 this.currentConfig = config;
                 
+                // Log da configuração para debug (especialmente extraQueryParams)
+                if (config.extraQueryParams) {
+                    this.logger.debug('Config extraQueryParams detectado', {
+                        provider: resolvedProvider,
+                        extraQueryParams: config.extraQueryParams
+                    });
+                } else {
+                    this.logger.debug('Config SEM extraQueryParams', {
+                        provider: resolvedProvider
+                    });
+                }
+                
                 // Configurar UserManager
                 this.userManager = new oidc.UserManager({
                     ...config,

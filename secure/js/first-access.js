@@ -14,6 +14,7 @@ class FirstAccessManager {
         this.userEmail = null;
         this.userProvider = null;
         this.isSubmitting = false;
+        this.accessType = null; // 'auto' (redirecionamento automático) ou 'manual' (navegação opcional)
         
         // Configurações
         const backendUrl = window.location.hostname === 'localhost' 
@@ -44,15 +45,52 @@ class FirstAccessManager {
             emailHelp: document.getElementById('emailHelp'),
             userProvider: document.getElementById('userProvider'),
             userAvatar: document.getElementById('userAvatar'),
-            logoutLink: document.getElementById('logoutLink')
+            logoutLink: document.getElementById('logoutLink'),
+            whatsappExplanation: document.getElementById('whatsappExplanation')
         };
         
         // Elementos de loading
         this.loadingElement = document.getElementById('initialLoading');
         this.mainContentElement = document.getElementById('mainContent');
         
+        // Detectar tipo de acesso
+        this.detectAccessType();
+        
         // Inicializar
         this.init();
+    }
+    
+    /**
+     * Detecta o tipo de acesso: automático (redirecionamento) ou manual (navegação opcional)
+     */
+    detectAccessType() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const referrer = document.referrer;
+        
+        // Indicadores de redirecionamento automático:
+        // 1. Parâmetros na URL (email, provider, error) vindos de callback OAuth
+        // 2. Referrer vindo de páginas de callback ou autenticação
+        // 3. Presença de dados de autenticação no storage
+        
+        const hasOAuthParams = urlParams.has('email') || urlParams.has('provider') || urlParams.has('error');
+        const hasOAuthReferrer = referrer && (
+            referrer.includes('callback') || 
+            referrer.includes('index.html') || 
+            referrer.includes('auth') ||
+            referrer.includes('login')
+        );
+        const hasAuthData = localStorage.getItem('user_email') || 
+                           localStorage.getItem('auth_user_email') ||
+                           sessionStorage.getItem('cara_core_user_profile');
+        
+        // Se tem parâmetros OAuth OU referrer de autenticação OU dados de auth, é automático
+        if (hasOAuthParams || (hasOAuthReferrer && hasAuthData)) {
+            this.accessType = 'auto';
+            console.log('🔀 Tipo de acesso detectado: AUTOMÁTICO (redirecionamento após autenticação)');
+        } else {
+            this.accessType = 'manual';
+            console.log('🔀 Tipo de acesso detectado: MANUAL (navegação opcional)');
+        }
     }
     
     showMainContent() {
@@ -62,10 +100,83 @@ class FirstAccessManager {
         if (this.mainContentElement) {
             this.mainContentElement.style.display = 'block';
         }
+        
+        // Aplicar mensagens específicas baseadas no tipo de acesso
+        this.showAccessTypeSpecificMessage();
+    }
+    
+    /**
+     * Mostra mensagens específicas baseadas no tipo de acesso
+     */
+    showAccessTypeSpecificMessage() {
+        if (!this.elements.alertContainer) return;
+        
+        // Verificar se já existe uma mensagem de tipo de acesso
+        const existingAccessTypeAlert = this.elements.alertContainer.querySelector('[data-access-type-message]');
+        if (existingAccessTypeAlert) {
+            // Já existe, não adicionar novamente
+            return;
+        }
+        
+        // Só adicionar se não houver outros alertas importantes (erros, sucesso, etc)
+        const hasImportantAlerts = this.elements.alertContainer.querySelector('.alert-danger, .alert-success, .alert-warning');
+        
+        if (this.accessType === 'auto') {
+            // Mensagem para redirecionamento automático
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-info alert-custom';
+            alert.setAttribute('data-access-type-message', 'auto');
+            alert.innerHTML = `
+                <h6 class="mb-2">
+                    <i class="bi bi-arrow-right-circle text-info"></i>
+                    Redirecionamento Automático
+                </h6>
+                <p class="mb-0">
+                    Você foi redirecionado automaticamente após a autenticação. 
+                    ${this.userEmail ? 'Complete o formulário abaixo para solicitar acesso à Área 51.' : 'Por favor, preencha o formulário abaixo com suas informações.'}
+                </p>
+            `;
+            // Inserir no início, mas depois de alertas importantes se existirem
+            if (hasImportantAlerts) {
+                this.elements.alertContainer.insertBefore(alert, hasImportantAlerts.nextSibling);
+            } else {
+                this.elements.alertContainer.insertBefore(alert, this.elements.alertContainer.firstChild);
+            }
+        } else {
+            // Mensagem para navegação opcional
+            const alert = document.createElement('div');
+            alert.className = 'alert alert-primary alert-custom';
+            alert.setAttribute('data-access-type-message', 'manual');
+            alert.innerHTML = `
+                <h6 class="mb-2">
+                    <i class="bi bi-info-circle text-primary"></i>
+                    Solicitação de Primeiro Acesso
+                </h6>
+                <p class="mb-0">
+                    Bem-vindo! Esta página permite solicitar acesso à Área 51. 
+                    ${this.userEmail ? 'Seus dados de autenticação foram detectados automaticamente.' : 'Por favor, preencha o formulário abaixo com suas informações.'}
+                </p>
+            `;
+            // Inserir no início, mas depois de alertas importantes se existirem
+            if (hasImportantAlerts) {
+                this.elements.alertContainer.insertBefore(alert, hasImportantAlerts.nextSibling);
+            } else {
+                this.elements.alertContainer.insertBefore(alert, this.elements.alertContainer.firstChild);
+            }
+        }
+        
+        // Ajustar visibilidade da explicação do WhatsApp baseado no tipo de acesso
+        if (this.elements.whatsappExplanation) {
+            // Sempre mostrar a explicação, mas pode ajustar estilo se necessário
+            this.elements.whatsappExplanation.style.display = 'block';
+        }
     }
     
     async init() {
         try {
+            // Aplicar comportamento inicial baseado no tipo de acesso
+            this.applyInitialBehavior();
+            
             // Verificar se usuário está autenticado
             await this.checkAuthentication();
             
@@ -154,6 +265,57 @@ class FirstAccessManager {
                 window.location.href = '/secure/index.html';
             }, 5000); // Aumentar tempo para dar chance de preencher
         }
+    }
+    
+    /**
+     * Aplica comportamento inicial baseado no tipo de acesso detectado
+     */
+    applyInitialBehavior() {
+        if (this.accessType === 'auto') {
+            // Comportamento para redirecionamento automático
+            this.applyAutoRedirectBehavior();
+        } else {
+            // Comportamento para navegação opcional
+            this.applyManualNavigationBehavior();
+        }
+    }
+    
+    /**
+     * Comportamento inicial para redirecionamento automático
+     * Usuário foi redirecionado após autenticação OAuth
+     */
+    applyAutoRedirectBehavior() {
+        console.log('🎯 Aplicando comportamento inicial: REDIRECIONAMENTO AUTOMÁTICO');
+        
+        // Atualizar mensagem de loading
+        if (this.loadingElement) {
+            const loadingText = this.loadingElement.querySelector('p');
+            if (loadingText) {
+                loadingText.textContent = 'Verificando suas credenciais e permissões...';
+            }
+        }
+        
+        // Mostrar mensagem específica quando o conteúdo principal aparecer
+        // Isso será feito no showMainContent se necessário
+    }
+    
+    /**
+     * Comportamento inicial para navegação opcional
+     * Usuário acessou a página manualmente (por link)
+     */
+    applyManualNavigationBehavior() {
+        console.log('🎯 Aplicando comportamento inicial: NAVEGAÇÃO OPCIONAL');
+        
+        // Atualizar mensagem de loading
+        if (this.loadingElement) {
+            const loadingText = this.loadingElement.querySelector('p');
+            if (loadingText) {
+                loadingText.textContent = 'Carregando formulário de solicitação de acesso...';
+            }
+        }
+        
+        // Mostrar mensagem de boas-vindas quando o conteúdo principal aparecer
+        // Isso será feito no showMainContent se necessário
     }
     
     async checkAuthentication() {

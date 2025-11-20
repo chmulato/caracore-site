@@ -300,6 +300,23 @@
     }
 
     /**
+     * Obter token de autenticação
+     */
+    function getAuthToken() {
+        // Tentar obter token de várias fontes
+        const accessToken = localStorage.getItem('auth_access_token') || 
+                           localStorage.getItem('access_token') ||
+                           sessionStorage.getItem('cara_core_access_token');
+        
+        if (!accessToken) {
+            console.warn('[AuditDashboard] Token de autenticação não encontrado');
+            return null;
+        }
+        
+        return accessToken;
+    }
+
+    /**
      * Carregar logs do backend
      */
     async function loadLogs() {
@@ -307,6 +324,12 @@
         hideEmptyState();
         
         try {
+            // Obter token de autenticação
+            const accessToken = getAuthToken();
+            if (!accessToken) {
+                throw new Error('Token de autenticação não encontrado. Por favor, faça login novamente.');
+            }
+            
             // Construir URL com parâmetros
             const params = new URLSearchParams({
                 date: state.filters.date,
@@ -324,14 +347,18 @@
             const response = await fetch(url, {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
                 },
-                credentials: 'include'  // Incluir cookies de sessão (auth token)
+                credentials: 'include'  // Incluir cookies de sessão também
             });
             
             if (!response.ok) {
                 if (response.status === 401) {
                     throw new Error('Não autorizado. Sua sessão pode ter expirado. Por favor, faça login novamente.');
+                }
+                if (response.status === 403) {
+                    throw new Error('Acesso negado. Você não tem permissão para visualizar logs de auditoria.');
                 }
                 throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             }

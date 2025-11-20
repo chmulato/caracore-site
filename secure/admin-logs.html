@@ -20,9 +20,14 @@
             <span class="navbar-text me-3">
                 <i class="bi bi-clipboard-data"></i> Dashboard de Auditoria
             </span>
-            <button class="btn btn-outline-light btn-sm ms-auto" type="button" id="logoutButton">
-                <i class="bi bi-box-arrow-right"></i> Sair
-            </button>
+            <div class="ms-auto d-flex align-items-center gap-2">
+                <a href="/secure/restrita.html" class="btn btn-outline-light btn-sm" title="Voltar para Área Restrita">
+                    <i class="bi bi-arrow-left"></i> Voltar
+                </a>
+                <button class="btn btn-outline-light btn-sm" type="button" id="logoutButton">
+                    <i class="bi bi-box-arrow-right"></i> Sair
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -195,8 +200,8 @@
     <script defer src="/secure/js/auth-standalone.js?v=20251001b"></script>
     
     <!-- Session Manager & Logout -->
-    <script src="/js/session-manager.js"></script>
-    <script src="/js/logout-modal.js"></script>
+    <script src="/secure/js/session-manager.js"></script>
+    <script src="/secure/js/logout-modal.js"></script>
     
     <!-- Dashboard de Auditoria -->
     <script defer src="/secure/js/audit-dashboard.js"></script>

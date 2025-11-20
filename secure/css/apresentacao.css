@@ -3,8 +3,8 @@
  * Estilos para as páginas de apresentação dos produtos CaraCore Hub e Seed
  * 
  * @author CaraCore Team  
- * @version 1.0
- * @date 2025-11-18
+ * @version 1.1
+ * @date 2025-11-19
  */
 
 /* ==========================================
@@ -231,6 +231,46 @@ main {
     border-radius: 12px;
     margin: 2rem 0;
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+}
+
+/* ==========================================
+   IMAGENS DE ARQUITETURA
+   ========================================== */
+
+.architecture-image {
+    margin: 2.5rem 0;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+.architecture-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
+    margin: 0;
+}
+
+/* ==========================================
+   GRÁFICOS (CHART.JS)
+   ========================================== */
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 2.5rem 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+}
+
+.chart-container canvas {
+    max-height: 100%;
 }
 
 .apresentacao-content .highlight-box {
@@ -473,6 +513,17 @@ main {
     .user-actions {
         flex-direction: column;
         gap: 0.25rem;
+    }
+    
+    .architecture-image {
+        padding: 1rem;
+        margin: 1.5rem 0;
+    }
+    
+    .chart-container {
+        height: 300px;
+        padding: 1rem;
+        margin: 1.5rem 0;
     }
 }
 

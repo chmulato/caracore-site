@@ -1,0 +1,478 @@
+/**
+ * Apresentação de Produtos - Estilos da página
+ * Estilos para as páginas de apresentação dos produtos CaraCore Hub e Seed
+ * 
+ * @author CaraCore Team  
+ * @version 1.0
+ * @date 2025-11-18
+ */
+
+/* ==========================================
+   VARIÁVEIS CSS E RESET BÁSICO
+   ========================================== */
+
+:root {
+    --brand-dark: #0f172a;
+    --brand-light: #f8fafc;
+    --brand-primary: #2563eb;
+    --brand-secondary: #4f46e5;
+    --brand-accent: #38bdf8;
+    --brand-soft: rgba(37, 99, 235, 0.12);
+    --text-dark: #1e293b;
+    --text-muted: #475569;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+}
+
+*, *::before, *::after { 
+    box-sizing: border-box; 
+}
+
+html, body { 
+    margin: 0; 
+    padding: 0; 
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif; 
+    background: linear-gradient(130deg, #ede9fe 0%, #e0f2fe 40%, #f8fafc 100%); 
+    color: var(--text-dark); 
+}
+
+a { 
+    color: inherit; 
+    text-decoration: none; 
+}
+
+body { 
+    min-height: 100vh; 
+    display: flex; 
+    flex-direction: column; 
+}
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL
+   ========================================== */
+
+main { 
+    flex: 1; 
+}
+
+.apresentacao-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+.apresentacao-header {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 32px 70px rgba(15, 23, 42, 0.12);
+    text-align: center;
+}
+
+.apresentacao-header h1 {
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    margin-bottom: 0.5rem;
+    color: var(--brand-primary);
+    line-height: 1.2;
+}
+
+.apresentacao-header .subtitle {
+    font-size: 1.4rem;
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.apresentacao-header .meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.apresentacao-content {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    box-shadow: 0 32px 70px rgba(15, 23, 42, 0.12);
+    margin-bottom: 2rem;
+}
+
+.apresentacao-content h2 {
+    font-size: 2rem;
+    color: var(--brand-primary);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--brand-soft);
+}
+
+.apresentacao-content h2:first-child {
+    margin-top: 0;
+}
+
+.apresentacao-content h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.apresentacao-content h4 {
+    font-size: 1.25rem;
+    color: var(--text-dark);
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.apresentacao-content p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+}
+
+.apresentacao-content ul,
+.apresentacao-content ol {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    padding-left: 2rem;
+}
+
+.apresentacao-content li {
+    margin-bottom: 0.5rem;
+}
+
+.apresentacao-content strong {
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.apresentacao-content em {
+    font-style: italic;
+    color: var(--text-dark);
+}
+
+.apresentacao-content hr {
+    border: none;
+    border-top: 2px solid var(--brand-soft);
+    margin: 3rem 0;
+}
+
+.apresentacao-content blockquote {
+    position: relative;
+    margin: 2rem 0;
+    padding: 1.5rem 2rem;
+    background: var(--brand-soft);
+    border-left: 4px solid var(--brand-primary);
+    border-radius: 12px;
+    font-style: italic;
+    color: var(--text-dark);
+}
+
+.apresentacao-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+}
+
+.apresentacao-content table th,
+.apresentacao-content table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+.apresentacao-content table th {
+    background: var(--brand-soft);
+    color: var(--brand-primary);
+    font-weight: 600;
+}
+
+.apresentacao-content table tr:hover {
+    background: rgba(37, 99, 235, 0.05);
+}
+
+.apresentacao-content code {
+    background: rgba(15, 23, 42, 0.08);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+    color: var(--brand-primary);
+}
+
+.apresentacao-content pre {
+    background: rgba(15, 23, 42, 0.08);
+    padding: 1.5rem;
+    border-radius: 12px;
+    overflow-x: auto;
+    margin: 1.5rem 0;
+}
+
+.apresentacao-content pre code {
+    background: none;
+    padding: 0;
+}
+
+.apresentacao-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 2rem 0;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.1);
+}
+
+.apresentacao-content .highlight-box {
+    background: var(--brand-soft);
+    border-radius: 16px;
+    padding: 1.5rem 2rem;
+    margin: 2rem 0;
+    border-left: 4px solid var(--brand-primary);
+}
+
+.apresentacao-content .highlight-box h3 {
+    margin-top: 0;
+    color: var(--brand-primary);
+}
+
+.apresentacao-content .badge {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    margin: 0.25rem;
+}
+
+.apresentacao-content .badge-success {
+    background: rgba(34, 197, 94, 0.15);
+    color: #16a34a;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.apresentacao-content .badge-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: #d97706;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.apresentacao-content .badge-info {
+    background: rgba(59, 130, 246, 0.15);
+    color: #2563eb;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.apresentacao-content .badge-danger {
+    background: rgba(239, 68, 68, 0.15);
+    color: #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================
+   CARD DE INFORMAÇÕES DO USUÁRIO
+   ========================================== */
+
+.user-info-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 16px;
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 0;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: slideInFromTop 0.6s ease-out;
+}
+
+.user-info-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    color: white;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+.user-avatar .icon {
+    width: 24px;
+    height: 24px;
+    color: #34d399;
+}
+
+.user-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    margin: 0 0 0.25rem 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.user-email {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    word-break: break-word;
+}
+
+.user-role {
+    background: rgba(52, 211, 153, 0.2);
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.user-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.user-actions .btn {
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.user-actions .btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+.user-actions .btn-danger {
+    background: rgba(239, 68, 68, 0.2);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+}
+
+.user-actions .btn-danger:hover {
+    background: rgba(239, 68, 68, 0.3);
+}
+
+/* ==========================================
+   UTILITÁRIOS
+   ========================================== */
+
+.d-none {
+    display: none !important;
+}
+
+.icon-sm {
+    width: 16px;
+    height: 16px;
+}
+
+.badge-success {
+    background-color: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+/* ==========================================
+   ANIMAÇÕES
+   ========================================== */
+
+@keyframes slideInFromTop {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+
+@media (max-width: 768px) {
+    .apresentacao-container {
+        padding: 1rem;
+    }
+    
+    .apresentacao-header {
+        padding: 2rem 1.5rem;
+    }
+    
+    .apresentacao-content {
+        padding: 2rem 1.5rem;
+    }
+    
+    .apresentacao-content h2 {
+        font-size: 1.75rem;
+    }
+    
+    .apresentacao-content h3 {
+        font-size: 1.35rem;
+    }
+    
+    .apresentacao-content table {
+        font-size: 0.85rem;
+    }
+    
+    .apresentacao-content table th,
+    .apresentacao-content table td {
+        padding: 0.5rem 0.75rem;
+    }
+    
+    .user-info-card {
+        margin: 1rem;
+    }
+    
+    .user-info-content {
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+    
+    .user-avatar {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .user-name {
+        font-size: 1rem;
+    }
+    
+    .user-email {
+        font-size: 0.8rem;
+    }
+    
+    .user-actions {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}
+

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CaraCore Seed - Apresentação Executiva</title>
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251118" />
+  <link rel="stylesheet" href="/secure/css/apresentacao.css?v=20251118" />
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-shield-lock" viewBox="0 0 24 24">
+      <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21 12H9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-cloud-check" viewBox="0 0 24 24">
+      <path d="M7.5 19a4.5 4.5 0 0 1-.6-9 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 16.5 19Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10.5 13.5 12.5 15.5 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <div class="site-shell">
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="nav-brand" href="/">
+          <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+          <span>Cara Core Informática</span>
+        </a>
+        <nav class="nav-links">
+          <a class="nav-link" href="/secure/restrita.html">Área 51</a>
+          <a class="nav-link" href="/secure/apresentacao-hub.html">CaraCore Hub</a>
+          <a class="nav-link" href="/secure/apresentacao-seed.html">CaraCore Seed</a>
+          <a class="nav-link" href="/area51/wiki/index.html">Wiki Técnica</a>
+          <a class="nav-link" href="/">Site Principal</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Informações do Usuário Autorizado -->
+      <div id="userInfoCard" class="user-info-card d-none">
+        <div class="user-info-content">
+          <div class="user-avatar">
+            <svg class="icon" aria-hidden="true"><use href="#icon-check-circle"></use></svg>
+          </div>
+          <div class="user-details">
+            <h6 class="user-name" id="userName">Carregando...</h6>
+            <p class="user-email" id="userEmail">Verificando autorização...</p>
+            <span class="user-role badge badge-success" id="userRole">Usuário</span>
+          </div>
+          <div class="user-actions">
+            <button class="btn btn-sm btn-outline" id="refreshAuth" title="Atualizar autorização">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-cloud-check"></use></svg>
+            </button>
+            <button class="btn btn-sm btn-danger" id="logoutUser" title="Fazer logout">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-arrow-left"></use></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="apresentacao-container">
+        <div class="apresentacao-header">
+          <h1>CaraCore Seed</h1>
+          <p class="subtitle">Sistema Empresarial de Controle de Licenças</p>
+          <p><strong>Apresentação Executiva para Investidores</strong></p>
+          <div class="meta">
+            <span><strong>Cara Core Informática</strong></span>
+            <span>CNPJ: 23.969.028/0001-37</span>
+            <span>Novembro de 2025</span>
+          </div>
+        </div>
+
+        <div class="apresentacao-content">
+          <p class="highlight-box">
+            <strong>Documento Confidencial:</strong> Esta apresentação contém informações proprietárias e confidenciais da Cara Core Informática. 
+            O conteúdo completo está disponível em formato Markdown para download e apresentação detalhada.
+          </p>
+
+          <h2>1. Sumário Executivo</h2>
+
+          <h3>1.1 Visão Geral da Solução</h3>
+          <p>
+            O <strong>CaraCore Seed</strong> é um sistema empresarial de controle de licenças que protege e monetiza o acesso ao <strong>CaraCore Hub</strong>, nossa plataforma unificada de gestão de marketplaces. O sistema implementa um modelo de negócio Software-as-a-Service (SaaS) com cobrança mensal recorrente por Centro de Distribuição, garantindo que apenas clientes autorizados e em dia com pagamentos tenham acesso às funcionalidades premium.
+          </p>
+          <p>
+            A solução transforma o CaraCore Hub de uma solução pontual para uma <strong>plataforma empresarial escalável</strong>, estabelecendo receita recorrente previsível e controle granular de acesso.
+          </p>
+
+          <h3>1.2 Proposta de Valor</h3>
+          
+          <div class="highlight-box">
+            <h4>Para a organização (Cara Core Informática):</h4>
+            <ul>
+              <li>Receita recorrente previsível através de assinaturas mensais (MRR)</li>
+              <li>Proteção de propriedade intelectual e controle de acesso granular</li>
+              <li>Monitoramento em tempo real de uso e atividade dos clientes</li>
+              <li>Escalabilidade para crescimento exponencial da base de clientes</li>
+              <li>Compliance e auditoria completa de todas as operações</li>
+              <li>Margem bruta projetada de <strong>87%</strong> com ROI de <strong>307%</strong> em 12 meses</li>
+            </ul>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Para clientes (Centros de Distribuição):</h4>
+            <ul>
+              <li>Modelo de assinatura mensal flexível (sem investimento inicial alto)</li>
+              <li>Escalabilidade conforme crescimento do negócio</li>
+              <li>Transparência total sobre uso e custos</li>
+              <li>Suporte garantido para clientes em dia</li>
+              <li>Atualizações automáticas incluídas na assinatura</li>
+              <li>Segurança operacional com backup automático</li>
+            </ul>
+          </div>
+
+          <h3>1.3 Problema de Mercado</h3>
+          <p>
+            O CaraCore Hub é uma solução tecnológica que unifica operações de múltiplos marketplaces (Mercado Livre, Shopee, Amazon) em uma única plataforma. Antes do CaraCore Seed, não havia controle efetivo sobre:
+          </p>
+          <ul>
+            <li>Quem estava utilizando o sistema sem autorização adequada</li>
+            <li>Por quanto tempo cada cliente poderia usar sem pagamento</li>
+            <li>Quantos usuários simultâneos por instalação</li>
+            <li>Volume de operações processadas por cliente</li>
+            <li>Garantias de pagamento pelos serviços prestados</li>
+            <li>Proteção da propriedade intelectual da plataforma</li>
+          </ul>
+
+          <h2>2. Modelo de Negócio</h2>
+
+          <h3>2.1 Estrutura de Receitas</h3>
+          
+          <h4>Modelo primário: Assinatura Mensal por Centro de Distribuição</h4>
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Plano</th>
+                <th>Usuários</th>
+                <th>Operações/Dia</th>
+                <th>Preço Mensal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Básico</strong></td>
+                <td>10 pessoas</td>
+                <td>1.000 operações</td>
+                <td>R$ 199,90</td>
+              </tr>
+              <tr>
+                <td><strong>Profissional</strong></td>
+                <td>25 pessoas</td>
+                <td>5.000 operações</td>
+                <td>R$ 299,90</td>
+              </tr>
+              <tr>
+                <td><strong>Premium</strong></td>
+                <td>50 pessoas</td>
+                <td>15.000 operações</td>
+                <td>R$ 499,90</td>
+              </tr>
+              <tr>
+                <td><strong>Corporativo</strong></td>
+                <td>Ilimitado</td>
+                <td>Ilimitado</td>
+                <td>Sob consulta</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>2.2 Mercado Endereçável</h3>
+          <ul>
+            <li><strong>TAM:</strong> ~30.000 Centros de Distribuição potenciais</li>
+            <li><strong>Valor total:</strong> R$ 9 milhões/ano (MRR × 12 meses)</li>
+            <li><strong>SAM:</strong> R$ 1,8 milhões/ano (MRR × 12 meses)</li>
+            <li><strong>SOM Ano 1:</strong> R$ 36k (MRR) + R$ 432k (ARR)</li>
+            <li><strong>SOM Ano 2:</strong> R$ 72k (MRR) + R$ 864k (ARR)</li>
+          </ul>
+
+          <h2>3. Diferenciais Competitivos</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th>CaraCore Seed</th>
+                <th>Concorrentes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Modelo de Cobrança</strong></td>
+                <td>Mensal por CD</td>
+                <td>Compra única ou por usuário</td>
+              </tr>
+              <tr>
+                <td><strong>Custo de Implementação</strong></td>
+                <td>R$ 0 (já incluído)</td>
+                <td>R$ 5k-200k</td>
+              </tr>
+              <tr>
+                <td><strong>Controle Granular</strong></td>
+                <td>Sim (usuários, operações)</td>
+                <td>Não ou Parcial</td>
+              </tr>
+              <tr>
+                <td><strong>Monitoramento em Tempo Real</strong></td>
+                <td>Sim (heartbeat)</td>
+                <td>Não ou Parcial</td>
+              </tr>
+              <tr>
+                <td><strong>Integração com Hub</strong></td>
+                <td>Nativa</td>
+                <td>Não</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>4. Projeção Financeira (36 meses)</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Ano</th>
+                <th>CDs Ativos</th>
+                <th>Receita Mensal (MRR)</th>
+                <th>Receita Anual (ARR)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ano 1</strong></td>
+                <td>120</td>
+                <td>R$ 36.000</td>
+                <td><strong>R$ 432.000</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ano 2</strong></td>
+                <td>200</td>
+                <td>R$ 72.000</td>
+                <td><strong>R$ 864.000</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ano 3</strong></td>
+                <td>280</td>
+                <td>R$ 144.000</td>
+                <td><strong>R$ 1.728.000</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>4.1 Métricas de Negócio</h3>
+          <ul>
+            <li><strong>Payback period:</strong> 8 meses</li>
+            <li><strong>ROI 12 meses:</strong> 307%</li>
+            <li><strong>ROI 24 meses:</strong> 614%</li>
+            <li><strong>Margem bruta:</strong> 87%</li>
+            <li><strong>Churn projetado:</strong> &lt; 5% ao mês</li>
+          </ul>
+
+          <h2>5. Status Atual do Projeto</h2>
+
+          <div class="highlight-box">
+            <h3>Fase 3 - API Totalmente Operacional (100% Concluída)</h3>
+            <ul>
+              <li><span class="badge badge-success">✅ 100% dos testes passando</span> (20/20)</li>
+              <li><span class="badge badge-success">✅ API totalmente operacional</span></li>
+              <li><span class="badge badge-success">✅ Interface administrativa completa</span></li>
+              <li><span class="badge badge-success">✅ Pronto para deploy em produção</span></li>
+            </ul>
+          </div>
+
+          <h3>5.1 Métricas Técnicas</h3>
+          <ul>
+            <li><strong>Tempo de validação:</strong> &lt; 100ms por requisição</li>
+            <li><strong>Throughput:</strong> 1000+ validações por minuto</li>
+            <li><strong>Disponibilidade:</strong> 99.9% uptime</li>
+            <li><strong>Escalabilidade:</strong> Testado até 50 CDs simultâneos</li>
+          </ul>
+
+          <h2>6. Investimento e Uso de Recursos</h2>
+
+          <h3>6.1 Investimento Total Executado</h3>
+          <p><strong>R$ 150.000</strong></p>
+          
+          <ul>
+            <li><strong>Desenvolvimento de Produto (60%):</strong> R$ 90.000</li>
+            <li><strong>Infraestrutura (20%):</strong> R$ 30.000</li>
+            <li><strong>Operações e Suporte (20%):</strong> R$ 30.000</li>
+          </ul>
+
+          <h3>6.2 Investimento Adicional Necessário (Q1-Q2 2026)</h3>
+          <p><strong>R$ 150.000</strong></p>
+          
+          <ul>
+            <li><strong>Expansão comercial:</strong> R$ 80.000</li>
+            <li><strong>Otimizações de performance:</strong> R$ 40.000</li>
+            <li><strong>Marketing digital:</strong> R$ 30.000</li>
+          </ul>
+
+          <h2>7. Conclusão</h2>
+
+          <div class="highlight-box">
+            <h3>Por que investir no CaraCore Seed?</h3>
+            <ul>
+              <li><strong>Oportunidade de mercado:</strong> Mercado endereçável de R$ 9 milhões/ano</li>
+              <li><strong>Diferenciação clara:</strong> Solução 80% mais barata que concorrentes enterprise</li>
+              <li><strong>Time experiente:</strong> Founder com 15+ anos de experiência</li>
+              <li><strong>Tração inicial:</strong> Sistema funcional e testado (100% dos testes passando)</li>
+              <li><strong>Potencial de escala:</strong> Modelo replicável com margens atrativas (87%)</li>
+              <li><strong>ROI atrativo:</strong> 307% em 12 meses com payback em 8 meses</li>
+            </ul>
+          </div>
+
+          <hr>
+
+          <h2>Contato</h2>
+          <p>
+            <strong>Cara Core Informática</strong><br>
+            CNPJ: 23.969.028/0001-37
+          </p>
+          <p>
+            <strong>Christian Vladimir Uhdre Mulato</strong><br>
+            Fundador e CEO
+          </p>
+          <p>
+            <strong>Email:</strong> <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a><br>
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core" target="_blank" rel="noopener">linkedin.com/company/cara-core</a><br>
+            <strong>Website:</strong> <a href="https://chmulato.github.io/caracore-seed/" target="_blank" rel="noopener">chmulato.github.io/caracore-seed/</a>
+          </p>
+
+          <p class="highlight-box">
+            <strong>Última atualização:</strong> Novembro de 2025<br>
+            <strong>Versão do documento:</strong> 1.0<br>
+            <strong>Confidencial:</strong> Este documento contém informações proprietárias e confidenciais da Cara Core Informática.
+          </p>
+
+          <p style="text-align: center; margin-top: 3rem;">
+            <a href="/secure/restrita.html" class="btn btn-secondary">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-arrow-left"></use></svg>
+              Voltar para Área 51
+            </a>
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts de autenticação -->
+  <script src="/secure/js/notification-manager.js"></script>
+  <script src="/secure/js/error-messages.js"></script>
+  <script src="/secure/js/notification-bridge.js"></script>
+  <script src="/secure/js/session-manager.js"></script>
+  <script src="/secure/js/logout-modal.js"></script>
+  <script src="/secure/js/authorization-check.js?v=20251102"></script>
+  <script defer src="/secure/js/log-config.js"></script>
+  <script defer src="/secure/js/logger.js"></script>
+  <script defer src="/secure/js/dynamic-config.js"></script>
+  <script defer src="/secure/js/auth-force-recognition.js?v=20251117"></script>
+  <script defer src="/secure/js/auth-standalone.js"></script>
+  <script defer src="/secure/js/nav-controls.js?v=20251012"></script>
+  <script defer src="/secure/js/secure-auth-ui.js?v=20251117"></script>
+  <script defer src="/secure/js/error-handler.js?v=20251012"></script>
+  <script defer src="/secure/js/enhanced-error-handler.js?v=20251012"></script>
+  
+  <!-- Proteção de Autorização - Verificar acesso antes de exibir conteúdo -->
+  <script defer src="/secure/js/apresentacao-auth.js?v=20251118"></script>
+</body>
+</html>
+

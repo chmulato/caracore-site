@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CaraCore Hub - Apresentação Executiva</title>
+  <link rel="icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251118" />
+  <link rel="stylesheet" href="/secure/css/apresentacao.css?v=20251118" />
+</head>
+<body>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-shield-lock" viewBox="0 0 24 24">
+      <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21 12H9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-cloud-check" viewBox="0 0 24 24">
+      <path d="M7.5 19a4.5 4.5 0 0 1-.6-9 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 16.5 19Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M10.5 13.5 12.5 15.5 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <div class="site-shell">
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="nav-brand" href="/">
+          <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+          <span>Cara Core Informática</span>
+        </a>
+        <nav class="nav-links">
+          <a class="nav-link" href="/secure/restrita.html">Área 51</a>
+          <a class="nav-link" href="/secure/apresentacao-hub.html">CaraCore Hub</a>
+          <a class="nav-link" href="/secure/apresentacao-seed.html">CaraCore Seed</a>
+          <a class="nav-link" href="/area51/wiki/index.html">Wiki Técnica</a>
+          <a class="nav-link" href="/">Site Principal</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Informações do Usuário Autorizado -->
+      <div id="userInfoCard" class="user-info-card d-none">
+        <div class="user-info-content">
+          <div class="user-avatar">
+            <svg class="icon" aria-hidden="true"><use href="#icon-check-circle"></use></svg>
+          </div>
+          <div class="user-details">
+            <h6 class="user-name" id="userName">Carregando...</h6>
+            <p class="user-email" id="userEmail">Verificando autorização...</p>
+            <span class="user-role badge badge-success" id="userRole">Usuário</span>
+          </div>
+          <div class="user-actions">
+            <button class="btn btn-sm btn-outline" id="refreshAuth" title="Atualizar autorização">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-cloud-check"></use></svg>
+            </button>
+            <button class="btn btn-sm btn-danger" id="logoutUser" title="Fazer logout">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-arrow-left"></use></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="apresentacao-container">
+        <div class="apresentacao-header">
+          <h1>CaraCore Hub</h1>
+          <p class="subtitle">Sistema Empresarial de Gestão de Encomendas</p>
+          <p><strong>Apresentação Executiva para Investidores</strong></p>
+          <div class="meta">
+            <span><strong>Cara Core Informática</strong></span>
+            <span>CNPJ: 23.969.028/0001-37</span>
+            <span>Novembro de 2025</span>
+          </div>
+        </div>
+
+        <div class="apresentacao-content">
+          <p class="highlight-box">
+            <strong>Documento Confidencial:</strong> Esta apresentação contém informações proprietárias e confidenciais da Cara Core Informática. 
+            O conteúdo completo está disponível em formato Markdown para download e apresentação detalhada.
+          </p>
+
+          <h2>1. Sumário Executivo</h2>
+
+          <h3>1.1 Visão Geral da Solução</h3>
+          <p>
+            O <strong>CaraCore Hub</strong> é uma plataforma empresarial de gestão logística que transforma estabelecimentos comerciais em centros de distribuição e retirada de encomendas de e-commerce, integrando-se diretamente aos principais marketplaces do Brasil.
+          </p>
+          <p>
+            A solução viabiliza operações eficientes de last-mile logistics em municípios de pequeno e médio porte (até 150 mil habitantes), reduzindo custos operacionais e aumentando a satisfação do cliente final.
+          </p>
+
+          <h3>1.2 Proposta de Valor</h3>
+          
+          <div class="highlight-box">
+            <h4>Para operadores logísticos e estabelecimentos comerciais:</h4>
+            <ul>
+              <li>Monetização de espaço ocioso através de serviços de retirada de encomendas</li>
+              <li>Aumento de fluxo de clientes no estabelecimento</li>
+              <li>Receita adicional por volume processado (R$ 2-5 por pacote)</li>
+              <li>Baixo investimento inicial em infraestrutura tecnológica (&lt; R$ 5.000)</li>
+            </ul>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Para marketplaces e remetentes:</h4>
+            <ul>
+              <li>Redução de 60-70% nos custos com tentativas de entrega</li>
+              <li>Diminuição de 80% nas devoluções por ausência do destinatário</li>
+              <li>Expansão da cobertura logística em 2.500+ municípios brasileiros</li>
+              <li>Rastreabilidade completa do processo end-to-end</li>
+            </ul>
+          </div>
+
+          <div class="highlight-box">
+            <h4>Para consumidores finais:</h4>
+            <ul>
+              <li>Flexibilidade de horário para retirada (horário comercial estendido)</li>
+              <li>Proximidade geográfica (redução de 70% no deslocamento médio)</li>
+              <li>Segurança na entrega (ambiente monitorado)</li>
+              <li>Experiência de retirada profissional</li>
+            </ul>
+          </div>
+
+          <h3>1.3 Problema de Mercado</h3>
+          <p>
+            O mercado brasileiro de e-commerce enfrenta desafios críticos no last-mile:
+          </p>
+          <ul>
+            <li>35-40% das tentativas de entrega falham na primeira tentativa</li>
+            <li>Custo médio de reentrega: R$ 15-25 por pacote</li>
+            <li>Tempo médio de permanência em trânsito: 8-12 dias</li>
+            <li>Taxa de devolução por não localização: 12-18%</li>
+            <li>Perda estimada do setor: <strong>R$ 4,2 bilhões/ano</strong></li>
+          </ul>
+
+          <h2>2. Modelo de Negócio</h2>
+
+          <h3>2.1 Estrutura de Receitas</h3>
+          
+          <h4>Modelo primário: Licenciamento por estabelecimento</h4>
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Licença</th>
+                <th>Custo Único</th>
+                <th>Capacidade</th>
+                <th>Suporte Incluso</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Básica</strong></td>
+                <td>R$ 2.500</td>
+                <td>até 100 pedidos/dia</td>
+                <td>30 dias</td>
+              </tr>
+              <tr>
+                <td><strong>Profissional</strong></td>
+                <td>R$ 4.500</td>
+                <td>até 300 pedidos/dia</td>
+                <td>90 dias + 3 meses grátis</td>
+              </tr>
+              <tr>
+                <td><strong>Enterprise</strong></td>
+                <td>R$ 8.500</td>
+                <td>até 500 pedidos/dia</td>
+                <td>180 dias + 6 meses grátis</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>2.2 Mercado Endereçável</h3>
+          <ul>
+            <li><strong>TAM:</strong> ~15.000 estabelecimentos potenciais</li>
+            <li><strong>Valor total:</strong> R$ 67,5 milhões (licenciamento) + R$ 36 milhões/ano (recorrente)</li>
+            <li><strong>SAM:</strong> R$ 27 milhões (licenciamento) + R$ 14,4 milhões/ano (recorrente)</li>
+            <li><strong>SOM Ano 1:</strong> R$ 540k (licenciamento) + R$ 288k (recorrente)</li>
+            <li><strong>SOM Ano 2:</strong> R$ 1,08M (licenciamento) + R$ 864k (recorrente)</li>
+          </ul>
+
+          <h2>3. Diferenciais Competitivos</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Critério</th>
+                <th>CaraCore Hub</th>
+                <th>Concorrentes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Custo de Implementação</strong></td>
+                <td>&lt; R$ 5.000</td>
+                <td>R$ 15-500k</td>
+              </tr>
+              <tr>
+                <td><strong>Tempo de Implantação</strong></td>
+                <td>1-2 dias</td>
+                <td>2-24 semanas</td>
+              </tr>
+              <tr>
+                <td><strong>Tempo de Treinamento</strong></td>
+                <td>4 horas</td>
+                <td>2-12 semanas</td>
+              </tr>
+              <tr>
+                <td><strong>Foco em Cidades Pequenas</strong></td>
+                <td>Sim (core business)</td>
+                <td>Não</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>4. Projeção Financeira (36 meses)</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Ano</th>
+                <th>Clientes</th>
+                <th>Receita Licenciamento</th>
+                <th>Receita Recorrente</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Ano 1</strong></td>
+                <td>120</td>
+                <td>R$ 615.000</td>
+                <td>R$ 144.000</td>
+                <td><strong>R$ 759.000</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ano 2</strong></td>
+                <td>200</td>
+                <td>R$ 1.070.000</td>
+                <td>R$ 720.000</td>
+                <td><strong>R$ 1.790.000</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Ano 3</strong></td>
+                <td>280</td>
+                <td>R$ 1.490.000</td>
+                <td>R$ 1.440.000</td>
+                <td><strong>R$ 2.930.000</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>5. Investimento e Uso de Recursos</h2>
+
+          <h3>5.1 Necessidade de Investimento</h3>
+          <p><strong>Rodada Seed: R$ 1.200.000</strong></p>
+          
+          <ul>
+            <li><strong>Desenvolvimento de Produto (40%):</strong> R$ 480.000</li>
+            <li><strong>Go-to-Market e Vendas (35%):</strong> R$ 420.000</li>
+            <li><strong>Operações e Infraestrutura (15%):</strong> R$ 180.000</li>
+            <li><strong>Reserva e Contingência (10%):</strong> R$ 120.000</li>
+          </ul>
+
+          <h2>6. Conclusão</h2>
+
+          <div class="highlight-box">
+            <h3>Por que investir no CaraCore Hub?</h3>
+            <ul>
+              <li><strong>Oportunidade de mercado:</strong> Mercado endereçável de R$ 67,5 milhões</li>
+              <li><strong>Diferenciação clara:</strong> Solução 80% mais barata que concorrentes</li>
+              <li><strong>Time experiente:</strong> Founder com 15+ anos de experiência</li>
+              <li><strong>Tração inicial:</strong> Produto funcional e testado</li>
+              <li><strong>Potencial de escala:</strong> Modelo replicável com margens atrativas (60-70%)</li>
+            </ul>
+          </div>
+
+          <hr>
+
+          <h2>Contato</h2>
+          <p>
+            <strong>Cara Core Informática</strong><br>
+            CNPJ: 23.969.028/0001-37
+          </p>
+          <p>
+            <strong>Christian Vladimir Uhdre Mulato</strong><br>
+            Fundador e CEO
+          </p>
+          <p>
+            <strong>Email:</strong> <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a><br>
+            <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core" target="_blank" rel="noopener">linkedin.com/company/cara-core</a><br>
+            <strong>Website:</strong> <a href="https://chmulato.github.io/caracore-hub/" target="_blank" rel="noopener">chmulato.github.io/caracore-hub/</a>
+          </p>
+
+          <p class="highlight-box">
+            <strong>Última atualização:</strong> Novembro de 2025<br>
+            <strong>Versão do documento:</strong> 1.0<br>
+            <strong>Confidencial:</strong> Este documento contém informações proprietárias e confidenciais da Cara Core Informática.
+          </p>
+
+          <p style="text-align: center; margin-top: 3rem;">
+            <a href="/secure/restrita.html" class="btn btn-secondary">
+              <svg class="icon-sm" aria-hidden="true"><use href="#icon-arrow-left"></use></svg>
+              Voltar para Área 51
+            </a>
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Scripts de autenticação -->
+  <script src="/secure/js/notification-manager.js"></script>
+  <script src="/secure/js/error-messages.js"></script>
+  <script src="/secure/js/notification-bridge.js"></script>
+  <script src="/secure/js/session-manager.js"></script>
+  <script src="/secure/js/logout-modal.js"></script>
+  <script src="/secure/js/authorization-check.js?v=20251102"></script>
+  <script defer src="/secure/js/log-config.js"></script>
+  <script defer src="/secure/js/logger.js"></script>
+  <script defer src="/secure/js/dynamic-config.js"></script>
+  <script defer src="/secure/js/auth-force-recognition.js?v=20251117"></script>
+  <script defer src="/secure/js/auth-standalone.js"></script>
+  <script defer src="/secure/js/nav-controls.js?v=20251012"></script>
+  <script defer src="/secure/js/secure-auth-ui.js?v=20251117"></script>
+  <script defer src="/secure/js/error-handler.js?v=20251012"></script>
+  <script defer src="/secure/js/enhanced-error-handler.js?v=20251012"></script>
+  
+  <!-- Proteção de Autorização - Verificar acesso antes de exibir conteúdo -->
+  <script defer src="/secure/js/apresentacao-auth.js?v=20251118"></script>
+</body>
+</html>
+

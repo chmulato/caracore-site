@@ -12,6 +12,38 @@
     <link rel="stylesheet" href="/secure/css/admin-common.css?v=20251104" />
 </head>
 <body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-shield-lock" viewBox="0 0 24 24">
+            <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+        </symbol>
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12H9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+    </svg>
+
+    <div class="site-shell">
+        <header class="site-nav">
+            <div class="nav-inner">
+                <a class="nav-brand" href="/">
+                    <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+                    <span>Cara Core Informática</span>
+                </a>
+                <nav class="nav-links">
+                    <a class="nav-link nav-link-back" href="/secure/restrita.html" title="Voltar para Área Restrita">
+                        <svg class="icon-sm" aria-hidden="true" style="width: 1rem; height: 1rem;"><use href="#icon-arrow-left"></use></svg>
+                        Voltar para Área 51
+                    </a>
+                    <a class="nav-link" href="/secure/restrita.html">Área 51</a>
+                    <a class="nav-link" href="/secure/historia.html">História</a>
+                    <a class="nav-link" href="/area51/wiki/index.html">Wiki Técnica</a>
+                    <a class="nav-link" href="/">Site Principal</a>
+                </nav>
+            </div>
+        </header>
     <div class="approval-container">
         <!-- Header -->
         <div class="approval-header">
@@ -141,6 +173,12 @@
         </div>
     </div>
 
+    <!-- OIDC Authentication & Protection -->
+    <script defer src="/secure/js/auth-standalone.js"></script>
+    <script src="/secure/js/authorization-check.js"></script>
+    <script src="/secure/js/secure-page-guard.js"></script>
+    
+    <!-- Admin Scripts -->
     <script src="/secure/js/admin-common.js?v=20251104"></script>
     <script src="/secure/js/approval-manager.js?v=20251104b"></script>
     
@@ -186,5 +224,6 @@
             // Modal já está fechado via admin-common.js
         });
     </script>
+    </div>
 </body>
 </html>

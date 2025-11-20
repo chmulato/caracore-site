@@ -8,28 +8,43 @@
     <!-- Bootstrap CSS -->
     <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
     <link href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251012" />
     <link rel="stylesheet" href="/secure/css/admin-logs.css?v=20251116" />
 </head>
 <body>
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+        <symbol id="icon-shield-lock" viewBox="0 0 24 24">
+            <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+            <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+        </symbol>
+        <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+            <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 12H9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </symbol>
+    </svg>
+
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container-fluid px-4">
-            <a class="navbar-brand" href="/">
-                <i class="bi bi-shield-lock"></i> Área 51
-            </a>
-            <span class="navbar-text me-3">
-                <i class="bi bi-clipboard-data"></i> Dashboard de Auditoria
-            </span>
-            <div class="ms-auto d-flex align-items-center gap-2">
-                <a href="/secure/restrita.html" class="btn btn-outline-light btn-sm" title="Voltar para Área Restrita">
-                    <i class="bi bi-arrow-left"></i> Voltar
+    <div class="site-shell">
+        <header class="site-nav">
+            <div class="nav-inner">
+                <a class="nav-brand" href="/">
+                    <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+                    <span>Cara Core Informática</span>
                 </a>
-                <button class="btn btn-outline-light btn-sm" type="button" id="logoutButton">
-                    <i class="bi bi-box-arrow-right"></i> Sair
-                </button>
+                <nav class="nav-links">
+                    <a class="nav-link nav-link-back" href="/secure/restrita.html" title="Voltar para Área Restrita">
+                        <svg class="icon-sm" aria-hidden="true" style="width: 1rem; height: 1rem;"><use href="#icon-arrow-left"></use></svg>
+                        Voltar para Área 51
+                    </a>
+                    <a class="nav-link" href="/secure/restrita.html">Área 51</a>
+                    <a class="nav-link" href="/secure/historia.html">História</a>
+                    <a class="nav-link" href="/area51/wiki/index.html">Wiki Técnica</a>
+                    <a class="nav-link" href="/">Site Principal</a>
+                </nav>
             </div>
-        </div>
-    </nav>
+        </header>
 
     <div class="container-fluid px-4 mt-4">
         <!-- Header e Controles -->
@@ -192,12 +207,18 @@
             </button>
         </div>
     </div>
+    </main>
+    </div>
 
     <!-- Bootstrap -->
     <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
     
     <!-- OIDC Authentication -->
     <script defer src="/secure/js/auth-standalone.js?v=20251001b"></script>
+    
+    <!-- Authorization & Protection -->
+    <script src="/secure/js/authorization-check.js"></script>
+    <script src="/secure/js/secure-page-guard.js"></script>
     
     <!-- Session Manager & Logout -->
     <script src="/secure/js/session-manager.js"></script>
@@ -208,15 +229,19 @@
     
     <script>
         // Configurar logout
-        document.getElementById('logoutButton')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            const provider = localStorage.getItem('auth_provider');
-            if (typeof LogoutModal !== 'undefined') {
-                LogoutModal.show(provider);
-            } else if (typeof SessionManager !== 'undefined') {
-                SessionManager.logout();
-            }
-        });
+        // Logout handler - procurar por botão de logout na página
+        const logoutButton = document.getElementById('logoutButton') || document.querySelector('[data-logout]');
+        if (logoutButton) {
+            logoutButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                const provider = localStorage.getItem('auth_provider');
+                if (typeof LogoutModal !== 'undefined') {
+                    LogoutModal.show(provider);
+                } else if (typeof SessionManager !== 'undefined') {
+                    SessionManager.logout();
+                }
+            });
+        }
     </script>
 </body>
 </html>

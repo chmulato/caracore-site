@@ -68,6 +68,10 @@
       <rect x="3" y="13" width="8" height="8" fill="#00a4ef"/>
       <rect x="13" y="13" width="8" height="8" fill="#ffb900"/>
     </symbol>
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+      <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21 12H9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
   </svg>
 
   <div class="site-shell">
@@ -78,11 +82,14 @@
           <span>Cara Core Informática</span>
         </a>
         <nav class="nav-links">
+          <a class="nav-link nav-link-back" href="/secure/restrita.html" title="Voltar para Área Restrita">
+            <svg class="icon-sm" aria-hidden="true" style="width: 1rem; height: 1rem;"><use href="#icon-arrow-left"></use></svg>
+            Voltar para Área 51
+          </a>
           <a class="nav-link" href="/secure/restrita.html">Área 51</a>
-          <span class="nav-cta nav-cta-admin">
-            <svg aria-hidden="true"><use href="#icon-users"></use></svg>
-            <span>Admin</span>
-          </span>
+          <a class="nav-link" href="/secure/historia.html">História</a>
+          <a class="nav-link" href="/area51/wiki/index.html">Wiki Técnica</a>
+          <a class="nav-link" href="/">Site Principal</a>
         </nav>
       </div>
     </header>
@@ -263,6 +270,9 @@
   </div>
 
   <!-- Scripts -->
+  <script defer src="/secure/js/auth-standalone.js"></script>
+  <script src="/secure/js/authorization-check.js"></script>
+  <script src="/secure/js/secure-page-guard.js"></script>
   <script src="/secure/js/config.js?v=20251104"></script>
   <script src="/secure/js/admin-common.js?v=20251104"></script>
   <script src="/secure/js/admin-users-manager.js?v=20251104"></script>

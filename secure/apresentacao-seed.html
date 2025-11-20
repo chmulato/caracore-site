@@ -86,8 +86,71 @@
           </p>
 
           <h2>2. Arquitetura Técnica</h2>
-          <div class="architecture-image">
-            <img src="/secure/img/arquitetura/seed-arquitetura.png" alt="Arquitetura do CaraCore Seed" />
+          <div class="mermaid-diagram">
+            <div class="mermaid">
+graph TB
+    subgraph "Aplicações Cliente"
+        A1[CaraCore Hub]
+        A2[Outros Módulos]
+    end
+    
+    subgraph "API de Licenciamento - Jakarta EE"
+        B[REST Endpoints]
+        C[Validação de Licenças]
+        D[Gestão de Usuários]
+        E[Política de Acesso]
+    end
+    
+    subgraph "Segurança"
+        F[Jakarta Security]
+        G[Token JWT]
+        H[Hash bcrypt]
+    end
+    
+    subgraph "Camada de Dados"
+        I[(Banco Licenças)]
+        J[Modelo ER Completo]
+    end
+    
+    subgraph "Infraestrutura Docker"
+        K[Container Tomcat]
+        L[Container PostgreSQL]
+        M[Scripts Python]
+    end
+    
+    A1 --> B
+    A2 --> B
+    B --> C
+    C --> F
+    D --> F
+    E --> F
+    F --> G
+    F --> H
+    C --> I
+    D --> I
+    E --> I
+    I --> J
+    
+    M --> K
+    M --> L
+    K --> B
+    L --> I
+    
+    style A1 fill:#ffd200
+    style A2 fill:#ffd200
+    style B fill:#43cea2
+    style C fill:#43cea2
+    style D fill:#43cea2
+    style E fill:#43cea2
+    style F fill:#8f6ed5
+    style G fill:#8f6ed5
+    style H fill:#8f6ed5
+    style I fill:#185a9d
+    style J fill:#185a9d
+    style K fill:#667eea
+    style L fill:#667eea
+    style M fill:#667eea
+            </div>
           </div>
 
           <h2>3. Proposta de Valor</h2>
@@ -315,6 +378,21 @@
   <!-- Chart.js para gráficos -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script defer src="/secure/js/apresentacao-charts.js?v=20251119"></script>
+  
+  <!-- Mermaid.js para renderizar diagramas de arquitetura -->
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ 
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+  </script>
 </body>
 </html>
 

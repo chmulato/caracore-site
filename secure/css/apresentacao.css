@@ -536,3 +536,33 @@ main {
     }
 }
 
+/* ==========================================
+   FOOTER DA APRESENTAÇÃO E UTILITÁRIOS
+   ========================================== */
+
+.apresentacao-footer {
+    margin-top: 3rem;
+    padding: 2rem;
+    background: rgba(37, 99, 235, 0.05);
+    border-radius: 12px;
+    border-left: 4px solid var(--brand-primary);
+}
+
+.apresentacao-footer p {
+    margin: 0.5rem 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.apresentacao-footer p strong {
+    color: var(--text-dark);
+}
+
+.text-center {
+    text-align: center;
+}
+
+.mt-3 {
+    margin-top: 3rem;
+}
+

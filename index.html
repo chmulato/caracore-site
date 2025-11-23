@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="css/additional-styles.css">
   <!-- Estilos customizados -->
   <link rel="stylesheet" href="assets/css/main.css">
+  
+  <!-- LGPD Styles -->
+  <link rel="stylesheet" href="assets/css/lgpd.css">
 
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
@@ -69,6 +72,23 @@
     </div>
   </div>
 </nav>
+<!-- Banner LGPD -->
+<div id="lgpd-banner" class="lgpd-banner">
+  <div class="lgpd-content">
+    <div class="lgpd-icon">
+      🛡️
+    </div>
+    <div class="lgpd-text">
+      <strong>Proteção de Dados (LGPD)</strong><br>
+      Este site utiliza localStorage para salvar seu progresso no curso e melhorar sua experiência. Ao continuar navegando, você concorda com o tratamento dos seus dados conforme nossa Política de Privacidade e a Lei Geral de Proteção de Dados (LGPD).
+    </div>
+    <div class="lgpd-buttons">
+      <button class="lgpd-btn lgpd-btn-accept" onclick="acceptLGPD()">Aceitar</button>
+      <button class="lgpd-btn lgpd-btn-decline" onclick="declineLGPD()">Recusar</button>
+    </div>
+  </div>
+</div>
+
 <!-- Seção Home -->
 <header id="home" class="bg-light text-dark py-5 mt-5">
   <div class="container">
@@ -463,8 +483,11 @@
       <a href="politica/termos-servico.html" class="text-decoration-none text-primary fw-semibold me-3">
         <i class="bi bi-file-text"></i> Termos de Serviço
       </a>
-      <a href="wiki/index.html" class="text-decoration-none text-secondary fw-semibold" title="Wiki Técnico - Guia para Estagiários e Colaboradores">
+      <a href="wiki/index.html" class="text-decoration-none text-secondary fw-semibold me-3" title="Wiki Técnico - Guia para Estagiários e Colaboradores">
         <i class="bi bi-journal-code"></i> Wiki Técnico
+      </a>
+      <a href="#" onclick="showLGPDPreferences(); return false;" class="text-decoration-none text-info fw-semibold" title="Gerenciar Preferências de Privacidade">
+        <i class="bi bi-gear"></i> Privacidade
       </a>
     </div>
   </div>
@@ -473,6 +496,9 @@
 <!-- Scripts -->
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
+
+<!-- LGPD Script -->
+<script src="assets/js/lgpd.js"></script>
 
 </body>
 </html>

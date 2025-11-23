@@ -36,11 +36,28 @@
 		code { font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; color: inherit; background: transparent; }
 		figure img { max-width:100%; height:auto; }
 		ul,ol { padding-left:1.1rem; }
-		.back-link { text-decoration:none; font-size:.85rem; color:#2563eb; }
-		.note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; }
+		.back-link {
+			font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+			line-height: 1.55;
+			display: inline-block;
+			background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);
+			border: 2px solid #4fa3ff;
+			border-radius: 8px;
+			padding: 0.8rem 1.5rem;
+			font-weight: bold;
+			text-align: center;
+			transition: background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+			box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			margin: 2rem auto;
+			max-width: 200px;
+			text-decoration: none;
+			font-size: .85rem;
+			color: #2563eb;
+		}
+		.note { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #10B981; border-radius:6px; margin:1.5rem 0; }
 		.hash-box { background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px; font-size:.85rem; line-height:1.5; }
 		hr { border:none; border-top:1px solid #e5e7eb; margin:3rem 0 2rem; }
-		blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; }
+		blockquote { font-style: italic; border-left: 3px solid #e5e7eb; padding-left: 1.25rem; margin-left: 0; background:#f9fafb; padding:1rem 1.25rem; border-radius:6px; }
 		.checklist { background:#f0f9ff; padding:1rem 1.25rem; border-left:4px solid #0ea5e9; border-radius:6px; }
 		.checklist ul { margin:.5rem 0; }
 		@media (max-width:640px){ pre { font-size:.78rem; border-width:9px; padding:.85rem .9rem; } .chalkboard { border-width:9px; padding:.85rem .9rem; } }

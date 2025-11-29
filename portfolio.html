@@ -165,66 +165,116 @@
       
       <div class="diagram-container mt-4">
         <h4 class="text-center mb-4">
-          <i class="bi bi-diagram-3-fill text-primary"></i> Arquitetura do Sistema
+          <i class="bi bi-diagram-3-fill text-primary"></i> Fluxo Operacional Simplificado
         </h4>
         <div class="mermaid">
-graph TB
-    subgraph "Camada de Apresentação"
-        A[Interface Web HTML5/CSS3/JS]
-        B[Dashboard Executivo]
+flowchart TB
+    subgraph marketplaces["Marketplaces"]
+        ML[Mercado Livre]
+        SHOPEE[Shopee]
+        TEMU[Temu]
     end
     
-    subgraph "Camada de Aplicação - Jakarta EE 10.1"
-        C[Controllers REST API]
-        D[Business Logic Services]
-        E[DAO/Repository Layer]
+    subgraph sistema["CaraCore Hub"]
+        RECEBE[Recebe Pedidos<br/>Automaticamente]
+        PROCESSO[Processa e<br/>Organiza]
+        ESTOQUE[Gerencia Estoque<br/>e Localização]
+        NOTIFICA[Notifica Cliente<br/>via WhatsApp]
+        RETIRADA[Registra Retirada<br/>do Pedido]
     end
     
-    subgraph "Integrações Externas"
-        F[API Mercado Livre]
-        G[Webhooks ML]
-        H[Workers Assíncronos]
+    subgraph cliente["Cliente"]
+        CLIENTE[Recebe Notificação<br/>e Retira Pedido]
     end
     
-    subgraph "Camada de Dados"
-        I[(PostgreSQL 15)]
+    subgraph relatorios["Gestão e Relatórios"]
+        DASHBOARD[Dashboard com<br/>Métricas em Tempo Real]
+        RELATORIOS[Relatórios<br/>e Exportações]
     end
     
-    subgraph "Infraestrutura"
-        J[Docker Containers]
-        K[Tomcat 10.1]
-        L[WildFly 37]
-    end
+    ML -->|Pedidos chegam<br/>automaticamente| RECEBE
+    SHOPEE -->|Pedidos chegam<br/>automaticamente| RECEBE
+    TEMU -->|Pedidos chegam<br/>automaticamente| RECEBE
     
-    A --> C
-    B --> C
-    C --> D
-    D --> E
-    E --> I
-    D --> F
-    F --> G
-    G --> H
-    H --> D
+    RECEBE --> PROCESSO
+    PROCESSO --> ESTOQUE
+    ESTOQUE --> NOTIFICA
+    NOTIFICA --> CLIENTE
+    CLIENTE --> RETIRADA
     
-    J --> K
-    J --> L
-    K --> C
-    L --> C
+    PROCESSO --> DASHBOARD
+    ESTOQUE --> DASHBOARD
+    RETIRADA --> DASHBOARD
+    DASHBOARD --> RELATORIOS
     
-    style A fill:#ffd200
-    style B fill:#ffd200
-    style C fill:#43cea2
-    style D fill:#43cea2
-    style E fill:#43cea2
-    style F fill:#667eea
-    style G fill:#667eea
-    style H fill:#667eea
-    style I fill:#185a9d
-    style J fill:#764ba2
-    style K fill:#764ba2
-    style L fill:#764ba2
+    style marketplaces fill:#e1f5ff,stroke:#01579b,stroke-width:2px
+    style sistema fill:#fff4e1,stroke:#e65100,stroke-width:2px
+    style cliente fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px
+    style relatorios fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
         </div>
+        <p style="margin-top: 1.5rem; text-align: center; color: #6c757d;">
+          <strong>Como Funciona:</strong> O sistema recebe pedidos automaticamente dos marketplaces, 
+          processa e organiza as informações, gerencia o estoque com localização precisa, notifica 
+          automaticamente o cliente via WhatsApp quando o pedido está pronto, e registra a retirada. 
+          Tudo isso é acompanhado em tempo real através de dashboards e relatórios gerenciais.
+        </p>
       </div>
+      
+      <details class="mt-4" style="padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+        <summary style="cursor: pointer; font-weight: bold; color: #667eea; margin-bottom: 1rem;">
+          Detalhes Técnicos da Arquitetura (para equipe técnica)
+        </summary>
+        <div style="margin-top: 1rem;">
+          <p>
+            <strong>Arquitetura Distribuída:</strong> O sistema utiliza uma abordagem modular 
+            com balanceamento de carga, processamento assíncrono e persistência robusta, 
+            garantindo alta performance e confiabilidade. A arquitetura inclui PostgreSQL 
+            para persistência de dados, Redis para cache distribuído e invalidação via Pub/Sub, 
+            WildFly e Tomcat como servidores de aplicação, e integração com múltiplos marketplaces 
+            através de webhooks e APIs REST.
+          </p>
+          
+          <div style="margin-top: 1.5rem; padding: 1.5rem; background: white; border-radius: 8px; border-left: 4px solid #667eea;">
+            <h5 style="margin-bottom: 1rem; color: #495057;">Componentes da Arquitetura:</h5>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+              <div>
+                <strong style="color: #667eea;">Camada de Aplicação</strong>
+                <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: #6c757d;">
+                  <li>WildFly 37.0.1 (Jakarta EE)</li>
+                  <li>Tomcat 10.1.35 (Jersey/JAX-RS)</li>
+                  <li>Portal de Observabilidade</li>
+                </ul>
+              </div>
+              <div>
+                <strong style="color: #667eea;">Persistência</strong>
+                <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: #6c757d;">
+                  <li>PostgreSQL 15</li>
+                  <li>Hibernate/JPA</li>
+                  <li>Flyway Migrations</li>
+                </ul>
+              </div>
+              <div>
+                <strong style="color: #667eea;">Cache e Performance</strong>
+                <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: #6c757d;">
+                  <li>Redis 7 (Cache Distribuído)</li>
+                  <li>Lettuce (Cliente Java)</li>
+                  <li>Pub/Sub para Invalidação</li>
+                  <li>redis_exporter (Métricas)</li>
+                </ul>
+              </div>
+              <div>
+                <strong style="color: #667eea;">Integrações</strong>
+                <ul style="margin-top: 0.5rem; padding-left: 1.5rem; color: #6c757d;">
+                  <li>Mercado Livre (Webhooks)</li>
+                  <li>Shopee (API REST)</li>
+                  <li>Temu (API REST)</li>
+                  <li>Evolution API (WhatsApp)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
       
       <div class="text-center mt-4">
         <a href="https://chmulato.github.io/caracore-hub/" class="btn-project me-2" target="_blank" rel="noopener">

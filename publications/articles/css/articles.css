@@ -286,3 +286,75 @@ code:not(pre code)::selection { background: #334155; color: #f8fafc; }
         font-size: 1rem;
     }
 }
+
+/* --- Article specific reusable classes (refactoring inline styles) --- */
+.article-hero {
+    max-width:300px;
+    float:right;
+    margin:0 0 1.5rem 2rem;
+    border-radius:12px;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+.arch-diagram {
+    max-width:100%;
+    border-radius:12px;
+    box-shadow:0 2px 12px rgba(0,0,0,.08);
+    margin:1rem 0 1.5rem;
+}
+.linkedin-box.inline {
+    margin-bottom:1.5rem;
+    display:flex;
+    align-items:center;
+    padding:0; /* override box default if needed */
+    background:transparent;
+    box-shadow:none;
+}
+.linkedin-box.inline img.logo {
+    width:33%;
+    max-width:40px;
+    margin-right:10px;
+}
+.linkedin-box.inline .date { margin-left:1.5rem; font-size:.85rem; color:#374151; }
+.compare-table table { width:100%; border-collapse:collapse; }
+.compare-table thead tr { border-bottom:1px solid #e5e7eb; }
+.compare-table th { text-align:left; padding:.4rem; font-weight:600; }
+.compare-table td { padding:.4rem; }
+.cta-box {
+    background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+    color:#fff;
+    padding:1.5rem 1.25rem;
+    border-radius:8px;
+    margin:2rem 0;
+    text-align:center;
+}
+.cta-box .cta-note { font-size:.85rem; }
+.cta-box .cta-btn {
+    display:inline-block;
+    margin-top:.75rem;
+    background:rgba(255,255,255,.2);
+    color:#fff;
+    padding:.5rem 1rem;
+    border-radius:6px;
+    text-decoration:none;
+    font-weight:600;
+}
+.cta-box .cta-btn:hover { background:rgba(255,255,255,.28); }
+.article-foot { text-align:center; font-size:.85rem; color:#6b7280; margin-top:3rem; }
+.chart-block { margin:1.5rem 0 2.25rem; }
+.chart-block h3 { margin-top:0; }
+.chart-wrapper { display:grid; gap:.65rem; margin-top:.75rem; }
+.metric-row { display:flex; align-items:center; gap:.75rem; }
+.metric-label { flex:0 0 160px; font-size:.85rem; font-weight:600; color:#374151; }
+.metric-bars { flex:1; display:flex; align-items:flex-end; gap:.35rem; }
+.bar { position:relative; flex:1; height:34px; border-radius:6px; background:#e5e7eb; overflow:hidden; }
+.bar-inner { position:absolute; top:0; left:0; height:100%; background:linear-gradient(135deg,#dc2626 0%,#ef4444 100%); width:0; display:flex; align-items:center; justify-content:flex-end; padding:0 .4rem; color:#fff; font-size:.65rem; font-weight:600; letter-spacing:.5px; }
+.bar.after .bar-inner { background:linear-gradient(135deg,#16a34a 0%,#22c55e 100%); }
+.metric-legend { display:flex; gap:1rem; margin-top:.6rem; font-size:.7rem; color:#4b5563; }
+.metric-legend span { display:inline-flex; align-items:center; gap:.3rem; }
+.legend-box { width:16px; height:16px; border-radius:4px; background:#dc2626; }
+.legend-box.after { background:#16a34a; }
+.improvement-note { font-size:.7rem; color:#64748b; margin-top:.4rem; }
+.chart-accessibility { font-size:.65rem; color:#6b7280; margin-top:.4rem; }
+.visually-hidden { position:absolute !important; width:1px !important; height:1px !important; padding:0 !important; margin:-1px !important; overflow:hidden !important; clip:rect(0 0 0 0) !important; white-space:nowrap !important; border:0 !important; }
+.mermaid-wrap { margin:1rem 0 1.5rem; border:1px solid #e5e7eb; border-radius:12px; background:#ffffff; padding:.75rem .9rem; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.mermaid-wrap h3 { margin:.25rem 0 .75rem; font-size:1rem; font-weight:600; color:#374151; }

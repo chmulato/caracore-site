@@ -8,17 +8,21 @@
         <style>
             /* Local styles for search/filter UI */
             .filter-section { margin:1rem 0 1.25rem; }
-            .filter-section summary { list-style:none, cursor:pointer, user-select: none, padding:.6rem .9rem, border:1px solid #e5e7eb, border-radius:8px, background:#f9fafb, display:flex, align-items:center, gap:.5rem, font-weight:600; }
+            .filter-section summary { list-style:none; cursor:pointer; user-select:none; padding:.6rem .9rem; border:1px solid #e5e7eb; border-radius:8px; background:#f9fafb; display:flex; align-items:center; gap:.5rem; font-weight:600; }
             .filter-section summary::-webkit-details-marker { display:none; }
             .filter-section[open] summary { background:#eef2ff, border-color:#c7d2fe; }
-            .filter-section .summary-count { margin-left:auto, font-weight:400, color:#6b7280, font-size:.85rem; }
+            .filter-section .summary-count { margin-left:auto; font-weight:400; color:#6b7280; font-size:.85rem; }
             .filter-section .filter-bar { margin:.85rem 0 .75rem; }
             .filter-bar { display:flex, flex-wrap:wrap, gap:.75rem, align-items:center, margin:1rem 0 1.25rem; }
-            .filter-input { flex:1 1 260px, padding:.6rem .8rem, border:1px solid #e5e7eb, border-radius:8px, font-size:.95rem; }
+            .filter-input { flex:1 1 260px; padding:.6rem .8rem; border:1px solid #e5e7eb; border-radius:8px; font-size:.95rem; }
             .chips { display:flex, flex-wrap:wrap, gap:.5rem; }
-            .chip { padding:.4rem .7rem, border:1px solid #e5e7eb, border-radius:999px, background:#f9fafb, cursor:pointer, font-size:.85rem, user-select: none; }
+            .chip { padding:.4rem .7rem; border:1px solid #e5e7eb; border-radius:999px; background:#f9fafb; cursor:pointer; font-size:.85rem; user-select:none; }
             .chip[aria-pressed="true"] { background:#e0f2fe, border-color:#7dd3fc, color:#075985; }
-            .result-count { font-size:.85rem, color:#6b7280, margin-left:auto; }
+            .reset-btn { border:1px solid #dc2626; background:linear-gradient(120deg,#fee2e2 0%, #fecaca 100%); color:#7f1d1d; font-weight:600; position:relative; padding:.45rem .9rem .45rem 1.9rem; }
+            .reset-btn:before { content:"✕"; position:absolute; left:.7rem; top:50%; transform:translateY(-50%); font-size:.85rem; background:#dc2626; color:#fff; width:18px; height:18px; line-height:18px; text-align:center; border-radius:50%; box-shadow:0 0 0 2px #fecaca; }
+            .reset-btn:hover { background:linear-gradient(120deg,#fb7185 0%, #dc2626 100%); color:#fff; border-color:#dc2626; }
+            .reset-btn:hover:before { background:#fff; color:#dc2626; box-shadow:0 0 0 2px #dc2626; }
+            .result-count { font-size:.85rem; color:#6b7280; margin-left:auto; }
             .is-hidden { display:none !important; }
         </style>
 </head>
@@ -50,13 +54,33 @@
                   <button class="chip" type="button" data-tag="ia" aria-pressed="false" aria-label="Filtrar por IA">IA</button>
                   <button class="chip" type="button" data-tag="lgpd" aria-pressed="false" aria-label="Filtrar por LGPD">LGPD</button>
                   <button class="chip" type="button" data-tag="saas" aria-pressed="false" aria-label="Filtrar por SaaS">SaaS</button>
+                  <button class="chip" type="button" data-tag="redis" aria-pressed="false" aria-label="Filtrar por Redis">Redis</button>
+                  <button class="chip" type="button" data-tag="cache" aria-pressed="false" aria-label="Filtrar por Cache">Cache</button>
+                  <button class="chip" type="button" data-tag="ecommerce" aria-pressed="false" aria-label="Filtrar por E-commerce">E-commerce</button>
+                  <button class="chip" type="button" data-tag="retirada local" aria-pressed="false" aria-label="Filtrar por Retirada Local">Retirada Local</button>
+                  <button class="chip" type="button" data-tag="performance" aria-pressed="false" aria-label="Filtrar por Performance">Performance</button>
+                  <button class="chip" type="button" data-tag="escalabilidade" aria-pressed="false" aria-label="Filtrar por Escalabilidade">Escalabilidade</button>
+                  <button class="chip" type="button" data-tag="pubsub" aria-pressed="false" aria-label="Filtrar por Pub/Sub">Pub/Sub</button>
+                  <button class="chip" type="button" data-tag="ttl" aria-pressed="false" aria-label="Filtrar por TTL">TTL</button>
               </div>
+              <button id="resetFilters" type="button" class="chip" aria-label="Limpar filtros e busca">Reset</button>
               <div id="resultCount" class="result-count" aria-live="polite"></div>
           </div>
         </details>
         <!-- Ano mais recente primeiro -->
         <div class="year-group">
             <div class="year-title">2025</div>
+            <div class="month-group">
+                <div class="month-title">Dezembro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="redis,cache,ecommerce,retirada local,performance,escalabilidade,cara core informática,caracore hub,ttl,pubsub">
+                        <span class="article-date">02/12</span>
+                        <a class="article-title" href="articles/2025_12_02_article_61.html">
+                            Redis como Solução de Cache para E-commerce em Cidades Médias Brasileiras
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="month-group">
                 <div class="month-title">Novembro</div>
                 <ul class="article-list">
@@ -556,7 +580,15 @@
                     { tag: 'sap', patterns: ['sap'] },
                     { tag: 'impostos', patterns: ['impostos','tribut'] },
                     { tag: 'crm', patterns: ['crm'] },
-                    { tag: 'marketing', patterns: ['marketing','mala-direta','mala direta'] }
+                    { tag: 'marketing', patterns: ['marketing','mala-direta','mala direta'] },
+                    { tag: 'redis', patterns: ['redis'] },
+                    { tag: 'cache', patterns: ['cache'] },
+                    { tag: 'ecommerce', patterns: ['ecommerce','e-commerce'] },
+                    { tag: 'retirada local', patterns: ['retirada local','retirada','pickup'] },
+                    { tag: 'performance', patterns: ['performance','latencia','latência'] },
+                    { tag: 'escalabilidade', patterns: ['escalabilidade','escala'] },
+                    { tag: 'pubsub', patterns: ['pubsub','pub/sub'] },
+                    { tag: 'ttl', patterns: ['ttl','time to live'] }
                 ].map(rule => ({ tag: normalize(rule.tag), patterns: rule.patterns.map(p => normalize(p)) }));
 
                 const articleItems = Array.from(document.querySelectorAll('.article-item'));
@@ -624,6 +656,15 @@
                         applyFilter();
                     });
                 });
+                const resetBtn = document.getElementById('resetFilters');
+                if (resetBtn){
+                    resetBtn.addEventListener('click', () => {
+                        input.value = '';
+                        chips.forEach(chip => chip.setAttribute('aria-pressed','false'));
+                        applyFilter();
+                        input.focus();
+                    });
+                }
 
                 // Initial filter
                 applyFilter();

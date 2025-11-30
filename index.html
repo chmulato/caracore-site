@@ -356,16 +356,22 @@
           <i class="bi bi-geo-alt-fill"></i>
           R. Joanim Stroparo, 560, Apt. 205 B - Vila Bancária - Campo Largo, PR, Cep 83.601-460
         </address>
-        <!-- Mapa Google -->
+        <!-- Mapa Google (carregado sob consentimento LGPD) -->
         <div class="mb-3">
-          <iframe
-            class="google-map-iframe"
-            src="https://www.google.com/maps?q=R.+Joanim+Stroparo,+560,+Apt.+205+B+-+Vila+Bancária,+Campo+Largo,+PR,+83601-460&output=embed"
-            allowfullscreen=""
-            loading="lazy"
-            referrerpolicy="no-referrer"
-            title="Localização da Cara Core Informática">
-          </iframe>
+          <div id="maps-container">
+            <div id="maps-placeholder">
+              <div class="maps-placeholder-inner">
+                <i class="bi bi-map" aria-hidden="true"></i>
+                <div class="hint">
+                  Usaremos um mapa OpenStreetMap para privacidade. O link do Google Maps está disponível abaixo.
+                </div>
+                <div class="actions">
+                  <a href="#" class="btn btn-primary btn-sm" onclick="loadGoogleMaps(); return false;">Carregar Mapa</a>
+                  <a href="https://www.google.com/maps/place/R.+Joanim+Stroparo,+560,+Apt.+205+B+-+Vila+Bancária,+Campo+Largo,+PR,+83601-460" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm ms-2">Abrir no Google Maps</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="mt-2 text-end">
             <a href="https://www.google.com/maps/place/R.+Joanim+Stroparo,+560,+Apt.+205+B+-+Vila+Bancária,+Campo+Largo,+PR,+83601-460"
               target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">
@@ -496,6 +502,38 @@
 <!-- Scripts -->
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
+  <script>
+    function loadGoogleMaps(){
+      try {
+        if (typeof hasLGPDConsent === 'function' && !hasLGPDConsent()) {
+          alert('Para carregar o mapa interativo, aceite a política de privacidade no banner LGPD.');
+          if (typeof showLGPDPreferences === 'function') { showLGPDPreferences(); }
+          return;
+        }
+        const container = document.getElementById('maps-container');
+        const placeholder = document.getElementById('maps-placeholder');
+        if (!container || !placeholder) return;
+        const iframe = document.createElement('iframe');
+        iframe.title = 'Mapa - Endereço Cara Core Informática (OpenStreetMap)';
+        iframe.width = '100%';
+        iframe.height = '300';
+        iframe.className = 'google-map-iframe';
+        iframe.loading = 'lazy';
+        iframe.allowFullscreen = false;
+        iframe.referrerPolicy = 'no-referrer';
+        iframe.sandbox = 'allow-scripts allow-same-origin';
+        // Use OpenStreetMap embed para evitar alertas de Tracking Prevention
+        const lat = -25.4606; // latitude aproximada
+        const lon = -49.5369; // longitude aproximada
+        const bbox = `${lon-0.005},${lat-0.005},${lon+0.005},${lat+0.005}`;
+        const marker = `${lat},${lon}`;
+        iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${marker}`;
+        container.replaceChild(iframe, placeholder);
+      } catch(e){
+        console.debug('Maps embed skipped:', e);
+      }
+    }
+  </script>
 
 <!-- LGPD Script -->
 <script src="assets/js/lgpd.js"></script>

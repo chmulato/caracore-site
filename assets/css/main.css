@@ -1,3 +1,39 @@
+/* Google Maps gated container styles (LGPD compliant) */
+#maps-container {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+}
+
+#maps-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #f8fafc;
+  color: #334155;
+}
+
+.maps-placeholder-inner {
+  text-align: center;
+  padding: 1rem 1.25rem;
+}
+
+.maps-placeholder-inner .hint {
+  margin-top: .5rem;
+  font-size: .95rem;
+}
+
+.maps-placeholder-inner .actions {
+  margin-top: .75rem;
+}
+
+.google-map-iframe {
+  border: 0;
+}
 /**
  * Cara Core Informática - Estilos Customizados
  * Arquivo de estilos principais do site

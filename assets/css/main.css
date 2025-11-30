@@ -34,6 +34,14 @@
 .google-map-iframe {
   border: 0;
 }
+
+/* Leaflet Map Styles */
+#map {
+  width: 100%;
+  height: 300px;
+  border-radius: 8px;
+  z-index: 1;
+}
 /**
  * Cara Core Informática - Estilos Customizados
  * Arquivo de estilos principais do site

@@ -1,8 +1,8 @@
 /**
  * Cara Core Informática - Google Analytics
  * Configuração do Google Analytics GA4 com tracking de eventos personalizados
- * @version 2.0
- * @date 2025-11-08
+ * @version 2.1
+ * @date 2025-11-30
  */
 
 (function() {
@@ -12,25 +12,48 @@
   window.dataLayer = window.dataLayer || [];
   
   function gtag() {
-    dataLayer.push(arguments);
+    try {
+      dataLayer.push(arguments);
+    } catch (e) {
+      // Silenciosamente ignora erros de tracking quando Analytics está bloqueado
+      console.debug('Analytics tracking skipped (ad blocker or privacy extension active)');
+    }
   }
   
   // Expõe gtag globalmente
   window.gtag = gtag;
   
-  gtag('js', new Date());
+  // Verifica se o Analytics está disponível
+  function isAnalyticsAvailable() {
+    try {
+      return typeof window.dataLayer !== 'undefined' && !navigator.doNotTrack;
+    } catch (e) {
+      return false;
+    }
+  }
   
-  // Configuração principal do GA4
-  gtag('config', 'G-MKFC9G3CL0', {
-    'cookie_domain': 'caracore.com.br',
-    'cookie_flags': 'SameSite=None;Secure',
-    'cookie_update': true,
-    'anonymize_ip': true,
-    'send_page_view': true
-  });
+  // Só configura se Analytics estiver disponível
+  if (isAnalyticsAvailable()) {
+    gtag('js', new Date());
+    
+    // Configuração principal do GA4
+    gtag('config', 'G-MKFC9G3CL0', {
+      'cookie_domain': 'caracore.com.br',
+      'cookie_flags': 'SameSite=None;Secure',
+      'cookie_update': true,
+      'anonymize_ip': true,
+      'send_page_view': true
+    });
+  }
 
   // Tracking de eventos personalizados quando a página carregar
   window.addEventListener('load', function() {
+    // Se Analytics não estiver disponível, retorna sem fazer tracking
+    if (!isAnalyticsAvailable()) {
+      console.debug('Analytics not available - tracking disabled');
+      return;
+    }
+
     // Identifica qual página está sendo visualizada
     var pagePath = window.location.pathname;
     var pageTitle = document.title;

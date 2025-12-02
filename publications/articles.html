@@ -46,17 +46,12 @@
                   <button class="chip" type="button" data-tag="postgresql" aria-pressed="false" aria-label="Filtrar por PostgreSQL">PostgreSQL</button>
                   <button class="chip" type="button" data-tag="vba" aria-pressed="false" aria-label="Filtrar por VBA">VBA</button>
                   <button class="chip" type="button" data-tag="microsoft 365" aria-pressed="false" aria-label="Filtrar por Microsoft 365">Microsoft 365</button>
-                  <button class="chip" type="button" data-tag="power automate" aria-pressed="false" aria-label="Filtrar por Power Automate">Power Automate</button>
-                  <button class="chip" type="button" data-tag="sharepoint" aria-pressed="false" aria-label="Filtrar por SharePoint">SharePoint</button>
-                  <button class="chip" type="button" data-tag="teams" aria-pressed="false" aria-label="Filtrar por Teams">Teams</button>
                   <button class="chip" type="button" data-tag="excel" aria-pressed="false" aria-label="Filtrar por Excel">Excel</button>
                   <button class="chip" type="button" data-tag="logística" aria-pressed="false" aria-label="Filtrar por Logística">Logística</button>
                   <button class="chip" type="button" data-tag="websockets" aria-pressed="false" aria-label="Filtrar por WebSockets">WebSockets</button>
                   <button class="chip" type="button" data-tag="github actions" aria-pressed="false" aria-label="Filtrar por GitHub Actions">GitHub Actions</button>
                   <button class="chip" type="button" data-tag="oidc" aria-pressed="false" aria-label="Filtrar por OIDC">OIDC</button>
                   <button class="chip" type="button" data-tag="ia" aria-pressed="false" aria-label="Filtrar por IA">IA</button>
-                  <button class="chip" type="button" data-tag="low-code" aria-pressed="false" aria-label="Filtrar por Low-Code">Low-Code</button>
-                  <button class="chip" type="button" data-tag="rpa" aria-pressed="false" aria-label="Filtrar por RPA">RPA</button>
                   <button class="chip" type="button" data-tag="lgpd" aria-pressed="false" aria-label="Filtrar por LGPD">LGPD</button>
                   <button class="chip" type="button" data-tag="saas" aria-pressed="false" aria-label="Filtrar por SaaS">SaaS</button>
                   <button class="chip" type="button" data-tag="redis" aria-pressed="false" aria-label="Filtrar por Redis">Redis</button>
@@ -67,6 +62,10 @@
                   <button class="chip" type="button" data-tag="escalabilidade" aria-pressed="false" aria-label="Filtrar por Escalabilidade">Escalabilidade</button>
                   <button class="chip" type="button" data-tag="pubsub" aria-pressed="false" aria-label="Filtrar por Pub/Sub">Pub/Sub</button>
                   <button class="chip" type="button" data-tag="ttl" aria-pressed="false" aria-label="Filtrar por TTL">TTL</button>
+                  <button class="chip" type="button" data-tag="power automate" aria-pressed="false" aria-label="Filtrar por Power Automate">Power Automate</button>
+                  <button class="chip" type="button" data-tag="sharepoint" aria-pressed="false" aria-label="Filtrar por SharePoint">SharePoint</button>
+                  <button class="chip" type="button" data-tag="teams" aria-pressed="false" aria-label="Filtrar por Teams">Teams</button>
+                  <button class="chip" type="button" data-tag="automação" aria-pressed="false" aria-label="Filtrar por Automação">Automação</button>
               </div>
               <button id="resetFilters" type="button" class="chip" aria-label="Limpar filtros e busca">Reset</button>
               <div id="resultCount" class="result-count" aria-live="polite"></div>
@@ -78,7 +77,13 @@
             <div class="month-group">
                 <div class="month-title">Dezembro</div>
                 <ul class="article-list">
-                    <li class="article-item" data-tags="power automate,microsoft 365,sharepoint,teams,automação,notificações,python,api,fluxo,low-code,rpa,integração,cara core informática,backup,resiliência">
+                    <li class="article-item" data-tags="power automate,microsoft 365,automação,produtividade,sharepoint,teams,workflows,low-code,cara core informática">
+                        <span class="article-date">18/12</span>
+                        <a class="article-title" href="articles/2025_12_18_article_63.html">
+                            Como o Power Automate Transforma o Dia a Dia das Equipes no Microsoft 365
+                        </a>
+                    </li>
+                    <li class="article-item" data-tags="power automate,microsoft 365,automação,sharepoint,teams,workflows,low-code,otimização,debugging,cara core informática">
                         <span class="article-date">10/12</span>
                         <a class="article-title" href="articles/2025_12_10_article_62.html">
                             Automatizando Notificações com Power Automate: Uma Jornada de Correção e Otimização
@@ -577,15 +582,10 @@
                     { tag: 'iac', patterns: ['iac','infraestrutura como codigo'] },
                     { tag: 'vba', patterns: ['vba'] },
                     { tag: 'microsoft 365', patterns: ['microsoft 365','ms office','office'] },
-                    { tag: 'power automate', patterns: ['power automate','automate','fluxo','flow'] },
-                    { tag: 'sharepoint', patterns: ['sharepoint'] },
-                    { tag: 'teams', patterns: ['teams','microsoft teams'] },
                     { tag: 'excel', patterns: ['excel'] },
                     { tag: 'logistica', patterns: ['logistica','entregas','rotas','estoque'] },
                     { tag: 'websockets', patterns: ['websocket','websockets'] },
                     { tag: 'ia', patterns: ['ia','inteligencia artificial'] },
-                    { tag: 'low-code', patterns: ['low-code','low code','baixo codigo','baixo código'] },
-                    { tag: 'rpa', patterns: ['rpa','automacao robotica','automação robótica'] },
                     { tag: 'seo', patterns: ['seo'] },
                     { tag: 'auditoria', patterns: ['auditoria'] },
                     { tag: 'financeiro', patterns: ['financeiro'] },
@@ -604,7 +604,11 @@
                     { tag: 'performance', patterns: ['performance','latencia','latência'] },
                     { tag: 'escalabilidade', patterns: ['escalabilidade','escala'] },
                     { tag: 'pubsub', patterns: ['pubsub','pub/sub'] },
-                    { tag: 'ttl', patterns: ['ttl','time to live'] }
+                    { tag: 'ttl', patterns: ['ttl','time to live'] },
+                    { tag: 'power automate', patterns: ['power automate','automate'] },
+                    { tag: 'sharepoint', patterns: ['sharepoint'] },
+                    { tag: 'teams', patterns: ['teams','microsoft teams'] },
+                    { tag: 'automacao', patterns: ['automacao','automação','workflow','workflows'] }
                 ].map(rule => ({ tag: normalize(rule.tag), patterns: rule.patterns.map(p => normalize(p)) }));
 
                 const articleItems = Array.from(document.querySelectorAll('.article-item'));

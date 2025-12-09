@@ -66,6 +66,9 @@
                   <button class="chip" type="button" data-tag="sharepoint" aria-pressed="false" aria-label="Filtrar por SharePoint">SharePoint</button>
                   <button class="chip" type="button" data-tag="teams" aria-pressed="false" aria-label="Filtrar por Teams">Teams</button>
                   <button class="chip" type="button" data-tag="automação" aria-pressed="false" aria-label="Filtrar por Automação">Automação</button>
+                  <button class="chip" type="button" data-tag="outlook" aria-pressed="false" aria-label="Filtrar por Outlook">Outlook</button>
+                  <button class="chip" type="button" data-tag="e-mail" aria-pressed="false" aria-label="Filtrar por E-mail">E-mail</button>
+                  <button class="chip" type="button" data-tag="suporte técnico" aria-pressed="false" aria-label="Filtrar por Suporte Técnico">Suporte Técnico</button>
               </div>
               <button id="resetFilters" type="button" class="chip" aria-label="Limpar filtros e busca">Reset</button>
               <div id="resultCount" class="result-count" aria-live="polite"></div>
@@ -77,6 +80,12 @@
             <div class="month-group">
                 <div class="month-title">Dezembro</div>
                 <ul class="article-list">
+                    <li class="article-item" data-tags="outlook,e-mail,microsoft 365,suporte técnico,python,automação,new outlook,troubleshooting,ost,diagnóstico,cara core informática">
+                        <span class="article-date">25/12</span>
+                        <a class="article-title" href="articles/2025_12_25_article_64.html">
+                            Quando o Outlook Decide Reinventar a Roda: Uma História Real de Suporte Técnico
+                        </a>
+                    </li>
                     <li class="article-item" data-tags="power automate,microsoft 365,automação,produtividade,sharepoint,teams,workflows,low-code,cara core informática">
                         <span class="article-date">18/12</span>
                         <a class="article-title" href="articles/2025_12_18_article_63.html">
@@ -608,7 +617,10 @@
                     { tag: 'power automate', patterns: ['power automate','automate'] },
                     { tag: 'sharepoint', patterns: ['sharepoint'] },
                     { tag: 'teams', patterns: ['teams','microsoft teams'] },
-                    { tag: 'automacao', patterns: ['automacao','automação','workflow','workflows'] }
+                    { tag: 'automacao', patterns: ['automacao','automação','workflow','workflows'] },
+                    { tag: 'outlook', patterns: ['outlook','new outlook'] },
+                    { tag: 'e-mail', patterns: ['e-mail','email','correio eletronico'] },
+                    { tag: 'suporte tecnico', patterns: ['suporte tecnico','suporte técnico','troubleshooting','diagnostico','diagnóstico'] }
                 ].map(rule => ({ tag: normalize(rule.tag), patterns: rule.patterns.map(p => normalize(p)) }));
 
                 const articleItems = Array.from(document.querySelectorAll('.article-item'));

@@ -395,6 +395,14 @@ body {
     opacity: 0.9;
 }
 
+/* Compatibilidade com artigos que usam 'chalkboard-caption' */
+.chalkboard-caption {
+    color: #d7ede4;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+}
+
 /* Tabelas em estilo quadro de lousa (suporta <pre> com tabela ASCII e <table>) */
 .chalkboard-table pre,
 .chalkboard-table table {
@@ -563,6 +571,7 @@ body {
     width: 100%;
     max-width: 800px;
     height: auto;
+    aspect-ratio: 16 / 9;
     display: block;
     margin: 0 auto 2rem auto;
     border-radius: 8px;
@@ -570,6 +579,37 @@ body {
     border: 1px solid var(--border-color);
     border-right: 3px solid var(--primary-color);
     object-fit: cover;
+}
+
+/* Variante para evitar corte mantendo 16:9 */
+.hero-image-contain {
+    object-fit: contain;
+    background-color: var(--background-light);
+}
+
+/* === CAPÍTULOS E EPÍLOGO === */
+.post-content .chapter {
+    margin: 3rem 0;
+    padding-top: 1rem;
+    border-top: 2px solid var(--border-color);
+}
+
+.post-content .chapter-title {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.post-content .epilogue {
+    margin-top: 3.5rem;
+    padding-top: 1.25rem;
+    border-top: 3px solid var(--primary-color);
+}
+
+.post-content .epilogue-title {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
 }
 
 /* Estilo para outras imagens */

@@ -2,7 +2,13 @@
 <html lang="pt-br">
 <head>
   <!-- Política de Segurança de Conteúdo para página de callback OIDC -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://accounts.google.com https://*.google.com https://login.microsoftonline.com https://*.microsoft.com; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://accounts.google.com https://*.google.com https://login.microsoftonline.com https://*.microsoft.com; font-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'; upgrade-insecure-requests">
+  
+  <!-- X-Content-Type-Options: Previne MIME sniffing -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  
+  <!-- Referrer Policy: Controla informações de referência -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />

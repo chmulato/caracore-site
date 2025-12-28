@@ -17,6 +17,46 @@
       
       if (!toggle || !menu) return;
       
+      // Função para ajustar posição do menu em mobile
+      function adjustMenuPosition() {
+        if (window.innerWidth <= 768 && dropdown.classList.contains('show')) {
+          setTimeout(function() {
+            // Força o menu a ser exibido para calcular dimensões
+            const wasHidden = menu.style.display === 'none';
+            if (wasHidden) {
+              menu.style.display = 'block';
+            }
+            
+            const menuRect = menu.getBoundingClientRect();
+            const viewportWidth = window.innerWidth;
+            
+            // Remove ajustes anteriores
+            menu.classList.remove('menu-adjusted');
+            menu.style.right = '';
+            menu.style.left = '';
+            
+            // Se o menu está saindo da tela à direita
+            if (menuRect.right > viewportWidth - 1) {
+              const overflow = menuRect.right - (viewportWidth - 1);
+              const currentRight = parseFloat(window.getComputedStyle(menu).right) || 0.5;
+              menu.style.right = Math.max(0.5, currentRight - overflow) + 'px';
+              menu.classList.add('menu-adjusted');
+            }
+            
+            // Se o menu está saindo da tela à esquerda
+            if (menuRect.left < 1) {
+              menu.style.left = '0.5rem';
+              menu.style.right = 'auto';
+              menu.classList.add('menu-adjusted');
+            }
+            
+            if (wasHidden && !dropdown.classList.contains('show')) {
+              menu.style.display = '';
+            }
+          }, 50);
+        }
+      }
+      
       // Abre o menu ao clicar no botão
       toggle.addEventListener('click', function(e) {
         e.preventDefault();
@@ -33,6 +73,11 @@
         clearTimeout(closeTimeout);
         // Atualiza aria-expanded
         toggle.setAttribute('aria-expanded', !isOpen);
+        
+        // Ajusta posição do menu em mobile após abrir
+        if (!isOpen) {
+          setTimeout(adjustMenuPosition, 10);
+        }
       });
       
       // Mantém aberto quando o mouse está sobre o dropdown
@@ -66,11 +111,49 @@
         flagDropdowns.forEach(function(dropdown) {
           dropdown.classList.remove('show');
           const toggle = dropdown.querySelector('.flag-dropdown-toggle');
+          const menu = dropdown.querySelector('.flag-dropdown-menu');
           if (toggle) {
             toggle.setAttribute('aria-expanded', 'false');
           }
+          // Reseta posição do menu
+          if (menu) {
+            menu.style.right = '';
+            menu.style.left = '';
+          }
         });
       }
+    });
+    
+    // Ajusta posição do menu ao redimensionar a janela
+    window.addEventListener('resize', function() {
+      flagDropdowns.forEach(function(dropdown) {
+        if (dropdown.classList.contains('show')) {
+          const toggle = dropdown.querySelector('.flag-dropdown-toggle');
+          const menu = dropdown.querySelector('.flag-dropdown-menu');
+          if (toggle && menu) {
+            setTimeout(function() {
+              const toggleRect = toggle.getBoundingClientRect();
+              const menuRect = menu.getBoundingClientRect();
+              const viewportWidth = window.innerWidth;
+              
+              if (window.innerWidth <= 768) {
+                if (menuRect.right > viewportWidth) {
+                  const overflow = menuRect.right - viewportWidth;
+                  menu.style.right = (parseFloat(menu.style.right) || 0.5) + overflow + 'px';
+                }
+                if (menuRect.left < 0) {
+                  menu.style.left = '0.5rem';
+                  menu.style.right = 'auto';
+                }
+              } else {
+                // Reseta em desktop
+                menu.style.right = '';
+                menu.style.left = '';
+              }
+            }, 10);
+          }
+        }
+      });
     });
   });
 })();

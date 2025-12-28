@@ -572,9 +572,17 @@ body {
     right: 0;
     left: auto;
     /* Garante que o menu não saia da tela */
-    max-width: min(180px, calc(100vw - 2rem));
+    max-width: calc(100vw - 1rem);
+    width: auto;
     /* Força alinhamento à direita */
     transform: translateX(0);
+  }
+  
+  /* Limita largura máxima em telas maiores */
+  @media (min-width: 400px) {
+    .flag-dropdown-menu {
+      max-width: 180px;
+    }
   }
   
   /* Garante que o dropdown tenha contexto correto */
@@ -582,10 +590,28 @@ body {
     position: relative;
   }
   
-  /* Se o container navbar estiver no final, ajusta o menu */
-  .navbar-nav .flag-dropdown:last-child .flag-dropdown-menu {
-    right: 0;
-    left: auto;
+  /* Em mobile, ajusta posição para garantir que não saia da tela */
+  @media (max-width: 768px) {
+    .flag-dropdown-menu {
+      /* Posiciona com margem da borda direita */
+      right: 0.5rem;
+      left: auto;
+      max-width: calc(100vw - 1rem);
+      /* Garante que o menu não ultrapasse a viewport */
+      position: absolute;
+    }
+    
+    /* Se o menu estiver muito à direita, ajusta para dentro */
+    .navbar-nav .flag-dropdown .flag-dropdown-menu {
+      right: 0.5rem;
+      left: auto;
+    }
+    
+    /* Classe para ajuste dinâmico via JavaScript */
+    .flag-dropdown-menu.menu-adjusted {
+      right: 0.5rem !important;
+      left: auto !important;
+    }
   }
 }
 

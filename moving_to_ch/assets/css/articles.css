@@ -1,0 +1,118 @@
+/* Article Pages Styles - Shared for all article pages */
+
+/* Article Hero Section */
+.article-hero {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 6rem 0 4rem;
+  margin-top: 76px;
+}
+
+/* Article Hero - OIDC/Pharma variant (green) */
+.article-hero.article-hero-oidc {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+/* Article Content Container */
+.article-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Article Headings */
+.article-content h2 {
+  color: #1e3a8a;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.article-content.article-content-oidc h2 {
+  color: #059669;
+}
+
+.article-content h3 {
+  color: #3b82f6;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article-content.article-content-oidc h3 {
+  color: #10b981;
+}
+
+/* Code Blocks */
+.code-block {
+  background: #f3f4f6;
+  border-left: 4px solid #3b82f6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+
+.code-block code {
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+  color: #1f2937;
+}
+
+/* OIDC variant - green border */
+.article-content-oidc .code-block {
+  border-left-color: #10b981;
+}
+
+/* Highlight Boxes */
+.highlight-box {
+  background: #f0f9ff;
+  border-left: 4px solid #3b82f6;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-content-oidc .highlight-box {
+  background: #f0fdf4;
+  border-left-color: #10b981;
+}
+
+/* Security/Compliance Boxes */
+.security-box {
+  background: #fef2f2;
+  border-left: 4px solid #dc2626;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.compliance-box {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .article-hero {
+    padding: 4rem 0 3rem;
+    margin-top: 70px;
+  }
+  
+  .article-content {
+    padding: 0 1rem;
+  }
+  
+  .article-content h2 {
+    font-size: 1.75rem;
+    margin-top: 2rem;
+  }
+  
+  .code-block {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+}
+

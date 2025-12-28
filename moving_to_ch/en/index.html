@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net data:; frame-src 'none'; object-src 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- SEO Meta Tags - Switzerland Focus -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christian Mulato | Legacy Systems Modernization | Ticino & Zug, Switzerland</title>
+  <meta name="description" content="18 years of Java enterprise expertise meets Chemical Engineering precision. Legacy systems modernization for industrial & chemical sectors in Ticino (Lugano/Mendrisio) and Zug, Switzerland.">
+  <meta name="keywords" content="legacy systems modernization, Java enterprise, Jakarta EE, chemical engineering software, industrial automation, Ticino, Zug, Switzerland, software architect, GAMP 5 compliance, pharmaceutical systems">
+  <meta name="author" content="Christian Mulato">
+  <meta name="geo.region" content="CH">
+  <meta name="geo.placename" content="Ticino, Zug">
+  <meta name="geo.position" content="46.0037;8.9511">
+  <meta name="ICBM" content="46.0037, 8.9511">
+  
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="../en/">
+  <link rel="alternate" hreflang="it" href="../it/">
+  <link rel="alternate" hreflang="x-default" href="../en/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Christian Mulato | Legacy Systems Modernization | Ticino & Zug, CH">
+  <meta property="og:description" content="Chemical Engineer (UFPR 1991-2000) | Specialization in Java Technology (UTFPR 2007-2008, Lato Sensu) | 18 years Java Enterprise | AI/Python Transition. Legacy systems modernization for industrial sectors in Switzerland.">
+  <meta property="og:url" content="https://caracore.com.br/moving_to_ch/en/">
+  <meta property="og:locale" content="en_CH">
+  <meta property="og:locale:alternate" content="it_CH">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Legacy Systems Modernization | Ticino & Zug, Switzerland">
+  <meta name="twitter:description" content="18 years of Java expertise meets Chemical Engineering precision. Enterprise software modernization for industrial sectors.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  
+  <!-- GDPR Styles -->
+  <link rel="stylesheet" href="../assets/css/gdpr.css">
+  
+  <!-- Custom CSS -->
+  <style>
+    :root {
+      --primary-blue: #1e3a8a;
+      --swiss-red: #dc2626;
+      --accent-gold: #f59e0b;
+      --text-dark: #1f2937;
+      --text-light: #6b7280;
+      --bg-light: #f9fafb;
+      --border-color: #e5e7eb;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text-dark);
+      line-height: 1.7;
+      font-size: 16px;
+    }
+    
+    /* Navigation */
+    .navbar {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-blue) !important;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      color: var(--text-dark) !important;
+      margin: 0 0.5rem;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-link:hover {
+      color: var(--primary-blue) !important;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #3b82f6 50%, #60a5fa 100%);
+      color: white;
+      padding: 8rem 0 6rem;
+      margin-top: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-section h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .hero-section .lead {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      opacity: 0.95;
+    }
+    
+    .hero-tagline {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .badge-custom {
+      background-color: var(--accent-gold);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 600;
+      display: inline-block;
+      margin: 0.5rem 0.5rem 0.5rem 0;
+      font-size: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .badge-location {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+      border: 2px solid white;
+    }
+    
+    /* Section Styling */
+    .section {
+      padding: 5rem 0;
+    }
+    
+    .section-alt {
+      background-color: var(--bg-light);
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-blue);
+    }
+    
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 3rem;
+    }
+    
+    /* Value Proposition Cards */
+    .value-card {
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      padding: 2.5rem;
+      background: white;
+    }
+    
+    .value-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+    
+    .value-icon {
+      font-size: 3.5rem;
+      color: var(--primary-blue);
+      margin-bottom: 1.5rem;
+    }
+    
+    .value-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-dark);
+    }
+    
+    .value-card p {
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+    
+    /* Expertise Section */
+    .expertise-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      font-weight: 600;
+      margin: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary-blue) 0%, #3b82f6 100%);
+      color: white;
+      padding: 4rem 0;
+      border-radius: 20px;
+      margin: 4rem 0;
+    }
+    
+    .cta-section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn-primary-custom {
+      background: var(--accent-gold);
+      color: white;
+      border: none;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .btn-primary-custom:hover {
+      background: #d97706;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      color: white;
+    }
+    
+    .btn-outline-custom {
+      border: 2px solid white;
+      color: white;
+      padding: 1rem 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-outline-custom:hover {
+      background: white;
+      color: var(--primary-blue);
+    }
+    
+    /* Footer */
+    .footer {
+      background: var(--text-dark);
+      color: white;
+      padding: 3rem 0 2rem;
+    }
+    
+    .footer h5 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .footer a {
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer a:hover {
+      color: white;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 2.25rem;
+      }
+      
+      .hero-section .lead {
+        font-size: 1.125rem;
+      }
+      
+      .hero-tagline {
+        font-size: 1rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" aria-label="Christian Mulato - Home">Christian Mulato</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item">
+            <!-- Flag Menu Dropdown -->
+            <div class="flag-dropdown">
+              <button type="button" class="flag-dropdown-toggle" aria-label="Select country/language" aria-expanded="false" aria-haspopup="true" title="Select language">
+                <span class="flag-emoji">🇨🇭</span>
+                <span>CH</span>
+              </button>
+              <div class="flag-dropdown-menu">
+                <a href="../index.html" class="flag-dropdown-item" aria-label="Brasil - Site legado">
+                  <span class="flag-emoji">🇧🇷</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Brasil</span>
+                    <span class="flag-desc">Português (Legado)</span>
+                  </span>
+                </a>
+                <a href="index.html" class="flag-dropdown-item active" aria-label="Suíça - Inglês">
+                  <span class="flag-emoji">🇨🇭</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Suíça</span>
+                    <span class="flag-desc">English</span>
+                  </span>
+                </a>
+                <a href="../it/index.html" class="flag-dropdown-item" aria-label="Itália - Italiano">
+                  <span class="flag-emoji">🇮🇹</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Itália</span>
+                    <span class="flag-desc">Italiano</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" aria-labelledby="hero-heading">
+    <div class="container">
+      <div class="hero-content">
+        <div class="row align-items-center">
+          <div class="col-lg-8">
+            <h1 id="hero-heading">Legacy Systems Modernization<br>for Industrial & Chemical Sectors</h1>
+            <p class="lead">18 years of Java enterprise expertise meets Chemical Engineering precision</p>
+            <p class="hero-tagline">
+              <i class="bi bi-gear-wide-connected" aria-hidden="true"></i> Enterprise software architect specializing in legacy system transformation for pharmaceutical, chemical, and industrial manufacturing sectors in Switzerland.
+            </p>
+            <div class="mt-4">
+              <span class="badge-custom badge-location">
+                <i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Ticino (Lugano/Mendrisio)
+              </span>
+              <span class="badge-custom badge-location">
+                <i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Zug
+              </span>
+              <span class="badge-custom">
+                <i class="bi bi-shield-check" aria-hidden="true"></i> GAMP 5 Compliant
+              </span>
+              <span class="badge-custom">
+                <i class="bi bi-award" aria-hidden="true"></i> Chemical Engineer (UFPR) | Java Specialization (UTFPR, Lato Sensu)
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Value Proposition Section -->
+  <section class="section" aria-labelledby="value-proposition-heading">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 id="value-proposition-heading" class="section-title">The Engineer-Programmer Advantage</h2>
+          <p class="section-subtitle">
+            Where Chemical Engineering rigor meets enterprise software architecture
+          </p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="value-card">
+            <i class="bi bi-mortarboard value-icon" aria-hidden="true"></i>
+            <h3>Chemical Engineering Foundation (UFPR 1991-2000) + Java Technology Specialization (UTFPR 2007-2008, Lato Sensu)</h3>
+            <p>
+              Rigorous process control mindset applied to software architecture. Every system designed with precision, reproducibility, and safety-first principles—essential for pharmaceutical and chemical manufacturing compliance.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card">
+            <i class="bi bi-code-slash value-icon" aria-hidden="true"></i>
+            <h3>18 Years Java Enterprise</h3>
+            <p>
+              Extensive experience with Jakarta EE, Spring Framework, Hibernate, and enterprise authentication systems. Production-grade OAuth 2.1/OIDC implementations for secure, scalable legacy modernization.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card">
+            <i class="bi bi-robot value-icon" aria-hidden="true"></i>
+            <h3>AI/Python Transition</h3>
+            <p>
+              Modernizing legacy systems with Python automation, machine learning integration, and AI-enhanced business processes. Bridging traditional enterprise Java with cutting-edge AI capabilities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Expertise Section -->
+  <section class="section section-alt" aria-labelledby="expertise-heading">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 id="expertise-heading" class="section-title">Core Expertise</h2>
+          <p class="section-subtitle">
+            Specialized knowledge for industrial and pharmaceutical sectors
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-10 mx-auto">
+          <div class="text-center">
+            <span class="expertise-badge">Legacy-to-Cloud Migration</span>
+            <span class="expertise-badge">Jakarta EE / Java Enterprise</span>
+            <span class="expertise-badge">OAuth 2.1 / OIDC Architecture</span>
+            <span class="expertise-badge">GAMP 5 Compliance</span>
+            <span class="expertise-badge">Process Automation</span>
+            <span class="expertise-badge">AI-Driven Solutions</span>
+            <span class="expertise-badge">Technical Debt Management</span>
+            <span class="expertise-badge">Architectural Audits</span>
+            <span class="expertise-badge">Pharmaceutical Systems</span>
+            <span class="expertise-badge">Chemical Plant Automation</span>
+            <span class="expertise-badge">PostgreSQL / Redis</span>
+            <span class="expertise-badge">Docker / Kubernetes</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Areas Section -->
+  <section class="section" aria-labelledby="service-areas-heading">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 id="service-areas-heading" class="section-title">Service Areas in Switzerland</h2>
+          <p class="section-subtitle">
+            On-site consulting available in Ticino and Zug regions
+          </p>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="value-card">
+            <i class="bi bi-building value-icon" aria-hidden="true"></i>
+            <h3>Ticino Region</h3>
+            <p><strong>Lugano & Mendrisio</strong></p>
+            <p>
+              Specialized consulting for pharmaceutical and industrial manufacturing companies. Legacy system assessment, modernization planning, and GAMP 5 compliance audits.
+            </p>
+            <ul class="list-unstyled mt-3">
+              <li><i class="bi bi-check-circle text-success"></i> On-site technical assessments</li>
+              <li><i class="bi bi-check-circle text-success"></i> Legacy architecture reviews</li>
+              <li><i class="bi bi-check-circle text-success"></i> Compliance documentation</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="value-card">
+            <i class="bi bi-building value-icon" aria-hidden="true"></i>
+            <h3>Zug Region</h3>
+            <p><strong>Financial & Industrial Hub</strong></p>
+            <p>
+              Enterprise software modernization for financial services and industrial sectors. Secure authentication systems, cloud migration strategies, and AI integration.
+            </p>
+            <ul class="list-unstyled mt-3">
+              <li><i class="bi bi-check-circle text-success"></i> Enterprise architecture consulting</li>
+              <li><i class="bi bi-check-circle text-success"></i> Security audits & OAuth implementation</li>
+              <li><i class="bi bi-check-circle text-success"></i> Cloud migration planning</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-section text-center">
+        <h2>Ready to Modernize Your Legacy Systems?</h2>
+        <p class="lead mb-4">
+          Let's discuss how Chemical Engineering precision and 18 years of Java expertise can transform your industrial software infrastructure.
+        </p>
+        <a href="services.html" class="btn btn-primary-custom me-3" aria-label="View services page">
+          <i class="bi bi-briefcase" aria-hidden="true"></i> View Services
+        </a>
+        <a href="contact.html" class="btn btn-outline-custom" aria-label="Go to contact page">
+          <i class="bi bi-envelope" aria-hidden="true"></i> Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="section section-alt" aria-labelledby="contact-heading">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-8 mx-auto text-center">
+          <h2 id="contact-heading" class="section-title">Contact</h2>
+          <p class="section-subtitle">
+            Available for consulting projects in Ticino and Zug regions
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <div class="value-card text-center">
+            <i class="bi bi-envelope-fill value-icon" aria-hidden="true"></i>
+            <h3>Email</h3>
+            <p><a href="mailto:suporte@caracore.com.br" aria-label="Send email to suporte@caracore.com.br">suporte@caracore.com.br</a></p>
+            <hr class="my-4">
+            <i class="bi bi-linkedin value-icon" aria-hidden="true"></i>
+            <h3>LinkedIn</h3>
+            <p><a href="https://www.linkedin.com/in/chmulato/?locale=en_US" target="_blank" rel="noopener" aria-label="Visit LinkedIn profile (opens in new tab)">linkedin.com/in/chmulato</a></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="value-card text-center">
+            <i class="bi bi-github value-icon" aria-hidden="true"></i>
+            <h3>GitHub</h3>
+            <p><a href="https://github.com/chmulato" target="_blank" rel="noopener" aria-label="Visit GitHub profile (opens in new tab)">github.com/chmulato</a></p>
+            <hr class="my-4">
+            <p class="text-muted">
+              <strong>Service Areas:</strong> Ticino (Lugano, Mendrisio) | Zug, Switzerland<br>
+              <strong>Citizenship:</strong> Italian (EU/Swiss market access)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <h5>Christian Mulato</h5>
+          <p>Legacy Systems Consultant<br>
+          Chemical Engineer (UFPR 1991-2000) | Java Specialization (UTFPR 2007-2008, Lato Sensu) | 18 Years Java Enterprise<br>
+          Ticino & Zug, Switzerland</p>
+        </div>
+        <div class="col-md-6 text-md-end mb-4">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="articles.html">Articles</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="../README_CH.md">Legacy Documentation</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="mb-3">
+            <a href="https://www.linkedin.com/in/chmulato/?locale=en_US" target="_blank" rel="noopener" aria-label="Visit LinkedIn profile (opens in new tab)" class="text-light me-3">
+              <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn
+            </a>
+            <a href="https://github.com/chmulato" target="_blank" rel="noopener" aria-label="Visit GitHub profile (opens in new tab)" class="text-light">
+              <i class="bi bi-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+          <p class="mb-0">&copy; 2025 Christian Mulato. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+  <script src="../assets/js/analytics.js"></script>
+  
+  <!-- Accessibility Enhancements -->
+  <script src="../assets/js/accessibility.js"></script>
+  
+  <!-- Flag Menu Interaction -->
+  <script src="../assets/js/flag-menu.js"></script>
+  
+  <!-- GDPR Consent Management -->
+  <script src="../assets/js/gdpr.js"></script>
+
+  <!-- GDPR Banner -->
+  <div id="gdpr-banner" class="gdpr-banner">
+    <div class="gdpr-content">
+      <div class="gdpr-icon">
+        🛡️
+      </div>
+      <div class="gdpr-text">
+        <strong>Data Protection (GDPR)</strong><br>
+        This website uses localStorage to save your preferences and improve your experience. By continuing to browse, you agree to the processing of your data in accordance with our Privacy Policy and the General Data Protection Regulation (GDPR).
+      </div>
+      <div class="gdpr-buttons">
+        <button class="gdpr-btn gdpr-btn-accept" onclick="acceptGDPR()">Accept</button>
+        <button class="gdpr-btn gdpr-btn-decline" onclick="declineGDPR()">Decline</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+

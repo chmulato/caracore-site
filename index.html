@@ -3,7 +3,8 @@
 <html lang="pt-br">
 <head>
   <!-- Política de Segurança de Conteúdo (CSP) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org https://unpkg.com data: https:; connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' https://cdn.jsdelivr.net data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
+  <!-- Nota: frame-ancestors só funciona em cabeçalhos HTTP, não em meta tags -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org https://unpkg.com data: https:; connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' https://cdn.jsdelivr.net data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
   
   <!-- X-Content-Type-Options: Previne MIME sniffing -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -73,6 +74,37 @@
             <i class="bi bi-shield-lock" aria-hidden="true"></i>
             <span class="ms-1">Área 51</span>
           </a>
+        </li>
+        <li class="nav-item d-flex align-items-center">
+          <!-- Flag Menu Dropdown - Fácil de selecionar -->
+          <div class="flag-dropdown">
+            <button type="button" class="flag-dropdown-toggle" aria-label="Selecionar país/idioma" aria-expanded="false" aria-haspopup="true" title="Selecionar idioma" onclick="this.closest('.flag-dropdown').classList.toggle('show')">
+              <span class="flag-emoji">🇧🇷</span>
+            </button>
+            <div class="flag-dropdown-menu" role="menu">
+              <a href="index.html" class="flag-dropdown-item active" aria-label="Brasil - Site em português">
+                <span class="flag-emoji">🇧🇷</span>
+                <span class="flag-text">
+                  <span class="flag-name">Brasil</span>
+                  <span class="flag-desc">Português</span>
+                </span>
+              </a>
+              <a href="moving_to_ch/en/index.html" class="flag-dropdown-item" aria-label="Suíça - Site internacional em inglês">
+                <span class="flag-emoji">🇨🇭</span>
+                <span class="flag-text">
+                  <span class="flag-name">Suíça</span>
+                  <span class="flag-desc">English</span>
+                </span>
+              </a>
+              <a href="moving_to_ch/it/index.html" class="flag-dropdown-item" aria-label="Itália - Site internacional em italiano">
+                <span class="flag-emoji">🇮🇹</span>
+                <span class="flag-text">
+                  <span class="flag-name">Itália</span>
+                  <span class="flag-desc">Italiano</span>
+                </span>
+              </a>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
@@ -541,6 +573,59 @@
 
 <!-- LGPD Script -->
 <script src="assets/js/lgpd.js"></script>
+
+  <!-- Script para melhorar interação do menu de bandeiras -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      let closeTimeout = null;
+      const closeDelay = 300; // 300ms de delay antes de fechar
+      
+      const flagDropdowns = document.querySelectorAll('.flag-dropdown');
+      
+      flagDropdowns.forEach(function(dropdown) {
+        const toggle = dropdown.querySelector('.flag-dropdown-toggle');
+        const menu = dropdown.querySelector('.flag-dropdown-menu');
+        
+        // Abre o menu ao clicar no botão
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          dropdown.classList.toggle('show');
+          clearTimeout(closeTimeout);
+        });
+        
+        // Mantém aberto quando o mouse está sobre o dropdown
+        dropdown.addEventListener('mouseenter', function() {
+          clearTimeout(closeTimeout);
+          dropdown.classList.add('show');
+        });
+        
+        // Delay antes de fechar ao sair do dropdown
+        dropdown.addEventListener('mouseleave', function() {
+          clearTimeout(closeTimeout);
+          closeTimeout = setTimeout(function() {
+            dropdown.classList.remove('show');
+          }, closeDelay);
+        });
+        
+        // Previne fechamento ao clicar dentro do menu
+        menu.addEventListener('click', function(event) {
+          event.stopPropagation();
+          clearTimeout(closeTimeout);
+        });
+      });
+      
+      // Fecha o menu ao clicar fora (sem delay)
+      document.addEventListener('click', function(event) {
+        const flagDropdown = event.target.closest('.flag-dropdown');
+        if (!flagDropdown) {
+          clearTimeout(closeTimeout);
+          flagDropdowns.forEach(function(dropdown) {
+            dropdown.classList.remove('show');
+          });
+        }
+      });
+    });
+  </script>
 
 </body>
 </html>

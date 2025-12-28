@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://www.googletagmanager.com 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://cdn.jsdelivr.net https://www.google-analytics.com; font-src 'self' https://cdn.jsdelivr.net data:; frame-src 'none'; object-src 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- SEO Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Articoli Tecnici | Sistemi Legacy & Conformità GAMP 5 | Svizzera</title>
+  <meta name="description" content="Articoli tecnici su modernizzazione sistemi legacy, conformità GAMP 5, architettura OAuth 2.1/OIDC e sviluppo Java enterprise per settori farmaceutici e industriali.">
+  <meta name="keywords" content="GAMP 5, conformità, sistemi legacy, OAuth OIDC, Java enterprise, software farmaceutico, articoli tecnici, Svizzera">
+  
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="../en/articles.html">
+  <link rel="alternate" hreflang="it" href="../it/articles.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  
+  <!-- GDPR Styles -->
+  <link rel="stylesheet" href="../assets/css/gdpr.css">
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+  <script src="../assets/js/analytics.js"></script>
+</head>
+<body>
+
+  <!-- Language Switcher -->
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Christian Mulato</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Servizi</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Chi Sono</a></li>
+          <li class="nav-item"><a class="nav-link active" href="articles.html" aria-current="page">Articoli</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contatti</a></li>
+          <li class="nav-item">
+            <div class="flag-dropdown">
+              <button type="button" class="flag-dropdown-toggle" aria-label="Seleziona paese/lingua" aria-expanded="false" aria-haspopup="true" title="Seleziona lingua">
+                <span class="flag-emoji">🇮🇹</span>
+                <span>IT</span>
+              </button>
+              <div class="flag-dropdown-menu">
+                <a href="../../index.html" class="flag-dropdown-item">
+                  <span class="flag-emoji">🇧🇷</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Brasile</span>
+                    <span class="flag-desc">Portoghese (Legacy)</span>
+                  </span>
+                </a>
+                <a href="../en/articles.html" class="flag-dropdown-item">
+                  <span class="flag-emoji">🇨🇭</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Svizzera</span>
+                    <span class="flag-desc">English</span>
+                  </span>
+                </a>
+                <a href="articles.html" class="flag-dropdown-item active">
+                  <span class="flag-emoji">🇮🇹</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Italia</span>
+                    <span class="flag-desc">Italiano</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Articles Hero Section -->
+  <section class="articles-hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1 class="display-4 fw-bold mb-4">Articoli Tecnici & Insights</h1>
+          <p class="lead">Sistemi legacy, conformità GAMP 5 e architettura enterprise dalla prospettiva di un Ingegnere Chimico</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Introduction Section -->
+  <section class="section">
+    <div class="container">
+      <div class="intro-box">
+        <h3><i class="bi bi-info-circle text-primary"></i> Informazioni su Questa Collezione</h3>
+        <p class="mb-2">
+          Questa pagina fornisce accesso ai miei <strong>articoli tecnici legacy</strong> scritti in oltre 15 anni di sviluppo software enterprise. 
+          Mentre gli articoli originali sono in portoghese (disponibili nel <a href="../../publications/" class="legacy-link">sito legacy</a>), 
+          questa pagina introduce ogni articolo con <strong>riassunti focalizzati sulla conformità</strong> utilizzando terminologia rilevante per settori farmaceutici e industriali.
+        </p>
+        <p class="mb-0">
+          <strong>Aree di Focus Principali:</strong> Conformità GAMP 5, architettura sicurezza OAuth 2.1/OIDC, modernizzazione sistemi legacy, 
+          e gestione technical debt—tutto visto attraverso la lente della precisione dell'Ingegneria Chimica e competenza Java enterprise.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Section -->
+  <section class="section section-alt">
+    <div class="container">
+      
+      <!-- Article Category: GAMP 5 & Compliance -->
+      <div class="row mb-5">
+        <div class="col-lg-12">
+          <h2 class="mb-4"><i class="bi bi-shield-check text-success"></i> Conformità GAMP 5 & Validazione</h2>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+          <div class="article-card">
+            <span class="article-category category-gamp">GAMP 5</span>
+            <h4>Validazione Sistemi Legacy per Produzione Farmaceutica</h4>
+            <p class="text-muted">
+              <strong>Focus Conformità:</strong> Questo articolo discute principi di validazione software allineati con GAMP 5 Categoria 4 (Prodotti Software Configurati) 
+              e Categoria 5 (Applicazioni Personalizzate). Copre documentazione validazione, approccio basato su rischio e requisiti tracciabilità per sistemi Java enterprise legacy.
+            </p>
+            <p class="text-muted">
+              <strong>Argomenti Chiave:</strong> Piano Master Validazione (VMP), Specifica Requisiti Utente (URS), Specifica Requisiti Funzionali (FRS), 
+              Qualifica Progetto (DQ), Qualifica Installazione (IQ), Qualifica Operativa (OQ), Qualifica Prestazioni (PQ).
+            </p>
+            <a href="../../publications/articles.html" class="legacy-link" target="_blank">
+              Leggi Articolo Originale <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+          <div class="article-card">
+            <span class="article-category category-gamp">GAMP 5</span>
+            <h4>Controllo Cambiamenti e Gestione Configurazione in Sistemi Legacy</h4>
+            <p class="text-muted">
+              <strong>Focus Conformità:</strong> Esplora processi di gestione cambiamenti per sistemi validati, enfatizzando l'importanza di 
+              procedure documentate di controllo cambiamenti, valutazioni impatto e testing di regressione—critici per mantenere conformità GAMP 5 durante modernizzazione sistema.
+            </p>
+            <p class="text-muted">
+              <strong>Argomenti Chiave:</strong> Richiesta Cambiamento (CR), Valutazione Impatto, Analisi Rischio, Strategia Test, Aggiornamenti Documentazione Validazione, 
+              Requisiti Notifica Regolatoria.
+            </p>
+            <a href="../../publications/articles.html" class="legacy-link" target="_blank">
+              Leggi Articolo Originale <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Category: OAuth 2.1 / OIDC -->
+      <div class="row mb-5">
+        <div class="col-lg-12">
+          <h2 class="mb-4"><i class="bi bi-shield-lock text-primary"></i> Architettura Sicurezza OAuth 2.1 / OIDC</h2>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+          <div class="article-card">
+            <span class="article-category category-oauth">OAuth 2.1</span>
+            <h4>Architettura Autenticazione Enterprise con PKCE</h4>
+            <p class="text-muted">
+              <strong>Focus Sicurezza:</strong> Guida completa all'implementazione OAuth 2.1 Authorization Code Flow con PKCE (Proof Key for Code Exchange) 
+              per applicazioni enterprise. Copre best practice sicurezza, supporto multi-provider (Google, Microsoft) e conformità standard sicurezza OWASP.
+            </p>
+            <p class="text-muted">
+              <strong>Argomenti Chiave:</strong> Implementazione PKCE, Validazione Token, Sicurezza JWT, Gestione Refresh Token, Sicurezza Sessione, 
+              Integrazione Autenticazione Multi-Fattore (MFA).
+            </p>
+            <a href="http://localhost:8080/moving_to_ch/README_CH.md" class="legacy-link" target="_blank" rel="noopener" aria-label="Vedi documentazione tecnica (si apre in nuova scheda)">
+              Vedi Documentazione Tecnica <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+          <div class="article-card">
+            <span class="article-category category-oauth">OIDC</span>
+            <h4>OpenID Connect per Sistemi Farmaceutici</h4>
+            <p class="text-muted">
+              <strong>Focus Conformità:</strong> Strategie implementazione OIDC per sistemi validati, assicurando audit trail, 
+              verifica identità utente e controllo accesso soddisfino requisiti FDA 21 CFR Part 11 e EU Annex 11 per record elettronici e firme.
+            </p>
+            <p class="text-muted">
+              <strong>Argomenti Chiave:</strong> Selezione Identity Provider (IdP), Logging Autenticazione Utente, Controllo Accesso Basato su Ruoli (RBAC), 
+              Requisiti Audit Trail, Conformità Firma Elettronica.
+            </p>
+            <a href="http://localhost:8080/moving_to_ch/README_CH.md" class="legacy-link" target="_blank" rel="noopener" aria-label="Vedi documentazione tecnica (si apre in nuova scheda)">
+              Vedi Documentazione Tecnica <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Category: Java Enterprise -->
+      <div class="row mb-5">
+        <div class="col-lg-12">
+          <h2 class="mb-4"><i class="bi bi-code-slash text-warning"></i> Java Enterprise & Modernizzazione Legacy</h2>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+          <div class="article-card">
+            <span class="article-category category-java">Jakarta EE</span>
+            <h4>Migrazione da Java EE a Jakarta EE: Guida Pratica</h4>
+            <p class="text-muted">
+              <strong>Focus Tecnico:</strong> Strategia migrazione passo-passo per applicazioni Java enterprise, coprendo cambiamenti namespace, 
+              aggiornamenti dipendenze e considerazioni compatibilità. Lettura essenziale per organizzazioni che pianificano modernizzazione sistemi legacy.
+            </p>
+            <p class="text-muted">
+              <strong>Argomenti Chiave:</strong> Migrazione Package (javax.* a jakarta.*), Aggiornamenti Build Tool (Maven/Gradle), 
+              Compatibilità Application Server, Strategia Test, Pianificazione Rollback.
+            </p>
+            <a href="../../publications/articles.html" class="legacy-link" target="_blank">
+              Leggi Articolo Originale <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+          <div class="article-card">
+            <span class="article-category category-java">Sistemi Legacy</span>
+            <h4>Valutazione e Priorità Technical Debt</h4>
+            <p class="text-muted">
+              <strong>Focus Strategico:</strong> Framework per quantificare e prioritizzare technical debt in sistemi Java enterprise legacy. 
+              Include analisi ROI, valutazione rischio e sviluppo roadmap modernizzazione—critico per settori farmaceutici e industriali.
+            </p>
+            <p class="text-muted">
+              <strong>Argomenti Chiave:</strong> Inventario Debito, Analisi Impatto, Analisi Costi-Benefici, Matrice Rischio, 
+              Strategia Modernizzazione a Fasi, Sviluppo Business Case.
+            </p>
+            <a href="../../publications/articles.html" class="legacy-link" target="_blank">
+              Leggi Articolo Originale <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Article Category: Process Automation -->
+      <div class="row mb-5">
+        <div class="col-lg-12">
+          <h2 class="mb-4"><i class="bi bi-gear-wide-connected text-purple"></i> Automazione Processi & AI</h2>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+          <div class="article-card">
+            <span class="article-category category-automation">Python</span>
+            <h4>Controllo Qualità AI-Driven in Produzione Farmaceutica</h4>
+            <p class="text-muted">
+              <strong>Focus Innovazione:</strong> Applicazioni machine learning per controllo qualità in tempo reale in produzione farmaceutica. 
+              Copre rilevamento anomalie, manutenzione predittiva e integrazione con sistemi SCADA legacy—tutto mantenendo conformità GAMP 5.
+            </p>
+            <p class="text-muted">
+              <strong>Argomenti Chiave:</strong> Validazione Modelli ML, Integrità Dati (ALCOA+), Monitoraggio Tempo Reale, 
+              Integrazione con Sistemi Legacy, Documentazione Regolatoria.
+            </p>
+            <a href="../../publications/articles.html" class="legacy-link" target="_blank">
+              Leggi Articolo Originale <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+          <div class="article-card">
+            <span class="article-category category-automation">Automazione</span>
+            <h4>Principi Ingegneria Chimica in Architettura Software</h4>
+            <p class="text-muted">
+              <strong>Focus Filosofia:</strong> Come il rigore dell'Ingegneria Chimica (controllo processo, margini sicurezza, riproducibilità) 
+              si applica all'architettura software enterprise. Lettura essenziale per comprendere l'approccio "Ingegnere-Programmatore" alla modernizzazione sistemi legacy.
+            </p>
+            <p class="text-muted">
+              <strong>Argomenti Chiave:</strong> Mentalità Controllo Processo, Design Safety-First, Riproducibilità in Software, 
+              Standard Documentazione, Principi Assicurazione Qualità.
+            </p>
+            <a href="../../publications/articles.html" class="legacy-link" target="_blank">
+              Leggi Articolo Originale <i class="bi bi-box-arrow-up-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Personal Blog Section -->
+      <div class="row mb-4">
+        <div class="col-lg-12">
+          <div class="article-card text-center">
+            <h3><i class="bi bi-journal-text text-info"></i> Blog Tecnico Personale</h3>
+            <p class="lead mb-3">
+              Esplora <strong>78+ articoli tecnici</strong> che coprono Java Enterprise, Jakarta EE, Spring Boot, Docker, 
+              Microservizi, API, DevOps, AI e Architettura Software.
+            </p>
+            <p class="text-muted mb-4">
+              Gli articoli vanno da marzo 2024 a gennaio 2026, documentando esperienze reali nella modernizzazione di sistemi legacy, 
+              architettura enterprise e transizioni tecnologiche. Argomenti includono: Java & Spring, Jakarta EE, API & Microservizi, 
+              DevOps & Containers, Pattern Architetturali, AI & Tecnologia, Strategie di Modernizzazione, Insight Carriera & Mercato.
+            </p>
+            <a href="http://localhost:8080/personal/index.html" class="btn btn-info btn-lg me-2" target="_blank" rel="noopener" aria-label="Visita blog tecnico personale (si apre in nuova scheda)">
+              <i class="bi bi-journal-text" aria-hidden="true"></i> Visita Blog Personale
+              <i class="bi bi-box-arrow-up-right ms-2" aria-hidden="true"></i>
+            </a>
+            <p class="text-muted mt-3 small">
+              <i class="bi bi-info-circle" aria-hidden="true"></i> 
+              Gli articoli sono in portoghese (PT-BR) e coprono argomenti tecnici rilevanti per lo sviluppo Java enterprise e l'architettura software.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legacy Articles Link -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="article-card text-center">
+            <h3><i class="bi bi-archive text-primary"></i> Archivio Completo Articoli</h3>
+            <p class="lead mb-4">
+              Accedi alla collezione completa di articoli tecnici, tutorial e case study da 15+ anni di sviluppo software enterprise.
+            </p>
+            <a href="../../publications/articles.html" class="btn btn-primary btn-lg" target="_blank" rel="noopener" aria-label="Sfoglia articoli legacy in portoghese (si apre in nuova scheda)">
+              <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i> Sfoglia Articoli Legacy (Portoghese)
+            </a>
+            <p class="text-muted mt-3 small">
+              Nota: Gli articoli originali sono in portoghese. Questa pagina fornisce introduzioni in italiano focalizzate sulla conformità.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <h5>Christian Mulato</h5>
+          <p>Consulente Sistemi Legacy<br>
+          Ticino & Zug, Svizzera</p>
+        </div>
+        <div class="col-md-6 text-md-end mb-4">
+          <h5>Link Rapidi</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Servizi</a></li>
+            <li><a href="articles.html">Articoli</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="mb-3">
+            <a href="https://www.linkedin.com/in/chmulato/?locale=en_US" target="_blank" rel="noopener" aria-label="Visita profilo LinkedIn (si apre in nuova scheda)" class="text-light me-3">
+              <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn
+            </a>
+            <a href="https://github.com/chmulato" target="_blank" rel="noopener" aria-label="Visita profilo GitHub (si apre in nuova scheda)" class="text-light">
+              <i class="bi bi-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+          <p class="mb-0">&copy; 2025 Christian Mulato. Tutti i diritti riservati.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Accessibility Enhancements -->
+  <script src="../assets/js/accessibility.js"></script>
+  
+  <!-- Flag Menu Interaction -->
+  <script src="../assets/js/flag-menu.js"></script>
+  
+  <!-- GDPR Consent Management -->
+  <script src="../assets/js/gdpr.js"></script>
+
+  <!-- GDPR Banner -->
+  <div id="gdpr-banner" class="gdpr-banner">
+    <div class="gdpr-content">
+      <div class="gdpr-icon">
+        🛡️
+      </div>
+      <div class="gdpr-text">
+        <strong>Protezione dei Dati (GDPR)</strong><br>
+        Questo sito utilizza localStorage per salvare le tue preferenze e migliorare la tua esperienza. Continuando a navigare, accetti il trattamento dei tuoi dati in conformità con la nostra Politica sulla Privacy e il Regolamento Generale sulla Protezione dei Dati (GDPR).
+      </div>
+      <div class="gdpr-buttons">
+        <button class="gdpr-btn gdpr-btn-accept" onclick="acceptGDPR()">Accetta</button>
+        <button class="gdpr-btn gdpr-btn-decline" onclick="declineGDPR()">Rifiuta</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+

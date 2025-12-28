@@ -47,6 +47,242 @@
  * Arquivo de estilos principais do site
  */
 
+/* Flag Menu Dropdown Styles - Fácil de selecionar */
+.flag-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.75rem;
+  align-self: center;
+}
+
+.flag-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  text-decoration: none;
+  color: white;
+  font-size: 1.25rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  line-height: 1;
+  position: relative;
+}
+
+.flag-dropdown-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: white;
+  transform: scale(1.05);
+}
+
+.flag-dropdown-toggle:active {
+  transform: scale(0.95);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.flag-dropdown-toggle:focus {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+}
+
+.flag-dropdown-toggle .flag-emoji {
+  display: block;
+  font-size: 1.25rem;
+  line-height: 1;
+  pointer-events: none; /* Evita problemas de clique */
+}
+
+.flag-dropdown-toggle span:not(.flag-emoji) {
+  display: none; /* Esconde o texto "BR" - apenas bandeira */
+}
+
+/* Indicador visual de que é clicável */
+.flag-dropdown-toggle::after {
+  content: '▼';
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-size: 0.5rem;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.flag-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  min-width: 170px;
+  display: none;
+  z-index: 1050;
+  animation: fadeInDown 0.2s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.flag-dropdown:hover .flag-dropdown-menu,
+.flag-dropdown:focus-within .flag-dropdown-menu,
+.flag-dropdown.show .flag-dropdown-menu,
+.flag-dropdown-menu.show {
+  display: block;
+}
+
+/* Mantém o menu aberto quando o mouse está sobre ele */
+.flag-dropdown-menu:hover {
+  display: block;
+}
+
+/* Delay antes de fechar - dá tempo para mover o mouse */
+.flag-dropdown-menu {
+  pointer-events: auto;
+}
+
+/* Previne fechamento acidental ao mover o mouse */
+.flag-dropdown-toggle:hover + .flag-dropdown-menu,
+.flag-dropdown:hover .flag-dropdown-menu {
+  display: block !important;
+}
+
+.flag-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #1f2937;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+  font-size: 0.875rem;
+  min-height: 52px; /* Área de toque maior */
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.flag-dropdown-item:hover {
+  background: #f3f4f6;
+  color: #1e3a8a;
+  transform: translateX(3px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.flag-dropdown-item:active {
+  background: #e5e7eb;
+  transform: translateX(1px);
+}
+
+.flag-dropdown-item .flag-emoji {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.flag-dropdown-item .flag-text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.flag-dropdown-item .flag-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+  line-height: 1.2;
+}
+
+.flag-dropdown-item .flag-desc {
+  font-size: 0.7rem;
+  color: #6b7280;
+  line-height: 1.2;
+  margin-top: 0.125rem;
+}
+
+.flag-dropdown-item.active {
+  background: #eff6ff;
+  color: #1e3a8a;
+  font-weight: 600;
+}
+
+.flag-dropdown-item.active .flag-desc {
+  color: #3b82f6;
+}
+
+/* Mobile: tornar muito mais fácil de tocar */
+@media (max-width: 768px) {
+  .flag-dropdown {
+    margin-left: 0.5rem;
+  }
+  
+  .flag-dropdown-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
+    border-radius: 8px;
+  }
+  
+  .flag-dropdown-toggle .flag-emoji {
+    font-size: 1.4rem;
+  }
+  
+  .flag-dropdown-menu {
+    right: -5px;
+    min-width: 200px;
+    padding: 0.75rem;
+  }
+  
+  .flag-dropdown-item {
+    min-height: 56px;
+    padding: 0.875rem 1.125rem;
+    font-size: 0.9375rem;
+  }
+  
+  .flag-dropdown-item .flag-emoji {
+    font-size: 1.75rem;
+  }
+  
+  .flag-dropdown-item .flag-name {
+    font-size: 0.9375rem;
+  }
+  
+  .flag-dropdown-item .flag-desc {
+    font-size: 0.75rem;
+  }
+}
+
+/* Touch devices - área ainda maior */
+@media (hover: none) and (pointer: coarse) {
+  .flag-dropdown-toggle {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    min-height: 42px;
+  }
+  
+  .flag-dropdown-item {
+    min-height: 60px;
+    padding: 1rem 1.25rem;
+  }
+}
+
 /* Background gradiente principal */
 body {
   background: linear-gradient(120deg, #f8fafc 0%, #e0e7ff 100%);

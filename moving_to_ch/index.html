@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christian Mulato | Legacy Systems Consultant | Redirecting...</title>
+  <meta name="description" content="Legacy systems modernization for industrial & chemical sectors in Ticino and Zug, Switzerland.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+  
+  <!-- Language Detection Script -->
+  <script>
+    (function() {
+      'use strict';
+      
+      // Check if user manually selected a flag (don't auto-redirect)
+      const manualSelection = sessionStorage.getItem('manualFlagSelection');
+      if (manualSelection) {
+        sessionStorage.removeItem('manualFlagSelection');
+        return; // Don't auto-redirect if user made manual selection
+      }
+      
+      // Get preferred language from:
+      // 1. URL parameter (?lang=en or ?lang=it or ?country=br)
+      // 2. localStorage
+      // 3. Browser language
+      // 4. Default to English
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlLang = urlParams.get('lang');
+      const urlCountry = urlParams.get('country');
+      const storedLang = localStorage.getItem('preferredLang');
+      const browserLang = navigator.language || navigator.userLanguage;
+      
+      let preferredLang = urlLang || storedLang;
+      
+      // Handle country parameter
+      if (urlCountry === 'br') {
+        // Redirect to legacy site (Brazil/Portuguese)
+        window.location.href = '../index.html';
+        return;
+      }
+      
+      // If no explicit preference, detect from browser
+      if (!preferredLang) {
+        if (browserLang.startsWith('it')) {
+          preferredLang = 'it';
+        } else if (browserLang.startsWith('pt')) {
+          // Portuguese speakers might prefer legacy site
+          // But we'll default to English for Swiss market
+          preferredLang = 'en';
+        } else {
+          preferredLang = 'en'; // Default to English
+        }
+      }
+      
+      // Normalize language code
+      preferredLang = preferredLang.toLowerCase().substring(0, 2);
+      if (preferredLang !== 'en' && preferredLang !== 'it') {
+        preferredLang = 'en'; // Fallback to English
+      }
+      
+      // Store preference
+      localStorage.setItem('preferredLang', preferredLang);
+      
+      // Auto-redirect after 2 seconds (give user time to see flags)
+      setTimeout(function() {
+        window.location.href = `${preferredLang}/index.html`;
+      }, 2000);
+    })();
+    
+    // Handle manual flag selection
+    function selectCountry(country) {
+      sessionStorage.setItem('manualFlagSelection', 'true');
+      
+      if (country === 'br') {
+        // Redirect to legacy site (Brazil/Portuguese)
+        window.location.href = '../index.html';
+      } else if (country === 'ch') {
+        // Switzerland - default to English
+        localStorage.setItem('preferredLang', 'en');
+        window.location.href = 'en/index.html';
+      } else if (country === 'it') {
+        // Italy - Italian version
+        localStorage.setItem('preferredLang', 'it');
+        window.location.href = 'it/index.html';
+      }
+    }
+  </script>
+  
+  <!-- Fallback message (shown if JavaScript is disabled) -->
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .redirect-message {
+      max-width: 700px;
+      width: 100%;
+    }
+    
+    .redirect-message h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .redirect-message p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+    
+    .flag-menu {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    
+    .flag-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+      min-width: 140px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .flag-option:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: white;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    .flag-emoji {
+      font-size: 4rem;
+      margin-bottom: 0.75rem;
+      line-height: 1;
+    }
+    
+    .flag-name {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+    
+    .flag-description {
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+    
+    .language-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .language-links a {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      border: 2px solid white;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    
+    .language-links a:hover {
+      background: white;
+      color: #1e3a8a;
+    }
+    
+    @media (max-width: 768px) {
+      .redirect-message h1 {
+        font-size: 1.5rem;
+      }
+      
+      .flag-menu {
+        gap: 1rem;
+      }
+      
+      .flag-option {
+        min-width: 120px;
+        padding: 1rem;
+      }
+      
+      .flag-emoji {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="redirect-message">
+    <h1>Select Your Country / Region</h1>
+    <p>Choose your preferred location to access the appropriate version:</p>
+    
+    <div class="flag-menu">
+      <a href="#" onclick="selectCountry('br'); return false;" class="flag-option" aria-label="Brasil - Site legado em português">
+        <span class="flag-emoji" role="img" aria-label="Bandeira do Brasil">🇧🇷</span>
+        <span class="flag-name">Brasil</span>
+        <span class="flag-description">Site Legado<br>(Português)</span>
+      </a>
+      
+      <a href="#" onclick="selectCountry('ch'); return false;" class="flag-option" aria-label="Suíça - Site internacional em inglês">
+        <span class="flag-emoji" role="img" aria-label="Bandeira da Suíça">🇨🇭</span>
+        <span class="flag-name">Suíça</span>
+        <span class="flag-description">Site Internacional<br>(English)</span>
+      </a>
+      
+      <a href="#" onclick="selectCountry('it'); return false;" class="flag-option" aria-label="Itália - Site internacional em italiano">
+        <span class="flag-emoji" role="img" aria-label="Bandeira da Itália">🇮🇹</span>
+        <span class="flag-name">Itália</span>
+        <span class="flag-description">Site Internacional<br>(Italiano)</span>
+      </a>
+    </div>
+    
+    <p style="margin-top: 2rem; font-size: 0.875rem; opacity: 0.7;">
+      Redirecionando automaticamente em alguns segundos...
+    </p>
+    
+    <div class="language-links">
+      <a href="en/index.html">English</a>
+      <a href="it/index.html">Italiano</a>
+      <a href="../index.html">Português (Legado)</a>
+    </div>
+  </div>
+</body>
+</html>
+

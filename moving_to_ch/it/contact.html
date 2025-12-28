@@ -185,9 +185,9 @@
               </div>
               
               <div class="mb-3">
-                <label for="email" class="form-label">Email <span class="text-danger" aria-label="obbligatorio">*</span></label>
-                <input type="email" class="form-control" id="email" name="email" required aria-required="true" aria-describedby="email-help">
-                <small id="email-help" class="form-text text-muted visually-hidden">Inserisci il tuo indirizzo email</small>
+                <label for="mobile" class="form-label">Numero di Cellulare <span class="text-danger" aria-label="obbligatorio">*</span></label>
+                <input type="tel" class="form-control" id="mobile" name="mobile" required aria-required="true" aria-describedby="mobile-help" placeholder="+55 41 9 9909-7797" pattern="[\+]?[0-9\s\-\(\)]{10,}">
+                <small id="mobile-help" class="form-text text-muted">Inserisci il tuo numero di cellulare con il prefisso internazionale (es. +55 41 9 9909-7797)</small>
               </div>
               
               <div class="mb-3">
@@ -261,7 +261,7 @@
               <div class="mb-3">
                 <p class="small text-muted">
                   <strong>Base Legale:</strong> Consenso (Art. 6(1)(a) GDPR) | 
-                  <strong>Categorie di Dati:</strong> Nome, Email, Azienda, Interesse Servizio, Località, Messaggio | 
+                  <strong>Categorie di Dati:</strong> Nome, Numero di Cellulare, Azienda, Interesse Servizio, Località, Messaggio | 
                   <strong>Servizi di Terze Parti:</strong> WhatsApp (Meta) e Telegram possono trattare i tuoi dati secondo le loro politiche sulla privacy. 
                   <a href="../../politica/politica-privacidade.html" target="_blank" rel="noopener">Scopri di più</a>
                 </p>
@@ -291,7 +291,15 @@
               <i class="fab fa-whatsapp" aria-hidden="true"></i>
               <div>
                 <strong>WhatsApp</strong><br>
-                <a href="https://wa.me/5541999097797" target="_blank" rel="noopener" aria-label="Contatta tramite WhatsApp (si apre in nuova scheda)">+55 41 99909-7797</a>
+                <a href="https://wa.me/5541999097797" target="_blank" rel="noopener" aria-label="Contatta tramite WhatsApp (si apre in nuova scheda)">+55 41 9 9909-7797</a>
+              </div>
+            </div>
+            
+            <div class="contact-info-item">
+              <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+              <div>
+                <strong>Cellulare</strong><br>
+                <a href="tel:+5541999097797" aria-label="Chiama il numero di cellulare">+55 41 9 9909-7797</a>
               </div>
             </div>
             
@@ -470,7 +478,7 @@
         
         return `*Richiesta Consulenza*\n\n` +
                `*Nome:* ${data.firstName} ${data.lastName}\n` +
-               `*Email:* ${data.email}\n` +
+               `*Cellulare:* ${data.mobile}\n` +
                `*Azienda:* ${data.company || 'N/A'}\n` +
                `*Servizio:* ${serviceNames[data.service] || data.service || 'N/A'}\n` +
                `*Località:* ${locationNames[data.location] || data.location || 'N/A'}\n\n` +

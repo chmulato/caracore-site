@@ -269,6 +269,11 @@
               
               <div class="mb-3">
                 <label class="form-label">Scegli come inviare il tuo messaggio:</label>
+                <!-- Desktop Warning -->
+                <div id="desktop-warning" class="alert alert-warning d-none" role="alert">
+                  <i class="bi bi-info-circle" aria-hidden="true"></i>
+                  <strong>Browser Desktop Rilevato:</strong> Per inviare messaggi, devi avere <strong>WhatsApp Web</strong> o <strong>Telegram Web</strong> aperto in un'altra scheda, oppure usare l'app mobile sul tuo telefono.
+                </div>
                 <div class="d-grid gap-2">
                   <button type="button" class="btn btn-success btn-lg" id="send-whatsapp" aria-label="Invia tramite WhatsApp">
                     <i class="fab fa-whatsapp" aria-hidden="true"></i> Invia tramite WhatsApp
@@ -442,6 +447,18 @@
       const successMessage = document.getElementById('success-message');
       const whatsappBtn = document.getElementById('send-whatsapp');
       const telegramBtn = document.getElementById('send-telegram');
+      const desktopWarning = document.getElementById('desktop-warning');
+      
+      // Detect if user is on desktop (not mobile)
+      function isMobileDevice() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+               (window.innerWidth <= 768);
+      }
+      
+      // Show desktop warning if not on mobile
+      if (!isMobileDevice() && desktopWarning) {
+        desktopWarning.classList.remove('d-none');
+      }
       
       // Function to get form data
       function getFormData() {

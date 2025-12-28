@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <!-- Security Headers -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net data:; frame-src 'none'; object-src 'none';">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  
+  <!-- SEO Meta Tags -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architettura Autenticazione Enterprise con PKCE | OAuth 2.1 | Christian Mulato</title>
+  <meta name="description" content="Guida completa all'implementazione OAuth 2.1 Authorization Code Flow con PKCE per applicazioni enterprise. Best practice sicurezza, supporto multi-provider e conformità OWASP.">
+  <meta name="keywords" content="OAuth 2.1, PKCE, autenticazione enterprise, OIDC, architettura sicurezza, Java enterprise, Svizzera">
+  
+  <!-- Language Alternates -->
+  <link rel="alternate" hreflang="en" href="../en/article-oauth-pkce.html">
+  <link rel="alternate" hreflang="it" href="article-oauth-pkce.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  
+  <!-- Shared CSS -->
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  
+  <!-- GDPR Styles -->
+  <link rel="stylesheet" href="../assets/css/gdpr.css">
+  
+  <style>
+    .article-hero {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 6rem 0 4rem;
+      margin-top: 76px;
+    }
+    
+    .article-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .article-content h2 {
+      color: #1e3a8a;
+      margin-top: 3rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+    
+    .article-content h3 {
+      color: #3b82f6;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    .code-block {
+      background: #f3f4f6;
+      border-left: 4px solid #3b82f6;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+      overflow-x: auto;
+    }
+    
+    .code-block code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #1f2937;
+    }
+    
+    .highlight-box {
+      background: #f0f9ff;
+      border-left: 4px solid #3b82f6;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+    
+    .security-box {
+      background: #fef2f2;
+      border-left: 4px solid #dc2626;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation" aria-label="Navigazione principale">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" aria-label="Christian Mulato - Home">Christian Mulato</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Servizi</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Chi Sono</a></li>
+          <li class="nav-item"><a class="nav-link active" href="articles.html" aria-current="page">Articoli</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contatti</a></li>
+          <li class="nav-item">
+            <div class="flag-dropdown">
+              <button type="button" class="flag-dropdown-toggle" aria-label="Seleziona paese/lingua" aria-expanded="false" aria-haspopup="true" title="Seleziona lingua">
+                <span class="flag-emoji">🇮🇹</span>
+                <span>IT</span>
+              </button>
+              <div class="flag-dropdown-menu">
+                <a href="../../index.html" class="flag-dropdown-item">
+                  <span class="flag-emoji">🇧🇷</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Brasile</span>
+                    <span class="flag-desc">Portoghese (Legacy)</span>
+                  </span>
+                </a>
+                <a href="../en/article-oauth-pkce.html" class="flag-dropdown-item">
+                  <span class="flag-emoji">🇨🇭</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Svizzera</span>
+                    <span class="flag-desc">English</span>
+                  </span>
+                </a>
+                <a href="index.html" class="flag-dropdown-item active">
+                  <span class="flag-emoji">🇮🇹</span>
+                  <span class="flag-text">
+                    <span class="flag-name">Italia</span>
+                    <span class="flag-desc">Italiano</span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Article Hero Section -->
+  <section class="article-hero" aria-labelledby="article-heading">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10 mx-auto text-center">
+          <span class="badge bg-light text-dark mb-3">OAuth 2.1</span>
+          <h1 id="article-heading" class="display-4 fw-bold mb-4">Architettura Autenticazione Enterprise con PKCE</h1>
+          <p class="lead">Guida completa all'implementazione OAuth 2.1 Authorization Code Flow con PKCE (Proof Key for Code Exchange) per applicazioni enterprise</p>
+          <p class="text-white-50 mt-3">
+            <i class="bi bi-calendar" aria-hidden="true"></i> Pubblicato: 2025 | 
+            <i class="bi bi-person" aria-hidden="true"></i> Christian Mulato | 
+            <i class="bi bi-tag" aria-hidden="true"></i> Sicurezza, Architettura Enterprise
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Article Content -->
+  <section class="section">
+    <div class="container">
+      <div class="article-content">
+        
+        <div class="highlight-box">
+          <h3><i class="bi bi-info-circle text-primary"></i> Focus Sicurezza</h3>
+          <p class="mb-0">
+            Questo articolo fornisce una guida completa all'implementazione OAuth 2.1 Authorization Code Flow con PKCE (Proof Key for Code Exchange) 
+            per applicazioni enterprise. Copre best practice sicurezza, supporto multi-provider (Google, Microsoft) e conformità standard sicurezza OWASP.
+          </p>
+        </div>
+
+        <h2>Introduzione</h2>
+        <p>
+          OAuth 2.1 rappresenta l'evoluzione di OAuth 2.0, incorporando best practice di sicurezza e rimuovendo flussi deprecati. 
+          L'Authorization Code Flow con PKCE (Proof Key for Code Exchange) è ora l'approccio raccomandato per tutti i tipi di client, 
+          fornendo sicurezza migliorata contro attacchi di intercettazione del codice di autorizzazione.
+        </p>
+        <p>
+          In ambienti enterprise, implementare un'architettura di autenticazione robusta è critico per proteggere dati sensibili 
+          e garantire conformità con standard di sicurezza. Questa guida copre l'implementazione di OAuth 2.1 con PKCE in sistemi di produzione, 
+          basata su esperienza reale con il sistema di autenticazione <strong>Área 51</strong>.
+        </p>
+
+        <h2>Cos'è PKCE?</h2>
+        <p>
+          PKCE (RFC 7636) è un'estensione di sicurezza progettata per prevenire attacchi di intercettazione del codice di autorizzazione. Funziona attraverso:
+        </p>
+        <ul>
+          <li><strong>Code Verifier:</strong> Una stringa crittograficamente casuale generata dal client</li>
+          <li><strong>Code Challenge:</strong> Un valore derivato (hash SHA256) del code verifier</li>
+          <li><strong>Code Challenge Method:</strong> Il metodo usato per derivare la challenge (tipicamente S256)</li>
+        </ul>
+        <p>
+          Il client invia la code challenge durante la richiesta di autorizzazione, e il server di autorizzazione restituisce un codice di autorizzazione. 
+          Quando si scambia il codice per i token, il client deve fornire il code verifier originale, che il server valida contro la challenge memorizzata.
+        </p>
+
+        <h2>Panoramica Architettura</h2>
+        <p>
+          L'architettura di autenticazione enterprise consiste di diversi componenti chiave:
+        </p>
+        
+        <h3>1. Livello Autenticazione</h3>
+        <ul>
+          <li><strong>OAuth 2.1 Authorization Code Flow con PKCE:</strong> Obbligatorio per tutti i flussi di autenticazione</li>
+          <li><strong>Validazione JWT:</strong> Valida issuer, audience e claim di scadenza</li>
+          <li><strong>Supporto Multi-Provider:</strong> Google, Microsoft Entra ID e altri identity provider</li>
+        </ul>
+
+        <h3>2. Livello Autorizzazione</h3>
+        <ul>
+          <li><strong>Controllo Accesso Granulare:</strong> Implementato tramite allowlist</li>
+          <li><strong>Permessi Basati su Ruoli:</strong> Controllo accesso fine-grained</li>
+          <li><strong>Capacità Super Admin:</strong> Gestione accesso amministrativo</li>
+        </ul>
+
+        <h3>3. Protezione Dati</h3>
+        <ul>
+          <li><strong>Cifratura AES-256-CBC:</strong> Usata per refresh token memorizzati in cookie</li>
+          <li><strong>Attributi Cookie Sicuri:</strong> HttpOnly, Secure, SameSite=Strict</li>
+          <li><strong>Sanitizzazione PII:</strong> Informazioni personali rimosse dai log</li>
+        </ul>
+
+        <h2>Dettagli Implementazione</h2>
+        
+        <h3>Implementazione Flusso PKCE</h3>
+        <p>Il flusso PKCE consiste dei seguenti passi:</p>
+        <ol>
+          <li><strong>Genera Code Verifier:</strong> Crea una stringa crittograficamente casuale (43-128 caratteri)</li>
+          <li><strong>Genera Code Challenge:</strong> Calcola hash SHA256 del code verifier e codifica base64url</li>
+          <li><strong>Richiesta Autorizzazione:</strong> Includi parametri code_challenge e code_challenge_method</li>
+          <li><strong>Risposta Autorizzazione:</strong> Ricevi codice di autorizzazione dal provider</li>
+          <li><strong>Scambio Token:</strong> Invia codice di autorizzazione e code_verifier per ottenere token</li>
+        </ol>
+
+        <div class="code-block">
+          <strong>Esempio: Generazione Codice PKCE (JavaScript)</strong>
+          <pre><code>// Genera code verifier (43-128 caratteri)
+function generateCodeVerifier() {
+  const array = new Uint8Array(32);
+  crypto.getRandomValues(array);
+  return base64UrlEncode(array);
+}
+
+// Genera code challenge (hash SHA256)
+async function generateCodeChallenge(verifier) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(verifier);
+  const digest = await crypto.subtle.digest('SHA-256', data);
+  return base64UrlEncode(new Uint8Array(digest));
+}</code></pre>
+        </div>
+
+        <h3>Validazione Token</h3>
+        <p>
+          I token JWT devono essere validati per:
+        </p>
+        <ul>
+          <li><strong>Issuer (iss):</strong> Deve corrispondere all'identity provider atteso</li>
+          <li><strong>Audience (aud):</strong> Deve corrispondere al client ID</li>
+          <li><strong>Scadenza (exp):</strong> Il token non deve essere scaduto</li>
+          <li><strong>Firma:</strong> Deve essere valida secondo le chiavi pubbliche del provider</li>
+        </ul>
+
+        <div class="security-box">
+          <h3><i class="bi bi-shield-exclamation text-danger"></i> Best Practice Sicurezza</h3>
+          <ul>
+            <li><strong>Usa sempre HTTPS:</strong> TLS 1.2+ è obbligatorio per tutti i flussi OAuth</li>
+            <li><strong>Valida tutti i token:</strong> Non fidarti mai di token senza validazione</li>
+            <li><strong>Memorizza token in modo sicuro:</strong> Usa cookie HttpOnly per refresh token</li>
+            <li><strong>Implementa rotazione token:</strong> I refresh token dovrebbero essere ruotati all'uso</li>
+            <li><strong>Monitora anomalie:</strong> Registra tutti gli eventi di autenticazione per audit</li>
+          </ul>
+        </div>
+
+        <h2>Supporto Multi-Provider</h2>
+        <p>
+          Le applicazioni enterprise spesso necessitano di supportare multiple identity provider. L'architettura dovrebbe:
+        </p>
+        <ul>
+          <li><strong>Astrarre Logica Provider:</strong> Interfaccia comune per tutti i provider</li>
+          <li><strong>Configurazione Specifica Provider:</strong> Client ID, endpoint e scope</li>
+          <li><strong>Gestione Token Unificata:</strong> Normalizza token da provider diversi</li>
+          <li><strong>Mappatura Utenti:</strong> Mappa identità provider a account utenti interni</li>
+        </ul>
+
+        <h3>Provider Supportati</h3>
+        <ul>
+          <li><strong>Google:</strong> OAuth 2.0 con supporto PKCE</li>
+          <li><strong>Microsoft Entra ID:</strong> Integrazione Azure AD con OIDC</li>
+          <li><strong>Provider Personalizzati:</strong> Architettura estendibile per provider aggiuntivi</li>
+        </ul>
+
+        <h2>Gestione Sessione</h2>
+        <p>
+          La gestione sicura delle sessioni è critica per mantenere lo stato di autenticazione utente:
+        </p>
+        <ul>
+          <li><strong>Memorizzazione Refresh Token:</strong> Cifrato AES-256-CBC in cookie HttpOnly</li>
+          <li><strong>Scadenza Sessione:</strong> Timeout configurabile con rinnovo automatico</li>
+          <li><strong>Sessioni Concurrenti:</strong> Supporto per multiple sessioni attive per utente</li>
+          <li><strong>Revoca Sessione:</strong> Capacità di invalidare sessioni su richiesta</li>
+        </ul>
+
+        <h2>Audit e Conformità</h2>
+        <p>
+          Tutti gli eventi di autenticazione devono essere registrati per audit e conformità:
+        </p>
+        <ul>
+          <li><strong>Logging Strutturato:</strong> Formato JSONL per facile parsing</li>
+          <li><strong>Tipi Evento:</strong> Login, logout, refresh token, tentativi accesso</li>
+          <li><strong>Conservazione Dati:</strong> Periodo di conservazione configurabile (default: 30 giorni)</li>
+          <li><strong>Protezione PII:</strong> Informazioni personali sanificate nei log</li>
+        </ul>
+
+        <h2>Conformità OWASP</h2>
+        <p>
+          L'implementazione segue le linee guida sicurezza OWASP:
+        </p>
+        <ul>
+          <li><strong>OWASP Top 10:</strong> Protezione contro vulnerabilità comuni</li>
+          <li><strong>Best Practice Autenticazione:</strong> Gestione sicura password, gestione sessione</li>
+          <li><strong>Sicurezza API:</strong> Rate limiting, validazione input, encoding output</li>
+          <li><strong>Memorizzazione Crittografica:</strong> Uso corretto di cifratura e hashing</li>
+        </ul>
+
+        <h2>Metriche Produzione</h2>
+        <p>
+          Il sistema di autenticazione <strong>Área 51</strong> dimostra affidabilità di livello produzione:
+        </p>
+        <ul>
+          <li><strong>Uptime:</strong> >99.9% (conformità SLA Azure App Service)</li>
+          <li><strong>Tempo Risposta:</strong> <200ms latenza P95 per endpoint autenticazione</li>
+          <li><strong>Copertura Test:</strong> 100% dei flussi OAuth 2.1/OIDC validati</li>
+          <li><strong>Conformità Sicurezza:</strong> Implementazione standard industria OAuth 2.1 + PKCE</li>
+        </ul>
+
+        <h2>Argomenti Chiave Coperti</h2>
+        <ul>
+          <li>Implementazione PKCE (generazione code verifier e challenge)</li>
+          <li>Validazione Token (sicurezza JWT e verifica claim)</li>
+          <li>Gestione Refresh Token (memorizzazione sicura e rotazione)</li>
+          <li>Sicurezza Sessione (attributi cookie e scadenza)</li>
+          <li>Integrazione Autenticazione Multi-Fattore (MFA)</li>
+          <li>Supporto Multi-Provider (Google, Microsoft, provider personalizzati)</li>
+          <li>Requisiti Audit Trail (logging strutturato e conformità)</li>
+        </ul>
+
+        <h2>Conclusione</h2>
+        <p>
+          Implementare OAuth 2.1 con PKCE in ambienti enterprise richiede attenzione attenta a sicurezza, 
+          scalabilità e conformità. L'architettura descritta in questo articolo fornisce una base provata 
+          per costruire sistemi di autenticazione sicuri che soddisfano standard industria e requisiti regolatori.
+        </p>
+        <p>
+          Per organizzazioni che pianificano di implementare o modernizzare la loro infrastruttura di autenticazione, 
+          questa guida offre insight pratici basati su esperienza produzione con il sistema Área 51, 
+          che ha servito clienti enterprise con >99.9% uptime e piena conformità OAuth 2.1/OIDC.
+        </p>
+
+        <div class="mt-5 pt-4 border-top">
+          <a href="articles.html" class="btn btn-primary">
+            <i class="bi bi-arrow-left" aria-hidden="true"></i> Torna agli Articoli
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <h5>Christian Mulato</h5>
+          <p>Consulente Sistemi Legacy<br>
+          Ticino & Zug, Svizzera</p>
+        </div>
+        <div class="col-md-6 text-md-end mb-4">
+          <h5>Link Rapidi</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Servizi</a></li>
+            <li><a href="about.html">Chi Sono</a></li>
+            <li><a href="articles.html">Articoli</a></li>
+            <li><a href="contact.html">Contatti</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <div class="row">
+        <div class="col-12 text-center">
+          <div class="mb-3">
+            <a href="https://www.linkedin.com/in/chmulato/?locale=en_US" target="_blank" rel="noopener" aria-label="Visita profilo LinkedIn (si apre in nuova scheda)" class="text-light me-3">
+              <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn
+            </a>
+            <a href="https://github.com/chmulato" target="_blank" rel="noopener" aria-label="Visita profilo GitHub (si apre in nuova scheda)" class="text-light">
+              <i class="bi bi-github" aria-hidden="true"></i> GitHub
+            </a>
+          </div>
+          <p class="mb-0">&copy; 2025 Christian Mulato. Tutti i diritti riservati.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+  <script src="../assets/js/analytics.js"></script>
+  
+  <!-- Accessibility Enhancements -->
+  <script src="../assets/js/accessibility.js"></script>
+  
+  <!-- Flag Menu Interaction -->
+  <script src="../assets/js/flag-menu.js"></script>
+  
+  <!-- GDPR Consent Management -->
+  <script src="../assets/js/gdpr.js"></script>
+
+  <!-- GDPR Banner -->
+  <div id="gdpr-banner" class="gdpr-banner">
+    <div class="gdpr-content">
+      <div class="gdpr-icon">
+        🛡️
+      </div>
+      <div class="gdpr-text">
+        <strong>Protezione dei Dati (GDPR)</strong><br>
+        Questo sito utilizza localStorage per salvare le tue preferenze e migliorare la tua esperienza. Continuando a navigare, accetti il trattamento dei tuoi dati in conformità con la nostra Politica sulla Privacy e il Regolamento Generale sulla Protezione dei Dati (GDPR).
+      </div>
+      <div class="gdpr-buttons">
+        <button class="gdpr-btn gdpr-btn-accept" onclick="acceptGDPR()">Accetta</button>
+        <button class="gdpr-btn gdpr-btn-decline" onclick="declineGDPR()">Rifiuta</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+

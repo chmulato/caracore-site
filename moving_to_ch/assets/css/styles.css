@@ -95,6 +95,7 @@ body {
   position: absolute;
   top: calc(100% + 0.5rem);
   right: 0;
+  left: auto;
   background: white;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -102,6 +103,8 @@ body {
   min-width: 180px;
   display: none;
   z-index: 1000;
+  /* Garante que o menu sempre abra à direita */
+  transform-origin: top right;
 }
 
 .flag-dropdown:hover .flag-dropdown-menu,
@@ -563,9 +566,26 @@ body {
     font-size: 0.75rem;
   }
   
+  /* Menu sempre alinhado à direita no mobile */
   .flag-dropdown-menu {
     min-width: 160px;
-    right: -10px;
+    right: 0;
+    left: auto;
+    /* Garante que o menu não saia da tela */
+    max-width: min(180px, calc(100vw - 2rem));
+    /* Força alinhamento à direita */
+    transform: translateX(0);
+  }
+  
+  /* Garante que o dropdown tenha contexto correto */
+  .flag-dropdown {
+    position: relative;
+  }
+  
+  /* Se o container navbar estiver no final, ajusta o menu */
+  .navbar-nav .flag-dropdown:last-child .flag-dropdown-menu {
+    right: 0;
+    left: auto;
   }
 }
 

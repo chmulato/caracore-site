@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Monolito no Pódio – A Engenharia por trás do Desacoplamento S3 + EKS - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Descubra como modernizar um monolito Java de missão crítica através da separação do front-end no S3 e backend no Kubernetes (EKS), sem reescrever do zero.">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, Kubernetes, EKS, S3, AWS, Monolito, Modernização, AngularJS, WildFly, DevOps, Gulp, JAXB, CORS, Docker, Containers">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+    <link rel="icon" href="assets/img/favicon.ico">
+    <meta property="og:title" content="O Monolito no Pódio – A Engenharia por trás do Desacoplamento S3 + EKS">
+    <meta property="og:description" content="Descubra como modernizar um monolito Java de missão crítica através da separação do front-end no S3 e backend no Kubernetes (EKS), sem reescrever do zero.">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="assets/img/2026_01_25_IMAGE_001.png">
+    <meta property="og:locale" content="pt_BR">
+</head>
+<body>
+<button id="themeToggle" class="theme-toggle" aria-label="Ativar tema escuro">
+  <span id="themeIcon">🌙</span>
+</button>
+<header class="site-header">
+  <div class="container">
+    <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+    <nav class="main-nav">
+      <a href="../index.html">Início</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </div>
+ </header>
+ <main class="main-content">
+  <div class="container">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">O Monolito no Pódio – A Engenharia por trás do Desacoplamento S3 + EKS</h1>
+        <div class="post-meta">
+          <time datetime="2026-01-25">25/01/2026</time>
+          <span class="post-author">Por Christian Mulato</span>
+        </div>
+      </header>
+      <div class="post-content">
+        <p><img src="assets/img/2026_01_25_IMAGE_001.png" class="hero-image" alt="Modernização Monolito Cloud - S3 + Kubernetes"></p>
+        <h2>Introdução</h2>
+        <p>No meu último artigo, falei sobre a <strong>"Transformação que Ninguém Viu Vir"</strong>. Hoje, dia 25 de janeiro, entramos no detalhe técnico. Vou mostrar como tiramos um sistema de missão crítica do "conforto" (e do engessamento) do servidor de aplicação e o colocamos em uma arquitetura de alta performance.</p>
+
+<h2>O Fim do "Binário Obeso"</h2>
+
+<p>Até pouco tempo, o front-end <strong>AngularJS 1.5</strong> vivia "sequestrado" dentro de um arquivo EAR de <strong>146MB</strong>. Para mudar uma vírgula na interface, o time de DevOps precisava buildar e subir um gigante no WildFly.</p>
+
+<h3>A Solução</h3>
+
+<p>Extraímos toda a camada de apresentação para o <strong>Amazon S3</strong>. O front-end agora é código estático, servido por uma infraestrutura global (CDN), com custo quase zero e performance máxima.</p>
+
+<p><strong>Benefícios:</strong></p>
+<ul>
+    <li>Deploy independente do backend</li>
+    <li>Custo de hospedagem reduzido em ~95%</li>
+    <li>Latência global minimizada via CDN</li>
+    <li>Zero downtime em atualizações de UI</li>
+</ul>
+
+<h2>O Desafio da Injeção (Gulp vs. Caos)</h2>
+
+<p>Quando você tira o front de dentro do servidor Java, você perde as "facilidades" do contexto da aplicação. O navegador passa a ser o juiz da ordem dos scripts. Se o <strong>Lodash (_)</strong> ou o <strong>Angular</strong> não carregarem primeiro, nada funciona.</p>
+
+<h3>A Estratégia</h3>
+
+<p>Implementamos uma task de build no <strong>Gulp</strong> que organiza a "árvore de dependências". Através de uma injeção ordenada, garantimos que os Vendors (bibliotecas base) cheguem ao browser antes da lógica de negócio.</p>
+
+<p><strong>Exemplo da Task Gulp (gulpfile.js):</strong></p>
+
+<div class="chalkboard"><pre><code class="language-javascript">const gulp = require('gulp');
+const inject = require('gulp-inject');
+const concat = require('gulp-concat');
+
+gulp.task('inject-vendors', function() {
+    // Ordem crítica: Lodash -&gt; Angular -&gt; Módulos
+    const vendorStream = gulp.src([
+        'node_modules/lodash/lodash.min.js',
+        'node_modules/angular/angular.min.js',
+        'node_modules/angular-route/angular-route.min.js',
+        'node_modules/angular-resource/angular-resource.min.js'
+    ], { read: false });
+
+    return gulp.src('./src/index.html')
+        .pipe(inject(vendorStream, {
+            starttag: '&lt;!-- inject:vendor:js --&gt;',
+            transform: function(filepath) {
+                return '&lt;script src="' + filepath + '"&gt;&lt;/script&gt;';
+            }
+        }))
+        .pipe(gulp.dest('./dist'));
+});
+</code></pre></div>
+
+<p><strong>Resultado:</strong> Eliminamos os erros de <code>ReferenceError</code> e <code>$injector:unpr</code> que assombram migrações de sistemas legados.</p>
+
+<h2>O Monolito no Pod (EKS)</h2>
+
+<p>Enquanto o front brilha no S3, o backend foi "domesticado" dentro do <strong>Kubernetes (EKS)</strong>. Colocar um monolito Java em um Pod não é apenas Dockerizar; é ajustar a "respiração" do sistema.</p>
+
+<h3>JVM & Memória</h3>
+
+<p>Configuramos limites precisos de <strong>4GB</strong> com coletor <strong>G1GC</strong>. Isso impede que o WildFly sofra com latência de Garbage Collection em momentos de pico de processamento de sinistros.</p>
+
+<p><strong>Configuração do Deployment:</strong></p>
+
+<div class="chalkboard"><pre><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-backend
+spec:
+  replicas: 3
+  template:
+    spec:
+      containers:
+      - name: wildfly
+        image: smart-backend:latest
+        resources:
+          limits:
+            memory: "4Gi"
+            cpu: "2"
+          requests:
+            memory: "3Gi"
+            cpu: "1"
+        env:
+        - name: JAVA_OPTS
+          value: "-Xms3g -Xmx3g -XX:+UseG1GC -XX:MaxGCPauseMillis=200"
+</code></pre></div>
+
+<h3>CORS e Segurança</h3>
+
+<p>Com o front no S3 e o backend no EKS, a comunicação é via REST. Implementamos um <strong>CORSFilter</strong> customizado para garantir que apenas nossa origem confiável fale com a API, mantendo a segurança que o setor exige.</p>
+
+<p><strong>Exemplo de CORSFilter (Java):</strong></p>
+
+<div class="chalkboard"><pre><code class="language-java">@WebFilter("/*")
+public class CORSFilter implements Filter {
+    
+    @Override
+    public void doFilter(ServletRequest req, ServletResponse res, 
+                         FilterChain chain) throws IOException, ServletException {
+        
+        HttpServletResponse response = (HttpServletResponse) res;
+        HttpServletRequest request = (HttpServletRequest) req;
+        
+        // Permitir apenas origem do S3 CloudFront
+        String allowedOrigin = System.getenv("ALLOWED_ORIGIN");
+        response.setHeader("Access-Control-Allow-Origin", allowedOrigin);
+        response.setHeader("Access-Control-Allow-Methods", 
+                          "GET, POST, PUT, DELETE, OPTIONS");
+        response.setHeader("Access-Control-Allow-Headers", 
+                          "Content-Type, Authorization, X-Requested-With");
+        response.setHeader("Access-Control-Max-Age", "3600");
+        
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            response.setStatus(HttpServletResponse.SC_OK);
+        } else {
+            chain.doFilter(req, res);
+        }
+    }
+}
+</code></pre></div>
+
+<h2>Lição de Casa: JAXB e Java 11</h2>
+
+<p>Modernizar exige olhar para o que o JDK "jogou fora". Para rodar o código legado em containers modernos (<strong>Java 11+</strong>), tivemos que reinjetar as dependências de <strong>JAXB</strong> e <strong>JAX-WS</strong> que foram removidas do core do Java. Uma pequena alteração no <code>pom.xml</code>, mas uma vitória enorme para a portabilidade da aplicação.</p>
+
+<p><strong>Dependências Necessárias (pom.xml):</strong></p>
+
+<div class="chalkboard"><pre><code class="language-xml">&lt;dependencies&gt;
+    &lt;!-- JAXB API --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.xml.bind&lt;/groupId&gt;
+        &lt;artifactId&gt;jaxb-api&lt;/artifactId&gt;
+        &lt;version&gt;2.3.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    
+    &lt;!-- JAXB Runtime --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.glassfish.jaxb&lt;/groupId&gt;
+        &lt;artifactId&gt;jaxb-runtime&lt;/artifactId&gt;
+        &lt;version&gt;2.3.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    
+    &lt;!-- JAX-WS API (se usar Web Services) --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.xml.ws&lt;/groupId&gt;
+        &lt;artifactId&gt;jaxws-api&lt;/artifactId&gt;
+        &lt;version&gt;2.3.1&lt;/version&gt;
+    &lt;/dependency&gt;
+    
+    &lt;!-- Activation Framework --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;javax.activation&lt;/groupId&gt;
+        &lt;artifactId&gt;activation&lt;/artifactId&gt;
+        &lt;version&gt;1.1.1&lt;/version&gt;
+    &lt;/dependency&gt;
+&lt;/dependencies&gt;
+</code></pre></div>
+
+<h2>Conclusão: Modernização não é Reescrita</h2>
+
+<p>O "Pódio" não é sobre jogar o velho fora, é sobre dar a ele uma infraestrutura de novo. Hoje, o sistema SMART não é mais um monolito lento; é uma <strong>API estável e escalável</strong> protegida pelo Kubernetes, com uma <strong>Interface ágil</strong> que evolui na velocidade do S3.</p>
+
+<h3>Arquitetura Antes vs. Depois</h3>
+
+<p><strong>Antes:</strong></p>
+<div class="chalkboard"><pre><code>┌─────────────────────────────────┐
+│     WildFly Server (146MB)      │
+│  ┌──────────┐   ┌────────────┐  │
+│  │ Angular  │   │  Backend   │  │
+│  │   1.5    │   │    Java    │  │
+│  └──────────┘   └────────────┘  │
+└─────────────────────────────────┘
+    Deploy = 30+ minutos
+</code></pre></div>
+
+<p><strong>Depois:</strong></p>
+<div class="chalkboard"><pre><code>┌──────────────┐           ┌─────────────────┐
+│   Amazon S3  │           │  EKS Cluster    │
+│  (Frontend)  │ ◄────────►│   ┌─────────┐   │
+│  + CloudFront│   CORS    │   │ WildFly │   │
+└──────────────┘           │   │  (API)  │   │
+  Deploy = 2min            │   └─────────┘   │
+                           └─────────────────┘
+                             Deploy = 5min
+</code></pre></div>
+
+<h3>Principais Conquistas</h3>
+
+<ul>
+    <li><strong>Performance:</strong> Redução de 70% no tempo de carregamento inicial</li>
+    <li><strong>Custo:</strong> Economia de 60% em infraestrutura</li>
+    <li><strong>Agilidade:</strong> Deploy do frontend de 30min para 2min</li>
+    <li><strong>Escalabilidade:</strong> Auto-scaling horizontal via Kubernetes</li>
+    <li><strong>Segurança:</strong> Isolamento de camadas com CORS controlado</li>
+</ul>
+
+<p>Essa é a essência da modernização inteligente: transformar o legado em alicerce para o futuro, sem descartá-lo no processo.</p>
+
+<h2>Dicas Práticas para sua Migração</h2>
+
+<ol>
+    <li><strong>Comece pelo Front:</strong> Separar a UI é o passo menos arriscado e com maior ROI imediato</li>
+    <li><strong>Automatize o Build:</strong> Invista tempo em tasks Gulp/Webpack bem estruturadas</li>
+    <li><strong>Monitore a JVM:</strong> Use ferramentas como Prometheus + Grafana para acompanhar GC e memória</li>
+    <li><strong>CORS não é Inimigo:</strong> Configure adequadamente e teste todas as origens antes de ir para produção</li>
+    <li><strong>Java 11+ Requer Atenção:</strong> Sempre verifique dependências removidas do JDK</li>
+</ol>
+
+<h2>Reflexões Finais: O Valor Invisível da Modernização</h2>
+
+<p>Quando você apresenta essa transformação para um executivo de negócios, o que ele vê são números: 70% de performance, 60% de economia, deploys 15 vezes mais rápidos. São métricas impressionantes, sem dúvida. Mas há algo muito mais profundo acontecendo nos bastidores que raramente aparece em relatórios de board.</p>
+
+<p>Ao separar o frontend do backend, você não está apenas organizando arquivos. Você está <strong>democratizando a inovação</strong>. Agora, um designer pode experimentar uma nova interface sem mobilizar toda a infraestrutura Java. Um desenvolvedor frontend pode iterar rapidamente sem esperar o ciclo completo de build do monolito. A equipe de UX pode testar A/B em produção sem riscos de derrubar o core transacional.</p>
+
+<p>O Kubernetes não é apenas orquestração de containers. É <strong>previsibilidade operacional</strong>. Cada pod é um universo isolado com recursos garantidos. Não há mais aquela sexta-feira à noite em que o sistema trava porque alguém esqueceu de ajustar o heap da JVM. Não há mais aquele pico de usuários que derruba tudo porque não havia como escalar horizontalmente.</p>
+
+<p>E talvez o mais importante: você ganha <strong>tempo de vida de volta</strong>. Tempo que antes era gasto apagando incêndios, agora pode ser investido em construir features que realmente importam. Tempo que era perdido em deploys noturnos cheios de tensão, agora é usado para dormir e ter uma vida.</p>
+
+<h3>O Próximo Passo: Observabilidade e Resiliência</h3>
+
+<p>Nossa jornada não termina aqui. O próximo capítulo dessa história envolve <strong>observabilidade profunda</strong> (distributed tracing com OpenTelemetry), <strong>chaos engineering</strong> para testar resiliência em produção, e <strong>GitOps</strong> para que a infraestrutura seja tão versionada quanto o código.</p>
+
+<p>Mas isso fica para o próximo artigo. Por hoje, celebramos o monolito que chegou ao pódio — não por ser perfeito, mas por ter evoluído sem morrer no processo.</p>
+
+<h3>Quer Conversar Sobre Sua Migração?</h3>
+
+<p>Se você está enfrentando desafios similares — sistemas legados que precisam evoluir mas não podem parar, pressão por modernização mas com orçamento apertado, equipe pequena mas problemas grandes — vamos trocar experiências. Compartilhe suas dúvidas ou cases nos comentários ou entre em contato através do LinkedIn.</p>
+
+<p><em>Até a próxima transformação! 🚀</em></p>
+
+<h2>Dicionário de Termos Técnicos</h2>
+        <div class="chalkboard">
+          <dl>
+            <dt><strong>EAR (Enterprise Archive)</strong></dt><dd>Formato de empacotamento Java EE contendo aplicação completa.</dd>
+            <dt><strong>S3 (Simple Storage Service)</strong></dt><dd>Serviço de armazenamento de objetos da AWS para hospedagem estática.</dd>
+            <dt><strong>EKS (Elastic Kubernetes Service)</strong></dt><dd>Serviço gerenciado de Kubernetes na AWS.</dd>
+            <dt><strong>G1GC (Garbage First Garbage Collector)</strong></dt><dd>Coletor de lixo moderno com pausa previsível.</dd>
+            <dt><strong>CORS (Cross-Origin Resource Sharing)</strong></dt><dd>Mecanismo de segurança para requisições entre domínios.</dd>
+            <dt><strong>CDN (Content Delivery Network)</strong></dt><dd>Rede de distribuição de conteúdo global.</dd>
+            <dt><strong>Pod</strong></dt><dd>Menor unidade de deployment no Kubernetes, contendo um ou mais containers.</dd>
+            <dt><strong>CloudFront</strong></dt><dd>CDN da AWS que distribui conteúdo do S3 globalmente.</dd>
+          </dl>
+        </div>
+      </div>
+      <footer class="post-footer">
+        <div class="author-info">
+          <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+          <div class="author-details">
+            <strong>Christian Mulato</strong>
+            <p>Desenvolvedor Java e Arquiteto de Software</p>
+          </div>
+        </div>
+      </footer>
+    </article>
+  </div>
+ </main>
+ <footer class="site-footer">
+  <div class="container">
+    <p>&copy; 2026 Christian Mulato. Todos os direitos reservados.</p>
+  </div>
+ </footer>
+ <script src="assets/js/main.js"></script>
+ </body>
+</html>

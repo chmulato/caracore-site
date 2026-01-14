@@ -110,14 +110,14 @@ gulp.task('inject-vendors', function() {
 <div class="chalkboard"><pre><code class="language-yaml">apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: smart-backend
+  name: app-backend
 spec:
   replicas: 3
   template:
     spec:
       containers:
       - name: wildfly
-        image: smart-backend:latest
+        image: app-backend:latest
         resources:
           limits:
             memory: "4Gi"
@@ -203,7 +203,7 @@ public class CORSFilter implements Filter {
 
 <h2>Conclusão: Modernização não é Reescrita</h2>
 
-<p>O "Pódio" não é sobre jogar o velho fora, é sobre dar a ele uma infraestrutura de novo. Hoje, o sistema SMART não é mais um monolito lento; é uma <strong>API estável e escalável</strong> protegida pelo Kubernetes, com uma <strong>Interface ágil</strong> que evolui na velocidade do S3.</p>
+<p>O "Pódio" não é sobre jogar o velho fora, é sobre dar a ele uma infraestrutura de novo. Hoje, o sistema não é mais um monolito lento; é uma <strong>API estável e escalável</strong> protegida pelo Kubernetes, com uma <strong>Interface ágil</strong> que evolui na velocidade do S3.</p>
 
 <h3>Arquitetura Antes vs. Depois</h3>
 

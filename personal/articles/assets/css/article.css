@@ -1,3 +1,64 @@
+/* === FINAIS DOS ARTIGOS DA SÉRIE BRASIL, SDK E SOBERANIA === */
+
+.final-note {
+    margin-top: 3rem;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+    color: var(--text-light);
+    font-style: italic;
+    text-align: left;
+}
+
+.bibliography {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    background: var(--background-light);
+    color: var(--text-light);
+    border-radius: 8px;
+}
+.bibliography h4 {
+    margin-bottom: 0.7rem;
+    font-size: 1.1rem;
+    color: #1e40af;
+}
+.bibliography ul {
+    margin: 0;
+    padding-left: 1.2rem;
+}
+.bibliography li {
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
+}
+
+.author-signature {
+    margin-top: 2.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.08rem;
+    color: var(--text-light);
+    text-align: left;
+}
+
+.copyright {
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    font-size: 0.98rem;
+    color: var(--text-light);
+    text-align: left;
+}
+
+.next-episode {
+    margin-top: 3.5rem;
+    margin-bottom: 0;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+    border-top: 2px dashed #2563eb;
+    font-size: 1.08rem;
+    color: #2563eb;
+    background: var(--background-light);
+    border-radius: 8px;
+    text-align: left;
+}
 /* ================================
    ARTICLE.CSS - Estilos profissionais para artigos com tema dark/light
    Christian Mulato Dev Blog - Versão Profissional

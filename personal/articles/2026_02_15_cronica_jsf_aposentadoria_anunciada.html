@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSF: Crônica de uma Aposentadoria Anunciada - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Um artigo sobre a ascensão e queda do JavaServer Faces (JSF) e a evolução do desenvolvimento web em Java.">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Java, JSF, JavaServer Faces, Spring Boot, Desenvolvimento Web, Arquitetura de Software, Legado, Migração">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">JSF: Crônica de uma Aposentadoria Anunciada</h1>
+                    <div class="post-meta">
+                        <time datetime="2026-02-15">15/02/2026</time> - 8 min de leitura
+                    </div>
+                </header>
+                
+                <div class="post-content">
+                    <img alt="Crônica de uma Aposentadoria Anunciada" src="assets/img/2026_02_15_IMAGE_001.png" class="hero-image" />
+                    <p>Você já se deparou com um projeto Java legado e sentiu que viajou no tempo? Siglas como JSF, <code>faces-config.xml</code>, e um mar de componentes PrimeFaces podem assustar. Se isso aconteceu, saiba que você não está sozinho. Esse sentimento é um rito de passagem para muitos desenvolvedores que herdam sistemas construídos em uma era diferente da web.</p>
+                    <p>Houve uma época em que o <strong>JavaServer Faces (JSF)</strong> era a vanguarda, a grande promessa para construir interfaces web robustas e complexas com a solidez do Java. Mas, como em toda boa história de tecnologia, uma reviravolta aconteceu. Vamos mergulhar fundo nessa crônica, entender o que levou o JSF a uma merecida aposentadoria e, mais importante, como podemos guiar seus descendentes legados para o futuro, de forma segura e planejada.</p>
+
+                    <h2>O Cenário Pré-JSF: O Velho Oeste do Java Web</h2>
+                    <p>Para entender a ascensão do JSF, precisamos voltar um pouco mais no tempo. No início dos anos 2000, o desenvolvimento web com Java era um território selvagem, dominado por <strong>Servlets e JavaServer Pages (JSP)</strong>.</p>
+                    <ul>
+                        <li><strong>Servlets</strong> eram puros, poderosos, mas verbosos. Escrever HTML dentro de código Java (<code>out.println("&lt;h1&gt;Olá&lt;/h1&gt;")</code>) era comum, uma prática que hoje sabemos ser um pesadelo de manutenção.</li>
+                        <li><strong>JSPs</strong> inverteram o jogo, permitindo embutir código Java dentro do HTML usando tags especiais (<code>&lt;% ... %&gt;</code>). Foi uma melhoria, mas rapidamente levava a um "código espaguete", onde a lógica de negócio se misturava perigosamente com a apresentação.</li>
+                    </ul>
+                    <p>Faltava um padrão, um framework que trouxesse ordem ao caos, que permitisse a reutilização de componentes e que abstraísse a complexidade do protocolo HTTP. O mercado ansiava por um modelo similar ao desenvolvimento desktop, com componentes de arrastar e soltar. Foi nesse cenário que o JSF nasceu, prometendo ser o herói da produtividade.</p>
+
+                    <h2>O Reinado dos Componentes: Uma Promessa de Simplicidade</h2>
+                    <p>O JSF chegou com uma proposta revolucionária para a época: um modelo de componentes de UI (User Interface) totalmente gerenciado no servidor. A ideia era brilhante: o desenvolvedor web não precisaria mais se preocupar com os detalhes do HTML, JavaScript ou do ciclo de vida das requisições HTTP.</p>
+                    <p>Imagine a era pré-smartphones, onde celulares tinham botões físicos para tudo. O JSF era assim: robusto e baseado em componentes. Quer um campo de texto? Use <code>&lt;h:inputText&gt;</code>. Um botão? <code>&lt;h:commandButton&gt;</code>. Cada um desses componentes era um objeto Java no servidor, com seu próprio estado, eventos e ciclo de vida.</p>
+                    <p>Por exemplo, para criar um campo de login, você faria algo assim em seu arquivo <code>.xhtml</code>:</p>
+                    <div class="chalkboard"><pre><code class="language-xml">&lt;h:form&gt;
+    &lt;h:panelGrid columns="2"&gt;
+        &lt;h:outputLabel for="username" value="Usuário:" /&gt;
+        &lt;h:inputText id="username" value="#{loginBean.username}" required="true" /&gt;
+
+        &lt;h:outputLabel for="password" value="Senha:" /&gt;
+        &lt;h:inputSecret id="password" value="#{loginBean.password}" required="true" /&gt;
+    &lt;/h:panelGrid&gt;
+    &lt;h:commandButton value="Login" action="#{loginBean.doLogin}" /&gt;
+&lt;/h:form&gt;
+</code></pre></div>
+                    <p>A mágica estava no <code>value="#{loginBean.username}"</code>. Isso ligava diretamente o campo de texto a uma propriedade em uma classe Java no backend (o "Managed Bean"). O framework cuidava de tudo: renderizar o HTML, capturar os dados do formulário, atribuí-los ao bean, invocar a ação <code>doLogin</code> e, finalmente, decidir para qual página navegar. Para o desenvolvedor, parecia que ele estava programando para desktop, mas na web.</p>
+                    
+                    <h2>As Rachaduras na Coroa: A Complexidade Oculta</h2>
+                    <p>O que parecia ser a força do JSF — a abstração completa do front-end — também se tornou sua maior fraqueza. Por baixo da aparente simplicidade, havia uma máquina complexa e opinativa.</p>
+                    
+                    <h3>O Ritual de Seis Passos</h3>
+                    <p>Cada clique, cada interação do usuário, disparava o infame <strong>Ciclo de Vida do JSF</strong>, um ritual de seis fases que acontecia no servidor:</p>
+                    <ol>
+                        <li><strong>Restore View</strong>: O servidor recriava a árvore de componentes da página.</li>
+                        <li><strong>Apply Request Values</strong>: Os novos valores enviados pelo navegador eram aplicados aos componentes.</li>
+                        <li><strong>Process Validations</strong>: As regras de validação eram executadas.</li>
+                        <li><strong>Update Model Values</strong>: Se tudo estivesse válido, os valores eram salvos nos Managed Beans.</li>
+                        <li><strong>Invoke Application</strong>: O método de ação (como o <code>doLogin</code>) era executado.</li>
+                        <li><strong>Render Response</strong>: O servidor gerava o novo HTML para ser enviado de volta ao navegador.</li>
+                    </ol>
+                    <p>Esse ciclo, embora poderoso, era muitas vezes um exagero. Para uma simples atualização, todo esse processo era executado, tornando a aplicação pesada e a depuração, um pesadelo. Um erro em qualquer fase poderia gerar exceções misteriosas e difíceis de rastrear.</p>
+                    
+                    <h3>A Mochila Pesada do ViewState</h3>
+                    <p>Para manter o estado de todos os componentes entre as requisições, o JSF criou o <strong>ViewState</strong>: um campo oculto no formulário HTML (<code>&lt;input type="hidden" name="javax.faces.ViewState" ... /&gt;</code>) que continha uma versão serializada de toda a árvore de componentes.</p>
+                    <p>A analogia é perfeita: era como carregar uma mochila pesada com todos os seus pertences para uma curta caminhada até a esquina. Na maioria das vezes, você não precisava de tudo, mas era forçado a carregar o peso para frente e para trás a cada passo. Isso resultava em HTMLs gigantescos, consumo elevado de banda e uma lentidão perceptível para o usuário.</p>
+                    
+                    <h2>A Chegada dos Velocistas: A Revolução JavaScript</h2>
+                    <p>Enquanto o JSF operava como um caminhão robusto e lento, o mundo fora do Java não parou. A verdadeira revolução estava acontecendo no navegador. A popularização do <strong>AJAX (Asynchronous JavaScript and XML)</strong> quebrou o modelo de "refresh total da página".</p>
+                    <p>Frameworks como <strong>Spring MVC</strong> já ofereciam uma alternativa mais leve e com mais controle, tratando o HTTP como um cidadão de primeira classe. Mas a grande virada veio com as bibliotecas JavaScript: <strong>React, Angular e Vue.js</strong>.</p>
+                    <p>Eles introduziram o conceito de <strong>Single-Page Applications (SPAs)</strong>. A analogia do caminhão dá lugar à dos carros esportivos: em vez de reconstruir o carro inteiro a cada tarefa, uma equipe de pit stop (o JavaScript no navegador) apenas solicita as peças (dados) necessárias ao chefe de equipe (a API no servidor) e as troca rapidamente.</p>
+                    <p>A comunicação mudou de "me dê a página inteira" para "me dê apenas os dados do usuário" através de <strong>APIs RESTful</strong>. Uma interação que no JSF envolvia um postback completo e o ciclo de seis passos, agora se resumia a uma simples chamada <code>fetch</code> em JavaScript:</p>
+                    <div class="chalkboard"><pre><code class="language-javascript">fetch('/api/users/123')
+  .then(response => response.json())
+  .then(user => {
+    // Apenas atualiza a parte da tela que mostra o nome do usuário
+    document.getElementById('username-display').textContent = user.name;
+  });
+</code></pre></div>
+                    <p>Essa abordagem era drasticamente mais rápida, mais escalável e proporcionava uma experiência de usuário muito mais fluida, similar à de um aplicativo nativo.</p>
+
+                    <h2>Navegando a Transição: O Legado Não Pode Parar</h2>
+                    <p>Então, o veredito é simples? Jogar fora todo o código JSF e começar do zero? Para uma empresa com um sistema crítico em produção, a resposta é um sonoro <strong>não</strong>. Um "big bang" de reescrita é arriscado, caro e pode levar anos, sem entregar valor nesse meio tempo.</p>
+                    <p>A solução é uma migração gradual e planejada. A estratégia mais elegante para isso é o <strong>Strangler Fig Pattern</strong> (Padrão de Figo Estrangulador).</p>
+                    <p>A ideia é construir a nova aplicação (o figo) ao redor do sistema legado (a árvore), gradualmente interceptando e substituindo suas funcionalidades até que o sistema antigo se torne obsoleto e possa ser desligado.</p>
+
+                    <h3>Um Roteiro para a Modernização</h3>
+                    <ol>
+                        <li>
+                            <strong>A Fachada Protetora (API Gateway)</strong>
+                            <p>O primeiro passo é colocar um <strong>API Gateway</strong> na frente de toda a aplicação JSF. Todas as requisições, sem exceção, agora passam por ele. Inicialmente, ele apenas atua como um proxy, redirecionando tudo para o sistema legado. Isso nos dá um ponto de controle central.</p>
+                        </li>
+                        <li>
+                            <strong>O Primeiro Microserviço</strong>
+                            <p>Identifique uma funcionalidade de negócio que seja relativamente isolada. Pode ser o cadastro de um novo produto ou a geração de um relatório. Reescreva essa funcionalidade como um <strong>microserviço</strong> independente, usando uma stack moderna como Spring Boot, e crie uma nova interface para ela em React ou Angular.</p>
+                        </li>
+                        <li>
+                            <strong>O Desvio Inteligente</strong>
+                            <p>Agora, configure o API Gateway. Quando uma requisição para a "nova" funcionalidade chegar (ex: <code>/api/v2/produtos</code>), o gateway a redireciona para o novo microserviço. Todas as outras requisições (ex: <code>/legacy/home.jsf</code>) continuam indo para o monolito JSF. O usuário final utiliza um sistema híbrido sem perceber.</p>
+                        </li>
+                        <li>
+                            <strong>Expandir e Conquistar</strong>
+                            <p>Repita o processo. Módulo por módulo, vá "estrangulando" o sistema legado. Cada nova funcionalidade é um novo microserviço. Funções antigas são reescritas e as rotas no API Gateway são atualizadas. O monolito JSF vai encolhendo em escopo e importância.</p>
+                        </li>
+                    </ol>
+                    <p>Este método permite entregar valor continuamente, reduzir o risco da migração e dar tempo para a equipe aprender as novas tecnologias de forma gradual.</p>
+
+                    <h2>O Kit de Ferramentas do Desenvolvedor Java Moderno</h2>
+                    <p>O JSF nos ensinou muito, mas o futuro é claro. Hoje, o ecossistema Java para web é um dos mais poderosos e versáteis que existem:</p>
+                    <ul>
+                        <li><strong>Backend:</strong> Frameworks como <strong>Spring Boot</strong> dominam pelo seu ecossistema maduro. <strong>Quarkus</strong> e <strong>Micronaut</strong> brilham em cenários de microsserviços e computação nativa (GraalVM), oferecendo tempos de startup incrivelmente rápidos e baixo consumo de memória.</li>
+                        <li><strong>Frontend:</strong> A escolha é sua. <strong>React</strong> oferece flexibilidade, <strong>Angular</strong> vem com uma estrutura completa e opinativa, e <strong>Vue.js</strong> é conhecido por sua curva de aprendizado suave.</li>
+                        <li><strong>A Cola:</strong> A comunicação é feita primariamente via APIs <strong>REST</strong>, mas <strong>GraphQL</strong> ganha cada vez mais espaço por permitir que o frontend peça exatamente os dados de que precisa, evitando o excesso de informações.</li>
+                    </ul>
+                    <p>Entender a jornada do JSF é compreender a própria evolução da web. A tecnologia é um organismo vivo, e a lição mais importante é que a mudança é a única constante. O desenvolvedor que abraça a transição, que aprende com o passado mas constrói para o futuro, é aquele que sempre terá um lugar de destaque nessa história.</p>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

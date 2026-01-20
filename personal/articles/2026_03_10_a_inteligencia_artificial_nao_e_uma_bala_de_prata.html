@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Inteligência Artificial Não É Uma Bala de Prata: Lições de Uma Jornada de Debugging em Sistemas Legados - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre A Inteligência Artificial Não É Uma Bala de Prata: Lições de Uma Jornada de Debugging em Sistemas Legados">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="IA, Inteligência Artificial, Debugging, Sistemas Legados, Produtividade, Desenvolvimento de Software">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+<button id="themeToggle" class="theme-toggle" aria-label="Ativar tema escuro">
+  <span id="themeIcon">🌙</span>
+</button>
+<header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">A Inteligência Artificial Não É Uma Bala de Prata: Lições de Uma Jornada de Debugging em Sistemas Legados</h1>
+                    <div class="post-meta">
+                        <time datetime="2026-03-10">10/03/2026</time>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img alt="Inteligência Artificial e Debugging em Sistemas Legados" src="assets/img/2026_03_10_IMAGE_001.png" class="hero-image" /></p>
+<p><em>Inteligência Artificial e Debugging em Sistemas Legados</em></p>
+<p>Tempo de leitura: 10 minutos</p>
+<h2>Introdução: A Promessa e a Realidade</h2>
+<p>Vivemos uma era de entusiasmo quase religioso em torno da Inteligência Artificial. Manchetes prometem aumentos de produtividade de 40%, 50%, até 100%. Ferramentas de IA generativa são apresentadas como a solução definitiva para todos os problemas de desenvolvimento de software. Mas o que acontece quando essa tecnologia encontra a complexidade brutal de um sistema legado corporativo?</p>
+<p>Este artigo relata uma experiência real de debugging em um sistema enterprise com mais de uma década de existência, onde a IA foi utilizada como ferramenta auxiliar. Os resultados desafiam a narrativa predominante sobre produtividade e revelam verdades incômodas sobre os limites atuais da tecnologia.</p>
+<h2>O Cenário: Um Bug Aparentemente Simples</h2>
+<p>O chamado chegou classificado como "bug simples": uma consulta de contratos que retornava vazio. O usuário informava um identificador válido, clicava em pesquisar, e o sistema respondia com "Nenhum registro encontrado". Os dados existiam no banco. A funcionalidade havia funcionado antes. Deveria ser uma correção de minutos.</p>
+<p>O sistema em questão é uma aplicação Java EE corporativa com as seguintes características:</p>
+<ul>
+<li>Arquitetura multicamadas: Frontend AngularJS, Backend Java EE, Stored Procedures SQL Server</li>
+<li>Servidor de aplicação WildFly com Hibernate</li>
+<li>Código base com mais de 10 anos de evolução</li>
+<li>Múltiplas equipes contribuindo ao longo do tempo</li>
+<li>Documentação desatualizada ou inexistente</li>
+<li>Stored Procedures com lógica de negócio complexa</li>
+</ul>
+<p>Este tipo de sistema é a realidade de centenas de milhares de aplicações corporativas em produção. Não é "novo", não é "limpo", e certamente não foi projetado com a arquitetura moderna em mente. É um produto vivo de decisões tomadas sob pressão, mudanças de requisitos inesperadas, e a necessidade brutal de manter algo funcionando enquanto se evolui. Cada camada dessa aplicação é um depósito de conhecimento tácito — comportamentos emergentes que só existem porque "sempre foi assim" ou "descobrimos um workaround que funciona".</p>
+<p>Quando a IA foi apresentada como ferramenta para acelerar o debugging, as expectativas eram altas. Afinal, se ela consegue gerar código, refatorar estruturas e identificar padrões, por que não conseguiria navegar essa complexidade? A resposta, como veremos, reside na diferença fundamental entre reconhecer padrões em código e compreender as cadeias causais em sistemas que evoluíram organicamente por uma década.</p>
+<h2>Primeira Camada: O Frontend</h2>
+<p>Com a IA como assistente, iniciamos a investigação pelo frontend. A ferramenta rapidamente identificou que o controller AngularJS não estava inicializando corretamente o objeto de parâmetros de pesquisa:</p>
+<div class="chalkboard"><pre><code>// Controller AngularJS - Inicialização dos parâmetros de pesquisa
+app.controller('ContratoController', function($scope, $http) {
+    // Esta linha estava faltando - causa raiz do problema
+    $scope.parametrosPesquisa = {};
+    
+    $scope.pesquisarContratos = function() {
+        $http.get('/api/contratos', {
+            params: $scope.parametrosPesquisa
+        }).then(function(response) {
+            $scope.contratos = response.data;
+        });
+    };
+});
+</code></pre></div>
+<p>Uma correção trivial. Deploy. Teste. O mesmo erro.</p>
+<p>A IA havia encontrado um problema real, mas não era O problema. Esta seria a primeira de muitas correções incrementais. Tempo gasto: 30 minutos.</p>
+<h2>Segunda Camada: O Gerenciamento de Conexões</h2>
+<p>Avançando para o backend, a análise revelou um erro de "Session/EntityManager is closed". O código utilizava uma forma obsoleta de obter conexões JDBC:</p>
+<div class="chalkboard"><pre><code>// ANTES - Padrão obsoleto no Hibernate 5.x
+Session session = sessionFactory.openSession();
+Connection conn = session.connection();  // DEPRECADO!
+
+try {
+    CallableStatement cstm = conn.prepareCall("{call SP_BUSCAR_CONTRATOS(?)}");
+    cstm.setString(1, identificador);
+    ResultSet rs = cstm.executeQuery();
+    // ...
+} finally {
+    session.close();  // Pode falhar se a conexão foi fechada
+}
+
+// DEPOIS - Padrão moderno (Hibernate 5.x+)
+Session session = sessionFactory.openSession();
+session.doReturningWork(connection -> {
+    CallableStatement cstm = connection.prepareCall("{call SP_BUSCAR_CONTRATOS(?)}");
+    cstm.setString(1, identificador);
+    return cstm.executeQuery();
+});
+session.close();
+</code></pre></div>
+<p>Mais uma correção implementada. Deploy. Teste. Progresso - agora a Stored Procedure era executada. Mas ainda sem dados. Tempo acumulado: 1 hora e 30 minutos.</p>
+<h2>Terceira Camada: O Abismo dos Múltiplos ResultSets</h2>
+<p>Aqui começou o verdadeiro desafio. A Stored Procedure do SQL Server retornava múltiplos ResultSets - um comportamento comum em sistemas legados onde SPs foram sendo modificadas ao longo dos anos por diferentes desenvolvedores.</p>
+<p>O primeiro ResultSet continha apenas 2 colunas com dados de debug/log. O segundo ResultSet (teoricamente) conteria os dados reais. A IA sugeriu uma abordagem para pular o primeiro ResultSet:</p>
+<div class="chalkboard"><pre><code>// Tratamento de múltiplos ResultSets do SQL Server
+CallableStatement cstm = connection.prepareCall("{call SP_BUSCAR_CONTRATOS(?)}");
+cstm.setString(1, identificador);
+boolean hasResults = cstm.execute();
+
+ResultSet rs = null;
+while (hasResults) {
+    rs = cstm.getResultSet();
+    
+    // Verifica se é um ResultSet de debug (poucas colunas)
+    if (rs != null) {
+        ResultSetMetaData metadata = rs.getMetaData();
+        int columnCount = metadata.getColumnCount();
+        
+        if (columnCount == 2) {
+            // Provavelmente é debug, descarta
+            logger.debug("[SP-DEBUG] ResultSet com apenas " + columnCount + 
+                        " coluna(s) - considerado DEBUG");
+            rs.close();
+        } else {
+            // Este é o ResultSet real com os dados
+            List&lt;Contrato&gt; contratos = parseResultSet(rs);
+            return contratos;
+        }
+    }
+    
+    hasResults = cstm.getMoreResults();
+}
+</code></pre></div>
+<p>Implementamos. Deploy. Teste. Erro diferente agora - "Operation not supported for forward-only ResultSet" ao tentar chamar rs.beforeFirst().</p>
+<p>A IA sugeriu uma nova abordagem baseada em contagem de colunas. Implementamos. Deploy. Teste. Os logs mostraram:</p>
+<div class="chalkboard"><pre><code>[SP-DEBUG] ResultSet com apenas 2 coluna(s) - considerado DEBUG
+[SP-DEBUG] Não há mais ResultSets disponíveis
+</code></pre></div>
+<p>Não havia segundo ResultSet. Tempo acumulado: 3 horas e 45 minutos.</p>
+<h2>O Problema Real: Além do Código</h2>
+<p>Após horas de investigação, a verdade emergiu: o problema não estava no código Java. A Stored Procedure estava retornando corretamente - ela simplesmente não encontrava dados para aquele identificador específico.</p>
+<p>Mas por quê? O usuário afirmava que os dados existiam.</p>
+<p>A investigação mais profunda revelou a verdadeira natureza do problema. A Stored Procedure continha lógica condicional complexa baseada em parâmetros específicos que determinavam qual path de execução seria seguido. O identificador do contrato, aparentemente simples, estava sendo passado como tipo de dado incorreto em algum ponto da cadeia — possivelmente uma conversão entre VARCHAR e NUMERIC que funcionava em alguns casos específicos mas falhava silenciosamente em outros. Pior ainda, havia conversões implícitas gerenciadas pelo SQL Server que funcionavam de forma consistente apenas sob certas condições, criando o comportamento fantasmagórico onde o mesmo identificador funcionava em um contexto e falhava em outro. E então descobrimos a verdade mais perturbadora: aquela "mensagem de debug" no primeiro ResultSet não era um artefato de desenvolvimento — era na verdade a resposta real quando nenhum dado era encontrado. Diferentes equipes de manutenção, ao longo dos anos, haviam implementado comportamentos inconsistentes nessa Stored Procedure sem jamais documentar essas idiossincrasias.</p>
+<p>A IA não tinha como saber disso. Ela não tinha acesso ao código da Stored Procedure — o sistema de prompt não permitia que ela consultasse o banco de dados. Não conhecia o histórico de modificações dessa SP específica, as inúmeras patches aplicadas sob pressão, ou as razões políticas e técnicas por trás de cada decisão. Não podia saber que "aquela maneira estranha de formatar a saída" existia porque um desenvolvedor anterior havia descoberto que o cliente preferia assim durante uma reunião de urgência às 23h30m. Essas lacunas não são falhas da IA — são simplesmente a realidade de sistemas que evoluíram organicamente por uma década, onde o conhecimento crítico reside exclusivamente na mente de pessoas, logs descartados, e comportamentos emergentes não documentados.</p>
+<h2>O Custo Real</h2>
+<p>Ao final dessa maratona de debugging, a contabilização foi reveladora. Foram mais de 6 horas de trabalho intensivo distribuídas em três dias, com 12 deploys subsequentes enquanto refinávamos o código. Apenas 4 arquivos foram modificados, mas exigiram aproximadamente 80 linhas de código alteradas — nem tudo era obviamente relacionado ao bug principal. No caminho, descobrimos e corrigimos 3 bugs secundários que nunca teriam afetado a funcionalidade em questão mas que existiam como time bombs aguardando o próximo desenvolvedor desafortunado. A solução final não foi elegante ou singular — foi uma combinação de correções aplicadas em múltiplas camadas da arquitetura.</p>
+<p>Sem a IA, este trabalho teria levado quanto tempo? Essa é a pergunta que ninguém consegue responder honestamente. A experiência sugere que não seria dramaticamente diferente — talvez uma a duas horas mais rápido sem os desvios ocasionados por sugestões enganosas, ou talvez uma hora mais lento começando do zero sem a ferramenta. A verdade incômoda é que a IA acelerou significativamente a identificação de padrões de código e sugeriu correções sintáticas com velocidade e precisão impressionantes. Mas o tempo real — o tempo que realmente importa — foi consumido por atividades que a IA não pode acelerar. Os ciclos de build e deploy são inevitáveis quando se trabalha com sistemas legados complexos. A análise de logs e a correlação com comportamento do sistema requerem contexto humano e intuição nascida de experiência prática. A compreensão real da arquitetura e suas idiossincrasias é conhecimento tácito acumulado ao longo de anos trabalhando com aquele codebase específico. E a investigação de comportamentos inesperados — aquela capacidade detetivesca de formular hipóteses contra-intuitivas e testá-las sistematicamente — continua sendo fundamentalmente trabalho humano.</p>
+<h2>Lições Aprendidas</h2>
+<h3>A IA É Uma Ferramenta, Não um Substituto</h3>
+<p>Assim como um martelo não constrói uma casa sozinho, a IA não resolve problemas complexos autonomamente. Ela amplifica a capacidade do desenvolvedor, mas não substitui experiência, intuição e conhecimento de domínio.</p>
+<h3>Sistemas Legados Têm Conhecimento Tácito</h3>
+<p>Anos de decisões, workarounds, e adaptações criam um ecossistema de comportamentos que não estão documentados em lugar algum. A IA trabalha com informação explícita; o conhecimento tácito permanece inacessível.</p>
+<h3>O Contexto É Rei</h3>
+<p>A IA pode analisar código com maestria, mas não conhece a história. Não sabe que "aquele método estranho" foi adicionado às 3 da manhã para resolver um bug de produção há 5 anos. Não entende as pressões políticas que levaram a certas decisões arquiteturais.</p>
+<h3>Debugging É Fundamentalmente Investigativo</h3>
+<p>Resolver bugs em sistemas complexos é mais parecido com trabalho detetivesco do que com programação. Requer formular hipóteses, testar, refutar, reformular. A IA pode ajudar a testar hipóteses, mas formulá-las ainda é trabalho humano.</p>
+<h3>A Produtividade Não É Linear</h3>
+<p>Os ganhos de produtividade prometidos pela IA se materializam em tarefas bem definidas e isoladas. Em sistemas interconectados com comportamentos emergentes, esses ganhos se diluem ou desaparecem.</p>
+<h2>A Narrativa Versus a Realidade</h2>
+<p>A indústria de tecnologia tem um histórico de hype cycles. Já vimos promessas similares com SOA, Microservices, NoSQL, Blockchain, e agora IA. Cada tecnologia teve seu momento de "isto vai mudar tudo" seguido pela realidade de "isto é útil em contextos específicos".</p>
+<p>A IA generativa é genuinamente revolucionária em muitos aspectos. Ela democratiza o acesso ao conhecimento de programação. Ela acelera tarefas repetitivas. Ela serve como um excelente "pair programmer" para discussão de ideias.</p>
+<p>Mas os números de produtividade citados em estudos e materiais de marketing geralmente vêm de cenários controlados: tarefas greenfield com requisitos cristalizados, problemas bem definidos com espaço de solução claro, e ambientes limpos sem débito técnico acumulado. A realidade corporativa é sistematicamente diferente. Sete em cada dez linhas de código escrito em produção hoje serve ao propósito de manutenção — corrigir bugs, refatorar implementações anteriores, adaptar a sistemas em mudança — e não à criação de novas funcionalidades. Os sistemas legados, longe de serem exceções minoritárias, representam a maior parte do código atualmente em execução em ambientes enterprise, sustentando operações críticas que geram bilhões em receita anualmente. E bugs complexos, por definição matemática, são aqueles que resistem às soluções simples e diretas — são problemas emergentes nascidos da interação entre múltiplos subsistemas, efeitos colaterais de otimizações históricas, e comportamentos que atravessam os limites das abstrações que construímos para dominar a complexidade.</p>
+<h2>Conclusão: Expectativas Calibradas</h2>
+<p>A Inteligência Artificial é uma ferramenta extraordinária que está transformando o desenvolvimento de software. Mas como toda ferramenta, tem seus limites e contextos de aplicação.</p>
+<p>Para tarefas bem definidas, código novo, e problemas com soluções conhecidas, a IA pode genuinamente multiplicar a produtividade. Para debugging de sistemas legados, integração de componentes heterogêneos, e problemas que requerem conhecimento de domínio profundo, os ganhos são modestos.</p>
+<p>O profissional de tecnologia moderno deve abraçar a IA como mais uma ferramenta em seu arsenal - poderosa, mas não mágica. A verdadeira habilidade está em saber quando e como aplicá-la, reconhecendo tanto suas capacidades quanto suas limitações.</p>
+<p>A jornada de debugging relatada neste artigo não foi um fracasso da IA. Foi uma demonstração de que problemas complexos requerem soluções complexas, e que a inteligência artificial, por mais avançada que seja, ainda é complementar à inteligência humana - não substituta.</p>
+<p>No final, o bug foi corrigido. O sistema voltou a funcionar. E a lição mais valiosa foi reafirmada: em tecnologia, não existem balas de prata.</p>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

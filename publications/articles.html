@@ -88,6 +88,10 @@
                   <button class="chip" type="button" data-tag="arquitetura" aria-pressed="false" aria-label="Filtrar por Arquitetura">Arquitetura</button>
                   <button class="chip" type="button" data-tag="mobile" aria-pressed="false" aria-label="Filtrar por Mobile">Mobile</button>
                   <button class="chip" type="button" data-tag="cross-platform" aria-pressed="false" aria-label="Filtrar por Cross-platform">Cross-platform</button>
+                  <button class="chip" type="button" data-tag="pdv" aria-pressed="false" aria-label="Filtrar por PDV">PDV</button>
+                  <button class="chip" type="button" data-tag="reforma tributária" aria-pressed="false" aria-label="Filtrar por Reforma Tributária">Reforma Tributária</button>
+                  <button class="chip" type="button" data-tag="pix split" aria-pressed="false" aria-label="Filtrar por Pix Split">Pix Split</button>
+                  <button class="chip" type="button" data-tag="varejo" aria-pressed="false" aria-label="Filtrar por Varejo">Varejo</button>
               </div>
               <button id="resetFilters" type="button" class="chip" aria-label="Limpar filtros e busca">Reset</button>
               <div id="resultCount" class="result-count" aria-live="polite"></div>
@@ -96,6 +100,17 @@
         <!-- Ano mais recente primeiro -->
         <div class="year-group">
             <div class="year-title">2026</div>
+            <div class="month-group">
+                <div class="month-title">Fevereiro</div>
+                <ul class="article-list">
+                    <li class="article-item" data-tags="pdv,ponto de venda,reforma tributária,cbs,ibs,pix split,taxa de consumo brasileira,varejo,tributação,caracore pdv,automação,futuro do varejo">
+                        <span class="article-date">07/02</span>
+                        <a class="article-title" href="articles/2026_02_07_article_71.html">
+                            CaraCore PDV: O Primeiro Sistema Pronto para a Reforma Tributária 2026-2033 e o Futuro do Pix Split
+                        </a>
+                    </li>
+                </ul>
+            </div>
             <div class="month-group">
                 <div class="month-title">Janeiro</div>
                 <ul class="article-list">
@@ -681,7 +696,11 @@
                     { tag: 'automacao', patterns: ['automacao','automação','workflow','workflows'] },
                     { tag: 'outlook', patterns: ['outlook','new outlook'] },
                     { tag: 'e-mail', patterns: ['e-mail','email','correio eletronico'] },
-                    { tag: 'suporte tecnico', patterns: ['suporte tecnico','suporte técnico','troubleshooting','diagnostico','diagnóstico'] }
+                    { tag: 'suporte tecnico', patterns: ['suporte tecnico','suporte técnico','troubleshooting','diagnostico','diagnóstico'] },
+                    { tag: 'pdv', patterns: ['pdv','ponto de venda','pos'] },
+                    { tag: 'reforma tributária', patterns: ['reforma tributária','reforma tributaria','cbs','ibs'] },
+                    { tag: 'pix split', patterns: ['pix split','split','taxa de consumo'] },
+                    { tag: 'varejo', patterns: ['varejo','retail','comércio','comercio'] }
                 ].map(rule => ({ tag: normalize(rule.tag), patterns: rule.patterns.map(p => normalize(p)) }));
 
                 const articleItems = Array.from(document.querySelectorAll('.article-item'));

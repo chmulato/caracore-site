@@ -4,6 +4,11 @@
  */
 
 /* Botões de navegação do portfolio */
+.nav-badge-pdv {
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
 .nav-badge-hub {
   background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
   color: white;
@@ -61,6 +66,10 @@
   color: white;
   padding: 2rem;
   text-align: center;
+}
+
+.project-header.pdv {
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
 }
 
 .project-header.hub {

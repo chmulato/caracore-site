@@ -115,14 +115,15 @@
       <h2 class="mb-3">
         <i class="bi bi-cash"></i> CaraCore PDV
       </h2>
-      <p class="lead mb-3">O primeiro PDV pronto para a Reforma Tributária 2026-2033</p>
+      <p class="lead mb-3">O primeiro PDV pronto para a Reforma Tributária 2026-2033. Arquitetura antifrágil: offline-first e modo contingência.</p>
       <div>
-        <span class="tech-badge">Java 17+</span>
+        <span class="tech-badge">Java 21</span>
         <span class="tech-badge">Spring Boot</span>
         <span class="tech-badge">PostgreSQL 15</span>
-        <span class="tech-badge">Docker</span>
+        <span class="tech-badge">Bootstrap 5</span>
         <span class="tech-badge">HTMX</span>
-        <span class="tech-badge">Thymeleaf</span>
+        <span class="tech-badge">ApexCharts</span>
+        <span class="tech-badge">Docker</span>
       </div>
     </div>
     
@@ -141,12 +142,12 @@
           <ul class="feature-list">
             <li>Motor Fiscal Inteligente com atualização automática de alíquotas CBS e IBS até 2033</li>
             <li>Pix Split para liquidação automática de impostos e taxa de serviço</li>
-            <li>Dashboard Gestor com visão clara do lucro líquido e créditos tributários</li>
-            <li>Leitor de código de barras via câmera (QuaggaJS) para agilizar vendas</li>
-            <li>Interface moderna e responsiva com textos de ajuda contextuais</li>
-            <li>Alta performance com atualizações parciais (HTMX) e componentes reutilizáveis</li>
-            <li>Conformidade total com a nova legislação tributária brasileira</li>
-            <li>Configuração fiscal completa com gestão de NCM e histórico de alterações</li>
+            <li>Dashboard Administrativo com ApexCharts: vendas semanais, produtos mais vendidos, indicadores em tempo real</li>
+            <li>Arquitetura Antifrágil: Modo Offline-First (H2) e Modo de Contingência (SQLite + SMS via ADB)</li>
+            <li>PIX com QR Code, webhook e validação em tempo real; estrutura para Mercado Pago e PagSeguro</li>
+            <li>Leitor de código de barras via câmera (QuaggaJS) e atalhos de teclado (hotkeys) para frente de caixa</li>
+            <li>Interface Bootstrap 5 responsiva, HTMX para atualizações parciais e Thymeleaf Fragments</li>
+            <li>Multi-loja, relatórios em PDF (JasperReports), conformidade LGPD e tratamento robusto de erros</li>
           </ul>
           <div class="alert alert-info mt-3" role="alert">
             <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> Software proprietário da Cara Core Informática. Disponível sob licenciamento comercial para empresas. Consultoria especializada disponível para implantação, migração de dados e suporte contínuo.
@@ -177,7 +178,7 @@
             <li>Lê códigos de barras pela câmera do celular ou tablet</li>
             <li>Sempre calcula os impostos corretos, mesmo quando a lei mudar</li>
             <li>Organiza tudo para você ver quanto está ganhando de verdade</li>
-            <li>Funciona rápido e não trava</li>
+            <li>Funciona rápido e não trava — e <strong>continua vendendo mesmo quando a internet cai</strong> (modo offline e contingência)</li>
             <li>Está sempre atualizado com as novas leis de impostos</li>
           </ul>
         </div>
@@ -192,17 +193,19 @@
             <div class="col-md-6">
               <ul class="feature-list">
                 <li><strong>Motor Fiscal Inteligente:</strong> Cálculo automático de CBS e IBS com atualização até 2033</li>
-                <li><strong>Pix Split:</strong> Divisão automática de pagamentos (quando oficializado pelo governo)</li>
-                <li><strong>Dashboard Gestor:</strong> Análise em tempo real, relatórios fiscais e controle de lucro líquido</li>
-                <li><strong>Leitor de Código de Barras:</strong> Leitura via câmera e busca inteligente unificada</li>
+                <li><strong>Pix Split e PIX:</strong> QR Code, webhook, validação em tempo real; split quando oficializado</li>
+                <li><strong>Dashboard Administrativo:</strong> ApexCharts com vendas semanais, produtos mais vendidos, cards e vendas recentes</li>
+                <li><strong>Arquitetura Antifrágil:</strong> Modo Offline-First (H2 + sincronização) e Modo de Contingência (SQLite + SMS via ADB)</li>
+                <li><strong>Leitor de Código de Barras:</strong> QuaggaJS via câmera, atalho F4 e busca unificada</li>
               </ul>
             </div>
             <div class="col-md-6">
               <ul class="feature-list">
-                <li><strong>Interface Moderna:</strong> Design responsivo com textos de ajuda e navegação intuitiva</li>
-                <li><strong>Alta Performance:</strong> Atualizações assíncronas com HTMX e componentes reutilizáveis</li>
-                <li><strong>Configuração Fiscal:</strong> Gestão completa de alíquotas, NCM e histórico de alterações</li>
-                <li><strong>Segurança:</strong> Conformidade LGPD com criptografia AES-256 e autenticação JWT</li>
+                <li><strong>Interface Bootstrap 5:</strong> Responsiva (mobile a ultrawide), textos de ajuda e navegação intuitiva</li>
+                <li><strong>HTMX e Thymeleaf Fragments:</strong> Atualizações parciais sem recarregar a página</li>
+                <li><strong>Hotkeys e PIX:</strong> Atalhos de teclado na frente de caixa; modal PIX com QR Code</li>
+                <li><strong>Multi-loja e Relatórios:</strong> Estoque por unidade; relatórios em PDF (JasperReports)</li>
+                <li><strong>Segurança e Erros:</strong> LGPD, AES-256, JWT; tratamento global de erros e páginas 400/403/404/500</li>
               </ul>
             </div>
           </div>
@@ -212,6 +215,9 @@
       <div class="text-center mt-4">
         <a href="https://chmulato.github.io/caracore-pdv/" class="btn-project me-2" target="_blank" rel="noopener">
           <i class="bi bi-globe"></i> Ver Apresentação
+        </a>
+        <a href="https://chmulato.github.io/caracore-pdv/tecnologia.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-code-slash"></i> Tecnologia
         </a>
         <div class="mt-3">
           <small class="text-muted">

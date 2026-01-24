@@ -565,6 +565,7 @@ html {
 .badge-java { background-color: #ed8b00; }
 .badge-spring { background-color: #6db33f; }
 .badge-postgresql { background-color: #336791; }
+.badge-sqlite { background-color: #003B57; }
 .badge-bootstrap { background-color: #7952b3; }
 .badge-htmx { background-color: #1a6e9a; }
 .badge-apexcharts { background-color: #008ffb; }

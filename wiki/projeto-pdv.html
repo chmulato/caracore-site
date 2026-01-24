@@ -118,7 +118,7 @@
                                 <span class="badge badge-active">Em Desenvolvimento</span>
                                 <span class="badge badge-java">Java 21</span>
                                 <span class="badge badge-spring">Spring Boot</span>
-                                <span class="badge badge-postgresql">PostgreSQL</span>
+                                <span class="badge badge-sqlite">SQLite</span>
                                 <span class="badge badge-bootstrap">Bootstrap 5</span>
                                 <span class="badge badge-htmx">HTMX</span>
                                 <span class="badge badge-apexcharts">ApexCharts</span>
@@ -141,27 +141,30 @@
                             <div class="col-md-6">
                                 <div class="leigos-section">
                                     <h3><i class="bi bi-people"></i> O que é o PDV?</h3>
-                                    <p>O <strong>PDV (Ponto de Venda)</strong> é o sistema de caixa usado no balcão da loja: registrar produtos, aplicar descontos, receber pagamentos e emitir comprovantes. O CaraCore PDV é preparado para a <strong>Reforma Tributária 2026–2033</strong> (CBS e IBS), com <strong>PIX</strong> (QR Code e Split), <strong>modo offline</strong> quando a internet cai e <strong>modo contingência</strong> (banco local SQLite + SMS) para nunca parar de vender.</p>
+                                    <p>O <strong>PDV (Ponto de Venda)</strong> é o sistema de caixa usado no balcão da loja: registrar produtos, aplicar descontos, receber pagamentos e emitir comprovantes. O CaraCore PDV é preparado para a <strong>Reforma Tributária 2026–2033</strong> (CBS e IBS), com <strong>PIX</strong> (QR Code e Split), <strong>modo offline</strong> quando a internet cai e <strong>modo contingência</strong> (banco local SQLite + SMS) para nunca parar de vender. O <strong>perfil SQLite</strong> é o padrão: banco único em <code>./data/caracore-pdv.db</code>, carga inicial automática (admin/admin) na primeira execução e <strong>Centro de Segurança e Backup</strong> para políticas, criptografia e rotinas de backup/restore.</p>
                                     <p><strong>Em resumo:</strong></p>
                                     <ul class="feature-list">
                                         <li>🛒 <strong>Caixa completo:</strong> Vendas, clientes, estoque, relatórios</li>
                                         <li>📋 <strong>Fiscal:</strong> Motor preparado para CBS/IBS 2026–2033</li>
                                         <li>💳 <strong>PIX:</strong> QR Code, webhook, Split</li>
                                         <li>📶 <strong>Offline / contingência:</strong> Funciona sem internet</li>
+                                        <li>🗄️ <strong>SQLite padrão:</strong> Banco único, sem PostgreSQL; ideal para pequenos e médios; <code>docker-compose.sqlite.yml</code></li>
+                                        <li>🔐 <strong>Centro de Segurança e Backup:</strong> Políticas, criptografia e gestão de backup/restore</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="estagiario-section">
                                     <h3><i class="bi bi-mortarboard"></i> Arquitetura Técnica</h3>
-                                    <p>Aplicação web em <strong>Java 21</strong> e <strong>Spring Boot 2.7</strong>, com API REST, Thymeleaf, HTMX, Bootstrap 5 e ApexCharts. Módulos: PDV (caixa), vendas, produtos, clientes, estoque, dashboard, relatórios (JasperReports), operadores e <strong>multi-loja</strong>. Perfis: <code>prod</code>, <code>offline</code> (H2 + Outbox), <code>contingency</code> (SQLite + SMS via ADB).</p>
+                                    <p>Aplicação web em <strong>Java 21</strong> e <strong>Spring Boot 2.7</strong>, com API REST, Thymeleaf, HTMX, Bootstrap 5 e ApexCharts. Módulos: PDV (caixa), vendas, produtos, clientes, estoque, dashboard, relatórios (JasperReports), operadores e <strong>multi-loja</strong>. <strong>Perfil <code>sqlite</code> é o padrão</strong>: banco único em <code>./data/caracore-pdv.db</code>, <code>SqliteDataSourceConfig</code>, <code>SqliteSeedDataLoader</code>, <code>data/init-data-sqlite.sql</code>; Docker: <code>docker-compose -f docker/docker-compose.sqlite.yml up -d</code>. Outros perfis: <code>prod</code> (PostgreSQL), <code>offline</code> (H2 + Outbox), <code>contingency</code> (SQLite + SMS via ADB).</p>
                                     <p><strong>Componentes principais:</strong></p>
                                     <ul class="feature-list">
                                         <li><strong>Spring MVC / JPA:</strong> Controllers, serviços, repositórios</li>
                                         <li><strong>Thymeleaf + HTMX:</strong> Atualizações parciais sem recarregar</li>
-                                        <li><strong>PostgreSQL / H2 / SQLite:</strong> Principal, offline e contingência</li>
+                                        <li><strong>SQLite (padrão) / PostgreSQL / H2 / SQLite contingência:</strong> Banco único (sqlite), opcional PostgreSQL, offline (H2) e contingência (SQLite)</li>
                                         <li><strong>Spring Security:</strong> Perfis Administrador, Operador, Visitante</li>
                                         <li><strong>JasperReports:</strong> Relatórios PDF</li>
+                                        <li><strong>Centro de Segurança e Backup:</strong> Políticas, criptografia de dados sensíveis, gestão de backup/restore (incl. auto-backup ao encerrar, cloud AES-256, USB via ADB no modo contingência)</li>
                                         <li><strong>App pdv-sms-enviar (Android):</strong> Envio de SMS na contingência; recepção de licença Premium por SMS (CC-LICENSE/CARACORE-KEY); ContentProvider para o PDV (hardware_id, licença); tela de status e Verificar Conexão USB.</li>
                                     </ul>
                                 </div>
@@ -251,6 +254,32 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-database text-info"></i>
+                                        <h4>SQLite para Pequenos e Médios</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> O PDV pode rodar só com SQLite, sem instalar PostgreSQL — ideal para um caixa, lojas e pequenas redes. Na primeira execução já cria o banco e carrega usuário <code>admin</code>/<code>admin</code>.</p>
+                                        <p><strong>Técnico:</strong> Perfil <code>sqlite</code> (padrão); <code>SqliteDataSourceConfig</code>, <code>SqliteSeedDataLoader</code>, <code>data/init-data-sqlite.sql</code>; <code>docker-compose -f docker/docker-compose.sqlite.yml up -d</code>. Doc: <code>doc/SQLITE_PEQUENOS_MEDIOS.md</code>.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-shield-lock text-success"></i>
+                                        <h4>Centro de Segurança e Backup</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Painel para definir políticas de segurança, criptografia de dados sensíveis e agendar backups. No modo contingência: backup automático ao fechar o sistema, envio para nuvem (criptografado) e cópia em USB via celular conectado.</p>
+                                        <p><strong>Técnico:</strong> <code>SqliteBackupService</code> (checkpoint WAL, <code>./backups</code>, retenção 7 dias; USB .gz via ADB); <code>SqliteBackupCloudSyncService</code> (JSON vendas do dia, AES-256-GCM, POST para servidor central). Doc: <code>doc/SQLITE_LOCAL.md</code>; portal <code>docs/</code> (tecnologia.html#seguranca, imagem centro_de_seguranca_e_backup.png).</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
 
@@ -265,9 +294,10 @@
                                     <li><strong>Java 21:</strong> Linguagem principal</li>
                                     <li><strong>Spring Boot 2.7:</strong> Framework web e injeção de dependências</li>
                                     <li><strong>JPA / Hibernate:</strong> ORM e repositórios</li>
-                                    <li><strong>PostgreSQL 15+:</strong> Banco principal (dev, teste, prod)</li>
+                                    <li><strong>SQLite 3.51:</strong> <strong>Banco padrão</strong> (perfil <code>sqlite</code>); <code>./data/caracore-pdv.db</code>; carga automática na 1ª execução</li>
+                                    <li><strong>PostgreSQL 15+:</strong> Opcional; não usado no fluxo padrão (somente SQLite)</li>
                                     <li><strong>H2:</strong> Banco local modo offline-first</li>
-                                    <li><strong>SQLite 3.51:</strong> Banco local modo contingência</li>
+                                    <li><strong>SQLite (contingência):</strong> Modo contingência (SMS, ADB)</li>
                                     <li><strong>JasperReports 6.20:</strong> Relatórios PDF</li>
                                 </ul>
                             </div>
@@ -298,7 +328,7 @@
                             <div class="col-md-6">
                                 <h4><i class="bi bi-cloud text-primary"></i> Infraestrutura</h4>
                                 <ul class="tech-list">
-                                    <li><strong>Docker / Docker Compose:</strong> PostgreSQL, app, modo contingência</li>
+                                    <li><strong>Docker / Docker Compose:</strong> <code>docker-compose.sqlite.yml</code> (apenas app + SQLite), PostgreSQL (opcional), modo contingência</li>
                                     <li><strong>Maven:</strong> Build e dependências</li>
                                     <li><strong>WAR:</strong> Empacotamento para deploy em servidor de aplicação</li>
                                 </ul>
@@ -335,7 +365,7 @@
                                 <div class="flow-step">
                                     <div class="flow-number">4</div>
                                     <h5>Finalização</h5>
-                                    <p>Venda salva (PostgreSQL, H2 ou SQLite em contingência); sync quando online</p>
+                                    <p>Venda salva (SQLite padrão, ou H2/SQLite em offline/contingência); sync quando online</p>
                                 </div>
                             </div>
 
@@ -355,7 +385,7 @@
                                 </div>
                                 <div class="arch-layer">
                                     <h5><i class="bi bi-database"></i> Dados</h5>
-                                    <p>JPA/Hibernate, PostgreSQL, H2 (offline), SQLite (contingência); Repositories e migrações</p>
+                                    <p>JPA/Hibernate, SQLite (padrão), PostgreSQL (opcional), H2 (offline), SQLite (contingência); Repositories e migrações</p>
                                 </div>
                             </div>
 
@@ -374,7 +404,7 @@
                                     <ul class="feature-list">
                                         <li>Java 21 (JDK)</li>
                                         <li>Maven 3.6+ (ou use <code>mvnw</code>)</li>
-                                        <li>PostgreSQL 15+ (ou Docker)</li>
+                                        <li>SQLite (embutido; sem servidor). PostgreSQL apenas se usar perfil <code>prod</code></li>
                                         <li>Git</li>
                                     </ul>
                                 </div>
@@ -386,10 +416,11 @@
 git clone https://github.com/cara-core/caracore-pdv
 cd caracore-pdv
 
-# Rodar com Maven
+# Rodar com Maven (perfil sqlite é o padrão; carga admin/admin na 1ª vez)
 .\mvnw spring-boot:run
 
-# Com perfil
+# Com perfil explícito
+.\mvnw spring-boot:run -Dspring-boot.run.profiles=sqlite
 .\mvnw spring-boot:run -Dspring-boot.run.profiles=prod
 .\mvnw spring-boot:run -Dspring-boot.run.profiles=offline
 .\mvnw spring-boot:run -Dspring-boot.run.profiles=contingency</code></pre>
@@ -399,9 +430,11 @@ cd caracore-pdv
 
                         <div class="alert alert-info mt-4">
                             <h5><i class="bi bi-docker"></i> Docker Compose</h5>
-                            <p>Para subir PostgreSQL e a aplicação com Docker:</p>
-                            <pre><code>docker-compose up -d</code></pre>
-                            <p class="mb-0 mt-2">Há também <code>docker-compose.contingency.yml</code> para o modo contingência com volume SQLite. Credenciais de teste (ex.: <code>admin</code>/<code>admin</code>, <code>caixa1</code>/<code>1234</code>) estão em <code>STATUS_ATUAL.md</code> e na documentação do projeto.</p>
+                            <p><strong>Somente SQLite (recomendado para pequenos e médios):</strong></p>
+                            <pre><code>docker-compose -f docker/docker-compose.sqlite.yml up -d</code></pre>
+                            <p>Um único container; na primeira subida a carga inicial (admin/admin e massa para testes Selenium) é aplicada automaticamente. Banco em <code>/data/caracore-pdv.db</code> (volume <code>sqlite_data</code>).</p>
+                            <p><strong>Outras opções:</strong> <code>docker-compose up -d</code> (PostgreSQL + app); <code>docker-compose.contingency.yml</code> para modo contingência. Credenciais (ex.: <code>admin</code>/<code>admin</code>, <code>caixa1</code>/<code>1234</code>) em <code>STATUS_ATUAL.md</code>.</p>
+                            <p class="mb-0">Testes Selenium: <code>testes/STATUS_APLICACAO_E_CENARIOS.md</code> e <code>verificar-status-app.bat</code> / <code>verificar-status-app.sh</code>.</p>
                         </div>
                     </section>
 
@@ -410,11 +443,13 @@ cd caracore-pdv
                         <h2><i class="bi bi-link-45deg text-primary"></i> Links e Documentação</h2>
                         <ul class="feature-list">
                             <li><strong>Apresentação (site do PDV):</strong> <a href="https://chmulato.github.io/caracore-pdv/" target="_blank" rel="noopener">chmulato.github.io/caracore-pdv</a></li>
-                            <li><strong>Tecnologia:</strong> <a href="https://chmulato.github.io/caracore-pdv/tecnologia.html" target="_blank" rel="noopener">tecnologia.html</a> (backend, frontend, bancos, offline, contingência, SMS)</li>
+                            <li><strong>Tecnologia:</strong> <a href="https://chmulato.github.io/caracore-pdv/tecnologia.html" target="_blank" rel="noopener">tecnologia.html</a> (backend, frontend, SQLite, Centro de Segurança e Backup, offline, contingência, SMS)</li>
                             <li><strong>Wiki Fiscal:</strong> <a href="https://chmulato.github.io/caracore-pdv/wiki-fiscal.html" target="_blank" rel="noopener">wiki-fiscal.html</a> (Reforma Tributária, CBS, IBS, PIX, contingência em linguagem acessível)</li>
-                            <li><strong>Consultoria:</strong> <a href="https://chmulato.github.io/caracore-pdv/consultoria.html" target="_blank" rel="noopener">consultoria.html</a> (serviços de implantação, integração PIX, contingência)</li>
+                            <li><strong>Consultoria:</strong> <a href="https://chmulato.github.io/caracore-pdv/consultoria.html" target="_blank" rel="noopener">consultoria.html</a> (implantação, integração PIX, contingência, Centro de Segurança e Backup)</li>
+                            <li><strong>Testes Selenium (Docker SQLite):</strong> <code>testes/STATUS_APLICACAO_E_CENARIOS.md</code>; <code>verificar-status-app.bat</code> / <code>verificar-status-app.sh</code></li>
+                            <li><strong>SQLite (pequenos e médios):</strong> <code>doc/SQLITE_PEQUENOS_MEDIOS.md</code>; <code>docker-compose.sqlite.yml</code></li>
                         </ul>
-                        <p class="text-muted mt-2">Documentação técnica detalhada (incl. <code>STATUS_ATUAL.md</code>, <code>doc/OFFLINE_FIRST.md</code>, <code>doc/MODO_CONTINGENCIA.md</code>, <code>android-sms-enviar/README.md</code> — app: SMS, licença Premium por SMS, ContentProvider, status e Verificar USB) está no repositório do projeto.</p>
+                        <p class="text-muted mt-2">Documentação técnica: <code>STATUS_ATUAL.md</code>, <code>doc/OFFLINE_FIRST.md</code>, <code>doc/MODO_CONTINGENCIA.md</code>, <code>doc/SQLITE_LOCAL.md</code> (backup, cloud AES-256, USB), <code>android-sms-enviar/README.md</code>.</p>
                     </section>
 
                     <!-- Contribuição -->

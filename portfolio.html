@@ -115,11 +115,11 @@
       <h2 class="mb-3">
         <i class="bi bi-cash"></i> CaraCore PDV
       </h2>
-      <p class="lead mb-3">O primeiro PDV pronto para a Reforma Tributária 2026-2033. Arquitetura antifrágil: offline-first e modo contingência.</p>
+      <p class="lead mb-3">O primeiro PDV pronto para a Reforma Tributária 2026-2033. SQLite como banco padrão (sem PostgreSQL); Centro de Segurança e Backup; arquitetura antifrágil: offline-first e modo contingência.</p>
       <div>
         <span class="tech-badge">Java 21</span>
         <span class="tech-badge">Spring Boot</span>
-        <span class="tech-badge">PostgreSQL 15</span>
+        <span class="tech-badge">SQLite</span>
         <span class="tech-badge">Bootstrap 5</span>
         <span class="tech-badge">HTMX</span>
         <span class="tech-badge">ApexCharts</span>
@@ -142,6 +142,8 @@
           <ul class="feature-list">
             <li>Motor Fiscal Inteligente com atualização automática de alíquotas CBS e IBS até 2033</li>
             <li>Pix Split para liquidação automática de impostos e taxa de serviço</li>
+            <li><strong>SQLite como banco padrão:</strong> Perfil <code>sqlite</code>; sem PostgreSQL; <code>./data/caracore-pdv.db</code>; carga inicial automática (admin/admin) na 1ª execução; <code>docker-compose.sqlite.yml</code> para um único container — ideal para pequenos e médios negócios</li>
+            <li><strong>Centro de Segurança e Backup:</strong> Painel para políticas de segurança, criptografia de dados sensíveis e gestão de backup/restore (auto-backup ao encerrar, cloud AES-256, USB via ADB no modo contingência)</li>
             <li>Dashboard Administrativo com ApexCharts: vendas semanais, produtos mais vendidos, indicadores em tempo real</li>
             <li>Arquitetura Antifrágil: Modo Offline-First (H2) e Modo de Contingência (SQLite + SMS via ADB). App Android (pdv-sms-enviar): recepção de <strong>Licença Premium por SMS</strong> (CC-LICENSE/CARACORE-KEY), ContentProvider para o PDV (hardware_id, estado da licença), tela com status (Licença Gratuita/Inativa ou Premium Ativa) e Verificar Conexão USB</li>
             <li>PIX com QR Code, webhook e validação em tempo real; estrutura para Mercado Pago e PagSeguro</li>
@@ -180,6 +182,8 @@
             <li>Organiza tudo para você ver quanto está ganhando de verdade</li>
             <li>Funciona rápido e não trava — e <strong>continua vendendo mesmo quando a internet cai</strong> (modo offline e contingência). O celular parceiro pode receber a ativação da <strong>Licença Premium por SMS</strong></li>
             <li>Está sempre atualizado com as novas leis de impostos</li>
+            <li><strong>Pode rodar só com SQLite</strong> — sem instalar outro banco; na primeira vez já deixa tudo pronto para usar (ideal para uma loja ou pequena rede)</li>
+            <li><strong>Centro de Segurança e Backup</strong> — define políticas, criptografa dados e agenda backups (inclusive para nuvem e USB)</li>
           </ul>
         </div>
       </div>
@@ -194,6 +198,8 @@
               <ul class="feature-list">
                 <li><strong>Motor Fiscal Inteligente:</strong> Cálculo automático de CBS e IBS com atualização até 2033</li>
                 <li><strong>Pix Split e PIX:</strong> QR Code, webhook, validação em tempo real; split quando oficializado</li>
+                <li><strong>SQLite para Pequenos e Médios:</strong> Banco único (perfil <code>sqlite</code>), sem PostgreSQL; <code>docker-compose.sqlite.yml</code>; carga automática na 1ª execução</li>
+                <li><strong>Centro de Segurança e Backup:</strong> Políticas, criptografia, backup/restore; auto-backup ao encerrar; cloud AES-256; USB via ADB (contingência)</li>
                 <li><strong>Dashboard Administrativo:</strong> ApexCharts com vendas semanais, produtos mais vendidos, cards e vendas recentes</li>
                 <li><strong>Arquitetura Antifrágil:</strong> Modo Offline-First (H2 + sincronização) e Modo de Contingência (SQLite + SMS via ADB). App pdv-sms-enviar: <strong>Licença Premium por SMS</strong> (CC-LICENSE/CARACORE-KEY), ContentProvider (hardware_id, licença), status e Verificar Conexão USB</li>
                 <li><strong>Leitor de Código de Barras:</strong> QuaggaJS via câmera, atalho F4 e busca unificada</li>
@@ -205,7 +211,7 @@
                 <li><strong>HTMX e Thymeleaf Fragments:</strong> Atualizações parciais sem recarregar a página</li>
                 <li><strong>Hotkeys e PIX:</strong> Atalhos de teclado na frente de caixa; modal PIX com QR Code</li>
                 <li><strong>Multi-loja e Relatórios:</strong> Estoque por unidade; relatórios em PDF (JasperReports)</li>
-                <li><strong>Segurança e Erros:</strong> LGPD, AES-256, JWT; tratamento global de erros e páginas 400/403/404/500</li>
+                <li><strong>Segurança e Erros:</strong> Centro de Segurança e Backup; LGPD, AES-256, JWT; tratamento global de erros e páginas 400/403/404/500</li>
               </ul>
             </div>
           </div>

@@ -143,7 +143,7 @@
             <li>Motor Fiscal Inteligente com atualização automática de alíquotas CBS e IBS até 2033</li>
             <li>Pix Split para liquidação automática de impostos e taxa de serviço</li>
             <li>Dashboard Administrativo com ApexCharts: vendas semanais, produtos mais vendidos, indicadores em tempo real</li>
-            <li>Arquitetura Antifrágil: Modo Offline-First (H2) e Modo de Contingência (SQLite + SMS via ADB)</li>
+            <li>Arquitetura Antifrágil: Modo Offline-First (H2) e Modo de Contingência (SQLite + SMS via ADB). App Android (pdv-sms-enviar): recepção de <strong>Licença Premium por SMS</strong> (CC-LICENSE/CARACORE-KEY), ContentProvider para o PDV (hardware_id, estado da licença), tela com status (Licença Gratuita/Inativa ou Premium Ativa) e Verificar Conexão USB</li>
             <li>PIX com QR Code, webhook e validação em tempo real; estrutura para Mercado Pago e PagSeguro</li>
             <li>Leitor de código de barras via câmera (QuaggaJS) e atalhos de teclado (hotkeys) para frente de caixa</li>
             <li>Interface Bootstrap 5 responsiva, HTMX para atualizações parciais e Thymeleaf Fragments</li>
@@ -178,7 +178,7 @@
             <li>Lê códigos de barras pela câmera do celular ou tablet</li>
             <li>Sempre calcula os impostos corretos, mesmo quando a lei mudar</li>
             <li>Organiza tudo para você ver quanto está ganhando de verdade</li>
-            <li>Funciona rápido e não trava — e <strong>continua vendendo mesmo quando a internet cai</strong> (modo offline e contingência)</li>
+            <li>Funciona rápido e não trava — e <strong>continua vendendo mesmo quando a internet cai</strong> (modo offline e contingência). O celular parceiro pode receber a ativação da <strong>Licença Premium por SMS</strong></li>
             <li>Está sempre atualizado com as novas leis de impostos</li>
           </ul>
         </div>
@@ -195,7 +195,7 @@
                 <li><strong>Motor Fiscal Inteligente:</strong> Cálculo automático de CBS e IBS com atualização até 2033</li>
                 <li><strong>Pix Split e PIX:</strong> QR Code, webhook, validação em tempo real; split quando oficializado</li>
                 <li><strong>Dashboard Administrativo:</strong> ApexCharts com vendas semanais, produtos mais vendidos, cards e vendas recentes</li>
-                <li><strong>Arquitetura Antifrágil:</strong> Modo Offline-First (H2 + sincronização) e Modo de Contingência (SQLite + SMS via ADB)</li>
+                <li><strong>Arquitetura Antifrágil:</strong> Modo Offline-First (H2 + sincronização) e Modo de Contingência (SQLite + SMS via ADB). App pdv-sms-enviar: <strong>Licença Premium por SMS</strong> (CC-LICENSE/CARACORE-KEY), ContentProvider (hardware_id, licença), status e Verificar Conexão USB</li>
                 <li><strong>Leitor de Código de Barras:</strong> QuaggaJS via câmera, atalho F4 e busca unificada</li>
               </ul>
             </div>
@@ -218,6 +218,9 @@
         </a>
         <a href="https://chmulato.github.io/caracore-pdv/tecnologia.html" class="btn-project me-2" target="_blank" rel="noopener">
           <i class="bi bi-code-slash"></i> Tecnologia
+        </a>
+        <a href="wiki/projeto-pdv.html" class="btn-project me-2">
+          <i class="bi bi-journal-code"></i> Wiki
         </a>
         <div class="mt-3">
           <small class="text-muted">

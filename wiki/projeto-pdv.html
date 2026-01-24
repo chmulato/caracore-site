@@ -162,6 +162,7 @@
                                         <li><strong>PostgreSQL / H2 / SQLite:</strong> Principal, offline e contingência</li>
                                         <li><strong>Spring Security:</strong> Perfis Administrador, Operador, Visitante</li>
                                         <li><strong>JasperReports:</strong> Relatórios PDF</li>
+                                        <li><strong>App pdv-sms-enviar (Android):</strong> Envio de SMS na contingência; recepção de licença Premium por SMS (CC-LICENSE/CARACORE-KEY); ContentProvider para o PDV (hardware_id, licença); tela de status e Verificar Conexão USB.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -219,8 +220,8 @@
                                         <h4>Offline-First e Contingência</h4>
                                     </div>
                                     <div class="feature-content">
-                                        <p><strong>Para leigos:</strong> Se a internet cair, as vendas continuam em banco local e são enviadas quando voltar; em contingência, usa SQLite e avisa por SMS.</p>
-                                        <p><strong>Técnico:</strong> H2 + Outbox + Sync (offline); SQLite + ADB/SMS (contingency).</p>
+                                        <p><strong>Para leigos:</strong> Se a internet cair, as vendas continuam em banco local e são enviadas quando voltar; em contingência, usa SQLite e avisa por SMS. O app Android no celular ainda recebe a ativação da <strong>Licença Premium por SMS</strong> e mostra se está ativa (verde) ou inativa (vermelho).</p>
+                                        <p><strong>Técnico:</strong> H2 + Outbox + Sync (offline); SQLite + ADB/SMS (contingency). App <strong>pdv-sms-enviar</strong> (android-sms-enviar): envio de SMS via ADB; <strong>recepção de licença Premium por SMS</strong> (CC-LICENSE/CARACORE-KEY, filtro por número oficial); <strong>LicencaContentProvider</strong> (<code>content://br.com.caracore.pdv.sms.licenca/licenca</code>) com <code>hardware_id</code>, <code>chave</code>, <code>valida</code>, <code>mes_ano</code> para o PDV consultar via ADB; tela com status (Licença Gratuita/Inativa ou Licença Premium Ativa) e botão <strong>Verificar Conexão USB</strong>. Doc: <code>android-sms-enviar/README.md</code>.</p>
                                     </div>
                                 </div>
                             </div>
@@ -413,7 +414,7 @@ cd caracore-pdv
                             <li><strong>Wiki Fiscal:</strong> <a href="https://chmulato.github.io/caracore-pdv/wiki-fiscal.html" target="_blank" rel="noopener">wiki-fiscal.html</a> (Reforma Tributária, CBS, IBS, PIX, contingência em linguagem acessível)</li>
                             <li><strong>Consultoria:</strong> <a href="https://chmulato.github.io/caracore-pdv/consultoria.html" target="_blank" rel="noopener">consultoria.html</a> (serviços de implantação, integração PIX, contingência)</li>
                         </ul>
-                        <p class="text-muted mt-2">Documentação técnica detalhada (incl. <code>STATUS_ATUAL.md</code>, <code>doc/OFFLINE_FIRST.md</code>, <code>doc/MODO_CONTINGENCIA.md</code>) está no repositório do projeto.</p>
+                        <p class="text-muted mt-2">Documentação técnica detalhada (incl. <code>STATUS_ATUAL.md</code>, <code>doc/OFFLINE_FIRST.md</code>, <code>doc/MODO_CONTINGENCIA.md</code>, <code>android-sms-enviar/README.md</code> — app: SMS, licença Premium por SMS, ContentProvider, status e Verificar USB) está no repositório do projeto.</p>
                     </section>
 
                     <!-- Contribuição -->

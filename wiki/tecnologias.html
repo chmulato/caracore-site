@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -84,6 +84,7 @@
                         <li>
                             <a href="tecnologias.html" class="active"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a>
                             <ul class="submenu">
+                                <li><a href="#java-spring">Java & Spring Boot</a></li>
                                 <li><a href="#python-flask">Python & Flask</a></li>
                                 <li><a href="#frontend">HTML/CSS/JavaScript</a></li>
                                 <li><a href="#oauth">OAuth 2.1 & OIDC</a></li>
@@ -114,11 +115,54 @@
                             <p>Imagine que você está construindo uma casa. Você precisa de diferentes materiais: tijolos, cimento, madeira, tinta, etc. Na programação, a "stack" são as diferentes tecnologias (linguagens, ferramentas, serviços) que usamos para construir nossos sistemas.</p>
                             <p>Cada tecnologia tem uma função específica, como os materiais de construção:</p>
                             <ul class="feature-list">
+                                <li><strong>Java & Spring Boot:</strong> A "estrutura" do nosso PDV (caixa de loja) e sistemas enterprise</li>
                                 <li><strong>Python:</strong> A "linguagem" que usamos para escrever programas</li>
                                 <li><strong>Flask:</strong> A "estrutura" para criar sites e APIs</li>
                                 <li><strong>HTML/CSS:</strong> A "aparência" dos sites</li>
                                 <li><strong>Docker:</strong> A "embalagem" para transportar programas</li>
                             </ul>
+                        </div>
+                    </section>
+
+                    <!-- Java & Spring Boot (CaraCore PDV) -->
+                    <section id="java-spring" class="mb-5">
+                        <div class="project-card">
+                            <div class="project-header pdv">
+                                <h2><i class="bi bi-cash-stack"></i> Java & Spring Boot</h2>
+                                <div class="mt-2">
+                                    <span class="tech-badge">Java 21</span>
+                                    <span class="tech-badge">Spring Boot</span>
+                                    <span class="tech-badge">JPA / Hibernate</span>
+                                    <span class="tech-badge">Thymeleaf</span>
+                                    <span class="tech-badge">PostgreSQL</span>
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-people text-info"></i> Para Leigos</h4>
+                                        <p><strong>Java</strong> é uma linguagem de programação muito usada em sistemas de empresas, bancos e lojas. É estável, segura e roda em praticamente qualquer computador.</p>
+                                        
+                                        <p><strong>Spring Boot</strong> é um conjunto de ferramentas que facilita criar aplicações em Java: sites, APIs, integrações com banco de dados e regras de negócio. Ele já traz muita coisa pronta e configurada.</p>
+                                        
+                                        <div class="alert alert-info">
+                                            <i class="bi bi-lightbulb"></i> <strong>Onde usamos:</strong> No <strong>CaraCore PDV</strong>, nosso sistema de ponto de venda (caixa de loja), que usa Java e Spring Boot em todo o backend.
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-code text-warning"></i> Para Estagiários</h4>
+                                        <p>No <a href="projeto-pdv.html">CaraCore PDV</a> utilizamos:</p>
+                                        <ul class="feature-list">
+                                            <li><strong>Java 21:</strong> LTS com virtual threads e melhorias de performance</li>
+                                            <li><strong>Spring Boot 2.7:</strong> Web, Data JPA, Security, Mail</li>
+                                            <li><strong>Thymeleaf + HTMX:</strong> Templates e atualizações parciais sem recarregar</li>
+                                            <li><strong>PostgreSQL, H2, SQLite:</strong> Principal, offline-first e contingência</li>
+                                            <li><strong>Bootstrap 5, ApexCharts, JasperReports:</strong> UI, gráficos e PDFs</li>
+                                        </ul>
+                                        <p><strong>Projeto de referência:</strong> <a href="projeto-pdv.html">CaraCore PDV</a> — documentação completa da stack, fluxos e links para a apresentação e tecnologia no site do PDV.</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
 

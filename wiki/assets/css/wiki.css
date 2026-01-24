@@ -1,4 +1,4 @@
-﻿/* Wiki - Cara Core Informática */
+/* Wiki - Cara Core Informática */
 /* Estilos responsivos para tablet, celular e desktop */
 
 :root {
@@ -19,6 +19,7 @@
   --reino-color: #8b6ed3;
   --area51-color: #e74c3c;
   --python-color: #3498db;
+  --pdv-color: #667eea;
   --wiki-text: #2c3e50;
   
   /* Variáveis de tema claro (padrão) */
@@ -229,6 +230,10 @@ body {
 
 .project-header.python-training {
   background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+}
+
+.project-header.pdv {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .project-header h3 {
@@ -556,6 +561,13 @@ html {
 .badge-stable { background-color: #17a2b8; }
 .badge-flask { background-color: #000000; }
 .badge-docker { background-color: #2496ed; }
+/* PDV / Java stack */
+.badge-java { background-color: #ed8b00; }
+.badge-spring { background-color: #6db33f; }
+.badge-postgresql { background-color: #336791; }
+.badge-bootstrap { background-color: #7952b3; }
+.badge-htmx { background-color: #1a6e9a; }
+.badge-apexcharts { background-color: #008ffb; }
 
 .project-header.vscode-tool {
   background: linear-gradient(135deg, #007acc 0%, #005a9e 100%);

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaraCore PDV - Wiki Cara Core</title>
+    <meta name="description" content="Documentação do CaraCore PDV - sistema de ponto de venda em Java/Spring Boot com motor fiscal Reforma Tributária, PIX, offline-first e modo contingência.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Wiki CSS -->
+    <link rel="stylesheet" href="assets/css/wiki.css">
+    <!-- Projeto PDV CSS -->
+    <link rel="stylesheet" href="assets/css/projeto-pdv.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-MKFC9G3CL0', {
+            page_title: 'CaraCore PDV - Wiki',
+            custom_map: {'custom_parameter_1': 'project_pdv'}
+        });
+    </script>
+</head>
+<body>
+    <!-- Navegação -->
+    <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-journal-code"></i> Wiki Cara Core
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarWiki" aria-label="Alternar navegação" title="Menu de navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../portfolio.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn theme-toggle-btn" id="theme-toggle" aria-label="Alternar tema" title="Alternar entre tema claro e escuro">
+                            <i class="bi bi-moon-stars-fill"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="wiki-breadcrumb">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Wiki Home</a></li>
+                    <li class="breadcrumb-item"><a href="projetos-overview.html">Projetos</a></li>
+                    <li class="breadcrumb-item active">CaraCore PDV</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="wiki-container">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-4">
+                <div class="wiki-sidebar">
+                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
+                    <ul class="wiki-menu">
+                        <li><a href="index.html"><i class="bi bi-house"></i> Página Inicial</a></li>
+                        <li><a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a></li>
+                        <li>
+                            <span class="wiki-submenu-title"><i class="bi bi-folder"></i> Projetos</span>
+                            <ul class="wiki-submenu">
+                                <li><a href="projeto-pdv.html" class="active"><i class="bi bi-cash-stack"></i> CaraCore PDV</a></li>
+                                <li><a href="projeto-hub.html"><i class="bi bi-hdd-network"></i> Cara Core Hub</a></li>
+                                <li><a href="projeto-seed.html"><i class="bi bi-seedling"></i> Cara Core Seed</a></li>
+                                <li><a href="projeto-reino.html"><i class="bi bi-shield-lock"></i> Reino OIDC</a></li>
+                                <li><a href="projeto-area51.html"><i class="bi bi-rocket"></i> Área 51</a></li>
+                                <li><a href="projeto-python.html"><i class="bi bi-mortarboard"></i> Python Training</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="tecnologias.html"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a></li>
+                        <li><a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
+                        <li><a href="contribuindo.html"><i class="bi bi-git"></i> Como Contribuir</a></li>
+                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Conteúdo Principal -->
+            <div class="col-lg-9 col-md-8">
+                <div class="wiki-content">
+                    <div class="project-card">
+                        <div class="project-header pdv">
+                            <h1><i class="bi bi-cash-stack"></i> CaraCore PDV</h1>
+                            <p>Sistema de Ponto de Venda para Varejo</p>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-status">
+                                <span class="badge badge-private">Privado</span>
+                                <span class="badge badge-proprietary">Licença Proprietária</span>
+                                <span class="badge badge-active">Em Desenvolvimento</span>
+                                <span class="badge badge-java">Java 21</span>
+                                <span class="badge badge-spring">Spring Boot</span>
+                                <span class="badge badge-postgresql">PostgreSQL</span>
+                                <span class="badge badge-bootstrap">Bootstrap 5</span>
+                                <span class="badge badge-htmx">HTMX</span>
+                                <span class="badge badge-apexcharts">ApexCharts</span>
+                                <span class="badge badge-docker">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Aviso sobre repositório privado -->
+                    <div class="alert alert-warning">
+                        <h5><i class="bi bi-lock-fill"></i> Repositório Privado</h5>
+                        <p class="mb-0">Este projeto possui <strong>código-fonte privado</strong> e é protegido por <strong>licença proprietária</strong> da Cara Core Informática. A documentação aqui tem caráter informativo sobre funcionalidades e arquitetura. Apresentação e tecnologia: <a href="https://chmulato.github.io/caracore-pdv/" target="_blank" rel="noopener">chmulato.github.io/caracore-pdv</a>.</p>
+                    </div>
+
+                    <!-- Visão Geral -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-eye text-info"></i> Visão Geral</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="leigos-section">
+                                    <h3><i class="bi bi-people"></i> O que é o PDV?</h3>
+                                    <p>O <strong>PDV (Ponto de Venda)</strong> é o sistema de caixa usado no balcão da loja: registrar produtos, aplicar descontos, receber pagamentos e emitir comprovantes. O CaraCore PDV é preparado para a <strong>Reforma Tributária 2026–2033</strong> (CBS e IBS), com <strong>PIX</strong> (QR Code e Split), <strong>modo offline</strong> quando a internet cai e <strong>modo contingência</strong> (banco local SQLite + SMS) para nunca parar de vender.</p>
+                                    <p><strong>Em resumo:</strong></p>
+                                    <ul class="feature-list">
+                                        <li>🛒 <strong>Caixa completo:</strong> Vendas, clientes, estoque, relatórios</li>
+                                        <li>📋 <strong>Fiscal:</strong> Motor preparado para CBS/IBS 2026–2033</li>
+                                        <li>💳 <strong>PIX:</strong> QR Code, webhook, Split</li>
+                                        <li>📶 <strong>Offline / contingência:</strong> Funciona sem internet</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="estagiario-section">
+                                    <h3><i class="bi bi-mortarboard"></i> Arquitetura Técnica</h3>
+                                    <p>Aplicação web em <strong>Java 21</strong> e <strong>Spring Boot 2.7</strong>, com API REST, Thymeleaf, HTMX, Bootstrap 5 e ApexCharts. Módulos: PDV (caixa), vendas, produtos, clientes, estoque, dashboard, relatórios (JasperReports), operadores e <strong>multi-loja</strong>. Perfis: <code>prod</code>, <code>offline</code> (H2 + Outbox), <code>contingency</code> (SQLite + SMS via ADB).</p>
+                                    <p><strong>Componentes principais:</strong></p>
+                                    <ul class="feature-list">
+                                        <li><strong>Spring MVC / JPA:</strong> Controllers, serviços, repositórios</li>
+                                        <li><strong>Thymeleaf + HTMX:</strong> Atualizações parciais sem recarregar</li>
+                                        <li><strong>PostgreSQL / H2 / SQLite:</strong> Principal, offline e contingência</li>
+                                        <li><strong>Spring Security:</strong> Perfis Administrador, Operador, Visitante</li>
+                                        <li><strong>JasperReports:</strong> Relatórios PDF</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Funcionalidades -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-gear text-success"></i> Funcionalidades Principais</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-calculator text-primary"></i>
+                                        <h4>Motor Fiscal (CBS/IBS 2026–2033)</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Cálculo de impostos conforme a Reforma Tributária; o sistema já considera as regras que entram em vigor nos próximos anos.</p>
+                                        <p><strong>Técnico:</strong> Motor fiscal preparado para CBS e IBS, evolução gradual até 2033.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-qr-code-scan text-success"></i>
+                                        <h4>PIX e PIX Split</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Pagamento por PIX com QR Code na tela; suporte a divisão de pagamento (Split) entre loja e intermediários.</p>
+                                        <p><strong>Técnico:</strong> Geração de QR Code, webhook de confirmação, estrutura para Mercado Pago e PagSeguro.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-graph-up-arrow text-warning"></i>
+                                        <h4>Dashboard (ApexCharts)</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Painel com vendas da semana, produtos mais vendidos, totais do dia e vendas recentes.</p>
+                                        <p><strong>Técnico:</strong> API <code>/dashboard/api/dados</code>, gráficos ApexCharts, atualização via fetch.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-wifi-off text-info"></i>
+                                        <h4>Offline-First e Contingência</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Se a internet cair, as vendas continuam em banco local e são enviadas quando voltar; em contingência, usa SQLite e avisa por SMS.</p>
+                                        <p><strong>Técnico:</strong> H2 + Outbox + Sync (offline); SQLite + ADB/SMS (contingency).</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-upc-scan text-danger"></i>
+                                        <h4>Leitor de Código de Barras e Hotkeys</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Leitura por leitor (F4) ou câmera (QuaggaJS); atalhos de teclado para agilizar o caixa.</p>
+                                        <p><strong>Técnico:</strong> QuaggaJS, hotkeys configuráveis, integração com HTMX.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                <div class="feature-card">
+                                    <div class="feature-header">
+                                        <i class="bi bi-file-pdf text-secondary"></i>
+                                        <h4>Relatórios PDF e Multi-Loja</h4>
+                                    </div>
+                                    <div class="feature-content">
+                                        <p><strong>Para leigos:</strong> Relatórios de vendas, estoque e performance em PDF; suporte a várias lojas com estoque por unidade.</p>
+                                        <p><strong>Técnico:</strong> JasperReports; multi-loja com estoque independente; tratamento de erros e logging.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Stack Tecnológica -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-stack text-primary"></i> Stack Tecnológica</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4><i class="bi bi-server text-info"></i> Backend</h4>
+                                <ul class="tech-list">
+                                    <li><strong>Java 21:</strong> Linguagem principal</li>
+                                    <li><strong>Spring Boot 2.7:</strong> Framework web e injeção de dependências</li>
+                                    <li><strong>JPA / Hibernate:</strong> ORM e repositórios</li>
+                                    <li><strong>PostgreSQL 15+:</strong> Banco principal (dev, teste, prod)</li>
+                                    <li><strong>H2:</strong> Banco local modo offline-first</li>
+                                    <li><strong>SQLite 3.51:</strong> Banco local modo contingência</li>
+                                    <li><strong>JasperReports 6.20:</strong> Relatórios PDF</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4><i class="bi bi-palette text-warning"></i> Frontend</h4>
+                                <ul class="tech-list">
+                                    <li><strong>Bootstrap 5.3.2:</strong> Layout responsivo</li>
+                                    <li><strong>Thymeleaf 3.x:</strong> Templates e fragments</li>
+                                    <li><strong>HTMX 1.9:</strong> Atualizações dinâmicas sem recarregar</li>
+                                    <li><strong>ApexCharts 3.44:</strong> Gráficos do dashboard</li>
+                                    <li><strong>jQuery 3.x:</strong> DOM e plugins</li>
+                                    <li><strong>QuaggaJS:</strong> Leitura de código de barras</li>
+                                    <li><strong>Font Awesome 6.4:</strong> Ícones</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h4><i class="bi bi-shield-check text-success"></i> Segurança e Testes</h4>
+                                <ul class="tech-list">
+                                    <li><strong>Spring Security 5.x:</strong> Autenticação e perfis (Admin, Operador, Visitante)</li>
+                                    <li><strong>JUnit 5 + Mockito 5.11:</strong> Testes unitários</li>
+                                    <li><strong>JaCoCo 0.8.10:</strong> Cobertura de código</li>
+                                    <li><strong>Selenium 4.18 + Pytest:</strong> Testes de interface (Python)</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h4><i class="bi bi-cloud text-primary"></i> Infraestrutura</h4>
+                                <ul class="tech-list">
+                                    <li><strong>Docker / Docker Compose:</strong> PostgreSQL, app, modo contingência</li>
+                                    <li><strong>Maven:</strong> Build e dependências</li>
+                                    <li><strong>WAR:</strong> Empacotamento para deploy em servidor de aplicação</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Como Funciona -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-diagram-2 text-warning"></i> Como Funciona</h2>
+                        
+                        <div class="estagiario-section">
+                            <h3><i class="bi bi-flow-chart"></i> Fluxo de Venda</h3>
+                            
+                            <div class="flow-diagram">
+                                <div class="flow-step">
+                                    <div class="flow-number">1</div>
+                                    <h5>Seleção de Vendedor</h5>
+                                    <p>Operador escolhe o vendedor e inicia nova venda</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="flow-number">2</div>
+                                    <h5>Itens no Carrinho</h5>
+                                    <p>Produtos por código, leitor ou busca; HTMX atualiza o carrinho</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="flow-number">3</div>
+                                    <h5>Pagamento</h5>
+                                    <p>Dinheiro, cartão, PIX (QR Code / webhook)</p>
+                                </div>
+                                <div class="flow-arrow">→</div>
+                                <div class="flow-step">
+                                    <div class="flow-number">4</div>
+                                    <h5>Finalização</h5>
+                                    <p>Venda salva (PostgreSQL, H2 ou SQLite em contingência); sync quando online</p>
+                                </div>
+                            </div>
+
+                            <h4><i class="bi bi-layers text-info"></i> Camadas da Aplicação</h4>
+                            <div class="architecture-layers">
+                                <div class="arch-layer">
+                                    <h5><i class="bi bi-window"></i> Apresentação</h5>
+                                    <p>Thymeleaf, Bootstrap 5, HTMX, ApexCharts, formulários e telas de PDV, dashboard, relatórios</p>
+                                </div>
+                                <div class="arch-layer">
+                                    <h5><i class="bi bi-cloud-arrow-up"></i> API e Controllers</h5>
+                                    <p>Controllers REST e MVC, endpoints para dashboard, PIX, cadastros; detecção de requisições HTMX</p>
+                                </div>
+                                <div class="arch-layer">
+                                    <h5><i class="bi bi-gear"></i> Negócio</h5>
+                                    <p>Services: Venda, Pagamento, Produto, Cliente, Estoque, Dashboard, Outbox, Sync, Contingência</p>
+                                </div>
+                                <div class="arch-layer">
+                                    <h5><i class="bi bi-database"></i> Dados</h5>
+                                    <p>JPA/Hibernate, PostgreSQL, H2 (offline), SQLite (contingência); Repositories e migrações</p>
+                                </div>
+                            </div>
+
+                            <p class="mt-3"><strong>Perfis de acesso:</strong> Administrador (configurações e usuários), Operador (caixa e operações do dia a dia), Visitante (apenas consultas).</p>
+                        </div>
+                    </section>
+
+                    <!-- Setup / Quick Start -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-play-circle text-success"></i> Setup e Quick Start</h2>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="setup-card">
+                                    <h4><i class="bi bi-download text-primary"></i> Pré-requisitos</h4>
+                                    <ul class="feature-list">
+                                        <li>Java 21 (JDK)</li>
+                                        <li>Maven 3.6+ (ou use <code>mvnw</code>)</li>
+                                        <li>PostgreSQL 15+ (ou Docker)</li>
+                                        <li>Git</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="setup-card">
+                                    <h4><i class="bi bi-terminal text-success"></i> Executar</h4>
+                                    <pre><code># Clonar (acesso mediante permissão)
+git clone https://github.com/cara-core/caracore-pdv
+cd caracore-pdv
+
+# Rodar com Maven
+.\mvnw spring-boot:run
+
+# Com perfil
+.\mvnw spring-boot:run -Dspring-boot.run.profiles=prod
+.\mvnw spring-boot:run -Dspring-boot.run.profiles=offline
+.\mvnw spring-boot:run -Dspring-boot.run.profiles=contingency</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert alert-info mt-4">
+                            <h5><i class="bi bi-docker"></i> Docker Compose</h5>
+                            <p>Para subir PostgreSQL e a aplicação com Docker:</p>
+                            <pre><code>docker-compose up -d</code></pre>
+                            <p class="mb-0 mt-2">Há também <code>docker-compose.contingency.yml</code> para o modo contingência com volume SQLite. Credenciais de teste (ex.: <code>admin</code>/<code>admin</code>, <code>caixa1</code>/<code>1234</code>) estão em <code>STATUS_ATUAL.md</code> e na documentação do projeto.</p>
+                        </div>
+                    </section>
+
+                    <!-- Links -->
+                    <section class="mb-5">
+                        <h2><i class="bi bi-link-45deg text-primary"></i> Links e Documentação</h2>
+                        <ul class="feature-list">
+                            <li><strong>Apresentação (site do PDV):</strong> <a href="https://chmulato.github.io/caracore-pdv/" target="_blank" rel="noopener">chmulato.github.io/caracore-pdv</a></li>
+                            <li><strong>Tecnologia:</strong> <a href="https://chmulato.github.io/caracore-pdv/tecnologia.html" target="_blank" rel="noopener">tecnologia.html</a> (backend, frontend, bancos, offline, contingência, SMS)</li>
+                            <li><strong>Wiki Fiscal:</strong> <a href="https://chmulato.github.io/caracore-pdv/wiki-fiscal.html" target="_blank" rel="noopener">wiki-fiscal.html</a> (Reforma Tributária, CBS, IBS, PIX, contingência em linguagem acessível)</li>
+                            <li><strong>Consultoria:</strong> <a href="https://chmulato.github.io/caracore-pdv/consultoria.html" target="_blank" rel="noopener">consultoria.html</a> (serviços de implantação, integração PIX, contingência)</li>
+                        </ul>
+                        <p class="text-muted mt-2">Documentação técnica detalhada (incl. <code>STATUS_ATUAL.md</code>, <code>doc/OFFLINE_FIRST.md</code>, <code>doc/MODO_CONTINGENCIA.md</code>) está no repositório do projeto.</p>
+                    </section>
+
+                    <!-- Contribuição -->
+                    <section class="text-center">
+                        <h2><i class="bi bi-heart text-danger"></i> Sobre o Projeto</h2>
+                        <p class="lead">CaraCore PDV é um produto proprietário da Cara Core Informática. Para demos, implantação ou consultoria, utilize os links da seção anterior ou o site principal da empresa.</p>
+                        <div class="d-grid gap-2 d-md-block">
+                            <a href="projetos-overview.html" class="btn-wiki me-2">
+                                <i class="bi bi-collection"></i> Visão Geral dos Projetos
+                            </a>
+                            <a href="tecnologias.html" class="btn-wiki me-2">
+                                <i class="bi bi-gear"></i> Tecnologias Utilizadas
+                            </a>
+                            <a href="https://chmulato.github.io/caracore-pdv/" class="btn-wiki" target="_blank" rel="noopener">
+                                <i class="bi bi-box-arrow-up-right"></i> Site do PDV
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="wiki-footer">
+        <div class="container">
+            <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
+            <p>Documentação do CaraCore PDV - Sistema de Ponto de Venda</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Wiki JS -->
+    <script src="assets/js/theme-toggle.js"></script>
+    <script src="assets/js/wiki.js"></script>
+</body>
+</html>

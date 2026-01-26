@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Projeto "Sistema Alfa": Anatomia de um Quase-Fracasso e as Lições da Linha de Frente - Christian Mulato Dev Blog</title>
+    <meta name="description" content="Artigo sobre O Projeto Sistema Alfa: Anatomia de um Quase-Fracasso e as Lições da Linha de Frente">
+    <meta name="author" content="Christian Mulato">
+    <meta name="keywords" content="Desenvolvimento de Software, Gestão de Projetos, Dívida Técnica, Arquitetura de Software, Sistemas Legados, Engenharia de Software">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/article.css">
+    <link rel="stylesheet" href="assets/css/highlight.css">
+</head>
+<body>
+<button id="themeToggle" class="theme-toggle" aria-label="Ativar tema escuro">
+  <span id="themeIcon">🌙</span>
+</button>
+<header class="site-header">
+        <div class="container">
+            <h1><a href="../index.html">Christian Mulato Dev Blog</a></h1>
+            <nav class="main-nav">
+                <a href="../index.html">Início</a>
+                <a href="#sobre">Sobre</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <article class="post">
+                <header class="post-header">
+                    <h1 class="post-title">O Projeto "Sistema Alfa": Anatomia de um Quase-Fracasso e as Lições da Linha de Frente</h1>
+                    <div class="post-meta">
+                        <time datetime="2026-03-30">30/03/2026</time>
+                    </div>
+                    
+                </header>
+                
+                <div class="post-content">
+                    <p><img alt="O Projeto Sistema Alfa: Anatomia de um Quase-Fracasso" src="assets/img/2026_03_30_IMAGE_001.png" class="hero-image" /></p>
+<p><em>O Projeto Sistema Alfa: Anatomia de um Quase-Fracasso</em></p>
+<p>Tempo de leitura: 8 minutos</p>
+<p>No dinâmico mundo do desenvolvimento de software, a linha entre o sucesso e o fracasso de um projeto pode ser tênue. Muitos são iniciados com grandes expectativas, mas poucos realmente entregam o valor prometido sem uma jornada repleta de desafios. Este artigo se propõe a mergulhar nos bastidores de um projeto real – que chamaremos de "Sistema Alfa" – não para apontar dedos, mas para extrair lições valiosas sobre os motivos mais comuns que levam projetos a um estado de "quase-fracasso", exigindo esforços hercúleos para a recuperação.</p>
+<p>Acompanharemos a saga de um arquiteto de software e sua equipe de apoio ao desenvolvimento, que nas últimas semanas se debruçaram sobre um sistema legado em modernização, buscando estabilizar funcionalidades cruciais e padronizar processos. O que se seguiu foi uma verdadeira aula sobre as armadilhas da engenharia de software.</p>
+<h2>A Enxurrada de Bugs: Quando a Homologação Vira Campo de Batalha</h2>
+<p>O primeiro sinal de alerta no "Sistema Alfa" veio de seu ambiente de homologação. Uma análise de qualidade revelou 44 defeitos em funcionalidades essenciais, espalhados por cinco módulos. Desses, 7 eram críticos (erros 403 e 404, bloqueando acesso a telas inteiras), 19 de alta prioridade (afetando operações básicas de cadastro) e 18 de média/baixa. A estimativa para correção? 187 horas de desenvolvimento.</p>
+<p>Este cenário é um clássico. A homologação, que deveria ser a etapa final de validação com o usuário, transformou-se em uma fase intensiva de depuração e correção de falhas básicas. Isso não apenas atrasa o projeto, mas erode a confiança do cliente e o moral da equipe.</p>
+<h2>As Falhas Mais Comuns Reveladas Pelo "Sistema Alfa":</h2>
+<h3>A Quebra do Contrato de Interface: O Silencioso Devorador de Horas</h3>
+<p>Um dos padrões mais recorrentes foi a desconexão entre o código da aplicação e o banco de dados. Em múltiplos módulos, Stored Procedures eram chamadas com nomes incorretos no código Java (SXEMN012 vs. SP_SX_CONSULTA_SXEMN012), ou seus parâmetros de saída estavam comentados diretamente no banco de dados.</p>
+<p><strong>Lição Aprendida:</strong> A falta de sincronismo entre as equipes de desenvolvimento de aplicação e banco de dados é uma falha catastrófica. O "contrato" entre o código e a base de dados deve ser rígido e versionado. Erros de nome ou de mapeamento de parâmetros, por mais "básicos" que pareçam, custam horas preciosas de investigação e correção, especialmente quando descobertos em fases avançadas do ciclo de desenvolvimento.</p>
+<h3>Dívida Técnica e a Erosão da Camada de Persistência</h3>
+<p>A análise profunda dos logs do servidor WildFly revelou problemas como gerenciamento incorreto de conexões com o banco de dados e métodos de execução de Stored Procedures que não tratavam adequadamente os conjuntos de resultados. A necessidade de criar um novo método executeStoredProcedure para lidar com conexões evidencia uma fundação instável na camada de acesso a dados.</p>
+<p><strong>Lição Aprendida:</strong> Uma base de código frágil na camada de persistência se propaga. Se o componente que interage com o banco de dados é mal projetado ou contém débito técnico, cada nova funcionalidade que o utiliza herdará seus problemas, transformando pequenos bugs em falhas sistêmicas. Investir em uma arquitetura de dados robusta e padronizada é crucial.</p>
+<h3>A Ausência de Contexto de Negócio: O "Bug" que Não É Bug</h3>
+<p>Um dos episódios mais ilustrativos foi a investigação de um "bug" onde a consulta de "Contrato Seguro" retornava vazia ao pesquisar um número específico. Após dias de depuração profunda em código Java, logs e Stored Procedures, descobriu-se que o menu era exclusivo para produtos do tipo "Prestamista", que não existiam no sistema. O retorno vazio, na verdade, era o comportamento esperado.</p>
+<p><strong>Lição Aprendida:</strong> O alinhamento entre as equipes técnica e de negócios é vital. Gasta-se tempo e recursos preciosos investigando problemas que, sob a ótica de negócio, não existem. Uma comunicação clara e a validação antecipada das expectativas funcionais podem evitar desperdícios significativos e a frustração da equipe técnica.</p>
+<h3>Silos de Conhecimento e a Ausência de Padronização</h3>
+<p>A equipe de apoio precisou reorganizar completamente a pasta de testes, que estava "dispersa em múltiplas localizações sem padrão definido". Documentos foram consolidados, templates criados e scripts de automação ajustados para funcionar na nova estrutura.</p>
+<p><strong>Lição Aprendida:</strong> A falta de padrões de codificação, de estrutura de projeto e de documentação transforma o desenvolvimento em um "cada um por si". O conhecimento fica encapsulado em indivíduos, tornando o projeto vulnerável à saída de membros da equipe e dificultando a escalabilidade. A padronização é a espinha dorsal de um projeto sustentável.</p>
+<h3>A Confiança Excessiva em Processos Manuais (SQL Scripts para o Cliente)</h3>
+<p>Um ponto crítico foi a entrega de "scripts SQL completos" ao cliente para que ele mesmo executasse no banco de dados, a fim de habilitar funcionalidades. Isso, embora necessário para a situação, aponta para uma falha profunda no processo de deployment.</p>
+<p><strong>Lição Aprendida:</strong> Depender de intervenções manuais para que o sistema funcione em produção é um grande risco. Configurações de banco de dados, migrações de schema e atualizações de Stored Procedures devem ser automatizadas e integradas ao pipeline de CI/CD. Cada script manual executado pelo cliente é uma porta para erros e inconsistências futuras.</p>
+<h2>Conclusão: Investir na Base é Evitar o Fracasso</h2>
+<p>A experiência com o "Sistema Alfa" é um lembrete contundente de que o sucesso de um projeto de software não reside apenas em escrever código, mas em construir uma base sólida de processos, comunicação e engenharia. Falhas na sincronização de schema, arquitetura de persistência, alinhamento de negócio, padronização e automação de deployment são as rachaduras que, se não tratadas, podem desmoronar até os projetos mais promissores.</p>
+<p>A lição final é clara: investir em práticas de Desenvolvimento Orientado a Testes (TDD), Integração Contínua (CI), Deployment Contínuo (CD), comunicação robusta e uma cultura de "Definition of Done" rigorosa não é um luxo, mas uma necessidade. São essas disciplinas que transformam um "quase-fracasso" em um projeto resiliente e bem-sucedido.</p>
+<h2>Dicionário de Termos Técnicos: Projeto SMART V3</h2>
+<p><em>(Guia Prático para Gestores e Stakeholders)</em></p>
+<div class="chalkboard chalkboard-table"><pre><code>+-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Termo Técnico         | Tradução para Leigos      | O que significa na prática?                                                                                                                           |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Stored Procedure (SP) | Receita de Bolo no Banco  | É um conjunto de comandos guardados no banco de dados. Se a "receita" estiver com o nome trocado, o sistema tenta cozinhar e não encontra os ingredientes.            |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| DTO                   | Formulário de Transporte  | É um envelope que carrega dados. Se o envelope diz "Nome" e o banco de dados envia "Data", a informação se perde no meio do caminho.                  |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| DAO                   | O Carteiro / Mensageiro   | Parte do código que leva o pedido ao banco e traz a resposta. Se o carteiro erra o caminho (conexão), a mensagem nunca chega.                         |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Mapping (Mapeamento)  | Dicionário de Tradução    | Faz a ponte entre o banco e a tela. Se o mapeamento falha, o banco fala uma língua e o sistema entende outra totalmente diferente.                    |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Homologação           | Palco de Ensaio Geral     | Espaço de testes antes do lançamento. Ter 44 erros aqui significa que o ensaio parou porque o cenário caiu ou os atores esqueceram as falas.           |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Erro 403 (Forbidden)  | Porta Trancada            | O usuário chegou ao endereço certo, mas o sistema não permite a entrada por falta de chaves (permissões).                                             |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Erro 404 (Not Found)  | Endereço Inexistente      | O sistema buscou uma função que não existe ou o endereço foi escrito errado no código fonte.                                                         |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Erro 500 (Internal)   | Pane no Motor             | Indica que algo "explodiu" no servidor. É um erro grave que o sistema não conseguiu processar ou explicar.                                            |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| CRUD                  | Operações Básicas         | Criar, Ler, Alterar e Excluir. Se o CRUD não funciona, você não consegue nem cadastrar nem apagar nenhum dado naquela tela.                           |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Script SQL            | Chave de Fenda Digital    | Ajuste manual no banco de dados. Depender disso é como precisar de um mecânico para ligar o seu carro todas as manhãs.                                |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Deployment (Deploy)   | Lançamento / Entrega      | O ato de colocar a versão nova do sistema no servidor para que as pessoas possam finalmente utilizá-lo.                                               |
++-----------------------+---------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+</code></pre></div>
+                </div>
+                
+                <footer class="post-footer">
+                    <div class="author-info">
+                        <img src="assets/img/foto_chri.jpg" alt="Christian Mulato" class="author-avatar">
+                        <div class="author-details">
+                            <strong>Christian Mulato</strong>
+                            <p>Desenvolvedor Java e Arquiteto de Software</p>
+                        </div>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2026 Christian Mulato. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

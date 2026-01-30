@@ -363,6 +363,36 @@ html:not([data-theme="dark"]) .fed-header > * {
   margin: 20px 0;
 }
 
+/* Força legibilidade no tema claro (evita texto branco nesses blocos) */
+html:not([data-theme="dark"]) .leigos-section,
+html:not([data-theme="dark"]) .estagiario-section,
+html:not([data-theme="dark"]) .alert-beginner,
+html:not([data-theme="dark"]) .alert-intermediate,
+html:not([data-theme="dark"]) .alert-advanced,
+html:not([data-theme="dark"]) .alert.alert-light {
+  color: var(--text-color);
+}
+
+html:not([data-theme="dark"]) .leigos-section h3,
+html:not([data-theme="dark"]) .estagiario-section h3,
+html:not([data-theme="dark"]) .alert-beginner h4,
+html:not([data-theme="dark"]) .alert-intermediate h4,
+html:not([data-theme="dark"]) .alert-advanced h4,
+html:not([data-theme="dark"]) .alert.alert-light h4 {
+  color: var(--text-color);
+}
+
+html:not([data-theme="dark"]) .leigos-section p,
+html:not([data-theme="dark"]) .estagiario-section p,
+html:not([data-theme="dark"]) .alert-beginner p,
+html:not([data-theme="dark"]) .alert-intermediate p,
+html:not([data-theme="dark"]) .alert-advanced p,
+html:not([data-theme="dark"]) .alert.alert-light p,
+html:not([data-theme="dark"]) .leigos-section li,
+html:not([data-theme="dark"]) .estagiario-section li {
+  color: var(--text-color);
+}
+
 /* Lista de Recursos */
 .feature-list {
   list-style: none;

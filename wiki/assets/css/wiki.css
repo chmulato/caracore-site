@@ -393,6 +393,38 @@ html:not([data-theme="dark"]) .estagiario-section li {
   color: var(--text-color);
 }
 
+/* Override extra (alta especificidade) para páginas de projeto:
+   garante que nada herde branco no tema claro (Bootstrap/estilos específicos) */
+html:not([data-theme="dark"]) .wiki-content .leigos-section,
+html:not([data-theme="dark"]) .wiki-content .estagiario-section {
+  color: var(--text-color) !important;
+}
+
+html:not([data-theme="dark"]) .wiki-content .leigos-section h3,
+html:not([data-theme="dark"]) .wiki-content .estagiario-section h3,
+html:not([data-theme="dark"]) .wiki-content .leigos-section p,
+html:not([data-theme="dark"]) .wiki-content .estagiario-section p,
+html:not([data-theme="dark"]) .wiki-content .leigos-section li,
+html:not([data-theme="dark"]) .wiki-content .estagiario-section li,
+html:not([data-theme="dark"]) .wiki-content .leigos-section strong,
+html:not([data-theme="dark"]) .wiki-content .estagiario-section strong {
+  color: var(--text-color) !important;
+}
+
+html:not([data-theme="dark"]) .wiki-content .leigos-section code,
+html:not([data-theme="dark"]) .wiki-content .estagiario-section code {
+  color: var(--code-text) !important;
+  background: var(--code-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.1rem 0.35rem;
+  border-radius: 6px;
+}
+
+html:not([data-theme="dark"]) .wiki-content .leigos-section a,
+html:not([data-theme="dark"]) .wiki-content .estagiario-section a {
+  color: var(--link-color) !important;
+}
+
 /* Lista de Recursos */
 .feature-list {
   list-style: none;

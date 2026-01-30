@@ -425,6 +425,45 @@ html:not([data-theme="dark"]) .wiki-content .estagiario-section a {
   color: var(--link-color) !important;
 }
 
+/* Guard-rail global para o tema claro:
+   evita textos brancos em cards/caixas de fundo claro (especialmente em CSS específicos de páginas). */
+html:not([data-theme="dark"]) .wiki-content .project-body,
+html:not([data-theme="dark"]) .wiki-content .feature-card,
+html:not([data-theme="dark"]) .wiki-content .setup-card,
+html:not([data-theme="dark"]) .wiki-content .arch-layer,
+html:not([data-theme="dark"]) .wiki-content .glossary-term,
+html:not([data-theme="dark"]) .wiki-content .project-highlight,
+html:not([data-theme="dark"]) .wiki-content .module-project,
+html:not([data-theme="dark"]) .wiki-content .resource-section,
+html:not([data-theme="dark"]) .wiki-content .resource-item,
+html:not([data-theme="dark"]) .wiki-content .testimonial-card,
+html:not([data-theme="dark"]) .wiki-content .step-content {
+  color: var(--text-color);
+}
+
+html:not([data-theme="dark"]) .wiki-content .project-body p,
+html:not([data-theme="dark"]) .wiki-content .project-body li,
+html:not([data-theme="dark"]) .wiki-content .feature-card p,
+html:not([data-theme="dark"]) .wiki-content .feature-card li,
+html:not([data-theme="dark"]) .wiki-content .setup-card p,
+html:not([data-theme="dark"]) .wiki-content .setup-card li,
+html:not([data-theme="dark"]) .wiki-content .arch-layer p,
+html:not([data-theme="dark"]) .wiki-content .arch-layer li,
+html:not([data-theme="dark"]) .wiki-content .glossary-term p,
+html:not([data-theme="dark"]) .wiki-content .glossary-term li,
+html:not([data-theme="dark"]) .wiki-content .project-highlight p,
+html:not([data-theme="dark"]) .wiki-content .project-highlight li,
+html:not([data-theme="dark"]) .wiki-content .resource-section p,
+html:not([data-theme="dark"]) .wiki-content .resource-section li,
+html:not([data-theme="dark"]) .wiki-content .resource-item p,
+html:not([data-theme="dark"]) .wiki-content .resource-item li,
+html:not([data-theme="dark"]) .wiki-content .testimonial-card p,
+html:not([data-theme="dark"]) .wiki-content .testimonial-card li,
+html:not([data-theme="dark"]) .wiki-content .step-content p,
+html:not([data-theme="dark"]) .wiki-content .step-content li {
+  color: var(--text-color);
+}
+
 /* Lista de Recursos */
 .feature-list {
   list-style: none;

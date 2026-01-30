@@ -23,16 +23,22 @@
   --wiki-text: #2c3e50;
   
   /* Variáveis de tema claro (padrão) */
-  --bg-color: #f5f7fa;
-  --bg-gradient-start: #f5f7fa;
-  --bg-gradient-end: #c3cfe2;
-  --text-color: #212529;
+  --bg-color: #f7f8fb;
+  --bg-gradient-start: #f7f8fb;
+  --bg-gradient-end: #e6ebf3;
+  --text-color: #0f172a;
   --card-bg: #ffffff;
-  --card-text: #2c3e50;
-  --border-color: #dee2e6;
-  --hover-bg: rgba(0,0,0,0.05);
-  --code-bg: #f4f4f4;
-  --code-text: #333;
+  --card-text: #111827;
+  --muted-text: #475569;
+  --border-color: rgba(15, 23, 42, 0.12);
+  --divider-color: rgba(15, 23, 42, 0.08);
+  --hover-bg: rgba(15, 23, 42, 0.04);
+  --code-bg: #f1f5f9;
+  --code-text: #0f172a;
+  --link-color: #1d4ed8;
+  --link-hover: #1e40af;
+  --footer-bg: #eef2f7;
+  --footer-text: #334155;
 }
 
 /* Tema Escuro */
@@ -53,11 +59,17 @@
   --text-color: #ecf0f1;
   --card-bg: #2c3e50;
   --card-text: #ecf0f1;
+  --muted-text: rgba(236, 240, 241, 0.75);
   --border-color: #34495e;
+  --divider-color: rgba(236, 240, 241, 0.14);
   --hover-bg: rgba(255,255,255,0.1);
   --code-bg: #34495e;
   --code-text: #ecf0f1;
   --box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  --link-color: #93c5fd;
+  --link-hover: #bfdbfe;
+  --footer-bg: #0f172a;
+  --footer-text: #e2e8f0;
   
   /* Ajustes de cores dos projetos para tema escuro */
   --hub-color: #5dade2;
@@ -81,6 +93,17 @@ body {
   transition: background 0.3s ease, color 0.3s ease;
 }
 
+/* Links (escopo: sidebar + conteúdo) */
+.wiki-sidebar a,
+.wiki-content a {
+  color: var(--link-color);
+}
+
+.wiki-sidebar a:hover,
+.wiki-content a:hover {
+  color: var(--link-hover);
+}
+
 /* Navegaçéo */
 .wiki-nav {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -88,6 +111,49 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+}
+
+.wiki-nav .navbar-brand,
+.wiki-nav .navbar-nav,
+.wiki-nav .navbar-toggler,
+.wiki-nav .theme-toggle-btn {
+  position: relative;
+  z-index: 1;
+}
+
+/* Suaviza contrastes do tema claro em headers com gradiente */
+html:not([data-theme="dark"]) .wiki-nav,
+html:not([data-theme="dark"]) .wiki-header,
+html:not([data-theme="dark"]) .project-header,
+html:not([data-theme="dark"]) .character-header,
+html:not([data-theme="dark"]) .scenario-header,
+html:not([data-theme="dark"]) .auth-header,
+html:not([data-theme="dark"]) .fed-header {
+  position: relative;
+}
+
+html:not([data-theme="dark"]) .wiki-nav::after,
+html:not([data-theme="dark"]) .wiki-header::after,
+html:not([data-theme="dark"]) .project-header::after,
+html:not([data-theme="dark"]) .character-header::after,
+html:not([data-theme="dark"]) .scenario-header::after,
+html:not([data-theme="dark"]) .auth-header::after,
+html:not([data-theme="dark"]) .fed-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+}
+
+html:not([data-theme="dark"]) .wiki-header > *,
+html:not([data-theme="dark"]) .project-header > *,
+html:not([data-theme="dark"]) .character-header > *,
+html:not([data-theme="dark"]) .scenario-header > *,
+html:not([data-theme="dark"]) .auth-header > *,
+html:not([data-theme="dark"]) .fed-header > * {
+  position: relative;
+  z-index: 1;
 }
 
 .wiki-nav .navbar-brand {
@@ -305,7 +371,7 @@ body {
 
 .feature-list li {
   padding: 8px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--divider-color);
   position: relative;
   padding-left: 25px;
 }
@@ -330,6 +396,12 @@ body {
   border-radius: var(--border-radius);
 }
 
+/* Breadcrumb no tema escuro: evita "branco estourado" */
+[data-theme="dark"] .wiki-breadcrumb {
+  background: rgba(15, 23, 42, 0.35);
+  border: 1px solid var(--border-color);
+}
+
 /* Botões */
 .btn-wiki {
   background: linear-gradient(135deg, var(--primary-color) 0%, var(--info-color) 100%);
@@ -350,11 +422,27 @@ body {
 
 /* Footer */
 .wiki-footer {
-  background: var(--dark-color);
-  color: white;
+  background: var(--footer-bg);
+  color: var(--footer-text);
   text-align: center;
   padding: 20px;
   margin-top: 40px;
+  border-top: 1px solid var(--border-color);
+}
+
+.wiki-footer a {
+  color: var(--footer-text);
+  text-decoration: none;
+}
+
+.wiki-footer a:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+/* Compatibilidade com utilitários do Bootstrap no footer */
+html:not([data-theme="dark"]) .wiki-footer .text-light {
+  color: var(--footer-text) !important;
 }
 
 /* Responsividade */

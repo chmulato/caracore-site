@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guia de Serviços — CaraCore PDV (2026) | Cara Core Informática</title>
+  <meta name="description" content="Guia de Serviços do CaraCore PDV: implantação assistida, migração, treinamento, suporte e conformidade fiscal 2026 — com foco em continuidade e resultado no varejo.">
+  <meta name="keywords" content="CaraCore PDV, guia de serviços, PDV, ponto de venda, implantação, migração, treinamento, suporte, SLA, reforma tributária 2026, IBS, CBS, IVA dual, Cara Core Informática">
+  <meta name="author" content="Cara Core Informática">
+  <link rel="canonical" href="https://caracore.com.br/publications/livros/guia_de_servicos_caracore-pdv.html">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Guia de Serviços — CaraCore PDV (2026) | Cara Core Informática">
+  <meta property="og:description" content="Implantação assistida, migração, treinamento, suporte e conformidade fiscal 2026 para o CaraCore PDV.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://caracore.com.br/publications/livros/guia_de_servicos_caracore-pdv.html">
+  <meta property="og:image" content="https://caracore.com.br/publications/livros/images/caracore_pdv.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guia de Serviços — CaraCore PDV (2026) | Cara Core Informática">
+  <meta name="twitter:description" content="Implantação assistida, migração, treinamento, suporte e conformidade fiscal 2026 para o CaraCore PDV.">
+  <meta name="twitter:image" content="https://caracore.com.br/publications/livros/images/caracore_pdv.png">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+      background: #f4f6fb;
+      color: #222;
+      margin: 0;
+      padding: 0 1.5em;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4 {
+      color: #2b579a;
+      font-weight: 700;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: 2.3em;
+      border-bottom: 2px solid #e1e4ea;
+      padding-bottom: 0.3em;
+    }
+
+    h2 {
+      font-size: 1.7em;
+      border-bottom: 1px solid #e1e4ea;
+      padding-bottom: 0.2em;
+    }
+
+    h3 { font-size: 1.3em; }
+    h4 { font-size: 1.1em; }
+
+    a {
+      color: #0078d4;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    a:hover, a:focus {
+      color: #005a9e;
+      text-decoration: underline;
+    }
+
+    code, pre {
+      background: #f1f3f7;
+      color: #c7254e;
+      font-family: 'Fira Mono', 'Consolas', monospace;
+      border-radius: 4px;
+      padding: 0.2em 0.4em;
+    }
+
+    pre {
+      padding: 1em;
+      overflow-x: auto;
+      margin: 1em 0;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1em auto;
+      border-radius: 6px;
+      box-shadow: 0 2px 8px rgba(44, 62, 80, 0.07);
+    }
+
+    ul, ol {
+      margin-left: 2em;
+      margin-bottom: 1em;
+    }
+
+    li { margin-bottom: 0.5em; }
+
+    blockquote {
+      border-left: 4px solid #b4c7e7;
+      background: #f8fafc;
+      color: #555;
+      margin: 1.5em 0;
+      padding: 0.8em 1.2em;
+      border-radius: 4px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e1e4ea;
+      margin: 2em 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5em 0;
+      background: #fff;
+    }
+
+    th, td {
+      border: 1px solid #e1e4ea;
+      padding: 0.6em 1em;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f1f3f7;
+      font-weight: 600;
+    }
+
+    .pill {
+      display: inline-block;
+      padding: 0.25em 0.7em;
+      border-radius: 999px;
+      background: #e8f1ff;
+      color: #0b4fb3;
+      font-weight: 600;
+      font-size: 0.88em;
+      margin-right: 0.4em;
+    }
+
+    @media (max-width: 900px) {
+      body { padding: 0 0.5em; font-size: 1.07em; }
+      h1 { font-size: 1.7em; }
+      h2 { font-size: 1.3em; }
+      h3 { font-size: 1.1em; }
+      table, th, td { font-size: 0.97em; }
+    }
+  </style>
+</head>
+
+<body>
+  <figure>
+    <img src="images/caracore_pdv.png" alt="CaraCore PDV — Cara Core Informática" />
+  </figure>
+
+  <hr />
+
+  <h1>Guia de Serviços — CaraCore PDV (2026)</h1>
+  <p>
+    Este guia descreve, de forma objetiva, os serviços profissionais da <strong>Cara Core Informática</strong> para implantação,
+    operação assistida e evolução do <strong>CaraCore PDV</strong>, com foco em <strong>continuidade</strong>, <strong>conformidade</strong> e
+    <strong>resultado</strong> no varejo.
+  </p>
+
+  <blockquote>
+    <p><strong>Nota de escopo (versão pública):</strong> este documento é intencionalmente focado em serviços, operação e boas práticas,
+    evitando expor detalhes internos de arquitetura/infraestrutura. Detalhes técnicos sob NDA podem ser apresentados em proposta e documentação do projeto.</p>
+  </blockquote>
+
+  <h2 id="sumario">Sumário</h2>
+  <ul>
+    <li><a href="#introducao">Introdução</a></li>
+    <li><a href="#o-que-entregamos">O que entregamos (visão de valor)</a></li>
+    <li><a href="#pacotes-de-servico">Pacotes de serviço</a>
+      <ul>
+        <li><a href="#implantacao-assistida">Implantação assistida</a></li>
+        <li><a href="#migracao-de-dados">Migração de dados</a></li>
+        <li><a href="#treinamento-operacional">Treinamento operacional</a></li>
+        <li><a href="#suporte-e-continuidade-sla">Suporte e continuidade (SLA)</a></li>
+        <li><a href="#configuracao-fiscal-2026">Configuração fiscal 2026 (IBS/CBS)</a></li>
+        <li><a href="#customizacoes-e-integracoes">Customizações e integrações</a></li>
+      </ul>
+    </li>
+    <li><a href="#boas-praticas">Boas práticas recomendadas</a></li>
+    <li><a href="#limites">Limites e responsabilidades</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="#controle-de-versoes">Controle de versões</a></li>
+  </ul>
+
+  <hr />
+
+  <h2 id="introducao">Introdução</h2>
+  <p>
+    PDV é <strong>faturamento</strong>. Por isso, a prioridade do CaraCore PDV é garantir previsibilidade operacional: reduzir paradas,
+    padronizar rotinas e manter o negócio vendendo mesmo sob condições adversas (instabilidade de rede, picos de atendimento, troca de operadores).
+  </p>
+  <p>
+    Na prática, o serviço profissional existe para que a empresa não “pague com o próprio tempo” os custos invisíveis de implantação:
+    configurações, testes, treinamento, ajustes finos e plano de continuidade.
+  </p>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h2 id="o-que-entregamos">O que entregamos (visão de valor)</h2>
+  <ul>
+    <li><span class="pill">Continuidade</span> redução de risco de parada e rotinas de contingência operacionais.</li>
+    <li><span class="pill">Velocidade</span> implantação guiada, com validação em cenário real e checklist de aceite.</li>
+    <li><span class="pill">Conformidade</span> parametrização e rotinas de revisão fiscal orientadas à Reforma Tributária.</li>
+    <li><span class="pill">Operação</span> treinamento e padronização para reduzir erro humano e retrabalho.</li>
+    <li><span class="pill">Evolução</span> melhoria contínua com priorização por impacto (caixa, estoque, relatórios, integrações).</li>
+  </ul>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h2 id="pacotes-de-servico">Pacotes de serviço</h2>
+
+  <h3 id="implantacao-assistida">Implantação assistida</h3>
+  <p>
+    Implantação assistida é o pacote para colocar a operação “de pé” com segurança e previsibilidade, minimizando tentativas e erros.
+    O foco é garantir que o PDV esteja pronto para operar em horário comercial com fluxos essenciais validados.
+  </p>
+  <ul>
+    <li><strong>Inclui:</strong> checklist de preparação, configuração inicial do ambiente, validação em cenário real, rotinas de backup/recuperação, e documentação do que foi entregue.</li>
+    <li><strong>Entrega:</strong> termo de aceite + recomendações de próximos passos por prioridade (risco/ROI).</li>
+  </ul>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h3 id="migracao-de-dados">Migração de dados</h3>
+  <p>
+    A migração reduz o tempo de transição e evita perda de histórico. O objetivo é importar cadastros e saldos iniciais com consistência,
+    e validar amostras (por categoria, por fornecedor, por SKU) antes do corte definitivo.
+  </p>
+  <ul>
+    <li><strong>Inclui:</strong> análise do export do sistema anterior, mapeamento de campos, migração assistida e relatório de validação.</li>
+    <li><strong>Boas práticas:</strong> executar migração “a seco” primeiro, com validação por amostragem e correções antes do go-live.</li>
+  </ul>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h3 id="treinamento-operacional">Treinamento operacional</h3>
+  <p>
+    Treinamento focado no que importa: reduzir erro e aumentar velocidade no caixa, com rotinas claras para operadores, gerência e administração.
+  </p>
+  <ul>
+    <li><strong>Operadores:</strong> abertura/fechamento, vendas, cancelamentos conforme política interna, formas de pagamento e emissão de comprovantes conforme configuração.</li>
+    <li><strong>Gestores:</strong> relatórios, acompanhamento de indicadores, rotinas de conferência e auditoria de operação.</li>
+    <li><strong>Administradores:</strong> cadastros, permissões, parâmetros e rotinas de segurança/backup.</li>
+  </ul>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h3 id="suporte-e-continuidade-sla">Suporte e continuidade (SLA)</h3>
+  <p>
+    Contrato de suporte mensal para garantir resposta rápida, estabilidade e melhoria contínua. O objetivo é reduzir tempo de parada
+    e tratar causas raiz (não só “apagar incêndio”).
+  </p>
+  <ul>
+    <li><strong>Inclui:</strong> atendimento por prioridade (impacto no faturamento), acompanhamento de incidentes, correções, atualizações e relatório de recorrência.</li>
+    <li><strong>Opções de SLA:</strong> conforme plano contratado e criticidade da operação (ex.: janela comercial, finais de semana, sazonalidade).</li>
+  </ul>
+  <blockquote>
+    <p><strong>Observação:</strong> a continuidade depende também de disciplina operacional: treinamento, rotinas de backup e governança de acessos.</p>
+  </blockquote>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h3 id="configuracao-fiscal-2026">Configuração fiscal 2026 (IBS/CBS)</h3>
+  <p>
+    A Reforma Tributária demanda parametrização consistente e rastreável. Nosso papel é reduzir erro operacional e garantir que o sistema esteja
+    configurado e revisado em ciclos curtos, com foco em risco e impacto financeiro.
+  </p>
+  <ul>
+    <li><strong>Inclui:</strong> parametrização inicial, validações com casos de teste, rotina de revisão e documentação das decisões de configuração.</li>
+    <li><strong>Não substitui:</strong> contabilidade. Atuamos em conjunto com o contador responsável para alinhar premissas e reduzir atrito.</li>
+  </ul>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h3 id="customizacoes-e-integracoes">Customizações e integrações</h3>
+  <p>
+    Quando o ganho está em integrar sistemas (ERP, e-commerce, meios de pagamento, relatórios para contabilidade) ou em adaptar fluxos à operação,
+    entregamos customizações com documentação e sustentação.
+  </p>
+  <ul>
+    <li><strong>Exemplos comuns:</strong> relatórios gerenciais, exportações, integrações com serviços e automações de rotina.</li>
+    <li><strong>Entrega sustentável:</strong> documentação de uso e critérios de aceitação; treinamento rápido do time envolvido.</li>
+  </ul>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h2 id="boas-praticas">Boas práticas recomendadas</h2>
+  <ul>
+    <li><strong>Backup e recuperação testados:</strong> não basta “ter backup”; é preciso validar restauração e tempo de retorno.</li>
+    <li><strong>Controle de acessos:</strong> perfis por função (operador/gerência/admin), com revisão periódica.</li>
+    <li><strong>Rotina de atualização:</strong> aplicar atualizações em janela planejada, com checklist de validação.</li>
+    <li><strong>Dados pessoais (LGPD):</strong> coletar apenas o necessário, com base legal, e com controles de acesso/retenção.</li>
+  </ul>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <h2 id="limites">Limites e responsabilidades</h2>
+  <ul>
+    <li><strong>Contabilidade:</strong> o CaraCore PDV e a Cara Core Informática não substituem o contador. A estratégia fiscal é definida com o responsável contábil.</li>
+    <li><strong>Operação:</strong> desempenho e continuidade dependem de treinamento, disciplina e cumprimento de rotinas pela equipe do cliente.</li>
+    <li><strong>Ambiente:</strong> recomendações de infraestrutura e segurança são fornecidas conforme o cenário; decisões e aquisições ficam a cargo do cliente, salvo contrato específico.</li>
+  </ul>
+  <p><a href="#sumario">Voltar ao Sumário</a></p>
+
+  <hr />
+
+  <h2 id="contato">Contato</h2>
+  <p>Para solicitar uma proposta, implantação assistida ou suporte, fale com a Cara Core Informática:</p>
+  <ul>
+    <li><strong>E-mail:</strong> <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a></li>
+    <li><strong>WhatsApp:</strong> <a href="https://wa.me/5541999097797">+55 (41) 99909-7797</a></li>
+    <li><strong>Site:</strong> <a href="https://www.caracore.com.br">www.caracore.com.br</a></li>
+  </ul>
+
+  <hr />
+
+  <h2 id="controle-de-versoes">Controle de versões</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Versão</th>
+        <th>Data</th>
+        <th>Descrição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1.0</td>
+        <td>31/01/2026</td>
+        <td>Criação do guia de serviços específico do CaraCore PDV.</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

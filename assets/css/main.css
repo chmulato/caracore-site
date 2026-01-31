@@ -460,6 +460,61 @@ section, header {
   color: #007bff;
 }
 
+/* Tooltip simples para links de "Recursos" (hover/focus) */
+#contato .recursos-link.recursos-link--tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#contato .recursos-link.recursos-link--tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%) translateY(4px);
+  max-width: 320px;
+  white-space: normal;
+  text-align: center;
+  background: rgba(17, 24, 39, 0.96);
+  color: #fff;
+  font-size: 0.82rem;
+  line-height: 1.2;
+  padding: 8px 10px;
+  border-radius: 10px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease;
+  z-index: 999;
+}
+
+#contato .recursos-link.recursos-link--tooltip::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 2px);
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: rgba(17, 24, 39, 0.96);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  z-index: 998;
+}
+
+#contato .recursos-link.recursos-link--tooltip:hover::after,
+#contato .recursos-link.recursos-link--tooltip:focus-visible::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+#contato .recursos-link.recursos-link--tooltip:hover::before,
+#contato .recursos-link.recursos-link--tooltip:focus-visible::before {
+  opacity: 1;
+}
+
 /* Tabela de horários */
 .horario-tabela {
   background: #fff;

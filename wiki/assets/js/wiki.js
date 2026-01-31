@@ -103,21 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Sistema de tema claro/escuro
-    function initThemeToggle() {
-        const themeToggle = document.getElementById('theme-toggle');
-        if (themeToggle) {
-            // Verificar tema salvo
-            const savedTheme = localStorage.getItem('wiki-theme') || 'light';
-            document.body.classList.toggle('dark-theme', savedTheme === 'dark');
-            
-            themeToggle.addEventListener('click', function() {
-                document.body.classList.toggle('dark-theme');
-                const isDark = document.body.classList.contains('dark-theme');
-                localStorage.setItem('wiki-theme', isDark ? 'dark' : 'light');
-            });
-        }
-    }
+    // Tema claro/escuro:
+    // Padronizado via assets/js/theme-toggle.js (usa atributo data-theme no <html>).
+    // Não duplicar aqui para evitar conflitos.
     
     // Copiar código para clipboard
     function initCodeCopy() {
@@ -176,7 +164,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initMobileMenu();
     initTechBadges();
     initBreadcrumb();
-    initThemeToggle();
     initCodeCopy();
     initPrintSupport();
     initLazyLoading();

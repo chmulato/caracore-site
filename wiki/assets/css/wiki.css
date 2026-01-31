@@ -827,3 +827,127 @@ html {
   border-color: rgba(255, 255, 255, 0.3);
   color: white;
 }
+
+/* ============================================ */
+/* WIKI HOME (TRILHAS + CENÁRIOS + LINHA DO TEMPO) */
+/* ============================================ */
+
+.wiki-home-subtitle {
+  color: var(--muted-text);
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.wiki-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.wiki-quick-actions .btn {
+  border-radius: 999px;
+}
+
+.track-card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.track-header {
+  padding: 18px 18px;
+  color: white;
+}
+
+.track-header small {
+  opacity: 0.9;
+}
+
+.track-header.track-cliente {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+}
+
+.track-header.track-estagiario {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.track-header.track-socio {
+  background: linear-gradient(135deg, #0f3d6e 0%, #0b6b4d 100%);
+}
+
+.track-body {
+  padding: 16px 18px 18px;
+}
+
+.scenario-card {
+  background: var(--card-bg);
+  color: var(--card-text);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 14px 14px;
+  height: 100%;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.scenario-card:hover {
+  transform: translateY(-2px);
+  background: var(--hover-bg);
+}
+
+.scenario-card .kicker {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted-text);
+}
+
+.scenario-card h4 {
+  margin-top: 6px;
+  margin-bottom: 6px;
+  font-size: 1.05rem;
+}
+
+.scenario-card p {
+  color: var(--muted-text);
+  margin-bottom: 10px;
+}
+
+.scenario-card .links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-right: 12px;
+  font-weight: 600;
+}
+
+.timeline {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.timeline li {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--divider-color);
+}
+
+.timeline .year {
+  font-weight: 800;
+  color: var(--card-text);
+}
+
+.timeline .event {
+  color: var(--muted-text);
+}
+
+.timeline .event strong {
+  color: var(--card-text);
+}

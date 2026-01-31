@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wiki - Cara Core Informática | Guia para Estagiários e Colaboradores</title>
-    <meta name="description" content="Wiki técnico da Cara Core Informática com guias para estagiários, explicações em linguagem acessível e documentação dos projetos do portfólio.">
+    <title>Wiki Cara Core Informática | Centro de Alinhamento (Cliente, Estagiário, Sócio)</title>
+    <meta name="description" content="Centro único de alinhamento e história da Cara Core Informática: trilhas por personagem (Cliente, Estagiário, Sócio), cenários reais e linha do tempo desde 2010.">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,13 +12,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- Wiki CSS -->
     <link rel="stylesheet" href="assets/css/wiki.css">
+    <!-- Wiki Unified (overrides) -->
+    <link rel="stylesheet" href="assets/css/wiki-unified.css">
     
     <!-- Favicon -->
     <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
     
     <!-- Meta tags Open Graph -->
-    <meta property="og:title" content="Wiki - Cara Core Informática">
-    <meta property="og:description" content="Guia técnico para estagiários e colaboradores">
+    <meta property="og:title" content="Wiki Cara Core Informática | Centro de Alinhamento">
+    <meta property="og:description" content="Trilhas por personagem, cenários reais e linha do tempo desde 2010.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://caracore.com.br/wiki/">
     
@@ -56,264 +58,322 @@
                             <i class="bi bi-briefcase"></i> Portfólio
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <button class="btn theme-toggle-btn" id="theme-toggle" aria-label="Alternar tema" title="Alternar tema">
-                            <i class="bi bi-moon-stars-fill"></i>
-                        </button>
-                    </li>
+                    
                 </ul>
             </div>
         </div>
     </nav>
 
     <div class="wiki-container">
-        <div class="row">
-            <!-- Sidebar -->
-            <div class="col-lg-3 col-md-4">
-                <div class="wiki-sidebar">
-                    <h4><i class="bi bi-list-ul"></i> Navegação</h4>
-                    <ul class="wiki-menu">
-                        <li><a href="index.html" class="active"><i class="bi bi-house"></i> Página Inicial</a></li>
-                        <li>
-                            <a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a>
-                            <ul class="submenu">
-                                <li><a href="projeto-pdv.html">CaraCore PDV</a></li>
-                                <li><a href="projeto-hub.html">CaraCore Hub</a></li>
-                                <li><a href="projeto-seed.html">CaraCore Seed</a></li>
-                                <li><a href="projeto-reino.html">Reino OIDC</a></li>
-                                <li><a href="projeto-area51.html">Área 51</a></li>
-                                <li><a href="projeto-python.html">Python Training</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="tecnologias.html"><i class="bi bi-gear"></i> Tecnologias Utilizadas</a>
-                            <ul class="submenu">
-                                <li><a href="tecnologias.html#java-spring">Java & Spring Boot</a></li>
-                                <li><a href="tecnologias.html#python-flask">Python & Flask</a></li>
-                                <li><a href="tecnologias.html#frontend">HTML/CSS/JavaScript</a></li>
-                                <li><a href="tecnologias.html#oauth">OAuth 2.1 & OIDC</a></li>
-                                <li><a href="tecnologias.html#azure-docker">Azure & Docker</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do Estagiário</a></li>
-                        <li><a href="contribuindo.html"><i class="bi bi-git"></i> Como Contribuir</a></li>
-                        <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
-                    </ul>
+        <div class="wiki-content">
+            <div class="wiki-header">
+                <h1><i class="bi bi-compass"></i> Wiki Cara Core — Centro de Alinhamento</h1>
+                <p class="wiki-home-subtitle">
+                    Um ponto único para entender <strong>o que entregamos</strong>, <strong>como executamos</strong> e <strong>por que evoluímos</strong> — guiado por cenários e por nossa história desde 2010.
+                </p>
 
-                    <!-- Busca Rápida -->
-                    <div class="mt-4">
-                        <h5>Busca Rápida</h5>
-                        <input type="search" id="wiki-search" class="form-control" placeholder="Buscar no Wiki...">
-                    </div>
+                <div class="wiki-quick-actions" role="navigation" aria-label="Trilhas principais">
+                    <a class="btn btn-success btn-sm" href="trilha-cliente.html"><i class="bi bi-briefcase"></i> Trilha do Sucesso (Cliente)</a>
+                    <a class="btn btn-primary btn-sm" href="trilha-estagiario.html"><i class="bi bi-mortarboard"></i> Trilha do Aprendizado (Estagiário)</a>
+                    <a class="btn btn-dark btn-sm" href="trilha-socio.html"><i class="bi bi-diagram-3"></i> Trilha da Estratégia (Sócio)</a>
+                    <a class="btn btn-outline-secondary btn-sm" href="#linha-do-tempo"><i class="bi bi-clock-history"></i> Linha do tempo</a>
                 </div>
             </div>
 
-            <!-- Conteúdo Principal -->
-            <div class="col-lg-9 col-md-8">
-                <div class="wiki-content">
-                    <div class="wiki-header">
-                        <h1><i class="bi bi-book-half"></i> Wiki da Cara Core Informática</h1>
-                        <p>Guia completo para estagiários, colaboradores e pessoas interessadas em nossos projetos</p>
+            <section class="mb-4">
+                <div class="alert alert-info" role="note">
+                    <i class="bi bi-info-circle-fill"></i>
+                    <strong>Como usar:</strong> escolha sua trilha. Cada card é um <strong>manual de situação</strong>: “o que ganho”, “como resolvo agora” e “qual é o próximo passo”.
+                    <span class="d-block mt-2 text-muted">Nesta página, evitamos “manuais de botões” e detalhes internos de infraestrutura. O foco é desempenho, disciplina e resultado.</span>
+                </div>
+
+                <div class="mt-3">
+                    <label class="form-label fw-semibold" for="wiki-search">Busca rápida</label>
+                    <input type="search" id="wiki-search" class="form-control" placeholder="Buscar por cenário, produto, termo (ex.: Selo Verde, Blindagem, onboarding)...">
+                </div>
+            </section>
+
+            <!-- TRILHA DO CLIENTE -->
+            <section id="trilha-cliente" class="mb-5">
+                <h2><i class="bi bi-briefcase-fill text-success"></i> Trilha do Sucesso (Cliente)</h2>
+                <p class="text-muted">Foco: experiência e resultado. “O que eu ganho? Como resolvo meu problema agora?”</p>
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="track-card project-card">
+                            <div class="track-header track-cliente">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h3 class="h5 mb-1"><i class="bi bi-shop"></i> Cenário: vender com previsibilidade</h3>
+                                        <small>Selo Verde, Economia e Blindagem — sem complicação</small>
+                                    </div>
+                                    <span class="badge bg-light text-dark">PDV</span>
+                                </div>
+                            </div>
+                            <div class="track-body">
+                                <p class="mb-3">Quando o varejo muda (fiscal, operação, fila), você precisa de continuidade e clareza — não de “mais um software”.</p>
+                                <div class="scenario-card">
+                                    <div class="kicker">Ganho</div>
+                                    <h4>Reduzir custo e manter a venda fluindo</h4>
+                                    <p>Economia operacional, fluxo de caixa protegido e rotina mais previsível no caixa.</p>
+                                    <div class="links">
+                                        <a href="../publications/livros/guia_de_servicos_caracore-pdv.html" target="_blank" rel="noopener"><i class="bi bi-journal-bookmark"></i> Guia de serviços (PDV)</a>
+                                        <a href="projeto-pdv.html"><i class="bi bi-journal-code"></i> Visão (Wiki)</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Bem-vindos -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-hand-thumbs-up text-success"></i> Bem-vindos ao Wiki!</h2>
-                        
-                        <div class="leigos-section">
-                            <h3><i class="bi bi-people"></i> Para Pessoas Leigas</h3>
-                            <p>Este Wiki foi criado para explicar nossos projetos de tecnologia de forma simples e acessível. Aqui você encontrará:</p>
-                            <ul class="feature-list">
-                                <li><strong>Explicações claras</strong> sobre o que cada projeto faz</li>
-                                <li><strong>Analogias do dia a dia</strong> para conceitos técnicos</li>
-                                <li><strong>Exemplos práticos</strong> de como nossos sistemas funcionam</li>
-                                <li><strong>Glossário ilustrado</strong> de termos técnicos</li>
-                            </ul>
-                        </div>
-
-                        <div class="estagiario-section">
-                            <h3><i class="bi bi-mortarboard"></i> Para Estagiários da Cara Core</h3>
-                            <p>Como novo membro da equipe, este Wiki será seu guia para:</p>
-                            <ul class="feature-list">
-                                <li><strong>Entender nossos projetos</strong> e suas tecnologias</li>
-                                <li><strong>Aprender como contribuir</strong> para o desenvolvimento</li>
-                                <li><strong>Conhecer nossas práticas</strong> de desenvolvimento e manutenção</li>
-                                <li><strong>Seguir tutoriais passo a passo</strong> para configurar ambiente</li>
-                            </ul>
-                            <div class="alert alert-info mt-3">
-                                <i class="bi bi-lightbulb"></i> <strong>Dica:</strong> Comece pelo <a href="guia-estagiario.html" class="alert-link">Guia do Estagiário</a> para uma introdução completa!
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Projetos em Destaque -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-star text-warning"></i> Nossos Projetos Principais</h2>
-                        <p class="text-muted mb-4">Conheça os projetos principais da Cara Core Informática e suas tecnologias:</p>
-
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="project-card">
-                                    <div class="project-header pdv">
-                                        <h3><i class="bi bi-cash-stack"></i> CaraCore PDV</h3>
+                    <div class="col-lg-4">
+                        <div class="track-card project-card">
+                            <div class="track-header track-cliente">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h3 class="h5 mb-1"><i class="bi bi-truck"></i> Cenário: e-commerce sem retrabalho</h3>
+                                        <small>Menos atrito, mais velocidade de execução</small>
                                     </div>
-                                    <div class="project-body">
-                                        <p><strong>Para Leigos:</strong> Sistema de caixa (ponto de venda) para lojas, com PIX, preparado para a Reforma Tributária e modo offline quando a internet cai.</p>
-                                        <p><strong>Para Estagiários:</strong> Aplicação Java/Spring Boot com Thymeleaf, HTMX, Bootstrap 5, PostgreSQL, H2/SQLite para offline e contingência.</p>
-                                        <div class="mb-2">
-                                            <span class="tech-badge">Java 21</span>
-                                            <span class="tech-badge">Spring Boot</span>
-                                            <span class="tech-badge">PostgreSQL</span>
-                                            <span class="tech-badge">Bootstrap 5</span>
-                                            <span class="tech-badge">HTMX</span>
-                                        </div>
-                                        <a href="projeto-pdv.html" class="btn-wiki">Ver Detalhes</a>
-                                    </div>
+                                    <span class="badge bg-light text-dark">Hub</span>
                                 </div>
                             </div>
-
-                            <div class="col-md-6 mb-4">
-                                <div class="project-card">
-                                    <div class="project-header hub">
-                                        <h3><i class="bi bi-diagram-3"></i> CaraCore Hub</h3>
-                                    </div>
-                                    <div class="project-body">
-                                        <p><strong>Para Leigos:</strong> Sistema que conecta diferentes programas e dados, como um "centro de controle" da empresa.</p>
-                                        <p><strong>Para Estagiários:</strong> Aplicação Python com APIs REST para integração de sistemas.</p>
-                                        <div class="mb-2">
-                                            <span class="tech-badge">Python</span>
-                                            <span class="tech-badge">Flask</span>
-                                            <span class="tech-badge">Docker</span>
-                                        </div>
-                                        <a href="projeto-hub.html" class="btn-wiki">Ver Detalhes</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 mb-4">
-                                <div class="project-card">
-                                    <div class="project-header seed">
-                                        <h3><i class="bi bi-seedling"></i> CaraCore Seed</h3>
-                                    </div>
-                                    <div class="project-body">
-                                        <p><strong>Para Leigos:</strong> "Semente" ou modelo base para criar novos projetos rapidamente.</p>
-                                        <p><strong>Para Estagiários:</strong> Template/boilerplate para acelerar desenvolvimento de novas aplicações.</p>
-                                        <div class="mb-2">
-                                            <span class="tech-badge">Python</span>
-                                            <span class="tech-badge">Templates</span>
-                                            <span class="tech-badge">Git</span>
-                                        </div>
-                                        <a href="projeto-seed.html" class="btn-wiki">Ver Detalhes</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 mb-4">
-                                <div class="project-card">
-                                    <div class="project-header reino">
-                                        <h3><i class="bi bi-shield-check"></i> Reino OIDC</h3>
-                                    </div>
-                                    <div class="project-body">
-                                        <p><strong>Para Leigos:</strong> Jogo educativo que ensina sobre segurança de logins na internet.</p>
-                                        <p><strong>Para Estagiários:</strong> Projeto open source educacional sobre OAuth 2.1 e OpenID Connect.</p>
-                                        <div class="mb-2">
-                                            <span class="tech-badge">OAuth 2.1</span>
-                                            <span class="tech-badge">OIDC</span>
-                                            <span class="tech-badge">Educação</span>
-                                        </div>
-                                        <a href="projeto-reino.html" class="btn-wiki">Ver Detalhes</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 mb-4">
-                                <div class="project-card">
-                                    <div class="project-header area51">
-                                        <h3><i class="bi bi-lock"></i> Área 51</h3>
-                                    </div>
-                                    <div class="project-body">
-                                        <p><strong>Para Leigos:</strong> Sistema de segurança que controla quem pode acessar áreas restritas do site.</p>
-                                        <p><strong>Para Estagiários:</strong> Sistema de autenticação e autorização enterprise em produção.</p>
-                                        <div class="mb-2">
-                                            <span class="tech-badge">Flask</span>
-                                            <span class="tech-badge">JWT</span>
-                                            <span class="tech-badge">Azure</span>
-                                        </div>
-                                        <a href="projeto-area51.html" class="btn-wiki">Ver Detalhes</a>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6 mb-4">
-                                <div class="project-card">
-                                    <div class="project-header python-training">
-                                        <h3><i class="bi bi-code-slash"></i> Python Training</h3>
-                                    </div>
-                                    <div class="project-body">
-                                        <p><strong>Para Leigos:</strong> Curso completo que ensina jovens a programar criando jogos e projetos.</p>
-                                        <p><strong>Para Estagiários:</strong> Plataforma educacional proprietária com 40h de conteúdo Python.</p>
-                                        <div class="mb-2">
-                                            <span class="tech-badge">Python</span>
-                                            <span class="tech-badge">Pygame</span>
-                                            <span class="tech-badge">Educação</span>
-                                        </div>
-                                        <a href="projeto-python.html" class="btn-wiki">Ver Detalhes</a>
+                            <div class="track-body">
+                                <p class="mb-3">Quando pedido vira fila e erro vira custo, o certo é padronizar fluxo e automatizar o “vai e volta”.</p>
+                                <div class="scenario-card">
+                                    <div class="kicker">Ganho</div>
+                                    <h4>Processar mais com a mesma equipe</h4>
+                                    <p>Centralização, rastreabilidade e menos falhas humanas no dia a dia.</p>
+                                    <div class="links">
+                                        <a href="projeto-hub.html"><i class="bi bi-journal-code"></i> Visão (Wiki)</a>
+                                        <a href="../portfolio.html#caracore-hub" target="_blank" rel="noopener"><i class="bi bi-briefcase"></i> Portfólio</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
 
-                    <!-- Como Usar Este Wiki -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-map text-info"></i> Como Navegar neste Wiki</h2>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="alert alert-beginner">
-                                    <h4><i class="bi bi-1-circle text-success"></i> Iniciante</h4>
-                                    <p>Comece pela <strong>Visão Geral dos Projetos</strong> para entender o que fazemos.</p>
-                                    <a href="projetos-overview.html" class="btn btn-success btn-sm">Começar Aqui</a>
+                    <div class="col-lg-4">
+                        <div class="track-card project-card">
+                            <div class="track-header track-cliente">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <h3 class="h5 mb-1"><i class="bi bi-shield-check"></i> Cenário: risco controlado</h3>
+                                        <small>Governança, acesso e continuidade</small>
+                                    </div>
+                                    <span class="badge bg-light text-dark">Segurança</span>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="alert alert-intermediate">
-                                    <h4><i class="bi bi-2-circle text-warning"></i> Estagiário</h4>
-                                    <p>Leia o <strong>Guia do Estagiário</strong> para configurar seu ambiente de trabalho.</p>
-                                    <a href="guia-estagiario.html" class="btn btn-warning btn-sm">Guia Completo</a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="alert alert-advanced">
-                                    <h4><i class="bi bi-3-circle text-danger"></i> Desenvolvedor</h4>
-                                    <p>Explore as <strong>Tecnologias Utilizadas</strong> para detalhes técnicos.</p>
-                                    <a href="tecnologias.html" class="btn btn-danger btn-sm">Ver Tecnologias</a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="alert alert-info">
-                                    <h4><i class="bi bi-question-circle text-info"></i> Dúvidas</h4>
-                                    <p>Consulte o <strong>Glossário</strong> para entender termos técnicos.</p>
-                                    <a href="glossario.html" class="btn btn-info btn-sm">Ver Glossário</a>
+                            <div class="track-body">
+                                <p class="mb-3">Quando a operação depende do digital, segurança é “evitar prejuízo”, não “instalar ferramenta”.</p>
+                                <div class="scenario-card">
+                                    <div class="kicker">Ganho</div>
+                                    <h4>Reduzir risco sem travar o time</h4>
+                                    <p>Controle de acesso, trilha de auditoria e padrões claros para operar com confiança.</p>
+                                    <div class="links">
+                                        <a href="projeto-area51.html"><i class="bi bi-journal-code"></i> Área 51 (Wiki)</a>
+                                        <a href="../publications/livros/guia_de_servicos.html" target="_blank" rel="noopener"><i class="bi bi-journal-bookmark"></i> Guia de serviços (geral)</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-
-                    <!-- Contato e Suporte -->
-                    <section class="text-center">
-                        <h2><i class="bi bi-headset text-primary"></i> Precisa de Ajuda?</h2>
-                        <p class="lead">Nossa equipe está sempre disponível para ajudar!</p>
-                        <div class="row justify-content-center">
-                            <div class="col-md-8">
-                                <div class="alert alert-light">
-                                    <p><strong>Para estagiários:</strong> Entre em contato com seu supervisor ou envie um email para <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a></p>
-                                    <p><strong>Para visitantes:</strong> Visite nosso <a href="../index.html#contato">site principal</a> para informações de contato</p>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- TRILHA DO ESTAGIÁRIO -->
+            <section id="trilha-estagiario" class="mb-5">
+                <h2><i class="bi bi-mortarboard-fill text-primary"></i> Trilha do Aprendizado (Estagiário)</h2>
+                <p class="text-muted">Foco: cultura e execução. “Como fazemos isso desde 2010? Qual padrão de excelência é esperado?”</p>
+
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="track-card project-card">
+                            <div class="track-header track-estagiario">
+                                <h3 class="h5 mb-1"><i class="bi bi-rocket-takeoff"></i> Primeira semana</h3>
+                                <small>Entrar rápido, com segurança e padrão</small>
+                            </div>
+                            <div class="track-body">
+                                <div class="scenario-card">
+                                    <div class="kicker">Situação</div>
+                                    <h4>“Cheguei. O que eu faço primeiro?”</h4>
+                                    <p>Onboarding, contexto, responsabilidades, e como pedir ajuda do jeito certo.</p>
+                                    <div class="links">
+                                        <a href="guia-estagiario.html"><i class="bi bi-person-badge"></i> Guia do estagiário</a>
+                                        <a href="contribuindo.html"><i class="bi bi-git"></i> Como contribuir</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="track-card project-card">
+                            <div class="track-header track-estagiario">
+                                <h3 class="h5 mb-1"><i class="bi bi-clipboard-check"></i> Padrão de execução</h3>
+                                <small>Manual de situações (não de botões)</small>
+                            </div>
+                            <div class="track-body">
+                                <div class="scenario-card">
+                                    <div class="kicker">Situação</div>
+                                    <h4>Visita técnica / entrega</h4>
+                                    <p>Diagnóstico → plano → execução → aceite → registro. O padrão é clareza, previsibilidade e documentação útil.</p>
+                                    <div class="links">
+                                        <a href="glossario.html"><i class="bi bi-book"></i> Glossário</a>
+                                        <a href="projetos-overview.html"><i class="bi bi-collection"></i> Projetos (overview)</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="track-card project-card">
+                            <div class="track-header track-estagiario">
+                                <h3 class="h5 mb-1"><i class="bi bi-layers"></i> Produtos e cenários</h3>
+                                <small>Entender “o porquê” antes do “como”</small>
+                            </div>
+                            <div class="track-body">
+                                <div class="scenario-card">
+                                    <div class="kicker">Situação</div>
+                                    <h4>“Qual produto resolve qual dor?”</h4>
+                                    <p>Conectar o que o cliente sente com o que a empresa entrega — sem jargão e sem ruído.</p>
+                                    <div class="links">
+                                        <a href="projeto-pdv.html"><i class="bi bi-shop"></i> PDV</a>
+                                        <a href="projeto-hub.html"><i class="bi bi-diagram-3"></i> Hub</a>
+                                        <a href="projeto-seed.html"><i class="bi bi-seedling"></i> Seed</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TRILHA DO SÓCIO -->
+            <section id="trilha-socio" class="mb-5">
+                <h2><i class="bi bi-diagram-3-fill text-dark"></i> Trilha da Estratégia (Sócio)</h2>
+                <p class="text-muted">Foco: visão e evolução. “Por que tomamos essa decisão? Qual o próximo passo em 2026?”</p>
+
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="track-card project-card">
+                            <div class="track-header track-socio">
+                                <h3 class="h5 mb-1"><i class="bi bi-bullseye"></i> Estratégia por cenário</h3>
+                                <small>Motor escondido, desempenho evidente</small>
+                            </div>
+                            <div class="track-body">
+                                <div class="scenario-card">
+                                    <div class="kicker">Decisão</div>
+                                    <h4>Produto nasce quando a operação pede previsibilidade</h4>
+                                    <p>Priorizamos soluções que reduzem custo, risco e tempo — e que conseguem ser explicadas em “situações reais”.</p>
+                                    <div class="links">
+                                        <a href="../portfolio.html" target="_blank" rel="noopener"><i class="bi bi-briefcase"></i> Portfólio</a>
+                                        <a href="projetos-overview.html"><i class="bi bi-collection"></i> Visão geral</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="track-card project-card">
+                            <div class="track-header track-socio">
+                                <h3 class="h5 mb-1"><i class="bi bi-arrow-repeat"></i> Evolução 2026</h3>
+                                <small>Próximos passos (alto nível)</small>
+                            </div>
+                            <div class="track-body">
+                                <div class="scenario-card">
+                                    <div class="kicker">Próximo passo</div>
+                                    <h4>Consolidar narrativas e execução</h4>
+                                    <p>Mais consistência entre: proposta → entrega → documentação → evidências (resultados). Menos dispersão em páginas técnicas.</p>
+                                    <div class="links">
+                                        <a href="../publications/livros/guia_de_servicos.html" target="_blank" rel="noopener"><i class="bi bi-journal-bookmark"></i> Guia de serviços</a>
+                                        <a href="../publications/livros/guia_de_servicos_caracore-pdv.html" target="_blank" rel="noopener"><i class="bi bi-shop"></i> Guia PDV</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LINHA DO TEMPO -->
+            <section id="linha-do-tempo" class="mb-5">
+                <h2><i class="bi bi-clock-history text-secondary"></i> Linha do tempo (desde 2010)</h2>
+                <p class="text-muted">O objetivo desta linha do tempo é dar contexto: por que cada solução surgiu e como evoluiu.</p>
+
+                <ol class="timeline">
+                    <li>
+                        <div class="year">2010</div>
+                        <div class="event"><strong>Fundação e base de confiança.</strong> A Cara Core nasce com foco em resolver “o dia de amanhã” do cliente com execução consistente.</div>
+                    </li>
+                    <li>
+                        <div class="year">2016–2020</div>
+                        <div class="event"><strong>Padronização e escala.</strong> Menos improviso, mais método: documentação, rotinas, e entrega replicável.</div>
+                    </li>
+                    <li>
+                        <div class="year">2021–2024</div>
+                        <div class="event"><strong>Produtos ganham forma.</strong> Cenários repetidos viram soluções: integração, autenticação, educação e automação.</div>
+                    </li>
+                    <li>
+                        <div class="year">2025</div>
+                        <div class="event"><strong>Transparência e publicação.</strong> Conteúdo técnico com linguagem acessível e evidências (sem expor segredos internos).</div>
+                    </li>
+                    <li>
+                        <div class="year">2026</div>
+                        <div class="event"><strong>Foco em resultado.</strong> Blindagem fiscal e produtividade orientada a ROI, com narrativa clara por cenário.</div>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- LINKS DE APOIO (SEM POLUIR A ENTRADA) -->
+            <section class="mb-4">
+                <h2><i class="bi bi-link-45deg text-info"></i> Links de apoio</h2>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="scenario-card">
+                            <div class="kicker">Visão</div>
+                            <h4>Projetos (overview)</h4>
+                            <p>Quando você quiser ver a suíte completa em um só lugar.</p>
+                            <div class="links">
+                                <a href="projetos-overview.html"><i class="bi bi-collection"></i> Abrir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="scenario-card">
+                            <div class="kicker">Referência</div>
+                            <h4>Glossário</h4>
+                            <p>Termos técnicos em linguagem simples, para alinhar comunicação.</p>
+                            <div class="links">
+                                <a href="glossario.html"><i class="bi bi-book"></i> Abrir</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="scenario-card">
+                            <div class="kicker">Execução</div>
+                            <h4>Como contribuir</h4>
+                            <p>Checklist de contribuição, boas práticas e padrão de qualidade.</p>
+                            <div class="links">
+                                <a href="contribuindo.html"><i class="bi bi-git"></i> Abrir</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="text-center">
+                <h2><i class="bi bi-headset text-primary"></i> Precisa de ajuda?</h2>
+                <p class="lead">Atendimento com contexto e objetividade acelera qualquer solução.</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="alert alert-light">
+                            <p class="mb-1"><strong>Contato:</strong> <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a></p>
+                            <p class="mb-0"><strong>Site:</strong> <a href="../index.html#contato">caracore.com.br</a></p>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
@@ -321,7 +381,7 @@
     <footer class="wiki-footer">
         <div class="container">
             <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
-            <p>Wiki criado para orientação de estagiários e divulgação técnica</p>
+            <p>Wiki como centro de alinhamento (Cliente, Estagiário e Sócio) — história, cenários e padrão de execução.</p>
             <div class="mt-2">
                 <a href="../politica/politica-privacidade.html" class="text-light me-3">
                     <i class="bi bi-shield-lock"></i> Política de Privacidade
@@ -335,8 +395,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Theme Toggle JS -->
-    <script src="assets/js/theme-toggle.js"></script>
+    
     <!-- Wiki Search JS -->
     <script src="assets/js/wiki-search.js"></script>
     <!-- Wiki JS -->

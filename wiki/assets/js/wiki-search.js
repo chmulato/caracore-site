@@ -12,6 +12,13 @@ function initWikiSearch() {
     // Índice de conteúdo do wiki
     const wikiIndex = [
         {
+            title: 'CaraCore PDV',
+            description: 'PDV para varejo com foco em continuidade, economia (Selo Verde) e conformidade fiscal 2026',
+            url: 'projeto-pdv.html',
+            tags: ['pdv', 'ponto de venda', 'varejo', 'selo verde', 'economia', 'blindagem', 'fiscal', '2026', 'ibs', 'cbs', 'contingência', 'continuidade'],
+            category: 'projeto'
+        },
+        {
             title: 'CaraCore Hub',
             description: 'Sistema de gerenciamento centralizado com APIs REST para integração de sistemas',
             url: 'projeto-hub.html',
@@ -52,6 +59,34 @@ function initWikiSearch() {
             url: 'projetos-overview.html',
             tags: ['overview', 'projetos', 'portfólio', 'visão geral'],
             category: 'navegação'
+        },
+        {
+            title: 'Centro de Alinhamento (Trilhas)',
+            description: 'Entrada da wiki por personagens: Cliente, Estagiário e Sócio — com cenários e linha do tempo',
+            url: 'index.html',
+            tags: ['trilha', 'cliente', 'estagiário', 'sócio', 'cenários', 'linha do tempo', 'desde 2010', 'storytelling', 'alinhamento'],
+            category: 'navegação'
+        },
+        {
+            title: 'Trilha do Sucesso (Cliente)',
+            description: 'Cenários e decisões práticas: economia, blindagem e produtividade — foco em resultado',
+            url: 'trilha-cliente.html',
+            tags: ['trilha', 'cliente', 'sucesso', 'resultado', 'economia', 'blindagem', 'selo verde', 'pdv', 'produtividade'],
+            category: 'guia'
+        },
+        {
+            title: 'Trilha do Aprendizado (Estagiário)',
+            description: 'Cultura, padrão de execução e cenários reais de trabalho',
+            url: 'trilha-estagiario.html',
+            tags: ['trilha', 'estagiário', 'aprendizado', 'cultura', 'execução', 'onboarding', 'padrão', 'visita técnica'],
+            category: 'guia'
+        },
+        {
+            title: 'Trilha da Estratégia (Sócio)',
+            description: 'Visão, decisões por cenário e próximos passos 2026 (alto nível)',
+            url: 'trilha-socio.html',
+            tags: ['trilha', 'sócio', 'estratégia', 'decisão', '2026', 'visão', 'evolução', 'governança'],
+            category: 'guia'
         },
         {
             title: 'Tecnologias Utilizadas',

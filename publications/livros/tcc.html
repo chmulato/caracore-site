@@ -348,7 +348,7 @@ Campo Largo, PR, 01 de Junho de 2025
 </code></pre>
 <hr/>
 <h2 id="dedicatoria">Dedicatória<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>Dedico este trabalho à minha família, especialmente aos meus filhos Alexandre e Guilherme, e à minha esposa Helen, pela paciência, compreensão e apoio incondicional durante toda esta jornada. À minha neta Maria, pela alegria que traz em suas visitas, e à minha mãe Clarice, minha fortaleza, pelo apoio incondicional. Sem vocês, nada disso seria possível.</p>
+<p>Dedico este trabalho à minha família, pelo apoio incondicional durante toda esta jornada. Sem vocês, nada disso seria possível.</p>
 <hr/>
 <h2 id="agradecimentos">Agradecimentos<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
 <p>Agradeço primeiramente à minha família, pelo incentivo constante e por compreenderem os momentos de ausência necessários para a realização deste projeto.</p>
@@ -357,12 +357,12 @@ Campo Largo, PR, 01 de Junho de 2025
 <p>A todos que, direta ou indiretamente, colaboraram para a concretização deste TCC, meu sincero muito obrigado.</p>
 <hr/>
 <h2 id="resumo">Resumo<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>Este Trabalho de Conclusão de Curso apresenta o desenvolvimento de um <strong>motor de Simulação por Eventos Discretos (DES)</strong> para análise estocástica de <strong>processos de fluxo</strong> com capacidade finita, filas e ocupação. O restaurante universitário é utilizado como <strong>prova de conceito</strong> por representar, de forma intuitiva, o mesmo problema estrutural de plantas industriais: maximizar <strong>throughput</strong> (vazão de saída) sob restrições de recursos, minimizando <strong>holdup</strong> (acúmulo/inventário em processo) e tempos de residência. O sistema foi implementado em Python com interface gráfica, importação de parâmetros (YAML/Excel) e leitura de layout em ASCII, gerando relatórios executivos em PDF, gráficos e visualizações do comportamento do sistema ao longo do tempo. Os resultados evidenciam a capacidade do framework em identificar gargalos, quantificar regimes de saturação e sustentar intervenções de dimensionamento e rearranjo. Por fim, discute-se a evolução do trabalho como PoC para simuladores industriais mais complexos, incluindo aplicações em contextos como Hidrometalurgia Seletiva (Projeto ETE / Terras Raras).</p>
+<p>Este Trabalho de Conclusão de Curso apresenta o desenvolvimento de um <strong>motor de Simulação por Eventos Discretos (DES)</strong> para análise estocástica de <strong>processos de fluxo</strong> com capacidade finita, filas e ocupação. O restaurante universitário é utilizado como <strong>prova de conceito</strong> por representar, de forma intuitiva, o mesmo problema estrutural de plantas industriais: maximizar <strong>throughput</strong> (vazão de saída) sob restrições de recursos, minimizando <strong>holdup</strong> (acúmulo/inventário em processo) e tempos de residência. O sistema foi implementado em Python com interface gráfica, importação de parâmetros (YAML/Excel) e leitura de layout em ASCII, gerando relatórios executivos em PDF, gráficos e visualizações do comportamento do sistema ao longo do tempo. Os resultados evidenciam a capacidade do framework em identificar gargalos, quantificar regimes de saturação e sustentar intervenções de dimensionamento e rearranjo. Por fim, discute-se a evolução do trabalho como PoC para simuladores mais complexos em contextos industriais (por exemplo, processos de separação).</p>
 <p><strong>Palavras-chave:</strong> simulação por eventos discretos, engenharia de processos, teoria das filas, throughput, holdup, tempo de residência, Python.</p>
 <hr/>
 <hr/>
 <h2 id="abstract">Abstract<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>This Final Paper presents the development of a <strong>Discrete-Event Simulation (DES) engine</strong> for stochastic analysis of <strong>flow processes</strong> with finite capacity, queues, and occupancy. A university restaurant is used as a <strong>proof of concept</strong> because it exposes, at human scale, the same structural challenge found in industrial plants: maximize <strong>throughput</strong> under resource constraints while minimizing <strong>holdup/WIP</strong> and residence time. The system was implemented in Python with a graphical interface, parameter import (YAML/Excel), and an ASCII layout as a spatial flowsheet, producing PDF reports, charts, and time-based visualizations. Results demonstrate the framework’s ability to identify bottlenecks, quantify saturation regimes, and support capacity/layout interventions. Finally, the work positions this TCC as a PoC towards more complex industrial simulators, including applications such as Selective Hydrometallurgy (ETE Project / Rare Earths).</p>
+<p>This Final Paper presents the development of a <strong>Discrete-Event Simulation (DES) engine</strong> for stochastic analysis of <strong>flow processes</strong> with finite capacity, queues, and occupancy. A university restaurant is used as a <strong>proof of concept</strong> because it exposes, at human scale, the same structural challenge found in industrial plants: maximize <strong>throughput</strong> under resource constraints while minimizing <strong>holdup/WIP</strong> and residence time. The system was implemented in Python with a graphical interface, parameter import (YAML/Excel), and an ASCII layout as a spatial flowsheet, producing PDF reports, charts, and time-based visualizations. Results demonstrate the framework’s ability to identify bottlenecks, quantify saturation regimes, and support capacity/layout interventions. Finally, the work positions this TCC as a PoC towards more complex industrial simulators in broader industrial contexts.</p>
 <p><strong>Keywords:</strong> discrete-event simulation, process engineering, queuing theory, throughput, holdup, residence time, Python.</p>
 <hr/>
 <h2 id="lista-de-figuras">Lista de Figuras<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
@@ -381,7 +381,6 @@ Campo Largo, PR, 01 de Junho de 2025
 <ol>
 <li><a href="#tabela-1-parametros-utilizados-na-simulacao-layout-511">Tabela 1 – Parâmetros do cenário base (alimentação, capacidade e residência) (layout 5.1.1)</a></li>
 <li><a href="#tabela-2-efeitos-da-variacao-dos-principais-parametros-sobre-o-desempenho-do-restaurante">Tabela 2 – Sensibilidade: efeitos da variação de parâmetros sobre throughput/holdup</a></li>
-<li><a href="#tabela-3-exemplos-de-valores-para-pacotes-de-entrega-e-monetizacao">Tabela 3 – Apêndice: exemplos de valores para pacotes de entrega e monetização</a></li>
 <li>Ficha 01 - B.1 - Ficha de Coleta de Dados em Campo (apêndice)</li>
 <li>Ficha 02 - B.2 - Ficha Comparativa para Análise de Variação de Parâmetros (apêndice)</li>
 </ol>
@@ -395,7 +394,6 @@ Campo Largo, PR, 01 de Junho de 2025
 <li><strong>PDF</strong>: Portable Document Format</li>
 <li><strong>IoT</strong>: Internet of Things (Internet das Coisas)</li>
 <li><strong>FIFO</strong>: First In, First Out (Primeiro a Entrar, Primeiro a Sair)</li>
-<li><strong>SaaS</strong>: Software as a Service</li>
 <li><strong>YAML</strong>: YAML Ain't Markup Language (formato de arquivo de configuração)</li>
 </ul>
 <hr/>
@@ -479,15 +477,8 @@ Campo Largo, PR, 01 de Junho de 2025
 <p><a href="#56-consideracoes-finais">5.6 Considerações finais</a></p>
 </li>
 <li>
-<p><a href="#capitulo-6-estrategia-de-negocio-e-aplicabilidade-comercial">Capítulo 6 – Estratégia de Negócio e Aplicabilidade Comercial</a></p>
+<p><a href="#capitulo-6-estrategia-de-negocio-e-aplicabilidade-comercial">Capítulo 6 – Aplicabilidade e considerações de adoção (versão pública)</a></p>
 </li>
-<li><a href="#61-publico-alvo-donos-de-restaurantes-e-arrendatarios">6.1 Público-alvo: donos de restaurantes e arrendatários</a></li>
-<li><a href="#62-proposta-de-valor-do-sistema">6.2 Proposta de valor do sistema</a></li>
-<li><a href="#63-modelos-de-entrega-e-monetizacao-do-produto">6.3 Modelos de entrega e monetização do produto</a></li>
-<li><a href="#tabela-3-exemplos-de-valores-para-pacotes-de-entrega-e-monetizacao">Tabela 3 – Exemplos de valores para pacotes de entrega e monetização</a></li>
-<li><a href="#64-limitacoes-e-formas-de-fidelizacao-sem-aprisionamento-explicito">6.4 Limitações e formas de fidelização sem aprisionamento explícito</a></li>
-<li><a href="#65-possibilidades-de-expansao-futura-do-produto">6.5 Possibilidades de expansão futura do produto</a></li>
-<li><a href="#66-consideracoes-finais">6.6 Considerações finais</a></li>
 <li><a href="#capitulo-7-conclusao-e-consideracoes-finais">Capítulo 7 – Conclusão e Considerações Finais</a></li>
 <li><a href="#71-sintese-dos-principais-resultados-e-contribuicoes-do-trabalho">7.1 Síntese dos principais resultados e contribuições do trabalho</a></li>
 <li><a href="#72-contribuicoes-tecnicas-e-praticas-do-projeto">7.2 Contribuições técnicas e práticas do projeto</a></li>
@@ -550,7 +541,7 @@ Campo Largo, PR, 01 de Junho de 2025
 <h2 id="12-justificativa-da-escolha-pelo-desenvolvimento-de-um-simulador">1.2 Justificativa da escolha pelo desenvolvimento de um simulador<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
 <p>A escolha pelo desenvolvimento de um simulador se justifica pela necessidade de capturar, de forma controlada, a interação entre <strong>variabilidade</strong>, <strong>restrições de capacidade</strong> e <strong>layout</strong>. Métodos tradicionais (observação direta, planilhas) tendem a perder a dinâmica de filas e a influência de eventos transientes.</p>
 <p>O motor DES permite testar cenários sem riscos operacionais, antecipando gargalos e avaliando intervenções como aumento de capacidade, paralelização de recursos e rearranjo de layout. Dessa forma, é possível justificar mudanças com métricas (throughput, holdup, tempos de espera e residência).</p>
-<p>Além disso, este trabalho funciona como <strong>Prova de Conceito (PoC)</strong> para simuladores industriais mais complexos, como aqueles aplicados a processos de separação e hidrometalurgia (ex.: Projeto ETE / Terras Raras), demonstrando que a lógica de balanço de tempo e capacidade é universal.</p>
+<p>Além disso, este trabalho funciona como <strong>Prova de Conceito (PoC)</strong> para simuladores industriais mais complexos (por exemplo, processos de separação), demonstrando que a lógica de balanço de tempo e capacidade é universal.</p>
 <hr/>
 <h2 id="13-objetivos">1.3 Objetivos<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
 <h3 id="objetivo-geral">Objetivo Geral<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h3>
@@ -597,7 +588,7 @@ Loader Loader Parser
 <li><strong>Capítulo 3 – Especificação do Sistema de Simulação:</strong> Detalha a aplicação desenvolvida, suas funcionalidades principais (entrada de dados, importação de planilhas e arquivos ASCII, exportação de resultados em PDF, interface gráfica, visualização do layout e animação), além da arquitetura modular e organização do projeto.</li>
 <li><strong>Capítulo 4 – Fundamentos Matemáticos e Conceituais da Simulação:</strong> Apresenta os fundamentos teóricos e matemáticos que embasam o simulador, incluindo Teoria das Filas, análise do layout e deslocamento interno, lógica da Simulação Discreta de Eventos (DES), estatística aplicada aos tempos de atendimento e consumo, equação geral do tempo de residência e justificativa da abordagem prática adotada.</li>
 <li><strong>Capítulo 5 – Estudo de Caso e Simulações:</strong> Descreve os parâmetros utilizados na simulação, testes com dados reais ou simulados, análise dos resultados (gargalos, otimizações sugeridas), discussão sobre os efeitos da variação de parâmetros, modelos de documentação entregue ao cliente e conclusão do capítulo.</li>
-<li><strong>Capítulo 6 – Estratégia de Negócio e Aplicabilidade Comercial:</strong> Apresenta o público-alvo do sistema, proposta de valor, pacotes de entrega e monetização, limitações, estratégias de fidelização, possibilidades de expansão futura e conclusão do capítulo.</li>
+<li><strong>Capítulo 6 – Aplicabilidade e considerações de adoção (versão pública):</strong> Versão pública com foco técnico; informações comerciais e estratégias de mercado foram omitidas.</li>
 <li><strong>Capítulo 7 – Conclusão e Considerações Finais:</strong> Sintetiza os resultados obtidos, destaca as contribuições técnicas e práticas do projeto, traz recomendações para adoção e desenvolvimento contínuo, sugestões para trabalhos futuros (como integração com sensores ou aplicativos móveis) e as considerações finais do trabalho.</li>
 <li><strong>Anexo A – Documentação de Uso do Simulador:</strong> Inclui instruções de uso, exemplos de interface gráfica, procedimentos de importação e exportação de arquivos, exemplos de arquivos de configuração, histogramas e orientações para o usuário.</li>
 <li><strong>Anexo B – Fichas e Relatórios Auxiliares:</strong> Reúne modelos de fichas de coleta de dados em campo, fichas comparativas para análise de variação de parâmetros, modelo de relatório executivo entregue ao cliente e o fluxograma da simulação.</li>
@@ -1232,100 +1223,10 @@ Este relatório é um modelo adaptável, podendo ser customizado conforme a nece
 <p>Além disso, a documentação estruturada dos parâmetros e resultados, por meio de relatórios executivos e visualizações gráficas, facilita a comunicação dos achados e recomendações aos gestores, tornando o simulador uma ferramenta prática e acessível para o dia a dia do negócio.</p>
 <p>Dessa forma, o simulador se consolida como um recurso valioso para gestores que buscam aumentar a eficiência operacional, melhorar a experiência do cliente e adaptar o negócio a diferentes demandas e desafios do mercado, promovendo uma gestão mais eficiente, inovadora e orientada por dados.</p>
 <hr/>
-<h2 id="capitulo-6-estrategia-de-negocio-e-aplicabilidade-comercial">Capítulo 6 – Estratégia de Negócio e Aplicabilidade Comercial<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>A adoção de soluções tecnológicas inovadoras é cada vez mais essencial para a competitividade e sustentabilidade dos restaurantes no cenário atual. Neste capítulo, são discutidos os aspectos estratégicos relacionados à comercialização e aplicação prática do simulador de tempo de permanência em restaurantes por quilo, com foco em seu potencial de mercado e valor agregado para os gestores do setor.</p>
-<p>O público-alvo principal deste sistema são os donos de restaurantes e arrendatários, que buscam ferramentas acessíveis e eficientes para otimizar suas operações, reduzir gargalos e melhorar a experiência dos clientes. A proposta de valor do simulador está fundamentada na capacidade de transformar dados operacionais em informações estratégicas, permitindo decisões mais assertivas e baseadas em evidências.</p>
-<p>Serão apresentados os possíveis modelos de entrega e monetização do produto, considerando diferentes pacotes de serviços e formas de acesso ao sistema. Também serão abordadas as limitações do simulador e estratégias para fidelização dos clientes, priorizando a transparência e evitando práticas de aprisionamento explícito. Por fim, discute-se o potencial de expansão futura do produto, incluindo integrações com outras tecnologias e a adaptação para diferentes segmentos do setor de alimentação.</p>
-<p>Este capítulo visa demonstrar como o simulador pode se consolidar como uma solução comercial viável, inovadora e alinhada às reais necessidades do mercado de restaurantes.</p>
-<hr/>
-<h2 id="61-publico-alvo-donos-de-restaurantes-e-arrendatarios">6.1 Público-alvo: donos de restaurantes e arrendatários<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>O público-alvo principal do simulador de tempo de permanência em restaurantes por quilo é composto por donos de restaurantes e arrendatários responsáveis pela gestão operacional desses estabelecimentos. Esses profissionais enfrentam diariamente desafios relacionados à otimização do fluxo de clientes, redução de filas, aumento da rotatividade das mesas e melhoria da experiência do consumidor.</p>
-<p>Muitos gestores de restaurantes, especialmente de pequeno e médio porte, não dispõem de ferramentas acessíveis para analisar de forma quantitativa o desempenho do seu negócio. Nesse contexto, o simulador se apresenta como uma solução inovadora, prática e de fácil utilização, permitindo que decisões estratégicas sejam tomadas com base em dados reais ou simulados.</p>
-<p>Além disso, o sistema pode ser útil para arrendatários que assumem a administração de restaurantes em shoppings, praças de alimentação ou empresas, onde a eficiência operacional e a satisfação dos clientes são fatores críticos para o sucesso do empreendimento. Ao utilizar o simulador, esses profissionais podem identificar gargalos, testar diferentes configurações de layout e atendimento, e implementar melhorias de forma segura e fundamentada.</p>
-<p>Portanto, o simulador atende tanto gestores experientes que buscam aprimorar seus processos quanto novos empreendedores que desejam iniciar suas operações com maior segurança e embasamento analítico, contribuindo para a profissionalização e a competitividade do setor de alimentação.</p>
-<hr/>
-<h2 id="62-proposta-de-valor-do-sistema">6.2 Proposta de valor do sistema<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>O simulador de tempo de permanência em restaurantes por quilo oferece uma proposta de valor centrada na transformação de dados operacionais em informações estratégicas, acessíveis e acionáveis para gestores do setor de alimentação. Ao proporcionar uma visão clara e quantitativa do fluxo de clientes, ocupação de mesas, formação de filas e gargalos operacionais, o sistema permite que decisões sejam tomadas com maior segurança, rapidez e embasamento.</p>
-<p>Entre os principais diferenciais do simulador destacam-se:</p>
-<ul>
-<li><strong>Acessibilidade e facilidade de uso:</strong> Interface intuitiva, permitindo que gestores sem conhecimento técnico aprofundado possam utilizar a ferramenta de forma autônoma.</li>
-<li><strong>Personalização:</strong> Possibilidade de simular diferentes cenários, layouts e parâmetros, adaptando-se à realidade de cada restaurante.</li>
-<li><strong>Redução de riscos:</strong> Permite testar alterações operacionais virtualmente antes de implementá-las no ambiente real, minimizando custos e impactos negativos.</li>
-<li><strong>Apoio à tomada de decisão:</strong> Geração de relatórios executivos, gráficos e animações que facilitam a análise dos resultados e a comunicação com equipes e sócios.</li>
-<li><strong>Foco em resultados:</strong> Identificação de oportunidades de otimização, aumento da eficiência operacional e melhoria da experiência do cliente.</li>
-<li><strong>Custo-benefício:</strong> Solução mais acessível do que consultorias tradicionais ou sistemas complexos de gestão, especialmente para pequenos e médios estabelecimentos.</li>
-</ul>
-<p>Dessa forma, o simulador agrega valor ao negócio ao transformar dados em vantagem competitiva, promovendo uma gestão mais eficiente, inovadora e orientada por evidências.</p>
-<hr/>
-<h2 id="63-modelos-de-entrega-e-monetizacao-do-produto">6.3 Modelos de entrega e monetização do produto<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>Para viabilizar a adoção do simulador por diferentes perfis de restaurantes, é possível estruturar pacotes de entrega e estratégias de monetização flexíveis, adaptadas às necessidades e ao porte de cada cliente. A seguir, são apresentados exemplos de modelos comerciais que podem ser adotados:</p>
-<p><strong>1. Licença de uso avulsa:</strong><br/>
-O cliente adquire uma licença permanente do simulador, com direito a atualizações básicas e suporte técnico por um período determinado. Indicado para restaurantes que desejam autonomia total sobre o sistema.</p>
-<p><strong>2. Assinatura mensal ou anual (SaaS):</strong><br/>
-O simulador é disponibilizado como serviço (Software as a Service), com pagamento recorrente. Inclui atualizações automáticas, suporte contínuo e possibilidade de acesso remoto. Ideal para estabelecimentos que preferem diluir o investimento e contar com melhorias constantes.</p>
-<p><strong>3. Pacote consultoria + simulação:</strong><br/>
-Além do acesso ao simulador, o cliente recebe um serviço de consultoria personalizada, com análise dos dados reais, parametrização do sistema, treinamento da equipe e entrega de relatórios executivos. Indicado para restaurantes que buscam apoio especializado na interpretação dos resultados.</p>
-<p><strong>4. Pacote básico e pacote premium:</strong><br/>
-- <strong>Básico:</strong> Inclui funcionalidades essenciais (simulação, relatórios PDF, exportação de GIF animado).
-- <strong>Premium:</strong> Acrescenta recursos avançados, como integração com sistemas de gestão, relatórios customizados, suporte prioritário e módulos de expansão.</p>
-<p><strong>5. Licenciamento para redes/franquias:</strong><br/>
-Condições especiais para grupos empresariais ou franquias, permitindo uso em múltiplas unidades com gestão centralizada dos dados e relatórios.</p>
-<p>A definição do modelo de monetização deve considerar o perfil do público-alvo, o valor percebido pelo cliente e a sustentabilidade do negócio, buscando sempre alinhar acessibilidade, qualidade do serviço e viabilidade financeira para ambas as partes.</p>
-<hr/>
-<h4 id="tabela-3-exemplos-de-valores-para-pacotes-de-entrega-e-monetizacao">Tabela 3 – Exemplos de valores para pacotes de entrega e monetização<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h4>
-<pre><code class="language-plaintext">|------------------------------------|-----------------------------------------------------------------|--------------------------|----------------------------------------------|
-| Pacote/Modelo                      | Descrição resumida                                              | Valor sugerido (R$)      | Observações                                  |
-|------------------------------------|-----------------------------------------------------------------|--------------------------|----------------------------------------------|
-| Licença de uso avulsa              | Licença permanente, suporte básico                              | 2.500,00 (único)         | Inclui 1 ano de suporte e atualizações       |
-| Assinatura mensal (SaaS)           | Uso via assinatura, atualizações e suporte contínuos            | 180,00/mês               | Cancelamento a qualquer momento              |
-| Assinatura anual (SaaS)            | Uso via assinatura anual, desconto sobre mensal                 | 1.800,00/ano             | Equivale a 2 meses grátis                    |
-| Pacote consultoria + simulação     | Simulador + análise personalizada e treinamento                 | 4.500,00 (projeto)       | Inclui relatório executivo e capacitação     |
-| Pacote básico                      | Simulação, PDF, GIF animado                                     | 2.000,00 (único)         | Suporte e atualizações por 6 meses           |
-| Pacote premium                     | Todos recursos do básico + integrações e relatórios avançados   | 3.500,00 (único)         | Suporte e atualizações por 1 ano             |
-| Licenciamento para redes/franquias | Uso em múltiplas unidades, gestão centralizada                  | Sob consulta             | Valor negociado conforme número de unidades  |
-|------------------------------------|-----------------------------------------------------------------|--------------------------|----------------------------------------------|
-
-</code></pre>
-<blockquote>
-<p><strong>Observação:</strong><br/>
-Os valores acima são apenas exemplos para fins acadêmicos. Recomenda-se realizar pesquisa de mercado para definição dos preços finais, considerando custos de desenvolvimento, suporte, perfil do público-alvo e diferenciais do produto.</p>
-</blockquote>
-<hr/>
-<h2 id="64-limitacoes-e-formas-de-fidelizacao-sem-aprisionamento-explicito">6.4 Limitações e formas de fidelização sem aprisionamento explícito<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>Apesar dos benefícios e diferenciais oferecidos pelo simulador, é importante reconhecer suas limitações e adotar estratégias de fidelização que respeitem a autonomia do cliente, evitando práticas de aprisionamento explícito (lock-in).</p>
-<p><strong>Limitações do sistema:</strong>
-- <strong>Modelagem simplificada:</strong> O simulador busca representar a dinâmica operacional dos restaurantes de forma realista, mas não contempla todas as variáveis possíveis do ambiente real, como comportamento individualizado de clientes, sazonalidade extrema ou eventos imprevisíveis.
-- <strong>Dependência de dados de entrada:</strong> A qualidade dos resultados depende diretamente da precisão dos dados fornecidos pelo usuário. Parâmetros desatualizados ou estimativas imprecisas podem comprometer a análise.
-- <strong>Escalabilidade:</strong> Embora adaptável a diferentes portes de restaurantes, o sistema pode demandar ajustes para operações muito grandes ou com fluxos altamente complexos.
-- <strong>Integração limitada:</strong> A integração com outros sistemas de gestão ou ERPs pode exigir desenvolvimento adicional, dependendo das necessidades do cliente.</p>
-<p><strong>Formas de fidelização sem aprisionamento explícito:</strong>
-- <strong>Transparência:</strong> O cliente tem acesso total aos dados inseridos, resultados e relatórios gerados, podendo exportá-los em formatos abertos (PDF, CSV, imagens).
-- <strong>Atualizações e melhorias contínuas:</strong> Oferta de atualizações regulares, com novas funcionalidades e correções, agregando valor ao longo do tempo.
-- <strong>Suporte consultivo:</strong> Disponibilização de suporte técnico e consultoria para interpretação dos resultados e aplicação das recomendações.
-- <strong>Treinamento e capacitação:</strong> Oferta de treinamentos presenciais ou online para capacitar o cliente no uso do sistema, promovendo autonomia.
-- <strong>Flexibilidade contratual:</strong> Possibilidade de cancelamento ou migração entre pacotes sem penalidades, reforçando a confiança e o compromisso com a satisfação do cliente.
-- <strong>Customização:</strong> Adaptação do sistema conforme demandas específicas, sem obrigar o cliente a adquirir módulos desnecessários.</p>
-<p>Essas estratégias visam construir uma relação de confiança e parceria com o cliente, promovendo a fidelização pelo valor percebido e pela qualidade do serviço, e não por restrições artificiais ou barreiras à saída.</p>
-<hr/>
-<h2 id="65-possibilidades-de-expansao-futura-do-produto">6.5 Possibilidades de expansão futura do produto<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>O simulador de tempo de permanência em restaurantes por quilo possui grande potencial de evolução, podendo incorporar novas funcionalidades e atender a demandas crescentes do setor de alimentação. Entre as principais possibilidades de expansão futura do produto, destacam-se:</p>
-<ul>
-<li><strong>Integração com sistemas de gestão (ERP):</strong> Permitir a troca automática de dados com softwares de gestão já utilizados pelos restaurantes, facilitando o uso de informações reais e a atualização dos parâmetros de simulação.</li>
-<li><strong>Módulo de previsão de demanda:</strong> Implementar algoritmos de previsão baseados em séries temporais ou inteligência artificial para estimar o fluxo de clientes em diferentes dias e horários, tornando as simulações ainda mais precisas.</li>
-<li><strong>Aplicativo móvel para coleta de dados:</strong> Desenvolver um app que permita a coleta rápida de dados operacionais em campo, integrando-se diretamente ao simulador.</li>
-<li><strong>Simulação de cenários avançados:</strong> Incluir variáveis como promoções, eventos sazonais, mudanças no cardápio ou alterações no quadro de funcionários, ampliando o realismo das análises.</li>
-<li><strong>Visualização 3D do layout:</strong> Evoluir a visualização do restaurante para modelos tridimensionais, facilitando o entendimento do fluxo de pessoas e da ocupação dos espaços.</li>
-<li><strong>Relatórios customizáveis:</strong> Permitir que o usuário personalize os relatórios gerados, escolhendo indicadores, gráficos e formatos de exportação.</li>
-<li><strong>Integração com sensores IoT:</strong> Possibilitar a leitura automática de dados de ocupação e fluxo de clientes por meio de sensores instalados no ambiente, tornando o sistema ainda mais automatizado e preciso.</li>
-<li><strong>Expansão para outros segmentos:</strong> Adaptar o simulador para outros tipos de estabelecimentos de alimentação, como cafeterias, fast-foods, praças de alimentação e eventos.</li>
-</ul>
-<p>Essas possibilidades demonstram que o simulador pode acompanhar as tendências tecnológicas e as necessidades do mercado, mantendo-se relevante e competitivo a longo prazo.</p>
-<hr/>
-<h2 id="66-consideracoes-finais">6.6 Considerações finais<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
-<p>Este capítulo apresentou a estratégia de negócio e a aplicabilidade comercial do simulador de tempo de permanência em restaurantes por quilo, destacando seu potencial como solução inovadora para o setor de alimentação. Foram discutidos o público-alvo, a proposta de valor, os diferentes modelos de entrega e monetização, as limitações do sistema e as formas de fidelização baseadas em transparência e qualidade de serviço.</p>
-<p>A análise demonstrou que o simulador atende tanto gestores experientes quanto novos empreendedores, oferecendo uma ferramenta acessível, flexível e orientada por dados para otimizar operações, reduzir gargalos e melhorar a experiência do cliente. A flexibilidade nos pacotes de entrega e a ausência de práticas de aprisionamento explícito reforçam o compromisso com a autonomia e a satisfação do cliente.</p>
-<p>Além disso, as possibilidades de expansão futura, como integração com sistemas de gestão, previsão de demanda, coleta automatizada de dados e adaptação para outros segmentos, evidenciam o potencial de evolução contínua do produto, mantendo-o relevante diante das tendências tecnológicas e das necessidades do mercado.</p>
-<p>Dessa forma, o simulador se consolida como uma solução comercial viável, capaz de agregar valor ao negócio, promover a profissionalização da gestão e contribuir para a competitividade e sustentabilidade dos restaurantes no cenário atual e futuro.</p>
+<h2 id="capitulo-6-estrategia-de-negocio-e-aplicabilidade-comercial">Capítulo 6 – Aplicabilidade e considerações de adoção (versão pública)<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
+<p><strong>Nota de confidencialidade:</strong> nesta versão pública, foram omitidas informações de caráter comercial (por exemplo: modelos de monetização, precificação, pacotes, estratégias de venda/fidelização e outras considerações de mercado). O objetivo é manter o foco na solução técnica e reduzir risco de cópia de estratégia ou exposição indevida.</p>
+<p>Do ponto de vista técnico, o simulador é aplicável a operações com variabilidade e recursos finitos, onde a análise de filas, ocupação e tempo de residência suporta decisões de dimensionamento e layout. A recomendação para adoção é iniciar com parametrização conservadora, validar com dados observados, e iterar o modelo (parâmetros/distribuições) até obter aderência suficiente para apoiar decisões.</p>
+<p>Para garantir conformidade com privacidade e sigilo, quaisquer dados de testes devem ser anonimizados (ou sintéticos) e não devem conter informações que identifiquem clientes, colaboradores, fornecedores ou rotinas internas proprietárias.</p>
 <hr/>
 <h2 id="capitulo-7-conclusao-e-consideracoes-finais">Capítulo 7 – Conclusão e Considerações Finais<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
 <p>Este capítulo final apresenta uma síntese dos principais resultados alcançados ao longo do desenvolvimento do simulador de tempo de permanência em restaurantes por quilo, destacando as contribuições técnicas e práticas do projeto para a gestão operacional desses estabelecimentos. São discutidas as recomendações para adoção e evolução contínua da solução, bem como sugestões para trabalhos futuros que possam ampliar o escopo e a aplicabilidade do sistema.</p>
@@ -1714,6 +1615,7 @@ Para apresentações ou relatórios, recomenda-se também a criação de um flux
 <div class="title">Copyright e uso</div>
 <p>© 2025–2026 Christian Vladimir Uhdre Mulato. <strong>Todos os direitos reservados.</strong></p>
 <p>Este Trabalho de Conclusão de Curso (TCC) e seus conteúdos (texto, figuras, tabelas e demais elementos) são protegidos por direitos autorais. É permitida a citação com a devida referência. A reprodução total ou parcial, distribuição, adaptação ou uso comercial, por qualquer meio, <strong>depende de autorização prévia e expressa do autor</strong>, salvo as exceções previstas em lei.</p>
+<p><strong>Uso de marca:</strong> “Cara Core Informática” é utilizado como identificação do veículo de publicação e do contexto institucional do autor (histórico de uso desde 2010), sem implicar cessão de direitos autorais do conteúdo.</p>
 <p>Publicação: Cara Core Informática — <a href="https://caracore.com.br/">caracore.com.br</a>.</p>
 </footer>
 </body>

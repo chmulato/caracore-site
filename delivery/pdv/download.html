@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Baixe a Versão de Degustação (Free) do CaraCore PDV para Windows. Venda offline com SQLite e comece sem custo.">
+  <meta name="author" content="Cara Core Informática">
+  <meta property="og:title" content="Cara Core Informática | Baixar Versão de Degustação (Free)">
+  <meta property="og:description" content="Venda com a robustez da Cara Core. Comece agora sem custo. Baixe a Versão de Degustação (Free).">
+  <meta property="og:type" content="website">
+  <title>Cara Core | Baixar Versão de Degustação (Free)</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .brand-bg { background: linear-gradient(135deg, #0b1f3a 0%, #111827 55%, #0f766e 100%); }
+    .brand-chip { background: linear-gradient(135deg, rgba(16,185,129,0.18) 0%, rgba(16,185,129,0.08) 100%); }
+    .green-bg { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
+    .green-accent { color: #059669; }
+    .card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .focus-ring:focus { outline: none; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.35); }
+    .window-shadow { box-shadow: 0 30px 80px rgba(2, 6, 23, 0.55), 0 10px 25px rgba(2, 6, 23, 0.35); }
+  </style>
+</head>
+<body class="bg-slate-50">
+
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <div class="flex items-center space-x-3">
+          <a href="index.html" class="flex items-center space-x-3">
+            <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center">
+              <i class="fas fa-cash-register text-white text-xl"></i>
+            </div>
+            <div>
+              <div class="text-xl font-bold text-gray-900">Cara Core</div>
+              <div class="text-xs text-gray-600">Informática</div>
+            </div>
+          </a>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-6">
+          <a href="index.html#economia" class="text-gray-700 hover:text-green-600 font-medium transition">Economia</a>
+          <a href="index.html#dores" class="text-gray-700 hover:text-green-600 font-medium transition">O que resolvemos</a>
+          <a href="index.html#fiscal" class="text-gray-700 hover:text-green-600 font-medium transition">Pronto para 2026</a>
+          <a href="index.html#planos" class="text-gray-700 hover:text-green-600 font-medium transition">Planos</a>
+          <a href="wiki-fiscal.html" class="text-gray-700 hover:text-green-600 font-medium transition">Wiki Fiscal</a>
+          <a href="tecnologia.html" class="text-gray-700 hover:text-green-600 font-medium transition">Soluções</a>
+          <a href="readme.html" class="text-gray-700 hover:text-green-600 font-medium transition">Documentação</a>
+          <a href="download.html" class="green-accent font-semibold hover:text-green-700 transition">Baixar Free</a>
+          <a href="consultoria.html" class="text-gray-700 hover:text-green-600 font-medium transition">Consultoria</a>
+          <a href="index.html#demo" class="green-bg text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition">
+            <i class="fas fa-calendar-check mr-2"></i>Demonstração Presencial
+          </a>
+        </div>
+
+        <button id="mobile-menu-button" class="md:hidden text-gray-700" aria-label="Menu">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+
+      <div id="mobile-menu" class="hidden md:hidden pb-4">
+        <div class="flex flex-col space-y-3">
+          <a href="index.html#economia" class="text-gray-700 hover:text-green-600 font-medium py-2">Economia</a>
+          <a href="index.html#dores" class="text-gray-700 hover:text-green-600 font-medium py-2">O que resolvemos</a>
+          <a href="index.html#fiscal" class="text-gray-700 hover:text-green-600 font-medium py-2">Pronto para 2026</a>
+          <a href="index.html#planos" class="text-gray-700 hover:text-green-600 font-medium py-2">Planos</a>
+          <a href="wiki-fiscal.html" class="text-gray-700 hover:text-green-600 font-medium py-2">Wiki Fiscal</a>
+          <a href="tecnologia.html" class="text-gray-700 hover:text-green-600 font-medium py-2">Soluções</a>
+          <a href="readme.html" class="text-gray-700 hover:text-green-600 font-medium py-2">Documentação</a>
+          <a href="download.html" class="green-accent font-semibold py-2">Baixar Free</a>
+          <a href="consultoria.html" class="text-gray-700 hover:text-green-600 font-medium py-2">Consultoria</a>
+          <a href="index.html#demo" class="green-bg text-white px-6 py-2 rounded-lg font-semibold text-center">Demonstração Presencial</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <section class="card overflow-hidden">
+      <div class="brand-bg text-white px-6 sm:px-10 py-10">
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full brand-chip px-4 py-2 text-sm font-semibold border border-white/10">
+              <i class="fas fa-mug-hot text-emerald-200"></i>
+              Versão de Degustação (Free) • Windows
+            </div>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold mt-5 leading-tight">
+              Venda com a robustez da Cara Core. Comece agora sem custo.
+            </h1>
+            <p class="text-lg text-white/90 mt-4 leading-relaxed">
+              Instale, abra e venda. O PDV foi desenhado para não depender da internet no balcão e manter o caixa fluindo com banco SQLite local.
+            </p>
+
+            <div class="mt-7 grid sm:grid-cols-3 gap-3">
+              <div class="rounded-2xl bg-white/10 border border-white/10 p-4">
+                <div class="flex items-center gap-3">
+                  <i class="fab fa-windows text-white"></i>
+                  <div class="font-bold">Windows 10/11</div>
+                </div>
+                <div class="text-sm text-white/85 mt-2">Instalador pronto para uso.</div>
+              </div>
+              <div class="rounded-2xl bg-white/10 border border-white/10 p-4">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-wifi-slash text-white"></i>
+                  <div class="font-bold">Vendas offline</div>
+                </div>
+                <div class="text-sm text-white/85 mt-2">SQLite local para operar sem internet.</div>
+              </div>
+              <div class="rounded-2xl bg-white/10 border border-white/10 p-4">
+                <div class="flex items-center gap-3">
+                  <i class="fas fa-shield-halved text-white"></i>
+                  <div class="font-bold">Fluxo estável</div>
+                </div>
+                <div class="text-sm text-white/85 mt-2">Foco em performance e previsibilidade.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="relative">
+            <img
+              src="img/caracore_pdv_delivery.png"
+              alt="Interface do software de PDV Cara Core para Windows - Versão Degustação"
+              onerror="this.onerror=null;this.src='img/caracore_pdv.png';"
+              class="w-full rounded-[12px] window-shadow border border-white/15"
+              loading="eager"
+              decoding="async"
+            >
+
+            <div class="mt-4 sm:absolute sm:-bottom-5 sm:left-5 sm:right-5">
+              <div class="rounded-2xl bg-white/95 text-slate-900 border border-slate-200 shadow-xl p-4">
+                <div class="flex items-start gap-3">
+                  <div class="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
+                    <i class="fas fa-ticket"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="font-extrabold">Condições da Degustação (Free)</div>
+                    <ul class="mt-2 text-sm text-slate-700 space-y-1">
+                      <li>✅ 100 Vendas Iniciais inclusas.</li>
+                      <li>✅ Operação Offline (SQLite).</li>
+                      <li>⚠️ PIX com Conferência Manual.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="px-6 sm:px-10 py-10">
+        <div class="grid lg:grid-cols-5 gap-8 items-start">
+          <div class="lg:col-span-3">
+            <h2 class="text-xl font-extrabold text-slate-900">Baixe agora e comece o teste</h2>
+            <p class="text-sm text-slate-600 mt-2">
+              Preencha os dados abaixo para liberarmos o download e enviarmos o guia de início rápido no WhatsApp.
+            </p>
+
+            <form id="leadForm" class="mt-5 space-y-4" autocomplete="on">
+              <div>
+                <label for="loja" class="block text-sm font-semibold text-slate-900">Nome da Loja</label>
+                <div class="mt-2 flex items-center gap-2">
+                  <div class="inline-flex items-center justify-center h-11 w-11 rounded-xl bg-slate-100 border border-slate-200 text-slate-700">
+                    <i class="fas fa-store"></i>
+                  </div>
+                  <input id="loja" name="loja" autocomplete="organization"
+                         placeholder="Ex: Mercado do Gilvan"
+                         class="w-full h-11 rounded-xl border border-slate-200 px-4 text-slate-900 focus-ring"
+                         required>
+                </div>
+              </div>
+
+              <div>
+                <label for="whatsapp" class="block text-sm font-semibold text-slate-900">WhatsApp</label>
+                <div class="mt-2 flex items-center gap-2">
+                  <div class="inline-flex items-center justify-center h-11 w-11 rounded-xl bg-slate-100 border border-slate-200 text-slate-700">
+                    <i class="fab fa-whatsapp"></i>
+                  </div>
+                  <input id="whatsapp" name="whatsapp" inputmode="tel" autocomplete="tel"
+                         placeholder="Ex: (41) 99999-9999"
+                         class="w-full h-11 rounded-xl border border-slate-200 px-4 text-slate-900 focus-ring"
+                         required>
+                </div>
+                <p class="text-xs text-slate-500 mt-2">
+                  Usamos apenas para envio do guia e contato de onboarding.
+                </p>
+              </div>
+
+              <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+                <button type="submit"
+                        class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-white font-bold hover:bg-slate-800">
+                  Baixar Agora
+                  <i class="fas fa-download"></i>
+                </button>
+                <div class="text-sm text-slate-600">
+                  <span class="font-semibold text-slate-900">Instalador oficial.</span> Link direto do GitHub Releases.
+                </div>
+              </div>
+
+              <div class="text-sm text-slate-600">
+                <span class="text-slate-500">Deseja PIX automático e vendas ilimitadas?</span>
+                <a href="index.html#planos" class="font-semibold text-emerald-700 hover:text-emerald-800">Conheça o Plano Premium.</a>
+              </div>
+
+              <div class="mt-4 rounded-2xl border border-slate-200 bg-white p-4">
+                <div class="flex items-start gap-3">
+                  <div class="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
+                    <i class="fas fa-crown"></i>
+                  </div>
+                  <div class="min-w-0">
+                    <div class="font-extrabold text-slate-900">Como funciona a entrega do Premium</div>
+                    <p class="text-sm text-slate-600 mt-1">
+                      Após a confirmação do pagamento mensal, liberamos o Premium por <span class="font-semibold text-slate-900">ativação</span> e fazemos o onboarding.
+                    </p>
+                    <ul class="mt-3 text-sm text-slate-700 space-y-1">
+                      <li>1) Você instala o PDV normalmente (mesmo instalador).</li>
+                      <li>2) Enviamos a chave/ativação Premium para sua loja.</li>
+                      <li>3) Suporte e onboarding por e-mail, WhatsApp ou Telegram.</li>
+                    </ul>
+                    <div class="mt-4 flex flex-col sm:flex-row gap-2">
+                      <a href="https://wa.me/5541999097797?text=Ol%C3%A1!%20Quero%20contratar%20o%20Plano%20Premium%20do%20CaraCore-PDV%20e%20entender%20a%20ativa%C3%A7%C3%A3o." class="inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-white font-bold hover:bg-emerald-700">
+                        <i class="fab fa-whatsapp"></i> Contratar Premium
+                      </a>
+                      <a href="https://t.me/share/url?url=https%3A%2F%2Fcaracore.com.br%2Fdelivery%2Fpdv%2Fdownload.html&text=Ol%C3%A1!%20Quero%20contratar%20o%20Plano%20Premium%20do%20CaraCore-PDV%20e%20entender%20a%20ativa%C3%A7%C3%A3o." class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-slate-900 font-bold hover:bg-slate-50">
+                        <i class="fab fa-telegram"></i> Telegram
+                      </a>
+                      <a href="mailto:suporte@caracore.com.br?subject=Plano%20Premium%20CaraCore-PDV%20-%20Ativa%C3%A7%C3%A3o&body=Ol%C3%A1!%0D%0AQuero%20contratar%20o%20Plano%20Premium%20do%20CaraCore-PDV%20e%20entender%20a%20ativa%C3%A7%C3%A3o%20ap%C3%B3s%20o%20pagamento%20mensal.%0D%0A%0D%0ANome%20da%20loja%3A%0D%0AWhatsApp%3A%0D%0A" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-slate-900 font-bold hover:bg-slate-50">
+                        <i class="fas fa-envelope"></i> E-mail
+                      </a>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-3">
+                      Importante: não atendemos ligações telefônicas.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div id="leadStatus" class="hidden rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700"></div>
+            </form>
+          </div>
+
+          <div class="lg:col-span-2">
+            <div class="card p-6">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <div class="text-sm font-semibold text-slate-700">Download da Degustação (Free)</div>
+                  <div id="downloadMeta" class="text-xs text-slate-500 mt-1">Buscando a versão mais recente do instalador...</div>
+                </div>
+                <div class="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700">
+                  <i class="fas fa-download"></i>
+                </div>
+              </div>
+
+              <div class="mt-5 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+                Para liberar o download, preencha o formulário ao lado.
+              </div>
+
+              <div class="mt-4 text-xs text-slate-500">
+                Se o botão não carregar, abra o Latest Release e baixe o instalador manualmente.
+              </div>
+
+              <a id="manualLink"
+                 href="https://github.com/chmulato/caracore-pdv-releases/releases/latest"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 class="mt-3 inline-flex items-center justify-center gap-2 w-full rounded-xl border border-slate-200 px-5 py-3 text-slate-900 font-bold hover:bg-slate-50">
+                Abrir Latest Release
+                <i class="fas fa-arrow-up-right-from-square"></i>
+              </a>
+
+              <details class="mt-4 rounded-xl border border-slate-200 bg-white">
+                <summary class="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-slate-900">
+                  Onde clicar no GitHub para baixar o instalador (FREE)
+                </summary>
+                <div class="px-4 pb-4">
+                  <p class="text-xs text-slate-600 mt-1">
+                    No GitHub Releases, o instalador está dentro de <span class="font-semibold text-slate-900">Assets</span> (arquivo <span class="font-semibold text-slate-900">.exe</span>).
+                  </p>
+                  <img
+                    src="img/github_cara-core-pdv_release.png"
+                    alt="Exemplo do GitHub Release mostrando a seção Assets e o instalador .exe"
+                    class="mt-3 w-full rounded-xl border border-slate-200 bg-slate-50"
+                    loading="lazy"
+                    decoding="async"
+                  >
+                </div>
+              </details>
+            </div>
+
+            <div class="mt-6 text-xs text-slate-500">
+              Ao instalar, o PDV inicia com perfil SQLite. Atualizações são verificadas em background para não travar o caixa.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500">
+      <div class="flex flex-col sm:flex-row gap-2 items-start sm:items-center justify-between">
+        <div>© Cara Core Informática. Todos os direitos reservados.</div>
+        <div class="text-xs text-slate-400">PDV com foco em resiliência, velocidade e operação no balcão.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Ícone de parceiro no rodapé (canto inferior direito) -->
+  <a href="wiki/representantes.html"
+     class="group fixed bottom-5 right-5 z-50 flex items-center gap-3 rounded-full border border-slate-700 bg-slate-900/90 px-4 py-3 shadow-lg backdrop-blur-sm transition hover:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+     aria-label="Represente a Tecnologia Cara Core">
+    <svg class="h-5 w-5 text-emerald-300" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M16 17l-1.2 1.2a2.2 2.2 0 0 1-3.1 0L10 16.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M8 15l1.2-1.2a2.2 2.2 0 0 1 3.1 0L14 15.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M2 12l5-5 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M22 12l-5-5-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <span class="hidden sm:inline text-sm font-semibold text-slate-100">
+      Represente a Tecnologia Cara Core
+    </span>
+
+    <span class="pointer-events-none absolute bottom-full right-0 mb-3 w-72 translate-y-1 rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-xs text-slate-200 opacity-0 shadow-xl transition group-hover:translate-y-0 group-hover:opacity-100">
+      <span class="font-semibold text-white">Seja nosso parceiro oficial:</span>
+      Transparência total e ganhos recorrentes.
+    </span>
+  </a>
+
+  <script>
+    (function () {
+      // IMPORTANTE:
+      // Este site de download precisa apontar para um repositório PÚBLICO de releases, para que o cliente final
+      // consiga baixar sem login (o repositório de código pode continuar privado).
+      const OWNER = "chmulato";
+      const REPO = "caracore-pdv-releases";
+      const API_URL = `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`;
+
+      const manualLink = document.getElementById("manualLink");
+      const downloadMeta = document.getElementById("downloadMeta");
+      const releaseFallbackLink = document.getElementById("releaseFallbackLink");
+
+      const leadForm = document.getElementById("leadForm");
+      const lojaInput = document.getElementById("loja");
+      const whatsappInput = document.getElementById("whatsapp");
+      const leadStatus = document.getElementById("leadStatus");
+
+      let latest = { version: null, url: `https://github.com/${OWNER}/${REPO}/releases/latest`, assetUrl: null, assetName: null };
+
+      function applyDownloadLink() {
+        const href = latest.assetUrl || latest.url;
+        manualLink.href = latest.url;
+        if (releaseFallbackLink) {
+          releaseFallbackLink.href = latest.url;
+        }
+
+        if (latest.version) {
+          downloadMeta.textContent = `Latest: ${latest.version}${latest.assetName ? " • " + latest.assetName : ""}`;
+        } else {
+          downloadMeta.textContent = "Latest Release";
+        }
+      }
+
+      function normalizeWhatsApp(raw) {
+        const digits = (raw || "").replace(/\D/g, "");
+        if (!digits) return null;
+
+        // Aceita BR com ou sem 55. Ex.: 41999999999 ou 5541999999999
+        if (digits.length === 11) return "55" + digits;
+        if (digits.length === 13 && digits.startsWith("55")) return digits;
+        if (digits.length === 10) return "55" + digits; // fallback (sem nono dígito)
+        return null;
+      }
+
+      async function fetchLatestRelease() {
+        try {
+          const resp = await fetch(API_URL, {
+            headers: {
+              "Accept": "application/vnd.github+json"
+            }
+          });
+          if (!resp.ok) throw new Error("status=" + resp.status);
+          const data = await resp.json();
+          latest.version = (data.tag_name || "").replace(/^desktop-v/i, "").replace(/^v/i, "").trim() || null;
+          latest.url = data.html_url || latest.url;
+
+          const assets = Array.isArray(data.assets) ? data.assets : [];
+          const re = /^caracore-pdv-[0-9a-z._-]{1,80}-windows-x64\.(exe|msi)$/i;
+          const asset = assets.find(a => a && typeof a.name === "string" && re.test(a.name));
+          if (asset && asset.browser_download_url) {
+            latest.assetUrl = asset.browser_download_url;
+            latest.assetName = asset.name;
+          }
+        } catch (e) {
+          // fallback silencioso
+        } finally {
+          applyDownloadLink();
+        }
+      }
+
+      leadForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const loja = (lojaInput.value || "").trim();
+        if (!loja) {
+          leadStatus.classList.remove("hidden");
+          leadStatus.textContent = "Informe o nome da loja.";
+          lojaInput.focus();
+          return;
+        }
+
+        const normalized = normalizeWhatsApp(whatsappInput.value);
+        if (!normalized) {
+          leadStatus.classList.remove("hidden");
+          leadStatus.textContent = "Informe um WhatsApp válido (com DDD). Ex: (41) 99999-9999.";
+          whatsappInput.focus();
+          return;
+        }
+
+        // Salva localmente para evitar pedir novamente (UX)
+        try {
+          localStorage.setItem("caracore_lead_loja", loja);
+          localStorage.setItem("caracore_lead_whatsapp", normalized);
+          localStorage.setItem("caracore_lead_ts", String(Date.now()));
+        } catch (ignore) {}
+
+        leadStatus.classList.remove("hidden");
+        leadStatus.textContent = "Iniciando download... Em seguida, enviaremos o guia de início rápido no WhatsApp informado.";
+
+        // Dispara download do instalador (.exe/.msi). Se não houver asset, abre Latest Release.
+        const href = latest.assetUrl || latest.url;
+        window.location.href = href;
+      });
+
+      // Se já existe lead salvo, pré-preenche (UX)
+      try {
+        const saved = localStorage.getItem("caracore_lead_whatsapp");
+        const savedLoja = localStorage.getItem("caracore_lead_loja");
+        if (savedLoja) lojaInput.value = savedLoja;
+        if (saved) {
+          downloadMeta.textContent = "Buscando a versão mais recente...";
+          // não dispara download automático; apenas reduz fricção
+        }
+      } catch (ignore) {}
+
+      fetchLatestRelease();
+    })();
+
+    // mobile menu toggle (consistente com as demais páginas do portal)
+    (function () {
+      var m = document.getElementById('mobile-menu-button'), n = document.getElementById('mobile-menu');
+      if (m && n) m.addEventListener('click', function () { n.classList.toggle('hidden'); });
+    })();
+  </script>
+</body>
+</html>
+

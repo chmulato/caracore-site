@@ -16,13 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .brand-bg { background: linear-gradient(135deg, #0b1f3a 0%, #111827 55%, #0f766e 100%); } /* Azul profundo -> cinza -> verde */
-        .brand-accent { color: #10b981; }
-        .card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-    </style>
+    <link rel="stylesheet" href="assets/css/wiki-style.css">
 </head>
 <body class="bg-slate-50">
 
@@ -97,7 +91,7 @@
                 </div>
 
                 <figure class="mt-8 md:mt-0">
-                    <img src="../img/representante_caracore.png"
+                    <img src="assets/img/representante_caracore.png"
                          alt="Parceria Cara Core: transparência, profissionalismo e ganhos recorrentes"
                          loading="lazy"
                          class="w-full rounded-2xl border border-white/10 shadow-2xl">
@@ -395,7 +389,9 @@
                 </div>
                 <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
                     <div class="font-bold text-slate-900 mb-1">PDV de demonstração</div>
-                    <p class="text-sm text-slate-700 mb-4">Ambiente para você mostrar na prática (fluxo linear e clássico).</p>
+                    <p class="text-sm text-slate-700 mb-4">
+                        Para o site público, usamos <strong>demo estática</strong> (tour visual). Para testar no mundo real, o caminho é a <strong>Degustação</strong> (100 vendas completas).
+                    </p>
                     <div class="flex flex-col gap-2">
                         <div class="flex flex-col sm:flex-row gap-2">
                             <a id="demoStaticLink"
@@ -413,13 +409,13 @@
                         </div>
                         <div id="copyDemoLinkStatus" class="hidden text-xs font-semibold text-emerald-700" aria-live="polite"></div>
                         <a class="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-4 py-2 text-sm font-bold text-slate-900 hover:bg-slate-100"
-                           href="https://wa.me/5541999097797?text=Ol%C3%A1!%20Quero%20acessar%20o%20ambiente%20do%20CaraCore-PDV%20(com%20login)%20para%20demonstra%C3%A7%C3%A3o.%20Pode%20me%20orientar%20sobre%20o%20acesso%3F">
-                            <i class="fas fa-right-to-bracket text-emerald-600"></i>
-                            Acessar ambiente do PDV (com login)
+                           href="../download.html">
+                            <i class="fas fa-download text-emerald-600"></i>
+                            Baixar Degustação (100 vendas completas)
                         </a>
                     </div>
                     <p class="text-xs text-slate-500 mt-3">
-                        Observação: este link funciona no ambiente do sistema. No site público, solicite o acesso com Expansão.
+                        Transparência: não mantemos ambiente web público com login. Para demo com acesso real, use a Degustação no Windows ou agende uma demonstração presencial.
                     </p>
                 </div>
             </div>

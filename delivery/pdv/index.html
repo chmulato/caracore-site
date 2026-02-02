@@ -16,19 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .green-accent { color: #059669; }
-        .green-bg { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
-        .card-hover { transition: all 0.3s ease; }
-        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); }
-        .smooth-scroll { scroll-behavior: smooth; }
-        .selo-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); color: #059669; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 600; font-size: 0.875rem; }
-        @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
-    </style>
+    <link rel="stylesheet" href="assets/css/portal-style.css">
 </head>
 <body class="smooth-scroll bg-gray-50">
     
@@ -140,7 +128,7 @@
 
             <div class="grid md:grid-cols-3 gap-8 lg:gap-10">
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100">
-                    <img src="img/dashboard_inteligente.png"
+                    <img src="assets/img/dashboard_inteligente.png"
                          alt="Dashboard inteligente: lucro líquido e impostos em tempo real"
                          class="w-full h-56 object-cover object-top">
                     <div class="p-6">
@@ -152,7 +140,7 @@
                 </div>
 
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100">
-                    <img src="img/sem_maquininha.png"
+                    <img src="assets/img/sem_maquininha.png"
                          alt="Sem maquininha: receba com Pix direto na conta"
                          class="w-full h-56 object-cover object-center">
                     <div class="p-6">
@@ -164,7 +152,7 @@
                 </div>
 
                 <div class="bg-white rounded-2xl overflow-hidden shadow-lg card-hover border border-gray-100">
-                    <img src="img/verde_predominante.png"
+                    <img src="assets/img/verde_predominante.png"
                          alt="Recibo digital: pare de gastar com papel"
                          class="w-full h-56 object-cover object-center">
                     <div class="p-6">
@@ -332,7 +320,7 @@
                         </div>
                         <div class="bg-gray-50 border-t lg:border-t-0 lg:border-l border-gray-200">
                             <img
-                                src="img/caracore_pdv_caixa.png"
+                                src="assets/img/caracore_pdv_caixa.png"
                                 alt="Tela de Cadastro de Venda (PDV): entrada rápida, carrinho e total"
                                 class="w-full h-full object-cover object-top"
                                 loading="lazy"

@@ -11,135 +11,261 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    .brand-bg { background: linear-gradient(135deg, #0b1f3a 0%, #111827 55%, #0f766e 100%); }
-    .card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
-    .kbd { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-  </style>
+  <link rel="stylesheet" href="assets/css/wiki-style.css">
 </head>
-<body class="bg-slate-50">
+<body data-wiki-page="home">
+  <div class="wiki-shell" id="wikiShell">
+    <div class="wiki-backdrop" id="wikiBackdrop" aria-hidden="true"></div>
 
-  <header class="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="../index.html" class="flex items-center gap-3">
-        <div class="h-10 w-10 rounded-xl brand-bg flex items-center justify-center">
-          <i class="fas fa-book text-white"></i>
-        </div>
-        <div class="leading-tight">
-          <div class="font-bold text-slate-900">CaraCore-PDV</div>
-          <div class="text-xs text-slate-500">Wiki Estrutural (v1.0.11)</div>
-        </div>
-      </a>
-      <div class="flex items-center gap-3">
-        <a href="representantes.html" class="hidden sm:inline text-sm font-semibold text-slate-700 hover:text-slate-900">Programa de Parceiros</a>
-        <a href="../download.html" class="hidden sm:inline text-sm font-semibold text-slate-700 hover:text-slate-900">Download</a>
-        <a href="../wiki-fiscal.html" class="hidden sm:inline text-sm font-semibold text-slate-700 hover:text-slate-900">Wiki Fiscal</a>
-      </div>
-    </div>
-  </header>
-
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-    <section class="card overflow-hidden">
-      <div class="brand-bg text-white px-6 sm:px-10 py-10">
-        <div class="max-w-3xl">
-          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold border border-white/10">
-            <i class="fas fa-compass text-emerald-200"></i>
-            Transparência Radical • Autoajuda • Suporte • Estratégia
+    <aside class="wiki-sidebar" aria-label="Navegação da Wiki">
+      <div class="wiki-side-inner">
+        <div class="wiki-side-brand">
+          <div class="wiki-iconbox"><i class="fas fa-book"></i></div>
+          <div>
+            <div class="name">Wiki CaraCore-PDV</div>
+            <div class="ver">Estrutural • v1.0.11</div>
           </div>
-          <h1 class="text-3xl sm:text-4xl font-extrabold mt-5 leading-tight">
-            Wiki Estrutural (Trilhas) — CaraCore-PDV v1.0.11
-          </h1>
-          <p class="text-lg text-white/90 mt-4 leading-relaxed">
-            Um mapa prático para operar, suportar e vender sem promessa falsa. Aqui está o que o sistema faz hoje,
-            o que esperar no primeiro acesso e como agir quando surgir um alerta.
-          </p>
         </div>
+
+        <div class="wiki-search" role="search">
+          <i class="fas fa-magnifying-glass" style="color: var(--muted);"></i>
+          <input id="wikiSearch" type="search" placeholder="Buscar na Wiki (ex: erro 02, pix, offline)" autocomplete="off" />
+        </div>
+
+        <div class="wiki-side-section-title">Trilhas</div>
+        <nav class="wiki-nav" aria-label="Trilhas">
+          <a class="js-nav-item" data-page="cliente" data-search="cliente usar pdv handshake offline primeira venda mensagens" href="trilha-cliente.html">
+            <i class="fas fa-user"></i>
+            <div>
+              <div class="label">Cliente</div>
+              <div class="hint">Quero usar o PDV</div>
+            </div>
+            <span class="pill">Azul</span>
+          </a>
+          <a class="js-nav-item" data-page="suporte" data-search="suporte erro 01 erro 02 smtp reportar logs diagnostico" href="trilha-suporte.html">
+            <i class="fas fa-headset"></i>
+            <div>
+              <div class="label">Suporte (L1)</div>
+              <div class="hint">Preciso resolver um erro</div>
+            </div>
+            <span class="pill">Amarelo</span>
+          </a>
+          <a class="js-nav-item" data-page="socio" data-search="socio representante vender reforma tributaria 2026 pix callback upsell" href="trilha-socio.html">
+            <i class="fas fa-user-tie"></i>
+            <div>
+              <div class="label">Sócio / Representante</div>
+              <div class="hint">Quero vender e expandir</div>
+            </div>
+            <span class="pill">Verde</span>
+          </a>
+        </nav>
+
+        <div class="wiki-side-section-title">Atalhos</div>
+        <nav class="wiki-nav" aria-label="Atalhos">
+          <a class="js-nav-item" data-page="home" data-search="home inicio wiki estrutural" href="index.html">
+            <i class="fas fa-house"></i>
+            <div>
+              <div class="label">Home da Wiki</div>
+              <div class="hint">Mapa rápido</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="parceiros representantes contrato comissao" href="representantes.html">
+            <i class="fas fa-handshake"></i>
+            <div>
+              <div class="label">Programa de Parceiros</div>
+              <div class="hint">Transparência Radical</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="demo apresentacao rapida" href="demo-pdv.html">
+            <i class="fas fa-display"></i>
+            <div>
+              <div class="label">Demo estática (canal)</div>
+              <div class="hint">Tour visual em 60s</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="download instalador degustacao 100 vendas" href="../download.html">
+            <i class="fas fa-download"></i>
+            <div>
+              <div class="label">Download (Degustação)</div>
+              <div class="hint">100 vendas completas</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="wiki fiscal reforma tributaria cbs ibs" href="../wiki-fiscal.html">
+            <i class="fas fa-scale-balanced"></i>
+            <div>
+              <div class="label">Wiki Fiscal</div>
+              <div class="hint">Reforma 2026–2033</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="portal" href="../index.html">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+            <div>
+              <div class="label">Voltar ao portal</div>
+              <div class="hint">Página inicial</div>
+            </div>
+          </a>
+        </nav>
       </div>
+    </aside>
 
-      <div class="px-6 sm:px-10 py-10">
-        <div class="grid md:grid-cols-3 gap-6">
-          <a href="trilha-cliente.html" class="card p-6 hover:shadow-lg transition">
-            <div class="flex items-center gap-3">
-              <div class="h-10 w-10 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-700">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="min-w-0">
-                <div class="font-extrabold text-slate-900">Trilha do Cliente</div>
-                <div class="text-sm text-slate-600">Autoajuda sem ansiedade.</div>
-              </div>
-            </div>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Handshake inicial (primeiro acesso)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Primeira venda offline (SQLite)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Como interpretar mensagens do sistema</span></li>
-            </ul>
-          </a>
-
-          <a href="trilha-suporte.html" class="card p-6 hover:shadow-lg transition">
-            <div class="flex items-center gap-3">
-              <div class="h-10 w-10 rounded-xl bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-700">
-                <i class="fas fa-headset"></i>
-              </div>
-              <div class="min-w-0">
-                <div class="font-extrabold text-slate-900">Trilha do Estagiário / Suporte (L1)</div>
-                <div class="text-sm text-slate-600">Triagem, códigos e evidências.</div>
-              </div>
-            </div>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Erro 01 (servidor local não iniciou)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Erro 02 (integridade / estado parcial)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Falha de SMTP + botão “reportar”</span></li>
-            </ul>
-          </a>
-
-          <a href="trilha-socio.html" class="card p-6 hover:shadow-lg transition">
-            <div class="flex items-center gap-3">
-              <div class="h-10 w-10 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-700">
-                <i class="fas fa-user-tie"></i>
-              </div>
-              <div class="min-w-0">
-                <div class="font-extrabold text-slate-900">Trilha do Sócio / Representante</div>
-                <div class="text-sm text-slate-600">Argumentos + up-sell com prova.</div>
-              </div>
-            </div>
-            <ul class="mt-4 text-sm text-slate-700 space-y-2">
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Reforma Tributária 2026–2033</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>PIX Manual vs Automático (Callback)</span></li>
-              <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Roteiro de qualificação (sem promessa falsa)</span></li>
-            </ul>
-          </a>
+    <div class="wiki-content">
+      <header class="wiki-topbar">
+        <div class="wiki-topbar-title">
+          <button class="wiki-btn" id="wikiOpenSidebarBtn" type="button" aria-label="Abrir menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="wiki-iconbox"><i class="fas fa-compass"></i></div>
+          <div class="min-w-0">
+            <div class="wiki-title">Wiki Estrutural</div>
+            <div class="wiki-sub">Escolha seu perfil e vá direto ao ponto</div>
+          </div>
         </div>
+        <a class="wiki-btn wiki-btn-primary" href="../download.html">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </header>
 
-        <div class="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-          <div class="font-extrabold text-slate-900">Nota de Transparência (sobre offline e segurança)</div>
-          <p class="text-sm text-slate-700 mt-2">
-            O CaraCore-PDV foi desenhado para salvar vendas localmente primeiro com <strong>SQLite</strong> (banco local do caixa).
-            Isso reduz travamento por internet instável. Integrações que dependem de internet (ex.: callbacks automáticos) exigem conexão e configuração.
-          </p>
-          <p class="text-xs text-slate-500 mt-3">
-            Dica: no primeiro acesso, é normal levar alguns segundos para o ambiente local “assentar”.
-            Se aparecer erro, use o botão de suporte para copiar diagnóstico e acelerar o atendimento.
-          </p>
+      <main class="wiki-container">
+        <div class="wiki-grid no-toc">
+          <div>
+            <div class="wiki-breadcrumbs" aria-label="Breadcrumbs">
+              <a href="../index.html">Home</a>
+              <span class="sep">›</span>
+              <span class="current">Wiki</span>
+            </div>
+
+            <section class="wiki-card wiki-section" style="margin-top: 14px;">
+              <div class="wiki-hero">
+                <div class="chip chip-green"><i class="fas fa-compass"></i> Transparência Radical</div>
+                <h1 class="text-3xl sm:text-4xl mt-4">Wiki Estrutural — CaraCore-PDV v1.0.11</h1>
+                <p class="mt-3">
+                  Autoajuda (cliente), procedimentos (suporte) e argumentos com prova (sócio/representante).
+                  Use a busca para filtrar tópicos.
+                </p>
+              </div>
+
+              <div class="wiki-card-body">
+                <div class="grid md:grid-cols-3 gap-4" id="wikiProfileCards">
+                  <a href="trilha-cliente.html" class="profile-card profile-blue js-topic" data-search="cliente usar pdv handshake offline primeira venda mensagens">
+                    <div class="row">
+                      <div class="icon"><i class="fas fa-user"></i></div>
+                      <div>
+                        <div class="title">Quero usar o PDV</div>
+                        <div class="desc">Cliente • Primeiro acesso, operação offline e mensagens.</div>
+                      </div>
+                    </div>
+                    <ul>
+                      <li><i class="fas fa-check" style="color: var(--blue); margin-right:8px;"></i>Handshake inicial</li>
+                      <li><i class="fas fa-check" style="color: var(--blue); margin-right:8px;"></i>Primeira venda offline (SQLite)</li>
+                      <li><i class="fas fa-check" style="color: var(--blue); margin-right:8px;"></i>Mensagens do sistema</li>
+                    </ul>
+                  </a>
+
+                  <a href="trilha-suporte.html" class="profile-card profile-amber js-topic" data-search="suporte erro 01 erro 02 smtp reportar logs diagnostico servidor local">
+                    <div class="row">
+                      <div class="icon"><i class="fas fa-headset"></i></div>
+                      <div>
+                        <div class="title">Preciso resolver um erro</div>
+                        <div class="desc">Suporte L1 • Triagem, códigos e coleta de evidências.</div>
+                      </div>
+                    </div>
+                    <ul>
+                      <li><i class="fas fa-check" style="color: var(--amber); margin-right:8px;"></i>Erro 01 (servidor local)</li>
+                      <li><i class="fas fa-check" style="color: var(--amber); margin-right:8px;"></i>Erro 02 (integridade)</li>
+                      <li><i class="fas fa-check" style="color: var(--amber); margin-right:8px;"></i>SMTP + Reportar ao suporte</li>
+                    </ul>
+                  </a>
+
+                  <a href="trilha-socio.html" class="profile-card profile-green js-topic" data-search="socio representante vender reforma tributaria 2026 pix callback upsell">
+                    <div class="row">
+                      <div class="icon"><i class="fas fa-user-tie"></i></div>
+                      <div>
+                        <div class="title">Quero vender e expandir</div>
+                        <div class="desc">Sócio/Representante • Argumentos e up-sell com prova.</div>
+                      </div>
+                    </div>
+                    <ul>
+                      <li><i class="fas fa-check" style="color: var(--green); margin-right:8px;"></i>Reforma Tributária 2026–2033</li>
+                      <li><i class="fas fa-check" style="color: var(--green); margin-right:8px;"></i>PIX Manual vs Callback</li>
+                      <li><i class="fas fa-check" style="color: var(--green); margin-right:8px;"></i>Roteiro de qualificação</li>
+                    </ul>
+                  </a>
+                </div>
+
+                <div class="wiki-card" style="margin-top: 14px;">
+                  <div class="wiki-card-body">
+                    <div class="font-extrabold text-slate-900">Nota de Transparência (offline e segurança)</div>
+                    <p class="wiki-lead">
+                      O CaraCore-PDV salva vendas localmente primeiro com <strong>SQLite</strong> (banco local do caixa). Isso reduz travamento por internet instável.
+                      Integrações automáticas (ex.: callback) dependem de conexão e configuração.
+                    </p>
+                    <div class="text-xs text-slate-500" style="margin-top: 10px;">
+                      Dica: use a busca do menu lateral para encontrar “erro 02”, “pix”, “offline”, “logs”, etc.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="text-xs text-slate-500" style="margin-top: 12px;">
+                  Última referência: <span class="font-semibold text-slate-700">v1.0.11</span>.
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
-      </div>
-    </section>
+      </main>
 
-    <div class="text-xs text-slate-500">
-      Última referência: <span class="font-semibold text-slate-700">v1.0.11</span>. Se algo divergir do que você viu na tela, registre print + diagnóstico e reporte ao suporte.
+      <footer class="wiki-footer">
+        <div class="wiki-container" style="padding-top: 0;">
+          <div style="display:flex; gap:12px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;">
+            <div>
+              <div><strong>Cara Core Informática</strong> • desde 2010</div>
+              <div style="font-size:12px; color: var(--muted); margin-top: 4px;">Transparência radical: menos susto, mais evidência e ação.</div>
+            </div>
+            <a href="../index.html">Voltar ao portal</a>
+          </div>
+        </div>
+      </footer>
     </div>
-  </main>
+  </div>
 
-  <footer class="py-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <div>
-        <span class="font-semibold text-slate-700">Cara Core Informática</span> • desde 2010
-        <div class="text-xs mt-1">Transparência radical: menos susto, mais evidência e ação.</div>
-      </div>
-      <a href="../index.html" class="text-slate-700 font-semibold hover:underline">Voltar ao portal</a>
-    </div>
-  </footer>
+  <script>
+    (function () {
+      const shell = document.getElementById("wikiShell");
+      const openBtn = document.getElementById("wikiOpenSidebarBtn");
+      const backdrop = document.getElementById("wikiBackdrop");
+
+      function openSidebar() { shell.classList.add("is-sidebar-open"); }
+      function closeSidebar() { shell.classList.remove("is-sidebar-open"); }
+
+      if (openBtn) openBtn.addEventListener("click", () => {
+        if (shell.classList.contains("is-sidebar-open")) closeSidebar();
+        else openSidebar();
+      });
+      if (backdrop) backdrop.addEventListener("click", closeSidebar);
+
+      // Highlight active nav item (by page)
+      const page = document.body.getAttribute("data-wiki-page");
+      document.querySelectorAll(".js-nav-item[data-page]").forEach((a) => {
+        if (a.getAttribute("data-page") === page) a.classList.add("is-active");
+      });
+
+      // Search filter (sidebar + topics on this page)
+      const input = document.getElementById("wikiSearch");
+      const searchable = Array.from(document.querySelectorAll("[data-search]"));
+      function norm(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
+      function applyFilter(q) {
+        const qq = norm(q).trim();
+        searchable.forEach((el) => {
+          const hay = norm(el.getAttribute("data-search"));
+          const show = !qq || hay.includes(qq);
+          el.classList.toggle("hidden", !show);
+        });
+      }
+      if (input) {
+        input.addEventListener("input", () => applyFilter(input.value));
+      }
+    })();
+  </script>
 </body>
 </html>
 

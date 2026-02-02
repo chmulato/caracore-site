@@ -16,49 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .green-bg { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
-        .green-accent { color: #059669; }
-        
-        .smooth-scroll {
-            scroll-behavior: smooth;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        
-        table th, table td {
-            border: 1px solid #e5e7eb;
-            padding: 0.75rem;
-            text-align: left;
-        }
-        
-        table th {
-            background-color: #f9fafb;
-            font-weight: 600;
-        }
-        
-        .section-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/portal-style.css">
 </head>
 <body class="smooth-scroll bg-gray-50">
     
@@ -113,7 +71,7 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
             <div class="max-w-4xl mx-auto text-center">
                 <div class="mb-6">
-                    <img src="img/caracore_pdv.png" alt="CaraCore-PDV Logo" class="mx-auto max-w-full h-auto" style="max-width: 600px;">
+                    <img src="assets/img/caracore_pdv.png" alt="CaraCore-PDV Logo" class="mx-auto max-w-full h-auto" style="max-width: 600px;">
                 </div>
                 <h1 class="text-4xl md:text-5xl font-bold mb-4">Documentação e Visão para o Gestor</h1>
                 <p class="text-xl text-green-50">O PDV Selo Verde que paga sua própria mensalidade — capacidades, benefícios e resultados de negócio.</p>
@@ -217,7 +175,7 @@
                         </tr>
                         <tr>
                             <td><strong>Enlace de Contingência</strong></td>
-                            <td>Quando a internet cai por completo, o sistema continua vendendo e comunica dados vitais por canal alternativo. Inclui validação de licença e recuperação de senha para o operador (Premium). No <strong>Premium+</strong>, inclui integração de envio de SMS a clientes via celular Android dedicado (configuração presencial). O PDV nunca para de operar.</td>
+                            <td>Quando a internet cai por completo, o sistema continua vendendo e comunica dados vitais por canal alternativo. Inclui validação de licença e recuperação de senha para o operador (Premium). O PDV nunca para de operar.</td>
                         </tr>
                         <tr>
                             <td><strong>Planos Free e Premium</strong></td>
@@ -233,7 +191,7 @@
                         </tr>
                         <tr>
                             <td><strong>Recuperação de senha</strong></td>
-                            <td>E-mail, WhatsApp e Telegram. No Premium, inclusão de canal alternativo ao celular do operador quando configurado. No <strong>Premium+</strong>, integração opcional com app <code>android-sms-enviar</code> para envio de SMS a clientes (LGPD + visita técnica).</td>
+                            <td>E-mail, WhatsApp e Telegram. No Premium, inclusão de canal alternativo ao celular do operador quando configurado.</td>
                         </tr>
                         <tr style="background-color: #f3f4f6;">
                             <td><strong>Opção simplificada (um único PDV)</strong></td>
@@ -266,7 +224,7 @@
             <p class="text-gray-600 text-sm mb-6">A configuração e o dispositivo dedicado são feitos pela equipe Cara Core ou por parceiros. Consulte <a href="consultoria.html" class="green-accent hover:underline">Consultoria</a>.</p>
             
             <div class="my-6 text-center">
-                <img src="img/caracore_pdv_vendas.png" alt="Interface de Frente de Caixa - CaraCore-PDV" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
+                <img src="assets/img/caracore_pdv_vendas.png" alt="Interface de Frente de Caixa - CaraCore-PDV" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
                 <p class="text-sm text-gray-500 mt-2 italic">Figura 2: Interface de Frente de Caixa otimizada para agilidade</p>
             </div>
             
@@ -282,7 +240,7 @@
                 <li><strong>Atualização Dinâmica:</strong> Dados carregados via API REST para visualização em tempo real</li>
             </ul>
             <div class="my-6 text-center">
-                <img src="img/caracore_pdv_dashboard.png" alt="Dashboard Administrativo - CaraCore-PDV" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
+                <img src="assets/img/caracore_pdv_dashboard.png" alt="Dashboard Administrativo - CaraCore-PDV" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
                 <p class="text-sm text-gray-500 mt-2 italic">Figura 1: Dashboard administrativo com métricas em tempo real</p>
             </div>
             <p class="text-gray-700 leading-relaxed mb-6">
@@ -299,7 +257,7 @@
                 <li><strong>Resumo Fiscal Detalhado:</strong> Tributos exibidos no fechamento da venda e no cupom (PDF) para o cliente</li>
             </ul>
             <div class="my-6 text-center">
-                <img src="img/caracore_pdv_tax.png" alt="Interface de Configuração Fiscal - Reforma Tributária 2026" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
+                <img src="assets/img/caracore_pdv_tax.png" alt="Interface de Configuração Fiscal - Reforma Tributária 2026" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
                 <p class="text-sm text-gray-500 mt-2 italic">Figura 3: Configuração Fiscal com gestão de alíquotas da Reforma Tributária 2026</p>
             </div>
             
@@ -314,7 +272,7 @@
                 <li><strong>Modo Informativo:</strong> Quando desabilitado, os tributos são calculados apenas para fins informativos, sem divisão real do pagamento</li>
             </ul>
             <div class="my-6 text-center">
-                <img src="img/caracore_pdv_split_off.png" alt="Resumo Fiscal com PIX Split Desabilitado" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
+                <img src="assets/img/caracore_pdv_split_off.png" alt="Resumo Fiscal com PIX Split Desabilitado" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
                 <p class="text-sm text-gray-500 mt-2 italic">Figura 4: Resumo fiscal com PIX Split desabilitado - tributos apenas informativos</p>
             </div>
             <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
@@ -326,7 +284,7 @@
                 O painel administrativo inclui um <strong>Centro de Segurança e Backup</strong> para configuração de políticas de segurança, criptografia de dados sensíveis e gestão de rotinas de backup e restore.
             </p>
             <div class="my-6 text-center">
-                <img src="img/centro_de_seguranca_e_backup.png" alt="Centro de Segurança e Backup - CaraCore-PDV" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
+                <img src="assets/img/centro_de_seguranca_e_backup.png" alt="Centro de Segurança e Backup - CaraCore-PDV" class="mx-auto max-w-full h-auto rounded-lg shadow-lg" style="max-width: 100%;">
                 <p class="text-sm text-gray-500 mt-2 italic">Centro de Segurança e Backup no painel administrativo</p>
             </div>
             
@@ -343,9 +301,6 @@
             <h3 class="text-2xl font-semibold text-gray-800 mb-4">Recuperação de senha</h3>
             <p class="text-gray-700 leading-relaxed mb-4">
                 Canais disponíveis: e-mail, WhatsApp e Telegram. No Premium, quando configurado, a nova senha também pode ser enviada ao celular do operador por canal alternativo.
-            </p>
-            <p class="text-gray-700 leading-relaxed mb-4">
-                <strong>Premium+ (opcional):</strong> integração com <code>android-sms-enviar</code> para envio de SMS a clientes (ex.: recibo/avisos) usando um <strong>celular Android dedicado</strong> conectado por USB no Windows que roda o PDV Premium. Por segurança e conformidade, a configuração é feita em <strong>visita técnica</strong> e respeita LGPD (consentimento e mínimo necessário).
             </p>
         </div>
         

@@ -16,71 +16,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .green-bg { background: linear-gradient(135deg, #059669 0%, #10b981 100%); }
-        .green-accent { color: #059669; }
-        
-        .smooth-scroll {
-            scroll-behavior: smooth;
-        }
-        
-        .service-card {
-            background: white;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover {
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-        }
-        
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            margin-bottom: 1.5rem;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-        
-        table th, table td {
-            border: 1px solid #e5e7eb;
-            padding: 0.75rem;
-            text-align: left;
-        }
-        
-        table th {
-            background-color: #f9fafb;
-            font-weight: 600;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, #05966915 0%, #10b98115 100%);
-            border-left: 4px solid #059669;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/css/portal-style.css">
 </head>
 <body class="smooth-scroll bg-gray-50">
     
@@ -189,7 +125,7 @@
                         <li>Documentação da infraestrutura implementada</li>
                     </ul>
                     <div class="my-4">
-                        <img src="img/centro_de_seguranca_e_backup.png" alt="Centro de Segurança e Backup - CaraCore-PDV" class="w-full max-w-xl h-auto rounded-lg border border-gray-200 shadow-sm" loading="lazy">
+                        <img src="assets/img/centro_de_seguranca_e_backup.png" alt="Centro de Segurança e Backup - CaraCore-PDV" class="w-full max-w-xl h-auto rounded-lg border border-gray-200 shadow-sm" loading="lazy">
                         <p class="text-sm text-gray-500 mt-2">Centro de Segurança e Backup no painel administrativo</p>
                     </div>
                     <p class="text-gray-600"><strong>Tempo estimado:</strong> 2 a 5 dias úteis, dependendo da complexidade da infraestrutura.</p>
@@ -250,6 +186,10 @@
                     <p class="text-gray-700 leading-relaxed mb-4">
                         Implementação do <strong>enlace de contingência</strong>: quando a internet cai por completo, o PDV <strong>nunca para de vender</strong>. Comunicação de vendas e validação de licença por canal alternativo; no Premium, recuperação de senha do operador também pelo canal. Banner e indicador na tela informam quando o modo está ativo.
                     </p>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        <strong>Premium+ (opcional):</strong> integração com o módulo <code>android-sms-enviar</code> para envio de SMS via celular Android conectado ao Windows (USB/ADB).
+                        Requer <strong>visita técnica</strong> para configurar o dispositivo dedicado, e o uso é feito com <strong>consentimento</strong> e procedimentos compatíveis com a LGPD.
+                    </p>
                     <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
                         <p class="text-red-800 font-semibold mb-2"><i class="fas fa-quote-left mr-2"></i>Princípio:</p>
                         <p class="text-red-700 italic">"Nunca pare de vender" — O sistema reporta dados vitais e mantém a operação mesmo sem internet.</p>
@@ -261,7 +201,6 @@
                         <li>Monitor de conectividade, banner e indicador de status</li>
                         <li>Persistência local e backup; testes de resiliência (queda total de internet)</li>
                         <li>Documentação e treinamento sobre operação em contingência</li>
-                        <li><strong>Premium+ (opcional):</strong> configuração do celular Android dedicado (app <code>android-sms-enviar</code>) plugado no Windows que roda o Premium, para envio de SMS a clientes (recibo/avisos) com regras de LGPD (consentimento e mínimo necessário). <strong>Requer visita técnica.</strong></li>
                     </ul>
                     <p class="text-gray-700 leading-relaxed mb-4"><strong>Benefícios:</strong> Operação contínua sem internet; notificação de vendas ao administrador; zero perda de dados.</p>
                     <p class="text-gray-700 leading-relaxed mb-4"><strong>Requisitos:</strong> Dispositivo móvel dedicado configurado pela equipe Cara Core; número do administrador.</p>

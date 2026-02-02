@@ -91,4 +91,4 @@ backend*.zip
 *log*.zip
 azure_logs*/
 test_report*.json
-delivery/pdv/img/demo_pdv/*
+delivery/pdv_bkp/

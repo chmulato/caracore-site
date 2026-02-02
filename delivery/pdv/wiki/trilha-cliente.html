@@ -13,234 +13,341 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/wiki-style.css">
 </head>
-<body class="bg-slate-50">
+<body data-wiki-page="cliente">
+  <div class="wiki-shell" id="wikiShell">
+    <div class="wiki-backdrop" id="wikiBackdrop" aria-hidden="true"></div>
 
-  <header class="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3">
-        <div class="h-10 w-10 rounded-xl brand-bg flex items-center justify-center">
-          <i class="fas fa-user text-white"></i>
-        </div>
-        <div class="leading-tight">
-          <div class="font-bold text-slate-900">Trilha do Cliente</div>
-          <div class="text-xs text-slate-500">Wiki Estrutural (v1.0.11)</div>
-        </div>
-      </a>
-
-      <nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-700">
-        <a href="#handshake" class="hover:text-slate-900">Handshake Inicial</a>
-        <a href="#primeira-venda" class="hover:text-slate-900">Primeira Venda Offline</a>
-        <a href="#mensagens" class="hover:text-slate-900">Mensagens do Sistema</a>
-        <a href="../download.html" class="hover:text-slate-900">Download</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
-
-    <section class="card overflow-hidden">
-      <div class="brand-bg text-white px-6 sm:px-10 py-10">
-        <div class="max-w-3xl">
-          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold border border-white/10">
-            <i class="fas fa-heart-circle-check text-emerald-200"></i>
-            Transparência Radical • Autoajuda
-          </div>
-          <h1 class="text-3xl sm:text-4xl font-extrabold mt-5">Primeiros passos sem susto</h1>
-          <p class="text-lg text-white/90 mt-4 leading-relaxed">
-            Aqui está o que acontece no primeiro acesso, como fazer sua primeira venda em modo offline e como interpretar alertas sem ansiedade.
-          </p>
-        </div>
-      </div>
-
-      <div class="px-6 sm:px-10 py-10">
-        <div class="grid md:grid-cols-3 gap-4">
-          <a href="#handshake" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-            <div class="font-extrabold text-slate-900"><i class="fas fa-plug text-emerald-600 mr-2"></i>Handshake inicial</div>
-            <div class="text-sm text-slate-600 mt-1">O que ocorre no “primeiro acesso”.</div>
-          </a>
-          <a href="#primeira-venda" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-            <div class="font-extrabold text-slate-900"><i class="fas fa-cart-shopping text-emerald-600 mr-2"></i>Primeira venda offline</div>
-            <div class="text-sm text-slate-600 mt-1">Passo a passo no balcão.</div>
-          </a>
-          <a href="#mensagens" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-            <div class="font-extrabold text-slate-900"><i class="fas fa-message text-emerald-600 mr-2"></i>Mensagens do sistema</div>
-            <div class="text-sm text-slate-600 mt-1">O que significa e o que fazer.</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="handshake" class="card p-6 sm:p-8">
-      <h2 class="text-2xl font-extrabold text-slate-900">
-        <i class="fas fa-plug text-slate-900 mr-2"></i>
-        Handshake Inicial (Primeiro Acesso)
-      </h2>
-      <p class="text-slate-600 mt-2 max-w-3xl">
-        No primeiro uso, o CaraCore-PDV Desktop prepara o ambiente local. Isso não é “travamento”: é a fase em que ele coloca o caixa em modo operacional.
-      </p>
-
-      <div class="mt-6 callout-ok rounded-xl p-5">
-        <div class="font-extrabold text-slate-900">O que acontece (sem mistério)</div>
-        <ul class="mt-3 text-sm text-slate-800 space-y-2">
-          <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-700 mt-0.5"></i><span>Sobe o <strong>servidor local</strong> do PDV no seu computador.</span></li>
-          <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-700 mt-0.5"></i><span>Prepara o <strong>banco local (SQLite)</strong> para salvar vendas mesmo com internet instável.</span></li>
-          <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-700 mt-0.5"></i><span>Registra checks de primeira execução para diagnóstico (quando necessário).</span></li>
-          <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-700 mt-0.5"></i><span>Em instalação nova, cria o usuário padrão <strong>admin / admin</strong> (recomendado trocar depois).</span></li>
-        </ul>
-      </div>
-
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="rounded-2xl border border-slate-200 bg-white p-5">
-          <div class="font-extrabold text-slate-900">Passo a passo (o que você faz)</div>
-          <ol class="mt-3 text-sm text-slate-700 space-y-2 list-decimal pl-5">
-            <li>Baixe e execute o instalador.</li>
-            <li>Abra o CaraCore-PDV Desktop.</li>
-            <li>Aguarde a primeira inicialização (normalmente ~30 segundos).</li>
-            <li>Faça login com <strong>admin / admin</strong> (primeira execução limpa).</li>
-            <li>Se possível, altere a senha após o primeiro login.</li>
-          </ol>
-        </div>
-
-        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
-          <div class="font-extrabold text-slate-900">O que é “offline” aqui</div>
-          <p class="text-sm text-slate-700 mt-2">
-            “Offline” significa que as vendas são salvas no seu computador usando <strong>SQLite</strong>.
-            A internet pode cair e o caixa continua. Integrações automáticas (ex.: callback) dependem de internet.
-          </p>
-          <div class="mt-3 text-xs text-slate-500">
-            Segurança e estabilidade: o banco local existe para garantir previsibilidade no balcão.
+    <aside class="wiki-sidebar" aria-label="Navegação da Wiki">
+      <div class="wiki-side-inner">
+        <div class="wiki-side-brand">
+          <div class="wiki-iconbox"><i class="fas fa-book"></i></div>
+          <div>
+            <div class="name">Wiki CaraCore-PDV</div>
+            <div class="ver">Estrutural • v1.0.11</div>
           </div>
         </div>
-      </div>
 
-      <div class="mt-6 callout-warn rounded-xl p-5">
-        <div class="font-extrabold text-slate-900">Quando você deve acionar suporte</div>
-        <ul class="mt-3 text-sm text-slate-800 space-y-2">
-          <li class="flex items-start gap-2"><i class="fas fa-triangle-exclamation text-amber-700 mt-0.5"></i><span>Se ficar “iniciando” por tempo excessivo (ex.: mais de 2–3 minutos).</span></li>
-          <li class="flex items-start gap-2"><i class="fas fa-triangle-exclamation text-amber-700 mt-0.5"></i><span>Se aparecer “Servidor local não iniciou”.</span></li>
-          <li class="flex items-start gap-2"><i class="fas fa-triangle-exclamation text-amber-700 mt-0.5"></i><span>Se aparecer “Erro 02: …”.</span></li>
-        </ul>
-        <p class="text-xs text-slate-600 mt-3">
-          Dica: quando aparecer uma tela de suporte, use o botão “Copiar diagnóstico para suporte” e cole no WhatsApp do suporte técnico.
-        </p>
-      </div>
-    </section>
-
-    <section id="primeira-venda" class="card p-6 sm:p-8">
-      <h2 class="text-2xl font-extrabold text-slate-900">
-        <i class="fas fa-cart-shopping text-slate-900 mr-2"></i>
-        Primeira Venda em Modo Offline
-      </h2>
-      <p class="text-slate-600 mt-2 max-w-3xl">
-        O objetivo aqui é validar o fluxo completo de balcão e confirmar que sua venda fica registrada localmente (SQLite).
-      </p>
-
-      <div class="mt-6 callout-info rounded-xl p-5">
-        <div class="font-extrabold text-slate-900">Checklist rápido</div>
-        <ul class="mt-3 text-sm text-slate-800 space-y-2">
-          <li class="flex items-start gap-2"><i class="fas fa-check text-sky-700 mt-0.5"></i><span>Você conseguiu entrar no sistema.</span></li>
-          <li class="flex items-start gap-2"><i class="fas fa-check text-sky-700 mt-0.5"></i><span>Existe pelo menos 1 produto para vender (cadastro ou dados iniciais).</span></li>
-          <li class="flex items-start gap-2"><i class="fas fa-check text-sky-700 mt-0.5"></i><span>Você está no computador onde o Desktop está instalado.</span></li>
-        </ul>
-      </div>
-
-      <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
-        <div class="font-extrabold text-slate-900">Passo a passo (balcão)</div>
-        <ol class="mt-4 text-sm text-slate-700 space-y-2 list-decimal pl-5">
-          <li>Acesse o menu de <strong>Vendas</strong>.</li>
-          <li>Clique em <strong>Nova venda</strong>.</li>
-          <li>Adicione itens (pesquisa ou leitor de código de barras, se configurado).</li>
-          <li>Confira quantidades e total.</li>
-          <li>Escolha a forma de pagamento (ex.: dinheiro/cartão/PIX manual).</li>
-          <li>Clique em <strong>Finalizar</strong>.</li>
-          <li>Confirme que a venda aparece registrada (lista/relatórios do dia).</li>
-        </ol>
-
-        <div class="mt-4 text-xs text-slate-500">
-          Boa prática: faça primeiro uma venda pequena de teste. Depois, siga para operação completa.
-        </div>
-      </div>
-    </section>
-
-    <section id="mensagens" class="card p-6 sm:p-8">
-      <h2 class="text-2xl font-extrabold text-slate-900">
-        <i class="fas fa-message text-slate-900 mr-2"></i>
-        Como interpretar mensagens do sistema
-      </h2>
-      <p class="text-slate-600 mt-2 max-w-3xl">
-        Mensagem não é “ameaça”. É o sistema te dizendo o que está acontecendo e qual o próximo passo seguro.
-      </p>
-
-      <div class="mt-6 grid md:grid-cols-2 gap-6">
-        <div class="rounded-2xl border border-slate-200 bg-white p-5">
-          <div class="font-extrabold text-slate-900">“Iniciando…” (primeiro acesso)</div>
-          <p class="text-sm text-slate-700 mt-2">
-            Normal no primeiro acesso: o Desktop prepara servidor local e banco SQLite.
-          </p>
-          <p class="text-sm text-slate-700 mt-2">
-            <strong>O que fazer:</strong> aguarde ~30s. Se ultrapassar 2–3 minutos, acione suporte.
-          </p>
+        <div class="wiki-search" role="search">
+          <i class="fas fa-magnifying-glass" style="color: var(--muted);"></i>
+          <input id="wikiSearch" type="search" placeholder="Buscar na Wiki (ex: erro 02, pix, offline)" autocomplete="off" />
         </div>
 
-        <div class="rounded-2xl border border-slate-200 bg-white p-5">
-          <div class="font-extrabold text-slate-900">“Servidor local não iniciou”</div>
-          <p class="text-sm text-slate-700 mt-2">
-            O Desktop não conseguiu iniciar o servidor local automaticamente.
-          </p>
-          <p class="text-sm text-slate-700 mt-2">
-            <strong>O que fazer:</strong> fale com o suporte e envie diagnóstico/logs (Trilha de Suporte).
-          </p>
-        </div>
+        <div class="wiki-side-section-title">Trilhas</div>
+        <nav class="wiki-nav" aria-label="Trilhas">
+          <a class="js-nav-item" data-page="cliente" data-search="cliente usar pdv handshake offline primeira venda mensagens" href="trilha-cliente.html">
+            <i class="fas fa-user"></i>
+            <div>
+              <div class="label">Cliente</div>
+              <div class="hint">Quero usar o PDV</div>
+            </div>
+            <span class="pill">Azul</span>
+          </a>
+          <a class="js-nav-item" data-page="suporte" data-search="suporte erro 01 erro 02 smtp reportar logs diagnostico" href="trilha-suporte.html">
+            <i class="fas fa-headset"></i>
+            <div>
+              <div class="label">Suporte (L1)</div>
+              <div class="hint">Preciso resolver um erro</div>
+            </div>
+            <span class="pill">Amarelo</span>
+          </a>
+          <a class="js-nav-item" data-page="socio" data-search="socio representante vender reforma tributaria 2026 pix callback upsell" href="trilha-socio.html">
+            <i class="fas fa-user-tie"></i>
+            <div>
+              <div class="label">Sócio / Representante</div>
+              <div class="hint">Quero vender e expandir</div>
+            </div>
+            <span class="pill">Verde</span>
+          </a>
+        </nav>
 
-        <div class="rounded-2xl border border-slate-200 bg-white p-5">
-          <div class="font-extrabold text-slate-900">“Erro 02: …” (integridade)</div>
-          <p class="text-sm text-slate-700 mt-2">
-            Proteção do sistema: ele bloqueia a abertura quando detecta estado local inconsistente.
-          </p>
-          <p class="text-sm text-slate-700 mt-2">
-            <strong>O que fazer:</strong> use “Copiar diagnóstico para suporte” e envie ao suporte.
-          </p>
-        </div>
-
-        <div class="rounded-2xl border border-slate-200 bg-white p-5">
-          <div class="font-extrabold text-slate-900">“SMTP não configurado” / falha de e-mail</div>
-          <p class="text-sm text-slate-700 mt-2">
-            E-mail depende de configuração. O PDV pode continuar funcionando, mas rotinas que enviam e-mail podem falhar.
-          </p>
-          <p class="text-sm text-slate-700 mt-2">
-            <strong>O que fazer:</strong> se você precisa de e-mail, peça orientação ao suporte para configurar SMTP.
-          </p>
-        </div>
+        <div class="wiki-side-section-title">Atalhos</div>
+        <nav class="wiki-nav" aria-label="Atalhos">
+          <a class="js-nav-item" data-page="home" data-search="home inicio wiki estrutural" href="index.html">
+            <i class="fas fa-house"></i>
+            <div>
+              <div class="label">Home da Wiki</div>
+              <div class="hint">Mapa rápido</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-page="representantes" data-search="parceiros representantes contrato comissao" href="representantes.html">
+            <i class="fas fa-handshake"></i>
+            <div>
+              <div class="label">Programa de Parceiros</div>
+              <div class="hint">Transparência Radical</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-page="demo" data-search="demo apresentacao rapida" href="demo-pdv.html">
+            <i class="fas fa-display"></i>
+            <div>
+              <div class="label">Demo estática (canal)</div>
+              <div class="hint">Tour visual em 60s</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="download instalador degustacao 100 vendas" href="../download.html">
+            <i class="fas fa-download"></i>
+            <div>
+              <div class="label">Download (Degustação)</div>
+              <div class="hint">100 vendas completas</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="wiki fiscal reforma tributaria cbs ibs" href="../wiki-fiscal.html">
+            <i class="fas fa-scale-balanced"></i>
+            <div>
+              <div class="label">Wiki Fiscal</div>
+              <div class="hint">Reforma 2026–2033</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="portal" href="../index.html">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+            <div>
+              <div class="label">Voltar ao portal</div>
+              <div class="hint">Página inicial</div>
+            </div>
+          </a>
+        </nav>
       </div>
+    </aside>
 
-      <div class="mt-6 callout-ok rounded-xl p-5">
-        <div class="font-extrabold text-slate-900">Dica anti-ansiedade</div>
-        <p class="text-sm text-slate-800 mt-2">
-          Quando algo dá errado, o que acelera a solução é evidência: <strong>print + diagnóstico + log</strong>.
-          O sistema foi desenhado para gerar esse material rapidamente.
-        </p>
-      </div>
-    </section>
+    <div class="wiki-content">
+      <header class="wiki-topbar">
+        <div class="wiki-topbar-title">
+          <button class="wiki-btn" id="wikiOpenSidebarBtn" type="button" aria-label="Abrir menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="wiki-iconbox"><i class="fas fa-user"></i></div>
+          <div class="min-w-0">
+            <div class="wiki-title">Trilha do Cliente</div>
+            <div class="wiki-sub">Primeiros passos sem susto • v1.0.11</div>
+          </div>
+        </div>
+        <a class="wiki-btn wiki-btn-primary" href="../download.html">
+          <i class="fas fa-download"></i> Download
+        </a>
+      </header>
 
-    <div class="flex flex-col sm:flex-row gap-3 justify-between">
-      <a href="index.html" class="inline-flex items-center gap-2 text-slate-700 font-semibold hover:underline">
-        <i class="fas fa-arrow-left"></i> Voltar à Wiki Estrutural
-      </a>
-      <a href="trilha-suporte.html" class="inline-flex items-center gap-2 text-emerald-700 font-semibold hover:underline">
-        Ir para Trilha do Suporte (L1) <i class="fas fa-arrow-right"></i>
-      </a>
+      <main class="wiki-container">
+        <div class="wiki-grid">
+          <div class="wiki-main-content">
+            <div class="wiki-breadcrumbs" aria-label="Breadcrumbs">
+              <a href="../index.html">Home</a>
+              <span class="sep">›</span>
+              <a href="index.html">Wiki</a>
+              <span class="sep">›</span>
+              <span class="current">Trilha do Cliente</span>
+            </div>
+
+            <section class="card overflow-hidden" style="margin-top: 14px;">
+              <div class="brand-bg text-white px-6 sm:px-10 py-10">
+                <div class="max-w-3xl">
+                  <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold border border-white/10">
+                    <i class="fas fa-heart-circle-check text-emerald-200"></i>
+                    Transparência Radical • Autoajuda
+                  </div>
+                  <h1 class="text-3xl sm:text-4xl font-extrabold mt-5">Primeiros passos sem susto</h1>
+                  <p class="text-lg text-white/90 mt-4 leading-relaxed">
+                    Aqui está o que acontece no primeiro acesso, como fazer sua primeira venda em modo offline e como interpretar alertas sem ansiedade.
+                  </p>
+                </div>
+              </div>
+
+              <div class="px-6 sm:px-10 py-10">
+                <div class="grid md:grid-cols-3 gap-4">
+                  <a href="#handshake" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+                    <div class="font-extrabold text-slate-900"><i class="fas fa-plug text-emerald-600 mr-2"></i>Handshake inicial</div>
+                    <div class="text-sm text-slate-600 mt-1">O que ocorre no “primeiro acesso”.</div>
+                  </a>
+                  <a href="#primeira-venda" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+                    <div class="font-extrabold text-slate-900"><i class="fas fa-cart-shopping text-emerald-600 mr-2"></i>Primeira venda offline</div>
+                    <div class="text-sm text-slate-600 mt-1">Passo a passo no balcão.</div>
+                  </a>
+                  <a href="#mensagens" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+                    <div class="font-extrabold text-slate-900"><i class="fas fa-message text-emerald-600 mr-2"></i>Mensagens do sistema</div>
+                    <div class="text-sm text-slate-600 mt-1">O que significa e o que fazer.</div>
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            <section id="handshake" class="card p-6 sm:p-8">
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                <i class="fas fa-plug text-slate-900 mr-2"></i>
+                Handshake Inicial (Primeiro Acesso)
+              </h2>
+              <p class="text-slate-600 mt-2 max-w-3xl">
+                No primeiro uso, o CaraCore-PDV Desktop prepara o ambiente local. Isso não é “travamento”: é a fase em que ele coloca o caixa em modo operacional.
+              </p>
+
+              <div class="mt-6 callout-ok rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">O que acontece (sem mistério)</div>
+                <ul class="mt-3 text-sm text-slate-800 space-y-2">
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-700 mt-0.5"></i><span>Sobe o <strong>servidor local</strong> do PDV no seu computador.</span></li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-700 mt-0.5"></i><span>Prepara o <strong>banco local (SQLite)</strong> para salvar vendas mesmo com internet instável.</span></li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-700 mt-0.5"></i><span>Registra checks de primeira execução para diagnóstico (quando necessário).</span></li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-700 mt-0.5"></i><span>Em instalação nova, cria o usuário padrão <strong>admin / admin</strong> (recomendado trocar depois).</span></li>
+                </ul>
+              </div>
+
+              <div class="mt-6 grid md:grid-cols-2 gap-6">
+                <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div class="font-extrabold text-slate-900">Passo a passo (o que você faz)</div>
+                  <ol class="mt-3 text-sm text-slate-700 space-y-2 list-decimal pl-5">
+                    <li>Baixe e execute o instalador.</li>
+                    <li>Abra o CaraCore-PDV Desktop.</li>
+                    <li>Aguarde a primeira inicialização (normalmente ~30 segundos).</li>
+                    <li>Faça login com <strong>admin / admin</strong> (primeira execução limpa).</li>
+                    <li>Se possível, altere a senha após o primeiro login.</li>
+                  </ol>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+                  <div class="font-extrabold text-slate-900">O que é “offline” aqui</div>
+                  <p class="text-sm text-slate-700 mt-2">
+                    “Offline” significa que as vendas são salvas no seu computador usando <strong>SQLite</strong>.
+                    A internet pode cair e o caixa continua. Integrações automáticas (ex.: callback) dependem de internet.
+                  </p>
+                  <div class="mt-3 text-xs text-slate-500">
+                    Segurança e estabilidade: o banco local existe para garantir previsibilidade no balcão.
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-6 callout-warn rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Quando você deve acionar suporte</div>
+                <ul class="mt-3 text-sm text-slate-800 space-y-2">
+                  <li class="flex items-start gap-2"><i class="fas fa-triangle-exclamation text-amber-700 mt-0.5"></i><span>Se ficar “iniciando” por tempo excessivo (ex.: mais de 2–3 minutos).</span></li>
+                  <li class="flex items-start gap-2"><i class="fas fa-triangle-exclamation text-amber-700 mt-0.5"></i><span>Se aparecer “Servidor local não iniciou”.</span></li>
+                  <li class="flex items-start gap-2"><i class="fas fa-triangle-exclamation text-amber-700 mt-0.5"></i><span>Se aparecer “Erro 02: …”.</span></li>
+                </ul>
+                <p class="text-xs text-slate-600 mt-3">
+                  Dica: quando aparecer uma tela de suporte, use o botão “Copiar diagnóstico para suporte” e cole no WhatsApp do suporte técnico.
+                </p>
+              </div>
+            </section>
+
+            <section id="primeira-venda" class="card p-6 sm:p-8">
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                <i class="fas fa-cart-shopping text-slate-900 mr-2"></i>
+                Primeira Venda em Modo Offline
+              </h2>
+              <p class="text-slate-600 mt-2 max-w-3xl">
+                O objetivo aqui é validar o fluxo completo de balcão e confirmar que sua venda fica registrada localmente (SQLite).
+              </p>
+
+              <div class="mt-6 callout-info rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Checklist rápido</div>
+                <ul class="mt-3 text-sm text-slate-800 space-y-2">
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-sky-700 mt-0.5"></i><span>Você conseguiu entrar no sistema.</span></li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-sky-700 mt-0.5"></i><span>Existe pelo menos 1 produto para vender (cadastro ou dados iniciais).</span></li>
+                  <li class="flex items-start gap-2"><i class="fas fa-check text-sky-700 mt-0.5"></i><span>Você está no computador onde o Desktop está instalado.</span></li>
+                </ul>
+              </div>
+
+              <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+                <div class="font-extrabold text-slate-900">Passo a passo (balcão)</div>
+                <ol class="mt-4 text-sm text-slate-700 space-y-2 list-decimal pl-5">
+                  <li>Acesse o menu de <strong>Vendas</strong>.</li>
+                  <li>Clique em <strong>Nova venda</strong>.</li>
+                  <li>Adicione itens (pesquisa ou leitor de código de barras, se configurado).</li>
+                  <li>Confira quantidades e total.</li>
+                  <li>Escolha a forma de pagamento (ex.: dinheiro/cartão/PIX manual).</li>
+                  <li>Clique em <strong>Finalizar</strong>.</li>
+                  <li>Confirme que a venda aparece registrada (lista/relatórios do dia).</li>
+                </ol>
+
+                <div class="mt-4 text-xs text-slate-500">
+                  Boa prática: faça primeiro uma venda pequena de teste. Depois, siga para operação completa.
+                </div>
+              </div>
+            </section>
+
+            <section id="mensagens" class="card p-6 sm:p-8">
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                <i class="fas fa-message text-slate-900 mr-2"></i>
+                Como interpretar mensagens do sistema
+              </h2>
+              <p class="text-slate-600 mt-2 max-w-3xl">
+                Mensagem não é “ameaça”. É o sistema te dizendo o que está acontecendo e qual o próximo passo seguro.
+              </p>
+
+              <div class="mt-6 grid md:grid-cols-2 gap-6">
+                <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div class="font-extrabold text-slate-900">“Iniciando…” (primeiro acesso)</div>
+                  <p class="text-sm text-slate-700 mt-2">
+                    Normal no primeiro acesso: o Desktop prepara servidor local e banco SQLite.
+                  </p>
+                  <p class="text-sm text-slate-700 mt-2">
+                    <strong>O que fazer:</strong> aguarde ~30s. Se ultrapassar 2–3 minutos, acione suporte.
+                  </p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div class="font-extrabold text-slate-900">“Servidor local não iniciou”</div>
+                  <p class="text-sm text-slate-700 mt-2">
+                    O Desktop não conseguiu iniciar o servidor local automaticamente.
+                  </p>
+                  <p class="text-sm text-slate-700 mt-2">
+                    <strong>O que fazer:</strong> fale com o suporte e envie diagnóstico/logs (Trilha de Suporte).
+                  </p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div class="font-extrabold text-slate-900">“Erro 02: …” (integridade)</div>
+                  <p class="text-sm text-slate-700 mt-2">
+                    Proteção do sistema: ele bloqueia a abertura quando detecta estado local inconsistente.
+                  </p>
+                  <p class="text-sm text-slate-700 mt-2">
+                    <strong>O que fazer:</strong> use “Copiar diagnóstico para suporte” e envie ao suporte.
+                  </p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                  <div class="font-extrabold text-slate-900">“SMTP não configurado” / falha de e-mail</div>
+                  <p class="text-sm text-slate-700 mt-2">
+                    E-mail depende de configuração. O PDV pode continuar funcionando, mas rotinas que enviam e-mail podem falhar.
+                  </p>
+                  <p class="text-sm text-slate-700 mt-2">
+                    <strong>O que fazer:</strong> se você precisa de e-mail, peça orientação ao suporte para configurar SMTP.
+                  </p>
+                </div>
+              </div>
+
+              <div class="mt-6 callout-ok rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Dica anti-ansiedade</div>
+                <p class="text-sm text-slate-800 mt-2">
+                  Quando algo dá errado, o que acelera a solução é evidência: <strong>print + diagnóstico + log</strong>.
+                  O sistema foi desenhado para gerar esse material rapidamente.
+                </p>
+              </div>
+            </section>
+
+            <div class="flex flex-col sm:flex-row gap-3 justify-between" style="margin-top: 24px;">
+              <a href="index.html" class="inline-flex items-center gap-2 text-slate-700 font-semibold hover:underline">
+                <i class="fas fa-arrow-left"></i> Voltar à Wiki Estrutural
+              </a>
+              <a href="trilha-suporte.html" class="inline-flex items-center gap-2 text-emerald-700 font-semibold hover:underline">
+                Ir para Trilha do Suporte (L1) <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <aside class="wiki-toc" id="wikiToc" aria-label="Nesta página"></aside>
+        </div>
+      </main>
+
+      <footer class="wiki-footer">
+        <div class="wiki-container" style="padding-top: 0;">
+          <div style="display:flex; gap:12px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;">
+            <div>
+              <div><strong>Cara Core Informática</strong> • desde 2010</div>
+              <div style="font-size:12px; color: var(--muted); margin-top: 4px;">Cliente bem informado = operação estável.</div>
+            </div>
+            <a href="../index.html">Voltar ao portal</a>
+          </div>
+        </div>
+      </footer>
     </div>
-  </main>
+  </div>
 
-  <footer class="py-10">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-      <div>
-        <span class="font-semibold text-slate-700">Cara Core Informática</span> • desde 2010
-        <div class="text-xs mt-1">Cliente bem informado = operação estável.</div>
-      </div>
-      <a href="../index.html" class="text-slate-700 font-semibold hover:underline">Voltar ao portal</a>
-    </div>
-  </footer>
+  <script src="assets/js/wiki.js"></script>
 </body>
 </html>
-

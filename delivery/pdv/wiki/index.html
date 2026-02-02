@@ -69,14 +69,14 @@
               <div class="hint">Mapa rápido</div>
             </div>
           </a>
-          <a class="js-nav-item" data-search="parceiros representantes contrato comissao" href="representantes.html">
+          <a class="js-nav-item" data-page="representantes" data-search="parceiros representantes contrato comissao" href="representantes.html">
             <i class="fas fa-handshake"></i>
             <div>
               <div class="label">Programa de Parceiros</div>
               <div class="hint">Transparência Radical</div>
             </div>
           </a>
-          <a class="js-nav-item" data-search="demo apresentacao rapida" href="demo-pdv.html">
+          <a class="js-nav-item" data-page="demo" data-search="demo apresentacao rapida" href="demo-pdv.html">
             <i class="fas fa-display"></i>
             <div>
               <div class="label">Demo estática (canal)</div>
@@ -228,44 +228,7 @@
     </div>
   </div>
 
-  <script>
-    (function () {
-      const shell = document.getElementById("wikiShell");
-      const openBtn = document.getElementById("wikiOpenSidebarBtn");
-      const backdrop = document.getElementById("wikiBackdrop");
-
-      function openSidebar() { shell.classList.add("is-sidebar-open"); }
-      function closeSidebar() { shell.classList.remove("is-sidebar-open"); }
-
-      if (openBtn) openBtn.addEventListener("click", () => {
-        if (shell.classList.contains("is-sidebar-open")) closeSidebar();
-        else openSidebar();
-      });
-      if (backdrop) backdrop.addEventListener("click", closeSidebar);
-
-      // Highlight active nav item (by page)
-      const page = document.body.getAttribute("data-wiki-page");
-      document.querySelectorAll(".js-nav-item[data-page]").forEach((a) => {
-        if (a.getAttribute("data-page") === page) a.classList.add("is-active");
-      });
-
-      // Search filter (sidebar + topics on this page)
-      const input = document.getElementById("wikiSearch");
-      const searchable = Array.from(document.querySelectorAll("[data-search]"));
-      function norm(s) { return String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""); }
-      function applyFilter(q) {
-        const qq = norm(q).trim();
-        searchable.forEach((el) => {
-          const hay = norm(el.getAttribute("data-search"));
-          const show = !qq || hay.includes(qq);
-          el.classList.toggle("hidden", !show);
-        });
-      }
-      if (input) {
-        input.addEventListener("input", () => applyFilter(input.value));
-      }
-    })();
-  </script>
+  <script src="assets/js/wiki.js"></script>
 </body>
 </html>
 

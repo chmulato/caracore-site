@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trilha do Estagiário/Suporte (v1.0.11): Erro 01, Erro 02, falha de SMTP e procedimento do botão de reportar ao suporte + logs." />
+  <title>Trilha do Suporte (L1) | Wiki Estrutural v1.0.11</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .brand-bg { background: linear-gradient(135deg, #0b1f3a 0%, #111827 55%, #0f766e 100%); }
+    .card { background: white; border: 1px solid #e5e7eb; border-radius: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.08); }
+    .callout-info { background: #e0f2fe; border-left: 4px solid #0284c7; }
+    .callout-warn { background: #fef3c7; border-left: 4px solid #f59e0b; }
+    .callout-ok { background: #d1fae5; border-left: 4px solid #10b981; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+  </style>
+</head>
+<body class="bg-slate-50">
+
+  <header class="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl brand-bg flex items-center justify-center">
+          <i class="fas fa-headset text-white"></i>
+        </div>
+        <div class="leading-tight">
+          <div class="font-bold text-slate-900">Trilha do Suporte (L1)</div>
+          <div class="text-xs text-slate-500">Wiki Estrutural (v1.0.11)</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-5 text-sm font-semibold text-slate-700">
+        <a href="#triagem" class="hover:text-slate-900">Triagem</a>
+        <a href="#erro01" class="hover:text-slate-900">Erro 01</a>
+        <a href="#erro02" class="hover:text-slate-900">Erro 02</a>
+        <a href="#smtp" class="hover:text-slate-900">SMTP</a>
+        <a href="#reportar" class="hover:text-slate-900">Reportar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+
+    <section class="card overflow-hidden">
+      <div class="brand-bg text-white px-6 sm:px-10 py-10">
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold border border-white/10">
+            <i class="fas fa-shield-halved text-emerald-200"></i>
+            Transparência Radical • Evidência • Procedimento
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold mt-5">Suporte L1 que resolve (sem achismo)</h1>
+          <p class="text-lg text-white/90 mt-4 leading-relaxed">
+            Esta trilha padroniza triagem, códigos de erro e coleta de evidências na v1.0.11.
+            O objetivo é transformar “deu erro” em ticket acionável em minutos.
+          </p>
+        </div>
+      </div>
+      <div class="px-6 sm:px-10 py-10">
+        <div class="grid md:grid-cols-3 gap-4">
+          <a href="#triagem" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+            <div class="font-extrabold text-slate-900"><i class="fas fa-stopwatch text-emerald-600 mr-2"></i>Triagem 60s</div>
+            <div class="text-sm text-slate-600 mt-1">O mínimo para começar certo.</div>
+          </a>
+          <a href="#reportar" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+            <div class="font-extrabold text-slate-900"><i class="fas fa-clipboard text-emerald-600 mr-2"></i>Botão Reportar</div>
+            <div class="text-sm text-slate-600 mt-1">Como usar (passo a passo).</div>
+          </a>
+          <a href="#logs" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+            <div class="font-extrabold text-slate-900"><i class="fas fa-file-lines text-emerald-600 mr-2"></i>Logs</div>
+            <div class="text-sm text-slate-600 mt-1">O que pedir e onde fica.</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="triagem" class="card p-6 sm:p-8">
+      <h2 class="text-2xl font-extrabold text-slate-900"><i class="fas fa-stopwatch text-slate-900 mr-2"></i>Triagem rápida (60 segundos)</h2>
+      <p class="text-slate-600 mt-2 max-w-3xl">Meta: reduzir ping-pong e coletar evidência mínima útil.</p>
+
+      <div class="mt-6 callout-ok rounded-xl p-5">
+        <div class="font-extrabold text-slate-900">Checklist L1</div>
+        <ol class="mt-3 text-sm text-slate-800 space-y-2 list-decimal pl-5">
+          <li><strong>Versão</strong>: confirmar (ex.: v1.0.11).</li>
+          <li><strong>Momento</strong>: falhou no início? no login? durante venda?</li>
+          <li><strong>Mensagem</strong>: pedir print completo.</li>
+          <li><strong>Diagnóstico</strong>: pedir o texto do botão “Copiar diagnóstico para suporte” (quando disponível).</li>
+          <li><strong>Log</strong>: se for falha de servidor local, pedir <span class="mono">%APPDATA%\caracore-pdv-desktop\server\server.log</span>.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="erro01" class="card p-6 sm:p-8">
+      <h2 class="text-2xl font-extrabold text-slate-900"><i class="fas fa-triangle-exclamation text-slate-900 mr-2"></i>Erro 01 — Servidor local não iniciou</h2>
+      <p class="text-slate-600 mt-2 max-w-3xl">
+        Padrão de atendimento para quando o Desktop não consegue iniciar o servidor local automaticamente.
+        Transparência: o usuário pode ver isso como “Servidor local não iniciou” ou fallback ao abrir.
+      </p>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <div class="font-extrabold text-slate-900">Sintomas</div>
+          <ul class="mt-3 text-sm text-slate-700 space-y-2">
+            <li class="flex items-start gap-2"><i class="fas fa-circle-xmark text-rose-600 mt-0.5"></i><span>Desktop não carrega o PDV e cai em fallback.</span></li>
+            <li class="flex items-start gap-2"><i class="fas fa-circle-xmark text-rose-600 mt-0.5"></i><span>Mensagem de servidor local não iniciado.</span></li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+          <div class="font-extrabold text-slate-900">O que pedir (evidência mínima)</div>
+          <ul class="mt-3 text-sm text-slate-700 space-y-2">
+            <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Diagnóstico do botão “Copiar diagnóstico para suporte” (se aparecer).</span></li>
+            <li class="flex items-start gap-2"><i class="fas fa-check text-emerald-600 mt-0.5"></i><span>Log do servidor: <span class="mono">%APPDATA%\caracore-pdv-desktop\server\server.log</span></span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-6 callout-info rounded-xl p-5">
+        <div class="font-extrabold text-slate-900">Resposta padrão L1 (sem tecnicismo)</div>
+        <p class="text-sm text-slate-800 mt-2">
+          “O sistema não conseguiu iniciar o servidor local automaticamente. Com o diagnóstico e o <span class="mono">server.log</span> nós orientamos a correção com precisão.”
+        </p>
+      </div>
+    </section>
+
+    <section id="erro02" class="card p-6 sm:p-8">
+      <h2 class="text-2xl font-extrabold text-slate-900"><i class="fas fa-lock text-slate-900 mr-2"></i>Erro 02 — Integridade (Estado Parcial)</h2>
+      <p class="text-slate-600 mt-2 max-w-3xl">
+        Este erro é proposital: o Desktop bloqueia a abertura quando detecta estado local inconsistente.
+        A mensagem costuma iniciar com “Erro 02: …”.
+      </p>
+
+      <div class="mt-6 callout-warn rounded-xl p-5">
+        <div class="font-extrabold text-slate-900">O que NÃO fazer</div>
+        <ul class="mt-3 text-sm text-slate-800 space-y-2">
+          <li class="flex items-start gap-2"><i class="fas fa-ban text-amber-700 mt-0.5"></i><span>Não pedir “apague tudo” como primeira resposta.</span></li>
+          <li class="flex items-start gap-2"><i class="fas fa-ban text-amber-700 mt-0.5"></i><span>Não tentar “adivinhar”. Erro 02 exige evidência (diagnóstico).</span></li>
+        </ul>
+      </div>
+
+      <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+        <div class="font-extrabold text-slate-900">Procedimento exato (L1)</div>
+        <ol class="mt-4 text-sm text-slate-700 space-y-2 list-decimal pl-5">
+          <li>Pedir ao cliente para abrir novamente o Desktop.</li>
+          <li>Quando a tela do erro aparecer, clicar em <strong>“Copiar diagnóstico para suporte”</strong>.</li>
+          <li>Colar o diagnóstico no WhatsApp do suporte.</li>
+          <li>Se solicitado, anexar também o <span class="mono">server.log</span> (ver seção logs).</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="smtp" class="card p-6 sm:p-8">
+      <h2 class="text-2xl font-extrabold text-slate-900"><i class="fas fa-envelope text-slate-900 mr-2"></i>Falha de SMTP (e-mail)</h2>
+      <p class="text-slate-600 mt-2 max-w-3xl">
+        Transparência: e-mail é “melhor esforço”. O sistema pode subir e operar mesmo com SMTP não configurado.
+        Rotinas que dependem de e-mail podem falhar (ex.: automações).
+      </p>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="rounded-2xl border border-slate-200 bg-white p-5">
+          <div class="font-extrabold text-slate-900">Sintomas típicos</div>
+          <ul class="mt-3 text-sm text-slate-700 space-y-2">
+            <li class="flex items-start gap-2"><i class="fas fa-circle-info text-sky-700 mt-0.5"></i><span>Mensagens/logs indicando “SMTP não configurado”.</span></li>
+            <li class="flex items-start gap-2"><i class="fas fa-circle-info text-sky-700 mt-0.5"></i><span>Falha ao enviar e-mail (recuperação/automação).</span></li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-5">
+          <div class="font-extrabold text-slate-900">Orientação L1</div>
+          <ol class="mt-3 text-sm text-slate-700 space-y-2 list-decimal pl-5">
+            <li>Confirmar se o cliente <strong>precisa</strong> do e-mail agora.</li>
+            <li>Se sim: orientar a configurar host/porta/usuário/senha SMTP no painel.</li>
+            <li>Se não: registrar como não bloqueante e encerrar com clareza.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="reportar" class="card p-6 sm:p-8">
+      <h2 class="text-2xl font-extrabold text-slate-900"><i class="fas fa-clipboard text-slate-900 mr-2"></i>Botão “Reportar ao Suporte” (procedimento)</h2>
+      <p class="text-slate-600 mt-2 max-w-3xl">
+        O Desktop possui um modal de suporte com ações padronizadas. Isso reduz tempo de diagnóstico.
+      </p>
+
+      <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+        <div class="font-extrabold text-slate-900">Botões que o cliente pode ver</div>
+        <ul class="mt-4 text-sm text-slate-700 space-y-2">
+          <li class="flex items-start gap-2"><i class="fas fa-copy text-emerald-600 mt-0.5"></i><span><strong>Copiar diagnóstico para suporte</strong> (o mais importante).</span></li>
+          <li class="flex items-start gap-2"><i class="fab fa-whatsapp text-emerald-600 mt-0.5"></i><span><strong>Contatar suporte (WhatsApp)</strong> (atalho).</span></li>
+          <li class="flex items-start gap-2"><i class="fas fa-folder-open text-emerald-600 mt-0.5"></i><span><strong>Abrir pasta de logs</strong> (para anexar arquivos).</span></li>
+        </ul>
+      </div>
+
+      <div class="mt-6 callout-ok rounded-xl p-5">
+        <div class="font-extrabold text-slate-900">Procedimento L1 (sem variação)</div>
+        <ol class="mt-3 text-sm text-slate-800 space-y-2 list-decimal pl-5">
+          <li>Mandar o cliente clicar em <strong>Copiar diagnóstico</strong>.</li>
+          <li>Mandar colar no WhatsApp do suporte.</li>
+          <li>Se precisar, pedir anexos (logs) conforme a seção abaixo.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="logs" class="card p-6 sm:p-8">
+      <h2 class="text-2xl font-extrabold text-slate-900"><i class="fas fa-file-lines text-slate-900 mr-2"></i>Logs (o que pedir e onde fica)</h2>
+      <p class="text-slate-600 mt-2 max-w-3xl">Padronize o pedido de logs para evitar “manda tudo” e reduzir fricção.</p>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-6">
+        <div class="rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="font-extrabold text-slate-900">Servidor embutido (Desktop)</div>
+          <p class="text-sm text-slate-700 mt-2">Quando o problema é “servidor local não iniciou” ou falha ao carregar o PDV.</p>
+          <div class="mt-3 rounded-xl bg-slate-50 border border-slate-200 p-4 text-sm text-slate-800">
+            <div class="font-semibold text-slate-900">Arquivo:</div>
+            <div class="mono mt-1">%APPDATA%\caracore-pdv-desktop\server\server.log</div>
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-6">
+          <div class="font-extrabold text-slate-900">Diagnóstico do Desktop (debug)</div>
+          <p class="text-sm text-slate-700 mt-2">Quando o problema é travamento/erro no Desktop e você precisa de contexto.</p>
+          <div class="mt-3 rounded-xl bg-slate-50 border border-slate-200 p-4 text-sm text-slate-800">
+            <div class="font-semibold text-slate-900">Arquivo (quando aplicável):</div>
+            <div class="mono mt-1">%LOCALAPPDATA%\CaraCorePDV\logs\debug_log.txt</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 callout-info rounded-xl p-5">
+        <div class="font-extrabold text-slate-900">Texto padrão para pedir evidência (copiar e colar)</div>
+        <p class="text-sm text-slate-800 mt-2">
+          “Por favor, envie um print da mensagem e cole o diagnóstico do botão ‘Copiar diagnóstico para suporte’.
+          Se for falha de inicialização, anexe também o log: <span class="mono">%APPDATA%\caracore-pdv-desktop\server\server.log</span>.”
+        </p>
+      </div>
+    </section>
+
+    <div class="flex flex-col sm:flex-row gap-3 justify-between">
+      <a href="trilha-cliente.html" class="inline-flex items-center gap-2 text-slate-700 font-semibold hover:underline">
+        <i class="fas fa-arrow-left"></i> Voltar à Trilha do Cliente
+      </a>
+      <a href="trilha-socio.html" class="inline-flex items-center gap-2 text-emerald-700 font-semibold hover:underline">
+        Ir para Trilha do Sócio/Representante <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </main>
+
+  <footer class="py-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-500 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <span class="font-semibold text-slate-700">Cara Core Informática</span> • desde 2010
+        <div class="text-xs mt-1">Suporte rápido é suporte com evidência.</div>
+      </div>
+      <a href="../index.html" class="text-slate-700 font-semibold hover:underline">Voltar ao portal</a>
+    </div>
+  </footer>
+</body>
+</html>
+

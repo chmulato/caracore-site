@@ -100,6 +100,13 @@
             </p>
         </div>
 
+        <div id="infra-externa" class="sol-card">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4"><i class="fas fa-plug text-amber-600 me-2"></i>Infraestruturas externas (PIX e SEFAZ)</h2>
+            <p class="text-gray-700 leading-relaxed">
+                O PDV conecta-se a serviços que ficam fora do controle da Cara Core: <strong>gateways de pagamento (PIX)</strong> e <strong>Web Services da SEFAZ</strong> (emissão NFC-e, homologação e produção). Em caso de timeout ou indisponibilidade da SEFAZ, o sistema detecta, aciona a contingência e grava as notas em fila local (SQLite); quando a conexão volta, o envio é refeito em lote, sem duplicar. A integração PIX segue modelo de plugin (gateway configurável); a documentação técnica (PLUGINS_PIX_SEFAZ.md no repositório) descreve o que plugar e os testes automatizados do módulo fiscal.
+            </p>
+        </div>
+        
         <div id="sms-premium-plus" class="sol-card">
             <h2 class="text-2xl font-bold text-gray-900 mb-4"><i class="fas fa-sms text-red-600 me-2"></i>Premium+ (Android + SMS com LGPD)</h2>
             <p class="text-gray-700 leading-relaxed">
@@ -126,7 +133,7 @@
     
     <footer class="bg-gray-900 text-gray-300 py-8 mt-12">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-sm text-gray-400">&copy; 2024–2025 Cara Core Informática. Todos os direitos reservados.</p>
+            <p class="text-sm text-gray-400">&copy; 2024–2026 Cara Core Informática. Todos os direitos reservados.</p>
         </div>
     </footer>
     

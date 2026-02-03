@@ -1,6 +1,6 @@
 /**
  * Wiki Estrutural CaraCore-PDV — Sidebar, busca e TOC
- * v1.0.11
+ * v1.0.13
  */
 (function () {
   "use strict";

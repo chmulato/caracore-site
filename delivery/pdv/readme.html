@@ -193,6 +193,10 @@
                             <td><strong>Recuperação de senha</strong></td>
                             <td>E-mail, WhatsApp e Telegram. No Premium, inclusão de canal alternativo ao celular do operador quando configurado.</td>
                         </tr>
+                        <tr>
+                            <td><strong>Infraestruturas externas (PIX e SEFAZ)</strong></td>
+                            <td>Integração com gateways de pagamento (PIX) e Web Services da SEFAZ (emissão NFC-e e contingência). O PDV não controla a disponibilidade desses serviços; a documentação técnica (o que plugar, timeout, fila de contingência e testes) está no repositório (PLUGINS_PIX_SEFAZ.md).</td>
+                        </tr>
                         <tr style="background-color: #f3f4f6;">
                             <td><strong>Opção simplificada (um único PDV)</strong></td>
                             <td>Perfil pensado para um único ponto de venda: armazenamento local em arquivo único, sem servidor de banco; carga inicial automática. Ideal para pequenos e médios que valorizam simplicidade e Blindagem de Dados Local.</td>
@@ -302,6 +306,11 @@
             <p class="text-gray-700 leading-relaxed mb-4">
                 Canais disponíveis: e-mail, WhatsApp e Telegram. No Premium, quando configurado, a nova senha também pode ser enviada ao celular do operador por canal alternativo.
             </p>
+            
+            <h3 class="text-2xl font-semibold text-gray-800 mb-4 mt-8">Infraestruturas externas (PIX e SEFAZ)</h3>
+            <p class="text-gray-700 leading-relaxed mb-4">
+                O CaraCore-PDV integra-se a serviços externos: <strong>gateways de pagamento (PIX)</strong> e <strong>Web Services da SEFAZ</strong> (emissão NFC-e e contingência). A disponibilidade dessas infraestruturas não é controlada pelo PDV; o sistema detecta timeout e indisponibilidade, aciona contingência quando necessário e mantém fila local para retry. A documentação técnica sobre o que plugar, como configurar e como testar (incluindo testes automatizados da fila de contingência) está no repositório do projeto (PLUGINS_PIX_SEFAZ.md).
+            </p>
         </div>
         
         <!-- Implantação e Suporte -->
@@ -393,7 +402,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-800 pt-8 text-center">
-                <p class="text-sm text-gray-400">&copy; 2024 Cara Core Informática. Todos os direitos reservados.</p>
+                <p class="text-sm text-gray-400">&copy; 2024–2026 Cara Core Informática. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>

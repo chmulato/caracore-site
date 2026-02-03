@@ -1,4 +1,4 @@
-/* CaraCore-PDV Wiki (v1.0.11) — Unified style
+/* CaraCore-PDV Wiki (v1.0.13) — Unified style
    Goals:
    - Persistent sidebar shell (left)
    - Optional right TOC
@@ -246,6 +246,7 @@ body {
 .profile-blue .icon { background: var(--blue-50); border-color: #bfdbfe; color: #1d4ed8; }
 .profile-amber .icon { background: var(--amber-50); border-color: #fde68a; color: #92400e; }
 .profile-green .icon { background: var(--green-50); border-color: #a7f3d0; color: #065f46; }
+.profile-indigo .icon { background: #e0e7ff; border-color: #c7d2fe; color: #4338ca; }
 
 /* TOC */
 .wiki-toc {

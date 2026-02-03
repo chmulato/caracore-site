@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trilha do Contador (v1.0.13): Gestão e Resiliência — localização de arquivos, fechamento de mês, Reforma 2026 (IBS/CBS), prova de integridade. Parte fiscal (SEFAZ) em homologação." />
+  <title>Trilha do Contador | Wiki Estrutural v1.0.13</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/wiki-style.css">
+</head>
+<body data-wiki-page="contador">
+  <div class="wiki-shell" id="wikiShell">
+    <div class="wiki-backdrop" id="wikiBackdrop" aria-hidden="true"></div>
+
+    <aside class="wiki-sidebar" aria-label="Navegação da Wiki">
+      <div class="wiki-side-inner">
+        <div class="wiki-side-brand">
+          <div class="wiki-iconbox"><i class="fas fa-book"></i></div>
+          <div>
+            <div class="name">Wiki CaraCore-PDV</div>
+            <div class="ver">Estrutural • v1.0.13</div>
+          </div>
+        </div>
+
+        <div class="wiki-search" role="search">
+          <i class="fas fa-magnifying-glass" style="color: var(--muted);"></i>
+          <input id="wikiSearch" type="search" placeholder="Buscar na Wiki (ex: fechamento, IBS, integridade)" autocomplete="off" />
+        </div>
+
+        <div class="wiki-side-section-title">Trilhas</div>
+        <nav class="wiki-nav" aria-label="Trilhas">
+          <a class="js-nav-item" data-page="cliente" data-search="cliente usar pdv handshake offline primeira venda mensagens" href="trilha-cliente.html">
+            <i class="fas fa-user"></i>
+            <div>
+              <div class="label">Cliente</div>
+              <div class="hint">Quero usar o PDV</div>
+            </div>
+            <span class="pill">Azul</span>
+          </a>
+          <a class="js-nav-item" data-page="suporte" data-search="suporte erro 01 erro 02 smtp reportar logs diagnostico" href="trilha-suporte.html">
+            <i class="fas fa-headset"></i>
+            <div>
+              <div class="label">Suporte (L1)</div>
+              <div class="hint">Preciso resolver um erro</div>
+            </div>
+            <span class="pill">Amarelo</span>
+          </a>
+          <a class="js-nav-item" data-page="contador" data-search="contador gestão resiliência fechamento relatorio fiscal reforma ibs cbs xml integridade sped homologação" href="trilha-contador.html">
+            <i class="fas fa-calculator"></i>
+            <div>
+              <div class="label">Contador</div>
+              <div class="hint">Auditar e exportar dados fiscais</div>
+            </div>
+            <span class="pill">Roxo</span>
+          </a>
+          <a class="js-nav-item" data-page="socio" data-search="socio representante vender reforma tributaria 2026 pix callback upsell" href="trilha-socio.html">
+            <i class="fas fa-user-tie"></i>
+            <div>
+              <div class="label">Sócio / Representante</div>
+              <div class="hint">Quero vender e expandir</div>
+            </div>
+            <span class="pill">Verde</span>
+          </a>
+        </nav>
+
+        <div class="wiki-side-section-title">Atalhos</div>
+        <nav class="wiki-nav" aria-label="Atalhos">
+          <a class="js-nav-item" data-page="home" data-search="home inicio wiki estrutural" href="index.html">
+            <i class="fas fa-house"></i>
+            <div>
+              <div class="label">Home da Wiki</div>
+              <div class="hint">Mapa rápido</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-page="representantes" data-search="parceiros representantes contrato comissao" href="representantes.html">
+            <i class="fas fa-handshake"></i>
+            <div>
+              <div class="label">Programa de Parceiros</div>
+              <div class="hint">Transparência Radical</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-page="guia-vendas" data-search="guia vendas representante abordagem whatsapp objeções vídeo checklist demonstração" href="guia-vendas-representante.html">
+            <i class="fas fa-bullhorn"></i>
+            <div>
+              <div class="label">Guia de Abordagem</div>
+              <div class="hint">WhatsApp, objeções, vídeo, checklist</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-page="demo" data-search="demo apresentacao rapida" href="demo-pdv.html">
+            <i class="fas fa-display"></i>
+            <div>
+              <div class="label">Demo estática (canal)</div>
+              <div class="hint">Tour visual em 60s</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="download instalador degustacao 100 vendas" href="../download.html">
+            <i class="fas fa-download"></i>
+            <div>
+              <div class="label">Download (Degustação)</div>
+              <div class="hint">100 vendas completas</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="wiki fiscal reforma tributaria cbs ibs" href="../wiki-fiscal.html">
+            <i class="fas fa-scale-balanced"></i>
+            <div>
+              <div class="label">Wiki Fiscal</div>
+              <div class="hint">Reforma 2026–2033</div>
+            </div>
+          </a>
+          <a class="js-nav-item" data-search="portal" href="../index.html">
+            <i class="fas fa-arrow-up-right-from-square"></i>
+            <div>
+              <div class="label">Voltar ao portal</div>
+              <div class="hint">Página inicial</div>
+            </div>
+          </a>
+        </nav>
+      </div>
+    </aside>
+
+    <div class="wiki-content">
+      <header class="wiki-topbar">
+        <div class="wiki-topbar-title">
+          <button class="wiki-btn" id="wikiOpenSidebarBtn" type="button" aria-label="Abrir menu">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="wiki-iconbox"><i class="fas fa-calculator"></i></div>
+          <div class="min-w-0">
+            <div class="wiki-title">Trilha do Contador</div>
+            <div class="wiki-sub">Auditoria e exportação de dados fiscais • v1.0.13</div>
+          </div>
+        </div>
+        <a class="wiki-btn wiki-btn-primary" href="../wiki-fiscal.html">
+          <i class="fas fa-scale-balanced"></i> Wiki Fiscal
+        </a>
+      </header>
+
+      <main class="wiki-container">
+        <div class="wiki-grid">
+          <div class="wiki-main-content">
+            <div class="wiki-breadcrumbs" aria-label="Breadcrumbs">
+              <a href="../index.html">Home</a>
+              <span class="sep">›</span>
+              <a href="index.html">Wiki</a>
+              <span class="sep">›</span>
+              <span class="current">Trilha do Contador</span>
+            </div>
+
+            <section class="card overflow-hidden" style="margin-top: 14px;">
+              <div class="brand-bg text-white px-6 sm:px-10 py-10">
+                <div class="max-w-3xl">
+                  <div class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold border border-white/10">
+                    <i class="fas fa-file-invoice-dollar text-indigo-200"></i>
+                    TaxTech • Sem suporte técnico
+                  </div>
+                  <h1 class="text-3xl sm:text-4xl font-extrabold mt-5">Auditar e exportar dados fiscais</h1>
+                  <p class="text-lg text-white/90 mt-4 leading-relaxed">
+                    Guia prático para o contador: a v1.0.13 está focada em Gestão e Resiliência (relatórios, prova de integridade, IBS/CBS). Localização de arquivos, fechamento de mês e pacote para escritório. A parte fiscal (emissão SEFAZ) está em homologação.
+                  </p>
+                </div>
+              </div>
+
+              <div class="px-6 sm:px-10 py-10">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <a href="#localizacao-xml" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+                    <div class="font-extrabold text-slate-900"><i class="fas fa-folder-tree text-indigo-600 mr-2"></i>Localização dos arquivos</div>
+                    <div class="text-sm text-slate-600 mt-1">Onde estão os dados fiscais no Windows.</div>
+                  </a>
+                  <a href="#fechamento-mes" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+                    <div class="font-extrabold text-slate-900"><i class="fas fa-file-pdf text-indigo-600 mr-2"></i>Relatório de fechamento</div>
+                    <div class="text-sm text-slate-600 mt-1">Faturamento bruto, impostos e meios de pagamento.</div>
+                  </a>
+                  <a href="#reforma-2026" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+                    <div class="font-extrabold text-slate-900"><i class="fas fa-scale-balanced text-indigo-600 mr-2"></i>Conformidade Reforma 2026</div>
+                    <div class="text-sm text-slate-600 mt-1">IBS/CBS e transição tributária.</div>
+                  </a>
+                  <a href="#integridade" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+                    <div class="font-extrabold text-slate-900"><i class="fas fa-shield-halved text-indigo-600 mr-2"></i>Prova de integridade</div>
+                    <div class="text-sm text-slate-600 mt-1">Validar que o banco não foi alterado.</div>
+                  </a>
+                  <a href="#download-contador" class="rounded-2xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
+                    <div class="font-extrabold text-slate-900"><i class="fas fa-download text-indigo-600 mr-2"></i>Área do contador</div>
+                    <div class="text-sm text-slate-600 mt-1">Pacote mensal e portal de suporte.</div>
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            <section id="localizacao-xml" class="card p-6 sm:p-8">
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                <i class="fas fa-folder-tree text-slate-900 mr-2"></i>
+                Localização dos arquivos fiscais (Windows)
+              </h2>
+              <p class="text-slate-600 mt-2 max-w-3xl">
+                Na <strong>v1.0.13</strong> (foco em Gestão e Resiliência) o CaraCore-PDV <strong>não emite XML de NFC-e/NF-e</strong> à SEFAZ — a integração fiscal está em homologação. O cupom gerado é <strong>“NOTA SEM VALOR FISCAL”</strong> (PDF sob demanda). Os dados auditáveis ficam no <strong>banco local (SQLite)</strong> e nos relatórios exportados em PDF.
+              </p>
+
+              <div class="mt-4 callout-warn rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Escopo da versão atual (v1.0.13)</div>
+                <p class="text-sm text-slate-800 mt-2">
+                  A v1.0.13 está focada em <strong>Gestão e Resiliência</strong>: operação offline, relatórios de fechamento, prova de integridade, contingência e cálculos IBS/CBS para transparência. A <strong>parte fiscal (emissão NFC-e/NF-e junto à SEFAZ) está em homologação</strong> e não faz parte desta release. Os documentos gerados são para uso interno e conciliação, sem substituir obrigações fiscais eletrônicas.
+                </p>
+              </div>
+              <div class="mt-6 callout-info rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Onde acessar no Windows (Explorador de arquivos)</div>
+                <ul class="mt-3 text-sm text-slate-800 space-y-2">
+                  <li><strong>Instalação padrão (pasta da aplicação):</strong> os arquivos do banco ficam na pasta <code class="px-1.5 py-0.5 bg-slate-100 rounded">data</code> no mesmo diretório em que o PDV foi instalado. Exemplo: <code class="px-1.5 py-0.5 bg-slate-100 rounded">C:\CaracorePDV\data\</code>.</li>
+                  <li><strong>Versão Desktop (Electron):</strong> o diretório de dados do usuário pode estar em <code class="px-1.5 py-0.5 bg-slate-100 rounded">%USERPROFILE%\.caracore-pdv</code> ou na pasta de dados do aplicativo (varia conforme o instalador). O lojista ou o suporte pode confirmar o caminho na tela de backup/restauração do Centro de Segurança.</li>
+                </ul>
+              </div>
+
+              <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+                <div class="font-extrabold text-slate-900">Arquivos na pasta <code>data</code></div>
+                <table class="mt-4 w-full text-sm border border-slate-200 rounded-lg overflow-hidden">
+                  <thead class="bg-slate-100">
+                    <tr>
+                      <th class="text-left p-3 border-b border-slate-200">Arquivo</th>
+                      <th class="text-left p-3 border-b border-slate-200">Finalidade</th>
+                    </tr>
+                  </thead>
+                  <tbody class="text-slate-700">
+                    <tr><td class="p-3 border-b border-slate-100"><code>caracore-pdv.db</code></td><td class="p-3 border-b border-slate-100">Banco principal: vendas, pagamentos, clientes, produtos, lojas. Regime de caixa (vendas pelo momento do pagamento).</td></tr>
+                    <tr><td class="p-3 border-b border-slate-100"><code>caracore-pdv-audit.db</code></td><td class="p-3 border-b border-slate-100">Log de auditoria de tentativas de pagamento (venda_id, valor, sucesso, motivo_falha, created_at).</td></tr>
+                    <tr><td class="p-3"><code>caracore-pdv-contingency.db</code></td><td class="p-3">Modo contingência (opcional): vendas salvas localmente quando o banco central está indisponível.</td></tr>
+                  </tbody>
+                </table>
+                <p class="text-xs text-slate-500 mt-3">
+                  Quando houver módulo de emissão de NFC-e/NF-e, os XMLs poderão ser armazenados em subpasta configurável (ex.: <code>data/nfce</code> ou caminho definido na configuração fiscal). Consulte a documentação da versão em que o recurso for disponibilizado.
+                </p>
+              </div>
+
+              <div class="mt-6 callout-warn rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Importante para o escritório</div>
+                <p class="text-sm text-slate-800 mt-2">
+                  O sistema não substitui a emissão de documentos fiscais eletrônicos obrigatórios pela SEFAZ. O lojista deve manter os demais cumprimentos legais (SPED, EFD, regime tributário aplicável). Os relatórios do PDV servem para <strong>conciliação e auditoria interna</strong>.
+                </p>
+              </div>
+            </section>
+
+            <section id="fechamento-mes" class="card p-6 sm:p-8">
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                <i class="fas fa-file-pdf text-slate-900 mr-2"></i>
+                Relatório de fechamento de mês
+              </h2>
+              <p class="text-slate-600 mt-2 max-w-3xl">
+                O contador pode obter o <strong>resumo consolidado do período</strong> (faturamento bruto, impostos retidos e, quando disponível, vendas por meio de pagamento) sem depender do suporte técnico.
+              </p>
+
+              <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+                <div class="font-extrabold text-slate-900">1. Resumo mensal em PDF (Dashboard)</div>
+                <p class="text-sm text-slate-700 mt-2">Relatório com <strong>Total de vendas do período</strong>, <strong>Total de impostos calculados</strong> (CBS + IBS) e <strong>Valor líquido</strong>. Ideal para fechamento mensal e envio ao escritório.</p>
+                <ol class="mt-4 text-sm text-slate-700 space-y-2 list-decimal pl-5">
+                  <li>O lojista (ou contador com acesso) acessa o <strong>Dashboard</strong> no menu do PDV.</li>
+                  <li>Seleciona a <strong>loja</strong> e o <strong>período</strong> (data inicial e data final).</li>
+                  <li>Clica em <strong>“Exportar PDF para o contador”</strong>.</li>
+                  <li>O navegador baixa o arquivo <code>resumo-mensal-AAAA-MM-DD-AAAA-MM-DD.pdf</code>.</li>
+                </ol>
+                <p class="text-xs text-slate-500 mt-3">URL direta (substitua <code>lojaId</code>, <code>inicio</code> e <code>fim</code> no formato yyyy-MM-dd): <br><code class="block mt-1 break-all">/dashboard/api/resumo-mensal/exportar-pdf?lojaId=1&inicio=2026-01-01&fim=2026-01-31</code></p>
+              </div>
+
+              <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+                <div class="font-extrabold text-slate-900">2. Vendas por período (Dinheiro, Cartão, PIX)</div>
+                <p class="text-sm text-slate-700 mt-2">Relatório detalhado por <strong>meio de pagamento</strong>: Dinheiro, Débito, Crédito e Outros (PIX e demais). Útil para conciliação bancária e regime de caixa.</p>
+                <ol class="mt-4 text-sm text-slate-700 space-y-2 list-decimal pl-5">
+                  <li>Acesse o menu <strong>Relatórios</strong> (ou a tela de pesquisa de <strong>Lojas</strong>).</li>
+                  <li>Selecione a loja desejada e escolha <strong>“Vendas da loja”</strong>.</li>
+                  <li>Informe <strong>Data inicial</strong> e <strong>Data final</strong> do período.</li>
+                  <li>Gere o PDF. O relatório exibe totais por forma de pagamento (Dinheiro, Débito, Crédito, Outros) e total geral.</li>
+                </ol>
+                <p class="text-xs text-slate-500 mt-3">Disponível via <strong>Relatórios → Loja → Vendas por período</strong> (POST com <code>dataInicial</code> e <code>dataFinal</code> em dd/MM/yyyy).</p>
+              </div>
+
+              <div class="mt-6 callout-ok rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Termos contábeis</div>
+                <ul class="mt-3 text-sm text-slate-800 space-y-1">
+                  <li><strong>Faturamento bruto:</strong> soma dos totais das vendas no período (base de cálculo).</li>
+                  <li><strong>Impostos retidos/calculados:</strong> CBS e IBS já calculados pelo sistema (Reforma 2026).</li>
+                  <li><strong>Regime de caixa:</strong> as vendas são consideradas pela data do pagamento/finalização no PDV.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section id="reforma-2026" class="card p-6 sm:p-8">
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                <i class="fas fa-scale-balanced text-slate-900 mr-2"></i>
+                Conformidade Reforma Tributária 2026 (IBS/CBS)
+              </h2>
+              <p class="text-slate-600 mt-2 max-w-3xl">
+                Na <strong>v1.0.13</strong> o sistema já trata a separação <strong>IBS</strong> (Imposto sobre Bens e Serviços) e <strong>CBS</strong> (Contribuição sobre Bens e Serviços), alinhado ao cronograma de transição da EC 132 (2026–2033), para facilitar a futura transição no escritório contábil.
+              </p>
+
+              <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+                <div class="font-extrabold text-slate-900">Fórmula e alíquotas</div>
+                <ul class="mt-3 text-sm text-slate-700 space-y-2">
+                  <li><strong>Fórmula “por fora” (não cumulativa):</strong> Valor do Imposto = Base × Alíquota / (100 − Alíquota).</li>
+                  <li><strong>Alíquotas por ano (padrão):</strong> 2026 — CBS 0,9%, IBS 0,1%; 2027 — CBS 12%, IBS 12%; 2028–2033 — transição gradual até 15%.</li>
+                  <li><strong>Configuração:</strong> o lojista ou administrador pode sobrescrever alíquotas por ano na configuração fiscal (ex.: <code>AliquotaReformaTributaria</code>).</li>
+                </ul>
+              </div>
+
+              <div class="mt-6 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                <div class="font-extrabold text-slate-900">Rastreabilidade na venda</div>
+                <p class="text-sm text-slate-700 mt-2">Cada venda gravada no banco armazena:</p>
+                <ul class="mt-2 text-sm text-slate-700 space-y-1 list-disc pl-5">
+                  <li><code>aliquotaCbsUtilizada</code> e <code>aliquotaIbsUtilizada</code> — alíquotas efetivamente aplicadas.</li>
+                  <li><code>anoFiscal</code> — ano utilizado para seleção das alíquotas.</li>
+                  <li><code>versaoTabelaAliquotas</code> — indicação de tabela padrão ou contingência (ex.: <code>CONTINGENCIA_2026</code>).</li>
+                </ul>
+                <p class="text-xs text-slate-500 mt-3">Isso permite ao escritório auditar a base de cálculo e a origem dos tributos (SPED, EFD, livros fiscais).</p>
+              </div>
+
+              <div class="mt-6 callout-info rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Contingência fiscal</div>
+                <p class="text-sm text-slate-800 mt-2">Quando o NCM não é encontrado na tabela local ou na API da Receita, o sistema aplica <strong>alíquota única de contingência (26,5%)</strong> e registra o fato no log fiscal e no campo <code>versaoTabelaAliquotas</code>. O contador pode identificar essas operações para revisão ou retificação.</p>
+              </div>
+            </section>
+
+            <section id="integridade" class="card p-6 sm:p-8">
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                <i class="fas fa-shield-halved text-slate-900 mr-2"></i>
+                Exportação de logs e prova de integridade
+              </h2>
+              <p class="text-slate-600 mt-2 max-w-3xl">
+                O contador pode validar que as vendas registradas no SQLite <strong>não sofreram manipulação externa</strong> (prova de integridade), utilizando o comando nativo do SQLite e os arquivos de auditoria.
+              </p>
+
+              <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+                <div class="font-extrabold text-slate-900">1. Integridade do banco principal</div>
+                <p class="text-sm text-slate-700 mt-2">No Windows, abra o <strong>Prompt de comando</strong> ou PowerShell e navegue até a pasta onde está o arquivo <code>caracore-pdv.db</code> (ex.: <code>data</code> dentro da instalação do PDV). Execute:</p>
+                <pre class="mt-3 p-4 bg-slate-800 text-slate-100 rounded-lg text-sm overflow-x-auto"><code>sqlite3 caracore-pdv.db "PRAGMA integrity_check;"</code></pre>
+                <p class="text-sm text-slate-700 mt-2">Resposta esperada: <code>ok</code>. Qualquer outra saída indica possível corrupção ou alteração indevida do arquivo.</p>
+                <p class="text-xs text-slate-500 mt-2">Se <code>sqlite3</code> não estiver instalado, baixe-o em <a href="https://www.sqlite.org/download.html" target="_blank" rel="noopener" class="text-indigo-600 hover:underline">sqlite.org</a> ou use ferramentas gráficas (ex.: DB Browser for SQLite) que ofereçam “Integrity Check”.</p>
+              </div>
+
+              <div class="mt-6 rounded-2xl border border-slate-200 bg-white p-6">
+                <div class="font-extrabold text-slate-900">2. Banco de auditoria de pagamentos</div>
+                <p class="text-sm text-slate-700 mt-2">O arquivo <code>caracore-pdv-audit.db</code> contém o log de <strong>tentativas de pagamento</strong> (venda_id, valor, sucesso, motivo_falha, created_at). Para exportar em formato texto (CSV) para planilha:</p>
+                <pre class="mt-3 p-4 bg-slate-800 text-slate-100 rounded-lg text-sm overflow-x-auto"><code>sqlite3 -header -csv caracore-pdv-audit.db "SELECT * FROM pagamento_audit_log ORDER BY created_at;" &gt; auditoria_pagamentos.csv</code></pre>
+                <p class="text-xs text-slate-500 mt-2">O contador pode cruzar <code>venda_id</code> com a tabela de vendas no banco principal para conciliação.</p>
+              </div>
+
+              <div class="mt-6 callout-ok rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Proteções do sistema</div>
+                <ul class="mt-3 text-sm text-slate-800 space-y-2">
+                  <li>O próprio PDV executa <strong>PRAGMA integrity_check</strong> ao iniciar; em falha, não sobe e pode exibir <strong>Erro 02 (Estado Parcial)</strong>.</li>
+                  <li>Na versão Desktop (Electron), alterações em arquivos do aplicativo ou do banco podem ser detectadas (hash do app, cabeçalho do SQLite), bloqueando a abertura.</li>
+                </ul>
+              </div>
+            </section>
+
+            <section id="download-contador" class="card p-6 sm:p-8">
+              <h2 class="text-2xl font-extrabold text-slate-900">
+                <i class="fas fa-download text-slate-900 mr-2"></i>
+                Área de download do contador
+              </h2>
+              <p class="text-slate-600 mt-2 max-w-3xl">
+                Quando o <strong>portal de suporte</strong> ou a <strong>área do contador</strong> estiver disponível para o seu cliente, o lojista poderá gerar ou baixar o <strong>Pacote Mensal</strong> (relatórios em PDF, eventualmente XMLs quando houver emissão de NFC-e/NF-e) diretamente pelo portal, sem precisar acessar o PDV.
+              </p>
+
+              <div class="mt-6 callout-info rounded-xl p-5">
+                <div class="font-extrabold text-slate-900">Como proceder hoje (v1.0.13 — Gestão e Resiliência)</div>
+                <ul class="mt-3 text-sm text-slate-800 space-y-2">
+                  <li><strong>Relatórios:</strong> utilizar o <strong>“Exportar PDF para o contador”</strong> no Dashboard e o relatório <strong>“Vendas por período”</strong> no menu Relatórios, conforme descrito na seção <a href="#fechamento-mes" class="text-indigo-600 font-semibold hover:underline">Relatório de fechamento de mês</a>.</li>
+                  <li><strong>Backup do banco:</strong> o lojista pode fazer cópia da pasta <code>data</code> (ou do arquivo <code>caracore-pdv.db</code>) e enviar ao escritório em canal seguro, para análise offline ou importação em ferramentas de auditoria.</li>
+                  <li><strong>Pacote mensal centralizado:</strong> quando a funcionalidade de “Pacote Mensal” no portal estiver implementada, as instruções de acesso serão publicadas nesta trilha e no portal. O contador poderá baixar o pacote mediante autenticação do lojista ou vínculo contratual.</li>
+                </ul>
+              </div>
+
+              <p class="text-sm text-slate-600 mt-4">
+                Em caso de dúvida sobre disponibilidade da área do contador para o seu cliente, consulte o <strong>suporte Cara Core</strong> ou a página de <strong>Download / Degustação</strong> do site, onde constam os canais de contato.
+              </p>
+            </section>
+
+            <div class="flex flex-col sm:flex-row gap-3 justify-between" style="margin-top: 24px;">
+              <a href="index.html" class="inline-flex items-center gap-2 text-slate-700 font-semibold hover:underline">
+                <i class="fas fa-arrow-left"></i> Voltar à Wiki Estrutural
+              </a>
+              <a href="../wiki-fiscal.html" class="inline-flex items-center gap-2 text-indigo-700 font-semibold hover:underline">
+                Wiki Fiscal (Reforma 2026) <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <aside class="wiki-toc" id="wikiToc" aria-label="Nesta página"></aside>
+        </div>
+      </main>
+
+      <footer class="wiki-footer">
+        <div class="wiki-container" style="padding-top: 0;">
+          <div style="display:flex; gap:12px; justify-content:space-between; align-items:flex-start; flex-wrap:wrap;">
+            <div>
+              <div><strong>Cara Core Informática</strong> • desde 2010</div>
+              <div style="font-size:12px; color: var(--muted); margin-top: 4px;">Trilha do Contador • v1.0.13 — Gestão e Resiliência; parte fiscal em homologação.</div>
+            </div>
+            <a href="../index.html">Voltar ao portal</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="assets/js/wiki.js"></script>
+</body>
+</html>

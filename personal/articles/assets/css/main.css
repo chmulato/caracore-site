@@ -351,6 +351,15 @@ body {
     color: var(--secondary-color);
 }
 
+.footer .disclaimer {
+    max-width: 720px;
+    margin: 0 auto 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.45;
+    color: var(--text-light);
+    opacity: 0.9;
+}
+
 /* Filtros de Busca */
 .filters-section {
     padding: 2rem 0;

@@ -1,0 +1,297 @@
+ARTIGOS DO BLOG - PARA REVISAO NO LINKEDIN
+Periodo: 21/09/2025 a 31/08/2026
+Enumeracao em ordem cronologica (sem emojis)
+---
+Fonte: titulo e meta description de cada artigo.
+Atualize os textos no LinkedIn conforme esta lista.
+
+================================================================================
+
+1.
+Data: 21/09/2025
+Titulo: Hub De Integracao De APIs Para Varejo e Delivery Uma Visao Pratica Em Java
+Descricao: Hub de Integracao de APIs para Varejo e Delivery - uma visao pratica em Java
+
+--------------------------------------------------------------------------------
+
+2.
+Data: 23/09/2025
+Titulo: O Novo Petroleo: A Inteligencia Artificial como Commodity Geopolitica
+Descricao: Como o poder computacional e a IA se tornam commodities estrategicas, redefinindo infraestrutura, soberania digital e a geopolitica dos dados.
+
+--------------------------------------------------------------------------------
+
+3.
+Data: 28/09/2025
+Titulo: Hub Central de Pedidos: Solucao de Integracao para E-commerce
+Descricao: Plataforma unificada que centraliza pedidos de multiplos marketplaces (Shopee, Mercado Livre, Amazon) em uma unica interface eficiente.
+
+--------------------------------------------------------------------------------
+
+4.
+Data: 05/10/2025
+Titulo: A Evolucao do JavaEE para Jakarta EE: Impacto em Sistemas Bancarios e de Varejo
+Descricao: Historia do JavaEE para Jakarta EE e seu uso em sistemas bancarios e de varejo
+
+--------------------------------------------------------------------------------
+
+5.
+Data: 12/10/2025
+Titulo: Hub Town: de uma segunda-feira caotica a uma arquitetura confiavel
+Descricao: Arquitetura do Hub Town: ingestao resiliente, leitura consistente, KPIs confiaveis.
+
+--------------------------------------------------------------------------------
+
+6.
+Data: 16/10/2025
+Titulo: JAX-RS, JAX-WS e JNDI: Fundamentos da Integracao no Jakarta EE
+Descricao: Como integrar sistemas legados e modernos com JAX-RS, JAX-WS e JNDI no Jakarta EE: conceitos, exemplos e melhores praticas.
+
+--------------------------------------------------------------------------------
+
+7.
+Data: 19/10/2025
+Titulo: Modernizacao dirigindo o legado: REST sobre SOAP com baixo atrito
+Descricao: Como construir uma fachada REST estavel sobre um backend SOAP com baixo atrito, mock controlado e observabilidade desde o dia zero.
+
+--------------------------------------------------------------------------------
+
+8.
+Data: 26/10/2025
+Titulo: Do codigo ao valor em minutos: automacao que acelera entregas e reduz riscos
+Descricao: Automacao do build ao login com Python, Jakarta EE, Tomcat e WildFly para reduzir atrito, ganhar previsibilidade e acelerar entregas.
+
+--------------------------------------------------------------------------------
+
+9.
+Data: 03/11/2025
+Titulo: O impacto do analfabetismo matematico no controle das despesas familiares: uma analise em 10 categorias
+Descricao: Como a falta de nocoes matematicas basicas afeta o orcamento familiar. Uma analise pratica de 10 categorias de despesas em tres perfis: familia pobre, classe media e rica.
+
+--------------------------------------------------------------------------------
+
+10.
+Data: 10/11/2025
+Titulo: O Dia em que Nossa Empresa Quase Parou: Uma Licao sobre API Gateway
+Descricao: A historia real de como uma empresa quase parou por problemas de comunicacao entre sistemas e como uma API Gateway salvou o dia. Um guia pratico para executivos e desenvolvedores.
+
+--------------------------------------------------------------------------------
+
+11.
+Data: 17/11/2025
+Titulo: Containers em sincronia: a fase 2d que unificou build, deploy e testes
+Descricao: Como transformamos um fluxo manual em um pipeline container-first que recompila, sobe Tomcat e WildFly pelo Docker Compose, realiza smoke tests e executa a suite Python com um unico comando.
+
+--------------------------------------------------------------------------------
+
+12.
+Data: 24/11/2025
+Titulo: Abrir caminhos: como tornar aplicacoes legadas mais abertas, seguras e sustentaveis
+Descricao: Por que adotar padroes abertos para APIs e uma mudanca estrategica para empresas com sistemas legados. Vantagens, roteiro pratico e governanca para executivos e decisores.
+
+--------------------------------------------------------------------------------
+
+13.
+Data: 30/11/2025
+Titulo: Superando Desafios na Gestao de Licencas Digitais: Uma Jornada de Inovacao e Monetizacao
+Descricao: Como superar desafios na gestao de licencas digitais, inovar e monetizar funcionalidades em sistemas modernos. Relato pratico, tecnologias aplicadas e impacto para negocios.
+
+--------------------------------------------------------------------------------
+
+14.
+Data: 02/12/2025
+Titulo: A perversidade invisivel: o que ha de mais cruel na sociedade americana e na brasileira
+Descricao: Reflexao sobre os tracos culturais mais cruéis e invisiveis dos EUA e do Brasil: egoísmo institucionalizado, conivencia afetiva, e como ambos perpetuam injusticas sociais.
+
+--------------------------------------------------------------------------------
+
+15.
+Data: 09/12/2025
+Titulo: A Revolucao Silenciosa: Como uma Empresa Transformou sua Arquitetura de APIs em 90 Dias
+Descricao: Uma historia real de inovacao tecnologica mostrando como uma empresa migrou 10 APIs de IBM APIC para AWS em 90 dias, reduzindo custos em 65% e estabelecendo uma metodologia sustentavel de transformacao.
+
+--------------------------------------------------------------------------------
+
+16.
+Data: 16/12/2025
+Titulo: A Jornada dos Guardioes do Sistema: Uma Historia de Superacao Tecnologica
+Descricao: Superacao tecnologica, otimizacao de processos e licoes de equipe na protecao de sistemas criticos.
+
+--------------------------------------------------------------------------------
+
+17.
+Data: 24/12/2025
+Titulo: A Travessia da Aurora - Parte I: O Sistema que Nao Podia Parar
+Descricao: Primeira parte da trilogia sobre modernizacao corporativa: como uma organizacao do setor iniciou a jornada de migracao para containers e infraestrutura moderna.
+
+--------------------------------------------------------------------------------
+
+18.
+Data: 31/12/2025
+Titulo: A Travessia da Aurora - Partes II e III: Automacao e Producao
+Descricao: Continuacao da trilogia: do despertar da automacao a conquista da producao, com resultados mensuraveis e licoes para decisores.
+
+--------------------------------------------------------------------------------
+
+19.
+Data: 02/01/2026
+Titulo: Segunda-Feira na Consultoria
+Descricao: Por que o talento desaparece quando a amigdala assume o controle. Uma analise neurobiologica sobre gestao de projetos em consultoria.
+
+--------------------------------------------------------------------------------
+
+20.
+Data: 10/01/2026
+Titulo: A Anatomia de um Rebaselining: Migrando Gigantes Legados para Java 11 e WildFly 26
+Descricao: Como migrar sistemas core empresariais de alta complexidade para Java 11 e WildFly 26, enfrentando desafios reais de integracao entre geracoes tecnologicas. Relato pratico, solucoes e licoes aprendidas.
+
+--------------------------------------------------------------------------------
+
+21.
+Data: 17/01/2026
+Titulo: A Transformacao que Ninguem Via Vir
+Descricao: Como um grande player do setor de seguros redescobriu o futuro em 90 dias atraves da migracao para nuvem, transformando custos, performance e disponibilidade. Historia real de transformacao digital.
+
+--------------------------------------------------------------------------------
+
+22.
+Data: 25/01/2026
+Titulo: O Monolito no Podio - A Engenharia por trás do Desacoplamento S3 + EKS
+Descricao: Descubra como modernizar um monolito Java de missao critica atraves da separacao do front-end no S3 e backend no Kubernetes (EKS), sem reescrever do zero.
+
+--------------------------------------------------------------------------------
+
+23.
+Data: 31/01/2026
+Titulo: A Anatomia de um Deploy de Sucesso: Do Caos do Legado a Estabilidade no Kubernetes
+Descricao: A jornada completa de migracao de um monolito Java para Kubernetes: desde o diagnostico dos erros JDBC, passando pela cirurgia no Dockerfile, ate a estabilizacao do ambiente e a autonomia do desenvolvedor.
+
+--------------------------------------------------------------------------------
+
+24.
+Data: 05/02/2026
+Titulo: A Arte De Iluminar O Passado: Selenium E A Arqueologia De Bugs Em Sistemas Legados
+Descricao: Como transformamos o Selenium em uma maquina do tempo visual capaz de documentar bugs em sistemas legados atraves de videos que contam historias de falhas e vitorias na jornada de correcao.
+
+--------------------------------------------------------------------------------
+
+25.
+Data: 15/02/2026
+Titulo: JSF: Cronica de uma Aposentadoria Anunciada
+Descricao: Um artigo sobre a ascensao e queda do JavaServer Faces (JSF) e a evolucao do desenvolvimento web em Java.
+
+--------------------------------------------------------------------------------
+
+26.
+Data: 20/02/2026
+Titulo: Serie: Brasil, SDK e Soberania - Indice
+Descricao: Indice da serie em 7 episodios sobre dependencia tecnologica, Big Techs, China, soberania digital e caminhos para o Brasil, inspirada em uma conversa sobre Napolitano, engenharia e SDKs.
+
+--------------------------------------------------------------------------------
+
+27.
+Data: 22/02/2026
+Titulo: Episodio 01: A Soberania em Jogo - Do Petroleo ao SDK
+Descricao: Primeiro episodio da serie Brasil, SDK e Soberania. Uma analise sobre como a dependencia de petroleo nos anos 70 se assemelha a atual vulnerabilidade aos SDKs das Big Techs.
+
+--------------------------------------------------------------------------------
+
+28.
+Data: 28/02/2026
+Titulo: A Armadilha da Produtividade: Por Que Estar Ocupado Nao Paga Suas Contas
+Descricao: Um artigo sobre a diferenca entre estar ocupado e ser verdadeiramente produtivo.
+
+--------------------------------------------------------------------------------
+
+29.
+Data: 03/03/2026
+Titulo: Alem Da Lente: Os Limites Da Automacao Visual E A Realidade Das Trincheiras No Legado
+Descricao: Uma reflexao critica sobre os limites da automacao visual com Selenium: captura condicional, Page Object Model, correlacao de logs e a evolucao de testes de documentacao para infraestrutura de confianca.
+
+--------------------------------------------------------------------------------
+
+30.
+Data: 10/03/2026
+Titulo: A Inteligencia Artificial Nao E Uma Bala de Prata: Licoes de Uma Jornada de Debugging em Sistemas Legados
+Descricao: Artigo sobre A Inteligencia Artificial Nao E Uma Bala de Prata: Licoes de Uma Jornada de Debugging em Sistemas Legados
+
+--------------------------------------------------------------------------------
+
+31.
+Data: 24/03/2026
+Titulo: Episodio 02: As Sete Magnificas e o "Big Brother" Digital
+Descricao: Segundo episodio da serie Brasil, SDK e Soberania. Um mergulho no poder das Big Techs e como o controle, antes estatal, hoje e algoritmico.
+
+--------------------------------------------------------------------------------
+
+32.
+Data: 30/03/2026
+Titulo: O Projeto "Sistema Alfa": Anatomia de um Quase-Fracasso e as Licoes da Linha de Frente
+Descricao: Artigo sobre O Projeto Sistema Alfa: Anatomia de um Quase-Fracasso e as Licoes da Linha de Frente
+
+--------------------------------------------------------------------------------
+
+33.
+Data: 06/04/2026
+Titulo: Na Minha Torre: Um Engenheiro no Localhost
+Descricao: Artigo sobre isolamento digital, soberania tecnologica e a arte de rodar o proprio kernel
+
+--------------------------------------------------------------------------------
+
+34.
+Data: 12/04/2026
+Titulo: A Fisica Antes da Logica
+Descricao: Reflexoes sobre como a fisica e a quimica fundamentam o codigo: a filosofia de desenvolvimento que transformou um simulador de efluentes em um modelo cientificamente soberano
+
+--------------------------------------------------------------------------------
+
+35.
+Data: 23/04/2026
+Titulo: Episodio 03: O "Kit Chines": Nova Dependencia ou Oportunidade?
+Descricao: Terceiro episodio da serie Brasil, SDK e Soberania. A ascensao da China oferece uma alternativa ao ecossistema americano. Estamos apenas trocando de fornecedor?
+
+--------------------------------------------------------------------------------
+
+36.
+Data: 30/04/2026
+Titulo: Entre o Prazo e o WSDL: A Saga de uma Migracao no "Mundo Real"
+Descricao: Um relato do mundo real sobre uma migracao de WebSphere para WildFly/Cloud: quando o cronograma parece linear, mas a infraestrutura lembra que a fisica vem antes do PowerPoint.
+
+--------------------------------------------------------------------------------
+
+37.
+Data: 10/05/2026
+Titulo: O Legado e a Matriz: o que a Engenharia herda do Cuidado
+Descricao: Dia das Maes (sem cliche): cuidado como arquitetura de base. Uma ponte entre migracao de legado, documentacao e sustentabilidade cognitiva.
+
+--------------------------------------------------------------------------------
+
+38.
+Data: 23/05/2026
+Titulo: Episodio 04: PIX: O Framework Nativo que Deu Certo
+Descricao: Quarto episodio da serie Brasil, SDK e Soberania. Um estudo de caso sobre o sucesso do PIX, que prova a capacidade tecnica brasileira para a soberania digital.
+
+--------------------------------------------------------------------------------
+
+39.
+Data: 22/06/2026
+Titulo: Episodio 05: O Legado de 1964 e a Nossa Divida Tecnica
+Descricao: Quinto episodio da serie Brasil, SDK e Soberania. Como as decisoes do regime militar criaram uma 'divida tecnica' social e de infraestrutura que ainda impacta o Brasil.
+
+--------------------------------------------------------------------------------
+
+40.
+Data: 22/07/2026
+Titulo: Episodio 06: Isolamento como Resistencia: O "Modo Localhost"
+Descricao: Sexto episodio da serie Brasil, SDK e Soberania. O isolamento tecnico como forma de resistencia individual e sua viabilidade como estrategia nacional.
+
+--------------------------------------------------------------------------------
+
+41.
+Data: 21/08/2026
+Titulo: Episodio 07: Refatorando o Futuro do Brasil
+Descricao: Setimo e ultimo episodio da serie Brasil, SDK e Soberania. Discutimos os caminhos possiveis para o Brasil refatorar seu futuro tecnologico.
+
+================================================================================
+Fim da lista. Total: 41 itens.
+================================================================================

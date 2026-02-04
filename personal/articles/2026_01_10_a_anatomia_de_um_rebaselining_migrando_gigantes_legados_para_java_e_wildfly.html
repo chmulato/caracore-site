@@ -44,7 +44,7 @@
   <p><img src="assets/img/2026_01_10_IMAGE_001.png" class="hero-image" alt="Migração de sistemas legados para Java 11 e WildFly 26"></p>
         <h2>Introdução</h2>
         <p>A modernização de sistemas legados é frequentemente comparada a trocar os pneus de um carro em movimento. Mas quando se trata de migrar um sistema core empresarial – aquele que sustenta operações críticas de negócio – a analogia mais apropriada seria trocar o motor, a transmissão e o sistema de direção, tudo ao mesmo tempo, enquanto o veículo trafega a 100 km/h em uma rodovia movimentada.</p>
-        <p>Este artigo narra a experiência real de migrar um sistema de alta complexidade (codinome: <strong>Projeto Phoenix</strong>) de um ambiente tecnológico antigo para Java 11 e WildFly 26, enfrentando desafios que testaram não apenas competências técnicas, mas também resiliência, metodologia e capacidade de trabalhar sob pressão.</p>
+        <p>Este artigo narra a experiência real de migrar um sistema de alta complexidade (sistema core de alta complexidade) de um ambiente tecnológico antigo para Java 11 e WildFly 26, enfrentando desafios que testaram não apenas competências técnicas, mas também resiliência, metodologia e capacidade de trabalhar sob pressão.</p>
         <h2>O Desafio da Baseline: Mais Que Código, Uma Sinfonia de Componentes</h2>
         <p>Quando falamos de <strong>baseline</strong> em projetos de software, a maioria dos profissionais pensa imediatamente em versões de código versionadas no Git ou em releases de pacotes perfeitamente etiquetados. Simples, direto, binário. Mas em migrações complexas de sistemas legados, a realidade é muito mais intrincada e nuançada.</p>
         <p>Uma baseline verdadeira não é apenas um número de versão. É a <strong>sincronia perfeita</strong> entre três camadas fundamentais que precisam dançar em harmonia absoluta:</p>
@@ -54,7 +54,7 @@
           <li><strong>Frontend</strong>: O framework JavaScript (AngularJS 1.5), dependências NPM, sistema de build, estrutura modular. Uma mudança em um módulo frontend pode quebrar todo o processo de bootstrap.</li>
         </ul>
         <p>O problema surge quando um componente de uma camada evolui sem que os demais acompanhem. É como ajustar o carburador de um motor antigo para funcionar com gasolina moderna – se o sistema de escape não suportar a nova combustão, se o catalisador não conseguir processar os novos resíduos, todo o sistema falha catastroficamente.</p>
-        <p>No <strong>Projeto Phoenix</strong>, a baseline herdada era um monumento à resiliência humana face ao caos. Trazia consigo anos de remendos, patches emergenciais e workarounds que se tornaram parte da "solução oficial". Desenvolvedores que saíram levaram conhecimento. Documentação desapareceu. O que restava eram camadas de decisões técnicas enterradas em código que ninguém entendia completamente. O desafio não era apenas migrar para tecnologias mais modernas – era <strong>desemaranhar</strong> essa teia desconcertante de dependências sem romper a continuidade operacional de um sistema que processava transações críticas 24/7.</p>
+        <p>No projeto de modernização, a baseline herdada era um monumento à resiliência humana face ao caos. Trazia consigo anos de remendos, patches emergenciais e workarounds que se tornaram parte da "solução oficial". Desenvolvedores que saíram levaram conhecimento. Documentação desapareceu. O que restava eram camadas de decisões técnicas enterradas em código que ninguém entendia completamente. O desafio não era apenas migrar para tecnologias mais modernas – era <strong>desemaranhar</strong> essa teia desconcertante de dependências sem romper a continuidade operacional de um sistema que processava transações críticas 24/7.</p>
         <h2>O Caos do Frontend: Quando AngularJS 1.5 Se Recusa a Colaborar</h2>
         <h3>O Erro Que Paralisa Tudo</h3>
         <p>Se você já trabalhou com AngularJS 1.5, provavelmente conhece aquele medo gelado na espinha quando vê o temido erro aparecer no console do navegador:</p>
@@ -201,7 +201,7 @@ rm -rf standalone/deployments/*.failed
 </ul>
 <p>Falhar em limpar esses diretórios é a causa #1 de problemas "fantasma" que aparecem e desaparecem misteriosamente entre deploys. Você redeploya a aplicação, o código está correto, mas o erro continua aparecendo. Você olha para o desenvolvedor que fez o deploy e pergunta "você limpou o cache?", e quase sempre a resposta é não.</p>
 <h3>3. Documente os Workarounds, Mas Planeje Sua Eliminação</h3>
-<p>Cada workaround é uma <strong>dívida técnica</strong> que precisa ser honrada eventualmente. Durante a migração do Projeto Phoenix, mantivemos um arquivo versionado chamado <code>TECH_DEBT.md</code> que residia junto com o código no repositório Git. Cada workaround tinha uma entrada estruturada:</p>
+<p>Cada workaround é uma <strong>dívida técnica</strong> que precisa ser honrada eventualmente. Durante a migração, mantivemos um arquivo versionado chamado <code>TECH_DEBT.md</code> que residia junto com o código no repositório Git. Cada workaround tinha uma entrada estruturada:</p>
 <div class="chalkboard"><pre><code class="language-markdown">## TD-2024-001: Exclusão de módulos JAX-RS do WildFly
 **Status:** Ativo
 **Razão:** Conflito entre Apache Wink 1.4 e RESTEasy nativo do WildFly
@@ -220,7 +220,7 @@ rm -rf standalone/deployments/*.failed
 <li><strong>Trackeamento de débito:</strong> Permitir que o gestor de projeto saiba exatamente quais são os débitos técnicos que reduzem a qualidade do código</li>
 </ul>
 <h3>4. Automatize Tudo Que For Repetitivo: Erros Humanos Custam Caro</h3>
-<p>Scripts de deploy, validação de ambiente, testes de fumaça – tudo deve ser automatizado. Humanos cometem erros. Computadores executam instruções sem discussão. No Projeto Phoenix, criamos um script chamado <code>pre-deploy-check.sh</code> que validava, antes de qualquer deploy:</p>
+<p>Scripts de deploy, validação de ambiente, testes de fumaça – tudo deve ser automatizado. Humanos cometem erros. Computadores executam instruções sem discussão. No projeto, criamos um script chamado <code>pre-deploy-check.sh</code> que validava, antes de qualquer deploy:</p>
 <ul>
 <li><strong>Versão do Java:</strong> Exatamente Java 11.0.x+, nenhuma outra</li>
 <li><strong>Variáveis de ambiente obrigatórias:</strong> JAVA_HOME, WILDFLY_HOME, LDAP_PASSWORD, DATABASE_URL</li>
@@ -238,7 +238,7 @@ rm -rf standalone/deployments/*.failed
 <li><strong>Resiliência</strong> para lidar com expectativas frequentemente desalinhadas entre negócio e tecnologia, com prazos apertados que não consideram a realidade técnica</li>
 <li><strong>Pragmatismo</strong> para aceitar que nem toda solução será elegante ou bonita – às vezes você precisa de um workaround feio que funciona, desde que esteja documentado</li>
 </ul>
-<p>O <strong>Projeto Phoenix</strong> nos ensinou uma lição fundamental: a verdadeira baseline não está nas linhas de código ou nos números de versão. Está na <strong>coordenação harmoniosa</strong> entre todas as camadas da aplicação – infraestrutura, backend e frontend dançando em sincronia. Quando essa sincronia é alcançada, o sistema legado finalmente renasce, não como uma réplica descartável da tecnologia antiga, mas como um sistema estável, documentado e pronto para a próxima evolução.</p>
+<p>A experiência de migração nos ensinou uma lição fundamental: a verdadeira baseline não está nas linhas de código ou nos números de versão. Está na <strong>coordenação harmoniosa</strong> entre todas as camadas da aplicação – infraestrutura, backend e frontend dançando em sincronia. Quando essa sincronia é alcançada, o sistema legado finalmente renasce, não como uma réplica descartável da tecnologia antiga, mas como um sistema estável, documentado e pronto para a próxima evolução.</p>
 <p>E quando tudo funcionar perfeitamente após a migração, quando os testes passarem e a aplicação estiver em produção processando transações sem problemas? Lembre-se: sempre limpe o cache antes de comemorar. Porque há sempre aquele erro fantasmagórico esperando para aparecer se você não o fizer.</p>
 
 <h2>Dicionário de Termos Técnicos e Jargões</h2>

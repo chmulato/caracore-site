@@ -59,7 +59,7 @@
 
         <h2>Como construímos esta etapa</h2>
 
-        <p>Começamos com um quadro kanban dividido em três colunas: "Empilhar containers", "Validar saúde" e "Provar com testes". Cada cartão representava uma dor real do time. O objetivo era transformar aquela paisagem manual em uma sequência automatizada. Enquanto Bruno revisava permissões nos Dockerfiles, Lara desenvolvia o <code>setenv.sh</code> para injetar as propriedades certas sem expor segredos. Ao mesmo tempo, Ana revia os smoke tests para garantir que, mesmo rodando dentro do container, eles refletissem a experiência real de login.</p>
+        <p>Começamos com um quadro kanban dividido em três colunas: "Empilhar containers", "Validar saúde" e "Provar com testes". Cada cartão representava uma dor real do time. O objetivo era transformar aquela paisagem manual em uma sequência automatizada. Enquanto parte do time revisava permissões nos Dockerfiles, outra desenvolvia o <code>setenv.sh</code> para injetar as propriedades certas sem expor segredos. Ao mesmo tempo, a equipe de testes revia os smoke tests para garantir que, mesmo rodando dentro do container, eles refletissem a experiência real de login.</p>
 
         <p>Algumas decisões nasceram de tentativas e erros. Na primeira versão, o WildFly demorava dois minutos para entrar em estado saudável; descobrimos que a ordem dos builds no Compose estava drenando recursos e reescrevemos as camadas. Na segunda rodada, os smoke tests rodaram rápido demais e não capturaram a resposta do login. Ajustamos para esperar o <code>HTTP 302</code> completo e validar o redirect para o dashboard. Cada ajuste entrava no README e no checklist, criando uma narrativa viva que qualquer pessoa do time poderia seguir.</p>
 

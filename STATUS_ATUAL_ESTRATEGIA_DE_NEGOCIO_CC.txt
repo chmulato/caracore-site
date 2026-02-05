@@ -57,6 +57,32 @@ Os quatro pilares atuais são: Cara Core PDV, chmulatoETE Minerador 4.0, Reino O
 
 - Criado o arquivo VALIDACAO_NEGOCIO.md no site Cara Core com o resultado do pente fino: estado de cada produto, fluxos do cliente, consistência de mensagem e ações recomendadas (parte delas já aplicada no portfólio).
 
+2.7 Cara Core Seed: foco em SQLite e testes locais
+
+- Definido que o Seed tem foco em rodar local com SQLite; outras tecnologias de banco de dados (PostgreSQL) não estão mais no escopo e foram removidas do código e da documentação do produto.
+- Testes de integração e E2E (Java) migrados para SQLite em memória: não é mais necessário Docker para rodar a suíte completa. Mais de 900 testes passando (incluindo repositórios e E2E). Documentação em README_PY.md atualizada.
+
+2.8 Cara Core Seed: ferramentas de build e delivery (inspiradas no Minerador 4.0)
+
+- Criados no repositório caracore-seed os scripts de build e publicação, na mesma lógica do chmulatoETE Minerador 4.0 (workspace-chi/scripts):
+  - build_dist_local_seed.py: gera o WAR, empacota com Electron e grava electron/dist com o instalador, VERSION e checksums (MD5 e SHA-256).
+  - delivery_exe_seed_releases.py: publica o instalador e anexos como Release no GitHub (chmulato/caracore-seed-releases). Usa o token TOKEN_DELIVERY_CC_SEED_TO_REALEASES (ou GH_TOKEN).
+  - push_public_to_seed_releases.ps1: sincroniza o portal de delivery (site Cara Core, pasta delivery/seed) para o repositório caracore-seed-releases (vitrine), copiando index, download, tecnologia, readme, portal-controle e assets.
+- Documentação em caracore-seed/scripts/README.md e referência em electron/README.md.
+
+2.9 Alinhamento dos portais do Cara Core Seed ao estilo Minerador 4.0
+
+- Os três pontos de presença do Seed foram alinhados ao visual e à estrutura do portal do Minerador 4.0 (workspace-ete-releases): tema escuro, fonte Inter, cards de metodologia e navegação em grid.
+  - delivery/seed (site Cara Core): index e download refeitos com CSS seed-portal.css; links para o portfólio em URL absoluta (caracore.com.br) para funcionar também quando o conteúdo for espelhado na vitrine.
+  - caracore-seed-releases (vitrine): index e download com o mesmo layout e variáveis visuais (estilo inline para GitHub Pages).
+  - caracore-seed (repositório principal): index substituído pelo portal no mesmo estilo, com cards para Download (releases), Vitrine, Apresentação técnica e Portfólio Cara Core; o conteúdo técnico extenso permanece em apresentacao.html.
+- Documentado em delivery/seed/MIRROR_DELIVERY.md o alinhamento dos três e o uso do script push_public para atualizar a vitrine.
+
+2.10 Reino OIDC: alinhamento do portal do repositório com a vitrine
+
+- Criado o script sync_vitrine_to_reino_oidc.py no repositório reino_oidc: copia o conteúdo de reino_oidc_releases/docs/ para a raiz de reino_oidc, de modo que o portal que aparece no GitHub (repositório principal) fique igual à vitrine e ao balcão público.
+- Documentado em DELIVERY.md (reino_oidc) e em WORKSPACE.md (reino_oidc_releases) o fluxo de alinhamento.
+
 
 3. ESTADO ATUAL POR PRODUTO (RESUMO EXECUTIVO)
 
@@ -86,28 +112,29 @@ Os quatro pilares atuais são: Cara Core PDV, chmulatoETE Minerador 4.0, Reino O
 - Posicionamento: Contador de Licenças dos clientes que compram produtos Cara Core para rodar no Windows; gestão 100% offline; portal de controle com transparência e LGPD; R$ 29,90 (valor único).
 - Público: quem adquire PDV, Minerador, Reino OIDC ou Hub para uso no Windows; contador interno e comprador.
 - Preço: R$ 29,90 (valor único), explícito no portfólio e em todos os materiais de delivery.
-- Entrega: portal completo no site Cara Core (delivery/seed); vitrine pública no repositório caracore-seed-releases (apresentação e download que aponta para o executável versionado). Fluxos testados e funcionais.
+- Tecnologia: apenas SQLite no escopo; banco local; outras tecnologias de banco foram removidas. Testes locais (incluindo integração e E2E) rodam com SQLite em memória, sem Docker.
+- Entrega: portal completo no site Cara Core (delivery/seed); vitrine no repositório caracore-seed-releases (apresentação, download, tecnologia, readme, portal-controle); repositório principal (caracore-seed) com portal alinhado ao mesmo estilo. Os três portais seguem o visual do Minerador 4.0 (tema escuro, Inter, cards, grid). Scripts de build e delivery (build_dist_local_seed.py, delivery_exe_seed_releases.py, push_public_to_seed_releases.ps1) permitem publicar o EXE e atualizar a vitrine a partir do portal. Fluxos testados e funcionais.
 
 
 4. MODELO DE ESPELHO (PORTAL E VITRINE)
 
 Para quem não é técnico: o site da Cara Core (domínio próprio) contém o portal completo de cada produto (todas as páginas, textos oficiais, upgrade quando houver). Para alguns produtos existe ainda um repositório público (vitrine) onde o cliente também pode acessar o conteúdo ou o download, de forma alinhada ao que está no portal. Isso amplia o alcance e mantém uma única mensagem.
 
-- Reino OIDC: portal = site Cara Core, pasta delivery/oidc; vitrine = repositório reino_oidc_releases, pasta docs/. Ao atualizar o portal, deve-se sincronizar a pasta docs/ e ajustar links que apontam para o portfólio (usar endereço completo do site na vitrine).
-- Cara Core Seed: portal = site Cara Core, pasta delivery/seed; vitrine = repositório caracore-seed-releases (páginas na raiz). Ao alterar a mensagem ou a estrutura do portal, avaliar se a vitrine precisa ser atualizada para manter consistência.
+- Reino OIDC: portal = site Cara Core, pasta delivery/oidc; vitrine = repositório reino_oidc_releases, pasta docs/. Ao atualizar o portal, sincronizar a pasta docs/ (sync_to_delivery_oidc.py --releases). Para alinhar o portal do repositório reino_oidc com a vitrine, rodar sync_vitrine_to_reino_oidc.py no reino_oidc. Links para o portfólio em formato absoluto na vitrine.
+- Cara Core Seed: portal = site Cara Core, pasta delivery/seed; vitrine = repositório caracore-seed-releases (index, download, tecnologia, readme, portal-controle e assets na raiz). Para atualizar a vitrine a partir do portal: rodar push_public_to_seed_releases.ps1 no caracore-seed (copia de delivery/seed para o clone do repositório de releases). O repositório principal (caracore-seed) tem index no mesmo estilo; os três pontos (delivery, vitrine, repo) estão alinhados ao portal do Minerador 4.0.
 
 
 5. PRÓXIMOS PASSOS POSSÍVEIS (DENTRO DA ESTRATÉGIA)
 
 5.1 Cara Core Seed
 
-- Concluir a entrega do executável: hoje o cliente é direcionado ao repositório de releases para baixar o caracore-seed.exe. Ainda falta definir ou implementar a forma final de empacotamento (por exemplo: WAR executável ou JAR launcher que sobe o backend em um clique, para uso pelo aplicativo desktop Electron). Isso permitiria que o usuário final rode o Seed com um único comando ou pelo instalador, sem configurar servidor manualmente.
-- Manter a vitrine (caracore-seed-releases) alinhada ao portal (delivery/seed) sempre que houver mudança de mensagem ou de oferta.
+- Concluir a entrega do executável: o cliente é direcionado ao repositório de releases para baixar o caracore-seed.exe. Os scripts de build (build_dist_local_seed.py) e de publicação (delivery_exe_seed_releases.py, com token TOKEN_DELIVERY_CC_SEED_TO_REALEASES) estão prontos. Se ainda faltar a forma final de empacotamento (por exemplo WAR executável ou JAR launcher para o Electron), priorizar em ciclo técnico.
+- Manter a vitrine alinhada ao portal: usar push_public_to_seed_releases.ps1 sempre que houver mudança em delivery/seed (index, download, tecnologia, readme, portal-controle ou assets).
 
 5.2 Reino OIDC
 
 - Definir de forma explícita os benefícios do upgrade O Trono da Identidade (por exemplo: certificado de conclusão, material em PDF ou epub, checklist avançado, sessão de dúvidas ou acesso a canal exclusivo). Hoje o valor e o processo de pagamento (PIX) estão definidos; o conteúdo do pacote premium pode ser detalhado por release.
-- Estabelecer um processo ou script para sincronizar o conteúdo do portal (delivery/oidc) com a vitrine (reino_oidc_releases/docs/) sempre que houver alteração em páginas, textos ou assets, mantendo os links do portfólio em formato absoluto na vitrine.
+- Sincronização já disponível: sync_to_delivery_oidc.py --releases atualiza a vitrine (reino_oidc_releases/docs/) a partir do reino_oidc; sync_vitrine_to_reino_oidc.py alinha o portal do repo reino_oidc com a vitrine quando a vitrine for a referência. Manter links do portfólio em formato absoluto na vitrine.
 
 5.3 Cara Core PDV
 
@@ -126,7 +153,8 @@ Para quem não é técnico: o site da Cara Core (domínio próprio) contém o po
 
 6. CONCLUSÃO
 
-O trabalho realizado hoje consolida a estratégia de negócio em quatro pilares (PDV, Minerador 4.0, Reino OIDC e Seed), com preços claros onde aplicável (R$ 29,90 para upgrades e para o Seed), modelo de primeira entrega gratuita e upgrade pago no Reino OIDC (alinhado ao Minerador 4.0), e relação bem definida entre o portal no domínio Cara Core e as vitrines públicas (reino_oidc_releases e caracore-seed-releases). Os fluxos de apresentação e download foram validados e estão funcionais. Os próximos passos possíveis estão listados acima e podem ser priorizados conforme a capacidade da equipe e a demanda do mercado.
+O trabalho realizado consolida a estratégia de negócio em quatro pilares (PDV, Minerador 4.0, Reino OIDC e Seed), com preços claros onde aplicável (R$ 29,90 para upgrades e para o Seed), modelo de primeira entrega gratuita e upgrade pago no Reino OIDC (alinhado ao Minerador 4.0), e relação bem definida entre o portal no domínio Cara Core e as vitrines públicas (reino_oidc_releases e caracore-seed-releases). Os fluxos de apresentação e download foram validados e estão funcionais. O Seed opera com foco exclusivo em SQLite, testes locais sem Docker e ferramentas de build e delivery alinhadas ao Minerador 4.0; os portais do Seed (delivery, vitrine e repositório principal) estão alinhados ao estilo visual do portal do Minerador 4.0. O Reino OIDC dispõe de script para alinhar o portal do repositório com a vitrine. Os próximos passos possíveis estão listados na seção 5 e podem ser priorizados conforme a capacidade da equipe e a demanda do mercado.
 
 Cara Core Informática.
 Documento para uso interno e gestão da estratégia de negócio.
+Este material de apoio é atualizado conforme evolução da estratégia e das entregas.

@@ -3,221 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="CaraCore Seed: gestão de licenças 100% offline no Windows. R$ 29,90 — Portal de controle, transparência e LGPD. Contador de Licenças para quem compra produtos Cara Core.">
-    <meta name="keywords" content="CaraCore Seed, licenças, offline, Windows, Electron, SQLite, R$ 29,90, LGPD, Cara Core Informática">
-    <meta name="author" content="Cara Core Informática">
-    <meta property="og:title" content="CaraCore Seed | Gestão de licenças offline — R$ 29,90">
-    <meta property="og:description" content="Produto de utilidade: portal de controle de licenças, transparência e LGPD. Windows Desktop, 100% offline.">
-    <meta property="og:type" content="website">
-    <title>CaraCore Seed | Gestão de licenças offline — R$ 29,90 — Cara Core Informática</title>
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <title>CaraCore Seed — Gestão de licenças 100% offline | Cara Core Informática</title>
+    <meta name="description" content="CaraCore Seed: aplicativo Windows para gestão de licenças do ecossistema Cara Core. R$ 29,90. Portal de controle, transparência e LGPD. Inspirado no portal chmulato/ETE Minerador 4.0.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/portal-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/seed-portal.css">
 </head>
-<body class="smooth-scroll bg-gray-50">
-
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center space-x-3">
-                    <a href="index.html" class="flex items-center space-x-3">
-                        <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center">
-                            <i class="fas fa-key text-white text-xl"></i>
-                        </div>
-                        <div>
-                            <h1 class="text-xl font-bold text-gray-900">Cara Core</h1>
-                            <p class="text-xs text-gray-600">CaraCore Seed</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="#inicio" class="text-gray-700 hover:text-green-600 font-medium transition">Início</a>
-                    <a href="#o-que-e" class="text-gray-700 hover:text-green-600 font-medium transition">O que é</a>
-                    <a href="#recursos" class="text-gray-700 hover:text-green-600 font-medium transition">Recursos</a>
-                    <a href="tecnologia.html" class="text-gray-700 hover:text-green-600 font-medium transition">Tecnologia</a>
-                    <a href="readme.html" class="text-gray-700 hover:text-green-600 font-medium transition">Documentação</a>
-                    <a href="portal-controle.html" class="text-gray-700 hover:text-green-600 font-medium transition">Portal de controle</a>
-                    <a href="download.html" class="green-bg text-white px-6 py-2 rounded-lg font-semibold hover:shadow-lg transition">
-                        <i class="fas fa-download mr-2"></i>Baixar
-                    </a>
-                    <a href="../../portfolio.html#caracore-seed" class="text-gray-700 hover:text-green-600 font-medium transition">Portfólio Cara Core</a>
-                </div>
-                <button id="mobile-menu-button" class="md:hidden text-gray-700" aria-label="Menu"><i class="fas fa-bars text-2xl"></i></button>
-            </div>
-            <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <div class="flex flex-col space-y-3">
-                    <a href="#inicio" class="text-gray-700 hover:text-green-600 font-medium py-2">Início</a>
-                    <a href="#o-que-e" class="text-gray-700 hover:text-green-600 font-medium py-2">O que é</a>
-                    <a href="#recursos" class="text-gray-700 hover:text-green-600 font-medium py-2">Recursos</a>
-                    <a href="tecnologia.html" class="text-gray-700 hover:text-green-600 font-medium py-2">Tecnologia</a>
-                    <a href="readme.html" class="text-gray-700 hover:text-green-600 font-medium py-2">Documentação</a>
-                    <a href="portal-controle.html" class="text-gray-700 hover:text-green-600 font-medium py-2">Portal de controle</a>
-                    <a href="download.html" class="green-bg text-white px-6 py-2 rounded-lg font-semibold text-center">Baixar</a>
-                    <a href="../../portfolio.html#caracore-seed" class="text-gray-700 hover:text-green-600 font-medium py-2">Portfólio Cara Core</a>
-                </div>
-            </div>
+<body>
+    <div class="wrapper">
+        <nav class="breadcrumb" aria-label="Navegação">
+            <a href="https://caracore.com.br/portfolio.html">Cara Core Informática</a>
+            <span> · </span>
+            <a href="https://caracore.com.br/portfolio.html#caracore-seed">Portfólio</a>
+            <span> · </span>
+            <span>CaraCore Seed — Delivery</span>
         </nav>
-    </header>
 
-    <!-- Breadcrumb -->
-    <div class="bg-gray-100 border-b border-gray-200">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-2">
-            <nav class="text-sm text-gray-600">
-                <a href="../../portfolio.html" class="hover:text-green-600">Cara Core Informática</a>
-                <span class="mx-2">/</span>
-                <a href="../../portfolio.html#caracore-seed" class="hover:text-green-600">Portfólio</a>
-                <span class="mx-2">/</span>
-                <span class="text-gray-900 font-medium">CaraCore Seed — Delivery</span>
-            </nav>
-        </div>
-    </div>
+        <header>
+            <h1>CaraCore Seed</h1>
+            <p class="subtitle">Gestão de licenças para aplicações no Windows. Produto de utilidade da Cara Core Informática: aplicativo desktop 100% offline com portal de controle, transparência e LGPD.</p>
+            <p class="tagline">Valor único R$ 29,90. Contador de Licenças dos clientes que compram PDV, Minerador 4.0, Reino OIDC e Hub para rodar no Windows. Inspirado na mesma filosofia do chmulato/ETE Minerador 4.0.</p>
+        </header>
 
-    <!-- Hero -->
-    <section id="inicio" class="green-bg text-white py-16 md:py-20">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center">
-                <span class="selo-badge text-green-800 bg-white/90 mb-6 inline-flex">
-                    <i class="fas fa-laptop-house"></i> Windows Desktop · 100% offline
+        <section class="methodology">
+            <div class="card">
+                <h2>Por que o CaraCore Seed?</h2>
+                <p>Centraliza a gestão de licenças do ecossistema Cara Core (PDV, Minerador 4.0, Reino OIDC, Hub) em um único aplicativo <strong>Windows Desktop (Electron)</strong>, com banco <strong>SQLite</strong> local. Nada na nuvem — tudo no seu PC. O cliente vê e gerencia suas licenças com <strong>transparência</strong> e em conformidade com a <strong>LGPD</strong>.</p>
+            </div>
+            <div class="card card-differential">
+                <h2>Artefato versionado</h2>
+                <p>No repositório <strong>caracore-seed-releases</strong> são publicados os releases do aplicativo. O cliente é direcionado à vitrine para baixar o instalador <strong>caracore-seed.exe</strong> (versionado). Cada release inclui o executável e checksums para verificação de integridade.</p>
+            </div>
+        </section>
+
+        <p class="nav-section-title">Navegação</p>
+        <div class="nav-grid">
+            <a href="download.html" class="nav-card nav-card-download" title="Baixar o instalador Windows do CaraCore Seed">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
                 </span>
-                <h1 class="text-4xl md:text-5xl lg:text-5xl font-bold mb-6 leading-tight">
-                    Gestão de licenças para quem roda nossos produtos no Windows.
-                </h1>
-                <p class="text-xl md:text-2xl text-green-50 mb-6 leading-relaxed">
-                    Produto de <strong>utilidade</strong> para a Cara Core Informática: aplicativo desktop (Electron) que centraliza o controle de licenças do ecossistema — PDV, Minerador 4.0, Reino OIDC, Hub. <strong>Portal de controle</strong> com transparência e respeito à LGPD, no espírito do Contador de Licenças dos clientes que compram nossos produtos.
-                </p>
-                <p class="text-2xl font-bold text-white mb-10">Valor único: <span class="bg-white/20 px-3 py-1 rounded">R$ 29,90</span></p>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="download.html" class="bg-white text-green-700 px-8 py-4 rounded-lg font-bold text-lg hover:bg-green-50 transition shadow-lg">
-                        <i class="fas fa-download mr-2"></i>Baixar para Windows
-                    </a>
-                    <a href="portal-controle.html" class="bg-white/20 border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-700 transition">
-                        Portal de controle
-                    </a>
-                    <a href="tecnologia.html" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-green-700 transition">
-                        Tecnologia local
-                    </a>
-                </div>
-                <div class="mt-10 grid sm:grid-cols-3 gap-4 text-left max-w-3xl mx-auto">
-                    <div class="bg-white/10 rounded-xl px-5 py-4">
-                        <div class="flex items-center gap-3 mb-1">
-                            <i class="fas fa-database text-white"></i>
-                            <p class="font-semibold">SQLite local</p>
-                        </div>
-                        <p class="text-sm text-green-50/90">Dados de licenças no seu PC.</p>
-                    </div>
-                    <div class="bg-white/10 rounded-xl px-5 py-4">
-                        <div class="flex items-center gap-3 mb-1">
-                            <i class="fab fa-windows text-white"></i>
-                            <p class="font-semibold">Desktop Windows</p>
-                        </div>
-                        <p class="text-sm text-green-50/90">Electron + Java na máquina.</p>
-                    </div>
-                    <div class="bg-white/10 rounded-xl px-5 py-4">
-                        <div class="flex items-center gap-3 mb-1">
-                            <i class="fas fa-user-check text-white"></i>
-                            <p class="font-semibold">Contador de Licenças</p>
-                        </div>
-                        <p class="text-sm text-green-50/90">Transparência com o cliente, LGPD.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- O que é -->
-    <section id="o-que-e" class="py-16 bg-white">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-3xl mx-auto text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-4">O que é o CaraCore Seed?</h2>
-                <p class="text-lg text-gray-700 mb-4">
-                    É o <strong>Contador de Licenças</strong> dos clientes que compram os produtos Cara Core para rodar no Windows: um aplicativo desktop (Electron) que centraliza a gestão e o <strong>portal de controle das licenças</strong>, com <strong>transparência</strong> e tratamento de dados em conformidade com a <strong>LGPD</strong>. Inspirado na mesma filosofia do chmulatoETE Minerador 4.0 — clareza para o cliente, dados no seu controle.
-                </p>
-                <p class="text-lg text-gray-700">
-                    Verifica licenças, controla quais produtos e áreas cada usuário pode acessar e avisa quando a assinatura está próxima do vencimento. Tudo roda <strong>no seu computador Windows</strong>, 100% offline, sem depender de internet.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recursos -->
-    <section id="recursos" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">Recursos — Windows Desktop e offline</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="card card-hover p-6">
-                    <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center text-white text-xl mb-4">
-                        <i class="fas fa-key"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Gestão de licenças</h3>
-                    <p class="text-gray-600">Controle centralizado para PDV, Minerador 4.0, Reino OIDC e Hub. Validação em tempo real.</p>
-                </div>
-                <div class="card card-hover p-6">
-                    <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center text-white text-xl mb-4">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Banco local SQLite</h3>
-                    <p class="text-gray-600">Nenhum dado de licença sai da máquina. Backup e restauração locais.</p>
-                </div>
-                <div class="card card-hover p-6">
-                    <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center text-white text-xl mb-4">
-                        <i class="fas fa-desktop"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">App desktop Windows</h3>
-                    <p class="text-gray-600">Interface Electron; backend Java (WAR) embarcado. Experiência nativa no Windows.</p>
-                </div>
-                <div class="card card-hover p-6">
-                    <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center text-white text-xl mb-4">
-                        <i class="fas fa-plug"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">API REST local</h3>
-                    <p class="text-gray-600">Integração com outros sistemas na mesma máquina ou rede local.</p>
-                </div>
-                <div class="card card-hover p-6">
-                    <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center text-white text-xl mb-4">
-                        <i class="fas fa-user-shield"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Contador de Licenças</h3>
-                    <p class="text-gray-600">Fluxos para o cliente acompanhar suas licenças (gestão, aquisição e renovações) com transparência e LGPD.</p>
-                </div>
-                <div class="card card-hover p-6">
-                    <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center text-white text-xl mb-4">
-                        <i class="fas fa-wifi fa-slash"></i>
-                    </div>
-                    <h3 class="text-lg font-bold text-gray-900 mb-2">Sem dependência de nuvem</h3>
-                    <p class="text-gray-600">Operação 100% offline. Ideal para escritório ou campo sem internet estável.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-gray-700 mb-2"><strong>R$ 29,90</strong> — valor único. Portal de controle de licenças com transparência e LGPD.</p>
-            <p class="text-gray-600 mb-6">Releases e instalador Windows em <strong>caracore-seed-releases</strong> (GitHub).</p>
-            <a href="download.html" class="green-bg text-white px-8 py-4 rounded-lg font-bold text-lg hover:shadow-lg transition inline-flex items-center">
-                <i class="fas fa-download mr-2"></i>Ir para Download
+                <h3>Download — CaraCore Seed</h3>
+                <p>Instalador Windows (<strong>caracore-seed.exe</strong>). Versão estável, artefato versionado. Acesse a página de Releases e baixe o executável.</p>
             </a>
-            <a href="portal-controle.html" class="ml-4 text-gray-700 hover:text-green-600 font-medium">Portal de controle →</a>
-            <div class="mt-6">
-                <a href="../../portfolio.html#caracore-seed" class="text-gray-600 hover:text-green-600">← Voltar ao portfólio Cara Core</a>
+            <a href="tecnologia.html" class="nav-card">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>
+                    </svg>
+                </span>
+                <h3>Tecnologia</h3>
+                <p>Stack: Electron, Java (WAR), SQLite. Apenas SQLite no escopo; 100% offline.</p>
+            </a>
+            <a href="readme.html" class="nav-card">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>
+                    </svg>
+                </span>
+                <h3>Documentação</h3>
+                <p>Leia-me e referência técnica do produto.</p>
+            </a>
+            <a href="portal-controle.html" class="nav-card">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </span>
+                <h3>Portal de controle</h3>
+                <p>Contador de Licenças: transparência e LGPD para o cliente.</p>
+            </a>
+            <a href="https://github.com/chmulato/caracore-seed-releases/releases" class="nav-card" target="_blank" rel="noopener">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </span>
+                <h3>Releases (GitHub)</h3>
+                <p>Lista de versões e artefatos. Baixe <strong>caracore-seed.exe</strong> na release mais recente.</p>
+            </a>
+            <a href="https://github.com/chmulato/caracore-seed-releases" class="nav-card" target="_blank" rel="noopener">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>
+                    </svg>
+                </span>
+                <h3>Repositório</h3>
+                <p>Vitrine pública: caracore-seed-releases. Documentação de delivery e canal de releases.</p>
+            </a>
+        </div>
+
+        <section id="download-app" class="methodology" style="margin-top: 2rem;">
+            <div class="card" style="border-left: 4px solid var(--accent-green);">
+                <h2>Download do aplicativo (Windows)</h2>
+                <p>O <strong>CaraCore Seed</strong> está disponível como executável para Windows (<strong>caracore-seed.exe</strong>). Os clientes são direcionados à vitrine para obter o artefato versionado.</p>
+                <p style="margin-top: 12px;"><a href="download.html" style="color: var(--accent-blue); font-weight: 500;">Ir para a página de download →</a></p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer class="bg-gray-900 text-gray-300 py-8">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm text-gray-400">&copy; 2024–2026 Cara Core Informática. CaraCore Seed — Portal de delivery. Todos os direitos reservados.</p>
-        </div>
-    </footer>
-
-    <script>
-        var m = document.getElementById('mobile-menu-button'), n = document.getElementById('mobile-menu');
-        if (m && n) m.addEventListener('click', function () { n.classList.toggle('hidden'); });
-    </script>
+        <footer>
+            <p><a href="https://caracore.com.br/portfolio.html#caracore-seed">Cara Core Informática — Portfólio</a> · <a href="https://github.com/chmulato/caracore-seed-releases" target="_blank" rel="noopener">Repositório: chmulato/caracore-seed-releases</a></p>
+            <p>Delivery centralizado pela Cara Core Informática. R$ 29,90 — valor único. Portal de controle de licenças com transparência e LGPD.</p>
+            <p class="soberania">CaraCore Seed — 100% offline, Windows Desktop (Electron + SQLite). Inspirado no portal chmulato/ETE Minerador 4.0.</p>
+        </footer>
+    </div>
 </body>
 </html>

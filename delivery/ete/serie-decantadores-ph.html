@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Série de Decantadores por pH — Mineração | Ouro 4.0</title>
+    <meta name="description" content="Visualização em cascata: tanques com pH controlado, precipitação por estágio (Fe/Al, metais base, terras raras), curvas de solubilidade e eficiência.">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0e14;
+            --panel: #12171f;
+            --card: #1a2028;
+            --border: #2d3748;
+            --text: #e6edf3;
+            --dim: #8b949e;
+            --cyan: #00f5d4;
+            --rust: #c45c26;
+            --base-metal: #6b7b8c;
+            --ree: #e8e6e3;
+            --danger: #f72585;
+            --ok: #00f5a0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 20px; }
+        .wrapper { max-width: 1200px; margin: 0 auto; }
+        header { text-align: center; padding: 24px 0 32px; border-bottom: 1px solid var(--border); }
+        header h1 { font-size: 1.5rem; color: var(--cyan); margin-bottom: 6px; }
+        header p { font-size: 0.9rem; color: var(--dim); max-width: 640px; margin: 0 auto; line-height: 1.5; }
+
+        /* Cascata step-down */
+        .cascade {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .tank-wrap {
+            flex: 1;
+            min-width: 180px;
+            max-width: 280px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .tank-wrap.step2 { margin-top: 32px; }
+        .tank-wrap.step3 { margin-top: 64px; }
+        .flow-arrow {
+            align-self: center;
+            color: var(--cyan);
+            font-size: 1.5rem;
+            margin: 0 4px;
+        }
+        .tank {
+            width: 100%;
+            aspect-ratio: 0.85;
+            max-height: 220px;
+            background: linear-gradient(180deg, rgba(0,245,212,0.08) 0%, rgba(0,245,212,0.02) 60%, transparent 100%);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
+        }
+        .tank::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,245,212,0.03) 2px, rgba(0,245,212,0.03) 4px);
+            pointer-events: none;
+        }
+        .tank-label {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--cyan);
+            z-index: 2;
+        }
+        .tank-ph {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            color: var(--cyan);
+            z-index: 2;
+        }
+        .particles {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.9;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(220px) scale(0.4); opacity: 0.3; }
+        }
+        .sludge {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0%;
+            border-radius: 0 0 6px 6px;
+            transition: height 0.5s ease;
+            z-index: 0;
+        }
+        .tank[data-stage="1"] .sludge { background: linear-gradient(180deg, transparent, var(--rust)); }
+        .tank[data-stage="2"] .sludge { background: linear-gradient(180deg, transparent, var(--base-metal)); }
+        .tank[data-stage="3"] .sludge { background: linear-gradient(180deg, transparent, var(--ree)); }
+        .tank-target {
+            font-size: 0.7rem;
+            color: var(--dim);
+            margin-top: 8px;
+            text-align: center;
+        }
+        .tank-control {
+            width: 100%;
+            margin-top: 12px;
+        }
+        .tank-control label { display: block; font-size: 0.75rem; color: var(--dim); margin-bottom: 4px; }
+        .tank-control input[type="range"] { width: 100%; accent-color: var(--cyan); }
+
+        /* Gráfico solubilidade */
+        .section-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--cyan);
+            margin: 28px 0 12px;
+        }
+        .chart-solubility {
+            width: 100%;
+            height: 280px;
+            background: var(--card);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+
+        /* Painel eficiência + log */
+        .efficiency-panel {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 24px;
+        }
+        @media (max-width: 700px) { .efficiency-panel { grid-template-columns: 1fr; } }
+        .eff-card {
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 16px;
+        }
+        .eff-card h3 { font-size: 0.85rem; color: var(--dim); margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .eff-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(45,55,72,0.5);
+        }
+        .eff-row:last-child { border-bottom: none; }
+        .eff-pct { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+        .eff-pct.ok { color: var(--ok); }
+        .eff-pct.warn { color: #ffd60a; }
+        .eff-pct.bad { color: var(--danger); }
+        .audit-log {
+            max-height: 200px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--dim);
+            line-height: 1.6;
+        }
+        .audit-log .entry { padding: 4px 0; border-bottom: 1px solid rgba(45,55,72,0.3); }
+        .audit-log .entry.contamination { color: var(--danger); }
+        .audit-log .entry.ok { color: var(--ok); }
+        .nav-links { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border); font-size: 0.9rem; }
+        .nav-links a { color: #58a6ff; text-decoration: none; }
+        .nav-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Série de Decantadores por pH Controlado</h1>
+            <p>Visualização em cascata (step-down): efluente do Tanque 1 → 2 → 3. Cada estágio tem pH alvo para precipitação seletiva. Ajuste os sliders e observe a decantação e a pureza por estágio.</p>
+        </header>
+
+        <div class="section-title">Cascata de tanques — pH por estágio</div>
+        <div class="cascade">
+            <div class="tank-wrap step1">
+                <div class="tank" id="tank1" data-stage="1">
+                    <span class="tank-label">Tanque 1</span>
+                    <span class="tank-ph" id="ph1-display">3.5</span>
+                    <div class="particles" id="particles1"></div>
+                    <div class="sludge" id="sludge1" style="height: 0%"></div>
+                </div>
+                <div class="tank-target">Remoção Fe / Al (pH 3–4)</div>
+                <div class="tank-control">
+                    <label>pH Tanque 1</label>
+                    <input type="range" id="ph1" min="2" max="6" step="0.1" value="3.5">
+                </div>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="tank-wrap step2">
+                <div class="tank" id="tank2" data-stage="2">
+                    <span class="tank-label">Tanque 2</span>
+                    <span class="tank-ph" id="ph2-display">6.5</span>
+                    <div class="particles" id="particles2"></div>
+                    <div class="sludge" id="sludge2" style="height: 0%"></div>
+                </div>
+                <div class="tank-target">Metais base (pH 6–7)</div>
+                <div class="tank-control">
+                    <label>pH Tanque 2</label>
+                    <input type="range" id="ph2" min="4" max="8" step="0.1" value="6.5">
+                </div>
+            </div>
+            <span class="flow-arrow">→</span>
+            <div class="tank-wrap step3">
+                <div class="tank" id="tank3" data-stage="3">
+                    <span class="tank-label">Tanque 3</span>
+                    <span class="tank-ph" id="ph3-display">9.5</span>
+                    <div class="particles" id="particles3"></div>
+                    <div class="sludge" id="sludge3" style="height: 0%"></div>
+                </div>
+                <div class="tank-target">Terras Raras / Mg (pH 9+)</div>
+                <div class="tank-control">
+                    <label>pH Tanque 3</label>
+                    <input type="range" id="ph3" min="7" max="12" step="0.1" value="9.5">
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">Curvas de solubilidade (log S vs pH) — ponto de corte</div>
+        <p style="font-size: 0.85rem; color: var(--dim); margin-bottom: 8px;">Onde a solubilidade cai drasticamente = ponto de precipitação. A intersecção com a faixa de pH do tanque define a eficiência.</p>
+        <div id="chart-solubility" class="chart-solubility"></div>
+
+        <div class="section-title">Painel de eficiência e auditoria</div>
+        <div class="efficiency-panel">
+            <div class="eff-card">
+                <h3>Pureza por estágio (%)</h3>
+                <div class="eff-row"><span>Tanque 1 (Fe/Al)</span><span class="eff-pct" id="purity1">—</span></div>
+                <div class="eff-row"><span>Tanque 2 (Base)</span><span class="eff-pct" id="purity2">—</span></div>
+                <div class="eff-row"><span>Tanque 3 (REE/Mg)</span><span class="eff-pct" id="purity3">—</span></div>
+            </div>
+            <div class="eff-card">
+                <h3>Log de auditoria</h3>
+                <div class="audit-log" id="audit-log"></div>
+            </div>
+        </div>
+
+        <p class="nav-links">
+            <a href="index.html">← Portal</a> · <a href="painel-convergencia.html">Convergência Matemática</a> · <a href="laboratorio_campo_largo.html">Laboratório Ouro 4.0</a>
+        </p>
+    </div>
+
+    <script>
+        (function() {
+            const TARGETS = [
+                { low: 3, high: 4, name: 'Fe/Al', color: '#c45c26' },
+                { low: 6, high: 7, name: 'Base', color: '#6b7b8c' },
+                { low: 9, high: 11, name: 'REE/Mg', color: '#e8e6e3' }
+            ];
+            let lastPurity = [100, 100, 100];
+
+            function logAudit(msg, isContamination) {
+                const el = document.getElementById('audit-log');
+                const entry = document.createElement('div');
+                entry.className = 'entry ' + (isContamination ? 'contamination' : 'ok');
+                entry.textContent = new Date().toLocaleTimeString('pt-BR') + ' — ' + msg;
+                el.appendChild(entry);
+                el.scrollTop = el.scrollHeight;
+            }
+
+            function inRange(pH, low, high) { return pH >= low && pH <= high; }
+            function purity(pH, low, high) {
+                const mid = (low + high) / 2;
+                const width = (high - low) / 2;
+                const dist = Math.abs(pH - mid);
+                if (dist <= width * 0.3) return 98;
+                if (dist <= width) return Math.round(98 - (dist / width) * 40);
+                return Math.max(0, Math.round(50 - dist * 10));
+            }
+
+            function spawnParticle(containerId, stage) {
+                const container = document.getElementById(containerId);
+                if (!container) return;
+                const colors = [TARGETS[0].color, TARGETS[1].color, TARGETS[2].color];
+                const p = document.createElement('div');
+                p.className = 'particle';
+                p.style.width = (6 + Math.random() * 8) + 'px';
+                p.style.height = p.style.width;
+                p.style.left = (10 + Math.random() * 80) + '%';
+                p.style.top = '-10px';
+                p.style.background = colors[stage - 1];
+                p.style.animationDuration = (1.2 + Math.random() * 0.8) + 's';
+                p.style.setProperty('--stage', stage);
+                container.appendChild(p);
+                setTimeout(() => p.remove(), 2000);
+            }
+
+            function updateSludge(tankId, stage, pct) {
+                const el = document.getElementById('sludge' + tankId);
+                if (!el) return;
+                el.style.height = Math.min(45, (pct / 100) * 45) + '%';
+            }
+
+            function updateUI() {
+                const ph1 = parseFloat(document.getElementById('ph1').value);
+                const ph2 = parseFloat(document.getElementById('ph2').value);
+                const ph3 = parseFloat(document.getElementById('ph3').value);
+                document.getElementById('ph1-display').textContent = ph1.toFixed(1);
+                document.getElementById('ph2-display').textContent = ph2.toFixed(1);
+                document.getElementById('ph3-display').textContent = ph3.toFixed(1);
+
+                const p1 = purity(ph1, TARGETS[0].low, TARGETS[0].high);
+                const p2 = purity(ph2, TARGETS[1].low, TARGETS[1].high);
+                const p3 = purity(ph3, TARGETS[2].low, TARGETS[2].high);
+
+                const el1 = document.getElementById('purity1');
+                const el2 = document.getElementById('purity2');
+                const el3 = document.getElementById('purity3');
+                el1.textContent = p1 + '%';
+                el2.textContent = p2 + '%';
+                el3.textContent = p3 + '%';
+                el1.className = 'eff-pct ' + (p1 >= 85 ? 'ok' : p1 >= 60 ? 'warn' : 'bad');
+                el2.className = 'eff-pct ' + (p2 >= 85 ? 'ok' : p2 >= 60 ? 'warn' : 'bad');
+                el3.className = 'eff-pct ' + (p3 >= 85 ? 'ok' : p3 >= 60 ? 'warn' : 'bad');
+
+                updateSludge(1, 1, p1);
+                updateSludge(2, 2, p2);
+                updateSludge(3, 3, p3);
+
+                if (p1 < 70 && lastPurity[0] >= 70) logAudit('Tanque 1: Contaminação cruzada — pH fora da faixa ideal para Fe/Al.', true);
+                if (p2 < 70 && lastPurity[1] >= 70) logAudit('Tanque 2: Contaminação cruzada — pH fora da faixa para metais base.', true);
+                if (p3 < 70 && lastPurity[2] >= 70) logAudit('Tanque 3: Contaminação cruzada — pH fora da faixa para REE/Mg.', true);
+                if (p1 >= 85 && lastPurity[0] < 85) logAudit('Tanque 1: pH em faixa ótima — precipitação Fe/Al.', false);
+                if (p2 >= 85 && lastPurity[1] < 85) logAudit('Tanque 2: pH em faixa ótima — precipitação metais base.', false);
+                if (p3 >= 85 && lastPurity[2] < 85) logAudit('Tanque 3: pH em faixa ótima — precipitação REE/Mg.', false);
+                lastPurity = [p1, p2, p3];
+            }
+
+            function runParticles() {
+                const ph1 = parseFloat(document.getElementById('ph1').value);
+                const ph2 = parseFloat(document.getElementById('ph2').value);
+                const ph3 = parseFloat(document.getElementById('ph3').value);
+                if (inRange(ph1, TARGETS[0].low, TARGETS[0].high)) spawnParticle('particles1', 1);
+                if (inRange(ph2, TARGETS[1].low, TARGETS[1].high)) spawnParticle('particles2', 2);
+                if (inRange(ph3, TARGETS[2].low, TARGETS[2].high)) spawnParticle('particles3', 3);
+            }
+
+            document.getElementById('ph1').addEventListener('input', function() { updateUI(); runParticles(); });
+            document.getElementById('ph2').addEventListener('input', function() { updateUI(); runParticles(); });
+            document.getElementById('ph3').addEventListener('input', function() { updateUI(); runParticles(); });
+
+            setInterval(runParticles, 400);
+
+            // Gráfico solubilidade (log S vs pH) — ponto de corte onde S cai drasticamente
+            function logS_Fe(pH) {
+                const pH_cut = 3.5;
+                return pH < pH_cut ? 0.5 : -4 - 5 * (pH - pH_cut);
+            }
+            function logS_Base(pH) {
+                const pH_cut = 6.5;
+                return pH < pH_cut ? 1 : -3 - 4 * (pH - pH_cut);
+            }
+            function logS_REE(pH) {
+                const pH_cut = 9.5;
+                return pH < pH_cut ? 0.8 : -6 - 3 * (pH - pH_cut);
+            }
+            function buildSolubilityChart() {
+                const pH = [];
+                for (let i = 2; i <= 12; i += 0.15) pH.push(i);
+                const layout = {
+                    paper_bgcolor: '#1a2028',
+                    plot_bgcolor: '#1a2028',
+                    font: { color: '#8b949e' },
+                    xaxis: { title: 'pH', gridcolor: '#2d3748', range: [2, 12] },
+                    yaxis: { title: 'log₁₀(S) (relativo)', type: 'linear', gridcolor: '#2d3748' },
+                    margin: { t: 40, r: 40, b: 50, l: 60 },
+                    showlegend: true,
+                    legend: { orientation: 'h', y: 1.05, font: { color: '#8b949e' } },
+                    shapes: [
+                        { type: 'rect', x0: 3, x1: 4, y0: -25, y1: 5, fillcolor: 'rgba(196,92,38,0.15)', line: { width: 0 } },
+                        { type: 'rect', x0: 6, x1: 7, y0: -25, y1: 5, fillcolor: 'rgba(107,123,140,0.15)', line: { width: 0 } },
+                        { type: 'rect', x0: 9, x1: 11, y0: -25, y1: 5, fillcolor: 'rgba(232,230,227,0.15)', line: { width: 0 } }
+                    ]
+                };
+                const data = [
+                    { x: pH, y: pH.map(logS_Fe), type: 'scatter', mode: 'lines', name: 'Fe³⁺ (hidróxido)', line: { color: '#c45c26', width: 2 } },
+                    { x: pH, y: pH.map(logS_Base), type: 'scatter', mode: 'lines', name: 'Metais base', line: { color: '#6b7b8c', width: 2 } },
+                    { x: pH, y: pH.map(logS_REE), type: 'scatter', mode: 'lines', name: 'Terras raras / Mg', line: { color: '#e8e6e3', width: 2 } }
+                ];
+                Plotly.newPlot('chart-solubility', data, layout, { responsive: true, displayModeBar: true, scrollZoom: true });
+            }
+            buildSolubilityChart();
+            updateUI();
+            logAudit('Sistema iniciado. Ajuste o pH de cada tanque para observar precipitação e pureza.', false);
+        })();
+    </script>
+</body>
+</html>

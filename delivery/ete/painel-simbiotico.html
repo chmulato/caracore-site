@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Controle Simbiótico — Ambiental ↔ Mineração | Ouro 4.0</title>
+    <meta name="description" content="Protótipo: interface unificada ETE Ambiental e Mineração, fluxo água tratada, glassmorphism e upgrade Premium. Gatekeeper e gráficos de intersecção Pawlowsky.">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --green-bio: #059669;
+            --green-mid: #10b981;
+            --green-light: #34d399;
+            --transition: #84cc16;
+            --gold: #d4a853;
+            --gold-amber: #f59e0b;
+            --gold-bright: #fbbf24;
+            --bg-dark: #0a0e14;
+            --glass: rgba(26, 32, 40, 0.75);
+            --glass-border: rgba(212, 168, 83, 0.3);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: #e6edf3; min-height: 100vh; overflow-x: hidden; }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: 1fr 120px 1fr;
+            grid-template-rows: 1fr auto;
+            min-height: 100vh;
+            position: relative;
+        }
+        .zone {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        .zone-ambiental {
+            background: linear-gradient(135deg, rgba(5,150,105,0.12) 0%, rgba(16,185,129,0.06) 50%, transparent 100%);
+            border-right: 1px solid rgba(5,150,105,0.3);
+        }
+        .zone-mineracao {
+            background: linear-gradient(225deg, rgba(245,158,11,0.08) 0%, rgba(212,168,83,0.12) 50%, transparent 100%);
+            border-left: 1px solid rgba(212,168,83,0.3);
+        }
+        .zone-title {
+            font-size: 1rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+            margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+        }
+        .zone-ambiental .zone-title { color: var(--green-light); }
+        .zone-mineracao .zone-title { color: var(--gold); }
+        .zone-content { flex: 1; }
+        .flow-column {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        .flow-line {
+            width: 4px;
+            flex: 1;
+            min-height: 120px;
+            background: linear-gradient(180deg, var(--green-mid), var(--transition), var(--gold));
+            border-radius: 2px;
+            animation: flow 3s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(16,185,129,0.4), 0 0 40px rgba(212,168,83,0.2);
+        }
+        @keyframes flow {
+            0%, 100% { opacity: 0.9; filter: brightness(1); }
+            50% { opacity: 1; filter: brightness(1.2); }
+        }
+        .flow-label {
+            font-size: 0.7rem;
+            color: #8b949e;
+            margin-top: 8px;
+            text-align: center;
+        }
+        .ambiental-placeholder {
+            background: rgba(5,150,105,0.1);
+            border: 1px dashed rgba(5,150,105,0.4);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+        .mineracao-wrapper {
+            position: relative;
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .mineracao-silhouette {
+            padding: 24px;
+            min-height: 200px;
+            background: linear-gradient(180deg, rgba(212,168,83,0.08) 0%, rgba(26,32,40,0.9) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .tank-silhouette {
+            width: 56px;
+            height: 72px;
+            background: rgba(212,168,83,0.2);
+            border: 1px solid rgba(212,168,83,0.4);
+            border-radius: 4px;
+            position: relative;
+        }
+        .tank-silhouette::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 30%;
+            background: rgba(212,168,83,0.35);
+            border-radius: 0 0 4px 4px;
+        }
+        .mineracao-glass {
+            position: absolute;
+            inset: 0;
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            border: 1px solid var(--glass-border);
+        }
+        .badge-premium {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(135deg, var(--gold-amber), var(--gold));
+            color: #0a0e14;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(212,168,83,0.4);
+        }
+        .btn-upgrade {
+            background: linear-gradient(135deg, var(--gold-amber), var(--gold-bright));
+            color: #0a0e14;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 24px rgba(245,158,11,0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-upgrade:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(245,158,11,0.5);
+        }
+        .seal {
+            margin-top: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .seal:hover { opacity: 0.95; }
+        .seal img {
+            max-width: 80px;
+            height: auto;
+            opacity: 0.9;
+        }
+        .seal span { font-size: 0.65rem; color: #8b949e; display: block; margin-top: 4px; }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(6px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal {
+            position: relative;
+            background: #12171f;
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            max-width: 480px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 28px;
+            box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+        }
+        .modal h2 {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+        .modal .sub { font-size: 0.85rem; color: #8b949e; margin-bottom: 20px; }
+        .infographic {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 16px;
+            background: rgba(212,168,83,0.08);
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+            color: #8b949e;
+        }
+        .infographic span { text-align: center; flex: 1; }
+        .infographic .arrow { color: var(--gold); font-size: 1.2rem; }
+        .protocol-box {
+            border: 1px solid rgba(212,168,83,0.4);
+            border-radius: 10px;
+            padding: 16px;
+            margin: 16px 0;
+            background: rgba(0,0,0,0.3);
+        }
+        .protocol-box label { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.05em; }
+        .protocol-box .hwid {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #e6edf3;
+            margin: 8px 0;
+            word-break: break-all;
+        }
+        .btn-copy {
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        .btn-copy:hover { background: rgba(212,168,83,0.15); }
+        .pix-box {
+            margin-top: 16px;
+            padding: 12px;
+            background: rgba(5,150,105,0.1);
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+        .pix-box strong { color: var(--green-light); }
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: #8b949e;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .modal-close:hover { color: #e6edf3; }
+
+        .charts-row {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 16px 24px;
+            border-top: 1px solid rgba(212,168,83,0.2);
+            background: rgba(0,0,0,0.2);
+        }
+        .chart-mini {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #12171f;
+        }
+        .charts-row .section-title {
+            grid-column: 1 / -1;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .potencial-badge {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,245,160,0.15);
+            border: 1px solid rgba(0,245,160,0.5);
+            color: #00f5a0;
+            font-size: 0.8rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+        .audit-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #0a0e14;
+            border-top: 1px solid var(--glass-border);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: #8b949e;
+            max-height: 100px;
+            overflow-y: auto;
+            padding: 8px 16px;
+            z-index: 100;
+        }
+        .audit-bar summary { cursor: pointer; color: var(--gold); }
+        .audit-bar ul { margin: 4px 0 0 16px; padding: 0; list-style: none; }
+        .audit-bar li { padding: 2px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .btn-copy-whatsapp {
+            background: #25d366;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 8px;
+        }
+        .btn-copy-whatsapp:hover { background: #2ee66d; }
+
+        .modal-termos { padding: 24px; }
+        .modal-termos h3 { font-size: 1rem; color: var(--gold); margin-bottom: 12px; }
+        .modal-termos .terms-text {
+            font-size: 0.8rem;
+            color: #8b949e;
+            line-height: 1.5;
+            max-height: 220px;
+            overflow-y: auto;
+            padding: 12px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .modal-termos .terms-text p { margin-bottom: 8px; }
+        .modal-termos label {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #e6edf3;
+            margin-bottom: 16px;
+        }
+        .modal-termos input[type="checkbox"] { margin-top: 3px; accent-color: var(--gold); }
+        .modal-termos .btn-continuar {
+            background: linear-gradient(135deg, var(--gold-amber), var(--gold-bright));
+            color: #0a0e14;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .modal-termos .btn-continuar:disabled { opacity: 0.5; cursor: not-allowed; }
+        .modal-termos .btn-continuar:not(:disabled):hover { filter: brightness(1.1); }
+        .modal-termos a { color: var(--cyan); }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <section class="zone zone-ambiental">
+            <h1 class="zone-title">ETE Ambiental</h1>
+            <div class="zone-content">
+                <div class="ambiental-placeholder">
+                    Volume tratado e pH residual são salvos aqui e fluem para o módulo Mineração. (Protótipo.)
+                </div>
+            </div>
+            <a href="termos-uso-creditos.html" class="seal" title="Termos de Uso e Créditos">
+                <img src="assets/img/selo_pawlowsky_legado.png" alt="Selo Pawlowsky">
+                <span>Selo de Qualidade Pawlowsky</span>
+            </a>
+        </section>
+
+        <div class="flow-column">
+            <div class="flow-line"></div>
+            <span class="flow-label">Água tratada →</span>
+        </div>
+
+        <section class="zone zone-mineracao">
+            <h1 class="zone-title">ETE Mineração</h1>
+            <div class="zone-content">
+                <div class="mineracao-wrapper">
+                    <span class="badge-premium" id="badge-price">Upgrade Premium: R$ 29,90</span>
+                    <div class="mineracao-silhouette">
+                        <div class="tank-silhouette"></div>
+                        <div class="tank-silhouette"></div>
+                        <div class="tank-silhouette"></div>
+                    </div>
+                    <div class="mineracao-glass" id="mineracao-glass">
+                        <p style="color: rgba(212,168,83,0.9); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px;">Módulo Premium</p>
+                        <p style="color: #8b949e; font-size: 0.9rem; text-align: center; margin-bottom: 12px;">Tanques de decantação e gráficos de precipitação aguardam desbloqueio.</p>
+                        <div class="potencial-badge" id="potencial-badge">Potencial estimado: 12,4 g REE · 0,8 kg eq.</div>
+                        <button type="button" class="btn-upgrade" id="btn-upgrade">
+                            Desbloquear Módulo Mineração
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <a href="termos-uso-creditos.html" class="seal" title="Termos de Uso e Créditos">
+                <img src="assets/img/selo_pawlowsky_legado.png" alt="Selo Pawlowsky">
+                <span>Selo de Qualidade Pawlowsky</span>
+            </a>
+        </section>
+
+        <div class="charts-row">
+            <div class="section-title">Intersecção matemática — Legado Pawlowsky</div>
+            <div id="chart-ph-mini" class="chart-mini"></div>
+            <div id="chart-solubility-mini" class="chart-mini"></div>
+        </div>
+    </div>
+
+    <div class="audit-bar" id="audit-bar">
+        <details>
+            <summary>Log de Operação</summary>
+            <ul id="audit-list"></ul>
+        </details>
+    </div>
+
+    <p style="position: fixed; bottom: 108px; left: 50%; transform: translateX(-50%); font-size: 0.8rem; color: #8b949e; z-index: 99;">
+        <a href="index.html" style="color: #58a6ff;">← Portal</a> · <a href="upgrade-ouro40.html" style="color: #58a6ff;">Upgrade Ouro 4.0</a>
+    </p>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal">
+            <button type="button" class="modal-close" id="modal-close" aria-label="Fechar">&times;</button>
+            <h2>Como a Mineração completa seu ciclo ambiental</h2>
+            <p class="sub">Da água tratada ao mineral — desbloqueie o protocolo.</p>
+            <div class="infographic">
+                <span>Ambiental<br>Água tratada</span>
+                <span class="arrow">→</span>
+                <span>Mineração<br>Decantadores</span>
+                <span class="arrow">→</span>
+                <span>Concentrado<br>REE / Ouro</span>
+            </div>
+            <div class="protocol-box">
+                <label>Hardware ID (Protocolo de Ativação)</label>
+                <div class="hwid" id="display-hwid">XXXX-XXXX-XXXX-XXXX</div>
+                <button type="button" class="btn-copy" id="btn-copy">Copiar ID de Ativação</button>
+                <button type="button" class="btn-copy-whatsapp" id="btn-copy-whatsapp">Copiar Hardware ID para WhatsApp</button>
+            </div>
+            <div class="pix-box">
+                <strong>Cara-Core Informática</strong><br>
+                CNPJ (PIX): <span id="modal-cnpj">23.969.028/0001-37</span><br>
+                Valor: <span id="modal-valor">R$ 29,90</span><br>
+                Envie este ID + comprovante PIX pelo WhatsApp ou Telegram para receber sua license.key.
+            </div>
+            <p style="margin-top: 12px;"><button type="button" class="btn-copy" id="btn-simular-ativacao" style="background: rgba(0,245,160,0.2); color: #00f5a0;">Simular ativação (protótipo)</button></p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal-termos">
+        <div class="modal modal-termos">
+            <button type="button" class="modal-close" id="modal-termos-close" aria-label="Fechar">&times;</button>
+            <h3>Termos de Uso e Créditos — Antes da ativação Premium</h3>
+            <div class="terms-text">
+                <p><strong>Atribuição de honra:</strong> O nome e o legado do Prof. Pawlowsky são usados em homenagem à sua contribuição à UFPR e à engenharia brasileira.</p>
+                <p><strong>Propriedade do software:</strong> Código-fonte, interface (UI/UX) e marcas Minerador 4.0 / Ouro 4.0 são propriedade exclusiva da Cara-Core Informática (CNPJ 23.969.028/0001-37).</p>
+                <p><strong>Isenção de responsabilidade:</strong> Os resultados são simulações computacionais. A família do professor e a universidade não possuem responsabilidade técnica ou comercial pelas decisões dos usuários.</p>
+                <p><strong>Uso de imagem:</strong> Qualquer imagem ou selo em memória do professor é para fins estritamente educativos, respeitando o direito de imagem da família.</p>
+            </div>
+            <p style="margin-bottom: 12px;"><a href="termos-uso-creditos.html" target="_blank" rel="noopener">Ler Termos de Uso e Créditos completos</a></p>
+            <label>
+                <input type="checkbox" id="terms-accept" name="terms-accept">
+                <span>Li e aceito os Termos de Uso e Créditos acima.</span>
+            </label>
+            <button type="button" class="btn-continuar" id="btn-termos-continuar" disabled>Continuar para ativação</button>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            var CONFIG = {
+                CNPJ: '23.969.028/0001-37',
+                PREMIUM_PRICE: 29.90
+            };
+            var STORAGE_LICENSE = 'ouro40_license_valid';
+            var STORAGE_AUDIT = 'ouro40_audit_log';
+            var STORAGE_TERMS_ACCEPTED = 'ouro40_terms_accepted';
+
+            function formatPrice() {
+                return 'R$ ' + CONFIG.PREMIUM_PRICE.toFixed(2).replace('.', ',');
+            }
+
+            function auditLog(msg) {
+                var line = new Date().toLocaleString('pt-BR') + ' — ' + msg;
+                var list = [];
+                try {
+                    var raw = localStorage.getItem(STORAGE_AUDIT);
+                    if (raw) list = JSON.parse(raw);
+                } catch (_) {}
+                list.unshift(line);
+                list = list.slice(0, 50);
+                try { localStorage.setItem(STORAGE_AUDIT, JSON.stringify(list)); } catch (_) {}
+                var ul = document.getElementById('audit-list');
+                if (ul) {
+                    ul.innerHTML = list.map(function(l) { return '<li>' + l + '</li>'; }).join('');
+                }
+            }
+
+            function isAuthorized() {
+                return localStorage.getItem(STORAGE_LICENSE) === 'true';
+            }
+
+            function setAuthorized(val) {
+                localStorage.setItem(STORAGE_LICENSE, val ? 'true' : '');
+                applyGatekeeper();
+                if (val) {
+                    auditLog('Licença ativada (validação license.key simulada)');
+                }
+            }
+
+            function applyGatekeeper() {
+                var glass = document.getElementById('mineracao-glass');
+                var badge = document.getElementById('badge-price');
+                if (!glass) return;
+                if (isAuthorized()) {
+                    glass.style.display = 'none';
+                    if (badge) badge.textContent = 'Módulo Mineração ativo';
+                } else {
+                    glass.style.display = 'flex';
+                    if (badge) badge.textContent = 'Upgrade Premium: ' + formatPrice();
+                }
+            }
+
+            document.getElementById('badge-price').textContent = 'Upgrade Premium: ' + formatPrice();
+            document.getElementById('modal-cnpj').textContent = CONFIG.CNPJ;
+            document.getElementById('modal-valor').textContent = formatPrice();
+
+            var modal = document.getElementById('modal');
+            document.getElementById('btn-upgrade').onclick = function() {
+                modal.classList.add('open');
+                auditLog('Modal de upgrade aberto');
+            };
+            document.getElementById('modal-close').onclick = function() { modal.classList.remove('open'); };
+            modal.onclick = function(e) { if (e.target === modal) modal.classList.remove('open'); };
+
+            var hwid = 'OURO40-' + Array.from({ length: 16 }, function() { return '0123456789ABCDEF'[Math.floor(Math.random() * 16)]; }).join('').replace(/(.{4})/g, '$1-').slice(0, -1);
+            document.getElementById('display-hwid').textContent = hwid;
+
+            document.getElementById('btn-copy').onclick = function() {
+                navigator.clipboard.writeText(hwid.replace(/-/g, '')).then(function() {
+                    document.getElementById('btn-copy').textContent = 'Copiado!';
+                    setTimeout(function() { document.getElementById('btn-copy').textContent = 'Copiar ID de Ativação'; }, 2000);
+                });
+            };
+
+            document.getElementById('btn-copy-whatsapp').onclick = function() {
+                var msg = 'Olá! Quero o upgrade Ouro 4.0 (Módulo Mineração).\nValor: ' + formatPrice() + '\nMeu ID de Ativação: ' + hwid.replace(/-/g, '') + '\nEnvio o comprovante PIX em seguida.';
+                navigator.clipboard.writeText(msg).then(function() {
+                    var btn = document.getElementById('btn-copy-whatsapp');
+                    btn.textContent = 'Copiado!';
+                    setTimeout(function() { btn.textContent = 'Copiar Hardware ID para WhatsApp'; }, 2000);
+                });
+            };
+
+            var modalTermos = document.getElementById('modal-termos');
+            var termsAccept = document.getElementById('terms-accept');
+            var btnTermosContinuar = document.getElementById('btn-termos-continuar');
+
+            function openTermosModal() {
+                if (termsAccept) termsAccept.checked = false;
+                if (btnTermosContinuar) btnTermosContinuar.disabled = true;
+                modalTermos.classList.add('open');
+            }
+            function closeTermosModal() {
+                modalTermos.classList.remove('open');
+            }
+
+            if (termsAccept) {
+                termsAccept.onchange = function() {
+                    btnTermosContinuar.disabled = !termsAccept.checked;
+                };
+            }
+            if (btnTermosContinuar) {
+                btnTermosContinuar.onclick = function() {
+                    if (!termsAccept || !termsAccept.checked) return;
+                    try { localStorage.setItem(STORAGE_TERMS_ACCEPTED, 'true'); } catch (_) {}
+                    closeTermosModal();
+                    setAuthorized(true);
+                    modal.classList.remove('open');
+                };
+            }
+            document.getElementById('modal-termos-close').onclick = closeTermosModal;
+            modalTermos.onclick = function(e) { if (e.target === modalTermos) closeTermosModal(); };
+
+            var btnSimular = document.getElementById('btn-simular-ativacao');
+            if (btnSimular) {
+                btnSimular.onclick = function() {
+                    if (localStorage.getItem(STORAGE_TERMS_ACCEPTED) === 'true') {
+                        setAuthorized(true);
+                        modal.classList.remove('open');
+                    } else {
+                        openTermosModal();
+                    }
+                };
+            }
+
+            applyGatekeeper();
+
+            if (typeof Plotly !== 'undefined') {
+                var darkLayout = {
+                    paper_bgcolor: '#12171f',
+                    plot_bgcolor: '#12171f',
+                    font: { color: '#8b949e', size: 10 },
+                    margin: { t: 24, r: 20, b: 32, l: 40 },
+                    xaxis: { gridcolor: '#2d3748', zerolinecolor: '#2d3748' },
+                    yaxis: { gridcolor: '#2d3748', zerolinecolor: '#2d3748' },
+                    showlegend: false
+                };
+                var Veq = 50, pH_eq = 7;
+                var phPts = [];
+                for (var i = 0; i <= 80; i++) {
+                    var V = (120 * i) / 80;
+                    var xN = (V - Veq) * 0.2;
+                    phPts.push({ x: V, y: Math.max(2, Math.min(12, 2.5 + 9.5 / (1 + Math.exp(-xN)))) });
+                }
+                Plotly.react('chart-ph-mini', [{
+                    x: phPts.map(function(p) { return p.x; }),
+                    y: phPts.map(function(p) { return p.y; }),
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { width: 2, color: '#00f5d4' }
+                }, {
+                    x: [Veq],
+                    y: [pH_eq],
+                    type: 'scatter',
+                    mode: 'markers',
+                    marker: { size: 10, color: '#00f5a0', symbol: 'diamond' }
+                }], {
+                    ...darkLayout,
+                    xaxis: { ...darkLayout.xaxis, title: 'Vol. titulante (mL)' },
+                    yaxis: { ...darkLayout.yaxis, title: 'pH', range: [2, 12] },
+                    title: { text: 'Titulação pH', font: { size: 11, color: '#d4a853' } }
+                }, { responsive: true, displayModeBar: false });
+
+                var solPts = [];
+                for (var j = 0; j <= 50; j++) {
+                    var ph = 4 + (10 * j) / 50;
+                    var sol = 1e-4 * Math.pow(10, -2 * (7 - ph));
+                    solPts.push({ x: ph, y: Math.min(1, sol * 100) });
+                }
+                Plotly.react('chart-solubility-mini', [{
+                    x: solPts.map(function(p) { return p.x; }),
+                    y: solPts.map(function(p) { return p.y; }),
+                    type: 'scatter',
+                    mode: 'lines',
+                    line: { width: 2, color: '#f59e0b' }
+                }], {
+                    ...darkLayout,
+                    xaxis: { ...darkLayout.xaxis, title: 'pH' },
+                    yaxis: { ...darkLayout.yaxis, title: 'Solubilidade (rel.)', range: [0, 1.05] },
+                    title: { text: 'Solubilidade vs pH', font: { size: 11, color: '#d4a853' } }
+                }, { responsive: true, displayModeBar: false });
+            }
+
+            var auditRaw = localStorage.getItem(STORAGE_AUDIT);
+            if (auditRaw) {
+                try {
+                    var auditArr = JSON.parse(auditRaw);
+                    document.getElementById('audit-list').innerHTML = auditArr.map(function(l) { return '<li>' + l + '</li>'; }).join('');
+                } catch (_) {}
+            }
+        })();
+    </script>
+</body>
+</html>

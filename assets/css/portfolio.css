@@ -34,6 +34,11 @@
   color: white;
 }
 
+.nav-badge-ete {
+  background: linear-gradient(120deg, #1a1d21 0%, #252a30 50%, #d4a853 100%);
+  color: white;
+}
+
 /* Cards de projetos */
 .project-card {
   background: rgba(255,255,255,0.93);
@@ -90,6 +95,10 @@
 
 .project-header.python-training {
   background: linear-gradient(120deg, #2E8B57 0%, #228B22 100%);
+}
+
+.project-header.ete {
+  background: linear-gradient(120deg, #1a1d21 0%, #252a30 50%, #d4a853 100%);
 }
 
 /* Badges de tecnologia */

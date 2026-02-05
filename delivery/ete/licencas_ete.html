@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Painel de Licenças — Cara-Core Informática | ETE Ouro 4.0</title>
+  <style>
+    :root {
+      --bg-page: #f8f6f0;
+      --bg-paper: #fffef9;
+      --ink: #1a1a1a;
+      --ink-muted: #444;
+      --border: #c4b8a0;
+      --yellow-pendente: #f5e6a3;
+      --green-confirmado: #c8e6c4;
+      --font-mono: 'Consolas', 'Monaco', 'Liberation Mono', 'Courier New', monospace;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      background: var(--bg-page);
+      margin: 0;
+      padding: 24px 16px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--bg-paper);
+      padding: 24px 32px;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    h1 {
+      font-family: var(--font-mono);
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0 0 8px 0;
+      color: var(--ink);
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: var(--ink-muted);
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 12px;
+    }
+
+    .lgpd-notice {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      margin-bottom: 20px;
+      padding: 8px 12px;
+      background: #f0ebe0;
+      border-left: 3px solid #8b7355;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    th {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 2px solid var(--border);
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #e8e4dc;
+      vertical-align: middle;
+    }
+
+    tr.separator td {
+      border-bottom: none;
+      padding: 14px 12px 8px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    tr.separator td::before {
+      content: "--- ";
+    }
+    tr.separator td::after {
+      content: " ---";
+    }
+    #tabela-licencas thead th:nth-child(1) { width: 140px; }
+    #tabela-licencas thead th:nth-child(3) { width: 140px; }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .toolbar-hint { font-size: 0.8rem; color: var(--ink-muted); }
+    .btn-outline { border: 1px solid var(--border); background: var(--bg-paper); }
+    .file-input-label { cursor: pointer; }
+
+    .cell-datetime { white-space: nowrap; }
+    .cell-hardware-id {
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      word-break: break-all;
+    }
+    .cell-status {
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 2px;
+      display: inline-block;
+      font-size: 12px;
+    }
+    .status-aberto {
+      background: var(--yellow-pendente);
+      color: #6b5a00;
+    }
+    .status-confirmado {
+      background: var(--green-confirmado);
+      color: #2e5c2e;
+    }
+    .cell-acoes { white-space: nowrap; }
+
+    .btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-paper);
+      cursor: pointer;
+      border-radius: 2px;
+      margin-right: 6px;
+    }
+    .btn:hover { background: #e8e4dc; }
+    .btn-confirmar { background: #2e5c2e; color: #fff; border-color: #2e5c2e; }
+    .btn-confirmar:hover { background: #3d7a3d; }
+    .btn-copiar { background: #1a5f1a; color: #fff; border-color: #1a5f1a; }
+    .btn-copiar:hover { background: #2a7a2a; }
+
+    .chave-preview {
+      font-size: 11px;
+      color: var(--ink-muted);
+      max-width: 280px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Livro de Ouro — Licenças ETE Ouro 4.0</h1>
+    <p class="subtitle">Cara-Core Informática · Painel de auditoria e controle de pagamentos</p>
+
+    <div class="lgpd-notice">
+      <strong>LGPD:</strong> Esta página não armazena nomes, CPFs ou contatos. Apenas identificadores de máquina (Hardware ID anônimo) e dados necessários ao controle de licenças.
+    </div>
+
+    <div class="toolbar">
+      <label class="file-input-label">
+        <span class="btn btn-outline">Carregar log de pedidos (JSON)</span>
+        <input type="file" id="input-log" accept=".json" hidden>
+      </label>
+      <span class="toolbar-hint" id="hint-origem">Dados da sessão</span>
+    </div>
+
+    <table id="tabela-licencas">
+      <thead>
+        <tr>
+          <th>Data/Hora</th>
+          <th>Hardware ID Anônimo</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="corpo-tabela">
+        <!-- Preenchido por JS -->
+      </tbody>
+    </table>
+
+    <footer>
+      Painel de auditoria · LGPD Resguardo: exibição apenas Data/Hora, Hardware ID anônimo e Status. Ordem decrescente; blocos mensais para fechamento contábil.
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      const SENHA_ADMIN = 'cara2026'; // Alterar em produção
+
+      const MESES = [
+        'JANEIRO', 'FEVEREIRO', 'MARÇO', 'ABRIL', 'MAIO', 'JUNHO',
+        'JULHO', 'AGOSTO', 'SETEMBRO', 'OUTUBRO', 'NOVEMBRO', 'DEZEMBRO'
+      ];
+
+      let pedidos = [
+        { id: 'PED-2026-0042', dataHora: '2026-02-04T14:32:00', hardwareId: 'A7F2C9E1B4D8', valor: 'R$ 29,90', status: 'Em Aberto', chave: null },
+        { id: 'PED-2026-0041', dataHora: '2026-02-04T11:15:00', hardwareId: 'B3E8D1F6A2C9', valor: 'R$ 29,90', status: 'Confirmado/Ativo', chave: null },
+        { id: 'PED-2026-0040', dataHora: '2026-02-03T18:00:00', hardwareId: 'C9A4E2B7D1F3', valor: 'R$ 29,90', status: 'Em Aberto', chave: null },
+        { id: 'PED-2026-0039', dataHora: '2026-02-02T09:45:00', hardwareId: 'D2F5A8C1E6B9', valor: 'R$ 29,90', status: 'Confirmado/Ativo', chave: null },
+        { id: 'PED-2026-0038', dataHora: '2026-01-28T16:20:00', hardwareId: 'E1B9C4D7F2A5', valor: 'R$ 29,90', status: 'Confirmado/Ativo', chave: null },
+        { id: 'PED-2026-0037', dataHora: '2026-01-25T10:00:00', hardwareId: 'F6C2E8A3B1D9', valor: 'R$ 29,90', status: 'Em Aberto', chave: null },
+      ];
+
+      // Restaurar do sessionStorage se houver (preserva chaves geradas)
+      try {
+        const saved = sessionStorage.getItem('licencas_ete_pedidos');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length) pedidos = parsed;
+        }
+      } catch (_) {}
+
+      function persist() {
+        try {
+          sessionStorage.setItem('licencas_ete_pedidos', JSON.stringify(pedidos));
+        } catch (_) {}
+      }
+
+      function ordenarDesc(lista) {
+        return [...lista].sort((a, b) => new Date(b.dataHora) - new Date(a.dataHora));
+      }
+
+      function agruparPorMesAno(listaOrdenada) {
+        const grupos = [];
+        let ultimoMesAno = null;
+        for (const p of listaOrdenada) {
+          const d = new Date(p.dataHora);
+          const mesAno = { mes: d.getMonth(), ano: d.getFullYear(), label: MESES[d.getMonth()] + ' ' + d.getFullYear() };
+          if (ultimoMesAno !== mesAno.label) {
+            ultimoMesAno = mesAno.label;
+            grupos.push({ tipo: 'separador', label: mesAno.label });
+          }
+          grupos.push({ tipo: 'pedido', pedido: p });
+        }
+        return grupos;
+      }
+
+      function carregarDeArquivo(file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          try {
+            const raw = reader.result;
+            const data = typeof raw === 'string' ? JSON.parse(raw) : raw;
+            const lista = Array.isArray(data) ? data : (data.pedidos || data.registros || []);
+            if (!Array.isArray(lista) || lista.length === 0) {
+              alert('Formato inválido. Esperado: JSON com array de objetos { dataHora, hardwareId, status [, id, chave ] }.');
+              return;
+            }
+            pedidos = lista.map(function (r) {
+              return {
+                id: r.id || 'PED-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+                dataHora: r.dataHora || r.data_hora || r.timestamp || new Date().toISOString(),
+                hardwareId: r.hardwareId || r.hardware_id || r.hid || '',
+                valor: r.valor != null ? r.valor : 'R$ 29,90',
+                status: r.status || r.Status || 'Em Aberto',
+                chave: r.chave || null
+              };
+            });
+            persist();
+            renderizar();
+            document.getElementById('hint-origem').textContent = 'Carregado: ' + (file && file.name ? file.name : 'arquivo');
+          } catch (e) {
+            alert('Erro ao ler o arquivo: ' + (e.message || 'formato inválido'));
+          }
+        };
+        reader.readAsText(file);
+      }
+
+      document.getElementById('input-log').addEventListener('change', function () {
+        const f = this.files && this.files[0];
+        if (f) carregarDeArquivo(f);
+      });
+
+      async function gerarChaveAtivacao(hardwareId) {
+        const validUntil = '2099-12-31';
+        const payload = `HARDWARE_ID=${hardwareId}|VALID_UNTIL=${validUntil}`;
+        const secret = new TextEncoder().encode('cara-core-licenca-ouro40-demo');
+        const key = await crypto.subtle.importKey(
+          'raw', secret, { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+        );
+        const sig = await crypto.subtle.sign(
+          'HMAC', key, new TextEncoder().encode(payload)
+        );
+        const sigHex = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 32);
+        return `${payload}|SIGNATURE=${sigHex}`;
+      }
+
+      function formatarDataHora(iso) {
+        const d = new Date(iso);
+        return d.toLocaleString('pt-BR', {
+          day: '2-digit', month: '2-digit', year: 'numeric',
+          hour: '2-digit', minute: '2-digit'
+        });
+      }
+
+      function confirmarPagamento(pedido) {
+        const senha = prompt('Digite a senha de administrador:');
+        if (senha !== SENHA_ADMIN) {
+          alert('Senha incorreta.');
+          return;
+        }
+        pedido.status = 'Confirmado/Ativo';
+        gerarChaveAtivacao(pedido.hardwareId).then(chave => {
+          pedido.chave = chave;
+          persist();
+          renderizar();
+        });
+      }
+
+      async function copiarChaveWhatsApp(pedido) {
+        let chave = pedido.chave;
+        if (!chave && pedido.status === 'Confirmado/Ativo') {
+          chave = await gerarChaveAtivacao(pedido.hardwareId);
+          pedido.chave = chave;
+          persist();
+          renderizar();
+        }
+        const texto = chave
+          ? `Chave de ativação ETE Ouro 4.0:\n${chave}\n\nSalve em um arquivo chamado license.key na pasta do simulador.`
+          : `Hardware ID para ativação: ${pedido.hardwareId}\n(Confirme o pagamento para gerar a chave.)`;
+        navigator.clipboard.writeText(texto).then(() => {
+          const btn = document.querySelector(`.btn-copiar[data-id="${pedido.id}"]`);
+          if (btn) { btn.textContent = 'Copiado!'; setTimeout(() => { btn.textContent = 'Copiar Chave para WhatsApp'; }, 2000); }
+        }).catch(() => alert('Não foi possível copiar.'));
+      }
+
+      function renderizar() {
+        const tbody = document.getElementById('corpo-tabela');
+        const ordenados = ordenarDesc(pedidos);
+        const itens = agruparPorMesAno(ordenados);
+
+        tbody.innerHTML = '';
+        for (const item of itens) {
+          if (item.tipo === 'separador') {
+            const tr = document.createElement('tr');
+            tr.className = 'separator';
+            tr.innerHTML = '<td colspan="4">' + item.label + '</td>';
+            tbody.appendChild(tr);
+            continue;
+          }
+          const p = item.pedido;
+          const tr = document.createElement('tr');
+          const isConfirmado = p.status === 'Confirmado/Ativo';
+          const statusClass = isConfirmado ? 'status-confirmado' : 'status-aberto';
+          const botoes = isConfirmado
+            ? '<button type="button" class="btn btn-copiar" data-id="' + p.id + '">Copiar Chave para WhatsApp</button>'
+            : '<button type="button" class="btn btn-confirmar" data-id="' + p.id + '">Confirmar Pagamento</button>';
+          const chavePreview = p.chave ? '<div class="chave-preview" title="' + (p.chave.replace(/"/g, '&quot;')) + '">' + p.chave + '</div>' : '';
+          tr.innerHTML =
+            '<td class="cell-datetime">' + formatarDataHora(p.dataHora) + '</td>' +
+            '<td class="cell-hardware-id">' + p.hardwareId + '</td>' +
+            '<td><span class="cell-status ' + statusClass + '">' + p.status + '</span></td>' +
+            '<td class="cell-acoes">' + botoes + chavePreview + '</td>';
+          tbody.appendChild(tr);
+        }
+
+        tbody.querySelectorAll('.btn-confirmar').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            const pedido = pedidos.find(x => x.id === id);
+            if (pedido) confirmarPagamento(pedido);
+          });
+        });
+        tbody.querySelectorAll('.btn-copiar').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.getAttribute('data-id');
+            const pedido = pedidos.find(x => x.id === id);
+            if (pedido) copiarChaveWhatsApp(pedido);
+          });
+        });
+      }
+
+      renderizar();
+    })();
+  </script>
+</body>
+</html>

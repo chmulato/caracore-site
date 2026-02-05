@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download — Minerador 4.0 | chmulatoETE | Cara Core Informática</title>
+    <meta name="description" content="Baixe o instalador Windows do simulador Campo Largo: Minerador 4.0. Versão validada por testes (PyTest). Checksums SHA-256 e MD5 para verificação de integridade.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/laboratorio.css" rel="stylesheet">
+    <style>
+        .download-page .wrapper { max-width: 640px; }
+        .download-page header { padding: 48px 0 32px; border-bottom: 1px solid var(--border); }
+        .download-page header h1 { font-size: 1.75rem; margin-bottom: 8px; }
+        .download-page header p { color: var(--text-secondary); font-size: 0.95rem; }
+        .download-hero {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px;
+            margin: 32px 0 24px;
+            text-align: center;
+        }
+        .download-hero .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent-amber);
+            color: #0d0f12;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+        .download-hero .btn-download:hover { background: #fbbf24; transform: translateY(-1px); }
+        .download-hero .btn-download:focus { outline: 2px solid var(--accent-blue); outline-offset: 2px; }
+        .download-hero .version { margin-top: 16px; font-size: 0.9rem; color: var(--text-secondary); }
+        .download-meta {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 24px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border);
+        }
+        .download-meta ul { margin: 12px 0 0 20px; }
+        .download-meta li { margin-bottom: 6px; }
+        .download-meta a { color: var(--accent-blue); }
+        .download-back { margin-top: 32px; }
+        .download-back a { color: var(--text-secondary); text-decoration: none; }
+        .download-back a:hover { color: var(--accent-gold); }
+        .breadcrumb { font-size: 0.85rem; margin-bottom: 16px; padding-top: 16px; }
+        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: var(--text-secondary); }
+    </style>
+</head>
+<body class="download-page">
+    <div class="wrapper">
+        <nav class="breadcrumb" aria-label="Navegação">
+            <a href="../../portfolio.html#minerador-ete">Cara Core Informática</a>
+            <span> · </span>
+            <a href="../../portfolio.html">Portfólio</a>
+            <span> · </span>
+            <a href="index.html">Minerador 4.0</a>
+            <span> · </span>
+            <span>Download</span>
+        </nav>
+        <header>
+            <h1>Download — Minerador 4.0</h1>
+            <p>Instalador Windows do simulador Campo Largo: Terras Raras e ETE. Uma única versão estável, validada por testes automatizados.</p>
+        </header>
+
+        <section class="download-hero">
+            <a href="https://github.com/chmulato/ETE-releases/releases/latest" class="btn-download" target="_blank" rel="noopener">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Baixar Minerador 4.0 (Windows)
+            </a>
+            <p class="version">Você será redirecionado para a página de Releases. Baixe o arquivo <strong>Minerador40.exe</strong> e, se desejar, o <strong>checksum.sha256</strong> para verificar a integridade.</p>
+        </section>
+
+        <div class="download-meta">
+            <p><strong>Na página do Release você encontra:</strong></p>
+            <ul>
+                <li><strong>Minerador40.exe</strong> — instalador (executar no Windows)</li>
+                <li><strong>checksum.sha256</strong> — para validar o arquivo (recomendado)</li>
+                <li><strong>checksum.md5</strong> — alternativa de verificação</li>
+                <li><strong>INSTALACAO.md</strong> — guia rápido de instalação e uso</li>
+            </ul>
+            <p style="margin-top: 16px;">Para verificar o SHA-256 no PowerShell: <code style="font-size: 0.85em;">Get-FileHash -Path .\Minerador40.exe -Algorithm SHA256</code>. Compare o resultado com o valor em checksum.sha256.</p>
+        </div>
+
+        <p class="download-meta" style="margin-top: 16px;">Desbloquear o <strong>Módulo Mineração</strong> (fase paga): <a href="upgrade-ouro40.html">Upgrade para Ouro 4.0</a> — PIX e ativação por license.key.</p>
+        <p class="download-back"><a href="index.html">← Voltar ao portal</a> · <a href="laboratorio_campo_largo.html">Laboratório Campo Largo: Ouro 4.0</a> · <a href="upgrade-ouro40.html">Upgrade Ouro 4.0</a></p>
+    </div>
+</body>
+</html>

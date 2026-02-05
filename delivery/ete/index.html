@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chmulatoETE Minerador 4.0 — Simulador de Hidrometalurgia Seletiva | Cara Core Informática</title>
+    <meta name="description" content="Simulador de Hidrometalurgia Seletiva: Engenharia de Processos de Efluentes no Refino de Terras Raras. Apresentação e download centralizados pela Cara Core Informática.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #1a1d21;
+            --bg-card: #252a30;
+            --bg-elevated: #2d333b;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent-blue: #58a6ff;
+            --accent-gold: #d4a853;
+            --border: #373e47;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            min-height: 100vh;
+            padding: 0 20px 40px;
+        }
+
+        .wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+            margin-bottom: 24px;
+            padding-top: 16px;
+        }
+        .breadcrumb a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: var(--text-secondary); }
+
+        /* Hero */
+        header {
+            padding: 24px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+        }
+
+        header .subtitle {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--text-secondary);
+            max-width: 640px;
+            margin: 0 auto;
+            line-height: 1.65;
+        }
+
+        header .tagline {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--accent-gold);
+            max-width: 640px;
+            margin: 16px auto 0;
+            line-height: 1.6;
+        }
+
+        /* Metodologia */
+        .methodology {
+            margin: 40px 0 48px;
+        }
+
+        .methodology .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 28px 32px;
+        }
+
+        .methodology .card h2 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 14px;
+        }
+
+        .methodology .card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        .methodology .card p strong {
+            color: var(--text-primary);
+        }
+
+        .methodology .card.card-differential {
+            margin-top: 20px;
+        }
+
+        /* Navigation cards */
+        .nav-section-title {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .nav-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.2s, background 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .nav-card:hover {
+            border-color: var(--accent-blue);
+            background: var(--bg-elevated);
+        }
+
+        .nav-card-ambiental {
+            border-left: 4px solid #2d8a4e;
+        }
+        .nav-card-ambiental:hover {
+            border-color: #2d8a4e;
+            background: rgba(45, 138, 78, 0.08);
+        }
+        .nav-card-ambiental h3 { color: #4ade80; }
+
+        .nav-card-mineracao {
+            border-left: 4px solid #8b949e;
+        }
+        .nav-card-mineracao:hover {
+            border-color: var(--accent-gold);
+            background: rgba(212, 168, 83, 0.08);
+        }
+        .nav-card-mineracao h3 { color: var(--accent-gold); }
+
+        .nav-card-campo-largo {
+            border-left: 4px solid #f59e0b;
+        }
+        .nav-card-campo-largo:hover {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.08);
+        }
+        .nav-card-campo-largo h3 { color: #f59e0b; }
+
+        .nav-card .icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 16px;
+            flex-shrink: 0;
+        }
+
+        .nav-card .icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .nav-card p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 56px;
+            padding-top: 28px;
+            border-top: 1px solid var(--border);
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        footer a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        footer .soberania {
+            margin-top: 16px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            opacity: 0.9;
+        }
+
+        footer .apostila-rodape {
+            margin-top: 20px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(55, 62, 71, 0.6);
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            opacity: 0.85;
+        }
+
+        footer .apostila-rodape a {
+            color: var(--accent-gold);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <nav class="breadcrumb" aria-label="Navegação">
+            <a href="../../portfolio.html#minerador-ete">Cara Core Informática</a>
+            <span> · </span>
+            <a href="../../portfolio.html">Portfólio</a>
+            <span> · </span>
+            <span>chmulatoETE Minerador 4.0</span>
+        </nav>
+        <header>
+            <h1>chmulatoETE Minerador 4.0</h1>
+            <p class="subtitle">Simulador de Hidrometalurgia Seletiva: Aplicando a Engenharia de Processos de Efluentes no Refino de Terras Raras.</p>
+            <p class="tagline">O Brasil possui o conhecimento e as reservas; este projeto entrega a ferramenta de simulação para viabilizar a separação seletiva com custos competitivos.</p>
+        </header>
+
+        <section class="methodology">
+            <div class="card">
+                <h2>Por que a Arquitetura ETE?</h2>
+                <p>Utilizamos a robustez e a modularidade das Estações de Tratamento de Efluentes (decantação fracionada, lodos ativados e tanques em cascata) para resolver o desafio complexo da separação de lantanídeos em ambientes de mineração e reciclagem industrial. A eficiência de custos (OPEX) e a escalabilidade são pilares da metodologia transferida para o refino de concentrados e soluções ricas de lixiviação (PLS).</p>
+            </div>
+            <div class="card card-differential">
+                <h2>Diferencial Competitivo: Escalabilidade Modular vs. Plantas Centralizadas</h2>
+                <p>Plantas centralizadas exigem alto CAPEX e escala mínima. A abordagem ETE permite implantação modular: estágios de precipitação e decantação com investimento fracionado, viabilizando jazidas economicamente marginais e reduzindo a barreira de entrada ao refino.</p>
+            </div>
+        </section>
+
+        <p class="nav-section-title">Navegação Estratégica</p>
+        <div class="nav-grid">
+            <a href="#" id="link-residencial" class="nav-card nav-card-ambiental" title="Abre o simulador ETE-Residual (tema verde/sustentável). Execute local: streamlit run src/ete_residencial/app_residencial.py">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </span>
+                <h3>Solução Ambiental</h3>
+                <p>Simulador ETE-Residual: conformidade, descarte seguro, redução de impacto ambiental (mg/L). Tema verde/sustentável.</p>
+            </a>
+            <a href="#" id="link-mineracao" class="nav-card nav-card-mineracao" title="Abre o simulador ETE-Mineração (tema industrial). Execute local: streamlit run src/ete_mineracao/app_mineracao.py">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="4" width="6" height="5" rx="0.5"/><rect x="2" y="15" width="6" height="5" rx="0.5"/>
+                        <rect x="10" y="4" width="6" height="5" rx="0.5"/><rect x="10" y="15" width="6" height="5" rx="0.5"/>
+                        <rect x="18" y="4" width="4" height="5" rx="0.5"/><rect x="18" y="15" width="4" height="5" rx="0.5"/>
+                    </svg>
+                </span>
+                <h3>Refino Mineral</h3>
+                <p>Simulador ETE-Mineração: pureza comercial, ROI, g óxido/t, margem bruta (g/L, %). Tema industrial/sóbrio.</p>
+            </a>
+            <a href="download.html" class="nav-card" title="Baixar o instalador Windows do Minerador 4.0">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                </span>
+                <h3>Download — Minerador 4.0</h3>
+                <p>Instalador Windows (.exe) do simulador. Versão estável, checksums SHA-256 e guia de instalação.</p>
+            </a>
+            <a href="laboratorio_campo_largo.html" class="nav-card nav-card-campo-largo" title="Laboratório Campo Largo: Ouro 4.0 — Rochas, Python e Futuro">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/>
+                    </svg>
+                </span>
+                <h3>Laboratório Campo Largo: Ouro 4.0</h3>
+                <p>Rochas &amp; cerâmicas, Python + química, IFPR: onde o código vira matéria. Jornada para mentes jovens.</p>
+            </a>
+            <a href="https://github.com/chmulato/ETE-releases" class="nav-card" target="_blank" rel="noopener">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                    </svg>
+                </span>
+                <h3>Repositório</h3>
+                <p>Acesso ao código e instruções de execução (Streamlit).</p>
+            </a>
+            <a href="index_v2.html" class="nav-card">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>
+                    </svg>
+                </span>
+                <h3>Apostila de P&D</h3>
+                <p>Documentação técnica para capacitação em Hidrometalurgia de Terras Raras.</p>
+            </a>
+            <a href="artigo_ete_v3.html" class="nav-card">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18"/><path d="M18 9v6"/><path d="M13 9v6"/><path d="M8 9v6"/><path d="M3 14h15"/>
+                    </svg>
+                </span>
+                <h3>Artigo Executivo</h3>
+                <p>Visão de negócios sobre Soberania em Terras Raras e valor da metodologia ETE.</p>
+            </a>
+            <a href="painel-convergencia.html" class="nav-card" title="Gráficos interativos: titulação pH e saturação O₂ — ponto de solução">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>
+                    </svg>
+                </span>
+                <h3>Painel de Convergência Matemática</h3>
+                <p>Visualize a intersecção das curvas como o ponto de solução: pH, O₂ e a revelação matemática em gráficos interativos (Plotly).</p>
+            </a>
+            <a href="serie-decantadores-ph.html" class="nav-card" title="Série de decantadores por pH — Mineração">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="6" width="6" height="12" rx="1"/><rect x="9" y="4" width="6" height="16" rx="1"/><rect x="16" y="2" width="6" height="20" rx="1"/>
+                    </svg>
+                </span>
+                <h3>Série de Decantadores por pH</h3>
+                <p>Cascata step-down: Tanque 1 (Fe/Al) → 2 (metais base) → 3 (REE/Mg). Precipitação, curvas de solubilidade e painel de eficiência.</p>
+            </a>
+            <a href="painel-simbiotico.html" class="nav-card" title="Protótipo: interface unificada Ambiental ↔ Mineração">
+                <span class="icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                </span>
+                <h3>Painel Simbiótico (protótipo)</h3>
+                <p>Interface unificada Ambiental → Mineração: fluxo de água tratada, glassmorphism e upgrade Premium (R$ 29,90).</p>
+            </a>
+        </div>
+
+        <section id="download-simulador" class="methodology" style="margin-top: 2rem;">
+            <div class="card" style="border-left: 4px solid var(--accent-gold);">
+                <h2>Download do simulador (Windows)</h2>
+                <p>O aplicativo <strong>Minerador 4.0</strong> (Campo Largo: Terras Raras) está disponível como instalador .exe para Windows. Cálculos validados por PyTest; checksums SHA-256 e MD5 para verificação de integridade.</p>
+                <p style="margin-top: 12px;"><a href="download.html" style="color: var(--accent-blue); font-weight: 500;">Ir para a página de download →</a></p>
+            </div>
+        </section>
+
+        <section id="instrucoes-simulador" class="methodology" style="margin-top: 2rem;">
+            <div class="card" id="residencial">
+                <h2>Solução Ambiental (ETE-Residual)</h2>
+                <p>Para abrir o simulador com tema verde/sustentável: execute na raiz do repositório <code>streamlit run src/ete_residencial/app_residencial.py</code> ou <code>python run_residencial.py</code>. Relatório focado em Redução de Impacto Ambiental.</p>
+            </div>
+            <div class="card" id="mineracao" style="margin-top: 1rem;">
+                <h2>Refino Mineral (ETE-Mineração)</h2>
+                <p>Para abrir o simulador com tema industrial/sóbrio: execute <code>streamlit run src/ete_mineracao/app_mineracao.py</code> ou <code>python run_mineracao.py</code>. Relatório focado em Gramas de Óxido por Tonelada e Margem de Lucro Bruta.</p>
+            </div>
+        </section>
+
+        <script>
+            document.getElementById('link-residencial').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('residencial').scrollIntoView({ behavior: 'smooth' });
+            });
+            document.getElementById('link-mineracao').addEventListener('click', function(e) {
+                e.preventDefault();
+                document.getElementById('mineracao').scrollIntoView({ behavior: 'smooth' });
+            });
+        </script>
+
+        <footer>
+            <p><a href="../../portfolio.html#minerador-ete">Cara Core Informática — Portfólio</a> · <a href="https://github.com/chmulato/ETE-releases" target="_blank" rel="noopener">Repositório GitHub: chmulato/ETE-releases</a></p>
+            <p>Soberania Técnica: metodologia de processo (ETE) transferida para refino de concentrados minerais e PLS; não se aplica a tratamento de esgoto doméstico.</p>
+            <p class="soberania">Desenvolvido para o setor de Mineração e Hidrometalurgia Especializada. Delivery centralizado pela Cara Core Informática.</p>
+            <p class="apostila-rodape">Material de apoio: <a href="assets/pdf/Manual_Iniciacao_Ouro40.pdf" target="_blank" rel="noopener">Manual de Iniciação — Ouro 4.0</a> (PDF) · <a href="laboratorio_campo_largo.html">Laboratório Campo Largo</a> · <a href="download.html">Download do Minerador 4.0</a>.</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendiz do Reino OIDC - Flashcards Interativos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico"> -->
+    <style>
+        .flashcard {
+            perspective: 1000px;
+            height: 300px;
+            margin: 20px 0;
+        }
+        
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+        
+        .flashcard.flipped .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .flashcard-front {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .flashcard-back {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            transform: rotateY(180deg);
+        }
+        
+        .path-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .path-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .progress-ring {
+            transform: rotate(-90deg);
+        }
+        
+        .character-badge {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .custom-progress {
+            width: 200px;
+            height: 20px;
+        }
+        
+        .difficulty-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">🏠 Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personagens.html">👥 Personagens</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            📖 História
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historia_p1.html">Parte I - A Era Sombria</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II - A Chegada do OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p3.html">Parte III - A Nova Era</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mundo_do_conhecimento.html">🌟 Conhecimento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="caminho_feliz.html">✨ Caminho Feliz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="aprendiz.html">🎓 Academia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="glossario.html">📚 Glossário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mapas.html">🗺️ Mapas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Página Inicial - Seleção de Caminhos -->
+        <div id="pathSelection" class="row">
+            <div class="col-12">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 text-primary">🎓 Academia do Reino OIDC</h1>
+                    <p class="lead">Teste seus conhecimentos com flashcards interativos</p>
+                    <p class="text-muted">Escolha seu caminho de aprendizado e domine os conceitos OAuth 2.1 e OpenID Connect</p>
+                </div>
+            </div>
+
+            <!-- Caminho do Iniciante -->
+            <div class="col-md-4 mb-4">
+                <div class="card path-card h-100 border-success" onclick="startPath('iniciante')">
+                    <div class="card-header bg-success text-white text-center position-relative">
+                        <span class="difficulty-badge badge bg-light text-success">Iniciante</span>
+                        <h4 class="mb-0">🌱 Caminho do Iniciante</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="character-badge">👑🧙‍♂️🧑‍💼</div>
+                        <h5 class="card-title">Fundamentos Básicos</h5>
+                        <p class="card-text">Conheça os conceitos essenciais através de Lady OAuth, Lord OIDC e Alex Client</p>
+                        <ul class="list-unstyled text-start">
+                            <li>✅ O que é OAuth vs OIDC</li>
+                            <li>✅ Autorização vs Autenticação</li>
+                            <li>✅ Papel do Cliente</li>
+                            <li>✅ Conceitos de Tokens</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-success">20 Perguntas</span>
+                            <span class="badge bg-outline-success">40 Respostas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caminho do Aventureiro -->
+            <div class="col-md-4 mb-4">
+                <div class="card path-card h-100 border-warning" onclick="startPath('aventureiro')">
+                    <div class="card-header bg-warning text-dark text-center position-relative">
+                        <span class="difficulty-badge badge bg-light text-warning">Intermediário</span>
+                        <h4 class="mb-0">⚔️ Caminho do Aventureiro</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="character-badge">🧚🧝‍♀️🛡️</div>
+                        <h5 class="card-title">Segurança e Tokens</h5>
+                        <p class="card-text">Domine os mecanismos de segurança com Pixie PKCE, IDA Token e Ace Token</p>
+                        <ul class="list-unstyled text-start">
+                            <li>⚡ PKCE e Proteção</li>
+                            <li>⚡ ID Token vs Access Token</li>
+                            <li>⚡ JWT e Assinaturas</li>
+                            <li>⚡ Escopos e Permissões</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-warning">20 Perguntas</span>
+                            <span class="badge bg-outline-warning">40 Respostas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Caminho do Mestre -->
+            <div class="col-md-4 mb-4">
+                <div class="card path-card h-100 border-danger" onclick="startPath('mestre')">
+                    <div class="card-header bg-danger text-white text-center position-relative">
+                        <span class="difficulty-badge badge bg-light text-danger">Avançado</span>
+                        <h4 class="mb-0">🏆 Caminho do Mestre</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="character-badge">🏦👩‍💻</div>
+                        <h5 class="card-title">Implementação Prática</h5>
+                        <p class="card-text">Aprenda implementação real com Seraph Resource e Devia Desenvolvedora</p>
+                        <ul class="list-unstyled text-start">
+                            <li>🔥 Resource Servers</li>
+                            <li>🔥 Validação de Tokens</li>
+                            <li>🔥 Fluxos Completos</li>
+                            <li>🔥 Boas Práticas</li>
+                        </ul>
+                        <div class="mt-3">
+                            <span class="badge bg-danger">20 Perguntas</span>
+                            <span class="badge bg-outline-danger">40 Respostas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interface de Flashcards -->
+        <div id="flashcardInterface" class="d-none">
+            <div class="row">
+                <div class="col-12">
+                    <!-- Cabeçalho do Quiz -->
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="mb-0" id="pathTitle">Caminho Selecionado</h5>
+                                <small class="text-muted" id="pathDescription">Descrição do caminho</small>
+                            </div>
+                            <div class="text-end">
+                                <div class="progress custom-progress">
+                                    <div class="progress-bar" id="progressBar" role="progressbar" aria-label="Progresso das perguntas" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <small class="text-muted mt-1 d-block">
+                                    Pergunta <span id="currentQuestion">1</span> de <span id="totalQuestions">20</span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Flashcard -->
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="flashcard" id="flashcard" onclick="flipCard()">
+                                <div class="flashcard-inner" id="flashcardInner">
+                                    <div class="flashcard-front">
+                                        <div>
+                                            <div class="character-badge" id="questionCharacter">🤔</div>
+                                            <h4 id="questionText">Clique para começar</h4>
+                                            <p class="mt-3"><small>Clique para ver a resposta</small></p>
+                                        </div>
+                                    </div>
+                                    <div class="flashcard-back">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-md-6 border-end">
+                                                    <h6>👶 Para Leigos</h6>
+                                                    <p id="answerLeigo" class="small">Resposta em linguagem simples</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h6>🔧 Para Técnicos</h6>
+                                                    <p id="answerTecnico" class="small">Resposta técnica detalhada</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Controles -->
+                            <div class="text-center mt-4">
+                                <button class="btn btn-outline-secondary me-2" onclick="previousCard()" id="btnPrevious" disabled>
+                                    ⬅️ Anterior
+                                </button>
+                                <button class="btn btn-primary me-2" onclick="nextCard()" id="btnNext">
+                                    Próxima ➡️
+                                </button>
+                                <button class="btn btn-outline-danger me-2" onclick="resetPath()">
+                                    🔄 Reiniciar
+                                </button>
+                                <button class="btn btn-success" onclick="goBackToSelection()">
+                                    📚 Escolher Outro Caminho
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resultados finais -->
+                    <div id="completionCard" class="card mt-4 d-none">
+                        <div class="card-header bg-success text-white text-center">
+                            <h4>🎉 Parabéns! Caminho Concluído!</h4>
+                        </div>
+                        <div class="card-body text-center">
+                            <p class="lead">Você completou todas as 20 perguntas deste caminho!</p>
+                            <div class="row mt-4">
+                                <div class="col-md-4">
+                                    <div class="card border-primary">
+                                        <div class="card-body">
+                                            <h5>🎯 Próximos Passos</h5>
+                                            <a href="mundo_do_conhecimento.html" class="btn btn-primary">Conhecimento Técnico</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border-info">
+                                        <div class="card-body">
+                                            <h5>⚡ Prática</h5>
+                                            <a href="caminho_feliz.html" class="btn btn-info">Caminho Feliz</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border-warning">
+                                        <div class="card-body">
+                                            <h5>📖 Consultas</h5>
+                                            <a href="glossario.html" class="btn btn-warning">Glossário</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <div class="container">
+            <p>&copy; 2025 Reino OIDC - Academia Interativa de OAuth 2.1 e OpenID Connect</p>
+            <p><small>Projeto educativo open source - <a href="https://github.com/chmulato/reino_oidc" class="text-info">GitHub</a></small></p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/aprendiz.js"></script>
+</body>
+</html>

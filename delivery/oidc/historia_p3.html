@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte III - Reino da Identidade Federada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">🏠 Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personagens.html">👥 Personagens</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            📖 História
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historia_p1.html">Parte I - A Era Sombria</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II - A Chegada do OIDC</a></li>
+                            <li><a class="dropdown-item active" href="historia_p3.html">Parte III - A Nova Era</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mundo_do_conhecimento.html">🌟 Conhecimento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="caminho_feliz.html">✨ Caminho Feliz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aprendiz.html">🎓 Academia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="glossario.html">📚 Glossário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mapas.html">🗺️ Mapas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center">Parte III — A Nova Ordem Digital e a Aprendiz Devia</h1>
+                <p class="lead text-center">Onde tudo se integra em aplicações reais</p>
+                
+                <!-- Imagem da Parte III -->
+                <div class="text-center my-4">
+                    <img src="assets/images/imagem_parte_iii.png" 
+                         alt="A Nova Era Digital - Devia implementando OAuth e OIDC em aplicações modernas com todos os personagens trabalhando em harmonia" 
+                         class="img-fluid rounded shadow-lg w-100">
+                    <p class="text-muted small mt-2 fst-italic">
+                        A Nova Era Digital: Devia, a desenvolvedora moderna, integra harmoniosamente todos os 
+                        personagens do Reino OIDC em aplicações reais, mostrando a implementação prática dos protocolos.
+                    </p>
+                </div>
+                
+                <div class="mt-5">
+                    <p>Séculos digitais se passam, e surge uma nova geração. Entre eles está Devia, a desenvolvedora da Cara Core Informática — curiosa, disciplinada e determinada a dominar o legado de Lady OAuth e Lord OIDC.</p>
+                    <p>Devia trabalha em sistemas modernos: aplicações web, APIs, portais corporativos e aplicativos mobile. Ela entende que o segredo está em fazer os personagens trabalharem juntos.</p>
+                    
+                    <h4 class="mt-4">Etapas da implementação lógica</h4>
+                    <ol>
+                        <li>Alex Client (o aplicativo) pede a Lady OAuth uma autorização.</li>
+                        <li>Envia seu client_id, redirect_uri, scope e o code_challenge criado por Pixie.</li>
+                        <li>Lady OAuth redireciona o usuário para o portal de login.</li>
+                        <li>Lord OIDC autentica o cidadão.</li>
+                        <li>Se o login for bem-sucedido, devolve um authorization code temporário.</li>
+                        <li>Pixie PKCE entra em ação.</li>
+                        <li>Alex envia o code_verifier original ao servidor para provar que é ele mesmo.</li>
+                        <li>O servidor devolve três tokens:
+                            <ul>
+                                <li><strong>Access Token</strong> → autorização para recursos;</li>
+                                <li><strong>ID Token</strong> → autenticação e identidade;</li>
+                                <li><strong>Refresh Token</strong> → renovação futura (quando necessário).</li>
+                            </ul>
+                        </li>
+                        <li>Ace Token, o cavaleiro das permissões, leva o Access Token até Seraph Resource, o guardião das APIs.</li>
+                        <li>Seraph verifica assinaturas e escopos antes de abrir as portas dos dados.</li>
+                        <li>IDA Token, a mensageira da verdade, confirma a identidade do usuário na aplicação.</li>
+                        <li>Rex Token, o renovador eterno, permanece guardado em segurança, pronto para agir quando Ace expirar.</li>
+                        <li>Devia usa os claims para montar o perfil do usuário na aplicação.</li>
+                    </ol>
+
+                    <h4 class="mt-4">A sabedoria que Devia aprende</h4>
+                    <ul>
+                        <li><strong>OAuth 2.1</strong> = autorização segura entre sistemas.</li>
+                        <li><strong>OpenID Connect</strong> = autenticação sobre o OAuth (prova de quem é o usuário).</li>
+                        <li><strong>PKCE</strong> = reforço criptográfico que impede roubo de códigos.</li>
+                        <li><strong>Access Token</strong> = chave de acesso temporária a recursos.</li>
+                        <li><strong>ID Token</strong> = identidade assinada digitalmente.</li>
+                        <li><strong>Refresh Token</strong> = renovador silencioso que evita re-autenticações.</li>
+                        <li><strong>Resource Server</strong> = API que valida tokens e protege dados.</li>
+                        <li><strong>Scopes e Claims</strong> = definem o que pode ser acessado e quais dados são revelados.</li>
+                    </ul>
+
+                    <h4 class="mt-4">O Ciclo da Renovação — A Dança de Rex Token</h4>
+                    <p>Devia aprende que um dos aspectos mais elegantes do sistema é como Rex Token trabalha nos bastidores. Diferente de Ace e IDA, que são ativos e visíveis, Rex vive na quietude, esperando sua hora.</p>
+                    
+                    <div class="alert alert-info">
+                        <h6><strong>🔄 Como funciona o ciclo de renovação:</strong></h6>
+                        <ol class="mb-0">
+                            <li><strong>Ace Token expira</strong> — Vida útil curta (15-60 minutos)</li>
+                            <li><strong>Alex Client percebe</strong> — HTTP 401 ou verificação proativa</li>
+                            <li><strong>Rex Token desperta</strong> — Sai do cofre seguro</li>
+                            <li><strong>Troca silenciosa</strong> — Novo Ace + novo Rex (rotação)</li>
+                            <li><strong>Rex original se destrói</strong> — Segurança máxima</li>
+                            <li><strong>Usuário nem percebe</strong> — Experiência fluida</li>
+                        </ol>
+                    </div>
+
+                    <p>Rex ensina uma lição importante: <em>"A melhor segurança é aquela que o usuário não percebe, mas que sempre está vigilante."</em></p>
+
+                    <p>Devia percebe que, juntos, esses conceitos formam a Nova Ordem da Confiança Digital — onde identidade, permissão e segurança coexistem em harmonia.</p>
+
+                    <h4 class="mt-4">Epílogo — O Conselho da Confiança</h4>
+                    <p>No grande salão de Federápolis, Lady OAuth e Lord OIDC entregam a Devia o "Livro dos Tokens". Pixie sorri ao ver as linhas de código que agora ela compreende de verdade. Rex Token, sempre discreto, observa silenciosamente das sombras — sua presença é sentida, mesmo quando não é vista.</p>
+                    <blockquote class="blockquote">
+                        <p>"A tecnologia muda, Devia," — diz Lady OAuth, "mas os princípios permanecem: confiança, verificação e limite."</p>
+                        <p>"E nunca esqueça," — completa Lord OIDC — "autenticar é provar quem é; autorizar é permitir o que pode fazer."</p>
+                        <p>"E lembre-se," — sussurra Rex das sombras — "a melhor experiência é aquela onde a segurança é invisível, mas a confiança é eterna."</p>
+                    </blockquote>
+                    <p>Devia volta à sua oficina digital, pronta para construir sistemas que respeitam o usuário, protegem dados e unem mundos através da confiança. Ela agora compreende que cada token tem seu propósito: Ace para o presente, IDA para a identidade, e Rex para o futuro.</p>
+
+                    <h4 class="mt-4">Moral da história</h4>
+                    <blockquote class="blockquote">
+                        <p>"OAuth 2.1 e OIDC não são apenas protocolos — são uma filosofia de design para um mundo conectado, onde segurança e experiência caminham lado a lado."</p>
+                    </blockquote>
+                </div>
+
+                <!-- Navegação entre partes -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <nav aria-label="Navegação da História">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <a href="historia_p2.html" class="btn btn-outline-primary">
+                                        <i class="fas fa-arrow-left"></i> Anterior: Parte II
+                                    </a>
+                                </div>
+                                <div class="text-center">
+                                    <small class="text-muted">Parte III de III</small>
+                                </div>
+                                <div>
+                                    <a href="conclusao.html" class="btn btn-success">
+                                        Conclusão <i class="fas fa-check-circle"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer com Copyright -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Reino OIDC - Reino da Identidade Federada</strong></p>
+                    <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1 small">© 2025 Reino OIDC. Projeto open source sob MIT License.</p>
+                    <p class="mb-0 small">Licenciado sob <a href="LICENSE" class="text-light">MIT License</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

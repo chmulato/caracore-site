@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parte II - Reino da Identidade Federada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">🏠 Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personagens.html">👥 Personagens</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            📖 História
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historia_p1.html">Parte I - A Era Sombria</a></li>
+                            <li><a class="dropdown-item active" href="historia_p2.html">Parte II - A Chegada do OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p3.html">Parte III - A Nova Era</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mundo_do_conhecimento.html">🌟 Conhecimento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="caminho_feliz.html">✨ Caminho Feliz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aprendiz.html">🎓 Academia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="glossario.html">📚 Glossário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mapas.html">🗺️ Mapas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center">Parte II — A Era da Confiança e o Mago OIDC</h1>
+                <p class="lead text-center">Onde a identidade ganha forma</p>
+                
+                <!-- Imagem da Parte II -->
+                <div class="text-center my-4">
+                    <img src="assets/images/imagem_parte_ii.png" 
+                         alt="A Era da Confiança - Lord OIDC e Lady OAuth trabalhando juntos com todos os personagens em harmonia" 
+                         class="img-fluid rounded shadow-lg w-100">
+                    <p class="text-muted small mt-2 fst-italic">
+                        A Era da Confiança: Lord OIDC e Lady OAuth estabelecem a harmonia no reino, 
+                        criando um sistema onde autenticação e autorização trabalham em perfeita sintonia.
+                    </p>
+                </div>
+                
+                <div class="mt-5">
+                    <p>Com o avanço da diplomacia entre cidades, começaram a surgir alianças. Aplicativos precisavam não apenas de acesso, mas também de saber quem estava do outro lado. Como emitir notas, enviar mensagens ou personalizar experiências se não se sabe quem é o usuário?</p>
+                    <p>É nesse ponto que aparece Lord OIDC, o Mago da Identidade. Ele caminha com seu pergaminho luminoso e diz:</p>
+                    <blockquote class="blockquote">
+                        <p>“Autorização sem autenticação é um reino sem rosto. Deixem-me assinar a verdade sobre cada viajante.”</p>
+                    </blockquote>
+                    <p>Lord OIDC trabalha lado a lado com Lady OAuth, criando uma extensão sobre suas regras — o OpenID Connect.</p>
+                    <p>Ele conjura o ID Token, um documento digital assinado com selos mágicos (as chaves públicas JWKS), contendo:</p>
+                    <ul>
+                        <li><strong>iss</strong> — quem emitiu o documento;</li>
+                        <li><strong>sub</strong> — o identificador único do usuário;</li>
+                        <li><strong>aud</strong> — quem deve confiar nele;</li>
+                        <li><strong>exp</strong> — quando expira;</li>
+                        <li>e informações como nome, e-mail, domínio.</li>
+                    </ul>
+                    <p>Mas Lord OIDC é sábio e previdente. Ele sabe que tokens têm vida limitada, então invoca também Rex Token, o Renovador Eterno — um guardião silencioso que permanece oculto, pronto para renovar acessos quando necessário, evitando que os usuários tenham que se autenticar repetidamente.</p>
+                    <p>Agora o reino pode autenticar usuários com segurança, sem precisar guardar senhas locais, e manter sessões ativas de forma inteligente.</p>
+                    <p>E para proteger o caminho até esse token, surge a fada Pixie PKCE, guardiã dos códigos temporários. Ela garante que nenhum ladrão de código possa interceptar os segredos no caminho entre o Cliente e o Servidor de Autorização.</p>
+                    <p>Cada vez que o emissário Alex Client inicia um pedido de autorização, Pixie o acompanha, criando:</p>
+                    <ul>
+                        <li>um <strong>code_verifier</strong> (segredo que fica com o cliente) e</li>
+                        <li>um <strong>code_challenge</strong> (hash público que vai para o servidor).</li>
+                    </ul>
+                    <p>No fim, apenas quem conhece o verifier pode trocar o código por tokens. Segurança reforçada, confiança consolidada.</p>
+                </div>
+
+                <!-- Navegação entre partes -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <nav aria-label="Navegação da História">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <a href="historia_p1.html" class="btn btn-outline-primary">
+                                        <i class="fas fa-arrow-left"></i> Anterior: Parte I
+                                    </a>
+                                </div>
+                                <div class="text-center">
+                                    <small class="text-muted">Parte II de III</small>
+                                </div>
+                                <div>
+                                    <a href="historia_p3.html" class="btn btn-primary">
+                                        Próximo: Parte III <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer com Copyright -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Reino OIDC - Reino da Identidade Federada</strong></p>
+                    <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1 small">© 2025 Reino OIDC. Projeto open source sob MIT License.</p>
+                    <p class="mb-0 small">Licenciado sob <a href="LICENSE" class="text-light">MIT License</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

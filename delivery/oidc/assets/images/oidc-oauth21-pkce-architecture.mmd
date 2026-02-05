@@ -1,0 +1,74 @@
+graph TD
+    %% Estilo dos nós
+    classDef client fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000
+    classDef auth fill:#f3e5f5,stroke:#7b1fa2,stroke-width:2px,color:#000
+    classDef resource fill:#e8f5e8,stroke:#388e3c,stroke-width:2px,color:#000
+    classDef user fill:#fff3e0,stroke:#f57c00,stroke-width:2px,color:#000
+    classDef flow fill:#ffebee,stroke:#d32f2f,stroke-width:2px,color:#000
+
+    %% Componentes principais
+    U[Usuário Resource Owner]:::user
+    C[Cliente Alex Client SPA/Mobile/Web]:::client
+    AS[Authorization Server Lord OIDC + Lady OAuth Identity Provider]:::auth
+    RS[Resource Server Seraph Resource API Protegida]:::resource
+
+    %% Fluxo OIDC + OAuth 2.1 + PKCE
+    U -->|1. Acessa aplicação| C
+    C -->|2. Gera code_verifier Pixie PKCE| C
+    C -->|3. Cria code_challenge SHA256| C
+    C -->|4. Redireciona para login + code_challenge + state| AS
+    AS -->|5. Autentica usuário| U
+    U -->|6. Autoriza escopo| AS
+    AS -->|7. Retorna authorization_code + state| C
+    C -->|8. Troca code por tokens + code_verifier| AS
+    AS -->|9. Valida PKCE Retorna ID Token + Access Token| C
+    C -->|10. Usa Access Token| RS
+    RS -->|11. Valida token| AS
+    AS -->|12. Confirma validade| RS
+    RS -->|13. Retorna dados| C
+    C -->|14. Apresenta dados| U
+
+    %% Tokens e componentes de segurança
+    subgraph Tokens["Tokens e Segurança"]
+        IDT[ID Token IDA Token JWT com claims do usuário]:::flow
+        AT[Access Token Ace Token Permissão de acesso]:::flow
+        RT[Refresh Token Rex Token Renovação segura]:::flow
+        PKCE[PKCE Pixie PKCE Proof Key for Code Exchange]:::flow
+    end
+
+    %% Protocolos
+    subgraph Protocols["Protocolos"]
+        OAuth[OAuth 2.1 Lady OAuth Autorização]:::auth
+        OIDC[OpenID Connect Lord OIDC Autenticação + Identidade]:::auth
+    end
+
+    %% Segurança
+    subgraph Security["Camadas de Segurança"]
+        HTTPS[HTTPS Transporte seguro]:::flow
+        State[State Parameter CSRF Protection]:::flow
+        Nonce[Nonce Replay Attack Protection]:::flow
+        JWT[JWT Validation Assinatura digital]:::flow
+    end
+
+    %% Conexões dos subgrafos
+    AS -.-> OAuth
+    AS -.-> OIDC
+    AS -.-> IDT
+    AS -.-> AT
+    AS -.-> RT
+    C -.-> PKCE
+    C -.-> State
+    C -.-> Nonce
+    AS -.-> JWT
+    C -.-> HTTPS
+    AS -.-> HTTPS
+    RS -.-> HTTPS
+
+    %% Notas
+    subgraph Notes["Observações Técnicas"]
+        N1[OAuth 2.1 = OAuth 2.0 + PKCE obrigatório]
+        N2[OIDC = OAuth 2.1 + ID Token]
+        N3[SPA/Mobile: Authorization Code + PKCE]
+        N4[Refresh Token Rotation recomendado]
+        N5[Estado mantido apenas no cliente]
+    end

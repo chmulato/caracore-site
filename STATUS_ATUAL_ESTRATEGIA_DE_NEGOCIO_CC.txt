@@ -1,0 +1,132 @@
+STATUS ATUAL E ESTRATÉGIA DE NEGÓCIO
+Cara Core Informática
+
+Documento consolidado: trabalho realizado e próximos passos possíveis.
+Linguagem para uso interno, gestão e decisão executiva.
+Sem emojis, ícones ou formatação decorativa.
+
+
+1. VISÃO GERAL DA ESTRATÉGIA
+
+A Cara Core Informática está construindo uma linha de produtos voltada a um público seleto e com poder de compra. A ideia central é atuar como uma fábrica de aplicativos para Windows (desktop) e de conteúdo de identidade digital, com foco em:
+
+- Soluções que rodam no computador do cliente (Windows), com operação offline quando faz sentido.
+- Transparência com o cliente e respeito à lei de proteção de dados (LGPD).
+- Preços claros onde aplicável: valor único de R$ 29,90 para upgrades ou produtos de utilidade, seguindo o modelo já validado no Minerador 4.0.
+
+Os quatro pilares atuais são: Cara Core PDV, chmulatoETE Minerador 4.0, Reino OIDC (Reino das Identidades Federadas) e Cara Core Seed (Contador de Licenças). Cada um tem um papel definido e se complementam sem duplicar ofertas.
+
+
+2. O QUE FOI FEITO HOJE (CONSOLIDADO)
+
+2.1 Portal de delivery do Cara Core Seed (dentro do site Cara Core)
+
+- Criada a pasta delivery/seed no domínio Cara Core com páginas de apresentação, download, tecnologia, documentação e portal de controle de licenças.
+- Mensagem central: produto de utilidade a R$ 29,90; foco em gestão de licenças no Windows, 100% offline; portal de controle com transparência e LGPD; espírito de Contador de Licenças dos clientes que compram produtos Cara Core para rodar no Windows; inspiração no modelo já usado no Minerador 4.0.
+- Incluída página específica sobre o portal de controle (transparência, LGPD, inspiração no Minerador 4.0).
+
+2.2 Vitrine pública do Cara Core Seed (repositório caracore-seed-releases)
+
+- Criado no repositório caracore-seed-releases um portal de apresentação no mesmo estilo do Minerador 4.0: página inicial explicando o produto e página de download com link direto para a versão mais recente do executável (caracore-seed.exe) nos Releases do GitHub.
+- Objetivo: o cliente que busca o instalador versionado é direcionado a esse repositório; a experiência é alinhada à do Minerador 4.0.
+
+2.3 Validação de negócio e ajustes no portfólio
+
+- Realizado um pente fino com olhar de negócio: verificação da funcionalidade dos fluxos (portfólio, apresentação, download) e da coerência entre os quatro produtos.
+- Incluída no portfólio uma linha que explicita a estratégia: fábrica de aplicativos Windows Desktop e identidade para um público seleto (PDV, Minerador 4.0, Reino das Identidades Federadas e Contador de Licenças).
+- Incluído no card do Minerador 4.0 o valor do upgrade Ouro 4.0: R$ 29,90 (valor único).
+- Incluído no card do Seed um botão explícito para Baixar EXE, além do link para o portal de delivery e para o GitHub de releases.
+
+2.4 Estratégia de negócio do Reino OIDC
+
+- Definido modelo em duas camadas: primeira entrega gratuita (FREE) e upgrade pago chamado O Trono da Identidade a R$ 29,90 (valor único), na mesma linha do Minerador 4.0.
+- Público-alvo da primeira entrega: jovens entusiastas desenvolvedores, com foco em público feminino; mercado seleto e com olhar crítico.
+- Criada página de upgrade (upgrade-trono.html) no portal delivery/oidc com valor, forma de pagamento PIX e passos para concluir o upgrade.
+- Atualizado o portfólio e a página inicial do Reino OIDC com essa mensagem (FREE + upgrade R$ 29,90) e com o botão para a página de upgrade.
+- Documentos de apoio criados: ESTRATEGIA_NEGOCIO_REINO_OIDC.md e PUBLICO_ALVO.md no delivery/oidc e no repositório reino_oidc_releases.
+
+2.5 Alinhamento entre portal (domínio Cara Core) e vitrine pública
+
+- Documentada e aplicada a mesma lógica para os dois produtos que têm vitrine pública separada:
+  - Reino OIDC: portal completo no site Cara Core (delivery/oidc); vitrine e balcão público no repositório reino_oidc_releases (pasta docs/). O conteúdo em docs/ é espelho do portal; na vitrine os links para o portfólio usam o endereço completo do site Cara Core.
+  - Cara Core Seed: portal completo no site Cara Core (delivery/seed); vitrine e balcão público no repositório caracore-seed-releases (páginas na raiz: apresentação e download do EXE versionado).
+- Criados documentos MIRROR_DELIVERY.md no delivery/oidc e no delivery/seed, e atualizados README e WORKSPACE do reino_oidc_releases e do caracore-seed-releases para deixar explícita essa relação.
+- Sincronizados para a vitrine do Reino OIDC a página inicial e a página de upgrade (O Trono da Identidade), com links ajustados para o portfólio.
+
+2.6 Documento de validação de negócio
+
+- Criado o arquivo VALIDACAO_NEGOCIO.md no site Cara Core com o resultado do pente fino: estado de cada produto, fluxos do cliente, consistência de mensagem e ações recomendadas (parte delas já aplicada no portfólio).
+
+
+3. ESTADO ATUAL POR PRODUTO (RESUMO EXECUTIVO)
+
+3.1 Cara Core PDV
+
+- Posicionamento: primeiro PDV pronto para a Reforma Tributária 2026-2033; funciona sem internet; planos Free e Premium.
+- Público: pequenos e médios negócios, varejo, contador e gestor.
+- Preço: Free e Premium descritos; valor do Premium não está no portfólio (pode ser proposital, sob consulta).
+- Entrega: portal de apresentação e tecnologia no site Cara Core; wiki de projeto disponível. Fluxos testados e funcionais.
+
+3.2 chmulatoETE Minerador 4.0
+
+- Posicionamento: simulador de hidrometalurgia (ETE aplicada ao refino de terras raras); instalador Windows; upgrade Ouro 4.0.
+- Público: mineração, hidrometalurgia, educação (Campo Largo).
+- Preço: versão gratuita; upgrade Ouro 4.0 a R$ 29,90 (valor único), agora citado também no portfólio.
+- Entrega: portal ETE no site Cara Core; página de download que leva ao repositório público de releases. Fluxos testados e funcionais.
+
+3.3 Reino OIDC (Reino das Identidades Federadas)
+
+- Posicionamento: material educacional sobre OAuth 2.1 e OpenID Connect; primeira entrega gratuita; upgrade O Trono da Identidade a R$ 29,90 (valor único).
+- Público: jovens entusiastas desenvolvedores, com foco em público feminino; mercado seleto e olhar crítico.
+- Preço: FREE (licença MIT); upgrade pago R$ 29,90.
+- Entrega: portal completo no site Cara Core (delivery/oidc); vitrine pública no repositório reino_oidc_releases (docs/), incluindo página de upgrade. Fluxos testados e funcionais.
+
+3.4 Cara Core Seed
+
+- Posicionamento: Contador de Licenças dos clientes que compram produtos Cara Core para rodar no Windows; gestão 100% offline; portal de controle com transparência e LGPD; R$ 29,90 (valor único).
+- Público: quem adquire PDV, Minerador, Reino OIDC ou Hub para uso no Windows; contador interno e comprador.
+- Preço: R$ 29,90 (valor único), explícito no portfólio e em todos os materiais de delivery.
+- Entrega: portal completo no site Cara Core (delivery/seed); vitrine pública no repositório caracore-seed-releases (apresentação e download que aponta para o executável versionado). Fluxos testados e funcionais.
+
+
+4. MODELO DE ESPELHO (PORTAL E VITRINE)
+
+Para quem não é técnico: o site da Cara Core (domínio próprio) contém o portal completo de cada produto (todas as páginas, textos oficiais, upgrade quando houver). Para alguns produtos existe ainda um repositório público (vitrine) onde o cliente também pode acessar o conteúdo ou o download, de forma alinhada ao que está no portal. Isso amplia o alcance e mantém uma única mensagem.
+
+- Reino OIDC: portal = site Cara Core, pasta delivery/oidc; vitrine = repositório reino_oidc_releases, pasta docs/. Ao atualizar o portal, deve-se sincronizar a pasta docs/ e ajustar links que apontam para o portfólio (usar endereço completo do site na vitrine).
+- Cara Core Seed: portal = site Cara Core, pasta delivery/seed; vitrine = repositório caracore-seed-releases (páginas na raiz). Ao alterar a mensagem ou a estrutura do portal, avaliar se a vitrine precisa ser atualizada para manter consistência.
+
+
+5. PRÓXIMOS PASSOS POSSÍVEIS (DENTRO DA ESTRATÉGIA)
+
+5.1 Cara Core Seed
+
+- Concluir a entrega do executável: hoje o cliente é direcionado ao repositório de releases para baixar o caracore-seed.exe. Ainda falta definir ou implementar a forma final de empacotamento (por exemplo: WAR executável ou JAR launcher que sobe o backend em um clique, para uso pelo aplicativo desktop Electron). Isso permitiria que o usuário final rode o Seed com um único comando ou pelo instalador, sem configurar servidor manualmente.
+- Manter a vitrine (caracore-seed-releases) alinhada ao portal (delivery/seed) sempre que houver mudança de mensagem ou de oferta.
+
+5.2 Reino OIDC
+
+- Definir de forma explícita os benefícios do upgrade O Trono da Identidade (por exemplo: certificado de conclusão, material em PDF ou epub, checklist avançado, sessão de dúvidas ou acesso a canal exclusivo). Hoje o valor e o processo de pagamento (PIX) estão definidos; o conteúdo do pacote premium pode ser detalhado por release.
+- Estabelecer um processo ou script para sincronizar o conteúdo do portal (delivery/oidc) com a vitrine (reino_oidc_releases/docs/) sempre que houver alteração em páginas, textos ou assets, mantendo os links do portfólio em formato absoluto na vitrine.
+
+5.3 Cara Core PDV
+
+- Decidir se o valor do plano Premium será divulgado no portfólio ou permanece sob consulta. A validação de negócio sugeriu que está coerente manter como está; a decisão é de posicionamento comercial.
+- Reforçar, se desejado, a mensagem de público seleto (por exemplo: lojistas e redes que exigem conformidade fiscal e operação confiável) na visão executiva do card do portfólio.
+
+5.4 Minerador 4.0
+
+- Nenhum ajuste obrigatório decorrente do trabalho de hoje. O valor do upgrade Ouro 4.0 (R$ 29,90) já foi incluído no portfólio. Se houver testes automatizados falhando (por exemplo um teste unitário ou testes de interface), podem ser tratados em ciclo técnico separado.
+
+5.5 Visão geral
+
+- Usar o documento VALIDACAO_NEGOCIO.md como checklist em futuras releases ou quando forem incluídos novos produtos, para manter coerência de mensagem, preços e fluxos.
+- Revisar periodicamente os textos do portfólio e dos portais de delivery para garantir que a linguagem continue adequada ao público leigo e executivo e que não haja informação desatualizada.
+
+
+6. CONCLUSÃO
+
+O trabalho realizado hoje consolida a estratégia de negócio em quatro pilares (PDV, Minerador 4.0, Reino OIDC e Seed), com preços claros onde aplicável (R$ 29,90 para upgrades e para o Seed), modelo de primeira entrega gratuita e upgrade pago no Reino OIDC (alinhado ao Minerador 4.0), e relação bem definida entre o portal no domínio Cara Core e as vitrines públicas (reino_oidc_releases e caracore-seed-releases). Os fluxos de apresentação e download foram validados e estão funcionais. Os próximos passos possíveis estão listados acima e podem ser priorizados conforme a capacidade da equipe e a demanda do mercado.
+
+Cara Core Informática.
+Documento para uso interno e gestão da estratégia de negócio.

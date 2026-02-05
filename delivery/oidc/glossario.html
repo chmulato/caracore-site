@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glossário - Reino OIDC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">🏠 Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personagens.html">👥 Personagens</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            📖 História
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historia_p1.html">Parte I - A Era Sombria</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II - A Chegada do OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p3.html">Parte III - A Nova Era</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mundo_do_conhecimento.html">🌟 Conhecimento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="caminho_feliz.html">✨ Caminho Feliz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aprendiz.html">🎓 Academia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="glossario.html">📚 Glossário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mapas.html">🗺️ Mapas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <header class="text-center py-5">
+                    <h1 class="display-4 text-primary">📚 Glossário do Reino OIDC</h1>
+                    <p class="lead">Dicionário ilustrado para leigos e especialistas</p>
+                    <p class="text-muted">Termos técnicos explicados de forma simples, com as metáforas do Reino</p>
+                </header>
+
+                <div class="alert alert-info">
+                    <h5><strong>🧭 Como usar este glossário:</strong></h5>
+                    <ul class="mb-0">
+                        <li><strong>👥 Para Leigos:</strong> Foque nas explicações em <em>linguagem simples</em> e nas <em>metáforas do Reino</em></li>
+                        <li><strong>🔧 Para Técnicos:</strong> Use as <em>definições precisas</em> e os <em>exemplos de código</em></li>
+                        <li><strong>🎭 Personagens:</strong> Cada termo tem seu personagem correspondente do Reino OIDC</li>
+                        <li><strong>🔍 Busca:</strong> Use Ctrl+F para encontrar termos específicos rapidamente</li>
+                        <li><strong>🗺️ Diagramas:</strong> Visite os <a href="mapas.html" class="text-decoration-none"><strong>Mapas Técnicos</strong></a> para visualizações arquiteturais</li>
+                    </ul>
+                </div>
+
+                <!-- Alfabético Index -->
+                <div class="card mb-4">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">🔤 Índice Alfabético</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <strong>A-C</strong><br>
+                                <a href="#access-token" class="text-decoration-none">Access Token</a><br>
+                                <a href="#authorization" class="text-decoration-none">Authorization</a><br>
+                                <a href="#authorization-code" class="text-decoration-none">Authorization Code</a><br>
+                                <a href="#claims" class="text-decoration-none">Claims</a><br>
+                                <a href="#client" class="text-decoration-none">Client</a>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>E-J</strong><br>
+                                <a href="#endpoint" class="text-decoration-none">Endpoint</a><br>
+                                <a href="#id-token" class="text-decoration-none">ID Token</a><br>
+                                <a href="#identity" class="text-decoration-none">Identity</a><br>
+                                <a href="#jwt" class="text-decoration-none">JWT</a>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>O-P</strong><br>
+                                <a href="#oauth" class="text-decoration-none">OAuth 2.1</a><br>
+                                <a href="#oidc" class="text-decoration-none">OpenID Connect</a><br>
+                                <a href="#pkce" class="text-decoration-none">PKCE</a>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>R-Z</strong><br>
+                                <a href="#refresh-token" class="text-decoration-none">Refresh Token</a><br>
+                                <a href="#resource-server" class="text-decoration-none">Resource Server</a><br>
+                                <a href="#scopes" class="text-decoration-none">Scopes</a><br>
+                                <a href="#sso" class="text-decoration-none">SSO</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Glossário -->
+                <div class="accordion" id="glossarioAccordion">
+
+                    <!-- Access Token -->
+                    <div class="accordion-item" id="access-token">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-access-token" aria-expanded="false" aria-controls="collapse-access-token">
+                                🗡️ Access Token (Token de Acesso)
+                            </button>
+                        </h2>
+                        <div id="collapse-access-token" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É como um <strong>passe VIP temporário</strong> que permite entrar em áreas específicas de um evento. Você não precisa mostrar seu documento de identidade toda vez - apenas o passe.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Ace Token - O Guerreiro das Permissões</strong></em><br>
+                                        É o guerreiro corajoso que carrega sua espada (permissões) e tem vida limitada. Depois de um tempo, ele precisa descansar e um novo guerreiro assume o posto.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p>String opaca ou JWT que representa uma <strong>autorização</strong> para acessar recursos protegidos. Tem escopo limitado e tempo de vida curto (15-60 min).</p>
+                                        
+                                        <h6><strong>💻 Exemplo:</strong></h6>
+                                        <pre><code>Authorization: Bearer eyJhbGciOiJSUzI1NiIs...</code></pre>
+                                        
+                                        <h6><strong>🎯 Usado para:</strong></h6>
+                                        <ul class="small">
+                                            <li>Acessar APIs protegidas</li>
+                                            <li>Validar permissões (scopes)</li>
+                                            <li>Autenticação stateless</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Authentication -->
+                    <div class="accordion-item" id="authentication">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-authentication" aria-expanded="false" aria-controls="collapse-authentication">
+                                🔐 Authentication (Autenticação)
+                            </button>
+                        </h2>
+                        <div id="collapse-authentication" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É o processo de <strong>provar quem você é</strong>. Como quando você mostra seu RG na entrada de um prédio para comprovar sua identidade.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Dama Authen - A Verificadora Real</strong></em><br>
+                                        Ela é a responsável por verificar se você é realmente quem diz ser. Usa sua lupa mágica para examinar suas credenciais.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p>Processo de <strong>verificar a identidade</strong> de um usuário, normalmente através de credenciais como username/password, biometria, ou fatores múltiplos.</p>
+                                        
+                                        <h6><strong>🔄 Métodos comuns:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>Something you know:</strong> senha, PIN</li>
+                                            <li><strong>Something you have:</strong> celular, token</li>
+                                            <li><strong>Something you are:</strong> biometria</li>
+                                        </ul>
+                                        
+                                        <h6><strong>⚖️ Diferença importante:</strong></h6>
+                                        <p class="small"><strong>Authentication ≠ Authorization</strong><br>
+                                        Autenticação = "Quem é você?"<br>
+                                        Autorização = "O que você pode fazer?"</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Authorization -->
+                    <div class="accordion-item" id="authorization">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-authorization" aria-expanded="false" aria-controls="collapse-authorization">
+                                🚪 Authorization (Autorização)
+                            </button>
+                        </h2>
+                        <div id="collapse-authorization" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É decidir <strong>o que você pode fazer</strong> depois que sua identidade foi confirmada. Como um funcionário do hotel que, após verificar seu check-in, te dá as chaves dos quartos que você pode acessar.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Lady OAuth - A Distribuidora de Permissões</strong></em><br>
+                                        Após Dama Authen confirmar quem você é, Lady OAuth decide quais portas você pode abrir e quais tesouros pode acessar no reino.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p>Processo de <strong>determinar as permissões</strong> de um usuário autenticado. Define quais recursos podem ser acessados e que operações podem ser executadas.</p>
+                                        
+                                        <h6><strong>🎯 Implementações comuns:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>RBAC:</strong> Role-Based Access Control</li>
+                                            <li><strong>ABAC:</strong> Attribute-Based Access Control</li>
+                                            <li><strong>ACL:</strong> Access Control Lists</li>
+                                            <li><strong>Scopes:</strong> No contexto OAuth</li>
+                                        </ul>
+                                        
+                                        <h6><strong>💻 Exemplo OAuth:</strong></h6>
+                                        <pre><code>scope: "read:posts write:comments"</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Authorization Code -->
+                    <div class="accordion-item" id="authorization-code">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-authorization-code" aria-expanded="false" aria-controls="collapse-authorization-code">
+                                🎫 Authorization Code (Código de Autorização)
+                            </button>
+                        </h2>
+                        <div id="collapse-authorization-code" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É como um <strong>cupom de troca temporário</strong>. Você ganha este cupom após fazer login, mas ele não vale nada sozinho - precisa ser trocado por algo útil (como tokens) em uma loja específica.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Código Secreto de Alex Client</strong></em><br>
+                                        É uma senha temporária que Alex recebe após você fazer login. Ele usa essa senha para buscar seus tokens verdadeiros no cofre de Lady OAuth.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p>String temporária e opaca retornada pelo <strong>authorization server</strong> após autenticação bem-sucedida. Deve ser trocada por tokens no endpoint /token.</p>
+                                        
+                                        <h6><strong>⏱️ Características:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>Vida útil:</strong> 10 minutos (máximo)</li>
+                                            <li><strong>Uso único:</strong> Invalidado após troca</li>
+                                            <li><strong>Vinculado:</strong> client_id + redirect_uri</li>
+                                            <li><strong>Não exposição:</strong> Nunca vai para o browser</li>
+                                        </ul>
+                                        
+                                        <h6><strong>🔄 Fluxo típico:</strong></h6>
+                                        <pre><code>1. User → /authorize → Login
+2. Server → code=abc123 → Client
+3. Client → POST /token + code → Tokens</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Claims -->
+                    <div class="accordion-item" id="claims">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-claims" aria-expanded="false" aria-controls="collapse-claims">
+                                📋 Claims (Declarações)
+                            </button>
+                        </h2>
+                        <div id="collapse-claims" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>São <strong>informações sobre você</strong> que estão "carimbadas" no seu documento digital. Como os dados no seu RG: nome, data de nascimento, etc.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Segredos gravados no medalhão de IDA Token</strong></em><br>
+                                        IDA carrega um medalhão mágico onde estão gravadas informações sobre você: seu nome real, título, missões que pode realizar, quando seu passe expira.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Key-value pairs</strong> dentro de um JWT que fornecem informações sobre o usuário ou contexto de autenticação.</p>
+                                        
+                                        <h6><strong>🏷️ Claims padrão (OIDC):</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>sub:</strong> Subject (ID único do usuário)</li>
+                                            <li><strong>name:</strong> Nome completo</li>
+                                            <li><strong>email:</strong> Endereço de email</li>
+                                            <li><strong>aud:</strong> Audience (quem pode usar)</li>
+                                            <li><strong>exp:</strong> Expiration time</li>
+                                            <li><strong>iat:</strong> Issued at time</li>
+                                        </ul>
+                                        
+                                        <h6><strong>💻 Exemplo:</strong></h6>
+                                        <pre><code>{
+  "sub": "user123",
+  "name": "João Silva",
+  "email": "joao@example.com",
+  "exp": 1672531200
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Client -->
+                    <div class="accordion-item" id="client">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-client" aria-expanded="false" aria-controls="collapse-client">
+                                📱 Client (Cliente/Aplicação)
+                            </button>
+                        </h2>
+                        <div id="collapse-client" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É o <strong>aplicativo ou site</strong> que você está usando. Como o app do banco no seu celular ou o site da loja online. Ele precisa "conversar" com outros sistemas para funcionar.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Alex Client - O Mensageiro Confiável</strong></em><br>
+                                        É o mensageiro que trabalha para você. Quando você quer acessar algo, Alex vai até Lady OAuth pedir permissão em seu nome e traz de volta os tokens necessários.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p>Aplicação que solicita <strong>autorização em nome do usuário</strong> para acessar recursos protegidos. Registrada no Authorization Server com client_id único.</p>
+                                        
+                                        <h6><strong>🏷️ Tipos de Client:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>Public:</strong> SPA, mobile (sem client_secret)</li>
+                                            <li><strong>Confidential:</strong> Server-side (com client_secret)</li>
+                                            <li><strong>Native:</strong> Apps instalados no dispositivo</li>
+                                        </ul>
+                                        
+                                        <h6><strong>📋 Configuração típica:</strong></h6>
+                                        <pre><code>{
+  "client_id": "myapp123",
+  "redirect_uris": ["https://app.com/callback"],
+  "grant_types": ["authorization_code"],
+  "response_types": ["code"]
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Endpoint -->
+                    <div class="accordion-item" id="endpoint">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-endpoint" aria-expanded="false" aria-controls="collapse-endpoint">
+                                🌐 Endpoint (Ponto de Acesso)
+                            </button>
+                        </h2>
+                        <div id="collapse-endpoint" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É como um <strong>balcão específico</strong> em uma repartição pública. Cada balcão tem uma função: um para tirar RG, outro para pagar multas, outro para informações. Cada um tem seu endereço.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Os Portais Sagrados de Lord OIDC</strong></em><br>
+                                        São as diferentes portas do castelo: a Porta da Autorização (/authorize), a Câmara dos Tokens (/token), o Espelho das Informações (/userinfo).</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>URL específica</strong> que aceita requisições HTTP para operações do protocolo OAuth/OIDC. Cada endpoint tem função e parâmetros específicos.</p>
+                                        
+                                        <h6><strong>🚪 Endpoints principais:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>/authorize:</strong> Inicia fluxo de autorização</li>
+                                            <li><strong>/token:</strong> Troca códigos por tokens</li>
+                                            <li><strong>/userinfo:</strong> Retorna dados do usuário</li>
+                                            <li><strong>/.well-known/openid-configuration:</strong> Metadados</li>
+                                            <li><strong>/jwks.json:</strong> Chaves públicas</li>
+                                        </ul>
+                                        
+                                        <h6><strong>💻 Exemplo:</strong></h6>
+                                        <pre><code>GET https://auth.example.com/authorize?
+response_type=code&client_id=app123</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ID Token -->
+                    <div class="accordion-item" id="id-token">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-id-token" aria-expanded="false" aria-controls="collapse-id-token">
+                                🆔 ID Token (Token de Identidade)
+                            </button>
+                        </h2>
+                        <div id="collapse-id-token" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É como uma <strong>carteira de identidade digital</strong> que prova quem você é. Diferente do Access Token (que é como um passe), este documento fala sobre você: seu nome, quando nasceu, etc.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>IDA Token - A Mensageira da Verdade</strong></em><br>
+                                        Ela carrega um pergaminho oficial assinado por Lord OIDC que conta quem você é. Ninguém pode falsificar esse pergaminho porque tem o selo mágico do reino.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>JWT assinado</strong> que contém claims sobre a autenticação do usuário. Específico do OpenID Connect, sempre no formato JWT.</p>
+                                        
+                                        <h6><strong>🔑 Claims obrigatórios:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>iss:</strong> Issuer (quem emitiu)</li>
+                                            <li><strong>sub:</strong> Subject (ID do usuário)</li>
+                                            <li><strong>aud:</strong> Audience (para quem é)</li>
+                                            <li><strong>exp:</strong> Expiration time</li>
+                                            <li><strong>iat:</strong> Issued at time</li>
+                                        </ul>
+                                        
+                                        <h6><strong>⚠️ Importante:</strong></h6>
+                                        <p class="small"><strong>NÃO enviar em APIs!</strong> ID Token é para o client verificar a autenticação, não para autorizar acesso a recursos.</p>
+                                        
+                                        <h6><strong>💻 Estrutura:</strong></h6>
+                                        <pre><code>eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ1c2VyMTIzIn0.signature</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Identity -->
+                    <div class="accordion-item" id="identity">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-identity" aria-expanded="false" aria-controls="collapse-identity">
+                                👤 Identity (Identidade)
+                            </button>
+                        </h2>
+                        <div id="collapse-identity" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É <strong>quem você é</strong> - como seu nome, sobrenome, onde nasceu, seu e-mail. São as informações que te identificam de forma única no mundo digital.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Sire Identi - O Registrador do Reino</strong></em><br>
+                                        Ele mantém os livros sagrados com informações sobre todos os cidadãos: nomes verdadeiros, títulos, origem, características que tornam cada pessoa única no reino.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p>Conjunto de <strong>atributos únicos</strong> que descrevem uma entidade (usuário, aplicação, dispositivo). Base para autenticação e autorização.</p>
+                                        
+                                        <h6><strong>🏷️ Componentes típicos:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>Identificador único:</strong> UUID, email, username</li>
+                                            <li><strong>Atributos pessoais:</strong> nome, sobrenome, telefone</li>
+                                            <li><strong>Atributos organizacionais:</strong> departamento, cargo</li>
+                                            <li><strong>Preferências:</strong> idioma, timezone</li>
+                                        </ul>
+                                        
+                                        <h6><strong>🔐 Identity vs Authentication:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>Identity:</strong> "Eu sou João Silva"</li>
+                                            <li><strong>Authentication:</strong> "Prove que você é João"</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- JWT -->
+                    <div class="accordion-item" id="jwt">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-jwt" aria-expanded="false" aria-controls="collapse-jwt">
+                                📜 JWT (JSON Web Token)
+                            </button>
+                        </h2>
+                        <div id="collapse-jwt" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É como um <strong>documento oficial</strong> com três partes: o cabeçalho (que tipo de documento é), o conteúdo (suas informações) e a assinatura (para provar que é verdadeiro).</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Os Pergaminhos Mágicos</strong></em><br>
+                                        São documentos especiais com três seções: o selo de identificação, o conteúdo com seus dados, e a assinatura mágica que ninguém pode falsificar.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Padrão aberto (RFC 7519)</strong> para transmitir informações de forma segura entre partes. Formato: header.payload.signature</p>
+                                        
+                                        <h6><strong>📋 Estrutura:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>Header:</strong> Algoritmo e tipo (Base64URL)</li>
+                                            <li><strong>Payload:</strong> Claims/dados (Base64URL)</li>
+                                            <li><strong>Signature:</strong> Assinatura criptográfica</li>
+                                        </ul>
+                                        
+                                        <h6><strong>✅ Vantagens:</strong></h6>
+                                        <ul class="small">
+                                            <li>Auto-contido (não precisa consultar BD)</li>
+                                            <li>Stateless</li>
+                                            <li>Padrão da indústria</li>
+                                            <li>Suporte amplo</li>
+                                        </ul>
+                                        
+                                        <h6><strong>💻 Exemplo:</strong></h6>
+                                        <pre><code>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.
+eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIn0.
+SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OAuth 2.1 -->
+                    <div class="accordion-item" id="oauth">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-oauth" aria-expanded="false" aria-controls="collapse-oauth">
+                                🔐 OAuth 2.1 (Autorização Aberta)
+                            </button>
+                        </h2>
+                        <div id="collapse-oauth" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É um <strong>sistema de permissões</strong> que permite que um app acesse suas informações em outro serviço sem você dar sua senha. Como dar uma chave temporária para alguém entrar na sua casa.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Lady OAuth - A Guardiã das Portas</strong></em><br>
+                                        Ela decide quem pode entrar e o que pode fazer no reino. Dá permissões temporárias sem que você precise entregar suas chaves principais (senhas).</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Framework de autorização</strong> que permite acesso limitado a recursos HTTP sem expor credenciais. OAuth 2.1 consolida boas práticas da versão 2.0.</p>
+                                        
+                                        <h6><strong>🆕 Principais mudanças na versão 2.1:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>PKCE obrigatório</strong> para todos os clients</li>
+                                            <li><strong>Implicit Flow removido</strong></li>
+                                            <li><strong>Resource Owner Password removido</strong></li>
+                                            <li><strong>Redirect URI exato</strong> (sem wildcards)</li>
+                                            <li><strong>Refresh Token rotation</strong> recomendado</li>
+                                        </ul>
+                                        
+                                        <h6><strong>🎯 Foco:</strong></h6>
+                                        <p class="small">OAuth é sobre <strong>AUTORIZAÇÃO</strong> (o que você pode fazer), não autenticação (quem você é).</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OpenID Connect -->
+                    <div class="accordion-item" id="oidc">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-oidc" aria-expanded="false" aria-controls="collapse-oidc">
+                                🪪 OpenID Connect (OIDC)
+                            </button>
+                        </h2>
+                        <div id="collapse-oidc" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É um <strong>sistema de identidade</strong> que funciona sobre OAuth. Enquanto OAuth diz "o que você pode fazer", OIDC diz "quem você é". Como um RG digital padronizado.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Lord OIDC - O Mago da Identidade</strong></em><br>
+                                        Ele trabalha junto com Lady OAuth. Enquanto ela cuida das permissões, ele cuida da identidade - criando carteiras de identidade mágicas (ID Tokens) para todos.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Camada de identidade</strong> construída sobre OAuth 2.0. Adiciona autenticação padronizada e informações de identidade via ID Token.</p>
+                                        
+                                        <h6><strong>➕ O que OIDC adiciona ao OAuth:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>ID Token:</strong> JWT com claims de identidade</li>
+                                            <li><strong>UserInfo endpoint:</strong> Dados adicionais do usuário</li>
+                                            <li><strong>Scope "openid":</strong> Ativa recursos OIDC</li>
+                                            <li><strong>Claims padronizados:</strong> sub, name, email, etc.</li>
+                                            <li><strong>Discovery:</strong> /.well-known/openid-configuration</li>
+                                        </ul>
+                                        
+                                        <h6><strong>🔄 Fluxo básico:</strong></h6>
+                                        <pre><code>1. Client → /authorize?scope=openid
+2. User autentica
+3. Client recebe: Access Token + ID Token
+4. Client valida ID Token → identidade confirmada</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PKCE -->
+                    <div class="accordion-item" id="pkce">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-pkce" aria-expanded="false" aria-controls="collapse-pkce">
+                                🧚‍♀️ PKCE (Proof Key for Code Exchange)
+                            </button>
+                        </h2>
+                        <div id="collapse-pkce" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É um <strong>sistema de segurança extra</strong> que funciona como dar metade de uma senha para alguém e guardar a outra metade. Só quando as duas partes se juntam é que funciona.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Pixie PKCE - A Guardiã dos Códigos Secretos</strong></em><br>
+                                        Uma fada protetora que sempre acompanha Alex Client. Ela cria pares de chaves mágicas que impedem que ladrões roubem códigos no caminho.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Extensão de segurança OAuth</strong> (RFC 7636) que protege contra ataques de interceptação de código de autorização. Obrigatório no OAuth 2.1.</p>
+                                        
+                                        <h6><strong>🔑 Como funciona:</strong></h6>
+                                        <ol class="small">
+                                            <li>Client gera <strong>code_verifier</strong> (segredo)</li>
+                                            <li>Client calcula <strong>code_challenge</strong> = SHA256(verifier)</li>
+                                            <li>Envia challenge para /authorize</li>
+                                            <li>Troca código + verifier no /token</li>
+                                            <li>Server valida: SHA256(verifier) = challenge</li>
+                                        </ol>
+                                        
+                                        <h6><strong>🛡️ Protege contra:</strong></h6>
+                                        <ul class="small">
+                                            <li>Interceptação de código de autorização</li>
+                                            <li>Ataques CSRF</li>
+                                            <li>Malware no dispositivo</li>
+                                        </ul>
+                                        
+                                        <h6><strong>💻 Parâmetros:</strong></h6>
+                                        <pre><code>code_challenge=dBjftJeZ4CVP-mB92K27uhbUJU1p1r_wW1gFWFOEjXk
+code_challenge_method=S256</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Refresh Token -->
+                    <div class="accordion-item" id="refresh-token">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-refresh-token" aria-expanded="false" aria-controls="collapse-refresh-token">
+                                🔄 Refresh Token (Token de Renovação)
+                            </button>
+                        </h2>
+                        <div id="collapse-refresh-token" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É como uma <strong>"renovação automática"</strong>. Quando seu passe VIP expira, ao invés de você ter que fazer toda a fila de novo, você tem um cupom especial que renova tudo automaticamente.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Rex Token - O Renovador Eterno</strong></em><br>
+                                        Ele vive nas sombras, sempre vigilante. Quando Ace Token fica cansado, Rex aparece silenciosamente e troca os tokens, renovando tudo sem que você perceba.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Credential de longa duração</strong> usado para obter novos access tokens sem re-autenticação do usuário. Mais sensível que access token.</p>
+                                        
+                                        <h6><strong>🔄 Refresh Token Rotation:</strong></h6>
+                                        <ol class="small">
+                                            <li>Access token expira</li>
+                                            <li>Client usa refresh token</li>
+                                            <li>Server retorna: novo access + novo refresh</li>
+                                            <li>Refresh token antigo é invalidado</li>
+                                        </ol>
+                                        
+                                        <h6><strong>🛡️ Boas práticas:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>Armazenamento seguro</strong> (httpOnly cookies)</li>
+                                            <li><strong>Rotação</strong> a cada uso</li>
+                                            <li><strong>Detecção de reutilização</strong></li>
+                                            <li><strong>Vida útil limitada</strong> (dias/semanas)</li>
+                                        </ul>
+                                        
+                                        <h6><strong>💻 Uso:</strong></h6>
+                                        <pre><code>POST /token
+grant_type=refresh_token&refresh_token=abc123</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Resource Server -->
+                    <div class="accordion-item" id="resource-server">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-resource-server" aria-expanded="false" aria-controls="collapse-resource-server">
+                                🛡️ Resource Server (Servidor de Recursos)
+                            </button>
+                        </h2>
+                        <div id="collapse-resource-server" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É o <strong>guardião dos seus dados</strong>. Como um funcionário de banco que só libera informações da sua conta se você mostrar um documento válido (token).</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Seraph Resource - O Guardião dos Dados</strong></em><br>
+                                        É o guerreiro angelical que protege os tesouros do reino. Ele só abre os cofres quando alguém apresenta um token válido assinado por Lady OAuth.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Servidor HTTP</strong> que hospeda recursos protegidos. Aceita e valida access tokens para autorizar acesso a APIs.</p>
+                                        
+                                        <h6><strong>🔍 Responsabilidades:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>Validar access tokens</strong> (assinatura, expiração)</li>
+                                            <li><strong>Verificar scopes</strong> e permissões</li>
+                                            <li><strong>Proteger recursos</strong> HTTP</li>
+                                            <li><strong>Retornar dados autorizados</strong></li>
+                                        </ul>
+                                        
+                                        <h6><strong>🔐 Validação típica:</strong></h6>
+                                        <ol class="small">
+                                            <li>Extrair token do header Authorization</li>
+                                            <li>Verificar assinatura JWT</li>
+                                            <li>Validar claims (exp, aud, scope)</li>
+                                            <li>Autorizar acesso ao recurso</li>
+                                        </ol>
+                                        
+                                        <h6><strong>💻 Exemplo header:</strong></h6>
+                                        <pre><code>Authorization: Bearer eyJhbGciOiJSUzI1NiIs...</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Scopes -->
+                    <div class="accordion-item" id="scopes">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-scopes" aria-expanded="false" aria-controls="collapse-scopes">
+                                🏷️ Scopes (Escopos/Permissões)
+                            </button>
+                        </h2>
+                        <div id="collapse-scopes" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>São as <strong>permissões específicas</strong> que você está dando para um app. Como dizer: "pode ver minhas fotos, mas não pode deletar" ou "pode ler meus emails, mas não pode enviar".</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>Cartas de Permissão de Lady OAuth</strong></em><br>
+                                        São pergaminhos específicos que Lady OAuth escreve definindo exatamente o que cada visitante pode fazer: "ler na biblioteca", "entrar no jardim", "falar com o rei".</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Strings que definem permissões</strong> específicas que o client está solicitando. Limitam o que pode ser feito com o access token.</p>
+                                        
+                                        <h6><strong>🏷️ Scopes OIDC padrão:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>openid:</strong> Obrigatório para OIDC (ativa ID Token)</li>
+                                            <li><strong>profile:</strong> Nome, sobrenome, nickname, etc.</li>
+                                            <li><strong>email:</strong> Endereço de email</li>
+                                            <li><strong>address:</strong> Endereço físico</li>
+                                            <li><strong>phone:</strong> Número de telefone</li>
+                                        </ul>
+                                        
+                                        <h6><strong>💡 Scopes personalizados:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>read:posts</strong> - Ler postagens</li>
+                                            <li><strong>write:comments</strong> - Escrever comentários</li>
+                                            <li><strong>admin:users</strong> - Administrar usuários</li>
+                                        </ul>
+                                        
+                                        <h6><strong>💻 Exemplo de requisição:</strong></h6>
+                                        <pre><code>scope=openid profile email read:posts</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SSO -->
+                    <div class="accordion-item" id="sso">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-sso" aria-expanded="false" aria-controls="collapse-sso">
+                                🔑 SSO (Single Sign-On)
+                            </button>
+                        </h2>
+                        <div id="collapse-sso" class="accordion-collapse collapse" data-bs-parent="#glossarioAccordion">
+                            <div class="accordion-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6><strong>👥 Para Leigos:</strong></h6>
+                                        <p>É quando você <strong>faz login uma vez</strong> e pode usar vários apps diferentes sem ter que digitar senha novamente. Como ter uma chave mestra que abre várias portas.</p>
+                                        
+                                        <h6><strong>🎭 No Reino OIDC:</strong></h6>
+                                        <p><em><strong>A Magia da Entrada Única</strong></em><br>
+                                        Uma vez que você passa pela Grande Porta de Lady OAuth e Lord OIDC, ganha um amuleto mágico que abre todas as outras portas do reino federado.</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6><strong>🔧 Para Técnicos:</strong></h6>
+                                        <p><strong>Capacidade de um usuário</strong> se autenticar uma vez e acessar múltiplos sistemas sem re-autenticação. OIDC facilita implementação de SSO.</p>
+                                        
+                                        <h6><strong>🔄 Como funciona com OIDC:</strong></h6>
+                                        <ol class="small">
+                                            <li>User autentica no Identity Provider</li>
+                                            <li>Sessão é criada no IdP</li>
+                                            <li>Outras apps redirecionam para mesmo IdP</li>
+                                            <li>IdP verifica sessão existente</li>
+                                            <li>Retorna tokens sem nova autenticação</li>
+                                        </ol>
+                                        
+                                        <h6><strong>✅ Benefícios:</strong></h6>
+                                        <ul class="small">
+                                            <li><strong>UX melhorada:</strong> Login uma vez</li>
+                                            <li><strong>Segurança:</strong> Credenciais centralizadas</li>
+                                            <li><strong>Administração:</strong> Controle centralizado</li>
+                                        </ul>
+                                        
+                                        <h6><strong>🔐 Implementação:</strong></h6>
+                                        <p class="small">Usar parâmetro <code>prompt=none</code> para verificação silenciosa de sessão.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Seção de Ajuda -->
+                <div class="alert alert-success mt-5">
+                    <h5><strong>💡 Dicas para Aprender:</strong></h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6><strong>👥 Se você é leigo:</strong></h6>
+                            <ul class="small mb-0">
+                                <li>Comece pelas <em>metáforas do Reino</em></li>
+                                <li>Leia as <em>explicações simples</em> primeiro</li>
+                                <li>Visite a <a href="historia_p1.html">História do Reino</a></li>
+                                <li>Conheça os <a href="personagens.html">Personagens</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6><strong>🔧 Se você é técnico:</strong></h6>
+                            <ul class="small mb-0">
+                                <li>Use as <em>definições precisas</em></li>
+                                <li>Teste os <em>exemplos de código</em></li>
+                                <li>Explore o <a href="mundo_do_conhecimento.html">Mundo do Conhecimento</a></li>
+                                <li>Implemente os <em>fluxos descritos</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer com Copyright -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Reino OIDC - Reino da Identidade Federada</strong></p>
+                    <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1 small">© 2025 Reino OIDC. Projeto open source sob MIT License.</p>
+                    <p class="mb-0 small">Licenciado sob <a href="LICENSE" class="text-light">MIT License</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

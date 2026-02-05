@@ -1,0 +1,21 @@
+flowchart TD
+    A[Usuário acessa SPA/Mobile] --> B[Cliente gera PKCE]
+    B --> C[Redireciona para Authorization Server]
+    C --> D[Usuário faz login e autoriza]
+    D --> E[Authorization Server retorna código]
+    E --> F[Cliente troca código + PKCE por tokens]
+    F --> G[Recebe ID Token + Access Token]
+    G --> H[Usa Access Token para acessar APIs]
+    H --> I[Resource Server valida token]
+    I --> J[Retorna dados protegidos]
+    
+    style A fill:#fff3e0
+    style B fill:#e1f5fe
+    style C fill:#f3e5f5
+    style D fill:#fff3e0
+    style E fill:#f3e5f5
+    style F fill:#e1f5fe
+    style G fill:#e8f5e8
+    style H fill:#e1f5fe
+    style I fill:#e8f5e8
+    style J fill:#e8f5e8

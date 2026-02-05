@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personagens - Reino da Identidade Federada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">🏠 Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="personagens.html">👥 Personagens</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            📖 História
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historia_p1.html">Parte I - A Era Sombria</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II - A Chegada do OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p3.html">Parte III - A Nova Era</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mundo_do_conhecimento.html">🌟 Conhecimento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="caminho_feliz.html">✨ Caminho Feliz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aprendiz.html">🎓 Academia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="glossario.html">📚 Glossário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mapas.html">🗺️ Mapas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center">Os Personagens</h1>
+                <div class="text-center">
+                    <img src="assets/images/personagens.png" class="img-fluid" alt="Personagens">
+                </div>
+
+                <div class="accordion mt-5" id="accordionPersonagens">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <strong class="font-weight-bold">Lady OAuth — A Guardiã das Portas</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> Dama das Autorizações</p>
+                                <p><strong>Símbolo:</strong> Uma chave dourada com selo de permissão</p>
+                                <p><strong>Função:</strong> Ela define quem pode entrar e o que pode fazer</p>
+                                <p>Lady OAuth é elegante e justa. Ela nunca pergunta quem você é — apenas se tem permissão para o que está tentando fazer. Ela é a porta de acesso que separa usuários, clientes e recursos protegidos.</p>
+                                <p><em>“Não me importa sua identidade, mas sim o que você tem permissão para acessar.”</em></p>
+                                <p>Ela entrega Access Tokens aos mensageiros (aplicações clientes), que servem como passes temporários para acessar recursos no reino.</p>
+                                <p><strong>Representa:</strong> O protocolo OAuth 2.1, responsável pela autorização (não pela identidade).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <strong class="font-weight-bold">Lord OIDC — O Mago da Identidade</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> Mestre dos Selos de Identidade</p>
+                                <p><strong>Símbolo:</strong> Um pergaminho digital com selo azul e assinatura criptográfica</p>
+                                <p><strong>Função:</strong> Ele confirma quem é o usuário e assina um ID Token</p>
+                                <p>Lord OIDC trabalha lado a lado com Lady OAuth, mas vai além. Ele não apenas concede acesso — ele revela a verdade sobre quem está pedindo.</p>
+                                <p><em>“Com este token, eu declaro quem é este usuário, e juro pela minha chave pública que isso é verdade.”</em></p>
+                                <p><strong>Representa:</strong> O OpenID Connect, que adiciona autenticação e identidade sobre o OAuth 2.0.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <strong class="font-weight-bold">Alex Client — O Mensageiro Confiável</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> O Emissário das Aplicações</p>
+                                <p><strong>Símbolo:</strong> Um envelope com o selo “Client ID”</p>
+                                <p><strong>Função:</strong> Representa o aplicativo que quer acessar dados em nome do usuário.</p>
+                                <p>Alex é o intermediário entre o usuário e os serviços. Ele não guarda senhas, não lê segredos, mas sabe pedir tokens corretamente.</p>
+                                <p><em>“Eu sou apenas um mensageiro. Se me derem um código, eu trago o token certo — e nada mais.”</em></p>
+                                <p><strong>Representa:</strong> O Cliente OAuth/OIDC, ou seja, o aplicativo que consome os tokens.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <strong class="font-weight-bold">Pixie PKCE — A Guardiã dos Códigos Secretos</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> Espírito da Confirmação Criptográfica</p>
+                                <p><strong>Símbolo:</strong> Um fio de luz conectando duas chaves</p>
+                                <p><strong>Função:</strong> Garante que o código de autorização só pode ser usado por quem o gerou.</p>
+                                <p>Pixie é uma entidade de luz que acompanha Alex em cada viagem entre portais. Ela cria uma chave secreta efêmera (code_verifier) e um desafio criptográfico (code_challenge) antes de cada jornada.</p>
+                                <p><em>“Sem mim, qualquer um poderia roubar esse código no caminho. Mas só quem conhece o segredo pode completar a troca.”</em></p>
+                                <p><strong>Representa:</strong> O Proof Key for Code Exchange (PKCE) — mecanismo de segurança obrigatório no OAuth 2.1.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <strong class="font-weight-bold">IDA Token — A Mensageira da Verdade</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> Arauto da Identidade</p>
+                                <p><strong>Símbolo:</strong> Um medalhão com o nome e assinatura digital do usuário</p>
+                                <p><strong>Função:</strong> Transmite quem o usuário é, de forma segura e verificável.</p>
+                                <p>IDA (ID Token) é rápida e precisa. Ela traz informações essenciais — nome, e-mail, ID único — e uma assinatura digital (JWKS) que garante sua autenticidade.</p>
+                                <p><em>“Sou a verdade assinada por Lord OIDC. Quem me lê sabe quem é o usuário, sem jamais ver sua senha.”</em></p>
+                                <p><strong>Representa:</strong> O ID Token do OIDC, que identifica o usuário autenticado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <strong>Ace Token — O Guerreiro das Permissões</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> Cavaleiro da Autorização</p>
+                                <p><strong>Símbolo:</strong> Um escudo com o nome “Bearer”</p>
+                                <p><strong>Função:</strong> Dá acesso a recursos protegidos.</p>
+                                <p>Ace é o irmão de IDA. Enquanto ela prova quem o usuário é, ele prova que o cliente tem autorização.</p>
+                                <p><em>“Sou o Access Token — temporário, poderoso e perigoso nas mãos erradas.”</em></p>
+                                <p><strong>Representa:</strong> O Access Token, usado para autorizar requisições em APIs (Resource Servers).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingSeven">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                <strong class="font-weight-bold">Rex Token — O Renovador Eterno</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> Mestre da Renovação</p>
+                                <p><strong>Símbolo:</strong> Um amuleto em forma de infinito (∞) com poderes regenerativos</p>
+                                <p><strong>Função:</strong> Renova tokens expirados sem precisar autenticar o usuário novamente.</p>
+                                <p>Rex é o guardião dos ciclos. Ele vive nas sombras, protegido em cofres seguros (httpOnly cookies ou secure storage), e só aparece quando Ace está prestes a expirar. Sua missão é evitar que o usuário precise fazer login repetidamente.</p>
+                                <p><em>"Quando Ace e IDA se tornam poeira do tempo, eu sou quem traz nova vida. Mas cuidado — sou valioso demais para ficar exposto."</em></p>
+                                <p>Rex tem uma vida longa mas limitada. Ele pode se auto-renovar algumas vezes, mas eventualmente perde seu poder e o usuário precisa se autenticar novamente. É uma balança entre conveniência e segurança.</p>
+                                <p><strong>Poderes especiais:</strong></p>
+                                <ul>
+                                    <li><strong>Rotação:</strong> Pode se transformar em uma nova versão a cada uso</li>
+                                    <li><strong>Revogação:</strong> Pode ser banido instantaneamente se detectada atividade suspeita</li>
+                                    <li><strong>Hibernação:</strong> Permanece inativo por longos períodos</li>
+                                </ul>
+                                <p><strong>Representa:</strong> O Refresh Token, usado para obter novos Access Tokens sem re-autenticação.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingEight">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                <strong>Seraph Resource — O Guardião dos Dados</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> O Protetor das APIs</p>
+                                <p><strong>Símbolo:</strong> Uma muralha digital com sensores de assinatura JWT</p>
+                                <p><strong>Função:</strong> Entregar dados apenas a quem tem tokens válidos.</p>
+                                <p>Seraph é um guerreiro antigo e firme. Ele verifica cada token, confirma assinaturas, expirações e escopos antes de liberar dados.</p>
+                                <p><em>“Não importa quem pede. Importa se o token é legítimo e ainda válido.”</em></p>
+                                <p><strong>Representa:</strong> O Resource Server, que hospeda dados e APIs protegidas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingNine">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                <strong class="font-weight-bold">Devia — A Aprendiz de Integradora</strong>
+                            </button>
+                        </h2>
+                        <div id="collapseNine" class="accordion-collapse collapse" aria-labelledby="headingNine" data-bs-parent="#accordionPersonagens">
+                            <div class="accordion-body">
+                                <p><strong>Título:</strong> A Desenvolvedora da Cara Core</p>
+                                <p><strong>Símbolo:</strong> Um laptop com o logotipo “Cara Core Informática”</p>
+                                <p><strong>Função:</strong> Ela aprende a conectar todos esses personagens num sistema real.</p>
+                                <p>Devia está em treinamento. Ela entende que implementar OAuth 2.1 e OIDC não é decorar código, mas entender a diplomacia do Reino da Confiança.</p>
+                                <p><em>“Cada parte do protocolo é um personagem com papel definido. O segredo é fazê-los conversar em harmonia.”</em></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer com Copyright -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Reino OIDC - Reino da Identidade Federada</strong></p>
+                    <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1 small">© 2025 Reino OIDC. Projeto open source sob MIT License.</p>
+                    <p class="mb-0 small">Licenciado sob <a href="LICENSE" class="text-light">MIT License</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

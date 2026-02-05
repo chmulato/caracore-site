@@ -1,0 +1,29 @@
+sequenceDiagram
+    participant U as Usuário
+    participant C as Cliente SPA
+    participant AS as Authorization Server
+    participant RS as Resource Server
+
+    Note over C: Pixie PKCE: Gera code_verifier
+    Note over C: Calcula code_challenge = SHA256 code_verifier
+    
+    U->>C: 1. Acessa aplicação
+    C->>C: 2. Gera PKCE code_verifier + challenge
+    C->>AS: 3. Authorization Request + code_challenge + state
+    AS->>U: 4. Tela de login
+    U->>AS: 5. Credenciais + autorização
+    AS->>C: 6. Authorization Code + state
+    
+    Note over C,AS: Validação PKCE
+    C->>AS: 7. Token Request + code + code_verifier
+    AS->>AS: 8. Valida PKCE SHA256 code_verifier == code_challenge
+    AS->>C: 9. ID Token + Access Token IDA + Ace
+    
+    Note over C: Cliente agora autenticado
+    C->>RS: 10. API Request + Access Token
+    RS->>AS: 11. Token Introspection opcional
+    AS->>RS: 12. Token válido
+    RS->>C: 13. Dados protegidos
+    C->>U: 14. Interface atualizada
+
+    Note over U,RS: Protocolos OAuth 2.1 + OIDC + PKCE Segurança HTTPS + State + Nonce + JWT

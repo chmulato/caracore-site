@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+body {
+    background-color: #ecf0f1;
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+    color: #ecf0f1;
+}
+
+.navbar-dark .navbar-brand:hover,
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #3498db;
+}
+
+.navbar {
+    background-color: #2c3e50 !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'MedievalSharp', cursive;
+    color: #2c3e50;
+}
+
+.list-group-item-action:hover {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.accordion-button {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: #2980b9;
+    color: #fff;
+}
+
+.blockquote {
+    border-left: 5px solid #3498db;
+    padding-left: 15px;
+}
+
+.font-weight-bold {
+    font-weight: bold;
+}
+
+/* Quadros de código estilo escola */
+.code-school-box {
+    background-color: #f8fff8 !important;
+    border-color: #198754 !important;
+    border-width: 2px !important;
+}
+
+.code-school-pre {
+    background-color: transparent !important;
+    border: none !important;
+    margin: 0 !important;
+}
+
+.code-school-header {
+    color: #198754 !important;
+    font-weight: bold !important;
+}
+
+/* Convite Python Training */
+.python-training-invite {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 15px;
+}
+
+.python-training-invite ul {
+    font-size: 1.1rem;
+}
+
+.python-training-btn {
+    font-size: 1.3rem;
+    font-weight: 700;
+    border-radius: 50px;
+}

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapas Técnicos - Reino OIDC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">🏠 Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personagens.html">👥 Personagens</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            📖 História
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historia_p1.html">Parte I - A Era Sombria</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II - A Chegada do OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p3.html">Parte III - A Nova Era</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="mundo_do_conhecimento.html">🌟 Conhecimento</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="caminho_feliz.html">✨ Caminho Feliz</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="aprendiz.html">🎓 Academia</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="glossario.html">📚 Glossário</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="mapas.html">🗺️ Mapas</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <header class="text-center py-5">
+                    <h1 class="display-4 text-primary">🗺️ Mapas Técnicos do Reino OIDC</h1>
+                    <p class="lead">Diagramas arquiteturais e fluxos de segurança</p>
+                    <p class="text-muted">Visualizações técnicas dos protocolos OAuth 2.1 + OIDC + PKCE</p>
+                </header>
+
+                <!-- Introdução -->
+                <div class="alert alert-info">
+                    <h5><strong>🧭 Sobre os Mapas Técnicos:</strong></h5>
+                    <p class="mb-0">Esta seção contém diagramas técnicos detalhados que ilustram a arquitetura e os fluxos de segurança do Reino OIDC. Cada diagrama representa um aspecto específico dos protocolos OAuth 2.1, OpenID Connect e PKCE, usando nossa metáfora de reino para facilitar a compreensão.</p>
+                </div>
+
+                <!-- Diagrama 1: Fluxo Simplificado -->
+                <div class="card mb-4 border-primary">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">🎯 Mapa I: Fluxo Simplificado OIDC</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="assets/images/oidc-simple-flow.png" class="img-fluid border rounded shadow-sm" alt="Fluxo Simplificado OIDC">
+                        </div>
+                        <div class="mt-3">
+                            <h6><strong>🎭 Metáfora do Reino:</strong></h6>
+                            <p>Este mapa mostra a jornada básica de um cidadão (usuário) que quer visitar diferentes territórios do reino. Alex Client atua como seu guia, Pixie PKCE garante a segurança da viagem, e Lady OAuth + Lord OIDC concedem as permissões e documentos necessários.</p>
+                            
+                            <h6><strong>🔧 Aspectos Técnicos:</strong></h6>
+                            <ul class="small">
+                                <li><strong>Início:</strong> Authorization Code Flow com PKCE</li>
+                                <li><strong>Segurança:</strong> Code Challenge/Verifier protege contra interceptação</li>
+                                <li><strong>Resultado:</strong> Access Token + ID Token para autenticação/autorização</li>
+                                <li><strong>Ideal para:</strong> Compreensão inicial dos passos principais</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diagrama 2: Arquitetura Completa -->
+                <div class="card mb-4 border-success">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">🏗️ Mapa II: Arquitetura Completa do Reino</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="assets/images/oidc-oauth21-pkce-architecture.png" class="img-fluid border rounded shadow-sm" alt="Arquitetura OIDC + OAuth 2.1 + PKCE">
+                        </div>
+                        <div class="mt-3">
+                            <h6><strong>🎭 Personagens do Reino:</strong></h6>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="small">
+                                        <li><strong>👤 Usuário:</strong> O cidadão do reino</li>
+                                        <li><strong>🧑‍💼 Alex Client:</strong> O mensageiro confiável</li>
+                                        <li><strong>🧚 Pixie PKCE:</strong> Guardiã dos códigos secretos</li>
+                                        <li><strong>👑 Lady OAuth:</strong> Guardiã das portas (autorização)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="small">
+                                        <li><strong>🧙‍♂️ Lord OIDC:</strong> Mago da identidade</li>
+                                        <li><strong>🧝‍♀️ IDA Token:</strong> Mensageira da verdade</li>
+                                        <li><strong>⚔️ Ace Token:</strong> Guerreiro das permissões</li>
+                                        <li><strong>🛡️ Seraph Resource:</strong> Guardião dos dados</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <h6><strong>🔧 Componentes Técnicos:</strong></h6>
+                            <p class="small">Este diagrama mostra a arquitetura completa com todos os componentes OAuth 2.1 + OIDC + PKCE trabalhando em conjunto. Cada personagem representa um elemento específico do protocolo, facilitando o entendimento das responsabilidades e interações.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Diagrama 3: Fluxo de Sequência -->
+                <div class="card mb-4 border-warning">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="mb-0">🔄 Mapa III: Sequência Temporal Detalhada</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <img src="assets/images/oidc-oauth21-sequence.png" class="img-fluid border rounded shadow-sm" alt="Fluxo de Sequência OIDC + OAuth 2.1 + PKCE">
+                        </div>
+                        <div class="mt-3">
+                            <h6><strong>🎭 A Jornada Completa:</strong></h6>
+                            <p>Este mapa detalha cada passo da jornada, desde o momento em que o cidadão decide visitar um território até receber todos os documentos necessários. Mostra as conversas entre Alex Client, Pixie PKCE, Lady OAuth, Lord OIDC e Seraph Resource.</p>
+                            
+                            <h6><strong>🔧 Validações de Segurança:</strong></h6>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <ul class="small">
+                                        <li><strong>PKCE:</strong> SHA256(code_verifier) == code_challenge</li>
+                                        <li><strong>JWT:</strong> Validação de assinatura e claims</li>
+                                        <li><strong>Redirect URI:</strong> Correspondência exata</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul class="small">
+                                        <li><strong>Client ID:</strong> Identificação do mensageiro</li>
+                                        <li><strong>Scopes:</strong> Permissões específicas</li>
+                                        <li><strong>Estado:</strong> Proteção CSRF</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seção de Comparação -->
+                <div class="card mb-4 border-info">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="mb-0">⚖️ Comparativo: OAuth vs OIDC</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6><strong>🚪 OAuth 2.1 (Lady OAuth)</strong></h6>
+                                <ul class="small">
+                                    <li><strong>Foco:</strong> Autorização ("o que pode fazer")</li>
+                                    <li><strong>Produto:</strong> Access Token</li>
+                                    <li><strong>Uso:</strong> Acessar APIs protegidas</li>
+                                    <li><strong>Pergunta:</strong> "Posso acessar este recurso?"</li>
+                                    <li><strong>Não informa:</strong> Quem é o usuário</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <h6><strong>🪪 OpenID Connect (Lord OIDC)</strong></h6>
+                                <ul class="small">
+                                    <li><strong>Foco:</strong> Identidade ("quem é")</li>
+                                    <li><strong>Produto:</strong> ID Token + UserInfo</li>
+                                    <li><strong>Uso:</strong> Login e informações do usuário</li>
+                                    <li><strong>Pergunta:</strong> "Quem é este usuário?"</li>
+                                    <li><strong>Baseado em:</strong> OAuth 2.1 + extensões</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tokens e Personagens -->
+                <div class="card mb-4 border-secondary">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="mb-0">👥 Guia de Personagens e Tokens</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h6><strong>🗝️ Tokens de Identidade</strong></h6>
+                                <ul class="small">
+                                    <li><strong>🧝‍♀️ IDA Token (ID Token):</strong> Prova quem você é</li>
+                                    <li><strong>⚔️ Ace Token (Access Token):</strong> Permite acessar recursos</li>
+                                    <li><strong>♻️ Rex Token (Refresh Token):</strong> Renova outros tokens</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h6><strong>🛡️ Segurança</strong></h6>
+                                <ul class="small">
+                                    <li><strong>🧚 Pixie PKCE:</strong> Protege códigos de autorização</li>
+                                    <li><strong>🛡️ Seraph Resource:</strong> Guarda APIs e dados</li>
+                                    <li><strong>🔐 Chaves JWT:</strong> Validam assinaturas</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-4">
+                                <h6><strong>🤝 Coordenação</strong></h6>
+                                <ul class="small">
+                                    <li><strong>🧑‍💼 Alex Client:</strong> Aplicação que você usa</li>
+                                    <li><strong>👑 Lady OAuth:</strong> Gerencia autorizações</li>
+                                    <li><strong>🧙‍♂️ Lord OIDC:</strong> Gerencia identidades</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Observações Técnicas -->
+                <div class="alert alert-warning">
+                    <h5><strong>⚠️ Observações Importantes:</strong></h5>
+                    <ul class="mb-0">
+                        <li><strong>OAuth 2.1:</strong> Torna PKCE obrigatório e remove fluxos inseguros (Implicit, Resource Owner Password)</li>
+                        <li><strong>ID Token:</strong> Nunca deve ser usado para autorizar acesso a APIs - apenas para identificação do usuário</li>
+                        <li><strong>Access Token:</strong> Deve ser tratado como opaco pelo client, mesmo quando é JWT</li>
+                        <li><strong>Refresh Token:</strong> Deve ser armazenado de forma segura e rotacionado a cada uso</li>
+                        <li><strong>PKCE:</strong> Protege contra ataques de interceptação, especialmente em apps mobile e SPA</li>
+                    </ul>
+                </div>
+
+                <!-- Links Úteis -->
+                <div class="card mb-4">
+                    <div class="card-header bg-dark text-white">
+                        <h5 class="mb-0">🔗 Navegação Relacionada</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6><strong>📚 Aprender</strong></h6>
+                                <ul class="small">
+                                    <li><a href="glossario.html" class="text-decoration-none">📖 Glossário</a></li>
+                                    <li><a href="personagens.html" class="text-decoration-none">👥 Personagens</a></li>
+                                    <li><a href="historia_p1.html" class="text-decoration-none">📜 História</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h6><strong>🎓 Praticar</strong></h6>
+                                <ul class="small">
+                                    <li><a href="aprendiz.html" class="text-decoration-none">🎯 Academia</a></li>
+                                    <li><a href="caminho_feliz.html" class="text-decoration-none">✨ Caminho Feliz</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h6><strong>🌍 Explorar</strong></h6>
+                                <ul class="small">
+                                    <li><a href="mundo_do_conhecimento.html" class="text-decoration-none">🗺️ Mundo do Conhecimento</a></li>
+                                    <li><a href="conclusao.html" class="text-decoration-none">🎊 Conclusão</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3">
+                                <h6><strong>🏰 Principal</strong></h6>
+                                <ul class="small">
+                                    <li><a href="index.html" class="text-decoration-none">🏠 Página Inicial</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer com Copyright -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Reino OIDC - Reino da Identidade Federada</strong></p>
+                    <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1 small">© 2025 Reino OIDC. Projeto open source sob MIT License.</p>
+                    <p class="mb-0 small">Licenciado sob <a href="LICENSE" class="text-light">MIT License</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

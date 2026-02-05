@@ -302,6 +302,10 @@ html:not([data-theme="dark"]) .fed-header > * {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
+.project-header.ete {
+  background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+}
+
 .project-header h3 {
   margin: 0;
   font-size: 1.4rem;

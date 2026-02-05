@@ -19,6 +19,13 @@ function initWikiSearch() {
             category: 'projeto'
         },
         {
+            title: 'Minerador 4.0',
+            description: 'Simulador de ETE e hidrometalurgia para Ensino Médio e mineração. Terras raras, upgrade Ouro 4.0',
+            url: 'projeto-minerador.html',
+            tags: ['minerador', 'ete', 'efluentes', 'hidrometalurgia', 'terras raras', 'ensino médio', 'campo largo', 'simulador', 'ouro 4.0', 'streamlit', 'python'],
+            category: 'projeto'
+        },
+        {
             title: 'CaraCore Hub',
             description: 'Sistema de gerenciamento centralizado com APIs REST para integração de sistemas',
             url: 'projeto-hub.html',
@@ -47,7 +54,7 @@ function initWikiSearch() {
             category: 'projeto'
         },
         {
-            title: 'Python Training',
+            title: 'Circuito Python',
             description: 'Projeto de treinamento em Python para estagiários',
             url: 'projeto-python.html',
             tags: ['python', 'treinamento', 'educação', 'estagiário', 'tutorial'],

@@ -6,15 +6,17 @@ O Wiki da Cara Core Informática foi criado como um guia completo para **estagi�
 
 ### Objetivo Principal
 
-Fornecer explicações **claras e acessíveis** sobre nossos 5 projetos principais, usando linguagem simples para pessoas leigas e orientações técnicas específicas para estagiários.
+Fornecer explicações **claras e acessíveis** sobre nossos projetos principais (alinhados ao portfólio: PDV, Reino OIDC, Seed, Circuito Python, Hub, Área 51), usando linguagem simples para pessoas leigas e orientações técnicas específicas para estagiários.
 
 ## Projetos Documentados
 
-1. **CaraCore Hub** - Sistema de integração e APIs
-2. **CaraCore Seed** - Template base para novos projetos  
-3. **Reino OIDC** - Projeto educativo sobre OAuth/OIDC
-4. **Área 51** - Sistema de autenticação enterprise
-5. **Python Training** - Curso completo de Python para jovens
+1. **CaraCore PDV** - Sistema de ponto de venda (Reforma Tributária, PIX, offline)
+2. **chmulatoETE Minerador 4.0** - Simulador ETE/hidrometalurgia para **Ensino Médio** e mineração (upgrade Ouro 4.0 R$ 29,90)
+3. **Reino OIDC** - Educação em OAuth 2.1 e OIDC
+4. **Cara Core Seed** - Contador de licenças (Windows, R$ 29,90)
+5. **Circuito Python** - Produto chamariz (curso FREE, licença escolas)
+6. **Cara Core Hub** - Sistema de integração e e-commerce
+7. **Área 51** - Consultoria OIDC / autenticação enterprise
 
 ## Design Responsivo
 
@@ -56,7 +58,7 @@ wiki/
 ### Depois (Wiki Unificado)
 
 - Localização: `D:\dev\site\cara-core\wiki\`
-- Foco: **Todos os 5 projetos** com explicações para leigos e estagiários
+- Foco: **Todos os projetos** (PDV, Minerador 4.0, Reino OIDC, Seed, Circuito Python, Hub, Área 51) com explicações para leigos e estagiários
 - Público: **Estagiários**, colaboradores e interessados em geral
 
 ### Links Atualizados
@@ -73,7 +75,7 @@ wiki/
 - **CaraCore Seed**: Gradiente laranja-amarelo (`#f7971e` → `#ffd200`)
 - **Reino OIDC**: Gradiente roxo-rosa (`#8f6ed5` → `#d084c9`)
 - **Área 51**: Gradiente azul-roxo (`#667eea` → `#764ba2`)
-- **Python Training**: Gradiente verde (`#2E8B57` → `#228B22`)
+- **Circuito Python**: Gradiente verde (`#2E8B57` → `#228B22`)
 
 ### Seções Especiais
 

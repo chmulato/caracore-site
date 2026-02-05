@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cara Core Seed - Wiki Cara Core</title>
-    <meta name="description" content="Documentação completa do Cara Core Seed - template base para novos projetos Python/Flask com estrutura padronizada e melhores práticas.">
+    <meta name="description" content="Cara Core Seed - Contador de Licenças para aplicações Windows. Foco localhost e Windows Desktop (Electron), SQLite local, gestão de licenças do PDV, Minerador 4.0, Reino OIDC e Hub.">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -108,16 +108,16 @@
                     <div class="project-card">
                         <div class="project-header seed">
                             <h1><i class="bi bi-seedling"></i> Cara Core Seed</h1>
-                            <p>Template Base para Novos Projetos</p>
+                            <p>Contador de Licenças — foco localhost e Windows Desktop</p>
                         </div>
                         <div class="project-body">
                             <div class="project-status">
                                 <span class="badge badge-private">Privado</span>
                                 <span class="badge badge-proprietary">Licença Proprietária</span>
                                 <span class="badge badge-stable">Estável</span>
-                                <span class="badge badge-python">Python 3.11+</span>
-                                <span class="badge badge-flask">Flask</span>
-                                <span class="badge badge-template">Template</span>
+                                <span class="badge badge-java">Java</span>
+                                <span class="badge badge-sqlite">SQLite</span>
+                                <span class="badge badge-template">Windows Desktop</span>
                             </div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
                     <!-- Aviso sobre repositório privado -->
                     <div class="alert alert-warning">
                         <h5><i class="bi bi-lock-fill"></i> Repositório Privado</h5>
-                        <p class="mb-0">Este projeto possui <strong>código-fonte privado</strong> hospedado no GitHub e é protegido por <strong>licença proprietária</strong> da Cara Core Informática. A documentação aqui presente tem caráter informativo sobre a estrutura e padrões utilizados no template.</p>
+                        <p class="mb-0">Este projeto possui <strong>código-fonte privado</strong> e é protegido por <strong>licença proprietária</strong> da Cara Core Informática. Apresentação e download: <a href="https://chmulato.github.io/caracore-seed/" target="_blank" rel="noopener">chmulato.github.io/caracore-seed</a> e <a href="https://github.com/chmulato/caracore-seed-releases" target="_blank" rel="noopener">caracore-seed-releases</a>.</p>
                     </div>
 
                     <!-- Visão Geral -->
@@ -136,97 +136,78 @@
                             <div class="col-md-6">
                                 <div class="leigos-section">
                                     <h3><i class="bi bi-people"></i> O que é o Seed?</h3>
-                                    <p>O Cara Core Seed é como um "molde" ou "receita básica" para criar novos projetos. Imagine que você tem uma receita de bolo que sempre dá certo - o Seed é isso, mas para criar aplicativos web.</p>
-                                    <p><strong>Por que é importante:</strong></p>
+                                    <p>O <strong>Cara Core Seed</strong> é o <strong>Contador de Licenças</strong> para quem compra os produtos Cara Core (PDV, Minerador 4.0, Reino OIDC, Hub) para rodar no Windows. O cliente vê e gerencia suas licenças com transparência e em conformidade com a LGPD.</p>
+                                    <p><strong>Escopo atual:</strong></p>
                                     <ul class="feature-list">
-                                        <li>🏗️ <strong>Base sólida:</strong> Todo projeto novo já nasce organizado</li>
-                                        <li>⚡ <strong>Mais rápido:</strong> Não precisa começar do zero toda vez</li>
-                                        <li>🎯 <strong>Padrão da empresa:</strong> Todos os projetos seguem a mesma estrutura</li>
-                                        <li>🔧 <strong>Já configurado:</strong> Docker, testes, deploy - tudo pronto</li>
+                                        <li>🖥️ <strong>Foco localhost e Windows Desktop:</strong> Aplicativo roda no computador do cliente</li>
+                                        <li>📦 <strong>EXE para Windows:</strong> Instalador com Electron + servidor local (JRE + WAR)</li>
+                                        <li>🗄️ <strong>SQLite local:</strong> Banco único no escopo; dados em <code>caracore-seed.db</code></li>
+                                        <li>🔐 <strong>Portal de controle:</strong> Transparência e auditoria de licenças (inspirado no Minerador 4.0)</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="estagiario-section">
-                                    <h3><i class="bi bi-mortarboard"></i> Arquitetura do Template</h3>
-                                    <p>Boilerplate Flask seguindo Clean Architecture e Domain-Driven Design (DDD). Implementa estrutura modular com separação clara entre camadas e responsabilidades.</p>
-                                    <p><strong>Componentes inclusos:</strong></p>
+                                    <h3><i class="bi bi-mortarboard"></i> Arquitetura</h3>
+                                    <p>WAR Java com SQLite local; Electron inicia JRE + WAR e abre a interface em <code>http://localhost:9080</code> (ou porta configurada). Dois perfis: <strong>Contador de Clientes</strong> (uso interno) e <strong>Comprador</strong> (consulta somente leitura).</p>
+                                    <p><strong>Stack:</strong></p>
                                     <ul class="feature-list">
-                                        <li><strong>Flask App Factory:</strong> Configuração modular da aplicação</li>
-                                        <li><strong>Blueprint System:</strong> Organização por módulos funcionais</li>
-                                        <li><strong>Database Migrations:</strong> Alembic pre-configurado</li>
-                                        <li><strong>Testing Suite:</strong> pytest + coverage setup completo</li>
-                                        <li><strong>Docker Environment:</strong> Multi-stage builds otimizados</li>
-                                        <li><strong>CI/CD Pipeline:</strong> GitHub Actions ready-to-use</li>
+                                        <li><strong>Backend:</strong> Java (WAR), SQLite (único banco no escopo)</li>
+                                        <li><strong>Desktop:</strong> Electron; abre <code>localhost</code> após iniciar servidor embutido</li>
+                                        <li><strong>Licença:</strong> <code>license.key</code> em %APPDATA%\caracore-seed-desktop (Windows)</li>
+                                        <li><strong>Testes:</strong> UT (Maven), HTTP (pytest), E2E (Selenium) com foco em localhost e Desktop</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Estrutura do Projeto -->
+                    <!-- Estrutura e foco -->
                     <section class="mb-5">
-                        <h2><i class="bi bi-folder-open text-success"></i> Estrutura do Projeto</h2>
+                        <h2><i class="bi bi-folder-open text-success"></i> Foco: localhost e Windows Desktop</h2>
                         
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="leigos-section">
-                                    <h3><i class="bi bi-people"></i> Como está organizado</h3>
-                                    <p>A estrutura do Seed é como organizar uma casa bem planejada - cada coisa tem seu lugar e você sempre sabe onde encontrar o que precisa:</p>
+                                    <h3><i class="bi bi-people"></i> Para o usuário final</h3>
+                                    <p>O Seed roda no computador do cliente (Windows). Ao abrir o aplicativo, o servidor sobe em <strong>localhost</strong> e a interface abre no navegador embutido. Tudo fica local: banco SQLite, dados de licenças, portal de controle. R$ 29,90 (valor único).</p>
                                     <ul class="feature-list">
-                                        <li>📁 <strong>app/</strong> - O "coração" da aplicação</li>
-                                        <li>🧪 <strong>tests/</strong> - Testes para garantir que tudo funciona</li>
-                                        <li>🐳 <strong>docker/</strong> - Configurações para rodar em qualquer lugar</li>
-                                        <li>📋 <strong>scripts/</strong> - Comandos úteis para desenvolvimento</li>
-                                        <li>📚 <strong>docs/</strong> - Documentação do projeto</li>
+                                        <li>📦 <strong>Baixar EXE:</strong> delivery/seed e caracore-seed-releases</li>
+                                        <li>🔑 <strong>license.key:</strong> Colocado em %APPDATA%\caracore-seed-desktop (ou junto ao EXE)</li>
+                                        <li>🖥️ <strong>100% offline:</strong> Funciona sem internet após instalação</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="estagiario-section">
-                                    <h3><i class="bi bi-mortarboard"></i> Estrutura Técnica</h3>
+                                    <h3><i class="bi bi-mortarboard"></i> Estrutura do repositório</h3>
                                     <pre><code>caracore-seed/
-├── app/
-│   ├── __init__.py          # App factory
-│   ├── config.py            # Configurações por ambiente
-│   ├── models/              # SQLAlchemy models
-│   ├── views/               # Blueprint controllers
-│   ├── services/            # Business logic layer
-│   ├── utils/               # Helper functions
-│   └── static/              # Assets (CSS, JS, images)
-├── tests/
-│   ├── unit/                # Testes unitários
-│   ├── integration/         # Testes de integração
-│   └── fixtures/            # Test data
-├── migrations/              # Alembic migrations
-├── docker/
-│   ├── Dockerfile           # Production image
-│   ├── Dockerfile.dev       # Development image
-│   └── docker-compose.yml   # Services orchestration
-├── scripts/
-│   ├── setup.py             # Environment setup
-│   ├── test.py              # Test runner
-│   └── deploy.py            # Deployment utilities
-└── docs/                    # Project documentation</code></pre>
+├── electron/           # Desktop (EXE): main.js, licenseGate, localhost
+├── project_seed/       # Backend Java (WAR), SQLite
+├── data/               # caracore-seed.db (SQLite local)
+├── scripts/            # build_seed_desktop.bat, testes (localhost)
+├── README.md           # Escopo: localhost + Windows Desktop
+└── delivery (matriz) / caracore-seed-releases (filial)</code></pre>
+                                    <p><strong>Banco:</strong> apenas SQLite no escopo; propriedade <code>-Dapp.db.path=./data/caracore-seed.db</code> (opcional).</p>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    <!-- Features Incluídas -->
+                    <!-- Funcionalidades principais -->
                     <section class="mb-5">
-                        <h2><i class="bi bi-star text-warning"></i> Features Incluídas</h2>
+                        <h2><i class="bi bi-star text-warning"></i> Funcionalidades Principais</h2>
                         
                         <div class="row">
                             <div class="col-md-6 mb-4">
                                 <div class="feature-card">
                                     <div class="feature-header">
-                                        <i class="bi bi-shield-lock text-primary"></i>
-                                        <h4>Autenticação JWT</h4>
+                                        <i class="bi bi-key text-primary"></i>
+                                        <h4>Gestão de licenças</h4>
                                     </div>
                                     <div class="feature-content">
-                                        <p><strong>Para leigos:</strong> Sistema de login seguro que lembra quem você é sem precisar fazer login toda hora.</p>
-                                        <p><strong>Técnico:</strong> JWT tokens com refresh, middleware de autenticação, decorators para proteção de rotas.</p>
+                                        <p><strong>Para leigos:</strong> O cliente vê quais licenças possui (PDV, Minerador, Reino OIDC, Hub), onde estão ativas e até quando valem.</p>
+                                        <p><strong>Técnico:</strong> Validação RSA-2048, license.key atrelado ao hardware; perfis Contador e Comprador.</p>
                                     </div>
                                 </div>
                             </div>
@@ -235,11 +216,11 @@
                                 <div class="feature-card">
                                     <div class="feature-header">
                                         <i class="bi bi-database text-success"></i>
-                                        <h4>Database ORM</h4>
+                                        <h4>SQLite local</h4>
                                     </div>
                                     <div class="feature-content">
-                                        <p><strong>Para leigos:</strong> Sistema que conversa com o banco de dados usando Python normal, sem precisar aprender SQL.</p>
-                                        <p><strong>Técnico:</strong> SQLAlchemy com models, migrations automáticas via Alembic, connection pooling configurado.</p>
+                                        <p><strong>Para leigos:</strong> Todos os dados ficam no próprio computador, em um único arquivo.</p>
+                                        <p><strong>Técnico:</strong> Apenas SQLite no escopo; <code>caracore-seed.db</code>; sem PostgreSQL nem outros bancos.</p>
                                     </div>
                                 </div>
                             </div>
@@ -247,12 +228,12 @@
                             <div class="col-md-6 mb-4">
                                 <div class="feature-card">
                                     <div class="feature-header">
-                                        <i class="bi bi-check-circle text-warning"></i>
-                                        <h4>Testes Automáticos</h4>
+                                        <i class="bi bi-windows text-warning"></i>
+                                        <h4>Windows Desktop (Electron)</h4>
                                     </div>
                                     <div class="feature-content">
-                                        <p><strong>Para leigos:</strong> "Robôs" que testam o código automaticamente para garantir que nada quebrou.</p>
-                                        <p><strong>Técnico:</strong> pytest suite, fixtures, mocks, coverage reporting, CI integration.</p>
+                                        <p><strong>Para leigos:</strong> Instalador EXE; ao abrir, o sistema sobe sozinho e abre a tela em localhost.</p>
+                                        <p><strong>Técnico:</strong> Electron inicia JRE + WAR; interface em <code>http://localhost:9080</code> (ou porta configurada).</p>
                                     </div>
                                 </div>
                             </div>
@@ -260,383 +241,55 @@
                             <div class="col-md-6 mb-4">
                                 <div class="feature-card">
                                     <div class="feature-header">
-                                        <i class="bi bi-cloud text-info"></i>
-                                        <h4>Deploy Automático</h4>
+                                        <i class="bi bi-ui-checks text-info"></i>
+                                        <h4>Portal de controle</h4>
                                     </div>
                                     <div class="feature-content">
-                                        <p><strong>Para leigos:</strong> O código vai direto para o "ar" (internet) automaticamente quando você termina uma feature.</p>
-                                        <p><strong>Técnico:</strong> GitHub Actions pipeline, Azure App Service integration, Docker multi-stage builds.</p>
+                                        <p><strong>Para leigos:</strong> Área onde o cliente consulta licenças, transparência e LGPD.</p>
+                                        <p><strong>Técnico:</strong> Dashboard, listagem de licenças, clientes, assinaturas, auditoria; API REST local.</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="alert alert-success">
-                            <h5><i class="bi bi-rocket"></i> Desenvolvimento Acelerado</h5>
-                            <p>Com o Seed, um projeto que normalmente levaria 2-3 dias para configurar fica pronto em 15 minutos!</p>
                         </div>
                     </section>
 
-                    <!-- Como Usar o Template -->
+                    <!-- Como usar e links -->
                     <section class="mb-5">
-                        <h2><i class="bi bi-play-circle text-primary"></i> Como Usar o Template</h2>
+                        <h2><i class="bi bi-play-circle text-primary"></i> Como usar e links</h2>
                         
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="leigos-section">
-                                    <h3><i class="bi bi-people"></i> Passo a Passo Simples</h3>
+                                    <h3><i class="bi bi-people"></i> Para o cliente</h3>
                                     <ol>
-                                        <li><strong>Copiar o template</strong> - Como fazer xerox de uma receita</li>
-                                        <li><strong>Dar um nome</strong> - Trocar "seed" pelo nome do seu projeto</li>
-                                        <li><strong>Configurar</strong> - Ajustar as informações básicas</li>
-                                        <li><strong>Desenvolver</strong> - Adicionar suas funcionalidades específicas</li>
-                                        <li><strong>Testar</strong> - Verificar se está tudo funcionando</li>
-                                        <li><strong>Publicar</strong> - Colocar no ar para todo mundo usar</li>
+                                        <li>Baixar o EXE em <a href="../delivery/seed/download.html">delivery/seed</a> ou <a href="https://github.com/chmulato/caracore-seed-releases" target="_blank" rel="noopener">caracore-seed-releases</a></li>
+                                        <li>Instalar no Windows; obter <code>license.key</code> (ID de Ativação + PIX)</li>
+                                        <li>Colocar <code>license.key</code> em %APPDATA%\caracore-seed-desktop (ou junto ao EXE)</li>
+                                        <li>Abrir o aplicativo: sobe em <strong>localhost</strong> e abre a interface</li>
                                     </ol>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="estagiario-section">
-                                    <h3><i class="bi bi-mortarboard"></i> Setup Técnico</h3>
-                                    <pre><code># 1. Clonar template
-git clone https://github.com/cara-core/seed meu-projeto
-cd meu-projeto
-
-# 2. Renomear projeto
-python scripts/rename_project.py "MeuProjeto"
-
-# 3. Setup ambiente
-python scripts/setup.py --dev
-
-# 4. Ativar ambiente virtual
-venv\Scripts\activate  # Windows
-source venv/bin/activate  # Linux/Mac
-
-# 5. Instalar dependências
-pip install -r requirements/dev.txt
-
-# 6. Configurar banco
-flask db upgrade
-
-# 7. Seed inicial de dados
-python scripts/seed_data.py
-
-# 8. Executar aplicação
-flask run --debug</code></pre>
+                                    <h3><i class="bi bi-mortarboard"></i> Desenvolvimento e testes</h3>
+                                    <p>Testes com foco em <strong>localhost</strong> e <strong>Desktop Electron</strong>: UT (Maven), HTTP (pytest), E2E (Selenium). Ver <code>README_PY.md</code> no repositório; definir <code>CARACORE_BASE_URL=http://localhost:9080/caracore-seed</code> para Desktop.</p>
+                                    <p><strong>Build EXE:</strong> <code>scripts/build_seed_desktop.bat</code>; publicar em caracore-seed-releases.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="alert alert-info mt-4">
-                            <h5><i class="bi bi-lightbulb"></i> Dica Pro</h5>
-                            <p>Use o script <code>scripts/new_module.py</code> para gerar automaticamente a estrutura de novos módulos com models, views, services e testes já configurados!</p>
-                        </div>
-                    </section>
-
-                    <!-- Configurações Disponíveis -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-sliders text-warning"></i> Configurações Disponíveis</h2>
-                        
-                        <div class="estagiario-section">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4><i class="bi bi-gear text-info"></i> Ambientes</h4>
-                                    <ul class="tech-list">
-                                        <li><strong>Development:</strong> Debug ativo, hot-reload, SQLite local</li>
-                                        <li><strong>Testing:</strong> Base isolada, mocks, coverage tracking</li>
-                                        <li><strong>Staging:</strong> Ambiente de homologação no Azure</li>
-                                        <li><strong>Production:</strong> Otimizações, PostgreSQL, monitoring</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-6">
-                                    <h4><i class="bi bi-database text-success"></i> Databases Suportados</h4>
-                                    <ul class="tech-list">
-                                        <li><strong>SQLite:</strong> Desenvolvimento local rápido</li>
-                                        <li><strong>PostgreSQL:</strong> Produção (recomendado)</li>
-                                        <li><strong>MySQL:</strong> Compatibilidade legacy</li>
-                                        <li><strong>Azure SQL:</strong> Cloud-native option</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <h4><i class="bi bi-box text-primary"></i> Variáveis de Ambiente</h4>
-                            <pre><code># .env.example
-FLASK_APP=app
-FLASK_ENV=development
-SECRET_KEY=sua-chave-super-secreta
-DATABASE_URL=sqlite:///app.db
-REDIS_URL=redis://localhost:6379
-JWT_SECRET_KEY=jwt-secret-key
-JWT_ACCESS_TOKEN_EXPIRES=3600
-AZURE_STORAGE_CONNECTION_STRING=...
-SENDGRID_API_KEY=...
-SENTRY_DSN=...</code></pre>
-                        </div>
-                    </section>
-
-                    <!-- Módulos Opcionais -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-puzzle text-success"></i> Módulos Opcionais</h2>
-                        
-                        <div class="row">
-                            <div class="col-md-4 mb-4">
-                                <div class="module-card">
-                                    <div class="module-header">
-                                        <i class="bi bi-envelope text-primary"></i>
-                                        <h5>Email Module</h5>
-                                    </div>
-                                    <p>Envio de emails via SendGrid com templates HTML responsivos.</p>
-                                    <code>flask module add email</code>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 mb-4">
-                                <div class="module-card">
-                                    <div class="module-header">
-                                        <i class="bi bi-cloud-upload text-success"></i>
-                                        <h5>File Upload</h5>
-                                    </div>
-                                    <p>Upload seguro para Azure Blob Storage com validação e resize.</p>
-                                    <code>flask module add uploads</code>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 mb-4">
-                                <div class="module-card">
-                                    <div class="module-header">
-                                        <i class="bi bi-graph-up text-warning"></i>
-                                        <h5>Analytics</h5>
-                                    </div>
-                                    <p>Tracking de eventos customizado com dashboards integrados.</p>
-                                    <code>flask module add analytics</code>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 mb-4">
-                                <div class="module-card">
-                                    <div class="module-header">
-                                        <i class="bi bi-cash text-info"></i>
-                                        <h5>Payments</h5>
-                                    </div>
-                                    <p>Integração com Stripe para pagamentos seguros.</p>
-                                    <code>flask module add payments</code>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 mb-4">
-                                <div class="module-card">
-                                    <div class="module-header">
-                                        <i class="bi bi-chat-dots text-success"></i>
-                                        <h5>Real-time Chat</h5>
-                                    </div>
-                                    <p>WebSocket chat com Socket.IO e notificações push.</p>
-                                    <code>flask module add chat</code>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 mb-4">
-                                <div class="module-card">
-                                    <div class="module-header">
-                                        <i class="bi bi-shield-check text-danger"></i>
-                                        <h5>Advanced Security</h5>
-                                    </div>
-                                    <p>2FA, rate limiting, audit logs e security headers.</p>
-                                    <code>flask module add security</code>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Scripts Úteis -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-terminal text-info"></i> Scripts Úteis</h2>
-                        
-                        <div class="estagiario-section">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <h4><i class="bi bi-play-fill text-success"></i> Desenvolvimento</h4>
-                                    <pre><code># Setup completo
-python scripts/setup.py --dev
-
-# Gerar novo módulo
-python scripts/new_module.py users
-
-# Executar testes
-python scripts/test.py --coverage
-
-# Limpar cache e build
-python scripts/clean.py
-
-# Gerar dados fake para testes
-python scripts/seed_data.py --fake</code></pre>
-                                </div>
-                                <div class="col-md-6">
-                                    <h4><i class="bi bi-cloud text-primary"></i> Deploy</h4>
-                                    <pre><code># Build de produção
-python scripts/build.py --prod
-
-# Deploy para staging
-python scripts/deploy.py --env staging
-
-# Deploy para produção
-python scripts/deploy.py --env production
-
-# Backup do banco
-python scripts/backup.py --database
-
-# Monitorar logs
-python scripts/monitor.py --tail</code></pre>
-                                </div>
-                            </div>
-
-                            <div class="alert alert-success mt-4">
-                                <h5><i class="bi bi-magic"></i> Auto-Generator</h5>
-                                <p>O Seed inclui geradores automáticos de código que criam models, views, testes e documentação baseados em templates. Use <code>flask generate --help</code> para ver todas as opções.</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Melhores Práticas -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-award text-warning"></i> Melhores Práticas Incluídas</h2>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="best-practice-card">
-                                    <h4><i class="bi bi-code-square text-primary"></i> Código Limpo</h4>
-                                    <ul class="feature-list">
-                                        <li>Black + isort para formatação automática</li>
-                                        <li>Flake8 + pylint para linting</li>
-                                        <li>Type hints em todas as funções</li>
-                                        <li>Docstrings no padrão Google</li>
-                                        <li>Pre-commit hooks configurados</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="best-practice-card">
-                                    <h4><i class="bi bi-shield-check text-success"></i> Segurança</h4>
-                                    <ul class="feature-list">
-                                        <li>JWT com refresh tokens seguros</li>
-                                        <li>CORS configurado adequadamente</li>
-                                        <li>Rate limiting por endpoint</li>
-                                        <li>Sanitização de inputs</li>
-                                        <li>Security headers obrigatórios</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="best-practice-card">
-                                    <h4><i class="bi bi-speedometer2 text-warning"></i> Performance</h4>
-                                    <ul class="feature-list">
-                                        <li>Connection pooling otimizado</li>
-                                        <li>Caching com Redis integrado</li>
-                                        <li>Queries lazy loading</li>
-                                        <li>Compression gzip automática</li>
-                                        <li>Static files CDN ready</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="best-practice-card">
-                                    <h4><i class="bi bi-bug text-danger"></i> Observabilidade</h4>
-                                    <ul class="feature-list">
-                                        <li>Structured logging com JSON</li>
-                                        <li>Health checks automáticos</li>
-                                        <li>Métricas Prometheus ready</li>
-                                        <li>Error tracking com Sentry</li>
-                                        <li>APM integration disponível</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Projetos que Usam o Seed -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-tree text-success"></i> Projetos Baseados no Seed</h2>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="project-showcase">
-                                    <h4><i class="bi bi-hdd-network text-info"></i> Cara Core Hub</h4>
-                                    <p>Sistema de gerenciamento centralizado baseado no Seed com extensões para orquestração de microserviços.</p>
-                                    <div class="showcase-stats">
-                                        <span class="stat">🚀 Deployment time: 2min</span>
-                                        <span class="stat">📊 +200% dev speed</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="project-showcase">
-                                    <h4><i class="bi bi-rocket text-primary"></i> Área 51 Enterprise</h4>
-                                    <p>Plataforma de autenticação empresarial que aproveitou toda a base de segurança do Seed.</p>
-                                    <div class="showcase-stats">
-                                        <span class="stat">🔒 Zero security issues</span>
-                                        <span class="stat">⚡ Setup em 10min</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-info">
-                            <h5><i class="bi bi-graph-up"></i> Estatísticas de Uso</h5>
-                            <div class="row">
-                                <div class="col-md-3 text-center">
-                                    <div class="stat-number">85%</div>
-                                    <div class="stat-label">Redução tempo setup</div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="stat-number">12</div>
-                                    <div class="stat-label">Projetos ativos</div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="stat-number">95%</div>
-                                    <div class="stat-label">Test coverage médio</div>
-                                </div>
-                                <div class="col-md-3 text-center">
-                                    <div class="stat-number">0</div>
-                                    <div class="stat-label">Security incidents</div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Contribuição -->
-                    <section class="text-center">
-                        <h2><i class="bi bi-heart text-danger"></i> Como Contribuir</h2>
-                        <p class="lead">O Seed está sempre evoluindo com novas features e melhorias!</p>
-                        
-                        <div class="alert alert-success">
-                            <h4><i class="bi bi-lightbulb"></i> Ideias para Contribuir</h4>
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <strong>🧩 Novos Módulos</strong><br>
-                                    Criar módulos reutilizáveis para funcionalidades comuns
-                                </div>
-                                <div class="col-md-4">
-                                    <strong>📚 Documentação</strong><br>
-                                    Melhorar guias e exemplos de uso
-                                </div>
-                                <div class="col-md-4">
-                                    <strong>🧪 Testes</strong><br>
-                                    Aumentar cobertura e criar casos edge
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="d-grid gap-2 d-md-block">
-                            <a href="guia-estagiario.html" class="btn-wiki me-2">
-                                <i class="bi bi-mortarboard"></i> Guia do Estagiário
+                        <div class="d-grid gap-2 d-md-block mt-4">
+                            <a href="../delivery/seed/index.html" class="btn-wiki me-2">
+                                <i class="bi bi-box-arrow-up-right"></i> Portal Seed (matriz)
                             </a>
-                            <a href="contribuindo.html" class="btn-wiki me-2">
-                                <i class="bi bi-git"></i> Como Contribuir
+                            <a href="../delivery/seed/download.html" class="btn-wiki me-2">
+                                <i class="bi bi-download"></i> Baixar EXE
                             </a>
-                            <a href="https://github.com/cara-core/seed" class="btn-wiki" target="_blank" rel="noopener">
-                                <i class="bi bi-github"></i> Ver no GitHub
+                            <a href="https://chmulato.github.io/caracore-seed/" class="btn-wiki me-2" target="_blank" rel="noopener">
+                                <i class="bi bi-globe"></i> Apresentação (GitHub Pages)
+                            </a>
+                            <a href="https://github.com/chmulato/caracore-seed-releases" class="btn-wiki" target="_blank" rel="noopener">
+                                <i class="bi bi-github"></i> caracore-seed-releases
                             </a>
                         </div>
                     </section>
@@ -649,7 +302,7 @@ python scripts/monitor.py --tail</code></pre>
     <footer class="wiki-footer">
         <div class="container">
             <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
-            <p>Documentação técnica do Cara Core Seed - Template Base para Novos Projetos</p>
+            <p>Cara Core Seed - Contador de Licenças (localhost e Windows Desktop)</p>
         </div>
     </footer>
 

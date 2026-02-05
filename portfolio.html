@@ -121,11 +121,12 @@
       <h2 class="mb-3">
         <i class="bi bi-cash"></i> CaraCore PDV
       </h2>
-      <p class="lead mb-3">O primeiro PDV pronto para a Reforma Tributária 2026-2033. Instalação simples, funciona sem internet e oferece planos Free e Premium.</p>
+      <p class="lead mb-3">O primeiro PDV pronto para a Reforma Tributária 2026-2033. <strong>Foco localhost e Windows Desktop</strong> (EXE sobe em <code>localhost:8080</code>). Instalação simples, banco apenas SQLite, funciona sem internet e oferece planos Free e Premium.</p>
       <div>
         <span class="tech-badge">Java 21</span>
         <span class="tech-badge">Spring Boot</span>
         <span class="tech-badge">SQLite</span>
+        <span class="tech-badge">Windows Desktop</span>
         <span class="tech-badge">Bootstrap 5</span>
         <span class="tech-badge">HTMX</span>
         <span class="tech-badge">ApexCharts</span>
@@ -140,7 +141,7 @@
             <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
           </h3>
           <p>
-            O <strong>CaraCore PDV</strong> é uma solução completa de Ponto de Venda para o mercado brasileiro e o primeiro PDV preparado para a Reforma Tributária 2026-2033: o motor fiscal acompanha automaticamente as mudanças de alíquotas até 2033.
+            O <strong>CaraCore PDV</strong> é uma solução completa de Ponto de Venda para o mercado brasileiro e o primeiro PDV preparado para a Reforma Tributária 2026-2033: o motor fiscal acompanha automaticamente as mudanças de alíquotas até 2033. <strong>Escopo: foco localhost e Windows Desktop</strong> — instalador EXE; ao abrir, o servidor sobe em <code>localhost:8080</code>. Banco apenas SQLite.
           </p>
           <p>
             <strong>Benefícios de Negócio:</strong>
@@ -148,10 +149,10 @@
           <ul class="feature-list">
             <li>Motor fiscal que atualiza sozinho as alíquotas até 2033</li>
             <li>Pix Split para repartir automaticamente impostos e taxa de serviço</li>
-            <li>Instalação simples: um único arquivo de dados, sem servidor de banco — ideal para pequenos e médios negócios</li>
+            <li>Foco localhost e Windows Desktop: EXE sobe em localhost; banco apenas SQLite — ideal para pequenos e médios negócios</li>
             <li>Painel de segurança e backup: políticas, criptografia e cópias automáticas para nuvem ou pendrive</li>
             <li>Dashboard com vendas semanais, produtos mais vendidos e indicadores em tempo real</li>
-            <li>Continua vendendo quando a internet cai (modo offline e contingência); ativação da licença Premium por SMS no celular do operador</li>
+            <li>Continua vendendo quando a internet cai (modo contingência com SQLite local + SMS); ativação da licença Premium por SMS no celular do operador</li>
             <li>PIX com QR Code e confirmação em tempo real; estrutura para Mercado Pago e PagSeguro</li>
             <li>Leitor de código de barras pela câmera e atalhos de teclado para agilizar o caixa</li>
             <li>Interface adaptada para celular, tablet e computador</li>
@@ -168,7 +169,7 @@
             <i class="bi bi-book-fill text-info"></i> Para Leigos
           </h3>
           <p>
-            O <strong>CaraCore PDV</strong> é um sistema de caixa para lojas, como os de supermercados. A diferença: já está preparado para as mudanças de impostos que vêm no Brasil entre 2026 e 2033.
+            O <strong>CaraCore PDV</strong> é um sistema de caixa para lojas, como os de supermercados. <strong>Foco localhost e Windows Desktop:</strong> o instalador EXE sobe em <code>localhost</code> ao abrir. Já está preparado para as mudanças de impostos que vêm no Brasil entre 2026 e 2033.
           </p>
           <p>
             <strong>Pense assim:</strong> Na hora da compra, o sistema:
@@ -189,7 +190,7 @@
             <li>Organiza as informações para você ver o resultado do negócio</li>
             <li>Continua vendendo quando a internet cai; o celular do operador pode receber a ativação da assinatura Premium por SMS</li>
             <li>Fica sempre em dia com as novas regras de impostos</li>
-            <li>Instala fácil, sem outro programa de banco — na primeira vez já deixa tudo pronto (ideal para uma loja ou pequena rede)</li>
+            <li>Instala fácil, com banco apenas SQLite (um arquivo) — na primeira vez já deixa tudo pronto (ideal para uma loja ou pequena rede)</li>
             <li>Oferece painel para definir regras de segurança, proteger dados e fazer backup na nuvem ou em pendrive</li>
             <li><strong>Planos Free e Premium:</strong> Free para começar (100 vendas/mês, 10 SMS de recibo); Premium com recuperação de senha por SMS, relatório automático para o contador e suporte remoto (botão Ajuda no menu)</li>
           </ul>
@@ -199,6 +200,9 @@
       <div class="text-center mt-4">
         <a href="delivery/pdv/" class="btn-project me-2">
           <i class="bi bi-globe"></i> Ver Apresentação
+        </a>
+        <a href="delivery/pdv/download.html" class="btn-project me-2">
+          <i class="bi bi-download"></i> Baixar EXE
         </a>
         <a href="delivery/pdv/tecnologia.html" class="btn-project me-2">
           <i class="bi bi-code-slash"></i> Tecnologia
@@ -508,7 +512,7 @@ graph LR
             <i class="bi bi-briefcase-fill text-success"></i> Visão Executiva
           </h3>
           <p>
-            O <strong>CaraCore Seed</strong> é um <strong>produto de utilidade</strong> para a Cara Core Informática: <strong>valor único R$ 29,90</strong>. Foco em <strong>tecnologias Windows Desktop (Electron)</strong> e <strong>ambiente offline</strong> para <strong>gestão de licenças</strong> das aplicações. Inclui o <strong>portal de controle das licenças</strong> com transparência com o cliente e respeito à <strong>LGPD</strong>, na mesma linha do chmulatoETE Minerador 4.0.
+            O <strong>CaraCore Seed</strong> é um <strong>produto de utilidade</strong> para a Cara Core Informática: <strong>valor único R$ 29,90</strong>. <strong>Escopo: foco localhost e Windows Desktop</strong> — aplicativo roda no computador do cliente (Electron + servidor local em <code>localhost</code>), <strong>ambiente offline</strong> e <strong>gestão de licenças</strong> (PDV, Minerador 4.0, Reino OIDC, Hub). Inclui o <strong>portal de controle das licenças</strong> com transparência e <strong>LGPD</strong>, na mesma linha do Minerador 4.0.
           </p>
           <p>
             <strong>Benefícios de Negócio:</strong>
@@ -516,7 +520,7 @@ graph LR
           <ul class="feature-list">
             <li>Contador de Licenças dos clientes que compram produtos Cara Core para rodar no Windows</li>
             <li>Portal de controle: transparência e auditoria de licenças (inspirado no Minerador 4.0)</li>
-            <li>Roda 100% offline no Windows (SQLite local); aplicativo desktop com Electron</li>
+            <li>Foco localhost e Windows Desktop: sobe em <code>localhost</code> ao abrir o EXE; 100% offline (SQLite local)</li>
             <li>Validação em tempo real; API REST local para integração</li>
             <li>Delivery: <a href="delivery/seed/index.html">portal Seed</a> · <a href="https://github.com/chmulato/caracore-seed-releases" target="_blank" rel="noopener">caracore-seed-releases</a></li>
           </ul>
@@ -527,7 +531,7 @@ graph LR
             <i class="bi bi-book-fill text-primary"></i> Para Leigos
           </h3>
           <p>
-            O <strong>CaraCore Seed</strong> é o <strong>Contador de Licenças</strong> para quem compra os nossos produtos (PDV, Minerador 4.0, Reino OIDC, Hub) para rodar no Windows. O cliente vê e gerencia suas licenças com <strong>transparência</strong> e em conformidade com a <strong>LGPD</strong> — inspirado na forma como fazemos no Minerador 4.0.
+            O <strong>CaraCore Seed</strong> é o <strong>Contador de Licenças</strong> para quem compra os nossos produtos (PDV, Minerador 4.0, Reino OIDC, Hub) para rodar no Windows. <strong>Foco localhost e Windows Desktop:</strong> o app roda no PC do cliente e abre em <code>localhost</code>. O cliente vê e gerencia suas licenças com <strong>transparência</strong> e em conformidade com a <strong>LGPD</strong> — inspirado no Minerador 4.0.
           </p>
           <p>
             <strong>Na prática:</strong>

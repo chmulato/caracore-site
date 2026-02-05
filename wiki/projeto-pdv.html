@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CaraCore PDV - Wiki Cara Core</title>
-    <meta name="description" content="Documentação do CaraCore PDV - sistema de ponto de venda em Java/Spring Boot com motor fiscal Reforma Tributária, PIX, offline-first e modo contingência.">
+    <meta name="description" content="CaraCore PDV - Sistema de ponto de venda. Foco localhost e Windows Desktop (EXE), banco apenas SQLite, motor fiscal Reforma Tributária 2026-2033, PIX e modo contingência.">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -108,7 +108,7 @@
                     <div class="project-card">
                         <div class="project-header pdv">
                             <h1><i class="bi bi-cash-stack"></i> CaraCore PDV</h1>
-                            <p>Sistema de Ponto de Venda para Varejo</p>
+                            <p>Sistema de Ponto de Venda — foco localhost e Windows Desktop</p>
                         </div>
                         <div class="project-body">
                             <div class="project-status">
@@ -122,6 +122,7 @@
                                 <span class="badge badge-htmx">HTMX</span>
                                 <span class="badge badge-apexcharts">ApexCharts</span>
                                 <span class="badge badge-docker">Docker</span>
+                                <span class="badge badge-template">Windows Desktop</span>
                             </div>
                         </div>
                     </div>
@@ -140,14 +141,14 @@
                             <div class="col-md-6">
                                 <div class="leigos-section">
                                     <h3><i class="bi bi-people"></i> O que é o PDV?</h3>
-                                    <p>O <strong>PDV (Ponto de Venda)</strong> é o sistema de caixa usado no balcão da loja: registrar produtos, aplicar descontos, receber pagamentos e emitir comprovantes. O CaraCore PDV é preparado para a <strong>Reforma Tributária 2026–2033</strong> (CBS e IBS), com <strong>PIX</strong> (QR Code e Split), <strong>modo offline</strong> quando a internet cai e <strong>modo contingência</strong> (banco local SQLite + SMS) para nunca parar de vender. O <strong>perfil SQLite</strong> é o padrão: banco único em <code>./data/caracore-pdv.db</code>, carga inicial automática (admin/admin) na primeira execução e <strong>Centro de Segurança e Backup</strong> para políticas, criptografia e rotinas de backup/restore.</p>
+                                    <p>O <strong>PDV (Ponto de Venda)</strong> é o sistema de caixa usado no balcão da loja: registrar produtos, aplicar descontos, receber pagamentos e emitir comprovantes. <strong>Escopo: foco localhost e Windows Desktop</strong> — instalador EXE para Windows; ao abrir, o servidor sobe em <code>localhost:8080</code> e a interface abre no navegador embutido. O CaraCore PDV é preparado para a <strong>Reforma Tributária 2026–2033</strong> (CBS e IBS), com <strong>PIX</strong> (QR Code e Split), <strong>modo contingência</strong> (SQLite local + SMS) quando a internet cai. <strong>Banco: apenas SQLite</strong> (<code>./data/caracore-pdv.db</code>), carga inicial automática (admin/admin) na primeira execução e <strong>Centro de Segurança e Backup</strong>.</p>
                                     <p><strong>Em resumo:</strong></p>
                                     <ul class="feature-list">
                                         <li>🛒 <strong>Caixa completo:</strong> Vendas, clientes, estoque, relatórios</li>
                                         <li>📋 <strong>Fiscal:</strong> Motor preparado para CBS/IBS 2026–2033</li>
                                         <li>💳 <strong>PIX:</strong> QR Code, webhook, Split</li>
                                         <li>📶 <strong>Offline / contingência:</strong> Funciona sem internet</li>
-                                        <li>🗄️ <strong>SQLite padrão:</strong> Banco único, sem PostgreSQL; ideal para pequenos e médios; <code>docker-compose.sqlite.yml</code></li>
+                                        <li>🖥️ <strong>Foco localhost e Windows Desktop:</strong> EXE para Windows; sobe em <code>localhost:8080</code> ao abrir; banco apenas SQLite; <code>docker-compose.sqlite.yml</code> para um container</li>
                                         <li>🔐 <strong>Centro de Segurança e Backup:</strong> Políticas, criptografia e gestão de backup/restore</li>
                                         <li>📋 <strong>Planos Free e Premium:</strong> Free — 100 vendas/mês, 10 SMS de recibo/mês; Premium — recuperação de senha por SMS, configuração de e-mail e relatório automático ao contador, suporte prioritário (RustDesk/AnyDesk, botão Ajuda)</li>
                                     </ul>
@@ -156,12 +157,12 @@
                             <div class="col-md-6">
                                 <div class="estagiario-section">
                                     <h3><i class="bi bi-mortarboard"></i> Arquitetura Técnica</h3>
-                                    <p>Aplicação web em <strong>Java 21</strong> e <strong>Spring Boot 2.7</strong>, com API REST, Thymeleaf, HTMX, Bootstrap 5 e ApexCharts. Módulos: PDV (caixa), vendas, produtos, clientes, estoque, dashboard, relatórios (JasperReports), operadores e <strong>multi-loja</strong>. <strong>Perfil <code>sqlite</code> é o padrão</strong>: banco único em <code>./data/caracore-pdv.db</code>, <code>SqliteDataSourceConfig</code>, <code>SqliteSeedDataLoader</code>, <code>data/init-data-sqlite.sql</code>; Docker: <code>docker-compose -f docker/docker-compose.sqlite.yml up -d</code>. Outros perfis: <code>prod</code> (PostgreSQL), <code>offline</code> (H2 + Outbox), <code>contingency</code> (SQLite + SMS via ADB).</p>
+                                    <p>Aplicação web em <strong>Java 21</strong> e <strong>Spring Boot 2.7</strong>, com API REST, Thymeleaf, HTMX, Bootstrap 5 e ApexCharts. <strong>Escopo: foco localhost e Windows Desktop;</strong> banco apenas SQLite. Módulos: PDV (caixa), vendas, produtos, clientes, estoque, dashboard, relatórios (JasperReports), operadores e <strong>multi-loja</strong>. Perfil <code>sqlite</code> (padrão): banco em <code>./data/caracore-pdv.db</code>; Electron (EXE) inicia servidor local e abre em <code>http://localhost:8080</code>. Docker: <code>docker-compose -f docker/docker-compose.sqlite.yml up -d</code>. Modo contingência: SQLite local + SMS via ADB.</p>
                                     <p><strong>Componentes principais:</strong></p>
                                     <ul class="feature-list">
                                         <li><strong>Spring MVC / JPA:</strong> Controllers, serviços, repositórios</li>
                                         <li><strong>Thymeleaf + HTMX:</strong> Atualizações parciais sem recarregar</li>
-                                        <li><strong>SQLite (padrão) / PostgreSQL / H2 / SQLite contingência:</strong> Banco único (sqlite), opcional PostgreSQL, offline (H2) e contingência (SQLite)</li>
+                                        <li><strong>SQLite (banco único):</strong> Perfil <code>sqlite</code> padrão; modo contingência usa SQLite local</li>
                                         <li><strong>Spring Security:</strong> Perfis Administrador, Operador, Visitante</li>
                                         <li><strong>JasperReports:</strong> Relatórios PDF</li>
                                         <li><strong>Centro de Segurança e Backup:</strong> Políticas, criptografia de dados sensíveis, gestão de backup/restore (incl. auto-backup ao encerrar, cloud AES-256, USB via ADB no modo contingência)</li>
@@ -225,7 +226,7 @@
                                     </div>
                                     <div class="feature-content">
                                         <p><strong>Para leigos:</strong> Se a internet cair, as vendas continuam em banco local e são enviadas quando voltar; em contingência, usa SQLite e avisa por SMS. O app Android no celular ainda recebe a ativação da <strong>Licença Premium por SMS</strong> e mostra se está ativa (verde) ou inativa (vermelho).</p>
-                                        <p><strong>Técnico:</strong> H2 + Outbox + Sync (offline); SQLite + ADB/SMS (contingency). App <strong>pdv-sms-enviar</strong> (android-sms-enviar): envio de SMS via ADB; <strong>recepção de licença Premium por SMS</strong> (CC-LICENSE/CARACORE-KEY, filtro por número oficial); <strong>LicencaContentProvider</strong> (<code>content://br.com.caracore.pdv.sms.licenca/licenca</code>) com <code>hardware_id</code>, <code>chave</code>, <code>valida</code>, <code>mes_ano</code> para o PDV consultar via ADB; tela com status (Licença Gratuita/Inativa ou Licença Premium Ativa) e botão <strong>Verificar Conexão USB</strong>. Doc: <code>android-sms-enviar/README.md</code>.</p>
+                                        <p><strong>Técnico:</strong> Modo contingência: SQLite local + ADB/SMS. App <strong>pdv-sms-enviar</strong> (android-sms-enviar): envio de SMS via ADB; <strong>recepção de licença Premium por SMS</strong> (CC-LICENSE/CARACORE-KEY, filtro por número oficial); <strong>LicencaContentProvider</strong> (<code>content://br.com.caracore.pdv.sms.licenca/licenca</code>) com <code>hardware_id</code>, <code>chave</code>, <code>valida</code>, <code>mes_ano</code> para o PDV consultar via ADB; tela com status (Licença Gratuita/Inativa ou Licença Premium Ativa) e botão <strong>Verificar Conexão USB</strong>. Doc: <code>android-sms-enviar/README.md</code>.</p>
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +264,7 @@
                                         <h4>SQLite para Pequenos e Médios</h4>
                                     </div>
                                     <div class="feature-content">
-                                        <p><strong>Para leigos:</strong> O PDV pode rodar só com SQLite, sem instalar PostgreSQL — ideal para um caixa, lojas e pequenas redes. Na primeira execução já cria o banco e carrega usuário <code>admin</code>/<code>admin</code>.</p>
+                                        <p><strong>Para leigos:</strong> O PDV usa apenas SQLite como banco — um único arquivo, sem servidor de banco separado. Ideal para um caixa, lojas e pequenas redes. Na primeira execução já cria o banco e carrega usuário <code>admin</code>/<code>admin</code>.</p>
                                         <p><strong>Técnico:</strong> Perfil <code>sqlite</code> (padrão); <code>SqliteDataSourceConfig</code>, <code>SqliteSeedDataLoader</code>, <code>data/init-data-sqlite.sql</code>; <code>docker-compose -f docker/docker-compose.sqlite.yml up -d</code>. Doc: <code>doc/SQLITE_PEQUENOS_MEDIOS.md</code>.</p>
                                     </div>
                                 </div>
@@ -309,9 +310,7 @@
                                     <li><strong>Spring Boot 2.7:</strong> Framework web e injeção de dependências</li>
                                     <li><strong>JPA / Hibernate:</strong> ORM e repositórios</li>
                                     <li><strong>SQLite 3.51:</strong> <strong>Banco padrão</strong> (perfil <code>sqlite</code>); <code>./data/caracore-pdv.db</code>; carga automática na 1ª execução</li>
-                                    <li><strong>PostgreSQL 15+:</strong> Opcional; não usado no fluxo padrão (somente SQLite)</li>
-                                    <li><strong>H2:</strong> Banco local modo offline-first</li>
-                                    <li><strong>SQLite (contingência):</strong> Modo contingência (SMS, ADB)</li>
+                                    <li><strong>SQLite (contingência):</strong> Modo contingência (SMS, ADB) — também SQLite local</li>
                                     <li><strong>JasperReports 6.20:</strong> Relatórios PDF</li>
                                 </ul>
                             </div>
@@ -342,7 +341,7 @@
                             <div class="col-md-6">
                                 <h4><i class="bi bi-cloud text-primary"></i> Infraestrutura</h4>
                                 <ul class="tech-list">
-                                    <li><strong>Docker / Docker Compose:</strong> <code>docker-compose.sqlite.yml</code> (apenas app + SQLite), PostgreSQL (opcional), modo contingência</li>
+                                    <li><strong>Docker / Docker Compose:</strong> <code>docker-compose.sqlite.yml</code> (apenas app + SQLite); modo contingência quando necessário</li>
                                     <li><strong>Maven:</strong> Build e dependências</li>
                                     <li><strong>WAR:</strong> Empacotamento para deploy em servidor de aplicação</li>
                                 </ul>
@@ -379,7 +378,7 @@
                                 <div class="flow-step">
                                     <div class="flow-number">4</div>
                                     <h5>Finalização</h5>
-                                    <p>Venda salva (SQLite padrão, ou H2/SQLite em offline/contingência); sync quando online</p>
+                                    <p>Venda salva em SQLite (modo contingência usa SQLite local); sync quando online</p>
                                 </div>
                             </div>
 
@@ -399,7 +398,7 @@
                                 </div>
                                 <div class="arch-layer">
                                     <h5><i class="bi bi-database"></i> Dados</h5>
-                                    <p>JPA/Hibernate, SQLite (padrão), PostgreSQL (opcional), H2 (offline), SQLite (contingência); Repositories e migrações</p>
+                                    <p>JPA/Hibernate, SQLite (banco único do projeto); modo contingência usa SQLite local; Repositories e migrações</p>
                                 </div>
                             </div>
 
@@ -418,7 +417,7 @@
                                     <ul class="feature-list">
                                         <li>Java 21 (JDK)</li>
                                         <li>Maven 3.6+ (ou use <code>mvnw</code>)</li>
-                                        <li>SQLite (embutido; sem servidor). PostgreSQL apenas se usar perfil <code>prod</code></li>
+                                        <li>SQLite (embutido; sem servidor de banco separado)</li>
                                         <li>Git</li>
                                     </ul>
                                 </div>
@@ -433,10 +432,10 @@ cd caracore-pdv
 # Rodar com Maven (perfil sqlite é o padrão; carga admin/admin na 1ª vez)
 .\mvnw spring-boot:run
 
-# Com perfil explícito
+# Perfil sqlite é o padrão (banco único)
 .\mvnw spring-boot:run -Dspring-boot.run.profiles=sqlite
-.\mvnw spring-boot:run -Dspring-boot.run.profiles=prod
-.\mvnw spring-boot:run -Dspring-boot.run.profiles=offline
+
+# Modo contingência (SQLite local + SMS)
 .\mvnw spring-boot:run -Dspring-boot.run.profiles=contingency</code></pre>
                                 </div>
                             </div>
@@ -447,7 +446,7 @@ cd caracore-pdv
                             <p><strong>Somente SQLite (recomendado para pequenos e médios):</strong></p>
                             <pre><code>docker-compose -f docker/docker-compose.sqlite.yml up -d</code></pre>
                             <p>Um único container; na primeira subida a carga inicial (admin/admin e massa para testes Selenium) é aplicada automaticamente. Banco em <code>/data/caracore-pdv.db</code> (volume <code>sqlite_data</code>).</p>
-                            <p><strong>Outras opções:</strong> <code>docker-compose up -d</code> (PostgreSQL + app); <code>docker-compose.contingency.yml</code> para modo contingência. Credenciais (ex.: <code>admin</code>/<code>admin</code>, <code>caixa1</code>/<code>1234</code>) em <code>STATUS_ATUAL.md</code>.</p>
+                            <p><strong>Modo contingência:</strong> <code>docker-compose.contingency.yml</code> quando necessário. Credenciais (ex.: <code>admin</code>/<code>admin</code>, <code>caixa1</code>/<code>1234</code>) em <code>STATUS_ATUAL.md</code>.</p>
                             <p class="mb-0">Testes Selenium: <code>testes/STATUS_APLICACAO_E_CENARIOS.md</code> e <code>verificar-status-app.bat</code> / <code>verificar-status-app.sh</code>.</p>
                         </div>
                     </section>
@@ -456,6 +455,8 @@ cd caracore-pdv
                     <section class="mb-5">
                         <h2><i class="bi bi-link-45deg text-primary"></i> Links e Documentação</h2>
                         <ul class="feature-list">
+                            <li><strong>Escopo:</strong> Foco localhost e Windows Desktop (EXE sobe em <code>localhost:8080</code>); banco apenas SQLite.</li>
+                            <li><strong>Baixar EXE (Windows):</strong> <a href="https://chmulato.github.io/caracore-pdv/download.html" target="_blank" rel="noopener">download.html</a> · <a href="https://github.com/chmulato/caracore-pdv-releases/releases/latest" target="_blank" rel="noopener">caracore-pdv-releases/releases</a></li>
                             <li><strong>Apresentação (site do PDV):</strong> <a href="https://chmulato.github.io/caracore-pdv/" target="_blank" rel="noopener">chmulato.github.io/caracore-pdv</a></li>
                             <li><strong>Tecnologia:</strong> <a href="https://chmulato.github.io/caracore-pdv/tecnologia.html" target="_blank" rel="noopener">tecnologia.html</a> (backend, frontend, SQLite, Centro de Segurança e Backup, offline, contingência, SMS)</li>
                             <li><strong>Wiki Fiscal:</strong> <a href="https://chmulato.github.io/caracore-pdv/wiki-fiscal.html" target="_blank" rel="noopener">wiki-fiscal.html</a> (Reforma Tributária, CBS, IBS, PIX, contingência em linguagem acessível)</li>
@@ -491,7 +492,7 @@ cd caracore-pdv
     <footer class="wiki-footer">
         <div class="container">
             <p>&copy; 2025 Cara Core Informática - CNPJ: 23.969.028/0001-37</p>
-            <p>Documentação do CaraCore PDV - Sistema de Ponto de Venda</p>
+            <p>CaraCore PDV - Sistema de Ponto de Venda (localhost e Windows Desktop)</p>
         </div>
     </footer>
 

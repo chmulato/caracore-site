@@ -117,7 +117,7 @@
                                 <li><strong>CaraCore PDV:</strong> O "sistema de caixa" para lojas, com PIX e preparado para a Reforma Tributária</li>
                                 <li><strong>Minerador 4.0:</strong> Simulador de ETE e hidrometalurgia para <strong>Ensino Médio</strong> e mineração; upgrade Ouro 4.0 (R$ 29,90)</li>
                                 <li><strong>Reino OIDC:</strong> A "escola de segurança digital" para ensinar sobre logins (OAuth 2.1 e OIDC)</li>
-                                <li><strong>Cara Core Seed:</strong> O "contador de licenças" e molde para aplicativos Windows (R$ 29,90)</li>
+                                <li><strong>Cara Core Seed:</strong> Contador de licenças — foco localhost e Windows Desktop (R$ 29,90)</li>
                                 <li><strong>Circuito Python:</strong> O produto chamariz — curso FREE (MIT) e licença para escolas (R$ 5,00/aluno/mês)</li>
                                 <li><strong>Cara Core Hub:</strong> O "centro de controle" de e-commerce e integração</li>
                                 <li><strong>Área 51:</strong> Consultoria OIDC — autenticação enterprise (OAuth 2.1, OIDC, PKCE)</li>
@@ -154,7 +154,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h4><i class="bi bi-people text-info"></i> Explicação para Leigos</h4>
-                                        <p>O CaraCore PDV é o sistema de caixa da loja: registrar vendas, receber PIX, imprimir comprovantes. Ele já está preparado para a <strong>Reforma Tributária 2026–2033</strong> (CBS e IBS) e continua funcionando quando a internet cai (modo offline e contingência com SQLite + SMS). O <strong>perfil SQLite</strong> é o padrão: banco único, sem PostgreSQL; <strong>Centro de Segurança e Backup</strong> para políticas, criptografia e rotinas de backup/restore; <code>docker-compose.sqlite.yml</code> para um único container.</p>
+                                        <p>O CaraCore PDV é o sistema de caixa da loja: registrar vendas, receber PIX, imprimir comprovantes. <strong>Escopo: foco localhost e Windows Desktop</strong> — instalador EXE para Windows; ao abrir, sobe em <code>localhost:8080</code>. Preparado para a <strong>Reforma Tributária 2026–2033</strong> (CBS e IBS); modo contingência (SQLite + SMS) quando a internet cai. <strong>Banco: apenas SQLite</strong>; <strong>Centro de Segurança e Backup</strong>; <code>docker-compose.sqlite.yml</code> para um container.</p>
                                         
                                         <p><strong>Destaques:</strong></p>
                                         <ul class="feature-list">
@@ -169,18 +169,18 @@
                                     </div>
                                     <div class="col-md-6">
                                         <h4><i class="bi bi-code text-warning"></i> Detalhes Técnicos</h4>
-                                        <p>Aplicação Java 21 com Spring Boot, Thymeleaf, HTMX, Bootstrap 5, ApexCharts. Bancos: <strong>SQLite (padrão, perfil <code>sqlite</code>)</strong>, PostgreSQL (opcional), H2 (offline-first) e SQLite (contingência). Centro de Segurança e Backup; SqliteBackupService, cloud AES-256, USB via ADB. <strong>Planos Free e Premium:</strong> Free (100 vendas/mês, 10 SMS recibo); Premium (RecuperacaoSenhaService por SMS, ConfiguracaoEmail/contador, RelatorioContadorService e AutomacaoEmailContadorService, SuporteController com RustDesk/AnyDesk). Perfis: Administrador, Operador, Visitante. App pdv-sms-enviar: SMS na contingência, recepção de licença por SMS (CC-LICENSE/CARACORE-KEY), ContentProvider (hardware_id, licença), status e Verificar USB.</p>
+                                        <p>Aplicação Java 21 com Spring Boot, Thymeleaf, HTMX, Bootstrap 5, ApexCharts. <strong>Escopo: localhost e Windows Desktop</strong> (EXE abre em <code>localhost:8080</code>); <strong>banco apenas SQLite</strong>. Centro de Segurança e Backup; SqliteBackupService, cloud AES-256, USB via ADB. <strong>Planos Free e Premium:</strong> Free (100 vendas/mês, 10 SMS recibo); Premium (RecuperacaoSenhaService por SMS, ConfiguracaoEmail/contador, RelatorioContadorService, SuporteController RustDesk/AnyDesk). App pdv-sms-enviar: contingência, licença Premium por SMS, ContentProvider, Verificar USB.</p>
                                         
                                         <p><strong>Stack:</strong></p>
                                         <ul class="feature-list">
                                             <li>Backend: Spring MVC, JPA/Hibernate, Spring Security</li>
                                             <li>Frontend: Thymeleaf, HTMX, ApexCharts, QuaggaJS</li>
                                             <li>Testes: JUnit 5, Mockito, Selenium (Pytest), JaCoCo</li>
-                                            <li>Docker: <code>docker-compose.sqlite.yml</code> (apenas app + SQLite), ou Compose com PostgreSQL</li>
+                                            <li>Docker: <code>docker-compose.sqlite.yml</code> (apenas app + SQLite); EXE Windows sobe em localhost</li>
                                         </ul>
                                         
                                         <div class="alert alert-info mt-3">
-                                            <strong>Links externos:</strong> Apresentação, Tecnologia, Wiki Fiscal e Consultoria em <a href="https://chmulato.github.io/caracore-pdv/" target="_blank" rel="noopener">chmulato.github.io/caracore-pdv</a>.
+                                            <strong>Escopo:</strong> localhost e Windows Desktop · <strong>Links:</strong> <a href="https://chmulato.github.io/caracore-pdv/" target="_blank" rel="noopener">Apresentação</a> · <a href="https://chmulato.github.io/caracore-pdv/download.html" target="_blank" rel="noopener">Baixar EXE</a> · <a href="https://github.com/chmulato/caracore-pdv-releases/releases/latest" target="_blank" rel="noopener">Releases</a>
                                         </div>
                                     </div>
                                 </div>
@@ -307,44 +307,41 @@
                     <section class="mb-5">
                         <div class="project-card">
                             <div class="project-header seed">
-                                <h2><i class="bi bi-seedling"></i> 4. Cara Core Seed - Template Base</h2>
+                                <h2><i class="bi bi-seedling"></i> 4. Cara Core Seed - Contador de Licenças</h2>
                                 <div class="mt-2">
-                                    <span class="tech-badge">Python</span>
-                                    <span class="tech-badge">Templates</span>
-                                    <span class="tech-badge">Git</span>
-                                    <span class="tech-badge">CI/CD</span>
+                                    <span class="tech-badge">Windows Desktop</span>
+                                    <span class="tech-badge">Electron</span>
+                                    <span class="tech-badge">SQLite</span>
+                                    <span class="tech-badge">Java</span>
                                 </div>
                             </div>
                             <div class="project-body">
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h4><i class="bi bi-people text-info"></i> Explicação para Leigos</h4>
-                                        <p>O Cara Core Seed é como um "molde de bolo" para programas. Assim como você usa uma forma para fazer bolos sempre com o mesmo formato, usamos o Seed para criar novos projetos sempre com a mesma estrutura básica.</p>
+                                        <p>O <strong>Cara Core Seed</strong> é o <strong>Contador de Licenças</strong> para quem compra os produtos Cara Core (PDV, Minerador 4.0, Reino OIDC, Hub) para rodar no Windows. <strong>Foco localhost e Windows Desktop:</strong> o aplicativo roda no computador do cliente; ao abrir, sobe em localhost e abre a interface. SQLite local, 100% offline. R$ 29,90 (valor único).</p>
                                         
                                         <p><strong>Vantagens:</strong></p>
                                         <ul class="feature-list">
-                                            <li>Economiza tempo no início de novos projetos</li>
-                                            <li>Garante que todos sigam o mesmo padrão</li>
-                                            <li>Inclui as "receitas" básicas já testadas</li>
-                                            <li>Facilita a manutenção futura</li>
+                                            <li>Portal de controle com transparência e LGPD</li>
+                                            <li>EXE para Windows (Electron + servidor local)</li>
+                                            <li>Banco apenas SQLite no escopo</li>
+                                            <li>Licença atrelada ao hardware (license.key)</li>
                                         </ul>
                                     </div>
                                     <div class="col-md-6">
                                         <h4><i class="bi bi-code text-warning"></i> Detalhes Técnicos</h4>
-                                        <p>Boilerplate/template projeto que acelera o desenvolvimento de novas aplicações Python com estrutura padronizada e boas práticas pré-configuradas.</p>
+                                        <p>WAR Java com SQLite local; Electron inicia JRE + WAR e abre em <code>http://localhost:9080</code>. Dois perfis: Contador de Clientes (uso interno) e Comprador (consulta). Testes com foco em localhost e Desktop Electron (UT, HTTP, E2E).</p>
                                         
-                                        <p><strong>Inclui:</strong></p>
+                                        <p><strong>Escopo:</strong></p>
                                         <ul class="feature-list">
-                                            <li>Estrutura de pastas padronizada</li>
-                                            <li>Configuração Docker e docker-compose</li>
-                                            <li>Pipeline CI/CD básico</li>
-                                            <li>Testes automatizados configurados</li>
-                                            <li>Linting e formatação de código</li>
-                                            <li>Documentação template</li>
+                                            <li>localhost + Windows Desktop (Electron)</li>
+                                            <li>SQLite como único banco no escopo</li>
+                                            <li>Build EXE e publicar em caracore-seed-releases</li>
                                         </ul>
                                         
                                         <div class="alert alert-success mt-3">
-                                            <strong>Seu papel como estagiário:</strong> Melhorar templates, adicionar novas configurações, documentar boas práticas.
+                                            <strong>Links:</strong> <a href="../delivery/seed/index.html">Portal Seed</a> · <a href="../delivery/seed/download.html">Baixar EXE</a> · <a href="https://github.com/chmulato/caracore-seed-releases" target="_blank" rel="noopener">caracore-seed-releases</a>
                                         </div>
                                     </div>
                                 </div>
@@ -544,7 +541,7 @@
                                     <ol>
                                         <li><strong>CaraCore PDV</strong> atende o varejo (caixa, PIX, fiscal, offline)</li>
                                         <li><strong>Minerador 4.0</strong> simulador para Ensino Médio e mineração (ETE, terras raras)</li>
-                                        <li><strong>CaraCore Seed</strong> gera a base e centraliza licenças</li>
+                                        <li><strong>CaraCore Seed</strong> (localhost e Windows Desktop) centraliza licenças</li>
                                         <li><strong>CaraCore Hub</strong> conecta todos os sistemas via API</li>
                                         <li><strong>Área 51</strong> protege acessos com autenticação</li>
                                         <li><strong>Reino OIDC</strong> educa sobre segurança</li>
@@ -557,8 +554,8 @@
                                         <li><strong>Java/Spring Boot:</strong> Backend do CaraCore PDV</li>
                                         <li><strong>Python/Flask:</strong> Backend de Hub e Área 51</li>
                                         <li><strong>OAuth 2.1:</strong> Reino OIDC ensina, Área 51 implementa</li>
-                                        <li><strong>Docker:</strong> PDV, Hub e Seed</li>
-                                        <li><strong>SQLite / PostgreSQL:</strong> PDV (SQLite padrão); Hub (PostgreSQL)</li>
+                                        <li><strong>Docker:</strong> PDV e Hub; Seed foco localhost/Desktop</li>
+                                        <li><strong>SQLite / PostgreSQL:</strong> PDV (apenas SQLite); Hub (PostgreSQL)</li>
                                         <li><strong>Bootstrap:</strong> UI consistente (PDV, Hub e demais)</li>
                                         <li><strong>GitHub Pages:</strong> Reino OIDC, PDV e documentações</li>
                                     </ul>

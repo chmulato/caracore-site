@@ -20,6 +20,12 @@
         .hero-cta .cta-btn-primary:hover { opacity: 0.95; filter: brightness(1.1); }
         .hero-cta .cta-btn-secondary { background: transparent; color: var(--accent-gold); border: 2px solid var(--accent-gold); }
         .hero-cta .cta-btn-secondary:hover { background: rgba(212, 168, 83, 0.12); }
+        .hub-launch-banner { background: linear-gradient(135deg, rgba(63, 185, 80, 0.15) 0%, rgba(63, 185, 80, 0.05) 100%); border: 1px solid var(--accent-green); border-radius: 10px; padding: 24px 28px; margin-bottom: 28px; border-left: 4px solid var(--accent-green); }
+        .hub-launch-banner .hub-launch-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-green); margin-bottom: 6px; }
+        .hub-launch-banner .hub-launch-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; line-height: 1.35; }
+        .hub-launch-banner .hub-launch-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
+        .hub-launch-banner .hub-launch-desc a { color: var(--accent-blue); text-decoration: none; font-weight: 500; }
+        .hub-launch-banner .hub-launch-desc a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -31,6 +37,13 @@
             <span> · </span>
             <span>CaraCore Hub — Delivery</span>
         </nav>
+
+        <!-- Aviso de lançamento: EXE em 06/04/2026 (estratégia de marketing) -->
+        <section class="hub-launch-banner" aria-label="Lançamento do instalador Windows">
+            <p class="hub-launch-label">Novidade</p>
+            <p class="hub-launch-title">Instalador Windows (EXE) — lançamento em 06 de abril de 2026</p>
+            <p class="hub-launch-desc">Uma nova forma de rodar o CaraCore Hub: instalador nativo para Windows, SQLite local e autonomia total. Reserve a data. Quer ser avisado no lançamento? <a href="canal-feedback.html">Fale conosco pelo canal de feedback</a> (e-mail, WhatsApp ou Telegram).</p>
+        </section>
 
         <!-- Hero: o que é, valor e CTA em poucos segundos -->
         <section class="hero-cta" aria-label="O que é o Cara Core HUB?">

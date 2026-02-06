@@ -1,7 +1,7 @@
 VALIDAÇÃO: LOJAS ALINHADAS COM A MATRIZ
 ========================================
 
-Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhadas com os portais da matriz (cara-core-site/delivery). Data da verificação: 06/02/2026.
+Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhadas com os portais da matriz (cara-core-site/delivery). Data da verificação: 05/02/2026.
 
 -------------------------------------------------------------------------------
 
@@ -68,7 +68,7 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
 4. REINO OIDC
 
   Matriz: cara-core-site/delivery/oidc/
-  Loja:   reino-oidc-releases/docs/ (chmulato.github.io/reino-oidc-releases)
+  Loja:   reino-oidc-releases/docs/ (chmulato.github.io/reino-oidc-releases); caminho local D:\dev\reino-oidc-releases
 
   Estrutura
     Matriz: index, download, canal-feedback, upgrade-trono, licenca-uso, conteudo-free, páginas de história/glossário/mapas/jogos, etc.
@@ -105,19 +105,40 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
 
 -------------------------------------------------------------------------------
 
-6. RESUMO
+6. SUPORTE ÁREA 51
 
-  Produto          Estrutura    Mensagem    Links    Conclusão
-  ---------------- ----------- ----------- -------  ------------------
-  Cara Core PDV    OK          OK          OK       Alinhada
-  Cara Core Hub    OK          OK          OK       Alinhada
-  Circuito Python  OK          OK          OK       Alinhada
-  Reino OIDC       OK          OK          OK       Alinhada
-  Cara Core Seed   OK          OK          OK       Alinhada
+  Matriz: cara-core-site/delivery/area51/
+  Loja:   caracore-area51-releases/docs/ (chmulato.github.io/caracore-area51-releases)
 
-  Todas as lojas verificadas estão alinhadas com a matriz em estrutura de páginas, mensagem de negócio (posicionamento, preços onde aplicável, oferta FREE/upgrade/não disponível) e links cruzados (matriz, portfólio, releases).
+  Estrutura
+    Matriz: index, canal-feedback, MIRROR_DELIVERY.md
+    Loja:   index, canal-feedback (vitrine alinhada)
+  Status:  OK. Mensagem: suporte às empresas médias do Brasil para configurar os portais que o produto Área 51 oferece (OAuth 2.1, OIDC, PKCE).
 
-  Referências: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt.
+  Mensagem
+    Matriz e loja: produto = suporte para configurar os portais (login, painel admin, controle de acesso, auditoria); empresas médias do Brasil; exige tempo e investimento (energia da startup).
+  Status:  OK.
+
+  Links e CTAs
+    Matriz: "Ver loja (releases)" no hero, nav e footer. Loja: "Ver apresentação (matriz)" no hero e link para caracore.com.br/delivery/area51/.
+  Status:  OK.
+
+-------------------------------------------------------------------------------
+
+7. RESUMO
+
+  Produto          Estrutura    Mensagem    Links/CTAs   Conclusão
+  ---------------- ----------- ----------- ------------- ------------------
+  Cara Core PDV    OK          OK          OK            Alinhada
+  Cara Core Hub    OK          OK          OK            Alinhada
+  Circuito Python  OK          OK          OK            Alinhada
+  Reino OIDC       OK          OK          OK            Alinhada
+  Cara Core Seed   OK          OK          OK            Alinhada
+  Suporte Área 51  OK          OK          OK            Alinhada
+
+  Todas as lojas verificadas estão alinhadas com a matriz em estrutura de páginas, mensagem de negócio (posicionamento, preços onde aplicável, oferta FREE/upgrade/não disponível) e links cruzados. CTAs: em cada matriz há "Ver loja (releases)" para a loja correspondente; em cada loja há "Ver apresentação (matriz)" (hero e/ou footer) para o portal completo no site Cara Core.
+
+  Referências: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt. Reino OIDC loja: reino-oidc-releases (pasta docs/); caminho local D:\dev\reino-oidc-releases.
 
 -------------------------------------------------------------------------------
 

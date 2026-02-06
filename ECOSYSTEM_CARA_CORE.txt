@@ -46,7 +46,7 @@ Produtos com vitrine, sem oferta de aplicação
   Cara Core Seed: caracore-seed (código) + caracore-seed-releases (vitrine). Matriz: caracore.com.br/delivery/seed/. Aplicação não disponível ao público.
 
 Serviço com matriz e loja online
-  Suporte Área 51: oficina caracore-area51 (código) + portal delivery/area51 (matriz) + caracore-area51-releases (loja). Consultoria e suporte OAuth 2.1, OIDC, PKCE.
+  Suporte Área 51: oficina caracore-area51 (código) + portal delivery/area51 (matriz) + caracore-area51-releases (loja). Produto = suporte às empresas médias do Brasil para configurar os portais que o produto Área 51 oferece (OAuth 2.1, OIDC, PKCE). Apresentação na oficina: caracore-area51/apresentacao/index.html (alinhada à loja).
 
 Outros repositórios do ecossistema
   caracore-ink: InkAgenda (agenda para estúdios de tatuagem; Flutter).
@@ -60,7 +60,11 @@ REFERÊNCIAS CRUZADAS
   Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.txt.
   Estratégia e status de negócio: ver documentos no site (ex.: VALIDACAO_NEGOCIO.txt, STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt, quando disponíveis no repositório ou em uso interno).
   Portfólio e links oficiais: https://caracore.com.br/portfolio.html
+  Validação matriz/lojas (estrutura, mensagem, links e CTAs): ver VALIDACAO_LOJAS_MATRIZ.txt.
+
+Alinhamento matriz e lojas (links e CTAs)
+  Em cada portal da matriz (delivery/pdv, hub, circuito, oidc, seed, area51): links "Ver loja (releases)" apontam para a loja correspondente (GitHub Pages). Em cada loja: CTAs "Ver apresentação (matriz)" no hero e/ou footer apontam para o portal completo no site Cara Core. Reino OIDC loja: reino-oidc-releases (pasta docs/); caminho local D:\dev\reino-oidc-releases.
 
 -------------------------------------------------------------------------------
 
-Atualizado em 06/02/2026. Lista de diretórios reflete o ecossistema local/repositórios GitHub da Cara Core Informática.
+Atualizado em 05/02/2026. Lista de diretórios reflete o ecossistema local/repositórios GitHub da Cara Core Informática.

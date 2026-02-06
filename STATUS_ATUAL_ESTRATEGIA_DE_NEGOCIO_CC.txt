@@ -8,13 +8,15 @@ Sem emojis, ícones ou formatação decorativa.
 
 1. VISÃO GERAL DA ESTRATÉGIA
 
+Premissa de capacidade: não temos braço para a startup; precisamos focar em aplicações relevantes para o negócio. Os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python) são prioridade; o Cara Core Seed existe e consta no portfólio, mas a aplicação não está disponível para download nem à venda (ferramenta interna; apenas informamos que existe).
+
 A Cara Core Informática está construindo uma linha de produtos voltada a um público seleto e com poder de compra. A ideia central é atuar como uma fábrica de aplicativos para Windows (desktop) e de conteúdo de identidade digital, com foco em:
 
 - Soluções que rodam no computador do cliente (Windows), com operação offline quando faz sentido.
 - Transparência com o cliente e respeito à lei de proteção de dados (LGPD).
 - Preços claros onde aplicável: valor único de R$ 29,90 para upgrades ou produtos de utilidade, seguindo o modelo já validado no Minerador 4.0.
 
-Os cinco pilares atuais são: Cara Core PDV, chmulatoETE Minerador 4.0, Reino OIDC (Reino das Identidades Federadas), Cara Core Seed (Contador de Licenças) e Circuito Python (produto chamariz: curso FREE para pessoas físicas — jovens entusiastas e curiosos da programação — sob Licença MIT; instituições de ensino: licença obrigatória R$ 5,00 por aluno matriculado/mês; uso sem licença pode configurar pirataria e responsabilização legal; curso em HTML acessível online; diploma com assinatura criptográfica; repositório público de releases circuito-python-releases, sem links para repositório privado). Cada um tem um papel definido e se complementam sem duplicar ofertas.
+Os pilares com entrega ativa são: Cara Core PDV, chmulatoETE Minerador 4.0, Reino OIDC (Reino das Identidades Federadas) e Circuito Python (produto chamariz: curso FREE para pessoas físicas — jovens entusiastas e curiosos da programação — sob Licença MIT; instituições de ensino: licença obrigatória R$ 5,00 por aluno matriculado/mês; uso sem licença pode configurar pirataria e responsabilização legal; curso em HTML acessível online; diploma com assinatura criptográfica; repositório público de releases circuito-python-releases, sem links para repositório privado). O Cara Core Seed (Contador de Licenças) existe e consta no portfólio no final da lista, mas a aplicação não está disponível — sem download, sem venda; foco em aplicações relevantes para o negócio. Cada produto ativo tem um papel definido e se complementam sem duplicar ofertas.
 
 
 2. O QUE FOI FEITO HOJE (CONSOLIDADO)
@@ -103,6 +105,12 @@ Os cinco pilares atuais são: Cara Core PDV, chmulatoETE Minerador 4.0, Reino OI
 
 - Incluído na loja filial (reino_oidc_releases/docs/) e na matriz (delivery/oidc/): card "Download — Aplicativo FREE (Windows)" e página download.html com botão para https://github.com/chmulato/reino-oidc-releases/releases/latest (ReinoOIDC.exe, checksum.sha256, INSTALACAO.md). Breadcrumb e links "Voltar ao balcão" alinhados. Matriz e filial com mesma transparência: artefato FREE em .exe disponível na loja.
 
+2.14 Cara Core Seed: foco em aplicações relevantes para o negócio (aplicação não disponível)
+
+- Decisão: não temos braço para a startup; foco em aplicações relevantes para o negócio. O Cara Core Seed existe e consta no portfólio, mas a aplicação não está disponível para download nem à venda.
+- Loja (caracore-seed-releases) e delivery matriz (delivery/seed): páginas atualizadas para informar que a aplicação não está disponível; removidos CTAs de Comprar e Baixar EXE; mantidos apenas links para canal de feedback, portfólio e repositório.
+- Portfólio: seção Cara Core Seed movida para o final da lista de produtos; badges do header reordenados (Seed por último); texto reescrito (ferramenta interna, aplicação não disponível); removidos preço (R$ 29,90), botões Baixar EXE e Comprar; mantidos links para Portal Seed e repositório de releases.
+
 
 3. ESTADO ATUAL POR PRODUTO (RESUMO EXECUTIVO)
 
@@ -130,12 +138,10 @@ Os cinco pilares atuais são: Cara Core PDV, chmulatoETE Minerador 4.0, Reino OI
 
 3.4 Cara Core Seed
 
-- Escopo: foco localhost e Windows Desktop (EXE sobe em localhost, ex.: 9080); banco apenas SQLite.
-- Posicionamento: Contador de Licenças dos clientes que compram produtos Cara Core para rodar no Windows; gestão 100% offline; portal de controle com transparência e LGPD; R$ 29,90 (valor único).
-- Público: quem adquire PDV, Minerador, Reino OIDC ou Hub para uso no Windows; contador interno e comprador.
-- Preço: R$ 29,90 (valor único), explícito no portfólio e em todos os materiais de delivery.
-- Tecnologia: apenas SQLite no escopo; banco local; outras tecnologias de banco foram removidas. Testes locais (incluindo integração e E2E) com foco em localhost e Desktop Electron, sem Docker.
-- Entrega: portal completo no site Cara Core (delivery/seed); vitrine no repositório caracore-seed-releases (apresentação, download, tecnologia, readme, portal-controle); repositório principal (caracore-seed) com portal alinhado ao mesmo estilo. Wiki e portfólio atualizados com escopo localhost/Windows Desktop. Scripts de build e delivery permitem publicar o EXE e atualizar a vitrine. Fluxos testados e funcionais.
+- Posicionamento: ferramenta interna; o produto existe e consta no portfólio (no final da lista), mas a aplicação não está disponível para download nem à venda. Decisão alinhada ao foco em aplicações relevantes para o negócio e à limitação de capacidade (não temos braço para a startup).
+- Escopo técnico (referência): localhost e Windows Desktop; SQLite; Contador de Licenças para quem compra produtos Cara Core para rodar no Windows. Não está em oferta ativa.
+- Preço: não aplicável (aplicação não disponível).
+- Entrega: portfólio com seção Seed no final, texto "existe, aplicação não disponível"; delivery/seed e caracore-seed-releases informam que a aplicação não está disponível (sem CTA de compra ou download). Links apenas para Portal Seed (informativo) e repositório de releases (referência). Sem Baixar EXE nem Comprar.
 
 3.5 Circuito Python
 
@@ -151,7 +157,7 @@ Os cinco pilares atuais são: Cara Core PDV, chmulatoETE Minerador 4.0, Reino OI
 Para quem não é técnico: o site da Cara Core (domínio próprio) contém o portal completo de cada produto (todas as páginas, textos oficiais, upgrade quando houver). Para alguns produtos existe ainda um repositório público (vitrine) onde o cliente também pode acessar o conteúdo ou o download, de forma alinhada ao que está no portal. Isso amplia o alcance e mantém uma única mensagem.
 
 - Reino OIDC: portal = site Cara Core, pasta delivery/oidc; vitrine = repositório reino_oidc_releases, pasta docs/. Ao atualizar o portal, sincronizar a pasta docs/ (sync_to_delivery_oidc.py --releases). Para alinhar o portal do repositório reino_oidc com a vitrine, rodar sync_vitrine_to_reino_oidc.py no reino_oidc. Links para o portfólio em formato absoluto na vitrine.
-- Cara Core Seed: portal = site Cara Core, pasta delivery/seed; vitrine = repositório caracore-seed-releases (index, download, tecnologia, readme, portal-controle e assets na raiz). Para atualizar a vitrine a partir do portal: rodar push_public_to_seed_releases.ps1 no caracore-seed (copia de delivery/seed para o clone do repositório de releases). O repositório principal (caracore-seed) tem index no mesmo estilo; os três pontos (delivery, vitrine, repo) estão alinhados ao portal do Minerador 4.0.
+- Cara Core Seed: produto existe, aplicação não disponível. Portal = site Cara Core, pasta delivery/seed; vitrine = caracore-seed-releases. Ambos informam que a aplicação não está disponível (sem download, sem venda). No portfólio, Seed aparece no final da lista com texto "existe, aplicação não disponível". Não há oferta ativa; relação portal/vitrine mantida apenas para consistência de mensagem.
 - Circuito Python: portal = site Cara Core, pasta delivery/circuito (index com card Download → releases/latest e card Repositório público de releases, canal-feedback, licenca-uso, portal-escolas); vitrine = repositório circuito-python-releases, pasta docs/ (balcão, download, feedback, licença, portal escolas). Prioridade: baixar o EXE; link do curso em HTML não é destacado. Releases: CircuitoPython.exe, checksums e INSTALACAO.md (v1.0.0). Não apontamos para o repositório privado (circuito_python). Mensagem: FREE para pessoas físicas; instituições com licença obrigatória R$ 5,00/aluno/mês; aviso de responsabilização legal; diploma com assinatura criptográfica. Ao alterar a matriz, atualizar a filial.
 
 
@@ -159,8 +165,8 @@ Para quem não é técnico: o site da Cara Core (domínio próprio) contém o po
 
 5.1 Cara Core Seed
 
-- Concluir a entrega do executável: o cliente é direcionado ao repositório de releases para baixar o caracore-seed.exe. Os scripts de build (build_dist_local_seed.py) e de publicação (delivery_exe_seed_releases.py, com token TOKEN_DELIVERY_CC_SEED_TO_REALEASES) estão prontos. Se ainda faltar a forma final de empacotamento (por exemplo WAR executável ou JAR launcher para o Electron), priorizar em ciclo técnico.
-- Manter a vitrine alinhada ao portal: usar push_public_to_seed_releases.ps1 sempre que houver mudança em delivery/seed (index, download, tecnologia, readme, portal-controle ou assets).
+- Não está em entrega ativa. Manter mensagem "produto existe, aplicação não disponível" no portfólio (seção no final da lista), em delivery/seed e em caracore-seed-releases. Sem oferta de download nem de compra.
+- Foco da empresa em aplicações relevantes para o negócio (PDV, Minerador 4.0, Reino OIDC, Circuito Python). Seed permanece no portfólio como referência; se no futuro houver capacidade, os scripts de build e delivery continuam disponíveis no repositório caracore-seed.
 
 5.2 Reino OIDC
 
@@ -190,7 +196,7 @@ Para quem não é técnico: o site da Cara Core (domínio próprio) contém o po
 
 6. CONCLUSÃO
 
-O trabalho realizado consolida a estratégia de negócio em cinco pilares (PDV, Minerador 4.0, Reino OIDC, Seed e Circuito Python), com preços claros onde aplicável (R$ 29,90 para upgrades e para o Seed; R$ 5,00 por aluno matriculado/mês para instituições no Circuito Python), modelo de primeira entrega gratuita e upgrade pago no Reino OIDC (alinhado ao Minerador 4.0), e produto chamariz no Circuito Python com a mesma lógica do Minerador 4.0: versão FREE para pessoas físicas (jovens entusiastas e curiosos, Licença MIT) e licença obrigatória para instituições de ensino, com aviso explícito de responsabilização legal (pirataria e direitos autorais) em caso de uso institucional sem licença; diploma com assinatura criptográfica; prioridade: baixar o EXE (releases/latest), sem destacar link do curso em HTML. O repositório do produto Circuito Python (circuito_python) é privado; em matriz e filial apontamos apenas para o repositório público de releases (circuito-python-releases). A relação entre o portal no domínio Cara Core e as vitrines públicas está definida para reino_oidc_releases, caracore-seed-releases e circuito-python-releases. Os fluxos de apresentação e download foram validados e estão funcionais. Reino OIDC dispõe de download do artefato FREE em .exe (ReinoOIDC.exe) na loja filial e matriz (download.html e card na index). O PDV e o Seed têm escopo explícito: foco localhost e Windows Desktop (EXE sobe em localhost); PDV com banco apenas SQLite. O Seed opera com foco exclusivo em SQLite e localhost/Desktop; testes locais sem Docker; portais alinhados ao Minerador 4.0. O Circuito Python e o Reino OIDC priorizam o download do EXE (releases/latest); link do curso/conteúdo em HTML não é destacado. Circuito Python: delivery/circuito e filial com card Download (→ releases/latest); CircuitoPython.exe em circuito-python-releases/releases (v1.0.0). Os próximos passos possíveis estão listados na seção 5 e podem ser priorizados conforme a capacidade da equipe e a demanda do mercado.
+O trabalho realizado consolida a estratégia de negócio com foco em aplicações relevantes para o negócio: não temos braço para a startup; prioridade para PDV, Minerador 4.0, Reino OIDC e Circuito Python. O Cara Core Seed existe e consta no portfólio (no final da lista), mas a aplicação não está disponível para download nem à venda (ferramenta interna). Preços claros onde aplicável: R$ 29,90 para upgrades (Minerador Ouro 4.0, Reino O Trono da Identidade); R$ 5,00 por aluno matriculado/mês para instituições no Circuito Python. Modelo de primeira entrega gratuita e upgrade pago no Reino OIDC (alinhado ao Minerador 4.0); produto chamariz no Circuito Python (FREE para pessoas físicas, Licença MIT; licença obrigatória para instituições, com aviso de responsabilização legal); diploma com assinatura criptográfica; prioridade: baixar o EXE (releases/latest). O repositório do produto Circuito Python (circuito_python) é privado; em matriz e filial apontamos apenas para o repositório público de releases. A relação portal/vitrine está definida para reino_oidc_releases, caracore-seed-releases (Seed: apenas mensagem "não disponível") e circuito-python-releases. Fluxos de apresentação e download validados e funcionais para os produtos com entrega ativa. Os próximos passos estão na seção 5 e podem ser priorizados conforme a capacidade da equipe e a demanda do mercado.
 
 Cara Core Informática.
 Documento para uso interno e gestão da estratégia de negócio.

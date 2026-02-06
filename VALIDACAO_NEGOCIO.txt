@@ -3,12 +3,16 @@ VALIDAÇÃO DE NEGÓCIO — FÁBRICA DE APLICATIVOS WINDOWS DESKTOP
 
 Objetivo: Pente fino no que construímos, com olhar de uma pessoa de negócio que está construindo uma fábrica de aplicativos Windows Desktop para um público seleto e com poder de compra. Garantir funcionalidade dos produtos e coerência do ecossistema.
 
-Produtos em foco (já validados ou em validação):
+Premissa: Não temos braço para a startup; precisamos focar em aplicações relevantes para o negócio. O Cara Core Seed existe e consta no portfólio (no final da lista), mas a aplicação não está disponível para download nem à venda — apenas informamos que existe.
+
+Produtos em foco (entrega ativa):
   1. Cara Core PDV — validado com muito esforço
   2. chmulatoETE Minerador 4.0 — validado com muito esforço
   3. Reino OIDC — Reino das Identidades Federadas — material educacional / identidade
-  4. Cara Core Seed — Contador de licenças offline, agregando valor ao ecossistema
-  5. Circuito Python — produto chamariz (curso FREE para pessoas físicas; licença obrigatória para instituições)
+  4. Circuito Python — produto chamariz (curso FREE para pessoas físicas; licença obrigatória para instituições)
+
+Referência (sem oferta ativa):
+  5. Cara Core Seed — ferramenta interna; produto existe, aplicação não disponível (não há download nem venda)
 
 -------------------------------------------------------------------------------
 
@@ -65,15 +69,12 @@ Produtos em foco (já validados ou em validação):
 
   Critério                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
-  Escopo                    | OK     | Foco localhost e Windows Desktop (EXE sobe em localhost, ex.: 9080); banco apenas SQLite. Wiki e portfólio atualizados.
-  Proposta de valor         | OK     | Contador de Licenças; gestão offline; portal de controle; LGPD; R$ 29,90.
-  Público                   | OK     | Clientes que compram PDV, Minerador, Reino, Hub (Windows); contador interno / comprador.
-  Preço                     | OK     | R$ 29,90 (valor único) explícito no portfólio e no delivery.
-  Delivery funcional        | OK     | delivery/seed/index.html, portal-controle.html, download.html (Baixar EXE); caracore-seed-releases (index + download → releases/latest).
-  Windows Desktop           | OK     | Electron, SQLite, 100% offline; sobe em localhost ao abrir o EXE.
-  Agregação de valor        | OK     | Inspirado no Minerador 4.0 (transparência, LGPD); centraliza licenças de todos os produtos.
+  Posicionamento            | OK     | Produto existe, aplicação não disponível. Foco em aplicações relevantes para o negócio; sem braço para a startup. Seed consta no portfólio no final da lista; sem oferta de download nem venda.
+  Proposta de valor         | Ref.   | Contador de Licenças (ferramenta interna); não está em entrega ativa.
+  Preço                     | N/A    | Aplicação não disponível — sem preço nem CTA de compra.
+  Delivery                  | OK     | delivery/seed e caracore-seed-releases informam que a aplicação não está disponível; sem Baixar EXE nem Comprar. Portfólio: seção no final, texto "existe, aplicação não disponível"; links apenas para Portal Seed (informativo) e repositório.
 
-  Ação sugerida: Mantido. CTA "Baixar EXE" já no portfólio; escopo localhost + Windows Desktop refletido na wiki e no portfólio.
+  Ação sugerida: Mantido como está. Seed permanece no portfólio como referência; sem ações de oferta ou CTA de download/compra.
 
 2.5 Circuito Python
 
@@ -97,8 +98,7 @@ Produtos em foco (já validados ou em validação):
   Conhecer PDV / Baixar EXE PDV   | Portfólio → Ver Apresentação ou Baixar EXE → delivery/pdv/ ou delivery/pdv/download.html | Sim (escopo: localhost + Windows Desktop; banco SQLite)
   Baixar Minerador 4.0           | Portfólio → Download → delivery/ete/download.html → GitHub ETE-releases/latest      | Sim
   Reino OIDC — baixar EXE FREE   | Portfólio → delivery/oidc/ ou reino_oidc_releases → download.html → releases/latest (ReinoOIDC.exe) | Sim (prioridade: EXE; conteúdo HTML não destacado)
-  Conhecer Seed e baixar EXE      | Portfólio → Portal de delivery ou Baixar EXE → delivery/seed/ ou caracore-seed-releases → download | Sim (escopo: localhost + Windows Desktop)
-  Portal de controle (Seed)       | Portfólio ou delivery Seed → Portal de controle                                     | Sim
+  Conhecer Seed (sem download)    | Portfólio (seção no final) ou delivery/seed / caracore-seed-releases → apenas informação de que o produto existe e a aplicação não está disponível | Sim (sem oferta de EXE nem compra)
   Circuito Python — baixar EXE    | Portfólio → delivery/circuito/ ou circuito-python-releases → Download → releases/latest (CircuitoPython.exe) | Sim; prioridade EXE; link curso HTML não destacado
 
 -------------------------------------------------------------------------------
@@ -107,12 +107,12 @@ Produtos em foco (já validados ou em validação):
 
   Tema                          | PDV                    | Minerador 4.0           | Reino OIDC                    | Seed              | Circuito Python
   -------------------------------|------------------------|-------------------------|-------------------------------|-------------------|---------------------------
-  Nome completo / posicionamento| Cara Core PDV          | chmulatoETE Minerador 4.0| Reino OIDC — Reino das Id. Fed.| Cara Core Seed    | Circuito Python
-  Escopo                        | localhost + Windows Desktop; SQLite | —                | Prioridade EXE                 | localhost + Windows Desktop; SQLite | Prioridade EXE
-  Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | R$ 29,90          | FREE (MIT); escolas R$ 5,00/aluno/mês
-  Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Sim (.exe → localhost) | Sim (CircuitoPython.exe)
-  Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Portal controle, LGPD | Licença e portal escolas
-  Link direto download/EXE       | Apresentação + Baixar EXE + Wiki | Download → ETE-releases | delivery/oidc + reino_oidc_releases → releases/latest | Portal + Baixar EXE + GitHub | circuito-python-releases/releases/latest (prioridade EXE)
+  Nome completo / posicionamento| Cara Core PDV          | chmulatoETE Minerador 4.0| Reino OIDC — Reino das Id. Fed.| Cara Core Seed (existe; app não disponível) | Circuito Python
+  Escopo                        | localhost + Windows Desktop; SQLite | —                | Prioridade EXE                 | Ref. interna      | Prioridade EXE
+  Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (não disponível) | FREE (MIT); escolas R$ 5,00/aluno/mês
+  Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Não (não disponível) | Sim (CircuitoPython.exe)
+  Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Ref. (portal informativo) | Licença e portal escolas
+  Link direto download/EXE       | Apresentação + Baixar EXE + Wiki | Download → ETE-releases | delivery/oidc + reino_oidc_releases → releases/latest | Apenas Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest (prioridade EXE)
 
 -------------------------------------------------------------------------------
 
@@ -120,7 +120,7 @@ Produtos em foco (já validados ou em validação):
 
   1. Portfólio — Frase de framing: Adicionar uma linha no header ou logo abaixo do lead do portfólio reforçando: "Soluções Windows Desktop e identidade para um público seleto" (ou equivalente), ligando os quatro produtos.
   2. Minerador 4.0: Incluir no alerta de licenciamento do card: "Upgrade Ouro 4.0: R$ 29,90 (valor único)."
-  3. Seed: Incluir botão ou link explícito "Baixar EXE" (→ delivery/seed/download.html ou caracore-seed-releases/releases/latest) ao lado de "Ver no GitHub (releases)".
+  3. Seed: Produto existe, aplicação não disponível. Não oferecer Baixar EXE nem Comprar; portfólio com seção no final; delivery e vitrine apenas informam que existe. Foco em aplicações relevantes para o negócio.
   4. Reino OIDC: Manter nome completo "Reino OIDC — Reino das Identidades Federadas" em qualquer novo material; download do EXE FREE (ReinoOIDC.exe) disponível em delivery/oidc e reino_oidc_releases.
   5. Circuito Python: Não apontar para o repositório privado (github.com/chmulato/circuito_python). Em matriz e filial: repositório público de releases (github.com/chmulato/circuito-python-releases); priorizar download do EXE (releases/latest); não destacar link do curso em HTML.
   6. Revisão periódica: Usar este documento como checklist em próximas releases (novos produtos, mudança de preço, novos CTAs).
@@ -129,8 +129,8 @@ Produtos em foco (já validados ou em validação):
 
 6. CONCLUSÃO
 
-  - Funcionalidade: Os fluxos de apresentação e download estão coerentes e operantes. PDV e Seed: escopo localhost + Windows Desktop (EXE sobe em localhost); PDV com banco apenas SQLite. Portfólio com botão "Baixar EXE" para PDV e Seed. Reino OIDC e Circuito Python: prioridade download do EXE; link do curso/conteúdo em HTML não destacado.
-  - Validação já feita: PDV e Minerador 4.0 continuam bem posicionados; Seed, Reino OIDC e Circuito Python agregam valor (licenças + identidade/educação + produto chamariz) sem conflito.
-  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite) e Seed (localhost, Windows Desktop, SQLite). Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python.
+  - Funcionalidade: Os fluxos de apresentação e download estão coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python). PDV: escopo localhost + Windows Desktop, SQLite; portfólio com "Baixar EXE". Seed: produto existe, aplicação não disponível — sem oferta de download nem venda; portfólio com seção no final; delivery e vitrine apenas informam.
+  - Premissa: Não temos braço para a startup; foco em aplicações relevantes para o negócio. Seed permanece no portfólio como referência.
+  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python.
 
 Documento gerado para validação de negócio — Cara Core Informática.

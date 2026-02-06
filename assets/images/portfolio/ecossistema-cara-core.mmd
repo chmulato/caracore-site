@@ -1,0 +1,43 @@
+%% Mapa visual do ecossistema Cara Core Informática
+%% Matriz (site) -> Produtos -> Lojas (GitHub Pages)
+%% Uso: incluir em portfolio.html ou ecossistema.html com <div class="mermaid"> ... </div>
+
+flowchart TB
+    subgraph MATRIZ["🌐 Site matriz — caracore.com.br"]
+        M[Portfólio · Delivery · Wiki]
+    end
+
+    subgraph PRODUTOS["📦 Produtos"]
+        P1[Cara Core PDV]
+        P2[Minerador 4.0]
+        P3[Reino OIDC]
+        P4[Circuito Python]
+        P5[Cara Core Hub]
+        P6[Suporte Área 51]
+        P7[Cara Core Seed]
+    end
+
+    subgraph LOJAS["🛒 Lojas online — GitHub Pages"]
+        L1[caracore-pdv-releases]
+        L2[caracore-ete-releases]
+        L3[reino-oidc-releases]
+        L4[circuito-python-releases]
+        L5[caracore-hub-releases]
+        L6[caracore-area51-releases]
+        L7[caracore-seed-releases]
+    end
+
+    M --> P1 & P2 & P3 & P4 & P5 & P6 & P7
+    P1 --> L1
+    P2 --> L2
+    P3 --> L3
+    P4 --> L4
+    P5 --> L5
+    P6 --> L6
+    P7 --> L7
+
+    style MATRIZ fill:#e8f4f8
+    style PRODUTOS fill:#f0f8e8
+    style LOJAS fill:#f8f0e8
+    style P7 fill:#f5f5f5
+    style L7 fill:#f5f5f5

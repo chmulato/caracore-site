@@ -1,0 +1,423 @@
+/* CaraCore Hub — Apresentação Tia Sócia (pitch deck) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0F3460 0%, #16213E 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.presentation-container {
+    width: 100%;
+    max-width: 1400px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+}
+
+.header {
+    background: linear-gradient(135deg, #0F3460 0%, #16213E 100%);
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #D4A574;
+}
+
+.header h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.header-info {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    font-size: 14px;
+}
+
+.slide-counter {
+    background: rgba(212, 165, 116, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid #D4A574;
+}
+
+.slides-wrapper {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: #f8f9fa;
+}
+
+.slide.active {
+    display: flex;
+    opacity: 1;
+}
+
+.slide img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.slide-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-title {
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #333;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    max-width: 90%;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    background: #f0f0f0;
+    border-top: 1px solid #ddd;
+    gap: 20px;
+}
+
+.nav-button {
+    background: linear-gradient(135deg, #0F3460 0%, #16213E 100%);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-button:hover {
+    background: linear-gradient(135deg, #16213E 0%, #0F3460 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 52, 96, 0.3);
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background: #ddd;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #D4A574 0%, #2A9D8F 100%);
+    transition: width 0.3s ease;
+}
+
+.slide-info {
+    text-align: center;
+    min-width: 120px;
+    font-size: 14px;
+    color: #555;
+    font-weight: 600;
+}
+
+.footer {
+    background: #f0f0f0;
+    padding: 10px 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    border-top: 1px solid #ddd;
+}
+
+.keyboard-info {
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+
+.fullscreen-btn {
+    background: #D4A574;
+    color: #0F3460;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.fullscreen-btn:hover {
+    background: #E5B878;
+    transform: scale(1.05);
+}
+
+.read-btn {
+    background: #2A9D8F;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.read-btn:hover {
+    background: #21867a;
+    transform: translateY(-1px);
+}
+
+.read-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    padding: 20px;
+}
+
+.read-modal.active {
+    display: flex;
+}
+
+.read-modal-content {
+    background: white;
+    width: 100%;
+    max-width: 900px;
+    max-height: 80vh;
+    border-radius: 10px;
+    padding: 20px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.read-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.read-modal-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0F3460;
+}
+
+.read-modal-close {
+    background: #D4A574;
+    color: #0F3460;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.read-modal-text {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    overflow: auto;
+    padding-right: 6px;
+    white-space: pre-wrap;
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 18px;
+    }
+
+    .header-info {
+        gap: 15px;
+        font-size: 12px;
+    }
+
+    .nav-button {
+        padding: 10px 16px;
+        font-size: 12px;
+    }
+
+    .controls {
+        flex-wrap: wrap;
+    }
+}
+
+.audio-player {
+    background: linear-gradient(135deg, #0F3460 0%, #16213E 100%);
+    padding: 15px 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    margin: 0 10px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.audio-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.play-btn {
+    background: #D4A574;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    color: #0F3460;
+    font-weight: bold;
+}
+
+.play-btn:hover {
+    background: #E5B878;
+    transform: scale(1.1);
+}
+
+.play-btn.playing {
+    background: #2A9D8F;
+    color: white;
+}
+
+audio {
+    display: none;
+}
+
+.audio-info {
+    color: white;
+    font-size: 12px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.audio-duration {
+    color: #D4A574;
+    font-weight: 600;
+}
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+}
+
+.volume-control input {
+    width: 80px;
+    height: 4px;
+    accent-color: #D4A574;
+}
+
+.audio-status {
+    font-size: 11px;
+    color: #B0B0B0;
+    margin-top: 4px;
+}
+
+.speed-control {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.speed-label {
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-right: 5px;
+}
+
+.speed-btn {
+    background: rgba(212, 165, 116, 0.3);
+    border: 2px solid #D4A574;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-width: 50px;
+    text-align: center;
+}
+
+.speed-btn:hover {
+    background: rgba(212, 165, 116, 0.5);
+    transform: scale(1.05);
+}
+
+.speed-btn.active {
+    background: #D4A574;
+    color: #0F3460;
+    border-color: #E5B878;
+}

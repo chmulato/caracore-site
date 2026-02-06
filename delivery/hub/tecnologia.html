@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia — CaraCore Hub | Cara Core Informática</title>
+    <meta name="description" content="Stack do CaraCore Hub: Java/Jakarta EE, SQLite, Tomcat. Autonomia local.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/hub-portal.css">
+</head>
+<body>
+    <div class="wrapper" style="max-width: 720px;">
+        <nav class="breadcrumb" aria-label="Navegação">
+            <a href="https://caracore.com.br/">Cara Core Informática</a>
+            <span> · </span>
+            <a href="index.html">CaraCore Hub</a>
+            <span> · </span>
+            <span>Tecnologia</span>
+        </nav>
+
+        <header>
+            <h1>Tecnologia — CaraCore Hub</h1>
+            <p>Stack local e autonomia operacional</p>
+        </header>
+
+        <section class="methodology">
+            <div class="card">
+                <h2>Backend</h2>
+                <p><strong>Java 11</strong> e <strong>Jakarta EE 10</strong>. Aplicação modular (core, persistence, api, web). Servidor de aplicações: <strong>Apache Tomcat</strong> ou WildFly. API REST (JAX-RS/Jersey) para integrações e front-end JSP para a interface de gestão.</p>
+            </div>
+            <div class="card">
+                <h2>Banco de dados — SQLite</h2>
+                <p>O Hub utiliza <strong>apenas SQLite</strong> como banco de dados. O arquivo de dados fica no servidor (ex.: <code>data/hub.db</code>), sem necessidade de PostgreSQL ou de rede para o núcleo operacional. Migrações com <strong>Flyway</strong>. Autonomia local: a operação de pedidos, estoque e posições não depende de conectividade.</p>
+            </div>
+            <div class="card">
+                <h2>Integrações e cache</h2>
+                <p>Integração com marketplaces (Mercado Livre, Shopee, Temu) via API e webhooks. Notificações por WhatsApp e Telegram quando configuradas. <strong>Redis</strong> é opcional (cache); o sistema funciona sem Redis, apenas com SQLite.</p>
+            </div>
+        </section>
+
+        <nav class="download-back">
+            <a href="index.html">← Voltar ao portal</a> · <a href="download.html">Download</a> · <a href="https://chmulato.github.io/caracore-hub-releases/">Vitrine (releases)</a>
+        </nav>
+    </div>
+</body>
+</html>

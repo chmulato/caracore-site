@@ -10,9 +10,10 @@ Produtos em foco (entrega ativa):
   2. chmulatoETE Minerador 4.0 — validado com muito esforço
   3. Reino OIDC — Reino das Identidades Federadas — material educacional / identidade
   4. Circuito Python — produto chamariz (curso FREE para pessoas físicas; licença obrigatória para instituições)
+  5. Cara Core Hub — gestão logística e e-commerce; portal delivery (matriz + vitrine); SQLite local; negócio aplicável: Tia Sócia; apresentação Tia Sócia em slides/
 
 Referência (sem oferta ativa):
-  5. Cara Core Seed — ferramenta interna; produto existe, aplicação não disponível (não há download nem venda)
+  6. Cara Core Seed — ferramenta interna; produto existe, aplicação não disponível (não há download nem venda)
 
 -------------------------------------------------------------------------------
 
@@ -89,6 +90,18 @@ Referência (sem oferta ativa):
 
   Ação sugerida: Manter alinhamento matriz ↔ filial; priorizar download do EXE; não destacar link do curso em HTML.
 
+2.6 Cara Core Hub
+
+  Critério                  | Status | Detalhe
+  --------------------------|--------|--------------------------------------------------------
+  Proposta de valor         | OK     | Gestão logística e e-commerce; centros de distribuição; recebimento, triagem, estoque, retirada; integração marketplaces; SQLite local, autonomia local.
+  Negócio aplicável         | OK     | Projeto Tia Sócia citado como exemplo; apresentação (pitch deck, 21 slides) em slides/ na loja (caracore-hub-releases) e na matriz (delivery/hub).
+  Preço                     | N/A    | B2B / sob consulta ou modelo futuro; não fixado no portal.
+  Delivery funcional        | OK     | delivery/hub/ (index, download, canal-feedback, tecnologia, slides/apresentacao_tia_socia.html); vitrine caracore-hub-releases com mesmo conteúdo e base href para GitHub Pages.
+  Portal/vitrine            | OK     | Matriz = site Cara Core delivery/hub; vitrine = caracore-hub-releases. MIRROR_DELIVERY.md em delivery/hub documenta a relação. Releases (WAR) em github.com/chmulato/caracore-hub-releases/releases quando publicadas.
+
+  Ação sugerida: Manter alinhamento matriz ↔ vitrine; ao publicar releases, atualizar download.html com link para releases/latest.
+
 -------------------------------------------------------------------------------
 
 3. FUNCIONALIDADE DOS FLUXOS (CLIENTE FINAL)
@@ -100,19 +113,20 @@ Referência (sem oferta ativa):
   Reino OIDC — baixar EXE FREE   | Portfólio → delivery/oidc/ ou reino_oidc_releases → download.html → releases/latest (ReinoOIDC.exe) | Sim (prioridade: EXE; conteúdo HTML não destacado)
   Conhecer Seed (sem download)    | Portfólio (seção no final) ou delivery/seed / caracore-seed-releases → apenas informação de que o produto existe e a aplicação não está disponível | Sim (sem oferta de EXE nem compra)
   Circuito Python — baixar EXE    | Portfólio → delivery/circuito/ ou circuito-python-releases → Download → releases/latest (CircuitoPython.exe) | Sim; prioridade EXE; link curso HTML não destacado
+  Cara Core Hub — portal / Tia Sócia | Portfólio → delivery/hub/ ou caracore-hub-releases → index, download (releases quando houver), Apresentação Tia Sócia (slides/) | Sim; SQLite local; negócio aplicável Tia Sócia
 
 -------------------------------------------------------------------------------
 
 4. CONSISTÊNCIA DE MENSAGEM (PÚBLICO SELETO)
 
-  Tema                          | PDV                    | Minerador 4.0           | Reino OIDC                    | Seed              | Circuito Python
-  -------------------------------|------------------------|-------------------------|-------------------------------|-------------------|---------------------------
-  Nome completo / posicionamento| Cara Core PDV          | chmulatoETE Minerador 4.0| Reino OIDC — Reino das Id. Fed.| Cara Core Seed (existe; app não disponível) | Circuito Python
-  Escopo                        | localhost + Windows Desktop; SQLite | —                | Prioridade EXE                 | Ref. interna      | Prioridade EXE
-  Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (não disponível) | FREE (MIT); escolas R$ 5,00/aluno/mês
-  Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Não (não disponível) | Sim (CircuitoPython.exe)
-  Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Ref. (portal informativo) | Licença e portal escolas
-  Link direto download/EXE       | Apresentação + Baixar EXE + Wiki | Download → ETE-releases | delivery/oidc + reino_oidc_releases → releases/latest | Apenas Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest (prioridade EXE)
+  Tema                          | PDV                    | Minerador 4.0           | Reino OIDC                    | Seed              | Circuito Python          | Cara Core Hub
+  -------------------------------|------------------------|-------------------------|-------------------------------|-------------------|---------------------------|----------------------------
+  Nome completo / posicionamento| Cara Core PDV          | chmulatoETE Minerador 4.0| Reino OIDC — Reino das Id. Fed.| Cara Core Seed (existe; app não disponível) | Circuito Python   | Cara Core Hub (gestão logística; SQLite; Tia Sócia)
+  Escopo                        | localhost + Windows Desktop; SQLite | —                | Prioridade EXE                 | Ref. interna      | Prioridade EXE            | WAR/Tomcat; SQLite local
+  Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (não disponível) | FREE (MIT); escolas R$ 5,00/aluno/mês | B2B / sob consulta
+  Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Não (não disponível) | Sim (CircuitoPython.exe)  | WAR (releases quando houver)
+  Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Ref. (portal informativo) | Licença e portal escolas | Canal feedback; doc tecnologia
+  Link direto download/EXE       | Apresentação + Baixar EXE + Wiki | Download → ETE-releases | delivery/oidc + reino_oidc_releases → releases/latest | Apenas Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest (prioridade EXE) | delivery/hub + caracore-hub-releases; slides Tia Sócia
 
 -------------------------------------------------------------------------------
 
@@ -123,14 +137,15 @@ Referência (sem oferta ativa):
   3. Seed: Produto existe, aplicação não disponível. Não oferecer Baixar EXE nem Comprar; portfólio com seção no final; delivery e vitrine apenas informam que existe. Foco em aplicações relevantes para o negócio.
   4. Reino OIDC: Manter nome completo "Reino OIDC — Reino das Identidades Federadas" em qualquer novo material; download do EXE FREE (ReinoOIDC.exe) disponível em delivery/oidc e reino_oidc_releases.
   5. Circuito Python: Não apontar para o repositório privado (github.com/chmulato/circuito_python). Em matriz e filial: repositório público de releases (github.com/chmulato/circuito-python-releases); priorizar download do EXE (releases/latest); não destacar link do curso em HTML.
-  6. Revisão periódica: Usar este documento como checklist em próximas releases (novos produtos, mudança de preço, novos CTAs).
+  6. Cara Core Hub: Portal delivery/hub (matriz) e vitrine caracore-hub-releases alinhados; negócio aplicável Tia Sócia citado; apresentação Tia Sócia em slides/ em ambos. Ao publicar releases (WAR), atualizar download.html com link para releases/latest.
+  7. Revisão periódica: Usar este documento como checklist em próximas releases (novos produtos, mudança de preço, novos CTAs).
 
 -------------------------------------------------------------------------------
 
 6. CONCLUSÃO
 
-  - Funcionalidade: Os fluxos de apresentação e download estão coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python). PDV: escopo localhost + Windows Desktop, SQLite; portfólio com "Baixar EXE". Seed: produto existe, aplicação não disponível — sem oferta de download nem venda; portfólio com seção no final; delivery e vitrine apenas informam.
+  - Funcionalidade: Os fluxos de apresentação e download estão coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python, Cara Core Hub). PDV: escopo localhost + Windows Desktop, SQLite; portfólio com "Baixar EXE". Seed: produto existe, aplicação não disponível — sem oferta de download nem venda; portfólio com seção no final; delivery e vitrine apenas informam. Hub: delivery/hub e caracore-hub-releases; gestão logística e e-commerce; SQLite local; Tia Sócia e apresentação em slides/.
   - Premissa: Não temos braço para a startup; foco em aplicações relevantes para o negócio. Seed permanece no portfólio como referência.
-  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python.
+  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python. Hub: manter matriz e vitrine alinhadas; Tia Sócia como negócio aplicável.
 
 Documento gerado para validação de negócio — Cara Core Informática.

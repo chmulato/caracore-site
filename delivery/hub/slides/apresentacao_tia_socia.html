@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaraCore Hub: Programa Tia Sócia - Pitch Deck para Investidores</title>
+    <link rel="stylesheet" href="assets/css/apresentacao-tia-socia.css">
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="header">
+            <h1>🚀 CaraCore Hub: Programa Tia Sócia - COOPERATIVA</h1>
+            <div class="header-info">
+                <div>Pitch Deck • Modelo Cooperativista</div>
+                <div class="slide-counter" id="slideCounter">Slide 1 de 21</div>
+            </div>
+        </div>
+
+        <div class="slides-wrapper" id="slidesWrapper">
+            <!-- Slides inseridos pelo JavaScript -->
+        </div>
+
+        <div class="controls">
+            <button class="nav-button" id="prevBtn" onclick="previousSlide()">← Anterior</button>
+
+            <div class="audio-player">
+                <div class="audio-controls">
+                    <button class="play-btn" id="playBtn" onclick="toggleAudio()">▶</button>
+                    <div class="audio-info">
+                        <div id="audioTitle">Narração do Slide</div>
+                        <div class="audio-status" id="audioStatus">Pronto para ouvir</div>
+                    </div>
+                </div>
+                <div class="volume-control">
+                    <span>🔊</span>
+                    <input type="range" id="volumeControl" min="0" max="100" value="80" onchange="changeVolume()">
+                </div>
+                <div class="speed-control">
+                    <span class="speed-label">Velocidade</span>
+                    <button class="speed-btn active" onclick="changeSpeed(1)">1x</button>
+                    <button class="speed-btn" onclick="changeSpeed(1.5)">1.5x</button>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="slide-info" id="slideInfo">1 / 21</div>
+
+            <button class="nav-button" id="nextBtn" onclick="nextSlide()">Próximo →</button>
+            <button class="read-btn" id="readBtn" onclick="openReadModal()">Ler texto</button>
+            <button class="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
+        </div>
+
+        <audio id="slideAudio"></audio>
+
+        <div class="footer">
+            <div>CaraCore Hub • Cooperativa Tia Sócia: Transformando Idosas em Donas do Negócio</div>
+        </div>
+    </div>
+
+    <div class="read-modal" id="readModal" aria-hidden="true" onclick="closeReadModal(event)">
+        <div class="read-modal-content" role="dialog" aria-modal="true" aria-labelledby="readModalTitle">
+            <div class="read-modal-header">
+                <div class="read-modal-title" id="readModalTitle">Texto do Slide</div>
+                <button class="read-modal-close" onclick="closeReadModal()">Fechar</button>
+            </div>
+            <div class="read-modal-text" id="readModalText"></div>
+        </div>
+    </div>
+
+    <script src="assets/js/apresentacao-tia-socia.js"></script>
+</body>
+</html>

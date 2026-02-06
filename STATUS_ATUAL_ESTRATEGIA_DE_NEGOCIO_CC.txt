@@ -51,7 +51,7 @@ Os pilares com entrega ativa são: Cara Core PDV, chmulatoETE Minerador 4.0, Rei
 
 - Documentada e aplicada a mesma lógica para os dois produtos que têm vitrine pública separada:
   - Reino OIDC: portal completo no site Cara Core (delivery/oidc); vitrine e balcão público no repositório reino_oidc_releases (pasta docs/). O conteúdo em docs/ é espelho do portal; na vitrine os links para o portfólio usam o endereço completo do site Cara Core.
-  - Cara Core Seed: portal completo no site Cara Core (delivery/seed); vitrine e balcão público no repositório caracore-seed-releases (páginas na raiz: apresentação e download do EXE versionado).
+  - Cara Core Seed: portal completo no site Cara Core (delivery/seed); vitrine e balcão público no repositório caracore-seed-releases (páginas em docs/: apresentação e download do EXE versionado).
 - Criados documentos MIRROR_DELIVERY.md no delivery/oidc e no delivery/seed, e atualizados README e WORKSPACE do reino_oidc_releases e do caracore-seed-releases para deixar explícita essa relação.
 - Sincronizados para a vitrine do Reino OIDC a página inicial e a página de upgrade (O Trono da Identidade), com links ajustados para o portfólio.
 
@@ -69,14 +69,14 @@ Os pilares com entrega ativa são: Cara Core PDV, chmulatoETE Minerador 4.0, Rei
 - Criados no repositório caracore-seed os scripts de build e publicação, na mesma lógica do chmulatoETE Minerador 4.0 (workspace-chi/scripts):
   - build_dist_local_seed.py: gera o WAR, empacota com Electron e grava electron/dist com o instalador, VERSION e checksums (MD5 e SHA-256).
   - delivery_exe_seed_releases.py: publica o instalador e anexos como Release no GitHub (chmulato/caracore-seed-releases). Usa o token TOKEN_DELIVERY_CC_SEED_TO_REALEASES (ou GH_TOKEN).
-  - push_public_to_seed_releases.ps1: sincroniza o portal de delivery (site Cara Core, pasta delivery/seed) para o repositório caracore-seed-releases (vitrine), copiando index, download, tecnologia, readme, portal-controle e assets.
+  - push_public_to_seed_releases.ps1: sincroniza o portal de delivery (site Cara Core, pasta delivery/seed) para o repositório caracore-seed-releases (vitrine, pasta docs/), copiando index, download, tecnologia, readme, portal-controle e assets.
 - Documentação em caracore-seed/scripts/README.md e referência em electron/README.md.
 
 2.9 Alinhamento dos portais do Cara Core Seed ao estilo Minerador 4.0
 
 - Os três pontos de presença do Seed foram alinhados ao visual e à estrutura do portal do Minerador 4.0 (workspace-ete-releases): tema escuro, fonte Inter, cards de metodologia e navegação em grid.
   - delivery/seed (site Cara Core): index e download refeitos com CSS seed-portal.css; links para o portfólio em URL absoluta (caracore.com.br) para funcionar também quando o conteúdo for espelhado na vitrine.
-  - caracore-seed-releases (vitrine): index e download com o mesmo layout e variáveis visuais (estilo inline para GitHub Pages).
+  - caracore-seed-releases (vitrine, docs/): index e download com o mesmo layout e variáveis visuais (estilo inline para GitHub Pages).
   - caracore-seed (repositório principal): index substituído pelo portal no mesmo estilo, com cards para Download (releases), Vitrine, Apresentação técnica e Portfólio Cara Core; o conteúdo técnico extenso permanece em apresentacao.html.
 - Documentado em delivery/seed/MIRROR_DELIVERY.md o alinhamento dos três e o uso do script push_public para atualizar a vitrine.
 

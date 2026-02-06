@@ -88,12 +88,12 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
 5. CARA CORE SEED
 
   Matriz: cara-core-site/delivery/seed/
-  Loja:   caracore-seed-releases/ (raiz; chmulato.github.io/caracore-seed-releases)
+  Loja:   caracore-seed-releases/docs/ (chmulato.github.io/caracore-seed-releases)
 
   Estrutura
     Matriz: index, download, tecnologia, canal-feedback, portal-controle, ativacao, compra, readme
-    Loja:   index, download, canal-feedback, ativacao, compra (sem tecnologia, portal-controle, readme)
-  Status:  OK. Ambas informam que a aplicação não está disponível. A loja não precisa espelhar todas as páginas da matriz; mensagem central é "não disponível".
+    Loja:   index, download, tecnologia, canal-feedback, portal-controle, ativacao, compra, readme (+ tools/README, assets/css)
+  Status:  OK. Loja alinhada ao molde COMPONENTES_LOJA com todos os componentes. Ambas informam que a aplicação não está disponível.
 
   Mensagem
     Matriz e loja: "Aplicação não disponível"; "não está disponível para download nem à venda"; "ferramenta interna"; referência ao portfólio; sem CTA de Baixar EXE nem Comprar.

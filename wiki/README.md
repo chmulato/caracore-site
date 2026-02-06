@@ -6,7 +6,7 @@ O Wiki da Cara Core Informática foi criado como um guia completo para **estagi�
 
 ### Objetivo Principal
 
-Fornecer explicações **claras e acessíveis** sobre nossos projetos principais (alinhados ao portfólio: PDV, Reino OIDC, Seed, Circuito Python, Hub, Área 51), usando linguagem simples para pessoas leigas e orientações técnicas específicas para estagiários.
+Fornecer explicações **claras e acessíveis** sobre nossos projetos principais (alinhados ao portfólio: PDV, Reino OIDC, Seed, Circuito Python, Hub, Área 51), usando linguagem simples para pessoas leigas e orientações técnicas específicas para estagiários. O Wiki está alinhado ao **Eco Mundo** (mapa visual do ecossistema: matriz → produtos → oficinas → lojas em [ecosistema.html](https://caracore.com.br/ecosistema.html)); todas as páginas da wiki incluem link "Eco Mundo" na navegação.
 
 ## Projetos Documentados
 

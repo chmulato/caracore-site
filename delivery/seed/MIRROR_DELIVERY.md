@@ -14,10 +14,10 @@
 | Onde | Papel | Caminho |
 |------|--------|---------|
 | **Matriz — Cara Core Informática** | Portal completo (fonte de verdade) | `D:\dev\site\cara-core\delivery\seed` |
-| **Filial — vitrine pública** | Espelho público (GitHub Pages / releases) | `D:\dev\caracore-seed-releases` (index, download, compra, tecnologia, etc.) |
+| **Filial — vitrine pública** | Espelho público (GitHub Pages / releases) | `D:\dev\caracore-seed-releases\docs` (index, download, compra, tecnologia, etc.) |
 
 - O conteúdo **canônico** do portal fica em **delivery/seed**. CSS: `assets/css/seed-portal.css` (estilo Minerador).
-- **caracore-seed-releases** é a **loja filial**: mesma cara e design. Produto **somente a pagamento** — R$ 29,00 (PIX, CNPJ Cara Core). Atualizar filial com `push_public_to_seed_releases.ps1` (fonte: delivery/seed).
+- **caracore-seed-releases** é a **loja filial**: vitrine na pasta **docs/** (padrão GitHub Pages: Branch + Folder /docs). Mesma cara e design. Produto **somente a pagamento** — R$ 29,00 (PIX, CNPJ Cara Core). Atualizar filial com `push_public_to_seed_releases.ps1` (fonte: delivery/seed; destino: docs/ do clone).
 - **caracore-seed** (repo privado): apenas código-fonte; index.html é landing técnica com links para Matriz, Filial e apresentação técnica (apresentacao.html). Sem duplicar loja.
 - Links para o portfólio usam URL absoluta (caracore.com.br) para funcionar tanto no delivery quanto na filial.
 

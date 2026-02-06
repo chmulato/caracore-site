@@ -1,0 +1,61 @@
+ECOSSISTEMA CARA CORE INFORMÁTICA
+=================================
+
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 06/02/2026).
+
+-------------------------------------------------------------------------------
+
+VISÃO GERAL
+
+  Diretório / Repositório     Papel                                    Observação
+  --------------------------- ---------------------------------------- ----------------------------------------------------------
+  cara-core-site              Site oficial (portfólio, delivery, wiki)   Domínio caracore.com.br; matriz dos portais de produto
+  caracore-pdv                Código do produto Cara Core PDV          Windows Desktop (Electron), SQLite, offline
+  caracore-pdv-releases       Loja online e releases do PDV            GitHub Pages: chmulato.github.io/caracore-pdv-releases
+  caracore-hub                Código do produto Cara Core Hub           Gestão logística e e-commerce; WAR (Tomcat); Tia Sócia
+  caracore-hub-releases       Loja online e releases do Hub            GitHub Pages: chmulato.github.io/caracore-hub-releases
+  caracore-ete                Código do Minerador 4.0 (ETE)             chmulatoETE Minerador; Windows .exe
+  caracore-ete-releases       Releases do Minerador 4.0                Download do executável e upgrades
+  caracore-seed               Código do Cara Core Seed                  Ferramenta interna; aplicação não disponível ao público
+  caracore-seed-releases      Vitrine do Seed                          Informa que a aplicação não está disponível
+  caracore-ink                Código do InkAgenda                       Agenda para estúdios de tatuagem (Flutter)
+  caracore-ru                 Repositório do ecossistema               (detalhes conforme uso interno)
+  circuito-python             Código do Circuito Python (curso)         Repositório privado; EXE em releases
+  circuito-python-releases     Loja online e releases Circuito Python   GitHub Pages; prioridade: baixar EXE
+  reino-oidc                  Código do Reino OIDC (identidade)         OAuth 2.1 / OIDC; ReinoOIDC.exe
+  reino-oidc-releases         Loja online e releases do Reino OIDC     GitHub Pages: chmulato.github.io/reino-oidc-releases
+  personal-articles           Conteúdo pessoal / artigos               Conteúdo editorial ou pessoal vinculado ao ecossistema
+
+-------------------------------------------------------------------------------
+
+AGRUPAMENTO POR FUNÇÃO
+
+Site e presença pública
+  cara-core-site: Site principal (portfólio, delivery/pdv, delivery/hub, delivery/circuito, delivery/oidc, delivery/seed, wiki, área 51, publicações, etc.).
+
+Produtos com entrega ativa (matriz + loja online)
+  Cara Core PDV: caracore-pdv (código) + caracore-pdv-releases (loja e releases). Matriz: caracore.com.br/delivery/pdv/
+  Cara Core Hub: caracore-hub (código) + caracore-hub-releases (loja e releases). Matriz: caracore.com.br/delivery/hub/
+  Minerador 4.0 (ETE): caracore-ete (código) + caracore-ete-releases (releases). Portal ETE no site.
+  Circuito Python: circuito-python (código, privado) + circuito-python-releases (loja e EXE). Matriz: caracore.com.br/delivery/circuito/
+  Reino OIDC: reino-oidc (código) + reino-oidc-releases (loja e releases). Matriz: caracore.com.br/delivery/oidc/
+
+Produtos com vitrine, sem oferta de aplicação
+  Cara Core Seed: caracore-seed (código) + caracore-seed-releases (vitrine). Matriz: caracore.com.br/delivery/seed/. Aplicação não disponível ao público.
+
+Outros repositórios do ecossistema
+  caracore-ink: InkAgenda (agenda para estúdios de tatuagem; Flutter).
+  caracore-ru: Repositório do ecossistema (uso interno).
+  personal-articles: Artigos/conteúdo pessoal.
+
+-------------------------------------------------------------------------------
+
+REFERÊNCIAS CRUZADAS
+
+  Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.txt.
+  Estratégia e status de negócio: ver documentos no site (ex.: VALIDACAO_NEGOCIO.txt, STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt, quando disponíveis no repositório ou em uso interno).
+  Portfólio e links oficiais: https://caracore.com.br/portfolio.html
+
+-------------------------------------------------------------------------------
+
+Atualizado em 06/02/2026. Lista de diretórios reflete o ecossistema local/repositórios GitHub da Cara Core Informática.

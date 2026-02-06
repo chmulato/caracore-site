@@ -34,13 +34,13 @@ Referência (sem oferta ativa):
   Critério                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
   Escopo                    | OK     | Foco localhost e Windows Desktop (EXE sobe em localhost:8080); banco apenas SQLite (não PostgreSQL, não H2). Wiki e portfólio atualizados.
-  Proposta de valor clara   | OK     | Reforma Tributária 2026-2033, offline, PIX Split, planos Free/Premium.
+  Proposta de valor clara   | OK     | Reforma Tributária 2026-2033, offline, PIX Split, planos Free/Premium; PDV Selo Verde; mensagem alinhada à matriz.
   Público                   | OK     | Pequenos e médios negócios, varejo; contador e gestor.
   Preço/plano               | Atenção| Free e Premium descritos; valor do Premium não está no portfólio (pode ser intencional).
-  Delivery funcional        | OK     | delivery/pdv/ (apresentação), delivery/pdv/download.html (Baixar EXE), tecnologia, wiki/projeto-pdv.html.
+  Delivery funcional        | OK     | Matriz: delivery/pdv/ (apresentação completa, economia, planos, Wiki Fiscal, consultoria). Loja online: https://chmulato.github.io/caracore-pdv-releases/ (vitrine, download, tecnologia, canal de feedback). MIRROR_DELIVERY.md em delivery/pdv documenta a relação.
   Windows Desktop           | OK     | Instalador EXE; ao abrir, servidor sobe em localhost; um arquivo de dados (SQLite); modo offline; Electron.
 
-  Ação sugerida: Manter como está. Escopo localhost + Windows Desktop + SQLite já refletido na wiki e no portfólio.
+  Ação sugerida: Manter como está. Escopo localhost + Windows Desktop + SQLite já refletido na wiki e no portfólio. Referência central das lojas: ECOSYSTEM_LOJAS.md.
 
 2.2 chmulatoETE Minerador 4.0
 
@@ -97,8 +97,8 @@ Referência (sem oferta ativa):
   Proposta de valor         | OK     | Gestão logística e e-commerce; centros de distribuição; recebimento, triagem, estoque, retirada; integração marketplaces; SQLite local, autonomia local.
   Negócio aplicável         | OK     | Projeto Tia Sócia citado como exemplo; apresentação (pitch deck, 21 slides) em slides/ na loja (caracore-hub-releases) e na matriz (delivery/hub).
   Preço                     | N/A    | B2B / sob consulta ou modelo futuro; não fixado no portal.
-  Delivery funcional        | OK     | delivery/hub/ (index, download, canal-feedback, tecnologia, slides/apresentacao_tia_socia.html); vitrine caracore-hub-releases com mesmo conteúdo e base href para GitHub Pages.
-  Portal/vitrine            | OK     | Matriz = site Cara Core delivery/hub; vitrine = caracore-hub-releases. MIRROR_DELIVERY.md em delivery/hub documenta a relação. Releases (WAR) em github.com/chmulato/caracore-hub-releases/releases quando publicadas.
+  Delivery funcional        | OK     | Matriz: delivery/hub/ (index, download, canal-feedback, tecnologia, slides/). Loja online: https://chmulato.github.io/caracore-hub-releases/ (vitrine, mesmo conteúdo, base href para GitHub Pages).
+  Portal/vitrine            | OK     | Matriz = site Cara Core delivery/hub; loja online = caracore-hub-releases. MIRROR_DELIVERY.md em delivery/hub documenta a relação. Releases (WAR) em github.com/chmulato/caracore-hub-releases/releases quando publicadas. Referência central: ECOSYSTEM_LOJAS.md.
 
   Ação sugerida: Manter alinhamento matriz ↔ vitrine; ao publicar releases, atualizar download.html com link para releases/latest.
 
@@ -108,7 +108,7 @@ Referência (sem oferta ativa):
 
   Fluxo                          | O que o cliente faz                                                                 | Funciona?
   -------------------------------|-------------------------------------------------------------------------------------|----------
-  Conhecer PDV / Baixar EXE PDV   | Portfólio → Ver Apresentação ou Baixar EXE → delivery/pdv/ ou delivery/pdv/download.html | Sim (escopo: localhost + Windows Desktop; banco SQLite)
+  Conhecer PDV / Baixar EXE PDV   | Portfólio → Ver Apresentação (matriz delivery/pdv/) ou Ver loja (releases) → chmulato.github.io/caracore-pdv-releases/ ou delivery/pdv/download.html | Sim (escopo: localhost + Windows Desktop; banco SQLite)
   Baixar Minerador 4.0           | Portfólio → Download → delivery/ete/download.html → GitHub ETE-releases/latest      | Sim
   Reino OIDC — baixar EXE FREE   | Portfólio → delivery/oidc/ ou reino_oidc_releases → download.html → releases/latest (ReinoOIDC.exe) | Sim (prioridade: EXE; conteúdo HTML não destacado)
   Conhecer Seed (sem download)    | Portfólio (seção no final) ou delivery/seed / caracore-seed-releases → apenas informação de que o produto existe e a aplicação não está disponível | Sim (sem oferta de EXE nem compra)
@@ -126,7 +126,7 @@ Referência (sem oferta ativa):
   Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (não disponível) | FREE (MIT); escolas R$ 5,00/aluno/mês | B2B / sob consulta
   Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Não (não disponível) | Sim (CircuitoPython.exe)  | WAR (releases quando houver)
   Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Ref. (portal informativo) | Licença e portal escolas | Canal feedback; doc tecnologia
-  Link direto download/EXE       | Apresentação + Baixar EXE + Wiki | Download → ETE-releases | delivery/oidc + reino_oidc_releases → releases/latest | Apenas Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest (prioridade EXE) | delivery/hub + caracore-hub-releases; slides Tia Sócia
+  Link direto download/EXE       | Matriz delivery/pdv + loja caracore-pdv-releases (chmulato.github.io/caracore-pdv-releases) | Download → ETE-releases | delivery/oidc + reino_oidc_releases → releases/latest | Apenas Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest (prioridade EXE) | delivery/hub + caracore-hub-releases (chmulato.github.io/caracore-hub-releases); slides Tia Sócia
 
 -------------------------------------------------------------------------------
 
@@ -137,15 +137,16 @@ Referência (sem oferta ativa):
   3. Seed: Produto existe, aplicação não disponível. Não oferecer Baixar EXE nem Comprar; portfólio com seção no final; delivery e vitrine apenas informam que existe. Foco em aplicações relevantes para o negócio.
   4. Reino OIDC: Manter nome completo "Reino OIDC — Reino das Identidades Federadas" em qualquer novo material; download do EXE FREE (ReinoOIDC.exe) disponível em delivery/oidc e reino_oidc_releases.
   5. Circuito Python: Não apontar para o repositório privado (github.com/chmulato/circuito_python). Em matriz e filial: repositório público de releases (github.com/chmulato/circuito-python-releases); priorizar download do EXE (releases/latest); não destacar link do curso em HTML.
-  6. Cara Core Hub: Portal delivery/hub (matriz) e vitrine caracore-hub-releases alinhados; negócio aplicável Tia Sócia citado; apresentação Tia Sócia em slides/ em ambos. Ao publicar releases (WAR), atualizar download.html com link para releases/latest.
-  7. Revisão periódica: Usar este documento como checklist em próximas releases (novos produtos, mudança de preço, novos CTAs).
+  6. Cara Core PDV: Matriz = delivery/pdv; loja online = https://chmulato.github.io/caracore-pdv-releases/. Documentado em delivery/pdv/MIRROR_DELIVERY.md. Ver ECOSYSTEM_LOJAS.md para referência central das lojas.
+  7. Cara Core Hub: Portal delivery/hub (matriz) e loja online caracore-hub-releases (https://chmulato.github.io/caracore-hub-releases/) alinhados; negócio aplicável Tia Sócia citado; apresentação Tia Sócia em slides/ em ambos. Ao publicar releases (WAR), atualizar download.html com link para releases/latest.
+  8. Revisão periódica: Usar este documento como checklist em próximas releases (novos produtos, mudança de preço, novos CTAs). Referência das URLs de lojas: ECOSYSTEM_LOJAS.md. Mapeamento dos repositórios do ecossistema: ECOSYSTEM_CARA_CORE.md.
 
 -------------------------------------------------------------------------------
 
 6. CONCLUSÃO
 
-  - Funcionalidade: Os fluxos de apresentação e download estão coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python, Cara Core Hub). PDV: escopo localhost + Windows Desktop, SQLite; portfólio com "Baixar EXE". Seed: produto existe, aplicação não disponível — sem oferta de download nem venda; portfólio com seção no final; delivery e vitrine apenas informam. Hub: delivery/hub e caracore-hub-releases; gestão logística e e-commerce; SQLite local; Tia Sócia e apresentação em slides/.
+  - Funcionalidade: Os fluxos de apresentação e download estão coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python, Cara Core Hub). PDV: matriz delivery/pdv e loja online https://chmulato.github.io/caracore-pdv-releases/; escopo localhost + Windows Desktop, SQLite; portfólio com "Ver loja (releases)" e "Baixar EXE". Seed: produto existe, aplicação não disponível — sem oferta de download nem venda; portfólio com seção no final; delivery e vitrine apenas informam. Hub: matriz delivery/hub e loja online https://chmulato.github.io/caracore-hub-releases/; gestão logística e e-commerce; SQLite local; Tia Sócia e apresentação em slides/.
   - Premissa: Não temos braço para a startup; foco em aplicações relevantes para o negócio. Seed permanece no portfólio como referência.
-  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python. Hub: manter matriz e vitrine alinhadas; Tia Sócia como negócio aplicável.
+  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Lojas online canônicas: PDV = chmulato.github.io/caracore-pdv-releases; Hub = chmulato.github.io/caracore-hub-releases. Referência central das lojas: ECOSYSTEM_LOJAS.md; mapeamento dos repositórios do ecossistema: ECOSYSTEM_CARA_CORE.md. Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python. Hub e PDV: manter matriz e loja alinhadas; Tia Sócia (Hub) e PDV Selo Verde (PDV) como mensagem.
 
 Documento gerado para validação de negócio — Cara Core Informática.

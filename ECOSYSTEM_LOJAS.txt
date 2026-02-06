@@ -1,0 +1,17 @@
+ECOSSISTEMA — LOJAS ONLINE (VITRINES E RELEASES)
+=================================================
+
+Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos da Cara Core Informática.
+
+  Produto           Loja online (GitHub Pages)                              Matriz (site Cara Core)
+  ------------------ ------------------------------------------------------ -------------------------------------------------------
+  Cara Core PDV      https://chmulato.github.io/caracore-pdv-releases/      https://caracore.com.br/delivery/pdv/
+  Cara Core Hub      https://chmulato.github.io/caracore-hub-releases/      https://caracore.com.br/delivery/hub/
+  Circuito Python    https://chmulato.github.io/circuito-python-releases/   https://caracore.com.br/delivery/circuito/
+  Reino OIDC         https://chmulato.github.io/reino-oidc-releases/        https://caracore.com.br/delivery/oidc/
+  Cara Core Seed     https://chmulato.github.io/caracore-seed-releases/      https://caracore.com.br/delivery/seed/
+
+  Loja online: vitrine pública (download, apresentação resumida, canal de feedback). Publicada a partir da pasta docs/ ou raiz do repositório -releases no GitHub Pages.
+  Matriz: portal completo no domínio Cara Core (apresentação completa, consultoria, demonstração, Wiki quando houver).
+
+Atualizado em 2025. Para portfólio e links oficiais: https://caracore.com.br/portfolio.html

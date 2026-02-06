@@ -9,6 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../seed/assets/css/seed-portal.css">
+    <style>
+        .hero-cta { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 32px 36px; margin-bottom: 40px; border-left: 4px solid var(--accent-gold); }
+        .hero-cta .hero-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-gold); margin-bottom: 10px; }
+        .hero-cta .hero-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
+        .hero-cta .hero-desc { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.65; }
+        .hero-cta .cta-buttons { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+        .hero-cta .cta-btn { display: inline-block; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: opacity 0.2s, background 0.2s; }
+        .hero-cta .cta-btn-primary { background: var(--accent-green); color: #0d1117; border: none; }
+        .hero-cta .cta-btn-primary:hover { opacity: 0.95; filter: brightness(1.08); }
+        .hero-cta .cta-btn-secondary { background: transparent; color: var(--accent-blue); border: 2px solid var(--accent-blue); }
+        .hero-cta .cta-btn-secondary:hover { background: rgba(88, 166, 255, 0.12); }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -19,6 +31,17 @@
             <span> · </span>
             <span>Circuito Python — Delivery</span>
         </nav>
+
+        <!-- Hero: o que é, valor e CTA em poucos segundos -->
+        <section class="hero-cta" aria-label="O que é o Circuito Python">
+            <p class="hero-label">O que é o Circuito Python?</p>
+            <h2 class="hero-title">Curso de Python para jovens — grátis para você, licença acessível para escolas.</h2>
+            <p class="hero-desc">Aprenda programação com foco em negócios e nas dores do cliente. <strong>Pessoa física:</strong> uso FREE (Licença MIT). <strong>Escola de ensino médio:</strong> R$ 5,00 por aluno/mês, dentro da lei. Certificado com verificação criptográfica.</p>
+            <div class="cta-buttons">
+                <a href="https://github.com/chmulato/circuito-python-releases/releases/latest" class="cta-btn cta-btn-primary" target="_blank" rel="noopener">Baixar grátis — Windows</a>
+                <a href="portal-escolas.html" class="cta-btn cta-btn-secondary">Sou escola de ensino médio — Licenciar</a>
+            </div>
+        </section>
 
         <header>
             <h1>Circuito Python</h1>

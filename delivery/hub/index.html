@@ -9,6 +9,18 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/hub-portal.css">
+    <style>
+        .hero-cta { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 32px 36px; margin-bottom: 40px; border-left: 4px solid var(--accent-gold); }
+        .hero-cta .hero-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-gold); margin-bottom: 10px; }
+        .hero-cta .hero-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
+        .hero-cta .hero-desc { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.65; }
+        .hero-cta .cta-buttons { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+        .hero-cta .cta-btn { display: inline-block; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: opacity 0.2s, background 0.2s; }
+        .hero-cta .cta-btn-primary { background: var(--accent-blue); color: #0d1117; border: none; }
+        .hero-cta .cta-btn-primary:hover { opacity: 0.95; filter: brightness(1.1); }
+        .hero-cta .cta-btn-secondary { background: transparent; color: var(--accent-gold); border: 2px solid var(--accent-gold); }
+        .hero-cta .cta-btn-secondary:hover { background: rgba(212, 168, 83, 0.12); }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -19,6 +31,17 @@
             <span> · </span>
             <span>CaraCore Hub — Delivery</span>
         </nav>
+
+        <!-- Hero: o que é, valor e CTA em poucos segundos -->
+        <section class="hero-cta" aria-label="O que é o Cara Core HUB?">
+            <p class="hero-label">O que é o Cara Core HUB?</p>
+            <h2 class="hero-title">Gestão logística e e-commerce para centros de distribuição — recebimento, triagem, estoque, retirada e integração com marketplaces.</h2>
+            <p class="hero-desc">Plataforma com <strong>SQLite local</strong>: o núcleo opera offline e você mantém autonomia. Ideal para operações de e-commerce e para negócios como o programa <strong>Tia Sócia</strong>. Desenvolvido pela Cara Core Informática.</p>
+            <div class="cta-buttons">
+                <a href="download.html" class="cta-btn cta-btn-primary">Cara Core HUB — Download e deploy</a>
+                <a href="slides/apresentacao_tia_socia.html" class="cta-btn cta-btn-secondary">Apresentação Tia Sócia (pitch deck)</a>
+            </div>
+        </section>
 
         <header>
             <h1>CaraCore Hub</h1>

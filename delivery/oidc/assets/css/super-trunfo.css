@@ -1,0 +1,1409 @@
+/* Reino OIDC — Super Trunfo | Dark Gothic · Nobreza Digital */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Uncial+Antiqua&display=swap');
+
+:root {
+    /* Paleta Dark Gothic */
+    --gothic-deep: #2e0854;
+    --gothic-gold: #d4af37;
+    --gothic-gold-dim: #b8962e;
+    --gothic-stone: #4a4a4a;
+    --gothic-stone-light: #6a6a6a;
+    --gothic-parchment: #3d3530;
+    --gothic-parchment-light: #524a44;
+    /* FREE: prata e ferro */
+    --gothic-silver: #c0c0c0;
+    --gothic-iron: #5a5a5a;
+    --gothic-iron-border: #3a3a3a;
+    /* PREMIUM: dourado */
+    --gothic-gold-glow: rgba(212, 175, 55, 0.5);
+    --gothic-gold-pulse: rgba(212, 175, 55, 0.35);
+    /* Texto */
+    --gothic-text: #e8e0d8;
+    --gothic-text-dim: #9a8f85;
+    --gothic-success: #7cb342;
+    --gothic-danger: #c62828;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body.super-trunfo {
+    font-family: 'MedievalSharp', cursive;
+    background: var(--gothic-deep);
+    color: var(--gothic-text);
+    min-height: 100vh;
+    /* Textura pergaminho/pedra de castelo */
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"),
+        linear-gradient(160deg, #1a0525 0%, var(--gothic-deep) 30%, #250a35 70%, #1a0525 100%);
+    background-size: 256px 256px, 100% 100%;
+}
+
+.super-trunfo h1,
+.super-trunfo .font-arena,
+.super-trunfo .reino-title,
+.super-trunfo .mesa-title {
+    font-family: 'Uncial Antiqua', cursive;
+}
+
+/* ----- Navegação ----- */
+.reino-nav-super-trunfo {
+    background: linear-gradient(180deg, #1a0525 0%, var(--gothic-deep) 100%) !important;
+    border-bottom: 2px solid var(--gothic-gold);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.reino-nav-super-trunfo .navbar-brand {
+    color: var(--gothic-gold) !important;
+    font-family: 'Uncial Antiqua', cursive;
+    font-weight: 400;
+}
+
+.reino-nav-super-trunfo .nav-link {
+    color: var(--gothic-text-dim) !important;
+}
+
+.reino-nav-super-trunfo .nav-link:hover,
+.reino-nav-super-trunfo .nav-link.active {
+    color: var(--gothic-gold) !important;
+}
+
+.reino-nav-super-trunfo .dropdown-menu {
+    background: var(--gothic-parchment);
+    border: 1px solid var(--gothic-stone);
+}
+
+.reino-nav-super-trunfo .dropdown-item {
+    color: var(--gothic-text);
+}
+
+.reino-nav-super-trunfo .dropdown-item:hover {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--gothic-gold);
+}
+
+/* ----- Header ----- */
+.reino-header-super-trunfo {
+    background: linear-gradient(180deg, rgba(46, 8, 84, 0.8) 0%, transparent 100%);
+    border-bottom: 1px solid var(--gothic-stone);
+    padding: 20px 0;
+}
+
+.reino-header-super-trunfo .reino-title {
+    font-size: 1.5rem;
+    color: var(--gothic-gold);
+    margin: 0 0 8px 0;
+    text-shadow: 0 0 20px var(--gothic-gold-glow);
+}
+
+.reino-header-super-trunfo .reino-subtitle {
+    font-size: 0.95rem;
+    color: var(--gothic-text-dim);
+    margin: 0;
+}
+
+/* ----- Footer ----- */
+.reino-footer-super-trunfo {
+    background: #1a0525;
+    border-top: 1px solid var(--gothic-stone);
+    padding: 20px 0;
+    margin-top: 24px;
+    margin-bottom: 200px;
+    color: var(--gothic-text-dim);
+    font-size: 0.9rem;
+}
+
+.reino-footer-super-trunfo strong { color: var(--gothic-text); }
+.reino-footer-super-trunfo a { color: var(--gothic-gold); }
+
+/* ----- Narrativa ----- */
+.empowerment-banner {
+    background: linear-gradient(135deg, rgba(74, 74, 74, 0.4) 0%, rgba(46, 8, 84, 0.5) 100%);
+    border: 1px solid var(--gothic-stone);
+    border-radius: 8px;
+    padding: 16px 24px;
+    margin: 20px auto;
+    max-width: 900px;
+    text-align: center;
+}
+
+.empowerment-banner p {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--gothic-text);
+}
+
+.empowerment-banner strong { color: var(--gothic-gold); }
+
+/* ----- Mesa ----- */
+.mesa-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 120px;
+}
+
+.mesa-panel {
+    background: linear-gradient(180deg, var(--gothic-parchment-light) 0%, var(--gothic-parchment) 100%);
+    border: 3px solid var(--gothic-stone);
+    border-radius: 4px;
+    padding: 24px;
+    box-shadow:
+        inset 0 0 60px rgba(0, 0, 0, 0.4),
+        0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.mesa-title {
+    font-size: 1.2rem;
+    color: var(--gothic-gold);
+    margin-bottom: 16px;
+    letter-spacing: 0.08em;
+}
+
+/* ----- Área das cartas ----- */
+.cards-zone {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 260px;
+}
+
+/* Moldura de quadro antigo (frame) */
+.trunfo-card {
+    width: 180px;
+    min-height: 280px;
+    position: relative;
+    padding: 20px 16px 44px;
+    transition: transform 0.2s, box-shadow 0.3s, filter 0.3s;
+    /* Moldura: múltiplas bordas simulando madeira/ferro */
+    border: 4px solid var(--gothic-iron-border);
+    border-radius: 2px;
+    background: linear-gradient(165deg, var(--gothic-parchment-light) 0%, var(--gothic-parchment) 50%, #2d2520 100%);
+    box-shadow:
+        inset 0 0 0 2px var(--gothic-silver),
+        inset 0 0 0 4px var(--gothic-iron),
+        0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.trunfo-card::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    border: 1px solid rgba(192, 192, 192, 0.4);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+.trunfo-card:hover {
+    transform: translateY(-6px);
+    box-shadow:
+        inset 0 0 0 2px var(--gothic-silver),
+        inset 0 0 0 4px var(--gothic-iron),
+        0 12px 28px rgba(0, 0, 0, 0.6);
+}
+
+/* FREE: tons prata e ferro (já aplicado por padrão) */
+.trunfo-card:not(.elite) .card-name { color: var(--gothic-silver); }
+.trunfo-card:not(.elite) .card-subtitle { color: var(--gothic-text-dim); }
+
+/* PREMIUM: brilho dourado pulsante */
+.trunfo-card.elite {
+    border-color: var(--gothic-gold-dim);
+    box-shadow:
+        inset 0 0 0 2px var(--gothic-gold),
+        inset 0 0 0 4px var(--gothic-gold-dim),
+        0 0 25px var(--gothic-gold-glow),
+        0 6px 20px rgba(0, 0, 0, 0.5);
+    animation: elite-glow-pulse 2.5s ease-in-out infinite;
+}
+
+.trunfo-card.elite .card-name { color: var(--gothic-gold); text-shadow: 0 0 10px var(--gothic-gold-pulse); }
+.trunfo-card.elite .card-subtitle { color: var(--gothic-gold-dim); }
+
+@keyframes elite-glow-pulse {
+    0%, 100% { box-shadow: inset 0 0 0 2px var(--gothic-gold), inset 0 0 0 4px var(--gothic-gold-dim), 0 0 25px var(--gothic-gold-glow), 0 6px 20px rgba(0,0,0,0.5); }
+    50% { box-shadow: inset 0 0 0 2px var(--gothic-gold), inset 0 0 0 4px var(--gothic-gold-dim), 0 0 35px var(--gothic-gold-pulse), 0 0 15px var(--gothic-gold-glow), 0 6px 20px rgba(0,0,0,0.5); }
+}
+
+/* Carta bloqueada (sem licença): glassmorphism + desfoque */
+.trunfo-card.locked,
+.trunfo-card.pergaminho-pix {
+    filter: blur(3px) brightness(0.85);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.trunfo-card.locked::after,
+.carta-sombreada-premium .trunfo-card.locked-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(46, 8, 84, 0.4);
+    border-radius: 2px;
+    pointer-events: none;
+}
+
+/* Pergaminho PIX (mantém borda dourada, sem blur forte para leitura) */
+.trunfo-card.pergaminho-pix {
+    filter: brightness(0.95);
+    border-color: var(--gothic-gold);
+}
+
+.trunfo-card.pergaminho-pix .pergaminho-qr { margin: 10px 0; }
+.trunfo-card.pergaminho-pix .pergaminho-qr img {
+    border-radius: 6px;
+    background: #fff;
+    padding: 4px;
+}
+.trunfo-card.pergaminho-pix .pergaminho-cnpj {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--gothic-gold);
+    margin: 8px 0;
+    word-break: break-all;
+}
+.trunfo-card.pergaminho-pix .pergaminho-hint {
+    font-size: 0.65rem;
+    color: var(--gothic-text-dim);
+    margin: 0;
+}
+
+/* Conteúdo da carta */
+.trunfo-card .card-name {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 4px;
+    line-height: 1.25;
+}
+
+.trunfo-card .card-subtitle {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.65rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+    font-style: italic;
+}
+
+.trunfo-card .card-emoji {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* Barras de poder: ouro líquido / vela */
+.attr-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+}
+
+.attr-row .attr-name {
+    flex: 0 0 72px;
+    color: var(--gothic-text-dim);
+    font-family: 'MedievalSharp', cursive;
+}
+
+.attr-row .attr-value {
+    flex: 0 0 24px;
+    font-weight: 700;
+    color: var(--gothic-gold);
+    text-align: right;
+}
+
+/* Barra de preenchimento (ouro líquido) */
+.attr-row .attr-bar-wrap {
+    flex: 1;
+    height: 10px;
+    background: var(--gothic-iron);
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.attr-row .attr-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    min-width: 4px;
+    background: linear-gradient(90deg, #8b6914 0%, var(--gothic-gold) 30%, #f0d050 50%, var(--gothic-gold) 70%, #8b6914 100%);
+    background-size: 200% 100%;
+    box-shadow: 0 0 8px var(--gothic-gold-glow);
+    transition: width 0.4s ease;
+}
+
+/* Efeito vela (opcional): leve gradiente vertical */
+.trunfo-card.elite .attr-row .attr-bar-fill {
+    box-shadow: 0 0 10px var(--gothic-gold-glow), inset 0 1px 0 rgba(255,255,255,0.3);
+}
+
+/* Badges */
+.trunfo-card .badge-elite {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 0.55rem;
+    background: var(--gothic-gold);
+    color: #1a0525;
+    padding: 3px 8px;
+    border-radius: 2px;
+    font-weight: 700;
+    font-family: 'MedievalSharp', cursive;
+}
+
+.trunfo-card .badge-poder {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 0.5rem;
+    background: var(--gothic-deep);
+    color: var(--gothic-gold);
+    padding: 2px 6px;
+    border: 1px solid var(--gothic-gold);
+    border-radius: 2px;
+    font-family: 'MedievalSharp', cursive;
+}
+
+.trunfo-card .badge-locked {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 0.55rem;
+    background: rgba(0,0,0,0.8);
+    color: var(--gothic-gold);
+    padding: 4px 8px;
+    border-radius: 2px;
+    font-weight: 700;
+}
+
+/* ----- Selo Pawlowsky (sinete de cera) em cada carta ----- */
+.card-seal-pawlowsky {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #8b4513, #5c2e0a 40%, #3d1f06);
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,0.2),
+        inset 0 -2px 4px rgba(0,0,0,0.5),
+        0 2px 6px rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--gothic-gold);
+    text-shadow: 0 0 4px rgba(212, 175, 55, 0.8);
+    pointer-events: none;
+}
+
+.trunfo-card.elite .card-seal-pawlowsky {
+    background: radial-gradient(circle at 30% 30%, #a0522d, #6b3410 40%, #4a2608);
+    color: var(--gothic-gold);
+    box-shadow:
+        inset 0 2px 4px rgba(255,255,255,0.25),
+        inset 0 -2px 4px rgba(0,0,0,0.4),
+        0 0 12px var(--gothic-gold-glow);
+}
+
+/* Carta travada (REINO_DECK isLocked): cadeado de ferro, clique -> checkout */
+.trunfo-card.trunfo-card-locked {
+    cursor: pointer;
+    filter: grayscale(0.6);
+}
+.trunfo-card.trunfo-card-locked:hover {
+    filter: grayscale(0.4);
+    box-shadow: 0 0 20px var(--gothic-gold-glow);
+}
+.trunfo-card .card-lock-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 1.4rem;
+    opacity: 0.95;
+    z-index: 2;
+}
+.trunfo-card .card-flavor-text {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.6rem;
+    line-height: 1.25;
+    color: var(--gothic-text-dim);
+    margin: 8px 0 4px;
+    font-style: italic;
+}
+.trunfo-card .card-flavor-text-locked {
+    color: var(--gothic-text-dim);
+}
+.trunfo-card .card-desbloqueie {
+    font-size: 0.65rem;
+    color: var(--gothic-gold);
+    margin: 8px 0 4px;
+}
+
+/* ----- Badge "Despertou na Era X" (cartas evolutivas) ----- */
+.card-awakened-era {
+    position: absolute;
+    bottom: 36px;
+    left: 8px;
+    font-size: 0.5rem;
+    background: rgba(46, 8, 84, 0.9);
+    color: var(--gothic-silver);
+    padding: 2px 6px;
+    border-radius: 2px;
+    border: 1px solid var(--gothic-stone);
+    font-family: 'MedievalSharp', cursive;
+}
+
+.trunfo-card.elite .card-awakened-era,
+.trunfo-card.devia-integradora .card-awakened-era {
+    color: var(--gothic-gold);
+    border-color: var(--gothic-gold);
+}
+
+/* ----- Devia: Integradora Suprema + texto de transição ----- */
+.trunfo-card.devia-integradora .card-name { color: var(--gothic-gold); }
+.trunfo-card.devia-integradora .card-subtitle {
+    color: var(--gothic-gold);
+    font-weight: 600;
+}
+.card-devia-transition {
+    font-size: 0.6rem;
+    line-height: 1.3;
+    color: var(--gothic-gold);
+    margin: 6px 0 4px;
+    font-style: italic;
+    padding: 4px 0;
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+/* ----- Foco Técnico no rodapé da carta (por era) ----- */
+.card-foco-tecnico {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 0.5rem;
+    color: var(--gothic-text-dim);
+    margin: 4px 0 2px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.trunfo-card.devia-integradora .card-foco-tecnico,
+.trunfo-card.elite .card-foco-tecnico { color: rgba(212, 175, 55, 0.85); }
+
+/* ----- Devia: glitch dourado no texto de transição ----- */
+.trunfo-card.devia-glitch-card .card-devia-transition,
+.reino-era-devia-glitch {
+    animation: glitch-gold 1.2s ease-in-out 3;
+}
+
+@keyframes glitch-gold {
+    0%, 90%, 100% {
+        text-shadow: 0 0 4px var(--gothic-gold-glow), 0 0 8px rgba(212, 175, 55, 0.3);
+        transform: translate(0, 0);
+    }
+    92% {
+        text-shadow: -1px 0 rgba(212, 175, 55, 0.8), 1px 0 rgba(46, 8, 84, 0.9);
+        transform: translate(-1px, 1px);
+    }
+    94% {
+        text-shadow: 1px 0 rgba(212, 175, 55, 0.8), -1px 0 rgba(46, 8, 84, 0.9);
+        transform: translate(1px, -1px);
+    }
+    96% {
+        text-shadow: -1px 1px var(--gothic-gold), 1px -1px var(--gothic-deep);
+        transform: translate(0, 0);
+    }
+    98% {
+        text-shadow: 1px -1px var(--gothic-gold), -1px 1px var(--gothic-deep);
+        transform: translate(0, 0);
+    }
+}
+
+/* ----- CTA Era 3: Assuma seu trono ----- */
+.btn-assuma-trono {
+    display: block;
+    width: 100%;
+    margin-top: 8px;
+    padding: 10px 14px;
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 0.75rem;
+    color: #1a0525;
+    background: linear-gradient(180deg, var(--gothic-gold) 0%, var(--gothic-gold-dim) 100%);
+    border: 2px solid var(--gothic-gold);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.btn-assuma-trono:hover {
+    box-shadow: 0 0 20px var(--gothic-gold-glow);
+    transform: scale(1.02);
+}
+
+.trunfo-card .btn-assuma-trono { margin-bottom: 8px; }
+
+.btn-assuma-trono-overlay {
+    max-width: 320px;
+    margin: 16px auto 0;
+}
+
+/* ----- Overlay Contos das Eras (transição de era) ----- */
+.reino-era-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26, 5, 37, 0.92);
+    backdrop-filter: blur(8px);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.reino-era-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.reino-era-overlay-inner {
+    max-width: 520px;
+    width: 90%;
+    padding: 32px 28px;
+    background: linear-gradient(180deg, var(--gothic-parchment-light) 0%, var(--gothic-parchment) 100%);
+    border: 3px solid var(--gothic-gold-dim);
+    border-radius: 8px;
+    box-shadow: 0 0 60px var(--gothic-gold-glow), inset 0 0 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Título: tipografia gótica (antigo) */
+.reino-era-overlay-titulo {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1.6rem;
+    color: var(--gothic-gold);
+    text-align: center;
+    margin: 0 0 8px;
+    text-shadow: 0 0 20px var(--gothic-gold-glow);
+}
+
+.reino-era-overlay-subtitulo {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.9rem;
+    color: var(--gothic-text-dim);
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+/* Texto técnico: sem-serifa moderna (futuro) */
+.reino-era-overlay-tecnico {
+    font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--gothic-text);
+    margin: 0 0 20px;
+}
+
+.reino-era-devia-glitch {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: var(--gothic-gold);
+    text-align: center;
+    margin: 16px 0 0;
+}
+
+.reino-era-overlay-fechar {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 24px auto 0;
+    padding: 12px 24px;
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1rem;
+    color: #1a0525;
+    background: var(--gothic-gold);
+    border: 2px solid var(--gothic-gold-dim);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, background 0.2s;
+}
+
+.reino-era-overlay-fechar:hover {
+    background: #e5c04a;
+    box-shadow: 0 0 16px var(--gothic-gold-glow);
+}
+
+/* ----- Linha do Tempo (História p1 → p2 → p3) ----- */
+.reino-timeline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, rgba(74, 74, 74, 0.3) 0%, rgba(46, 8, 84, 0.4) 100%);
+    border: 1px solid var(--gothic-stone);
+    border-radius: 6px;
+}
+
+.timeline-era {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--gothic-stone);
+    color: var(--gothic-text-dim);
+    font-size: 0.8rem;
+    transition: all 0.3s;
+}
+
+.timeline-era-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--gothic-stone);
+}
+
+.timeline-era.active .timeline-era-dot {
+    background: var(--gothic-gold);
+    box-shadow: 0 0 10px var(--gothic-gold-glow);
+}
+
+.timeline-era.active {
+    color: var(--gothic-text);
+    border-color: var(--gothic-gold-dim);
+}
+
+.timeline-era-premium.active .timeline-era-dot {
+    background: var(--gothic-gold);
+}
+
+.timeline-era-link {
+    font-size: 0.7rem;
+    color: var(--gothic-text-dim);
+    text-decoration: none;
+    margin-left: 4px;
+}
+
+.timeline-era.active .timeline-era-link {
+    color: var(--gothic-gold);
+}
+
+/* ----- Temas por Era (Níveis de Consciência) ----- */
+/* Era 1: O Caos dos Silos — interface rústica (pergaminho) */
+body.super-trunfo.era-1 .mesa-panel {
+    background: linear-gradient(180deg, #3d3530 0%, #2d2520 100%);
+    border-color: #5a4a42;
+}
+body.super-trunfo.era-1 .trunfo-card {
+    border-color: #4a3a32;
+    box-shadow: inset 0 0 0 2px #6a5a52, 0 4px 16px rgba(0,0,0,0.5);
+}
+
+/* Era 2: A Ordem da Identidade — detalhes em prata */
+body.super-trunfo.era-2 .mesa-panel {
+    border-color: var(--gothic-silver);
+    box-shadow: inset 0 0 0 1px rgba(192, 192, 192, 0.2), 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+body.super-trunfo.era-2 .trunfo-card {
+    box-shadow: inset 0 0 0 2px var(--gothic-silver), inset 0 0 0 4px var(--gothic-iron), 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+body.super-trunfo.era-2 .trunfo-card .card-name { color: var(--gothic-silver); }
+
+/* Era 3: O Presente Soberano — ápice Gótico/Cibernético (Roxo e Ouro) */
+body.super-trunfo.era-3 .mesa-panel {
+    border-color: var(--gothic-gold-dim);
+    box-shadow: inset 0 0 0 2px rgba(212, 175, 55, 0.2), 0 0 30px var(--gothic-gold-glow), 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+body.super-trunfo.era-3 .trunfo-card:not(.trunfo-card-locked) {
+    border-color: var(--gothic-gold-dim);
+    box-shadow: inset 0 0 0 2px var(--gothic-gold), 0 0 20px var(--gothic-gold-glow);
+}
+body.super-trunfo.era-3 .reino-title { color: var(--gothic-gold); text-shadow: 0 0 25px var(--gothic-gold-glow); }
+
+/* ----- Seleção de atributo ----- */
+.choose-attr {
+    margin-top: 24px;
+    padding: 20px;
+    background: rgba(74, 74, 74, 0.25);
+    border: 1px solid var(--gothic-stone);
+    border-radius: 4px;
+}
+
+.choose-attr .label {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 0.95rem;
+    color: var(--gothic-gold);
+    margin-bottom: 12px;
+}
+
+.attr-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.attr-btn {
+    font-family: 'MedievalSharp', cursive;
+    font-weight: 400;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: 2px solid var(--gothic-stone);
+    background: var(--gothic-parchment);
+    color: var(--gothic-text);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.attr-btn:hover {
+    border-color: var(--gothic-gold);
+    color: var(--gothic-gold);
+    box-shadow: 0 0 12px var(--gothic-gold-glow);
+}
+
+.attr-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ----- Resultado da rodada ----- */
+.round-result {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 1.1rem;
+    display: none;
+    border: 2px solid;
+}
+
+.round-result.show { display: block; }
+
+.round-result.win {
+    background: rgba(124, 179, 66, 0.15);
+    border-color: var(--gothic-success);
+    color: var(--gothic-success);
+}
+
+.round-result.lose {
+    background: rgba(198, 40, 40, 0.15);
+    border-color: var(--gothic-danger);
+    color: #ef5350;
+}
+
+.round-result .result-msg { font-weight: 600; margin-bottom: 8px; }
+
+/* ----- Deck tabs ----- */
+.deck-section { margin-bottom: 28px; }
+
+.deck-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.deck-tab {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.9rem;
+    padding: 10px 18px;
+    border: 2px solid var(--gothic-stone);
+    background: var(--gothic-parchment);
+    color: var(--gothic-text-dim);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.deck-tab.active {
+    border-color: var(--gothic-gold);
+    color: var(--gothic-gold);
+    box-shadow: 0 0 12px var(--gothic-gold-glow);
+}
+
+.deck-tab.locked { opacity: 0.85; }
+.deck-tab.locked::after { content: ' 🔒'; margin-left: 4px; }
+.deck-tab:not(.locked):hover {
+    border-color: var(--gothic-silver);
+    color: var(--gothic-text);
+}
+
+.deck-section .deck-attr-legend {
+    color: var(--gothic-text-dim);
+}
+.deck-section .link-personagens {
+    color: var(--gothic-gold);
+}
+
+/* Upgrade box */
+.upgrade-elite-box {
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.12) 0%, rgba(46, 8, 84, 0.4) 100%);
+    border: 2px solid var(--gothic-gold);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-top: 20px;
+}
+
+.upgrade-elite-box h3 {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1.05rem;
+    color: var(--gothic-gold);
+    margin-bottom: 10px;
+}
+
+.upgrade-elite-box p {
+    font-size: 0.95rem;
+    color: var(--gothic-text-dim);
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.upgrade-elite-box .benefits { list-style: none; margin: 12px 0; }
+.upgrade-elite-box .benefits li {
+    padding: 4px 0;
+    color: var(--gothic-text);
+    font-size: 0.9rem;
+}
+.upgrade-elite-box .benefits li::before { content: '✦ '; color: var(--gothic-gold); }
+
+.upgrade-elite-box .btn-upgrade {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 24px;
+    background: linear-gradient(180deg, var(--gothic-gold) 0%, var(--gothic-gold-dim) 100%);
+    color: #1a0525;
+    font-weight: 700;
+    font-family: 'MedievalSharp', cursive;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.upgrade-elite-box .btn-upgrade:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px var(--gothic-gold-glow);
+    color: #1a0525;
+}
+
+/* ----- Selo Pawlowsky (seção da página) ----- */
+.selo-pawlowsky {
+    text-align: center;
+    padding: 16px;
+    margin: 20px 0;
+    background: rgba(74, 74, 74, 0.2);
+    border: 1px solid var(--gothic-stone);
+    border-radius: 4px;
+}
+
+.selo-pawlowsky .selo-title {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 0.95rem;
+    color: var(--gothic-gold);
+    margin-bottom: 4px;
+}
+
+.selo-pawlowsky .selo-desc {
+    font-size: 0.8rem;
+    color: var(--gothic-text-dim);
+}
+
+.selo-pawlowsky.glow-gold {
+    box-shadow: 0 0 30px var(--gothic-gold-glow);
+    border-color: var(--gothic-gold);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.selo-pawlowsky.glow-gold .selo-title {
+    color: var(--gothic-gold);
+    text-shadow: 0 0 12px var(--gothic-gold-glow);
+}
+
+/* Tela treme ao jogar carta Premium */
+@keyframes screen-shake-kf {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(-4px, 2px); }
+    40% { transform: translate(4px, -2px); }
+    60% { transform: translate(-3px, 1px); }
+    80% { transform: translate(3px, -1px); }
+}
+
+body.super-trunfo.screen-shake {
+    animation: screen-shake-kf 0.4s ease-in-out;
+}
+
+/* ----- Telemetria ----- */
+.telemetria-defesa {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1a0525;
+    border-top: 2px solid var(--gothic-gold);
+    box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    max-height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.telemetria-defesa .telemetria-header {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 0.75rem;
+    padding: 8px 20px;
+    background: rgba(74, 74, 74, 0.5);
+    color: var(--gothic-gold);
+    letter-spacing: 0.08em;
+}
+
+.telemetria-defesa .telemetria-log {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px 20px;
+    font-family: ui-monospace, 'Consolas', monospace;
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: var(--gothic-text-dim);
+}
+
+.telemetria-defesa .log-line { margin-bottom: 2px; }
+.telemetria-defesa .log-line .audit { color: var(--gothic-gold); }
+.telemetria-defesa .log-line .ts { color: var(--gothic-text-dim); opacity: 0.8; }
+.telemetria-defesa .log-line.log-success { color: var(--gothic-success); }
+.telemetria-defesa .log-line.log-success .audit { color: var(--gothic-success); }
+.telemetria-defesa .log-line.log-batalha .audit { color: var(--gothic-gold); font-weight: 600; }
+
+/* ----- Carta sombreada premium ----- */
+.carta-sombreada-premium {
+    display: none;
+    margin-top: 24px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(46, 8, 84, 0.6) 0%, rgba(26, 5, 37, 0.9) 100%);
+    border: 2px solid var(--gothic-gold);
+    border-radius: 4px;
+    text-align: center;
+}
+
+.carta-sombreada-premium.show { display: block; }
+
+.carta-sombreada-premium .locked-card-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.carta-sombreada-premium .trunfo-card.locked-card {
+    filter: blur(2px) brightness(0.7);
+    border-color: var(--gothic-gold);
+}
+
+.carta-sombreada-premium .cta-premium-msg {
+    color: var(--gothic-text);
+    font-size: 1rem;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.carta-sombreada-premium .btn-abrir-pergaminho {
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* ----- Modal: Checkout Gótico (O Trono da Identidade — Cara Core) ----- */
+.checkout-gothic {
+    background: linear-gradient(180deg, #1a0525 0%, var(--gothic-deep) 50%, #0d0215 100%);
+    border: 3px solid var(--gothic-gold);
+    border-radius: 0;
+    color: var(--gothic-text);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--gothic-gold-dim);
+}
+
+.checkout-gothic-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px;
+    border-bottom: 2px solid var(--gothic-gold);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.checkout-gothic-title {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1.4rem;
+    color: var(--gothic-gold);
+    margin: 0;
+    text-shadow: 0 0 12px var(--gothic-gold-glow);
+}
+
+/* Botão fechar: adaga / X ferro batido */
+.btn-close-dagger {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 2px solid var(--gothic-iron);
+    background: linear-gradient(180deg, var(--gothic-stone) 0%, var(--gothic-iron) 100%);
+    color: var(--gothic-silver);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    transition: all 0.2s;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 6px rgba(0,0,0,0.5);
+}
+
+.btn-close-dagger:hover {
+    border-color: var(--gothic-gold);
+    color: var(--gothic-gold);
+    box-shadow: 0 0 12px var(--gothic-gold-glow);
+}
+
+.dagger-icon {
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.checkout-gothic-body {
+    padding: 24px 24px 20px;
+}
+
+.checkout-epic-text {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--gothic-text);
+    margin-bottom: 24px;
+    padding: 16px 20px;
+    background: rgba(0, 0, 0, 0.25);
+    border-left: 4px solid var(--gothic-gold);
+}
+
+.checkout-epic-text strong { color: var(--gothic-gold); }
+
+/* Sinete: botão que parece selo de cera */
+.checkout-sinete-wrap {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.hwid-hidden {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.btn-sinete {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border: none;
+    border-radius: 50%;
+    min-width: 140px;
+    min-height: 140px;
+    cursor: pointer;
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 0.95rem;
+    color: var(--gothic-gold);
+    text-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+    background: radial-gradient(circle at 35% 35%, #8b6914, #5c2e0a 45%, #3d1f06);
+    box-shadow:
+        inset 0 3px 8px rgba(255,255,255, 0.2),
+        inset 0 -3px 10px rgba(0,0,0,0.5),
+        0 6px 20px rgba(0,0,0,0.6);
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.btn-sinete:hover {
+    transform: scale(1.05);
+    box-shadow:
+        inset 0 3px 8px rgba(255,255,255, 0.25),
+        inset 0 -3px 10px rgba(0,0,0,0.5),
+        0 0 20px var(--gothic-gold-glow),
+        0 8px 24px rgba(0,0,0,0.6);
+}
+
+.btn-sinete.copied {
+    color: #7cb342;
+    text-shadow: 0 0 10px rgba(124, 179, 66, 0.8);
+    box-shadow: inset 0 0 20px rgba(124, 179, 66, 0.2), 0 0 25px rgba(124, 179, 66, 0.4);
+}
+
+.sinete-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+}
+
+.sinete-label {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    line-height: 1.25;
+    max-width: 120px;
+}
+
+/* Faísca mágica */
+.spark-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.spark {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--gothic-gold);
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 12px var(--gothic-gold), 0 0 6px #fff;
+}
+
+.spark-container.spark-visible .spark {
+    animation: spark-fly 0.6s ease-out forwards;
+}
+
+@keyframes spark-fly {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) scale(0.2);
+    }
+}
+
+/* Moldura vitral (QR PIX) */
+.checkout-vitral {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.vitral-frame {
+    display: inline-block;
+    padding: 12px;
+    background: linear-gradient(145deg, #1a3a2e 0%, #0d2818 50%, #0a1f14 100%);
+    border: 3px solid var(--gothic-gold);
+    box-shadow:
+        inset 0 0 30px rgba(212, 175, 55, 0.15),
+        0 0 0 6px rgba(74, 74, 74, 0.8),
+        0 0 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.vitral-frame::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: 4px;
+    bottom: 4px;
+    border: 1px solid rgba(212, 175, 55, 0.4);
+    pointer-events: none;
+}
+
+.vitral-qr {
+    display: block;
+    background: #fff;
+    padding: 6px;
+}
+
+.vitral-dados {
+    margin-top: 14px;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.95rem;
+    color: var(--gothic-text);
+}
+
+.vitral-empresa { color: var(--gothic-gold); font-weight: 600; }
+.vitral-sep { margin: 0 8px; color: var(--gothic-stone); }
+.vitral-cnpj { color: var(--gothic-text-dim); }
+
+.checkout-gothic-body .btn-pergaminho-full {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+    background: linear-gradient(180deg, var(--gothic-gold) 0%, var(--gothic-gold-dim) 100%);
+    color: #1a0525;
+    font-weight: 700;
+    font-family: 'MedievalSharp', cursive;
+    border: 2px solid var(--gothic-gold-dim);
+    border-radius: 0;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.checkout-gothic-body .btn-pergaminho-full:hover {
+    color: #1a0525;
+    box-shadow: 0 0 20px var(--gothic-gold-glow);
+}
+
+/* Rodapé do modal: Selo Pawlowsky */
+.checkout-gothic-footer {
+    padding: 16px 24px;
+    border-top: 2px solid var(--gothic-gold);
+    background: rgba(0, 0, 0, 0.35);
+    text-align: center;
+}
+
+.selo-pawlowsky-modal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.selo-pawlowsky-modal-title {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 0.9rem;
+    color: var(--gothic-gold);
+}
+
+.selo-pawlowsky-modal-desc {
+    font-size: 0.75rem;
+    color: var(--gothic-text-dim);
+}
+
+/* Ativar com Chave (Ritual de Ativação) */
+.checkout-ativar-chave {
+    margin-bottom: 20px;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--gothic-stone);
+}
+
+.checkout-ativar-label {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.9rem;
+    color: var(--gothic-text-dim);
+    margin-bottom: 10px;
+}
+
+.checkout-ativar-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.checkout-chave-input {
+    flex: 1;
+    min-width: 180px;
+    padding: 10px 14px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 2px solid var(--gothic-stone);
+    color: var(--gothic-text);
+    font-family: ui-monospace, monospace;
+    font-size: 0.85rem;
+}
+
+.checkout-chave-input::placeholder {
+    color: var(--gothic-text-dim);
+    opacity: 0.8;
+}
+
+.btn-ativar-chave {
+    padding: 10px 20px;
+    background: linear-gradient(180deg, var(--gothic-gold) 0%, var(--gothic-gold-dim) 100%);
+    color: #1a0525;
+    border: none;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.btn-ativar-chave:hover {
+    box-shadow: 0 0 12px var(--gothic-gold-glow);
+}
+
+.checkout-chave-msg {
+    margin-top: 10px;
+    font-size: 0.85rem;
+}
+
+.checkout-chave-msg.ok { color: var(--gothic-success); }
+.checkout-chave-msg.err { color: #ef5350; }
+
+/* SOBERANO: remove desfoque das cartas Premium */
+body.reino-soberano .trunfo-card.locked,
+body.reino-soberano .carta-sombreada-premium .trunfo-card.locked-card {
+    filter: none;
+    opacity: 1;
+}
+
+body.reino-soberano .trunfo-card.pergaminho-pix {
+    filter: none;
+}
+
+/* ----- Controles de jogo ----- */
+.game-controls {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-arena {
+    font-family: 'MedievalSharp', cursive;
+    font-weight: 400;
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: 2px solid;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.2s;
+}
+
+.btn-arena-primary {
+    background: linear-gradient(180deg, var(--gothic-gold) 0%, var(--gothic-gold-dim) 100%);
+    border-color: var(--gothic-gold);
+    color: #1a0525;
+}
+
+.btn-arena-primary:hover {
+    box-shadow: 0 0 20px var(--gothic-gold-glow);
+    color: #1a0525;
+}
+
+.btn-arena-secondary {
+    background: transparent;
+    border-color: var(--gothic-gold);
+    color: var(--gothic-gold);
+}
+
+.btn-arena-secondary:hover {
+    background: rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 15px var(--gothic-gold-glow);
+}
+
+.btn-arena:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* ----- Responsivo ----- */
+@media (max-width: 768px) {
+    .trunfo-card { width: 160px; min-height: 260px; padding-bottom: 40px; }
+    .attr-buttons { justify-content: center; }
+    .empowerment-banner p { font-size: 1rem; }
+    .card-seal-pawlowsky { width: 24px; height: 24px; font-size: 10px; bottom: 6px; right: 6px; }
+}

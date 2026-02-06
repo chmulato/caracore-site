@@ -1,0 +1,178 @@
+/* Reino OIDC — Celebração Coroação (sucesso ativação) — Estética Gótica */
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Uncial+Antiqua&display=swap');
+
+.reino-coronacao-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.reino-coronacao-overlay.reino-coronacao-visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.reino-coronacao-overlay.reino-coronacao-saindo {
+    opacity: 0;
+}
+
+.reino-coronacao-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 2, 21, 0.92);
+    cursor: pointer;
+}
+
+.reino-coronacao-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Vitral Dourado central */
+.reino-coronacao-vitral {
+    position: relative;
+    z-index: 2;
+    max-width: 520px;
+    width: 90%;
+    padding: 48px 40px;
+    text-align: center;
+    background: linear-gradient(165deg, rgba(46, 8, 84, 0.95) 0%, rgba(26, 5, 37, 0.98) 100%);
+    border: 3px solid #d4af37;
+    box-shadow:
+        0 0 0 6px rgba(212, 175, 55, 0.2),
+        0 0 60px rgba(212, 175, 55, 0.35),
+        inset 0 0 80px rgba(212, 175, 55, 0.08);
+    animation: reino-vitral-ilumina 1.2s ease-out forwards;
+}
+
+@keyframes reino-vitral-ilumina {
+    0% {
+        box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.3), 0 0 20px rgba(0,0,0,0.5);
+        transform: scale(0.92);
+    }
+    100% {
+        box-shadow:
+            0 0 0 6px rgba(212, 175, 55, 0.2),
+            0 0 60px rgba(212, 175, 55, 0.35),
+            inset 0 0 80px rgba(212, 175, 55, 0.08);
+        transform: scale(1);
+    }
+}
+
+/* Selo de Qualidade Pawlowsky no vitral */
+.reino-coronacao-selo-pawlowsky {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 32%, #8b6914, #5c2e0a 45%, #3d1f06);
+    box-shadow:
+        inset 0 3px 10px rgba(255,255,255,0.2),
+        inset 0 -3px 12px rgba(0,0,0,0.5),
+        0 0 30px rgba(212, 175, 55, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 2rem;
+    color: #d4af37;
+    text-shadow: 0 0 12px rgba(212, 175, 55, 0.9);
+    animation: reino-selo-pulse 2s ease-in-out infinite;
+}
+
+@keyframes reino-selo-pulse {
+    0%, 100% { box-shadow: inset 0 3px 10px rgba(255,255,255,0.2), inset 0 -3px 12px rgba(0,0,0,0.5), 0 0 30px rgba(212, 175, 55, 0.6); }
+    50% { box-shadow: inset 0 3px 10px rgba(255,255,255,0.25), inset 0 -3px 12px rgba(0,0,0,0.5), 0 0 45px rgba(212, 175, 55, 0.8); }
+}
+
+/* Texto principal — fonte gótica */
+.reino-coronacao-titulo {
+    font-family: 'Uncial Antiqua', cursive;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: #d4af37;
+    margin: 0 0 16px;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+}
+
+.reino-coronacao-subtitulo {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #9a8f85;
+    margin: 0 0 28px;
+}
+
+/* Botões */
+.reino-coronacao-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.reino-coronacao-btn-mineracao {
+    display: inline-block;
+    padding: 14px 28px;
+    background: linear-gradient(180deg, #d4af37 0%, #b8962e 100%);
+    color: #1a0525;
+    font-family: 'MedievalSharp', cursive;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    border: 2px solid rgba(212, 175, 55, 0.8);
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.reino-coronacao-btn-mineracao:hover {
+    color: #1a0525;
+    transform: scale(1.03);
+    box-shadow: 0 0 35px rgba(212, 175, 55, 0.6);
+}
+
+.reino-coronacao-btn-fechar {
+    padding: 10px 24px;
+    background: transparent;
+    border: 2px solid #4a4a4a;
+    color: #e8e0d8;
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.reino-coronacao-btn-fechar:hover {
+    border-color: #d4af37;
+    color: #d4af37;
+}
+
+/* Título do usuário no header: Soberana com glow roxo e dourado */
+.reino-user-title {
+    font-family: 'MedievalSharp', cursive;
+    font-size: 0.9rem;
+    margin-left: 12px;
+    padding: 0.25rem 0.5rem;
+}
+
+.reino-user-title-soberana {
+    color: #d4af37 !important;
+    text-shadow:
+        0 0 10px rgba(212, 175, 55, 0.8),
+        0 0 20px rgba(138, 43, 226, 0.5);
+}
+
+@media (max-width: 768px) {
+    .reino-coronacao-vitral { padding: 32px 24px; }
+    .reino-coronacao-titulo { font-size: 1.25rem; }
+    .reino-user-title { font-size: 0.8rem; margin-left: 8px; }
+}

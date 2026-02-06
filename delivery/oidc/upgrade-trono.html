@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Upgrade — O Trono da Identidade | Reino OIDC | Cara Core Informática</title>
     <meta name="description" content="Upgrade do Reino OIDC: O Trono da Identidade. R$ 29,90 — valor único. Pagamento PIX. Cara Core Informática.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -61,12 +62,56 @@
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
+            <span class="navbar-text ms-auto me-3 d-none d-md-inline">
+                <span class="text-white small" title="Cara Core Informática">Cara Core Informática</span>
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">🏠 Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personagens.html">👥 Personagens</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historia_p1.html">Parte I - A Era Sombria</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II - A Chegada do OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p3.html">Parte III - A Nova Era</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="mundo_do_conhecimento.html">🌟 Conhecimento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="caminho_feliz.html">✨ Caminho Feliz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="super_trunfo.html">🃏 Super Trunfo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aprendiz.html">🎓 Academia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="glossario.html">📚 Glossário</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mapas.html">🗺️ Mapas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mapa_evolucao.html">📜 Evolução</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="wrapper">
         <header>
-            <span class="badge">Upgrade Reino OIDC</span>
+            <span class="badge">Pergaminho de Selagem — Reino OIDC</span>
             <h1>O Trono da Identidade</h1>
-            <p>Desbloqueie benefícios exclusivos do Reino OIDC: certificação, material complementar e suporte. Valor único — mesma inspiração de negócio do Minerador 4.0.</p>
+            <p>Adquira sua <strong>Espada Lendária</strong>: o Protocolo de Mineração de Chaves. Não é uma taxa — é a chave para dominar a tecnologia OIDC. Valor único.</p>
         </header>
+
+        <div class="block pergaminho-block">
+            <h2>📜 Selagem do seu dispositivo</h2>
+            <p>O Reino identifica seu dispositivo para vincular a Chave de Soberania. Este é seu <strong>Hardware ID</strong> (gerado automaticamente):</p>
+            <div class="pix-box hwid-box">
+                <div class="name">Hardware ID</div>
+                <code id="display-hwid" class="cnpj">—</code>
+                <p class="hint">Envie este valor junto ao comprovante para ativação.</p>
+            </div>
+        </div>
 
         <div class="block">
             <h2>Pagamento PIX</h2>
@@ -84,8 +129,13 @@
             <ol class="steps">
                 <li data-step="1">Realize o pagamento de <strong>R$ 29,90</strong> via PIX usando a chave CNPJ acima.</li>
                 <li data-step="2">Envie o <strong>comprovante de pagamento</strong> e seu <strong>e-mail</strong> (ou contato) pelo canal indicado no portfólio ou no GitHub (Reino OIDC — Cara Core Informática).</li>
-                <li data-step="3">Você receberá o acesso aos benefícios do <strong>O Trono da Identidade</strong> (certificado, material complementar ou canal exclusivo, conforme disponível na release).</li>
+                <li data-step="3"><strong>Após o envio do pergaminho (comprovante)</strong>, sua <strong>Chave de Soberania</strong> será enviada via <strong>Corvo Digital</strong> (WhatsApp/Telegram) no contato que você informar.</li>
             </ol>
+        </div>
+
+        <div class="block corvo-block">
+            <h2>🦅 Corvo Digital</h2>
+            <p>Envie o comprovante PIX e seu e-mail ou número (WhatsApp/Telegram) pelo canal da Cara Core Informática. A equipe processa a ativação e envia sua Chave de Soberania pelo mesmo canal.</p>
         </div>
 
         <div class="block">
@@ -98,15 +148,26 @@
         </p>
 
         <p class="nav-links">
-            <a href="index.html">← Voltar ao balcão</a> · <a href="../../portfolio.html#reino-oidc">Portfólio Cara Core</a> · <a href="https://github.com/chmulato/reino-oidc-releases" target="_blank" rel="noopener">GitHub Reino OIDC</a>
+            <a href="index.html">← Voltar ao Reino OIDC</a> · <span title="Cara Core Informática">Cara Core Informática</span> · <a href="https://github.com/chmulato/reino_oidc" target="_blank" rel="noopener">GitHub Reino OIDC</a>
         </p>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script>
         (function() {
             var CONFIG = { CNPJ: '23.969.028/0001-37', VALOR: 29.90 };
             document.getElementById('display-cnpj').textContent = CONFIG.CNPJ;
             document.getElementById('display-valor').textContent = 'R$ ' + CONFIG.VALOR.toFixed(2).replace('.', ',');
+            try {
+                var h = localStorage.getItem('reino_oidc_hwid');
+                if (!h) {
+                    var s = navigator.userAgent + navigator.language + screen.width + screen.height;
+                    h = 'reino_' + s.split('').reduce(function(a, b) { a = ((a << 5) - a) + b.charCodeAt(0); return a & a; }, 0).toString(16);
+                    localStorage.setItem('reino_oidc_hwid', h);
+                }
+                var el = document.getElementById('display-hwid');
+                if (el) el.textContent = h;
+            } catch (e) {}
         })();
     </script>
 </body>

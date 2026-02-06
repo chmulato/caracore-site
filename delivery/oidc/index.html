@@ -3,192 +3,186 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reino OIDC — Delivery | Cara Core Informática</title>
-    <meta name="description" content="Reino OIDC: material educacional OAuth 2.1 e OIDC. Conteúdo FREE e upgrade O Trono da Identidade (R$ 29,90). Vitrine, balcão, feedback e licenças. Cara Core Informática.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #1a1d21;
-            --bg-card: #252a30;
-            --bg-elevated: #2d333b;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --accent-blue: #58a6ff;
-            --accent-gold: #d4a853;
-            --accent-purple: #8f6ed5;
-            --accent-green: #3fb950;
-            --border: #373e47;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-dark);
-            min-height: 100vh;
-            padding: 0 20px 40px;
-        }
-        .wrapper { max-width: 900px; margin: 0 auto; }
-        .breadcrumb { font-size: 0.85rem; margin-bottom: 24px; padding-top: 16px; }
-        .breadcrumb a { color: var(--accent-blue); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb span { color: var(--text-secondary); }
-        header {
-            padding: 48px 0 40px;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-        header h1 { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text-primary); margin-bottom: 12px; }
-        header .subtitle { font-size: 1rem; font-weight: 400; color: var(--text-secondary); max-width: 640px; margin: 0 auto; line-height: 1.65; }
-        header .tagline { font-size: 0.95rem; font-weight: 500; color: var(--accent-gold); max-width: 640px; margin: 16px auto 0; line-height: 1.6; }
-        .methodology { margin: 40px 0 48px; }
-        .methodology .card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 28px 32px;
-        }
-        .methodology .card h2 { font-size: 1rem; font-weight: 600; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 14px; }
-        .methodology .card p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; }
-        .methodology .card p strong { color: var(--text-primary); }
-        .nav-section-title { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-secondary); margin-bottom: 20px; }
-        .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
-        .nav-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 24px;
-            text-decoration: none;
-            color: inherit;
-            transition: border-color 0.2s, background 0.2s;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .nav-card:hover { border-color: var(--accent-blue); background: var(--bg-elevated); }
-        .nav-card-free { border-left: 4px solid var(--accent-green); }
-        .nav-card-free:hover { border-color: var(--accent-green); background: rgba(63, 185, 80, 0.08); }
-        .nav-card-free h3 { color: var(--accent-green); }
-        .nav-card-premium { border-left: 4px solid var(--accent-purple); }
-        .nav-card-premium:hover { border-color: var(--accent-purple); background: rgba(143, 110, 213, 0.08); }
-        .nav-card-premium h3 { color: var(--accent-purple); }
-        .nav-card .icon { width: 40px; height: 40px; margin-bottom: 16px; flex-shrink: 0; }
-        .nav-card .icon svg { width: 100%; height: 100%; }
-        .nav-card h3 { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
-        .nav-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.55; }
-        footer { margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-secondary); }
-        footer p { margin-bottom: 8px; }
-        footer a { color: var(--accent-blue); text-decoration: none; }
-        footer a:hover { text-decoration: underline; }
-        footer .soberania { margin-top: 16px; font-size: 0.8rem; opacity: 0.9; }
-    </style>
+    <title>Reino da Identidade Federada</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <nav class="breadcrumb" aria-label="Navegação">
-            <a href="../../portfolio.html">Cara Core Informática</a>
-            <span> · </span>
-            <a href="../../portfolio.html#reino-oidc">Portfólio</a>
-            <span> · </span>
-            <span>Reino OIDC — Delivery</span>
-        </nav>
-
-        <header>
-            <h1>Reino OIDC — Vitrine e balcão</h1>
-            <p class="subtitle">Material educacional sobre OAuth 2.1 e OpenID Connect. Primeira entrega <strong>FREE</strong> (conteúdo estático e protótipo). Upgrade <strong>O Trono da Identidade</strong> — somente a pagamento (R$ 29,90).</p>
-            <p class="tagline">Mesma lógica de negócios do chmulato/ETE Minerador 4.0: vitrine, balcão de compras, canal de feedback e controle de licenças. Produto Reino OIDC — identidade preservada. Delivery centralizado pela Cara Core Informática.</p>
-        </header>
-
-        <section class="methodology">
-            <div class="card">
-                <h2>Versão FREE e versão Premium</h2>
-                <p>O conteúdo em HTML estático (história, personagens, mundo do conhecimento, academia, glossário, mapas) é <strong>gratuito</strong> e acessível a todos. A versão <strong>Premium (O Trono da Identidade)</strong> é somente a pagamento: R$ 29,90 (valor único), via PIX. Benefícios do upgrade: certificação, material complementar e suporte, conforme descrito na página de upgrade.</p>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">🏰 Reino OIDC</a>
+            <span class="navbar-text ms-auto me-3 d-none d-md-inline">
+                <a href="../../portfolio.html#reino-oidc" class="text-white text-decoration-none small">Cara Core Informática · Portfólio</a>
+            </span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">🏠 Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="personagens.html">👥 Personagens</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">📖 História</a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historia_p1.html">Parte I - A Era Sombria</a></li>
+                            <li><a class="dropdown-item" href="historia_p2.html">Parte II - A Chegada do OIDC</a></li>
+                            <li><a class="dropdown-item" href="historia_p3.html">Parte III - A Nova Era</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="conclusao.html">Conclusão</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="mundo_do_conhecimento.html">🌟 Conhecimento</a></li>
+                    <li class="nav-item"><a class="nav-link" href="caminho_feliz.html">✨ Caminho Feliz</a></li>
+                    <li class="nav-item"><a class="nav-link" href="super_trunfo.html">🃏 Super Trunfo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="aprendiz.html">🎓 Academia</a></li>
+                    <li class="nav-item"><a class="nav-link" href="glossario.html">📚 Glossário</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mapas.html">🗺️ Mapas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="mapa_evolucao.html">📜 Evolução</a></li>
+                </ul>
             </div>
-        </section>
-
-        <p class="nav-section-title">Navegação — Balcão</p>
-        <div class="nav-grid">
-            <a href="conteudo-free.html" class="nav-card nav-card-free" title="Explorar o conteúdo FREE do Reino OIDC">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>
-                    </svg>
-                </span>
-                <h3>Conteúdo FREE</h3>
-                <p>Explorar o Reino: história, personagens, conhecimento, academia, glossário e mapas. Protótipo em HTML estático.</p>
-            </a>
-            <a href="download.html" class="nav-card nav-card-free" title="Baixar aplicativo Windows (versão FREE)">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                </span>
-                <h3>Download — Aplicativo FREE (Windows)</h3>
-                <p>ReinoOIDC.exe — material educacional OAuth 2.1 e OIDC em formato desktop. Checksums na página de Releases.</p>
-            </a>
-            <a href="upgrade-trono.html" class="nav-card nav-card-premium" title="Comprar upgrade O Trono da Identidade">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/>
-                    </svg>
-                </span>
-                <h3>Upgrade — O Trono da Identidade</h3>
-                <p>Versão Premium: R$ 29,90 (valor único). Pagamento PIX, certificação e benefícios exclusivos. Somente a pagamento.</p>
-            </a>
-            <a href="canal-feedback.html" class="nav-card" title="Enviar sugestões, bugs e feedback">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                    </svg>
-                </span>
-                <h3>Canal de feedback</h3>
-                <p>Sugestões, bugs e insights. WhatsApp, Telegram ou e-mail. Sua voz ajuda a evoluir o Reino OIDC.</p>
-            </a>
-            <a href="licenca-uso.html" class="nav-card" title="Licença de uso FREE e Premium">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                </span>
-                <h3>Licença de uso</h3>
-                <p>Termos do conteúdo FREE (MIT) e condições do upgrade Premium. Controle e transparência.</p>
-            </a>
-            <a href="../../portfolio.html#reino-oidc" class="nav-card">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                </span>
-                <h3>Portfólio Cara Core</h3>
-                <p>Cara Core Informática — Reino OIDC no portfólio de produtos.</p>
-            </a>
-            <a href="https://github.com/chmulato/reino-oidc-releases" class="nav-card" target="_blank" rel="noopener">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
-                </span>
-                <h3>Repositório</h3>
-                <p>chmulato/reino-oidc-releases — vitrine pública, documentação e canal de releases.</p>
-            </a>
         </div>
+    </nav>
 
-        <section class="methodology" style="margin-top: 2rem;">
-            <div class="card" style="border-left: 4px solid var(--accent-purple);">
-                <h2>Upgrade Premium — somente a pagamento</h2>
-                <p>O <strong>O Trono da Identidade</strong> desbloqueia certificação, material complementar e suporte. Valor único <strong>R$ 29,90</strong>, pagamento via PIX. Envie o comprovante pelo canal indicado na página de upgrade.</p>
-                <p style="margin-top: 12px;"><a href="upgrade-trono.html" style="color: var(--accent-blue); font-weight: 500;">Ir para a página de upgrade →</a></p>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <h1 class="text-center">Bem-vindo ao Reino da Identidade Federada</h1>
+                <p class="lead text-center">Uma saga sobre confiança, autorização e autenticação digital.</p>
+                <p class="text-center text-muted small mb-0">Para <strong>jovens entusiastas desenvolvedores</strong> (com foco em público-alvo feminino) — mercado seleto e com olhar crítico. Primeira entrega <strong>FREE</strong>.</p>
+                <div class="text-center">
+                    <img src="assets/images/historia.png" class="img-fluid" alt="História">
+                </div>
+
+                <div class="list-group mt-5">
+                    <a href="personagens.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">Os Personagens</h5>
+                        </div>
+                        <p class="mb-1">Conheça os heróis e vilões desta saga.</p>
+                    </a>
+                    <a href="historia_p1.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">Parte I — A Era das Senhas e a Chegada de Lady OAuth</h5>
+                        </div>
+                        <p class="mb-1">Onde nasce o conceito de autorização.</p>
+                    </a>
+                    <a href="historia_p2.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">Parte II — A Era da Confiança e o Mago OIDC</h5>
+                        </div>
+                        <p class="mb-1">Onde a identidade ganha forma.</p>
+                    </a>
+                    <a href="historia_p3.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">Parte III — A Nova Ordem Digital e a Aprendiz Devia</h5>
+                        </div>
+                        <p class="mb-1">Onde tudo se integra em aplicações reais.</p>
+                    </a>
+                    <a href="mundo_do_conhecimento.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">🌍 Mundo do Conhecimento</h5>
+                        </div>
+                        <p class="mb-1">Guia técnico completo com conceitos, códigos e exemplos práticos.</p>
+                    </a>
+                    <a href="super_trunfo.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">🃏 Reino OIDC — Edição Super Trunfo</h5>
+                        </div>
+                        <p class="mb-1">Proteja seu Reino: jogo de cartas com atributos Segurança, Complexidade, Escalabilidade e Privacidade (LGPD). Deck elite Mineração de Chaves.</p>
+                    </a>
+                    <a href="aprendiz.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">🎓 Academia do Reino OIDC</h5>
+                        </div>
+                        <p class="mb-1">Teste seus conhecimentos com flashcards interativos organizados em 3 caminhos de aprendizado.</p>
+                    </a>
+                    <a href="glossario.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">📚 Glossário Ilustrado</h5>
+                        </div>
+                        <p class="mb-1">Dicionário de termos técnicos explicados para leigos e especialistas.</p>
+                    </a>
+                    <a href="mapa_evolucao.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">📜 Mapa do Reino — Evolução</h5>
+                        </div>
+                        <p class="mb-1">Dashboard onde as áreas acendem conforme você aprende. Desbloqueie o Trono para iluminar a Mineração de Chaves.</p>
+                    </a>
+                    <a href="mapas.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">🗺️ Mapas Técnicos</h5>
+                        </div>
+                        <p class="mb-1">Diagramas de arquitetura e fluxos visuais dos protocolos OAuth 2.1 e OIDC.</p>
+                    </a>
+                    <a href="conclusao.html" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1 font-weight-bold">Conclusão</h5>
+                        </div>
+                        <p class="mb-1">O desfecho da nossa saga.</p>
+                    </a>
+                </div>
+
+                <!-- Upgrade O Trono da Identidade -->
+                <div class="alert border-2 shadow mt-4 mb-4" style="border-color: #8f6ed5; background: linear-gradient(135deg, rgba(143,110,213,0.12) 0%, rgba(143,110,213,0.04) 100%);">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h4 class="mb-2" style="color: #5a3d8a;">👑 O Trono da Identidade</h4>
+                            <p class="mb-2 text-dark">Upgrade do Reino OIDC: certificação e benefícios exclusivos. <strong>R$ 29,90</strong> (valor único) — mesma inspiração de negócio do Minerador 4.0.</p>
+                            <p class="mb-0 small text-muted">Pagamento via PIX; envie o comprovante e receba o acesso.</p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <a href="upgrade-trono.html" class="btn btn-primary btn-lg px-4 py-2 shadow" style="background: #8f6ed5; border-color: #8f6ed5;">
+                                Upgrade — R$ 29,90
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Convite para Python Training -->
+                <div class="alert alert-info border-3 shadow-lg mt-5 mb-4 python-training-invite">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h3 class="text-white mb-3">🐍 <strong>Novo: Python Training</strong></h3>
+                            <p class="text-white mb-3 lead">
+                                Quer aprender a <strong>criar jogos</strong>, desenvolver <strong>projetos com IA</strong> e dominar <strong>Python</strong>?
+                                Conheça nosso curso completo de programação!
+                            </p>
+                            <ul class="text-white mb-3 python-training-invite">
+                                <li>6 módulos práticos (40 horas)</li>
+                                <li>Jogos 2D, Minecraft e automação</li>
+                                <li>Inteligência Artificial e segurança</li>
+                                <li>Certificado oficial ao concluir</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <a href="https://chmulato.github.io/circuito_python/index.html" class="btn btn-light btn-lg px-5 py-3 shadow python-training-btn" target="_blank" rel="noopener">
+                                🚀 Começar Agora
+                            </a>
+                            <p class="text-white mt-3 mb-0"><small>Pela Cara Core Informática</small></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
-
-        <footer>
-            <p><a href="../../portfolio.html#reino-oidc">Cara Core Informática — Portfólio</a> · <a href="https://github.com/chmulato/reino-oidc-releases" target="_blank" rel="noopener">Repositório: chmulato/reino-oidc-releases</a></p>
-            <p>Reino OIDC — Vitrine e balcão. Conteúdo FREE (MIT). Versão Premium (O Trono da Identidade) somente a pagamento. Mesma lógica de negócios do Minerador 4.0.</p>
-            <p class="soberania">Material educacional sobre OAuth 2.1 e OpenID Connect. Público: jovens entusiastas desenvolvedores (foco em público feminino). Delivery centralizado pela Cara Core Informática.</p>
-        </footer>
+        </div>
     </div>
+
+    <!-- Footer com Copyright -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Reino OIDC - Reino da Identidade Federada</strong></p>
+                    <p class="mb-0 small">Material educacional sobre OAuth 2.1 e OpenID Connect</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-1 small">© 2025 Reino OIDC. Primeira entrega FREE (MIT). <a href="upgrade-trono.html" class="text-info">Upgrade O Trono da Identidade — R$ 29,90</a></p>
+                    <p class="mb-0 small">Licenciado sob <a href="../LICENSE" class="text-light">MIT License</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="assets/js/licenca.js"></script>
 </body>
 </html>

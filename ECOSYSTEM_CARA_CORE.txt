@@ -60,6 +60,7 @@ REFERÊNCIAS CRUZADAS
   Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.txt.
   Estratégia e status de negócio: ver documentos no site (ex.: VALIDACAO_NEGOCIO.txt, STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt, quando disponíveis no repositório ou em uso interno).
   Portfólio e links oficiais: https://caracore.com.br/portfolio.html
+  Mapa visual do ecossistema (matriz → produtos → oficinas → lojas): https://caracore.com.br/ecosistema.html (Conheça o Nosso Eco Mundo; ícone eco em Recursos e Planos na index).
   Validação matriz/lojas (estrutura, mensagem, links e CTAs): ver VALIDACAO_LOJAS_MATRIZ.txt.
 
 Alinhamento matriz e lojas (links e CTAs)

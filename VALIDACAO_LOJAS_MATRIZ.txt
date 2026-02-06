@@ -138,7 +138,7 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
 
   Todas as lojas verificadas estão alinhadas com a matriz em estrutura de páginas, mensagem de negócio (posicionamento, preços onde aplicável, oferta FREE/upgrade/não disponível) e links cruzados. CTAs: em cada matriz há "Ver loja (releases)" para a loja correspondente; em cada loja há "Ver apresentação (matriz)" (hero e/ou footer) para o portal completo no site Cara Core.
 
-  Referências: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt. Reino OIDC loja: reino-oidc-releases (pasta docs/); caminho local D:\dev\reino-oidc-releases.
+  Referências: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt. Reino OIDC loja: reino-oidc-releases (pasta docs/); caminho local D:\dev\reino-oidc-releases. Mapa visual do ecossistema (matriz, produtos, oficinas, lojas): caracore.com.br/ecosistema.html (Conheça o Nosso Eco Mundo).
 
 -------------------------------------------------------------------------------
 

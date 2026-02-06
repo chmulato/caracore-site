@@ -50,7 +50,7 @@ Referência (sem oferta ativa):
   Proposta de valor         | OK     | ETE aplicada ao refino de terras raras; instalador Windows; checksums; upgrade Ouro 4.0.
   Público                   | OK     | Mineração, hidrometalurgia, educação (Campo Largo).
   Preço                     | Atenção| R$ 29,90 (Ouro 4.0) está no portal ETE (upgrade-ouro40.html), não no texto do portfólio. Para consistência com Seed, vale citar no lead ou no alerta.
-  Delivery funcional        | OK     | delivery/ete/, delivery/ete/download.html → GitHub ETE-releases.
+  Delivery funcional        | OK     | delivery/ete/, delivery/ete/download.html → GitHub caracore-ete-releases.
   Windows Desktop           | OK     | Instalador .exe, checksums SHA-256/MD5.
 
   Ação sugerida: No portfólio, no alerta de licenciamento do Minerador 4.0, acrescentar: "Upgrade Ouro 4.0: R$ 29,90 (valor único)."
@@ -122,7 +122,7 @@ Referência (sem oferta ativa):
   Fluxo                          | O que o cliente faz                                                                 | Funciona?
   -------------------------------|-------------------------------------------------------------------------------------|----------
   Conhecer PDV / Baixar EXE PDV   | Portfólio → Ver Apresentação (matriz delivery/pdv/) ou Ver loja (releases) → chmulato.github.io/caracore-pdv-releases/ ou delivery/pdv/download.html | Sim (escopo: localhost + Windows Desktop; banco SQLite)
-  Baixar Minerador 4.0           | Portfólio → Download → delivery/ete/download.html → GitHub ETE-releases/latest      | Sim
+  Baixar Minerador 4.0           | Portfólio → Download → delivery/ete/download.html → GitHub caracore-ete-releases/latest      | Sim
   Reino OIDC — baixar EXE FREE   | Portfólio → delivery/oidc/ ou reino_oidc_releases → download.html → releases/latest (ReinoOIDC.exe) | Sim (prioridade: EXE; conteúdo HTML não destacado)
   Conhecer Seed (sem download)    | Portfólio (seção no final) ou delivery/seed / caracore-seed-releases → apenas informação de que o produto existe e a aplicação não está disponível | Sim (sem oferta de EXE nem compra)
   Circuito Python — baixar EXE    | Portfólio → delivery/circuito/ ou circuito-python-releases → Download → releases/latest (CircuitoPython.exe) | Sim; prioridade EXE; link curso HTML não destacado
@@ -140,7 +140,7 @@ Referência (sem oferta ativa):
   Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (não disponível) | FREE (MIT); escolas R$ 5,00/aluno/mês | B2B / sob consulta | Sob consulta
   Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Não (não disponível) | Sim (CircuitoPython.exe)  | WAR (releases quando houver) | Serviço (não EXE)
   Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Ref. (portal informativo) | Licença e portal escolas | Canal feedback; doc tecnologia | Canal feedback; LGPD
-  Link direto download/EXE       | Matriz delivery/pdv + loja caracore-pdv-releases | Download → ETE-releases | delivery/oidc + reino-oidc-releases → releases/latest | Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest | delivery/hub + caracore-hub-releases; slides Tia Sócia | delivery/area51 + caracore-area51-releases; Solicitar suporte
+  Link direto download/EXE       | Matriz delivery/pdv + loja caracore-pdv-releases | Download → caracore-ete-releases | delivery/oidc + reino-oidc-releases → releases/latest | Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest | delivery/hub + caracore-hub-releases; slides Tia Sócia | delivery/area51 + caracore-area51-releases; Solicitar suporte
 
 -------------------------------------------------------------------------------
 

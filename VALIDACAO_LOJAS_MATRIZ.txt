@@ -1,0 +1,124 @@
+VALIDAÇÃO: LOJAS ALINHADAS COM A MATRIZ
+========================================
+
+Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhadas com os portais da matriz (cara-core-site/delivery). Data da verificação: 06/02/2026.
+
+-------------------------------------------------------------------------------
+
+1. CARA CORE PDV
+
+  Matriz: cara-core-site/delivery/pdv/
+  Loja:   caracore-pdv-releases/docs/ (chmulato.github.io/caracore-pdv-releases)
+
+  Estrutura
+    Matriz: index, download, tecnologia, canal-feedback, consultoria, readme, wiki-fiscal, wiki/
+    Loja:   index, download, tecnologia, canal-feedback
+  Status:  OK. A loja contém as páginas previstas no MIRROR_DELIVERY (vitrine: hero, CTAs, pilares, download, tecnologia, canal-feedback). Consultoria e wiki permanecem só na matriz.
+
+  Mensagem
+    Matriz e loja: "Quando a internet cai, o caixa não pode parar"; "PDV Selo Verde"; "Reforma Tributária 2026"; "Degustação (Free)", "100 vendas completas"; "Tecnologia Selo Verde"; SQLite local.
+  Status:  OK. Mensagem alinhada.
+
+  Links
+    Loja referencia matriz (caracore.com.br/delivery/pdv) e portfólio; download aponta para Degustação e Releases.
+  Status:  OK.
+
+-------------------------------------------------------------------------------
+
+2. CARA CORE HUB
+
+  Matriz: cara-core-site/delivery/hub/
+  Loja:   caracore-hub-releases/docs/ (chmulato.github.io/caracore-hub-releases)
+
+  Estrutura
+    Matriz: index, download, canal-feedback, tecnologia, slides/apresentacao_tia_socia.html (+ assets)
+    Loja:   index, download, canal-feedback, tecnologia, slides/apresentacao_tia_socia.html (+ assets)
+  Status:  OK. Conjunto de páginas equivalente. Obs.: Existem arquivos também na raiz do repositório; a vitrine publicada é a pasta docs/.
+
+  Mensagem
+    Matriz e loja: "gestão logística e e-commerce"; "SQLite local"; "autonomia local"; "Tia Sócia" como negócio aplicável; card "Apresentação Tia Sócia" e link para slides; stack Java/Jakarta EE, SQLite, Tomcat.
+  Status:  OK. Textos e oferta alinhados.
+
+  Links
+    Loja com base href para GitHub Pages; referências à matriz e ao portfólio.
+  Status:  OK.
+
+-------------------------------------------------------------------------------
+
+3. CIRCUITO PYTHON
+
+  Matriz: cara-core-site/delivery/circuito/
+  Loja:   circuito-python-releases/docs/ (chmulato.github.io/circuito-python-releases)
+
+  Estrutura
+    Matriz: index, canal-feedback, licenca-uso, portal-escolas (download via card no index para releases/latest)
+    Loja:   index, download, canal-feedback, licenca-uso, portal-escolas
+  Status:  OK. A loja inclui download.html (link para EXE em releases); matriz prioriza card no index. Conforme MIRROR: prioridade baixar EXE na filial.
+
+  Mensagem
+    Matriz e loja: FREE (Licença MIT) para pessoas físicas; R$ 5,00/aluno matriculado/mês para instituições; "licença obrigatória" para escolas; aviso de responsabilização legal; "Portal Escolas"; certificado com verificação criptográfica.
+  Status:  OK. Mensagem e valor alinhados.
+
+  Links
+    Ambas apontam para circuito-python-releases (releases/latest); sem link para repositório privado circuito_python.
+  Status:  OK.
+
+-------------------------------------------------------------------------------
+
+4. REINO OIDC
+
+  Matriz: cara-core-site/delivery/oidc/
+  Loja:   reino-oidc-releases/docs/ (chmulato.github.io/reino-oidc-releases)
+
+  Estrutura
+    Matriz: index, download, canal-feedback, upgrade-trono, licenca-uso, conteudo-free, páginas de história/glossário/mapas/jogos, etc.
+    Loja:   Mesmo conjunto (index, download, upgrade-trono, licenca-uso, conteudo-free, história, personagens, super_trunfo, etc.)
+  Status:  OK. Estrutura espelhada.
+
+  Mensagem
+    Matriz e loja: aplicativo Windows FREE (ReinoOIDC.exe); "releases/latest"; upgrade "O Trono da Identidade" R$ 29,90 (valor único, PIX); Licença MIT para FREE; mesma narrativa de upgrade e certificação.
+  Status:  OK. Preço e oferta alinhados.
+
+  Links
+    Download para github.com/chmulato/reino-oidc-releases/releases/latest; upgrade-trono em ambas; links para portfólio em formato absoluto na vitrine (conforme MIRROR).
+  Status:  OK.
+
+-------------------------------------------------------------------------------
+
+5. CARA CORE SEED
+
+  Matriz: cara-core-site/delivery/seed/
+  Loja:   caracore-seed-releases/ (raiz; chmulato.github.io/caracore-seed-releases)
+
+  Estrutura
+    Matriz: index, download, tecnologia, canal-feedback, portal-controle, ativacao, compra, readme
+    Loja:   index, download, canal-feedback, ativacao, compra (sem tecnologia, portal-controle, readme)
+  Status:  OK. Ambas informam que a aplicação não está disponível. A loja não precisa espelhar todas as páginas da matriz; mensagem central é "não disponível".
+
+  Mensagem
+    Matriz e loja: "Aplicação não disponível"; "não está disponível para download nem à venda"; "ferramenta interna"; referência ao portfólio; sem CTA de Baixar EXE nem Comprar.
+  Status:  OK. Alinhadas na decisão de não oferta.
+
+  Links
+    Ambas remetem ao portfólio e ao repositório; sem oferta de download ou compra.
+  Status:  OK.
+
+-------------------------------------------------------------------------------
+
+6. RESUMO
+
+  Produto          Estrutura    Mensagem    Links    Conclusão
+  ---------------- ----------- ----------- -------  ------------------
+  Cara Core PDV    OK          OK          OK       Alinhada
+  Cara Core Hub    OK          OK          OK       Alinhada
+  Circuito Python  OK          OK          OK       Alinhada
+  Reino OIDC       OK          OK          OK       Alinhada
+  Cara Core Seed   OK          OK          OK       Alinhada
+
+  Todas as lojas verificadas estão alinhadas com a matriz em estrutura de páginas, mensagem de negócio (posicionamento, preços onde aplicável, oferta FREE/upgrade/não disponível) e links cruzados (matriz, portfólio, releases).
+
+  Referências: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt.
+
+-------------------------------------------------------------------------------
+
+Cara Core Informática. Documento para uso interno.

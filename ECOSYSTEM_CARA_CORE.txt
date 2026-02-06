@@ -24,6 +24,8 @@ VISÃO GERAL
   circuito-python-releases     Loja online e releases Circuito Python   GitHub Pages; prioridade: baixar EXE
   reino-oidc                  Código do Reino OIDC (identidade)         OAuth 2.1 / OIDC; ReinoOIDC.exe
   reino-oidc-releases         Loja online e releases do Reino OIDC     GitHub Pages: chmulato.github.io/reino-oidc-releases
+  caracore-area51             Oficina da Área 51 (código do sistema)   Desenvolvimento; autenticação enterprise OAuth 2.1/OIDC/PKCE
+  caracore-area51-releases    Loja online do Suporte Área 51           Vitrine do serviço de consultoria; GitHub Pages
   personal-articles           Conteúdo pessoal / artigos               Conteúdo editorial ou pessoal vinculado ao ecossistema
 
 -------------------------------------------------------------------------------
@@ -31,7 +33,7 @@ VISÃO GERAL
 AGRUPAMENTO POR FUNÇÃO
 
 Site e presença pública
-  cara-core-site: Site principal (portfólio, delivery/pdv, delivery/hub, delivery/circuito, delivery/oidc, delivery/seed, wiki, área 51, publicações, etc.).
+  cara-core-site: Site principal (portfólio, delivery/pdv, delivery/hub, delivery/circuito, delivery/oidc, delivery/seed, delivery/area51, wiki, área 51, publicações, etc.).
 
 Produtos com entrega ativa (matriz + loja online)
   Cara Core PDV: caracore-pdv (código) + caracore-pdv-releases (loja e releases). Matriz: caracore.com.br/delivery/pdv/
@@ -42,6 +44,9 @@ Produtos com entrega ativa (matriz + loja online)
 
 Produtos com vitrine, sem oferta de aplicação
   Cara Core Seed: caracore-seed (código) + caracore-seed-releases (vitrine). Matriz: caracore.com.br/delivery/seed/. Aplicação não disponível ao público.
+
+Serviço com matriz e loja online
+  Suporte Área 51: oficina caracore-area51 (código) + portal delivery/area51 (matriz) + caracore-area51-releases (loja). Consultoria e suporte OAuth 2.1, OIDC, PKCE.
 
 Outros repositórios do ecossistema
   caracore-ink: InkAgenda (agenda para estúdios de tatuagem; Flutter).

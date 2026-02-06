@@ -140,24 +140,40 @@
             audioElement.pause();
             isPlaying = false;
         }
-
-        audioElement.src = audioSrc;
+        audioElement.removeAttribute('src');
+        audioElement.load();
         audioElement.playbackRate = currentSpeed;
 
         var audioTitle = document.getElementById('audioTitle');
         if (audioTitle) audioTitle.textContent = 'Narração Slide ' + slideNum;
-        updateAudioStatus('Pronto para ouvir');
+        updateAudioStatus('Verificando áudio...');
+        setPlayButtonAvailable(false);
         updatePlayButton();
 
         var checkAudio = new XMLHttpRequest();
         checkAudio.open('HEAD', audioSrc, true);
         checkAudio.onload = function() {
-            updateAudioStatus(checkAudio.status !== 404 ? 'Áudio disponível' : 'Áudio não encontrado');
+            if (checkAudio.status === 200) {
+                audioElement.src = audioSrc;
+                updateAudioStatus('Pronto para ouvir');
+                setPlayButtonAvailable(true);
+            } else {
+                updateAudioStatus('Áudio não disponível para este slide. Use "Ler texto" para a narração.');
+                setPlayButtonAvailable(false);
+            }
         };
         checkAudio.onerror = function() {
-            updateAudioStatus('Erro ao carregar áudio');
+            updateAudioStatus('Áudio não disponível para este slide. Use "Ler texto" para a narração.');
+            setPlayButtonAvailable(false);
         };
         checkAudio.send();
+    }
+
+    function setPlayButtonAvailable(available) {
+        var playBtn = document.getElementById('playBtn');
+        if (!playBtn) return;
+        playBtn.disabled = !available;
+        playBtn.title = available ? 'Reproduzir narração' : 'Áudio não disponível — use "Ler texto"';
     }
 
     function toggleAudio() {

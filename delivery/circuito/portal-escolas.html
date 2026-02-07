@@ -8,35 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg: #0a0e14; --card: #12171f; --border: #2d3748; --text: #e6edf3; --dim: #8b949e; --gold: #d4a853; --cyan: #06b6d4; --green: #059669; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 24px 20px 48px; line-height: 1.65; }
-        .wrapper { max-width: 720px; margin: 0 auto; }
-        .breadcrumb { font-size: 0.85rem; margin-bottom: 20px; }
-        .breadcrumb a { color: var(--cyan); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb span { color: var(--dim); }
-        header { text-align: center; padding: 32px 0 28px; border-bottom: 1px solid var(--border); }
-        header h1 { font-size: 1.5rem; color: var(--gold); margin-bottom: 8px; }
-        header p { font-size: 0.9rem; color: var(--dim); }
-        .block { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px; }
-        .block h2 { font-size: 1rem; font-weight: 600; color: var(--cyan); margin-bottom: 12px; }
-        .block p, .block ul { font-size: 0.9rem; color: var(--text); margin-bottom: 12px; }
-        .block p:last-child { margin-bottom: 0; }
-        .block ul { margin-left: 20px; }
-        .block li { margin-bottom: 6px; }
-        .valor { font-size: 1.25rem; font-weight: 700; color: var(--green); }
-        .cta { margin-top: 24px; padding: 20px; background: rgba(6, 182, 212, 0.1); border: 1px solid rgba(6, 182, 212, 0.35); border-radius: 10px; }
-        .cta p { margin-bottom: 12px; }
-        .cta a { color: var(--cyan); font-weight: 600; text-decoration: none; }
-        .cta a:hover { text-decoration: underline; }
-        .nav-links { margin-top: 28px; font-size: 0.9rem; }
-        .nav-links a { color: var(--cyan); text-decoration: none; }
-        .nav-links a:hover { text-decoration: underline; }
-    </style>
+    <link rel="stylesheet" href="assets/css/circuito.css">
 </head>
-<body>
+<body class="page-portal">
     <div class="wrapper">
         <nav class="breadcrumb" aria-label="Navegação">
             <a href="https://caracore.com.br/portfolio.html">Cara Core Informática</a>
@@ -55,7 +29,7 @@
             <p>O Circuito Python é <strong>FREE para pessoas físicas</strong> (jovens entusiastas e curiosos — Licença MIT). O uso em <strong>ambiente institucional</strong> (escolas de ensino médio no Brasil) exige licença a pagamento. Regularizar mantém a instituição em conformidade com a legislação brasileira e evita <strong>responsabilização legal</strong>. Todos os direitos do curso são reservados à <strong>Cara Core Informática</strong>.</p>
         </div>
 
-        <div class="block" style="border-left: 4px solid #e53e3e;">
+        <div class="block alert">
             <h2>Atenção: responsabilização legal</h2>
             <p><strong>Instituições de ensino que utilizarem o Circuito Python sem a devida licença podem responder legalmente</strong> por violação à legislação de direitos autorais e à legislação que tipifica pirataria. O uso do curso em sala de aula ou laboratório, sem contratação da licença (R$ 5,00 por aluno matriculado, mensal), configura uso não autorizado. A Cara Core Informática atua com profissionalismo e transparência: regularize pelo presente portal e fique em conformidade com a lei.</p>
         </div>
@@ -85,5 +59,6 @@
             <a href="licenca-uso.html">Licença de uso</a> · <a href="canal-feedback.html">Canal de feedback</a> · <a href="index.html">← Circuito Python — Delivery</a> · <a href="https://chmulato.github.io/circuito-python-releases/" target="_blank" rel="noopener">Ver loja (releases)</a>
         </p>
     </div>
+    <script src="assets/js/circuito.js"></script>
 </body>
 </html>

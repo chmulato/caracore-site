@@ -8,105 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-dark: #0a0c0e;
-            --bg-card: #13171c;
-            --text-primary: #e6edf3;
-            --text-secondary: #8b949e;
-            --accent-cyan: #06b6d4;
-            --accent-green: #059669;
-            --whatsapp: #25d366;
-            --telegram: #0088cc;
-            --border: #2d333b;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--bg-dark);
-            min-height: 100vh;
-            padding: 0 20px 40px;
-        }
-        .wrapper { max-width: 640px; margin: 0 auto; }
-        .breadcrumb { font-size: 0.85rem; margin-bottom: 24px; padding-top: 16px; }
-        .breadcrumb a { color: var(--accent-cyan); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb span { color: var(--text-secondary); }
-        header {
-            padding: 40px 0 32px;
-            text-align: center;
-            border-bottom: 1px solid var(--border);
-        }
-        header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
-        header .subtitle { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
-        .intro {
-            margin: 28px 0 24px;
-            padding: 20px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-        }
-        .intro p { margin-bottom: 10px; }
-        .intro p:last-child { margin-bottom: 0; }
-        .intro strong { color: var(--accent-cyan); }
-        .no-phone {
-            margin: 16px 0;
-            padding: 12px 16px;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.35);
-            border-radius: 8px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-        .no-phone strong { color: #f59e0b; }
-        .channels {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin: 28px 0;
-        }
-        .channel-card {
-            display: block;
-            padding: 20px 24px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            text-decoration: none;
-            color: inherit;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-        .channel-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15); }
-        .channel-card.whatsapp:hover { border-color: var(--whatsapp); box-shadow: 0 0 20px rgba(37, 211, 102, 0.15); }
-        .channel-card.telegram:hover { border-color: var(--telegram); box-shadow: 0 0 20px rgba(0, 136, 204, 0.2); }
-        .channel-card.email:hover { border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(6, 182, 212, 0.2); }
-        .channel-card .icon { font-size: 1.75rem; margin-bottom: 8px; }
-        .channel-card .title { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
-        .channel-card .desc { font-size: 0.9rem; color: var(--text-secondary); }
-        .lgpd {
-            margin: 28px 0;
-            padding: 16px 20px;
-            background: rgba(5, 150, 105, 0.08);
-            border: 1px solid rgba(5, 150, 105, 0.35);
-            border-radius: 10px;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-        .lgpd strong { color: var(--accent-green); }
-        .back {
-            text-align: center;
-            margin-top: 32px;
-            padding-top: 24px;
-            border-top: 1px solid var(--border);
-        }
-        .back a { color: var(--accent-cyan); text-decoration: none; font-weight: 600; }
-        .back a:hover { text-decoration: underline; }
-    </style>
+    <link rel="stylesheet" href="assets/css/circuito.css">
 </head>
-<body>
+<body class="page-canal">
     <div class="wrapper">
         <nav class="breadcrumb" aria-label="Navegação">
             <a href="https://caracore.com.br/portfolio.html">Cara Core Informática</a>
@@ -150,5 +54,6 @@
             <a href="index.html">← Voltar ao Circuito Python — Delivery</a> · <a href="https://chmulato.github.io/circuito-python-releases/" target="_blank" rel="noopener">Ver loja (releases)</a>
         </nav>
     </div>
+    <script src="assets/js/circuito.js"></script>
 </body>
 </html>

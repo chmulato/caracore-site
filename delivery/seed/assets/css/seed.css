@@ -1,0 +1,123 @@
+/* CaraCore Seed — Delivery. Estilos para ativação e canal-feedback (usar após seed-portal.css). */
+
+:root {
+    --accent-cyan: #06b6d4;
+}
+
+/* Páginas de layout estreito (ativação, canal-feedback) */
+.page-seed-narrow .wrapper { max-width: 640px; }
+.page-seed-narrow .breadcrumb a { color: var(--accent-cyan); }
+.page-seed-narrow header { padding: 40px 0 32px; }
+.page-seed-narrow header h1 { font-size: 1.5rem; margin-bottom: 8px; }
+.page-seed-narrow header p,
+.page-seed-narrow header .subtitle { font-size: 0.95rem; color: var(--text-secondary); }
+.page-ativacao header h1 { color: var(--accent-gold); }
+
+/* Ativação: steps, card */
+.steps { list-style: none; margin: 24px 0; }
+.steps li {
+    position: relative;
+    padding-left: 36px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    line-height: 1.55;
+}
+.steps li::before {
+    content: attr(data-step);
+    position: absolute;
+    left: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+    color: #0d0f12;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.steps li strong { color: var(--accent-gold); }
+
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-top: 24px;
+}
+.card h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+.card p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 12px; }
+.card p:last-child { margin-bottom: 0; }
+.card a { color: var(--accent-cyan); text-decoration: none; }
+.card a:hover { text-decoration: underline; }
+
+/* LGPD e back (compartilhados) */
+.lgpd {
+    margin-top: 28px;
+    padding: 16px 20px;
+    background: rgba(5, 150, 105, 0.08);
+    border: 1px solid rgba(5, 150, 105, 0.35);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.lgpd strong { color: var(--accent-green); }
+
+.back {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+}
+.back a { color: var(--accent-cyan); text-decoration: none; font-weight: 600; }
+.back a:hover { text-decoration: underline; }
+
+/* Canal feedback: intro, no-phone, channels */
+.intro {
+    margin: 28px 0 24px;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 0.95rem;
+}
+.intro p { margin-bottom: 10px; }
+.intro p:last-child { margin-bottom: 0; }
+.intro strong { color: var(--accent-cyan); }
+
+.no-phone {
+    margin: 16px 0;
+    padding: 14px 18px;
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.4);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+.no-phone strong { color: #f59e0b; }
+
+.channels { display: flex; flex-direction: column; gap: 16px; margin: 28px 0; }
+
+.channel-card {
+    display: block;
+    padding: 20px 24px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+.channel-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15); }
+.channel-card .icon { font-size: 1.75rem; margin-bottom: 8px; }
+.channel-card .title { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+.channel-card .desc { font-size: 0.9rem; color: var(--text-secondary); }

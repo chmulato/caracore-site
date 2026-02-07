@@ -8,34 +8,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-    <style>
-        :root { --bg: #0a0e14; --card: #12171f; --border: #2d3748; --text: #e6edf3; --dim: #8b949e; --gold: #d4a853; --cyan: #06b6d4; --green: #059669; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 24px 20px 48px; line-height: 1.65; }
-        .wrapper { max-width: 720px; margin: 0 auto; }
-        .breadcrumb { font-size: 0.85rem; margin-bottom: 20px; }
-        .breadcrumb a { color: var(--cyan); text-decoration: none; }
-        .breadcrumb a:hover { text-decoration: underline; }
-        .breadcrumb span { color: var(--dim); }
-        header { text-align: center; padding: 32px 0 28px; border-bottom: 1px solid var(--border); }
-        header h1 { font-size: 1.5rem; color: var(--gold); margin-bottom: 8px; }
-        header p { font-size: 0.9rem; color: var(--dim); }
-        .block { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px; }
-        .block h2 { font-size: 1rem; font-weight: 600; color: var(--cyan); margin-bottom: 12px; }
-        .block p, .block ul { font-size: 0.9rem; color: var(--text); margin-bottom: 12px; }
-        .block p:last-child { margin-bottom: 0; }
-        .block ul { margin-left: 20px; }
-        .block li { margin-bottom: 6px; }
-        .block.free { border-left: 4px solid var(--green); }
-        .block.escolas { border-left: 4px solid var(--gold); }
-        .cnpj { font-family: 'JetBrains Mono', monospace; color: var(--gold); }
-        code { background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px; font-size: 0.9em; }
-        .nav-links { margin-top: 28px; font-size: 0.9rem; }
-        .nav-links a { color: var(--cyan); text-decoration: none; }
-        .nav-links a:hover { text-decoration: underline; }
-    </style>
+    <link rel="stylesheet" href="assets/css/circuito.css">
 </head>
-<body>
+<body class="page-licenca">
     <div class="wrapper">
         <nav class="breadcrumb" aria-label="Navegação">
             <a href="https://caracore.com.br/portfolio.html">Cara Core Informática</a>
@@ -58,7 +33,7 @@
         <div class="block escolas">
             <h2>Uso em instituições de ensino — Licença obrigatória (R$ 5,00/aluno/mês)</h2>
             <p>O uso do Circuito Python <strong>em instituições de ensino</strong> (escolas de ensino médio no Brasil, em sala de aula ou laboratório) <strong>não</strong> está coberto pela Licença MIT. É <strong>obrigatória</strong> a contratação de licença: <strong>R$ 5,00 (cinco reais) mensais por aluno matriculado</strong>, valor recorrente.</p>
-            <p><strong>Atenção — responsabilização legal:</strong> Instituições de ensino que utilizarem o curso sem a devida licença podem <strong>responder legalmente</strong> por violação à legislação de direitos autorais e à legislação que tipifica pirataria. A Cara Core Informática reserva todos os direitos e atua com profissionalismo: regularize pelo <a href="portal-escolas.html" style="color: var(--cyan);">Portal Escolas</a> ou entre em contato pelo <a href="canal-feedback.html" style="color: var(--cyan);">canal de feedback</a> (e-mail, WhatsApp ou Telegram).</p>
+            <p><strong>Atenção — responsabilização legal:</strong> Instituições de ensino que utilizarem o curso sem a devida licença podem <strong>responder legalmente</strong> por violação à legislação de direitos autorais e à legislação que tipifica pirataria. A Cara Core Informática reserva todos os direitos e atua com profissionalismo: regularize pelo <a href="portal-escolas.html">Portal Escolas</a> ou entre em contato pelo <a href="canal-feedback.html">canal de feedback</a> (e-mail, WhatsApp ou Telegram).</p>
             <ul>
                 <li><strong>Titular e direitos:</strong> Todos os direitos autorais e patrimoniais do curso permanecem com a <strong>Cara Core Informática</strong>, reservados judicialmente.</li>
                 <li><strong>Controle:</strong> A adesão, o controle de alunos e a cobrança são feitos pelo portal da filial (circuito-python-releases).</li>
@@ -72,12 +47,13 @@
 
         <div class="block">
             <h2>Contato</h2>
-            <p>Dúvidas sobre licenciamento: <a href="canal-feedback.html" style="color: var(--cyan);">Canal de feedback</a> (suporte@caracore.com.br, WhatsApp e Telegram). Escolas: <a href="portal-escolas.html" style="color: var(--cyan);">Portal Escolas</a>.</p>
+            <p>Dúvidas sobre licenciamento: <a href="canal-feedback.html">Canal de feedback</a> (suporte@caracore.com.br, WhatsApp e Telegram). Escolas: <a href="portal-escolas.html">Portal Escolas</a>.</p>
         </div>
 
         <p class="nav-links">
             <a href="portal-escolas.html">Portal Escolas</a> · <a href="canal-feedback.html">Canal de feedback</a> · <a href="index.html">← Circuito Python — Delivery</a> · <a href="https://chmulato.github.io/circuito-python-releases/" target="_blank" rel="noopener">Ver loja (releases)</a>
         </p>
     </div>
+    <script src="assets/js/circuito.js"></script>
 </body>
 </html>

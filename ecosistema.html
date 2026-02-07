@@ -14,7 +14,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Nosso Ecossistema | Cara Core Informática</title>
-  <meta name="description" content="Conheça o ecossistema da Cara Core Informática: matriz, produtos e lojas online. PDV, Minerador 4.0, Reino OIDC, Circuito Python, Hub, Área 51, Seed.">
+  <meta name="description" content="Conheça o ecossistema da Cara Core Informática: matriz, produtos, lojas e a Garagem (futuros lançamentos). PDV, Minerador 4.0, Reino OIDC, RU Soberano, Seed.">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
   <link rel="canonical" href="https://caracore.com.br/ecosistema.html">
@@ -109,7 +109,7 @@
           <i class="bi bi-globe2 text-primary"></i> Conheça o Nosso Eco Mundo
         </h1>
         <p class="lead text-center text-muted mb-4">
-          Cada produto tem <strong>apresentação</strong> no site (matriz), <strong>oficina</strong> (código-fonte) e <strong>loja</strong> (vitrine / releases). Diagrama em camadas: matriz → produtos → oficinas → lojas.
+          Cada produto tem <strong>apresentação</strong> no site (matriz), <strong>oficina</strong> (código-fonte) e <strong>loja</strong> (vitrine / releases). Produtos em desenvolvimento ficam na <strong>Garagem</strong>: futuros lançamentos em trabalho na respectiva oficina e loja.
         </p>
         <div class="diagram-container mb-4 p-3 bg-white rounded shadow-sm">
           <div class="mermaid">
@@ -144,6 +144,11 @@ flowchart TB
         L6[caracore-area51-releases]
         L7[caracore-seed-releases]
     end
+    subgraph GARAGEM["Garagem — futuros lançamentos (em trabalho)"]
+        G1[RU Soberano]
+        G2[caracore-ru]
+        G3[caracore-ru-releases]
+    end
     M --> P1 & P2 & P3 & P4 & P5 & P6 & P7
     P1 --> O1
     P2 --> O2
@@ -159,10 +164,18 @@ flowchart TB
     O5 --> L5
     O6 --> L6
     O7 --> L7
+    M --> G1
+    G1 --> G2
+    G2 --> G3
           </div>
         </div>
+        <p class="text-center small text-muted mb-2">
+          <strong>Garagem:</strong> produtos em desenvolvimento com apresentação (delivery) na matriz, oficina e loja já no ar; ao lançar, entram no fluxo completo dos produtos.
+        </p>
         <p class="text-center small text-muted mb-0">
           <a href="portfolio.html" class="text-decoration-none"><i class="bi bi-folder-fill"></i> Ver portfólio completo</a>
+          &nbsp;·&nbsp;
+          <a href="delivery/ru/" class="text-decoration-none"><i class="bi bi-box-seam"></i> RU Soberano (garagem)</a>
           &nbsp;·&nbsp;
           <a href="index.html#contato" class="text-decoration-none"><i class="bi bi-envelope"></i> Contato</a>
         </p>

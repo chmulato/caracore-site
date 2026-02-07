@@ -13,6 +13,9 @@ Produtos em foco (entrega ativa):
   5. Cara Core Hub — gestão logística e e-commerce; portal delivery (matriz + vitrine); SQLite local; negócio aplicável: Tia Sócia; apresentação Tia Sócia em slides/
   6. Suporte Área 51 — suporte às empresas médias do Brasil para configurar os portais que o produto Área 51 oferece (OAuth 2.1, OIDC, PKCE); matriz delivery/area51 + loja caracore-area51-releases; exige tempo e investimento
 
+Garagem (futuros lançamentos — matriz, oficina e loja já no ar):
+  8. RU Soberano — simulador reator PFR (Langmuir-Hinshelwood), história do RU e Engenharia Química (1991→2026); matriz delivery/ru, loja caracore-ru-releases, oficina caracore-ru; lançamento previsto 18/Junho/2026; R$ 29,90; degustação FREE até o Buffet; ramo Garagem em ecosistema.html
+
 Referência (sem oferta ativa):
   7. Cara Core Seed — ferramenta interna; produto existe, aplicação não disponível (não há download nem venda)
 
@@ -115,6 +118,18 @@ Referência (sem oferta ativa):
 
   Ação sugerida: Manter alinhamento matriz ↔ loja; mensagem "suporte às empresas médias do Brasil para configurar os portais".
 
+2.8 RU Soberano (Garagem — futuros lançamentos)
+
+  Critério                  | Status | Detalhe
+  --------------------------|--------|--------------------------------------------------------
+  Posicionamento            | OK     | Produto na Garagem (ecosistema.html): matriz, oficina e loja no ar; lançamento 18/Junho/2026. Simulador reator PFR, história do RU e Engenharia Química (1991→2026).
+  Proposta de valor         | OK     | Inteligência de Processo + Memorial RU; degustação FREE até o Buffet; R$ 29,90 jornada completa; produto em evolução; expectativa × realidade (Café Mania 2.0 vs material sério).
+  Preço                     | OK     | R$ 29,90 (jornada completa); degustação FREE até o Buffet.
+  Delivery funcional        | OK     | Matriz: delivery/ru (index, canal-feedback, MIRROR_DELIVERY.md). Loja: chmulato.github.io/caracore-ru-releases/ (docs: index, download, licenca-uso, manual-tecnico, canal-feedback, MIRROR_DELIVERY.md). Oficina: caracore-ru. Loja alinhada à matriz.
+  Garagem                   | OK     | Ramo Garagem no ecossistema (ecosistema.html): Matriz → RU Soberano → caracore-ru → caracore-ru-releases. Link para delivery/ru na página do ecossistema.
+
+  Ação sugerida: Manter alinhamento matriz (delivery/ru) ↔ loja (caracore-ru-releases). Ao lançar (18/Junho/2026), considerar mover RU Soberano do subgraph Garagem para o fluxo completo no diagrama (opcional). Ver VALIDACAO_LOJAS_MATRIZ.txt (assunto Garagem).
+
 -------------------------------------------------------------------------------
 
 3. FUNCIONALIDADE DOS FLUXOS (CLIENTE FINAL)
@@ -128,19 +143,20 @@ Referência (sem oferta ativa):
   Circuito Python — baixar EXE    | Portfólio → delivery/circuito/ ou circuito-python-releases → Download → releases/latest (CircuitoPython.exe) | Sim; prioridade EXE; link curso HTML não destacado
   Cara Core Hub — portal / Tia Sócia | Portfólio → delivery/hub/ ou caracore-hub-releases → index, download (releases quando houver), Apresentação Tia Sócia (slides/) | Sim; SQLite local; negócio aplicável Tia Sócia
   Suporte Área 51 — orçamento     | Portfólio → delivery/area51/ ou caracore-area51-releases → Solicitar suporte / Orçamento (canal-feedback) | Sim; produto = suporte para configurar portais; empresas médias do Brasil
+  RU Soberano (Garagem) — conhecer / download | delivery/ru/ ou chmulato.github.io/caracore-ru-releases/ → index, download (degustação FREE), licenca-uso (R$ 29,90) | Sim; lançamento 18/Junho/2026; ramo Garagem no ecossistema
 
 -------------------------------------------------------------------------------
 
 4. CONSISTÊNCIA DE MENSAGEM (PÚBLICO SELETO)
 
-  Tema                          | PDV                    | Minerador 4.0           | Reino OIDC                    | Seed              | Circuito Python          | Cara Core Hub            | Suporte Área 51
-  -------------------------------|------------------------|-------------------------|-------------------------------|-------------------|---------------------------|----------------------------|----------------------------------
-  Nome completo / posicionamento| Cara Core PDV          | chmulatoETE Minerador 4.0| Reino OIDC — Reino das Id. Fed.| Cara Core Seed (existe; app não disponível) | Circuito Python   | Cara Core Hub (gestão logística; SQLite; Tia Sócia) | Suporte Área 51 (configurar portais; empresas médias Brasil)
-  Escopo                        | localhost + Windows Desktop; SQLite | —                | Prioridade EXE                 | Ref. interna      | Prioridade EXE            | WAR/Tomcat; SQLite local  | OAuth 2.1, OIDC, PKCE; portais
-  Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (não disponível) | FREE (MIT); escolas R$ 5,00/aluno/mês | B2B / sob consulta | Sob consulta
-  Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Não (não disponível) | Sim (CircuitoPython.exe)  | WAR (releases quando houver) | Serviço (não EXE)
-  Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Ref. (portal informativo) | Licença e portal escolas | Canal feedback; doc tecnologia | Canal feedback; LGPD
-  Link direto download/EXE       | Matriz delivery/pdv + loja caracore-pdv-releases | Download → caracore-ete-releases | delivery/oidc + reino-oidc-releases → releases/latest | Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest | delivery/hub + caracore-hub-releases; slides Tia Sócia | delivery/area51 + caracore-area51-releases; Solicitar suporte
+  Tema                          | PDV                    | Minerador 4.0           | Reino OIDC                    | Seed              | Circuito Python          | Cara Core Hub            | Suporte Área 51           | RU Soberano (Garagem)
+  -------------------------------|------------------------|-------------------------|-------------------------------|-------------------|---------------------------|----------------------------|----------------------------------|----------------------------------
+  Nome completo / posicionamento| Cara Core PDV          | chmulatoETE Minerador 4.0| Reino OIDC — Reino das Id. Fed.| Cara Core Seed (existe; app não disponível) | Circuito Python   | Cara Core Hub (gestão logística; SQLite; Tia Sócia) | Suporte Área 51 (configurar portais; empresas médias Brasil) | RU Soberano (reator PFR; história RU + Eng. Química; Garagem)
+  Escopo                        | localhost + Windows Desktop; SQLite | —                | Prioridade EXE                 | Ref. interna      | Prioridade EXE            | WAR/Tomcat; SQLite local  | OAuth 2.1, OIDC, PKCE; portais | Reator PFR; degustação FREE; R$ 29,90
+  Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (não disponível) | FREE (MIT); escolas R$ 5,00/aluno/mês | B2B / sob consulta | Sob consulta | R$ 29,90; degustação FREE
+  Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Não (não disponível) | Sim (CircuitoPython.exe)  | WAR (releases quando houver) | Serviço (não EXE) | Soberania_RU_v1.0 (lançamento 18/Jun/2026)
+  Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Ref. (portal informativo) | Licença e portal escolas | Canal feedback; doc tecnologia | Canal feedback; LGPD | Produto em evolução; canal feedback
+  Link direto download/EXE       | Matriz delivery/pdv + loja caracore-pdv-releases | Download → caracore-ete-releases | delivery/oidc + reino-oidc-releases → releases/latest | Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest | delivery/hub + caracore-hub-releases; slides Tia Sócia | delivery/area51 + caracore-area51-releases; Solicitar suporte | delivery/ru + caracore-ru-releases; Garagem
 
 -------------------------------------------------------------------------------
 
@@ -154,7 +170,8 @@ Referência (sem oferta ativa):
   6. Cara Core PDV: Matriz = delivery/pdv; loja online = https://chmulato.github.io/caracore-pdv-releases/. Documentado em delivery/pdv/MIRROR_DELIVERY.md. Ver ECOSYSTEM_LOJAS.md para referência central das lojas.
   7. Cara Core Hub: Portal delivery/hub (matriz) e loja online caracore-hub-releases (https://chmulato.github.io/caracore-hub-releases/) alinhados; negócio aplicável Tia Sócia citado; apresentação Tia Sócia em slides/ em ambos. Ao publicar releases (WAR), atualizar download.html com link para releases/latest.
   8. Suporte Área 51: Produto = suporte às empresas médias do Brasil para configurar os portais que o produto Área 51 oferece. Matriz delivery/area51 e loja caracore-area51-releases; CTAs "Ver loja (releases)" na matriz e "Ver apresentação (matriz)" na loja. Ver VALIDACAO_LOJAS_MATRIZ.txt e ECOSYSTEM_LOJAS.txt.
-  9. Revisão periódica: Usar este documento como checklist em próximas releases (novos produtos, mudança de preço, novos CTAs). Referência das URLs de lojas: ECOSYSTEM_LOJAS.txt. Mapeamento dos repositórios: ECOSYSTEM_CARA_CORE.txt. Validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt. Mapa visual do ecossistema (matriz → produtos → oficinas → lojas): caracore.com.br/ecosistema.html (Conheça o Nosso Eco Mundo); ícone eco em Recursos e Planos na index.
+  9. RU Soberano (Garagem): Produto no ramo Garagem do ecossistema (ecosistema.html). Matriz delivery/ru, loja caracore-ru-releases, oficina caracore-ru. Mensagem: RU Soberano, produto em evolução, degustação FREE até o Buffet, Inteligência de Processo + Memorial RU R$ 29,90, lançamento 18/Junho/2026. Manter alinhamento matriz ↔ loja. Ver VALIDACAO_LOJAS_MATRIZ.txt (assunto Garagem).
+  10. Revisão periódica: Usar este documento como checklist em próximas releases (novos produtos, mudança de preço, novos CTAs). Referência das URLs de lojas: ECOSYSTEM_LOJAS.txt. Mapeamento dos repositórios: ECOSYSTEM_CARA_CORE.txt. Validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt (inclui Garagem). Mapa visual do ecossistema (matriz → produtos → oficinas → lojas; ramo Garagem): caracore.com.br/ecosistema.html (Conheça o Nosso Eco Mundo); ícone eco em Recursos e Planos na index.
 
 -------------------------------------------------------------------------------
 
@@ -162,6 +179,6 @@ Referência (sem oferta ativa):
 
   - Funcionalidade: Os fluxos de apresentação e download estão coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python, Cara Core Hub, Suporte Área 51). PDV: matriz delivery/pdv e loja online https://chmulato.github.io/caracore-pdv-releases/; escopo localhost + Windows Desktop, SQLite; portfólio com "Ver loja (releases)" e "Baixar EXE". Seed: produto existe, aplicação não disponível — sem oferta de download nem venda; portfólio com seção no final; delivery e vitrine apenas informam. Hub: matriz delivery/hub e loja online https://chmulato.github.io/caracore-hub-releases/; gestão logística e e-commerce; SQLite local; Tia Sócia e apresentação em slides/. Suporte Área 51: matriz delivery/area51 e loja caracore-area51-releases; produto = suporte às empresas médias do Brasil para configurar os portais; CTAs alinhados (Ver loja / Ver apresentação matriz).
   - Premissa: Não temos braço para a startup; foco em aplicações relevantes para o negócio. Seed permanece no portfólio como referência.
-  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Lojas e matriz com links cruzados: cada matriz tem "Ver loja (releases)"; cada loja tem "Ver apresentação (matriz)". Referência das lojas: ECOSYSTEM_LOJAS.txt; mapeamento do ecossistema: ECOSYSTEM_CARA_CORE.txt; validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt. Página do ecossistema (diagrama em camadas: matriz, produtos, oficinas, lojas) em caracore.com.br/ecosistema.html; acesso pelo ícone eco em Recursos e Planos na index ("Conheça o Nosso Eco Mundo"). Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python. Reino OIDC loja: reino-oidc-releases (docs/); caminho local D:\dev\reino-oidc-releases.
+  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Lojas e matriz com links cruzados: cada matriz tem "Ver loja (releases)"; cada loja tem "Ver apresentação (matriz)". Referência das lojas: ECOSYSTEM_LOJAS.txt; mapeamento do ecossistema: ECOSYSTEM_CARA_CORE.txt; validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt (inclui Garagem — RU Soberano). Página do ecossistema (diagrama em camadas: matriz, produtos, oficinas, lojas; ramo Garagem — futuros lançamentos) em caracore.com.br/ecosistema.html; acesso pelo ícone eco em Recursos e Planos na index ("Conheça o Nosso Eco Mundo"). RU Soberano: primeiro produto na Garagem (delivery/ru, caracore-ru-releases, caracore-ru); lançamento 18/Junho/2026; R$ 29,90; degustação FREE. Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python. Reino OIDC loja: reino-oidc-releases (docs/); caminho local D:\dev\reino-oidc-releases.
 
 Documento gerado para validação de negócio — Cara Core Informática.

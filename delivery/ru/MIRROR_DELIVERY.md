@@ -26,6 +26,8 @@ O conteúdo desta chamada (matriz) descreve o produto, a data de lançamento e a
 |--------|-----------|
 | `index.html` | Chamada: o que é RU Soberano, lançamento 18/Junho/2026, oficina · loja |
 | `canal-feedback.html` | E-mail suporte@caracore.com.br, Telegram ou WhatsApp +55 (41) 9 9909-7797. Não atendemos ligações telefônicas. |
+| `fluxo_mensagens_vendas.md` | Fluxo de mensagens (Conversion & Technical Support): boas-vindas HWID, teaser Data Sheet, automação pós-PIX, instruções pós-venda. |
+| `email_pos_venda.html` | Template de e-mail de entrega: Dossiê Soberano (PDF), link executável, license.key; tom “Parabéns pela Ascensão Acadêmica”. Substituir [NOME_ALUNO] e [LINK_EXECUTAVEL]. |
 | `MIRROR_DELIVERY.md` | Este arquivo: regras de espelho e alinhamento para lançamento. |
 
 ## Atualização

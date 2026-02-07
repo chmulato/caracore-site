@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canal de Feedback — Sugestões, Bugs e Insights | Minerador 4.0 / caracore-ete-releases</title>
+    <title>Canal de Feedback — RU Soberano | Cara Core Informática</title>
+    <meta name="description" content="Suporte e feedback do RU Soberano: e-mail, WhatsApp e Telegram. Não atendemos ligações telefônicas.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -11,12 +12,10 @@
         :root {
             --bg-dark: #0a0c0e;
             --bg-card: #13171c;
-            --bg-elevated: #1a1f26;
             --text-primary: #e6edf3;
             --text-secondary: #8b949e;
-            --accent-green: #059669;
             --accent-cyan: #06b6d4;
-            --accent-amber: #f59e0b;
+            --accent-green: #059669;
             --whatsapp: #25d366;
             --telegram: #0088cc;
             --border: #2d333b;
@@ -31,22 +30,17 @@
             padding: 0 20px 40px;
         }
         .wrapper { max-width: 640px; margin: 0 auto; }
+        .breadcrumb { font-size: 0.85rem; margin-bottom: 24px; padding-top: 16px; }
+        .breadcrumb a { color: var(--accent-cyan); text-decoration: none; }
+        .breadcrumb a:hover { text-decoration: underline; }
+        .breadcrumb span { color: var(--text-secondary); }
         header {
             padding: 40px 0 32px;
             text-align: center;
             border-bottom: 1px solid var(--border);
         }
-        header h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 10px;
-        }
-        header .subtitle {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
+        header h1 { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+        header .subtitle { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
         .intro {
             margin: 28px 0 24px;
             padding: 20px;
@@ -59,6 +53,16 @@
         .intro p { margin-bottom: 10px; }
         .intro p:last-child { margin-bottom: 0; }
         .intro strong { color: var(--accent-cyan); }
+        .no-phone {
+            margin: 16px 0;
+            padding: 12px 16px;
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.35);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .no-phone strong { color: #f59e0b; }
         .channels {
             display: flex;
             flex-direction: column;
@@ -75,10 +79,7 @@
             color: inherit;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .channel-card:hover {
-            border-color: var(--accent-cyan);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
-        }
+        .channel-card:hover { border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(6, 182, 212, 0.15); }
         .channel-card.whatsapp:hover { border-color: var(--whatsapp); box-shadow: 0 0 20px rgba(37, 211, 102, 0.15); }
         .channel-card.telegram:hover { border-color: var(--telegram); box-shadow: 0 0 20px rgba(0, 136, 204, 0.2); }
         .channel-card.email:hover { border-color: var(--accent-cyan); box-shadow: 0 0 20px rgba(6, 182, 212, 0.2); }
@@ -101,48 +102,52 @@
             padding-top: 24px;
             border-top: 1px solid var(--border);
         }
-        .back a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-            font-weight: 600;
-        }
+        .back a { color: var(--accent-cyan); text-decoration: none; font-weight: 600; }
         .back a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
     <div class="wrapper">
+        <nav class="breadcrumb" aria-label="Navegação">
+            <a href="https://caracore.com.br/portfolio.html">Cara Core Informática</a>
+            <span> · </span>
+            <a href="index.html">RU Soberano — Delivery</a>
+            <span> · </span>
+            <span>Canal de feedback</span>
+        </nav>
         <header>
-            <h1>Canal de Feedback — Jovem Aprendista e Entusiasta</h1>
-            <p class="subtitle">Sugestões, bugs, desabafos e insights para evoluir o Minerador 4.0 e a soberania mineral.</p>
+            <h1>Canal de Feedback — RU Soberano</h1>
+            <p class="subtitle">Sugestões, dúvidas e relatos sobre o simulador PFR e o kernel Langmuir-Hinshelwood. Atendimento por e-mail, WhatsApp ou Telegram.</p>
         </header>
         <section class="intro">
-            <p><strong>Este canal está aberto na internet</strong> para você que usa o simulador, estuda terras raras ou quer ver o produto melhorar.</p>
-            <p>Envie pelo <strong>WhatsApp</strong>, <strong>Telegram</strong> ou <strong>e-mail</strong>: relatos de problema, ideias de melhoria, críticas construtivas ou só um desabafo sobre a experiência. Sua voz ajuda a priorizar o próximo release.</p>
+            <p><strong>Este canal está aberto</strong> para quem usa ou avalia o RU Soberano (reator catalítico PFR, console de engenharia, relatórios de operação).</p>
+            <p>Envie pelo <strong>WhatsApp</strong>, <strong>Telegram</strong> ou <strong>e-mail</strong>: dúvidas técnicas, feedback sobre o kernel de cálculo, sugestões ou pedidos de informação sobre o lançamento (18/Junho/2026) e a loja caracore-ru-releases.</p>
         </section>
-        <div class="no-phone" style="margin: 16px 0; padding: 12px 16px; background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 8px; font-size: 0.9rem; color: var(--text-secondary);"><strong style="color: #f59e0b;">Não atendemos ligações telefônicas.</strong> Utilize apenas e-mail, WhatsApp ou Telegram.</div>
+        <div class="no-phone">
+            <strong>Não atendemos ligações telefônicas.</strong> Utilize apenas e-mail, WhatsApp ou Telegram.
+        </div>
         <section class="channels">
-            <a href="https://wa.me/5541999097797?text=Olá%2C%20vim%20pelo%20portal%20caracore-ete-releases%20para%20enviar%20feedback%20%2F%20sugestão%20%2F%20relato%20sobre%20o%20Minerador%204.0." class="channel-card whatsapp" target="_blank" rel="noopener">
+            <a href="mailto:suporte@caracore.com.br?subject=Feedback%20RU%20Soberano" class="channel-card email" target="_blank" rel="noopener">
+                <div class="icon">✉️</div>
+                <div class="title">E-mail — suporte@caracore.com.br</div>
+                <div class="desc">Assunto sugerido: &quot;Feedback RU Soberano&quot;. Para dúvidas técnicas, sugestões e informações sobre lançamento.</div>
+            </a>
+            <a href="https://wa.me/5541999097797?text=Olá%2C%20vim%20pelo%20portal%20RU%20Soberano%20para%20feedback%20%2F%20dúvida%20técnica." class="channel-card whatsapp" target="_blank" rel="noopener">
                 <div class="icon">💬</div>
                 <div class="title">WhatsApp — +55 (41) 9 9909-7797</div>
-                <div class="desc">Toque para abrir uma conversa e enviar sua sugestão, bug ou insight. Resposta em horário comercial.</div>
+                <div class="desc">Envie sua mensagem. Resposta em horário comercial. Não atendemos ligações telefônicas.</div>
             </a>
             <a href="https://t.me/chmulato" class="channel-card telegram" target="_blank" rel="noopener">
                 <div class="icon">✈️</div>
                 <div class="title">Telegram — @chmulato</div>
-                <div class="desc">Entre no canal ou envie mensagem para trocar ideias, reportar problemas e acompanhar novidades do projeto.</div>
-            </a>
-            <a href="mailto:suporte@caracore.com.br?subject=Feedback%20Minerador%204.0%20%2F%20caracore-ete-releases" class="channel-card email" target="_blank" rel="noopener">
-                <div class="icon">✉️</div>
-                <div class="title">E-mail — suporte@caracore.com.br</div>
-                <div class="desc">Envie sugestões, relatos de bug ou dúvidas por e-mail. Assunto já sugerido: &quot;Feedback Minerador 4.0 / caracore-ete-releases&quot;.</div>
+                <div class="desc">Canal e mensagens para dúvidas, feedback e informações sobre o RU Soberano e a loja (lançamento 18/Junho/2026).</div>
             </a>
         </section>
         <div class="lgpd">
-            <strong>Privacidade (LGPD):</strong> Ao enviar seu feedback, você autoriza o uso técnico da sugestão para evolução do projeto. Seus dados pessoais não serão expostos nem vendidos. O tratamento segue a Lei Geral de Proteção de Dados; usamos apenas o necessário para resposta e melhoria do simulador.
+            <strong>Privacidade (LGPD):</strong> Seus dados são usados apenas para resposta e melhoria do produto. Não vendemos nem expomos dados pessoais. O tratamento segue a Lei Geral de Proteção de Dados.
         </div>
         <nav class="back">
-            <a href="index.html">← Voltar ao portal caracore-ete-releases</a><br>
-            <a href="https://github.com/chmulato/caracore-ete-releases" target="_blank" rel="noopener" style="font-size:0.9rem; margin-top:8px; display:inline-block;">Repositório chmulato/caracore-ete-releases</a>
+            <a href="index.html">← Voltar ao RU Soberano — Delivery</a>
         </nav>
     </div>
 </body>

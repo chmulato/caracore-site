@@ -39,8 +39,13 @@
         </section>
 
         <section class="card">
+            <h2>Banco local e Blindagem de Dados</h2>
+            <p>Persistência em <strong>SQLite</strong> no seu computador: o sistema não depende de internet para funcionar e nunca fica “fora do ar” por falha de conexão. <strong>Blindagem de Dados</strong> inclui modo WAL (Write-Ahead Logging), verificação de integridade na abertura, backups automáticos compactados (GZIP) a cada hora e no fechamento do app, e encerramento limpo com VACUUM. A estratégia segue o <strong>princípio do Antifrágil</strong> (Nassim Nicholas Taleb), como no PDV Cara Core: ganhar com choques e perturbações, não só resistir. Os dados do tatuador ficam protegidos e recuperáveis.</p>
+        </section>
+
+        <section class="card">
             <h2>Arquitetura em camadas</h2>
-            <p><strong>Domínio:</strong> entidades (Appointment, Expense, ExpenseType) e contratos de repositório (AppointmentRepository, ExpenseRepository). <strong>Core:</strong> tipo Result para operações que podem falhar. <strong>Desktop:</strong> aplicação JavaFX com janela principal. Persistência e integrações futuras ficam em implementações dos repositórios (SQLite, API etc.).</p>
+            <p><strong>Domínio:</strong> entidades (Appointment, Expense, ExpenseType) e contratos de repositório (AppointmentRepository, ExpenseRepository). <strong>Core:</strong> tipo Result para operações que podem falhar. <strong>Desktop:</strong> aplicação JavaFX com janela principal. Persistência em SQLite local; integrações futuras em implementações dos repositórios.</p>
         </section>
 
         <section class="card">

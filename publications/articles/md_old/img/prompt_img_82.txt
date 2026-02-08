@@ -1,3 +1,0 @@
-Prompt para imagem do artigo 82:
-
-"Imagem em formato 16:9, paisagem. Circuito Python democratizando a programação: à esquerda, o déficit de educação técnica no Brasil (escola, jovens); ao centro, Python como linguagem acessível, modelo gratuito para pessoas e pago para escolas, gamificação; à direita, inclusão digital (certificado, diversidade, futuro). Cores vibrantes, ícones de código, jogos, livros. Estilo educativo e moderno. Transmite: impacto social e educacional do Circuito Python no Brasil."

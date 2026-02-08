@@ -1,3 +1,0 @@
-Prompt para imagem do artigo 84:
-
-"Imagem em formato 16:9, paisagem. Software técnico com equipes enxutas: à esquerda, o mito das grandes equipes (contraste com caos ou burocracia); ao centro, modularidade, ferramentas e práticas — blocos que se encaixam, pipeline, consistência; à direita, o caso Cara Core e o futuro do desenvolvimento enxuto. Cores profissionais, ícones de código, equipe pequena mas eficiente. Estilo lean e moderno. Transmite: construir software técnico em escala com times enxutos."

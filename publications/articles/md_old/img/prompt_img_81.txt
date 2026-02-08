@@ -1,3 +1,0 @@
-Prompt para imagem do artigo 81:
-
-"Imagem em formato 16:9, paisagem. Hub CaraCore como máquina de automação: ao centro, um núcleo (orquestrador) conectando pessoas, negócios e comunidades por linhas ou fluxos; à esquerda, integrações (APIs, sistemas, mensagens); à direita, caso Tia Sócia e aplicações no varejo e serviços. Cores Cara Core, sensação de rede e movimento. Estilo técnico e acolhedor. Transmite: automação de última milha e plataforma central que conecta tudo."

@@ -1,3 +1,0 @@
-Prompt para imagem do artigo 75:
-
-"Imagem em formato 16:9, paisagem. Cena que transmita a nova identidade de uma startup boutique de software: à esquerda, referência sutil a um Brasil emergente (mapa, gráficos de crescimento); ao centro, uma transição visual de 'serviços' para 'produtos próprios' (ícones modulares, cubos que se encaixam); à direita, o portfólio como vitrine (PDV, Hub, OIDC, ETE, Circuito Python). Cores Cara Core (roxo, azul), tons de crescimento (verde suave) e fundo limpo. Estilo moderno, profissional e acolhedor. Transmite: redesenho do software brasileiro com filosofia modular e boutique."

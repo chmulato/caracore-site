@@ -1,7 +1,0 @@
-PROMPT PARA IMAGEM - ARTIGO 56
-"Quando a IA Não Tem Todas as Respostas: A Jornada Real do OIDC"
-Formato: 16:9 Landscape
-
----
-
-Create a professional split-screen illustration in 16:9 landscape format. Left side shows a bright, simplified world with a glowing AI hologram confidently displaying code snippets with green checkmarks and "OIDC in 5 minutes!" banner in vibrant colors. Right side depicts reality in professional tones: a developer at a desk late at night under warm desk lamp light, surrounded by open technical books (one prominently showing "OAuth 2.0 & OIDC" spine), scattered documentation papers, handwritten notes with crossed-out attempts, a laptop screen showing "Error 400: Bad Request", coffee mug, and sticky notes on the wall marked "Article 1 ✓", "Article 2 ✓", "Article 3 ✓", "Article 4 - Truth". A subtle bridge or dividing line connects both sides with "Reality Check" label. Include floating authentication symbols (padlock icons, JWT tokens, OAuth flow diagrams) in the background. Color palette: AI side uses bright blues and purples with glow effects; Reality side uses professional blues (#0EA5E9), dark greens (#244d30), warm browns (#6b4226), and natural wood tones. Modern, clean illustration style suitable for corporate blog and LinkedIn. The image should convey "AI shortcuts vs deep knowledge" and feel authentic, professional, and relatable to developers and business managers.

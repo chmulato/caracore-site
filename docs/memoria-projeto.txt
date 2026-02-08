@@ -1,0 +1,77 @@
+# Memória do Projeto — Matriz (Cara Core Informática)
+
+Documento de referência rápida sobre o site matriz (caracore.com.br). Atualizar quando houver mudanças relevantes de estrutura, delivery ou integrações.
+
+Data da última atualização: 2026-02-08
+
+---
+
+## O que é a matriz
+
+- **Site oficial:** [https://www.caracore.com.br](https://www.caracore.com.br) (e caracore.com.br).
+- **Repositório:** cara-core-site.
+- **Papel:** Portfólio, delivery (portais de produto), wiki, Área 51 (autenticação OIDC), publicações. **Matriz** = apresentação completa e consultoria; **lojas** (releases em GitHub Pages) = vitrine e download.
+- **Backend:** [https://caracore-backend-docker.azurewebsites.net](https://caracore-backend-docker.azurewebsites.net) — API Flask (sessões, tokens, auditoria).
+
+---
+
+## Autenticação e Área 51
+
+- **OAuth 2.1 + OIDC**, PKCE obrigatório. Provedores: Google OAuth e Microsoft Entra ID.
+- **Páginas:** secure/index.html (login), secure/callback.html, secure/restrita.html, secure/logout.html, admin-logs.
+- **Fluxo:** Usuário → Provedor → callback com code → troca de token (navegador ou backend) → restrita.
+
+---
+
+## Estrutura principal (cara-core-site)
+
+- **index.html** — Página principal. planos.html, 404.html, ecosistema.html (mapa visual do ecossistema).
+- **portfolio.html** — Portfólio de produtos (âncoras: #caracore-pdv, #caracore-hub, #caracore-seed, #caracore-ink-agenda, #ru-soberano, #minerador-ete, #area-51, #circuito-python, #reino-oidc).
+- **delivery/** — Portais de produto (matriz). Cada subpasta = um produto/serviço.
+- **secure/** — Área 51: login OIDC, área restrita, logout, painel de logs.
+- **backend/** — API Flask (Azure); token_storage, session_manager, logs, rate_limiter.
+- **wiki/** — Wiki interna (projetos, tecnologias, trilhas).
+- **docs/** — Documentação técnica (fases, deploy, testes, AZURE_DEPLOY, etc.).
+- **handbook/** — Manuais e apostilas.
+- **publications/** — Artigos e livros.
+
+---
+
+## Delivery (portais na matriz)
+
+| Portal        | Caminho           | Produto / serviço |
+|---------------|-------------------|-------------------|
+| Ink Agenda    | delivery/ink/     | Cara Core Ink Agenda — gestão para estúdios de tatuagem. Lançamento 26/06/2026. Cofre digital, Blindagem de Dados, Antifrágil. |
+| RU Soberano   | delivery/ru/      | Simulação DES (RU); ambientação RETRO (gratuito) e simulador de reator (pago). Disponível 18/06/2026. |
+| ETE / Minerador | delivery/ete/   | Minerador 4.0, Ouro 4.0, Laboratório Campo Largo. |
+| PDV           | delivery/pdv/     | Cara Core PDV (wiki, consultoria, download). |
+| Seed          | delivery/seed/    | Cara Core Seed (vitrine; aplicação não disponível ao público). |
+| Hub           | delivery/hub/     | Cara Core Hub (Tia Sócia, logística). |
+| Área 51       | delivery/area51/  | Suporte OAuth 2.1/OIDC/PKCE para empresas. |
+| Circuito Python | delivery/circuito/ | Curso Circuito Python; loja com EXE. |
+| Reino OIDC    | delivery/oidc/    | Reino OIDC (identidade, conteúdo didático). |
+
+- Cada portal tem index.html, canal-feedback.html e, quando aplicável, download.html, tecnologia.html.
+- **Referência de links loja → matriz:** delivery/LINKS_LOJAS_PARA_MATRIZ.md.
+
+---
+
+## Lojas (releases) e matriz
+
+- As **lojas** (repositórios *-releases, GitHub Pages) apontam para a matriz para “apresentação completa” e “consultoria”.
+- Ex.: caracore-ink-releases → caracore.com.br/delivery/ink/ e portfolio.html#caracore-ink-agenda.
+- **Documentos de ecossistema na raiz:** ECOSYSTEM_CARA_CORE.txt, ECOSYSTEM_LOJAS.txt, COMPONENTES_LOJA.txt.
+
+---
+
+## Comandos e deploy
+
+- **Backend (Azure):** Docker, CI/CD via GitHub Actions; scripts em scripts/ (deploy_to_azure.py, deploy_production.py, rollback.py).
+- **Site estático:** GitHub Pages ou hospedagem do domínio; CNAME para caracore.com.br.
+
+---
+
+## Decisões recentes (para contexto)
+
+- Ink na matriz: mensagem “cofre digital”, Blindagem de Dados, princípio do Antifrágil (Nassim Nicholas Taleb), alinhado ao PDV.
+- Links relativos nas lojas (Ink, ETE) para evitar quebra ao publicar; matriz usa URLs absolutas para caracore.com.br onde fizer sentido.

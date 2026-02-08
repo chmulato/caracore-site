@@ -32,4 +32,4 @@ O conteúdo desta chamada (matriz) descreve o produto, a data de lançamento e a
 
 ## Atualização
 
-Ao alterar a chamada na matriz, manter alinhada a mensagem com a oficina (caracore-ru) e, quando a loja (caracore-ru-releases) for publicada, com a vitrine da loja.
+Ao alterar a chamada na matriz, manter alinhada a mensagem com a oficina (caracore-ru) e com a vitrine da loja (caracore-ru-releases). A matriz reflete as novidades da loja: aviso “pronto na garagem” e “disponível dia 18 de junho de 2026”, proposta surpresa (Biotecnologia), gratuito vs pago (R$ 29,90), CTAs e footer alinhados.

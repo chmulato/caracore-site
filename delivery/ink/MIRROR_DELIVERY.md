@@ -16,7 +16,7 @@ Este diretório é o **portal de delivery do Cara Core Ink Agenda** no domínio 
 - **tecnologia.html** — Stack: Java 21, JavaFX 21, Maven; arquitetura em camadas; build e testes (JaCoCo).
 - **canal-feedback.html** — E-mail suporte@caracore.com.br, WhatsApp e Telegram (assunto Cara Core Ink Agenda).
 
-Em ambas (matriz e vitrine), o **aviso padrão** é o mesmo: **App Cara Core Ink Agenda para Windows Desktop — 26 de junho de 2026.** A mensagem e a data estão alinhadas; a matriz é a fonte de apresentação completa e consultoria; a loja é a vitrine pública e o ponto de download.
+Em ambas (matriz e vitrine), o **aviso padrão** é o mesmo: **App Cara Core Ink Agenda para Windows Desktop — 26 de junho de 2026.** A mensagem e a data estão alinhadas; a matriz é a fonte de apresentação completa e consultoria; a loja é a vitrine pública e o ponto de download. A matriz foi atualizada com as novidades da loja: pilares (Agenda, Controle financeiro, Painel de resultados), bloco CTA (“Fale com a Cara Core”), download com requisito JDK 21 e comandos de desenvolvimento, tecnologia com selo Ecossistema e roadmap (Próximos passos).
 
 ## Links cruzados
 

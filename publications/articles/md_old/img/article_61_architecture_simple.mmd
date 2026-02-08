@@ -1,0 +1,20 @@
+flowchart LR
+    A[Usuários\n180 simultâneos] --> B[Aplicação\nTomcat 9090 / WildFly 8080]
+    B --> C{Cache Redis\nTTL mapa 15s\nTTL KPIs 120s}
+    C -->|HIT 95% / 2ms| D[Resposta imediata]
+    C -->|MISS 5% / 200ms| E[PostgreSQL 5432\nPedidos / Estoque / Posições]
+    E --> C
+    subgraph PubSub
+        F[Operador retira pedido] --> G[Publica evento]
+        G --> H[Invalida chave cache]
+    end
+    H --> C
+
+    style C fill:#dc382d,stroke:#a32016,stroke-width:2,color:#fff
+    style E fill:#845EC2,stroke:#5e3e8d,stroke-width:2,color:#fff
+    style A fill:#2196f3,stroke:#0d47a1,stroke-width:2,color:#fff
+    style B fill:#ff9800,stroke:#e65100,stroke-width:2,color:#fff
+    style D fill:#4caf50,stroke:#2e7d32,stroke-width:2,color:#fff
+    style F fill:#ffeb3b,stroke:#f9a825,stroke-width:1
+    style G fill:#ffeb3b,stroke:#f9a825,stroke-width:1
+    style H fill:#ffeb3b,stroke:#f9a825,stroke-width:1

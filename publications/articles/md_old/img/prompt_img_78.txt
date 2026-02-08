@@ -1,0 +1,3 @@
+Prompt para imagem do artigo 78:
+
+"Imagem em formato 16:9, paisagem. Produtos com propósito: ao centro, os cinco pilares do portfólio (PDV, Hub, OIDC, ETE, Circuito Python) como módulos unidos por uma filosofia comum — fio condutor visual (linha, rede ou círculo); ao redor, ícones de problemas reais, visão de longo prazo e confiança no mercado. Cores Cara Core, layout simétrico e limpo. Estilo corporativo e inspirador. Transmite: coerência, filosofia modular e visão de futuro da Cara Core."

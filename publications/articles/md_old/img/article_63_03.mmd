@@ -1,0 +1,33 @@
+flowchart LR
+    A[Item criado no SharePoint] --> B{Cliente ha 7 dias sem retorno?}
+    B -->|Sim| C[Enviar alerta por email]
+    B -->|Nao| D{Cliente ha 14 dias sem retorno?}
+    
+    C --> E[Perguntar no Teams]
+    E --> F[Aguardar resposta ate 3 dias]
+    F --> G[Registrar comentario]
+    G --> H[Atualizar SharePoint]
+    
+    D -->|Sim| I[Enviar alerta por email]
+    D -->|Nao| Z[Fim]
+    
+    I --> J[Perguntar no Teams: Atualizar status?]
+    J --> K[Aguardar resposta ate 3 dias]
+    K --> L{Resposta: Atualizar status?}
+    
+    L -->|Sim| M[Mudar status para Aguardando Cliente]
+    L -->|Nao| N[Manter status atual]
+    
+    M --> O[Registrar comentario e data]
+    N --> O
+    O --> P[Atualizar SharePoint]
+    
+    F -.Timeout.-> Q[Encerrar sem erro]
+    K -.Timeout.-> Q
+    
+    style A fill:#0078D4,color:#fff
+    style E fill:#6264A7,color:#fff
+    style J fill:#6264A7,color:#fff
+    style H fill:#00A4EF,color:#fff
+    style P fill:#00A4EF,color:#fff
+    style Q fill:#737373,color:#fff

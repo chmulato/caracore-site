@@ -1,0 +1,34 @@
+Create a professional landscape (16:9 aspect ratio) image for an article about InkAgenda and Flutter Clean Architecture:
+
+**Scene Composition:**
+- Left side: A modern Windows desktop computer showing the InkAgenda calendar interface with appointment cards and financial dashboard
+- Center: A professional Android smartphone displaying the same InkAgenda app with synchronized data
+- Right side: A tablet/iPad showing the web version of InkAgenda running in a browser
+- Background: A subtle digital connection pattern showing data synchronization between all devices (cloud sync lines, arrows indicating real-time data flow)
+
+**Visual Elements:**
+- All three devices are arranged horizontally in an organized, clean layout
+- The devices show the same data (appointments, financial metrics) to demonstrate synchronization
+- Modern, minimalist design aesthetic
+- Professional tattoo studio setting elements (subtle: a tattoo chair silhouette, design portfolio elements) visible through windows/background
+- Color scheme: primarily blues and purples (brand colors #667eea, #764ba2) with white accents
+- Include subtle visual indicators of offline-first architecture: checkmarks, sync icons, local storage symbols
+- Data flowing between devices represented by elegant light trails or connection nodes
+- The overall mood should convey: "Enterprise reliability meets mobile flexibility"
+
+**Style:**
+- Modern, professional, clean
+- High contrast and clear readability
+- Subtle 3D depth to devices while maintaining flatness in overall design
+- Soft shadows and lighting
+- Tech-forward but approachable aesthetic
+- Could include subtle architectural diagrams in the background (Domain Layer, Data Layer, Presentation Layer)
+
+**Avoid:**
+- Cluttered screens or overly complex interfaces
+- Generic stock imagery
+- Outdated design elements
+- Anything that looks "cheap" or amateurish
+
+**Overall Message:**
+The image should communicate: "Professional multi-platform app architecture with real-time synchronization and offline-first design"

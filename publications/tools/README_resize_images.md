@@ -18,7 +18,7 @@ Requerimentos: Python 3.9+ e Pillow
 from PIL import Image, ImageOps
 from pathlib import Path
 
-SRC = Path(r"c:/dev/site/cara-core/publications/articles/media/article_48_01.png")
+SRC = Path(r"c:/dev/site/cara-core/publications/articles/assets/img/article_48_01.png")
 DEST = SRC.with_name("article_48_01_1920x1080.png")
 TARGET_W, TARGET_H = 1920, 1080
 BG_COLOR = (102, 126, 234)  # #667eea

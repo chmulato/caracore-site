@@ -1,0 +1,3 @@
+Prompt para imagem do artigo 80:
+
+"Imagem em formato 16:9, paisagem. Identidade digital brasileira: à esquerda, o problema (senhas, fragmentação, insegurança); ao centro, Reino OIDC e Área 51 como castelo e portal — metáfora de identidade federada, login único, tokens; à direita, casos de uso (empresas, governança, futuro). Cores roxo/azul, ícones de cadeado, escudo, usuário. Estilo moderno e seguro. Transmite: nova era da identidade digital no Brasil com OIDC e Área 51."

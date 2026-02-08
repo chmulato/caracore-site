@@ -1,0 +1,20 @@
+C4Context
+    title Fluxo Automatizado de Notificacoes de Clientes
+
+    Person(responsavel, "Responsavel Comercial", "Usuario que acompanha clientes")
+    System_Boundary(m365, "Microsoft 365") {
+        System(powerautomate, "Power Automate", "Orquestra o fluxo automatico")
+        System(sharepoint, "SharePoint Online", "Armazena listas de Leads e Notificacoes")
+        System(teams, "Microsoft Teams", "Envia prompts interativos")
+        System(office365, "Office 365", "Envia emails de alerta")
+        System(users, "Office 365 Users", "Prove dados de perfil")
+    }
+
+    Rel(sharepoint, powerautomate, "Dispara quando item criado", "Trigger")
+    Rel(powerautomate, sharepoint, "Busca dados de Leads", "GetItem")
+    Rel(powerautomate, office365, "Envia email de alerta", "SendEmail")
+    Rel(powerautomate, teams, "Envia pergunta interativa", "MessageWithOptions")
+    Rel(teams, responsavel, "Notifica e aguarda resposta")
+    Rel(responsavel, teams, "Responde a pergunta")
+    Rel(powerautomate, users, "Busca perfil do respondente", "UserProfile")
+    Rel(powerautomate, sharepoint, "Atualiza comentario e status", "PatchItem")

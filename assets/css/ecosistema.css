@@ -1,0 +1,138 @@
+/**
+ * Ecossistema Cara Core — estilos inspirados em index.html (main.css + additional-styles)
+ * Mesma linguagem visual: seções com border-radius 18px, cards shadow-sm, gradientes e footer.
+ */
+
+/* Hero da página Ecossistema — alinhado ao header #home do index */
+#ecossistema.ecossistema-hero {
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+
+#ecossistema .ecossistema-hero-inner {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#ecossistema .ecossistema-hero h1 {
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+}
+
+#ecossistema .ecossistema-philosophy {
+  font-size: 1.1rem;
+  line-height: 1.75;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+/* Núcleo — mesmo tratamento visual que seções do index (card branco, borda suave) */
+.eco-nucleus {
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 16px;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.03);
+  padding: 2rem 2.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.eco-nucleus h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.eco-nucleus .h5 {
+  font-weight: 600;
+}
+
+/* Seção Na Garagem — mesma estrutura que #servicos (título central, grid de cards) */
+.eco-garagem-section {
+  margin-bottom: 2rem;
+}
+
+.eco-garagem-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bs-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Cards da Garagem — mesmo padrão que .card do index (shadow-sm, border-radius 16px, hover) */
+.eco-garagem-card {
+  height: 100%;
+  border-radius: 16px;
+  padding: 1.75rem;
+  border: none;
+  background: rgba(255, 255, 255, 0.93);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s, box-shadow 0.2s;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.eco-garagem-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  color: inherit;
+  border-color: transparent;
+}
+
+.eco-garagem-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.eco-garagem-card .eco-launch {
+  font-size: 0.85rem;
+  color: var(--bs-success);
+  font-weight: 600;
+  margin-top: 0.75rem;
+}
+
+/* Diagrama — container no mesmo estilo dos cards do index */
+.ecossistema-section .diagram-container {
+  max-width: 100%;
+  overflow-x: auto;
+  background: rgba(255, 255, 255, 0.93);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  padding: 1.5rem;
+}
+
+.ecossistema-section .mermaid {
+  display: flex;
+  justify-content: center;
+}
+
+/* CTA — alinhado ao estilo de botões e blocos do index (#contato, .btn-primary) */
+.eco-cta-block {
+  background: linear-gradient(135deg, rgba(var(--bs-primary-rgb, 13, 110, 253), 0.08) 0%, rgba(var(--bs-primary-rgb, 13, 110, 253), 0.02) 100%);
+  border: 1px solid rgba(var(--bs-primary-rgb, 13, 110, 253), 0.2);
+  border-radius: 18px;
+  padding: 2.5rem;
+  text-align: center;
+  margin: 2rem 0;
+  box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.03);
+}
+
+.eco-cta-block .btn {
+  padding: 0.6rem 1.5rem;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+/* Seções da página — garantir mesmo padding e margem que index (py-5) */
+.ecossistema-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.ecossistema-section h2.h4,
+.ecossistema-section h2.h5 {
+  font-weight: 600;
+}

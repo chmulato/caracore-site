@@ -9,23 +9,19 @@
   <link rel="stylesheet" href="css/additional-styles.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/lgpd.css">
+  <link rel="stylesheet" href="assets/css/ecosistema.css">
   <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Nosso Ecossistema | Cara Core Informática</title>
-  <meta name="description" content="Conheça o ecossistema da Cara Core Informática: matriz, produtos, lojas e a Garagem (futuros lançamentos). PDV, Minerador 4.0, Reino OIDC, RU Soberano, Seed.">
+  <title>Ecossistema Cara Core: Onde a Engenharia encontra o Negócio | Cara Core Informática</title>
+  <meta name="description" content="Ecossistema em expansão: plataforma modular que entrega soberania operacional. PDV e Hub no núcleo; RU Soberano e Ink Agenda na Garagem — lançamentos 2026. Soluções de nicho homologadas pela rede de lojas.">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
   <link rel="canonical" href="https://caracore.com.br/ecosistema.html">
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
   <script src="assets/js/analytics-config.js"></script>
-  <style>
-    .ecossistema-section { padding: 5rem 0 4rem; }
-    .ecossistema-section .diagram-container { max-width: 100%; overflow-x: auto; }
-    .ecossistema-section .mermaid { display: flex; justify-content: center; }
-  </style>
 </head>
 <body>
 
@@ -100,18 +96,86 @@
   </div>
 </div>
 
-<!-- Conteúdo principal: diagrama em camadas -->
-<section id="ecossistema" class="ecossistema-section bg-light text-dark py-5 mt-5">
+<!-- Hero (estrutura alinhada ao header #home do index) -->
+<section id="ecossistema" class="ecossistema-section ecossistema-hero bg-light text-dark mt-5 py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10 text-center ecossistema-hero-inner">
+        <h1 class="display-5 mb-4">
+          Ecossistema Cara Core: Onde a Engenharia encontra o Negócio
+        </h1>
+        <p class="ecossistema-philosophy text-muted mb-0">
+          O ecossistema Cara Core é um <strong>organismo vivo</strong>. Nosso foco não é vender módulos isolados — é <strong>entregar soberania operacional</strong>. O visitante entende que o <strong>PDV é o alicerce</strong>, o <strong>Hub é o sistema nervoso</strong>, e os produtos da <strong>Garagem</strong> (RU Soberano e Ink Agenda) são as especializações que provam a versatilidade da nossa arquitetura. Você pode começar com o PDV e, conforme a necessidade do seu nicho surge, desbloquear o RU ou o Ink Agenda.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Núcleo: PDV + Hub (seção no mesmo padrão do index: py-5, container) -->
+<section class="ecossistema-section py-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
-        <h1 class="display-5 mb-3 text-center">
-          <i class="bi bi-globe2 text-primary"></i> Conheça o Nosso Eco Mundo
-        </h1>
-        <p class="lead text-center text-muted mb-4">
-          Cada produto tem <strong>apresentação</strong> no site (matriz), <strong>oficina</strong> (código-fonte) e <strong>loja</strong> (vitrine / releases). Produtos em desenvolvimento ficam na <strong>Garagem</strong>: futuros lançamentos em trabalho na respectiva oficina e loja.
-        </p>
-        <div class="diagram-container mb-4 p-3 bg-white rounded shadow-sm">
+        <h2 class="text-center mb-4">O núcleo — soluções de prateleira prontas para escala</h2>
+        <div class="eco-nucleus">
+          <div class="row align-items-center">
+            <div class="col-md-8">
+              <h2 class="h5"><i class="bi bi-cash-stack text-primary me-2"></i> PDV: o alicerce</h2>
+              <p class="mb-2 text-muted">O ponto de venda que não para quando a internet cai. Reforma Tributária 2026, recibo digital, operação local. A base sobre a qual lojas e negócios constroem fluxo de caixa e conformidade.</p>
+              <h2 class="h5 mt-3"><i class="bi bi-diagram-3 text-primary me-2"></i> Hub: o sistema nervoso</h2>
+              <p class="mb-0 text-muted">Gestão logística e e-commerce para centros de distribuição. Recebimento, triagem, estoque, retirada e integração com marketplaces. SQLite local e autonomia operacional.</p>
+            </div>
+            <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
+              <a href="portfolio.html#caracore-pdv" class="btn btn-outline-primary me-2">PDV</a>
+              <a href="portfolio.html#caracore-hub" class="btn btn-outline-primary">Hub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Na Garagem (The Lab) — cards no padrão do index (#servicos) -->
+<section class="eco-garagem-section ecossistema-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <p class="eco-garagem-badge text-center">Na Garagem — The Lab</p>
+        <h2 class="text-center mb-4">Lançamentos programados para 2026</h2>
+        <p class="text-center text-muted mb-4">Soluções de nicho em fase final de homologação pela nossa rede de lojas. Os produtos já passaram pela fase de laboratório e estão com matriz e unidades (lojas) totalmente sincronizadas — um software que já nasce testado no mundo real.</p>
+        <div class="row g-4 mb-4">
+          <div class="col-md-6">
+            <a href="delivery/ru/" class="eco-garagem-card">
+              <span class="eco-garagem-badge">Alto fluxo</span>
+              <h3>RU Soberano</h3>
+              <p class="text-muted small mb-0">O mestre do alto fluxo. Tecnologia aplicada à logística humana: filas, controle rígido de refeitórios e restaurantes universitários. A história do RU aplicada à Engenharia Química — reator PFR, catálise e tempo de residência em 3D.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 18 de junho de 2026</span>
+            </a>
+          </div>
+          <div class="col-md-6">
+            <a href="delivery/ink/" class="eco-garagem-card">
+              <span class="eco-garagem-badge">Experiência personalizada</span>
+              <h3>Cara Core Ink Agenda</h3>
+              <p class="text-muted small mb-0">O mestre da experiência personalizada. Gestão de estúdios onde a arte encontra a organização. Tecnologia aplicada à gestão de tempo e ao valor artístico: agenda de sessões, controle financeiro e painel de resultados para tatuadores e estúdios.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 26 de junho de 2026</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Diagrama: módulos plugáveis (container no estilo dos cards do index) -->
+<section class="ecossistema-section py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <h2 class="h5 text-center text-muted mb-3">Arquitetura em camadas — matriz, produtos, oficinas e lojas</h2>
+        <p class="text-center small text-muted mb-3">Cada produto tem apresentação na matriz (delivery), oficina (código-fonte) e loja (vitrine/releases). Os módulos da Garagem são plugáveis: conforme seu nicho exige, você desbloqueia RU ou Ink Agenda.</p>
+        <div class="diagram-container mb-4">
           <div class="mermaid">
 flowchart TB
     subgraph MATRIZ["Site matriz — caracore.com.br"]
@@ -148,6 +212,9 @@ flowchart TB
         G1[RU Soberano]
         G2[caracore-ru]
         G3[caracore-ru-releases]
+        G4[Cara Core Ink Agenda]
+        G5[caracore-ink]
+        G6[caracore-ink-releases]
     end
     M --> P1 & P2 & P3 & P4 & P5 & P6 & P7
     P1 --> O1
@@ -167,15 +234,28 @@ flowchart TB
     M --> G1
     G1 --> G2
     G2 --> G3
+    M --> G4
+    G4 --> G5
+    G5 --> G6
           </div>
         </div>
-        <p class="text-center small text-muted mb-2">
-          <strong>Garagem:</strong> produtos em desenvolvimento com apresentação (delivery) na matriz, oficina e loja já no ar; ao lançar, entram no fluxo completo dos produtos.
+        <p class="text-center small text-muted mb-4">
+          <strong>Garagem:</strong> RU Soberano e Cara Core Ink Agenda — apresentação (delivery) na matriz, oficina e loja no ar; lançamentos programados em 2026.
         </p>
+
+        <!-- CTA -->
+        <div class="eco-cta-block">
+          <p class="lead mb-3">Sua empresa tem um desafio de nicho?</p>
+          <p class="text-muted mb-3">Vamos conversar sobre como nossa arquitetura pode se adaptar a você.</p>
+          <a href="index.html#contato" class="btn btn-primary">Fale com a Cara Core</a>
+        </div>
+
         <p class="text-center small text-muted mb-0">
           <a href="portfolio.html" class="text-decoration-none"><i class="bi bi-folder-fill"></i> Ver portfólio completo</a>
           &nbsp;·&nbsp;
-          <a href="delivery/ru/" class="text-decoration-none"><i class="bi bi-box-seam"></i> RU Soberano (garagem)</a>
+          <a href="delivery/ru/" class="text-decoration-none"><i class="bi bi-box-seam"></i> RU Soberano</a>
+          &nbsp;·&nbsp;
+          <a href="delivery/ink/" class="text-decoration-none"><i class="bi bi-box-seam"></i> Cara Core Ink Agenda</a>
           &nbsp;·&nbsp;
           <a href="index.html#contato" class="text-decoration-none"><i class="bi bi-envelope"></i> Contato</a>
         </p>

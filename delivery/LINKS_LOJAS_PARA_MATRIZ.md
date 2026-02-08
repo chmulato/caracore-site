@@ -82,6 +82,16 @@ Lista, por loja, dos links que apontam para o site matriz (portfolio e páginas 
 
 ---
 
+## 9. Cara Core Ink Agenda (delivery/ink)
+
+| URL de destino (matriz) | Onde aparece |
+|------------------------|--------------|
+| `https://caracore.com.br/` | index.html (breadcrumb), download.html (breadcrumb), tecnologia.html (breadcrumb), canal-feedback.html (breadcrumb) |
+| `https://caracore.com.br/portfolio.html#caracore-ink-agenda` | index.html (breadcrumb Portfólio, CTA, nav-card, footer), download.html (breadcrumb Portfólio, rodapé), tecnologia.html (breadcrumb, rodapé), canal-feedback.html (breadcrumb, rodapé) |
+| `https://caracore.com.br/delivery/ink/` | Loja (caracore-ink-releases) pode apontar para a matriz como apresentação completa |
+
+---
+
 ## Resumo por URL da matriz (ordem alfabética)
 
 1. `https://caracore.com.br/`
@@ -96,6 +106,8 @@ Lista, por loja, dos links que apontam para o site matriz (portfolio e páginas 
 10. `https://caracore.com.br/portfolio.html#ru-soberano`
 11. `https://caracore.com.br/delivery/ru/`
 12. `https://caracore.com.br/delivery/pdv/...` (várias páginas do PDV)
-13. `http://www.caracore.com.br` (consultoria PDV)
+13. `https://caracore.com.br/delivery/ink/` (portal Ink Agenda — lançamento 26 de junho de 2026)
+14. `https://caracore.com.br/portfolio.html#caracore-ink-agenda`
+15. `http://www.caracore.com.br` (consultoria PDV)
 
 *(Relativos `../../portfolio.html` e `../../portfolio.html#...` equivalem ao mesmo domínio matriz quando o site é servido em caracore.com.br.)*

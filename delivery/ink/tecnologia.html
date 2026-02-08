@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tecnologia — Cara Core Ink Agenda | Cara Core Informática</title>
+    <meta name="description" content="Stack do Cara Core Ink Agenda: Java 21, JavaFX 21, Maven. App Windows Desktop para estúdios de tatuagem. Lançamento 26 de junho de 2026.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/ink-portal.css">
+</head>
+<body class="tecnologia-page">
+    <div class="wrapper">
+        <nav class="breadcrumb" aria-label="Navegação">
+            <a href="https://caracore.com.br/">Cara Core Informática</a>
+            <span> · </span>
+            <a href="https://caracore.com.br/portfolio.html#caracore-ink-agenda">Portfólio</a>
+            <span> · </span>
+            <a href="index.html">Cara Core Ink Agenda</a>
+            <span> · </span>
+            <span>Tecnologia</span>
+        </nav>
+
+        <!-- Aviso padrão: lançamento oficial — 26/06/2026 -->
+        <section class="ink-launch-banner" aria-label="Data de lançamento">
+            <p class="ink-launch-label">Lançamento oficial</p>
+            <p class="ink-launch-date">App Cara Core Ink Agenda para Windows Desktop — <strong>26 de junho de 2026</strong>.</p>
+        </section>
+
+        <header>
+            <h1>Tecnologia — Cara Core Ink Agenda</h1>
+            <p>Stack e arquitetura do aplicativo desktop para estúdios de tatuagem.</p>
+        </header>
+
+        <section class="card">
+            <h2>Java 21 e JavaFX 21</h2>
+            <p>O Ink Agenda é desenvolvido em <strong>Java 21</strong> (LTS) com interface gráfica em <strong>JavaFX 21</strong>. Recursos modernos da linguagem (records, sealed interfaces) e UI nativa para Windows Desktop, sem dependência de navegador.</p>
+        </section>
+
+        <section class="card">
+            <h2>Arquitetura em camadas</h2>
+            <p><strong>Domínio:</strong> entidades (Appointment, Expense, ExpenseType) e contratos de repositório (AppointmentRepository, ExpenseRepository). <strong>Core:</strong> tipo Result para operações que podem falhar. <strong>Desktop:</strong> aplicação JavaFX com janela principal. Persistência e integrações futuras ficam em implementações dos repositórios (SQLite, API etc.).</p>
+        </section>
+
+        <section class="card">
+            <h2>Build e testes</h2>
+            <p><strong>Maven</strong> para build e dependências. <strong>JUnit 5</strong> para testes unitários e <strong>JaCoCo</strong> para cobertura (mínimo 80% em domínio e core). Comandos: <code>mvn compile</code>, <code>mvn test</code>, <code>mvn javafx:run</code>, <code>mvn package</code>.</p>
+        </section>
+
+        <section class="card">
+            <h2>Distribuição</h2>
+            <p>Artefato principal: JAR executável. Requer <strong>JDK 21</strong> no Windows. Execução via <code>java -jar</code> ou via plugin Maven <code>javafx:run</code>. Futuramente: empacotamento com jlink/jpackage para instalador Windows sem exigir JDK instalado.</p>
+        </section>
+
+        <p style="margin: 24px 0; padding: 16px 20px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; font-size: 0.95rem; color: var(--text-secondary);"><strong style="color: var(--accent-green);">Ecossistema Cara Core Informática</strong> — Produtos desktop e web com foco em simplicidade e entrega clara. Ink Agenda integra o portfólio ao lado do PDV, Hub, RU e outros.</p>
+
+        <nav class="download-back">
+            <a href="index.html">← Voltar ao portal</a> · <a href="download.html">Download</a> · <a href="canal-feedback.html">Canal de feedback</a> · <a href="https://caracore.com.br/portfolio.html#caracore-ink-agenda">Portfólio</a>
+        </nav>
+    </div>
+    <script src="assets/js/ink.js"></script>
+</body>
+</html>

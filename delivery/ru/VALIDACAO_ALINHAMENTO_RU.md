@@ -70,4 +70,4 @@
 | **delivery/ru/index.html (title)** | Desalinhado | Título fixa “Reator Catalítico PFR”; corrigir para não fixar PFR como produto. |
 | **Memória + CONTEXTO_RU** | Referência única | Build, exe, oferta, data e regra “não fixar PFR” consistentes com STATUS_ATUAL e código. |
 
-Correção aplicada no título em `delivery/ru/index.html` conforme seção 3.1.
+Correções aplicadas em `delivery/ru/index.html`: título (seção 3.1) e card "Valor técnico" (seção 3.2 — suavização "Reator (PFR e correlatos)").

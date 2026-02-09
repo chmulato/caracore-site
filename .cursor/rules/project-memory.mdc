@@ -1,0 +1,33 @@
+---
+description: Memória do site Cara Core — matriz RU em delivery/ru; chamada oficial, alinhamento oficina · loja, lançamento 18/Junho/2026
+alwaysApply: true
+---
+
+# Memória — Cara Core Informática (matriz RU)
+
+## Este diretório (delivery/ru)
+- **delivery/ru** é a **matriz** do RU Soberano: chamada oficial, CTAs, links para loja e canal de feedback. Alinhamento com oficina e loja para **lançamento 18 de Junho de 2026**.
+- **Regras de espelho:** `delivery/ru/MIRROR_DELIVERY.md`. Validação de alinhamento: `delivery/ru/VALIDACAO_ALINHAMENTO_RU.md`.
+
+## Ecossistema
+- **Oficina:** caracore-ru (código-fonte, build, dashboard Soberana).
+- **Loja:** caracore-ru-releases — vitrine em https://chmulato.github.io/caracore-ru-releases/ (download, licença, manual, feedback).
+- **Matriz:** este diretório (delivery/ru) no site Cara Core (caracore.com.br).
+
+## Mensagem de produto (alinhada à loja e CONTEXTO_RU)
+- **Um executável, dois modos.** Gratuito: **ambientação RETRO** (sala de aula UFPR 1991) para estudo do **Balanço de Massa** do **Prof. Soccol** (Engenharia Química). Pago **R$ 29,90:** **simulador de reator** (jornada completa: Inteligência de Processo + Memorial RU, narrativa Lord OIDC 1991 → 2026). Ativação com `license.key`.
+- **Lançamento: 18 de junho de 2026.** Produto pronto na garagem.
+- **Não fixar "reator PFR" como nome do produto** na comunicação; tipo de reator em definição na garagem. Em texto técnico/educacional pode-se usar "Reator (PFR e correlatos)".
+- **Imagem:** caracore_ru.png = aluno do Prof. Soccol; ambientação RETRO, Balanço de Massa.
+
+## Páginas (delivery/ru)
+- **index.html** — Chamada: RU Soberano, FREE vs pago, data 18/Junho/2026, CTAs para loja, canal-feedback, portfólio. Proposta surpresa Biotecnologia.
+- **canal-feedback.html** — E-mail suporte@caracore.com.br, Telegram ou WhatsApp +55 (41) 9 9909-7797. Não atendemos ligações.
+- **fluxo_mensagens_vendas.md** — Fluxo Conversion & Technical Support: HWID, teaser Data Sheet, pós-PIX, pós-venda.
+- **email_pos_venda.html** — Template e-mail entrega: Dossiê, link executável, license.key; tom “Parabéns pela Ascensão Acadêmica”.
+- **MIRROR_DELIVERY.md** — Regras de espelho oficina · loja · matriz.
+
+## Convenções
+- Ao alterar a chamada na matriz, manter alinhada à **oficina** (caracore-ru, CONTEXTO_RU.md) e à **loja** (caracore-ru-releases). Mensagem única: gratuito = RETRO (Prof. Soccol), pago = simulador (R$ 29,90), data 18/Junho/2026.
+- Links da matriz podem apontar para caracore.com.br (portfólio) e para a loja (caracore-ru-releases). Breadcrumb: Cara Core Informática · Portfólio · RU Soberano — Delivery.
+- Proposta Biotecnologia: “em desenho”, ciclo O₂, ambientação RETRO gratuita na loja; ver caracore-ru/docs/BIOTECNOLOGIA.md.

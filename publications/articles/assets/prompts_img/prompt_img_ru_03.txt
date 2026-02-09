@@ -1,0 +1,14 @@
+PROMPT PARA IMAGEM — RU 1991, EPISÓDIO 03 (ATO III — O PULSO DA CRIAÇÃO)
+Série: A Essência da Soberania. Uso: artigo Episódio 02 (Ato III — Cinética).
+
+————————————————————————————————————————
+DESCRIÇÃO PARA GERAÇÃO DE IMAGEM
+————————————————————————————————————————
+Cena Industrial-Retro, 1991: quadro verde ou painel técnico com a equação de Arrhenius em destaque: k = A·e^(−Ea/RT). Visor tipo calculadora HP (âmbar/LCD verde escuro) ao lado ou integrado, mostrando números de conversão ou constante. Ambiente de laboratório ou sala de controle antiga: mesa com papéis de cálculo, lousa com curva esquemática (temperatura vs. k), sem sensores modernos nem dashboards atuais. Paleta: verde escuro (#0a5c1a, #063d12), âmbar (#D4AF37), preto, branco sujo. Estética de “ritmo do reator lido na lousa” — giz, régua de cálculo, rigor. Texto opcional: “Ato III — O Pulso” ou “Arrhenius”. Nenhum elemento moderno (fibra óptica, telas coloridas, UI atual). Imersão 1991.
+
+————————————————————————————————————————
+REFERÊNCIAS DE NARRATIVA
+————————————————————————————————————————
+• Foco: dinâmica da transformação, constante de velocidade (k), energia de ativação (Ea).
+• Contraste: tempo medido pelo ritmo de Arrhenius, não por sensores de fibra óptica.
+• Gancho: “A energia de ativação não é apenas um número; é a barreira que separa a ideia da realidade.”

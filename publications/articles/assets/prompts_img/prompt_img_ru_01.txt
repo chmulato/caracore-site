@@ -1,0 +1,14 @@
+PROMPT PARA IMAGEM — RU 1991, EPISÓDIO 01 (ATO I — O PORTAL)
+Série: A Essência da Soberania. Uso: chamada da série / artigo de lançamento.
+
+————————————————————————————————————————
+DESCRIÇÃO PARA GERAÇÃO DE IMAGEM
+————————————————————————————————————————
+Split visual 1991 | 2026: metade esquerda mostra um console MS-DOS em 1991 — monitor CRT âmbar/verde, cursor piscando, teclado bege, ambiente de sala de informática antiga, luz fria. Metade direita mostra o mesmo rigor em contexto contemporâneo — quadro ou interface com balanço de massa, equações discretas, estética “Quadro Verde” (verde escuro, texto claro). Transição nítida no centro; nenhum elemento moderno (flat UI, ícones 3D, gradientes atuais) na metade 2026. Paleta: âmbar, verde escuro (#0a5c1a, #063d12), preto, branco sujo. Tipografia sugerida: monospace, rígida. Texto opcional na imagem: “RU 1991” ou “O Portal”. Estilo: Industrial-Retro, imersão 1991; sem poluição visual moderna.
+
+————————————————————————————————————————
+REFERÊNCIAS DE NARRATIVA
+————————————————————————————————————————
+• Contraste: frio do MS-DOS vs. calor do aprendizado (quadro, balanço de massa).
+• Gancho: “O acesso ao portal exige o código de identidade da máquina. A segurança da soberania começa aqui.”
+• Imagem de referência existente: serie_ru_chamada.png (Split 1991>2026).

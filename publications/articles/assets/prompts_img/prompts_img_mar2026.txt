@@ -1,0 +1,16 @@
+PROMPT PARA IMAGEM — MARÇO 2026 (Soberania do Estúdio)
+Artigo: Soberania Técnica: Por que o seu estúdio não é uma ilha na nuvem. Uso: 2026_03_03_soberania_do_estudio.html. Imagem: assets/img/2026_03_03_artigo.png.
+
+————————————————————————————————————————
+DESCRIÇÃO PARA GERAÇÃO DE IMAGEM
+————————————————————————————————————————
+Cena que comunique soberania técnica e controle dos dados: contraste entre “ilha na nuvem” (frágil, dependente) e “dados no seu controle” (sólido, local). Lado esquerdo ou fundo: sugestão de nuvem/serviço remoto — nebuloso, desconectado, um único cabo ou sinal quebrado simbolizando dependência. Lado direito ou primeiro plano: estação de trabalho ou mesa de estúdio com computador local, arquivo de backup/dossiê em evidência (arquivo com data no nome, ícone de cofre ou pasta segura), disco ou pendrive como símbolo de “guardo onde quiser”. Paleta: fundo escuro industrial (#0d1117), destaque âmbar/dourado (#ffd700) em bordas, ícones ou texto; branco sujo ou cinza claro para elementos de UI. Opcional: calendário ou agenda minimalista em tela, indicando “agenda no seu equipamento”. Texto opcional na imagem: “Soberania Técnica” ou “Não é uma ilha na nuvem”. Estilo: Industrial-Ink; autoridade; segurança de dados; sem emojis; sem poluição visual; tom de precisão e continuidade do negócio.
+
+————————————————————————————————————————
+REFERÊNCIAS DE NARRATIVA
+————————————————————————————————————————
+• Gancho do artigo: “O seu estúdio não é uma ilha na nuvem. É um negócio que depende de continuidade.”
+• Tese: Soberania técnica = dados principais no seu computador + dossiê de backup que você guarda + restauração sem depender de terceiro.
+• Contraste: nuvem sozinha (risco, aluguel) vs. dados locais + dossiê (controle, ativo permanente).
+• Foco: segurança de dados para estúdio de tatuagem; backup que restaura o sistema; aviso “Backup há mais de X dias” como lembrete técnico.
+• Estética: alinhada aos prompts Industrial-Ink (article_87, article_68); rigor visual, sem emojis.

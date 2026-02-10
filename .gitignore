@@ -7,7 +7,8 @@ publications/articles/docx/
 publications/articles/md/
 !publications/articles/md/README.md
 publications/articles/images/
-publications_old/
+publications_old_01/
+publications_old_02/
 *.docx
 personal/docx/
 __pycache__/

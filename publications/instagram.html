@@ -7,6 +7,7 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="canonical" href="https://caracore.com.br/publications/instagram.html">
     <style>
+        * { box-sizing: border-box; }
         body {
             background: linear-gradient(165deg, #fef7ed 0%, #fef3c7 35%, #fce7f3 100%);
             color: #431407;
@@ -15,7 +16,20 @@
             padding: 0;
             line-height: 1.65;
         }
+        .layout { display: flex; min-height: 100vh; }
+        .nav-sidebar { width: 220px; flex-shrink: 0; background: #161b22; border-right: 1px solid rgba(255,215,0,.15); padding: 1.5rem 1rem 2rem; }
+        .nav-sidebar .logo { font-weight:700; font-size:.8rem; letter-spacing:.08em; color:#fff; margin-bottom:1rem; text-transform:uppercase; }
+        .nav-sidebar .nav-title { font-size:.7rem; font-weight:600; color:rgba(255,215,0,.9); letter-spacing:.06em; text-transform:uppercase; margin-bottom:.75rem; }
+        .nav-sidebar ul { list-style:none; padding:0; margin:0; }
+        .nav-sidebar li { margin-bottom:.35rem; }
+        .nav-sidebar a { color:#8b949e; text-decoration:none; font-size:.9rem; display:block; padding:.4rem 0; }
+        .nav-sidebar a:hover { color:#ffd700; }
+        .nav-sidebar a.active { color:#ffd700; font-weight:600; }
+        .nav-sidebar .nav-footer { margin-top:1.5rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,.08); }
+        .nav-sidebar .nav-footer a { font-size:.8rem; color:#6e7681; }
+        .main { flex:1; overflow:auto; }
         .wrap { max-width: 720px; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+        @media (max-width: 640px) { .layout { flex-direction: column; } .nav-sidebar { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,215,0,.15); } }
         .you-are-here {
             background: rgba(255,255,255,.85);
             border: 2px solid #e11d48;
@@ -104,6 +118,21 @@
     </style>
 </head>
 <body>
+    <div class="layout">
+        <nav class="nav-sidebar" aria-label="Campanhas por rede">
+            <div class="logo">Cara Core Informática</div>
+            <p class="nav-title">Campanhas orgânicas</p>
+            <ul>
+                <li><a href="nota_cc.html">Controle</a></li>
+                <li><a href="linkedin.html">LinkedIn</a></li>
+                <li><a href="facebook.html">Facebook</a></li>
+                <li><a href="instagram.html" class="active">Instagram</a></li>
+            </ul>
+            <div class="nav-footer">
+                <a href="articles.html">Sala de Notícias (artigos)</a>
+            </div>
+        </nav>
+        <main class="main">
     <div class="wrap">
         <div class="logo">Cara Core Informática</div>
         <span class="network-badge">Rede de vaidosos · Instagram</span>
@@ -209,9 +238,13 @@
         </div>
 
         <div class="nav-links">
-            <a href="nota_cc.html">← Diretrizes LinkedIn (nota_cc)</a>
+            <a href="nota_cc.html">Controle</a>
+            <a href="linkedin.html">LinkedIn</a>
+            <a href="facebook.html">Facebook</a>
             <a href="articles.html">Sala de Notícias (artigos)</a>
         </div>
+    </div>
+        </main>
     </div>
 </body>
 </html>

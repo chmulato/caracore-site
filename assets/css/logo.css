@@ -1,0 +1,77 @@
+/* Seção de Transição de Pele - Cara Core */
+.secao-metamorfose {
+    position: relative;
+    padding: 80px 20px;
+    background-color: #0d1117; /* Fundo profundo industrial */
+    border-top: 1px solid #1b3022; /* Verde consultoria antigo */
+    border-bottom: 3px solid #ffd700; /* Ouro Python novo */
+    overflow: hidden;
+    color: #e6edf3;
+}
+
+/* Efeito de brilho da "Nova Pele" */
+.secao-metamorfose::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Container do Logo com efeito de transição */
+.logo-container {
+    text-align: center;
+    margin-bottom: 40px;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 15px #ffd700); /* Brilho Python no hover */
+}
+
+/* Logo SVG: escala limpa e alinhamento */
+.logo-container img,
+.logo-container svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.logo-container img {
+    object-fit: contain;
+}
+
+/* Texto da Metamorfose */
+.mudanca-texto {
+    font-family: 'Share Tech Mono', monospace; /* Mantendo o rigor de 1991 */
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mudanca-texto h2 {
+    color: #ffd700; /* Destaque para a nova fase */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.mudanca-texto p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #8b949e;
+}
+
+/* Badge de Soberania */
+.badge-soberania {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    font-size: 0.8rem;
+    margin-top: 20px;
+    text-transform: uppercase;
+}

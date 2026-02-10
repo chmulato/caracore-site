@@ -66,7 +66,7 @@ Lista, por loja, dos links que apontam para o site matriz (portfolio e páginas 
 | URL de destino (matriz) | Onde aparece |
 |------------------------|--------------|
 | `https://caracore.com.br/portfolio.html` | index.html (breadcrumb), canal-feedback.html (breadcrumb) |
-| `https://caracore.com.br/portfolio.html#ru-soberano` | index.html (breadcrumb Portfólio, CTA, nav-card, footer) |
+| `https://caracore.com.br/ecosistema.html#garagem` | index.html (breadcrumb Ecossistema, CTA, nav-card, footer). RU só entra no portfólio após lançamento. |
 | `https://caracore.com.br/delivery/ru/` | email_pos_venda.html (rodapé: Portal RU Soberano) |
 
 ---
@@ -87,7 +87,7 @@ Lista, por loja, dos links que apontam para o site matriz (portfolio e páginas 
 | URL de destino (matriz) | Onde aparece |
 |------------------------|--------------|
 | `https://caracore.com.br/` | index.html (breadcrumb), download.html (breadcrumb), tecnologia.html (breadcrumb), canal-feedback.html (breadcrumb) |
-| `https://caracore.com.br/portfolio.html#caracore-ink-agenda` | index.html (breadcrumb Portfólio, CTA, nav-card, footer), download.html (breadcrumb Portfólio, rodapé), tecnologia.html (breadcrumb, rodapé), canal-feedback.html (breadcrumb, rodapé) |
+| `https://caracore.com.br/ecosistema.html#garagem` | index.html (breadcrumb Ecossistema, CTA, nav-card, footer), download.html (breadcrumb, rodapé), tecnologia.html (breadcrumb, rodapé), canal-feedback.html (breadcrumb, rodapé). Ink só entra no portfólio após lançamento. |
 | `https://caracore.com.br/delivery/ink/` | Loja (caracore-ink-releases) pode apontar para a matriz como apresentação completa |
 
 ---
@@ -103,11 +103,10 @@ Lista, por loja, dos links que apontam para o site matriz (portfolio e páginas 
 7. `https://caracore.com.br/portfolio.html#circuito-python`
 8. `https://caracore.com.br/portfolio.html#minerador-ete` (via `../../portfolio.html#minerador-ete`)
 9. `https://caracore.com.br/portfolio.html#reino-oidc`
-10. `https://caracore.com.br/portfolio.html#ru-soberano`
+10. `https://caracore.com.br/ecosistema.html#garagem` (RU e Ink — Garagem; entram no portfólio após lançamento)
 11. `https://caracore.com.br/delivery/ru/`
 12. `https://caracore.com.br/delivery/pdv/...` (várias páginas do PDV)
 13. `https://caracore.com.br/delivery/ink/` (portal Ink Agenda — lançamento 26 de junho de 2026)
-14. `https://caracore.com.br/portfolio.html#caracore-ink-agenda`
-15. `http://www.caracore.com.br` (consultoria PDV)
+14. `http://www.caracore.com.br` (consultoria PDV)
 
 *(Relativos `../../portfolio.html` e `../../portfolio.html#...` equivalem ao mesmo domínio matriz quando o site é servido em caracore.com.br.)*

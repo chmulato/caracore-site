@@ -59,7 +59,7 @@ Data da última atualização: 2026-02-08
 ## Lojas (releases) e matriz
 
 - As **lojas** (repositórios *-releases, GitHub Pages) apontam para a matriz para “apresentação completa” e “consultoria”.
-- Ex.: caracore-ink-releases → caracore.com.br/delivery/ink/ e portfolio.html#caracore-ink-agenda.
+- Ex.: caracore-ink-releases → caracore.com.br/delivery/ink/ e ecosistema.html#garagem (Ink e RU só entram no portfólio após lançamento).
 - **Documentos de ecossistema na raiz:** ECOSYSTEM_CARA_CORE.txt, ECOSYSTEM_LOJAS.txt, COMPONENTES_LOJA.txt.
 
 ---

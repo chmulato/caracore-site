@@ -20,7 +20,7 @@ Em ambas (matriz e vitrine), o **aviso padrão** é o mesmo: **App Cara Core Ink
 
 ## Links cruzados
 
-- Na **matriz**: breadcrumb e footer apontam para o **portfólio** (caracore.com.br/portfolio.html#caracore-ink-agenda) e para a **vitrine** (chmulato.github.io/caracore-ink-releases). Links internos para index, download, tecnologia e canal-feedback.
+- Na **matriz**: breadcrumb e footer apontam para o **ecossistema (Garagem)** (caracore.com.br/ecosistema.html#garagem). Ink entra no portfólio após o lançamento. Vitrine: chmulato.github.io/caracore-ink-releases. Links internos para index, download, tecnologia e canal-feedback.
 - Na **vitrine**: footer e nav apontam para o **portfólio** e para a matriz (caracore.com.br/delivery/ink/) quando aplicável; link para Releases no GitHub.
 
 ## Estilo

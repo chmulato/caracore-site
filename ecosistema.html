@@ -15,7 +15,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ecossistema Cara Core: Onde a Engenharia encontra o Negócio | Cara Core Informática</title>
-  <meta name="description" content="Ecossistema: prateleira (PDV, Hub, OIDC, Minerador 4.0, Circuito Python, Ink Agenda versão anterior); Garagem (Ink Agenda v2.0.0, RU Soberano, Scripts de configuração Área 51 — lançamentos 2026).">
+  <meta name="description" content="Ecossistema: prateleira (PDV, Hub, OIDC, Minerador 4.0, Circuito Python, Ink Agenda versão anterior); Garagem (Ink Agenda v2.0.0, RU Soberano, Cara Core CSO - Gestão de Transportes, Scripts de configuração Área 51 — lançamentos 2026).">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
   <link rel="canonical" href="https://caracore.com.br/ecosistema.html">
@@ -105,7 +105,7 @@
           Ecossistema Cara Core: Onde a Engenharia encontra o Negócio
         </h1>
         <p class="ecossistema-philosophy text-muted mb-0">
-          O ecossistema Cara Core é um <strong>organismo vivo</strong>. Nosso foco é <strong>entregar soberania operacional</strong>. Na <strong>prateleira</strong>: PDV, Hub, Reino OIDC, Minerador 4.0, Circuito Python e Ink Agenda (versão anterior na Google Play). Na <strong>Garagem</strong>: <strong>Ink Agenda v2.0.0</strong> (26/Jun/2026), <strong>RU Soberano</strong> (18/Jun/2026) e <strong>Scripts de configuração Área 51</strong> (02/Ago/2026) — scripts em ambiente de desenvolvimento até o lançamento. A matriz é o ponto de partida para novidades e datas.
+          O ecossistema Cara Core é um <strong>organismo vivo</strong>. Nosso foco é <strong>entregar soberania operacional</strong>. Na <strong>prateleira</strong>: PDV, Hub, Reino OIDC, Minerador 4.0, Circuito Python e Ink Agenda (versão anterior na Google Play). Na <strong>Garagem</strong>: <strong>Ink Agenda v2.0.0</strong> (26/Jun/2026), <strong>RU Soberano</strong> (18/Jun/2026), <strong>Cara Core CSO - Gestão de Transportes</strong> (08/Nov/2026) e <strong>Scripts de configuração Área 51</strong> (02/Ago/2026) — scripts em ambiente de desenvolvimento até o lançamento. A matriz é o ponto de partida para novidades e datas.
         </p>
       </div>
     </div>
@@ -152,7 +152,7 @@
       <div class="col-lg-10">
         <p class="eco-garagem-badge text-center">Na Garagem — The Lab</p>
         <h2 class="text-center mb-4">Lançamentos programados para 2026</h2>
-        <p class="text-center text-muted mb-4">Produtos em fase de desenvolvimento ou homologação: <strong>Ink Agenda v2.0.0</strong>, <strong>RU Soberano</strong> e <strong>Scripts de configuração Área 51</strong> (scripts em ambiente de desenvolvimento até o lançamento). A versão anterior do Ink Agenda está na prateleira (Google Play), junto com PDV, Hub, OIDC, Minerador 4.0 e Circuito Python.</p>
+        <p class="text-center text-muted mb-4">Produtos em fase de desenvolvimento ou homologação: <strong>Ink Agenda v2.0.0</strong>, <strong>RU Soberano</strong>, <strong>Cara Core CSO - Gestão de Transportes</strong> e <strong>Scripts de configuração Área 51</strong> (scripts em ambiente de desenvolvimento até o lançamento). A versão anterior do Ink Agenda está na prateleira (Google Play), junto com PDV, Hub, OIDC, Minerador 4.0 e Circuito Python.</p>
         <div class="row g-4 mb-4">
           <div class="col-md-6">
             <div class="eco-garagem-card">
@@ -183,6 +183,15 @@
                 <a href="delivery/area51/" class="btn btn-sm btn-outline-primary me-1">Apresentação</a>
                 <a href="https://chmulato.github.io/caracore-area51-releases/" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">Loja</a>
               </p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="eco-garagem-card">
+              <span class="eco-garagem-badge">Gestão de Transportes · Soberania Offline</span>
+              <h3><a href="delivery/cso/" class="eco-garagem-card-title-link">Cara Core CSO - Gestão de Transportes</a></h3>
+              <p class="text-muted small mb-2">Sistema de gestão para centros de distribuição e transportadoras. Aplicativo desktop JavaFX 21 com soberania de dados offline: controle de entregas, couriers, clientes, preços e SMS/WhatsApp. Dados locais em SQLite, resiliência operacional sem dependência de internet.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 08 de novembro de 2026</span>
+              <p class="mb-0 mt-2"><a href="delivery/cso/" class="btn btn-sm btn-outline-primary">Ver apresentação</a></p>
             </div>
           </div>
         </div>
@@ -238,9 +247,12 @@ flowchart TB
         G4[Cara Core Ink Agenda]
         G5[caracore-ink]
         G6[caracore-ink-releases]
-        G7[Scripts Área 51]
-        G8[caracore-area51]
-        G9[caracore-area51-releases]
+        G7[Cara Core CSO]
+        G8[caracore-cso]
+        G9[caracore-cso-releases]
+        G10[Scripts Área 51]
+        G11[caracore-area51]
+        G12[caracore-area51-releases]
     end
     M --> P1 & P2 & P3 & P4 & P5 & P6 & P7
     P1 --> O1
@@ -266,10 +278,13 @@ flowchart TB
     M --> G7
     G7 --> G8
     G8 --> G9
+    M --> G10
+    G10 --> G11
+    G11 --> G12
           </div>
         </div>
         <p class="text-center small text-muted mb-4">
-          <strong>Prateleira:</strong> PDV, Hub, Reino OIDC, Minerador 4.0, Circuito Python, Ink Agenda (versão anterior). <strong>Garagem:</strong> Ink Agenda v2.0.0 (26/Jun/2026), RU Soberano (18/Jun/2026) e Scripts de configuração Área 51 (02/Ago/2026) — scripts em desenvolvimento até o lançamento.
+          <strong>Prateleira:</strong> PDV, Hub, Reino OIDC, Minerador 4.0, Circuito Python, Ink Agenda (versão anterior). <strong>Garagem:</strong> Ink Agenda v2.0.0 (26/Jun/2026), RU Soberano (18/Jun/2026), Cara Core CSO - Gestão de Transportes (08/Nov/2026) e Scripts de configuração Área 51 (02/Ago/2026) — scripts em desenvolvimento até o lançamento.
         </p>
 
         <!-- CTA -->
@@ -285,6 +300,8 @@ flowchart TB
           <a href="delivery/ru/" class="text-decoration-none"><i class="bi bi-box-seam"></i> RU Soberano</a>
           &nbsp;·&nbsp;
           <a href="delivery/ink/" class="text-decoration-none"><i class="bi bi-box-seam"></i> Ink Agenda v2.0.0</a>
+          &nbsp;·&nbsp;
+          <a href="delivery/cso/" class="text-decoration-none"><i class="bi bi-box-seam"></i> Cara Core CSO (08/Nov/2026)</a>
           &nbsp;·&nbsp;
           <a href="portfolio.html#area-51" class="text-decoration-none"><i class="bi bi-shield-lock"></i> Scripts Área 51 (02/Ago/2026)</a>
           &nbsp;·&nbsp;

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download — Cara Core CSO | Cara Core Informática</title>
+    <meta name="description" content="Download do Cara Core CSO para Windows. Requisitos: JDK 21. Instalador .exe e releases. Lançamento oficial 08 de novembro de 2026.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/cso.css">
+</head>
+<body class="download-page">
+    <div class="wrapper">
+        <nav class="breadcrumb" aria-label="Navegação">
+            <a href="https://caracore.com.br/">Cara Core Informática</a>
+            <span> · </span>
+            <a href="https://caracore.com.br/ecosistema.html#garagem">Ecossistema (Garagem)</a>
+            <span> · </span>
+            <a href="index.html">Cara Core CSO</a>
+            <span> · </span>
+            <span>Download</span>
+        </nav>
+
+        <!-- Aviso padrão: lançamento oficial — 08/11/2026 -->
+        <section class="cso-launch-banner" aria-label="Data de lançamento">
+            <p class="cso-launch-label">Lançamento oficial</p>
+            <p class="cso-launch-date">App Cara Core CSO para Windows Desktop — <strong>08 de novembro de 2026</strong>.</p>
+        </section>
+
+        <header>
+            <h1>Download — Cara Core CSO</h1>
+            <p>Windows Desktop · Java 21 + JavaFX · Instalador .exe</p>
+        </header>
+
+        <p class="download-notice" style="margin-bottom: 1rem;">O aplicativo será distribuído como <strong>instalador .exe</strong> para Windows. Não requer JDK pré-instalado (Java 21 incluído).</p>
+
+        <section class="card" style="border-left: 4px solid var(--accent-green); background: var(--bg-card); padding: 24px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 32px;">
+            <p>O <strong>Cara Core CSO</strong> será distribuído como <strong>instalador .exe</strong> para Windows. O instalador inclui Java 21 e todas as dependências necessárias. A aplicação usa JavaFX 21 para a interface gráfica e SQLite para armazenamento local.</p>
+            <p><strong>Como executar (desenvolvimento):</strong></p>
+            <ul>
+                <li>Na oficina (caracore-cso): <code>cd src && mvn javafx:run</code></li>
+                <li>Ou gerar instalador: scripts de build para Windows</li>
+            </ul>
+            <p>Quando houver releases publicadas no repositório de releases, o instalador estará em:</p>
+            <a href="https://github.com/chmulato/caracore-cso-releases/releases/latest" class="cta-btn cta-btn-primary" style="display: inline-block; margin-top: 8px; padding: 12px 24px; text-decoration: none; border-radius: 8px;" target="_blank" rel="noopener">Releases → Latest (GitHub)</a>
+            <p style="margin-top: 20px;">A <strong>apresentação completa</strong> (requisitos, instalação, uso) e a <strong>consultoria</strong> ficam nesta matriz (caracore.com.br/delivery/cso). A vitrine e o download estão na <a href="https://chmulato.github.io/caracore-cso-releases/">loja caracore-cso-releases</a>. Código-fonte: <a href="https://github.com/chmulato/caracore-cso" target="_blank" rel="noopener">caracore-cso</a>.</p>
+        </section>
+
+        <section class="card" style="border-left: 4px solid var(--accent-blue); background: var(--bg-card); padding: 24px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 32px;">
+            <h3>Requisitos do Sistema</h3>
+            <ul>
+                <li><strong>Sistema Operacional:</strong> Windows 10/11 (64-bit)</li>
+                <li><strong>Processador:</strong> Intel/AMD x64</li>
+                <li><strong>Memória RAM:</strong> 4 GB mínimo, 8 GB recomendado</li>
+                <li><strong>Armazenamento:</strong> 500 MB para instalação + espaço para dados</li>
+                <li><strong>Permissões:</strong> Instalação requer privilégios de administrador</li>
+            </ul>
+        </section>
+
+        <section class="card" style="border-left: 4px solid var(--accent-gold); background: var(--bg-card); padding: 24px; border-radius: 8px; border: 1px solid var(--border); margin-bottom: 32px;">
+            <h3>Verificação de Integridade</h3>
+            <p>Todos os releases incluem checksums SHA-256 para verificação de integridade. Após o download, verifique o arquivo usando:</p>
+            <code style="display: block; background: var(--bg-elevated); padding: 12px; border-radius: 4px; margin: 12px 0; font-family: 'Courier New', monospace;">certutil -hashfile CSO-Setup.exe SHA256</code>
+            <p>Compare o resultado com o hash publicado no release.</p>
+        </section>
+
+        <nav class="download-back">
+            <a href="index.html" class="cta-btn cta-btn-secondary">← Voltar para apresentação</a>
+            <a href="canal-feedback.html" class="cta-btn cta-btn-secondary">Canal de feedback</a>
+            <a href="https://caracore.com.br/ecosistema.html#garagem" class="cta-btn cta-btn-secondary">Ver no ecossistema</a>
+        </nav>
+    </div>
+
+    <script src="assets/js/cso.js"></script>
+</body>
+</html>

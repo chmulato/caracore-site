@@ -52,6 +52,26 @@
             <p class="tagline">Oficina: caracore-ru · Loja: <a href="https://chmulato.github.io/caracore-ru-releases/" style="color: var(--accent-gold);" target="_blank" rel="noopener">caracore-ru-releases</a> · R$ 29,90 · Disponível dia 18/Junho/2026 · Pronto na garagem.</p>
         </header>
 
+        <p class="nav-section-title">Novidades para a matriz</p>
+        <section class="methodology">
+            <div class="card card-differential">
+                <h2>Calendário</h2>
+                <p><strong>18/06/2026</strong> — Lançamento público da versão FREE do RU. Artefato: <code>RU_FREE_SOBERANIA.zip</code>. Release no GitHub. Sem <code>license.db</code> nem dados de teste no pacote.</p>
+            </div>
+            <div class="card">
+                <h2>Novidades técnicas</h2>
+                <p><strong>Layout e produção:</strong> VBox único root, três zonas 30/60/10, invasão zero. <code>ENABLE_ZONE_DEBUG_BORDER = false</code> em produção; <code>deploy_to_github.py</code> valida antes do zip. <strong>HP48SX / Motor 2026:</strong> SOLV mapeia Stack X/Y/Z para FeedRate, SubstrateConcentration, BacterialEfficiency; validação Lavoisier (MassBalanceLogic); log STOICHIOMETRIC_SYNC_SUCCESSFUL, Glow ouro no dashboard. <strong>Persistência:</strong> LicenseStore em AppData/Local/CaraCore/, cifra AES-GCM. Versão FREE distribuída sem license.db.</p>
+            </div>
+            <div class="card">
+                <h2>Oferta comercial (resumo)</h2>
+                <p><strong>FREE:</strong> Lançamento 18/06/2026. Gratuito. Aula Soccol, HP48, Biorreator básico, F5 convite. <strong>PREMIUM:</strong> R$ 29,90 (PIX). Motor 2026, micro-vida, WASH, Curva Lavoisier, licença perpétua.</p>
+            </div>
+            <div class="card">
+                <h2>Ferramentas internas</h2>
+                <p><code>deploy_to_github.py</code> — empacotamento FREE (Maven clean compile, verificações, zip). <code>premium_test.py</code> — bypass teste Premium (cryptography + AES-GCM).</p>
+            </div>
+        </section>
+
         <section class="methodology">
             <div class="card card-differential">
                 <h2>Expectativa × realidade</h2>

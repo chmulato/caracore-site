@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Área 51 - Wiki Cara Core</title>
-    <meta name="description" content="Área 51 - Sistema de autenticação empresarial avançado com recursos de alta segurança, federação de identidades e controle de acesso granular.">
+    <meta name="description" content="Área 51 - Wiki até o mundo da Lady OAuth (autenticação, primeira era do Reino OIDC). Para colaboradores e estagiários. Processo completo = produto na Oficina/Loja.">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -105,15 +105,13 @@
                         <li><a href="glossario.html"><i class="bi bi-book"></i> Glossário Técnico</a></li>
                     </ul>
                     
-                    <!-- Navegação de Segurança -->
+                    <!-- Navegação: até Lady OAuth (1ª era) -->
                     <div class="mt-4">
-                        <h5><i class="bi bi-shield-fill-check"></i> Segurança Avançada</h5>
+                        <h5><i class="bi bi-shield-fill-check"></i> Até Lady OAuth (1ª era)</h5>
                         <ul class="area51-nav">
-                            <li><a href="#arquitetura"><i class="bi bi-diagram-3"></i> Arquitetura</a></li>
-                            <li><a href="#authentication"><i class="bi bi-key"></i> Autenticação</a></li>
-                            <li><a href="#authorization"><i class="bi bi-shield"></i> Autorização</a></li>
-                            <li><a href="#federation"><i class="bi bi-globe"></i> Federação</a></li>
-                            <li><a href="#deployment"><i class="bi bi-rocket-takeoff"></i> Deploy</a></li>
+                            <li><a href="#arquitetura"><i class="bi bi-diagram-3"></i> Conceitos</a></li>
+                            <li><a href="#authentication"><i class="bi bi-key"></i> Autenticação (Lady OAuth)</a></li>
+                            <li><a href="#processo-completo"><i class="bi bi-shop"></i> Processo completo → Loja</a></li>
                         </ul>
                     </div>
                 </div>
@@ -128,6 +126,9 @@
                             <p>Sistema de Autenticação Empresarial de Alta Segurança</p>
                         </div>
                         <div class="project-body">
+                            <div class="alert alert-info mb-4">
+                                <strong><i class="bi bi-journal-code"></i> Wiki para colaboradores e estagiários.</strong> Esta wiki cobre <strong>somente até o mundo da Lady OAuth</strong> — a <strong>autenticação</strong> (primeira era do Reino OIDC): quem é você, login, OAuth/OIDC. O <strong>Reino das Entidades Federadas</strong> (processo completo: autorização, federação, deploy, etc.) <strong>não é divulgado aqui</strong>: é o produto da <strong>Oficina da Área 51</strong> (scripts Python em baseline) vendido na <strong>Loja da Área 51</strong>.
+                            </div>
                             <div class="project-status">
                                 <span class="badge badge-enterprise">Enterprise</span>
                                 <span class="badge badge-security">Security</span>
@@ -166,10 +167,10 @@
                         </div>
                     </section>
 
-                    <!-- Conceitos e Benefícios -->
+                    <!-- Conceitos e Benefícios (contexto da 1ª era — Lady OAuth) -->
                     <section id="arquitetura" class="mb-5">
                         <h2><i class="bi bi-diagram-3 text-primary"></i> Conceitos Fundamentais</h2>
-                        
+                        <p class="text-muted">Contexto para o mundo da <strong>Lady OAuth</strong> (autenticação, primeira era do Reino OIDC).</p>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="leigos-section">
@@ -221,9 +222,10 @@
                         </div>
                     </section>
 
-                    <!-- Recursos de Autenticação -->
+                    <!-- Recursos de Autenticação (mundo da Lady OAuth — 1ª era) -->
                     <section id="authentication" class="mb-5">
-                        <h2><i class="bi bi-key text-success"></i> Métodos de Autenticação</h2>
+                        <h2><i class="bi bi-key text-success"></i> Autenticação — Mundo da Lady OAuth (1ª era)</h2>
+                        <p class="text-muted">Conteúdo desta wiki: <strong>autenticação</strong> (OAuth 2.1, OIDC, PKCE, login com Google/Microsoft). Corresponde à primeira era do Reino OIDC.</p>
                         
                         <div class="auth-methods">
                             <div class="row">
@@ -288,350 +290,24 @@
 
                         <div class="alert alert-info mt-4">
                             <h5><i class="bi bi-book"></i> Aprenda os Fundamentos</h5>
-                            <p>O <a href="projeto-reino.html" class="alert-link"><strong>Reino OIDC</strong></a> é um projeto educacional completo onde você pode aprender os conceitos de autenticação, OAuth 2.0, OpenID Connect e muito mais!</p>
+                            <p>O <a href="projeto-reino.html" class="alert-link"><strong>Reino OIDC</strong></a> é o projeto educacional onde você aprende autenticação, OAuth 2.0 e OpenID Connect (mundo da Lady OAuth).</p>
                         </div>
                     </section>
 
-                    <!-- Sistema de Autorização -->
-                    <section id="authorization" class="mb-5">
-                        <h2><i class="bi bi-shield text-info"></i> Controle de Acesso Avançado</h2>
-                        
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="leigos-section">
-                                    <h3><i class="bi bi-diagram-2"></i> RBAC + ABAC</h3>
-                                    <p>Controle de acesso que combina <strong>funções</strong> com <strong>atributos</strong>:</p>
-                                    
-                                    <div class="rbac-example">
-                                        <h5>Exemplo Prático: Sistema Financeiro</h5>
-                                        <div class="role-card">
-                                            <h6>👤 João - Analista Financeiro</h6>
-                                            <p><strong>Função:</strong> Analista (RBAC)</p>
-                                            <p><strong>Departamento:</strong> Financeiro (Atributo)</p>
-                                            <p><strong>Nível:</strong> Pleno (Atributo)</p>
-                                            <p><strong>Acesso permitido:</strong></p>
-                                            <ul>
-                                                <li>✅ Ler relatórios financeiros</li>
-                                                <li>✅ Criar análises até R$ 10k</li>
-                                                <li>❌ Aprovar pagamentos > R$ 5k</li>
-                                                <li>❌ Acessar dados de RH</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="alert alert-info mt-4">
-                                        <h5><i class="bi bi-mortarboard"></i> Entenda os Conceitos</h5>
-                                        <p><strong>RBAC (Role-Based Access Control):</strong> Permissões baseadas em funções organizacionais</p>
-                                        <p><strong>ABAC (Attribute-Based Access Control):</strong> Decisões baseadas em atributos dinâmicos</p>
-                                        <p class="mb-0">Explore mais sobre autorização no <a href="projeto-reino.html" class="alert-link"><strong>Reino OIDC</strong></a></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Federação de Identidades -->
-                    <section id="federation" class="mb-5">
-                        <h2><i class="bi bi-globe text-warning"></i> Federação e Integração</h2>
-                        
-                        <div class="federation-overview">
-                            <div class="alert alert-info">
-                                <h5><i class="bi bi-info-circle"></i> O que é Federação?</h5>
-                                <p><strong>Para Leigos:</strong> Imagine que sua empresa fez uma parceria com outra empresa. Os funcionários de ambas precisam acessar sistemas compartilhados, mas sem criar novas contas. A federação permite que usem suas contas corporativas originais!</p>
-                                <p><strong>Para Técnicos:</strong> Estabelecimento de confiança entre diferentes domínios de identidade, permitindo SSO cross-domain através de protocolos padronizados.</p>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4 mb-4">
-                                <div class="federation-card saml">
-                                    <div class="fed-header">
-                                        <i class="bi bi-file-earmark-code"></i>
-                                        <h4>SAML 2.0</h4>
-                                    </div>
-                                    <div class="fed-body">
-                                        <p><strong>Uso:</strong> Aplicações web enterprise</p>
-                                        <p><strong>Formato:</strong> XML assertions</p>
-                                        <p><strong>Força:</strong> Maturidade e features avançadas</p>
-                                        <div class="fed-features">
-                                            <span class="feature">Encrypted Assertions</span>
-                                            <span class="feature">Attribute Mapping</span>
-                                            <span class="feature">Logout Propagation</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 mb-4">
-                                <div class="federation-card oidc">
-                                    <div class="fed-header">
-                                        <i class="bi bi-shield-lock"></i>
-                                        <h4>OpenID Connect</h4>
-                                    </div>
-                                    <div class="fed-body">
-                                        <p><strong>Uso:</strong> APIs modernas e SPAs</p>
-                                        <p><strong>Formato:</strong> JSON Web Tokens</p>
-                                        <p><strong>Força:</strong> Simplicidade e mobilidade</p>
-                                        <div class="fed-features">
-                                            <span class="feature">JWT Tokens</span>
-                                            <span class="feature">REST APIs</span>
-                                            <span class="feature">Mobile Support</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 mb-4">
-                                <div class="federation-card ldap">
-                                    <div class="fed-header">
-                                        <i class="bi bi-tree"></i>
-                                        <h4>LDAP/AD</h4>
-                                    </div>
-                                    <div class="fed-body">
-                                        <p><strong>Uso:</strong> Sistemas legados e infraestrutura</p>
-                                        <p><strong>Formato:</strong> Directory queries</p>
-                                        <p><strong>Força:</strong> Integração com Windows/Linux</p>
-                                        <div class="fed-features">
-                                            <span class="feature">Group Sync</span>
-                                            <span class="feature">Kerberos SSO</span>
-                                            <span class="feature">Directory Sync</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-success">
-                            <h5><i class="bi bi-book-half"></i> Aprofunde-se nos Protocolos</h5>
-                            <p class="mb-0">O <a href="projeto-reino.html" class="alert-link"><strong>Reino OIDC</strong></a> explica em detalhes os protocolos SAML, OpenID Connect e OAuth 2.0, com exemplos práticos!</p>
-                        </div>
-                    </section>
-
-                    <!-- Implementação e Deploy -->
-                    <section id="deployment" class="mb-5">
-                        <h2><i class="bi bi-rocket-takeoff text-success"></i> Deployment Empresarial</h2>
-                        
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="benefits-card">
-                                    <h4><i class="bi bi-cloud"></i> Cloud Native</h4>
-                                    <ul class="benefit-list">
-                                        <li><strong>Containerização:</strong> Deploy simplificado e consistente</li>
-                                        <li><strong>Orquestração:</strong> Escalabilidade automática</li>
-                                        <li><strong>Alta Disponibilidade:</strong> Redundância em múltiplas zonas</li>
-                                        <li><strong>Zero Downtime:</strong> Deploy sem interrupção</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="benefits-card">
-                                    <h4><i class="bi bi-gear-wide-connected"></i> DevOps</h4>
-                                    <ul class="benefit-list">
-                                        <li><strong>CI/CD:</strong> Integração e entrega contínua</li>
-                                        <li><strong>Monitoramento:</strong> Observabilidade em tempo real</li>
-                                        <li><strong>Automação:</strong> Infrastructure as Code</li>
-                                        <li><strong>Backup:</strong> Recuperação automática de desastres</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="deployment-metrics">
-                            <h4><i class="bi bi-graph-up"></i> Métricas de Performance</h4>
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <div class="metric-card">
-                                        <div class="metric-value">99.9%</div>
-                                        <div class="metric-label">Uptime SLA</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="metric-card">
-                                        <div class="metric-value">&lt; 200ms</div>
-                                        <div class="metric-label">Auth Latency</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="metric-card">
-                                        <div class="metric-value">10,000+</div>
-                                        <div class="metric-label">Auth/min</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-3">
-                                    <div class="metric-card">
-                                        <div class="metric-value">Zero</div>
-                                        <div class="metric-label">Downtime</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Segurança e Compliance -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-shield-fill-check text-danger"></i> Segurança e Compliance</h2>
-                        
-                        <div class="security-overview">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="security-card">
-                                        <h4><i class="bi bi-check-circle text-success"></i> Certificações</h4>
-                                        <ul class="compliance-list">
-                                            <li><strong>ISO 27001:</strong> Gestão de segurança da informação</li>
-                                            <li><strong>SOC 2 Type II:</strong> Controles de segurança auditados</li>
-                                            <li><strong>LGPD/GDPR:</strong> Proteção de dados pessoais</li>
-                                            <li><strong>FIPS 140-2:</strong> Criptografia validada</li>
-                                            <li><strong>Common Criteria:</strong> Avaliação de segurança</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="security-card">
-                                        <h4><i class="bi bi-shield-lock text-warning"></i> Medidas de Segurança</h4>
-                                        <ul class="security-measures">
-                                            <li><strong>Criptografia:</strong> AES-256, RSA-4096, ECDSA</li>
-                                            <li><strong>TLS:</strong> 1.3 com Perfect Forward Secrecy</li>
-                                            <li><strong>HSM:</strong> Hardware Security Modules</li>
-                                            <li><strong>Zero Trust:</strong> Never trust, always verify</li>
-                                            <li><strong>Threat Detection:</strong> ML-based anomaly detection</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="alert alert-warning mt-4">
-                            <h5><i class="bi bi-exclamation-triangle"></i> Auditoria Completa</h5>
-                            <p class="mb-0">Sistema com <strong>logs estruturados</strong> e <strong>rastreabilidade completa</strong> para atender requisitos de compliance e auditoria corporativa.</p>
-                        </div>
-                    </section>
-
-                    <!-- Casos de Uso Empresariais -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-briefcase text-info"></i> Casos de Uso Empresariais</h2>
-                        
-                        <div class="use-cases-grid">
-                            <div class="use-case-enterprise">
-                                <div class="use-case-icon">
-                                    <i class="bi bi-bank text-primary"></i>
-                                </div>
-                                <h5>Setor Bancário</h5>
-                                <p><strong>Desafio:</strong> Autenticação forte para internet banking com milhões de usuários</p>
-                                <p><strong>Solução:</strong> MFA adaptativo + biometria + análise de risco em tempo real</p>
-                                <div class="results">
-                                    <span class="result-metric">📉 85% redução fraudes</span>
-                                    <span class="result-metric">⚡ 40% menos chamados suporte</span>
-                                </div>
-                            </div>
-
-                            <div class="use-case-enterprise">
-                                <div class="use-case-icon">
-                                    <i class="bi bi-hospital text-success"></i>
-                                </div>
-                                <h5>Saúde</h5>
-                                <p><strong>Desafio:</strong> Acesso seguro a prontuários médicos com compliance HIPAA</p>
-                                <p><strong>Solução:</strong> Role-based access + audit completo + criptografia E2E</p>
-                                <div class="results">
-                                    <span class="result-metric">🔒 100% compliance HIPAA</span>
-                                    <span class="result-metric">📋 Auditoria completa</span>
-                                </div>
-                            </div>
-
-                            <div class="use-case-enterprise">
-                                <div class="use-case-icon">
-                                    <i class="bi bi-gear-wide-connected text-warning"></i>
-                                </div>
-                                <h5>Manufatura</h5>
-                                <p><strong>Desafio:</strong> SSO para sistemas críticos de produção 24/7</p>
-                                <p><strong>Solução:</strong> Federação LDAP + SAML + failover automático</p>
-                                <div class="results">
-                                    <span class="result-metric">🎯 99.99% uptime</span>
-                                    <span class="result-metric">⚡ Zero downtime deploy</span>
-                                </div>
-                            </div>
-
-                            <div class="use-case-enterprise">
-                                <div class="use-case-icon">
-                                    <i class="bi bi-mortarboard text-info"></i>
-                                </div>
-                                <h5>Educação</h5>
-                                <p><strong>Desafio:</strong> Acesso unificado para alunos, professores e funcionários</p>
-                                <p><strong>Solução:</strong> Social login + guest access + self-service</p>
-                                <div class="results">
-                                    <span class="result-metric">👥 200k usuários ativos</span>
-                                    <span class="result-metric">📱 Mobile-first UX</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- ROI e Métricas -->
-                    <section class="mb-5">
-                        <h2><i class="bi bi-graph-up-arrow text-success"></i> ROI e Impacto</h2>
-                        
-                        <div class="roi-section">
-                            <div class="alert alert-success">
-                                <h5><i class="bi bi-calculator"></i> Retorno sobre Investimento</h5>
-                                <p>Empresas que implementaram a Área 51 reportam ROI médio de <strong>340% em 18 meses</strong></p>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="roi-card cost-savings">
-                                        <h4>💰 Redução de Custos</h4>
-                                        <ul>
-                                            <li><strong>Help Desk:</strong> -80% chamados de senha</li>
-                                            <li><strong>Licenças:</strong> -60% sistemas de autenticação</li>
-                                            <li><strong>Compliance:</strong> -90% tempo de auditoria</li>
-                                            <li><strong>Desenvolvimento:</strong> -70% tempo integração</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="roi-card productivity">
-                                        <h4>📈 Ganhos de Produtividade</h4>
-                                        <ul>
-                                            <li><strong>Login único:</strong> 5min/dia por usuário</li>
-                                            <li><strong>Onboarding:</strong> De 2 dias para 2 horas</li>
-                                            <li><strong>Automação:</strong> 95% processos manuais</li>
-                                            <li><strong>Self-service:</strong> 80% menos tickets</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="roi-card security">
-                                        <h4>🔒 Melhoria em Segurança</h4>
-                                        <ul>
-                                            <li><strong>Ataques:</strong> -95% tentativas bem-sucedidas</li>
-                                            <li><strong>Detecção:</strong> Anomalias em tempo real</li>
-                                            <li><strong>Resposta:</strong> Mitigação automática</li>
-                                            <li><strong>Compliance:</strong> Auditoria contínua</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Próximos Passos -->
-                    <section class="text-center">
-                        <h2><i class="bi bi-rocket text-primary"></i> Pronto para Decolar?</h2>
-                        <p class="lead">A Área 51 representa o futuro da autenticação empresarial. Segurança máxima com experiência transparente.</p>
-                        
+                    <!-- Processo completo = produto Oficina/Loja (não divulgado na wiki) -->
+                    <section id="processo-completo" class="mb-5">
+                        <h2><i class="bi bi-shop text-primary"></i> Reino das Entidades Federadas — Produto Área 51</h2>
                         <div class="alert alert-warning">
-                            <h4><i class="bi bi-exclamation-diamond"></i> Acesso Restrito</h4>
-                            <p>Este projeto requer clearance de segurança nível empresarial. Entre em contato para demonstração controlada.</p>
+                            <h5><i class="bi bi-lock"></i> Processo completo não divulgado nesta wiki</h5>
+                            <p class="mb-2">Tudo que vem <strong>depois da autenticação</strong> (Lady OAuth) — autorização, federação, deploy, casos de uso, métricas — faz parte do <strong>Reino das Entidades Federadas</strong>. Esse processo está nos <strong>scripts Python</strong> da <strong>Oficina da Área 51</strong> (controle de versão, baseline) e é o <strong>produto vendido na Loja da Área 51</strong>.</p>
+                            <p class="mb-0">Colaboradores e estagiários: o detalhamento completo é interno ao produto (Oficina/Loja). Esta wiki expõe apenas até a primeira era — autenticação.</p>
                         </div>
-                        
-                        <div class="d-grid gap-2 d-md-block">
-                            <a href="mailto:contato@caracore.com.br?subject=Demonstração Área 51" class="btn-wiki me-2">
-                                <i class="bi bi-envelope"></i> Solicitar Demo
+                        <div class="d-grid gap-2 d-md-flex">
+                            <a href="https://chmulato.github.io/caracore-area51-releases/" class="btn btn-primary" target="_blank" rel="noopener">
+                                <i class="bi bi-shop"></i> Loja Área 51 (produto)
                             </a>
-                            <a href="projeto-reino.html" class="btn-wiki me-2">
-                                <i class="bi bi-mortarboard"></i> Aprender OIDC
-                            </a>
-                            <a href="tecnologias.html" class="btn-wiki">
-                                <i class="bi bi-gear"></i> Stack Tecnológico
+                            <a href="projeto-reino.html" class="btn btn-outline-secondary">
+                                <i class="bi bi-mortarboard"></i> Reino OIDC (Lady OAuth)
                             </a>
                         </div>
                     </section>

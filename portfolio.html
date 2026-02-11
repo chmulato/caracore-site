@@ -925,14 +925,14 @@ graph LR
   </div>
 </section>
 
-<!-- Projeto 7: Área 51 (consultoria OIDC) -->
+<!-- Projeto 7: Área 51 (produto de suporte + scripts) -->
 <section id="area-51" class="py-5">
   <div class="container">
   <div class="project-card" data-aos="fade-up" data-aos-delay="300">
     <div class="project-header area51">
       <div class="d-flex justify-content-between align-items-center">
         <h3 class="mb-0">
-          <i class="bi bi-shield-lock"></i> Área 51 - Sistema de Autenticação Enterprise
+          <i class="bi bi-shield-lock"></i> Área 51 - Suporte e Scripts de Configuração
         </h3>
         <div>
           <span class="tech-badge">OAuth 2.1</span>
@@ -943,276 +943,59 @@ graph LR
     </div>
     
     <div class="project-body">
-      <!-- Alert de Licenciamento e Público-alvo -->
+      <!-- Alert: foco no produto de suporte -->
       <div class="alert alert-info">
         <i class="bi bi-lock-fill me-2"></i>
-        <strong>Software proprietário da Cara Core Informática.</strong> Este é um sistema de autenticação enterprise em produção. 
-        Apenas a apresentação e documentação técnica (Wiki) são públicas no GitHub Pages.
+        <strong>Produto da Cara Core Informática.</strong> O portfólio apresenta o <strong>Suporte Área 51</strong> (serviço para empresas) e a oferta de <strong>scripts de configuração</strong> (Python, controle de versão, baseline). O mapa da lógica e os processos internos da Área 51 ficam na <strong>Wiki da Área 51</strong>, voltada a colaboradores e estagiários, cada um em seu nível.
       </div>
       <div class="alert alert-warning">
         <i class="bi bi-briefcase me-2"></i>
-        <strong>Produto direcionado a empresas médias.</strong> A implementação do Suporte Área 51 exige <strong>tempo e investimento</strong> — é preciso aplicar a energia da startup para levar autenticação e autorização corporativa até o resultado. Não é solução rápida nem de baixo custo; o retorno vem para quem está disposto a investir.
+        <strong>Direcionado a empresas médias.</strong> A implementação do Suporte Área 51 exige <strong>tempo e investimento</strong>. Não é solução rápida nem de baixo custo; o retorno vem para quem está disposto a investir.
       </div>
       
       <div class="mb-4">
-        <h4>Aplicação Prática do Reino OIDC</h4>
+        <h4>Produto de Suporte Área 51</h4>
         <p class="lead">
-          A Área 51 é a implementação real e em produção dos conceitos ensinados no Reino OIDC. 
-          Um sistema de autenticação enterprise-grade que protege áreas restritas do site da Cara Core. 
-          O <strong>produto Suporte Área 51</strong> (consultoria e implementação para terceiros) é ofertado a <strong>empresas médias</strong> que podem dedicar tempo e orçamento ao projeto.
+          O <strong>Suporte Área 51</strong> é o serviço da Cara Core para empresas que precisam de autenticação e autorização corporativa (OAuth 2.1, OIDC, PKCE). Na <strong>Loja da Área 51</strong> vendemos <strong>scripts de configuração</strong> em Python, em controle de versão e dentro de uma baseline — o produto de configuração da Cara Core. O detalhamento de processos e arquitetura fica na Wiki (colaboradores e estagiários).
         </p>
       </div>
       
-      <!-- Descrição Executiva -->
+      <!-- Visão Executiva (leigos) -->
       <div class="mb-4">
-        <h5><i class="bi bi-briefcase"></i> Visão Executiva</h5>
+        <h5><i class="bi bi-briefcase"></i> Para Executivos</h5>
         <p>
-          Sistema de autenticação e autorização corporativa com controle granular de acesso, auditoria completa 
-          e painel administrativo. Permite que apenas usuários autorizados acessem áreas exclusivas do portal, 
-          com integração nativa aos provedores Microsoft e Google.
-        </p>
-        <p class="text-muted">
-          <strong>Impacto no Negócio:</strong> Redução de 100% de acessos não autorizados, 
-          tempo de resposta inferior a 200ms, e conformidade total com padrões OAuth 2.1 e OIDC. 
-          Sistema auditável para compliance LGPD e segurança da informação.
+          Sistema de autenticação e autorização corporativa: controle de acesso, auditoria e painel administrativo, com integração a provedores Microsoft e Google. Redução de acessos não autorizados, conformidade OAuth 2.1/OIDC e compliance LGPD.
         </p>
       </div>
       
-      <!-- Descrição para Leigos -->
+      <!-- Para Leigos -->
       <div class="mb-4">
         <h5><i class="bi bi-people"></i> Para Leigos</h5>
         <p>
-          Imagine um prédio com várias salas. Algumas salas são abertas ao público, mas outras precisam de 
-          autorização especial. A Área 51 é como o sistema de segurança desse prédio: você usa sua conta 
-          do Google ou Microsoft (que você já tem) como um "crachá digital", e o sistema verifica se você 
-          tem permissão para entrar nas áreas restritas.
-        </p>
-        <p>
-          <strong>Analogia:</strong> É como usar sua conta do Google para entrar em um aplicativo, mas com 
-          uma camada extra de segurança: mesmo tendo conta do Google, só entra quem estiver na "lista VIP" 
-          do sistema. O administrador pode adicionar ou remover pessoas dessa lista a qualquer momento.
+          Imagine um prédio com salas restritas. A Área 51 é o sistema de segurança: você usa sua conta do Google ou Microsoft como "crachá digital"; o sistema verifica se você está na lista de autorizados. Quem administra pode incluir ou remover pessoas dessa lista.
         </p>
       </div>
       
-      <!-- Recursos Principais -->
+      <!-- Resumo técnico (sem detalhes de processo) -->
       <div class="mb-4">
-        <h5><i class="bi bi-star"></i> Recursos Principais</h5>
-        <div class="row">
-          <div class="col-md-6">
-            <ul class="feature-list">
-              <li><strong>Autenticação Dupla:</strong> Google e Microsoft Entra ID</li>
-              <li><strong>PKCE Obrigatório:</strong> Proteção contra ataques de interceptação</li>
-              <li><strong>Lista de Autorização:</strong> Controle granular de acessos</li>
-              <li><strong>Painel Admin:</strong> Gestão de usuários e permissões</li>
-              <li><strong>Sistema de Solicitação:</strong> Usuários podem pedir acesso</li>
-            </ul>
-          </div>
-          <div class="col-md-6">
-            <ul class="feature-list">
-              <li><strong>Auditoria Completa:</strong> Logs de todos os eventos de acesso</li>
-              <li><strong>Super Admin:</strong> Gestão de senhas e administradores</li>
-              <li><strong>Conformidade LGPD:</strong> Consentimento obrigatório e gestão de dados</li>
-              <li><strong>API Documentation:</strong> Swagger/OpenAPI completo</li>
-              <li><strong>Persistência Azure:</strong> Armazenamento persistente de dados</li>
-              <li><strong>Refresh Tokens:</strong> Sistema de renovação automática com criptografia AES-256-CBC</li>
-              <li><strong>Sessões Persistentes:</strong> Usuários permanecem autenticados sem reautenticação manual</li>
-              <li><strong>Deploy Azure:</strong> Alta disponibilidade e escalabilidade</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Stack Técnico -->
-      <div class="mb-4">
-        <h5><i class="bi bi-code-square"></i> Stack Técnico</h5>
-        <div class="mb-3">
-          <strong>Backend (Python):</strong>
-          <div>
-            <span class="tech-badge">Flask 3.0.3</span>
-            <span class="tech-badge">Python 3.11</span>
-            <span class="tech-badge">JWT</span>
-            <span class="tech-badge">Docker</span>
-            <span class="tech-badge">Azure Web App</span>
-          </div>
-        </div>
-        <div class="mb-3">
-          <strong>Frontend:</strong>
-          <div>
-            <span class="tech-badge">HTML5/CSS3</span>
-            <span class="tech-badge">JavaScript ES6+</span>
-            <span class="tech-badge">Bootstrap 5.3.3</span>
-            <span class="tech-badge">GitHub Pages</span>
-          </div>
-        </div>
+        <h5><i class="bi bi-code-square"></i> Visão Técnica (resumo)</h5>
+        <p class="text-muted mb-2">Autenticação Google e Microsoft Entra ID, PKCE obrigatório, lista de autorização, painel admin, auditoria e LGPD. Backend Python/Flask, frontend estático, deploy Azure. O <strong>mapa completo da lógica, fases e arquitetura</strong> está na <a href="wiki/projeto-area51.html">Wiki da Área 51</a> (colaboradores e estagiários).</p>
         <div>
-          <strong>Segurança:</strong>
-          <div>
-            <span class="tech-badge">OAuth 2.1</span>
-            <span class="tech-badge">OpenID Connect</span>
-            <span class="tech-badge">PKCE</span>
-            <span class="tech-badge">HTTPS</span>
-            <span class="tech-badge">CORS</span>
-            <span class="tech-badge">CSP</span>
-            <span class="tech-badge">LGPD</span>
-          </div>
-        </div>
-        <div class="mb-3">
-          <strong>Documentação e Infraestrutura:</strong>
-          <div>
-            <span class="tech-badge">Swagger/OpenAPI</span>
-            <span class="tech-badge">Flasgger</span>
-            <span class="tech-badge">Azure Files</span>
-            <span class="tech-badge">Persistent Storage</span>
-            <span class="tech-badge">Cryptography</span>
-            <span class="tech-badge">AES-256-CBC</span>
-            <span class="tech-badge">Refresh Tokens</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Fases do Projeto -->
-      <div class="mb-4">
-        <h5><i class="bi bi-clipboard-check"></i> Desenvolvimento em Fases</h5>
-        <p class="text-muted mb-3">Sistema desenvolvido seguindo metodologia ágil com entregas incrementais:</p>
-        <ul class="feature-list">
-          <li><strong>Fase 1:</strong> Autenticação OAuth 2.1 + OIDC básica com Google e Microsoft (CONCLUÍDA ✅)</li>
-          <li><strong>Fase 2:</strong> Sistema de validação de tokens e gestão de sessões (CONCLUÍDA ✅)</li>
-          <li><strong>Fase 3:</strong> Dashboard de auditoria e logs de segurança (CONCLUÍDA ✅)</li>
-          <li><strong>Fase 4:</strong> Sistema de controle de acesso e autorização granular (CONCLUÍDA ✅)</li>
-          <li><strong>Fase 5:</strong> Painel Super Admin e gestão completa de usuários (CONCLUÍDA ✅)</li>
-          <li><strong>Fase 6:</strong> Sistema de autorização robusto, conformidade LGPD, documentação Swagger/OpenAPI e persistência de dados (CONCLUÍDA ✅)</li>
-          <li><strong>Fase 7:</strong> Sistema de armazenamento seguro de refresh tokens com criptografia AES-256-CBC e renovação automática (CONCLUÍDA ✅)</li>
-        </ul>
-        <div class="mb-2">
-          <p class="text-success mb-2">
-            <i class="bi bi-check-circle-fill"></i> <strong>Status Atual:</strong> Sistema em produção com 100% de cobertura de testes aprovados e 7 fases concluídas
-          </p>
-          <p class="text-info mb-2">
-            <i class="bi bi-shield-check"></i> <strong>Última Fase Concluída:</strong> Fase 7 - Sistema completo de refresh tokens com criptografia AES-256, renovação automática e sessões persistentes
-          </p>
-          <p class="text-success mb-0">
-            <i class="bi bi-trophy-fill"></i> <strong>Projeto Completo:</strong> Todas as 7 fases implementadas e ativas em produção. Sistema enterprise-grade com sessões persistentes e renovação automática de tokens.
-          </p>
-        </div>
-      </div>
-      
-      <!-- Métricas -->
-      <div class="mb-4">
-        <h5><i class="bi bi-graph-up"></i> Métricas e Performance</h5>
-        <div class="row text-center">
-          <div class="col-md-3 col-6 mb-3">
-            <div class="metric-card">
-              <div class="metric-value">< 200ms</div>
-              <div class="metric-label">Tempo de Resposta</div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-3">
-            <div class="metric-card">
-              <div class="metric-value">100%</div>
-              <div class="metric-label">Testes Aprovados</div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-3">
-            <div class="metric-card">
-              <div class="metric-value">100%</div>
-              <div class="metric-label">HTTPS/PKCE</div>
-            </div>
-          </div>
-          <div class="col-md-3 col-6 mb-3">
-            <div class="metric-card">
-              <div class="metric-value">7 Fases</div>
-              <div class="metric-label">Concluídas</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Diagrama de Arquitetura -->
-      <div class="mb-4">
-        <h5><i class="bi bi-diagram-3"></i> Arquitetura do Sistema</h5>
-        <div class="mermaid">
-graph TB
-    subgraph "Cliente"
-        U[👤 Usuário<br/>Navegador Web]
-    end
-    
-    subgraph "Frontend - GitHub Pages"
-        L[🔓 Página de Login<br/>secure/index.html]
-        C[🔄 Callback<br/>secure/callback.html]
-        R[🔒 Área Restrita<br/>secure/restrita.html]
-        A[👑 Painel Admin<br/>secure/admin-users.html]
-    end
-    
-    subgraph "Provedores OIDC"
-        G[🔐 Google<br/>OAuth 2.1 + PKCE]
-        M[🔐 Microsoft<br/>Entra ID + PKCE]
-    end
-    
-    subgraph "Backend - Azure Web App"
-        API[⚙️ Flask API<br/>Python 3.11]
-        V[✅ Validação JWT<br/>Token Verification]
-        AUTH[🔑 Autorização<br/>Allowlist Check]
-        LOG[📊 Auditoria<br/>Event Logging]
-        SM[🔄 Session Manager<br/>Gerenciamento de Sessões]
-        CM[🔐 Crypto Manager<br/>AES-256-CBC]
-        TA[📊 Token Audit<br/>Auditoria de Tokens]
-    end
-    
-    subgraph "Armazenamento"
-        AL[📋 authorized_users.json<br/>Lista de Acesso]
-        SA[🔐 super_admin.json<br/>Credenciais Admin]
-        LG[📝 audit_logs.json<br/>Histórico Completo]
-        TS[🔒 user_sessions.json<br/>Refresh Tokens Criptografados]
-    end
-    
-    U -->|1. Acessa| L
-    L -->|2. Redireciona| G
-    L -->|2. Redireciona| M
-    G -->|3. Code + State| C
-    M -->|3. Code + State| C
-    C -->|4. POST /token| API
-    API -->|5. Valida| V
-    V -->|6. Verifica| AUTH
-    AUTH -->|7. Consulta| AL
-    API -->|8. Cria Sessão| SM
-    SM -->|9. Criptografa Token| CM
-    CM -->|10. Armazena| TS
-    API -->|11. Registra| LOG
-    LOG -->|12. Grava| LG
-    API -->|13. Auditoria| TA
-    C -->|14. Redireciona autenticado| R
-    R -->|15. Renovação Automática| SM
-    R -->|16. Acessa admin| A
-    A -->|17. Gerencia| AL
-    A -->|18. Autentica| SA
-    
-    style U fill:#667eea
-    style L fill:#ffd200
-    style C fill:#ffd200
-    style R fill:#43cea2
-    style A fill:#f7971e
-    style G fill:#ea4335
-    style M fill:#00a4ef
-    style API fill:#764ba2
-    style V fill:#764ba2
-    style AUTH fill:#764ba2
-    style LOG fill:#764ba2
-    style AL fill:#e0e0e0
-    style SA fill:#e0e0e0
-    style LG fill:#e0e0e0
-    style TS fill:#f0f0f0
-    style SM fill:#43cea2
-    style CM fill:#8f6ed5
-    style TA fill:#667eea
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Flask</span>
+          <span class="tech-badge">OAuth 2.1</span>
+          <span class="tech-badge">OIDC</span>
+          <span class="tech-badge">PKCE</span>
+          <span class="tech-badge">LGPD</span>
         </div>
       </div>
       
       <div class="text-center mt-4">
         <a href="delivery/area51/" class="btn-project me-2">
-          <i class="bi bi-globe"></i> Ver Apresentação (Suporte)
+          <i class="bi bi-globe"></i> Apresentação (Suporte)
         </a>
         <a href="https://chmulato.github.io/caracore-area51-releases/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Ver loja (releases)
+          <i class="bi bi-shop"></i> Loja (scripts de configuração)
         </a>
         <a href="delivery/area51/canal-feedback.html" class="btn-project me-2">
           <i class="bi bi-chat-dots"></i> Solicitar suporte / Orçamento
@@ -1220,14 +1003,14 @@ graph TB
         <a href="secure/index.html" class="btn-project me-2" target="_blank" rel="noopener">
           <i class="bi bi-shield-lock"></i> Acessar Área 51
         </a>
-        <a href="area51/wiki/index.html" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-book"></i> Documentação Técnica
+        <a href="wiki/projeto-area51.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-book"></i> Wiki Área 51 (mapa da lógica e processos)
         </a>
         <div class="mt-3">
           <small class="text-muted">
             <i class="bi bi-lock-fill text-primary"></i> Código-fonte privado | 
-            <i class="bi bi-shop"></i> Loja: chmulato.github.io/caracore-area51-releases | 
-            <i class="bi bi-shield-check text-info"></i> Sistema em Produção
+            <i class="bi bi-shop"></i> Loja: scripts Python em baseline | 
+            <i class="bi bi-book"></i> Wiki: colaboradores e estagiários
           </small>
         </div>
       </div>

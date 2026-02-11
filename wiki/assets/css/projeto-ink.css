@@ -1,0 +1,27 @@
+/* Estilos específicos para projeto Ink Agenda */
+
+/* Feature cards e elementos compartilhados usam wiki.css e wiki-unified.css */
+/* Cores do header e badges já definidas em wiki.css (.project-header.ink, --ink-color) */
+
+/* Ajustes opcionais para páginas do Ink */
+.project-header.ink h1,
+.project-header.ink h2,
+.project-header.ink p {
+  color: white;
+}
+
+.project-header.ink .tech-badge {
+  background: rgba(255, 255, 255, 0.25);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Tema dark */
+[data-theme="dark"] .project-header.ink {
+  background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+}
+
+[data-theme="dark"] .project-header.ink .tech-badge {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ecf0f1;
+}

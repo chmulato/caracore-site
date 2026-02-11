@@ -20,6 +20,7 @@
   --area51-color: #e74c3c;
   --python-color: #3498db;
   --pdv-color: #667eea;
+  --ink-color: #0066ff;
   --wiki-text: #2c3e50;
   
   /* Variáveis de tema claro (padrão) */
@@ -77,6 +78,7 @@
   --reino-color: #a389d4;
   --area51-color: #ec7063;
   --python-color: #5dade2;
+  --ink-color: #3399ff;
 }
 
 /* Reset e Base */
@@ -304,6 +306,10 @@ html:not([data-theme="dark"]) .fed-header > * {
 
 .project-header.ete {
   background: linear-gradient(135deg, #0d6efd 0%, #0a58ca 100%);
+}
+
+.project-header.ink {
+  background: linear-gradient(135deg, #0066ff 0%, #00a3ff 100%);
 }
 
 .project-header h3 {
@@ -730,6 +736,10 @@ html {
 
 .project-header.python {
   background: linear-gradient(135deg, var(--python-color) 0%, #2980b9 100%);
+}
+
+.project-header.ink {
+  background: linear-gradient(135deg, var(--ink-color) 0%, #00a3ff 100%);
 }
 
 /* Badges específicos dos projetos */

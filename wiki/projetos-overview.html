@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visão Geral dos Projetos - Wiki Cara Core</title>
-    <meta name="description" content="Visão geral dos projetos da Cara Core Informática (PDV, Reino OIDC, Seed, Circuito Python, Hub, Área 51) com explicações técnicas e para leigos.">
+    <meta name="description" content="Visão geral dos projetos da Cara Core Informática (PDV, Ink Agenda, Minerador, Reino OIDC, Seed, Circuito Python, Hub, Área 51) com explicações técnicas e para leigos.">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -86,6 +86,7 @@
                             <a href="projetos-overview.html" class="active"><i class="bi bi-collection"></i> Visão Geral dos Projetos</a>
                             <ul class="submenu">
                                 <li><a href="projeto-pdv.html">CaraCore PDV</a></li>
+                                <li><a href="projeto-ink.html">Ink Agenda</a></li>
                                 <li><a href="projeto-minerador.html">Minerador 4.0</a></li>
                                 <li><a href="projeto-reino.html">Reino OIDC</a></li>
                                 <li><a href="projeto-seed.html">Cara Core Seed</a></li>
@@ -119,6 +120,7 @@
                             <p>A Cara Core Informática desenvolveu projetos principais que trabalham como um "ecossistema digital". Imagine nossa empresa como uma fábrica de software, onde cada projeto tem uma função específica:</p>
                             <ul class="feature-list">
                                 <li><strong>CaraCore PDV:</strong> O "sistema de caixa" para lojas, com PIX e preparado para a Reforma Tributária</li>
+                                <li><strong>Ink Agenda:</strong> Gestão para estúdios de tatuagem — agenda, clientes, financeiro; <strong>v2.0.0</strong> (26/Jun/2026), primeiro produto maduro</li>
                                 <li><strong>Minerador 4.0:</strong> Simulador de ETE e hidrometalurgia para <strong>Ensino Médio</strong> e mineração; upgrade Ouro 4.0 (R$ 29,90)</li>
                                 <li><strong>Reino OIDC:</strong> A "escola de segurança digital" para ensinar sobre logins (OAuth 2.1 e OIDC)</li>
                                 <li><strong>Cara Core Seed:</strong> Contador de licenças — foco localhost e Windows Desktop (R$ 29,90)</li>
@@ -203,11 +205,59 @@
                         </div>
                     </section>
 
-                    <!-- Projeto 2: chmulatoETE Minerador 4.0 -->
+                    <!-- Projeto 2: Ink Agenda -->
+                    <section class="mb-5">
+                        <div class="project-card">
+                            <div class="project-header ink">
+                                <h2><i class="bi bi-calendar-check"></i> 2. Ink Agenda - Gestão para Estúdios de Tatuagem</h2>
+                                <div class="mt-2">
+                                    <span class="tech-badge">Java 21</span>
+                                    <span class="tech-badge">JavaFX 21</span>
+                                    <span class="tech-badge">SQLite</span>
+                                    <span class="tech-badge">Windows Desktop</span>
+                                    <span class="tech-badge">v2.0.0</span>
+                                </div>
+                            </div>
+                            <div class="project-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-people text-info"></i> Explicação para Leigos</h4>
+                                        <p>O <strong>Ink Agenda</strong> é o aplicativo de computador (Windows) para tatuadores organizarem a agenda, o financeiro e o resultado do estúdio. Calendário visual, lista do dia por horário, cadastro de clientes (nome, valor, data/hora, celular opcional), controle de receitas e despesas, backup em arquivo com senha. <strong>Primeiro produto Cara Core já maduro.</strong> Lançamento oficial: <strong>26 de junho de 2026</strong>.</p>
+                                        <ul class="feature-list">
+                                            <li>Agenda com calendário e lista do dia (ordem por horário; sem sobreposição)</li>
+                                            <li>Cadastro de cliente e check Pagou na tela Hoje</li>
+                                            <li>Financeiro: entradas, saídas, saldo e histórico</li>
+                                            <li>Versão anterior na Google Play até o lançamento da v2.0.0 desktop</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h4><i class="bi bi-code text-warning"></i> Detalhes Técnicos</h4>
+                                        <p>Java 21 + JavaFX 21, SQLite local, Windows Desktop. Oficina: caracore-ink; loja: caracore-ink-releases. Backup CSV GZIP com senha.</p>
+                                        <div class="alert alert-info mt-3">
+                                            <strong>Links:</strong> <a href="../delivery/ink/">Apresentação (matriz)</a> · <a href="https://chmulato.github.io/caracore-ink-releases/" target="_blank" rel="noopener">Loja (releases)</a> · <a href="https://play.google.com/store/apps/details?id=tattoo.ink.agenda&hl=pt-BR" target="_blank" rel="noopener">Versão anterior: Google Play</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <a href="projeto-ink.html" class="btn-wiki me-2">
+                                        <i class="bi bi-arrow-right"></i> Ver Detalhes (Wiki)
+                                    </a>
+                                    <a href="../delivery/ink/" class="btn-wiki me-2">
+                                        <i class="bi bi-globe"></i> Apresentação
+                                    </a>
+                                    <a href="https://chmulato.github.io/caracore-ink-releases/" class="btn-wiki" target="_blank" rel="noopener">
+                                        <i class="bi bi-shop"></i> Loja (releases)
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Projeto 3: chmulatoETE Minerador 4.0 -->
                     <section class="mb-5">
                         <div class="project-card">
                             <div class="project-header ete">
-                                <h2><i class="bi bi-droplet-half"></i> 2. chmulatoETE Minerador 4.0 - Simulador para Ensino Médio</h2>
+                                <h2><i class="bi bi-droplet-half"></i> 3. chmulatoETE Minerador 4.0 - Simulador para Ensino Médio</h2>
                                 <div class="mt-2">
                                     <span class="tech-badge">Python</span>
                                     <span class="tech-badge">Streamlit</span>
@@ -253,7 +303,7 @@
                     <section class="mb-5">
                         <div class="project-card">
                             <div class="project-header reino">
-                                <h2><i class="bi bi-shield-check"></i> 3. Reino OIDC - Educação em Segurança</h2>
+                                <h2><i class="bi bi-shield-check"></i> 4. Reino OIDC - Educação em Segurança</h2>
                                 <div class="mt-2">
                                     <span class="tech-badge">OAuth 2.1</span>
                                     <span class="tech-badge">OIDC</span>
@@ -314,7 +364,7 @@
                     <section class="mb-5">
                         <div class="project-card">
                             <div class="project-header seed">
-                                <h2><i class="bi bi-seedling"></i> 4. Cara Core Seed - Contador de Licenças</h2>
+                                <h2><i class="bi bi-seedling"></i> 5. Cara Core Seed - Contador de Licenças</h2>
                                 <div class="mt-2">
                                     <span class="tech-badge">Windows Desktop</span>
                                     <span class="tech-badge">Electron</span>
@@ -365,7 +415,7 @@
                     <section class="mb-5">
                         <div class="project-card">
                             <div class="project-header python-training">
-                                <h2><i class="bi bi-code-slash"></i> 5. Circuito Python - Produto Chamariz</h2>
+                                <h2><i class="bi bi-code-slash"></i> 6. Circuito Python - Produto Chamariz</h2>
                                 <div class="mt-2">
                                     <span class="tech-badge">Python</span>
                                     <span class="tech-badge">Pygame</span>
@@ -429,7 +479,7 @@
                     <section class="mb-5">
                         <div class="project-card">
                             <div class="project-header hub">
-                                <h2><i class="bi bi-diagram-3"></i> 5. Cara Core Hub - Sistema de Integração</h2>
+                                <h2><i class="bi bi-diagram-3"></i> 7. Cara Core Hub - Sistema de Integração</h2>
                                 <div class="mt-2">
                                     <span class="tech-badge">Python</span>
                                     <span class="tech-badge">Flask</span>
@@ -488,7 +538,7 @@
                     <section class="mb-5">
                         <div class="project-card">
                             <div class="project-header area51">
-                                <h2><i class="bi bi-lock"></i> 7. Área 51 - Autenticação Enterprise</h2>
+                                <h2><i class="bi bi-lock"></i> 8. Área 51 - Autenticação Enterprise</h2>
                                 <div class="mt-2">
                                     <span class="tech-badge">Flask</span>
                                     <span class="tech-badge">JWT</span>
@@ -553,6 +603,7 @@
                                     <h4><i class="bi bi-arrow-repeat text-info"></i> Fluxo de Integração</h4>
                                     <ol>
                                         <li><strong>CaraCore PDV</strong> atende o varejo (caixa, PIX, fiscal, offline)</li>
+                                        <li><strong>Ink Agenda</strong> gestão para estúdios de tatuagem (agenda, clientes, financeiro) — primeiro produto maduro</li>
                                         <li><strong>Minerador 4.0</strong> simulador para Ensino Médio e mineração (ETE, terras raras)</li>
                                         <li><strong>CaraCore Seed</strong> (localhost e Windows Desktop) centraliza licenças</li>
                                         <li><strong>CaraCore Hub</strong> conecta todos os sistemas via API</li>

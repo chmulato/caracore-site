@@ -39,6 +39,25 @@
   color: white;
 }
 
+/* Ink Agenda — azul brilhante (mesmo estilo dos outros produtos) */
+.nav-badge-ink {
+  background: linear-gradient(120deg, #0066ff 0%, #00a3ff 100%);
+  color: white;
+}
+
+.project-header.ink {
+  background: linear-gradient(120deg, #0066ff 0%, #00a3ff 100%);
+}
+
+/* Botão azul brilhante na seção Ink Agenda */
+#caracore-ink-agenda .btn-project {
+  background: linear-gradient(120deg, #0066ff 0%, #00a3ff 100%);
+}
+
+#caracore-ink-agenda .btn-project:hover {
+  box-shadow: 0 4px 16px 0 rgba(0, 102, 255, 0.45);
+}
+
 /* Cards de projetos */
 .project-card {
   background: rgba(255,255,255,0.93);

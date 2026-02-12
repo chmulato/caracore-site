@@ -2,6 +2,8 @@
 
 Este diretório é o **portal de delivery do CaraCore Hub** no domínio da **Cara Core Informática (matriz)**.
 
+**Posicionamento:** Gestão logística e e-commerce em **Bunker Digital** — soberania local (SQLite), operação antifrágil. Quando a internet cai, o núcleo operacional não para.
+
 ## Onde está o quê
 
 | Local | Papel | URL (exemplo) |
@@ -11,10 +13,10 @@ Este diretório é o **portal de delivery do CaraCore Hub** no domínio da **Car
 
 ## Conteúdo alinhado
 
-- **index.html** — Apresentação do Hub (gestão logística, e-commerce, SQLite, autonomia local), links para Download, Canal de feedback, Tecnologia, Portfólio e Vitrine (caracore-hub-releases).
-- **download.html** — WAR/Tomcat, SQLite, link para GitHub Releases (releases/latest).
+- **index.html** — Apresentação do Hub (gestão logística, e-commerce, Bunker Digital, SQLite, soberania local, operação antifrágil), links para Download, Canal de feedback, Tecnologia, Portfólio e Vitrine (caracore-hub-releases).
+- **download.html** — WAR/Tomcat, SQLite (soberania local, infraestrutura Bunker), link para GitHub Releases (releases/latest).
 - **canal-feedback.html** — E-mail, WhatsApp, Telegram (suporte@caracore.com.br, assunto CaraCore Hub).
-- **tecnologia.html** — Stack: Java/Jakarta EE, SQLite, Tomcat, Flyway; Redis opcional.
+- **tecnologia.html** — Stack: Java/Jakarta EE, SQLite, Tomcat, Flyway; Redis opcional. Soberania local, operação antifrágil.
 
 Em ambas (matriz e vitrine), a seção **Negócios aplicáveis** menciona o projeto **Tia Sócia** como exemplo de negócio para o qual o Hub foi pensado (gestão logística, e-commerce, marketplaces). A **apresentação Tia Sócia** (pitch deck, 21 slides) está disponível em ambas:
 
@@ -24,11 +26,11 @@ Em ambas (matriz e vitrine), a seção **Negócios aplicáveis** menciona o proj
 Cada uma usa **assets** separados na pasta `slides/`:
 
 - **slides/assets/css/apresentacao-tia-socia.css** — estilos da apresentação
-- **slides/assets/js/apresentacao-tia-socia.js** — lógica (slides, áudio, modal “Ler texto”)
+- **slides/assets/js/apresentacao-tia-socia.js** — lógica (slides, áudio, modal "Ler texto")
 - **slides/assets/img/** — imagens dos slides (`cara_core_hub_slide_01.png` … `cara_core_hub_slide_21.png`)
 - **slides/assets/audio/** — (opcional) narrações por slide, se houver: `slide_01_naracao_natural.mp3`, etc.
 
-O conteúdo das páginas da **matriz** e da **vitrine** é equivalente em mensagem; a matriz usa links relativos para as páginas do hub e URLs absolutas para portfólio e vitrine.
+O conteúdo das páginas da **matriz** e da **vitrine** é equivalente em mensagem (Bunker Digital, soberania local); a matriz usa links relativos para as páginas do hub e URLs absolutas para portfólio e vitrine.
 
 ## Links cruzados
 
@@ -41,4 +43,4 @@ O portal usa `assets/css/hub-portal.css`, inspirado em `delivery/seed/assets/css
 
 ---
 
-*Cara Core Informática — CaraCore Hub — Delivery matriz.*
+*Cara Core Informática — CaraCore Hub — Delivery matriz — Bunker Digital.*

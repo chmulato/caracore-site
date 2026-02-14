@@ -1,0 +1,86 @@
+================================================================================
+RETRO — Referências de links relativos (para cópia)
+================================================================================
+
+Contexto: esta pasta (retro/) é um snapshot da lista de artigos e das páginas
+em retro/articles/. Pode ser copiada como bloco; a única referência externa é
+o link para a sala (controle de campanhas).
+
+--------------------------------------------------------------------------------
+1. NA RAIZ DE RETRO (retro/articles.html e retro/index.html)
+--------------------------------------------------------------------------------
+  De: articles.html
+  Para:
+    articles/XXXX.html   — Cada artigo (lista completa)
+    index.html           — Voltar (entrada do retro)
+    ../sala/index.htm    — Rodapé [ NOTA_CC ] → Controle de campanhas
+
+  De: index.html
+  Para:
+    articles.html        — Redirecionamento para a lista
+
+  Uso: href="articles/2026_03_28_article_78.html" | href="../sala/index.htm"
+  Cópia: copiar retro/ inteiro (index.html, articles.html, pasta articles/).
+  O link ../sala/index.htm assume que "sala" é irmã de "retro" (mesmo pai).
+  Se copiar retro/ sozinho para outro repo/site: trocar ../sala/index.htm pelo
+  URL correto do controle (ex. absoluto ou novo caminho relativo).
+
+--------------------------------------------------------------------------------
+2. DENTRO DE RETRO/ARTICLES/ (cada artigo)
+--------------------------------------------------------------------------------
+  De: retro/articles/XXXX.html
+  Para:
+    ../articles.html    — Voltar para a lista de publicações
+    assets/css/articles.css — Estilo
+    assets/img/NOME.png  — Imagens do artigo (hero, logo, etc.)
+    YYYY.html           — Outro artigo (mesma pasta; links entre artigos)
+
+  Uso: href="../articles.html" | src="assets/img/article_87_01.png" |
+       href="2026_01_17_article_68.html"
+  Cópia: copiar retro/articles/ com toda a subpasta assets/ (css, img). Links
+  entre artigos (href="2026_XX_XX_....html") permanecem válidos dentro de
+  articles/.
+
+--------------------------------------------------------------------------------
+3. ESTRUTURA DE ASSETS EM RETRO
+--------------------------------------------------------------------------------
+  retro/
+    index.html
+    articles.html
+    articles/
+      *.html              — Todos os artigos
+      assets/
+        css/articles.css
+        img/             — logo.png, article_XX_01.png, serie_ru_*.png, etc.
+
+  Todos os paths em artigos são relativos ao próprio arquivo em articles/:
+  assets/ = articles/assets/.
+
+--------------------------------------------------------------------------------
+4. ESTRUTURA MÍNIMA PARA CÓPIA
+--------------------------------------------------------------------------------
+  Copiar tudo:
+    retro/
+      index.html
+      articles.html
+      CNAME              — retro.caracore.com.br (se usar)
+      REFERENCIAS_LINKS.txt
+      articles/
+        (todos os .html)
+        assets/
+          css/articles.css
+          img/ (todos os .png etc.)
+
+  Após cópia para outro lugar:
+  - Se "sala" não existir no mesmo nível: editar articles.html e substituir
+    href="../sala/index.htm" pelo novo link do controle (ou remover o link).
+  - Canonicals nos HTMLs usam chmulato.github.io/caracore-articles/retro/...
+    Se publicar em outro domínio/caminho, ajustar os canonicals.
+
+--------------------------------------------------------------------------------
+5. RESUMO DE DEPENDÊNCIAS EXTERNAS
+--------------------------------------------------------------------------------
+  Fora de retro/: apenas ../sala/index.htm (rodapé NOTA_CC em articles.html).
+  Todo o resto (lista, artigos, CSS, imagens) está dentro de retro/.
+
+Cara Core Informática · Retro (sala de notícias)

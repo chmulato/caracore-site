@@ -1,0 +1,15 @@
+IMAGENS QUE FALTAM — SÉRIE RU 1991: A ESSÊNCIA DA SOBERANIA
+Pasta de destino: docs/articles/assets/img/
+
+Cada linha: nome do arquivo de imagem | prompt a usar (pasta prompts_img) | artigo que exibe a imagem.
+
+————————————————————————————————————————
+serie_ru_episodio_01.png   → prompt_img_ru_02.txt   → 2026_03_15_article_serie_ru_episodio_01.html (Ato II — A Camada Invisível)
+serie_ru_episodio_02.png   → prompt_img_ru_03.txt   → 2026_03_31_article_serie_ru_episodio_02.html (Ato III — O Pulso da Criação)
+serie_ru_episodio_03.png   → prompt_img_ru_04.txt   → 2026_04_05_article_serie_ru_episodio_03.html (Ato IV — Operação)
+serie_ru_episodio_04.png   → prompt_img_ru_05.txt   → 2026_04_30_article_serie_ru_episodio_04.html (Ato V — O Dossiê) [tema: Dossiê/relatório técnico 1991]
+serie_ru_epilogo_final.png → prompt_img_ru_05.txt   → 2026_05_05_article_serie_ru_epilogo.html (Epílogo) [tema: fechamento da série]
+
+————————————————————————————————————————
+Nota: A imagem de chamada da série (Ato I — O Portal) já existe: serie_ru_chamada.png. Prompt de referência: prompt_img_ru_01.txt (split 1991|2026).
+Estilo obrigatório para todas: Industrial-Retro; imersão 1991; sem elementos visuais modernos.

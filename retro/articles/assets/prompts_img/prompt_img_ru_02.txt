@@ -1,0 +1,14 @@
+PROMPT PARA IMAGEM — RU 1991, EPISÓDIO 02 (ATO II — A CAMADA INVISÍVEL)
+Série: A Essência da Soberania. Uso: artigo Episódio 01 (Ato II — Adsorção).
+
+————————————————————————————————————————
+DESCRIÇÃO PARA GERAÇÃO DE IMAGEM
+————————————————————————————————————————
+Cena em estilo Industrial-Retro, 1991: quadro negro ou “Quadro Verde” de sala de aula de engenharia. Em destaque, escrita em giz ou letras tipo LCD âmbar, a equação de Langmuir: θ = KC / (1 + KC). Ao redor, esquema minimalista de superfície catalítica (sítios ativos como pontos ou células) e uma monocamada sugerida por linhas finas — sem simulação 3D realista, apenas representação diagramática de 1991. Ambiente: luz fria, mesa de professor com régua de cálculo ou caderno técnico. Paleta: verde escuro (#0a5c1a, #063d12), âmbar (#D4AF37), preto, branco/cinza claro. Nenhum elemento moderno (gráficos 3D, UI flat, ícones atuais). Texto opcional: “Ato II — A Camada Invisível” ou “θ”. Estilo: relatório técnico de época; imersão 1991.
+
+————————————————————————————————————————
+REFERÊNCIAS DE NARRATIVA
+————————————————————————————————————————
+• Foco: física de superfície, ocupação de sítios ativos (θ), isoterma de Langmuir.
+• Analogia: adsorção = aperto de mão entre reagente e catalisador.
+• Gancho: “Soberania técnica é entender que o que acontece na superfície define o sucesso do reator.”

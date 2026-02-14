@@ -1,0 +1,79 @@
+================================================================================
+SALA — Referências de links relativos (para cópia)
+================================================================================
+
+Contexto: esta pasta (sala/) deve ficar dentro de docs/, ou a raiz do site deve
+ter articles.html e pasta articles/ no mesmo nível que sala/.
+
+--------------------------------------------------------------------------------
+1. LINKS DENTRO DE SALA (mesma pasta)
+--------------------------------------------------------------------------------
+  De: qualquer .htm / .html na raiz de sala/
+  Para:
+    index.htm        — Controle (esta página)
+    linkedin.html    — Diretrizes LinkedIn
+    facebook.html   — Campanha Facebook
+    instagram.html  — Campanha Instagram
+
+  Uso: href="index.htm" | href="linkedin.html" | etc.
+  Cópia: copiar a pasta sala/ inteira; esses links continuam válidos.
+
+--------------------------------------------------------------------------------
+2. LINKS PARA FORA DE SALA (pai = docs/ ou raiz do site)
+--------------------------------------------------------------------------------
+  De: arquivos em sala/ (incl. index.htm, linkedin.html, facebook.html,
+      instagram.html, e os HTMLs de campanha 2026_*_*.html)
+  Para:
+    ../articles.html           — Lista de artigos (índice)
+    ../articles/XXXX.html      — Artigos individuais (linkedin.html lista vários)
+
+  Uso: href="../articles.html" | href="../articles/2026_03_28_article_78.html"
+  Cópia: ao copiar sala/, manter no mesmo nível:
+    - articles.html (ou índice de artigos)
+    - articles/ (pasta com os .html dos artigos)
+  Se copiar sala/ sozinha para outro lugar: ajustar esses href para o novo
+  caminho do índice e da pasta de artigos (ex.: ../../articles.html se sala
+  for colocada em site/outro/sala/).
+
+--------------------------------------------------------------------------------
+3. ASSETS DENTRO DE SALA (pasta assets/)
+--------------------------------------------------------------------------------
+  De: HTMLs de campanha em sala/ (ex.: 2026_03_02_ink_facebook_mar.html,
+      2026_05_01_campanha_lucratividade_mai.html)
+  Para:
+    assets/css/articles.css    — Folha de estilo
+    assets/svg/NOME.svg        — Ícones e artes (frases Ink, pilares)
+
+  Uso: href="assets/css/articles.css" | src="assets/svg/ink_fb_mar_frase.svg"
+  Cópia: copiar a pasta sala/assets/ junto com sala/; os links são relativos
+  ao arquivo que referencia, então desde que a estrutura sala/assets/ seja
+  mantida, continuam válidos.
+
+--------------------------------------------------------------------------------
+4. ESTRUTURA MÍNIMA PARA CÓPIA AUTOCONTIDA
+--------------------------------------------------------------------------------
+  Se quiser que a cópia funcione sem depender de ../ :
+
+  Opção A — Copiar junto com o pai:
+    docs/
+      articles.html
+      articles/
+      sala/          ← copiar esta pasta + assets + todos os .html
+
+  Opção B — Copiar só sala/ para outra raiz:
+    nova_raiz/
+      sala/          ← mesma estrutura (index.htm, linkedin.html, assets/, etc.)
+      articles.html  ← colocar no mesmo nível que sala/
+      articles/      ← colocar no mesmo nível que sala/
+
+  Os links ../articles.html e ../articles/ assumem que "sala" e "articles"
+  são irmãos (mesmo diretório pai).
+
+--------------------------------------------------------------------------------
+5. ARQUIVOS QUE USAM CADA TIPO DE LINK
+--------------------------------------------------------------------------------
+  Links internos (sala): index.htm, linkedin.html, facebook.html, instagram.html
+  Links ../articles*:    os mesmos + todos os 2026_*_*.html (campanhas)
+  Links assets/*:         só os 2026_*_*.html (campanha Ink/LinkedIn/etc.)
+
+Cara Core Informática · Campanhas orgânicas

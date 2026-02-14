@@ -3,24 +3,24 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>A Jornada OIDC: Como Transformamos a Autenticaï¿½ï¿½o da Cara Core — Cara Core Informática</title>
-	<meta name="description" content="A histï¿½ria real de como implementamos OpenID Connect do zero, os obstï¿½culos enfrentados e as liï¿½ï¿½es valiosas aprendidas no caminho." />
-	<meta name="keywords" content="OIDC, OAuth2, autenticaï¿½ï¿½o, JavaScript, seguranï¿½a web, OpenID Connect, Google Auth, Microsoft Entra, implementaï¿½ï¿½o real" />
+	<title>A Jornada OIDC: Como Transformamos a Autenticação da Cara Core — Cara Core Informática</title>
+	<meta name="description" content="A história real de como implementamos OpenID Connect do zero, os obstáculos enfrentados e as lições valiosas aprendidas no caminho." />
+	<meta name="keywords" content="OIDC, OAuth2, autenticação, JavaScript, segurança web, OpenID Connect, Google Auth, Microsoft Entra, implementação real" />
 	<meta name="author" content="Cara Core Informática" />
-	<link rel="canonical" href="https://chmulato.github.io/caracore-articles/retro/articles/2025_10_31_article_55.html" />
+	<link rel="canonical" href="https://caracore.com.br/publications/articles/2025_10_31_article_55.html" />
 	<!-- Open Graph -->
-	<meta property="og:title" content="A Jornada OIDC: Como Transformamos a Autenticaï¿½ï¿½o da Cara Core" />
-	<meta property="og:description" content="Uma jornada ï¿½pica de descobertas, frustraï¿½ï¿½es e muito aprendizado implementando autenticaï¿½ï¿½o segura com Google e Microsoft." />
+	<meta property="og:title" content="A Jornada OIDC: Como Transformamos a Autenticação da Cara Core" />
+	<meta property="og:description" content="Uma jornada épica de descobertas, frustrações e muito aprendizado implementando autenticação segura com Google e Microsoft." />
 	<meta property="og:type" content="article" />
-	<meta property="og:url" content="https://chmulato.github.io/caracore-articles/retro/articles/2025_10_31_article_55.html" />
-	<meta property="og:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_55_01.png" />
-	<meta property="og:image:alt" content="Jornada OIDC: implementaï¿½ï¿½o real com Google Auth, Microsoft Entra e debugging (Cara Core)" />
+	<meta property="og:url" content="https://caracore.com.br/publications/articles/2025_10_31_article_55.html" />
+	<meta property="og:image" content="https://caracore.com.br/publications/articles/assets/img/article_55_01.png" />
+	<meta property="og:image:alt" content="Jornada OIDC: implementação real com Google Auth, Microsoft Entra e debugging (Cara Core)" />
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="A Jornada OIDC: Como Transformamos a Autenticaï¿½ï¿½o da Cara Core" />
-	<meta name="twitter:description" content="Uma jornada ï¿½pica de descobertas, frustraï¿½ï¿½es e muito aprendizado implementando autenticaï¿½ï¿½o segura com Google e Microsoft." />
-	<meta name="twitter:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_55_01.png" />
-	<meta name="twitter:image:alt" content="Jornada OIDC: implementaï¿½ï¿½o real com Google Auth, Microsoft Entra e debugging (Cara Core)" />
+	<meta name="twitter:title" content="A Jornada OIDC: Como Transformamos a Autenticação da Cara Core" />
+	<meta name="twitter:description" content="Uma jornada épica de descobertas, frustrações e muito aprendizado implementando autenticação segura com Google e Microsoft." />
+	<meta name="twitter:image" content="https://caracore.com.br/publications/articles/assets/img/article_55_01.png" />
+	<meta name="twitter:image:alt" content="Jornada OIDC: implementação real com Google Auth, Microsoft Entra e debugging (Cara Core)" />
 	<link rel="stylesheet" href="assets/css/articles.css" />
 	<style>
 		body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
@@ -63,9 +63,9 @@
 </head>
 <body>
 	<div class="container">
-		<a class="back-link" href="../articles.html">&larr; Voltar para publicaï¿½ï¿½es</a>
-		<img src="assets/img/article_55_01.png" alt="Jornada OIDC: implementaï¿½ï¿½o real com Google Auth, Microsoft Entra e debugging (Cara Core)" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
-		<h1>A Jornada OIDC: Como Transformamos a Autenticaï¿½ï¿½o da Cara Core em uma Aventura de Aprendizado</h1>
+		<a class="back-link" href="../articles.html">&larr; Voltar para publicações</a>
+		<img src="assets/img/article_55_01.png" alt="Jornada OIDC: implementação real com Google Auth, Microsoft Entra e debugging (Cara Core)" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+		<h1>A Jornada OIDC: Como Transformamos a Autenticação da Cara Core em uma Aventura de Aprendizado</h1>
 		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
 			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
 			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
@@ -74,43 +74,43 @@
 
 		<div class="note"><strong>Tempo estimado de leitura:</strong> ~10 minutos</div>
 
-		<p>Era uma tarde comum de setembro quando recebemos um requisito aparentemente simples: "Precisamos implementar autenticaï¿½ï¿½o segura com Google e Microsoft no site da Cara Core". O que parecia ser uma tarefa de algumas horas se transformou em uma jornada ï¿½pica de descobertas, frustraï¿½ï¿½es e, principalmente, muito aprendizado.</p>
-		<p>Esta — a histï¿½ria real de como implementamos OpenID Connect (OIDC) do zero, os obstï¿½culos que enfrentamos e as liï¿½ï¿½es valiosas que aprendemos no caminho.</p>
+		<p>Era uma tarde comum de setembro quando recebemos um requisito aparentemente simples: "Precisamos implementar autenticação segura com Google e Microsoft no site da Cara Core". O que parecia ser uma tarefa de algumas horas se transformou em uma jornada épica de descobertas, frustrações e, principalmente, muito aprendizado.</p>
+		<p>Esta é a história real de como implementamos OpenID Connect (OIDC) do zero, os obstáculos que enfrentamos e as lições valiosas que aprendemos no caminho.</p>
 
-		<h2>Capï¿½tulo 1: O Primeiro Contato com OIDC</h2>
+		<h2>Capítulo 1: O Primeiro Contato com OIDC</h2>
 		
 		<div class="journey-step">
-			<h3>"Deve ser fï¿½cil, nï¿½?"</h3>
-			<p>Como muitos desenvolvedores, nossa primeira reaï¿½ï¿½o foi: "OAuth? OIDC? Deve ser sï¿½ adicionar uns botï¿½es e pronto!". Que ingï¿½nuos ï¿½ramos.</p>
-			<p>Nossa primeira tentativa foi copiar um exemplo bï¿½sico da internet. Resultado? Uma tela branca, erros no console e a descoberta de que autenticaï¿½ï¿½o — muito mais complexa do que imaginï¿½vamos.</p>
+			<h3>"Deve ser fácil, né?"</h3>
+			<p>Como muitos desenvolvedores, nossa primeira reação foi: "OAuth? OIDC? Deve ser só adicionar uns botões e pronto!". Que ingênuos éramos.</p>
+			<p>Nossa primeira tentativa foi copiar um exemplo básico da internet. Resultado? Uma tela branca, erros no console e a descoberta de que autenticação é muito mais complexa do que imaginávamos.</p>
 		</div>
 
-		<pre><code class="language-javascript">// Nossa primeira tentativa (spoiler: nï¿½o funcionou)
+		<pre><code class="language-javascript">// Nossa primeira tentativa (spoiler: não funcionou)
 function login() {
     window.location.href = "https://accounts.google.com/oauth/authorize?...";
     // E agora? Como eu capturo a resposta?
 }</code></pre>
 
-		<h3>A Realidade Bate — Porta</h3>
-		<p>Depois de algumas horas tentando "fazer funcionar na unha", percebemos que precisï¿½vamos entender o que realmente estava acontecendo. Foi aï¿½ que descobrimos conceitos como:</p>
+		<h3>A Realidade Bate à Porta</h3>
+		<p>Depois de algumas horas tentando "fazer funcionar na unha", percebemos que precisávamos entender o que realmente estava acontecendo. Foi aí que descobrimos conceitos como:</p>
 		<ul>
 			<li><strong>Authorization Code Flow com PKCE</strong></li>
-			<li><strong>Tokens JWT e sua validaï¿½ï¿½o</strong></li>
+			<li><strong>Tokens JWT e sua validação</strong></li>
 			<li><strong>Scopes e claims</strong></li>
 			<li><strong>Redirect URIs e suas peculiaridades</strong></li>
 		</ul>
 		<p>Cada termo era um novo universo a ser explorado.</p>
 
-		<h2>Capï¿½tulo 2: A Escolha das Ferramentas</h2>
+		<h2>Capítulo 2: A Escolha das Ferramentas</h2>
 
 		<h3>O Dilema da Biblioteca</h3>
-		<p>Apï¿½s pesquisar por horas, encontramos vï¿½rias opï¿½ï¿½es:</p>
+		<p>Após pesquisar por horas, encontramos várias opções:</p>
 		<div class="checklist">
 			<ul>
-				<li>? Implementar do zero (muito complexo)</li>
-				<li>? Usar MSAL.js (para Microsoft, mas e o Google?)</li>
-				<li>? Usar oidc-client-ts (promissor, mas documentaï¿½ï¿½o confusa)</li>
-				<li>? Usar Auth0 ou similar (custoso para nosso caso)</li>
+				<li>❌ Implementar do zero (muito complexo)</li>
+				<li>✅ Usar MSAL.js (para Microsoft, mas e o Google?)</li>
+				<li>✅ Usar oidc-client-ts (promissor, mas documentação confusa)</li>
+				<li>❌ Usar Auth0 ou similar (custoso para nosso caso)</li>
 			</ul>
 		</div>
 
@@ -123,42 +123,42 @@ const userManager = new UserManager({
     authority: 'https://accounts.google.com',
     client_id: 'nossa-client-id-super-secreta',
     redirect_uri: 'http://localhost:8000/callback',
-    // ... mais configuraï¿½ï¿½es que nï¿½o fazï¿½amos ideia do que faziam
+    // ... mais configurações que não fazíamos ideia do que faziam
 });</code></pre>
 
 		<div class="journey-step">
-			<h3>A Primeira Vitï¿½ria</h3>
-			<p>Depois de dois dias de configuraï¿½ï¿½o, conseguimos o primeiro login com Google! A sensaï¿½ï¿½o era de ter escalado o Everest. Claro, era sï¿½ localhost e funcionava apenas uma vez em cada dez tentativas, mas era um progresso!</p>
+			<h3>A Primeira Vitória</h3>
+			<p>Depois de dois dias de configuração, conseguimos o primeiro login com Google! A sensação era de ter escalado o Everest. Claro, era só localhost e funcionava apenas uma vez em cada dez tentativas, mas era um progresso!</p>
 		</div>
 
-		<h2>Capï¿½tulo 3: O Inferno dos Redirect URIs</h2>
+		<h2>Capítulo 3: O Inferno dos Redirect URIs</h2>
 
 		<h3>O Erro que Nos Perseguiu</h3>
 		<div class="error-box">
 			<strong>Erro 400: redirect_uri_mismatch</strong>
 		</div>
 
-		<p>Se hï¿½ um erro que todo desenvolvedor OIDC conhece, — este. E nï¿½s conhecemos muito bem - ele apareceu centenas de vezes durante nossa implementaï¿½ï¿½o.</p>
+		<p>Se há um erro que todo desenvolvedor OIDC conhece, é este. E nós conhecemos muito bem - ele apareceu centenas de vezes durante nossa implementação.</p>
 
 		<h3>A Guerra dos Ambientes</h3>
 		<p>O problema era simples de entender, mas complexo de resolver:</p>
 		<ul>
 			<li><strong>Desenvolvimento:</strong> <code>http://localhost:8000</code></li>
 			<li><strong>Staging:</strong> <code>https://nossa-url-temporaria.com</code></li>
-			<li><strong>Produï¿½ï¿½o:</strong> <code>https://chmulato.github.io/cara-core</code></li>
+			<li><strong>Produção:</strong> <code>https://chmulato.github.io/cara-core</code></li>
 		</ul>
 
-		<p>Cada ambiente precisava de sua prï¿½pria configuraï¿½ï¿½o no Google Cloud Console. Mas nï¿½s sï¿½ descobrimos isso depois de muito sofrimento.</p>
+		<p>Cada ambiente precisava de sua própria configuração no Google Cloud Console. Mas nós só descobrimos isso depois de muito sofrimento.</p>
 
-		<pre><code class="language-javascript">// Nossa soluï¿½ï¿½o "gambiarrada" inicial
+		<pre><code class="language-javascript">// Nossa solução "gambiarrada" inicial
 const redirectUri = window.location.hostname === 'localhost' 
     ? 'http://localhost:8000/secure/index.html'
     : 'https://chmulato.github.io/cara-core/secure/index.html';</code></pre>
 
-		<h3>O Momento de Iluminaï¿½ï¿½o</h3>
-		<p>Atï¿½ que tivemos uma ideia: <strong>configuraï¿½ï¿½o dinï¿½mica baseada no ambiente!</strong></p>
+		<h3>O Momento de Iluminação</h3>
+		<p>Até que tivemos uma ideia: <strong>configuração dinâmica baseada no ambiente!</strong></p>
 
-		<pre><code class="language-javascript">// A soluï¿½ï¿½o elegante que desenvolvemos
+		<pre><code class="language-javascript">// A solução elegante que desenvolvemos
 function generateGoogleConfig() {
     const baseUrl = window.location.origin;
     return {
@@ -169,22 +169,22 @@ function generateGoogleConfig() {
     };
 }</code></pre>
 
-		<h2>Capï¿½tulo 4: O Sistema de Logs que Salvou Nossas Vidas</h2>
+		<h2>Capítulo 4: O Sistema de Logs que Salvou Nossas Vidas</h2>
 
 		<h3>O Debugging Nightmare</h3>
-		<p>Quando algo dï¿½ errado em OIDC, descobrir o que aconteceu — como procurar uma agulha no palheiro... no escuro... com vendas nos olhos.</p>
+		<p>Quando algo dá errado em OIDC, descobrir o que aconteceu é como procurar uma agulha no palheiro... no escuro... com vendas nos olhos.</p>
 
-		<p>As ferramentas de desenvolvedor do navegador ajudavam, mas precisï¿½vamos de algo mais robusto para entender o fluxo completo:</p>
+		<p>As ferramentas de desenvolvedor do navegador ajudavam, mas precisávamos de algo mais robusto para entender o fluxo completo:</p>
 		<ol>
-			<li><strong>Iniciaï¿½ï¿½o do login</strong></li>
+			<li><strong>Iniciação do login</strong></li>
 			<li><strong>Redirecionamento para o provedor</strong></li>
 			<li><strong>Callback com authorization code</strong></li>
 			<li><strong>Troca do code por tokens</strong></li>
-			<li><strong>Validaï¿½ï¿½o e armazenamento</strong></li>
+			<li><strong>Validação e armazenamento</strong></li>
 		</ol>
 
-		<h3>A Soluï¿½ï¿½o: Sistema de Logs Personalizado</h3>
-		<p>Desenvolvemos um sistema de logging especï¿½fico para OIDC que se tornou nosso melhor amigo:</p>
+		<h3>A Solução: Sistema de Logs Personalizado</h3>
+		<p>Desenvolvemos um sistema de logging específico para OIDC que se tornou nosso melhor amigo:</p>
 
 		<pre><code class="language-javascript">class OIDCLogger {
     constructor() {
@@ -211,34 +211,34 @@ function generateGoogleConfig() {
 }</code></pre>
 
 		<h3>O Dashboard de Logs</h3>
-		<p>Criamos atï¿½ uma interface web para visualizar os logs em tempo real:</p>
+		<p>Criamos até uma interface web para visualizar os logs em tempo real:</p>
 		<div class="checklist">
 			<ul>
-				<li><strong>Filtros por nï¿½vel de erro</strong></li>
+				<li><strong>Filtros por nível de erro</strong></li>
 				<li><strong>Busca por texto</strong></li>
 				<li><strong>Export em JSON/CSV</strong></li>
 				<li><strong>Timeline dos eventos</strong></li>
 			</ul>
 		</div>
-		<p>Isso nos permitiu debuggar problemas em produï¿½ï¿½o que seriam impossï¿½veis de rastrear de outra forma.</p>
+		<p>Isso nos permitiu debuggar problemas em produção que seriam impossíveis de rastrear de outra forma.</p>
 
-		<h2>Capï¿½tulo 5: A Integraï¿½ï¿½o com Microsoft - Um Plot Twist</h2>
+		<h2>Capítulo 5: A Integração com Microsoft - Um Plot Twist</h2>
 
 		<div class="journey-step">
-			<h3>"Ah, — sï¿½ trocar a URL"</h3>
+			<h3>"Ah, é só trocar a URL"</h3>
 			<p>Quando chegou a hora de integrar o Microsoft Entra ID, pensamos: "Agora que entendemos OIDC, deve ser moleza!". Ledo engano.</p>
 		</div>
 
-		<p>O Microsoft tem suas prï¿½prias peculiaridades:</p>
+		<p>O Microsoft tem suas próprias peculiaridades:</p>
 		<ul>
-			<li><strong>Tenant ID obrigatï¿½rio</strong></li>
+			<li><strong>Tenant ID obrigatório</strong></li>
 			<li><strong>Scopes diferentes</strong></li>
-			<li><strong>Endpoints especï¿½ficos</strong></li>
+			<li><strong>Endpoints específicos</strong></li>
 			<li><strong>Formato de claims diferente</strong></li>
 		</ul>
 
-		<h3>A Abstraï¿½ï¿½o Salvadora</h3>
-		<p>Para nï¿½o duplicar cï¿½digo, criamos uma abstraï¿½ï¿½o que funcionasse com ambos os provedores:</p>
+		<h3>A Abstração Salvadora</h3>
+		<p>Para não duplicar código, criamos uma abstração que funcionasse com ambos os provedores:</p>
 
 		<pre><code class="language-javascript">class OIDCAuthManager {
     async switchProvider(newProvider) {
@@ -254,20 +254,20 @@ function generateGoogleConfig() {
     }
 }</code></pre>
 
-		<h2>Capï¿½tulo 6: Os Problemas de Produï¿½ï¿½o</h2>
+		<h2>Capítulo 6: Os Problemas de Produção</h2>
 
 		<h3>O Deploy que Quebrou Tudo</h3>
-		<p>Nosso primeiro deploy para produï¿½ï¿½o foi... traumï¿½tico. Tudo funcionava perfeitamente em desenvolvimento, mas em produï¿½ï¿½o:</p>
+		<p>Nosso primeiro deploy para produção foi... traumático. Tudo funcionava perfeitamente em desenvolvimento, mas em produção:</p>
 		<div class="error-box">
 			<ul>
-				<li><strong>Mï¿½dulos ES6 nï¿½o carregavam</strong></li>
+				<li><strong>Módulos ES6 não carregavam</strong></li>
 				<li><strong>CORS errors por todo lado</strong></li>
-				<li><strong>Tokens nï¿½o eram persistidos</strong></li>
+				<li><strong>Tokens não eram persistidos</strong></li>
 				<li><strong>Redirects infinitos</strong></li>
 			</ul>
 		</div>
 
-		<h3>A Soluï¿½ï¿½o: Compatibilidade Multi-Ambiente</h3>
+		<h3>A Solução: Compatibilidade Multi-Ambiente</h3>
 		<p>Desenvolvemos um sistema que detecta automaticamente o ambiente e se adapta:</p>
 
 		<pre><code class="language-javascript">function detectEnvironment() {
@@ -299,54 +299,54 @@ function generateGoogleConfig() {
     };
 }</code></pre>
 
-		<h2>Capï¿½tulo 7: As Liï¿½ï¿½es Aprendidas</h2>
+		<h2>Capítulo 7: As Lições Aprendidas</h2>
 
 		<div class="chalkboard">
-			<h3>Liï¿½ï¿½es Fundamentais</h3>
+			<h3>Lições Fundamentais</h3>
 			<dl>
-				<dt><strong>1. OIDC nï¿½o — OAuth "com extras"</strong></dt>
-				<dd>OIDC — um protocolo prï¿½prio construï¿½do sobre OAuth 2.0. Entender a diferenï¿½a entre <strong>authentication</strong> (quem vocï¿½ ï¿½) e <strong>authorization</strong> (o que vocï¿½ pode fazer) foi fundamental.</dd>
+				<dt><strong>1. OIDC não é OAuth "com extras"</strong></dt>
+				<dd>OIDC é um protocolo próprio construído sobre OAuth 2.0. Entender a diferença entre <strong>authentication</strong> (quem você é) e <strong>authorization</strong> (o que você pode fazer) foi fundamental.</dd>
 				
-				<dt><strong>2. Seguranï¿½a nï¿½o — opcional</strong></dt>
-				<dd>Implementamos validaï¿½ï¿½o de tokens JWT, PKCE para proteï¿½ï¿½o contra ataques, State parameter para CSRF protection e Secure storage de tokens.</dd>
+				<dt><strong>2. Segurança não é opcional</strong></dt>
+				<dd>Implementamos validação de tokens JWT, PKCE para proteção contra ataques, State parameter para CSRF protection e Secure storage de tokens.</dd>
 				
-				<dt><strong>3. User Experience — crucial</strong></dt>
-				<dd>Uma boa implementaï¿½ï¿½o OIDC — invisï¿½vel para o usuï¿½rio final: login rï¿½pido e intuitivo, transiï¿½ï¿½es suaves, mensagens de erro compreensï¿½veis, e logout limpo.</dd>
+				<dt><strong>3. User Experience é crucial</strong></dt>
+				<dd>Uma boa implementação OIDC é invisível para o usuário final: login rápido e intuitivo, transições suaves, mensagens de erro compreensíveis, e logout limpo.</dd>
 				
-				<dt><strong>4. Logs sï¿½o seu melhor amigo</strong></dt>
-				<dd>Sem um sistema robusto de logging, debuggar problemas OIDC — quase impossï¿½vel. Investimos tempo criando logs estruturados, captura automï¿½tica de erros, interface de visualizaï¿½ï¿½o e export para anï¿½lise.</dd>
+				<dt><strong>4. Logs são seu melhor amigo</strong></dt>
+				<dd>Sem um sistema robusto de logging, debuggar problemas OIDC é quase impossível. Investimos tempo criando logs estruturados, captura automática de erros, interface de visualização e export para análise.</dd>
 				
 				<dt><strong>5. Teste em todos os ambientes</strong></dt>
-				<dd>Cada ambiente tem suas peculiaridades. O que funciona em localhost pode nï¿½o funcionar em produï¿½ï¿½o.</dd>
+				<dd>Cada ambiente tem suas peculiaridades. O que funciona em localhost pode não funcionar em produção.</dd>
 			</dl>
 		</div>
 
-		<h2>Capï¿½tulo 8: O Resultado Final</h2>
+		<h2>Capítulo 8: O Resultado Final</h2>
 
 		<h3>Uma Arquitetura Robusta</h3>
-		<p>Apï¿½s semanas de desenvolvimento e refinamento, conseguimos criar um sistema que:</p>
+		<p>Após semanas de desenvolvimento e refinamento, conseguimos criar um sistema que:</p>
 
 		<div class="checklist">
 			<ul>
-				<li>? <strong>Funciona em qualquer ambiente</strong> automaticamente</li>
-				<li>? <strong>Suporta mï¿½ltiplos provedores</strong> (Google e Microsoft)</li>
-				<li>? <strong>Detecta e resolve problemas</strong> automaticamente</li>
-				<li>? <strong>Oferece logs detalhados</strong> para troubleshooting</li>
-				<li>? <strong>Proporciona UX excelente</strong> para os usuï¿½rios finais</li>
+				<li>✅ <strong>Funciona em qualquer ambiente</strong> automaticamente</li>
+				<li>✅ <strong>Suporta múltiplos provedores</strong> (Google e Microsoft)</li>
+				<li>✅ <strong>Detecta e resolve problemas</strong> automaticamente</li>
+				<li>✅ <strong>Oferece logs detalhados</strong> para troubleshooting</li>
+				<li>✅ <strong>Proporciona UX excelente</strong> para os usuários finais</li>
 			</ul>
 		</div>
 
 		<div class="metrics-box">
-			<h3>Mï¿½tricas de Sucesso</h3>
+			<h3>Métricas de Sucesso</h3>
 			<ul style="list-style:none; padding:0; margin:1rem 0;">
-				<li><strong>99.9%</strong> de sucesso nos logins apï¿½s implementaï¿½ï¿½o</li>
-				<li><strong>2.3 segundos</strong> de tempo mï¿½dio de login</li>
-				<li><strong>Zero tickets</strong> de suporte relacionados — autenticaï¿½ï¿½o</li>
+				<li><strong>99.9%</strong> de sucesso nos logins após implementação</li>
+				<li><strong>2.3 segundos</strong> de tempo médio de login</li>
+				<li><strong>Zero tickets</strong> de suporte relacionados à autenticação</li>
 				<li><strong>400+ eventos</strong> capturados automaticamente nos logs</li>
 			</ul>
 		</div>
 
-		<h3>O Cï¿½digo que Orgulha</h3>
+		<h3>O Código que Orgulha</h3>
 		<pre><code class="language-javascript">// O resultado final - elegante e funcional
 window.OIDCAuth = {
     async login(provider = 'google') {
@@ -374,45 +374,45 @@ window.OIDCAuth = {
     }
 };</code></pre>
 
-		<h2>Reflexï¿½es Finais: O Que Aprendemos Alï¿½m do Cï¿½digo</h2>
+		<h2>Reflexões Finais: O Que Aprendemos Além do Código</h2>
 
-		<h3>1. A Importï¿½ncia da Documentaï¿½ï¿½o</h3>
-		<p>Durante nossa jornada, percebemos como a documentaï¿½ï¿½o inadequada pode tornar uma implementaï¿½ï¿½o simples em um pesadelo. Por isso, documentamos extensivamente nossa soluï¿½ï¿½o.</p>
+		<h3>1. A Importância da Documentação</h3>
+		<p>Durante nossa jornada, percebemos como a documentação inadequada pode tornar uma implementação simples em um pesadelo. Por isso, documentamos extensivamente nossa solução.</p>
 
-		<h3>2. Open Source — Poderoso</h3>
-		<p>Utilizamos bibliotecas como <code>oidc-client-ts</code> que nos pouparam meses de desenvolvimento. Contribuir de volta para a comunidade — fundamental.</p>
+		<h3>2. Open Source é Poderoso</h3>
+		<p>Utilizamos bibliotecas como <code>oidc-client-ts</code> que nos pouparam meses de desenvolvimento. Contribuir de volta para a comunidade é fundamental.</p>
 
-		<h3>3. Seguranï¿½a — um Processo, nï¿½o um Produto</h3>
-		<p>Implementar OIDC nos ensinou que seguranï¿½a nï¿½o — algo que vocï¿½ "adiciona" ao final - ela precisa ser pensada desde o inï¿½cio.</p>
+		<h3>3. Segurança é um Processo, não um Produto</h3>
+		<p>Implementar OIDC nos ensinou que segurança não é algo que você "adiciona" ao final - ela precisa ser pensada desde o início.</p>
 
-		<h3>4. A Experiï¿½ncia do Usuï¿½rio Final</h3>
-		<p>Por trï¿½s de toda a complexidade tï¿½cnica, existe um usuï¿½rio que sï¿½ quer fazer login e usar o sistema. Manter isso em mente foi crucial para nossas decisï¿½es de design.</p>
+		<h3>4. A Experiência do Usuário Final</h3>
+		<p>Por trás de toda a complexidade técnica, existe um usuário que só quer fazer login e usar o sistema. Manter isso em mente foi crucial para nossas decisões de design.</p>
 
-		<h2>Conclusï¿½o: A Jornada Continua</h2>
+		<h2>Conclusão: A Jornada Continua</h2>
 
-		<p>Implementar OIDC na Cara Core foi muito mais do que apenas "adicionar autenticaï¿½ï¿½o". Foi uma jornada de aprendizado que nos ensinou sobre protocolos de seguranï¿½a modernos, arquitetura de sistemas distribuï¿½dos, debugging avanï¿½ado, User Experience em sistemas seguros e desenvolvimento multi-ambiente.</p>
+		<p>Implementar OIDC na Cara Core foi muito mais do que apenas "adicionar autenticação". Foi uma jornada de aprendizado que nos ensinou sobre protocolos de segurança modernos, arquitetura de sistemas distribuídos, debugging avançado, User Experience em sistemas seguros e desenvolvimento multi-ambiente.</p>
 
-		<p>Hoje, quando vemos aqueles dois botï¿½es simples - "Continuar com Google" e "Continuar com Microsoft" - sabemos que por trï¿½s deles existe uma arquitetura robusta, testada e monitorada que garante seguranï¿½a e uma excelente experiï¿½ncia do usuï¿½rio.</p>
+		<p>Hoje, quando vemos aqueles dois botões simples - "Continuar com Google" e "Continuar com Microsoft" - sabemos que por trás deles existe uma arquitetura robusta, testada e monitorada que garante segurança e uma excelente experiência do usuário.</p>
 
 		<div class="chalkboard">
-			<h3>Para Desenvolvedores que Estï¿½o Comeï¿½ando</h3>
-			<p>Se vocï¿½ estï¿½ prestes a implementar OIDC, algumas dicas valiosas:</p>
+			<h3>Para Desenvolvedores que Estão Começando</h3>
+			<p>Se você está prestes a implementar OIDC, algumas dicas valiosas:</p>
 			<ol>
-				<li><strong>Nï¿½o subestime a complexidade</strong> - Reserve tempo adequado</li>
-				<li><strong>Invista em logging</strong> desde o inï¿½cio</li>
-				<li><strong>Teste em mï¿½ltiplos ambientes</strong> constantemente</li>
-				<li><strong>Leia a documentaï¿½ï¿½o</strong> dos provedores cuidadosamente</li>
+				<li><strong>Não subestime a complexidade</strong> - Reserve tempo adequado</li>
+				<li><strong>Invista em logging</strong> desde o início</li>
+				<li><strong>Teste em múltiplos ambientes</strong> constantemente</li>
+				<li><strong>Leia a documentação</strong> dos provedores cuidadosamente</li>
 				<li><strong>Use bibliotecas maduras</strong> como oidc-client-ts</li>
 				<li><strong>Pense na UX</strong> desde o primeiro momento</li>
 			</ol>
 		</div>
 
 		<div class="note">
-			<strong>O Cï¿½digo Aberto:</strong> Todo o cï¿½digo desenvolvido durante esta jornada estï¿½ disponï¿½vel em nosso repositï¿½rio GitHub. Esperamos que nossa experiï¿½ncia possa ajudar outros desenvolvedores a navegar por essa jornada de forma mais suave.
+			<strong>O Código Aberto:</strong> Todo o código desenvolvido durante esta jornada está disponível em nosso repositório GitHub. Esperamos que nossa experiência possa ajudar outros desenvolvedores a navegar por essa jornada de forma mais suave.
 		</div>
 
 		<h2>Hashtags</h2>
-		<div class="hash-box">#OIDC #OAuth2 #Autenticaï¿½ï¿½o #JavaScript #WebSecurity #OpenIDConnect #GoogleAuth #MicrosoftEntra #WebDevelopment #TechJourney #CaraCoreInformática</div>
+		<div class="hash-box">#OIDC #OAuth2 #Autenticação #JavaScript #WebSecurity #OpenIDConnect #GoogleAuth #MicrosoftEntra #WebDevelopment #TechJourney #CaraCoreInformática</div>
 
 		<hr />
 		<h3>Contato</h3>
@@ -423,8 +423,8 @@ window.OIDCAuth = {
 		</ul>
 
 		<div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
-			<strong>?? Gostou do conteï¿½do?</strong><br />
-			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteï¿½dos sobre desenvolvimento e inovaï¿½ï¿½o tecnolï¿½gica!</span><br />
+			<strong>🤝 Gostou do conteúdo?</strong><br />
+			<span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteúdos sobre desenvolvimento e inovação tecnológica!</span><br />
 			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
 		</div>
 	</div>

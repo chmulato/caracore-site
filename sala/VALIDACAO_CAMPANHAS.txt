@@ -1,0 +1,52 @@
+================================================================================
+VALIDAÇÃO DAS CAMPANHAS — caracore-site/sala
+================================================================================
+Data: 2026-02-13
+
+--------------------------------------------------------------------------------
+1. ESTRUTURA VALIDADA
+--------------------------------------------------------------------------------
+  index.htm           — Controle (entrada)
+  linkedin.html        — Diretrizes LinkedIn (Soberania Orgânica Mar–Mai 2026)
+  facebook.html       — Campanha Facebook (Rede de pessoas antigas · Ink)
+  instagram.html      — Campanha Instagram (Rede de vaidosos · Ink)
+  assets/
+    css/articles.css  — Estilos das páginas de campanha (2026_*_*.html)
+    svg/              — Ícones e artes (frases Ink, pilares LinkedIn/Facebook)
+  regis/              — Materiais de apoio (manuais, editoriais)
+  REFERENCIAS_LINKS.txt, README.txt, VALIDACAO_CAMPANHAS.txt
+
+  Páginas de campanha (12): 2026_03_01_campanha_soberania_mar.html,
+  2026_03_02_ink_facebook_mar.html, 2026_03_04_ink_instagram_mar.html,
+  2026_03_09_linkedin_soberania.html, 2026_04_01_campanha_precisao_abr.html,
+  2026_04_02_ink_facebook_abr.html, 2026_04_03_ink_instagram_abr.html,
+  2026_04_04_linkedin_precisao.html, 2026_05_01_campanha_lucratividade_mai.html,
+  2026_05_03_ink_facebook_mai.html, 2026_05_04_ink_instagram_mai.html,
+  2026_05_05_linkedin_lucratividade.html.
+
+--------------------------------------------------------------------------------
+2. LINKS CORRIGIDOS (validação 2026-02-13)
+--------------------------------------------------------------------------------
+  - Sala aponta para a lista de artigos em retro: ../retro/articles.html e
+    ../retro/articles/XXX.html (no caracore-site não existe articles/ na raiz;
+    os artigos ficam em retro/articles/).
+  - Canonicals atualizados para caracore.com.br/sala/:
+    index.htm → https://caracore.com.br/sala/index.htm
+    linkedin.html → https://caracore.com.br/sala/linkedin.html
+    facebook.html → https://caracore.com.br/sala/facebook.html
+    instagram.html → https://caracore.com.br/sala/instagram.html
+
+--------------------------------------------------------------------------------
+3. ASSETS
+--------------------------------------------------------------------------------
+  - CSS: assets/css/articles.css — presente; referenciado pelos 12 HTMLs de campanha.
+  - SVG: todos os arquivos referenciados existem em assets/svg/ (campanha_*,
+    ink_fb_*, ink_ig_*, linkedin_soberania_pilar.svg).
+
+--------------------------------------------------------------------------------
+4. NAVEGAÇÃO INTERNA
+--------------------------------------------------------------------------------
+  Controle → index.htm | LinkedIn → linkedin.html | Facebook → facebook.html
+  Instagram → instagram.html | Sala de Notícias (artigos) → ../retro/articles.html
+
+Cara Core Informática · Campanhas orgânicas

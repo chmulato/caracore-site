@@ -19,21 +19,17 @@ ter articles.html e pasta articles/ no mesmo nível que sala/.
   Cópia: copiar a pasta sala/ inteira; esses links continuam válidos.
 
 --------------------------------------------------------------------------------
-2. LINKS PARA FORA DE SALA (pai = docs/ ou raiz do site)
+2. LINKS PARA FORA DE SALA (caracore-site: retro/)
 --------------------------------------------------------------------------------
   De: arquivos em sala/ (incl. index.htm, linkedin.html, facebook.html,
       instagram.html, e os HTMLs de campanha 2026_*_*.html)
-  Para:
-    ../articles.html           — Lista de artigos (índice)
-    ../articles/XXXX.html      — Artigos individuais (linkedin.html lista vários)
+  Para (neste site, caracore-site):
+    ../retro/articles.html    — Lista de artigos (índice retro)
+    ../retro/articles/XXX.html — Artigos individuais (linkedin.html lista vários)
 
-  Uso: href="../articles.html" | href="../articles/2026_03_28_article_78.html"
-  Cópia: ao copiar sala/, manter no mesmo nível:
-    - articles.html (ou índice de artigos)
-    - articles/ (pasta com os .html dos artigos)
-  Se copiar sala/ sozinha para outro lugar: ajustar esses href para o novo
-  caminho do índice e da pasta de artigos (ex.: ../../articles.html se sala
-  for colocada em site/outro/sala/).
+  Uso: href="../retro/articles.html" | href="../retro/articles/2026_03_28_article_78.html"
+  No caracore-site a lista e os artigos ficam em retro/; em caracore-articles (docs/)
+  seriam ../articles.html e ../articles/.
 
 --------------------------------------------------------------------------------
 3. ASSETS DENTRO DE SALA (pasta assets/)

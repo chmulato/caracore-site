@@ -10,19 +10,18 @@ ter articles.html e pasta articles/ no mesmo nível que sala/.
 --------------------------------------------------------------------------------
   De: qualquer .htm / .html na raiz de sala/
   Para:
-    index.htm        — Controle (esta página)
-    linkedin.html    — Diretrizes LinkedIn
+    index.htm       — Controle (plano e campanhas)
     facebook.html   — Campanha Facebook
     instagram.html  — Campanha Instagram
 
-  Uso: href="index.htm" | href="linkedin.html" | etc.
-  Cópia: copiar a pasta sala/ inteira; esses links continuam válidos.
+  Uso: href="index.htm" | href="facebook.html" | href="instagram.html"
+  LinkedIn está em retro/ (legado): ../retro/linkedin.html
 
 --------------------------------------------------------------------------------
 2. LINKS PARA FORA DE SALA (caracore-site: retro/)
 --------------------------------------------------------------------------------
-  De: arquivos em sala/ (incl. index.htm, linkedin.html, facebook.html,
-      instagram.html, e os HTMLs de campanha 2026_*_*.html)
+  De: arquivos em sala/ (incl. index.htm, facebook.html, instagram.html,
+      e os HTMLs de campanha 2026_*_*.html)
   Para (neste site, caracore-site):
     ../retro/articles.html    — Lista de artigos (índice retro)
     ../retro/articles/XXX.html — Artigos individuais (linkedin.html lista vários)

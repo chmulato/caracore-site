@@ -7,19 +7,25 @@ em retro/articles/. Pode ser copiada como bloco; a única referência externa é
 o link para a sala (controle de campanhas).
 
 --------------------------------------------------------------------------------
-1. NA RAIZ DE RETRO (retro/articles.html e retro/index.html)
+1. NA RAIZ DE RETRO (retro/articles.html, retro/index.html, retro/linkedin.html)
 --------------------------------------------------------------------------------
   De: articles.html
   Para:
     articles/XXXX.html   — Cada artigo (lista completa)
     index.html           — Voltar (entrada do retro)
-    ../sala/index.htm    — Rodapé [ NOTA_CC ] → Controle de campanhas
+    linkedin.html        — Diretrizes LinkedIn (legado)
+    ../sala/index.htm    — Rodapé [ SALA ] → Plano e campanhas
 
   De: index.html
   Para:
     articles.html        — Redirecionamento para a lista
 
-  Uso: href="articles/2026_03_28_article_78.html" | href="../sala/index.htm"
+  De: linkedin.html (legado)
+  Para:
+    articles.html, articles/XXX.html — Lista e artigos
+    ../sala/index.htm    — Plano (sala)
+
+  Uso: href="articles/2026_03_28_article_78.html" | href="../sala/index.htm" | href="linkedin.html"
   Cópia: copiar retro/ inteiro (index.html, articles.html, pasta articles/).
   O link ../sala/index.htm assume que "sala" é irmã de "retro" (mesmo pai).
   Se copiar retro/ sozinho para outro repo/site: trocar ../sala/index.htm pelo

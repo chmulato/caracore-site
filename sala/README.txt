@@ -1,22 +1,22 @@
-SALA DE NOTÍCIAS — ENTRADA
-===========================
+SALA — Plano e campanhas (Instagram e Facebook)
+================================================
 
-Este diretório é a entrada da Sala de Notícias e contém as campanhas orgânicas.
+Este diretório contém o **plano** e as **campanhas Instagram e Facebook**. Os artigos retro e as diretrizes LinkedIn ficam em retro/ (legado).
 
 Conteúdo:
-  index.htm      — página de controle (Matriz CC)
-  linkedin.html  — diretrizes LinkedIn (Soberania Orgânica Mar–Mai 2026)
+  index.htm      — página de controle (plano e campanhas)
   facebook.html  — campanha Facebook (Rede de pessoas antigas · Ink)
   instagram.html — campanha Instagram (Rede de vaidosos · Ink)
+  assets/        — CSS e SVG das campanhas
+  regis/         — materiais de apoio (manuais, editoriais)
   README.txt     — este arquivo
 
-Navegação (tudo dentro de sala/):
+Navegação (dentro de sala/):
   Controle (esta página)  → index.htm
-  LinkedIn                → linkedin.html
-  Facebook                 → facebook.html
-  Instagram                → instagram.html
-  Sala de Notícias (artigos) → ../articles.html  (lista em docs/articles.html)
+  Facebook                → facebook.html
+  Instagram               → instagram.html
+  Lista de artigos        → ../retro/articles.html
 
-A lista de artigos fica em docs/articles.html; os artigos em docs/articles/.
+LinkedIn (legado): diretrizes e artigos em ../retro/ (retro/linkedin.html e retro/articles/).
 
-Cara Core Informática · Campanhas orgânicas
+Cara Core Informática · Plano e campanhas

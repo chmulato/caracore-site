@@ -11,11 +11,11 @@ ter articles.html e pasta articles/ no mesmo nível que sala/.
   De: qualquer .htm / .html na raiz de sala/
   Para:
     index.htm       — Controle (plano e campanhas)
-    facebook.html   — Campanha Facebook
-    instagram.html  — Campanha Instagram
+    facebook/facebook.html   — Campanha Facebook
+    instagram/instagram.html  — Campanha Instagram
 
-  Uso: href="index.htm" | href="facebook.html" | href="instagram.html"
-  LinkedIn está em retro/ (legado): ../retro/linkedin.html
+  Uso: href="index.htm" | href="facebook/facebook.html" | href="instagram/instagram.html" | href="linkedin/linkedin.html"
+  LinkedIn (Sala): linkedin/linkedin.html. LinkedIn legado está em retro/ (legado): ../retro/linkedin.html
 
 --------------------------------------------------------------------------------
 2. LINKS PARA FORA DE SALA (caracore-site: retro/)
@@ -33,13 +33,13 @@ ter articles.html e pasta articles/ no mesmo nível que sala/.
 --------------------------------------------------------------------------------
 3. ASSETS DENTRO DE SALA (pasta assets/)
 --------------------------------------------------------------------------------
-  De: HTMLs de campanha em sala/ (ex.: 2026_03_02_ink_facebook_mar.html,
+  De: HTMLs de campanha em sala/facebook/, sala/instagram/, sala/linkedin/ (ex.: 2026_03_02_ink_facebook_mar.html,
       2026_05_01_campanha_lucratividade_mai.html)
   Para:
     assets/css/articles.css    — Folha de estilo
     assets/svg/NOME.svg        — Ícones e artes (frases Ink, pilares)
 
-  Uso: href="assets/css/articles.css" | src="assets/svg/ink_fb_mar_frase.svg"
+  Uso (na raiz de sala/): href="assets/...". Nos subfolders (facebook/, instagram/, linkedin/): href="../assets/css/articles.css" | src="../assets/svg/..."
   Cópia: copiar a pasta sala/assets/ junto com sala/; os links são relativos
   ao arquivo que referencia, então desde que a estrutura sala/assets/ seja
   mantida, continuam válidos.
@@ -57,7 +57,7 @@ ter articles.html e pasta articles/ no mesmo nível que sala/.
 
   Opção B — Copiar só sala/ para outra raiz:
     nova_raiz/
-      sala/          ← mesma estrutura (index.htm, linkedin.html, assets/, etc.)
+      sala/          ← mesma estrutura (index.htm, linkedin/, facebook/, instagram/, assets/, etc.)
       articles.html  ← colocar no mesmo nível que sala/
       articles/      ← colocar no mesmo nível que sala/
 
@@ -67,7 +67,7 @@ ter articles.html e pasta articles/ no mesmo nível que sala/.
 --------------------------------------------------------------------------------
 5. ARQUIVOS QUE USAM CADA TIPO DE LINK
 --------------------------------------------------------------------------------
-  Links internos (sala): index.htm, linkedin.html, facebook.html, instagram.html
+  Links internos (sala): index.htm, linkedin/linkedin.html, facebook/facebook.html, instagram/instagram.html
   Links ../articles*:    os mesmos + todos os 2026_*_*.html (campanhas)
   Links assets/*:         só os 2026_*_*.html (campanha Ink/LinkedIn/etc.)
 

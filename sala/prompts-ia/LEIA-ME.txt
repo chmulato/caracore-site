@@ -1,0 +1,18 @@
+================================================================================
+PROMPTS PARA IA DE IMAGEM — SALA DE NOTÍCIAS
+================================================================================
+
+Esta pasta contém arquivos .TXT com prompts para gerar imagens em ferramentas
+de IA (DALL·E, Midjourney, Ideogram, etc.).
+
+Arquivos:
+  PASSO_A_PASSO_LEIGOS.txt  — Instruções passo a passo para quem nunca usou.
+  soberania.txt            — Prompt para arte do pilar Soberania.
+  precisao.txt             — Prompt para arte do pilar Precisão.
+  lucratividade.txt         — Prompt para arte do pilar Lucratividade.
+
+Como usar: abra PASSO_A_PASSO_LEIGOS.txt e siga os passos. Depois copie o
+texto do .TXT desejado e cole no campo de prompt da ferramenta de IA.
+
+Cara Core Informática · Sala de Notícias
+================================================================================

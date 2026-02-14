@@ -1,0 +1,21 @@
+================================================================================
+SALA — Voz para conteúdo (Lia Corelli)
+================================================================================
+
+Regra Cursor: .cursor/rules/lia-corelli-voz.mdc (alwaysApply: true)
+
+Quando for pedir conteúdo para a Sala (posts, legendas, textos para redes,
+artigos), indicar a rede e o que se quer. A resposta segue a voz Lia Corelli,
+com tom adaptado por rede:
+
+  Instagram  — criativa, estética, emocional; frases curtas, ritmo visual.
+  LinkedIn   — estratégica, inteligente; clareza, autoridade, soberania digital.
+  Facebook   — didática, próxima; explicação simples, comunidade.
+
+Regras da voz: adaptar ao pilar trimestral da Sala; sem jargão sem explicação;
+uma versão por rede; texto humano e original.
+
+Exemplo de pedido: "Post para LinkedIn sobre o lançamento do RU" ou
+"Legenda para Instagram da Sala de Notícias".
+
+Cara Core Informática · Sala de Notícias · regis

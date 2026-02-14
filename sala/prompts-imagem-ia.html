@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prompts para IA de imagem — Sala de Notícias | Cara Core</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://caracore.com.br/sala/prompts-imagem-ia.html">
+    <style>
+        * { box-sizing: border-box; }
+        body { background:#0d1117; color:#e6edf3; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin:0; padding:0; line-height:1.65; }
+        .layout { display: flex; min-height: 100vh; }
+        .nav-sidebar { width: 220px; flex-shrink: 0; background: #161b22; border-right: 1px solid rgba(255,215,0,.15); padding: 1.5rem 1rem 2rem; }
+        .nav-sidebar .logo { font-weight:700; font-size:.8rem; letter-spacing:.08em; color:#fff; margin-bottom:1rem; text-transform:uppercase; }
+        .nav-sidebar .nav-title { font-size:.7rem; font-weight:600; color:rgba(255,215,0,.9); letter-spacing:.06em; text-transform:uppercase; margin-bottom:.75rem; }
+        .nav-sidebar ul { list-style:none; padding:0; margin:0; }
+        .nav-sidebar li { margin-bottom:.35rem; }
+        .nav-sidebar a { color:#8b949e; text-decoration:none; font-size:.9rem; display:block; padding:.4rem 0; }
+        .nav-sidebar a:hover { color:#ffd700; }
+        .nav-sidebar a.active { color:#ffd700; font-weight:600; }
+        .nav-sidebar .nav-footer { margin-top:1.5rem; padding-top:1rem; border-top:1px solid rgba(255,255,255,.08); }
+        .nav-sidebar .nav-footer a { font-size:.8rem; color:#6e7681; }
+        .main { flex:1; padding:2rem 1.5rem 4rem; max-width:720px; }
+        .main h1 { font-size:1.2rem; font-weight:600; color:#ffd700; margin:0 0 1rem; border-bottom:1px solid rgba(255,215,0,.3); padding-bottom:.75rem; }
+        .main h2 { font-size:1rem; font-weight:600; color:#c9d1d9; margin:1.5rem 0 .5rem; }
+        .main p { margin:0 0 .75rem; color:#c9d1d9; font-size:.95rem; }
+        .main a { color:#ffd700; text-decoration:none; }
+        .main a:hover { text-decoration:underline; }
+        .main ol, .main ul { color:#c9d1d9; padding-left:1.25rem; margin:.5rem 0 1rem; }
+        .main li { margin-bottom:.35rem; }
+        .txt-list { list-style:none; padding:0; margin:1rem 0; }
+        .txt-list li { margin-bottom:.5rem; padding:.5rem 0; border-bottom:1px solid rgba(255,255,255,.06); }
+        .txt-list a { font-weight:500; }
+        .txt-list span { font-size:.85rem; color:#8b949e; display:block; margin-top:.2rem; }
+        .pilar-box { display:flex; gap:1rem; align-items:flex-start; margin:1rem 0 1.5rem; flex-wrap:wrap; }
+        .pilar-svg { flex-shrink:0; width:80px; height:80px; opacity:.5; }
+        .prompt-box { flex:1; min-width:260px; background:#161b22; border:1px solid rgba(255,215,0,.2); border-radius:6px; padding:1rem 1.25rem; font-size:.9rem; line-height:1.5; color:#c9d1d9; font-family:ui-monospace, monospace; white-space:pre-wrap; word-break:break-word; }
+        .prompt-box-label { font-size:.75rem; color:#8b949e; margin-bottom:.5rem; }
+        .lgpd { margin-top:2rem; font-size:.85rem; color:#8b949e; }
+        @media (max-width: 640px) { .layout { flex-direction: column; } .nav-sidebar { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,215,0,.15); } }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <nav class="nav-sidebar" aria-label="Campanhas e recursos">
+            <div class="logo">Cara Core Informática</div>
+            <p class="nav-title">Plano e campanhas</p>
+            <ul>
+                <li><a href="index.htm">Controle</a></li>
+                <li><a href="facebook/facebook.html">Facebook</a></li>
+                <li><a href="instagram/instagram.html">Instagram</a></li>
+                <li><a href="linkedin/linkedin.html">LinkedIn</a></li>
+            </ul>
+            <div class="nav-footer">
+                <a href="prompts-imagem-ia.html" class="active">Prompts IA de imagem</a>
+                <a href="../retro/articles.html">Lista de artigos</a>
+            </div>
+        </nav>
+        <main class="main">
+            <h1>Prompts para IA de imagem</h1>
+            <p>Esta página reúne os arquivos .TXT usados para gerar imagens em ferramentas de IA (DALL·E, Midjourney, Ideogram, etc.) e o passo a passo para quem nunca usou. Não há imagem pronta — use o texto abaixo ou os .TXT para gerar na IA.</p>
+
+            <h2>Pilar do mês</h2>
+            <div class="pilar-box">
+                <svg class="pilar-svg" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="8" y="8" width="48" height="48" rx="4" stroke="currentColor" stroke-width="1.5"/>
+                    <path d="M16 20h32M16 28h24M16 36h20" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                <div>
+                    <p class="prompt-box-label">Copie o texto e cole no gerador de imagens por IA.</p>
+                    <div class="prompt-box">Ilustração minimalista e profissional para rede social. Tema: soberania técnica e dados no controle do usuário. Estilo: flat design, cores sóbrias (azul escuro, branco, cinza). Elementos visuais sugeridos: ícone de pasta ou arquivo local, cadeado discreto, setas indicando "seu ambiente". Sem rostos. Textura limpa, moderna. Proporção adequada para post (1:1 ou 4:5). Marca d'água ou logotipo não incluídos na geração.</div>
+                </div>
+            </div>
+
+            <h2>Passo a passo (para leigos)</h2>
+            <ol>
+                <li><strong>Escolha o arquivo .TXT</strong> da campanha ou pilar (soberania, precisão, lucratividade).</li>
+                <li><strong>Abra o .TXT</strong> no Bloco de Notas ou outro editor. Selecione todo o texto (Ctrl+A) e copie (Ctrl+C).</li>
+                <li><strong>Abra a ferramenta de IA</strong> (site ou app: DALL·E, Midjourney, Ideogram, Microsoft Designer, Leonardo.ai, etc.).</li>
+                <li><strong>Cole o texto</strong> no campo de prompt/descrição (Ctrl+V). Ajuste opções se pedir (tamanho, proporção). Clique em Gerar.</li>
+                <li><strong>Baixe a imagem</strong> quando a IA terminar e salve com nome que identifique a campanha e a rede (ex.: soberania_instagram_06.png).</li>
+            </ol>
+            <p>Instruções completas em texto: <a href="prompts-ia/PASSO_A_PASSO_LEIGOS.txt">prompts-ia/PASSO_A_PASSO_LEIGOS.txt</a>.</p>
+
+            <h2>Arquivos .TXT disponíveis</h2>
+            <ul class="txt-list">
+                <li><a href="prompts-ia/PASSO_A_PASSO_LEIGOS.txt">PASSO_A_PASSO_LEIGOS.txt</a><span>Instruções detalhadas para usar os prompts em qualquer ferramenta de IA de imagem.</span></li>
+                <li><a href="prompts-ia/soberania.txt">soberania.txt</a><span>Prompt para arte do pilar Soberania (dados no controle, dossiê, backup).</span></li>
+                <li><a href="prompts-ia/precisao.txt">precisao.txt</a><span>Prompt para arte do pilar Precisão (fluxos, organização).</span></li>
+                <li><a href="prompts-ia/lucratividade.txt">lucratividade.txt</a><span>Prompt para arte do pilar Lucratividade (clareza no financeiro).</span></li>
+                <li><a href="prompts-ia/LEIA-ME.txt">LEIA-ME.txt</a><span>Resumo da pasta e lista dos arquivos.</span></li>
+            </ul>
+
+            <p>Os .TXT são sugestões; podem ser editados antes de colar na IA (por exemplo trocar "minimalista" por "colorido") para ajustar o resultado.</p>
+
+            <p class="lgpd">A Sala de Notícias exibe apenas documentação institucional. Nenhum dado pessoal é coletado, armazenado ou processado neste ambiente.</p>
+        </main>
+    </div>
+</body>
+</html>

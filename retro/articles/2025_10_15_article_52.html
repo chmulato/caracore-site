@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OIDC descomplicado � como acabar com o caos de senhas (Parte I) � Cara Core Inform�tica</title>
-  <meta name="description" content="Entenda OIDC com analogias simples: como sair do caos de senhas m�ltiplas para uma identidade �nica e segura. Guia para leigos com casos reais." />
+  <title>OIDC descomplicado — como acabar com o caos de senhas (Parte I) — Cara Core Informática</title>
+  <meta name="description" content="Entenda OIDC com analogias simples: como sair do caos de senhas mï¿½ltiplas para uma identidade ï¿½nica e segura. Guia para leigos com casos reais." />
   <meta name="keywords" content="OIDC, OAuth 2.0, JWT, SSO, PKCE, JWKS, GitHub Actions, AWS, CI/CD, OpenID Connect" />
-  <meta name="author" content="Cara Core Inform�tica" />
+  <meta name="author" content="Cara Core Informática" />
   <link rel="canonical" href="https://chmulato.github.io/caracore-articles/retro/articles/2025_10_17_article_52.html" />
   <!-- Open Graph -->
-  <meta property="og:title" content="OIDC descomplicado � do caos de senhas ao login federado seguro (com exemplos pr�ticos)" />
-  <meta property="og:description" content="OIDC na pr�tica: identidade federada, Authorization Code + PKCE, valida��o de ID Token (JWT) e CI/CD com GitHub Actions ? AWS via OIDC, sem chaves." />
+  <meta property="og:title" content="OIDC descomplicado — do caos de senhas ao login federado seguro (com exemplos práticos)" />
+  <meta property="og:description" content="OIDC na prï¿½tica: identidade federada, Authorization Code + PKCE, validaï¿½ï¿½o de ID Token (JWT) e CI/CD com GitHub Actions ? AWS via OIDC, sem chaves." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://chmulato.github.io/caracore-articles/retro/articles/2025_10_17_article_52.html" />
   <meta property="og:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_52_01.png" />
-  <meta property="og:image:alt" content="Fluxo OIDC com ID Token e integra��o GitHub Actions ? AWS por OIDC (cores Cara Core)" />
+  <meta property="og:image:alt" content="Fluxo OIDC com ID Token e integraï¿½ï¿½o GitHub Actions ? AWS por OIDC (cores Cara Core)" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="OIDC descomplicado � do caos de senhas ao login federado seguro (com exemplos pr�ticos)" />
-  <meta name="twitter:description" content="OIDC na pr�tica: identidade federada, Authorization Code + PKCE, valida��o de ID Token (JWT) e CI/CD com GitHub Actions ? AWS via OIDC, sem chaves." />
+  <meta name="twitter:title" content="OIDC descomplicado — do caos de senhas ao login federado seguro (com exemplos práticos)" />
+  <meta name="twitter:description" content="OIDC na prï¿½tica: identidade federada, Authorization Code + PKCE, validaï¿½ï¿½o de ID Token (JWT) e CI/CD com GitHub Actions ? AWS via OIDC, sem chaves." />
   <meta name="twitter:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_52_01.png" />
-  <meta name="twitter:image:alt" content="Fluxo OIDC com ID Token e integra��o GitHub Actions ? AWS por OIDC (cores Cara Core)" />
+  <meta name="twitter:image:alt" content="Fluxo OIDC com ID Token e integraï¿½ï¿½o GitHub Actions ? AWS por OIDC (cores Cara Core)" />
   <link rel="stylesheet" href="assets/css/articles.css" />
   <style>
     body { font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif; line-height:1.55; color:#1f2937; margin:0; }
@@ -58,149 +58,149 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "OIDC descomplicado � do caos de senhas ao login federado seguro (com exemplos pr�ticos)",
-    "author": {"@type": "Organization", "name": "Cara Core Inform�tica"},
+    "headline": "OIDC descomplicado — do caos de senhas ao login federado seguro (com exemplos práticos)",
+    "author": {"@type": "Organization", "name": "Cara Core Informática"},
     "datePublished": "2025-10-15",
     "image": "https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_52_01.png",
-    "publisher": {"@type":"Organization","name":"Cara Core Inform�tica"}
+    "publisher": {"@type":"Organization","name":"Cara Core Informática"}
   }
   </script>
   </head>
 <body>
   <div class="container">
-    <a class="back-link" href="../articles.html">&larr; Voltar para publica��es</a>
-    <img src="assets/img/article_52_01.png" alt="Fluxo OIDC com ID Token e integra��o GitHub Actions ? AWS por OIDC (cores Cara Core)" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
-    <h1>OIDC descomplicado � como acabar com o caos de senhas (Parte I)</h1>
+    <a class="back-link" href="../articles.html">&larr; Voltar para publicaï¿½ï¿½es</a>
+    <img src="assets/img/article_52_01.png" alt="Fluxo OIDC com ID Token e integraï¿½ï¿½o GitHub Actions ? AWS por OIDC (cores Cara Core)" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+    <h1>OIDC descomplicado — como acabar com o caos de senhas (Parte I)</h1>
     <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
       <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
-      <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Inform�tica</a>
+      <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
       <span style="margin-left: 1.5rem;">84 seguidores<br>15 de outubro de 2025</span>
     </div>
 
     <div class="note"><strong>Tempo estimado de leitura:</strong> ~8 minutos</div>
 
-    <p>Imagine a Secretaria de Servi�os de uma cidade m�dia. Cada sistema tem seu pr�prio login: portal do cidad�o, agendamento de consultas, tributos, aplicativos internos das equipes de rua. Em pouco tempo, nasce o caos: senhas repetidas, esquecidas, formul�rios confusos, redefini��es por telefone� e o pior, crescem os riscos de seguran�a. Foi nesse cen�rio que o time decidiu alinhar tudo atr�s de um �nico padr�o: OIDC.</p>
-    <p>O OpenID Connect (OIDC) transforma �logins soltos� em uma identidade federada. Em portugu�s claro: em vez de cada sistema cuidar de senha, um Provedor de Identidade (IdP) autentica o usu�rio e entrega um �cart�o de identidade� digital (ID Token). Os sistemas (aplicativos web, APIs, apps mobile) confiam nesse cart�o, validam a assinatura e liberam acesso de forma consistente.</p>
+    <p>Imagine a Secretaria de Serviï¿½os de uma cidade mï¿½dia. Cada sistema tem seu prï¿½prio login: portal do cidadï¿½o, agendamento de consultas, tributos, aplicativos internos das equipes de rua. Em pouco tempo, nasce o caos: senhas repetidas, esquecidas, formulï¿½rios confusos, redefiniï¿½ï¿½es por telefoneï¿½ e o pior, crescem os riscos de seguranï¿½a. Foi nesse cenï¿½rio que o time decidiu alinhar tudo atrï¿½s de um ï¿½nico padrï¿½o: OIDC.</p>
+    <p>O OpenID Connect (OIDC) transforma ï¿½logins soltosï¿½ em uma identidade federada. Em portuguï¿½s claro: em vez de cada sistema cuidar de senha, um Provedor de Identidade (IdP) autentica o usuï¿½rio e entrega um ï¿½cartï¿½o de identidadeï¿½ digital (ID Token). Os sistemas (aplicativos web, APIs, apps mobile) confiam nesse cartï¿½o, validam a assinatura e liberam acesso de forma consistente.</p>
 
-    <h2>O que OIDC resolve na pr�tica</h2>
-    <p>OIDC (OpenID Connect) � como ter um "RG digital" que funciona em qualquer lugar da sua organiza��o. Em vez de cada sistema ter sua pr�pria forma de saber quem voc� �, existe um lugar central que cuida disso.</p>
+    <h2>O que OIDC resolve na prï¿½tica</h2>
+    <p>OIDC (OpenID Connect) — como ter um "RG digital" que funciona em qualquer lugar da sua organizaï¿½ï¿½o. Em vez de cada sistema ter sua prï¿½pria forma de saber quem vocï¿½ ï¿½, existe um lugar central que cuida disso.</p>
     <p><strong>Analogia do clube social:</strong><br>
-    Pense num clube que tem piscina, academia, restaurante e sal�o de jogos. Sem OIDC, voc� precisaria de um cart�o diferente para cada �rea, com senhas diferentes. Com OIDC, voc� tem um �nico cart�o do clube que libera tudo � e se voc� perder acesso ao clube, automaticamente perde acesso a todas as �reas.</p>
+    Pense num clube que tem piscina, academia, restaurante e salï¿½o de jogos. Sem OIDC, vocï¿½ precisaria de um cartï¿½o diferente para cada ï¿½rea, com senhas diferentes. Com OIDC, vocï¿½ tem um ï¿½nico cartï¿½o do clube que libera tudo — e se vocï¿½ perder acesso ao clube, automaticamente perde acesso a todas as ï¿½reas.</p>
     <p><strong>Os "personagens" principais:</strong></p>
     <ul>
-      <li><strong>Seguran�a-chefe</strong> (Provedor de Identidade): quem te conhece e confirma sua identidade</li>
-      <li><strong>Sistemas/apps</strong> (seus porteiros): confiam no seguran�a-chefe e liberam acesso</li>
-      <li><strong>Voc�</strong> (usu�rio): precisa se autenticar uma vez s�</li>
+      <li><strong>Seguranï¿½a-chefe</strong> (Provedor de Identidade): quem te conhece e confirma sua identidade</li>
+      <li><strong>Sistemas/apps</strong> (seus porteiros): confiam no seguranï¿½a-chefe e liberam acesso</li>
+      <li><strong>Vocï¿½</strong> (usuï¿½rio): precisa se autenticar uma vez sï¿½</li>
     </ul>
 
-    <h2>Como funciona no dia a dia (sem jarg�o)</h2>
-    <p><strong>O processo � como ir ao banco:</strong></p>
+    <h2>Como funciona no dia a dia (sem jargï¿½o)</h2>
+    <p><strong>O processo — como ir ao banco:</strong></p>
     <ol>
-      <li><strong>Voc� chega no caixa</strong> (acessa o sistema)</li>
-      <li><strong>O caixa pede seu documento</strong> (sistema redireciona para autentica��o)</li>
-      <li><strong>Voc� mostra RG + digital</strong> (autentica com senha/biometria no provedor)</li>
-      <li><strong>O caixa confirma que � voc�</strong> (sistema recebe confirma��o)</li>
-      <li><strong>Voc� pode fazer suas transa��es</strong> (acesso liberado com suas permiss�es)</li>
+      <li><strong>Vocï¿½ chega no caixa</strong> (acessa o sistema)</li>
+      <li><strong>O caixa pede seu documento</strong> (sistema redireciona para autenticaï¿½ï¿½o)</li>
+      <li><strong>Vocï¿½ mostra RG + digital</strong> (autentica com senha/biometria no provedor)</li>
+      <li><strong>O caixa confirma que — vocï¿½</strong> (sistema recebe confirmaï¿½ï¿½o)</li>
+      <li><strong>Vocï¿½ pode fazer suas transaï¿½ï¿½es</strong> (acesso liberado com suas permissï¿½es)</li>
     </ol>
-    <p><strong>Benef�cios pr�ticos:</strong></p>
+    <p><strong>Benefï¿½cios práticos:</strong></p>
     <ul>
-      <li>Uma senha s� para todos os sistemas</li>
-      <li>Se sair da empresa, acesso a tudo � cortado de uma vez</li>
-      <li>Autentica��o em duas etapas (MFA) protege tudo</li>
+      <li>Uma senha sï¿½ para todos os sistemas</li>
+      <li>Se sair da empresa, acesso a tudo — cortado de uma vez</li>
+      <li>Autenticaï¿½ï¿½o em duas etapas (MFA) protege tudo</li>
       <li>Menos chamados para "esqueci minha senha"</li>
     </ul>
           <h2>Casos reais onde OIDC salva o dia</h2>
-    <p><strong>Caso 1: Cl�nica m�dica com 5 sistemas</strong><br>
-    Antes: recep��o, agenda, prontu�rio, financeiro e laborat�rio � cada um com login pr�prio.<br>
-    Depois: um login s�. M�dico chega, faz login uma vez, acessa tudo. Saiu da cl�nica? Acesso cortado automaticamente.</p>
+    <p><strong>Caso 1: Clï¿½nica mï¿½dica com 5 sistemas</strong><br>
+    Antes: recepï¿½ï¿½o, agenda, prontuï¿½rio, financeiro e laboratï¿½rio — cada um com login prï¿½prio.<br>
+    Depois: um login sï¿½. Mï¿½dico chega, faz login uma vez, acessa tudo. Saiu da clï¿½nica? Acesso cortado automaticamente.</p>
     
     <p><strong>Caso 2: Escola com professores, alunos e pais</strong><br>
-    Antes: portal do aluno, sistema de notas, biblioteca, cantina � senhas perdidas toda semana.<br>
-    Depois: Google Workspace como provedor. Todo mundo usa a conta Google que j� tem, MFA incluso.</p>
+    Antes: portal do aluno, sistema de notas, biblioteca, cantina — senhas perdidas toda semana.<br>
+    Depois: Google Workspace como provedor. Todo mundo usa a conta Google que jï¿½ tem, MFA incluso.</p>
     
     <p><strong>Caso 3: Empresa com apps internos e externos</strong><br>
-    Antes: sistema de ponto, intranet, CRM, e-mail � TI vivia resetando senhas.<br>
-    Depois: Microsoft 365 como centro. Funcion�rio sai? Desliga no 365, perde acesso a tudo.</p>
+    Antes: sistema de ponto, intranet, CRM, e-mail — TI vivia resetando senhas.<br>
+    Depois: Microsoft 365 como centro. Funcionï¿½rio sai? Desliga no 365, perde acesso a tudo.</p>
 
-    <h2>Automa��es tamb�m se beneficiam</h2>
-    <p><strong>Cen�rio: deploy automatizado sem "senhas fixas"</strong></p>
-    <p>Quando voc� tem sistemas que fazem deploy (GitHub Actions, Jenkins), tradicionalmente precisava guardar senhas/chaves fixas no sistema. Com OIDC, em vez de "senha fixa", o sistema de deploy "pede identifica��o" na hora do deploy e recebe permiss�o tempor�ria.</p>
+    <h2>Automaï¿½ï¿½es tambï¿½m se beneficiam</h2>
+    <p><strong>Cenï¿½rio: deploy automatizado sem "senhas fixas"</strong></p>
+    <p>Quando vocï¿½ tem sistemas que fazem deploy (GitHub Actions, Jenkins), tradicionalmente precisava guardar senhas/chaves fixas no sistema. Com OIDC, em vez de "senha fixa", o sistema de deploy "pede identificaï¿½ï¿½o" na hora do deploy e recebe permissï¿½o temporï¿½ria.</p>
     <p><strong>Analogia do manobrista:</strong><br>
-    Antes: voc� deixava uma c�pia da chave do carro (risco se vazasse).<br>
-    Agora: voc� d� um "cart�o de manobrista" que s� funciona por 1 hora, s� para estacionar, s� naquele local.</p>
-    <p><strong>Vantagens pr�ticas:</strong></p>
+    Antes: vocï¿½ deixava uma cï¿½pia da chave do carro (risco se vazasse).<br>
+    Agora: vocï¿½ dï¿½ um "cartï¿½o de manobrista" que sï¿½ funciona por 1 hora, sï¿½ para estacionar, sï¿½ naquele local.</p>
+    <p><strong>Vantagens prï¿½ticas:</strong></p>
     <ul>
-      <li>Sem senhas "esquecidas" em c�digo</li>
-      <li>Permiss�es tempor�rias e espec�ficas</li>
-      <li>Auditoria clara: quem fez o qu�, quando</li>
+      <li>Sem senhas "esquecidas" em cï¿½digo</li>
+      <li>Permissï¿½es temporï¿½rias e especï¿½ficas</li>
+      <li>Auditoria clara: quem fez o quï¿½, quando</li>
     </ul>
 
-    <h2>Como come�ar (passos pr�ticos)</h2>
-    <p><strong>1. Escolha seu "seguran�a-chefe"</strong></p>
+    <h2>Como comeï¿½ar (passos práticos)</h2>
+    <p><strong>1. Escolha seu "seguranï¿½a-chefe"</strong></p>
     <ul>
-      <li>J� usa Google Workspace ou Microsoft 365? Use eles mesmos</li>
-      <li>Precisa de algo mais customiz�vel? Keycloak, Auth0, ou AWS Cognito</li>
-      <li>Quer simplicidade? Comece com o que j� tem</li>
+      <li>Jï¿½ usa Google Workspace ou Microsoft 365? Use eles mesmos</li>
+      <li>Precisa de algo mais customizï¿½vel? Keycloak, Auth0, ou AWS Cognito</li>
+      <li>Quer simplicidade? Comece com o que jï¿½ tem</li>
     </ul>
     <p><strong>2. Comece pequeno</strong></p>
     <ul>
-      <li>Escolha 2�3 sistemas mais usados</li>
+      <li>Escolha 2ï¿½3 sistemas mais usados</li>
       <li>Configure OIDC neles</li>
       <li>Teste com um grupo piloto</li>
-      <li>S� depois expanda para tudo</li>
+      <li>Sï¿½ depois expanda para tudo</li>
     </ul>
     <p><strong>3. Eduque a equipe</strong></p>
     <ul>
-      <li>"Agora � um login s� para tudo"</li>
-      <li>"Se esquecer a senha, reseta em um lugar s�"</li>
-      <li>"Dupla autentica��o (MFA) protege tudo de uma vez"</li>
+      <li>"Agora — um login sï¿½ para tudo"</li>
+      <li>"Se esquecer a senha, reseta em um lugar sï¿½"</li>
+      <li>"Dupla autenticaï¿½ï¿½o (MFA) protege tudo de uma vez"</li>
     </ul>
 
-    <h2>Gloss�rio (termos que voc� vai ouvir)</h2>
+    <h2>Glossï¿½rio (termos que vocï¿½ vai ouvir)</h2>
     <ul>
-      <li><strong>OIDC</strong>: a "tecnologia do login �nico" que estamos falando</li>
-      <li><strong>Provedor de Identidade (IdP)</strong>: o "seguran�a-chefe" (Google, Microsoft, etc.)</li>
-      <li><strong>Token</strong>: a "pulseirinha digital" que prova quem voc� �</li>
-      <li><strong>MFA/2FA</strong>: autentica��o em duas etapas (senha + celular)</li>
-      <li><strong>SSO</strong>: Single Sign-On, "login �nico"</li>
-      <li><strong>Claims</strong>: as informa��es sobre voc� (nome, email, cargo)</li>
+      <li><strong>OIDC</strong>: a "tecnologia do login ï¿½nico" que estamos falando</li>
+      <li><strong>Provedor de Identidade (IdP)</strong>: o "seguranï¿½a-chefe" (Google, Microsoft, etc.)</li>
+      <li><strong>Token</strong>: a "pulseirinha digital" que prova quem vocï¿½ ï¿½</li>
+      <li><strong>MFA/2FA</strong>: autenticaï¿½ï¿½o em duas etapas (senha + celular)</li>
+      <li><strong>SSO</strong>: Single Sign-On, "login ï¿½nico"</li>
+      <li><strong>Claims</strong>: as informaï¿½ï¿½es sobre vocï¿½ (nome, email, cargo)</li>
     </ul>
 
-    <h2 id="conclusao">Conclus�o</h2>
-    <p>OIDC transforma o caos de "mil senhas" na simplicidade de "uma identidade s�". � como ter um RG que funciona em qualquer lugar da sua organiza��o � seguro, pr�tico e sem complica��o para quem usa.</p>
-    <p><strong>Os benef�cios s�o claros:</strong></p>
+    <h2 id="conclusao">Conclusï¿½o</h2>
+    <p>OIDC transforma o caos de "mil senhas" na simplicidade de "uma identidade sï¿½". — como ter um RG que funciona em qualquer lugar da sua organizaï¿½ï¿½o — seguro, prático e sem complicaï¿½ï¿½o para quem usa.</p>
+    <p><strong>Os benefï¿½cios sï¿½o claros:</strong></p>
     <ul>
       <li>Menos senhas esquecidas e mais produtividade</li>
-      <li>Seguran�a centralizada (MFA protege tudo)</li>
-      <li>Onboarding e offboarding mais �geis</li>
-      <li>TI com menos dor de cabe�a</li>
+      <li>Seguranï¿½a centralizada (MFA protege tudo)</li>
+      <li>Onboarding e offboarding mais ï¿½geis</li>
+      <li>TI com menos dor de cabeï¿½a</li>
     </ul>
-    <p><strong>Pr�ximo passo</strong> ? comece pequeno e mexa o que funciona. Se j� usa Google Workspace ou Microsoft 365, voc� tem meio caminho andado.</p>
-    <p>Quer ver exemplos t�cnicos, c�digos e implementa��es pr�ticas? Veja a <strong>Parte II</strong> (Artigo 54) com detalhes para desenvolvedores e administradores de sistema.</p>
+    <p><strong>Prï¿½ximo passo</strong> ? comece pequeno e mexa o que funciona. Se jï¿½ usa Google Workspace ou Microsoft 365, vocï¿½ tem meio caminho andado.</p>
+    <p>Quer ver exemplos tï¿½cnicos, cï¿½digos e implementaï¿½ï¿½es prï¿½ticas? Veja a <strong>Parte II</strong> (Artigo 54) com detalhes para desenvolvedores e administradores de sistema.</p>
     
     <div style="text-align: center; margin: 2rem 0;">
-      <img src="assets/img/article_52_02.png" alt="Teaser para OIDC Parte II - Implementa��es T�cnicas" style="max-width: 25%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+      <img src="assets/img/article_52_02.png" alt="Teaser para OIDC Parte II - Implementaï¿½ï¿½es Tï¿½cnicas" style="max-width: 25%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
       <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem; font-style: italic;">
-        Pr�ximo artigo: implementa��es t�cnicas com c�digo Python, JavaScript.js e integra��o CI/CD
+        Prï¿½ximo artigo: implementaï¿½ï¿½es tï¿½cnicas com cï¿½digo Python, JavaScript.js e integraï¿½ï¿½o CI/CD
       </p>
     </div>
     
-    <p>A Cara Core Inform�tica pode ajudar na implanta��o, treinamento e suporte � inclusive aos finais de semana e feriados.</p>
+    <p>A Cara Core Informática pode ajudar na implantaï¿½ï¿½o, treinamento e suporte — inclusive aos finais de semana e feriados.</p>
 
     <h2>Hashtags</h2>
-    <div class="hash-box">#OIDC #SSO #Login�nico #Seguran�a #Identidade #MFA #Autentica��o #CaraCoreInform�tica</div>
+    <div class="hash-box">#OIDC #SSO #Loginï¿½nico #Seguranï¿½a #Identidade #MFA #Autenticaï¿½ï¿½o #CaraCoreInformática</div>
 
     <hr />
     <h3>Contato</h3>
     <ul>
       <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
       <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Inform�tica</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
     </ul>
 
     <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
-      <strong>?? Gostou do conte�do?</strong><br />
-      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conte�dos sobre desenvolvimento e inova��o tecnol�gica!</span><br />
+      <strong>?? Gostou do conteï¿½do?</strong><br />
+      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteï¿½dos sobre desenvolvimento e inovaï¿½ï¿½o tecnolï¿½gica!</span><br />
       <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
     </div>
   </div>

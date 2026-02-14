@@ -3,85 +3,85 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Estrat�gias de Versionamento e Deploy Cont�nuo para Conte�do T�cnico � Cara Core Inform�tica</title>
-	<meta name="description" content="Guia pr�tico e colaborativo sobre versionamento e deploy cont�nuo de conte�do t�cnico: Git, branching, automa��o CI/CD, rollback, m�tricas e fluxos editoriais profissionais.">
-	<meta name="keywords" content="Versionamento de Conte�do, Deploy Cont�nuo, CI/CD, Git, Documenta��o T�cnica, Automa��o, Python, Workflow Editorial, Observabilidade de Conte�do, Cara Core Inform�tica">
-	<meta name="author" content="Cara Core Inform�tica">
+	<title>Estratï¿½gias de Versionamento e Deploy Contï¿½nuo para Conteï¿½do Tï¿½cnico — Cara Core Informática</title>
+	<meta name="description" content="Guia prático e colaborativo sobre versionamento e deploy contï¿½nuo de conteï¿½do tï¿½cnico: Git, branching, automação CI/CD, rollback, mï¿½tricas e fluxos editoriais profissionais.">
+	<meta name="keywords" content="Versionamento de Conteï¿½do, Deploy Contï¿½nuo, CI/CD, Git, Documentaï¿½ï¿½o Tï¿½cnica, Automaï¿½ï¿½o, Python, Workflow Editorial, Observabilidade de Conteï¿½do, Cara Core Informática">
+	<meta name="author" content="Cara Core Informática">
 	<link rel="canonical" href="https://chmulato.github.io/caracore-articles/retro/articles/2025_08_18_article_42.html">
 	<!-- Open Graph / Facebook -->
-	<meta property="og:title" content="Estrat�gias de Versionamento e Deploy Cont�nuo para Conte�do T�cnico � Cara Core Inform�tica">
-	<meta property="og:description" content="Como estruturar um pipeline confi�vel de versionamento e deploy cont�nuo para conte�do t�cnico usando Git, automa��o e padr�es profissionais.">
+	<meta property="og:title" content="Estratï¿½gias de Versionamento e Deploy Contï¿½nuo para Conteï¿½do Tï¿½cnico — Cara Core Informática">
+	<meta property="og:description" content="Como estruturar um pipeline confiï¿½vel de versionamento e deploy contï¿½nuo para conteï¿½do tï¿½cnico usando Git, automação e padrï¿½es profissionais.">
 	<meta property="og:type" content="article">
 	<meta property="og:url" content="https://chmulato.github.io/caracore-articles/retro/articles/2025_08_18_article_42.html">
 	<meta property="og:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_42_01.png">
 	<!-- Twitter Card -->
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Estrat�gias de Versionamento e Deploy Cont�nuo para Conte�do T�cnico � Cara Core Inform�tica">
-	<meta name="twitter:description" content="Como estruturar um pipeline confi�vel de versionamento e deploy cont�nuo para conte�do t�cnico usando Git, automa��o e padr�es profissionais.">
+	<meta name="twitter:title" content="Estratï¿½gias de Versionamento e Deploy Contï¿½nuo para Conteï¿½do Tï¿½cnico — Cara Core Informática">
+	<meta name="twitter:description" content="Como estruturar um pipeline confiï¿½vel de versionamento e deploy contï¿½nuo para conteï¿½do tï¿½cnico usando Git, automação e padrï¿½es profissionais.">
 	<meta name="twitter:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_42_01.png">
 	<link rel="stylesheet" href="assets/css/articles.css">
 </head>
 <body>
 	<div class="container">
-		<a href="../articles.html" class="back-link">&larr; Voltar para publica��es</a>
-		<img src="assets/img/article_42_01.png" alt="Versionamento e Deploy Cont�nuo de Conte�do T�cnico" style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-		<h1>Estrat�gias de Versionamento e Deploy Cont�nuo para Conte�do T�cnico</h1>
+		<a href="../articles.html" class="back-link">&larr; Voltar para publicaï¿½ï¿½es</a>
+		<img src="assets/img/article_42_01.png" alt="Versionamento e Deploy Contï¿½nuo de Conteï¿½do Tï¿½cnico" style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+		<h1>Estratï¿½gias de Versionamento e Deploy Contï¿½nuo para Conteï¿½do Tï¿½cnico</h1>
 		<div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
 			<img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
-			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Inform�tica</a>
+			<a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
 			<span style="margin-left: 1.5rem;">82 seguidores<br>18 de agosto de 2025</span>
 		</div>
 
 		<p>
-			Publicar conte�do t�cnico em escala com qualidade consistente exige tratar <strong>artigos como software</strong>: versionar, revisar, testar, auditar, implantar e reverter com seguran�a. Se o seu fluxo ainda envolve pastas soltas, datas duplicadas ou �subir direto no servidor�, este guia foi escrito para voc�.
+			Publicar conteï¿½do tï¿½cnico em escala com qualidade consistente exige tratar <strong>artigos como software</strong>: versionar, revisar, testar, auditar, implantar e reverter com seguranï¿½a. Se o seu fluxo ainda envolve pastas soltas, datas duplicadas ou ï¿½subir direto no servidorï¿½, este guia foi escrito para vocï¿½.
 		</p>
 
-		<!-- Pequena hist�ria introdut�ria (enxuta) -->
+		<!-- Pequena histï¿½ria introdutï¿½ria (enxuta) -->
 		<p style="background:#f8f9fa; padding:1rem 1.25rem; border-left:4px solid #0EA5E9; border-radius:6px;">
-			<strong>Hist�ria r�pida:</strong> tr�s vers�es diferentes de um mesmo guia foram publicadas sem querer. Um cliente citou instru��es que j� tinham sido removidas, links quebraram e a equipe gastou a manh� ca�ando qual arquivo era o �certo�. A solu��o n�o foi criar mais camadas manuais de revis�o, e sim tratar conte�do como software: Git, branches de rascunho e revis�o, valida��es autom�ticas e rollback instant�neo.
+			<strong>Histï¿½ria rï¿½pida:</strong> trï¿½s versï¿½es diferentes de um mesmo guia foram publicadas sem querer. Um cliente citou instruï¿½ï¿½es que jï¿½ tinham sido removidas, links quebraram e a equipe gastou a manhï¿½ caï¿½ando qual arquivo era o ï¿½certoï¿½. A soluï¿½ï¿½o nï¿½o foi criar mais camadas manuais de revisï¿½o, e sim tratar conteï¿½do como software: Git, branches de rascunho e revisï¿½o, validaï¿½ï¿½es automï¿½ticas e rollback instantï¿½neo.
 		</p>
 		<p>
-			Esse mini-incidente ilustra o ponto central: sem versionamento disciplinado e pipeline de deploy cont�nuo, conte�do t�cnico acumula d�vida operacional invis�vel. A seguir, estrat�gias pr�ticas para implementar um fluxo profissional e escal�vel.
+			Esse mini-incidente ilustra o ponto central: sem versionamento disciplinado e pipeline de deploy contï¿½nuo, conteï¿½do tï¿½cnico acumula dï¿½vida operacional invisï¿½vel. A seguir, estratï¿½gias prï¿½ticas para implementar um fluxo profissional e escalï¿½vel.
 		</p>
 
 		<!-- Resumo simples para iniciantes -->
 		<div style="background:#fff8e1; border:1px solid #f6e3a3; padding:1rem 1.25rem; border-radius:8px; margin:1.5rem 0;">
-			<strong>Resumo em linguagem simples:</strong> imagine que seus artigos s�o receitas. Se cada pessoa altera a receita em sil�ncio, logo ningu�m sabe qual � a vers�o certa. <em>Versionar</em> � guardar cada mudan�a com data e autor. <em>Deploy cont�nuo</em> � publicar automaticamente assim que as checagens mostram que est� tudo ok. Resultado: menos confus�o, corre��es r�pidas e confian�a para atualizar.
+			<strong>Resumo em linguagem simples:</strong> imagine que seus artigos sï¿½o receitas. Se cada pessoa altera a receita em silï¿½ncio, logo ninguï¿½m sabe qual — a versï¿½o certa. <em>Versionar</em> — guardar cada mudanï¿½a com data e autor. <em>Deploy contï¿½nuo</em> — publicar automaticamente assim que as checagens mostram que estï¿½ tudo ok. Resultado: menos confusï¿½o, correï¿½ï¿½es rï¿½pidas e confianï¿½a para atualizar.
 		</div>
 
-		<h2>Por que versionar conte�do t�cnico? (explica��o f�cil)</h2>
+		<h2>Por que versionar conteï¿½do tï¿½cnico? (explicaï¿½ï¿½o fï¿½cil)</h2>
 		<ul>
-			<li><strong>Saber o hist�rico</strong> (rastreabilidade): quem alterou e por qu�.</li>
-			<li><strong>Corrigir r�pido</strong>: se algo saiu errado, voltar � vers�o anterior (rollback) em 1 clique.</li>
-			<li><strong>Padronizar nomes</strong>: evitar arquivo �final2_AGORA_CORRIGIDO.html�.</li>
+			<li><strong>Saber o histï¿½rico</strong> (rastreabilidade): quem alterou e por quï¿½.</li>
+			<li><strong>Corrigir rï¿½pido</strong>: se algo saiu errado, voltar — versï¿½o anterior (rollback) em 1 clique.</li>
+			<li><strong>Padronizar nomes</strong>: evitar arquivo ï¿½final2_AGORA_CORRIGIDO.htmlï¿½.</li>
 			<li><strong>Publicar sem medo</strong>: o sistema checa antes de ir ao ar.</li>
-			<li><strong>Medir impacto</strong>: comparar vers�o antiga vs. nova (visualiza��es / engajamento).</li>
+			<li><strong>Medir impacto</strong>: comparar versï¿½o antiga vs. nova (visualizaï¿½ï¿½es / engajamento).</li>
 		</ul>
 
-		<h2>Diferen�a: versionar c�digo vs. conte�do (rapidinho)</h2>
+		<h2>Diferenï¿½a: versionar cï¿½digo vs. conteï¿½do (rapidinho)</h2>
 		<p>
-			No software a mudan�a pode �quebrar� o sistema. No conte�do, a maior dor � <strong>informa��o errada ou desatualizada</strong>. Ainda assim isso afeta confian�a e decis�es. Usar h�bitos de engenharia no texto reduz atrito e evita retrabalho.
+			No software a mudanï¿½a pode ï¿½quebrarï¿½ o sistema. No conteï¿½do, a maior dor — <strong>informaï¿½ï¿½o errada ou desatualizada</strong>. Ainda assim isso afeta confianï¿½a e decisï¿½es. Usar hï¿½bitos de engenharia no texto reduz atrito e evita retrabalho.
 		</p>
 
-		<h2>Modelos de versionamento aplic�veis (formas de identificar vers�es)</h2>
+		<h2>Modelos de versionamento aplicï¿½veis (formas de identificar versï¿½es)</h2>
 		<ul>
-			<li><strong>Data no slug</strong> (ex.: <code>2025_08_18_article_42.html</code>): garante ordena��o temporal.</li>
-			<li><strong>ID incremental</strong> (article_042): �til para index r�pido.</li>
-			<li><strong>Vers�o sem�ntica simples</strong> (1.0.0 ? grande mudan�a; 1.1.0 ? adicionou algo; 1.1.1 ? ajuste pequeno).</li>
+			<li><strong>Data no slug</strong> (ex.: <code>2025_08_18_article_42.html</code>): garante ordenaï¿½ï¿½o temporal.</li>
+			<li><strong>ID incremental</strong> (article_042): ï¿½til para index rï¿½pido.</li>
+			<li><strong>Versï¿½o semï¿½ntica simples</strong> (1.0.0 ? grande mudanï¿½a; 1.1.0 ? adicionou algo; 1.1.1 ? ajuste pequeno).</li>
 			<li><strong>Tag Git por marco editorial</strong> (ex.: <code>content-drop-2025-08</code>).</li>
 			<li><strong>Branch por campanha</strong> (ex.: <code>serie-observabilidade</code>).</li>
 		</ul>
 
 		<h2>Branching sugerido (organizando fases)</h2>
 		<ul>
-			<li><strong>main</strong>: a �estante oficial�.</li>
+			<li><strong>main</strong>: a ï¿½estante oficialï¿½.</li>
 			<li><strong>content/draft/&lt;slug&gt;</strong>: rascunho em andamento.</li>
-			<li><strong>content/review/&lt;slug&gt;</strong>: revis�o antes de publicar.</li>
-			<li><strong>hotfix/&lt;slug&gt;</strong>: corre��o urgente publicada r�pido.</li>
-			<li><strong>archive/&lt;ano&gt;</strong>: guardado s� para refer�ncia.</li>
+			<li><strong>content/review/&lt;slug&gt;</strong>: revisï¿½o antes de publicar.</li>
+			<li><strong>hotfix/&lt;slug&gt;</strong>: correï¿½ï¿½o urgente publicada rï¿½pido.</li>
+			<li><strong>archive/&lt;ano&gt;</strong>: guardado sï¿½ para referï¿½ncia.</li>
 		</ul>
 
-		<h2>Estrutura de reposit�rio (onde cada coisa fica)</h2>
+		<h2>Estrutura de repositï¿½rio (onde cada coisa fica)</h2>
 		<pre><code class="language-text">content/
   articles/
 	2025/
@@ -101,28 +101,28 @@ site/
   (HTML gerado)
 </code></pre>
 
-		<h2>Metadata (front matter) recomendada (cabecalho de informa��es)</h2>
+		<h2>Metadata (front matter) recomendada (cabecalho de informaï¿½ï¿½es)</h2>
 		<pre><code class="language-yaml">---
 slug: estrategias-versionamento-deploy-conteudo
 id: 42
 version: 1.0.0
-author: Cara Core Inform�tica
+author: Cara Core Informática
 created_at: 2025-08-18
 updated_at: 2025-08-18
 status: published
-keywords: [versionamento, deploy cont�nuo, conte�do t�cnico, ci/cd]
-summary: Guia de estrat�gias para versionar e automatizar deploy de conte�do t�cnico.
+keywords: [versionamento, deploy contï¿½nuo, conteï¿½do tï¿½cnico, ci/cd]
+summary: Guia de estratï¿½gias para versionar e automatizar deploy de conteï¿½do tï¿½cnico.
 ---
 </code></pre>
 
-		<h2>Pipeline (linha de montagem) � passos autom�ticos</h2>
+		<h2>Pipeline (linha de montagem) — passos automï¿½ticos</h2>
 		<ol>
-			<li><strong>Checar formato</strong>: cabe�alho existe e nome n�o repete.</li>
+			<li><strong>Checar formato</strong>: cabeï¿½alho existe e nome nï¿½o repete.</li>
 			<li><strong>Ver links</strong>: internos/externos funcionando.</li>
 			<li><strong>Transformar</strong>: Markdown vira HTML pronto.</li>
-			<li><strong>Atualizar listas</strong>: p�gina de artigos, sitemap, feed.</li>
-			<li><strong>Testar r�pido</strong>: HTML v�lido e nada indevido.</li>
-			<li><strong>Empacotar</strong>: gerar pacote est�tico final.</li>
+			<li><strong>Atualizar listas</strong>: pï¿½gina de artigos, sitemap, feed.</li>
+			<li><strong>Testar rï¿½pido</strong>: HTML vï¿½lido e nada indevido.</li>
+			<li><strong>Empacotar</strong>: gerar pacote estï¿½tico final.</li>
 			<li><strong>Publicar</strong>: enviar ao local do site (servidor/CDN).</li>
 			<li><strong>Limpar cache</strong>: se usa CDN, limpar o velho.</li>
 			<li><strong>Avisar</strong>: mandar alerta de sucesso ou erro.</li>
@@ -154,7 +154,7 @@ jobs:
 		uses: actions/deploy-pages@v4
 </code></pre>
 
-		<h3>Script Python (exemplo opcional para subir vers�o)</h3>
+		<h3>Script Python (exemplo opcional para subir versï¿½o)</h3>
 		<pre><code class="language-python">import re, sys, pathlib
 
 LEVEL = sys.argv[1] if len(sys.argv) > 1 else 'patch'
@@ -180,111 +180,111 @@ print('Updated to', new_version)
 		<ul>
 			<li>[ ] Front matter completo.</li>
 			<li>[ ] Links internos resolvidos.</li>
-			<li>[ ] Sem conte�do duplicado.</li>
+			<li>[ ] Sem conteï¿½do duplicado.</li>
 			<li>[ ] Imagens otimizadas (peso &lt; 250KB).</li>
 			<li>[ ] SEO: title, description, canonical, og:image.</li>
-			<li>[ ] Vers�o incrementada se altera��o relevante.</li>
-			<li>[ ] Aprovado por revis�o t�cnica + editorial.</li>
+			<li>[ ] Versï¿½o incrementada se alteraï¿½ï¿½o relevante.</li>
+			<li>[ ] Aprovado por revisï¿½o tï¿½cnica + editorial.</li>
 		</ul>
 
 		<h2>Fluxo editorial sugerido (passo a passo humano)</h2>
 		<ol>
-			<li><strong>Rascunho</strong>: criar conte�do inicial.</li>
-			<li><strong>Revis�o t�cnica autom�tica</strong>: ferramentas checam formato.</li>
-			<li><strong>Revis�o humana</strong>: clareza e tom.</li>
-			<li><strong>Publica��o</strong>: entra no site via pipeline.</li>
+			<li><strong>Rascunho</strong>: criar conteï¿½do inicial.</li>
+			<li><strong>Revisï¿½o tï¿½cnica automï¿½tica</strong>: ferramentas checam formato.</li>
+			<li><strong>Revisï¿½o humana</strong>: clareza e tom.</li>
+			<li><strong>Publicaï¿½ï¿½o</strong>: entra no site via pipeline.</li>
 			<li><strong>Acompanhar</strong>: ver acessos, ajustar se preciso.</li>
 		</ol>
 
-		<h2>M�tricas para acompanhar (o que vale medir)</h2>
+		<h2>Mï¿½tricas para acompanhar (o que vale medir)</h2>
 		<ul>
-			<li><strong>Lead time de publica��o</strong>: cria��o ? produ��o.</li>
-			<li><strong>Taxa de rollback</strong>: quantas publica��es precisam de corre��o r�pida.</li>
-			<li><strong>Tempo m�dio de atualiza��o</strong> (MTTU) p�s mudan�a de tecnologia referenciada.</li>
-			<li><strong>Erros de valida��o por PR</strong>: tend�ncia de qualidade.</li>
-			<li><strong>Engajamento por vers�o</strong>: views antes/depois de atualiza��o.</li>
+			<li><strong>Lead time de publicaï¿½ï¿½o</strong>: criaï¿½ï¿½o ? produï¿½ï¿½o.</li>
+			<li><strong>Taxa de rollback</strong>: quantas publicaï¿½ï¿½es precisam de correï¿½ï¿½o rï¿½pida.</li>
+			<li><strong>Tempo mï¿½dio de atualizaï¿½ï¿½o</strong> (MTTU) pï¿½s mudanï¿½a de tecnologia referenciada.</li>
+			<li><strong>Erros de validaï¿½ï¿½o por PR</strong>: tendï¿½ncia de qualidade.</li>
+			<li><strong>Engajamento por versï¿½o</strong>: views antes/depois de atualizaï¿½ï¿½o.</li>
 		</ul>
 
-		<h2>Rollback e hist�rico (voltar atr�s sem drama)</h2>
+		<h2>Rollback e histï¿½rico (voltar atrï¿½s sem drama)</h2>
 		<p>
-			Rollback ideal: <strong>git revert</strong> do commit problem�tico + regenera��o autom�tica. Para corre��es r�pidas, usar <code>hotfix/&lt;slug&gt;</code>. Evite editar direto em produ��o � perde rastreabilidade e invalida m�tricas.
+			Rollback ideal: <strong>git revert</strong> do commit problemï¿½tico + regeneraï¿½ï¿½o automï¿½tica. Para correï¿½ï¿½es rï¿½pidas, usar <code>hotfix/&lt;slug&gt;</code>. Evite editar direto em produï¿½ï¿½o — perde rastreabilidade e invalida mï¿½tricas.
 		</p>
 
 		<h2>Riscos comuns e como evitar</h2>
 		<ul>
 			<li><strong>Slug duplicado</strong>: validador de unicidade no CI.</li>
 			<li><strong>Links quebrados</strong>: crawler interno (ex.: <code>scripts/link_check.py</code>).</li>
-			<li><strong>Imagens pesadas</strong>: pipeline de compress�o.</li>
+			<li><strong>Imagens pesadas</strong>: pipeline de compressï¿½o.</li>
 			<li><strong>Metadados inconsistentes</strong>: schema JSON para front matter.</li>
-			<li><strong>Deploy parcial</strong>: publicar sempre o build completo imut�vel.</li>
+			<li><strong>Deploy parcial</strong>: publicar sempre o build completo imutï¿½vel.</li>
 		</ul>
 
-		<h2>Boas pr�ticas adicionais (extras que ajudam)</h2>
+		<h2>Boas prï¿½ticas adicionais (extras que ajudam)</h2>
 		<ul>
-			<li>Separar conte�do fonte de HTML gerado.</li>
-			<li>Usar hash de build ou data no diret�rio de sa�da para cache busting.</li>
+			<li>Separar conteï¿½do fonte de HTML gerado.</li>
+			<li>Usar hash de build ou data no diretï¿½rio de saï¿½da para cache busting.</li>
 			<li>Gerar <code>sitemap.xml</code> e feed (RSS/Atom) no pipeline.</li>
 			<li>Inserir <strong>dados estruturados</strong> (Schema.org Article).</li>
-			<li>Automatizar verifica��o de termos proibidos (ex.: linguagem insegura, claims sem fonte).</li>
+			<li>Automatizar verificaï¿½ï¿½o de termos proibidos (ex.: linguagem insegura, claims sem fonte).</li>
 		</ul>
 
-		<h2>FAQ r�pido</h2>
+		<h2>FAQ rï¿½pido</h2>
 		<details>
 			<summary>Preciso de semantic version para todo artigo?</summary>
-			<p>N�o obrigat�rio. �til quando h� refer�ncia externa ou integra��o que depende de estado est�vel (ex.: documenta��o de API).</p>
+			<p>Nï¿½o obrigatï¿½rio. ï¿½til quando hï¿½ referï¿½ncia externa ou integraï¿½ï¿½o que depende de estado estï¿½vel (ex.: documentaï¿½ï¿½o de API).</p>
 		</details>
 		<details>
-			<summary>Como lidar com conte�do obsoleto?</summary>
-			<p>Marcar status = deprecated, adicionar aviso no topo e link para vers�o nova.</p>
+			<summary>Como lidar com conteï¿½do obsoleto?</summary>
+			<p>Marcar status = deprecated, adicionar aviso no topo e link para versï¿½o nova.</p>
 		</details>
 		<details>
-			<summary>E se eu s� corrigir um typo?</summary>
+			<summary>E se eu sï¿½ corrigir um typo?</summary>
 			<p>Atualize <code>updated_at</code> e, se usar semantic content version, incremente o patch.</p>
 		</details>
 
-		<h2>Se��o colaborativa</h2>
+		<h2>Seï¿½ï¿½o colaborativa</h2>
 		<p>
-			Este artigo � <strong>colaborativo</strong>. Sugest�es bem-vindas:
+			Este artigo — <strong>colaborativo</strong>. Sugestï¿½es bem-vindas:
 		</p>
 		<ul>
 			<li>Workflows de CI reais (GitLab, Jenkins, Azure).</li>
-			<li>Pol�ticas de revis�o/reda��o de times.</li>
-			<li>M�tricas adicionais de governan�a.</li>
-			<li>Scripts de valida��o ou gera��o incremental.</li>
+			<li>Polï¿½ticas de revisï¿½o/redaï¿½ï¿½o de times.</li>
+			<li>Mï¿½tricas adicionais de governanï¿½a.</li>
+			<li>Scripts de validaï¿½ï¿½o ou geraï¿½ï¿½o incremental.</li>
 		</ul>
-		<p>Envie exemplos por e-mail ou LinkedIn para poss�vel inclus�o.</p>
+		<p>Envie exemplos por e-mail ou LinkedIn para possï¿½vel inclusï¿½o.</p>
 
-		<h2>Pr�ximos passos recomendados</h2>
+		<h2>Prï¿½ximos passos recomendados</h2>
 		<ol>
-			<li>Inventariar conte�do atual e normalizar nomes.</li>
-			<li>Adicionar front matter m�nimo em todos os arquivos.</li>
-			<li>Criar script de build/valida��o.</li>
+			<li>Inventariar conteï¿½do atual e normalizar nomes.</li>
+			<li>Adicionar front matter mï¿½nimo em todos os arquivos.</li>
+			<li>Criar script de build/validaï¿½ï¿½o.</li>
 			<li>Configurar pipeline CI.</li>
-			<li>Definir pol�tica de branching e revis�o.</li>
+			<li>Definir polï¿½tica de branching e revisï¿½o.</li>
 			<li>Documentar playbook de rollback.</li>
 		</ol>
 
 		<hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
 
-		<h2>Gloss�rio r�pido</h2>
+		<h2>Glossï¿½rio rï¿½pido</h2>
 		<ul>
-			<li><strong>Versionar</strong>: guardar cada mudan�a com hist�rico.</li>
+			<li><strong>Versionar</strong>: guardar cada mudanï¿½a com histï¿½rico.</li>
 			<li><strong>Slug</strong>: nome limpo usado no link do artigo.</li>
 			<li><strong>Front matter</strong>: bloco inicial de dados (autor, data, etc.).</li>
 			<li><strong>Branch</strong>: linha de trabalho paralela para editar sem afetar o principal.</li>
 			<li><strong>Deploy</strong>: ato de publicar/atualizar no site.</li>
-			<li><strong>Rollback</strong>: voltar para uma vers�o anterior.</li>
-			<li><strong>Pipeline</strong>: sequ�ncia autom�tica de passos.</li>
-			<li><strong>CI/CD</strong>: automa��o para testar (CI) e publicar (CD).</li>
-			<li><strong>CDN</strong>: rede que entrega o site mais r�pido em v�rios lugares.</li>
-			<li><strong>M�trica</strong>: n�mero usado para acompanhar evolu��o.</li>
+			<li><strong>Rollback</strong>: voltar para uma versï¿½o anterior.</li>
+			<li><strong>Pipeline</strong>: sequï¿½ncia automï¿½tica de passos.</li>
+			<li><strong>CI/CD</strong>: automação para testar (CI) e publicar (CD).</li>
+			<li><strong>CDN</strong>: rede que entrega o site mais rï¿½pido em vï¿½rios lugares.</li>
+			<li><strong>Mï¿½trica</strong>: nï¿½mero usado para acompanhar evoluï¿½ï¿½o.</li>
 		</ul>
 
 		<h3>Contato</h3>
 		<ul>
 			<li><strong>E-mail:</strong> suporte@caracore.com.br</li>
 			<li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Inform�tica</a></li>
+			<li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
 		</ul>
 	</div>
 </body>

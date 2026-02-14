@@ -3,74 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados � Cara Core Inform�tica</title>
-    <meta name="description" content="Guia colaborativo sobre monitoramento proativo em Python: logs estruturados, correla��o, detec��o de anomalias e alertas automatizados com exemplos pr�ticos e prontos para produ��o.">
-    <meta name="keywords" content="Python, Monitoramento, Observabilidade, Logs, Alertas, DevOps, SRE, JSON, Slack, E-mail, Cara Core Inform�tica">
-    <meta name="author" content="Cara Core Inform�tica">
+    <title>Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados — Cara Core Informática</title>
+    <meta name="description" content="Guia colaborativo sobre monitoramento proativo em Python: logs estruturados, correlaï¿½ï¿½o, detecï¿½ï¿½o de anomalias e alertas automatizados com exemplos práticos e prontos para produï¿½ï¿½o.">
+    <meta name="keywords" content="Python, Monitoramento, Observabilidade, Logs, Alertas, DevOps, SRE, JSON, Slack, E-mail, Cara Core Informática">
+    <meta name="author" content="Cara Core Informática">
     <link rel="canonical" href="https://chmulato.github.io/caracore-articles/retro/articles/2025_08_10_article_41.html">
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados � Cara Core Inform�tica">
-    <meta property="og:description" content="Logs estruturados em JSON, enriquecimento de contexto, thresholds e alertas autom�ticos. Refer�ncia pr�tica e colaborativa para times t�cnicos.">
+    <meta property="og:title" content="Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados — Cara Core Informática">
+    <meta property="og:description" content="Logs estruturados em JSON, enriquecimento de contexto, thresholds e alertas automï¿½ticos. Referï¿½ncia prï¿½tica e colaborativa para times tï¿½cnicos.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://chmulato.github.io/caracore-articles/retro/articles/2025_08_10_article_41.html">
     <meta property="og:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_41_01.png">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados � Cara Core Inform�tica">
-    <meta name="twitter:description" content="Logs estruturados em JSON, enriquecimento de contexto, thresholds e alertas autom�ticos. Refer�ncia pr�tica e colaborativa para times t�cnicos.">
+    <meta name="twitter:title" content="Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados — Cara Core Informática">
+    <meta name="twitter:description" content="Logs estruturados em JSON, enriquecimento de contexto, thresholds e alertas automï¿½ticos. Referï¿½ncia prï¿½tica e colaborativa para times tï¿½cnicos.">
     <meta name="twitter:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_41_01.png">
     <link rel="stylesheet" href="assets/css/articles.css">
 </head>
 <body>
     <div class="container">
-        <a href="../articles.html" class="back-link">&larr; Voltar para publica��es</a>
-        <img src="assets/img/article_41_01.png" alt="Monitoramento Proativo com Python: painel com gr�ficos, logs e alertas"  style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <a href="../articles.html" class="back-link">&larr; Voltar para publicaï¿½ï¿½es</a>
+        <img src="assets/img/article_41_01.png" alt="Monitoramento Proativo com Python: painel com grï¿½ficos, logs e alertas"  style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
         <h1>Monitoramento Proativo com Python: Logs Inteligentes e Alertas Automatizados</h1>
         <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
             <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
             <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">
-                Cara Core Inform�tica
+                Cara Core Informática
             </a>
             <span style="margin-left: 1.5rem;">81 seguidores<br>11 de agosto de 2025</span>
         </div>
 
         <p>
-            Voc� j� esbarrou na sigla <strong>MTTR</strong>? Se ainda n�o, vale 2 minutos para entender por que ela virou o indicador n� 1 em times de opera��o e produto. No fim deste artigo deixei um
-            <a href="#mttr-adendo">adendo simples sobre MTTR</a> � pode conferir depois ou pular direto agora.
+            Vocï¿½ jï¿½ esbarrou na sigla <strong>MTTR</strong>? Se ainda nï¿½o, vale 2 minutos para entender por que ela virou o indicador nï¿½ 1 em times de operaï¿½ï¿½o e produto. No fim deste artigo deixei um
+            <a href="#mttr-adendo">adendo simples sobre MTTR</a> — pode conferir depois ou pular direto agora.
         </p>
         <p>
-            O ponto crucial �: <strong>reduzir o MTTR</strong> exige n�o esperar o usu�rio reclamar. � aqui que entra o
-            <strong>monitoramento proativo</strong>: <strong>logs inteligentes</strong> que d�o contexto e <strong>alertas automatizados</strong> que acionam a equipe na hora certa.
+            O ponto crucial ï¿½: <strong>reduzir o MTTR</strong> exige nï¿½o esperar o usuï¿½rio reclamar. — aqui que entra o
+            <strong>monitoramento proativo</strong>: <strong>logs inteligentes</strong> que dï¿½o contexto e <strong>alertas automatizados</strong> que acionam a equipe na hora certa.
         </p>
         <p>
-            Neste guia <strong>colaborativo</strong>, mostramos como implementar isso em <strong>Python</strong> com padr�es prontos para produ��o: logs JSON estruturados, enriquecimento de contexto,
-            rota��o/reten��o e um monitor simples com alerta via Slack.
+            Neste guia <strong>colaborativo</strong>, mostramos como implementar isso em <strong>Python</strong> com padrï¿½es prontos para produï¿½ï¿½o: logs JSON estruturados, enriquecimento de contexto,
+            rotaï¿½ï¿½o/retenï¿½ï¿½o e um monitor simples com alerta via Slack.
         </p>
 
         <h2>Por que proativo?</h2>
         <ul>
-            <li><strong>Detec��o precoce</strong> de anomalias evita efeito cascata.</li>
-            <li><strong>Visibilidade</strong> sobre causa raiz com correla��o de eventos.</li>
-            <li><strong>Tempo de resposta</strong> menor (MTTR mais baixo) gra�as a alertas contextuais e acion�veis.</li>
+            <li><strong>Detecï¿½ï¿½o precoce</strong> de anomalias evita efeito cascata.</li>
+            <li><strong>Visibilidade</strong> sobre causa raiz com correlaï¿½ï¿½o de eventos.</li>
+            <li><strong>Tempo de resposta</strong> menor (MTTR mais baixo) graï¿½as a alertas contextuais e acionï¿½veis.</li>
         </ul>
 
         <h2>Pilares e escopo</h2>
         <p>
-            Observabilidade combina <strong>logs</strong>, <strong>m�tricas</strong> e <strong>traces</strong>. Aqui focamos em <strong>logs</strong> como base para alertas eficazes, sem lock-in de ferramenta.
+            Observabilidade combina <strong>logs</strong>, <strong>mï¿½tricas</strong> e <strong>traces</strong>. Aqui focamos em <strong>logs</strong> como base para alertas eficazes, sem lock-in de ferramenta.
         </p>
 
         <h2>Logs Inteligentes (JSON + contexto)</h2>
         <p>
-            Padr�es recomendados:
+            Padrï¿½es recomendados:
         </p>
         <ul>
             <li><strong>JSON estruturado</strong> para parse/consulta.</li>
-            <li><strong>Chaves padr�o</strong>: timestamp, level, message, service, env, trace_id, user_id.</li>
-            <li><strong>Sem PII</strong>: evite dados sens�veis; use hash/masking.</li>
-            <li><strong>Rota��o</strong> para evitar disco cheio.</li>
+            <li><strong>Chaves padrï¿½o</strong>: timestamp, level, message, service, env, trace_id, user_id.</li>
+            <li><strong>Sem PII</strong>: evite dados sensï¿½veis; use hash/masking.</li>
+            <li><strong>Rotaï¿½ï¿½o</strong> para evitar disco cheio.</li>
         </ul>
 
-        <h3>Setup r�pido (logging JSON + rota��o)</h3>
+        <h3>Setup rï¿½pido (logging JSON + rotaï¿½ï¿½o)</h3>
         <pre><code class="language-python">import json, logging, sys
 from logging.handlers import RotatingFileHandler
 
@@ -127,14 +127,14 @@ logger = get_logger("payments")
 logger.addFilter(ContextFilter(service="payments", env="prod"))
 logger.info("payment_approved", extra={"trace_id": "t-991", "user_id": "u-42", "amount": 129.90})</code></pre>
 
-        <h2>Alertas Automatizados (pr�ticos e acion�veis)</h2>
+        <h2>Alertas Automatizados (práticos e acionï¿½veis)</h2>
         <p>
-            Boas pr�ticas:
+            Boas prï¿½ticas:
         </p>
         <ul>
             <li><strong>Thresholds</strong> e <strong>janelas de tempo</strong> (ex.: 5 erros 500 em 1 min).</li>
             <li><strong>Debounce</strong> e <strong>agrupamento</strong> para evitar tempestade de alertas.</li>
-            <li><strong>Contexto</strong> no alerta (servi�o, amostras de eventos, links �teis).</li>
+            <li><strong>Contexto</strong> no alerta (serviï¿½o, amostras de eventos, links ï¿½teis).</li>
             <li><strong>Canais</strong>: Slack/Teams, e-mail, webhook, PagerDuty.</li>
         </ul>
 
@@ -175,15 +175,15 @@ def monitor():
             window.popleft()
         if len(window) >= THRESHOLD:
             sample = evt.get("message")
-            send_slack(f"Alerta: {len(window)} erros em {WINDOW_SEC}s no servi�o {evt.get('service')}. Ex.: {sample}")
+            send_slack(f"Alerta: {len(window)} erros em {WINDOW_SEC}s no serviï¿½o {evt.get('service')}. Ex.: {sample}")
             window.clear()
 
 # monitor()</code></pre>
 
-        <h2>Checklists r�pidas</h2>
+        <h2>Checklists rï¿½pidas</h2>
         <ul>
-            <li>[ ] Log em JSON com chaves padr�o.</li>
-            <li>[ ] Rota��o e reten��o configuradas.</li>
+            <li>[ ] Log em JSON com chaves padrï¿½o.</li>
+            <li>[ ] Rotaï¿½ï¿½o e retenï¿½ï¿½o configuradas.</li>
             <li>[ ] Enriquecimento de contexto (service, env, trace_id).</li>
             <li>[ ] Regras de alerta com debounce e amostras.</li>
             <li>[ ] Playbooks de resposta anexados a cada alerta.</li>
@@ -191,36 +191,36 @@ def monitor():
 
         <h2>Privacidade e Compliance</h2>
         <ul>
-            <li>Evite PII: mascare e minimize dados sens�veis.</li>
-            <li>Defina reten��o por classe de dado e por ambiente.</li>
+            <li>Evite PII: mascare e minimize dados sensï¿½veis.</li>
+            <li>Defina retenï¿½ï¿½o por classe de dado e por ambiente.</li>
             <li>Audite acessos ao storage de logs.</li>
         </ul>
 
-        <h2>Integra��es comuns</h2>
+        <h2>Integraï¿½ï¿½es comuns</h2>
         <ul>
             <li>ELK/OpenSearch, Loki+Grafana, CloudWatch, Stackdriver.</li>
             <li>Slack, Microsoft Teams, e-mail, webhooks.</li>
         </ul>
 
-        <h2>Se��o Colaborativa</h2>
+        <h2>Seï¿½ï¿½o Colaborativa</h2>
         <p>
-            Este artigo � <strong>colaborativo</strong>. Envie melhorias, exemplos e playbooks reais que funcionaram para voc�. Podemos incluir:
+            Este artigo — <strong>colaborativo</strong>. Envie melhorias, exemplos e playbooks reais que funcionaram para vocï¿½. Podemos incluir:
         </p>
         <ul>
             <li>Parsers/normalizadores de logs por stack (Django, FastAPI, Celery, Flask).</li>
-            <li>Regras de alerta para casos espec�ficos (picos 500, lat�ncia, timeouts, fila presa).</li>
-            <li>Dashboards e pain�is (consultas, gr�ficos e thresholds).</li>
-            <li>Boas pr�ticas de privacidade em diferentes setores.</li>
+            <li>Regras de alerta para casos especï¿½ficos (picos 500, latï¿½ncia, timeouts, fila presa).</li>
+            <li>Dashboards e painï¿½is (consultas, grï¿½ficos e thresholds).</li>
+            <li>Boas prï¿½ticas de privacidade em diferentes setores.</li>
         </ul>
         <p>
-            Para contribuir: envie um e-mail, compartilhe via LinkedIn ou proponha um snippet pronto para inclus�o.
+            Para contribuir: envie um e-mail, compartilhe via LinkedIn ou proponha um snippet pronto para inclusï¿½o.
         </p>
 
-        <h2>ROI e pr�ximos passos</h2>
+        <h2>ROI e prï¿½ximos passos</h2>
         <ul>
-            <li>Redu��o de MTTR e incidentes em produ��o.</li>
-            <li>Menos interrup��es e maior confian�a de release.</li>
-            <li>Base s�lida para evoluir a observabilidade (m�tricas e traces).</li>
+            <li>Reduï¿½ï¿½o de MTTR e incidentes em produï¿½ï¿½o.</li>
+            <li>Menos interrupï¿½ï¿½es e maior confianï¿½a de release.</li>
+            <li>Base sï¿½lida para evoluir a observabilidade (mï¿½tricas e traces).</li>
         </ul>
 
         <hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
@@ -229,43 +229,43 @@ def monitor():
         <ul>
             <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
             <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Inform�tica</a></li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
         </ul>
 
         <hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
 
-    <h2 id="mttr-adendo">Adendo: o que � MTTR? (explica��o simples)</h2>
+    <h2 id="mttr-adendo">Adendo: o que — MTTR? (explicaï¿½ï¿½o simples)</h2>
         <p>
-            <strong>MTTR</strong> � a sigla para <em>Mean Time To Repair/Recover/Resolve</em> � em portugu�s, 
-            <strong>tempo m�dio para recuperar ou resolver</strong> um incidente. � uma m�trica que mostra
-            quanto tempo, em m�dia, um servi�o fica indispon�vel at� voltar ao normal ap�s um problema.
+            <strong>MTTR</strong> — a sigla para <em>Mean Time To Repair/Recover/Resolve</em> — em portuguï¿½s, 
+            <strong>tempo mï¿½dio para recuperar ou resolver</strong> um incidente. — uma mï¿½trica que mostra
+            quanto tempo, em mï¿½dia, um serviï¿½o fica indisponï¿½vel atï¿½ voltar ao normal apï¿½s um problema.
         </p>
         <p>
             Como calcular (bem simples):
         </p>
         <p style="background:#f8f9fa; padding:1rem; border-left:4px solid #007bff; border-radius:6px;">
-            <strong>MTTR = (tempo total de indisponibilidade no per�odo) � (n�mero de incidentes)</strong>
+            <strong>MTTR = (tempo total de indisponibilidade no perï¿½odo) — (nï¿½mero de incidentes)</strong>
         </p>
         <p>
             Por que importa:
         </p>
         <ul>
-            <li><strong>Experi�ncia do usu�rio</strong>: menos tempo fora do ar, mais confian�a.</li>
-            <li><strong>Opera��o</strong>: times mais r�pidos e coordenados para resolver falhas.</li>
-            <li><strong>Neg�cio</strong>: menos perdas e impacto na receita.</li>
+            <li><strong>Experiï¿½ncia do usuï¿½rio</strong>: menos tempo fora do ar, mais confianï¿½a.</li>
+            <li><strong>Operaï¿½ï¿½o</strong>: times mais rï¿½pidos e coordenados para resolver falhas.</li>
+            <li><strong>Negï¿½cio</strong>: menos perdas e impacto na receita.</li>
         </ul>
         <p>
-            Exemplo r�pido: se, em um m�s, seu sistema ficou 2 horas indispon�vel somando 4 incidentes,
-            o MTTR foi <strong>30 minutos</strong> por incidente (2h � 4 = 0,5h).
+            Exemplo rï¿½pido: se, em um mï¿½s, seu sistema ficou 2 horas indisponï¿½vel somando 4 incidentes,
+            o MTTR foi <strong>30 minutos</strong> por incidente (2h — 4 = 0,5h).
         </p>
         <p>
-            Como reduzir o MTTR na pr�tica:
+            Como reduzir o MTTR na prï¿½tica:
         </p>
         <ul>
             <li><strong>Detectar mais cedo</strong> (bons alertas e monitoramento proativo).</li>
             <li><strong>Padronizar respostas</strong> (playbooks e runbooks claros).</li>
-            <li><strong>Automatizar</strong> rollback, feature flags e verifica��es de sa�de.</li>
-            <li><strong>Contexto nos alertas</strong> para ir direto � causa prov�vel.</li>
+            <li><strong>Automatizar</strong> rollback, feature flags e verificaï¿½ï¿½es de saï¿½de.</li>
+            <li><strong>Contexto nos alertas</strong> para ir direto — causa provï¿½vel.</li>
         </ul>
     </div>
 </body>

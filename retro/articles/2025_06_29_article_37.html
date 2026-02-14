@@ -3,97 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automa��o de Auditoria Financeira com Python: Uma Experi�ncia Pr�tica � Cara Core Inform�tica</title>
-    <meta name="description" content="Veja como automatizar auditorias financeiras e valida��o de notas fiscais usando Python, pandas e Excel. Experi�ncia pr�tica, dicas e tecnologias para empresas.">
-    <meta name="keywords" content="Auditoria Financeira, Python, Automa��o, pandas, Excel, Notas Fiscais, ERP, Valida��o, Relat�rios, Empresas, Cara Core Inform�tica">
-    <meta name="author" content="Cara Core Inform�tica">
+    <title>Automaï¿½ï¿½o de Auditoria Financeira com Python: Uma Experiï¿½ncia Prï¿½tica — Cara Core Informática</title>
+    <meta name="description" content="Veja como automatizar auditorias financeiras e validaï¿½ï¿½o de notas fiscais usando Python, pandas e Excel. Experiï¿½ncia prï¿½tica, dicas e tecnologias para empresas.">
+    <meta name="keywords" content="Auditoria Financeira, Python, Automaï¿½ï¿½o, pandas, Excel, Notas Fiscais, ERP, Validaï¿½ï¿½o, Relatï¿½rios, Empresas, Cara Core Informática">
+    <meta name="author" content="Cara Core Informática">
     <link rel="canonical" href="https://chmulato.github.io/caracore-articles/retro/articles/2025_06_29_article_37.html">
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Automa��o de Auditoria Financeira com Python: Uma Experi�ncia Pr�tica � Cara Core Inform�tica">
-    <meta property="og:description" content="Veja como automatizar auditorias financeiras e valida��o de notas fiscais usando Python, pandas e Excel. Experi�ncia pr�tica, dicas e tecnologias para empresas.">
+    <meta property="og:title" content="Automaï¿½ï¿½o de Auditoria Financeira com Python: Uma Experiï¿½ncia Prï¿½tica — Cara Core Informática">
+    <meta property="og:description" content="Veja como automatizar auditorias financeiras e validaï¿½ï¿½o de notas fiscais usando Python, pandas e Excel. Experiï¿½ncia prï¿½tica, dicas e tecnologias para empresas.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://chmulato.github.io/caracore-articles/retro/articles/2025_06_29_article_37.html">
     <meta property="og:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_37_01.png">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Automa��o de Auditoria Financeira com Python: Uma Experi�ncia Pr�tica � Cara Core Inform�tica">
-    <meta name="twitter:description" content="Veja como automatizar auditorias financeiras e valida��o de notas fiscais usando Python, pandas e Excel. Experi�ncia pr�tica, dicas e tecnologias para empresas.">
+    <meta name="twitter:title" content="Automaï¿½ï¿½o de Auditoria Financeira com Python: Uma Experiï¿½ncia Prï¿½tica — Cara Core Informática">
+    <meta name="twitter:description" content="Veja como automatizar auditorias financeiras e validaï¿½ï¿½o de notas fiscais usando Python, pandas e Excel. Experiï¿½ncia prï¿½tica, dicas e tecnologias para empresas.">
     <meta name="twitter:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_37_01.png">
     <link rel="stylesheet" href="assets/css/articles.css">
 </head>
 <body>
     <div class="container">
-        <a href="../articles.html" class="back-link">&larr; Voltar para publica��es</a>
-        <img src="assets/img/article_37_01.png" alt="Automa��o Python"  style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
-        <h1>Automa��o de Auditoria Financeira com Python: Uma Experi�ncia Pr�tica</h1>
+        <a href="../articles.html" class="back-link">&larr; Voltar para publicaï¿½ï¿½es</a>
+        <img src="assets/img/article_37_01.png" alt="Automaï¿½ï¿½o Python"  style="max-width:320px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);">
+        <h1>Automaï¿½ï¿½o de Auditoria Financeira com Python: Uma Experiï¿½ncia Prï¿½tica</h1>
         <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
             <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
             <a href="https://www.linkedin.com/company/cara-core/" target="_blank">
-                Cara Core Inform�tica
+                Cara Core Informática
             </a>
             <span style="margin-left: 1.5rem;">81 seguidores<br>29 de junho de 2025</span>
         </div>
 
         <p>
-            Atualmente, � comum encontrarmos processos de auditoria financeira e valida��o de notas fiscais que s�o executados manualmente ou com aux�lio de macros em VBA no Excel. Embora eficazes at� certo ponto, essas solu��es apresentam limita��es significativas em termos de escalabilidade, integra��o e manuten��o.
+            Atualmente, — comum encontrarmos processos de auditoria financeira e validaï¿½ï¿½o de notas fiscais que sï¿½o executados manualmente ou com auxï¿½lio de macros em VBA no Excel. Embora eficazes atï¿½ certo ponto, essas soluï¿½ï¿½es apresentam limitaï¿½ï¿½es significativas em termos de escalabilidade, integraï¿½ï¿½o e manutenï¿½ï¿½o.
         </p>
         
         <p>
-            Este artigo compartilha minha experi�ncia na automa��o de um processo de auditoria de documentos fiscais, originalmente desenvolvido em VBA, e sua moderniza��o utilizando Python. A proposta foi transformar uma rotina repetitiva e sujeita a erros em uma solu��o eficiente, escal�vel e de f�cil manuten��o.
+            Este artigo compartilha minha experiï¿½ncia na automação de um processo de auditoria de documentos fiscais, originalmente desenvolvido em VBA, e sua modernizaï¿½ï¿½o utilizando Python. A proposta foi transformar uma rotina repetitiva e sujeita a erros em uma soluï¿½ï¿½o eficiente, escalï¿½vel e de fï¿½cil manutenï¿½ï¿½o.
         </p>
 
         <h2>O Desafio</h2>
         <p>
-            O processo original consistia na importa��o de arquivos texto (.txt) contendo registros financeiros, normalmente exportados de um sistema ERP (como SAP). O VBA realizava tarefas como:
+            O processo original consistia na importaï¿½ï¿½o de arquivos texto (.txt) contendo registros financeiros, normalmente exportados de um sistema ERP (como SAP). O VBA realizava tarefas como:
         </p>
         
         <ul>
-            <li>Leitura e interpreta��o dos dados.</li>
-            <li>Valida��o de impostos aplicados.</li>
-            <li>Verifica��o de inconsist�ncias (valores divergentes, aus�ncia de CNPJ/CPF, erros em c�digos de impostos, entre outros).</li>
-            <li>Aplica��o de 13 regras de auditoria.</li>
-            <li>Gera��o de um relat�rio no Excel com os resultados.</li>
+            <li>Leitura e interpretaï¿½ï¿½o dos dados.</li>
+            <li>Validaï¿½ï¿½o de impostos aplicados.</li>
+            <li>Verificaï¿½ï¿½o de inconsistï¿½ncias (valores divergentes, ausï¿½ncia de CNPJ/CPF, erros em cï¿½digos de impostos, entre outros).</li>
+            <li>Aplicaï¿½ï¿½o de 13 regras de auditoria.</li>
+            <li>Geraï¿½ï¿½o de um relatï¿½rio no Excel com os resultados.</li>
         </ul>
 
-        <h3>Limita��es encontradas no processo com VBA:</h3>
+        <h3>Limitaï¿½ï¿½es encontradas no processo com VBA:</h3>
         <ul>
             <li>Baixo desempenho em grandes volumes de dados.</li>
-            <li>Dificuldade na manuten��o e evolu��o do c�digo.</li>
-            <li>Pouca integra��o com bancos de dados, APIs ou outros sistemas.</li>
-            <li>Depend�ncia total do Excel, dificultando a automa��o completa.</li>
+            <li>Dificuldade na manutenï¿½ï¿½o e evoluï¿½ï¿½o do cï¿½digo.</li>
+            <li>Pouca integraï¿½ï¿½o com bancos de dados, APIs ou outros sistemas.</li>
+            <li>Dependï¿½ncia total do Excel, dificultando a automação completa.</li>
         </ul>
 
         <h2>Por que migrar para Python?</h2>
         <p>
-            Python se mostrou uma excelente alternativa por diversas raz�es:
+            Python se mostrou uma excelente alternativa por diversas razï¿½es:
         </p>
         
         <ul>
             <li><strong>Escalabilidade:</strong> Capaz de lidar com grandes volumes de dados de forma eficiente.</li>
-            <li><strong>Integra��o:</strong> Facilita a conex�o com bancos de dados, APIs e servi�os em nuvem.</li>
-            <li><strong>Manuten��o:</strong> C�digo organizado, modular e version�vel.</li>
-            <li><strong>Automatiza��o Completa:</strong> Possibilidade de eliminar a interven��o manual, incluindo notifica��es autom�ticas por e-mail, integra��o com dashboards e servi�os externos.</li>
+            <li><strong>Integraï¿½ï¿½o:</strong> Facilita a conexï¿½o com bancos de dados, APIs e serviï¿½os em nuvem.</li>
+            <li><strong>Manutenï¿½ï¿½o:</strong> Cï¿½digo organizado, modular e versionï¿½vel.</li>
+            <li><strong>Automatização Completa:</strong> Possibilidade de eliminar a intervenï¿½ï¿½o manual, incluindo notificaï¿½ï¿½es automï¿½ticas por e-mail, integraï¿½ï¿½o com dashboards e serviï¿½os externos.</li>
         </ul>
 
-        <h2>Arquitetura da Solu��o em Python</h2>
+        <h2>Arquitetura da Soluï¿½ï¿½o em Python</h2>
         <p style="background: #f8f9fa; padding: 15px; border-left: 4px solid #007bff; margin: 20px 0; font-family: monospace;">
-            [ Arquivos TXT/CSV ] ? [ Leitura e Valida��o com pandas ] ? [ Aplica��o das Regras ] ? [ Gera��o de Relat�rios (Excel ou Dashboard) ]
+            [ Arquivos TXT/CSV ] ? [ Leitura e Validaï¿½ï¿½o com pandas ] ? [ Aplicaï¿½ï¿½o das Regras ] ? [ Geraï¿½ï¿½o de Relatï¿½rios (Excel ou Dashboard) ]
         </p>
 
         <h3>Tecnologias utilizadas:</h3>
         <ul>
-            <li><strong>pandas:</strong> Processamento e an�lise de dados.</li>
-            <li><strong>openpyxl / xlsxwriter:</strong> Gera��o de arquivos Excel.</li>
-            <li><strong>numpy:</strong> C�lculos e opera��es num�ricas.</li>
-            <li><strong>re:</strong> Express�es regulares para valida��o de textos.</li>
-            <li><strong>matplotlib / seaborn:</strong> Visualiza��o de dados (opcional).</li>
+            <li><strong>pandas:</strong> Processamento e anï¿½lise de dados.</li>
+            <li><strong>openpyxl / xlsxwriter:</strong> Geraï¿½ï¿½o de arquivos Excel.</li>
+            <li><strong>numpy:</strong> Cï¿½lculos e operaï¿½ï¿½es numï¿½ricas.</li>
+            <li><strong>re:</strong> Expressï¿½es regulares para validaï¿½ï¿½o de textos.</li>
+            <li><strong>matplotlib / seaborn:</strong> Visualizaï¿½ï¿½o de dados (opcional).</li>
             <li><strong>streamlit:</strong> Interface interativa para dashboards (opcional).</li>
-            <li><strong>sqlalchemy:</strong> Integra��o com bancos de dados (opcional).</li>
+            <li><strong>sqlalchemy:</strong> Integraï¿½ï¿½o com bancos de dados (opcional).</li>
         </ul>
 
         <h2>Principais Regras de Auditoria Aplicadas</h2>
         <p>
-            Durante o desenvolvimento da automa��o, foi fundamental implementar um conjunto robusto de regras para garantir a qualidade dos dados e a conformidade fiscal. Aqui apresentamos as 4 principais regras aplicadas:
+            Durante o desenvolvimento da automação, foi fundamental implementar um conjunto robusto de regras para garantir a qualidade dos dados e a conformidade fiscal. Aqui apresentamos as 4 principais regras aplicadas:
         </p>
 
         <h3>Regras Principais</h3>
@@ -101,55 +101,55 @@
             <thead>
                 <tr style="background: #f8f9fa;">
                     <th style="border: 1px solid #ddd; padding: 12px; text-align: left; width: 8%;">Regra</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left; width: 52%;">Descri��o</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left; width: 52%;">Descriï¿½ï¿½o</th>
                     <th style="border: 1px solid #ddd; padding: 12px; text-align: left; width: 40%;">Objetivo</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>1</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Descri��o do material cont�m "Sem N�mero" ? imposto deve ser zero.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Verificar materiais gen�ricos ou mal cadastrados com imposto incorreto.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Descriï¿½ï¿½o do material contï¿½m "Sem Nï¿½mero" ? imposto deve ser zero.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Verificar materiais genï¿½ricos ou mal cadastrados com imposto incorreto.</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>2</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "IN" ou (CNPJ vazio e CPF tem 9 d�gitos) ? imposto = 11%.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar poss�veis cadastros incompletos que indicam reten��es maiores.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "IN" ou (CNPJ vazio e CPF tem 9 dï¿½gitos) ? imposto = 11%.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar possï¿½veis cadastros incompletos que indicam retenï¿½ï¿½es maiores.</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>8</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Agrupar notas fiscais onde Ctg. N = "SE" e os campos CIA, N� NF, N� Ordem, Nome e Total NF s�o iguais.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar documentos relacionados, permitindo an�lise consolidada.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Agrupar notas fiscais onde Ctg. N = "SE" e os campos CIA, Nï¿½ NF, Nï¿½ Ordem, Nome e Total NF sï¿½o iguais.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar documentos relacionados, permitindo anï¿½lise consolidada.</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>11</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Verificar se uma nota n�o possui imposto (quando valor l�quido = total NF).</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Identificar poss�veis erros de tributa��o (aus�ncia de imposto).</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Verificar se uma nota nï¿½o possui imposto (quando valor lï¿½quido = total NF).</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Identificar possï¿½veis erros de tributaï¿½ï¿½o (ausï¿½ncia de imposto).</td>
                 </tr>
             </tbody>
         </table>
 
         <p>
-            <em>Ao todo, foram implementadas 13 regras de auditoria que cobrem desde valida��es espec�ficas at� agrupamento e reconcilia��o de dados. O conjunto completo das regras pode ser consultado no final deste artigo.</em>
+            <em>Ao todo, foram implementadas 13 regras de auditoria que cobrem desde validaï¿½ï¿½es especï¿½ficas atï¿½ agrupamento e reconciliaï¿½ï¿½o de dados. O conjunto completo das regras pode ser consultado no final deste artigo.</em>
         </p>
 
-        <h3>Interface Original da Automa��o em VBA</h3>
+        <h3>Interface Original da Automaï¿½ï¿½o em VBA</h3>
         <p>
-            Para contextualizar a evolu��o do processo, abaixo est� a interface da automa��o original desenvolvida em VBA. Note como o sistema importava arquivos TXT do SAP e aplicava as regras de auditoria de forma manual:
+            Para contextualizar a evoluï¿½ï¿½o do processo, abaixo estï¿½ a interface da automação original desenvolvida em VBA. Note como o sistema importava arquivos TXT do SAP e aplicava as regras de auditoria de forma manual:
         </p>
         
         <div style="text-align: center; margin: 30px 0;">
-            <img src="assets/img/article_37_02.png" alt="Interface VBA da Automa��o Original" style="max-width: 100%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <img src="assets/img/article_37_02.png" alt="Interface VBA da Automaï¿½ï¿½o Original" style="max-width: 100%; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
             <p style="font-size: 0.9em; color: #666; margin-top: 10px; font-style: italic;">
-                Interface da automa��o original em VBA/Excel, mostrando os 17 campos esperados e as 13 regras de auditoria implementadas.
+                Interface da automação original em VBA/Excel, mostrando os 17 campos esperados e as 13 regras de auditoria implementadas.
             </p>
         </div>
 
         <p>
-            Esta interface ilustra bem as limita��es da solu��o anterior: depend�ncia total do Excel, interface n�o intuitiva e processo semi-manual. Com Python, eliminamos essas barreiras e criamos uma solu��o completamente automatizada.
+            Esta interface ilustra bem as limitaï¿½ï¿½es da soluï¿½ï¿½o anterior: dependï¿½ncia total do Excel, interface nï¿½o intuitiva e processo semi-manual. Com Python, eliminamos essas barreiras e criamos uma soluï¿½ï¿½o completamente automatizada.
         </p>
 
-        <h2>Implementa��o: Exemplo de C�digo</h2>
+        <h2>Implementaï¿½ï¿½o: Exemplo de Cï¿½digo</h2>
         
         <h3>Leitura dos Dados</h3>
         <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>import pandas as pd
@@ -159,76 +159,76 @@ df = pd.read_csv('notas_fiscais.txt', sep='|')
 
 print(df.head())</code></pre>
 
-        <h3>Aplica��o de uma Regra de Valida��o</h3>
-        <p>Regra: Se a descri��o do material cont�m "Sem N�mero", o imposto deve ser zero.</p>
+        <h3>Aplicaï¿½ï¿½o de uma Regra de Validaï¿½ï¿½o</h3>
+        <p>Regra: Se a descriï¿½ï¿½o do material contï¿½m "Sem Nï¿½mero", o imposto deve ser zero.</p>
         
         <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>df['Erro'] = df.apply(
     lambda row: 'Imposto incorreto' 
-    if 'Sem N�mero' in str(row['DescricaoMaterial']) and row['Imposto'] != 0 
+    if 'Sem Nï¿½mero' in str(row['DescricaoMaterial']) and row['Imposto'] != 0 
     else '', axis=1
 )</code></pre>
 
-        <h3>Exporta��o do Relat�rio para Excel</h3>
+        <h3>Exportaï¿½ï¿½o do Relatï¿½rio para Excel</h3>
         <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; overflow-x: auto;"><code>df.to_excel('relatorio_auditoria.xlsx', index=False)</code></pre>
 
-        <h2>Benef�cios Alcan�ados</h2>
+        <h2>Benefï¿½cios Alcanï¿½ados</h2>
         <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
             <thead>
                 <tr style="background: #f8f9fa;">
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Crit�rio</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Solu��o VBA</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Solu��o Python</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Critï¿½rio</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Soluï¿½ï¿½o VBA</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Soluï¿½ï¿½o Python</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>Volume de Dados</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Limitado (~1 milh�o)</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Milh�es de registros</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Limitado (~1 milhï¿½o)</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Milhï¿½es de registros</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>Desempenho</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">M�dio</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Mï¿½dio</td>
                     <td style="border: 1px solid #ddd; padding: 12px;">Alto</td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #ddd; padding: 12px;"><strong>Integra��o</strong></td>
+                    <td style="border: 1px solid #ddd; padding: 12px;"><strong>Integraï¿½ï¿½o</strong></td>
                     <td style="border: 1px solid #ddd; padding: 12px;">Limitada</td>
                     <td style="border: 1px solid #ddd; padding: 12px;">APIs, Bancos, Web</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
-                    <td style="border: 1px solid #ddd; padding: 12px;"><strong>Manuten��o</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Dif�cil</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Simples, modular, version�vel</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;"><strong>Manutenï¿½ï¿½o</strong></td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Difï¿½cil</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Simples, modular, versionï¿½vel</td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid #ddd; padding: 12px;"><strong>Automatiza��o Completa</strong></td>
+                    <td style="border: 1px solid #ddd; padding: 12px;"><strong>Automatização Completa</strong></td>
                     <td style="border: 1px solid #ddd; padding: 12px;">Limitada</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Sim, sem interven��o manual</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Sim, sem intervenï¿½ï¿½o manual</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2>Li��es Aprendidas</h2>
+        <h2>Liï¿½ï¿½es Aprendidas</h2>
         <ul>
-            <li>A curva de aprendizado para migrar do VBA para Python � acess�vel, especialmente para quem j� tem l�gica de programa��o.</li>
+            <li>A curva de aprendizado para migrar do VBA para Python — acessï¿½vel, especialmente para quem jï¿½ tem lï¿½gica de programaï¿½ï¿½o.</li>
             <li>O ganho em produtividade, confiabilidade e escalabilidade compensa o investimento de tempo no desenvolvimento.</li>
-            <li>Processos que antes dependiam de opera��es manuais foram transformados em rotinas totalmente automatizadas e audit�veis.</li>
+            <li>Processos que antes dependiam de operaï¿½ï¿½es manuais foram transformados em rotinas totalmente automatizadas e auditï¿½veis.</li>
         </ul>
 
-        <h2>Conclus�o</h2>
+        <h2>Conclusï¿½o</h2>
         <p>
-            Automatizar processos de auditoria financeira com Python n�o s� � vi�vel como altamente recomend�vel. A experi�ncia demonstrou que � poss�vel construir solu��es robustas, escal�veis e integr�veis, eliminando as limita��es tradicionais do VBA no Excel.
+            Automatizar processos de auditoria financeira com Python nï¿½o sï¿½ — viï¿½vel como altamente recomendï¿½vel. A experiï¿½ncia demonstrou que — possï¿½vel construir soluï¿½ï¿½es robustas, escalï¿½veis e integrï¿½veis, eliminando as limitaï¿½ï¿½es tradicionais do VBA no Excel.
         </p>
         <p>
-            Este � um caminho sem volta para quem busca modernizar processos, aumentar produtividade e reduzir riscos operacionais.
+            Este — um caminho sem volta para quem busca modernizar processos, aumentar produtividade e reduzir riscos operacionais.
         </p>
 
         <hr style="margin: 40px 0; border: none; border-top: 1px solid #eee;">
         
         <h2>Curiosidade: As 13 Regras Completas de Auditoria</h2>
         <p>
-            Para quem tem interesse t�cnico, aqui est� o conjunto completo das 13 regras de auditoria implementadas na automa��o:
+            Para quem tem interesse tï¿½cnico, aqui estï¿½ o conjunto completo das 13 regras de auditoria implementadas na automação:
         </p>
 
         <h3>Tabela Completa das Regras de Auditoria</h3>
@@ -236,40 +236,40 @@ print(df.head())</code></pre>
             <thead>
                 <tr style="background: #f8f9fa;">
                     <th style="border: 1px solid #ddd; padding: 12px; text-align: left; width: 8%;">Regra</th>
-                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left; width: 52%;">Descri��o</th>
+                    <th style="border: 1px solid #ddd; padding: 12px; text-align: left; width: 52%;">Descriï¿½ï¿½o</th>
                     <th style="border: 1px solid #ddd; padding: 12px; text-align: left; width: 40%;">Objetivo</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>1</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Descri��o do material cont�m "Sem N�mero" ? imposto deve ser zero.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Verificar materiais gen�ricos ou mal cadastrados com imposto incorreto.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Descriï¿½ï¿½o do material contï¿½m "Sem Nï¿½mero" ? imposto deve ser zero.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Verificar materiais genï¿½ricos ou mal cadastrados com imposto incorreto.</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>2</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "IN" ou (CNPJ vazio e CPF tem 9 d�gitos) ? imposto = 11%.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar poss�veis cadastros incompletos que indicam reten��es maiores.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "IN" ou (CNPJ vazio e CPF tem 9 dï¿½gitos) ? imposto = 11%.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar possï¿½veis cadastros incompletos que indicam retenï¿½ï¿½es maiores.</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>3</strong></td>
                     <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "XB" e imposto igual a zero.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Validar se XB est� aplicado incorretamente sem imposto devido.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Validar se XB estï¿½ aplicado incorretamente sem imposto devido.</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>4</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "XA" ou "YW" e descri��o do material = "N 1.05" ? imposto deve ser zero.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Isentar corretamente servi�os espec�ficos dessa classifica��o.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "XA" ou "YW" e descriï¿½ï¿½o do material = "N 1.05" ? imposto deve ser zero.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Isentar corretamente serviï¿½os especï¿½ficos dessa classificaï¿½ï¿½o.</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>5</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "XA" ou "YW" e descri��o do material = "N 10.05" ? imposto = 1,5%.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Validar servi�os que possuem limite m�ximo de imposto aplicado.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "XA" ou "YW" e descriï¿½ï¿½o do material = "N 10.05" ? imposto = 1,5%.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Validar serviï¿½os que possuem limite mï¿½ximo de imposto aplicado.</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>6</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "XA" ou "YW" e descri��o = "N 1.07" e Cod. Parceiro = 436 ? imposto deve ser zero.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Caso especial de isen��o total para parceiro e servi�o espec�ficos.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Cod. Imposto = "XA" ou "YW" e descriï¿½ï¿½o = "N 1.07" e Cod. Parceiro = 436 ? imposto deve ser zero.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Caso especial de isenï¿½ï¿½o total para parceiro e serviï¿½o especï¿½ficos.</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>7</strong></td>
@@ -278,42 +278,42 @@ print(df.head())</code></pre>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>8</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Agrupar notas fiscais onde Ctg. N = "SE" e os campos CIA, N� NF, N� Ordem, Nome e Total NF s�o iguais.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar documentos relacionados, permitindo an�lise consolidada.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Agrupar notas fiscais onde Ctg. N = "SE" e os campos CIA, Nï¿½ NF, Nï¿½ Ordem, Nome e Total NF sï¿½o iguais.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar documentos relacionados, permitindo anï¿½lise consolidada.</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>9</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Somar valor l�quido para documentos agrupados por Doc Cont�bil e Ctg. N.</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Validar se os valores consolidados est�o corretos entre registros.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Somar valor lï¿½quido para documentos agrupados por Doc Contï¿½bil e Ctg. N.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Validar se os valores consolidados estï¿½o corretos entre registros.</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>10</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Ap�s a soma, verificar se uma nota CI cancela uma nota SE (comparando datas, hor�rios e valores).</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar estornos, cancelamentos ou compensa��es.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Apï¿½s a soma, verificar se uma nota CI cancela uma nota SE (comparando datas, horï¿½rios e valores).</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Detectar estornos, cancelamentos ou compensaï¿½ï¿½es.</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>11</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Verificar se uma nota n�o possui imposto (quando valor l�quido = total NF).</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Identificar poss�veis erros de tributa��o (aus�ncia de imposto).</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Verificar se uma nota nï¿½o possui imposto (quando valor lï¿½quido = total NF).</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Identificar possï¿½veis erros de tributaï¿½ï¿½o (ausï¿½ncia de imposto).</td>
                 </tr>
                 <tr style="background: #f8f9fa;">
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>12</strong></td>
                     <td style="border: 1px solid #ddd; padding: 12px;">Identificar o tipo de imposto a partir da taxa (%).</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Validar se a al�quota aplicada corresponde aos impostos esperados.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Validar se a alï¿½quota aplicada corresponde aos impostos esperados.</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid #ddd; padding: 12px;"><strong>13</strong></td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Checar se o imposto aplicado � permitido para o n�mero de servi�o (descri��o do material).</td>
-                    <td style="border: 1px solid #ddd; padding: 12px;">Garantir que n�o h� impostos indevidos para determinados servi�os.</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Checar se o imposto aplicado — permitido para o nï¿½mero de serviï¿½o (descriï¿½ï¿½o do material).</td>
+                    <td style="border: 1px solid #ddd; padding: 12px;">Garantir que nï¿½o hï¿½ impostos indevidos para determinados serviï¿½os.</td>
                 </tr>
             </tbody>
         </table>
 
-        <h4>Observa��es T�cnicas</h4>
+        <h4>Observaï¿½ï¿½es Tï¿½cnicas</h4>
         <ul>
-            <li>As regras 1 a 6 s�o espec�ficas, relacionadas a atributos individuais do documento (material, parceiro, imposto, etc.).</li>
-            <li>As regras 7 a 10 s�o de <strong>agrupamento e reconcilia��o de dados</strong>, verificando v�nculos entre documentos (SE e CI).</li>
-            <li>As regras 11 a 13 s�o <strong>regras finais de valida��o de imposto</strong>, seja por aus�ncia, taxa aplicada ou confer�ncia contra uma matriz de permiss�es.</li>
+            <li>As regras 1 a 6 sï¿½o especï¿½ficas, relacionadas a atributos individuais do documento (material, parceiro, imposto, etc.).</li>
+            <li>As regras 7 a 10 sï¿½o de <strong>agrupamento e reconciliaï¿½ï¿½o de dados</strong>, verificando vï¿½nculos entre documentos (SE e CI).</li>
+            <li>As regras 11 a 13 sï¿½o <strong>regras finais de validaï¿½ï¿½o de imposto</strong>, seja por ausï¿½ncia, taxa aplicada ou conferï¿½ncia contra uma matriz de permissï¿½es.</li>
         </ul>
         <h3>Contato</h3>
         <ul>

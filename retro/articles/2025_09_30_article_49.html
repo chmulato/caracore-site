@@ -3,21 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Decis�es mais r�pidas com Python: relat�rios e compara��es autom�ticas ao alcance do neg�cio � Cara Core Inform�tica</title>
-  <meta name="description" content="Como Python automatiza relat�rios, compara��es e integra��es de dados para decis�es �geis e confi�veis no neg�cio. Exemplos pr�ticos, benef�cios e boas pr�ticas." />
-  <meta name="keywords" content="Python, Automa��o, Relat�rios, Compara��o de Dados, CSV, Excel, Painel Executivo, Scripts, Neg�cios, Efici�ncia" />
-  <meta name="author" content="Cara Core Inform�tica" />
+  <title>Decisï¿½es mais rï¿½pidas com Python: relatï¿½rios e comparaï¿½ï¿½es automï¿½ticas ao alcance do negï¿½cio — Cara Core Informática</title>
+  <meta name="description" content="Como Python automatiza relatï¿½rios, comparaï¿½ï¿½es e integraï¿½ï¿½es de dados para decisï¿½es ï¿½geis e confiï¿½veis no negï¿½cio. Exemplos práticos, benefï¿½cios e boas prï¿½ticas." />
+  <meta name="keywords" content="Python, Automaï¿½ï¿½o, Relatï¿½rios, Comparaï¿½ï¿½o de Dados, CSV, Excel, Painel Executivo, Scripts, Negï¿½cios, Eficiï¿½ncia" />
+  <meta name="author" content="Cara Core Informática" />
   <link rel="canonical" href="https://chmulato.github.io/caracore-articles/retro/articles/2025_09_30_article_49.html" />
   <!-- Open Graph -->
-  <meta property="og:title" content="Decis�es mais r�pidas com Python: relat�rios e compara��es autom�ticas ao alcance do neg�cio" />
-  <meta property="og:description" content="Automatize relat�rios e compara��es com Python para decis�es �geis e confi�veis. Veja exemplos pr�ticos e resultados reais." />
+  <meta property="og:title" content="Decisï¿½es mais rï¿½pidas com Python: relatï¿½rios e comparaï¿½ï¿½es automï¿½ticas ao alcance do negï¿½cio" />
+  <meta property="og:description" content="Automatize relatï¿½rios e comparaï¿½ï¿½es com Python para decisï¿½es ï¿½geis e confiï¿½veis. Veja exemplos práticos e resultados reais." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://chmulato.github.io/caracore-articles/retro/articles/2025_09_30_article_49.html" />
   <meta property="og:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_49_01.png" />
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Decis�es mais r�pidas com Python: relat�rios e compara��es autom�ticas ao alcance do neg�cio" />
-  <meta name="twitter:description" content="Automatize relat�rios e compara��es com Python para decis�es �geis e confi�veis. Veja exemplos pr�ticos e resultados reais." />
+  <meta name="twitter:title" content="Decisï¿½es mais rï¿½pidas com Python: relatï¿½rios e comparaï¿½ï¿½es automï¿½ticas ao alcance do negï¿½cio" />
+  <meta name="twitter:description" content="Automatize relatï¿½rios e comparaï¿½ï¿½es com Python para decisï¿½es ï¿½geis e confiï¿½veis. Veja exemplos práticos e resultados reais." />
   <meta name="twitter:image" content="https://chmulato.github.io/caracore-articles/retro/articles/assets/img/article_49_01.png" />
   <link rel="stylesheet" href="assets/css/articles.css" />
   <style>
@@ -48,76 +48,76 @@
 </head>
 <body>
   <div class="container">
-    <a class="back-link" href="../articles.html">&larr; Voltar para publica��es</a>
-    <img src="assets/img/article_49_01.png" alt="Decis�es r�pidas com Python" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
-    <h1>Decis�es mais r�pidas com Python: relat�rios e compara��es autom�ticas ao alcance do neg�cio</h1>
+    <a class="back-link" href="../articles.html">&larr; Voltar para publicaï¿½ï¿½es</a>
+    <img src="assets/img/article_49_01.png" alt="Decisï¿½es rï¿½pidas com Python" style="max-width:300px; float:right; margin:0 0 1.5rem 2rem; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,.08);" />
+    <h1>Decisï¿½es mais rï¿½pidas com Python: relatï¿½rios e comparaï¿½ï¿½es automï¿½ticas ao alcance do negï¿½cio</h1>
     <div class="linkedin-box" style="margin-bottom: 1.5rem; display: flex; align-items: center;">
         <img src="assets/img/logo.png" alt="Logo Cara Core" style="width:33%; max-width:40px; margin-right:10px;">
-        <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Inform�tica</a>
+        <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a>
         <span style="margin-left: 1.5rem;">84 seguidores<br>30 de setembro de 2025</span>
     </div>
 
     <div class="note"><strong>Tempo estimado de leitura:</strong> ~3 minutos</div>
 
     <h2>Por que isso importa agora</h2>
-    <p>Tomar decis�es com dados confi�veis, em horas � n�o semanas �, � uma vantagem competitiva. Python permite automatizar a coleta, padroniza��o e compara��o de informa��es de m�ltiplas fontes (sistemas internos, planilhas, APIs) e entregar relat�rios claros para diretoria e �reas de neg�cio. O resultado: menos tempo gasto, menos retrabalho e mais foco em a��o.</p>
+    <p>Tomar decisï¿½es com dados confiï¿½veis, em horas — nï¿½o semanas ï¿½, — uma vantagem competitiva. Python permite automatizar a coleta, padronizaï¿½ï¿½o e comparaï¿½ï¿½o de informaï¿½ï¿½es de mï¿½ltiplas fontes (sistemas internos, planilhas, APIs) e entregar relatï¿½rios claros para diretoria e ï¿½reas de negï¿½cio. O resultado: menos tempo gasto, menos retrabalho e mais foco em aï¿½ï¿½o.</p>
 
     <h2>O que fazemos com Python</h2>
     <ul>
-      <li>Integramos dados de diferentes origens (sistemas internos, planilhas, cat�logos corporativos) em um �nico fluxo.</li>
-      <li>Geramos relat�rios executivos em CSV, Excel e pain�is simples para acompanhamento.</li>
-      <li>Comparamos informa��es �lado a lado� em tempo real para encontrar diverg�ncias e priorizar a��es.</li>
-      <li>Padronizamos crit�rios para classificar e segmentar portf�lios com transpar�ncia.</li>
+      <li>Integramos dados de diferentes origens (sistemas internos, planilhas, catï¿½logos corporativos) em um ï¿½nico fluxo.</li>
+      <li>Geramos relatï¿½rios executivos em CSV, Excel e painï¿½is simples para acompanhamento.</li>
+      <li>Comparamos informaï¿½ï¿½es ï¿½lado a ladoï¿½ em tempo real para encontrar divergï¿½ncias e priorizar aï¿½ï¿½es.</li>
+      <li>Padronizamos critï¿½rios para classificar e segmentar portfï¿½lios com transparï¿½ncia.</li>
     </ul>
-    <p><strong>Exemplos pr�ticos:</strong></p>
+    <p><strong>Exemplos práticos:</strong></p>
     <ul>
-      <li>Consolidar o cat�logo de iniciativas de uma diretoria em uma planilha �nica, com enriquecimento (status, respons�veis, datas-chave).</li>
-      <li>Encontrar interse��es entre listas (ex.: �clientes eleg�veis� x �clientes com proposta ativa�) e exportar com indicadores visuais.</li>
-      <li>Criar rotinas di�rias que atualizam relat�rios automaticamente � sem abrir planilhas manualmente.</li>
+      <li>Consolidar o catï¿½logo de iniciativas de uma diretoria em uma planilha ï¿½nica, com enriquecimento (status, responsï¿½veis, datas-chave).</li>
+      <li>Encontrar interseï¿½ï¿½es entre listas (ex.: ï¿½clientes elegï¿½veisï¿½ x ï¿½clientes com proposta ativaï¿½) e exportar com indicadores visuais.</li>
+      <li>Criar rotinas diï¿½rias que atualizam relatï¿½rios automaticamente — sem abrir planilhas manualmente.</li>
     </ul>
 
     <h2>Como isso reduz tempo e risco</h2>
     <ul>
-      <li>Menos atividades manuais: scripts transformam tarefas repetitivas em �um clique�.</li>
-      <li>Dados padronizados: relat�rios consistentes, audit�veis e compar�veis ao longo do tempo.</li>
-      <li>Vis�o unificada: informa��es dispersas em um �nico painel para priorizar decis�es.</li>
-      <li>Alertas precoces: diverg�ncias detectadas antes de virarem problemas.</li>
+      <li>Menos atividades manuais: scripts transformam tarefas repetitivas em ï¿½um cliqueï¿½.</li>
+      <li>Dados padronizados: relatï¿½rios consistentes, auditï¿½veis e comparï¿½veis ao longo do tempo.</li>
+      <li>Visï¿½o unificada: informaï¿½ï¿½es dispersas em um ï¿½nico painel para priorizar decisï¿½es.</li>
+      <li>Alertas precoces: divergï¿½ncias detectadas antes de virarem problemas.</li>
     </ul>
 
-    <h2>Resultados que j� observamos</h2>
+    <h2>Resultados que jï¿½ observamos</h2>
     <ul>
-      <li>Gera��o de planilhas executivas com dezenas de colunas (classifica��o por crit�rios de neg�cio, indicadores de documenta��o, links e status), prontas para consumo por lideran�a.</li>
-      <li>Relat�rios incrementais por lotes para ambientes grandes, permitindo acompanhamento cont�nuo sem sobrecarregar infraestrutura.</li>
-      <li>Redu��o de horas de trabalho por semana em atividades de levantamento, valida��o e consolida��o.</li>
+      <li>Geraï¿½ï¿½o de planilhas executivas com dezenas de colunas (classificaï¿½ï¿½o por critï¿½rios de negï¿½cio, indicadores de documentaï¿½ï¿½o, links e status), prontas para consumo por lideranï¿½a.</li>
+      <li>Relatï¿½rios incrementais por lotes para ambientes grandes, permitindo acompanhamento contï¿½nuo sem sobrecarregar infraestrutura.</li>
+      <li>Reduï¿½ï¿½o de horas de trabalho por semana em atividades de levantamento, validaï¿½ï¿½o e consolidaï¿½ï¿½o.</li>
     </ul>
 
-    <h2>Como come�amos (sem jarg�o t�cnico)</h2>
+    <h2>Como comeï¿½amos (sem jargï¿½o tï¿½cnico)</h2>
     <ol>
-      <li>Definimos a pergunta de neg�cio e os indicadores necess�rios (ex.: �quais projetos est�o prontos para migra��o?�).</li>
-      <li>Mapeamos as fontes de dados: onde est�o hoje (reposit�rios, planilhas, cat�logos e sistemas internos).</li>
-      <li>Automatizamos o fluxo com Python: leitura, limpeza, padroniza��o, compara��o e gera��o de sa�da (CSV/Excel/dashboard).</li>
-      <li>Agendamos atualiza��es (di�rias/semi-hor�rias) e publicamos em um local �nico (SharePoint/Drive/portal interno).</li>
+      <li>Definimos a pergunta de negï¿½cio e os indicadores necessï¿½rios (ex.: ï¿½quais projetos estï¿½o prontos para migraï¿½ï¿½o?ï¿½).</li>
+      <li>Mapeamos as fontes de dados: onde estï¿½o hoje (repositï¿½rios, planilhas, catï¿½logos e sistemas internos).</li>
+      <li>Automatizamos o fluxo com Python: leitura, limpeza, padronizaï¿½ï¿½o, comparaï¿½ï¿½o e geraï¿½ï¿½o de saï¿½da (CSV/Excel/dashboard).</li>
+      <li>Agendamos atualizaï¿½ï¿½es (diï¿½rias/semi-horï¿½rias) e publicamos em um local ï¿½nico (SharePoint/Drive/portal interno).</li>
     </ol>
 
-    <h2>Boas pr�ticas que adotamos</h2>
+    <h2>Boas prï¿½ticas que adotamos</h2>
     <ul>
-      <li>Seguran�a do token e dados sens�veis; nada de credenciais em c�digo ou commit.</li>
-      <li>Logs e rastreabilidade: cada execu��o deixa evid�ncias claras do que foi processado.</li>
-      <li>Parametriza��o: os mesmos scripts atendem diferentes �reas apenas mudando entradas.</li>
-      <li>Entregas incrementais: come�amos simples, medimos valor e evolu�mos em ciclos curtos.</li>
+      <li>Seguranï¿½a do token e dados sensï¿½veis; nada de credenciais em cï¿½digo ou commit.</li>
+      <li>Logs e rastreabilidade: cada execuï¿½ï¿½o deixa evidï¿½ncias claras do que foi processado.</li>
+      <li>Parametrizaï¿½ï¿½o: os mesmos scripts atendem diferentes ï¿½reas apenas mudando entradas.</li>
+      <li>Entregas incrementais: comeï¿½amos simples, medimos valor e evoluï¿½mos em ciclos curtos.</li>
     </ul>
 
-    <h2>O que voc� ganha</h2>
+    <h2>O que vocï¿½ ganha</h2>
     <ul>
-      <li>Rapidez: relat�rios e compara��es prontos quando voc� precisa.</li>
-      <li>Confian�a: dados consistentes e regras claras de classifica��o.</li>
-      <li>Foco: menos tempo ca�ando informa��es, mais tempo decidindo e executando.</li>
+      <li>Rapidez: relatï¿½rios e comparaï¿½ï¿½es prontos quando vocï¿½ precisa.</li>
+      <li>Confianï¿½a: dados consistentes e regras claras de classificaï¿½ï¿½o.</li>
+      <li>Foco: menos tempo caï¿½ando informaï¿½ï¿½es, mais tempo decidindo e executando.</li>
     </ul>
 
-    <blockquote>Se quiser, podemos demonstrar em 15 minutos como automatizar um caso real do seu time (por exemplo, leitura de um reposit�rio, cruzamento com planilhas e gera��o de um painel executivo). Bastam as fontes e os crit�rios de decis�o � o resto, o Python faz por voc�.</blockquote>
+    <blockquote>Se quiser, podemos demonstrar em 15 minutos como automatizar um caso real do seu time (por exemplo, leitura de um repositï¿½rio, cruzamento com planilhas e geraï¿½ï¿½o de um painel executivo). Bastam as fontes e os critï¿½rios de decisï¿½o — o resto, o Python faz por vocï¿½.</blockquote>
 
-    <h2>Tr�s exemplos simples em Python (sem jarg�o)</h2>
-    <h3>1) Cr�dito: unificar propostas e priorizar an�lises</h3>
+    <h2>Trï¿½s exemplos simples em Python (sem jargï¿½o)</h2>
+    <h3>1) Crï¿½dito: unificar propostas e priorizar anï¿½lises</h3>
     <pre><code class="language-python">from pathlib import Path
 import csv
 
@@ -136,9 +136,9 @@ with open('C:/saidas/credito_priorizar.csv', 'w', newline='', encoding='utf-8') 
                 row['prioridade'] = prioridade
                 w.writerow({c: row.get(c, '') for c in campos + ['prioridade']})
 </code></pre>
-    <p>Analogia: em vez de olhar proposta por proposta, voc� recebe uma fila ordenada pelo que mais importa.</p>
+    <p>Analogia: em vez de olhar proposta por proposta, vocï¿½ recebe uma fila ordenada pelo que mais importa.</p>
 
-    <h3>2) Sinistros: identificar inconsist�ncias para auditoria �gil</h3>
+    <h3>2) Sinistros: identificar inconsistï¿½ncias para auditoria ï¿½gil</h3>
     <pre><code class="language-python">import csv
 
 def ler_ids(caminho, chave):
@@ -161,7 +161,7 @@ with open('C:/saidas/sinistros_auditoria.csv', 'w', newline='', encoding='utf-8'
 </code></pre>
     <p>Analogia: duas listas de itens; o script aponta o que ficou sem par correspondente.</p>
 
-    <h3>3) Estoque: atualizar indicadores di�rios sem abrir planilhas</h3>
+    <h3>3) Estoque: atualizar indicadores diï¿½rios sem abrir planilhas</h3>
     <pre><code class="language-python">from datetime import datetime
 import csv
 
@@ -180,25 +180,25 @@ with open('C:/saidas/estoque_diario.csv', 'a', newline='', encoding='utf-8') as 
 </code></pre>
     <p>Analogia: como preencher um quadro na parede todos os dias, automaticamente.</p>
 
-    <h2 id="conclusao">Conclus�o</h2>
-    <p>Python transforma dados dispersos em insights acion�veis, permitindo que sua equipe tome decis�es mais r�pidas e confi�veis. Em vez de gastar horas coletando e cruzando informa��es manualmente, voc� obt�m relat�rios padronizados, compara��es autom�ticas e indicadores atualizados em tempo real.</p>
-    <p>Os benef�cios s�o claros: menos tempo gasto em tarefas repetitivas, maior precis�o nos dados e foco renovado no que realmente importa � interpretar resultados e agir estrategicamente.</p>
-    <p><strong>Pr�ximo passo</strong> ? vamos conversar sobre um caso espec�fico do seu neg�cio. A Cara Core Inform�tica desenvolve solu��es sob medida, com suporte t�cnico e treinamento aos finais de semana e feriados.</p>
+    <h2 id="conclusao">Conclusï¿½o</h2>
+    <p>Python transforma dados dispersos em insights acionï¿½veis, permitindo que sua equipe tome decisï¿½es mais rï¿½pidas e confiï¿½veis. Em vez de gastar horas coletando e cruzando informaï¿½ï¿½es manualmente, vocï¿½ obtï¿½m relatï¿½rios padronizados, comparaï¿½ï¿½es automï¿½ticas e indicadores atualizados em tempo real.</p>
+    <p>Os benefï¿½cios sï¿½o claros: menos tempo gasto em tarefas repetitivas, maior precisï¿½o nos dados e foco renovado no que realmente importa — interpretar resultados e agir estrategicamente.</p>
+    <p><strong>Prï¿½ximo passo</strong> ? vamos conversar sobre um caso especï¿½fico do seu negï¿½cio. A Cara Core Informática desenvolve soluï¿½ï¿½es sob medida, com suporte tï¿½cnico e treinamento aos finais de semana e feriados.</p>
 
     <h2>Hashtags</h2>
-    <div class="hash-box">#Python #Automa��o #Relat�rios #Decis�o�gil #PainelExecutivo #Compara��oDeDados #Efici�ncia #Neg�cios #CaraCoreInform�tica</div>
+    <div class="hash-box">#Python #Automaï¿½ï¿½o #Relatï¿½rios #Decisï¿½oï¿½gil #PainelExecutivo #Comparaï¿½ï¿½oDeDados #Eficiï¿½ncia #Negï¿½cios #CaraCoreInformática</div>
 
     <hr />
     <h3>Contato</h3>
     <ul>
       <li><strong>E-mail:</strong> suporte@caracore.com.br</li>
       <li><strong>Site:</strong> <a href="https://www.caracore.com.br" target="_blank" rel="noopener">www.caracore.com.br</a></li>
-      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Inform�tica</a></li>
+      <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">Cara Core Informática</a></li>
     </ul>
 
     <div style="background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:1.5rem 1.25rem; border-radius:8px; margin:2rem 0; text-align:center;">
-      <strong>?? Gostou do conte�do?</strong><br />
-      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conte�dos sobre desenvolvimento e inova��o tecnol�gica!</span><br />
+      <strong>?? Gostou do conteï¿½do?</strong><br />
+      <span style="font-size:.85rem;">Conecte-se conosco no LinkedIn para mais conteï¿½dos sobre desenvolvimento e inovaï¿½ï¿½o tecnolï¿½gica!</span><br />
       <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" style="display:inline-block; margin-top:.75rem; background:rgba(255,255,255,.2); color:white; padding:.5rem 1rem; border-radius:6px; text-decoration:none; font-weight:600;">Seguir no LinkedIn</a>
     </div>
   </div>

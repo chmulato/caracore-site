@@ -1,0 +1,51 @@
+================================================================================
+LEGADO POR REDE — RETRO (LINKEDIN), GRAM (INSTAGRAM), FACE (FACEBOOK)
+================================================================================
+Seguir a ideia do legado retro (material para campanha LinkedIn) e aplicar ao
+Instagram e ao Facebook em pastas dedicadas: gram e face.
+
+--------------------------------------------------------------------------------
+1. RETRO — LinkedIn (já existente)
+--------------------------------------------------------------------------------
+  Pasta:     D:\dev\caracore-site\retro
+  Listagem:  retro/articles.html
+  Conteúdo:  articles (HTML em retro/articles/), numeração 11…86; próximos 87+ na Sala.
+  Convenção: YYYY_MM_DD_article_NN.html | article_NN_01.png (legado)
+  Sala:      sala/linkedin/ para campanha atual; continuidade 87, 88, 89 (jul/ago/set).
+
+--------------------------------------------------------------------------------
+2. GRAM — Instagram (legado no espírito do retro)
+--------------------------------------------------------------------------------
+  Pasta:     D:\dev\caracore-site\gram
+  Listagem:  gram/instagram.html
+  Conteúdo:  artefatos da campanha Instagram (HTML em gram/artefatos/).
+  Início:    Março — primeiro artefato (01)_G.
+  Convenção: YYYY_MM_DD_artefato_(01)_G.html | YYYY_MM_DD_artefato_(01)_(01).png
+  Sufixo:    _G (Instagram)
+  Sala:      sala/instagram/ — plano e campanha (pilares, diretrizes); material/lista em gram.
+
+--------------------------------------------------------------------------------
+3. FACE — Facebook (legado no espírito do retro)
+--------------------------------------------------------------------------------
+  Pasta:     D:\dev\caracore-site\face
+  Listagem:  face/facebook.html
+  Conteúdo:  artefatos da campanha Facebook (HTML em face/artefatos/).
+  Início:    Março/2026 — primeiro artefato (01)_F.
+  Convenção: YYYY_MM_DD_artefato_(01)_F.html | YYYY_MM_DD_artefato_(01)_(01).png
+  Sufixo:    _F (Facebook)
+  Sala:      sala/facebook/ — plano e campanha (pilares, diretrizes); material/lista em face.
+
+--------------------------------------------------------------------------------
+4. RESUMO
+--------------------------------------------------------------------------------
+  LinkedIn   → retro/          (articles 11…86; 87+ na sala/linkedin/)
+  Instagram  → gram/           (artefatos desde março, (01)_G)
+  Facebook   → face/           (artefatos desde março/2026, (01)_F)
+
+  A Sala (sala/) centraliza o plano e as campanhas e aponta para retro, gram e face.
+  Imagens (convenção Sala): sala/assets/img/ com YYYY_MM_DD_artefato_(01)_(01).png etc.
+  Coerência Lia: voz e organização em .cursor/rules/lia-corelli-voz.mdc e regis/LIA_CORELLI_VOZ.txt.
+
+================================================================================
+Cara Core Informática · Sala de Notícias · regis
+================================================================================

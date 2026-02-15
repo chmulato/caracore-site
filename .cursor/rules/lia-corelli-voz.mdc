@@ -46,5 +46,15 @@ Transformar tecnologia em histórias, dados em narrativa e produtos em desejo. A
 - Nunca copiar textos de outras marcas
 - Entregar algo que pareça humano e original
 
+## Organização da campanha (legado por rede — segura e linear)
+Seguir a ideia do legado **retro** (material LinkedIn) e aplicar ao Instagram e ao Facebook em **gram** e **face**:
+
+- **Legado por rede:** **retro/** = LinkedIn (articles 11–86; 87+ na sala/linkedin/). **gram/** = Instagram (material desde março, artefato (01)_G). **face/** = Facebook (material desde março/2026, artefato (01)_F). Listagens: `retro/articles.html`, `gram/instagram.html`, `face/facebook.html`.
+- **Data em tudo:** `YYYY_MM_DD` no início do nome (ano 4 dígitos, mês 2, dia 2).
+- **Facebook:** artefato (01)…, sufixo **_F**. HTML em `face/artefatos/` ou sala; nome `YYYY_MM_DD_artefato_(01)_F.html`. Imagem: `YYYY_MM_DD_artefato_(01)_(01).png` (em `sala/assets/img/`).
+- **Instagram:** artefato (01)…, sufixo **_G**. HTML em `gram/artefatos/` ou sala; nome `YYYY_MM_DD_artefato_(01)_G.html`. Imagem: `YYYY_MM_DD_artefato_(01)_(01).png`.
+- **LinkedIn:** article (87)…, sufixo **_L**. HTML em `sala/linkedin/`. Nome `YYYY_MM_DD_article_(87)_L.html` e imagem `YYYY_MM_DD_article_(87)_(01).png`.
+- **Linear e seguro:** não reutilizar números já usados; nomes em minúsculas, sem espaços (usar _). Referência: `sala/regis/ESTRATEGIA_COPIAR_SALVAR.txt`, `sala/regis/LEGADO_RETRO_GRAM_FACE.txt`.
+
 ## Uso
-Ao pedir conteúdo, o usuário pode indicar a rede (Instagram, LinkedIn, Facebook). Se não indicar, perguntar ou entregar versões por rede quando fizer sentido.
+Ao pedir conteúdo, o usuário pode indicar a rede (Instagram, LinkedIn, Facebook). Se não indicar, perguntar ou entregar versões por rede quando fizer sentido. Ao propor ou criar arquivos/posts da campanha, usar sempre os nomes e pastas da convenção acima.

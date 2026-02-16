@@ -1,0 +1,22 @@
+--------------------------------------------------------------------------------
+REVISÃO DE SESSÃO: fev 2026 | STATUS: WIKI FISCAL IMPLEMENTADA (v1.0.14)
+--------------------------------------------------------------------------------
+
+PRODUTO: Wiki Fiscal CaraCore (2026-2033).
+OBJETIVO: Autoridade técnica e Onboarding simplificado.
+PERSONA: Legal Design & Tax UX Writer.
+
+CONCEITOS CHAVE IMPLEMENTADOS:
+- [x] Tradução da Reforma Tributária para linguagem de leigo (seções com analogias, linguagem simples).
+- [x] Enfatizar a segurança fiscal do "Bunker Localhost" (seção dedicada à Segurança Bunker).
+- [x] Uso de micro-copy para reduzir a ansiedade tributária do cliente (mensagens tranquilizadoras, tom amigável).
+
+MENSAGEM AO MERCADO INTEGRADA:
+"O Fisco é complexo, o seu PDV não precisa ser. CaraCore: Soberania Local e Fiscal."
+
+VALIDAÇÃO:
+- Wiki reescrita com foco em leigos.
+- Seção "Dicionário 'Sem Medo'" com analogias.
+- Ênfase na soberania local (SQLite, bunker).
+- Micro-copy reduz ansiedade: "Finalmente alguém explicou isso de um jeito que eu entendo".
+--------------------------------------------------------------------------------

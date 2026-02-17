@@ -1,5 +1,5 @@
 --------------------------------------------------------------------------------
-REVISÃO DE SESSÃO: fev 2026 | STATUS: WIKI FISCAL IMPLEMENTADA (v1.0.14)
+REVISÃO DE SESSÃO: fev 2026 | STATUS: WIKI FISCAL IMPLEMENTADA (v1.0.15)
 --------------------------------------------------------------------------------
 
 PRODUTO: Wiki Fiscal CaraCore (2026-2033).

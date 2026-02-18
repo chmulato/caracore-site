@@ -202,6 +202,40 @@ Resumo:
 
 **Status:** ✅ ATIVO - Profissionalização de documentação
 
+### `generate_rss_feed.py` ✅ UTILITÁRIO
+
+**Função:** Gerar feeds RSS 2.0 a partir das páginas HTML estáticas de artigos.
+
+**Alvos atuais:**
+
+- `sala/redes/retro/articles.html` → `sala/redes/retro/feed.xml`
+- `personal/index.html` → `personal/feed.xml`
+
+**Funcionalidades:**
+
+- Faz parsing dos HTMLs e extrai automaticamente título, link e data de cada artigo.
+- Converte datas (DD/MM ou DD/MM/AAAA) para `pubDate` em formato RFC 2822.
+- Ordena os itens do feed por data, do mais recente para o mais antigo.
+- Atualiza `lastBuildDate` com base no artigo mais recente.
+- Gera links absolutos usando as canonicals públicas (`https://caracore.com.br/...`).
+
+**Uso:**
+
+```bash
+cd D:\dev\caracore-site
+
+# Apenas artigos retrô (Sala de Operações → Redes → Retrô)
+python scripts/generate_rss_feed.py --mode retro
+
+# Apenas blog pessoal (Christian Mulato Dev Blog)
+python scripts/generate_rss_feed.py --mode personal
+
+# Gerar/atualizar os dois feeds de uma vez
+python scripts/generate_rss_feed.py --mode both
+```
+
+**Status:** ✅ ATIVO - Mantém feeds RSS sincronizados com os HTMLs
+
 ## Arquivos de Backend (Pasta /backend)
 
 ### `app.py` ✅ PRODUÇÃO
@@ -323,7 +357,8 @@ scripts/
 ├── server.py              # Servidor de desenvolvimento
 ├── teste.py               # Script principal de testes
 ├── teste_oidc.py          # Validação OAuth 2.1 + OIDC
-└── remove_emojis_docs.py  # Limpeza de emojis em docs/
+├── remove_emojis_docs.py  # Limpeza de emojis em docs/
+└── generate_rss_feed.py   # Geração de feeds RSS a partir dos HTMLs
 
 backend/
 ├── app.py                 # Backend Flask OAuth (produção)

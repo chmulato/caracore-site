@@ -1,6 +1,6 @@
-# MIRROR — Circuito Python (Delivery)
+# MIRROR — Circuito Ferradura (Delivery)
 
-Este diretório é a **matriz** do delivery do **Circuito Python** (Cara Core Informática): controle centralizado, vitrine e links para o curso, feedback, licença e portal escolas.
+Este diretório é a **matriz** do delivery do **Circuito Ferradura** (Cara Core Informática): controle centralizado, vitrine e links para o curso, feedback, licença e portal escolas.
 
 ## Regra: apresentação de loja só na Matriz e na Filial
 
@@ -20,17 +20,17 @@ O conteúdo da filial espelha este delivery (matriz): balcão, canal-feedback, l
 
 ## Produto (mesma lógica do Minerador 4.0)
 
-- **Circuito Python:** versão **FREE** (Licença MIT) para pessoas físicas (jovens entusiastas e curiosos da programação).
+- **Circuito Ferradura:** versão **gratuita para pessoas físicas** (jovens entusiastas e curiosos da programação). O curso, as narrativas e os materiais são **propriedade exclusiva** da Cara Core Informática (não é open source).
 - **Instituições de ensino (Brasil):** uso em ambiente escolar exige **licença obrigatória** — R$ 5,00 mensais por aluno matriculado. Uso sem licença pode configurar **pirataria** e **responsabilização legal** (legislação de direitos autorais). Cara Core atua com profissionalismo e transparência.
-- **Curso:** disponível em formato HTML no repositório do produto (circuito_python). **Diploma/certificado:** assinatura e verificação criptográfica implementadas no repositório do produto.
+- **Curso:** disponível em formato HTML no repositório do produto (`circuito_python`) e em `https://chmulato.github.io/circuito_python/`. **Diploma/certificado:** assinatura e verificação criptográfica implementadas no repositório do produto.
 
 ## Páginas (matriz)
 
 | Página | Descrição |
 |--------|-----------|
-| `index.html` | Balcão: vitrine, FREE × escolas, links curso/feedback/licença/portal escolas |
+| `index.html` | Balcão: vitrine, versão gratuita para pessoas físicas × licença para escolas, links curso/feedback/licença/portal escolas |
 | `canal-feedback.html` | E-mail, WhatsApp, Telegram. Não atendemos ligações. |
-| `licenca-uso.html` | FREE (MIT) pessoas físicas; licença a pagamento escolas |
+| `licenca-uso.html` | Uso gratuito para pessoas físicas; licença a pagamento escolas; curso proprietário |
 | `portal-escolas.html` | Para escolas: regularizar licença R$ 5,00/aluno/mês |
 
 ## Atualização do espelho

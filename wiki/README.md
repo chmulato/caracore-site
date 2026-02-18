@@ -6,7 +6,7 @@ O Wiki da Cara Core Informática foi criado como um guia completo para **estagi�
 
 ### Objetivo Principal
 
-Fornecer explicações **claras e acessíveis** sobre nossos projetos principais (alinhados ao portfólio: PDV, Reino OIDC, Seed, Circuito Python, Hub, Área 51), usando linguagem simples para pessoas leigas e orientações técnicas específicas para estagiários. O Wiki está alinhado ao **Eco Mundo** (mapa visual do ecossistema: matriz → produtos → oficinas → lojas em [ecosistema.html](https://caracore.com.br/ecosistema.html)); todas as páginas da wiki incluem link "Eco Mundo" na navegação.
+Fornecer explicações **claras e acessíveis** sobre nossos projetos principais (alinhados ao portfólio: PDV, Reino OIDC, Seed, Circuito Ferradura, Hub, Área 51), usando linguagem simples para pessoas leigas e orientações técnicas específicas para estagiários. O Wiki está alinhado ao **Eco Mundo** (mapa visual do ecossistema: matriz → produtos → oficinas → lojas em [ecosistema.html](https://caracore.com.br/ecosistema.html)); todas as páginas da wiki incluem link "Eco Mundo" na navegação.
 
 ## Projetos Documentados
 
@@ -14,7 +14,7 @@ Fornecer explicações **claras e acessíveis** sobre nossos projetos principais
 2. **chmulatoETE Minerador 4.0** - Simulador ETE/hidrometalurgia para **Ensino Médio** e mineração (upgrade Ouro 4.0 R$ 29,90)
 3. **Reino OIDC** - Educação em OAuth 2.1 e OIDC
 4. **Cara Core Seed** - Contador de licenças (Windows, R$ 29,90)
-5. **Circuito Python** - Produto chamariz (curso FREE, licença escolas)
+5. **Circuito Ferradura** - Produto chamariz (curso proprietário de lógica, ábaco romano e Python para jovens; gratuito para pessoas físicas e licença para escolas)
 6. **Cara Core Hub** - Sistema de integração e e-commerce
 7. **Área 51** - Consultoria OIDC / autenticação enterprise
 
@@ -58,7 +58,7 @@ wiki/
 ### Depois (Wiki Unificado)
 
 - Localização: `D:\dev\site\cara-core\wiki\`
-- Foco: **Todos os projetos** (PDV, Minerador 4.0, Reino OIDC, Seed, Circuito Python, Hub, Área 51) com explicações para leigos e estagiários
+- Foco: **Todos os projetos** (PDV, Minerador 4.0, Reino OIDC, Seed, Circuito Ferradura, Hub, Área 51) com explicações para leigos e estagiários
 - Público: **Estagiários**, colaboradores e interessados em geral
 
 ### Links Atualizados
@@ -75,7 +75,7 @@ wiki/
 - **CaraCore Seed**: Gradiente laranja-amarelo (`#f7971e` → `#ffd200`)
 - **Reino OIDC**: Gradiente roxo-rosa (`#8f6ed5` → `#d084c9`)
 - **Área 51**: Gradiente azul-roxo (`#667eea` → `#764ba2`)
-- **Circuito Python**: Gradiente verde (`#2E8B57` → `#228B22`)
+- **Circuito Ferradura**: Gradiente verde (`#2E8B57` → `#228B22`)
 
 ### Seções Especiais
 

@@ -54,7 +54,7 @@ function initWikiSearch() {
             category: 'projeto'
         },
         {
-            title: 'Circuito Python',
+            title: 'Circuito Ferradura',
             description: 'Projeto de treinamento em Python para estagiários',
             url: 'projeto-python.html',
             tags: ['python', 'treinamento', 'educação', 'estagiário', 'tutorial'],

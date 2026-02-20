@@ -68,8 +68,11 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo “molde” 
   SUPORTE ÁREA 51
     Matriz: delivery/area51/
     Loja:   caracore-area51-releases/docs/
-    index  canal-feedback  .nojekyll
-    Observação: sem download (produto = suporte); loja com hero + canal de feedback.
+    index  download  licenca-uso  canal-feedback  .nojekyll
+    Observação: produto = serviço contratado (Suporte Área 51). Sem data de lançamento.
+    Download (renomeado conceitualmente para "O que o serviço entrega"): escopo do serviço, o que a empresa recebe, como contratar.
+    Licença: proprietária (não é MIT); gratuito PF; empresas/instituições requerem contratação.
+    Cara ↔ Crachá: narrativa e scripts (PI Cara Core) × padrão aberto OIDC/OAuth 2.1 (sem propriedade da Cara Core).
 
 -------------------------------------------------------------------------------
 4. REGRAS DE ALINHAMENTO

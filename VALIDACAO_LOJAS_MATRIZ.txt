@@ -1,7 +1,7 @@
 VALIDAÇÃO: LOJAS ALINHADAS COM A MATRIZ
 ========================================
 
-Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhadas com os portais da matriz (cara-core-site/delivery). Inclui o ramo Garagem (futuros lançamentos). Data da verificação: 05/02/2026; atualizado com Garagem em 06/02/2026.
+Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhadas com os portais da matriz (cara-core-site/delivery). Inclui o ramo Garagem (futuros lançamentos). Data da verificação: 05/02/2026; atualizado com Garagem em 06/02/2026; alinhamento Área 51 (download + licenca-uso + Cara↔Crachá) em 20/02/2026.
 
 -------------------------------------------------------------------------------
 
@@ -111,16 +111,19 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
   Loja:   caracore-area51-releases/docs/ (chmulato.github.io/caracore-area51-releases)
 
   Estrutura
-    Matriz: index, canal-feedback, MIRROR_DELIVERY.md
-    Loja:   index, canal-feedback (vitrine alinhada)
-  Status:  OK. Mensagem: suporte às empresas médias do Brasil para configurar os portais que o produto Área 51 oferece (OAuth 2.1, OIDC, PKCE).
+    Matriz: index, download, licenca-uso, canal-feedback, MIRROR_DELIVERY.md
+    Loja:   index, download, licenca-uso, canal-feedback (vitrine alinhada)
+  Status:  OK. Corrigido em 20/02/2026: Matriz recebeu download.html e licenca-uso.html (antes ausentes; Loja estava à frente da Matriz).
 
   Mensagem
-    Matriz e loja: produto = suporte para configurar os portais (login, painel admin, controle de acesso, auditoria); empresas médias do Brasil; exige tempo e investimento (energia da startup).
+    Matriz e loja: Suporte Área 51 = serviço contratado (sem data de lançamento); o que a empresa recebe ao contratar (login Google/Microsoft, painel admin, auditoria, LGPD).
+    Cara ↔ Crachá: narrativa e scripts = PI Cara Core (licença proprietária, não MIT); OIDC/OAuth 2.1/PKCE = padrão aberto (sem propriedade da Cara Core).
+    Licença proprietária em ambas: gratuito PF; empresas/instituições requerem contratação.
   Status:  OK.
 
   Links e CTAs
-    Matriz: "Ver loja (releases)" no hero, nav e footer. Loja: "Ver apresentação (matriz)" no hero e link para caracore.com.br/delivery/area51/.
+    Matriz: "Ver loja (releases)" no hero, nav e footer. Cards: download, licenca-uso, canal-feedback, loja, portfólio, documentação técnica (wiki).
+    Loja: "Ver apresentação (matriz)" no hero e link para caracore.com.br/delivery/area51/.
   Status:  OK.
 
 -------------------------------------------------------------------------------

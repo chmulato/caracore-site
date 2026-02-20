@@ -12,8 +12,10 @@ Este diretório é o **portal de delivery do Suporte Área 51** no domínio da *
 
 ## Conteúdo alinhado
 
-- **Matriz:** index (hero, o que é o suporte, benefícios, como contratar), canal-feedback (e-mail, WhatsApp, Telegram; assunto Suporte Área 51).
-- **Loja online:** index (hero, CTAs, pilares), canal-feedback. Mensagem alinhada à matriz: consultoria OAuth 2.1, OIDC, PKCE; solicitar suporte/orçamento.
+- **Matriz:** index (hero, o que é o suporte, Cara ↔ Crachá, benefícios, como contratar), download (o que o serviço entrega, Cara ↔ Crachá, serviço contratado), licenca-uso (licença proprietária, PI, uso e responsabilidade), canal-feedback.
+- **Loja online:** index (hero, CTAs, Reino das Entidades Federadas, Cara ↔ Crachá), download (o que o serviço entrega, serviço contratado), licenca-uso, canal-feedback. Mensagem alinhada à matriz: Suporte Área 51 = serviço contratado; sem data de lançamento; licença proprietária; solicitar orçamento.
+
+> **Regra de espelho:** a Matriz define as páginas; a Loja espelha. Novas páginas devem ser criadas na Matriz primeiro e depois replicadas na Loja via script de delivery.
 
 ## Links cruzados
 

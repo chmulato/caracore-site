@@ -205,11 +205,35 @@ O arquivo raiz `d:\dev\caracore-site\STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt` 
 | 6 | Evolution-status nas lojas CSO e Ink | Média | Médio |
 | 7 | Corrigir HTTP → HTTPS em PDV/consultoria.html | Média | Mínimo |
 | 8 | Seed — atualizar lista de produtos | Baixa | Mínimo |
-| 9 | Circuito — avaliar criar loja Pages dedicada | Baixa | Alto |
+| 9 | ~~Circuito — avaliar criar loja Pages dedicada~~ | ~~Baixa~~ | ✅ Feito (19/02/2026) |
 | 10 | OIDC — renomear repo ou aceitar URL diferente | Baixa | Médio |
 | 11 | PDV — harmonização visual (Tailwind → vanilla CSS) | Baixa | Alto |
 | 12 | PDV — "Pronto para 2026" no menu (decisão editorial) | Baixa | Mínimo |
 | 13 | OIDC — aproximar header/branding do padrão | Baixa | Médio |
+
+---
+
+## Sessão 19/02/2026 — Executado
+
+| Produto | Arquivo | Ação | Status |
+|---------|---------|------|--------|
+| Circuito | `caracore-circuito-releases/docs/index.html` | MIT → proprietário (12 ocorrências) | ✅ |
+| Circuito | `delivery/circuito/index.html` | MIT → proprietário; hero CTA → relativo | ✅ |
+| Circuito | `delivery/circuito/curso/` | Curso HTML 6 fases copiado da oficina (`pages_ferradura/`) | ✅ |
+| Circuito | `caracore-circuito-releases/docs/curso/` | Curso HTML 6 fases copiado para loja | ✅ |
+| Circuito | CTA hero (loja e matriz) | `github.io/circuito_python/` → `curso/index.html` relativo | ✅ |
+| Circuito (loja) | nav-card Licença | Adicionado "Licença proprietária — não é MIT, não é open source" | ✅ |
+| Circuito (matriz) | nav-card Licença | Adicionado "Licença proprietária — não é MIT, não é open source" | ✅ |
+| OIDC | `caracore-oidc/LICENSE` | Reescrito: MIT → licença proprietária Cara Core | ✅ |
+| OIDC | `caracore-oidc/LICENSING.md` | Reescrito: "não é MIT, não é open source" | ✅ |
+| OIDC | `caracore-oidc/CONTEXTO_COLABORACAO_IA.md` | Seção 5 atualizada com aviso da decisão | ✅ |
+| OIDC | `caracore-oidc-releases/docs/index.html` | Footer: MIT → proprietário; span morto → link matriz | ✅ |
+| OIDC | `caracore-oidc-releases/docs/licenca-uso.html` | Título, meta, header, bloco FREE → proprietário | ✅ |
+| OIDC | `delivery/oidc/index.html` | Hero, footer: MIT → proprietário; span Circuito → link real | ✅ |
+| Área 51 | `caracore-area51-releases/docs/index.html` | "produto MIT" → "produto proprietário Cara Core" (3 ocorrências) | ✅ |
+| Memória | `D:\dev\CONTEXTO_SESSAO_IA.md` | Arquivo central de memória criado | ✅ |
+| Memória | `delivery/oidc/MIRROR_DELIVERY.md` | Atualizado: MIT → proprietário + aviso | ✅ |
+| Memória | `delivery/circuito/MIRROR_DELIVERY.md` | Atualizado: curso na loja + aviso | ✅ |
 
 ---
 

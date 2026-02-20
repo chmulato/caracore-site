@@ -17,7 +17,9 @@ Este diretório é a **matriz** do produto Reino OIDC. Toda a lógica de negóci
 - **index.html** — Balcão (portal): breadcrumb *Cara Core Informática · Portfólio · Reino OIDC — Delivery*; cards para Conteúdo FREE, Upgrade, Canal de feedback, Licença, Portfólio e Repositório.
 - **conteudo-free.html** — Landing do conteúdo FREE: história, personagens, conhecimento, academia, glossário, mapas.
 - **canal-feedback.html** — Canal de sugestões, bugs e dúvidas (WhatsApp, Telegram, e-mail).
-- **licenca-uso.html** — Termos do conteúdo FREE (MIT) e do upgrade Premium (O Trono da Identidade).
+- **licenca-uso.html** — Termos de uso: gratuito para pessoas físicas (uso pessoal e estudo). **Licença proprietária — não é MIT, não é open source.** Direitos da Cara Core Informática reservados. Upgrade Premium (O Trono da Identidade).
+
+> ⚠️ **Decisão 19/02/2026:** Reino OIDC convertido de MIT para licença **PROPRIETÁRIA**. Nenhum arquivo deve usar "MIT", "open source" ou "licença livre" para descrever este produto. Sempre usar: "Licença proprietária — não é MIT. Gratuito para pessoas físicas (uso pessoal e estudo)." Arquivos atualizados: `LICENSE`, `LICENSING.md`, `CONTEXTO_COLABORACAO_IA.md` (oficina); `index.html`, `licenca-uso.html` (loja); `delivery/oidc/index.html` (matriz); `caracore-area51-releases/docs/index.html`.
 - **upgrade-trono.html** — Página de compra do upgrade (R$ 29,90, PIX).
 
 Todas as páginas FREE (personagens, historia_p1/2/3, conclusao, mundo_do_conhecimento, caminho_feliz, aprendiz, glossario, mapas) possuem:

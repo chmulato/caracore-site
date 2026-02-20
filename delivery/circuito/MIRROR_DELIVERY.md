@@ -29,9 +29,12 @@ O conteúdo da filial espelha este delivery (matriz): balcão, canal-feedback, l
 | Página | Descrição |
 |--------|-----------|
 | `index.html` | Balcão: vitrine, versão gratuita para pessoas físicas × licença para escolas, links curso/feedback/licença/portal escolas |
+| `curso/` | **Curso HTML completo — 6 fases** (copiado de `caracore-circuito/pages_ferradura/`). Também copiado para `caracore-circuito-releases/docs/curso/`. CTA primary aponta para `curso/index.html` em ambas. |
 | `canal-feedback.html` | E-mail, WhatsApp, Telegram. Não atendemos ligações. |
-| `licenca-uso.html` | Uso gratuito para pessoas físicas; licença a pagamento escolas; curso proprietário |
+| `licenca-uso.html` | Uso gratuito para pessoas físicas; licença a pagamento escolas; **curso proprietário — não é MIT, não é open source** |
 | `portal-escolas.html` | Para escolas: regularizar licença R$ 5,00/aluno/mês |
+
+> ⚠️ **Decisão 19/02/2026:** Curso HTML copiado para `delivery/circuito/curso/` (matriz) e `caracore-circuito-releases/docs/curso/` (loja). CTAs primary atualizados de link externo GitHub Pages para `curso/index.html` relativo. Mensagem "Licença proprietária — não é MIT, não é open source" adicionada a ambas as páginas `index.html`.
 
 ## Atualização do espelho
 

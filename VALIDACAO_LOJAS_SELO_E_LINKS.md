@@ -40,8 +40,8 @@ Objetivo: evitar links que apontam para fora do GitHub (portfolio, delivery/...)
 | **PDV** | portfolio, delivery/pdv | ✓ Ajustado (index, download, tecnologia, canal-feedback) |
 | **Soberania RU** | portfolio, delivery/ru | Pendente: substituir por interno/texto |
 | **Contador Seed** | Já ajustado | OK |
-| **Circuito Python** | portfolio, delivery/circuito | Pendente: substituir por interno/texto |
-| **Reino OIDC** | portfolio, delivery/oidc | ✓ Parcial (index: navbar e footer); demais páginas pendentes |
+| **Circuito Python** | portfolio, delivery/circuito | ✅ Concluído (19/02/2026): curso interno `curso/index.html`; CTA primary relativo; loja e matriz alinhadas |
+| **Reino OIDC** | portfolio, delivery/oidc | ✅ Parcial (index: navbar + footer); demais páginas pendentes |
 
 ---
 

@@ -1,13 +1,13 @@
 # MIRROR — RU Soberano (Delivery)
 
-Este diretório é a **matriz** do delivery do **RU Soberano** (Cara Core Informática): chamada oficial, vitrine e links para feedback e portfólio. Alinhamento com oficina e loja para **lançamento em 18 de Junho de 2026**.
+Este diretório é a **matriz** do delivery do **RU Soberano** (Cara Core Informática): chamada oficial, vitrine e links para feedback e portfólio. Alinhamento com oficina e loja para **lançamento em 18 de Junho de 2027**.
 
 ## Regra: apresentação na Matriz; oficina e loja no ecossistema
 
 - **Oficina** (código-fonte e desenvolvimento): ambiente de trabalho **caracore-ru** (path de desenvolvimento: oficina do produto).
-- **Loja** (vitrine e releases): **caracore-ru-releases** — vitrine disponível (download, licença, manual técnico, canal de feedback); alinhada ao lançamento de 18/Junho/2026.
+- **Loja** (vitrine e releases): **caracore-ru-releases** — vitrine disponível (download, licença, manual técnico, canal de feedback); alinhada ao lançamento de 18/Junho/2027.
 - **Apresentação (delivery):** na **Matriz** Cara Core Informática (este diretório: `delivery/ru`).
-- **Lançamento:** 18 de Junho de 2026.
+- **Lançamento:** 18 de Junho de 2027.
 
 ## Espelho e alinhamento
 
@@ -24,7 +24,7 @@ O conteúdo desta chamada (matriz) descreve o produto, a data de lançamento e a
 
 | Página | Descrição |
 |--------|-----------|
-| `index.html` | Chamada: o que é RU Soberano, lançamento 18/Junho/2026, oficina · loja |
+| `index.html` | Chamada: o que é RU Soberano, lançamento 18/Junho/2027, oficina · loja |
 | `canal-feedback.html` | E-mail suporte@caracore.com.br, Telegram ou WhatsApp +55 (41) 9 9909-7797. Não atendemos ligações telefônicas. |
 | `fluxo_mensagens_vendas.md` | Fluxo de mensagens (Conversion & Technical Support): boas-vindas HWID, teaser Data Sheet, automação pós-PIX, instruções pós-venda. |
 | `email_pos_venda.html` | Template de e-mail de entrega: Dossiê Soberano (PDF), link executável, license.key; tom “Parabéns pela Ascensão Acadêmica”. Substituir [NOME_ALUNO] e [LINK_EXECUTAVEL]. |

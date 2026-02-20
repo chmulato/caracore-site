@@ -11,6 +11,9 @@ Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos d
   Reino OIDC         https://chmulato.github.io/reino-oidc-releases/        https://caracore.com.br/delivery/oidc/
   Cara Core Seed     https://chmulato.github.io/caracore-seed-releases/      https://caracore.com.br/delivery/seed/
   Suporte Área 51    https://chmulato.github.io/caracore-area51-releases/   https://caracore.com.br/delivery/area51/
+  RU Soberano        https://chmulato.github.io/caracore-ru-releases/       https://caracore.com.br/delivery/ru/
+  Cara Core CSO      https://chmulato.github.io/caracore-cso-releases/      https://caracore.com.br/delivery/cso/
+  Ink Agenda         https://chmulato.github.io/caracore-ink-releases/      https://caracore.com.br/delivery/ink/
 
   Loja online: vitrine pública (download, apresentação resumida, canal de feedback). Publicada a partir da pasta docs/ ou raiz do repositório -releases no GitHub Pages.
   Matriz: portal completo no domínio Cara Core (apresentação completa, consultoria, demonstração, Wiki quando houver).
@@ -18,4 +21,4 @@ Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos d
 Alinhamento de CTAs (matriz e loja)
   Matriz: em cada delivery há link "Ver loja (releases)" (hero, nav ou footer) para a URL da loja acima. Loja: em cada vitrine há CTA "Ver apresentação (matriz)" (hero e/ou footer) para o portal completo (delivery/...) no site Cara Core. Referência de validação: VALIDACAO_LOJAS_MATRIZ.txt.
 
-Atualizado em 05/02/2026. Para portfólio e links oficiais: https://caracore.com.br/portfolio.html
+Atualizado em 19/02/2026. Para portfólio e links oficiais: https://caracore.com.br/portfolio.html

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circuito Ferradura — Demo Interativo Console</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        :root {
+            --verde-pista: #1a7a3c;
+            --verde-claro: #2da858;
+            --terra-vermelha: #b03a2e;
+            --amarelo-palotina: #f4c430;
+            --cinza-console: #1e1e1e;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .navbar-ferradura {
+            background-color: var(--verde-pista);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--verde-pista) 0%, var(--verde-claro) 60%, var(--amarelo-palotina) 100%);
+            color: white;
+            padding: 5rem 0 4rem;
+        }
+
+        .hero .badge-produto {
+            background-color: var(--amarelo-palotina);
+            color: #1a1a1a;
+            font-size: .9rem;
+            font-weight: 700;
+            border-radius: 2rem;
+            padding: .35rem 1rem;
+        }
+
+        .hero h1 { font-size: 3.2rem; font-weight: 800; }
+        .hero .subtitulo { font-size: 1.25rem; opacity: .9; }
+
+        .console-block {
+            background-color: var(--cinza-console);
+            color: #c8f0a0;
+            font-family: 'Cascadia Code', 'Consolas', 'Courier New', monospace;
+            font-size: .88rem;
+            border-radius: .75rem;
+            padding: 1.5rem;
+            line-height: 1.7;
+            box-shadow: 0 4px 20px rgba(0,0,0,.35);
+            overflow-x: auto;
+        }
+
+        .console-block .prompt { color: #5af78e; }
+        .console-block .borda  { color: #f4c430; }
+        .console-block .enter  { color: #75bfff; font-style: italic; }
+        .console-block .result { color: #ff8c42; }
+
+        .card-fase {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,.08);
+            height: 100%;
+            transition: transform .2s;
+        }
+        .card-fase:hover { transform: translateY(-4px); }
+        .card-fase .card-header {
+            background-color: var(--verde-pista);
+            color: white;
+            border-radius: 1rem 1rem 0 0 !important;
+            font-weight: 700;
+        }
+
+        .badge-fase {
+            background-color: var(--verde-claro);
+            color: white;
+        }
+
+        .btn-download {
+            background-color: var(--verde-pista);
+            border-color: var(--verde-pista);
+            color: white;
+            font-size: 1.15rem;
+            font-weight: 700;
+            border-radius: .6rem;
+            padding: .75rem 2rem;
+        }
+        .btn-download:hover {
+            background-color: var(--verde-claro);
+            border-color: var(--verde-claro);
+            color: white;
+        }
+
+        .secao-titulo {
+            color: var(--verde-pista);
+            font-weight: 800;
+            position: relative;
+            padding-bottom: .5rem;
+        }
+        .secao-titulo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--amarelo-palotina);
+            border-radius: 2px;
+        }
+
+        .passo-instalacao {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .passo-num {
+            width: 2.5rem; height: 2.5rem;
+            background: var(--verde-pista);
+            color: white;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .tag-versao {
+            background: #e8f5e9;
+            color: var(--verde-pista);
+            border: 1px solid var(--verde-claro);
+            border-radius: .4rem;
+            padding: .15rem .6rem;
+            font-size: .8rem;
+            font-weight: 700;
+        }
+
+        footer {
+            background-color: var(--cinza-console);
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-ferradura navbar-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold fs-5" href="#">🏁 Circuito Ferradura</a>
+        <span class="tag-versao">v2.0.0</span>
+    </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero text-center">
+    <div class="container">
+        <span class="badge-produto mb-3 d-inline-block">Demo Interativo · Console Python</span>
+        <h1 class="mb-3">Circuito Ferradura</h1>
+        <p class="subtitulo mb-5 col-md-8 mx-auto">
+            Percorra a pista de terra vermelha de Palotina — 1993.<br>
+            Aprenda variáveis, operações e funções com um <strong>ábaco romano em Python</strong>,
+            diretamente no terminal.
+        </p>
+        <a href="CircuitoFerradura.exe" class="btn btn-download btn-lg me-2">
+            ⬇ Baixar CircuitoFerradura.exe
+        </a>
+        <p class="mt-3" style="opacity:.75; font-size:.9rem;">
+            Windows · Sem instalação · ~6 MB
+        </p>
+    </div>
+</section>
+
+<!-- Preview do console -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center secao-titulo mb-5">O que você vai ver</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <div class="console-block">
+<span class="borda">██████████████████████████████████████████████████████████</span>
+<span class="borda">█                  🏁 CIRCUITO FERRADURA                   █</span>
+<span class="borda">█          Palotina, PR — Terra Vermelha 1993              █</span>
+<span class="borda">█              Ábaco Romano em Python  v2.0.0              █</span>
+<span class="borda">██████████████████████████████████████████████████████████</span>
+
+<span class="prompt">╔══════════════════════════════════════════╗
+║  FASE 1 — O Terreno Vazio  |  09/02/1993 ║
+╚══════════════════════════════════════════╝</span>
+
+  [2] Armando o número 1993 — o ano em que a pista foi construída:
+<span class="result">  Valor: 1993 · Unidades=3 · Dezenas=9 · Centenas=9 · Milhares=1</span>
+
+  [4] Zerando o ábaco (voltando ao terreno vazio):
+      Valor após zerar: 0
+
+<span class="enter">  [ Pressione ENTER para avançar para a Fase 2 ] _</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- As 4 Fases -->
+<section class="py-5" style="background:#f0faf2;">
+    <div class="container">
+        <h2 class="text-center secao-titulo mb-5">As 4 Fases do Demo</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card card-fase">
+                    <div class="card-header">
+                        <span class="badge badge-fase me-2">Fase 1</span>
+                        O Terreno Vazio
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-1"><strong>Conceito:</strong> Variáveis e atribuição de valores</p>
+                        <p class="text-muted mb-0">
+                            Palotina, 1983. Antes de construir a pista, o terreno precisava ser limpo.
+                            No ábaco: zerar = declarar uma variável sem valor.
+                            Armar <code>1993</code> = atribuir o ano em que a pista nasceu.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-fase">
+                    <div class="card-header">
+                        <span class="badge badge-fase me-2">Fase 2</span>
+                        A Curva da Paineira
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-1"><strong>Conceito:</strong> Somas e subtrações — o embalo</p>
+                        <p class="text-muted mb-0">
+                            A Paineira exigia embalo: velocidade acumulada <em>antes</em> da curva.
+                            No ábaco: <code>500 + 93 = 593</code>. Subtrair é controlar o embalo.
+                            Série de 5 pedaladas de 7: acúmulo iterativo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-fase">
+                    <div class="card-header">
+                        <span class="badge badge-fase me-2">Fase 3</span>
+                        O Salto da Rampa
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-1"><strong>Conceito:</strong> Condicionais — a decisão da rampa</p>
+                        <p class="text-muted mb-0">
+                            4 pilotos, 4 esforços diferentes. O resultado do salto depende
+                            da velocidade: <code>BURACO / QUASE / VOOU / LENDÁRIO</code>.
+                            Cada piloto é um objeto <code>Bicicleta</code> com estado próprio.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card card-fase">
+                    <div class="card-header">
+                        <span class="badge badge-fase me-2">Fase 6</span>
+                        O Lucro na Calçada
+                    </div>
+                    <div class="card-body">
+                        <p class="mb-1"><strong>Conceito:</strong> Funções e resultado justo</p>
+                        <p class="text-muted mb-0">
+                            R$ 120,00 arrecadados. Divididos igualmente entre os 6 amigos
+                            que construíram a pista. <code>distribuir_lucro(120.0)</code>:
+                            cada participante tem o mesmo valor — o fundamento da lógica.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Como usar -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <h2 class="text-center secao-titulo mb-5">Como Executar</h2>
+                <div class="passo-instalacao">
+                    <div class="passo-num">1</div>
+                    <div>
+                        <strong>Baixe o executável</strong><br>
+                        <small class="text-muted">Clique em "Baixar CircuitoFerradura.exe" acima. Arquivo único, ~6 MB.</small>
+                    </div>
+                </div>
+                <div class="passo-instalacao">
+                    <div class="passo-num">2</div>
+                    <div>
+                        <strong>Execute com duplo clique</strong><br>
+                        <small class="text-muted">Nenhuma instalação necessária. Windows pode pedir confirmação — clique em "Executar assim mesmo".</small>
+                    </div>
+                </div>
+                <div class="passo-instalacao">
+                    <div class="passo-num">3</div>
+                    <div>
+                        <strong>Pressione ENTER entre as fases</strong><br>
+                        <small class="text-muted">Cada fase termina com uma pausa. Você controla o ritmo. Leia, entenda, avance.</small>
+                    </div>
+                </div>
+                <div class="passo-instalacao">
+                    <div class="passo-num">4</div>
+                    <div>
+                        <strong>Acesse o curso completo</strong><br>
+                        <small class="text-muted">Este demo cobre as Fases 1, 2, 3 e 6. O curso completo com 6 módulos está
+                            disponível no <strong>Circuito Python</strong> (aplicativo desktop com interface gráfica).</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Requisitos -->
+<section class="py-4" style="background:#f0faf2;">
+    <div class="container text-center">
+        <h5 class="mb-3 fw-bold" style="color: var(--verde-pista);">Requisitos</h5>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+            <span class="badge bg-secondary fs-6">🖥 Windows 10 / 11</span>
+            <span class="badge bg-secondary fs-6">📦 Sem instalação</span>
+            <span class="badge bg-secondary fs-6">🐍 Python embutido</span>
+            <span class="badge bg-secondary fs-6">⌨ Terminal (CMD ou PowerShell)</span>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-4 text-center">
+    <div class="container">
+        <p class="mb-1">
+            <strong style="color:white;">Circuito Ferradura</strong>
+            <span class="tag-versao ms-2">v2.0.0</span>
+        </p>
+        <p class="mb-0" style="font-size:.85rem;">
+            Produto: <em>console demo</em> · Pacote: <code>circuito_ferradura</code> ·
+            Cara Core © 2025–2026
+        </p>
+        <p class="mt-2 mb-0" style="font-size:.8rem;">
+            Não confundir com <strong>Circuito Python</strong> (aplicativo desktop com curso completo).
+        </p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmDlx6hWkMUzCJWRjl8LxJKqscJ" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--
+    Circuito Ferradura — Fase 6: O Lucro na Calçada
+    Copyright © 2025-2026 Cara Core Informática · Todos os direitos reservados.
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 6: O Lucro na Calçada — Circuito Ferradura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">🏁 Circuito Ferradura<span class="tag-versao">v2.0.0</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navFases" role="button" data-bs-toggle="dropdown">Fases</a>
+                    <ul class="dropdown-menu" aria-labelledby="navFases">
+                        <li><a class="dropdown-item" href="fase_01.html">Fase 1 — O Terreno Vazio</a></li>
+                        <li><a class="dropdown-item" href="fase_02.html">Fase 2 — A Curva da Paineira</a></li>
+                        <li><a class="dropdown-item" href="fase_03.html">Fase 3 — O Salto da Rampa</a></li>
+                        <li><a class="dropdown-item" href="fase_04.html">Fase 4 — A Subida de Recuperação</a></li>
+                        <li><a class="dropdown-item" href="fase_05.html">Fase 5 — A Grande Corrida</a></li>
+                        <li><a class="dropdown-item active" href="fase_06.html">Fase 6 — O Lucro na Calçada</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="mundo_do_conhecimento.html">Pista</a></li>
+                <li class="nav-item"><a class="nav-link" href="conclusao.html">Certificado</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <div class="text-center mb-4">
+                <span class="badge-fase">Fase 6</span>
+                <span class="badge-duracao">4 horas</span>
+                <span class="badge-nivel">Conclusão</span>
+            </div>
+
+            <h1 class="text-center">O Lucro na Calçada</h1>
+            <p class="lead text-center">
+                No final da tarde, os seis amigos sentavam na calçada e dividiam o lucro — tudo
+                o que tinham conquistado juntos. Aqui você aprende a apresentar o que construiu:
+                portfólio, GitHub e o certificado que comprova sua jornada.
+            </p>
+
+            <img src="assets/img/imagem_modulo_06.png"
+                 alt="Fase 6 — O Lucro na Calçada · Portfólio e GitHub"
+                 class="img-fase">
+
+            <div id="progress-indicator" class="alert">Progresso: 0/8 (0%)</div>
+
+            <div class="content-section">
+                <h2>Objetivos da Fase</h2>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h4>O que você vai aprender:</h4>
+                        <ul>
+                            <li>Estrutura de um <code>README.md</code> profissional</li>
+                            <li>Commits semânticos: <code>feat</code>, <code>fix</code>, <code>docs</code>, <code>refactor</code></li>
+                            <li>GitHub Pages: publicar um site diretamente do repositório</li>
+                            <li>Boas práticas de código: nomes, docstrings, type hints</li>
+                            <li>Função <code>distribuir_lucro()</code>: divisão justa entre contribuidores</li>
+                            <li>Como montar um portfólio técnico que impressiona recrutadores</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>O que você vai entregar:</h4>
+                        <ul>
+                            <li>Repositório público no GitHub com todos os projetos do circuito</li>
+                            <li><code>README.md</code> completo com badges e GIFs demonstrativos</li>
+                            <li>GitHub Pages funcionando com <code>pages_ferradura/</code></li>
+                            <li>Distribuição do lucro entre os 6 contribuidores</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>6.1 — Dividindo o Lucro com Código</h2>
+                <p>
+                    A metáfora final do Circuito: os 6 amigos na calçada, dividindo o que ganharam.
+                    No código, isso significa distribuir crédito de forma proporcional às contribuições.
+                </p>
+                <div class="console-block">
+<span class="comment"># distribuir_lucro() — a calçada em código</span>
+<span class="prompt">def</span> distribuir_lucro(total: float, participantes: list[str] = None) -> dict:
+    <span class="prompt">"""Distribui lucro igualmente entre os participantes.
+
+    Args:
+        total: Valor total a distribuir (em reais).
+        participantes: Lista de nomes. Padrão: os 6 amigos.
+
+    Returns:
+        Dicionário {nome: valor_recebido}.
+    """</span>
+    <span class="prompt">if</span> participantes <span class="prompt">is</span> None:
+        participantes = ["Ciclano", "Tobias", "Marieta", "Zelão", "Pimenta", "Grilo"]
+    valor = round(total / len(participantes), 2)
+    <span class="prompt">return</span> {nome: valor <span class="prompt">for</span> nome <span class="prompt">in</span> participantes}
+
+resultado = distribuir_lucro(120.0)
+<span class="prompt">for</span> nome, valor <span class="prompt">in</span> resultado.items():
+    <span class="prompt">print</span>(f"  {nome}: R$ {valor:.2f}")
+<span class="result">  Ciclano: R$ 20.00
+  Tobias: R$ 20.00
+  Marieta: R$ 20.00
+  Zelão: R$ 20.00
+  Pimenta: R$ 20.00
+  Grilo: R$ 20.00</span></div>
+            </div>
+
+            <div class="content-section">
+                <h2>6.2 — Commits Semânticos</h2>
+                <p>
+                    Um histórico Git limpo é tão importante quanto o código. Commits semânticos
+                    contam a história do projeto — cada um sabe o que foi feito e por quê.
+                </p>
+                <div class="console-block">
+<span class="comment"># Padrão: tipo(escopo): descrição concisa</span>
+
+git commit -m "feat(fase01): adiciona função calcular_abaco()"
+git commit -m "fix(fase02): corrige colisão da bola na borda inferior"
+git commit -m "docs(readme): adiciona badges de versão e licença"
+git commit -m "refactor(bot): extrai lógica de predição para BotFerradura"
+git commit -m "test(distribuir): adiciona testes para valores extremos"
+git commit -m "chore(deps): atualiza scikit-learn para 1.4.0"</div>
+            </div>
+
+            <div class="content-section">
+                <h2>6.3 — README.md Profissional</h2>
+                <p>
+                    O README é a calçada do seu projeto — a primeira coisa que qualquer pessoa vê.
+                    Ele deve contar o que é, como rodar e o que você aprendeu.
+                </p>
+                <div class="console-block">
+<span class="comment"># Estrutura recomendada para README.md</span>
+
+# 🏁 Circuito Ferradura
+
+![Version](https://img.shields.io/badge/version-2.0.0-verde)
+![Python](https://img.shields.io/badge/python-3.11+-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
+> Curso intensivo de Python inspirado nas corridas de bicicleta
+> de Palotina-PR, 1993. 40 horas · 6 fases · 1 certificado.
+
+## 🚀 Como rodar
+
+```bash
+pip install -r requirements.txt
+python circuito_ferradura/demo.py
+```
+
+## 📁 Estrutura
+
+```
+├── circuito_ferradura/   # Código-fonte do simulador
+├── pages_ferradura/      # Site de apresentação (GitHub Pages)
+└── testes/               # Suíte de testes pytest
+```
+
+## 🏆 Certificado
+
+Conclua as 6 fases e acesse o certificado em:
+https://&lt;seu-usuario&gt;.github.io/circuito-ferradura/páginas/conclusao.html</div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="content-section">
+                <h2>✅ Checklist da Fase 6</h2>
+                <div class="checklist-item"><input type="checkbox" id="f6-1"><label for="f6-1">Implementei <code>distribuir_lucro()</code> com type hints e docstring</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f6-2"><label for="f6-2">Todos os projetos das 6 fases estão no mesmo repositório Git</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f6-3"><label for="f6-3">Usei commits semânticos para registrar as mudanças finais</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f6-4"><label for="f6-4">Escrevi um <code>README.md</code> com badges, descrição e instruções de uso</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f6-5"><label for="f6-5">Configurei GitHub Pages para publicar <code>pages_ferradura/</code></label></div>
+                <div class="checklist-item"><input type="checkbox" id="f6-6"><label for="f6-6">Testei o site publicado e todos os links funcionam</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f6-7"><label for="f6-7">Adicionei GIF ou screenshot do console executando o simulador</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f6-8"><label for="f6-8">Compartilhei o link do repositório e do certificado gerado</label></div>
+            </div>
+
+            <div class="alert-ferradura">
+                <h4>🏆 Você completou o Circuito Ferradura!</h4>
+                <p>
+                    Das variáveis na terra vermelha de Palotina até um portfólio completo no GitHub —
+                    40 horas de Python aplicadas à cultura de quem cresceu pedalando.
+                    Agora é hora de gerar seu certificado.
+                </p>
+                <a href="conclusao.html" class="btn btn-ferradura">Gerar meu certificado CF-1993 →</a>
+            </div>
+
+            <div class="nav-fases">
+                <a href="fase_05.html" class="btn btn-outline-secondary">← Fase 5: A Grande Corrida</a>
+                <a href="conclusao.html" class="btn btn-ferradura">Certificado →</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><p>© 2025–2026 Circuito Ferradura — Cara Core Informática</p></div>
+            <div class="col-md-6 text-end"><p><a href="index.html">← Voltar ao início</a></p></div>
+        </div>
+    </div>
+</footer>
+
+<div id="lgpd-banner" class="lgpd-banner d-none">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8"><p class="mb-0"><strong>🔒 LGPD</strong> — Usamos localStorage para salvar progresso.</p></div>
+            <div class="col-md-4 text-end">
+                <button id="lgpd-accept" class="btn btn-light btn-sm me-2">Aceitar</button>
+                <button id="lgpd-deny"   class="btn btn-outline-light btn-sm">Recusar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmDlx6hWkMUzCJWRjl8LxJKqscJ" crossorigin="anonymous"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+</html>

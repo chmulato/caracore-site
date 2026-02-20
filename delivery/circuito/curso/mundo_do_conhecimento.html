@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+    Circuito Ferradura — Pista do Conhecimento (Quiz)
+    Copyright © 2025-2026 Cara Core Informática · Todos os direitos reservados.
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pista do Conhecimento — Circuito Ferradura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">🏁 Circuito Ferradura<span class="tag-versao">v2.0.0</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navFases" role="button" data-bs-toggle="dropdown">Fases</a>
+                    <ul class="dropdown-menu" aria-labelledby="navFases">
+                        <li><a class="dropdown-item" href="fase_01.html">Fase 1 — O Terreno Vazio</a></li>
+                        <li><a class="dropdown-item" href="fase_02.html">Fase 2 — A Curva da Paineira</a></li>
+                        <li><a class="dropdown-item" href="fase_03.html">Fase 3 — O Salto da Rampa</a></li>
+                        <li><a class="dropdown-item" href="fase_04.html">Fase 4 — A Subida de Recuperação</a></li>
+                        <li><a class="dropdown-item" href="fase_05.html">Fase 5 — A Grande Corrida</a></li>
+                        <li><a class="dropdown-item" href="fase_06.html">Fase 6 — O Lucro na Calçada</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href="mundo_do_conhecimento.html">Pista</a></li>
+                <li class="nav-item"><a class="nav-link" href="conclusao.html">Certificado</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <div class="text-center mb-4">
+                <h1>🏁 Pista do Conhecimento</h1>
+                <p class="lead">
+                    Você conhece o Circuito? Responda as 10 perguntas e prove que
+                    domina das variáveis Python até o JWT. Mínimo de 70% para aprovação.
+                </p>
+            </div>
+
+            <div class="alert-palotina">
+                <strong>📋 Instruções:</strong> Escolha a alternativa correta para cada pergunta.
+                Ao final, clique em <strong>Verificar respostas</strong>.
+                Acertar ≥ 7 questões equivale à aprovação na Pista do Conhecimento.
+            </div>
+
+            <form id="quiz-form" class="content-section mt-4">
+
+                <!-- Questão 1 -->
+                <div class="quiz-question mb-4" data-answer="b">
+                    <p class="fw-bold">1. No sistema de ábaco romano, a pedra na posição <em>quinária</em> de uma coluna representa qual valor?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1a" value="a"><label class="form-check-label" for="q1a">1 (unidade simples)</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1b" value="b"><label class="form-check-label" for="q1b">5 × valor da coluna</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1c" value="c"><label class="form-check-label" for="q1c">10 × valor da coluna</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1d" value="d"><label class="form-check-label" for="q1d">A posição quinária não existe no ábaco romano</label></div>
+                </div>
+
+                <!-- Questão 2 -->
+                <div class="quiz-question mb-4" data-answer="c">
+                    <p class="fw-bold">2. Qual é o resultado de <code>calcular_salto(10.5)</code> considerando <code>ATRITO = 0.5</code>?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2a" value="a"><label class="form-check-label" for="q2a">QUASE</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2b" value="b"><label class="form-check-label" for="q2b">VOOU</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2c" value="c"><label class="form-check-label" for="q2c">LENDÁRIO</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2d" value="d"><label class="form-check-label" for="q2d">BURACO</label></div>
+                </div>
+
+                <!-- Questão 3 -->
+                <div class="quiz-question mb-4" data-answer="a">
+                    <p class="fw-bold">3. Em Python, qual palavra-chave é usada para definir uma classe?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3a" value="a"><label class="form-check-label" for="q3a"><code>class</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3b" value="b"><label class="form-check-label" for="q3b"><code>struct</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3c" value="c"><label class="form-check-label" for="q3c"><code>object</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3d" value="d"><label class="form-check-label" for="q3d"><code>type</code></label></div>
+                </div>
+
+                <!-- Questão 4 -->
+                <div class="quiz-question mb-4" data-answer="d">
+                    <p class="fw-bold">4. No Pygame, qual evento sinaliza que o usuário fechou a janela?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4a" value="a"><label class="form-check-label" for="q4a"><code>pygame.KEYDOWN</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4b" value="b"><label class="form-check-label" for="q4b"><code>pygame.MOUSEBUTTONDOWN</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4c" value="c"><label class="form-check-label" for="q4c"><code>pygame.EXIT</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4d" value="d"><label class="form-check-label" for="q4d"><code>pygame.QUIT</code></label></div>
+                </div>
+
+                <!-- Questão 5 -->
+                <div class="quiz-question mb-4" data-answer="b">
+                    <p class="fw-bold">5. Qual função do Minecraft Education Edition move o jogador para uma posição específica?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5a" value="a"><label class="form-check-label" for="q5a"><code>mc.player.getPos()</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5b" value="b"><label class="form-check-label" for="q5b"><code>mc.player.setPos(x, y, z)</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5c" value="c"><label class="form-check-label" for="q5c"><code>mc.world.teleport(x, y, z)</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5d" value="d"><label class="form-check-label" for="q5d"><code>mc.setBlock(x, y, z)</code></label></div>
+                </div>
+
+                <!-- Questão 6 -->
+                <div class="quiz-question mb-4" data-answer="a">
+                    <p class="fw-bold">6. Qual biblioteca Python é usada para abrir, modificar e salvar imagens?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6a" value="a"><label class="form-check-label" for="q6a">Pillow (PIL)</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6b" value="b"><label class="form-check-label" for="q6b">OpenCV apenas</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6c" value="c"><label class="form-check-label" for="q6c">imageio apenas</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6d" value="d"><label class="form-check-label" for="q6d">NumPy</label></div>
+                </div>
+
+                <!-- Questão 7 -->
+                <div class="quiz-question mb-4" data-answer="c">
+                    <p class="fw-bold">7. Em Machine Learning, o que significa "overfitting"?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7a" value="a"><label class="form-check-label" for="q7a">O modelo não aprendeu nada do dataset de treino</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7b" value="b"><label class="form-check-label" for="q7b">O modelo funciona bem com dados novos mas mal no treino</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7c" value="c"><label class="form-check-label" for="q7c">O modelo decorou o treino mas generaliza mal para dados novos</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7d" value="d"><label class="form-check-label" for="q7d">O modelo tem muitos parâmetros e é rápido demais</label></div>
+                </div>
+
+                <!-- Questão 8 -->
+                <div class="quiz-question mb-4" data-answer="b">
+                    <p class="fw-bold">8. No fluxo OAuth 2.0 (Authorization Code), qual é o passo imediatamente após o usuário autorizar o acesso?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8a" value="a"><label class="form-check-label" for="q8a">O access_token é enviado diretamente ao usuário</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8b" value="b"><label class="form-check-label" for="q8b">O provedor retorna um authorization_code ao redirect_uri</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8c" value="c"><label class="form-check-label" for="q8c">O app recebe diretamente o id_token</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8d" value="d"><label class="form-check-label" for="q8d">A sessão é encerrada por segurança</label></div>
+                </div>
+
+                <!-- Questão 9 -->
+                <div class="quiz-question mb-4" data-answer="d">
+                    <p class="fw-bold">9. Um JWT é composto por quantas partes separadas por ponto?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9a" value="a"><label class="form-check-label" for="q9a">2 (header + payload)</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9b" value="b"><label class="form-check-label" for="q9b">4 (header + payload + signature + timestamp)</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9c" value="c"><label class="form-check-label" for="q9c">1 (todo codificado junto)</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9d" value="d"><label class="form-check-label" for="q9d">3 (header + payload + signature)</label></div>
+                </div>
+
+                <!-- Questão 10 -->
+                <div class="quiz-question mb-4" data-answer="a">
+                    <p class="fw-bold">10. Qual padrão de commit está correto para adicionar uma nova funcionalidade?</p>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10a" value="a"><label class="form-check-label" for="q10a"><code>feat(fase01): adiciona função calcular_abaco()</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10b" value="b"><label class="form-check-label" for="q10b"><code>add: nova função no módulo 1</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10c" value="c"><label class="form-check-label" for="q10c"><code>update calcular_abaco</code></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10d" value="d"><label class="form-check-label" for="q10d"><code>✨ melhorei a função</code></label></div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-ferradura btn-lg">🏁 Verificar respostas</button>
+                </div>
+
+            </form>
+
+            <!-- Resultado -->
+            <div id="quiz-resultado" class="alert d-none mt-4" role="alert"></div>
+
+            <div class="text-center mt-4">
+                <a href="conclusao.html" class="btn btn-outline-secondary">🏆 Ir para o certificado</a>
+                <a href="index.html" class="btn btn-outline-secondary ms-2">← Início</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><p>© 2025–2026 Circuito Ferradura — Cara Core Informática</p></div>
+            <div class="col-md-6 text-end"><p><a href="index.html">← Voltar ao início</a></p></div>
+        </div>
+    </div>
+</footer>
+
+<div id="lgpd-banner" class="lgpd-banner d-none">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8"><p class="mb-0"><strong>🔒 LGPD</strong> — Usamos localStorage para salvar progresso.</p></div>
+            <div class="col-md-4 text-end">
+                <button id="lgpd-accept" class="btn btn-light btn-sm me-2">Aceitar</button>
+                <button id="lgpd-deny"   class="btn btn-outline-light btn-sm">Recusar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmDlx6hWkMUzCJWRjl8LxJKqscJ" crossorigin="anonymous"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+</html>

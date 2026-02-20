@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!--
+    Circuito Ferradura — Fase 5: A Grande Corrida
+    Copyright © 2025-2026 Cara Core Informática · Todos os direitos reservados.
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 5: A Grande Corrida — Circuito Ferradura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">🏁 Circuito Ferradura<span class="tag-versao">v2.0.0</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navFases" role="button" data-bs-toggle="dropdown">Fases</a>
+                    <ul class="dropdown-menu" aria-labelledby="navFases">
+                        <li><a class="dropdown-item" href="fase_01.html">Fase 1 — O Terreno Vazio</a></li>
+                        <li><a class="dropdown-item" href="fase_02.html">Fase 2 — A Curva da Paineira</a></li>
+                        <li><a class="dropdown-item" href="fase_03.html">Fase 3 — O Salto da Rampa</a></li>
+                        <li><a class="dropdown-item" href="fase_04.html">Fase 4 — A Subida de Recuperação</a></li>
+                        <li><a class="dropdown-item active" href="fase_05.html">Fase 5 — A Grande Corrida</a></li>
+                        <li><a class="dropdown-item" href="fase_06.html">Fase 6 — O Lucro na Calçada</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="mundo_do_conhecimento.html">Pista</a></li>
+                <li class="nav-item"><a class="nav-link" href="conclusao.html">Certificado</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <div class="text-center mb-4">
+                <span class="badge-fase">Fase 5</span>
+                <span class="badge-duracao">6 horas</span>
+                <span class="badge-nivel">Avançado</span>
+            </div>
+
+            <h1 class="text-center">A Grande Corrida</h1>
+            <p class="lead text-center">
+                Na reta final, só passa quem tem credencial. OAuth 2.0, OIDC e JWT
+                são os portões da segurança digital — saber abri-los é chegar primeiro.
+            </p>
+
+            <img src="assets/img/imagem_modulo_05.png"
+                 alt="Fase 5 — A Grande Corrida · OAuth 2.0, OIDC e JWT"
+                 class="img-fase">
+
+            <div id="progress-indicator" class="alert">Progresso: 0/8 (0%)</div>
+
+            <div class="content-section">
+                <h2>Objetivos da Fase</h2>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h4>O que você vai aprender:</h4>
+                        <ul>
+                            <li>OAuth 2.0: fluxo de autorização passo a passo</li>
+                            <li>OIDC (OpenID Connect): identidade sobre OAuth</li>
+                            <li>Estrutura de um JWT (header.payload.signature)</li>
+                            <li>Scopes, claims e o princípio do menor privilégio</li>
+                            <li>Diferença entre autenticação e autorização</li>
+                            <li>Provedores OIDC: Google, GitHub, Microsoft</li>
+                            <li>Biblioteca <code>python-jose</code> para JWT em Python</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>O que você vai criar:</h4>
+                        <ul>
+                            <li>Decodificador de JWT manual (base64url)</li>
+                            <li>Simulador do fluxo OAuth 2.0</li>
+                            <li>Validador de token OIDC com <code>python-jose</code></li>
+                            <li>Dashboard HTTP com rota protegida</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <a href="https://chmulato.github.io/reino_oidc/" target="_blank" class="btn btn-outline-secondary btn-sm">
+                        🏰 Reino OIDC — Leitura complementar
+                    </a>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>5.1 — O Portão da Corrida: OAuth 2.0</h2>
+                <p>
+                    Imagina a largada: o fiscal pede sua credencial, você apresenta sua identidade,
+                    ele emite um crachá temporário. Esse crachá é o <strong>access token</strong>.
+                </p>
+
+                <div class="alert-palotina">
+                    <h4>🔑 Fluxo Authorization Code</h4>
+                    <ol class="mb-0">
+                        <li><strong>Usuário</strong> clica em "Entrar com Google"</li>
+                        <li><strong>App</strong> redireciona para o provedor com <code>client_id</code> + <code>scope</code></li>
+                        <li><strong>Usuário</strong> autentica e autoriza</li>
+                        <li><strong>Provedor</strong> retorna um <code>authorization_code</code></li>
+                        <li><strong>App</strong> troca o código por <code>access_token</code> + <code>id_token</code></li>
+                        <li><strong>App</strong> usa o token para acessar recursos protegidos</li>
+                    </ol>
+                </div>
+
+                <div class="console-block">
+<span class="comment"># Simulador do fluxo OAuth 2.0 em Python</span>
+<span class="prompt">import</span> urllib.parse, secrets
+
+CLIENT_ID    = "circuito_ferradura_app"
+REDIRECT_URI = "http://localhost:8080/callback"
+SCOPE        = "openid profile email"
+
+state = secrets.token_urlsafe(16)   <span class="comment"># proteção CSRF</span>
+
+params = {
+    "response_type": "code",
+    "client_id":     CLIENT_ID,
+    "redirect_uri":  REDIRECT_URI,
+    "scope":         SCOPE,
+    "state":         state,
+}
+url = "https://accounts.google.com/o/oauth2/auth?" + urllib.parse.urlencode(params)
+<span class="prompt">print</span>(f"→ Redirecionar para:\n{url}")</div>
+            </div>
+
+            <div class="content-section">
+                <h2>5.2 — O Número do Peito: JWT</h2>
+                <p>
+                    Cada piloto tem um número no peito — único e verificável. O JWT funciona assim:
+                    três partes separadas por ponto, codificadas em base64url.
+                </p>
+                <div class="console-block">
+<span class="comment"># Estrutura de um JWT</span>
+<span class="comment"># HEADER.PAYLOAD.SIGNATURE</span>
+<span class="comment">#</span>
+<span class="comment"># Header  → {"alg": "RS256", "typ": "JWT"}</span>
+<span class="comment"># Payload → {"sub": "12345", "name": "Ciclano",</span>
+<span class="comment">#             "email": "ci@ferradura.dev", "iat": 1702930800}</span>
+
+<span class="prompt">import</span> base64, json
+
+<span class="prompt">def</span> decodificar_jwt(token: str) -> dict:
+    partes = token.split(".")
+    <span class="prompt">def</span> decode_b64(s):
+        padding = 4 - len(s) % 4
+        <span class="prompt">return</span> json.loads(base64.urlsafe_b64decode(s + "=" * padding))
+    header  = decode_b64(partes[0])
+    payload = decode_b64(partes[1])
+    <span class="prompt">return</span> {"header": header, "payload": payload, "assinatura": partes[2][:20] + "..."}
+
+<span class="comment"># Exemplo com python-jose (validação com chave pública)</span>
+<span class="prompt">from</span> jose <span class="prompt">import</span> jwt
+claims = jwt.decode(token, chave_publica, algorithms=["RS256"], audience=CLIENT_ID)
+<span class="prompt">print</span>(f"Bem-vindo, {claims['name']}!")</div>
+            </div>
+
+            <div class="content-section">
+                <h2>5.3 — OIDC: A Identidade sobre o OAuth</h2>
+                <p>
+                    OAuth diz <em>"você pode acessar"</em>. OIDC responde <em>"mas quem é você?"</em>.
+                    O <code>id_token</code> contém as claims de identidade verificáveis.
+                </p>
+                <div class="console-block">
+<span class="comment"># Claims típicas de um id_token OIDC</span>
+id_token_payload = {
+    "iss":   "https://accounts.google.com",  <span class="comment"># quem emitiu</span>
+    "sub":   "103456789012345678901",         <span class="comment"># ID único do usuário</span>
+    "aud":   CLIENT_ID,                      <span class="comment"># para quem é o token</span>
+    "exp":   1702934400,                     <span class="comment"># quando expira (Unix)</span>
+    "iat":   1702930800,                     <span class="comment"># quando foi emitido</span>
+    "name":  "Ciclano da Corrida",
+    "email": "ciclano@ferradura.dev",
+    "email_verified": True,
+}
+
+<span class="prompt">def</span> piloto_autenticado(claims: dict) -> bool:
+    <span class="prompt">import</span> time
+    <span class="prompt">return</span> claims.get("email_verified") <span class="prompt">and</span> claims["exp"] > time.time()</div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="content-section">
+                <h2>✅ Checklist da Fase 5</h2>
+                <div class="checklist-item"><input type="checkbox" id="f5-1"><label for="f5-1">Expliquei os 6 passos do fluxo Authorization Code para alguém</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f5-2"><label for="f5-2">Construí a URL de autorização OAuth 2.0 dinamicamente</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f5-3"><label for="f5-3">Decodifiquei manualmente o header e payload de um JWT real</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f5-4"><label for="f5-4">Validei um JWT com <code>python-jose</code> e verifiquei as claims</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f5-5"><label for="f5-5">Identifiquei as diferenças entre OAuth 2.0 e OIDC</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f5-6"><label for="f5-6">Implementei <code>piloto_autenticado()</code> com verificação de expiração</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f5-7"><label for="f5-7">Criei uma rota HTTP protegida que exige Bearer token</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f5-8"><label for="f5-8">Explorei o <a href="https://chmulato.github.io/reino_oidc/" target="_blank">Reino OIDC</a> e resumo os conceitos principais</label></div>
+            </div>
+
+            <div class="alert-terra">
+                <h4>🔐 Projeto da Fase 5</h4>
+                <p class="mb-0">
+                    Crie um micro-servidor Flask com duas rotas: <code>/login</code> (redireciona para Google OAuth)
+                    e <code>/dashboard</code> (protegida — exige <code>id_token</code> válido na sessão).
+                    Use <code>python-jose</code> para validar o token e exiba o nome do piloto autenticado.
+                </p>
+            </div>
+
+            <div class="nav-fases">
+                <a href="fase_04.html" class="btn btn-outline-secondary">← Fase 4: A Subida de Recuperação</a>
+                <a href="fase_06.html" class="btn btn-ferradura">Fase 6: O Lucro na Calçada →</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><p>© 2025–2026 Circuito Ferradura — Cara Core Informática</p></div>
+            <div class="col-md-6 text-end"><p><a href="index.html">← Voltar ao início</a></p></div>
+        </div>
+    </div>
+</footer>
+
+<div id="lgpd-banner" class="lgpd-banner d-none">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8"><p class="mb-0"><strong>🔒 LGPD</strong> — Usamos localStorage para salvar progresso.</p></div>
+            <div class="col-md-4 text-end">
+                <button id="lgpd-accept" class="btn btn-light btn-sm me-2">Aceitar</button>
+                <button id="lgpd-deny"   class="btn btn-outline-light btn-sm">Recusar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmDlx6hWkMUzCJWRjl8LxJKqscJ" crossorigin="anonymous"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+</html>

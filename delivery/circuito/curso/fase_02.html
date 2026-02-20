@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<!--
+    Circuito Ferradura — Fase 2: A Curva da Paineira
+    Copyright © 2025-2026 Cara Core Informática · Todos os direitos reservados.
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 2: A Curva da Paineira — Circuito Ferradura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">🏁 Circuito Ferradura<span class="tag-versao">v2.0.0</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navFases" role="button" data-bs-toggle="dropdown">Fases</a>
+                    <ul class="dropdown-menu" aria-labelledby="navFases">
+                        <li><a class="dropdown-item" href="fase_01.html">Fase 1 — O Terreno Vazio</a></li>
+                        <li><a class="dropdown-item active" href="fase_02.html">Fase 2 — A Curva da Paineira</a></li>
+                        <li><a class="dropdown-item" href="fase_03.html">Fase 3 — O Salto da Rampa</a></li>
+                        <li><a class="dropdown-item" href="fase_04.html">Fase 4 — A Subida de Recuperação</a></li>
+                        <li><a class="dropdown-item" href="fase_05.html">Fase 5 — A Grande Corrida</a></li>
+                        <li><a class="dropdown-item" href="fase_06.html">Fase 6 — O Lucro na Calçada</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="mundo_do_conhecimento.html">Pista</a></li>
+                <li class="nav-item"><a class="nav-link" href="conclusao.html">Certificado</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <div class="text-center mb-4">
+                <span class="badge-fase">Fase 2</span>
+                <span class="badge-duracao">8 horas</span>
+                <span class="badge-nivel">Básico</span>
+            </div>
+
+            <h1 class="text-center">A Curva da Paineira</h1>
+            <p class="lead text-center">
+                A Paineira exigia embalo: velocidade acumulada <em>antes</em> da curva.
+                Aqui você aprende Pygame — e o jogo Pong nasce na pista.
+            </p>
+
+            <img src="assets/img/imagem_modulo_02.png"
+                 alt="Fase 2 — A Curva da Paineira · Pygame e Pong"
+                 class="img-fase">
+
+            <div id="progress-indicator" class="alert">Progresso: 0/10 (0%)</div>
+
+            <div class="content-section">
+                <h2>Objetivos da Fase</h2>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h4>O que você vai aprender:</h4>
+                        <ul>
+                            <li>Instalação e configuração do Pygame</li>
+                            <li>Sistema de coordenadas e janela gráfica</li>
+                            <li>Loop principal do jogo (<em>game loop</em>)</li>
+                            <li>Eventos de teclado e mouse</li>
+                            <li>Detecção de colisões com <code>Rect</code></li>
+                            <li>FPS e controle de velocidade</li>
+                            <li>Classes Python aplicadas a objetos do jogo</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>O que você vai criar:</h4>
+                        <ul>
+                            <li>Uma janela Pygame funcional com fundo verde-pista</li>
+                            <li>Uma bola que se move e rebate nas paredes</li>
+                            <li>Duas raquetes controladas por teclado</li>
+                            <li>Placar de pontos em tempo real</li>
+                            <li>O jogo <strong>Pong da Pista</strong> completo</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>2.1 — O Embalo da Paineira</h2>
+                <p>
+                    Na pista de Palotina, a Paineira era a curva mais temida. Para virá-la sem cair,
+                    o piloto precisava de <em>embalo</em>: velocidade acumulada metros antes.
+                    No Pygame, o embalo é o <strong>loop principal</strong> — ele roda 60 vezes por segundo,
+                    acumulando frames, atualizando posições e redesenhando a tela.
+                </p>
+                <div class="alert-palotina">
+                    <h4>🏁 Metáfora do loop</h4>
+                    <p class="mb-0">
+                        Cada frame é uma pedalada. O loop não para enquanto o jogo estiver rodando —
+                        assim como o piloto não para de pedalar enquanto está no circuito.
+                        <code>clock.tick(60)</code> = 60 pedaladas por segundo.
+                    </p>
+                </div>
+                <div class="console-block">
+<span class="comment"># Estrutura base do game loop — a "pedalada" do Pygame</span>
+<span class="prompt">import pygame</span>
+
+pygame.init()
+tela = pygame.display.set_mode((800, 600))
+pygame.display.set_caption("Circuito Ferradura — Pong da Pista")
+clock = pygame.time.Clock()
+rodando = True
+
+<span class="prompt">while</span> rodando:
+    <span class="comment"># 1. Eventos (o piloto olha para a pista)</span>
+    <span class="prompt">for</span> evento <span class="prompt">in</span> pygame.event.get():
+        <span class="prompt">if</span> evento.type == pygame.QUIT:
+            rodando = False
+
+    <span class="comment"># 2. Lógica (calcular velocidade e posição)</span>
+    bola.mover()
+    bola.verificar_colisao(raquete_esq, raquete_dir)
+
+    <span class="comment"># 3. Desenho (o piloto entra na curva)</span>
+    tela.fill((26, 122, 60))   <span class="comment"># verde-pista</span>
+    bola.desenhar(tela)
+    pygame.display.flip()
+
+    clock.tick(60)   <span class="comment"># 60 FPS = 60 pedaladas/segundo</span></div>
+            </div>
+
+            <div class="content-section">
+                <h2>2.2 — Colisões: a Física da Pista</h2>
+                <p>
+                    A bola rebate nas paredes e nas raquetes. A física é simples:
+                    quando a bola toca uma borda, o sinal da velocidade se inverte.
+                    Isso é a programação da curva da Paineira: o piloto <em>dobra</em> a direção.
+                </p>
+                <div class="console-block">
+<span class="comment"># Classe Bola — objeto com estado e comportamento</span>
+<span class="prompt">class </span>Bola:
+    <span class="prompt">def </span>__init__(self):
+        self.x, self.y = 400, 300
+        self.vx, self.vy = 5, 5
+        self.raio = 10
+
+    <span class="prompt">def </span>mover(self):
+        self.x += self.vx
+        self.y += self.vy
+        <span class="comment"># Rebater nas paredes superior e inferior</span>
+        <span class="prompt">if</span> self.y - self.raio <= 0 <span class="prompt">or</span> self.y + self.raio >= 600:
+            self.vy *= -1   <span class="comment"># inverte — a curva da Paineira</span></div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="content-section">
+                <h2>✅ Checklist da Fase 2</h2>
+                <div class="checklist-item"><input type="checkbox" id="f2-1"><label for="f2-1">Instalei Pygame e criei a janela verde-pista 800×600</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-2"><label for="f2-2">Implementei o game loop com <code>clock.tick(60)</code></label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-3"><label for="f2-3">Criei a classe <code>Bola</code> com <code>mover()</code> e <code>desenhar()</code></label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-4"><label for="f2-4">Fiz a bola rebater nas 4 paredes corretamente</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-5"><label for="f2-5">Criei a classe <code>Raquete</code> controlada pelo teclado</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-6"><label for="f2-6">Implementei colisão bola-raquete com <code>pygame.Rect.colliderect()</code></label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-7"><label for="f2-7">Adicionei placar com <code>pygame.font</code></label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-8"><label for="f2-8">Criei tela de game over ao atingir 5 pontos</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-9"><label for="f2-9">O jogo Pong da Pista está completo e jogável</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f2-10"><label for="f2-10">Fiz code review: meu código tem funções, classes e comentários</label></div>
+            </div>
+
+            <div class="alert-terra">
+                <h4>🏎 Projeto da Fase 2</h4>
+                <p class="mb-0">
+                    Crie o jogo <strong>Pong da Pista</strong> completo: duas raquetes, uma bola, placar,
+                    rebatimento nas paredes e detecção de ponto. Use as cores do Circuito Ferradura:
+                    verde-pista <code>#1a7a3c</code> e amarelo-palotina <code>#f4c430</code>.
+                </p>
+            </div>
+
+            <div class="nav-fases">
+                <a href="fase_01.html" class="btn btn-outline-secondary">← Fase 1: O Terreno Vazio</a>
+                <a href="fase_03.html" class="btn btn-ferradura">Fase 3: O Salto da Rampa →</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><p>© 2025–2026 Circuito Ferradura — Cara Core Informática</p></div>
+            <div class="col-md-6 text-end"><p><a href="index.html">← Voltar ao início</a></p></div>
+        </div>
+    </div>
+</footer>
+
+<div id="lgpd-banner" class="lgpd-banner d-none">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8"><p class="mb-0"><strong>🔒 LGPD</strong> — Usamos localStorage para salvar progresso. <a href="#" class="text-white text-decoration-underline">Política de Privacidade</a>.</p></div>
+            <div class="col-md-4 text-end">
+                <button id="lgpd-accept" class="btn btn-light btn-sm me-2">Aceitar</button>
+                <button id="lgpd-deny"   class="btn btn-outline-light btn-sm">Recusar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmDlx6hWkMUzCJWRjl8LxJKqscJ" crossorigin="anonymous"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--
+    Circuito Ferradura — Fase 3: O Salto da Rampa
+    Copyright © 2025-2026 Cara Core Informática · Todos os direitos reservados.
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 3: O Salto da Rampa — Circuito Ferradura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">🏁 Circuito Ferradura<span class="tag-versao">v2.0.0</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navFases" role="button" data-bs-toggle="dropdown">Fases</a>
+                    <ul class="dropdown-menu" aria-labelledby="navFases">
+                        <li><a class="dropdown-item" href="fase_01.html">Fase 1 — O Terreno Vazio</a></li>
+                        <li><a class="dropdown-item" href="fase_02.html">Fase 2 — A Curva da Paineira</a></li>
+                        <li><a class="dropdown-item active" href="fase_03.html">Fase 3 — O Salto da Rampa</a></li>
+                        <li><a class="dropdown-item" href="fase_04.html">Fase 4 — A Subida de Recuperação</a></li>
+                        <li><a class="dropdown-item" href="fase_05.html">Fase 5 — A Grande Corrida</a></li>
+                        <li><a class="dropdown-item" href="fase_06.html">Fase 6 — O Lucro na Calçada</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="mundo_do_conhecimento.html">Pista</a></li>
+                <li class="nav-item"><a class="nav-link" href="conclusao.html">Certificado</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <div class="text-center mb-4">
+                <span class="badge-fase">Fase 3</span>
+                <span class="badge-duracao">8 horas</span>
+                <span class="badge-nivel">Intermediário</span>
+            </div>
+
+            <h1 class="text-center">O Salto da Rampa</h1>
+            <p class="lead text-center">
+                Quem não tinha velocidade suficiente na rampa caía no buraco.
+                Quem tinha, voava. Aqui você aprende a automatizar construções —
+                com Minecraft Education e animações Pillow.
+            </p>
+
+            <img src="assets/img/imagem_modulo_03.png"
+                 alt="Fase 3 — O Salto da Rampa · Minecraft e Pillow"
+                 class="img-fase">
+
+            <div id="progress-indicator" class="alert">Progresso: 0/10 (0%)</div>
+
+            <div class="content-section">
+                <h2>Objetivos da Fase</h2>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h4>O que você vai aprender:</h4>
+                        <ul>
+                            <li>API do Minecraft Education Edition em Python</li>
+                            <li>Sistema de coordenadas 3D (x, y, z)</li>
+                            <li>Automação de construções com loops aninhados</li>
+                            <li>Biblioteca Pillow (PIL) para manipulação de imagens</li>
+                            <li>Criação de animações GIF programaticamente</li>
+                            <li>Leitura e escrita de arquivos de imagem</li>
+                            <li>Parâmetros de física: gravidade, velocidade inicial, trajetória</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>O que você vai criar:</h4>
+                        <ul>
+                            <li>Torre automatizada no Minecraft (50 blocos)</li>
+                            <li>Pirâmide gerada por loops aninhados</li>
+                            <li>Animação GIF da trajetória do salto</li>
+                            <li>Simulador de física: <code>calcular_salto()</code></li>
+                            <li>Relatório de saltos: BURACO / QUASE / VOOU / LENDÁRIO</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>3.1 — A Física do Salto</h2>
+                <p>
+                    Na rampa de Palotina, o resultado dependia da velocidade de entrada.
+                    Abaixo de <strong>5 m/s</strong> — buraco. Acima de <strong>10 m/s</strong> — lendário.
+                    Isso é um bloco de condicionais aplicado à física real.
+                </p>
+                <div class="alert-palotina">
+                    <h4>🏁 Velocidade e resultado</h4>
+                    <ul class="mb-0">
+                        <li><strong>v &lt; 5 m/s</strong> → BURACO — nem saiu do chão</li>
+                        <li><strong>5 ≤ v &lt; 8 m/s</strong> → QUASE — saltou mas aterrou curto</li>
+                        <li><strong>8 ≤ v &lt; 10 m/s</strong> → VOOU — bom salto, aplausos</li>
+                        <li><strong>v ≥ 10 m/s</strong> → LENDÁRIO — o salto que virou história</li>
+                    </ul>
+                </div>
+                <div class="console-block">
+<span class="comment"># calcular_salto() — da pista para o código</span>
+<span class="prompt">def </span>calcular_salto(velocidade: float) -> str:
+    ATRITO = 0.5   <span class="comment"># terra vermelha de Palotina</span>
+    v = velocidade - ATRITO
+    <span class="prompt">if</span>   v < 5:   <span class="prompt">return</span> "BURACO"
+    <span class="prompt">elif</span> v < 8:   <span class="prompt">return</span> "QUASE"
+    <span class="prompt">elif</span> v < 10:  <span class="prompt">return</span> "VOOU"
+    <span class="prompt">else</span>:        <span class="prompt">return</span> "LENDÁRIO"
+
+<span class="prompt">>>> </span>calcular_salto(10.5)
+<span class="result">'LENDÁRIO'</span></div>
+            </div>
+
+            <div class="content-section">
+                <h2>3.2 — Automação no Minecraft</h2>
+                <p>
+                    Construir 50 blocos manualmente levaria horas. Com um loop Python, leva 2 segundos.
+                    Isso é o poder da automação: a rampa é construída pelo código, não pelo piloto.
+                </p>
+                <div class="console-block">
+<span class="comment"># Construindo a rampa da Paineira no Minecraft</span>
+<span class="prompt">from</span> mcpi.minecraft <span class="prompt">import</span> Minecraft
+<span class="prompt">import</span> mcpi.block <span class="prompt">as</span> block
+
+mc = Minecraft.create()
+x0, y0, z0 = mc.player.getTilePos()
+
+<span class="comment"># Torre de 50 blocos de pedra — o pilar da rampa</span>
+<span class="prompt">for</span> h <span class="prompt">in</span> range(50):
+    mc.setBlock(x0, y0 + h, z0, block.STONE.id)
+
+<span class="comment"># Pirâmide 10×10×10 — a pista vista de cima</span>
+<span class="prompt">for</span> nivel <span class="prompt">in</span> range(10):
+    <span class="prompt">for</span> dx <span class="prompt">in</span> range(nivel, 10 - nivel):
+        <span class="prompt">for</span> dz <span class="prompt">in</span> range(nivel, 10 - nivel):
+            mc.setBlock(x0 + dx, y0 + nivel, z0 + dz, block.GRASS.id)</div>
+            </div>
+
+            <div class="content-section">
+                <h2>3.3 — Animação GIF com Pillow</h2>
+                <div class="console-block">
+<span class="comment"># Gerar frames da trajetória e salvar como GIF</span>
+<span class="prompt">from</span> PIL <span class="prompt">import</span> Image, ImageDraw
+<span class="prompt">import</span> math
+
+frames = []
+<span class="prompt">for</span> t <span class="prompt">in</span> range(0, 50):
+    img = Image.new("RGB", (400, 200), (26, 122, 60))
+    draw = ImageDraw.Draw(img)
+    x = int(t * 8)
+    y = int(200 - (10 * t - 0.5 * 9.8 * t**2 / 10))
+    y = max(10, min(190, y))
+    draw.ellipse([x-8, y-8, x+8, y+8], fill=(244, 196, 48))
+    frames.append(img)
+
+frames[0].save("salto_palotina.gif", save_all=True, append_images=frames[1:], duration=50, loop=0)
+<span class="result">Arquivo salvo: salto_palotina.gif</span></div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="content-section">
+                <h2>✅ Checklist da Fase 3</h2>
+                <div class="checklist-item"><input type="checkbox" id="f3-1"><label for="f3-1">Implementei <code>calcular_salto()</code> com os 4 resultados corretos</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-2"><label for="f3-2">Testei todos os casos-limite da física do salto</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-3"><label for="f3-3">Conectei ao Minecraft Education e obtive a posição do jogador</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-4"><label for="f3-4">Construí a torre de 50 blocos com loop simples</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-5"><label for="f3-5">Construí a pirâmide com loops aninhados (3 níveis)</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-6"><label for="f3-6">Instalei Pillow e abri/modificou uma imagem existente</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-7"><label for="f3-7">Gerei pelo menos 10 frames da animação do salto</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-8"><label for="f3-8">Salvei o GIF animado e abri no Windows</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-9"><label for="f3-9">Criei a classe <code>Bicicleta</code> com <code>pedalar()</code> e <code>frear()</code></label></div>
+                <div class="checklist-item"><input type="checkbox" id="f3-10"><label for="f3-10">Simulei 4 pilotos com esforços diferentes e relatei resultados</label></div>
+            </div>
+
+            <div class="alert-terra">
+                <h4>🏎 Projeto da Fase 3</h4>
+                <p class="mb-0">
+                    Crie um simulador completo: 4 pilotos com bicicletas (<code>Bicicleta</code>), cada um com
+                    esforço diferente. Calcule o resultado do salto para cada um, gere um GIF animado da trajetória
+                    e exiba o relatório final no console com a classificação de cada piloto.
+                </p>
+            </div>
+
+            <div class="nav-fases">
+                <a href="fase_02.html" class="btn btn-outline-secondary">← Fase 2: A Curva da Paineira</a>
+                <a href="fase_04.html" class="btn btn-ferradura">Fase 4: A Subida de Recuperação →</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><p>© 2025–2026 Circuito Ferradura — Cara Core Informática</p></div>
+            <div class="col-md-6 text-end"><p><a href="index.html">← Voltar ao início</a></p></div>
+        </div>
+    </div>
+</footer>
+
+<div id="lgpd-banner" class="lgpd-banner d-none">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8"><p class="mb-0"><strong>🔒 LGPD</strong> — Usamos localStorage para salvar progresso.</p></div>
+            <div class="col-md-4 text-end">
+                <button id="lgpd-accept" class="btn btn-light btn-sm me-2">Aceitar</button>
+                <button id="lgpd-deny"   class="btn btn-outline-light btn-sm">Recusar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmDlx6hWkMUzCJWRjl8LxJKqscJ" crossorigin="anonymous"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+</html>

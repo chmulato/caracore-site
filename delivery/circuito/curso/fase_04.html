@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!--
+    Circuito Ferradura — Fase 4: A Subida de Recuperação
+    Copyright © 2025-2026 Cara Core Informática · Todos os direitos reservados.
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fase 4: A Subida de Recuperação — Circuito Ferradura</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">🏁 Circuito Ferradura<span class="tag-versao">v2.0.0</span></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navFases" role="button" data-bs-toggle="dropdown">Fases</a>
+                    <ul class="dropdown-menu" aria-labelledby="navFases">
+                        <li><a class="dropdown-item" href="fase_01.html">Fase 1 — O Terreno Vazio</a></li>
+                        <li><a class="dropdown-item" href="fase_02.html">Fase 2 — A Curva da Paineira</a></li>
+                        <li><a class="dropdown-item" href="fase_03.html">Fase 3 — O Salto da Rampa</a></li>
+                        <li><a class="dropdown-item active" href="fase_04.html">Fase 4 — A Subida de Recuperação</a></li>
+                        <li><a class="dropdown-item" href="fase_05.html">Fase 5 — A Grande Corrida</a></li>
+                        <li><a class="dropdown-item" href="fase_06.html">Fase 6 — O Lucro na Calçada</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="mundo_do_conhecimento.html">Pista</a></li>
+                <li class="nav-item"><a class="nav-link" href="conclusao.html">Certificado</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+
+            <div class="text-center mb-4">
+                <span class="badge-fase">Fase 4</span>
+                <span class="badge-duracao">6 horas</span>
+                <span class="badge-nivel">Avançado</span>
+            </div>
+
+            <h1 class="text-center">A Subida de Recuperação</h1>
+            <p class="lead text-center">
+                Depois do salto, a subida exige inteligência — não só força.
+                Aqui você recore ao cérebro artificial para tomar decisões
+                melhores a cada pedalada.
+            </p>
+
+            <img src="assets/img/imagem_modulo_04.png"
+                 alt="Fase 4 — A Subida de Recuperação · IA e Machine Learning"
+                 class="img-fase">
+
+            <div id="progress-indicator" class="alert">Progresso: 0/8 (0%)</div>
+
+            <div class="content-section">
+                <h2>Objetivos da Fase</h2>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h4>O que você vai aprender:</h4>
+                        <ul>
+                            <li>O que é Machine Learning e quando usá-lo</li>
+                            <li>Árvores de decisão com scikit-learn</li>
+                            <li>Dados de treino vs. dados de teste</li>
+                            <li>Listas de dados estruturados (features + labels)</li>
+                            <li>Avaliação de acurácia de modelos</li>
+                            <li>Bots inteligentes: tomada de decisão por predição</li>
+                            <li>Integração de IA no simulador do Circuito</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>O que você vai criar:</h4>
+                        <ul>
+                            <li>Modelo de classificação de corredores</li>
+                            <li>Preditor de resultado do salto (buraco/voo)</li>
+                            <li>Bot que sugere velocidade ideal para a rampa</li>
+                            <li>Relatório de acurácia com dados históricos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>4.1 — O Problema que a IA Resolve</h2>
+                <p>
+                    Treinar 100 pilotos manualmente é inviável. Mas se tivermos os dados históricos
+                    de 6 corridas — peso, velocidade, inclinação, resultado — podemos ensinar
+                    uma máquina a decidir.
+                </p>
+                <div class="alert-palotina">
+                    <h4>📊 Dados de treino do Circuito Ferradura</h4>
+                    <p class="mb-0">
+                        <strong>Features (entradas):</strong> [velocidade, peso, inclinação_rampa]<br>
+                        <strong>Label (saída):</strong> 0 = BURACO, 1 = QUASE, 2 = VOOU, 3 = LENDÁRIO
+                    </p>
+                </div>
+                <div class="console-block">
+<span class="comment"># Dataset do Circuito Ferradura — corridas históricas</span>
+X_treino = [
+    [4.5, 65, 15],   <span class="comment"># velocidade, peso (kg), inclinação (°)</span>
+    [7.0, 70, 20],
+    [9.5, 60, 25],
+    [11.0, 55, 30],
+    [3.0, 80, 10],
+    [8.5, 63, 22],
+    [6.5, 72, 18],
+    [12.0, 58, 35],
+]
+y_treino = [0, 1, 2, 3, 0, 2, 1, 3]  <span class="comment"># BURACO, QUASE, VOOU, LENDÁRIO</span>
+
+CLASSES = ["BURACO", "QUASE", "VOOU", "LENDÁRIO"]</div>
+            </div>
+
+            <div class="content-section">
+                <h2>4.2 — Treinando o Modelo</h2>
+                <div class="console-block">
+<span class="prompt">from</span> sklearn.tree <span class="prompt">import</span> DecisionTreeClassifier
+<span class="prompt">from</span> sklearn.metrics <span class="prompt">import</span> accuracy_score
+
+<span class="comment"># Treinar a árvore de decisão</span>
+modelo = DecisionTreeClassifier(max_depth=4, random_state=42)
+modelo.fit(X_treino, y_treino)
+
+<span class="comment"># Prever resultado para um novo piloto</span>
+novo_piloto = [[8.0, 67, 21]]
+predicao = modelo.predict(novo_piloto)
+<span class="prompt">print</span>(f"Resultado previsto: {CLASSES[predicao[0]]}")
+<span class="result">Resultado previsto: VOOU</span>
+
+<span class="comment"># Acurácia no conjunto de treino</span>
+precisao = accuracy_score(y_treino, modelo.predict(X_treino))
+<span class="prompt">print</span>(f"Acurácia: {precisao:.0%}")
+<span class="result">Acurácia: 100%</span></div>
+            </div>
+
+            <div class="content-section">
+                <h2>4.3 — Bot Inteligente de Corrida</h2>
+                <p>
+                    Com o modelo treinado, criamos um bot que analisa as condições da pista
+                    em tempo real e sugere a velocidade ideal para o salto.
+                </p>
+                <div class="console-block">
+<span class="prompt">class</span> BotFerradura:
+    <span class="prompt">def __init__</span>(self, modelo, classes):
+        self.modelo = modelo
+        self.classes = classes
+
+    <span class="prompt">def</span> analisar(self, velocidade: float, peso: float, inclinacao: float) -> str:
+        entrada = [[velocidade, peso, inclinacao]]
+        codigo = self.modelo.predict(entrada)[0]
+        resultado = self.classes[codigo]
+        <span class="prompt">if</span> codigo == 0:
+            dica = "⚠️  Aumente a velocidade! Risco de buraco."
+        <span class="prompt">elif</span> codigo == 3:
+            dica = "🏆 Velocidade lendária! Segure o guidão."
+        <span class="prompt">else</span>:
+            dica = f"✅ Resultado previsto: {resultado}"
+        <span class="prompt">return</span> dica
+
+bot = BotFerradura(modelo, CLASSES)
+<span class="prompt">print</span>(bot.analisar(9.0, 65, 25))
+<span class="result">✅ Resultado previsto: VOOU</span></div>
+            </div>
+
+            <!-- Checklist -->
+            <div class="content-section">
+                <h2>✅ Checklist da Fase 4</h2>
+                <div class="checklist-item"><input type="checkbox" id="f4-1"><label for="f4-1">Montei o dataset com pelo menos 8 corridas históricas</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f4-2"><label for="f4-2">Treinei o <code>DecisionTreeClassifier</code> com scikit-learn</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f4-3"><label for="f4-3">Fiz previsão para pelo menos 3 pilotos novos</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f4-4"><label for="f4-4">Calculei e imprimi a acurácia do modelo</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f4-5"><label for="f4-5">Implementei a classe <code>BotFerradura</code> com <code>analisar()</code></label></div>
+                <div class="checklist-item"><input type="checkbox" id="f4-6"><label for="f4-6">Bot exibe dica personalizada para cada nível de resultado</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f4-7"><label for="f4-7">Integrei o bot ao simulador existente do Circuito</label></div>
+                <div class="checklist-item"><input type="checkbox" id="f4-8"><label for="f4-8">Gerei relatório comparativo: predição vs. resultado real</label></div>
+            </div>
+
+            <div class="alert-terra">
+                <h4>🤖 Projeto da Fase 4</h4>
+                <p class="mb-0">
+                    Expanda o dataset para 20 corridas, separe 80% para treino e 20% para teste real,
+                    avalie a acurácia no conjunto de teste, e ajuste o <code>max_depth</code> para encontrar
+                    o modelo mais equilibrado (sem overfitting). Documente os resultados.
+                </p>
+            </div>
+
+            <div class="nav-fases">
+                <a href="fase_03.html" class="btn btn-outline-secondary">← Fase 3: O Salto da Rampa</a>
+                <a href="fase_05.html" class="btn btn-ferradura">Fase 5: A Grande Corrida →</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6"><p>© 2025–2026 Circuito Ferradura — Cara Core Informática</p></div>
+            <div class="col-md-6 text-end"><p><a href="index.html">← Voltar ao início</a></p></div>
+        </div>
+    </div>
+</footer>
+
+<div id="lgpd-banner" class="lgpd-banner d-none">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-8"><p class="mb-0"><strong>🔒 LGPD</strong> — Usamos localStorage para salvar progresso.</p></div>
+            <div class="col-md-4 text-end">
+                <button id="lgpd-accept" class="btn btn-light btn-sm me-2">Aceitar</button>
+                <button id="lgpd-deny"   class="btn btn-outline-light btn-sm">Recusar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc4s9bIOgUxi8T/jzmDlx6hWkMUzCJWRjl8LxJKqscJ" crossorigin="anonymous"></script>
+<script src="assets/js/scripts.js"></script>
+</body>
+</html>

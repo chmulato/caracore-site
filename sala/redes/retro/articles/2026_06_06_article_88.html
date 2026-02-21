@@ -54,7 +54,7 @@
 
 		<h2>Manifesto: A Identidade Como Escudo</h2>
 		<p>
-			Existe uma tensão acontecendo bem agora, neste segundo em que você está lendo isso. E ela não é sobre procesadores. Não é sobre armazenamento. É sobre <strong>quem controla a porta de entrada para você ser você.</strong>
+			Existe uma tensão acontecendo bem agora, neste segundo em que você está lendo isso. E ela não é sobre processadores. Não é sobre armazenamento. É sobre <strong>quem controla a porta de entrada para você ser você.</strong>
 		</p>
 		<p>
 			De um lado, temos o Cercadinho dos Suseranos. Gigantes dispostos a centralizar sua identidade em um único lugar. Um gigante faz o login, um outro valida, um terceiro monitora, um quarto vende os dados. Você não é usuário. Você é commodity. Seu CPF é um campo em um banco de dados que você não tem acesso, não controla, e que pode ser violado a qualquer momento por um estagiário incompetente em uma empresa que você nunca ouviu falar.
@@ -73,7 +73,7 @@
 
 		<h2>A Metáfora da Revolução Industrial</h2>
 		<p>
-			Pense em 1850. Você é um tecelão. Um tecelão de Overloque — aquele senhor que fazia tudo à mão, que sabia cada fio, cada nó. Sua identidade era seu ofício. Era visível, era tangível, era sua.
+			Pense em 1850. Você é um tecelão. Um tecelão do overloque — aquele senhor que fazia tudo à mão, que sabia cada fio, cada nó. Sua identidade era seu ofício. Era visível, era tangível, era sua.
 		</p>
 		<p>
 			Aí vem a indústria. As fábricas centralizam a produção. De repente, você não controla mais seu ofício. Controla uma máquina em uma fábrica que pertence a alguém. Sua identidade como tecelão não importa mais. Você é um número de funcionário.
@@ -105,10 +105,10 @@
 
 		<h2>O Pia Descobre o Poder</h2>
 		<p>
-			Lucas — aquele aprendiz do artigo anterior, que viu o modem morrer — está agora com a gente há dois meses. Ele está aprendendo sobre federated identity. No começo, ele estava confuso. "Por que não é mais simples? Por que não é um único login em um único lugar?"
+			Lucas — aquele aprendiz do artigo anterior, que viu o modem morrer — está agora com a gente há dois meses. Ele está aprendendo sobre identidade federada. No começo, ele estava confuso. "Por que não é mais simples? Por que não é um único login em um único lugar?"
 		</p>
 		<p>
-			Semana passada, eu levei ele em uma auditoria de segurança em uma loja. Exatamente o que happening com aquele senhor do Tatuapé. Um vazamento de dados. Aquele lojista usava a mesma senha em vários lugares. Estava ferrado.
+			Semana passada, eu levei ele em uma auditoria de segurança em uma loja. Exatamente o que estava acontecendo com aquele senhor do Tatuapé. Um vazamento de dados. Aquele lojista usava a mesma senha em vários lugares. Estava ferrado.
 		</p>
 		<p>
 			Quando voltamos ao carro, Lucas perguntou: "Como a gente protege a gente disso?"
@@ -117,16 +117,7 @@
 			E eu expliquei: No nosso sistema com OIDC federado, cada aplicação tem seu próprio contexto. Cada login é um token separado, criptograficamente assinado, que não pode ser reutilizado em outro lugar. Se um servidor é hackeado, a senha não vaza, porque não há senha centralizada. Há chaves assimétricas.
 		</p>
 		<p>
-			Lucas abriu um sorriso. Aquele sorriso que você vê quando alguém finalmente entende que o seu trabalho não é apenas consertar problemas — é <strong>preveni-los de happened no primeiro lugar.</strong>
-		</p>
-
-		<hr>
-
-		<h2>Contraste de Paradigmas: A Sequência de Logs</h2>
-		<h3>O Momento Crítico: Escolher Entre Cercadinho e Liberdade</h3>
-		
-		<p>
-			Deixa eu mostrar a verdade visual. Dois cenários. Mesma data. Mesma loja. Mesma pessoa. A diferença é o que separa o risco alto da segurança.
+			Lucas abriu um sorriso. Aquele sorriso que você vê quando alguém finalmente entende que o seu trabalho não é apenas consertar problemas — é <strong>preveni-los de acontecer em primeiro lugar.</strong>
 		</p>
 
 		<hr>
@@ -136,7 +127,7 @@
 			Na primeira série desta temporada, falei sobre Java 21 como ouro e banco de dados relacional local como prata. O PDV é a respiração.
 		</p>
 		<p>
-			Agora vamos expandir esse mapa de tesouro. <strong>OIDC é o mapa da tesoura.</strong> É o sistema de coordenadas que garante que você nunca perca o caminho de volta para casa. Que você sempre consegue provar que a casa é sua.
+			Agora vamos expandir esse mapa de tesouro. <strong>OIDC é o mapa do tesouro.</strong> É o sistema de coordenadas que garante que você nunca perca o caminho de volta para casa. Que você sempre consegue provar que a casa é sua.
 		</p>
 		<p>
 			Temos Java 21 como a segurança computacional. Temos OIDC como a segurança criptográfica. Temos banco de dados relacional como a persistência confiável. Juntas, essas três coisas formam um trio inquebrável.
@@ -149,13 +140,13 @@
 
 		<h2>A Primeira Vez Que O Pia Entendeu</h2>
 		<p>
-			Lucas estava olhando os logs. Aqueles que mostro acima. Ele leu a versão legacy first, depois a versão OIDC. Depois pediu a gente para rodar um teste. Criamos uma máquina virtual comprometida — fingimos que o servidor cloud tinha sido hackeado. E depois tentamos usar a sessão OIDC daquele usuário.
+			Lucas estava olhando os logs. Aqueles que mostro abaixo. Ele leu a versão legacy first, depois a versão OIDC. Depois pediu a gente para rodar um teste. Criamos uma máquina virtual comprometida — fingimos que o servidor cloud tinha sido hackeado. E depois tentamos usar a sessão OIDC daquele usuário.
 		</p>
 		<p>
 			Nada funcionou. O token tinha expirado. O refresh token foi revogado. Latência zero no bloqueio. Sem chance de ataque.
 		</p>
 		<p>
-			Lucas virou para mim e disse: "Ah, agora entendi. OIDC não é apenas um protocolo. É um escudo que você já está carregando, mas que ninguém te contou que tinhas."
+			Lucas virou para mim e disse: "Ah, agora entendi. OIDC não é apenas um protocolo. É um escudo que você já está carregando, mas que ninguém te contou que tinha."
 		</p>
 		<p>
 			Exatamente isso, meu garoto. Exatamente isso.
@@ -165,7 +156,6 @@
 
 		<h2>Contraste de Paradigmas: A Sequência de Logs</h2>
 		<h3>O Momento Crítico: Escolher Entre Cercadinho e Liberdade</h3>
-		
 		<p>
 			Deixa eu mostrar a verdade visual. Dois cenários. Mesma data. Mesma loja. Mesma pessoa. A diferença é o que separa o risco alto da segurança.
 		</p>
@@ -190,11 +180,11 @@
 [2026-06-06T14:30:04Z] OOBMFA_CHALLENGE | Method=TOTP | TimeWindow=30s | Verification=SUCCESS
 [2026-06-06T14:30:05Z] APPLICATION_AUTHENTICATED | User=lojista_001 | Latitude=23.5505 | Longitude=-46.6333 | GeoIP_Match=YES | Local_Trust_Chain=VERIFIED
 [2026-06-06T14:30:06Z] CLOUD_PROVIDER_BREACH_DETECTED | Vulnerability=CVE-2024-9847 | Local_System_Status=UNAFFECTED
-[2026-06-06T14:30:07Z] STATUS=SECURE | PASSWORD_NEVER_TRANSMITTED | TOKEN_COMPROMISED_RISK=ZERO | FEDERAL_IDENTITY=SOVEREIGN</code></pre>
+[2026-06-06T14:30:07Z] STATUS=SECURE | PASSWORD_NEVER_TRANSMITTED | TOKEN_COMPROMISED_RISK=ZERO | FEDERATED_IDENTITY=SOVEREIGN</code></pre>
 		</div>
 
 		<div class="insight">
-			<strong>Vês a Diferença?</strong><br><br>
+			<strong>Vê a Diferença?</strong><br><br>
 			No primeiro cenário: a senha sai, o risco se espalha. No segundo: não existe senha. Existe prova criptográfica. A nuvem quebra? Não importa. Seu token local continua válido. Sua revogação é instantânea. Sua identidade nunca deixa seu controle.
 		</div>
 
@@ -255,26 +245,6 @@
 			<em>Artigo publicado em 6 de junho de 2026</em><br>
 			© 2026 Cara Core Informática. Todos os direitos reservados.
 		</p>
-	</div>
-</body>
-</html>>
-			<div class="section-title">Fragmento (Log/Alerta)</div>
-			<div class="fragmento">
-[ALERTA] TOKEN_FEDERADO=OK | CHAVE_LOCAL=VALIDA | PORTAL=SEGURO
-[INFO] Identidade verificada. Você é o dono da sua entrada.
-			</div>
-		</div>
-
-		<div class="section">
-			<div class="section-title">Amarra</div>
-			<div class="amarra">
-				Quando a identidade é sua, o resto encaixa. Soberania começa pelo acesso.
-			</div>
-		</div>
-
-		<div class="bloco-fixo">
-			"03/03 é o dia em que a temporada muda de marcha. Guarda essa data."
-		</div>
 	</div>
 </body>
 </html>

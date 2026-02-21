@@ -41,7 +41,7 @@
 			Deixa eu te contar o momento em que tudo mudou. Estava fazendo suporte remoto em uma loja no Tatuapé. Cliente é um senhor de 58 anos, dono de um mercadinho desde 87. Sistema rodando bem, PDV offline funcionando perfeito durante dois meses. Até que um dia, aquele senhor liga para a Cara Core e diz uma coisa que me arrepiou:
 		</p>
 		<p>
-			"Meu nome apareceu em um fraude de crédito. Eu não abri nenhum cartão. Disseram que foi uma violação. Dados vazados. Preciso trocar senha em todo lugar."
+			"Meu nome apareceu em uma fraude de crédito. Eu não abri nenhum cartão. Disseram que foi uma violação. Dados vazados. Preciso trocar senha em todo lugar."
 		</p>
 		<p>
 			Sabe qual era o problema? Ele usava a mesma senha do PDV em três outras plataformas. Quando um data center de um gigante americano foi hackeado, para começo de conversa, aquela senha saiu de circulação. E com ela, a identidade inteira do sujeito.
@@ -57,10 +57,10 @@
 			Existe uma tensão acontecendo bem agora, neste segundo em que você está lendo isso. E ela não é sobre processadores. Não é sobre armazenamento. É sobre <strong>quem controla a porta de entrada para você ser você.</strong>
 		</p>
 		<p>
-			De um lado, temos o Cercadinho dos Suseranos. Gigantes dispostos a centralizar sua identidade em um único lugar. Um gigante faz o login, um outro valida, um terceiro monitora, um quarto vende os dados. Você não é usuário. Você é commodity. Seu CPF é um campo em um banco de dados que você não tem acesso, não controla, e que pode ser violado a qualquer momento por um estagiário incompetente em uma empresa que você nunca ouviu falar.
+			De um lado, temos o modelo de feudos digitais: identidades centralizadas em um único lugar. Um gigante faz o login, um outro valida, um terceiro monitora, um quarto vende os dados. Você não é usuário. Você é commodity. Seu CPF é um campo em um banco de dados que você não tem acesso, não controla, e que pode ser violado a qualquer momento por um estagiário incompetente em uma empresa que você nunca ouviu falar.
 		</p>
 		<p>
-			Do outro lado, temos a Liberdade do Soberano. Um modelo onde <strong>você é o detentor da sua própria chave.</strong> Seu token federado é como um passaporte — você o carrega, o mostra, e prova quem você é. Mas a autoridade por trás daquele passaporte? É você. Seu servidor local. Seu hardware.
+			Do outro lado, temos a colaboração entre quadrados — o Reino das Identidades Federadas. Um modelo onde <strong>você é o detentor da sua própria chave</strong>, mas escolhe com quem compartilhar confiança. Seu token federado é como um passaporte — você o carrega, o mostra, e prova quem você é. A autoridade por trás daquele passaporte? É você, em parceria com quem você decide confiar.
 		</p>
 		<p>
 			OIDC é isso. OAuth 2.0 é o mecanismo, mas OIDC é a revolução. Porque deixa você ser o seu próprio provedor de identidade. Ou, se quiser delegar, delega para alguém que <strong>você escolhe e que você controla.</strong>
@@ -71,18 +71,18 @@
 
 		<hr>
 
-		<h2>A Metáfora da Revolução Industrial</h2>
+		<h2>A Metáfora da Portaria</h2>
 		<p>
-			Pense em 1850. Você é um tecelão. Um tecelão do overloque — aquele senhor que fazia tudo à mão, que sabia cada fio, cada nó. Sua identidade era seu ofício. Era visível, era tangível, era sua.
+			Pense no prédio onde você trabalha. Quem decide se você entra? A resposta muda tudo. Se a portaria é de um único dono, você depende daquela chave, daquele horário, daquela regra.
 		</p>
 		<p>
-			Aí vem a indústria. As fábricas centralizam a produção. De repente, você não controla mais seu ofício. Controla uma máquina em uma fábrica que pertence a alguém. Sua identidade como tecelão não importa mais. Você é um número de funcionário.
+			Quando a identidade fica centralizada, você vira um cadastro na mão de terceiros. Eles abrem, fecham, auditam e, às vezes, expõem. Não é sobre tecnologia nova ou velha; é sobre quem está segurando a chave.
 		</p>
 		<p>
-			Isso é o que a nuvem fez com sua identidade digital. Centralizou-a. Corporativizou-a.
+			OIDC muda a lógica: você passa a carregar a sua credencial e escolhe com quem ela conversa. Você mantém o controle, mas coopera quando faz sentido.
 		</p>
 		<p>
-			O OIDC é a volta do tecelão. Você pega o controle de novo. É descentralizado, federado. Você é o dono do tear. A nuvem? A nuvem é apenas uma ferramenta que você contrata por conveniência, não uma dependência existencial.
+			A nuvem continua útil, mas deixa de ser única. Ela vira um apoio, não um destino obrigatório.
 		</p>
 
 		<hr>
@@ -155,13 +155,13 @@
 		<hr>
 
 		<h2>Contraste de Paradigmas: A Sequência de Logs</h2>
-		<h3>O Momento Crítico: Escolher Entre Cercadinho e Liberdade</h3>
+		<h3>O Momento Crítico: Escolher Entre Feudos e Colaboração</h3>
 		<p>
 			Deixa eu mostrar a verdade visual. Dois cenários. Mesma data. Mesma loja. Mesma pessoa. A diferença é o que separa o risco alto da segurança.
 		</p>
 
 		<div class="quote-box">
-			<strong>Caminho do Cercadinho: BasicAuth Centralizado (ALTO RISCO)</strong><br><br>
+			<strong>Caminho do Feudo: BasicAuth Centralizado (ALTO RISCO)</strong><br><br>
 			<pre><code>[2026-06-06T14:30:00Z] LEGACY_AUTH_REQUEST | Username=lojista_001 | Method=BasicAuth | Provider=Cloud_Corporate
 [2026-06-06T14:30:01Z] PASSWORD_TRANSMITTED | HTTP_Method=POST | Encrypted=NO | Status=RISKY
 [2026-06-06T14:30:02Z] CLOUD_PROVIDER_BREACH_DETECTED | Vulnerability=CVE-2024-9847 | Impact=MEDIUM | Users_Exposed=847392
@@ -172,7 +172,7 @@
 		<p style="text-align:center; color:#d97706; font-weight:bold; margin:0.5rem 0 2rem;">⚠️ EM CONTRASTE ⚠️</p>
 
 		<div class="quote-box">
-			<strong>Caminho da Liberdade: OIDC Federado (CONFIÁVEL)</strong><br><br>
+			<strong>Caminho da Colaboração: OIDC Federado (CONFIÁVEL)</strong><br><br>
 			<pre><code>[2026-06-06T14:30:00Z] OIDC_AUTH_REQUEST | User_ID=lojista_001 | GrantType=authorization_code | Flow=PKCE
 [2026-06-06T14:30:01Z] TOKEN_GENERATION | Algorithm=RS256 | SignedBy=Local_Private_Key | Expires=1h
 [2026-06-06T14:30:02Z] JWT_ISSUED | Header=RS256 | Payload=User_Claims | Signature=Verified | Status=VALID

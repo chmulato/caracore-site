@@ -33,7 +33,7 @@
 		<div class="note"><strong>Episódio Especial | Temporada I | Tempo estimado:</strong> ~8–9 minutos</div>
 
 		<div class="quote-box">
-			<strong>Premissa:</strong> "Software não é amontoado de funções; é narrativa de confiança. Se a lógica falha, a confiança morre."
+			<strong>Premissa:</strong> "Software não é amontoado de funções; é narrativa de confiança. Se a lógica falha, a confiança se fragiliza."
 		</div>
 
 		<h2>O Espelho da Jornada</h2>
@@ -46,7 +46,7 @@
 		<div class="insight">
 			<strong>A Pergunta de Viktor (O Arquiteto):</strong>
 			<p>
-				"Software não é amontoado de funções; é narrativa de confiança. Se a lógica falha, a confiança morre. Os cinco atos garantem que, do checkpoint de saída ao de chegada, cada kg, cada segundo, cada rota está documentado e blindado contra mentira."
+				"Software não é amontoado de funções; é narrativa de confiança. Se a lógica falha, a confiança se fragiliza. Os cinco atos garantem que, do checkpoint de saída ao de chegada, cada kg, cada segundo, cada rota está documentado e protegido contra desvios."
 			</p>
 		</div>
 
@@ -65,7 +65,7 @@
 			Cada checkpoint tem um "quadrado" no Dashboard JavaFX da sede. A cor começa em cinza (não alcançado), muda para verde quando o caminhão entra no raio, e pode ficar vermelha se a auditoria detectar divergência.
 		</p>
 		<div class="note">
-			<strong>Como funciona:</strong> O cálculo de distância Haversine (trigonometria esférica) detecta automaticamente quando o GPS do caminhão entra no raio. Sem validação manual. Sem central de despacho britando a operação. É soberania: a máquina valida, o operador da sede vê.
+			<strong>Como funciona:</strong> O cálculo de distância Haversine (trigonometria esférica) detecta automaticamente quando o GPS do caminhão entra no raio. Sem validação manual. Sem central de despacho travando a operação. É soberania: a máquina valida, o operador da sede vê.
 		</div>
 
 		<h3>Ato II: Dinâmica — O Movimento</h3>
@@ -86,7 +86,7 @@
 			Na sede, o Sovereignty Engine valida cada dado: "Este caminhão chegou no checkpoint 2? Sim. Qual era a velocidade média? 78 km/h. Qual era a massa? 29.950 kg." E registra tudo em hash chain imutável.
 		</p>
 		<div class="quote-box">
-			<em>"A vida real não é GPS de verdade. A vida real é: motorista tira a carga no meio do caminho para entregar para o namorado, depois continua fingindo que nada aconteceu. O Ato II detecta quando massa some misteriosamente."</em>
+			<em>"A vida real não é GPS de verdade. A vida real é: o motorista faz paradas não planejadas e o sistema precisa registrar com clareza. O Ato II detecta quando a massa muda sem explicação."</em>
 		</div>
 
 		<h3>Ato III: Sombra — A Navegação Inercial</h3>
@@ -100,7 +100,7 @@
 			O Ato III ativa quando o status GPS passa para "PERDIDO". O sistema toma a última velocidade conhecida (78 km/h) e a última direção (260° - sudoeste) e <strong>extrapola</strong>: "Se mantiver essa velocidade por 30 minutos em linha reta, o caminhão estará aproximadamente aqui."
 		</p>
 		<p>
-			No Dashboard, um ícone fantasma (cinzento, opaco, com alpha=0.4) começa a se mover lentamente. Um cronômetro regressivo marca o tempo máximo permitido na sombra (exemplo: esperado 30 min; alerta em 34,5 min). Se exceder, alarme.
+			No Dashboard, um ícone fantasma (cinzento, opaco, com alpha=0.4) começa a se mover lentamente. Um cronômetro regressivo marca o tempo máximo permitido na sombra (exemplo: esperado 30 min; alerta em 34,5 min). Se exceder, sinal.
 		</p>
 		<p>
 			É lidar com aleatoriedade brasileira: um desvio de rota não planejado agora tem áudio e visual. Transparência real.
@@ -111,10 +111,10 @@
 			Lavoisier, químico francês: "Na natureza, nada se cria, nada se perde, tudo se transforma."
 		</p>
 		<p>
-			Corolário brasileiro: se você começou com 30.000 kg e terminou com 29.500 kg, <strong>500 kg sumiram</strong>.
+			Corolário brasileiro: se você começou com 30.000 kg e terminou com 29.500 kg, <strong>500 kg ficaram sem registro</strong>.
 		</p>
 		<p>
-			O Ato IV compara a "massa esperada" inicial com a "massa observada" em cada checkpoint. A tolerância é de 2% (600 kg em 30 toneladas). Se a divergência for maior, a UI dispara:
+			O Ato IV compara a "massa esperada" inicial com a "massa observada" em cada checkpoint. A tolerância é de 2% (600 kg em 30 toneladas). Se a divergência for maior, a UI sinaliza:
 		</p>
 		<ul>
 			<li><strong>Transição de cor:</strong> o quadrado muda de VERDE para VERMELHO (animação 500ms).</li>
@@ -123,29 +123,29 @@
 			<li><strong>Alerta crítico:</strong> WhatsApp / Push notification para o patrão: "VIOLAÇÃO: Entrega #123 perdeu 1.500 kg no checkpoint 3."</li>
 			<li><strong>Log imutável:</strong> A violação é registrada em hash chain — não pode ser deletada, não pode ser modificada.</li>
 		</ul>
-		<p>
-			Exemplo real: Entregador A diz "Perdi 500 kg por derramamento." Entregador B diz "Nunca saiu carga." Patrão não sabe. Com o Ato IV, o audit log mostra exatamente em qual checkpoint a massa desapareceu — e se foi gradual ou abrupta.
-		</p>
-		<div class="note">
-			<strong>O Senso de Justiça:</strong> O Ato IV não é perseguição. É clareza. Porque clareza permite que motorista honesto se defenda: "Vendo o log, todos sabem que eu estava certo. Foram os outros que mexeram."
-		</div>
-
+		<ul>
+			<li><strong>Transição de cor:</strong> o quadrado muda de VERDE para VERMELHO (animação 500ms).</li>
+			<li><strong>Som industrial:</strong> "alerta_industrial.wav" toca no Dashboard.</li>
+			<li><strong>Sinal visual:</strong> um SVG zigzagueia sobre o quadrado (efeito de atenção).</li>
+			<li><strong>Alerta crítico:</strong> WhatsApp / Push notification para o responsável: "DIVERGÊNCIA: Entrega #123 teve 1.500 kg a menos no checkpoint 3."
+			<li><strong>Log imutável:</strong> A divergência é registrada em hash chain — não pode ser deletada, não pode ser modificada.</li>
+		</ul>
 		<h3>Ato V: Céu — A Conclusão Celebrada</h3>
 		<p>
 			Se todos os 4 atos passam (geometria validada, dinâmica monitorada, sombra dentro do esperado, massa íntegra), o 5º ato é celebração.
+		<p>
+			Exemplo real: Entregador A diz "Perdi 500 kg por derramamento." Entregador B diz "Nunca saiu carga." A gestão não sabe. Com o Ato IV, o audit log mostra exatamente em qual checkpoint a massa variou — e se foi gradual ou abrupta.
 		</p>
 		<p>
-			No Dashboard, o último quadrado (CÉU) pisca com efeito de glow dourado. Som de sino. Confete digital. Relatório PDF é gerado automaticamente com status "SOBERANIA CONCLUÍDA" e "EFICIÊNCIA: 98.5%".
+			<strong>Minerador (Valor):</strong> A IA de 2GB local calcula a rota otimizada, não aguarda comando de mega servidores. Valor extraído localmente.
 		</p>
-
-		<hr>
 
 		<h2>Como os 6 Pilares Convergem no Protocolo</h2>
 		<p>
 			Agora o quebra-cabeça se encaixa:
+		<p>
+			<strong>ETE (Ironia):</strong> O Ato IV (Massa) é a ironia final: auditoria de Lavoisier que a ETE (limitada a nuances) não alcança. Uma fórmula simples é mais sábia.
 		</p>
-		<ul>
-			<li><strong>PDV (Sobrevivência):</strong> Sem ponto de venda local, o operador fica cego. O Protocolo Amarelinha é o PDV da logística: dados locais, decisões locais.</li>
 			<li><strong>OIDC (Liberdade):</strong> O token federado que valida o motorista (CPF + biometria) é quem assina o canhoto digital. Liberdade: o motorista não é escravo de central.</li>
 			<li><strong>Minerador (Valor):</strong> A IA de 2GB local calcula a rota otimizada, não aguarda comando de mega servidores. Valor extraído localmente.</li>
 			<li><strong>ETE (Ironia):</strong> O Ato IV (Massa) é a ironia final: auditoria de Lavoisier que a ETE (cega a nuances) nunca poderia fazer. Uma fórmula simples é mais sábia.</li>
@@ -155,7 +155,7 @@
 		<div class="insight">
 			<strong>O Insight de Viktor:</strong>
 			<p>
-				Os seis pilares não são produtos. São funções de um único propósito: <strong>soberania operacional</strong>. O Protocolo Amarelinha é o teatro onde todos atuam em harmonia. PDV é a entrada. OIDC é o ator. Minerador é o roteiro. ETE é o vilão irônico. Ferradura é o coro. Ink é a plateia que registra. E o Protocolo é o drama completo.
+				Os seis pilares não são produtos. São funções de um único propósito: <strong>soberania operacional</strong>. O Protocolo Amarelinha é o teatro onde todos atuam em harmonia. PDV é a entrada. OIDC é o ator. Minerador é o roteiro. ETE é o contraponto irônico. Ferradura é o coro. Ink é a plateia que registra. E o Protocolo é o drama completo.
 			</p>
 		</div>
 
@@ -178,7 +178,7 @@
 			Lucas vê a arquitetura e reconhece tudo. Sete episódios. Sete pilares. Agora, um único e elegante protocolo. Cinco atos que garantem confiança.
 		</p>
 		<p>
-			Ele pensa em Viktor, em Mikhail, em Guilherme, em Christian. Todos lutaram pela mesma coisa: <strong>dar ao brasileiro as ferramentas para confiar em sua própria operação</strong>.
+			Ele pensa em Viktor, em Mikhail, em Guilherme, em Christian. Todos trabalharam pela mesma coisa: <strong>dar ao brasileiro as ferramentas para confiar em sua própria operação</strong>.
 		</p>
 		<p>
 			Não em corporação de silicon valley. Não em algoritmo que ninguém entende. Mas em lógica transparente, executada localmente, preservada em hash chain imutável.

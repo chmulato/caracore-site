@@ -8,7 +8,7 @@ Endereço: [Endereço completo]
 **CONTRATADA:**  
 Cara Core Informática  
 CNPJ: [CNPJ da Cara Core]  
-Endereço: R. Francisco Xavier de Almeida Garret, 2.628, Apt. 102, Centro, Campo Largo, PR, CEP 83.601-230  
+Endereço: Campo Largo, PR  
 E-mail: suporte@caracore.com.br  
 Telefone: (41) 9 9909-7797  
 

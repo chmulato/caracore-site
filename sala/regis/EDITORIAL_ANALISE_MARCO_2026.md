@@ -1,4 +1,8 @@
 # Análise Editorial — Campanha Orgânica Março 2026
+
+Status: ARQUIVO INTERNO - NAO PUBLICAR
+Decisao vigente: os artigos de marco/2026 foram retirados da publicacao e redistribuidos no cronograma oficial a partir de 06/04/2026.
+Escopo de bloqueio: Facebook, Instagram e LinkedIn.
 ## Editor-Chefe e Estrategista de Narrativa | Cara Core Informática
 
 **Escopo:** Sala de Notícias (caracore-articles) e cópia na Matriz (caracore-site/publications).  
@@ -6,14 +10,14 @@
 
 ---
 
-## Artigos de Março 2026 (programados)
+## Artigos de Março 2026 (historico cancelado - nao executar)
 
-| Data   | Artigo | Título |
-|--------|--------|--------|
-| 07/03  | 75     | A Nova Cara Core: Como uma Startup Boutique Está Redesenhando o Software Brasileiro |
-| 14/03  | 76     | Por que o Brasil Precisa de Software Boutique: Oportunidades em Nichos Técnicos |
-| 15/03  | Série RU Ep.01 | ATO II — A Camada Invisível (Adsorção). RU 1991 |
-| 21/03  | 77     | A Última Milha Digital: O Que as Tias Sócias Revelam Sobre o Brasil |
+| Data   | Artigo | Titulo | Status |
+|--------|--------|--------|--------|
+| 07/03  | 75     | A Nova Cara Core: Como uma Startup Boutique Esta Redesenhando o Software Brasileiro | Cancelado e redistribuido |
+| 14/03  | 76     | Por que o Brasil Precisa de Software Boutique: Oportunidades em Nichos Tecnicos | Cancelado e redistribuido |
+| 15/03  | Serie RU Ep.01 | ATO II - A Camada Invisivel (Adsorcao). RU 1991 | Cancelado e redistribuido |
+| 21/03  | 77     | A Ultima Milha Digital: O Que as Tias Socias Revelam Sobre o Brasil | Cancelado e redistribuido |
 | 28/03  | 78     | Construindo Produtos com Propósito: A Filosofia por Trás do Portfólio da Cara Core |
 | 31/03  | Série RU Ep.02 | ATO III — O Pulso da Criação (Cinética). RU 1991 |
 

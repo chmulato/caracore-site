@@ -37,7 +37,7 @@ Ser reconhecida como referência em consultoria tecnológica e automação, dest
 - Inovação e adaptação constante.  
 - Respeito às pessoas e ao conhecimento.
 
-**Localização:** R. Francisco Xavier de Almeida Garret, 2.628, Apt. 102, Centro, Campo Largo, PR, CEP 83.601-230  
+**Localização:** Campo Largo, PR  
 
 **Equipe-chave:**  
 Christian Mulato e Guilherme Mulato.

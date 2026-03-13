@@ -439,7 +439,7 @@
         <p class="mb-1">Vamos até você. Agende a nossa visita.</p>
         <address>
           <i class="bi bi-geo-alt-fill"></i>
-          R. Joanim Stroparo, 560, Apt. 205 B - Vila Bancária - Campo Largo, PR, Cep 83.601-460
+          Campo Largo, PR
         </address>
         <!-- Mapa Google (carregado sob consentimento LGPD) -->
         <div class="mb-3">
@@ -448,16 +448,16 @@
               <div class="maps-placeholder-inner">
                 <i class="bi bi-map" aria-hidden="true"></i>
                 <div class="hint">
-                  Usaremos um mapa OpenStreetMap para privacidade. O link do Google Maps está disponível abaixo.
+                  Usaremos um mapa aproximado para privacidade. O link do Google Maps abre uma busca genérica da cidade.
                 </div>
                 <div class="actions">
-                  <a href="https://www.google.com/maps/place/R.+Joanim+Stroparo,+560,+Apt.+205+B+-+Vila+Bancária,+Campo+Largo,+PR,+83601-460" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm">Abrir no Google Maps</a>
+                  <a href="https://www.google.com/maps/search/?api=1&query=Campo+Largo,+PR" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm">Abrir no Google Maps</a>
                 </div>
               </div>
             </div>
           </div>
           <div class="mt-2 text-end">
-            <a href="https://www.google.com/maps/place/R.+Joanim+Stroparo,+560,+Apt.+205+B+-+Vila+Bancária,+Campo+Largo,+PR,+83601-460"
+            <a href="https://www.google.com/maps/search/?api=1&query=Campo+Largo,+PR"
               target="_blank" rel="noopener" class="btn btn-outline-primary btn-sm">
               Ver mapa ampliado
               <i class="bi bi-box-arrow-up-right"></i>
@@ -617,7 +617,7 @@
         const placeholder = document.getElementById('maps-placeholder');
         if (!container || !placeholder) return;
         const iframe = document.createElement('iframe');
-        iframe.title = 'Mapa - Endereço Cara Core Informática (OpenStreetMap)';
+        iframe.title = 'Mapa aproximado - Campo Largo, PR (OpenStreetMap)';
         iframe.width = '100%';
         iframe.height = '300';
         iframe.className = 'google-map-iframe';
@@ -625,12 +625,11 @@
         iframe.allowFullscreen = false;
         iframe.referrerPolicy = 'no-referrer';
         iframe.sandbox = 'allow-scripts allow-same-origin';
-        // Use OpenStreetMap embed para privacidade
-        const lat = -25.4606; // latitude aproximada
-        const lon = -49.5369; // longitude aproximada
-        const bbox = `${lon-0.005},${lat-0.005},${lon+0.005},${lat+0.005}`;
-        const marker = `${lat},${lon}`;
-        iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${marker}`;
+        // Usa um enquadramento amplo e sem marcador para não expor um ponto residencial exato.
+        const lat = -25.4606;
+        const lon = -49.5369;
+        const bbox = `${lon-0.012},${lat-0.012},${lon+0.012},${lat+0.012}`;
+        iframe.src = `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik`;
         container.replaceChild(iframe, placeholder);
       } catch(e){
         console.debug('Maps embed skipped:', e);

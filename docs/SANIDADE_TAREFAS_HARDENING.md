@@ -232,3 +232,28 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 4. ~~Fechar `personal/articles` e `personal/index.html` (21 arquivos).~~ CONCLUIDO
 5. ~~Fechar `cv/public` (escopo publico completo).~~ CONCLUIDO
 6. Resolver bloqueio estrutural de endpoints de download (ETE `download.html` + PDV JS) e executar varredura final global + baseline zero — Passo 6.
+
+### 2026-03-14 — Passo 5.1 (moving_to_ch EN/IT — alinhamento institucional + LGPD)
+
+- Feito:
+  - Alinhamento espelhado EN/IT em `moving_to_ch` com a mesma taxonomia de competencias.
+  - Consolidacao de blocos de hard skills e soft skills em EN e IT com aplicacao pelo time Brasil.
+  - Remocao de exposicao nominal pessoal no escopo EN/IT (titulos, copy, autoria e contato).
+  - Substituicao de canais pessoais por canais institucionais nas paginas de contato.
+  - Ajuste de linguagem para conformidade LGPD no fluxo de contato.
+  - Validacao local no escopo EN/IT sem erros de diagnostico apos edicoes.
+
+- Registro de validacao:
+  - Varredura por padroes pessoais no escopo `moving_to_ch/en/**` e `moving_to_ch/it/**` sem ocorrencias remanescentes dos identificadores tratados.
+  - Revisao de consistencia EN/IT concluida para homepage, services, about, contact, articles e artigos principais.
+
+- Proximo passo natural (sanitario):
+  - Executar Passo 6 estrutural em fluxo controlado, sem quebrar UX de download.
+  - Bloqueios estruturais mapeados:
+    - `delivery/ete/download.html`: CTA principal ainda aponta para `github.com/.../releases/latest`.
+    - `delivery/pdv/download.html`: resolver dinâmico usa `OWNER/REPO` + `api.github.com/repos/.../releases/latest` e fallback GitHub direto.
+
+- Critério de pronto do Passo 6:
+  - Endpoint institucional de download definido e publicado (ou redirect institucional estável) para ETE e PDV.
+  - Remocao de `OWNER/REPO`, `api.github.com/repos` e links diretos `github.com/chmulato/.../releases/latest` dos fluxos C1/C2 do dominio matriz.
+  - Revalidacao com grep no escopo de hardening e registro de baseline final.

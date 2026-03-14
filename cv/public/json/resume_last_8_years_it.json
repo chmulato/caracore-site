@@ -1,17 +1,17 @@
-{
+﻿{
   "informazioniPersonali": {
     "nome": "Christian Mulato",
     "titolo": "Sviluppatore Java Senior (Agenti AI) | Specialista Back-end | Jakarta, Spring Boot, REST API, Docker | Ingegnere Chimico",
-    "posizione": "Campo Largo, Paraná, Brasile",
+    "posizione": "Campo Largo, ParanÃ¡, Brasile",
     "contatto": {
       "cellulare": "+5541999097797",
-      "email": "chmulato@hotmail.com",
-      "linkedin": "https://www.linkedin.com/in/chmulato",
+      "email": "suporte@caracore.com.br",
+      "linkedin": "https://www.caracore.com.br",
       "sitoWebAziendale": "https://www.caracore.com.br",
       "portfolio": "https://www.caracore.com.br"
     }
   },
-  "riepilogo": "Ho una formazione universitaria in ingegneria presso l'UFPR, esperienza professionale in informatica e esperienza all'estero (Italia e Inghilterra). Specializzazioni in Informatica e Tecnologia Java presso l'UTFPR. Conoscenza pratica della logica di programmazione orientata agli oggetti, strutturata, UML, database (MS-Access, VBA, SQL Server, Firebird, MySQL, Oracle, MongoDB e linguaggio SQL) e automazione dei processi (RPA). Fluente in italiano e inglese post-intermedio (B2).",
+  "riepilogo": "Ho una formazione universitaria in ingegneria presso l'instituiÃ§Ã£o de engenharia, esperienza professionale in informatica e esperienza all'estero (contesti internazionali). Specializzazioni in Informatica e Tecnologia Java presso l'especializaÃ§Ã£o em tecnologia Java. Conoscenza pratica della logica di programmazione orientata agli oggetti, strutturata, UML, database (MS-Access, VBA, SQL Server, Firebird, MySQL, Oracle, MongoDB e linguaggio SQL) e automazione dei processi (RPA). Fluente in italiano e inglese post-intermedio (B2).",
   "competenzePrincipali": [
     "Istituzioni finanziarie",
     "Servizi bancari",
@@ -48,19 +48,19 @@
     {
       "azienda": "Compass UOL",
       "posizione": "Sviluppatore Java Senior",
-      "durata": "settembre 2025 - presente · 2 mesi",
-      "localita": "Passo Fundo, Rio Grande do Sul, Brasile · Remoto",
+      "durata": "settembre 2025 - presente Â· 2 mesi",
+      "localita": "Passo Fundo, Rio Grande do Sul, Brasile Â· Remoto",
       "descrizione": "- Ha lavorato su un progetto back-end con Jakarta EE, Spring Boot, SOAP, REST.\n- Consegne agili, automazione di processi critici e integrazione di sistemi aziendali.\n- (Lavoro Remoto - Outsourcing - Caixa Seguradora).",
       "tecnologie": [
         "Jakarta EE"
       ]
     },
     {
-      "azienda": "Cara Core Informática",
+      "azienda": "Cara Core InformÃ¡tica",
       "posizione": "Consulente e Sviluppatore di Sistemi",
       "durata": "gennaio 2016 - Presente (9 anni 8 mesi)",
-      "localita": "Curitiba e Regione, Brasile",
-      "descrizione": "Attività come Consulente e Sviluppatore di Sistemi, responsabile dello sviluppo, automazione e gestione di soluzioni tecnologiche per aziende e uffici. I sistemi del portafoglio (Delivery Control, POS e Dental) sono progetti open source, aperti alla collaborazione e all'investimento di appassionati e partner. Esperienza in test, validazione, automazione VBA/Office 365, infrastruttura, sicurezza, supporto remoto e integrazione tecnologica. Lavori svolti come libero professionista (PJ/CNPJ), con attenzione all'innovazione e alla comunità collaborativa.",
+      "localita": "Brasile",
+      "descrizione": "AttivitÃ  come Consulente e Sviluppatore di Sistemi, responsabile dello sviluppo, automazione e gestione di soluzioni tecnologiche per aziende e uffici. I sistemi del portafoglio (Delivery Control, POS e Dental) sono progetti open source, aperti alla collaborazione e all'investimento di appassionati e partner. Esperienza in test, validazione, automazione VBA/Office 365, infrastruttura, sicurezza, supporto remoto e integrazione tecnologica. Lavori svolti come libero professionista (PJ/CNPJ), con attenzione all'innovazione e alla comunitÃ  collaborativa.",
       "progetti": [
         {
           "nome": "Delivery Control",
@@ -80,8 +80,8 @@
       "azienda": "Develcode Tecnologia em Sistemas",
       "posizione": "Sviluppatore Java Senior",
       "durata": "marzo 2023 - luglio 2025 (2 anni 5 mesi)",
-      "localita": "Campo Largo, Paraná, Brasile",
-      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - RD Saúde).",
+      "localita": "Campo Largo, ParanÃ¡, Brasile",
+      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - RD SaÃºde).",
       "tecnologie": [
         "Java EE",
         "EJB",
@@ -105,8 +105,8 @@
       "azienda": "RPerformance Group",
       "posizione": "Sviluppatore Java Senior",
       "durata": "settembre 2022 - marzo 2023 (7 mesi)",
-      "localita": "Campo Largo, Paraná, Brasile",
-      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - RD Saúde).",
+      "localita": "Campo Largo, ParanÃ¡, Brasile",
+      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - RD SaÃºde).",
       "tecnologie": [
         "Java EE",
         "EJB",
@@ -127,8 +127,8 @@
       "azienda": "EY",
       "posizione": "Senior Java Software Engineer",
       "durata": "ottobre 2021 - agosto 2022 (11 mesi)",
-      "localita": "Campo Largo, Paraná, Brasile",
-      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end, front-end, Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - Banco do Brasil Bradesco Saúde).",
+      "localita": "Campo Largo, ParanÃ¡, Brasile",
+      "descrizione": "Sono stato consulente nello sviluppo di applicazioni back-end, front-end, Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - Banco do Brasil Bradesco SaÃºde).",
       "tecnologie": [
         "IDE Eclipse",
         "Maven",
@@ -144,7 +144,7 @@
       "azienda": "Atos",
       "posizione": "Senior Java Software Engineer",
       "durata": "ottobre 2020 - settembre 2021 (1 anno)",
-      "localita": "Campo Largo, Paraná, Brasile",
+      "localita": "Campo Largo, ParanÃ¡, Brasile",
       "descrizione": "Sono stato sviluppatore Java EE per il supporto di applicazioni nell'intranet del cliente. (Lavoro Remoto - Outsourcing - Gruppo Volkswagen). (*) Nei primi tre mesi sono stato esternalizzato da PSM Company.",
       "tecnologie": [
         "IDE IntelliJ",
@@ -157,10 +157,10 @@
       ]
     },
     {
-      "azienda": "Sigma Dataserv Informática S/A",
+      "azienda": "Sigma Dataserv InformÃ¡tica S/A",
       "posizione": "Analista Programmatore Java",
       "durata": "maggio 2020 - settembre 2020 (5 mesi)",
-      "localita": "Curitiba, Paraná",
+      "localita": "Brasil¡",
       "descrizione": "Supporto e sviluppo in tecnologie Java e Web. (Lavoro Remoto Outsourcing - Funasa)",
       "tecnologie": [
         "SQL Oracle Developer",
@@ -175,7 +175,7 @@
       "azienda": "WASYS",
       "posizione": "Analista Programmatore Java",
       "durata": "dicembre 2019 - aprile 2020 (5 mesi)",
-      "localita": "Curitiba e Regione, Brasile",
+      "localita": "Brasile",
       "descrizione": "Sviluppatore di sistemi Java utilizzando Java EE, Framework Spring e altre librerie standard.",
       "tecnologie": [
         "IDE IntelliJ",
@@ -195,8 +195,8 @@
         {
           "posizione": "Specialista in automazione dei processi (RPA)",
           "durata": "gennaio 2019 - novembre 2019 (11 mesi)",
-          "localita": "Curitiba e Regione, Brasile",
-          "descrizione": "Sono stato responsabile dell'analisi e dello sviluppo nell'automazione d'ufficio in codice Visual Basic for Application (VBA). Ho sviluppato codice nativo per auditare automaticamente le tassazioni fiscali delle fatture. Ho sviluppato in codice nativo l'emissione di report di produttività per l'inserimento di fatture all'interno di Microsoft Office.",
+          "localita": "Brasile",
+          "descrizione": "Sono stato responsabile dell'analisi e dello sviluppo nell'automazione d'ufficio in codice Visual Basic for Application (VBA). Ho sviluppato codice nativo per auditare automaticamente le tassazioni fiscali delle fatture. Ho sviluppato in codice nativo l'emissione di report di produttivitÃ  per l'inserimento di fatture all'interno di Microsoft Office.",
           "tecnologie": [
             "Power BI",
             "Selenium WebDriver",
@@ -207,7 +207,7 @@
         {
           "posizione": "Analista Sviluppatore Java",
           "durata": "marzo 2018 - dicembre 2018 (10 mesi)",
-          "localita": "Curitiba, Paraná",
+          "localita": "Brasil¡",
           "descrizione": "Ho sviluppato servizi (back-end) web utilizzando tecnologia JavaEE e Spring per un operatore mondiale di carte di credito, l'azienda Mastercard.",
           "tecnologie": [
             "Framework Agile/Scrum",
@@ -224,11 +224,11 @@
       ]
     },
     {
-      "azienda": "UniSistemas Tecnologia em Finanças",
+      "azienda": "UniSistemas Tecnologia em FinanÃ§as",
       "posizione": "Sviluppatore Java Web",
       "durata": "maggio 2017 - gennaio 2018 (9 mesi)",
-      "localita": "Curitiba, Paraná",
-      "descrizione": "Sviluppo, supporto, correzioni e implementazione di nuove funzionalità di applicazioni web.",
+      "localita": "Brasil¡",
+      "descrizione": "Sviluppo, supporto, correzioni e implementazione di nuove funzionalitÃ  di applicazioni web.",
       "tecnologie": [
         "Java EE",
         "Spring",
@@ -246,16 +246,17 @@
   ],
   "formazioneAccademica": [
     {
-      "istituzione": "Universidade Federal do Paraná",
+      "istituzione": "Universidade Federal do ParanÃ¡",
       "titolo": "Ingegnere Chimico",
       "campo": "Ingegneria",
       "periodo": "1991 - 2000"
     },
     {
-      "istituzione": "Universidade Tecnológica Federal do Paraná",
+      "istituzione": "Universidade TecnolÃ³gica Federal do ParanÃ¡",
       "titolo": "Specialista in Tecnologia Java",
       "campo": "Sviluppo di Sistemi",
       "periodo": "2007 - 2008"
     }
   ]
 }
+

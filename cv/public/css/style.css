@@ -60,6 +60,8 @@ header h2 {
 
 /* PDF download icon specific styling */
 #downloadPdfIcon {
+    color: #e74c3c;
+    font-weight: bold;
     transition: all 0.3s ease;
 }
 

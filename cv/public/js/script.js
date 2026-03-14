@@ -333,17 +333,14 @@ document.addEventListener('DOMContentLoaded', () => {
             // Personal Information
             console.log('Processing personal info...');
             html += '<div class="personal-info">';
-            html += `<h2>${data.informacoesPessoais.nome}</h2>`;
+            html += `<h2>Cara Core</h2>`;
             html += `<h3>${data.informacoesPessoais.titulo}</h3>`;
-            html += `<p><strong>Localização:</strong> ${data.informacoesPessoais.localizacao}</p>`;
+            html += `<p><strong>Localização:</strong> Remoto | on-site sob demanda</p>`;
             
             // Contact info
-            const contato = data.informacoesPessoais.contato;
             html += '<div class="contact-details">';
-            html += `<p><strong>Celular:</strong> ${contato.celular}</p>`;
-            html += `<p><strong>Email:</strong> ${contato.email}</p>`;
-            html += `<p><strong>LinkedIn:</strong> <a href="${contato.linkedin}" target="_blank">${contato.linkedin}</a></p>`;
-            html += `<p><strong>GitHub:</strong> <a href="${contato.portfolio}" target="_blank">${contato.portfolio}</a></p>`;
+            html += `<p><strong>Email:</strong> suporte@caracore.com.br</p>`;
+            html += `<p><strong>Website:</strong> <a href="https://www.caracore.com.br" target="_blank">https://www.caracore.com.br</a></p>`;
             html += '</div>';
             html += '</div>';
             

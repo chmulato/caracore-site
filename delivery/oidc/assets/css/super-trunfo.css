@@ -377,8 +377,8 @@ body.super-trunfo {
     font-weight: 700;
 }
 
-/* ----- Selo Pawlowsky (sinete de cera) em cada carta ----- */
-.card-seal-pawlowsky {
+/* ----- Selo científico (sinete de cera) em cada carta ----- */
+.card-seal-cientifico {
     position: absolute;
     bottom: 8px;
     right: 8px;
@@ -401,7 +401,7 @@ body.super-trunfo {
     pointer-events: none;
 }
 
-.trunfo-card.elite .card-seal-pawlowsky {
+.trunfo-card.elite .card-seal-cientifico {
     background: radial-gradient(circle at 30% 30%, #a0522d, #6b3410 40%, #4a2608);
     color: var(--gothic-gold);
     box-shadow:
@@ -893,8 +893,8 @@ body.super-trunfo.era-3 .reino-title { color: var(--gothic-gold); text-shadow: 0
     color: #1a0525;
 }
 
-/* ----- Selo Pawlowsky (seção da página) ----- */
-.selo-pawlowsky {
+/* ----- Selo científico (seção da página) ----- */
+.selo-cientifico {
     text-align: center;
     padding: 16px;
     margin: 20px 0;
@@ -903,25 +903,25 @@ body.super-trunfo.era-3 .reino-title { color: var(--gothic-gold); text-shadow: 0
     border-radius: 4px;
 }
 
-.selo-pawlowsky .selo-title {
+.selo-cientifico .selo-title {
     font-family: 'Uncial Antiqua', cursive;
     font-size: 0.95rem;
     color: var(--gothic-gold);
     margin-bottom: 4px;
 }
 
-.selo-pawlowsky .selo-desc {
+.selo-cientifico .selo-desc {
     font-size: 0.8rem;
     color: var(--gothic-text-dim);
 }
 
-.selo-pawlowsky.glow-gold {
+.selo-cientifico.glow-gold {
     box-shadow: 0 0 30px var(--gothic-gold-glow);
     border-color: var(--gothic-gold);
     transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.selo-pawlowsky.glow-gold .selo-title {
+.selo-cientifico.glow-gold .selo-title {
     color: var(--gothic-gold);
     text-shadow: 0 0 12px var(--gothic-gold-glow);
 }
@@ -1259,7 +1259,7 @@ body.super-trunfo.screen-shake {
     box-shadow: 0 0 20px var(--gothic-gold-glow);
 }
 
-/* Rodapé do modal: Selo Pawlowsky */
+/* Rodapé do modal: selo científico */
 .checkout-gothic-footer {
     padding: 16px 24px;
     border-top: 2px solid var(--gothic-gold);
@@ -1267,20 +1267,20 @@ body.super-trunfo.screen-shake {
     text-align: center;
 }
 
-.selo-pawlowsky-modal {
+.selo-cientifico-modal {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2px;
 }
 
-.selo-pawlowsky-modal-title {
+.selo-cientifico-modal-title {
     font-family: 'Uncial Antiqua', cursive;
     font-size: 0.9rem;
     color: var(--gothic-gold);
 }
 
-.selo-pawlowsky-modal-desc {
+.selo-cientifico-modal-desc {
     font-size: 0.75rem;
     color: var(--gothic-text-dim);
 }
@@ -1405,5 +1405,5 @@ body.reino-soberano .trunfo-card.pergaminho-pix {
     .trunfo-card { width: 160px; min-height: 260px; padding-bottom: 40px; }
     .attr-buttons { justify-content: center; }
     .empowerment-banner p { font-size: 1rem; }
-    .card-seal-pawlowsky { width: 24px; height: 24px; font-size: 10px; bottom: 6px; right: 6px; }
+    .card-seal-cientifico { width: 24px; height: 24px; font-size: 10px; bottom: 6px; right: 6px; }
 }

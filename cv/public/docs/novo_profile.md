@@ -6,7 +6,7 @@ Desenvolvedor Java Sênior com 18 anos de experiência em back-end, especialista
 
 Carreira consolidada em projetos corporativos, integração de sistemas, mensageria (RabbitMQ) e bancos de dados relacionais/NoSQL.
 
-Engenheiro Químico com experiência internacional (Itália e Inglaterra), fluente em italiano e inglês B2. Foco em soluções eficientes, escaláveis e entrega de valor.
+Engenheiro Químico com experiência internacional (contextos internacionais), fluente em italiano e inglês B2. Foco em soluções eficientes, escaláveis e entrega de valor.
 
 ---
 
@@ -66,9 +66,9 @@ Java Software Engineer | out/2020 – set/2021
 
 ## Formação Acadêmica
 
-Engenharia Química | UFPR | 1991–2000  
-Especialização em Tecnologia Java | UTFPR | 2007–2008  
-Formação Técnica em CAD/CAE | Festo Italiana / UFPR | 2000–2001
+Engenharia Química | instituição de engenharia | 1991–2000  
+Especialização em Tecnologia Java | especialização em tecnologia Java | 2007–2008  
+Formação Técnica em CAD/CAE | Festo Italiana / instituição de engenharia | 2000–2001
 
 ---
 
@@ -82,8 +82,8 @@ Formação Técnica em CAD/CAE | Festo Italiana / UFPR | 2000–2001
 
 ## Informações Adicionais
 
-Disponibilidade imediata para contratação PJ (Brasil), Remoto ou Relocation.  
-LinkedIn: [linkedin.com/in/chmulato](https://www.linkedin.com/in/chmulato)  
+Disponibilidade imediata para contratação PJ , Remoto ou on-site support by arrangement.  
+LinkedIn: [www.caracore.com.br](https://www.caracore.com.br)  
 Website: [www.caracore.com.br](https://www.caracore.com.br)
 
 ---

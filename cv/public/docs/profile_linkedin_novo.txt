@@ -1,99 +1,99 @@
-Contato
+﻿Contato
  +5541999097797 (Mobile)
- chmulato@hotmail.com
- www.linkedin.com/in/chmulato
+ suporte@caracore.com.br
+ www.caracore.com.br
  (LinkedIn)
  www.caracore.com.br (Company)
  www.caracore.com.br (Website)
  www.caracore.com.br/cv/public/
  index.html (Personal)
- Principais competências
- Instituições financeiras
- Serviços bancários
+ Principais competÃªncias
+ InstituiÃ§Ãµes financeiras
+ ServiÃ§os bancÃ¡rios
  Trabalho em equipe
  Languages
  Italiano (Native or Bilingual)
- Português (Native or Bilingual)
- Inglês (Full Professional)
+ PortuguÃªs (Native or Bilingual)
+ InglÃªs (Full Professional)
  Certifications
  Angular 14: Evoluindo uma
- aplicação SPA
+ aplicaÃ§Ã£o SPA
  Workshop Gratuito do Fullstack
  Angular e Spring
  Devops Cloud Week
  Hello Bot: Introduction To RPA
- RPA: Automatização de processos
+ RPA: AutomatizaÃ§Ã£o de processos
  com ferramenta NO/LOW Code
  Honors-Awards
  Java Software Support Engineer
  Patents
  CNH Tipo B
  Christian Mulato
- Desenvolvedor Java Sênior (Agentes de IA) | Especialista em
+ Desenvolvedor Java SÃªnior (Agentes de IA) | Especialista em
  Back-end | Jakarta, Spring Boot, REST APIs, Docker | Engenheiro
- Químico
- Campo Largo, Paraná, Brasil
+ QuÃ­mico
+ Campo Largo, ParanÃ¡, Brasil
  Resumo
- Engenheiro Químico com sólida carreira em desenvolvimento
- backend Java, automação de processos e experiência internacional
- (Itália e Inglaterra). Especialista em sistemas distribuídos, APIs
+ Engenheiro QuÃ­mico com sÃ³lida carreira em desenvolvimento
+ backend Java, automaÃ§Ã£o de processos e experiÃªncia internacional
+ (contextos internacionais). Especialista em sistemas distribuÃ­dos, APIs
  REST, mensageria, bancos de dados relacionais/NoSQL e
- automação com RPA. Foco em soluções eficientes, arquitetura
- limpa e entrega de valor. Fluente em italiano e inglês pós
-intermediário (B2).
- Experiência
- Cara Core Informática
- Técnico em Informática
+ automaÃ§Ã£o com RPA. Foco em soluÃ§Ãµes eficientes, arquitetura
+ limpa e entrega de valor. Fluente em italiano e inglÃªs pÃ³s
+intermediÃ¡rio (B2).
+ ExperiÃªncia
+ Cara Core InformÃ¡tica
+ TÃ©cnico em InformÃ¡tica
  janeiro de 2016 - Present (9 anos 8 meses)
- Curitiba e Região, Brasil
- Desenvolvimento de sistemas próprios, automação de escritórios, suporte e
- gestão de TI.
+ Brasil e RegiÃ£o, Brasil
+ Desenvolvimento de sistemas prÃ³prios, automaÃ§Ã£o de escritÃ³rios, suporte e
+ gestÃ£o de TI.
  Develcode Tecnologia em Sistemas
- Desenvolvedor Java Sênior
- março de 2023 - julho de 2025 (2 anos 5 meses)
- Campo Largo, Paraná, Brasil
- Atuação em projetos backend com Java EE, Spring Boot, EJB, JSF,
- RabbitMQ, Oracle, MongoDB e Docker. - Entregas ágeis, automação de
- processos críticos e integração de sistemas corporativos.
+ Desenvolvedor Java SÃªnior
+ marÃ§o de 2023 - julho de 2025 (2 anos 5 meses)
+ Campo Largo, ParanÃ¡, Brasil
+ AtuaÃ§Ã£o em projetos backend com Java EE, Spring Boot, EJB, JSF,
+ RabbitMQ, Oracle, MongoDB e Docker. - Entregas Ã¡geis, automaÃ§Ã£o de
+ processos crÃ­ticos e integraÃ§Ã£o de sistemas corporativos.
  EY
  Senior Java Software Engineer
  outubro de 2021 - agosto de 2022 (11 meses)
- Campo Largo, Paraná, Brasil- Implementação de soluções corporativas em Java EE, Maven, WebSphere,
+ Campo Largo, ParanÃ¡, Brasil- ImplementaÃ§Ã£o de soluÃ§Ãµes corporativas em Java EE, Maven, WebSphere,
  Oracle. 
  Page 1 of 3
-  - Atuação em equipes ágeis, integração contínua e entrega de projetos
- estratégicos.
+  - AtuaÃ§Ã£o em equipes Ã¡geis, integraÃ§Ã£o contÃ­nua e entrega de projetos
+ estratÃ©gicos.
  Wipro Limited
  1 ano 9 meses
- Especialista em automação de processos (RPA)
+ Especialista em automaÃ§Ã£o de processos (RPA)
  janeiro de 2019 - novembro de 2019 (11 meses)
- Curitiba e Região, Brasil- Automação de rotinas fiscais com VBA, Power BI e Microsoft Office.- Desenvolvimento backend para Mastercard usando Spring Boot, Java EE,
+ Brasil e RegiÃ£o, Brasil- AutomaÃ§Ã£o de rotinas fiscais com VBA, Power BI e Microsoft Office.- Desenvolvimento backend para Mastercard usando Spring Boot, Java EE,
  JUnit, Mockito.
  Analista Desenvolvedor Java
- março de 2018 - dezembro de 2018 (10 meses)
- Curitiba, Paraná- Desenvolvi serviços (back-end) web utilizando tecnologia JavaEE e Spring
- para uma operadora mundial de cartão de crédito, empresa Mastercard.- Ferramentas utilizadas: Framework Agile/Scrum, IDE Eclipse, Java EE,
+ marÃ§o de 2018 - dezembro de 2018 (10 meses)
+ Brasil¡- Desenvolvi serviÃ§os (back-end) web utilizando tecnologia JavaEE e Spring
+ para uma operadora mundial de cartÃ£o de crÃ©dito, empresa Mastercard.- Ferramentas utilizadas: Framework Agile/Scrum, IDE Eclipse, Java EE,
  Spring Boot, Spring Data, BitBucket Repository (Git), Banco de Dados Oracle,
  JUnit e Mockito.
  Atos, Sigma Dataserv, WASYS, UniSistemas.
- Outras experiências
- março de 2012 - janeiro de 2018 (5 anos 11 meses)- Atuação em desenvolvimento e suporte de sistemas corporativos utilizando
- Java EE, Spring, bancos de dados relacionais, metodologias ágeis e
- ferramentas de versionamento. Responsável por manutenção, evolução de
- aplicações e integração de soluções em ambientes empresariais.
- Formação acadêmica
- Universidade Tecnológica Federal do Paraná
+ Outras experiÃªncias
+ marÃ§o de 2012 - janeiro de 2018 (5 anos 11 meses)- AtuaÃ§Ã£o em desenvolvimento e suporte de sistemas corporativos utilizando
+ Java EE, Spring, bancos de dados relacionais, metodologias Ã¡geis e
+ ferramentas de versionamento. ResponsÃ¡vel por manutenÃ§Ã£o, evoluÃ§Ã£o de
+ aplicaÃ§Ãµes e integraÃ§Ã£o de soluÃ§Ãµes em ambientes empresariais.
+ FormaÃ§Ã£o acadÃªmica
+ Universidade TecnolÃ³gica Federal do ParanÃ¡
  Especialista em Tecnologia Java, Desenvolvimento de
- Sistemas · (2007 - 2008)
- Festo Italiana - UFPR - Centro de Cultura Italiana
- Operador em Informática, Especialista CAD/CAE, Setor
- Automotivo · (2000 - 2001)
- Universidade Federal do Paraná
+ Sistemas Â· (2007 - 2008)
+ Festo Italiana - instituiÃ§Ã£o de engenharia - Centro de Cultura Italiana
+ Operador em InformÃ¡tica, Especialista CAD/CAE, Setor
+ Automotivo Â· (2000 - 2001)
+ Universidade Federal do ParanÃ¡
  Page 2 of 3
   
-Engenheiro Químico, Engenharia · (1991 - 2000)
- Colégio Positivo - Curitiba - Paraná
- Terceirão e Pré Vestibular, Propedêutico · (1988 - 1989)
- Colégio Nossa Senhora Auxiliadora - Cascavel - Paraná
- Ensino Médio, Propedêutico · (1986 - 1987)
+Engenheiro QuÃ­mico, Engenharia Â· (1991 - 2000)
+ ColÃ©gio Positivo - Brasil - ParanÃ¡
+ TerceirÃ£o e PrÃ© Vestibular, PropedÃªutico Â· (1988 - 1989)
+ ColÃ©gio Nossa Senhora Auxiliadora - Cascavel - ParanÃ¡
+ Ensino MÃ©dio, PropedÃªutico Â· (1986 - 1987)
  Page 3 of 3

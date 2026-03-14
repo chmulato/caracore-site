@@ -6,7 +6,7 @@ Senior Java Developer with 18 years of experience in back-end, specialized in cl
 
 Solid career in corporate projects, systems integration, messaging (RabbitMQ), and relational/NoSQL databases.
 
-Chemical Engineer with international experience (Italy and England), fluent in Italian and intermediate English (B2). Focused on efficient, scalable solutions and value delivery.
+Chemical Engineer with international experience (international contexts), fluent in Italian and intermediate English (B2). Focused on efficient, scalable solutions and value delivery.
 
 ---
 
@@ -66,9 +66,9 @@ Java Software Engineer | Oct/2020 – Sep/2021
 
 ## Education
 
-Chemical Engineering | UFPR | 1991–2000  
-Specialization in Java Technology | UTFPR | 2007–2008  
-Technical Training in CAD/CAE | Festo Italiana / UFPR | 2000–2001
+Chemical Engineering | instituição de engenharia | 1991–2000  
+Specialization in Java Technology | especialização em tecnologia Java | 2007–2008  
+Technical Training in CAD/CAE | Festo Italiana / instituição de engenharia | 2000–2001
 
 ---
 
@@ -82,8 +82,8 @@ Technical Training in CAD/CAE | Festo Italiana / UFPR | 2000–2001
 
 ## Additional Information
 
-Immediate availability for PJ hiring (Brazil), Remote or Relocation.  
-LinkedIn: [linkedin.com/in/chmulato](https://www.linkedin.com/in/chmulato)  
+Immediate availability for PJ hiring (Brazil), Remote or on-site support by arrangement.  
+LinkedIn: [www.caracore.com.br](https://www.caracore.com.br)  
 Website: [www.caracore.com.br](https://www.caracore.com.br)
 
 ---

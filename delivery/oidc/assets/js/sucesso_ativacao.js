@@ -1,6 +1,6 @@
 /**
  * Reino OIDC — Componente de Celebração: Coroação (sucesso na ativação da licença).
- * Vitral dourado, Selo Pawlowsky, partículas de ouro, mensagem épica.
+ * Vitral dourado, selo científico, partículas de ouro, mensagem épica.
  * Som opcional: sino de catedral / fanfarra real (se assets/audio disponível).
  */
 (function () {
@@ -15,7 +15,7 @@
 
     /**
      * Dispara ao validar a chave de licença com sucesso.
-     * Tela escurece, Vitral Dourado ilumina no centro com Selo Pawlowsky,
+    * Tela escurece, Vitral Dourado ilumina no centro com selo científico,
      * partículas de ouro, mensagem épica e botão para Mineração de Chaves.
      */
     function exibirCoronacao() {
@@ -32,7 +32,7 @@
         overlay.innerHTML =
             '<div class="reino-coronacao-backdrop"></div>' +
             '<div class="reino-coronacao-vitral">' +
-            '  <div class="reino-coronacao-selo-pawlowsky">P</div>' +
+            '  <div class="reino-coronacao-selo-cientifico">C</div>' +
             '  <h2 id="coronacao-titulo" class="reino-coronacao-titulo">O Trono da Identidade agora é seu, Soberana!</h2>' +
             '  <p class="reino-coronacao-subtitulo">O Protocolo de Mineração de Chaves foi desbloqueado. Seus súditos (identidades) estão seguros sob sua nova governança.</p>' +
             '  <div class="reino-coronacao-actions">' +

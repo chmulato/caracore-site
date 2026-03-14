@@ -258,6 +258,25 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
   - Remocao de `OWNER/REPO`, `api.github.com/repos` e links diretos `github.com/chmulato/.../releases/latest` dos fluxos C1/C2 do dominio matriz.
   - Revalidacao com grep no escopo de hardening e registro de baseline final.
 
+### 2026-03-14 — Passo 7.1 (residual publico: ETE, personal, CV localizacao)
+
+- Feito:
+  - `delivery/ete/index.html`:
+    - Branding institucional no titulo, breadcrumb, `h1` e `alt` do logo (`CaraCore ETE Minerador 4.0`).
+  - `personal/articles/2025_08_01_lula_vs_bolsonaro_e_us_and_them_o_que_ainda_nao_entendemos_sobre_a_polarizacao.html`:
+    - Removida mencao com link pessoal de terceiro (LinkedIn), mantido texto neutro de homenagem.
+  - `cv/public/**` (arquivos `.json`, `.txt`, `.md`):
+    - Normalizacao de localizacao publica (`Curitiba/Parana` -> `Brasil/Brazil/Brasile`, conforme idioma).
+    - Normalizacao de string de instituicao com geografia explicita para rotulo neutro.
+    - Ajuste de labels com `| Curitiba |` para `| Brasil |`.
+
+- Validacao pos-edicao:
+  - Escopo `personal/**`: removido residual de `linkedin.com/in/` identificado na rodada.
+  - Escopo `cv/public/**`: reduzidos residuos de localizacao explicita nos artefatos de dados/documentacao publica.
+
+- Pendencias naturais:
+  - Curadoria seletiva de menções academicas historicas em `delivery/ete/**` (UFPR e referencias de homenagem), para decidir manutencao editorial x neutralizacao adicional.
+
 ### 2026-03-14 — Passo 6 (estrutural, fase 1 — saneamento de fluxo ETE/PDV)
 
 - Feito:
@@ -299,6 +318,27 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Escopo da varredura final:
   - `delivery/ete/download*.html`
   - `delivery/pdv/download*.html`
+
+### 2026-03-14 — Passo 7.2 (rodada final — neutralizacao academica publica)
+
+- Feito:
+  - `delivery/ru/index.html`:
+    - Removidas referencias nominativas e institucionais em copy publica (`UFPR`, `Prof. Soccol`), mantendo a narrativa tecnica e a ambientacao RETRO.
+  - `delivery/ete/**`:
+    - `termos-uso-creditos.html`, `licenca-uso.html`, `laboratorio_campo_largo.html`, `painel-simbiotico.html`, `painel-convergencia.html`, `upgrade-ouro40.html`, `apostila_efluentes.html`
+    - Referencias nominativas (`Pawlowsky`, `UFPR`) substituidas por linguagem neutra de inspiracao cientifica e legado academico.
+    - Selo visual renomeado para `Selo de Qualidade Cientifica` com asset institucional (`selo_cientifico_legado.png`).
+  - `delivery/oidc/**`:
+    - `super_trunfo.html` + CSS/JS associados atualizados para nomenclatura neutra (`selo-cientifico`, `card-seal-cientifico`, `selo-cientifico-modal`).
+
+- Validacao pos-edicao:
+  - Zero ocorrencias de `Pawlowsky|pawlowsky|Soccol|UFPR|UTFPR` no escopo tratado:
+    - `delivery/ru/**/*.{html,css,js}`
+    - `delivery/ete/**/*.{html,css,js}`
+    - `delivery/oidc/**/*.{html,css,js}`
+
+- Observacao de baseline:
+  - Residual historico/editorial fora do escopo final pode permanecer em acervos dedicados (`delivery/sala/**` e similares) quando o contexto do texto justificar preservacao curatorial.
 
 - Regras validadas (zero ocorrencias no escopo):
   - `github.com/chmulato`
@@ -479,3 +519,31 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Proxima rotina recomendada (D+1):
   - Repetir varredura curta de hardening apos qualquer alteracao em paginas de download/comercial.
   - Executar dependency-check por projeto critico antes de publicacao de release.
+
+### 2026-03-14 — Passo 7 (hardening de exposicao no CV publico)
+
+- Feito:
+  - Escopo institucionalizado em `cv/public` com remocao de canais pessoais e identificadores nominais diretos.
+  - Arquivos atualizados:
+    - `cv/public/index.html`
+    - `cv/public/js/script.js`
+    - `cv/public/css/style.css`
+    - `cv/public/lang/pt.json`
+    - `cv/public/lang/en.json`
+    - `cv/public/lang/it.json`
+    - saneamento textual em `cv/public/json/**` e `cv/public/docs/**`
+  - Ajustes aplicados:
+    - Contato publico padronizado para canal institucional (`suporte@caracore.com.br` + `www.caracore.com.br`).
+    - Nome exibido no front e no PDF padronizado para `Cara Core`.
+    - Remocao de referencias sensiveis de exposicao (identificadores pessoais, links pessoais, marcadores academicos/geograficos explicitos no escopo publico).
+    - Correcao de seguranca no link externo com `rel="noopener"`.
+
+- Validacao:
+  - Varredura no escopo `cv/public/**` com zero ocorrencias para padroes sensiveis:
+    - `chmulato`, `chmulato@hotmail.com`, `linkedin.com/in/chmulato`
+    - `UFPR`, `UTFPR`
+    - `Relocation`, `(Brasil)` e variantes geograficas tratadas
+  - Diagnostico sem erros nos arquivos alterados principais (`index.html`, `style.css`).
+
+- Proximo passo natural:
+  - Executar varredura global final do repositorio para fechamento de baseline consolidada da rodada atual.

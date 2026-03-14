@@ -2,7 +2,7 @@
  * Reino OIDC — Motor de Cálculo Super Trunfo
  * compareCards(attr): valida quem tem maior valor no atributo.
  * FREE: decks 1 e 2. PREMIUM (R$ 29,90): decks 3, 4 e 5 com Poderes Especiais.
- * Log [BATALHA], tremer tela + Selo Pawlowsky dourado em carta Premium.
+ * Log [BATALHA], tremer tela + selo científico dourado em carta Premium.
  * check_license(HID): Cara-Core; sem license.key → pergaminho com QR PIX.
  */
 
@@ -228,7 +228,7 @@
 
     function triggerPremiumEffect() {
         var body = document.body;
-        var selo = document.querySelector('.selo-pawlowsky');
+        var selo = document.querySelector('.selo-cientifico');
         if (body) body.classList.add('screen-shake');
         if (selo) selo.classList.add('glow-gold');
         setTimeout(function () {
@@ -263,7 +263,7 @@
 
     /**
      * Renderiza uma carta. Se isLocked e !isPremium(), exibe cadeado e ao clicar redireciona ao checkout (Cara-Core).
-     * Inclui flavor_text místico-técnico e Selo Pawlowsky em toda carta.
+    * Inclui flavor_text místico-técnico e selo científico em toda carta.
      */
     function renderCard(card, container, isMachine) {
         if (!card) return;
@@ -310,7 +310,7 @@
                 div.innerHTML += '<button type="button" class="btn-assuma-trono" data-cta-checkout>Assuma seu trono por R$ 29,90</button>';
             }
         }
-        div.innerHTML += '<div class="card-seal-pawlowsky" aria-hidden="true">P</div>';
+        div.innerHTML += '<div class="card-seal-cientifico" aria-hidden="true">C</div>';
         if (locked) {
             div.addEventListener('click', function (e) {
                 if (e.target && e.target.getAttribute && e.target.getAttribute('data-cta-checkout') !== null) return;

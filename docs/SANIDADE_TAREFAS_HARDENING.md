@@ -125,8 +125,81 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Continuar curadoria dos artigos tecnicos/historicos restantes (`sala` e `delivery/sala`) em lotes pequenos para evitar perda de contexto.
 - Resolver dependencia estrutural de endpoint publico no fluxo de download do PDV (variaveis OWNER/REPO no JS).
 
-## Backlog curto (proxima rodada)
+### 2026-03-14 — Rodada R6 (delivery/ete — fechamento comercial)
 
-1. Curadoria por lote no acervo tecnico/historico (sala/redes retro) preservando contexto.
-2. Definir estrategia para endpoint institucional de releases (eliminar dependencia de owner pessoal no JS do download).
-3. Executar varredura final por dominio/owner pessoal em todo o site e consolidar baseline.
+- Feito:
+- Limpeza de toda a area `delivery/ete` (6 arquivos) exceto 1 residual estrutural:
+   - delivery/ete/index.html — nav-card e rodape redirecionados para `download.html`
+   - delivery/ete/canal-feedback.html — link externo substituido por rota interna
+   - delivery/ete/termos-uso-creditos.html — nome "chmulato/ETE" → "CaraCore ETE"
+   - delivery/ete/artigo_ete_v3.html — 8 ocorrencias de "chmulato/ETE" → "CaraCore ETE"
+   - delivery/ete/laboratorio_campo_largo.html — og/twitter meta, title, badge, botoes, todos substituidos por URLs institucionais
+- Residual estrutural intencional: delivery/ete/download.html linha 79 (releases/latest) — mantem link para binario ate endpoint institucional ser criado.
+
+- Pendencias naturais:
+- Prosseguir pelos passos restantes conforme backlog.
+
+### 2026-03-14 — Passo 2 (sala/redes/retro/articles — canonico)
+
+- Feito:
+  - 11 substituicoes em 8 arquivos `sala/redes/retro/articles`:
+    - 2025_09_09_article_46.html — repo-box `personal_articles` → contato institucional
+    - 2025_09_02_article_45.html — li `Sending_CV` + repo-box → contato institucional
+    - 2025_08_31_article_44.html — repo-box `caracore-dental.git` → contato institucional
+    - 2025_08_25_article_43.html — bash `git clone cara-core-dashboard` → comentario neutro; repo-box GitHub link → contato institucional
+    - 2025_08_04_article_40.html — li + paragrafo `zeca-delivery-automation` → contato institucional
+    - 2025_07_16_article_39.html — link `Sending_CV` → contato institucional
+    - 2025_07_06_article_38.html — paragrafo + link `seo-article-builder` → texto + contato institucional
+    - 2025_06_15_article_35.html — 2 links de scripts `cara-core/tree/...` → `<span>` sem href
+  - Validacao pos-edicao: zero matches em `sala/redes/retro/articles/**`
+  - 17 matches remanescentes confirmados em `delivery/sala/redes/retro/articles/**` (Passo 3)
+
+- Backlog atualizado:
+1. ~~Fechar `sala/redes/retro/articles` restante (8 arquivos tecnicos historicos).~~ CONCLUIDO
+2. Fechar `delivery/sala/redes/retro/articles` espelhado restante (8 arquivos) — Passo 3.
+3. Fechar `moving_to_ch/en` e `moving_to_ch/it` (14 arquivos — rodape/contato) — Passo 4.
+4. Fechar `personal/articles` e `personal/index.html` (21 arquivos — curadoria editorial) — Passo 5.
+5. Fechar `cv/public` (1 arquivo) — Passo 5.
+6. Resolver bloqueio estrutural de endpoints de download (ETE download.html + PDV JS) para eliminar os 2 residuais de binario — Passo 6.
+7. Varredura final global + baseline zero — Passo 6.
+
+### 2026-03-14 — Passo 3 (delivery/sala/redes/retro/articles — espelho)
+
+- Feito:
+  - 11 substituicoes identicas ao Passo 2 nos 8 arquivos espelho `delivery/sala/redes/retro/articles`:
+    - delivery/.../2025_09_09_article_46.html — repo-box `personal_articles` → contato institucional
+    - delivery/.../2025_09_02_article_45.html — li `Sending_CV` + repo-box → contato institucional
+    - delivery/.../2025_08_31_article_44.html — repo-box `caracore-dental.git` → contato institucional
+    - delivery/.../2025_08_25_article_43.html — bash `git clone` → comentario neutro; repo-box → contato
+    - delivery/.../2025_08_04_article_40.html — li + paragrafo `zeca-delivery-automation` → contato
+    - delivery/.../2025_07_16_article_39.html — link `Sending_CV` → contato institucional
+    - delivery/.../2025_07_06_article_38.html — paragrafo + link `seo-article-builder` → texto + contato
+    - delivery/.../2025_06_15_article_35.html — 2 links de scripts `cara-core/tree/...` → `<span>` sem href
+  - Validacao pos-edicao: zero matches em `delivery/sala/redes/retro/articles/**`
+
+- Backlog atualizado:
+1. ~~Fechar `sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
+2. ~~Fechar `delivery/sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
+3. Fechar `moving_to_ch/en` e `moving_to_ch/it` (14 arquivos) — Passo 4.
+4. Fechar `personal/articles` e `personal/index.html` (21 arquivos) — Passo 5.
+5. Fechar `cv/public` (1 arquivo) — Passo 5.
+6. Resolver bloqueio estrutural + varredura final global + baseline zero — Passo 6.
+
+### 2026-03-14 — Passo 4 (moving_to_ch/en + moving_to_ch/it — rodapé/contato)
+
+- Feito:
+  - 16 substituicoes em 14 arquivos (7 EN + 7 IT):
+    - Footer social block (12 arquivos): LinkedIn pessoal → `linkedin.com/company/cara-core/`; GitHub pessoal → `www.caracore.com.br` (ícone `bi-globe`)
+    - en/index.html value-card section: LinkedIn pessoal → company; seção GitHub → Sito Web/Website
+    - it/index.html value-card section: idem em italiano
+    - en/contact.html contact-info-item: LinkedIn pessoal → company; GitHub → Website
+    - it/contact.html contact-info-item: idem em italiano
+  - Validacao pos-edicao: zero matches em `moving_to_ch/en/**` e `moving_to_ch/it/**`
+
+- Backlog atualizado:
+1. ~~Fechar `sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
+2. ~~Fechar `delivery/sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
+3. ~~Fechar `moving_to_ch/en` e `moving_to_ch/it` (14 arquivos).~~ CONCLUIDO
+4. Fechar `personal/articles` e `personal/index.html` (21 arquivos) — Passo 5.
+5. Fechar `cv/public` (1 arquivo) — Passo 5.
+6. Resolver bloqueio estrutural + varredura final global + baseline zero — Passo 6.

@@ -35,6 +35,25 @@ Funcao do documento: referencia executavel do `Cenario B`, preservando o `Cenari
 | R1-17 | outubro/2027 | Cara Core | planejado | Matriz de risco operacional 2027 | risco, mitigacao e governanca | matriz atualizada + revisao de seguranca | preparar fechamento tecnico |
 | R1-18 | novembro/2027 | Blog | planejado | Encerramento do Ciclo 1: publicado, reservado e adiado | prestacao de contas editorial | comparativo fechado + inventario consolidado | encerrar o ciclo em equilibrio |
 
+## Proxima onda de execucao (90 dias)
+
+Objetivo: transformar slots planejados em pipeline executavel, com previsibilidade de gate e trilha de contingencia.
+
+| Slot | Janela-alvo | Marco 1 (briefing) | Marco 2 (rascunho tecnico) | Marco 3 (gate final) | Fallback de contingencia | Estado atual |
+| --- | --- | --- | --- | --- | --- | --- |
+| R1-07 | dezembro/2026 | pauta congelada ate 15/10/2026 | rascunho revisado ate 10/11/2026 | go/no-go ate 25/11/2026 | nota curta institucional com sintese de 2026 | planejamento iniciado |
+| R1-08 | janeiro/2027 | pauta congelada ate 15/11/2026 | rascunho revisado ate 10/12/2026 | go/no-go ate 25/12/2026 | artigo de memoria tecnica com base na reserva Blog | planejamento iniciado |
+| R1-09 | fevereiro/2027 | pauta congelada ate 15/12/2026 | rascunho revisado ate 10/01/2027 | go/no-go ate 25/01/2027 | nota de mapa de risco institucional | planejamento iniciado |
+| R1-10 | marco/2027 | pauta congelada ate 15/01/2027 | rascunho revisado ate 10/02/2027 | go/no-go ate 25/02/2027 | publicacao curta de continuidade da serie Brasil SDK | planejamento iniciado |
+| R1-11 | abril/2027 | pauta congelada ate 15/02/2027 | rascunho revisado ate 10/03/2027 | go/no-go ate 25/03/2027 | nota de procedimentos consolidados da Sala | fila de preparo |
+| R1-12 | maio/2027 | pauta congelada ate 15/03/2027 | rascunho revisado ate 10/04/2027 | go/no-go ate 25/04/2027 | retrospectiva tecnica com dados anonimizados | fila de preparo |
+
+Regra operacional da onda:
+
+- Se um slot perder o Marco 2, ele entra automaticamente em `risco` e abre fallback no mesmo mes.
+- Se um slot perder o Marco 3, ele vira `adiado` e o proximo slot herda prioridade de briefing.
+- Cada slot finalizado deve atualizar status para `em producao`, `publicado`, `convertido em nota curta` ou `adiado`.
+
 ## Gate adicional de aderencia ecossistemica
 
 - Cara Core: cada pauta precisa refletir artefato, processo, risco, integracao ou decisao real da plataforma.

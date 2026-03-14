@@ -85,6 +85,44 @@ Como o Ciclo 1 reaberto fecha a compensacao do Blog entre dezembro/2026 e novemb
 | C2R-17 | abril/2029 | Blog | memoria institucional do arco final | alternancia pura |
 | C2R-18 | maio/2029 | Cara Core | encerramento equilibrado do programa | fechamento |
 
+## Planejamento de assuntos do Ciclo 2 com insight de atualidade
+
+Objetivo: manter o eixo editorial tecnico e institucional, sem perder aderencia ao contexto do momento.
+
+| Slot | Tema-base do assunto | Insight de atualidade (angulo) | Sinais para monitorar no mes | Formato preferencial |
+| --- | --- | --- | --- | --- |
+| C2R-01 | Balanco da transicao entre ciclos | O que mudou no ecossistema e exige reposicionamento imediato | mudanca regulatoria, incidente setorial, alteracao relevante de fornecedor | nota de abertura com plano de resposta |
+| C2R-02 | Operacao institucional trimestral | Gargalos reais de execucao apos virada de ciclo | aumento de fila, retrabalho, lead time fora da meta | artigo tecnico com dados operacionais |
+| C2R-03 | Soberania tecnica aplicada | Dependencias externas que afetaram autonomia local no trimestre | indisponibilidade de servico externo, mudanca de politica de API | ensaio tecnico com caso real anonimo |
+| C2R-04 | Produto, trilhas e integracoes | Integracoes criticas pressionadas por mudancas externas | quebra de compatibilidade, deprecacao de endpoint, alteracao de contrato | artigo de arquitetura com mitigacoes |
+| C2R-05 | Legado e manutencao orientada a risco | Custos ocultos de legado quando o contexto muda rapido | pico de defeitos, regressao em area legada, downtime evitavel | artigo de engenharia com matriz de risco |
+| C2R-06 | Operacao, suporte e risco | Temas recorrentes de suporte que viraram sinal sistêmico | concentracao de chamados, reincidencia por causa raiz | nota tecnica com plano de correcao |
+| C2R-07 | Narrativa tecnica do ecossistema | Ajustes de narrativa para refletir fatos novos sem hype | mudanca de prioridade institucional, alteracao de roadmap | artigo narrativo-factual |
+| C2R-08 | Observabilidade e governanca | O que os indicadores mostraram e o que foi alterado por isso | alerta persistente, SLO violado, indicador de qualidade em queda | artigo de observabilidade |
+| C2R-09 | Integracao e contexto | Interfaces externas que exigiram adaptacao de protocolo | mudanca em padrao de mercado, exigencia de compliance tecnico | artigo de integracao com checklist |
+| C2R-10 | Consolidacao institucional | Decisoes que viraram padrao institucional no ano | formalizacao de processo, aprovacao de procedimento | memoria institucional tecnica |
+| C2R-11 | Manutencao no mundo real | Aprendizados de manutencao sob restricao de tempo e equipe | backlog de manutencao, priorizacao por risco | artigo pratico com trade-offs |
+| C2R-12 | Inventario de controles | Controles que evoluiram por causa de risco emergente | incidente evitado, ajuste de auditoria, novo controle efetivo | relatorio tecnico com evidencias |
+| C2R-13 | Retrospectiva anual validada | O que foi comprovado vs o que foi descartado | metas parcialmente atingidas, hipoteses invalidadas | retrospectiva tecnica anual |
+| C2R-14 | Continuidade operacional critica | Resiliencia da operacao diante de eventos externos | falha de dependencia critica, evento de disponibilidade | artigo de continuidade |
+| C2R-15 | Soberania e dependencia controlada | Limites aceitaveis de dependencia no periodo | risco de lock-in, aumento de custo de dependencia | ensaio tecnico com criterio decisorio |
+| C2R-16 | Fechamento tecnico do ciclo | Mudancas finais para encerrar o ciclo com rastreabilidade | pendencias de documentacao, ajuste final de processo | relatorio de fechamento tecnico |
+| C2R-17 | Memoria institucional do arco final | O que deve permanecer como base para o proximo ciclo | decisoes reaproveitaveis, artefatos com maior valor historico | artigo de memoria institucional |
+| C2R-18 | Encerramento equilibrado do programa | Prestacao de contas final com foco em evidencias | saldo final por acervo, indicadores de consistencia editorial | dossie de encerramento |
+
+### Ritmo mensal de insight para atualidade
+
+- Semana 1: varredura de sinais (regulatorio, risco tecnico, integracoes, operacao).
+- Semana 2: escolha do angulo do mes e congelamento da tese editorial.
+- Semana 3: redacao com evidencia e rastreabilidade.
+- Semana 4: gate final e decisao entre artigo completo ou nota curta.
+
+### Regra de atualidade sem desvio de foco
+
+- Insight de atualidade so entra se houver impacto direto no ecossistema Cara Core.
+- Tendencia de mercado sem impacto tecnico-operacional comprovado deve ser bloqueada.
+- Todo insight aprovado precisa apontar artefato, risco, mudanca de processo ou decisao concreta.
+
 ## Referencias
 
 - `COMPARATIVO_CICLO1_UNIFORMIDADE_2026_2027.md`

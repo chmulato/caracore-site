@@ -84,6 +84,6 @@ Formação Técnica em CAD/CAE | Festo Italiana / UFPR | 2000–2001
 
 Disponibilidade imediata para contratação PJ (Brasil), Remoto ou Relocation.  
 LinkedIn: [linkedin.com/in/chmulato](https://www.linkedin.com/in/chmulato)  
-GitHub: [github.com/chmulato](https://github.com/chmulato)
+Website: [www.caracore.com.br](https://www.caracore.com.br)
 
 ---

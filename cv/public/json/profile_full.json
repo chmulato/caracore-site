@@ -8,7 +8,7 @@
       "email": "chmulato@hotmail.com",
       "linkedin": "https://www.linkedin.com/in/chmulato",
       "siteDaEmpresa": "https://www.caracore.com.br",
-      "portfolio": "https://github.com/chmulato"
+      "portfolio": "https://www.caracore.com.br"
     }
   },
   "resumo": "Possuo formação universitária em engenharia pela UFPR, experiência profissional em informática e vivência no exterior do país (Itália e Inglaterra). Especializações em Informática e Tecnologia Java pela UTFPR. Conhecimento prático em lógica de programação orientada a objeto, estruturada, UML, banco de dados (MS-Access, VBA, SQL Server, Firebird, MySQL, Oracle, MongoDB e linguagem SQL) e automação de processos (RPA). Fluência no idioma italiano e inglês pós intermediário (B2).",
@@ -64,15 +64,15 @@
       "projetos": [
         {
           "nome": "Delivery Control",
-          "url": "https://github.com/chmulato/csonline"
+          "url": "https://www.caracore.com.br"
         },
         {
           "nome": "Cara-Core PDV",
-          "url": "https://github.com/chmulato/caracore-pdv"
+          "url": "https://www.caracore.com.br"
         },
         {
           "nome": "Cara-Core Dental",
-          "url": "https://github.com/chmulato/caracore-dental"
+          "url": "https://www.caracore.com.br"
         }
       ]
     },

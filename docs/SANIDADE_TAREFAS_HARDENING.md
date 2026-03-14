@@ -203,3 +203,32 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 4. Fechar `personal/articles` e `personal/index.html` (21 arquivos) — Passo 5.
 5. Fechar `cv/public` (1 arquivo) — Passo 5.
 6. Resolver bloqueio estrutural + varredura final global + baseline zero — Passo 6.
+
+### 2026-03-14 — Passo 5 (personal + cv/public — curadoria editorial)
+
+- Feito:
+  - `personal/index.html`:
+    - Header e footer: LinkedIn pessoal -> `linkedin.com/company/cara-core/`
+    - GitHub pessoal -> `www.caracore.com.br` (label `Website`)
+  - `personal/articles` (20 arquivos):
+    - Remocao/substituicao de links pessoais/repositorios para `www.caracore.com.br` ou `mailto:suporte@caracore.com.br`
+    - Delink de bylines pessoais mantendo autoria textual
+    - Troca de `chmulato.github.io/caracore-ete-releases/` por `../../delivery/ete/index.html`
+  - `cv/public/index.html`:
+    - Removido link GitHub pessoal da barra de contatos
+  - `cv/public/json` (4 arquivos):
+    - `portfolio` + 3 URLs de projetos substituidos por `https://www.caracore.com.br`
+  - `cv/public/docs` (4 arquivos):
+    - Perfil/portfolio GitHub pessoal substituido por website institucional
+    - URLs de projetos pessoais substituidas por `https://www.caracore.com.br`
+  - Validacao pos-edicao:
+    - zero matches em `personal/**`
+    - zero matches em `cv/**`
+
+- Backlog atualizado:
+1. ~~Fechar `sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
+2. ~~Fechar `delivery/sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
+3. ~~Fechar `moving_to_ch/en` e `moving_to_ch/it` (14 arquivos).~~ CONCLUIDO
+4. ~~Fechar `personal/articles` e `personal/index.html` (21 arquivos).~~ CONCLUIDO
+5. ~~Fechar `cv/public` (escopo publico completo).~~ CONCLUIDO
+6. Resolver bloqueio estrutural de endpoints de download (ETE `download.html` + PDV JS) e executar varredura final global + baseline zero — Passo 6.

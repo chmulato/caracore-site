@@ -4,7 +4,7 @@ Contato
  www.linkedin.com/in/chmulato
  (LinkedIn)
  www.caracore.com.br (Company)
- github.com/chmulato (Portfolio)
+ www.caracore.com.br (Website)
  www.caracore.com.br/cv/public/
  index.html (Personal)
  Principais competências
@@ -53,9 +53,9 @@ Contato
  informações em rede e suporte remoto.
  Sistemas de cadastros de informações e seus códigos-fontes abertos
  publicados no GitHub:
- Delivery Control:   https://github.com/chmulato/csonline
- Cara-Core PDV:     https://github.com/chmulato/caracore-pdv
- Cara-Core Dental: https://github.com/chmulato/caracore-dental
+ Delivery Control:   https://www.caracore.com.br
+ Cara-Core PDV:     https://www.caracore.com.br
+ Cara-Core Dental: https://www.caracore.com.br
  Develcode Tecnologia em Sistemas
  Desenvolvedor Java Sênior
  março de 2023 - julho de 2025 (2 anos 5 meses)

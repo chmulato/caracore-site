@@ -1,7 +1,7 @@
 # Plano CH + IT — Foco em Competencias Locais
 
 Data: 2026-03-14
-Escopo: moving_to_ch/en + moving_to_ch/it
+Escopo: aligned/en + aligned/it
 Objetivo: reposicionar o conteudo para destacar competencias com aderencia de mercado para Suica (CH) e Italia (IT), mantendo consistencia entre EN e IT sem duplicacao mecanica.
 
 ## 1) Direcao de posicionamento
@@ -39,7 +39,7 @@ Linguagem recomendada (IT):
 ## 3) Plano por pagina
 
 ### EN homepage
-Arquivo: moving_to_ch/en/index.html
+Arquivo: aligned/en/index.html
 Ajustes:
 - Hero: enfatizar CH outcomes (risk reduction, compliance readiness, predictable delivery).
 - Value cards: trocar textos genericos por 3 blocos CH-centric:
@@ -49,7 +49,7 @@ Ajustes:
 - CTA: trocar para linguagem de discovery call com escopo inicial em 2 semanas.
 
 ### IT homepage
-Arquivo: moving_to_ch/it/index.html
+Arquivo: aligned/it/index.html
 Ajustes:
 - Hero: enfatizar digitalizzazione pragmatica e continuita operativa.
 - Value cards: 3 blocos IT-centric:
@@ -59,7 +59,7 @@ Ajustes:
 - CTA: linguagem de consultoria orientada a risultati e piano in fasi.
 
 ### EN services
-Arquivo: moving_to_ch/en/services.html
+Arquivo: aligned/en/services.html
 Ajustes:
 - Reordenar servicos por prioridade CH:
   1) Legacy-to-Cloud Migration (regulated path)
@@ -68,7 +68,7 @@ Ajustes:
 - Incluir secao "Typical CH engagements": pharma supplier modernization, quality evidence pipelines, data reconciliation.
 
 ### IT services
-Arquivo: moving_to_ch/it/services.html
+Arquivo: aligned/it/services.html
 Ajustes:
 - Reordenar servicos por prioridade IT:
   1) Migrazione Legacy Graduale
@@ -77,20 +77,20 @@ Ajustes:
 - Incluir secao "Casi tipici in Italia": integrazione retail/logistica, automazione ufficio tecnico, consolidamento piattaforme.
 
 ### EN about
-Arquivo: moving_to_ch/en/about.html
+Arquivo: aligned/en/about.html
 Ajustes:
 - Reduzir biografia longa e aumentar blocos de "market-fit skills".
 - Inserir tabela curta: skill -> business impact -> CH applicability.
 - Destacar cidadania/mercado apenas como enabler, nao como mensagem principal.
 
 ### IT about
-Arquivo: moving_to_ch/it/about.html
+Arquivo: aligned/it/about.html
 Ajustes:
 - Enxugar narrativa e reforcar competenze applicate al contesto italiano.
 - Inserir blocco "Competenze che portano risultato" com 5 bullets objetivos.
 
 ### EN/IT contact
-Arquivos: moving_to_ch/en/contact.html, moving_to_ch/it/contact.html
+Arquivos: aligned/en/contact.html, aligned/it/contact.html
 Ajustes:
 - Atualizar dropdown de "project type" para refletir ofertas locais:
   - Legacy modernization
@@ -100,7 +100,7 @@ Ajustes:
 - Ajustar placeholders para coleta de contexto de negocio (prazo, sistema atual, risco principal).
 
 ### EN/IT articles
-Arquivos: moving_to_ch/en/articles.html, moving_to_ch/it/articles.html
+Arquivos: aligned/en/articles.html, aligned/it/articles.html
 Ajustes:
 - Curadoria de artigos por mercado com etiquetas:
   - CH: Compliance, Reliability, Regulated Systems

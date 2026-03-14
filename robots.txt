@@ -4,7 +4,7 @@ Disallow: /secure/
 Disallow: /wiki/
 Disallow: /handbook/
 Disallow: /folders/
-Disallow: /moving_to_ch/
+Disallow: /aligned/
 Disallow: /cv/
 Disallow: /personal/
 Disallow: /sala/

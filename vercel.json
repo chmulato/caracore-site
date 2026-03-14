@@ -1,6 +1,11 @@
 {
     "redirects": [
         {
+            "source": "/moving_to_ch/:path*",
+            "destination": "/aligned/:path*",
+            "permanent": true
+        },
+        {
             "source": "/oauth/google/token",
             "destination": "https://caracore-backend-docker.azurewebsites.net/oauth/google/token"
         },

@@ -19,7 +19,7 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 1. Matriz comercial: index, portfolio, ecossistema.
 2. Delivery comercial ativo: pdv, oidc, hub, ink, cso, area51, circuito, ru, seed, mkt.
 3. Wiki front-facing: projetos-overview, tecnologias, guias de entrada.
-4. Publicacoes e historico (handbook/sala/personal/moving_to_ch) apenas em rodada dedicada.
+4. Publicacoes e historico (handbook/sala/personal/aligned) apenas em rodada dedicada.
 
 ## Checklist operacional por rodada
 
@@ -67,7 +67,7 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Pendencias naturais:
 
   - Wiki front-facing (ex.: projetos-overview, projeto-*.html).
-  - Conteudo historico/editorial (sala/personal/moving_to_ch) em trilha separada.
+  - Conteudo historico/editorial (sala/personal/aligned) em trilha separada.
   - Caso estrutural: PDV download usa API de releases publicos (OWNER/REPO) para resolver instalador; migracao depende de endpoint institucional proprio.
 
 ### 2026-03-14 — Rodada R2 (wiki front-facing)
@@ -79,7 +79,7 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 
 - Pendencias naturais:
 - Completar trilha wiki restante (projeto-seed, projeto-reino, projeto-python, guia-estagiario e correlatas).
-- Tratar acervo historico/editorial (sala/personal/moving_to_ch) em rodada dedicada.
+- Tratar acervo historico/editorial (sala/personal/aligned) em rodada dedicada.
 - Resolver dependencia estrutural de endpoints publicos no JS de download do PDV (OWNER/REPO).
 
 ### 2026-03-14 — Rodada R3 (wiki produtos/guias remanescentes)
@@ -90,7 +90,7 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Validação do escopo R3 com zero ocorrencias de owner pessoal.
 
 - Pendencias naturais:
-- Rodada dedicada para acervo historico/editorial (sala, personal, moving_to_ch, handbook/publications legadas).
+- Rodada dedicada para acervo historico/editorial (sala, personal, aligned, handbook/publications legadas).
 - Resolver dependencia estrutural de endpoint publico no fluxo de download do PDV (variaveis OWNER/REPO no JS).
 
 ### 2026-03-14 — Rodada R4 (acervo editorial institucional)
@@ -157,7 +157,7 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Backlog atualizado:
 1. ~~Fechar `sala/redes/retro/articles` restante (8 arquivos tecnicos historicos).~~ CONCLUIDO
 2. Fechar `delivery/sala/redes/retro/articles` espelhado restante (8 arquivos) — Passo 3.
-3. Fechar `moving_to_ch/en` e `moving_to_ch/it` (14 arquivos — rodape/contato) — Passo 4.
+3. Fechar `aligned/en` e `aligned/it` (14 arquivos — rodape/contato) — Passo 4.
 4. Fechar `personal/articles` e `personal/index.html` (21 arquivos — curadoria editorial) — Passo 5.
 5. Fechar `cv/public` (1 arquivo) — Passo 5.
 6. Resolver bloqueio estrutural de endpoints de download (ETE download.html + PDV JS) para eliminar os 2 residuais de binario — Passo 6.
@@ -180,12 +180,12 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Backlog atualizado:
 1. ~~Fechar `sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
 2. ~~Fechar `delivery/sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
-3. Fechar `moving_to_ch/en` e `moving_to_ch/it` (14 arquivos) — Passo 4.
+3. Fechar `aligned/en` e `aligned/it` (14 arquivos) — Passo 4.
 4. Fechar `personal/articles` e `personal/index.html` (21 arquivos) — Passo 5.
 5. Fechar `cv/public` (1 arquivo) — Passo 5.
 6. Resolver bloqueio estrutural + varredura final global + baseline zero — Passo 6.
 
-### 2026-03-14 — Passo 4 (moving_to_ch/en + moving_to_ch/it — rodapé/contato)
+### 2026-03-14 — Passo 4 (aligned/en + aligned/it — rodapé/contato)
 
 - Feito:
   - 16 substituicoes em 14 arquivos (7 EN + 7 IT):
@@ -194,12 +194,12 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
     - it/index.html value-card section: idem em italiano
     - en/contact.html contact-info-item: LinkedIn pessoal → company; GitHub → Website
     - it/contact.html contact-info-item: idem em italiano
-  - Validacao pos-edicao: zero matches em `moving_to_ch/en/**` e `moving_to_ch/it/**`
+  - Validacao pos-edicao: zero matches em `aligned/en/**` e `aligned/it/**`
 
 - Backlog atualizado:
 1. ~~Fechar `sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
 2. ~~Fechar `delivery/sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
-3. ~~Fechar `moving_to_ch/en` e `moving_to_ch/it` (14 arquivos).~~ CONCLUIDO
+3. ~~Fechar `aligned/en` e `aligned/it` (14 arquivos).~~ CONCLUIDO
 4. Fechar `personal/articles` e `personal/index.html` (21 arquivos) — Passo 5.
 5. Fechar `cv/public` (1 arquivo) — Passo 5.
 6. Resolver bloqueio estrutural + varredura final global + baseline zero — Passo 6.
@@ -228,15 +228,15 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Backlog atualizado:
 1. ~~Fechar `sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
 2. ~~Fechar `delivery/sala/redes/retro/articles` (8 arquivos).~~ CONCLUIDO
-3. ~~Fechar `moving_to_ch/en` e `moving_to_ch/it` (14 arquivos).~~ CONCLUIDO
+3. ~~Fechar `aligned/en` e `aligned/it` (14 arquivos).~~ CONCLUIDO
 4. ~~Fechar `personal/articles` e `personal/index.html` (21 arquivos).~~ CONCLUIDO
 5. ~~Fechar `cv/public` (escopo publico completo).~~ CONCLUIDO
 6. Resolver bloqueio estrutural de endpoints de download (ETE `download.html` + PDV JS) e executar varredura final global + baseline zero — Passo 6.
 
-### 2026-03-14 — Passo 5.1 (moving_to_ch EN/IT — alinhamento institucional + LGPD)
+### 2026-03-14 — Passo 5.1 (aligned EN/IT — alinhamento institucional + LGPD)
 
 - Feito:
-  - Alinhamento espelhado EN/IT em `moving_to_ch` com a mesma taxonomia de competencias.
+  - Alinhamento espelhado EN/IT em `aligned` com a mesma taxonomia de competencias.
   - Consolidacao de blocos de hard skills e soft skills em EN e IT com aplicacao pelo time Brasil.
   - Remocao de exposicao nominal pessoal no escopo EN/IT (titulos, copy, autoria e contato).
   - Substituicao de canais pessoais por canais institucionais nas paginas de contato.
@@ -244,7 +244,7 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
   - Validacao local no escopo EN/IT sem erros de diagnostico apos edicoes.
 
 - Registro de validacao:
-  - Varredura por padroes pessoais no escopo `moving_to_ch/en/**` e `moving_to_ch/it/**` sem ocorrencias remanescentes dos identificadores tratados.
+  - Varredura por padroes pessoais no escopo `aligned/en/**` e `aligned/it/**` sem ocorrencias remanescentes dos identificadores tratados.
   - Revisao de consistencia EN/IT concluida para homepage, services, about, contact, articles e artigos principais.
 
 - Proximo passo natural (sanitario):

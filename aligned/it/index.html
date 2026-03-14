@@ -1,22 +1,20 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="it">
 <head>
   <!-- Security Headers -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://cdn.jsdelivr.net; font-src 'self' https://cdn.jsdelivr.net data:; frame-src 'none'; object-src 'none';">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   
-  <!-- SEO Meta Tags - Switzerland Focus -->
+  <!-- SEO Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cara Core Brasil Team | Legacy Systems Modernization | Ticino & Zug, Switzerland</title>
-  <meta name="description" content="18 years of Java enterprise expertise meets Chemical Engineering precision. Legacy systems modernization for industrial & chemical sectors in Ticino (Lugano/Mendrisio) and Zug, Switzerland.">
-  <meta name="keywords" content="legacy systems modernization, Java enterprise, Jakarta EE, chemical engineering software, industrial automation, Ticino, Zug, Switzerland, software architect, GAMP 5 compliance, pharmaceutical systems">
+  <title>Cara Core Brasil Team | Modernizzazione Sistemi Legacy</title>
+  <meta name="description" content="Modernizzazione sistemi legacy, integrazione applicativa, architettura OIDC e automazione Python per contesti industriali e regolati.">
+  <meta name="keywords" content="modernizzazione sistemi legacy, Java enterprise, Jakarta EE, OIDC, automazione Python, integrazione sistemi, conformità GAMP 5, sistemi farmaceutici">
   <meta name="author" content="Cara Core Brasil Team">
-  <meta name="geo.region" content="CH">
-  <meta name="geo.placename" content="Ticino, Zug">
-  <meta name="geo.position" content="46.0037;8.9511">
-  <meta name="ICBM" content="46.0037, 8.9511">
+  <meta name="geo.region" content="EU">
+  <meta name="geo.placename" content="Remoto e on-site su richiesta">
   
   <!-- Language Alternates -->
   <link rel="alternate" hreflang="en" href="../en/">
@@ -25,16 +23,16 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cara Core Brasil Team | Legacy Systems Modernization | Ticino & Zug, CH">
-  <meta property="og:description" content="Chemical Engineer (UFPR 1991-2000) | Specialization in Java Technology (UTFPR 2007-2008, Lato Sensu) | 18 years Java Enterprise | AI/Python Transition. Legacy systems modernization for industrial sectors in Switzerland.">
-  <meta property="og:url" content="https://caracore.com.br/moving_to_ch/en/">
-  <meta property="og:locale" content="en_CH">
-  <meta property="og:locale:alternate" content="it_CH">
+  <meta property="og:title" content="Cara Core Brasil Team | Modernizzazione Sistemi Legacy">
+  <meta property="og:description" content="Modernizzazione sistemi legacy, integrazione applicativa, architettura OIDC e automazione Python per contesti industriali e regolati.">
+  <meta property="og:url" content="https://caracore.com.br/aligned/it/">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="en">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Legacy Systems Modernization | Ticino & Zug, Switzerland">
-  <meta name="twitter:description" content="18 years of Java expertise meets Chemical Engineering precision. Enterprise software modernization for industrial sectors.">
+  <meta name="twitter:title" content="Modernizzazione Sistemi Legacy">
+  <meta name="twitter:description" content="Modernizzazione sistemi legacy, integrazione applicativa, architettura OIDC e automazione Python.">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
@@ -50,7 +48,7 @@
   <!-- GDPR Styles -->
   <link rel="stylesheet" href="../assets/css/gdpr.css">
   
-  <!-- Custom CSS -->
+  <!-- Custom CSS (same as EN version) -->
   <style>
     :root {
       --primary-blue: #1e3a8a;
@@ -75,7 +73,6 @@
       font-size: 16px;
     }
     
-    /* Navigation */
     .navbar {
       background: rgba(255, 255, 255, 0.95);
       -webkit-backdrop-filter: blur(10px);
@@ -101,7 +98,6 @@
       color: var(--primary-blue) !important;
     }
     
-    /* Hero Section */
     .hero-section {
       background: linear-gradient(135deg, var(--primary-blue) 0%, #3b82f6 50%, #60a5fa 100%);
       color: white;
@@ -166,7 +162,6 @@
       border: 2px solid white;
     }
     
-    /* Section Styling */
     .section {
       padding: 5rem 0;
     }
@@ -188,7 +183,6 @@
       margin-bottom: 3rem;
     }
     
-    /* Value Proposition Cards */
     .value-card {
       border: none;
       border-radius: 16px;
@@ -222,7 +216,6 @@
       line-height: 1.8;
     }
     
-    /* Expertise Section */
     .expertise-badge {
       display: inline-block;
       background: linear-gradient(135deg, var(--primary-blue), #3b82f6);
@@ -234,7 +227,6 @@
       font-size: 0.95rem;
     }
     
-    /* CTA Section */
     .cta-section {
       background: linear-gradient(135deg, var(--primary-blue) 0%, #3b82f6 100%);
       color: white;
@@ -283,7 +275,6 @@
       color: var(--primary-blue);
     }
     
-    /* Footer */
     .footer {
       background: var(--text-dark);
       color: white;
@@ -305,7 +296,6 @@
       color: white;
     }
     
-    /* Responsive */
     @media (max-width: 768px) {
       .hero-section h1 {
         font-size: 2.25rem;
@@ -328,46 +318,47 @@
 </head>
 <body>
 
+  <!-- Language Switcher -->
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation" aria-label="Main navigation">
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" role="navigation" aria-label="Navigazione principale">
     <div class="container">
       <a class="navbar-brand" href="index.html" aria-label="Cara Core Brasil Team - Home">Cara Core Brasil Team</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Mostra/nascondi menu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="articles.html">Articles</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="services.html">Servizi</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Chi Sono</a></li>
+          <li class="nav-item"><a class="nav-link" href="articles.html">Articoli</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contatti</a></li>
           <li class="nav-item">
             <!-- Flag Menu Dropdown -->
             <div class="flag-dropdown">
-              <button type="button" class="flag-dropdown-toggle" aria-label="Select country/language" aria-expanded="false" aria-haspopup="true" title="Select language">
-                <span class="flag-emoji">🇨🇭</span>
-                <span>CH</span>
+              <button type="button" class="flag-dropdown-toggle" aria-label="Seleziona paese/lingua" aria-expanded="false" aria-haspopup="true" title="Seleziona lingua">
+                <span class="flag-emoji">🇮🇹</span>
+                <span>IT</span>
               </button>
               <div class="flag-dropdown-menu">
-                <a href="../index.html" class="flag-dropdown-item" aria-label="Brasil - Site legado">
+                <a href="../../index.html" class="flag-dropdown-item" aria-label="Brasile - Sito legacy">
                   <span class="flag-emoji">🇧🇷</span>
                   <span class="flag-text">
-                    <span class="flag-name">Brasil</span>
-                    <span class="flag-desc">Português (Legado)</span>
+                    <span class="flag-name">Brasile</span>
+                    <span class="flag-desc">Portoghese (Legacy)</span>
                   </span>
                 </a>
-                <a href="index.html" class="flag-dropdown-item active" aria-label="Suíça - Inglês">
+                <a href="../en/index.html" class="flag-dropdown-item" aria-label="Svizzera - Inglese">
                   <span class="flag-emoji">🇨🇭</span>
                   <span class="flag-text">
-                    <span class="flag-name">Suíça</span>
+                    <span class="flag-name">Svizzera</span>
                     <span class="flag-desc">English</span>
                   </span>
                 </a>
-                <a href="../it/index.html" class="flag-dropdown-item" aria-label="Itália - Italiano">
+                <a href="index.html" class="flag-dropdown-item active" aria-label="Italia - Italiano">
                   <span class="flag-emoji">🇮🇹</span>
                   <span class="flag-text">
-                    <span class="flag-name">Itália</span>
+                    <span class="flag-name">Italia</span>
                     <span class="flag-desc">Italiano</span>
                   </span>
                 </a>
@@ -385,23 +376,23 @@
       <div class="hero-content">
         <div class="row align-items-center">
           <div class="col-lg-8">
-            <h1 id="hero-heading">Controlled Legacy Modernization<br>for Regulated and Industrial Teams</h1>
-            <p class="lead">Predictable delivery, lower operational risk, and validation-ready outcomes</p>
+            <h1 id="hero-heading">Modernizzazione Graduale dei Sistemi Legacy<br>per Team Tecnici e di Business</h1>
+            <p class="lead">Continuita operativa, integrazione pragmatica e risultati misurabili</p>
             <p class="hero-tagline">
-              <i class="bi bi-gear-wide-connected" aria-hidden="true"></i> Enterprise software architect focused on regulated migrations, traceability, and resilient architecture for teams in Ticino and Zug.
+              <i class="bi bi-gear-wide-connected" aria-hidden="true"></i> Modernizzazione legacy, integrazione e sicurezza applicativa per contesti industriali e regolati.
             </p>
             <div class="mt-4">
               <span class="badge-custom badge-location">
-                <i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Ticino (Lugano/Mendrisio)
+                <i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Remoto
               </span>
               <span class="badge-custom badge-location">
-                <i class="bi bi-geo-alt-fill" aria-hidden="true"></i> Zug
+                <i class="bi bi-geo-alt-fill" aria-hidden="true"></i> On-site su richiesta
               </span>
               <span class="badge-custom">
-                <i class="bi bi-shield-check" aria-hidden="true"></i> GAMP 5 Compliant
+                <i class="bi bi-shield-check" aria-hidden="true"></i> Conforme GAMP 5
               </span>
               <span class="badge-custom">
-                <i class="bi bi-award" aria-hidden="true"></i> Chemical Engineer (UFPR) | Java Specialization (UTFPR, Lato Sensu)
+                <i class="bi bi-award" aria-hidden="true"></i> Ingegnere Chimico (UFPR) | Specializzazione Java (UTFPR, Lato Sensu)
               </span>
             </div>
           </div>
@@ -415,9 +406,9 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 id="value-proposition-heading" class="section-title">CH Market-Fit Skills</h2>
+          <h2 id="value-proposition-heading" class="section-title">Servizi Principali</h2>
           <p class="section-subtitle">
-            Skills designed for reliability, compliance readiness, and controlled modernization
+            Continuita operativa, integrazione e cambiamento controllato
           </p>
         </div>
       </div>
@@ -425,27 +416,27 @@
         <div class="col-md-4">
           <div class="value-card">
             <i class="bi bi-mortarboard value-icon" aria-hidden="true"></i>
-            <h3>Regulated Legacy Modernization</h3>
+            <h3>Modernizzazione Graduale</h3>
             <p>
-              Migration plans that preserve business continuity while reducing technical risk. Suitable for regulated environments that require controlled change and evidence at each phase.
+              Evoluzione del legacy a fasi, con priorita tecniche e operative chiare, senza interruzioni critiche per il business.
             </p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="value-card">
             <i class="bi bi-code-slash value-icon" aria-hidden="true"></i>
-            <h3>Validation-Ready Delivery</h3>
+            <h3>Integrazione Sistemi per PMI e Industria</h3>
             <p>
-              Architecture and delivery practices oriented to traceability, audit support, and repeatable releases. Built for teams that need confidence before each rollout.
+              Collegamento pragmatico tra applicazioni legacy, API e processi aziendali per ridurre attriti e migliorare la qualita dei flussi.
             </p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="value-card">
             <i class="bi bi-robot value-icon" aria-hidden="true"></i>
-            <h3>Industrial Process Reliability</h3>
+            <h3>Automazione con ROI Misurabile</h3>
             <p>
-              Integration and automation strategies that improve system stability, incident response, and operational visibility across legacy and modern stacks.
+              Automazioni tecniche orientate a tempi, costi e affidabilita: meno lavoro manuale, piu controllo e time-to-value.
             </p>
           </div>
         </div>
@@ -458,9 +449,9 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 id="expertise-heading" class="section-title">Core Expertise</h2>
+          <h2 id="expertise-heading" class="section-title">Competenze Principali</h2>
           <p class="section-subtitle">
-            Same hard and soft skills model used in CH and IT, applied by the Cara Core Brasil Team
+            Stessa base tecnica in tutte le pagine di servizio
           </p>
         </div>
       </div>
@@ -468,27 +459,27 @@
         <div class="col-lg-10 mx-auto">
           <h4 class="text-center mb-3">Hard Skills</h4>
           <div class="text-center">
-            <span class="expertise-badge">Legacy-to-Cloud Migration</span>
+            <span class="expertise-badge">Migrazione Legacy-to-Cloud</span>
             <span class="expertise-badge">Jakarta EE / Java Enterprise</span>
-            <span class="expertise-badge">OAuth 2.1 / OIDC Architecture</span>
-            <span class="expertise-badge">GAMP 5 Compliance</span>
-            <span class="expertise-badge">Process Automation</span>
-            <span class="expertise-badge">AI-Driven Solutions</span>
-            <span class="expertise-badge">Technical Debt Management</span>
-            <span class="expertise-badge">Architectural Audits</span>
-            <span class="expertise-badge">Pharmaceutical Systems</span>
-            <span class="expertise-badge">Chemical Plant Automation</span>
+            <span class="expertise-badge">Architettura OAuth 2.1 / OIDC</span>
+            <span class="expertise-badge">Conformità GAMP 5</span>
+            <span class="expertise-badge">Automazione Processi</span>
+            <span class="expertise-badge">Soluzioni AI-Driven</span>
+            <span class="expertise-badge">Gestione Technical Debt</span>
+            <span class="expertise-badge">Audit Architetturali</span>
+            <span class="expertise-badge">Sistemi Farmaceutici</span>
+            <span class="expertise-badge">Automazione Impianti Chimici</span>
             <span class="expertise-badge">PostgreSQL / Redis</span>
             <span class="expertise-badge">Docker / Kubernetes</span>
           </div>
           <h4 class="text-center mb-3 mt-4">Soft Skills</h4>
           <div class="text-center">
-            <span class="expertise-badge">Risk Communication</span>
-            <span class="expertise-badge">Stakeholder Alignment</span>
-            <span class="expertise-badge">Structured Problem Solving</span>
-            <span class="expertise-badge">Cross-Functional Collaboration</span>
-            <span class="expertise-badge">Continuous Improvement Mindset</span>
-            <span class="expertise-badge">Documentation Discipline</span>
+            <span class="expertise-badge">Comunicazione del Rischio</span>
+            <span class="expertise-badge">Allineamento Stakeholder</span>
+            <span class="expertise-badge">Problem Solving Strutturato</span>
+            <span class="expertise-badge">Collaborazione Cross-Functional</span>
+            <span class="expertise-badge">Miglioramento Continuo</span>
+            <span class="expertise-badge">Disciplina Documentale</span>
           </div>
         </div>
       </div>
@@ -500,9 +491,9 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 id="service-areas-heading" class="section-title">Service Areas in Switzerland</h2>
+          <h2 id="service-areas-heading" class="section-title">Modalita di Erogazione</h2>
           <p class="section-subtitle">
-            On-site consulting available in Ticino and Zug regions
+            Lavoro remoto come default e presenza on-site quando serve
           </p>
         </div>
       </div>
@@ -510,30 +501,30 @@
         <div class="col-md-6">
           <div class="value-card">
             <i class="bi bi-building value-icon" aria-hidden="true"></i>
-            <h3>Ticino Region</h3>
-            <p><strong>Lugano & Mendrisio</strong></p>
+            <h3>Team Industriali e Regolati</h3>
+            <p><strong>Sistemi legacy, integrazione e conformita</strong></p>
             <p>
-              Specialized consulting for pharmaceutical and industrial manufacturing companies. Legacy system assessment, modernization planning, and GAMP 5 compliance audits.
+              Valutazione dei sistemi legacy, piani di modernizzazione graduale e audit di conformita per organizzazioni che devono evolvere senza interrompere le operazioni.
             </p>
             <ul class="list-unstyled mt-3">
-              <li><i class="bi bi-check-circle text-success"></i> On-site technical assessments</li>
-              <li><i class="bi bi-check-circle text-success"></i> Legacy architecture reviews</li>
-              <li><i class="bi bi-check-circle text-success"></i> Compliance documentation</li>
+              <li><i class="bi bi-check-circle text-success"></i> Valutazioni tecniche on-site</li>
+              <li><i class="bi bi-check-circle text-success"></i> Revisioni architettura legacy</li>
+              <li><i class="bi bi-check-circle text-success"></i> Documentazione conformità</li>
             </ul>
           </div>
         </div>
         <div class="col-md-6">
           <div class="value-card">
             <i class="bi bi-building value-icon" aria-hidden="true"></i>
-            <h3>Zug Region</h3>
-            <p><strong>Financial & Industrial Hub</strong></p>
+            <h3>Team Tecnici Distribuiti</h3>
+            <p><strong>Integrazione, sicurezza e pianificazione tecnica</strong></p>
             <p>
-              Enterprise software modernization for financial services and industrial sectors. Secure authentication systems, cloud migration strategies, and AI integration.
+              Supporto a team tecnici e di business che devono coordinare integrazione, sicurezza applicativa e adozione cloud con roadmap sostenibili.
             </p>
             <ul class="list-unstyled mt-3">
-              <li><i class="bi bi-check-circle text-success"></i> Enterprise architecture consulting</li>
-              <li><i class="bi bi-check-circle text-success"></i> Security audits & OAuth implementation</li>
-              <li><i class="bi bi-check-circle text-success"></i> Cloud migration planning</li>
+              <li><i class="bi bi-check-circle text-success"></i> Consulenza architettura enterprise</li>
+              <li><i class="bi bi-check-circle text-success"></i> Audit sicurezza e implementazione OAuth</li>
+              <li><i class="bi bi-check-circle text-success"></i> Pianificazione migrazione cloud</li>
             </ul>
           </div>
         </div>
@@ -545,15 +536,15 @@
   <section class="section">
     <div class="container">
       <div class="cta-section text-center">
-        <h2>Ready for a Controlled Modernization Path?</h2>
+        <h2>Pronto a un Piano di Modernizzazione Sostenibile?</h2>
         <p class="lead mb-4">
-          Start with a focused discovery phase to map risk, architecture priorities, and a realistic execution plan.
+          Definiamo insieme un percorso in fasi, con priorita tecniche e risultati verificabili gia dalle prime settimane.
         </p>
-        <a href="services.html" class="btn btn-primary-custom me-3" aria-label="View services page">
-          <i class="bi bi-briefcase" aria-hidden="true"></i> View Services
+        <a href="services.html" class="btn btn-primary-custom me-3" aria-label="Vedi pagina servizi">
+          <i class="bi bi-briefcase" aria-hidden="true"></i> Vedi Servizi
         </a>
-        <a href="contact.html" class="btn btn-outline-custom" aria-label="Go to contact page">
-          <i class="bi bi-envelope" aria-hidden="true"></i> Get in Touch
+        <a href="contact.html" class="btn btn-outline-custom" aria-label="Vai alla pagina contatti">
+          <i class="bi bi-envelope" aria-hidden="true"></i> Contattami
         </a>
       </div>
     </div>
@@ -564,9 +555,9 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-lg-8 mx-auto text-center">
-          <h2 id="contact-heading" class="section-title">Contact</h2>
+          <h2 id="contact-heading" class="section-title">Contatti</h2>
           <p class="section-subtitle">
-            Available for consulting projects in Ticino and Zug regions
+            Disponibile per progetti di consulenza da remoto e on-site su richiesta
           </p>
         </div>
       </div>
@@ -575,22 +566,19 @@
           <div class="value-card text-center">
             <i class="bi bi-envelope-fill value-icon" aria-hidden="true"></i>
             <h3>Email</h3>
-            <p><a href="mailto:suporte@caracore.com.br" aria-label="Send email to suporte@caracore.com.br">suporte@caracore.com.br</a></p>
+            <p><a href="mailto:suporte@caracore.com.br" aria-label="Invia email a suporte@caracore.com.br">suporte@caracore.com.br</a></p>
             <hr class="my-4">
             <i class="bi bi-linkedin value-icon" aria-hidden="true"></i>
             <h3>LinkedIn</h3>
-            <p><a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" aria-label="Visit LinkedIn profile (opens in new tab)">linkedin.com/company/cara-core</a></p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="value-card text-center">
+            <p><a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" aria-label="Visita profilo LinkedIn (si apre in nuova scheda)">linkedin.com/company/cara-core</a></p>
+            <hr class="my-4">
             <i class="bi bi-globe value-icon" aria-hidden="true"></i>
-            <h3>Website</h3>
-            <p><a href="https://www.caracore.com.br" target="_blank" rel="noopener" aria-label="Visit website (opens in new tab)">www.caracore.com.br</a></p>
+            <h3>Sito Web</h3>
+            <p><a href="https://www.caracore.com.br" target="_blank" rel="noopener" aria-label="Visita il sito web (si apre in nuova scheda)">www.caracore.com.br</a></p>
             <hr class="my-4">
             <p class="text-muted">
-              <strong>Service Areas:</strong> Ticino (Lugano, Mendrisio) | Zug, Switzerland<br>
-              <strong>Citizenship:</strong> Italian (EU/Swiss market access)
+              <strong>Copertura:</strong> remoto | on-site su richiesta<br>
+              <strong>Tecnologia:</strong> Java Enterprise | OIDC | Automazione Python. Stesso stack in qualsiasi paese.
             </p>
           </div>
         </div>
@@ -604,18 +592,18 @@
       <div class="row">
         <div class="col-md-6 mb-4">
           <h5>Cara Core Brasil Team</h5>
-          <p>Legacy Systems Consultant<br>
-          Chemical Engineer (UFPR 1991-2000) | Java Specialization (UTFPR 2007-2008, Lato Sensu) | 18 Years Java Enterprise<br>
-          Ticino & Zug, Switzerland</p>
+          <p>Consulente Sistemi Legacy<br>
+          Ingegnere Chimico (UFPR 1991-2000) | Specializzazione Java (UTFPR 2007-2008, Lato Sensu) | 18 Anni Java Enterprise<br>
+          Remoto | on-site su richiesta</p>
         </div>
         <div class="col-md-6 text-md-end mb-4">
-          <h5>Quick Links</h5>
+          <h5>Link Rapidi</h5>
           <ul class="list-unstyled">
-            <li><a href="services.html">Services</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="articles.html">Articles</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="../README_CH.md">Legacy Documentation</a></li>
+            <li><a href="services.html">Servizi</a></li>
+            <li><a href="about.html">Chi Sono</a></li>
+            <li><a href="articles.html">Articoli</a></li>
+            <li><a href="contact.html">Contatti</a></li>
+            <li><a href="../README_CH.md">Documentazione Legacy</a></li>
           </ul>
         </div>
       </div>
@@ -623,14 +611,14 @@
       <div class="row">
         <div class="col-12 text-center">
           <div class="mb-3">
-            <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" aria-label="Visit LinkedIn profile (opens in new tab)" class="text-light me-3">
+            <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener" aria-label="Visita profilo LinkedIn (si apre in nuova scheda)" class="text-light me-3">
               <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn
             </a>
-            <a href="https://www.caracore.com.br" target="_blank" rel="noopener" aria-label="Visit website (opens in new tab)" class="text-light">
-              <i class="bi bi-globe" aria-hidden="true"></i> Website
+            <a href="https://www.caracore.com.br" target="_blank" rel="noopener" aria-label="Visita il sito web (si apre in nuova scheda)" class="text-light">
+              <i class="bi bi-globe" aria-hidden="true"></i> Sito Web
             </a>
           </div>
-          <p class="mb-0">&copy; 2025 Cara Core Brasil Team. All rights reserved.</p>
+          <p class="mb-0">&copy; 2025 Cara Core Brasil Team. Tutti i diritti riservati.</p>
         </div>
       </div>
     </div>
@@ -659,12 +647,12 @@
         🛡️
       </div>
       <div class="gdpr-text">
-        <strong>Data Protection (GDPR)</strong><br>
-        This website uses localStorage to save your preferences and improve your experience. By continuing to browse, you agree to the processing of your data in accordance with our Privacy Policy and the General Data Protection Regulation (GDPR).
+        <strong>Protezione dei Dati (GDPR)</strong><br>
+        Questo sito utilizza localStorage per salvare le tue preferenze e migliorare la tua esperienza. Continuando a navigare, accetti il trattamento dei tuoi dati in conformità con la nostra Politica sulla Privacy e il Regolamento Generale sulla Protezione dei Dati (GDPR).
       </div>
       <div class="gdpr-buttons">
-        <button class="gdpr-btn gdpr-btn-accept" onclick="acceptGDPR()">Accept</button>
-        <button class="gdpr-btn gdpr-btn-decline" onclick="declineGDPR()">Decline</button>
+        <button class="gdpr-btn gdpr-btn-accept" onclick="acceptGDPR()">Accetta</button>
+        <button class="gdpr-btn gdpr-btn-decline" onclick="declineGDPR()">Rifiuta</button>
       </div>
     </div>
   </div>

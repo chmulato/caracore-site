@@ -49,7 +49,7 @@
   
   // Redirect to appropriate language version
   const currentFile = currentPath.split('/').pop() || 'index.html';
-  const newPath = `/moving_to_ch/${preferredLang}/${currentFile}`;
+  const newPath = `/aligned/${preferredLang}/${currentFile}`;
   
   // Only redirect if we're not already on the correct path
   if (!currentPath.includes(newPath)) {

@@ -48,7 +48,7 @@
           preferredLang = 'it';
         } else if (browserLang.startsWith('pt')) {
           // Portuguese speakers might prefer legacy site
-          // But we'll default to English for Swiss market
+          // Default to English for the international-alignment entry point
           preferredLang = 'en';
         } else {
           preferredLang = 'en'; // Default to English
@@ -145,7 +145,14 @@
       border: 2px solid rgba(255, 255, 255, 0.3);
       transition: all 0.3s ease;
       min-width: 140px;
+      -webkit-backdrop-filter: blur(10px);
       backdrop-filter: blur(10px);
+    }
+
+    .redirect-note {
+      margin-top: 2rem;
+      font-size: 0.875rem;
+      opacity: 0.7;
     }
     
     .flag-option:hover {
@@ -219,8 +226,8 @@
 </head>
 <body>
   <div class="redirect-message">
-    <h1>Select Your Country / Region</h1>
-    <p>Choose your preferred location to access the appropriate version:</p>
+    <h1>Select Language / Context</h1>
+    <p>Choose the version that best matches your preferred language and operating context:</p>
     
     <div class="flag-menu">
       <a href="#" onclick="selectCountry('br'); return false;" class="flag-option" aria-label="Brasil - Site legado em português">
@@ -229,20 +236,20 @@
         <span class="flag-description">Site Legado<br>(Português)</span>
       </a>
       
-      <a href="#" onclick="selectCountry('ch'); return false;" class="flag-option" aria-label="Suíça - Site internacional em inglês">
+      <a href="#" onclick="selectCountry('ch'); return false;" class="flag-option" aria-label="English - international context">
         <span class="flag-emoji" role="img" aria-label="Bandeira da Suíça">🇨🇭</span>
-        <span class="flag-name">Suíça</span>
-        <span class="flag-description">Site Internacional<br>(English)</span>
+        <span class="flag-name">English</span>
+        <span class="flag-description">International Context<br>(EN)</span>
       </a>
       
-      <a href="#" onclick="selectCountry('it'); return false;" class="flag-option" aria-label="Itália - Site internacional em italiano">
+      <a href="#" onclick="selectCountry('it'); return false;" class="flag-option" aria-label="Italiano - contesto operativo">
         <span class="flag-emoji" role="img" aria-label="Bandeira da Itália">🇮🇹</span>
-        <span class="flag-name">Itália</span>
-        <span class="flag-description">Site Internacional<br>(Italiano)</span>
+        <span class="flag-name">Italiano</span>
+        <span class="flag-description">Operational Context<br>(IT)</span>
       </a>
     </div>
     
-    <p style="margin-top: 2rem; font-size: 0.875rem; opacity: 0.7;">
+    <p class="redirect-note">
       Redirecionando automaticamente em alguns segundos...
     </p>
     

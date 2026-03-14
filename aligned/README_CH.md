@@ -1,7 +1,7 @@
-# CaraCore Legacy: Technical Manifesto for Swiss Market Transition
+# CaraCore Legacy: Technical Manifesto for International Alignment
 
-> **Status:** Legacy Stable | **Target Market:** Switzerland (Ticino/Zug) | **Transition Phase:** Active  
-> **Last Updated:** 2025-01-XX | **Maintainer:** Christian Mulato (Italian Citizen, Chemical Engineer - UFPR 1991-2000, Specialization in Java Technology - UTFPR 2007-2008, Class of 1971)
+> **Status:** Legacy Stable | **Service Context:** International Alignment | **Operating Mode:** Active  
+> **Last Updated:** 2025-01-XX | **Maintainer:** Christian Mulato (Chemical Engineer - UFPR 1991-2000, Specialization in Java Technology - UTFPR 2007-2008, Class of 1971, Enterprise Java and automation focus)
 
 ---
 
@@ -22,7 +22,7 @@
 
 ## Executive Summary for CTO
 
-This directory (`moving_to_ch/`) contains the **stable legacy foundation** of CaraCore Informática—a production-grade technology stack that has served the Brazilian market with enterprise reliability since 2010. This is not deprecated code; it is a **proven asset** being strategically preserved while we build a modernized, AI-enhanced version for the Swiss market in the repository root.
+This directory (`aligned/`) contains the **stable legacy foundation** of CaraCore Informática—a production-grade technology stack that has served the Brazilian market with enterprise reliability since 2010. This is not deprecated code; it is a **proven asset** being preserved while we expose aligned English and Italian service versions in the same workspace.
 
 **Core Philosophy:** *Legacy is not a bug—it is heritage to be evolved.*
 
@@ -32,7 +32,7 @@ This directory (`moving_to_ch/`) contains the **stable legacy foundation** of Ca
 
 ### Chemical Engineering Principles Applied to Software
 
-As a Chemical Engineer (UFPR 1991-2000) with a Specialization in Java Technology (UTFPR 2007-2008, Lato Sensu) and 18 years of Java enterprise experience transitioning to AI/Python, I approach software architecture with the same **precision, reproducibility, and safety-first mindset** that defines chemical process engineering:
+As a Chemical Engineer (UFPR 1991-2000) with a Specialization in Java Technology (UTFPR 2007-2008, Lato Sensu) and long Java enterprise experience with AI/Python automation added to the stack, I approach software architecture with the same **precision, reproducibility, and safety-first mindset** that defines chemical process engineering:
 
 - **Stoichiometric Balance:** Every component has a defined role; dependencies are explicit and versioned
 - **Process Control:** Continuous monitoring, structured logging, and automated health checks
@@ -145,10 +145,10 @@ This legacy codebase embodies these principles. It is **production-stable, audit
 
 ## Current Site Structure
 
-### Internationalized Site (NEW - `moving_to_ch/`)
+### Internationalized Site (NEW - `aligned/`)
 
 ```
-moving_to_ch/
+aligned/
 |-- index.html                   # Language detection & country selection
 |-- assets/                      # Centralized CSS and JS
 |   |-- css/
@@ -204,7 +204,7 @@ moving_to_ch/
 ### ✅ Phase 1: Core Structure (COMPLETED)
 
 **Pages Created:**
-- ✅ Root language detection page (`moving_to_ch/index.html`)
+- ✅ Root language detection page (`aligned/index.html`)
 - ✅ Home pages (EN/IT) with hero sections
 - ✅ Services pages (EN/IT) with detailed offerings
 - ✅ Articles pages (EN/IT) linking to legacy content
@@ -270,7 +270,7 @@ moving_to_ch/
 ### Directory Structure
 
 ```
-moving_to_ch/
+aligned/
 |-- assets/
 |   |-- css/
 |   |   `-- styles.css          # Shared CSS for all pages (EN/IT)
@@ -285,7 +285,7 @@ moving_to_ch/
 ### File References
 
 **CSS Files:**
-- **Location:** `moving_to_ch/assets/css/styles.css`
+- **Location:** `aligned/assets/css/styles.css`
 - **Used by:** All pages in `en/` and `it/`
 - **Path from EN pages:** `../assets/css/styles.css`
 - **Path from IT pages:** `../assets/css/styles.css`
@@ -293,16 +293,16 @@ moving_to_ch/
 **JavaScript Files:**
 
 - **analytics.js**
-  - **Location:** `moving_to_ch/assets/js/analytics.js`
+  - **Location:** `aligned/assets/js/analytics.js`
   - **Purpose:** Google Analytics 4 tracking
   - **Tracking:** Page views, language switching, legacy content clicks
 
 - **accessibility.js**
-  - **Location:** `moving_to_ch/assets/js/accessibility.js`
+  - **Location:** `aligned/assets/js/accessibility.js`
   - **Purpose:** Accessibility enhancements (ARIA labels, keyboard navigation, lazy loading)
 
 - **flag-menu.js**
-  - **Location:** `moving_to_ch/assets/js/flag-menu.js`
+  - **Location:** `aligned/assets/js/flag-menu.js`
   - **Purpose:** Flag menu dropdown interaction with delay (prevents quick closing)
 
 ### Migration Notes
@@ -323,7 +323,7 @@ moving_to_ch/
 - ✅ Production systems remain operational
 
 ### Phase 2: Modernization (✅ COMPLETED - Internationalized Site)
-- ✅ New structure with bilingual (EN/IT) interface in `moving_to_ch/`
+- ✅ New structure with bilingual (EN/IT) interface in `aligned/`
 - ✅ Complete page set: Home, Services, Articles, About, Contact
 - ✅ Flag menu (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália) in all pages
 - ✅ Automatic language detection and redirection
@@ -339,7 +339,7 @@ moving_to_ch/
 - ⏳ Unified authentication layer
 
 ### Phase 4: Legacy Content Migration (⏳ PENDING)
-- ⏳ Move legacy files to `moving_to_ch/legacy/` (or subdirectory)
+- ⏳ Move legacy files to `aligned/legacy/` (or subdirectory)
 - ⏳ Update internal links
 - ⏳ Test legacy site in new location
 - ⏳ Update documentation references
@@ -368,25 +368,25 @@ moving_to_ch/
    - Jakarta EE patterns
    - Python automation examples
 
-### 5. **Swiss Market Transition**
+### 5. **International Alignment**
    - Legacy serves as stable baseline
-   - New version (root) will modernize with AI/Python focus
-   - Gradual migration path for existing clients
+   - English and Italian pages expose the same technical base in different service contexts
+   - Delivery can adapt without changing the core stack
 
 ---
 
-## For Swiss CTOs: What This Means
+## For International CTOs: What This Means
 
 ### Consulting Focus: Legacy System Modernization
 
-**Target Market:** Ticino and Zug regions  
+**Service Context:** English and Italian aligned delivery  
 **Specialization:** Legacy Java systems, enterprise authentication, Python automation
 
 **Value Proposition:**
 - **18 years of Java enterprise experience** (Jakarta EE, Spring, Hibernate)
 - **Chemical Engineering background** (UFPR 1991-2000) + **Java Technology Specialization** (UTFPR 2007-2008, Lato Sensu) → rigorous process control mindset
-- **Italian citizenship** → EU/Swiss market access
-- **AI/Python transition** → modern automation capabilities
+- **Technology is global** → enterprise Java modernization, OIDC, and Python automation are the same across markets
+- **AI/Python automation** → modern automation capabilities
 
 **Services Offered:**
 1. Legacy system assessment and modernization
@@ -400,13 +400,13 @@ moving_to_ch/
 ## Contact & Consultation
 
 **Christian Mulato**  
-Chemical Engineer (UFPR 1991-2000) | Specialization in Java Technology (UTFPR 2007-2008, Lato Sensu) | Class of 1971 | Italian Citizen  
-18 years Java Enterprise | Transitioning to AI/Python  
-**Focus:** Ticino/Zug Legacy System Consulting
+Chemical Engineer (UFPR 1991-2000) | Specialization in Java Technology (UTFPR 2007-2008, Lato Sensu) | Class of 1971 | Enterprise Java and automation focus  
+Enterprise Java | AI/Python automation  
+**Focus:** Legacy system consulting with aligned English and Italian delivery
 
 **Repository:** [GitHub](https://github.com/chmulato/cara-core)  
 **Legacy Site:** [caracore.com.br](https://www.caracore.com.br)  
-**New Internationalized Site:** `moving_to_ch/` (EN/IT versions available)  
+**Aligned Service Pages:** `aligned/` (EN/IT versions available)  
 **Flag Menu:** Available in all pages (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália)
 
 ---
@@ -424,7 +424,7 @@ Chemical Engineer (UFPR 1991-2000) | Specialization in Java Technology (UTFPR 20
 **Quick Start:**
 ```bash
 # Navigate to legacy directory
-cd moving_to_ch
+cd aligned
 
 # Start backend (Docker)
 docker compose -f docker/docker-compose.yml up -d
@@ -484,13 +484,13 @@ All pages include:
 
 This legacy codebase represents **15 years of engineering excellence** applied to enterprise software. It is not technical debt—it is **technical capital** that has been carefully preserved, documented, and maintained.
 
-As we transition to the Swiss market with a modernized, AI-enhanced platform, this legacy serves as:
+As we align service presentation for English and Italian contexts with a modernized, AI-enhanced platform, this legacy serves as:
 - **Reference implementation** for best practices
 - **Stable baseline** for gradual migration
 - **Knowledge repository** for technical insights
 - **Proven foundation** for enterprise reliability
 
-**For CTOs evaluating this transition:** You are not inheriting deprecated code. You are inheriting a **production-grade, battle-tested, enterprise-ready** technology stack that has been refined through years of real-world operation.
+**For CTOs evaluating this alignment:** You are not inheriting deprecated code. You are inheriting a **production-grade, battle-tested, enterprise-ready** technology stack that has been refined through years of real-world operation.
 
 ---
 
@@ -515,7 +515,7 @@ As we transition to the Swiss market with a modernized, AI-enhanced platform, th
 - Improved organization and navigation
 
 ### ✅ Internationalized Site Complete
-- Complete bilingual site (English/Italian) in `moving_to_ch/`
+- Complete bilingual site (English/Italian) in `aligned/`
 - Flag menu (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália) in all pages
 - Automatic language detection and redirection
 - Full page set: Home, Services, Articles, About, Contact

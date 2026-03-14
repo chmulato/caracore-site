@@ -109,6 +109,22 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 - Acervo editorial tecnico/historico com repositorios de referencia (sala/redes retro antigos e similares) exige curadoria por lote para preservar contexto.
 - Resolver dependencia estrutural de endpoint publico no fluxo de download do PDV (variaveis OWNER/REPO no JS).
 
+### 2026-03-14 — Rodada R5 (sincronizacao de espelhos editoriais)
+
+- Feito:
+- Alinhamento de copias espelhadas em `delivery/sala/redes/retro/articles` que ainda estavam com links antigos ja corrigidos em `sala/redes/retro/articles`.
+- Limpeza aplicada em:
+   - delivery/sala/redes/retro/articles/2026_02_12_article_72.html
+   - delivery/sala/redes/retro/articles/2026_01_03_article_66.html
+   - delivery/sala/redes/retro/articles/2025_12_02_article_61.html
+   - delivery/sala/redes/retro/articles/2025_10_31_article_55.html
+   - sala/redes/retro/articles/2025_10_31_article_55.html
+- Substituicao de URLs pessoais por rotas institucionais de dominio principal/delivery.
+
+- Pendencias naturais:
+- Continuar curadoria dos artigos tecnicos/historicos restantes (`sala` e `delivery/sala`) em lotes pequenos para evitar perda de contexto.
+- Resolver dependencia estrutural de endpoint publico no fluxo de download do PDV (variaveis OWNER/REPO no JS).
+
 ## Backlog curto (proxima rodada)
 
 1. Curadoria por lote no acervo tecnico/historico (sala/redes retro) preservando contexto.

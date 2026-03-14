@@ -248,7 +248,7 @@
               <div class="mb-3 form-check">
                 <input type="checkbox" class="form-check-input" id="consent-third-party" name="consent-third-party" required aria-required="true">
                 <label class="form-check-label" for="consent-third-party">
-                  Comprendo che utilizzando WhatsApp o Telegram, i miei dati saranno trattati da questi servizi di terze parti secondo le loro politiche sulla privacy <span class="text-danger" aria-label="obbligatorio">*</span>
+                  Comprendo che la comunicazione puo usare canali esterni sicuri secondo le loro politiche sulla privacy <span class="text-danger" aria-label="obbligatorio">*</span>
                 </label>
               </div>
               
@@ -263,7 +263,7 @@
                 <p class="small text-muted">
                   <strong>Base Legale:</strong> Consenso (Art. 6(1)(a) GDPR) | 
                   <strong>Categorie di Dati:</strong> Nome, Numero di Cellulare, Azienda, Interesse Servizio, Località, Messaggio | 
-                  <strong>Servizi di Terze Parti:</strong> WhatsApp (Meta) e Telegram possono trattare i tuoi dati secondo le loro politiche sulla privacy. 
+                  <strong>Servizi di Terze Parti:</strong> Canali esterni di comunicazione possono trattare i tuoi dati secondo le loro politiche sulla privacy. 
                   <a href="../../politica/politica-privacidade.html" target="_blank" rel="noopener">Scopri di più</a>
                 </p>
               </div>
@@ -273,14 +273,14 @@
                 <!-- Desktop Warning -->
                 <div id="desktop-warning" class="alert alert-warning d-none" role="alert">
                   <i class="bi bi-info-circle" aria-hidden="true"></i>
-                  <strong>Browser Desktop Rilevato:</strong> Per inviare messaggi, devi avere <strong>WhatsApp Web</strong> o <strong>Telegram Web</strong> aperto in un'altra scheda, oppure usare l'app mobile sul tuo telefono.
+                  <strong>Browser Desktop Rilevato:</strong> Il messaggio verra aperto tramite il client email predefinito.
                 </div>
                 <div class="d-grid gap-2">
-                  <button type="button" class="btn btn-success btn-lg" id="send-whatsapp" aria-label="Invia tramite WhatsApp">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i> Invia tramite WhatsApp
+                  <button type="button" class="btn btn-success btn-lg" id="send-whatsapp" aria-label="Invia via email sicura">
+                    <i class="bi bi-envelope-fill" aria-hidden="true"></i> Invia via Email Sicura
                   </button>
-                  <button type="button" class="btn btn-info btn-lg" id="send-telegram" aria-label="Invia tramite Telegram">
-                    <i class="fab fa-telegram-plane" aria-hidden="true"></i> Invia tramite Telegram
+                  <button type="button" class="btn btn-info btn-lg" id="send-telegram" aria-label="Apri canale ufficiale">
+                    <i class="bi bi-globe" aria-hidden="true"></i> Apri Canale Ufficiale
                   </button>
                 </div>
               </div>
@@ -294,26 +294,26 @@
             <h3 class="mb-4">Informazioni Contatto</h3>
             
             <div class="contact-info-item">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              <i class="bi bi-envelope-fill" aria-hidden="true"></i>
               <div>
-                <strong>WhatsApp</strong><br>
-                <a href="https://wa.me/5541999097797" target="_blank" rel="noopener" aria-label="Contatta tramite WhatsApp (si apre in nuova scheda)">+55 41 9 9909-7797</a>
+                <strong>Email Ufficiale</strong><br>
+                <a href="mailto:suporte@caracore.com.br" aria-label="Contatta via email ufficiale">suporte@caracore.com.br</a>
               </div>
             </div>
             
             <div class="contact-info-item">
-              <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+              <i class="bi bi-shield-lock" aria-hidden="true"></i>
               <div>
-                <strong>Cellulare</strong><br>
-                <a href="tel:+5541999097797" aria-label="Chiama il numero di cellulare">+55 41 9 9909-7797</a>
+                <strong>Canale Privacy</strong><br>
+                <a href="mailto:suporte@caracore.com.br" aria-label="Richiedi supporto privacy dati">Richieste LGPD / GDPR</a>
               </div>
             </div>
             
             <div class="contact-info-item">
-              <i class="fab fa-telegram-plane" aria-hidden="true"></i>
+              <i class="bi bi-building" aria-hidden="true"></i>
               <div>
-                <strong>Telegram</strong><br>
-                <a href="https://t.me/chmulato" target="_blank" rel="noopener" aria-label="Contatta tramite Telegram (si apre in nuova scheda)">@chmulato</a>
+                <strong>Team Operativo</strong><br>
+                Team Cara Core Brasil
               </div>
             </div>
             
@@ -364,14 +364,14 @@
               <li>Ritirare il consenso in qualsiasi momento</li>
             </ul>
             <p class="text-muted small">
-              Per esercitare questi diritti, contattaci tramite WhatsApp o Telegram.
+              Per esercitare questi diritti, contattaci tramite email ufficiale.
             </p>
             
             <hr class="my-4">
             
             <h5 class="mb-3">Tempo di Risposta</h5>
             <p class="text-muted small">
-              Tipicamente rispondo alle richieste entro 24-48 ore. Per questioni urgenti, si prega di menzionarlo nel messaggio.
+              Tipicamente rispondiamo alle richieste entro 24-48 ore. Per questioni urgenti, si prega di menzionarlo nel messaggio.
             </p>
           </div>
         </div>
@@ -521,8 +521,7 @@
         
         const data = getFormData();
         const message = formatMessage(data);
-        const whatsappNumber = '5541999097797'; // From CV
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        const whatsappUrl = `mailto:suporte@caracore.com.br?subject=${encodeURIComponent('Richiesta Consulenza')}&body=${encodeURIComponent(message)}`;
         
         // Track WhatsApp click (anonymized)
         if (window.gtag) {
@@ -556,8 +555,7 @@
         
         const data = getFormData();
         const message = formatMessage(data);
-        const telegramUsername = 'chmulato'; // From CV
-        const telegramUrl = `https://t.me/${telegramUsername}?text=${encodeURIComponent(message)}`;
+        const telegramUrl = 'https://www.caracore.com.br';
         
         // Track Telegram click (anonymized)
         if (window.gtag) {

@@ -34,6 +34,9 @@ Este documento serve como índice central para toda a documentação do projeto 
 | **[SUPER-ADMIN-DOCKER.md](./SUPER-ADMIN-DOCKER.md)** | **Configuração específica para ambiente Docker/Azure Container Apps** | **IMPLEMENTADO** |
 | **[CHECKLIST-SUPER-ADMIN.md](./CHECKLIST-SUPER-ADMIN.md)** | **Checklist passo-a-passo para configuração Azure** | **DISPONÍVEL** |
 | **[RESUMO-SUPER-ADMIN.md](./RESUMO-SUPER-ADMIN.md)** | **Resumo executivo da implementação** | **DISPONÍVEL** |
+| **[EMAIL_DMARC_ROLLOUT.md](./EMAIL_DMARC_ROLLOUT.md)** | **Plano de rollout DMARC em fases para suporte@caracore.com.br** | **DISPONÍVEL** |
+| **[EMAIL_DMARC_CHANGE_TICKET_TEMPLATE.md](./EMAIL_DMARC_CHANGE_TICKET_TEMPLATE.md)** | **Template de change ticket para fases DMARC com exemplo preenchido** | **DISPONÍVEL** |
+| **[CHG-DMARC-2026-001.md](./CHG-DMARC-2026-001.md)** | **Ticket pronto para execução da Fase 1 (p=none)** | **PRONTO PARA EXECUÇÃO** |
 
 ### Guias Operacionais
 

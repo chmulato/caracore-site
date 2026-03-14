@@ -149,6 +149,7 @@ class TokenStorage:
                         msvcrt.locking(f.fileno(), msvcrt.LK_LOCK, 1)
                         data = json.load(f)
                     finally:
+                        f.seek(0)
                         msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
                 else:
                     # Sem locking disponível (Windows sem msvcrt)
@@ -207,6 +208,7 @@ class TokenStorage:
                     if HAS_FCNTL:
                         fcntl.flock(f.fileno(), fcntl.LOCK_UN)
                     elif HAS_MSVCRT:
+                        f.seek(0)
                         msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
             
             logger.debug(f"Sessões salvas: {len(data.get('sessions', {}))} total")

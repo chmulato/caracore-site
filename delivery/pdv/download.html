@@ -197,6 +197,13 @@
                 </p>
               </div>
 
+              <label class="flex items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3">
+                <input id="lgpdConsent" name="lgpdConsent" type="checkbox" class="mt-1 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500" required>
+                <span class="text-sm text-slate-700">
+                  Autorizo o tratamento dos meus dados de contato para entrega da versao Free e suporte inicial, conforme a LGPD. Meu registro sera mantido apenas pelo periodo necessario para atendimento e auditoria.
+                </span>
+              </label>
+
               <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
                 <button type="submit"
                         class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-3 text-white font-bold hover:bg-slate-800">
@@ -204,7 +211,7 @@
                   <i class="fas fa-download"></i>
                 </button>
                 <div class="text-sm text-slate-600">
-                  <span class="font-semibold text-slate-900">Instalador oficial.</span> Link direto do canal institucional de download.
+                  <span class="font-semibold text-slate-900">Versao Free oficial.</span> Entrega controlada pelo canal institucional.
                 </div>
               </div>
 
@@ -281,8 +288,9 @@
                   </p>
                   <ul class="mt-3 text-sm text-slate-700 space-y-1">
                     <li>1) Instale o PDV normalmente.</li>
-                    <li>2) Enviamos a chave/ativação Premium para sua loja.</li>
-                    <li>3) Suporte e onboarding por e-mail, WhatsApp ou Telegram.</li>
+                    <li>2) Realize o pagamento e envie o comprovante no canal institucional.</li>
+                    <li>3) Apos confirmacao financeira, registramos o atendimento LGPD e enviamos a ativacao Premium para sua loja.</li>
+                    <li>4) Suporte e onboarding por e-mail, WhatsApp ou Telegram.</li>
                   </ul>
                   <p class="text-xs text-slate-600 mt-3">
                     Premium+ (opcional): integração Android (SMS) com configuração técnica do celular dedicado (USB/ADB) no Windows Premium, com procedimentos e consentimento compatíveis com a LGPD.
@@ -429,6 +437,7 @@
       const leadForm = document.getElementById("leadForm");
       const lojaInput = document.getElementById("loja");
       const whatsappInput = document.getElementById("whatsapp");
+      const lgpdConsentInput = document.getElementById("lgpdConsent");
       const leadStatus = document.getElementById("leadStatus");
 
       let latest = { version: "Endpoint institucional", url: OFFICIAL_DOWNLOAD_ENDPOINT, assetUrl: null, assetName: null };
@@ -476,15 +485,25 @@
           return;
         }
 
+        if (!lgpdConsentInput.checked) {
+          leadStatus.classList.remove("hidden");
+          leadStatus.textContent = "Para liberar a versao Free, confirme o consentimento LGPD.";
+          lgpdConsentInput.focus();
+          return;
+        }
+
         // Salva localmente para evitar pedir novamente (UX)
         try {
+          const lgpdProtocol = "LGPD-" + Date.now();
           localStorage.setItem("caracore_lead_loja", loja);
           localStorage.setItem("caracore_lead_whatsapp", normalized);
           localStorage.setItem("caracore_lead_ts", String(Date.now()));
+          localStorage.setItem("caracore_lead_lgpd_consent", "true");
+          localStorage.setItem("caracore_lead_lgpd_protocol", lgpdProtocol);
         } catch (ignore) {}
 
         leadStatus.classList.remove("hidden");
-        leadStatus.textContent = "Abrindo o endpoint institucional de download... Em seguida, enviaremos o guia de inicio rapido no WhatsApp informado.";
+        leadStatus.textContent = "Abrindo o endpoint institucional para entrega da versao Free. Em seguida, enviaremos o guia inicial no WhatsApp informado.";
 
         // Dispara download do instalador (.exe/.msi). Se não houver asset, abre Latest Release.
         const href = latest.assetUrl || latest.url;

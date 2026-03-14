@@ -342,3 +342,140 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
     - `/delivery/pdv/artifacts/CaraCorePDV.exe`
   - Atualizar `checksum.sha256` e `checksum.md5` com valores reais.
   - Opcional apos publicacao: retomar CTA primario dos endpoints oficiais para o `.exe`.
+
+- Kit operacional adicionado para execucao rapida e auditavel:
+  - Checklist central:
+    - `docs/CHECKLIST_PUBLICACAO_ARTEFATOS_ETE_PDV.md`
+  - Scripts de checksum por produto:
+    - `delivery/ete/artifacts/publish-artifacts.ps1`
+    - `delivery/pdv/artifacts/publish-artifacts.ps1`
+
+### 2026-03-14 — Passo 6 (estrutural, fase 5 — go-live binario concluido)
+
+- Feito:
+  - Binarios publicados no dominio matriz:
+    - `/delivery/ete/artifacts/Minerador40.exe`
+    - `/delivery/pdv/artifacts/CaraCorePDV.exe`
+  - Checksums reais publicados (SHA-256 e MD5) para ETE e PDV.
+  - Endpoints oficiais confirmados com CTA primario para `.exe`:
+    - `delivery/ete/download-oficial.html`
+    - `delivery/pdv/download-oficial.html`
+
+- Evidencia tecnica (SHA-256):
+  - `Minerador40.exe`: `29E0E1E23B74354E5DF62FD08EBA2BBE7A30F261BA43FBB78333005A9B0EF954`
+  - `CaraCorePDV.exe`: `17D6F179AA456442DCB21596AF034FC12557BAA6737A838C0E64FCE118C592D9`
+
+- Resultado final do Passo 6:
+  - Fluxo de download ETE/PDV no dominio matriz finalizado com endpoint institucional direto.
+  - Fallback institucional (`canal-feedback.html`) preservado.
+  - Sem reintroducao de owner pessoal/API externa/release latest no caminho principal C1/C2 tratado.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 6 — hardening de distribuicao remota segura)
+
+- Motivo:
+  - Entrega publica direta de executavel (`.exe`) aumenta superficie de risco para ambientes remotos.
+
+- Ajuste aplicado:
+  - Endpoints oficiais (`delivery/ete/download-oficial.html` e `delivery/pdv/download-oficial.html`) migrados para fluxo de solicitacao de entrega segura via canal institucional.
+  - CTAs primarios de download direto removidos do front oficial.
+  - Guia tecnico e checksums permanecem publicados para validacao de integridade e auditoria.
+
+- Regra operacional nova:
+  - Modo padrao: entrega controlada (sem link publico direto para `.exe`).
+  - Excecao controlada: habilitacao de `.exe` publico somente com acao explicita (`-AllowPublicExe`) no script de finalizacao.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 7 — sincronizacao das vitrines de apps)
+
+- Feito:
+  - Vitrines de apps em `delivery` alinhadas com a politica comercial institucional:
+    - Free liberado sem cobranca para avaliacao.
+    - Premium liberado somente apos confirmacao de pagamento.
+    - Registro LGPD obrigatorio para entrega/ativacao.
+  - Ajustes aplicados em vitrines com fluxo Free/Premium:
+    - `delivery/pdv/index.html`
+    - `delivery/ete/index.html`
+    - `delivery/oidc/index.html`
+    - `delivery/oidc/download.html`
+    - `delivery/ru/index.html`
+  - Modelo operacional de registro criado em:
+    - `docs/REGISTRO_LGPD_ENTREGA_CLIENTES.md`
+
+- Resultado:
+  - Narrativa comercial e operacional unificada nas vitrines principais do delivery.
+  - Fluxo de entrega Premium condicionado a confirmacao financeira e trilha LGPD.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 8 — sincronizacao da Garagem)
+
+- Feito:
+  - Alinhamento da secao Garagem na matriz com a politica institucional Free/Premium + LGPD.
+  - Ajustes aplicados em:
+    - `ecosistema.html` (secao `#garagem`, com regra institucional explicita)
+    - `delivery/hub/index.html`
+    - `delivery/ink/index.html`
+    - `delivery/cso/index.html`
+    - `delivery/area51/index.html`
+  - Regra refletida nas paginas de Garagem:
+    - Free sem cobranca para avaliacao (quando aplicavel)
+    - Premium somente apos confirmacao de pagamento
+    - Registro LGPD de atendimento e auditoria
+
+- Resultado:
+  - Matriz (Garagem) e vitrines correspondentes sincronizadas com a politica comercial e de privacidade.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 9 — propagacao para wiki/projetos)
+
+- Feito:
+  - Propagacao da mesma regra institucional para paginas de wiki e overview com trilha Free/Premium.
+  - Arquivos atualizados:
+    - `wiki/projetos-overview.html`
+    - `wiki/projeto-pdv.html`
+    - `wiki/projeto-minerador.html`
+    - `wiki/projeto-reino.html`
+    - `wiki/tecnologias.html`
+
+- Regra aplicada:
+  - Free sem cobranca para avaliacao (quando aplicavel)
+  - Premium somente apos confirmacao de pagamento
+  - Registro LGPD de atendimento e auditoria
+
+- Resultado:
+  - Matriz, vitrines e wiki sincronizados na narrativa comercial e de privacidade.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 10 — sincronizacao ampliada das vitrines delivery)
+
+- Feito:
+  - Sincronizacao das vitrines restantes do delivery com a mesma politica institucional.
+  - Arquivos atualizados:
+    - `delivery/seed/index.html`
+    - `delivery/mkt/index.html`
+    - `delivery/circuito/index.html`
+    - `delivery/sala/index.html`
+    - `delivery/oidc/index.html`
+
+- Regra aplicada:
+  - Quando houver trilha Free/Premium no ecossistema:
+    - Free sem cobranca para avaliacao
+    - Premium somente apos confirmacao de pagamento
+    - Registro LGPD de atendimento e auditoria
+  - Produtos internos (Seed/Mkt/Sala) mantidos como nao comercializados, com referencia explicita a regra institucional para produtos aplicaveis.
+
+- Resultado:
+  - Vitrines de delivery alinhadas de ponta a ponta com a narrativa comercial e de privacidade da matriz.
+
+### 2026-03-14 — Fechamento do dia (seguranca operacional + baseline final)
+
+- Validacoes finais executadas:
+  - Escopo estrutural de download ETE/PDV revalidado com zero ocorrencias para:
+    - `api.github.com/repos`
+    - `github.com/chmulato/.../releases/latest`
+    - `OWNER` / `REPO` no fluxo principal
+  - OWASP Dependency-Check mais recente no CSO sem vulnerabilidades reportadas (`NO_VULNERABILITIES_FOUND`).
+  - Governanca de licencas mantida com cobertura de LICENSE de raiz em 100% dos repositorios auditados.
+
+- Estado de fechamento:
+  - Job de seguranca do dia concluido no escopo definido (matriz/delivery/wiki + trilha estrutural de downloads).
+  - Risco residual classificado como baixo e operacional (monitoramento continuo, sem bloqueio para operacao).
+
+- Proxima rotina recomendada (D+1):
+  - Repetir varredura curta de hardening apos qualquer alteracao em paginas de download/comercial.
+  - Executar dependency-check por projeto critico antes de publicacao de release.

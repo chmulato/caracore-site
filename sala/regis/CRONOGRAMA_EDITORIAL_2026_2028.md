@@ -1,8 +1,8 @@
 # Cronograma Editorial Cara Core 2026 a 2029
 
-Data base: 10/03/2026
+Data base: 13/03/2026
 Escopo: Comunicacao institucional da empresa + Blog do Christian Mulato
-Horizonte oficial: 06/04/2026 a 06/04/2029 (3 anos)
+Horizonte oficial: 04/06/2026 a 04/06/2029 (3 anos)
 Diretriz central: registrar passos reais com saude operacional, sem publicidade
 
 ## Identidade Editorial
@@ -27,6 +27,7 @@ Diretriz central: registrar passos reais com saude operacional, sem publicidade
   - Empresa Cara Core (Sala de Noticias): 18 artigos (50%).
   - Blog do Christian Mulato: 18 artigos (50%).
 - Cadencia base: 1 artigo por mes.
+- Arquitetura oficial: 2 ciclos equilateros de 18 meses, com 9 slots para cada acervo em cada ciclo.
 - Buffer de rota: 4 janelas sem publicacao distribuidas no ciclo para ajuste de prioridade.
 - Leitura maxima por artigo: ate 8 minutos.
 
@@ -39,20 +40,14 @@ Diretriz central: registrar passos reais com saude operacional, sem publicidade
 
 ## Calendario Macro (3 anos)
 
-| Periodo | Empresa | Blog | Total | Foco |
-| --- | --- | --- | --- | --- |
-| 2026 Q2 (abr-jun) | 2 | 1 | 3 | retomada com registro objetivo |
-| 2026 Q3 (jul-set) | 2 | 1 | 3 | consolidacao de operacao |
-| 2026 Q4 (out-dez) | 2 | 1 | 3 | fechamento anual com evidencias |
-| 2027 Q1 (jan-mar) | 1 | 2 | 3 | melhorias e base tecnica |
-| 2027 Q2 (abr-jun) | 2 | 1 | 3 | estabilidade e governanca |
-| 2027 Q3 (jul-set) | 1 | 2 | 3 | aprendizados tecnicos |
-| 2027 Q4 (out-dez) | 2 | 1 | 3 | resultados e ajustes |
-| 2028 Q1 (jan-mar) | 1 | 2 | 3 | maturidade tecnica |
-| 2028 Q2 (abr-jun) | 2 | 1 | 3 | qualidade e seguranca |
-| 2028 Q3 (jul-set) | 1 | 2 | 3 | preparacao de consolidacao |
-| 2028 Q4 (out-dez) | 2 | 1 | 3 | fechamento anual e revisao |
-| 2029 Q1 (jan-06/abr) | 0 | 3 | 3 | fechamento do ciclo e legado |
+| Ciclo | Periodo | Empresa | Blog | Total | Foco |
+| --- | --- | --- | --- | --- | --- |
+| Ciclo 1 | jun/2026 a nov/2026 | 4 | 3 | 7 | retomada, corte de legado e disciplina operacional |
+| Ciclo 1 | dez/2026 a mai/2027 | 3 | 3 | 6 | consolidacao de pauta e estabilidade de execucao |
+| Ciclo 1 | jun/2027 a nov/2027 | 2 | 3 | 5 | fechamento equilibrado do primeiro ciclo |
+| Ciclo 2 | dez/2027 a mai/2028 | 4 | 2 | 6 | abertura do segundo ciclo com reforco institucional |
+| Ciclo 2 | jun/2028 a nov/2028 | 3 | 3 | 6 | continuidade tecnica e aprendizagem acumulada |
+| Ciclo 2 | dez/2028 a mai/2029 | 2 | 4 | 6 | fechamento do programa e legado operacional |
 
 Total consolidado: 18 Empresa + 18 Blog = 36 artigos.
 
@@ -68,7 +63,7 @@ Total consolidado: 18 Empresa + 18 Blog = 36 artigos.
 - Artigos planejados para marco/2026 nao serao publicados.
 - Escopo do bloqueio: Facebook, Instagram e LinkedIn.
 - Conteudos validos de marco entram apenas como base de reescrita.
-- Publicacao desses temas ocorre somente a partir de 06/04/2026.
+- Publicacao desses temas ocorre somente a partir de 04/06/2026.
 
 ## Estrutura Padrao de Artigo
 
@@ -124,3 +119,5 @@ Responsavel editorial: Sala de Noticias
 Responsavel tecnico: equipe de produto
 Revisao de cronograma: trimestral
 Revisao extraordinaria: quando houver mudanca de rota relevante
+
+Controle operacional detalhado: `CRONOGRAMA_DISTRIBUICAO_CICLOS_EQUILATEROS_2026_2029.md`

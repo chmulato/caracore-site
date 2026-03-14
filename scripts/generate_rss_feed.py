@@ -315,8 +315,8 @@ def generate_mode_retro(root: Path) -> None:
     text = html_path.read_text(encoding="utf-8")
     items = parse_retro_articles(text)
 
-    # Filtrar artigos a partir de 06/04/2026 conforme reposicionamento conjunto
-    start_date = dt.datetime(2026, 4, 6, tzinfo=dt.timezone.utc)
+    # Filtrar artigos a partir de 04/06/2026 conforme reposicionamento conjunto
+    start_date = dt.datetime(2026, 6, 4, tzinfo=dt.timezone.utc)
     items = [item for item in items if item.get("date") and item["date"] >= start_date]
 
     channel = {
@@ -338,8 +338,8 @@ def generate_mode_personal(root: Path) -> None:
     text = html_path.read_text(encoding="utf-8")
     items = parse_personal_articles(text)
 
-    # Filtrar artigos a partir de 06/04/2026 conforme reposicionamento conjunto
-    start_date = dt.datetime(2026, 4, 6, tzinfo=dt.timezone.utc)
+    # Filtrar artigos a partir de 04/06/2026 conforme reposicionamento conjunto
+    start_date = dt.datetime(2026, 6, 4, tzinfo=dt.timezone.utc)
     items = [item for item in items if item.get("date") and item["date"] >= start_date]
 
     channel = {

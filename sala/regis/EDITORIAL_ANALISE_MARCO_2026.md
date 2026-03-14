@@ -1,7 +1,7 @@
 # Análise Editorial — Campanha Orgânica Março 2026
 
 Status: ARQUIVO INTERNO - NAO PUBLICAR
-Decisao vigente: os artigos de marco/2026 foram retirados da publicacao e redistribuidos no cronograma oficial a partir de 06/04/2026.
+Decisao vigente: os artigos de marco/2026 foram retirados da publicacao e redistribuidos no cronograma oficial a partir de 04/06/2026.
 Escopo de bloqueio: Facebook, Instagram e LinkedIn.
 ## Editor-Chefe e Estrategista de Narrativa | Cara Core Informática
 

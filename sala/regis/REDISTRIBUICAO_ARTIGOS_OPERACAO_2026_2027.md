@@ -1,16 +1,20 @@
 # Redistribuicao de Artigos por Foco Operacional (2026-2027)
 
-Data de referencia: 10/03/2026
+Data de referencia: 13/03/2026
 Motivo: prioridade de execucao tecnica e operacional, com menor carga de redacao.
 Regra: manter seguranca, fidelidade e dignidade editorial.
+
+Status: documento legado de transicao. A governanca oficial atual esta ancorada em 04/06/2026 a 04/06/2029 e deve ser lida junto com `CRONOGRAMA_DISTRIBUICAO_CICLOS_EQUILATEROS_2026_2029.md`.
 
 ## Diretriz de espacamento
 
 - Marco/2026: sem publicacao externa.
-- Abril/2026 em diante: cadencia enxuta de 1 artigo principal por mes.
+- Junho/2026 em diante: cadencia enxuta de 1 artigo principal por mes no eixo combinado.
 - Quando houver pico operacional: converter pauta em nota curta de status e mover artigo longo para o mes seguinte.
 
 ## Redistribuicao oficial dos artigos (legado 2026)
+
+Observacao: o bloco abaixo permanece como memoria de remanejamento inicial. A contagem oficial do programa ativo passa a considerar apenas a janela iniciada em 04/06/2026.
 
 ### Bloco de marco/2026 (nao publicar, apenas base)
 
@@ -53,5 +57,6 @@ Para cada mes:
 ## Referencias
 
 - `CRONOGRAMA_EDITORIAL_EXECUTIVO_2026_2029.md`
+- `CRONOGRAMA_DISTRIBUICAO_CICLOS_EQUILATEROS_2026_2029.md`
 - `REGISTRO_FASES_MODIFICACOES_2026_2029.html`
 - `PLANO_DIGNIDADE_EDITORIAL_2026_2029.md`

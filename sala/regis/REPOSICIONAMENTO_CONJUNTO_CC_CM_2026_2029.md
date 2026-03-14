@@ -1,7 +1,7 @@
 # Reposicionamento Conjunto de Artigos (Cara Core + Blog Christian Mulato)
 
-Data de referencia: 10/03/2026
-Vigencia oficial: 06/04/2026 a 06/04/2029
+Data de referencia: 13/03/2026
+Vigencia oficial: 04/06/2026 a 04/06/2029
 Escopo:
 
 - Acervo institucional Cara Core: `D:\dev\caracore-site\sala\redes\retro\articles`
@@ -9,15 +9,17 @@ Escopo:
 
 ## Objetivo
 
-Unificar o ritmo editorial dos dois acervos para o ciclo 06/04/2026 a 06/04/2029, com prioridade de execucao tecnica e operacional, sem sobrecarga de redacao.
+Unificar o ritmo editorial dos dois acervos para o ciclo 04/06/2026 a 04/06/2029, com prioridade de execucao tecnica e operacional, sem sobrecarga de redacao.
 
 ## Decisao de reposicionamento
 
-- A partir de 06/04/2026, os dois acervos seguem o mesmo principio de cadencia enxuta.
+- A partir de 04/06/2026, os dois acervos seguem o mesmo principio de cadencia enxuta.
 - Prioridade: 1 publicacao principal por mes no eixo combinado (institucional + pessoal).
 - Marco/2026: nao publicar externamente conteudos novos; usar apenas como base interna quando aplicavel.
 - Em pico operacional, substituir artigo longo por nota curta institucional e mover pauta para o mes seguinte.
 - Nomenclatura operacional oficial: `Ciclo CC` (Cara Core), `Ciclo Blog` (Christian) e `Ciclo Mestre de Coerencia` (governanca unica).
+- Arquitetura oficial do programa: 2 ciclos equilateros de 18 meses, com meta de 9 publicacoes por acervo em cada ciclo.
+- Leitura operacional adotada: `Opcao 3 - hibrido`; o backlog abril/maio de 2026 permanece como reserva historica e o Ciclo 1 editorial real segue o cronograma reaberto.
 
 ## Regras de execucao
 
@@ -29,13 +31,15 @@ Unificar o ritmo editorial dos dois acervos para o ciclo 06/04/2026 a 06/04/2029
 
 ## Tratamento do historico existente
 
-- O acervo historico anterior a 06/04/2026 permanece preservado para memoria institucional e rastreabilidade.
+- O acervo historico anterior a 04/06/2026 permanece preservado para memoria institucional e rastreabilidade.
 - O reposicionamento altera a governanca de publicacao futura, nao apaga o historico.
 
 ## Referencias
 
 - `LOGICA_CICLOS_PADRONIZADOS_CC_CM_2026_2029.html`
 - `CRONOGRAMA_EDITORIAL_EXECUTIVO_2026_2029.md`
+- `CRONOGRAMA_DISTRIBUICAO_CICLOS_EQUILATEROS_2026_2029.md`
+- `CRONOGRAMA_OPERACIONAL_CICLO1_REABERTO_2026_2027.md`
 - `CRONOGRAMA_EDITORIAL_2026_2028.md`
 - `REDISTRIBUICAO_ARTIGOS_OPERACAO_2026_2027.html`
 - `REGISTRO_FASES_MODIFICACOES_2026_2029.html`

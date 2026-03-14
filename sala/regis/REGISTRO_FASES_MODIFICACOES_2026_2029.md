@@ -1,7 +1,7 @@
 # Registro de Fases de Modificacoes 2026-2029
 
-Data de referencia: 10/03/2026
-Vigencia: 06/04/2026 a 06/04/2029
+Data de referencia: 13/03/2026
+Vigencia: 04/06/2026 a 04/06/2029
 Escopo: Modificacoes em artefatos da Sala de Operacoes e materiais de publicacao
 
 ## Objetivo

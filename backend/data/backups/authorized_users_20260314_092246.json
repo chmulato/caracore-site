@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-03-14T12:22:46.657026+00:00",
+  "updated_at": "2026-03-14T12:22:46.570347+00:00",
   "users": [
     {
       "email": "suporte@caracore.com.br",
@@ -36,19 +36,6 @@
       "lgpd_consent_timestamp": "2026-03-14T12:22:46.569728+00:00",
       "lgpd_terms_version": "1.0",
       "lgpd_privacy_version": "1.0"
-    },
-    {
-      "id": "7980c271fe33",
-      "email": "invalid-email",
-      "name": "Requester User",
-      "provider": "google",
-      "message": "Preciso acessar para trabalho",
-      "requested_at": "2026-03-14T12:22:46.656461+00:00",
-      "status": "pending",
-      "lgpd_consent": false,
-      "lgpd_consent_timestamp": "2026-03-14T12:22:46.656455+00:00",
-      "lgpd_terms_version": "1.0",
-      "lgpd_privacy_version": "1.0"
     }
   ],
   "settings": {
@@ -77,12 +64,6 @@
       "action": "access_requested",
       "details": "Solicitação de acesso recebida de requester@test.com",
       "user": "requester@test.com"
-    },
-    {
-      "timestamp": "2026-03-14T12:22:46.656469+00:00",
-      "action": "access_requested",
-      "details": "Solicitação de acesso recebida de invalid-email",
-      "user": "invalid-email"
     }
   ]
 }

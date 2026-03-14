@@ -178,11 +178,14 @@ class AuthorizationManager:
         self._data_cache = None
         self._cache_timestamp = None
         self._cache_duration = 300  # 5 minutos
-        # Ensure data file exists on init
+        # Ensure data file exists on init (create defaults if needed)
         try:
             self._load_data()
         except Exception:
             pass
+        # Reset cache so tests writing to the file after init see fresh data
+        self._data_cache = None
+        self._cache_timestamp = None
     
     def _ensure_directories_exist(self):
         """Garantir que os diretórios necessários existam"""
@@ -270,11 +273,17 @@ class AuthorizationManager:
             current_time = datetime.now().timestamp()
             
             # Verificar cache
-            if (not force_reload and 
-                self._data_cache is not None and 
-                self._cache_timestamp is not None and
-                current_time - self._cache_timestamp < self._cache_duration):
-                return copy.deepcopy(self._data_cache)
+            if (not force_reload and
+                self._data_cache is not None and
+                self._cache_timestamp is not None):
+                ts = self._cache_timestamp
+                if isinstance(ts, datetime):
+                    cache_age = (datetime.now() - ts).total_seconds()
+                else:
+                    cache_age = current_time - float(ts)
+
+                if cache_age < self._cache_duration:
+                    return copy.deepcopy(self._data_cache)
             
             # Verificar se arquivo existe
             if not os.path.exists(self.data_file):
@@ -360,11 +369,14 @@ class AuthorizationManager:
         try:
             if not email:
                 return False
-            current_time = datetime.now().timestamp()
-            if (self._data_cache is not None and
-                    self._cache_timestamp is not None and
-                    current_time - self._cache_timestamp < self._cache_duration):
-                data = copy.deepcopy(self._data_cache)
+            if self._data_cache is not None and self._cache_timestamp is not None:
+                ts = self._cache_timestamp
+                age = (datetime.now() - ts).total_seconds() if isinstance(ts, datetime) \
+                    else datetime.now().timestamp() - float(ts)
+                if age < self._cache_duration:
+                    data = copy.deepcopy(self._data_cache)
+                else:
+                    data = self._load_data()
             else:
                 data = self._load_data()
             email_lower = email.lower().strip()
@@ -757,30 +769,29 @@ class AuthorizationManager:
     def _load_data(self) -> Dict[str, Any]:
         """Read data from file, update cache and return."""
         if not os.path.exists(self.data_file):
-            default_data = self._create_default_structure()
-            self._save_data(default_data)
-            return copy.deepcopy(self._data_cache)
-        try:
-            with open(self.data_file, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-        except (json.JSONDecodeError, Exception):
             data = self._create_default_structure()
-            self._save_data(data)
-            return copy.deepcopy(self._data_cache)
-        # Validate minimal structure
-        for key in ['version', 'users', 'pending_requests']:
-            if key not in data:
+            # Write directly (not via _save_data to avoid clearing the cache we're about to set)
+            with open(self.data_file, 'w', encoding='utf-8') as f:
+                json.dump(data, f, indent=2, ensure_ascii=False)
+        else:
+            try:
+                with open(self.data_file, 'r', encoding='utf-8') as f:
+                    data = json.load(f)
+            except (json.JSONDecodeError, Exception):
                 data = self._create_default_structure()
-                break
+            # Only require truly essential structure
+            if 'users' not in data:
+                data = self._create_default_structure()
+            elif 'pending_requests' not in data:
+                data['pending_requests'] = []
         self._data_cache = copy.deepcopy(data)
-        self._cache_timestamp = datetime.now().timestamp()
+        self._cache_timestamp = datetime.now()
         return data
 
     def _save_data(self, data: Dict[str, Any]) -> bool:
         """Write data to file and clear cache."""
-        for key in ['version', 'users', 'pending_requests']:
-            if key not in data:
-                return False
+        if 'users' not in data or 'pending_requests' not in data:
+            return False
         if os.path.exists(self.data_file):
             self._create_backup()
         data['updated_at'] = self._get_timestamp()

@@ -227,7 +227,7 @@ class TokenStorage:
         if not self.storage_path.exists():
             return None
         
-        timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
+        timestamp = datetime.now(timezone.utc).replace(tzinfo=None).strftime("%Y%m%d_%H%M%S")
         backup_filename = f"user_sessions_backup_{timestamp}.json"
         backup_path = self.backup_dir / backup_filename
         
@@ -324,7 +324,7 @@ class TokenStorage:
         encrypted_data = self.crypto.encrypt_token(refresh_token)
         
         # Calcular datas
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
         expires_at = now + timedelta(hours=expires_in_hours)
         
         # Criar entrada de sessão
@@ -388,7 +388,7 @@ class TokenStorage:
         try:
             expires_at = date_parser.parse(session_data["expires_at"])
             # Garantir que ambos os datetimes tenham timezone (offset-aware)
-            now = datetime.utcnow().replace(tzinfo=timezone.utc)
+            now = datetime.now(timezone.utc)
             # Se expires_at não tiver timezone, assumir UTC
             if expires_at.tzinfo is None:
                 expires_at = expires_at.replace(tzinfo=timezone.utc)
@@ -417,7 +417,7 @@ class TokenStorage:
         
         # Atualizar last_used se solicitado
         if update_last_used:
-            session_data["last_used"] = datetime.utcnow().isoformat() + "Z"
+            session_data["last_used"] = datetime.now(timezone.utc).replace(tzinfo=None).isoformat() + "Z"
             data["sessions"][session_id]["last_used"] = session_data["last_used"]
             self._save_sessions(data)
         
@@ -461,7 +461,7 @@ class TokenStorage:
         session_data = data["sessions"][session_id]
         
         # Atualizar campos
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
         session_data["last_refresh"] = now.isoformat() + "Z"
         session_data["last_used"] = now.isoformat() + "Z"
         
@@ -503,7 +503,7 @@ class TokenStorage:
         
         # Marcar como revoked
         data["sessions"][session_id]["status"] = "revoked"
-        data["sessions"][session_id]["revoked_at"] = datetime.utcnow().isoformat() + "Z"
+        data["sessions"][session_id]["revoked_at"] = datetime.now(timezone.utc).replace(tzinfo=None).isoformat() + "Z"
         
         # Salvar
         self._save_sessions(data)
@@ -524,7 +524,7 @@ class TokenStorage:
         # Carregar sessões
         data = self._load_sessions()
         
-        now = datetime.utcnow().replace(tzinfo=timezone.utc)
+        now = datetime.now(timezone.utc)
         removed_count = 0
         sessions_to_remove = []
         

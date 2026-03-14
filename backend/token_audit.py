@@ -9,7 +9,7 @@ import json
 import logging
 import os
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Dict, Optional, Any
 from logging.handlers import RotatingFileHandler
 
@@ -98,7 +98,7 @@ class TokenAuditLogger:
         
         # Criar entrada de log
         log_entry = {
-            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "timestamp": datetime.now(timezone.utc).replace(tzinfo=None).isoformat() + "Z",
             "event": event_type,
             "success": success,
             "session_id": session_id,

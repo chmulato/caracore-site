@@ -13,8 +13,12 @@ from collections import defaultdict
 from dataclasses import dataclass
 from functools import wraps
 from typing import Dict, Tuple
-from flask import request, jsonify, make_response
+from flask import jsonify, make_response
 import logging
+
+# Keep a patchable module-level request object for unit tests.
+# In production this stays None and we resolve flask.request at runtime.
+request = None
 
 logger = logging.getLogger("cara-core-backend")
 
@@ -79,8 +83,16 @@ class RateLimiter:
     
     def _get_client_key(self, endpoint: str) -> Tuple[str, str]:
         """Obtém chave única para o cliente (IP + endpoint)"""
+        req = request
+        if req is None:
+            from flask import request as flask_request
+            req = flask_request
+
+        headers = getattr(req, "headers", {}) or {}
+        remote_addr = getattr(req, "remote_addr", None) or "unknown"
+
         # Prefer X-Forwarded-For for proxied requests
-        client_ip = request.headers.get("X-Forwarded-For", request.remote_addr)
+        client_ip = headers.get("X-Forwarded-For", remote_addr)
         if "," in client_ip:
             client_ip = client_ip.split(",")[0].strip()
         return (client_ip, endpoint)
@@ -105,6 +117,9 @@ class RateLimiter:
         key = self._get_client_key(endpoint)
         now = time.time()
         
+        # Obter configuração para o endpoint
+        config = self.configs.get(endpoint, self.configs["default"])
+
         # Verificar se está bloqueado
         if key in self.blocked:
             block_until = self.blocked[key]
@@ -124,9 +139,6 @@ class RateLimiter:
                 # Bloqueio expirou
                 del self.blocked[key]
         
-        # Obter configuração para o endpoint
-        config = self.configs.get(endpoint, self.configs["default"])
-        
         # Limpar requisições antigas
         self._cleanup_old_requests(key, config.window_seconds)
         
@@ -137,21 +149,32 @@ class RateLimiter:
         request_count = len(self.requests[key])
         
         if request_count > config.max_requests:
-            # Bloquear cliente
-            self.blocked[key] = now + config.block_duration
-            
-            logger.warning(f"Rate limit exceeded - bloqueando cliente", extra={
-                "client_ip": key[0],
-                "endpoint": endpoint,
-                "request_count": request_count,
-                "max_requests": config.max_requests,
-                "block_duration": config.block_duration
-            })
-            
+            # First exceed only returns 429 based on active window.
+            # Repeated exceed within the same window escalates to temporary block.
+            if request_count > (config.max_requests + 1):
+                self.blocked[key] = now + config.block_duration
+
+                logger.warning(f"Rate limit exceeded - bloqueando cliente", extra={
+                    "client_ip": key[0],
+                    "endpoint": endpoint,
+                    "request_count": request_count,
+                    "max_requests": config.max_requests,
+                    "block_duration": config.block_duration
+                })
+
+                return True, {
+                    "error": "rate_limit_exceeded",
+                    "error_description": f"Limite excedido: {config.max_requests} req/{config.window_seconds}s",
+                    "retry_after": config.block_duration
+                }
+
+            # Window-based retry for first exceed.
+            oldest_in_window = min(self.requests[key]) if self.requests[key] else now
+            retry_after = max(1, int((oldest_in_window + config.window_seconds) - now))
             return True, {
                 "error": "rate_limit_exceeded",
                 "error_description": f"Limite excedido: {config.max_requests} req/{config.window_seconds}s",
-                "retry_after": config.block_duration
+                "retry_after": retry_after
             }
         
         # Dentro do limite
@@ -199,7 +222,11 @@ def rate_limit(endpoint: str = None):
         @wraps(f)
         def decorated_function(*args, **kwargs):
             # Usar endpoint fornecido ou detectar da request
-            endpoint_path = endpoint or request.path
+            if endpoint:
+                endpoint_path = endpoint
+            else:
+                from flask import request as flask_request
+                endpoint_path = flask_request.path
             
             # Verificar rate limit
             is_limited, info = _rate_limiter.is_rate_limited(endpoint_path)

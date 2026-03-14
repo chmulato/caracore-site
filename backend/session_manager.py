@@ -10,7 +10,7 @@ import os
 import logging
 import requests
 from typing import Dict, Optional, Any
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 from crypto_manager import CryptoManager
 from token_storage import TokenStorage
@@ -150,7 +150,7 @@ class SessionManager:
             raise RuntimeError(f"Falha ao criar sessão: {e}")
         
         # Calcular expiração do access token
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
         access_token_expires_at = now + timedelta(seconds=expires_in)
         
         # Retornar dados da sessão (sem dados sensíveis)
@@ -254,7 +254,7 @@ class SessionManager:
         )
         
         # Calcular nova expiração
-        now = datetime.utcnow()
+        now = datetime.now(timezone.utc).replace(tzinfo=None)
         expires_at = now + timedelta(seconds=expires_in)
         
         result = {

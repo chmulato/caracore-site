@@ -85,8 +85,8 @@ def test_admin_logs():
             print(f"Status geral: {data.get('status')}")
             print(f"Checks realizados: {len(data.get('checks', []))}")
             for check in data.get('checks', []):
-                status_icon = "✅" if check.get('status') == 'healthy' else "⚠️" if check.get('status') == 'degraded' else "❌"
-                print(f"  {status_icon} {check.get('name')}: {check.get('message')}")
+                status_label = "OK" if check.get('status') == 'healthy' else "WARN" if check.get('status') == 'degraded' else "ERRO"
+                print(f"  [{status_label}] {check.get('name')}: {check.get('message')}")
         else:
             print(f"Erro: {response.text}")
     except Exception as e:
@@ -95,7 +95,7 @@ def test_admin_logs():
     print("\n" + "=" * 60)
     print("TESTES CONCLUÍDOS")
     print("=" * 60)
-    print("\n📊 Acesse o dashboard em: http://localhost:8080/secure/admin-logs.html")
+    print("\nAcesse o dashboard em: http://localhost:8080/secure/admin-logs.html")
     print("\n")
 
 if __name__ == "__main__":

@@ -33,16 +33,16 @@ class Colors:
     BOLD = '\033[1m'
 
 def print_success(message: str):
-    print(f"{Colors.GREEN}✅ {message}{Colors.RESET}")
+    print(f"{Colors.GREEN}OK: {message}{Colors.RESET}")
 
 def print_error(message: str):
-    print(f"{Colors.RED}❌ {message}{Colors.RESET}")
+    print(f"{Colors.RED}ERRO: {message}{Colors.RESET}")
 
 def print_warning(message: str):
-    print(f"{Colors.YELLOW}⚠️  {message}{Colors.RESET}")
+    print(f"{Colors.YELLOW}AVISO: {message}{Colors.RESET}")
 
 def print_info(message: str):
-    print(f"{Colors.BLUE}ℹ️  {message}{Colors.RESET}")
+    print(f"{Colors.BLUE}INFO: {message}{Colors.RESET}")
 
 def print_header(message: str):
     print(f"\n{Colors.BOLD}{Colors.BLUE}{'='*60}{Colors.RESET}")
@@ -239,7 +239,7 @@ def test_endpoint_validation(base_url: str, verbose: bool = False) -> Dict[str, 
 
 def generate_report(results: Dict[str, Any], base_url: str):
     """Gera relatório final dos testes"""
-    print_header("📊 Relatório Final")
+    print_header("Relatório Final")
     
     total_tests = 0
     passed_tests = 0
@@ -249,18 +249,18 @@ def generate_report(results: Dict[str, Any], base_url: str):
         total_tests += 1
         if results["health_check"]:
             passed_tests += 1
-            print_success("✓ Health Check")
+            print_success("Health Check")
         else:
-            print_error("✗ Health Check")
+            print_error("Health Check")
     
     # SessionManager habilitado
     if "session_manager_enabled" in results:
         total_tests += 1
         if results["session_manager_enabled"]:
             passed_tests += 1
-            print_success("✓ SessionManager Habilitado")
+            print_success("SessionManager Habilitado")
         else:
-            print_error("✗ SessionManager Habilitado")
+            print_error("SessionManager Habilitado")
     
     # Endpoints existem
     if "endpoints" in results:
@@ -268,9 +268,9 @@ def generate_report(results: Dict[str, Any], base_url: str):
             total_tests += 1
             if exists:
                 passed_tests += 1
-                print_success(f"✓ Endpoint {name} existe")
+                print_success(f"Endpoint {name} existe")
             else:
-                print_error(f"✗ Endpoint {name} existe")
+                print_error(f"Endpoint {name} existe")
     
     # Validação
     if "validation" in results:
@@ -278,16 +278,16 @@ def generate_report(results: Dict[str, Any], base_url: str):
             total_tests += 1
             if valid:
                 passed_tests += 1
-                print_success(f"✓ Validação {name}")
+                print_success(f"Validação {name}")
             else:
-                print_error(f"✗ Validação {name}")
+                print_error(f"Validação {name}")
     
     print(f"\n{Colors.BOLD}Resultado: {passed_tests}/{total_tests} testes passaram{Colors.RESET}\n")
     
     if passed_tests == total_tests:
-        print_success("🎉 Todos os testes passaram! SessionManager está implementado e funcionando.")
+        print_success("Todos os testes passaram. SessionManager está implementado e funcionando.")
     else:
-        print_warning("⚠️  Alguns testes falharam. Verifique a configuração do servidor.")
+        print_warning("Alguns testes falharam. Verifique a configuração do servidor.")
         print_info(f"URL testada: {base_url}")
         print_info("Verifique:")
         print_info("  1. Variável de ambiente TOKEN_ENCRYPTION_KEY está configurada")
@@ -315,7 +315,7 @@ def main():
     base_url = args.url.rstrip('/')
     verbose = args.verbose
     
-    print_header("🧪 Teste de SessionManager no Servidor")
+    print_header("Teste de SessionManager no Servidor")
     print_info(f"URL do servidor: {base_url}")
     print_info(f"Data/Hora: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
     

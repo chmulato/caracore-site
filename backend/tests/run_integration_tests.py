@@ -23,10 +23,10 @@ def log_result(test_name, passed, details=""):
     RESULTS["total"] += 1
     if passed:
         RESULTS["passed"] += 1
-        status = "✅ PASSOU"
+        status = "OK PASSOU"
     else:
         RESULTS["failed"] += 1
-        status = "❌ FALHOU"
+        status = "ERRO FALHOU"
     
     result = {
         "name": test_name,
@@ -322,9 +322,9 @@ def generate_report():
     print("RELATÓRIO FINAL - TESTES FASE 1")
     print("="*60)
     print(f"Total de testes: {RESULTS['total']}")
-    print(f"Aprovados: {RESULTS['passed']} ✅")
-    print(f"Reprovados: {RESULTS['failed']} ❌")
-    
+    print(f"Aprovados: {RESULTS['passed']}")
+    print(f"Reprovados: {RESULTS['failed']}")
+
     if RESULTS['total'] > 0:
         percentage = (RESULTS['passed'] / RESULTS['total']) * 100
         print(f"Taxa de sucesso: {percentage:.1f}%")
@@ -351,7 +351,7 @@ def main():
     try:
         requests.get(f"{BASE_URL}/health", timeout=2)
     except:
-        print("❌ ERRO: Servidor não está rodando!")
+        print("ERRO: Servidor não está rodando")
         print("Inicie o servidor com: flask run --port=5051")
         return False
     
@@ -370,7 +370,7 @@ def main():
     test_invalid_endpoint()
     
     # Rate limiting por último (mais lento)
-    print("\n⏱️  Testando rate limiting (pode demorar ~4 segundos)...")
+    print("\nTestando rate limiting (pode demorar ~4 segundos)...")
     test_rate_limiting()
     
     # Gerar relatório

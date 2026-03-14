@@ -48,7 +48,7 @@ class TestRunner:
     
     def run_pytest_suite(self, test_file, suite_name):
         """Executa uma suíte de testes pytest"""
-        print(f"\n🧪 Executando {suite_name}...")
+        print(f"\nExecutando {suite_name}...")
         print("=" * 60)
         
         cmd = f"python -m pytest {test_file} -v --tb=short --json-report --json-report-file=temp_result.json"
@@ -71,10 +71,10 @@ class TestRunner:
             suite_info["output"] = "Teste excedeu tempo limite (5 min)"
         elif result.returncode == 0:
             suite_info["status"] = "passed"
-            print(f"✅ {suite_name} - PASSOU")
+            print(f"OK: {suite_name} - PASSOU")
         else:
             suite_info["status"] = "failed"
-            print(f"❌ {suite_name} - FALHOU")
+            print(f"ERRO: {suite_name} - FALHOU")
         
         # Tentar ler relatório JSON
         json_file = self.backend_dir / "temp_result.json"
@@ -116,12 +116,12 @@ class TestRunner:
     
     def run_custom_script(self, script_path, script_name):
         """Executa script customizado"""
-        print(f"\n🔧 Executando {script_name}...")
+        print(f"\nExecutando {script_name}...")
         print("=" * 60)
         
         script_full_path = self.backend_dir / script_path
         if not script_full_path.exists():
-            print(f"⚠️  Script não encontrado: {script_path}")
+            print(f"AVISO: Script não encontrado: {script_path}")
             return False
         
         result = self.run_command(f"python {script_path}")
@@ -146,22 +146,43 @@ class TestRunner:
         
         if suite_info["status"] == "passed":
             self.test_results["summary"]["passed_suites"] += 1
-            print(f"✅ {script_name} - PASSOU")
+            print(f"OK: {script_name} - PASSOU")
         else:
             self.test_results["summary"]["failed_suites"] += 1
-            print(f"❌ {script_name} - FALHOU")
+            print(f"ERRO: {script_name} - FALHOU")
         
         self.test_results["summary"]["total_tests"] += 1
         self.test_results["summary"]["passed_tests"] += suite_info["passed"]
         self.test_results["summary"]["failed_tests"] += suite_info["failed"]
         
         return suite_info["status"] == "passed"
+
+    def add_skipped_suite(self, suite_name, suite_file, reason):
+        """Registra suíte como ignorada por pré-condição de ambiente."""
+        suite_info = {
+            "name": suite_name,
+            "file": suite_file,
+            "status": "skipped",
+            "tests": 1,
+            "passed": 0,
+            "failed": 0,
+            "skipped": 1,
+            "duration": 0,
+            "output": reason,
+        }
+
+        self.test_results["suites"].append(suite_info)
+        self.test_results["summary"]["total_suites"] += 1
+        self.test_results["summary"]["total_tests"] += 1
+        self.test_results["summary"]["skipped_tests"] += 1
+
+        print(f"IGNORADO: {suite_name} ({reason})")
     
     def run_all_tests(self):
         """Executa todos os testes disponíveis"""
-        print("🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯")
+        print("==============================================================")
         print("   SUITE DE TESTES AUTOMATIZADOS CARACORE - FASE 3")
-        print("🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯🎯")
+        print("==============================================================")
         
         all_passed = True
         
@@ -169,12 +190,25 @@ class TestRunner:
         if not self.run_pytest_suite("tests/test_auth_manager.py", "Testes Unitários - Auth Manager"):
             all_passed = False
         
-        # 2. Testes E2E
-        if not self.run_pytest_suite("tests/test_e2e.py::TestEndpoints", "Testes E2E - Endpoints"):
-            all_passed = False
-        
-        if not self.run_pytest_suite("tests/test_e2e.py::TestSecurityHeaders", "Testes E2E - Security Headers"):
-            all_passed = False
+        # 2. Pré-check E2E + Testes E2E
+        e2e_ready = self.run_custom_script("tests/e2e_preflight.py", "Preflight E2E")
+        if e2e_ready:
+            if not self.run_pytest_suite("tests/test_e2e.py::TestEndpoints", "Testes E2E - Endpoints"):
+                all_passed = False
+
+            if not self.run_pytest_suite("tests/test_e2e.py::TestSecurityHeaders", "Testes E2E - Security Headers"):
+                all_passed = False
+        else:
+            self.add_skipped_suite(
+                "Testes E2E - Endpoints",
+                "tests/test_e2e.py::TestEndpoints",
+                "Preflight E2E falhou"
+            )
+            self.add_skipped_suite(
+                "Testes E2E - Security Headers",
+                "tests/test_e2e.py::TestSecurityHeaders",
+                "Preflight E2E falhou"
+            )
         
         # 3. Scripts de Validação
         if not self.run_custom_script("validar_dashboard.py", "Validação Dashboard Azure"):
@@ -202,11 +236,11 @@ class TestRunner:
             if suite_info["status"] == "passed":
                 self.test_results["summary"]["passed_suites"] += 1
                 self.test_results["summary"]["passed_tests"] += 1
-                print(f"\n✅ Teste Site Estático - PASSOU")
+                print(f"\nOK: Teste Site Estático - PASSOU")
             else:
                 self.test_results["summary"]["failed_suites"] += 1
                 self.test_results["summary"]["failed_tests"] += 1
-                print(f"\n❌ Teste Site Estático - FALHOU")
+                print(f"\nERRO: Teste Site Estático - FALHOU")
                 all_passed = False
         
         return all_passed
@@ -214,36 +248,36 @@ class TestRunner:
     def generate_report(self):
         """Gera relatório final"""
         print("\n" + "=" * 70)
-        print("📊 RESUMO DOS TESTES")
+        print("RESUMO DOS TESTES")
         print("=" * 70)
         
         summary = self.test_results["summary"]
         
-        print(f"🧪 Total de Suítes: {summary['total_suites']}")
-        print(f"✅ Suítes Passou: {summary['passed_suites']}")
-        print(f"❌ Suítes Falhou: {summary['failed_suites']}")
+        print(f"Total de Suítes: {summary['total_suites']}")
+        print(f"Suítes Passou: {summary['passed_suites']}")
+        print(f"Suítes Falhou: {summary['failed_suites']}")
         print()
-        print(f"🔬 Total de Testes: {summary['total_tests']}")
-        print(f"✅ Testes Passou: {summary['passed_tests']}")
-        print(f"❌ Testes Falhou: {summary['failed_tests']}")
-        print(f"⏭️  Testes Ignorados: {summary['skipped_tests']}")
+        print(f"Total de Testes: {summary['total_tests']}")
+        print(f"Testes Passou: {summary['passed_tests']}")
+        print(f"Testes Falhou: {summary['failed_tests']}")
+        print(f"Testes Ignorados: {summary['skipped_tests']}")
         print()
         
         success_rate = (summary['passed_tests'] / summary['total_tests'] * 100) if summary['total_tests'] > 0 else 0
-        print(f"📈 Taxa de Sucesso: {success_rate:.1f}%")
+        print(f"Taxa de Sucesso: {success_rate:.1f}%")
         
         # Salvar relatório JSON
         report_file = self.backend_dir / f"test_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         with open(report_file, 'w', encoding='utf-8') as f:
             json.dump(self.test_results, f, indent=2, ensure_ascii=False)
         
-        print(f"\n📄 Relatório salvo em: {report_file}")
+        print(f"\nRelatório salvo em: {report_file}")
         
         if summary['failed_tests'] == 0 and summary['failed_suites'] == 0:
-            print("\n🎉 TODOS OS TESTES PASSARAM! 🎉")
+            print("\nTODOS OS TESTES PASSARAM")
             return True
         else:
-            print(f"\n⚠️  {summary['failed_tests']} teste(s) falharam")
+            print(f"\nAVISO: {summary['failed_tests']} teste(s) falharam")
             return False
 
 
@@ -253,7 +287,7 @@ def main():
     
     # Verificar se estamos no diretório correto
     if not (runner.backend_dir / "pytest.ini").exists():
-        print("❌ Execute este script a partir do diretório backend/")
+        print("ERRO: Execute este script a partir do diretório backend/")
         sys.exit(1)
     
     try:
@@ -263,17 +297,17 @@ def main():
         print("\n" + "=" * 70)
         
         if success:
-            print("🎯 AUTOMAÇÃO DE TESTES FASE 3: COMPLETA E FUNCIONAL")
+            print("AUTOMAÇÃO DE TESTES FASE 3: COMPLETA E FUNCIONAL")
             sys.exit(0)
         else:
-            print("⚠️  ALGUNS TESTES FALHARAM - VERIFICAR RELATÓRIO")
+            print("AVISO: ALGUNS TESTES FALHARAM - VERIFICAR RELATÓRIO")
             sys.exit(1)
             
     except KeyboardInterrupt:
-        print("\n\n⚠️  Execução interrompida pelo usuário")
+        print("\n\nAVISO: Execução interrompida pelo usuário")
         sys.exit(130)
     except Exception as e:
-        print(f"\n❌ Erro inesperado: {e}")
+        print(f"\nERRO: Erro inesperado: {e}")
         sys.exit(1)
 
 

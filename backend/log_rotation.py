@@ -106,8 +106,8 @@ def compress_log_file(file_path: Path) -> Tuple[bool, float]:
         file_path.unlink()
         
         logger.info(
-            f"✅ Comprimido: {file_path.name} "
-            f"({original_size:.2f}MB → {compressed_size:.2f}MB, "
+            f"Comprimido: {file_path.name} "
+            f"({original_size:.2f}MB to {compressed_size:.2f}MB, "
             f"economizou {saved_space:.2f}MB)"
         )
         
@@ -128,7 +128,7 @@ def delete_old_log(file_path: Path, age_days: int) -> Tuple[bool, float]:
         file_path.unlink()
         
         logger.info(
-            f"🗑️  Deletado: {file_path.name} "
+            f"Deletado: {file_path.name} "
             f"({file_size:.2f}MB, {age_days} dias)"
         )
         
@@ -145,7 +145,7 @@ def rotate_logs() -> Dict[str, any]:
     Retorna estatísticas da operação.
     """
     logger.info("=" * 60)
-    logger.info("🔄 Iniciando rotação de logs")
+    logger.info("Iniciando rotação de logs")
     logger.info(f"   Diretório: {LOG_DIR}")
     logger.info(f"   Retenção: {LOG_RETENTION_DAYS} dias")
     logger.info(f"   Compressão após: {COMPRESS_AFTER_DAYS} dias")
@@ -155,13 +155,13 @@ def rotate_logs() -> Dict[str, any]:
     
     # Verificar se diretório existe
     if not log_dir_path.exists():
-        logger.error(f"❌ Diretório de logs não existe: {LOG_DIR}")
+        logger.error(f"Diretório de logs não existe: {LOG_DIR}")
         return {"error": "Log directory not found"}
     
     # Uso de disco antes
     disk_before = get_disk_usage()
     logger.info(
-        f"💾 Uso de disco ANTES: {disk_before['used_gb']:.2f}GB / "
+        f"Uso de disco ANTES: {disk_before['used_gb']:.2f}GB / "
         f"{disk_before['total_gb']:.2f}GB ({disk_before['percent']:.1f}%)"
     )
     
@@ -185,7 +185,7 @@ def rotate_logs() -> Dict[str, any]:
     log_files.extend(log_dir_path.glob("*.jsonl"))
     log_files.extend(log_dir_path.glob("*.jsonl.gz"))
     
-    logger.info(f"📂 Encontrados {len(log_files)} arquivos de log")
+    logger.info(f"Encontrados {len(log_files)} arquivos de log")
     
     for log_file in sorted(log_files):
         try:
@@ -236,23 +236,23 @@ def rotate_logs() -> Dict[str, any]:
     
     # Relatório final
     logger.info("=" * 60)
-    logger.info("📊 RESUMO DA ROTAÇÃO")
-    logger.info(f"   ✅ Arquivos comprimidos: {stats['compressed']}")
-    logger.info(f"   🗑️  Arquivos deletados: {stats['deleted']}")
-    logger.info(f"   ❌ Erros: {stats['errors']}")
-    logger.info(f"   💾 Espaço economizado (compressão): {stats['space_saved_mb']:.2f}MB")
-    logger.info(f"   💾 Espaço liberado (deleção): {stats['space_freed_mb']:.2f}MB")
-    logger.info(f"   💾 Total recuperado: {stats['space_saved_mb'] + stats['space_freed_mb']:.2f}MB")
+    logger.info("RESUMO DA ROTAÇÃO")
+    logger.info(f"   Arquivos comprimidos: {stats['compressed']}")
+    logger.info(f"   Arquivos deletados: {stats['deleted']}")
+    logger.info(f"   Erros: {stats['errors']}")
+    logger.info(f"   Espaço economizado (compressão): {stats['space_saved_mb']:.2f}MB")
+    logger.info(f"   Espaço liberado (deleção): {stats['space_freed_mb']:.2f}MB")
+    logger.info(f"   Total recuperado: {stats['space_saved_mb'] + stats['space_freed_mb']:.2f}MB")
     logger.info("=" * 60)
     logger.info(
-        f"💾 Uso de disco DEPOIS: {disk_after['used_gb']:.2f}GB / "
+        f"Uso de disco DEPOIS: {disk_after['used_gb']:.2f}GB / "
         f"{disk_after['total_gb']:.2f}GB ({disk_after['percent']:.1f}%)"
     )
     
     # Alertas
     if disk_after['percent'] >= ALERT_DISK_USAGE_PERCENT:
         logger.warning(
-            f"⚠️  ALERTA: Uso de disco em {disk_after['percent']:.1f}% "
+            f"ALERTA: Uso de disco em {disk_after['percent']:.1f}% "
             f"(limite: {ALERT_DISK_USAGE_PERCENT}%)"
         )
         logger.warning(
@@ -260,11 +260,11 @@ def rotate_logs() -> Dict[str, any]:
         )
         stats["alert"] = True
     else:
-        logger.info(f"✅ Uso de disco dentro do limite ({disk_after['percent']:.1f}%)")
+        logger.info(f"Uso de disco dentro do limite ({disk_after['percent']:.1f}%)")
         stats["alert"] = False
     
     logger.info("=" * 60)
-    logger.info("✅ Rotação de logs concluída com sucesso!")
+    logger.info("Rotação de logs concluída com sucesso")
     logger.info("=" * 60)
     
     return stats
@@ -284,7 +284,7 @@ def main():
                 "stats": stats
             }, f, indent=2)
         
-        logger.info(f"📊 Estatísticas salvas em: {stats_file}")
+        logger.info(f"Estatísticas salvas em: {stats_file}")
         
         # Retornar código de saída apropriado
         if stats.get("errors", 0) > 0:
@@ -292,7 +292,7 @@ def main():
         return 0
         
     except Exception as e:
-        logger.error(f"❌ Erro fatal na rotação de logs: {e}", exc_info=True)
+        logger.error(f"Erro fatal na rotação de logs: {e}", exc_info=True)
         return 1
 
 

@@ -225,84 +225,84 @@ def test_crypto_manager():
     Testa funcionalidades básicas do CryptoManager.
     Executa testes de criptografia, descriptografia e geração de session_id.
     """
-    print("\n🔧 Testando CryptoManager...")
+    print("\nTestando CryptoManager...")
     print("=" * 80)
     
     # Gerar chave de teste
     test_key = base64.b64encode(secrets.token_bytes(32)).decode('utf-8')
-    print(f"✅ Chave de teste gerada: {test_key[:20]}...")
+    print(f"Chave de teste gerada: {test_key[:20]}...")
     
     # Inicializar
     try:
         crypto = CryptoManager(test_key)
-        print("✅ CryptoManager inicializado com sucesso")
+        print("CryptoManager inicializado com sucesso")
     except Exception as e:
-        print(f"❌ Erro ao inicializar: {e}")
+        print(f"ERRO ao inicializar: {e}")
         return False
     
     # Testar criptografia
     test_token = "1//test_refresh_token_very_long_string_123456789_abcdefgh"
-    print(f"\n📝 Token original: {test_token}")
+    print(f"\nToken original: {test_token}")
     
     try:
         encrypted = crypto.encrypt_token(test_token)
-        print(f"✅ Token criptografado:")
+        print(f"Token criptografado:")
         print(f"   - Encrypted: {encrypted['encrypted'][:60]}...")
         print(f"   - IV: {encrypted['iv']}")
     except Exception as e:
-        print(f"❌ Erro ao criptografar: {e}")
+        print(f"ERRO ao criptografar: {e}")
         return False
     
     # Testar descriptografia
     try:
         decrypted = crypto.decrypt_token(encrypted['encrypted'], encrypted['iv'])
         if decrypted == test_token:
-            print(f"✅ Token descriptografado corretamente")
+            print(f"Token descriptografado corretamente")
             print(f"   - Match: {decrypted == test_token}")
         else:
-            print(f"❌ Token descriptografado não corresponde ao original")
+            print(f"ERRO: Token descriptografado não corresponde ao original")
             return False
     except Exception as e:
-        print(f"❌ Erro ao descriptografar: {e}")
+        print(f"ERRO ao descriptografar: {e}")
         return False
     
     # Testar que cada criptografia gera resultado diferente (IV único)
     try:
         encrypted2 = crypto.encrypt_token(test_token)
         if encrypted['iv'] != encrypted2['iv']:
-            print(f"✅ IVs únicos confirmados (segurança garantida)")
+            print(f"IVs únicos confirmados (segurança garantida)")
         else:
-            print(f"⚠️  IVs iguais - possível problema de segurança!")
+            print(f"AVISO: IVs iguais - possível problema de segurança")
     except Exception as e:
-        print(f"❌ Erro ao testar unicidade de IV: {e}")
+        print(f"ERRO ao testar unicidade de IV: {e}")
     
     # Testar geração de session_id
-    print("\n📝 Testando geração de session_id...")
+    print("\nTestando geração de session_id...")
     try:
         session_id = CryptoManager.generate_session_id()
-        print(f"✅ Session ID gerado: {session_id}")
+        print(f"Session ID gerado: {session_id}")
         
         # Validar formato
         if CryptoManager.validate_session_id(session_id):
-            print(f"✅ Session ID possui formato válido")
+            print(f"Session ID possui formato válido")
         else:
-            print(f"❌ Session ID com formato inválido")
+            print(f"ERRO: Session ID com formato inválido")
             return False
         
         # Testar unicidade
         session_id2 = CryptoManager.generate_session_id()
         if session_id != session_id2:
-            print(f"✅ Session IDs únicos confirmados")
+            print(f"Session IDs únicos confirmados")
         else:
-            print(f"❌ Session IDs duplicados - problema!")
+            print(f"ERRO: Session IDs duplicados - problema")
             return False
             
     except Exception as e:
-        print(f"❌ Erro ao gerar session_id: {e}")
+        print(f"ERRO ao gerar session_id: {e}")
         return False
     
     # Testar validação de session_id
-    print("\n📝 Testando validação de session_id...")
+    print("\nTestando validação de session_id...")
     
     # Gerar um session_id real para testar
     valid_session = CryptoManager.generate_session_id()
@@ -318,11 +318,11 @@ def test_crypto_manager():
     
     for test_id, expected, description in test_cases:
         result = CryptoManager.validate_session_id(test_id)
-        status = "✅" if result == expected else "❌"
+        status = "OK" if result == expected else "ERRO"
         print(f"{status} Teste '{description}': {result} (esperado: {expected})")
     
     print("\n" + "=" * 80)
-    print("✅ Todos os testes do CryptoManager passaram!")
+    print("Todos os testes do CryptoManager passaram")
     print("=" * 80)
     return True
 
@@ -338,8 +338,8 @@ if __name__ == "__main__":
     success = test_crypto_manager()
     
     if success:
-        print("\n✅ CryptoManager está pronto para uso!")
+        print("\nCryptoManager está pronto para uso")
         sys.exit(0)
     else:
-        print("\n❌ Testes falharam - verifique os erros acima")
+        print("\nERRO: Testes falharam - verifique os erros acima")
         sys.exit(1)

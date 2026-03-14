@@ -91,9 +91,16 @@ def pytest_configure(config):
 
 def pytest_collection_modifyitems(config, items):
     """Modifica coleta de itens de teste"""
+    run_e2e = os.getenv("RUN_E2E", "").strip().lower() in {"1", "true", "yes", "on"}
+
     for item in items:
         # Marcar testes automaticamente baseado no nome do arquivo
         if "test_authorization_api" in str(item.fspath):
             item.add_marker(pytest.mark.integration)
         elif "test_authorization" in str(item.fspath):
             item.add_marker(pytest.mark.unit)
+        elif "test_e2e" in str(item.fspath):
+            item.add_marker(pytest.mark.e2e)
+            item.add_marker(pytest.mark.slow)
+            if not run_e2e:
+                item.add_marker(pytest.mark.skip(reason="E2E desabilitado por padrão. Defina RUN_E2E=1 para executar."))

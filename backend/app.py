@@ -1490,7 +1490,7 @@ def create_app() -> Flask:
         """
         Endpoint genérico para refresh token rotation (OAuth 2.1) - DEPRECATED
         
-        ⚠️ DEPRECATED: Use /auth/token/refresh/google ou /auth/token/refresh/microsoft
+        DEPRECATED: Use /auth/token/refresh/google ou /auth/token/refresh/microsoft
         
         Aceita refresh_token e provider, retorna novo access_token + novo refresh_token
         Mantido para compatibilidade com código legado.

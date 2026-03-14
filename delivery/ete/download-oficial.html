@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endpoint Oficial de Download - Minerador 4.0</title>
+    <meta name="description" content="Endpoint institucional oficial para distribuicao do instalador do Minerador 4.0.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="assets/css/laboratorio.css" rel="stylesheet">
+    <style>
+        .wrapper { max-width: 760px; margin: 0 auto; padding: 24px; }
+        .card { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+        .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+        .btn { display: inline-block; padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; }
+        .btn-primary { background: var(--accent-amber); color: #0d0f12; }
+        .btn-secondary { border: 1px solid var(--border); color: var(--text-primary); }
+        code { font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Endpoint institucional oficial - Minerador 4.0</h1>
+        <p>Este endpoint e o endereco oficial para distribuicao dos artefatos do Minerador 4.0 no dominio da Cara Core.</p>
+
+        <section class="card">
+            <p><strong>Artefatos institucionais (estaveis):</strong></p>
+            <ul>
+                <li>Instalador: <code>/delivery/ete/artifacts/Minerador40.exe</code></li>
+                <li>Checksum SHA-256: <code>/delivery/ete/artifacts/checksum.sha256</code></li>
+                <li>Checksum MD5: <code>/delivery/ete/artifacts/checksum.md5</code></li>
+                <li>Guia: <code>/delivery/ete/artifacts/INSTALACAO.md</code></li>
+            </ul>
+            <div class="actions">
+                <a class="btn btn-primary" href="/delivery/ete/artifacts/Minerador40.exe">Baixar instalador (endpoint oficial)</a>
+                <a class="btn btn-secondary" href="canal-feedback.html">Canal institucional (fallback)</a>
+                <a class="btn btn-secondary" href="download.html">Voltar ao download</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

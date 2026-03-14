@@ -257,3 +257,61 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
   - Endpoint institucional de download definido e publicado (ou redirect institucional estável) para ETE e PDV.
   - Remocao de `OWNER/REPO`, `api.github.com/repos` e links diretos `github.com/chmulato/.../releases/latest` dos fluxos C1/C2 do dominio matriz.
   - Revalidacao com grep no escopo de hardening e registro de baseline final.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 1 — saneamento de fluxo ETE/PDV)
+
+- Feito:
+  - `delivery/ete/download.html`:
+    - Removido link direto para `github.com/chmulato/.../releases/latest` no CTA principal.
+    - CTA de download redirecionado para `canal-feedback.html` (canal institucional).
+    - Texto de apoio ajustado para "canal institucional de download".
+  - `delivery/pdv/download.html`:
+    - Removida dependencia de `OWNER/REPO` e `api.github.com/repos/.../releases/latest` no script da pagina.
+    - Removido fallback de "Latest Release" com URL direta para owner pessoal.
+    - Fluxo de abertura pos-formulario alterado para `canal-feedback.html` (canal institucional).
+    - Mensageria da pagina ajustada para canal institucional (sem referencia direta a GitHub Releases).
+
+- Validacao da fase 1:
+  - Nos arquivos alvo (`delivery/ete/download.html` e `delivery/pdv/download.html`), nao ha ocorrencias de:
+    - `github.com/chmulato`
+    - `api.github.com/repos`
+    - `OWNER`/`REPO` (script de resolucao de latest)
+    - `releases/latest`
+
+- Pendencia para fechamento final do Passo 6:
+  - Publicar endpoint institucional definitivo de distribuicao para ETE/PDV (download direto com artefato versionado), mantendo o canal como fallback.
+  - Executar varredura final global do escopo definido e registrar baseline zero da rodada.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 2 — endpoints institucionais publicados)
+
+- Feito:
+  - Endpoints institucionais de artefato publicados no dominio matriz:
+    - `delivery/ete/download-oficial.html`
+    - `delivery/pdv/download-oficial.html`
+  - Estrategia aplicada: endpoint institucional estavel (URL controlada pela matriz) + canal institucional como fallback.
+
+- Alinhamento aplicado nos fluxos principais:
+  - `delivery/ete/download.html` agora aponta para `download-oficial.html` como rota primaria.
+  - `delivery/pdv/download.html` agora usa `download-oficial.html` como endpoint primario no fluxo manual e no fluxo pos-formulario.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 3 — sweep final de escopo + baseline)
+
+- Escopo da varredura final:
+  - `delivery/ete/download*.html`
+  - `delivery/pdv/download*.html`
+
+- Regras validadas (zero ocorrencias no escopo):
+  - `github.com/chmulato`
+  - `api.github.com/repos`
+  - `OWNER` / `REPO`
+  - `releases/latest`
+
+- Diagnostico final do escopo alterado:
+  - Sem erros nos arquivos:
+    - `delivery/ete/download.html`
+    - `delivery/ete/download-oficial.html`
+    - `delivery/pdv/download.html`
+    - `delivery/pdv/download-oficial.html`
+
+- Baseline da rodada (escopo Passo 6):
+  - CONCLUIDO para o fluxo de download ETE/PDV na matriz, com endpoint institucional publicado e fallback institucional preservado.

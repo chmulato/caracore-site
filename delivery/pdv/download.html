@@ -204,7 +204,7 @@
                   <i class="fas fa-download"></i>
                 </button>
                 <div class="text-sm text-slate-600">
-                  <span class="font-semibold text-slate-900">Instalador oficial.</span> Link direto do GitHub Releases.
+                  <span class="font-semibold text-slate-900">Instalador oficial.</span> Link direto do canal institucional de download.
                 </div>
               </div>
 
@@ -323,29 +323,29 @@
               </div>
 
               <div class="mt-4 text-xs text-slate-500">
-                Se o botão não carregar, abra o Latest Release e baixe o instalador manualmente.
+                Se o botão não carregar, abra o endpoint institucional direto de artefatos.
               </div>
 
               <a id="manualLink"
-                  href="https://caracore.com.br/delivery/pdv/download.html"
+                 href="download-oficial.html"
                  target="_blank"
                  rel="noopener noreferrer"
                  class="mt-3 inline-flex items-center justify-center gap-2 w-full rounded-xl border border-slate-200 px-5 py-3 text-slate-900 font-bold hover:bg-slate-50">
-                Abrir Latest Release
+                Abrir Endpoint Institucional
                 <i class="fas fa-arrow-up-right-from-square"></i>
               </a>
 
               <details class="mt-4 rounded-xl border border-slate-200 bg-white">
                 <summary class="cursor-pointer select-none px-4 py-3 text-sm font-semibold text-slate-900">
-                  Onde clicar no GitHub para baixar o instalador (FREE)
+                  Como baixar o instalador pelo endpoint institucional (FREE)
                 </summary>
                 <div class="px-4 pb-4">
                   <p class="text-xs text-slate-600 mt-1">
-                    No GitHub Releases, o instalador está dentro de <span class="font-semibold text-slate-900">Assets</span> (arquivo <span class="font-semibold text-slate-900">.exe</span>).
+                    No endpoint institucional, acesse o instalador <span class="font-semibold text-slate-900">.exe</span>, checksum e guia rapido de instalacao.
                   </p>
                   <img
                     src="assets/img/github_cara-core-pdv_release.png"
-                    alt="Exemplo do GitHub Release mostrando a seção Assets e o instalador .exe"
+                    alt="Exemplo visual do fluxo de distribuição do instalador .exe"
                     class="mt-3 w-full rounded-xl border border-slate-200 bg-slate-50"
                     loading="lazy"
                     decoding="async"
@@ -419,12 +419,8 @@
 
   <script>
     (function () {
-      // IMPORTANTE:
-      // Este site de download precisa apontar para um repositório PÚBLICO de releases, para que o cliente final
-      // consiga baixar sem login (o repositório de código pode continuar privado).
-      const OWNER = "chmulato";
-      const REPO = "caracore-pdv-releases";
-      const API_URL = `https://api.github.com/repos/${OWNER}/${REPO}/releases/latest`;
+      // Fluxo institucional: endpoint oficial de artefatos publicado no dominio da matriz.
+      const OFFICIAL_DOWNLOAD_ENDPOINT = "download-oficial.html";
 
       const manualLink = document.getElementById("manualLink");
       const downloadMeta = document.getElementById("downloadMeta");
@@ -435,7 +431,7 @@
       const whatsappInput = document.getElementById("whatsapp");
       const leadStatus = document.getElementById("leadStatus");
 
-      let latest = { version: null, url: `https://github.com/${OWNER}/${REPO}/releases/latest`, assetUrl: null, assetName: null };
+      let latest = { version: "Endpoint institucional", url: OFFICIAL_DOWNLOAD_ENDPOINT, assetUrl: null, assetName: null };
 
       function applyDownloadLink() {
         const href = latest.assetUrl || latest.url;
@@ -447,7 +443,7 @@
         if (latest.version) {
           downloadMeta.textContent = `Latest: ${latest.version}${latest.assetName ? " • " + latest.assetName : ""}`;
         } else {
-          downloadMeta.textContent = "Latest Release";
+          downloadMeta.textContent = "Endpoint institucional";
         }
       }
 
@@ -460,32 +456,6 @@
         if (digits.length === 13 && digits.startsWith("55")) return digits;
         if (digits.length === 10) return "55" + digits; // fallback (sem nono dígito)
         return null;
-      }
-
-      async function fetchLatestRelease() {
-        try {
-          const resp = await fetch(API_URL, {
-            headers: {
-              "Accept": "application/vnd.github+json"
-            }
-          });
-          if (!resp.ok) throw new Error("status=" + resp.status);
-          const data = await resp.json();
-          latest.version = (data.tag_name || "").replace(/^desktop-v/i, "").replace(/^v/i, "").trim() || null;
-          latest.url = data.html_url || latest.url;
-
-          const assets = Array.isArray(data.assets) ? data.assets : [];
-          const re = /^caracore-pdv-[0-9a-z._-]{1,80}-windows-x64\.(exe|msi)$/i;
-          const asset = assets.find(a => a && typeof a.name === "string" && re.test(a.name));
-          if (asset && asset.browser_download_url) {
-            latest.assetUrl = asset.browser_download_url;
-            latest.assetName = asset.name;
-          }
-        } catch (e) {
-          // fallback silencioso
-        } finally {
-          applyDownloadLink();
-        }
       }
 
       leadForm.addEventListener("submit", function (e) {
@@ -514,7 +484,7 @@
         } catch (ignore) {}
 
         leadStatus.classList.remove("hidden");
-        leadStatus.textContent = "Iniciando download... Em seguida, enviaremos o guia de início rápido no WhatsApp informado.";
+        leadStatus.textContent = "Abrindo o endpoint institucional de download... Em seguida, enviaremos o guia de inicio rapido no WhatsApp informado.";
 
         // Dispara download do instalador (.exe/.msi). Se não houver asset, abre Latest Release.
         const href = latest.assetUrl || latest.url;
@@ -532,7 +502,7 @@
         }
       } catch (ignore) {}
 
-      fetchLatestRelease();
+      applyDownloadLink();
     })();
 
     // mobile menu toggle (consistente com as demais páginas do portal)

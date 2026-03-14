@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download — Minerador 4.0 | chmulatoETE | Cara Core Informática</title>
+    <title>Download — Minerador 4.0 | Cara Core Informática</title>
     <meta name="description" content="Baixe o instalador Windows do simulador Campo Largo: Minerador 4.0. Versão validada por testes (PyTest). Checksums SHA-256 e MD5 para verificação de integridade.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,6 +50,8 @@
         .download-meta ul { margin: 12px 0 0 20px; }
         .download-meta li { margin-bottom: 6px; }
         .download-meta a { color: var(--accent-blue); }
+        .download-meta-note { margin-top: 16px; }
+        .inline-code-small { font-size: 0.85em; }
         .download-back { margin-top: 32px; }
         .download-back a { color: var(--text-secondary); text-decoration: none; }
         .download-back a:hover { color: var(--accent-gold); }
@@ -76,26 +78,26 @@
         </header>
 
         <section class="download-hero">
-            <a href="https://github.com/chmulato/caracore-ete-releases/releases/latest" class="btn-download" target="_blank" rel="noopener">
+            <a href="download-oficial.html" class="btn-download">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Baixar Minerador 4.0 (Windows)
             </a>
-            <p class="version">Você será redirecionado para a página de Releases. Baixe o arquivo <strong>Minerador40.exe</strong> e, se desejar, o <strong>checksum.sha256</strong> para verificar a integridade.</p>
+            <p class="version">Você será redirecionado para o endpoint institucional oficial. Baixe o arquivo <strong>Minerador40.exe</strong> e, se desejar, o <strong>checksum.sha256</strong> para verificar a integridade.</p>
         </section>
 
         <div class="download-meta">
-            <p><strong>Na página do Release você encontra:</strong></p>
+            <p><strong>No endpoint institucional voce encontra:</strong></p>
             <ul>
                 <li><strong>Minerador40.exe</strong> — instalador (executar no Windows)</li>
                 <li><strong>checksum.sha256</strong> — para validar o arquivo (recomendado)</li>
                 <li><strong>checksum.md5</strong> — alternativa de verificação</li>
                 <li><strong>INSTALACAO.md</strong> — guia rápido de instalação e uso</li>
             </ul>
-            <p style="margin-top: 16px;">Para verificar o SHA-256 no PowerShell: <code style="font-size: 0.85em;">Get-FileHash -Path .\Minerador40.exe -Algorithm SHA256</code>. Compare o resultado com o valor em checksum.sha256.</p>
+            <p class="download-meta-note">Para verificar o SHA-256 no PowerShell: <code class="inline-code-small">Get-FileHash -Path .\Minerador40.exe -Algorithm SHA256</code>. Compare o resultado com o valor em checksum.sha256.</p>
         </div>
 
-        <p class="download-meta" style="margin-top: 16px;">Desbloquear o <strong>Módulo Mineração</strong> (fase paga): <a href="upgrade-ouro40.html">Upgrade para Ouro 4.0</a> — PIX e ativação por license.key.</p>
-        <p class="download-back"><a href="index.html">← Voltar ao portal</a> · <a href="laboratorio_campo_largo.html">Laboratório Campo Largo: Ouro 4.0</a> · <a href="upgrade-ouro40.html">Upgrade Ouro 4.0</a></p>
+        <p class="download-meta download-meta-note">Desbloquear o <strong>Módulo Mineração</strong> (fase paga): <a href="upgrade-ouro40.html">Upgrade para Ouro 4.0</a> — PIX e ativação por license.key.</p>
+        <p class="download-back"><a href="index.html">← Voltar ao portal</a> · <a href="laboratorio_campo_largo.html">Laboratório Campo Largo: Ouro 4.0</a> · <a href="upgrade-ouro40.html">Upgrade Ouro 4.0</a> · <a href="download-oficial.html">Endpoint institucional</a> · <a href="canal-feedback.html">Canal institucional</a></p>
     </div>
     <script src="assets/js/ete.js"></script>
 </body>

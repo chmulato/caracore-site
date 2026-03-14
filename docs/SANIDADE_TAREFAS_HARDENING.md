@@ -315,3 +315,30 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
 
 - Baseline da rodada (escopo Passo 6):
   - CONCLUIDO para o fluxo de download ETE/PDV na matriz, com endpoint institucional publicado e fallback institucional preservado.
+
+### 2026-03-14 — Passo 6 (estrutural, fase 4 — staging de artefatos e handoff de publicacao)
+
+- Feito:
+  - Estrutura institucional de artefatos criada e publicada:
+    - `delivery/ete/artifacts/`
+      - `INSTALACAO.md`
+      - `checksum.sha256`
+      - `checksum.md5`
+    - `delivery/pdv/artifacts/`
+      - `INSTALACAO.md`
+      - `checksum.sha256`
+      - `checksum.md5`
+  - Endpoints oficiais ajustados para nao gerar link primario morto durante janela de publicacao:
+    - `delivery/ete/download-oficial.html` -> CTA primario para `artifacts/INSTALACAO.md`
+    - `delivery/pdv/download-oficial.html` -> CTA primario para `artifacts/INSTALACAO.md`
+
+- Resultado operacional:
+  - URLs institucionais estaveis estao ativas e com conteudo publicado.
+  - Fluxo comercial permanece funcional sem exposicao de owner/API externa no caminho principal.
+
+- Pendente para go-live binario (ultimo mile):
+  - Publicar binarios reais nas rotas:
+    - `/delivery/ete/artifacts/Minerador40.exe`
+    - `/delivery/pdv/artifacts/CaraCorePDV.exe`
+  - Atualizar `checksum.sha256` e `checksum.md5` com valores reais.
+  - Opcional apos publicacao: retomar CTA primario dos endpoints oficiais para o `.exe`.

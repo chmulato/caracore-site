@@ -26,7 +26,7 @@ WARNING session_manager não disponível - sistema de refresh tokens desabilitad
 - Push para `main` branch
 
 ✅ **TOKEN_ENCRYPTION_KEY configurada:**
-- Valor: `aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=`
+- Valor: `<REPLACE_WITH_BASE64_32BYTE_KEY>`
 - Status: ✅ Configurada no Azure App Service
 
 ## ⏳ Próximos Passos
@@ -112,4 +112,5 @@ Como alteramos `backend/requirements-docker.txt`, o deploy **deve** ser acionado
 
 **Última atualização:** 15/11/2025 23:22  
 **Status:** ⏳ Aguardando deploy automático
+
 

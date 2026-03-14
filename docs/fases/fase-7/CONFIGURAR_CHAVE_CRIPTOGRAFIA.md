@@ -5,8 +5,8 @@
 A chave de criptografia foi gerada com sucesso:
 
 ```
-TOKEN_ENCRYPTION_KEY=aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=
-SESSION_SECRET_KEY=4iNNc7tFewIH8R7vDMjSWKfkX8ZYulUsf1LbzjloeVk
+TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
+SESSION_SECRET_KEY=<REPLACE_WITH_SESSION_SECRET_KEY>
 ```
 
 ⚠️ **IMPORTANTE:** 
@@ -26,12 +26,12 @@ SESSION_SECRET_KEY=4iNNc7tFewIH8R7vDMjSWKfkX8ZYulUsf1LbzjloeVk
 
 ### Comando
 ```bash
-python scripts/configure_app_settings.py --set TOKEN_ENCRYPTION_KEY=aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=
+python scripts/configure_app_settings.py --set TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
 ```
 
 ### Verificar antes de aplicar (dry-run)
 ```bash
-python scripts/configure_app_settings.py --set TOKEN_ENCRYPTION_KEY=aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA= --dry-run
+python scripts/configure_app_settings.py --set TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY> --dry-run
 ```
 
 ---
@@ -55,7 +55,7 @@ python scripts/configure_app_settings.py --set TOKEN_ENCRYPTION_KEY=aJSEi4SKz9rz
 4. **Adicionar Nova Variável**
    - Clique em **+ New application setting**
    - **Name:** `TOKEN_ENCRYPTION_KEY`
-   - **Value:** `aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=`
+   - **Value:** `<REPLACE_WITH_BASE64_32BYTE_KEY>`
    - Clique em **OK**
 
 5. **Salvar e Reiniciar**
@@ -72,7 +72,7 @@ python scripts/configure_app_settings.py --set TOKEN_ENCRYPTION_KEY=aJSEi4SKz9rz
 az webapp config appsettings set \
   --name caracore-backend-docker \
   --resource-group rg-caracore \
-  --settings TOKEN_ENCRYPTION_KEY=aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=
+  --settings TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
 ```
 
 ### Verificar Configuração
@@ -158,8 +158,8 @@ Após reiniciar, teste fazendo login:
 Para desenvolvimento local, adicione ao arquivo `.env` ou `secrets.txt`:
 
 ```bash
-TOKEN_ENCRYPTION_KEY=aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=
-SESSION_SECRET_KEY=4iNNc7tFewIH8R7vDMjSWKfkX8ZYulUsf1LbzjloeVk
+TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
+SESSION_SECRET_KEY=<REPLACE_WITH_SESSION_SECRET_KEY>
 ```
 
 ⚠️ **NUNCA commite o arquivo `secrets.txt` com valores reais!**
@@ -195,4 +195,5 @@ SESSION_SECRET_KEY=4iNNc7tFewIH8R7vDMjSWKfkX8ZYulUsf1LbzjloeVk
 **Última atualização:** 15/11/2025  
 **Chave gerada em:** 15/11/2025  
 **Status:** ✅ Chave gerada, aguardando configuração no Azure
+
 

@@ -12,7 +12,7 @@
 ### Configurada no Azure App Service
 
 - **Variável:** `TOKEN_ENCRYPTION_KEY`
-- **Valor:** `aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=`
+- **Valor:** `<REPLACE_WITH_BASE64_32BYTE_KEY>`
 - **Status:** ✅ Configurada
 - **App Service:** `caracore-backend-docker`
 - **Resource Group:** `rg-caracore`
@@ -31,7 +31,7 @@ az webapp config appsettings list \
 ```
 Name                  Value                                         SlotSetting
 --------------------  --------------------------------------------  -------------
-TOKEN_ENCRYPTION_KEY  aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=  False
+TOKEN_ENCRYPTION_KEY  <REPLACE_WITH_BASE64_32BYTE_KEY>  False
 ```
 
 ---
@@ -159,4 +159,5 @@ curl -X POST https://caracore-backend-docker.azurewebsites.net/auth/session/refr
 
 **Última atualização:** 15/11/2025  
 **Status:** ✅ Configurado e reiniciado - Aguardando validação
+
 

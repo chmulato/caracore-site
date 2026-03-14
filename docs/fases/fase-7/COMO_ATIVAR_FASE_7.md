@@ -44,7 +44,7 @@ Isso gerará uma chave base64-encoded de 32 bytes (256 bits) para AES-256.
 ```
 🔐 Gerando chaves de criptografia para Fase 7...
 ✅ Chave de criptografia gerada:
-TOKEN_ENCRYPTION_KEY=rhNrjnj8bseYNLTr3YkggpOoxxIcLDYfzlv2ma/j5H/TJC+z3pLuaOdLnWlWAiiMoW149OsrwYFT+AStPrlvnA==
+TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
 ```
 
 ### 2. Configurar Variável de Ambiente
@@ -64,7 +64,7 @@ TOKEN_ENCRYPTION_KEY=rhNrjnj8bseYNLTr3YkggpOoxxIcLDYfzlv2ma/j5H/TJC+z3pLuaOdLnWl
 Adicione ao arquivo `.env` na raiz do projeto:
 
 ```bash
-TOKEN_ENCRYPTION_KEY=rhNrjnj8bseYNLTr3YkggpOoxxIcLDYfzlv2ma/j5H/TJC+z3pLuaOdLnWlWAiiMoW149OsrwYFT+AStPrlvnA==
+TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
 ```
 
 ⚠️ **IMPORTANTE:** NUNCA commite a chave real no Git! Use `secrets.txt.template` como referência.
@@ -316,4 +316,5 @@ Os logs de auditoria são salvos automaticamente em:
 
 **Última atualização:** 15/11/2025  
 **Status:** Pronto para ativação (após configurar chave de criptografia)
+
 

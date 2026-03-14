@@ -48,7 +48,7 @@ az webapp config appsettings list \
 ```
 Name                  Value                                         SlotSetting
 --------------------  --------------------------------------------  -------------
-TOKEN_ENCRYPTION_KEY  aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=  False
+TOKEN_ENCRYPTION_KEY  <REPLACE_WITH_BASE64_32BYTE_KEY>  False
 ```
 
 ### 3. Verificar Status do Deploy
@@ -120,7 +120,7 @@ az webapp log tail --name caracore-backend-docker --resource-group rg-caracore
 az webapp config appsettings set \
   --name caracore-backend-docker \
   --resource-group rg-caracore \
-  --settings TOKEN_ENCRYPTION_KEY=aJSEi4SKz9rzF5m5fCUkMgnpC9AMIOBCka2FRCQMsYA=
+  --settings TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
 ```
 
 ### Problema: Dependências não instaladas
@@ -146,4 +146,5 @@ python-dateutil>=2.8.2
 ---
 
 **Última atualização:** 15/11/2025
+
 

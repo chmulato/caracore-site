@@ -94,7 +94,7 @@ az webapp config storage-account add \
   --storage-type AzureFiles \
   --account-name caracoredata \
   --share-name caracore-data \
-  --access-key rhNrjnj8bseYNLTr3YkggpOoxxIcLDYfzlv2ma/j5H/TJC+z3pLuaOdLnWlWAiiMoW149OsrwYFT+AStPrlvnA== \
+  --access-key <REPLACE_WITH_BASE64_32BYTE_KEY> \
   --mount-path /home/data
 ```
 
@@ -213,4 +213,5 @@ Se houver dados existentes em `backend/data/authorized_users.json` (desenvolvime
 ---
 
 **Próximo Passo:** Corrigir `backend/authorization.py` para usar `/home/site/wwwroot/data`
+
 

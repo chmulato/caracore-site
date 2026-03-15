@@ -235,6 +235,91 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial load
     loadTranslations('pt');
 
+    const extractYear = (value) => {
+        const match = (value || '').match(/(19|20)\d{2}/);
+        return match ? parseInt(match[0], 10) : null;
+    };
+
+    const splitPeriod = (period) => {
+        const raw = (period || '').trim();
+        const parts = raw.split('-');
+        const start = (parts[0] || '').trim();
+        const endRaw = parts.slice(1).join('-').trim();
+        const end = (endRaw.split('(')[0] || '').trim();
+        return { start, end };
+    };
+
+    const isChronological = (start, end) => {
+        if (!start || !end) {
+            return false;
+        }
+        const startYear = extractYear(start);
+        const endYear = extractYear(end);
+        if (startYear === null || endYear === null) {
+            return true;
+        }
+        return startYear <= endYear;
+    };
+
+    const yearSpan = (start, end) => {
+        const startYear = extractYear(start);
+        const endYear = extractYear(end);
+        if (startYear === null || endYear === null) {
+            return 0;
+        }
+        return endYear - startYear;
+    };
+
+    const getPositionPeriod = (position) => position?.duracao || position?.duration || position?.durata || '';
+
+    const buildCombinedPeriodLabel = (positions) => {
+        if (!positions || positions.length === 0) {
+            return '';
+        }
+
+        const firstPeriod = getPositionPeriod(positions[0]);
+        const lastPeriod = getPositionPeriod(positions[positions.length - 1]);
+
+        if (!firstPeriod && !lastPeriod) {
+            return '';
+        }
+        if (!firstPeriod || !lastPeriod || firstPeriod === lastPeriod) {
+            return firstPeriod || lastPeriod;
+        }
+
+        const firstRange = splitPeriod(firstPeriod);
+        const lastRange = splitPeriod(lastPeriod);
+
+        const forward = {
+            start: firstRange.start,
+            end: lastRange.end
+        };
+
+        const reverse = {
+            start: lastRange.start,
+            end: firstRange.end
+        };
+
+        const forwardValid = isChronological(forward.start, forward.end);
+        const reverseValid = isChronological(reverse.start, reverse.end);
+
+        if (forwardValid && reverseValid) {
+            return yearSpan(reverse.start, reverse.end) > yearSpan(forward.start, forward.end)
+                ? `${reverse.start} - ${reverse.end}`
+                : `${forward.start} - ${forward.end}`;
+        }
+
+        if (reverseValid) {
+            return `${reverse.start} - ${reverse.end}`;
+        }
+
+        if (forwardValid) {
+            return `${forward.start} - ${forward.end}`;
+        }
+
+        return `${firstPeriod} / ${lastPeriod}`;
+    };
+
     // Function to convert 8-year resume JSON to HTML
     function convertResumeJsonToHtml(data) {
         let html = '<div class="resume-content">';
@@ -257,53 +342,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 const positions = exp.posicoes || exp.positions || exp.posizioni || [];
                 
                 // Handle entries that only have company and positions (like Wipro)
-                            if (positions && positions.length > 0 && !position) {
-                                // Calcular período total (do primeiro ao último)
-                                let firstPeriod = positions[0]?.duracao || positions[0]?.duration || positions[0]?.durata || '';
-                                let lastPeriod = positions[positions.length-1]?.duracao || positions[positions.length-1]?.duration || positions[positions.length-1]?.durata || '';
-                                let periodLabel = '';
-                                if (firstPeriod && lastPeriod && firstPeriod !== lastPeriod) {
-                                    let start = firstPeriod.split('-')[0]?.trim();
-                                    let end = lastPeriod.split('-')[1]?.split('(')[0]?.trim();
-                                    if (start && end && start !== 'undefined' && end !== 'undefined') {
-                                        periodLabel = `${start} - ${end}`;
-                                    } else {
-                                        periodLabel = `${firstPeriod !== 'undefined' ? firstPeriod : ''} / ${lastPeriod !== 'undefined' ? lastPeriod : ''}`;
-                                    }
-                                } else {
-                                    periodLabel = (firstPeriod !== 'undefined' ? firstPeriod : '') || (lastPeriod !== 'undefined' ? lastPeriod : '');
-                                }
-                                html += `<h4>${company ? company : ''}</h4>`;
-                                if (periodLabel && periodLabel !== 'undefined' && periodLabel.trim() !== '') {
-                                    html += `<div class="details">${periodLabel}</div>`;
-                                }
-                                positions.forEach(pos => {
-                                    html += '<div class="sub-position">';
-                                    const subPosition = pos.posicao || pos.position || pos.posizione || '';
-                                    const subDuration = pos.duracao || pos.duration || pos.durata || '';
-                                    const subDescription = pos.descricao || pos.description || pos.descrizione || '';
-                                    const subTechnologies = pos.tecnologias || pos.technologies || pos.tecnologie || [];
-                                    if (subPosition && subPosition !== 'undefined') {
-                                        html += `<h5>${subPosition}</h5>`;
-                                    }
-                                    if (subDuration && subDuration !== 'undefined') {
-                                        html += `<div class="details">${subDuration}</div>`;
-                                    }
-                                    if (subDescription && subDescription !== 'undefined') {
-                                        html += `<p>${subDescription}</p>`;
-                                    }
-                                    if (subTechnologies && subTechnologies.length > 0) {
-                                        const techLabel = pos.tecnologias ? 'Tecnologias:' : 
-                                                        pos.technologies ? 'Technologies:' : 
-                                                        pos.tecnologie ? 'Tecnologie:' :
-                                                        'Technologies:';
-                                        html += `<div class="technologies"><strong>${techLabel}</strong> `;
-                                        html += subTechnologies.join(', ');
-                                        html += '</div>';
-                                    }
-                                    html += '</div>';
-                                });
-                            } else {
+                if (positions && positions.length > 0 && !position) {
+                    const periodLabel = buildCombinedPeriodLabel(positions);
+                    html += `<h4>${company ? company : ''}</h4>`;
+                    if (periodLabel && periodLabel.trim() !== '') {
+                        html += `<div class="details">${periodLabel}</div>`;
+                    }
+                    positions.forEach(pos => {
+                        html += '<div class="sub-position">';
+                        const subPosition = pos.posicao || pos.position || pos.posizione || '';
+                        const subDuration = pos.duracao || pos.duration || pos.durata || '';
+                        const subDescription = pos.descricao || pos.description || pos.descrizione || '';
+                        const subTechnologies = pos.tecnologias || pos.technologies || pos.tecnologie || [];
+                        if (subPosition && subPosition !== 'undefined') {
+                            html += `<h5>${subPosition}</h5>`;
+                        }
+                        if (subDuration && subDuration !== 'undefined') {
+                            html += `<div class="details">${subDuration}</div>`;
+                        }
+                        if (subDescription && subDescription !== 'undefined') {
+                            html += `<p>${subDescription}</p>`;
+                        }
+                        if (subTechnologies && subTechnologies.length > 0) {
+                            const techLabel = pos.tecnologias ? 'Tecnologias:' : 
+                                            pos.technologies ? 'Technologies:' : 
+                                            pos.tecnologie ? 'Tecnologie:' :
+                                            'Technologies:';
+                            html += `<div class="technologies"><strong>${techLabel}</strong> `;
+                            html += subTechnologies.join(', ');
+                            html += '</div>';
+                        }
+                        html += '</div>';
+                    });
+                } else {
                     // Regular entry with position, company, duration, etc.
                     html += `<h4>${position}</h4>`;
                     html += `<div class="details">${company} | ${duration}</div>`;
@@ -435,16 +506,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (positions.length > 0 && !position) {
                         // Wipro-like entry
-                        let firstPeriod = positions[0]?.duracao || '';
-                        let lastPeriod = positions[positions.length-1]?.duracao || '';
-                        let periodLabel = '';
-                        if (firstPeriod && lastPeriod && firstPeriod !== lastPeriod) {
-                            let start = firstPeriod.split('-')[0]?.trim();
-                            let end = lastPeriod.split('-')[1]?.split('(')[0]?.trim();
-                            periodLabel = `${start} - ${end}`;
-                        } else {
-                            periodLabel = firstPeriod || lastPeriod;
-                        }
+                        const periodLabel = buildCombinedPeriodLabel(positions);
                         html += `<h4>${company}</h4>`;
                         if (periodLabel) {
                             html += `<div class="details">${periodLabel}</div>`;

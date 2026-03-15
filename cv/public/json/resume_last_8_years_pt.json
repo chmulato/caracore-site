@@ -1,6 +1,6 @@
 {
     "informacoesPessoais":  {
-                                "nome":  "Avatar Profissional Cara Core",
+                                "nome":  "Christian Mulato",
                                 "titulo":  "Especialista em Modernização de Sistemas e Eficiência Operacional | Java, Spring, APIs e Automação",
                                 "localizacao":  "Brasil | Remoto e on-site sob demanda",
                                 "contato":  {
@@ -48,7 +48,7 @@
                         {
                             "empresa":  "Compass UOL",
                             "posicao":  "Desenvolvedor Java Sênior",
-                            "duracao":  "setembro de 2025 - o momento · 2 meses",
+                            "duracao":  "setembro de 2025 - o momento · 6 meses",
                             "localizacao":  "Brasil | Remoto e on-site sob demanda",
                             "descricao":  "- Atuação em projeto back-end com Jakarta EE, Spring Boot, SOAP, REST.\n- Entregas ágeis, automação de processos críticos e integração de sistemas corporativos.\n- (Trabalho Remoto - Outsourcing - Caixa Seguradora).",
                             "tecnologias":  [
@@ -57,10 +57,10 @@
                         },
                         {
                             "empresa":  "Cara Core Informática",
-                            "posicao":  "Consultor e Desenvolvedor de Sistemas",
+                            "posicao":  "Fundador e Consultor de Sistemas (empresa própria)",
                             "duracao":  "janeiro de 2016 - Presente (9 anos 8 meses)",
                             "localizacao":  "Brasil | Remoto e on-site sob demanda",
-                            "descricao":  "Atuação como Consultor e Desenvolvedor de Sistemas, responsável pelo desenvolvimento, automação e gestão de soluções tecnológicas para empresas e escritórios. Os sistemas do portfólio (Delivery Control, PDV e Dental) são projetos open source, abertos para colaboração e investimento de entusiastas e parceiros. Experiência em testes, validações, automação VBA/Office 365, infraestrutura, segurança, suporte remoto e integração de tecnologias. Trabalhos realizados como PJ/CNPJ, com foco em inovação e comunidade colaborativa.",
+                            "descricao":  "Fundador e proprietário. Atuação como Consultor e Desenvolvedor de Sistemas, responsável pelo desenvolvimento, automação e gestão de soluções tecnológicas para empresas e escritórios. Os sistemas do portfólio (Delivery Control, PDV, CSO Online e Dental) são projetos open source, abertos para colaboração e investimento de entusiastas e parceiros. Experiência em testes, validações, automação VBA/Office 365, infraestrutura, segurança, suporte remoto e integração de tecnologias. Trabalhos realizados como PJ/CNPJ, com foco em inovação e comunidade colaborativa. Nota: atuação em paralelo a vínculos empregatícios de terceiros (por exemplo, UniSistemas 2017-2018), conforme declarado.",
                             "projetos":  [
                                              {
                                                  "nome":  "Delivery Control",
@@ -68,6 +68,10 @@
                                              },
                                              {
                                                  "nome":  "Cara-Core PDV",
+                                                 "url":  "https://www.caracore.com.br"
+                                             },
+                                             {
+                                                 "nome":  "CSO Online",
                                                  "url":  "https://www.caracore.com.br"
                                              },
                                              {
@@ -228,7 +232,7 @@
                             "posicao":  "Desenvolvedor Java Web",
                             "duracao":  "maio de 2017 - janeiro de 2018 (9 meses)",
                             "localizacao":  "Brasil | Remoto e on-site sob demanda",
-                            "descricao":  "Desenvolvimento, suporte, correções e implantação de novas funcionalidades de aplicações web.",
+                            "descricao":  "Desenvolvimento, suporte, correções e implantação de novas funcionalidades de aplicações web. Nota: vínculo exercido em paralelo à operação da empresa própria Cara Core Informática, conforme declarado.",
                             "tecnologias":  [
                                                 "Java EE",
                                                 "Spring",

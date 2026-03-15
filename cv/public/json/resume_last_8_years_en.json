@@ -1,6 +1,6 @@
 {
     "personalInfo":  {
-                         "name":  "Cara Core Professional Avatar",
+                         "name":  "Christian Mulato",
                          "title":  "Enterprise Modernization and Operational Excellence Specialist | Java, Spring, APIs and Automation",
                          "location":  "Brazil | Remote and on-site by demand",
                          "contact":  {
@@ -48,7 +48,7 @@
                        {
                            "company":  "Compass UOL",
                            "position":  "Senior Java Developer",
-                           "duration":  "September 2025 - present · 2 months",
+                           "duration":  "September 2025 - present · 6 months",
                            "location":  "Brazil | Remote and on-site by demand",
                            "description":  "- Worked on a back-end project with Jakarta EE, Spring Boot, SOAP, REST.\n- Agile deliveries, automation of critical processes, and integration of corporate systems.\n- (Remote Work - Outsourcing - Caixa Seguradora).",
                            "technologies":  [
@@ -57,10 +57,10 @@
                        },
                        {
                            "company":  "Cara Core Informática",
-                           "position":  "Consultant and Systems Developer",
+                           "position":  "Founder and Systems Consultant (own company)",
                            "duration":  "January 2016 - Present (9 years 8 months)",
                            "location":  "Brazil | Remote and on-site by demand",
-                           "description":  "Acting as Consultant and Systems Developer, responsible for the development, automation, and management of technological solutions for companies and offices. The portfolio systems (Delivery Control, POS, and Dental) are open source projects, open to collaboration and investment from enthusiasts and partners. Experience in testing, validation, VBA/Office 365 automation, infrastructure, security, remote support, and technology integration. Work performed as a legal entity (PJ/CNPJ), focused on innovation and collaborative community.",
+                           "description":  "Founder and owner. Acting as Consultant and Systems Developer, responsible for the development, automation, and management of technological solutions for companies and offices. The portfolio systems (Delivery Control, POS, CSO Online, and Dental) are open source projects, open to collaboration and investment from enthusiasts and partners. Experience in testing, validation, VBA/Office 365 automation, infrastructure, security, remote support, and technology integration. Work performed as a legal entity (PJ/CNPJ), focused on innovation and collaborative community. Note: role operated in parallel with third-party employment relationships (for example, UniSistemas 2017-2018), as disclosed.",
                            "projects":  [
                                             {
                                                 "name":  "Delivery Control",
@@ -68,6 +68,10 @@
                                             },
                                             {
                                                 "name":  "Cara-Core PDV",
+                                                "url":  "https://www.caracore.com.br"
+                                            },
+                                            {
+                                                "name":  "CSO Online",
                                                 "url":  "https://www.caracore.com.br"
                                             },
                                             {
@@ -228,7 +232,7 @@
                            "position":  "Java Web Developer",
                            "duration":  "May 2017 - January 2018 (9 months)",
                            "location":  "Brazil | Remote and on-site by demand",
-                           "description":  "Development, support, corrections, and implementation of new functionalities for web applications.",
+                           "description":  "Development, support, corrections, and implementation of new functionalities for web applications. Note: employment held in parallel with operation of the owner's company Cara Core Informática, as disclosed.",
                            "technologies":  [
                                                 "Java EE",
                                                 "Spring",

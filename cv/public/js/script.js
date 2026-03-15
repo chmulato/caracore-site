@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Initializing script...');
 
-    const DATA_VERSION = '20260314-encoding-fix';
+    const DATA_VERSION = '20260315-cv-consistency-fix';
 
     const langSwitcher = document.querySelector('.lang-switcher');
     let currentTranslations = {}; // Variável para guardar as traduções atuais
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Personal Information
             console.log('Processing personal info...');
             html += '<div class="personal-info">';
-            html += `<h2>Cara Core</h2>`;
+            html += `<h2>Christian Mulato</h2>`;
             html += `<h3>${data.informacoesPessoais.titulo}</h3>`;
             html += `<p><strong>Localização:</strong> Remoto | on-site sob demanda</p>`;
             

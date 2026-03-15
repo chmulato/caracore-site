@@ -1,263 +1,261 @@
-﻿{
-  "personalInfo": {
-    "name": "Christian Mulato",
-    "title": "Senior Java Developer (AI Agents) | Back-end Specialist | Jakarta, Spring Boot, REST APIs, Docker | Chemical Engineer",
-    "location": "Campo Largo, ParanÃ¡, Brazil",
-    "contact": {
-      "mobile": "+5541999097797",
-      "email": "suporte@caracore.com.br",
-      "linkedin": "https://www.caracore.com.br",
-      "companyWebsite": "https://www.caracore.com.br",
-      "portfolio": "https://www.caracore.com.br"
-    }
-  },
-  "summary": "I have a university degree in engineering from instituiÃ§Ã£o de engenharia, professional experience in IT, and international experience (international contexts). Specializations in Computer Science and Java Technology from especializaÃ§Ã£o em tecnologia Java. Practical knowledge in object-oriented programming logic, structured programming, UML, databases (MS-Access, VBA, SQL Server, Firebird, MySQL, Oracle, MongoDB, and SQL language), and process automation (RPA). Fluent in Italian and upper-intermediate English (B2).",
-  "keySkills": [
-    "Financial institutions",
-    "Banking services",
-    "Teamwork"
-  ],
-  "languages": [
-    {
-      "language": "Italian",
-      "proficiency": "Native or Bilingual"
-    },
-    {
-      "language": "Portuguese", 
-      "proficiency": "Native or Bilingual"
-    },
-    {
-      "language": "English",
-      "proficiency": "Full Professional Proficiency"
-    }
-  ],
-  "certifications": [
-    "Angular 14: Evolving an SPA application",
-    "Free Fullstack Angular and Spring Workshop",
-    "DevOps Cloud Week",
-    "Hello Bot: Introduction To RPA",
-    "RPA: Process Automation with NO/LOW Code tool"
-  ],
-  "honorsAwards": [
-    "Java Software Support Engineer"
-  ],
-  "licenses": [
-    "CNH Type B (Brazilian Driver's License Type B)"
-  ],
-  "experience": [
-    {
-      "company": "Compass UOL",
-      "position": "Senior Java Developer",
-      "duration": "September 2025 - present Â· 2 months",
-      "location": "Passo Fundo, Rio Grande do Sul, Brazil Â· Remote",
-      "description": "- Worked on a back-end project with Jakarta EE, Spring Boot, SOAP, REST.\n- Agile deliveries, automation of critical processes, and integration of corporate systems.\n- (Remote Work - Outsourcing - Caixa Seguradora).",
-      "technologies": [
-        "Jakarta EE"
-      ]
-    },
-    {
-      "company": "Cara Core InformÃ¡tica",
-  "position": "Consultant and Systems Developer",
-  "duration": "January 2016 - Present (9 years 8 months)",
-  "location": "Brazil",
-  "description": "Acting as Consultant and Systems Developer, responsible for the development, automation, and management of technological solutions for companies and offices. The portfolio systems (Delivery Control, POS, and Dental) are open source projects, open to collaboration and investment from enthusiasts and partners. Experience in testing, validation, VBA/Office 365 automation, infrastructure, security, remote support, and technology integration. Work performed as a legal entity (PJ/CNPJ), focused on innovation and collaborative community.",
-      "projects": [
-        {
-          "name": "Delivery Control",
-          "url": "https://www.caracore.com.br"
-        },
-        {
-          "name": "Cara-Core PDV",
-          "url": "https://www.caracore.com.br"
-        },
-        {
-          "name": "Cara-Core Dental",
-          "url": "https://www.caracore.com.br"
-        }
-      ]
-    },
-    {
-      "company": "Develcode Tecnologia em Sistemas",
-      "position": "Senior Java Developer",
-      "duration": "March 2023 - July 2025 (2 years 5 months)",
-      "location": "Campo Largo, ParanÃ¡, Brazil",
-      "description": "I was a development consultant for Java EE back-end applications and other technologies. (Remote Work - Outsourcing - RD SaÃºde).",
-      "technologies": [
-        "Java EE",
-        "EJB",
-        "JSF", 
-        "Hibernate",
-        "Entity",
-        "Spring Boot",
-        "Rest API",
-        "GraphQL",
-        "OpenAPI",
-        "Rabbit MQ",
-        "MongoDB",
-        "Docker",
-        "Oracle database",
-        "Git",
-        "Visual Studio Code",
-        "Eclipse IDE"
-      ]
-    },
-    {
-      "company": "RPerformance Group",
-      "position": "Senior Java Developer",
-      "duration": "September 2022 - March 2023 (7 months)",
-      "location": "Campo Largo, ParanÃ¡, Brazil",
-      "description": "I was a development consultant for Java EE back-end applications and other technologies. (Remote Work - Outsourcing - RD SaÃºde).",
-      "technologies": [
-        "Java EE",
-        "EJB",
-        "JSF",
-        "Hibernate", 
-        "Entity",
-        "Spring Boot",
-        "Rest API",
-        "Rabbit MQ",
-        "Docker",
-        "Oracle database",
-        "Git",
-        "Visual Studio Code",
-        "Eclipse IDE"
-      ]
-    },
-    {
-      "company": "EY",
-      "position": "Senior Java Software Engineer", 
-      "duration": "October 2021 - August 2022 (11 months)",
-      "location": "Campo Largo, ParanÃ¡, Brazil",
-      "description": "I was a development consultant for back-end, front-end, Java EE applications, and other technologies. (Remote Work - Outsourcing - Banco do Brasil Bradesco SaÃºde).",
-      "technologies": [
-        "Eclipse IDE",
-        "Maven",
-        "Git",
-        "SVN",
-        "Java EE",
-        "WebSphere server",
-        "Oracle database",
-        "agile methodology"
-      ]
-    },
-    {
-      "company": "Atos",
-      "position": "Senior Java Software Engineer",
-      "duration": "October 2020 - September 2021 (1 year)",
-      "location": "Campo Largo, ParanÃ¡, Brazil", 
-      "description": "I was a Java EE developer for application support on the client's intranet. (Remote Work - Outsourcing - Volkswagen Group). (*) For the first three months, I was outsourced by PSM Company.",
-      "technologies": [
-        "IntelliJ IDE",
-        "Maven",
-        "Git",
-        "Java SE",
-        "Tomcat server",
-        "Oracle database",
-        "agile methodology"
-      ]
-    },
-    {
-      "company": "Sigma Dataserv InformÃ¡tica S/A",
-      "position": "Java Programmer Analyst",
-      "duration": "May 2020 - September 2020 (5 months)",
-      "location": "Brasil¡",
-      "description": "Support and development in Java and Web technologies. (Remote Work Outsourcing - Funasa)",
-      "technologies": [
-        "SQL Oracle Developer",
-        "Oracle database",
-        "Eclipse IDE",
-        "GWT Framework", 
-        "Java EE",
-        "daily follow-up meetings"
-      ]
-    },
-    {
-      "company": "WASYS",
-      "position": "Java Programmer Analyst",
-      "duration": "December 2019 - April 2020 (5 months)",
-      "location": "Brazil",
-      "description": "Java system developer using Java EE, Spring Framework, and other standard libraries.",
-      "technologies": [
-        "IntelliJ IDE",
-        "Maven",
-        "Git",
-        "Java SE",
-        "MVC architecture",
-        "Tomcat server",
-        "PostgreSQL database",
-        "Jira",
-        "daily follow-up meetings"
-      ]
-    },
-    {
-      "company": "Wipro Limited",
-      "positions": [
-        {
-          "position": "Process Automation Specialist (RPA)",
-          "duration": "January 2019 - November 2019 (11 months)",
-          "location": "Brazil",
-          "description": "I was responsible for the analysis and development of office automation in Visual Basic for Application (VBA) code. Developed native code to automatically audit tax levies on invoices. Developed native code for issuing productivity reports for invoice entry within Microsoft Office.",
-          "technologies": [
-            "Power BI",
-            "Selenium WebDriver",
-            "Microsoft Office",
-            "VBA programming language"
-          ]
-        },
-        {
-          "position": "Java Developer Analyst",
-          "duration": "March 2018 - December 2018 (10 months)",
-          "location": "Brasil¡",
-          "description": "Developed web services (back-end) using Java EE and Spring technology for a global credit card operator, Mastercard.",
-          "technologies": [
-            "Agile/Scrum Framework",
-            "Eclipse IDE",
-            "Java EE",
-            "Spring Boot",
-            "Spring Data",
-            "BitBucket Repository (Git)",
-            "Oracle Database",
-            "JUnit",
-            "Mockito"
-          ]
-        }
-      ]
-    },
-    {
-      "company": "UniSistemas Tecnologia em FinanÃ§as",
-      "position": "Java Web Developer",
-      "duration": "May 2017 - January 2018 (9 months)",
-      "location": "Brasil¡",
-      "description": "Development, support, corrections, and implementation of new functionalities for web applications.",
-      "technologies": [
-        "Java EE",
-        "Spring",
-        "SOAP Web Service",
-        "REST",
-        "Jasper Reports",
-        "Bank Slips (JRimum)",
-        "AngularJS",
-        "Bootstrap",
-        "Oracle database",
-        "Firebird",
-        "Tomcat application server"
-      ]
-    }
-  ],
-  "education": [
-    {
-      "institution": "Federal University of ParanÃ¡",
-      "degree": "Chemical Engineer",
-      "field": "Engineering",
-      "period": "1991 - 2000"
-    },
-    {
-      "institution": "Federal Technological University of ParanÃ¡", 
-      "degree": "Specialist in Java Technology",
-      "field": "Systems Development",
-      "period": "2007 - 2008"
-    }
-  ]
+{
+    "personalInfo":  {
+                         "name":  "Cara Core Professional Avatar",
+                         "title":  "Enterprise Modernization and Operational Excellence Specialist | Java, Spring, APIs and Automation",
+                         "location":  "Brazil | Remote and on-site by demand",
+                         "contact":  {
+                                         "mobile":  "Not disclosed (LGPD)",
+                                         "email":  "suporte@caracore.com.br",
+                                         "linkedin":  "https://www.caracore.com.br",
+                                         "companyWebsite":  "https://www.caracore.com.br",
+                                         "portfolio":  "https://www.caracore.com.br"
+                                     }
+                     },
+    "summary":  "Business-focused professional avatar delivering measurable outcomes through legacy modernization, process automation, enterprise integration, and operational risk reduction. Experience in regulated environments with clean architecture, corporate APIs, technical governance, and continuous value delivery.",
+    "keySkills":  [
+                      "Enterprise system modernization",
+                      "Operational efficiency and automation",
+                      "Business-technology integration"
+                  ],
+    "languages":  [
+                      {
+                          "language":  "Italian",
+                          "proficiency":  "Native or Bilingual"
+                      },
+                      {
+                          "language":  "Portuguese",
+                          "proficiency":  "Native or Bilingual"
+                      },
+                      {
+                          "language":  "English",
+                          "proficiency":  "Full Professional Proficiency"
+                      }
+                  ],
+    "certifications":  [
+                           "Angular 14: Evolving an SPA application",
+                           "Free Fullstack Angular and Spring Workshop",
+                           "DevOps Cloud Week",
+                           "Hello Bot: Introduction To RPA",
+                           "RPA: Process Automation with NO/LOW Code tool"
+                       ],
+    "honorsAwards":  [
+                         "Java Software Support Engineer"
+                     ],
+    "licenses":  [
+                     "Sensitive personal data redacted for LGPD compliance"
+                 ],
+    "experience":  [
+                       {
+                           "company":  "Compass UOL",
+                           "position":  "Senior Java Developer",
+                           "duration":  "September 2025 - present · 2 months",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "- Worked on a back-end project with Jakarta EE, Spring Boot, SOAP, REST.\n- Agile deliveries, automation of critical processes, and integration of corporate systems.\n- (Remote Work - Outsourcing - Caixa Seguradora).",
+                           "technologies":  [
+                                                "Jakarta EE"
+                                            ]
+                       },
+                       {
+                           "company":  "Cara Core Informática",
+                           "position":  "Consultant and Systems Developer",
+                           "duration":  "January 2016 - Present (9 years 8 months)",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "Acting as Consultant and Systems Developer, responsible for the development, automation, and management of technological solutions for companies and offices. The portfolio systems (Delivery Control, POS, and Dental) are open source projects, open to collaboration and investment from enthusiasts and partners. Experience in testing, validation, VBA/Office 365 automation, infrastructure, security, remote support, and technology integration. Work performed as a legal entity (PJ/CNPJ), focused on innovation and collaborative community.",
+                           "projects":  [
+                                            {
+                                                "name":  "Delivery Control",
+                                                "url":  "https://www.caracore.com.br"
+                                            },
+                                            {
+                                                "name":  "Cara-Core PDV",
+                                                "url":  "https://www.caracore.com.br"
+                                            },
+                                            {
+                                                "name":  "Cara-Core Dental",
+                                                "url":  "https://www.caracore.com.br"
+                                            }
+                                        ]
+                       },
+                       {
+                           "company":  "Develcode Tecnologia em Sistemas",
+                           "position":  "Senior Java Developer",
+                           "duration":  "March 2023 - July 2025 (2 years 5 months)",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "I was a development consultant for Java EE back-end applications and other technologies. (Remote Work - Outsourcing - RD Saúde).",
+                           "technologies":  [
+                                                "Java EE",
+                                                "EJB",
+                                                "JSF",
+                                                "Hibernate",
+                                                "Entity",
+                                                "Spring Boot",
+                                                "Rest API",
+                                                "GraphQL",
+                                                "OpenAPI",
+                                                "Rabbit MQ",
+                                                "MongoDB",
+                                                "Docker",
+                                                "Oracle database",
+                                                "Git",
+                                                "Visual Studio Code",
+                                                "Eclipse IDE"
+                                            ]
+                       },
+                       {
+                           "company":  "RPerformance Group",
+                           "position":  "Senior Java Developer",
+                           "duration":  "September 2022 - March 2023 (7 months)",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "I was a development consultant for Java EE back-end applications and other technologies. (Remote Work - Outsourcing - RD Saúde).",
+                           "technologies":  [
+                                                "Java EE",
+                                                "EJB",
+                                                "JSF",
+                                                "Hibernate",
+                                                "Entity",
+                                                "Spring Boot",
+                                                "Rest API",
+                                                "Rabbit MQ",
+                                                "Docker",
+                                                "Oracle database",
+                                                "Git",
+                                                "Visual Studio Code",
+                                                "Eclipse IDE"
+                                            ]
+                       },
+                       {
+                           "company":  "EY",
+                           "position":  "Senior Java Software Engineer",
+                           "duration":  "October 2021 - August 2022 (11 months)",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "I was a development consultant for back-end, front-end, Java EE applications, and other technologies. (Remote Work - Outsourcing - Banco do Brasil Bradesco Saúde).",
+                           "technologies":  [
+                                                "Eclipse IDE",
+                                                "Maven",
+                                                "Git",
+                                                "SVN",
+                                                "Java EE",
+                                                "WebSphere server",
+                                                "Oracle database",
+                                                "agile methodology"
+                                            ]
+                       },
+                       {
+                           "company":  "Atos",
+                           "position":  "Senior Java Software Engineer",
+                           "duration":  "October 2020 - September 2021 (1 year)",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "I was a Java EE developer for application support on the client\u0027s intranet. (Remote Work - Outsourcing - Volkswagen Group). (*) For the first three months, I was outsourced by PSM Company.",
+                           "technologies":  [
+                                                "IntelliJ IDE",
+                                                "Maven",
+                                                "Git",
+                                                "Java SE",
+                                                "Tomcat server",
+                                                "Oracle database",
+                                                "agile methodology"
+                                            ]
+                       },
+                       {
+                           "company":  "Sigma Dataserv Informática S/A",
+                           "position":  "Java Programmer Analyst",
+                           "duration":  "May 2020 - September 2020 (5 months)",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "Support and development in Java and Web technologies. (Remote Work Outsourcing - Funasa)",
+                           "technologies":  [
+                                                "SQL Oracle Developer",
+                                                "Oracle database",
+                                                "Eclipse IDE",
+                                                "GWT Framework",
+                                                "Java EE",
+                                                "daily follow-up meetings"
+                                            ]
+                       },
+                       {
+                           "company":  "WASYS",
+                           "position":  "Java Programmer Analyst",
+                           "duration":  "December 2019 - April 2020 (5 months)",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "Java system developer using Java EE, Spring Framework, and other standard libraries.",
+                           "technologies":  [
+                                                "IntelliJ IDE",
+                                                "Maven",
+                                                "Git",
+                                                "Java SE",
+                                                "MVC architecture",
+                                                "Tomcat server",
+                                                "PostgreSQL database",
+                                                "Jira",
+                                                "daily follow-up meetings"
+                                            ]
+                       },
+                       {
+                           "company":  "Wipro Limited",
+                           "positions":  [
+                                             {
+                                                 "position":  "Process Automation Specialist (RPA)",
+                                                 "duration":  "January 2019 - November 2019 (11 months)",
+                                                 "location":  "Brazil | Remote and on-site by demand",
+                                                 "description":  "I was responsible for the analysis and development of office automation in Visual Basic for Application (VBA) code. Developed native code to automatically audit tax levies on invoices. Developed native code for issuing productivity reports for invoice entry within Microsoft Office.",
+                                                 "technologies":  [
+                                                                      "Power BI",
+                                                                      "Selenium WebDriver",
+                                                                      "Microsoft Office",
+                                                                      "VBA programming language"
+                                                                  ]
+                                             },
+                                             {
+                                                 "position":  "Java Developer Analyst",
+                                                 "duration":  "March 2018 - December 2018 (10 months)",
+                                                 "location":  "Brazil | Remote and on-site by demand",
+                                                 "description":  "Developed web services (back-end) using Java EE and Spring technology for a global credit card operator, Mastercard.",
+                                                 "technologies":  [
+                                                                      "Agile/Scrum Framework",
+                                                                      "Eclipse IDE",
+                                                                      "Java EE",
+                                                                      "Spring Boot",
+                                                                      "Spring Data",
+                                                                      "BitBucket Repository (Git)",
+                                                                      "Oracle Database",
+                                                                      "JUnit",
+                                                                      "Mockito"
+                                                                  ]
+                                             }
+                                         ]
+                       },
+                       {
+                           "company":  "UniSistemas Tecnologia em Finanças",
+                           "position":  "Java Web Developer",
+                           "duration":  "May 2017 - January 2018 (9 months)",
+                           "location":  "Brazil | Remote and on-site by demand",
+                           "description":  "Development, support, corrections, and implementation of new functionalities for web applications.",
+                           "technologies":  [
+                                                "Java EE",
+                                                "Spring",
+                                                "SOAP Web Service",
+                                                "REST",
+                                                "Jasper Reports",
+                                                "Bank Slips (JRimum)",
+                                                "AngularJS",
+                                                "Bootstrap",
+                                                "Oracle database",
+                                                "Firebird",
+                                                "Tomcat application server"
+                                            ]
+                       }
+                   ],
+    "education":  [
+                      {
+                          "institution":  "Federal University of Paraná",
+                          "degree":  "Chemical Engineer",
+                          "field":  "Engineering",
+                          "period":  "1991 - 2000"
+                      },
+                      {
+                          "institution":  "Federal Technological University of Paraná",
+                          "degree":  "Specialist in Java Technology",
+                          "field":  "Systems Development",
+                          "period":  "2007 - 2008"
+                      }
+                  ]
 }
-
-

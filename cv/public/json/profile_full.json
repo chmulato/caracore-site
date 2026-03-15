@@ -1,560 +1,563 @@
-﻿{
-  "informacoesPessoais": {
-    "nome": "Christian Mulato",
-    "titulo": "Desenvolvedor Java SÃªnior (Agentes de IA) | Especialista em Back-end | Jakarta, Spring Boot, REST APIs, Docker | Engenheiro QuÃ­mico",
-    "localizacao": "Campo Largo, ParanÃ¡, Brasil",
-    "contato": {
-      "celular": "+5541999097797",
-      "email": "suporte@caracore.com.br",
-      "linkedin": "https://www.caracore.com.br",
-      "siteDaEmpresa": "https://www.caracore.com.br",
-      "portfolio": "https://www.caracore.com.br"
-    }
-  },
-  "resumo": "Possuo formaÃ§Ã£o universitÃ¡ria em engenharia pela instituiÃ§Ã£o de engenharia, experiÃªncia profissional em informÃ¡tica e vivÃªncia no exterior do paÃ­s (contextos internacionais). EspecializaÃ§Ãµes em InformÃ¡tica e Tecnologia Java pela especializaÃ§Ã£o em tecnologia Java. Conhecimento prÃ¡tico em lÃ³gica de programaÃ§Ã£o orientada a objeto, estruturada, UML, banco de dados (MS-Access, VBA, SQL Server, Firebird, MySQL, Oracle, MongoDB e linguagem SQL) e automaÃ§Ã£o de processos (RPA). FluÃªncia no idioma italiano e inglÃªs pÃ³s intermediÃ¡rio (B2).",
-  "principaisCompetencias": [
-    "InstituiÃ§Ãµes financeiras",
-    "ServiÃ§os bancÃ¡rios",
-    "Trabalho em equipe"
-  ],
-  "idiomas": [
-    {
-      "idioma": "Italiano",
-      "proficiencia": "Native or Bilingual"
-    },
-    {
-      "idioma": "PortuguÃªs",
-      "proficiencia": "Native or Bilingual"
-    },
-    {
-      "idioma": "InglÃªs",
-      "proficiencia": "Full Professional"
-    }
-  ],
-  "certificacoes": [
-    "Angular 14: Evoluindo uma aplicaÃ§Ã£o SPA",
-    "Workshop Gratuito do Fullstack Angular e Spring",
-    "Devops Cloud Week",
-    "Hello Bot: Introduction To RPA",
-    "RPA: AutomatizaÃ§Ã£o de processos com ferramenta NO/LOW Code"
-  ],
-  "honrasEPremios": [
-    "Java Software Support Engineer"
-  ],
-  "patentes": [
-    "CNH Tipo B"
-  ],
-  "experiencia": [
-    {
-      "empresa": "Compass UOL",
-      "posicao": "Desenvolvedor Java SÃªnior",
-      "duracao": "setembro de 2025 - o momento Â· 2 meses",
-      "localizacao": "Passo Fundo, Rio Grande do Sul, Brasil Â· Remota",
-      "descricao": "- AtuaÃ§Ã£o em projeto back-end com Jakarta EE, Spring Boot, SOAP, REST.\n- Entregas Ã¡geis, automaÃ§Ã£o de processos crÃ­ticos e integraÃ§Ã£o de sistemas corporativos.\n- (Trabalho Remoto - Outsourcing - Caixa Seguradora).",
-      "tecnologias": [
-        "Jakarta EE"
-      ]
-    },
-    {
-      "empresa": "Cara Core InformÃ¡tica",
-  "posicao": "Consultor e Desenvolvedor de Sistemas",
-  "duracao": "janeiro de 2016 - Presente (9 anos 8 meses)",
-  "localizacao": "Brasil e RegiÃ£o, Brasil",
-  "descricao": "AtuaÃ§Ã£o como Consultor e Desenvolvedor de Sistemas, responsÃ¡vel pelo desenvolvimento, automaÃ§Ã£o e gestÃ£o de soluÃ§Ãµes tecnolÃ³gicas para empresas e escritÃ³rios. Os sistemas do portfÃ³lio (Delivery Control, PDV e Dental) sÃ£o projetos open source, abertos para colaboraÃ§Ã£o e investimento de entusiastas e parceiros. ExperiÃªncia em testes, validaÃ§Ãµes, automaÃ§Ã£o VBA/Office 365, infraestrutura, seguranÃ§a, suporte remoto e integraÃ§Ã£o de tecnologias. Trabalhos realizados como PJ/CNPJ, com foco em inovaÃ§Ã£o e comunidade colaborativa.",
-      "projetos": [
-        {
-          "nome": "Delivery Control",
-          "url": "https://www.caracore.com.br"
-        },
-        {
-          "nome": "Cara-Core PDV",
-          "url": "https://www.caracore.com.br"
-        },
-        {
-          "nome": "Cara-Core Dental",
-          "url": "https://www.caracore.com.br"
-        }
-      ]
-    },
-    {
-      "empresa": "Develcode Tecnologia em Sistemas",
-      "posicao": "Desenvolvedor Java SÃªnior",
-      "duracao": "marÃ§o de 2023 - julho de 2025 (2 anos 5 meses)",
-      "localizacao": "Campo Largo, ParanÃ¡, Brasil",
-      "descricao": "Fui consultor em desenvolvimento em aplicaÃ§Ãµes back-end Java EE e outras tecnologias. (Trabalho Remoto - Outsourcing - RD SaÃºde).",
-      "tecnologias": [
-        "Java EE",
-        "EJB",
-        "JSF",
-        "Hibernate",
-        "Entity",
-        "Spring Boot",
-        "Rest API",
-        "GraphQL",
-        "OpenAPI",
-        "Rabbit MQ",
-        "MongoDB",
-        "Docker",
-        "banco de dados Oracle",
-        "Git",
-        "Visual Studio Code",
-        "IDE Eclipse"
-      ]
-    },
-    {
-      "empresa": "RPerformance Group",
-      "posicao": "Desenvolvedor Java SÃªnior",
-      "duracao": "setembro de 2022 - marÃ§o de 2023 (7 meses)",
-      "localizacao": "Campo Largo, ParanÃ¡, Brasil",
-      "descricao": "Fui consultor em desenvolvimento em aplicaÃ§Ãµes back-end Java EE e outras tecnologias. (Trabalho Remoto - Outsourcing - RD SaÃºde).",
-      "tecnologias": [
-        "Java EE",
-        "EJB",
-        "JSF",
-        "Hibernate",
-        "Entity",
-        "Spring Boot",
-        "Rest API",
-        "Rabbit MQ",
-        "Docker",
-        "banco de dados Oracle",
-        "Git",
-        "Visual Studio Code",
-        "IDE Eclipse"
-      ]
-    },
-    {
-      "empresa": "EY",
-      "posicao": "Senior Java Software Engineer",
-      "duracao": "outubro de 2021 - agosto de 2022 (11 meses)",
-      "localizacao": "Campo Largo, ParanÃ¡, Brasil",
-      "descricao": "Fui consultor em desenvolvimento em aplicaÃ§Ãµes back-end, front-end, Java EE e outras tecnologias. (Trabalho Remoto - Outsourcing - Banco do Brasil Bradesco SaÃºde).",
-      "tecnologias": [
-        "IDE Eclipse",
-        "Maven",
-        "Git",
-        "SVN",
-        "Java EE",
-        "servidor WebSphere",
-        "banco de dados Oracle",
-        "metodologia Ã¡gil"
-      ]
-    },
-    {
-      "empresa": "Atos",
-      "posicao": "Senior Java Software Engineer",
-      "duracao": "outubro de 2020 - setembro de 2021 (1 ano)",
-      "localizacao": "Campo Largo, ParanÃ¡, Brasil",
-      "descricao": "Fui desenvolvedor Java EE para suporte de aplicaÃ§Ãµes na intranet do cliente. (Trabalho Remoto - Outsourcing - Grupo Volkswagen). (*) Nos primeiros trÃªs meses fui terceirizado pela PSM Company.",
-      "tecnologias": [
-        "IDE IntelliJ",
-        "Maven",
-        "Git",
-        "Java SE",
-        "servidor Tomcat",
-        "banco de dados Oracle",
-        "metodologia Ã¡gil"
-      ]
-    },
-    {
-      "empresa": "Sigma Dataserv InformÃ¡tica S/A",
-      "posicao": "Analista Programador Java",
-      "duracao": "maio de 2020 - setembro de 2020 (5 meses)",
-      "localizacao": "Brasil¡",
-      "descricao": "Suporte e desenvolvimento em tecnologias Java e Web. (Trabalho Remoto Outsourcing - Funasa)",
-      "tecnologias": [
-        "SQL Oracle Developer",
-        "banco de dados Oracle",
-        "Eclipse IDE",
-        "GWT Framework",
-        "Java EE",
-        "reuniÃµes diÃ¡rias de acompanhamento"
-      ]
-    },
-    {
-      "empresa": "WASYS",
-      "posicao": "Analista Programador Java",
-      "duracao": "dezembro de 2019 - abril de 2020 (5 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Desenvolvedor de sistemas Java utilizando Java EE, Framework Spring e outras bibliotecas padrÃµes.",
-      "tecnologias": [
-        "IDE IntelliJ",
-        "Maven",
-        "Git",
-        "Java SE",
-        "arquitetura MVC",
-        "servidor Tomcat",
-        "banco de dados PostgreSQL",
-        "Jira",
-        "reuniÃµes diÃ¡rias de acompanhamento"
-      ]
-    },
-    {
-      "empresa": "Wipro Limited",
-      "posicoes": [
-        {
-          "posicao": "Especialista em automaÃ§Ã£o de processos (RPA)",
-          "duracao": "janeiro de 2019 - novembro de 2019 (11 meses)",
-          "localizacao": "Brasil e RegiÃ£o, Brasil",
-          "descricao": "Fui responsÃ¡vel pela anÃ¡lise e desenvolvimento em automaÃ§Ã£o de escritÃ³rio em cÃ³digo Visual Basic for Application (VBA). Desenvolvi cÃ³digo nativo para auditar automaticamente tributaÃ§Ãµes fiscais de faturas. Desenvolvi em cÃ³digo nativo a emissÃ£o de relatÃ³rios de produtividade de lanÃ§amento de notas fiscais dentro do Microsoft Office.",
-          "tecnologias": [
-            "Power BI",
-            "Selenium WebDriver",
-            "Microsoft Office",
-            "linguagem de programaÃ§Ã£o VBA"
-          ]
-        },
-        {
-          "posicao": "Analista Desenvolvedor Java",
-          "duracao": "marÃ§o de 2018 - dezembro de 2018 (10 meses)",
-          "localizacao": "Brasil¡",
-          "descricao": "Desenvolvi serviÃ§os (back-end) web utilizando tecnologia JavaEE e Spring para uma operadora mundial de cartÃ£o de crÃ©dito, empresa Mastercard.",
-          "tecnologias": [
-            "Framework Agile/Scrum",
-            "IDE Eclipse",
-            "Java EE",
-            "Spring Boot",
-            "Spring Data",
-            "BitBucket Repository (Git)",
-            "Banco de Dados Oracle",
-            "JUnit",
-            "Mockito"
-          ]
-        }
-      ]
-    },
-    {
-      "empresa": "UniSistemas Tecnologia em FinanÃ§as",
-      "posicao": "Desenvolvedor Java Web",
-      "duracao": "maio de 2017 - janeiro de 2018 (9 meses)",
-      "localizacao": "Brasil¡",
-      "descricao": "Desenvolvimento, suporte, correÃ§Ãµes e implantaÃ§Ã£o de novas funcionalidades de aplicaÃ§Ãµes web.",
-      "tecnologias": [
-        "Java EE",
-        "Spring",
-        "Web Service SOAP",
-        "REST",
-        "Jasper Reports",
-        "Boletos BancÃ¡rios (JRimum)",
-        "AngularJS",
-        "Bootstrap",
-        "Banco de dados Oracle",
-        "Firebird",
-        "servidor de aplicaÃ§Ã£o Tomcat"
-      ]
-    },
-    {
-      "empresa": "GFT Group",
-      "posicao": "Desenvolvedor Java SÃªnior",
-      "duracao": "setembro de 2016 - abril de 2017 (8 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Tecnologias: Java EE e serviÃ§os legados. ExperiÃªncia internacional no cliente Banco UBI, a BÃ©rgamo, ItÃ¡lia (3 meses). Treinamento e atualizaÃ§Ã£o nas tecnologias: Html5, CSS3, Javascript, Bootstrap, Spring MVC e Web Services RESTful com Spring Framework.",
-      "tecnologias": [
-        "Java EE",
-        "serviÃ§os legados",
-        "Html5",
-        "CSS3",
-        "Javascript",
-        "Bootstrap",
-        "Spring MVC",
-        "Web Services RESTful",
-        "Spring Framework"
-      ]
-    },
-    {
-      "empresa": "Visionnaire",
-      "posicao": "Analista de Sistemas Java (PJ)",
-      "duracao": "dezembro de 2015 - agosto de 2016 (9 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Desenvolvimento, manutenÃ§Ã£o e suporte em aplicaÃ§Ãµes Java EE.",
-      "tecnologias": [
-        "Eclipse",
-        "Maven",
-        "Bitbucket (Git/Jira)",
-        "Java EE",
-        "Servlet/JSP",
-        "JPA",
-        "JSF",
-        "Javascript",
-        "Oracle",
-        "MySQL",
-        "JBoss (WildFly)",
-        "Tomcat 7"
-      ]
-    },
-    {
-      "empresa": "i-Serv Consultoria Empresarial Ltda.",
-      "posicao": "Analista de Sistemas (Java SÃªnior)",
-      "duracao": "agosto de 2015 - novembro de 2015 (4 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Desenvolvimento de aplicaÃ§Ãµes e serviÃ§os para Internet utilizando tecnologias inovadoras.",
-      "tecnologias": [
-        "Eclipse",
-        "Maven",
-        "GitHub",
-        "Spring",
-        "AngularJS",
-        "Web Service RESTful",
-        "JSON",
-        "JPA",
-        "Hibernate",
-        "MySQL",
-        "Amazon Web Services (AWS)"
-      ]
-    },
-    {
-      "empresa": "Softpartech Tecnologia",
-      "posicao": "Analista de Sistemas (Java Pleno)",
-      "duracao": "abril de 2015 - julho de 2015 (4 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Trabalhei no desenvolvimento, manutenÃ§Ã£o e suporte em aplicaÃ§Ãµes modulares em Java FX e Web Services. Desenvolvimento, manutenÃ§Ã£o e suporte em procedures e SQL Standard.",
-      "tecnologias": [
-        "Java FX",
-        "Web Services",
-        "procedures",
-        "SQL Standard",
-        "SQL Server",
-        "PostgreSQL",
-        "Sybase"
-      ]
-    },
-    {
-      "empresa": "HSBC Global Technology Brazil",
-      "posicao": "Analista de Software JÃºnior",
-      "duracao": "outubro de 2012 - marÃ§o de 2015 (2 anos 6 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Trabalhei junto a equipe de serviÃ§os do Portal de Seguros e PrevidÃªncia. Os serviÃ§os do portal sÃ£o orientados a tarefas (BPM) e baseados em tecnologias, como: XML-RPC, Web Services, JMS, Spring Templates, arquitetura em camadas (BO, Service, DAO, VO/DTO, Factory) e banco de dados Sybase. Desenvolvi testes unitÃ¡rios com JUnit e Mockito. Participei do projeto do portal durante o desenvolvimento web. Usei tecnologias baseadas em Spring e JSF. Participei tambÃ©m na execuÃ§Ã£o de testes da aplicaÃ§Ã£o, das etapas de SIT e UAT.",
-      "tecnologias": [
-        "XML-RPC",
-        "Web Services",
-        "JMS",
-        "Spring Templates",
-        "arquitetura em camadas",
-        "BO",
-        "Service",
-        "DAO",
-        "VO/DTO",
-        "Factory",
-        "Sybase",
-        "JUnit",
-        "Mockito",
-        "Spring",
-        "JSF",
-        "HP Quality Center",
-        "IBM Rational Application Developer (RAD)",
-        "IBM WebSphere Application Server (WAS)",
-        "IBM WebSphere Portal (WSP)"
-      ]
-    },
-    {
-      "empresa": "WB4B NegÃ³cios Online",
-      "posicao": "Programador Web",
-      "duracao": "junho de 2012 - setembro de 2012 (4 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Realizei manutenÃ§Ã£o e suporte de aplicaÃ§Ã£o Web para auditoria, faturamento e guias mÃ©dicas no padrÃ£o TISS da AgÃªncia Nacional de SaÃºde.",
-      "tecnologias": [
-        "PHP/MySQL",
-        "JavaScript",
-        "AJAX",
-        "plataforma Linux",
-        "repositÃ³rio GitHub (GIT)"
-      ]
-    },
-    {
-      "empresa": "UniSistemas Tecnologia em FinanÃ§as",
-      "posicao": "Programador Pleno",
-      "duracao": "fevereiro de 2011 - maio de 2012 (1 ano 4 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Programei sistemas financeiros p/ web utilizando tecnologias Java J2EE. Foram: SimecNET2 e SaqueNET, os quais utilizavam banco de dados, Oracle e Firebird (Open Source), respectivamente. Usei frameworks como: JSF, Richfaces, Primefaces, Spring, Hibernate, relatÃ³rios em JasperReports (iReport) e boletos bancÃ¡rios (JRimum). Servidor de aplicaÃ§Ã£o Web Tomcat, Web Services (SOAP) e arquitetura de sistemas em camadas.",
-      "tecnologias": [
-        "Java J2EE",
-        "Oracle",
-        "Firebird",
-        "JSF",
-        "Richfaces",
-        "Primefaces",
-        "Spring",
-        "Hibernate",
-        "JasperReports (iReport)",
-        "boletos bancÃ¡rios (JRimum)",
-        "Tomcat",
-        "Web Services (SOAP)",
-        "arquitetura de sistemas em camadas"
-      ]
-    },
-    {
-      "empresa": "LH Tecnologia",
-      "posicao": "Programador Java",
-      "duracao": "marÃ§o de 2010 - janeiro de 2011 (11 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Programei aplicaÃ§Ãµes Web (HTML, Javascript, CSS). Foram elas: LH Report e LH Gravador. Utilizei tecnologias Java e padrÃµes de projetos, como: JSP/Servlet, MVC, JSF, Facelets, EJB3, Hibernate, Facade, VO, query SQL Oracle entre outros. Utilizei tambÃ©m framework Spring e relatÃ³rios em JasperReports (iReport). Servidores de aplicaÃ§Ã£o: JBoss e Tomcat. Ressalto: as aplicaÃ§Ãµes foram projetadas em equipe seguindo requisitos e especificaÃ§Ãµes do cliente.",
-      "tecnologias": [
-        "HTML",
-        "Javascript",
-        "CSS",
-        "JSP/Servlet",
-        "MVC",
-        "JSF",
-        "Facelets",
-        "EJB3",
-        "Hibernate",
-        "Facade",
-        "VO",
-        "SQL Oracle",
-        "Spring",
-        "JasperReports (iReport)",
-        "JBoss",
-        "Tomcat"
-      ]
-    },
-    {
-      "empresa": "WASYS",
-      "posicao": "Analista Programador Java (PJ)",
-      "duracao": "novembro de 2009 - fevereiro de 2010 (4 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Programei aplicaÃ§Ã£o Web. Tecnologias e padrÃµes utilizados: Click Framework, Hibernate, Repository, Service Layer, VO, query SQL Oracle entre outros. Participei de projeto desenvolvido p/ empresa Renault ConcessionÃ¡ria do Brasil SA.",
-      "tecnologias": [
-        "Click Framework",
-        "Hibernate",
-        "Repository",
-        "Service Layer",
-        "VO",
-        "query SQL Oracle"
-      ]
-    },
-    {
-      "empresa": "BRQ",
-      "posicao": "Programador Java",
-      "duracao": "abril de 2009 - junho de 2009 (3 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Programei aplicaÃ§Ãµes Web. Tecnologias e padrÃµes utilizados: JSF, EJB, Business Delegate, FaÃ§ades, Web Services, Factory, DAO, TO, JavaScript, SQL Oracle, entre outras. Participei de projeto desenvolvido p/ empresa BR-PetrobrÃ¡s Distribuidora SA.",
-      "tecnologias": [
-        "JSF",
-        "EJB",
-        "Business Delegate",
-        "FaÃ§ades",
-        "Web Services",
-        "Factory",
-        "DAO",
-        "TO",
-        "JavaScript",
-        "SQL Oracle"
-      ]
-    },
-    {
-      "empresa": "CINQ Technologies",
-      "posicao": "Programador Java",
-      "duracao": "marÃ§o de 2008 - fevereiro de 2009 (1 ano)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Programei aplicaÃ§Ãµes Web. Tecnologias e padrÃµes utilizados: Servelt/JSP, EJB, Web Services, DAO, BO, Spring, SQL, JavaScript entre outras. Participei de vÃ¡rios projetos desenvolvidos p/ empresas HSBC Bank Brasil SA e GVT TelecomunicaÃ§Ãµes. Elaborei testes unitÃ¡rios (UT), de sistemas (SIT), de cÃ³digos (JUnit) e casos de testes.",
-      "tecnologias": [
-        "Servlet/JSP",
-        "EJB",
-        "Web Services",
-        "DAO",
-        "BO",
-        "Spring",
-        "SQL",
-        "JavaScript",
-        "JUnit",
-        "testes unitÃ¡rios (UT)",
-        "testes de sistemas (SIT)"
-      ]
-    },
-    {
-      "empresa": "eWave",
-      "posicao": "EstagiÃ¡rio (Programador)",
-      "duracao": "junho de 2007 - fevereiro de 2008 (9 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Programei scripts em VBA e Visual Basic para gerar relatÃ³rios UML do Enterprise Architect. Projeto finalizado na empresa GVT TelecomunicaÃ§Ãµes. Iniciei estudo da especificaÃ§Ã£o J2EE, para programaÃ§Ã£o de aplicaÃ§Ã£o Web (MVC, DAO, Servlet/JSP, JavaBeans e JSF).",
-      "tecnologias": [
-        "VBA",
-        "Visual Basic",
-        "Enterprise Architect",
-        "J2EE",
-        "MVC",
-        "DAO",
-        "Servlet/JSP",
-        "JavaBeans",
-        "JSF"
-      ]
-    },
-    {
-      "empresa": "Agenzia Brasitalia - Di Imir Mulato",
-      "posicao": "Auxiliar de Pesquisas GenealÃ³gicas",
-      "duracao": "julho de 2005 - setembro de 2006 (1 ano 3 meses)",
-      "localizacao": "Ceggia, Veneza, ItÃ¡lia",
-      "descricao": "Auxiliar de pesquisas genealÃ³gicas, controle informatizado de buscas, visitas agendadas em arquivos de estados, comunes e parÃ³quias. Desenvolvi um sistema para controle de buscas com o cadastro informatizado dos 8200 comunes da ItÃ¡lia. Ferramenta utilizada: Microsoft Access 2003 com VBA. Desenvolvi o primeiro site da agÃªncia de pesquisa. Ferramenta utilizada: Microsoft Front Page 2003.",
-      "tecnologias": [
-        "Microsoft Access 2003",
-        "VBA",
-        "Microsoft Front Page 2003"
-      ]
-    },
-    {
-      "empresa": "T.D Packaging",
-      "posicao": "Production Operator",
-      "duracao": "novembro de 2004 - junho de 2005 (8 meses)",
-      "localizacao": "Swindon, Wiltshire, Reino Unido",
-      "descricao": "Auxiliar e empacotador de produÃ§Ã£o (picks and packs).",
-      "tecnologias": []
-    },
-    {
-      "empresa": "OSMAP S.R.L.",
-      "posicao": "Carrelista",
-      "duracao": "setembro de 2001 - outubro de 2004 (3 anos 2 meses)",
-      "localizacao": "Santo Stino di Livenza, Veneza, ItÃ¡lia",
-      "descricao": "Operador de empilhadeira, auxiliar de almoxarifado, controle de entrada e saÃ­da, carga e descarga.",
-      "tecnologias": []
-    },
-    {
-      "empresa": "Clinipam - ClÃ­nica Paranaense de AssistÃªncia MÃ©dica",
-      "posicao": "TÃ©cnico em InformÃ¡tica",
-      "duracao": "marÃ§o de 1996 - julho de 2001 (5 anos 5 meses)",
-      "localizacao": "Brasil e RegiÃ£o, Brasil",
-      "descricao": "Controlei exames periÃ³dicos dos associados via software de gestÃ£o. Utilizei diariamente software grÃ¡fico Corel Draw p/ desenhos de mapas de riscos. Treinei e implantei software administrativo p/ medicina ocupacional junto ao setor. Digitei relatÃ³rios tÃ©cnicos (PPRA e PCMSO). Elaborei balanÃ§os mensais com levantamento de dados em linguagem SQL.",
-      "tecnologias": [
-        "software de gestÃ£o",
-        "Corel Draw",
-        "software administrativo",
-        "medicina ocupacional",
-        "PPRA",
-        "PCMSO",
-        "linguagem SQL"
-      ]
-    }
-  ],
-  "formacaoAcademica": [
-    {
-      "instituicao": "Universidade TecnolÃ³gica Federal do ParanÃ¡",
-      "titulo": "Especialista em Tecnologia Java",
-      "campo": "Desenvolvimento de Sistemas",
-      "periodo": "2007 - 2008"
-    },
-    {
-      "instituicao": "Festo Italiana - instituiÃ§Ã£o de engenharia - Centro de Cultura Italiana",
-      "titulo": "Operador em InformÃ¡tica, Especialista CAD/CAE",
-      "campo": "Setor Automotivo",
-      "periodo": "2000 - 2001"
-    },
-    {
-      "instituicao": "Universidade Federal do ParanÃ¡",
-      "titulo": "Engenheiro QuÃ­mico",
-      "campo": "Engenharia",
-      "periodo": "1991 - 2000"
-    },
-    {
-      "instituicao": "ColÃ©gio Positivo - Brasil - ParanÃ¡",
-      "titulo": "TerceirÃ£o e PrÃ© Vestibular",
-      "campo": "PropedÃªutico",
-      "periodo": "1988 - 1989"
-    },
-    {
-      "instituicao": "ColÃ©gio Nossa Senhora Auxiliadora - Cascavel - ParanÃ¡",
-      "titulo": "Ensino MÃ©dio",
-      "campo": "PropedÃªutico",
-      "periodo": "1986 - 1987"
-    }
-  ]
-}
+{
+    "informacoesPessoais":  {
+                                "nome":  "Avatar Profissional Cara Core",
+                                "titulo":  "Especialista em Modernização de Sistemas e Eficiência Operacional | Java, Spring, APIs e Automação",
+                                "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                                "contato":  {
+                                                "celular":  "Não divulgado (LGPD)",
+                                                "email":  "suporte@caracore.com.br",
+                                                "linkedin":  "https://www.caracore.com.br",
+                                                "siteDaEmpresa":  "https://www.caracore.com.br",
+                                                "portfolio":  "https://www.caracore.com.br"
+                                            }
+                            },
+    "resumo":  "Avatar profissional orientado a resultados de negócio, com foco em modernização de legado, automação de processos críticos, integração de sistemas e redução de risco operacional. Atuação em ambientes regulados, com arquitetura limpa, APIs corporativas, governança técnica e entrega contínua de valor.",
+    "principaisCompetencias":  [
+                                   "Modernização de sistemas corporativos",
+                                   "Eficiência operacional e automação",
+                                   "Integração entre áreas de negócio e tecnologia"
+                               ],
+    "idiomas":  [
+                    {
+                        "idioma":  "Italiano",
+                        "proficiencia":  "Native or Bilingual"
+                    },
+                    {
+                        "idioma":  "Português",
+                        "proficiencia":  "Native or Bilingual"
+                    },
+                    {
+                        "idioma":  "Inglês",
+                        "proficiencia":  "Full Professional"
+                    }
+                ],
+    "certificacoes":  [
+                          "Angular 14: Evoluindo uma aplicação SPA",
+                          "Workshop Gratuito do Fullstack Angular e Spring",
+                          "Devops Cloud Week",
+                          "Hello Bot: Introduction To RPA",
+                          "RPA: Automatização de processos com ferramenta NO/LOW Code"
+                      ],
+    "honrasEPremios":  [
+                           "Java Software Support Engineer"
+                       ],
+    "patentes":  [
+                     "Dados pessoais sensíveis suprimidos para conformidade LGPD"
+                 ],
+    "experiencia":  [
+                        {
+                            "empresa":  "Compass UOL",
+                            "posicao":  "Desenvolvedor Java Sênior",
+                            "duracao":  "setembro de 2025 - o momento · 2 meses",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "- Atuação em projeto back-end com Jakarta EE, Spring Boot, SOAP, REST.\n- Entregas ágeis, automação de processos críticos e integração de sistemas corporativos.\n- (Trabalho Remoto - Outsourcing - Caixa Seguradora).",
+                            "tecnologias":  [
+                                                "Jakarta EE"
+                                            ]
+                        },
+                        {
+                            "empresa":  "Cara Core Informática",
+                            "posicao":  "Consultor e Desenvolvedor de Sistemas",
+                            "duracao":  "janeiro de 2016 - Presente (9 anos 8 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Atuação como Consultor e Desenvolvedor de Sistemas, responsável pelo desenvolvimento, automação e gestão de soluções tecnológicas para empresas e escritórios. Os sistemas do portfólio (Delivery Control, PDV e Dental) são projetos open source, abertos para colaboração e investimento de entusiastas e parceiros. Experiência em testes, validações, automação VBA/Office 365, infraestrutura, segurança, suporte remoto e integração de tecnologias. Trabalhos realizados como PJ/CNPJ, com foco em inovação e comunidade colaborativa.",
+                            "projetos":  [
+                                             {
+                                                 "nome":  "Delivery Control",
+                                                 "url":  "https://www.caracore.com.br"
+                                             },
+                                             {
+                                                 "nome":  "Cara-Core PDV",
+                                                 "url":  "https://www.caracore.com.br"
+                                             },
+                                             {
+                                                 "nome":  "Cara-Core Dental",
+                                                 "url":  "https://www.caracore.com.br"
+                                             }
+                                         ]
+                        },
+                        {
+                            "empresa":  "Develcode Tecnologia em Sistemas",
+                            "posicao":  "Desenvolvedor Java Sênior",
+                            "duracao":  "março de 2023 - julho de 2025 (2 anos 5 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Fui consultor em desenvolvimento em aplicações back-end Java EE e outras tecnologias. (Trabalho Remoto - Outsourcing - RD Saúde).",
+                            "tecnologias":  [
+                                                "Java EE",
+                                                "EJB",
+                                                "JSF",
+                                                "Hibernate",
+                                                "Entity",
+                                                "Spring Boot",
+                                                "Rest API",
+                                                "GraphQL",
+                                                "OpenAPI",
+                                                "Rabbit MQ",
+                                                "MongoDB",
+                                                "Docker",
+                                                "banco de dados Oracle",
+                                                "Git",
+                                                "Visual Studio Code",
+                                                "IDE Eclipse"
+                                            ]
+                        },
+                        {
+                            "empresa":  "RPerformance Group",
+                            "posicao":  "Desenvolvedor Java Sênior",
+                            "duracao":  "setembro de 2022 - março de 2023 (7 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Fui consultor em desenvolvimento em aplicações back-end Java EE e outras tecnologias. (Trabalho Remoto - Outsourcing - RD Saúde).",
+                            "tecnologias":  [
+                                                "Java EE",
+                                                "EJB",
+                                                "JSF",
+                                                "Hibernate",
+                                                "Entity",
+                                                "Spring Boot",
+                                                "Rest API",
+                                                "Rabbit MQ",
+                                                "Docker",
+                                                "banco de dados Oracle",
+                                                "Git",
+                                                "Visual Studio Code",
+                                                "IDE Eclipse"
+                                            ]
+                        },
+                        {
+                            "empresa":  "EY",
+                            "posicao":  "Senior Java Software Engineer",
+                            "duracao":  "outubro de 2021 - agosto de 2022 (11 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Fui consultor em desenvolvimento em aplicações back-end, front-end, Java EE e outras tecnologias. (Trabalho Remoto - Outsourcing - Banco do Brasil Bradesco Saúde).",
+                            "tecnologias":  [
+                                                "IDE Eclipse",
+                                                "Maven",
+                                                "Git",
+                                                "SVN",
+                                                "Java EE",
+                                                "servidor WebSphere",
+                                                "banco de dados Oracle",
+                                                "metodologia ágil"
+                                            ]
+                        },
+                        {
+                            "empresa":  "Atos",
+                            "posicao":  "Senior Java Software Engineer",
+                            "duracao":  "outubro de 2020 - setembro de 2021 (1 ano)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Fui desenvolvedor Java EE para suporte de aplicações na intranet do cliente. (Trabalho Remoto - Outsourcing - Grupo Volkswagen). (*) Nos primeiros três meses fui terceirizado pela PSM Company.",
+                            "tecnologias":  [
+                                                "IDE IntelliJ",
+                                                "Maven",
+                                                "Git",
+                                                "Java SE",
+                                                "servidor Tomcat",
+                                                "banco de dados Oracle",
+                                                "metodologia ágil"
+                                            ]
+                        },
+                        {
+                            "empresa":  "Sigma Dataserv Informática S/A",
+                            "posicao":  "Analista Programador Java",
+                            "duracao":  "maio de 2020 - setembro de 2020 (5 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Suporte e desenvolvimento em tecnologias Java e Web. (Trabalho Remoto Outsourcing - Funasa)",
+                            "tecnologias":  [
+                                                "SQL Oracle Developer",
+                                                "banco de dados Oracle",
+                                                "Eclipse IDE",
+                                                "GWT Framework",
+                                                "Java EE",
+                                                "reuniões diárias de acompanhamento"
+                                            ]
+                        },
+                        {
+                            "empresa":  "WASYS",
+                            "posicao":  "Analista Programador Java",
+                            "duracao":  "dezembro de 2019 - abril de 2020 (5 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Desenvolvedor de sistemas Java utilizando Java EE, Framework Spring e outras bibliotecas padrões.",
+                            "tecnologias":  [
+                                                "IDE IntelliJ",
+                                                "Maven",
+                                                "Git",
+                                                "Java SE",
+                                                "arquitetura MVC",
+                                                "servidor Tomcat",
+                                                "banco de dados PostgreSQL",
+                                                "Jira",
+                                                "reuniões diárias de acompanhamento"
+                                            ]
+                        },
+                        {
+                            "empresa":  "Wipro Limited",
+                            "posicoes":  [
+                                             {
+                                                 "posicao":  "Especialista em automação de processos (RPA)",
+                                                 "duracao":  "janeiro de 2019 - novembro de 2019 (11 meses)",
+                                                 "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                                                 "descricao":  "Fui responsável pela análise e desenvolvimento em automação de escritório em código Visual Basic for Application (VBA). Desenvolvi código nativo para auditar automaticamente tributações fiscais de faturas. Desenvolvi em código nativo a emissão de relatórios de produtividade de lançamento de notas fiscais dentro do Microsoft Office.",
+                                                 "tecnologias":  [
+                                                                     "Power BI",
+                                                                     "Selenium WebDriver",
+                                                                     "Microsoft Office",
+                                                                     "linguagem de programação VBA"
+                                                                 ]
+                                             },
+                                             {
+                                                 "posicao":  "Analista Desenvolvedor Java",
+                                                 "duracao":  "março de 2018 - dezembro de 2018 (10 meses)",
+                                                 "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                                                 "descricao":  "Desenvolvi serviços (back-end) web utilizando tecnologia JavaEE e Spring para uma operadora mundial de cartão de crédito, empresa Mastercard.",
+                                                 "tecnologias":  [
+                                                                     "Framework Agile/Scrum",
+                                                                     "IDE Eclipse",
+                                                                     "Java EE",
+                                                                     "Spring Boot",
+                                                                     "Spring Data",
+                                                                     "BitBucket Repository (Git)",
+                                                                     "Banco de Dados Oracle",
+                                                                     "JUnit",
+                                                                     "Mockito"
+                                                                 ]
+                                             }
+                                         ]
+                        },
+                        {
+                            "empresa":  "UniSistemas Tecnologia em Finanças",
+                            "posicao":  "Desenvolvedor Java Web",
+                            "duracao":  "maio de 2017 - janeiro de 2018 (9 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Desenvolvimento, suporte, correções e implantação de novas funcionalidades de aplicações web.",
+                            "tecnologias":  [
+                                                "Java EE",
+                                                "Spring",
+                                                "Web Service SOAP",
+                                                "REST",
+                                                "Jasper Reports",
+                                                "Boletos Bancários (JRimum)",
+                                                "AngularJS",
+                                                "Bootstrap",
+                                                "Banco de dados Oracle",
+                                                "Firebird",
+                                                "servidor de aplicação Tomcat"
+                                            ]
+                        },
+                        {
+                            "empresa":  "GFT Group",
+                            "posicao":  "Desenvolvedor Java Sênior",
+                            "duracao":  "setembro de 2016 - abril de 2017 (8 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Tecnologias: Java EE e serviços legados. Experiência internacional no cliente Banco UBI, a Bérgamo, Itália (3 meses). Treinamento e atualização nas tecnologias: Html5, CSS3, Javascript, Bootstrap, Spring MVC e Web Services RESTful com Spring Framework.",
+                            "tecnologias":  [
+                                                "Java EE",
+                                                "serviços legados",
+                                                "Html5",
+                                                "CSS3",
+                                                "Javascript",
+                                                "Bootstrap",
+                                                "Spring MVC",
+                                                "Web Services RESTful",
+                                                "Spring Framework"
+                                            ]
+                        },
+                        {
+                            "empresa":  "Visionnaire",
+                            "posicao":  "Analista de Sistemas Java (PJ)",
+                            "duracao":  "dezembro de 2015 - agosto de 2016 (9 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Desenvolvimento, manutenção e suporte em aplicações Java EE.",
+                            "tecnologias":  [
+                                                "Eclipse",
+                                                "Maven",
+                                                "Bitbucket (Git/Jira)",
+                                                "Java EE",
+                                                "Servlet/JSP",
+                                                "JPA",
+                                                "JSF",
+                                                "Javascript",
+                                                "Oracle",
+                                                "MySQL",
+                                                "JBoss (WildFly)",
+                                                "Tomcat 7"
+                                            ]
+                        },
+                        {
+                            "empresa":  "i-Serv Consultoria Empresarial Ltda.",
+                            "posicao":  "Analista de Sistemas (Java Sênior)",
+                            "duracao":  "agosto de 2015 - novembro de 2015 (4 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Desenvolvimento de aplicações e serviços para Internet utilizando tecnologias inovadoras.",
+                            "tecnologias":  [
+                                                "Eclipse",
+                                                "Maven",
+                                                "GitHub",
+                                                "Spring",
+                                                "AngularJS",
+                                                "Web Service RESTful",
+                                                "JSON",
+                                                "JPA",
+                                                "Hibernate",
+                                                "MySQL",
+                                                "Amazon Web Services (AWS)"
+                                            ]
+                        },
+                        {
+                            "empresa":  "Softpartech Tecnologia",
+                            "posicao":  "Analista de Sistemas (Java Pleno)",
+                            "duracao":  "abril de 2015 - julho de 2015 (4 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Trabalhei no desenvolvimento, manutenção e suporte em aplicações modulares em Java FX e Web Services. Desenvolvimento, manutenção e suporte em procedures e SQL Standard.",
+                            "tecnologias":  [
+                                                "Java FX",
+                                                "Web Services",
+                                                "procedures",
+                                                "SQL Standard",
+                                                "SQL Server",
+                                                "PostgreSQL",
+                                                "Sybase"
+                                            ]
+                        },
+                        {
+                            "empresa":  "HSBC Global Technology Brazil",
+                            "posicao":  "Analista de Software Júnior",
+                            "duracao":  "outubro de 2012 - março de 2015 (2 anos 6 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Trabalhei junto a equipe de serviços do Portal de Seguros e Previdência. Os serviços do portal são orientados a tarefas (BPM) e baseados em tecnologias, como: XML-RPC, Web Services, JMS, Spring Templates, arquitetura em camadas (BO, Service, DAO, VO/DTO, Factory) e banco de dados Sybase. Desenvolvi testes unitários com JUnit e Mockito. Participei do projeto do portal durante o desenvolvimento web. Usei tecnologias baseadas em Spring e JSF. Participei também na execução de testes da aplicação, das etapas de SIT e UAT.",
+                            "tecnologias":  [
+                                                "XML-RPC",
+                                                "Web Services",
+                                                "JMS",
+                                                "Spring Templates",
+                                                "arquitetura em camadas",
+                                                "BO",
+                                                "Service",
+                                                "DAO",
+                                                "VO/DTO",
+                                                "Factory",
+                                                "Sybase",
+                                                "JUnit",
+                                                "Mockito",
+                                                "Spring",
+                                                "JSF",
+                                                "HP Quality Center",
+                                                "IBM Rational Application Developer (RAD)",
+                                                "IBM WebSphere Application Server (WAS)",
+                                                "IBM WebSphere Portal (WSP)"
+                                            ]
+                        },
+                        {
+                            "empresa":  "WB4B Negócios Online",
+                            "posicao":  "Programador Web",
+                            "duracao":  "junho de 2012 - setembro de 2012 (4 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Realizei manutenção e suporte de aplicação Web para auditoria, faturamento e guias médicas no padrão TISS da Agência Nacional de Saúde.",
+                            "tecnologias":  [
+                                                "PHP/MySQL",
+                                                "JavaScript",
+                                                "AJAX",
+                                                "plataforma Linux",
+                                                "repositório GitHub (GIT)"
+                                            ]
+                        },
+                        {
+                            "empresa":  "UniSistemas Tecnologia em Finanças",
+                            "posicao":  "Programador Pleno",
+                            "duracao":  "fevereiro de 2011 - maio de 2012 (1 ano 4 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Programei sistemas financeiros p/ web utilizando tecnologias Java J2EE. Foram: SimecNET2 e SaqueNET, os quais utilizavam banco de dados, Oracle e Firebird (Open Source), respectivamente. Usei frameworks como: JSF, Richfaces, Primefaces, Spring, Hibernate, relatórios em JasperReports (iReport) e boletos bancários (JRimum). Servidor de aplicação Web Tomcat, Web Services (SOAP) e arquitetura de sistemas em camadas.",
+                            "tecnologias":  [
+                                                "Java J2EE",
+                                                "Oracle",
+                                                "Firebird",
+                                                "JSF",
+                                                "Richfaces",
+                                                "Primefaces",
+                                                "Spring",
+                                                "Hibernate",
+                                                "JasperReports (iReport)",
+                                                "boletos bancários (JRimum)",
+                                                "Tomcat",
+                                                "Web Services (SOAP)",
+                                                "arquitetura de sistemas em camadas"
+                                            ]
+                        },
+                        {
+                            "empresa":  "LH Tecnologia",
+                            "posicao":  "Programador Java",
+                            "duracao":  "março de 2010 - janeiro de 2011 (11 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Programei aplicações Web (HTML, Javascript, CSS). Foram elas: LH Report e LH Gravador. Utilizei tecnologias Java e padrões de projetos, como: JSP/Servlet, MVC, JSF, Facelets, EJB3, Hibernate, Facade, VO, query SQL Oracle entre outros. Utilizei também framework Spring e relatórios em JasperReports (iReport). Servidores de aplicação: JBoss e Tomcat. Ressalto: as aplicações foram projetadas em equipe seguindo requisitos e especificações do cliente.",
+                            "tecnologias":  [
+                                                "HTML",
+                                                "Javascript",
+                                                "CSS",
+                                                "JSP/Servlet",
+                                                "MVC",
+                                                "JSF",
+                                                "Facelets",
+                                                "EJB3",
+                                                "Hibernate",
+                                                "Facade",
+                                                "VO",
+                                                "SQL Oracle",
+                                                "Spring",
+                                                "JasperReports (iReport)",
+                                                "JBoss",
+                                                "Tomcat"
+                                            ]
+                        },
+                        {
+                            "empresa":  "WASYS",
+                            "posicao":  "Analista Programador Java (PJ)",
+                            "duracao":  "novembro de 2009 - fevereiro de 2010 (4 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Programei aplicação Web. Tecnologias e padrões utilizados: Click Framework, Hibernate, Repository, Service Layer, VO, query SQL Oracle entre outros. Participei de projeto desenvolvido p/ empresa Renault Concessionária do Brasil SA.",
+                            "tecnologias":  [
+                                                "Click Framework",
+                                                "Hibernate",
+                                                "Repository",
+                                                "Service Layer",
+                                                "VO",
+                                                "query SQL Oracle"
+                                            ]
+                        },
+                        {
+                            "empresa":  "BRQ",
+                            "posicao":  "Programador Java",
+                            "duracao":  "abril de 2009 - junho de 2009 (3 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Programei aplicações Web. Tecnologias e padrões utilizados: JSF, EJB, Business Delegate, Façades, Web Services, Factory, DAO, TO, JavaScript, SQL Oracle, entre outras. Participei de projeto desenvolvido p/ empresa BR-Petrobrás Distribuidora SA.",
+                            "tecnologias":  [
+                                                "JSF",
+                                                "EJB",
+                                                "Business Delegate",
+                                                "Façades",
+                                                "Web Services",
+                                                "Factory",
+                                                "DAO",
+                                                "TO",
+                                                "JavaScript",
+                                                "SQL Oracle"
+                                            ]
+                        },
+                        {
+                            "empresa":  "CINQ Technologies",
+                            "posicao":  "Programador Java",
+                            "duracao":  "março de 2008 - fevereiro de 2009 (1 ano)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Programei aplicações Web. Tecnologias e padrões utilizados: Servelt/JSP, EJB, Web Services, DAO, BO, Spring, SQL, JavaScript entre outras. Participei de vários projetos desenvolvidos p/ empresas HSBC Bank Brasil SA e GVT Telecomunicações. Elaborei testes unitários (UT), de sistemas (SIT), de códigos (JUnit) e casos de testes.",
+                            "tecnologias":  [
+                                                "Servlet/JSP",
+                                                "EJB",
+                                                "Web Services",
+                                                "DAO",
+                                                "BO",
+                                                "Spring",
+                                                "SQL",
+                                                "JavaScript",
+                                                "JUnit",
+                                                "testes unitários (UT)",
+                                                "testes de sistemas (SIT)"
+                                            ]
+                        },
+                        {
+                            "empresa":  "eWave",
+                            "posicao":  "Estagiário (Programador)",
+                            "duracao":  "junho de 2007 - fevereiro de 2008 (9 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Programei scripts em VBA e Visual Basic para gerar relatórios UML do Enterprise Architect. Projeto finalizado na empresa GVT Telecomunicações. Iniciei estudo da especificação J2EE, para programação de aplicação Web (MVC, DAO, Servlet/JSP, JavaBeans e JSF).",
+                            "tecnologias":  [
+                                                "VBA",
+                                                "Visual Basic",
+                                                "Enterprise Architect",
+                                                "J2EE",
+                                                "MVC",
+                                                "DAO",
+                                                "Servlet/JSP",
+                                                "JavaBeans",
+                                                "JSF"
+                                            ]
+                        },
+                        {
+                            "empresa":  "Agenzia Brasitalia - Di Imir Mulato",
+                            "posicao":  "Auxiliar de Pesquisas Genealógicas",
+                            "duracao":  "julho de 2005 - setembro de 2006 (1 ano 3 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Auxiliar de pesquisas genealógicas, controle informatizado de buscas, visitas agendadas em arquivos de estados, comunes e paróquias. Desenvolvi um sistema para controle de buscas com o cadastro informatizado dos 8200 comunes da Itália. Ferramenta utilizada: Microsoft Access 2003 com VBA. Desenvolvi o primeiro site da agência de pesquisa. Ferramenta utilizada: Microsoft Front Page 2003.",
+                            "tecnologias":  [
+                                                "Microsoft Access 2003",
+                                                "VBA",
+                                                "Microsoft Front Page 2003"
+                                            ]
+                        },
+                        {
+                            "empresa":  "T.D Packaging",
+                            "posicao":  "Production Operator",
+                            "duracao":  "novembro de 2004 - junho de 2005 (8 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Auxiliar e empacotador de produção (picks and packs).",
+                            "tecnologias":  [
 
+                                            ]
+                        },
+                        {
+                            "empresa":  "OSMAP S.R.L.",
+                            "posicao":  "Carrelista",
+                            "duracao":  "setembro de 2001 - outubro de 2004 (3 anos 2 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Operador de empilhadeira, auxiliar de almoxarifado, controle de entrada e saída, carga e descarga.",
+                            "tecnologias":  [
+
+                                            ]
+                        },
+                        {
+                            "empresa":  "Clinipam - Clínica Paranaense de Assistência Médica",
+                            "posicao":  "Técnico em Informática",
+                            "duracao":  "março de 1996 - julho de 2001 (5 anos 5 meses)",
+                            "localizacao":  "Brasil | Remoto e on-site sob demanda",
+                            "descricao":  "Controlei exames periódicos dos associados via software de gestão. Utilizei diariamente software gráfico Corel Draw p/ desenhos de mapas de riscos. Treinei e implantei software administrativo p/ medicina ocupacional junto ao setor. Digitei relatórios técnicos (PPRA e PCMSO). Elaborei balanços mensais com levantamento de dados em linguagem SQL.",
+                            "tecnologias":  [
+                                                "software de gestão",
+                                                "Corel Draw",
+                                                "software administrativo",
+                                                "medicina ocupacional",
+                                                "PPRA",
+                                                "PCMSO",
+                                                "linguagem SQL"
+                                            ]
+                        }
+                    ],
+    "formacaoAcademica":  [
+                              {
+                                  "instituicao":  "Universidade Tecnológica Federal do Paraná",
+                                  "titulo":  "Especialista em Tecnologia Java",
+                                  "campo":  "Desenvolvimento de Sistemas",
+                                  "periodo":  "2007 - 2008"
+                              },
+                              {
+                                  "instituicao":  "Festo Italiana - instituição de engenharia - Centro de Cultura Italiana",
+                                  "titulo":  "Operador em Informática, Especialista CAD/CAE",
+                                  "campo":  "Setor Automotivo",
+                                  "periodo":  "2000 - 2001"
+                              },
+                              {
+                                  "instituicao":  "Universidade Federal do Paraná",
+                                  "titulo":  "Engenheiro Químico",
+                                  "campo":  "Engenharia",
+                                  "periodo":  "1991 - 2000"
+                              },
+                              {
+                                  "instituicao":  "Colégio Positivo - Brasil - Paraná",
+                                  "titulo":  "Terceirão e Pré Vestibular",
+                                  "campo":  "Propedêutico",
+                                  "periodo":  "1988 - 1989"
+                              },
+                              {
+                                  "instituicao":  "Colégio Nossa Senhora Auxiliadora - Cascavel - Paraná",
+                                  "titulo":  "Ensino Médio",
+                                  "campo":  "Propedêutico",
+                                  "periodo":  "1986 - 1987"
+                              }
+                          ]
+}

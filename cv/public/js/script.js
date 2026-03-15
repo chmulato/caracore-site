@@ -4,6 +4,46 @@ document.addEventListener('DOMContentLoaded', () => {
     const langSwitcher = document.querySelector('.lang-switcher');
     let currentTranslations = {}; // Variável para guardar as traduções atuais
 
+    const mojibakePattern = /(?:Ã.|Â.|â.|¤|€|™|œ|ž|Ÿ)/;
+
+    const repairMojibakeString = (value) => {
+        if (typeof value !== 'string' || !mojibakePattern.test(value)) {
+            return value;
+        }
+
+        try {
+            const bytes = Uint8Array.from(value, (char) => char.charCodeAt(0) & 0xff);
+            const repaired = new TextDecoder('utf-8').decode(bytes);
+
+            // Keep the original when the transformation clearly degrades the text.
+            if (!repaired || repaired.includes('\ufffd')) {
+                return value;
+            }
+
+            return repaired;
+        } catch (error) {
+            console.warn('Unable to repair mojibake string:', error);
+            return value;
+        }
+    };
+
+    const normalizeEncoding = (value) => {
+        if (Array.isArray(value)) {
+            return value.map(normalizeEncoding);
+        }
+
+        if (value && typeof value === 'object') {
+            return Object.fromEntries(
+                Object.entries(value).map(([key, nestedValue]) => [
+                    repairMojibakeString(key),
+                    normalizeEncoding(nestedValue)
+                ])
+            );
+        }
+
+        return repairMojibakeString(value);
+    };
+
     // --- Lógica do Modal ---
     const noticeModal = document.getElementById("noticeModal");
     const fullResumeModal = document.getElementById("fullResumeModal");
@@ -91,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const profileData = await response.json();
+            const profileData = normalizeEncoding(await response.json());
             // Usa a função de conversão correta para o perfil completo
             const htmlContent = convertFullProfileJsonToHtml(profileData);
             fullResumeContent.innerHTML = htmlContent;
@@ -107,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`Could not load resume_last_8_years_${lang}.json`);
             }
-            const resumeData = await response.json();
+            const resumeData = normalizeEncoding(await response.json());
             
             // Convert JSON data to HTML
             const htmlContent = convertResumeJsonToHtml(resumeData);
@@ -132,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`Could not load ${lang}.json`);
             }
-            const translations = await response.json();
+            const translations = normalizeEncoding(await response.json());
             currentTranslations = translations;
             
             document.querySelectorAll('[data-key]').forEach(elem => {

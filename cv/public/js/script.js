@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Initializing script...');
 
+    const DATA_VERSION = '20260314-encoding-fix';
+
     const langSwitcher = document.querySelector('.lang-switcher');
     let currentTranslations = {}; // Variável para guardar as traduções atuais
 
@@ -127,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
         fullResumeContent.innerHTML = '<p>Carregando currículo completo...</p>';
         openModal(fullResumeModal);
         try {
-            const response = await fetch('json/profile_full.json');
+            const response = await fetch(`json/profile_full.json?v=${DATA_VERSION}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -143,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const load8YearResume = async (lang) => {
         console.log(`Attempting to load 8-year resume from JSON for ${lang}...`);
         try {
-            const response = await fetch(`json/resume_last_8_years_${lang}.json`);
+            const response = await fetch(`json/resume_last_8_years_${lang}.json?v=${DATA_VERSION}`);
             if (!response.ok) {
                 throw new Error(`Could not load resume_last_8_years_${lang}.json`);
             }
@@ -168,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadTranslations = async (lang) => {
         console.log(`Loading translations for ${lang}...`);
         try {
-            const response = await fetch(`lang/${lang}.json`);
+            const response = await fetch(`lang/${lang}.json?v=${DATA_VERSION}`);
             if (!response.ok) {
                 throw new Error(`Could not load ${lang}.json`);
             }

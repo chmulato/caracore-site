@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Initializing script...');
 
-    const DATA_VERSION = '20260315-cv-consistency-fix';
+    const DATA_VERSION = '20260315-render-order-fix';
 
     const langSwitcher = document.querySelector('.lang-switcher');
     let currentTranslations = {}; // Variável para guardar as traduções atuais

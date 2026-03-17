@@ -2,7 +2,7 @@
 
 Este diretório contém os testes unitários para o sistema de autenticação OIDC da área restrita (Área 51) do CaraCore.
 
-## � Estrutura dos Testes
+## Estrutura dos Testes
 
 ### Arquivos de Teste
 

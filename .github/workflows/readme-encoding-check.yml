@@ -17,7 +17,8 @@ jobs:
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
-          $readmes = Get-ChildItem -Path . -Recurse -File -Filter README.md
+          $readmes = Get-ChildItem -Path . -Recurse -File -Filter README.md |
+            Where-Object { $_.FullName -notmatch '\\node_modules\\' }
           if (-not $readmes) {
             Write-Host 'No README.md files found.'
             exit 0

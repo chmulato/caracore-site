@@ -54,6 +54,16 @@ A estrutura do projeto foi reorganizada para maior clareza:
   - `html2pdf.js`: Para a geração de PDFs.
   - `marked.js`: Para converter o conteúdo dos currículos de Markdown para HTML.
 
+## Teste Unitário do HTML
+
+Para validar rapidamente as páginas HTML do currículo, execute na raiz do repositório:
+
+```bash
+npm run test:cv:html
+```
+
+Esse comando valida a estrutura das páginas em `cv/public` e os links HTML da página inicial, sem aplicar cobertura de backend.
+
 ## Contato
 
 - **LinkedIn:** [https://www.linkedin.com/in/chmulato](https://www.linkedin.com/in/chmulato)

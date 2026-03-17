@@ -1,6 +1,6 @@
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "-ra -q --strict-markers"
+addopts = "-ra -q --strict-markers --cov=backend --cov-report=html --cov-report=term-missing --cov-fail-under=80"
 testpaths = [
     "backend/tests",
 ]
@@ -20,8 +20,6 @@ markers = [
     "unit: marks tests as unit tests",
     "api: marks tests as API tests",
 ]
-# Configuração para cobertura de testes
-addopts = "--cov=backend --cov-report=html --cov-report=term-missing --cov-fail-under=80"
 
 [tool.coverage.run]
 source = ["backend"]

@@ -1,6 +1,6 @@
 {
     "personalInfo":  {
-                         "name":  "Christian Mulato",
+                         "name":  "Cara Core Institutional Avatar",
                          "title":  "Enterprise Modernization and Operational Excellence Specialist | Java, Spring, APIs and Automation",
                          "location":  "Brazil | Remote and on-site by demand",
                          "contact":  {
@@ -57,10 +57,10 @@
                        },
                        {
                            "company":  "Cara Core Informática",
-                           "position":  "Founder and Systems Consultant (own company)",
+                           "position":  "Systems Consulting and Engineering (institutional core)",
                            "duration":  "January 2016 - Present (9 years 8 months)",
                            "location":  "Brazil | Remote and on-site by demand",
-                           "description":  "Founder and owner. Acting as Consultant and Systems Developer, responsible for the development, automation, and management of technological solutions for companies and offices. The portfolio systems (Delivery Control, POS, CSO Online, and Dental) are open source projects, open to collaboration and investment from enthusiasts and partners. Experience in testing, validation, VBA/Office 365 automation, infrastructure, security, remote support, and technology integration. Work performed as a legal entity (PJ/CNPJ), focused on innovation and collaborative community. Note: role operated in parallel with third-party employment relationships (for example, UniSistemas 2017-2018), as disclosed.",
+                           "description":  "Institutional work in systems consulting and software engineering, responsible for developing, automating, and managing technology solutions for companies and offices. Public portfolio focused on technical quality, validation, security, remote support, and technology integration. Business operation under legal entity model (PJ/CNPJ) with governance and continuous delivery.",
                            "projects":  [
                                             {
                                                 "name":  "Delivery Control",

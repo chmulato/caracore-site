@@ -1,5 +1,5 @@
 {
-    "pageTitle": "Profilo Professionale - Christian Mulato | Cara Core",
+    "pageTitle": "Profilo Professionale - Avatar Cara Core | Cara Core",
     "headerSubtitle": "Specialista in Modernizzazione Legacy",
     "contactWebsite": "Sito Web Ufficiale",
     "whatsappText": "WhatsApp",
@@ -12,8 +12,8 @@
     "job1Details": "Compass UOL | Remoto | set/2025 ad oggi (6 mesi)",
     "job1Desc": "Progetto back-end con Jakarta EE, Spring Boot, SOAP e REST. Consegne agili, automazione di processi critici e integrazione di sistemi aziendali. (Outsourcing – Caixa Seguradora).",
     "job2Title": "Partita IVA per lavoro Autonomo / Freelance",
-    "job2Details": "Cara Core Informática (azienda propria, fondata dall'autore) | gen/2016 ad oggi",
-    "job2Desc": "Fondatore e proprietario. Sviluppo di sistemi proprietari open-source (Delivery Control, POS, CSO Online, Dental), automazione di routine e gestione IT. Nota: azienda operata in parallelo a rapporti di lavoro dipendente (es. UniSistemas 2017–2018), come dichiarato.",
+    "job2Details": "Cara Core Informática (nucleo istituzionale) | gen/2016 ad oggi",
+    "job2Desc": "Attività istituzionale in consulenza e ingegneria del software, con automazione dei processi, integrazione tecnologica e gestione IT. Portfolio pubblico focalizzato su qualità, governance tecnica e delivery continuo.",
     "job3Title": "Senior Java Software Engineer",
     "job3Details": "EY (Ernst & Young) | Remoto | ott/2021 ad ago/2022",
     "job3Desc": "Sviluppo di applicazioni Java EE per Banco do Brasil e Bradesco Saúde in un ambiente aziendale con Maven, WebSphere e Oracle.",
@@ -42,7 +42,7 @@
     "footerAvailability": "Disponibile per progetti da remoto e supporto on-site su richiesta.",
     "coverLetterTitle": "Lettera di Presentazione",
     "coverLetterLinkText": "Leggi Lettera di Presentazione",
-    "coverLetterContent": "Al team di reclutamento,\n\nSono lieto di candidarmi per la posizione di Sviluppatore Java Senior, offrendo la mia consolidata esperienza in progetti robusti nel settore tecnologico, con una forte padronanza dello stack Java EE e framework moderni come Spring Boot, Hibernate e JSF.\n\nNegli ultimi cinque anni, ho lavorato continuamente in consulenze di alto livello, concentrandomi sullo sviluppo di sistemi aziendali, API REST, messaggistica con RabbitMQ, uso estensivo di Docker, oltre a database Oracle e pratiche di integrazione continua con Git e Maven. Ho partecipato a progetti rilevanti per aziende come RD Saúde, Banco do Brasil, Bradesco Saúde, Volkswagen e Funasa, consegnando sempre con qualità e rispettando gli standard aziendali richiesti.\n\nOltre alla pratica tecnica, ho un profilo autonomo, proattivo e comunicativo, con facilità a lavorare in ambienti agili e distribuiti. La mia formazione in Ingegneria, unita alla mia specializzazione in Java, mi permette di comprendere le sfide aziendali in modo sistemico, proponendo soluzioni con valore reale per il cliente.\n\nSarei molto lieto di contribuire al team della vostra azienda, portando la mia esperienza con le tecnologie Java, la visione del prodotto e l'impegno per i risultati. Sono disponibile per un colloquio e per presentare meglio come posso contribuire al team.\n\nCordiali saluti,\nChristian Mulato\nCara Core Informática.",
+    "coverLetterContent": "Al team di reclutamento,\n\nCara Core Informática presenta questo profilo Avatar istituzionale per opportunità di ingegneria software e modernizzazione. Il contenuto evidenzia esperienza consolidata in progetti tecnologici robusti, con forte padronanza dello stack Java EE e framework moderni come Spring Boot, Hibernate e JSF.\n\nNegli ultimi cinque anni c'è stata attività continuativa in consulenze di alto livello, con focus su sistemi aziendali, API REST, messaggistica con RabbitMQ, uso estensivo di Docker, database Oracle e pratiche di integrazione continua con Git e Maven. Sono stati consegnati progetti rilevanti per organizzazioni come RD Saúde, Banco do Brasil, Bradesco Saúde, Volkswagen e Funasa, con qualità e aderenza agli standard aziendali.\n\nOltre alla pratica tecnica, il profilo dimostra delivery autonomo, proattivo e comunicativo in ambienti agili e distribuiti. La base in Ingegneria, unita alla specializzazione Java, consente una visione sistemica delle sfide di business e la proposta di soluzioni ad alto valore.\n\nIl nostro team è disponibile per discutere come questo profilo può contribuire alla vostra organizzazione.\n\nCordiali saluti,\nTeam Avatar Cara Core\nCara Core Informática.",
     "skillsList": [
         "Java SE/EE",
         "Spring Boot",
@@ -96,7 +96,7 @@
     "downloadPdfText": "PDF",
     "showFullResume": "Visualizza CV Completo",
     "noticeModalTitle": "Avviso di Monitoraggio",
-    "noticeModalText": "<b>Attenzione:</b> L'accesso al curriculum completo è monitorato da Google Analytics a fini di audit e sicurezza. Continuando, accetti questo monitoraggio.",
+    "noticeModalText": "<b>Attenzione:</b> L'accesso al curriculum completo utilizza monitoraggio istituzionale con raccolta minima e aggregata per audit e sicurezza. In questo flusso non viene usata identificazione personale dei fondatori. Continuando, accetti questo monitoraggio.",
     "continueButton": "Continua",
     "closeButton": "Chiudi",
     "consentLabel": "Ho letto e accetto il monitoraggio."

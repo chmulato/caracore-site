@@ -1,5 +1,5 @@
 {
-    "pageTitle": "Perfil Profissional - Christian Mulato | Cara Core",
+    "pageTitle": "Perfil Profissional - Avatar Cara Core | Cara Core",
     "headerSubtitle": "Especialista em Modernização de Sistemas",
     "contactWebsite": "Website Oficial",
     "whatsappText": "WhatsApp",
@@ -12,8 +12,8 @@
     "job1Details": "Compass UOL | Remoto | set/2025 até hoje (6 meses)",
     "job1Desc": "Atuação em projeto back-end com Jakarta EE, Spring Boot, SOAP e REST. Entregas ágeis, automação de processos críticos e integração de sistemas corporativos. (Outsourcing – Caixa Seguradora).",
     "job2Title": "Consultor e Desenvolvedor de Sistemas / Freelance",
-    "job2Details": "Cara Core Informática (empresa própria, fundada pelo autor) | jan/2016 até hoje",
-    "job2Desc": "Fundador e proprietário. Desenvolvimento de sistemas próprios com código aberto (Delivery Control, PDV, CSO Online, Dental), automação de rotinas e gestão de TI. Nota: empresa operada em paralelo a vínculos empregatícios terceiros (p. ex. UniSistemas 2017–2018), o que é de conhecimento declarado.",
+    "job2Details": "Cara Core Informática (núcleo institucional) | jan/2016 até hoje",
+    "job2Desc": "Atuação institucional em consultoria e desenvolvimento de sistemas, com automação de rotinas, integração de tecnologias e gestão de TI. Portfólio público com foco em qualidade, governança técnica e entrega contínua.",
     "job3Title": "Senior Java Software Engineer",
     "job3Details": "EY (Ernst & Young) | Remoto | out/2021 a ago/2022",
     "job3Desc": "Desenvolvimento de aplicações Java EE para Banco do Brasil e Bradesco Saúde em ambiente corporativo com Maven, WebSphere e Oracle.",
@@ -42,7 +42,7 @@
     "footerAvailability": "Disponibilidade para projetos remotos e atendimento on-site sob demanda.",
     "coverLetterTitle": "Carta de Apresentação",
     "coverLetterLinkText": "Ler Carta de Apresentação",
-    "coverLetterContent": "À equipe de recrutamento,\n\nTenho o prazer de me candidatar à vaga de Desenvolvedor Java Sênior, colocando à disposição minha experiência consolidada em projetos robustos no setor de tecnologia, com forte domínio da stack Java EE e frameworks modernos como Spring Boot, Hibernate e JSF.\n\nNos últimos cinco anos, atuei de forma contínua em consultorias de alto nível, com foco em desenvolvimento de sistemas corporativos, APIs REST, mensageria com RabbitMQ, uso extensivo de Docker, além de banco de dados Oracle e práticas de integração contínua com Git e Maven. Participei de projetos relevantes para empresas como RD Saúde, Banco do Brasil, Bradesco Saúde, Volkswagen e Funasa, sempre entregando com qualidade e dentro dos padrões corporativos exigidos.\n\nAlém da prática técnica, tenho perfil autônomo, proativo e comunicativo, com facilidade para atuar em ambientes ágeis e distribuídos. Minha formação em Engenharia, somada à especialização em Java, me permite compreender os desafios de negócio de forma sistêmica, propondo soluções com valor real para o cliente.\n\nGostaria muito de contribuir com a equipe da sua empresa, trazendo minha experiência com tecnologias Java, visão de produto, e compromisso com resultados. Estou disponível para conversarmos e apresentar mais sobre como posso somar ao time.\n\nAtenciosamente,\nChristian Mulato\nCara Core Informática.",
+    "coverLetterContent": "À equipe de recrutamento,\n\nA Cara Core Informática apresenta este perfil institucional Avatar para posições de engenharia de software e modernização de sistemas. O conteúdo destaca experiência consolidada em projetos robustos no setor de tecnologia, com forte domínio da stack Java EE e frameworks modernos como Spring Boot, Hibernate e JSF.\n\nNos últimos cinco anos, houve atuação contínua em consultorias de alto nível, com foco em desenvolvimento de sistemas corporativos, APIs REST, mensageria com RabbitMQ, uso extensivo de Docker, além de banco de dados Oracle e práticas de integração contínua com Git e Maven. Projetos relevantes foram entregues para empresas como RD Saúde, Banco do Brasil, Bradesco Saúde, Volkswagen e Funasa, com qualidade e aderência a padrões corporativos.\n\nAlém da prática técnica, o perfil evidencia atuação autônoma, proativa e comunicativa em ambientes ágeis e distribuídos. A base em Engenharia, somada à especialização em Java, permite compreender desafios de negócio de forma sistêmica e propor soluções com valor real para o cliente.\n\nA equipe está disponível para conversarmos e apresentar como pode somar ao seu time.\n\nAtenciosamente,\nEquipe Avatar Cara Core\nCara Core Informática.",
     "skillsList": [
         "Java SE/EE",
         "Spring Boot",
@@ -96,7 +96,7 @@
     "downloadPdfText": "PDF",
     "showFullResume": "Ver Currículo Completo",
     "noticeModalTitle": "Aviso de Monitoramento",
-    "noticeModalText": "<b>Atenção:</b> O acesso ao currículo completo é monitorado pelo Google Analytics para fins de auditoria e segurança. Ao continuar, você concorda com este monitoramento.",
+    "noticeModalText": "<b>Atenção:</b> O acesso ao currículo completo utiliza monitoramento institucional com coleta mínima e agregada para auditoria e segurança. Não há identificação pessoal dos fundadores neste fluxo. Ao continuar, você concorda com este monitoramento.",
     "continueButton": "Continuar",
     "closeButton": "Fechar",
     "consentLabel": "Li e concordo com o monitoramento."

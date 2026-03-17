@@ -1,6 +1,6 @@
 {
     "informacoesPessoais":  {
-                                "nome":  "Christian Mulato",
+                                "nome":  "Avatar Institucional Cara Core",
                                 "titulo":  "Especialista em Modernização de Sistemas e Eficiência Operacional | Java, Spring, APIs e Automação",
                                 "localizacao":  "Brasil | Remoto e on-site sob demanda",
                                 "contato":  {
@@ -57,10 +57,10 @@
                         },
                         {
                             "empresa":  "Cara Core Informática",
-                            "posicao":  "Fundador e Consultor de Sistemas (empresa própria)",
+                            "posicao":  "Consultoria e Engenharia de Sistemas (núcleo institucional)",
                             "duracao":  "janeiro de 2016 - Presente (9 anos 8 meses)",
                             "localizacao":  "Brasil | Remoto e on-site sob demanda",
-                            "descricao":  "Fundador e proprietário. Atuação como Consultor e Desenvolvedor de Sistemas, responsável pelo desenvolvimento, automação e gestão de soluções tecnológicas para empresas e escritórios. Os sistemas do portfólio (Delivery Control, PDV, CSO Online e Dental) são projetos open source, abertos para colaboração e investimento de entusiastas e parceiros. Experiência em testes, validações, automação VBA/Office 365, infraestrutura, segurança, suporte remoto e integração de tecnologias. Trabalhos realizados como PJ/CNPJ, com foco em inovação e comunidade colaborativa. Nota: atuação em paralelo a vínculos empregatícios de terceiros (por exemplo, UniSistemas 2017-2018), conforme declarado.",
+                            "descricao":  "Atuação institucional como consultoria e engenharia de sistemas, responsável por desenvolvimento, automação e gestão de soluções tecnológicas para empresas e escritórios. Portfólio público com foco em qualidade técnica, validação, segurança, suporte remoto e integração de tecnologias. Operação empresarial em modelo PJ/CNPJ, com governança e entrega contínua.",
                             "projetos":  [
                                              {
                                                  "nome":  "Delivery Control",

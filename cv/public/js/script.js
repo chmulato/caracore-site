@@ -46,6 +46,46 @@ document.addEventListener('DOMContentLoaded', () => {
         return repairMojibakeString(value);
     };
 
+    const personalTermsPattern = /\b(christian|mulato|guilherme)\b/gi;
+
+    const institutionalizeText = (value) => {
+        if (typeof value !== 'string') {
+            return value;
+        }
+
+        let safeValue = value.replace(personalTermsPattern, 'Equipe Cara Core');
+        safeValue = safeValue.replace(/di\s+[a-z\s'-]+/gi, 'dados institucionalizados');
+        return safeValue;
+    };
+
+    const institutionalizeProfileData = (value) => {
+        if (Array.isArray(value)) {
+            return value.map(institutionalizeProfileData);
+        }
+
+        if (value && typeof value === 'object') {
+            const normalized = Object.fromEntries(
+                Object.entries(value).map(([key, nestedValue]) => [key, institutionalizeProfileData(nestedValue)])
+            );
+
+            if (normalized.informacoesPessoais && typeof normalized.informacoesPessoais === 'object') {
+                normalized.informacoesPessoais.nome = 'Avatar Institucional Cara Core';
+            }
+
+            if (normalized.personalInfo && typeof normalized.personalInfo === 'object') {
+                normalized.personalInfo.name = 'Cara Core Institutional Avatar';
+            }
+
+            if (normalized.informazioniPersonali && typeof normalized.informazioniPersonali === 'object') {
+                normalized.informazioniPersonali.nome = 'Avatar Istituzionale Cara Core';
+            }
+
+            return normalized;
+        }
+
+        return institutionalizeText(value);
+    };
+
     // --- Lógica do Modal ---
     const noticeModal = document.getElementById("noticeModal");
     const fullResumeModal = document.getElementById("fullResumeModal");
@@ -57,6 +97,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const consentCheckbox = document.getElementById("consentCheckbox");
     const experienceContent = document.getElementById("experience-content");
     const fullResumeContent = document.getElementById("full-resume-content");
+
+    const safeGtag = (...args) => {
+        if (typeof window.gtag === 'function') {
+            window.gtag(...args);
+        }
+    };
+
+    const applyCvAnalyticsGuard = (granted) => {
+        safeGtag('consent', 'update', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: granted ? 'granted' : 'denied',
+            functionality_storage: 'granted',
+            security_storage: 'granted'
+        });
+
+        safeGtag('set', 'allow_google_signals', false);
+        safeGtag('set', 'allow_ad_personalization_signals', false);
+    };
+
+    const trackFullResumeAccess = () => {
+        safeGtag('event', 'cv_full_resume_access', {
+            event_category: 'cv_security',
+            event_label: 'institutional_avatar',
+            access_scope: 'aggregated',
+            interface_lang: document.documentElement.lang || 'pt',
+            non_interaction: true
+        });
+    };
+
+    // Default seguro: sem analytics para o currículo completo até consentimento explícito.
+    applyCvAnalyticsGuard(false);
 
     // Create skill modal dynamically
     let skillModal;
@@ -125,6 +198,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     continueButton.addEventListener('click', async () => {
         closeModal(noticeModal);
+        applyCvAnalyticsGuard(true);
+        trackFullResumeAccess();
+
         // Só carrega o currículo completo do arquivo profile_full.json
         fullResumeContent.innerHTML = '<p>Carregando currículo completo...</p>';
         openModal(fullResumeModal);
@@ -133,12 +209,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            const profileData = normalizeEncoding(await response.json());
+            const profileData = institutionalizeProfileData(normalizeEncoding(await response.json()));
             // Usa a função de conversão correta para o perfil completo
             const htmlContent = convertFullProfileJsonToHtml(profileData);
             fullResumeContent.innerHTML = htmlContent;
         } catch (error) {
             fullResumeContent.innerHTML = '<p>Erro ao carregar o currículo: ' + error.message + '</p>';
+        } finally {
+            // Reforça privacidade: encerra analytics_storage após o registro agregado.
+            setTimeout(() => applyCvAnalyticsGuard(false), 1500);
         }
     });
 
@@ -224,16 +303,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    langSwitcher.addEventListener('click', (e) => {
-        e.preventDefault();
-        const lang = e.target.getAttribute('data-lang');
-        if (lang) {
-            loadTranslations(lang);
+    const allowedLangs = new Set(['pt', 'en', 'it']);
+
+    const resolveInitialLanguage = () => {
+        const qsLang = new URLSearchParams(window.location.search).get('lang');
+        if (qsLang && allowedLangs.has(qsLang.toLowerCase())) {
+            return qsLang.toLowerCase();
         }
-    });
+
+        const htmlLang = (document.documentElement.lang || '').toLowerCase();
+        if (allowedLangs.has(htmlLang)) {
+            return htmlLang;
+        }
+        if (htmlLang.startsWith('pt')) return 'pt';
+        if (htmlLang.startsWith('en')) return 'en';
+        if (htmlLang.startsWith('it')) return 'it';
+
+        return 'pt';
+    };
+
+    if (langSwitcher) {
+        langSwitcher.addEventListener('click', (e) => {
+            e.preventDefault();
+            const lang = e.target.getAttribute('data-lang');
+            if (lang && allowedLangs.has(lang)) {
+                loadTranslations(lang);
+            }
+        });
+    }
 
     // Initial load
-    loadTranslations('pt');
+    loadTranslations(resolveInitialLanguage());
 
     const extractYear = (value) => {
         const match = (value || '').match(/(19|20)\d{2}/);
@@ -446,7 +546,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Personal Information
             console.log('Processing personal info...');
             html += '<div class="personal-info">';
-            html += `<h2>Christian Mulato</h2>`;
+            const publicAvatarName = data.informacoesPessoais?.nome || 'Avatar Institucional Cara Core';
+            html += `<h2>${publicAvatarName}</h2>`;
             html += `<h3>${data.informacoesPessoais.titulo}</h3>`;
             html += `<p><strong>Localização:</strong> Remoto | on-site sob demanda</p>`;
             

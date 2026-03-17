@@ -1,6 +1,6 @@
 {
     "informazioniPersonali":  {
-                                  "nome":  "Christian Mulato",
+                                  "nome":  "Avatar Istituzionale Cara Core",
                                   "titolo":  "Specialista in Modernizzazione Enterprise ed Eccellenza Operativa | Java, Spring, API e Automazione",
                                   "posizione":  "Brasile | Remoto e on-site su richiesta",
                                   "contatto":  {
@@ -57,10 +57,10 @@
                        },
                        {
                            "azienda":  "Cara Core Informática",
-                           "posizione":  "Fondatore e Consulente di Sistemi (azienda propria)",
+                           "posizione":  "Consulenza e Ingegneria dei Sistemi (nucleo istituzionale)",
                            "durata":  "gennaio 2016 - Presente (9 anni 8 mesi)",
                            "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Fondatore e proprietario. Attività come Consulente e Sviluppatore di Sistemi, responsabile dello sviluppo, automazione e gestione di soluzioni tecnologiche per aziende e uffici. I sistemi del portafoglio (Delivery Control, POS, CSO Online e Dental) sono progetti open source, aperti alla collaborazione e all\u0027investimento di appassionati e partner. Esperienza in test, validazione, automazione VBA/Office 365, infrastruttura, sicurezza, supporto remoto e integrazione tecnologica. Lavori svolti come libero professionista (PJ/CNPJ), con attenzione all\u0027innovazione e alla comunità collaborativa. Nota: ruolo svolto in parallelo a rapporti di lavoro dipendente presso terzi (ad esempio, UniSistemas 2017-2018), come dichiarato.",
+                           "descrizione":  "Attività istituzionale in consulenza e ingegneria del software, responsabile di sviluppo, automazione e gestione di soluzioni tecnologiche per aziende e uffici. Portfolio pubblico focalizzato su qualità tecnica, validazione, sicurezza, supporto remoto e integrazione tecnologica. Operatività aziendale in modello PJ/CNPJ con governance e delivery continuo.",
                            "progetti":  [
                                             {
                                                 "nome":  "Delivery Control",

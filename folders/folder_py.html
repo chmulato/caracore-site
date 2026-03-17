@@ -152,6 +152,20 @@
 
     .download-box.show { display: block; }
 
+    .telegram-copy-box { display: none; }
+
+    .telegram-lead-text {
+      width: 100%;
+      margin-top: 8px;
+      font-size: 0.85rem;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: none;
+    }
+
+    .actions-top-gap { margin-top: 8px; }
+
     .policy {
       margin-top: 12px;
       font-size: 0.86rem;
@@ -186,30 +200,30 @@
   <main class="container">
     <section class="hero" id="folder-content">
       <h1>Cara Core Informática - Folder Python para Empresas</h1>
-      <p>Solucoes de automacao e produtividade com foco em resultado, seguranca operacional e ganho de eficiencia para pequenos e medios negocios.</p>
+      <p>Soluções de automação e produtividade com foco em resultado, segurança operacional e ganho de eficiência para pequenos e médios negócios.</p>
     </section>
 
     <section class="folder-card">
-      <h2 class="section-title"><i class="bi bi-cpu"></i> Solucoes em Python</h2>
+      <h2 class="section-title"><i class="bi bi-cpu"></i> Soluções em Python</h2>
       <ul class="service-list">
-        <li><strong>Automacao de processos:</strong> reducao de tarefas manuais e retrabalho.</li>
-        <li><strong>Relatorios inteligentes:</strong> consolidacao de dados em paineis e PDF executivo.</li>
-        <li><strong>Integracao entre sistemas:</strong> ERP, CRM, e-commerce e APIs de mercado.</li>
-        <li><strong>Monitoramento de operacao:</strong> alertas por evento e indicadores criticos.</li>
-        <li><strong>Rotinas administrativas:</strong> arquivos, conciliacoes, notificacoes e produtividade.</li>
+        <li><strong>Automação de processos:</strong> redução de tarefas manuais e retrabalho.</li>
+        <li><strong>Relatórios inteligentes:</strong> consolidação de dados em painéis e PDF executivo.</li>
+        <li><strong>Integração entre sistemas:</strong> ERP, CRM, e-commerce e APIs de mercado.</li>
+        <li><strong>Monitoramento de operação:</strong> alertas por evento e indicadores críticos.</li>
+        <li><strong>Rotinas administrativas:</strong> arquivos, conciliações, notificações e produtividade.</li>
       </ul>
 
       <h2 class="section-title"><i class="bi bi-shield-check"></i> Diferenciais institucionais</h2>
       <ul class="service-list">
-        <li>Escopo orientado a impacto de negocio.</li>
-        <li>Implementacao com governanca e boas praticas.</li>
-        <li>Atendimento comercial e tecnico pela Cara Core Informatica.</li>
+        <li>Escopo orientado a impacto de negócio.</li>
+        <li>Implementação com governança e boas práticas.</li>
+        <li>Atendimento comercial e técnico pela Cara Core Informática.</li>
       </ul>
     </section>
 
     <section class="lead-box" id="captacao-lead">
-      <h3>Receber folder completo e liberar impressao PDF</h3>
-      <p>Para acesso ao material completo no novo padrao, informe contato de lead e aceite LGPD.</p>
+      <h3>Receber folder completo e liberar impressão PDF</h3>
+      <p>Para acesso ao material completo no novo padrão, informe contato de lead e aceite LGPD.</p>
 
       <form id="lead-form">
         <div class="lead-grid">
@@ -253,18 +267,18 @@
       <div id="download-box" class="download-box" aria-live="polite">
         <strong>Lead enviado com sucesso.</strong> Acesso liberado:
         <div class="actions">
-          <a class="btn secondary" id="btn-print" href="#" target="_blank" rel="noopener">Abrir para impressao em PDF</a>
+          <a class="btn secondary" id="btn-print" href="#" target="_blank" rel="noopener">Abrir para impressão em PDF</a>
         </div>
       </div>
-        <div id="telegram-copy-box" class="download-box" style="display:none;" aria-live="polite">
+        <div id="telegram-copy-box" class="download-box telegram-copy-box" aria-live="polite">
           <strong>Telegram aberto.</strong> Copie o texto abaixo e cole na conversa com a Cara Core:
-          <textarea id="telegram-lead-text" rows="7" readonly style="width:100%;margin-top:8px;font-size:0.85rem;padding:8px;border:1px solid #ccc;border-radius:4px;resize:none;"></textarea>
-          <div class="actions" style="margin-top:8px;">
+          <textarea id="telegram-lead-text" class="telegram-lead-text" rows="7" readonly></textarea>
+          <div class="actions actions-top-gap">
             <button type="button" class="btn secondary" id="telegram-copy-btn">Copiar texto</button>
           </div>
         </div>
 
-      <p class="policy"><strong>Politica institucional:</strong> todo este material e marca registrada da Cara Core Informatica. E proibido reproduzir, redistribuir ou reaproveitar comercialmente sem autorizacao formal. Conteudo institucional sem exposicao de pessoas, fundadores ou executivos.</p>
+      <p class="policy"><strong>Política institucional:</strong> todo este material é marca registrada da Cara Core Informática. É proibido reproduzir, redistribuir ou reaproveitar comercialmente sem autorização formal. Conteúdo institucional sem exposição de pessoas, fundadores ou executivos.</p>
     </section>
 
     <p class="policy" data-screen-only="true"><strong>Contato oficial:</strong> suporte@caracore.com.br | WhatsApp: 5541999097797 | www.caracore.com.br</p>
@@ -274,19 +288,20 @@
     (function () {
       var LEAD_EMAIL = "suporte@caracore.com.br";
       var LEAD_WHATSAPP = "5541999097797";
-        var LEAD_TELEGRAM = "+5541999097797";
+      var LEAD_TELEGRAM = "CaraCoreInformatica";
       var leadForm = document.getElementById("lead-form");
       var downloadBox = document.getElementById("download-box");
       var btnPrint = document.getElementById("btn-print");
-        var telegramCopyBox = document.getElementById("telegram-copy-box");
-        var telegramLeadText = document.getElementById("telegram-lead-text");
-        var telegramCopyBtn = document.getElementById("telegram-copy-btn");
-        telegramCopyBtn.addEventListener("click", function () {
-          telegramLeadText.select();
-          document.execCommand("copy");
-          telegramCopyBtn.textContent = "Copiado!";
-          setTimeout(function () { telegramCopyBtn.textContent = "Copiar texto"; }, 2000);
-        });
+      var telegramCopyBox = document.getElementById("telegram-copy-box");
+      var telegramLeadText = document.getElementById("telegram-lead-text");
+      var telegramCopyBtn = document.getElementById("telegram-copy-btn");
+
+      telegramCopyBtn.addEventListener("click", function () {
+        telegramLeadText.select();
+        document.execCommand("copy");
+        telegramCopyBtn.textContent = "Copiado!";
+        setTimeout(function () { telegramCopyBtn.textContent = "Copiar texto"; }, 2000);
+      });
 
       function cleanPhone(value) {
         return String(value || "").replace(/\D+/g, "");
@@ -297,9 +312,9 @@
           "Novo lead - Folder Python",
           "Nome: " + data.nome,
           "Empresa: " + data.empresa,
-          "Email: " + (data.email || "nao informado"),
-          "WhatsApp: " + (data.whatsapp || "nao informado"),
-          "Objetivo: " + (data.objetivo || "nao informado"),
+          "Email: " + (data.email || "não informado"),
+          "WhatsApp: " + (data.whatsapp || "não informado"),
+          "Objetivo: " + (data.objetivo || "não informado"),
           "LGPD: consentimento confirmado"
         ].join("\n");
       }
@@ -315,14 +330,13 @@
         window.open("https://wa.me/" + LEAD_WHATSAPP + "?text=" + text, "_blank", "noopener");
       }
 
-      leadForm.addEventListener("submit", function (event) {
-        function sendByTelegram(data) {
-          window.open("https://t.me/" + LEAD_TELEGRAM, "_blank", "noopener");
-          telegramLeadText.value = buildLeadText(data);
-          telegramCopyBox.style.display = "block";
-        }
+      function sendByTelegram(data) {
+        window.open("https://t.me/" + LEAD_TELEGRAM, "_blank", "noopener");
+        telegramLeadText.value = buildLeadText(data);
+        telegramCopyBox.style.display = "block";
+      }
 
-        leadForm.addEventListener("submit", function (event) {
+      leadForm.addEventListener("submit", function (event) {
         event.preventDefault();
         var nome = document.getElementById("nome").value.trim();
         var empresa = document.getElementById("empresa").value.trim();
@@ -338,12 +352,12 @@
         }
 
         if (whatsapp && whatsapp.length < 10) {
-          alert("Informe um WhatsApp valido com DDD.");
+          alert("Informe um WhatsApp válido com DDD.");
           return;
         }
 
         if (!lgpd) {
-          alert("E necessario aceitar o consentimento LGPD para liberar o material.");
+          alert("É necessário aceitar o consentimento LGPD para liberar o material.");
           return;
         }
 
@@ -357,14 +371,11 @@
 
         if (canal === "whatsapp") {
           sendByWhatsApp(payload);
+        } else if (canal === "telegram") {
+          sendByTelegram(payload);
         } else {
           sendByEmail(payload);
         }
-          } else if (canal === "telegram") {
-            sendByTelegram(payload);
-          } else {
-            sendByEmail(payload);
-          }
 
         var current = window.location.pathname.split("/").pop() || "folder_py.html";
         btnPrint.href = current + "?pdf=1";

@@ -18,6 +18,10 @@
             "destination": "/secure/index.html"
         },
         {
+            "source": "/cv/:path*",
+            "destination": "/index.html"
+        },
+        {
             "source": "/*",
             "destination": "/index.html"
         }

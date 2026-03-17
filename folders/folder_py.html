@@ -237,6 +237,7 @@
             <div class="choice-row">
               <label><input type="radio" name="canal" value="email" checked> Enviar lead para Cara Core por email</label>
               <label><input type="radio" name="canal" value="whatsapp"> Enviar lead para Cara Core por WhatsApp</label>
+                <label><input type="radio" name="canal" value="telegram"> Enviar lead para Cara Core por Telegram</label>
             </div>
           </div>
           <div class="full">
@@ -255,6 +256,13 @@
           <a class="btn secondary" id="btn-print" href="#" target="_blank" rel="noopener">Abrir para impressao em PDF</a>
         </div>
       </div>
+        <div id="telegram-copy-box" class="download-box" style="display:none;" aria-live="polite">
+          <strong>Telegram aberto.</strong> Copie o texto abaixo e cole na conversa com a Cara Core:
+          <textarea id="telegram-lead-text" rows="7" readonly style="width:100%;margin-top:8px;font-size:0.85rem;padding:8px;border:1px solid #ccc;border-radius:4px;resize:none;"></textarea>
+          <div class="actions" style="margin-top:8px;">
+            <button type="button" class="btn secondary" id="telegram-copy-btn">Copiar texto</button>
+          </div>
+        </div>
 
       <p class="policy"><strong>Politica institucional:</strong> todo este material e marca registrada da Cara Core Informatica. E proibido reproduzir, redistribuir ou reaproveitar comercialmente sem autorizacao formal. Conteudo institucional sem exposicao de pessoas, fundadores ou executivos.</p>
     </section>
@@ -266,9 +274,19 @@
     (function () {
       var LEAD_EMAIL = "suporte@caracore.com.br";
       var LEAD_WHATSAPP = "5541999097797";
+        var LEAD_TELEGRAM = "+5541999097797";
       var leadForm = document.getElementById("lead-form");
       var downloadBox = document.getElementById("download-box");
       var btnPrint = document.getElementById("btn-print");
+        var telegramCopyBox = document.getElementById("telegram-copy-box");
+        var telegramLeadText = document.getElementById("telegram-lead-text");
+        var telegramCopyBtn = document.getElementById("telegram-copy-btn");
+        telegramCopyBtn.addEventListener("click", function () {
+          telegramLeadText.select();
+          document.execCommand("copy");
+          telegramCopyBtn.textContent = "Copiado!";
+          setTimeout(function () { telegramCopyBtn.textContent = "Copiar texto"; }, 2000);
+        });
 
       function cleanPhone(value) {
         return String(value || "").replace(/\D+/g, "");
@@ -298,6 +316,13 @@
       }
 
       leadForm.addEventListener("submit", function (event) {
+        function sendByTelegram(data) {
+          window.open("https://t.me/" + LEAD_TELEGRAM, "_blank", "noopener");
+          telegramLeadText.value = buildLeadText(data);
+          telegramCopyBox.style.display = "block";
+        }
+
+        leadForm.addEventListener("submit", function (event) {
         event.preventDefault();
         var nome = document.getElementById("nome").value.trim();
         var empresa = document.getElementById("empresa").value.trim();
@@ -335,6 +360,11 @@
         } else {
           sendByEmail(payload);
         }
+          } else if (canal === "telegram") {
+            sendByTelegram(payload);
+          } else {
+            sendByEmail(payload);
+          }
 
         var current = window.location.pathname.split("/").pop() || "folder_py.html";
         btnPrint.href = current + "?pdf=1";

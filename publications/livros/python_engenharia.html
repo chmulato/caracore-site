@@ -7,6 +7,7 @@
         <meta name="description" content="Livro prático: automação, cálculos e produtividade com Python para engenharia. Exemplos, dicas e soluções reais. Cara Core Informática.">
         <meta name="keywords" content="Python, automação, engenharia, cálculos, produtividade, TI, Cara Core Informática">
         <meta name="author" content="Cara Core Informática">
+        <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
         <link rel="canonical" href="https://caracore.com.br/publications/livros/python_engenharia.html">
         <!-- Open Graph / Facebook -->
         <meta property="og:title" content="Python para Engenharia | Cara Core Informática">
@@ -142,6 +143,25 @@
                 nav, .toc { padding: 0.7em 0.5em; }
             }
         </style>
+        <style>
+            @media print {
+                @page { size: A4; margin: 12mm; }
+                body {
+                    max-width: none !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    background: #fff !important;
+                    color: #000 !important;
+                    font-size: 11pt !important;
+                    line-height: 1.45 !important;
+                }
+                nav, .toc, .sumario-link, .voltar, .actions, .lead-box, .note,
+                a[href^="#"] { display: none !important; }
+                a { color: #000 !important; text-decoration: none !important; }
+                img, figure, table, pre, blockquote { page-break-inside: avoid; }
+                h1, h2, h3 { page-break-after: avoid; }
+            }
+        </style>
     </head>
 <body>
     <div class="capa">
@@ -149,7 +169,7 @@
     </div>
     <hr/>
     <h3 id="título-introdução-à-programação-python-aplicada-à-engenharia">Título: Introdução à Programação Python Aplicada à Engenharia</h3>
-    <h3 id="autor-christian-vladimir-uhdre-mulato">Autor: Christian Vladimir Uhdre Mulato</h3>
+    <h3 id="autoria-cara-core-informatica">Autoria: Equipe Técnica Cara Core Informática</h3>
     <section id="prefacio">
     <h2>Prefácio</h2>
         <p>A engenharia sempre foi movida pela curiosidade e pelo desejo de transformar ideias em soluções concretas. Nos dias de hoje, a programação tornou-se uma poderosa aliada desse processo, permitindo que conceitos abstratos ganhem vida de forma dinâmica e interativa.</p>
@@ -829,10 +849,10 @@
     desejam iniciar no uso da programação para aplicações técnicas.</p>
     <p>Boa leitura e bons estudos!</p>
     <ul>
-    <li>Christian V. Uhdre Mulato</li>
-    <li>Engenheiro Químico e Desenvolvedor de Sistemas</li>
+    <li>Equipe Técnica Cara Core Informática</li>
+    <li>Especialistas em Engenharia de Processos e Soluções Digitais</li>
     </ul>
-    <p>Campo Largo – PR</p>
+    <p>Publicação institucional para apoio a clientes e estudantes.</p>
     <hr/>
     <h1 id="fundamentos-da-programação-em-python">2. Fundamentos da
     Programação em Python</h1><a class="sumario-link" href="#sumário">⬆️ Sumário</a>
@@ -8756,5 +8776,16 @@
     <div class="capa">
         <img alt="SOBRECAPA" src="imagens/02_capa.png"/>
     </div>
+    <p><strong>Politica institucional:</strong> todo este material e marca registrada da Cara Core Informatica. E proibida reproducao ou reaproveitamento comercial por terceiros sem autorizacao formal. O conteudo e institucional e nao expoe pessoas da empresa, fundadores ou executivos.</p>
+<script>
+    (function () {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get("pdf") === "1") {
+            window.addEventListener("load", function () {
+                setTimeout(function () { window.print(); }, 300);
+            });
+        }
+    })();
+</script>
 </body>
 </html>

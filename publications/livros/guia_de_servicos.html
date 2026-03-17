@@ -7,6 +7,7 @@
 <meta name="description" content="Guia de Serviços 2026 da Cara Core: Blindagem Fiscal (Reforma Tributária e IVA Dual IBS/CBS) e Aceleração de Produtividade Digital (Microsoft 365 e automação) com foco em ROI.">
 <meta name="keywords" content="guia de serviços 2026, reforma tributária, IBS, CBS, IVA dual, produtividade digital, Microsoft 365, automação, ROI, Cara Core Informática">
 <meta name="author" content="Cara Core Informática">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
 <link rel="canonical" href="https://caracore.com.br/publications/livros/guia_de_servicos.html">
 <!-- Open Graph / Facebook -->
 <meta property="og:title" content="Guia de Serviços 2026 | Cara Core Informática">
@@ -150,6 +151,25 @@ th {
     }
 }
 
+</style>
+<style>
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+  nav, .toc, .sumario-link, .voltar, .actions, .lead-box, .note,
+  a[href^="#"] { display: none !important; }
+  a { color: #000 !important; text-decoration: none !important; }
+  img, figure, table, pre, blockquote { page-break-inside: avoid; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
 </style>
 
   <meta charset="utf-8" />
@@ -633,5 +653,16 @@ práticas, pacotes e tecnologias forem incorporados aos serviços da Cara
 Core Informática. Recomendamos que os usuários revisem periodicamente o
 manual para se manterem informados sobre as últimas novidades e melhores
 práticas.</p>
+<p><strong>Politica institucional:</strong> todo este material e marca registrada da Cara Core Informatica. E proibida reproducao ou reaproveitamento comercial por terceiros sem autorizacao formal. O conteudo e institucional e nao expoe pessoas da empresa, fundadores ou executivos.</p>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("pdf") === "1") {
+      window.addEventListener("load", function () {
+        setTimeout(function () { window.print(); }, 300);
+      });
+    }
+  })();
+</script>
 </body>
 </html>

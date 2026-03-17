@@ -7,6 +7,7 @@
       <meta name="description" content="Livro prático: automação de tarefas, relatórios e produtividade com Python para escritórios. Exemplos, dicas e soluções reais. Cara Core Informática.">
       <meta name="keywords" content="Python, automação, escritórios, produtividade, relatórios, TI, Cara Core Informática">
       <meta name="author" content="Cara Core Informática">
+      <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
       <link rel="canonical" href="https://caracore.com.br/publications/livros/python_escritorios.html">
       <!-- Open Graph / Facebook -->
       <meta property="og:title" content="Python para Escritórios | Cara Core Informática">
@@ -140,6 +141,25 @@
             h1 { font-size: 1.3em; }
             h2 { font-size: 1.1em; }
             nav, .toc { padding: 0.7em 0.5em; }
+         }
+      </style>
+      <style>
+         @media print {
+            @page { size: A4; margin: 12mm; }
+            body {
+               max-width: none !important;
+               margin: 0 !important;
+               padding: 0 !important;
+               background: #fff !important;
+               color: #000 !important;
+               font-size: 11pt !important;
+               line-height: 1.45 !important;
+            }
+            nav, .toc, .sumario-link, .voltar, .actions, .lead-box, .note,
+            a[href^="#"] { display: none !important; }
+            a { color: #000 !important; text-decoration: none !important; }
+            img, figure, table, pre, blockquote { page-break-inside: avoid; }
+            h1, h2, h3 { page-break-after: avoid; }
          }
       </style>
 </head>
@@ -2980,5 +3000,16 @@ cliente<br />
 <div class="contracapa">
 <img src="images/contra_capa.png" alt="Contra Capa do Livro">
 </div>
+<p><strong>Politica institucional:</strong> todo este material e marca registrada da Cara Core Informatica. E proibida reproducao ou reaproveitamento comercial por terceiros sem autorizacao formal. O conteudo e institucional e nao expoe pessoas da empresa, fundadores ou executivos.</p>
+<script>
+   (function () {
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("pdf") === "1") {
+         window.addEventListener("load", function () {
+            setTimeout(function () { window.print(); }, 300);
+         });
+      }
+   })();
+</script>
 </body>
 </html>

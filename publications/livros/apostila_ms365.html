@@ -7,6 +7,7 @@
 <meta name="description" content="Apostila de Apoio ao Cliente (Microsoft 365) da Cara Core: colaboração, segurança (backup em nuvem e proteção de dados), integração Teams/OneDrive/SharePoint e ganchos de automação. Conteúdo educativo com orientação de implantação e migração profissional.">
 <meta name="keywords" content="apostila de apoio ao cliente, Microsoft 365, implantação, migração, segurança digital, backup em nuvem, proteção de dados, Teams, OneDrive, SharePoint, produtividade, automação, Cara Core Informática">
 <meta name="author" content="Cara Core Informática">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
 <link rel="canonical" href="https://caracore.com.br/publications/livros/apostila_ms365.html">
 <!-- Open Graph / Facebook -->
 <meta property="og:title" content="Apostila de Apoio ao Cliente — Microsoft 365 | Cara Core Informática">
@@ -150,6 +151,25 @@ th {
     }
 }
 
+</style>
+<style>
+@media print {
+  @page { size: A4; margin: 12mm; }
+  body {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+  nav, .toc, .sumario-link, .voltar, .actions, .lead-box, .note,
+  a[href^="#"] { display: none !important; }
+  a { color: #000 !important; text-decoration: none !important; }
+  img, figure, table, pre, blockquote { page-break-inside: avoid; }
+  h1, h2, h3 { page-break-after: avoid; }
+}
 </style>
 
   <meta charset="utf-8" />
@@ -1076,5 +1096,16 @@ Nosso papel é exclusivamente prestar suporte, treinamento e orientação
 para o melhor uso das soluções Microsoft por nossos clientes e
 parceiros.</p>
 </blockquote>
+<p><strong>Politica institucional:</strong> todo este material e marca registrada da Cara Core Informatica. E proibida reproducao ou reaproveitamento comercial por terceiros sem autorizacao formal. O conteudo e institucional e nao expoe pessoas da empresa, fundadores ou executivos.</p>
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    if (params.get("pdf") === "1") {
+      window.addEventListener("load", function () {
+        setTimeout(function () { window.print(); }, 300);
+      });
+    }
+  })();
+</script>
 </body>
 </html>

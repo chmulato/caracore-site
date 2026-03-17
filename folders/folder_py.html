@@ -1,155 +1,353 @@
 ﻿<!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Cara Core Informática - Folder Digital</title>
+  <title>Cara Core Informática | Folder Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
+  <meta name="description" content="Folder institucional da Cara Core Informática com soluções Python para empresas, no novo padrão de captação de lead e LGPD.">
+  <meta name="author" content="Cara Core Informática">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
   <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
   <style>
-    @font-face {
-      font-family: 'Bellerose';
-      src: url('../fonts/Bellerose.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
+    :root {
+      --bg: #f4f7fb;
+      --surface: #ffffff;
+      --ink: #15263a;
+      --muted: #4e627c;
+      --brand: #0b5cab;
+      --brand-2: #1f8f6b;
+      --line: #d6e1ef;
     }
+
+    * { box-sizing: border-box; }
+
     body {
-      background: #f6f7fb;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
+      margin: 0;
+      background: radial-gradient(circle at 10% 10%, #e9f2ff 0%, transparent 35%), var(--bg);
+      font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+      color: var(--ink);
+      line-height: 1.55;
     }
-    .folder-title {
-      color: #5f2c82;
-      font-weight: 700;
-      letter-spacing: 1px;
-      font-family: 'Bellerose', Arial, sans-serif;
-      text-transform: uppercase;
+
+    .container {
+      width: min(980px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
     }
-    .folder-subtitle {
-      color: #36d1c4;
-      font-size: 1.2rem;
-      font-weight: 500;
-      margin-bottom: 1.2rem;
-      font-family: 'Bellerose', Arial, sans-serif;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+
+    .hero {
+      background: linear-gradient(130deg, #0a3f78, #0b5cab 55%, #1f8f6b);
+      color: #fff;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 10px 26px rgba(20, 38, 58, 0.15);
     }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.5rem, 2.5vw, 2rem);
+      line-height: 1.2;
+    }
+
+    .hero p { margin: 0; opacity: 0.95; }
+
     .folder-card {
-      background: #f5e6da;
-      border-radius: 18px;
-      box-shadow: 0 2px 16px 0 rgba(0,0,0,0.06);
-      padding: 1rem 0.5rem;
-      margin: 2rem auto;
-        max-width: 600px; /* diminua se necessário */
-      font-size: 12px;
+      margin-top: 18px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 8px 20px rgba(20, 38, 58, 0.08);
     }
+
     .section-title {
-      color: #5f2c82;
-      font-size: 1.15rem;
+      margin: 12px 0 8px;
+      color: var(--brand);
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .service-list { margin: 0; padding-left: 18px; }
+    .service-list li { margin-bottom: 7px; color: #2b4058; }
+
+    .lead-box {
+      margin-top: 18px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .lead-grid label {
+      display: block;
+      font-size: 0.87rem;
       font-weight: 600;
-      margin-top: 2rem;
-      margin-bottom: 0.7rem;
+      margin-bottom: 4px;
+      color: #29415a;
     }
-    .service-list li {
-      margin-bottom: 0.5rem;
+
+    .lead-grid input,
+    .lead-grid textarea,
+    .lead-grid select {
+      width: 100%;
+      border: 1px solid #c8d7ea;
+      border-radius: 10px;
+      padding: 10px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
     }
-    .contact-link {
-      color: #229ed9;
+
+    .full { grid-column: 1 / -1; }
+
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: #2c4660;
+    }
+
+    .choice-row label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+    }
+
+    .actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 9px 13px;
+      font-weight: 700;
+      cursor: pointer;
       text-decoration: none;
-      font-weight: 600;
+      font-size: 0.94rem;
     }
-    .contact-link:hover {
-      text-decoration: underline;
-      color: #5f2c82;
+
+    .btn.primary { background: var(--brand); color: #fff; }
+    .btn.secondary { background: #fff; color: var(--ink); border-color: var(--line); }
+
+    .download-box {
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px dashed #a9c0df;
+      border-radius: 10px;
+      background: #f7fbff;
+      display: none;
     }
-    .icon {
-      font-size: 1.2em;
-      margin-right: 6px;
-      color: #36d1c4;
+
+    .download-box.show { display: block; }
+
+    .policy {
+      margin-top: 12px;
+      font-size: 0.86rem;
+      color: #536980;
     }
-    @media (max-width: 576px) {
-      .folder-card {
-        padding: 1rem 0.5rem;
+
+    @media (max-width: 900px) {
+      .lead-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body {
+        background: #fff !important;
+        color: #000 !important;
+        font-size: 11pt !important;
       }
+      .lead-box, .actions, .policy[data-screen-only="true"] { display: none !important; }
+      .hero, .folder-card {
+        box-shadow: none !important;
+        border: 1px solid #ddd !important;
+        background: #fff !important;
+        color: #000 !important;
+      }
+      a { color: #000 !important; text-decoration: none !important; }
+      ul, li { page-break-inside: avoid; }
+      .container { width: 100% !important; padding: 0 !important; }
     }
   </style>
 </head>
 <body>
-<!-- Botão PDF -->
-<div class="text-center mt-3">
-  <button id="btn-pdf" class="btn btn-outline-primary mb-3">
-    <i class="bi bi-file-earmark-pdf"></i> Baixar PDF
-  </button>
-</div>
-<div id="folder-content" class="folder-card">
-    <h1 class="folder-title text-center mb-2">Cara Core Informática</h1>
-    <div class="folder-subtitle text-center mb-3">Soluções Inteligentes para o seu Negócio</div>
-    <div class="text-center mb-4">
-      <a href="mailto:suporte@caracore.com.br" class="contact-link">
-        <span class="icon bi bi-envelope-fill"></span>suporte@caracore.com.br
-      </a>
-    </div>
+  <main class="container">
+    <section class="hero" id="folder-content">
+      <h1>Cara Core Informática - Folder Python para Empresas</h1>
+      <p>Solucoes de automacao e produtividade com foco em resultado, seguranca operacional e ganho de eficiencia para pequenos e medios negocios.</p>
+    </section>
 
-    <div class="section-title"><span class="icon bi bi-lightbulb"></span>Nossos Serviços</div>
-    <div class="mb-2 fw-semibold">Automação com Python</div>
-    <ul class="service-list">
-      <li><b>Relatórios Automáticos:</b> Geração de PDFs e planilhas a partir de dados brutos (Excel, SQL, APIs).</li>
-      <li><b>Envio de E-mails Personalizados:</b> Disparo automático de e-mails com anexos, alertas e mensagens segmentadas.</li>
-      <li><b>Integração de Sistemas (API):</b> Comunicação entre sistemas (ERP, CRM, e-commerce etc.).</li>
-      <li><b>Web Scraping:</b> Coleta de dados de sites para pesquisa de mercado, preços ou notícias.</li>
-      <li><b>Automação de Tarefas Repetitivas:</b> Organização de arquivos, backups, renomeações automáticas etc.</li>
-      <li><b>Simulações Técnicas e Modelagens:</b> Scripts para cálculos, gráficos e tomada de decisão técnica.</li>
-      <li><b>Chatbots com IA para Atendimento:</b> Assistentes personalizados com linguagem natural.</li>
-      <li><b>Análise de Dados de Equipamentos:</b> Processamento de dados industriais ou de sensores.</li>
-    </ul>
+    <section class="folder-card">
+      <h2 class="section-title"><i class="bi bi-cpu"></i> Solucoes em Python</h2>
+      <ul class="service-list">
+        <li><strong>Automacao de processos:</strong> reducao de tarefas manuais e retrabalho.</li>
+        <li><strong>Relatorios inteligentes:</strong> consolidacao de dados em paineis e PDF executivo.</li>
+        <li><strong>Integracao entre sistemas:</strong> ERP, CRM, e-commerce e APIs de mercado.</li>
+        <li><strong>Monitoramento de operacao:</strong> alertas por evento e indicadores criticos.</li>
+        <li><strong>Rotinas administrativas:</strong> arquivos, conciliacoes, notificacoes e produtividade.</li>
+      </ul>
 
-    <div class="mb-2 fw-semibold mt-4">Suporte Microsoft 365</div>
-    <ul class="service-list">
-      <li><b>Implantação e Gerenciamento:</b> Configuração de contas, domínios, permissões e segurança.</li>
-      <li><b>Suporte Técnico Office 365:</b> Outlook, Word, Excel, Teams, OneDrive e SharePoint.</li>
-      <li><b>Treinamento Personalizado:</b> Capacitação para uso eficiente das ferramentas Microsoft 365.</li>
-      <li><b>Migração e Organização de Dados:</b> Transferência segura de e-mails, arquivos e pastas.</li>
-      <li><b>Automação com Power Automate:</b> Criação de fluxos de trabalho e notificações automáticas.</li>
-      <li><b>Gestão no Microsoft Teams:</b> Criação de grupos, canais, reuniões e regras de acesso.</li>
-      <li><b>Segurança e Backup na Nuvem:</b> Ativação de MFA, compliance e proteção contra perda de dados.</li>
-      <li><b>Gerenciamento de Dispositivos (MDM):</b> Controle remoto de celulares e notebooks da equipe.</li>
-    </ul>
+      <h2 class="section-title"><i class="bi bi-shield-check"></i> Diferenciais institucionais</h2>
+      <ul class="service-list">
+        <li>Escopo orientado a impacto de negocio.</li>
+        <li>Implementacao com governanca e boas praticas.</li>
+        <li>Atendimento comercial e tecnico pela Cara Core Informatica.</li>
+      </ul>
+    </section>
 
-    <div class="section-title"><span class="icon bi bi-star-fill"></span>Por que escolher a Cara Core Informática?</div>
-    <ul class="service-list">
-      <li>Atendimento técnico experiente e humanizado</li>
-      <li>Soluções personalizadas com foco em eficiência</li>
-      <li>Suporte híbrido: remoto e presencial (sob consulta)</li>
-      <li>Segurança, inovação e agilidade para seu negócio</li>
-    </ul>
+    <section class="lead-box" id="captacao-lead">
+      <h3>Receber folder completo e liberar impressao PDF</h3>
+      <p>Para acesso ao material completo no novo padrao, informe contato de lead e aceite LGPD.</p>
 
-    <div class="mb-2 d-flex align-items-center justify-content-between" style="margin-top:2.5rem;">
-      <div>
-        <a href="mailto:suporte@caracore.com.br" class="contact-link">
-          <span class="icon bi bi-envelope-fill"></span>suporte@caracore.com.br
-        </a><br>
-        <a href="https://wa.me/5541999097797" class="contact-link" target="_blank">
-          <span class="icon bi bi-whatsapp"></span>WhatsApp
-        </a><br>
-        <a href="https://www.caracore.com.br" class="contact-link" target="_blank">
-          <span class="icon bi bi-globe"></span>www.caracore.com.br
-        </a>
+      <form id="lead-form">
+        <div class="lead-grid">
+          <div>
+            <label for="nome">Nome</label>
+            <input id="nome" type="text" required>
+          </div>
+          <div>
+            <label for="empresa">Empresa</label>
+            <input id="empresa" type="text" required>
+          </div>
+          <div>
+            <label for="email">Email (opcional)</label>
+            <input id="email" type="email">
+          </div>
+          <div>
+            <label for="whatsapp">WhatsApp (opcional)</label>
+            <input id="whatsapp" type="tel" placeholder="Ex.: 41999997777">
+          </div>
+          <div class="full">
+            <label for="objetivo">Objetivo da empresa</label>
+            <textarea id="objetivo" rows="3" placeholder="Descreva brevemente o que deseja automatizar."></textarea>
+          </div>
+          <div class="full">
+            <div class="choice-row">
+              <label><input type="radio" name="canal" value="email" checked> Enviar lead para Cara Core por email</label>
+              <label><input type="radio" name="canal" value="whatsapp"> Enviar lead para Cara Core por WhatsApp</label>
+            </div>
+          </div>
+          <div class="full">
+            <label><input id="lgpd" type="checkbox" required> Li e autorizo o tratamento dos meus dados para contato comercial da Cara Core Informatica (LGPD).</label>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary" type="submit">Validar e liberar material</button>
+        </div>
+      </form>
+
+      <div id="download-box" class="download-box" aria-live="polite">
+        <strong>Lead enviado com sucesso.</strong> Acesso liberado:
+        <div class="actions">
+          <a class="btn secondary" id="btn-print" href="#" target="_blank" rel="noopener">Abrir para impressao em PDF</a>
+        </div>
       </div>
-      <!-- Logo removido -->
-    </div>
- </div>
-  <script src="../js/html2pdf.bundle.min.js"></script>
+
+      <p class="policy"><strong>Politica institucional:</strong> todo este material e marca registrada da Cara Core Informatica. E proibido reproduzir, redistribuir ou reaproveitar comercialmente sem autorizacao formal. Conteudo institucional sem exposicao de pessoas, fundadores ou executivos.</p>
+    </section>
+
+    <p class="policy" data-screen-only="true"><strong>Contato oficial:</strong> suporte@caracore.com.br | WhatsApp: 5541999097797 | www.caracore.com.br</p>
+  </main>
+
   <script>
-    document.getElementById('btn-pdf').addEventListener('click', function () {
-      var element = document.getElementById('folder-content');
-      html2pdf().set({
-        margin: [0, 0, 0, 0],
-        filename: 'folder_cara_core.pdf',
-        image: { type: 'png', quality: 1 },
-        html2canvas: { scale: 1.5 }, // aumenta a nitidez
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      }).from(element).save();
-    });
+    (function () {
+      var LEAD_EMAIL = "suporte@caracore.com.br";
+      var LEAD_WHATSAPP = "5541999097797";
+      var leadForm = document.getElementById("lead-form");
+      var downloadBox = document.getElementById("download-box");
+      var btnPrint = document.getElementById("btn-print");
+
+      function cleanPhone(value) {
+        return String(value || "").replace(/\D+/g, "");
+      }
+
+      function buildLeadText(data) {
+        return [
+          "Novo lead - Folder Python",
+          "Nome: " + data.nome,
+          "Empresa: " + data.empresa,
+          "Email: " + (data.email || "nao informado"),
+          "WhatsApp: " + (data.whatsapp || "nao informado"),
+          "Objetivo: " + (data.objetivo || "nao informado"),
+          "LGPD: consentimento confirmado"
+        ].join("\n");
+      }
+
+      function sendByEmail(data) {
+        var subject = encodeURIComponent("Novo lead - Folder Python");
+        var body = encodeURIComponent(buildLeadText(data));
+        window.location.href = "mailto:" + LEAD_EMAIL + "?subject=" + subject + "&body=" + body;
+      }
+
+      function sendByWhatsApp(data) {
+        var text = encodeURIComponent(buildLeadText(data));
+        window.open("https://wa.me/" + LEAD_WHATSAPP + "?text=" + text, "_blank", "noopener");
+      }
+
+      leadForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var nome = document.getElementById("nome").value.trim();
+        var empresa = document.getElementById("empresa").value.trim();
+        var email = document.getElementById("email").value.trim();
+        var whatsapp = cleanPhone(document.getElementById("whatsapp").value);
+        var objetivo = document.getElementById("objetivo").value.trim();
+        var lgpd = document.getElementById("lgpd").checked;
+        var canal = (leadForm.querySelector('input[name="canal"]:checked') || {}).value || "email";
+
+        if (!email && !whatsapp) {
+          alert("Informe ao menos um contato: email ou WhatsApp.");
+          return;
+        }
+
+        if (whatsapp && whatsapp.length < 10) {
+          alert("Informe um WhatsApp valido com DDD.");
+          return;
+        }
+
+        if (!lgpd) {
+          alert("E necessario aceitar o consentimento LGPD para liberar o material.");
+          return;
+        }
+
+        var payload = {
+          nome: nome,
+          empresa: empresa,
+          email: email,
+          whatsapp: whatsapp,
+          objetivo: objetivo
+        };
+
+        if (canal === "whatsapp") {
+          sendByWhatsApp(payload);
+        } else {
+          sendByEmail(payload);
+        }
+
+        var current = window.location.pathname.split("/").pop() || "folder_py.html";
+        btnPrint.href = current + "?pdf=1";
+        downloadBox.classList.add("show");
+      });
+
+      var params = new URLSearchParams(window.location.search);
+      if (params.get("pdf") === "1") {
+        window.addEventListener("load", function () {
+          setTimeout(function () { window.print(); }, 300);
+        });
+      }
+    })();
   </script>
 </body>
 </html>

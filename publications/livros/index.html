@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biblioteca Cara Core | Guias para Clientes</title>
+  <meta name="description" content="Biblioteca pública da Cara Core com guias simples para empresas: produtividade, PDV e automação com linguagem para público leigo." />
+  <meta name="author" content="Cara Core Informática" />
+  <meta name="robots" content="index,follow,max-snippet:80,max-image-preview:none,noarchive" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="canonical" href="https://caracore.com.br/publications/livros/" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --surface: #ffffff;
+      --ink: #122033;
+      --muted: #4d5f75;
+      --line: #d9e2ef;
+      --brand: #0b5cab;
+      --brand-2: #1f8f6b;
+      --shadow: 0 10px 30px rgba(18, 32, 51, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "Trebuchet MS", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 10%, #e8f1ff 0%, transparent 42%),
+        radial-gradient(circle at 85% 0%, #e7fff7 0%, transparent 30%),
+        var(--bg);
+      line-height: 1.55;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 26px 0 40px;
+    }
+
+    .hero {
+      background: linear-gradient(130deg, #0a3f78, #0b5cab 52%, #1f8f6b);
+      color: #fff;
+      border-radius: 18px;
+      padding: 30px 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      margin: 0 0 8px;
+      font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+      line-height: 1.2;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 800px;
+      opacity: 0.96;
+      font-size: 1.02rem;
+    }
+
+    .section-title {
+      margin: 28px 0 12px;
+      font-size: 1.22rem;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      grid-column: span 6;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(18, 32, 51, 0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      background: #e8f1ff;
+      color: #0b4f96;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.14rem;
+      line-height: 1.3;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .actions {
+      margin-top: auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.94rem;
+      padding: 9px 13px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn.primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .btn.secondary {
+      border-color: var(--line);
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba(18, 32, 51, 0.12);
+    }
+
+    .note {
+      margin-top: 18px;
+      border-left: 4px solid var(--brand-2);
+      background: #f1fbf7;
+      padding: 12px 14px;
+      color: #28453c;
+      border-radius: 8px;
+    }
+
+    .lead-box {
+      margin-top: 18px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(18, 32, 51, 0.06);
+      padding: 18px;
+    }
+
+    .lead-box h3 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+
+    .lead-box p {
+      margin: 0 0 10px;
+      color: var(--muted);
+    }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .lead-grid label {
+      display: block;
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: #27384d;
+    }
+
+    .lead-grid input,
+    .lead-grid select,
+    .lead-grid textarea {
+      width: 100%;
+      border: 1px solid #c9d6e8;
+      border-radius: 10px;
+      padding: 10px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .lead-grid .full {
+      grid-column: 1 / -1;
+    }
+
+    .disclaimer {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #5b6b80;
+    }
+
+    .choice-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+      color: #284158;
+      font-size: 0.92rem;
+    }
+
+    .choice-row label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .download-box {
+      margin-top: 12px;
+      padding: 12px;
+      border: 1px dashed #acc2df;
+      border-radius: 10px;
+      background: #f7fbff;
+      color: #284158;
+      display: none;
+    }
+
+    .download-box.show {
+      display: block;
+    }
+
+    @media (max-width: 900px) {
+      .card { grid-column: span 12; }
+      .lead-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <h1>Biblioteca Cara Core para quem quer resolver o problema sem complicacao</h1>
+      <p>Esta selecao foi organizada para novos clientes e publico leigo. Cada guia explica o essencial, mostra ganhos praticos e ajuda voce a escolher o proximo passo com seguranca.</p>
+    </section>
+
+    <h2 class="section-title">Guias recomendados para comecar</h2>
+    <section class="cards">
+      <article class="card">
+        <span class="tag">Produtividade</span>
+        <h2>Apostila Microsoft 365 para equipes</h2>
+        <p>Entenda como organizar arquivos, comunicacao e seguranca no dia a dia da empresa usando um plano simples de implantacao.</p>
+        <div class="actions">
+          <a class="btn primary lead-trigger" href="#captacao-lead" data-material="Apostila Microsoft 365" data-download="apostila_ms365.html">Solicitar download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Vendas</span>
+        <h2>Guia de Servicos CaraCore PDV</h2>
+        <p>Veja como implantar, treinar equipe e manter o caixa rodando com menos parada e mais previsibilidade operacional.</p>
+        <div class="actions">
+          <a class="btn primary lead-trigger" href="#captacao-lead" data-material="Guia de Servicos CaraCore PDV" data-download="guia_de_servicos_caracore-pdv.html">Solicitar download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Gestao</span>
+        <h2>Guia de Servicos 2026</h2>
+        <p>Resumo dos servicos para produtividade digital e adequacao fiscal, com foco em retorno pratico para pequenas e medias empresas.</p>
+        <div class="actions">
+          <a class="btn primary lead-trigger" href="#captacao-lead" data-material="Guia de Servicos 2026" data-download="guia_de_servicos.html">Solicitar download</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="tag">Automacao</span>
+        <h2>Python para Escritorios e Engenharia</h2>
+        <p>Materiais para quem quer automatizar tarefas repetitivas e ganhar tempo com exemplos aplicaveis em operacoes reais.</p>
+        <div class="actions">
+          <a class="btn secondary lead-trigger" href="#captacao-lead" data-material="Python para Escritorios" data-download="python_escritorios.html">Python para escritorios</a>
+          <a class="btn secondary lead-trigger" href="#captacao-lead" data-material="Python para Engenharia" data-download="python_engenharia.html">Python para engenharia</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="lead-box" id="captacao-lead">
+      <h3>Acesso com atendimento comercial da Cara Core</h3>
+      <p>Para proteger o material e manter o beneficio comercial da Cara Core Informatica, o acesso completo e enviado mediante contato de lead qualificado.</p>
+      <form id="lead-form">
+        <div class="lead-grid">
+          <div>
+            <label for="nome">Nome</label>
+            <input id="nome" name="Nome" type="text" required />
+          </div>
+          <div>
+            <label for="empresa">Empresa</label>
+            <input id="empresa" name="Empresa" type="text" required />
+          </div>
+          <div>
+            <label for="email">Email corporativo (opcional)</label>
+            <input id="email" name="Email" type="email" />
+          </div>
+          <div>
+            <label for="whatsapp">WhatsApp (opcional)</label>
+            <input id="whatsapp" name="WhatsApp" type="tel" placeholder="Ex.: 41999997777" />
+          </div>
+          <div>
+            <label for="interesse">Material de interesse</label>
+            <select id="interesse" name="Material" required>
+              <option value="">Selecione</option>
+              <option value="Apostila Microsoft 365">Apostila Microsoft 365</option>
+              <option value="Guia de Servicos CaraCore PDV">Guia de Servicos CaraCore PDV</option>
+              <option value="Guia de Servicos 2026">Guia de Servicos 2026</option>
+              <option value="Python para Escritorios">Python para Escritorios</option>
+              <option value="Python para Engenharia">Python para Engenharia</option>
+            </select>
+          </div>
+          <div class="full">
+            <label for="desafio">Desafio atual da empresa</label>
+            <textarea id="desafio" name="Desafio" rows="4" placeholder="Descreva de forma breve o que voce precisa resolver."></textarea>
+          </div>
+          <div class="full">
+            <div class="choice-row">
+              <label>
+                <input type="radio" name="canalEnvio" value="email" checked />
+                Receber e registrar lead por email
+              </label>
+              <label>
+                <input type="radio" name="canalEnvio" value="whatsapp" />
+                Receber e registrar lead por WhatsApp
+              </label>
+            </div>
+          </div>
+          <div class="full">
+            <label>
+              <input id="lgpd" type="checkbox" required />
+              Li e autorizo o tratamento dos meus dados para contato comercial da Cara Core Informatica, conforme LGPD.
+            </label>
+          </div>
+        </div>
+        <div class="actions" style="margin-top: 12px;">
+          <button class="btn primary" type="submit">Validar dados e enviar lead</button>
+        </div>
+      </form>
+      <div id="download-box" class="download-box" aria-live="polite">
+        <strong>Lead enviado com sucesso.</strong> Material liberado para este atendimento:
+        <div class="actions" style="margin-top: 8px;">
+          <a id="download-link" class="btn secondary" href="#" download>Baixar material selecionado</a>
+          <a id="print-link" class="btn secondary" href="#" target="_blank" rel="noopener">Abrir versao para impressao PDF</a>
+        </div>
+      </div>
+      <p class="disclaimer">Uso restrito: todo este material e marca registrada da Cara Core Informatica. E proibida reproducao, redistribuicao, treinamento de modelos e reaproveitamento comercial sem autorizacao formal. Conteudo institucional sem exposicao de pessoas da empresa, fundadores ou executivos.</p>
+    </section>
+
+    <p class="note"><strong>Transparencia:</strong> esta area publica prioriza conteudo institucional e educacional, sem exposicao de dados pessoais de colaboradores e executivos.</p>
+  </main>
+  <script>
+    (function () {
+      var LEAD_EMAIL = "suporte@caracore.com.br";
+      var LEAD_WHATSAPP = "5541999097797";
+
+      var leadForm = document.getElementById("lead-form");
+      var materialField = document.getElementById("interesse");
+      var nameField = document.getElementById("nome");
+      var companyField = document.getElementById("empresa");
+      var emailField = document.getElementById("email");
+      var whatsappField = document.getElementById("whatsapp");
+      var challengeField = document.getElementById("desafio");
+      var lgpdField = document.getElementById("lgpd");
+      var downloadBox = document.getElementById("download-box");
+      var downloadLink = document.getElementById("download-link");
+      var printLink = document.getElementById("print-link");
+
+      var currentDownload = "";
+      var materialToFile = {
+        "Apostila Microsoft 365": "apostila_ms365.html",
+        "Guia de Servicos CaraCore PDV": "guia_de_servicos_caracore-pdv.html",
+        "Guia de Servicos 2026": "guia_de_servicos.html",
+        "Python para Escritorios": "python_escritorios.html",
+        "Python para Engenharia": "python_engenharia.html"
+      };
+
+      function sanitizePhone(value) {
+        return String(value || "").replace(/\D+/g, "");
+      }
+
+      function buildLeadText(data) {
+        return [
+          "Novo lead - Biblioteca Cara Core",
+          "Nome: " + data.nome,
+          "Empresa: " + data.empresa,
+          "Email: " + (data.email || "nao informado"),
+          "WhatsApp: " + (data.whatsapp || "nao informado"),
+          "Material: " + data.material,
+          "Desafio: " + (data.desafio || "nao informado"),
+          "LGPD: consentimento confirmado"
+        ].join("\n");
+      }
+
+      function openMailto(data) {
+        var subject = encodeURIComponent("Novo lead - Biblioteca Cara Core");
+        var body = encodeURIComponent(buildLeadText(data));
+        window.location.href = "mailto:" + LEAD_EMAIL + "?subject=" + subject + "&body=" + body;
+      }
+
+      function openWhatsApp(data) {
+        var text = encodeURIComponent(buildLeadText(data));
+        window.open("https://wa.me/" + LEAD_WHATSAPP + "?text=" + text, "_blank", "noopener");
+      }
+
+      function showDownload(path) {
+        if (!path) {
+          return;
+        }
+        downloadLink.href = path;
+        printLink.href = path + "?pdf=1";
+        downloadBox.classList.add("show");
+      }
+
+      document.querySelectorAll(".lead-trigger").forEach(function (button) {
+        button.addEventListener("click", function () {
+          var material = button.getAttribute("data-material");
+          var file = button.getAttribute("data-download");
+          if (material) {
+            materialField.value = material;
+          }
+          currentDownload = file || "";
+          downloadBox.classList.remove("show");
+        });
+      });
+
+      leadForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        var email = emailField.value.trim();
+        var whatsapp = sanitizePhone(whatsappField.value);
+
+        if (!email && !whatsapp) {
+          alert("Informe ao menos um contato: email ou WhatsApp.");
+          return;
+        }
+
+        if (whatsapp && whatsapp.length < 10) {
+          alert("Informe um WhatsApp valido com DDD.");
+          return;
+        }
+
+        if (!lgpdField.checked) {
+          alert("Para seguir, voce precisa aceitar o consentimento LGPD.");
+          return;
+        }
+
+        var selectedChannel = (leadForm.querySelector('input[name="canalEnvio"]:checked') || {}).value || "email";
+        var data = {
+          nome: nameField.value.trim(),
+          empresa: companyField.value.trim(),
+          email: email,
+          whatsapp: whatsapp,
+          material: materialField.value,
+          desafio: challengeField.value.trim()
+        };
+
+        if (selectedChannel === "whatsapp") {
+          openWhatsApp(data);
+        } else {
+          openMailto(data);
+        }
+
+        if (!currentDownload && materialToFile[data.material]) {
+          currentDownload = materialToFile[data.material];
+        }
+
+        showDownload(currentDownload);
+      });
+    })();
+  </script>
+</body>
+</html>

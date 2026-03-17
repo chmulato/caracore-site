@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+    <title>Curriculum Istituzionale - Italiano</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f7fb;
+            color: #1b2b40;
+        }
+        .wrap {
+            max-width: 980px;
+            margin: 28px auto;
+            padding: 24px;
+            background: #fff;
+            border: 1px solid #d7e2ef;
+            border-radius: 12px;
+        }
+        .topbar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+        .topbar a {
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 1px solid #b7cbe4;
+            border-radius: 8px;
+            color: #0d3f75;
+            font-weight: 600;
+            background: #f7fbff;
+        }
+        .block {
+            margin-bottom: 18px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e8eef7;
+        }
+        .card {
+            border: 1px solid #dbe6f4;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+            background: #fbfdff;
+        }
+        h1, h2 {
+            margin-top: 0;
+        }
+        .error {
+            color: #a01919;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <main class="wrap">
+        <nav class="topbar">
+            <a href="/cv/public/index.html">Indietro</a>
+            <a href="/cv/public/curriculo-pt.html">Portugues</a>
+            <a href="/cv/public/curriculo-en.html">English</a>
+            <a href="/cv/public/perfil-completo.html">Profilo completo</a>
+        </nav>
+        <h1>Curriculum Istituzionale (Italiano)</h1>
+        <div id="resume-root"><p>Caricamento...</p></div>
+    </main>
+    <script src="/cv/public/js/json-to-html.js"></script>
+    <script>
+        loadResumeAsHtml({
+            targetId: 'resume-root',
+            jsonPath: '/cv/public/json/resume_last_8_years_it.json'
+        });
+    </script>
+</body>
+</html>

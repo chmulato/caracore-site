@@ -1381,5 +1381,52 @@ graph LR
   });
 </script>
 
+<script>
+  // Mantem a vitrine em ordem de roadmap com produtos disponiveis primeiro.
+  document.addEventListener('DOMContentLoaded', () => {
+    const roadmapOrder = [
+      'caracore-pdv',
+      'caracore-ink-agenda',
+      'minerador-ete',
+      'reino-oidc',
+      'circuito-python',
+      'area-51',
+      'caracore-mkt',
+      'caracore-seed',
+      'caracore-hub',
+      'caracore-ru',
+      'caracore-cso'
+    ];
+
+    const contactSection = document.querySelector('section.portfolio-contact');
+    if (contactSection) {
+      roadmapOrder.forEach((id) => {
+        const section = document.getElementById(id);
+        if (section) {
+          document.body.insertBefore(section, contactSection);
+        }
+      });
+    }
+
+    const navBadgesContainer = document.querySelector('.d-flex.flex-wrap.gap-3.mb-4.justify-content-center');
+    if (navBadgesContainer) {
+      const badgeById = new Map();
+      navBadgesContainer.querySelectorAll('a[href^="#"]').forEach((link) => {
+        const id = link.getAttribute('href')?.replace('#', '');
+        if (id) {
+          badgeById.set(id, link);
+        }
+      });
+
+      roadmapOrder.forEach((id) => {
+        const badge = badgeById.get(id);
+        if (badge) {
+          navBadgesContainer.appendChild(badge);
+        }
+      });
+    }
+  });
+</script>
+
 </body>
 </html>

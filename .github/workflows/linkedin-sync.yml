@@ -7,6 +7,8 @@ on:
     paths:
       - personal/feed.xml
       - personal/articles/**
+      - sala/redes/retro/feed.xml
+      - sala/redes/retro/articles/**
   schedule:
     - cron: "0 12 * * *"
   workflow_dispatch:
@@ -44,8 +46,8 @@ jobs:
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
-          BLOG_RSS_PATH: personal/feed.xml
+          BLOG_RSS_PATHS: personal/feed.xml,sala/redes/retro/feed.xml
           LINKEDIN_MAX_RECENT_CHECK: "15"
-          LINKEDIN_POST_PREFIX: "Novo artigo publicado no blog"
+          LINKEDIN_POST_PREFIX: "Nova publicacao sincronizada da Cara Core"
           LINKEDIN_POST_HASHTAGS: "#CaraCore #ArquiteturaDeSoftware #EngenhariaDeSoftware"
         run: python scripts/linkedin_sync_from_rss.py

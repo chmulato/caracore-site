@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""Sync the latest blog post from RSS to LinkedIn.
+"""Sync the latest publication from one or more RSS feeds to LinkedIn.
 
-This script reads the newest item from an RSS feed and publishes it to LinkedIn
-using the UGC API. It also checks recent LinkedIn posts to avoid duplicate
-publication of the same article URL.
+This script reads the newest item across one or more RSS feeds and publishes it
+to LinkedIn using the UGC API. It also checks recent LinkedIn posts to avoid
+duplicate publication of the same article URL.
 
 Required env vars:
 - LINKEDIN_ACCESS_TOKEN
 - LINKEDIN_AUTHOR_URN (e.g. urn:li:organization:123456)
 
 Optional env vars:
-- BLOG_RSS_PATH (default: personal/feed.xml)
+- BLOG_RSS_PATHS (default: personal/feed.xml,sala/redes/retro/feed.xml)
 - LINKEDIN_MAX_RECENT_CHECK (default: 10)
-- LINKEDIN_POST_PREFIX (default: "Novo artigo no blog Cara Core")
+- LINKEDIN_POST_PREFIX (default: "Nova publicacao sincronizada da Cara Core")
 - LINKEDIN_POST_HASHTAGS (default: "#CaraCore #Tecnologia #SoftwareEngineering")
 - DRY_RUN (default: false)
 """
@@ -27,7 +27,9 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 from dataclasses import dataclass
+from email.utils import parsedate_to_datetime
 from pathlib import Path
+from datetime import datetime, timezone
 
 
 @dataclass
@@ -35,6 +37,9 @@ class RssItem:
     title: str
     link: str
     guid: str
+    pub_date: datetime
+    source_title: str
+    source_path: str
 
 
 def env_bool(name: str, default: bool = False) -> bool:
@@ -49,6 +54,15 @@ def get_required_env(name: str) -> str:
     if not value:
         raise RuntimeError(f"Missing required environment variable: {name}")
     return value
+
+
+def parse_rss_datetime(raw: str | None) -> datetime:
+    if not raw:
+        return datetime.min.replace(tzinfo=timezone.utc)
+    parsed = parsedate_to_datetime(raw)
+    if parsed.tzinfo is None:
+        return parsed.replace(tzinfo=timezone.utc)
+    return parsed
 
 
 def read_latest_rss_item(rss_path: Path) -> RssItem:
@@ -66,14 +80,42 @@ def read_latest_rss_item(rss_path: Path) -> RssItem:
     if item is None:
         raise RuntimeError("No items found in RSS feed")
 
+    source_title = (channel.findtext("title") or rss_path.stem).strip()
     title = (item.findtext("title") or "").strip()
     link = (item.findtext("link") or "").strip()
     guid = (item.findtext("guid") or link).strip()
+    pub_date = parse_rss_datetime(item.findtext("pubDate"))
 
     if not title or not link:
         raise RuntimeError("RSS item missing required title/link")
 
-    return RssItem(title=title, link=link, guid=guid)
+    return RssItem(
+        title=title,
+        link=link,
+        guid=guid,
+        pub_date=pub_date,
+        source_title=source_title,
+        source_path=str(rss_path).replace("\\", "/"),
+    )
+
+
+def read_latest_item_from_feeds(rss_paths: list[Path]) -> RssItem:
+    if not rss_paths:
+        raise RuntimeError("No RSS feeds configured")
+
+    items = [read_latest_rss_item(path) for path in rss_paths]
+    return max(items, key=lambda item: item.pub_date)
+
+
+def parse_rss_paths() -> list[Path]:
+    raw = os.getenv(
+        "BLOG_RSS_PATHS",
+        "personal/feed.xml,sala/redes/retro/feed.xml",
+    )
+    paths = [Path(part.strip()) for part in raw.split(",") if part.strip()]
+    if not paths:
+        raise RuntimeError("BLOG_RSS_PATHS is empty")
+    return paths
 
 
 def linkedin_request(
@@ -133,13 +175,19 @@ def already_published(token: str, author_urn: str, article_url: str, max_recent:
 
 
 def build_post_text(item: RssItem) -> str:
-    prefix = os.getenv("LINKEDIN_POST_PREFIX", "Novo artigo no blog Cara Core").strip()
+    prefix = os.getenv("LINKEDIN_POST_PREFIX", "Nova publicacao sincronizada da Cara Core").strip()
     hashtags = os.getenv(
         "LINKEDIN_POST_HASHTAGS",
         "#CaraCore #Tecnologia #SoftwareEngineering",
     ).strip()
 
-    return f"{prefix}\n\n{item.title}\n{item.link}\n\n{hashtags}".strip()
+    return (
+        f"{prefix}\n\n"
+        f"Fonte: {item.source_title}\n"
+        f"{item.title}\n"
+        f"{item.link}\n\n"
+        f"{hashtags}"
+    ).strip()
 
 
 def publish_post(token: str, author_urn: str, item: RssItem) -> str:
@@ -180,11 +228,12 @@ def publish_post(token: str, author_urn: str, item: RssItem) -> str:
 def main() -> int:
     try:
         dry_run = env_bool("DRY_RUN", default=False)
-        rss_path = Path(os.getenv("BLOG_RSS_PATH", "personal/feed.xml"))
-        item = read_latest_rss_item(rss_path)
+        rss_paths = parse_rss_paths()
+        item = read_latest_item_from_feeds(rss_paths)
 
         print(f"[linkedin-sync] Latest RSS item: {item.title}")
         print(f"[linkedin-sync] URL: {item.link}")
+        print(f"[linkedin-sync] Source: {item.source_title} ({item.source_path})")
 
         if dry_run:
             print("[linkedin-sync] DRY_RUN enabled; skipping LinkedIn API calls.")

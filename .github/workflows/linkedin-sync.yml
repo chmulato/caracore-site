@@ -6,6 +6,9 @@ on:
       - main
     paths:
       - personal/feed.xml
+      - personal/articles/**
+  schedule:
+    - cron: "0 12 * * *"
   workflow_dispatch:
 
 permissions:

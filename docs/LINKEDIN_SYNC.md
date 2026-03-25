@@ -6,7 +6,8 @@ Este projeto possui sincronizacao automatica do ultimo item do feed RSS para o L
 
 - Fonte de dados: `personal/feed.xml`.
 - Execucao automatica: workflow `.github/workflows/linkedin-sync.yml`.
-- Trigger automatico: qualquer push na branch `main` que altere `personal/feed.xml`.
+- Trigger automatico: qualquer push na branch `main` que altere `personal/feed.xml` ou `personal/articles/**`.
+- Trigger por agenda: execucao diaria automatica (12:00 UTC) para garantir sincronizacao mesmo sem alteracao direta no feed.
 - Trigger manual: `workflow_dispatch` no GitHub Actions.
 - Anti-duplicacao: o script consulta posts recentes no LinkedIn e pula publicacao quando a URL ja existe.
 

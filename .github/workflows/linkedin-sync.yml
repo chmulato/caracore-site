@@ -21,28 +21,32 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
-      - name: Validate LinkedIn secrets
+      - name: Check LinkedIn secrets
+        id: secrets
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
         run: |
-          if [ -z "$LINKEDIN_ACCESS_TOKEN" ]; then
-            echo "Missing secret: LINKEDIN_ACCESS_TOKEN"
-            exit 1
-          fi
-          if [ -z "$LINKEDIN_AUTHOR_URN" ]; then
-            echo "Missing secret: LINKEDIN_AUTHOR_URN"
-            exit 1
+          if [ -z "$LINKEDIN_ACCESS_TOKEN" ] || [ -z "$LINKEDIN_AUTHOR_URN" ]; then
+            if [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+              echo "::error::LinkedIn secrets are required for manual execution (workflow_dispatch)."
+              exit 1
+            fi
+            echo "::warning::LinkedIn secrets are not configured. Skipping publication for this run."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Publish latest RSS item to LinkedIn
+        if: steps.secrets.outputs.ready == 'true'
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           LINKEDIN_AUTHOR_URN: ${{ secrets.LINKEDIN_AUTHOR_URN }}
@@ -51,3 +55,7 @@ jobs:
           LINKEDIN_POST_PREFIX: "Nova publicacao sincronizada da Cara Core"
           LINKEDIN_POST_HASHTAGS: "#CaraCore #ArquiteturaDeSoftware #EngenhariaDeSoftware"
         run: python scripts/linkedin_sync_from_rss.py
+
+      - name: Skip summary
+        if: steps.secrets.outputs.ready != 'true'
+        run: echo "LinkedIn sync skipped because required secrets are missing."

@@ -277,15 +277,15 @@ def filter_items_for_feed(items: List[Dict], today: dt.datetime) -> List[Dict]:
     return filtered
 
 
-def build_rss(channel: Dict[str, str], items: List[Dict], base_url: str) -> str:
+def build_rss(channel: Dict[str, str], items: List[Dict], base_url: str, as_of_date: Optional[dt.datetime] = None) -> str:
     # Ordena itens por data (mais recente primeiro), mantendo sem data no final
     dated = [it for it in items if isinstance(it.get("date"), dt.datetime)]
     undated = [it for it in items if not isinstance(it.get("date"), dt.datetime)]
     dated.sort(key=lambda it: it["date"], reverse=True)
     ordered = dated + undated
 
-    # lastBuildDate = data do item mais recente, se existir
-    last_build = dated[0]["date"] if dated else dt.datetime.now(dt.timezone.utc)
+    # lastBuildDate = as_of_date quando fornecida, senão data do item mais recente
+    last_build = as_of_date or (dated[0]["date"] if dated else dt.datetime.now(dt.timezone.utc))
     last_build_str = format_rfc2822(last_build)
 
     lines: List[str] = []
@@ -346,7 +346,7 @@ def generate_mode_retro(root: Path, today: dt.datetime) -> None:
         "generator": "Cara Core RSS generator",
     }
 
-    rss = build_rss(channel, items, base_url="https://caracore.com.br/sala/redes/retro/")
+    rss = build_rss(channel, items, base_url="https://caracore.com.br/sala/redes/retro/", as_of_date=today)
     output_path.write_text(rss, encoding="utf-8")
 
 
@@ -367,7 +367,7 @@ def generate_mode_personal(root: Path, today: dt.datetime) -> None:
         "generator": "Cara Core RSS generator",
     }
 
-    rss = build_rss(channel, items, base_url="https://caracore.com.br/personal/")
+    rss = build_rss(channel, items, base_url="https://caracore.com.br/personal/", as_of_date=today)
     output_path.write_text(rss, encoding="utf-8")
 
 

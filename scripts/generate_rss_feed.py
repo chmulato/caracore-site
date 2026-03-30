@@ -6,6 +6,9 @@ from pathlib import Path
 from typing import List, Dict, Optional
 
 
+CYCLE_START_DATE = dt.datetime(2026, 6, 4, tzinfo=dt.timezone.utc)
+
+
 class RetroArticlesParser(HTMLParser):
     """Parser para sala/redes/retro/articles.html.
 
@@ -256,6 +259,24 @@ def format_rfc2822(d: dt.datetime) -> str:
     return email.utils.format_datetime(d)
 
 
+def normalize_as_of_date(as_of_date: Optional[str]) -> dt.datetime:
+    if not as_of_date:
+        now = dt.datetime.now(dt.timezone.utc)
+        return dt.datetime(now.year, now.month, now.day, 0, 0, tzinfo=dt.timezone.utc)
+
+    parsed = dt.datetime.strptime(as_of_date, "%Y-%m-%d")
+    return dt.datetime(parsed.year, parsed.month, parsed.day, 0, 0, tzinfo=dt.timezone.utc)
+
+
+def filter_items_for_feed(items: List[Dict], today: dt.datetime) -> List[Dict]:
+    filtered = [item for item in items if item.get("date") and item["date"] <= today]
+
+    if today >= CYCLE_START_DATE:
+        filtered = [item for item in filtered if item["date"] >= CYCLE_START_DATE]
+
+    return filtered
+
+
 def build_rss(channel: Dict[str, str], items: List[Dict], base_url: str) -> str:
     # Ordena itens por data (mais recente primeiro), mantendo sem data no final
     dated = [it for it in items if isinstance(it.get("date"), dt.datetime)]
@@ -308,16 +329,14 @@ def build_rss(channel: Dict[str, str], items: List[Dict], base_url: str) -> str:
     return "\n".join(lines) + "\n"
 
 
-def generate_mode_retro(root: Path) -> None:
+def generate_mode_retro(root: Path, today: dt.datetime) -> None:
     html_path = root / "sala" / "redes" / "retro" / "articles.html"
     output_path = root / "sala" / "redes" / "retro" / "feed.xml"
 
     text = html_path.read_text(encoding="utf-8")
     items = parse_retro_articles(text)
 
-    # Filtrar artigos a partir de 04/06/2026 conforme reposicionamento conjunto
-    start_date = dt.datetime(2026, 6, 4, tzinfo=dt.timezone.utc)
-    items = [item for item in items if item.get("date") and item["date"] >= start_date]
+    items = filter_items_for_feed(items, today)
 
     channel = {
         "title": "Artigos Retrô — Cara Core Informática",
@@ -331,16 +350,14 @@ def generate_mode_retro(root: Path) -> None:
     output_path.write_text(rss, encoding="utf-8")
 
 
-def generate_mode_personal(root: Path) -> None:
+def generate_mode_personal(root: Path, today: dt.datetime) -> None:
     html_path = root / "personal" / "index.html"
     output_path = root / "personal" / "feed.xml"
 
     text = html_path.read_text(encoding="utf-8")
     items = parse_personal_articles(text)
 
-    # Filtrar artigos a partir de 04/06/2026 conforme reposicionamento conjunto
-    start_date = dt.datetime(2026, 6, 4, tzinfo=dt.timezone.utc)
-    items = [item for item in items if item.get("date") and item["date"] >= start_date]
+    items = filter_items_for_feed(items, today)
 
     channel = {
         "title": "Christian Mulato Dev Blog",
@@ -362,17 +379,22 @@ def main(argv: Optional[List[str]] = None) -> None:
         default="retro",
         help="Qual feed gerar: 'retro' (sala/redes/retro), 'personal' ou 'both'",
     )
+    parser.add_argument(
+        "--as-of-date",
+        help="Data de referência para geração no formato YYYY-MM-DD. Itens futuros a essa data são ignorados.",
+    )
 
     args = parser.parse_args(argv)
+    today = normalize_as_of_date(args.as_of_date)
 
     # Raiz do repositório (pasta acima de scripts/)
     root = Path(__file__).resolve().parents[1]
 
     if args.mode in ("retro", "both"):
-        generate_mode_retro(root)
+        generate_mode_retro(root, today)
 
     if args.mode in ("personal", "both"):
-        generate_mode_personal(root)
+        generate_mode_personal(root, today)
 
 
 if __name__ == "__main__":  # pragma: no cover

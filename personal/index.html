@@ -9,42 +9,56 @@
     <link rel="stylesheet" href="articles/assets/css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .repo-note {
-            margin: 1rem 0 1.25rem;
-            padding: .9rem 1rem;
-            border-radius: 8px;
-            border: 1px solid #fde68a;
-            background: #fffbeb;
-            color: #78350f;
-            font-size: .95rem;
-        }
-        .repo-note strong { color: #92400e; }
-        .repo-note a { color: #92400e; text-decoration: underline; }
-        .cycle-divider {
-            margin: 1.5rem 0;
-            padding: .85rem 1rem;
-            border-left: 4px solid #0f766e;
-            background: #ecfeff;
-            color: #134e4a;
-            border-radius: 8px;
-            font-size: .95rem;
-        }
-        .cycle-links {
+        .footer-notes {
+            margin-bottom: 1.5rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: .75rem;
-            margin: .9rem 0 0;
+            flex-direction: column;
+            gap: .85rem;
+            font-family: "Inter", "Segoe UI", Arial, sans-serif;
         }
-        .cycle-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: .35rem;
-            padding: .55rem .85rem;
-            border-radius: 999px;
-            background: #ecfeff;
-            color: #0f766e;
-            text-decoration: none;
+        .footer-note {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: transparent;
+            color: #475569;
+            font-size: .95rem;
+            font-weight: 400;
+            line-height: 1.65;
+            letter-spacing: 0;
+            text-align: left;
+        }
+        .footer-note-title {
+            display: block;
+            margin-bottom: .15rem;
+            color: #1f2937;
+            font-size: .95rem;
             font-weight: 600;
+            line-height: 1.65;
+        }
+        .footer-note-body {
+            margin: 0;
+            color: #475569;
+        }
+        .footer-note strong {
+            color: #1f2937;
+            font-weight: 600;
+        }
+        .footer-note em {
+            font-style: italic;
+        }
+        .footer-note a {
+            color: #0f766e;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        .footer-note-links {
+            margin-top: .15rem;
+        }
+        .footer-note-links a {
+            color: #0f766e;
+            text-decoration: underline;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -109,15 +123,8 @@
                 <div class="section-header">
                     <h2>Artigos Técnicos</h2>
                     <p>Explorando Java, Spring Boot, Docker, APIs e arquitetura de software</p>
-                    <div class="repo-note" role="note" aria-label="Reposicionamento editorial conjunto">
-                        <strong>Reposicionamento conjunto ativo:</strong> este acervo e os artigos institucionais da Cara Core estão alinhados ao ciclo de 04/06/2026 a 04/06/2029, em dois ciclos equiláteros, com foco em trabalho operacional e cadência editorial enxuta. Referência: <a href="../sala/regis/REPOSICIONAMENTO_CONJUNTO_CC_CM_2026_2029.html">REPOSICIONAMENTO_CONJUNTO_CC_CM_2026_2029.html</a>.
-                        <div class="cycle-links">
-                            <a href="ciclo-ativo.html">Ver somente ciclo ativo</a>
-                            <a href="../publications/nota_mudanca_ancora_ciclos_2026_2029.html">Ler nota institucional</a>
-                        </div>
-                    </div>
                     <div class="stats">
-                        <span class="stat">98 artigos publicados</span>
+                        <span class="stat">99 artigos publicados</span>
                         <span class="stat">Ciclo ativo: Junho 2026 - Maio 2029 | histórico preservado antes de 04/06/2026</span>
                     </div>
                 </div>
@@ -229,7 +236,6 @@
                     </article>
                 </div>
             </div>
-            <div class="cycle-divider">Acervo histórico preservado: os itens abaixo são anteriores a 04/06/2026 e permanecem visíveis para memória institucional, fora da contagem oficial do ciclo ativo.</div>
             <div class="month-section">
                 <h3 class="month-header">Maio 2026</h3>
                 <div class="articles-grid">
@@ -342,6 +348,17 @@
             <div class="month-section">
                 <h3 class="month-header">Março 2026</h3>
                 <div class="articles-grid">
+                    <article class="article-card" data-category-slug="carreira superacao">
+                        <div class="article-meta">
+                            <span class="category">Carreira</span>
+                            <span class="date">31/03/2026</span>
+                        </div>
+                        <h3 class="article-title">
+                            <a href="articles/2026_03_31_marco_o_mes_em_que_precisei_frear.html">O Retorno Depois do Silêncio ... Quando a Vida Pede uma Pausa: Entre Divórcios, Filhos, Bichos e Burnout Disfarçado de Produtividade.</a>
+                        </h3>
+                        <p class="article-description">Um relato sobre sobrecarga, burnout, pausa necessária e reconstrução. Quando vida pessoal, trabalho e desgaste emocional colidem ao mesmo tempo, frear pode ser o ato mais responsável de todos.</p>
+                        <div class="article-tags"><span class="tag">Carreira</span> <span class="tag">Saúde Mental</span> <span class="tag">Burnout</span> <span class="tag">Recomeço</span> <span class="tag">Superação</span></div>
+                    </article>
                     <article class="article-card" data-category-slug="gestao-projetos divida-tecnica">
                         <div class="article-meta">
                             <span class="category">Gestão de Projetos</span>
@@ -1541,10 +1558,33 @@
 
         <footer class="footer">
             <div class="footer-content">
-                <p class="disclaimer"><strong>Natureza do conteúdo.</strong> Os textos publicados neste portal, inclusive a série &quot;O Protocolo de Lucerna&quot; e demais artigos técnicos, constituem <em>Ensaios de Arquitetura de Missão Crítica</em> e reflexões de cunho educativo. Nomes, endereços de rede (IPs), cenários e identificadores foram alterados ou abstraídos para garantir o anonimato de clientes e parceiros (<em>Fiction-Based Technical Insights</em>). Nenhum relato representa situação real identificável.</p>
-                <p class="disclaimer"><strong>Isenção de responsabilidade.</strong> O autor não se responsabiliza pela aplicação direta das técnicas, práticas ou decisões citadas sem a devida auditoria e adequação a ambientes e contextos específicos. O conteúdo tem finalidade informativa e não substitui assessoria técnica ou jurídica.</p>
-                <p class="disclaimer"><strong>Propriedade intelectual.</strong> Todo o conteúdo deste portal e a estética &quot;Arquiteto Soberano&quot; são de titularidade e propriedade intelectual do portal Caracore — Soberania Tecnológica (2026). Reprodução ou uso comercial não autorizado é vedado.</p>
-                <p class="disclaimer"><strong>Compliance e confidencialidade.</strong> O conteúdo não viola acordos de confidencialidade (NDAs) ou obrigações contratuais vigentes, sendo resultado de abstração técnica e educativa, sem exposição de dados, sistemas ou partes identificáveis.</p>
+                <div class="footer-notes" aria-label="Notas finais">
+                    <div class="footer-note" role="note" aria-label="Reposicionamento editorial conjunto">
+                        <span class="footer-note-title">Reposicionamento editorial</span>
+                        <p class="footer-note-body">Este acervo e os artigos institucionais da Cara Core estão alinhados ao ciclo de 04/06/2026 a 04/06/2029, em dois ciclos equiláteros, com foco em trabalho operacional e cadência editorial enxuta. Referência: <a href="../sala/regis/REPOSICIONAMENTO_CONJUNTO_CC_CM_2026_2029.html">REPOSICIONAMENTO_CONJUNTO_CC_CM_2026_2029.html</a>.</p>
+                        <p class="footer-note-body footer-note-links"><a href="ciclo-ativo.html">Ver somente ciclo ativo</a> | <a href="../publications/nota_mudanca_ancora_ciclos_2026_2029.html">Ler nota institucional</a></p>
+                    </div>
+                    <div class="footer-note disclaimer">
+                        <span class="footer-note-title">Acervo histórico preservado</span>
+                        <p class="footer-note-body">Os artigos anteriores a 04/06/2026 permanecem visíveis neste portal como memória institucional e arquivo público, fora da contagem oficial do ciclo editorial ativo.</p>
+                    </div>
+                    <div class="footer-note disclaimer">
+                        <span class="footer-note-title">Natureza do conteúdo</span>
+                        <p class="footer-note-body">Os textos publicados neste portal, inclusive a série &quot;O Protocolo de Lucerna&quot; e demais artigos técnicos, constituem <em>Ensaios de Arquitetura de Missão Crítica</em> e reflexões de cunho educativo. Nomes, endereços de rede (IPs), cenários e identificadores foram alterados ou abstraídos para garantir o anonimato de clientes e parceiros (<em>Fiction-Based Technical Insights</em>). Nenhum relato representa situação real identificável.</p>
+                    </div>
+                    <div class="footer-note disclaimer">
+                        <span class="footer-note-title">Isenção de responsabilidade</span>
+                        <p class="footer-note-body">O autor não se responsabiliza pela aplicação direta das técnicas, práticas ou decisões citadas sem a devida auditoria e adequação a ambientes e contextos específicos. O conteúdo tem finalidade informativa e não substitui assessoria técnica ou jurídica.</p>
+                    </div>
+                    <div class="footer-note disclaimer">
+                        <span class="footer-note-title">Propriedade intelectual</span>
+                        <p class="footer-note-body">Todo o conteúdo deste portal e a estética &quot;Arquiteto Soberano&quot; são de titularidade e propriedade intelectual do portal Caracore — Soberania Tecnológica (2026). Reprodução ou uso comercial não autorizado é vedado.</p>
+                    </div>
+                    <div class="footer-note disclaimer">
+                        <span class="footer-note-title">Compliance e confidencialidade</span>
+                        <p class="footer-note-body">O conteúdo não viola acordos de confidencialidade (NDAs) ou obrigações contratuais vigentes, sendo resultado de abstração técnica e educativa, sem exposição de dados, sistemas ou partes identificáveis.</p>
+                    </div>
+                </div>
                 <p>&copy; 2026 Caracore — Soberania Tecnológica. Todos os direitos reservados.</p>
                 <div class="footer-links">
                     <a href="https://www.linkedin.com/company/cara-core/" target="_blank" rel="noopener">LinkedIn</a>

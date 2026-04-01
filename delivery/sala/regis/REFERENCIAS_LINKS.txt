@@ -33,8 +33,8 @@ ter articles.html e pasta articles/ no mesmo nível que sala/.
 --------------------------------------------------------------------------------
 3. ASSETS DENTRO DE SALA (pasta assets/)
 --------------------------------------------------------------------------------
-  De: HTMLs de campanha em sala/facebook/, sala/instagram/, sala/linkedin/ (ex.: 2026_03_02_ink_facebook_mar.html,
-      2026_05_01_campanha_lucratividade_mai.html)
+  De: HTMLs de campanha em sala/facebook/, sala/instagram/, sala/linkedin/ (ex.: 2026_07_02_ink_facebook_jul_soberania.html,
+      2026_07_04_ink_instagram_jul_soberania.html — paths YYYY_MM_DD = uso H2 2026)
   Para:
     assets/css/articles.css    — Folha de estilo
     assets/svg/NOME.svg        — Ícones e artes (frases Ink, pilares)

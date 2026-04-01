@@ -295,6 +295,51 @@ body.sala-theme-linkedin.sala-page .sala-footer a {
     color: var(--li-blue);
 }
 
+/* Painel rápido (mesmo bloco do Controle) — cartões legíveis no tema claro */
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-quick-hint {
+    background: rgba(10, 102, 194, 0.08);
+    border-color: rgba(10, 102, 194, 0.22);
+    color: var(--li-text);
+    text-align: left;
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-quick-hint strong {
+    color: var(--li-blue);
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-quick-hint a {
+    color: var(--li-blue);
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-section {
+    text-align: left;
+    margin: 1.5rem auto 0;
+    max-width: 42rem;
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-section-title {
+    color: var(--li-text-secondary);
+    text-align: center;
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-card-grid {
+    margin-top: 0.75rem;
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-card {
+    background: var(--li-card);
+    border: 1px solid var(--li-border);
+    border-radius: var(--li-radius-lg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-card-link:hover {
+    background: rgba(10, 102, 194, 0.06);
+    border-color: rgba(10, 102, 194, 0.2);
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-card-link h3 {
+    color: var(--li-blue);
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-card-link p {
+    color: var(--li-text-secondary);
+}
+body.sala-theme-linkedin.sala-page .sala-main .wrap .sala-card-link a:focus-visible {
+    outline-color: var(--li-blue);
+}
+
 @media (max-width: 640px) {
     body.sala-theme-linkedin.sala-page .sala-body {
         flex-direction: column;

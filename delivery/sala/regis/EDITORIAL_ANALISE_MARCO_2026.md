@@ -100,7 +100,7 @@
 - [x] Trocar "software" por "soberania técnica" / "dossiê operacional" onde couber.
 - [x] Substituir "É nisso que estamos trabalhando" por "É o padrão que sustentamos."
 - [x] CTA final: paleta Industrial-Ink (escuro + ouro); texto "Soberania técnica, documentada. Acompanhe no LinkedIn."
-- [x] Revisar cópia na Matriz (caracore-site/publications/articles/2026_03_07_article_75.html) com as mesmas alterações.
+- [x] Revisar cópia na Matriz (`sala/redes/retro/articles/2026_04_07_article_75.html`) com as mesmas alterações.
 
 ---
 

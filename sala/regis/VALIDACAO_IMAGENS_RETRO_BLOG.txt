@@ -1,0 +1,21 @@
+Validation: 2026-04-01 16:42
+Retro: D:\dev\caracore-site\sala\redes\retro\articles
+Blog:  D:\dev\caracore-site\personal\articles
+
+Rules:
+- Retro: article_NN in image path must match NN in filename (except logo.png).
+- Blog: referenced files must exist under the article folder.
+- Blog date: assets/img/YYYY_MM_DD_* must match the article filename date, except *_index.html (cards for several episodes).
+BLOG MISSING: 2024_03_06_aplicacao_web_java.html - assets/img/2024_03_06_IMAGE_001.png
+BLOG MISSING: 2024_03_20_produtividade_versus_renda.html - assets/img/2024_03_20_IMAGE_003.png
+BLOG MISSING: 2025_11_30_superando_desafios_na_gestao_de_licencas_digitais_uma_jornada_de_inovacao_e_monetizacao.html - assets/img/artigo_img.png
+BLOG MISSING: 2025_12_09_a_arte_de_iluminar_o_passado.html - assets/img/2025_12_09_IMAGE_002.png
+BLOG MISSING: 2025_12_10_a_revolucao_silenciosa_como_uma_empresa_transformou_sua_arquitetura_de_apis_em_90_dias.html - assets/img/2025_12_10_IMAGE_001.png
+BLOG MISSING: 2026_02_15_serie_brasil_sdk_soberania_index.html - assets/img/2026_02_20_IMAGE_001.png
+BLOG MISSING: 2026_02_15_serie_brasil_sdk_soberania_index.html - assets/img/2026_04_02_IMAGE_001.png
+BLOG MISSING: 2026_02_20_serie_brasil_sdk_soberania_ep01.html - assets/img/2026_02_20_IMAGE_001.png
+BLOG MISSING: 2026_03_08_a_inteligencia_artificial_nao_e_uma_bala_de_prata.html - assets/img/2026_03_08_IMAGE_001.png
+BLOG MISSING: 2026_04_02_serie_brasil_sdk_soberania_ep02.html - assets/img/2026_04_02_IMAGE_001.png
+BLOG MISSING: 2026_04_03_alem_da_lente_os_limites_da_automacao_visual.html - assets/img/2026_04_03_IMAGE_001.png
+BLOG MISSING: 2026_04_25_o_projeto_sistema_alfa_anatomia_de_um_quase_fracasso_e_as_licoes_da_linha_de_frente.html - assets/img/2026_04_25_IMAGE_001.png
+BLOG MISSING: 2026_05_10_o_legado_e_a_matriz_o_que_a_engenharia_herda_do_cuidado.html - assets/img/2026_05_10_IMAGE_001.png

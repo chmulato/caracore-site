@@ -42,7 +42,7 @@ Validação da lógica com o legado retro (article 87, convenções): regis/VALI
   Legado por rede (como o retro para LinkedIn):
     face/            → material campanha Facebook (desde março/2026, artefato (01)_F). Listagem: face/facebook.html
     gram/            → material campanha Instagram (desde março, artefato (01)_G). Listagem: gram/instagram.html
-    retro/           → material LinkedIn (articles 11–86). Listagem: retro/articles.html
+    sala/redes/retro → material LinkedIn (articles 11–86). Listagem: redes/retro/articles.html
 
 --------------------------------------------------------------------------------
 4. FORMATO DO NOME DOS ARQUIVOS

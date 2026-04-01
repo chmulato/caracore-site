@@ -8,7 +8,7 @@ LinkedIn article _L, sequências) é coerente com o legado em D:\dev\caracore-si
 --------------------------------------------------------------------------------
 1. LEGADO RETRO — O QUE EXISTE
 --------------------------------------------------------------------------------
-  Local: retro/ (retro/articles/, retro/articles.html)
+  Local: sala/redes/retro (articles/, articles.html)
 
   Páginas HTML (artigos):
     Formato:  YYYY_MM_DD_article_NN.html
@@ -64,7 +64,7 @@ LinkedIn article _L, sequências) é coerente com o legado em D:\dev\caracore-si
 4. ONDE FICA CADA COISA
 --------------------------------------------------------------------------------
   Legado por rede (mesma ideia do retro aplicada a cada rede):
-    · LinkedIn:  retro/articles/ + retro/articles.html. Articles 11–86; 87+ em sala/linkedin/.
+    · LinkedIn:  sala/redes/retro/articles/ + articles.html. Articles 11–86; 87+ em sala/linkedin/.
     · Instagram: gram/artefatos/ + gram/instagram.html. Início março, artefato (01)_G.
     · Facebook:  face/artefatos/ + face/facebook.html. Início março/2026, artefato (01)_F.
 

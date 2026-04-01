@@ -36,7 +36,7 @@ O QUE VOCÊ FAZ (SÓ TRÊS COISAS)
 ONDE PUBLICAR POR REDE
   Facebook  → material em face/ (artefato _F). Plano: sala/facebook/facebook.html
   Instagram → material em gram/ (artefato _G). Plano: sala/instagram/instagram.html
-  LinkedIn  → material em retro/ (articles).  Plano: sala/linkedin/linkedin.html
+  LinkedIn  → material em sala/redes/retro/ (articles).  Plano: sala/linkedin/linkedin.html
 
 NOMES QUE ENCAIXAM
   Facebook:  imagem _(01)_(01).png   página _(01)_F.html
@@ -66,7 +66,7 @@ VALIDAÇÃO NO FINAL
 AUTOMAÇÃO (ENCAIXE PERFEITO)
   Facebook:  face/   (F)
   Instagram: gram/    (G)
-  LinkedIn:  retro/  (depois do 86)
+  LinkedIn:  sala/redes/retro/  (depois do 86)
 
 ================================================================================
 Resumo: Sala autônoma. Foco em Ctrl+C, Ctrl+V e salvar com o nome certo.

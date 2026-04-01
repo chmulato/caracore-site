@@ -38,7 +38,7 @@ Cenário: a sala está em D:\dev\caracore-site\sala. Estrutura completa: ESTRUTU
 3. AUTOMAÇÃO — ONDE CADA REDE ENCAIXA
   · Facebook (F):  face/   — D:\dev\caracore-site\face   (ou caminho do repo)\face
   · Instagram (G): gram/   — D:\dev\caracore-site\gram   (ou caminho do repo)\gram
-  · LinkedIn (retro, depois do 86): retro/ — D:\dev\caracore-site\retro (ou repo)\retro
+  · LinkedIn (retro, depois do 86): sala/redes/retro — D:\dev\caracore-site\sala\redes\retro
 
   Tudo precisa encaixar com perfeição: artefatos _F em face/artefatos/, _G em
   gram/artefatos/, articles 87+ em retro/articles/.

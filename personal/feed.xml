@@ -5,68 +5,98 @@
     <link>https://caracore.com.br/personal/</link>
     <description><![CDATA[Artigos técnicos sobre desenvolvimento Java, arquitetura de software e tecnologia.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Tue, 31 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2026 12:00:00 +0000</lastBuildDate>
     <generator>Cara Core RSS generator</generator>
 
     <item>
-      <title><![CDATA[O Retorno Depois do Silêncio ... Quando a Vida Pede uma Pausa: Entre Divórcios, Filhos, Bichos e Burnout Disfarçado de Produtividade.]]></title>
+      <title><![CDATA[Entre o Prazo e o WSDL: A Saga de uma Migração no "Mundo Real"]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_04_30_entre_o_prazo_e_o_wsdl_a_saga_de_uma_migracao_no_mundo_real.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_04_30_entre_o_prazo_e_o_wsdl_a_saga_de_uma_migracao_no_mundo_real.html</guid>
+      <pubDate>Thu, 30 Apr 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Projeto "Sistema Alfa": Anatomia de um Quase Fracasso e as Lições da Linha de Frente]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_04_25_o_projeto_sistema_alfa_anatomia_de_um_quase_fracasso_e_as_licoes_da_linha_de_frente.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_04_25_o_projeto_sistema_alfa_anatomia_de_um_quase_fracasso_e_as_licoes_da_linha_de_frente.html</guid>
+      <pubDate>Sat, 25 Apr 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Episódio 03: O "Kit Chinês": Nova Dependência ou Oportunidade?]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_04_23_serie_brasil_sdk_soberania_ep03.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_04_23_serie_brasil_sdk_soberania_ep03.html</guid>
+      <pubDate>Thu, 23 Apr 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Série: O Protocolo de Lucerna — Índice]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_04_20_serie_protocolo_lucerna_index.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_04_20_serie_protocolo_lucerna_index.html</guid>
+      <pubDate>Mon, 20 Apr 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[A Física Antes da Lógica]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_04_12_a_fisica_antes_da_logica.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_04_12_a_fisica_antes_da_logica.html</guid>
+      <pubDate>Sun, 12 Apr 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Na Minha Torre: Um Engenheiro no Localhost.]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_04_06_na_minha_torre_um_engenheiro_em_localhost.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_04_06_na_minha_torre_um_engenheiro_em_localhost.html</guid>
+      <pubDate>Mon, 06 Apr 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Além Da Lente: Os Limites Da Automação Visual E A Realidade Das Trincheiras No Legado]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_04_03_alem_da_lente_os_limites_da_automacao_visual.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_04_03_alem_da_lente_os_limites_da_automacao_visual.html</guid>
+      <pubDate>Fri, 03 Apr 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Episódio 02: As Sete Magníficas e o "Big Brother" Digital.]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_04_02_serie_brasil_sdk_soberania_ep02.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_04_02_serie_brasil_sdk_soberania_ep02.html</guid>
+      <pubDate>Thu, 02 Apr 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O retorno Depois do Silêncio   ... Quando a Vida Pede uma Pausa: Entre Divórcios, Filhos, Bichos e Burnout Disfarçado de Produtividade.]]></title>
       <link>https://caracore.com.br/personal/articles/2026_03_31_marco_o_mes_em_que_precisei_frear.html</link>
       <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_03_31_marco_o_mes_em_que_precisei_frear.html</guid>
-      <pubDate>Tue, 31 Mar 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[O Projeto "Sistema Alfa": Anatomia de um Quase-Fracasso e as Lições da Linha de Frente]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_03_30_o_projeto_sistema_alfa_anatomia_de_um_quase_fracasso_e_as_licoes_da_linha_de_frente.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_03_30_o_projeto_sistema_alfa_anatomia_de_um_quase_fracasso_e_as_licoes_da_linha_de_frente.html</guid>
-      <pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Episódio 02: As Sete Magníficas e o "Big Brother" Digital]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_03_24_serie_brasil_sdk_soberania_ep02.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_03_24_serie_brasil_sdk_soberania_ep02.html</guid>
-      <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 31 Mar 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Inteligência Artificial Não É Uma Bala de Prata: Lições de Uma Jornada de Debugging em Sistemas Legados]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_03_10_a_inteligencia_artificial_nao_e_uma_bala_de_prata.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_03_10_a_inteligencia_artificial_nao_e_uma_bala_de_prata.html</guid>
-      <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[Além da Lente: Os Limites da Automação Visual e a Realidade das Trincheiras no Legado]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_03_03_alem_da_lente_os_limites_da_automacao_visual.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_03_03_alem_da_lente_os_limites_da_automacao_visual.html</guid>
-      <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+      <link>https://caracore.com.br/personal/articles/2026_03_08_a_inteligencia_artificial_nao_e_uma_bala_de_prata.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_03_08_a_inteligencia_artificial_nao_e_uma_bala_de_prata.html</guid>
+      <pubDate>Sun, 08 Mar 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Armadilha da Produtividade: Por Que Estar Ocupado Não Paga Suas Contas]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_02_28_a_armadilha_da_produtividade.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_28_a_armadilha_da_produtividade.html</guid>
-      <pubDate>Sat, 28 Feb 2026 00:00:00 +0000</pubDate>
+      <link>https://caracore.com.br/personal/articles/2026_02_22_a_armadilha_da_produtividade.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_22_a_armadilha_da_produtividade.html</guid>
+      <pubDate>Sun, 22 Feb 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Episódio 01: A Soberania em Jogo - Do Petróleo ao SDK]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_02_22_serie_brasil_sdk_soberania_ep01.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_22_serie_brasil_sdk_soberania_ep01.html</guid>
-      <pubDate>Sun, 22 Feb 2026 00:00:00 +0000</pubDate>
+      <link>https://caracore.com.br/personal/articles/2026_02_20_serie_brasil_sdk_soberania_ep01.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_20_serie_brasil_sdk_soberania_ep01.html</guid>
+      <pubDate>Fri, 20 Feb 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Série: Brasil, SDK e Soberania]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_02_20_serie_brasil_sdk_soberania_index.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_20_serie_brasil_sdk_soberania_index.html</guid>
-      <pubDate>Fri, 20 Feb 2026 00:00:00 +0000</pubDate>
+      <link>https://caracore.com.br/personal/articles/2026_02_15_serie_brasil_sdk_soberania_index.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_15_serie_brasil_sdk_soberania_index.html</guid>
+      <pubDate>Sun, 15 Feb 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[JSF: Crônica de uma Aposentadoria Anunciada]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_02_15_cronica_jsf_aposentadoria_anunciada.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_15_cronica_jsf_aposentadoria_anunciada.html</guid>
-      <pubDate>Sun, 15 Feb 2026 00:00:00 +0000</pubDate>
+      <link>https://caracore.com.br/personal/articles/2026_02_05_cronica_jsf_aposentadoria_anunciada.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_05_cronica_jsf_aposentadoria_anunciada.html</guid>
+      <pubDate>Thu, 05 Feb 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Arte De Iluminar O Passado: Selenium E A Arqueologia De Bugs Em Sistemas Legados]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_02_05_a_arte_de_iluminar_o_passado.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_05_a_arte_de_iluminar_o_passado.html</guid>
-      <pubDate>Thu, 05 Feb 2026 00:00:00 +0000</pubDate>
+      <link>https://caracore.com.br/personal/articles/2025_12_09_a_arte_de_iluminar_o_passado.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2025_12_09_a_arte_de_iluminar_o_passado.html</guid>
+      <pubDate>Wed, 09 Dec 2025 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Anatomia de um Deploy de Sucesso: Do Caos do Legado à Estabilidade no Kubernetes]]></title>
@@ -118,9 +148,9 @@
     </item>
     <item>
       <title><![CDATA[A Revolução Silenciosa: Como uma Empresa Transformou sua Arquitetura de APIs em 90 Dias]]></title>
-      <link>https://caracore.com.br/personal/articles/2025_12_09_a_revolucao_silenciosa_como_uma_empresa_transformou_sua_arquitetura_de_apis_em_90_dias.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2025_12_09_a_revolucao_silenciosa_como_uma_empresa_transformou_sua_arquitetura_de_apis_em_90_dias.html</guid>
-      <pubDate>Tue, 09 Dec 2025 00:00:00 +0000</pubDate>
+      <link>https://caracore.com.br/personal/articles/2025_12_10_a_revolucao_silenciosa_como_uma_empresa_transformou_sua_arquitetura_de_apis_em_90_dias.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2025_12_10_a_revolucao_silenciosa_como_uma_empresa_transformou_sua_arquitetura_de_apis_em_90_dias.html</guid>
+      <pubDate>Wed, 10 Dec 2025 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[A Perversidade Invisível: O que há de mais cruel na sociedade americana e na brasileira]]></title>

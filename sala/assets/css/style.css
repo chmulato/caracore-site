@@ -64,6 +64,7 @@
 
 /* ---------- Título (negrito, fonte média) ---------- */
 .news-card__title {
+    font-family: var(--sala-font-brand, "Share Tech Mono", ui-monospace, monospace);
     font-size: 1.05rem;
     font-weight: 700;
     line-height: 1.3;

@@ -1,5 +1,6 @@
 /* Sala de Notícias — estilos para login, feedback e páginas que seguem assets/css */
 /* Manual minimalista, perfil bibliotecária, jovens 16–20 anos. Topo · Navegação à esquerda · Conteúdo · Rodapé. */
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
 
 :root {
     --sala-bg: #0d1117;
@@ -11,6 +12,7 @@
     --sala-gold-dim: rgba(255, 215, 0, 0.8);
     --sala-border: rgba(255, 255, 255, 0.1);
     --sala-nav-width: 220px;
+    --sala-font-brand: "Share Tech Mono", ui-monospace, monospace;
 }
 
 /* ---------- Layout padrão: topo, nav esquerda, meio, rodapé (todas as páginas internas) ---------- */
@@ -43,12 +45,37 @@
     letter-spacing: 0.03em;
 }
 
-.sala-header-inner a {
+.sala-header-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
+    color: var(--sala-gold);
+    text-decoration: none;
+    font-family: var(--sala-font-brand);
+}
+
+.sala-header-brand:hover {
+    text-decoration: underline;
+}
+
+.sala-header-logo {
+    width: auto;
+    height: 36px;
+    max-width: 40px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.sala-header-text {
+    line-height: 1.35;
+}
+
+.sala-header-inner a:not(.sala-header-brand) {
     color: var(--sala-gold);
     text-decoration: none;
 }
 
-.sala-header-inner a:hover {
+.sala-header-inner a:not(.sala-header-brand):hover {
     text-decoration: underline;
 }
 
@@ -68,6 +95,7 @@
 }
 
 .sala-nav .sala-nav-logo {
+    font-family: var(--sala-font-brand);
     font-weight: 700;
     font-size: 0.75rem;
     letter-spacing: 0.08em;
@@ -131,6 +159,7 @@
 }
 
 .sala-main h1 {
+    font-family: var(--sala-font-brand);
     font-size: 1.15rem;
     font-weight: 600;
     color: var(--sala-gold);

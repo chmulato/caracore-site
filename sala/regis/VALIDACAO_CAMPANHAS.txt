@@ -22,9 +22,8 @@ Data: 2026-02-13
 --------------------------------------------------------------------------------
 2. LINKS CORRIGIDOS (validação 2026-02-13)
 --------------------------------------------------------------------------------
-  - Sala aponta para a lista de artigos em retro: ../retro/articles.html e
-    ../retro/articles/XXX.html (no caracore-site não existe articles/ na raiz;
-    os artigos ficam em retro/articles/).
+  - Lista de artigos retro: sala/redes/retro/articles.html e sala/redes/retro/articles/XXX.html
+    (links relativos a partir de facebook|instagram|linkedin: ../redes/retro/...).
   - Canonicals atualizados para caracore.com.br/sala/:
     index.htm → https://caracore.com.br/sala/index.htm
     linkedin/linkedin.html → https://caracore.com.br/sala/linkedin/linkedin.html
@@ -42,6 +41,6 @@ Data: 2026-02-13
 4. NAVEGAÇÃO INTERNA
 --------------------------------------------------------------------------------
   Controle → index.htm | LinkedIn → linkedin/linkedin.html | Facebook → facebook/facebook.html
-  Instagram → instagram/instagram.html | Sala de Notícias (artigos) → ../retro/articles.html
+  Instagram → instagram/instagram.html | Artigos retro (LinkedIn) → redes/retro/articles.html
 
 Cara Core Informática · Campanhas orgânicas

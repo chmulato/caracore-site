@@ -5,13 +5,13 @@ Seguir a ideia do legado retro (material para campanha LinkedIn) e aplicar ao
 Instagram e ao Facebook em pastas dedicadas: gram e face.
 
 --------------------------------------------------------------------------------
-1. RETRO — LinkedIn (já existente)
+1. RETRO — LinkedIn (programado na Sala)
 --------------------------------------------------------------------------------
-  Pasta:     D:\dev\caracore-site\retro
-  Listagem:  retro/articles.html
-  Conteúdo:  articles (HTML em retro/articles/), numeração 11…86; próximos 87+ na Sala.
+  Pasta:     sala/redes/retro   (ex.: D:\dev\caracore-site\sala\redes\retro)
+  Listagem:  redes/retro/articles.html
+  Conteúdo:  articles (HTML em redes/retro/articles/), numeração 11…86; 87+ conforme campanha em sala/linkedin/.
   Convenção: YYYY_MM_DD_article_NN.html | article_NN_01.png (legado)
-  Sala:      sala/linkedin/ para campanha atual; continuidade 87, 88, 89 (jul/ago/set).
+  Manual:    sala/linkedin/ — retorno 31/03/2026; articles 87, 88, 89 (ago/set/out 2026).
 
 --------------------------------------------------------------------------------
 2. GRAM — Instagram (legado no espírito do retro)
@@ -19,7 +19,7 @@ Instagram e ao Facebook em pastas dedicadas: gram e face.
   Pasta:     D:\dev\caracore-site\gram
   Listagem:  gram/instagram.html
   Conteúdo:  artefatos da campanha Instagram (HTML em gram/artefatos/).
-  Início:    Março — primeiro artefato (01)_G.
+  Janela:    campanha Ink na Sala — H2 2026 (jul–dez); primeiro artefato (01)_G conforme plano.
   Convenção: YYYY_MM_DD_artefato_(01)_G.html | YYYY_MM_DD_artefato_(01)_(01).png
   Sufixo:    _G (Instagram)
   Sala:      sala/instagram/ — plano e campanha (pilares, diretrizes); material/lista em gram.
@@ -30,7 +30,7 @@ Instagram e ao Facebook em pastas dedicadas: gram e face.
   Pasta:     D:\dev\caracore-site\face
   Listagem:  face/facebook.html
   Conteúdo:  artefatos da campanha Facebook (HTML em face/artefatos/).
-  Início:    Março/2026 — primeiro artefato (01)_F.
+  Janela:    campanha Ink na Sala — H2 2026 (jul–dez); primeiro artefato (01)_F conforme plano.
   Convenção: YYYY_MM_DD_artefato_(01)_F.html | YYYY_MM_DD_artefato_(01)_(01).png
   Sufixo:    _F (Facebook)
   Sala:      sala/facebook/ — plano e campanha (pilares, diretrizes); material/lista em face.
@@ -38,11 +38,11 @@ Instagram e ao Facebook em pastas dedicadas: gram e face.
 --------------------------------------------------------------------------------
 4. RESUMO
 --------------------------------------------------------------------------------
-  LinkedIn   → retro/          (articles 11…86; 87+ na sala/linkedin/)
-  Instagram  → gram/           (artefatos desde março, (01)_G)
-  Facebook   → face/           (artefatos desde março/2026, (01)_F)
+  LinkedIn   → sala/redes/retro   (articles 11…86 em articles/; campanha em sala/linkedin/)
+  Instagram  → gram/              (artefatos; H2 2026 na Sala)
+  Facebook   → face/               (artefatos; H2 2026 na Sala)
 
-  A Sala (sala/) centraliza o plano e as campanhas e aponta para retro, gram e face.
+  A Sala (sala/) centraliza o plano e as campanhas; artigos retro em sala/redes/retro.
   Imagens (convenção Sala): sala/assets/img/ com YYYY_MM_DD_artefato_(01)_(01).png etc.
   Coerência Lia: voz e organização em .cursor/rules/lia-corelli-voz.mdc e regis/LIA_CORELLI_VOZ.txt.
 

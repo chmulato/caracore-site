@@ -98,13 +98,13 @@ TOM_OFFICIAL_SALA.txt, LIA_CORELLI_VOZ.txt. Rede: Facebook (página Cara Core).
     2026_06_30_ink_facebook_jun_fechamento.html — Fechamento período Mar–Jun
 
   Total novo: até 7 páginas (1 abril lançamento + 3 abril/maio + 3 junho).
-  Manter mesmo padrão das existentes: título, meta, texto para copiar, bloco editorial (pilar, tom, hashtags), link "Voltar" para ../../retro/articles.html ou para facebook.html.
+  Manter mesmo padrão das existentes: título, meta, texto para copiar, bloco editorial (pilar, tom, hashtags), link "Voltar" para ../redes/retro/articles.html ou para facebook.html.
 
 --------------------------------------------------------------------------------
 5. CONTEÚDO MÍNIMO DE CADA PÁGINA HTML
 --------------------------------------------------------------------------------
   - head: charset, viewport, title, description, robots noindex nofollow, canonical (sala/facebook/...), link para ../assets/css/articles.css se usar estilo de artigos.
-  - body: link "Voltar" (para facebook.html ou retro/articles.html); título H1; subtítulo (mês, pilar, rede); seção "Texto do post (copiar e colar)" com div.post-text; se houver arte: seção "SVG / Imagem" com referência ao arquivo em assets/svg/; bloco editorial (pilar do mês, tom, hashtags); rodapé institucional + LGPD.
+  - body: link "Voltar" (para facebook.html ou redes/retro/articles.html); título H1; subtítulo (mês, pilar, rede); seção "Texto do post (copiar e colar)" com div.post-text; se houver arte: seção "SVG / Imagem" com referência ao arquivo em assets/svg/; bloco editorial (pilar do mês, tom, hashtags); rodapé institucional + LGPD.
   - Tom: ver LIA_CORELLI_VOZ.txt e campanha Facebook Ink; prático, texto legível, sem prometer data até haver definição; em junho, alinhar ao tipo de lançamento (disponível / beta / próximo passo).
 
 --------------------------------------------------------------------------------
@@ -119,7 +119,7 @@ TOM_OFFICIAL_SALA.txt, LIA_CORELLI_VOZ.txt. Rede: Facebook (página Cara Core).
 --------------------------------------------------------------------------------
   - Não prometer data de lançamento nas páginas Mar–Mai até haver definição; em Jun, só após decisão.
   - LGPD: nenhum dado pessoal nas páginas; frase padrão no rodapé (Sala de Notícias, documentação institucional).
-  - Links internos: voltar para facebook/facebook.html ou ../../retro/articles.html conforme padrão atual.
+  - Links internos: voltar para facebook/facebook.html ou ../redes/retro/articles.html conforme padrão atual.
   - Arte/SVG: usar pasta ../assets/svg/; nomes existentes (ink_fb_mar_frase.svg, ink_fb_abr_frase.svg, ink_fb_mai_frase.svg); para junho criar ou reutilizar conforme necessidade.
   - Atualizar facebook.html após criar as novas páginas: adicionar bloco "Junho — Lançamento" e, se desejado, lista de links para os novos HTMLs de mar/abr/mai.
   - Não publicar conteúdo que possa incentivar conduta insegura, exposição de dados ou interpretação enganosa.

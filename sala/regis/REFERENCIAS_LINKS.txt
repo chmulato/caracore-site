@@ -2,8 +2,7 @@
 SALA — Referências de links relativos (para cópia)
 ================================================================================
 
-Contexto: esta pasta (sala/) deve ficar dentro de docs/, ou a raiz do site deve
-ter articles.html e pasta articles/ no mesmo nível que sala/.
+Contexto: artigos LinkedIn (retro) estão em sala/redes/retro/ (articles.html, articles/).
 
 --------------------------------------------------------------------------------
 1. LINKS DENTRO DE SALA (mesma pasta)
@@ -15,20 +14,21 @@ ter articles.html e pasta articles/ no mesmo nível que sala/.
     instagram/instagram.html  — Campanha Instagram
 
   Uso: href="index.htm" | href="facebook/facebook.html" | href="instagram/instagram.html" | href="linkedin/linkedin.html"
-  LinkedIn (Sala): linkedin/linkedin.html. LinkedIn legado está em retro/ (legado): ../retro/linkedin.html
+  LinkedIn (Sala): linkedin/linkedin.html. Índice retro: redes/retro/articles.html
 
 --------------------------------------------------------------------------------
-2. LINKS PARA FORA DE SALA (caracore-site: retro/)
+2. LINKS PARA O RETRO (dentro de sala)
 --------------------------------------------------------------------------------
-  De: arquivos em sala/ (incl. index.htm, facebook.html, instagram.html,
-      e os HTMLs de campanha 2026_*_*.html)
-  Para (neste site, caracore-site):
-    ../retro/articles.html    — Lista de artigos (índice retro)
-    ../retro/articles/XXX.html — Artigos individuais (linkedin.html lista vários)
+  De: arquivos em sala/facebook/, sala/instagram/, sala/linkedin/ (artefatos 2026_*)
+  Para:
+    ../redes/retro/articles.html     — Lista de artigos (índice retro)
+    ../redes/retro/articles/XXX.html — Artigos individuais
 
-  Uso: href="../retro/articles.html" | href="../retro/articles/2026_03_28_article_78.html"
-  No caracore-site a lista e os artigos ficam em retro/; em caracore-articles (docs/)
-  seriam ../articles.html e ../articles/.
+  Uso: href="../redes/retro/articles.html" | href="../redes/retro/articles/2026_04_28_article_78.html"
+
+  De: sala/redes/face/ ou sala/redes/gram/
+  Para retro:
+    ../retro/articles.html  — equivale a sala/redes/retro/articles.html
 
 --------------------------------------------------------------------------------
 3. ASSETS DENTRO DE SALA (pasta assets/)

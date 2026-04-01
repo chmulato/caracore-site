@@ -2,7 +2,7 @@ SALA — Plano e campanhas (Facebook, Instagram, LinkedIn)
 ========================================================
 O Seed e o MKT são da Cara Core; não vendemos.
 
-Este diretório contém o plano e as campanhas Facebook, Instagram e LinkedIn. Período atual LinkedIn na Sala: Jun–Set 2026; continuidade do legado retro com articles 87, 88, 89 (jul/ago/set). Artigos e diretrizes Mar–Mai 2026 ficam em retro/ (legado).
+Este diretório contém o plano e as campanhas Facebook, Instagram e LinkedIn. LinkedIn: retorno editorial 31/03/2026; pilares abr–jun/2026; articles 87, 88, 89 em ago/set/out/2026. Facebook e Instagram: publicações de campanha Ink reagendadas para o 2.º semestre de 2026 (jul–dez). Artigos retro (LinkedIn) estão programados em sala/redes/retro/ (articles/, articles.html).
 
 Cenário: sala em D:\dev\caracore-site\sala. Oficina em D:\dev\caracore-mkt. Ver ESTRUTURA_SALA.txt na raiz da sala.
 
@@ -21,7 +21,7 @@ Conteúdo (dentro de sala/):
   prompts-ia/            — .TXT (ESTRATEGIA_COPIAR_SALVAR, soberania, etc.)
   facebook/              — campanha Facebook (facebook.html + artigos Ink)
   instagram/             — campanha Instagram (instagram.html + artigos)
-  linkedin/              — campanha LinkedIn (articles 87, 88, 89 Jul–Set 2026)
+  linkedin/              — campanha LinkedIn (retorno 31/03/2026; articles 87–89 ago/set/out 2026)
   assets/                — css/, img/, js/, svg/ (sala segue assets/css, assets/img, assets/js)
   entrega/               — face/, gram/, retro/ (para o script transportar)
   regis/                 — materiais de apoio (LIA_CORELLI_VOZ, planos, templates)
@@ -35,13 +35,13 @@ Navegação (dentro de sala/):
   Facebook                → facebook/facebook.html
   Instagram               → instagram/instagram.html
   LinkedIn                → linkedin/linkedin.html
-  Lista de artigos        → ../retro/articles.html
+  Lista de artigos (retro) → ../redes/retro/articles.html
 
 Voz para conteúdo: regra Lia Corelli em .cursor/rules/lia-corelli-voz.mdc; referência em regis/LIA_CORELLI_VOZ.txt.
 Plano Facebook 01/mar–30/jun 2026 (foco lançamentos): regis/PLANO_FACEBOOK_MAR_JUN_2026_LANCAMENTOS.txt.
 Validação da lógica Sala vs legado retro (article 87, nomes): regis/VALIDACAO_LOGICA_VS_RETRO.txt.
-Continuidade LinkedIn (articles 87, 88, 89 · jul/ago/set 2026 · portfólio e lançamentos · Lia): regis/PLANO_LINKEDIN_JUL_SET_2026_CONTINUIDADE.txt.
-Legado por rede: retro/ = LinkedIn (articles); gram/ = Instagram (artefato 01 G, desde março); face/ = Facebook (artefato 01 F, desde março/2026). Detalhes: regis/LEGADO_RETRO_GRAM_FACE.txt.
-LinkedIn legado (Mar–Mai 2026): ../retro/linkedin.html e ../retro/articles/.
+Continuidade LinkedIn (articles 87–89 · ago/set/out 2026): atualizar plano em regis/ conforme PLANO_LINKEDIN_* (nomes de ficheiro podem manter-se como referência histórica).
+Legado por rede: sala/redes/retro = LinkedIn (articles); gram/ = Instagram (H2 2026); face/ = Facebook (H2 2026). Detalhes: regis/LEGADO_RETRO_GRAM_FACE.txt.
+LinkedIn legado: listagem em sala/redes/retro/articles.html e HTML em sala/redes/retro/articles/.
 
 Cara Core Informática · Plano e campanhas

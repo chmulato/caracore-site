@@ -22,7 +22,7 @@ Ao criar ou nomear artefatos (HTML, imagens), seguir a convenção alinhada ao
 legado em retro/ (validação: regis/VALIDACAO_LOGICA_VS_RETRO.txt):
 
   · Data em tudo: YYYY_MM_DD no início do nome.
-  · Legado por rede: retro/ = LinkedIn (articles); gram/ = Instagram (artefato 01 G, desde março); face/ = Facebook (artefato 01 F, desde março/2026). Listagens: retro/articles.html, gram/instagram.html, face/facebook.html.
+  · Legado por rede: sala/redes/retro = LinkedIn (articles); gram/ = Instagram; face/ = Facebook. Listagens: redes/retro/articles.html, gram/instagram.html, face/facebook.html.
   · Uma pasta por rede: sala/ (plano); face/artefatos/, gram/artefatos/, sala/linkedin/ (HTML); sala/assets/img/ (imagens).
   · Facebook:  artefato (01)_F. HTML em face/ ou sala. Nome: YYYY_MM_DD_artefato_(01)_F.html | Imagem: YYYY_MM_DD_artefato_(01)_(01).png
   · Instagram: artefato (01)_G. HTML em gram/ ou sala. Nome: YYYY_MM_DD_artefato_(01)_G.html | Imagem: YYYY_MM_DD_artefato_(01)_(01).png

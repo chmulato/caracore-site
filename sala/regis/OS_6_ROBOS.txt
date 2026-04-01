@@ -15,7 +15,7 @@ Robô 02 (O Auditor de Entrega) — validar_trabalho_executado.py
 
 Robô 03 (O Transportador) — transportar_para_salas.py
   Pega os artefatos (fotos/textos) da pasta de entrega e distribui para as
-  pastas de rascunho: Retro, Gram e Face (retro/articles, gram/artefatos,
+  pastas de rascunho: Retro, Gram e Face (sala/redes/retro/articles, gram/artefatos,
   face/artefatos).
 
 Robô 04 (Validador Retro) — validar_entrega_retro.py

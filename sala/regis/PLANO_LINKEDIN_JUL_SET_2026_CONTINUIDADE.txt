@@ -9,7 +9,7 @@ portfólio e lançamentos, na coerência da Lia (voz e organização).
 --------------------------------------------------------------------------------
 1. CONTEXTO
 --------------------------------------------------------------------------------
-  · O legado retro (retro/articles/, retro/articles.html) contém os articles
+  · O legado retro (sala/redes/retro/articles/, articles.html) contém os articles
     numerados 11 a 86. O próximo número na sequência é 87.
   · A Sala LinkedIn (sala/linkedin/) organiza a campanha orgânica LinkedIn e
     passa a publicar as próximas edições como articles 87, 88, 89… em
@@ -32,7 +32,7 @@ portfólio e lançamentos, na coerência da Lia (voz e organização).
   Imagens: sala/assets/img/YYYY_MM_DD_article_(87)_(01).png etc.
 
   Opcional: quando o article estiver estável, pode ser espelhado ou linkado na
-  lista do retro (retro/articles.html) para manter o “mundo LinkedIn” unificado
+  lista do retro (sala/redes/retro/articles.html) para manter o “mundo LinkedIn” unificado
   (legado 11–86 no retro; 87+ na Sala, mesma sequência).
 
 --------------------------------------------------------------------------------

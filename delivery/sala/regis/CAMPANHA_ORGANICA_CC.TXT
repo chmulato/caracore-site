@@ -95,14 +95,14 @@ Formato: NUMERO | DATA | ARQUIVO | TITULO
   72 | 2026-02-12 | 2026_02_12_article_72.html | CaraCore PDV: Novidades e Atualizacoes que Transformam o Varejo
   73 | 2026-02-20 | 2026_02_20_article_73.html | Cara Core Informatica: Nossa Jornada de Evolucao e Inovacao
   74 | 2026-02-28 | 2026_02_28_article_74.html | PDV Enviar SMS: o Aplicativo Auxiliar Android que e o Braco Direito do CaraCore PDV
-  75 | 2026-03-07 | 2026_03_07_article_75.html | A Nova Cara Core: Como uma Startup Boutique Esta Redesenhando o Software Brasileiro
-  76 | 2026-03-14 | 2026_03_14_article_76.html | Por que o Brasil Precisa de Software Boutique: Oportunidades em Nichos Tecnicos
-  77 | 2026-03-21 | 2026_03_21_article_77.html | A Ultima Milha Digital: O Que as Tias Socias Revelam Sobre o Brasil
-  78 | 2026-03-28 | 2026_03_28_article_78.html | Construindo Produtos com Proposito: A Filosofia por Tras do Portifolio da Cara Core
+  75 | 2026-04-07 | 2026_04_07_article_75.html | A Nova Cara Core: Como uma Startup Boutique Esta Redesenhando o Software Brasileiro
+  76 | 2026-04-14 | 2026_04_14_article_76.html | Por que o Brasil Precisa de Software Boutique: Oportunidades em Nichos Tecnicos
+  77 | 2026-04-21 | 2026_04_21_article_77.html | A Ultima Milha Digital: O Que as Tias Socias Revelam Sobre o Brasil
+  78 | 2026-04-28 | 2026_04_28_article_78.html | Construindo Produtos com Proposito: A Filosofia por Tras do Portifolio da Cara Core
   79 | 2026-04-04 | 2026_04_04_article_79.html | Por Dentro do CaraCore PDV: O Primeiro Sistema Preparado para a Reforma Tributaria 2026-2033
   80 | 2026-04-11 | 2026_04_11_article_80.html | Reino OIDC e Area 51: A Nova Era da Identidade Digital Brasileira
-  81 | 2026-04-18 | 2026_04_18_article_81.html | Hub CaraCore: A Maquina de Automacao que Conecta Pessoas, Negocios e Comunidades
-  82 | 2026-04-25 | 2026_04_25_article_82.html | Circuito Python: Democratizando a Programacao no Brasil
+  81 | 2026-04-18 | 2026_04_18_article_81.html | Hub Cara Core: A Maquina de Automacao que Conecta Pessoas, Negocios e Comunidades
+  82 | 2026-04-25 | 2026_04_25_article_82.html | Circuito Ferradura: Democratizando a Programacao no Brasil
   83 | 2026-05-02 | 2026_05_02_article_83.html | ETE: A Metodologia Brasileira que Simplifica a Hidrometalurgia Seletiva
   84 | 2026-05-09 | 2026_05_09_article_84.html | Como Construir Software Tecnico em Escala com Equipes Enxutas
   85 | 2026-05-16 | 2026_05_16_article_85.html | O Brasil Emergente e a Oportunidade de Inovar Onde Ninguem Esta Olhando

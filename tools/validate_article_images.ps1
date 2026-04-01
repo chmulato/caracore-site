@@ -18,6 +18,7 @@ function Get-BlogPrefix([string]$name) {
 }
 
 function Is-BlogIndexPage([string]$name) {
+  # Inclui as duas series (Brasil SDK + Protocolo Lucerna): um HTML, varias datas nos PNG.
   return $name -match '_index\.html$'
 }
 
@@ -88,7 +89,7 @@ Blog:  $blogRoot
 Rules:
 - Retro: article_NN in image path must match NN in filename (except logo.png).
 - Blog: referenced files must exist under the article folder.
-- Blog date: assets/img/YYYY_MM_DD_* must match the article filename date, except *_index.html (cards for several episodes).
+- Blog date: assets/img/YYYY_MM_DD_* must match the article filename date, except *_index.html (series index: Brasil SDK + Protocolo Lucerna — see personal/articles/assets/img/README.txt).
 
 "@
 $sorted = $issues | Sort-Object -Unique

@@ -65,6 +65,7 @@ def blog_date_prefix(name: str) -> str | None:
 
 
 def is_blog_index(name: str) -> bool:
+    """Series index pages (Brasil SDK, Protocolo Lucerna): one HTML, many image dates."""
     return "_index.html" in name
 
 

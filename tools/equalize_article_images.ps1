@@ -1,4 +1,5 @@
 # Equaliza imagens do blog: copia legado -> canonico quando a origem existe e o destino nao.
+# Series (indice *_index.html): nao usar este script para renomear cartoes — ver assets/img/README.txt
 # Nao cobre renomeacoes entre meses diferentes de artigos distintos (fazer manual).
 # Uso: powershell -File tools/equalize_article_images.ps1
 $ErrorActionPreference = 'Stop'

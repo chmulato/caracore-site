@@ -91,11 +91,15 @@ Rules:
 - Blog date: assets/img/YYYY_MM_DD_* must match the article filename date, except *_index.html (cards for several episodes).
 
 "@
+$sorted = $issues | Sort-Object -Unique
+$retroN = ($sorted | Where-Object { $_ -like 'RETRO *' }).Count
+$blogN = ($sorted | Where-Object { $_ -like 'BLOG *' }).Count
 $body = if ($issues.Count -eq 0) {
   "OK: no problems detected.`n"
 } else {
-  (($issues | Sort-Object -Unique) -join "`r`n") + "`r`n"
+  (($sorted) -join "`r`n") + "`r`n"
 }
+$body += "`r`nSummary: RETRO lines=$retroN BLOG lines=$blogN (MISSING = file not found under article folder).`r`n"
 $null = New-Item -ItemType File -Path $outFile -Force
 [System.IO.File]::WriteAllText($outFile, $hdr + $body, [System.Text.UTF8Encoding]::new($false))
 Write-Host "Unique issues: $(($issues | Sort-Object -Unique).Count)"

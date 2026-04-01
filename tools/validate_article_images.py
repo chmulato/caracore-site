@@ -64,18 +64,27 @@ def blog_date_prefix(name: str) -> str | None:
     return m.group(1) if m else None
 
 
+def is_blog_index(name: str) -> bool:
+    return "_index.html" in name
+
+
 def check_blog(html_path: Path, issues: list[str]) -> None:
     name = html_path.name
     prefix = blog_date_prefix(name)
     if not prefix:
         return
+    skip_date = is_blog_index(name)
     text = html_path.read_text(encoding="utf-8", errors="replace")
     base = html_path.parent
+    seen: set[str] = set()
     for m in REF_RE.finditer(text):
         u = m.group(1).strip()
+        if u in seen:
+            continue
+        seen.add(u)
         if u.startswith("data:") or u.startswith("http"):
             continue
-        local = (base / u.replace("/", "\\").lstrip("\\")).resolve()
+        local = (base / u).resolve()
         try:
             local.relative_to(base)
         except ValueError:
@@ -83,6 +92,8 @@ def check_blog(html_path: Path, issues: list[str]) -> None:
             continue
         if not local.is_file():
             issues.append(f"BLOG MISSING: {name} — {u}")
+        if skip_date:
+            continue
         dm = re.search(r"assets/img/(\d{4}_\d{2}_\d{2})_", u)
         if dm and dm.group(1) != prefix:
             if "favicon" in u.lower():

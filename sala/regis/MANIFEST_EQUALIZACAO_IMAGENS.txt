@@ -1,0 +1,16 @@
+Equalizacao: 2026-04-01 16:46
+Blog img: D:\dev\caracore-site\personal\articles\assets\img
+
+COPIED: 2026_02_22_IMAGE_001.png -> 2026_02_20_IMAGE_001.png
+COPIED: 2026_03_24_IMAGE_001.png -> 2026_04_02_IMAGE_001.png
+OK exists: 2026_02_05_IMAGE_001.png
+OK exists: 2026_02_22_IMAGE_001.png
+COPIED: 2026_03_10_IMAGE_001.png -> 2026_03_08_IMAGE_001.png
+COPIED: 2026_05_09_IMAGE_001.png -> 2026_05_10_IMAGE_001.png
+COPIED: 2026_03_30_IMAGE_001.png -> 2026_04_25_IMAGE_001.png
+COPIED: 2026_03_03_IMAGE_001.png -> 2026_04_03_IMAGE_001.png
+
+Copies performed: 6
+
+Manual (artigos 2025_12_09 / 2025_12_10): se ainda tiver PNG com nome 2026_02_05_*,
+renomeie para 2025_12_09_* conforme README em personal/articles/assets/img/

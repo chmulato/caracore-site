@@ -175,11 +175,11 @@ Convencao de arquivos para Jun/Jul/Ago 2026:
 
 NOTAS
 
-  Analise editorial (Editor-Chefe / Estrategista de Narrativa): docs/EDITORIAL_ANALISE_MARCO_2026.md. Auditoria de soberania, refinamento Soberania Tecnica/Dossie Operacional, engajamento de elite, filtro de ruido, CTA Industrial-Ink. Comando de guerrilla para comentarios (Cara Core + Guilherme). Aplicado ao artigo 75 (07/03); replicar criterios para 76, 77, 78 e serie RU março.
+  Analise editorial (Editor-Chefe / Estrategista de Narrativa): docs/EDITORIAL_ANALISE_MARCO_2026.md. Auditoria de soberania, refinamento Soberania Tecnica/Dossie Operacional, engajamento de elite, filtro de ruido, CTA Industrial-Ink. Comando de guerrilla para comentarios (Cara Core + Guilherme). Aplicado ao artigo 75 (07/04); replicar criterios para 76, 77, 78 e serie RU março.
   O registro e atualizado conforme a lista em docs/articles.html (sala em caracore-articles, GitHub Pages). Novos artigos: YYYY_MM_DD_article_NN.html ou nome tematico (ex.: serie_ru_*); inserir na lista e neste arquivo.
   Sala de noticias: sem dominio proprio; URL base https://chmulato.github.io/caracore-articles/. Memoria do projeto em .cursor/rules/project-memory.mdc.
   Imagens: formato 16:9 paisagem; pasta docs/articles/assets/img. Prompts em docs/articles/assets/prompts_img/.
   Referencia cruzada: ECOSYSTEM_CARA_CORE.txt, VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt. Serie RU: docs/CONSISTENCIA_SERIE_RU.md, feedback_final.txt.
   Convencao de nomes do ecossistema: repos e pastas no padrao caracore-* (caracore-site, caracore-pdv, caracore-hub, caracore-ete, caracore-circuito, caracore-oidc, caracore-seed, caracore-area51, caracore-ru); lojas GitHub Pages em caracore-*-releases (ex.: caracore-circuito-releases, caracore-oidc-releases).
 
-Cara Core Informatica. Documento para uso interno. Atualizado em 08/02/2026.
+Cara Core Informatica. Documento para uso interno. Atualizado em 01/04/2026.

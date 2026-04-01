@@ -50,3 +50,22 @@ alwaysApply: true
 - **Oficina:** caracore-pdv (branch java_21, v1.1.0, Java 21).
 - **Lançamento oficial:** 03 de março de 2026 — versão v1.1.0 com Java 21 (Undertow, virtual threads, JVM otimizada para Windows Desktop). Conteúdo da matriz e da loja alinhado a essa data e às novidades Java 21.
 - **Páginas principais:** index.html (hero, economia, dores, 2026, planos, demo), tecnologia.html (soluções + Java 21 e desempenho), readme.html, wiki-fiscal.html, download.html, consultoria.html.
+
+---
+
+## Sala de Operações, retrô e blog (atualização 01/04/2026)
+
+### Sala (`sala/`)
+- **Controle:** `sala/index.html` — painel rápido para manuais (LinkedIn, retrô, blog técnico), feedback e “para quem opera”.
+- **Campanha Ink (Facebook / Instagram):** artefatos canónicos com **data de uso no 2.º semestre de 2026** nos nomes (`2026_07_*` … `2026_12_*`). Ficheiros com mar–jun no path = **legado**; manuais apontam só para os canónicos H2.
+- **LinkedIn:** manual em `sala/linkedin/`; fila e calendário separados do Face/IG.
+
+### Retrô LinkedIn (`sala/redes/retro/`)
+- Artigos **H1 2026** com `YYYY_MM_DD` coerente com o índice e o `feed.xml`; removidos duplicados antigos `2026_03_*` dos artigos 75–78 (usar `2026_04_07` … `2026_04_28`).
+- **URLs canónicas** dos HTML: `https://caracore.com.br/sala/redes/retro/articles/<ficheiro>`.
+- Imagens: `article_NN_01.png` — ver `sala/redes/retro/articles/assets/img/README.txt`.
+
+### Blog pessoal (`personal/`)
+- Convenção de imagens: `personal/articles/assets/img/README.txt` (`YYYY_MM_DD_IMAGE_*` = data do artigo).
+- **Séries** “Brasil, SDK e Soberania” e “Protocolo de Lucerna”: páginas `*_index.html` são **exceção** (várias datas nos cartões); cada **episódio** segue a norma no seu HTML. Nota no `personal/index.html` (stats).
+- `canonical` + `og:url` nos artigos; scripts `tools/validate_article_images.ps1` e `tools/equalize_article_images.ps1`; relatórios em `sala/regis/` (`VALIDACAO_IMAGENS_RETRO_BLOG.txt`, `MANIFEST_EQUALIZACAO_IMAGENS.txt`).

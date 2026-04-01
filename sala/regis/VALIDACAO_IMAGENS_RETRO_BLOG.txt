@@ -1,11 +1,11 @@
-Validation: 2026-04-01 16:46
+Validation: 2026-04-01 16:56
 Retro: D:\dev\caracore-site\sala\redes\retro\articles
 Blog:  D:\dev\caracore-site\personal\articles
 
 Rules:
 - Retro: article_NN in image path must match NN in filename (except logo.png).
 - Blog: referenced files must exist under the article folder.
-- Blog date: assets/img/YYYY_MM_DD_* must match the article filename date, except *_index.html (cards for several episodes).
+- Blog date: assets/img/YYYY_MM_DD_* must match the article filename date, except *_index.html (series index: Brasil SDK + Protocolo Lucerna â€” see personal/articles/assets/img/README.txt).
 BLOG MISSING: 2024_03_06_aplicacao_web_java.html - assets/img/2024_03_06_IMAGE_001.png
 BLOG MISSING: 2024_03_20_produtividade_versus_renda.html - assets/img/2024_03_20_IMAGE_003.png
 BLOG MISSING: 2025_11_30_superando_desafios_na_gestao_de_licencas_digitais_uma_jornada_de_inovacao_e_monetizacao.html - assets/img/artigo_img.png

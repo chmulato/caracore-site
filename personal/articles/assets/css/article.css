@@ -1018,6 +1018,26 @@ body {
     }
 }
 
+/* Subtítulo de série (ex.: Brasil SDK) acima do título do episódio */
+.post-serie-kicker {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 0.35em 0;
+    opacity: 0.85;
+}
+
+/* Blocos do desafio semanal (ex.: armadilha da produtividade) */
+.day-box {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+}
+
+[data-theme="dark"] .day-box {
+    border-color: #ffffff;
+}
+
 /* === ACESSIBILIDADE === */
 @media (prefers-reduced-motion: reduce) {
     * {

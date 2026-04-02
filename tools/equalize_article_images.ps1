@@ -12,8 +12,6 @@ $logFile = Join-Path (Join-Path $PSScriptRoot '..') 'sala\regis\MANIFEST_EQUALIZ
 # Origem = ficheiro antigo no disco; Destino = nome que o HTML ja referencia hoje
 $blogPairs = [ordered]@{
   '2026_03_24_IMAGE_001.png' = '2026_04_02_IMAGE_001.png'
-  '2026_02_15_IMAGE_001.png' = '2026_02_05_IMAGE_001.png'
-  '2026_02_28_IMAGE_001.png' = '2026_02_22_IMAGE_001.png'
   '2026_03_10_IMAGE_001.png' = '2026_03_08_IMAGE_001.png'
   '2026_05_09_IMAGE_001.png' = '2026_05_10_IMAGE_001.png'
   '2026_03_30_IMAGE_001.png' = '2026_04_25_IMAGE_001.png'

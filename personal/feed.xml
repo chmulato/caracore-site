@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title><![CDATA[Christian Mulato Dev Blog]]></title>
     <link>https://caracore.com.br/personal/</link>
     <description><![CDATA[Artigos técnicos sobre desenvolvimento Java, arquitetura de software e tecnologia.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Wed, 01 Apr 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Apr 2026 21:30:00 +0000</lastBuildDate>
+    <atom:link href="https://caracore.com.br/personal/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
 
     <item>
@@ -70,15 +71,15 @@
     </item>
     <item>
       <title><![CDATA[A Armadilha da Produtividade: Por Que Estar Ocupado Não Paga Suas Contas]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_02_22_a_armadilha_da_produtividade.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_22_a_armadilha_da_produtividade.html</guid>
-      <pubDate>Sun, 22 Feb 2026 07:00:00 +0000</pubDate>
+      <link>https://caracore.com.br/personal/articles/2026_02_28_a_armadilha_da_produtividade.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_28_a_armadilha_da_produtividade.html</guid>
+      <pubDate>Sat, 28 Feb 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
-      <title><![CDATA[Episódio 01: A Soberania em Jogo - Do Petróleo ao SDK]]></title>
-      <link>https://caracore.com.br/personal/articles/2026_02_20_serie_brasil_sdk_soberania_ep01.html</link>
-      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_20_serie_brasil_sdk_soberania_ep01.html</guid>
-      <pubDate>Fri, 20 Feb 2026 07:00:00 +0000</pubDate>
+      <title><![CDATA[Em busca da Soberania Nacional — Episódio 01: A Soberania em Jogo - Do Petróleo ao SDK]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_02_22_serie_brasil_sdk_soberania_ep01.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_02_22_serie_brasil_sdk_soberania_ep01.html</guid>
+      <pubDate>Sun, 22 Feb 2026 07:00:00 +0000</pubDate>
     </item>
     <item>
       <title><![CDATA[Série: Brasil, SDK e Soberania]]></title>

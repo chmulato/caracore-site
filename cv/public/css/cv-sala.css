@@ -1,0 +1,248 @@
+:root {
+    --cv-bg: #0d1117;
+    --cv-panel: #161b22;
+    --cv-panel-soft: rgba(22, 27, 34, 0.92);
+    --cv-surface: #11161d;
+    --cv-text: #e6edf3;
+    --cv-text-muted: #c9d1d9;
+    --cv-text-quiet: #8b949e;
+    --cv-gold: #ffd700;
+    --cv-gold-soft: rgba(255, 215, 0, 0.16);
+    --cv-gold-border: rgba(255, 215, 0, 0.28);
+    --cv-border: rgba(255, 255, 255, 0.1);
+    --cv-link: #f3cf63;
+    --cv-accent: #7cc4ff;
+    --cv-danger: #ff8e8e;
+    --cv-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    --cv-radius-lg: 18px;
+    --cv-radius-md: 12px;
+    --cv-radius-sm: 8px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    color-scheme: dark;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(255, 215, 0, 0.08), transparent 0 28%),
+        linear-gradient(180deg, #0a0f14 0%, var(--cv-bg) 100%);
+    color: var(--cv-text);
+    min-height: 100vh;
+}
+
+body.cv-page {
+    padding: 32px 18px 48px;
+}
+
+.wrap {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 28px;
+    background: linear-gradient(180deg, rgba(22, 27, 34, 0.98), rgba(13, 17, 23, 0.98));
+    border: 1px solid var(--cv-gold-border);
+    border-radius: var(--cv-radius-lg);
+    box-shadow: var(--cv-shadow);
+}
+
+.wrap::before {
+    content: "Cara Core Informatica · Sala de Operacoes · Perfil Institucional";
+    display: block;
+    margin: -4px 0 18px;
+    color: var(--cv-gold);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+    color: var(--cv-gold);
+    letter-spacing: 0.01em;
+}
+
+h1 {
+    margin: 0 0 14px;
+    font-size: clamp(1.65rem, 2vw + 1rem, 2.3rem);
+    line-height: 1.15;
+}
+
+h2 {
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+}
+
+p,
+li {
+    color: var(--cv-text-muted);
+    line-height: 1.7;
+}
+
+a {
+    color: var(--cv-link);
+}
+
+a:hover {
+    color: #ffe38b;
+}
+
+.topbar,
+.links {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+}
+
+.topbar a,
+.links a {
+    text-decoration: none;
+    padding: 10px 14px;
+    border-radius: var(--cv-radius-sm);
+    border: 1px solid rgba(255, 215, 0, 0.24);
+    color: var(--cv-text);
+    font-weight: 600;
+    background: rgba(255, 215, 0, 0.08);
+    transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.topbar a:hover,
+.links a:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 215, 0, 0.16);
+    border-color: rgba(255, 215, 0, 0.45);
+}
+
+.hint,
+.error {
+    font-size: 0.95rem;
+}
+
+.hint {
+    color: var(--cv-text-quiet);
+}
+
+.error {
+    color: var(--cv-danger);
+    font-weight: 600;
+}
+
+.notice {
+    margin: 18px 0 20px;
+    padding: 16px 18px;
+    border: 1px solid var(--cv-gold-border);
+    border-radius: var(--cv-radius-md);
+    background: linear-gradient(180deg, rgba(255, 215, 0, 0.08), rgba(255, 215, 0, 0.03));
+}
+
+.notice p:last-child {
+    margin-bottom: 0;
+}
+
+#resume-root > .block,
+.block {
+    margin-bottom: 20px;
+    padding: 18px 0 12px;
+    border-bottom: 1px solid var(--cv-border);
+}
+
+#resume-root > .block:first-child {
+    padding-top: 6px;
+}
+
+#resume-root > .block:last-child,
+.block:last-child {
+    border-bottom: 0;
+}
+
+.card {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--cv-radius-md);
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+}
+
+.cv-card {
+    box-shadow: inset 0 0 0 1px rgba(255, 215, 0, 0.05);
+}
+
+.cv-section-title {
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.cv-paragraph {
+    margin: 0 0 10px;
+}
+
+.cv-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cv-list-item {
+    margin: 0 0 10px;
+    padding: 10px 12px;
+    border-left: 3px solid rgba(255, 215, 0, 0.34);
+    border-radius: 0 var(--cv-radius-sm) var(--cv-radius-sm) 0;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--cv-text-muted);
+}
+
+.cv-inline-link {
+    color: var(--cv-accent);
+    text-decoration: none;
+    word-break: break-word;
+}
+
+.cv-inline-link:hover {
+    color: #9ad4ff;
+    text-decoration: underline;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+li + li {
+    margin-top: 6px;
+}
+
+code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 2px 6px;
+    border-radius: 6px;
+    font-size: 0.92em;
+}
+
+@media (max-width: 720px) {
+    body.cv-page {
+        padding: 16px 12px 28px;
+    }
+
+    .wrap {
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .wrap::before {
+        font-size: 0.74rem;
+        line-height: 1.5;
+    }
+
+    .topbar a,
+    .links a {
+        width: 100%;
+        justify-content: center;
+        text-align: center;
+    }
+}

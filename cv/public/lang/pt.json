@@ -95,9 +95,9 @@
     },
     "downloadPdfText": "PDF",
     "showFullResume": "Ver Currículo Completo",
-    "noticeModalTitle": "Aviso de Monitoramento",
-    "noticeModalText": "<b>Atenção:</b> O acesso ao currículo completo utiliza monitoramento institucional com coleta mínima e agregada para auditoria e segurança. Não há identificação pessoal dos fundadores neste fluxo. Ao continuar, você concorda com este monitoramento.",
+    "noticeModalTitle": "Aviso de Privacidade e Acesso",
+    "noticeModalText": "<b>Atenção:</b> O acesso ao currículo completo utiliza registro técnico institucional mínimo, com finalidade de auditoria, segurança e prevenção a abuso. O fluxo opera por avatar institucional e não expõe identificação pessoal dos fundadores.",
     "continueButton": "Continuar",
     "closeButton": "Fechar",
-    "consentLabel": "Li e concordo com o monitoramento."
+    "consentLabel": "Declaro ciência do aviso de privacidade e acesso."
 }

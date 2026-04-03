@@ -1,70 +1,70 @@
-# Currículo Interativo de Christian V. U. Mulato
+# Curriculo Institucional Cara Core
 
-Bem-vindo ao repositório do meu currículo interativo. Este projeto apresenta minha carreira de uma forma moderna e estratégica, com foco na minha experiência mais recente e relevante, ao mesmo tempo que oferece acesso ao meu histórico completo de forma controlada.
+Modulo institucional de apresentacao profissional da Cara Core Informatica para contexto comercial, recrutamento tecnico e relacionamento corporativo.
 
-O site foi desenvolvido para ser uma apresentação profissional dinâmica e é monitorado com o Google Analytics para fins de auditoria e análise de acessos.
+## Finalidade
 
-## Funcionalidades Principais
+Este modulo publica um perfil institucional em formato de avatar corporativo.
+O objetivo e apresentar competencias, historico de entrega e posicionamento tecnico sem expor dados pessoais desnecessarios do fundador ou de terceiros.
 
-- **Currículo Focado:** A página principal exibe um resumo da minha carreira com foco nos últimos 8 anos de experiência, disponível em Português, Inglês e Italiano.
-- **Currículo Completo "Secreto":** Um currículo detalhado com toda a minha trajetória profissional está disponível em Português. Para outros idiomas, utilize as ferramentas de tradução do navegador. O acesso é precedido por um aviso de que a sessão está sendo monitorada.
-- **Multi-idioma:** O conteúdo principal do site e o currículo de 8 anos podem ser visualizados em Português, Inglês e Italiano.
-- **Download de PDF:** É possível baixar uma versão em PDF do currículo, que inclui uma marca d'água "CONFIDENCIAL" (traduzida para o idioma selecionado) em todas as páginas.
-- **Ícone Personalizado:** O site utiliza um ícone de estrela (favicon) para identificação visual.
-- **Servidor Local com Logs:** O projeto inclui um servidor Python simples com logs detalhados para facilitar a execução e o desenvolvimento.
+## Diretriz de privacidade e LGPD
 
-## Como Executar o Projeto
+O projeto adota minimizacao de dados e apresentacao institucionalizada.
+Os dados exibidos publicamente sao limitados ao necessario para contato corporativo e avaliacao profissional.
+Informacoes pessoais diretas foram suprimidas ou substituidas por identidade institucional, em alinhamento com uma postura de privacidade compativel com a LGPD.
 
-Para visualizar o site, é necessário iniciar o servidor local. Siga os passos abaixo:
+Quando ha registro tecnico de acesso para auditoria e seguranca, a coleta deve permanecer minima, agregada e sem perfilamento pessoal indevido.
 
-1.  Abra um terminal (cmd, PowerShell, etc.).
-2.  Navegue até a pasta raiz do projeto:
-    ```bash
-    cd c:\dev\cv
-    ```
-3.  Execute o servidor Python:
-    ```bash
-    python server.py
-    ```
-4.  Abra seu navegador e acesse o seguinte endereço:
-    ```
-    http://localhost:8000
-    ```
+## Escopo funcional
 
-O terminal onde o servidor está rodando exibirá logs de acesso, o que é útil para depuração. Para parar o servidor, pressione `Ctrl+C` no terminal.
+| Recurso | Descricao |
+| --- | --- |
+| Resumo institucional multilingue | Apresenta o perfil resumido em Portugues, Ingles e Italiano |
+| Perfil institucional completo | Disponibiliza historico ampliado com aviso previo de privacidade |
+| Avatar corporativo | Substitui identificacao pessoal nominal por identidade institucional |
+| PDF institucional | Permite exportacao controlada do perfil apresentado |
+| Servidor local | Suporta execucao local para revisao e homologacao |
 
-## Estrutura de Pastas
+## Execucao local
 
-A estrutura do projeto foi reorganizada para maior clareza:
+1. Abrir um terminal.
+2. Navegar ate a pasta do modulo.
+3. Executar o servidor Python.
+4. Abrir o navegador em `http://localhost:8000`.
 
-- **/public/**: Contém todos os arquivos do site (HTML, CSS, JS, imagens, etc.).
-  - **/public/new/**: Contém os arquivos Markdown dos currículos.
-- **/source/**: Arquivos de origem, como o currículo master e artigos.
-- **/resumes/**: Versões de currículos em outros formatos.
-- **/applications/**: Cartas de apresentação e outros documentos de candidatura.
-- **/archive/**: Arquivos antigos e não utilizados.
-- `server.py`: O script do servidor local.
-- `README.md`: Este arquivo.
+```bash
+cd d:\dev\caracore-site\cv
+python server.py
+```
 
-## Tecnologias Utilizadas
+## Estrutura principal
 
-- **Frontend:** HTML5, CSS3, JavaScript
-- **Servidor:** Python (`http.server`)
-- **Bibliotecas JavaScript:**
-  - `html2pdf.js`: Para a geração de PDFs.
-  - `marked.js`: Para converter o conteúdo dos currículos de Markdown para HTML.
+| Caminho | Conteudo |
+| --- | --- |
+| `public/` | Paginas HTML, arquivos JSON, assets e scripts do site |
+| `public/json/` | Dados estruturados do perfil resumido e completo |
+| `public/lang/` | Textos institucionais por idioma |
+| `public/js/` | Renderizacao do curriculo e logica de interface |
+| `tests/` | Validacao estrutural das paginas HTML |
+| `server.py` | Servidor local de apoio ao desenvolvimento |
 
-## Teste Unitário do HTML
+## Tecnologias adotadas
 
-Para validar rapidamente as páginas HTML do currículo, execute na raiz do repositório:
+| Camada | Tecnologia |
+| --- | --- |
+| Frontend | HTML, CSS e JavaScript |
+| Dados | JSON |
+| Servidor local | Python com `http.server` |
+| Exportacao | `html2pdf.js` |
+
+## Validacao
+
+Para validar rapidamente as paginas HTML do modulo:
 
 ```bash
 npm run test:cv:html
 ```
 
-Esse comando valida a estrutura das páginas em `cv/public` e os links HTML da página inicial, sem aplicar cobertura de backend.
+## Contato institucional
 
-## Contato
-
-- **LinkedIn:** [https://www.linkedin.com/in/chmulato](https://www.linkedin.com/in/chmulato)
-- **Email:** chmulato@hotmail.com
+Canal institucional recomendado para este modulo: `suporte@caracore.com.br`

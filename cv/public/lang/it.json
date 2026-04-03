@@ -95,9 +95,9 @@
     },
     "downloadPdfText": "PDF",
     "showFullResume": "Visualizza CV Completo",
-    "noticeModalTitle": "Avviso di Monitoraggio",
-    "noticeModalText": "<b>Attenzione:</b> L'accesso al curriculum completo utilizza monitoraggio istituzionale con raccolta minima e aggregata per audit e sicurezza. In questo flusso non viene usata identificazione personale dei fondatori. Continuando, accetti questo monitoraggio.",
+    "noticeModalTitle": "Avviso su Privacy e Accesso",
+    "noticeModalText": "<b>Attenzione:</b> L'accesso al curriculum completo utilizza registrazione tecnica istituzionale minima per audit, sicurezza e prevenzione di abusi. Questo flusso opera tramite avatar istituzionale e non espone identificazione personale dei fondatori.",
     "continueButton": "Continua",
     "closeButton": "Chiudi",
-    "consentLabel": "Ho letto e accetto il monitoraggio."
+    "consentLabel": "Dichiaro di aver preso visione dell'avviso su privacy e accesso."
 }

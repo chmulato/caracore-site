@@ -95,9 +95,9 @@
     },
     "downloadPdfText": "PDF",
     "showFullResume": "View Full Resume",
-    "noticeModalTitle": "Monitoring Notice",
-    "noticeModalText": "<b>Attention:</b> Access to the full resume uses institutional monitoring with minimal, aggregated collection for auditing and security. No personal founder identification is used in this flow. By continuing, you agree to this monitoring.",
+    "noticeModalTitle": "Privacy and Access Notice",
+    "noticeModalText": "<b>Attention:</b> Access to the full resume uses minimal institutional technical logging for auditing, security, and abuse prevention. This flow operates through an institutional avatar and does not expose personal founder identification.",
     "continueButton": "Continue",
     "closeButton": "Close",
-    "consentLabel": "I have read and agree to the monitoring."
+    "consentLabel": "I acknowledge the privacy and access notice."
 }

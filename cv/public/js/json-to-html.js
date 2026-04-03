@@ -47,6 +47,22 @@
             .replace(/'/g, '&#39;');
     }
 
+    function renderInlineValue(value) {
+        const text = String(value).trim();
+
+        if (/^https?:\/\//i.test(text)) {
+            const safeUrl = escapeHtml(text);
+            return `<a class="cv-inline-link" href="${safeUrl}" target="_blank" rel="noreferrer noopener">${safeUrl}</a>`;
+        }
+
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(text)) {
+            const safeEmail = escapeHtml(text);
+            return `<a class="cv-inline-link" href="mailto:${safeEmail}">${safeEmail}</a>`;
+        }
+
+        return escapeHtml(text);
+    }
+
     function renderString(value) {
         const lines = String(value)
             .split('\n')
@@ -54,10 +70,10 @@
             .filter(Boolean);
 
         if (lines.length > 1) {
-            return `<ul>${lines.map((line) => `<li>${escapeHtml(line.replace(/^-\s*/, ''))}</li>`).join('')}</ul>`;
+            return `<ul class="cv-list">${lines.map((line) => `<li class="cv-list-item">${renderInlineValue(line.replace(/^\-\s*/, ''))}</li>`).join('')}</ul>`;
         }
 
-        return `<p>${escapeHtml(String(value))}</p>`;
+        return `<p class="cv-paragraph">${renderInlineValue(value)}</p>`;
     }
 
     function renderValue(value) {
@@ -76,11 +92,11 @@
 
             const allPrimitives = value.every((item) => ['string', 'number', 'boolean'].includes(typeof item));
             if (allPrimitives) {
-                return `<ul>${value.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul>`;
+                return `<ul class="cv-list">${value.map((item) => `<li class="cv-list-item">${renderInlineValue(item)}</li>`).join('')}</ul>`;
             }
 
             return value
-                .map((item) => `<article class="card">${renderObject(item)}</article>`)
+                .map((item) => `<article class="card cv-card">${renderObject(item)}</article>`)
                 .join('');
         }
 
@@ -110,7 +126,7 @@
                     return '';
                 }
 
-                return `<section class="block"><h2>${escapeHtml(label)}</h2>${content}</section>`;
+                return `<section class="block cv-block"><h2 class="cv-section-title">${escapeHtml(label)}</h2>${content}</section>`;
             })
             .join('');
     }

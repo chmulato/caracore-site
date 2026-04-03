@@ -19,9 +19,26 @@
         <section class="notice" aria-label="Avviso istituzionale sulla privacy">
             <p>Questo profilo e presentato tramite avatar istituzionale Cara Core, con soppressione dei dati personali non essenziali e priorita ai canali di contatto aziendali.</p>
         </section>
+        <section class="contact-panel" aria-label="Contattaci">
+            <h2>Contattaci</h2>
+            <p class="contact-panel__lead">Utilizzare WhatsApp o Telegram per contatto istituzionale relativo a questo profilo.</p>
+            <div class="contact-channel-grid">
+                <article class="contact-channel-card contact-channel-card--whatsapp">
+                    <span class="contact-channel-card__label">WhatsApp</span>
+                    <p class="contact-channel-card__desc">Canale principale per primo contatto e seguito commerciale.</p>
+                    <button type="button" class="contact-channel-card__btn" data-contact-channel="whatsapp">Apri WhatsApp</button>
+                </article>
+                <article class="contact-channel-card contact-channel-card--telegram">
+                    <span class="contact-channel-card__label">Telegram</span>
+                    <p class="contact-channel-card__desc">Canale alternativo per continuita della conversazione istituzionale.</p>
+                    <button type="button" class="contact-channel-card__btn" data-contact-channel="telegram">Apri Telegram</button>
+                </article>
+            </div>
+        </section>
         <div id="resume-root"><p>Caricamento...</p></div>
     </main>
     <script src="/cv/public/js/json-to-html.js"></script>
+    <script src="/cv/public/js/contact-channels.js"></script>
     <script>
         loadResumeAsHtml({
             targetId: 'resume-root',

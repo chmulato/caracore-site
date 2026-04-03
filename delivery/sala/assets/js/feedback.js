@@ -33,11 +33,12 @@
     }
   }
 
-  /* Dados de contato em base64 (substitua pelos valores reais em produção).
-   * Ex.: btoa('5511999999999') para WhatsApp, btoa('usuario') para Telegram, btoa('email@dominio.com') para e-mail. */
+  /* Dados de contato em base64.
+   * WhatsApp institucional: +55 41 99909-7797
+   * Telegram institucional correspondente: https://t.me/+5541999097797 */
   var CONTACTS = {
-    whatsapp: decodeContact('NTUxMTk5OTk5OTk5OQ=='),   /* placeholder: 5511999999999 */
-    telegram: decodeContact('Y2FyYWNvcmU='),           /* placeholder: caracore */
+    whatsapp: decodeContact('NTU0MTk5OTA5Nzc5Nw=='),
+    telegram: decodeContact('aHR0cHM6Ly90Lm1lLys1NTQxOTk5MDk3Nzk3'),
     email: decodeContact('c3Vwb3J0ZUBjYXJhY29yZS5jb20uYnI=')  /* suporte@caracore.com.br */
   };
 
@@ -47,8 +48,8 @@
   }
 
   function openTelegram() {
-    var u = CONTACTS.telegram.replace(/^@/, '');
-    if (u) window.open('https://t.me/' + u, '_blank', 'noopener,noreferrer');
+    var telegramUrl = CONTACTS.telegram;
+    if (telegramUrl) window.open(telegramUrl, '_blank', 'noopener,noreferrer');
   }
 
   function openEmail() {

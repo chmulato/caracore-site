@@ -19,9 +19,26 @@
         <section class="notice" aria-label="Institutional privacy notice">
             <p>This profile is presented through a Cara Core institutional avatar, with non-essential personal data suppressed and corporate contact channels prioritized.</p>
         </section>
+        <section class="contact-panel" aria-label="Contact us">
+            <h2>Contact us</h2>
+            <p class="contact-panel__lead">Use WhatsApp or Telegram for institutional contact related to this profile.</p>
+            <div class="contact-channel-grid">
+                <article class="contact-channel-card contact-channel-card--whatsapp">
+                    <span class="contact-channel-card__label">WhatsApp</span>
+                    <p class="contact-channel-card__desc">Primary channel for first contact and commercial follow-up.</p>
+                    <button type="button" class="contact-channel-card__btn" data-contact-channel="whatsapp">Open WhatsApp</button>
+                </article>
+                <article class="contact-channel-card contact-channel-card--telegram">
+                    <span class="contact-channel-card__label">Telegram</span>
+                    <p class="contact-channel-card__desc">Alternative channel for institutional conversation continuity.</p>
+                    <button type="button" class="contact-channel-card__btn" data-contact-channel="telegram">Open Telegram</button>
+                </article>
+            </div>
+        </section>
         <div id="resume-root"><p>Loading...</p></div>
     </main>
     <script src="/cv/public/js/json-to-html.js"></script>
+    <script src="/cv/public/js/contact-channels.js"></script>
     <script>
         loadResumeAsHtml({
             targetId: 'resume-root',

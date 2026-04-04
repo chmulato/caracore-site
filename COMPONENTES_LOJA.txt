@@ -12,7 +12,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo â€œmolde
   - .nojekyll ............... Arquivo vazio (GitHub Pages sem Jekyll)
   - NavegaÃ§Ã£o ................ Link â€œVer apresentaÃ§Ã£o (matriz)â€ para caracore.com.br/delivery/<produto>/
   - PortfÃ³lio ................ Link para https://caracore.com.br/portfolio.html (e Ã¢ncora do produto quando aplicÃ¡vel)
-  - Base URL ................. Quando a vitrine estÃ¡ em docs/, usar <base href="https://caracore.com.br/<repo>-releases/"> nos HTML
+  - Base URL ................. Quando a vitrine estÃ¡ em docs/, usar o subdomÃ­nio oficial da loja (ex.: <base href="https://oidc.caracore.com.br/">)
 
 -------------------------------------------------------------------------------
 2. COMPONENTES POR TIPO DE PRODUTO

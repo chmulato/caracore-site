@@ -105,7 +105,7 @@
 | Seed | `seed.caracore.com.br/` | âœ… |
 | Minerador 4.0 | `ete.caracore.com.br/` | âœ… |
 | Reino OIDC | `oidc.caracore.com.br/` | âš ï¸ fora do padrÃ£o |
-| Circuito Ferradura | `caracore.com.br/circuito-python-releases/releases/latest` | âš ï¸ sem site Pages |
+| Circuito Ferradura | `circuito.caracore.com.br/` | âœ… |
 
 **PendÃªncia:**
 

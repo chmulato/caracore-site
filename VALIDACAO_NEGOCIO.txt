@@ -90,7 +90,7 @@ ReferÃªncia (sem oferta ativa):
   PreÃ§o                     | OK     | FREE (MIT) para indivÃ­duos; R$ 5,00/aluno matriculado/mÃªs para escolas.
   Delivery funcional        | OK     | delivery/circuito/ (index com card Download â†’ releases/latest, canal-feedback, licenca-uso, portal-escolas); filial circuito-python-releases (docs/) com balcÃ£o e download â†’ releases/latest; sem card/link destacado para curso em HTML.
   Windows Desktop           | OK     | CircuitoPython.exe em https://circuito.caracore.com.br/download.html.
-  RepositÃ³rio pÃºblico       | OK     | Em loja filial e matriz apontamos apenas para caracore.com.br/circuito-python-releases. O repositÃ³rio do produto (circuito_python) Ã© privado. NÃ£o destacar link do curso em HTML (circuito.caracore.com.br).
+  RepositÃ³rio pÃºblico       | OK     | Em loja filial e matriz apontamos apenas para https://circuito.caracore.com.br/. O repositÃ³rio do produto (circuito_python) Ã© privado. NÃ£o destacar link do curso em HTML (circuito.caracore.com.br).
 
   AÃ§Ã£o sugerida: Manter alinhamento matriz â†” filial; priorizar download do EXE; nÃ£o destacar link do curso em HTML.
 
@@ -102,7 +102,7 @@ ReferÃªncia (sem oferta ativa):
   NegÃ³cio aplicÃ¡vel         | OK     | Projeto Tia SÃ³cia citado como exemplo; apresentaÃ§Ã£o (pitch deck, 21 slides) em slides/ na loja (caracore-hub-releases) e na matriz (delivery/hub).
   PreÃ§o                     | N/A    | B2B / sob consulta ou modelo futuro; nÃ£o fixado no portal.
   Delivery funcional        | OK     | Matriz: delivery/hub/ (index, download, canal-feedback, tecnologia, slides/). Loja online: https://hub.caracore.com.br/ (vitrine, mesmo conteÃºdo, base href para GitHub Pages).
-  Portal/vitrine            | OK     | Matriz = site Cara Core delivery/hub; loja online = caracore-hub-releases. MIRROR_DELIVERY.md em delivery/hub documenta a relaÃ§Ã£o. Releases (WAR) em caracore.com.br/caracore-hub-releases/releases quando publicadas. ReferÃªncia central: ECOSYSTEM_LOJAS.md.
+  Portal/vitrine            | OK     | Matriz = site Cara Core delivery/hub; loja online = caracore-hub-releases. MIRROR_DELIVERY.md em delivery/hub documenta a relaÃ§Ã£o. Releases (WAR) em https://hub.caracore.com.br/download.html quando publicadas. ReferÃªncia central: ECOSYSTEM_LOJAS.md.
 
   AÃ§Ã£o sugerida: Manter alinhamento matriz â†” vitrine; ao publicar releases, atualizar download.html com link para releases/latest. ReferÃªncia central das lojas: ECOSYSTEM_LOJAS.txt.
 
@@ -166,7 +166,7 @@ ReferÃªncia (sem oferta ativa):
   2. Minerador 4.0: Incluir no alerta de licenciamento do card: "Upgrade Ouro 4.0: R$ 29,90 (valor Ãºnico)."
   3. Seed: Produto existe, aplicaÃ§Ã£o nÃ£o disponÃ­vel. NÃ£o oferecer Baixar EXE nem Comprar; portfÃ³lio com seÃ§Ã£o no final; delivery e vitrine apenas informam que existe. Foco em aplicaÃ§Ãµes relevantes para o negÃ³cio.
   4. Reino OIDC: Manter nome completo "Reino OIDC â€” Reino das Identidades Federadas" em qualquer novo material; download do EXE FREE (ReinoOIDC.exe) disponÃ­vel em delivery/oidc e reino_oidc_releases.
-  5. Circuito Python: NÃ£o apontar para o repositÃ³rio privado (caracore.com.br/circuito_python). Em matriz e filial: repositÃ³rio pÃºblico de releases (caracore.com.br/circuito-python-releases); priorizar download do EXE (releases/latest); nÃ£o destacar link do curso em HTML.
+  5. Circuito Python: NÃ£o apontar para o repositÃ³rio privado (caracore.com.br/delivery/circuito/). Em matriz e filial: repositÃ³rio pÃºblico de releases (https://circuito.caracore.com.br/); priorizar download do EXE (download.html); nÃ£o destacar link do curso em HTML.
   6. Cara Core PDV: Matriz = delivery/pdv; loja online = https://pdv.caracore.com.br/. Documentado em delivery/pdv/MIRROR_DELIVERY.md. Ver ECOSYSTEM_LOJAS.md para referÃªncia central das lojas.
   7. Cara Core Hub: Portal delivery/hub (matriz) e loja online caracore-hub-releases (https://hub.caracore.com.br/) alinhados; negÃ³cio aplicÃ¡vel Tia SÃ³cia citado; apresentaÃ§Ã£o Tia SÃ³cia em slides/ em ambos. Ao publicar releases (WAR), atualizar download.html com link para releases/latest.
   8. Suporte Ãrea 51: Produto = suporte Ã s empresas mÃ©dias do Brasil para configurar os portais que o produto Ãrea 51 oferece. Matriz delivery/area51 e loja caracore-area51-releases; CTAs "Ver loja (releases)" na matriz e "Ver apresentaÃ§Ã£o (matriz)" na loja. Ver VALIDACAO_LOJAS_MATRIZ.txt e ECOSYSTEM_LOJAS.txt.

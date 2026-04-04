@@ -440,7 +440,7 @@ A administraÃ§Ã£o pode acompanhar eventos em tempo real pela pÃ¡gina `secu
 - [Facebook](https://www.facebook.com/caracoreinformatica/)
 - [YouTube](https://www.youtube.com/@caracoreinformatica7704)
 - [LinkedIn](https://pt.linkedin.com/company/cara-core)
-- [GitHub](https://caracore.com.br/ecosistema.html)
+- [Ecossistema](https://caracore.com.br/ecosistema.html)
 - [Site](https://caracore.com.br)
 
 ---

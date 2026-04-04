@@ -80,7 +80,7 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinh
   Status:  OK. PreÃ§o e oferta alinhados.
 
   Links
-    Download para caracore.com.br/reino-oidc-releases/releases/latest; upgrade-trono em ambas; links para portfÃ³lio em formato absoluto na vitrine (conforme MIRROR).
+    Download para https://oidc.caracore.com.br/download.html; upgrade-trono em ambas; links para portfÃ³lio em formato absoluto na vitrine (conforme MIRROR).
   Status:  OK.
 
 -------------------------------------------------------------------------------

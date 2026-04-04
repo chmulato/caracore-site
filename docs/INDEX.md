@@ -1,135 +1,135 @@
-# Índice de Documentação - CaraCore
+﻿# Ãndice de DocumentaÃ§Ã£o - CaraCore
 
-**Última Atualização:** 08/11/2025 - Documentação do Site Corporativo Adicionada
+**Ãšltima AtualizaÃ§Ã£o:** 08/11/2025 - DocumentaÃ§Ã£o do Site Corporativo Adicionada
 
-Este documento serve como índice central para toda a documentação do projeto CaraCore.
+Este documento serve como Ã­ndice central para toda a documentaÃ§Ã£o do projeto CaraCore.
 
 ---
 
-## Documentação Essencial
+## DocumentaÃ§Ã£o Essencial
 
 ### Documentos Core
 
-| Documento | Descrição | Status |
+| Documento | DescriÃ§Ã£o | Status |
 |-----------|-----------|--------|
-| **[FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)** | **Marco: Sistema de Autorização 100% Implementado** | **CONCLUÍDO** |
+| **[FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)** | **Marco: Sistema de AutorizaÃ§Ã£o 100% Implementado** | **CONCLUÃDO** |
 | **[DEPLOY_SUCCESS_SUMMARY.md](./DEPLOY_SUCCESS_SUMMARY.md)** | **Marco: Deploy Docker bem-sucedido no Azure** | **FUNCIONANDO** |
 | [pendencias/STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md) | Status global detalhado do projeto (1219 linhas) | Atualizado |
 
 ### Site Corporativo
 
-| Documento | Descrição | Status |
+| Documento | DescriÃ§Ã£o | Status |
 |-----------|-----------|--------|
-| **[PORTFOLIO_README.md](./PORTFOLIO_README.md)** | **Documentação completa da página de portfólio** | **DISPONÍVEL** |
-| **[AREA51_PORTFOLIO.md](./AREA51_PORTFOLIO.md)** | **Implementação do projeto Área 51 no portfólio** | **CONCLUÍDO** |
-| **[GOOGLE_ANALYTICS.md](./GOOGLE_ANALYTICS.md)** | **Implementação completa do Google Analytics GA4** | **OPERACIONAL** |
-| **[GA_RESUMO.md](./GA_RESUMO.md)** | **Resumo executivo da configuração do Analytics** | **DISPONÍVEL** |
-| **[MIGRACAO_IMAGENS.md](./MIGRACAO_IMAGENS.md)** | **Migração de imagens para estrutura padronizada** | **EM ANDAMENTO** |
+| **[PORTFOLIO_README.md](./PORTFOLIO_README.md)** | **DocumentaÃ§Ã£o completa da pÃ¡gina de portfÃ³lio** | **DISPONÃVEL** |
+| **[AREA51_PORTFOLIO.md](./AREA51_PORTFOLIO.md)** | **ImplementaÃ§Ã£o do projeto Ãrea 51 no portfÃ³lio** | **CONCLUÃDO** |
+| **[GOOGLE_ANALYTICS.md](./GOOGLE_ANALYTICS.md)** | **ImplementaÃ§Ã£o completa do Google Analytics GA4** | **OPERACIONAL** |
+| **[GA_RESUMO.md](./GA_RESUMO.md)** | **Resumo executivo da configuraÃ§Ã£o do Analytics** | **DISPONÃVEL** |
+| **[MIGRACAO_IMAGENS.md](./MIGRACAO_IMAGENS.md)** | **MigraÃ§Ã£o de imagens para estrutura padronizada** | **EM ANDAMENTO** |
 
-### Autenticação e Segurança
+### AutenticaÃ§Ã£o e SeguranÃ§a
 
-| Documento | Descrição | Status |
+| Documento | DescriÃ§Ã£o | Status |
 |-----------|-----------|--------|
-| **[SUPER-ADMIN-AUTH.md](./SUPER-ADMIN-AUTH.md)** | **Guia técnico completo de autenticação do Super Administrador** | **IMPLEMENTADO** |
-| **[SUPER-ADMIN-DOCKER.md](./SUPER-ADMIN-DOCKER.md)** | **Configuração específica para ambiente Docker/Azure Container Apps** | **IMPLEMENTADO** |
-| **[CHECKLIST-SUPER-ADMIN.md](./CHECKLIST-SUPER-ADMIN.md)** | **Checklist passo-a-passo para configuração Azure** | **DISPONÍVEL** |
-| **[RESUMO-SUPER-ADMIN.md](./RESUMO-SUPER-ADMIN.md)** | **Resumo executivo da implementação** | **DISPONÍVEL** |
-| **[EMAIL_DMARC_ROLLOUT.md](./EMAIL_DMARC_ROLLOUT.md)** | **Plano de rollout DMARC em fases para suporte@caracore.com.br** | **DISPONÍVEL** |
-| **[EMAIL_DMARC_CHANGE_TICKET_TEMPLATE.md](./EMAIL_DMARC_CHANGE_TICKET_TEMPLATE.md)** | **Template de change ticket para fases DMARC com exemplo preenchido** | **DISPONÍVEL** |
-| **[CHG-DMARC-2026-001.md](./CHG-DMARC-2026-001.md)** | **Ticket pronto para execução da Fase 1 (p=none)** | **PRONTO PARA EXECUÇÃO** |
+| **[SUPER-ADMIN-AUTH.md](./SUPER-ADMIN-AUTH.md)** | **Guia tÃ©cnico completo de autenticaÃ§Ã£o do Super Administrador** | **IMPLEMENTADO** |
+| **[SUPER-ADMIN-DOCKER.md](./SUPER-ADMIN-DOCKER.md)** | **ConfiguraÃ§Ã£o especÃ­fica para ambiente Docker/Azure Container Apps** | **IMPLEMENTADO** |
+| **[CHECKLIST-SUPER-ADMIN.md](./CHECKLIST-SUPER-ADMIN.md)** | **Checklist passo-a-passo para configuraÃ§Ã£o Azure** | **DISPONÃVEL** |
+| **[RESUMO-SUPER-ADMIN.md](./RESUMO-SUPER-ADMIN.md)** | **Resumo executivo da implementaÃ§Ã£o** | **DISPONÃVEL** |
+| **[EMAIL_DMARC_ROLLOUT.md](./EMAIL_DMARC_ROLLOUT.md)** | **Plano de rollout DMARC em fases para suporte@caracore.com.br** | **DISPONÃVEL** |
+| **[EMAIL_DMARC_CHANGE_TICKET_TEMPLATE.md](./EMAIL_DMARC_CHANGE_TICKET_TEMPLATE.md)** | **Template de change ticket para fases DMARC com exemplo preenchido** | **DISPONÃVEL** |
+| **[CHG-DMARC-2026-001.md](./CHG-DMARC-2026-001.md)** | **Ticket pronto para execuÃ§Ã£o da Fase 1 (p=none)** | **PRONTO PARA EXECUÃ‡ÃƒO** |
 
 ### Guias Operacionais
 
-| Documento | Descrição | Status |
+| Documento | DescriÃ§Ã£o | Status |
 |-----------|-----------|--------|
 | [AZURE_DEPLOY.md](./AZURE_DEPLOY.md) | Guia completo de deploy e rollback no Azure | Atualizado |
-| **[AZURE-CUSTO.md](./AZURE-CUSTO.md)** | **Análise executiva de custos da infraestrutura Azure** | **DISPONÍVEL** |
-| [AZURE_MONITOR.md](./AZURE_MONITOR.md) | Configuração de monitoramento e alertas | Disponível |
-| [VERSOES.md](./VERSOES.md) | Controle de versões de dependências | Atualizado |
+| **[AZURE-CUSTO.md](./AZURE-CUSTO.md)** | **AnÃ¡lise executiva de custos da infraestrutura Azure** | **DISPONÃVEL** |
+| [AZURE_MONITOR.md](./AZURE_MONITOR.md) | ConfiguraÃ§Ã£o de monitoramento e alertas | DisponÃ­vel |
+| [VERSOES.md](./VERSOES.md) | Controle de versÃµes de dependÃªncias | Atualizado |
 
-### Documentação por Fase
+### DocumentaÃ§Ã£o por Fase
 
-| Fase | Status | Documentação | Detalhes |
+| Fase | Status | DocumentaÃ§Ã£o | Detalhes |
 |------|--------|--------------|----------|
-| **Fase 1** | 100% | [OAuth 2.1 + OIDC](./fases/fase-1/) | Autenticação |
-| **Fase 2** | 100% | [Logout e Segurança](./fases/fase-2/) | Segurança |
+| **Fase 1** | 100% | [OAuth 2.1 + OIDC](./fases/fase-1/) | AutenticaÃ§Ã£o |
+| **Fase 2** | 100% | [Logout e SeguranÃ§a](./fases/fase-2/) | SeguranÃ§a |
 | **Fase 3** | 100% | [Auditoria e Backend](./fases/fase-3/) | Backend |
-| **Fase 4** | **100%** | **[Sistema de Autorização](./FASE-4-CONCLUIDA.md)** | **CONCLUÍDA** |
-| **Fase 5** | **100%** | **[Sistema Admin Completo](./pendencias/STATUS-ATUAL.md)** | **CONCLUÍDA** |
+| **Fase 4** | **100%** | **[Sistema de AutorizaÃ§Ã£o](./FASE-4-CONCLUIDA.md)** | **CONCLUÃDA** |
+| **Fase 5** | **100%** | **[Sistema Admin Completo](./pendencias/STATUS-ATUAL.md)** | **CONCLUÃDA** |
 
-### Status e Relatórios
+### Status e RelatÃ³rios
 
-| Documento | Descrição | Última Atualização |
+| Documento | DescriÃ§Ã£o | Ãšltima AtualizaÃ§Ã£o |
 |-----------|-----------|-------------------|
-| [pendencias/STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md) | **Status global detalhado** (1343+ linhas) - **Fase 5 incluída** | 04/11/2025 |
-| [pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md](./pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md) | Critérios de aceite OAuth | Atualizado |
+| [pendencias/STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md) | **Status global detalhado** (1343+ linhas) - **Fase 5 incluÃ­da** | 04/11/2025 |
+| [pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md](./pendencias/CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md) | CritÃ©rios de aceite OAuth | Atualizado |
 
 ---
 
-## Gestão de Custos e ROI
+## GestÃ£o de Custos e ROI
 
-### Análise Financeira Azure
+### AnÃ¡lise Financeira Azure
 
-| Documento | Descrição | Público-Alvo |
+| Documento | DescriÃ§Ã£o | PÃºblico-Alvo |
 |-----------|-----------|--------------|
-| **[AZURE-CUSTO.md](./AZURE-CUSTO.md)** | **Análise executiva de custos operacionais Azure** | **Executivos/Gestores** |
+| **[AZURE-CUSTO.md](./AZURE-CUSTO.md)** | **AnÃ¡lise executiva de custos operacionais Azure** | **Executivos/Gestores** |
 
 ### Resumo Executivo de Custos
 
-**Cenário Atual (Desenvolvimento):**
+**CenÃ¡rio Atual (Desenvolvimento):**
 
-- Azure Container Registry (Basic): USD 5,00/mês
-- App Service (F1 Free): USD 0,00/mês
-- **Total**: USD 5,00/mês
+- Azure Container Registry (Basic): USD 5,00/mÃªs
+- App Service (F1 Free): USD 0,00/mÃªs
+- **Total**: USD 5,00/mÃªs
 
-**Cenário Recomendado (Produção):**
+**CenÃ¡rio Recomendado (ProduÃ§Ã£o):**
 
-- Azure Container Registry (Basic): USD 5,00/mês 
-- App Service (B1 Basic): USD 13,14/mês
-- **Total**: USD 18,14/mês
+- Azure Container Registry (Basic): USD 5,00/mÃªs 
+- App Service (B1 Basic): USD 13,14/mÃªs
+- **Total**: USD 18,14/mÃªs
 
 **ROI Justificativa:**
 
-- SLA 99,95% vs. limitações do tier gratuito
-- Custo por usuário: USD 0,18/mês (base 100 usuários)
-- Break-even: 1 incidente crítico evitado por trimestre
+- SLA 99,95% vs. limitaÃ§Ãµes do tier gratuito
+- Custo por usuÃ¡rio: USD 0,18/mÃªs (base 100 usuÃ¡rios)
+- Break-even: 1 incidente crÃ­tico evitado por trimestre
 - Sistema OAuth enterprise por menos de USD 220/ano
 
-**Documentação completa:** [AZURE-CUSTO.md](./AZURE-CUSTO.md)
+**DocumentaÃ§Ã£o completa:** [AZURE-CUSTO.md](./AZURE-CUSTO.md)
 
 ---
 
-## MARCOS ALCANÇADOS
+## MARCOS ALCANÃ‡ADOS
 
 ### Sistema Admin Completo (Fase 5) - IMPLEMENTADO
 
 - **Data**: 04/11/2025
 - **Status**: Sistema administrativo completo com interface CSS/JS modularizada
-- **Documentação**: [pendencias/STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md)
+- **DocumentaÃ§Ã£o**: [pendencias/STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md)
 - **Componentes**:
   - Interface: super-admin-login.html, admin-users.html, approval-requests.html
   - CSS Modularizado: 4 arquivos CSS centralizados (v20251104)
   - JS Modularizado: 4 arquivos JavaScript centralizados (v20251104)
-  - Navegação: Links integrados entre todas as páginas administrativas
-  - Segurança: Modal controlado por flags de autorização
+  - NavegaÃ§Ã£o: Links integrados entre todas as pÃ¡ginas administrativas
+  - SeguranÃ§a: Modal controlado por flags de autorizaÃ§Ã£o
 
-### Autenticação Super Administrador - IMPLEMENTADO
+### AutenticaÃ§Ã£o Super Administrador - IMPLEMENTADO
 
 - **Data**: 03/11/2025
-- **Status**: Sistema híbrido de autenticação implementado e configurado
-- **Documentação**: [SUPER-ADMIN-AUTH.md](./SUPER-ADMIN-AUTH.md)
+- **Status**: Sistema hÃ­brido de autenticaÃ§Ã£o implementado e configurado
+- **DocumentaÃ§Ã£o**: [SUPER-ADMIN-AUTH.md](./SUPER-ADMIN-AUTH.md)
 - **Componentes**:
   - Backend: Endpoints `/auth/super-admin` e `/auth/verify-super-admin`
-  - Frontend: Página de login reformulada com autenticação direta
-  - Segurança: Hash SHA-256 + Tokens JWT com role específica
-  - Scripts: `setup_super_admin.py` para geração de credenciais
+  - Frontend: PÃ¡gina de login reformulada com autenticaÃ§Ã£o direta
+  - SeguranÃ§a: Hash SHA-256 + Tokens JWT com role especÃ­fica
+  - Scripts: `setup_super_admin.py` para geraÃ§Ã£o de credenciais
 - **Tecnologias**: SHA-256, JWT HS256, Rate Limiting, CORS
 
-### Sistema de Autorização (Fase 4) - CONCLUÍDO
+### Sistema de AutorizaÃ§Ã£o (Fase 4) - CONCLUÃDO
 
 - **Data**: 02/11/2025
-- **Status**: 100% implementado e funcionando em produção
-- **Documentação**: [FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)
+- **Status**: 100% implementado e funcionando em produÃ§Ã£o
+- **DocumentaÃ§Ã£o**: [FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)
 - **Componentes**: 
  - Backend: authorization.py (485 linhas)
  - Frontend: admin-users.html, access-denied.html, request-access.html
@@ -139,9 +139,9 @@ Este documento serve como índice central para toda a documentação do projeto 
 ### Deploy Docker - FUNCIONANDO
 
 - **Data**: 02/11/2025 
-- **Status**: Aplicação rodando em produção Azure
+- **Status**: AplicaÃ§Ã£o rodando em produÃ§Ã£o Azure
 - **URL**: [https://caracore-backend-docker.azurewebsites.net]
-- **Documentação**: [DEPLOY_SUCCESS_SUMMARY.md](./DEPLOY_SUCCESS_SUMMARY.md)
+- **DocumentaÃ§Ã£o**: [DEPLOY_SUCCESS_SUMMARY.md](./DEPLOY_SUCCESS_SUMMARY.md)
 - **Infraestrutura**: Container Registry + Web App for Containers
 
 ---
@@ -150,27 +150,27 @@ Este documento serve como índice central para toda a documentação do projeto 
 
 ### Para Desenvolvedores
 
-1. **Clone o repositório**
+1. **Clone o repositÃ³rio**
 
  ```bash
- git clone https://github.com/chmulato/cara-core.git
+ git clone https://caracore.com.br/
  cd cara-core
  ```
 
-2. **Leia a documentação essencial**
- - [FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md) - Sistema de autorização
+2. **Leia a documentaÃ§Ã£o essencial**
+ - [FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md) - Sistema de autorizaÃ§Ã£o
  - [DEPLOY_SUCCESS_SUMMARY.md](./DEPLOY_SUCCESS_SUMMARY.md) - Deploy Docker
- - [AZURE_DEPLOY.md](./AZURE_DEPLOY.md) - Operações Azure
- - [AZURE-CUSTO.md](./AZURE-CUSTO.md) - Análise de custos executiva
- - [VERSOES.md](./VERSOES.md) - Dependências
+ - [AZURE_DEPLOY.md](./AZURE_DEPLOY.md) - OperaÃ§Ãµes Azure
+ - [AZURE-CUSTO.md](./AZURE-CUSTO.md) - AnÃ¡lise de custos executiva
+ - [VERSOES.md](./VERSOES.md) - DependÃªncias
 
 3. **Configure o ambiente local**
 
  ```bash
  cd backend
- pip install -r requirements-docker.txt # Versão simplificada
+ pip install -r requirements-docker.txt # VersÃ£o simplificada
  # ou
- pip install -r requirements.txt # Versão completa
+ pip install -r requirements.txt # VersÃ£o completa
  ```
 
 ### Para Deploy Docker
@@ -188,7 +188,7 @@ docker tag caracore-backend:latest caracoreregistry.azurecr.io/caracore-backend:
 docker push caracoreregistry.azurecr.io/caracore-backend:latest
 ```
 
-**Configuração OAuth:**
+**ConfiguraÃ§Ã£o OAuth:**
 
 ```powershell
 # Script seguro para configurar credenciais
@@ -197,64 +197,64 @@ docker push caracoreregistry.azurecr.io/caracore-backend:latest
 
 ---
 
-## Estrutura de Documentação
+## Estrutura de DocumentaÃ§Ã£o
 
 ```text
 docs/
-├── INDEX.md # Este arquivo (índice central)
-│
-├── DOCUMENTOS CORE
-├── FASE-4-CONCLUIDA.md # Marco: Sistema de Autorização
-├── DEPLOY_SUCCESS_SUMMARY.md # Marco: Deploy Docker
-│
-├── SITE CORPORATIVO
-├── PORTFOLIO_README.md # Documentação completa do portfólio
-├── AREA51_PORTFOLIO.md # Projeto Área 51 no portfólio
-├── GOOGLE_ANALYTICS.md # Implementação Google Analytics GA4
-├── GA_RESUMO.md # Resumo executivo Analytics
-├── MIGRACAO_IMAGENS.md # Migração de imagens para assets
-│
-├── AUTENTICAÇÃO E SEGURANÇA
-├── SUPER-ADMIN-AUTH.md # Guia técnico completo do super admin
-├── SUPER-ADMIN-DOCKER.md # Configuração Docker/Azure Container Apps
-├── CHECKLIST-SUPER-ADMIN.md # Checklist configuração Azure
-├── RESUMO-SUPER-ADMIN.md # Resumo executivo implementação
-│
-├── OPERAÇÕES
-├── AZURE_DEPLOY.md # Guia de deploy e operações
-├── AZURE-CUSTO.md # Análise executiva de custos Azure
-├── AZURE_MONITOR.md # Monitoramento e alertas
-├── VERSOES.md # Controle de versões
-│
-├── fases/ # Documentação por fase
-│ ├── README.md # Organização das fases
-│ ├── checklist-geral.md # Checklist do projeto
-│ ├── template-acompanhamento.md # Template para fases
-│ ├── fase-1/ # OAuth 2.1 + OIDC (CONCLUÍDA)
-│ ├── fase-2/ # Logout e Segurança (CONCLUÍDA)
-│ ├── fase-3/ # Auditoria e Backend (CONCLUÍDA)
-│ └── fase-4/ # Sistema de Autorização (CONCLUÍDA)
-│
-└── pendencias/ # Status e critérios
- ├── STATUS-ATUAL.md # Status global completo (1219 linhas)
- └── CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md # Critérios OAuth
+â”œâ”€â”€ INDEX.md # Este arquivo (Ã­ndice central)
+â”‚
+â”œâ”€â”€ DOCUMENTOS CORE
+â”œâ”€â”€ FASE-4-CONCLUIDA.md # Marco: Sistema de AutorizaÃ§Ã£o
+â”œâ”€â”€ DEPLOY_SUCCESS_SUMMARY.md # Marco: Deploy Docker
+â”‚
+â”œâ”€â”€ SITE CORPORATIVO
+â”œâ”€â”€ PORTFOLIO_README.md # DocumentaÃ§Ã£o completa do portfÃ³lio
+â”œâ”€â”€ AREA51_PORTFOLIO.md # Projeto Ãrea 51 no portfÃ³lio
+â”œâ”€â”€ GOOGLE_ANALYTICS.md # ImplementaÃ§Ã£o Google Analytics GA4
+â”œâ”€â”€ GA_RESUMO.md # Resumo executivo Analytics
+â”œâ”€â”€ MIGRACAO_IMAGENS.md # MigraÃ§Ã£o de imagens para assets
+â”‚
+â”œâ”€â”€ AUTENTICAÃ‡ÃƒO E SEGURANÃ‡A
+â”œâ”€â”€ SUPER-ADMIN-AUTH.md # Guia tÃ©cnico completo do super admin
+â”œâ”€â”€ SUPER-ADMIN-DOCKER.md # ConfiguraÃ§Ã£o Docker/Azure Container Apps
+â”œâ”€â”€ CHECKLIST-SUPER-ADMIN.md # Checklist configuraÃ§Ã£o Azure
+â”œâ”€â”€ RESUMO-SUPER-ADMIN.md # Resumo executivo implementaÃ§Ã£o
+â”‚
+â”œâ”€â”€ OPERAÃ‡Ã•ES
+â”œâ”€â”€ AZURE_DEPLOY.md # Guia de deploy e operaÃ§Ãµes
+â”œâ”€â”€ AZURE-CUSTO.md # AnÃ¡lise executiva de custos Azure
+â”œâ”€â”€ AZURE_MONITOR.md # Monitoramento e alertas
+â”œâ”€â”€ VERSOES.md # Controle de versÃµes
+â”‚
+â”œâ”€â”€ fases/ # DocumentaÃ§Ã£o por fase
+â”‚ â”œâ”€â”€ README.md # OrganizaÃ§Ã£o das fases
+â”‚ â”œâ”€â”€ checklist-geral.md # Checklist do projeto
+â”‚ â”œâ”€â”€ template-acompanhamento.md # Template para fases
+â”‚ â”œâ”€â”€ fase-1/ # OAuth 2.1 + OIDC (CONCLUÃDA)
+â”‚ â”œâ”€â”€ fase-2/ # Logout e SeguranÃ§a (CONCLUÃDA)
+â”‚ â”œâ”€â”€ fase-3/ # Auditoria e Backend (CONCLUÃDA)
+â”‚ â””â”€â”€ fase-4/ # Sistema de AutorizaÃ§Ã£o (CONCLUÃDA)
+â”‚
+â””â”€â”€ pendencias/ # Status e critÃ©rios
+ â”œâ”€â”€ STATUS-ATUAL.md # Status global completo (1219 linhas)
+ â””â”€â”€ CRITERIOS-DE-ACEITE-OAUTH_2.1-OIDC.md # CritÃ©rios OAuth
 ```
 
 ---
 
 ## Troubleshooting Comum
 
-### 1. Aplicação Docker não responde
+### 1. AplicaÃ§Ã£o Docker nÃ£o responde
 
-**Problema:** `https://caracore-backend-docker.azurewebsites.net/health` não responde
+**Problema:** `https://caracore-backend-docker.azurewebsites.net/health` nÃ£o responde
 
 **Causas:**
 
-- Container Registry não acessível
+- Container Registry nÃ£o acessÃ­vel
 - Imagem Docker com problemas
-- Environment variables não configuradas
+- Environment variables nÃ£o configuradas
 
-**Solução:**
+**SoluÃ§Ã£o:**
 
 ```powershell
 # 1. Verificar status do Web App
@@ -263,46 +263,46 @@ az webapp show --resource-group rg-caracore --name caracore-backend-docker
 # 2. Verificar logs
 az webapp log tail --resource-group rg-caracore --name caracore-backend-docker
 
-# 3. Configurar OAuth (se necessário)
+# 3. Configurar OAuth (se necessÃ¡rio)
 .\configure_oauth_credentials.ps1
 
 # 4. Restart
 az webapp restart --resource-group rg-caracore --name caracore-backend-docker
 ```
 
-**Documentação:** [DEPLOY_SUCCESS_SUMMARY.md](./DEPLOY_SUCCESS_SUMMARY.md)
+**DocumentaÃ§Ã£o:** [DEPLOY_SUCCESS_SUMMARY.md](./DEPLOY_SUCCESS_SUMMARY.md)
 
-### 2. Sistema de Autorização não funciona
+### 2. Sistema de AutorizaÃ§Ã£o nÃ£o funciona
 
-**Problema:** Usuários autenticados não conseguem acessar Área 51
+**Problema:** UsuÃ¡rios autenticados nÃ£o conseguem acessar Ãrea 51
 
-**Causa:** Sistema de autorização não carregando dados
+**Causa:** Sistema de autorizaÃ§Ã£o nÃ£o carregando dados
 
-**Verificação:**
+**VerificaÃ§Ã£o:**
 
 ```bash
-# Testar endpoint de autorização
+# Testar endpoint de autorizaÃ§Ã£o
 curl https://caracore-backend-docker.azurewebsites.net/api/admin/users
 ```
 
-**Solução:** Verificar se `authorized_users.json` está incluído no container
+**SoluÃ§Ã£o:** Verificar se `authorized_users.json` estÃ¡ incluÃ­do no container
 
-**Documentação:** [FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)
+**DocumentaÃ§Ã£o:** [FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)
 
 ### 3. Cryptography ImportError (Resolvido)
 
 **Problema:** `cannot import name 'x509' from 'cryptography.hazmat.bindings._rust'`
 
-**Solução:** Usar a versão Docker simplificada:
+**SoluÃ§Ã£o:** Usar a versÃ£o Docker simplificada:
 
 ```bash
-# Usar requirements-docker.txt (sem cryptography problemática)
+# Usar requirements-docker.txt (sem cryptography problemÃ¡tica)
 pip install -r backend/requirements-docker.txt
 ```
 
-**Documentação:** [DEPLOY_SUCCESS_SUMMARY.md - Docker Setup](./DEPLOY_SUCCESS_SUMMARY.md)
+**DocumentaÃ§Ã£o:** [DEPLOY_SUCCESS_SUMMARY.md - Docker Setup](./DEPLOY_SUCCESS_SUMMARY.md)
 
-**Solução:**
+**SoluÃ§Ã£o:**
 
 ```python
 # backend/app.py
@@ -315,40 +315,40 @@ def admin_logs_options():
  return response
 ```
 
-**Documentação:** [AZURE_DEPLOY.md - CORS](./AZURE_DEPLOY.md#3-cors-error-no-dashboard)
+**DocumentaÃ§Ã£o:** [AZURE_DEPLOY.md - CORS](./AZURE_DEPLOY.md#3-cors-error-no-dashboard)
 
-### 3. Variáveis de Ambiente Perdidas
+### 3. VariÃ¡veis de Ambiente Perdidas
 
-**Problema:** Backend retorna erro 500 por falta de variáveis
+**Problema:** Backend retorna erro 500 por falta de variÃ¡veis
 
-**Solução:**
+**SoluÃ§Ã£o:**
 
 ```powershell
-# Usar script automatizado para configurar todas as variáveis
+# Usar script automatizado para configurar todas as variÃ¡veis
 cd d:\dev\site\cara-core
 .\scripts\configure_azure_all_settings.ps1
 ```
 
-**Documentação:** [AZURE_DEPLOY.md - Variáveis](./AZURE_DEPLOY.md#-variáveis-de-ambiente-secrets)
+**DocumentaÃ§Ã£o:** [AZURE_DEPLOY.md - VariÃ¡veis](./AZURE_DEPLOY.md#-variÃ¡veis-de-ambiente-secrets)
 
-### 4. Super Admin - Credenciais Inválidas
+### 4. Super Admin - Credenciais InvÃ¡lidas
 
-**Problema:** Login do super admin retorna "Credenciais inválidas"
+**Problema:** Login do super admin retorna "Credenciais invÃ¡lidas"
 
 **Causas:**
 
 - Senha incorreta
-- Variáveis de ambiente não configuradas no Azure
-- Hash SHA-256 não corresponde
+- VariÃ¡veis de ambiente nÃ£o configuradas no Azure
+- Hash SHA-256 nÃ£o corresponde
 
-**Verificação:**
+**VerificaÃ§Ã£o:**
 
 ```bash
-# Verificar se variáveis estão no Azure
+# Verificar se variÃ¡veis estÃ£o no Azure
 az webapp config appsettings list --name caracore-backend-docker --resource-group rg-caracore --query "[?name=='SUPER_ADMIN_PASSWORD_HASH' || name=='JWT_SECRET_KEY']"
 ```
 
-**Solução:**
+**SoluÃ§Ã£o:**
 
 ```bash
 # Regenerar credenciais
@@ -359,48 +359,48 @@ python setup_super_admin.py
 # Ver: docs/CHECKLIST-SUPER-ADMIN.md
 ```
 
-**Documentação:** [SUPER-ADMIN-AUTH.md - Troubleshooting](./SUPER-ADMIN-AUTH.md)
+**DocumentaÃ§Ã£o:** [SUPER-ADMIN-AUTH.md - Troubleshooting](./SUPER-ADMIN-AUTH.md)
 
 ---
 
-## Scripts de Automação
+## Scripts de AutomaÃ§Ã£o
 
-### Deploy e Operações
+### Deploy e OperaÃ§Ãµes
 
-| Script | Descrição | Uso |
+| Script | DescriÃ§Ã£o | Uso |
 |--------|-----------|-----|
-| `deploy_production.py` | Deploy automatizado com verificações | `python scripts/deploy_production.py` |
-| `rollback.py` | Rollback para versão anterior | `python scripts/rollback.py --latest` |
-| `configure_azure_all_settings.ps1` | Configura variáveis de ambiente Azure | `.\scripts\configure_azure_all_settings.ps1` |
+| `deploy_production.py` | Deploy automatizado com verificaÃ§Ãµes | `python scripts/deploy_production.py` |
+| `rollback.py` | Rollback para versÃ£o anterior | `python scripts/rollback.py --latest` |
+| `configure_azure_all_settings.ps1` | Configura variÃ¡veis de ambiente Azure | `.\scripts\configure_azure_all_settings.ps1` |
 
-### Autenticação e Segurança
+### AutenticaÃ§Ã£o e SeguranÃ§a
 
-| Script | Descrição | Uso |
+| Script | DescriÃ§Ã£o | Uso |
 |--------|-----------|-----|
-| `setup_super_admin.py` | Geração de credenciais super admin | `python scripts/setup_super_admin.py` |
+| `setup_super_admin.py` | GeraÃ§Ã£o de credenciais super admin | `python scripts/setup_super_admin.py` |
 
-### Validação e Testes
+### ValidaÃ§Ã£o e Testes
 
-| Script | Descrição | Uso |
+| Script | DescriÃ§Ã£o | Uso |
 |--------|-----------|-----|
 | `teste_caminho_feliz.py` | Testes OIDC completos (64 testes) | `python secure/testes/teste_caminho_feliz.py` |
 | `backend/validar_dashboard.py` | Testes E2E da Fase 3 | `python backend/validar_dashboard.py` |
 | `backend/test_admin_logs.py` | Testes de endpoints de auditoria | `pytest backend/test_admin_logs.py` |
 
-**Documentação completa:** [scripts/README_PY.md](../scripts/README_PY.md)
+**DocumentaÃ§Ã£o completa:** [scripts/README_PY.md](../scripts/README_PY.md)
 
 ---
 
-## Segurança
+## SeguranÃ§a
 
 ### Secrets Management
 
-**Arquivos sensíveis (gitignored):**
+**Arquivos sensÃ­veis (gitignored):**
 
-- `secrets.txt` - Variáveis de ambiente gerais
-- `backend/.env` - Configuração local do backend
-- `backend/logs/*.jsonl` - Logs com dados de usuários
-- Arquivos `*SECRET*.txt` - Configurações sensíveis
+- `secrets.txt` - VariÃ¡veis de ambiente gerais
+- `backend/.env` - ConfiguraÃ§Ã£o local do backend
+- `backend/logs/*.jsonl` - Logs com dados de usuÃ¡rios
+- Arquivos `*SECRET*.txt` - ConfiguraÃ§Ãµes sensÃ­veis
 
 **Como configurar secrets:**
 
@@ -424,26 +424,26 @@ python setup_super_admin.py
  .\scripts\configure_azure_all_settings.ps1
  ```
 
-**Documentação:** 
-- [AZURE_DEPLOY.md - Segurança](./AZURE_DEPLOY.md#-segurança)
-- [SUPER-ADMIN-AUTH.md - Autenticação](./SUPER-ADMIN-AUTH.md)
+**DocumentaÃ§Ã£o:** 
+- [AZURE_DEPLOY.md - SeguranÃ§a](./AZURE_DEPLOY.md#-seguranÃ§a)
+- [SUPER-ADMIN-AUTH.md - AutenticaÃ§Ã£o](./SUPER-ADMIN-AUTH.md)
 
-### Autenticação Híbrida
+### AutenticaÃ§Ã£o HÃ­brida
 
 **Sistema duplo implementado:**
 
-1. **OAuth 2.1 + OIDC** - Para usuários regulares
+1. **OAuth 2.1 + OIDC** - Para usuÃ¡rios regulares
  - Google Workspace
  - Microsoft Entra ID
  - Tokens PKCE + JWT
 
-2. **Autenticação Direta** - Para Super Administrador
+2. **AutenticaÃ§Ã£o Direta** - Para Super Administrador
  - Email fixo: suporte@caracore.com.br
  - Senha com hash SHA-256
- - Tokens JWT com role específica
+ - Tokens JWT com role especÃ­fica
  - Rate limiting e logging
 
-**Documentação completa:** [SUPER-ADMIN-AUTH.md](./SUPER-ADMIN-AUTH.md)
+**DocumentaÃ§Ã£o completa:** [SUPER-ADMIN-AUTH.md](./SUPER-ADMIN-AUTH.md)
 
 ---
 
@@ -451,16 +451,16 @@ python setup_super_admin.py
 
 ### Ambientes
 
-| Ambiente | Descrição | URL |
+| Ambiente | DescriÃ§Ã£o | URL |
 |----------|-----------|-----|
 | **Local** | Desenvolvimento e testes | `http://localhost:8000` |
-| **Produção** | Azure App Service | `https://caracore-backend.azurewebsites.net` |
+| **ProduÃ§Ã£o** | Azure App Service | `https://caracore-backend.azurewebsites.net` |
 
-**Não há ambiente de staging.** Deploy é feito diretamente para produção com backups automáticos.
+**NÃ£o hÃ¡ ambiente de staging.** Deploy Ã© feito diretamente para produÃ§Ã£o com backups automÃ¡ticos.
 
 ### Tecnologias
 
-| Componente | Tecnologia | Versão |
+| Componente | Tecnologia | VersÃ£o |
 |------------|-----------|--------|
 | Backend | Python + Flask | 3.11 + 3.0.3 |
 | WSGI Server | Gunicorn | 23.0.0 |
@@ -468,70 +468,70 @@ python setup_super_admin.py
 | Cloud | Azure App Service (B1) | - |
 | Frontend | Vanilla JS + CSS3 | - |
 
-**Documentação:** [VERSOES.md](./VERSOES.md)
+**DocumentaÃ§Ã£o:** [VERSOES.md](./VERSOES.md)
 
 ---
 
 ## Progresso do Projeto
 
-| Fase | Status | Documentação | Data Conclusão |
+| Fase | Status | DocumentaÃ§Ã£o | Data ConclusÃ£o |
 |------|--------|--------------|----------------|
-| Fase 1: OAuth 2.1 + OIDC | **100%** | [fase-1/](./fases/fase-1/) | Concluída |
-| Fase 2: Logout e Segurança | **100%** | [fase-2/](./fases/fase-2/) | Concluída |
-| Fase 3: Auditoria e Backend | **100%** | [fase-3/](./fases/fase-3/) | Concluída |
-| **Fase 4: Sistema de Autorização** | **100%** | **[FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)** | **02/11/2025** |
+| Fase 1: OAuth 2.1 + OIDC | **100%** | [fase-1/](./fases/fase-1/) | ConcluÃ­da |
+| Fase 2: Logout e SeguranÃ§a | **100%** | [fase-2/](./fases/fase-2/) | ConcluÃ­da |
+| Fase 3: Auditoria e Backend | **100%** | [fase-3/](./fases/fase-3/) | ConcluÃ­da |
+| **Fase 4: Sistema de AutorizaÃ§Ã£o** | **100%** | **[FASE-4-CONCLUIDA.md](./FASE-4-CONCLUIDA.md)** | **02/11/2025** |
 | **Fase 5: Sistema Admin Completo** | **100%** | **[STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md)** | **04/11/2025** |
 | **Super Admin Auth** | **100%** | **[SUPER-ADMIN-AUTH.md](./SUPER-ADMIN-AUTH.md)** | **03/11/2025** |
 
 ### **Status Atual: SISTEMA COMPLETO**
 
-- **Todas as 5 fases concluídas**
+- **Todas as 5 fases concluÃ­das**
 - **Sistema administrativo completo funcionando**
 - **Interface CSS/JS modularizada implementada**
-- **Sistema de autorização funcionando em produção**
-- **Autenticação super admin implementada**
+- **Sistema de autorizaÃ§Ã£o funcionando em produÃ§Ã£o**
+- **AutenticaÃ§Ã£o super admin implementada**
 - **Deploy Docker bem-sucedido no Azure**
-- **Sistema híbrido OAuth + senha direta operacional**
+- **Sistema hÃ­brido OAuth + senha direta operacional**
 
 **Status detalhado:** [pendencias/STATUS-ATUAL.md](./pendencias/STATUS-ATUAL.md)
 
 ---
 
-## Marcos Técnicos Alcançados
+## Marcos TÃ©cnicos AlcanÃ§ados
 
 ### Sistema Admin Completo (Fase 5) - 04/11/2025
 
 - **Interface Completa**: super-admin-login.html, admin-users.html, approval-requests.html
 - **CSS Modularizado**: 4 arquivos CSS centralizados com versionamento (v20251104)
 - **JS Modularizado**: 4 arquivos JavaScript centralizados com funcionalidade compartilhada
-- **Navegação Integrada**: Links entre todas as páginas administrativas
-- **Controle de Modal**: Sistema robusto de autorização para popups
-- **Logout Unificado**: Funcionalidade consistente em todas as páginas admin
+- **NavegaÃ§Ã£o Integrada**: Links entre todas as pÃ¡ginas administrativas
+- **Controle de Modal**: Sistema robusto de autorizaÃ§Ã£o para popups
+- **Logout Unificado**: Funcionalidade consistente em todas as pÃ¡ginas admin
 
-### Autenticação Super Administrador (03/11/2025)
+### AutenticaÃ§Ã£o Super Administrador (03/11/2025)
 
 - **Backend**: Endpoints `/auth/super-admin` e `/auth/verify-super-admin`
-- **Frontend**: Página de login reformulada (secure/super-admin-setup.html)
-- **Segurança**: Hash SHA-256 + JWT HS256 + Rate Limiting
-- **Scripts**: setup_super_admin.py para geração automática de credenciais
-- **Arquitetura**: Sistema híbrido independente de OAuth
+- **Frontend**: PÃ¡gina de login reformulada (secure/super-admin-setup.html)
+- **SeguranÃ§a**: Hash SHA-256 + JWT HS256 + Rate Limiting
+- **Scripts**: setup_super_admin.py para geraÃ§Ã£o automÃ¡tica de credenciais
+- **Arquitetura**: Sistema hÃ­brido independente de OAuth
 - **Testes**: 64 testes OIDC validados (100% pass rate)
 
-### Sistema de Autorização (Fase 4)
+### Sistema de AutorizaÃ§Ã£o (Fase 4)
 
 - **Backend**: authorization.py (485 linhas) funcionando
-- **Frontend**: 3 páginas HTML + 2 módulos JavaScript 
+- **Frontend**: 3 pÃ¡ginas HTML + 2 mÃ³dulos JavaScript 
 - **APIs**: 4 endpoints REST ativos
 - **Testes**: Cobertura 80%+ implementada
 - **Data**: authorized_users.json com 2 admins carregados
 
 ### Infraestrutura Docker
 
-- **Aplicação**: caracore-backend-docker.azurewebsites.net
+- **AplicaÃ§Ã£o**: caracore-backend-docker.azurewebsites.net
 - **Container Registry**: caracoreregistry.azurecr.io
 - **Status**: Online e funcional
-- **CI/CD**: GitHub Actions com deploy automático
-- **Solução**: Resolveu cryptography e data persistence issues
+- **CI/CD**: GitHub Actions com deploy automÃ¡tico
+- **SoluÃ§Ã£o**: Resolveu cryptography e data persistence issues
 
 ---
 
@@ -541,9 +541,9 @@ python setup_super_admin.py
 
 - **Desenvolvedor:** Christian Vladimir Uhdre Mulato
 - **Email:** [suporte@caracore.com.br]
-- **Repositório:** <https://github.com/chmulato/cara-core>
+- **RepositÃ³rio:** <https://caracore.com.br/>
 
-### Documentação Adicional
+### DocumentaÃ§Ã£o Adicional
 
 - **Azure App Service:** <https://learn.microsoft.com/azure/app-service/>
 - **Flask:** <https://flask.palletsprojects.com/>
@@ -552,4 +552,5 @@ python setup_super_admin.py
 
 ---
 
-**Dica:** Adicione este arquivo aos favoritos do seu navegador para acesso rápido!
+**Dica:** Adicione este arquivo aos favoritos do seu navegador para acesso rÃ¡pido!
+

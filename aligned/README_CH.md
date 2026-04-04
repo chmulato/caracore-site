@@ -1,4 +1,4 @@
-# CaraCore Legacy: Technical Manifesto for International Alignment
+﻿# CaraCore Legacy: Technical Manifesto for International Alignment
 
 > **Status:** Legacy Stable | **Service Context:** International Alignment | **Operating Mode:** Active  
 > **Last Updated:** 2025-01-XX | **Maintainer:** Christian Mulato (Chemical Engineer - UFPR 1991-2000, Specialization in Java Technology - UTFPR 2007-2008, Class of 1971, Enterprise Java and automation focus)
@@ -22,9 +22,9 @@
 
 ## Executive Summary for CTO
 
-This directory (`aligned/`) contains the **stable legacy foundation** of CaraCore Informática—a production-grade technology stack that has served the Brazilian market with enterprise reliability since 2010. This is not deprecated code; it is a **proven asset** being preserved while we expose aligned English and Italian service versions in the same workspace.
+This directory (`aligned/`) contains the **stable legacy foundation** of CaraCore InformÃ¡ticaâ€”a production-grade technology stack that has served the Brazilian market with enterprise reliability since 2010. This is not deprecated code; it is a **proven asset** being preserved while we expose aligned English and Italian service versions in the same workspace.
 
-**Core Philosophy:** *Legacy is not a bug—it is heritage to be evolved.*
+**Core Philosophy:** *Legacy is not a bugâ€”it is heritage to be evolved.*
 
 ---
 
@@ -68,30 +68,30 @@ This legacy codebase embodies these principles. It is **production-stable, audit
 
 ### Key Systems Preserved
 
-1. **CaraCore Hub** — Enterprise e-commerce automation platform
+1. **CaraCore Hub** â€” Enterprise e-commerce automation platform
    - Multi-marketplace integration (Mercado Livre, Shopee, Temu)
    - Real-time order processing with WhatsApp notifications
    - Inventory management with location tracking
    - Dashboard with executive metrics
 
-2. **CaraCore Seed** — Enterprise licensing system
+2. **CaraCore Seed** â€” Enterprise licensing system
    - Jakarta Security-based authorization
    - JWT token validation with bcrypt hashing
    - Docker Compose infrastructure
    - Python automation scripts
 
-3. **Área 51** — Production OAuth 2.1/OIDC authentication system
+3. **Ãrea 51** â€” Production OAuth 2.1/OIDC authentication system
    - Multi-provider support (Google, Microsoft Entra ID)
    - PKCE mandatory for all flows
    - Structured audit logging (JSONL format)
    - Session management with AES-256-CBC encrypted refresh tokens
 
-4. **Reino OIDC** — Educational platform (Open Source, MIT License)
+4. **Reino OIDC** â€” Educational platform (Open Source, MIT License)
    - Gamified learning for OAuth/OIDC concepts
    - 60 interactive flashcards across 3 difficulty levels
    - Technical diagrams and illustrated glossary
 
-5. **Python Training** — Proprietary 40-hour course
+5. **Python Training** â€” Proprietary 40-hour course
    - Pygame game development
    - Minecraft API automation
    - Machine Learning fundamentals
@@ -192,40 +192,40 @@ aligned/
 ```
 
 **Key Documents:**
-- `docs/fases/fase-1/` — OAuth 2.1 + OIDC implementation (100% complete)
-- `docs/fases/fase-2/` — Security enhancements (100% complete)
-- `docs/fases/fase-3/` — Audit and logging (90% complete)
-- `secure/README.md` — Complete Área 51 technical reference
+- `docs/fases/fase-1/` â€” OAuth 2.1 + OIDC implementation (100% complete)
+- `docs/fases/fase-2/` â€” Security enhancements (100% complete)
+- `docs/fases/fase-3/` â€” Audit and logging (90% complete)
+- `secure/README.md` â€” Complete Ãrea 51 technical reference
 
 ---
 
 ## Internationalized Site Implementation
 
-### ✅ Phase 1: Core Structure (COMPLETED)
+### âœ… Phase 1: Core Structure (COMPLETED)
 
 **Pages Created:**
-- ✅ Root language detection page (`aligned/index.html`)
-- ✅ Home pages (EN/IT) with hero sections
-- ✅ Services pages (EN/IT) with detailed offerings
-- ✅ Articles pages (EN/IT) linking to legacy content
-- ✅ About pages (EN/IT) with professional journey
-- ✅ Contact pages (EN/IT) with contact forms
+- âœ… Root language detection page (`aligned/index.html`)
+- âœ… Home pages (EN/IT) with hero sections
+- âœ… Services pages (EN/IT) with detailed offerings
+- âœ… Articles pages (EN/IT) linking to legacy content
+- âœ… About pages (EN/IT) with professional journey
+- âœ… Contact pages (EN/IT) with contact forms
 
 **Features Implemented:**
-- ✅ Flag menu (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália) in all pages
-- ✅ Automatic language detection (URL parameter → localStorage → browser language)
-- ✅ Accessibility enhancements (ARIA labels, keyboard navigation)
-- ✅ Lazy loading for images
-- ✅ Google Analytics integration
-- ✅ SEO optimization for Switzerland (Ticino/Zug regions)
+- âœ… Flag menu (ðŸ‡§ðŸ‡· Brasil, ðŸ‡¨ðŸ‡­ SuÃ­Ã§a, ðŸ‡®ðŸ‡¹ ItÃ¡lia) in all pages
+- âœ… Automatic language detection (URL parameter â†’ localStorage â†’ browser language)
+- âœ… Accessibility enhancements (ARIA labels, keyboard navigation)
+- âœ… Lazy loading for images
+- âœ… Google Analytics integration
+- âœ… SEO optimization for Switzerland (Ticino/Zug regions)
 
-### ✅ Phase 2: Assets Centralization (COMPLETED)
+### âœ… Phase 2: Assets Centralization (COMPLETED)
 
 **Centralized Structure:**
-- ✅ CSS: `assets/css/styles.css` (shared by all pages)
-- ✅ JS: `assets/js/analytics.js`, `accessibility.js`, `flag-menu.js`
-- ✅ All HTML pages updated with new paths
-- ✅ No breaking changes to functionality
+- âœ… CSS: `assets/css/styles.css` (shared by all pages)
+- âœ… JS: `assets/js/analytics.js`, `accessibility.js`, `flag-menu.js`
+- âœ… All HTML pages updated with new paths
+- âœ… No breaking changes to functionality
 
 **Benefits:**
 - Single source of truth for styles and scripts
@@ -233,21 +233,21 @@ aligned/
 - Better cache efficiency
 - Consistent path structure
 
-### ✅ Phase 3: Accessibility & Performance (COMPLETED)
+### âœ… Phase 3: Accessibility & Performance (COMPLETED)
 
 **Accessibility Features:**
-- ✅ Skip to main content link
-- ✅ ARIA labels in all interactive elements
-- ✅ Keyboard navigation (Arrow keys for menu)
-- ✅ Focus management for modals
-- ✅ Live region for dynamic content announcements
-- ✅ Focus-visible styles for keyboard navigation
+- âœ… Skip to main content link
+- âœ… ARIA labels in all interactive elements
+- âœ… Keyboard navigation (Arrow keys for menu)
+- âœ… Focus management for modals
+- âœ… Live region for dynamic content announcements
+- âœ… Focus-visible styles for keyboard navigation
 
 **Performance Optimizations:**
-- ✅ Lazy loading for all images (`loading="lazy"`)
-- ✅ Async image decoding
-- ✅ Shared CSS (reduces duplication)
-- ✅ Bootstrap via CDN (browser cache)
+- âœ… Lazy loading for all images (`loading="lazy"`)
+- âœ… Async image decoding
+- âœ… Shared CSS (reduces duplication)
+- âœ… Bootstrap via CDN (browser cache)
 
 ### Language Detection Flow
 
@@ -258,10 +258,10 @@ aligned/
 
 ### Flag Menu Integration
 
-- **Root `index.html`**: Includes flag menu (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália)
+- **Root `index.html`**: Includes flag menu (ðŸ‡§ðŸ‡· Brasil, ðŸ‡¨ðŸ‡­ SuÃ­Ã§a, ðŸ‡®ðŸ‡¹ ItÃ¡lia)
 - **All EN pages**: Flag menu in navbar
 - **All IT pages**: Flag menu in navbar
-- **Seamless navigation** between Brasil (PT), Suíça (EN), and Itália (IT)
+- **Seamless navigation** between Brasil (PT), SuÃ­Ã§a (EN), and ItÃ¡lia (IT)
 
 ---
 
@@ -308,41 +308,41 @@ aligned/
 ### Migration Notes
 
 - Old files in `en/` directory have been removed:
-  - ❌ `en/styles.css` → ✅ `assets/css/styles.css`
-  - ❌ `en/analytics.js` → ✅ `assets/js/analytics.js`
-  - ❌ `en/accessibility.js` → ✅ `assets/js/accessibility.js`
-  - ❌ `en/flag-menu.js` → ✅ `assets/js/flag-menu.js`
+  - âŒ `en/styles.css` â†’ âœ… `assets/css/styles.css`
+  - âŒ `en/analytics.js` â†’ âœ… `assets/js/analytics.js`
+  - âŒ `en/accessibility.js` â†’ âœ… `assets/js/accessibility.js`
+  - âŒ `en/flag-menu.js` â†’ âœ… `assets/js/flag-menu.js`
 
 ---
 
 ## Migration Strategy
 
-### Phase 1: Preservation (✅ COMPLETED)
-- ✅ Legacy code structure documented
-- ✅ Documentation preserved
-- ✅ Production systems remain operational
+### Phase 1: Preservation (âœ… COMPLETED)
+- âœ… Legacy code structure documented
+- âœ… Documentation preserved
+- âœ… Production systems remain operational
 
-### Phase 2: Modernization (✅ COMPLETED - Internationalized Site)
-- ✅ New structure with bilingual (EN/IT) interface in `aligned/`
-- ✅ Complete page set: Home, Services, Articles, About, Contact
-- ✅ Flag menu (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália) in all pages
-- ✅ Automatic language detection and redirection
-- ✅ Accessibility enhancements (ARIA, keyboard navigation)
-- ✅ Performance optimizations (lazy loading)
-- ✅ SEO optimization for Switzerland (Ticino/Zug)
-- ✅ Assets centralized in `assets/` directory
-- 🔄 AI-enhanced Python services (planned)
+### Phase 2: Modernization (âœ… COMPLETED - Internationalized Site)
+- âœ… New structure with bilingual (EN/IT) interface in `aligned/`
+- âœ… Complete page set: Home, Services, Articles, About, Contact
+- âœ… Flag menu (ðŸ‡§ðŸ‡· Brasil, ðŸ‡¨ðŸ‡­ SuÃ­Ã§a, ðŸ‡®ðŸ‡¹ ItÃ¡lia) in all pages
+- âœ… Automatic language detection and redirection
+- âœ… Accessibility enhancements (ARIA, keyboard navigation)
+- âœ… Performance optimizations (lazy loading)
+- âœ… SEO optimization for Switzerland (Ticino/Zug)
+- âœ… Assets centralized in `assets/` directory
+- ðŸ”„ AI-enhanced Python services (planned)
 
-### Phase 3: Integration (⏳ PLANNED)
-- ⏳ Legacy APIs integrated as microservices
-- ⏳ Gradual feature migration
-- ⏳ Unified authentication layer
+### Phase 3: Integration (â³ PLANNED)
+- â³ Legacy APIs integrated as microservices
+- â³ Gradual feature migration
+- â³ Unified authentication layer
 
-### Phase 4: Legacy Content Migration (⏳ PENDING)
-- ⏳ Move legacy files to `aligned/legacy/` (or subdirectory)
-- ⏳ Update internal links
-- ⏳ Test legacy site in new location
-- ⏳ Update documentation references
+### Phase 4: Legacy Content Migration (â³ PENDING)
+- â³ Move legacy files to `aligned/legacy/` (or subdirectory)
+- â³ Update internal links
+- â³ Test legacy site in new location
+- â³ Update documentation references
 
 ---
 
@@ -384,9 +384,9 @@ aligned/
 
 **Value Proposition:**
 - **18 years of Java enterprise experience** (Jakarta EE, Spring, Hibernate)
-- **Chemical Engineering background** (UFPR 1991-2000) + **Java Technology Specialization** (UTFPR 2007-2008, Lato Sensu) → rigorous process control mindset
-- **Technology is global** → enterprise Java modernization, OIDC, and Python automation are the same across markets
-- **AI/Python automation** → modern automation capabilities
+- **Chemical Engineering background** (UFPR 1991-2000) + **Java Technology Specialization** (UTFPR 2007-2008, Lato Sensu) â†’ rigorous process control mindset
+- **Technology is global** â†’ enterprise Java modernization, OIDC, and Python automation are the same across markets
+- **AI/Python automation** â†’ modern automation capabilities
 
 **Services Offered:**
 1. Legacy system assessment and modernization
@@ -404,10 +404,10 @@ Chemical Engineer (UFPR 1991-2000) | Specialization in Java Technology (UTFPR 20
 Enterprise Java | AI/Python automation  
 **Focus:** Legacy system consulting with aligned English and Italian delivery
 
-**Repository:** [GitHub](https://github.com/chmulato/cara-core)  
+**Repository:** [GitHub](https://caracore.com.br/)  
 **Legacy Site:** [caracore.com.br](https://www.caracore.com.br)  
 **Aligned Service Pages:** `aligned/` (EN/IT versions available)  
-**Flag Menu:** Available in all pages (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália)
+**Flag Menu:** Available in all pages (ðŸ‡§ðŸ‡· Brasil, ðŸ‡¨ðŸ‡­ SuÃ­Ã§a, ðŸ‡®ðŸ‡¹ ItÃ¡lia)
 
 ---
 
@@ -435,7 +435,7 @@ python scripts/server.py
 # Access
 # Frontend: http://localhost:8080
 # Backend API: http://localhost:5051
-# Área 51: http://localhost:8080/secure/
+# Ãrea 51: http://localhost:8080/secure/
 ```
 
 **Testing:**
@@ -482,7 +482,7 @@ All pages include:
 
 ## Conclusion
 
-This legacy codebase represents **15 years of engineering excellence** applied to enterprise software. It is not technical debt—it is **technical capital** that has been carefully preserved, documented, and maintained.
+This legacy codebase represents **15 years of engineering excellence** applied to enterprise software. It is not technical debtâ€”it is **technical capital** that has been carefully preserved, documented, and maintained.
 
 As we align service presentation for English and Italian contexts with a modernized, AI-enhanced platform, this legacy serves as:
 - **Reference implementation** for best practices
@@ -494,29 +494,29 @@ As we align service presentation for English and Italian contexts with a moderni
 
 ---
 
-*"In chemical engineering, we don't discard proven processes—we evolve them. The same principle applies to software."*
+*"In chemical engineering, we don't discard proven processesâ€”we evolve them. The same principle applies to software."*
 
-**— Christian Mulato, Chemical Engineer (UFPR 1991-2000), Specialization in Java Technology (UTFPR 2007-2008, Lato Sensu), Software Architect**
+**â€” Christian Mulato, Chemical Engineer (UFPR 1991-2000), Specialization in Java Technology (UTFPR 2007-2008, Lato Sensu), Software Architect**
 
 ---
 
 **Last Updated:** 2025-01-XX  
 **Version:** 2.0.0 (Documentation Consolidated)  
 **Status:** Phase 1 & 2 Complete | Phase 3 & 4 Pending  
-**License:** Proprietary (Cara Core Informática - CNPJ: 23.969.028/0001-37)
+**License:** Proprietary (Cara Core InformÃ¡tica - CNPJ: 23.969.028/0001-37)
 
 ---
 
 ## Recent Updates (2025-01-XX)
 
-### ✅ Documentation Consolidated
+### âœ… Documentation Consolidated
 - All documentation files merged into single `README_CH.md`
 - Removed redundant documentation files
 - Improved organization and navigation
 
-### ✅ Internationalized Site Complete
+### âœ… Internationalized Site Complete
 - Complete bilingual site (English/Italian) in `aligned/`
-- Flag menu (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália) in all pages
+- Flag menu (ðŸ‡§ðŸ‡· Brasil, ðŸ‡¨ðŸ‡­ SuÃ­Ã§a, ðŸ‡®ðŸ‡¹ ItÃ¡lia) in all pages
 - Automatic language detection and redirection
 - Full page set: Home, Services, Articles, About, Contact
 - Contact forms with validation (EN/IT)
@@ -526,15 +526,15 @@ As we align service presentation for English and Italian contexts with a moderni
 - Google Analytics integration
 - Assets centralized in `assets/` directory
 
-### ✅ Redundancy Removed
+### âœ… Redundancy Removed
 - Removed duplicate language switcher (fixed top-right)
 - Kept only flag menu in navbar (better UX)
 - Updated all pages and scripts
 
-### ✅ Flag Menu Size Adjusted
+### âœ… Flag Menu Size Adjusted
 - Adjusted flag menu size in root `index.html` for better proportions
-- Desktop: 36px × 36px (was 44px)
-- Mobile: 40px × 40px (was 48px)
+- Desktop: 36px Ã— 36px (was 44px)
+- Mobile: 40px Ã— 40px (was 48px)
 - Better integration with navbar
 
 ---
@@ -549,3 +549,4 @@ This document consolidates the following previous documentation files:
 - `en/README.md` - English site structure
 
 All information has been integrated into this single comprehensive document.
+

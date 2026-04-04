@@ -1,4 +1,4 @@
-CAMPANHA ORGANICA CARA CORE INFORMATICA
+﻿CAMPANHA ORGANICA CARA CORE INFORMATICA
 =======================================
 
 Registro de artigos publicados no LinkedIn e planejamento editorial. Documento de referencia para marketing organico e alinhamento ao ecossistema da Cara Core Informatica.
@@ -9,10 +9,10 @@ Referencias do ecossistema:
   ECOSYSTEM_LOJAS.txt        URLs das lojas (GitHub Pages) e matriz (caracore.com.br/delivery/...).
 
 Sala de noticias (este repositorio):
-  Repositorio: caracore-articles (branch main). GitHub Pages: https://chmulato.github.io/caracore-articles/
+  Repositorio: caracore-articles (branch main). GitHub Pages: https://caracore.com.br/sala/redes/retro/
   Listagem:    docs/articles.html   |   Artigos: docs/articles/ (HTML) e docs/articles/assets/img/ (imagens).
   Sem dominio proprio: sala hospedada apenas na infra do GitHub; aviso startup + infra em index.html e articles.html.
-  Canonical e og:url/og:image de todos os artigos apontam para chmulato.github.io/caracore-articles/articles/.
+  Canonical e og:url/og:image de todos os artigos apontam para caracore.com.br/caracore-articles/articles/.
 
 -------------------------------------------------------------------------------
 
@@ -118,14 +118,14 @@ SERIE RU 1991: A ESSENCIA DA SOBERANIA (ENCERRADA)
 
 Serie de seis entregas (chamada + 4 episodios + epilogo). Recapitulacao F1 (Portal) a F10 (Dossie). Soberania vitalicia para quem possui a chave HWID. Navegacao binge-reading em todos os artigos.
 
-  Chamada | 2026-02-22 | 2026_02_22_article_serie_ru_chamada.html       | ATO I — O Portal. RU 1991: A Essencia da Soberania
-  Ep.01   | 2026-03-15 | 2026_03_15_article_serie_ru_episodio_01.html   | ATO II — A Camada Invisivel (Adsorcao). RU 1991
-  Ep.02   | 2026-03-31 | 2026_03_31_article_serie_ru_episodio_02.html   | ATO III — O Pulso da Criacao (Cinetica). RU 1991
-  Ep.03   | 2026-04-05 | 2026_04_05_article_serie_ru_episodio_03.html   | ATO IV — Operacao (A Planta). RU 1991
-  Ep.04   | 2026-04-30 | 2026_04_30_article_serie_ru_episodio_04.html   | ATO V — Soberania (O Dossie). RU 1991
-  Epilogo | 2026-05-05 | 2026_05_05_article_serie_ru_epilogo.html       | Epilogo — O Legado em Suas Maos. RU 1991
+  Chamada | 2026-02-22 | 2026_02_22_article_serie_ru_chamada.html       | ATO I â€” O Portal. RU 1991: A Essencia da Soberania
+  Ep.01   | 2026-03-15 | 2026_03_15_article_serie_ru_episodio_01.html   | ATO II â€” A Camada Invisivel (Adsorcao). RU 1991
+  Ep.02   | 2026-03-31 | 2026_03_31_article_serie_ru_episodio_02.html   | ATO III â€” O Pulso da Criacao (Cinetica). RU 1991
+  Ep.03   | 2026-04-05 | 2026_04_05_article_serie_ru_episodio_03.html   | ATO IV â€” Operacao (A Planta). RU 1991
+  Ep.04   | 2026-04-30 | 2026_04_30_article_serie_ru_episodio_04.html   | ATO V â€” Soberania (O Dossie). RU 1991
+  Epilogo | 2026-05-05 | 2026_05_05_article_serie_ru_epilogo.html       | Epilogo â€” O Legado em Suas Maos. RU 1991
 
-Loja RU: https://ru.caracore.com.br/ — abertura oficial 18/Junho/2026, R$ 29,90. CTA nos artigos e no epilogo.
+Loja RU: https://ru.caracore.com.br/ â€” abertura oficial 18/Junho/2026, R$ 29,90. CTA nos artigos e no epilogo.
 Feedback: feedback_ato_01.txt ... feedback_ato_05.txt; feedback_final.txt. Consistencia: docs/CONSISTENCIA_SERIE_RU.md.
 
 -------------------------------------------------------------------------------
@@ -147,7 +147,7 @@ Produtos e referencias:
 
 JUNHO 2026
 
-  Semana 1 (07/06)  Artigo 87  RU Soberano: O Que e e Por Que o Lançamento em Junho de 2026 Importa
+  Semana 1 (07/06)  Artigo 87  RU Soberano: O Que e e Por Que o LanÃ§amento em Junho de 2026 Importa
   Semana 2 (14/06)  Artigo 88  Do Cafe Mania ao Material Serio: A Historia do RU e a Engenharia Quimica
   Semana 3 (21/06)  Artigo 89  Matriz e Lojas: Como o Ecossistema Cara Core se Conecta (portifolio, delivery, GitHub Pages)
   Semana 4 (28/06)  Artigo 90  Cara Core Seed: Por Que uma Ferramenta Interna de Licencas e Estrategica
@@ -175,11 +175,12 @@ Convencao de arquivos para Jun/Jul/Ago 2026:
 
 NOTAS
 
-  Analise editorial (Editor-Chefe / Estrategista de Narrativa): docs/EDITORIAL_ANALISE_MARCO_2026.md. Auditoria de soberania, refinamento Soberania Tecnica/Dossie Operacional, engajamento de elite, filtro de ruido, CTA Industrial-Ink. Comando de guerrilla para comentarios (Cara Core + Guilherme). Aplicado ao artigo 75 (07/03); replicar criterios para 76, 77, 78 e serie RU março.
+  Analise editorial (Editor-Chefe / Estrategista de Narrativa): docs/EDITORIAL_ANALISE_MARCO_2026.md. Auditoria de soberania, refinamento Soberania Tecnica/Dossie Operacional, engajamento de elite, filtro de ruido, CTA Industrial-Ink. Comando de guerrilla para comentarios (Cara Core + Guilherme). Aplicado ao artigo 75 (07/03); replicar criterios para 76, 77, 78 e serie RU marÃ§o.
   O registro e atualizado conforme a lista em docs/articles.html (sala em caracore-articles, GitHub Pages). Novos artigos: YYYY_MM_DD_article_NN.html ou nome tematico (ex.: serie_ru_*); inserir na lista e neste arquivo.
-  Sala de noticias: sem dominio proprio; URL base https://chmulato.github.io/caracore-articles/. Memoria do projeto em .cursor/rules/project-memory.mdc.
+  Sala de noticias: sem dominio proprio; URL base https://caracore.com.br/sala/redes/retro/. Memoria do projeto em .cursor/rules/project-memory.mdc.
   Imagens: formato 16:9 paisagem; pasta docs/articles/assets/img. Prompts em docs/articles/assets/prompts_img/.
   Referencia cruzada: ECOSYSTEM_CARA_CORE.txt, VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt. Serie RU: docs/CONSISTENCIA_SERIE_RU.md, feedback_final.txt.
   Convencao de nomes do ecossistema: repos e pastas no padrao caracore-* (caracore-site, caracore-pdv, caracore-hub, caracore-ete, caracore-circuito, caracore-oidc, caracore-seed, caracore-area51, caracore-ru); lojas GitHub Pages em caracore-*-releases (ex.: caracore-circuito-releases, caracore-oidc-releases).
 
 Cara Core Informatica. Documento para uso interno. Atualizado em 08/02/2026.
+

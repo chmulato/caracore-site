@@ -1,7 +1,7 @@
-VALIDAÇÃO: LOJAS ALINHADAS COM A MATRIZ
+﻿VALIDAÃ‡ÃƒO: LOJAS ALINHADAS COM A MATRIZ
 ========================================
 
-Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhadas com os portais da matriz (cara-core-site/delivery). Inclui o ramo Garagem (futuros lançamentos). Data da verificação: 05/02/2026; atualizado com Garagem em 06/02/2026; alinhamento Área 51 (download + licenca-uso + Cara↔Crachá) em 20/02/2026.
+Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinhadas com os portais da matriz (cara-core-site/delivery). Inclui o ramo Garagem (futuros lanÃ§amentos). Data da verificaÃ§Ã£o: 05/02/2026; atualizado com Garagem em 06/02/2026; alinhamento Ãrea 51 (download + licenca-uso + Caraâ†”CrachÃ¡) em 20/02/2026.
 
 -------------------------------------------------------------------------------
 
@@ -13,14 +13,14 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
   Estrutura
     Matriz: index, download, tecnologia, canal-feedback, consultoria, readme, wiki-fiscal, wiki/
     Loja:   index, download, tecnologia, canal-feedback
-  Status:  OK. A loja contém as páginas previstas no MIRROR_DELIVERY (vitrine: hero, CTAs, pilares, download, tecnologia, canal-feedback). Consultoria e wiki permanecem só na matriz.
+  Status:  OK. A loja contÃ©m as pÃ¡ginas previstas no MIRROR_DELIVERY (vitrine: hero, CTAs, pilares, download, tecnologia, canal-feedback). Consultoria e wiki permanecem sÃ³ na matriz.
 
   Mensagem
-    Matriz e loja: "Quando a internet cai, o caixa não pode parar"; "PDV Selo Verde"; "Reforma Tributária 2026"; "Degustação (Free)", "100 vendas completas"; "Tecnologia Selo Verde"; SQLite local.
+    Matriz e loja: "Quando a internet cai, o caixa nÃ£o pode parar"; "PDV Selo Verde"; "Reforma TributÃ¡ria 2026"; "DegustaÃ§Ã£o (Free)", "100 vendas completas"; "Tecnologia Selo Verde"; SQLite local.
   Status:  OK. Mensagem alinhada.
 
   Links
-    Loja referencia matriz (caracore.com.br/delivery/pdv) e portfólio; download aponta para Degustação e Releases.
+    Loja referencia matriz (caracore.com.br/delivery/pdv) e portfÃ³lio; download aponta para DegustaÃ§Ã£o e Releases.
   Status:  OK.
 
 -------------------------------------------------------------------------------
@@ -33,14 +33,14 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
   Estrutura
     Matriz: index, download, canal-feedback, tecnologia, slides/apresentacao_tia_socia.html (+ assets)
     Loja:   index, download, canal-feedback, tecnologia, slides/apresentacao_tia_socia.html (+ assets)
-  Status:  OK. Conjunto de páginas equivalente. Obs.: Existem arquivos também na raiz do repositório; a vitrine publicada é a pasta docs/.
+  Status:  OK. Conjunto de pÃ¡ginas equivalente. Obs.: Existem arquivos tambÃ©m na raiz do repositÃ³rio; a vitrine publicada Ã© a pasta docs/.
 
   Mensagem
-    Matriz e loja: "gestão logística e e-commerce"; "SQLite local"; "autonomia local"; "Tia Sócia" como negócio aplicável; card "Apresentação Tia Sócia" e link para slides; stack Java/Jakarta EE, SQLite, Tomcat.
+    Matriz e loja: "gestÃ£o logÃ­stica e e-commerce"; "SQLite local"; "autonomia local"; "Tia SÃ³cia" como negÃ³cio aplicÃ¡vel; card "ApresentaÃ§Ã£o Tia SÃ³cia" e link para slides; stack Java/Jakarta EE, SQLite, Tomcat.
   Status:  OK. Textos e oferta alinhados.
 
   Links
-    Loja com base href para GitHub Pages; referências à matriz e ao portfólio.
+    Loja com base href para GitHub Pages; referÃªncias Ã  matriz e ao portfÃ³lio.
   Status:  OK.
 
 -------------------------------------------------------------------------------
@@ -56,11 +56,11 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
   Status:  OK. A loja inclui download.html (link para EXE em releases); matriz prioriza card no index. Conforme MIRROR: prioridade baixar EXE na filial.
 
   Mensagem
-    Matriz e loja: FREE (Licença MIT) para pessoas físicas; R$ 5,00/aluno matriculado/mês para instituições; "licença obrigatória" para escolas; aviso de responsabilização legal; "Portal Escolas"; certificado com verificação criptográfica.
+    Matriz e loja: FREE (LicenÃ§a MIT) para pessoas fÃ­sicas; R$ 5,00/aluno matriculado/mÃªs para instituiÃ§Ãµes; "licenÃ§a obrigatÃ³ria" para escolas; aviso de responsabilizaÃ§Ã£o legal; "Portal Escolas"; certificado com verificaÃ§Ã£o criptogrÃ¡fica.
   Status:  OK. Mensagem e valor alinhados.
 
   Links
-    Ambas apontam para circuito-python-releases (releases/latest); sem link para repositório privado circuito_python.
+    Ambas apontam para circuito-python-releases (releases/latest); sem link para repositÃ³rio privado circuito_python.
   Status:  OK.
 
 -------------------------------------------------------------------------------
@@ -71,16 +71,16 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
   Loja:   reino-oidc-releases/docs/ (oidc.caracore.com.br); caminho local D:\dev\reino-oidc-releases
 
   Estrutura
-    Matriz: index, download, canal-feedback, upgrade-trono, licenca-uso, conteudo-free, páginas de história/glossário/mapas/jogos, etc.
-    Loja:   Mesmo conjunto (index, download, upgrade-trono, licenca-uso, conteudo-free, história, personagens, super_trunfo, etc.)
+    Matriz: index, download, canal-feedback, upgrade-trono, licenca-uso, conteudo-free, pÃ¡ginas de histÃ³ria/glossÃ¡rio/mapas/jogos, etc.
+    Loja:   Mesmo conjunto (index, download, upgrade-trono, licenca-uso, conteudo-free, histÃ³ria, personagens, super_trunfo, etc.)
   Status:  OK. Estrutura espelhada.
 
   Mensagem
-    Matriz e loja: aplicativo Windows FREE (ReinoOIDC.exe); "releases/latest"; upgrade "O Trono da Identidade" R$ 29,90 (valor único, PIX); Licença MIT para FREE; mesma narrativa de upgrade e certificação.
-  Status:  OK. Preço e oferta alinhados.
+    Matriz e loja: aplicativo Windows FREE (ReinoOIDC.exe); "releases/latest"; upgrade "O Trono da Identidade" R$ 29,90 (valor Ãºnico, PIX); LicenÃ§a MIT para FREE; mesma narrativa de upgrade e certificaÃ§Ã£o.
+  Status:  OK. PreÃ§o e oferta alinhados.
 
   Links
-    Download para github.com/chmulato/reino-oidc-releases/releases/latest; upgrade-trono em ambas; links para portfólio em formato absoluto na vitrine (conforme MIRROR).
+    Download para caracore.com.br/reino-oidc-releases/releases/latest; upgrade-trono em ambas; links para portfÃ³lio em formato absoluto na vitrine (conforme MIRROR).
   Status:  OK.
 
 -------------------------------------------------------------------------------
@@ -93,19 +93,19 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
   Estrutura
     Matriz: index, download, tecnologia, canal-feedback, portal-controle, ativacao, compra, readme
     Loja:   index, download, tecnologia, canal-feedback, portal-controle, ativacao, compra, readme (+ tools/README, assets/css)
-  Status:  OK. Loja alinhada ao molde COMPONENTES_LOJA com todos os componentes. Ambas informam que a aplicação não está disponível.
+  Status:  OK. Loja alinhada ao molde COMPONENTES_LOJA com todos os componentes. Ambas informam que a aplicaÃ§Ã£o nÃ£o estÃ¡ disponÃ­vel.
 
   Mensagem
-    Matriz e loja: "Aplicação não disponível"; "não está disponível para download nem à venda"; "ferramenta interna"; referência ao portfólio; sem CTA de Baixar EXE nem Comprar.
-  Status:  OK. Alinhadas na decisão de não oferta.
+    Matriz e loja: "AplicaÃ§Ã£o nÃ£o disponÃ­vel"; "nÃ£o estÃ¡ disponÃ­vel para download nem Ã  venda"; "ferramenta interna"; referÃªncia ao portfÃ³lio; sem CTA de Baixar EXE nem Comprar.
+  Status:  OK. Alinhadas na decisÃ£o de nÃ£o oferta.
 
   Links
-    Ambas remetem ao portfólio e ao repositório; sem oferta de download ou compra.
+    Ambas remetem ao portfÃ³lio e ao repositÃ³rio; sem oferta de download ou compra.
   Status:  OK.
 
 -------------------------------------------------------------------------------
 
-6. SUPORTE ÁREA 51
+6. SUPORTE ÃREA 51
 
   Matriz: cara-core-site/delivery/area51/
   Loja:   caracore-area51-releases/docs/ (area51.caracore.com.br)
@@ -113,64 +113,65 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estão alinhad
   Estrutura
     Matriz: index, download, licenca-uso, canal-feedback, MIRROR_DELIVERY.md
     Loja:   index, download, licenca-uso, canal-feedback (vitrine alinhada)
-  Status:  OK. Corrigido em 20/02/2026: Matriz recebeu download.html e licenca-uso.html (antes ausentes; Loja estava à frente da Matriz).
+  Status:  OK. Corrigido em 20/02/2026: Matriz recebeu download.html e licenca-uso.html (antes ausentes; Loja estava Ã  frente da Matriz).
 
   Mensagem
-    Matriz e loja: Suporte Área 51 = serviço contratado (sem data de lançamento); o que a empresa recebe ao contratar (login Google/Microsoft, painel admin, auditoria, LGPD).
-    Cara ↔ Crachá: narrativa e scripts = PI Cara Core (licença proprietária, não MIT); OIDC/OAuth 2.1/PKCE = padrão aberto (sem propriedade da Cara Core).
-    Licença proprietária em ambas: gratuito PF; empresas/instituições requerem contratação.
+    Matriz e loja: Suporte Ãrea 51 = serviÃ§o contratado (sem data de lanÃ§amento); o que a empresa recebe ao contratar (login Google/Microsoft, painel admin, auditoria, LGPD).
+    Cara â†” CrachÃ¡: narrativa e scripts = PI Cara Core (licenÃ§a proprietÃ¡ria, nÃ£o MIT); OIDC/OAuth 2.1/PKCE = padrÃ£o aberto (sem propriedade da Cara Core).
+    LicenÃ§a proprietÃ¡ria em ambas: gratuito PF; empresas/instituiÃ§Ãµes requerem contrataÃ§Ã£o.
   Status:  OK.
 
   Links e CTAs
-    Matriz: "Ver loja (releases)" no hero, nav e footer. Cards: download, licenca-uso, canal-feedback, loja, portfólio, documentação técnica (wiki).
-    Loja: "Ver apresentação (matriz)" no hero e link para caracore.com.br/delivery/area51/.
+    Matriz: "Ver loja (releases)" no hero, nav e footer. Cards: download, licenca-uso, canal-feedback, loja, portfÃ³lio, documentaÃ§Ã£o tÃ©cnica (wiki).
+    Loja: "Ver apresentaÃ§Ã£o (matriz)" no hero e link para caracore.com.br/delivery/area51/.
   Status:  OK.
 
 -------------------------------------------------------------------------------
 
-7. GARAGEM — RU SOBERANO (futuros lançamentos)
+7. GARAGEM â€” RU SOBERANO (futuros lanÃ§amentos)
 
-  Assunto: Garagem. Produtos na Garagem têm apresentação na matriz, oficina e loja já no ar; ao lançar, entram no fluxo completo dos produtos (ecosistema.html).
+  Assunto: Garagem. Produtos na Garagem tÃªm apresentaÃ§Ã£o na matriz, oficina e loja jÃ¡ no ar; ao lanÃ§ar, entram no fluxo completo dos produtos (ecosistema.html).
 
   Matriz: cara-core-site/delivery/ru/
   Loja:   caracore-ru-releases/docs/ (ru.caracore.com.br)
-  Oficina: caracore-ru (repositório de código)
+  Oficina: caracore-ru (repositÃ³rio de cÃ³digo)
 
   Estrutura
     Matriz: index, canal-feedback, MIRROR_DELIVERY.md, email_pos_venda.html, fluxo_mensagens_vendas.md
     Loja:   index, download, licenca-uso, manual-tecnico, canal-feedback, MIRROR_DELIVERY.md, assets/
-  Status:  OK. A loja contém vitrine, download, licença, manual técnico e canal de feedback; alinhada à matriz. MIRROR_DELIVERY.md em ambos com regras de espelho.
+  Status:  OK. A loja contÃ©m vitrine, download, licenÃ§a, manual tÃ©cnico e canal de feedback; alinhada Ã  matriz. MIRROR_DELIVERY.md em ambos com regras de espelho.
 
   Mensagem
-    Matriz e loja: "RU Soberano"; "Produto em evolução"; "A história do RU e a Engenharia Química"; "Café Mania 2.0" vs "material sério de engenharia"; degustação FREE até o Buffet; Inteligência de Processo + Memorial RU R$ 29,90; lançamento 18/Junho/2026; expectativa × realidade; oficina caracore-ru, loja caracore-ru-releases.
+    Matriz e loja: "RU Soberano"; "Produto em evoluÃ§Ã£o"; "A histÃ³ria do RU e a Engenharia QuÃ­mica"; "CafÃ© Mania 2.0" vs "material sÃ©rio de engenharia"; degustaÃ§Ã£o FREE atÃ© o Buffet; InteligÃªncia de Processo + Memorial RU R$ 29,90; lanÃ§amento 18/Junho/2026; expectativa Ã— realidade; oficina caracore-ru, loja caracore-ru-releases.
   Status:  OK. Mensagem alinhada.
 
   Links
-    Matriz: CTAs para loja (ru.caracore.com.br/) e download (loja/docs/download.html). Loja: breadcrumbs Portfólio · RU Soberano — Delivery · Loja; links para matriz (caracore.com.br/delivery/ru/), canal de feedback, download, licença, manual técnico, MIRROR_DELIVERY.
+    Matriz: CTAs para loja (ru.caracore.com.br/) e download (loja/docs/download.html). Loja: breadcrumbs PortfÃ³lio Â· RU Soberano â€” Delivery Â· Loja; links para matriz (caracore.com.br/delivery/ru/), canal de feedback, download, licenÃ§a, manual tÃ©cnico, MIRROR_DELIVERY.
   Status:  OK.
 
   Garagem
-    No ecossistema (ecosistema.html), RU Soberano no subgraph "Garagem — futuros lançamentos (em trabalho)": Matriz → RU Soberano → caracore-ru → caracore-ru-releases. Link "RU Soberano (garagem)" para delivery/ru na página do ecossistema.
+    No ecossistema (ecosistema.html), RU Soberano no subgraph "Garagem â€” futuros lanÃ§amentos (em trabalho)": Matriz â†’ RU Soberano â†’ caracore-ru â†’ caracore-ru-releases. Link "RU Soberano (garagem)" para delivery/ru na pÃ¡gina do ecossistema.
   Status:  OK.
 
 -------------------------------------------------------------------------------
 
 8. RESUMO
 
-  Produto             Estrutura    Mensagem    Links/CTAs   Conclusão
+  Produto             Estrutura    Mensagem    Links/CTAs   ConclusÃ£o
   ------------------- ----------- ----------- ------------- ------------------
   Cara Core PDV       OK          OK          OK            Alinhada
   Cara Core Hub       OK          OK          OK            Alinhada
   Circuito Python     OK          OK          OK            Alinhada
   Reino OIDC          OK          OK          OK            Alinhada
   Cara Core Seed      OK          OK          OK            Alinhada
-  Suporte Área 51     OK          OK          OK            Alinhada
-  Garagem — RU Soberano  OK       OK          OK            Alinhada (futuro lançamento 18/Junho/2026)
+  Suporte Ãrea 51     OK          OK          OK            Alinhada
+  Garagem â€” RU Soberano  OK       OK          OK            Alinhada (futuro lanÃ§amento 18/Junho/2026)
 
-  Todas as lojas verificadas estão alinhadas com a matriz em estrutura de páginas, mensagem de negócio (posicionamento, preços onde aplicável, oferta FREE/upgrade/não disponível) e links cruzados. CTAs: em cada matriz há "Ver loja (releases)" para a loja correspondente; em cada loja há "Ver apresentação (matriz)" (hero e/ou footer) para o portal completo no site Cara Core. O ramo Garagem (ecosistema.html) agrupa produtos em desenvolvimento com matriz, oficina e loja no ar; RU Soberano é o primeiro.
+  Todas as lojas verificadas estÃ£o alinhadas com a matriz em estrutura de pÃ¡ginas, mensagem de negÃ³cio (posicionamento, preÃ§os onde aplicÃ¡vel, oferta FREE/upgrade/nÃ£o disponÃ­vel) e links cruzados. CTAs: em cada matriz hÃ¡ "Ver loja (releases)" para a loja correspondente; em cada loja hÃ¡ "Ver apresentaÃ§Ã£o (matriz)" (hero e/ou footer) para o portal completo no site Cara Core. O ramo Garagem (ecosistema.html) agrupa produtos em desenvolvimento com matriz, oficina e loja no ar; RU Soberano Ã© o primeiro.
 
-  Referências: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt. Reino OIDC loja: reino-oidc-releases (pasta docs/); caminho local D:\dev\reino-oidc-releases. RU Soberano: delivery/ru (matriz), caracore-ru-releases (loja), caracore-ru (oficina). Mapa visual do ecossistema (matriz, produtos, oficinas, lojas, Garagem): caracore.com.br/ecosistema.html (Conheça o Nosso Eco Mundo).
+  ReferÃªncias: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt. Reino OIDC loja: reino-oidc-releases (pasta docs/); caminho local D:\dev\reino-oidc-releases. RU Soberano: delivery/ru (matriz), caracore-ru-releases (loja), caracore-ru (oficina). Mapa visual do ecossistema (matriz, produtos, oficinas, lojas, Garagem): caracore.com.br/ecosistema.html (ConheÃ§a o Nosso Eco Mundo).
 
 -------------------------------------------------------------------------------
 
-Cara Core Informática. Documento para uso interno.
+Cara Core InformÃ¡tica. Documento para uso interno.
+

@@ -1,31 +1,31 @@
-# Solução: Dependência `cryptography` Não Instalada
+﻿# SoluÃ§Ã£o: DependÃªncia `cryptography` NÃ£o Instalada
 
-## 🔍 Problema Identificado
+## ðŸ” Problema Identificado
 
 O log do servidor mostra:
 ```
-WARNING session_manager não disponível - sistema de refresh tokens desabilitado: No module named 'cryptography'
+WARNING session_manager nÃ£o disponÃ­vel - sistema de refresh tokens desabilitado: No module named 'cryptography'
 ```
 
-## ✅ Causa
+## âœ… Causa
 
-A dependência `cryptography` está no arquivo `backend/requirements-docker.txt`, mas a imagem Docker foi construída **antes** dessa dependência ser adicionada, ou o build não está instalando corretamente.
+A dependÃªncia `cryptography` estÃ¡ no arquivo `backend/requirements-docker.txt`, mas a imagem Docker foi construÃ­da **antes** dessa dependÃªncia ser adicionada, ou o build nÃ£o estÃ¡ instalando corretamente.
 
-## 🔧 Solução
+## ðŸ”§ SoluÃ§Ã£o
 
-### Opção 1: Forçar Rebuild da Imagem Docker (Recomendado)
+### OpÃ§Ã£o 1: ForÃ§ar Rebuild da Imagem Docker (Recomendado)
 
 **Via GitHub Actions:**
 
-1. Acesse: https://github.com/chmulato/cara-core/actions
+1. Acesse: https://caracore.com.br/
 2. Selecione o workflow "Deploy Docker Backend to Azure Container Registry"
-3. Clique em **Run workflow** → **Run workflow**
+3. Clique em **Run workflow** â†’ **Run workflow**
 4. Aguarde o build e deploy completarem (5-10 minutos)
 
-**Via Azure CLI (forçar pull):**
+**Via Azure CLI (forÃ§ar pull):**
 
 ```bash
-# Forçar pull da imagem mais recente
+# ForÃ§ar pull da imagem mais recente
 az webapp config container set \
   --name caracore-backend-docker \
   --resource-group rg-caracore \
@@ -38,43 +38,44 @@ az webapp restart \
   --resource-group rg-caracore
 ```
 
-### Opção 2: Verificar Arquivo de Requirements
+### OpÃ§Ã£o 2: Verificar Arquivo de Requirements
 
-Certifique-se de que `backend/requirements-docker.txt` contém:
+Certifique-se de que `backend/requirements-docker.txt` contÃ©m:
 
 ```txt
 # Fase 7 - Sistema de Refresh Tokens
 cryptography>=41.0.0      # Criptografia AES-256
 flask-limiter>=3.5.0      # Rate limiting
-python-dateutil>=2.8.2    # Manipulação de datas
+python-dateutil>=2.8.2    # ManipulaÃ§Ã£o de datas
 ```
 
-### Opção 3: Verificar Build Logs
+### OpÃ§Ã£o 3: Verificar Build Logs
 
-No GitHub Actions, verifique os logs do build para ver se `cryptography` está sendo instalado:
+No GitHub Actions, verifique os logs do build para ver se `cryptography` estÃ¡ sendo instalado:
 
-1. Acesse: https://github.com/chmulato/cara-core/actions
-2. Abra o último workflow executado
+1. Acesse: https://caracore.com.br/
+2. Abra o Ãºltimo workflow executado
 3. Expanda o step "Build and push Docker image"
 4. Procure por: `Installing cryptography` ou `Collecting cryptography`
 
-## ✅ Verificação Após Deploy
+## âœ… VerificaÃ§Ã£o ApÃ³s Deploy
 
-Após o rebuild, verifique os logs:
+ApÃ³s o rebuild, verifique os logs:
 
 ```bash
 az webapp log tail --name caracore-backend-docker --resource-group rg-caracore
 ```
 
 **Procure por:**
-- ✅ `"SessionManager carregado - sistema de refresh tokens habilitado"` (sucesso)
-- ❌ `"No module named 'cryptography'"` (ainda não instalado)
+- âœ… `"SessionManager carregado - sistema de refresh tokens habilitado"` (sucesso)
+- âŒ `"No module named 'cryptography'"` (ainda nÃ£o instalado)
 
-## 📝 Nota Importante
+## ðŸ“ Nota Importante
 
-O arquivo `backend/requirements-docker.txt` **já contém** a dependência `cryptography>=41.0.0`. O problema é que a imagem Docker precisa ser **reconstruída** para incluir essa dependência.
+O arquivo `backend/requirements-docker.txt` **jÃ¡ contÃ©m** a dependÃªncia `cryptography>=41.0.0`. O problema Ã© que a imagem Docker precisa ser **reconstruÃ­da** para incluir essa dependÃªncia.
 
 ---
 
-**Última atualização:** 15/11/2025
+**Ãšltima atualizaÃ§Ã£o:** 15/11/2025
+
 

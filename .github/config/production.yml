@@ -1,13 +1,13 @@
-# Configuração de produção para GitHub Pages
-# Este arquivo é usado durante o build do GitHub Actions
+﻿# ConfiguraÃ§Ã£o de produÃ§Ã£o para GitHub Pages
+# Este arquivo Ã© usado durante o build do GitHub Actions
 
 site:
-  name: "Cara Core Informática"
-  url: "https://chmulato.github.io/cara-core"
+  name: "Cara Core InformÃ¡tica"
+  url: "https://caracore.com.br"
   base_path: "/cara-core"
 
 oidc:
-  production_url: "https://chmulato.github.io/cara-core"
+  production_url: "https://caracore.com.br"
   redirect_paths:
     callback: "/secure/index.html"
     logout: "/secure/logout.html"
@@ -24,7 +24,7 @@ providers:
     authority: "https://login.microsoftonline.com/consumers/v2.0"
 
 logging:
-  level: "WARN"  # Produção usa apenas WARN e ERROR
+  level: "WARN"  # ProduÃ§Ã£o usa apenas WARN e ERROR
   console: false
   debug_panel: false
   auto_save: true

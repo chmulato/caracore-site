@@ -1,37 +1,37 @@
-COMPONENTES PADRÃO DAS LOJAS (VITRINES GITHUB PAGES)
+﻿COMPONENTES PADRÃƒO DAS LOJAS (VITRINES GITHUB PAGES)
 ====================================================
 
-Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo “molde” de componentes, conforme o tipo de produto. Data: 05/02/2026.
+Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo â€œmoldeâ€ de componentes, conforme o tipo de produto. Data: 05/02/2026.
 
 -------------------------------------------------------------------------------
-1. COMPONENTES OBRIGATÓRIOS EM TODA LOJA
+1. COMPONENTES OBRIGATÃ“RIOS EM TODA LOJA
 -------------------------------------------------------------------------------
 
-  - index.html .............. Página principal (hero, oferta, CTAs, links)
-  - canal-feedback.html ..... Contato: e-mail, WhatsApp, Telegram (não atendemos ligações)
+  - index.html .............. PÃ¡gina principal (hero, oferta, CTAs, links)
+  - canal-feedback.html ..... Contato: e-mail, WhatsApp, Telegram (nÃ£o atendemos ligaÃ§Ãµes)
   - .nojekyll ............... Arquivo vazio (GitHub Pages sem Jekyll)
-  - Navegação ................ Link “Ver apresentação (matriz)” para caracore.com.br/delivery/<produto>/
-  - Portfólio ................ Link para https://caracore.com.br/portfolio.html (e âncora do produto quando aplicável)
-  - Base URL ................. Quando a vitrine está em docs/, usar <base href="https://chmulato.github.io/<repo>-releases/"> nos HTML
+  - NavegaÃ§Ã£o ................ Link â€œVer apresentaÃ§Ã£o (matriz)â€ para caracore.com.br/delivery/<produto>/
+  - PortfÃ³lio ................ Link para https://caracore.com.br/portfolio.html (e Ã¢ncora do produto quando aplicÃ¡vel)
+  - Base URL ................. Quando a vitrine estÃ¡ em docs/, usar <base href="https://caracore.com.br/<repo>-releases/"> nos HTML
 
 -------------------------------------------------------------------------------
 2. COMPONENTES POR TIPO DE PRODUTO
 -------------------------------------------------------------------------------
 
   Produto com download (EXE/WAR/instalador):
-    - download.html ......... Link para releases/latest ou Degustação + Releases
+    - download.html ......... Link para releases/latest ou DegustaÃ§Ã£o + Releases
 
-  Produto com página de tecnologia:
+  Produto com pÃ¡gina de tecnologia:
     - tecnologia.html ....... Stack, arquitetura, requisitos
 
-  Produto com licença/ativação/compra:
-    - ativacao.html ......... Quando há licença por máquina (ex.: Seed)
+  Produto com licenÃ§a/ativaÃ§Ã£o/compra:
+    - ativacao.html ......... Quando hÃ¡ licenÃ§a por mÃ¡quina (ex.: Seed)
     - compra.html ........... Ou upgrade-trono.html, licenca-uso.html, portal-escolas conforme o produto
 
-  Produto com documentação na vitrine:
-    - readme.html ........... Ou equivalente (documentação, requisitos, links oficiais)
+  Produto com documentaÃ§Ã£o na vitrine:
+    - readme.html ........... Ou equivalente (documentaÃ§Ã£o, requisitos, links oficiais)
 
-  Produto com portal de controle / conteúdo extra:
+  Produto com portal de controle / conteÃºdo extra:
     - portal-controle.html .. Ou conteudo-free.html, mapas, personagens, etc. conforme o produto
 
 -------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo “molde” 
     Matriz: delivery/pdv/
     Loja:   caracore-pdv-releases/docs/
     index  download  tecnologia  canal-feedback  .nojekyll
-    Observação: consultoria, readme, wiki-fiscal, wiki só na matriz.
+    ObservaÃ§Ã£o: consultoria, readme, wiki-fiscal, wiki sÃ³ na matriz.
 
   CARA CORE HUB
     Matriz: delivery/hub/
@@ -57,32 +57,33 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo “molde” 
   REINO OIDC
     Matriz: delivery/oidc/
     Loja:   reino-oidc-releases/docs/
-    index  download  canal-feedback  upgrade-trono  licenca-uso  conteudo-free  história/personagens/mapas/jogos  .nojekyll
+    index  download  canal-feedback  upgrade-trono  licenca-uso  conteudo-free  histÃ³ria/personagens/mapas/jogos  .nojekyll
 
   CARA CORE SEED
     Matriz: delivery/seed/
     Loja:   caracore-seed-releases/docs/
     index  download  tecnologia  canal-feedback  ativacao  compra  readme  portal-controle  .nojekyll  tools/README (opcional)
-    Observação: mensagem “aplicação não disponível”; mesma estrutura da matriz para alinhamento.
+    ObservaÃ§Ã£o: mensagem â€œaplicaÃ§Ã£o nÃ£o disponÃ­velâ€; mesma estrutura da matriz para alinhamento.
 
-  SUPORTE ÁREA 51
+  SUPORTE ÃREA 51
     Matriz: delivery/area51/
     Loja:   caracore-area51-releases/docs/
     index  download  licenca-uso  canal-feedback  .nojekyll
-    Observação: produto = serviço contratado (Suporte Área 51). Sem data de lançamento.
-    Download (renomeado conceitualmente para "O que o serviço entrega"): escopo do serviço, o que a empresa recebe, como contratar.
-    Licença: proprietária (não é MIT); gratuito PF; empresas/instituições requerem contratação.
-    Cara ↔ Crachá: narrativa e scripts (PI Cara Core) × padrão aberto OIDC/OAuth 2.1 (sem propriedade da Cara Core).
+    ObservaÃ§Ã£o: produto = serviÃ§o contratado (Suporte Ãrea 51). Sem data de lanÃ§amento.
+    Download (renomeado conceitualmente para "O que o serviÃ§o entrega"): escopo do serviÃ§o, o que a empresa recebe, como contratar.
+    LicenÃ§a: proprietÃ¡ria (nÃ£o Ã© MIT); gratuito PF; empresas/instituiÃ§Ãµes requerem contrataÃ§Ã£o.
+    Cara â†” CrachÃ¡: narrativa e scripts (PI Cara Core) Ã— padrÃ£o aberto OIDC/OAuth 2.1 (sem propriedade da Cara Core).
 
 -------------------------------------------------------------------------------
 4. REGRAS DE ALINHAMENTO
 -------------------------------------------------------------------------------
 
-  - Toda loja deve ter no mínimo: index, canal-feedback, link para matriz e portfólio.
-  - Quando a matriz tem uma página (tecnologia, readme, portal-controle, ativacao, compra, upgrade, licenca-uso), a loja deve espelhar essa página, salvo combinação contrária (ex.: consultoria e wiki do PDV só na matriz).
-  - Links na vitrine: usar URL absoluta para portfólio (https://caracore.com.br/portfolio.html) e, quando a vitrine está em docs/, usar <base href> para que links relativos entre páginas da loja funcionem.
-  - Scripts de publicação (push/sync) devem copiar da matriz para a pasta docs/ da loja e, quando necessário, pós-processar HTML (substituir ../../portfolio por URL absoluta e garantir base href).
+  - Toda loja deve ter no mÃ­nimo: index, canal-feedback, link para matriz e portfÃ³lio.
+  - Quando a matriz tem uma pÃ¡gina (tecnologia, readme, portal-controle, ativacao, compra, upgrade, licenca-uso), a loja deve espelhar essa pÃ¡gina, salvo combinaÃ§Ã£o contrÃ¡ria (ex.: consultoria e wiki do PDV sÃ³ na matriz).
+  - Links na vitrine: usar URL absoluta para portfÃ³lio (https://caracore.com.br/portfolio.html) e, quando a vitrine estÃ¡ em docs/, usar <base href> para que links relativos entre pÃ¡ginas da loja funcionem.
+  - Scripts de publicaÃ§Ã£o (push/sync) devem copiar da matriz para a pasta docs/ da loja e, quando necessÃ¡rio, pÃ³s-processar HTML (substituir ../../portfolio por URL absoluta e garantir base href).
 
-Referências: VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt, MIRROR_DELIVERY.md em cada delivery/<produto>/.
+ReferÃªncias: VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt, MIRROR_DELIVERY.md em cada delivery/<produto>/.
 
-Cara Core Informática — Uso interno.
+Cara Core InformÃ¡tica â€” Uso interno.
+

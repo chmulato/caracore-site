@@ -1,403 +1,403 @@
-# Apostila Microsoft 365
+﻿# Apostila Microsoft 365
 
 ![Capa da Apostila](images/COVER.png)
 
-**Cara Core Informática**  
-**Versão:** v1.0 – 20 de Junho 2025  
+**Cara Core InformÃ¡tica**  
+**VersÃ£o:** v1.0 â€“ 20 de Junho 2025  
 
 ***
 
-## Sumário
+## SumÃ¡rio
 
 - [Apostila Microsoft 365](#apostila-microsoft-365)
-  - [Sumário](#sumário)
-  - [1. Apresentação](#1-apresentação)
-  - [2. Introdução ao Microsoft 365](#2-introdução-ao-microsoft-365)
-    - [Definição do Microsoft 365 (antigo Office 365)](#definição-do-microsoft-365-antigo-office-365)
-    - [Benefícios Principais](#benefícios-principais)
-  - [3. Módulos dos Serviços](#3-módulos-dos-serviços)
+  - [SumÃ¡rio](#sumÃ¡rio)
+  - [1. ApresentaÃ§Ã£o](#1-apresentaÃ§Ã£o)
+  - [2. IntroduÃ§Ã£o ao Microsoft 365](#2-introduÃ§Ã£o-ao-microsoft-365)
+    - [DefiniÃ§Ã£o do Microsoft 365 (antigo Office 365)](#definiÃ§Ã£o-do-microsoft-365-antigo-office-365)
+    - [BenefÃ­cios Principais](#benefÃ­cios-principais)
+  - [3. MÃ³dulos dos ServiÃ§os](#3-mÃ³dulos-dos-serviÃ§os)
     - [3.1 Outlook Online](#31-outlook-online)
     - [3.2 OneDrive](#32-onedrive)
     - [3.3 Word, Excel e PowerPoint Online](#33-word-excel-e-powerpoint-online)
     - [3.4 Microsoft Teams](#34-microsoft-teams)
     - [3.5 SharePoint](#35-sharepoint)
     - [3.6 Power Platform (Power Automate, Power Apps e Power BI)](#36-power-platform-power-automate-power-apps-e-power-bi)
-    - [3.7 Segurança, Privacidade e Administração](#37-segurança-privacidade-e-administração)
-  - [4. Boas Práticas e Produtividade](#4-boas-práticas-e-produtividade)
-  - [5. Novidades e Atualizações](#5-novidades-e-atualizações)
-  - [6. Referências e Links Úteis](#6-referências-e-links-úteis)
+    - [3.7 SeguranÃ§a, Privacidade e AdministraÃ§Ã£o](#37-seguranÃ§a-privacidade-e-administraÃ§Ã£o)
+  - [4. Boas PrÃ¡ticas e Produtividade](#4-boas-prÃ¡ticas-e-produtividade)
+  - [5. Novidades e AtualizaÃ§Ãµes](#5-novidades-e-atualizaÃ§Ãµes)
+  - [6. ReferÃªncias e Links Ãšteis](#6-referÃªncias-e-links-Ãºteis)
   - [7. Anexos](#7-anexos)
-  - [Conclusão](#conclusão)
+  - [ConclusÃ£o](#conclusÃ£o)
   - [Fale Conosco](#fale-conosco)
   - [Agradecimentos](#agradecimentos)
-  - [Controle de Versões (ROADMAP)](#controle-de-versões-roadmap)
-  - [Direitos Autorais e Isenção de Responsabilidade](#direitos-autorais-e-isenção-de-responsabilidade)
+  - [Controle de VersÃµes (ROADMAP)](#controle-de-versÃµes-roadmap)
+  - [Direitos Autorais e IsenÃ§Ã£o de Responsabilidade](#direitos-autorais-e-isenÃ§Ã£o-de-responsabilidade)
 
 ***
 
-## 1. Apresentação
+## 1. ApresentaÃ§Ã£o
 
-**Cara Core Informática** é uma empresa especializada em soluções de tecnologia, com foco em capacitação e suporte técnico.  
-Esta apostila faz parte de nossa iniciativa de oferecer materiais educativos e práticos para usuários do Microsoft 365, facilitando o aprendizado e a utilização dos serviços da plataforma.
+**Cara Core InformÃ¡tica** Ã© uma empresa especializada em soluÃ§Ãµes de tecnologia, com foco em capacitaÃ§Ã£o e suporte tÃ©cnico.  
+Esta apostila faz parte de nossa iniciativa de oferecer materiais educativos e prÃ¡ticos para usuÃ¡rios do Microsoft 365, facilitando o aprendizado e a utilizaÃ§Ã£o dos serviÃ§os da plataforma.
 
-O objetivo deste material é capacitar usuários no uso dos principais serviços do Microsoft 365, apresentando conceitos, funcionalidades e boas práticas para o dia a dia profissional e pessoal.  
-O conteúdo é destinado a profissionais, empresas e usuários que utilizam ou pretendem utilizar o Microsoft 365, independentemente do nível de conhecimento prévio.
+O objetivo deste material Ã© capacitar usuÃ¡rios no uso dos principais serviÃ§os do Microsoft 365, apresentando conceitos, funcionalidades e boas prÃ¡ticas para o dia a dia profissional e pessoal.  
+O conteÃºdo Ã© destinado a profissionais, empresas e usuÃ¡rios que utilizam ou pretendem utilizar o Microsoft 365, independentemente do nÃ­vel de conhecimento prÃ©vio.
 
-A estrutura modular permite que o conteúdo seja consultado conforme a necessidade, com atualizações semestrais para acompanhar as novidades da plataforma.  
-Para garantir acesso à versão mais recente, consulte sempre o site da Cara Core Informática.
+A estrutura modular permite que o conteÃºdo seja consultado conforme a necessidade, com atualizaÃ§Ãµes semestrais para acompanhar as novidades da plataforma.  
+Para garantir acesso Ã  versÃ£o mais recente, consulte sempre o site da Cara Core InformÃ¡tica.
 
-Em caso de dúvidas, sugestões ou suporte, entre em contato pelo e-mail: [suporte@caracore.com.br], ou pelo Whatsapp: +55 41 99909-7797.
+Em caso de dÃºvidas, sugestÃµes ou suporte, entre em contato pelo e-mail: [suporte@caracore.com.br], ou pelo Whatsapp: +55 41 99909-7797.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-## 2. Introdução ao Microsoft 365
+## 2. IntroduÃ§Ã£o ao Microsoft 365
 
-O Microsoft 365 é uma solução moderna que reúne aplicativos, serviços e recursos em nuvem para facilitar o trabalho, a colaboração e a comunicação em ambientes profissionais e pessoais. Neste capítulo, você vai entender o que é o Microsoft 365, seus principais benefícios e como ele pode transformar a rotina de empresas e usuários individuais.
+O Microsoft 365 Ã© uma soluÃ§Ã£o moderna que reÃºne aplicativos, serviÃ§os e recursos em nuvem para facilitar o trabalho, a colaboraÃ§Ã£o e a comunicaÃ§Ã£o em ambientes profissionais e pessoais. Neste capÃ­tulo, vocÃª vai entender o que Ã© o Microsoft 365, seus principais benefÃ­cios e como ele pode transformar a rotina de empresas e usuÃ¡rios individuais.
 
-### Definição do Microsoft 365 (antigo Office 365)
+### DefiniÃ§Ã£o do Microsoft 365 (antigo Office 365)
 
-O Microsoft 365 é uma plataforma de produtividade baseada em nuvem desenvolvida pela Microsoft, que reúne um conjunto de aplicativos e serviços integrados para facilitar o trabalho, a colaboração e a comunicação em ambientes profissionais e pessoais.  
-A solução inclui ferramentas como Outlook, Word, Excel, PowerPoint, OneDrive, Teams, SharePoint, entre outros, permitindo acesso seguro a arquivos, e-mails e recursos de qualquer lugar e dispositivo conectado à internet.  
-Além dos aplicativos tradicionais, o Microsoft 365 oferece recursos avançados de segurança, gerenciamento e automação, tornando-se uma solução completa para empresas de todos os portes e para usuários individuais.
+O Microsoft 365 Ã© uma plataforma de produtividade baseada em nuvem desenvolvida pela Microsoft, que reÃºne um conjunto de aplicativos e serviÃ§os integrados para facilitar o trabalho, a colaboraÃ§Ã£o e a comunicaÃ§Ã£o em ambientes profissionais e pessoais.  
+A soluÃ§Ã£o inclui ferramentas como Outlook, Word, Excel, PowerPoint, OneDrive, Teams, SharePoint, entre outros, permitindo acesso seguro a arquivos, e-mails e recursos de qualquer lugar e dispositivo conectado Ã  internet.  
+AlÃ©m dos aplicativos tradicionais, o Microsoft 365 oferece recursos avanÃ§ados de seguranÃ§a, gerenciamento e automaÃ§Ã£o, tornando-se uma soluÃ§Ã£o completa para empresas de todos os portes e para usuÃ¡rios individuais.
 
-### Benefícios Principais
+### BenefÃ­cios Principais
 
-O Microsoft 365 oferece uma série de benefícios que tornam o trabalho mais produtivo, colaborativo e seguro, tanto para empresas quanto para usuários individuais. A seguir, destacamos os principais diferenciais da plataforma:
+O Microsoft 365 oferece uma sÃ©rie de benefÃ­cios que tornam o trabalho mais produtivo, colaborativo e seguro, tanto para empresas quanto para usuÃ¡rios individuais. A seguir, destacamos os principais diferenciais da plataforma:
 
 - **Acesso a aplicativos de produtividade online e offline**  
-  Utilize Word, Excel, PowerPoint e Outlook tanto pela web quanto instalados no computador ou dispositivos móveis, garantindo flexibilidade para trabalhar em qualquer lugar.
+  Utilize Word, Excel, PowerPoint e Outlook tanto pela web quanto instalados no computador ou dispositivos mÃ³veis, garantindo flexibilidade para trabalhar em qualquer lugar.
 
-- **Colaboração em tempo real com colegas e equipes**  
-  Edite documentos simultaneamente, compartilhe arquivos e troque mensagens instantâneas, facilitando o trabalho em equipe e a comunicação eficiente.
+- **ColaboraÃ§Ã£o em tempo real com colegas e equipes**  
+  Edite documentos simultaneamente, compartilhe arquivos e troque mensagens instantÃ¢neas, facilitando o trabalho em equipe e a comunicaÃ§Ã£o eficiente.
 
 - **Armazenamento seguro na nuvem com OneDrive**  
-  Cada usuário possui espaço dedicado na nuvem para armazenar, acessar e compartilhar arquivos com segurança, com backup automático e controle de versões.
+  Cada usuÃ¡rio possui espaÃ§o dedicado na nuvem para armazenar, acessar e compartilhar arquivos com seguranÃ§a, com backup automÃ¡tico e controle de versÃµes.
 
-- **Integração entre aplicativos e serviços**  
-  Os aplicativos do Microsoft 365 são integrados, permitindo, por exemplo, salvar arquivos do Outlook diretamente no OneDrive, agendar reuniões no Teams a partir do Outlook ou automatizar tarefas com o Power Automate.
+- **IntegraÃ§Ã£o entre aplicativos e serviÃ§os**  
+  Os aplicativos do Microsoft 365 sÃ£o integrados, permitindo, por exemplo, salvar arquivos do Outlook diretamente no OneDrive, agendar reuniÃµes no Teams a partir do Outlook ou automatizar tarefas com o Power Automate.
 
-Em resumo, o Microsoft 365 proporciona um ambiente moderno, seguro e integrado, que potencializa a produtividade e a colaboração, atendendo tanto às necessidades de usuários individuais quanto às demandas de empresas de todos os tamanhos.
+Em resumo, o Microsoft 365 proporciona um ambiente moderno, seguro e integrado, que potencializa a produtividade e a colaboraÃ§Ã£o, atendendo tanto Ã s necessidades de usuÃ¡rios individuais quanto Ã s demandas de empresas de todos os tamanhos.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-## 3. Módulos dos Serviços
+## 3. MÃ³dulos dos ServiÃ§os
 
-O Microsoft 365 é composto por diversos serviços e aplicativos que atendem a diferentes necessidades de produtividade, colaboração e gestão de informações.  
-Nesta seção, apresentamos os principais módulos da plataforma, detalhando suas funcionalidades, formas de acesso e dicas de uso para que você aproveite ao máximo cada recurso.
+O Microsoft 365 Ã© composto por diversos serviÃ§os e aplicativos que atendem a diferentes necessidades de produtividade, colaboraÃ§Ã£o e gestÃ£o de informaÃ§Ãµes.  
+Nesta seÃ§Ã£o, apresentamos os principais mÃ³dulos da plataforma, detalhando suas funcionalidades, formas de acesso e dicas de uso para que vocÃª aproveite ao mÃ¡ximo cada recurso.
 
 ### 3.1 Outlook Online
 
-O Outlook Online é o serviço de e-mail, calendário e contatos do Microsoft 365, acessível diretamente pelo navegador. Ele permite gerenciar mensagens, compromissos e informações de contato de forma prática, integrada e segura, tanto para uso profissional quanto pessoal.
+O Outlook Online Ã© o serviÃ§o de e-mail, calendÃ¡rio e contatos do Microsoft 365, acessÃ­vel diretamente pelo navegador. Ele permite gerenciar mensagens, compromissos e informaÃ§Ãµes de contato de forma prÃ¡tica, integrada e segura, tanto para uso profissional quanto pessoal.
 
 **Principais Recursos:**
 
 - **Acesso via navegador:**  
-  Basta acessar o portal do Microsoft 365 e fazer login para utilizar o Outlook Online em qualquer dispositivo conectado à internet.
+  Basta acessar o portal do Microsoft 365 e fazer login para utilizar o Outlook Online em qualquer dispositivo conectado Ã  internet.
 
-- **Gestão de e-mails:**  
-  Envie, receba e organize e-mails com facilidade. Crie pastas personalizadas, utilize categorias, marque mensagens importantes e aplique regras automáticas para organização.
+- **GestÃ£o de e-mails:**  
+  Envie, receba e organize e-mails com facilidade. Crie pastas personalizadas, utilize categorias, marque mensagens importantes e aplique regras automÃ¡ticas para organizaÃ§Ã£o.
 
-- **Calendário integrado:**  
-  Agende compromissos, reuniões e eventos. Compartilhe calendários com colegas e visualize agendas de equipe para facilitar o planejamento.
+- **CalendÃ¡rio integrado:**  
+  Agende compromissos, reuniÃµes e eventos. Compartilhe calendÃ¡rios com colegas e visualize agendas de equipe para facilitar o planejamento.
 
 - **Contatos e grupos:**  
-  Gerencie informações de contatos pessoais e profissionais. Crie grupos para facilitar o envio de mensagens em massa e a colaboração.
+  Gerencie informaÃ§Ãµes de contatos pessoais e profissionais. Crie grupos para facilitar o envio de mensagens em massa e a colaboraÃ§Ã£o.
 
-- **Colaboração e integração:**  
-  Integração com Teams para agendamento de reuniões, compartilhamento de arquivos pelo OneDrive e colaboração em tempo real.
+- **ColaboraÃ§Ã£o e integraÃ§Ã£o:**  
+  IntegraÃ§Ã£o com Teams para agendamento de reuniÃµes, compartilhamento de arquivos pelo OneDrive e colaboraÃ§Ã£o em tempo real.
 
-- **Personalização e produtividade:**  
-  Personalize a interface com temas, organize pastas e utilize filtros avançados para localizar rapidamente mensagens e compromissos.
+- **PersonalizaÃ§Ã£o e produtividade:**  
+  Personalize a interface com temas, organize pastas e utilize filtros avanÃ§ados para localizar rapidamente mensagens e compromissos.
 
-- **Segurança e privacidade:**  
-  Recursos avançados de proteção de dados, autenticação multifator e políticas de privacidade para garantir a segurança das informações.
+- **SeguranÃ§a e privacidade:**  
+  Recursos avanÃ§ados de proteÃ§Ã£o de dados, autenticaÃ§Ã£o multifator e polÃ­ticas de privacidade para garantir a seguranÃ§a das informaÃ§Ãµes.
 
 **Novidades recentes:**  
-O Outlook Online recebe atualizações frequentes, incluindo melhorias na integração com Teams, busca aprimorada e novas opções de automação para facilitar o dia a dia.
+O Outlook Online recebe atualizaÃ§Ãµes frequentes, incluindo melhorias na integraÃ§Ã£o com Teams, busca aprimorada e novas opÃ§Ãµes de automaÃ§Ã£o para facilitar o dia a dia.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
 ### 3.2 OneDrive
 
-O OneDrive é o serviço de armazenamento em nuvem do Microsoft 365, projetado para guardar, acessar e compartilhar arquivos de forma segura e prática, tanto no ambiente profissional quanto pessoal. Com ele, seus documentos, fotos e outros arquivos ficam disponíveis em qualquer dispositivo conectado à internet.
+O OneDrive Ã© o serviÃ§o de armazenamento em nuvem do Microsoft 365, projetado para guardar, acessar e compartilhar arquivos de forma segura e prÃ¡tica, tanto no ambiente profissional quanto pessoal. Com ele, seus documentos, fotos e outros arquivos ficam disponÃ­veis em qualquer dispositivo conectado Ã  internet.
 
 ![OneDrive](images/ONEDRIVE.png)
 
 **Principais Recursos:**
 
 - **Armazenamento na nuvem pessoal:**  
-  Cada usuário possui um espaço dedicado para salvar arquivos, garantindo acesso rápido e seguro de qualquer lugar.
+  Cada usuÃ¡rio possui um espaÃ§o dedicado para salvar arquivos, garantindo acesso rÃ¡pido e seguro de qualquer lugar.
 
-- **Upload, download e sincronização:**  
-  Envie arquivos e pastas para a nuvem, faça download quando necessário e mantenha tudo sincronizado automaticamente entre computador, smartphone e web.
+- **Upload, download e sincronizaÃ§Ã£o:**  
+  Envie arquivos e pastas para a nuvem, faÃ§a download quando necessÃ¡rio e mantenha tudo sincronizado automaticamente entre computador, smartphone e web.
 
-- **Compartilhamento e permissões:**  
-  Compartilhe arquivos ou pastas com colegas, clientes ou familiares, definindo permissões de visualização ou edição conforme a necessidade.
+- **Compartilhamento e permissÃµes:**  
+  Compartilhe arquivos ou pastas com colegas, clientes ou familiares, definindo permissÃµes de visualizaÃ§Ã£o ou ediÃ§Ã£o conforme a necessidade.
 
-- **Integração com desktop e mobile:**  
-  O aplicativo do OneDrive está disponível para Windows, macOS, Android e iOS, permitindo acesso e edição de arquivos mesmo offline.
+- **IntegraÃ§Ã£o com desktop e mobile:**  
+  O aplicativo do OneDrive estÃ¡ disponÃ­vel para Windows, macOS, Android e iOS, permitindo acesso e ediÃ§Ã£o de arquivos mesmo offline.
 
-- **Colaboração em tempo real:**  
-  Trabalhe em conjunto em documentos do Word, Excel e PowerPoint, com atualizações instantâneas e controle de versões.
+- **ColaboraÃ§Ã£o em tempo real:**  
+  Trabalhe em conjunto em documentos do Word, Excel e PowerPoint, com atualizaÃ§Ãµes instantÃ¢neas e controle de versÃµes.
 
-- **Segurança e backup:**  
-  Proteja seus dados com criptografia, autenticação multifator e recursos de backup automático, evitando perdas acidentais.
+- **SeguranÃ§a e backup:**  
+  Proteja seus dados com criptografia, autenticaÃ§Ã£o multifator e recursos de backup automÃ¡tico, evitando perdas acidentais.
 
 **Dica:**  
-Utilize o OneDrive para centralizar seus arquivos importantes e facilitar o compartilhamento seguro com sua equipe ou clientes, mantendo sempre uma cópia de segurança na nuvem. 
+Utilize o OneDrive para centralizar seus arquivos importantes e facilitar o compartilhamento seguro com sua equipe ou clientes, mantendo sempre uma cÃ³pia de seguranÃ§a na nuvem. 
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
 ### 3.3 Word, Excel e PowerPoint Online
 
-O Word, Excel e PowerPoint Online são versões baseadas em nuvem dos aplicativos clássicos de produtividade da Microsoft. Eles permitem criar, editar e compartilhar documentos, planilhas e apresentações diretamente pelo navegador, sem necessidade de instalação.
+O Word, Excel e PowerPoint Online sÃ£o versÃµes baseadas em nuvem dos aplicativos clÃ¡ssicos de produtividade da Microsoft. Eles permitem criar, editar e compartilhar documentos, planilhas e apresentaÃ§Ãµes diretamente pelo navegador, sem necessidade de instalaÃ§Ã£o.
 
 **Principais Recursos:**
 
 - **Acesso em qualquer lugar:**  
-  Utilize os aplicativos pelo navegador em qualquer dispositivo conectado à internet, com seus arquivos salvos automaticamente no OneDrive.
+  Utilize os aplicativos pelo navegador em qualquer dispositivo conectado Ã  internet, com seus arquivos salvos automaticamente no OneDrive.
 
 - **Funcionalidades essenciais:**  
-  Crie e edite textos, planilhas e apresentações com as principais ferramentas das versões desktop, incluindo formatação, gráficos, tabelas e imagens.
+  Crie e edite textos, planilhas e apresentaÃ§Ãµes com as principais ferramentas das versÃµes desktop, incluindo formataÃ§Ã£o, grÃ¡ficos, tabelas e imagens.
 
-- **Colaboração em tempo real:**  
-  Trabalhe simultaneamente com outras pessoas no mesmo arquivo, visualizando edições em tempo real e utilizando comentários para facilitar a comunicação.
+- **ColaboraÃ§Ã£o em tempo real:**  
+  Trabalhe simultaneamente com outras pessoas no mesmo arquivo, visualizando ediÃ§Ãµes em tempo real e utilizando comentÃ¡rios para facilitar a comunicaÃ§Ã£o.
 
-- **Controle de versões:**  
-  O histórico de versões permite recuperar alterações anteriores e acompanhar o desenvolvimento dos documentos.
+- **Controle de versÃµes:**  
+  O histÃ³rico de versÃµes permite recuperar alteraÃ§Ãµes anteriores e acompanhar o desenvolvimento dos documentos.
 
-- **Integração com outros serviços:**  
+- **IntegraÃ§Ã£o com outros serviÃ§os:**  
   Compartilhe arquivos facilmente pelo Teams, Outlook ou links do OneDrive, mantendo o fluxo de trabalho integrado.
 
-**Diferenças entre web e desktop:**  
-As versões online possuem recursos essenciais para a maioria das tarefas, mas algumas funções avançadas estão disponíveis apenas nas versões instaladas dos aplicativos.
+**DiferenÃ§as entre web e desktop:**  
+As versÃµes online possuem recursos essenciais para a maioria das tarefas, mas algumas funÃ§Ãµes avanÃ§adas estÃ£o disponÃ­veis apenas nas versÃµes instaladas dos aplicativos.
 
 **Dica:**  
-Aproveite a colaboração em tempo real para projetos em grupo e utilize o OneDrive para manter seus arquivos sempre acessíveis e seguros.  
+Aproveite a colaboraÃ§Ã£o em tempo real para projetos em grupo e utilize o OneDrive para manter seus arquivos sempre acessÃ­veis e seguros.  
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
 ### 3.4 Microsoft Teams
 
-O Microsoft Teams é a plataforma de comunicação e colaboração do Microsoft 365, projetada para integrar equipes, centralizar conversas, arquivos e ferramentas em um único ambiente digital. A seguir, veja como aproveitar ao máximo seus principais recursos:
+O Microsoft Teams Ã© a plataforma de comunicaÃ§Ã£o e colaboraÃ§Ã£o do Microsoft 365, projetada para integrar equipes, centralizar conversas, arquivos e ferramentas em um Ãºnico ambiente digital. A seguir, veja como aproveitar ao mÃ¡ximo seus principais recursos:
 
-**Criação de equipes e canais**  
-No Teams, você pode criar equipes para diferentes departamentos, projetos ou grupos de trabalho. Dentro de cada equipe, é possível organizar canais temáticos para separar assuntos, tarefas ou áreas de interesse.
+**CriaÃ§Ã£o de equipes e canais**  
+No Teams, vocÃª pode criar equipes para diferentes departamentos, projetos ou grupos de trabalho. Dentro de cada equipe, Ã© possÃ­vel organizar canais temÃ¡ticos para separar assuntos, tarefas ou Ã¡reas de interesse.
 
-- Para criar uma equipe, clique em "Equipes" > "Criar equipe" e defina o nome, descrição e membros.
-- Use canais padrão para discussões abertas e canais privados para conversas restritas a determinados membros.
+- Para criar uma equipe, clique em "Equipes" > "Criar equipe" e defina o nome, descriÃ§Ã£o e membros.
+- Use canais padrÃ£o para discussÃµes abertas e canais privados para conversas restritas a determinados membros.
 - Personalize canais com guias, como arquivos, wikis e aplicativos.
 
-**Chat, chamadas e reuniões**  
-O Teams oferece chat individual e em grupo, além de chamadas de voz e vídeo, facilitando a comunicação rápida e eficiente.
+**Chat, chamadas e reuniÃµes**  
+O Teams oferece chat individual e em grupo, alÃ©m de chamadas de voz e vÃ­deo, facilitando a comunicaÃ§Ã£o rÃ¡pida e eficiente.
 
-- Utilize o chat para trocar mensagens instantâneas, compartilhar arquivos e reagir com emojis.
-- Inicie chamadas de áudio ou vídeo diretamente do chat ou agende reuniões pelo calendário integrado.
-- Durante reuniões, compartilhe tela, grave sessões e utilize recursos como quadro branco e salas de reunião separadas (breakout rooms).
+- Utilize o chat para trocar mensagens instantÃ¢neas, compartilhar arquivos e reagir com emojis.
+- Inicie chamadas de Ã¡udio ou vÃ­deo diretamente do chat ou agende reuniÃµes pelo calendÃ¡rio integrado.
+- Durante reuniÃµes, compartilhe tela, grave sessÃµes e utilize recursos como quadro branco e salas de reuniÃ£o separadas (breakout rooms).
 
 **Compartilhamento de arquivos**  
 Compartilhe documentos, imagens e outros arquivos diretamente nos chats ou canais.
 
-- Arquivos enviados ficam armazenados no SharePoint (canais) ou OneDrive (chats), permitindo edição colaborativa em tempo real.
-- Utilize o histórico de versões para recuperar alterações anteriores.
-- Defina permissões de acesso conforme a necessidade do grupo.
+- Arquivos enviados ficam armazenados no SharePoint (canais) ou OneDrive (chats), permitindo ediÃ§Ã£o colaborativa em tempo real.
+- Utilize o histÃ³rico de versÃµes para recuperar alteraÃ§Ãµes anteriores.
+- Defina permissÃµes de acesso conforme a necessidade do grupo.
 
-**Integração com aplicativos**  
+**IntegraÃ§Ã£o com aplicativos**  
 O Teams integra-se a diversos aplicativos do Microsoft 365 e de terceiros, centralizando ferramentas no fluxo de trabalho.
 
 - Adicione guias de Word, Excel, Planner, OneNote, Power BI e outros diretamente nos canais.
-- Explore o catálogo de aplicativos para automatizar tarefas, criar enquetes, gerenciar tarefas e muito mais.
-- Use conectores para receber notificações de serviços externos (como Trello, GitHub, etc.).
+- Explore o catÃ¡logo de aplicativos para automatizar tarefas, criar enquetes, gerenciar tarefas e muito mais.
+- Use conectores para receber notificaÃ§Ãµes de serviÃ§os externos (como Trello, GitHub, etc.).
 
 **Novidades e melhorias**  
-O Teams recebe atualizações frequentes, trazendo novos recursos e melhorias de desempenho.
+O Teams recebe atualizaÃ§Ãµes frequentes, trazendo novos recursos e melhorias de desempenho.
 
-- Recentemente, foram adicionados recursos como transcrição automática de reuniões, visualização dinâmica de participantes, reações ao vivo e integração aprimorada com o Outlook.
+- Recentemente, foram adicionados recursos como transcriÃ§Ã£o automÃ¡tica de reuniÃµes, visualizaÃ§Ã£o dinÃ¢mica de participantes, reaÃ§Ãµes ao vivo e integraÃ§Ã£o aprimorada com o Outlook.
 - Fique atento ao [roadmap oficial do Microsoft 365](https://www.microsoft.com/en-us/microsoft-365/roadmap) para acompanhar as novidades.
 
 > **Dica:**  
-> Utilize o Teams como hub central de colaboração, integrando comunicação, arquivos e aplicativos em um só lugar para aumentar a produtividade da equipe.
+> Utilize o Teams como hub central de colaboraÃ§Ã£o, integrando comunicaÃ§Ã£o, arquivos e aplicativos em um sÃ³ lugar para aumentar a produtividade da equipe.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
 ### 3.5 SharePoint
 
-O SharePoint é a plataforma de colaboração e gestão de conteúdo do Microsoft 365, utilizada para criar sites, armazenar, organizar e compartilhar documentos, além de facilitar o trabalho em equipe em ambientes corporativos.
+O SharePoint Ã© a plataforma de colaboraÃ§Ã£o e gestÃ£o de conteÃºdo do Microsoft 365, utilizada para criar sites, armazenar, organizar e compartilhar documentos, alÃ©m de facilitar o trabalho em equipe em ambientes corporativos.
 
-**O que é o SharePoint**  
-O SharePoint permite criar portais, intranets, bibliotecas de documentos e áreas de colaboração para equipes, departamentos ou projetos. Ele centraliza informações, facilita o acesso a arquivos e integra-se com outros serviços do Microsoft 365, como Teams e OneDrive.
+**O que Ã© o SharePoint**  
+O SharePoint permite criar portais, intranets, bibliotecas de documentos e Ã¡reas de colaboraÃ§Ã£o para equipes, departamentos ou projetos. Ele centraliza informaÃ§Ãµes, facilita o acesso a arquivos e integra-se com outros serviÃ§os do Microsoft 365, como Teams e OneDrive.
 
 ![SharePoint](images/SHAREPOINT.png)
 
-**Criação de sites e bibliotecas**  
+**CriaÃ§Ã£o de sites e bibliotecas**  
 
-- É possível criar sites de equipe para colaboração interna ou sites de comunicação para divulgação de informações.
-- Cada site pode conter bibliotecas de documentos, listas, páginas e webparts personalizadas.
+- Ã‰ possÃ­vel criar sites de equipe para colaboraÃ§Ã£o interna ou sites de comunicaÃ§Ã£o para divulgaÃ§Ã£o de informaÃ§Ãµes.
+- Cada site pode conter bibliotecas de documentos, listas, pÃ¡ginas e webparts personalizadas.
 - Para criar um site, acesse o SharePoint pelo portal do Microsoft 365, clique em "Criar site" e escolha o tipo desejado.
 - Bibliotecas de documentos permitem armazenar, organizar e controlar o acesso a arquivos de forma estruturada.
 
-**Compartilhamento e organização de documentos**  
+**Compartilhamento e organizaÃ§Ã£o de documentos**  
 
-- Compartilhe arquivos e pastas com membros da equipe ou usuários externos, definindo permissões de leitura ou edição.
-- Utilize metadados, colunas personalizadas e visualizações para organizar documentos e facilitar buscas.
-- O controle de versões permite acompanhar alterações e restaurar versões anteriores de arquivos.
-- Integração com o Teams e o OneDrive para colaboração em tempo real e acesso facilitado.
+- Compartilhe arquivos e pastas com membros da equipe ou usuÃ¡rios externos, definindo permissÃµes de leitura ou ediÃ§Ã£o.
+- Utilize metadados, colunas personalizadas e visualizaÃ§Ãµes para organizar documentos e facilitar buscas.
+- O controle de versÃµes permite acompanhar alteraÃ§Ãµes e restaurar versÃµes anteriores de arquivos.
+- IntegraÃ§Ã£o com o Teams e o OneDrive para colaboraÃ§Ã£o em tempo real e acesso facilitado.
 
-**Boas práticas**  
+**Boas prÃ¡ticas**  
 
-- Estruture sites e bibliotecas de acordo com a hierarquia e necessidades da organização.
-- Defina permissões de acesso de forma criteriosa para proteger informações sensíveis.
+- Estruture sites e bibliotecas de acordo com a hierarquia e necessidades da organizaÃ§Ã£o.
+- Defina permissÃµes de acesso de forma criteriosa para proteger informaÃ§Ãµes sensÃ­veis.
 - Utilize nomes claros e padronizados para arquivos e pastas.
-- Aproveite recursos como alertas, fluxos de aprovação e automações com Power Automate para otimizar processos.
-- Realize revisões periódicas para manter o conteúdo atualizado e relevante.
+- Aproveite recursos como alertas, fluxos de aprovaÃ§Ã£o e automaÃ§Ãµes com Power Automate para otimizar processos.
+- Realize revisÃµes periÃ³dicas para manter o conteÃºdo atualizado e relevante.
 
 > **Dica:**  
-> O SharePoint é ideal para centralizar documentos, criar portais internos e padronizar processos, promovendo colaboração e organização em equipes de todos os tamanhos.
+> O SharePoint Ã© ideal para centralizar documentos, criar portais internos e padronizar processos, promovendo colaboraÃ§Ã£o e organizaÃ§Ã£o em equipes de todos os tamanhos.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
 ### 3.6 Power Platform (Power Automate, Power Apps e Power BI)
 
-A Power Platform é um conjunto de ferramentas do Microsoft 365 que permite automatizar processos, criar aplicativos personalizados e analisar dados de forma intuitiva, sem necessidade de conhecimentos avançados em programação. Ela é composta por três principais soluções: Power Automate, Power Apps e Power BI.
+A Power Platform Ã© um conjunto de ferramentas do Microsoft 365 que permite automatizar processos, criar aplicativos personalizados e analisar dados de forma intuitiva, sem necessidade de conhecimentos avanÃ§ados em programaÃ§Ã£o. Ela Ã© composta por trÃªs principais soluÃ§Ãµes: Power Automate, Power Apps e Power BI.
 
-**Visão geral**  
-A Power Platform integra-se aos demais serviços do Microsoft 365, facilitando a transformação digital nas organizações. Com ela, é possível automatizar tarefas repetitivas, criar soluções sob medida para necessidades específicas e obter insights a partir de dados, tudo de forma visual e acessível.
+**VisÃ£o geral**  
+A Power Platform integra-se aos demais serviÃ§os do Microsoft 365, facilitando a transformaÃ§Ã£o digital nas organizaÃ§Ãµes. Com ela, Ã© possÃ­vel automatizar tarefas repetitivas, criar soluÃ§Ãµes sob medida para necessidades especÃ­ficas e obter insights a partir de dados, tudo de forma visual e acessÃ­vel.
 
-**Automatização de processos (Power Automate)**  
-O Power Automate (antigo Microsoft Flow) permite criar fluxos de trabalho automáticos entre aplicativos e serviços, reduzindo tarefas manuais e aumentando a produtividade.
+**AutomatizaÃ§Ã£o de processos (Power Automate)**  
+O Power Automate (antigo Microsoft Flow) permite criar fluxos de trabalho automÃ¡ticos entre aplicativos e serviÃ§os, reduzindo tarefas manuais e aumentando a produtividade.
 
-- Automatize notificações, aprovações, movimentação de arquivos e integração entre sistemas.
-- Utilize modelos prontos ou crie fluxos personalizados com base em gatilhos e ações.
+- Automatize notificaÃ§Ãµes, aprovaÃ§Ãµes, movimentaÃ§Ã£o de arquivos e integraÃ§Ã£o entre sistemas.
+- Utilize modelos prontos ou crie fluxos personalizados com base em gatilhos e aÃ§Ãµes.
 - Exemplo: Receber um alerta no Teams sempre que um novo arquivo for adicionado a uma pasta do OneDrive.
 
-**Criação de aplicativos (Power Apps)**  
-O Power Apps possibilita criar aplicativos personalizados para web e dispositivos móveis, sem necessidade de programação tradicional.
+**CriaÃ§Ã£o de aplicativos (Power Apps)**  
+O Power Apps possibilita criar aplicativos personalizados para web e dispositivos mÃ³veis, sem necessidade de programaÃ§Ã£o tradicional.
 
-- Desenvolva soluções para coleta de dados, formulários, controle de inventário, registro de visitas, entre outros.
-- Os aplicativos podem ser integrados ao SharePoint, Teams, Excel e outros serviços do Microsoft 365.
-- Interface intuitiva com recursos de arrastar e soltar, facilitando a criação por usuários de negócio.
+- Desenvolva soluÃ§Ãµes para coleta de dados, formulÃ¡rios, controle de inventÃ¡rio, registro de visitas, entre outros.
+- Os aplicativos podem ser integrados ao SharePoint, Teams, Excel e outros serviÃ§os do Microsoft 365.
+- Interface intuitiva com recursos de arrastar e soltar, facilitando a criaÃ§Ã£o por usuÃ¡rios de negÃ³cio.
 
-**Visualização de dados (Power BI)**  
-O Power BI é a ferramenta de análise e visualização de dados da Microsoft, permitindo criar dashboards interativos e relatórios dinâmicos.
+**VisualizaÃ§Ã£o de dados (Power BI)**  
+O Power BI Ã© a ferramenta de anÃ¡lise e visualizaÃ§Ã£o de dados da Microsoft, permitindo criar dashboards interativos e relatÃ³rios dinÃ¢micos.
 
-- Conecte-se a diversas fontes de dados, como Excel, SharePoint, bancos de dados e serviços em nuvem.
-- Crie gráficos, tabelas e indicadores para acompanhar métricas e tomar decisões baseadas em dados.
-- Compartilhe relatórios com a equipe pelo Teams, SharePoint ou publicando na web.
+- Conecte-se a diversas fontes de dados, como Excel, SharePoint, bancos de dados e serviÃ§os em nuvem.
+- Crie grÃ¡ficos, tabelas e indicadores para acompanhar mÃ©tricas e tomar decisÃµes baseadas em dados.
+- Compartilhe relatÃ³rios com a equipe pelo Teams, SharePoint ou publicando na web.
 
 > **Dica:**  
-> Explore a Power Platform para automatizar rotinas, criar soluções sob medida e transformar dados em informações valiosas, potencializando o uso do Microsoft 365 em sua organização.
+> Explore a Power Platform para automatizar rotinas, criar soluÃ§Ãµes sob medida e transformar dados em informaÃ§Ãµes valiosas, potencializando o uso do Microsoft 365 em sua organizaÃ§Ã£o.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-### 3.7 Segurança, Privacidade e Administração
+### 3.7 SeguranÃ§a, Privacidade e AdministraÃ§Ã£o
 
-A segurança, privacidade e administração são pilares fundamentais no Microsoft 365, garantindo proteção de dados, conformidade com normas e gestão eficiente dos recursos da organização.
+A seguranÃ§a, privacidade e administraÃ§Ã£o sÃ£o pilares fundamentais no Microsoft 365, garantindo proteÃ§Ã£o de dados, conformidade com normas e gestÃ£o eficiente dos recursos da organizaÃ§Ã£o.
 
 ![Security](images/SECURITY.png)
 
-**Proteção de dados e compliance**
-O Microsoft 365 oferece recursos avançados para proteger informações sensíveis e atender a requisitos legais e regulatórios (LGPD, GDPR, etc.).
+**ProteÃ§Ã£o de dados e compliance**
+O Microsoft 365 oferece recursos avanÃ§ados para proteger informaÃ§Ãµes sensÃ­veis e atender a requisitos legais e regulatÃ³rios (LGPD, GDPR, etc.).
 
-- Ferramentas de prevenção contra perda de dados (DLP) para evitar vazamento de informações.
-- Criptografia de dados em trânsito e em repouso.
+- Ferramentas de prevenÃ§Ã£o contra perda de dados (DLP) para evitar vazamento de informaÃ§Ãµes.
+- Criptografia de dados em trÃ¢nsito e em repouso.
 - Auditoria e logs de atividades para rastreamento e conformidade.
-- Políticas de retenção e classificação de dados.
+- PolÃ­ticas de retenÃ§Ã£o e classificaÃ§Ã£o de dados.
 
-**Backup e recuperação**  
+**Backup e recuperaÃ§Ã£o**  
 
-- O Microsoft 365 mantém versões anteriores de arquivos no OneDrive e SharePoint, permitindo restaurar documentos em caso de exclusão ou alteração acidental.
-- Recursos de recuperação de caixa de e-mail e itens excluídos no Outlook.
-- Para necessidades avançadas, considere soluções de backup de terceiros integradas ao Microsoft 365.
+- O Microsoft 365 mantÃ©m versÃµes anteriores de arquivos no OneDrive e SharePoint, permitindo restaurar documentos em caso de exclusÃ£o ou alteraÃ§Ã£o acidental.
+- Recursos de recuperaÃ§Ã£o de caixa de e-mail e itens excluÃ­dos no Outlook.
+- Para necessidades avanÃ§adas, considere soluÃ§Ãµes de backup de terceiros integradas ao Microsoft 365.
 
-**Gerenciamento de usuários e licenças**  
+**Gerenciamento de usuÃ¡rios e licenÃ§as**  
 
-- O portal de administração permite criar, editar e remover usuários, além de atribuir licenças conforme a necessidade.
-- Grupos de segurança e funções administrativas facilitam a delegação de permissões.
-- Relatórios de uso e auditoria ajudam a monitorar o ambiente e otimizar recursos.
+- O portal de administraÃ§Ã£o permite criar, editar e remover usuÃ¡rios, alÃ©m de atribuir licenÃ§as conforme a necessidade.
+- Grupos de seguranÃ§a e funÃ§Ãµes administrativas facilitam a delegaÃ§Ã£o de permissÃµes.
+- RelatÃ³rios de uso e auditoria ajudam a monitorar o ambiente e otimizar recursos.
 
-**MFA – Autenticação Multifator**  
+**MFA â€“ AutenticaÃ§Ã£o Multifator**  
 
-- A autenticação multifator (MFA) adiciona uma camada extra de segurança, exigindo uma segunda forma de verificação além da senha.
-- Pode ser ativada para todos os usuários ou grupos específicos, reduzindo riscos de acesso não autorizado.
-- Suporta aplicativos autenticadores, SMS, chamadas telefônicas e notificações push.
+- A autenticaÃ§Ã£o multifator (MFA) adiciona uma camada extra de seguranÃ§a, exigindo uma segunda forma de verificaÃ§Ã£o alÃ©m da senha.
+- Pode ser ativada para todos os usuÃ¡rios ou grupos especÃ­ficos, reduzindo riscos de acesso nÃ£o autorizado.
+- Suporta aplicativos autenticadores, SMS, chamadas telefÃ´nicas e notificaÃ§Ãµes push.
 
-**Políticas de segurança**  
+**PolÃ­ticas de seguranÃ§a**  
 
-- Defina políticas de senha forte, bloqueio de conta e acesso condicional.
-- Utilize o Microsoft Defender para Office 365 para proteção contra ameaças, phishing e malware.
-- Implemente políticas de acesso condicional para controlar o acesso com base em localização, dispositivo ou risco detectado.
+- Defina polÃ­ticas de senha forte, bloqueio de conta e acesso condicional.
+- Utilize o Microsoft Defender para Office 365 para proteÃ§Ã£o contra ameaÃ§as, phishing e malware.
+- Implemente polÃ­ticas de acesso condicional para controlar o acesso com base em localizaÃ§Ã£o, dispositivo ou risco detectado.
 
 > **Dica:**  
-> Revise periodicamente as configurações de segurança e políticas de compliance para garantir que sua organização esteja protegida e em conformidade com as melhores práticas do mercado.
+> Revise periodicamente as configuraÃ§Ãµes de seguranÃ§a e polÃ­ticas de compliance para garantir que sua organizaÃ§Ã£o esteja protegida e em conformidade com as melhores prÃ¡ticas do mercado.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-## 4. Boas Práticas e Produtividade
+## 4. Boas PrÃ¡ticas e Produtividade
 
-Adotar boas práticas no uso do Microsoft 365 potencializa a produtividade, facilita a colaboração e garante maior organização no dia a dia. Confira algumas dicas essenciais para aproveitar ao máximo os recursos da plataforma:
+Adotar boas prÃ¡ticas no uso do Microsoft 365 potencializa a produtividade, facilita a colaboraÃ§Ã£o e garante maior organizaÃ§Ã£o no dia a dia. Confira algumas dicas essenciais para aproveitar ao mÃ¡ximo os recursos da plataforma:
 
-- **Organização do Outlook e OneDrive:**  
-  Mantenha sua caixa de entrada limpa utilizando pastas, categorias e regras automáticas no Outlook. No OneDrive, organize seus arquivos em pastas temáticas e utilize nomes claros para facilitar buscas e compartilhamentos.
+- **OrganizaÃ§Ã£o do Outlook e OneDrive:**  
+  Mantenha sua caixa de entrada limpa utilizando pastas, categorias e regras automÃ¡ticas no Outlook. No OneDrive, organize seus arquivos em pastas temÃ¡ticas e utilize nomes claros para facilitar buscas e compartilhamentos.
 
-- **Gestão de tempo e tarefas no Teams e Outlook:**  
-  Utilize o calendário do Outlook para agendar compromissos e reuniões. No Teams, crie tarefas e acompanhe o progresso em equipe, integrando com o Planner ou To Do para não perder prazos importantes.
+- **GestÃ£o de tempo e tarefas no Teams e Outlook:**  
+  Utilize o calendÃ¡rio do Outlook para agendar compromissos e reuniÃµes. No Teams, crie tarefas e acompanhe o progresso em equipe, integrando com o Planner ou To Do para nÃ£o perder prazos importantes.
 
-- **Colaboração eficiente entre plataformas:**  
-  Compartilhe documentos pelo OneDrive ou Teams, permitindo edição simultânea e comentários em tempo real. Use o chat do Teams para alinhar rapidamente decisões e evitar trocas excessivas de e-mails.
+- **ColaboraÃ§Ã£o eficiente entre plataformas:**  
+  Compartilhe documentos pelo OneDrive ou Teams, permitindo ediÃ§Ã£o simultÃ¢nea e comentÃ¡rios em tempo real. Use o chat do Teams para alinhar rapidamente decisÃµes e evitar trocas excessivas de e-mails.
 
-- **Integração entre aplicativos do M365:**  
-  Aproveite a integração entre Word, Excel, PowerPoint, Outlook, Teams e OneDrive para automatizar rotinas, compartilhar arquivos com facilidade e centralizar informações, tornando o fluxo de trabalho mais ágil e conectado.
+- **IntegraÃ§Ã£o entre aplicativos do M365:**  
+  Aproveite a integraÃ§Ã£o entre Word, Excel, PowerPoint, Outlook, Teams e OneDrive para automatizar rotinas, compartilhar arquivos com facilidade e centralizar informaÃ§Ãµes, tornando o fluxo de trabalho mais Ã¡gil e conectado.
 
-Adotar essas práticas contribui para um ambiente digital mais produtivo, colaborativo e seguro, otimizando o uso do Microsoft 365 em qualquer contexto profissional ou pessoal.
+Adotar essas prÃ¡ticas contribui para um ambiente digital mais produtivo, colaborativo e seguro, otimizando o uso do Microsoft 365 em qualquer contexto profissional ou pessoal.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-## 5. Novidades e Atualizações
+## 5. Novidades e AtualizaÃ§Ãµes
 
-Nesta seção, acompanhe as principais novidades e mudanças recentes no Microsoft 365, garantindo que você e sua equipe estejam sempre atualizados com os recursos mais modernos da plataforma.
+Nesta seÃ§Ã£o, acompanhe as principais novidades e mudanÃ§as recentes no Microsoft 365, garantindo que vocÃª e sua equipe estejam sempre atualizados com os recursos mais modernos da plataforma.
 
-**Resumo das atualizações mais recentes**  
-O Microsoft 365 recebe atualizações constantes, trazendo melhorias de desempenho, segurança e novas funcionalidades para os aplicativos e serviços. Entre as novidades recentes, destacam-se:
+**Resumo das atualizaÃ§Ãµes mais recentes**  
+O Microsoft 365 recebe atualizaÃ§Ãµes constantes, trazendo melhorias de desempenho, seguranÃ§a e novas funcionalidades para os aplicativos e serviÃ§os. Entre as novidades recentes, destacam-se:
 
-- Integração aprimorada entre Teams, Outlook e OneDrive.
-- Novos recursos de colaboração em tempo real nos aplicativos do Office Online.
-- Melhorias em segurança, autenticação multifator e proteção contra ameaças.
+- IntegraÃ§Ã£o aprimorada entre Teams, Outlook e OneDrive.
+- Novos recursos de colaboraÃ§Ã£o em tempo real nos aplicativos do Office Online.
+- Melhorias em seguranÃ§a, autenticaÃ§Ã£o multifator e proteÃ§Ã£o contra ameaÃ§as.
 
 **Funcionalidades novas relevantes**  
 
-- Transcrição automática e legendas em tempo real nas reuniões do Teams.
-- Novos templates e automações no Power Automate.
-- Recursos de coautoria e comentários aprimorados no Word, Excel e PowerPoint Online.
+- TranscriÃ§Ã£o automÃ¡tica e legendas em tempo real nas reuniÃµes do Teams.
+- Novos templates e automaÃ§Ãµes no Power Automate.
+- Recursos de coautoria e comentÃ¡rios aprimorados no Word, Excel e PowerPoint Online.
 - Dashboards interativos e conectores expandidos no Power BI.
 
-**Mudanças na interface ou nas políticas**  
+**MudanÃ§as na interface ou nas polÃ­ticas**  
 
-- Interface do Teams redesenhada para facilitar a navegação e o acesso rápido a chats, arquivos e reuniões.
-- Atualizações nas políticas de privacidade e compliance, alinhadas à LGPD e GDPR.
-- Novos controles de administração para gerenciamento de dispositivos e permissões.
+- Interface do Teams redesenhada para facilitar a navegaÃ§Ã£o e o acesso rÃ¡pido a chats, arquivos e reuniÃµes.
+- AtualizaÃ§Ãµes nas polÃ­ticas de privacidade e compliance, alinhadas Ã  LGPD e GDPR.
+- Novos controles de administraÃ§Ã£o para gerenciamento de dispositivos e permissÃµes.
 
 **Links para roadmap e changelog oficial**  
 
-- [Microsoft 365 Roadmap](https://www.microsoft.com/en-us/microsoft-365/roadmap): Acompanhe as próximas funcionalidades e lançamentos planejados.
-- [Microsoft 365 Changelog](https://learn.microsoft.com/en-us/microsoft-365/roadmap?view=o365-worldwide): Veja o histórico detalhado de atualizações e melhorias.
+- [Microsoft 365 Roadmap](https://www.microsoft.com/en-us/microsoft-365/roadmap): Acompanhe as prÃ³ximas funcionalidades e lanÃ§amentos planejados.
+- [Microsoft 365 Changelog](https://learn.microsoft.com/en-us/microsoft-365/roadmap?view=o365-worldwide): Veja o histÃ³rico detalhado de atualizaÃ§Ãµes e melhorias.
 
 > **Dica:**  
-> Consulte regularmente o roadmap e o changelog oficial para planejar treinamentos, adoção de novos recursos e garantir que sua organização aproveite ao máximo as inovações do Microsoft 365.
+> Consulte regularmente o roadmap e o changelog oficial para planejar treinamentos, adoÃ§Ã£o de novos recursos e garantir que sua organizaÃ§Ã£o aproveite ao mÃ¡ximo as inovaÃ§Ãµes do Microsoft 365.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-## 6. Referências e Links Úteis
+## 6. ReferÃªncias e Links Ãšteis
 
 - [Microsoft 365 Roadmap](https://www.microsoft.com/en-us/microsoft-365/roadmap)  
 - [Microsoft Learn](https://learn.microsoft.com/)  
@@ -406,86 +406,87 @@ O Microsoft 365 recebe atualizações constantes, trazendo melhorias de desempen
 - [Canal oficial no YouTube](https://www.youtube.com/@Microsoft365)  
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
 ## 7. Anexos
 
-Nesta seção, você encontra materiais complementares para facilitar o uso do Microsoft 365 no dia a dia. Utilize estes anexos para agilizar tarefas, padronizar processos e aumentar sua produtividade:
+Nesta seÃ§Ã£o, vocÃª encontra materiais complementares para facilitar o uso do Microsoft 365 no dia a dia. Utilize estes anexos para agilizar tarefas, padronizar processos e aumentar sua produtividade:
 
-- **Tutoriais práticos:**  
-  Passo a passo para as principais tarefas, como configurar o Outlook, compartilhar arquivos no OneDrive, criar reuniões no Teams, entre outros.
+- **Tutoriais prÃ¡ticos:**  
+  Passo a passo para as principais tarefas, como configurar o Outlook, compartilhar arquivos no OneDrive, criar reuniÃµes no Teams, entre outros.
 
-- **Checklists e Guias Rápidos:**  
-  Listas de verificação para garantir que nenhum detalhe importante seja esquecido em processos recorrentes, além de guias resumidos para consulta rápida.
+- **Checklists e Guias RÃ¡pidos:**  
+  Listas de verificaÃ§Ã£o para garantir que nenhum detalhe importante seja esquecido em processos recorrentes, alÃ©m de guias resumidos para consulta rÃ¡pida.
 
 - **Modelos de documentos:**  
-  Exemplos prontos de atas, apresentações, planilhas e outros arquivos úteis para uso imediato ou adaptação conforme a necessidade.
+  Exemplos prontos de atas, apresentaÃ§Ãµes, planilhas e outros arquivos Ãºteis para uso imediato ou adaptaÃ§Ã£o conforme a necessidade.
 
 - **Checklists de produtividade:**  
   Ferramentas para organizar rotinas, priorizar tarefas e acompanhar o progresso das atividades, otimizando o tempo e os resultados.
 
 > **Dica:**  
-> Personalize os anexos conforme a realidade da sua equipe ou empresa para obter ainda mais benefícios do Microsoft 365. Utilize os modelos e checklists como base para criar processos eficientes e adaptados às suas necessidades específicas.
+> Personalize os anexos conforme a realidade da sua equipe ou empresa para obter ainda mais benefÃ­cios do Microsoft 365. Utilize os modelos e checklists como base para criar processos eficientes e adaptados Ã s suas necessidades especÃ­ficas.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-## Conclusão
+## ConclusÃ£o
 
-Esta apostila é um guia introdutório para o Microsoft 365, cobrindo os principais serviços e funcionalidades. Para aprofundar seus conhecimentos, recomendamos explorar os links úteis e participar da comunidade Microsoft.
-Acompanhe as atualizações semestrais para se manter informado sobre as novidades e melhorias contínuas da plataforma.
+Esta apostila Ã© um guia introdutÃ³rio para o Microsoft 365, cobrindo os principais serviÃ§os e funcionalidades. Para aprofundar seus conhecimentos, recomendamos explorar os links Ãºteis e participar da comunidade Microsoft.
+Acompanhe as atualizaÃ§Ãµes semestrais para se manter informado sobre as novidades e melhorias contÃ­nuas da plataforma.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
 ## Fale Conosco
 
-Sua opinião é muito importante para nós!  
+Sua opiniÃ£o Ã© muito importante para nÃ³s!  
 
-Se tiver dúvidas, sugestões, feedbacks ou quiser compartilhar sua experiência com o Microsoft 365, entre em contato pelos canais abaixo:
+Se tiver dÃºvidas, sugestÃµes, feedbacks ou quiser compartilhar sua experiÃªncia com o Microsoft 365, entre em contato pelos canais abaixo:
 
 - **E-mail:** [suporte@caracore.com.br](mailto:suporte@caracore.com.br)
 - **Whatsapp:** [+55 41 99909-7797](https://wa.me/5541999097797)
 - **Site:** [www.caracore.com.br](https://www.caracore.com.br)
-- **GitHub:** [github.com/chmulato/cara-core](https://github.com/chmulato/cara-core)
+- **GitHub:** [caracore.com.br/cara-core](https://caracore.com.br/)
 - **Facebook:** [facebook.com/caracoreinformatica](https://www.facebook.com/caracoreinformatica/)
 - **LinkedIn:** [linkedin.com/company/cara-core](https://www.linkedin.com/company/cara-core)
 
-Agradecemos por escolher a Cara Core Informática como sua parceira no aprendizado e uso do Microsoft 365.
-Estamos à disposição para ajudar você.
+Agradecemos por escolher a Cara Core InformÃ¡tica como sua parceira no aprendizado e uso do Microsoft 365.
+Estamos Ã  disposiÃ§Ã£o para ajudar vocÃª.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
 ## Agradecimentos
 
-Agradecemos a todos os colaboradores e usuários que contribuíram para a criação desta apostila. Sua participação é fundamental para aprimorarmos continuamente nossos materiais e serviços.
+Agradecemos a todos os colaboradores e usuÃ¡rios que contribuÃ­ram para a criaÃ§Ã£o desta apostila. Sua participaÃ§Ã£o Ã© fundamental para aprimorarmos continuamente nossos materiais e serviÃ§os.
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-## Controle de Versões (ROADMAP)
+## Controle de VersÃµes (ROADMAP)
 
 ```markdown
 |--------|------------|---------------------------------------------------------|
-| Versão | Data       | Descrição das Alterações                                |
+| VersÃ£o | Data       | DescriÃ§Ã£o das AlteraÃ§Ãµes                                |
 |--------|------------|---------------------------------------------------------|
-| 1.0    | 20/06/2025 | Criação inicial                                         |
-| 1.1    | 20/12/2025 | Revisão semestral: atualização de conteúdo e links      |
-| 1.2    | 20/06/2026 | Inclusão de novos módulos e revisão geral               |
-| 1.3    | 20/12/2026 | Atualização de práticas recomendadas e recursos novos   |
-| 1.4    | 20/06/2027 | Revisão de segurança, privacidade e anexos              |
-| 1.5    | 20/12/2027 | Atualização de imagens, exemplos e roadmap              |
+| 1.0    | 20/06/2025 | CriaÃ§Ã£o inicial                                         |
+| 1.1    | 20/12/2025 | RevisÃ£o semestral: atualizaÃ§Ã£o de conteÃºdo e links      |
+| 1.2    | 20/06/2026 | InclusÃ£o de novos mÃ³dulos e revisÃ£o geral               |
+| 1.3    | 20/12/2026 | AtualizaÃ§Ã£o de prÃ¡ticas recomendadas e recursos novos   |
+| 1.4    | 20/06/2027 | RevisÃ£o de seguranÃ§a, privacidade e anexos              |
+| 1.5    | 20/12/2027 | AtualizaÃ§Ã£o de imagens, exemplos e roadmap              |
 |--------|------------|---------------------------------------------------------|
 ```
 
 ***
-[Voltar ao Sumário](#sumário)
+[Voltar ao SumÃ¡rio](#sumÃ¡rio)
 
-## Direitos Autorais e Isenção de Responsabilidade
+## Direitos Autorais e IsenÃ§Ã£o de Responsabilidade
 
-Esta apostila é de propriedade da Cara Core Informática e está protegida por direitos autorais.
-A reprodução, distribuição ou modificação deste material sem autorização prévia é proibida.
+Esta apostila Ã© de propriedade da Cara Core InformÃ¡tica e estÃ¡ protegida por direitos autorais.
+A reproduÃ§Ã£o, distribuiÃ§Ã£o ou modificaÃ§Ã£o deste material sem autorizaÃ§Ã£o prÃ©via Ã© proibida.
 
 > **Nota:**  
-> Esta apostila é um material educativo e de apoio ao usuário. A Cara Core Informática não possui vínculo comercial com a Microsoft, nem representa oficialmente a marca ou seus produtos. Todas as marcas, nomes e logotipos Microsoft 365 mencionados pertencem à Microsoft Corporation. Nosso papel é exclusivamente prestar suporte, treinamento e orientação para o melhor uso das soluções Microsoft por nossos clientes e parceiros.
+> Esta apostila Ã© um material educativo e de apoio ao usuÃ¡rio. A Cara Core InformÃ¡tica nÃ£o possui vÃ­nculo comercial com a Microsoft, nem representa oficialmente a marca ou seus produtos. Todas as marcas, nomes e logotipos Microsoft 365 mencionados pertencem Ã  Microsoft Corporation. Nosso papel Ã© exclusivamente prestar suporte, treinamento e orientaÃ§Ã£o para o melhor uso das soluÃ§Ãµes Microsoft por nossos clientes e parceiros.
+

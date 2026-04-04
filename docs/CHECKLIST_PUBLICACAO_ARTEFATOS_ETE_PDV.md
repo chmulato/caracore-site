@@ -1,4 +1,4 @@
-# Checklist de Publicacao de Artefatos - ETE e PDV
+﻿# Checklist de Publicacao de Artefatos - ETE e PDV
 
 Data base: 2026-03-14
 Escopo: endpoints institucionais no dominio da matriz
@@ -100,7 +100,7 @@ Executar varredura no escopo de download:
 
 ```powershell
 Set-Location "d:\dev\caracore-site"
-rg -n "github.com/chmulato|api.github.com/repos|OWNER|REPO|releases/latest" delivery/ete/download*.html delivery/pdv/download*.html
+rg -n "caracore.com.br|api.github.com/repos|OWNER|REPO|releases/latest" delivery/ete/download*.html delivery/pdv/download*.html
 ```
 
 Esperado: zero matches.
@@ -126,7 +126,7 @@ Campos minimos por atendimento:
 
 ## Automacao de fechamento (opcional)
 
-Após publicar binarios e checksums reais, execute:
+ApÃ³s publicar binarios e checksums reais, execute:
 
 ```powershell
 Set-Location "d:\dev\caracore-site\scripts"
@@ -141,3 +141,4 @@ No modo padrao, o script **nao** habilita `.exe` publico. Para excecao controlad
 Set-Location "d:\dev\caracore-site\scripts"
 .\finalize-artifact-go-live.ps1 -AllowPublicExe
 ```
+

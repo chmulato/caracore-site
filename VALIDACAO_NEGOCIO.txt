@@ -1,33 +1,33 @@
-VALIDAÇÃO DE NEGÓCIO — FÁBRICA DE APLICATIVOS WINDOWS DESKTOP
+﻿VALIDAÃ‡ÃƒO DE NEGÃ“CIO â€” FÃBRICA DE APLICATIVOS WINDOWS DESKTOP
 ================================================================
 
-Objetivo: Pente fino no que construímos, com olhar de uma pessoa de negócio que está construindo uma fábrica de aplicativos Windows Desktop para um público seleto e com poder de compra. Garantir funcionalidade dos produtos e coerência do ecossistema.
+Objetivo: Pente fino no que construÃ­mos, com olhar de uma pessoa de negÃ³cio que estÃ¡ construindo uma fÃ¡brica de aplicativos Windows Desktop para um pÃºblico seleto e com poder de compra. Garantir funcionalidade dos produtos e coerÃªncia do ecossistema.
 
-Premissa: Não temos braço para a startup; precisamos focar em aplicações relevantes para o negócio. O Cara Core Seed existe e consta no portfólio (no final da lista), mas a aplicação não está disponível para download nem à venda — apenas informamos que existe.
+Premissa: NÃ£o temos braÃ§o para a startup; precisamos focar em aplicaÃ§Ãµes relevantes para o negÃ³cio. O Cara Core Seed existe e consta no portfÃ³lio (no final da lista), mas a aplicaÃ§Ã£o nÃ£o estÃ¡ disponÃ­vel para download nem Ã  venda â€” apenas informamos que existe.
 
 Produtos em foco (entrega ativa):
-  1. Cara Core PDV — validado com muito esforço
-  2. chmulatoETE Minerador 4.0 — validado com muito esforço
-  3. Reino OIDC — Reino das Identidades Federadas — material educacional / identidade
-  4. Circuito Python — produto chamariz (curso FREE para pessoas físicas; licença obrigatória para instituições)
-  5. Cara Core Hub — gestão logística e e-commerce; portal delivery (matriz + vitrine); SQLite local; negócio aplicável: Tia Sócia; apresentação Tia Sócia em slides/
-  6. Suporte Área 51 — suporte às empresas médias do Brasil para configurar os portais que o produto Área 51 oferece (OAuth 2.1, OIDC, PKCE); matriz delivery/area51 + loja caracore-area51-releases; exige tempo e investimento
+  1. Cara Core PDV â€” validado com muito esforÃ§o
+  2. chmulatoETE Minerador 4.0 â€” validado com muito esforÃ§o
+  3. Reino OIDC â€” Reino das Identidades Federadas â€” material educacional / identidade
+  4. Circuito Python â€” produto chamariz (curso FREE para pessoas fÃ­sicas; licenÃ§a obrigatÃ³ria para instituiÃ§Ãµes)
+  5. Cara Core Hub â€” gestÃ£o logÃ­stica e e-commerce; portal delivery (matriz + vitrine); SQLite local; negÃ³cio aplicÃ¡vel: Tia SÃ³cia; apresentaÃ§Ã£o Tia SÃ³cia em slides/
+  6. Suporte Ãrea 51 â€” suporte Ã s empresas mÃ©dias do Brasil para configurar os portais que o produto Ãrea 51 oferece (OAuth 2.1, OIDC, PKCE); matriz delivery/area51 + loja caracore-area51-releases; exige tempo e investimento
 
-Garagem (futuros lançamentos — matriz, oficina e loja já no ar):
-  8. RU Soberano — simulador reator PFR (Langmuir-Hinshelwood), história do RU e Engenharia Química (1991→2026); matriz delivery/ru, loja caracore-ru-releases, oficina caracore-ru; lançamento previsto 18/Junho/2026; R$ 29,90; degustação FREE até o Buffet; ramo Garagem em ecosistema.html
+Garagem (futuros lanÃ§amentos â€” matriz, oficina e loja jÃ¡ no ar):
+  8. RU Soberano â€” simulador reator PFR (Langmuir-Hinshelwood), histÃ³ria do RU e Engenharia QuÃ­mica (1991â†’2026); matriz delivery/ru, loja caracore-ru-releases, oficina caracore-ru; lanÃ§amento previsto 18/Junho/2026; R$ 29,90; degustaÃ§Ã£o FREE atÃ© o Buffet; ramo Garagem em ecosistema.html
 
-Referência (sem oferta ativa):
-  7. Cara Core Seed — ferramenta interna; produto existe, aplicação não disponível (não há download nem venda)
+ReferÃªncia (sem oferta ativa):
+  7. Cara Core Seed â€” ferramenta interna; produto existe, aplicaÃ§Ã£o nÃ£o disponÃ­vel (nÃ£o hÃ¡ download nem venda)
 
 -------------------------------------------------------------------------------
 
-1. NARRATIVA DE NEGÓCIO (FÁBRICA + PÚBLICO SELETO)
+1. NARRATIVA DE NEGÃ“CIO (FÃBRICA + PÃšBLICO SELETO)
 
-  O que validar                    | Status      | Observação
+  O que validar                    | Status      | ObservaÃ§Ã£o
   ---------------------------------|-------------|----------------------------------------------------------------
-  Fábrica de apps Windows Desktop  | Implícito   | PDV (web + offline/Electron), Minerador (Windows .exe), Seed (Windows .exe) estão alinhados. Reino OIDC é web/educação — complementar (identidade, formação). Vale deixar explícito no portfólio uma linha que una os quatro: ex. "Soluções Windows Desktop e identidade para um público seleto".
-  Público seleto / poder de compra  | Parcial     | Preços claros onde aplicável (Seed R$ 29,90; Minerador Ouro 4.0 R$ 29,90). PDV Premium sem valor no portfólio (pode ser proposital — "sob consulta"). Recomendação: reforçar em cada produto para quem é (gestor, contador, empresa, jovem desenvolvedora) e que problema resolve.
-  Agregação de valor entre produtos| Bom         | Seed é o "Contador de Licenças" dos que compram PDV, Minerador, Reino, Hub. Minerador e Seed compartilham filosofia (transparência, LGPD, R$ 29,90). PDV e Minerador já validados; Seed e Reino agregam sem duplicar.
+  FÃ¡brica de apps Windows Desktop  | ImplÃ­cito   | PDV (web + offline/Electron), Minerador (Windows .exe), Seed (Windows .exe) estÃ£o alinhados. Reino OIDC Ã© web/educaÃ§Ã£o â€” complementar (identidade, formaÃ§Ã£o). Vale deixar explÃ­cito no portfÃ³lio uma linha que una os quatro: ex. "SoluÃ§Ãµes Windows Desktop e identidade para um pÃºblico seleto".
+  PÃºblico seleto / poder de compra  | Parcial     | PreÃ§os claros onde aplicÃ¡vel (Seed R$ 29,90; Minerador Ouro 4.0 R$ 29,90). PDV Premium sem valor no portfÃ³lio (pode ser proposital â€” "sob consulta"). RecomendaÃ§Ã£o: reforÃ§ar em cada produto para quem Ã© (gestor, contador, empresa, jovem desenvolvedora) e que problema resolve.
+  AgregaÃ§Ã£o de valor entre produtos| Bom         | Seed Ã© o "Contador de LicenÃ§as" dos que compram PDV, Minerador, Reino, Hub. Minerador e Seed compartilham filosofia (transparÃªncia, LGPD, R$ 29,90). PDV e Minerador jÃ¡ validados; Seed e Reino agregam sem duplicar.
 
 -------------------------------------------------------------------------------
 
@@ -35,100 +35,100 @@ Referência (sem oferta ativa):
 
 2.1 Cara Core PDV
 
-  Critério                  | Status | Detalhe
+  CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
-  Escopo                    | OK     | Foco localhost e Windows Desktop (EXE sobe em localhost:8080); banco apenas SQLite (não PostgreSQL, não H2). Wiki e portfólio atualizados.
-  Proposta de valor clara   | OK     | Reforma Tributária 2026-2033, offline, PIX Split, planos Free/Premium; PDV Selo Verde; mensagem alinhada à matriz.
-  Público                   | OK     | Pequenos e médios negócios, varejo; contador e gestor.
-  Preço/plano               | Atenção| Free e Premium descritos; valor do Premium não está no portfólio (pode ser intencional).
-  Delivery funcional        | OK     | Matriz: delivery/pdv/ (apresentação completa, economia, planos, Wiki Fiscal, consultoria). Loja online: https://pdv.caracore.com.br/ (vitrine, download, tecnologia, canal de feedback). MIRROR_DELIVERY.md em delivery/pdv documenta a relação.
+  Escopo                    | OK     | Foco localhost e Windows Desktop (EXE sobe em localhost:8080); banco apenas SQLite (nÃ£o PostgreSQL, nÃ£o H2). Wiki e portfÃ³lio atualizados.
+  Proposta de valor clara   | OK     | Reforma TributÃ¡ria 2026-2033, offline, PIX Split, planos Free/Premium; PDV Selo Verde; mensagem alinhada Ã  matriz.
+  PÃºblico                   | OK     | Pequenos e mÃ©dios negÃ³cios, varejo; contador e gestor.
+  PreÃ§o/plano               | AtenÃ§Ã£o| Free e Premium descritos; valor do Premium nÃ£o estÃ¡ no portfÃ³lio (pode ser intencional).
+  Delivery funcional        | OK     | Matriz: delivery/pdv/ (apresentaÃ§Ã£o completa, economia, planos, Wiki Fiscal, consultoria). Loja online: https://pdv.caracore.com.br/ (vitrine, download, tecnologia, canal de feedback). MIRROR_DELIVERY.md em delivery/pdv documenta a relaÃ§Ã£o.
   Windows Desktop           | OK     | Instalador EXE; ao abrir, servidor sobe em localhost; um arquivo de dados (SQLite); modo offline; Electron.
 
-  Ação sugerida: Manter como está. Escopo localhost + Windows Desktop + SQLite já refletido na wiki e no portfólio. Referência central das lojas: ECOSYSTEM_LOJAS.md.
+  AÃ§Ã£o sugerida: Manter como estÃ¡. Escopo localhost + Windows Desktop + SQLite jÃ¡ refletido na wiki e no portfÃ³lio. ReferÃªncia central das lojas: ECOSYSTEM_LOJAS.md.
 
 2.2 chmulatoETE Minerador 4.0
 
-  Critério                  | Status | Detalhe
+  CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
   Proposta de valor         | OK     | ETE aplicada ao refino de terras raras; instalador Windows; checksums; upgrade Ouro 4.0.
-  Público                   | OK     | Mineração, hidrometalurgia, educação (Campo Largo).
-  Preço                     | Atenção| R$ 29,90 (Ouro 4.0) está no portal ETE (upgrade-ouro40.html), não no texto do portfólio. Para consistência com Seed, vale citar no lead ou no alerta.
-  Delivery funcional        | OK     | delivery/ete/, delivery/ete/download.html → GitHub caracore-ete-releases.
+  PÃºblico                   | OK     | MineraÃ§Ã£o, hidrometalurgia, educaÃ§Ã£o (Campo Largo).
+  PreÃ§o                     | AtenÃ§Ã£o| R$ 29,90 (Ouro 4.0) estÃ¡ no portal ETE (upgrade-ouro40.html), nÃ£o no texto do portfÃ³lio. Para consistÃªncia com Seed, vale citar no lead ou no alerta.
+  Delivery funcional        | OK     | delivery/ete/, delivery/ete/download.html â†’ GitHub caracore-ete-releases.
   Windows Desktop           | OK     | Instalador .exe, checksums SHA-256/MD5.
 
-  Ação sugerida: No portfólio, no alerta de licenciamento do Minerador 4.0, acrescentar: "Upgrade Ouro 4.0: R$ 29,90 (valor único)."
+  AÃ§Ã£o sugerida: No portfÃ³lio, no alerta de licenciamento do Minerador 4.0, acrescentar: "Upgrade Ouro 4.0: R$ 29,90 (valor Ãºnico)."
 
-2.3 Reino OIDC — Reino das Identidades Federadas
+2.3 Reino OIDC â€” Reino das Identidades Federadas
 
-  Critério                  | Status | Detalhe
+  CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
-  Proposta de valor         | OK     | Material educacional OAuth 2.1 / OIDC; gamificação; PI Cara Core. Primeira entrega FREE; upgrade O Trono da Identidade R$ 29,90 (inspirado no Minerador 4.0). Prioridade: incentivar baixar o EXE; link para conteúdo em HTML não é destacado (wiki, portfólio, filial).
-  Público                   | OK     | Jovens Entusiastas Desenvolvedores (foco em público-alvo feminino); mercado seleto, olhar crítico; Security, Big Tech.
-  Preço                     | OK     | FREE (MIT) + upgrade R$ 29,90 (valor único).
-  Delivery funcional        | OK     | delivery/oidc/ → index (FREE), download.html (ReinoOIDC.exe → releases/latest), upgrade-trono.html → PIX R$ 29,90. Filial reino_oidc_releases (docs/) com card Download em destaque; sem card "Conteúdo FREE" (HTML) no balcão.
-  Windows Desktop           | OK     | Aplicativo FREE ReinoOIDC.exe em https://github.com/chmulato/reino-oidc-releases/releases. Papel no ecossistema: reforça marca "identidade" e atrai talento; não compete com PDV/Minerador/Seed.
+  Proposta de valor         | OK     | Material educacional OAuth 2.1 / OIDC; gamificaÃ§Ã£o; PI Cara Core. Primeira entrega FREE; upgrade O Trono da Identidade R$ 29,90 (inspirado no Minerador 4.0). Prioridade: incentivar baixar o EXE; link para conteÃºdo em HTML nÃ£o Ã© destacado (wiki, portfÃ³lio, filial).
+  PÃºblico                   | OK     | Jovens Entusiastas Desenvolvedores (foco em pÃºblico-alvo feminino); mercado seleto, olhar crÃ­tico; Security, Big Tech.
+  PreÃ§o                     | OK     | FREE (MIT) + upgrade R$ 29,90 (valor Ãºnico).
+  Delivery funcional        | OK     | delivery/oidc/ â†’ index (FREE), download.html (ReinoOIDC.exe â†’ releases/latest), upgrade-trono.html â†’ PIX R$ 29,90. Filial reino_oidc_releases (docs/) com card Download em destaque; sem card "ConteÃºdo FREE" (HTML) no balcÃ£o.
+  Windows Desktop           | OK     | Aplicativo FREE ReinoOIDC.exe em https://oidc.caracore.com.br/download.html. Papel no ecossistema: reforÃ§a marca "identidade" e atrai talento; nÃ£o compete com PDV/Minerador/Seed.
 
-  Estratégia de negócio: Ver delivery/oidc/ESTRATEGIA_NEGOCIO_REINO_OIDC.md e delivery/oidc/PUBLICO_ALVO.md.
+  EstratÃ©gia de negÃ³cio: Ver delivery/oidc/ESTRATEGIA_NEGOCIO_REINO_OIDC.md e delivery/oidc/PUBLICO_ALVO.md.
 
 2.4 Cara Core Seed
 
-  Critério                  | Status | Detalhe
+  CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
-  Posicionamento            | OK     | Produto existe, aplicação não disponível. Foco em aplicações relevantes para o negócio; sem braço para a startup. Seed consta no portfólio no final da lista; sem oferta de download nem venda.
-  Proposta de valor         | Ref.   | Contador de Licenças (ferramenta interna); não está em entrega ativa.
-  Preço                     | N/A    | Aplicação não disponível — sem preço nem CTA de compra.
-  Delivery                  | OK     | delivery/seed e caracore-seed-releases informam que a aplicação não está disponível; sem Baixar EXE nem Comprar. Portfólio: seção no final, texto "existe, aplicação não disponível"; links apenas para Portal Seed (informativo) e repositório.
+  Posicionamento            | OK     | Produto existe, aplicaÃ§Ã£o nÃ£o disponÃ­vel. Foco em aplicaÃ§Ãµes relevantes para o negÃ³cio; sem braÃ§o para a startup. Seed consta no portfÃ³lio no final da lista; sem oferta de download nem venda.
+  Proposta de valor         | Ref.   | Contador de LicenÃ§as (ferramenta interna); nÃ£o estÃ¡ em entrega ativa.
+  PreÃ§o                     | N/A    | AplicaÃ§Ã£o nÃ£o disponÃ­vel â€” sem preÃ§o nem CTA de compra.
+  Delivery                  | OK     | delivery/seed e caracore-seed-releases informam que a aplicaÃ§Ã£o nÃ£o estÃ¡ disponÃ­vel; sem Baixar EXE nem Comprar. PortfÃ³lio: seÃ§Ã£o no final, texto "existe, aplicaÃ§Ã£o nÃ£o disponÃ­vel"; links apenas para Portal Seed (informativo) e repositÃ³rio.
 
-  Ação sugerida: Mantido como está. Seed permanece no portfólio como referência; sem ações de oferta ou CTA de download/compra.
+  AÃ§Ã£o sugerida: Mantido como estÃ¡. Seed permanece no portfÃ³lio como referÃªncia; sem aÃ§Ãµes de oferta ou CTA de download/compra.
 
 2.5 Circuito Python
 
-  Critério                  | Status | Detalhe
+  CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
-  Proposta de valor         | OK     | Curso de Python para jovens entusiastas; FREE (MIT) para pessoas físicas; licença obrigatória para instituições (R$ 5,00/aluno/mês); aviso de responsabilização legal. Prioridade de comunicação: incentivar baixar o EXE; link do curso em HTML não é destacado.
-  Público                   | OK     | Pessoas físicas (FREE); instituições de ensino médio (licença paga).
-  Preço                     | OK     | FREE (MIT) para indivíduos; R$ 5,00/aluno matriculado/mês para escolas.
-  Delivery funcional        | OK     | delivery/circuito/ (index com card Download → releases/latest, canal-feedback, licenca-uso, portal-escolas); filial circuito-python-releases (docs/) com balcão e download → releases/latest; sem card/link destacado para curso em HTML.
-  Windows Desktop           | OK     | CircuitoPython.exe em https://github.com/chmulato/circuito-python-releases/releases.
-  Repositório público       | OK     | Em loja filial e matriz apontamos apenas para github.com/chmulato/circuito-python-releases. O repositório do produto (circuito_python) é privado. Não destacar link do curso em HTML (circuito.caracore.com.br).
+  Proposta de valor         | OK     | Curso de Python para jovens entusiastas; FREE (MIT) para pessoas fÃ­sicas; licenÃ§a obrigatÃ³ria para instituiÃ§Ãµes (R$ 5,00/aluno/mÃªs); aviso de responsabilizaÃ§Ã£o legal. Prioridade de comunicaÃ§Ã£o: incentivar baixar o EXE; link do curso em HTML nÃ£o Ã© destacado.
+  PÃºblico                   | OK     | Pessoas fÃ­sicas (FREE); instituiÃ§Ãµes de ensino mÃ©dio (licenÃ§a paga).
+  PreÃ§o                     | OK     | FREE (MIT) para indivÃ­duos; R$ 5,00/aluno matriculado/mÃªs para escolas.
+  Delivery funcional        | OK     | delivery/circuito/ (index com card Download â†’ releases/latest, canal-feedback, licenca-uso, portal-escolas); filial circuito-python-releases (docs/) com balcÃ£o e download â†’ releases/latest; sem card/link destacado para curso em HTML.
+  Windows Desktop           | OK     | CircuitoPython.exe em https://circuito.caracore.com.br/download.html.
+  RepositÃ³rio pÃºblico       | OK     | Em loja filial e matriz apontamos apenas para caracore.com.br/circuito-python-releases. O repositÃ³rio do produto (circuito_python) Ã© privado. NÃ£o destacar link do curso em HTML (circuito.caracore.com.br).
 
-  Ação sugerida: Manter alinhamento matriz ↔ filial; priorizar download do EXE; não destacar link do curso em HTML.
+  AÃ§Ã£o sugerida: Manter alinhamento matriz â†” filial; priorizar download do EXE; nÃ£o destacar link do curso em HTML.
 
 2.6 Cara Core Hub
 
-  Critério                  | Status | Detalhe
+  CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
-  Proposta de valor         | OK     | Gestão logística e e-commerce; centros de distribuição; recebimento, triagem, estoque, retirada; integração marketplaces; SQLite local, autonomia local.
-  Negócio aplicável         | OK     | Projeto Tia Sócia citado como exemplo; apresentação (pitch deck, 21 slides) em slides/ na loja (caracore-hub-releases) e na matriz (delivery/hub).
-  Preço                     | N/A    | B2B / sob consulta ou modelo futuro; não fixado no portal.
-  Delivery funcional        | OK     | Matriz: delivery/hub/ (index, download, canal-feedback, tecnologia, slides/). Loja online: https://hub.caracore.com.br/ (vitrine, mesmo conteúdo, base href para GitHub Pages).
-  Portal/vitrine            | OK     | Matriz = site Cara Core delivery/hub; loja online = caracore-hub-releases. MIRROR_DELIVERY.md em delivery/hub documenta a relação. Releases (WAR) em github.com/chmulato/caracore-hub-releases/releases quando publicadas. Referência central: ECOSYSTEM_LOJAS.md.
+  Proposta de valor         | OK     | GestÃ£o logÃ­stica e e-commerce; centros de distribuiÃ§Ã£o; recebimento, triagem, estoque, retirada; integraÃ§Ã£o marketplaces; SQLite local, autonomia local.
+  NegÃ³cio aplicÃ¡vel         | OK     | Projeto Tia SÃ³cia citado como exemplo; apresentaÃ§Ã£o (pitch deck, 21 slides) em slides/ na loja (caracore-hub-releases) e na matriz (delivery/hub).
+  PreÃ§o                     | N/A    | B2B / sob consulta ou modelo futuro; nÃ£o fixado no portal.
+  Delivery funcional        | OK     | Matriz: delivery/hub/ (index, download, canal-feedback, tecnologia, slides/). Loja online: https://hub.caracore.com.br/ (vitrine, mesmo conteÃºdo, base href para GitHub Pages).
+  Portal/vitrine            | OK     | Matriz = site Cara Core delivery/hub; loja online = caracore-hub-releases. MIRROR_DELIVERY.md em delivery/hub documenta a relaÃ§Ã£o. Releases (WAR) em caracore.com.br/caracore-hub-releases/releases quando publicadas. ReferÃªncia central: ECOSYSTEM_LOJAS.md.
 
-  Ação sugerida: Manter alinhamento matriz ↔ vitrine; ao publicar releases, atualizar download.html com link para releases/latest. Referência central das lojas: ECOSYSTEM_LOJAS.txt.
+  AÃ§Ã£o sugerida: Manter alinhamento matriz â†” vitrine; ao publicar releases, atualizar download.html com link para releases/latest. ReferÃªncia central das lojas: ECOSYSTEM_LOJAS.txt.
 
-2.7 Suporte Área 51
+2.7 Suporte Ãrea 51
 
-  Critério                  | Status | Detalhe
+  CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
-  Proposta de valor         | OK     | Produto Área 51 oferece portais (login, painel admin, controle de acesso, auditoria). Suporte Área 51 = serviço para empresas médias do Brasil configurarem esses portais (OAuth 2.1, OIDC, PKCE, Google, Microsoft, LGPD).
-  Público                   | OK     | Empresas médias do Brasil; exige tempo e investimento (energia da startup).
-  Preço                     | N/A    | Sob consulta (canal de feedback).
-  Delivery funcional        | OK     | Matriz: delivery/area51 (index, canal-feedback). Loja: area51.caracore.com.br. Apresentação na oficina: caracore-area51/apresentacao/index.html (alinhada à loja).
-  Links e CTAs              | OK     | Matriz com "Ver loja (releases)"; loja com "Ver apresentação (matriz)". VALIDACAO_LOJAS_MATRIZ.txt e ECOSYSTEM_LOJAS.txt.
+  Proposta de valor         | OK     | Produto Ãrea 51 oferece portais (login, painel admin, controle de acesso, auditoria). Suporte Ãrea 51 = serviÃ§o para empresas mÃ©dias do Brasil configurarem esses portais (OAuth 2.1, OIDC, PKCE, Google, Microsoft, LGPD).
+  PÃºblico                   | OK     | Empresas mÃ©dias do Brasil; exige tempo e investimento (energia da startup).
+  PreÃ§o                     | N/A    | Sob consulta (canal de feedback).
+  Delivery funcional        | OK     | Matriz: delivery/area51 (index, canal-feedback). Loja: area51.caracore.com.br. ApresentaÃ§Ã£o na oficina: caracore-area51/apresentacao/index.html (alinhada Ã  loja).
+  Links e CTAs              | OK     | Matriz com "Ver loja (releases)"; loja com "Ver apresentaÃ§Ã£o (matriz)". VALIDACAO_LOJAS_MATRIZ.txt e ECOSYSTEM_LOJAS.txt.
 
-  Ação sugerida: Manter alinhamento matriz ↔ loja; mensagem "suporte às empresas médias do Brasil para configurar os portais".
+  AÃ§Ã£o sugerida: Manter alinhamento matriz â†” loja; mensagem "suporte Ã s empresas mÃ©dias do Brasil para configurar os portais".
 
-2.8 RU Soberano (Garagem — futuros lançamentos)
+2.8 RU Soberano (Garagem â€” futuros lanÃ§amentos)
 
-  Critério                  | Status | Detalhe
+  CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
-  Posicionamento            | OK     | Produto na Garagem (ecosistema.html): matriz, oficina e loja no ar; lançamento 18/Junho/2026. Simulador reator PFR, história do RU e Engenharia Química (1991→2026).
-  Proposta de valor         | OK     | Inteligência de Processo + Memorial RU; degustação FREE até o Buffet; R$ 29,90 jornada completa; produto em evolução; expectativa × realidade (Café Mania 2.0 vs material sério).
-  Preço                     | OK     | R$ 29,90 (jornada completa); degustação FREE até o Buffet.
-  Delivery funcional        | OK     | Matriz: delivery/ru (index, canal-feedback, MIRROR_DELIVERY.md). Loja: ru.caracore.com.br/ (docs: index, download, licenca-uso, manual-tecnico, canal-feedback, MIRROR_DELIVERY.md). Oficina: caracore-ru. Loja alinhada à matriz.
-  Garagem                   | OK     | Ramo Garagem no ecossistema (ecosistema.html): Matriz → RU Soberano → caracore-ru → caracore-ru-releases. Link para delivery/ru na página do ecossistema.
+  Posicionamento            | OK     | Produto na Garagem (ecosistema.html): matriz, oficina e loja no ar; lanÃ§amento 18/Junho/2026. Simulador reator PFR, histÃ³ria do RU e Engenharia QuÃ­mica (1991â†’2026).
+  Proposta de valor         | OK     | InteligÃªncia de Processo + Memorial RU; degustaÃ§Ã£o FREE atÃ© o Buffet; R$ 29,90 jornada completa; produto em evoluÃ§Ã£o; expectativa Ã— realidade (CafÃ© Mania 2.0 vs material sÃ©rio).
+  PreÃ§o                     | OK     | R$ 29,90 (jornada completa); degustaÃ§Ã£o FREE atÃ© o Buffet.
+  Delivery funcional        | OK     | Matriz: delivery/ru (index, canal-feedback, MIRROR_DELIVERY.md). Loja: ru.caracore.com.br/ (docs: index, download, licenca-uso, manual-tecnico, canal-feedback, MIRROR_DELIVERY.md). Oficina: caracore-ru. Loja alinhada Ã  matriz.
+  Garagem                   | OK     | Ramo Garagem no ecossistema (ecosistema.html): Matriz â†’ RU Soberano â†’ caracore-ru â†’ caracore-ru-releases. Link para delivery/ru na pÃ¡gina do ecossistema.
 
-  Ação sugerida: Manter alinhamento matriz (delivery/ru) ↔ loja (caracore-ru-releases). Ao lançar (18/Junho/2026), considerar mover RU Soberano do subgraph Garagem para o fluxo completo no diagrama (opcional). Ver VALIDACAO_LOJAS_MATRIZ.txt (assunto Garagem).
+  AÃ§Ã£o sugerida: Manter alinhamento matriz (delivery/ru) â†” loja (caracore-ru-releases). Ao lanÃ§ar (18/Junho/2026), considerar mover RU Soberano do subgraph Garagem para o fluxo completo no diagrama (opcional). Ver VALIDACAO_LOJAS_MATRIZ.txt (assunto Garagem).
 
 -------------------------------------------------------------------------------
 
@@ -136,49 +136,50 @@ Referência (sem oferta ativa):
 
   Fluxo                          | O que o cliente faz                                                                 | Funciona?
   -------------------------------|-------------------------------------------------------------------------------------|----------
-  Conhecer PDV / Baixar EXE PDV   | Portfólio → Ver Apresentação (matriz delivery/pdv/) ou Ver loja (releases) → pdv.caracore.com.br/ ou delivery/pdv/download.html | Sim (escopo: localhost + Windows Desktop; banco SQLite)
-  Baixar Minerador 4.0           | Portfólio → Download → delivery/ete/download.html → GitHub caracore-ete-releases/latest      | Sim
-  Reino OIDC — baixar EXE FREE   | Portfólio → delivery/oidc/ ou reino_oidc_releases → download.html → releases/latest (ReinoOIDC.exe) | Sim (prioridade: EXE; conteúdo HTML não destacado)
-  Conhecer Seed (sem download)    | Portfólio (seção no final) ou delivery/seed / caracore-seed-releases → apenas informação de que o produto existe e a aplicação não está disponível | Sim (sem oferta de EXE nem compra)
-  Circuito Python — baixar EXE    | Portfólio → delivery/circuito/ ou circuito-python-releases → Download → releases/latest (CircuitoPython.exe) | Sim; prioridade EXE; link curso HTML não destacado
-  Cara Core Hub — portal / Tia Sócia | Portfólio → delivery/hub/ ou caracore-hub-releases → index, download (releases quando houver), Apresentação Tia Sócia (slides/) | Sim; SQLite local; negócio aplicável Tia Sócia
-  Suporte Área 51 — orçamento     | Portfólio → delivery/area51/ ou caracore-area51-releases → Solicitar suporte / Orçamento (canal-feedback) | Sim; produto = suporte para configurar portais; empresas médias do Brasil
-  RU Soberano (Garagem) — conhecer / download | delivery/ru/ ou ru.caracore.com.br/ → index, download (degustação FREE), licenca-uso (R$ 29,90) | Sim; lançamento 18/Junho/2026; ramo Garagem no ecossistema
+  Conhecer PDV / Baixar EXE PDV   | PortfÃ³lio â†’ Ver ApresentaÃ§Ã£o (matriz delivery/pdv/) ou Ver loja (releases) â†’ pdv.caracore.com.br/ ou delivery/pdv/download.html | Sim (escopo: localhost + Windows Desktop; banco SQLite)
+  Baixar Minerador 4.0           | PortfÃ³lio â†’ Download â†’ delivery/ete/download.html â†’ GitHub caracore-ete-releases/latest      | Sim
+  Reino OIDC â€” baixar EXE FREE   | PortfÃ³lio â†’ delivery/oidc/ ou reino_oidc_releases â†’ download.html â†’ releases/latest (ReinoOIDC.exe) | Sim (prioridade: EXE; conteÃºdo HTML nÃ£o destacado)
+  Conhecer Seed (sem download)    | PortfÃ³lio (seÃ§Ã£o no final) ou delivery/seed / caracore-seed-releases â†’ apenas informaÃ§Ã£o de que o produto existe e a aplicaÃ§Ã£o nÃ£o estÃ¡ disponÃ­vel | Sim (sem oferta de EXE nem compra)
+  Circuito Python â€” baixar EXE    | PortfÃ³lio â†’ delivery/circuito/ ou circuito-python-releases â†’ Download â†’ releases/latest (CircuitoPython.exe) | Sim; prioridade EXE; link curso HTML nÃ£o destacado
+  Cara Core Hub â€” portal / Tia SÃ³cia | PortfÃ³lio â†’ delivery/hub/ ou caracore-hub-releases â†’ index, download (releases quando houver), ApresentaÃ§Ã£o Tia SÃ³cia (slides/) | Sim; SQLite local; negÃ³cio aplicÃ¡vel Tia SÃ³cia
+  Suporte Ãrea 51 â€” orÃ§amento     | PortfÃ³lio â†’ delivery/area51/ ou caracore-area51-releases â†’ Solicitar suporte / OrÃ§amento (canal-feedback) | Sim; produto = suporte para configurar portais; empresas mÃ©dias do Brasil
+  RU Soberano (Garagem) â€” conhecer / download | delivery/ru/ ou ru.caracore.com.br/ â†’ index, download (degustaÃ§Ã£o FREE), licenca-uso (R$ 29,90) | Sim; lanÃ§amento 18/Junho/2026; ramo Garagem no ecossistema
 
 -------------------------------------------------------------------------------
 
-4. CONSISTÊNCIA DE MENSAGEM (PÚBLICO SELETO)
+4. CONSISTÃŠNCIA DE MENSAGEM (PÃšBLICO SELETO)
 
-  Tema                          | PDV                    | Minerador 4.0           | Reino OIDC                    | Seed              | Circuito Python          | Cara Core Hub            | Suporte Área 51           | RU Soberano (Garagem)
+  Tema                          | PDV                    | Minerador 4.0           | Reino OIDC                    | Seed              | Circuito Python          | Cara Core Hub            | Suporte Ãrea 51           | RU Soberano (Garagem)
   -------------------------------|------------------------|-------------------------|-------------------------------|-------------------|---------------------------|----------------------------|----------------------------------|----------------------------------
-  Nome completo / posicionamento| Cara Core PDV          | chmulatoETE Minerador 4.0| Reino OIDC — Reino das Id. Fed.| Cara Core Seed (existe; app não disponível) | Circuito Python   | Cara Core Hub (gestão logística; SQLite; Tia Sócia) | Suporte Área 51 (configurar portais; empresas médias Brasil) | RU Soberano (reator PFR; história RU + Eng. Química; Garagem)
-  Escopo                        | localhost + Windows Desktop; SQLite | —                | Prioridade EXE                 | Ref. interna      | Prioridade EXE            | WAR/Tomcat; SQLite local  | OAuth 2.1, OIDC, PKCE; portais | Reator PFR; degustação FREE; R$ 29,90
-  Preço visível                 | Free + Premium (não citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (não disponível) | FREE (MIT); escolas R$ 5,00/aluno/mês | B2B / sob consulta | Sob consulta | R$ 29,90; degustação FREE
-  Entrega Windows               | Sim (EXE → localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | Não (não disponível) | Sim (CircuitoPython.exe)  | WAR (releases quando houver) | Serviço (não EXE) | Soberania_RU_v1.0 (lançamento 18/Jun/2026)
-  Transparência / LGPD           | Conformidade citada    | Portal/licenças ETE     | —                             | Ref. (portal informativo) | Licença e portal escolas | Canal feedback; doc tecnologia | Canal feedback; LGPD | Produto em evolução; canal feedback
-  Link direto download/EXE       | Matriz delivery/pdv + loja caracore-pdv-releases | Download → caracore-ete-releases | delivery/oidc + reino-oidc-releases → releases/latest | Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest | delivery/hub + caracore-hub-releases; slides Tia Sócia | delivery/area51 + caracore-area51-releases; Solicitar suporte | delivery/ru + caracore-ru-releases; Garagem
+  Nome completo / posicionamento| Cara Core PDV          | chmulatoETE Minerador 4.0| Reino OIDC â€” Reino das Id. Fed.| Cara Core Seed (existe; app nÃ£o disponÃ­vel) | Circuito Python   | Cara Core Hub (gestÃ£o logÃ­stica; SQLite; Tia SÃ³cia) | Suporte Ãrea 51 (configurar portais; empresas mÃ©dias Brasil) | RU Soberano (reator PFR; histÃ³ria RU + Eng. QuÃ­mica; Garagem)
+  Escopo                        | localhost + Windows Desktop; SQLite | â€”                | Prioridade EXE                 | Ref. interna      | Prioridade EXE            | WAR/Tomcat; SQLite local  | OAuth 2.1, OIDC, PKCE; portais | Reator PFR; degustaÃ§Ã£o FREE; R$ 29,90
+  PreÃ§o visÃ­vel                 | Free + Premium (nÃ£o citado) | Free + Ouro 4.0 R$ 29,90 | FREE + upgrade R$ 29,90       | N/A (nÃ£o disponÃ­vel) | FREE (MIT); escolas R$ 5,00/aluno/mÃªs | B2B / sob consulta | Sob consulta | R$ 29,90; degustaÃ§Ã£o FREE
+  Entrega Windows               | Sim (EXE â†’ localhost:8080) | Sim (.exe)              | Sim (ReinoOIDC.exe FREE)      | NÃ£o (nÃ£o disponÃ­vel) | Sim (CircuitoPython.exe)  | WAR (releases quando houver) | ServiÃ§o (nÃ£o EXE) | Soberania_RU_v1.0 (lanÃ§amento 18/Jun/2026)
+  TransparÃªncia / LGPD           | Conformidade citada    | Portal/licenÃ§as ETE     | â€”                             | Ref. (portal informativo) | LicenÃ§a e portal escolas | Canal feedback; doc tecnologia | Canal feedback; LGPD | Produto em evoluÃ§Ã£o; canal feedback
+  Link direto download/EXE       | Matriz delivery/pdv + loja caracore-pdv-releases | Download â†’ caracore-ete-releases | delivery/oidc + reino-oidc-releases â†’ releases/latest | Portal Seed + repo (sem oferta) | circuito-python-releases/releases/latest | delivery/hub + caracore-hub-releases; slides Tia SÃ³cia | delivery/area51 + caracore-area51-releases; Solicitar suporte | delivery/ru + caracore-ru-releases; Garagem
 
 -------------------------------------------------------------------------------
 
-5. RESUMO DE AÇÕES RECOMENDADAS
+5. RESUMO DE AÃ‡Ã•ES RECOMENDADAS
 
-  1. Portfólio — Frase de framing: Adicionar uma linha no header ou logo abaixo do lead do portfólio reforçando: "Soluções Windows Desktop e identidade para um público seleto" (ou equivalente), ligando os quatro produtos.
-  2. Minerador 4.0: Incluir no alerta de licenciamento do card: "Upgrade Ouro 4.0: R$ 29,90 (valor único)."
-  3. Seed: Produto existe, aplicação não disponível. Não oferecer Baixar EXE nem Comprar; portfólio com seção no final; delivery e vitrine apenas informam que existe. Foco em aplicações relevantes para o negócio.
-  4. Reino OIDC: Manter nome completo "Reino OIDC — Reino das Identidades Federadas" em qualquer novo material; download do EXE FREE (ReinoOIDC.exe) disponível em delivery/oidc e reino_oidc_releases.
-  5. Circuito Python: Não apontar para o repositório privado (github.com/chmulato/circuito_python). Em matriz e filial: repositório público de releases (github.com/chmulato/circuito-python-releases); priorizar download do EXE (releases/latest); não destacar link do curso em HTML.
-  6. Cara Core PDV: Matriz = delivery/pdv; loja online = https://pdv.caracore.com.br/. Documentado em delivery/pdv/MIRROR_DELIVERY.md. Ver ECOSYSTEM_LOJAS.md para referência central das lojas.
-  7. Cara Core Hub: Portal delivery/hub (matriz) e loja online caracore-hub-releases (https://hub.caracore.com.br/) alinhados; negócio aplicável Tia Sócia citado; apresentação Tia Sócia em slides/ em ambos. Ao publicar releases (WAR), atualizar download.html com link para releases/latest.
-  8. Suporte Área 51: Produto = suporte às empresas médias do Brasil para configurar os portais que o produto Área 51 oferece. Matriz delivery/area51 e loja caracore-area51-releases; CTAs "Ver loja (releases)" na matriz e "Ver apresentação (matriz)" na loja. Ver VALIDACAO_LOJAS_MATRIZ.txt e ECOSYSTEM_LOJAS.txt.
-  9. RU Soberano (Garagem): Produto no ramo Garagem do ecossistema (ecosistema.html). Matriz delivery/ru, loja caracore-ru-releases, oficina caracore-ru. Mensagem: RU Soberano, produto em evolução, degustação FREE até o Buffet, Inteligência de Processo + Memorial RU R$ 29,90, lançamento 18/Junho/2026. Manter alinhamento matriz ↔ loja. Ver VALIDACAO_LOJAS_MATRIZ.txt (assunto Garagem).
-  10. Revisão periódica: Usar este documento como checklist em próximas releases (novos produtos, mudança de preço, novos CTAs). Referência das URLs de lojas: ECOSYSTEM_LOJAS.txt. Mapeamento dos repositórios: ECOSYSTEM_CARA_CORE.txt. Validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt (inclui Garagem). Mapa visual do ecossistema (matriz → produtos → oficinas → lojas; ramo Garagem): caracore.com.br/ecosistema.html (Conheça o Nosso Eco Mundo); ícone eco em Recursos e Planos na index.
+  1. PortfÃ³lio â€” Frase de framing: Adicionar uma linha no header ou logo abaixo do lead do portfÃ³lio reforÃ§ando: "SoluÃ§Ãµes Windows Desktop e identidade para um pÃºblico seleto" (ou equivalente), ligando os quatro produtos.
+  2. Minerador 4.0: Incluir no alerta de licenciamento do card: "Upgrade Ouro 4.0: R$ 29,90 (valor Ãºnico)."
+  3. Seed: Produto existe, aplicaÃ§Ã£o nÃ£o disponÃ­vel. NÃ£o oferecer Baixar EXE nem Comprar; portfÃ³lio com seÃ§Ã£o no final; delivery e vitrine apenas informam que existe. Foco em aplicaÃ§Ãµes relevantes para o negÃ³cio.
+  4. Reino OIDC: Manter nome completo "Reino OIDC â€” Reino das Identidades Federadas" em qualquer novo material; download do EXE FREE (ReinoOIDC.exe) disponÃ­vel em delivery/oidc e reino_oidc_releases.
+  5. Circuito Python: NÃ£o apontar para o repositÃ³rio privado (caracore.com.br/circuito_python). Em matriz e filial: repositÃ³rio pÃºblico de releases (caracore.com.br/circuito-python-releases); priorizar download do EXE (releases/latest); nÃ£o destacar link do curso em HTML.
+  6. Cara Core PDV: Matriz = delivery/pdv; loja online = https://pdv.caracore.com.br/. Documentado em delivery/pdv/MIRROR_DELIVERY.md. Ver ECOSYSTEM_LOJAS.md para referÃªncia central das lojas.
+  7. Cara Core Hub: Portal delivery/hub (matriz) e loja online caracore-hub-releases (https://hub.caracore.com.br/) alinhados; negÃ³cio aplicÃ¡vel Tia SÃ³cia citado; apresentaÃ§Ã£o Tia SÃ³cia em slides/ em ambos. Ao publicar releases (WAR), atualizar download.html com link para releases/latest.
+  8. Suporte Ãrea 51: Produto = suporte Ã s empresas mÃ©dias do Brasil para configurar os portais que o produto Ãrea 51 oferece. Matriz delivery/area51 e loja caracore-area51-releases; CTAs "Ver loja (releases)" na matriz e "Ver apresentaÃ§Ã£o (matriz)" na loja. Ver VALIDACAO_LOJAS_MATRIZ.txt e ECOSYSTEM_LOJAS.txt.
+  9. RU Soberano (Garagem): Produto no ramo Garagem do ecossistema (ecosistema.html). Matriz delivery/ru, loja caracore-ru-releases, oficina caracore-ru. Mensagem: RU Soberano, produto em evoluÃ§Ã£o, degustaÃ§Ã£o FREE atÃ© o Buffet, InteligÃªncia de Processo + Memorial RU R$ 29,90, lanÃ§amento 18/Junho/2026. Manter alinhamento matriz â†” loja. Ver VALIDACAO_LOJAS_MATRIZ.txt (assunto Garagem).
+  10. RevisÃ£o periÃ³dica: Usar este documento como checklist em prÃ³ximas releases (novos produtos, mudanÃ§a de preÃ§o, novos CTAs). ReferÃªncia das URLs de lojas: ECOSYSTEM_LOJAS.txt. Mapeamento dos repositÃ³rios: ECOSYSTEM_CARA_CORE.txt. ValidaÃ§Ã£o matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt (inclui Garagem). Mapa visual do ecossistema (matriz â†’ produtos â†’ oficinas â†’ lojas; ramo Garagem): caracore.com.br/ecosistema.html (ConheÃ§a o Nosso Eco Mundo); Ã­cone eco em Recursos e Planos na index.
 
 -------------------------------------------------------------------------------
 
-6. CONCLUSÃO
+6. CONCLUSÃƒO
 
-  - Funcionalidade: Os fluxos de apresentação e download estão coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python, Cara Core Hub, Suporte Área 51). PDV: matriz delivery/pdv e loja online https://pdv.caracore.com.br/; escopo localhost + Windows Desktop, SQLite; portfólio com "Ver loja (releases)" e "Baixar EXE". Seed: produto existe, aplicação não disponível — sem oferta de download nem venda; portfólio com seção no final; delivery e vitrine apenas informam. Hub: matriz delivery/hub e loja online https://hub.caracore.com.br/; gestão logística e e-commerce; SQLite local; Tia Sócia e apresentação em slides/. Suporte Área 51: matriz delivery/area51 e loja caracore-area51-releases; produto = suporte às empresas médias do Brasil para configurar os portais; CTAs alinhados (Ver loja / Ver apresentação matriz).
-  - Premissa: Não temos braço para a startup; foco em aplicações relevantes para o negócio. Seed permanece no portfólio como referência.
-  - Atualização: Wiki e portfólio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Lojas e matriz com links cruzados: cada matriz tem "Ver loja (releases)"; cada loja tem "Ver apresentação (matriz)". Referência das lojas: ECOSYSTEM_LOJAS.txt; mapeamento do ecossistema: ECOSYSTEM_CARA_CORE.txt; validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt (inclui Garagem — RU Soberano). Página do ecossistema (diagrama em camadas: matriz, produtos, oficinas, lojas; ramo Garagem — futuros lançamentos) em caracore.com.br/ecosistema.html; acesso pelo ícone eco em Recursos e Planos na index ("Conheça o Nosso Eco Mundo"). RU Soberano: primeiro produto na Garagem (delivery/ru, caracore-ru-releases, caracore-ru); lançamento 18/Junho/2026; R$ 29,90; degustação FREE. Circuito Python e Reino OIDC: priorizar EXE; não destacar link do curso/conteúdo em HTML. Não linkar ao repositório privado circuito_python. Reino OIDC loja: reino-oidc-releases (docs/); caminho local D:\dev\reino-oidc-releases.
+  - Funcionalidade: Os fluxos de apresentaÃ§Ã£o e download estÃ£o coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Python, Cara Core Hub, Suporte Ãrea 51). PDV: matriz delivery/pdv e loja online https://pdv.caracore.com.br/; escopo localhost + Windows Desktop, SQLite; portfÃ³lio com "Ver loja (releases)" e "Baixar EXE". Seed: produto existe, aplicaÃ§Ã£o nÃ£o disponÃ­vel â€” sem oferta de download nem venda; portfÃ³lio com seÃ§Ã£o no final; delivery e vitrine apenas informam. Hub: matriz delivery/hub e loja online https://hub.caracore.com.br/; gestÃ£o logÃ­stica e e-commerce; SQLite local; Tia SÃ³cia e apresentaÃ§Ã£o em slides/. Suporte Ãrea 51: matriz delivery/area51 e loja caracore-area51-releases; produto = suporte Ã s empresas mÃ©dias do Brasil para configurar os portais; CTAs alinhados (Ver loja / Ver apresentaÃ§Ã£o matriz).
+  - Premissa: NÃ£o temos braÃ§o para a startup; foco em aplicaÃ§Ãµes relevantes para o negÃ³cio. Seed permanece no portfÃ³lio como referÃªncia.
+  - AtualizaÃ§Ã£o: Wiki e portfÃ³lio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Lojas e matriz com links cruzados: cada matriz tem "Ver loja (releases)"; cada loja tem "Ver apresentaÃ§Ã£o (matriz)". ReferÃªncia das lojas: ECOSYSTEM_LOJAS.txt; mapeamento do ecossistema: ECOSYSTEM_CARA_CORE.txt; validaÃ§Ã£o matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt (inclui Garagem â€” RU Soberano). PÃ¡gina do ecossistema (diagrama em camadas: matriz, produtos, oficinas, lojas; ramo Garagem â€” futuros lanÃ§amentos) em caracore.com.br/ecosistema.html; acesso pelo Ã­cone eco em Recursos e Planos na index ("ConheÃ§a o Nosso Eco Mundo"). RU Soberano: primeiro produto na Garagem (delivery/ru, caracore-ru-releases, caracore-ru); lanÃ§amento 18/Junho/2026; R$ 29,90; degustaÃ§Ã£o FREE. Circuito Python e Reino OIDC: priorizar EXE; nÃ£o destacar link do curso/conteÃºdo em HTML. NÃ£o linkar ao repositÃ³rio privado circuito_python. Reino OIDC loja: reino-oidc-releases (docs/); caminho local D:\dev\reino-oidc-releases.
 
-Documento gerado para validação de negócio — Cara Core Informática.
+Documento gerado para validaÃ§Ã£o de negÃ³cio â€” Cara Core InformÃ¡tica.
+

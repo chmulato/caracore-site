@@ -1,53 +1,53 @@
-# Troubleshooting e FAQ - Fase 6
+﻿# Troubleshooting e FAQ - Fase 6
 
 **Data:** 04/11/2025  
-**Versão:** 1.0
+**VersÃ£o:** 1.0
 
 ---
 
-## ❓ PERGUNTAS FREQUENTES
+## â“ PERGUNTAS FREQUENTES
 
-### Q1: Por que a Fase 6 é necessária se o sistema já está funcionando?
+### Q1: Por que a Fase 6 Ã© necessÃ¡ria se o sistema jÃ¡ estÃ¡ funcionando?
 
-**R:** O sistema está funcionando corretamente, mas os testes automatizados identificaram 5 vulnerabilidades de segurança que precisam ser corrigidas:
+**R:** O sistema estÃ¡ funcionando corretamente, mas os testes automatizados identificaram 5 vulnerabilidades de seguranÃ§a que precisam ser corrigidas:
 
-- Qualquer usuário autenticado pode acessar áreas administrativas (falta autorização)
-- Requisições sem token não são rejeitadas adequadamente
-- Tokens inválidos são aceitos em alguns casos
-- Credenciais inválidas não são rejeitadas corretamente
+- Qualquer usuÃ¡rio autenticado pode acessar Ã¡reas administrativas (falta autorizaÃ§Ã£o)
+- RequisiÃ§Ãµes sem token nÃ£o sÃ£o rejeitadas adequadamente
+- Tokens invÃ¡lidos sÃ£o aceitos em alguns casos
+- Credenciais invÃ¡lidas nÃ£o sÃ£o rejeitadas corretamente
 
-A Fase 6 resolve esses problemas, elevando a segurança de 77.3% para mais de 90%.
+A Fase 6 resolve esses problemas, elevando a seguranÃ§a de 77.3% para mais de 90%.
 
-### Q2: Qual é o risco de quebrar o sistema atual?
+### Q2: Qual Ã© o risco de quebrar o sistema atual?
 
-**R:** O risco é baixo, pois:
+**R:** O risco Ã© baixo, pois:
 
-- As modificações são incrementais e testadas
+- As modificaÃ§Ãµes sÃ£o incrementais e testadas
 - Mantemos backup de todos os arquivos modificados
-- Executamos testes após cada mudança
+- Executamos testes apÃ³s cada mudanÃ§a
 - As funcionalidades existentes continuam funcionando
 
 ### Q3: Quanto tempo leva para implementar?
 
-**R:** Estimativa de 2.5 dias úteis:
+**R:** Estimativa de 2.5 dias Ãºteis:
 
-- Item 1 (Autorização): 2 dias
-- Item 2 (Proteção): 1 dia  
-- Item 3 (Validação): 0.5 dia
+- Item 1 (AutorizaÃ§Ã£o): 2 dias
+- Item 2 (ProteÃ§Ã£o): 1 dia  
+- Item 3 (ValidaÃ§Ã£o): 0.5 dia
 
 ---
 
-## 🔧 PROBLEMAS COMUNS E SOLUÇÕES
+## ðŸ”§ PROBLEMAS COMUNS E SOLUÃ‡Ã•ES
 
-### Problema 1: Middleware bloqueia usuários legítimos
+### Problema 1: Middleware bloqueia usuÃ¡rios legÃ­timos
 
 **Sintomas:**
-- Usuário super admin não consegue acessar painéis
+- UsuÃ¡rio super admin nÃ£o consegue acessar painÃ©is
 - Erro 403 Forbidden inesperado
 
-**Diagnóstico:**
+**DiagnÃ³stico:**
 ```bash
-# Verificar se email está na lista autorizada
+# Verificar se email estÃ¡ na lista autorizada
 python -c "
 import json
 with open('backend/data/authorized_users.json') as f:
@@ -56,81 +56,81 @@ with open('backend/data/authorized_users.json') as f:
 "
 ```
 
-**Solução:**
-1. Verificar se `suporte@caracore.com.br` está na lista de super_admins
-2. Verificar se a função `extract_email_from_token()` está retornando o email correto
+**SoluÃ§Ã£o:**
+1. Verificar se `suporte@caracore.com.br` estÃ¡ na lista de super_admins
+2. Verificar se a funÃ§Ã£o `extract_email_from_token()` estÃ¡ retornando o email correto
 3. Verificar logs do backend para detalhes do erro
 
-### Problema 2: Testes continuam falhando após implementação
+### Problema 2: Testes continuam falhando apÃ³s implementaÃ§Ã£o
 
 **Sintomas:**
-- Taxa de sucesso não aumenta após implementar Item 1
-- Testes específicos ainda falham
+- Taxa de sucesso nÃ£o aumenta apÃ³s implementar Item 1
+- Testes especÃ­ficos ainda falham
 
-**Diagnóstico:**
+**DiagnÃ³stico:**
 ```bash
-# Executar apenas teste específico
+# Executar apenas teste especÃ­fico
 cd d:\dev\site\cara-core
 python scripts\teste_api_fase_5.py --verbose
 ```
 
-**Solução:**
+**SoluÃ§Ã£o:**
 1. Revisar logs detalhados do teste
 2. Verificar se middleware foi aplicado nos endpoints corretos
 3. Testar manualmente com Postman/curl
-4. Verificar se arquivo JSON existe e está acessível
+4. Verificar se arquivo JSON existe e estÃ¡ acessÃ­vel
 
-### Problema 3: Performance degradada após middleware
+### Problema 3: Performance degradada apÃ³s middleware
 
 **Sintomas:**
 - Resposta dos endpoints mais lenta
-- Timeout em algumas requisições
+- Timeout em algumas requisiÃ§Ãµes
 
-**Diagnóstico:**
+**DiagnÃ³stico:**
 ```python
 # Adicionar logs de tempo no middleware
 import time
 start_time = time.time()
-# ... código do middleware ...
+# ... cÃ³digo do middleware ...
 print(f"Authorization check took: {time.time() - start_time:.3f}s")
 ```
 
-**Solução:**
-1. Implementar cache para validação de autorização
+**SoluÃ§Ã£o:**
+1. Implementar cache para validaÃ§Ã£o de autorizaÃ§Ã£o
 2. Otimizar leitura do arquivo JSON
-3. Considerar carregar dados em memória na inicialização
+3. Considerar carregar dados em memÃ³ria na inicializaÃ§Ã£o
 
-### Problema 4: Token JWT inválido ainda é aceito
+### Problema 4: Token JWT invÃ¡lido ainda Ã© aceito
 
 **Sintomas:**
 - Teste "Invalid Token Protection" continua falhando
 - Sistema aceita tokens malformados
 
-**Diagnóstico:**
+**DiagnÃ³stico:**
 ```python
-# Testar validação JWT manualmente
+# Testar validaÃ§Ã£o JWT manualmente
 import jwt
 try:
     decoded = jwt.decode(token, secret_key, algorithms=['HS256'])
-    print("Token válido:", decoded)
+    print("Token vÃ¡lido:", decoded)
 except jwt.InvalidTokenError as e:
-    print("Token inválido:", str(e))
+    print("Token invÃ¡lido:", str(e))
 ```
 
-**Solução:**
-1. Verificar se secret_key está correto
-2. Verificar se algoritmo de decodificação está correto
-3. Implementar validação de expiração
-4. Verificar se header Authorization está sendo processado corretamente
+**SoluÃ§Ã£o:**
+1. Verificar se secret_key estÃ¡ correto
+2. Verificar se algoritmo de decodificaÃ§Ã£o estÃ¡ correto
+3. Implementar validaÃ§Ã£o de expiraÃ§Ã£o
+4. Verificar se header Authorization estÃ¡ sendo processado corretamente
 
 ---
 
-## 🚨 CENÁRIOS DE EMERGÊNCIA
+## ðŸš¨ CENÃRIOS DE EMERGÃŠNCIA
 
-### Cenário 1: Sistema inacessível após deploy
+### CenÃ¡rio 1: Sistema inacessÃ­vel apÃ³s deploy
 
-**Ação Imediata:**
-1. Reverter para versão anterior:
+**AÃ§Ã£o Imediata:**
+1. Reverter para versÃ£o anterior:
 ```bash
 git revert HEAD
 git push origin main
@@ -146,67 +146,67 @@ git push origin main
 # Acessar logs do Azure Web App
 ```
 
-### Cenário 2: Super admin bloqueado
+### CenÃ¡rio 2: Super admin bloqueado
 
-**Ação Imediata:**
+**AÃ§Ã£o Imediata:**
 1. Acessar backend via SSH/console
 2. Verificar arquivo `authorized_users.json`
-3. Adicionar email manualmente se necessário:
+3. Adicionar email manualmente se necessÃ¡rio:
 ```json
 {
   "super_admins": ["suporte@caracore.com.br"]
 }
 ```
 
-### Cenário 3: Testes param de funcionar
+### CenÃ¡rio 3: Testes param de funcionar
 
-**Ação Imediata:**
-1. Verificar se backend está online:
+**AÃ§Ã£o Imediata:**
+1. Verificar se backend estÃ¡ online:
 ```bash
 curl https://caracore-backend-docker.azurewebsites.net/test-deploy
 ```
 
-2. Verificar se senha do teste está correta em `secrets.txt`
+2. Verificar se senha do teste estÃ¡ correta em `secrets.txt`
 3. Executar teste local com logs verbose
 
 ---
 
-## 📋 CHECKLIST DE VERIFICAÇÃO
+## ðŸ“‹ CHECKLIST DE VERIFICAÃ‡ÃƒO
 
-### Antes da Implementação
-- [ ] Backup dos arquivos que serão modificados
+### Antes da ImplementaÃ§Ã£o
+- [ ] Backup dos arquivos que serÃ£o modificados
 - [ ] Ambiente de desenvolvimento configurado
 - [ ] Testes automatizados funcionando
-- [ ] Documentação da versão atual
+- [ ] DocumentaÃ§Ã£o da versÃ£o atual
 
-### Durante a Implementação
-- [ ] Commits incrementais após cada mudança
-- [ ] Testes manuais após cada funcionalidade
-- [ ] Logs detalhados das operações
-- [ ] Validação de cada endpoint modificado
+### Durante a ImplementaÃ§Ã£o
+- [ ] Commits incrementais apÃ³s cada mudanÃ§a
+- [ ] Testes manuais apÃ³s cada funcionalidade
+- [ ] Logs detalhados das operaÃ§Ãµes
+- [ ] ValidaÃ§Ã£o de cada endpoint modificado
 
-### Após a Implementação
+### ApÃ³s a ImplementaÃ§Ã£o
 - [ ] Executar teste completo `teste_api_fase_5.py`
 - [ ] Verificar taxa de sucesso >90%
 - [ ] Testar manualmente todas as funcionalidades
-- [ ] Deploy para produção
+- [ ] Deploy para produÃ§Ã£o
 - [ ] Monitorar logs por 24h
 
 ---
 
-## 🔍 COMANDOS ÚTEIS
+## ðŸ” COMANDOS ÃšTEIS
 
-### Validação do Sistema
+### ValidaÃ§Ã£o do Sistema
 ```bash
 # Executar todos os testes
 python scripts\teste_api_fase_5.py
 
-# Testar endpoint específico
+# Testar endpoint especÃ­fico
 curl -X POST https://caracore-backend-docker.azurewebsites.net/api/admin/users \
   -H "Authorization: Bearer INVALID_TOKEN" \
   -H "Content-Type: application/json"
 
-# Verificar estrutura do arquivo de autorização
+# Verificar estrutura do arquivo de autorizaÃ§Ã£o
 python -c "
 import json
 with open('backend/data/authorized_users.json') as f:
@@ -217,7 +217,7 @@ with open('backend/data/authorized_users.json') as f:
 
 ### Debug do Backend
 ```bash
-# Logs do Azure (se aplicável)
+# Logs do Azure (se aplicÃ¡vel)
 az webapp log tail --name caracore-backend-docker --resource-group rg-caracore
 
 # Teste local
@@ -225,7 +225,7 @@ cd backend
 python app.py
 ```
 
-### Verificação de Token
+### VerificaÃ§Ã£o de Token
 ```python
 # Script para testar token JWT
 import jwt
@@ -236,39 +236,39 @@ secret = "YOUR_SECRET_HERE"
 
 try:
     decoded = jwt.decode(token, secret, algorithms=['HS256'])
-    print("Token válido!")
+    print("Token vÃ¡lido!")
     print(json.dumps(decoded, indent=2))
 except jwt.ExpiredSignatureError:
     print("Token expirado")
 except jwt.InvalidTokenError as e:
-    print(f"Token inválido: {e}")
+    print(f"Token invÃ¡lido: {e}")
 ```
 
 ---
 
-## 📞 SUPORTE
+## ðŸ“ž SUPORTE
 
 ### Contatos
 - **Email:** suporte@caracore.com.br
-- **GitHub Issues:** https://github.com/chmulato/cara-core/issues
+- **GitHub Issues:** https://caracore.com.br/
 
-### Informações para Suporte
+### InformaÃ§Ãµes para Suporte
 Ao reportar um problema, inclua:
 
-1. **Descrição do problema**
+1. **DescriÃ§Ã£o do problema**
 2. **Passos para reproduzir**
 3. **Output do teste automatizado**
-4. **Logs do backend (se disponível)**
+4. **Logs do backend (se disponÃ­vel)**
 5. **Timestamp do erro**
-6. **Versão/commit do código**
+6. **VersÃ£o/commit do cÃ³digo**
 
-### Logs Úteis
+### Logs Ãšteis
 - Teste automatizado: `test_report_fase5_*.json`
 - Backend: logs do Azure Web App
 - Frontend: console do navegador (F12)
 
 ---
 
-**Última Atualização:** 04/11/2025  
-**Versão do Documento:** 1.0  
-**Responsável:** Equipe Cara Core
+**Ãšltima AtualizaÃ§Ã£o:** 04/11/2025  
+**VersÃ£o do Documento:** 1.0  
+**ResponsÃ¡vel:** Equipe Cara Core

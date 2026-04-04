@@ -89,7 +89,7 @@ Adicionado como **4º projeto** no `portfolio.html`, posicionado após o Reino O
 **🔗 Links**
 
 - Documentação Técnica: `area51/wiki/`
-- Apresentação: `https://chmulato.github.io/cara-core/`
+- Apresentação: `https://caracore.com.br/`
 - Badges: Código privado + Apresentação pública + Sistema em produção
 
 ---
@@ -232,3 +232,4 @@ OAuth 2.1 + OIDC    OAuth 2.1 + OIDC
 **Data de Atualização**: 15 de novembro de 2025  
 **Versão do Portfólio**: 1.2  
 **Status**: 6 Fases Concluídas | 100% Testes Aprovados | Sistema em Produção
+

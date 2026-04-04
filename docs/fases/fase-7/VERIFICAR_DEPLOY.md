@@ -1,19 +1,19 @@
-# Verificar Deploy da Fase 7
+﻿# Verificar Deploy da Fase 7
 
-## 🔍 Problema Identificado
+## ðŸ” Problema Identificado
 
 O log do servidor ainda mostra:
 ```
-WARNING session_manager não disponível - sistema de refresh tokens desabilitado
+WARNING session_manager nÃ£o disponÃ­vel - sistema de refresh tokens desabilitado
 ```
 
 Isso indica que:
-1. O deploy ainda não foi aplicado (imagem Docker antiga)
-2. Ou os arquivos da Fase 7 não estão no container
+1. O deploy ainda nÃ£o foi aplicado (imagem Docker antiga)
+2. Ou os arquivos da Fase 7 nÃ£o estÃ£o no container
 
-## ✅ Verificações Necessárias
+## âœ… VerificaÃ§Ãµes NecessÃ¡rias
 
-### 1. Verificar se os Arquivos Estão no Container
+### 1. Verificar se os Arquivos EstÃ£o no Container
 
 **Via SSH no Azure Portal:**
 
@@ -29,12 +29,12 @@ ls -la /app/crypto_manager.py
 ls -la /app/token_storage.py
 ls -la /app/token_audit.py
 
-# Verificar se as dependências estão instaladas
+# Verificar se as dependÃªncias estÃ£o instaladas
 python3 -c "import cryptography; print('cryptography OK')"
 python3 -c "from dateutil import parser; print('python-dateutil OK')"
 ```
 
-### 2. Verificar se TOKEN_ENCRYPTION_KEY Está Configurada
+### 2. Verificar se TOKEN_ENCRYPTION_KEY EstÃ¡ Configurada
 
 ```bash
 az webapp config appsettings list \
@@ -54,26 +54,26 @@ TOKEN_ENCRYPTION_KEY  <REPLACE_WITH_BASE64_32BYTE_KEY>  False
 ### 3. Verificar Status do Deploy
 
 **GitHub Actions:**
-1. Acesse: https://github.com/chmulato/cara-core/actions
-2. Verifique se o workflow "Deploy Docker Backend to Azure Container Registry" executou após o último commit
+1. Acesse: https://caracore.com.br/
+2. Verifique se o workflow "Deploy Docker Backend to Azure Container Registry" executou apÃ³s o Ãºltimo commit
 3. Verifique se o build foi bem-sucedido
 
 **Azure Portal:**
-1. App Service → **Deployment Center** → **Logs**
-2. Verifique o último deploy e se foi bem-sucedido
+1. App Service â†’ **Deployment Center** â†’ **Logs**
+2. Verifique o Ãºltimo deploy e se foi bem-sucedido
 
-### 4. Forçar Rebuild da Imagem Docker
+### 4. ForÃ§ar Rebuild da Imagem Docker
 
-Se os arquivos não estiverem no container, pode ser necessário forçar um rebuild:
+Se os arquivos nÃ£o estiverem no container, pode ser necessÃ¡rio forÃ§ar um rebuild:
 
-**Opção A: Via GitHub Actions (Recomendado)**
-1. Vá para: https://github.com/chmulato/cara-core/actions
+**OpÃ§Ã£o A: Via GitHub Actions (Recomendado)**
+1. VÃ¡ para: https://caracore.com.br/
 2. Selecione o workflow "Deploy Docker Backend to Azure Container Registry"
-3. Clique em **Run workflow** → **Run workflow**
+3. Clique em **Run workflow** â†’ **Run workflow**
 
-**Opção B: Via Azure CLI**
+**OpÃ§Ã£o B: Via Azure CLI**
 ```bash
-# Forçar pull da imagem mais recente
+# ForÃ§ar pull da imagem mais recente
 az webapp config container set \
   --name caracore-backend-docker \
   --resource-group rg-caracore \
@@ -86,36 +86,36 @@ az webapp restart \
   --resource-group rg-caracore
 ```
 
-### 5. Verificar Logs Após Deploy
+### 5. Verificar Logs ApÃ³s Deploy
 
-Após o deploy, verifique os logs:
+ApÃ³s o deploy, verifique os logs:
 
 ```bash
 az webapp log tail --name caracore-backend-docker --resource-group rg-caracore
 ```
 
 **Procure por:**
-- ✅ `"SessionManager carregado - sistema de refresh tokens habilitado"` (sucesso)
-- ❌ `"TOKEN_ENCRYPTION_KEY não configurada"` (chave não encontrada)
-- ❌ `"SessionManager não pode ser inicializado (chave inválida)"` (chave inválida)
-- ❌ `"session_manager não disponível"` (arquivo não encontrado)
+- âœ… `"SessionManager carregado - sistema de refresh tokens habilitado"` (sucesso)
+- âŒ `"TOKEN_ENCRYPTION_KEY nÃ£o configurada"` (chave nÃ£o encontrada)
+- âŒ `"SessionManager nÃ£o pode ser inicializado (chave invÃ¡lida)"` (chave invÃ¡lida)
+- âŒ `"session_manager nÃ£o disponÃ­vel"` (arquivo nÃ£o encontrado)
 
-## 🔧 Solução de Problemas
+## ðŸ”§ SoluÃ§Ã£o de Problemas
 
-### Problema: Arquivos não estão no container
+### Problema: Arquivos nÃ£o estÃ£o no container
 
-**Causa:** O Dockerfile não está copiando os arquivos ou o build não incluiu os arquivos.
+**Causa:** O Dockerfile nÃ£o estÃ¡ copiando os arquivos ou o build nÃ£o incluiu os arquivos.
 
-**Solução:**
-1. Verificar se os arquivos estão commitados no Git
-2. Verificar se o workflow do GitHub Actions está copiando corretamente
-3. Forçar rebuild da imagem
+**SoluÃ§Ã£o:**
+1. Verificar se os arquivos estÃ£o commitados no Git
+2. Verificar se o workflow do GitHub Actions estÃ¡ copiando corretamente
+3. ForÃ§ar rebuild da imagem
 
-### Problema: TOKEN_ENCRYPTION_KEY não configurada
+### Problema: TOKEN_ENCRYPTION_KEY nÃ£o configurada
 
-**Causa:** A variável de ambiente não foi configurada no Azure App Service.
+**Causa:** A variÃ¡vel de ambiente nÃ£o foi configurada no Azure App Service.
 
-**Solução:**
+**SoluÃ§Ã£o:**
 ```bash
 az webapp config appsettings set \
   --name caracore-backend-docker \
@@ -123,28 +123,29 @@ az webapp config appsettings set \
   --settings TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
 ```
 
-### Problema: Dependências não instaladas
+### Problema: DependÃªncias nÃ£o instaladas
 
-**Causa:** As dependências `cryptography` ou `python-dateutil` não estão instaladas.
+**Causa:** As dependÃªncias `cryptography` ou `python-dateutil` nÃ£o estÃ£o instaladas.
 
-**Solução:**
+**SoluÃ§Ã£o:**
 Verificar se `backend/requirements.txt` ou `backend/requirements-docker.txt` inclui:
 ```
 cryptography>=41.0.0
 python-dateutil>=2.8.2
 ```
 
-## 📝 Checklist de Verificação
+## ðŸ“ Checklist de VerificaÃ§Ã£o
 
 - [ ] Arquivos `session_manager.py`, `crypto_manager.py`, `token_storage.py` existem no container
-- [ ] `TOKEN_ENCRYPTION_KEY` está configurada no Azure App Service
-- [ ] Dependências `cryptography` e `python-dateutil` estão instaladas
+- [ ] `TOKEN_ENCRYPTION_KEY` estÃ¡ configurada no Azure App Service
+- [ ] DependÃªncias `cryptography` e `python-dateutil` estÃ£o instaladas
 - [ ] Deploy foi executado com sucesso
-- [ ] App Service foi reiniciado após configurar a chave
-- [ ] Logs mostram "SessionManager carregado" (não "não disponível")
+- [ ] App Service foi reiniciado apÃ³s configurar a chave
+- [ ] Logs mostram "SessionManager carregado" (nÃ£o "nÃ£o disponÃ­vel")
 
 ---
 
-**Última atualização:** 15/11/2025
+**Ãšltima atualizaÃ§Ã£o:** 15/11/2025
+
 
 

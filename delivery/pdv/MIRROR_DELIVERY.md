@@ -9,7 +9,7 @@ Este diretório é o **portal de delivery do CaraCore-PDV** no domínio da **Car
 | Local | Papel | URL (exemplo) |
 |-------|--------|----------------|
 | **Matriz (este diretório)** | Portal completo: apresentação, economia, licenciamento, Wiki Fiscal, consultoria, demonstração | `https://caracore.com.br/delivery/pdv/` |
-| **Loja online (vitrine)** | Repositório público de vitrine e releases (EXE, download, tecnologia, canal de feedback) | `https://chmulato.github.io/caracore-pdv-releases/` |
+| **Loja online (vitrine)** | Repositório público de vitrine e releases (EXE, download, tecnologia, canal de feedback) | `https://pdv.caracore.com.br/` |
 
 ## Conteúdo alinhado
 
@@ -18,7 +18,7 @@ Este diretório é o **portal de delivery do CaraCore-PDV** no domínio da **Car
 
 ## Links cruzados
 
-- Na **matriz**: links para a **loja online** (chmulato.github.io/caracore-pdv-releases) e para o portfólio (caracore.com.br/portfolio.html#caracore-pdv).
+- Na **matriz**: links para a **loja online** (pdv.caracore.com.br) e para o portfólio (caracore.com.br/portfolio.html#caracore-pdv).
 - Na **loja**: footer e CTAs apontam para a **matriz** (caracore.com.br/delivery/pdv/) e para o portfólio.
 
 Referência central do ecossistema de lojas: **ECOSYSTEM_LOJAS.md** na raiz do site (ou doc equivalente na matriz).

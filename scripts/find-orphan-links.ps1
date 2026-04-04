@@ -1,4 +1,4 @@
-# Find internal href/src/poster/stylesheet refs in caracore-site that point to missing files.
+# Find internal href, src, srcset, poster, og:image / twitter:image in caracore-site that point to missing files.
 # Usage: powershell -File find-orphan-links.ps1
 $ErrorActionPreference = "Stop"
 $repoRoot = Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
@@ -37,6 +37,21 @@ function Get-SrcsetUrlsFromHtml([string]$content) {
                 $t = $part.Trim() -replace '\s+[\d.]+[wx]\s*$', '' -replace '\s+$', ''
                 if ($t) { [void]$urls.Add($t) }
             }
+        }
+    }
+    return $urls
+}
+
+function Get-MetaSocialImageContents([string]$content) {
+    $urls = [System.Collections.Generic.List[string]]::new()
+    foreach ($prop in @('og:image', 'twitter:image')) {
+        foreach ($m in [regex]::Matches($content, "<meta[^>]+(?:property|name)\s*=\s*`"$prop`"[^>]+>", [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)) {
+            $t = $m.Value
+            if ($t -match 'content\s*=\s*"(?<u>[^"]*)"') { [void]$urls.Add($Matches['u']) }
+        }
+        foreach ($m in [regex]::Matches($content, "<meta[^>]+content\s*=\s*`"[^`"]+`"[^>]+(?:property|name)\s*=\s*`"$prop`"", [System.Text.RegularExpressions.RegexOptions]::IgnoreCase)) {
+            $t = $m.Value
+            if ($t -match 'content\s*=\s*"(?<u>[^"]*)"') { [void]$urls.Add($Matches['u']) }
         }
     }
     return $urls
@@ -165,7 +180,15 @@ foreach ($f in $files) {
         }
     }
 
+    foreach ($mic in (Get-MetaSocialImageContents $raw) | Select-Object -Unique) {
+        $resolved = Resolve-WithBase -Ref $mic -BaseHref $baseHref -SourceFile $f.FullName
+        $r = Test-InternalSiteRef -Ref $resolved -SourceFile $f.FullName -SiteRoot $siteRoot
+        if ($r) {
+            [void]$issues.Add([pscustomobject]@{ Source = $relPath; Kind = 'meta-og/twitter:image'; Ref = $mic; Detail = $r })
+        }
+    }
+
 }
 
-Write-Host ("=== Recursos internos em falta (href, src, srcset, poster) - total {0} ===" -f $issues.Count)
+Write-Host ("=== Recursos internos em falta (href, src, srcset, poster, og/twitter:image) - total {0} ===" -f $issues.Count)
 $issues | Sort-Object Source, Kind, Ref | ForEach-Object { Write-Host ('{0} | {1} | {2} | {3}' -f $_.Source, $_.Kind, $_.Ref, $_.Detail) }

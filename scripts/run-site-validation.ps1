@@ -5,7 +5,7 @@ $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 
 Write-Host ""
-Write-Host ">>> 1/3 find-orphan-links.ps1 (href, src, srcset, poster)"
+Write-Host ">>> 1/3 find-orphan-links.ps1 (href, src, srcset, poster, og/twitter:image)"
 Write-Host ""
 & (Join-Path $PSScriptRoot "find-orphan-links.ps1")
 if ($LASTEXITCODE -ne 0 -and $null -ne $LASTEXITCODE) { exit $LASTEXITCODE }

@@ -7,6 +7,10 @@ Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos d
 https://caracore.com.br/ · https://caracore.com.br/portfolio.html · https://caracore.com.br/ecosistema.html · https://caracore.com.br/sala/  
 Campanhas e CTAs devem reforçar este conjunto para a “cara” da empresa; **não** usar `https://caracore.com.br/delivery/...` como destino principal (legado com redirect até remoção da pasta — ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0a).
 
+**Por loja:** cada subdomínio mantém a sua própria apresentação (texto, estrutura, estilo do produto). Alinhamento canónico = URL e repo oficiais — não copiar tudo para um único molde institucional (ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0b).
+
+O site de cada produto **é** o produto na web (oferta, download, docs, feedback); não é anexo descartável. O plano tira redundância da matriz (`delivery/`), não as lojas — ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0c.
+
 **Verdade de produto (vitrine, download, manuais, feedback):** subdomínio de cada loja.
 
   Produto           Loja online (URL canónica)

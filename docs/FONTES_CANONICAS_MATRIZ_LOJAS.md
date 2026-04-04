@@ -9,6 +9,22 @@ Este ficheiro é a **referência única** para “onde vive a verdade” sobre c
 - **Reduzir acoplamento:** uma alteração editorial ou comercial deve ter **um** repositório e **um** URL canónico.
 - **Evitar cópias:** não manter o mesmo texto, vitrine ou wiki em dois sítios “oficiais”.
 
+### 1.0b Alinhamento canónico **sem** descaracterizar cada loja
+
+**Canónico** aqui significa **uma fonte de verdade por tipo de informação e um URL oficial** — **não** significa que todas as lojas tenham de parecer a home institucional da matriz.
+
+- **Cada produto** mantém a **sua** apresentação na respetiva loja (`caracore-*-releases`, subdomínio): narrativa, hierarquia de páginas, tom (ex.: vitrine comercial, jogo/narrativa OIDC, documentação técnica ETE), CSS/JS e componentes próprios onde o produto já os define. Isso é **desejável** e faz parte da identidade do ecossistema.
+- A **matriz** (`caracore.com.br`) transmite a **Cara Core Informática** institucional (home, portfólio, ecossistema, sala): resumo, contexto e CTAs para a loja — **sem** substituir a vitrine completa nem forçar um “template único” que apague a diferença entre produtos.
+- **Evitar:** copiar blocos inteiros da loja para a matriz como segunda fonte; **evitar:** reescrever todas as lojas num único estilo genérico “só para alinhar”; **evitar:** manter conteúdo comercial longo em `delivery/` em paralelo à loja.
+
+Quem definir o detalhe de layout por loja continua a ser o repositório `*-releases` e documentos de apoio (ex.: `COMPONENTES_LOJA.txt` no `caracore-site`, quando aplicável ao produto).
+
+### 1.0c Os sites de cada produto **são** o produto (na web)
+
+Para o utilizador e para o negócio, o site em **`https://{produto}.caracore.com.br`** (repositório **`caracore-*-releases`**) **não** é um anexo à matriz nem material promocional descartável: é a **superfície oficial** do produto — oferta, download, documentação, licenças, feedback e jornada típica. **Não** se perdem, **não** se fundem na home institucional e **não** se tratam como opcionais no plano de arquitetura.
+
+O que o plano remove é a **pasta `delivery/` na matriz** e a **duplicação** de conteúdo, **não** as lojas. Redirects e URLs canónicas existem para **proteger** esses sites e o tráfego que já os usa.
+
 ---
 
 ## 1.0 Plano acordado — `delivery/` na matriz é legado; o destino são as lojas
@@ -45,7 +61,7 @@ Toda a **informação operacional** que deve existir no site (páginas HTML, ima
 | Tipo de informação | Onde editar (caminho no repo) | URL pública canónica | O que **não** fazer |
 |--------------------|-------------------------------|----------------------|---------------------|
 | **Sala de Operações** (plano, campanhas, redes, retro, artefatos operacionais) | `D:\dev\caracore-site\sala\` | `https://caracore.com.br/sala/` | Não duplicar conteúdo real em `delivery/`; URLs legadas `/delivery/sala/` via redirect no hospedeiro (`docs/DELIVERY_RESTRUCTURA.md`). |
-| **Produto** (vitrine, wiki, downloads comerciais, manuais de loja) | Repositório `caracore-*-releases` do produto + site gerado | `https://{produto}.caracore.com.br/...` | Não manter páginas completas em `caracore-site/delivery/{produto}/` além do mínimo de **compatibilidade** (redirect). |
+| **Produto** (vitrine, wiki, downloads comerciais, manuais de loja) | Repositório `caracore-*-releases` do produto + site gerado | `https://{produto}.caracore.com.br/...` | Não manter páginas completas em `caracore-site/delivery/{produto}/` além do mínimo de **compatibilidade** (redirect). Cada loja preserva **a sua** apresentação (§1.0b); a matriz não a duplica como fonte paralela. |
 | **Matriz institucional** (home, portfólio, ecossistema, secure, publications onde aplicável) | Raiz e pastas próprias em `caracore-site` (ex.: `publications/`) | `https://caracore.com.br/...` | Não copiar vitrines de produto para a matriz como fonte principal. |
 | **Compatibilidade URL antiga (legado → loja)** | *Transitório:* `caracore-site/delivery/` até **eliminação da pasta** (§1.0a); depois só redirects no hospedeiro | `https://caracore.com.br/delivery/...` → **redirect** para lojas / matriz canónica | Estado-alvo: **sem** pasta `delivery/` no repo; `MAPA_ROTAS_*` passa a descrever só regras no edge. |
 
@@ -58,6 +74,8 @@ Toda a **informação operacional** que deve existir no site (páginas HTML, ima
 1. **Sala:** todo PR que altere páginas da Sala → apenas sob `sala/` na raiz do `caracore-site`; o conteúdo publicado deve estar completo nessa árvore. Ver `sala/README.txt` e `sala/ESTRUTURA_SALA.txt` (ou `.html`) quando existirem.
 2. **Lojas:** CTAs e campanhas novas → sempre URL do **subdomínio** do produto, nunca `/delivery/{produto}/` como destino principal.
 3. **Delivery:** camada **legado/redirect** na matriz até remoção (§1.0a); destino = **loja** do produto. Alterações de texto comercial fazem-se na loja ou na Sala, conforme a tabela acima.
+4. **Identidade por loja:** alinhar URLs e repositórios (§1.0b) **sem** uniformizar narrativa ou UI entre produtos; respeitar o que já está desenhado em cada `*-releases`.
+5. **Produto = site da loja (§1.0c):** manter e priorizar os subdomínios; nunca planear a sua extinção em favor de só a matriz.
 
 ---
 

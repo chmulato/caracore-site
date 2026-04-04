@@ -15,6 +15,7 @@
 - **Sala de Operações:** canónica em `sala/` na raiz do repo → `/sala/`; produtos **não** duplicam a Sala em `delivery/{produto}/`.
 - **Fonte comercial de produto:** subdomínio oficial + repositório `*-releases` (detalhe: `FONTES_CANONICAS_MATRIZ_LOJAS.md`).
 - **Matriz:** institucional, portfólio, ecossistema; `delivery/` é **legado** na matriz: **redirect** para as lojas, não vitrine nem fonte de conteúdo comercial novo.
+- **Lojas:** cada subdomínio conserva a **apresentação própria** do produto (narrativa, UI); alinhamento canónico = URL/repo — ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §**1.0b**. Os sites de loja **são** o produto na web (§**1.0c**); o plano não os elimina.
 - **SLA de redirect:** 90 dias após ativação por produto (ver checklist mestre).
 
 ---

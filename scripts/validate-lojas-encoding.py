@@ -1,4 +1,12 @@
-"""Validate UTF-8 and common mojibake patterns in caracore-*-releases/docs/**/*.html."""
+"""
+Validate encoding of caracore-*-releases/docs/**/*.html
+
+- NOT_UTF8: file is not valid UTF-8 (strict).
+- MOJIBAKE_SUSPECT: valid UTF-8 but typical Portuguese mojibake (wrong glyphs).
+
+Run: python validate-lojas-encoding.py
+Patterns use only \\u escapes (ASCII source).
+"""
 from __future__ import annotations
 
 import re
@@ -6,38 +14,27 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1].parent  # D:\dev from caracore-site\scripts
+ROOT = Path(__file__).resolve().parents[2]  # D:\dev from caracore-site\scripts
 if not (ROOT / "caracore-pdv-releases").exists():
     ROOT = Path(r"D:\dev")
 
-MOJIBAKE_PATTERNS: list[tuple[str, str]] = [
-    (r"InformÃ.tica", "Informática (classic mojibake)"),
-    (r"â€[™\"]", "quotes/dash mojibake"),
-    (r"NavegaÃ§Ã£o", "Navegação"),
-    (r"Â·", "middle dot mojibake"),
-    (r"Ã§", "cedilla byte pair (suspect)"),
-    (r"Ã¡", "á mojibake"),
-    (r"Ã£", "ã mojibake"),
-    (r"Ã©", "é mojibake"),
-    (r"Ã­", "í mojibake"),
-    (r"Ã³", "ó mojibake"),
-    (r"Ãº", "ú mojibake"),
+PATTERNS: list[tuple[str, str]] = [
+    ("Informatica_classic", "Inform\u00c3\u00a1tica"),
+    ("Navegacao", "Navega\u00c3\u00a7\u00c3\u00a3o"),
+    ("emdash_threechar", "\u00e2\u20ac\u201d"),
+    ("Middle_dot_mojibake", "\u00c2\u00b7"),
+    ("cao_suffix", "\u00c3\u00a7\u00c3\u00a3o"),
+    ("voce", "voc\u00c3\u00aa"),
+    ("nao", "n\u00c3\u00a3o"),
 ]
 
 
 def find_stores(base: Path) -> list[Path]:
-    out: list[Path] = []
-    if not base.is_dir():
-        return out
-    for p in sorted(base.iterdir()):
-        if not p.is_dir():
-            continue
-        if p.name.endswith("-releases") and p.name.startswith("caracore-"):
-            out.append(p)
+    out = [p for p in sorted(base.iterdir()) if p.is_dir() and p.name.startswith("caracore-") and p.name.endswith("-releases")]
     extra = base / "reino-oidc-releases"
-    if extra.is_dir() and extra not in out:
+    if extra.is_dir():
         out.append(extra)
-    return sorted(out)
+    return sorted(set(out), key=lambda p: p.name)
 
 
 def main() -> int:
@@ -46,7 +43,10 @@ def main() -> int:
         print(f"No *-releases under {ROOT}", file=sys.stderr)
         return 1
 
+    compiled = [(name, re.compile(pat)) for name, pat in PATTERNS]
     results: list[tuple[str, str, str]] = []
+    by_store: dict[str, dict[str, int]] = defaultdict(lambda: {"not_utf8": 0, "mojibake": 0})
+
     for store in stores:
         docs = store / "docs"
         if not docs.is_dir():
@@ -55,43 +55,24 @@ def main() -> int:
             rel = str(f.relative_to(ROOT))
             try:
                 raw = f.read_bytes()
-            except OSError as e:
-                results.append((rel, "READ_ERROR", str(e)))
-                continue
-            try:
-                raw.decode("utf-8")
+                text = raw.decode("utf-8")
             except UnicodeDecodeError as e:
                 results.append((rel, "NOT_UTF8", str(e)))
+                by_store[store.name]["not_utf8"] += 1
                 continue
-            text = raw.decode("utf-8")
-            labels: set[str] = set()
-            for pat, label in MOJIBAKE_PATTERNS:
-                if re.search(pat, text):
-                    labels.add(label)
+            labels = [name for name, rx in compiled if rx.search(text)]
             if labels:
                 results.append((rel, "MOJIBAKE_SUSPECT", "; ".join(sorted(labels))))
-
-    by_store: dict[str, dict[str, int]] = defaultdict(lambda: {"not_utf8": 0, "mojibake": 0})
-    for rel, kind, _ in results:
-        store_name = rel.split("\\")[0].split("/")[0]
-        if kind == "NOT_UTF8":
-            by_store[store_name]["not_utf8"] += 1
-        elif kind == "MOJIBAKE_SUSPECT":
-            by_store[store_name]["mojibake"] += 1
+                by_store[store.name]["mojibake"] += 1
 
     print("=== RESUMO POR LOJA (docs/**/*.html) ===")
     for name in sorted(by_store.keys()):
         s = by_store[name]
         print(f"{name}: NOT_UTF8={s['not_utf8']}  MOJIBAKE_SUSPECT={s['mojibake']}")
-
-    total_bad = sum(s["not_utf8"] + s["mojibake"] for s in by_store.values())
-    print()
-    print(f"Total ficheiros com problema: {total_bad}")
-    print()
-    print("=== LISTAGEM (todos) ===")
-    for rel, kind, detail in results:
-        print(f"{rel} | {kind} | {detail[:200]}")
-
+    print(f"\nTotal ficheiros com relatorio: {len(results)}")
+    print("\n=== LISTAGEM ===")
+    for rel, kind, detail in sorted(results, key=lambda x: x[0]):
+        print(f"{rel} | {kind} | {detail}")
     return 0
 
 

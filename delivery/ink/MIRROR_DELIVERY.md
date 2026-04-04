@@ -7,7 +7,7 @@ Este diretório é o **portal de delivery do Cara Core Ink Agenda** no domínio 
 | Local | Papel | URL (exemplo) |
 |-------|--------|----------------|
 | **Matriz (este diretório)** | Portal completo de delivery no site Cara Core | `https://caracore.com.br/delivery/ink/` |
-| **Vitrine (loja)** | Repositório público de vitrine e releases | `https://chmulato.github.io/caracore-ink-releases/` |
+| **Vitrine (loja)** | Repositório público de vitrine e releases | `https://ink.caracore.com.br/` |
 
 ## Conteúdo alinhado
 
@@ -20,7 +20,7 @@ Em ambas (matriz e vitrine), o **aviso padrão** é o mesmo: **App Cara Core Ink
 
 ## Links cruzados
 
-- Na **matriz**: breadcrumb e footer apontam para o **ecossistema (Garagem)** (caracore.com.br/ecosistema.html#garagem). Ink entra no portfólio após o lançamento. Vitrine: chmulato.github.io/caracore-ink-releases. Links internos para index, download, tecnologia e canal-feedback.
+- Na **matriz**: breadcrumb e footer apontam para o **ecossistema (Garagem)** (caracore.com.br/ecosistema.html#garagem). Ink entra no portfólio após o lançamento. Vitrine: ink.caracore.com.br. Links internos para index, download, tecnologia e canal-feedback.
 - Na **vitrine**: footer e nav apontam para o **portfólio** e para a matriz (caracore.com.br/delivery/ink/) quando aplicável; link para Releases no GitHub.
 
 ## Estilo

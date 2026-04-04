@@ -34,6 +34,6 @@ Ao alterar páginas, histórias, upgrade ou assets em **delivery/oidc**:
 
 1. Copie o conteúdo para **reino_oidc_releases/docs/** (incluindo `conteudo-free.html`, `canal-feedback.html`, `licenca-uso.html`, `index.html` e demais HTML e `assets/`).
 2. Na vitrine, ajuste links que apontam para o portfólio: substitua `../../portfolio.html` e `../../portfolio.html#reino-oidc` pela URL absoluta **https://caracore.com.br/portfolio.html#reino-oidc**.
-3. No **index.html** da vitrine, mantenha o `<base href="https://chmulato.github.io/reino-oidc-releases/">` para que links relativos funcionem no GitHub Pages.
+3. No **index.html** da vitrine, mantenha o `<base href="https://oidc.caracore.com.br/">` para que links relativos funcionem no GitHub Pages.
 
 *Cara Core Informática — Reino OIDC: Reino das Identidades Federadas.*

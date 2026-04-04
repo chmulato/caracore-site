@@ -96,15 +96,15 @@
 
 | Produto | URL da loja | Padrão? |
 |---------|-------------|---------|
-| Hub | `chmulato.github.io/caracore-hub-releases/` | ✅ |
-| CSO | `chmulato.github.io/caracore-cso-releases/` | ✅ |
-| RU | `chmulato.github.io/caracore-ru-releases/` | ✅ |
-| Área 51 | `chmulato.github.io/caracore-area51-releases/` | ✅ |
-| PDV | `chmulato.github.io/caracore-pdv-releases/` | ✅ |
-| Ink Agenda | `chmulato.github.io/caracore-ink-releases/` | ✅ |
-| Seed | `chmulato.github.io/caracore-seed-releases/` | ✅ |
-| Minerador 4.0 | `chmulato.github.io/caracore-ete-releases/` | ✅ |
-| Reino OIDC | `chmulato.github.io/reino-oidc-releases/` | ⚠️ fora do padrão |
+| Hub | `hub.caracore.com.br/` | ✅ |
+| CSO | `cso.caracore.com.br/` | ✅ |
+| RU | `ru.caracore.com.br/` | ✅ |
+| Área 51 | `area51.caracore.com.br/` | ✅ |
+| PDV | `pdv.caracore.com.br/` | ✅ |
+| Ink Agenda | `ink.caracore.com.br/` | ✅ |
+| Seed | `seed.caracore.com.br/` | ✅ |
+| Minerador 4.0 | `ete.caracore.com.br/` | ✅ |
+| Reino OIDC | `oidc.caracore.com.br/` | ⚠️ fora do padrão |
 | Circuito Ferradura | `github.com/chmulato/circuito-python-releases/releases/latest` | ⚠️ sem site Pages |
 
 **Pendência:**

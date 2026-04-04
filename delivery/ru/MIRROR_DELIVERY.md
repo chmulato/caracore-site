@@ -14,7 +14,7 @@ Este diretório é a **matriz** do delivery do **RU Soberano** (Cara Core Inform
 - **Oficina:** caracore-ru (repositório / ambiente de desenvolvimento).
 - **Loja:** caracore-ru-releases (vitrine de releases; em preparação).
 
-O conteúdo desta chamada (matriz) descreve o produto, a data de lançamento e a relação oficina · loja. A loja (caracore-ru-releases) está no ar: vitrine, download, licença, manual técnico e canal de feedback em https://chmulato.github.io/caracore-ru-releases/ (GitHub Pages com pasta docs/).
+O conteúdo desta chamada (matriz) descreve o produto, a data de lançamento e a relação oficina · loja. A loja (caracore-ru-releases) está no ar: vitrine, download, licença, manual técnico e canal de feedback em https://ru.caracore.com.br/ (GitHub Pages com pasta docs/).
 
 ## Produto
 

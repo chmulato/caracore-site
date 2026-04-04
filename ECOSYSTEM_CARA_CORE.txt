@@ -11,9 +11,9 @@ VISÃO GERAL
   --------------------------- ---------------------------------------- ----------------------------------------------------------
   cara-core-site              Site oficial (portfólio, delivery, wiki)   Domínio caracore.com.br; matriz dos portais de produto
   caracore-pdv                Código do produto Cara Core PDV          Windows Desktop (Electron), SQLite, offline
-  caracore-pdv-releases       Loja online e releases do PDV            GitHub Pages: chmulato.github.io/caracore-pdv-releases
+  caracore-pdv-releases       Loja online e releases do PDV            GitHub Pages: pdv.caracore.com.br
   caracore-hub                Código do produto Cara Core Hub           Gestão logística e e-commerce; WAR (Tomcat); Tia Sócia
-  caracore-hub-releases       Loja online e releases do Hub            GitHub Pages: chmulato.github.io/caracore-hub-releases
+  caracore-hub-releases       Loja online e releases do Hub            GitHub Pages: hub.caracore.com.br
   caracore-ete                Código do Minerador 4.0 (ETE)             chmulatoETE Minerador; Windows .exe
   caracore-ete-releases       Releases do Minerador 4.0                Download do executável e upgrades
   caracore-seed               Código do Cara Core Seed                  Ferramenta interna; aplicação não disponível ao público
@@ -23,7 +23,7 @@ VISÃO GERAL
   circuito-python             Código do Circuito Python (curso)         Repositório privado; EXE em releases
   circuito-python-releases     Loja online e releases Circuito Python   GitHub Pages; prioridade: baixar EXE
   reino-oidc                  Código do Reino OIDC (identidade)         OAuth 2.1 / OIDC; ReinoOIDC.exe
-  reino-oidc-releases         Loja online e releases do Reino OIDC     GitHub Pages: chmulato.github.io/reino-oidc-releases
+  reino-oidc-releases         Loja online e releases do Reino OIDC     GitHub Pages: oidc.caracore.com.br
   caracore-area51             Oficina da Área 51 (código do sistema)   Desenvolvimento; autenticação enterprise OAuth 2.1/OIDC/PKCE
   caracore-area51-releases    Loja online do Suporte Área 51           Vitrine do serviço de consultoria; GitHub Pages
   personal-articles           Conteúdo pessoal / artigos               Conteúdo editorial ou pessoal vinculado ao ecossistema

@@ -9,7 +9,7 @@ Este diretório é o **portal de delivery do CaraCore Hub** no domínio da **Car
 | Local | Papel | URL (exemplo) |
 |-------|--------|----------------|
 | **Matriz (este diretório)** | Portal completo de delivery no site Cara Core | `https://caracore.com.br/delivery/hub/` |
-| **Vitrine** | Repositório público de vitrine e releases | `https://chmulato.github.io/caracore-hub-releases/` |
+| **Vitrine** | Repositório público de vitrine e releases | `https://hub.caracore.com.br/` |
 
 ## Conteúdo alinhado
 
@@ -34,7 +34,7 @@ O conteúdo das páginas da **matriz** e da **vitrine** é equivalente em mensag
 
 ## Links cruzados
 
-- Na **matriz**: footer e nav apontam para a **vitrine** (chmulato.github.io/caracore-hub-releases) e para o portfólio (caracore.com.br/portfolio.html#caracore-hub).
+- Na **matriz**: footer e nav apontam para a **vitrine** (hub.caracore.com.br) e para o portfólio (caracore.com.br/portfolio.html#caracore-hub).
 - Na **vitrine**: footer pode apontar para o **delivery matriz** (caracore.com.br/delivery/hub/) e para o portfólio.
 
 ## Estilo

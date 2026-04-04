@@ -8,7 +8,7 @@ alwaysApply: true
 ## Ambientes utilizados hoje
 - **caracore-site** (este repo): site matriz caracore.com.br — delivery/ru (RU Soberano), delivery/pdv (PDV Selo Verde), portfólio, publicações, wiki.
 - **caracore-pdv:** oficina do PDV — branch java_21, v1.1.0, Java 21, Spring Boot 3.2, Undertow, virtual threads; scripts Python em scripts/ (preparar_release_loja, distribuicao_local_free, distribuicao_local_premium, delivery_exe_pdv_to_releases).
-- **caracore-pdv-releases:** loja do PDV — vitrine e download em https://chmulato.github.io/caracore-pdv-releases/ (docs/). Alinhada à matriz delivery/pdv; lançamento 03/03/2026, Java 21.
+- **caracore-pdv-releases:** loja do PDV — vitrine e download em https://pdv.caracore.com.br/ (docs/). Alinhada à matriz delivery/pdv; lançamento 03/03/2026, Java 21.
 - **caracore-articles:** sala de notícias (GitHub Pages), série RU 1991 encerrada, epílogo e CTA Loja RU.
 - **caracore-ru:** oficina RU Soberano; caracore-ru-releases = loja RU (lançamento 18/Jun/2026, R$ 29,90).
 - **Outros:** caracore-hub, caracore-ete, caracore-circuito, caracore-oidc, caracore-seed, caracore-area51 e respectivos *-releases quando existirem.
@@ -21,7 +21,7 @@ alwaysApply: true
 
 ## Ecossistema
 - **Oficina:** caracore-ru (código-fonte, build, dashboard Soberana).
-- **Loja:** caracore-ru-releases — vitrine em https://chmulato.github.io/caracore-ru-releases/ (download, licença, manual, feedback).
+- **Loja:** caracore-ru-releases — vitrine em https://ru.caracore.com.br/ (download, licença, manual, feedback).
 - **Matriz:** este diretório (delivery/ru) no site Cara Core (caracore.com.br).
 
 ## Mensagem de produto (alinhada à loja e CONTEXTO_RU)
@@ -46,7 +46,7 @@ alwaysApply: true
 
 ## Matriz PDV (delivery/pdv)
 - **delivery/pdv** é a **matriz** do CaraCore-PDV (PDV Selo Verde): apresentação completa, economia papel x digital, planos Free/Premium, Wiki Fiscal, consultoria, download e demonstração.
-- **Loja:** caracore-pdv-releases — https://chmulato.github.io/caracore-pdv-releases/ (releases, download EXE Free, tecnologia).
+- **Loja:** caracore-pdv-releases — https://pdv.caracore.com.br/ (releases, download EXE Free, tecnologia).
 - **Oficina:** caracore-pdv (branch java_21, v1.1.0, Java 21).
 - **Lançamento oficial:** 03 de março de 2026 — versão v1.1.0 com Java 21 (Undertow, virtual threads, JVM otimizada para Windows Desktop). Conteúdo da matriz e da loja alinhado a essa data e às novidades Java 21.
 - **Páginas principais:** index.html (hero, economia, dores, 2026, planos, demo), tecnologia.html (soluções + Java 21 e desempenho), readme.html, wiki-fiscal.html, download.html, consultoria.html.

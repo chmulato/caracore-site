@@ -213,7 +213,7 @@ Manter uma rotina previsível de hardening contra engenharia social e cópia opo
   - `personal/articles` (20 arquivos):
     - Remocao/substituicao de links pessoais/repositorios para `www.caracore.com.br` ou `mailto:suporte@caracore.com.br`
     - Delink de bylines pessoais mantendo autoria textual
-    - Troca de `chmulato.github.io/caracore-ete-releases/` por `../../delivery/ete/index.html`
+    - Troca de `ete.caracore.com.br/` por `../../delivery/ete/index.html`
   - `cv/public/index.html`:
     - Removido link GitHub pessoal da barra de contatos
   - `cv/public/json` (4 arquivos):

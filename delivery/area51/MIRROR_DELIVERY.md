@@ -8,7 +8,7 @@ Este diretório é o **portal de delivery do Suporte Área 51** no domínio da *
 |-------|--------|----------------|
 | **Oficina (código)** | Repositório de desenvolvimento do sistema Área 51 | `D:\dev\caracore-area51` (chmulato/caracore-area51) |
 | **Matriz (este diretório)** | Portal completo: apresentação do suporte, benefícios, como contratar, canal de feedback | `https://caracore.com.br/delivery/area51/` |
-| **Loja online (vitrine)** | Repositório público de vitrine do suporte Área 51 | `https://chmulato.github.io/caracore-area51-releases/` |
+| **Loja online (vitrine)** | Repositório público de vitrine do suporte Área 51 | `https://area51.caracore.com.br/` |
 
 ## Conteúdo alinhado
 
@@ -19,7 +19,7 @@ Este diretório é o **portal de delivery do Suporte Área 51** no domínio da *
 
 ## Links cruzados
 
-- Na **matriz**: links para a **loja online** (chmulato.github.io/caracore-area51-releases) e para o portfólio (caracore.com.br/portfolio.html#area-51).
+- Na **matriz**: links para a **loja online** (area51.caracore.com.br) e para o portfólio (caracore.com.br/portfolio.html#area-51).
 - Na **loja**: footer e CTAs apontam para a **matriz** (caracore.com.br/delivery/area51/) e para o portfólio.
 
 Referência central do ecossistema de lojas: **ECOSYSTEM_LOJAS.md** (ou ECOSYSTEM_LOJAS.txt) na raiz do site. Mapeamento dos repositórios: **ECOSYSTEM_CARA_CORE.md** (ou .txt).

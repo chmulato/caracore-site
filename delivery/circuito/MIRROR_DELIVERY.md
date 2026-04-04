@@ -14,7 +14,7 @@ Este diretório é a **matriz** do delivery do **Circuito Ferradura** (Cara Core
 A **filial** (balcão de vendas, feedback e portal para escolas) fica em:
 
 - **Repositório:** [chmulato/circuito-python-releases](https://github.com/chmulato/circuito-python-releases)
-- **Site (GitHub Pages):** `https://chmulato.github.io/circuito-python-releases/`
+- **Site (GitHub Pages):** `https://circuito.caracore.com.br/`
 
 O conteúdo da filial espelha este delivery (matriz): balcão, canal-feedback, licença de uso e portal escolas. Na filial é feito o controle do **valor recorrente mensal** (R$ 5,00/aluno) para escolas de ensino médio.
 
@@ -22,7 +22,7 @@ O conteúdo da filial espelha este delivery (matriz): balcão, canal-feedback, l
 
 - **Circuito Ferradura:** versão **gratuita para pessoas físicas** (jovens entusiastas e curiosos da programação). O curso, as narrativas e os materiais são **propriedade exclusiva** da Cara Core Informática (não é open source).
 - **Instituições de ensino (Brasil):** uso em ambiente escolar exige **licença obrigatória** — R$ 5,00 mensais por aluno matriculado. Uso sem licença pode configurar **pirataria** e **responsabilização legal** (legislação de direitos autorais). Cara Core atua com profissionalismo e transparência.
-- **Curso:** disponível em formato HTML no repositório do produto (`circuito_python`) e em `https://chmulato.github.io/circuito_python/`. **Diploma/certificado:** assinatura e verificação criptográfica implementadas no repositório do produto.
+- **Curso:** disponível em formato HTML no repositório do produto (`circuito_python`) e em `https://circuito.caracore.com.br/`. **Diploma/certificado:** assinatura e verificação criptográfica implementadas no repositório do produto.
 
 ## Páginas (matriz)
 

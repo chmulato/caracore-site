@@ -5,15 +5,15 @@ Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos d
 
   Produto           Loja online (GitHub Pages)                              Matriz (site Cara Core)
   ------------------ ------------------------------------------------------ -------------------------------------------------------
-  Cara Core PDV      https://chmulato.github.io/caracore-pdv-releases/      https://caracore.com.br/delivery/pdv/
-  Cara Core Hub      https://chmulato.github.io/caracore-hub-releases/      https://caracore.com.br/delivery/hub/
-  Circuito Python    https://chmulato.github.io/circuito-python-releases/   https://caracore.com.br/delivery/circuito/
-  Reino OIDC         https://chmulato.github.io/reino-oidc-releases/        https://caracore.com.br/delivery/oidc/
-  Cara Core Seed     https://chmulato.github.io/caracore-seed-releases/      https://caracore.com.br/delivery/seed/
-  Suporte Área 51    https://chmulato.github.io/caracore-area51-releases/   https://caracore.com.br/delivery/area51/
-  RU Soberano        https://chmulato.github.io/caracore-ru-releases/       https://caracore.com.br/delivery/ru/
-  Cara Core CSO      https://chmulato.github.io/caracore-cso-releases/      https://caracore.com.br/delivery/cso/
-  Ink Agenda         https://chmulato.github.io/caracore-ink-releases/      https://caracore.com.br/delivery/ink/
+  Cara Core PDV      https://pdv.caracore.com.br/      https://caracore.com.br/delivery/pdv/
+  Cara Core Hub      https://hub.caracore.com.br/      https://caracore.com.br/delivery/hub/
+  Circuito Python    https://circuito.caracore.com.br/   https://caracore.com.br/delivery/circuito/
+  Reino OIDC         https://oidc.caracore.com.br/        https://caracore.com.br/delivery/oidc/
+  Cara Core Seed     https://seed.caracore.com.br/      https://caracore.com.br/delivery/seed/
+  Suporte Área 51    https://area51.caracore.com.br/   https://caracore.com.br/delivery/area51/
+  RU Soberano        https://ru.caracore.com.br/       https://caracore.com.br/delivery/ru/
+  Cara Core CSO      https://cso.caracore.com.br/      https://caracore.com.br/delivery/cso/
+  Ink Agenda         https://ink.caracore.com.br/      https://caracore.com.br/delivery/ink/
 
   Loja online: vitrine pública (download, apresentação resumida, canal de feedback). Publicada a partir da pasta docs/ ou raiz do repositório -releases no GitHub Pages.
   Matriz: portal completo no domínio Cara Core (apresentação completa, consultoria, demonstração, Wiki quando houver).

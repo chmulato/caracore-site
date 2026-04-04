@@ -125,7 +125,7 @@ Serie de seis entregas (chamada + 4 episodios + epilogo). Recapitulacao F1 (Port
   Ep.04   | 2026-04-30 | 2026_04_30_article_serie_ru_episodio_04.html   | ATO V — Soberania (O Dossie). RU 1991
   Epilogo | 2026-05-05 | 2026_05_05_article_serie_ru_epilogo.html       | Epilogo — O Legado em Suas Maos. RU 1991
 
-Loja RU: https://chmulato.github.io/caracore-ru-releases/ — abertura oficial 18/Junho/2026, R$ 29,90. CTA nos artigos e no epilogo.
+Loja RU: https://ru.caracore.com.br/ — abertura oficial 18/Junho/2026, R$ 29,90. CTA nos artigos e no epilogo.
 Feedback: feedback_ato_01.txt ... feedback_ato_05.txt; feedback_final.txt. Consistencia: docs/CONSISTENCIA_SERIE_RU.md.
 
 -------------------------------------------------------------------------------
@@ -136,14 +136,14 @@ PLANO EDITORIAL JUN / JUL / AGO 2026 (ECOSSISTEMA CARA CORE)
 Foco: artigos alinhados aos produtos e lojas do ecossistema (PDV, Hub, ETE, Circuito Python, Reino OIDC, Seed, Area 51, RU Soberano, matriz e portifolio). Um artigo por semana; 8 a 10 minutos de leitura; publicacao no LinkedIn.
 
 Produtos e referencias:
-  Cara Core PDV          caracore.com.br/delivery/pdv   | chmulato.github.io/caracore-pdv-releases
-  Cara Core Hub          caracore.com.br/delivery/hub   | chmulato.github.io/caracore-hub-releases
-  Minerador 4.0 (ETE)     caracore.com.br/delivery/ete  | chmulato.github.io/caracore-ete-releases
-  Circuito Python         caracore.com.br/delivery/circuito | chmulato.github.io/caracore-circuito-releases
-  Reino OIDC              caracore.com.br/delivery/oidc  | chmulato.github.io/caracore-oidc-releases
-  Cara Core Seed         caracore.com.br/delivery/seed  | chmulato.github.io/caracore-seed-releases (vitrine, app nao disponivel)
-  Suporte Area 51         caracore.com.br/delivery/area51 | chmulato.github.io/caracore-area51-releases
-  RU Soberano (Garagem)   caracore.com.br/delivery/ru    | chmulato.github.io/caracore-ru-releases (Loja RU abre 18/Jun/2026, R$ 29,90; serie RU 1991 encerrada com Epilogo 05/05)
+  Cara Core PDV          caracore.com.br/delivery/pdv   | pdv.caracore.com.br
+  Cara Core Hub          caracore.com.br/delivery/hub   | hub.caracore.com.br
+  Minerador 4.0 (ETE)     caracore.com.br/delivery/ete  | ete.caracore.com.br
+  Circuito Python         caracore.com.br/delivery/circuito | circuito.caracore.com.br
+  Reino OIDC              caracore.com.br/delivery/oidc  | oidc.caracore.com.br
+  Cara Core Seed         caracore.com.br/delivery/seed  | seed.caracore.com.br (vitrine, app nao disponivel)
+  Suporte Area 51         caracore.com.br/delivery/area51 | area51.caracore.com.br
+  RU Soberano (Garagem)   caracore.com.br/delivery/ru    | ru.caracore.com.br (Loja RU abre 18/Jun/2026, R$ 29,90; serie RU 1991 encerrada com Epilogo 05/05)
 
 JUNHO 2026
 

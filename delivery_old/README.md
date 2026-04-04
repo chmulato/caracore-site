@@ -1,10 +1,12 @@
-# Delivery na matriz (`caracore-site/delivery/`)
+# Delivery na matriz — **backup** (`caracore-site/delivery_old/`)
+
+> **Nota:** esta pasta foi renomeada de `delivery` para `delivery_old` para arquivo no repositório. As **URLs públicas** na matriz continuam a ser `/delivery/...` (redirects no edge); o caminho no disco é `delivery_old/`.
 
 **Fontes canónicas:** `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md`.
 
 ## Plano — estado-alvo: **não precisar desta pasta**
 
-O plano fixado em MD é chegar ao ponto em que o repositório **não inclui** `D:\dev\caracore-site\delivery`: rotas legadas `https://caracore.com.br/delivery/...` tratam-se **apenas** no hospedeiro (redirects na CDN / edge), com o mapa em `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`. **Pré-requisitos e passos:** `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §**1.0a**.
+O plano fixado em MD é chegar ao ponto em que o repositório **não inclui** `D:\dev\caracore-site\delivery_old` (nem `delivery`): rotas legadas `https://caracore.com.br/delivery/...` tratam-se **apenas** no hospedeiro (redirects na CDN / edge), com o mapa em `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`. **Pré-requisitos e passos:** `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §**1.0a**.
 
 Enquanto a pasta existir, serve **só** como transição (redirects estáticos, `MIRROR_DELIVERY.md`); **não** é destino de conteúdo novo de produto — isso vai para as **respetivas lojas** e repos `*-releases`.
 

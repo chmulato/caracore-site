@@ -5,13 +5,13 @@ param(
 )
 
 $root = Split-Path -Parent $PSScriptRoot
-$eteArtifacts = Join-Path $root "delivery\ete\artifacts"
-$pdvArtifacts = Join-Path $root "delivery\pdv\artifacts"
+$eteArtifacts = Join-Path $root "delivery_old\ete\artifacts"
+$pdvArtifacts = Join-Path $root "delivery_old\pdv\artifacts"
 $eteExe = Join-Path $eteArtifacts "Minerador40.exe"
 $pdvExe = Join-Path $pdvArtifacts "CaraCorePDV.exe"
 
-$eteOfficial = Join-Path $root "delivery\ete\download-oficial.html"
-$pdvOfficial = Join-Path $root "delivery\pdv\download-oficial.html"
+$eteOfficial = Join-Path $root "delivery_old\ete\download-oficial.html"
+$pdvOfficial = Join-Path $root "delivery_old\pdv\download-oficial.html"
 
 function Test-RequiredFile($path) {
     if (-not (Test-Path $path)) {
@@ -50,7 +50,7 @@ Test-ChecksumNotPending (Join-Path $pdvArtifacts "checksum.md5")
 # 2) Regra de seguranca de distribuicao
 if ($AllowPublicExe) {
         # Habilita EXE publico somente por excecao explicita.
-        # Distribuicao publica: CTA para loja oficial (verdade de produto); artefatos em delivery/ validados acima ate migracao de paths.
+        # Distribuicao publica: CTA para loja oficial (verdade de produto); artefatos em delivery_old/ validados acima ate migracao de paths.
         Set-UpdatedFileContent -filePath $eteOfficial `
             -old '<a class="btn btn-primary" href="canal-feedback.html">Solicitar entrega segura</a>' `
             -new '<a class="btn btn-primary" href="https://ete.caracore.com.br/download.html">Baixar na loja oficial (ETE)</a>'

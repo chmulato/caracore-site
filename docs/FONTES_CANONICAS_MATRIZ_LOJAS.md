@@ -1,6 +1,8 @@
 # Fontes canónicas — matriz e lojas (anti-redundância)
 
-Este ficheiro é a **referência única** para “onde vive a verdade” sobre conteúdo. Os outros documentos (`RUNBOOK_*`, `CHECKLIST_*`, `delivery/README.md`, etc.) devem **remeter aqui** em vez de repetir tabelas ou regras longas.
+Este ficheiro é a **referência única** para “onde vive a verdade” sobre conteúdo. Os outros documentos (`RUNBOOK_*`, `CHECKLIST_*`, `delivery_old/README.md`, etc.) devem **remeter aqui** em vez de repetir tabelas ou regras longas.
+
+**Nota (repo):** no disco, a pasta legada foi renomeada para `delivery_old/` (backup). As **URLs** públicas mantêm-se `/delivery/...` (redirects no edge). O texto abaixo que fala em `delivery/` refere-se a essa camada e às rotas HTTP, não obrigatoriamente ao nome da pasta no Git.
 
 ---
 
@@ -29,13 +31,13 @@ O que o plano remove é a **pasta `delivery/` na matriz** e a **duplicação** d
 
 ## 1.0 Plano acordado — `delivery/` na matriz é legado; o destino são as lojas
 
-Este é o **plano fixado em MD** (também em `docs/PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md`, `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`, `docs/DELIVERY_RESTRUCTURA.md`, `delivery/README.md`):
+Este é o **plano fixado em MD** (também em `docs/PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md`, `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`, `docs/DELIVERY_RESTRUCTURA.md`, `delivery_old/README.md`):
 
 1. Na matriz (`caracore.com.br`), a pasta **`delivery/`** existe **só** como **legado / compatibilidade de URL**: redirecionar tráfego antigo para as **respetivas lojas** por subdomínio (`https://{produto}.caracore.com.br/...`).
 2. A **informação real de produto** (vitrine, wiki, downloads, manuais) **não** se mantém na matriz como fonte principal; vive nos repositórios **`caracore-*-releases`** e nos sites das **lojas**.
-3. O que permanece sob `caracore-site/delivery/{produto}/` deve ser, em princípio, o **mínimo técnico** (HTML de redirect, `MIRROR_DELIVERY.md`, mapeamento em `MAPA_ROTAS_*`) até o fecho do plano por ciclos; **não** expandir conteúdo comercial novo aqui.
+3. O que permanece sob `caracore-site/delivery_old/{produto}/` (no disco; URLs públicas continuam `/delivery/...`) deve ser, em princípio, o **mínimo técnico** (HTML de redirect, `MIRROR_DELIVERY.md`, mapeamento em `MAPA_ROTAS_*`) até o fecho do plano por ciclos; **não** expandir conteúdo comercial novo aqui.
 
-### 1.0a Estado-alvo do plano — **não precisar da pasta `delivery/`** (`D:\dev\caracore-site\delivery`)
+### 1.0a Estado-alvo do plano — **não precisar da pasta legada** (`D:\dev\caracore-site\delivery_old`; antes `delivery/`)
 
 O **fim pretendido** é o repositório **sem** a pasta `delivery/`: não haver cópia de rotas legadas em ficheiros estáticos na matriz; compatibilidade com URLs antigas fica **só** no **hospedeiro** (regras de redirect na CDN, gateway, ou serviço equivalente), alinhadas com `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`.
 
@@ -92,6 +94,6 @@ Toda a **informação operacional** que deve existir no site (páginas HTML, ima
 | `docs/PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md` | Plano por fases: redundância delivery → consolidação nas lojas. |
 | `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` | Mapeamento rota legado na matriz → URL oficial na loja. |
 | `docs/DELIVERY_RESTRUCTURA.md` | Transição até eliminar `delivery/`; redirects; legado `/delivery/sala/`. |
-| `delivery/README.md` | Resumo operacional para quem abre a pasta `delivery/`. |
+| `delivery_old/README.md` | Resumo operacional para a pasta legada no disco (`delivery_old/`). |
 
 ---

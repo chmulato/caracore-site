@@ -40,13 +40,13 @@ Regra comercial obrigatoria:
 1. Copiar binario para a pasta de artefatos:
 
 ```powershell
-Copy-Item "<CAMINHO_LOCAL>\Minerador40.exe" "d:\dev\caracore-site\delivery\ete\artifacts\Minerador40.exe" -Force
+Copy-Item "<CAMINHO_LOCAL>\Minerador40.exe" "d:\dev\caracore-site\delivery_old\ete\artifacts\Minerador40.exe" -Force
 ```
 
 1. Gerar checksums reais (SHA-256 e MD5):
 
 ```powershell
-Set-Location "d:\dev\caracore-site\delivery\ete\artifacts"
+Set-Location "d:\dev\caracore-site\delivery_old\ete\artifacts"
 (Get-FileHash -Path ".\Minerador40.exe" -Algorithm SHA256).Hash + "  Minerador40.exe" | Set-Content -Path ".\checksum.sha256" -Encoding ASCII
 (Get-FileHash -Path ".\Minerador40.exe" -Algorithm MD5).Hash + "  Minerador40.exe" | Set-Content -Path ".\checksum.md5" -Encoding ASCII
 ```
@@ -63,13 +63,13 @@ Get-Content ".\checksum.md5"
 1. Copiar binario para a pasta de artefatos:
 
 ```powershell
-Copy-Item "<CAMINHO_LOCAL>\CaraCorePDV.exe" "d:\dev\caracore-site\delivery\pdv\artifacts\CaraCorePDV.exe" -Force
+Copy-Item "<CAMINHO_LOCAL>\CaraCorePDV.exe" "d:\dev\caracore-site\delivery_old\pdv\artifacts\CaraCorePDV.exe" -Force
 ```
 
 1. Gerar checksums reais (SHA-256 e MD5):
 
 ```powershell
-Set-Location "d:\dev\caracore-site\delivery\pdv\artifacts"
+Set-Location "d:\dev\caracore-site\delivery_old\pdv\artifacts"
 (Get-FileHash -Path ".\CaraCorePDV.exe" -Algorithm SHA256).Hash + "  CaraCorePDV.exe" | Set-Content -Path ".\checksum.sha256" -Encoding ASCII
 (Get-FileHash -Path ".\CaraCorePDV.exe" -Algorithm MD5).Hash + "  CaraCorePDV.exe" | Set-Content -Path ".\checksum.md5" -Encoding ASCII
 ```

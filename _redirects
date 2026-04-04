@@ -1,4 +1,65 @@
+# Ordem: primeira regra que casa ganha. Redirects específicos antes do catch-all SPA.
+# Mapa: docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md · política: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §1.0a
+
 /moving_to_ch/*    /aligned/:splat   301
-/*    /index.html   200
-/secure/*    /secure/index.html   200
+
+# Sala canónica — pasta delivery/sala não existe no repo (docs/DELIVERY_RESTRUCTURA.md)
+/delivery/sala    /sala/   301
+/delivery/sala/   /sala/   301
+/delivery/sala/*  /sala/:splat   301
+
+# Publications legado na matriz → canónico em /publications/ ou índice editorial em /sala/ (stubs em delivery/publications/)
+/delivery/publications    /sala/   301
+/delivery/publications/   /sala/   301
+/delivery/publications/index.html   /sala/   301
+/delivery/publications/*   /publications/:splat   301
+
+# Delivery → lojas (subdomínio oficial por produto)
+/delivery/pdv      https://pdv.caracore.com.br/   301
+/delivery/pdv/     https://pdv.caracore.com.br/   301
+/delivery/pdv/*    https://pdv.caracore.com.br/:splat   301
+
+/delivery/hub      https://hub.caracore.com.br/   301
+/delivery/hub/     https://hub.caracore.com.br/   301
+/delivery/hub/*    https://hub.caracore.com.br/:splat   301
+
+/delivery/circuito      https://circuito.caracore.com.br/   301
+/delivery/circuito/     https://circuito.caracore.com.br/   301
+/delivery/circuito/*    https://circuito.caracore.com.br/:splat   301
+
+/delivery/oidc      https://oidc.caracore.com.br/   301
+/delivery/oidc/     https://oidc.caracore.com.br/   301
+/delivery/oidc/*    https://oidc.caracore.com.br/:splat   301
+
+/delivery/seed      https://seed.caracore.com.br/   301
+/delivery/seed/     https://seed.caracore.com.br/   301
+/delivery/seed/*    https://seed.caracore.com.br/:splat   301
+
+/delivery/area51      https://area51.caracore.com.br/   301
+/delivery/area51/     https://area51.caracore.com.br/   301
+/delivery/area51/*    https://area51.caracore.com.br/:splat   301
+
+/delivery/ru      https://ru.caracore.com.br/   301
+/delivery/ru/     https://ru.caracore.com.br/   301
+/delivery/ru/*    https://ru.caracore.com.br/:splat   301
+
+/delivery/cso      https://cso.caracore.com.br/   301
+/delivery/cso/     https://cso.caracore.com.br/   301
+/delivery/cso/*    https://cso.caracore.com.br/:splat   301
+
+/delivery/ink      https://ink.caracore.com.br/   301
+/delivery/ink/     https://ink.caracore.com.br/   301
+/delivery/ink/*    https://ink.caracore.com.br/:splat   301
+
+/delivery/ete      https://ete.caracore.com.br/   301
+/delivery/ete/     https://ete.caracore.com.br/   301
+/delivery/ete/*    https://ete.caracore.com.br/:splat   301
+
+/delivery/mkt      https://mkt.caracore.com.br/   301
+/delivery/mkt/     https://mkt.caracore.com.br/   301
+/delivery/mkt/*    https://mkt.caracore.com.br/:splat   301
+
 /favicon.ico    /images/favicon.ico   301
+/secure/*    /secure/index.html   200
+/cv/*    /index.html   200
+/*    /index.html   200

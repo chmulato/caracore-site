@@ -1,5 +1,9 @@
 # Mapa de Rotas
-## Delivery (legado) -> Subdominios (fonte oficial)
+## Delivery (legado na matriz) → lojas (fonte oficial)
+
+**Plano:** cada rota `/delivery/{produto}/...` na matriz deve corresponder ao destino na **loja** desse produto (`https://{produto}.caracore.com.br/...`); ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0. **Estado-alvo:** quando a pasta `delivery/` for removida do repo, este mapa define as **mesmas** rotas, implementadas **só** no hospedeiro (§1.0a).
+
+**Onde editar conteúdo (Sala vs lojas):** `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md`. Este ficheiro é o **mapeamento de URLs** legado na matriz → URL oficial na loja.
 
 ## Regras de mapeamento
 - Rota base de produto: /delivery/{produto}/ -> https://{subdominio}/
@@ -94,12 +98,12 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 
 ## Entradas especiais para tratar no Ciclo 0
 - /delivery/publications/
-- /delivery/sala/
+- /delivery/sala/ (legado — só redirect HTTP / CDN; pasta removida do repo)
 - /delivery/assets/
 
 ## Decisao proposta para entradas especiais
-- publications: manter na matriz (nao produto unico de subdominio)
-- sala: manter como acervo/editorial da matriz
+- publications: manter na matriz (nao produto unico de subdominio); stubs em `delivery/publications/` apontam para `/publications/` e `/sala/` conforme o caso
+- sala: acervo canónico em `/sala/` (`sala/` na raiz do repo). **Sem** `delivery/sala/` no repositório; mapear `/delivery/sala/*` → `/sala/*` no hospedeiro (`_redirects`, CDN, etc.); ver `docs/DELIVERY_RESTRUCTURA.md`
 - assets: manter como biblioteca compartilhada
 
 ## Proximo passo

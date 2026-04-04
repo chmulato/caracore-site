@@ -1,7 +1,9 @@
-﻿VALIDAÃ‡ÃƒO: LOJAS ALINHADAS COM A MATRIZ
+VALIDAÃ‡ÃƒO: LOJAS ALINHADAS COM A MATRIZ
 ========================================
 
 Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinhadas com os portais da matriz (cara-core-site/delivery). Inclui o ramo Garagem (futuros lanÃ§amentos). Data da verificaÃ§Ã£o: 05/02/2026; atualizado com Garagem em 06/02/2026; alinhamento Ãrea 51 (download + licenca-uso + Caraâ†”CrachÃ¡) em 20/02/2026.
+
+Referencias publicas (campanhas e links novos): matriz institucional em https://caracore.com.br/ (portfolio, ecossistema, sala); produto em https://{produto}.caracore.com.br/. A pasta delivery/ no repositorio e legado de compatibilidade de URL ate remocao (docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §1.0a). Este documento continua a descrever o espelho tecnico matriz/loja no Git.
 
 -------------------------------------------------------------------------------
 
@@ -20,7 +22,7 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinh
   Status:  OK. Mensagem alinhada.
 
   Links
-    Loja referencia matriz (caracore.com.br/delivery/pdv) e portfÃ³lio; download aponta para DegustaÃ§Ã£o e Releases.
+    Loja referencia matriz institucional (portfolio, ecossistema) e portfÃ³lio; download aponta para DegustaÃ§Ã£o e Releases. Legado caracore.com.br/delivery/pdv/ apenas redirect durante transicao.
   Status:  OK.
 
 -------------------------------------------------------------------------------
@@ -123,7 +125,7 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinh
 
   Links e CTAs
     Matriz: "Ver loja (releases)" no hero, nav e footer. Cards: download, licenca-uso, canal-feedback, loja, portfÃ³lio, documentaÃ§Ã£o tÃ©cnica (wiki).
-    Loja: "Ver apresentaÃ§Ã£o (matriz)" no hero e link para caracore.com.br/delivery/area51/.
+    Loja: "Ver apresentaÃ§Ã£o (matriz)" no hero com destino institucional (portfolio/ecossistema) e vitrine completa em area51.caracore.com.br; legado delivery/area51/ com redirect HTTP.
   Status:  OK.
 
 -------------------------------------------------------------------------------
@@ -146,11 +148,11 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinh
   Status:  OK. Mensagem alinhada.
 
   Links
-    Matriz: CTAs para loja (ru.caracore.com.br/) e download (loja/docs/download.html). Loja: breadcrumbs PortfÃ³lio Â· RU Soberano â€” Delivery Â· Loja; links para matriz (caracore.com.br/delivery/ru/), canal de feedback, download, licenÃ§a, manual tÃ©cnico, MIRROR_DELIVERY.
+    Matriz: CTAs para loja (ru.caracore.com.br/) e download (loja/docs/download.html). Loja: breadcrumbs e narrativa RU; links para matriz institucional e vitrine; legado caracore.com.br/delivery/ru/ com redirect. Canal de feedback, download, licenÃ§a, manual tÃ©cnico, MIRROR_DELIVERY.
   Status:  OK.
 
   Garagem
-    No ecossistema (ecosistema.html), RU Soberano no subgraph "Garagem â€” futuros lanÃ§amentos (em trabalho)": Matriz â†’ RU Soberano â†’ caracore-ru â†’ caracore-ru-releases. Link "RU Soberano (garagem)" para delivery/ru na pÃ¡gina do ecossistema.
+    No ecossistema (ecosistema.html), RU Soberano no subgraph "Garagem â€” futuros lanÃ§amentos (em trabalho)": Matriz â†’ RU Soberano â†’ caracore-ru â†’ caracore-ru-releases. Link canÃ³nico na UI: ru.caracore.com.br; legado delivery/ru com redirect.
   Status:  OK.
 
 -------------------------------------------------------------------------------
@@ -167,7 +169,7 @@ Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinh
   Suporte Ãrea 51     OK          OK          OK            Alinhada
   Garagem â€” RU Soberano  OK       OK          OK            Alinhada (futuro lanÃ§amento 18/Junho/2026)
 
-  Todas as lojas verificadas estÃ£o alinhadas com a matriz em estrutura de pÃ¡ginas, mensagem de negÃ³cio (posicionamento, preÃ§os onde aplicÃ¡vel, oferta FREE/upgrade/nÃ£o disponÃ­vel) e links cruzados. CTAs: em cada matriz hÃ¡ "Ver loja (releases)" para a loja correspondente; em cada loja hÃ¡ "Ver apresentaÃ§Ã£o (matriz)" (hero e/ou footer) para o portal completo no site Cara Core. O ramo Garagem (ecosistema.html) agrupa produtos em desenvolvimento com matriz, oficina e loja no ar; RU Soberano Ã© o primeiro.
+  Todas as lojas verificadas estÃ£o alinhadas com a matriz em estrutura de pÃ¡ginas, mensagem de negÃ³cio (posicionamento, preÃ§os onde aplicÃ¡vel, oferta FREE/upgrade/nÃ£o disponÃ­vel) e links cruzados. CTAs: matriz aponta "Ver loja" para o subdomÃ­nio; lojas reforÃ§am identidade Cara Core via portfolio/ecossistema e vitrine no subdomÃ­nio. O ramo Garagem (ecosistema.html) agrupa produtos em desenvolvimento com matriz, oficina e loja no ar; RU Soberano Ã© o primeiro.
 
   ReferÃªncias: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt. Reino OIDC loja: reino-oidc-releases (pasta docs/); caminho local D:\dev\reino-oidc-releases. RU Soberano: delivery/ru (matriz), caracore-ru-releases (loja), caracore-ru (oficina). Mapa visual do ecossistema (matriz, produtos, oficinas, lojas, Garagem): caracore.com.br/ecosistema.html (ConheÃ§a o Nosso Eco Mundo).
 

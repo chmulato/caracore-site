@@ -132,7 +132,6 @@ Arquivos a atualizar:
 
 - sala/redes/retro/articles.html
 - personal/index.html
-- delivery/sala/redes/retro/articles.html
 
 Entregas:
 

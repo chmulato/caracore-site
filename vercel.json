@@ -14,6 +14,206 @@
             "destination": "https://caracore-backend-docker.azurewebsites.net/oauth/microsoft/token"
         },
         {
+            "source": "/delivery/sala",
+            "destination": "/sala/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/sala/",
+            "destination": "/sala/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/sala/:path*",
+            "destination": "/sala/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/publications",
+            "destination": "/sala/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/publications/",
+            "destination": "/sala/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/publications/index.html",
+            "destination": "/sala/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/publications/:path*",
+            "destination": "/publications/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/pdv",
+            "destination": "https://pdv.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/pdv/",
+            "destination": "https://pdv.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/pdv/:path*",
+            "destination": "https://pdv.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/hub",
+            "destination": "https://hub.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/hub/",
+            "destination": "https://hub.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/hub/:path*",
+            "destination": "https://hub.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/circuito",
+            "destination": "https://circuito.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/circuito/",
+            "destination": "https://circuito.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/circuito/:path*",
+            "destination": "https://circuito.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/oidc",
+            "destination": "https://oidc.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/oidc/",
+            "destination": "https://oidc.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/oidc/:path*",
+            "destination": "https://oidc.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/seed",
+            "destination": "https://seed.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/seed/",
+            "destination": "https://seed.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/seed/:path*",
+            "destination": "https://seed.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/area51",
+            "destination": "https://area51.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/area51/",
+            "destination": "https://area51.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/area51/:path*",
+            "destination": "https://area51.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ru",
+            "destination": "https://ru.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ru/",
+            "destination": "https://ru.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ru/:path*",
+            "destination": "https://ru.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/cso",
+            "destination": "https://cso.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/cso/",
+            "destination": "https://cso.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/cso/:path*",
+            "destination": "https://cso.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ink",
+            "destination": "https://ink.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ink/",
+            "destination": "https://ink.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ink/:path*",
+            "destination": "https://ink.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ete",
+            "destination": "https://ete.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ete/",
+            "destination": "https://ete.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/ete/:path*",
+            "destination": "https://ete.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/mkt",
+            "destination": "https://mkt.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/mkt/",
+            "destination": "https://mkt.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/mkt/:path*",
+            "destination": "https://mkt.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
             "source": "/secure/*",
             "destination": "/secure/index.html"
         },
@@ -22,7 +222,7 @@
             "destination": "/index.html"
         },
         {
-            "source": "/*",
+            "source": "/:path*",
             "destination": "/index.html"
         }
     ]

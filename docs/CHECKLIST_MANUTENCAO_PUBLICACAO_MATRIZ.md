@@ -2,9 +2,12 @@
 
 Usar antes de PR/deploy de alterações visíveis em `caracore.com.br`.
 
+**Referência:** `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` (Sala só em `sala/` na raiz; produtos nas lojas).
+
 ## Conteúdo e links
 
 - [ ] Novos links comerciais de produto apontam para **subdomínio** (`https://{produto}.caracore.com.br/...`), não para `/delivery/{produto}/` (exceto teste de redirect).
+- [ ] Alterações à Sala de Operações estão apenas em `sala/` na raiz do repo (não há `delivery/sala/` no repositório).
 - [ ] Breadcrumb “Cara Core” na matriz: `https://caracore.com.br/` (não `index.html` isolado como marca).
 - [ ] Imagens e assets com caminhos relativos corretos após mudança de pasta.
 

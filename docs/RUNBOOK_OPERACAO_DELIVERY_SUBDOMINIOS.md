@@ -1,14 +1,20 @@
 # Runbook operacional — Delivery → subdomínios
 
 **Âmbito:** matriz `caracore.com.br`, pastas `delivery/*`, lojas em `*.caracore.com.br`.  
-**Documentos relacionados:** `CHECKLIST_EXECUCAO_REMODELAGEM_DELIVERY.md`, `MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`, `PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md`.
+**Plano (MD):** `delivery/` na matriz = **legado/redirect**; destino canónico = **lojas**. **Estado-alvo:** repositório **sem** pasta `delivery/` — pré-requisitos em `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §**1.0a**.  
+**Fonte canónica por tipo de conteúdo (Sala / lojas / matriz):** `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` — não repetir essas regras noutros sítios; atualizar só lá quando a arquitetura de informação mudar.
+
+**Grau de execução do plano (0–9):** `docs/PLANO_GRAU_EXECUCAO.md` (sinalização junto ao checklist mestre).
+
+**Documentos relacionados:** `delivery/README.md`, `CHECKLIST_EXECUCAO_REMODELAGEM_DELIVERY.md`, `MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`, `PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md`.
 
 ---
 
 ## 1. Princípios
 
-- **Fonte comercial de produto:** subdomínio oficial + repositório `*-releases`.
-- **Matriz:** institucional, portfólio, ecossistema; `delivery/` é **compatibilidade** (redirects), não vitrine principal.
+- **Sala de Operações:** canónica em `sala/` na raiz do repo → `/sala/`; produtos **não** duplicam a Sala em `delivery/{produto}/`.
+- **Fonte comercial de produto:** subdomínio oficial + repositório `*-releases` (detalhe: `FONTES_CANONICAS_MATRIZ_LOJAS.md`).
+- **Matriz:** institucional, portfólio, ecossistema; `delivery/` é **legado** na matriz: **redirect** para as lojas, não vitrine nem fonte de conteúdo comercial novo.
 - **SLA de redirect:** 90 dias após ativação por produto (ver checklist mestre).
 
 ---
@@ -55,6 +61,7 @@
 
 | Canónico (manter) | Transitório / histórico |
 |---------------------|-------------------------|
+| `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` | |
 | `docs/CHECKLIST_EXECUCAO_REMODELAGEM_DELIVERY.md` | Checkpoints datados após fecho do gate final |
 | `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` | Rascunhos de IP local não commitados |
 | `docs/CRONOGRAMA_REMODELAGEM_DELIVERY.md` | |

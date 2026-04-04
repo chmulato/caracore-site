@@ -3,6 +3,8 @@
 Data: 14/03/2026  
 Escopo: caracore-site (matriz + delivery + wiki)
 
+*Nota (2026):* o espelho `delivery/sala/` foi removido do repositório; menções a esse caminho nas secções históricas abaixo mantêm-se como registo.
+
 ## Objetivo
 
 Manter uma rotina previsível de hardening contra engenharia social e cópia oportunista, sem quebrar fluxo comercial.

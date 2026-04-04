@@ -1,6 +1,12 @@
 # Plano de Remodelagem por Fases
 ## Desativação de Redundância em Delivery e Consolidação nos Subdomínios
 
+**Fontes canónicas (Sala vs lojas vs matriz):** `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` — ler antes de duplicar conteúdo entre pastas.
+
+**Enunciado do plano:** na matriz, **`delivery/` é camada de legado** (URLs antigas); o tráfego e a informação **oficial de produto** devem ir para as **respetivas lojas** por subdomínio. A matriz não é a vitrine de produto — ver §1.0 em `FONTES_CANONICAS_MATRIZ_LOJAS.md`.
+
+**Estado-alvo:** **não precisar da pasta `delivery/`** no repositório (`caracore-site/delivery`): eliminar a pasta depois de redirects no hospedeiro cobrirem o mapa e de `assets`/`publications` estarem resolvidos — ver **`docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0a**.
+
 ## 1. Objetivo
 Eliminar a duplicidade entre matriz (delivery) e lojas por subdomínio, mantendo:
 - continuidade de acesso para links antigos
@@ -26,15 +32,17 @@ Fora de escopo inicial:
 - mudanças estruturais em produtos sem subdomínio estável
 
 ## 3. Princípios de arquitetura
-- Fonte única de produto: subdomínio
-- Fonte física de publicação por produto: repositório `*-releases` correspondente
-- Matriz: institucional, portfólio e roteamento
-- Delivery: camada transitória de compatibilidade
-- Toda rota pública antiga deve ter destino explícito
+Detalhe e tabela de “onde vive cada coisa”: **`docs/FONTES_CANONICAS_MATRIZ_LOJAS.md`**.
+
+Resumo:
+- **Sala de Operações:** canónica em `sala/` na raiz do `caracore-site` → `https://caracore.com.br/sala/`; `delivery/sala/` não existe no repo (redirects no hospedeiro).
+- **Fonte única de produto:** subdomínio + repositório `*-releases` correspondente.
+- **Matriz:** institucional, portfólio e roteamento.
+- **Delivery:** camada de compatibilidade (redirects), não vitrine nem acervo editorial.
+- Toda rota pública antiga deve ter destino explícito (`MAPA_ROTAS_*`).
 
 Regra operacional:
-- Conteúdo de vitrine, wiki e material comercial de cada produto deve viver no repositório `-releases` do próprio produto.
-- A matriz (`caracore-site`) mantém visão institucional e roteamento, sem duplicar conteúdo comercial detalhado.
+- Conteúdo de vitrine, wiki e material comercial de cada produto vive no `-releases` e na loja; a matriz não duplica esse conteúdo como fonte principal.
 
 ## 4. Modelo de execução por ciclos
 Cada ciclo fecha com evidência e gate de aprovação.

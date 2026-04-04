@@ -50,13 +50,14 @@ Test-ChecksumNotPending (Join-Path $pdvArtifacts "checksum.md5")
 # 2) Regra de seguranca de distribuicao
 if ($AllowPublicExe) {
         # Habilita EXE publico somente por excecao explicita.
+        # Distribuicao publica: CTA para loja oficial (verdade de produto); artefatos em delivery/ validados acima ate migracao de paths.
         Set-UpdatedFileContent -filePath $eteOfficial `
             -old '<a class="btn btn-primary" href="canal-feedback.html">Solicitar entrega segura</a>' `
-            -new '<a class="btn btn-primary" href="/delivery/ete/artifacts/Minerador40.exe">Baixar instalador (endpoint oficial)</a>'
+            -new '<a class="btn btn-primary" href="https://ete.caracore.com.br/download.html">Baixar na loja oficial (ETE)</a>'
 
         Set-UpdatedFileContent -filePath $pdvOfficial `
             -old '<a href="canal-feedback.html" class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-white font-bold hover:bg-slate-800">`r`n          Solicitar entrega segura`r`n        </a>' `
-            -new '<a href="/delivery/pdv/artifacts/CaraCorePDV.exe" class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-white font-bold hover:bg-slate-800">`r`n          Baixar instalador (endpoint oficial)`r`n        </a>'
+            -new '<a href="https://pdv.caracore.com.br/download.html" class="inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-5 py-3 text-white font-bold hover:bg-slate-800">`r`n          Baixar na loja oficial (PDV)`r`n        </a>'
 
         Write-Host "Go-live validado e EXE publico habilitado por excecao." -ForegroundColor Yellow
         Write-Host "- Artefatos validados"

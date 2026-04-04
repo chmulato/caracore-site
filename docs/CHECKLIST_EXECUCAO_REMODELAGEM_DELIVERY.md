@@ -1,6 +1,17 @@
 # Checklist de Execucao
 ## Remodelagem Delivery -> Subdominios
 
+| Sinalização | Valor |
+|-------------|--------|
+| **Grau de execução (0–9)** | **6** |
+| **Pré-grau 7 (técnico)** | **Concluído** — `docs/EVIDENCIA_BASELINE_TECNICO_PRE_GRAU7.md` |
+| **Documento da escala** | `docs/PLANO_GRAU_EXECUCAO.md` |
+
+**Próximo passo para o grau 7:** evidência Search Console + smoke em produção + **§ Gates de negócio** (registo). O lado técnico do repositório está preparado; ver evidência acima.
+
+**Plano em MD:** `delivery/` na matriz = legado/redirect → **respetivas lojas**; **estado-alvo = eliminar a pasta `delivery/`** do repositório quando o hospedeiro cobrir o mapa — ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0 e **§1.0a**.  
+**Arquitetura de informação (uma fonte por tipo):** `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` — Sala apenas em `sala/` na raiz; conteúdo de produto apenas nas lojas (subdomínios); `delivery/` só compatibilidade. Evita redundância e acoplamento entre documentos e pastas.
+
 ## Ciclo 0 - Preparacao e baseline
 - [x] Criar plano de fases
 - [x] Criar cronograma de execucao
@@ -10,6 +21,7 @@
 - [x] Mapear paginas criticas (top trafego/campanha)
 - [x] Definir janela formal de compatibilidade (SLA de redirect)
 - [x] Definir estrategia de rollback por produto
+- [x] Documentar fontes canonicas e anti-redundancia (`docs/FONTES_CANONICAS_MATRIZ_LOJAS.md`)
 
 ## Ciclo 1 - Canonizacao da matriz
 - [x] Remover CTAs de produto para /delivery/*
@@ -44,6 +56,16 @@
 - [x] Encerrar artefatos transitorios (tabela canónico vs transitório no runbook §6)
 - [ ] Aprovar gate final (após evidência de tráfego/conversão)
 
+## Gates de negócio — registo (avanço para graus 7, 8 e 9)
+
+Ao aprovar, marcar os checkboxes acima **e** atualizar o **Grau** no topo deste ficheiro e em `docs/PLANO_GRAU_EXECUCAO.md`.
+
+| Gate | Grau | Data (AAAA-MM-DD) | Aprovador | Evidência (SC, relatório, nota) |
+|------|:----:|-------------------|-----------|--------------------------------|
+| Ciclo 4 — estabilidade tráfego/conversão | 7 | | | |
+| Ciclo 5 — fecho após evidência | 8 | | | |
+| Encerramento operacional (revisão SLA / modo manutenção) | 9 | | | |
+
 ## Baseline do inventario (iniciado)
 - area51: 9 arquivos
 - circuito: 32 arquivos
@@ -75,3 +97,17 @@
 ## Atualizacao de status (2026-04-01)
 - Ciclo 4: entregaveis tecnicos e documentacao publicados (sitemap, robots, runbook, checklist manutencao). Gates de negocio (trafego/conversao) pendentes de aprovacao humana.
 - Ciclo 5: runbook e checklist permanentes publicados; gate final pendente de aprovacao.
+
+## Atualizacao de status (2026-04-01 — grau 0-9)
+- **Grau 6:** todos os itens técnicos dos Ciclos 0–5 concluídos; pendem apenas os **gates de negócio** (Ciclo 4 e Ciclo 5). Detalhe: `docs/PLANO_GRAU_EXECUCAO.md`.
+- **Continuação na escala:** rota 7→9, preparação no grau 6 e tabela de registo em `PLANO_GRAU_EXECUCAO.md` e §**Gates de negócio** neste ficheiro.
+
+## Atualizacao de status (2026-04-04 — pré-grau 7)
+- **Pré-requisito técnico para grau 7:** concluído — `docs/EVIDENCIA_BASELINE_TECNICO_PRE_GRAU7.md`. **Grau oficial** mantém-se **6** até gate Ciclo 4 (Search Console / marketing + registo na tabela §Gates).
+
+## Atualizacao de status (2026-04-01 — redundancia delivery)
+- **Conteúdo de produto na matriz:** pastas `delivery/{produto}/` contêm apenas HTML de **redirect** para subdomínios; vitrines e wikis ficam nas lojas `*-releases`.
+- **`docs/FONTES_CANONICAS_MATRIZ_LOJAS.md`:** referência única para Sala vs lojas vs matriz; planos (`PLANO_*`, runbook, checklists) remetem a este ficheiro em vez de repetir tabelas.
+- **`delivery/README.md`:** descreve exceções (`sala/`, `assets/`, `publications/`).
+- **`MIRROR_DELIVERY.md`:** realinhados por produto (incl. `ete`, `cso`) para apontar só para a loja oficial.
+- **`.github/config/production.yml`:** texto em UTF-8 (comentários e nomes sem mojibake).

@@ -12,6 +12,5 @@ Disallow: /aligned/
 Disallow: /cv/
 Disallow: /personal/
 Disallow: /sala/
-Disallow: /delivery/sala/
 Disallow: /publications/
 Disallow: /pdf/

@@ -1,12 +1,12 @@
-﻿CAMPANHA ORGANICA CARA CORE INFORMATICA
+CAMPANHA ORGANICA CARA CORE INFORMATICA
 =======================================
 
 Registro de artigos publicados no LinkedIn e planejamento editorial. Documento de referencia para marketing organico e alinhamento ao ecossistema da Cara Core Informatica.
 
 Referencias do ecossistema:
   ECOSYSTEM_CARA_CORE.txt   Visao geral dos repositorios e produtos (caracore-site, caracore-pdv, caracore-hub, caracore-ete, caracore-seed, caracore-circuito, caracore-oidc, caracore-area51, caracore-ru e respectivas *-releases).
-  VALIDACAO_LOJAS_MATRIZ.txt Validacao das lojas online frente aos portais da matriz (delivery/pdv, hub, circuito, oidc, seed, area51, ru).
-  ECOSYSTEM_LOJAS.txt        URLs das lojas (GitHub Pages) e matriz (caracore.com.br/delivery/...).
+  VALIDACAO_LOJAS_MATRIZ.txt Validacao das lojas online frente a matriz institucional (portfolio, ecossistema) e pasta delivery/ em transicao no repo.
+  ECOSYSTEM_LOJAS.txt        URLs canonicas das lojas (GitHub Pages) e matriz institucional (caracore.com.br — portfolio, ecossistema, sala); ver docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §2–3.
 
 Sala de noticias (este repositorio):
   Repositorio: caracore-articles (branch main). GitHub Pages: https://caracore.com.br/sala/redes/retro/
@@ -135,21 +135,23 @@ PLANO EDITORIAL JUN / JUL / AGO 2026 (ECOSSISTEMA CARA CORE)
 
 Foco: artigos alinhados aos produtos e lojas do ecossistema (PDV, Hub, ETE, Circuito Python, Reino OIDC, Seed, Area 51, RU Soberano, matriz e portifolio). Um artigo por semana; 8 a 10 minutos de leitura; publicacao no LinkedIn.
 
-Produtos e referencias:
-  Cara Core PDV          caracore.com.br/delivery/pdv   | pdv.caracore.com.br
-  Cara Core Hub          caracore.com.br/delivery/hub   | hub.caracore.com.br
-  Minerador 4.0 (ETE)     caracore.com.br/delivery/ete  | ete.caracore.com.br
-  Circuito Python         caracore.com.br/delivery/circuito | circuito.caracore.com.br
-  Reino OIDC              caracore.com.br/delivery/oidc  | oidc.caracore.com.br
-  Cara Core Seed         caracore.com.br/delivery/seed  | seed.caracore.com.br (vitrine, app nao disponivel)
-  Suporte Area 51         caracore.com.br/delivery/area51 | area51.caracore.com.br
-  RU Soberano (Garagem)   caracore.com.br/delivery/ru    | ru.caracore.com.br (Loja RU abre 18/Jun/2026, R$ 29,90; serie RU 1991 encerrada com Epilogo 05/05)
+Produtos e referencias (CTAs e artigos: usar sempre a loja; matriz = identidade Cara Core em caracore.com.br):
+  Cara Core PDV          pdv.caracore.com.br   | matriz: portfolio.html, ecossistema.html (institucional)
+  Cara Core Hub          hub.caracore.com.br   | idem
+  Minerador 4.0 (ETE)    ete.caracore.com.br   | idem
+  Circuito Python       circuito.caracore.com.br | idem
+  Reino OIDC            oidc.caracore.com.br  | idem
+  Cara Core Seed        seed.caracore.com.br (vitrine; app nao disponivel) | idem
+  Suporte Area 51       area51.caracore.com.br | idem
+  RU Soberano (Garagem) ru.caracore.com.br (Loja RU abre 18/Jun/2026, R$ 29,90; serie RU 1991 encerrada com Epilogo 05/05) | idem
+
+  URLs antigas caracore.com.br/delivery/{produto}/... permanecem em redirect HTTP ate fim do plano (docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md); nao promover em copy nova.
 
 JUNHO 2026
 
   Semana 1 (07/06)  Artigo 87  RU Soberano: O Que e e Por Que o LanÃ§amento em Junho de 2026 Importa
   Semana 2 (14/06)  Artigo 88  Do Cafe Mania ao Material Serio: A Historia do RU e a Engenharia Quimica
-  Semana 3 (21/06)  Artigo 89  Matriz e Lojas: Como o Ecossistema Cara Core se Conecta (portifolio, delivery, GitHub Pages)
+  Semana 3 (21/06)  Artigo 89  Matriz e Lojas: Como o Ecossistema Cara Core se Conecta (portifolio institucional, ecossistema, lojas por subdominio, GitHub Pages)
   Semana 4 (28/06)  Artigo 90  Cara Core Seed: Por Que uma Ferramenta Interna de Licencas e Estrategica
 
 JULHO 2026

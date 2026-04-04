@@ -1,5 +1,9 @@
 User-agent: *
 Allow: /
+
+# Sitemap da matriz (páginas institucionais indexáveis; lojas têm sitemap próprio por subdomínio)
+Sitemap: https://caracore.com.br/sitemap.xml
+
 Disallow: /secure/
 Disallow: /wiki/
 Disallow: /handbook/

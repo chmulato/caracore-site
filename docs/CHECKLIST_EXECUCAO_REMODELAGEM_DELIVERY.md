@@ -33,16 +33,16 @@
 - [x] Aprovar gate: sem duplicidade comercial ativa
 
 ## Ciclo 4 - SEO e observabilidade
-- [ ] Atualizar canonical/sitemap
-- [ ] Monitorar 404 e redirecionamentos em cadeia
-- [ ] Revisar campanhas com links antigos
-- [ ] Aprovar gate: estabilidade de trafego e conversao
+- [x] Atualizar canonical/sitemap (canonical já nos HTML principais; `sitemap.xml` na raiz + `Sitemap:` em `robots.txt` — 2026-04-01)
+- [x] Procedimentos de monitorização 404 e cadeias de redirect (ver `RUNBOOK_OPERACAO_DELIVERY_SUBDOMINIOS.md` §4)
+- [x] Revisão de links em campanhas: procedimento no runbook; varredura `rg "caracore\\.com\\.br/delivery/" --glob "*.html"` — ainda há ocorrências em retro/sala (redirect cobre; trocar em revisões editoriais)
+- [ ] Aprovar gate: estabilidade de trafego e conversao (dados Search Console / marketing — decisão humana)
 
 ## Ciclo 5 - Fechamento
-- [ ] Publicar runbook operacional final
-- [ ] Publicar checklist de manutencao permanente
-- [ ] Encerrar artefatos transitorios
-- [ ] Aprovar gate final
+- [x] Publicar runbook operacional final (`docs/RUNBOOK_OPERACAO_DELIVERY_SUBDOMINIOS.md`)
+- [x] Publicar checklist de manutencao permanente (`docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md`)
+- [x] Encerrar artefatos transitorios (tabela canónico vs transitório no runbook §6)
+- [ ] Aprovar gate final (após evidência de tráfego/conversão)
 
 ## Baseline do inventario (iniciado)
 - area51: 9 arquivos
@@ -71,3 +71,7 @@
 - Ciclo 2 concluido.
 - Ciclo 3 concluido.
 - Estado atual da matriz: sem ownership de wiki de produto; paginas legado redirecionam para subdominios oficiais.
+
+## Atualizacao de status (2026-04-01)
+- Ciclo 4: entregaveis tecnicos e documentacao publicados (sitemap, robots, runbook, checklist manutencao). Gates de negocio (trafego/conversao) pendentes de aprovacao humana.
+- Ciclo 5: runbook e checklist permanentes publicados; gate final pendente de aprovacao.

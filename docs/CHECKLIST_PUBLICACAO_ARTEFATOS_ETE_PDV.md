@@ -1,4 +1,4 @@
-﻿# Checklist de Publicacao de Artefatos - ETE e PDV
+# Checklist de Publicacao de Artefatos - ETE e PDV
 
 Data base: 2026-03-14
 Escopo: endpoints institucionais no dominio da matriz
@@ -126,7 +126,7 @@ Campos minimos por atendimento:
 
 ## Automacao de fechamento (opcional)
 
-ApÃ³s publicar binarios e checksums reais, execute:
+Após publicar binarios e checksums reais, execute:
 
 ```powershell
 Set-Location "d:\dev\caracore-site\scripts"

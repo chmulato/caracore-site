@@ -1,7 +1,8 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <!-- PolÃ­tica de SeguranÃ§a de ConteÃºdo (CSP) -->
+  <meta charset="UTF-8">
+  <!-- Política de Segurança de Conteúdo (CSP) -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org https://unpkg.com data: https:; connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' https://cdn.jsdelivr.net data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -10,20 +11,18 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/lgpd.css">
   <link rel="stylesheet" href="assets/css/ecosistema.css">
-  <meta charset="UTF-8">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ecossistema Cara Core: Bunker Digital e Soberania Local | Cara Core InformÃ¡tica</title>
-  <meta name="description" content="Ecossistema Cara Core: prateleira (PDV, OIDC, Minerador 4.0, Circuito Ferradura, Ink v1); Garagem (Ink v2 â€” Jun/2026, Hub â€” Abr/2027, RU â€” Jun/2027, CSO â€” Nov/2028). Roadmap pÃºblico. Infraestrutura local, licenciamento de ativo.">
-  <meta name="author" content="Cara Core InformÃ¡tica">
+  <title>Ecossistema Cara Core: Bunker Digital e Soberania Local | Cara Core Informática</title>
+  <meta name="description" content="Ecossistema Cara Core: prateleira (PDV, OIDC, Minerador 4.0, Circuito Ferradura, Ink v1); Garagem (Ink v2 — Jun/2026, Hub — Abr/2027, RU — Jun/2027, CSO — Nov/2028). Roadmap público. Infraestrutura local, licenciamento de ativo.">
+  <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
   <link rel="canonical" href="https://caracore.com.br/ecosistema.html">
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/css/caracore-institutional-components.css">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
-  <script src="assets/js/analytics-config.js"></script>
+  <!-- GA4: assets/js/analytics-loader.js após consentimento LGPD -->
 </head>
 <body>
 
@@ -31,47 +30,47 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">Cara Core Inform&aacute;tica</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menu de navegaÃ§Ã£o" title="Menu de navegaÃ§Ã£o">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menu de navegação" title="Menu de navegação">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html#home">InÃ­cio</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#servicos">ServiÃ§os</a></li>
-        <li class="nav-item"><a class="nav-link" href="portfolio.html">PortfÃ³lio</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#home">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#servicos">Serviços</a></li>
+        <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfólio</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#diferenciais">Antifragilidade</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#contato">Contato</a></li>
         <li class="nav-item">
-          <a class="nav-link" href="secure/" title="Ãrea restrita">
+          <a class="nav-link" href="secure/" title="Área restrita">
             <i class="bi bi-shield-lock" aria-hidden="true"></i>
-            <span class="ms-1">Ãrea 51</span>
+            <span class="ms-1">Área 51</span>
           </a>
         </li>
         <li class="nav-item d-flex align-items-center">
           <div class="flag-dropdown">
-            <button type="button" class="flag-dropdown-toggle" aria-label="Selecionar paÃ­s/idioma" aria-expanded="false" aria-haspopup="true" title="Selecionar idioma" onclick="this.closest('.flag-dropdown').classList.toggle('show')">
-              <span class="flag-emoji">ðŸ‡§ðŸ‡·</span>
+            <button type="button" class="flag-dropdown-toggle" aria-label="Selecionar país/idioma" aria-expanded="false" aria-haspopup="true" title="Selecionar idioma" onclick="this.closest('.flag-dropdown').classList.toggle('show')">
+              <span class="flag-emoji">🇧🇷</span>
             </button>
             <div class="flag-dropdown-menu" role="menu">
-              <a href="index.html" class="flag-dropdown-item active" aria-label="Brasil - Site em portuguÃªs">
-                <span class="flag-emoji">ðŸ‡§ðŸ‡·</span>
+              <a href="index.html" class="flag-dropdown-item active" aria-label="Brasil - Site em português">
+                <span class="flag-emoji">🇧🇷</span>
                 <span class="flag-text">
                   <span class="flag-name">Brasil</span>
-                  <span class="flag-desc">PortuguÃªs</span>
+                  <span class="flag-desc">Português</span>
                 </span>
               </a>
-              <a href="moving_to_ch/en/index.html" class="flag-dropdown-item" aria-label="SuÃ­Ã§a - Site internacional em inglÃªs">
-                <span class="flag-emoji">ðŸ‡¨ðŸ‡­</span>
+              <a href="moving_to_ch/en/index.html" class="flag-dropdown-item" aria-label="Suíça - Site internacional em inglês">
+                <span class="flag-emoji">🇨🇭</span>
                 <span class="flag-text">
-                  <span class="flag-name">SuÃ­Ã§a</span>
+                  <span class="flag-name">Suíça</span>
                   <span class="flag-desc">English</span>
                 </span>
               </a>
-              <a href="moving_to_ch/it/index.html" class="flag-dropdown-item" aria-label="ItÃ¡lia - Site internacional em italiano">
-                <span class="flag-emoji">ðŸ‡®ðŸ‡¹</span>
+              <a href="moving_to_ch/it/index.html" class="flag-dropdown-item" aria-label="Itália - Site internacional em italiano">
+                <span class="flag-emoji">🇮🇹</span>
                 <span class="flag-text">
-                  <span class="flag-name">ItÃ¡lia</span>
+                  <span class="flag-name">Itália</span>
                   <span class="flag-desc">Italiano</span>
                 </span>
               </a>
@@ -86,10 +85,10 @@
 <!-- Banner LGPD -->
 <div id="lgpd-banner" class="lgpd-banner">
   <div class="lgpd-content">
-    <div class="lgpd-icon">ðŸ›¡ï¸</div>
+    <div class="lgpd-icon">🛡️</div>
     <div class="lgpd-text">
-      <strong>ProteÃ§Ã£o de Dados (LGPD)</strong><br>
-      Este site utiliza localStorage para salvar seu progresso no curso e melhorar sua experiÃªncia. Ao continuar navegando, vocÃª concorda com o tratamento dos seus dados conforme nossa PolÃ­tica de Privacidade e a Lei Geral de ProteÃ§Ã£o de Dados (LGPD).
+      <strong>Proteção de Dados (LGPD)</strong><br>
+      Este site utiliza localStorage para salvar seu progresso no curso e melhorar sua experiência. Ao continuar navegando, você concorda com o tratamento dos seus dados conforme nossa Política de Privacidade e a Lei Geral de Proteção de Dados (LGPD).
     </div>
     <div class="lgpd-buttons">
       <button class="lgpd-btn lgpd-btn-accept" onclick="acceptLGPD()">Aceitar</button>
@@ -107,32 +106,32 @@
           Ecossistema Cara Core: Bunker Digital e Soberania Local
         </h1>
         <p class="ecossistema-philosophy text-muted mb-0">
-          O ecossistema Cara Core Ã© um <strong>organismo vivo de infraestrutura Bunker</strong>: quando a internet cai, o sistema nÃ£o quebra â€” operaÃ§Ã£o antifrÃ¡gil em soberania local. Sistemas robustos e estÃ¡veis; foco em <strong>soberania operacional</strong> e <strong>licenciamento de ativo</strong>. Na <strong>prateleira</strong>: PDV, Reino OIDC, Minerador 4.0, Circuito Ferradura e Ink Agenda v1 (Google Play). Na <strong>Garagem</strong>: <strong>Ink Agenda v2.0.0</strong> (26/Jun/2026), <strong>CaraCore Hub</strong> (06/Abr/2027), <strong>RU Soberano</strong> (18/Jun/2027), <strong>Cara Core CSO</strong> (08/Nov/2028) e <strong>Suporte Ãrea 51</strong> (serviÃ§o contratÃ¡vel). <a href="#roadmap" class="text-decoration-none">Ver roadmap pÃºblico.</a>
+          O ecossistema Cara Core é um <strong>organismo vivo de infraestrutura Bunker</strong>: quando a internet cai, o sistema não quebra — operação antifrágil em soberania local. Sistemas robustos e estáveis; foco em <strong>soberania operacional</strong> e <strong>licenciamento de ativo</strong>. Na <strong>prateleira</strong>: PDV, Reino OIDC, Minerador 4.0, Circuito Ferradura e Ink Agenda v1 (Google Play). Na <strong>Garagem</strong>: <strong>Ink Agenda v2.0.0</strong> (26/Jun/2026), <strong>CaraCore Hub</strong> (06/Abr/2027), <strong>RU Soberano</strong> (18/Jun/2027), <strong>Cara Core CSO</strong> (08/Nov/2028) e <strong>Suporte Área 51</strong> (serviço contratável). <a href="#roadmap" class="text-decoration-none">Ver roadmap público.</a>
         </p>
         <p class="ecossistema-philosophy text-muted mt-3 mb-0">
-          <strong>Mkt Ã© gratuito â€” nÃ£o vendemos.</strong> Portal com Sala Cara Core (Mkt), uso livre conforme oferta na matriz e na loja. O <strong>Seed</strong> Ã© software proprietÃ¡rio (propriedade intelectual da Cara Core); muitas horas de trabalho e cÃ³digo â€” nÃ£o estÃ¡ Ã  venda.
+          <strong>Mkt é gratuito — não vendemos.</strong> Portal com Sala Cara Core (Mkt), uso livre conforme oferta na matriz e na loja. O <strong>Seed</strong> é software proprietário (propriedade intelectual da Cara Core); muitas horas de trabalho e código — não está à venda.
         </p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Prateleira: PDV, Hub, OIDC, Minerador, Circuito Ferradura, Ink Agenda (versÃ£o anterior) -->
+<!-- Prateleira: PDV, Hub, OIDC, Minerador, Circuito Ferradura, Ink Agenda (versão anterior) -->
 <section class="ecossistema-section py-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
-        <h2 class="text-center mb-4">Na prateleira â€” soluÃ§Ãµes prontas para uso</h2>
-        <p class="text-center text-muted mb-4">Produtos jÃ¡ disponÃ­veis na matriz e nas lojas: infraestrutura Bunker que <strong>nÃ£o para quando a internet cai</strong>. PDV e Hub no nÃºcleo; Reino OIDC, Minerador 4.0, Circuito Ferradura e Ink Agenda (versÃ£o anterior na Google Play) completam a oferta. <strong>Mkt: gratuito â€” nÃ£o vendemos.</strong></p>
+        <h2 class="text-center mb-4">Na prateleira — soluções prontas para uso</h2>
+        <p class="text-center text-muted mb-4">Produtos já disponíveis na matriz e nas lojas: infraestrutura Bunker que <strong>não para quando a internet cai</strong>. PDV e Hub no núcleo; Reino OIDC, Minerador 4.0, Circuito Ferradura e Ink Agenda (versão anterior na Google Play) completam a oferta. <strong>Mkt: gratuito — não vendemos.</strong></p>
         <div class="eco-nucleus">
           <div class="row align-items-center">
             <div class="col-md-8">
               <h2 class="h5"><i class="bi bi-cash-stack text-primary me-2"></i> PDV: o alicerce</h2>
-              <p class="mb-2 text-muted">Ponto de venda antifrÃ¡gil: nÃ£o para quando a internet cai. Soberania local, Reforma TributÃ¡ria 2026, recibo digital. Java 21.</p>
-              <h2 class="h5 mt-3"><i class="bi bi-calendar-event text-success me-2"></i> Ink Agenda v2.0.0: o prÃ³ximo lanÃ§amento <span class="badge bg-success ms-1" style="font-size:0.65rem;vertical-align:middle;">LanÃ§amento 26/Jun/2026</span></h2>
-              <p class="mb-2 text-muted">Agenda e controle financeiro para estÃºdios de tatuagem â€” desktop Windows (Java 21 + JavaFX). VersÃ£o atual disponÃ­vel na Google Play. <em>Em desenvolvimento â€” <a href="https://ink.caracore.com.br/" class="text-decoration-none">ver apresentaÃ§Ã£o</a>.</em></p>
-              <h2 class="h5 mt-3"><i class="bi bi-diagram-3 text-primary me-2"></i> Hub: o sistema nervoso <span class="badge bg-warning text-dark ms-1" style="font-size:0.65rem;vertical-align:middle;">LanÃ§amento 06/Abr/2027</span></h2>
-              <p class="mb-0 text-muted">GestÃ£o logÃ­stica e e-commerce para centros de distribuiÃ§Ã£o. SQLite local, infraestrutura Bunker e autonomia operacional. <em>Em desenvolvimento â€” consulte a <a href="https://hub.caracore.com.br/" class="text-decoration-none">apresentaÃ§Ã£o</a>.</em></p>
+              <p class="mb-2 text-muted">Ponto de venda antifrágil: não para quando a internet cai. Soberania local, Reforma Tributária 2026, recibo digital. Java 21.</p>
+              <h2 class="h5 mt-3"><i class="bi bi-calendar-event text-success me-2"></i> Ink Agenda v2.0.0: o próximo lançamento <span class="badge bg-success ms-1" style="font-size:0.65rem;vertical-align:middle;">Lançamento 26/Jun/2026</span></h2>
+              <p class="mb-2 text-muted">Agenda e controle financeiro para estúdios de tatuagem — desktop Windows (Java 21 + JavaFX). Versão atual disponível na Google Play. <em>Em desenvolvimento — <a href="https://ink.caracore.com.br/" class="text-decoration-none">ver apresentação</a>.</em></p>
+              <h2 class="h5 mt-3"><i class="bi bi-diagram-3 text-primary me-2"></i> Hub: o sistema nervoso <span class="badge bg-warning text-dark ms-1" style="font-size:0.65rem;vertical-align:middle;">Lançamento 06/Abr/2027</span></h2>
+              <p class="mb-0 text-muted">Gestão logística e e-commerce para centros de distribuição. SQLite local, infraestrutura Bunker e autonomia operacional. <em>Em desenvolvimento — consulte a <a href="https://hub.caracore.com.br/" class="text-decoration-none">apresentação</a>.</em></p>
             </div>
             <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
               <a href="portfolio.html#caracore-pdv" class="btn btn-outline-primary me-2">PDV</a>
@@ -142,11 +141,11 @@
           </div>
         </div>
         <div class="text-center mt-4">
-          <p class="small text-muted mb-2">TambÃ©m na prateleira:</p>
+          <p class="small text-muted mb-2">Também na prateleira:</p>
           <a href="portfolio.html#reino-oidc" class="btn btn-outline-secondary btn-sm me-2">Reino OIDC</a>
           <a href="portfolio.html#minerador-ete" class="btn btn-outline-secondary btn-sm me-2">Minerador 4.0</a>
           <a href="portfolio.html#circuito-python" class="btn btn-outline-secondary btn-sm me-2">Circuito Ferradura</a>
-          <a href="https://play.google.com/store/apps/details?id=tattoo.ink.agenda&hl=pt-BR" class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener">Ink Agenda (versÃ£o anterior Â· Google Play)</a>
+          <a href="https://play.google.com/store/apps/details?id=tattoo.ink.agenda&hl=pt-BR" class="btn btn-outline-secondary btn-sm" target="_blank" rel="noopener">Ink Agenda (versão anterior · Google Play)</a>
           <a href="portfolio.html#caracore-mkt" class="btn btn-outline-success btn-sm ms-2"><i class="bi bi-gift"></i> Cara Core Mkt (gratuito)</a>
           <a href="portfolio.html#caracore-seed" class="btn btn-outline-secondary btn-sm">Cara Core Seed</a>
         </div>
@@ -155,61 +154,61 @@
   </div>
 </section>
 
-<!-- Na Garagem â€” Ink Agenda v2.0.0, RU Soberano, Scripts de configuraÃ§Ã£o Ãrea 51 -->
+<!-- Na Garagem — Ink Agenda v2.0.0, RU Soberano, Scripts de configuração Área 51 -->
 <section id="garagem" class="eco-garagem-section ecossistema-section py-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
-        <p class="eco-garagem-badge text-center">Na Garagem â€” The Lab</p>
-        <h2 class="text-center mb-4">LanÃ§amentos programados</h2>
-        <p class="text-center text-muted mb-4">Em desenvolvimento: <strong>Ink Agenda v2.0.0</strong> (Jun/2026), <strong>CaraCore Hub</strong> (Abr/2027), <strong>RU Soberano</strong> (Jun/2027) e <strong>Cara Core CSO</strong> (Nov/2028). <strong>Suporte Ãrea 51:</strong> serviÃ§o contratÃ¡vel. Veja o <a href="#roadmap">roadmap completo</a> abaixo para datas e status de cada produto.</p>
+        <p class="eco-garagem-badge text-center">Na Garagem — The Lab</p>
+        <h2 class="text-center mb-4">Lançamentos programados</h2>
+        <p class="text-center text-muted mb-4">Em desenvolvimento: <strong>Ink Agenda v2.0.0</strong> (Jun/2026), <strong>CaraCore Hub</strong> (Abr/2027), <strong>RU Soberano</strong> (Jun/2027) e <strong>Cara Core CSO</strong> (Nov/2028). <strong>Suporte Área 51:</strong> serviço contratável. Veja o <a href="#roadmap">roadmap completo</a> abaixo para datas e status de cada produto.</p>
         <div class="row g-4 mb-4">
           <div class="col-md-6">
             <div class="eco-garagem-card">
-              <span class="eco-garagem-badge">Primeiro produto jÃ¡ maduro Â· GestÃ£o para estÃºdios</span>
+              <span class="eco-garagem-badge">Primeiro produto já maduro · Gestão para estúdios</span>
               <h3><a href="https://ink.caracore.com.br/" class="eco-garagem-card-title-link">Ink Agenda v2.0.0</a></h3>
-              <p class="text-muted small mb-2">Agenda e controle financeiro para estÃºdios de tatuagem. Aplicativo desktop Windows (Java 21 + JavaFX): calendÃ¡rio, lista do dia, receitas e despesas, saldo e histÃ³rico, painel de resultados e cadastro de clientes. Dados em SQLite local â€” soberania e robustez. VersÃ£o anterior na prateleira: <a href="https://play.google.com/store/apps/details?id=tattoo.ink.agenda&amp;hl=pt-BR" target="_blank" rel="noopener">Google Play</a>.</p>
-              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> LanÃ§amento: 26 de junho de 2026</span>
-              <p class="mb-0 mt-2"><a href="https://ink.caracore.com.br/" class="btn btn-sm btn-outline-primary">Ver apresentaÃ§Ã£o</a></p>
+              <p class="text-muted small mb-2">Agenda e controle financeiro para estúdios de tatuagem. Aplicativo desktop Windows (Java 21 + JavaFX): calendário, lista do dia, receitas e despesas, saldo e histórico, painel de resultados e cadastro de clientes. Dados em SQLite local — soberania e robustez. Versão anterior na prateleira: <a href="https://play.google.com/store/apps/details?id=tattoo.ink.agenda&amp;hl=pt-BR" target="_blank" rel="noopener">Google Play</a>.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 26 de junho de 2026</span>
+              <p class="mb-0 mt-2"><a href="https://ink.caracore.com.br/" class="btn btn-sm btn-outline-primary">Ver apresentação</a></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="eco-garagem-card">
-              <span class="eco-garagem-badge">LogÃ­stica Â· Hub de distribuiÃ§Ã£o</span>
+              <span class="eco-garagem-badge">Logística · Hub de distribuição</span>
               <h3><a href="https://hub.caracore.com.br/" class="eco-garagem-card-title-link">CaraCore Hub</a></h3>
-              <p class="text-muted small mb-2">GestÃ£o logÃ­stica e e-commerce para centros de distribuiÃ§Ã£o: recebimento, triagem, estoque, retirada e integraÃ§Ã£o com marketplaces. Bunker Digital com SQLite local â€” o nÃºcleo opera offline, protegendo a operaÃ§Ã£o quando a internet cai.</p>
-              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> LanÃ§amento: 06 de abril de 2027</span>
-              <p class="mb-0 mt-2"><a href="https://hub.caracore.com.br/" class="btn btn-sm btn-outline-primary">Ver apresentaÃ§Ã£o</a></p>
+              <p class="text-muted small mb-2">Gestão logística e e-commerce para centros de distribuição: recebimento, triagem, estoque, retirada e integração com marketplaces. Bunker Digital com SQLite local — o núcleo opera offline, protegendo a operação quando a internet cai.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 06 de abril de 2027</span>
+              <p class="mb-0 mt-2"><a href="https://hub.caracore.com.br/" class="btn btn-sm btn-outline-primary">Ver apresentação</a></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="eco-garagem-card">
-              <span class="eco-garagem-badge">SimulaÃ§Ã£o Â· Engenharia de Processos</span>
+              <span class="eco-garagem-badge">Simulação · Engenharia de Processos</span>
               <h3><a href="https://ru.caracore.com.br/" class="eco-garagem-card-title-link">RU Soberano</a></h3>
-              <p class="text-muted small mb-2">Motor de simulaÃ§Ã£o por eventos discretos (DES) com o RU como laboratÃ³rio didÃ¡tico: fluxo, filas, throughput e tempo de residÃªncia. Oferta gratuita: ambientaÃ§Ã£o RETRO (sala de aula UFPR 1991, BalanÃ§o de Massa). VersÃ£o paga: simulador de reator, jornada completa e narrativa Lord OIDC (1991 â†’ 2026) em 3D.</p>
-              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> LanÃ§amento: 18 de junho de 2027</span>
-              <p class="mb-0 mt-2"><a href="https://ru.caracore.com.br/" class="btn btn-sm btn-outline-primary">Ver apresentaÃ§Ã£o</a></p>
+              <p class="text-muted small mb-2">Motor de simulação por eventos discretos (DES) com o RU como laboratório didático: fluxo, filas, throughput e tempo de residência. Oferta gratuita: ambientação RETRO (sala de aula UFPR 1991, Balanço de Massa). Versão paga: simulador de reator, jornada completa e narrativa Lord OIDC (1991 → 2026) em 3D.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 18 de junho de 2027</span>
+              <p class="mb-0 mt-2"><a href="https://ru.caracore.com.br/" class="btn btn-sm btn-outline-primary">Ver apresentação</a></p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="eco-garagem-card">
-              <span class="eco-garagem-badge">OpenID Connect Â· ServiÃ§o contratÃ¡vel</span>
-              <h3><a href="https://area51.caracore.com.br/" class="eco-garagem-card-title-link">Suporte Ãrea 51</a></h3>
-              <p class="text-muted small mb-2">ConfiguraÃ§Ã£o de portais de autenticaÃ§Ã£o corporativa: OAuth 2.1, OIDC, PKCE, integraÃ§Ã£o Google e Microsoft Entra ID. A Cara Core tem o conhecimento tÃ©cnico comprovado â€” o portal OIDC do site e o Reino OIDC em produÃ§Ã£o jÃ¡ dizem tudo. ServiÃ§o contratÃ¡vel com escopo e preÃ§o definidos.</p>
-              <span class="eco-launch" style="color: var(--bs-info);"><i class="bi bi-handshake me-1"></i> <a href="https://area51.caracore.com.br/" class="text-decoration-none">Solicitar orÃ§amento</a></span>
+              <span class="eco-garagem-badge">OpenID Connect · Serviço contratável</span>
+              <h3><a href="https://area51.caracore.com.br/" class="eco-garagem-card-title-link">Suporte Área 51</a></h3>
+              <p class="text-muted small mb-2">Configuração de portais de autenticação corporativa: OAuth 2.1, OIDC, PKCE, integração Google e Microsoft Entra ID. A Cara Core tem o conhecimento técnico comprovado — o portal OIDC do site e o Reino OIDC em produção já dizem tudo. Serviço contratável com escopo e preço definidos.</p>
+              <span class="eco-launch" style="color: var(--bs-info);"><i class="bi bi-handshake me-1"></i> <a href="https://area51.caracore.com.br/" class="text-decoration-none">Solicitar orçamento</a></span>
               <p class="mb-0 mt-2">
-                <a href="https://area51.caracore.com.br/" class="btn btn-sm btn-outline-primary me-1">ApresentaÃ§Ã£o</a>
+                <a href="https://area51.caracore.com.br/" class="btn btn-sm btn-outline-primary me-1">Apresentação</a>
                 <a href="https://area51.caracore.com.br/" class="btn btn-sm btn-outline-primary" target="_blank" rel="noopener">Loja</a>
               </p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="eco-garagem-card">
-              <span class="eco-garagem-badge">GestÃ£o de Transportes Â· Soberania Offline</span>
-              <h3><a href="https://cso.caracore.com.br/" class="eco-garagem-card-title-link">Cara Core CSO - GestÃ£o de Transportes</a></h3>
-              <p class="text-muted small mb-2">Sistema de gestÃ£o para centros de distribuiÃ§Ã£o e transportadoras. Aplicativo desktop Java 21 + JavaFX com <strong>soberania local</strong>: controle de entregas, couriers, clientes, preÃ§os e SMS/WhatsApp. Dados em SQLite local, operaÃ§Ã£o antifrÃ¡gil â€” nÃ£o para quando a internet cai.</p>
-              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> LanÃ§amento: 08 de novembro de 2028</span>
-              <p class="mb-0 mt-2"><a href="https://cso.caracore.com.br/" class="btn btn-sm btn-outline-primary">Ver apresentaÃ§Ã£o</a></p>
+              <span class="eco-garagem-badge">Gestão de Transportes · Soberania Offline</span>
+              <h3><a href="https://cso.caracore.com.br/" class="eco-garagem-card-title-link">Cara Core CSO - Gestão de Transportes</a></h3>
+              <p class="text-muted small mb-2">Sistema de gestão para centros de distribuição e transportadoras. Aplicativo desktop Java 21 + JavaFX com <strong>soberania local</strong>: controle de entregas, couriers, clientes, preços e SMS/WhatsApp. Dados em SQLite local, operação antifrágil — não para quando a internet cai.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 08 de novembro de 2028</span>
+              <p class="mb-0 mt-2"><a href="https://cso.caracore.com.br/" class="btn btn-sm btn-outline-primary">Ver apresentação</a></p>
             </div>
           </div>
         </div>
@@ -218,13 +217,13 @@
   </div>
 </section>
 
-<!-- Roadmap pÃºblico â€” alinhamento saudÃ¡vel de expectativas -->
+<!-- Roadmap público — alinhamento saudável de expectativas -->
 <section id="roadmap" class="ecossistema-section py-5 bg-light">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
-        <h2 class="text-center mb-2">Roadmap â€” Cronograma pÃºblico</h2>
-        <p class="text-center text-muted mb-4">A Cara Core Ã© honesta sobre o que estÃ¡ pronto e o que estÃ¡ chegando. Use esta tabela para alinhar expectativas â€” sem ansiedade, sem surpresas.</p>
+        <h2 class="text-center mb-2">Roadmap — Cronograma público</h2>
+        <p class="text-center text-muted mb-4">A Cara Core é honesta sobre o que está pronto e o que está chegando. Use esta tabela para alinhar expectativas — sem ansiedade, sem surpresas.</p>
         <div class="eco-roadmap-wrapper">
           <table class="table table-bordered align-middle eco-roadmap-table mb-0">
             <thead>
@@ -232,91 +231,91 @@
                 <th scope="col">Produto</th>
                 <th scope="col">Categoria</th>
                 <th scope="col">Status</th>
-                <th scope="col">PrevisÃ£o</th>
+                <th scope="col">Previsão</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td><a href="https://pdv.caracore.com.br/" class="fw-semibold text-decoration-none">CaraCore PDV</a></td>
                 <td class="text-muted small">Ponto de Venda</td>
-                <td><span class="badge bg-warning text-dark">PrÃ©-lanÃ§amento</span></td>
+                <td><span class="badge bg-warning text-dark">Pré-lançamento</span></td>
                 <td class="small fw-semibold">03 Mar 2026</td>
               </tr>
               <tr>
                 <td><a href="https://play.google.com/store/apps/details?id=tattoo.ink.agenda&hl=pt-BR" class="fw-semibold text-decoration-none" target="_blank" rel="noopener">Ink Agenda v1 <span class="small fw-normal text-muted">(Android)</span></a></td>
-                <td class="text-muted small">GestÃ£o de estÃºdio</td>
-                <td><span class="badge bg-success">DisponÃ­vel</span></td>
+                <td class="text-muted small">Gestão de estúdio</td>
+                <td><span class="badge bg-success">Disponível</span></td>
                 <td class="small text-muted">Google Play</td>
               </tr>
               <tr>
                 <td><a href="https://oidc.caracore.com.br/" class="fw-semibold text-decoration-none">Reino OIDC</a></td>
                 <td class="text-muted small">Educacional / Auth</td>
-                <td><span class="badge bg-success">DisponÃ­vel</span></td>
-                <td class="small text-muted">â€”</td>
+                <td><span class="badge bg-success">Disponível</span></td>
+                <td class="small text-muted">—</td>
               </tr>
               <tr>
                 <td><a href="https://ete.caracore.com.br/" class="fw-semibold text-decoration-none">Minerador 4.0</a></td>
-                <td class="text-muted small">SimulaÃ§Ã£o industrial</td>
-                <td><span class="badge bg-success">DisponÃ­vel</span></td>
-                <td class="small text-muted">â€”</td>
+                <td class="text-muted small">Simulação industrial</td>
+                <td><span class="badge bg-success">Disponível</span></td>
+                <td class="small text-muted">—</td>
               </tr>
               <tr>
                 <td><a href="https://circuito.caracore.com.br/" class="fw-semibold text-decoration-none">Circuito Ferradura</a></td>
-                <td class="text-muted small">Curso de programaÃ§Ã£o</td>
-                <td><span class="badge bg-success">DisponÃ­vel</span></td>
-                <td class="small text-muted">â€”</td>
+                <td class="text-muted small">Curso de programação</td>
+                <td><span class="badge bg-success">Disponível</span></td>
+                <td class="small text-muted">—</td>
               </tr>
               <tr class="eco-roadmap-row-upcoming">
                 <td><a href="https://ink.caracore.com.br/" class="fw-semibold text-decoration-none">Ink Agenda v2.0.0 <span class="small fw-normal text-muted">(Desktop)</span></a></td>
-                <td class="text-muted small">GestÃ£o de estÃºdio</td>
+                <td class="text-muted small">Gestão de estúdio</td>
                 <td><span class="badge bg-warning text-dark">Em desenvolvimento</span></td>
                 <td class="small fw-semibold">26 Jun 2026</td>
               </tr>
               <tr class="eco-roadmap-row-upcoming">
                 <td><a href="https://hub.caracore.com.br/" class="fw-semibold text-decoration-none">CaraCore Hub</a></td>
-                <td class="text-muted small">LogÃ­stica / DistribuiÃ§Ã£o</td>
+                <td class="text-muted small">Logística / Distribuição</td>
                 <td><span class="badge bg-warning text-dark">Em desenvolvimento</span></td>
                 <td class="small fw-semibold">06 Abr 2027</td>
               </tr>
               <tr class="eco-roadmap-row-upcoming">
                 <td><a href="https://ru.caracore.com.br/" class="fw-semibold text-decoration-none">RU Soberano</a></td>
-                <td class="text-muted small">SimulaÃ§Ã£o (DES)</td>
+                <td class="text-muted small">Simulação (DES)</td>
                 <td><span class="badge bg-warning text-dark">Em desenvolvimento</span></td>
                 <td class="small fw-semibold">18 Jun 2027</td>
               </tr>
               <tr>
-                <td><a href="https://area51.caracore.com.br/" class="fw-semibold text-decoration-none">Suporte Ãrea 51</a></td>
-                <td class="text-muted small">ServiÃ§o OIDC</td>
-                <td><span class="badge bg-info text-dark">ContratÃ¡vel</span></td>
-                <td class="small"><a href="https://area51.caracore.com.br/" class="text-decoration-none">Solicitar orÃ§amento</a></td>
+                <td><a href="https://area51.caracore.com.br/" class="fw-semibold text-decoration-none">Suporte Área 51</a></td>
+                <td class="text-muted small">Serviço OIDC</td>
+                <td><span class="badge bg-info text-dark">Contratável</span></td>
+                <td class="small"><a href="https://area51.caracore.com.br/" class="text-decoration-none">Solicitar orçamento</a></td>
               </tr>
               <tr class="eco-roadmap-row-future">
                 <td><a href="https://cso.caracore.com.br/" class="fw-semibold text-decoration-none">Cara Core CSO</a></td>
-                <td class="text-muted small">GestÃ£o de transportadoras</td>
+                <td class="text-muted small">Gestão de transportadoras</td>
                 <td><span class="badge bg-secondary">Planejado</span></td>
                 <td class="small fw-semibold text-muted">08 Nov 2028</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p class="text-center small text-muted mt-3 mb-0">Datas sÃ£o previsÃµes e podem ser revisadas. Tem urgÃªncia? <a href="index.html#contato" class="text-decoration-none">Fale com a Cara Core.</a></p>
+        <p class="text-center small text-muted mt-3 mb-0">Datas são previsões e podem ser revisadas. Tem urgência? <a href="index.html#contato" class="text-decoration-none">Fale com a Cara Core.</a></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Diagrama: mÃ³dulos plugÃ¡veis (container no estilo dos cards do index) -->
+<!-- Diagrama: módulos plugáveis (container no estilo dos cards do index) -->
 <section class="ecossistema-section py-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-10">
-        <h2 class="h5 text-center text-muted mb-3">Arquitetura em camadas â€” matriz, produtos, oficinas e lojas</h2>
-        <p class="text-center small text-muted mb-3">Cada produto tem apresentaÃ§Ã£o na matriz (delivery), oficina (cÃ³digo-fonte) e loja (vitrine/releases). Os mÃ³dulos da Garagem sÃ£o plugÃ¡veis: conforme seu nicho exige, vocÃª desbloqueia RU ou Ink Agenda.</p>
+        <h2 class="h5 text-center text-muted mb-3">Arquitetura em camadas — matriz, produtos, oficinas e lojas</h2>
+        <p class="text-center small text-muted mb-3">Cada produto tem apresentação na matriz (delivery), oficina (código-fonte) e loja (vitrine/releases). Os módulos da Garagem são plugáveis: conforme seu nicho exige, você desbloqueia RU ou Ink Agenda.</p>
         <div class="diagram-container mb-4">
           <div class="mermaid">
 flowchart TB
-    subgraph MATRIZ["Site matriz â€” caracore.com.br"]
-        M[PortfÃ³lio Â· Delivery Â· Wiki]
+    subgraph MATRIZ["Site matriz — caracore.com.br"]
+        M[Portfólio · Delivery · Wiki]
     end
     subgraph PRODUTOS["Produtos"]
         P1[Cara Core PDV]
@@ -324,11 +323,11 @@ flowchart TB
         P3[Reino OIDC]
         P4[Circuito Ferradura]
         P5[Cara Core Hub]
-        P6[Suporte Ãrea 51]
+        P6[Suporte Área 51]
         P7[Cara Core Seed]
         P8[Cara Core Mkt]
     end
-    subgraph OFICINAS["Oficinas â€” repositÃ³rios de cÃ³digo"]
+    subgraph OFICINAS["Oficinas — repositórios de código"]
         O1[caracore-pdv]
         O2[caracore-ete]
         O3[reino-oidc]
@@ -338,7 +337,7 @@ flowchart TB
         O7[caracore-seed]
         O8[caracore-mkt]
     end
-    subgraph LOJAS["Lojas â€” GitHub Pages"]
+    subgraph LOJAS["Lojas — GitHub Pages"]
         L1[caracore-pdv-releases]
         L2[caracore-ete-releases]
         L3[reino-oidc-releases]
@@ -348,7 +347,7 @@ flowchart TB
         L7[caracore-seed-releases]
         L8[caracore-mkt]
     end
-    subgraph GARAGEM["Garagem â€” futuros lanÃ§amentos (em desenvolvimento)"]
+    subgraph GARAGEM["Garagem — futuros lançamentos (em desenvolvimento)"]
         G1[RU Soberano]
         G2[caracore-ru]
         G3[caracore-ru-releases]
@@ -358,7 +357,7 @@ flowchart TB
         G7[Cara Core CSO]
         G8[caracore-cso]
         G9[caracore-cso-releases]
-        G10[Scripts Ãrea 51]
+        G10[Scripts Área 51]
         G11[caracore-area51]
         G12[caracore-area51-releases]
     end
@@ -394,30 +393,30 @@ flowchart TB
           </div>
         </div>
         <p class="text-center small text-muted mb-4">
-          <strong>Prateleira:</strong> PDV, Hub, Reino OIDC, Minerador 4.0, Circuito Ferradura, Ink Agenda (versÃ£o anterior). <strong>Gratuito (nÃ£o vendemos):</strong> Cara Core Mkt. <strong>Garagem:</strong> Ink Agenda v2.0.0 (26/Jun/2026), CaraCore Hub (06/Abr/2027), RU Soberano (18/Jun/2027), Cara Core CSO (08/Nov/2028) e Suporte Ãrea 51 (serviÃ§o contratÃ¡vel).
+          <strong>Prateleira:</strong> PDV, Hub, Reino OIDC, Minerador 4.0, Circuito Ferradura, Ink Agenda (versão anterior). <strong>Gratuito (não vendemos):</strong> Cara Core Mkt. <strong>Garagem:</strong> Ink Agenda v2.0.0 (26/Jun/2026), CaraCore Hub (06/Abr/2027), RU Soberano (18/Jun/2027), Cara Core CSO (08/Nov/2028) e Suporte Área 51 (serviço contratável).
         </p>
 
         <!-- CTA -->
         <div class="eco-cta-block">
           <p class="lead mb-3">Sua empresa tem um desafio de nicho?</p>
-          <p class="text-muted mb-2">Atendimento remoto corporativo em todo o territÃ³rio nacional, com suporte tÃ©cnico especializado e processos padronizados.</p>
-          <p class="text-muted mb-3">Base operacional em Campo Largo/PR. Por privacidade e seguranÃ§a, o endereÃ§o completo Ã© compartilhado somente na confirmaÃ§Ã£o do atendimento.</p>
+          <p class="text-muted mb-2">Atendimento remoto corporativo em todo o território nacional, com suporte técnico especializado e processos padronizados.</p>
+          <p class="text-muted mb-3">Base operacional em Campo Largo/PR. Por privacidade e segurança, o endereço completo é compartilhado somente na confirmação do atendimento.</p>
           <a href="index.html#contato" class="btn btn-primary">Fale com a Cara Core</a>
         </div>
 
         <p class="text-center small text-muted mb-0">
-          <a href="portfolio.html" class="text-decoration-none"><i class="bi bi-folder-fill"></i> Ver portfÃ³lio completo</a>
-          &nbsp;Â·&nbsp;
+          <a href="portfolio.html" class="text-decoration-none"><i class="bi bi-folder-fill"></i> Ver portfólio completo</a>
+          &nbsp;·&nbsp;
           <a href="portfolio.html#caracore-mkt" class="text-decoration-none"><i class="bi bi-gift"></i> Cara Core Mkt (gratuito)</a>
-          &nbsp;Â·&nbsp;
+          &nbsp;·&nbsp;
           <a href="https://ru.caracore.com.br/" class="text-decoration-none"><i class="bi bi-box-seam"></i> RU Soberano</a>
-          &nbsp;Â·&nbsp;
+          &nbsp;·&nbsp;
           <a href="https://ink.caracore.com.br/" class="text-decoration-none"><i class="bi bi-box-seam"></i> Ink Agenda v2.0.0</a>
-          &nbsp;Â·&nbsp;
+          &nbsp;·&nbsp;
           <a href="https://cso.caracore.com.br/" class="text-decoration-none"><i class="bi bi-box-seam"></i> Cara Core CSO (08/Nov/2028)</a>
-          &nbsp;Â·&nbsp;
-          <a href="https://area51.caracore.com.br/" class="text-decoration-none"><i class="bi bi-shield-lock"></i> Suporte Ãrea 51 (contratÃ¡vel)</a>
-          &nbsp;Â·&nbsp;
+          &nbsp;·&nbsp;
+          <a href="https://area51.caracore.com.br/" class="text-decoration-none"><i class="bi bi-shield-lock"></i> Suporte Área 51 (contratável)</a>
+          &nbsp;·&nbsp;
           <a href="index.html#contato" class="text-decoration-none"><i class="bi bi-envelope"></i> Contato</a>
         </p>
       </div>
@@ -425,23 +424,23 @@ flowchart TB
   </div>
 </section>
 
-<!-- RodapÃ© -->
+<!-- Rodapé -->
 <footer class="py-3 mt-4 site-footer">
   <div class="container text-center">
     <span class="fw-semibold text-secondary">
-      Cara-Core InformÃ¡tica - CNPJ: 23.969.028/0001-37<br>
+      Cara-Core Informática - CNPJ: 23.969.028/0001-37<br>
     </span>
     <div class="mt-2">
       <a href="politica/politica-privacidade.html" class="text-decoration-none text-primary fw-semibold me-3">
-        <i class="bi bi-shield-lock"></i> PolÃ­tica de Privacidade
+        <i class="bi bi-shield-lock"></i> Política de Privacidade
       </a>
       <a href="politica/termos-servico.html" class="text-decoration-none text-primary fw-semibold me-3">
-        <i class="bi bi-file-text"></i> Termos de ServiÃ§o
+        <i class="bi bi-file-text"></i> Termos de Serviço
       </a>
       <a href="wiki/index.html" class="text-decoration-none text-secondary fw-semibold me-3" title="Wiki Cara Core">
         <i class="bi bi-compass"></i> Wiki Cara Core
       </a>
-      <a href="#" onclick="showLGPDPreferences(); return false;" class="text-decoration-none text-info fw-semibold" title="Gerenciar PreferÃªncias de Privacidade">
+      <a href="#" onclick="showLGPDPreferences(); return false;" class="text-decoration-none text-info fw-semibold" title="Gerenciar Preferências de Privacidade">
         <i class="bi bi-gear"></i> Privacidade
       </a>
     </div>
@@ -459,6 +458,7 @@ flowchart TB
     flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
   });
 </script>
+<script src="assets/js/analytics-loader.js"></script>
 <script src="assets/js/lgpd.js"></script>
 </body>
 </html>

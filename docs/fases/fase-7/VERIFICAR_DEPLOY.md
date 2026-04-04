@@ -1,19 +1,19 @@
-﻿# Verificar Deploy da Fase 7
+# Verificar Deploy da Fase 7
 
-## ðŸ” Problema Identificado
+## 🔍 Problema Identificado
 
 O log do servidor ainda mostra:
 ```
-WARNING session_manager nÃ£o disponÃ­vel - sistema de refresh tokens desabilitado
+WARNING session_manager não disponível - sistema de refresh tokens desabilitado
 ```
 
 Isso indica que:
-1. O deploy ainda nÃ£o foi aplicado (imagem Docker antiga)
-2. Ou os arquivos da Fase 7 nÃ£o estÃ£o no container
+1. O deploy ainda não foi aplicado (imagem Docker antiga)
+2. Ou os arquivos da Fase 7 não estão no container
 
-## âœ… VerificaÃ§Ãµes NecessÃ¡rias
+## ✅ Verificações Necessárias
 
-### 1. Verificar se os Arquivos EstÃ£o no Container
+### 1. Verificar se os Arquivos Estão no Container
 
 **Via SSH no Azure Portal:**
 
@@ -29,12 +29,12 @@ ls -la /app/crypto_manager.py
 ls -la /app/token_storage.py
 ls -la /app/token_audit.py
 
-# Verificar se as dependÃªncias estÃ£o instaladas
+# Verificar se as dependências estão instaladas
 python3 -c "import cryptography; print('cryptography OK')"
 python3 -c "from dateutil import parser; print('python-dateutil OK')"
 ```
 
-### 2. Verificar se TOKEN_ENCRYPTION_KEY EstÃ¡ Configurada
+### 2. Verificar se TOKEN_ENCRYPTION_KEY Está Configurada
 
 ```bash
 az webapp config appsettings list \
@@ -55,25 +55,25 @@ TOKEN_ENCRYPTION_KEY  <REPLACE_WITH_BASE64_32BYTE_KEY>  False
 
 **GitHub Actions:**
 1. Acesse: https://caracore.com.br/
-2. Verifique se o workflow "Deploy Docker Backend to Azure Container Registry" executou apÃ³s o Ãºltimo commit
+2. Verifique se o workflow "Deploy Docker Backend to Azure Container Registry" executou após o último commit
 3. Verifique se o build foi bem-sucedido
 
 **Azure Portal:**
-1. App Service â†’ **Deployment Center** â†’ **Logs**
-2. Verifique o Ãºltimo deploy e se foi bem-sucedido
+1. App Service → **Deployment Center** → **Logs**
+2. Verifique o último deploy e se foi bem-sucedido
 
-### 4. ForÃ§ar Rebuild da Imagem Docker
+### 4. Forçar Rebuild da Imagem Docker
 
-Se os arquivos nÃ£o estiverem no container, pode ser necessÃ¡rio forÃ§ar um rebuild:
+Se os arquivos não estiverem no container, pode ser necessário forçar um rebuild:
 
-**OpÃ§Ã£o A: Via GitHub Actions (Recomendado)**
-1. VÃ¡ para: https://caracore.com.br/
+**Opção A: Via GitHub Actions (Recomendado)**
+1. Vá para: https://caracore.com.br/
 2. Selecione o workflow "Deploy Docker Backend to Azure Container Registry"
-3. Clique em **Run workflow** â†’ **Run workflow**
+3. Clique em **Run workflow** → **Run workflow**
 
-**OpÃ§Ã£o B: Via Azure CLI**
+**Opção B: Via Azure CLI**
 ```bash
-# ForÃ§ar pull da imagem mais recente
+# Forçar pull da imagem mais recente
 az webapp config container set \
   --name caracore-backend-docker \
   --resource-group rg-caracore \
@@ -86,36 +86,36 @@ az webapp restart \
   --resource-group rg-caracore
 ```
 
-### 5. Verificar Logs ApÃ³s Deploy
+### 5. Verificar Logs Após Deploy
 
-ApÃ³s o deploy, verifique os logs:
+Após o deploy, verifique os logs:
 
 ```bash
 az webapp log tail --name caracore-backend-docker --resource-group rg-caracore
 ```
 
 **Procure por:**
-- âœ… `"SessionManager carregado - sistema de refresh tokens habilitado"` (sucesso)
-- âŒ `"TOKEN_ENCRYPTION_KEY nÃ£o configurada"` (chave nÃ£o encontrada)
-- âŒ `"SessionManager nÃ£o pode ser inicializado (chave invÃ¡lida)"` (chave invÃ¡lida)
-- âŒ `"session_manager nÃ£o disponÃ­vel"` (arquivo nÃ£o encontrado)
+- ✅ `"SessionManager carregado - sistema de refresh tokens habilitado"` (sucesso)
+- ❌ `"TOKEN_ENCRYPTION_KEY não configurada"` (chave não encontrada)
+- ❌ `"SessionManager não pode ser inicializado (chave inválida)"` (chave inválida)
+- ❌ `"session_manager não disponível"` (arquivo não encontrado)
 
-## ðŸ”§ SoluÃ§Ã£o de Problemas
+## 🔧 Solução de Problemas
 
-### Problema: Arquivos nÃ£o estÃ£o no container
+### Problema: Arquivos não estão no container
 
-**Causa:** O Dockerfile nÃ£o estÃ¡ copiando os arquivos ou o build nÃ£o incluiu os arquivos.
+**Causa:** O Dockerfile não está copiando os arquivos ou o build não incluiu os arquivos.
 
-**SoluÃ§Ã£o:**
-1. Verificar se os arquivos estÃ£o commitados no Git
-2. Verificar se o workflow do GitHub Actions estÃ¡ copiando corretamente
-3. ForÃ§ar rebuild da imagem
+**Solução:**
+1. Verificar se os arquivos estão commitados no Git
+2. Verificar se o workflow do GitHub Actions está copiando corretamente
+3. Forçar rebuild da imagem
 
-### Problema: TOKEN_ENCRYPTION_KEY nÃ£o configurada
+### Problema: TOKEN_ENCRYPTION_KEY não configurada
 
-**Causa:** A variÃ¡vel de ambiente nÃ£o foi configurada no Azure App Service.
+**Causa:** A variável de ambiente não foi configurada no Azure App Service.
 
-**SoluÃ§Ã£o:**
+**Solução:**
 ```bash
 az webapp config appsettings set \
   --name caracore-backend-docker \
@@ -123,29 +123,29 @@ az webapp config appsettings set \
   --settings TOKEN_ENCRYPTION_KEY=<REPLACE_WITH_BASE64_32BYTE_KEY>
 ```
 
-### Problema: DependÃªncias nÃ£o instaladas
+### Problema: Dependências não instaladas
 
-**Causa:** As dependÃªncias `cryptography` ou `python-dateutil` nÃ£o estÃ£o instaladas.
+**Causa:** As dependências `cryptography` ou `python-dateutil` não estão instaladas.
 
-**SoluÃ§Ã£o:**
+**Solução:**
 Verificar se `backend/requirements.txt` ou `backend/requirements-docker.txt` inclui:
 ```
 cryptography>=41.0.0
 python-dateutil>=2.8.2
 ```
 
-## ðŸ“ Checklist de VerificaÃ§Ã£o
+## 📝 Checklist de Verificação
 
 - [ ] Arquivos `session_manager.py`, `crypto_manager.py`, `token_storage.py` existem no container
-- [ ] `TOKEN_ENCRYPTION_KEY` estÃ¡ configurada no Azure App Service
-- [ ] DependÃªncias `cryptography` e `python-dateutil` estÃ£o instaladas
+- [ ] `TOKEN_ENCRYPTION_KEY` está configurada no Azure App Service
+- [ ] Dependências `cryptography` e `python-dateutil` estão instaladas
 - [ ] Deploy foi executado com sucesso
-- [ ] App Service foi reiniciado apÃ³s configurar a chave
-- [ ] Logs mostram "SessionManager carregado" (nÃ£o "nÃ£o disponÃ­vel")
+- [ ] App Service foi reiniciado após configurar a chave
+- [ ] Logs mostram "SessionManager carregado" (não "não disponível")
 
 ---
 
-**Ãšltima atualizaÃ§Ã£o:** 15/11/2025
+**Última atualização:** 15/11/2025
 
 
 

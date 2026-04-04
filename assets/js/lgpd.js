@@ -30,17 +30,20 @@ function acceptLGPD() {
   localStorage.setItem(LGPD_CONSENT_KEY, 'accepted');
   localStorage.setItem('lgpd-consent-date', new Date().toISOString());
   hideLGPDBanner();
-  
-  // Log para analytics (se disponível)
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'lgpd_consent', {
-      'event_category': 'privacy',
-      'event_label': 'accepted',
-      'value': 1
-    });
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'lgpd_consent',
+    event_category: 'privacy',
+    event_label: 'accepted',
+    value: 1
+  });
+
+  if (typeof window.loadCaracoreAnalytics === 'function') {
+    window.loadCaracoreAnalytics();
   }
-  
-  console.log('✅ LGPD: Consentimento aceito pelo usuário');
+
+  console.debug('LGPD: consentimento aceito');
 }
 
 /**
@@ -61,18 +64,17 @@ function declineLGPD() {
   }
   
   keysToRemove.forEach(key => localStorage.removeItem(key));
-  
-  // Log para analytics (se disponível)
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'lgpd_consent', {
-      'event_category': 'privacy',
-      'event_label': 'declined',
-      'value': 0
-    });
-  }
-  
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({
+    event: 'lgpd_consent',
+    event_category: 'privacy',
+    event_label: 'declined',
+    value: 0
+  });
+
   alert('🛡️ Seus dados foram removidos. Algumas funcionalidades podem ser limitadas.');
-  console.log('❌ LGPD: Consentimento recusado pelo usuário');
+  console.debug('LGPD: consentimento recusado');
 }
 
 /**
@@ -148,5 +150,4 @@ function getLGPDConsentInfo() {
 // Inicialização quando a página carrega
 document.addEventListener('DOMContentLoaded', () => {
   checkLGPDConsent();
-  console.log('🛡️ LGPD: Sistema de consentimento inicializado');
 });

@@ -106,5 +106,10 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 - sala: acervo canónico em `/sala/` (`sala/` na raiz do repo). **Sem** `delivery/sala/` no repositório; mapear `/delivery/sala/*` → `/sala/*` no hospedeiro (`_redirects`, CDN, etc.); ver `docs/DELIVERY_RESTRUCTURA.md`
 - assets: manter como biblioteca compartilhada
 
-## Proximo passo
-- Implementar redirects por prioridade (P0 -> P1 -> P2 -> P3) usando este mapeamento.
+## Edge / hospedeiro (implementado no repo)
+
+- **`_redirects`** (Netlify e compatíveis): na raiz do `caracore-site` — redirects 301 para `/delivery/{produto}/...` → lojas, `/delivery/sala/*` → `/sala/*`, `/delivery/publications` (índice) → `/sala/`, filhos → `/publications/:path*`. Ordem: regras específicas antes do catch-all SPA.
+- **`vercel.json`**: mesma lógica para deploy na Vercel.
+- **GitHub Pages puro** ou outro host sem `_redirects`: replicar estas regras na CDN (ex.: Cloudflare Redirect Rules / Page Rules) ou migrar para um dos hosts acima — ver `docs/DELIVERY_RESTRUCTURA.md`.
+
+**Nota:** `delivery/assets/` (ex.: evolution-status) e ficheiros estáticos ainda servidos sob `delivery/` até migração; não estão neste lote de redirects externos.

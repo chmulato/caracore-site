@@ -29,6 +29,10 @@ Enquanto a pasta existir, serve **só** como transição (redirects estáticos, 
 | `docs/RUNBOOK_OPERACAO_DELIVERY_SUBDOMINIOS.md` | Operação e SEO |
 | `docs/CHECKLIST_EXECUCAO_REMODELAGEM_DELIVERY.md` | Gates e graus |
 
+## Redirects no hospedeiro (para poder remover esta pasta)
+
+Na **raiz** do repositório `caracore-site` (fora de `delivery/`): `_redirects` (Netlify e similares) e `vercel.json` (Vercel) implementam 301 para as mesmas rotas descritas em `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`. Quando o deploy usar um destes mecanismos, os bookmarks em `/delivery/...` já saltam para a loja ou para `/sala/` / `/publications/` sem depender de ficheiros estáticos aqui.
+
 ## Espelho por produto
 
 Em cada pasta de produto existe `MIRROR_DELIVERY.md` com o link da loja oficial.

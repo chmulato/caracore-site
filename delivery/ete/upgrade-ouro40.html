@@ -1,150 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upgrade para Ouro 4.0 — Módulo Mineração | Minerador 4.0</title>
-    <meta name="description" content="Desbloqueie o Módulo Mineração do simulador: pagamento PIX, ID de Ativação e envio do comprovante. Cara-Core Informática.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/ete.css">
-    <style>
-        :root {
-            --bg: #0a0e14;
-            --card: #12171f;
-            --elevated: #1a2028;
-            --border: #2d3748;
-            --text: #e6edf3;
-            --dim: #8b949e;
-            --gold: #d4a853;
-            --cyan: #00f5d4;
-            --green: #00f5a0;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 24px 20px 48px; }
-        .wrapper { max-width: 560px; margin: 0 auto; }
-        header { text-align: center; padding: 32px 0 28px; border-bottom: 1px solid var(--border); }
-        header h1 { font-size: 1.6rem; color: var(--gold); margin-bottom: 8px; }
-        header p { font-size: 0.95rem; color: var(--dim); line-height: 1.5; }
-        .badge { display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold); margin-bottom: 12px; }
-        .block {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px;
-            margin-top: 24px;
-        }
-        .block h2 { font-size: 1rem; font-weight: 600; color: var(--cyan); margin-bottom: 14px; }
-        .block p { font-size: 0.9rem; color: var(--dim); line-height: 1.6; margin-bottom: 12px; }
-        .block p:last-child { margin-bottom: 0; }
-        .pix-box {
-            background: var(--elevated);
-            border: 1px solid var(--gold);
-            border-radius: 8px;
-            padding: 20px;
-            margin: 16px 0;
-            text-align: center;
-        }
-        .pix-box .name { font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 6px; }
-        .pix-box .cnpj { font-family: ui-monospace, monospace; font-size: 1rem; color: var(--gold); letter-spacing: 0.02em; }
-        .pix-box .hint { font-size: 0.8rem; color: var(--dim); margin-top: 10px; }
-        .pix-box .valor { font-size: 1.1rem; font-weight: 600; color: var(--green); margin-top: 8px; }
-        .btn-whatsapp {
-            font-family: inherit;
-            background: #25d366;
-            color: #fff;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .btn-whatsapp:hover { filter: brightness(1.1); }
-        .hint-whatsapp { font-size: 0.8rem; color: var(--dim); margin-top: 8px; line-height: 1.4; }
-        .steps { list-style: none; }
-        .steps li { position: relative; padding-left: 28px; margin-bottom: 14px; font-size: 0.9rem; color: var(--text); line-height: 1.5; }
-        .steps li::before { content: attr(data-step); position: absolute; left: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--cyan); color: var(--bg); font-size: 0.75rem; font-weight: 700; display: flex; align-items: center; justify-content: center; }
-        .steps li strong { color: var(--cyan); }
-        .lgpd { font-size: 0.8rem; color: var(--dim); margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); line-height: 1.5; }
-        .nav-links { margin-top: 28px; font-size: 0.9rem; }
-        .nav-links a { color: #58a6ff; text-decoration: none; }
-        .nav-links a:hover { text-decoration: underline; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página migrada para a loja oficial</title>
+  <meta http-equiv="refresh" content="0; url=https://ete.caracore.com.br/upgrade-ouro40.html">
+  <link rel="canonical" href="https://ete.caracore.com.br/upgrade-ouro40.html">
+  <script>window.location.replace('https://ete.caracore.com.br/upgrade-ouro40.html');</script>
 </head>
 <body>
-    <div class="wrapper">
-        <header>
-            <span class="badge">Módulo Mineração</span>
-            <h1>Upgrade para Ouro 4.0</h1>
-            <p>Desbloqueie a fase Mineração do simulador: refino de terras raras, cascata de decantadores e análise de pureza. A fase Ambiental continua gratuita.</p>
-        </header>
-
-        <div class="block">
-            <h2>Pagamento PIX</h2>
-            <p>Utilize a chave PIX (CNPJ) abaixo para realizar o pagamento. Valor único do upgrade:</p>
-            <div class="pix-box" id="pix-box">
-                <div class="name">Cara-Core Informática</div>
-                <div class="cnpj" id="display-cnpj">23.969.028/0001-37</div>
-                <div class="valor" id="display-valor">R$ 29,90</div>
-                <p class="hint">Chave PIX: CNPJ — copie e cole no app do seu banco</p>
-            </div>
-            <p style="margin-top: 12px;"><button type="button" class="btn-whatsapp" id="btn-copiar-whatsapp">Copiar Hardware ID para WhatsApp</button></p>
-            <p class="hint-whatsapp">Copie a mensagem pronta e, no simulador, use «Copiar ID de Ativação»; depois cole o ID na mensagem e envie com o comprovante PIX.</p>
-        </div>
-
-        <div class="block">
-            <h2>Como ativar</h2>
-            <ol class="steps">
-                <li data-step="1">No simulador Minerador 4.0, ao tentar acessar o <strong>Módulo Mineração</strong>, use o botão <strong>«Copiar ID de Ativação»</strong>. Esse ID é único por computador e anônimo.</li>
-                <li data-step="2">Envie o <strong>ID de Ativação</strong> junto com o <strong>comprovante de pagamento PIX</strong> pelo mesmo canal em que fez a compra (WhatsApp ou Telegram).</li>
-                <li data-step="3">A liberacao Premium ocorre somente apos confirmacao financeira e registro de atendimento LGPD (finalidade, canal e data/hora).</li>
-                <li data-step="4">Voce recebera um arquivo <strong>license.key</strong> para colocar na pasta da aplicacao. Apos colocar o arquivo, reinicie o simulador e o Modulo Mineracao sera liberado.</li>
-            </ol>
-        </div>
-
-        <div class="block">
-            <h2>Canais de venda e suporte</h2>
-            <p>WhatsApp e Telegram: use o <a href="canal-feedback.html" style="color: var(--cyan);">Canal de Melhorias</a> para solicitar o upgrade, enviar o ID de Ativação e o comprovante PIX. A mesma equipe processa ativações e envia a chave.</p>
-        </div>
-
-        <p class="lgpd">
-            <strong>Privacidade (LGPD):</strong> O ID de Ativação não contém dados pessoais; é um identificador anônimo da máquina. A associação entre esse ID e a pessoa (para envio da chave e controle comercial) fica apenas no nosso controle financeiro externo (ERP/planilha privada). O software não armazena dados sensíveis no binário.
-        </p>
-        <p class="lgpd">
-            <strong>Registro de atendimento:</strong> para cada ativacao Premium registramos base legal, finalidade, canal de contato, timestamp, status de pagamento e prazo de retencao. O acesso e restrito ao time comercial/suporte autorizado.
-        </p>
-        <p class="lgpd">
-            <strong>Termos de Uso e Créditos:</strong> A ativação da versão Premium implica aceitação dos <a href="termos-uso-creditos.html" style="color: var(--cyan);">Termos de Uso e Créditos</a> (atribuição à inspiração científica, propriedade da Cara-Core Informática, isenção de responsabilidade e uso de imagem).
-        </p>
-
-        <p class="nav-links">
-            <a href="index.html">← Voltar ao portal</a> · <a href="download.html">Download Minerador 4.0</a> · <a href="canal-feedback.html">Canal de Melhorias</a>
-        </p>
-    </div>
-
-    <script>
-        (function() {
-            var CONFIG = {
-                CNPJ: '23.969.028/0001-37',
-                VALOR: 29.90
-            };
-            document.getElementById('display-cnpj').textContent = CONFIG.CNPJ;
-            document.getElementById('display-valor').textContent = 'R$ ' + CONFIG.VALOR.toFixed(2).replace('.', ',');
-            document.getElementById('btn-copiar-whatsapp').onclick = function() {
-                var msg = 'Olá! Quero o upgrade para Ouro 4.0 (Módulo Mineração).\n' +
-                    'Valor: R$ ' + CONFIG.VALOR.toFixed(2).replace('.', ',') + '\n' +
-                    'Meu ID de Ativação: [cole aqui o ID copiado do simulador]\n' +
-                    'Envio o comprovante PIX em seguida.';
-                navigator.clipboard.writeText(msg).then(function() {
-                    var btn = document.getElementById('btn-copiar-whatsapp');
-                    btn.textContent = 'Mensagem copiada!';
-                    setTimeout(function() { btn.textContent = 'Copiar Hardware ID para WhatsApp'; }, 2500);
-                }).catch(function() { alert('Não foi possível copiar.'); });
-            };
-        })();
-    </script>
-    <script src="assets/js/ete.js"></script>
+  <p>Esta página foi migrada para a loja oficial do produto.</p>
+  <p>Se o redirecionamento não ocorrer, use: <a href="https://ete.caracore.com.br/upgrade-ouro40.html">https://ete.caracore.com.br/upgrade-ouro40.html</a>.</p>
 </body>
 </html>

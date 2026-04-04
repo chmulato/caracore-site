@@ -1,150 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CaraCore Hub — Bunker Digital | Cara Core Informática</title>
-    <meta name="description" content="CaraCore Hub: gestão logística e e-commerce em Bunker Digital. Soberania local (SQLite), operação antifrágil. Portal de delivery da Cara Core Informática.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/hub-portal.css">
-    <style>
-        .hero-cta { background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; padding: 32px 36px; margin-bottom: 40px; border-left: 4px solid var(--accent-gold); }
-        .hero-cta .hero-label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent-gold); margin-bottom: 10px; }
-        .hero-cta .hero-title { font-size: 1.35rem; font-weight: 700; color: var(--text-primary); margin-bottom: 12px; line-height: 1.4; }
-        .hero-cta .hero-desc { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px; line-height: 1.65; }
-        .hero-cta .cta-buttons { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-        .hero-cta .cta-btn { display: inline-block; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: opacity 0.2s, background 0.2s; }
-        .hero-cta .cta-btn-primary { background: var(--accent-blue); color: #0d1117; border: none; }
-        .hero-cta .cta-btn-primary:hover { opacity: 0.95; filter: brightness(1.1); }
-        .hero-cta .cta-btn-secondary { background: transparent; color: var(--accent-gold); border: 2px solid var(--accent-gold); }
-        .hero-cta .cta-btn-secondary:hover { background: rgba(212, 168, 83, 0.12); }
-        .hub-launch-banner { background: linear-gradient(135deg, rgba(63, 185, 80, 0.15) 0%, rgba(63, 185, 80, 0.05) 100%); border: 1px solid var(--accent-green); border-radius: 10px; padding: 24px 28px; margin-bottom: 28px; border-left: 4px solid var(--accent-green); }
-        .hub-launch-banner .hub-launch-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent-green); margin-bottom: 6px; }
-        .hub-launch-banner .hub-launch-title { font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; line-height: 1.35; }
-        .hub-launch-banner .hub-launch-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; }
-        .hub-launch-banner .hub-launch-desc a { color: var(--accent-blue); text-decoration: none; font-weight: 500; }
-        .hub-launch-banner .hub-launch-desc a:hover { text-decoration: underline; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página migrada para a loja oficial</title>
+  <meta http-equiv="refresh" content="0; url=https://hub.caracore.com.br/">
+  <link rel="canonical" href="https://hub.caracore.com.br/">
+  <script>window.location.replace('https://hub.caracore.com.br/');</script>
 </head>
 <body>
-    <div class="wrapper">
-        <nav class="breadcrumb" aria-label="Navegação">
-            <a href="https://caracore.com.br/">Cara Core Informática</a>
-            <span> · </span>
-            <a href="https://caracore.com.br/portfolio.html#caracore-hub">Portfólio</a>
-            <span> · </span>
-            <span>CaraCore Hub — Delivery</span>
-        </nav>
-
-        <!-- Aviso de lançamento: EXE em 06/04/2027 (estratégia de marketing) -->
-        <section class="hub-launch-banner" aria-label="Lançamento do instalador Windows">
-            <p class="hub-launch-label">Novidade</p>
-            <p class="hub-launch-title">Instalador Windows (EXE) — lançamento em 06 de abril de 2027</p>
-            <p class="hub-launch-desc">Uma nova forma de rodar o CaraCore Hub: instalador nativo para Windows, <strong>soberania local</strong> (SQLite) e <strong>infraestrutura Bunker</strong>. Reserve a data. Quer ser avisado no lançamento? <a href="canal-feedback.html">Fale conosco pelo canal de feedback</a> (e-mail, WhatsApp ou Telegram).</p>
-        </section>
-
-        <section class="hub-launch-banner" aria-label="Politica comercial e LGPD">
-            <p class="hub-launch-label">Politica institucional</p>
-            <p class="hub-launch-desc">Quando aplicavel por produto/plano: <strong>Free</strong> sem cobranca para avaliacao, <strong>Premium</strong> somente apos confirmacao de pagamento. Entrega e ativacao com trilha de registro LGPD (finalidade, consentimento e auditoria).</p>
-        </section>
-
-        <!-- Hero: o que é, valor e CTA em poucos segundos -->
-        <section class="hero-cta" aria-label="O que é o Cara Core HUB?">
-            <p class="hero-label">O que é o Cara Core HUB?</p>
-            <h2 class="hero-title">Gestão logística e e-commerce para centros de distribuição — recebimento, triagem, estoque, retirada e integração com marketplaces. <strong>Bunker Digital.</strong></h2>
-            <p class="hero-desc">Plataforma com <strong>soberania local</strong> (SQLite): o núcleo opera offline e você mantém controle total — <strong>infraestrutura Bunker</strong>, operação que não quebra quando a internet cai. Ideal para operações de e-commerce e para negócios como o programa <strong>Tia Sócia</strong>. Desenvolvido pela Cara Core Informática.</p>
-            <div class="cta-buttons">
-                <a href="download.html" class="cta-btn cta-btn-primary">Cara Core HUB — Download e deploy</a>
-                <a href="slides/apresentacao_tia_socia.html" class="cta-btn cta-btn-secondary">Conhecer Tia Sócia — Ver pitch com narração em áudio</a>
-            </div>
-        </section>
-
-        <header>
-            <h1>CaraCore Hub</h1>
-            <p class="subtitle">Plataforma de gestão logística e e-commerce em <strong>Bunker Digital</strong>. Recebimento, triagem, estoque e retirada com integração a marketplaces. Soberania local (SQLite) — operação antifrágil.</p>
-        </header>
-
-        <section class="methodology">
-            <div class="card">
-                <h2>O que é o CaraCore Hub?</h2>
-                <p>O <strong>CaraCore Hub</strong> é um sistema de gestão para centros de distribuição e operações de e-commerce: recebimento de pedidos, triagem, alocação em posições de estoque, mapa de ocupação, retirada e integração com marketplaces (Mercado Livre, Shopee, Temu, etc.). Desenvolvido pela Cara Core Informática com foco em <strong>soberania local</strong> e <strong>infraestrutura Bunker</strong>: banco de dados <strong>SQLite</strong> no servidor, sem dependência de internet para o núcleo operacional — operação antifrágil.</p>
-            </div>
-            <div class="card card-differential">
-                <h2>Soberania local (Bunker Digital)</h2>
-                <p>O Hub foi refatorado para usar <strong>apenas SQLite</strong> como banco de dados. Toda a operação de pedidos, volumes, posições e usuários roda localmente — <strong>soberania local</strong>, operação que não quebra quando a internet cai. Integrações com marketplaces e notificações (WhatsApp, Telegram) utilizam rede quando configuradas; o cerne do sistema funciona offline.</p>
-            </div>
-            <div class="card card-differential">
-                <h2>Negócios aplicáveis</h2>
-                <p>O CaraCore Hub é um negócio aplicável a operações de e-commerce e centros de distribuição. O <strong>Tia Sócia</strong> é uma <em>proposta de negócio</em> (conceito ilustrativo) que mostra como o Hub poderia ser usado em impacto social e última milha; números e cenários são ilustrativos. <a href="slides/apresentacao_tia_socia.html" style="color: var(--accent-blue);">Veja a apresentação (pitch deck)</a>.</p>
-            </div>
-        </section>
-
-        <p class="nav-section-title">Links</p>
-        <div class="nav-grid">
-            <a href="slides/apresentacao_tia_socia.html" class="nav-card" title="Pitch Tia Sócia">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                </span>
-                <h3>Apresentação Tia Sócia</h3>
-                <p>Proposta de negócio (conceito ilustrativo). Pitch em 21 slides com narração em áudio.</p>
-            </a>
-            <a href="download.html" class="nav-card nav-card-download" title="Download e deploy">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
-                    </svg>
-                </span>
-                <h3>Download</h3>
-                <p>Artefatos e Releases (WAR, instruções de deploy). GitHub Releases quando disponível.</p>
-            </a>
-            <a href="canal-feedback.html" class="nav-card" title="Suporte e feedback">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                    </svg>
-                </span>
-                <h3>Canal de feedback</h3>
-                <p>E-mail suporte@caracore.com.br, Telegram ou WhatsApp. Não atendemos ligações telefônicas.</p>
-            </a>
-            <a href="tecnologia.html" class="nav-card">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/>
-                    </svg>
-                </span>
-                <h3>Tecnologia</h3>
-                <p>Java/Jakarta EE, SQLite, Tomcat. Stack local, soberania de dados e operação antifrágil.</p>
-            </a>
-            <a href="https://caracore.com.br/portfolio.html#caracore-hub" class="nav-card">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                    </svg>
-                </span>
-                <h3>Portfólio Cara Core</h3>
-                <p>CaraCore Hub no portfólio de produtos da Cara Core Informática.</p>
-            </a>
-            <a href="download.html" class="nav-card">
-                <span class="icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                    </svg>
-                </span>
-                <h3>Vitrine (releases)</h3>
-                <p>Canal institucional de releases e distribuição oficial.</p>
-            </a>
-        </div>
-
-        <footer>
-            <p><a href="https://caracore.com.br/portfolio.html#caracore-hub">Portfólio</a> · <a href="download.html">Vitrine institucional de releases</a></p>
-            <p>CaraCore Hub — gestão logística e e-commerce em Bunker Digital. Soberania local (SQLite), operação antifrágil. Delivery matriz — Cara Core Informática.</p>
-        </footer>
-    </div>
-    <script src="assets/js/hub.js"></script>
+  <p>Esta página foi migrada para a loja oficial do produto.</p>
+  <p>Se o redirecionamento não ocorrer, use: <a href="https://hub.caracore.com.br/">https://hub.caracore.com.br/</a>.</p>
 </body>
 </html>

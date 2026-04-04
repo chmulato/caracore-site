@@ -1,127 +1,15 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tecnologias locais do CaraCore Seed: Electron, Java, SQLite, Windows. Sem nuvem.">
-    <title>Tecnologia local | CaraCore Seed</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/portal-style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página migrada para a loja oficial</title>
+  <meta http-equiv="refresh" content="0; url=https://seed.caracore.com.br/tecnologia.html">
+  <link rel="canonical" href="https://seed.caracore.com.br/tecnologia.html">
+  <script>window.location.replace('https://seed.caracore.com.br/tecnologia.html');</script>
 </head>
-<body class="smooth-scroll bg-gray-50">
-
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex items-center space-x-3">
-                    <a href="index.html" class="flex items-center space-x-3">
-                        <div class="w-12 h-12 green-bg rounded-lg flex items-center justify-center"><i class="fas fa-key text-white text-xl"></i></div>
-                        <div><h1 class="text-xl font-bold text-gray-900">Cara Core</h1><p class="text-xs text-gray-600">CaraCore Seed</p></div>
-                    </a>
-                </div>
-                <div class="hidden md:flex items-center space-x-6">
-                    <a href="index.html" class="text-gray-700 hover:text-green-600 font-medium">Início</a>
-                    <a href="tecnologia.html" class="text-green-600 font-semibold">Tecnologia</a>
-                    <a href="readme.html" class="text-gray-700 hover:text-green-600 font-medium">Documentação</a>
-                    <a href="portal-controle.html" class="text-gray-700 hover:text-green-600 font-medium">Portal de controle</a>
-                    <a href="download.html" class="text-gray-700 hover:text-green-600 font-medium">Baixar</a>
-                    <a href="../../portfolio.html#caracore-seed" class="text-gray-700 hover:text-green-600 font-medium">Portfólio</a>
-                </div>
-                <button id="mobile-menu-button" class="md:hidden text-gray-700" aria-label="Menu"><i class="fas fa-bars text-2xl"></i></button>
-            </div>
-            <div id="mobile-menu" class="hidden md:hidden pb-4">
-                <a href="index.html" class="text-gray-700 hover:text-green-600 font-medium py-2 block">Início</a>
-                <a href="tecnologia.html" class="text-green-600 font-semibold py-2 block">Tecnologia</a>
-                <a href="readme.html" class="text-gray-700 hover:text-green-600 font-medium py-2 block">Documentação</a>
-                <a href="portal-controle.html" class="text-gray-700 hover:text-green-600 font-medium py-2 block">Portal de controle</a>
-                <a href="download.html" class="text-gray-700 hover:text-green-600 font-medium py-2 block">Baixar</a>
-                <a href="../../portfolio.html#caracore-seed" class="text-gray-700 hover:text-green-600 font-medium py-2 block">Portfólio</a>
-            </div>
-        </nav>
-    </header>
-
-    <section class="green-bg text-white py-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl md:text-5xl font-bold mb-4">Tecnologia local</h1>
-                <p class="text-xl text-green-50">Stack 100% no seu ambiente: desktop Windows, banco local, sem dependência de nuvem. Escopo filtrado ao que faz sentido para o Seed.</p>
-            </div>
-        </div>
-    </section>
-
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
-        <div id="electron" class="sol-card">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4"><i class="fas fa-window-maximize text-indigo-600 me-2"></i>Shell desktop: Electron</h2>
-            <p class="text-gray-700 leading-relaxed">
-                O CaraCore Seed é distribuído como aplicativo Windows usando <strong>Electron</strong>. A interface do usuário roda em uma janela nativa; o backend (Java) sobe localmente e é acessado via HTTP na própria máquina. Nada é enviado para a nuvem — tudo roda no seu PC.
-            </p>
-        </div>
-
-        <div id="java" class="sol-card">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4"><i class="fas fa-coffee text-amber-700 me-2"></i>Backend: Java (JAX-RS + JPA)</h2>
-            <p class="text-gray-700 leading-relaxed">
-                O núcleo de regras de negócio e API REST é em <strong>Java</strong> (JAX-RS, JPA). O servidor sobe na máquina local (WAR em Tomcat embarcado ou launcher próprio). Requisito: <strong>Java 17</strong> (ou runtime embarcado no instalador, quando disponível).
-            </p>
-        </div>
-
-        <div id="sqlite" class="sol-card">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4"><i class="fas fa-database text-green-600 me-2"></i>Persistência: SQLite</h2>
-            <p class="text-gray-700 leading-relaxed">
-                Todas as informações de licenças, usuários e configurações ficam em um banco <strong>SQLite</strong> no disco. Apenas SQLite está no escopo do produto; outras tecnologias de banco de dados não são suportadas. Sem dados na nuvem. Backup = copiar o arquivo do banco; restauração = colocar o arquivo no lugar. Ideal para operação offline e controle total dos dados.
-            </p>
-        </div>
-
-        <div id="windows" class="sol-card">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4"><i class="fab fa-windows text-blue-600 me-2"></i>Plataforma: Windows 10/11</h2>
-            <p class="text-gray-700 leading-relaxed">
-                O foco de entrega é <strong>Windows 10 e 11 (64 bits)</strong>. O Electron gera um executável instalável (.exe / instalador); o usuário não precisa configurar servidor nem internet para o dia a dia. Escritório ou campo — desde que tenha um Windows, o Seed funciona.
-            </p>
-        </div>
-
-        <div id="api-local" class="sol-card">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4"><i class="fas fa-plug text-gray-600 me-2"></i>API REST local</h2>
-            <p class="text-gray-700 leading-relaxed">
-                A API REST do Seed escuta em <code>localhost</code> (ou na interface de rede da máquina). Outros sistemas na mesma rede (por exemplo, PDV no mesmo PC ou em outra estação) podem consultar e validar licenças via HTTP. Tudo permanece na sua infraestrutura.
-            </p>
-        </div>
-
-        <div id="portal-lgpd" class="sol-card">
-            <h2 class="text-2xl font-bold text-gray-900 mb-4"><i class="fas fa-shield-halved text-green-600 me-2"></i>Portal de controle e LGPD</h2>
-            <p class="text-gray-700 leading-relaxed">
-                O Seed oferece um <strong>portal de controle das licenças</strong> (inspirado no Minerador 4.0): transparência com o cliente e tratamento de dados em conformidade com a LGPD. O espírito é o de <strong>Contador de Licenças</strong> — o cliente vê o que possui, onde está ativo e até quando vale, sem expor dados desnecessários.
-            </p>
-        </div>
-
-        <div class="mt-8 p-6 bg-green-50 border border-green-200 rounded-xl">
-            <p class="text-gray-700 text-center">
-                <strong class="text-green-800">Escopo Seed:</strong> apenas tecnologias locais. Não fazem parte deste produto: nuvem, SMS, PIX, SEFAZ, integrações externas — esses recursos pertencem a outros produtos do ecossistema (ex.: PDV).
-            </p>
-        </div>
-
-        <div class="mt-10 text-center">
-            <a href="download.html" class="inline-flex items-center green-bg text-white px-6 py-3 rounded-lg font-semibold hover:shadow-lg transition">
-                <i class="fas fa-download me-2"></i>Baixar Seed
-            </a>
-            <span class="mx-4 text-gray-500">|</span>
-            <a href="index.html" class="text-gray-700 hover:text-green-600 font-medium">Voltar ao portal</a>
-        </div>
-    </main>
-
-    <footer class="bg-gray-900 text-gray-300 py-8 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <p class="text-sm text-gray-400">&copy; 2024–2026 Cara Core Informática. CaraCore Seed — Delivery.</p>
-        </div>
-    </footer>
-
-    <script>
-        var m = document.getElementById('mobile-menu-button'), n = document.getElementById('mobile-menu');
-        if (m && n) m.addEventListener('click', function () { n.classList.toggle('hidden'); });
-    </script>
-    <script src="assets/js/seed.js"></script>
+<body>
+  <p>Esta página foi migrada para a loja oficial do produto.</p>
+  <p>Se o redirecionamento não ocorrer, use: <a href="https://seed.caracore.com.br/tecnologia.html">https://seed.caracore.com.br/tecnologia.html</a>.</p>
 </body>
 </html>

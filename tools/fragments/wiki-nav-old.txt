@@ -1,0 +1,19 @@
+            <div class="collapse navbar-collapse" id="navbarWiki">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">
+                            <i class="bi bi-house"></i> Site Principal
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../download.html">
+                            <i class="bi bi-briefcase"></i> Portfólio
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../canal-feedback.html" title="Conheça o Nosso Eco Mundo">
+                            <i class="bi bi-globe2"></i> Eco Mundo
+                        </a>
+                    </li>
+                </ul>
+            </div>

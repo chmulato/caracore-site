@@ -99,7 +99,7 @@ Objetivo: expandir qualidade/segurança do site além dos caminhos estáticos j�
 - **`url()` em CSS** (`@import`, `background-image`) ou ficheiros **PDF** referenciados em HTML.
 - **`delivery_old`** e outros legados: incluir no scan ou documentar como excluídos de propósito.
 - **Integração CI** (GitHub Actions): correr `run-site-validation.ps1` em PR.
-- **`tools/validate-encoding-site.ps1`** / encoding onde fizer sentido.
+- **`tools/validate_encoding.py`** (`site` | `lojas` | `readme`) — validação de encoding; os `.ps1` homónimos apenas chamam Python.
 - **Mapa do site** (sitemap vs HTML gerado) ou **redirects** (`_redirects`, `vercel.json`) vs ficheiros reais.
 
 Ao retomar: executar `scripts/run-site-validation.ps1` e registar o resultado; depois escolher 1–2 itens da lista acima.

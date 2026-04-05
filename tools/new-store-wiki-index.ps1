@@ -80,9 +80,15 @@ $tpl = @'
 </html>
 '@
 
+$fixScript = Join-Path $PSScriptRoot "fix-html-mojibake.ps1"
+
 foreach ($it in $items) {
     $out = Join-Path (Join-Path $DevRoot $it.Dir) "docs\wiki\index.html"
     $html = $tpl.Replace("__TITLE__", $it.Title).Replace("__DESC__", $it.Desc).Replace("__PROJ__", $it.Proj).Replace("__EXTRA_HREF__", $it.ExtraHref).Replace("__EXTRA_LABEL__", $it.ExtraLabel)
     [IO.File]::WriteAllText($out, $html, $utf8NoBom)
     Write-Host "Wrote $out"
+    if (Test-Path -LiteralPath $fixScript) {
+        $wikiRoot = Join-Path (Join-Path $DevRoot $it.Dir) "docs\wiki"
+        & $fixScript -RootPath $wikiRoot -HtmlOnly | Out-Null
+    }
 }

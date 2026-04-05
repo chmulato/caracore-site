@@ -69,3 +69,37 @@ alwaysApply: true
 - Convenção de imagens: `personal/articles/assets/img/README.txt` (`YYYY_MM_DD_IMAGE_*` = data do artigo).
 - **Séries** “Brasil, SDK e Soberania” e “Protocolo de Lucerna”: páginas `*_index.html` são **exceção** (várias datas nos cartões); cada **episódio** segue a norma no seu HTML. Nota no `personal/index.html` (stats).
 - `canonical` + `og:url` nos artigos; scripts `tools/validate_article_images.ps1` e `tools/equalize_article_images.ps1`; relatórios em `sala/regis/` (`VALIDACAO_IMAGENS_RETRO_BLOG.txt`, `MANIFEST_EQUALIZACAO_IMAGENS.txt`).
+
+---
+
+## Etapa 1 — links internos e imagens (concluída, ~abr/2026)
+
+### Scripts de validação (usar antes de deploy)
+- **`scripts/find-orphan-links.ps1`** — destinos internos em falta: `href`, `src`, `srcset`, `poster`, meta `og:image` / `twitter:image`. Ignora `http(s):`, `mailto:`, `data:`, placeholders de código (`+ filepath +`, `{video_path}`). Exclui pastas: `delivery_old`, `node_modules`, `.git`, `backend`, `htmlcov`.
+- **`scripts/run-site-validation.ps1`** — orquestra: `find-orphan-links.ps1` + `tools/validate_article_images.ps1` + `tools/validate_integrity_2026.ps1` (retro 2026 vs `feed.xml`, blog index vs artigos 2026).
+- Relatórios: `sala/regis/VALIDACAO_IMAGENS_RETRO_BLOG.txt`, `VALIDACAO_INTEGRIDADE_2026.txt`.
+
+### Correções já aplicadas (referência)
+- Favicon em `aligned/`, `personal/articles/assets/img/`; links `moving_to_ch` → `aligned`; `publications/` stub; CSS retro artigos 59/60/62 → `assets/css/articles.css`.
+- `sala/facebook|instagram|linkedin`: back-link para `../redes/retro/articles.html`; `sala/regis`: `../redes/retro/articles.html` (não `../../redes/`).
+- `secure/access-denied.html`: scripts em `/secure/js/`; removido include inexistente `oidc.js` (OIDC em `auth-standalone.js`).
+- Imagens blog em falta: cópias placeholder em `personal/articles/assets/img/` a partir de PNGs já existentes na mesma pasta (nomes listados na conversão etapa 1).
+
+### Estado alvo
+- `find-orphan-links.ps1` → **total 0**; `validate_article_images.ps1` → **0 issues** (quando o disco está completo).
+
+---
+
+## Etapa 2 — próxima (a continuar)
+
+Objetivo: expandir qualidade/segurança do site além dos caminhos estáticos já cobertos.
+
+**Candidatos (priorizar com o utilizador):**
+- Links **externos** (HEAD/GET opcional, lista de URLs quebradas, rate limit).
+- **`url()` em CSS** (`@import`, `background-image`) ou ficheiros **PDF** referenciados em HTML.
+- **`delivery_old`** e outros legados: incluir no scan ou documentar como excluídos de propósito.
+- **Integração CI** (GitHub Actions): correr `run-site-validation.ps1` em PR.
+- **`tools/validate-encoding-site.ps1`** / encoding onde fizer sentido.
+- **Mapa do site** (sitemap vs HTML gerado) ou **redirects** (`_redirects`, `vercel.json`) vs ficheiros reais.
+
+Ao retomar: executar `scripts/run-site-validation.ps1` e registar o resultado; depois escolher 1–2 itens da lista acima.

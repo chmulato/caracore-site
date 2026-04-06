@@ -5,9 +5,82 @@
     <link>https://caracore.com.br/personal/</link>
     <description><![CDATA[Artigos técnicos sobre desenvolvimento Java, arquitetura de software e tecnologia.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Wed, 02 Apr 2026 21:30:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2026 12:00:00 +0000</lastBuildDate>
     <atom:link href="https://caracore.com.br/personal/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
+
+    <item>
+      <title><![CDATA[Episódio 07: Refatorando o Futuro do Brasil]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_08_21_serie_brasil_sdk_soberania_ep07.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_08_21_serie_brasil_sdk_soberania_ep07.html</guid>
+      <pubDate>Fri, 21 Aug 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Episódio 06: Isolamento como Resistência: O "Modo Localhost"]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_07_22_serie_brasil_sdk_soberania_ep06.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_07_22_serie_brasil_sdk_soberania_ep06.html</guid>
+      <pubDate>Wed, 22 Jul 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Protocolo de Lucerna — Epílogo]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_07_14_protocolo_lucerna_epilogo.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_07_14_protocolo_lucerna_epilogo.html</guid>
+      <pubDate>Tue, 14 Jul 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Protocolo de Lucerna — Ep. 6: O Código da Retomada (The Recovery Protocol)]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_07_07_protocolo_lucerna_ep06_codigo_retomada.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_07_07_protocolo_lucerna_ep06_codigo_retomada.html</guid>
+      <pubDate>Tue, 07 Jul 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Protocolo de Lucerna — Ep. 5: Identidade Fluida – A Sombra de Lucerna]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_06_30_protocolo_lucerna_ep05_identidade_fluida_sombra_lucerna.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_06_30_protocolo_lucerna_ep05_identidade_fluida_sombra_lucerna.html</guid>
+      <pubDate>Tue, 30 Jun 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Episódio 05: O Legado de 1964 e a Nossa Dívida Técnica]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_06_22_serie_brasil_sdk_soberania_ep05.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_06_22_serie_brasil_sdk_soberania_ep05.html</guid>
+      <pubDate>Mon, 22 Jun 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Protocolo de Lucerna — Ep. 4: A Anatomia do Rastro Digital]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_06_13_protocolo_lucerna_ep04_anatomia_rastro_digital.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_06_13_protocolo_lucerna_ep04_anatomia_rastro_digital.html</guid>
+      <pubDate>Sat, 13 Jun 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Protocolo de Lucerna — Ep. 3: O Ponto Cego da Qualidade (O QA Invisível)]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_06_07_protocolo_lucerna_ep03_ponto_cego_qualidade.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_06_07_protocolo_lucerna_ep03_ponto_cego_qualidade.html</guid>
+      <pubDate>Sun, 07 Jun 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Protocolo de Lucerna — Ep. 2: A Engenharia de Guerra e o Compliance]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_05_30_protocolo_lucerna_ep02_engenharia_guerra_compliance.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_05_30_protocolo_lucerna_ep02_engenharia_guerra_compliance.html</guid>
+      <pubDate>Sat, 30 May 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[Episódio 04: PIX: O Framework Nativo que Deu Certo]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_05_23_serie_brasil_sdk_soberania_ep04.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_05_23_serie_brasil_sdk_soberania_ep04.html</guid>
+      <pubDate>Sat, 23 May 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Legado e a Matriz: o que a Engenharia herda do Cuidado]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_05_10_o_legado_e_a_matriz_o_que_a_engenharia_herda_do_cuidado.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_05_10_o_legado_e_a_matriz_o_que_a_engenharia_herda_do_cuidado.html</guid>
+      <pubDate>Sun, 10 May 2026 07:00:00 +0000</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[O Protocolo de Lucerna — Ep. 1: O Ultimato das 14h30]]></title>
+      <link>https://caracore.com.br/personal/articles/2026_05_05_protocolo_lucerna_ep01_ultimato_14h30.html</link>
+      <guid isPermaLink="true">https://caracore.com.br/personal/articles/2026_05_05_protocolo_lucerna_ep01_ultimato_14h30.html</guid>
+      <pubDate>Tue, 05 May 2026 07:00:00 +0000</pubDate>
+    </item>
 
     <item>
       <title><![CDATA[Entre o Prazo e o WSDL: A Saga de uma Migração no "Mundo Real"]]></title>

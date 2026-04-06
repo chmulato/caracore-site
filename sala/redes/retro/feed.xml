@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title><![CDATA[Artigos Retrô — Cara Core Informática]]></title>
     <link>https://caracore.com.br/sala/redes/retro/articles.html</link>
     <description><![CDATA[Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.]]></description>
     <language>pt-BR</language>
-    <lastBuildDate>Wed, 01 Apr 2026 12:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 05 Apr 2026 12:00:00 +0000</lastBuildDate>
+    <atom:link href="https://caracore.com.br/sala/redes/retro/feed.xml" rel="self" type="application/rss+xml" />
     <generator>Cara Core RSS generator</generator>
 
     <item>

@@ -118,4 +118,20 @@
     <priority>0.4</priority>
   </url>
 
+  <!-- Blog Christian Mulato -->
+  <url>
+    <loc>https://caracore.com.br/personal/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Artigos Retrô Cara Core -->
+  <url>
+    <loc>https://caracore.com.br/sala/redes/retro/articles.html</loc>
+    <lastmod>2026-04-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
 </urlset>

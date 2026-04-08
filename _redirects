@@ -1,6 +1,9 @@
 # Ordem: primeira regra que casa ganha. Redirects específicos antes do catch-all SPA.
 # Mapa: docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md · política: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §1.0a
 
+/wiki    https://www.caracore.com.br/wiki/index.html   301
+/wiki/   https://www.caracore.com.br/wiki/index.html   301
+
 /moving_to_ch/*    /aligned/:splat   301
 
 # Sala canónica — pasta delivery/sala não existe no repo (docs/DELIVERY_RESTRUCTURA.md)

@@ -1,6 +1,16 @@
 {
     "redirects": [
         {
+            "source": "/wiki",
+            "destination": "https://www.caracore.com.br/wiki/index.html",
+            "permanent": true
+        },
+        {
+            "source": "/wiki/",
+            "destination": "https://www.caracore.com.br/wiki/index.html",
+            "permanent": true
+        },
+        {
             "source": "/moving_to_ch/:path*",
             "destination": "/aligned/:path*",
             "permanent": true

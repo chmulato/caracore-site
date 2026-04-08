@@ -2,7 +2,7 @@
 
 Data de referencia: 13/03/2026
 Janela oficial proposta: 04/06/2026 a 04/06/2029
-Escopo: Sala Retrô Cara Core + Blog Christian Mulato
+Escopo: Sala Retro Cara Core + canal tecnico pessoal
 
 ## Objetivo
 
@@ -13,7 +13,7 @@ Reestruturar o cronograma editorial para operar em dois ciclos equilateros dentr
 - Horizonte total: 36 meses editoriais
 - Regra mestra: 1 publicacao principal por mes no eixo combinado
 - Total alvo: 36 publicacoes principais
-- Distribuicao alvo por acervo: 18 Cara Core + 18 Blog Christian Mulato
+- Distribuicao alvo por acervo: 18 Cara Core + 18 canal tecnico pessoal
 - Estrutura do programa: 2 ciclos equilateros de 18 meses cada
 
 ### Ciclo 1
@@ -33,7 +33,7 @@ Reestruturar o cronograma editorial para operar em dois ciclos equilateros dentr
 ## Regra de alternancia
 
 - Mes 1 do ciclo: Cara Core
-- Mes 2 do ciclo: Blog Christian Mulato
+- Mes 2 do ciclo: canal tecnico pessoal
 - Alternancia 1:1 obrigatoria por padrao
 - Excecao operacional permitida somente com compensacao no mes seguinte ou, no maximo, dentro do mesmo trimestre
 - Nenhum dos acervos pode abrir vantagem superior a 1 publicacao dentro de um mesmo ciclo de 18 meses

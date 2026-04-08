@@ -1,11 +1,11 @@
-# Reposicionamento Conjunto de Artigos (Cara Core + Blog Christian Mulato)
+# Reposicionamento Conjunto de Artigos (Cara Core + Canal Tecnico Pessoal)
 
 Data de referencia: 13/03/2026
 Vigencia oficial: 04/06/2026 a 04/06/2029
 Escopo:
 
 - Acervo institucional Cara Core: `D:\dev\caracore-site\sala\redes\retro\articles`
-- Acervo pessoal Christian Mulato: `D:\dev\caracore-site\personal\articles`
+- Acervo tecnico pessoal: `D:\dev\caracore-site\personal\articles`
 
 ## Objetivo
 
@@ -14,10 +14,10 @@ Unificar o ritmo editorial dos dois acervos para o ciclo 04/06/2026 a 04/06/2029
 ## Decisao de reposicionamento
 
 - A partir de 04/06/2026, os dois acervos seguem o mesmo principio de cadencia enxuta.
-- Prioridade: 1 publicacao principal por mes no eixo combinado (institucional + pessoal).
+- Prioridade: 1 publicacao principal por mes no eixo combinado (institucional + tecnico pessoal).
 - Marco/2026: nao publicar externamente conteudos novos; usar apenas como base interna quando aplicavel.
 - Em pico operacional, substituir artigo longo por nota curta institucional e mover pauta para o mes seguinte.
-- Nomenclatura operacional oficial: `Ciclo CC` (Cara Core), `Ciclo Blog` (Christian) e `Ciclo Mestre de Coerencia` (governanca unica).
+- Nomenclatura operacional oficial: `Ciclo CC` (Cara Core), `Ciclo Blog` (canal tecnico pessoal) e `Ciclo Mestre de Coerencia` (governanca unica).
 - Arquitetura oficial do programa: 2 ciclos equilateros de 18 meses, com meta de 9 publicacoes por acervo em cada ciclo.
 - Leitura operacional adotada: `Opcao 3 - hibrido`; o backlog abril/maio de 2026 permanece como reserva historica e o Ciclo 1 editorial real segue o cronograma reaberto.
 

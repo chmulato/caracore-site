@@ -1,13 +1,13 @@
 # Cronograma Editorial Cara Core 2026 a 2029
 
 Data base: 13/03/2026
-Escopo: Comunicacao institucional da empresa + Blog do Christian Mulato
+Escopo: Comunicacao institucional da empresa + canal tecnico pessoal
 Horizonte oficial: 04/06/2026 a 04/06/2029 (3 anos)
 Diretriz central: registrar passos reais com saude operacional, sem publicidade
 
 ## Identidade Editorial
 
-- A Cara Core Informatica e o blog do Christian Mulato funcionam como registro fiel de uma pequena empresa em construcao.
+- A Cara Core Informatica e o canal tecnico pessoal funcionam como registro fiel de uma pequena empresa em construcao.
 - O objetivo editorial nao e aparentar estrutura maior do que a real, e sim documentar com honestidade tecnica o caminho percorrido.
 - Contexto atual: equipe reduzida e em formacao, com limitacoes reais de capacidade de execucao.
 - Toda pauta deve respeitar a realidade operacional do momento, sem inflar expectativa.
@@ -25,7 +25,7 @@ Diretriz central: registrar passos reais com saude operacional, sem publicidade
 - Publicacoes totais no ciclo: 36 artigos.
 - Distribuicao por canal:
   - Empresa Cara Core (Sala de Noticias): 18 artigos (50%).
-  - Blog do Christian Mulato: 18 artigos (50%).
+  - Canal tecnico pessoal: 18 artigos (50%).
 - Cadencia base: 1 artigo por mes.
 - Arquitetura oficial: 2 ciclos equilateros de 18 meses, com 9 slots para cada acervo em cada ciclo.
 - Buffer de rota: 4 janelas sem publicacao distribuidas no ciclo para ajuste de prioridade.

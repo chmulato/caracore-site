@@ -2,7 +2,7 @@
 
 Data de referencia: 13/03/2026
 Vigencia: 04/06/2026 a 04/06/2029
-Escopo: Empresa Cara Core (Sala de Noticias) e Blog do Christian Mulato
+Escopo: Empresa Cara Core (Sala de Noticias) e canal tecnico pessoal
 
 ## Proposito
 
@@ -15,11 +15,11 @@ Este cronograma nao e comercial. E um instrumento de memoria institucional, apre
 - Total de artigos: 36
 - Distribuicao equilibrada:
   - 18 artigos para Empresa (Sala de Noticias)
-  - 18 artigos para Blog do Christian Mulato
+  - 18 artigos para canal tecnico pessoal
 - Cadencia: 1 artigo por mes
 - Flexibilidade: 4 janelas de ajuste no ciclo para mudanca de rota sem pressao
 - Arquitetura operacional: 2 ciclos equilateros de 18 meses
-- Meta por ciclo: 9 artigos Cara Core + 9 artigos Blog
+- Meta por ciclo: 9 artigos Cara Core + 9 artigos do canal tecnico pessoal
 
 ## Estrutura dos ciclos equilateros
 

@@ -1,11 +1,11 @@
-# Logica de Ciclos Padronizados (Cara Core + Blog Christian) 2026-2029
+# Logica de Ciclos Padronizados (Cara Core + Canal Tecnico Pessoal) 2026-2029
 
 Data de referencia: 13/03/2026
 Vigencia: 04/06/2026 a 04/06/2029
 Escopo:
 
 - Cara Core (institucional): `D:\dev\caracore-site\sala\redes\retro\articles`
-- Blog Christian Mulato (pessoal): `D:\dev\caracore-site\personal\articles`
+- Canal tecnico pessoal: `D:\dev\caracore-site\personal\articles`
 
 ## Objetivo
 
@@ -22,7 +22,7 @@ Padronizar a logica de publicacao para manter cadencia viavel, reduzir sobrecarg
 
 - Ciclo Mestre de Coerencia: eixo unico de governanca para o periodo 04/06/2026 a 04/06/2029.
 - Ciclo CC: trilho de publicacao institucional da Cara Core.
-- Ciclo Blog: trilho de publicacao pessoal do Christian Mulato.
+- Ciclo Blog: trilho de publicacao do canal tecnico pessoal.
 - Regra geral: Ciclo CC e Ciclo Blog operam separados na execucao, mas compartilham o mesmo gate e os mesmos criterios de coerencia.
 - Estrutura oficial: 2 ciclos equilateros de 18 meses, com saldo alvo de 9 publicacoes por acervo em cada ciclo.
 
@@ -30,7 +30,7 @@ Padronizar a logica de publicacao para manter cadencia viavel, reduzir sobrecarg
 
 - Janela oficial do programa: 36 meses (04/06/2026 a 04/06/2029).
 - Cadencia alvo: 1 publicacao principal por mes no eixo combinado.
-- Distribuicao total: 36 publicacoes, sendo 18 institucionais (Cara Core) e 18 pessoais (Blog Christian).
+- Distribuicao total: 36 publicacoes, sendo 18 institucionais (Cara Core) e 18 do canal tecnico pessoal.
 - Marco/2026: sem publicacao externa de novos conteudos.
 - Distribuicao por ciclo: 9 publicacoes Cara Core + 9 publicacoes Blog em cada ciclo equilatero.
 

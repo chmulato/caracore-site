@@ -40,15 +40,15 @@ Ser reconhecida como referência em consultoria tecnológica e automação, dest
 **Localização:** Campo Largo, PR  
 
 **Equipe-chave:**  
-Christian Mulato e Guilherme Mulato.
+Equipe tecnica e operacional complementar, com foco em governanca digital, automacao, suporte e implementacao.
 
-### Perfil dos Fundadores
+### Perfis de Atuacao da Equipe
 
-**Christian Mulato:**  
-Profissional com mais de 15 anos de experiência em tecnologia da informação, especializado em implantação e governança de ambientes Microsoft 365, automação de processos com Python e Power Platform. Atuou em projetos de transformação digital para PMEs, com foco em produtividade, segurança e inovação. Possui certificações Microsoft e experiência em treinamento de equipes técnicas e administrativas.
+**Governanca digital e implantacao:**  
+Profissional com mais de 15 anos de experiencia em tecnologia da informacao, especializado em implantacao e governanca de ambientes Microsoft 365, automacao de processos com Python e Power Platform. Atuacao em projetos de transformacao digital para PMEs, com foco em produtividade, seguranca e inovacao. Experiencia em treinamento de equipes tecnicas e administrativas.
 
-**Guilherme Mulato:**  
-Especialista em automação de processos, integração de sistemas e suporte técnico. Experiência em desenvolvimento de soluções personalizadas para clientes de diversos setores, com domínio em Python, Power Platform e ferramentas de produtividade digital. Responsável por projetos de consultoria, suporte e implementação de políticas de segurança da informação.
+**Automacao, integracao e suporte tecnico:**  
+Especializacao em automacao de processos, integracao de sistemas e suporte tecnico. Experiencia em desenvolvimento de solucoes personalizadas para clientes de diversos setores, com dominio em Python, Power Platform e ferramentas de produtividade digital. Atuacao em consultoria, suporte e implementacao de politicas de seguranca da informacao.
 
 ***
 
@@ -198,7 +198,7 @@ A Cara Core Informática se posiciona como parceira estratégica de pequenas e m
 ## 9. Plano Operacional
 
 **Estrutura de equipe:**  
-A equipe principal é composta por Christian Mulato e Guilherme Mulato, responsáveis pela gestão, atendimento técnico, consultoria e desenvolvimento de soluções. Para demandas específicas, a empresa pode contar com parceiros e colaboradores especializados em áreas como segurança, automação avançada e treinamento.
+A equipe principal e composta por perfis complementares de gestao, atendimento tecnico, consultoria, automacao e desenvolvimento de solucoes. Para demandas especificas, a empresa pode contar com parceiros e colaboradores especializados em areas como seguranca, automacao avancada e treinamento.
 
 **Processos internos:**  
 
@@ -470,7 +470,7 @@ A automação de relatórios financeiros com Python permitiu à empresa eliminar
 - [Plano de Negócios – Cara Core Informática](#plano-de-negócios--cara-core-informática)
   - [1. Sumário Executivo](#1-sumário-executivo)
   - [2. Apresentação da Empresa](#2-apresentação-da-empresa)
-    - [Perfil dos Fundadores](#perfil-dos-fundadores)
+    - [Perfis de Atuacao da Equipe](#perfis-de-atuacao-da-equipe)
   - [3. Análise de Mercado](#3-análise-de-mercado)
   - [4. Análise SWOT (FOFA)](#4-análise-swot-fofa)
   - [5. Público-Alvo](#5-público-alvo)

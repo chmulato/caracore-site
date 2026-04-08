@@ -2,7 +2,7 @@
 
 Data de referencia: 13/03/2026
 Janela analisada: junho/2026 a novembro/2027
-Escopo: Sala Retrô Cara Core + Blog Christian Mulato
+Escopo: Sala Retro Cara Core + canal tecnico pessoal
 
 ## Objetivo
 

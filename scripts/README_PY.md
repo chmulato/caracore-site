@@ -227,7 +227,7 @@ cd D:\dev\caracore-site
 # Apenas artigos retrô (Sala de Operações → Redes → Retrô)
 python scripts/generate_rss_feed.py --mode retro
 
-# Apenas blog pessoal (Christian Mulato Dev Blog)
+# Apenas canal tecnico pessoal
 python scripts/generate_rss_feed.py --mode personal
 
 # Gerar/atualizar os dois feeds de uma vez

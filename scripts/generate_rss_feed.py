@@ -360,7 +360,7 @@ def generate_mode_personal(root: Path, today: dt.datetime) -> None:
     items = filter_items_for_feed(items, today)
 
     channel = {
-        "title": "Christian Mulato Dev Blog",
+        "title": "Canal Tecnico Pessoal",
         "link": "https://caracore.com.br/personal/",
         "description": "Artigos técnicos sobre desenvolvimento Java, arquitetura de software e tecnologia.",
         "language": "pt-BR",

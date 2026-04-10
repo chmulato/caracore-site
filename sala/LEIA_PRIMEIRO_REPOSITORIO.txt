@@ -9,7 +9,9 @@ valor da execução; a recompensa é proporcional à entrega validada. Ver
 regis/TEXTO_RECEPCAO.txt, regis/ESTRATEGIA_EXECUCAO.txt, regis/GUIA_EXECUCAO_JOVEM.txt
 e regis/ARQUITETURA_SALA_C4.txt.
 
-Cenário: a sala está em D:\dev\caracore-site\sala. Estrutura completa: ESTRUTURA_SALA.txt
+Cenário legado nesta pasta: D:\dev\caracore-site\sala.
+Cenário canónico: D:\dev\caracore-tools\docs\sala. Estrutura completa: ESTRUTURA_SALA.txt
+Entrada pública da matriz: https://caracore.com.br/sala/ -> https://tools.caracore.com.br/sala/
 ================================================================================
 
 1. CONTEÚDO DESTE REPOSITÓRIO (sala)
@@ -31,9 +33,8 @@ Cenário: a sala está em D:\dev\caracore-site\sala. Estrutura completa: ESTRUTU
   · Oficina organizada em Python (produto Cara Core MKT): use o projeto
     D:\dev\caracore-mkt (py -3 scripts\validar_sala.py etc.). Veja
     caracore-mkt\README.txt.
-  · Dentro do repo do site: python sala/scripts/validar_sala.py (ou
-    py sala/scripts/validar_sala.py). Rode a partir da raiz do repositório
-    (a pasta onde estão sala/, face/, gram/, retro/).
+  · Dentro do repo canónico da sala: python scripts/validar_sala.py (ou
+    py scripts/validar_sala.py). Rode a partir de D:\dev\caracore-tools\docs\sala.
 
 3. AUTOMAÇÃO — ONDE CADA REDE ENCAIXA
   · Facebook (F):  face/   — D:\dev\caracore-site\face   (ou caminho do repo)\face
@@ -49,7 +50,7 @@ Cenário: a sala está em D:\dev\caracore-site\sala. Estrutura completa: ESTRUTU
      com o nome correto, páginas HTML nos lugares certos).
   2. Rode a oficina a partir de D:\dev\caracore-mkt (recomendado):
      py -3 scripts\validar_sala.py   ou  py -3 scripts\validar_trabalho_executado.py
-  3. Ou, na raiz do repositório (caracore-site): python sala/scripts/validar_sala.py
+    3. Ou, na raiz da sala canónica: python scripts/validar_sala.py
   4. Se aparecer "Validação OK", o trabalho foi executado com sucesso.
 
 5. ONDE COMEÇAR

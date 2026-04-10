@@ -4,7 +4,7 @@ ECOSSISTEMA — LOJAS ONLINE (VITRINES E RELEASES)
 Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos da Cara Core Informática.
 
 **Matriz institucional (identidade Cara Core no domínio principal):**  
-https://caracore.com.br/ · https://caracore.com.br/portfolio.html · https://caracore.com.br/ecosistema.html · https://caracore.com.br/sala/  
+https://caracore.com.br/ · https://caracore.com.br/portfolio.html · https://caracore.com.br/ecosistema.html · https://tools.caracore.com.br/sala/  
 Campanhas e CTAs devem reforçar este conjunto para a “cara” da empresa; **não** usar `https://caracore.com.br/delivery/...` como destino principal (legado com redirect até remoção da pasta — ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0a).
 
 **Por loja:** cada subdomínio mantém a sua própria apresentação (texto, estrutura, estilo do produto). Alinhamento canónico = URL e repo oficiais — não copiar tudo para um único molde institucional (ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0b).

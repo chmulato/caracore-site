@@ -16,6 +16,21 @@
             "permanent": true
         },
         {
+            "source": "/sala",
+            "destination": "https://tools.caracore.com.br/sala/",
+            "permanent": true
+        },
+        {
+            "source": "/sala/",
+            "destination": "https://tools.caracore.com.br/sala/",
+            "permanent": true
+        },
+        {
+            "source": "/sala/:path*",
+            "destination": "https://tools.caracore.com.br/sala/:path*",
+            "permanent": true
+        },
+        {
             "source": "/oauth/google/token",
             "destination": "https://caracore-backend-docker.azurewebsites.net/oauth/google/token"
         },
@@ -25,32 +40,32 @@
         },
         {
             "source": "/delivery/sala",
-            "destination": "/sala/",
+            "destination": "https://tools.caracore.com.br/sala/",
             "permanent": true
         },
         {
             "source": "/delivery/sala/",
-            "destination": "/sala/",
+            "destination": "https://tools.caracore.com.br/sala/",
             "permanent": true
         },
         {
             "source": "/delivery/sala/:path*",
-            "destination": "/sala/:path*",
+            "destination": "https://tools.caracore.com.br/sala/:path*",
             "permanent": true
         },
         {
             "source": "/delivery/publications",
-            "destination": "/sala/",
+            "destination": "https://tools.caracore.com.br/sala/",
             "permanent": true
         },
         {
             "source": "/delivery/publications/",
-            "destination": "/sala/",
+            "destination": "https://tools.caracore.com.br/sala/",
             "permanent": true
         },
         {
             "source": "/delivery/publications/index.html",
-            "destination": "/sala/",
+            "destination": "https://tools.caracore.com.br/sala/",
             "permanent": true
         },
         {

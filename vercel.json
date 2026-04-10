@@ -16,6 +16,21 @@
             "permanent": true
         },
         {
+            "source": "/sala/redes/retro",
+            "destination": "https://retro.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/sala/redes/retro/",
+            "destination": "https://retro.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/sala/redes/retro/:path*",
+            "destination": "https://retro.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
             "source": "/sala",
             "destination": "https://tools.caracore.com.br/sala/",
             "permanent": true
@@ -28,6 +43,21 @@
         {
             "source": "/sala/:path*",
             "destination": "https://tools.caracore.com.br/sala/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery_old",
+            "destination": "/delivery",
+            "permanent": true
+        },
+        {
+            "source": "/delivery_old/",
+            "destination": "/delivery/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery_old/:path*",
+            "destination": "/delivery/:path*",
             "permanent": true
         },
         {
@@ -51,6 +81,21 @@
         {
             "source": "/delivery/sala/:path*",
             "destination": "https://tools.caracore.com.br/sala/:path*",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/sala/redes/retro",
+            "destination": "https://retro.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/sala/redes/retro/",
+            "destination": "https://retro.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/sala/redes/retro/:path*",
+            "destination": "https://retro.caracore.com.br/:path*",
             "permanent": true
         },
         {

@@ -6,7 +6,7 @@
 
 **Grau de execução do plano (0–9):** `docs/PLANO_GRAU_EXECUCAO.md` (sinalização junto ao checklist mestre).
 
-**Documentos relacionados:** `delivery_old/README.md`, `CHECKLIST_EXECUCAO_REMODELAGEM_DELIVERY.md`, `MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`, `PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md`.
+**Documentos relacionados:** `docs/DELIVERY_RESTRUCTURA.md`, `CHECKLIST_EXECUCAO_REMODELAGEM_DELIVERY.md`, `MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`, `PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md`.
 
 ---
 

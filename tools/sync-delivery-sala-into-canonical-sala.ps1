@@ -1,12 +1,22 @@
 #Requires -Version 5.1
-# Une o conteudo de delivery_old/sala/ na Sala canonica sala/: (1) ficheiros que so existem na fonte;
+# Une o conteudo de delivery*/sala/ na Sala canonica sala/: (1) ficheiros que so existem na fonte;
 # (2) onde ambos existem e diferem, prefere-se o ficheiro com maior tamanho (heuristica para paginas completas vs fragmentos).
 # Revisar diff no Git antes de commit.
 $ErrorActionPreference = 'Stop'
 $repo = (Resolve-Path (Join-Path $PSScriptRoot '..')).Path
-$src = Join-Path $repo 'delivery_old\sala'
+$srcCandidates = @((Join-Path $repo 'delivery\sala'))
+$src = $null
+foreach ($candidate in $srcCandidates) {
+  if (Test-Path -LiteralPath $candidate) {
+    $src = $candidate
+    break
+  }
+}
 $dst = Join-Path $repo 'sala'
-if (-not (Test-Path $src)) { Write-Error "Nao existe: $src" }
+if (-not $src) {
+  Write-Host 'Nenhuma fonte legado encontrada em delivery/sala. Nada para sincronizar.'
+  exit 0
+}
 
 $copied = 0
 $updated = 0
@@ -36,6 +46,6 @@ Get-ChildItem -Path $src -Recurse -File | ForEach-Object {
   }
 }
 
-Write-Host "Novos em sala/ (copiados de delivery_old/sala): $copied"
+Write-Host "Novos em sala/ (copiados do legado): $copied"
 Write-Host "Atualizados em sala/ (delivery maior que canonico): $updated"
 Write-Host "Mantido canonico (igual ou sala maior): $skipped"

@@ -6,15 +6,30 @@
 
 /moving_to_ch/*    /aligned/:splat   301
 
+# Acervo retrô da Sala reposicionado para retro.caracore.com.br
+/sala/redes/retro    https://retro.caracore.com.br/   301
+/sala/redes/retro/   https://retro.caracore.com.br/   301
+/sala/redes/retro/*  https://retro.caracore.com.br/:splat   301
+
 # Sala de Operações canónica em tools.caracore.com.br
 /sala    https://tools.caracore.com.br/sala/   301
 /sala/   https://tools.caracore.com.br/sala/   301
 /sala/*  https://tools.caracore.com.br/sala/:splat   301
 
+# Compatibilidade para links antigos com prefixo /delivery_old
+/delivery_old    /delivery   301
+/delivery_old/   /delivery/   301
+/delivery_old/*  /delivery/:splat   301
+
 # Sala canónica — pasta delivery/sala não existe no repo (docs/DELIVERY_RESTRUCTURA.md)
 /delivery/sala    https://tools.caracore.com.br/sala/   301
 /delivery/sala/   https://tools.caracore.com.br/sala/   301
 /delivery/sala/*  https://tools.caracore.com.br/sala/:splat   301
+
+# Acervo retrô legado vindo de /delivery/sala/redes/retro
+/delivery/sala/redes/retro    https://retro.caracore.com.br/   301
+/delivery/sala/redes/retro/   https://retro.caracore.com.br/   301
+/delivery/sala/redes/retro/*  https://retro.caracore.com.br/:splat   301
 
 # Publications legado na matriz → canónico em /publications/ ou índice editorial em /sala/ (stubs em delivery/publications/)
 /delivery/publications    https://tools.caracore.com.br/sala/   301

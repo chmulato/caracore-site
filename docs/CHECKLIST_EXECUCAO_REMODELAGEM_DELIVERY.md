@@ -108,6 +108,6 @@ Ao aprovar, marcar os checkboxes acima **e** atualizar o **Grau** no topo deste 
 ## Atualizacao de status (2026-04-01 — redundancia delivery)
 - **Conteúdo de produto na matriz:** pastas `delivery/{produto}/` contêm apenas HTML de **redirect** para subdomínios; vitrines e wikis ficam nas lojas `*-releases`.
 - **`docs/FONTES_CANONICAS_MATRIZ_LOJAS.md`:** referência única para Sala vs lojas vs matriz; planos (`PLANO_*`, runbook, checklists) remetem a este ficheiro em vez de repetir tabelas.
-- **`delivery_old/README.md`:** descreve exceções (`sala/`, `assets/`, `publications/`).
+- **`docs/DELIVERY_RESTRUCTURA.md`:** descreve exceções e regras de transição/redirect.
 - **`MIRROR_DELIVERY.md`:** realinhados por produto (incl. `ete`, `cso`) para apontar só para a loja oficial.
 - **`.github/config/production.yml`:** texto em UTF-8 (comentários e nomes sem mojibake).

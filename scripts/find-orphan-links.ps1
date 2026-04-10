@@ -133,7 +133,7 @@ $files = Get-ChildItem -Path $siteRoot -Recurse -Include *.html, *.htm -File |
     Where-Object {
         $p = $_.FullName
         $p -notmatch '\\\.git\\' -and
-        $p -notmatch '\\delivery_old\\' -and
+        $p -notmatch '\\delivery\\' -and
         $p -notmatch '\\node_modules\\' -and
         $p -notmatch '\\backend\\' -and
         $p -notmatch '\\htmlcov\\'

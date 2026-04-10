@@ -23,7 +23,6 @@ O repositório **não deve precisar** da pasta `delivery/` a longo prazo: compat
 
 ## Referências
 
-- `delivery_old/README.md`
 - `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`
 - `docs/RUNBOOK_OPERACAO_DELIVERY_SUBDOMINIOS.md`
 - `docs/PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md`

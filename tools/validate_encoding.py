@@ -59,7 +59,7 @@ def _should_skip_site(path: Path, root: Path) -> bool:
         "/.python_packages/",
         "/htmlcov/",
         "/playwright/",
-        "/delivery_old/",
+        "/delivery/",
         "/.git/",
     ):
         if part in p:

@@ -2,12 +2,27 @@
     "redirects": [
         {
             "source": "/wiki",
-            "destination": "https://www.caracore.com.br/wiki/index.html",
+            "destination": "https://wiki.caracore.com.br/",
             "permanent": true
         },
         {
             "source": "/wiki/",
-            "destination": "https://www.caracore.com.br/wiki/index.html",
+            "destination": "https://wiki.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/personal",
+            "destination": "https://personal.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/personal/",
+            "destination": "https://personal.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/personal/:path*",
+            "destination": "https://personal.caracore.com.br/:path*",
             "permanent": true
         },
         {

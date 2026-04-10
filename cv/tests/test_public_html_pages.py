@@ -39,7 +39,7 @@ def test_resume_html_pages_have_basic_document_structure():
         assert "<!doctype html>" in lowered, f"Missing doctype in {page.name}"
         assert "<html" in lowered, f"Missing html tag in {page.name}"
         assert "<head>" in lowered, f"Missing head tag in {page.name}"
-        assert "<body>" in lowered, f"Missing body tag in {page.name}"
+        assert "<body" in lowered, f"Missing body tag in {page.name}"
         assert "<main" in lowered, f"Missing main tag in {page.name}"
         assert "</html>" in lowered, f"Missing closing html tag in {page.name}"
 

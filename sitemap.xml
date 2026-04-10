@@ -85,43 +85,43 @@
 
   <!-- Wiki Cara Core -->
   <url>
-    <loc>https://caracore.com.br/wiki/index.html</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://wiki.caracore.com.br/</loc>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/wiki/projetos-overview.html</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://wiki.caracore.com.br/projetos-overview.html</loc>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/wiki/tecnologias.html</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://wiki.caracore.com.br/tecnologias.html</loc>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/wiki/glossario.html</loc>
+    <loc>https://wiki.caracore.com.br/glossario.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/wiki/contribuindo.html</loc>
+    <loc>https://wiki.caracore.com.br/contribuindo.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/wiki/guia-estagiario.html</loc>
+    <loc>https://wiki.caracore.com.br/guia-estagiario.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
 
   <!-- Canal tecnico pessoal -->
   <url>
-    <loc>https://caracore.com.br/personal/</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://personal.caracore.com.br/</loc>
+    <lastmod>2026-04-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

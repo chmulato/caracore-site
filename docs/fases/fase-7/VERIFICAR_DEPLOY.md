@@ -54,7 +54,7 @@ TOKEN_ENCRYPTION_KEY  <REPLACE_WITH_BASE64_32BYTE_KEY>  False
 ### 3. Verificar Status do Deploy
 
 **GitHub Actions:**
-1. Acesse: https://caracore.com.br/
+1. Acesse: https://www.caracore.com.br/
 2. Verifique se o workflow "Deploy Docker Backend to Azure Container Registry" executou após o último commit
 3. Verifique se o build foi bem-sucedido
 
@@ -67,7 +67,7 @@ TOKEN_ENCRYPTION_KEY  <REPLACE_WITH_BASE64_32BYTE_KEY>  False
 Se os arquivos não estiverem no container, pode ser necessário forçar um rebuild:
 
 **Opção A: Via GitHub Actions (Recomendado)**
-1. Vá para: https://caracore.com.br/
+1. Vá para: https://www.caracore.com.br/
 2. Selecione o workflow "Deploy Docker Backend to Azure Container Registry"
 3. Clique em **Run workflow** → **Run workflow**
 

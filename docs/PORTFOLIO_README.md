@@ -1,4 +1,4 @@
-﻿# Portfólio de Projetos - Cara Core Informática
+# Portfólio de Projetos - Cara Core Informática
 
 Este documento descreve a estrutura e o uso da página de portfólio profissional da Cara Core Informática.
 
@@ -187,7 +187,7 @@ Link no `index.html`:
 
 1. Commit dos arquivos
 2. Push para branch `main`
-3. Acessar em: `https://caracore.com.br/portfolio.html`
+3. Acessar em: `https://www.caracore.com.br/portfolio.html`
 
 ### Servidor Local
 
@@ -204,4 +204,4 @@ python -m http.server 8000
 ---
 
 **Desenvolvido por:** Cara Core Informática  
-**Contato:** [caracore.com.br](https://caracore.com.br)
+**Contato:** [caracore.com.br](https://www.caracore.com.br)

@@ -408,7 +408,7 @@ const CARA_CORE_CONFIG = {
 
 - **Frontend:** https://www.caracore.com.br
 - **Backend:** https://caracore-backend-docker.azurewebsites.net
-- **Repositório:** https://caracore.com.br/
+- **Repositório:** https://www.caracore.com.br/
 
 ### Recursos Úteis
 

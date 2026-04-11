@@ -34,7 +34,7 @@ WARNING session_manager não disponível - sistema de refresh tokens desabilitad
 ### 1. Verificar Status do Deploy
 
 **GitHub Actions:**
-1. Acesse: https://caracore.com.br/
+1. Acesse: https://www.caracore.com.br/
 2. Verifique se o workflow "Deploy Docker Backend to Azure Container Registry" está executando
 3. Aguarde conclusão (5-10 minutos)
 
@@ -71,7 +71,7 @@ Como alteramos `backend/requirements-docker.txt`, o deploy **deve** ser acionado
 ### Forçar Deploy Manual (Se Necessário)
 
 1. **Via GitHub Actions:**
-   - Acesse: https://caracore.com.br/
+   - Acesse: https://www.caracore.com.br/
    - Selecione "Deploy Docker Backend to Azure Container Registry"
    - Clique em **Run workflow** → **Run workflow**
 

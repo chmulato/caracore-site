@@ -89,7 +89,7 @@ Adicionado como **4º projeto** no `portfolio.html`, posicionado após o Reino O
 **🔗 Links**
 
 - Documentação Técnica: `area51/wiki/`
-- Apresentação: `https://caracore.com.br/`
+- Apresentação: `https://www.caracore.com.br/`
 - Badges: Código privado + Apresentação pública + Sistema em produção
 
 ---

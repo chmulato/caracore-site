@@ -153,7 +153,7 @@ Este documento serve como índice central para toda a documentação do projeto 
 1. **Clone o repositório**
 
  ```bash
- git clone https://caracore.com.br/
+ git clone https://www.caracore.com.br/
  cd cara-core
  ```
 
@@ -541,7 +541,7 @@ python setup_super_admin.py
 
 - **Desenvolvedor:** Christian Vladimir Uhdre Mulato
 - **Email:** [suporte@caracore.com.br]
-- **Repositório:** <https://caracore.com.br/>
+- **Repositório:** <https://www.caracore.com.br/>
 
 ### Documentação Adicional
 

@@ -86,10 +86,10 @@ cara-core/
 <link rel="shortcut icon" href="assets/images/favicon.ico">
 
 <!-- Open Graph -->
-<meta property="og:image" content="https://caracore.com.br/assets/images/logo.png">
+<meta property="og:image" content="https://www.caracore.com.br/assets/images/logo.png">
 
 <!-- Twitter Card -->
-<meta name="twitter:image" content="https://caracore.com.br/assets/images/logo.png">
+<meta name="twitter:image" content="https://www.caracore.com.br/assets/images/logo.png">
 
 <!-- Hero Section -->
 <img src="assets/images/logo.png" alt="Cara Core Logo">
@@ -106,7 +106,7 @@ cara-core/
 <link rel="shortcut icon" href="assets/images/favicon.ico">
 
 <!-- Open Graph -->
-<meta property="og:image" content="https://caracore.com.br/assets/images/logo.png">
+<meta property="og:image" content="https://www.caracore.com.br/assets/images/logo.png">
 ```
 
 ---
@@ -119,8 +119,8 @@ cara-core/
 
 ```html
 <!-- META TAGS -->
-<meta property="og:image" content="https://caracore.com.br/handbook/images/COVER.png">
-<meta name="twitter:image" content="https://caracore.com.br/handbook/images/COVER.png">
+<meta property="og:image" content="https://www.caracore.com.br/handbook/images/COVER.png">
+<meta name="twitter:image" content="https://www.caracore.com.br/handbook/images/COVER.png">
 
 <!-- IMAGENS NO CONTEÚDO -->
 <img src="images/COVER.png" alt="Apostila Microsoft 365" />
@@ -133,8 +133,8 @@ cara-core/
 
 ```html
 <!-- META TAGS -->
-<meta property="og:image" content="https://caracore.com.br/publications/livros/images/guia_de_servicos_cover.png">
-<meta name="twitter:image" content="https://caracore.com.br/publications/livros/images/guia_de_servicos_cover.png">
+<meta property="og:image" content="https://www.caracore.com.br/publications/livros/images/guia_de_servicos_cover.png">
+<meta name="twitter:image" content="https://www.caracore.com.br/publications/livros/images/guia_de_servicos_cover.png">
 
 <!-- IMAGENS NO CONTEÚDO -->
 <img src="images/CAPA_MANUAL_PY.png" alt="Manual de Serviços" />
@@ -145,7 +145,7 @@ cara-core/
 
 ```html
 <!-- META TAGS -->
-<meta property="og:image" content="https://caracore.com.br/publications/livros/images/python_escritorios_cover.png">
+<meta property="og:image" content="https://www.caracore.com.br/publications/livros/images/python_escritorios_cover.png">
 
 <!-- IMAGENS NO CONTEÚDO -->
 <img src="images/capa.png" alt="Capa do Livro">
@@ -156,14 +156,14 @@ cara-core/
 
 ```html
 <!-- META TAGS -->
-<meta property="og:image" content="https://caracore.com.br/publications/livros/images/python_engenharia_cover.png">
+<meta property="og:image" content="https://www.caracore.com.br/publications/livros/images/python_engenharia_cover.png">
 ```
 
 #### tcc.html
 
 ```html
 <!-- META TAGS -->
-<meta property="og:image" content="https://caracore.com.br/publications/livros/images/tcc_cover.png">
+<meta property="og:image" content="https://www.caracore.com.br/publications/livros/images/tcc_cover.png">
 ```
 
 ### secure/

@@ -250,7 +250,7 @@ except jwt.InvalidTokenError as e:
 
 ### Contatos
 - **Email:** suporte@caracore.com.br
-- **GitHub Issues:** https://caracore.com.br/
+- **GitHub Issues:** https://www.caracore.com.br/
 
 ### Informações para Suporte
 Ao reportar um problema, inclua:

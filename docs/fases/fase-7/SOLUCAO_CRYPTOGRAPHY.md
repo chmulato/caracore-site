@@ -17,7 +17,7 @@ A dependência `cryptography` está no arquivo `backend/requirements-docker.txt`
 
 **Via GitHub Actions:**
 
-1. Acesse: https://caracore.com.br/
+1. Acesse: https://www.caracore.com.br/
 2. Selecione o workflow "Deploy Docker Backend to Azure Container Registry"
 3. Clique em **Run workflow** → **Run workflow**
 4. Aguarde o build e deploy completarem (5-10 minutos)
@@ -53,7 +53,7 @@ python-dateutil>=2.8.2    # Manipulação de datas
 
 No GitHub Actions, verifique os logs do build para ver se `cryptography` está sendo instalado:
 
-1. Acesse: https://caracore.com.br/
+1. Acesse: https://www.caracore.com.br/
 2. Abra o último workflow executado
 3. Expanda o step "Build and push Docker image"
 4. Procure por: `Installing cryptography` ou `Collecting cryptography`

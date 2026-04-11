@@ -32,7 +32,7 @@ O sistema utiliza um método simplificado que não requer ACR_USERNAME/ACR_PASSW
 
 ### Localização no GitHub
 
-- **Repositório:** [https://caracore.com.br/]
+- **Repositório:** [https://www.caracore.com.br/]
 - **Caminho:** Settings > Secrets and variables > Actions
 - **Status:** Configurado e funcionando
 

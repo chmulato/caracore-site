@@ -447,7 +447,7 @@ Se tiver dúvidas, sugestões, feedbacks ou quiser compartilhar sua experiência
 - **E-mail:** [suporte@caracore.com.br](mailto:suporte@caracore.com.br)
 - **Whatsapp:** [+55 41 99909-7797](https://wa.me/5541999097797)
 - **Site:** [www.caracore.com.br](https://www.caracore.com.br)
-- **GitHub:** [caracore.com.br/cara-core](https://caracore.com.br/)
+- **GitHub:** [caracore.com.br/cara-core](https://www.caracore.com.br/)
 - **Facebook:** [facebook.com/caracoreinformatica](https://www.facebook.com/caracoreinformatica/)
 - **LinkedIn:** [linkedin.com/company/cara-core](https://www.linkedin.com/company/cara-core)
 

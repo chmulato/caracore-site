@@ -3,7 +3,7 @@ VALIDAÃ‡ÃƒO: LOJAS ALINHADAS COM A MATRIZ
 
 Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinhadas com os portais da matriz (cara-core-site/delivery). Inclui o ramo Garagem (futuros lanÃ§amentos). Data da verificaÃ§Ã£o: 05/02/2026; atualizado com Garagem em 06/02/2026; alinhamento Ãrea 51 (download + licenca-uso + Caraâ†”CrachÃ¡) em 20/02/2026.
 
-Referencias publicas (campanhas e links novos): matriz institucional em https://caracore.com.br/ (portfolio, ecossistema, sala); produto em https://{produto}.caracore.com.br/. A pasta delivery/ no repositorio e legado de compatibilidade de URL ate remocao (docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §1.0a). Este documento continua a descrever o espelho tecnico matriz/loja no Git.
+Referencias publicas (campanhas e links novos): matriz institucional em https://www.caracore.com.br/ (portfolio, ecossistema, sala); produto em https://{produto}.caracore.com.br/. A pasta delivery/ no repositorio e legado de compatibilidade de URL ate remocao (docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §1.0a). Este documento continua a descrever o espelho tecnico matriz/loja no Git.
 
 -------------------------------------------------------------------------------
 

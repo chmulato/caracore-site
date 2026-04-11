@@ -1391,7 +1391,7 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 - **Backend:** [https://caracore-backend.azurewebsites.net]
 - **Dashboard:** [https://www.caracore.com.br/secure/admin-logs.html]
 - **Wiki:** [https://www.caracore.com.br/area51/wiki/index.html]
-- **Repositório:** [https://caracore.com.br/]
+- **Repositório:** [https://www.caracore.com.br/]
 
 ### Documentação:
 
@@ -1410,7 +1410,7 @@ gunicorn --bind=0.0.0.0:$PORT --timeout 600 app:app
 
 ```bash
 # Clonar repositório
-git clone https://caracore.com.br/
+git clone https://www.caracore.com.br/
 cd cara-core
 
 # Mudar para branch de desenvolvimento

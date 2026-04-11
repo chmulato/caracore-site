@@ -404,7 +404,7 @@ Chemical Engineer (UFPR 1991-2000) | Specialization in Java Technology (UTFPR 20
 Enterprise Java | AI/Python automation  
 **Focus:** Legacy system consulting with aligned English and Italian delivery
 
-**Repository:** [GitHub](https://caracore.com.br/)  
+**Repository:** [GitHub](https://www.caracore.com.br/)  
 **Legacy Site:** [caracore.com.br](https://www.caracore.com.br)  
 **Aligned Service Pages:** `aligned/` (EN/IT versions available)  
 **Flag Menu:** Available in all pages (🇧🇷 Brasil, 🇨🇭 Suíça, 🇮🇹 Itália)

@@ -62,10 +62,10 @@ Toda a **informação operacional** que deve existir no site (páginas HTML, ima
 
 | Tipo de informação | Onde editar (caminho no repo) | URL pública canónica | O que **não** fazer |
 |--------------------|-------------------------------|----------------------|---------------------|
-| **Sala de Operações** (plano, campanhas, redes, retro, artefatos operacionais) | `D:\dev\caracore-site\sala\` | `https://caracore.com.br/sala/` | Não duplicar conteúdo real em `delivery/`; URLs legadas `/delivery/sala/` via redirect no hospedeiro (`docs/DELIVERY_RESTRUCTURA.md`). |
+| **Sala de Operações** (plano, campanhas, redes, retro, artefatos operacionais) | `D:\dev\caracore-site\sala\` | `https://www.caracore.com.br/sala/` | Não duplicar conteúdo real em `delivery/`; URLs legadas `/delivery/sala/` via redirect no hospedeiro (`docs/DELIVERY_RESTRUCTURA.md`). |
 | **Produto** (vitrine, wiki, downloads comerciais, manuais de loja) | Repositório `caracore-*-releases` do produto + site gerado | `https://{produto}.caracore.com.br/...` | Não manter páginas completas em `caracore-site/delivery/{produto}/` além do mínimo de **compatibilidade** (redirect). Cada loja preserva **a sua** apresentação (§1.0b); a matriz não a duplica como fonte paralela. |
-| **Matriz institucional** (home, portfólio, ecossistema, secure, publications onde aplicável) | Raiz e pastas próprias em `caracore-site` (ex.: `publications/`) | `https://caracore.com.br/...` | Não copiar vitrines de produto para a matriz como fonte principal. |
-| **Compatibilidade URL antiga (legado → loja)** | *Transitório:* `caracore-site/delivery/` até **eliminação da pasta** (§1.0a); depois só redirects no hospedeiro | `https://caracore.com.br/delivery/...` → **redirect** para lojas / matriz canónica | Estado-alvo: **sem** pasta `delivery/` no repo; `MAPA_ROTAS_*` passa a descrever só regras no edge. |
+| **Matriz institucional** (home, portfólio, ecossistema, secure, publications onde aplicável) | Raiz e pastas próprias em `caracore-site` (ex.: `publications/`) | `https://www.caracore.com.br/...` | Não copiar vitrines de produto para a matriz como fonte principal. |
+| **Compatibilidade URL antiga (legado → loja)** | *Transitório:* `caracore-site/delivery/` até **eliminação da pasta** (§1.0a); depois só redirects no hospedeiro | `https://www.caracore.com.br/delivery/...` → **redirect** para lojas / matriz canónica | Estado-alvo: **sem** pasta `delivery/` no repo; `MAPA_ROTAS_*` passa a descrever só regras no edge. |
 
 **Produtos com subdomínio:** lista e fases de trabalho continuam em `docs/PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md` e `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` — sem duplicar a lista de subdomínios neste ficheiro.
 

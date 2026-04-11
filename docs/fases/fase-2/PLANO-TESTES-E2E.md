@@ -21,7 +21,7 @@
 
 ### Ambiente de Teste
 - [ ] Backend rodando (local: `http://localhost:5051` ou produção: `https://api.caracore.com.br`)
-- [ ] Frontend acessível (`http://localhost:5500` ou `https://caracore.com.br`)
+- [ ] Frontend acessível (`http://localhost:5500` ou `https://www.caracore.com.br`)
 - [ ] Credenciais válidas (Google e Microsoft)
 - [ ] Console do navegador aberto (F12)
 - [ ] Navegadores instalados (Chrome, Firefox)

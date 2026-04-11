@@ -22,7 +22,7 @@
 
 ## 2. Publicação e links
 
-1. Novos CTAs e campanhas devem usar **URLs canónicas** do subdomínio (ex.: `https://pdv.caracore.com.br/`), não `https://caracore.com.br/delivery/pdv/`.
+1. Novos CTAs e campanhas devem usar **URLs canónicas** do subdomínio (ex.: `https://pdv.caracore.com.br/`), não `https://www.caracore.com.br/delivery/pdv/`.
 2. Páginas em `delivery/{produto}/` devem manter `<link rel="canonical">` apontando para o subdomínio (já padronizado nos `index.html` de produto).
 3. Antes de merge, procurar links antigos:
    ```text

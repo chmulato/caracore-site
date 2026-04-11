@@ -779,7 +779,7 @@ Após o deploy:
 - **Web App Docker:** [https://portal.azure.com/#@caracore.com.br/resource/subscriptions/.../caracore-backend-docker]
 - **Container Registry:** [https://portal.azure.com/#@caracore.com.br/resource/subscriptions/.../caracoreregistry]
 - **Resource Group:** rg-caracore
-- **GitHub Actions:** [https://caracore.com.br/]
+- **GitHub Actions:** [https://www.caracore.com.br/]
 
 ### URLs de Produção
 
@@ -819,8 +819,8 @@ Após o deploy:
 
 - **Desenvolvedor:** Carlos H. Mulato
 - **Email:** [seu-email]
-- **Repositório:** https://caracore.com.br/
-- **Issues:** https://caracore.com.br/
+- **Repositório:** https://www.caracore.com.br/
+- **Issues:** https://www.caracore.com.br/
 
 ### Status Pages
 

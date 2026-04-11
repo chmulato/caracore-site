@@ -23,7 +23,7 @@ describe('Validação de Configurações OIDC', () => {
             const validRedirectUris = [
                 'http://localhost:8000/secure/callback.html',
                 'https://www.caracore.com.br/secure/callback.html',
-                'https://caracore.com.br/secure/callback.html'
+                'https://www.caracore.com.br/secure/callback.html'
             ];
 
             for (const uri of validRedirectUris) {
@@ -195,7 +195,7 @@ describe('Validação de Configurações OIDC', () => {
         it('deve validar uso de HTTPS em produção', () => {
             const productionUrls = [
                 'https://www.caracore.com.br',
-                'https://caracore.com.br'
+                'https://www.caracore.com.br'
             ];
 
             for (const url of productionUrls) {
@@ -224,7 +224,7 @@ describe('Validação de Configurações OIDC', () => {
                     allowCredentials: true
                 },
                 production: {
-                    allowedOrigins: ['https://www.caracore.com.br', 'https://caracore.com.br'],
+                    allowedOrigins: ['https://www.caracore.com.br'],
                     allowCredentials: true
                 }
             };

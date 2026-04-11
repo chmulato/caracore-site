@@ -415,7 +415,7 @@ A administração pode acompanhar eventos em tempo real pela página `secure/adm
 1. Clone o repositório:
 
    ```sh
-   git clone https://caracore.com.br/
+   git clone https://www.caracore.com.br/
    ```
 
 2. Abra a pasta no VS Code (ou editor de sua preferência).
@@ -440,8 +440,8 @@ A administração pode acompanhar eventos em tempo real pela página `secure/adm
 - [Facebook](https://www.facebook.com/caracoreinformatica/)
 - [YouTube](https://www.youtube.com/@caracoreinformatica7704)
 - [LinkedIn](https://pt.linkedin.com/company/cara-core)
-- [Ecossistema](https://caracore.com.br/ecosistema.html)
-- [Site](https://caracore.com.br)
+- [Ecossistema](https://www.caracore.com.br/ecosistema.html)
+- [Site](https://www.caracore.com.br)
 
 ---
 
@@ -489,7 +489,7 @@ O projeto implementa OAuth 2.1 + OIDC (OpenID Connect) com Authorization Code Fl
 
 - `http://localhost:8000/secure/callback.html` (desenvolvimento local)
 - `http://127.0.0.1:8000/secure/callback.html` (desenvolvimento local alternativo)
-- `https://caracore.com.br/secure/callback.html` (GitHub Pages preview)
+- `https://www.caracore.com.br/secure/callback.html` (GitHub Pages preview)
 - `https://www.caracore.com.br/secure/callback.html` (produção)
 
 **Backend (quando em uso):**
@@ -1021,7 +1021,7 @@ Esse erro indica que o callback retornou para um provedor diferente do usado no 
 4. Verifique **Authorized redirect URIs**:
    - `http://localhost:8000/secure/callback.html`
    - `http://127.0.0.1:8000/secure/callback.html`
-   - `https://caracore.com.br/secure/callback.html`
+   - `https://www.caracore.com.br/secure/callback.html`
    - `https://www.caracore.com.br/secure/callback.html`
 5. Salve e teste novamente
 
@@ -1034,7 +1034,7 @@ Esse erro indica que o callback retornou para um provedor diferente do usado no 
 3. Em **Authentication > Platform configurations > Web**, verifique as Redirect URIs:
    - `http://localhost:8000/secure/callback.html`
    - `http://127.0.0.1:8000/secure/callback.html`
-   - `https://caracore.com.br/secure/callback.html`
+   - `https://www.caracore.com.br/secure/callback.html`
    - `https://www.caracore.com.br/secure/callback.html`
 4. Salve e repita o login
 

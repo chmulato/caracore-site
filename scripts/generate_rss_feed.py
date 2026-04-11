@@ -290,13 +290,15 @@ def build_rss(channel: Dict[str, str], items: List[Dict], base_url: str, as_of_d
 
     lines: List[str] = []
     lines.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>")
-    lines.append("<rss version=\"2.0\">")
+    lines.append("<rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">")
     lines.append("  <channel>")
     lines.append(f"    <title><![CDATA[{channel['title']}]]></title>")
     lines.append(f"    <link>{channel['link']}</link>")
     lines.append(f"    <description><![CDATA[{channel['description']}]]></description>")
     lines.append(f"    <language>{channel.get('language', 'pt-BR')}</language>")
     lines.append(f"    <lastBuildDate>{last_build_str}</lastBuildDate>")
+    if channel.get("self_link"):
+        lines.append(f"    <atom:link href=\"{channel['self_link']}\" rel=\"self\" type=\"application/rss+xml\" />")
     lines.append(f"    <generator>{channel.get('generator', 'Cara Core RSS generator')}</generator>")
     lines.append("")
 
@@ -331,22 +333,27 @@ def build_rss(channel: Dict[str, str], items: List[Dict], base_url: str, as_of_d
 
 def generate_mode_retro(root: Path, today: dt.datetime) -> None:
     html_path = root / "sala" / "redes" / "retro" / "articles.html"
+    fallback_html_path = root / "sala" / "redes" / "retro" / "index.html"
     output_path = root / "sala" / "redes" / "retro" / "feed.xml"
 
     text = html_path.read_text(encoding="utf-8")
+    if "article-item" not in text and fallback_html_path.exists():
+        text = fallback_html_path.read_text(encoding="utf-8")
+
     items = parse_retro_articles(text)
 
     items = filter_items_for_feed(items, today)
 
     channel = {
         "title": "Artigos Retrô — Cara Core Informática",
-        "link": "https://caracore.com.br/sala/redes/retro/articles.html",
+        "link": "https://www.caracore.com.br/sala/redes/retro/articles.html",
+        "self_link": "https://www.caracore.com.br/sala/redes/retro/feed.xml",
         "description": "Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.",
         "language": "pt-BR",
         "generator": "Cara Core RSS generator",
     }
 
-    rss = build_rss(channel, items, base_url="https://caracore.com.br/sala/redes/retro/", as_of_date=today)
+    rss = build_rss(channel, items, base_url="https://www.caracore.com.br/sala/redes/retro/", as_of_date=today)
     output_path.write_text(rss, encoding="utf-8")
 
 
@@ -360,14 +367,15 @@ def generate_mode_personal(root: Path, today: dt.datetime) -> None:
     items = filter_items_for_feed(items, today)
 
     channel = {
-        "title": "Canal Tecnico Pessoal",
-        "link": "https://caracore.com.br/personal/",
+        "title": "Christian Mulato Dev Blog",
+        "link": "https://personal.caracore.com.br/",
+        "self_link": "https://personal.caracore.com.br/feed.xml",
         "description": "Artigos técnicos sobre desenvolvimento Java, arquitetura de software e tecnologia.",
         "language": "pt-BR",
         "generator": "Cara Core RSS generator",
     }
 
-    rss = build_rss(channel, items, base_url="https://caracore.com.br/personal/", as_of_date=today)
+    rss = build_rss(channel, items, base_url="https://personal.caracore.com.br/", as_of_date=today)
     output_path.write_text(rss, encoding="utf-8")
 
 

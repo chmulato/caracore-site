@@ -62,7 +62,7 @@ alwaysApply: true
 
 ### Retrô LinkedIn (`sala/redes/retro/`)
 - Artigos **H1 2026** com `YYYY_MM_DD` coerente com o índice e o `feed.xml`; removidos duplicados antigos `2026_03_*` dos artigos 75–78 (usar `2026_04_07` … `2026_04_28`).
-- **URLs canónicas** dos HTML: `https://caracore.com.br/sala/redes/retro/articles/<ficheiro>`.
+- **URLs canónicas** dos HTML: `https://www.caracore.com.br/sala/redes/retro/articles/<ficheiro>`.
 - Imagens: `article_NN_01.png` — ver `sala/redes/retro/articles/assets/img/README.txt`.
 
 ### Blog pessoal (`personal/`)

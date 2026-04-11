@@ -3,19 +3,19 @@
 
   <!-- Páginas principais -->
   <url>
-    <loc>https://caracore.com.br/</loc>
+    <loc>https://www.caracore.com.br/</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/ecosistema.html</loc>
+    <loc>https://www.caracore.com.br/ecosistema.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/portfolio.html</loc>
+    <loc>https://www.caracore.com.br/portfolio.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -23,62 +23,62 @@
 
   <!-- Política e termos -->
   <url>
-    <loc>https://caracore.com.br/politica/politica-privacidade.html</loc>
+    <loc>https://www.caracore.com.br/politica/politica-privacidade.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/politica/termos-servico.html</loc>
+    <loc>https://www.caracore.com.br/politica/termos-servico.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
 
   <!-- Publicações -->
   <url>
-    <loc>https://caracore.com.br/publications/index.html</loc>
+    <loc>https://www.caracore.com.br/publications/index.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/publications/articles.html</loc>
+    <loc>https://www.caracore.com.br/publications/articles.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/publications/livros/index.html</loc>
+    <loc>https://www.caracore.com.br/publications/livros/index.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/publications/livros/apostila_ms365.html</loc>
+    <loc>https://www.caracore.com.br/publications/livros/apostila_ms365.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/publications/livros/python_engenharia.html</loc>
+    <loc>https://www.caracore.com.br/publications/livros/python_engenharia.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/publications/livros/python_escritorios.html</loc>
+    <loc>https://www.caracore.com.br/publications/livros/python_escritorios.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/publications/livros/tcc.html</loc>
+    <loc>https://www.caracore.com.br/publications/livros/tcc.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/publications/livros/guia_de_servicos.html</loc>
+    <loc>https://www.caracore.com.br/publications/livros/guia_de_servicos.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://caracore.com.br/publications/livros/guia_de_servicos_caracore-pdv.html</loc>
+    <loc>https://www.caracore.com.br/publications/livros/guia_de_servicos_caracore-pdv.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -128,7 +128,7 @@
 
   <!-- Artigos Retrô Cara Core -->
   <url>
-    <loc>https://caracore.com.br/sala/redes/retro/articles.html</loc>
+    <loc>https://www.caracore.com.br/sala/redes/retro/articles.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

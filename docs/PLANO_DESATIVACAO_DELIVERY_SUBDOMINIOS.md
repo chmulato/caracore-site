@@ -35,7 +35,7 @@ Fora de escopo inicial:
 Detalhe e tabela de “onde vive cada coisa”: **`docs/FONTES_CANONICAS_MATRIZ_LOJAS.md`**.
 
 Resumo:
-- **Sala de Operações:** canónica em `sala/` na raiz do `caracore-site` → `https://caracore.com.br/sala/`; `delivery/sala/` não existe no repo (redirects no hospedeiro).
+- **Sala de Operações:** canónica em `sala/` na raiz do `caracore-site` → `https://www.caracore.com.br/sala/`; `delivery/sala/` não existe no repo (redirects no hospedeiro).
 - **Fonte única de produto:** subdomínio + repositório `*-releases` correspondente.
 - **Matriz:** institucional, portfólio e roteamento.
 - **Delivery:** camada de compatibilidade (redirects), não vitrine nem acervo editorial.

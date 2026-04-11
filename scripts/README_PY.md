@@ -217,7 +217,7 @@ Resumo:
 - Converte datas (DD/MM ou DD/MM/AAAA) para `pubDate` em formato RFC 2822.
 - Ordena os itens do feed por data, do mais recente para o mais antigo.
 - Atualiza `lastBuildDate` com base no artigo mais recente.
-- Gera links absolutos usando as canonicals públicas (`https://caracore.com.br/...`).
+- Gera links absolutos usando as canonicals públicas (`https://www.caracore.com.br/...`).
 
 **Uso:**
 

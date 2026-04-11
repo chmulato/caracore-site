@@ -141,7 +141,7 @@ O documento `delivery/EVOLUTION_STATUS_APLICADO_LOJAS.md` lista 8 lojas com o co
 
 - `delivery/pdv/consultoria.html` — rodapé: `http://www.caracore.com.br` (HTTP, não HTTPS, sem slug `/`)
 
-**Pendência:** Corrigir para `https://caracore.com.br` no rodapé de consultoria.html do PDV.
+**Pendência:** Corrigir para `https://www.caracore.com.br` no rodapé de consultoria.html do PDV.
 
 ---
 

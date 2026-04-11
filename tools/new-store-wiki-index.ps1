@@ -24,7 +24,7 @@ $tpl = @'
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wiki — __TITLE__ | Loja oficial Cara Core</title>
-    <meta name="description" content="Wiki do produto __TITLE__ nesta loja (subdomínio). Documentação e links permanecem no ambiente da loja; ecossistema completo em caracore.com.br/wiki.">
+    <meta name="description" content="Wiki do produto __TITLE__ nesta loja (subdomínio). Documentação e links permanecem no ambiente da loja; ecossistema completo em wiki.caracore.com.br.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/css/wiki.css">
@@ -44,7 +44,7 @@ $tpl = @'
                     <li class="nav-item"><a class="nav-link active" href="index.html" aria-current="page"><i class="bi bi-journal-text"></i> Wiki (início)</a></li>
                     <li class="nav-item"><a class="nav-link" href="__EXTRA_HREF__"><i class="bi bi-box-arrow-down"></i> __EXTRA_LABEL__</a></li>
                     <li class="nav-item"><a class="nav-link" href="../canal-feedback.html"><i class="bi bi-chat-dots"></i> Canal de feedback</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.caracore.com.br/wiki/" target="_blank" rel="noopener"><i class="bi bi-globe2"></i> Wiki Cara Core (completa)</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://wiki.caracore.com.br/index.html" target="_blank" rel="noopener"><i class="bi bi-globe2"></i> Wiki Cara Core (completa)</a></li>
                 </ul>
             </div>
         </div>
@@ -65,7 +65,7 @@ $tpl = @'
             <p class="lead text-muted">Documentação deste produto no site da <strong>loja oficial</strong> (subdomínio). A navegação desta wiki não substitui o site principal: use o link aberto em nova aba para trilhas, glossário e visão geral do ecossistema.</p>
             <p>__DESC__</p>
             <div class="alert alert-info mt-3" role="note">
-                <i class="bi bi-info-circle"></i> A <strong>wiki completa</strong> da Cara Core (trilhas Cliente / Estagiário / Sócio, história e referências) está em <a href="https://www.caracore.com.br/wiki/" target="_blank" rel="noopener">www.caracore.com.br/wiki</a>.
+                <i class="bi bi-info-circle"></i> A <strong>wiki completa</strong> da Cara Core (trilhas Cliente / Estagiário / Sócio, história e referências) está em <a href="https://wiki.caracore.com.br/index.html" target="_blank" rel="noopener">wiki.caracore.com.br</a>.
             </div>
             <div class="d-flex flex-wrap gap-2 mt-4">
                 <a class="btn btn-primary" href="__PROJ__"><i class="bi bi-file-earmark-text"></i> Documentação do produto</a>

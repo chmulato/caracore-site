@@ -208,8 +208,8 @@ Resumo:
 
 **Alvos atuais:**
 
-- `sala/redes/retro/articles.html` → `sala/redes/retro/feed.xml`
-- `personal/index.html` → `personal/feed.xml`
+- `D:\dev\caracore-retro\docs\articles.html` → `D:\dev\caracore-retro\docs\feed.xml`
+- `D:\dev\caracore-personal\docs\index.html` → `D:\dev\caracore-personal\docs\feed.xml`
 
 **Funcionalidades:**
 
@@ -217,17 +217,17 @@ Resumo:
 - Converte datas (DD/MM ou DD/MM/AAAA) para `pubDate` em formato RFC 2822.
 - Ordena os itens do feed por data, do mais recente para o mais antigo.
 - Atualiza `lastBuildDate` com base no artigo mais recente.
-- Gera links absolutos usando as canonicals públicas (`https://www.caracore.com.br/...`).
+- Gera links absolutos usando as canonicals públicas atuais (`https://retro.caracore.com.br/` e `https://personal.caracore.com.br/`).
 
 **Uso:**
 
 ```bash
 cd D:\dev\caracore-site
 
-# Apenas artigos retrô (Sala de Operações → Redes → Retrô)
+# Apenas artigos retrô (repositório caracore-retro)
 python scripts/generate_rss_feed.py --mode retro
 
-# Apenas canal tecnico pessoal
+# Apenas canal tecnico pessoal (repositório caracore-personal)
 python scripts/generate_rss_feed.py --mode personal
 
 # Gerar/atualizar os dois feeds de uma vez

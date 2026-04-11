@@ -49,7 +49,7 @@ $navNew = Normalize-Lf @'
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="https://www.caracore.com.br/wiki/" target="_blank" rel="noopener">
+                        <a class="nav-link" href="https://wiki.caracore.com.br/index.html" target="_blank" rel="noopener">
                             <i class="bi bi-globe2"></i> Wiki Cara Core (completa)
                         </a>
                     </li>
@@ -93,7 +93,7 @@ foreach ($s in $stores) {
                         <li><a href="$($s.Proj)" class="active"><i class="bi bi-file-earmark-text"></i> Documentação do produto</a></li>
                         <li><a href="$($s.Extra.Href)"><i class="bi bi-box-arrow-down"></i> $($s.Extra.Label)</a></li>
                         <li><a href="../canal-feedback.html"><i class="bi bi-chat-dots"></i> Canal de feedback</a></li>
-                        <li><a href="https://www.caracore.com.br/wiki/" target="_blank" rel="noopener"><i class="bi bi-globe2"></i> Wiki completa — Cara Core</a></li>
+                        <li><a href="https://wiki.caracore.com.br/index.html" target="_blank" rel="noopener"><i class="bi bi-globe2"></i> Wiki completa — Cara Core</a></li>
                     </ul>
 "@
 

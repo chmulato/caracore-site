@@ -332,9 +332,12 @@ def build_rss(channel: Dict[str, str], items: List[Dict], base_url: str, as_of_d
 
 
 def generate_mode_retro(root: Path, today: dt.datetime) -> None:
-    html_path = root / "sala" / "redes" / "retro" / "articles.html"
-    fallback_html_path = root / "sala" / "redes" / "retro" / "index.html"
-    output_path = root / "sala" / "redes" / "retro" / "feed.xml"
+    workspace_root = root.parent
+    retro_root = workspace_root / "caracore-retro" / "docs"
+
+    html_path = retro_root / "articles.html"
+    fallback_html_path = retro_root / "index.html"
+    output_path = retro_root / "feed.xml"
 
     text = html_path.read_text(encoding="utf-8")
     if "article-item" not in text and fallback_html_path.exists():
@@ -346,20 +349,23 @@ def generate_mode_retro(root: Path, today: dt.datetime) -> None:
 
     channel = {
         "title": "Artigos Retrô — Cara Core Informática",
-        "link": "https://www.caracore.com.br/sala/redes/retro/articles.html",
-        "self_link": "https://www.caracore.com.br/sala/redes/retro/feed.xml",
+        "link": "https://retro.caracore.com.br/",
+        "self_link": "https://retro.caracore.com.br/feed.xml",
         "description": "Coleção de artigos publicados pela Cara Core nas redes, organizada por ano.",
         "language": "pt-BR",
         "generator": "Cara Core RSS generator",
     }
 
-    rss = build_rss(channel, items, base_url="https://www.caracore.com.br/sala/redes/retro/", as_of_date=today)
+    rss = build_rss(channel, items, base_url="https://retro.caracore.com.br/", as_of_date=today)
     output_path.write_text(rss, encoding="utf-8")
 
 
 def generate_mode_personal(root: Path, today: dt.datetime) -> None:
-    html_path = root / "personal" / "index.html"
-    output_path = root / "personal" / "feed.xml"
+    workspace_root = root.parent
+    personal_root = workspace_root / "caracore-personal" / "docs"
+
+    html_path = personal_root / "index.html"
+    output_path = personal_root / "feed.xml"
 
     text = html_path.read_text(encoding="utf-8")
     items = parse_personal_articles(text)
@@ -385,7 +391,7 @@ def main(argv: Optional[List[str]] = None) -> None:
         "--mode",
         choices=["retro", "personal", "both"],
         default="retro",
-        help="Qual feed gerar: 'retro' (sala/redes/retro), 'personal' ou 'both'",
+        help="Qual feed gerar: 'retro' (caracore-retro/docs), 'personal' (caracore-personal/docs) ou 'both'",
     )
     parser.add_argument(
         "--as-of-date",
@@ -395,7 +401,7 @@ def main(argv: Optional[List[str]] = None) -> None:
     args = parser.parse_args(argv)
     today = normalize_as_of_date(args.as_of_date)
 
-    # Raiz do repositório (pasta acima de scripts/)
+    # Raiz do repositório caracore-site (pasta acima de scripts/)
     root = Path(__file__).resolve().parents[1]
 
     if args.mode in ("retro", "both"):

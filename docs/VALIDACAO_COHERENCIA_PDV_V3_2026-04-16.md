@@ -92,3 +92,10 @@ Em cada nova release do PDV, repetir este checklist em 3 pontos:
 1. Wiki institucional (trilha-cliente, index, tecnologias).
 2. Wiki da loja do PDV (index + projeto-pdv).
 3. Site matriz (portfolio, index, ecossistema, guia de servicos).
+
+## Resumo curto para changelog
+
+- Validacao de coerencia PDV V3 concluida com status APROVADO entre wiki institucional, wiki da loja e site matriz.
+- Narrativa padronizada nos 3 canais: foco em pequenos e medios negocios, direcao para PIX Split 2027, transparencia por etapa e persona de gestor(a) de loja PME em crescimento.
+- Navegacao cruzada de Transparencia V3 + Persona confirmada e ativa nos pontos principais.
+- Status de produto no ecossistema alinhado para Disponivel (Release 2.0.0 - 09 Abr 2026), sem ocorrencias de pre-lancamento desatualizado no escopo validado.

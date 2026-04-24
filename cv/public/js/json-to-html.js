@@ -2,13 +2,15 @@
     'use strict';
 
     const titleMap = {
-        experiencia: 'Experiencia',
+        informacoesPessoais: 'Informações pessoais',
+        siteDaEmpresa: 'Site da empresa',
+        experiencia: 'Experiência',
         experience: 'Experience',
         esperienza: 'Esperienza',
-        formacaoAcademica: 'Formacao academica',
+        formacaoAcademica: 'Formação acadêmica',
         education: 'Education',
         formazioneAccademica: 'Formazione accademica',
-        certificacoes: 'Certificacoes',
+        certificacoes: 'Certificações',
         certifications: 'Certifications',
         certificazioni: 'Certificazioni',
         idiomas: 'Idiomas',
@@ -17,9 +19,21 @@
         resumo: 'Resumo',
         summary: 'Summary',
         riepilogo: 'Riepilogo',
-        principaisCompetencias: 'Principais competencias',
+        principaisCompetencias: 'Principais competências',
         keySkills: 'Key skills',
-        competenzePrincipali: 'Competenze principali'
+        competenzePrincipali: 'Competenze principali',
+        honrasEPremios: 'Honras e prêmios',
+        proficiencia: 'Proficiência',
+        posicao: 'Posição',
+        posicoes: 'Posições',
+        duracao: 'Duração',
+        localizacao: 'Localização',
+        descricao: 'Descrição',
+        tecnologias: 'Tecnologias',
+        projetos: 'Projetos',
+        instituicao: 'Instituição',
+        titulo: 'Título',
+        periodo: 'Período'
     };
 
     const ignoreKeys = new Set(['contato', 'contact']);

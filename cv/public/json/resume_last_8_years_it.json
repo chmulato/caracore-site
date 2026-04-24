@@ -1,8 +1,8 @@
 {
     "informazioniPersonali":  {
-                                  "nome":  "Avatar Istituzionale Cara Core",
-                                  "titolo":  "Specialista in Modernizzazione Enterprise ed Eccellenza Operativa | Java, Spring, API e Automazione",
-                                  "posizione":  "Brasile | Remoto e on-site su richiesta",
+                                  "nome":  "Avatar istituzionale Cara Core",
+                                  "titolo":  "Specialista in modernizzazione enterprise ed eccellenza operativa | Java, Spring, API e automazione",
+                                  "posizione":  "Brasile | remoto e on-site su richiesta",
                                   "contatto":  {
                                                    "cellulare":  "Non divulgato (LGPD)",
                                                    "email":  "suporte@caracore.com.br",
@@ -11,7 +11,7 @@
                                                    "portfolio":  "https://www.caracore.com.br"
                                                }
                               },
-    "riepilogo":  "Avatar professionale orientato ai risultati di business, con focus su modernizzazione di sistemi legacy, automazione di processi critici, integrazione enterprise e riduzione del rischio operativo. Esperienza in contesti regolati con architettura pulita, API aziendali, governance tecnica e rilascio continuo di valore.",
+    "riepilogo":  "Avatar professionale orientato ai risultati di business, con focus sulla modernizzazione di sistemi legacy, sull'automazione di processi critici, sull'integrazione enterprise e sulla riduzione del rischio operativo. Esperienza in contesti regolati, con architettura pulita, API aziendali, governance tecnica e rilascio continuo di valore.",
     "competenzePrincipali":  [
                                  "Modernizzazione di sistemi enterprise",
                                  "Efficienza operativa e automazione",
@@ -20,23 +20,23 @@
     "lingue":  [
                    {
                        "lingua":  "Italiano",
-                       "competenza":  "Madrelingua o Bilingue"
+                       "competenza":  "Madrelingua o bilingue"
                    },
                    {
                        "lingua":  "Portoghese",
-                       "competenza":  "Madrelingua o Bilingue"
+                       "competenza":  "Madrelingua o bilingue"
                    },
                    {
                        "lingua":  "Inglese",
-                       "competenza":  "Livello Professionale Completo"
+                       "competenza":  "Competenza professionale completa"
                    }
                ],
     "certificazioni":  [
                            "Angular 14: Evoluzione di un\u0027applicazione SPA",
-                           "Workshop Gratuito Fullstack Angular e Spring",
-                           "Devops Cloud Week",
+                           "Workshop gratuito Fullstack Angular e Spring",
+                           "DevOps Cloud Week",
                            "Hello Bot: Introduzione all\u0027RPA",
-                           "RPA: Automazione dei processi con strumenti NO/LOW Code"
+                           "RPA: automazione dei processi con strumenti no-code/low-code"
                        ],
     "onorificenzePremi":  [
                               "Java Software Support Engineer"
@@ -49,18 +49,18 @@
                            "azienda":  "Compass UOL",
                            "posizione":  "Sviluppatore Java Senior",
                            "durata":  "settembre 2025 - presente · 6 mesi",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "- Ha lavorato su un progetto back-end con Jakarta EE, Spring Boot, SOAP, REST.\n- Consegne agili, automazione di processi critici e integrazione di sistemi aziendali.\n- (Lavoro Remoto - Outsourcing - Caixa Seguradora).",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "- Attività su un progetto back-end con Jakarta EE, Spring Boot, SOAP e REST.\n- Consegne agili, automazione di processi critici e integrazione di sistemi aziendali.\n- (Lavoro remoto - outsourcing - Caixa Seguradora).",
                            "tecnologie":  [
                                               "Jakarta EE"
                                           ]
                        },
                        {
                            "azienda":  "Cara Core Informática",
-                           "posizione":  "Consulenza e Ingegneria dei Sistemi (nucleo istituzionale)",
-                           "durata":  "gennaio 2016 - Presente (9 anni 8 mesi)",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Attività istituzionale in consulenza e ingegneria del software, responsabile di sviluppo, automazione e gestione di soluzioni tecnologiche per aziende e uffici. Portfolio pubblico focalizzato su qualità tecnica, validazione, sicurezza, supporto remoto e integrazione tecnologica. Operatività aziendale in modello PJ/CNPJ con governance e delivery continuo.",
+                           "posizione":  "Consulenza e ingegneria dei sistemi (nucleo istituzionale)",
+                           "durata":  "gennaio 2016 - presente (9 anni 8 mesi)",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "Attività istituzionale di consulenza e ingegneria del software, con responsabilità nello sviluppo, nell'automazione e nella gestione di soluzioni tecnologiche per aziende e uffici. Portfolio pubblico focalizzato su qualità tecnica, validazione, sicurezza, supporto remoto e integrazione tecnologica. Operatività aziendale in modello PJ/CNPJ con governance e delivery continuo.",
                            "progetti":  [
                                             {
                                                 "nome":  "Delivery Control",
@@ -84,8 +84,8 @@
                            "azienda":  "Develcode Tecnologia em Sistemas",
                            "posizione":  "Sviluppatore Java Senior",
                            "durata":  "marzo 2023 - luglio 2025 (2 anni 5 mesi)",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Sono stato consulente nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - RD Saúde).",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "Attività di consulenza nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro remoto - outsourcing - RD Saúde).",
                            "tecnologie":  [
                                               "Java EE",
                                               "EJB",
@@ -93,10 +93,10 @@
                                               "Hibernate",
                                               "Entity",
                                               "Spring Boot",
-                                              "Rest API",
+                                              "API REST",
                                               "GraphQL",
                                               "OpenAPI",
-                                              "Rabbit MQ",
+                                              "RabbitMQ",
                                               "MongoDB",
                                               "Docker",
                                               "database Oracle",
@@ -109,8 +109,8 @@
                            "azienda":  "RPerformance Group",
                            "posizione":  "Sviluppatore Java Senior",
                            "durata":  "settembre 2022 - marzo 2023 (7 mesi)",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Sono stato consulente nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - RD Saúde).",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "Attività di consulenza nello sviluppo di applicazioni back-end Java EE e altre tecnologie. (Lavoro remoto - outsourcing - RD Saúde).",
                            "tecnologie":  [
                                               "Java EE",
                                               "EJB",
@@ -118,8 +118,8 @@
                                               "Hibernate",
                                               "Entity",
                                               "Spring Boot",
-                                              "Rest API",
-                                              "Rabbit MQ",
+                                              "API REST",
+                                              "RabbitMQ",
                                               "Docker",
                                               "database Oracle",
                                               "Git",
@@ -131,8 +131,8 @@
                            "azienda":  "EY",
                            "posizione":  "Senior Java Software Engineer",
                            "durata":  "ottobre 2021 - agosto 2022 (11 mesi)",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Sono stato consulente nello sviluppo di applicazioni back-end, front-end, Java EE e altre tecnologie. (Lavoro Remoto - Outsourcing - Banco do Brasil Bradesco Saúde).",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "Attività di consulenza nello sviluppo di applicazioni back-end, front-end, Java EE e altre tecnologie. (Lavoro remoto - outsourcing - Banco do Brasil e Bradesco Saúde).",
                            "tecnologie":  [
                                               "IDE Eclipse",
                                               "Maven",
@@ -148,8 +148,8 @@
                            "azienda":  "Atos",
                            "posizione":  "Senior Java Software Engineer",
                            "durata":  "ottobre 2020 - settembre 2021 (1 anno)",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Sono stato sviluppatore Java EE per il supporto di applicazioni nell\u0027intranet del cliente. (Lavoro Remoto - Outsourcing - Gruppo Volkswagen). (*) Nei primi tre mesi sono stato esternalizzato da PSM Company.",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "Attività come sviluppatore Java EE per il supporto di applicazioni nell\u0027intranet del cliente. (Lavoro remoto - outsourcing - Gruppo Volkswagen). (*) Nei primi tre mesi il contratto è stato intermediato da PSM Company.",
                            "tecnologie":  [
                                               "IDE IntelliJ",
                                               "Maven",
@@ -164,8 +164,8 @@
                            "azienda":  "Sigma Dataserv Informática S/A",
                            "posizione":  "Analista Programmatore Java",
                            "durata":  "maggio 2020 - settembre 2020 (5 mesi)",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Supporto e sviluppo in tecnologie Java e Web. (Lavoro Remoto Outsourcing - Funasa)",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "Supporto e sviluppo con tecnologie Java e web. (Lavoro remoto - outsourcing - Funasa)",
                            "tecnologie":  [
                                               "SQL Oracle Developer",
                                               "database Oracle",
@@ -179,8 +179,8 @@
                            "azienda":  "WASYS",
                            "posizione":  "Analista Programmatore Java",
                            "durata":  "dicembre 2019 - aprile 2020 (5 mesi)",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Sviluppatore di sistemi Java utilizzando Java EE, Framework Spring e altre librerie standard.",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "Sviluppatore di sistemi Java con Java EE, framework Spring e altre librerie standard.",
                            "tecnologie":  [
                                               "IDE IntelliJ",
                                               "Maven",
@@ -199,8 +199,8 @@
                                              {
                                                  "posizione":  "Specialista in automazione dei processi (RPA)",
                                                  "durata":  "gennaio 2019 - novembre 2019 (11 mesi)",
-                                                 "localita":  "Brasile | Remoto e on-site su richiesta",
-                                                 "descrizione":  "Sono stato responsabile dell\u0027analisi e dello sviluppo nell\u0027automazione d\u0027ufficio in codice Visual Basic for Application (VBA). Ho sviluppato codice nativo per auditare automaticamente le tassazioni fiscali delle fatture. Ho sviluppato in codice nativo l\u0027emissione di report di produttività per l\u0027inserimento di fatture all\u0027interno di Microsoft Office.",
+                                                 "localita":  "Brasile | remoto e on-site su richiesta",
+                                                 "descrizione":  "Responsabile dell\u0027analisi e dello sviluppo di automazioni d\u0027ufficio in Visual Basic for Applications (VBA). Ha sviluppato codice nativo per verificare automaticamente le imposte fiscali delle fatture e per generare report di produttività relativi all\u0027inserimento delle fatture in Microsoft Office.",
                                                  "tecnologie":  [
                                                                     "Power BI",
                                                                     "Selenium WebDriver",
@@ -211,8 +211,8 @@
                                              {
                                                  "posizione":  "Analista Sviluppatore Java",
                                                  "durata":  "marzo 2018 - dicembre 2018 (10 mesi)",
-                                                 "localita":  "Brasile | Remoto e on-site su richiesta",
-                                                 "descrizione":  "Ho sviluppato servizi (back-end) web utilizzando tecnologia JavaEE e Spring per un operatore mondiale di carte di credito, l\u0027azienda Mastercard.",
+                                                 "localita":  "Brasile | remoto e on-site su richiesta",
+                                                 "descrizione":  "Sviluppo di servizi web back-end con tecnologia Java EE e Spring per Mastercard, operatore globale nel settore delle carte di credito.",
                                                  "tecnologie":  [
                                                                     "Framework Agile/Scrum",
                                                                     "IDE Eclipse",
@@ -229,36 +229,36 @@
                        },
                        {
                            "azienda":  "UniSistemas Tecnologia em Finanças",
-                           "posizione":  "Sviluppatore Java Web",
+                           "posizione":  "Sviluppatore Java web",
                            "durata":  "maggio 2017 - gennaio 2018 (9 mesi)",
-                           "localita":  "Brasile | Remoto e on-site su richiesta",
-                           "descrizione":  "Sviluppo, supporto, correzioni e implementazione di nuove funzionalità di applicazioni web. Nota: rapporto di lavoro svolto in parallelo all'operazione dell'azienda propria Cara Core Informática, come dichiarato.",
+                           "localita":  "Brasile | remoto e on-site su richiesta",
+                           "descrizione":  "Sviluppo, supporto, correzioni e implementazione di nuove funzionalità per applicazioni web. Nota: rapporto di lavoro svolto in parallelo all'attività della propria azienda, Cara Core Informática, come dichiarato.",
                            "tecnologie":  [
                                               "Java EE",
                                               "Spring",
                                               "Web Service SOAP",
                                               "REST",
                                               "Jasper Reports",
-                                              "Bollettini Bancari (JRimum)",
+                                              "Bollettini bancari (JRimum)",
                                               "AngularJS",
                                               "Bootstrap",
                                               "Database Oracle",
                                               "Firebird",
-                                              "server di applicazione Tomcat"
+                                              "server applicativo Tomcat"
                                           ]
                        }
                    ],
     "formazioneAccademica":  [
                                  {
                                      "istituzione":  "Universidade Federal do Paraná",
-                                     "titolo":  "Ingegnere Chimico",
+                                     "titolo":  "Ingegnere chimico",
                                      "campo":  "Ingegneria",
                                      "periodo":  "1991 - 2000"
                                  },
                                  {
                                      "istituzione":  "Universidade Tecnológica Federal do Paraná",
                                      "titolo":  "Specialista in Tecnologia Java",
-                                     "campo":  "Sviluppo di Sistemi",
+                                     "campo":  "Sviluppo di sistemi",
                                      "periodo":  "2007 - 2008"
                                  }
                              ]

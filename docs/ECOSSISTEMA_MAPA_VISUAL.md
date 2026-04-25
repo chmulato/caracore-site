@@ -10,7 +10,7 @@ Recomendações de **mapeamento visual** para o site da matriz representar o eco
 
 - **O que é:** Uma única figura com 2–3 faixas horizontais (camadas):
   - **Camada 1 — Site matriz:** caracore.com.br (portfólio, delivery, wiki).
-  - **Camada 2 — Produtos:** PDV, Minerador 4.0, Reino OIDC, Circuito Python, Hub, Área 51, Seed.
+  - **Camada 2 — Produtos:** PDV, Minerador 4.0, Reino OIDC, Circuito Ferradura, Hub, Área 51, Seed.
   - **Camada 3 — Lojas online:** cada vitrine/releases (GitHub Pages).
 - **Conexões:** Linhas ou setas ligando cada produto à sua pasta **delivery/** (matriz) e à sua **loja** (-releases).
 - **Vantagem:** Fica imediato “onde está o quê” e “matriz ↔ loja” por produto. Alinha com ECOSYSTEM_LOJAS.txt e ECOSYSTEM_CARA_CORE.txt.

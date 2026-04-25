@@ -1,7 +1,7 @@
 VALIDAÃ‡ÃƒO: LOJAS ALINHADAS COM A MATRIZ
 ========================================
 
-Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinhadas com os portais da matriz (cara-core-site/delivery). Inclui o ramo Garagem (futuros lanÃ§amentos). Data da verificaÃ§Ã£o: 05/02/2026; atualizado com Garagem em 06/02/2026; alinhamento Ãrea 51 (download + licenca-uso + Caraâ†”CrachÃ¡) em 20/02/2026.
+Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinhadas com os portais da matriz (cara-core-site/delivery). Inclui lojas, oficinas e ramo Garagem. Data da verificaÃ§Ã£o: 05/02/2026; atualizado com Garagem em 06/02/2026; alinhamento Ãrea 51 em 20/02/2026; memoria de lojas/oficinas atualizada em 25/04/2026.
 
 Referencias publicas (campanhas e links novos): matriz institucional em https://www.caracore.com.br/ (portfolio, ecossistema, sala); produto em https://{produto}.caracore.com.br/. A pasta delivery/ no repositorio e legado de compatibilidade de URL ate remocao (docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §1.0a). Este documento continua a descrever o espelho tecnico matriz/loja no Git.
 
@@ -47,22 +47,23 @@ Referencias publicas (campanhas e links novos): matriz institucional em https://
 
 -------------------------------------------------------------------------------
 
-3. CIRCUITO PYTHON
+3. CIRCUITO FERRADURA
 
   Matriz: cara-core-site/delivery/circuito/
-  Loja:   circuito-python-releases/docs/ (circuito.caracore.com.br)
+  Oficina: caracore-circuito
+  Loja:   caracore-circuito-releases/docs/ (circuito.caracore.com.br)
 
   Estrutura
     Matriz: index, canal-feedback, licenca-uso, portal-escolas (download via card no index para releases/latest)
     Loja:   index, download, canal-feedback, licenca-uso, portal-escolas
-  Status:  OK. A loja inclui download.html (link para EXE em releases); matriz prioriza card no index. Conforme MIRROR: prioridade baixar EXE na filial.
+  Status:  OK. A loja inclui download.html, curso web, portal escolas, licenca e canal de feedback. CSS centralizado em docs/assets/css e blocos Python formatados para leitura profissional.
 
   Mensagem
-    Matriz e loja: FREE (LicenÃ§a MIT) para pessoas fÃ­sicas; R$ 5,00/aluno matriculado/mÃªs para instituiÃ§Ãµes; "licenÃ§a obrigatÃ³ria" para escolas; aviso de responsabilizaÃ§Ã£o legal; "Portal Escolas"; certificado com verificaÃ§Ã£o criptogrÃ¡fica.
+    Matriz e loja: Circuito Ferradura como curso proprietario de logica, abaco romano e Python; gratuito para pessoas fisicas dentro da oferta vigente; R$ 5,00/aluno matriculado/mes para instituicoes; "Portal Escolas"; certificado com verificacao criptografica.
   Status:  OK. Mensagem e valor alinhados.
 
   Links
-    Ambas apontam para circuito-python-releases (releases/latest); sem link para repositÃ³rio privado circuito_python.
+    Loja canonica: https://circuito.caracore.com.br/. Oficina: caracore-circuito. Loja: caracore-circuito-releases.
   Status:  OK.
 
 -------------------------------------------------------------------------------
@@ -70,15 +71,16 @@ Referencias publicas (campanhas e links novos): matriz institucional em https://
 4. REINO OIDC
 
   Matriz: cara-core-site/delivery/oidc/
-  Loja:   reino-oidc-releases/docs/ (oidc.caracore.com.br); caminho local D:\dev\reino-oidc-releases
+  Oficina: caracore-oidc
+  Loja:   caracore-oidc-releases/docs/ (oidc.caracore.com.br); caminho local D:\dev\caracore-oidc-releases
 
   Estrutura
     Matriz: index, download, canal-feedback, upgrade-trono, licenca-uso, conteudo-free, pÃ¡ginas de histÃ³ria/glossÃ¡rio/mapas/jogos, etc.
     Loja:   Mesmo conjunto (index, download, upgrade-trono, licenca-uso, conteudo-free, histÃ³ria, personagens, super_trunfo, etc.)
-  Status:  OK. Estrutura espelhada.
+  Status:  OK. Estrutura espelhada; menu superior sem itens nao navegaveis e home sem breadcrumb redundante.
 
   Mensagem
-    Matriz e loja: aplicativo Windows FREE (ReinoOIDC.exe); "releases/latest"; upgrade "O Trono da Identidade" R$ 29,90 (valor Ãºnico, PIX); LicenÃ§a MIT para FREE; mesma narrativa de upgrade e certificaÃ§Ã£o.
+    Matriz e loja: aplicativo Windows FREE (ReinoOIDC.exe); "releases/latest"; upgrade "O Trono da Identidade" R$ 29,90 (valor unico, PIX); conteudo proprietario da Cara Core. Convite para produto Python aponta para Circuito Ferradura.
   Status:  OK. PreÃ§o e oferta alinhados.
 
   Links
@@ -113,7 +115,7 @@ Referencias publicas (campanhas e links novos): matriz institucional em https://
   Loja:   caracore-area51-releases/docs/ (area51.caracore.com.br)
 
   Estrutura
-    Matriz: index, download, licenca-uso, canal-feedback, MIRROR_DELIVERY.md
+    Matriz: index, download, licenca-uso, canal-feedback, espelho de delivery
     Loja:   index, download, licenca-uso, canal-feedback (vitrine alinhada)
   Status:  OK. Corrigido em 20/02/2026: Matriz recebeu download.html e licenca-uso.html (antes ausentes; Loja estava Ã  frente da Matriz).
 
@@ -139,16 +141,16 @@ Referencias publicas (campanhas e links novos): matriz institucional em https://
   Oficina: caracore-ru (repositÃ³rio de cÃ³digo)
 
   Estrutura
-    Matriz: index, canal-feedback, MIRROR_DELIVERY.md, email_pos_venda.html, fluxo_mensagens_vendas.md
-    Loja:   index, download, licenca-uso, manual-tecnico, canal-feedback, MIRROR_DELIVERY.md, assets/
-  Status:  OK. A loja contÃ©m vitrine, download, licenÃ§a, manual tÃ©cnico e canal de feedback; alinhada Ã  matriz. MIRROR_DELIVERY.md em ambos com regras de espelho.
+    Matriz: index, canal-feedback, espelho de delivery, email_pos_venda, fluxo de mensagens
+    Loja:   index, download, licenca-uso, manual-tecnico, canal-feedback, mirror-delivery.html, validacao-alinhamento-ru.html, fluxo-mensagens-vendas.html, assets/
+  Status:  OK. A loja contem vitrine, download, licenca, manual tecnico e canal de feedback; alinhada a matriz. Conteudo publicado em docs fica em HTML; CSS centralizado em docs/assets/css.
 
   Mensagem
     Matriz e loja: "RU Soberano"; "Produto em evoluÃ§Ã£o"; "A histÃ³ria do RU e a Engenharia QuÃ­mica"; "CafÃ© Mania 2.0" vs "material sÃ©rio de engenharia"; degustaÃ§Ã£o FREE atÃ© o Buffet; InteligÃªncia de Processo + Memorial RU R$ 29,90; lanÃ§amento 18/Junho/2026; expectativa Ã— realidade; oficina caracore-ru, loja caracore-ru-releases.
   Status:  OK. Mensagem alinhada.
 
   Links
-    Matriz: CTAs para loja (ru.caracore.com.br/) e download (loja/docs/download.html). Loja: breadcrumbs e narrativa RU; links para matriz institucional e vitrine; legado caracore.com.br/delivery/ru/ com redirect. Canal de feedback, download, licenÃ§a, manual tÃ©cnico, MIRROR_DELIVERY.
+    Matriz: CTAs para loja (ru.caracore.com.br/) e download. Loja: breadcrumbs revisados; links para matriz institucional e vitrine; canal de feedback, download, licenca, manual tecnico e espelho em HTML.
   Status:  OK.
 
   Garagem
@@ -163,7 +165,7 @@ Referencias publicas (campanhas e links novos): matriz institucional em https://
   ------------------- ----------- ----------- ------------- ------------------
   Cara Core PDV       OK          OK          OK            Alinhada
   Cara Core Hub       OK          OK          OK            Alinhada
-  Circuito Python     OK          OK          OK            Alinhada
+  Circuito Ferradura  OK          OK          OK            Alinhada
   Reino OIDC          OK          OK          OK            Alinhada
   Cara Core Seed      OK          OK          OK            Alinhada
   Suporte Ãrea 51     OK          OK          OK            Alinhada
@@ -171,7 +173,7 @@ Referencias publicas (campanhas e links novos): matriz institucional em https://
 
   Todas as lojas verificadas estÃ£o alinhadas com a matriz em estrutura de pÃ¡ginas, mensagem de negÃ³cio (posicionamento, preÃ§os onde aplicÃ¡vel, oferta FREE/upgrade/nÃ£o disponÃ­vel) e links cruzados. CTAs: matriz aponta "Ver loja" para o subdomÃ­nio; lojas reforÃ§am identidade Cara Core via portfolio/ecossistema e vitrine no subdomÃ­nio. O ramo Garagem (ecosistema.html) agrupa produtos em desenvolvimento com matriz, oficina e loja no ar; RU Soberano Ã© o primeiro.
 
-  ReferÃªncias: MIRROR_DELIVERY.md em cada delivery/pasta; ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt. Reino OIDC loja: reino-oidc-releases (pasta docs/); caminho local D:\dev\reino-oidc-releases. RU Soberano: delivery/ru (matriz), caracore-ru-releases (loja), caracore-ru (oficina). Mapa visual do ecossistema (matriz, produtos, oficinas, lojas, Garagem): caracore.com.br/ecosistema.html (ConheÃ§a o Nosso Eco Mundo).
+  ReferÃªncias: ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt; COMPONENTES_LOJA.txt; espelhos de delivery em HTML ou Markdown conforme o produto. Reino OIDC loja: caracore-oidc-releases (pasta docs/); caminho local D:\dev\caracore-oidc-releases. Circuito Ferradura: caracore-circuito (oficina) e caracore-circuito-releases (loja). RU Soberano: delivery/ru (matriz), caracore-ru-releases (loja), caracore-ru (oficina). Mapa visual do ecossistema: caracore.com.br/ecosistema.html.
 
 -------------------------------------------------------------------------------
 

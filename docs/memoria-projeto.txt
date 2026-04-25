@@ -2,7 +2,7 @@
 
 Documento de referência rápida sobre o site matriz (caracore.com.br). Atualizar quando houver mudanças relevantes de estrutura, delivery ou integrações.
 
-Data da última atualização: 2026-02-08
+Data da última atualização: 2026-04-25
 
 ---
 
@@ -26,7 +26,7 @@ Data da última atualização: 2026-02-08
 ## Estrutura principal (cara-core-site)
 
 - **index.html** — Página principal. planos.html, 404.html, ecosistema.html (mapa visual do ecossistema).
-- **portfolio.html** — Portfólio de produtos (âncoras: #caracore-pdv, #caracore-hub, #caracore-seed, #caracore-ink-agenda, #ru-soberano, #minerador-ete, #area-51, #circuito-python, #reino-oidc).
+- **portfolio.html** — Portfólio de produtos (âncoras: #caracore-pdv, #caracore-hub, #caracore-seed, #caracore-ink-agenda, #ru-soberano, #minerador-ete, #area-51, #circuito-ferradura, #reino-oidc).
 - **delivery/** — Portais de produto (matriz). Cada subpasta = um produto/serviço.
 - **secure/** — Área 51: login OIDC, área restrita, logout, painel de logs.
 - **backend/** — API Flask (Azure); token_storage, session_manager, logs, rate_limiter.
@@ -48,7 +48,7 @@ Data da última atualização: 2026-02-08
 | Seed          | delivery/seed/    | Cara Core Seed (vitrine; aplicação não disponível ao público). |
 | Hub           | delivery/hub/     | Cara Core Hub (Tia Sócia, logística). |
 | Área 51       | delivery/area51/  | Suporte OAuth 2.1/OIDC/PKCE para empresas. |
-| Circuito Python | delivery/circuito/ | Curso Circuito Python; loja com EXE. |
+| Circuito Ferradura | delivery/circuito/ | Curso proprietário de lógica, ábaco romano e programação Python; loja com curso web, download e portal de escolas. |
 | Reino OIDC    | delivery/oidc/    | Reino OIDC (identidade, conteúdo didático). |
 
 - Cada portal tem index.html, canal-feedback.html e, quando aplicável, download.html, tecnologia.html.
@@ -59,7 +59,9 @@ Data da última atualização: 2026-02-08
 ## Lojas (releases) e matriz
 
 - As **lojas** (repositórios *-releases, GitHub Pages) apontam para a matriz para “apresentação completa” e “consultoria”.
-- Ex.: caracore-ink-releases → caracore.com.br/delivery/ink/ e ecosistema.html#garagem (Ink e RU só entram no portfólio após lançamento).
+- Cada produto mantém duas camadas: **Oficina** (repositório de desenvolvimento, sem `-releases`) e **Loja** (repositório `*-releases`, vitrine pública em `docs/`).
+- Lojas principais registradas: `circuito.caracore.com.br`, `oidc.caracore.com.br`, `ru.caracore.com.br`, `ink.caracore.com.br`, `ete.caracore.com.br`, além de PDV, Hub, Seed, CSO e Área 51.
+- Ex.: `caracore-ink` = oficina do app; `caracore-ink-releases` = loja pública, downloads e guias de instalação.
 - **Documentos de ecossistema na raiz:** ECOSYSTEM_CARA_CORE.txt, ECOSYSTEM_LOJAS.txt, COMPONENTES_LOJA.txt.
 
 ---
@@ -75,3 +77,5 @@ Data da última atualização: 2026-02-08
 
 - Ink na matriz: mensagem “cofre digital”, Blindagem de Dados, princípio do Antifrágil (Nassim Nicholas Taleb), alinhado ao PDV.
 - Links relativos nas lojas (Ink, ETE) para evitar quebra ao publicar; matriz usa URLs absolutas para caracore.com.br onde fizer sentido.
+- 2026-04-25: lojas revisadas para reduzir redundância visual e alinhar nomenclatura: Circuito Python passou a ser tratado como **Circuito Ferradura**; convite do Circuito no Reino OIDC foi atualizado; breadcrumbs/topbars redundantes removidos em OIDC, RU, Ink e ETE/Minerador 4.0.
+- 2026-04-25: lojas RU e Circuito tiveram CSS centralizado em `docs/assets/css`; RU passou a publicar documentos de conteúdo como páginas HTML (`mirror-delivery.html`, `validacao-alinhamento-ru.html`, `fluxo-mensagens-vendas.html`, `artifacts/instalacao.html`) em vez de Markdown dentro de `docs/`.

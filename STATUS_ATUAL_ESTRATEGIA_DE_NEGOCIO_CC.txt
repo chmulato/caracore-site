@@ -5,6 +5,11 @@ Documento consolidado: trabalho realizado e prÃ³ximos passos possÃ­veis.
 Linguagem para uso interno, gestÃ£o e decisÃ£o executiva.
 Sem emojis, Ã­cones ou formataÃ§Ã£o decorativa.
 
+Atualizacao de memoria em 25/04/2026:
+- Onde este documento citar "Circuito Python", ler como Circuito Ferradura.
+- Onde citar circuito-python-releases, usar caracore-circuito-releases e a loja https://circuito.caracore.com.br/.
+- Onde citar reino-oidc-releases, usar caracore-oidc-releases e a loja https://oidc.caracore.com.br/.
+- A memoria canonica atual de lojas/oficinas esta em ECOSYSTEM_CARA_CORE.txt, ECOSYSTEM_LOJAS.txt, COMPONENTES_LOJA.txt e VALIDACAO_LOJAS_MATRIZ.txt.
 
 1. VISÃƒO GERAL DA ESTRATÃ‰GIA
 

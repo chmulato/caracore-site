@@ -1,7 +1,7 @@
 ﻿COMPONENTES PADRAO DAS LOJAS (VITRINES GITHUB PAGES)
 ====================================================
 
-Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de componentes, conforme o tipo de produto. Data: 05/02/2026.
+Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de componentes, conforme o tipo de produto. Data: 25/04/2026.
 
 -------------------------------------------------------------------------------
 1. COMPONENTES OBRIGATORIOS EM TODA LOJA
@@ -49,15 +49,40 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     Loja:   caracore-hub-releases/docs/
     index  download  tecnologia  canal-feedback  slides/  .nojekyll
 
-  CIRCUITO PYTHON
+  CIRCUITO FERRADURA
     Matriz: delivery/circuito/
-    Loja:   circuito-python-releases/docs/
+    Oficina: caracore-circuito/
+    Loja:   caracore-circuito-releases/docs/
     index  download  canal-feedback  licenca-uso  portal-escolas  .nojekyll
+    Observacao: curso proprietario de logica, abaco romano e Python; codigos Python devem manter apresentacao profissional em blocos <pre><code> e CSS centralizado.
 
   REINO OIDC
     Matriz: delivery/oidc/
-    Loja:   reino-oidc-releases/docs/
+    Oficina: caracore-oidc/
+    Loja:   caracore-oidc-releases/docs/
     index  download  canal-feedback  upgrade-trono  licenca-uso  conteudo-free  historia/personagens/mapas/jogos  .nojekyll
+    Observacao: convite para produto Python deve apontar para Circuito Ferradura, sem textos nao navegaveis no menu superior.
+
+  MINERADOR 4.0 / ETE
+    Matriz: delivery/ete/
+    Oficina: caracore-ete/
+    Loja:   caracore-ete-releases/docs/
+    index  download  canal-feedback  licenca-uso  upgrade-ouro40  wiki/  artifacts/  .nojekyll
+    Observacao: loja oficial em https://ete.caracore.com.br/; evitar topbars/breadcrumbs redundantes na vitrine.
+
+  RU SOBERANO
+    Matriz: delivery/ru/
+    Oficina: caracore-ru/
+    Loja:   caracore-ru-releases/docs/
+    index  download  licenca-uso  manual-tecnico  canal-feedback  wiki/  .nojekyll
+    Observacao: CSS centralizado em docs/assets/css; documentos publicados em docs devem ser paginas HTML, nao Markdown.
+
+  CARA CORE INK AGENDA
+    Matriz: delivery/ink/
+    Oficina: caracore-ink/
+    Loja:   caracore-ink-releases/docs/
+    index  download  tecnologia  manual  canal-feedback  artifacts/  .nojekyll
+    Observacao: RC1 multiplataforma; breadcrumbs devem evitar repeticao de "Cara Core Ink Agenda - Loja" + nome do produto.
 
   CARA CORE SEED
     Matriz: delivery/seed/
@@ -79,11 +104,13 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
 -------------------------------------------------------------------------------
 
   - Toda loja deve ter no minimo: index, canal-feedback, link para matriz e portfolio.
+  - Breadcrumbs e topbars devem conter apenas navegacao util; evitar repetir dominio, nome da loja e pagina atual quando isso nao ajuda o usuario.
+  - Arquivos de conteudo publicados como paginas devem ser HTML; Markdown pode ficar como documentacao interna fora da vitrine publica quando necessario.
   - Quando a matriz tem uma pagina (tecnologia, readme, portal-controle, ativacao, compra, upgrade, licenca-uso), a loja deve espelhar essa pagina, salvo combinacao contraria (ex.: consultoria e wiki do PDV so na matriz).
   - Links na vitrine: usar URL absoluta para portfolio (https://www.caracore.com.br/portfolio.html) e, quando a vitrine esta em docs/, usar <base href> para que links relativos entre paginas da loja funcionem.
   - Scripts de publicacao (push/sync) devem copiar da matriz para a pasta docs/ da loja e, quando necessario, pos-processar HTML (substituir ../../portfolio por URL absoluta e garantir base href).
 
-Referencias: VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt, MIRROR_DELIVERY.md em cada delivery/<produto>/.
+Referencias: VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt e documentos de espelho de delivery em HTML ou Markdown conforme cada produto.
 
 Cara Core Informatica - Uso interno.
 

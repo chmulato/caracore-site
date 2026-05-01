@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="pt-br">
 <head>
@@ -15,297 +15,14 @@
 <meta property="og:description" content="TCC de Engenharia de Processos: motor DES em Python com prova de conceito em restaurante universitário (throughput, holdup e tempo de residência).">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://www.caracore.com.br/publications/livros/tcc.html">
-<meta property="og:image" content="https://www.caracore.com.br/publications/livros/images/COVER.png">
+<meta property="og:image" content="https://www.caracore.com.br/publications/livros/assets/img/COVER.png">
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Simulação de Processos Dinâmicos: Do Restaurante Universitário à Engenharia Química | Cara Core Informática">
 <meta name="twitter:description" content="TCC de Engenharia de Processos: motor DES em Python com prova de conceito em restaurante universitário (throughput, holdup e tempo de residência).">
-<meta name="twitter:image" content="https://www.caracore.com.br/publications/livros/images/COVER.png">
-<style>
-  :root {
-    /* Paleta sóbria (paper-like) */
-    --bg: #fbfbfc;
-    --surface: #ffffff;
-    --ink: #111827; /* near-black */
-    --muted: rgba(17, 24, 39, 0.72);
-    --line: rgba(17, 24, 39, 0.14);
-    --accent: #0f3d6e; /* azul sério */
-    --accent-2: #0b6b4d; /* verde técnico (detalhe) */
-
-    /* Tipografia */
-    --serif: ui-serif, "Georgia", "Cambria", "Times New Roman", Times, serif;
-    --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans", "Liberation Sans",
-      sans-serif;
-    --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-
-    /* Layout */
-    --max: 980px;
-    --radius: 14px;
-  }
-
-  html {
-    color-scheme: light;
-    scroll-behavior: smooth;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--serif);
-    font-size: 17px;
-    line-height: 1.85;
-    padding: clamp(18px, 3.2vw, 34px) clamp(16px, 3.4vw, 28px);
-    max-width: var(--max);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* Links */
-  a {
-    color: var(--accent);
-    text-decoration: underline;
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.18em;
-  }
-  a:hover {
-    color: #0b2f55;
-  }
-  a:visited {
-    color: #2a3f63;
-  }
-
-  /* Títulos (hierarquia NYT/Medium-like) */
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: var(--sans);
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    line-height: 1.2;
-    scroll-margin-top: 18px;
-  }
-  h1 {
-    font-size: clamp(28px, 3.2vw, 40px);
-    margin: 28px 0 10px;
-  }
-  h2 {
-    font-size: clamp(22px, 2.3vw, 28px);
-    margin: 22px 0 10px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(17, 24, 39, 0.08);
-  }
-  h3 {
-    font-size: 18px;
-    margin: 18px 0 8px;
-  }
-  h4 {
-    font-size: 16px;
-    margin: 16px 0 6px;
-  }
-
-  p {
-    margin: 12px 0 0;
-    color: rgba(17, 24, 39, 0.88);
-  }
-
-  /* Separadores */
-  hr {
-    border: 0;
-    height: 1px;
-    background: rgba(17, 24, 39, 0.10);
-    margin: 18px 0;
-  }
-
-  /* Listas (Sumário e listas longas) */
-  ul,
-  ol {
-    margin: 12px 0 0;
-    padding-left: 1.25em;
-  }
-  li {
-    margin: 6px 0;
-    color: rgba(17, 24, 39, 0.86);
-  }
-  #sumario + ul a {
-    text-decoration: none;
-  }
-  #sumario + ul a:hover {
-    text-decoration: underline;
-  }
-
-  /* Blocos de código */
-  pre {
-    margin: 14px 0 0;
-    padding: 14px 14px;
-    background: rgba(17, 24, 39, 0.04);
-    border: 1px solid rgba(17, 24, 39, 0.10);
-    border-radius: var(--radius);
-    overflow-x: auto;
-    box-shadow: 0 8px 22px rgba(17, 24, 39, 0.06);
-  }
-  code {
-    font-family: var(--mono);
-    font-size: 0.95em;
-    background: rgba(17, 24, 39, 0.05);
-    border: 1px solid rgba(17, 24, 39, 0.10);
-    border-radius: 8px;
-    padding: 0.12em 0.32em;
-  }
-  pre code {
-    background: transparent;
-    border: 0;
-    padding: 0;
-    font-size: 0.92em;
-    line-height: 1.55;
-    display: block;
-    white-space: pre;
-  }
-
-  /* Citações (se houver) */
-  blockquote {
-    margin: 16px 0 0;
-    padding: 12px 14px;
-    border-left: 4px solid rgba(15, 61, 110, 0.55);
-    background: linear-gradient(180deg, rgba(15, 61, 110, 0.06), rgba(11, 107, 77, 0.04));
-    border-radius: 12px;
-    color: rgba(17, 24, 39, 0.86);
-  }
-  blockquote p {
-    margin-top: 0;
-  }
-
-  /* Tabelas: sério, legível e responsivo sem “quebrar” em blocos */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 14px 0 0;
-    font-size: 0.96em;
-    background: var(--surface);
-    border: 1px solid rgba(17, 24, 39, 0.12);
-    border-radius: 12px;
-    overflow: hidden;
-    display: block; /* permite scroll horizontal no mobile */
-    overflow-x: auto;
-  }
-  th,
-  td {
-    padding: 10px 12px;
-    border-bottom: 1px solid rgba(17, 24, 39, 0.10);
-    text-align: left;
-    vertical-align: top;
-  }
-  th {
-    font-family: var(--sans);
-    font-size: 0.92em;
-    letter-spacing: -0.01em;
-    color: rgba(17, 24, 39, 0.86);
-    background: rgba(17, 24, 39, 0.03);
-  }
-  tr:last-child td {
-    border-bottom: 0;
-  }
-
-  /* Imagens/figuras */
-  img,
-  svg {
-    max-width: 100%;
-    height: auto;
-  }
-  img {
-    display: block;
-    margin: 14px auto 0;
-    border-radius: 12px;
-    border: 1px solid rgba(17, 24, 39, 0.10);
-    box-shadow: 0 16px 40px rgba(17, 24, 39, 0.10);
-  }
-
-  /* Link “AO SUMÁRIO” (padroniza o inline style existente) */
-  .back-to-sumario {
-    margin-left: 10px !important;
-    font-size: 12px !important;
-    font-family: var(--sans);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: rgba(17, 24, 39, 0.60) !important;
-    text-decoration: none !important;
-    border: 1px solid rgba(17, 24, 39, 0.12);
-    padding: 4px 8px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.65);
-  }
-  .back-to-sumario:hover {
-    text-decoration: none;
-    color: rgba(17, 24, 39, 0.78) !important;
-    border-color: rgba(15, 61, 110, 0.28);
-    background: rgba(15, 61, 110, 0.06);
-  }
-
-  /* Impressão: aparência acadêmica */
-  @media print {
-    body {
-      background: #ffffff;
-      padding: 0;
-      max-width: none;
-      font-size: 12pt;
-      line-height: 1.55;
-      color: #000;
-    }
-    a {
-      color: #000;
-      text-decoration: none;
-    }
-    img {
-      box-shadow: none;
-    }
-    pre {
-      box-shadow: none;
-    }
-  }
-
-  /* Rodapé (copyright/uso) */
-  footer.tcc-footer {
-    margin-top: 28px;
-    padding-top: 14px;
-    border-top: 1px solid rgba(17, 24, 39, 0.12);
-    color: rgba(17, 24, 39, 0.72);
-    font-family: var(--sans);
-    font-size: 0.92em;
-    line-height: 1.6;
-  }
-  footer.tcc-footer a {
-    color: var(--accent);
-  }
-  footer.tcc-footer .title {
-    font-weight: 700;
-    color: rgba(17, 24, 39, 0.86);
-    margin-bottom: 6px;
-  }
-</style></head>
+<meta name="twitter:image" content="https://www.caracore.com.br/publications/livros/assets/img/COVER.png">
+<link rel="stylesheet" href="assets/css/tcc.css"></head>
 <body>
-<style>
-@media print {
-  @page { size: A4; margin: 12mm; }
-  body {
-    max-width: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    background: #fff !important;
-    color: #000 !important;
-    font-size: 11pt !important;
-    line-height: 1.45 !important;
-  }
-  nav, .toc, .sumario-link, .voltar, .actions, .lead-box, .note,
-  a[href^="#"] { display: none !important; }
-  a { color: #000 !important; text-decoration: none !important; }
-  img, figure, table, pre, blockquote { page-break-inside: avoid; }
-  h1, h2, h3 { page-break-after: avoid; }
-}
-</style>
 <pre><code class="language-plaintext">+---------------------------------------------------------------+
 |          SIMULAÇÃO DE PROCESSOS DINÂMICOS:                    |
 |   DO RESTAURANTE UNIVERSITÁRIO À ENGENHARIA QUÍMICA           |
@@ -387,14 +104,14 @@ Campo Largo, PR, 01 de Junho de 2025
 <hr/>
 <h2 id="lista-de-figuras">Lista de Figuras<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
 <ol>
-<li><a href="figuras/fig_01_esquema_analogia.png">Figura 1 — Esquema de analogia (serviços ↔ processos)</a></li>
+<li><a href="assets/img/fig_01_esquema_analogia.png">Figura 1 — Esquema de analogia (serviços ↔ processos)</a></li>
 <li><a href="#fluxograma-do-fluxo-do-cliente-em-um-restaurante">Figura 2A — Fluxo em sistema de serviços (DES)</a></li>
-<li><a href="figuras/fig_02b_fluxo_processo.png">Figura 2B — Fluxo em sistema de processo (engenharia química)</a></li>
-<li><a href="figuras/fig_03_layout_base.png">Figura 3 — Layout base (planta ASCII renderizada)</a></li>
-<li><a href="figuras/fig_04_throughput.png">Figura 4 — Throughput ao longo do tempo</a></li>
-<li><a href="figuras/fig_05_ocupacao_e_filas.png">Figura 5 — Holdup e buffers (filas) por minuto</a></li>
-<li><a href="figuras/fig_06_distribuicao_residencia.png">Figura 6 — Distribuição do tempo de residência</a></li>
-<li><a href="figuras/fig_07_antes_depois.png">Figura 7 — Antes vs Depois (intervenção de capacidade)</a></li>
+<li><a href="assets/img/fig_02b_fluxo_processo.png">Figura 2B — Fluxo em sistema de processo (engenharia química)</a></li>
+<li><a href="assets/img/fig_03_layout_base.png">Figura 3 — Layout base (planta ASCII renderizada)</a></li>
+<li><a href="assets/img/fig_04_throughput.png">Figura 4 — Throughput ao longo do tempo</a></li>
+<li><a href="assets/img/fig_05_ocupacao_e_filas.png">Figura 5 — Holdup e buffers (filas) por minuto</a></li>
+<li><a href="assets/img/fig_06_distribuicao_residencia.png">Figura 6 — Distribuição do tempo de residência</a></li>
+<li><a href="assets/img/fig_07_antes_depois.png">Figura 7 — Antes vs Depois (intervenção de capacidade)</a></li>
 </ol>
 <hr/>
 <h2 id="lista-de-tabelas">Lista de Tabelas<a class="back-to-sumario" href="#sumario" style="margin-left:1em;font-size:0.8em;text-decoration:none;">AO SUMÁRIO</a></h2>
@@ -1583,49 +1300,49 @@ Para apresentações ou relatórios, recomenda-se também a criação de um flux
 <ol>
 <li>
 <figure>
-<a href="figuras/fig_01_esquema_analogia.png"><img alt="Figura 1 — Esquema de analogia (serviços ↔ processos)" src="figuras/fig_01_esquema_analogia.png"/></a>
+<a href="assets/img/fig_01_esquema_analogia.png"><img alt="Figura 1 — Esquema de analogia (serviços ↔ processos)" src="assets/img/fig_01_esquema_analogia.png"/></a>
 <figcaption><strong>Figura 1</strong> — Esquema de analogia (serviços ↔ processos).</figcaption>
 </figure>
 </li>
 <li>
 <figure>
-<a href="figuras/fig_02a_fluxo_servico.png"><img alt="Figura 2A — Fluxo em sistema de serviços (DES)" src="figuras/fig_02a_fluxo_servico.png"/></a>
+<a href="assets/img/fig_02a_fluxo_servico.png"><img alt="Figura 2A — Fluxo em sistema de serviços (DES)" src="assets/img/fig_02a_fluxo_servico.png"/></a>
 <figcaption><strong>Figura 2A</strong> — Fluxo em sistema de serviços (DES).</figcaption>
 </figure>
 </li>
 <li>
 <figure>
-<a href="figuras/fig_02b_fluxo_processo.png"><img alt="Figura 2B — Fluxo em sistema de processo (engenharia química)" src="figuras/fig_02b_fluxo_processo.png"/></a>
+<a href="assets/img/fig_02b_fluxo_processo.png"><img alt="Figura 2B — Fluxo em sistema de processo (engenharia química)" src="assets/img/fig_02b_fluxo_processo.png"/></a>
 <figcaption><strong>Figura 2B</strong> — Fluxo em sistema de processo (engenharia química).</figcaption>
 </figure>
 </li>
 <li>
 <figure>
-<a href="figuras/fig_03_layout_base.png"><img alt="Figura 3 — Layout base (planta ASCII renderizada)" src="figuras/fig_03_layout_base.png"/></a>
+<a href="assets/img/fig_03_layout_base.png"><img alt="Figura 3 — Layout base (planta ASCII renderizada)" src="assets/img/fig_03_layout_base.png"/></a>
 <figcaption><strong>Figura 3</strong> — Layout base (planta ASCII renderizada).</figcaption>
 </figure>
 </li>
 <li>
 <figure>
-<a href="figuras/fig_04_throughput.png"><img alt="Figura 4 — Throughput ao longo do tempo" src="figuras/fig_04_throughput.png"/></a>
+<a href="assets/img/fig_04_throughput.png"><img alt="Figura 4 — Throughput ao longo do tempo" src="assets/img/fig_04_throughput.png"/></a>
 <figcaption><strong>Figura 4</strong> — Throughput ao longo do tempo.</figcaption>
 </figure>
 </li>
 <li>
 <figure>
-<a href="figuras/fig_05_ocupacao_e_filas.png"><img alt="Figura 5 — Holdup e buffers (filas) por minuto" src="figuras/fig_05_ocupacao_e_filas.png"/></a>
+<a href="assets/img/fig_05_ocupacao_e_filas.png"><img alt="Figura 5 — Holdup e buffers (filas) por minuto" src="assets/img/fig_05_ocupacao_e_filas.png"/></a>
 <figcaption><strong>Figura 5</strong> — Holdup e buffers (filas) por minuto.</figcaption>
 </figure>
 </li>
 <li>
 <figure>
-<a href="figuras/fig_06_distribuicao_residencia.png"><img alt="Figura 6 — Distribuição do tempo de residência" src="figuras/fig_06_distribuicao_residencia.png"/></a>
+<a href="assets/img/fig_06_distribuicao_residencia.png"><img alt="Figura 6 — Distribuição do tempo de residência" src="assets/img/fig_06_distribuicao_residencia.png"/></a>
 <figcaption><strong>Figura 6</strong> — Distribuição do tempo de residência.</figcaption>
 </figure>
 </li>
 <li>
 <figure>
-<a href="figuras/fig_07_antes_depois.png"><img alt="Figura 7 — Antes vs Depois (intervenção de capacidade)" src="figuras/fig_07_antes_depois.png"/></a>
+<a href="assets/img/fig_07_antes_depois.png"><img alt="Figura 7 — Antes vs Depois (intervenção de capacidade)" src="assets/img/fig_07_antes_depois.png"/></a>
 <figcaption><strong>Figura 7</strong> — Antes vs Depois (intervenção de capacidade).</figcaption>
 </figure>
 </li>
@@ -1652,3 +1369,5 @@ Para apresentações ou relatórios, recomenda-se também a criação de um flux
 </script>
 </body>
 </html>
+
+

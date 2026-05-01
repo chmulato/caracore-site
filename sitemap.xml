@@ -35,13 +35,13 @@
 
   <!-- Publicações -->
   <url>
-    <loc>https://www.caracore.com.br/publications/index.html</loc>
+    <loc>https://www.caracore.com.br/publications/regis/index.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.caracore.com.br/publications/articles.html</loc>
+    <loc>https://www.caracore.com.br/publications/regis/articles.html</loc>
     <lastmod>2026-04-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

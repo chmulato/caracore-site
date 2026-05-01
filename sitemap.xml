@@ -34,18 +34,7 @@
   </url>
 
   <!-- Publicações -->
-  <url>
-    <loc>https://www.caracore.com.br/publications/regis/index.html</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.caracore.com.br/publications/regis/articles.html</loc>
-    <lastmod>2026-04-05</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  <!-- Removed references to /publications/regis to avoid 404 after reorganization -->
   <url>
     <loc>https://www.caracore.com.br/publications/livros/index.html</loc>
     <lastmod>2026-04-05</lastmod>

@@ -215,3 +215,38 @@ code span.ot { color: #007020; } /* Other */
 code span.pp { color: #bc7a00; } /* Preprocessor */
 code span.sc { color: #4070a0; } /* SpecialChar */
 code span.ss { color: #bb6688; } /* SpecialString */
+/** Professional table styling for tables with class .table-professional **/
+.table-professional {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    margin: 1.25em 0;
+    font-size: 0.98rem;
+    color: #222;
+}
+.table-professional caption {
+    caption-side: top;
+    text-align: left;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: #0b3b61;
+}
+.table-professional th {
+    text-align: left;
+    padding: 0.65em 0.9em;
+    background: #f6f9fc;
+    border-bottom: 2px solid #e6eef8;
+    color: #0b3b61;
+    font-weight: 700;
+}
+.table-professional td {
+    padding: 0.6em 0.9em;
+    border-bottom: 1px solid #eef3f8;
+}
+.table-professional tbody tr:nth-child(even) { background: #fbfdff; }
+.table-professional tbody tr:hover { background: #f1f8ff; }
+
+@media (max-width: 700px) {
+    .table-professional { font-size: 0.95rem; }
+    .table-professional th, .table-professional td { padding: 0.5em 0.6em; }
+}

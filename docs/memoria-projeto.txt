@@ -2,7 +2,7 @@
 
 Documento de referência rápida sobre o site matriz (caracore.com.br). Atualizar quando houver mudanças relevantes de estrutura, delivery ou integrações.
 
-Data da última atualização: 2026-04-25
+Data da última atualização: 2026-05-16
 
 ---
 
@@ -78,4 +78,5 @@ Data da última atualização: 2026-04-25
 - Ink na matriz: mensagem “cofre digital”, Blindagem de Dados, princípio do Antifrágil (Nassim Nicholas Taleb), alinhado ao PDV.
 - Links relativos nas lojas (Ink, ETE) para evitar quebra ao publicar; matriz usa URLs absolutas para caracore.com.br onde fizer sentido.
 - 2026-04-25: lojas revisadas para reduzir redundância visual e alinhar nomenclatura: Circuito Python passou a ser tratado como **Circuito Ferradura**; convite do Circuito no Reino OIDC foi atualizado; breadcrumbs/topbars redundantes removidos em OIDC, RU, Ink e ETE/Minerador 4.0.
+- 2026-05-16: matriz atualizada com **Reino OIDC v2.0.0-RC1** — `index.html` (card dedicado), `portfolio.html#reino-oidc`, `ecosistema.html` (roadmap v2.0.0-RC1); loja em oidc.caracore.com.br; artigo Retrô 09/10/2026.
 - 2026-04-25: lojas RU e Circuito tiveram CSS centralizado em `docs/assets/css`; RU passou a publicar documentos de conteúdo como páginas HTML (`mirror-delivery.html`, `validacao-alinhamento-ru.html`, `fluxo-mensagens-vendas.html`, `artifacts/instalacao.html`) em vez de Markdown dentro de `docs/`.

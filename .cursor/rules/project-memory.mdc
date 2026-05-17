@@ -11,7 +11,7 @@ alwaysApply: true
 - **caracore-pdv-releases:** loja do PDV — vitrine e download em https://pdv.caracore.com.br/ (docs/). Alinhada à matriz delivery/pdv; lançamento 03/03/2026, Java 21.
 - **caracore-articles:** sala de notícias (GitHub Pages), série RU 1991 encerrada, epílogo e CTA Loja RU.
 - **caracore-ru:** oficina RU Soberano; caracore-ru-releases = loja RU (lançamento 18/Jun/2026, R$ 29,90).
-- **Outros:** caracore-hub, caracore-ete, caracore-circuito, caracore-oidc, caracore-seed, caracore-area51 e respectivos *-releases quando existirem.
+- **Outros:** caracore-hub, **caracore-ete** (oficina Minerador 4.0), **caracore-ete-releases** (loja ete.caracore.com.br), caracore-circuito, caracore-oidc, caracore-seed, caracore-area51 e respectivos *-releases quando existirem.
 
 ---
 
@@ -50,6 +50,17 @@ alwaysApply: true
 - **Oficina:** caracore-pdv (branch java_21, v1.1.0, Java 21).
 - **Lançamento oficial:** 03 de março de 2026 — versão v1.1.0 com Java 21 (Undertow, virtual threads, JVM otimizada para Windows Desktop). Conteúdo da matriz e da loja alinhado a essa data e às novidades Java 21.
 - **Páginas principais:** index.html (hero, economia, dores, 2026, planos, demo), tecnologia.html (soluções + Java 21 e desempenho), readme.html, wiki-fiscal.html, download.html, consultoria.html.
+
+---
+
+## Matriz ETE — Minerador 4.0 (portfolio · ecossistema)
+
+- **Vitrine pública (loja):** **https://ete.caracore.com.br/** — GitHub Pages do repo **`chmulato/caracore-ete-releases`** (conteúdo servido a partir de **`docs/`** na loja).
+- **Oficina:** **`caracore-ete`** — código do produto, CI, documentação espelhável em **`caracore-ete/docs/`**.
+- **Referências no site matriz:** **portfolio** (`portfolio.html`, âncora Minerador / ETE), **ecossistema** (`ecosistema.html`, tabela “Minerador 4.0”) — CTAs para a vitrine, `download.html` e **[releases/latest](https://github.com/chmulato/caracore-ete-releases/releases/latest)** da loja.
+- **Produto:** Minerador 4.0 — mesmo instalador **Free × Premium** (Ouro 4.0 / Módulo Mineração); versão e messaging devem alinhar entre portfólio, loja e oficina (`VERSION` / tag `v*` na oficina).
+- **CSS:** na loja e na oficina, folhas em **`docs/assets/css/`** e por página em **`docs/assets/css/pages/page-*.css`**; não depender de `<style>` inline nas páginas HTML principais.
+- **Alinhamento:** mudanças de URL, versão ou política de vitrine ETE devem ser refletidas na matriz (links e textos em `portfolio.html`, `ecosistema.html`, `index.html` quando aplicável) e vice-versa.
 
 ---
 

@@ -21,7 +21,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfólio — Ativos de Engenharia de Elite | Cara Core Informática — Bunker Digital</title>
-  <meta name="description" content="Ativos de engenharia de elite: CaraCore PDV Desktop (motor fiscal soberano, Reforma 2026), Minerador 4.0, Reino OIDC, CaraCore Hub, Área 51, Circuito Ferradura. Java 21 + JavaFX, licenciamento de ativo, soberania local.">
+  <meta name="description" content="Portfólio Cara Core: PDV Desktop, Minerador 4.0, Reino OIDC, Hub, Circuito Ferradura, Área 51 (identidade institucional licenciada). Java 21, Python, licenciamento de ativo, soberania local.">
   <meta name="keywords" content="Portfólio, Bunker Digital, Soberania Local, CaraCore PDV Desktop, Minerador 4.0, ETE, CaraCore Hub, Licenciamento de Ativo, OIDC, Java 21, JavaFX, Cara Core Informática, Python, Circuito Ferradura">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
@@ -958,89 +958,90 @@ graph LR
   </div>
 </section>
 
-<!-- Projeto 7: Área 51 (produto de suporte + scripts) -->
+<!-- Projeto 7: Área 51 — produto licenciado + Suporte -->
 <section id="area-51" class="py-5">
   <div class="container">
   <div class="project-card" data-aos="fade-up" data-aos-delay="300">
     <div class="project-header area51">
-      <div class="d-flex justify-content-between align-items-center">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
         <h3 class="mb-0">
-          <i class="bi bi-shield-lock"></i> Área 51 - Suporte e Scripts de Configuração
+          <i class="bi bi-shield-lock"></i> Área 51 — Identidade e acesso institucional
         </h3>
         <div>
           <span class="tech-badge">OAuth 2.1</span>
           <span class="tech-badge">OIDC</span>
           <span class="tech-badge">PKCE</span>
+          <span class="tech-badge">baseline 0.1.0-dev</span>
         </div>
       </div>
     </div>
     
     <div class="project-body">
-      <!-- Alert: foco no produto de suporte -->
       <div class="alert alert-info">
-        <i class="bi bi-lock-fill me-2"></i>
-        <strong>Produto da Cara Core Informática.</strong> O portfólio apresenta o <strong>Suporte Área 51</strong> (serviço para empresas) e a oferta de <strong>scripts de configuração</strong> (Python, controle de versão, baseline). O mapa da lógica e os processos internos da Área 51 ficam na <strong>Wiki da Área 51</strong>, voltada a colaboradores e estagiários, cada um em seu nível.
+        <i class="bi bi-info-circle me-2"></i>
+        <strong>Titularidade do Governo Federal.</strong> A Cara Core Informática implementa o <strong>Suporte Área 51</strong> e mantém a baseline técnica. Loja oficial: <a href="https://area51.caracore.com.br/" class="alert-link" target="_blank" rel="noopener">area51.caracore.com.br</a> — vitrine, wiki e documentação alinhadas ao pacote licenciado.
       </div>
       <div class="alert alert-warning">
         <i class="bi bi-briefcase me-2"></i>
-        <strong>Direcionado a empresas médias.</strong> A implementação do Suporte Área 51 exige <strong>tempo e investimento</strong>. Não é solução rápida nem de baixo custo; o retorno vem para quem está disposto a investir.
+        <strong>Entrega licenciada.</strong> O pacote (nível 1) inclui scripts OIDC, ambiente lab Keycloak, testes e guias — mediante licença e canal institucional, sem download público avulso. Implantação e acompanhamento no ambiente do cliente: <strong>serviço contratado</strong> (níveis 2 e 3).
       </div>
       
       <div class="mb-4">
-        <h4>Produto de Suporte Área 51</h4>
-        <p class="lead">
-          O <strong>Suporte Área 51</strong> é o serviço da Cara Core para empresas que precisam de autenticação e autorização corporativa (OAuth 2.1, OIDC, PKCE). Na <strong>Loja da Área 51</strong> vendemos <strong>scripts de configuração</strong> em Python, em controle de versão e dentro de uma baseline — o produto de configuração da Cara Core. O detalhamento de processos e arquitetura fica na Wiki (colaboradores e estagiários).
+        <h4>Pacote e serviços</h4>
+        <p class="lead mb-2">
+          Solução de <strong>identidade e acesso</strong> para órgãos e empresas que precisam de autenticação federada (Google, Microsoft Entra) com entrega documentada e validação repetível.
+        </p>
+        <ul class="mb-0">
+          <li><strong>Nível 1 — Pacote licenciado:</strong> baseline versionada, CLI <code>area51-config</code>, lab Keycloak + app de referência, ~118 testes, wiki técnica.</li>
+          <li><strong>Níveis 2–3 — Suporte Área 51:</strong> implementação guiada, homologação e SLA — escopo e contrato com a Cara Core.</li>
+        </ul>
+      </div>
+      
+      <div class="mb-4">
+        <h5><i class="bi bi-briefcase"></i> Para gestores</h5>
+        <p class="mb-0">
+          Produto institucional com entrega formal, separação clara entre o que vem no pacote e o que é serviço. Foco em conformidade OAuth 2.1/OIDC e evidências antes de homologação — não promete IAM corporativo completo “pronto para produção” sem hardening contratado.
         </p>
       </div>
       
-      <!-- Visão Executiva (leigos) -->
       <div class="mb-4">
-        <h5><i class="bi bi-briefcase"></i> Para Executivos</h5>
-        <p>
-          Sistema de autenticação e autorização corporativa: controle de acesso, auditoria e painel administrativo, com integração a provedores Microsoft e Google. Redução de acessos não autorizados, conformidade OAuth 2.1/OIDC e compliance LGPD.
+        <h5><i class="bi bi-people"></i> Em linguagem simples</h5>
+        <p class="mb-0">
+          Funcionários entram com a conta Google ou Microsoft da organização — como um crachá digital. O pacote entrega scripts, laboratório e testes para a sua equipa validar a integração antes de homologação ou produção.
         </p>
       </div>
       
-      <!-- Para Leigos -->
       <div class="mb-4">
-        <h5><i class="bi bi-people"></i> Para Leigos</h5>
-        <p>
-          Imagine um prédio com salas restritas. A Área 51 é o sistema de segurança: você usa sua conta do Google ou Microsoft como "crachá digital"; o sistema verifica se você está na lista de autorizados. Quem administra pode incluir ou remover pessoas dessa lista.
-        </p>
-      </div>
-      
-      <!-- Resumo técnico (sem detalhes de processo) -->
-      <div class="mb-4">
-        <h5><i class="bi bi-code-square"></i> Visão Técnica (resumo)</h5>
-        <p class="text-muted mb-2">Autenticação Google e Microsoft Entra ID, PKCE obrigatório, lista de autorização, painel admin, auditoria e LGPD. Backend Python/Flask, frontend estático, deploy Azure. O <strong>mapa completo da lógica, fases e arquitetura</strong> está na Wiki da Área 51 (colaboradores e estagiários).</p>
+        <h5><i class="bi bi-code-square"></i> Resumo técnico</h5>
+        <p class="text-muted mb-2">Python, Keycloak Docker (:8080), app Flask de referência (:5000), PKCE obrigatório, variáveis <code>AREA51_FRONTIER_*</code> e <code>OIDC_*</code>, pipeline <code>validate_baseline.py</code>. Documentação na <a href="https://area51.caracore.com.br/wiki/index.html" target="_blank" rel="noopener">wiki</a> e <a href="https://area51.caracore.com.br/apresentacao-tecnica.html" target="_blank" rel="noopener">apresentação técnica</a> da loja.</p>
         <div>
           <span class="tech-badge">Python</span>
+          <span class="tech-badge">Keycloak</span>
+          <span class="tech-badge">Docker</span>
           <span class="tech-badge">Flask</span>
           <span class="tech-badge">OAuth 2.1</span>
           <span class="tech-badge">OIDC</span>
-          <span class="tech-badge">PKCE</span>
-          <span class="tech-badge">LGPD</span>
         </div>
       </div>
       
       <div class="text-center mt-4">
         <a href="https://area51.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Loja (apresentação e scripts)
+          <i class="bi bi-shop"></i> Loja Área 51
         </a>
-        <a href="https://area51.caracore.com.br/canal-feedback.html" class="btn-project me-2">
-          <i class="bi bi-chat-dots"></i> Solicitar suporte / Orçamento
-        </a>
-        <a href="secure/index.html" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shield-lock"></i> Acessar Área 51
+        <a href="https://area51.caracore.com.br/apresentacao-tecnica.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-file-earmark-text"></i> Apresentação técnica
         </a>
         <a href="https://area51.caracore.com.br/wiki/index.html" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-book"></i> Wiki Área 51 (mapa da lógica e processos)
+          <i class="bi bi-book"></i> Wiki do produto
+        </a>
+        <a href="https://area51.caracore.com.br/canal-feedback.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-chat-dots"></i> Contato institucional
         </a>
         <div class="mt-3">
           <small class="text-muted">
-            <i class="bi bi-lock-fill text-primary"></i> Código-fonte privado | 
-            <i class="bi bi-shop"></i> Loja: scripts Python em baseline | 
-            <i class="bi bi-book"></i> Wiki: colaboradores e estagiários
+            <i class="bi bi-lock-fill text-primary"></i> Oficina privada (caracore-area51) ·
+            <i class="bi bi-shop"></i> Loja pública (caracore-area51-releases) ·
+            <i class="bi bi-book"></i> Wiki alinhada à baseline 0.1.0-dev
           </small>
         </div>
       </div>

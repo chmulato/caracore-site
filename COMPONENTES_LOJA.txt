@@ -90,14 +90,12 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     index  download  tecnologia  canal-feedback  ativacao  compra  readme  portal-controle  .nojekyll  tools/README (opcional)
     Observacao: mensagem "aplicacao nao disponivel"; mesma estrutura da matriz para alinhamento.
 
-  SUPORTE AREA 51
-    Matriz: delivery/area51/
+  AREA 51 — IDENTIDADE INSTITUCIONAL
+    Matriz: portfolio.html#area-51 + secure/ (OIDC matriz)
     Loja:   caracore-area51-releases/docs/
-    index  download  licenca-uso  canal-feedback  .nojekyll
-    Observacao: produto = servico contratado (Suporte Area 51). Sem data de lancamento.
-    Download (renomeado conceitualmente para "O que o servico entrega"): escopo do servico, o que a empresa recebe, como contratar.
-    Licenca: proprietaria (nao e MIT); gratuito PF; empresas/instituicoes requerem contratacao.
-    Cara <-> Cracha: narrativa e scripts (PI Cara Core) x padrao aberto OIDC/OAuth 2.1 (sem propriedade da Cara Core).
+    index  produto  servicos  wiki  download (como comecar)  apresentacao-tecnica  licenca-uso  canal-feedback
+    Oficina: caracore-area51 (baseline 0.1.0-dev)
+    Observacao: produto licenciado (titularidade GF); entrega via licenca — nao download publico. Suporte Area 51 = servico contratado (niveis 2-3).
 
 -------------------------------------------------------------------------------
 4. REGRAS DE ALINHAMENTO

@@ -59,7 +59,7 @@
 - `caracore-ink-releases/docs/index.html` — a verificar
 - `caracore-ink-releases/docs/download.html` — a verificar
 
-**Situação:** Mesma lógica do PDV. Data passou. O app v2.0 (desktop Windows) ainda não foi lançado, mas há versão Android na Play Store como "versão anterior" em produção.
+**Situação:** Mesma lógica do PDV. Data passou. O app v2.0 (desktop Windows) ainda não foi lançado.
 
 **Pendência:** Decidir nova data ou mudar o enquadramento para "em desenvolvimento".
 
@@ -238,4 +238,3 @@ O arquivo raiz `d:\dev\caracore-site\STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt` 
 ---
 
 *Levantamento gerado em sessão de trabalho via GitHub Copilot. Arquivos mais relevantes: `delivery/pdv/`, `delivery/ink/`, `delivery/EVOLUTION_STATUS_APLICADO_LOJAS.md`, `caracore-area51-releases/docs/index.html`, `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt`, `ECOSYSTEM_LOJAS.txt`.*
-

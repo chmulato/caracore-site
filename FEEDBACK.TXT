@@ -112,7 +112,6 @@ O QUE NÃO FOI ALTERADO (DE FORMA CONSISTENTE)
 • Banner LGPD, rodapé, contato, horários, redes sociais.
 • Seção de planos (já oculta com d-none).
 • Artigos em publications/ e páginas de delivery (podem ser alinhados em uma segunda leva).
-• Referências a "Google Play", "Microsoft 365" etc. mantidas onde são descritivas do canal/produto.
 
 
 PRÓXIMOS PASSOS SUGERIDOS

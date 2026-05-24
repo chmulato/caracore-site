@@ -431,6 +431,303 @@ section, header {
   font-size: 1.2rem;
 }
 
+/* Sistema visual compartilhado dos produtos Cara Core */
+.cc-card-pdv,
+.cc-card-hub,
+.cc-card-seed,
+.cc-card-reino,
+.cc-card-area51,
+.cc-card-circuito,
+.cc-card-ete,
+.cc-card-ink,
+.cc-card-mkt,
+.cc-card-ru,
+.cc-card-cso {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-left-width: 4px !important;
+}
+
+.cc-card-pdv,
+.cc-card-area51 {
+  border-color: rgba(102, 126, 234, 0.22) !important;
+  border-left-color: #667eea !important;
+}
+
+.cc-card-hub,
+.cc-card-cso {
+  border-color: rgba(247, 151, 30, 0.25) !important;
+  border-left-color: #f7971e !important;
+}
+
+.cc-card-seed {
+  border-color: rgba(67, 206, 162, 0.25) !important;
+  border-left-color: #43cea2 !important;
+}
+
+.cc-card-reino {
+  border-color: rgba(143, 110, 213, 0.24) !important;
+  border-left-color: #8f6ed5 !important;
+  box-shadow: inset 0 0 0 1px rgba(143, 110, 213, 0.08);
+}
+
+.cc-card-circuito {
+  border-color: rgba(46, 139, 87, 0.24) !important;
+  border-left-color: #2e8b57 !important;
+  box-shadow: inset 0 0 0 1px rgba(46, 139, 87, 0.08);
+}
+
+.cc-card-ete,
+.cc-card-ru {
+  border-color: rgba(212, 168, 83, 0.28) !important;
+  border-left-color: #d4a853 !important;
+  box-shadow: inset 0 0 0 1px rgba(212, 168, 83, 0.1);
+}
+
+.cc-card-ink {
+  border-color: rgba(0, 102, 255, 0.22) !important;
+  border-left-color: #0066ff !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 102, 255, 0.08);
+}
+
+.cc-card-mkt {
+  border-color: rgba(25, 135, 84, 0.24) !important;
+  border-left-color: #198754 !important;
+}
+
+#produtos .cc-card-reino {
+  background: linear-gradient(180deg, rgba(143, 110, 213, 0.06) 0%, rgba(255, 255, 255, 0.96) 18%, rgba(255, 255, 255, 0.96) 100%);
+}
+
+#produtos .cc-card-circuito {
+  background: linear-gradient(180deg, rgba(46, 139, 87, 0.06) 0%, rgba(255, 255, 255, 0.96) 18%, rgba(255, 255, 255, 0.96) 100%);
+}
+
+#produtos .cc-card-ete {
+  background: linear-gradient(180deg, rgba(212, 168, 83, 0.08) 0%, rgba(255, 255, 255, 0.96) 18%, rgba(255, 255, 255, 0.96) 100%);
+}
+
+.btn-cc-pdv,
+.btn-cc-hub,
+.btn-cc-seed,
+.btn-cc-reino,
+.btn-cc-area51,
+.btn-cc-circuito,
+.btn-cc-ete,
+.btn-cc-ink,
+.btn-cc-mkt,
+.btn-cc-ru,
+.btn-cc-cso,
+.btn-cc-outline-pdv,
+.btn-cc-outline-hub,
+.btn-cc-outline-seed,
+.btn-cc-outline-reino,
+.btn-cc-outline-area51,
+.btn-cc-outline-circuito,
+.btn-cc-outline-ete,
+.btn-cc-outline-ink,
+.btn-cc-outline-mkt,
+.btn-cc-outline-ru,
+.btn-cc-outline-cso {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, color 0.25s ease, background 0.25s ease;
+}
+
+.btn-cc-pdv,
+.btn-cc-area51 {
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  color: #fff !important;
+  border: none;
+}
+
+.btn-cc-hub,
+.btn-cc-cso {
+  background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
+  color: #1f2937 !important;
+  border: none;
+}
+
+.btn-cc-seed {
+  background: linear-gradient(120deg, #43cea2 0%, #185a9d 100%);
+  color: #fff !important;
+  border: none;
+}
+
+.btn-cc-reino {
+  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  color: #fff !important;
+  border: none;
+}
+
+.btn-cc-circuito {
+  background: linear-gradient(120deg, #2e8b57 0%, #228b22 100%);
+  color: #fff !important;
+  border: none;
+}
+
+.btn-cc-ete,
+.btn-cc-ru {
+  background: linear-gradient(120deg, #1a1d21 0%, #252a30 50%, #d4a853 100%);
+  color: #fff !important;
+  border: none;
+}
+
+.btn-cc-ink {
+  background: linear-gradient(120deg, #0066ff 0%, #00a3ff 100%);
+  color: #fff !important;
+  border: none;
+}
+
+.btn-cc-mkt {
+  background: linear-gradient(120deg, #198754 0%, #20c997 100%);
+  color: #fff !important;
+  border: none;
+}
+
+.btn-cc-outline-pdv,
+.btn-cc-outline-area51 {
+  background: linear-gradient(120deg, #f8faff 0%, #ecefff 100%);
+  color: #4b5fcf !important;
+  border: 2px solid #667eea;
+}
+
+.btn-cc-outline-hub,
+.btn-cc-outline-cso {
+  background: linear-gradient(120deg, #fff7e8 0%, #fff2c7 100%);
+  color: #9a5d00 !important;
+  border: 2px solid #f7971e;
+}
+
+.btn-cc-outline-seed {
+  background: linear-gradient(120deg, #effcf8 0%, #e1f6ff 100%);
+  color: #1b7c73 !important;
+  border: 2px solid #43cea2;
+}
+
+.btn-cc-outline-reino {
+  background: linear-gradient(120deg, #fbf8ff 0%, #efe7ff 100%);
+  color: #6f47b3 !important;
+  border: 2px solid #8f6ed5;
+}
+
+.btn-cc-outline-circuito {
+  background: linear-gradient(120deg, #effaf3 0%, #e3f7e8 100%);
+  color: #1f6b43 !important;
+  border: 2px solid #2e8b57;
+}
+
+.btn-cc-outline-ete,
+.btn-cc-outline-ru {
+  background: linear-gradient(120deg, #fff8ea 0%, #f5efe2 100%);
+  color: #7a5c24 !important;
+  border: 2px solid #d4a853;
+}
+
+.btn-cc-outline-ink {
+  background: linear-gradient(120deg, #eef5ff 0%, #e4f5ff 100%);
+  color: #0059dd !important;
+  border: 2px solid #0066ff;
+}
+
+.btn-cc-outline-mkt {
+  background: linear-gradient(120deg, #eefbf4 0%, #e0faf0 100%);
+  color: #146c43 !important;
+  border: 2px solid #198754;
+}
+
+.btn-cc-pdv:hover,
+.btn-cc-hub:hover,
+.btn-cc-seed:hover,
+.btn-cc-reino:hover,
+.btn-cc-area51:hover,
+.btn-cc-circuito:hover,
+.btn-cc-ete:hover,
+.btn-cc-ink:hover,
+.btn-cc-mkt:hover,
+.btn-cc-ru:hover,
+.btn-cc-cso:hover,
+.btn-cc-outline-pdv:hover,
+.btn-cc-outline-hub:hover,
+.btn-cc-outline-seed:hover,
+.btn-cc-outline-reino:hover,
+.btn-cc-outline-area51:hover,
+.btn-cc-outline-circuito:hover,
+.btn-cc-outline-ete:hover,
+.btn-cc-outline-ink:hover,
+.btn-cc-outline-mkt:hover,
+.btn-cc-outline-ru:hover,
+.btn-cc-outline-cso:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+  text-decoration: none;
+}
+
+.cc-badge-pdv,
+.cc-badge-hub,
+.cc-badge-seed,
+.cc-badge-reino,
+.cc-badge-area51,
+.cc-badge-circuito,
+.cc-badge-ete,
+.cc-badge-ink,
+.cc-badge-mkt,
+.cc-badge-ru,
+.cc-badge-cso {
+  color: #fff !important;
+  border: none !important;
+}
+
+.cc-badge-pdv,
+.cc-badge-area51 {
+  background: linear-gradient(120deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.cc-badge-hub,
+.cc-badge-cso {
+  background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%) !important;
+  color: #1f2937 !important;
+}
+
+.cc-badge-seed {
+  background: linear-gradient(120deg, #43cea2 0%, #185a9d 100%) !important;
+}
+
+.cc-badge-reino {
+  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%) !important;
+}
+
+.cc-badge-circuito {
+  background: linear-gradient(120deg, #2e8b57 0%, #228b22 100%) !important;
+}
+
+.cc-badge-ete,
+.cc-badge-ru {
+  background: linear-gradient(120deg, #1a1d21 0%, #252a30 50%, #d4a853 100%) !important;
+}
+
+.cc-badge-ink {
+  background: linear-gradient(120deg, #0066ff 0%, #00a3ff 100%) !important;
+}
+
+.cc-badge-mkt {
+  background: linear-gradient(120deg, #198754 0%, #20c997 100%) !important;
+}
+
+.cc-card-neutral {
+  border-width: 1px !important;
+  border-style: solid !important;
+  border-left-width: 4px !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  border-left-color: #334155 !important;
+  box-shadow: inset 0 0 0 1px rgba(51, 65, 85, 0.04);
+}
+
 /* Botão de contato */
 .btn-contato {
   background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);

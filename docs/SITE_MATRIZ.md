@@ -73,14 +73,19 @@ Evitar: “PDV v3” sozinho, “substitui”, “nova geração”. Usar `#pdv-
 
 ---
 
-## 5. Redirects (`_redirects`)
+## 5. Redirects (`_redirects` + stubs GitHub Pages)
 
-Todas as rotas `/delivery/{produto}` redirecionam para o subdomínio. Exemplos:
+**Produção actual:** GitHub Pages (`www.caracore.com.br`) — não aplica `_redirects` nem `vercel.json`.
+
+- **`delivery/{produto}/`** — apenas HTML mínimo de redirect (meta refresh + `location.replace`) para a loja canónica; sem vitrine duplicada.
+- **`_redirects`** / **`vercel.json`** — mesma lógica para Netlify/Vercel se o hospedeiro mudar.
+
+Exemplos:
 
 ```text
-/delivery/pdv-rust/*  →  https://rust-pdv.caracore.com.br/:splat
-/delivery/pdv/*       →  https://pdv.caracore.com.br/:splat
-/delivery/sala/*      →  https://tools.caracore.com.br/sala/:splat
+/delivery/pdv-rust/   →  https://rust-pdv.caracore.com.br/
+/delivery/pdv/        →  https://pdv.caracore.com.br/
+/delivery/sala/       →  https://tools.caracore.com.br/sala/
 ```
 
 Mapa completo: [MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md](MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md).

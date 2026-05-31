@@ -149,6 +149,21 @@
             "permanent": true
         },
         {
+            "source": "/delivery/pdv-rust",
+            "destination": "https://rust-pdv.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/pdv-rust/",
+            "destination": "https://rust-pdv.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/pdv-rust/:path*",
+            "destination": "https://rust-pdv.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
             "source": "/delivery/hub",
             "destination": "https://hub.caracore.com.br/",
             "permanent": true

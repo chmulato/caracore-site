@@ -16,7 +16,7 @@
 | Produto | Rota legado base | Destino oficial | Status |
 |---|---|---|---|
 | PDV | /delivery/pdv/ | https://pdv.caracore.com.br/ | mapeado |
-| PDV Rust | /delivery/pdv-rust/ | https://rust-pdv.caracore.com.br/ | mapeado (_redirects; sem HTML na matriz) |
+| PDV Rust | /delivery/pdv-rust/ | https://rust-pdv.caracore.com.br/ | mapeado (stub HTML + _redirects) |
 | Hub | /delivery/hub/ | https://hub.caracore.com.br/ | mapeado |
 | Circuito Ferradura | /delivery/circuito/ | https://circuito.caracore.com.br/ | mapeado |
 | Reino OIDC | /delivery/oidc/ | https://oidc.caracore.com.br/ | mapeado |
@@ -114,4 +114,4 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 
 - **`_redirects`** (Netlify e compatíveis): na raiz do `caracore-site` — redirects 301 para `/delivery/{produto}/...` → lojas, `/delivery/pdv-rust/*` → rust-pdv, `/delivery/sala/*` → Sala canónica, etc.
 - **`vercel.json`**: mesma lógica para deploy na Vercel.
-- **GitHub Pages puro** ou outro host sem `_redirects`: replicar estas regras na CDN — ver `docs/archive/delivery-migracao/DELIVERY_RESTRUCTURA.md`.
+- **GitHub Pages** (produção actual): stubs HTML mínimos em `delivery/{produto}/` (meta refresh + `location.replace`); ver `delivery/README.md`.

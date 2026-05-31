@@ -11,6 +11,7 @@
 | Documento | Para quê |
 |-----------|----------|
 | [SITE_MATRIZ.md](SITE_MATRIZ.md) | Páginas, portfólio, redirects, publicação |
+| [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) | Índice de memorias Cursor — retomada de desenvolvimento |
 | [memoria-projeto.txt](memoria-projeto.txt) | Memória rápida do repositório |
 | [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.md) | Matriz vs lojas — uma fonte por tipo de conteúdo |
 | [CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md](CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md) | Antes de PR/deploy visível |

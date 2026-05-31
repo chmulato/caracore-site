@@ -82,6 +82,7 @@ REFERÊNCIAS CRUZADAS
 
   Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.txt
   Componentes padrão das lojas: ver COMPONENTES_LOJA.txt
+  Índice memorias (retomada): docs/ECOSYSTEM_MEMORIA.md
   Memória Cursor da matriz: caracore-site/.cursor/rules/project-memory.mdc
   Portfólio: https://www.caracore.com.br/portfolio.html
   Mapa visual: https://www.caracore.com.br/ecosistema.html

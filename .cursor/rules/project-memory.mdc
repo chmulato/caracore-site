@@ -6,7 +6,7 @@ alwaysApply: true
 # Memória — Cara Core Informática (matriz e ambientes)
 
 ## Ambientes utilizados hoje
-- **caracore-site** (este repo): site matriz caracore.com.br — portfólio (dois PDVs Desktop), ecossistema, publicações. **Sem** delivery/pdv-rust (redirect 301 → rust-pdv.caracore.com.br).
+- **caracore-site** (este repo): site matriz caracore.com.br — portfólio (dois PDVs Desktop), ecossistema, publicações. **`delivery/`** = stubs HTML (GitHub Pages) + `_redirects`/`vercel.json`; CTAs novos → lojas, não `/delivery/`.
 - **caracore-wiki:** wiki institucional — https://wiki.caracore.com.br/ (hub PDV Java + Rust, ecossistema, trilhas).
 - **caracore-pdv:** oficina **PDV Desktop (Java · JavaFX)** — Java 21, Quarkus, JavaFX; canal **v3.1.2-free**.
 - **caracore-pdv-releases:** loja PDV Desktop Java — https://pdv.caracore.com.br/
@@ -24,6 +24,7 @@ alwaysApply: true
 - **VALIDACAO_NEGOCIO.txt** — validação comercial (produtos, preços, fluxos; 2026-05).
 - **STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt** — resumo executivo estratégia e próximos passos.
 - **docs/memoria-projeto.txt** — memória resumida da matriz.
+- **docs/ECOSYSTEM_MEMORIA.md** — índice único para retomada (âncoras portfólio, memorias por repo, checklists).
 - **docs/INDEX.md** — índice curado da documentação do site.
 - **docs/SITE_MATRIZ.md** — guia operacional (portfólio, redirects, publicação).
 - **docs/PORTFOLIO_README.md** — estrutura do portfolio.html.
@@ -61,8 +62,10 @@ alwaysApply: true
   - **Evitar:** "PDV v3" sozinho, "nova geração", "substitui", "reescrito".
 
 ## Validação matriz ↔ lojas
-- **VALIDACAO_LOJAS_MATRIZ.txt** — checklist portfólio + lojas (sem espelho delivery/)
+- **VALIDACAO_LOJAS_MATRIZ.txt** — checklist portfólio + lojas
 - **docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md** — pré-deploy site
+- **Footers lojas (2026-05):** link `portfolio.html#{âncora}` em todas as lojas principais
+- **mirror-delivery.html:** Ink, RU, MKT, Reino OIDC (alinhamento matriz ↔ vitrine)
 
 ## Wiki institucional (caracore-wiki)
 - **URL:** https://wiki.caracore.com.br/
@@ -125,7 +128,7 @@ Objetivo: expandir qualidade/segurança do site além dos caminhos estáticos j�
 **Candidatos (priorizar com o utilizador):**
 - Links **externos** (HEAD/GET opcional, lista de URLs quebradas, rate limit).
 - **`url()` em CSS** (`@import`, `background-image`) ou ficheiros **PDF** referenciados em HTML.
-- **`delivery_old`** e pasta **`delivery/`** legada: excluídos do scan ou só redirects; conteúdo comercial nas lojas.
+- Pasta **`delivery/`**: stubs redirect (validar destino vs ECOSYSTEM_LOJAS.txt); conteúdo comercial só nas lojas.
 - **Integração CI** (GitHub Actions): correr `run-site-validation.ps1` em PR.
 - **`tools/validate_encoding.py`** (`site` | `lojas` | `readme`) — validação de encoding; os `.ps1` homónimos apenas chamam Python.
 - **Mapa do site** (sitemap vs HTML gerado) ou **redirects** (`_redirects`, `vercel.json`) vs ficheiros reais.

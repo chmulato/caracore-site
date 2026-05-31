@@ -9,6 +9,11 @@
   color: white;
 }
 
+.nav-badge-pdv-rust {
+  background: linear-gradient(120deg, #0b3a66 0%, #14538e 55%, #c45c26 100%);
+  color: white;
+}
+
 .nav-badge-hub {
   background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%);
   color: white;
@@ -58,6 +63,14 @@
   box-shadow: 0 4px 16px 0 rgba(0, 102, 255, 0.45);
 }
 
+#caracore-pdv-rust .btn-project {
+  background: linear-gradient(120deg, #0b3a66 0%, #14538e 55%, #c45c26 100%);
+}
+
+#caracore-pdv-rust .btn-project:hover {
+  box-shadow: 0 4px 16px 0 rgba(11, 58, 102, 0.45);
+}
+
 /* Cards de projetos */
 .project-card {
   background: rgba(255,255,255,0.93);
@@ -94,6 +107,10 @@
 
 .project-header.pdv {
   background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+}
+
+.project-header.pdv-rust {
+  background: linear-gradient(120deg, #0b3a66 0%, #14538e 55%, #c45c26 100%);
 }
 
 .project-header.hub {

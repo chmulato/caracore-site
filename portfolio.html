@@ -21,8 +21,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfólio — Ativos de Engenharia de Elite | Cara Core Informática — Bunker Digital</title>
-  <meta name="description" content="Portfólio Cara Core: PDV Desktop, Minerador 4.0, Reino OIDC, Hub, Circuito Ferradura, Área 51 (identidade institucional licenciada). Java 21, Python, licenciamento de ativo, soberania local.">
-  <meta name="keywords" content="Portfólio, Bunker Digital, Soberania Local, CaraCore PDV Desktop, Minerador 4.0, ETE, CaraCore Hub, Licenciamento de Ativo, OIDC, Java 21, JavaFX, Cara Core Informática, Python, Circuito Ferradura">
+  <meta name="description" content="Portfólio Cara Core: PDV Desktop (Java), PDV v3 (Rust), Minerador 4.0, Reino OIDC, Hub, Circuito Ferradura, Área 51. Java 21, Rust, Tauri, licenciamento de ativo, soberania local.">
+  <meta name="keywords" content="Portfólio, Bunker Digital, CaraCore PDV Desktop, PDV v3 Rust, Tauri, Minerador 4.0, OIDC, Java 21, JavaFX, Cara Core Informática">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
@@ -115,13 +115,16 @@
           Soluções em <strong>Bunker Digital</strong>: robustas, estáveis e com soberania local. Para negócios que possuem dados sensíveis, indústrias que não podem parar e quem busca escapar da corrida de ratos das Big Tech.
         </p>
         <p class="text-muted mb-4 small">
-          <strong>Ativos de engenharia de elite</strong>: aplicativos Windows Desktop e identidade — Java 21 + JavaFX, licenciamento de ativo. Destaque: <strong>CaraCore PDV Desktop</strong>, primeiro pronto para a Reforma Tributária 2026 com motor fiscal soberano. <strong>Reino OIDC v2.0.0-RC1</strong> (sala de estudo sobre identidade digital), Minerador 4.0, Circuito Ferradura. <strong>Mkt: gratuito — não vendemos.</strong> Infraestrutura local; a internet serve só para sincronização quando você decidir.
+          <strong>Ativos de engenharia de elite</strong>: aplicativos Windows Desktop e identidade — Java 21 + JavaFX e a nova linha <strong>Cara Core PDV v3 (Rust + Tauri)</strong>. A linha Java permanece como oferta madura multi-plataforma; o PDV v3 está em piloto Windows com instaladores em português do Brasil. <strong>Reino OIDC v2.0.0-RC1</strong>, Minerador 4.0, Circuito Ferradura. <strong>Mkt: gratuito — não vendemos.</strong>
         </p>
         
         <!-- Botões de Navegação para Projetos -->
         <div class="d-flex flex-wrap gap-3 mb-4 justify-content-center">
           <a href="#caracore-pdv" class="text-decoration-none">
-            <span class="badge nav-badge-pdv fs-6 px-3 py-2"><i class="bi bi-cash"></i> CaraCore PDV Desktop</span>
+            <span class="badge nav-badge-pdv fs-6 px-3 py-2"><i class="bi bi-cash"></i> PDV Desktop (Java)</span>
+          </a>
+          <a href="#caracore-pdv-rust" class="text-decoration-none">
+            <span class="badge nav-badge-pdv-rust fs-6 px-3 py-2"><i class="bi bi-lightning-charge"></i> PDV v3 (Rust)</span>
           </a>
           <a href="#caracore-ink-agenda" class="text-decoration-none">
             <span class="badge nav-badge-ink fs-6 px-3 py-2"><i class="bi bi-calendar-check"></i> Ink Agenda</span>
@@ -159,7 +162,7 @@
   </div>
 </header>
 
-<!-- Projeto 1: CaraCore PDV -->
+<!-- Projeto 1: CaraCore PDV Desktop (Java · JavaFX) — linha madura -->
 <section id="caracore-pdv" class="py-5">
   <div class="container">
   <div class="project-card">
@@ -167,9 +170,10 @@
       <h2 class="mb-3">
         <i class="bi bi-cash"></i> CaraCore PDV Desktop
       </h2>
+      <p class="lead mb-2">Linha madura · Java 21 · JavaFX · Spring Boot</p>
       <p class="lead mb-3">PDV soberano para pequenos e médios negócios. Mantém a operação de caixa em pé, acompanha a transição tributária e protege a rotina da loja mesmo quando a internet falha. Oferta Free e Premium para crescer sem ruptura.</p>
       <div class="alert alert-success mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-megaphone-fill"></i> <strong>Oferta pública atual.</strong> Entrada objetiva para pequenos e médios negócios que precisam vender com continuidade, controle e segurança operacional.</div>
+        <i class="bi bi-megaphone-fill"></i> <strong>Oferta pública madura (multi-plataforma).</strong> Windows · Linux · macOS — canal atual <strong>v3.1.2-free</strong>. A nova linha Rust (<a href="#caracore-pdv-rust" class="alert-link">PDV v3</a>) complementa o roadmap em piloto Windows.</div>
       <div>
         <span class="tech-badge">Java 21</span>
         <span class="tech-badge">Spring Boot</span>
@@ -241,8 +245,8 @@
         <a href="https://pdv.caracore.com.br/download.html" class="btn-project me-2">
           <i class="bi bi-download"></i> Baixar EXE
         </a>
-        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.1.1-free" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-github"></i> Releases GitHub v3.1.1-free
+        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-github"></i> Releases GitHub
         </a>
         <a href="https://pdv.caracore.com.br/tecnologia.html" class="btn-project me-2">
           <i class="bi bi-code-slash"></i> Tecnologia
@@ -250,8 +254,8 @@
         <a href="https://pdv.caracore.com.br/wiki.html" class="btn-project me-2" target="_blank" rel="noopener">
           <i class="bi bi-journal-code"></i> Wiki
         </a>
-        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.1.1-free" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-megaphone"></i> Novidades da v3.1.1-free
+        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-megaphone"></i> Novidades da release
         </a>
         <div class="mt-3">
           <small class="text-muted">
@@ -264,6 +268,98 @@
     </div>
     
     <!-- Botão Voltar ao Topo -->
+    <div class="text-start mt-4 px-4 pb-3">
+      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-up"></i> Voltar ao Topo
+      </a>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- Projeto 1b: Cara Core PDV v3 (Rust + Tauri) — piloto Windows -->
+<section id="caracore-pdv-rust" class="py-5 bg-light">
+  <div class="container">
+  <div class="project-card">
+    <div class="project-header pdv-rust">
+      <h2 class="mb-3">
+        <i class="bi bi-lightning-charge"></i> Cara Core PDV v3 (Rust)
+      </h2>
+      <p class="lead mb-2">Nova geração · Rust · Tauri 2 · React · SQLite local</p>
+      <p class="lead mb-3">Ponto de venda nativo para Windows com instaladores em <strong>Português do Brasil</strong> (NSIS + MSI pt-BR). Pensado para lojas piloto que querem performance, binário enxuto e operação local-first — sem abandonar a linha Java madura.</p>
+      <div class="alert alert-warning mb-3 py-2 px-3" role="alert">
+        <i class="bi bi-flag-fill"></i> <strong>Fase piloto (Windows).</strong> Release <strong>v0.1.0</strong> com NSIS, MSI <code>*_pt-BR.msi</code> e ZIP portátil. Piloto assistido via <a href="mailto:suporte@caracore.com.br" class="alert-link">suporte@caracore.com.br</a>.</div>
+      <div>
+        <span class="tech-badge">Rust</span>
+        <span class="tech-badge">Tauri 2</span>
+        <span class="tech-badge">React</span>
+        <span class="tech-badge">SQLite</span>
+        <span class="tech-badge">Windows 64-bit</span>
+        <span class="tech-badge">Instaladores pt-BR</span>
+        <span class="tech-badge">WebView2</span>
+      </div>
+    </div>
+
+    <div class="card-body p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="h4 mb-3">
+            <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+          </h3>
+          <p>
+            O <strong>PDV v3 (Rust)</strong> é a aposta de engenharia da Cara Core para a próxima década do varejo local: stack moderna, artefatos reprodutíveis, gates de release automatizados e distribuição profissional (MSI, NSIS, manifesto SHA256).
+          </p>
+          <p><strong>Benefícios nesta fase:</strong></p>
+          <ul class="feature-list">
+            <li>Instaladores localizados para o Brasil (pt-BR)</li>
+            <li>Operação offline com dados em <code>%APPDATA%\caracore-pdv\</code></li>
+            <li>Binário nativo com perfil release otimizado (LTO, strip)</li>
+            <li>Pipeline de release separado (oficina → loja GitHub Pages)</li>
+            <li>Coexistência explícita com a linha Java — migração gradual, sem ruptura</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h4 mb-3">
+            <i class="bi bi-book-fill text-info"></i> Para Leigos
+          </h3>
+          <p>
+            É o <strong>mesmo tipo de sistema de caixa</strong> que você já conhece na linha Java, porém reconstruído com tecnologia mais recente para rodar direto no Windows — mais leve e com instalador em português.
+          </p>
+          <p><strong>Quando escolher cada linha:</strong></p>
+          <ul class="feature-list">
+            <li><strong>Java (PDV Desktop):</strong> loja que já usa ou precisa de Linux/macOS hoje</li>
+            <li><strong>Rust (PDV v3):</strong> piloto Windows, TI que prefere MSI pt-BR ou quer testar a nova geração</li>
+          </ul>
+          <p class="mb-0">Os dois compartilham a filosofia Bunker: vender localmente, fechar caixa e manter os dados sob controle da loja.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="delivery/pdv-rust/index.html" class="btn-project me-2">
+          <i class="bi bi-house-door"></i> Matriz do produto (site)
+        </a>
+        <a href="https://chmulato.github.io/caracore-rust-pdv-releases/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Loja e vitrine
+        </a>
+        <a href="https://chmulato.github.io/caracore-rust-pdv-releases/download.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-download"></i> Download v0.1.0
+        </a>
+        <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.0" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-github"></i> Release GitHub
+        </a>
+        <a href="https://pdv.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-cash-register"></i> Linha Java (madura)
+        </a>
+        <div class="mt-3">
+          <small class="text-muted">
+            <i class="bi bi-lock-fill"></i> Código-fonte privado (oficina) |
+            <i class="bi bi-translate"></i> Instaladores pt-BR |
+            <i class="bi bi-handshake"></i> Piloto assistido
+          </small>
+        </div>
+      </div>
+    </div>
+
     <div class="text-start mt-4 px-4 pb-3">
       <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
         <i class="bi bi-arrow-up"></i> Voltar ao Topo

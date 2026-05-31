@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cara Core PDV v3 (Rust) — Piloto Windows | Cara Core Informática</title>
+  <meta name="description" content="Cara Core PDV v3: nova linha em Rust + Tauri 2 para Windows. Instaladores em português do Brasil, operação local e piloto assistido. A linha Java · JavaFX continua disponível.">
+  <link rel="canonical" href="https://www.caracore.com.br/delivery/pdv-rust/">
+  <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
+  <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/caracore-core-typography.css">
+  <link rel="stylesheet" href="../../assets/css/caracore-institutional-components.css">
+  <link rel="icon" href="../../assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="../../index.html">Cara Core Informática</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="../../index.html#produtos">Produtos</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../portfolio.html#caracore-pdv-rust">Portfólio</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../ecosistema.html">Ecossistema</a></li>
+        <li class="nav-item"><a class="nav-link" href="../../index.html#contato">Contato</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<header class="bg-light text-dark py-5 mt-5">
+  <div class="container col-lg-10">
+    <span class="badge cc-badge-pdv-rust mb-3">Piloto Windows · pt-BR</span>
+    <h1 class="display-5 mb-3"><i class="bi bi-lightning-charge"></i> Cara Core PDV v3 (Rust)</h1>
+    <p class="lead mb-4">Nova geração do ponto de venda CaraCore: <strong>Rust + Tauri 2 + React</strong>, instaladores em <strong>Português do Brasil</strong>, dados locais em SQLite e operação pensada para a loja de bairro que não pode parar quando a internet oscila.</p>
+    <div class="alert alert-info py-2 px-3" role="alert">
+      <i class="bi bi-info-circle"></i> A <strong>linha Java · JavaFX</strong> (<a href="https://pdv.caracore.com.br/">PDV Desktop Selo Verde</a>) permanece a oferta madura multi-plataforma (Windows · Linux · macOS). As duas linhas coexistem — escolha conforme o estágio da sua operação.
+    </div>
+    <div class="d-flex flex-wrap gap-2">
+      <a href="https://chmulato.github.io/caracore-rust-pdv-releases/" class="btn btn-cc-pdv-rust" target="_blank" rel="noopener"><i class="bi bi-shop"></i> Loja e download</a>
+      <a href="https://chmulato.github.io/caracore-rust-pdv-releases/download.html" class="btn btn-cc-outline-pdv-rust" target="_blank" rel="noopener"><i class="bi bi-download"></i> Baixar v0.1.0</a>
+      <a href="https://pdv.caracore.com.br/" class="btn btn-cc-outline-pdv"><i class="bi bi-cash-register"></i> Linha Java (madura)</a>
+    </div>
+  </div>
+</header>
+
+<main class="container col-lg-10 py-5">
+  <div class="row g-4">
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm cc-card-pdv-rust">
+        <div class="card-body">
+          <h2 class="h5">Para quem é</h2>
+          <ul class="mb-0">
+            <li>Lojas piloto que querem testar a nova stack nativa no Windows</li>
+            <li>Operações que priorizam instalador MSI/NSIS em português</li>
+            <li>Quem busca performance e binário enxuto com Rust</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100 shadow-sm cc-card-pdv-rust">
+        <div class="card-body">
+          <h2 class="h5">Artefatos oficiais (pt-BR)</h2>
+          <ul class="mb-0">
+            <li>NSIS — assistente em português (<code>*-setup.exe</code>)</li>
+            <li>MSI WiX — <code>*_pt-BR.msi</code> para TI</li>
+            <li>ZIP portátil com <code>LEIA-ME-INSTALACAO.txt</code></li>
+            <li><code>SHA256SUMS.txt</code> e manifesto na release</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="mt-5">
+    <h2 class="h4 mb-3">Duas linhas PDV — mesma filosofia Bunker</h2>
+    <div class="table-responsive">
+      <table class="table table-bordered align-middle">
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Stack</th>
+            <th>Status</th>
+            <th>Loja</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>PDV Desktop</strong> (Java · JavaFX)</td>
+            <td class="small">Java 21, Spring Boot, SQLite</td>
+            <td><span class="badge bg-success">Oferta madura</span></td>
+            <td><a href="https://pdv.caracore.com.br/">pdv.caracore.com.br</a></td>
+          </tr>
+          <tr>
+            <td><strong>PDV v3</strong> (Rust)</td>
+            <td class="small">Rust, Tauri 2, React, SQLite</td>
+            <td><span class="badge bg-warning text-dark">Piloto Windows</span></td>
+            <td><a href="https://chmulato.github.io/caracore-rust-pdv-releases/" target="_blank" rel="noopener">Loja GitHub Pages</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-dark text-white py-4 mt-4">
+  <div class="container text-center small">
+    <p class="mb-1">© Cara Core Informática · CNPJ 23.969.028/0001-37</p>
+    <p class="mb-0">
+      <a href="../../portfolio.html#caracore-pdv-rust" class="text-white-50">Portfólio</a> ·
+      <a href="mailto:suporte@caracore.com.br" class="text-white-50">suporte@caracore.com.br</a>
+    </p>
+  </div>
+</footer>
+<script src="/css/vendor/bootstrap.bundle.min.js"></script>
+</body>
+</html>

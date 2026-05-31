@@ -433,6 +433,7 @@ section, header {
 
 /* Sistema visual compartilhado dos produtos Cara Core */
 .cc-card-pdv,
+.cc-card-pdv-rust,
 .cc-card-hub,
 .cc-card-seed,
 .cc-card-reino,
@@ -452,6 +453,16 @@ section, header {
 .cc-card-area51 {
   border-color: rgba(102, 126, 234, 0.22) !important;
   border-left-color: #667eea !important;
+}
+
+.cc-card-pdv-rust {
+  border-color: rgba(11, 58, 102, 0.22) !important;
+  border-left-color: #0b3a66 !important;
+  box-shadow: inset 0 0 0 1px rgba(20, 83, 142, 0.06);
+}
+
+#produtos .cc-card-pdv-rust {
+  background: linear-gradient(180deg, rgba(11, 58, 102, 0.07) 0%, rgba(255, 255, 255, 0.96) 20%, rgba(255, 255, 255, 0.96) 100%);
 }
 
 .cc-card-hub,
@@ -508,6 +519,7 @@ section, header {
 }
 
 .btn-cc-pdv,
+.btn-cc-pdv-rust,
 .btn-cc-hub,
 .btn-cc-seed,
 .btn-cc-reino,
@@ -519,6 +531,7 @@ section, header {
 .btn-cc-ru,
 .btn-cc-cso,
 .btn-cc-outline-pdv,
+.btn-cc-outline-pdv-rust,
 .btn-cc-outline-hub,
 .btn-cc-outline-seed,
 .btn-cc-outline-reino,
@@ -542,6 +555,12 @@ section, header {
 .btn-cc-pdv,
 .btn-cc-area51 {
   background: linear-gradient(120deg, #667eea 0%, #764ba2 100%);
+  color: #fff !important;
+  border: none;
+}
+
+.btn-cc-pdv-rust {
+  background: linear-gradient(120deg, #0b3a66 0%, #14538e 55%, #c45c26 100%);
   color: #fff !important;
   border: none;
 }
@@ -597,6 +616,12 @@ section, header {
   border: 2px solid #667eea;
 }
 
+.btn-cc-outline-pdv-rust {
+  background: linear-gradient(120deg, #eef4fb 0%, #e8f0fa 100%);
+  color: #0b3a66 !important;
+  border: 2px solid #14538e;
+}
+
 .btn-cc-outline-hub,
 .btn-cc-outline-cso {
   background: linear-gradient(120deg, #fff7e8 0%, #fff2c7 100%);
@@ -642,6 +667,7 @@ section, header {
 }
 
 .btn-cc-pdv:hover,
+.btn-cc-pdv-rust:hover,
 .btn-cc-hub:hover,
 .btn-cc-seed:hover,
 .btn-cc-reino:hover,
@@ -653,6 +679,7 @@ section, header {
 .btn-cc-ru:hover,
 .btn-cc-cso:hover,
 .btn-cc-outline-pdv:hover,
+.btn-cc-outline-pdv-rust:hover,
 .btn-cc-outline-hub:hover,
 .btn-cc-outline-seed:hover,
 .btn-cc-outline-reino:hover,
@@ -669,6 +696,7 @@ section, header {
 }
 
 .cc-badge-pdv,
+.cc-badge-pdv-rust,
 .cc-badge-hub,
 .cc-badge-seed,
 .cc-badge-reino,
@@ -686,6 +714,10 @@ section, header {
 .cc-badge-pdv,
 .cc-badge-area51 {
   background: linear-gradient(120deg, #667eea 0%, #764ba2 100%) !important;
+}
+
+.cc-badge-pdv-rust {
+  background: linear-gradient(120deg, #0b3a66 0%, #14538e 55%, #c45c26 100%) !important;
 }
 
 .cc-badge-hub,

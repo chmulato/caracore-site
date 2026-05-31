@@ -1,25 +1,31 @@
-# Executa todas as verificações estáticas do caracore-site (links, imagens, integridade 2026).
+# Executa verificacoes estaticas do caracore-site (Etapa 1 + Etapa 2).
 # Uso: powershell -File scripts/run-site-validation.ps1
 $ErrorActionPreference = "Stop"
 $root = Split-Path $PSScriptRoot -Parent
 Set-Location $root
 
-Write-Host ""
-Write-Host ">>> 1/3 find-orphan-links.ps1 (href, src, srcset, poster, og/twitter:image)"
-Write-Host ""
-& (Join-Path $PSScriptRoot "find-orphan-links.ps1")
-if ($LASTEXITCODE -ne 0 -and $null -ne $LASTEXITCODE) { exit $LASTEXITCODE }
+function Invoke-Step {
+    param([string]$Label, [string]$ScriptPath)
+    Write-Host ""
+    Write-Host ">>> $Label"
+    Write-Host ""
+    & $ScriptPath
+    if ($LASTEXITCODE -ne 0 -and $null -ne $LASTEXITCODE) {
+        throw "Falhou: $ScriptPath (exit $LASTEXITCODE)"
+    }
+}
+
+Invoke-Step "1/5 find-orphan-links.ps1" (Join-Path $PSScriptRoot "find-orphan-links.ps1")
+Invoke-Step "2/5 validate_article_images.ps1" (Join-Path $root "tools\validate_article_images.ps1")
+Invoke-Step "3/5 validate_integrity_2026.ps1" (Join-Path $root "tools\validate_integrity_2026.ps1")
+Invoke-Step "4/5 validate-delivery-stubs.ps1" (Join-Path $PSScriptRoot "validate-delivery-stubs.ps1")
+Invoke-Step "5/5 validate-redirects-config.ps1" (Join-Path $PSScriptRoot "validate-redirects-config.ps1")
 
 Write-Host ""
-Write-Host ">>> 2/3 tools/validate_article_images.ps1"
+Write-Host "Relatorios em sala/regis/:"
+Write-Host "  VALIDACAO_IMAGENS_RETRO_BLOG.txt"
+Write-Host "  VALIDACAO_INTEGRIDADE_2026.txt"
+Write-Host "  VALIDACAO_DELIVERY_STUBS.txt"
+Write-Host "  VALIDACAO_REDIRECTS_CONFIG.txt"
 Write-Host ""
-& (Join-Path $root "tools\validate_article_images.ps1")
-
-Write-Host ""
-Write-Host ">>> 3/3 tools/validate_integrity_2026.ps1"
-Write-Host ""
-& (Join-Path $root "tools\validate_integrity_2026.ps1")
-
-Write-Host ""
-Write-Host "Relatorios em sala/regis/: VALIDACAO_IMAGENS_RETRO_BLOG.txt, VALIDACAO_INTEGRIDADE_2026.txt"
 Write-Host "Concluido."

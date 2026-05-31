@@ -3,6 +3,9 @@ job/
 security/monitor_log.csv
 security/monitor.log
 security/dist/monitor_exe.exe
+# Relatorios gerados pelos scripts de validacao
+sala/regis/VALIDACAO_*.txt
+
 publications/articles/docx/
 publications/articles/md/
 !publications/articles/md/README.md

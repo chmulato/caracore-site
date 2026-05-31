@@ -22,6 +22,7 @@ Usar antes de PR/deploy de alterações visíveis em `caracore.com.br`.
 
 - [ ] `charset` UTF-8 nos primeiros 1024 bytes do HTML (meta charset logo após `<head>`).
 - [ ] Revisão ortográfica em títulos e meta description.
+- [ ] `powershell -File scripts/run-site-validation.ps1` — 5 passos (links, imagens, integridade, delivery stubs, redirects)
 
 ## Pós-deploy
 

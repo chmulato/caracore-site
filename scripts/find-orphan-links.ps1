@@ -192,3 +192,4 @@ foreach ($f in $files) {
 
 Write-Host ("=== Recursos internos em falta (href, src, srcset, poster, og/twitter:image) - total {0} ===" -f $issues.Count)
 $issues | Sort-Object Source, Kind, Ref | ForEach-Object { Write-Host ('{0} | {1} | {2} | {3}' -f $_.Source, $_.Kind, $_.Ref, $_.Detail) }
+if ($issues.Count -gt 0) { exit 1 }

@@ -121,16 +121,20 @@ alwaysApply: true
 
 ---
 
-## Etapa 2 — próxima (a continuar)
+## Etapa 2 — validação ampliada (2026-05)
 
-Objetivo: expandir qualidade/segurança do site além dos caminhos estáticos já cobertos.
+Objetivo: qualidade além dos caminhos estáticos da Etapa 1.
 
-**Candidatos (priorizar com o utilizador):**
-- Links **externos** (HEAD/GET opcional, lista de URLs quebradas, rate limit).
-- **`url()` em CSS** (`@import`, `background-image`) ou ficheiros **PDF** referenciados em HTML.
-- Pasta **`delivery/`**: stubs redirect (validar destino vs ECOSYSTEM_LOJAS.txt); conteúdo comercial só nas lojas.
-- **Integração CI** (GitHub Actions): correr `run-site-validation.ps1` em PR.
-- **`tools/validate_encoding.py`** (`site` | `lojas` | `readme`) — validação de encoding; os `.ps1` homónimos apenas chamam Python.
-- **Mapa do site** (sitemap vs HTML gerado) ou **redirects** (`_redirects`, `vercel.json`) vs ficheiros reais.
+**Implementado:**
+- `scripts/validate-delivery-stubs.ps1` — stubs `delivery/*.html` vs lojas canónicas
+- `scripts/validate-redirects-config.ps1` — `_redirects` + `vercel.json` vs subdomínios
+- `scripts/run-site-validation.ps1` — orquestra 5 passos (Etapa 1 + 2)
+- CI: `.github/workflows/site-validation.yml` (PR/push, `windows-latest`)
+- Retro local ausente: `validate_article_images` / `validate_integrity_2026` fazem SKIP (conteúdo em retro.caracore.com.br)
 
-Ao retomar: executar `scripts/run-site-validation.ps1` e registar o resultado; depois escolher 1–2 itens da lista acima.
+**Relatórios:** `sala/regis/VALIDACAO_DELIVERY_STUBS.txt`, `VALIDACAO_REDIRECTS_CONFIG.txt`
+
+**Pendente (fase 3):**
+- Links externos (HEAD/GET, rate limit)
+- `url()` em CSS e PDFs referenciados em HTML
+- Mapa sitemap vs HTML gerado

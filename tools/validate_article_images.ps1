@@ -2,10 +2,32 @@
 # Use: powershell -File tools/validate_article_images.ps1
 # Note: Do not use ForEach-Object { return } — return exits the whole pipeline.
 $ErrorActionPreference = 'Stop'
-$retroRoot = Join-Path $PSScriptRoot '..\sala\redes\retro\articles' | Resolve-Path
-$blogRoot = Join-Path $PSScriptRoot '..\personal\articles' | Resolve-Path
+$retroPath = Join-Path $PSScriptRoot '..\sala\redes\retro\articles'
+$blogPath = Join-Path $PSScriptRoot '..\personal\articles'
 $outFile = Join-Path (Join-Path $PSScriptRoot '..') 'sala\regis\VALIDACAO_IMAGENS_RETRO_BLOG.txt'
 $issues = New-Object System.Collections.Generic.List[string]
+$retroAvailable = Test-Path -LiteralPath $retroPath
+$blogAvailable = Test-Path -LiteralPath $blogPath
+$retroRoot = $null
+$blogRoot = $null
+if ($retroAvailable) {
+    $retroRoot = (Resolve-Path -LiteralPath $retroPath).Path
+} else {
+    Write-Host "SKIP retro: pasta sala/redes/retro/articles ausente (conteudo canonico em retro.caracore.com.br)"
+}
+if ($blogAvailable) {
+    $blogRoot = (Resolve-Path -LiteralPath $blogPath).Path
+} else {
+    Write-Host "SKIP blog: pasta personal/articles ausente (nao versionada neste repo)"
+}
+if (-not $retroAvailable -and -not $blogAvailable) {
+    $reportDir = Split-Path $outFile -Parent
+    if (-not (Test-Path -LiteralPath $reportDir)) { New-Item -ItemType Directory -Path $reportDir -Force | Out-Null }
+    $skipMsg = "SKIP: retro e blog ausentes neste checkout.`r`n"
+    [System.IO.File]::WriteAllText($outFile, $skipMsg, [Text.UTF8Encoding]::new($false))
+    Write-Host "Report: $outFile"
+    exit 0
+}
 
 function Get-RetroArticleId([string]$name) {
   if ($name -match '^(\d{4}_\d{2}_\d{2})_article_(\d+)\.html$') { return [int]$Matches[2] }
@@ -22,6 +44,7 @@ function Is-BlogIndexPage([string]$name) {
   return $name -match '_index\.html$'
 }
 
+if ($retroAvailable) {
 foreach ($file in Get-ChildItem $retroRoot -Filter '*.html' -File) {
   $name = $file.Name
   $aid = Get-RetroArticleId $name
@@ -53,7 +76,9 @@ foreach ($file in Get-ChildItem $retroRoot -Filter '*.html' -File) {
     }
   }
 }
+}
 
+if ($blogAvailable) {
 foreach ($file in Get-ChildItem $blogRoot -Filter '*.html' -File) {
   $name = $file.Name
   $prefix = Get-BlogPrefix $name
@@ -80,6 +105,7 @@ foreach ($file in Get-ChildItem $blogRoot -Filter '*.html' -File) {
     }
   }
 }
+}
 
 $hdr = @"
 Validation: $(Get-Date -Format 'yyyy-MM-dd HH:mm')
@@ -101,7 +127,9 @@ $body = if ($issues.Count -eq 0) {
   (($sorted) -join "`r`n") + "`r`n"
 }
 $body += "`r`nSummary: RETRO lines=$retroN BLOG lines=$blogN (MISSING = file not found under article folder).`r`n"
-$null = New-Item -ItemType File -Path $outFile -Force
+$reportDir = Split-Path $outFile -Parent
+if (-not (Test-Path -LiteralPath $reportDir)) { New-Item -ItemType Directory -Path $reportDir -Force | Out-Null }
 [System.IO.File]::WriteAllText($outFile, $hdr + $body, [System.Text.UTF8Encoding]::new($false))
 Write-Host "Unique issues: $(($issues | Sort-Object -Unique).Count)"
 Write-Host "Report: $outFile"
+if (($issues | Sort-Object -Unique).Count -gt 0) { exit 1 }

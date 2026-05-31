@@ -1,15 +1,15 @@
 ---
-description: Memória do site Cara Core — matriz (PDV Java loja, PDV v3 Rust delivery/pdv-rust), ambientes e alinhamento oficina · loja
+description: Memória do site Cara Core — matriz (PDV Java loja, PDV Rust+Tauri delivery/pdv-rust), ambientes e alinhamento oficina · loja
 alwaysApply: true
 ---
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
 ## Ambientes utilizados hoje
-- **caracore-site** (este repo): site matriz caracore.com.br — delivery/pdv-rust (PDV v3 Rust), portfólio (PDV Java + PDV Rust), ecossistema, publicações.
+- **caracore-site** (este repo): site matriz caracore.com.br — delivery/pdv-rust (PDV Rust + Tauri), portfólio (PDV Java + PDV Rust), ecossistema, publicações.
 - **caracore-pdv:** oficina do PDV **Java** — Java 21, Spring Boot, JavaFX; loja https://pdv.caracore.com.br/ (caracore-pdv-releases).
-- **caracore-pdv-rust:** oficina do PDV **v3 Rust** — Rust + Tauri 2 + React.
-- **caracore-pdv-rust-releases:** loja PDV v3 — https://chmulato.github.io/caracore-rust-pdv-releases/ (piloto Windows, instaladores pt-BR).
+- **caracore-pdv-rust:** oficina da iniciativa **PDV Rust + Tauri** — Rust + Tauri 2 + React.
+- **caracore-pdv-rust-releases:** loja PDV Rust + Tauri — https://chmulato.github.io/caracore-rust-pdv-releases/ (piloto Windows, release v0.1.0, instaladores pt-BR).
 - **caracore-articles:** sala de notícias (GitHub Pages), série RU 1991 encerrada, epílogo e CTA Loja RU.
 - **caracore-ru:** oficina RU Soberano; caracore-ru-releases = loja RU (lançamento 18/Jun/2026, R$ 29,90).
 - **Outros:** caracore-hub, **caracore-ete** (oficina Minerador 4.0), **caracore-ete-releases** (loja ete.caracore.com.br), caracore-circuito, caracore-oidc, caracore-seed, caracore-area51 e respectivos *-releases quando existirem.
@@ -50,14 +50,17 @@ alwaysApply: true
 - **Oficina:** caracore-pdv (Java 21 · JavaFX).
 - **Portfólio:** `portfolio.html#caracore-pdv` — oferta madura; **não descontinuar** na comunicação.
 
-## Matriz PDV v3 Rust (novo produto)
+## Matriz PDV Rust + Tauri (iniciativa de stack)
 - **delivery/pdv-rust/index.html** — matriz do produto no site caracore.com.br (CTAs loja + comparação com linha Java).
 - **Loja:** caracore-pdv-rust-releases — GitHub Pages (piloto v0.1.0, instaladores pt-BR).
 - **Wiki loja Rust:** `caracore-pdv-rust-releases/docs/wiki/` (index + projeto-pdv).
 - **Oficina:** caracore-pdv-rust (repo GitHub caracore-rust-pdv).
 - **Portfólio:** `portfolio.html#caracore-pdv-rust`.
 - **Wiki institucional:** caracore-wiki — `projeto-pdv.html` (hub), `projeto-pdv-rust.html`.
-- **Mensagem:** coexistência — Java para quem precisa Linux/macOS hoje; Rust para piloto Windows.
+- **Mensagem:** dois **PDVs Desktop** do **mesmo** CaraCore PDV — stacks distintas, **nenhuma substitui a outra**. Ambos instalados no computador da loja.
+  - **Java:** PDV Desktop maduro · canal **v3.1.2-free** · desktop multi-plataforma (Windows · Linux · macOS).
+  - **Rust:** PDV Desktop · iniciativa **Rust + Tauri 2** · release **v0.1.0** · piloto Windows.
+  - **Posicionamento V3 (negócio):** PME, PIX Split 2027 — **comum às duas linhas**; não confundir com número de release Java (v3.1.x) nem com a linha Rust (v0.1.x).
 
 ## Wiki institucional (caracore-wiki)
 - **Hub PDV:** `docs/projeto-pdv.html` — escolha Java vs Rust.

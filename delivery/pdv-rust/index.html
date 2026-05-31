@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cara Core PDV v3 (Rust) — Piloto Windows | Cara Core Informática</title>
-  <meta name="description" content="Cara Core PDV v3: nova linha em Rust + Tauri 2 para Windows. Instaladores em português do Brasil, operação local e piloto assistido. A linha Java · JavaFX continua disponível.">
+  <title>Cara Core PDV Desktop (Rust + Tauri) — Piloto Windows | Cara Core Informática</title>
+  <meta name="description" content="PDV Desktop com Rust + Tauri 2: segurança de memória, binário enxuto, instaladores pt-BR. Release v0.1.0. PDV Desktop Java (v3.1.2-free) continua disponível.">
   <link rel="canonical" href="https://www.caracore.com.br/delivery/pdv-rust/">
   <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
@@ -33,16 +33,16 @@
 
 <header class="bg-light text-dark py-5 mt-5">
   <div class="container col-lg-10">
-    <span class="badge cc-badge-pdv-rust mb-3">Piloto Windows · pt-BR</span>
-    <h1 class="display-5 mb-3"><i class="bi bi-lightning-charge"></i> Cara Core PDV v3 (Rust)</h1>
-    <p class="lead mb-4">Nova geração do ponto de venda CaraCore: <strong>Rust + Tauri 2 + React</strong>, instaladores em <strong>Português do Brasil</strong>, dados locais em SQLite e operação pensada para a loja de bairro que não pode parar quando a internet oscila.</p>
+    <span class="badge cc-badge-pdv-rust mb-3">Iniciativa Rust + Tauri 2 · piloto Windows</span>
+    <h1 class="display-5 mb-3"><i class="bi bi-lightning-charge"></i> Cara Core PDV Desktop (Rust + Tauri)</h1>
+    <p class="lead mb-4">Iniciativa de produto <strong>desktop</strong> do ecossistema CaraCore PDV: explorar as qualidades de <strong>Rust</strong> (segurança de memória, performance) e <strong>Tauri 2</strong> (shell desktop moderno, binário enxuto) com instaladores em <strong>Português do Brasil</strong>, SQLite local e operação Bunker para a loja de bairro.</p>
     <div class="alert alert-info py-2 px-3" role="alert">
-      <i class="bi bi-info-circle"></i> A <strong>linha Java · JavaFX</strong> (<a href="https://pdv.caracore.com.br/">PDV Desktop Selo Verde</a>) permanece a oferta madura multi-plataforma (Windows · Linux · macOS). As duas linhas coexistem — escolha conforme o estágio da sua operação.
+      <i class="bi bi-info-circle"></i> <strong>Dois PDVs Desktop, mesma família:</strong> o <strong>PDV Desktop (Java · JavaFX)</strong> permanece a oferta madura em <a href="https://pdv.caracore.com.br/">pdv.caracore.com.br</a> (canal <strong>v3.1.2-free</strong>, Windows · Linux · macOS). Esta linha Rust + Tauri é também <strong>desktop</strong>, release <strong>v0.1.0</strong>, piloto Windows — faixas distintas, <strong>sem substituição</strong>.
     </div>
     <div class="d-flex flex-wrap gap-2">
       <a href="https://chmulato.github.io/caracore-rust-pdv-releases/" class="btn btn-cc-pdv-rust" target="_blank" rel="noopener"><i class="bi bi-shop"></i> Loja e download</a>
       <a href="https://chmulato.github.io/caracore-rust-pdv-releases/download.html" class="btn btn-cc-outline-pdv-rust" target="_blank" rel="noopener"><i class="bi bi-download"></i> Baixar v0.1.0</a>
-      <a href="https://pdv.caracore.com.br/" class="btn btn-cc-outline-pdv"><i class="bi bi-cash-register"></i> Linha Java (madura)</a>
+      <a href="https://pdv.caracore.com.br/" class="btn btn-cc-outline-pdv"><i class="bi bi-cash-register"></i> PDV Desktop Java</a>
     </div>
   </div>
 </header>
@@ -52,11 +52,12 @@
     <div class="col-md-6">
       <div class="card h-100 shadow-sm cc-card-pdv-rust">
         <div class="card-body">
-          <h2 class="h5">Para quem é</h2>
+          <h2 class="h5">Por que Rust + Tauri 2</h2>
           <ul class="mb-0">
-            <li>Lojas piloto que querem testar a nova stack nativa no Windows</li>
-            <li>Operações que priorizam instalador MSI/NSIS em português</li>
-            <li>Quem busca performance e binário enxuto com Rust</li>
+            <li><strong>Rust:</strong> segurança de memória, binário nativo enxuto, concorrência previsível</li>
+            <li><strong>Tauri 2:</strong> shell desktop leve (WebView2), empacotamento MSI/NSIS pt-BR</li>
+            <li><strong>React:</strong> interface operacional moderna, mantendo dados locais em SQLite</li>
+            <li>Mesmo posicionamento de negócio (PME, operação local) — stack diferente da linha Java</li>
           </ul>
         </div>
       </div>
@@ -64,12 +65,11 @@
     <div class="col-md-6">
       <div class="card h-100 shadow-sm cc-card-pdv-rust">
         <div class="card-body">
-          <h2 class="h5">Artefatos oficiais (pt-BR)</h2>
+          <h2 class="h5">Para quem é o piloto</h2>
           <ul class="mb-0">
-            <li>NSIS — assistente em português (<code>*-setup.exe</code>)</li>
-            <li>MSI WiX — <code>*_pt-BR.msi</code> para TI</li>
-            <li>ZIP portátil com <code>LEIA-ME-INSTALACAO.txt</code></li>
-            <li><code>SHA256SUMS.txt</code> e manifesto na release</li>
+            <li>Lojas piloto Windows com acompanhamento Cara Core</li>
+            <li>TI que prefere MSI pt-BR ou quer avaliar Rust/Tauri na prática</li>
+            <li>Quem busca performance e artefatos reprodutíveis (SHA256, manifesto)</li>
           </ul>
         </div>
       </div>
@@ -77,13 +77,15 @@
   </div>
 
   <section class="mt-5">
-    <h2 class="h4 mb-3">Duas linhas PDV — mesma filosofia Bunker</h2>
+    <h2 class="h4 mb-3">Duas linhas PDV Desktop — mesma filosofia Bunker</h2>
+    <p class="text-muted small"><strong>Ambos são aplicativos desktop</strong> instalados no computador da loja — dados locais, operação Bunker. A diferença está na stack e no alcance: Java (Windows · Linux · macOS, oferta madura) e Rust + Tauri (piloto Windows). O <strong>posicionamento V3 de negócio</strong> (PME, PIX Split 2027) vale para ambas. Os números de release são independentes: Java <strong>v3.1.x</strong> ≠ Rust <strong>v0.1.x</strong>.</p>
     <div class="table-responsive">
       <table class="table table-bordered align-middle">
         <thead>
           <tr>
-            <th>Produto</th>
+            <th>Linha</th>
             <th>Stack</th>
+            <th>Release / canal</th>
             <th>Status</th>
             <th>Loja</th>
           </tr>
@@ -92,12 +94,14 @@
           <tr>
             <td><strong>PDV Desktop</strong> (Java · JavaFX)</td>
             <td class="small">Java 21, Spring Boot, SQLite</td>
+            <td class="small">v3.1.2-free</td>
             <td><span class="badge bg-success">Oferta madura</span></td>
             <td><a href="https://pdv.caracore.com.br/">pdv.caracore.com.br</a></td>
           </tr>
           <tr>
-            <td><strong>PDV v3</strong> (Rust)</td>
+            <td><strong>PDV Desktop</strong> (Rust + Tauri 2)</td>
             <td class="small">Rust, Tauri 2, React, SQLite</td>
+            <td class="small">v0.1.0 (piloto)</td>
             <td><span class="badge bg-warning text-dark">Piloto Windows</span></td>
             <td><a href="https://chmulato.github.io/caracore-rust-pdv-releases/" target="_blank" rel="noopener">Loja GitHub Pages</a></td>
           </tr>

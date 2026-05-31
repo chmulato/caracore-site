@@ -127,7 +127,7 @@
           <div class="row align-items-center">
             <div class="col-md-8">
               <h2 class="h5"><i class="bi bi-cash-stack text-primary me-2"></i> PDV: duas linhas, um alicerce</h2>
-              <p class="mb-2 text-muted"><strong>CaraCore PDV Desktop (Java · JavaFX)</strong> — oferta madura multi-plataforma, canal <strong>v3.1.2-free</strong>, SQLite offline-first e motor fiscal IBS/CBS. <strong>Cara Core PDV v3 (Rust + Tauri)</strong> — piloto Windows com instaladores pt-BR (NSIS, MSI, ZIP). As duas linhas coexistem; a Java continua para quem precisa de Linux/macOS hoje.</p>
+              <p class="mb-2 text-muted"><strong>CaraCore PDV Desktop (Java · JavaFX)</strong> — desktop multi-plataforma maduro, canal <strong>v3.1.2-free</strong>, SQLite offline-first e motor fiscal IBS/CBS. <strong>Cara Core PDV Desktop (Rust + Tauri 2)</strong> — também desktop, iniciativa que explora Rust e Tauri (segurança de memória, binário enxuto, instaladores pt-BR) em piloto Windows. Mesmo posicionamento de negócio (PME, operação local); <strong>nenhuma linha substitui a outra</strong>.</p>
               <h2 class="h5 mt-3"><i class="bi bi-calendar-event text-success me-2"></i> Ink Agenda: linha multiplataforma <span class="badge bg-success ms-1" style="font-size:0.65rem;vertical-align:middle;">RC8 publicada</span></h2>
               <p class="mb-2 text-muted">Agenda e controle financeiro para estúdios de tatuagem (Java 21 + JavaFX 21.0.11). A loja da RC8 está publicada com canal oficial de release. Windows, macOS e Linux disponíveis; iPhone em preparação. <em><a href="https://ink.caracore.com.br/" class="text-decoration-none">Ver apresentação e loja</a>.</em></p>
               <h2 class="h5 mt-3"><i class="bi bi-diagram-3 text-primary me-2"></i> Hub: o sistema nervoso <span class="badge bg-warning text-dark ms-1" style="font-size:0.65rem;vertical-align:middle;">Lançamento 06/Abr/2027</span></h2>
@@ -135,7 +135,7 @@
             </div>
             <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
               <a href="portfolio.html#caracore-pdv" class="btn btn-cc-outline-pdv me-2 mb-1">PDV Java</a>
-              <a href="portfolio.html#caracore-pdv-rust" class="btn btn-cc-outline-pdv-rust me-2 mb-1">PDV v3 Rust</a>
+              <a href="portfolio.html#caracore-pdv-rust" class="btn btn-cc-outline-pdv-rust me-2 mb-1">PDV Rust + Tauri</a>
               <a href="https://ink.caracore.com.br/" class="btn btn-cc-outline-ink me-2 mb-1">Ink v2.0.0</a>
               <a href="portfolio.html#caracore-hub" class="btn btn-cc-outline-hub mb-1">Hub</a>
             </div>
@@ -227,7 +227,7 @@
               </tr>
               <tr>
                 <td>2</td>
-                <td>Cara Core PDV v3 (Rust)</td>
+                <td>Cara Core PDV Desktop (Rust + Tauri)</td>
                 <td><a href="https://chmulato.github.io/caracore-rust-pdv-releases/" class="text-decoration-none" target="_blank" rel="noopener">Loja GitHub Pages (piloto)</a></td>
               </tr>
               <tr>
@@ -370,8 +370,8 @@
                 <td class="small">Canal atual v3.1.2-free em <a href="https://pdv.caracore.com.br/" class="text-decoration-none">pdv.caracore.com.br</a>.</td>
               </tr>
               <tr class="eco-roadmap-row-upcoming">
-                <td><a href="https://chmulato.github.io/caracore-rust-pdv-releases/" class="fw-semibold text-decoration-none" target="_blank" rel="noopener">Cara Core PDV v3 (Rust)</a></td>
-                <td class="text-muted small">Nova linha Rust + Tauri 2 — piloto Windows, instaladores pt-BR.</td>
+                <td><a href="https://chmulato.github.io/caracore-rust-pdv-releases/" class="fw-semibold text-decoration-none" target="_blank" rel="noopener">Cara Core PDV Desktop (Rust + Tauri)</a></td>
+                <td class="text-muted small">Iniciativa de stack Rust + Tauri 2 — piloto Windows, instaladores pt-BR; release <strong>v0.1.0</strong> (distinta do canal Java v3.1.x).</td>
                 <td class="small">Equipe Cara Core</td>
                 <td><span class="badge bg-warning text-dark">Em andamento</span></td>
                 <td class="small">01/05/2026</td>
@@ -474,7 +474,7 @@ flowchart TB
     end
     subgraph PRODUTOS["Produtos"]
         P1[PDV Desktop Java]
-        P1r[PDV v3 Rust]
+        P1r[PDV Rust + Tauri]
         P2[Minerador 4.0]
         P3[Reino OIDC]
         P4[Circuito Ferradura]

@@ -21,7 +21,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfólio — Ativos de Engenharia de Elite | Cara Core Informática — Bunker Digital</title>
-  <meta name="description" content="Portfólio Cara Core: PDV Desktop (Java), PDV Desktop (Rust + Tauri), Minerador 4.0, Reino OIDC, Hub, Circuito Ferradura, Área 51. Java 21, Rust, Tauri, licenciamento de ativo, soberania local.">
+  <meta name="description" content="Portfólio Cara Core: PDV Desktop Java e Rust+Tauri, Ink Agenda, Hub, Reino OIDC, Circuito Ferradura. Bunker Digital, soberania local, releases documentadas.">
   <meta name="keywords" content="Portfólio, Bunker Digital, CaraCore PDV Desktop, PDV Rust Tauri, Tauri, Minerador 4.0, OIDC, Java 21, JavaFX, Cara Core Informática">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
@@ -111,56 +111,167 @@
         <h1 class="display-4 mb-3">
           <i class="bi bi-folder-fill text-primary"></i> Portfólio — Ativos de Engenharia de Elite
         </h1>
-        <p class="lead mb-4">
-          Soluções em <strong>Bunker Digital</strong>: robustas, estáveis e com soberania local. Para negócios que possuem dados sensíveis, indústrias que não podem parar e quem busca escapar da corrida de ratos das Big Tech.
+        <p class="lead mb-3">
+          Soluções em <strong>Bunker Digital</strong>: desktop soberano, operação local e dados sob controle da empresa.
         </p>
         <p class="text-muted mb-4 small">
-          <strong>Ativos de engenharia de elite</strong>: aplicativos <strong>desktop</strong> — Java 21 + JavaFX (PDV Desktop maduro) e a iniciativa <strong>Cara Core PDV Desktop (Rust + Tauri 2)</strong>. Mesmo posicionamento de negócio para PMEs; stacks distintas; nenhuma linha substitui a outra. <strong>Reino OIDC v2.0.0-RC1</strong>, Minerador 4.0, Circuito Ferradura. <strong>Mkt: gratuito — não vendemos.</strong>
+          Cada produto tem loja própria, release documentada e linguagem clara — executiva para gestores, acessível para quem está começando.
         </p>
-        
-        <!-- Botões de Navegação para Projetos -->
-        <div class="d-flex flex-wrap gap-3 mb-4 justify-content-center">
-          <a href="#caracore-pdv" class="text-decoration-none">
-            <span class="badge nav-badge-pdv fs-6 px-3 py-2"><i class="bi bi-cash"></i> PDV Desktop (Java)</span>
-          </a>
-          <a href="#caracore-pdv-rust" class="text-decoration-none">
-            <span class="badge nav-badge-pdv-rust fs-6 px-3 py-2"><i class="bi bi-lightning-charge"></i> PDV Desktop Rust + Tauri</span>
-          </a>
-          <a href="#caracore-ink-agenda" class="text-decoration-none">
-            <span class="badge nav-badge-ink fs-6 px-3 py-2"><i class="bi bi-calendar-check"></i> Ink Agenda</span>
-          </a>
-          <a href="#minerador-ete" class="text-decoration-none">
-            <span class="badge nav-badge-ete fs-6 px-3 py-2"><i class="bi bi-droplet-half"></i> Minerador 4.0</span>
-          </a>
-          <a href="#reino-oidc" class="text-decoration-none">
-            <span class="badge nav-badge-reino fs-6 px-3 py-2"><i class="bi bi-shield-check"></i> Reino OIDC</span>
-          </a>
-          <a href="#circuito-python" class="text-decoration-none">
-            <span class="badge nav-badge-python fs-6 px-3 py-2"><i class="bi bi-mortarboard-fill"></i> Circuito Ferradura</span>
-          </a>
-          <a href="#caracore-hub" class="text-decoration-none">
-            <span class="badge nav-badge-hub fs-6 px-3 py-2"><i class="bi bi-cart-fill"></i> CaraCore Hub</span>
-          </a>
-          <a href="#area-51" class="text-decoration-none">
-            <span class="badge nav-badge-area51 fs-6 px-3 py-2"><i class="bi bi-shield-lock"></i> Área 51</span>
-          </a>
-          <a href="#caracore-mkt" class="text-decoration-none">
-            <span class="badge bg-success fs-6 px-3 py-2"><i class="bi bi-gift"></i> Cara Core Mkt (gratuito)</span>
-          </a>
-          <a href="#caracore-seed" class="text-decoration-none">
-            <span class="badge nav-badge-seed fs-6 px-3 py-2"><i class="bi bi-key-fill"></i> CaraCore Seed</span>
-          </a>
-          <a href="#caracore-cso" class="text-decoration-none">
-            <span class="badge bg-info fs-6 px-3 py-2"><i class="bi bi-truck"></i> Cara Core CSO</span>
-          </a>
-          <a href="#caracore-ru" class="text-decoration-none">
-            <span class="badge bg-secondary fs-6 px-3 py-2"><i class="bi bi-mortarboard"></i> RU Soberano</span>
-          </a>
-        </div>
+
+        <nav class="portfolio-toc" aria-label="Índice do portfólio">
+          <div class="portfolio-toc-title"><i class="bi bi-list-ul"></i> Índice por categoria</div>
+
+          <div class="portfolio-toc-group">
+            <div class="portfolio-toc-group-label">Varejo e caixa</div>
+            <div class="portfolio-toc-links">
+              <a href="#pdv-coexistencia" class="text-decoration-none"><span class="badge nav-badge-pdv-rust fs-6 px-3 py-2"><i class="bi bi-diagram-2"></i> Duas linhas PDV</span></a>
+              <a href="#caracore-pdv" class="text-decoration-none"><span class="badge nav-badge-pdv fs-6 px-3 py-2"><i class="bi bi-cash"></i> PDV Java</span></a>
+              <a href="#caracore-pdv-rust" class="text-decoration-none"><span class="badge nav-badge-pdv-rust fs-6 px-3 py-2"><i class="bi bi-lightning-charge"></i> PDV Rust</span></a>
+              <a href="#caracore-ink-agenda" class="text-decoration-none"><span class="badge nav-badge-ink fs-6 px-3 py-2"><i class="bi bi-calendar-check"></i> Ink Agenda</span></a>
+            </div>
+          </div>
+
+          <div class="portfolio-toc-group">
+            <div class="portfolio-toc-group-label">Operação e distribuição</div>
+            <div class="portfolio-toc-links">
+              <a href="#caracore-hub" class="text-decoration-none"><span class="badge nav-badge-hub fs-6 px-3 py-2"><i class="bi bi-cart-fill"></i> CaraCore Hub</span></a>
+              <a href="#caracore-cso" class="text-decoration-none"><span class="badge bg-info fs-6 px-3 py-2"><i class="bi bi-truck"></i> Cara Core CSO</span></a>
+            </div>
+          </div>
+
+          <div class="portfolio-toc-group">
+            <div class="portfolio-toc-group-label">Educação e formação</div>
+            <div class="portfolio-toc-links">
+              <a href="#reino-oidc" class="text-decoration-none"><span class="badge nav-badge-reino fs-6 px-3 py-2"><i class="bi bi-shield-check"></i> Reino OIDC</span></a>
+              <a href="#circuito-python" class="text-decoration-none"><span class="badge nav-badge-python fs-6 px-3 py-2"><i class="bi bi-mortarboard-fill"></i> Circuito Ferradura</span></a>
+            </div>
+          </div>
+
+          <div class="portfolio-toc-group">
+            <div class="portfolio-toc-group-label">Infraestrutura e interno</div>
+            <div class="portfolio-toc-links">
+              <a href="#area-51" class="text-decoration-none"><span class="badge nav-badge-area51 fs-6 px-3 py-2"><i class="bi bi-shield-lock"></i> Área 51</span></a>
+              <a href="#caracore-seed" class="text-decoration-none"><span class="badge nav-badge-seed fs-6 px-3 py-2"><i class="bi bi-key-fill"></i> CaraCore Seed</span></a>
+              <a href="#caracore-mkt" class="text-decoration-none"><span class="badge bg-success fs-6 px-3 py-2"><i class="bi bi-gift"></i> Sala Cara Core</span></a>
+            </div>
+          </div>
+
+          <div class="portfolio-toc-group">
+            <div class="portfolio-toc-group-label">Nicho e simulação</div>
+            <div class="portfolio-toc-links">
+              <a href="#minerador-ete" class="text-decoration-none"><span class="badge nav-badge-ete fs-6 px-3 py-2"><i class="bi bi-droplet-half"></i> Minerador 4.0</span></a>
+              <a href="#caracore-ru" class="text-decoration-none"><span class="badge bg-secondary fs-6 px-3 py-2"><i class="bi bi-mortarboard"></i> RU Soberano</span></a>
+            </div>
+          </div>
+
+          <div class="portfolio-toc-group mb-0">
+            <div class="portfolio-toc-group-label">Visão geral</div>
+            <div class="portfolio-toc-links">
+              <a href="#filosofia-bunker" class="text-decoration-none"><span class="badge bg-dark fs-6 px-3 py-2"><i class="bi bi-shield-fill"></i> Filosofia Bunker</span></a>
+              <a href="#portfolio-releases" class="text-decoration-none"><span class="badge bg-secondary fs-6 px-3 py-2"><i class="bi bi-clock-history"></i> Releases</span></a>
+              <a href="#sobre-caracore" class="text-decoration-none"><span class="badge bg-primary fs-6 px-3 py-2"><i class="bi bi-building"></i> Sobre a Cara Core</span></a>
+            </div>
+          </div>
+        </nav>
       </div>
     </div>
   </div>
 </header>
+
+<!-- Filosofia Bunker — o que todos os produtos têm em comum -->
+<section id="filosofia-bunker" class="py-4">
+  <div class="container">
+    <div class="portfolio-cross-block portfolio-bunker">
+      <h2><i class="bi bi-shield-fill text-primary"></i> Filosofia Bunker — o fio condutor</h2>
+      <p class="mb-3 text-muted">Antes de entrar em cada produto, três princípios que se repetem em todo o ecossistema. Cada ativo detalha o que é específico dele.</p>
+      <div class="portfolio-bunker-grid">
+        <div class="portfolio-bunker-item">
+          <strong><i class="bi bi-hdd-network"></i> Soberania local</strong>
+          Dados e operação ficam sob controle da empresa — sem dependência estrutural de nuvem para funcionar.
+        </div>
+        <div class="portfolio-bunker-item">
+          <strong><i class="bi bi-wifi-off"></i> Operação offline</strong>
+          Caixa, agenda e simulações continuam quando a internet falha; sincronização quando você decidir.
+        </div>
+        <div class="portfolio-bunker-item">
+          <strong><i class="bi bi-database"></i> Base local previsível</strong>
+          SQLite e arquivos locais na maioria dos desktops — instalação simples, backup sob seu comando.
+        </div>
+        <div class="portfolio-bunker-item">
+          <strong><i class="bi bi-shop"></i> Loja própria por produto</strong>
+          Vitrine, download e documentação em subdomínio dedicado — portfólio aqui é apresentação institucional.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Como as duas linhas PDV convivem -->
+<section id="pdv-coexistencia" class="py-4 bg-light">
+  <div class="container">
+    <div class="portfolio-cross-block portfolio-pdv-coexistence">
+      <h2><i class="bi bi-diagram-2"></i> Como as duas linhas PDV convivem</h2>
+      <p class="lead">Dois <strong>PDVs Desktop</strong> do mesmo CaraCore PDV — stacks distintas, nenhuma substitui a outra.</p>
+
+      <div class="pdv-compare-grid">
+        <div class="pdv-compare-card java">
+          <span class="release-tag">Canal maduro · v3.1.2-free</span>
+          <h3><i class="bi bi-cash"></i> PDV Desktop (Java · JavaFX)</h3>
+          <p class="small mb-2">Produtividade, estabilidade e maturidade — ideal para operação consolidada e multiplataforma.</p>
+          <ul class="feature-list mb-0">
+            <li>Windows, Linux e macOS</li>
+            <li>Integração madura com hardware e fiscal</li>
+            <li>Wiki, trilhas e canal Free/Premium consolidados</li>
+            <li>Manutenção previsível para PMEs</li>
+          </ul>
+        </div>
+        <div class="pdv-compare-card rust">
+          <span class="release-tag">Piloto Windows · v0.1.0</span>
+          <h3><i class="bi bi-lightning-charge"></i> PDV Desktop (Rust + Tauri 2)</h3>
+          <p class="small mb-2">Performance, binário enxuto e UI moderna — avaliação da stack Rust/Tauri no balcão.</p>
+          <ul class="feature-list mb-0">
+            <li>Instaladores pt-BR (NSIS, MSI, ZIP)</li>
+            <li>Shell Tauri 2 + WebView2</li>
+            <li>Pipeline de release dedicado</li>
+            <li>Loja: rust-pdv.caracore.com.br</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="table-responsive pdv-choose-table">
+        <table class="table table-sm table-bordered mb-0">
+          <thead>
+            <tr>
+              <th scope="col">Situação</th>
+              <th scope="col">Linha recomendada</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Operação madura, Linux/macOS, fiscal consolidado</td>
+              <td><strong>Java</strong> — pdv.caracore.com.br</td>
+            </tr>
+            <tr>
+              <td>Piloto Windows, MSI pt-BR, binário leve, stack Rust/Tauri</td>
+              <td><strong>Rust + Tauri</strong> — rust-pdv.caracore.com.br</td>
+            </tr>
+            <tr>
+              <td>Backend já em Java na empresa</td>
+              <td><strong>Java</strong> — continuidade e produtividade</td>
+            </tr>
+            <tr>
+              <td>Equipe com forte repertório web/frontend</td>
+              <td><strong>Rust + Tauri</strong> — UI moderna com React</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-center text-muted small mt-3 mb-0"><strong>v3.1.x</strong> = canal Java · <strong>v0.1.x</strong> = linha Rust — faixas de versão independentes.</p>
+    </div>
+  </div>
+</section>
+
+<div class="portfolio-category-divider"><span>Varejo e caixa</span></div>
 
 <!-- Projeto 1: CaraCore PDV Desktop (Java · JavaFX) — linha madura -->
 <section id="caracore-pdv" class="py-5">
@@ -173,7 +284,7 @@
       <p class="lead mb-2">Linha madura · Java 21 · JavaFX · Spring Boot</p>
       <p class="lead mb-3">PDV soberano para pequenos e médios negócios. Mantém a operação de caixa em pé, acompanha a transição tributária e protege a rotina da loja mesmo quando a internet falha. Oferta Free e Premium para crescer sem ruptura.</p>
       <div class="alert alert-success mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-megaphone-fill"></i> <strong>Oferta pública madura (desktop multi-plataforma).</strong> Windows · Linux · macOS — canal atual <strong>v3.1.2-free</strong>. O <a href="#caracore-pdv-rust" class="alert-link">PDV Desktop Rust + Tauri 2</a> também é desktop, em piloto Windows (release v0.1.0) — sem substituir este canal.</div>
+        <i class="bi bi-megaphone-fill"></i> <strong>Canal maduro</strong> — Windows · Linux · macOS · release <strong>v3.1.2-free</strong>. Detalhes da coexistência com a linha Rust estão em <a href="#pdv-coexistencia" class="alert-link">Como as duas linhas PDV convivem</a>.</div>
       <div>
         <span class="tech-badge">Java 21</span>
         <span class="tech-badge">Spring Boot</span>
@@ -189,52 +300,60 @@
     <div class="card-body p-4">
       <div class="row">
         <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
-          </h3>
-          <p>
-            O <strong>CaraCore PDV</strong> resolve o problema central do varejo operacional: vender, fechar caixa e acompanhar o fiscal sem depender de improviso. É um produto pensado para manter a loja funcionando com previsibilidade, controle e soberania local.
-          </p>
-          <div class="alert alert-info mt-3" role="alert">
-            <i class="bi bi-megaphone-fill"></i> <strong>Oferta atual para pequenos e médios negócios.</strong> Entrada simples, operação local e caminho claro para evoluir com suporte da Cara Core.</div>
-          <p>
-            <strong>Benefícios de Negócio:</strong>
-          </p>
-          <ul class="feature-list"><li>Mantém vendas e fechamento em pé mesmo em cenários instáveis</li><li>Reduz risco fiscal e operacional na transição tributária</li><li>Organiza caixa, recebimento e indicadores em um fluxo único</li><li>Reforça segurança, backup e continuidade com dados sob controle da empresa</li><li>Acompanha o crescimento da operação sem trocar a base do negócio</li></ul>
-          <div class="alert alert-info mt-3" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário da Cara Core Informática, com implantação, migração e suporte para empresas que precisam de continuidade operacional.</div>
+          <div class="project-content-block block-executive">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+            </h3>
+            <p class="mb-2">
+              O <strong>CaraCore PDV</strong> mantém caixa, fiscal e rotina da loja com previsibilidade — vender, fechar e acompanhar impostos sem improviso.
+            </p>
+            <p class="mb-2"><strong>Benefícios de negócio:</strong></p>
+            <ul class="feature-list mb-0">
+              <li>Vendas e fechamento mesmo com internet instável</li>
+              <li>Menos risco na transição tributária (2026–2033)</li>
+              <li>Caixa, recebimento e indicadores em fluxo único</li>
+              <li>Backup e continuidade com dados locais</li>
+              <li>Free para começar; Premium para crescer sem trocar base</li>
+            </ul>
+          </div>
+          <div class="alert alert-info mt-3 mb-0" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — implantação, migração e suporte para continuidade operacional.</div>
         </div>
         
         <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-book-fill text-info"></i> Para Leigos
-          </h3>
-          <p>
-            O <strong>CaraCore PDV</strong> é um sistema de caixa para lojas, como os de supermercados. <strong>Foco localhost e Windows Desktop:</strong> o instalador EXE sobe em <code>localhost</code> ao abrir. Já está preparado para as mudanças de impostos que vêm no Brasil entre 2026 e 2033.
-          </p>
-          <p>
-            <strong>Pense assim:</strong> Na hora da compra, o sistema:
-          </p>
-          <ul class="feature-list">
-            <li>Calcula os impostos sozinho</li>
-            <li>Gera QR Code para pagar no Pix</li>
-            <li>Divide o pagamento entre você, o governo e a taxa (quando a lei permitir)</li>
-            <li>Mostra relatórios de quanto entrou e quanto saiu de imposto</li>
-            <li>Funciona em computador, tablet e celular</li>
-          </ul>
-          <p>
-            É como um <strong>caixa inteligente</strong> que:
-          </p>
-          <ul class="feature-list">
-            <li>Lê código de barras pela câmera</li>
-            <li>Ajusta os impostos sozinhos quando a lei mudar</li>
-            <li>Organiza as informações para você ver o resultado do negócio</li>
-            <li>Continua vendendo quando a internet cai; o celular do operador pode receber a ativação do licenciamento Premium por SMS</li>
-            <li>Fica sempre em dia com as novas regras de impostos</li>
-            <li>Instala fácil, com banco apenas SQLite (um arquivo) — na primeira vez já deixa tudo pronto (ideal para uma loja ou pequena rede)</li>
-            <li>Oferece painel para definir regras de segurança, proteger dados e fazer backup em pendrive ou sincronização quando você decidir</li>
-            <li><strong>Planos Free e Premium:</strong> Free para começar (100 vendas/mês, 10 SMS de recibo); Premium com recuperação de senha por SMS, relatório automático para o contador e suporte remoto (botão Ajuda no menu)</li>
-          </ul>
+          <div class="project-content-block block-leigos">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-book-fill"></i> Para Leigos
+            </h3>
+            <p class="mb-2">Sistema de caixa para lojas — instalador EXE sobe em <code>localhost</code>, banco SQLite em um arquivo, pronto para mudanças fiscais no Brasil.</p>
+
+            <div class="block-leigos-sub">
+              <h4>O que faz automaticamente</h4>
+              <ul class="feature-list mb-0">
+                <li>Calcula impostos e gera QR Code Pix</li>
+                <li>Relatórios de entrada, saída e impostos</li>
+                <li>Lê código de barras pela câmera</li>
+              </ul>
+            </div>
+
+            <div class="block-leigos-sub">
+              <h4>Como ajuda o operador</h4>
+              <ul class="feature-list mb-0">
+                <li>Funciona em PC, tablet e celular</li>
+                <li>Continua vendendo offline</li>
+                <li>Planos Free (100 vendas/mês) e Premium (SMS, contador, suporte remoto)</li>
+              </ul>
+            </div>
+
+            <div class="block-leigos-sub mb-0">
+              <h4>Como protege o negócio</h4>
+              <ul class="feature-list mb-0">
+                <li>Backup em pendrive ou sync quando decidir</li>
+                <li>Painel de segurança e regras da loja</li>
+                <li>Impostos atualizados quando a lei mudar</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -303,35 +422,29 @@
     <div class="card-body p-4">
       <div class="row">
         <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
-          </h3>
-          <p>
-            A <strong>iniciativa Rust + Tauri</strong> leva ao caixa as vantagens dessa stack: artefatos reprodutíveis, gates de release automatizados, binário nativo enxuto e distribuição profissional (MSI, NSIS, manifesto SHA256) — sempre em coexistência com o PDV Desktop Java.
-          </p>
-          <p><strong>Qualidades Rust + Tauri 2 nesta fase:</strong></p>
-          <ul class="feature-list">
-            <li>Segurança de memória e concorrência (Rust)</li>
-            <li>Shell desktop Tauri 2 com WebView2 — instalador leve</li>
-            <li>Instaladores localizados para o Brasil (pt-BR)</li>
-            <li>Operação offline com dados locais em SQLite</li>
-            <li>Pipeline de release dedicado (oficina → loja) — release v0.1.0</li>
-            <li>Coexistência explícita com a linha Java — escolha por plataforma e maturidade, não por “versão única”</li>
-          </ul>
+          <div class="project-content-block block-executive">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+            </h3>
+            <p class="mb-2">
+              Stack <strong>Rust + Tauri 2</strong> no balcão: binário enxuto, instaladores pt-BR, gates de release e operação offline com SQLite — em coexistência com o canal Java.
+            </p>
+            <ul class="feature-list mb-0">
+              <li>Segurança de memória e concorrência (Rust)</li>
+              <li>Shell Tauri 2 + WebView2 — instalador leve</li>
+              <li>NSIS, MSI pt-BR e ZIP portátil (v0.1.0)</li>
+              <li>Pipeline oficina → loja com manifesto SHA256</li>
+            </ul>
+          </div>
         </div>
         <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-book-fill text-info"></i> Para Leigos
-          </h3>
-          <p>
-            É o <strong>mesmo tipo de caixa</strong> CaraCore PDV, desenvolvido com outra tecnologia para quem quer avaliar Rust e Tauri no Windows — instalador em português e operação local.
-          </p>
-          <p><strong>Quando escolher cada linha:</strong></p>
-          <ul class="feature-list">
-            <li><strong>PDV Desktop (Java):</strong> operação madura, Linux/macOS, canal v3.1.2-free, trilhas e Wiki Fiscal consolidadas</li>
-            <li><strong>PDV Desktop (Rust + Tauri):</strong> piloto Windows, TI que valoriza MSI pt-BR, binário enxuto ou avaliação da stack Rust/Tauri 2</li>
-          </ul>
-          <p class="mb-0">Os dois compartilham filosofia Bunker e posicionamento para PMEs. O número <strong>v3.1.x</strong> refere-se ao canal Java; a linha Rust usa release <strong>v0.1.0</strong> — são faixas independentes.</p>
+          <div class="project-content-block block-leigos">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-book-fill"></i> Para Leigos
+            </h3>
+            <p class="mb-2">O <strong>mesmo tipo de caixa</strong> CaraCore PDV, com tecnologia moderna para quem quer avaliar Rust e Tauri no Windows — instalador em português e dados locais.</p>
+            <p class="mb-0">Qual linha escolher? Veja a tabela em <a href="#pdv-coexistencia">Como as duas linhas PDV convivem</a> — resumo: Java para operação madura e multiplataforma; Rust para piloto Windows com MSI pt-BR e UI web.</p>
+          </div>
         </div>
       </div>
 
@@ -395,32 +508,40 @@
     <div class="card-body p-4">
       <div class="row">
         <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
-          </h3>
-          <p>
-            O <strong>Ink Agenda</strong> resolve a desorganização que compromete agenda, caixa e relacionamento com o cliente em estúdios de tatuagem. Centraliza a rotina do negócio e dá clareza para decisões diárias, sem abrir mão do controle local.
-          </p>
-          <ul class="feature-list"><li>Une agenda, clientes e financeiro em uma rotina simples de acompanhar</li><li>Reduz perda de horário, retrabalho e desencontro de informação</li><li>Ajuda o estúdio a enxergar resultado com mais clareza</li><li>Protege a operação com controle local e continuidade no dia a dia</li><li>Entrega uma base madura para profissionalizar o atendimento</li></ul>
-          <div class="alert alert-info mt-3" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário da Cara Core Informática, com vitrine pública e suporte sob demanda para implantação e evolução do uso.</div>
+          <div class="project-content-block block-executive">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+            </h3>
+            <p class="mb-2">
+              O <strong>Ink Agenda</strong> centraliza agenda, clientes e financeiro do estúdio de tatuagem — clareza diária com controle local.
+            </p>
+            <ul class="feature-list mb-0">
+              <li>Reduz perda de horário e desencontro de informação</li>
+              <li>Ajuda a enxergar resultado com mais clareza</li>
+              <li>Base madura para profissionalizar o atendimento</li>
+            </ul>
+          </div>
+          <div class="alert alert-info mt-3 mb-0" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — vitrine pública e suporte sob demanda.</div>
         </div>
         <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-book-fill text-info"></i> Para Leigos
-          </h3>
-          <p>
-            O <strong>Ink Agenda</strong> é um aplicativo de computador para <strong>Windows, macOS e Linux</strong> que ajuda tatuadores a organizarem a agenda, o financeiro e o resultado do estúdio. Tudo fica na máquina do usuário, sem depender de internet para funcionar.
-          </p>
-          <ul class="feature-list">
-            <li>Veja o dia e o mês com quem está agendado</li>
-            <li>Cadastre cliente, valor, data e hora; marque quem já pagou</li>
-            <li>Registre entradas e despesas; acompanhe o saldo</li>
-            <li>Faça backup dos dados em arquivo protegido por senha</li>
-          </ul>
-          <p class="text-muted small mb-0">
-            <strong>v2.0.0-RC8</strong> — Publicada em 15/05/2026, com Windows, macOS e Linux disponíveis. iPhone em preparação. Lançamento oficial 26 de junho de 2026.
-          </p>
+          <div class="project-content-block block-leigos">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-book-fill"></i> Para Leigos
+            </h3>
+            <p>
+              O <strong>Ink Agenda</strong> é um aplicativo de computador para <strong>Windows, macOS e Linux</strong> que ajuda tatuadores a organizarem a agenda, o financeiro e o resultado do estúdio. Tudo fica na máquina do usuário, sem depender de internet para funcionar.
+            </p>
+            <ul class="feature-list mb-0">
+              <li>Veja o dia e o mês com quem está agendado</li>
+              <li>Cadastre cliente, valor, data e hora; marque quem já pagou</li>
+              <li>Registre entradas e despesas; acompanhe o saldo</li>
+              <li>Faça backup dos dados em arquivo protegido por senha</li>
+            </ul>
+            <p class="text-muted small mt-3 mb-0">
+              <strong>v2.0.0-RC8</strong> — Publicada em 15/05/2026. Lançamento oficial 26 de junho de 2026.
+            </p>
+          </div>
         </div>
       </div>
       <div class="text-center mt-4">
@@ -454,102 +575,7 @@
   </div>
 </section>
 
-<!-- Projeto 3: chmulatoETE Minerador 4.0 -->
-<section id="minerador-ete" class="py-5 bg-light">
-  <div class="container">
-  <div class="project-card">
-    <div class="project-header ete">
-      <h2 class="mb-3">
-        <i class="bi bi-droplet-half"></i> chmulatoETE Minerador 4.0
-      </h2>
-      <p class="lead mb-3">Ferramenta de decisão para simulação e validação de processos. Organiza raciocínio técnico, apoia estudos de viabilidade e reduz incerteza antes do investimento.</p>
-      <div>
-        <span class="tech-badge">Python</span>
-        <span class="tech-badge">Streamlit</span>
-        <span class="tech-badge">Hidrometalurgia</span>
-        <span class="tech-badge">ETE</span>
-        <span class="tech-badge">Terras Raras</span>
-        <span class="tech-badge">PyTest</span>
-        <span class="tech-badge">Flask</span>
-        <span class="tech-badge">Linux</span>
-        <span class="tech-badge">Windows</span>
-        <span class="tech-badge">macOS</span>
-      </div>
-    </div>
-
-    <div class="card-body p-4">
-      <div class="row">
-        <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
-          </h3>
-          <p>
-            O <strong>chmulatoETE Minerador 4.0</strong> transforma um tema complexo em leitura executiva e operacional. Ele ajuda a avaliar cenários, comparar caminhos e dar mais segurança a decisões ligadas a refino, viabilidade e desenvolvimento técnico.
-          </p>
-          <p>
-            <strong>Benefícios de Negócio:</strong>
-          </p>
-          <ul class="feature-list"><li>Reduz incerteza antes de avançar para investimento ou teste de campo</li><li>Conecta estudo técnico e leitura econômica em uma mesma visão</li><li>Permite comparar cenários com mais clareza e menos improviso</li><li>Cria base didática e operacional para formação e validação intelectual</li><li>Fortalece soberania técnica em processos de alto valor</li></ul>
-          <div class="alert alert-info mt-3" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário da Cara Core Informática, com entrada gratuita para exploração didática e caminho premium para aprofundamento decisório.</div>
-        </div>
-
-        <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-book-fill text-info"></i> Para Leigos
-          </h3>
-          <p>
-            O <strong>Minerador 4.0</strong> é um aplicativo que simula, no computador, o processo de separar e refinar minerais valiosos (terras raras) usando a mesma lógica das estações de tratamento de efluentes: tanques em série, decantação e controle de pH.
-          </p>
-          <p>
-            <strong>Pense assim:</strong>
-          </p>
-          <ul class="feature-list">
-            <li>Baixe o instalador para Linux, Windows ou macOS e explore cenários de refino sem risco</li>
-            <li>Entenda pureza comercial, gramas de óxido por tonelada e margem bruta</li>
-            <li>Modo <strong>Free</strong> completo na trilha didática; <strong>Premium</strong> desbloqueia Mineração e operação avançada (PIX + <code>license.key</code>)</li>
-            <li>Material de apoio: manual em PDF, laboratório virtual Campo Largo e painéis interativos</li>
-          </ul>
-          <p>
-            É uma <strong>ferramenta de simulação</strong> que:
-          </p>
-          <ul class="feature-list">
-            <li>Reduz a barreira de entrada ao refino com investimento fracionado e escala modular</li>
-            <li>Viabiliza jazidas economicamente marginais com a metodologia ETE</li>
-            <li>Entrega soberania técnica ao setor de mineração e hidrometalurgia</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="text-center mt-4">
-        <a href="https://ete.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Loja e vitrine (releases)
-        </a>
-        <a href="https://ete.caracore.com.br/download.html" class="btn-project me-2">
-          <i class="bi bi-download"></i> Download (site)
-        </a>
-        <a href="https://github.com/chmulato/caracore-ete-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-github"></i> Releases (Linux/Windows/macOS)
-        </a>
-        <div class="mt-3">
-          <small class="text-muted">
-            <i class="bi bi-lock-fill"></i> Código na oficina <strong>chmulato/caracore-ete</strong> (privado) |
-            <i class="bi bi-file-earmark-text"></i> Loja <strong>ete.caracore.com.br</strong> + <strong>caracore-ete-releases</strong> |
-            <i class="bi bi-handshake"></i> Upgrade Ouro 4.0 disponível
-          </small>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botão Voltar ao Topo -->
-    <div class="text-start mt-4 px-4 pb-3">
-      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-up"></i> Voltar ao Topo
-      </a>
-    </div>
-  </div>
-  </div>
-</section>
+<div class="portfolio-category-divider"><span>Educação e formação</span></div>
 
 <!-- Projeto 4: Reino OIDC -->
 <section id="reino-oidc" class="py-5 bg-light">
@@ -896,6 +922,8 @@ graph LR
   </div>
 </section>
 
+<div class="portfolio-category-divider"><span>Operação e distribuição</span></div>
+
 <!-- Projeto 6: CaraCore Hub -->
 <section id="caracore-hub" class="py-5">
   <div class="container">
@@ -991,6 +1019,8 @@ graph LR
   </div>
   </div>
 </section>
+
+<div class="portfolio-category-divider"><span>Infraestrutura e interno</span></div>
 
 <!-- Projeto 7: Área 51 — produto licenciado + Suporte -->
 <section id="area-51" class="py-5">
@@ -1280,6 +1310,93 @@ graph LR
   </div>
 </section>
 
+<div class="portfolio-category-divider"><span>Nicho e simulação</span></div>
+
+<!-- Projeto: chmulatoETE Minerador 4.0 -->
+<section id="minerador-ete" class="py-5">
+  <div class="container">
+  <div class="project-card">
+    <div class="project-header ete">
+      <h2 class="mb-3">
+        <i class="bi bi-droplet-half"></i> chmulatoETE Minerador 4.0
+      </h2>
+      <p class="lead mb-3">Ferramenta de decisão para simulação e validação de processos. Organiza raciocínio técnico, apoia estudos de viabilidade e reduz incerteza antes do investimento.</p>
+      <div>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Streamlit</span>
+        <span class="tech-badge">Hidrometalurgia</span>
+        <span class="tech-badge">ETE</span>
+        <span class="tech-badge">Terras Raras</span>
+        <span class="tech-badge">PyTest</span>
+        <span class="tech-badge">Flask</span>
+        <span class="tech-badge">Linux</span>
+        <span class="tech-badge">Windows</span>
+        <span class="tech-badge">macOS</span>
+      </div>
+    </div>
+
+    <div class="card-body p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="project-content-block block-executive">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+            </h3>
+            <p class="mb-2">
+              O <strong>Minerador 4.0</strong> ajuda a avaliar cenários de refino e viabilidade — leitura executiva antes de investimento ou teste de campo.
+            </p>
+            <ul class="feature-list mb-0">
+              <li>Conecta estudo técnico e leitura econômica</li>
+              <li>Compara cenários com menos improviso</li>
+              <li>Free didático; Premium para operação avançada</li>
+            </ul>
+          </div>
+          <div class="alert alert-info mt-3 mb-0" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — exploração didática gratuita e upgrade premium.</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="project-content-block block-leigos">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-book-fill"></i> Para Leigos
+            </h3>
+            <p class="mb-2">Simula no computador a separação e refino de minerais valiosos (terras raras) — como uma estação de tratamento de efluentes, com tanques, decantação e controle de pH.</p>
+            <ul class="feature-list mb-0">
+              <li>Instalador Linux, Windows ou macOS — explore sem risco</li>
+              <li>Entenda pureza, óxido por tonelada e margem</li>
+              <li>Manual PDF e laboratório virtual Campo Largo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="https://ete.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Loja e vitrine (releases)
+        </a>
+        <a href="https://ete.caracore.com.br/download.html" class="btn-project me-2">
+          <i class="bi bi-download"></i> Download (site)
+        </a>
+        <a href="https://github.com/chmulato/caracore-ete-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-github"></i> Releases (Linux/Windows/macOS)
+        </a>
+        <div class="mt-3">
+          <small class="text-muted">
+            <i class="bi bi-lock-fill"></i> Oficina privada · Loja ete.caracore.com.br · Upgrade Ouro 4.0
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-start mt-4 px-4 pb-3">
+      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-up"></i> Voltar ao Topo
+      </a>
+    </div>
+  </div>
+  </div>
+</section>
+
 <!-- RU Soberano — Simulador de Reator e Balanço de Massa (garagem: lançamento 18/06/2027) -->
 <section id="caracore-ru" class="py-5 bg-light">
   <div class="container">
@@ -1350,6 +1467,98 @@ graph LR
       </a>
     </div>
   </div>
+  </div>
+</section>
+
+<!-- Linha do tempo / Releases -->
+<section id="portfolio-releases" class="py-5">
+  <div class="container">
+    <div class="portfolio-releases">
+      <h2><i class="bi bi-clock-history text-primary"></i> Releases e marcos</h2>
+      <div class="release-timeline">
+        <div class="release-item">
+          <div class="release-product">CaraCore PDV Desktop (Java)</div>
+          <div class="release-version">v3.1.2-free</div>
+          <div class="release-status">Canal maduro · Win / Linux / macOS</div>
+          <a href="https://pdv.caracore.com.br/download.html">Download →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">Cara Core PDV Desktop (Rust + Tauri)</div>
+          <div class="release-version">v0.1.0</div>
+          <div class="release-status">Piloto Windows · NSIS · MSI pt-BR</div>
+          <a href="https://rust-pdv.caracore.com.br/download.html">Download →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">Ink Agenda</div>
+          <div class="release-version">v2.0.0-RC8</div>
+          <div class="release-status">15/05/2026 · Lançamento 26/Jun/2026</div>
+          <a href="https://ink.caracore.com.br/download.html">Download →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">Reino OIDC</div>
+          <div class="release-version">v2.0.0-RC1</div>
+          <div class="release-status">Sala de estudo Windows · FREE + upgrade R$ 29,90</div>
+          <a href="https://oidc.caracore.com.br/download.html">Download →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">Circuito Ferradura</div>
+          <div class="release-version">v2.0.0</div>
+          <div class="release-status">40h · Gratuito PF · Escolas R$ 5/aluno/mês</div>
+          <a href="https://circuito.caracore.com.br/download.html">Download →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">Área 51</div>
+          <div class="release-version">baseline 0.1.0-dev</div>
+          <div class="release-status">Pacote licenciado + Suporte institucional</div>
+          <a href="https://area51.caracore.com.br/">Loja →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">RU Soberano</div>
+          <div class="release-version">Garagem</div>
+          <div class="release-status">Lançamento previsto 18/06/2027</div>
+          <a href="https://ru.caracore.com.br/">Loja →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">Cara Core CSO</div>
+          <div class="release-version">Garagem</div>
+          <div class="release-status">Lançamento previsto 08/11/2028</div>
+          <a href="https://cso.caracore.com.br/">Loja →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sobre a Cara Core -->
+<section id="sobre-caracore" class="py-5 bg-light">
+  <div class="container">
+    <div class="portfolio-about">
+      <h2><i class="bi bi-building"></i> Sobre a Cara Core Informática</h2>
+      <p>
+        A <strong>Cara Core Informática</strong> (CNPJ 23.969.028/0001-37) desenvolve ativos de engenharia desktop e educacionais com filosofia <strong>Bunker Digital</strong>: soberania local, operação offline e licenciamento claro.
+      </p>
+      <p class="mb-0">
+        Este portfólio é apresentação institucional. Cada produto tem loja, wiki e canal de download no subdomínio próprio — consultoria, implantação e suporte sob demanda.
+      </p>
+      <div class="portfolio-about-grid">
+        <div class="portfolio-about-item">
+          <strong>Base operacional</strong>
+          Campo Largo/PR · atendimento remoto nacional
+        </div>
+        <div class="portfolio-about-item">
+          <strong>Modelo comercial</strong>
+          Ativos proprietários · Free/Premium conforme produto
+        </div>
+        <div class="portfolio-about-item">
+          <strong>Ecossistema</strong>
+          <a href="ecosistema.html" class="text-white">Mapa completo de lojas →</a>
+        </div>
+        <div class="portfolio-about-item">
+          <strong>Contato</strong>
+          <a href="index.html#contato" class="text-white">Fale conosco →</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

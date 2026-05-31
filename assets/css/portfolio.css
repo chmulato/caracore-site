@@ -250,6 +250,312 @@
   font-weight: 500;
 }
 
+/* Sumário categorizado */
+.portfolio-toc {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem 1.75rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  text-align: left;
+  max-width: 960px;
+  margin: 0 auto 1.5rem;
+}
+
+.portfolio-toc-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+.portfolio-toc-group {
+  margin-bottom: 1rem;
+}
+
+.portfolio-toc-group:last-child {
+  margin-bottom: 0;
+}
+
+.portfolio-toc-group-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-toc-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Blocos transversais */
+.portfolio-cross-block {
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 0;
+}
+
+.portfolio-bunker {
+  background: linear-gradient(135deg, #f8f9fc 0%, #eef1f8 100%);
+  border: 1px solid rgba(102, 126, 234, 0.15);
+}
+
+.portfolio-bunker h2 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+}
+
+.portfolio-bunker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.portfolio-bunker-item {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  border-left: 4px solid #667eea;
+  font-size: 0.95rem;
+}
+
+.portfolio-bunker-item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.portfolio-pdv-coexistence {
+  background: #fff;
+  border: 1px solid rgba(11, 58, 102, 0.12);
+  box-shadow: 0 4px 24px rgba(11, 58, 102, 0.08);
+}
+
+.portfolio-pdv-coexistence h2 {
+  font-size: 1.35rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-pdv-coexistence .lead {
+  text-align: center;
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pdv-compare-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.pdv-compare-card {
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  height: 100%;
+}
+
+.pdv-compare-card.java {
+  background: linear-gradient(160deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.06) 100%);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.pdv-compare-card.rust {
+  background: linear-gradient(160deg, rgba(11, 58, 102, 0.08) 0%, rgba(196, 92, 38, 0.06) 100%);
+  border: 1px solid rgba(11, 58, 102, 0.2);
+}
+
+.pdv-compare-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+}
+
+.pdv-compare-card .release-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+}
+
+.pdv-compare-card.java .release-tag {
+  background: rgba(102, 126, 234, 0.15);
+  color: #4a5568;
+}
+
+.pdv-compare-card.rust .release-tag {
+  background: rgba(11, 58, 102, 0.12);
+  color: #0b3a66;
+}
+
+.pdv-choose-table {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.pdv-choose-table th {
+  background: #f8f9fa;
+  font-weight: 600;
+}
+
+/* Divisor de categoria entre produtos */
+.portfolio-category-divider {
+  text-align: center;
+  padding: 1.75rem 0 0.5rem;
+}
+
+.portfolio-category-divider span {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6c757d;
+  padding: 0.35rem 1rem;
+  background: rgba(108, 117, 125, 0.1);
+  border-radius: 999px;
+}
+
+/* Blocos padronizados por produto */
+.project-content-block {
+  margin-bottom: 1.5rem;
+}
+
+.project-content-block h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+}
+
+.block-executive {
+  background: rgba(102, 126, 234, 0.04);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid #667eea;
+}
+
+.block-leigos {
+  background: rgba(13, 202, 240, 0.06);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid #0dcaf0;
+}
+
+.block-leigos h3 {
+  color: #055160;
+}
+
+.block-leigos-sub {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed rgba(13, 202, 240, 0.35);
+}
+
+.block-leigos-sub h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #087990;
+}
+
+/* Linha do tempo / releases */
+.portfolio-releases {
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+.portfolio-releases h2 {
+  font-size: 1.35rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.release-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.release-item {
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.release-item:hover {
+  border-color: #667eea;
+  box-shadow: 0 2px 12px rgba(102, 126, 234, 0.12);
+}
+
+.release-item .release-product {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+
+.release-item .release-version {
+  font-size: 0.85rem;
+  color: #667eea;
+  font-weight: 600;
+}
+
+.release-item .release-status {
+  font-size: 0.8rem;
+  color: #6c757d;
+  margin-top: 0.35rem;
+}
+
+.release-item a {
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+/* Sobre a empresa */
+.portfolio-about {
+  background: linear-gradient(135deg, #1a1d21 0%, #2d3748 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+}
+
+.portfolio-about h2 {
+  font-size: 1.35rem;
+  margin-bottom: 1rem;
+}
+
+.portfolio-about p {
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.portfolio-about-item {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 0.95rem;
+}
+
+.portfolio-about-item strong {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
 /* Responsividade */
 @media (max-width: 576px) {
   .project-header {
@@ -258,5 +564,13 @@
   
   .diagram-container {
     padding: 1rem;
+  }
+
+  .portfolio-toc {
+    padding: 1.15rem;
+  }
+
+  .portfolio-cross-block {
+    padding: 1.25rem;
   }
 }

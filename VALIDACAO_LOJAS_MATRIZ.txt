@@ -27,6 +27,7 @@ MODELO ACTUAL (desde 2026)
     52/52 rotas críticas /delivery/* OK em produção (smoke test)
     Portfólio: #pdv-coexistencia, #filosofia-bunker, releases activos
     rust-pdv.caracore.com.br: 200, sem SEED
+    Lojas: footers com link portfolio.html#{produto} (2026-05-31)
 
 -------------------------------------------------------------------------------
 

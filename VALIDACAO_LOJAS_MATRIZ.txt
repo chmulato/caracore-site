@@ -20,8 +20,13 @@ MODELO ACTUAL (desde 2026)
     Identidade visual própria por produto (§1.0b FONTES_CANONICAS)
 
   Legado delivery/
-    Sem conteúdo comercial na matriz; só redirects HTTP
-    PDV Rust: sem portal delivery — redirect → rust-pdv.caracore.com.br
+    Stubs HTML mínimos (GitHub Pages) + _redirects / vercel.json
+    PDV Rust: redirect → rust-pdv.caracore.com.br
+
+  Pós-deploy 2026-05-31
+    52/52 rotas críticas /delivery/* OK em produção (smoke test)
+    Portfólio: #pdv-coexistencia, #filosofia-bunker, releases activos
+    rust-pdv.caracore.com.br: 200, sem SEED
 
 -------------------------------------------------------------------------------
 

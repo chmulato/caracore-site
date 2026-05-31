@@ -16,6 +16,7 @@
 | Produto | Rota legado base | Destino oficial | Status |
 |---|---|---|---|
 | PDV | /delivery/pdv/ | https://pdv.caracore.com.br/ | mapeado |
+| PDV Rust | /delivery/pdv-rust/ | https://rust-pdv.caracore.com.br/ | mapeado (_redirects; sem HTML na matriz) |
 | Hub | /delivery/hub/ | https://hub.caracore.com.br/ | mapeado |
 | Circuito Ferradura | /delivery/circuito/ | https://circuito.caracore.com.br/ | mapeado |
 | Reino OIDC | /delivery/oidc/ | https://oidc.caracore.com.br/ | mapeado |
@@ -52,6 +53,9 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 | PDV | /delivery/pdv/index.html | https://pdv.caracore.com.br/ |
 | PDV | /delivery/pdv/download.html | https://pdv.caracore.com.br/download.html |
 | PDV | /delivery/pdv/download-oficial.html | https://pdv.caracore.com.br/download.html |
+| PDV Rust | /delivery/pdv-rust/ | https://rust-pdv.caracore.com.br/ |
+| PDV Rust | /delivery/pdv-rust/index.html | https://rust-pdv.caracore.com.br/ |
+| PDV Rust | /delivery/pdv-rust/download.html | https://rust-pdv.caracore.com.br/download.html |
 | Hub | /delivery/hub/ | https://hub.caracore.com.br/ |
 | Hub | /delivery/hub/index.html | https://hub.caracore.com.br/ |
 | Hub | /delivery/hub/download.html | https://hub.caracore.com.br/download.html |
@@ -103,13 +107,11 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 
 ## Decisao proposta para entradas especiais
 - publications: manter na matriz (nao produto unico de subdominio); stubs em `delivery/publications/` apontam para `/publications/` e `/sala/` conforme o caso
-- sala: acervo canónico em `/sala/` (`sala/` na raiz do repo). **Sem** `delivery/sala/` no repositório; mapear `/delivery/sala/*` → `/sala/*` no hospedeiro (`_redirects`, CDN, etc.); ver `docs/DELIVERY_RESTRUCTURA.md`
-- assets: manter como biblioteca compartilhada
+- sala: acervo canónico em `https://tools.caracore.com.br/sala/`. Redirect `/delivery/sala/*` no `_redirects`.
+- assets: migrar para raiz da matriz quando aplicável; histórico em `docs/archive/delivery-migracao/`
 
 ## Edge / hospedeiro (implementado no repo)
 
-- **`_redirects`** (Netlify e compatíveis): na raiz do `caracore-site` — redirects 301 para `/delivery/{produto}/...` → lojas, `/delivery/sala/*` → `/sala/*`, `/delivery/publications` (índice) → `/sala/`, filhos → `/publications/:path*`. Ordem: regras específicas antes do catch-all SPA.
+- **`_redirects`** (Netlify e compatíveis): na raiz do `caracore-site` — redirects 301 para `/delivery/{produto}/...` → lojas, `/delivery/pdv-rust/*` → rust-pdv, `/delivery/sala/*` → Sala canónica, etc.
 - **`vercel.json`**: mesma lógica para deploy na Vercel.
-- **GitHub Pages puro** ou outro host sem `_redirects`: replicar estas regras na CDN (ex.: Cloudflare Redirect Rules / Page Rules) ou migrar para um dos hosts acima — ver `docs/DELIVERY_RESTRUCTURA.md`.
-
-**Nota:** `delivery/assets/` (ex.: evolution-status) e ficheiros estáticos ainda servidos sob `delivery/` até migração; não estão neste lote de redirects externos.
+- **GitHub Pages puro** ou outro host sem `_redirects`: replicar estas regras na CDN — ver `docs/archive/delivery-migracao/DELIVERY_RESTRUCTURA.md`.

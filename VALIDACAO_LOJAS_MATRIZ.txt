@@ -1,181 +1,134 @@
-VALIDAÃ‡ÃƒO: LOJAS ALINHADAS COM A MATRIZ
+VALIDAÇÃO: LOJAS ALINHADAS COM A MATRIZ
 ========================================
 
-Objetivo: Verificar se as lojas online (vitrines em GitHub Pages) estÃ£o alinhadas com os portais da matriz (cara-core-site/delivery). Inclui lojas, oficinas e ramo Garagem. Data da verificaÃ§Ã£o: 05/02/2026; atualizado com Garagem em 06/02/2026; alinhamento Ãrea 51 em 20/02/2026; memoria de lojas/oficinas atualizada em 25/04/2026.
+Objetivo: Verificar alinhamento entre a **matriz institucional** (caracore.com.br) e as **lojas canónicas** (*.caracore.com.br). A matriz apresenta e encaminha; a loja é a fonte de vitrine, download e documentação comercial.
 
-Referencias publicas (campanhas e links novos): matriz institucional em https://www.caracore.com.br/ (portfolio, ecossistema, sala); produto em https://{produto}.caracore.com.br/. A pasta delivery/ no repositorio e legado de compatibilidade de URL ate remocao (docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §1.0a). Este documento continua a descrever o espelho tecnico matriz/loja no Git.
+**Última actualização:** 2026-05-31  
+**Referências:** ECOSYSTEM_LOJAS.txt · ECOSYSTEM_CARA_CORE.txt · COMPONENTES_LOJA.txt · docs/FONTES_CANONICAS_MATRIZ_LOJAS.md · docs/SITE_MATRIZ.md
 
 -------------------------------------------------------------------------------
 
-1. CARA CORE PDV
+MODELO ACTUAL (desde 2026)
 
-  Matriz: cara-core-site/delivery/pdv/
-  Loja:   caracore-pdv-releases/docs/ (pdv.caracore.com.br)
+  Matriz (caracore-site)
+    portfolio.html · ecosistema.html · index.html
+    CTAs → subdomínio da loja (nunca /delivery/ como destino principal)
+    _redirects: /delivery/{produto}/* → loja
+
+  Loja (caracore-*-releases)
+    Fonte oficial de produto, download, wiki, feedback
+    Identidade visual própria por produto (§1.0b FONTES_CANONICAS)
+
+  Legado delivery/
+    Sem conteúdo comercial na matriz; só redirects HTTP
+    PDV Rust: sem portal delivery — redirect → rust-pdv.caracore.com.br
+
+-------------------------------------------------------------------------------
+
+CHECKLIST POR PRODUTO
+
+Para cada linha: (M) matriz · (L) loja · OK / rever
+
+1. CARACORE PDV DESKTOP (JAVA)
+   (M) portfolio.html#caracore-pdv · ecosistema.html
+   (L) caracore-pdv-releases → pdv.caracore.com.br · v3.1.2-free
+   Mensagem: dois PDVs desktop; Java = canal maduro multi-plataforma
+   Coexistência: #pdv-coexistencia no portfólio
+   Status: OK — rever após cada release Java
+
+2. CARA CORE PDV DESKTOP (RUST + TAURI 2)
+   (M) portfolio.html#caracore-pdv-rust · #pdv-coexistencia
+   (L) caracore-pdv-rust-releases → rust-pdv.caracore.com.br · v0.1.0
+   Sem delivery/pdv-rust · sem SEED na loja Rust
+   Status: OK — piloto Windows; CTAs matriz → rust-pdv
+
+3. INK AGENDA
+   (M) portfolio.html#caracore-ink-agenda
+   (L) caracore-ink-releases → ink.caracore.com.br · v2.0.0-RC8
+   Status: OK
+
+4. CARA CORE HUB
+   (M) portfolio.html#caracore-hub
+   (L) caracore-hub-releases → hub.caracore.com.br
+   Status: OK
+
+5. CIRCUITO FERRADURA
+   (M) portfolio.html#circuito-python
+   (L) caracore-circuito-releases → circuito.caracore.com.br
+   Oficina: caracore-circuito
+   Status: OK
+
+6. REINO OIDC
+   (M) portfolio.html#reino-oidc
+   (L) caracore-oidc-releases → oidc.caracore.com.br · v2.0.0-RC1
+   Oficina: caracore-oidc
+   Status: OK
+
+7. CARACORE SEED
+   (M) portfolio.html#caracore-seed
+   (L) caracore-seed-releases → seed.caracore.com.br
+   Mensagem: ferramenta interna; app não disponível
+   Status: OK
+
+8. SUPORTE ÁREA 51
+   (M) portfolio.html#area-51
+   (L) caracore-area51-releases → area51.caracore.com.br
+   Status: OK
+
+9. MINERADOR 4.0 (ETE)
+   (M) portfolio.html#minerador-ete · ecosistema.html
+   (L) caracore-ete-releases → ete.caracore.com.br
+   Oficina: caracore-ete
+   Status: OK
+
+10. RU SOBERANO (garagem)
+    (M) portfolio.html#caracore-ru · ecosistema.html (Garagem)
+    (L) caracore-ru-releases → ru.caracore.com.br
+    Oficina: caracore-ru · lançamento previsto 18/06/2027
+    Status: OK — matriz via portfólio (não delivery/ru)
+
+11. CARA CORE CSO (garagem)
+    (M) portfolio.html#caracore-cso
+    (L) caracore-cso-releases → cso.caracore.com.br
+    Lançamento previsto 08/11/2028
+    Status: OK
+
+12. CARA CORE MKT / SALA
+    (M) portfolio.html#caracore-mkt
+    (L) mkt.caracore.com.br · Sala: tools.caracore.com.br/sala/
+    Status: OK
+
+-------------------------------------------------------------------------------
+
+CRITÉRIOS DE VALIDAÇÃO (aplicar em revisão periódica)
 
   Estrutura
-    Matriz: index, download, tecnologia, canal-feedback, consultoria, readme, wiki-fiscal, wiki/
-    Loja:   index, download, tecnologia, canal-feedback
-  Status:  OK. A loja contÃ©m as pÃ¡ginas previstas no MIRROR_DELIVERY (vitrine: hero, CTAs, pilares, download, tecnologia, canal-feedback). Consultoria e wiki permanecem sÃ³ na matriz.
+    [ ] Loja tem páginas mínimas do molde (COMPONENTES_LOJA.txt)
+    [ ] Matriz tem bloco no portfólio com CTAs para a loja
 
   Mensagem
-    Matriz e loja: "Quando a internet cai, o caixa nÃ£o pode parar"; "PDV Selo Verde"; "Reforma TributÃ¡ria 2026"; "DegustaÃ§Ã£o (Free)", "100 vendas completas"; "Tecnologia Selo Verde"; SQLite local.
-  Status:  OK. Mensagem alinhada.
+    [ ] Versão/release coerente entre portfólio (#portfolio-releases), ecossistema e loja
+    [ ] PDV: coexistência Java/Rust só em #pdv-coexistencia (sem repetir em excesso)
 
   Links
-    Loja referencia matriz institucional (portfolio, ecossistema) e portfÃ³lio; download aponta para DegustaÃ§Ã£o e Releases. Legado caracore.com.br/delivery/pdv/ apenas redirect durante transicao.
-  Status:  OK.
+    [ ] Nenhum CTA novo aponta para /delivery/{produto}/ como destino principal
+    [ ] Breadcrumb / nav da loja referencia matriz (portfolio ou ecossistema) quando aplicável
+    [ ] Redirects _redirects testados se URL legado mudou
+
+  Discurso PDV
+    [ ] Dois PDVs desktop; nenhum substitui o outro
+    [ ] v3.1.x = Java · v0.1.x = Rust · evitar "PDV v3" sozinho
 
 -------------------------------------------------------------------------------
 
-2. CARA CORE HUB
+RESUMO
 
-  Matriz: cara-core-site/delivery/hub/
-  Loja:   caracore-hub-releases/docs/ (hub.caracore.com.br)
+  Todos os produtos listados devem ter: resumo na matriz (portfólio/ecossistema) + vitrine na loja.
+  Espelho técnico delivery/matriz (MIRROR_DELIVERY) é legado — validar repo *-releases e portfólio.
 
-  Estrutura
-    Matriz: index, download, canal-feedback, tecnologia, slides/apresentacao_tia_socia.html (+ assets)
-    Loja:   index, download, canal-feedback, tecnologia, slides/apresentacao_tia_socia.html (+ assets)
-  Status:  OK. Conjunto de pÃ¡ginas equivalente. Obs.: Existem arquivos tambÃ©m na raiz do repositÃ³rio; a vitrine publicada Ã© a pasta docs/.
-
-  Mensagem
-    Matriz e loja: "gestÃ£o logÃ­stica e e-commerce"; "SQLite local"; "autonomia local"; "Tia SÃ³cia" como negÃ³cio aplicÃ¡vel; card "ApresentaÃ§Ã£o Tia SÃ³cia" e link para slides; stack Java/Jakarta EE, SQLite, Tomcat.
-  Status:  OK. Textos e oferta alinhados.
-
-  Links
-    Loja com base href para GitHub Pages; referÃªncias Ã  matriz e ao portfÃ³lio.
-  Status:  OK.
+  Smoke test pós-alteração:
+    home → portfólio → ecossistema → loja de um produto → voltar à matriz
 
 -------------------------------------------------------------------------------
 
-3. CIRCUITO FERRADURA
-
-  Matriz: cara-core-site/delivery/circuito/
-  Oficina: caracore-circuito
-  Loja:   caracore-circuito-releases/docs/ (circuito.caracore.com.br)
-
-  Estrutura
-    Matriz: index, canal-feedback, licenca-uso, portal-escolas (download via card no index para releases/latest)
-    Loja:   index, download, canal-feedback, licenca-uso, portal-escolas
-  Status:  OK. A loja inclui download.html, curso web, portal escolas, licenca e canal de feedback. CSS centralizado em docs/assets/css e blocos Python formatados para leitura profissional.
-
-  Mensagem
-    Matriz e loja: Circuito Ferradura como curso proprietario de logica, abaco romano e Python; gratuito para pessoas fisicas dentro da oferta vigente; R$ 5,00/aluno matriculado/mes para instituicoes; "Portal Escolas"; certificado com verificacao criptografica.
-  Status:  OK. Mensagem e valor alinhados.
-
-  Links
-    Loja canonica: https://circuito.caracore.com.br/. Oficina: caracore-circuito. Loja: caracore-circuito-releases.
-  Status:  OK.
-
--------------------------------------------------------------------------------
-
-4. REINO OIDC
-
-  Matriz: cara-core-site/delivery/oidc/
-  Oficina: caracore-oidc
-  Loja:   caracore-oidc-releases/docs/ (oidc.caracore.com.br); caminho local D:\dev\caracore-oidc-releases
-
-  Estrutura
-    Matriz: index, download, canal-feedback, upgrade-trono, licenca-uso, conteudo-free, pÃ¡ginas de histÃ³ria/glossÃ¡rio/mapas/jogos, etc.
-    Loja:   Mesmo conjunto (index, download, upgrade-trono, licenca-uso, conteudo-free, histÃ³ria, personagens, super_trunfo, etc.)
-  Status:  OK. Estrutura espelhada; menu superior sem itens nao navegaveis e home sem breadcrumb redundante.
-
-  Mensagem
-    Matriz e loja: aplicativo Windows FREE (ReinoOIDC.exe); "releases/latest"; upgrade "O Trono da Identidade" R$ 29,90 (valor unico, PIX); conteudo proprietario da Cara Core. Convite para produto Python aponta para Circuito Ferradura.
-  Status:  OK. PreÃ§o e oferta alinhados.
-
-  Links
-    Download para https://oidc.caracore.com.br/download.html; upgrade-trono em ambas; links para portfÃ³lio em formato absoluto na vitrine (conforme MIRROR).
-  Status:  OK.
-
--------------------------------------------------------------------------------
-
-5. CARA CORE SEED
-
-  Matriz: cara-core-site/delivery/seed/
-  Loja:   caracore-seed-releases/docs/ (seed.caracore.com.br)
-
-  Estrutura
-    Matriz: index, download, tecnologia, canal-feedback, portal-controle, ativacao, compra, readme
-    Loja:   index, download, tecnologia, canal-feedback, portal-controle, ativacao, compra, readme (+ tools/README, assets/css)
-  Status:  OK. Loja alinhada ao molde COMPONENTES_LOJA com todos os componentes. Ambas informam que a aplicaÃ§Ã£o nÃ£o estÃ¡ disponÃ­vel.
-
-  Mensagem
-    Matriz e loja: "AplicaÃ§Ã£o nÃ£o disponÃ­vel"; "nÃ£o estÃ¡ disponÃ­vel para download nem Ã  venda"; "ferramenta interna"; referÃªncia ao portfÃ³lio; sem CTA de Baixar EXE nem Comprar.
-  Status:  OK. Alinhadas na decisÃ£o de nÃ£o oferta.
-
-  Links
-    Ambas remetem ao portfÃ³lio e ao repositÃ³rio; sem oferta de download ou compra.
-  Status:  OK.
-
--------------------------------------------------------------------------------
-
-6. SUPORTE ÃREA 51
-
-  Matriz: cara-core-site/delivery/area51/
-  Loja:   caracore-area51-releases/docs/ (area51.caracore.com.br)
-
-  Estrutura
-    Matriz: index, download, licenca-uso, canal-feedback, espelho de delivery
-    Loja:   index, download, licenca-uso, canal-feedback (vitrine alinhada)
-  Status:  OK. Corrigido em 20/02/2026: Matriz recebeu download.html e licenca-uso.html (antes ausentes; Loja estava Ã  frente da Matriz).
-
-  Mensagem
-    Matriz e loja: Suporte Ãrea 51 = serviÃ§o contratado (sem data de lanÃ§amento); o que a empresa recebe ao contratar (login Google/Microsoft, painel admin, auditoria, LGPD).
-    Cara â†” CrachÃ¡: narrativa e scripts = PI Cara Core (licenÃ§a proprietÃ¡ria, nÃ£o MIT); OIDC/OAuth 2.1/PKCE = padrÃ£o aberto (sem propriedade da Cara Core).
-    LicenÃ§a proprietÃ¡ria em ambas: gratuito PF; empresas/instituiÃ§Ãµes requerem contrataÃ§Ã£o.
-  Status:  OK.
-
-  Links e CTAs
-    Matriz: "Ver loja (releases)" no hero, nav e footer. Cards: download, licenca-uso, canal-feedback, loja, portfÃ³lio, documentaÃ§Ã£o tÃ©cnica (wiki).
-    Loja: "Ver apresentaÃ§Ã£o (matriz)" no hero com destino institucional (portfolio/ecossistema) e vitrine completa em area51.caracore.com.br; legado delivery/area51/ com redirect HTTP.
-  Status:  OK.
-
--------------------------------------------------------------------------------
-
-7. GARAGEM â€” RU SOBERANO (futuros lanÃ§amentos)
-
-  Assunto: Garagem. Produtos na Garagem tÃªm apresentaÃ§Ã£o na matriz, oficina e loja jÃ¡ no ar; ao lanÃ§ar, entram no fluxo completo dos produtos (ecosistema.html).
-
-  Matriz: cara-core-site/delivery/ru/
-  Loja:   caracore-ru-releases/docs/ (ru.caracore.com.br)
-  Oficina: caracore-ru (repositÃ³rio de cÃ³digo)
-
-  Estrutura
-    Matriz: index, canal-feedback, espelho de delivery, email_pos_venda, fluxo de mensagens
-    Loja:   index, download, licenca-uso, manual-tecnico, canal-feedback, mirror-delivery.html, validacao-alinhamento-ru.html, fluxo-mensagens-vendas.html, assets/
-  Status:  OK. A loja contem vitrine, download, licenca, manual tecnico e canal de feedback; alinhada a matriz. Conteudo publicado em docs fica em HTML; CSS centralizado em docs/assets/css.
-
-  Mensagem
-    Matriz e loja: "RU Soberano"; "Produto em evoluÃ§Ã£o"; "A histÃ³ria do RU e a Engenharia QuÃ­mica"; "CafÃ© Mania 2.0" vs "material sÃ©rio de engenharia"; degustaÃ§Ã£o FREE atÃ© o Buffet; InteligÃªncia de Processo + Memorial RU R$ 29,90; lanÃ§amento 18/Junho/2026; expectativa Ã— realidade; oficina caracore-ru, loja caracore-ru-releases.
-  Status:  OK. Mensagem alinhada.
-
-  Links
-    Matriz: CTAs para loja (ru.caracore.com.br/) e download. Loja: breadcrumbs revisados; links para matriz institucional e vitrine; canal de feedback, download, licenca, manual tecnico e espelho em HTML.
-  Status:  OK.
-
-  Garagem
-    No ecossistema (ecosistema.html), RU Soberano no subgraph "Garagem â€” futuros lanÃ§amentos (em trabalho)": Matriz â†’ RU Soberano â†’ caracore-ru â†’ caracore-ru-releases. Link canÃ³nico na UI: ru.caracore.com.br; legado delivery/ru com redirect.
-  Status:  OK.
-
--------------------------------------------------------------------------------
-
-8. RESUMO
-
-  Produto             Estrutura    Mensagem    Links/CTAs   ConclusÃ£o
-  ------------------- ----------- ----------- ------------- ------------------
-  Cara Core PDV       OK          OK          OK            Alinhada
-  Cara Core Hub       OK          OK          OK            Alinhada
-  Circuito Ferradura  OK          OK          OK            Alinhada
-  Reino OIDC          OK          OK          OK            Alinhada
-  Cara Core Seed      OK          OK          OK            Alinhada
-  Suporte Ãrea 51     OK          OK          OK            Alinhada
-  Garagem â€” RU Soberano  OK       OK          OK            Alinhada (futuro lanÃ§amento 18/Junho/2026)
-
-  Todas as lojas verificadas estÃ£o alinhadas com a matriz em estrutura de pÃ¡ginas, mensagem de negÃ³cio (posicionamento, preÃ§os onde aplicÃ¡vel, oferta FREE/upgrade/nÃ£o disponÃ­vel) e links cruzados. CTAs: matriz aponta "Ver loja" para o subdomÃ­nio; lojas reforÃ§am identidade Cara Core via portfolio/ecossistema e vitrine no subdomÃ­nio. O ramo Garagem (ecosistema.html) agrupa produtos em desenvolvimento com matriz, oficina e loja no ar; RU Soberano Ã© o primeiro.
-
-  ReferÃªncias: ECOSYSTEM_LOJAS.txt; ECOSYSTEM_CARA_CORE.txt; COMPONENTES_LOJA.txt; espelhos de delivery em HTML ou Markdown conforme o produto. Reino OIDC loja: caracore-oidc-releases (pasta docs/); caminho local D:\dev\caracore-oidc-releases. Circuito Ferradura: caracore-circuito (oficina) e caracore-circuito-releases (loja). RU Soberano: delivery/ru (matriz), caracore-ru-releases (loja), caracore-ru (oficina). Mapa visual do ecossistema: caracore.com.br/ecosistema.html.
-
--------------------------------------------------------------------------------
-
-Cara Core InformÃ¡tica. Documento para uso interno.
-
+Cara Core Informática — uso interno. CNPJ 23.969.028/0001-37

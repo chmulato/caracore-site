@@ -31,7 +31,7 @@ O que o plano remove é a **pasta `delivery/` na matriz** e a **duplicação** d
 
 ## 1.0 Plano acordado — `delivery/` na matriz é legado; o destino são as lojas
 
-Este é o **plano fixado em MD** (também em `docs/PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md`, `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`, `docs/DELIVERY_RESTRUCTURA.md`):
+Este é o **plano fixado** (detalhe histórico em `docs/archive/delivery-migracao/`; mapa activo em `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` e `_redirects`):
 
 1. Na matriz (`caracore.com.br`), a pasta **`delivery/`** existe **só** como **legado / compatibilidade de URL**: redirecionar tráfego antigo para as **respetivas lojas** por subdomínio (`https://{produto}.caracore.com.br/...`).
 2. A **informação real de produto** (vitrine, wiki, downloads, manuais) **não** se mantém na matriz como fonte principal; vive nos repositórios **`caracore-*-releases`** e nos sites das **lojas**.
@@ -67,7 +67,7 @@ Toda a **informação operacional** da Sala de Operações vive na sua versão o
 | **Matriz institucional** (home, portfólio, ecossistema, secure, publications onde aplicável) | Raiz e pastas próprias em `caracore-site` (ex.: `publications/`) | `https://www.caracore.com.br/...` | Não copiar vitrines de produto para a matriz como fonte principal. |
 | **Compatibilidade URL antiga (legado → loja)** | *Transitório:* `caracore-site/delivery/` até **eliminação da pasta** (§1.0a); depois só redirects no hospedeiro | `https://www.caracore.com.br/delivery/...` → **redirect** para lojas / matriz canónica | Estado-alvo: **sem** pasta `delivery/` no repo; `MAPA_ROTAS_*` passa a descrever só regras no edge. |
 
-**Produtos com subdomínio:** lista e fases de trabalho continuam em `docs/PLANO_DESATIVACAO_DELIVERY_SUBDOMINIOS.md` e `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` — sem duplicar a lista de subdomínios neste ficheiro.
+**Produtos com subdomínio:** mapa de redirects em `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` e `_redirects`. PDV Rust: canónico **rust-pdv.caracore.com.br** (sem conteúdo em `/delivery/pdv-rust`).
 
 ---
 

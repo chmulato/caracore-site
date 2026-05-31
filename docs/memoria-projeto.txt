@@ -1,73 +1,81 @@
 # Memória do Projeto — Matriz (Cara Core Informática)
 
-Documento de referência rápida sobre o site matriz (caracore.com.br). Atualizar quando houver mudanças relevantes de estrutura, delivery ou integrações.
+Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar estrutura, portfólio, redirects ou integrações.
 
-Data da última atualização: 2026-05-31
-
----
-
-## O que é a matriz
-
-- **Site oficial:** [https://www.caracore.com.br](https://www.caracore.com.br)
-- **Repositório:** caracore-site
-- **Papel:** Portfólio, delivery (portais de produto), ecossistema, publicações, Área 51 (OIDC). **Matriz** = apresentação institucional; **lojas** (*-releases) = vitrine e download.
-- **Wiki institucional:** [https://wiki.caracore.com.br](https://wiki.caracore.com.br) (repo caracore-wiki)
+**Última actualização:** 2026-05-31
 
 ---
 
-## CaraCore PDV — dois PDVs Desktop
+## Papel da matriz
 
-| Linha | Oficina | Loja | Canal / release |
-|-------|---------|------|-----------------|
-| **PDV Desktop (Java · JavaFX)** | caracore-pdv | pdv.caracore.com.br | v3.1.2-free |
-| **PDV Desktop (Rust + Tauri 2)** | caracore-pdv-rust | rust-pdv.caracore.com.br | v0.1.0 |
-
-- Ambos são **desktop** instalados na máquina da loja. Mesmo produto CaraCore PDV; stacks distintas; **nenhuma substitui a outra**.
-- Matriz Rust: loja **rust-pdv.caracore.com.br** · Portfólio: `#caracore-pdv-rust`
-- Discurso: evitar "PDV v3" sozinho; V3 negócio (PME, PIX Split 2027) ≠ v3.1.x (Java) ≠ v0.1.x (Rust)
+- **Site:** https://www.caracore.com.br
+- **Repo:** caracore-site
+- **Função:** Home, portfólio, ecossistema, publicações, Área 51 (`/secure/`). **Não** é vitrine principal dos produtos — cada loja no subdomínio próprio.
+- **Wiki institucional:** https://wiki.caracore.com.br (repo caracore-wiki)
+- **Documentação do repo:** docs/INDEX.md · docs/SITE_MATRIZ.md
 
 ---
 
-## Estrutura principal (caracore-site)
+## CaraCore PDV — duas linhas desktop
 
-- **index.html** — Página principal, cards dos produtos
-- **portfolio.html** — Portfólio (#caracore-pdv, #caracore-pdv-rust, #ru-soberano, #minerador-ete, etc.)
-- **ecosistema.html** — Mapa visual Eco Mundo
-- **delivery/** — Portais de produto (ru, ete, oidc, circuito, seed, hub, area51, ink). PDV Rust: **sem** delivery — redirect para rust-pdv.caracore.com.br
-- **secure/** — Área 51 OIDC
-- **docs/** — Documentação técnica
+| Linha | Oficina | Loja | Release |
+|-------|---------|------|---------|
+| Java · JavaFX | caracore-pdv | pdv.caracore.com.br | v3.1.2-free |
+| Rust + Tauri 2 | caracore-pdv-rust | **rust-pdv.caracore.com.br** | v0.1.0 |
 
----
-
-## Delivery (portais na matriz)
-
-| Portal | Caminho / loja | Produto |
-|--------|----------------|---------|
-| RU Soberano | delivery/ru/ | RU Soberano — lançamento 18/06/2026 |
-| ETE / Minerador | delivery/ete/ | Minerador 4.0 |
-| Ink Agenda | delivery/ink/ | Ink Agenda — lançamento 26/06/2026 |
-| Reino OIDC | delivery/oidc/ | Reino OIDC v2.0.0-RC1 |
-| Circuito Ferradura | delivery/circuito/ | Curso lógica + Python |
-| Seed | delivery/seed/ | Vitrine; app não disponível |
-| Hub | delivery/hub/ | Cara Core Hub |
-| Área 51 | delivery/area51/ | Suporte OIDC enterprise |
-
-PDV Desktop Java: **pdv.caracore.com.br** · PDV Desktop Rust: **rust-pdv.caracore.com.br** (sem delivery matriz; redirect `/delivery/pdv-rust` → loja).
+- Ambos desktop, SQLite local, filosofia Bunker. **Nenhuma substitui a outra.**
+- Portfólio: `#pdv-coexistencia` (comparação única) · `#caracore-pdv` · `#caracore-pdv-rust`
+- Rust: **sem** delivery na matriz · redirect `/delivery/pdv-rust` → rust-pdv · loja **sem SEED**
+- Discurso: evitar "PDV v3" sozinho; v3.1.x (Java) ≠ v0.1.x (Rust) ≠ V3 negócio (PME)
 
 ---
 
-## Documentos de ecossistema (raiz caracore-site)
+## Páginas principais
 
-- **ECOSYSTEM_CARA_CORE.txt** — repositórios e papéis
-- **ECOSYSTEM_LOJAS.txt** — URLs das lojas (inclui rust-pdv.caracore.com.br)
-- **COMPONENTES_LOJA.txt** — molde de páginas por vitrine
-- **.cursor/rules/project-memory.mdc** — memória Cursor da matriz
+| Ficheiro | Conteúdo |
+|----------|----------|
+| index.html | Home, produtos, contacto |
+| portfolio.html | Índice categorizado, Bunker, PDV coexistência, releases, sobre |
+| ecosistema.html | Mapa Eco Mundo |
+| _redirects | Legado `/delivery/*` → lojas |
+| secure/ | Área 51 OIDC |
 
 ---
 
-## Lojas principais
+## Redirects (legado delivery)
 
-pdv.caracore.com.br · hub · circuito · oidc · ete · seed · area51 · ru · ink · cso  
-PDV Desktop Rust: https://rust-pdv.caracore.com.br/
+Conteúdo comercial **não** vive em `delivery/` — só regras em `_redirects`:
 
-Padrão: oficina `caracore-<produto>` + loja `caracore-<produto>-releases` (conteúdo em `docs/`).
+- `/delivery/pdv-rust/*` → https://rust-pdv.caracore.com.br/
+- `/delivery/pdv/*` → https://pdv.caracore.com.br/
+- Demais produtos → subdomínio respectivo (ver MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md)
+
+---
+
+## Documentos na raiz
+
+| Ficheiro | Uso |
+|----------|-----|
+| ECOSYSTEM_CARA_CORE.txt | Repos oficina + loja |
+| ECOSYSTEM_LOJAS.txt | URLs canónicas |
+| COMPONENTES_LOJA.txt | Molde vitrine (*-releases) |
+| VALIDACAO_LOJAS_MATRIZ.txt | Checklist matriz ↔ lojas |
+| VALIDACAO_NEGOCIO.txt | Validação comercial (produtos, preços, fluxos) |
+| STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt | Estratégia executiva e próximos passos |
+| README.md | Entrada do repo (site matriz) |
+| .cursor/rules/project-memory.mdc | Memória Cursor |
+
+---
+
+## Lojas (CTAs da matriz)
+
+pdv · **rust-pdv** · hub · circuito · oidc · ete · seed · area51 · ru · ink · cso · mkt  
+Padrão: oficina `caracore-<produto>` + loja `caracore-<produto>-releases` (pasta `docs/`).
+
+---
+
+## Portfólio — estrutura (2026-05)
+
+Secções transversais: filosofia Bunker, coexistência PDV, releases, sobre.  
+Blocos por produto: `.block-executive` + `.block-leigos`.  
+CSS: assets/css/portfolio.css · Guia: docs/PORTFOLIO_README.md

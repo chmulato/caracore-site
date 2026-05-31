@@ -7,7 +7,8 @@ Usar antes de PR/deploy de alterações visíveis em `caracore.com.br`.
 ## Conteúdo e links
 
 - [ ] Novos links comerciais de produto apontam para **subdomínio** (`https://{produto}.caracore.com.br/...`), não para `/delivery/{produto}/` (exceto teste de redirect).
-- [ ] Alterações à Sala de Operações estão apenas em `sala/` na raiz do repo (não há `delivery/sala/` no repositório).
+- [ ] PDV Rust: CTAs → **rust-pdv.caracore.com.br**; portfólio usa `#pdv-coexistencia` para comparação Java/Rust.
+- [ ] Alterações ao portfólio: índice, releases e blocos transversais coerentes — ver `docs/PORTFOLIO_README.md`.
 - [ ] Breadcrumb “Cara Core” na matriz: `https://www.caracore.com.br/` (não `index.html` isolado como marca).
 - [ ] Imagens e assets com caminhos relativos corretos após mudança de pasta.
 

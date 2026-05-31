@@ -13,50 +13,39 @@ alwaysApply: true
 - **caracore-pdv-rust:** oficina **PDV Desktop (Rust + Tauri 2)** — Rust + Tauri 2 + React; release **v0.1.0**.
 - **caracore-pdv-rust-releases:** loja PDV Desktop Rust — https://rust-pdv.caracore.com.br/ (**vitrine canónica**; sem SEED).
 - **caracore-articles:** sala de notícias (GitHub Pages), série RU 1991 encerrada, epílogo e CTA Loja RU.
-- **caracore-ru:** oficina RU Soberano; caracore-ru-releases = loja RU (lançamento 18/Jun/2026, R$ 29,90).
+- **caracore-ru:** oficina RU Soberano; caracore-ru-releases = loja RU (lançamento 18/Jun/2027, R$ 29,90).
 - **Outros:** caracore-hub, **caracore-ete**, **caracore-ink**, caracore-circuito, caracore-oidc, caracore-seed, caracore-area51, caracore-ru e respectivos *-releases.
 
 ## Documentos de ecossistema (raiz deste repo)
 - **ECOSYSTEM_CARA_CORE.txt** — mapa de repositórios e papéis (atualizar ao incluir produto/loja).
 - **ECOSYSTEM_LOJAS.txt** — URLs canónicas (pdv + rust-pdv.caracore.com.br).
 - **COMPONENTES_LOJA.txt** — molde de páginas por loja.
+- **VALIDACAO_LOJAS_MATRIZ.txt** — checklist alinhamento portfólio ↔ lojas.
+- **VALIDACAO_NEGOCIO.txt** — validação comercial (produtos, preços, fluxos; 2026-05).
+- **STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt** — resumo executivo estratégia e próximos passos.
 - **docs/memoria-projeto.txt** — memória resumida da matriz.
+- **docs/INDEX.md** — índice curado da documentação do site.
+- **docs/SITE_MATRIZ.md** — guia operacional (portfólio, redirects, publicação).
+- **docs/PORTFOLIO_README.md** — estrutura do portfolio.html.
+- **docs/archive/** — documentação histórica (backend OAuth, migração delivery); não usar como fonte viva.
 
 ---
 
-## Matriz RU — Este diretório (delivery/ru)
-- **delivery/ru** é a **matriz** do RU Soberano: chamada oficial, CTAs, links para loja e canal de feedback. Alinhamento com oficina e loja para **lançamento 18 de Junho de 2026**.
-- **Regras de espelho:** `delivery/ru/MIRROR_DELIVERY.md`. Validação de alinhamento: `delivery/ru/VALIDACAO_ALINHAMENTO_RU.md`.
-
-## Ecossistema
-- **Oficina:** caracore-ru (código-fonte, build, dashboard Soberana).
-- **Loja:** caracore-ru-releases — vitrine em https://ru.caracore.com.br/ (download, licença, manual, feedback).
-- **Matriz:** este diretório (delivery/ru) no site Cara Core (caracore.com.br).
-
-## Mensagem de produto (alinhada à loja e CONTEXTO_RU)
-- **Um executável, dois modos.** Gratuito: **ambientação RETRO** (sala de aula UFPR 1991) para estudo do **Balanço de Massa** do **Prof. Soccol** (Engenharia Química). Pago **R$ 29,90:** **simulador de reator** (jornada completa: Inteligência de Processo + Memorial RU, narrativa Lord OIDC 1991 → 2026). Ativação com `license.key`.
-- **Lançamento: 18 de junho de 2026.** Produto pronto na garagem.
-- **Não fixar "reator PFR" como nome do produto** na comunicação; tipo de reator em definição na garagem. Em texto técnico/educacional pode-se usar "Reator (PFR e correlatos)".
-- **Imagem:** caracore_ru.png = aluno do Prof. Soccol; ambientação RETRO, Balanço de Massa.
-
-## Páginas (delivery/ru)
-- **index.html** — Chamada: RU Soberano, FREE vs pago, data 18/Junho/2026, CTAs para loja, canal-feedback, portfólio. Proposta surpresa Biotecnologia.
-- **canal-feedback.html** — E-mail suporte@caracore.com.br, Telegram ou WhatsApp +55 (41) 9 9909-7797. Não atendemos ligações.
-- **fluxo_mensagens_vendas.md** — Fluxo Conversion & Technical Support: HWID, teaser Data Sheet, pós-PIX, pós-venda.
-- **email_pos_venda.html** — Template e-mail entrega: Dossiê, link executável, license.key; tom “Parabéns pela Ascensão Acadêmica”.
-- **MIRROR_DELIVERY.md** — Regras de espelho oficina · loja · matriz.
-
-## Convenções
-- Ao alterar a chamada na matriz, manter alinhada à **oficina** (caracore-ru, CONTEXTO_RU.md) e à **loja** (caracore-ru-releases). Mensagem única: gratuito = RETRO (Prof. Soccol), pago = simulador (R$ 29,90), data 18/Junho/2026.
-- Links da matriz podem apontar para caracore.com.br (portfólio) e para a loja (caracore-ru-releases). Breadcrumb: Cara Core Informática · Portfólio · RU Soberano — Delivery.
-- Proposta Biotecnologia: “em desenho”, ciclo O₂, ambientação RETRO gratuita na loja; ver caracore-ru/docs/BIOTECNOLOGIA.md.
+## RU Soberano (garagem)
+- **Matriz:** `portfolio.html#caracore-ru` · `ecosistema.html` (subgraph Garagem) — **não** delivery/ru.
+- **Loja:** caracore-ru-releases — https://ru.caracore.com.br/
+- **Oficina:** caracore-ru — CONTEXTO_RU.md, BIOTECNOLOGIA.md
+- **Lançamento:** 18 de junho de 2027 · R$ 29,90 simulador · ambientação RETRO gratuita
+- **Mensagem:** um executável, dois modos; Balanço de Massa (Prof. Soccol) + simulador pago; evitar fixar "PFR" como nome do produto na comunicação comercial
+- **Alinhamento:** alterações de chamada → portfólio, loja e oficina em conjunto
 
 ---
 
-## Matriz PDV Desktop Java (oferta madura)
-- **Loja:** caracore-pdv-releases — https://pdv.caracore.com.br/ (canal **v3.1.2-free**, desktop multi-plataforma).
-- **Oficina:** caracore-pdv (Java 21 · JavaFX · Quarkus).
-- **Portfólio:** `portfolio.html#caracore-pdv` — **não descontinuar** na comunicação.
+## PDV Desktop Java (oferta madura)
+- **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia` (comparação com Rust)
+- **Loja:** caracore-pdv-releases — https://pdv.caracore.com.br/ (canal **v3.1.2-free**)
+- **Oficina:** caracore-pdv (Java 21 · JavaFX · Quarkus)
+- **Legado:** `/delivery/pdv/*` → redirect para pdv.caracore.com.br (_redirects)
 
 ## PDV Desktop Rust + Tauri (vitrine rust-pdv)
 - **Loja canónica:** https://rust-pdv.caracore.com.br/ — produto, mercado, download, wiki, transparência (valor comercial da stack desktop).
@@ -71,20 +60,15 @@ alwaysApply: true
   - **Posicionamento V3 (negócio):** PME, PIX Split 2027 — **comum às duas linhas**; não confundir com canal Java (v3.1.x) nem release Rust (v0.1.x).
   - **Evitar:** "PDV v3" sozinho, "nova geração", "substitui", "reescrito".
 
+## Validação matriz ↔ lojas
+- **VALIDACAO_LOJAS_MATRIZ.txt** — checklist portfólio + lojas (sem espelho delivery/)
+- **docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md** — pré-deploy site
+
 ## Wiki institucional (caracore-wiki)
 - **URL:** https://wiki.caracore.com.br/
 - **Hub PDV:** `docs/projeto-pdv.html` — dois PDVs Desktop; escolha Java vs Rust.
 - **Resumo Rust:** `docs/projeto-pdv-rust.html`.
 - **Eco Mundo:** `docs/ecosistema.html` · memória Cursor: `caracore-wiki/.cursor/rules/project-memory.mdc`.
-
----
-
-## Matriz PDV Java — referência histórica delivery/pdv
-- Pasta **delivery/pdv** pode não existir no repo; vitrine Java vive em **pdv.caracore.com.br** e portfólio `#caracore-pdv`.
-- **Lançamento oficial:** 03 de março de 2026 — versão v1.1.0 com Java 21 (Undertow, virtual threads, JVM otimizada para Windows Desktop). Conteúdo da matriz e da loja alinhado a essa data e às novidades Java 21.
-- **Páginas principais:** index.html (hero, economia, dores, 2026, planos, demo), tecnologia.html (soluções + Java 21 e desempenho), readme.html, wiki-fiscal.html, download.html, consultoria.html.
-
----
 
 ## Matriz ETE — Minerador 4.0 (portfolio · ecossistema)
 
@@ -141,7 +125,7 @@ Objetivo: expandir qualidade/segurança do site além dos caminhos estáticos j�
 **Candidatos (priorizar com o utilizador):**
 - Links **externos** (HEAD/GET opcional, lista de URLs quebradas, rate limit).
 - **`url()` em CSS** (`@import`, `background-image`) ou ficheiros **PDF** referenciados em HTML.
-- **`delivery_old`** e outros legados: incluir no scan ou documentar como excluídos de propósito.
+- **`delivery_old`** e pasta **`delivery/`** legada: excluídos do scan ou só redirects; conteúdo comercial nas lojas.
 - **Integração CI** (GitHub Actions): correr `run-site-validation.ps1` em PR.
 - **`tools/validate_encoding.py`** (`site` | `lojas` | `readme`) — validação de encoding; os `.ps1` homónimos apenas chamam Python.
 - **Mapa do site** (sitemap vs HTML gerado) ou **redirects** (`_redirects`, `vercel.json`) vs ficheiros reais.

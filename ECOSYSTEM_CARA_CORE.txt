@@ -9,7 +9,7 @@ VISÃO GERAL
 
   Diretório / Repositório       Papel                                      Observação
   ----------------------------- ------------------------------------------ ----------------------------------------------------------
-  caracore-site                 Site oficial (portfólio, delivery, wiki)     Domínio caracore.com.br; matriz dos portais de produto
+  caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
   caracore-pdv                  Oficina — PDV Desktop (Java · JavaFX)       Quarkus 3, Java 21, JavaFX; canal v3.1.2-free
   caracore-pdv-releases         Loja — PDV Desktop Java                     GitHub Pages: pdv.caracore.com.br
@@ -57,7 +57,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
 AGRUPAMENTO POR FUNÇÃO
 
 Site e presença pública
-  caracore-site: Site principal (portfólio, delivery, ecossistema, publicações).
+  caracore-site: Site matriz (home, portfólio, ecossistema, _redirects legado → lojas).
   caracore-wiki: Wiki institucional (projetos, tecnologias, trilhas, ecossistema).
 
 Produtos com entrega ativa (matriz + loja online)
@@ -71,10 +71,10 @@ Produtos com entrega ativa (matriz + loja online)
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação
-  Cara Core Seed: caracore-seed + caracore-seed-releases. Matriz: delivery/seed/
+  Cara Core Seed: caracore-seed + caracore-seed-releases. Loja: seed.caracore.com.br (ferramenta interna)
 
-Serviço com matriz e loja online
-  Suporte Área 51: caracore-area51 + delivery/area51 + caracore-area51-releases
+Serviço institucional
+  Suporte Área 51: caracore-area51 + caracore-area51-releases. Loja: area51.caracore.com.br
 
 -------------------------------------------------------------------------------
 

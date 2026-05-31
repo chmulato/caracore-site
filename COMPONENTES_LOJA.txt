@@ -13,6 +13,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   - Navegacao ............... Link "Portfólio Cara Core" → https://www.caracore.com.br/portfolio.html#{ancora}
   - Portfolio ............... Mesmo link com âncora do produto (ex.: #caracore-pdv, #reino-oidc)
   - Legado .................. /delivery/{produto}/ na matriz = redirect (stub HTML); não usar como CTA
+  - Espelho interno ......... mirror-delivery.html (Ink, RU, MKT, Reino OIDC) — documento de alinhamento
   - Base URL ................. Quando a vitrine esta em docs/, usar o subdominio oficial da loja (ex.: <base href="https://oidc.caracore.com.br/">)
 
 -------------------------------------------------------------------------------
@@ -117,7 +118,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   - Links na vitrine: usar URL absoluta para portfolio (https://www.caracore.com.br/portfolio.html) e, quando a vitrine esta em docs/, usar <base href> para que links relativos entre paginas da loja funcionem.
   - Scripts de publicacao (push/sync) devem copiar da matriz para a pasta docs/ da loja e, quando necessario, pos-processar HTML (substituir ../../portfolio por URL absoluta e garantir base href).
 
-Referencias: VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt e mirror-delivery.html nas lojas (quando existir).
+Referencias: VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt e mirror-delivery.html (Ink, RU, MKT, Reino OIDC).
 
 Cara Core Informatica - Uso interno.
 

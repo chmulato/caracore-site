@@ -130,7 +130,7 @@ CRITÉRIOS DE VALIDAÇÃO (aplicar em revisão periódica)
 RESUMO
 
   Todos os produtos listados devem ter: resumo na matriz (portfólio/ecossistema) + vitrine na loja.
-  Espelho técnico delivery/matriz (MIRROR_DELIVERY) é legado — validar repo *-releases e portfólio.
+  Espelho interno: `mirror-delivery.html` nas lojas Ink, RU e MKT; demais produtos — footer com portfolio.html#{produto}.
 
   Smoke test pós-alteração:
     home → portfólio → ecossistema → loja de um produto → voltar à matriz

@@ -53,9 +53,16 @@ alwaysApply: true
 ## Matriz PDV v3 Rust (novo produto)
 - **delivery/pdv-rust/index.html** — matriz do produto no site caracore.com.br (CTAs loja + comparação com linha Java).
 - **Loja:** caracore-pdv-rust-releases — GitHub Pages (piloto v0.1.0, instaladores pt-BR).
+- **Wiki loja Rust:** `caracore-pdv-rust-releases/docs/wiki/` (index + projeto-pdv).
 - **Oficina:** caracore-pdv-rust (repo GitHub caracore-rust-pdv).
 - **Portfólio:** `portfolio.html#caracore-pdv-rust`.
+- **Wiki institucional:** caracore-wiki — `projeto-pdv.html` (hub), `projeto-pdv-rust.html`.
 - **Mensagem:** coexistência — Java para quem precisa Linux/macOS hoje; Rust para piloto Windows.
+
+## Wiki institucional (caracore-wiki)
+- **Hub PDV:** `docs/projeto-pdv.html` — escolha Java vs Rust.
+- **Resumo Rust:** `docs/projeto-pdv-rust.html`.
+- **Trilha cliente:** `#v3-pdv-transparencia` menciona ambas as linhas.
 
 ---
 

@@ -5,32 +5,37 @@ Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos d
 
 **Matriz institucional (identidade Cara Core no domínio principal):**  
 https://www.caracore.com.br/ · https://www.caracore.com.br/portfolio.html · https://www.caracore.com.br/ecosistema.html · https://tools.caracore.com.br/sala/  
-Campanhas e CTAs devem reforçar este conjunto para a “cara” da empresa; **não** usar `https://www.caracore.com.br/delivery/...` como destino principal (legado mantido apenas por redirects após remoção da pasta da matriz — ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0a).
+Campanhas e CTAs devem reforçar este conjunto para a “cara” da empresa; **não** usar `https://www.caracore.com.br/delivery/...` como destino principal (legado mantido apenas por redirects — ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0a).
 
 **Por loja:** cada subdomínio mantém a sua própria apresentação (texto, estrutura, estilo do produto). Alinhamento canónico = URL e repo oficiais — não copiar tudo para um único molde institucional (ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0b).
 
-O site de cada produto **é** o produto na web (oferta, download, docs, feedback); não é anexo descartável. O plano tira redundância da matriz (`delivery/`), não as lojas — ver `docs/FONTES_CANONICAS_MATRIZ_LOJAS.md` §1.0c.
+O site de cada produto **é** o produto na web (oferta, download, docs, feedback); não é anexo descartável.
 
-**Verdade de produto (vitrine, download, manuais, feedback):** subdomínio de cada loja.
+**Verdade de produto (vitrine, download, manuais, feedback):** subdomínio de cada loja (ou GitHub Pages quando em fase SEED).
 
-  Produto           Loja online (URL canónica)
-  ----------------- --------------------------------------------------
-  Cara Core PDV     https://pdv.caracore.com.br/
-  Cara Core Hub     https://hub.caracore.com.br/
-  Circuito Ferradura https://circuito.caracore.com.br/
-  Reino OIDC        https://oidc.caracore.com.br/
-  Minerador 4.0 ETE https://ete.caracore.com.br/
-  Cara Core Seed    https://seed.caracore.com.br/
-  Suporte Área 51   https://area51.caracore.com.br/
-  RU Soberano       https://ru.caracore.com.br/
-  Cara Core CSO     https://cso.caracore.com.br/
-  Ink Agenda        https://ink.caracore.com.br/
+  Produto                      Loja online (URL canónica)                              Observação
+  ---------------------------- ------------------------------------------------------- ------------------------------------------
+  CaraCore PDV Desktop (Java)  https://pdv.caracore.com.br/                            Oferta madura; canal v3.1.2-free
+  CaraCore PDV Desktop (Rust)  https://chmulato.github.io/caracore-rust-pdv-releases/  Fase SEED; subdomínio pdv-rust.caracore.com.br em planejamento
+  Cara Core Hub                https://hub.caracore.com.br/
+  Circuito Ferradura           https://circuito.caracore.com.br/
+  Reino OIDC                   https://oidc.caracore.com.br/
+  Minerador 4.0 ETE            https://ete.caracore.com.br/
+  Cara Core Seed               https://seed.caracore.com.br/
+  Suporte Área 51              https://area51.caracore.com.br/
+  RU Soberano                  https://ru.caracore.com.br/
+  Cara Core CSO                https://cso.caracore.com.br/
+  Ink Agenda                   https://ink.caracore.com.br/
+  Wiki institucional           https://wiki.caracore.com.br/                           caracore-wiki (não é loja de produto)
 
-  Loja online: vitrine pública (download, apresentação resumida, canal de feedback). Publicada a partir da pasta docs/ ou raiz do repositório *-releases no GitHub Pages.
+PDV — duas lojas, dois desktops
+  A loja Java (pdv.caracore.com.br) e a loja Rust (GitHub Pages) publicam **PDVs Desktop distintos** do mesmo CaraCore PDV.
+  Mensagem nas duas vitrines: coexistência, stacks diferentes, sem substituição.
+  Banner SEED na loja Rust: `caracore-pdv-rust-releases/docs/assets/js/portal.js` + `evolution-status.css`.
 
 Alinhamento de CTAs (matriz e loja)
   Loja: CTAs comerciais e de produto permanecem na loja.  
-  Matriz: “Ver loja” / equivalente aponta para o subdomínio acima; “Cara Core Informática” e narrativa institucional em portfolio e ecossistema.  
-  Referência de validação técnica (espelho repo): VALIDACAO_LOJAS_MATRIZ.txt.
+  Matriz: “Ver loja” aponta para o subdomínio ou GitHub Pages acima; narrativa institucional em portfolio e ecossistema.  
+  Referência de validação: VALIDACAO_LOJAS_MATRIZ.txt · ECOSYSTEM_CARA_CORE.txt
 
-Atualizado em 25/04/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md
+Atualizado em 31/05/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md

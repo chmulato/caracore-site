@@ -2,81 +2,73 @@
 
 Documento de referência rápida sobre o site matriz (caracore.com.br). Atualizar quando houver mudanças relevantes de estrutura, delivery ou integrações.
 
-Data da última atualização: 2026-05-16
+Data da última atualização: 2026-05-31
 
 ---
 
 ## O que é a matriz
 
-- **Site oficial:** [https://www.caracore.com.br](https://www.caracore.com.br) (e caracore.com.br).
-- **Repositório:** cara-core-site.
-- **Papel:** Portfólio, delivery (portais de produto), wiki, Área 51 (autenticação OIDC), publicações. **Matriz** = apresentação completa e consultoria; **lojas** (releases em GitHub Pages) = vitrine e download.
-- **Backend:** [https://caracore-backend-docker.azurewebsites.net](https://caracore-backend-docker.azurewebsites.net) — API Flask (sessões, tokens, auditoria).
+- **Site oficial:** [https://www.caracore.com.br](https://www.caracore.com.br)
+- **Repositório:** caracore-site
+- **Papel:** Portfólio, delivery (portais de produto), ecossistema, publicações, Área 51 (OIDC). **Matriz** = apresentação institucional; **lojas** (*-releases) = vitrine e download.
+- **Wiki institucional:** [https://wiki.caracore.com.br](https://wiki.caracore.com.br) (repo caracore-wiki)
 
 ---
 
-## Autenticação e Área 51
+## CaraCore PDV — dois PDVs Desktop
 
-- **OAuth 2.1 + OIDC**, PKCE obrigatório. Provedores: Google OAuth e Microsoft Entra ID.
-- **Páginas:** secure/index.html (login), secure/callback.html, secure/restrita.html, secure/logout.html, admin-logs.
-- **Fluxo:** Usuário → Provedor → callback com code → troca de token (navegador ou backend) → restrita.
+| Linha | Oficina | Loja | Canal / release |
+|-------|---------|------|-----------------|
+| **PDV Desktop (Java · JavaFX)** | caracore-pdv | pdv.caracore.com.br | v3.1.2-free |
+| **PDV Desktop (Rust + Tauri 2)** | caracore-pdv-rust | GitHub Pages (SEED) | v0.1.0 |
+
+- Ambos são **desktop** instalados na máquina da loja. Mesmo produto CaraCore PDV; stacks distintas; **nenhuma substitui a outra**.
+- Matriz Rust: `delivery/pdv-rust/` · Portfólio: `#caracore-pdv` e `#caracore-pdv-rust`
+- Discurso: evitar "PDV v3" sozinho; V3 negócio (PME, PIX Split 2027) ≠ v3.1.x (Java) ≠ v0.1.x (Rust)
 
 ---
 
-## Estrutura principal (cara-core-site)
+## Estrutura principal (caracore-site)
 
-- **index.html** — Página principal. planos.html, 404.html, ecosistema.html (mapa visual do ecossistema).
-- **portfolio.html** — Portfólio de produtos (âncoras: #caracore-pdv, #caracore-hub, #caracore-seed, #caracore-ink-agenda, #ru-soberano, #minerador-ete, #area-51, #circuito-ferradura, #reino-oidc).
-- **delivery/** — Portais de produto (matriz). Cada subpasta = um produto/serviço.
-- **secure/** — Área 51: login OIDC, área restrita, logout, painel de logs.
-- **backend/** — API Flask (Azure); token_storage, session_manager, logs, rate_limiter.
-- **wiki/** — Wiki interna (projetos, tecnologias, trilhas).
-- **docs/** — Documentação técnica (fases, deploy, testes, AZURE_DEPLOY, etc.).
-- **handbook/** — Manuais e apostilas.
-- **publications/** — Artigos e livros.
+- **index.html** — Página principal, cards dos produtos
+- **portfolio.html** — Portfólio (#caracore-pdv, #caracore-pdv-rust, #ru-soberano, #minerador-ete, etc.)
+- **ecosistema.html** — Mapa visual Eco Mundo
+- **delivery/** — Portais de produto (pdv-rust, ru, ete, oidc, circuito, seed, hub, area51, ink)
+- **secure/** — Área 51 OIDC
+- **docs/** — Documentação técnica
 
 ---
 
 ## Delivery (portais na matriz)
 
-| Portal        | Caminho           | Produto / serviço |
-|---------------|-------------------|-------------------|
-| Ink Agenda    | delivery/ink/     | Cara Core Ink Agenda — gestão para estúdios de tatuagem. Lançamento 26/06/2026. Cofre digital, Blindagem de Dados, Antifrágil. |
-| RU Soberano   | delivery/ru/      | Simulação DES (RU); ambientação RETRO (gratuito) e simulador de reator (pago). Disponível 18/06/2026. |
-| ETE / Minerador | delivery/ete/   | Minerador 4.0, Ouro 4.0, Laboratório Campo Largo. |
-| PDV           | delivery/pdv/     | Cara Core PDV (wiki, consultoria, download). |
-| Seed          | delivery/seed/    | Cara Core Seed (vitrine; aplicação não disponível ao público). |
-| Hub           | delivery/hub/     | Cara Core Hub (Tia Sócia, logística). |
-| Área 51       | delivery/area51/  | Suporte OAuth 2.1/OIDC/PKCE para empresas. |
-| Circuito Ferradura | delivery/circuito/ | Curso proprietário de lógica, ábaco romano e programação Python; loja com curso web, download e portal de escolas. |
-| Reino OIDC    | delivery/oidc/    | Reino OIDC (identidade, conteúdo didático). |
+| Portal | Caminho | Produto |
+|--------|---------|---------|
+| PDV Desktop Rust | delivery/pdv-rust/ | Cara Core PDV Desktop (Rust + Tauri 2) |
+| RU Soberano | delivery/ru/ | RU Soberano — lançamento 18/06/2026 |
+| ETE / Minerador | delivery/ete/ | Minerador 4.0 |
+| Ink Agenda | delivery/ink/ | Ink Agenda — lançamento 26/06/2026 |
+| Reino OIDC | delivery/oidc/ | Reino OIDC v2.0.0-RC1 |
+| Circuito Ferradura | delivery/circuito/ | Curso lógica + Python |
+| Seed | delivery/seed/ | Vitrine; app não disponível |
+| Hub | delivery/hub/ | Cara Core Hub |
+| Área 51 | delivery/area51/ | Suporte OIDC enterprise |
 
-- Cada portal tem index.html, canal-feedback.html e, quando aplicável, download.html, tecnologia.html.
-- **Referência de links loja → matriz:** delivery/LINKS_LOJAS_PARA_MATRIZ.md.
-
----
-
-## Lojas (releases) e matriz
-
-- As **lojas** (repositórios *-releases, GitHub Pages) apontam para a matriz para “apresentação completa” e “consultoria”.
-- Cada produto mantém duas camadas: **Oficina** (repositório de desenvolvimento, sem `-releases`) e **Loja** (repositório `*-releases`, vitrine pública em `docs/`).
-- Lojas principais registradas: `circuito.caracore.com.br`, `oidc.caracore.com.br`, `ru.caracore.com.br`, `ink.caracore.com.br`, `ete.caracore.com.br`, além de PDV, Hub, Seed, CSO e Área 51.
-- Ex.: `caracore-ink` = oficina do app; `caracore-ink-releases` = loja pública, downloads e guias de instalação.
-- **Documentos de ecossistema na raiz:** ECOSYSTEM_CARA_CORE.txt, ECOSYSTEM_LOJAS.txt, COMPONENTES_LOJA.txt.
+PDV Desktop Java: vitrine principal em **pdv.caracore.com.br** (delivery/pdv legado ou removido da matriz).
 
 ---
 
-## Comandos e deploy
+## Documentos de ecossistema (raiz caracore-site)
 
-- **Backend (Azure):** Docker, CI/CD via GitHub Actions; scripts em scripts/ (deploy_to_azure.py, deploy_production.py, rollback.py).
-- **Site estático:** GitHub Pages ou hospedagem do domínio; CNAME para caracore.com.br.
+- **ECOSYSTEM_CARA_CORE.txt** — repositórios e papéis
+- **ECOSYSTEM_LOJAS.txt** — URLs das lojas (inclui PDV Rust SEED)
+- **COMPONENTES_LOJA.txt** — molde de páginas por vitrine
+- **.cursor/rules/project-memory.mdc** — memória Cursor da matriz
 
 ---
 
-## Decisões recentes (para contexto)
+## Lojas principais
 
-- Ink na matriz: mensagem “cofre digital”, Blindagem de Dados, princípio do Antifrágil (Nassim Nicholas Taleb), alinhado ao PDV.
-- Links relativos nas lojas (Ink, ETE) para evitar quebra ao publicar; matriz usa URLs absolutas para caracore.com.br onde fizer sentido.
-- 2026-04-25: lojas revisadas para reduzir redundância visual e alinhar nomenclatura: Circuito Python passou a ser tratado como **Circuito Ferradura**; convite do Circuito no Reino OIDC foi atualizado; breadcrumbs/topbars redundantes removidos em OIDC, RU, Ink e ETE/Minerador 4.0.
-- 2026-05-16: matriz atualizada com **Reino OIDC v2.0.0-RC1** — `index.html` (card dedicado), `portfolio.html#reino-oidc`, `ecosistema.html` (roadmap v2.0.0-RC1); loja em oidc.caracore.com.br; artigo Retrô 09/10/2026.
-- 2026-04-25: lojas RU e Circuito tiveram CSS centralizado em `docs/assets/css`; RU passou a publicar documentos de conteúdo como páginas HTML (`mirror-delivery.html`, `validacao-alinhamento-ru.html`, `fluxo-mensagens-vendas.html`, `artifacts/instalacao.html`) em vez de Markdown dentro de `docs/`.
+pdv.caracore.com.br · hub · circuito · oidc · ete · seed · area51 · ru · ink · cso  
+PDV Rust (SEED): https://chmulato.github.io/caracore-rust-pdv-releases/
+
+Padrão: oficina `caracore-<produto>` + loja `caracore-<produto>-releases` (conteúdo em `docs/`).

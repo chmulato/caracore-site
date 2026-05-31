@@ -1,74 +1,96 @@
 ECOSSISTEMA CARA CORE INFORMÁTICA
 =================================
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 25/04/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 31/05/2026).
 
 -------------------------------------------------------------------------------
 
 VISÃO GERAL
 
-  Diretório / Repositório     Papel                                    Observação
-  --------------------------- ---------------------------------------- ----------------------------------------------------------
-  cara-core-site              Site oficial (portfólio, delivery, wiki)   Domínio caracore.com.br; matriz dos portais de produto
-  caracore-pdv                Código do produto Cara Core PDV          Windows Desktop (Electron), SQLite, offline
-  caracore-pdv-releases       Loja online e releases do PDV            GitHub Pages: pdv.caracore.com.br
-  caracore-hub                Código do produto Cara Core Hub           Gestão logística e e-commerce; WAR (Tomcat); Tia Sócia
-  caracore-hub-releases       Loja online e releases do Hub            GitHub Pages: hub.caracore.com.br
-  caracore-ete                Código do Minerador 4.0 (ETE)             chmulatoETE Minerador; Windows .exe
-  caracore-ete-releases       Loja online e releases Minerador 4.0     GitHub Pages: ete.caracore.com.br
-  caracore-seed               Código do Cara Core Seed                  Ferramenta interna; aplicação não disponível ao público
-  caracore-seed-releases      Vitrine do Seed                          Informa que a aplicação não está disponível
-  caracore-ink                Oficina do Cara Core Ink Agenda           Java 21 + JavaFX; desktop Windows/macOS/Linux
-  caracore-ink-releases       Loja online e releases Ink Agenda         GitHub Pages: ink.caracore.com.br
-  caracore-ru                 Oficina do RU Soberano                    Java 21 + JavaFX; sala RETRO + simulador
-  caracore-ru-releases        Loja online e releases RU Soberano        GitHub Pages: ru.caracore.com.br
-  caracore-circuito           Oficina do Circuito Ferradura             Curso proprietário de lógica e Python
-  caracore-circuito-releases  Loja online e releases Circuito Ferradura GitHub Pages: circuito.caracore.com.br
-  caracore-oidc               Oficina do Reino OIDC (identidade)        OAuth 2.1 / OIDC; ReinoOIDC.exe
-  caracore-oidc-releases      Loja online e releases do Reino OIDC      GitHub Pages: oidc.caracore.com.br
-  caracore-area51             Oficina da Área 51 (código do sistema)   Desenvolvimento; autenticação enterprise OAuth 2.1/OIDC/PKCE
-  caracore-area51-releases    Loja online do Suporte Área 51           Vitrine do serviço de consultoria; GitHub Pages
-  personal-articles           Conteúdo pessoal / artigos               Conteúdo editorial ou pessoal vinculado ao ecossistema
+  Diretório / Repositório       Papel                                      Observação
+  ----------------------------- ------------------------------------------ ----------------------------------------------------------
+  caracore-site                 Site oficial (portfólio, delivery, wiki)     Domínio caracore.com.br; matriz dos portais de produto
+  caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
+  caracore-pdv                  Oficina — PDV Desktop (Java · JavaFX)       Quarkus 3, Java 21, JavaFX; canal v3.1.2-free
+  caracore-pdv-releases         Loja — PDV Desktop Java                     GitHub Pages: pdv.caracore.com.br
+  caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.0
+  caracore-pdv-rust-releases    Loja — PDV Desktop Rust (fase SEED)         GitHub Pages; subdomínio próprio em planejamento
+  caracore-hub                  Código do produto Cara Core Hub             Gestão logística e e-commerce; WAR (Tomcat); Tia Sócia
+  caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
+  caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
+  caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
+  caracore-seed                 Código do Cara Core Seed                    Ferramenta interna; aplicação não disponível ao público
+  caracore-seed-releases        Vitrine do Seed                             Informa que a aplicação não está disponível
+  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 21 + JavaFX; desktop Windows/macOS/Linux
+  caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br
+  caracore-ru                   Oficina do RU Soberano                      Java 21 + JavaFX; sala RETRO + simulador
+  caracore-ru-releases          Loja online e releases RU Soberano          GitHub Pages: ru.caracore.com.br
+  caracore-circuito             Oficina do Circuito Ferradura               Curso proprietário de lógica e Python
+  caracore-circuito-releases    Loja online e releases Circuito Ferradura   GitHub Pages: circuito.caracore.com.br
+  caracore-oidc                 Oficina do Reino OIDC (identidade)          OAuth 2.1 / OIDC; ReinoOIDC.exe
+  caracore-oidc-releases        Loja online e releases do Reino OIDC        GitHub Pages: oidc.caracore.com.br
+  caracore-area51               Oficina da Área 51 (código do sistema)      Desenvolvimento; autenticação enterprise OAuth 2.1/OIDC/PKCE
+  caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
+  personal-articles             Conteúdo pessoal / artigos                  Conteúdo editorial vinculado ao ecossistema
+
+-------------------------------------------------------------------------------
+
+CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
+
+  Ambos são aplicativos DESKTOP instalados no computador da loja (SQLite local, operação Bunker).
+  Nenhuma linha substitui a outra. Stacks e faixas de versão são independentes.
+
+  Linha                    Oficina                  Loja                         Release / canal
+  ------------------------ ------------------------ ---------------------------- ---------------------------
+  PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.1.2-free (maduro)
+  PDV Desktop Rust+Tauri   caracore-pdv-rust        caracore-pdv-rust-releases   v0.1.0 (piloto Windows)
+
+  Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
+  Não confundir: V3 negócio ≠ canal Java v3.1.x ≠ release Rust v0.1.x.
+  Evitar na comunicação: "PDV v3" sozinho, "nova geração", "substitui", "reescrito".
+
+  Matriz site: delivery/pdv-rust/ (Rust) · portfólio #caracore-pdv e #caracore-pdv-rust
+  Wiki institucional: caracore-wiki — projeto-pdv.html (hub), projeto-pdv-rust.html
 
 -------------------------------------------------------------------------------
 
 AGRUPAMENTO POR FUNÇÃO
 
 Site e presença pública
-  cara-core-site: Site principal (portfólio, delivery/pdv, delivery/hub, delivery/circuito, delivery/oidc, delivery/seed, delivery/area51, wiki, área 51, publicações, etc.).
+  caracore-site: Site principal (portfólio, delivery, ecossistema, publicações).
+  caracore-wiki: Wiki institucional (projetos, tecnologias, trilhas, ecossistema).
 
 Produtos com entrega ativa (matriz + loja online)
-  Cara Core PDV: caracore-pdv (código) + caracore-pdv-releases (loja e releases). Matriz: caracore.com.br/delivery/pdv/
-  Cara Core Hub: caracore-hub (código) + caracore-hub-releases (loja e releases). Matriz: caracore.com.br/delivery/hub/
-  Minerador 4.0 (ETE): caracore-ete (oficina) + caracore-ete-releases (loja e releases). Loja: ete.caracore.com.br
-  Circuito Ferradura: caracore-circuito (oficina) + caracore-circuito-releases (loja e EXE). Loja: circuito.caracore.com.br
-  Reino OIDC: caracore-oidc (oficina) + caracore-oidc-releases (loja e releases). Loja: oidc.caracore.com.br
-  Ink Agenda: caracore-ink (oficina) + caracore-ink-releases (loja e releases). Loja: ink.caracore.com.br
-  RU Soberano: caracore-ru (oficina) + caracore-ru-releases (loja e releases). Loja: ru.caracore.com.br
+  CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
+  CaraCore PDV Desktop (Rust): caracore-pdv-rust + caracore-pdv-rust-releases. Matriz: delivery/pdv-rust/
+  Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br
+  Minerador 4.0 (ETE): caracore-ete + caracore-ete-releases. Loja: ete.caracore.com.br
+  Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
+  Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
+  Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br
+  RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação
-  Cara Core Seed: caracore-seed (código) + caracore-seed-releases (vitrine). Matriz: caracore.com.br/delivery/seed/. Aplicação não disponível ao público.
+  Cara Core Seed: caracore-seed + caracore-seed-releases. Matriz: delivery/seed/
 
 Serviço com matriz e loja online
-  Suporte Área 51: oficina caracore-area51 (código) + portal delivery/area51 (matriz) + caracore-area51-releases (loja). Produto = suporte às empresas médias do Brasil para configurar os portais que o produto Área 51 oferece (OAuth 2.1, OIDC, PKCE). Apresentação na oficina: caracore-area51/apresentacao/index.html (alinhada à loja).
-
-Outros repositórios do ecossistema
-  personal-articles: Artigos/conteúdo pessoal.
+  Suporte Área 51: caracore-area51 + delivery/area51 + caracore-area51-releases
 
 -------------------------------------------------------------------------------
 
 REFERÊNCIAS CRUZADAS
 
-  Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.txt.
-  Estratégia e status de negócio: ver documentos no site (ex.: VALIDACAO_NEGOCIO.txt, STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt, quando disponíveis no repositório ou em uso interno).
-  Portfólio e links oficiais: https://www.caracore.com.br/portfolio.html
-  Mapa visual do ecossistema (matriz → produtos → oficinas → lojas): https://www.caracore.com.br/ecosistema.html (Conheça o Nosso Eco Mundo; ícone eco em Recursos e Planos na index).
-  Validação matriz/lojas (estrutura, mensagem, links e CTAs): ver VALIDACAO_LOJAS_MATRIZ.txt.
+  Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.txt
+  Componentes padrão das lojas: ver COMPONENTES_LOJA.txt
+  Memória Cursor da matriz: caracore-site/.cursor/rules/project-memory.mdc
+  Portfólio: https://www.caracore.com.br/portfolio.html
+  Mapa visual: https://www.caracore.com.br/ecosistema.html
+  Validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt
 
-Alinhamento matriz e lojas (links e CTAs)
-  Em cada portal da matriz (delivery/pdv, hub, circuito, oidc, seed, area51, ru, ink, ete): links "Ver loja" apontam para o subdomínio oficial da loja. Em cada loja: CTAs institucionais apontam para portfolio/ecossistema ou para a matriz quando aplicável.
-  Regra de nomenclatura local: oficina = caracore-<produto>; loja = caracore-<produto>-releases; publicação normalmente via pasta docs/.
+Alinhamento matriz e lojas
+  Em cada portal da matriz: links "Ver loja" apontam para o subdomínio ou GitHub Pages oficial.
+  Regra de nomenclatura: oficina = caracore-<produto>; loja = caracore-<produto>-releases; publicação via docs/.
 
 -------------------------------------------------------------------------------
 
-Atualizado em 25/04/2026. Lista de diretórios reflete o ecossistema local/repositórios GitHub da Cara Core Informática.
+Atualizado em 31/05/2026.

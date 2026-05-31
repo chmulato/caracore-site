@@ -1,7 +1,7 @@
 ﻿COMPONENTES PADRAO DAS LOJAS (VITRINES GITHUB PAGES)
 ====================================================
 
-Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de componentes, conforme o tipo de produto. Data: 25/04/2026.
+Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de componentes, conforme o tipo de produto. Data: 31/05/2026.
 
 -------------------------------------------------------------------------------
 1. COMPONENTES OBRIGATORIOS EM TODA LOJA
@@ -38,11 +38,20 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
 3. CHECKLIST POR LOJA (MATRIZ = delivery/; LOJA = repo -releases/docs/)
 -------------------------------------------------------------------------------
 
-  CARA CORE PDV
-    Matriz: delivery/pdv/
+  CARA CORE PDV DESKTOP (JAVA)
+    Matriz: portfólio #caracore-pdv · pdv.caracore.com.br (delivery/pdv legado ou removido)
+    Oficina: caracore-pdv/
     Loja:   caracore-pdv-releases/docs/
-    index  download  tecnologia  canal-feedback  .nojekyll
-    Observacao: consultoria, readme, wiki-fiscal, wiki so na matriz.
+    index  download  tecnologia  canal-feedback  wiki/  .nojekyll
+    Observacao: oferta madura multi-plataforma; canal v3.1.2-free. Wiki Fiscal e trilhas comerciais na loja.
+
+  CARA CORE PDV DESKTOP (RUST + TAURI)
+    Matriz: caracore-site/delivery/pdv-rust/
+    Oficina: caracore-pdv-rust/ (GitHub: caracore-rust-pdv)
+    Loja:   caracore-pdv-rust-releases/docs/
+    index  produto  mercado  download  primeiros-passos  transparencia  wiki/  assets/js/portal.js (banner SEED)  .nojekyll
+    Observacao: loja fase SEED em GitHub Pages (sem subdomínio Cara Core ainda). Release v0.1.0 piloto Windows.
+    Coexistência: banner e textos referenciam pdv.caracore.com.br (linha Java). Dois PDVs Desktop — sem conflito de versões.
 
   CARA CORE HUB
     Matriz: delivery/hub/

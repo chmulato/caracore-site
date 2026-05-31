@@ -46,12 +46,11 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     Observacao: oferta madura multi-plataforma; canal v3.1.2-free. Wiki Fiscal e trilhas comerciais na loja.
 
   CARA CORE PDV DESKTOP (RUST + TAURI)
-    Matriz: caracore-site/delivery/pdv-rust/
-    Oficina: caracore-pdv-rust/ (GitHub: caracore-rust-pdv)
-    Loja:   caracore-pdv-rust-releases/docs/
-    index  produto  mercado  download  primeiros-passos  transparencia  wiki/  assets/js/portal.js (banner SEED)  .nojekyll
-    Observacao: loja fase SEED em GitHub Pages (sem subdomínio Cara Core ainda). Release v0.1.0 piloto Windows.
-    Coexistência: banner e textos referenciam pdv.caracore.com.br (linha Java). Dois PDVs Desktop — sem conflito de versões.
+    Portfólio: caracore-site/portfolio.html#caracore-pdv-rust (resumo institucional)
+    Oficina: caracore-pdv-rust/
+    Loja:   caracore-pdv-rust-releases/docs/ → rust-pdv.caracore.com.br
+    index  produto  mercado  download  primeiros-passos  transparencia  wiki/  .nojekyll
+    Observacao: vitrine canónica do produto Rust; valor comercial da stack desktop na loja. Redirect: /delivery/pdv-rust → loja.
 
   CARA CORE HUB
     Matriz: delivery/hub/

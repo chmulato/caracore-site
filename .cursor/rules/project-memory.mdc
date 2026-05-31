@@ -1,24 +1,24 @@
----
-description: Memória do site Cara Core — matriz (PDV Java loja, PDV Rust+Tauri delivery/pdv-rust), ambientes e alinhamento oficina · loja
+﻿---
+description: Memória do site Cara Core — matriz, lojas pdv + rust-pdv, ecossistema; vitrine Rust em rust-pdv.caracore.com.br
 alwaysApply: true
 ---
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
 ## Ambientes utilizados hoje
-- **caracore-site** (este repo): site matriz caracore.com.br — delivery/pdv-rust, portfólio (dois PDVs Desktop), ecossistema, publicações.
+- **caracore-site** (este repo): site matriz caracore.com.br — portfólio (dois PDVs Desktop), ecossistema, publicações. **Sem** delivery/pdv-rust (redirect 301 → rust-pdv.caracore.com.br).
 - **caracore-wiki:** wiki institucional — https://wiki.caracore.com.br/ (hub PDV Java + Rust, ecossistema, trilhas).
 - **caracore-pdv:** oficina **PDV Desktop (Java · JavaFX)** — Java 21, Quarkus, JavaFX; canal **v3.1.2-free**.
 - **caracore-pdv-releases:** loja PDV Desktop Java — https://pdv.caracore.com.br/
 - **caracore-pdv-rust:** oficina **PDV Desktop (Rust + Tauri 2)** — Rust + Tauri 2 + React; release **v0.1.0**.
-- **caracore-pdv-rust-releases:** loja PDV Desktop Rust — https://chmulato.github.io/caracore-rust-pdv-releases/ (fase SEED, piloto Windows).
+- **caracore-pdv-rust-releases:** loja PDV Desktop Rust — https://rust-pdv.caracore.com.br/ (**vitrine canónica**; sem SEED).
 - **caracore-articles:** sala de notícias (GitHub Pages), série RU 1991 encerrada, epílogo e CTA Loja RU.
 - **caracore-ru:** oficina RU Soberano; caracore-ru-releases = loja RU (lançamento 18/Jun/2026, R$ 29,90).
 - **Outros:** caracore-hub, **caracore-ete**, **caracore-ink**, caracore-circuito, caracore-oidc, caracore-seed, caracore-area51, caracore-ru e respectivos *-releases.
 
 ## Documentos de ecossistema (raiz deste repo)
 - **ECOSYSTEM_CARA_CORE.txt** — mapa de repositórios e papéis (atualizar ao incluir produto/loja).
-- **ECOSYSTEM_LOJAS.txt** — URLs canónicas das vitrines (inclui PDV Java + PDV Rust SEED).
+- **ECOSYSTEM_LOJAS.txt** — URLs canónicas (pdv + rust-pdv.caracore.com.br).
 - **COMPONENTES_LOJA.txt** — molde de páginas por loja.
 - **docs/memoria-projeto.txt** — memória resumida da matriz.
 
@@ -58,16 +58,16 @@ alwaysApply: true
 - **Oficina:** caracore-pdv (Java 21 · JavaFX · Quarkus).
 - **Portfólio:** `portfolio.html#caracore-pdv` — **não descontinuar** na comunicação.
 
-## Matriz PDV Desktop Rust + Tauri (piloto)
-- **delivery/pdv-rust/index.html** — matriz no site (CTAs loja + tabela duas linhas desktop).
-- **Loja:** caracore-pdv-rust-releases — GitHub Pages, **fase SEED** (sem subdomínio próprio ainda).
+## PDV Desktop Rust + Tauri (vitrine rust-pdv)
+- **Loja canónica:** https://rust-pdv.caracore.com.br/ — produto, mercado, download, wiki, transparência (valor comercial da stack desktop).
+- **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — resumo; CTAs → loja (não delivery/pdv-rust).
+- **_redirects:** `/delivery/pdv-rust/*` → rust-pdv.caracore.com.br
 - **Wiki loja Rust:** `caracore-pdv-rust-releases/docs/wiki/`
-- **Oficina:** caracore-pdv-rust (GitHub: caracore-rust-pdv).
-- **Portfólio:** `portfolio.html#caracore-pdv-rust`.
+- **Oficina:** caracore-pdv-rust
 - **Wiki institucional:** caracore-wiki — `projeto-pdv.html` (hub), `projeto-pdv-rust.html`.
 - **Mensagem:** dois **PDVs Desktop** do **mesmo** CaraCore PDV — stacks distintas, **nenhuma substitui a outra**. Ambos instalados no computador da loja.
   - **Java:** PDV Desktop maduro · canal **v3.1.2-free** · desktop multi-plataforma (Windows · Linux · macOS).
-  - **Rust:** PDV Desktop · **Rust + Tauri 2** · release **v0.1.0** · piloto Windows (loja SEED).
+  - **Rust:** PDV Desktop · **Rust + Tauri 2** · release **v0.1.0** · loja **rust-pdv.caracore.com.br**
   - **Posicionamento V3 (negócio):** PME, PIX Split 2027 — **comum às duas linhas**; não confundir com canal Java (v3.1.x) nem release Rust (v0.1.x).
   - **Evitar:** "PDV v3" sozinho, "nova geração", "substitui", "reescrito".
 

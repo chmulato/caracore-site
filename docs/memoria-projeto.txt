@@ -20,10 +20,10 @@ Data da última atualização: 2026-05-31
 | Linha | Oficina | Loja | Canal / release |
 |-------|---------|------|-----------------|
 | **PDV Desktop (Java · JavaFX)** | caracore-pdv | pdv.caracore.com.br | v3.1.2-free |
-| **PDV Desktop (Rust + Tauri 2)** | caracore-pdv-rust | GitHub Pages (SEED) | v0.1.0 |
+| **PDV Desktop (Rust + Tauri 2)** | caracore-pdv-rust | rust-pdv.caracore.com.br | v0.1.0 |
 
 - Ambos são **desktop** instalados na máquina da loja. Mesmo produto CaraCore PDV; stacks distintas; **nenhuma substitui a outra**.
-- Matriz Rust: `delivery/pdv-rust/` · Portfólio: `#caracore-pdv` e `#caracore-pdv-rust`
+- Matriz Rust: loja **rust-pdv.caracore.com.br** · Portfólio: `#caracore-pdv-rust`
 - Discurso: evitar "PDV v3" sozinho; V3 negócio (PME, PIX Split 2027) ≠ v3.1.x (Java) ≠ v0.1.x (Rust)
 
 ---
@@ -33,7 +33,7 @@ Data da última atualização: 2026-05-31
 - **index.html** — Página principal, cards dos produtos
 - **portfolio.html** — Portfólio (#caracore-pdv, #caracore-pdv-rust, #ru-soberano, #minerador-ete, etc.)
 - **ecosistema.html** — Mapa visual Eco Mundo
-- **delivery/** — Portais de produto (pdv-rust, ru, ete, oidc, circuito, seed, hub, area51, ink)
+- **delivery/** — Portais de produto (ru, ete, oidc, circuito, seed, hub, area51, ink). PDV Rust: **sem** delivery — redirect para rust-pdv.caracore.com.br
 - **secure/** — Área 51 OIDC
 - **docs/** — Documentação técnica
 
@@ -41,9 +41,8 @@ Data da última atualização: 2026-05-31
 
 ## Delivery (portais na matriz)
 
-| Portal | Caminho | Produto |
-|--------|---------|---------|
-| PDV Desktop Rust | delivery/pdv-rust/ | Cara Core PDV Desktop (Rust + Tauri 2) |
+| Portal | Caminho / loja | Produto |
+|--------|----------------|---------|
 | RU Soberano | delivery/ru/ | RU Soberano — lançamento 18/06/2026 |
 | ETE / Minerador | delivery/ete/ | Minerador 4.0 |
 | Ink Agenda | delivery/ink/ | Ink Agenda — lançamento 26/06/2026 |
@@ -53,14 +52,14 @@ Data da última atualização: 2026-05-31
 | Hub | delivery/hub/ | Cara Core Hub |
 | Área 51 | delivery/area51/ | Suporte OIDC enterprise |
 
-PDV Desktop Java: vitrine principal em **pdv.caracore.com.br** (delivery/pdv legado ou removido da matriz).
+PDV Desktop Java: **pdv.caracore.com.br** · PDV Desktop Rust: **rust-pdv.caracore.com.br** (sem delivery matriz; redirect `/delivery/pdv-rust` → loja).
 
 ---
 
 ## Documentos de ecossistema (raiz caracore-site)
 
 - **ECOSYSTEM_CARA_CORE.txt** — repositórios e papéis
-- **ECOSYSTEM_LOJAS.txt** — URLs das lojas (inclui PDV Rust SEED)
+- **ECOSYSTEM_LOJAS.txt** — URLs das lojas (inclui rust-pdv.caracore.com.br)
 - **COMPONENTES_LOJA.txt** — molde de páginas por vitrine
 - **.cursor/rules/project-memory.mdc** — memória Cursor da matriz
 
@@ -69,6 +68,6 @@ PDV Desktop Java: vitrine principal em **pdv.caracore.com.br** (delivery/pdv leg
 ## Lojas principais
 
 pdv.caracore.com.br · hub · circuito · oidc · ete · seed · area51 · ru · ink · cso  
-PDV Rust (SEED): https://chmulato.github.io/caracore-rust-pdv-releases/
+PDV Desktop Rust: https://rust-pdv.caracore.com.br/
 
 Padrão: oficina `caracore-<produto>` + loja `caracore-<produto>-releases` (conteúdo em `docs/`).

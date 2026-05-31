@@ -14,7 +14,7 @@ VISÃO GERAL
   caracore-pdv                  Oficina — PDV Desktop (Java · JavaFX)       Quarkus 3, Java 21, JavaFX; canal v3.1.2-free
   caracore-pdv-releases         Loja — PDV Desktop Java                     GitHub Pages: pdv.caracore.com.br
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.0
-  caracore-pdv-rust-releases    Loja — PDV Desktop Rust (fase SEED)         GitHub Pages; subdomínio próprio em planejamento
+  caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            rust-pdv.caracore.com.br (GitHub Pages + CNAME)
   caracore-hub                  Código do produto Cara Core Hub             Gestão logística e e-commerce; WAR (Tomcat); Tia Sócia
   caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
@@ -49,7 +49,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
   Não confundir: V3 negócio ≠ canal Java v3.1.x ≠ release Rust v0.1.x.
   Evitar na comunicação: "PDV v3" sozinho, "nova geração", "substitui", "reescrito".
 
-  Matriz site: delivery/pdv-rust/ (Rust) · portfólio #caracore-pdv e #caracore-pdv-rust
+  Matriz site: portfólio #caracore-pdv-rust · loja rust-pdv.caracore.com.br
   Wiki institucional: caracore-wiki — projeto-pdv.html (hub), projeto-pdv-rust.html
 
 -------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ Site e presença pública
 
 Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
-  CaraCore PDV Desktop (Rust): caracore-pdv-rust + caracore-pdv-rust-releases. Matriz: delivery/pdv-rust/
+  CaraCore PDV Desktop (Rust): caracore-pdv-rust + caracore-pdv-rust-releases. Loja: **rust-pdv.caracore.com.br** (sem delivery matriz).
   Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br
   Minerador 4.0 (ETE): caracore-ete + caracore-ete-releases. Loja: ete.caracore.com.br
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br

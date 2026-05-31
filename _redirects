@@ -46,6 +46,10 @@
 /delivery/pdv/     https://pdv.caracore.com.br/   301
 /delivery/pdv/*    https://pdv.caracore.com.br/:splat   301
 
+/delivery/pdv-rust      https://rust-pdv.caracore.com.br/   301
+/delivery/pdv-rust/     https://rust-pdv.caracore.com.br/   301
+/delivery/pdv-rust/*    https://rust-pdv.caracore.com.br/:splat   301
+
 /delivery/hub      https://hub.caracore.com.br/   301
 /delivery/hub/     https://hub.caracore.com.br/   301
 /delivery/hub/*    https://hub.caracore.com.br/:splat   301

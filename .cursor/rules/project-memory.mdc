@@ -13,7 +13,8 @@ alwaysApply: true
 |--------|-------------|-------|------------------------|
 | **Matriz** | caracore-site | Site institucional (este repo) | https://www.caracore.com.br/ · portfólio · ecossistema |
 | **Wiki** | caracore-wiki | Trilhas e hub PDV | https://wiki.caracore.com.br/ |
-| **Sala** | caracore-site `sala/` + tools | Campanhas, retrô, manuais | https://tools.caracore.com.br/sala/ |
+| **Retrô** | caracore-retro | Artigos LinkedIn / editorial | https://retro.caracore.com.br/ |
+| **Sala** | caracore-site `sala/` + caracore-mkt | Campanhas, manuais rede | https://tools.caracore.com.br/sala/ |
 | **PDV Java — oficina** | caracore-pdv | Código Quarkus/JavaFX | privado |
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
@@ -95,8 +96,16 @@ alwaysApply: true
 - **Loja:** https://ru.caracore.com.br/
 - **Lançamento:** 18/Jun/2027 · R$ 29,90 simulador
 
-## Sala, retrô e blog
+## Retrô (caracore-retro)
 
-- **Sala:** `sala/index.html` · campanha Ink H2 2026 (`2026_07_*` … `2026_12_*`)
-- **Retrô:** `sala/redes/retro/` — URLs canónicas em caracore.com.br
-- **Validação:** `scripts/run-site-validation.ps1` · relatórios em `sala/regis/`
+- **Repo:** `D:\dev\caracore-retro` · URL https://retro.caracore.com.br/
+- **103 artigos** · convenção `YYYY_MM_DD_article_NN.html` + `*_NN_01.png`
+- **PDV Rust (114):** 20/12/2026 — “Duas linhas no balcão” · coexistência Java/Rust
+- **Memória Cursor:** `caracore-retro/.cursor/rules/project-memory.mdc`
+
+## Sala e validação (matriz)
+
+- **Sala canónica:** tools.caracore.com.br/sala/ · plano em `caracore-site/sala/`
+- **Campanha Ink H2 2026:** artefatos `2026_07_*` … `2026_12_*`
+- **Validação site:** `scripts/run-site-validation.ps1` · `sala/regis/`
+- **Nota:** conteúdo retrô longo migrou para repo **caracore-retro**; evitar duplicar artigos só em `sala/redes/retro/` sem sync

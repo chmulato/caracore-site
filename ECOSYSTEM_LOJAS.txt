@@ -28,6 +28,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   Cara Core CSO                https://cso.caracore.com.br/
   Ink Agenda                   https://ink.caracore.com.br/
   Wiki institucional           https://wiki.caracore.com.br/                           caracore-wiki (não é loja de produto)
+  Artigos Retrô (editorial)   https://retro.caracore.com.br/                          caracore-retro (não é loja de produto)
 
 PDV — duas lojas desktop
   pdv.caracore.com.br (Java) e rust-pdv.caracore.com.br (Rust) — vitrines canónicas; coexistência na comunicação.
@@ -36,5 +37,7 @@ Alinhamento de CTAs (matriz e loja)
   Loja: CTAs comerciais e de produto permanecem na loja.  
   Matriz: “Ver loja” aponta para o subdomínio ou GitHub Pages acima; narrativa institucional em portfolio e ecossistema.  
   Referência de validação: VALIDACAO_LOJAS_MATRIZ.txt · ECOSYSTEM_CARA_CORE.txt
+
+Retomada de contexto: docs/ECOSYSTEM_MEMORIA.md (matriz).
 
 Atualizado em 02/06/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md

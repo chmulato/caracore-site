@@ -13,8 +13,9 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 - **Repo:** caracore-site
 - **Função:** Home, portfólio, ecossistema, publicações, Área 51 (`/secure/`). **Não** é vitrine principal — cada produto na loja (`*.caracore.com.br`).
 - **Wiki institucional:** https://wiki.caracore.com.br (repo caracore-wiki)
+- **Retrô (artigos):** https://retro.caracore.com.br (repo caracore-retro)
 - **Sala canónica:** https://tools.caracore.com.br/sala/
-- **Documentação:** docs/INDEX.md · docs/SITE_MATRIZ.md
+- **Documentação:** docs/INDEX.md · docs/SITE_MATRIZ.md · **docs/ECOSYSTEM_MEMORIA.md** (retomada)
 
 ---
 

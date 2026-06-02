@@ -3,6 +3,7 @@
 Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar estrutura, portfólio, redirects ou integrações.
 
 **Última actualização:** 2026-06-02  
+**Iniciar tarefa:** docs/INICIAR_NOVA_TAREFA.md  
 **Índice ecossistema:** docs/ECOSYSTEM_MEMORIA.md
 
 ---

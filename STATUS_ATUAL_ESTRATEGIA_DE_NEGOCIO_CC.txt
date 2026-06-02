@@ -5,6 +5,8 @@ Cara Core Informática
 Documento executivo — estado actual e próximos passos.
 Uso interno. Atualizado: 2026-06-02.
 
+Retomada / nova tarefa: docs/INICIAR_NOVA_TAREFA.md · docs/ECOSYSTEM_MEMORIA.md
+
 Histórico detalhado (trabalho 2025–2026, delivery/): docs/archive/sessoes-trabalho/STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC_HISTORICO.txt
 
 Referências vivas: ECOSYSTEM_CARA_CORE.txt · ECOSYSTEM_LOJAS.txt · VALIDACAO_LOJAS_MATRIZ.txt · VALIDACAO_NEGOCIO.txt · docs/SITE_MATRIZ.md

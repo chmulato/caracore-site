@@ -60,7 +60,9 @@ AGRUPAMENTO POR FUNÇÃO
 
 Site e presença pública
   caracore-site: Site matriz (home, portfólio, ecossistema, _redirects legado → lojas).
-  caracore-wiki: Wiki institucional (projetos, tecnologias, trilhas, ecossistema).
+  caracore-wiki: Wiki institucional (projetos, tecnologias, trilhas, ecossistema). Portfólio: www.caracore.com.br apenas.
+  caracore-retro: Artigos Retrô LinkedIn (retro.caracore.com.br).
+  Retomada / produtividade: caracore-site/docs/INICIAR_NOVA_TAREFA.md + docs/ECOSYSTEM_MEMORIA.md
 
 Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br

@@ -2,7 +2,7 @@
 
 Índice **curado** para quem edita o site institucional. Documentação histórica de backend OAuth, migração `delivery/` e fases antigas está em [archive/](archive/).
 
-**Última atualização:** 2026-05-31
+**Última atualização:** 2026-06-02
 
 ---
 
@@ -10,8 +10,9 @@
 
 | Documento | Para quê |
 |-----------|----------|
+| **[INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md)** | **Ao iniciar nova tarefa** — fluxo por repo e armadilhas |
+| [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) | Visão atual do ecossistema + changelog |
 | [SITE_MATRIZ.md](SITE_MATRIZ.md) | Páginas, portfólio, redirects, publicação |
-| [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) | Índice de memorias Cursor — retomada de desenvolvimento |
 | [memoria-projeto.txt](memoria-projeto.txt) | Memória rápida do repositório |
 | [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.md) | Matriz vs lojas — uma fonte por tipo de conteúdo |
 | [CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md](CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md) | Antes de PR/deploy visível |
@@ -30,7 +31,12 @@
 | [../STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt](../STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt) | Resumo executivo estratégia e próximos passos |
 | [ECOSSISTEMA_MAPA_VISUAL.md](ECOSSISTEMA_MAPA_VISUAL.md) | Mapa visual (se aplicável) |
 
-Wiki institucional: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`).
+| Presença | URL | Repo |
+|----------|-----|------|
+| Wiki | [wiki.caracore.com.br](https://wiki.caracore.com.br/) | `caracore-wiki` |
+| Retrô | [retro.caracore.com.br](https://retro.caracore.com.br/) | `caracore-retro` |
+
+**Portfólio:** só em [www.caracore.com.br/portfolio.html](https://www.caracore.com.br/portfolio.html) (não no domínio wiki).
 
 ---
 

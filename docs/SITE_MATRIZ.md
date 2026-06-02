@@ -2,7 +2,8 @@
 
 Referência para editar e publicar **caracore.com.br** sem duplicar conteúdo das lojas.
 
-**Repo:** `caracore-site` · **Domínio:** `www.caracore.com.br`
+**Repo:** `caracore-site` · **Domínio:** `www.caracore.com.br`  
+**Ecossistema (retomada):** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md)
 
 ---
 

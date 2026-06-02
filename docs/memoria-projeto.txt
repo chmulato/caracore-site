@@ -2,7 +2,7 @@
 
 Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar estrutura, portfólio, redirects ou integrações.
 
-**Última actualização:** 2026-05-31  
+**Última actualização:** 2026-06-02  
 **Índice ecossistema:** docs/ECOSYSTEM_MEMORIA.md
 
 ---
@@ -32,11 +32,12 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 | Linha | Oficina | Loja | Release |
 |-------|---------|------|---------|
 | Java · JavaFX | caracore-pdv | pdv.caracore.com.br | v3.1.2-free |
-| Rust + Tauri 2 | caracore-pdv-rust | **rust-pdv.caracore.com.br** | v0.1.0 |
+| Rust + Tauri 2 | caracore-pdv-rust | **rust-pdv.caracore.com.br** (vitrine) | v0.1.1 |
+| Releases Rust | caracore-rust-pdv-releases (GitHub) | **github.com/.../releases** | download oficial |
 
 - Filosofia Bunker · SQLite local · **nenhuma linha substitui a outra**
-- Portfólio: `#pdv-coexistencia` (comparação) · `#caracore-pdv` · `#caracore-pdv-rust`
-- Loja Rust: **sem SEED** · vitrine canónica em rust-pdv
+- Portfólio: `#pdv-coexistencia` · `#caracore-pdv` · `#caracore-pdv-rust` — CTAs Rust → GitHub Releases
+- Loja Rust: vitrine + página Formatos; **sem SEED** na vitrine
 - Discurso: evitar "PDV v3" sozinho; v3.1.x (Java) ≠ v0.1.x (Rust) ≠ V3 negócio (PME)
 
 ---

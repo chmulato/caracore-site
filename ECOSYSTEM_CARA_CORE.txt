@@ -1,7 +1,7 @@
 ECOSSISTEMA CARA CORE INFORMÁTICA
 =================================
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 31/05/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 02/06/2026).
 
 -------------------------------------------------------------------------------
 
@@ -13,8 +13,9 @@ VISÃO GERAL
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
   caracore-pdv                  Oficina — PDV Desktop (Java · JavaFX)       Quarkus 3, Java 21, JavaFX; canal v3.1.2-free
   caracore-pdv-releases         Loja — PDV Desktop Java                     GitHub Pages: pdv.caracore.com.br
-  caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.0
-  caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            rust-pdv.caracore.com.br (GitHub Pages + CNAME)
+  caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.1
+  caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            rust-pdv.caracore.com.br (vitrine; download → GitHub Releases)
+  (GitHub) caracore-rust-pdv-releases  Artefatos oficiais (MSI/NSIS/ZIP/deb/dmg)   github.com/chmulato/caracore-rust-pdv-releases/releases
   caracore-hub                  Código do produto Cara Core Hub             Gestão logística e e-commerce; WAR (Tomcat); Tia Sócia
   caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
@@ -43,7 +44,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
   PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.1.2-free (maduro)
-  PDV Desktop Rust+Tauri   caracore-pdv-rust        caracore-pdv-rust-releases   v0.1.0 (piloto Windows)
+  PDV Desktop Rust+Tauri   caracore-pdv-rust        loja + GitHub Releases       v0.1.1 (piloto multi-OS; download em GitHub)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
   Não confundir: V3 negócio ≠ canal Java v3.1.x ≠ release Rust v0.1.x.
@@ -94,4 +95,4 @@ Alinhamento matriz e lojas
 
 -------------------------------------------------------------------------------
 
-Atualizado em 31/05/2026.
+Atualizado em 02/06/2026.

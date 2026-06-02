@@ -2,7 +2,7 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas** e **wiki** num segundo ciclo de trabalho.
 
-**Atualizado:** 2026-05-31
+**Atualizado:** 2026-06-02
 
 ---
 
@@ -46,7 +46,16 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas** e **wiki** n
 
 ## Lojas canónicas
 
-Ver `ECOSYSTEM_LOJAS.txt`. PDV: **pdv.** e **rust-pdv.** (domínios distintos).
+Ver `ECOSYSTEM_LOJAS.txt`. PDV: **pdv.** e **rust-pdv.** (domínios distintos). Download Rust: **GitHub Releases** (`caracore-rust-pdv-releases`); loja Rust = vitrine + formatos.
+
+## PDV Rust — camadas (jun/2026)
+
+| Camada | Repo / URL |
+|--------|------------|
+| Matriz | caracore-site — `#caracore-pdv-rust`, CTAs → releases |
+| Loja | caracore-pdv-rust-releases → rust-pdv.caracore.com.br |
+| Releases | github.com/chmulato/caracore-rust-pdv-releases — **v0.1.1** |
+| Oficina | caracore-pdv-rust |
 
 ---
 

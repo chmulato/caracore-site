@@ -65,8 +65,9 @@ Detalhes: [PORTFOLIO_README.md](PORTFOLIO_README.md).
 
 | | Java | Rust + Tauri 2 |
 |---|------|----------------|
-| Loja | pdv.caracore.com.br | **rust-pdv.caracore.com.br** |
-| Release | v3.1.2-free | v0.1.0 |
+| Loja / vitrine | pdv.caracore.com.br | **rust-pdv.caracore.com.br** |
+| Download | loja Java | **GitHub Releases** (`caracore-rust-pdv-releases`) |
+| Release | v3.1.2-free | v0.1.1 |
 | Portfólio | `#caracore-pdv` | `#caracore-pdv-rust` |
 
 Evitar: “PDV v3” sozinho, “substitui”, “nova geração”. Usar `#pdv-coexistencia` em vez de repetir comparação em cada bloco.

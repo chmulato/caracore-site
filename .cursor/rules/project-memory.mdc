@@ -1,140 +1,102 @@
 ﻿---
-description: Memória do site Cara Core — matriz, lojas pdv + rust-pdv, ecossistema; vitrine Rust em rust-pdv.caracore.com.br
+description: Memória do site Cara Core — matriz, lojas, releases GitHub, ecossistema; PDV Rust v0.1.1
 alwaysApply: true
 ---
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
+**Atualizado:** 2026-06-02
+
 ## Ambientes utilizados hoje
-- **caracore-site** (este repo): site matriz caracore.com.br — portfólio (dois PDVs Desktop), ecossistema, publicações. **`delivery/`** = stubs HTML (GitHub Pages) + `_redirects`/`vercel.json`; CTAs novos → lojas, não `/delivery/`.
-- **caracore-wiki:** wiki institucional — https://wiki.caracore.com.br/ (hub PDV Java + Rust, ecossistema, trilhas).
-- **caracore-pdv:** oficina **PDV Desktop (Java · JavaFX)** — Java 21, Quarkus, JavaFX; canal **v3.1.2-free**.
-- **caracore-pdv-releases:** loja PDV Desktop Java — https://pdv.caracore.com.br/
-- **caracore-pdv-rust:** oficina **PDV Desktop (Rust + Tauri 2)** — Rust + Tauri 2 + React; release **v0.1.0**.
-- **caracore-pdv-rust-releases:** loja PDV Desktop Rust — https://rust-pdv.caracore.com.br/ (**vitrine canónica**; sem SEED).
-- **caracore-articles:** sala de notícias (GitHub Pages), série RU 1991 encerrada, epílogo e CTA Loja RU.
-- **caracore-ru:** oficina RU Soberano; caracore-ru-releases = loja RU (lançamento 18/Jun/2027, R$ 29,90).
-- **Outros:** caracore-hub, **caracore-ete**, **caracore-ink**, caracore-circuito, caracore-oidc, caracore-seed, caracore-area51, caracore-ru e respectivos *-releases.
+
+| Camada | Repositório | Papel | URL / destino canónico |
+|--------|-------------|-------|------------------------|
+| **Matriz** | caracore-site | Site institucional (este repo) | https://www.caracore.com.br/ · portfólio · ecossistema |
+| **Wiki** | caracore-wiki | Trilhas e hub PDV | https://wiki.caracore.com.br/ |
+| **Sala** | caracore-site `sala/` + tools | Campanhas, retrô, manuais | https://tools.caracore.com.br/sala/ |
+| **PDV Java — oficina** | caracore-pdv | Código Quarkus/JavaFX | privado |
+| **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
+| **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
+| **PDV Rust — loja** | caracore-pdv-rust-releases | Vitrine comercial | https://rust-pdv.caracore.com.br/ |
+| **PDV Rust — releases** | caracore-rust-pdv-releases (GitHub) | **Download oficial** (artefatos) | https://github.com/chmulato/caracore-rust-pdv-releases/releases |
+| **Hub** | caracore-hub + *-releases | Logística / e-commerce | https://hub.caracore.com.br/ |
+| **ETE** | caracore-ete + *-releases | Minerador 4.0 | https://ete.caracore.com.br/ |
+| **Ink** | caracore-ink + *-releases | Agenda | https://ink.caracore.com.br/ |
+| **RU** | caracore-ru + *-releases | Simulador RETRO | https://ru.caracore.com.br/ |
+| **Circuito** | caracore-circuito + *-releases | Curso Python | https://circuito.caracore.com.br/ |
+| **OIDC** | caracore-oidc + *-releases | Reino OIDC | https://oidc.caracore.com.br/ |
+| **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
+| **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
+| **CSO / MKT** | caracore-cso / caracore-mkt + *-releases | Canais dedicados | cso.* · mkt.* |
+
+**Regras de roteamento (2026):**
+- CTAs novos na matriz → **subdomínio da loja** ou **GitHub Releases** (PDV Rust), nunca `/delivery/` como destino principal.
+- `delivery/` neste repo = stubs HTML (redirect) + `_redirects` / `vercel.json`.
+- Matriz não duplica vitrine longa; portfólio resume e aponta para loja/releases.
 
 ## Documentos de ecossistema (raiz deste repo)
-- **ECOSYSTEM_CARA_CORE.txt** — mapa de repositórios e papéis (atualizar ao incluir produto/loja).
-- **ECOSYSTEM_LOJAS.txt** — URLs canónicas (pdv + rust-pdv.caracore.com.br).
+
+- **ECOSYSTEM_CARA_CORE.txt** — mapa de repositórios e papéis.
+- **ECOSYSTEM_LOJAS.txt** — URLs canónicas (pdv + rust-pdv + demais).
 - **COMPONENTES_LOJA.txt** — molde de páginas por loja.
 - **VALIDACAO_LOJAS_MATRIZ.txt** — checklist alinhamento portfólio ↔ lojas.
-- **VALIDACAO_NEGOCIO.txt** — validação comercial (produtos, preços, fluxos; 2026-05).
-- **STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt** — resumo executivo estratégia e próximos passos.
+- **VALIDACAO_NEGOCIO.txt** — validação comercial.
+- **STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt** — resumo executivo.
 - **docs/memoria-projeto.txt** — memória resumida da matriz.
-- **docs/ECOSYSTEM_MEMORIA.md** — índice único para retomada (âncoras portfólio, memorias por repo, checklists).
-- **docs/INDEX.md** — índice curado da documentação do site.
+- **docs/ECOSYSTEM_MEMORIA.md** — índice único para retomada.
 - **docs/SITE_MATRIZ.md** — guia operacional (portfólio, redirects, publicação).
-- **docs/PORTFOLIO_README.md** — estrutura do portfolio.html.
-- **docs/archive/** — documentação histórica (backend OAuth, migração delivery); não usar como fonte viva.
-
----
-
-## RU Soberano (garagem)
-- **Matriz:** `portfolio.html#caracore-ru` · `ecosistema.html` (subgraph Garagem) — **não** delivery/ru.
-- **Loja:** caracore-ru-releases — https://ru.caracore.com.br/
-- **Oficina:** caracore-ru — CONTEXTO_RU.md, BIOTECNOLOGIA.md
-- **Lançamento:** 18 de junho de 2027 · R$ 29,90 simulador · ambientação RETRO gratuita
-- **Mensagem:** um executável, dois modos; Balanço de Massa (Prof. Soccol) + simulador pago; evitar fixar "PFR" como nome do produto na comunicação comercial
-- **Alinhamento:** alterações de chamada → portfólio, loja e oficina em conjunto
 
 ---
 
 ## PDV Desktop Java (oferta madura)
-- **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia` (comparação com Rust)
-- **Loja:** caracore-pdv-releases — https://pdv.caracore.com.br/ (canal **v3.1.2-free**)
-- **Oficina:** caracore-pdv (Java 21 · JavaFX · Quarkus)
-- **Legado:** `/delivery/pdv/*` → redirect para pdv.caracore.com.br (_redirects)
 
-## PDV Desktop Rust + Tauri (vitrine rust-pdv)
-- **Loja canónica:** https://rust-pdv.caracore.com.br/ — produto, mercado, download, wiki, transparência (valor comercial da stack desktop).
-- **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — resumo; CTAs → loja (não delivery/pdv-rust).
+- **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia`
+- **Loja:** https://pdv.caracore.com.br/ — canal **v3.1.2-free**
+- **Oficina:** caracore-pdv
+- **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
+
+## PDV Desktop Rust + Tauri (v0.1.1)
+
+- **Download oficial:** https://github.com/chmulato/caracore-rust-pdv-releases/releases (latest / tag v0.1.1)
+- **Loja (vitrine):** https://rust-pdv.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html` orienta NSIS/MSI/ZIP)
+- **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — CTAs primários → GitHub Releases
 - **_redirects:** `/delivery/pdv-rust/*` → rust-pdv.caracore.com.br
-- **Wiki loja Rust:** `caracore-pdv-rust-releases/docs/wiki/`
 - **Oficina:** caracore-pdv-rust
-- **Wiki institucional:** caracore-wiki — `projeto-pdv.html` (hub), `projeto-pdv-rust.html`.
-- **Mensagem:** dois **PDVs Desktop** do **mesmo** CaraCore PDV — stacks distintas, **nenhuma substitui a outra**. Ambos instalados no computador da loja.
-  - **Java:** PDV Desktop maduro · canal **v3.1.2-free** · desktop multi-plataforma (Windows · Linux · macOS).
-  - **Rust:** PDV Desktop · **Rust + Tauri 2** · release **v0.1.0** · loja **rust-pdv.caracore.com.br**
-  - **Posicionamento V3 (negócio):** PME, PIX Split 2027 — **comum às duas linhas**; não confundir com canal Java (v3.1.x) nem release Rust (v0.1.x).
-  - **Evitar:** "PDV v3" sozinho, "nova geração", "substitui", "reescrito".
+- **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar)
+- **Release v0.1.1:** multi-OS (Windows, Linux, macOS); licença CaraCore Seed opcional; SHA256 + manifesto no GitHub
+- **Mensagem:** dois **PDVs Desktop** do mesmo CaraCore PDV — **nenhuma substitui a outra**
+  - **Java:** canal **v3.1.2-free** · Win/Linux/macOS maduro
+  - **Rust:** faixa **v0.1.x** · piloto assistido
+  - **V3 negócio (PME, PIX Split 2027):** comum às duas linhas — ≠ canal Java v3.1.x ≠ release Rust v0.1.x
+  - **Evitar:** "PDV v3" sozinho, "substitui", "reescrito", "nova geração"
 
 ## Validação matriz ↔ lojas
-- **VALIDACAO_LOJAS_MATRIZ.txt** — checklist portfólio + lojas
-- **docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md** — pré-deploy site
-- **Footers lojas (2026-05):** link `portfolio.html#{âncora}` em todas as lojas principais
-- **mirror-delivery.html:** Ink, RU, MKT, Reino OIDC (alinhamento matriz ↔ vitrine)
+
+- **VALIDACAO_LOJAS_MATRIZ.txt** — PDV Rust: CTAs matriz → releases GitHub; loja sem SEED na vitrine
+- **docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md** — pré-deploy
+- **Footers lojas:** `portfolio.html#{âncora}`
+- **mirror-delivery.html:** Ink, RU, MKT, Reino OIDC
 
 ## Wiki institucional (caracore-wiki)
+
 - **URL:** https://wiki.caracore.com.br/
-- **Hub PDV:** `docs/projeto-pdv.html` — dois PDVs Desktop; escolha Java vs Rust.
-- **Resumo Rust:** `docs/projeto-pdv-rust.html`.
-- **Eco Mundo:** `docs/ecosistema.html` · memória Cursor: `caracore-wiki/.cursor/rules/project-memory.mdc`.
+- **Hub PDV:** `docs/projeto-pdv.html`
+- **Rust:** `docs/projeto-pdv-rust.html` — manter v0.1.1 + link releases ao atualizar wiki
 
-## Matriz ETE — Minerador 4.0 (portfolio · ecossistema)
+## Matriz ETE — Minerador 4.0
 
-- **Vitrine pública (loja):** **https://ete.caracore.com.br/** — GitHub Pages do repo **`chmulato/caracore-ete-releases`** (conteúdo servido a partir de **`docs/`** na loja).
-- **Oficina:** **`caracore-ete`** — código do produto, CI, documentação espelhável em **`caracore-ete/docs/`**.
-- **Referências no site matriz:** **portfolio** (`portfolio.html`, âncora Minerador / ETE), **ecossistema** (`ecosistema.html`, tabela “Minerador 4.0”) — CTAs para a vitrine, `download.html` e **[releases/latest](https://github.com/chmulato/caracore-ete-releases/releases/latest)** da loja.
-- **Produto:** Minerador 4.0 — mesmo instalador **Free × Premium** (Ouro 4.0 / Módulo Mineração); versão e messaging devem alinhar entre portfólio, loja e oficina (`VERSION` / tag `v*` na oficina).
-- **CSS:** na loja e na oficina, folhas em **`docs/assets/css/`** e por página em **`docs/assets/css/pages/page-*.css`**; não depender de `<style>` inline nas páginas HTML principais.
-- **Alinhamento:** mudanças de URL, versão ou política de vitrine ETE devem ser refletidas na matriz (links e textos em `portfolio.html`, `ecosistema.html`, `index.html` quando aplicável) e vice-versa.
+- **Loja:** https://ete.caracore.com.br/
+- **Oficina:** caracore-ete
+- **Matriz:** portfolio + ecosistema → loja + releases GitHub da loja ETE
 
----
+## RU Soberano (garagem)
 
-## Sala de Operações, retrô e blog (atualização 01/04/2026)
+- **Matriz:** `portfolio.html#caracore-ru` · ecosistema (Garagem)
+- **Loja:** https://ru.caracore.com.br/
+- **Lançamento:** 18/Jun/2027 · R$ 29,90 simulador
 
-### Sala (`sala/`)
-- **Controle:** `sala/index.html` — painel rápido para manuais (LinkedIn, retrô, blog técnico), feedback e “para quem opera”.
-- **Campanha Ink (Facebook / Instagram):** artefatos canónicos com **data de uso no 2.º semestre de 2026** nos nomes (`2026_07_*` … `2026_12_*`). Ficheiros com mar–jun no path = **legado**; manuais apontam só para os canónicos H2.
-- **LinkedIn:** manual em `sala/linkedin/`; fila e calendário separados do Face/IG.
+## Sala, retrô e blog
 
-### Retrô LinkedIn (`sala/redes/retro/`)
-- Artigos **H1 2026** com `YYYY_MM_DD` coerente com o índice e o `feed.xml`; removidos duplicados antigos `2026_03_*` dos artigos 75–78 (usar `2026_04_07` … `2026_04_28`).
-- **URLs canónicas** dos HTML: `https://www.caracore.com.br/sala/redes/retro/articles/<ficheiro>`.
-- Imagens: `article_NN_01.png` — ver `sala/redes/retro/articles/assets/img/README.txt`.
-
-### Blog pessoal (`personal/`)
-- Convenção de imagens: `personal/articles/assets/img/README.txt` (`YYYY_MM_DD_IMAGE_*` = data do artigo).
-- **Séries** “Brasil, SDK e Soberania” e “Protocolo de Lucerna”: páginas `*_index.html` são **exceção** (várias datas nos cartões); cada **episódio** segue a norma no seu HTML. Nota no `personal/index.html` (stats).
-- `canonical` + `og:url` nos artigos; scripts `tools/validate_article_images.ps1` e `tools/equalize_article_images.ps1`; relatórios em `sala/regis/` (`VALIDACAO_IMAGENS_RETRO_BLOG.txt`, `MANIFEST_EQUALIZACAO_IMAGENS.txt`).
-
----
-
-## Etapa 1 — links internos e imagens (concluída, ~abr/2026)
-
-### Scripts de validação (usar antes de deploy)
-- **`scripts/find-orphan-links.ps1`** — destinos internos em falta: `href`, `src`, `srcset`, `poster`, meta `og:image` / `twitter:image`. Ignora `http(s):`, `mailto:`, `data:`, placeholders de código (`+ filepath +`, `{video_path}`). Exclui pastas: `delivery_old`, `node_modules`, `.git`, `backend`, `htmlcov`.
-- **`scripts/run-site-validation.ps1`** — orquestra: `find-orphan-links.ps1` + `tools/validate_article_images.ps1` + `tools/validate_integrity_2026.ps1` (retro 2026 vs `feed.xml`, blog index vs artigos 2026).
-- Relatórios: `sala/regis/VALIDACAO_IMAGENS_RETRO_BLOG.txt`, `VALIDACAO_INTEGRIDADE_2026.txt`.
-
-### Correções já aplicadas (referência)
-- Favicon em `aligned/`, `personal/articles/assets/img/`; links `moving_to_ch` → `aligned`; `publications/` stub; CSS retro artigos 59/60/62 → `assets/css/articles.css`.
-- `sala/facebook|instagram|linkedin`: back-link para `../redes/retro/articles.html`; `sala/regis`: `../redes/retro/articles.html` (não `../../redes/`).
-- `secure/access-denied.html`: scripts em `/secure/js/`; removido include inexistente `oidc.js` (OIDC em `auth-standalone.js`).
-- Imagens blog em falta: cópias placeholder em `personal/articles/assets/img/` a partir de PNGs já existentes na mesma pasta (nomes listados na conversão etapa 1).
-
-### Estado alvo
-- `find-orphan-links.ps1` → **total 0**; `validate_article_images.ps1` → **0 issues** (quando o disco está completo).
-
----
-
-## Etapa 2 — validação ampliada (2026-05)
-
-Objetivo: qualidade além dos caminhos estáticos da Etapa 1.
-
-**Implementado:**
-- `scripts/validate-delivery-stubs.ps1` — stubs `delivery/*.html` vs lojas canónicas
-- `scripts/validate-redirects-config.ps1` — `_redirects` + `vercel.json` vs subdomínios
-- `scripts/run-site-validation.ps1` — orquestra 5 passos (Etapa 1 + 2)
-- CI: `.github/workflows/site-validation.yml` (PR/push, `windows-latest`)
-- Retro local ausente: `validate_article_images` / `validate_integrity_2026` fazem SKIP (conteúdo em retro.caracore.com.br)
-
-**Relatórios:** `sala/regis/VALIDACAO_DELIVERY_STUBS.txt`, `VALIDACAO_REDIRECTS_CONFIG.txt`
-
-**Pendente (fase 3):**
-- Links externos (HEAD/GET, rate limit)
-- `url()` em CSS e PDFs referenciados em HTML
-- Mapa sitemap vs HTML gerado
+- **Sala:** `sala/index.html` · campanha Ink H2 2026 (`2026_07_*` … `2026_12_*`)
+- **Retrô:** `sala/redes/retro/` — URLs canónicas em caracore.com.br
+- **Validação:** `scripts/run-site-validation.ps1` · relatórios em `sala/regis/`

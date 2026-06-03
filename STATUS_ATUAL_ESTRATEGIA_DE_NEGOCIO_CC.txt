@@ -24,7 +24,7 @@ Pilares de comunicação:
 
 Dois PDVs Desktop (mesmo CaraCore PDV):
   - Java · JavaFX — pdv.caracore.com.br — v3.1.2-free (maduro)
-  - Rust + Tauri 2 — rust-pdv (vitrine) + GitHub Releases — v0.1.1 (piloto multi-OS)
+  - Rust + Tauri 2 — rust-pdv (vitrine) + GitHub Releases — v0.1.2 (piloto Windows · edição gratuita 100 vendas)
 
 -------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ Páginas-chave:
 Produto              Matriz (portfólio)           Loja                    Estado
 -------------------- ---------------------------- ----------------------- ------------------
 PDV Java             #caracore-pdv                pdv.*                   Entrega activa
-PDV Rust             #caracore-pdv-rust           rust-pdv + GitHub       Piloto v0.1.1
+PDV Rust             #caracore-pdv-rust           rust-pdv + GitHub       Piloto v0.1.2
 Ink Agenda           #caracore-ink-agenda         ink.*                   RC8 publicado
 Minerador 4.0        #minerador-ete               ete.*                   Entrega activa
 Reino OIDC           #reino-oidc                  oidc.*                  Entrega activa

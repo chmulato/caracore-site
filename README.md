@@ -25,7 +25,7 @@ Repositório do site institucional **[caracore.com.br](https://www.caracore.com.
 | Linha | Loja canónica | Release |
 |-------|---------------|---------|
 | Java · JavaFX | [pdv.caracore.com.br](https://pdv.caracore.com.br/) | v3.1.2-free |
-| Rust + Tauri 2 | [rust-pdv](https://rust-pdv.caracore.com.br/) · [releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | v0.1.1 |
+| Rust + Tauri 2 | [rust-pdv](https://rust-pdv.caracore.com.br/) · [releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | v0.1.2 |
 
 Ambos são **desktop** na máquina da loja. Stacks distintas; **nenhuma substitui a outra**. Portfólio: `#pdv-coexistencia`, `#caracore-pdv`, `#caracore-pdv-rust`.
 

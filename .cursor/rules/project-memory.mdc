@@ -1,5 +1,5 @@
 ﻿---
-description: Memória do site Cara Core — matriz, lojas, releases GitHub, ecossistema; PDV Rust v0.1.1
+description: Memória do site Cara Core — matriz, lojas, releases GitHub, ecossistema; PDV Rust v0.1.2
 alwaysApply: true
 ---
 
@@ -56,15 +56,15 @@ alwaysApply: true
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV Desktop Rust + Tauri (v0.1.1)
+## PDV Desktop Rust + Tauri (v0.1.2)
 
-- **Download oficial:** https://github.com/chmulato/caracore-rust-pdv-releases/releases (latest / tag v0.1.1)
+- **Download oficial:** https://github.com/chmulato/caracore-rust-pdv-releases/releases (latest / tag v0.1.2)
 - **Loja (vitrine):** https://rust-pdv.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html` orienta NSIS/MSI/ZIP)
 - **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — CTAs primários → GitHub Releases
 - **_redirects:** `/delivery/pdv-rust/*` → rust-pdv.caracore.com.br
 - **Oficina:** caracore-pdv-rust
 - **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar)
-- **Release v0.1.1:** multi-OS (Windows, Linux, macOS); licença CaraCore Seed opcional; SHA256 + manifesto no GitHub
+- **Release v0.1.2:** Windows (MSI/NSIS/ZIP pt-BR); edição gratuita até 100 vendas; transparência em rust-pdv; SHA256 + manifesto no GitHub
 - **Mensagem:** dois **PDVs Desktop** do mesmo CaraCore PDV — **nenhuma substitui a outra**
   - **Java:** canal **v3.1.2-free** · Win/Linux/macOS maduro
   - **Rust:** faixa **v0.1.x** · piloto assistido
@@ -82,7 +82,7 @@ alwaysApply: true
 
 - **URL:** https://wiki.caracore.com.br/
 - **Hub PDV:** `docs/projeto-pdv.html`
-- **Rust:** `docs/projeto-pdv-rust.html` — manter v0.1.1 + link releases ao atualizar wiki
+- **Rust:** `docs/projeto-pdv-rust.html` — manter v0.1.2 + link releases ao atualizar wiki
 
 ## Matriz ETE — Minerador 4.0
 

@@ -44,7 +44,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 
 2. CARA CORE PDV DESKTOP (RUST + TAURI 2)
    (M) portfolio.html#caracore-pdv-rust · #pdv-coexistencia
-   (L) caracore-pdv-rust-releases → rust-pdv.caracore.com.br · v0.1.1
+   (L) caracore-pdv-rust-releases → rust-pdv.caracore.com.br · v0.1.2
    (R) github.com/chmulato/caracore-rust-pdv-releases/releases — download oficial
    Sem delivery/pdv-rust · sem SEED na loja Rust
    Status: OK — piloto multi-OS; CTAs matriz → GitHub Releases; loja = vitrine

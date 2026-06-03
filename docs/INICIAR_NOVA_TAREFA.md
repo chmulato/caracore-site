@@ -74,7 +74,7 @@ cd apps/desktop-tauri; npm test
 python tools/sync_docs_status.py --full
 ```
 
-**Release:** `python tools/run_release_delivery_oneclick.py --tag v0.1.1` · publicar loja: `python tools/publish_portal_assets_loja.py --push`
+**Release:** `python tools/run_release_delivery_oneclick.py --tag v0.1.2` · publicar loja: `python tools/publish_portal_assets_loja.py --push`
 
 **Regra oficina:** não commitar salvo pedido explícito do usuário.
 

@@ -14,7 +14,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 2. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.txt` + `ECOSYSTEM_LOJAS.txt`
 3. **Memória Cursor:** `.cursor/rules/project-memory.mdc` no repo ativo
 4. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
-5. **Dois PDVs:** Java `pdv.*` (v3.1.2-free) + Rust vitrine `rust-pdv.*` + download **GitHub Releases** (v0.1.1) — **coexistência**
+5. **Dois PDVs:** Java `pdv.*` (v3.1.2-free) + Rust vitrine `rust-pdv.*` + download **GitHub Releases** (v0.1.2) — **coexistência**
 
 ---
 
@@ -56,7 +56,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | Papel | Repo / URL |
 |-------|------------|
 | Java maduro | pdv.caracore.com.br · v3.1.2-free · caracore-pdv |
-| Rust piloto | rust-pdv (vitrine) · GitHub Releases v0.1.1 · caracore-pdv-rust |
+| Rust piloto | rust-pdv (vitrine) · GitHub Releases v0.1.2 · caracore-pdv-rust |
 | Coexistência | portfolio `#pdv-coexistencia` · não substituir Java |
 | Comunicação | Retrô art. 114 · matriz jun/2026 · wiki projeto-pdv* |
 
@@ -104,7 +104,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.txt`.
 
 | Data | Alteração |
 |------|-----------|
-| 2026-06-02 | Matriz: PDV Rust v0.1.1, CTAs → GitHub Releases |
+| 2026-06-02 | Matriz: PDV Rust v0.1.2, CTAs → GitHub Releases |
 | 2026-06-02 | Loja rust-pdv: nav Download → releases; Formatos |
 | 2026-06-02 | Wiki: links portfólio corrigidos (www); redirect `portfolio.html` |
 | 2026-06-02 | Retrô: artigo 114 PDV Rust/Tauri; doc ecossistema expandida |

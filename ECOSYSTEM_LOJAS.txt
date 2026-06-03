@@ -1,4 +1,4 @@
-ECOSSISTEMA — LOJAS ONLINE (VITRINES E RELEASES)
+﻿ECOSSISTEMA — LOJAS ONLINE (VITRINES E RELEASES)
 =================================================
 
 Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos da Cara Core Informática.
@@ -15,7 +15,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
 
   Produto                      Loja online (URL canónica)                              Observação
   ---------------------------- ------------------------------------------------------- ------------------------------------------
-  CaraCore PDV Desktop (Java)  https://pdv.caracore.com.br/                            Oferta madura; canal v3.1.2-free
+  CaraCore PDV Desktop (Java)  https://pdv.caracore.com.br/                            Oferta madura; canal v3.2.2-free
   CaraCore PDV Desktop (Rust)  https://rust-pdv.caracore.com.br/                       Vitrine; release v0.1.1
   (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Artefatos MSI/NSIS/ZIP/deb/dmg + SHA256
   Cara Core Hub                https://hub.caracore.com.br/
@@ -46,3 +46,4 @@ Retomada de contexto (ler nesta ordem):
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
 Atualizado em 02/06/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md
+

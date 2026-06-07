@@ -30,7 +30,7 @@ Documentação operacional da página pública [ecosistema.html](../ecosistema.h
 | Mapa visual | `#mapa-visual` — núcleo PDV, satélites, garagem, gratuitos |
 | Bunker Digital | `#bunker-digital` — conceito + exemplo prático |
 | Para quem | `#para-quem` — segmentos (varejo, indústria, educação…) |
-| Valores | `#valores` — soberania, offline-first, modularidade |
+| Valores | `#valores` — soberania híbrida, offline-first, modularidade, FinOps |
 | Prateleira | `#prateleira` — cards PDV Java/Rust, Ink, OIDC, etc. |
 | Pilares técnicos | `#pilares-tecnicos` |
 | Lojas oficiais | `#lojas-oficiais` — tabela matriz ↔ subdomínio |
@@ -60,7 +60,8 @@ Documentação operacional da página pública [ecosistema.html](../ecosistema.h
 |------|------|
 | Hero — produtos = prova de entrega B2B | `#ecossistema` |
 | Link estudos de caso | `portfolio.html#decisoes-engenharia` |
-| Nav matriz | Engenharia B2B · Operação (`index.html#servicos`) |
+| Nav matriz | Engenharia B2B · Produtos · Portfólio · Ecossistema (sem nav Operação/serviços PME) |
+| Tom público | Híbrido/FinOps/resiliência — não “rejeita nuvem total” na vitrine |
 | Meta / JSON-LD | title + description com B2B + versões actuais |
 | Rodapé | Frase-guia + link `#engenharia-b2b` |
 | TOC lateral | Engenharia B2B · Decisões e impacto |

@@ -24,9 +24,9 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 
 | Secção | ID / notas |
 |--------|------------|
-| Hero | Engenharia antifrágil B2B + frase-guia |
+| Hero | Engenharia antifrágil B2B · FinOps/híbrido/edge · frase-guia · produtos = prova de entrega |
 | Engenharia B2B | `#engenharia-b2b` — alocação, legados, ágil contínuo |
-| Antifragilidade | `#diferenciais` |
+| Antifragilidade | `#diferenciais` — Resiliência e FinOps; arquitetura híbrida (não ideologia anti-cloud) |
 | Produtos | `#produtos` — Decisão / Stack; link `#decisoes-engenharia` |
 | Sobre | `#sobre` — **Nossa Operação** (boutique enxuta) |
 | Contato | `#contato` — horário corporativo B2B; suporte PME em `suporte-local.html` |
@@ -104,3 +104,16 @@ Guia: [PORTFOLIO_README.md](PORTFOLIO_README.md) · CSS: `assets/css/portfolio.c
 | [ECOSISTEMA.md](ECOSISTEMA.md) | Manutenção de `ecosistema.html` |
 | [ECOSSISTEMA_MAPA_VISUAL.md](ECOSSISTEMA_MAPA_VISUAL.md) | Mapa em camadas (`#mapa-visual`) |
 | [FEEDBACK.md](FEEDBACK.md) | Histórico branding Bunker (fev/2026) |
+
+---
+
+## Retrô e editorial (caracore-retro)
+
+| Item | Referência |
+|------|------------|
+| URL | https://retro.caracore.com.br/ |
+| Total | **104 artigos** (lacunas históricas na numeração) |
+| Art. 115 (25/12/2026) | *O Boleto Vence o Debate* — B2B/IA, portal PJ, tom pragmático |
+| Art. 114 (20/12/2026) | PDV Rust — coexistência Java; não migração forçada |
+| Capa inline | `max-width:300px; float:right` (padrão artigos recentes) |
+| Prompt capa | `assets/img/YYYY_MM_DD_article_NN_PROMPT_IMAGEM.txt` (geração 16:9) |

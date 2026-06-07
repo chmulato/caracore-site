@@ -22,7 +22,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 **Pilares de comunicação:**
 
 - Engenharia B2B: alocação dedicada, legados, entrega ágil contínua — sem escopo fechado
-- Bunker Digital: soberania local, offline-first, dados sob controle do cliente
+- Bunker Digital: soberania local, offline-first, arquitetura **híbrida** (FinOps/resiliência na vitrine — não anti-cloud)
 - Decisão e impacto antes de lista de stacks (era IA)
 - Loja própria por produto (subdomínio canónico)
 - Matriz: portfólio + ecossistema + CTAs (não duplicar vitrines)
@@ -44,7 +44,9 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 |------|--------|
 | Hero B2B + frase-guia | ✅ `index.html` |
 | Secção `#engenharia-b2b` (3 pilares) | ✅ |
-| Nav: Engenharia B2B · Operação | ✅ |
+| Nav B2B (sem Operação/serviços PME) | ✅ |
+| `suporte-local.html` (PME separado) | ✅ |
+| Tom FinOps/híbrido (PT/EN/IT) | ✅ |
 | “Nossa Operação” (boutique enxuta) | ✅ |
 | Produtos: Decisão / Stack | ✅ |
 | Portfólio `#decisoes-engenharia` (3 cases) | ✅ qualitativo — faltam métricas |
@@ -56,11 +58,11 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 - Portfólio: índice por categoria, Bunker, coexistência PDV, releases, sobre
 - PDV Rust: vitrine rust-pdv; redirect `/delivery/pdv-rust`
 - Documentação: `docs/` integralmente em Markdown; [INDEX.md](INDEX.md)
-- Redirects `_redirects` + stubs `delivery/`
+- Retrô: art. **115** (B2B/IA, 25/12) · art. **114** (PDV Rust, 20/12) — [retro.caracore.com.br](https://retro.caracore.com.br/)
 
-**Páginas-chave:** `index.html` · `portfolio.html` · `ecosistema.html` · `aligned/` · `secure/`
+**Páginas-chave:** `index.html` · `suporte-local.html` · `portfolio.html` · `ecosistema.html` · `aligned/` · `secure/`
 
-**Ordem home PT:** Hero → Engenharia B2B → Antifragilidade → Produtos → Operação → Sobre → Contato
+**Ordem home PT:** Hero → Engenharia B2B → Antifragilidade → Produtos → Sobre → Contato (suporte PME: rodapé → `suporte-local.html`)
 
 ---
 
@@ -81,7 +83,8 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | RU Soberano | `#caracore-ru` | ru.* | Garagem → 18/06/2027 |
 | CSO | `#caracore-cso` | cso.* | Garagem → 08/11/2028 |
 
-Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)
+Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)  
+Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — 104 artigos; editorial B2B art. 115
 
 ---
 

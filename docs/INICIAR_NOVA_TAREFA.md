@@ -98,8 +98,10 @@ Redirect legado: `docs/portfolio.html` → matriz.
 
 | URL | https://retro.caracore.com.br/ |
 | Artigo | `docs/articles/YYYY_MM_DD_article_NN.html` |
-| Imagem | `docs/articles/assets/img/..._NN_01.png` |
+| Imagem | `docs/articles/assets/img/..._NN_01.png` (inline: `max-width:300px; float:right`) |
+| Prompt capa | `..._PROMPT_IMAGEM.txt` (geração 16:9) |
 | Índice | `docs/index.html` · `docs/feed.xml` · `docs/ciclo-ativo.html` |
+| Recentes | **115** B2B/IA (25/12) · **114** PDV Rust (20/12) |
 
 ---
 
@@ -110,7 +112,8 @@ Redirect legado: `docs/portfolio.html` → matriz.
 | Matriz | `portfolio.html` · `ecosistema.html` |
 | Loja Rust | `caracore-pdv-rust-releases/docs/` |
 | Wiki | `caracore-wiki/docs/projeto-pdv*.html` |
-| Retrô | ex. artigo 114 — PDV Rust/Tauri coexistência |
+| Retrô | art. **115** — B2B/IA, portal PJ, FinOps/híbrido · art. **114** — PDV Rust/Tauri coexistência |
+| Matriz editorial | `#engenharia-b2b` · `#decisoes-engenharia` · `suporte-local.html` (PME separado) |
 | Discurso | dois PDVs desktop; **não** “migração obrigatória”; evitar “PDV v3” sozinho |
 
 ---
@@ -144,7 +147,9 @@ Redirect legado: `docs/portfolio.html` → matriz.
 2. **Colocar download só na loja Rust** — artefatos oficiais ficam no **GitHub Releases**.
 3. **Duplicar vitrine longa na matriz** — resumo + CTA para loja.
 4. **Esquecer push da loja** após mudar `caracore-pdv-rust-releases` (Pages demora minutos).
-5. **Commit na oficina Rust** sem pedido explícito do usuário (regra da oficina).
+5. **Misturar suporte PME na home B2B** — M365/antivírus/horários noite ficam em `suporte-local.html`.
+6. **Tom xiita anti-cloud na vitrine** — usar híbrido/FinOps/resiliência; ideologia fica para backlog wiki/retrô/lojas.
+7. **Commit na oficina Rust** sem pedido explícito do usuário (regra da oficina).
 
 ---
 

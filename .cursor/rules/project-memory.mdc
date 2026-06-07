@@ -12,6 +12,7 @@ alwaysApply: true
 **Frase-guia PT:** Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente.
 
 - Home: `#engenharia-b2b` · nav **Engenharia B2B** · **Nossa Operação** (não “Nossa Equipe”)
+- Tom vitrine: **arquitetura híbrida, FinOps, resiliência** — integração AWS/Azure/GCP quando o desenho pede; **evitar** “rejeita nuvem total” / “corrida de ratos Big Tech” na copy pública
 - Suporte PME (M365, TI local): **`suporte-local.html`** — fora do nav principal; horários noite/sábado só lá
 - Portfólio: `#decisoes-engenharia` (cases) antes de produtos
 - EN/IT: `aligned/en/`, `aligned/it/` — Decision areas / Giudizio di ingegneria
@@ -111,7 +112,9 @@ alwaysApply: true
 ## Retrô (caracore-retro)
 
 - **Repo:** `D:\dev\caracore-retro` · URL https://retro.caracore.com.br/
-- **103 artigos** · convenção `YYYY_MM_DD_article_NN.html` + `*_NN_01.png`
+- **104 artigos** · convenção `YYYY_MM_DD_article_NN.html` + `*_NN_01.png`
+- **Capa inline HTML:** `max-width:300px; float:right` (padrão dez/2026); PNG pode ser gerado 16:9 para `og:image`
+- **B2B / IA (115):** 25/12/2026 — portal PJ, consultoria boutique, FinOps/híbrido · links matriz `#engenharia-b2b`, `#decisoes-engenharia`, `suporte-local.html`
 - **PDV Rust (114):** 20/12/2026 — “Duas linhas no balcão” · coexistência Java/Rust
 - **Memória Cursor:** `caracore-retro/.cursor/rules/project-memory.mdc`
 

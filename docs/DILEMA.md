@@ -181,7 +181,7 @@ Escala orientativa (conversa original + revisão pós-alinhamento):
 - [x] ~~Separar suporte PME (M365, antivírus, Excel) da home B2B~~ — `suporte-local.html` (2026-06-07).
 - [x] ~~Horários noite/sábado na home~~ — movidos para Suporte Local; contato B2B = horário corporativo.
 - [x] ~~Suavizar tom ideológico anti-cloud no site matriz (home, portfólio, ecossistema, EN/IT)~~ — FinOps/resiliência/híbrido (2026-06-07).
-- [ ] Suavizar tom ideológico anti-cloud onde ainda aparecer (**wiki, retrô, lojas** — backlog separado).
+- [ ] Suavizar tom ideológico anti-cloud onde ainda aparecer (**wiki, lojas** — backlog; retrô art. 115 já alinhado ao tom pragmático).
 - [ ] Alinhar `secure/`, handbook e publicações internas, se citarem posicionamento antigo.
 
 ### 8.2 Deploy e validação

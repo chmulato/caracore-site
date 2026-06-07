@@ -1,6 +1,6 @@
 # Ecossistema Cara Core — mapa de repositórios
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 02/06/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 07/06/2026).
 
 
 ---
@@ -11,7 +11,7 @@ VISÃO GERAL
   Diretório / Repositório       Papel                                      Observação
   ----------------------------- ------------------------------------------ ----------------------------------------------------------
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
-  caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (103 artigos)
+  caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (104 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
   caracore-pdv                  Oficina — PDV Desktop (Java · JavaFX)       Quarkus 3, Java 25, JavaFX; canal v3.2.2-free
   caracore-pdv-releases         Loja — PDV Desktop Java                     GitHub Pages: pdv.caracore.com.br
@@ -94,6 +94,7 @@ REFERÊNCIAS CRUZADAS
   Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.md
   Componentes padrão das lojas: ver COMPONENTES_LOJA.md
   Índice memorias (retomada): docs/ECOSYSTEM_MEMORIA.md — fonte única jun/2026
+  Retrô B2B / IA (art. 115): retro.caracore.com.br/articles/2026_12_25_article_115.html
   Retrô PDV Rust (art. 114): retro.caracore.com.br/articles/2026_12_20_article_114.html
   Memória Cursor da matriz: caracore-site/.cursor/rules/project-memory.mdc
   Portfólio: https://www.caracore.com.br/portfolio.html

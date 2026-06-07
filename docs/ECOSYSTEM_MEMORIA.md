@@ -15,7 +15,8 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 3. **Memória Cursor:** `.cursor/rules/project-memory.mdc` no repo ativo
 4. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
 5. **Dois PDVs:** Java `pdv.*` (**v3.2.2-free**) + Rust `rust-pdv.*` + GitHub Releases (**v0.1.2**) — coexistência
-6. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia`
+6. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia` · tom **FinOps/híbrido** (não anti-cloud na vitrine)
+7. **Suporte PME:** [suporte-local.html](../suporte-local.html) — fora do nav B2B; horários noite/sábado só lá
 
 ---
 
@@ -24,6 +25,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | Papel | URL | Repo |
 |-------|-----|------|
 | Matriz | https://www.caracore.com.br/ | caracore-site |
+| Suporte PME (PT) | https://www.caracore.com.br/suporte-local.html | caracore-site |
 | B2B EN | https://www.caracore.com.br/aligned/en/ | caracore-site |
 | B2B IT | https://www.caracore.com.br/aligned/it/ | caracore-site |
 | Portfólio | https://www.caracore.com.br/portfolio.html | caracore-site |
@@ -61,7 +63,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | Java maduro | pdv.caracore.com.br · **v3.2.2-free** · caracore-pdv |
 | Rust piloto | rust-pdv (vitrine) · GitHub Releases v0.1.2 · caracore-pdv-rust |
 | Coexistência | portfolio `#pdv-coexistencia` · não substituir Java |
-| Comunicação | Retrô art. 114 · matriz jun/2026 · wiki projeto-pdv* |
+| Comunicação | Retrô art. **115** (B2B/IA) · art. 114 (PDV Rust) · matriz jun/2026 · wiki projeto-pdv* |
 
 **Discurso:** v3.2.x = Java · v0.1.x = Rust · V3 negócio (PME) = ambas · evitar “PDV v3” sozinho / “migração” / “substitui”.
 
@@ -94,7 +96,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 |------|----------------------|-------|
 | caracore-site | Sim | docs/ECOSYSTEM_*.md |
 | caracore-wiki | Sim | Portfólio → www |
-| caracore-retro | Sim | 103 artigos |
+| caracore-retro | Sim | 104 artigos · capa inline `max-width:300px` float-right |
 | caracore-pdv-rust | Sim + **continuacao.mdc** | Oficina PDV Rust |
 | caracore-pdv-rust-releases | Sim | Loja rust-pdv |
 | caracore-pdv / *-releases | Sim | PDV Java |
@@ -108,7 +110,9 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
-| 2026-06-07 | Copy B2B PT/EN/IT: `#engenharia-b2b`, frase-guia, `#decisoes-engenharia`, Operação, docs/ só .md |
+| 2026-06-07 | Retrô art. **115** — engenharia B2B pragmática na era da IA; links matriz `#engenharia-b2b`, `#decisoes-engenharia`, `suporte-local.html` |
+| 2026-06-07 | Tom vitrine matriz: FinOps/resiliência/híbrido (PT/EN/IT); gaps ideológicos wiki/retrô/lojas = backlog |
+| 2026-06-07 | Copy B2B PT/EN/IT: `#engenharia-b2b`, frase-guia, `#decisoes-engenharia`, `suporte-local.html`, docs/ só .md |
 | 2026-06-02 | Matriz: PDV Rust v0.1.2, CTAs → GitHub Releases |
 | 2026-06-02 | Loja rust-pdv: nav Download → releases; Formatos |
 | 2026-06-02 | Wiki: links portfólio corrigidos (www); redirect `portfolio.html` |

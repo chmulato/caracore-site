@@ -28,9 +28,10 @@ Regra de ouro: [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.
 
 | Ficheiro | Âncoras / notas |
 |----------|-----------------|
-| `index.html` | `#engenharia-b2b` · `#produtos` · `#operacao` · `#contato` — ver §2.1 |
+| `index.html` | `#engenharia-b2b` · `#produtos` · `#sobre` · `#contato` — ver §2.1 |
+| `suporte-local.html` | Canal PME (M365, TI local) — **fora** do fluxo B2B |
 | `portfolio.html` | `#decisoes-engenharia` · categorias — ver §3 |
-| `ecosistema.html` | Mapa de produtos e URLs |
+| `ecosistema.html` | Mapa produtos, roadmap, prova de entrega B2B |
 | `aligned/en/` · `aligned/it/` | B2B engineering — mesma frase-guia adaptada |
 | `404.html` | Erro amigável |
 | `secure/` | Área 51 OIDC |
@@ -39,11 +40,12 @@ Regra de ouro: [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.
 
 1. Hero (B2B + frase-guia)  
 2. `#engenharia-b2b` — três pilares de entrega  
-3. `#diferenciais` — antifragilidade  
+3. `#diferenciais` — antifragilidade (híbrido/edge; não anti-cloud)  
 4. `#produtos` — Decisão / Stack; link para cases  
-5. `#operacao` — serviços complementares  
-6. `#sobre` — **Nossa Operação** (boutique)  
-7. `#contato`
+5. `#sobre` — **Nossa Operação** (boutique)  
+6. `#contato` — horário corporativo B2B; link `suporte-local.html`
+
+**Suporte PME:** `suporte-local.html` — fora do nav principal (rodapé).
 
 ---
 

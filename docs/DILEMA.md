@@ -136,6 +136,8 @@ Snapshot analisado na conversa original (texto em `DILEMA_HISTORICO.md`):
 | Frase-guia em hero, B2B, contact, footer | ✅ |
 | `about.html`, `services.html`, `contact.html` | ✅ |
 | Expertise: **Decision areas** / **Giudizio di ingegneria** (não “Hard Skills”) | ✅ |
+| Tom híbrido/edge + horário corporativo B2B (EN/IT) | ✅ |
+| Link suporte PME Brasil → `suporte-local.html` no rodapé EN/IT | ✅ |
 | Formulário: alocação **ou** consultoria por projeto | ✅ |
 
 ### 6.3 Ordem de leitura desejada (home PT)
@@ -145,8 +147,8 @@ Hero (B2B + frase-guia)
   → Engenharia B2B (#engenharia-b2b)
   → Antifragilidade
   → Produtos (prova de entrega)
-  → Operação (complementar)
   → Sobre / Contato
+  (Suporte PME → suporte-local.html, rodapé)
 ```
 
 ---
@@ -159,7 +161,7 @@ Escala orientativa (conversa original + revisão pós-alinhamento):
 |----------|-------|-------|------------|
 | Clareza B2B / alocação | ⚠️ | ✅ | Hero + seção dedicada + nav |
 | Não parecer agência grande | ⚠️ | ✅ | “Operação enxuta”, boutique |
-| Não parecer helpdesk | ❌ | ⚠️ | Operação ainda lista M365/suporte — complementar, não hero |
+| Não parecer helpdesk | ❌ | ✅ | Suporte PME isolado em `suporte-local.html`; home só B2B |
 | Cases > stacks | ❌ | ⚠️ | 3 cases qualitativos; **faltam métricas reais** |
 | Vocabulário sem “PJ” | ❌ | ✅ | Frase-guia B2B em PT/EN/IT |
 | Produtos como prova | ✅ | ✅ | Portfólio + ecossistema |
@@ -176,7 +178,10 @@ Escala orientativa (conversa original + revisão pós-alinhamento):
 - [ ] Inserir **métricas reais** nos 3 cases (`portfolio.html#decisoes-engenharia`).
 - [x] ~~Revisar `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md`~~ — actualizado 2026-06-07 (boutique B2B).
 - [x] ~~Actualizar `docs/SITE_MATRIZ.md` com referência a este documento~~ — feito 2026-06-07.
-- [ ] Avaliar se bloco **Operação** (M365, suporte) deve ficar ainda mais secundário ou só em página dedicada.
+- [x] ~~Separar suporte PME (M365, antivírus, Excel) da home B2B~~ — `suporte-local.html` (2026-06-07).
+- [x] ~~Horários noite/sábado na home~~ — movidos para Suporte Local; contato B2B = horário corporativo.
+- [x] ~~Suavizar tom ideológico anti-cloud no site matriz (home, portfólio, ecossistema, EN/IT)~~ — FinOps/resiliência/híbrido (2026-06-07).
+- [ ] Suavizar tom ideológico anti-cloud onde ainda aparecer (**wiki, retrô, lojas** — backlog separado).
 - [ ] Alinhar `secure/`, handbook e publicações internas, se citarem posicionamento antigo.
 
 ### 8.2 Deploy e validação

@@ -49,7 +49,7 @@ Documentos operacionais — **fonte viva** para repos, URLs, checklists e estrat
 | [VALIDACAO_LOJAS_MATRIZ.md](VALIDACAO_LOJAS_MATRIZ.md) | Checklist alinhamento portfólio ↔ lojas |
 | [VALIDACAO_NEGOCIO.md](VALIDACAO_NEGOCIO.md) | Validação comercial — produtos, preços, fluxos |
 | [STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md](STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md) | Resumo executivo — estado actual e próximos passos |
-| [ECOSSISTEMA_MAPA_VISUAL.md](ECOSSISTEMA_MAPA_VISUAL.md) | Mapa visual do ecossistema |
+| [ECOSSISTEMA_MAPA_VISUAL.md](ECOSSISTEMA_MAPA_VISUAL.md) | Mapa em camadas implementado em `ecosistema.html#mapa-visual` |
 
 | Presença | URL | Repo |
 |----------|-----|------|
@@ -67,12 +67,13 @@ Documentos operacionais — **fonte viva** para repos, URLs, checklists e estrat
 |----------|----------|
 | `../index.html` | Hero B2B, `#engenharia-b2b`, produtos, operação, contato |
 | `../portfolio.html` | Portfólio categorizado + estudos de caso |
-| `../ecosistema.html` | Mapa Eco Mundo, roadmap, cards |
+| `../ecosistema.html` | Mapa produtos, roadmap, prova de entrega B2B |
+| `../suporte-local.html` | Suporte PME / M365 / TI local (canal separado) |
 | `../aligned/en/` · `../aligned/it/` | Variantes internacionais (B2B engineering) |
 | `../secure/` | Área 51 OIDC |
 | `../404.html` | Erro amigável |
 
-**Ordem de leitura sugerida (home PT):** Hero → Engenharia B2B → Antifragilidade → Produtos → Operação → Sobre → Contato.
+**Ordem de leitura sugerida (home PT):** Hero → Engenharia B2B → Antifragilidade → Produtos → Sobre → Contato. Suporte PME: [suporte-local.html](../suporte-local.html) (link no rodapé).
 
 ---
 
@@ -81,7 +82,7 @@ Documentos operacionais — **fonte viva** para repos, URLs, checklists e estrat
 | Documento | Conteúdo |
 |-----------|----------|
 | [PORTFOLIO_README.md](PORTFOLIO_README.md) | Estrutura, categorias, blocos, CSS |
-| [ECOSISTEMA.md](ECOSISTEMA.md) | Sugestões de melhoria para `ecosistema.html` |
+| [ECOSISTEMA.md](ECOSISTEMA.md) | Estado actual e manutenção de `ecosistema.html` |
 | `../portfolio.html` | Página publicada |
 | `../assets/css/portfolio.css` | Estilos (TOC, cases, Bunker, PDV, releases) |
 | `../assets/css/ecosistema.css` | Layout ecossistema (cards, timeline) |

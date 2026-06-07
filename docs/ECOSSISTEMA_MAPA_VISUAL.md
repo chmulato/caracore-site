@@ -1,44 +1,80 @@
 # Mapa visual do ecossistema — Cara Core Informática
 
-Recomendações de **mapeamento visual** para o site da matriz representar o ecossistema da empresa.
+Referência do **mapa em camadas** na matriz. **Implementado** em [ecosistema.html](../ecosistema.html) (`#mapa-visual`).
+
+**Atualizado:** 2026-06-07
 
 ---
 
-## 1. Qual tipo de mapeamento fica mais visual?
+## 1. Onde está no site
 
-### Recomendação principal: **Diagrama em camadas (flowchart)**
+| Local | Secção | Ficheiros |
+|-------|--------|-----------|
+| **Página dedicada (canónica)** | `#mapa-visual` | `ecosistema.html` · `assets/css/ecosistema.css` (`.eco-map*`) |
+| Portfólio | Links por produto | `portfolio.html#{produto}` |
+| Wiki | Visão expandida | wiki.caracore.com.br/ecosistema.html |
 
-- **O que é:** Uma única figura com 2–3 faixas horizontais (camadas):
-  - **Camada 1 — Site matriz:** caracore.com.br (portfólio, delivery, wiki).
-  - **Camada 2 — Produtos:** PDV, Minerador 4.0, Reino OIDC, Circuito Ferradura, Hub, Área 51, Seed.
-  - **Camada 3 — Lojas online:** cada vitrine/releases (GitHub Pages).
-- **Conexões:** Linhas ou setas ligando cada produto à sua pasta **delivery/** (matriz) e à sua **loja** (-releases).
-- **Vantagem:** Fica imediato “onde está o quê” e “matriz ↔ loja” por produto. Alinha com ECOSYSTEM_LOJAS.md e ECOSYSTEM_CARA_CORE.md.
-
-### Alternativas igualmente visuais
-
-| Tipo | Descrição | Melhor para |
-|------|-----------|-------------|
-| **Grafo radial** | Cara Core no centro; ramos para cada produto; de cada produto, ramos “Matriz” e “Loja”. | Quem prefere “hub no centro” e relações em estrela. |
-| **Matriz 2D (grid)** | Eixos, por ex.: “Tipo” (Windows Desktop / Identidade / Serviço) × “Oferta” (ativa / referência). Cada produto é um bloco. | Classificar produtos por tipo e oferta. |
-| **Tabela visual (quadro de referência)** | Linhas = produtos; colunas = Matriz \| Loja \| Download. Células com ícone + link. | Escaneabilidade rápida e links diretos. |
-
-Para o **site da matriz**, o **flowchart em camadas** tende a ser o mais claro: um só diagrama mostra “ecossistema” sem precisar de texto longo.
+**Modelo de roteamento (2026):** matriz **apresenta e encaminha** → loja `*.caracore.com.br` é vitrine oficial. `/delivery/` = redirect legado apenas.
 
 ---
 
-## 2. Onde colocar no site
+## 2. Camadas do mapa (`.eco-map`)
 
-- **Opção A:** Seção **“Ecossistema”** no topo do portfólio (portfolio.html), logo abaixo do lead, com o diagrama Mermaid e um parágrafo: “Cada produto tem apresentação completa na matriz e vitrine/loja em GitHub Pages.”
-- **Opção B:** Página dedicada **ecossistema.html** (ou wiki/ecossistema.html) com o diagrama, tabela Matriz ↔ Loja e link “Ver portfólio”.
-- **Opção C:** Wiki “Visão geral dos projetos” (projetos-overview.html) — adicionar o diagrama na seção “Como os Projetos se Integram”.
+```text
+                    [ PDV Java ]  [ PDV Rust ]
+              ─── Núcleo Bunker · SQLite · offline-first ───
+    OIDC · Minerador · Circuito · Ink · Área 51  (satélites)
+              MKT gratuito · Seed institucional
+              Hub · RU · CSO  (Garagem — datas futuras)
+```
+
+| Camada | Classe CSS | Conteúdo |
+|--------|------------|----------|
+| Núcleo | `.eco-map-node--nucleo` | PDV Java + PDV Rust |
+| Bunker | `.eco-map-core` | SQLite local, offline-first |
+| Satélites | `.eco-map-node--satelite` | OIDC, ETE, Circuito, Ink, Área 51 |
+| Gratuitos | `.eco-map-node--gratuito` | MKT, Seed |
+| Garagem | `.eco-map-node--garagem` | Hub (Abr/2027), RU (Jun/2027), CSO (Nov/2028) |
+
+Legenda: `.eco-map-legend` — Prateleira · Educação · Garagem · Gratuito.
+
+Nós clicáveis apontam para `portfolio.html#{âncora}` ou URL da loja quando aplicável.
 
 ---
 
-## 3. Implementação sugerida
+## 3. Diagrama Mermaid (opcional / arquivo)
 
-- Usar **Mermaid** (já usado no portfólio para Reino OIDC e Seed) para o flowchart em camadas.
-- O diagrama pode ser **estático** (só visual) ou **clicável** (links nos nós para delivery/ e lojas), dependendo de como o Mermaid for configurado (tooltips/links em alguns temas).
-- Cores ou estilos por tipo: por exemplo, “entrega ativa” vs “referência (Seed)”; ou “Windows Desktop” vs “Serviço (Área 51)”.
+Existe um diagrama estático em:
 
-O arquivo **assets/images/portfolio/ecossistema-cara-core.mmd** contém o diagrama em Mermaid pronto para incorporar na página escolhida (portfolio, ecossistema ou wiki).
+`assets/images/portfolio/ecossistema-cara-core.mmd`
+
+Pode ser incorporado no portfólio ou wiki se quiser **segunda representação** (Mermaid já usado em `#arquitetura` dentro de `ecosistema.html`). O mapa **interactivo em HTML** em `#mapa-visual` é a referência principal na matriz.
+
+---
+
+## 4. Tabela matriz ↔ loja
+
+Na mesma página: secção `#lojas-oficiais` — uma linha por produto com subdomínio canónico.
+
+Fonte viva de URLs: [ECOSYSTEM_LOJAS.md](ECOSYSTEM_LOJAS.md) · validação: [VALIDACAO_LOJAS_MATRIZ.md](VALIDACAO_LOJAS_MATRIZ.md).
+
+---
+
+## 5. Relação com posicionamento B2B
+
+O mapa responde **“o que construímos?”** — produtos Bunker como prova de entrega.
+
+A oferta comercial (**“contratar engenharia”**) fica na home (`#engenharia-b2b`) e nos cases (`portfolio.html#decisoes-engenharia`). O ecossistema liga-se a isso via hero, TOC, links finais e frase-guia no rodapé — ver [ECOSISTEMA.md](ECOSISTEMA.md).
+
+---
+
+## 6. Manutenção do mapa
+
+Ao adicionar produto na Garagem ou Prateleira:
+
+1. Novo nó em `.eco-map-row` (classe correcta por camada)
+2. Entrada em `#lojas-oficiais` quando houver loja
+3. Card em `#prateleira` ou `#garagem`
+4. Actualizar `ECOSYSTEM_LOJAS.md`
+
+Não duplicar vitrine longa na matriz — resumo + CTA para loja.

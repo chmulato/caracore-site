@@ -12,6 +12,7 @@ alwaysApply: true
 **Frase-guia PT:** Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente.
 
 - Home: `#engenharia-b2b` · nav **Engenharia B2B** · **Nossa Operação** (não “Nossa Equipe”)
+- Suporte PME (M365, TI local): **`suporte-local.html`** — fora do nav principal; horários noite/sábado só lá
 - Portfólio: `#decisoes-engenharia` (cases) antes de produtos
 - EN/IT: `aligned/en/`, `aligned/it/` — Decision areas / Giudizio di ingegneria
 - Documento estratégico: `docs/DILEMA.md`

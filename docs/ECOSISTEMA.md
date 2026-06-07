@@ -1,259 +1,99 @@
-# Melhorias para `ecosistema.html`
+# Ecossistema — `ecosistema.html`
 
-Sugestões práticas baseadas no conteúdo real da página — organizadas por impacto.
+Documentação operacional da página pública [ecosistema.html](../ecosistema.html).  
+**Atualizado:** 2026-06-07 · Estilos: [assets/css/ecosistema.css](../assets/css/ecosistema.css)
 
-## Resumo em uma frase
+**Papel na matriz:** mapa de produtos como **prova de entrega** da [engenharia B2B](../index.html#engenharia-b2b) — não substitui a home comercial nem o portfólio detalhado.
 
-A página do ecossistema é rica em conteúdo, mas pode ser muito mais clara, escaneável e orientada ao usuário com ajustes de estrutura, hierarquia visual, navegação e storytelling.
+**Frase-guia (rodapé):** *Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente.*
 
 ---
 
-
-## Melhorias prioritárias (alto impacto)
-
-### 1) Criar uma hierarquia visual clara
-
-Hoje o texto aparece como um bloco contínuo, com pouca distinção entre seções.
-Isso dificulta a leitura e a compreensão do ecossistema como um todo.
-
-
-**O que fazer:**
-
-
-Transformar cada bloco em seções visuais claras: Prateleira, Garagem, Roadmap, Pilares Técnicos, Lojas, etc.
-
-Usar títulos maiores, subtítulos, ícones e cores para diferenciar áreas.
-
-
-*Baseado em: a estrutura atual que mistura produtos prontos e futuros sem separação visual clara .*
-
-
-
-### 2) Adicionar um mapa visual do ecossistema
-
-O texto descreve o ecossistema como um “organismo vivo” e “infraestrutura Bunker” , mas não há um diagrama que mostre isso.
-
-
-**Sugestão:**
-
-
-Criar um mapa do ecossistema mostrando:
-
-Núcleo (PDV + Hub)
-
-Satélites (Reino OIDC, Minerador, Circuito, Ink)
-
-Garagem (Hub, RU, CSO)
-
-Seed e Mkt como base institucional
-
-Isso reduz drasticamente a carga cognitiva do visitante.
-
-
-### 3) Criar cards de produto padronizados
-
-Hoje cada produto aparece em blocos de texto longos e com estrutura variável.
-
-*Exemplo: PDV Java, PDV Rust, Ink Agenda, Hub, etc.*
-
-
-
-**Sugestão:**
-
-Criar um card padrão com:
-
-Nome
-
-Stack
-
-Status (Concluído / Em andamento / Planejado)
-
-Data de lançamento
-
-Link para loja/apresentação
-
-3 bullets de valor
-
-Isso melhora a escaneabilidade e reduz repetição.
-
-
-### 4) Transformar o Roadmap em um componente visual
-
-O roadmap atual é uma tabela longa e densa .
-
-
-**Sugestão:**
-
-
-Criar uma timeline horizontal com cores por status.
-
-Destacar marcos importantes (ex: RC8, lançamentos, datas-chave).
-
-Permitir expandir/colapsar detalhes.
-
-Isso torna o roadmap mais convidativo e menos técnico para o visitante comum.
-
-
-### 5) Adicionar CTAs mais claros
-
-Hoje os CTAs estão espalhados e às vezes escondidos no meio do texto.
-
-*Exemplo: “Ver apresentação”, “Baixar FREE”, “Acessar loja” .*
-
-
-
-**Sugestão:**
-
-
-Criar botões padronizados.
-
-Colocar CTAs sempre no final de cada card.
-
-Usar cores consistentes para ações primárias.
-
-
-## Melhorias de Navegação
-
-
-### 6) Criar um índice fixo lateral
-
-A página é longa e cheia de seções.
-
-
-**Sugestão:**
-
-
-Índice lateral com âncoras:
-Ecossistema · Prateleira · Garagem · Pilares Técnicos · Lojas · Roadmap · Contato
-
-Isso reduz frustração e melhora a experiência.
-
-
-### 7) Adicionar breadcrumbs ou contexto de navegação
-
-O visitante pode não entender se está na matriz, na loja ou na wiki.
-Isso aparece como dúvida porque a página menciona várias camadas do ecossistema .
-
-
-## Melhorias de Conteúdo
-
-
-### 8) Explicar o conceito de “Bunker Digital” com um exemplo
-
-O termo é forte, mas abstrato.
-A página diz que “quando a internet cai, o sistema não quebra” .
-
-
-**Sugestão:**
-
-Adicionar um micro-caso real:
-
-“Exemplo: um mercado continua vendendo normalmente mesmo com queda total da internet.”
-
-Isso fixa o conceito na mente do visitante.
-
-
-### 9) Criar uma seção “Para quem é o ecossistema?”
-
-Hoje a página fala muito do o quê, mas pouco do para quem.
-
-
-**Sugestão:**
-
-
-PME de varejo
-
-Centros de distribuição
-
-Estúdios de tatuagem
-
-Indústria e ensino técnico
-
-Governança de identidade
-
-
-### 10) Adicionar uma seção de “Valores do Ecossistema”
-
-Os valores aparecem dispersos: soberania local, antifragilidade, modularidade, offline-first, etc.
-
-*Exemplo: “infraestrutura Bunker”, “soberania local”, “SQLite local” .*
-
-
-Agrupar isso em uma seção fortalece a identidade da marca.
-
-
-## Melhorias de Design
-
-
-### 11) Criar ícones para cada produto
-
-Isso ajuda o visitante a memorizar e reconhecer visualmente.
-
-
-### 12) Usar cores para diferenciar categorias
-
-Azul: Prateleira
-
-Laranja: Garagem
-
-Verde: Gratuitos
-
-Roxo: Educacionais
-
-
-## Melhorias Técnicas
-
-
-### 13) Adicionar microdados / schema.org
-
-Para melhorar SEO:
-
-Product
-
-SoftwareApplication
-
-Organization
-
-Course (para Circuito Ferradura)
-
-
-### 14) Melhorar performance
-
-Lazy loading de imagens
-
-Minificação de CSS/JS
-
-Pré-carregamento de fontes
-
-
-## Melhorias de Storytelling
-
-
-### 15) Criar uma narrativa de evolução
-
-A página já menciona datas e marcos, mas sem narrativa.
-
-*Exemplo: “A Cara Core é honesta sobre o que está pronto e o que está chegando” .*
-
-
-Transformar isso em storytelling aumenta confiança.
-
-
-## Se quiser, posso gerar:
-
-Um wireframe completo da nova página
-
-Um layout visual (HTML/CSS)
-
-Um diagrama do ecossistema
-
-Cards prontos para cada produto
-
-Uma versão reescrita da página inteira, mais clara e moderna
-
+## 1. O que a página faz
+
+| Para o visitante | Conteúdo |
+|------------------|----------|
+| Entender o ecossistema | Mapa em camadas, cards por produto, roadmap |
+| Saber o que está pronto vs. planejado | Status, datas, tabela roadmap |
+| Ir para a loja canónica | CTAs → `*.caracore.com.br` (nunca `/delivery/` como destino principal) |
+| Contratar engenharia | Links → `#engenharia-b2b`, `#decisoes-engenharia`, `#contato` |
+
+**Wiki paralela:** [wiki.caracore.com.br/ecosistema.html](https://wiki.caracore.com.br/ecosistema.html) — trilhas; matriz permanece canónica para mapa + CTAs institucionais.
 
 ---
 
-**Para avançar:**
+## 2. Estrutura actual (implementada)
 
-Você prefere que eu reescreva a página inteira seguindo essas melhorias, ou quer que eu gere um novo layout visual primeiro?
+| Secção | ID / notas |
+|--------|------------|
+| Hero | `#ecossistema` — B2B + Bunker + link cases |
+| Mapa visual | `#mapa-visual` — núcleo PDV, satélites, garagem, gratuitos |
+| Bunker Digital | `#bunker-digital` — conceito + exemplo prático |
+| Para quem | `#para-quem` — segmentos (varejo, indústria, educação…) |
+| Valores | `#valores` — soberania, offline-first, modularidade |
+| Prateleira | `#prateleira` — cards PDV Java/Rust, Ink, OIDC, etc. |
+| Pilares técnicos | `#pilares-tecnicos` |
+| Lojas oficiais | `#lojas-oficiais` — tabela matriz ↔ subdomínio |
+| Garagem | `#garagem` — Hub, RU, CSO |
+| Roadmap | `#roadmap` — timeline + tabela |
+| Arquitetura | `#arquitetura` — Mermaid integração |
+
+**Navegação:** índice lateral `.eco-toc` · breadcrumb `.eco-breadcrumb` · links finais B2B / cases / portfólio / wiki / contato.
+
+---
+
+## 3. Versões e discurso PDV (fixo)
+
+| Linha | Release | Loja |
+|-------|---------|------|
+| Java · JavaFX | **v3.2.2-free** | pdv.caracore.com.br |
+| Rust + Tauri 2 | **v0.1.2** | rust-pdv + GitHub Releases |
+
+- Coexistência: link para [portfolio.html#pdv-coexistencia](../portfolio.html#pdv-coexistencia)
+- Evitar: “PDV v3” sozinho, “substitui”, “nova geração”
+
+---
+
+## 4. Alinhamento B2B (jun/2026)
+
+| Item | Onde |
+|------|------|
+| Hero — produtos = prova de entrega B2B | `#ecossistema` |
+| Link estudos de caso | `portfolio.html#decisoes-engenharia` |
+| Nav matriz | Engenharia B2B · Operação (`index.html#servicos`) |
+| Meta / JSON-LD | title + description com B2B + versões actuais |
+| Rodapé | Frase-guia + link `#engenharia-b2b` |
+| TOC lateral | Engenharia B2B · Decisões e impacto |
+
+---
+
+## 5. Manutenção
+
+### Ao lançar produto ou release
+
+1. Actualizar card em `#prateleira` ou `#garagem`
+2. Actualizar `#roadmap` e `#lojas-oficiais`
+3. Sincronizar [ECOSYSTEM_LOJAS.md](ECOSYSTEM_LOJAS.md) e [VALIDACAO_LOJAS_MATRIZ.md](VALIDACAO_LOJAS_MATRIZ.md)
+4. Se PDV: alinhar `portfolio.html`, loja e wiki
+
+### Ao mudar copy B2B
+
+- Hero, rodapé, TOC e meta de `ecosistema.html` em conjunto com `index.html` e [DILEMA.md](DILEMA.md)
+
+### Pré-deploy
+
+- [CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md](CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md)
+- Smoke: ecossistema → loja → voltar ao portfólio `#decisoes-engenharia`
+
+---
+
+## 6. Melhorias futuras (backlog — não bloqueiam deploy)
+
+| Prioridade | Melhoria |
+|------------|----------|
+| Baixa | Versão EN/IT do ecossistema (`aligned/` — hoje só PT) |
+| Baixa | Schema.org `SoftwareApplication` por produto no JSON-LD |
+| Baixa | Roadmap colapsável / timeline horizontal mais visual |
+| Baixa | Lazy-load de imagens pesadas (se adicionadas) |
+
+Ver também mapa visual: [ECOSSISTEMA_MAPA_VISUAL.md](ECOSSISTEMA_MAPA_VISUAL.md) · guia matriz: [SITE_MATRIZ.md](SITE_MATRIZ.md)

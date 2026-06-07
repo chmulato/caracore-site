@@ -13,7 +13,7 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 - **Site:** https://www.caracore.com.br
 - **Repo:** caracore-site
 - **Função:** Home B2B, portfólio, ecossistema, publicações, Área 51 (`/secure/`). **Não** é vitrine principal — cada produto na loja (`*.caracore.com.br`).
-- **Internacional:** `aligned/en/` · `aligned/it/`
+- **Internacional:** `aligned/en/` · `aligned/it/` — tom híbrido/edge (não anti-cloud); link rodapé → `suporte-local.html` (Brasil)
 - **Wiki:** https://wiki.caracore.com.br · **Retrô:** https://retro.caracore.com.br · **Sala:** https://tools.caracore.com.br/sala/
 
 **Frase-guia:** *Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente.*
@@ -28,11 +28,12 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 | Engenharia B2B | `#engenharia-b2b` — alocação, legados, ágil contínuo |
 | Antifragilidade | `#diferenciais` |
 | Produtos | `#produtos` — Decisão / Stack; link `#decisoes-engenharia` |
-| Operação | `#operacao` — complementar (M365, suporte, treinamentos) |
 | Sobre | `#sobre` — **Nossa Operação** (boutique enxuta) |
-| Contato | `#contato` |
+| Contato | `#contato` — horário corporativo B2B; suporte PME em `suporte-local.html` |
 
-**Nav:** Engenharia B2B · Produtos · Portfólio · Ecossistema · Antifragilidade · Operação · Sobre · Contato
+**Fora do fluxo B2B:** [suporte-local.html](../suporte-local.html) — M365, TI local, treinamentos, horários noite/sábado.
+
+**Nav:** Engenharia B2B · Produtos · Portfólio · Ecossistema · Antifragilidade · Sobre · Contato
 
 ---
 
@@ -64,9 +65,10 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 
 | Ficheiro | Conteúdo |
 |----------|----------|
-| index.html | Home B2B, produtos, operação, contato |
+| index.html | Home B2B, produtos, sobre, contato (sem suporte PME) |
+| suporte-local.html | M365, TI local, treinamentos, horários noite/sábado |
 | portfolio.html | TOC, `#decisoes-engenharia`, Bunker, PDV, releases |
-| ecosistema.html | Mapa Eco Mundo |
+| ecosistema.html | Mapa produtos, roadmap, links B2B e `#decisoes-engenharia` |
 | aligned/en · aligned/it | B2B EN/IT |
 | delivery/ | Stubs redirect |
 | secure/ | Área 51 OIDC |
@@ -99,4 +101,6 @@ Guia: [PORTFOLIO_README.md](PORTFOLIO_README.md) · CSS: `assets/css/portfolio.c
 | [ECOSYSTEM_LOJAS.md](ECOSYSTEM_LOJAS.md) | URLs canónicas |
 | [VALIDACAO_LOJAS_MATRIZ.md](VALIDACAO_LOJAS_MATRIZ.md) | Checklist matriz ↔ lojas |
 | [VALIDACAO_NEGOCIO.md](VALIDACAO_NEGOCIO.md) | Validação comercial |
+| [ECOSISTEMA.md](ECOSISTEMA.md) | Manutenção de `ecosistema.html` |
+| [ECOSSISTEMA_MAPA_VISUAL.md](ECOSSISTEMA_MAPA_VISUAL.md) | Mapa em camadas (`#mapa-visual`) |
 | [FEEDBACK.md](FEEDBACK.md) | Histórico branding Bunker (fev/2026) |

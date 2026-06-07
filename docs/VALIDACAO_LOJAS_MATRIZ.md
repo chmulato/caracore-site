@@ -1,17 +1,18 @@
-VALIDAÇÃO: LOJAS ALINHADAS COM A MATRIZ
-========================================
+# Validação — lojas alinhadas com a matriz
 
 Objetivo: Verificar alinhamento entre a **matriz institucional** (caracore.com.br) e as **lojas canónicas** (*.caracore.com.br). A matriz apresenta e encaminha; a loja é a fonte de vitrine, download e documentação comercial.
 
-**Última actualização:** 2026-05-31  
-**Referências:** ECOSYSTEM_LOJAS.txt · ECOSYSTEM_CARA_CORE.txt · COMPONENTES_LOJA.txt · docs/FONTES_CANONICAS_MATRIZ_LOJAS.md · docs/SITE_MATRIZ.md
+**Última actualização:** 2026-06-07  
+**Referências:** ECOSYSTEM_LOJAS.md · ECOSYSTEM_CARA_CORE.md · COMPONENTES_LOJA.md · docs/FONTES_CANONICAS_MATRIZ_LOJAS.md · docs/SITE_MATRIZ.md
 
--------------------------------------------------------------------------------
+
+---
+
 
 MODELO ACTUAL (desde 2026)
 
   Matriz (caracore-site)
-    portfolio.html · ecosistema.html · index.html
+    index.html (#engenharia-b2b) · portfolio.html (#decisoes-engenharia) · ecosistema.html
     CTAs → subdomínio da loja (nunca /delivery/ como destino principal)
     _redirects: /delivery/{produto}/* → loja
 
@@ -29,88 +30,116 @@ MODELO ACTUAL (desde 2026)
     rust-pdv.caracore.com.br: 200, sem SEED
     Lojas: footers com link portfolio.html#{produto} (2026-05-31)
 
--------------------------------------------------------------------------------
+
+---
+
 
 CHECKLIST POR PRODUTO
 
 Para cada linha: (M) matriz · (L) loja · OK / rever
 
-1. CARACORE PDV DESKTOP (JAVA)
+
+## 1. CARACORE PDV DESKTOP (JAVA)
+
    (M) portfolio.html#caracore-pdv · ecosistema.html
-   (L) caracore-pdv-releases → pdv.caracore.com.br · v3.1.2-free
+   (L) caracore-pdv-releases → pdv.caracore.com.br · v3.2.2-free
    Mensagem: dois PDVs desktop; Java = canal maduro multi-plataforma
    Coexistência: #pdv-coexistencia no portfólio
    Status: OK — rever após cada release Java
 
-2. CARA CORE PDV DESKTOP (RUST + TAURI 2)
+
+## 2. CARA CORE PDV DESKTOP (RUST + TAURI 2)
+
    (M) portfolio.html#caracore-pdv-rust · #pdv-coexistencia
    (L) caracore-pdv-rust-releases → rust-pdv.caracore.com.br · v0.1.2
    (R) github.com/chmulato/caracore-rust-pdv-releases/releases — download oficial
    Sem delivery/pdv-rust · sem SEED na loja Rust
    Status: OK — piloto multi-OS; CTAs matriz → GitHub Releases; loja = vitrine
 
-3. INK AGENDA
+
+## 3. INK AGENDA
+
    (M) portfolio.html#caracore-ink-agenda
    (L) caracore-ink-releases → ink.caracore.com.br · v2.0.0-RC8
    Status: OK
 
-4. CARA CORE HUB
+
+## 4. CARA CORE HUB
+
    (M) portfolio.html#caracore-hub
    (L) caracore-hub-releases → hub.caracore.com.br
    Status: OK
 
-5. CIRCUITO FERRADURA
+
+## 5. CIRCUITO FERRADURA
+
    (M) portfolio.html#circuito-python
    (L) caracore-circuito-releases → circuito.caracore.com.br
    Oficina: caracore-circuito
    Status: OK
 
-6. REINO OIDC
+
+## 6. REINO OIDC
+
    (M) portfolio.html#reino-oidc
    (L) caracore-oidc-releases → oidc.caracore.com.br · v2.0.0-RC1
    Oficina: caracore-oidc
    Status: OK
 
-7. CARACORE SEED
+
+## 7. CARACORE SEED
+
    (M) portfolio.html#caracore-seed
    (L) caracore-seed-releases → seed.caracore.com.br
    Mensagem: ferramenta interna; app não disponível
    Status: OK
 
-8. SUPORTE ÁREA 51
+
+## 8. SUPORTE ÁREA 51
+
    (M) portfolio.html#area-51
    (L) caracore-area51-releases → area51.caracore.com.br
    Status: OK
 
-9. MINERADOR 4.0 (ETE)
+
+## 9. MINERADOR 4.0 (ETE)
+
    (M) portfolio.html#minerador-ete · ecosistema.html
    (L) caracore-ete-releases → ete.caracore.com.br
    Oficina: caracore-ete
    Status: OK
 
-10. RU SOBERANO (garagem)
+
+## 10. RU SOBERANO (garagem)
+
     (M) portfolio.html#caracore-ru · ecosistema.html (Garagem)
     (L) caracore-ru-releases → ru.caracore.com.br
     Oficina: caracore-ru · lançamento previsto 18/06/2027
     Status: OK — matriz via portfólio (não delivery/ru)
 
-11. CARA CORE CSO (garagem)
+
+## 11. CARA CORE CSO (garagem)
+
     (M) portfolio.html#caracore-cso
     (L) caracore-cso-releases → cso.caracore.com.br
     Lançamento previsto 08/11/2028
     Status: OK
 
-12. CARA CORE MKT / SALA
+
+## 12. CARA CORE MKT / SALA
+
     (M) portfolio.html#caracore-mkt
     (L) mkt.caracore.com.br · Sala: tools.caracore.com.br/sala/
     Status: OK
 
--------------------------------------------------------------------------------
+
+---
+
 
 CRITÉRIOS DE VALIDAÇÃO (aplicar em revisão periódica)
 
   Estrutura
-    [ ] Loja tem páginas mínimas do molde (COMPONENTES_LOJA.txt)
+    [ ] Loja tem páginas mínimas do molde (COMPONENTES_LOJA.md)
     [ ] Matriz tem bloco no portfólio com CTAs para a loja
 
   Mensagem
@@ -124,9 +153,11 @@ CRITÉRIOS DE VALIDAÇÃO (aplicar em revisão periódica)
 
   Discurso PDV
     [ ] Dois PDVs desktop; nenhum substitui o outro
-    [ ] v3.1.x = Java · v0.1.x = Rust · evitar "PDV v3" sozinho
+    [ ] v3.2.x = Java · v0.1.x = Rust · evitar "PDV v3" sozinho
 
--------------------------------------------------------------------------------
+
+---
+
 
 RESUMO
 
@@ -136,6 +167,8 @@ RESUMO
   Smoke test pós-alteração:
     home → portfólio → ecossistema → loja de um produto → voltar à matriz
 
--------------------------------------------------------------------------------
+
+---
+
 
 Cara Core Informática — uso interno. CNPJ 23.969.028/0001-37

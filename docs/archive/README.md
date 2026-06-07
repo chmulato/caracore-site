@@ -12,7 +12,7 @@ Para operação actual do site, use [../INDEX.md](../INDEX.md) e [../SITE_MATRIZ
 |-------|----------|
 | [backend-auth/](backend-auth/) | OAuth 2.1, Azure deploy, fases 1–7, troubleshooting pontual, super-admin |
 | [delivery-migracao/](delivery-migracao/) | Planos e runbooks da migração `delivery/` → lojas (referência histórica) |
-| [sessoes-trabalho/](sessoes-trabalho/) | Levantamentos e validações pontuais de sessões antigas (incl. `VALIDACAO_NEGOCIO_HISTORICO.txt`, `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC_HISTORICO.txt`) |
+| [sessoes-trabalho/](sessoes-trabalho/) | Levantamentos e validações pontuais de sessões antigas (incl. `VALIDACAO_NEGOCIO_HISTORICO.md`, `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC_HISTORICO.md`) |
 
 ---
 

@@ -1,17 +1,26 @@
-NOTA 2026-05-31
-================
-Matriz = portfolio.html + ecosistema.html (nao delivery/). Checklist tecnico: VALIDACAO_LOJAS_MATRIZ.txt.
+# Validação de negócio — histórico
+
+> **Histórico.** Referência arquivada; versões atuais em [`VALIDACAO_NEGOCIO.md`](../../VALIDACAO_NEGOCIO.md), [`STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md`](../../STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md) e [DILEMA.md](../../DILEMA.md).  
+> *Nota: texto convertido de `.txt`; possíveis artefactos de encoding em trechos antigos.*
+
+---
+
+## NOTA 2026-05-31
+
+Matriz = portfolio.html + ecosistema.html (nao delivery/). Checklist tecnico: VALIDACAO_LOJAS_MATRIZ.md.
 PDV: duas linhas desktop — Java (pdv.caracore.com.br, v3.1.2-free) e Rust (rust-pdv.caracore.com.br, v0.1.0).
 Secoes abaixo: revisao historica; referencias a delivery/ = legado (redirects).
-VALIDAÃ‡ÃƒO DE NEGÃ“CIO â€” FÃBRICA DE APLICATIVOS WINDOWS DESKTOP
-================================================================
+## VALIDAÃ‡ÃƒO DE NEGÃ“CIO â€” FÃBRICA DE APLICATIVOS WINDOWS DESKTOP
+
 
 Objetivo: Pente fino no que construÃ­mos, com olhar de uma pessoa de negÃ³cio que estÃ¡ construindo uma fÃ¡brica de aplicativos Windows Desktop para um pÃºblico seleto e com poder de compra. Garantir funcionalidade dos produtos e coerÃªncia do ecossistema.
 
 Premissa: NÃ£o temos braÃ§o para a startup; precisamos focar em aplicaÃ§Ãµes relevantes para o negÃ³cio. O Cara Core Seed existe e consta no portfÃ³lio (no final da lista), mas a aplicaÃ§Ã£o nÃ£o estÃ¡ disponÃ­vel para download nem Ã  venda â€” apenas informamos que existe.
 
 Produtos em foco (entrega ativa):
-  1. Cara Core PDV â€” validado com muito esforÃ§o
+
+## 1. Cara Core PDV â€” validado com muito esforÃ§o
+
   2. chmulatoETE Minerador 4.0 â€” validado com muito esforÃ§o
   3. Reino OIDC â€” Reino das Identidades Federadas â€” material educacional / identidade
   4. Circuito Ferradura â€” produto chamariz (curso proprietario; gratuito para pessoas fisicas; licenca obrigatoria para instituicoes)
@@ -24,9 +33,13 @@ Garagem (futuros lanÃ§amentos â€” matriz, oficina e loja jÃ¡ no ar):
 ReferÃªncia (sem oferta ativa):
   7. Cara Core Seed â€” ferramenta interna; produto existe, aplicaÃ§Ã£o nÃ£o disponÃ­vel (nÃ£o hÃ¡ download nem venda)
 
--------------------------------------------------------------------------------
 
-1. NARRATIVA DE NEGÃ“CIO (FÃBRICA + PÃšBLICO SELETO)
+---
+
+
+
+## 1. NARRATIVA DE NEGÃ“CIO (FÃBRICA + PÃšBLICO SELETO)
+
 
   O que validar                    | Status      | ObservaÃ§Ã£o
   ---------------------------------|-------------|----------------------------------------------------------------
@@ -34,11 +47,17 @@ ReferÃªncia (sem oferta ativa):
   PÃºblico seleto / poder de compra  | Parcial     | PreÃ§os claros onde aplicÃ¡vel (Seed R$ 29,90; Minerador Ouro 4.0 R$ 29,90). PDV Premium sem valor no portfÃ³lio (pode ser proposital â€” "sob consulta"). RecomendaÃ§Ã£o: reforÃ§ar em cada produto para quem Ã© (gestor, contador, empresa, jovem desenvolvedora) e que problema resolve.
   AgregaÃ§Ã£o de valor entre produtos| Bom         | Seed Ã© o "Contador de LicenÃ§as" dos que compram PDV, Minerador, Reino, Hub. Minerador e Seed compartilham filosofia (transparÃªncia, LGPD, R$ 29,90). PDV e Minerador jÃ¡ validados; Seed e Reino agregam sem duplicar.
 
--------------------------------------------------------------------------------
 
-2. PRODUTO A PRODUTO
+---
 
-2.1 Cara Core PDV
+
+
+## 2. PRODUTO A PRODUTO
+
+
+
+### 2.1 Cara Core PDV
+
 
   CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
@@ -51,7 +70,9 @@ ReferÃªncia (sem oferta ativa):
 
   AÃ§Ã£o sugerida: Manter como estÃ¡. Escopo localhost + Windows Desktop + SQLite jÃ¡ refletido na wiki e no portfÃ³lio. ReferÃªncia central das lojas: ECOSYSTEM_LOJAS.md.
 
-2.2 chmulatoETE Minerador 4.0
+
+### 2.2 chmulatoETE Minerador 4.0
+
 
   CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
@@ -63,7 +84,9 @@ ReferÃªncia (sem oferta ativa):
 
   AÃ§Ã£o sugerida: No portfÃ³lio, no alerta de licenciamento do Minerador 4.0, acrescentar: "Upgrade Ouro 4.0: R$ 29,90 (valor Ãºnico)."
 
-2.3 Reino OIDC â€” Reino das Identidades Federadas
+
+### 2.3 Reino OIDC â€” Reino das Identidades Federadas
+
 
   CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
@@ -75,7 +98,9 @@ ReferÃªncia (sem oferta ativa):
 
   EstratÃ©gia de negÃ³cio: Ver delivery/oidc/ESTRATEGIA_NEGOCIO_REINO_OIDC.md e delivery/oidc/PUBLICO_ALVO.md.
 
-2.4 Cara Core Seed
+
+### 2.4 Cara Core Seed
+
 
   CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
@@ -86,7 +111,9 @@ ReferÃªncia (sem oferta ativa):
 
   AÃ§Ã£o sugerida: Mantido como estÃ¡. Seed permanece no portfÃ³lio como referÃªncia; sem aÃ§Ãµes de oferta ou CTA de download/compra.
 
-2.5 Circuito Ferradura
+
+### 2.5 Circuito Ferradura
+
 
   CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
@@ -99,7 +126,9 @@ ReferÃªncia (sem oferta ativa):
 
   AÃ§Ã£o sugerida: Manter alinhamento matriz â†” loja; preservar apresentacao profissional dos blocos Python e fluxo de escolas.
 
-2.6 Cara Core Hub
+
+### 2.6 Cara Core Hub
+
 
   CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
@@ -109,9 +138,11 @@ ReferÃªncia (sem oferta ativa):
   Delivery funcional        | OK     | Matriz: delivery/hub/ (index, download, canal-feedback, tecnologia, slides/). Loja online: https://hub.caracore.com.br/ (vitrine, mesmo conteÃºdo, base href para GitHub Pages).
   Portal/vitrine            | OK     | Matriz = site Cara Core delivery/hub; loja online = caracore-hub-releases. MIRROR_DELIVERY.md em delivery/hub documenta a relaÃ§Ã£o. Releases (WAR) em https://hub.caracore.com.br/download.html quando publicadas. ReferÃªncia central: ECOSYSTEM_LOJAS.md.
 
-  AÃ§Ã£o sugerida: Manter alinhamento matriz â†” vitrine; ao publicar releases, atualizar download.html com link para releases/latest. ReferÃªncia central das lojas: ECOSYSTEM_LOJAS.txt.
+  AÃ§Ã£o sugerida: Manter alinhamento matriz â†” vitrine; ao publicar releases, atualizar download.html com link para releases/latest. ReferÃªncia central das lojas: ECOSYSTEM_LOJAS.md.
 
-2.7 Suporte Ãrea 51
+
+### 2.7 Suporte Ãrea 51
+
 
   CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
@@ -119,11 +150,13 @@ ReferÃªncia (sem oferta ativa):
   PÃºblico                   | OK     | Empresas mÃ©dias do Brasil; exige tempo e investimento (energia da startup).
   PreÃ§o                     | N/A    | Sob consulta (canal de feedback).
   Delivery funcional        | OK     | Matriz: delivery/area51 (index, canal-feedback). Loja: area51.caracore.com.br. ApresentaÃ§Ã£o na oficina: caracore-area51/apresentacao/index.html (alinhada Ã  loja).
-  Links e CTAs              | OK     | Matriz com "Ver loja (releases)"; loja com "Ver apresentaÃ§Ã£o (matriz)". VALIDACAO_LOJAS_MATRIZ.txt e ECOSYSTEM_LOJAS.txt.
+  Links e CTAs              | OK     | Matriz com "Ver loja (releases)"; loja com "Ver apresentaÃ§Ã£o (matriz)". VALIDACAO_LOJAS_MATRIZ.md e ECOSYSTEM_LOJAS.md.
 
   AÃ§Ã£o sugerida: Manter alinhamento matriz â†” loja; mensagem "suporte Ã s empresas mÃ©dias do Brasil para configurar os portais".
 
-2.8 RU Soberano (Garagem â€” futuros lanÃ§amentos)
+
+### 2.8 RU Soberano (Garagem â€” futuros lanÃ§amentos)
+
 
   CritÃ©rio                  | Status | Detalhe
   --------------------------|--------|--------------------------------------------------------
@@ -133,11 +166,15 @@ ReferÃªncia (sem oferta ativa):
   Delivery funcional        | OK     | Matriz: delivery/ru (index, canal-feedback, MIRROR_DELIVERY.md). Loja: ru.caracore.com.br/ (docs: index, download, licenca-uso, manual-tecnico, canal-feedback, MIRROR_DELIVERY.md). Oficina: caracore-ru. Loja alinhada Ã  matriz.
   Garagem                   | OK     | Ramo Garagem no ecossistema (ecosistema.html): Matriz â†’ RU Soberano â†’ caracore-ru â†’ caracore-ru-releases. Link para delivery/ru na pÃ¡gina do ecossistema.
 
-  AÃ§Ã£o sugerida: Manter alinhamento matriz (delivery/ru) â†” loja (caracore-ru-releases). Ao lanÃ§ar (18/Junho/2026), considerar mover RU Soberano do subgraph Garagem para o fluxo completo no diagrama (opcional). Ver VALIDACAO_LOJAS_MATRIZ.txt (assunto Garagem).
+  AÃ§Ã£o sugerida: Manter alinhamento matriz (delivery/ru) â†” loja (caracore-ru-releases). Ao lanÃ§ar (18/Junho/2026), considerar mover RU Soberano do subgraph Garagem para o fluxo completo no diagrama (opcional). Ver VALIDACAO_LOJAS_MATRIZ.md (assunto Garagem).
 
--------------------------------------------------------------------------------
 
-3. FUNCIONALIDADE DOS FLUXOS (CLIENTE FINAL)
+---
+
+
+
+## 3. FUNCIONALIDADE DOS FLUXOS (CLIENTE FINAL)
+
 
   Fluxo                          | O que o cliente faz                                                                 | Funciona?
   -------------------------------|-------------------------------------------------------------------------------------|----------
@@ -150,9 +187,13 @@ ReferÃªncia (sem oferta ativa):
   Suporte Ãrea 51 â€” orÃ§amento     | PortfÃ³lio â†’ delivery/area51/ ou caracore-area51-releases â†’ Solicitar suporte / OrÃ§amento (canal-feedback) | Sim; produto = suporte para configurar portais; empresas mÃ©dias do Brasil
   RU Soberano (Garagem) â€” conhecer / download | delivery/ru/ ou ru.caracore.com.br/ â†’ index, download (degustaÃ§Ã£o FREE), licenca-uso (R$ 29,90) | Sim; lanÃ§amento 18/Junho/2026; ramo Garagem no ecossistema
 
--------------------------------------------------------------------------------
 
-4. CONSISTÃŠNCIA DE MENSAGEM (PÃšBLICO SELETO)
+---
+
+
+
+## 4. CONSISTÃŠNCIA DE MENSAGEM (PÃšBLICO SELETO)
+
 
   Tema                          | PDV                    | Minerador 4.0           | Reino OIDC                    | Seed              | Circuito Ferradura       | Cara Core Hub            | Suporte Ãrea 51           | RU Soberano (Garagem)
   -------------------------------|------------------------|-------------------------|-------------------------------|-------------------|---------------------------|----------------------------|----------------------------------|----------------------------------
@@ -163,9 +204,13 @@ ReferÃªncia (sem oferta ativa):
   TransparÃªncia / LGPD           | Conformidade citada    | Portal/licenÃ§as ETE     | â€”                             | Ref. (portal informativo) | LicenÃ§a e portal escolas | Canal feedback; doc tecnologia | Canal feedback; LGPD | Produto em evoluÃ§Ã£o; canal feedback
   Link direto download/EXE       | Matriz delivery/pdv + loja caracore-pdv-releases | Download â†’ caracore-ete-releases | oidc.caracore.com.br + caracore-oidc-releases | Portal Seed + repo (sem oferta) | circuito.caracore.com.br + caracore-circuito-releases | delivery/hub + caracore-hub-releases; slides Tia SÃ³cia | delivery/area51 + caracore-area51-releases; Solicitar suporte | delivery/ru + caracore-ru-releases; Garagem
 
--------------------------------------------------------------------------------
 
-5. RESUMO DE AÃ‡Ã•ES RECOMENDADAS
+---
+
+
+
+## 5. RESUMO DE AÃ‡Ã•ES RECOMENDADAS
+
 
   1. PortfÃ³lio â€” Frase de framing: Adicionar uma linha no header ou logo abaixo do lead do portfÃ³lio reforÃ§ando: "SoluÃ§Ãµes Windows Desktop e identidade para um pÃºblico seleto" (ou equivalente), ligando os quatro produtos.
   2. Minerador 4.0: Incluir no alerta de licenciamento do card: "Upgrade Ouro 4.0: R$ 29,90 (valor Ãºnico)."
@@ -174,17 +219,20 @@ ReferÃªncia (sem oferta ativa):
   5. Circuito Ferradura: usar sempre a loja oficial https://circuito.caracore.com.br/ e a nomenclatura caracore-circuito / caracore-circuito-releases; manter curso web, download e portal escolas alinhados.
   6. Cara Core PDV: Matriz = delivery/pdv; loja online = https://pdv.caracore.com.br/. Documentado em delivery/pdv/MIRROR_DELIVERY.md. Ver ECOSYSTEM_LOJAS.md para referÃªncia central das lojas.
   7. Cara Core Hub: Portal delivery/hub (matriz) e loja online caracore-hub-releases (https://hub.caracore.com.br/) alinhados; negÃ³cio aplicÃ¡vel Tia SÃ³cia citado; apresentaÃ§Ã£o Tia SÃ³cia em slides/ em ambos. Ao publicar releases (WAR), atualizar download.html com link para releases/latest.
-  8. Suporte Ãrea 51: Produto = suporte Ã s empresas mÃ©dias do Brasil para configurar os portais que o produto Ãrea 51 oferece. Matriz delivery/area51 e loja caracore-area51-releases; CTAs "Ver loja (releases)" na matriz e "Ver apresentaÃ§Ã£o (matriz)" na loja. Ver VALIDACAO_LOJAS_MATRIZ.txt e ECOSYSTEM_LOJAS.txt.
-  9. RU Soberano (Garagem): Produto no ramo Garagem do ecossistema (ecosistema.html). Matriz delivery/ru, loja caracore-ru-releases, oficina caracore-ru. Mensagem: RU Soberano, produto em evoluÃ§Ã£o, degustaÃ§Ã£o FREE atÃ© o Buffet, InteligÃªncia de Processo + Memorial RU R$ 29,90, lanÃ§amento 18/Junho/2026. Manter alinhamento matriz â†” loja. Ver VALIDACAO_LOJAS_MATRIZ.txt (assunto Garagem).
-  10. RevisÃ£o periÃ³dica: Usar este documento como checklist em prÃ³ximas releases (novos produtos, mudanÃ§a de preÃ§o, novos CTAs). ReferÃªncia das URLs de lojas: ECOSYSTEM_LOJAS.txt. Mapeamento dos repositÃ³rios: ECOSYSTEM_CARA_CORE.txt. ValidaÃ§Ã£o matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt (inclui Garagem). Mapa visual do ecossistema (matriz â†’ produtos â†’ oficinas â†’ lojas; ramo Garagem): caracore.com.br/ecosistema.html (ConheÃ§a o Nosso Eco Mundo); Ã­cone eco em Recursos e Planos na index.
+  8. Suporte Ãrea 51: Produto = suporte Ã s empresas mÃ©dias do Brasil para configurar os portais que o produto Ãrea 51 oferece. Matriz delivery/area51 e loja caracore-area51-releases; CTAs "Ver loja (releases)" na matriz e "Ver apresentaÃ§Ã£o (matriz)" na loja. Ver VALIDACAO_LOJAS_MATRIZ.md e ECOSYSTEM_LOJAS.md.
+  9. RU Soberano (Garagem): Produto no ramo Garagem do ecossistema (ecosistema.html). Matriz delivery/ru, loja caracore-ru-releases, oficina caracore-ru. Mensagem: RU Soberano, produto em evoluÃ§Ã£o, degustaÃ§Ã£o FREE atÃ© o Buffet, InteligÃªncia de Processo + Memorial RU R$ 29,90, lanÃ§amento 18/Junho/2026. Manter alinhamento matriz â†” loja. Ver VALIDACAO_LOJAS_MATRIZ.md (assunto Garagem).
+  10. RevisÃ£o periÃ³dica: Usar este documento como checklist em prÃ³ximas releases (novos produtos, mudanÃ§a de preÃ§o, novos CTAs). ReferÃªncia das URLs de lojas: ECOSYSTEM_LOJAS.md. Mapeamento dos repositÃ³rios: ECOSYSTEM_CARA_CORE.md. ValidaÃ§Ã£o matriz/lojas: VALIDACAO_LOJAS_MATRIZ.md (inclui Garagem). Mapa visual do ecossistema (matriz â†’ produtos â†’ oficinas â†’ lojas; ramo Garagem): caracore.com.br/ecosistema.html (ConheÃ§a o Nosso Eco Mundo); Ã­cone eco em Recursos e Planos na index.
 
--------------------------------------------------------------------------------
 
-6. CONCLUSÃƒO
+---
+
+
+
+## 6. CONCLUSÃƒO
+
 
   - Funcionalidade: Os fluxos de apresentaÃ§Ã£o e download estÃ£o coerentes e operantes para os produtos com entrega ativa (PDV, Minerador 4.0, Reino OIDC, Circuito Ferradura, Cara Core Hub, Suporte Ãrea 51). PDV: matriz delivery/pdv e loja online https://pdv.caracore.com.br/; escopo localhost + Windows Desktop, SQLite; portfÃ³lio com "Ver loja (releases)" e "Baixar EXE". Seed: produto existe, aplicaÃ§Ã£o nÃ£o disponÃ­vel â€” sem oferta de download nem venda; portfÃ³lio com seÃ§Ã£o no final; delivery e vitrine apenas informam. Hub: matriz delivery/hub e loja online https://hub.caracore.com.br/; gestÃ£o logÃ­stica e e-commerce; SQLite local; Tia SÃ³cia e apresentaÃ§Ã£o em slides/. Suporte Ãrea 51: matriz delivery/area51 e loja caracore-area51-releases; produto = suporte Ã s empresas mÃ©dias do Brasil para configurar os portais; CTAs alinhados (Ver loja / Ver apresentaÃ§Ã£o matriz).
   - Premissa: NÃ£o temos braÃ§o para a startup; foco em aplicaÃ§Ãµes relevantes para o negÃ³cio. Seed permanece no portfÃ³lio como referÃªncia.
-  - AtualizaÃ§Ã£o: Wiki e portfÃ³lio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Lojas e matriz com links cruzados: cada matriz tem "Ver loja (releases)"; cada loja tem "Ver apresentaÃ§Ã£o (matriz)". ReferÃªncia das lojas: ECOSYSTEM_LOJAS.txt; mapeamento do ecossistema: ECOSYSTEM_CARA_CORE.txt; validaÃ§Ã£o matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt (inclui Garagem â€” RU Soberano). PÃ¡gina do ecossistema (diagrama em camadas: matriz, produtos, oficinas, lojas; ramo Garagem â€” futuros lanÃ§amentos) em caracore.com.br/ecosistema.html; acesso pelo Ã­cone eco em Recursos e Planos na index ("ConheÃ§a o Nosso Eco Mundo"). RU Soberano: primeiro produto na Garagem (delivery/ru, caracore-ru-releases, caracore-ru); lanÃ§amento 18/Junho/2026; R$ 29,90; degustaÃ§Ã£o FREE. Circuito Python e Reino OIDC: priorizar EXE; nÃ£o destacar link do curso/conteÃºdo em HTML. NÃ£o linkar ao repositÃ³rio privado circuito_python. Reino OIDC loja: reino-oidc-releases (docs/); caminho local D:\dev\reino-oidc-releases.
+  - AtualizaÃ§Ã£o: Wiki e portfÃ³lio alinhados ao escopo PDV (localhost, Windows Desktop, SQLite). Lojas e matriz com links cruzados: cada matriz tem "Ver loja (releases)"; cada loja tem "Ver apresentaÃ§Ã£o (matriz)". ReferÃªncia das lojas: ECOSYSTEM_LOJAS.md; mapeamento do ecossistema: ECOSYSTEM_CARA_CORE.md; validaÃ§Ã£o matriz/lojas: VALIDACAO_LOJAS_MATRIZ.md (inclui Garagem â€” RU Soberano). PÃ¡gina do ecossistema (diagrama em camadas: matriz, produtos, oficinas, lojas; ramo Garagem â€” futuros lanÃ§amentos) em caracore.com.br/ecosistema.html; acesso pelo Ã­cone eco em Recursos e Planos na index ("ConheÃ§a o Nosso Eco Mundo"). RU Soberano: primeiro produto na Garagem (delivery/ru, caracore-ru-releases, caracore-ru); lanÃ§amento 18/Junho/2026; R$ 29,90; degustaÃ§Ã£o FREE. Circuito Python e Reino OIDC: priorizar EXE; nÃ£o destacar link do curso/conteÃºdo em HTML. NÃ£o linkar ao repositÃ³rio privado circuito_python. Reino OIDC loja: reino-oidc-releases (docs/); caminho local D:\dev\reino-oidc-releases.
 
 Documento gerado para validaÃ§Ã£o de negÃ³cio â€” Cara Core InformÃ¡tica.
-

@@ -1,9 +1,10 @@
-﻿ECOSSISTEMA CARA CORE INFORMÁTICA
-=================================
+# Ecossistema Cara Core — mapa de repositórios
 
 Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 02/06/2026).
 
--------------------------------------------------------------------------------
+
+---
+
 
 VISÃO GERAL
 
@@ -35,7 +36,9 @@ VISÃO GERAL
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
   personal-articles             Conteúdo pessoal / artigos                  Conteúdo editorial vinculado ao ecossistema
 
--------------------------------------------------------------------------------
+
+---
+
 
 CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
 
@@ -48,13 +51,15 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
   PDV Desktop Rust+Tauri   caracore-pdv-rust        loja + GitHub Releases       v0.1.2 (piloto Windows; download em GitHub)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
-  Não confundir: V3 negócio ≠ canal Java v3.1.x ≠ release Rust v0.1.x.
+  Não confundir: V3 negócio ≠ canal Java v3.2.x ≠ release Rust v0.1.x.
   Evitar na comunicação: "PDV v3" sozinho, "nova geração", "substitui", "reescrito".
 
   Matriz site: portfólio #caracore-pdv-rust · loja rust-pdv.caracore.com.br
   Wiki institucional: caracore-wiki — projeto-pdv.html (hub), projeto-pdv-rust.html
 
--------------------------------------------------------------------------------
+
+---
+
 
 AGRUPAMENTO POR FUNÇÃO
 
@@ -80,24 +85,27 @@ Produtos com vitrine, sem oferta de aplicação
 Serviço institucional
   Suporte Área 51: caracore-area51 + caracore-area51-releases. Loja: area51.caracore.com.br
 
--------------------------------------------------------------------------------
+
+---
+
 
 REFERÊNCIAS CRUZADAS
 
-  Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.txt
-  Componentes padrão das lojas: ver COMPONENTES_LOJA.txt
+  Lojas online (URLs e matriz): ver ECOSYSTEM_LOJAS.md
+  Componentes padrão das lojas: ver COMPONENTES_LOJA.md
   Índice memorias (retomada): docs/ECOSYSTEM_MEMORIA.md — fonte única jun/2026
   Retrô PDV Rust (art. 114): retro.caracore.com.br/articles/2026_12_20_article_114.html
   Memória Cursor da matriz: caracore-site/.cursor/rules/project-memory.mdc
   Portfólio: https://www.caracore.com.br/portfolio.html
   Mapa visual: https://www.caracore.com.br/ecosistema.html
-  Validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.txt
+  Validação matriz/lojas: VALIDACAO_LOJAS_MATRIZ.md
 
 Alinhamento matriz e lojas
   Em cada portal da matriz: links "Ver loja" apontam para o subdomínio ou GitHub Pages oficial.
   Regra de nomenclatura: oficina = caracore-<produto>; loja = caracore-<produto>-releases; publicação via docs/.
 
--------------------------------------------------------------------------------
+
+---
+
 
 Atualizado em 02/06/2026.
-

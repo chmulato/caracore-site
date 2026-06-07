@@ -1,11 +1,11 @@
-================================================================================
-FEEDBACK DAS ALTERAÇÕES — BRANDING E COPYWRITING
-Cara Core Informática | Bunker Digital, Soberania Local, Antifrágil
-Data: 11 de fevereiro de 2026
-================================================================================
+# Feedback das alterações — branding e copywriting
+
+> **Nota (2026-06-07):** Este documento regista a leva **fev/2026** (Bunker Digital / hero produto). O site evoluiu em **jun/2026** para posicionamento **B2B boutique** — ver [DILEMA.md](DILEMA.md) e [STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md](STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md). O vocabulário Bunker abaixo permanece válido; a ordem de mensagem na home mudou (engenharia B2B antes de produtos).
 
 OBJETIVO DAS ALTERAÇÕES
------------------------
+
+---
+
 Reescrita do conteúdo do site da Matriz (caracore-site) com foco em:
 • Tecnologia de missão crítica e filosofia antifrágil (Nassim Taleb)
 • Posicionamento: empresa fundada por veterano da computação (geração 1991) que rejeita o modelo de nuvem total
@@ -14,18 +14,22 @@ Reescrita do conteúdo do site da Matriz (caracore-site) com foco em:
 
 
 VOCABULÁRIO APLICADO (DIRETRIZES)
----------------------------------
+
+---
+
 • "Assinatura" → "Licenciamento de Ativo"
 • "Online/Cloud" → "Soberania Local" ou "Infraestrutura Bunker"
 • "Simples/Fácil" → "Robusto/Estável"
 • "Inteligência Artificial" → "Cognição Local via Python" (ênfase: não sai da máquina)
 
 
-ARQUIVOS ALTERADOS E RESUMO DAS MUDANÇAS
-=========================================
+## ARQUIVOS ALTERADOS E RESUMO DAS MUDANÇAS
+
 
 1. index.html
---------------
+
+---
+
 • Título e meta description/keywords/OG/Twitter:
   - De: "Produtos e tecnologia com ROI mensurável" / "Startup em evolução..."
   - Para: "Bunker Digital — Soberania Local e ROI mensurável" / "Software como Bunker Digital: infraestrutura local, Java 21 + JavaFX..."
@@ -63,7 +67,9 @@ ARQUIVOS ALTERADOS E RESUMO DAS MUDANÇAS
 
 
 2. ecosistema.html
-------------------
+
+---
+
 • Título e description:
   - "Onde a Engenharia encontra o Negócio" → "Bunker Digital e Soberania Local".
   - Description: inclusão de "Infraestrutura local, licenciamento de ativo".
@@ -81,7 +87,9 @@ ARQUIVOS ALTERADOS E RESUMO DAS MUDANÇAS
 
 
 3. portfolio.html
------------------
+
+---
+
 • Título e meta:
   - "Portfólio de Projetos" → "Portfólio de Projetos — Bunker Digital".
   - Description e keywords: "Bunker Digital", "Soberania Local", "Java 21 + JavaFX", "licenciamento de ativo".
@@ -95,7 +103,9 @@ ARQUIVOS ALTERADOS E RESUMO DAS MUDANÇAS
 
 
 CONCEITOS REFORÇADOS EM TODO O CONTEÚDO
-----------------------------------------
+
+---
+
 • Bunker Digital / Infraestrutura Bunker: software que protege operação e dados no seu ambiente.
 • Soberania Local: dados e lógica no seu controle; internet opcional para sincronização.
 • Antifrágil (Taleb): sistemas que se beneficiam de choques (ex.: queda de internet não derruba o caixa).
@@ -107,7 +117,9 @@ CONCEITOS REFORÇADOS EM TODO O CONTEÚDO
 
 
 O QUE NÃO FOI ALTERADO (DE FORMA CONSISTENTE)
----------------------------------------------
+
+---
+
 • Estrutura HTML, IDs, classes e links.
 • Banner LGPD, rodapé, contato, horários, redes sociais.
 • Seção de planos (já oculta com d-none).
@@ -115,12 +127,13 @@ O QUE NÃO FOI ALTERADO (DE FORMA CONSISTENTE)
 
 
 PRÓXIMOS PASSOS SUGERIDOS
--------------------------
+
+---
+
 • Revisar páginas de delivery (PDV, RU, Ink, CSO, Área 51) para alinhar títulos e descrições ao Bunker Digital.
 • Revisar publicações (artigos) que citem "nuvem", "assinatura", "simples" ou "IA" no sentido genérico.
-• Considerar glosário na Wiki com definições oficiais: Bunker Digital, Soberania Local, Licenciamento de Ativo, Cognição Local via Python.
+## • Considerar glosário na Wiki com definições oficiais: Bunker Digital, Soberania Local, Licenciamento de Ativo, Cognição Local via Python.
 
 
-================================================================================
-Fim do feedback. Para dúvidas ou ajustes finos, use este documento como mapa das alterações.
-================================================================================
+
+## Fim do feedback. Para dúvidas ou ajustes finos, use este documento como mapa das alterações.

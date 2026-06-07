@@ -19,7 +19,7 @@ Este ficheiro é a **referência única** para “onde vive a verdade” sobre c
 - A **matriz** (`caracore.com.br`) transmite a **Cara Core Informática** institucional (home, portfólio, ecossistema, sala): resumo, contexto e CTAs para a loja — **sem** substituir a vitrine completa nem forçar um “template único” que apague a diferença entre produtos.
 - **Evitar:** copiar blocos inteiros da loja para a matriz como segunda fonte; **evitar:** reescrever todas as lojas num único estilo genérico “só para alinhar”; **evitar:** manter conteúdo comercial longo em `delivery/` em paralelo à loja.
 
-Quem definir o detalhe de layout por loja continua a ser o repositório `*-releases` e documentos de apoio (ex.: `COMPONENTES_LOJA.txt` no `caracore-site`, quando aplicável ao produto).
+Quem definir o detalhe de layout por loja continua a ser o repositório `*-releases` e documentos de apoio (ex.: `COMPONENTES_LOJA.md` no `caracore-site`, quando aplicável ao produto).
 
 ### 1.0c Os sites de cada produto **são** o produto (na web)
 

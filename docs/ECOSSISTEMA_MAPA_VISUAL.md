@@ -13,7 +13,7 @@ Recomendações de **mapeamento visual** para o site da matriz representar o eco
   - **Camada 2 — Produtos:** PDV, Minerador 4.0, Reino OIDC, Circuito Ferradura, Hub, Área 51, Seed.
   - **Camada 3 — Lojas online:** cada vitrine/releases (GitHub Pages).
 - **Conexões:** Linhas ou setas ligando cada produto à sua pasta **delivery/** (matriz) e à sua **loja** (-releases).
-- **Vantagem:** Fica imediato “onde está o quê” e “matriz ↔ loja” por produto. Alinha com ECOSYSTEM_LOJAS.txt e ECOSYSTEM_CARA_CORE.txt.
+- **Vantagem:** Fica imediato “onde está o quê” e “matriz ↔ loja” por produto. Alinha com ECOSYSTEM_LOJAS.md e ECOSYSTEM_CARA_CORE.md.
 
 ### Alternativas igualmente visuais
 

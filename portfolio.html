@@ -21,7 +21,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfólio — Ativos de Engenharia de Elite | Cara Core Informática — Bunker Digital</title>
-  <meta name="description" content="Portfólio Cara Core: PDV Desktop Java e Rust+Tauri, Ink Agenda, Hub, Reino OIDC, Circuito Ferradura. Bunker Digital, soberania local, releases documentadas.">
+  <meta name="description" content="Estudos de caso Cara Core: decisões de arquitetura, impacto operacional e entregas Bunker Digital. PDV offline-first, coexistência de stacks, validação técnica na era da IA.">
   <meta name="keywords" content="Portfólio, Bunker Digital, CaraCore PDV Desktop, PDV Rust Tauri, Tauri, Minerador 4.0, OIDC, Java 25, JavaFX, Cara Core Informática">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
@@ -30,7 +30,7 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Portfólio de Projetos | Cara Core Informática — Bunker Digital">
-  <meta property="og:description" content="Soluções com soberania local: Java 25 + JavaFX, cognição local via Python, educação e infraestrutura Bunker.">
+  <meta property="og:description" content="Decisões de engenharia com impacto mensurável: offline-first, coexistência PDV, critério humano sobre código assistido por IA.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.caracore.com.br/portfolio.html">
   <meta property="og:image" content="https://www.caracore.com.br/assets/images/logo.png">
@@ -55,8 +55,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="index.html#home">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#engenharia-b2b">Engenharia B2B</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#produtos">Produtos</a></li>
-        <li class="nav-item"><a class="nav-link" href="index.html#servicos">Consultoria</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#servicos">Operação</a></li>
         <li class="nav-item"><a class="nav-link active" href="portfolio.html">Portfólio</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#diferenciais">Antifragilidade</a></li>
@@ -112,10 +113,10 @@
           <i class="bi bi-folder-fill text-primary"></i> Portfólio — Ativos de Engenharia de Elite
         </h1>
         <p class="lead mb-3">
-          Soluções em <strong>Bunker Digital</strong>: desktop soberano, operação local e dados sob controle da empresa.
+          <strong>Decisões de engenharia e impacto operacional</strong> — não lista de linguagens. Cada ativo abaixo documenta o problema, o trade-off e o resultado; stacks aparecem como consequência da decisão.
         </p>
         <p class="text-muted mb-4 small">
-          Cada produto tem loja própria, release documentada e linguagem clara — executiva para gestores, acessível para quem está começando.
+          Prova de entrega da nossa engenharia B2B · Bunker Digital · releases documentadas · loja própria por produto.
         </p>
 
         <nav class="portfolio-toc" aria-label="Índice do portfólio">
@@ -167,6 +168,7 @@
           <div class="portfolio-toc-group mb-0">
             <div class="portfolio-toc-group-label">Visão geral</div>
             <div class="portfolio-toc-links">
+              <a href="#decisoes-engenharia" class="text-decoration-none"><span class="badge bg-success fs-6 px-3 py-2"><i class="bi bi-signpost-split"></i> Decisões e impacto</span></a>
               <a href="#filosofia-bunker" class="text-decoration-none"><span class="badge bg-dark fs-6 px-3 py-2"><i class="bi bi-shield-fill"></i> Filosofia Bunker</span></a>
               <a href="#portfolio-releases" class="text-decoration-none"><span class="badge bg-secondary fs-6 px-3 py-2"><i class="bi bi-clock-history"></i> Releases</span></a>
               <a href="#sobre-caracore" class="text-decoration-none"><span class="badge bg-primary fs-6 px-3 py-2"><i class="bi bi-building"></i> Sobre a Cara Core</span></a>
@@ -177,6 +179,55 @@
     </div>
   </div>
 </header>
+
+<!-- Decisões de engenharia — estudos de caso -->
+<section id="decisoes-engenharia" class="py-4">
+  <div class="container">
+    <div class="portfolio-cross-block portfolio-cases">
+      <h2><i class="bi bi-signpost-split text-success"></i> Decisões de engenharia — o que vendemos na era da IA</h2>
+      <p class="mb-4 text-muted">Saber sintaxe não diferencia mais ninguém. O que importa é <strong>qual problema você resolve</strong>, <strong>qual trade-off escolhe</strong> e <strong>qual resultado entrega</strong>. Três exemplos reais do ecossistema Cara Core.</p>
+      <div class="portfolio-case-grid">
+        <article class="portfolio-case-card">
+          <h3><i class="bi bi-diagram-2 text-primary"></i> Coexistência PDV — sem lock-in de stack</h3>
+          <dl>
+            <dt>Problema</dt>
+            <dd>Loja precisa de PDV desktop confiável, mas contextos divergem: multiplataforma maduro vs piloto ágil com transparência total ao lojista.</dd>
+            <dt>Decisão</dt>
+            <dd>Duas linhas do mesmo CaraCore PDV convivem — canal Java maduro <em>e</em> piloto Rust + Tauri. Nenhuma substitui a outra; escolha por cenário, não por moda.</dd>
+            <dt>Resultado</dt>
+            <dd>Cliente escolhe por operação (Linux/macOS/fiscal consolidado vs piloto Windows/MSI/transparência), sem reescrita forçada nem promessa de “nova geração”.</dd>
+          </dl>
+          <a href="#pdv-coexistencia" class="case-link">Ver comparação completa →</a>
+        </article>
+        <article class="portfolio-case-card">
+          <h3><i class="bi bi-wifi-off text-success"></i> Bunker offline-first — operação que não para</h3>
+          <dl>
+            <dt>Problema</dt>
+            <dd>Caixa, agenda e dados sensíveis não podem depender de link estável nem de nuvem total para funcionar.</dd>
+            <dt>Decisão</dt>
+            <dd>Arquitetura offline-first em localhost (SQLite, dados no ambiente do cliente); sincronização e “inteligência” só quando o cliente decidir — Infraestrutura Bunker.</dd>
+            <dt>Resultado</dt>
+            <dd>Venda e operação continuam sem internet; soberania local; PDV Java alinhado à Reforma Tributária 2026 — stack como meio, não como argumento de venda.</dd>
+          </dl>
+          <a href="#filosofia-bunker" class="case-link">Ver filosofia Bunker →</a>
+        </article>
+        <article class="portfolio-case-card">
+          <h3><i class="bi bi-search text-info"></i> Critério humano sobre código assistido por IA</h3>
+          <dl>
+            <dt>Problema</dt>
+            <dd>IA acelera escrita de código, mas não substitui auditoria, governança de login nem consistência de processo em ambientes regulados.</dd>
+            <dt>Decisão</dt>
+            <dd>Formação e ferramentas para <strong>leitura técnica</strong> e validação com método (Circuito Ferradura, Minerador ETE, trilha Reino OIDC) — cognição local, rastreabilidade.</dd>
+            <dt>Resultado</dt>
+            <dd>Repertório para validar entregas assistidas por IA, auditar identidade (OIDC) e manter disciplina de engenharia — decisão de alto nível, não lista de linguagens.</dd>
+          </dl>
+          <a href="#circuito-python" class="case-link">Ver Circuito Ferradura →</a>
+        </article>
+      </div>
+      <p class="mb-0 mt-4 small text-muted"><i class="bi bi-briefcase"></i> Contratar engenharia B2B: <a href="index.html#engenharia-b2b">alocação técnica dedicada ou consultoria por projeto</a> · <a href="index.html#contato">falar sobre alocação</a></p>
+    </div>
+  </div>
+</section>
 
 <!-- Filosofia Bunker — o que todos os produtos têm em comum -->
 <section id="filosofia-bunker" class="py-4">
@@ -381,7 +432,7 @@
           <small class="text-muted">
             <i class="bi bi-lock-fill"></i> Código-fonte privado | 
             <i class="bi bi-file-earmark-text"></i> Apresentação pública (GitHub Pages) |
-            <i class="bi bi-handshake"></i> Consultoria especializada disponível
+            <i class="bi bi-handshake"></i> Alocação técnica dedicada e consultoria por projeto (B2B)
           </small>
         </div>
       </div>
@@ -1544,10 +1595,10 @@ graph LR
     <div class="portfolio-about">
       <h2><i class="bi bi-building"></i> Sobre a Cara Core Informática</h2>
       <p>
-        A <strong>Cara Core Informática</strong> (CNPJ 23.969.028/0001-37) desenvolve ativos de engenharia desktop e educacionais com filosofia <strong>Bunker Digital</strong>: soberania local, operação offline e licenciamento claro.
+        A <strong>Cara Core Informática</strong> (CNPJ 23.969.028/0001-37) é consultoria boutique de engenharia de software B2B e desenvolve ativos desktop e educacionais com filosofia <strong>Bunker Digital</strong>: soberania local, operação offline e licenciamento claro.
       </p>
       <p class="mb-0">
-        Este portfólio é apresentação institucional. Cada produto tem loja, wiki e canal de download no subdomínio próprio — consultoria, implantação e suporte sob demanda.
+        Este portfólio documenta entregas e produtos próprios — prova de capacidade técnica. Cada produto tem loja, wiki e canal de download no subdomínio próprio. <a href="index.html#engenharia-b2b">Engenharia B2B</a>, implantação e suporte sob demanda.
       </p>
       <div class="portfolio-about-grid">
         <div class="portfolio-about-item">
@@ -1556,7 +1607,7 @@ graph LR
         </div>
         <div class="portfolio-about-item">
           <strong>Modelo comercial</strong>
-          Ativos proprietários · Free/Premium conforme produto
+          Engenharia B2B · alocação técnica · ativos proprietários
         </div>
         <div class="portfolio-about-item">
           <strong>Ecossistema</strong>

@@ -3,7 +3,9 @@
 Referência para editar e publicar **caracore.com.br** sem duplicar conteúdo das lojas.
 
 **Repo:** `caracore-site` · **Domínio:** `www.caracore.com.br`  
-**Ecossistema (retomada):** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md)
+**Retomada:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) · [DILEMA.md](DILEMA.md)
+
+**Frase-guia (PT):** *Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente.*
 
 ---
 
@@ -11,10 +13,12 @@ Referência para editar e publicar **caracore.com.br** sem duplicar conteúdo da
 
 | É | Não é |
 |---|--------|
-| Home, portfólio, ecossistema, políticas | Vitrine completa de cada produto |
+| Home B2B, portfólio, ecossistema, políticas | Vitrine completa de cada produto |
+| Prova de entrega (produtos) + engenharia B2B | Lista de stacks como argumento de venda |
 | CTAs para subdomínios oficiais | Segunda cópia de wiki/download das lojas |
 | Redirects `/delivery/*` → lojas | Canal principal do PDV Rust (use rust-pdv) |
-| Área 51 (`/secure/`) | Sala Cara Core (canónica: tools.caracore.com.br/sala) |
+| Área 51 (`/secure/`) | Sala (canónica: tools.caracore.com.br/sala) |
+| Variantes `aligned/en/` · `aligned/it/` | Tradução literal de “PJ” |
 
 Regra de ouro: [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.md).
 
@@ -24,11 +28,22 @@ Regra de ouro: [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.
 
 | Ficheiro | Âncoras / notas |
 |----------|-----------------|
-| `index.html` | Cards produtos; links para lojas |
-| `portfolio.html` | Índice por categoria; ver secção 3 |
-| `ecosistema.html` | Tabela de produtos e URLs |
+| `index.html` | `#engenharia-b2b` · `#produtos` · `#operacao` · `#contato` — ver §2.1 |
+| `portfolio.html` | `#decisoes-engenharia` · categorias — ver §3 |
+| `ecosistema.html` | Mapa de produtos e URLs |
+| `aligned/en/` · `aligned/it/` | B2B engineering — mesma frase-guia adaptada |
 | `404.html` | Erro amigável |
-| `aligned/` | Variantes internacionais (en, it) |
+| `secure/` | Área 51 OIDC |
+
+### 2.1 Home PT — ordem de secções
+
+1. Hero (B2B + frase-guia)  
+2. `#engenharia-b2b` — três pilares de entrega  
+3. `#diferenciais` — antifragilidade  
+4. `#produtos` — Decisão / Stack; link para cases  
+5. `#operacao` — serviços complementares  
+6. `#sobre` — **Nossa Operação** (boutique)  
+7. `#contato`
 
 ---
 
@@ -37,12 +52,13 @@ Regra de ouro: [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.
 ### Fluxo de leitura
 
 1. Cabeçalho + **índice categorizado** (`nav.portfolio-toc`)
-2. **Filosofia Bunker** (`#filosofia-bunker`)
-3. **Coexistência PDV** (`#pdv-coexistencia`) — Java vs Rust, tabela “quando escolher”
-4. Produtos por **divisores de categoria** (`.portfolio-category-divider`)
-5. **Releases e marcos** (`#portfolio-releases`)
-6. **Sobre a Cara Core** (`#sobre-caracore`)
-7. Contacto
+2. **Decisões e impacto** (`#decisoes-engenharia`) — 3 mini cases (era IA)
+3. **Filosofia Bunker** (`#filosofia-bunker`)
+4. **Coexistência PDV** (`#pdv-coexistencia`)
+5. Produtos por **divisores de categoria**
+6. **Releases e marcos** (`#portfolio-releases`)
+7. **Sobre a Cara Core** (`#sobre-caracore`)
+8. Contacto
 
 ### Categorias no índice
 
@@ -52,12 +68,6 @@ Regra de ouro: [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.
 - Infraestrutura — Área 51, Seed, Sala Cara Core (Mkt)
 - Nicho — Minerador 4.0, RU Soberano
 
-### Blocos por produto
-
-- `.block-executive` — visão gestor
-- `.block-leigos` — linguagem acessível
-- CTAs → **loja** do produto, não `/delivery/`
-
 Detalhes: [PORTFOLIO_README.md](PORTFOLIO_README.md).
 
 ---
@@ -66,51 +76,43 @@ Detalhes: [PORTFOLIO_README.md](PORTFOLIO_README.md).
 
 | | Java | Rust + Tauri 2 |
 |---|------|----------------|
-| Loja / vitrine | pdv.caracore.com.br | **rust-pdv.caracore.com.br** |
-| Download | loja Java | **GitHub Releases** (`caracore-rust-pdv-releases`) |
-| Release | v3.1.2-free | v0.1.2 |
+| Loja / vitrine | pdv.caracore.com.br | rust-pdv.caracore.com.br |
+| Download | loja Java | GitHub Releases |
+| Release | **v3.2.2-free** | **v0.1.2** |
 | Portfólio | `#caracore-pdv` | `#caracore-pdv-rust` |
 
-Evitar: “PDV v3” sozinho, “substitui”, “nova geração”. Usar `#pdv-coexistencia` em vez de repetir comparação em cada bloco.
+Evitar: “PDV v3” sozinho, “substitui”, “nova geração”. Comparação única em `#pdv-coexistencia`.
 
 ---
 
 ## 5. Redirects (`_redirects` + stubs GitHub Pages)
 
-**Produção actual:** GitHub Pages (`www.caracore.com.br`) — não aplica `_redirects` nem `vercel.json`.
+**Produção actual:** GitHub Pages — não aplica `_redirects` sozinho.
 
-- **`delivery/{produto}/`** — apenas HTML mínimo de redirect (meta refresh + `location.replace`) para a loja canónica; sem vitrine duplicada.
-- **`_redirects`** / **`vercel.json`** — mesma lógica para Netlify/Vercel se o hospedeiro mudar.
+- **`delivery/{produto}/`** — HTML mínimo → loja canónica
+- **`_redirects`** / **`vercel.json`** — Netlify/Vercel
 
-Exemplos:
-
-```text
-/delivery/pdv-rust/   →  https://rust-pdv.caracore.com.br/
-/delivery/pdv/        →  https://pdv.caracore.com.br/
-/delivery/sala/       →  https://tools.caracore.com.br/sala/
-```
-
-Mapa completo: [MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md](MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md).
+Mapa: [MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md](MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md).
 
 ---
 
 ## 6. Publicação
 
-1. Revisar [CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md](CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md)
-2. CTAs novos → subdomínio da loja
-3. `sitemap.xml` / canonical se página nova indexável
-4. Smoke: home → portfólio → ecossistema → uma loja
-5. Testar redirect legado se tocado em `_redirects`
+1. [CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md](CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md)
+2. [VALIDACAO_LOJAS_MATRIZ.md](VALIDACAO_LOJAS_MATRIZ.md) se links matriz ↔ loja mudaram
+3. Smoke: home → `#engenharia-b2b` → portfólio `#decisoes-engenharia` → loja
+4. Validar `aligned/en/` e `aligned/it/` se copy B2B mudou
 
 ---
 
-## 7. Ficheiros de referência na raiz
+## 7. Documentos operacionais (`docs/`)
 
 | Ficheiro | Uso |
 |----------|-----|
-| `ECOSYSTEM_CARA_CORE.txt` | Mapa de repos |
-| `ECOSYSTEM_LOJAS.txt` | URLs lojas |
-| `COMPONENTES_LOJA.txt` | Padrão vitrine (nos repos *-releases) |
+| [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) | Mapa de repos |
+| [ECOSYSTEM_LOJAS.md](ECOSYSTEM_LOJAS.md) | URLs lojas |
+| [COMPONENTES_LOJA.md](COMPONENTES_LOJA.md) | Padrão vitrine |
+| [STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md](STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md) | Estratégia |
 | `.cursor/rules/project-memory.mdc` | Memória Cursor |
 
 ---
@@ -120,7 +122,7 @@ Mapa completo: [MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md](MAPA_ROTAS_DELIVERY_SUBDOMIN
 | Tipo | Onde |
 |------|------|
 | Texto comercial longo, download, wiki | Repo `caracore-*-releases` |
-| Resumo + CTA institucional | `portfolio.html`, `ecosistema.html`, `index.html` |
-| PDV Rust (sem SEED na loja) | `caracore-pdv-rust-releases` |
+| Resumo + CTA + case de decisão | `portfolio.html`, `ecosistema.html`, `index.html` |
+| Copy B2B institucional | `index.html`, `aligned/` |
 
 Não recriar `delivery/pdv-rust/` na matriz.

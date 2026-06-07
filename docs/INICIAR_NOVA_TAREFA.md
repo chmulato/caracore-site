@@ -3,7 +3,7 @@
 Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 3–5 minutos antes de abrir código.
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
-**Atualizado:** 2026-06-02  
+**Atualizado:** 2026-06-07  
 **Workspace típico:** `D:\dev\` (repos irmãos)
 
 ---
@@ -12,12 +12,13 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Passo | Ação |
 |-------|------|
-| 1 | Abrir `caracore-site/docs/ECOSYSTEM_MEMORIA.md` (visão atual) |
+| 1 | Abrir `caracore-site/docs/ECOSYSTEM_MEMORIA.md` (visão actual) |
+| 1b | Posicionamento B2B: `docs/DILEMA.md` · frase-guia em hero e `#engenharia-b2b` |
 | 2 | Abrir `.cursor/rules/project-memory.mdc` **do repo onde vai trabalhar** |
 | 3 | Confirmar **qual camada** edita: matriz · loja · oficina · wiki · retrô · releases GitHub |
 | 4 | **Não** usar `/delivery/` nem `wiki.caracore.com.br/portfolio.html` em CTAs novos |
 
-**Portfólio institucional:** sempre `https://www.caracore.com.br/portfolio.html` (âncoras `#caracore-pdv`, `#caracore-pdv-rust`, `#pdv-coexistencia`).
+**Portfólio institucional:** sempre `https://www.caracore.com.br/portfolio.html` (âncoras `#decisoes-engenharia`, `#caracore-pdv`, `#caracore-pdv-rust`, `#pdv-coexistencia`).
 
 ---
 
@@ -27,6 +28,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Ler | Ficheiro |
 |-----|----------|
+| Posicionamento | `docs/DILEMA.md` |
 | Operação | `docs/SITE_MATRIZ.md` |
 | Portfólio | `docs/PORTFOLIO_README.md` · `portfolio.html` |
 | Pré-deploy | `docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md` |
@@ -40,7 +42,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Java (`caracore-pdv-releases`)
 
 | URL | https://pdv.caracore.com.br/ |
-| Canal | v3.1.2-free |
+| Canal | v3.2.2-free |
 | Oficina | `caracore-pdv` |
 | Matriz | `#caracore-pdv` |
 
@@ -128,7 +130,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 ## 4. Ao fechar a tarefa (checklist mínimo)
 
 - [ ] Versão/copy alinhados entre **oficina ↔ loja ↔ matriz ↔ wiki** (se tocou produto)
-- [ ] `VALIDACAO_LOJAS_MATRIZ.txt` (se mudou links matriz/loja)
+- [ ] `VALIDACAO_LOJAS_MATRIZ.md` (se mudou links matriz/loja)
 - [ ] Oficina Rust: `python tools/sync_docs_status.py --full` se mudança relevante
 - [ ] Atualizar `ECOSYSTEM_MEMORIA.md` se mudou **regra de ecossistema** (repo, URL, release)
 - [ ] Atualizar `project-memory.mdc` do repo trabalhado
@@ -138,7 +140,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 
 ## 5. Armadilhas que custam tempo
 
-1. **Tratar Rust como substituto do Java** — são linhas paralelas (v3.1.x ≠ v0.1.x).
+1. **Tratar Rust como substituto do Java** — são linhas paralelas (v3.2.x ≠ v0.1.x).
 2. **Colocar download só na loja Rust** — artefatos oficiais ficam no **GitHub Releases**.
 3. **Duplicar vitrine longa na matriz** — resumo + CTA para loja.
 4. **Esquecer push da loja** após mudar `caracore-pdv-rust-releases` (Pages demora minutos).
@@ -152,9 +154,9 @@ Redirect legado: `docs/portfolio.html` → matriz.
 |-------------|-----------|
 | Visão 30 s | `ECOSYSTEM_MEMORIA.md` |
 | Esta página (fluxos) | `INICIAR_NOVA_TAREFA.md` |
-| Mapa repos | `../ECOSYSTEM_CARA_CORE.txt` |
-| URLs lojas | `../ECOSYSTEM_LOJAS.txt` |
-| Estratégia | `../STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt` |
+| Mapa repos | `ECOSYSTEM_CARA_CORE.md` |
+| URLs lojas | `ECOSYSTEM_LOJAS.md` |
+| Estratégia | `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md` |
 | Índice docs matriz | `INDEX.md` |
 
 ---

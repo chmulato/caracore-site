@@ -1,11 +1,16 @@
-﻿COMPONENTES PADRAO DAS LOJAS (VITRINES GITHUB PAGES)
-====================================================
+# Componentes padrão das lojas (vitrines GitHub Pages)
 
 Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de componentes, conforme o tipo de produto. Data: 31/05/2026.
 
--------------------------------------------------------------------------------
-1. COMPONENTES OBRIGATORIOS EM TODA LOJA
--------------------------------------------------------------------------------
+
+---
+
+
+## 1. COMPONENTES OBRIGATORIOS EM TODA LOJA
+
+
+---
+
 
   - index.html .............. Pagina principal (hero, oferta, CTAs, links)
   - canal-feedback.html ..... Contato: e-mail, WhatsApp, Telegram (nao atendemos ligacoes)
@@ -16,9 +21,15 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   - Espelho interno ......... mirror-delivery.html (Ink, RU, MKT, Reino OIDC) — documento de alinhamento
   - Base URL ................. Quando a vitrine esta em docs/, usar o subdominio oficial da loja (ex.: <base href="https://oidc.caracore.com.br/">)
 
--------------------------------------------------------------------------------
-2. COMPONENTES POR TIPO DE PRODUTO
--------------------------------------------------------------------------------
+
+---
+
+
+## 2. COMPONENTES POR TIPO DE PRODUTO
+
+
+---
+
 
   Produto com download (EXE/WAR/instalador):
     - download.html ......... Link para releases/latest ou Degustacao + Releases
@@ -36,16 +47,22 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   Produto com portal de controle / conteudo extra:
     - portal-controle.html .. Ou conteudo-free.html, mapas, personagens, etc. conforme o produto
 
--------------------------------------------------------------------------------
-3. CHECKLIST POR LOJA (MATRIZ = portfólio; LOJA = repo *-releases/docs/)
--------------------------------------------------------------------------------
+
+---
+
+
+## 3. CHECKLIST POR LOJA (MATRIZ = portfólio; LOJA = repo *-releases/docs/)
+
+
+---
+
 
   CARA CORE PDV DESKTOP (JAVA)
     Matriz: portfolio.html#caracore-pdv · #pdv-coexistencia
     Oficina: caracore-pdv/
     Loja:   caracore-pdv-releases/docs/
     index  download  tecnologia  canal-feedback  wiki/  .nojekyll
-    Observacao: oferta madura multi-plataforma; canal v3.1.2-free. Wiki Fiscal e trilhas comerciais na loja.
+    Observacao: oferta madura multi-plataforma; canal v3.2.2-free. Wiki Fiscal e trilhas comerciais na loja.
 
   CARA CORE PDV DESKTOP (RUST + TAURI)
     Portfólio: caracore-site/portfolio.html#caracore-pdv-rust (resumo institucional)
@@ -107,9 +124,15 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     Oficina: caracore-area51 (baseline 0.1.0-dev)
     Observacao: produto licenciado (titularidade GF); entrega via licenca — nao download publico. Suporte Area 51 = servico contratado (niveis 2-3).
 
--------------------------------------------------------------------------------
-4. REGRAS DE ALINHAMENTO
--------------------------------------------------------------------------------
+
+---
+
+
+## 4. REGRAS DE ALINHAMENTO
+
+
+---
+
 
   - Toda loja deve ter no minimo: index, canal-feedback, link para matriz e portfolio.
   - Breadcrumbs e topbars devem conter apenas navegacao util; evitar repetir dominio, nome da loja e pagina atual quando isso nao ajuda o usuario.
@@ -118,7 +141,6 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   - Links na vitrine: usar URL absoluta para portfolio (https://www.caracore.com.br/portfolio.html) e, quando a vitrine esta em docs/, usar <base href> para que links relativos entre paginas da loja funcionem.
   - Scripts de publicacao (push/sync) devem copiar da matriz para a pasta docs/ da loja e, quando necessario, pos-processar HTML (substituir ../../portfolio por URL absoluta e garantir base href).
 
-Referencias: VALIDACAO_LOJAS_MATRIZ.txt, ECOSYSTEM_LOJAS.txt e mirror-delivery.html (Ink, RU, MKT, Reino OIDC).
+Referencias: VALIDACAO_LOJAS_MATRIZ.md, ECOSYSTEM_LOJAS.md e mirror-delivery.html (Ink, RU, MKT, Reino OIDC).
 
 Cara Core Informatica - Uso interno.
-

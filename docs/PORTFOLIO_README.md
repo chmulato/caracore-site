@@ -15,6 +15,7 @@ Apresentação **institucional** dos ativos Cara Core: resumo executivo, bloco p
 | Secção | ID | Descrição |
 |--------|-----|-----------|
 | Cabeçalho | `#portfolio-header` | Título + índice categorizado |
+| Decisões e impacto | `#decisoes-engenharia` | 3 mini cases (PDV coexistência, Bunker offline, critério humano IA) + CTA B2B |
 | Filosofia Bunker | `#filosofia-bunker` | Soberania, offline, SQLite, loja própria |
 | Coexistência PDV | `#pdv-coexistencia` | Java vs Rust + tabela quando escolher |
 | Varejo | — | PDV Java, PDV Rust, Ink Agenda |
@@ -25,7 +26,7 @@ Apresentação **institucional** dos ativos Cara Core: resumo executivo, bloco p
 | Garagem | — | CSO, RU Soberano |
 | Releases | `#portfolio-releases` | Grid versões + links download |
 | Sobre | `#sobre-caracore` | Identidade + ecossistema |
-| Contacto | — | CTA para `index.html#contato` |
+| Contacto | — | CTA para `index.html#contato` e `index.html#engenharia-b2b` |
 
 O **índice no topo** agrupa por categoria (navegação lógica); a ordem no scroll segue divisores `.portfolio-category-divider`.
 
@@ -53,6 +54,7 @@ PDV Rust — bloco leigos remete a `#pdv-coexistencia` (sem repetir tabela).
 | Classe | Uso |
 |--------|-----|
 | `.portfolio-toc` | Índice categorizado no header |
+| `.portfolio-cases` | Bloco `#decisoes-engenharia` (`.portfolio-case-grid`, `.portfolio-case-card`) |
 | `.portfolio-bunker` | Bloco filosofia |
 | `.portfolio-pdv-coexistence` | Comparativo Java/Rust |
 | `.pdv-compare-card` | Cards `.java` e `.rust` |
@@ -69,7 +71,7 @@ PDV Rust — bloco leigos remete a `#pdv-coexistencia` (sem repetir tabela).
 1. Adicionar `<section id="...">` com `.project-card`
 2. Entrada no `.portfolio-toc` (categoria correcta)
 3. Item em `#portfolio-releases` se houver release pública
-4. Actualizar `ecosistema.html` e `ECOSYSTEM_LOJAS.txt`
+4. Actualizar `ecosistema.html` e `ECOSYSTEM_LOJAS.md`
 5. CTA → subdomínio da loja (nunca `/delivery/` como destino principal)
 
 ### Alterar PDV Rust

@@ -9,9 +9,9 @@
   <!-- SEO Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contatti | Cara Core | Consulenza Sistemi Legacy</title>
-  <meta name="description" content="Contatta Cara Core tramite canali ufficiali per modernizzazione sistemi legacy, integrazione applicativa e audit architetturali.">
-  <meta name="keywords" content="contatti, consulente sistemi legacy, consulenza software, integrazione sistemi, audit architetturale">
+  <title>Contatti | Cara Core | Ingegneria Software B2B</title>
+  <meta name="description" content="Contatta Cara Core: allocazione tecnica dedicata o consulenza per progetto — modello B2B, codice trasparente nell'ambiente del cliente.">
+  <meta name="keywords" content="contatti, ingegneria software B2B, staff augmentation, contratto intersocietario, sistemi legacy, integrazione, audit architetturale">
   
   <!-- Language Alternates -->
   <link rel="alternate" hreflang="en" href="../en/contact.html">
@@ -104,7 +104,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="services.html">Servizi</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">Chi Sono</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">Chi Siamo</a></li>
           <li class="nav-item"><a class="nav-link" href="articles.html">Articoli</a></li>
           <li class="nav-item"><a class="nav-link active" href="contact.html" aria-current="page">Contatti</a></li>
           <li class="nav-item">
@@ -149,7 +149,7 @@
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
           <h1 id="contact-heading" class="display-4 fw-bold mb-4">Contatti</h1>
-          <p class="lead">Disponibile per progetti di consulenza da remoto e on-site su richiesta</p>
+          <p class="lead"><strong>Allocazione tecnica dedicata o consulenza per progetto — modello B2B, codice trasparente nell'ambiente del cliente.</strong> Remoto e on-site su richiesta.</p>
         </div>
       </div>
     </div>
@@ -199,7 +199,8 @@
               <div class="mb-3">
                 <label for="service" class="form-label">Interesse Servizio</label>
                 <select class="form-select" id="service" name="service" aria-describedby="service-help">
-                  <option value="">Seleziona tipo di progetto...</option>
+                  <option value="">Seleziona tipo di incarico...</option>
+                  <option value="staff-augmentation">Allocazione Dedicata o Consulenza per Progetto (B2B)</option>
                   <option value="legacy-migration">Modernizzazione Legacy (migrazione graduale)</option>
                   <option value="integration-api">Integrazione sistemi / API</option>
                   <option value="compliance-validation">Supporto compliance / validazione</option>
@@ -312,8 +313,9 @@
             <div class="contact-info-item">
               <i class="bi bi-building" aria-hidden="true"></i>
               <div>
-                <strong>Team Operativo</strong><br>
-                Cara Core
+                <strong>La Nostra Operazione</strong><br>
+                Cara Core Informática · boutique B2B<br>
+                Allocazione tecnica dedicata o consulenza per progetto — modello B2B, codice trasparente nell'ambiente del cliente.
               </div>
             </div>
             
@@ -377,7 +379,8 @@
       <div class="row">
         <div class="col-md-6 mb-4">
           <h5>Cara Core</h5>
-          <p>Consulente Sistemi Legacy<br>
+          <p>Boutique di ingegneria software B2B<br>
+          Allocazione tecnica dedicata o consulenza per progetto — modello B2B, codice trasparente nell'ambiente del cliente.<br>
           Remoto | on-site su richiesta</p>
         </div>
         <div class="col-md-6 text-md-end mb-4">
@@ -385,7 +388,7 @@
           <ul class="list-unstyled">
             <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Servizi</a></li>
-            <li><a href="about.html">Chi Sono</a></li>
+            <li><a href="about.html">Chi Siamo</a></li>
             <li><a href="articles.html">Articoli</a></li>
             <li><a href="contact.html">Contatti</a></li>
           </ul>
@@ -471,6 +474,7 @@
       // Function to format message
       function formatMessage(data) {
         const serviceNames = {
+          'staff-augmentation': 'Allocazione Dedicata o Consulenza per Progetto (B2B)',
           'legacy-migration': 'Modernizzazione Legacy (migrazione graduale)',
           'integration-api': 'Integrazione sistemi / API',
           'compliance-validation': 'Supporto compliance / validazione',
@@ -487,7 +491,7 @@
           'other': 'Altro'
         };
         
-        return `*Richiesta Consulenza*\n\n` +
+        return `*Richiesta Ingegneria B2B*\n\n` +
                `*Nome:* ${data.firstName} ${data.lastName}\n` +
                `*Cellulare:* ${data.mobile}\n` +
                `*Azienda:* ${data.company || 'N/A'}\n` +
@@ -513,7 +517,7 @@
         
         const data = getFormData();
         const message = formatMessage(data);
-        const whatsappUrl = `mailto:suporte@caracore.com.br?subject=${encodeURIComponent('Richiesta Consulenza')}&body=${encodeURIComponent(message)}`;
+        const whatsappUrl = `mailto:suporte@caracore.com.br?subject=${encodeURIComponent('Richiesta Ingegneria B2B')}&body=${encodeURIComponent(message)}`;
         
         // Track WhatsApp click (anonymized)
         if (window.gtag) {

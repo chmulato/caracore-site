@@ -330,6 +330,63 @@
   color: #333;
 }
 
+/* Estudos de caso — decisão e impacto (era IA) */
+.portfolio-cases {
+  background: linear-gradient(135deg, #f0f7f4 0%, #eef5fb 100%);
+  border: 1px solid rgba(25, 135, 84, 0.15);
+}
+
+.portfolio-cases h2 {
+  font-size: 1.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-case-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.portfolio-case-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.35rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  height: 100%;
+}
+
+.portfolio-case-card h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.75rem;
+  color: #1e3a5f;
+}
+
+.portfolio-case-card dl {
+  margin-bottom: 0;
+  font-size: 0.92rem;
+}
+
+.portfolio-case-card dt {
+  font-weight: 600;
+  color: #495057;
+  margin-top: 0.65rem;
+}
+
+.portfolio-case-card dt:first-child {
+  margin-top: 0;
+}
+
+.portfolio-case-card dd {
+  margin-bottom: 0;
+  color: #555;
+}
+
+.portfolio-case-card .case-link {
+  margin-top: 0.85rem;
+  display: inline-block;
+  font-size: 0.9rem;
+}
+
 .portfolio-pdv-coexistence {
   background: #fff;
   border: 1px solid rgba(11, 58, 102, 0.12);

@@ -9,9 +9,9 @@
   <!-- SEO Meta Tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Cara Core | Legacy Systems Consulting</title>
-  <meta name="description" content="Contact Cara Core through official channels for legacy systems modernization, integration, and architecture reviews.">
-  <meta name="keywords" content="contact, legacy systems consultant, software consulting, integration, architecture review">
+  <title>Contact | Cara Core | B2B Software Engineering</title>
+  <meta name="description" content="Contact Cara Core: dedicated staff augmentation or project-based consulting — B2B model, code transparent in your environment.">
+  <meta name="keywords" content="contact, B2B software engineering, staff augmentation, corp-to-corp, legacy systems, integration, architecture review">
   
   <!-- Language Alternates -->
   <link rel="alternate" hreflang="en" href="../en/contact.html">
@@ -149,7 +149,7 @@
       <div class="row">
         <div class="col-lg-8 mx-auto text-center">
           <h1 id="contact-heading" class="display-4 fw-bold mb-4">Get in Touch</h1>
-          <p class="lead">Available for consulting projects remotely and on-site by arrangement</p>
+          <p class="lead"><strong>Dedicated staff augmentation or project-based consulting — B2B model, code transparent in your environment.</strong> Remote and on-site by arrangement.</p>
         </div>
       </div>
     </div>
@@ -199,7 +199,8 @@
               <div class="mb-3">
                 <label for="service" class="form-label">Service Interest</label>
                 <select class="form-select" id="service" name="service" aria-describedby="service-help">
-                  <option value="">Select project type...</option>
+                  <option value="">Select engagement type...</option>
+                  <option value="staff-augmentation">Dedicated Staff Augmentation or Project Consulting (B2B)</option>
                   <option value="legacy-migration">Legacy Modernization (Controlled Migration)</option>
                   <option value="integration-api">Integration / API and System Interoperability</option>
                   <option value="compliance-validation">Compliance / Validation Support</option>
@@ -312,8 +313,9 @@
             <div class="contact-info-item">
               <i class="bi bi-building" aria-hidden="true"></i>
               <div>
-                <strong>Operating Team</strong><br>
-                Cara Core
+                <strong>Our Operation</strong><br>
+                Cara Core Informática · B2B engineering boutique<br>
+                Dedicated staff augmentation or project-based consulting — B2B model, code transparent in your environment.
               </div>
             </div>
             
@@ -377,7 +379,8 @@
       <div class="row">
         <div class="col-md-6 mb-4">
           <h5>Cara Core</h5>
-          <p>Legacy Systems Consultant<br>
+          <p>B2B software engineering boutique<br>
+          Dedicated staff augmentation or project-based consulting — B2B model, code transparent in your environment.<br>
           Remote | on-site by arrangement</p>
         </div>
         <div class="col-md-6 text-md-end mb-4">
@@ -471,6 +474,7 @@
       // Function to format message
       function formatMessage(data) {
         const serviceNames = {
+          'staff-augmentation': 'Dedicated Staff Augmentation or Project Consulting (B2B)',
           'legacy-migration': 'Legacy Modernization (Controlled Migration)',
           'integration-api': 'Integration / API and System Interoperability',
           'compliance-validation': 'Compliance / Validation Support',
@@ -487,7 +491,7 @@
           'other': 'Other'
         };
         
-        return `*Consulting Inquiry*\n\n` +
+        return `*B2B Engineering Inquiry*\n\n` +
                `*Name:* ${data.firstName} ${data.lastName}\n` +
                `*Mobile:* ${data.mobile}\n` +
                `*Company:* ${data.company || 'N/A'}\n` +
@@ -513,7 +517,7 @@
         
         const data = getFormData();
         const message = formatMessage(data);
-        const whatsappUrl = `mailto:suporte@caracore.com.br?subject=${encodeURIComponent('Consulting Inquiry')}&body=${encodeURIComponent(message)}`;
+        const whatsappUrl = `mailto:suporte@caracore.com.br?subject=${encodeURIComponent('B2B Engineering Inquiry')}&body=${encodeURIComponent(message)}`;
         
         // Track WhatsApp click (anonymized)
         if (window.gtag) {

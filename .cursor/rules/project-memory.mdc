@@ -1,17 +1,27 @@
 ﻿---
-description: Memória do site Cara Core — matriz, lojas, releases GitHub, ecossistema; PDV Rust v0.1.2
+description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.2-free · PDV Rust v0.1.2
 alwaysApply: true
 ---
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-06-02
+**Atualizado:** 2026-06-07
+
+## Posicionamento B2B (copy comercial)
+
+**Frase-guia PT:** Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente.
+
+- Home: `#engenharia-b2b` · nav **Engenharia B2B** · **Nossa Operação** (não “Nossa Equipe”)
+- Portfólio: `#decisoes-engenharia` (cases) antes de produtos
+- EN/IT: `aligned/en/`, `aligned/it/` — Decision areas / Giudizio di ingegneria
+- Documento estratégico: `docs/DILEMA.md`
 
 ## Ambientes utilizados hoje
 
 | Camada | Repositório | Papel | URL / destino canónico |
 |--------|-------------|-------|------------------------|
-| **Matriz** | caracore-site | Site institucional (este repo) | https://www.caracore.com.br/ · portfólio · ecossistema |
+| **Matriz** | caracore-site | Site institucional B2B (este repo) | https://www.caracore.com.br/ · `#engenharia-b2b` · portfólio · ecossistema |
+| **Matriz EN/IT** | caracore-site `aligned/` | B2B engineering internacional | `/aligned/en/` · `/aligned/it/` |
 | **Wiki** | caracore-wiki | Trilhas e hub PDV | https://wiki.caracore.com.br/ |
 | **Retrô** | caracore-retro | Artigos LinkedIn / editorial | https://retro.caracore.com.br/ |
 | **Sala** | caracore-site `sala/` + caracore-mkt | Campanhas, manuais rede | https://tools.caracore.com.br/sala/ |
@@ -35,15 +45,16 @@ alwaysApply: true
 - `delivery/` neste repo = stubs HTML (redirect) + `_redirects` / `vercel.json`.
 - Matriz não duplica vitrine longa; portfólio resume e aponta para loja/releases.
 
-## Documentos de ecossistema (raiz deste repo)
+## Documentos de ecossistema (`docs/` neste repo)
 
-- **ECOSYSTEM_CARA_CORE.txt** — mapa de repositórios e papéis.
-- **ECOSYSTEM_LOJAS.txt** — URLs canónicas (pdv + rust-pdv + demais).
-- **COMPONENTES_LOJA.txt** — molde de páginas por loja.
-- **VALIDACAO_LOJAS_MATRIZ.txt** — checklist alinhamento portfólio ↔ lojas.
-- **VALIDACAO_NEGOCIO.txt** — validação comercial.
-- **STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt** — resumo executivo.
-- **docs/memoria-projeto.txt** — memória resumida da matriz.
+- **docs/ECOSYSTEM_CARA_CORE.md** — mapa de repositórios e papéis.
+- **docs/ECOSYSTEM_LOJAS.md** — URLs canónicas (pdv + rust-pdv + demais).
+- **docs/COMPONENTES_LOJA.md** — molde de páginas por loja.
+- **docs/VALIDACAO_LOJAS_MATRIZ.md** — checklist alinhamento portfólio ↔ lojas.
+- **docs/VALIDACAO_NEGOCIO.md** — validação comercial.
+- **docs/STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md** — resumo executivo.
+- **docs/DILEMA.md** — posicionamento B2B e status de alinhamento.
+- **docs/MEMORIA_DO_PROJETO.md** — memória resumida da matriz.
 - **docs/ECOSYSTEM_MEMORIA.md** — índice único para retomada.
 - **docs/SITE_MATRIZ.md** — guia operacional (portfólio, redirects, publicação).
 
@@ -51,8 +62,8 @@ alwaysApply: true
 
 ## PDV Desktop Java (oferta madura)
 
-- **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia`
-- **Loja:** https://pdv.caracore.com.br/ — canal **v3.1.2-free**
+- **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia` · `#decisoes-engenharia`
+- **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.2-free**
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
@@ -66,14 +77,14 @@ alwaysApply: true
 - **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar)
 - **Release v0.1.2:** Windows (MSI/NSIS/ZIP pt-BR); edição gratuita até 100 vendas; transparência em rust-pdv; SHA256 + manifesto no GitHub
 - **Mensagem:** dois **PDVs Desktop** do mesmo CaraCore PDV — **nenhuma substitui a outra**
-  - **Java:** canal **v3.1.2-free** · Win/Linux/macOS maduro
+  - **Java:** canal **v3.2.2-free** · Win/Linux/macOS maduro
   - **Rust:** faixa **v0.1.x** · piloto assistido
-  - **V3 negócio (PME, PIX Split 2027):** comum às duas linhas — ≠ canal Java v3.1.x ≠ release Rust v0.1.x
+  - **V3 negócio (PME, PIX Split 2027):** comum às duas linhas — ≠ canal Java v3.2.x ≠ release Rust v0.1.x
   - **Evitar:** "PDV v3" sozinho, "substitui", "reescrito", "nova geração"
 
 ## Validação matriz ↔ lojas
 
-- **VALIDACAO_LOJAS_MATRIZ.txt** — PDV Rust: CTAs matriz → releases GitHub; loja sem SEED na vitrine
+- **VALIDACAO_LOJAS_MATRIZ.md** — PDV Rust: CTAs matriz → releases GitHub; loja sem SEED na vitrine
 - **docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md** — pré-deploy
 - **Footers lojas:** `portfolio.html#{âncora}`
 - **mirror-delivery.html:** Ink, RU, MKT, Reino OIDC

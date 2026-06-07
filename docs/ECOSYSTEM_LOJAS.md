@@ -1,7 +1,4 @@
-﻿ECOSSISTEMA — LOJAS ONLINE (VITRINES E RELEASES)
-=================================================
-
-Referência das lojas online (vitrines públicas em GitHub Pages) dos produtos da Cara Core Informática.
+# Ecossistema — lojas online (URLs canónicas)
 
 **Matriz institucional (identidade Cara Core no domínio principal):**  
 https://www.caracore.com.br/ · https://www.caracore.com.br/portfolio.html · https://www.caracore.com.br/ecosistema.html · https://tools.caracore.com.br/sala/  
@@ -36,14 +33,15 @@ PDV — duas lojas desktop
 Alinhamento de CTAs (matriz e loja)
   Loja: CTAs comerciais e de produto permanecem na loja.  
   Matriz: “Ver loja” aponta para o subdomínio ou GitHub Pages acima; narrativa institucional em portfolio e ecossistema.  
-  Referência de validação: VALIDACAO_LOJAS_MATRIZ.txt · ECOSYSTEM_CARA_CORE.txt
+  Referência de validação: VALIDACAO_LOJAS_MATRIZ.md · ECOSYSTEM_CARA_CORE.md
 
 Retomada de contexto (ler nesta ordem):
   1. docs/INICIAR_NOVA_TAREFA.md — ao iniciar nova tarefa
   2. docs/ECOSYSTEM_MEMORIA.md — visão e changelog
-  3. ECOSYSTEM_CARA_CORE.txt — mapa de repos
+
+## 3. ECOSYSTEM_CARA_CORE.md — mapa de repos
+
 
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
 Atualizado em 02/06/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md
-

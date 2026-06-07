@@ -177,17 +177,17 @@ O portal `delivery/oidc/index.html` usa Bootstrap 5 com navegação em topo, lis
 
 ---
 
-## 9. ECOSYSTEM_LOJAS.txt — Validar após mudanças desta sessão
+## 9. ECOSYSTEM_LOJAS.md — Validar após mudanças desta sessão
 
-O arquivo `d:\dev\caracore-site\ECOSYSTEM_LOJAS.txt` mapeia os URLs de todos os produtos. Após as datas de Hub (2027), RU (2027) e CSO (2028) terem sido atualizadas nesta sessão, verificar se há referências a datas dentro do `ECOSYSTEM_LOJAS.txt` que precisem acompanhar.
+O arquivo `d:\dev\caracore-site\ECOSYSTEM_LOJAS.md` mapeia os URLs de todos os produtos. Após as datas de Hub (2027), RU (2027) e CSO (2028) terem sido atualizadas nesta sessão, verificar se há referências a datas dentro do `ECOSYSTEM_LOJAS.md` que precisem acompanhar.
 
-**Pendência:** Ler e verificar se `ECOSYSTEM_LOJAS.txt` tem datas que precisem ser atualizadas.
+**Pendência:** Ler e verificar se `ECOSYSTEM_LOJAS.md` tem datas que precisem ser atualizadas.
 
 ---
 
-## 10. STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt — Sincronizar
+## 10. STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md — Sincronizar
 
-O arquivo raiz `d:\dev\caracore-site\STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt` é o documento mestre de estratégia. Após as datas de Hub, CSO, RU e o messaging de Área 51 terem mudado nesta sessão, verificar se o documento mestre ainda reflete a realidade atualizada.
+O arquivo raiz `d:\dev\caracore-site\STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md` é o documento mestre de estratégia. Após as datas de Hub, CSO, RU e o messaging de Área 51 terem mudado nesta sessão, verificar se o documento mestre ainda reflete a realidade atualizada.
 
 **Pendência:** Ler e atualizar as seções de roadmap e posicionamento do Área 51 dentro do documento de estratégia.
 
@@ -200,8 +200,8 @@ O arquivo raiz `d:\dev\caracore-site\STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt` 
 | 1 | PDV — decisão sobre data passada (03/03/2026) | Alta | Baixo |
 | 2 | Ink — decisão sobre data passada (26/06/2026) | Alta | Baixo |
 | 3 | ~~Área 51 loja — remover "02/08/2026" do card download~~ | ~~Alta~~ | ✅ Feito |
-| 4 | Sincronizar STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt | Média | Médio |
-| 5 | Sincronizar ECOSYSTEM_LOJAS.txt | Média | Baixo |
+| 4 | Sincronizar STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md | Média | Médio |
+| 5 | Sincronizar ECOSYSTEM_LOJAS.md | Média | Baixo |
 | 6 | Evolution-status nas lojas CSO e Ink | Média | Médio |
 | 7 | Corrigir HTTP → HTTPS em PDV/consultoria.html | Média | Mínimo |
 | 8 | Seed — atualizar lista de produtos | Baixa | Mínimo |
@@ -237,4 +237,4 @@ O arquivo raiz `d:\dev\caracore-site\STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt` 
 
 ---
 
-*Levantamento gerado em sessão de trabalho via GitHub Copilot. Arquivos mais relevantes: `delivery/pdv/`, `delivery/ink/`, `delivery/EVOLUTION_STATUS_APLICADO_LOJAS.md`, `caracore-area51-releases/docs/index.html`, `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.txt`, `ECOSYSTEM_LOJAS.txt`.*
+*Levantamento gerado em sessão de trabalho via GitHub Copilot. Arquivos mais relevantes: `delivery/pdv/`, `delivery/ink/`, `delivery/EVOLUTION_STATUS_APLICADO_LOJAS.md`, `caracore-area51-releases/docs/index.html`, `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md`, `ECOSYSTEM_LOJAS.md`.*

@@ -1,8 +1,10 @@
 # Cara Core Informática — Site matriz
 
-Repositório do site institucional **[caracore.com.br](https://www.caracore.com.br)**: home, portfólio, ecossistema, publicações, redirects de compatibilidade e **Área 51** (`/secure/`).
+Repositório do site institucional **[caracore.com.br](https://www.caracore.com.br)**: home B2B, portfólio, ecossistema, publicações, redirects de compatibilidade e **Área 51** (`/secure/`).
 
-**Papel da matriz:** apresentação institucional e CTAs para as lojas oficiais de cada produto. Vitrine, download e documentação comercial vivem nos repositórios `caracore-*-releases` (subdomínios `*.caracore.com.br`).
+**Papel da matriz:** engenharia B2B boutique + prova de entrega (produtos Bunker) e CTAs para as lojas oficiais. Vitrine, download e documentação comercial vivem nos repositórios `caracore-*-releases` (subdomínios `*.caracore.com.br`).
+
+**Frase-guia:** *Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente.*
 
 ---
 
@@ -10,9 +12,10 @@ Repositório do site institucional **[caracore.com.br](https://www.caracore.com.
 
 | Página | Ficheiro | Função |
 |--------|----------|--------|
-| Home | `index.html` | Institucional, produtos, contacto |
-| Portfólio | `portfolio.html` | Ativos por categoria, coexistência PDV, releases |
+| Home | `index.html` | Hero B2B, `#engenharia-b2b`, produtos, operação, contacto |
+| Portfólio | `portfolio.html` | Cases `#decisoes-engenharia`, coexistência PDV, releases |
 | Ecossistema | `ecosistema.html` | Mapa de produtos e lojas |
+| EN / IT | `aligned/en/`, `aligned/it/` | B2B engineering (espelho PT) |
 | Políticas | `politica/` | Privacidade, termos |
 | Área 51 | `secure/` | Login OIDC (Google / Microsoft) |
 
@@ -24,7 +27,7 @@ Repositório do site institucional **[caracore.com.br](https://www.caracore.com.
 
 | Linha | Loja canónica | Release |
 |-------|---------------|---------|
-| Java · JavaFX | [pdv.caracore.com.br](https://pdv.caracore.com.br/) | v3.1.2-free |
+| Java · JavaFX | [pdv.caracore.com.br](https://pdv.caracore.com.br/) | v3.2.2-free |
 | Rust + Tauri 2 | [rust-pdv](https://rust-pdv.caracore.com.br/) · [releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | v0.1.2 |
 
 Ambos são **desktop** na máquina da loja. Stacks distintas; **nenhuma substitui a outra**. Portfólio: `#pdv-coexistencia`, `#caracore-pdv`, `#caracore-pdv-rust`.
@@ -37,12 +40,13 @@ Ambos são **desktop** na máquina da loja. Stacks distintas; **nenhuma substitu
 |-----------|----------|
 | [docs/INDEX.md](docs/INDEX.md) | Índice curado |
 | [docs/SITE_MATRIZ.md](docs/SITE_MATRIZ.md) | Guia operacional da matriz |
-| [docs/memoria-projeto.txt](docs/memoria-projeto.txt) | Memória rápida do repo |
+| [docs/MEMORIA_DO_PROJETO.md](docs/MEMORIA_DO_PROJETO.md) | Memória rápida do repo |
 | [docs/FONTES_CANONICAS_MATRIZ_LOJAS.md](docs/FONTES_CANONICAS_MATRIZ_LOJAS.md) | Onde editar cada tipo de conteúdo |
 | [docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md](docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md) | Checklist pré-deploy |
 | [docs/PORTFOLIO_README.md](docs/PORTFOLIO_README.md) | Estrutura do portfólio |
-| [ECOSYSTEM_CARA_CORE.txt](ECOSYSTEM_CARA_CORE.txt) | Repositórios do ecossistema |
-| [ECOSYSTEM_LOJAS.txt](ECOSYSTEM_LOJAS.txt) | URLs das lojas |
+| [docs/ECOSYSTEM_CARA_CORE.md](docs/ECOSYSTEM_CARA_CORE.md) | Repositórios do ecossistema |
+| [docs/ECOSYSTEM_LOJAS.md](docs/ECOSYSTEM_LOJAS.md) | URLs das lojas |
+| [docs/DILEMA.md](docs/DILEMA.md) | Posicionamento B2B e status do site |
 
 Ecossistema completo: [wiki.caracore.com.br](https://wiki.caracore.com.br/).
 
@@ -53,6 +57,7 @@ Ecossistema completo: [wiki.caracore.com.br](https://wiki.caracore.com.br/).
 ```text
 caracore-site/
 ├── index.html, portfolio.html, ecosistema.html
+├── aligned/en/, aligned/it/   # B2B engineering EN/IT
 ├── _redirects, _config.yml, CNAME, sitemap.xml, robots.txt
 ├── assets/          # CSS, JS, imagens do site
 ├── secure/          # Área 51 (OIDC) — ver secure/README.md

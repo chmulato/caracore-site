@@ -24,6 +24,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   RU Soberano                  https://ru.caracore.com.br/
   Cara Core CSO                https://cso.caracore.com.br/
   Ink Agenda                   https://ink.caracore.com.br/
+  Helianto Condominium         https://chmulato.github.io/caracore-helianto-releases/  Vitrine; lançamento 30/12/2027
   Wiki institucional           https://wiki.caracore.com.br/                           caracore-wiki (não é loja de produto)
   Artigos Retrô (editorial)   https://retro.caracore.com.br/                          caracore-retro (não é loja de produto)
 

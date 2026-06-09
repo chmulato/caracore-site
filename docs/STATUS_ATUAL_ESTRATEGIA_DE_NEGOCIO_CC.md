@@ -81,6 +81,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | Seed | `#caracore-seed` | seed.* | Só informativo |
 | Mkt / Sala | `#caracore-mkt` | mkt.* / tools/sala | Gratuito |
 | RU Soberano | `#caracore-ru` | ru.* | Garagem → 18/06/2027 |
+| Helianto | `#caracore-helianto` | chmulato.github.io/caracore-helianto-releases | Garagem → 30/12/2027 |
 | CSO | `#caracore-cso` | cso.* | Garagem → 08/11/2028 |
 
 Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)  

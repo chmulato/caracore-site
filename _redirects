@@ -90,6 +90,11 @@
 /delivery/mkt/     https://mkt.caracore.com.br/   301
 /delivery/mkt/*    https://mkt.caracore.com.br/:splat   301
 
+/delivery/helianto      https://helianto.caracore.com.br/   301
+/delivery/helianto/     https://helianto.caracore.com.br/   301
+/delivery/helianto/*    https://helianto.caracore.com.br/:splat   301
+
+
 /favicon.ico    /images/favicon.ico   301
 /secure/*    /secure/index.html   200
 /cv/*    /index.html   200

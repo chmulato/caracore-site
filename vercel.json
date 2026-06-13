@@ -314,6 +314,21 @@
             "permanent": true
         },
         {
+            "source": "/delivery/helianto",
+            "destination": "https://helianto.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/helianto/",
+            "destination": "https://helianto.caracore.com.br/",
+            "permanent": true
+        },
+        {
+            "source": "/delivery/helianto/:path*",
+            "destination": "https://helianto.caracore.com.br/:path*",
+            "permanent": true
+        },
+        {
             "source": "/secure/*",
             "destination": "/secure/index.html"
         },

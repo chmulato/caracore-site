@@ -35,7 +35,7 @@ VISÃO GERAL
   caracore-area51               Oficina da Área 51 (código do sistema)      Desenvolvimento; autenticação enterprise OAuth 2.1/OIDC/PKCE
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
   caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
-  caracore-helianto-releases    Loja online e releases do Helianto          chmulato.github.io/caracore-helianto-releases
+  caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
   personal-articles             Conteúdo pessoal / artigos                  Conteúdo editorial vinculado ao ecossistema
 
 
@@ -80,7 +80,7 @@ Produtos com entrega ativa (matriz + loja online)
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
-  Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: chmulato.github.io/caracore-helianto-releases
+  Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação
   Cara Core Seed: caracore-seed + caracore-seed-releases. Loja: seed.caracore.com.br (ferramenta interna)

@@ -11,7 +11,7 @@ VISÃO GERAL
   Diretório / Repositório       Papel                                      Observação
   ----------------------------- ------------------------------------------ ----------------------------------------------------------
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
-  caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (104 artigos)
+  caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (117 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
   caracore-pdv                  Oficina — PDV Desktop (Java · JavaFX)       Quarkus 3, Java 25, JavaFX; canal v3.2.2-free
   caracore-pdv-releases         Loja — PDV Desktop Java                     GitHub Pages: pdv.caracore.com.br
@@ -36,7 +36,7 @@ VISÃO GERAL
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
   caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
   caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
-  personal-articles             Conteúdo pessoal / artigos                  Conteúdo editorial vinculado ao ecossistema
+  caracore-personal             Blog pessoal de Christian Mulato            personal.caracore.com.br (151 artigos)
 
 
 ---

@@ -54,7 +54,7 @@ Documentos operacionais — **fonte viva** para repos, URLs, checklists e estrat
 | Presença | URL | Repo |
 |----------|-----|------|
 | Wiki | [wiki.caracore.com.br](https://wiki.caracore.com.br/) | `caracore-wiki` |
-| Retrô | [retro.caracore.com.br](https://retro.caracore.com.br/) | `caracore-retro` — **104 artigos**; art. 115 B2B/IA · art. 114 PDV |
+| Retrô | [retro.caracore.com.br](https://retro.caracore.com.br/) | `caracore-retro` — **117 artigos**; art. 117 Fortaleza Digital · art. 115 B2B/IA |
 | Sala | [tools.caracore.com.br/sala/](https://tools.caracore.com.br/sala/) | campanhas |
 
 **Portfólio publicado:** [www.caracore.com.br/portfolio.html](https://www.caracore.com.br/portfolio.html)

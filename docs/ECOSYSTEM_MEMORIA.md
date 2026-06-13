@@ -96,7 +96,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 |------|----------------------|-------|
 | caracore-site | Sim | docs/ECOSYSTEM_*.md |
 | caracore-wiki | Sim | Portfólio → www |
-| caracore-retro | Sim | 104 artigos · capa inline `max-width:300px` float-right |
+| caracore-retro | Sim | 117 artigos · capa inline `max-width:300px` float-right |
 | caracore-pdv-rust | Sim + **continuacao.mdc** | Oficina PDV Rust |
 | caracore-pdv-rust-releases | Sim | Loja rust-pdv |
 | caracore-pdv / *-releases | Sim | PDV Java |
@@ -110,6 +110,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-06-13 | Matriz/Blog/Retrô: Publicado artigo "O Espelho da Linha de Frente" no blog de Christian Mulato (total 151 artigos) assinado como "Cidadão Brasileiro". Atualizado repositórios (personal-articles → caracore-personal) e contagem do Retrô para 117 artigos. |
 | 2026-06-07 | Retrô art. **115** — engenharia B2B pragmática na era da IA; links matriz `#engenharia-b2b`, `#decisoes-engenharia`, `suporte-local.html` |
 | 2026-06-07 | Tom vitrine matriz: FinOps/resiliência/híbrido (PT/EN/IT); gaps ideológicos wiki/retrô/lojas = backlog |
 | 2026-06-07 | Copy B2B PT/EN/IT: `#engenharia-b2b`, frase-guia, `#decisoes-engenharia`, `suporte-local.html`, docs/ só .md |

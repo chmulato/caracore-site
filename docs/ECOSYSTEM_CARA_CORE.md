@@ -36,7 +36,7 @@ VISÃO GERAL
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
   caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
   caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
-  caracore-personal             Blog pessoal de Christian Mulato            personal.caracore.com.br (151 artigos)
+  caracore-personal             Blog pessoal de Christian Mulato            personal.caracore.com.br (153 artigos)
 
 
 ---

@@ -60,7 +60,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 3. INK AGENDA
 
    (M) portfolio.html#caracore-ink-agenda
-   (L) caracore-ink-releases → ink.caracore.com.br · v2.0.0-RC8
+   (L) caracore-ink-releases → ink.caracore.com.br · v2.0.0
    Status: OK
 
 

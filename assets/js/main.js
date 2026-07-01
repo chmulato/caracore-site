@@ -20,7 +20,6 @@
     const planosSection = document.getElementById('planos');
 
     if (!btnMostrarPlanos || !btnFecharPlanos || !planosSection) {
-      console.warn('Elementos da seção de planos não encontrados');
       return;
     }
 

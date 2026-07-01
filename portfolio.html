@@ -1767,21 +1767,21 @@ graph LR
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 
 <!-- Mermaid.js para renderizar diagramas -->
-<script type="module">
-  import mermaid from '/js/vendor/mermaid/mermaid.esm.min.mjs';
-  mermaid.initialize({ 
-    startOnLoad: true,
-    theme: 'default',
-    securityLevel: 'loose',
-    flowchart: {
-      useMaxWidth: true,
-      htmlLabels: true,
-      curve: 'basis'
-    }
-  });
+<script>
+  if (window.mermaid && typeof window.mermaid.initialize === 'function') {
+    window.mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+  }
 </script>
 
 </body>
 </html>
-
 

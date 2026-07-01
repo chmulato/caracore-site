@@ -356,18 +356,19 @@ graph TB
   <script defer src="/secure/js/apresentacao-charts.js?v=20251119"></script>
   
   <!-- Mermaid.js para renderizar diagramas de arquitetura -->
-  <script type="module">
-    import mermaid from '/js/vendor/mermaid/mermaid.esm.min.mjs';
-    mermaid.initialize({ 
-      startOnLoad: true,
-      theme: 'default',
-      securityLevel: 'loose',
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true,
-        curve: 'basis'
-      }
-    });
+  <script>
+    if (window.mermaid && typeof window.mermaid.initialize === 'function') {
+      window.mermaid.initialize({
+        startOnLoad: true,
+        theme: 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: 'basis'
+        }
+      });
+    }
   </script>
 </body>
 </html>

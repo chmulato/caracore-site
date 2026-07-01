@@ -983,17 +983,17 @@ flowchart TB
 
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
-<script type="module">
-  import mermaid from '/js/vendor/mermaid/mermaid.esm.min.mjs';
-  mermaid.initialize({
-    startOnLoad: true,
-    theme: 'default',
-    securityLevel: 'loose',
-    flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
-  });
+<script>
+  if (window.mermaid && typeof window.mermaid.initialize === 'function') {
+    window.mermaid.initialize({
+      startOnLoad: true,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+    });
+  }
 </script>
 <script src="assets/js/analytics-loader.js"></script>
 <script src="assets/js/lgpd.js"></script>
 </body>
 </html>
-

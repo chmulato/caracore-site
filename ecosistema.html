@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <!-- Política de Segurança de Conteúdo (CSP) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org https://unpkg.com data: https:; connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' https://cdn.jsdelivr.net data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
@@ -984,7 +984,7 @@ flowchart TB
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs';
+  import mermaid from '/js/vendor/mermaid/mermaid.esm.min.mjs';
   mermaid.initialize({
     startOnLoad: true,
     theme: 'default',
@@ -996,6 +996,4 @@ flowchart TB
 <script src="assets/js/lgpd.js"></script>
 </body>
 </html>
-
-
 

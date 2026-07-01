@@ -1,8 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap");
-
 :root {
-  --cc-font-heading: "Montserrat", "Segoe UI", Tahoma, sans-serif;
-  --cc-font-body: "Source Sans 3", "Segoe UI", Arial, sans-serif;
+  --cc-font-heading: "Segoe UI", Tahoma, Arial, sans-serif;
+  --cc-font-body: "Segoe UI", Arial, sans-serif;
 }
 
 :where(body) {

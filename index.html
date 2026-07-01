@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <!-- Política de Segurança de Conteúdo (CSP) -->
   <!-- Nota: frame-ancestors só funciona em cabeçalhos HTTP, não em meta tags -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net https://unpkg.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://fonts.googleapis.com 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org https://unpkg.com data: https:; connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
   
   <!-- X-Content-Type-Options: Previne MIME sniffing -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -48,10 +48,6 @@
   <meta name="twitter:description" content="Arquitetura híbrida e soberania de dados — resiliência e FinOps, não ideologia anti-cloud. ~18 anos de engenharia B2B.">
   <meta name="twitter:image" content="https://www.caracore.com.br/assets/images/logo.png">
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="assets/css/metamorfose.css">
   <link rel="stylesheet" href="/assets/css/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/css/caracore-institutional-components.css">
@@ -718,4 +714,3 @@
 
 </body>
 </html>
-

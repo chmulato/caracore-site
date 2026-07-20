@@ -48,7 +48,7 @@
         </a>
         <nav class="nav-links">
           <a class="nav-link nav-link-back" href="/secure/restrita.html" title="Voltar para Área Restrita">
-            <svg class="icon-sm" aria-hidden="true" style="width: 1rem; height: 1rem; margin-right: 0.25rem;"><use href="#icon-arrow-left"></use></svg>
+            <svg class="icon-sm icon-inline-start" aria-hidden="true"><use href="#icon-arrow-left"></use></svg>
             Voltar para Área 51
           </a>
           <a class="nav-link" href="/secure/historia.html">História</a>
@@ -646,19 +646,23 @@ graph TB
   <script defer src="/secure/js/apresentacao-charts.js?v=20251119"></script>
   
   <!-- Mermaid.js para renderizar diagramas de arquitetura -->
-  <script>
-    if (window.mermaid && typeof window.mermaid.initialize === 'function') {
-      window.mermaid.initialize({
-        startOnLoad: true,
-        theme: 'default',
-        securityLevel: 'loose',
-        flowchart: {
-          useMaxWidth: true,
-          htmlLabels: true,
-          curve: 'basis'
-        }
-      });
-    }
+  <script type="module">
+    import mermaid from '/js/vendor/mermaid/mermaid.esm.min.mjs';
+
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
+
+    mermaid.run({ querySelector: '.mermaid' }).catch((error) => {
+      console.warn('Falha ao renderizar diagramas Mermaid:', error);
+    });
   </script>
 </body>
 </html>

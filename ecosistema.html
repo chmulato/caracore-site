@@ -68,7 +68,7 @@
             <button type="button" class="flag-dropdown-toggle" aria-label="Selecionar país/idioma" aria-expanded="false" aria-haspopup="true" title="Selecionar idioma" onclick="this.closest('.flag-dropdown').classList.toggle('show')">
               <span class="flag-emoji">🇧🇷</span>
             </button>
-            <div class="flag-dropdown-menu" role="menu">
+            <div class="flag-dropdown-menu">
               <a href="index.html" class="flag-dropdown-item active" aria-label="Brasil - Site em português">
                 <span class="flag-emoji">🇧🇷</span>
                 <span class="flag-text">
@@ -957,7 +957,7 @@ flowchart TB
 <!-- Rodapé -->
 <footer class="py-3 mt-4 site-footer">
   <div class="container text-center">
-    <p class="small text-muted mb-2 mx-auto" style="max-width: 42rem;">Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente. <a href="index.html#engenharia-b2b" class="text-decoration-none">Saiba mais sobre engenharia B2B</a>.</p>
+    <p class="small text-muted mb-2 mx-auto eco-footer-note">Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente. <a href="index.html#engenharia-b2b" class="text-decoration-none">Saiba mais sobre engenharia B2B</a>.</p>
     <span class="fw-semibold text-secondary">
       Cara-Core Informática - CNPJ: 23.969.028/0001-37<br>
     </span>
@@ -983,15 +983,19 @@ flowchart TB
 
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
-<script>
-  if (window.mermaid && typeof window.mermaid.initialize === 'function') {
-    window.mermaid.initialize({
-      startOnLoad: true,
-      theme: 'default',
-      securityLevel: 'loose',
-      flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
-    });
-  }
+<script type="module">
+  import mermaid from '/js/vendor/mermaid/mermaid.esm.min.mjs';
+
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'default',
+    securityLevel: 'loose',
+    flowchart: { useMaxWidth: true, htmlLabels: true, curve: 'basis' }
+  });
+
+  mermaid.run({ querySelector: '.mermaid' }).catch((error) => {
+    console.warn('Falha ao renderizar diagramas Mermaid:', error);
+  });
 </script>
 <script src="assets/js/analytics-loader.js"></script>
 <script src="assets/js/lgpd.js"></script>

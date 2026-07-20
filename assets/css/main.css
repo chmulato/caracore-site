@@ -35,6 +35,10 @@
   border: 0;
 }
 
+.icon-ecosistema-highlight {
+  color: #f7971e;
+}
+
 /* Leaflet Map Styles */
 #map {
   width: 100%;
@@ -174,6 +178,7 @@
   font-size: 0.875rem;
   min-height: 52px; /* Área de toque maior */
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }

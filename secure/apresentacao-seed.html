@@ -644,25 +644,26 @@ graph TB
   <!-- Chart.js para gráficos -->
   <script src="/js/vendor/chartjs/chart.umd.min.js"></script>
   <script defer src="/secure/js/apresentacao-charts.js?v=20251119"></script>
+  <script src="/js/vendor/mermaid/mermaid.min.js"></script>
   
   <!-- Mermaid.js para renderizar diagramas de arquitetura -->
-  <script type="module">
-    import mermaid from '/js/vendor/mermaid/mermaid.esm.min.mjs';
+  <script>
+    if (window.mermaid && typeof window.mermaid.initialize === 'function') {
+      window.mermaid.initialize({
+        startOnLoad: false,
+        theme: 'default',
+        securityLevel: 'loose',
+        flowchart: {
+          useMaxWidth: true,
+          htmlLabels: true,
+          curve: 'basis'
+        }
+      });
 
-    mermaid.initialize({
-      startOnLoad: false,
-      theme: 'default',
-      securityLevel: 'loose',
-      flowchart: {
-        useMaxWidth: true,
-        htmlLabels: true,
-        curve: 'basis'
-      }
-    });
-
-    mermaid.run({ querySelector: '.mermaid' }).catch((error) => {
-      console.warn('Falha ao renderizar diagramas Mermaid:', error);
-    });
+      window.mermaid.run({ querySelector: '.mermaid' }).catch((error) => {
+        console.warn('Falha ao renderizar diagramas Mermaid:', error);
+      });
+    }
   </script>
 </body>
 </html>

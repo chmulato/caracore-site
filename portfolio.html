@@ -1766,25 +1766,26 @@ graph LR
 <!-- Scripts -->
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="/js/vendor/mermaid/mermaid.min.js"></script>
 
 <!-- Mermaid.js para renderizar diagramas -->
-<script type="module">
-  import mermaid from '/js/vendor/mermaid/mermaid.esm.min.mjs';
+<script>
+  if (window.mermaid && typeof window.mermaid.initialize === 'function') {
+    window.mermaid.initialize({
+      startOnLoad: false,
+      theme: 'default',
+      securityLevel: 'loose',
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true,
+        curve: 'basis'
+      }
+    });
 
-  mermaid.initialize({
-    startOnLoad: false,
-    theme: 'default',
-    securityLevel: 'loose',
-    flowchart: {
-      useMaxWidth: true,
-      htmlLabels: true,
-      curve: 'basis'
-    }
-  });
-
-  mermaid.run({ querySelector: '.mermaid' }).catch((error) => {
-    console.warn('Falha ao renderizar diagramas Mermaid:', error);
-  });
+    window.mermaid.run({ querySelector: '.mermaid' }).catch((error) => {
+      console.warn('Falha ao renderizar diagramas Mermaid:', error);
+    });
+  }
 </script>
 
 </body>

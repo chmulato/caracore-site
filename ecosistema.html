@@ -196,7 +196,7 @@
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">Hub · Abr/2027</a>
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">RU · Jun/2027</a>
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">Helianto · Dez/2027</a>
-        <a href="#garagem" class="eco-map-node eco-map-node--garagem">CSO · Nov/2028</a>
+        <a href="#garagem" class="eco-map-node eco-map-node--garagem">CSO · Frotas 2026 / Transp. 2028</a>
       </div>
       <div class="eco-map-legend">
         <span><i class="leg-prateleira"></i> Prateleira</span>
@@ -236,7 +236,7 @@
         <div class="eco-audience-card">
           <i class="bi bi-truck"></i>
           <h3>Centros de distribuição</h3>
-          <p class="small text-muted mb-0">Hub (lançamento 2027) e CSO (2028) para logística, entregas e gestão de transportes com soberania offline.</p>
+          <p class="small text-muted mb-0">Hub (pré-lançamento · GA 2027) e CSO dual (Frotas 2026 em produção · Transportes 2028) para logística e soberania offline.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
@@ -608,7 +608,7 @@
               </tr>
               <tr>
                 <td>12</td>
-                <td>Cara Core Mkt</td>
+                <td>Cara Core MKT</td>
                 <td><a href="https://mkt.caracore.com.br/" class="text-decoration-none">mkt.caracore.com.br</a></td>
               </tr>
               <tr>
@@ -633,8 +633,8 @@
             <div class="eco-garagem-card cc-card-hub">
               <span class="eco-garagem-badge">Logística · Hub de distribuição</span>
               <h3><a href="https://hub.caracore.com.br/" class="eco-garagem-card-title-link">CaraCore Hub</a></h3>
-              <p class="text-muted small mb-2">Gestão logística e e-commerce para centros de distribuição: recebimento, triagem, estoque, retirada e integração com marketplaces. Bunker Digital com SQLite local — o núcleo opera offline, protegendo a operação quando a internet cai.</p>
-              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 06 de abril de 2027</span>
+              <p class="text-muted small mb-2">Gestão logística e e-commerce para centros de distribuição: recebimento, triagem, estoque, retirada e integração com marketplaces. Bunker Digital com SQLite local — o núcleo opera offline. <strong>Vitrine e artefatos de pré-lançamento</strong> já em hub.caracore.com.br.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> GA instalador Windows: 06 de abril de 2027</span>
               <p class="mb-0 mt-2"><a href="https://hub.caracore.com.br/" class="btn btn-sm btn-primary">Ver apresentação</a></p>
             </div>
           </div>
@@ -658,10 +658,10 @@
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="eco-garagem-card cc-card-cso">
-              <span class="eco-garagem-badge">Gestão de Transportes · Soberania Offline</span>
-              <h3><a href="https://cso.caracore.com.br/" class="eco-garagem-card-title-link">Cara Core CSO - Gestão de Transportes</a></h3>
-              <p class="text-muted small mb-2">Plataforma soberana de gestão para centros de distribuição e transportadoras. O CSO já opera uma base moderna com <strong>backend Quarkus + SQLite</strong> e evolui a trilha desktop Java + JavaFX do Protocolo Amarelinha para controle de entregas, couriers, clientes, preços e notificações SMS/WhatsApp. Dados locais, operação antifrágil — não para quando a internet cai.</p>
-              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 08 de novembro de 2028</span>
+              <span class="eco-garagem-badge">Frotas (Web) + Transportes (Desktop)</span>
+              <h3><a href="https://cso.caracore.com.br/" class="eco-garagem-card-title-link">Cara Core CSO</a></h3>
+              <p class="text-muted small mb-2">Ecossistema dual: <strong>Gestão de Frotas</strong> (Web/Cloud, em produção) e <strong>Gestão de Transportes</strong> (Desktop JavaFX + SQLite, bunker offline). Captação e gestão leve no web; telemetria e soberania de dados no desktop.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Frotas 08/11/2026 · Transportes 08/11/2028</span>
               <p class="mb-0 mt-2"><a href="https://cso.caracore.com.br/" class="btn btn-sm btn-primary">Ver apresentação</a></p>
             </div>
           </div>
@@ -821,12 +821,12 @@
               </tr>
               <tr class="eco-roadmap-row-future">
                 <td><a href="https://cso.caracore.com.br/" class="fw-semibold text-decoration-none">Cara Core CSO</a></td>
-                <td class="text-muted small">Plataforma para gestao de transportes e operacao de entregas.</td>
+                <td class="text-muted small">Dual: Gestao de Frotas (Web) e Gestao de Transportes (Desktop).</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-secondary">Planejado</span></td>
+                <td><span class="badge bg-warning text-dark">Dual</span></td>
                 <td class="small">25/02/2026</td>
-                <td class="small fw-semibold text-muted">08/11/2028</td>
-                <td class="small">Registro publico: fase de planejamento.</td>
+                <td class="small fw-semibold text-muted">Frotas 08/11/2026 · Transp. 08/11/2028</td>
+                <td class="small">Frotas em producao; Transportes desktop em garagem ate 08/11/2028.</td>
               </tr>
             </tbody>
           </table>
@@ -856,7 +856,7 @@ flowchart TB
         P5[Cara Core Hub]
         P6[Área 51]
         P7[Cara Core Seed]
-        P8[Cara Core Mkt]
+        P8[Cara Core MKT]
     end
     subgraph OFICINAS["Oficinas — repositórios de código"]
         O1[caracore-pdv]
@@ -962,7 +962,7 @@ flowchart TB
   <div class="container text-center">
     <p class="small text-muted mb-2 mx-auto eco-footer-note">Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente. <a href="index.html#engenharia-b2b" class="text-decoration-none">Saiba mais sobre engenharia B2B</a>.</p>
     <span class="fw-semibold text-secondary">
-      Cara-Core Informática - CNPJ: 23.969.028/0001-37<br>
+      Cara Core Informática · CNPJ: 23.969.028/0001-37 · <a href="https://www.caracore.com.br/" class="text-decoration-none">www.caracore.com.br</a> · <a href="mailto:suporte@caracore.com.br" class="text-decoration-none">suporte@caracore.com.br</a><br>
     </span>
     <div class="mt-2">
       <a href="politica/politica-privacidade.html" class="text-decoration-none text-primary fw-semibold me-3">

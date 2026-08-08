@@ -1,6 +1,6 @@
 # Ecossistema Cara Core — mapa de repositórios
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 07/06/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 08/08/2026).
 
 
 ---
@@ -36,6 +36,12 @@ VISÃO GERAL
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
   caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
   caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
+  caracore-cso-frotas           Oficina — CSO Gestão de Frotas (Web)        Quarkus; em produção (Railway)
+  caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; lançamento 08/11/2028
+  caracore-cso-releases         Loja online do Cara Core CSO                GitHub Pages: cso.caracore.com.br
+  caracore-mkt                  Oficina do Cara Core MKT / Sala             Scripts e portal; oferta gratuita
+  caracore-mkt-releases         Loja online do Cara Core MKT                GitHub Pages: mkt.caracore.com.br
+  caracore-tools                Tools / Sala Cara Core                      tools.caracore.com.br/sala/
   caracore-personal             Blog pessoal de Christian Mulato            personal.caracore.com.br (153 artigos)
 
 
@@ -81,6 +87,8 @@ Produtos com entrega ativa (matriz + loja online)
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
+  Cara Core CSO: caracore-cso-frotas + caracore-cso-transportes + caracore-cso-releases. Loja: cso.caracore.com.br
+  Cara Core MKT: caracore-mkt + caracore-mkt-releases (+ Sala em caracore-tools). Loja: mkt.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação
   Cara Core Seed: caracore-seed + caracore-seed-releases. Loja: seed.caracore.com.br (ferramenta interna)
@@ -112,4 +120,4 @@ Alinhamento matriz e lojas
 ---
 
 
-Atualizado em 02/06/2026.
+Atualizado em 08/08/2026.

@@ -1,6 +1,6 @@
 # Componentes padrão das lojas (vitrines GitHub Pages)
 
-Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de componentes, conforme o tipo de produto. Data: 31/05/2026.
+Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de componentes, conforme o tipo de produto. Data: 08/08/2026.
 
 
 ---
@@ -15,8 +15,10 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   - index.html .............. Pagina principal (hero, oferta, CTAs, links)
   - canal-feedback.html ..... Contato: e-mail, WhatsApp, Telegram (nao atendemos ligacoes)
   - .nojekyll ............... Arquivo vazio (GitHub Pages sem Jekyll)
-  - Navegacao ............... Link "Portfólio Cara Core" → https://www.caracore.com.br/portfolio.html#{ancora}
-  - Portfolio ............... Mesmo link com âncora do produto (ex.: #caracore-pdv, #reino-oidc)
+  - Navegacao ............... Breadcrumb: Cara Core Informática → Portfólio #{ancora} → Loja
+  - Portfolio ............... Link "Portfólio Cara Core" → https://www.caracore.com.br/portfolio.html#{ancora}
+  - Footer legal ............ Cara Core Informática · CNPJ 23.969.028/0001-37 · www.caracore.com.br · suporte@caracore.com.br
+  - Badge evo-beta .......... Sem a palavra "Seed" nem "Premium+" fora do produto Seed; usar Garagem / RC / Oficial / Dual / Interno
   - Legado .................. /delivery/{produto}/ na matriz = redirect (stub HTML); não usar como CTA
   - Espelho interno ......... mirror-delivery.html (Ink, RU, MKT, Reino OIDC) — documento de alinhamento
   - Base URL ................. Quando a vitrine esta em docs/, usar o subdominio oficial da loja (ex.: <base href="https://oidc.caracore.com.br/">)
@@ -115,7 +117,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     Matriz: portfolio.html#caracore-seed
     Loja:   caracore-seed-releases/docs/
     index  download  tecnologia  canal-feedback  ativacao  compra  readme  portal-controle  .nojekyll  tools/README (opcional)
-    Observacao: mensagem "aplicacao nao disponivel"; mesma estrutura da matriz para alinhamento.
+    Observacao: ferramenta interna — nao a venda; badge "Interno"; sem CTAs comerciais.
 
   AREA 51 — IDENTIDADE INSTITUCIONAL
     Matriz: portfolio.html#area-51 + secure/ (OIDC matriz)
@@ -123,6 +125,27 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     index  produto  servicos  wiki  download (como comecar)  apresentacao-tecnica  licenca-uso  canal-feedback
     Oficina: caracore-area51 (baseline 0.1.0-dev)
     Observacao: produto licenciado (titularidade GF); entrega via licenca — nao download publico. Suporte Area 51 = servico contratado (niveis 2-3).
+
+  HELIANTO CONDOMINIUM
+    Matriz: portfolio.html#caracore-helianto
+    Oficina: caracore-helianto/
+    Loja:   caracore-helianto-releases/docs/
+    index  download  canal-feedback  manual/  .nojekyll
+    Observacao: vitrine; lancamento publico 30/12/2027; badge Active/Oficial (nao Seed).
+
+  CARA CORE CSO
+    Matriz: portfolio.html#caracore-cso
+    Oficinas: caracore-cso-frotas/ · caracore-cso-transportes/
+    Loja:   caracore-cso-releases/docs/
+    index  download  canal-feedback  feedback/  .nojekyll
+    Observacao: dual Frotas Web (08/11/2026) + Transportes Desktop (08/11/2028); badge Dual.
+
+  CARA CORE MKT
+    Matriz: portfolio.html#caracore-mkt
+    Oficina: caracore-mkt/ (+ Sala em caracore-tools)
+    Loja:   caracore-mkt-releases/docs/
+    index  projeto-mkt  wiki  artefato-vitrine-gratuito  canal-feedback  .nojekyll
+    Observacao: oferta gratuita; Sala em tools.caracore.com.br/sala/.
 
 
 ---

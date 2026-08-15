@@ -56,7 +56,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
   PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.2-free (maduro)
-  PDV Desktop Rust+Tauri   caracore-pdv-rust        loja + GitHub Releases       v0.1.2 (piloto Windows; download em GitHub)
+  CaraCore PDV             caracore-pdv-rust        loja + GitHub Releases       v0.1.2 (piloto Windows; download em GitHub)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
   Não confundir: V3 negócio ≠ canal Java v3.2.x ≠ release Rust v0.1.x.
@@ -79,7 +79,7 @@ Site e presença pública
 
 Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
-  CaraCore PDV Desktop (Rust): caracore-pdv-rust + caracore-pdv-rust-releases. Loja: **rust-pdv.caracore.com.br** (sem delivery matriz).
+  CaraCore PDV: caracore-pdv-rust + caracore-pdv-rust-releases. Loja: **rust-pdv.caracore.com.br** (sem delivery matriz).
   Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br
   Minerador 4.0 (ETE): caracore-ete + caracore-ete-releases. Loja: ete.caracore.com.br
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
@@ -87,7 +87,7 @@ Produtos com entrega ativa (matriz + loja online)
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
-  Cara Core CSO: caracore-cso-frotas + caracore-cso-transportes. Aplicação: cso.caracore.com.br
+  CaraCore CSO: caracore-cso-frotas + caracore-cso-transportes. Aplicação: cso.caracore.com.br
   Cara Core MKT: caracore-mkt + caracore-mkt-releases (+ Sala em caracore-tools). Loja: mkt.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação

@@ -82,7 +82,7 @@ VOCABULÁRIO APLICADO (DIRETRIZES)
   - PDV: "não para quando a internet cai" → "antifrágil: não para quando a internet cai", "Soberania local", "Java 21 + JavaFX".
   - Hub: "SQLite local" + "infraestrutura Bunker".
 
-• Garagem — Cara Core CSO:
+• Garagem — CaraCore CSO:
   - "JavaFX 21" → "Java 21 + JavaFX", "soberania local", "operação antifrágil — não para quando a internet cai".
 
 

@@ -26,7 +26,7 @@ PRODUTOS EM FOCO
   #  Produto                         Loja canónica              Release / preço
   -- ------------------------------- -------------------------- ---------------------------
   1  CaraCore PDV Desktop (Java)     pdv.caracore.com.br        v3.2.2-free · Free/Premium
-  2  Cara Core PDV Desktop (Rust)    rust-pdv + GitHub Releases   v0.1.2 · piloto · transparência loja
+  2  CaraCore PDV                    rust-pdv + GitHub Releases   v0.1.2 · piloto · transparência loja
   3  chmulatoETE Minerador 4.0       ete.caracore.com.br        Free · Ouro 4.0 R$ 29,90
   4  Reino OIDC                      oidc.caracore.com.br        FREE · upgrade R$ 29,90
   5  Circuito Ferradura              circuito.caracore.com.br   FREE PF · escolas R$ 5/aluno/mês
@@ -37,7 +37,7 @@ PRODUTOS EM FOCO
 
 Garagem (portfólio + loja no ar):
  10  RU Soberano                       ru.caracore.com.br         lanç. 18/06/2027 · R$ 29,90
- 11  Cara Core CSO                     cso.caracore.com.br        aplicação · Transp. 08/11/2028
+ 11  CaraCore CSO                      cso.caracore.com.br        aplicação · Transp. 08/11/2028
 
 Gratuito institucional:
   - Cara Core Mkt / Sala — mkt.caracore.com.br · tools.caracore.com.br/sala/

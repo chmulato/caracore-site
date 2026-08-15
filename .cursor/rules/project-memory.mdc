@@ -70,7 +70,7 @@ alwaysApply: true
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV Desktop Rust + Tauri (v0.1.2)
+## CaraCore PDV — Rust + Tauri (v0.1.2)
 
 - **Download oficial:** https://github.com/chmulato/caracore-rust-pdv-releases/releases (latest / tag v0.1.2)
 - **Loja (vitrine):** https://rust-pdv.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html` orienta NSIS/MSI/ZIP)

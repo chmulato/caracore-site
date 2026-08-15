@@ -66,7 +66,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     index  download  tecnologia  canal-feedback  wiki/  .nojekyll
     Observacao: oferta madura multi-plataforma; canal v3.2.2-free. Wiki Fiscal e trilhas comerciais na loja.
 
-  CARA CORE PDV DESKTOP (RUST + TAURI)
+  CARACORE PDV (RUST + TAURI)
     Portfólio: caracore-site/portfolio.html#caracore-pdv-rust (resumo institucional)
     Oficina: caracore-pdv-rust/
     Loja:   caracore-pdv-rust-releases/docs/ → rust-pdv.caracore.com.br
@@ -133,7 +133,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     index  download  canal-feedback  manual/  .nojekyll
     Observacao: vitrine; lancamento publico 30/12/2027; badge Active/Oficial (nao Seed).
 
-  CARA CORE CSO
+  CARACORE CSO
     Matriz: portfolio.html#caracore-cso
     Oficinas: caracore-cso-frotas/ · caracore-cso-transportes/
     Loja:   sem vitrine de loja

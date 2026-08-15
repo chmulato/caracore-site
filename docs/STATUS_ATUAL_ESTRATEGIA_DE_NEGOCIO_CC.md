@@ -71,7 +71,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | Produto | Portfólio | Loja | Estado |
 |---------|-----------|------|--------|
 | PDV Java | `#caracore-pdv` | pdv.* | Entrega activa · v3.2.2-free |
-| PDV Rust | `#caracore-pdv-rust` | rust-pdv + GitHub | Piloto v0.1.2 |
+| CaraCore PDV | `#caracore-pdv-rust` | rust-pdv + GitHub | Piloto v0.1.2 |
 | Ink Agenda | `#caracore-ink-agenda` | ink.* | v2.0.0 estável |
 | Minerador 4.0 | `#minerador-ete` | ete.* | Entrega activa |
 | Reino OIDC | `#reino-oidc` | oidc.* | Entrega activa |

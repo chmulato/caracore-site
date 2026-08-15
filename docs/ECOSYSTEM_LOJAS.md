@@ -13,7 +13,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   Produto                      Loja online (URL canónica)                              Observação
   ---------------------------- ------------------------------------------------------- ------------------------------------------
   CaraCore PDV Desktop (Java)  https://pdv.caracore.com.br/                            Oferta madura; canal v3.2.2-free
-  CaraCore PDV Desktop (Rust)  https://rust-pdv.caracore.com.br/                       Vitrine; release v0.1.2
+  CaraCore PDV                 https://rust-pdv.caracore.com.br/                       Vitrine; release v0.1.2
   (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Artefatos MSI/NSIS/ZIP/deb/dmg + SHA256
   Cara Core Hub                https://hub.caracore.com.br/
   Circuito Ferradura           https://circuito.caracore.com.br/
@@ -22,7 +22,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   Cara Core Seed               https://seed.caracore.com.br/
   Suporte Área 51              https://area51.caracore.com.br/
   RU Soberano                  https://ru.caracore.com.br/
-  Cara Core CSO                https://cso.caracore.com.br/                            Aplicação Frotas. Transportes Desktop 2028
+  CaraCore CSO                 https://cso.caracore.com.br/                            Aplicação Frotas. Transportes Desktop 2028
   Cara Core MKT                https://mkt.caracore.com.br/                            Gratuito; Sala em tools.caracore.com.br/sala/
   Ink Agenda                   https://ink.caracore.com.br/
   Helianto Condominium         https://helianto.caracore.com.br/                       Vitrine; lançamento 30/12/2027

@@ -48,7 +48,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
    Status: OK — rever após cada release Java
 
 
-## 2. CARA CORE PDV DESKTOP (RUST + TAURI 2)
+## 2. CARACORE PDV (RUST + TAURI 2)
 
    (M) portfolio.html#caracore-pdv-rust · #pdv-coexistencia
    (L) caracore-pdv-rust-releases → rust-pdv.caracore.com.br · v0.1.2
@@ -118,7 +118,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
     Status: OK — matriz via portfólio (não delivery/ru)
 
 
-## 11. CARA CORE CSO (garagem)
+## 11. CARACORE CSO (garagem)
 
     (M) portfolio.html#caracore-cso
     Aplicação: https://cso.caracore.com.br/

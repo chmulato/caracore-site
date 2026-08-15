@@ -51,7 +51,7 @@ A partir da Fase 7, o sistema implementa renovacao automatica de tokens:
 ```json
 {
   "authority": "https://accounts.google.com",
-  "client_id": "1023942712021-7k4aalpg2oeenhisln9tk9s15m26iruu.apps.googleusercontent.com",
+  "client_id": "REPLACE_WITH_GOOGLE_CLIENT_ID",
   "redirect_uri": "https://www.caracore.com.br/secure/index.html",
   "post_logout_redirect_uri": "https://www.caracore.com.br/secure/logout.html",
   "response_type": "code",
@@ -74,7 +74,8 @@ No Google Cloud Console:
 ```json
 {
   "authority": "https://login.microsoftonline.com/189c46ad-e437-48bd-bc87-050ef735c2c7/v2.0",
-  "client_id": "8ef17663-438f-4777-99ca-c5ad5b2a2993",
+  "authority": "https://login.microsoftonline.com/REPLACE_WITH_AZURE_TENANT_ID/v2.0",
+  "client_id": "REPLACE_WITH_AZURE_CLIENT_ID",
   "redirect_uri": "https://www.caracore.com.br/secure/index.html",
   "post_logout_redirect_uri": "https://www.caracore.com.br/secure/logout.html",
   "response_type": "code",

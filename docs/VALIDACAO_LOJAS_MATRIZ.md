@@ -121,9 +121,10 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 11. CARA CORE CSO (garagem)
 
     (M) portfolio.html#caracore-cso
-    (L) caracore-cso-releases → cso.caracore.com.br
-    Lançamento previsto 08/11/2028
-    Status: OK
+    Aplicação: https://cso-caracore.up.railway.app/ (sem loja)
+    Oficinas: caracore-cso-frotas · caracore-cso-transportes
+    Lançamento previsto 08/11/2028 (Transportes); Frotas em produção
+    Status: OK — CTAs da matriz apontam para a aplicação Railway
 
 
 ## 12. CARA CORE MKT / SALA

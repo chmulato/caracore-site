@@ -82,7 +82,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | Mkt / Sala | `#caracore-mkt` | mkt.* / tools/sala | Gratuito |
 | RU Soberano | `#caracore-ru` | ru.* | Garagem → 18/06/2027 |
 | Helianto | `#caracore-helianto` | helianto.caracore.com.br | Garagem → 30/12/2027 |
-| CSO | `#caracore-cso` | cso.* | Garagem → 08/11/2028 |
+| CSO | `#caracore-cso` | cso-caracore.up.railway.app | Aplicação (sem loja) · Transp. 08/11/2028 |
 
 Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)  
 Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — 104 artigos; editorial B2B art. 115
@@ -114,7 +114,8 @@ Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — 104 artigos;
 
 ### 5.3 Garagem
 
-- RU / CSO: alinhar datas portfólio ↔ loja ↔ oficina
+- RU: alinhar datas portfólio ↔ loja ↔ oficina
+- CSO: aplicação em Railway (sem loja); alinhar datas Frotas/Transportes portfólio ↔ oficina
 - Ecossistema: subgraph Garagem coerente com portfólio
 
 ### 5.4 Lojas (*-releases)

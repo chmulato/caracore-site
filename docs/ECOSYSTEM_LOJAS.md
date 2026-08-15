@@ -22,7 +22,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   Cara Core Seed               https://seed.caracore.com.br/
   Suporte Área 51              https://area51.caracore.com.br/
   RU Soberano                  https://ru.caracore.com.br/
-  Cara Core CSO                https://cso.caracore.com.br/                            Dual: Frotas (Web) 2026 · Transportes (Desktop) 2028
+  Cara Core CSO                https://cso-caracore.up.railway.app/                     Sem loja; aplicação Frotas (Railway). Transportes Desktop 2028
   Cara Core MKT                https://mkt.caracore.com.br/                            Gratuito; Sala em tools.caracore.com.br/sala/
   Ink Agenda                   https://ink.caracore.com.br/
   Helianto Condominium         https://helianto.caracore.com.br/                       Vitrine; lançamento 30/12/2027
@@ -46,4 +46,4 @@ Retomada de contexto (ler nesta ordem):
 
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
-Atualizado em 08/08/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md
+Atualizado em 15/08/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md

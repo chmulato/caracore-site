@@ -136,9 +136,9 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   CARA CORE CSO
     Matriz: portfolio.html#caracore-cso
     Oficinas: caracore-cso-frotas/ · caracore-cso-transportes/
-    Loja:   caracore-cso-releases/docs/
-    index  download  canal-feedback  feedback/  .nojekyll
-    Observacao: dual Frotas Web (08/11/2026) + Transportes Desktop (08/11/2028); badge Dual.
+    Loja:   desativada (sem vitrine pública)
+    Aplicação: https://cso-caracore.up.railway.app/
+    Observacao: dual Frotas Web (em produção no Railway) + Transportes Desktop (08/11/2028).
 
   CARA CORE MKT
     Matriz: portfolio.html#caracore-mkt

@@ -12,7 +12,6 @@ $items = @(
     @{ Dir = "caracore-hub-releases"; Title = "Cara Core Hub"; Proj = "projeto-hub.html"; Desc = "Integração, e-commerce e painel centralizado."; ExtraHref = "../download.html"; ExtraLabel = "Download" }
     @{ Dir = "caracore-ete-releases"; Title = "Minerador 4.0 (ETE)"; Proj = "projeto-minerador.html"; Desc = "Simulador ETE / hidrometalurgia para ensino e mineração."; ExtraHref = "../download.html"; ExtraLabel = "Download" }
     @{ Dir = "caracore-circuito-releases"; Title = "Circuito Ferradura"; Proj = "projeto-python.html"; Desc = "Curso de lógica e Python para jovens (Circuito Ferradura)."; ExtraHref = "../download.html"; ExtraLabel = "Download" }
-    @{ Dir = "caracore-cso-releases"; Title = "Cara Core CSO"; Proj = "projeto-cso.html"; Desc = "Gestão de transportes, JavaFX e operação logística."; ExtraHref = "../download.html"; ExtraLabel = "Download" }
     @{ Dir = "caracore-ru-releases"; Title = "RU Soberano"; Proj = "projeto-ru.html"; Desc = "Simulação de reator e balanço de massa (ensino)."; ExtraHref = "../download.html"; ExtraLabel = "Download" }
     @{ Dir = "caracore-mkt-releases"; Title = "Cara Core Mkt"; Proj = "projeto-mkt.html"; Desc = "Automação, governança de sala e presença digital da operação."; ExtraHref = "../readme.html"; ExtraLabel = "README da loja" }
 )

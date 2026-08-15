@@ -14,7 +14,7 @@ $ProductBases = @{
     'seed'         = 'https://seed.caracore.com.br'
     'area51'       = 'https://area51.caracore.com.br'
     'ru'           = 'https://ru.caracore.com.br'
-    'cso'          = 'https://cso.caracore.com.br'
+    'cso'          = 'https://cso-caracore.up.railway.app'
     'ink'          = 'https://ink.caracore.com.br'
     'ete'          = 'https://ete.caracore.com.br'
     'mkt'          = 'https://mkt.caracore.com.br'
@@ -60,6 +60,8 @@ function Get-ExpectedRedirectUrl {
         return $null
     }
     $base = $ProductBases[$Product].TrimEnd('/')
+    # CSO: loja desativada — todos os stubs apontam para a aplicação (raiz).
+    if ($Product -eq 'cso') { return $base }
     if ($FileName -eq 'index.html') { return $base }
     $leaf = $FileName
     if ($FileAliases.ContainsKey($FileName)) { $leaf = $FileAliases[$FileName] }

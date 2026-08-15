@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-06-07
+**Atualizado:** 2026-08-15
 
 ## Posicionamento B2B (copy comercial)
 
@@ -40,7 +40,8 @@ alwaysApply: true
 | **OIDC** | caracore-oidc + *-releases | Reino OIDC | https://oidc.caracore.com.br/ |
 | **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
-| **CSO / MKT** | caracore-cso / caracore-mkt + *-releases | Canais dedicados | cso.* · mkt.* |
+| **CSO** | caracore-cso-frotas / caracore-cso-transportes | Gestão de frotas (Web) | https://cso-caracore.up.railway.app/ |
+| **MKT** | caracore-mkt + *-releases | Canais dedicados | https://mkt.caracore.com.br/ |
 
 **Regras de roteamento (2026):**
 - CTAs novos na matriz → **subdomínio da loja** ou **GitHub Releases** (PDV Rust), nunca `/delivery/` como destino principal.

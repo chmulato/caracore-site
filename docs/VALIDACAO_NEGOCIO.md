@@ -37,7 +37,7 @@ PRODUTOS EM FOCO
 
 Garagem (portfólio + loja no ar):
  10  RU Soberano                       ru.caracore.com.br         lanç. 18/06/2027 · R$ 29,90
- 11  Cara Core CSO                     cso.caracore.com.br        lanç. 08/11/2028
+ 11  Cara Core CSO                     cso-caracore.up.railway.app  aplicação (sem loja) · Transp. 08/11/2028
 
 Gratuito institucional:
   - Cara Core Mkt / Sala — mkt.caracore.com.br · tools.caracore.com.br/sala/
@@ -125,7 +125,8 @@ VALIDAÇÃO POR PRODUTO (resumo)
 ### 2.10 RU / CSO (garagem)
 
   Matriz          OK   portfolio + ecosistema (Garagem)
-  Datas           OK   RU 18/06/2027 · CSO 08/11/2028
+  Datas           OK   RU 18/06/2027 · CSO Transportes 08/11/2028
+  CSO             OK   aplicação https://cso-caracore.up.railway.app/ (sem loja)
 
 
 ---

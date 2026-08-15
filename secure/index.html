@@ -1,181 +1,247 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" data-oidc-provider="google">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <!-- Política de Segurança de Conteúdo para página de login OIDC -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.googleusercontent.com https://*.microsoft.com https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://accounts.google.com https://*.google.com https://login.microsoftonline.com https://*.microsoft.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
+  
+  <!-- X-Content-Type-Options: Previne MIME sniffing -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  
+  <!-- Referrer Policy: Controla informações de referência -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self';">
-  <title>Área Restrita - Simulação Estática</title>
-  <style>
-    :root {
-      --bg: #0b1020;
-      --panel: #141d33;
-      --panel-soft: #17243f;
-      --accent: #7dd3fc;
-      --warning: #fbbf24;
-      --text: #edf6ff;
-      --muted: #b8c4d9;
-      --line: rgba(255,255,255,0.12);
-      --button: #2563eb;
-      --button-dark: #1d4ed8;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #0b1020 0%, #111827 40%, #1e293b 100%);
-      color: var(--text);
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    .shell {
-      width: min(820px, calc(100% - 32px));
-      background: rgba(20, 29, 51, 0.9);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
-      padding: 32px;
-    }
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(125, 211, 252, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(125, 211, 252, 0.3);
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    h1 {
-      margin: 18px 0 12px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.1;
-    }
-    p {
-      color: var(--muted);
-      font-size: 1.05rem;
-      line-height: 1.7;
-      margin: 0 0 20px;
-    }
-    .banner {
-      margin: 24px 0;
-      padding: 18px 20px;
-      border-radius: 14px;
-      background: rgba(251, 191, 36, 0.1);
-      color: #fde68a;
-      border: 1px solid rgba(251, 191, 36, 0.35);
-      font-weight: 600;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      margin-top: 24px;
-    }
-    .card {
-      background: var(--panel-soft);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 18px;
-    }
-    .card h2 {
-      margin: 0 0 10px;
-      font-size: 1rem;
-      color: var(--text);
-    }
-    .card p {
-      margin: 0;
-      font-size: .95rem;
-    }
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-    a.button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px 18px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: 0.2s ease;
-    }
-    a.button.primary {
-      background: var(--button);
-      color: white;
-    }
-    a.button.primary:hover { background: var(--button-dark); }
-    a.button.secondary {
-      background: transparent;
-      border: 1px solid var(--line);
-      color: var(--text);
-    }
-  </style>
+  <title>Área Restrita - Cara Core</title>
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+  <link rel="stylesheet" href="/secure/css/style.css">
+  <link rel="stylesheet" href="/secure/css/styles.css?v=20260814">
+  <link rel="stylesheet" href="/secure/css/auth-states.css?v=20251012">
+  <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251012">
 </head>
 <body>
-  <main class="shell">
-    <div class="badge">Modo estático</div>
-    <h1>Área restrita desativada em simulação</h1>
-    <p>
-      Este ambiente foi convertido para uma versão estática apenas para demonstrar o comportamento visual sem depender de API, Azure, Google ou Microsoft OAuth.
-    </p>
-    <div class="banner">
-      Login, OIDC e autenticação real foram removidos neste mock para evitar dependência de backend externo.
-    </div>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-shield-lock" viewBox="0 0 24 24">
+      <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+      <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-check-circle" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+      <path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+      <path d="M5 12h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-warning" viewBox="0 0 24 24">
+      <path d="M12 4 3 20h18L12 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+      <path d="M12 10v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="12" cy="16.5" r="1" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-gear" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M4.7 9.4a7.5 7.5 0 0 0 0 5.2l2.1.4a5.5 5.5 0 0 0 1.2 2l-0.5 2a7.5 7.5 0 0 0 4.8 0l0.5-2a5.5 5.5 0 0 0 2-1.2l2 .5a7.5 7.5 0 0 0 0-5.2l-2-.5a5.5 5.5 0 0 0-1.2-2l0.5-2a7.5 7.5 0 0 0-4.8 0l-0.5 2a5.5 5.5 0 0 0-2 1.2l-2-.4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="icon-google" viewBox="0 0 24 24">
+      <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.4c-.2 1.2-.9 2.2-1.9 2.8v2.3h3.1c1.8-1.7 2.9-4.2 2.9-6.8z"/>
+      <path fill="#34A853" d="M12 22c2.6 0 4.9-.9 6.5-2.5l-3.1-2.3c-.9.6-2 .9-3.4.9-2.6 0-4.7-1.8-5.5-4.2H3.4v2.7A10 10 0 0 0 12 22z"/>
+      <path fill="#FBBC05" d="M6.5 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.3H3.4A10 10 0 0 0 2 12c0 1.6.4 3.1 1.4 4.7L6.5 14z"/>
+      <path fill="#EA4335" d="M12 6.5c1.4 0 2.6.5 3.5 1.5l2.6-2.5C16.9 3.5 14.6 2.4 12 2.4c-3.6 0-6.6 2.1-8.1 5l3.1 2.4c.7-2.4 2.9-4.3 5-4.3z"/>
+    </symbol>
+    <symbol id="icon-microsoft" viewBox="0 0 24 24">
+      <rect x="2" y="2" width="9.5" height="9.5" fill="#f35325"/>
+      <rect x="12.5" y="2" width="9.5" height="9.5" fill="#81bc06"/>
+      <rect x="2" y="12.5" width="9.5" height="9.5" fill="#05a6f0"/>
+      <rect x="12.5" y="12.5" width="9.5" height="9.5" fill="#ffba08"/>
+    </symbol>
+  </svg>
 
-    <div class="cards">
-      <div class="card">
-        <h2>Objetivo</h2>
-        <p>Simular um banner explicativo sem quebrar a navegação do site.</p>
+  <div id="loadingOverlay" class="loading-overlay">
+    <div class="loading-content">
+      <div class="loading-spinner mb-3" aria-hidden="true"></div>
+      <h5>Verificando autenticação...</h5>
+      <p>Aguarde um momento</p>
+    </div>
+  </div>
+
+  <div id="authScreen" class="auth-screen oidc-container">
+    <div class="auth-card">
+      <div class="auth-card-header">
+        <div class="auth-logo">
+          <svg class="icon icon-xl" aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+        </div>
+        <h1 class="auth-card-title">Acesso Restrito</h1>
+        <p class="auth-card-subtitle">Já tem autorização? Escolha seu provedor de identidade para continuar</p>
       </div>
-      <div class="card">
-        <h2>Estado</h2>
-        <p>Fluxo de acesso desabilitado e interface em modo demonstrativo.</p>
+
+      <div class="permissions-section">
+        <h3 class="permissions-title">Este aplicativo solicita permissão para:</h3>
+        <ul class="permissions-list">
+          <li>
+            <span class="permissions-icon">✔</span>
+            <span class="permissions-text">Autenticar sua identidade com OpenID Connect</span>
+          </li>
+          <li>
+            <span class="permissions-icon">✔</span>
+            <span class="permissions-text">Acessar informações básicas do seu perfil</span>
+          </li>
+          <li>
+            <span class="permissions-icon">✔</span>
+            <span class="permissions-text">Confirmar seu endereço de e-mail</span>
+          </li>
+        </ul>
       </div>
-      <div class="card">
-        <h2>Próximo passo</h2>
-        <p>Reativar o login somente quando a infraestrutura e os credenciais estiverem prontas.</p>
+
+      <div class="email-input-section">
+        <div class="form-group">
+          <label for="userEmailInput" class="form-label required">Email</label>
+          <input 
+            type="email" 
+            id="userEmailInput" 
+            name="email" 
+            class="form-input" 
+            placeholder="seu.email@exemplo.com" 
+            required 
+            autocomplete="email"
+          >
+          <div class="form-error" id="emailError" role="alert"></div>
+          <div class="form-hint" id="emailHint">
+            <span class="hint-icon" aria-hidden="true">ℹ️</span>
+            <span class="hint-text">Informe o email que você usa para autenticação</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="provider-buttons">
+        <button id="btnLoginGoogle" class="btn btn-provider btn-provider-google" type="button">
+          <span class="provider-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-google"></use></svg></span>
+          <span class="provider-text">Continuar com Google</span>
+          <div class="loading-spinner d-none" aria-hidden="true"></div>
+        </button>
+
+        <button id="btnLoginMicrosoft" class="btn btn-provider btn-provider-microsoft" type="button">
+          <span class="provider-icon provider-icon-microsoft" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#icon-microsoft"></use></svg></span>
+          <span class="provider-text">Continuar com Microsoft</span>
+          <div class="loading-spinner d-none" aria-hidden="true"></div>
+        </button>
+        <p class="provider-hint provider-hint-microsoft" aria-label="Informação sobre contas Microsoft">
+          <span class="hint-icon" aria-hidden="true">ℹ️</span>
+          <span class="hint-text">Apenas contas pessoais (@hotmail.com, @outlook.com, @live.com)</span>
+        </p>
+      </div>
+
+      <div class="auth-alert" role="alert">
+        <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-warning"></use></svg>
+        <div>
+          Somente contas pessoais podem acessar esta Área 51. Contas corporativas ou escolares são bloqueadas pelas políticas do provedor.
+        </div>
+      </div>
+
+      <div class="auth-certified" role="note">
+        <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-warning"></use></svg>
+        <div>
+          Para manter o fluxo de login/logout estável, utilize os navegadores certificados: Chrome ou Microsoft Edge (versão atual), Firefox 118+ e Safari 17+ em macOS/iOS. Antes de testar novamente, limpe sessões antigas ou use janela anônima para evitar bloqueios de cookies.
+        </div>
+      </div>
+
+      <div id="authAlerts"></div>
+
+      <p class="static-mode-note" role="note">
+        <strong>Modo estático:</strong> autenticação real (Azure/Google) está desativada nesta simulação.
+      </p>
+
+      <div class="auth-footer">
+        Ao continuar, você aceita nossos
+        <a href="/politica/termos-servico.html">Termos de Uso</a> e
+        <a href="/politica/politica-privacidade.html">Política de Privacidade</a>.
       </div>
     </div>
+  </div>
 
-    <div class="actions">
-      <a class="button primary" href="/">Voltar ao site principal</a>
-      <a class="button secondary" href="/secure/restrita.html">Abrir área restrita simulada</a>
-    </div>
-  </main>
-</body>
-</html>
+  <div class="site-shell">
+    <header class="site-nav">
+      <div class="nav-inner">
+        <a class="nav-brand" href="/" aria-label="Página inicial Cara Core">
+          <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+          <span>Cara Core Informática</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-controls="navLinks" aria-expanded="false" id="navToggle">
+          <span></span>
+          <span class="visually-hidden">Menu</span>
+        </button>
+        <nav class="nav-links" id="navLinks">
+          <a class="nav-link" href="/index.html#home">Início</a>
+          <a class="nav-link" href="/index.html#servicos">Serviços</a>
+          <a class="nav-link" href="/portfolio.html">Portfólio</a>
+          <a class="nav-link" href="/index.html#sobre">Sobre</a>
+          <a class="nav-link" href="/index.html#diferenciais">Diferenciais</a>
+          <a class="nav-link" href="/index.html#contato">Contato</a>
+          <span class="nav-cta">
+            <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
+            <span>Área 51</span>
+          </span>
+        </nav>
+      </div>
+    </header>
 
+  <main id="mainContent" class="page-content">
+      <div class="container">
+        <section class="hero">
+          <div>
+            <span class="hero-badge">
+              <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-check-circle"></use></svg>
+              Autenticado
+            </span>
+            <h1 class="hero-title">Bem-vindo à Área Restrita</h1>
+            <p class="hero-text">
+              Sua identidade foi confirmada com sucesso. Em instantes você será redirecionado para o conteúdo protegido da Cara Core.
+            </p>
+            <div id="userInfo" class="user-info-card d-none">
+              <img id="userAvatar" src="" alt="Avatar do usuário">
+              <div>
+                <div id="userName" class="user-name"></div>
+                <div id="userEmail" class="user-email"></div>
+                <div id="userProvider" class="user-provider-badge"></div>
+              </div>
+            </div>
+            <div class="cta-group">
+              <a href="/secure/restrita.html" class="btn btn-primary">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+                Acessar conteúdo protegido
+              </a>
+              <a href="/secure/admin-logs.html" class="btn btn-ghost">
+                <svg class="icon icon-sm" aria-hidden="true"><use href="#icon-gear"></use></svg>
+                Logs do sistema
+              </a>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img src="/images/security.png" alt="Ilustração de segurança">
+          </div>
+        </section>
+      </div>
     </main>
   </div>
 
-  <!-- Scripts da aplicação -->
-  <script defer src="/secure/js/log-config.js?v=20251001"></script>
-  <script defer src="/secure/js/logger.js?v=20250929"></script>
-  <script defer src="/secure/js/environment-config.js?v=20251117"></script>
-  <script defer src="/js/vendor/oidc-client-ts.js"></script>
-  <script defer src="/secure/js/dynamic-config.js?v=20250929"></script>
-  <script defer src="/secure/js/user-session-manager.js?v=20251115"></script>
-  <script defer src="/secure/js/auth-standalone.js?v=20251001b"></script>
-  <script defer src="/secure/js/error-handler.js?v=20251012"></script>
-  <script defer src="/secure/js/ui-feedback.js?v=20251012"></script>
-  <script defer src="/secure/js/enhanced-error-handler.js?v=20251012"></script>
-  <script defer src="/secure/js/mock-api.js?v=20251113"></script>
-  <script defer src="/secure/js/authorization-check.js?v=20251113"></script>
-  <!-- Módulos específicos de autenticação (carregar antes do main.js) -->
-  <script defer src="/secure/js/auth-google.js?v=20251117"></script>
-  <script defer src="/secure/js/auth-microsoft.js?v=20251117"></script>
-  <script defer src="/secure/js/nav.js?v=20251011"></script>
-  <script defer src="/secure/js/main.js?v=20251117"></script>
+  <script>
+    (function () {
+      function explain(event) {
+        event.preventDefault();
+        var note = document.querySelector('.static-mode-note');
+        if (!note) return;
+        note.classList.add('is-highlighted');
+        window.setTimeout(function () {
+          note.classList.remove('is-highlighted');
+        }, 1200);
+      }
 
-  <!-- Os scripts foram movidos para arquivos externos -->
-  <!-- Veja /secure/js/main.js e /secure/js/nav.js -->
+      var google = document.getElementById('btnLoginGoogle');
+      var microsoft = document.getElementById('btnLoginMicrosoft');
+      if (google) google.addEventListener('click', explain);
+      if (microsoft) microsoft.addEventListener('click', explain);
+    })();
+  </script>
 </body>
 </html>

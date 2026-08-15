@@ -143,6 +143,23 @@ a { color: inherit; }
 .auth-footer { font-size:0.85rem; color: var(--text-muted); }
 .auth-footer a { color: var(--brand-accent); text-decoration:none; }
 .auth-footer a:hover { text-decoration:underline; }
+.static-mode-note {
+  margin: 1rem 0 0;
+  padding: 0.7rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(217, 119, 6, 0.22);
+  color: #92400e;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  text-align: left;
+  font-weight: 500;
+}
+.static-mode-note strong { font-weight: 700; }
+.static-mode-note.is-highlighted {
+  border-color: rgba(217, 119, 6, 0.5);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.28);
+}
 .auth-certified { margin-top:1.25rem; font-size:0.82rem; color: var(--text-muted); display:flex; gap:0.65rem; align-items:flex-start; background: rgba(15, 23, 42, 0.04); border-radius:12px; padding:0.85rem 1rem; border:1px solid rgba(37, 99, 235, 0.12); }
 .auth-certified svg { color: var(--brand-primary); flex-shrink:0; margin-top:0.15rem; }
 .user-info-card { background: rgba(226, 232, 240, 0.45); border:1px solid rgba(148, 163, 184, 0.3); border-radius:16px; padding:1.5rem; display:flex; flex-direction:column; gap:0.65rem; align-items:flex-start; }

@@ -77,11 +77,11 @@
         },
         {
             "source": "/oauth/google/token",
-            "destination": "https://caracore-backend-docker.azurewebsites.net/oauth/google/token"
+            "destination": "/secure/index.html"
         },
         {
             "source": "/oauth/microsoft/token",
-            "destination": "https://caracore-backend-docker.azurewebsites.net/oauth/microsoft/token"
+            "destination": "/secure/index.html"
         },
         {
             "source": "/delivery/sala",

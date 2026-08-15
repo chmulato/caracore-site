@@ -1,223 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <!-- Política de Segurança de Conteúdo -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net; font-src 'self' data:; frame-src 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests">
-  
-  <!-- X-Content-Type-Options: Previne MIME sniffing -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  
-  <!-- Referrer Policy: Controla informações de referência -->
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Área Restrita - Conteúdo Protegido</title>
-  <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
-  <link rel="stylesheet" href="/secure/css/secure-layout.css?v=20251012" />
-  <link rel="stylesheet" href="/secure/css/secure-restrita.css?v=20251012" />
-  <link rel="stylesheet" href="/secure/css/enhanced-alerts.css?v=20251012" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self';">
+  <title>Área Restrita - Simulação Estática</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-soft: #1f2937;
+      --accent: #7dd3fc;
+      --warning: #fbbf24;
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --line: rgba(255,255,255,0.12);
+      --button: #2563eb;
+      --button-dark: #1d4ed8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f172a 0%, #111827 40%, #1e293b 100%);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .shell {
+      width: min(840px, calc(100% - 32px));
+      background: rgba(17, 24, 39, 0.9);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.35);
+      padding: 32px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(125, 211, 252, 0.12);
+      border: 1px solid rgba(125, 211, 252, 0.3);
+      border-radius: 999px;
+      padding: 8px 14px;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: .08em;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+    }
+    p {
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.7;
+      margin: 0 0 18px;
+    }
+    .banner {
+      margin: 22px 0;
+      padding: 18px 20px;
+      border-radius: 14px;
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      color: #fde68a;
+      font-weight: 700;
+    }
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 18px 0 30px;
+    }
+    .item {
+      background: var(--panel-soft);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+    .item h2 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+    .item p {
+      margin: 0;
+      font-size: .94rem;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    a.button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+    a.button.primary {
+      background: var(--button);
+      color: white;
+    }
+    a.button.primary:hover { background: var(--button-dark); }
+    a.button.secondary {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--text);
+    }
+  </style>
 </head>
 <body>
-  <svg class="icon-sprite" aria-hidden="true" focusable="false">
-    <symbol id="icon-shield-lock" viewBox="0 0 24 24">
-      <path d="M12 2 4 5v6c0 5.2 3.4 10 8 11 4.6-1 8-5.8 8-11V5l-8-3z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-      <path d="M9.5 11V9a2.5 2.5 0 0 1 5 0v2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      <rect x="9" y="11" width="6" height="5" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
-      <circle cx="12" cy="13.5" r="0.9" fill="currentColor"/>
-    </symbol>
-    <symbol id="icon-check-circle" viewBox="0 0 24 24">
-      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
-      <path d="M8.5 12.5 11 15l4.5-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="icon-cloud-check" viewBox="0 0 24 24">
-      <path d="M7.5 19a4.5 4.5 0 0 1-.6-9 5 5 0 0 1 9.6-1.5A3.5 3.5 0 0 1 16.5 19Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M10.5 13.5 12.5 15.5 16 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="icon-google" viewBox="0 0 24 24">
-      <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.3-.2-1.9H12v3.6h5.4c-.2 1.2-.9 2.2-1.9 2.8v2.3h3.1c1.8-1.7 2.9-4.2 2.9-6.8z"/>
-      <path fill="#34A853" d="M12 22c2.6 0 4.9-.9 6.5-2.5l-3.1-2.3c-.9.6-2 .9-3.4.9-2.6 0-4.7-1.8-5.5-4.2H3.4v2.7A10 10 0 0 0 12 22z"/>
-      <path fill="#FBBC05" d="M6.5 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.3H3.4A10 10 0 0 0 2 12c0 1.6.4 3.1 1.4 4.7L6.5 14z"/>
-      <path fill="#EA4335" d="M12 6.5c1.4 0 2.6.5 3.5 1.5l2.6-2.5C16.9 3.5 14.6 2.4 12 2.4c-3.6 0-6.6 2.1-8.1 5l3.1 2.4c.7-2.4 2.9-4.3 5-4.3z"/>
-    </symbol>
-    <symbol id="icon-lock-fill" viewBox="0 0 24 24">
-      <rect x="5" y="11" width="14" height="10" rx="2.5" fill="currentColor" opacity="0.12" />
-      <rect x="7" y="11" width="10" height="9" rx="2" fill="currentColor" />
-      <path d="M9 10.5V8a3 3 0 0 1 6 0v2.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="icon-box-arrow-left" viewBox="0 0 24 24">
-      <path d="M15 6 9 12l6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M21 12H9" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-      <path d="M4 5h4v14H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-    </symbol>
-    <symbol id="icon-journal" viewBox="0 0 24 24">
-      <rect x="5" y="3" width="14" height="18" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
-      <path d="M9 7h6M9 11h6M9 15h3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-    </symbol>
-    <symbol id="icon-warning" viewBox="0 0 24 24">
-      <path d="M12 4 3 20h18L12 4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-      <path d="M12 10v4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-      <circle cx="12" cy="16.5" r="1" fill="currentColor"/>
-    </symbol>
-  </svg>
+  <main class="shell">
+    <div class="badge">Modo estático</div>
+    <h1>Conteúdo restrito em modo demonstrativo</h1>
+    <p>
+      Esta área foi transformada em uma simulação estática para preservar a aparência de um ambiente protegido sem depender de Google, Microsoft, Azure ou qualquer backend real de autenticação.
+    </p>
+    <div class="banner">
+      A autenticação OIDC foi removida propositalmente neste mock; o banner abaixo serve como aviso claro do estado atual.
+    </div>
 
-  <div class="site-shell">
-    <header class="site-nav">
-      <div class="nav-inner">
-        <a class="nav-brand" href="/">
-          <svg aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
-          <span>Cara Core Informática</span>
-        </a>
-        <nav class="nav-links">
-          <a class="nav-link active" href="/secure/restrita.html">Área 51</a>
-          <a class="nav-link" href="/secure/historia.html">História</a>
-          <a class="nav-link" href="/area51/wiki/index.html">Wiki Técnica</a>
-          <a class="nav-link" href="/">Site Principal</a>
-        </nav>
+    <div class="list">
+      <div class="item">
+        <h2>Estado</h2>
+        <p>Fluxo de acesso desativado e conteúdo apresentado apenas como demonstração visual.</p>
       </div>
-    </header>
-
-    <main id="mainContent" class="page-content">
-      <div class="container">
-        <!-- Informações do Usuário Autorizado -->
-        <div id="userInfoCard" class="user-info-card d-none">
-          <div class="user-info-content">
-            <div class="user-avatar">
-              <svg class="icon" aria-hidden="true"><use href="#icon-check-circle"></use></svg>
-            </div>
-            <div class="user-details">
-              <h6 class="user-name" id="userName">Carregando...</h6>
-              <p class="user-email" id="userEmail">Verificando autorização...</p>
-              <span class="user-role badge badge-success" id="userRole">Usuário</span>
-            </div>
-            <div class="user-actions">
-              <button class="btn btn-sm btn-outline" id="refreshAuth" title="Atualizar autorização">
-                <svg class="icon-sm" aria-hidden="true"><use href="#icon-cloud-check"></use></svg>
-              </button>
-              <button class="btn btn-sm btn-danger" id="logoutUser" title="Fazer logout">
-                <svg class="icon-sm" aria-hidden="true"><use href="#icon-box-arrow-left"></use></svg>
-              </button>
-            </div>
-          </div>
-        </div>
-        
-        <section class="hero">
-          <div>
-            <span class="badge badge-soft">
-              <svg class="icon-sm" aria-hidden="true"><use href="#icon-shield-lock"></use></svg>
-              Conteúdo restrito
-            </span>
-            <h1 class="hero-title">Bem-vindo à Área Restrita</h1>
-            <p class="hero-text">Aqui estão os materiais exclusivos da Cara Core. Seu acesso foi autenticado e monitoramos cada sessão para manter tudo seguro.</p>
-
-            <div class="badge-stack">
-              <span class="badge badge-primary">
-                <svg class="icon-sm" aria-hidden="true"><use href="#icon-cloud-check"></use></svg>
-                Microsoft Entra ID
-              </span>
-              <span class="badge badge-success">
-                <svg class="icon-sm" aria-hidden="true"><use href="#icon-google"></use></svg>
-                Google Workspace
-              </span>
-              <span class="badge badge-info">
-                <svg class="icon-sm" aria-hidden="true"><use href="#icon-lock-fill"></use></svg>
-                Sessões monitoradas
-              </span>
-            </div>
-
-            <div class="session-meta">
-              <span id="roleBadge" class="badge badge-pill badge-role d-none">Usuário autenticado</span>
-              <span id="currentProvider" class="provider-note"></span>
-              <a href="../secure/admin-logs.html" class="btn btn-outline btn-sm">
-                <svg aria-hidden="true"><use href="#icon-journal"></use></svg>
-                Logs do sistema
-              </a>
-            </div>
-
-            <div id="statusPanel" class="status-panel status-panel-info d-none"></div>
-            <p class="status-hint">Validando credenciais de acesso...</p>
-          </div>
-
-          <div class="hero-media">
-            <img src="img/security.png" alt="Ilustração de proteção de dados" />
-          </div>
-        </section>
-
-        <section class="content-section">
-          <h2>Conteúdo protegido</h2>
-          <p>Utilize esta área para hospedar manuais, dashboards, relatórios e outros materiais reservados à equipe Cara Core ou clientes aprovados. Organize os links conforme a necessidade do projeto.</p>
-
-          <div class="highlight-box" style="margin: 2rem 0; padding: 2rem; background: rgba(37, 99, 235, 0.08); border-radius: 16px;">
-            <h3 style="margin-top: 0; color: var(--brand-primary);">Apresentações Executivas</h3>
-            <p>Documentos confidenciais para investidores, executivos e parceiros estratégicos sobre nossos produtos secretos:</p>
-            <ul style="list-style: none; padding-left: 0;">
-              <li style="margin-bottom: 1rem;">
-                <a href="apresentacao-hub.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--brand-primary); color: white; border-radius: 8px; font-weight: 600; text-decoration: none; transition: transform 0.2s ease;">
-                  <svg class="icon-sm" aria-hidden="true" style="width: 20px; height: 20px;"><use href="#icon-shield-lock"></use></svg>
-                  CaraCore Hub - Apresentação Executiva
-                </a>
-                <p style="margin: 0.5rem 0 0 0; color: var(--text-muted); font-size: 0.95rem;">Sistema Empresarial de Gestão de Encomendas - Apresentação para investidores</p>
-              </li>
-              <li style="margin-bottom: 1rem;">
-                <a href="apresentacao-seed.html" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.5rem; background: var(--brand-secondary); color: white; border-radius: 8px; font-weight: 600; text-decoration: none; transition: transform 0.2s ease;">
-                  <svg class="icon-sm" aria-hidden="true" style="width: 20px; height: 20px;"><use href="#icon-shield-lock"></use></svg>
-                  CaraCore Seed - Apresentação Executiva
-                </a>
-                <p style="margin: 0.5rem 0 0 0; color: var(--text-muted); font-size: 0.95rem;">Sistema Empresarial de Controle de Licenças - Apresentação para investidores</p>
-              </li>
-            </ul>
-          </div>
-
-          <p>Que tal conhecer um pouco da nossa <a href="historia.html">história</a>?</p>
-
-          <article class="story-invite">
-            <h3>Conheça a jornada da Área 51</h3>
-            <p>
-              Antes de a Área 51 se tornar o espaço seguro que você usa hoje, ela nasceu de uma inquietação muito humana: como oferecer confiança digital sem assustar quem só quer um serviço simples? Preparamos uma narrativa acolhedora, sem jargões, contando os bastidores dessa construção — dos primeiros rascunhos em guardanapos às madrugadas cuidando dos primeiros acessos.
-            </p>
-            <p>
-              Reserve cerca de dez minutos, pegue um café e mergulhe nessa história cheia de tropeços, vitórias e desafios que ainda nos movem. É uma leitura para todos, sem termos técnicos, feita para inspirar nossa equipe, parceiros e clientes.
-            </p>
-            <a class="btn btn-secondary" href="historia.html">
-              <svg aria-hidden="true" class="icon-sm"><use href="#icon-journal"></use></svg>
-              Ler a história completa
-            </a>
-          </article>
-          <!-- Espaço para inserir conteúdo protegido -->
-        </section>
+      <div class="item">
+        <h2>Finalidade</h2>
+        <p>Manter a navegação funcional e transmitir a intenção do projeto sem autenticação real.</p>
       </div>
-    </main>
-  </div>
+      <div class="item">
+        <h2>Reativação</h2>
+        <p>Quando os serviços externos estiverem preparados, o login pode ser restaurado com segurança.</p>
+      </div>
+    </div>
 
-  <!-- Sistema de Notificações (Fase 2 - Item 5) -->
-  <script src="/secure/js/notification-manager.js"></script>
-  <script src="/secure/js/error-messages.js"></script>
-  <script src="/secure/js/notification-bridge.js"></script>
-
-  <!-- Session Manager - Controle de Sessão OAuth 2.1 -->
-  <script src="/secure/js/session-manager.js"></script>
-  
-  <!-- Logout Modal (Fase 2 - Item 4) -->
-  <script src="/secure/js/logout-modal.js"></script>
-  
-  <!-- Sistema de Autorização - Fase 4 -->
-  <script src="/secure/js/authorization-check.js?v=20251102"></script>
-  <script src="/secure/js/secure-page-guard.js"></script>
-  <script src="/secure/js/restrita-main.js?v=20251117"></script>
-  
-  <style>
-    /* CSS para animação do indicador e card do usuário */
-      @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      
-      .user-info-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 16px;
-        margin-bottom: 2rem;
-        padding: 0;
+    <div class="actions">
+      <a class="button primary" href="/">Voltar ao site principal</a>
+      <a class="button secondary" href="/secure/index.html">Voltar à tela de simulação</a>
+    </div>
+  </main>
+</body>
+</html>
         box-shadow: 0 8px 32px rgba(102, 126, 234, 0.2);
         border: 1px solid rgba(255, 255, 255, 0.1);
         animation: slideInFromTop 0.6s ease-out;

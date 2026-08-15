@@ -59,6 +59,11 @@ if not logger.handlers:
     logger.addHandler(handler)
 logger.setLevel(logging.INFO)
 
+# Permite desativar toda a camada de autenticação e autorização
+# Útil para migrar o site para modo estático / sem custos de infra
+FORCE_DISABLE_AUTH = os.getenv('DISABLE_AUTH', 'true').lower() in ('1', 'true', 'yes')
+if FORCE_DISABLE_AUTH:
+    logger.warning("Autenticação e autorização FORÇADAS como DESABILITADAS (DISABLE_AUTH=true). Modo site estático ativado.")
 
 def verify_admin_access() -> bool:
     """Basic admin-access gate used by compatibility tests and wrappers."""
@@ -66,125 +71,177 @@ def verify_admin_access() -> bool:
     return bool(auth_header)
 
 # Import auth_manager para validação PKCE e logging
-try:
-    from auth_manager import PKCEValidator, AuditLogger as AuthManagerAuditLogger
-    PKCE_VALIDATION_ENABLED = True
-    logger.info("Auth manager carregado - validação PKCE habilitada")
-    # Garantir que AuditLogger tenha o método log_access_check
-    if not hasattr(AuthManagerAuditLogger, 'log_access_check'):
-        def log_access_check(email: str, is_authorized: bool, client_ip: str = None) -> None:
-            """Registra verificação de autorização de acesso"""
-            logger.info(
-                f"Access check: email={email}, authorized={is_authorized}, ip={client_ip}",
-                extra={
-                    "event": "access_check",
-                    "email": email,
-                    "authorized": is_authorized,
-                    "client_ip": client_ip
-                }
-            )
-        AuthManagerAuditLogger.log_access_check = staticmethod(log_access_check)
-    AuditLogger = AuthManagerAuditLogger
-except ImportError:
+if not FORCE_DISABLE_AUTH:
+    try:
+        from auth_manager import PKCEValidator, AuditLogger as AuthManagerAuditLogger
+        PKCE_VALIDATION_ENABLED = True
+        logger.info("Auth manager carregado - validação PKCE habilitada")
+        # Garantir que AuditLogger tenha o método log_access_check
+        if not hasattr(AuthManagerAuditLogger, 'log_access_check'):
+            def log_access_check(email: str, is_authorized: bool, client_ip: str = None) -> None:
+                logger.info(
+                    f"Access check: email={email}, authorized={is_authorized}, ip={client_ip}",
+                    extra={
+                        "event": "access_check",
+                        "email": email,
+                        "authorized": is_authorized,
+                        "client_ip": client_ip
+                    }
+                )
+            AuthManagerAuditLogger.log_access_check = staticmethod(log_access_check)
+        AuditLogger = AuthManagerAuditLogger
+    except ImportError:
+        PKCE_VALIDATION_ENABLED = False
+        logger.warning("auth_manager não disponível - validação PKCE desabilitada")
+        # Classe AuditLogger local como fallback
+        class AuditLogger:
+            @staticmethod
+            def log_access_check(email: str, is_authorized: bool, client_ip: str = None) -> None:
+                logger.info(
+                    f"Access check: email={email}, authorized={is_authorized}, ip={client_ip}",
+                    extra={
+                        "event": "access_check",
+                        "email": email,
+                        "authorized": is_authorized,
+                        "client_ip": client_ip
+                    }
+                )
+else:
     PKCE_VALIDATION_ENABLED = False
-    logger.warning("auth_manager não disponível - validação PKCE desabilitada")
-    # Classe AuditLogger local como fallback
     class AuditLogger:
-        """Logger de auditoria local (fallback quando auth_manager não está disponível)"""
         @staticmethod
         def log_access_check(email: str, is_authorized: bool, client_ip: str = None) -> None:
-            """Registra verificação de autorização de acesso"""
-            logger.info(
-                f"Access check: email={email}, authorized={is_authorized}, ip={client_ip}",
-                extra={
-                    "event": "access_check",
-                    "email": email,
-                    "authorized": is_authorized,
-                    "client_ip": client_ip
-                }
-            )
+            logger.info("Access check skipped - auth disabled", extra={"email": email, "authorized": is_authorized})
 
 # Import rate_limiter para proteção contra força bruta
-try:
-    from rate_limiter import rate_limit, get_rate_limiter
-    RATE_LIMITING_ENABLED = True
-    logger.info("Rate limiter carregado - proteção contra força bruta habilitada")
-except ImportError:
+if not FORCE_DISABLE_AUTH:
+    try:
+        from rate_limiter import rate_limit, get_rate_limiter
+        RATE_LIMITING_ENABLED = True
+        logger.info("Rate limiter carregado - proteção contra força bruta habilitada")
+    except ImportError:
+        RATE_LIMITING_ENABLED = False
+        logger.warning("rate_limiter não disponível - rate limiting desabilitado")
+        def rate_limit(endpoint=None):
+            def decorator(f):
+                return f
+            return decorator
+else:
     RATE_LIMITING_ENABLED = False
-    logger.warning("rate_limiter não disponível - rate limiting desabilitado")
-    # Dummy decorator se não disponível
     def rate_limit(endpoint=None):
         def decorator(f):
             return f
         return decorator
 
 # Import security para HTTPS enforcement e headers
-try:
-    from security import add_security_headers, require_https, log_security_event
-    SECURITY_HEADERS_ENABLED = True
-    logger.info("Security module carregado - HTTPS enforcement e headers habilitados")
-except ImportError:
+if not FORCE_DISABLE_AUTH:
+    try:
+        from security import add_security_headers, require_https, log_security_event
+        SECURITY_HEADERS_ENABLED = True
+        logger.info("Security module carregado - HTTPS enforcement e headers habilitados")
+    except ImportError:
+        SECURITY_HEADERS_ENABLED = False
+        logger.warning("security module não disponível - security headers desabilitados")
+        def require_https(f):
+            return f
+        def add_security_headers(response, use_swagger_csp=False):
+            return response
+else:
     SECURITY_HEADERS_ENABLED = False
-    logger.warning("security module não disponível - security headers desabilitados")
-    # Dummy decorator se não disponível
     def require_https(f):
         return f
     def add_security_headers(response, use_swagger_csp=False):
-        """Dummy function quando security module não está disponível"""
         return response
 
 # Import authorization para controle de acesso
-try:
-    from authorization import (
-        is_user_authorized, get_user_role, add_authorized_user, 
-        remove_authorized_user, update_authorized_user, add_pending_request, 
-        load_authorized_users, save_authorized_users, get_pending_request_by_email,
-        detect_provider_from_email, is_allowed_email_domain, auth_manager
-    )
-    AUTHORIZATION_ENABLED = True
-    logger.info("Authorization module carregado - controle de acesso habilitado")
-except ImportError:
+if not FORCE_DISABLE_AUTH:
+    try:
+        from authorization import (
+            is_user_authorized, get_user_role, add_authorized_user, 
+            remove_authorized_user, update_authorized_user, add_pending_request, 
+            load_authorized_users, save_authorized_users, get_pending_request_by_email,
+            detect_provider_from_email, is_allowed_email_domain, auth_manager
+        )
+        AUTHORIZATION_ENABLED = True
+        logger.info("Authorization module carregado - controle de acesso habilitado")
+    except ImportError:
+        AUTHORIZATION_ENABLED = False
+        logger.warning("authorization module não disponível - controle de acesso desabilitado")
+else:
     AUTHORIZATION_ENABLED = False
-    logger.warning("authorization module não disponível - controle de acesso desabilitado")
+    logger.warning("Authorization disabled by FORCE_DISABLE_AUTH - all users allowed")
+    def is_user_authorized(email, provider=None):
+        return True
+    def get_user_role(email):
+        return 'admin' if email and email.endswith('@caracore.com') else 'user'
+    def add_authorized_user(*a, **k):
+        return False
+    def remove_authorized_user(*a, **k):
+        return False
+    def update_authorized_user(*a, **k):
+        return False
+    def add_pending_request(*a, **k):
+        return False
+    def load_authorized_users(*a, **k):
+        return {"version": "1.0", "users": [], "pending_requests": []}
+    def save_authorized_users(*a, **k):
+        return True
+    def get_pending_request_by_email(email):
+        return None
+    def detect_provider_from_email(email):
+        return 'google'
+    def is_allowed_email_domain(email):
+        return True
+    class auth_manager:
+        pass
 
 # Import SessionManager para Fase 7 - Refresh Tokens
-# A chave TOKEN_ENCRYPTION_KEY deve estar configurada como variável de ambiente no Azure App Service
 SESSION_MANAGER_ENABLED = False
 SessionManager = None
-
-try:
-    from session_manager import SessionManager
-    # Verificar se a chave de criptografia está configurada
-    encryption_key = os.getenv('TOKEN_ENCRYPTION_KEY')
-    if not encryption_key:
-        logger.warning("TOKEN_ENCRYPTION_KEY não configurada - sistema de refresh tokens desabilitado")
-    else:
-        # Tentar inicializar para verificar se tudo está OK
-        try:
-            test_manager = SessionManager()
-            SESSION_MANAGER_ENABLED = True
-            logger.info("SessionManager carregado - sistema de refresh tokens habilitado")
-        except ValueError as e:
-            # Chave de criptografia inválida
-            logger.warning(f"SessionManager não pode ser inicializado (chave inválida): {e}")
-        except Exception as e:
-            # Outro erro na inicialização
-            logger.warning(f"Erro ao inicializar SessionManager: {e}", exc_info=True)
-except ImportError as e:
-    logger.warning(f"session_manager não disponível - sistema de refresh tokens desabilitado: {e}")
+if not FORCE_DISABLE_AUTH:
+    try:
+        from session_manager import SessionManager
+        # Verificar se a chave de criptografia está configurada
+        encryption_key = os.getenv('TOKEN_ENCRYPTION_KEY')
+        if not encryption_key:
+            logger.warning("TOKEN_ENCRYPTION_KEY não configurada - sistema de refresh tokens desabilitado")
+        else:
+            try:
+                test_manager = SessionManager()
+                SESSION_MANAGER_ENABLED = True
+                logger.info("SessionManager carregado - sistema de refresh tokens habilitado")
+            except ValueError as e:
+                logger.warning(f"SessionManager não pode ser inicializado (chave inválida): {e}")
+            except Exception as e:
+                logger.warning(f"Erro ao inicializar SessionManager: {e}", exc_info=True)
+    except ImportError as e:
+        logger.warning(f"session_manager não disponível - sistema de refresh tokens desabilitado: {e}")
+else:
+    logger.info("Session manager desabilitado por FORCE_DISABLE_AUTH")
 
 # Import authorization_middleware para decorators de proteção (Fase 6)
-try:
-    from authorization_middleware import (
-        require_authorization, require_admin as middleware_require_admin, require_super_admin,
-        is_user_authorized as check_user_authorized, get_current_user
-    )
-    AUTHORIZATION_MIDDLEWARE_ENABLED = True
-    logger.info("Authorization middleware carregado (Fase 6) - proteção robusta de endpoints habilitada")
-except ImportError:
+if not FORCE_DISABLE_AUTH:
+    try:
+        from authorization_middleware import (
+            require_authorization, require_admin as middleware_require_admin, require_super_admin,
+            is_user_authorized as check_user_authorized, get_current_user
+        )
+        AUTHORIZATION_MIDDLEWARE_ENABLED = True
+        logger.info("Authorization middleware carregado (Fase 6) - proteção robusta de endpoints habilitada")
+    except ImportError:
+        AUTHORIZATION_MIDDLEWARE_ENABLED = False
+        logger.warning("authorization_middleware não disponível - usando fallback")
+        def require_authorization(role='user'):
+            def decorator(f):
+                return f
+            return decorator
+        def middleware_require_admin():
+            def decorator(f):
+                return f
+            return decorator
+else:
     AUTHORIZATION_MIDDLEWARE_ENABLED = False
-    logger.warning("authorization_middleware não disponível - usando fallback")
-    # Mantém compatibilidade com decorator antigo
+    logger.info("Authorization middleware desabilitado por FORCE_DISABLE_AUTH - decorators são no-op")
     def require_authorization(role='user'):
         def decorator(f):
             return f

@@ -1,8 +1,7 @@
 /**
  * secure-page-guard.js
  *
- * Simulação estática: não há autenticação real, apenas uma mensagem explicativa
- * para manter o comportamento visual sem depender de backend Azure/Google.
+ * Simulação estática: a área restrita não depende mais de autenticação real.
  */
 
 (function() {
@@ -40,89 +39,5 @@
     } else {
         renderStaticBanner();
     }
-})();
-        window.location.href = redirectUrl.toString();
-    }
-
-    /**
-     * Protege a página atual
-     */
-    async function protectPage() {
-        console.log('[SecurePageGuard] Iniciando proteção da página...');
-
-        // Aguardar um pouco para scripts carregarem
-        await new Promise(resolve => setTimeout(resolve, 500));
-
-        // Tentar verificar autenticação em ordem de prioridade
-        let authResult = null;
-
-        // 1. Tentar OIDCAuth primeiro (mais confiável)
-        authResult = await checkOIDCAuthentication();
-        
-        // 2. Se OIDCAuth não funcionou, tentar SessionManager
-        if (!authResult.authenticated) {
-            console.log('[SecurePageGuard] OIDCAuth não autenticado, tentando SessionManager...');
-            authResult = checkSessionManagerAuth();
-        }
-
-        // 3. Se SessionManager não funcionou, tentar storage
-        if (!authResult.authenticated) {
-            console.log('[SecurePageGuard] SessionManager não autenticado, tentando storage...');
-            authResult = checkStorageAuth();
-        }
-
-        // Se não está autenticado, redirecionar para login
-        if (!authResult.authenticated) {
-            console.warn('[SecurePageGuard] Usuário não autenticado, redirecionando...', authResult.reason);
-            redirectToLogin(authResult.reason);
-            return false;
-        }
-
-        console.log('[SecurePageGuard] Usuário autenticado:', authResult.email);
-
-        // Verificar autorização
-        const authzResult = await checkAuthorization(authResult.email, authResult.provider);
-        
-        if (!authzResult.authorized) {
-            console.warn('[SecurePageGuard] Usuário não autorizado, redirecionando...', authzResult.reason);
-            
-            // Redirecionar para primeiro acesso se não autorizado
-            if (authzResult.reason === 'not_authorized') {
-                const firstAccessUrl = new URL('/secure/first-access.html', window.location.origin);
-                firstAccessUrl.searchParams.set('email', authResult.email || '');
-                firstAccessUrl.searchParams.set('provider', authResult.provider);
-                window.location.href = firstAccessUrl.toString();
-            } else {
-                redirectToLogin('not_authorized');
-            }
-            return false;
-        }
-
-        console.log('[SecurePageGuard] Página protegida com sucesso');
-        return true;
-    }
-
-    // Executar proteção quando DOM estiver pronto
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-            protectPage().catch(error => {
-                console.error('[SecurePageGuard] Erro fatal na proteção:', error);
-                redirectToLogin('protection_error');
-            });
-        });
-    } else {
-        protectPage().catch(error => {
-            console.error('[SecurePageGuard] Erro fatal na proteção:', error);
-            redirectToLogin('protection_error');
-        });
-    }
-
-    // Exportar função para uso manual se necessário
-    window.SecurePageGuard = {
-        protect: protectPage,
-        checkAuth: checkOIDCAuthentication,
-        checkAuthz: checkAuthorization
-    };
-
 })();
 

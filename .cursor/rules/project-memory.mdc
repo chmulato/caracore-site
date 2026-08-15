@@ -40,7 +40,7 @@ alwaysApply: true
 | **OIDC** | caracore-oidc + *-releases | Reino OIDC | https://oidc.caracore.com.br/ |
 | **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
-| **CSO** | caracore-cso-frotas / caracore-cso-transportes | Gestão de frotas (Web) | https://cso-caracore.up.railway.app/ |
+| **CSO** | caracore-cso-frotas / caracore-cso-transportes | Gestão de frotas (Web) | https://cso.caracore.com.br/ |
 | **MKT** | caracore-mkt + *-releases | Canais dedicados | https://mkt.caracore.com.br/ |
 
 **Regras de roteamento (2026):**

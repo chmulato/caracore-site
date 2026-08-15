@@ -36,9 +36,9 @@ VISÃO GERAL
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
   caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
   caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
-  caracore-cso-frotas           Oficina — CSO Gestão de Frotas (Web)        Quarkus; produção em cso-caracore.up.railway.app
+  caracore-cso-frotas           Oficina — CSO Gestão de Frotas (Web)        Quarkus; produção em cso.caracore.com.br
   caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; lançamento 08/11/2028
-  caracore-cso-releases         Loja desativada                             Sem vitrine pública (antes cso.caracore.com.br)
+  caracore-cso-releases         Sem vitrine de loja                         Aplicação canónica: cso.caracore.com.br
   caracore-mkt                  Oficina do Cara Core MKT / Sala             Scripts e portal; oferta gratuita
   caracore-mkt-releases         Loja online do Cara Core MKT                GitHub Pages: mkt.caracore.com.br
   caracore-tools                Tools / Sala Cara Core                      tools.caracore.com.br/sala/
@@ -87,7 +87,7 @@ Produtos com entrega ativa (matriz + loja online)
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
-  Cara Core CSO: caracore-cso-frotas + caracore-cso-transportes. Aplicação: cso-caracore.up.railway.app (sem loja)
+  Cara Core CSO: caracore-cso-frotas + caracore-cso-transportes. Aplicação: cso.caracore.com.br
   Cara Core MKT: caracore-mkt + caracore-mkt-releases (+ Sala em caracore-tools). Loja: mkt.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação

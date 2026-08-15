@@ -23,7 +23,7 @@
 | Seed | /delivery/seed/ | https://seed.caracore.com.br/ | mapeado |
 | Area 51 | /delivery/area51/ | https://area51.caracore.com.br/ | mapeado |
 | RU | /delivery/ru/ | https://ru.caracore.com.br/ | mapeado |
-| CSO | /delivery/cso/ | https://cso-caracore.up.railway.app/ | mapeado (aplicação; sem loja) |
+| CSO | /delivery/cso/ | https://cso.caracore.com.br/ | mapeado (aplicação) |
 | Ink | /delivery/ink/ | https://ink.caracore.com.br/ | mapeado |
 | ETE | /delivery/ete/ | https://ete.caracore.com.br/ | mapeado |
 | MKT | /delivery/mkt/ | https://mkt.caracore.com.br/ | mapeado |
@@ -92,10 +92,10 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 | RU | /delivery/ru/index.html | https://ru.caracore.com.br/ |
 | RU | /delivery/ru/canal-feedback.html | https://ru.caracore.com.br/canal-feedback.html |
 | RU | /delivery/ru/email_pos_venda.html | https://ru.caracore.com.br/email_pos_venda.html |
-| CSO | /delivery/cso/ | https://cso-caracore.up.railway.app/ |
-| CSO | /delivery/cso/index.html | https://cso-caracore.up.railway.app/ |
-| CSO | /delivery/cso/download.html | https://cso-caracore.up.railway.app/ |
-| CSO | /delivery/cso/canal-feedback.html | https://cso-caracore.up.railway.app/ |
+| CSO | /delivery/cso/ | https://cso.caracore.com.br/ |
+| CSO | /delivery/cso/index.html | https://cso.caracore.com.br/ |
+| CSO | /delivery/cso/download.html | https://cso.caracore.com.br/ |
+| CSO | /delivery/cso/canal-feedback.html | https://cso.caracore.com.br/ |
 | MKT | /delivery/mkt/ | https://mkt.caracore.com.br/ |
 | MKT | /delivery/mkt/index.html | https://mkt.caracore.com.br/ |
 | MKT | /delivery/mkt/canal-feedback.html | https://mkt.caracore.com.br/canal-feedback.html |

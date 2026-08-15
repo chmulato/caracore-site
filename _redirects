@@ -74,9 +74,9 @@
 /delivery/ru/     https://ru.caracore.com.br/   301
 /delivery/ru/*    https://ru.caracore.com.br/:splat   301
 
-/delivery/cso      https://cso-caracore.up.railway.app/   301
-/delivery/cso/     https://cso-caracore.up.railway.app/   301
-/delivery/cso/*    https://cso-caracore.up.railway.app/   301
+/delivery/cso      https://cso.caracore.com.br/   301
+/delivery/cso/     https://cso.caracore.com.br/   301
+/delivery/cso/*    https://cso.caracore.com.br/   301
 
 /delivery/ink      https://ink.caracore.com.br/   301
 /delivery/ink/     https://ink.caracore.com.br/   301

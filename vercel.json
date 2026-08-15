@@ -255,17 +255,17 @@
         },
         {
             "source": "/delivery/cso",
-            "destination": "https://cso-caracore.up.railway.app/",
+            "destination": "https://cso.caracore.com.br/",
             "permanent": true
         },
         {
             "source": "/delivery/cso/",
-            "destination": "https://cso-caracore.up.railway.app/",
+            "destination": "https://cso.caracore.com.br/",
             "permanent": true
         },
         {
             "source": "/delivery/cso/:path*",
-            "destination": "https://cso-caracore.up.railway.app/",
+            "destination": "https://cso.caracore.com.br/",
             "permanent": true
         },
         {

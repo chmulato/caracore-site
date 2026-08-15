@@ -587,8 +587,9 @@ class CleanupService:
 # .env ou Azure App Settings
 
 # Chaves de criptografia (32 bytes base64-encoded)
-TOKEN_ENCRYPTION_KEY=generate_with_secrets.token_bytes(32)
-SESSION_SECRET_KEY=generate_with_secrets.token_urlsafe(32)
+# Exemplo apenas — substitua por valores gerados de forma segura e não comite
+TOKEN_ENCRYPTION_KEY=REPLACE_WITH_BASE64_32_BYTE_KEY
+SESSION_SECRET_KEY=REPLACE_WITH_SECURE_SESSION_SECRET
 
 # Configurações de sessão
 SESSION_TIMEOUT_HOURS=24
@@ -612,11 +613,15 @@ import base64
 
 # Gerar chave de criptografia (AES-256 = 32 bytes)
 encryption_key = base64.b64encode(secrets.token_bytes(32)).decode('utf-8')
-print(f"TOKEN_ENCRYPTION_KEY={encryption_key}")
+print("# TOKEN_ENCRYPTION_KEY should be set in your deployment environment, not committed to Git")
+print("# Example (do NOT commit):")
+print("# TOKEN_ENCRYPTION_KEY=<base64-32-bytes>")
 
 # Gerar secret para sessão
 session_secret = secrets.token_urlsafe(32)
-print(f"SESSION_SECRET_KEY={session_secret}")
+print("# SESSION_SECRET_KEY should be set in your deployment environment, not committed to Git")
+print("# Example (do NOT commit):")
+print("# SESSION_SECRET_KEY=<urlsafe-32-bytes>")
 ```
 
 ---

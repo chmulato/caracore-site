@@ -1,0 +1,5 @@
+# Arquivo desativado: movido por ação de segurança / simplificação da infraestrutura
+# Originalmente: Dockerfile para produção Azure Container Instances
+# Mantido aqui para referência. NÃO usar em produção sem revisar e rotacionar segredos.
+
+# Conteúdo original movido para histórico do repositório (antes de limpeza de histórico).

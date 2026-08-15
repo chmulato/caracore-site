@@ -1,0 +1,16 @@
+# Regras para git-filter-repo --replace-text
+# Formato: 'literal==>replacement' ou 'regex:pattern==>replacement'
+
+# Substituir chaves longas/base64 por REDACTED
+regex:[A-Za-z0-9_\-]{40,}==>REDACTED_SECRET
+
+# Substituir padrões típicos de client secrets (base64/with symbols)
+regex:[A-Za-z0-9_\-\+\/=]{20,}==>REDACTED_SECRET
+
+# Substituir tokens do tipo V9tKnl... (exemplo)
+# literal:V9tKnladmpm2YCUI06Wj2GYADLB33LJSoPyjyXjwm6ypBliW9SioK+kTX5O9NX1vUJX4uDnP78SHawjDsve6eg====>REDACTED_AZURE_KEY
+
+# Substituir segredos explícitos (adicione valores reais aqui antes de rodar se souber)
+#literal:PzWabONHYVEkyspF374h6cEMu-_WOGdNt2WxEY8zdKQ==>REDACTED_GOOGLE_SECRET
+
+# Fim

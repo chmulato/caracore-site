@@ -39,6 +39,9 @@ backup-*-settings.json
 .secrets/
 secrets/
 oidc_logs*
+backend/.env
+.env.local
+.env.*.local
 
 # Backend logs (JSONL daily files)
 backend/logs/

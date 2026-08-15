@@ -65,6 +65,7 @@ caracore-site/
 ├── docs/            # Documentação do site (índice em docs/INDEX.md)
 ├── publications/    # Acervo editorial na matriz
 └── politica/        # Privacidade e termos
+├── infra/backend.disabled/  # Backend arquivado (movido)
 ```
 
 URLs antigas `/delivery/{produto}/` redirecionam para as lojas via `_redirects`; **não** manter conteúdo comercial duplicado na matriz.
@@ -83,6 +84,24 @@ Abrir [http://localhost:8080](http://localhost:8080) · Portfólio: `/portfolio.
 Backend OAuth (opcional): ver [secure/README.md](secure/README.md) e `backend/.env.example`.
 
 ---
+
+## Backend arquivado
+
+O backend foi arquivado e movido para `infra/backend.disabled/backend`. O site público funciona agora como um site estático e a Área 51 usa uma simulação em JavaScript, sem integrações ativas com Google/Microsoft/Azure.
+
+- Localizar backend arquivado: `infra/backend.disabled/backend`
+- Simulação de autenticação: a API do cliente OIDC simulada está em `secure/js/auth.js` e expõe `window.CaraCoreOIDC` (ex.: `getUser()`, `isAuthenticated()`). Ela retorna um usuário público simulado `PUBLIC_USER` para compatibilidade com a UI.
+
+Para testar o site estático localmente, execute um servidor simples na raiz do repositório:
+
+```powershell
+python -m http.server 8080
+```
+
+Abra http://localhost:8080 e verifique `/portfolio.html` e `/secure/`.
+
+Se precisar restaurar o backend para desenvolvimento, mova `infra/backend.disabled/backend` de volta para `backend/` e revise os arquivos de ambiente antes de executar.
+
 
 ## Publicação
 

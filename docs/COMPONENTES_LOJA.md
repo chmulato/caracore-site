@@ -135,7 +135,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
 
   CARACORE CSO
     Matriz: portfolio.html#caracore-cso
-    Oficinas: caracore-cso-frotas/ · caracore-cso-transportes/
+    Oficinas: caracore-cso-quarkus/ · caracore-cso-transportes/
     Loja:   sem vitrine de loja
     Aplicação: https://cso.caracore.com.br/
     Observacao: dual Frotas Web (em produção) + Transportes Desktop (08/11/2028).

@@ -122,7 +122,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 
     (M) portfolio.html#caracore-cso
     Aplicação: https://cso.caracore.com.br/
-    Oficinas: caracore-cso-frotas · caracore-cso-transportes
+    Oficinas: caracore-cso-quarkus · caracore-cso-transportes
     Lançamento previsto 08/11/2028 (Transportes); Frotas em produção
     Status: OK — CTAs da matriz apontam para a aplicação
 

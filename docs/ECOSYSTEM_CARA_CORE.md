@@ -24,9 +24,9 @@ VISÃO GERAL
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
   caracore-seed                 Código do Cara Core Seed                    Ferramenta interna; aplicação não disponível ao público
   caracore-seed-releases        Vitrine do Seed                             Informa que a aplicação não está disponível
-  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 21 + JavaFX; desktop Windows/macOS/Linux
+  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX; desktop Windows/macOS/Linux
   caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br
-  caracore-ru                   Oficina do RU Soberano                      Java 21 + JavaFX; sala RETRO + simulador
+  caracore-ru                   Oficina do RU Soberano                      Java 25 + JavaFX; sala RETRO + simulador
   caracore-ru-releases          Loja online e releases RU Soberano          GitHub Pages: ru.caracore.com.br
   caracore-circuito             Oficina do Circuito Ferradura               Curso proprietário de lógica e Python
   caracore-circuito-releases    Loja online e releases Circuito Ferradura   GitHub Pages: circuito.caracore.com.br
@@ -36,7 +36,7 @@ VISÃO GERAL
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
   caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
   caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
-  caracore-cso-frotas           Oficina — CSO Gestão de Frotas (Web)        Quarkus; produção em cso.caracore.com.br
+  caracore-cso-quarkus          Oficina — CSO Gestão de Frotas (Web)        Quarkus; produção em cso.caracore.com.br
   caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; lançamento 08/11/2028
   caracore-cso-releases         Sem vitrine de loja                         Aplicação canónica: cso.caracore.com.br
   caracore-mkt                  Oficina do Cara Core MKT / Sala             Scripts e portal; oferta gratuita
@@ -87,7 +87,7 @@ Produtos com entrega ativa (matriz + loja online)
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
-  CaraCore CSO: caracore-cso-frotas + caracore-cso-transportes. Aplicação: cso.caracore.com.br
+  CaraCore CSO: caracore-cso-quarkus + caracore-cso-transportes. Aplicação: cso.caracore.com.br
   Cara Core MKT: caracore-mkt + caracore-mkt-releases (+ Sala em caracore-tools). Loja: mkt.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação

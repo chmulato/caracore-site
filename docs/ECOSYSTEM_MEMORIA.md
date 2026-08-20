@@ -2,7 +2,7 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
-**Atualizado:** 2026-06-07  
+**Atualizado:** 2026-08-20  
 **Workspace típico:** `D:\dev\`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**
 
@@ -12,7 +12,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 1. **Nova tarefa?** → [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) (fluxo por tipo de trabalho)
 2. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md`
-3. **Memória Cursor:** `.cursor/rules/project-memory.mdc` no repo ativo
+3. **Memória Cursor / IA:** `AGENTS.md` na raiz do workspace (`D:\dev\AGENTS.md`)
 4. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
 5. **Dois PDVs:** Java `pdv.*` (**v3.2.2-free**) + Rust `rust-pdv.*` + GitHub Releases (**v0.1.2**) — coexistência
 6. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia` · tom **FinOps/híbrido** (não anti-cloud na vitrine)
@@ -20,7 +20,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 ---
 
-## Presenças web (jun/2026)
+## Presenças web (ago/2026)
 
 | Papel | URL | Repo |
 |-------|-----|------|
@@ -36,6 +36,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | PDV Java loja | https://pdv.caracore.com.br/ | caracore-pdv-releases |
 | PDV Rust vitrine | https://rust-pdv.caracore.com.br/ | caracore-pdv-rust-releases |
 | PDV Rust download | https://github.com/chmulato/caracore-rust-pdv-releases/releases | GitHub (artefatos) |
+| CSO Produção | https://cso.caracore.com.br/ | caracore-cso-quarkus |
 
 **Correção wiki (jun/2026):** portfólio **não** está em `wiki.caracore.com.br/portfolio.html` — usar **www**; wiki tem redirect stub.
 
@@ -90,14 +91,16 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 ---
 
-## Repositórios e memória Cursor
+## Repositórios e memória Cursor / IA
 
-| Repo | `project-memory.mdc` | Notas |
-|------|----------------------|-------|
-| caracore-site | Sim | docs/ECOSYSTEM_*.md |
-| caracore-wiki | Sim | Portfólio → www |
+| Repo | Referência de Memória | Notas |
+|------|-----------------------|-------|
+| Workspace raiz | `AGENTS.md` | Guia mestre para IAs |
+| caracore-site | `docs/ECOSYSTEM_*.md` | Matriz institucional |
+| caracore-wiki | `docs/ecosistema.html` | Wiki institucional |
+| caracore-cso-quarkus | `AGENTS.md` / `docs/memoria-agente-p0.md` | Frotas Web em produção |
 | caracore-retro | Sim | 117 artigos · capa inline `max-width:300px` float-right |
-| caracore-pdv-rust | Sim + **continuacao.mdc** | Oficina PDV Rust |
+| caracore-pdv-rust | `docs/contexto-rapido.md` | Oficina PDV Rust |
 | caracore-pdv-rust-releases | Sim | Loja rust-pdv |
 | caracore-pdv / *-releases | Sim | PDV Java |
 | Demais produtos | Sim | hub, ete, ink, ru, … |
@@ -110,6 +113,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-08-20 | Alinhamento total do ecossistema validado: Roadmap sincronizado (Hub 06/04/2027, RU 18/06/2027, Helianto 30/12/2027, CSO Transportes 08/11/2028). Padronização da oficina `caracore-cso-quarkus`. Atualização da stack Java 25 para Ink e RU na matriz. Correção do link "Site Principal" na Wiki. Criação do `AGENTS.md` raiz. |
 | 2026-08-15 | Nomes comerciais: **CaraCore CSO** e **CaraCore PDV** (linha Rust); CSO em `https://cso.caracore.com.br/`. |
 | 2026-06-27 | Matriz/Blog: Publicado ensaio avulso "A Normose da Engenharia Financeira e o Retrato de Veblen" no blog de Christian Mulato (total 153 artigos), criticando a patologia social de buscar retornos e atalhos digitais rápidos sem esforço real e trabalho duro, assinado como "Cidadão Brasileiro". |
 | 2026-06-14 | Matriz/Blog: Publicado artigo avulso "Os Erros Invisíveis na Arquitetura que Ninguém Te Conta" no blog de Christian Mulato, aprofundando o OWASP Top 10 e assinado como "Cidadão Brasileiro". |

@@ -1,4 +1,8 @@
 {
+    "framework": null,
+    "installCommand": "echo skip-install",
+    "buildCommand": "echo skip-build",
+    "outputDirectory": ".",
     "headers": [
         {
             "source": "/(.*)",
@@ -342,17 +346,15 @@
             "source": "/delivery/helianto/:path*",
             "destination": "https://helianto.caracore.com.br/:path*",
             "permanent": true
-        },
+        }
+    ],
+    "rewrites": [
         {
-            "source": "/secure/*",
+            "source": "/secure/:path*",
             "destination": "/secure/index.html"
         },
         {
             "source": "/cv/:path*",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/*",
             "destination": "/index.html"
         }
     ]

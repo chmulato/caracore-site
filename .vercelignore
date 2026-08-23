@@ -1,0 +1,9 @@
+.git
+.github
+.cursor
+.venv
+node_modules
+infra
+cv/node_modules
+**/*.pyc
+**/__pycache__

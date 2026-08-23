@@ -1,0 +1,5 @@
+# Cabeçalhos de segurança globais (Netlify).
+# Espelho de vercel.json → headers.
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff

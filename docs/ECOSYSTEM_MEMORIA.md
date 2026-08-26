@@ -15,9 +15,10 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 2. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`D:\onedrive\dev\AGENTS.md`**
 3. **Produtos-chave:** PDV (Java v3.2.2-free + Rust v0.1.2) · CSO (Frotas no ar; Transportes 08/11/2028; ≠ GPS) · Hub (encomendas; GA Windows 06/04/2027)
 4. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
-5. **Download Rust:** `rust-pdv.caracore.com.br/download.html` · artefatos na tag **v0.1.2** de `chmulato/caracore-pdv-releases` — **nunca** `/releases/latest`
-6. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia` · tom **FinOps/híbrido** (não anti-cloud na vitrine)
-7. **Suporte PME:** [suporte-local.html](../suporte-local.html) — fora do nav B2B; horários noite/sábado só lá
+5. **Hub oficina (GA Windows 06/04/2027):** `caracore-hub/docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` · web 2.1 pronta; trabalho aberto = instalador SQLite. Manual: wiki.caracore.com.br/hub/
+6. **Download Rust:** `rust-pdv.caracore.com.br/download.html` · artefatos na tag **v0.1.2** de `chmulato/caracore-pdv-releases` — **nunca** `/releases/latest`
+7. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia` · tom **FinOps/híbrido** (não anti-cloud na vitrine)
+8. **Suporte PME:** [suporte-local.html](../suporte-local.html) — fora do nav B2B; horários noite/sábado só lá
 
 ---
 
@@ -103,9 +104,11 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | caracore-cso-quarkus | `AGENTS.md` / `docs/memoria-agente-p0.md` | Frotas Web em produção |
 | caracore-retro | Sim | 117 artigos · capa inline `max-width:300px` float-right |
 | caracore-pdv-rust | `docs/contexto-rapido.md` | Oficina PDV Rust |
+| caracore-hub | `docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` | Web 2.1 pronta; GA Windows 06/04/2027 |
+| caracore-hub-releases | `.cursor/rules/project-memory.mdc` | Loja hub.caracore.com.br |
 | caracore-pdv-rust-releases | Sim | Loja rust-pdv |
 | caracore-pdv / *-releases | Sim | PDV Java |
-| Demais produtos | Sim | hub, ete, ink, ru, … |
+| Demais produtos | Sim | ete, ink, ru, … |
 
 Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
@@ -115,6 +118,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-08-26 | Hub: memória de colaboração para o GA Windows 06/04/2027 (`caracore-hub/docs/contexto-rapido.md`). Web 2.1 pronta; instalador SQLite é o trabalho aberto. Manual público em wiki.caracore.com.br/hub/. |
 | 2026-08-26 | Wiki + lojas: PDV/CSO/Hub como produtos-chave; Hub = encomendas (não Flask); CSO ≠ GPS; download Rust = tag v0.1.2 em `caracore-pdv-releases` (nunca `/latest`). AGENTS.md e `.cursor/rules/ecosystem-cara-core.mdc` sincronizados. |
 | 2026-08-20 | Alinhamento total do ecossistema validado: Roadmap sincronizado (Hub 06/04/2027, RU 18/06/2027, Helianto 30/12/2027, CSO Transportes 08/11/2028). Padronização da oficina `caracore-cso-quarkus`. Atualização da stack Java 25 para Ink e RU na matriz. Correção do link "Site Principal" na Wiki. Criação do `AGENTS.md` raiz. |
 | 2026-08-15 | Nomes comerciais: **CaraCore CSO** e **CaraCore PDV** (linha Rust); CSO em `https://cso.caracore.com.br/`. |

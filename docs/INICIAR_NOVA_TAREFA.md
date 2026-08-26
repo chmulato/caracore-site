@@ -49,6 +49,24 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Oficina | `caracore-hub` |
 | Matriz | `#caracore-hub` |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-hub.html |
+| Wiki uso | wiki.caracore.com.br/hub/ |
+
+---
+
+### Oficina Hub (`caracore-hub`)
+
+| Ler | Ficheiro |
+|-----|----------|
+| Retomada (GA 2027) | `docs/contexto-rapido.md` |
+| Status web 2.1 | `project_hub/docs/STATUS-ATUAL.md` |
+| Cursor | `.cursor/rules/project-memory.mdc` · `ga-windows-2027.mdc` |
+| SQLite | `project_hub/docs/INDEX_SQLITE.md` |
+| Desktop | `electron/README.md` |
+| Ecossistema | `../caracore-site/docs/ECOSYSTEM_MEMORIA.md` |
+
+**Foco até 06/04/2027:** instalador EXE + SQLite local. Não reescrever as fases 1–5 da WAR. Não commitar salvo pedido explícito.
+
+**Wiki:** manual operacional em `caracore-wiki/docs/hub/` (público).
 
 ---
 
@@ -114,7 +132,7 @@ python tools/sync_docs_status.py --full
 | Eco Mundo wiki | `docs/ecosistema.html` |
 | Hub PDV | `projeto-pdv.html` · `projeto-pdv-rust.html` · manuais Java em `docs/pdv/` |
 | CSO | `projeto-cso.html` (Frotas + Transportes; ≠ GPS) |
-| Hub | `projeto-hub.html` (encomendas; GA 06/04/2027) |
+| Hub | `projeto-hub.html` · manual de uso em `docs/hub/` (encomendas; GA 06/04/2027) |
 
 Redirect legado: `docs/portfolio.html` → matriz.
 

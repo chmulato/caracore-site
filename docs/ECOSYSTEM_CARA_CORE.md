@@ -20,7 +20,7 @@ VISÃO GERAL
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.2
   caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            rust-pdv.caracore.com.br (vitrine; download → tag v0.1.2)
   (GitHub) caracore-pdv-releases       Artefatos Rust oficiais (NSIS/MSI/ZIP)     github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 — NÃO usar /latest
-  caracore-hub                  Oficina — CaraCore Hub                      Encomendas + marketplaces (ML/Shopee/Temu); WAR/Tomcat 2.1; GA Windows 06/04/2027
+  caracore-hub                  Oficina — CaraCore Hub                      Encomendas; WAR/Tomcat 2.1 pronta; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
   caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
@@ -82,7 +82,7 @@ Site e presença pública
 Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
   CaraCore PDV: caracore-pdv-rust + caracore-pdv-rust-releases. Loja: **rust-pdv.caracore.com.br** (sem delivery matriz).
-  Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br (pré-lançamento; GA instalador 06/04/2027). Não é Flask. (pré-lançamento; GA instalador 06/04/2027). Não é Flask.
+  Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br (pré-lançamento; GA instalador 06/04/2027). Não é Flask. Retomada: caracore-hub/docs/contexto-rapido.md. Manual: wiki.caracore.com.br/hub/
   CaraCore CSO: caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 08/11/2028). Aplicação: cso.caracore.com.br. CSO ≠ GPS.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br

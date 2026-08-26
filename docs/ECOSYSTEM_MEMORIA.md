@@ -2,19 +2,20 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
-**Atualizado:** 2026-08-20  
-**Workspace típico:** `D:\dev\`  
-**Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**
+**Atualizado:** 2026-08-26  
+**Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
+**Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
+**Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
 
 ---
 
 ## Retomada em 30 segundos
 
 1. **Nova tarefa?** → [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) (fluxo por tipo de trabalho)
-2. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md`
-3. **Memória Cursor / IA:** `AGENTS.md` na raiz do workspace (`D:\dev\AGENTS.md`)
+2. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`D:\onedrive\dev\AGENTS.md`**
+3. **Produtos-chave:** PDV (Java v3.2.2-free + Rust v0.1.2) · CSO (Frotas no ar; Transportes 08/11/2028; ≠ GPS) · Hub (encomendas; GA Windows 06/04/2027)
 4. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
-5. **Dois PDVs:** Java `pdv.*` (**v3.2.2-free**) + Rust `rust-pdv.*` + GitHub Releases (**v0.1.2**) — coexistência
+5. **Download Rust:** `rust-pdv.caracore.com.br/download.html` · artefatos na tag **v0.1.2** de `chmulato/caracore-pdv-releases` — **nunca** `/releases/latest`
 6. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia` · tom **FinOps/híbrido** (não anti-cloud na vitrine)
 7. **Suporte PME:** [suporte-local.html](../suporte-local.html) — fora do nav B2B; horários noite/sábado só lá
 
@@ -35,8 +36,9 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | Sala operações | https://tools.caracore.com.br/sala/ | caracore-site / caracore-mkt |
 | PDV Java loja | https://pdv.caracore.com.br/ | caracore-pdv-releases |
 | PDV Rust vitrine | https://rust-pdv.caracore.com.br/ | caracore-pdv-rust-releases |
-| PDV Rust download | https://github.com/chmulato/caracore-rust-pdv-releases/releases | GitHub (artefatos) |
-| CSO Produção | https://cso.caracore.com.br/ | caracore-cso-quarkus |
+| PDV Rust download | https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 | GitHub (artefatos; **não** `/latest`) |
+| CSO Produção (Frotas) | https://cso.caracore.com.br/ | caracore-cso-quarkus |
+| Hub vitrine | https://hub.caracore.com.br/ | caracore-hub-releases |
 
 **Correção wiki (jun/2026):** portfólio **não** está em `wiki.caracore.com.br/portfolio.html` — usar **www**; wiki tem redirect stub.
 
@@ -62,7 +64,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | Papel | Repo / URL |
 |-------|------------|
 | Java maduro | pdv.caracore.com.br · **v3.2.2-free** · caracore-pdv |
-| Rust piloto | rust-pdv (vitrine) · GitHub Releases v0.1.2 · caracore-pdv-rust |
+| Rust piloto | rust-pdv (vitrine) · tag GitHub **v0.1.2** em `caracore-pdv-releases` · caracore-pdv-rust |
 | Coexistência | portfolio `#pdv-coexistencia` · não substituir Java |
 | Comunicação | Retrô art. **115** (B2B/IA) · art. 114 (PDV Rust) · matriz jun/2026 · wiki projeto-pdv* |
 
@@ -113,6 +115,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-08-26 | Wiki + lojas: PDV/CSO/Hub como produtos-chave; Hub = encomendas (não Flask); CSO ≠ GPS; download Rust = tag v0.1.2 em `caracore-pdv-releases` (nunca `/latest`). AGENTS.md e `.cursor/rules/ecosystem-cara-core.mdc` sincronizados. |
 | 2026-08-20 | Alinhamento total do ecossistema validado: Roadmap sincronizado (Hub 06/04/2027, RU 18/06/2027, Helianto 30/12/2027, CSO Transportes 08/11/2028). Padronização da oficina `caracore-cso-quarkus`. Atualização da stack Java 25 para Ink e RU na matriz. Correção do link "Site Principal" na Wiki. Criação do `AGENTS.md` raiz. |
 | 2026-08-15 | Nomes comerciais: **CaraCore CSO** e **CaraCore PDV** (linha Rust); CSO em `https://cso.caracore.com.br/`. |
 | 2026-06-27 | Matriz/Blog: Publicado ensaio avulso "A Normose da Engenharia Financeira e o Retrato de Veblen" no blog de Christian Mulato (total 153 artigos), criticando a patologia social de buscar retornos e atalhos digitais rápidos sem esforço real e trabalho duro, assinado como "Cidadão Brasileiro". |

@@ -14,15 +14,15 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   ---------------------------- ------------------------------------------------------- ------------------------------------------
   CaraCore PDV Desktop (Java)  https://pdv.caracore.com.br/                            Oferta madura; canal v3.2.2-free
   CaraCore PDV                 https://rust-pdv.caracore.com.br/                       Vitrine; release v0.1.2
-  (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Artefatos MSI/NSIS/ZIP/deb/dmg + SHA256
-  Cara Core Hub                https://hub.caracore.com.br/
+  (download oficial Rust)      https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2   Artefatos NSIS/MSI/ZIP — NÃO usar /latest
+  Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; GA instalador Windows 06/04/2027
   Circuito Ferradura           https://circuito.caracore.com.br/
   Reino OIDC                   https://oidc.caracore.com.br/
   Minerador 4.0 ETE            https://ete.caracore.com.br/
   Cara Core Seed               https://seed.caracore.com.br/
   Suporte Área 51              https://area51.caracore.com.br/
   RU Soberano                  https://ru.caracore.com.br/
-  CaraCore CSO                 https://cso.caracore.com.br/                            Aplicação Frotas. Transportes Desktop 2028
+  CaraCore CSO                 https://cso.caracore.com.br/                            Aplicação Frotas (produção). Transportes Desktop 08/11/2028. ≠ GPS
   Cara Core MKT                https://mkt.caracore.com.br/                            Gratuito; Sala em tools.caracore.com.br/sala/
   Ink Agenda                   https://ink.caracore.com.br/
   Helianto Condominium         https://helianto.caracore.com.br/                       Vitrine; lançamento 30/12/2027
@@ -46,4 +46,4 @@ Retomada de contexto (ler nesta ordem):
 
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
-Atualizado em 15/08/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md
+Atualizado em 26/08/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md

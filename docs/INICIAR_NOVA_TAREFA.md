@@ -3,8 +3,9 @@
 Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 3–5 minutos antes de abrir código.
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
-**Atualizado:** 2026-06-07  
-**Workspace típico:** `D:\dev\` (repos irmãos)
+**Fonte IAs:** `D:\onedrive\dev\AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`  
+**Atualizado:** 2026-08-26  
+**Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
 ---
 
@@ -12,6 +13,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Passo | Ação |
 |-------|------|
+| 0 | Ler `AGENTS.md` na raiz (produtos-chave PDV · CSO · Hub e discurso honesto) |
 | 1 | Abrir `caracore-site/docs/ECOSYSTEM_MEMORIA.md` (visão actual) |
 | 1b | Posicionamento B2B: `docs/DILEMA.md` · frase-guia em hero e `#engenharia-b2b` |
 | 2 | Abrir `.cursor/rules/project-memory.mdc` **do repo onde vai trabalhar** |
@@ -35,7 +37,28 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Redirects | `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` · `_redirects` |
 | Validação | `scripts/run-site-validation.ps1` |
 
-**PDV Rust na matriz:** CTAs → GitHub Releases; coexistência em `#pdv-coexistencia`.
+**PDV Rust na matriz:** CTAs → tag GitHub v0.1.2 (não `/latest`); coexistência em `#pdv-coexistencia`.
+
+---
+
+### Loja Hub (`caracore-hub-releases`)
+
+| URL | https://hub.caracore.com.br/ |
+| O que é | Encomendas (ML, Shopee, Temu) — não Flask, não “central telefônica” |
+| GA | Instalador Windows 06/04/2027 (SQLite). Oficina web 2.1 ainda PostgreSQL |
+| Oficina | `caracore-hub` |
+| Matriz | `#caracore-hub` |
+| Wiki alinhamento | wiki.caracore.com.br/projeto-hub.html |
+
+---
+
+### CSO (`caracore-cso-quarkus` + `caracore-cso-transportes`)
+
+| URL canónica | https://cso.caracore.com.br/ (aplicação Frotas; **sem** vitrine Pages) |
+| Frotas | Produção · oficina `caracore-cso-quarkus` |
+| Transportes | Garagem 08/11/2028 · oficina `caracore-cso-transportes` |
+| Discurso | CSO ≠ GPS. Virtual Tracker™ é produto separado, 2028 |
+| Wiki alinhamento | wiki.caracore.com.br/projeto-cso.html |
 
 ---
 
@@ -51,11 +74,11 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Rust (`caracore-pdv-rust-releases`)
 
 | URL vitrine | https://rust-pdv.caracore.com.br/ |
-| Download oficial | https://github.com/chmulato/caracore-rust-pdv-releases/releases |
+| Download oficial | https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 (**não** `/latest`) |
 | Oficina | `caracore-pdv-rust` |
 | Matriz | `#caracore-pdv-rust` |
 
-**Nav loja:** Download → GitHub · **Formatos** → `download.html` · `releases.js` + `portal.js`.
+**Nav loja:** Formatos → `download.html` · botões de download → tag **v0.1.2**, nunca `releases/latest` (latest = Java).
 
 ---
 
@@ -89,6 +112,8 @@ python tools/sync_docs_status.py --full
 | Portfólio nos links | **www.caracore.com.br** (não wiki) |
 | Eco Mundo wiki | `docs/ecosistema.html` |
 | Hub PDV | `projeto-pdv.html` · `projeto-pdv-rust.html` |
+| CSO | `projeto-cso.html` (Frotas + Transportes; ≠ GPS) |
+| Hub | `projeto-hub.html` (encomendas; GA 06/04/2027) |
 
 Redirect legado: `docs/portfolio.html` → matriz.
 
@@ -125,7 +150,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 | Matriz / portfólio | www.caracore.com.br/portfolio.html | wiki.caracore.com.br/portfolio.html |
 | Eco Mundo (matriz) | www.caracore.com.br/ecosistema.html | — |
 | Eco Mundo (wiki) | wiki.caracore.com.br/ecosistema.html | — |
-| Download PDV Rust | github.com/.../caracore-rust-pdv-releases/releases | só rust-pdv para binário |
+| Download PDV Rust | github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 | `/releases/latest` (Java) ou `caracore-rust-pdv-releases/releases` |
 | CTAs legado | — | www.caracore.com.br/delivery/... |
 
 ---
@@ -144,12 +169,14 @@ Redirect legado: `docs/portfolio.html` → matriz.
 ## 5. Armadilhas que custam tempo
 
 1. **Tratar Rust como substituto do Java** — são linhas paralelas (v3.2.x ≠ v0.1.x).
-2. **Colocar download só na loja Rust** — artefatos oficiais ficam no **GitHub Releases**.
-3. **Duplicar vitrine longa na matriz** — resumo + CTA para loja.
-4. **Esquecer push da loja** após mudar `caracore-pdv-rust-releases` (Pages demora minutos).
-5. **Misturar suporte PME na home B2B** — M365/antivírus/horários noite ficam em `suporte-local.html`.
-6. **Tom xiita anti-cloud na vitrine** — usar híbrido/FinOps/resiliência; ideologia fica para backlog wiki/retrô/lojas.
-7. **Commit na oficina Rust** sem pedido explícito do usuário (regra da oficina).
+2. **Usar `/releases/latest` no PDV Rust** — latest de `caracore-pdv-releases` é o canal **Java**. Usar a tag **v0.1.2**.
+3. **Descrever Hub como Flask / central telefônica** — Hub é encomendas (Jakarta EE). Flask é Área 51.
+4. **Vender CSO como GPS** — Frotas é gestão administrativa; Virtual Tracker™ é produto separado.
+5. **Duplicar vitrine longa na matriz** — resumo + CTA para loja.
+6. **Esquecer push da loja** após mudar `caracore-pdv-rust-releases` (Pages demora minutos).
+7. **Misturar suporte PME na home B2B** — M365/antivírus/horários noite ficam em `suporte-local.html`.
+8. **Tom xiita anti-cloud na vitrine** — usar híbrido/FinOps/resiliência; ideologia fica para backlog wiki/retrô/lojas.
+9. **Commit na oficina** sem pedido explícito do usuário.
 
 ---
 
@@ -158,6 +185,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 | Necessidade | Documento |
 |-------------|-----------|
 | Visão 30 s | `ECOSYSTEM_MEMORIA.md` |
+| IAs (Cursor e outras) | `D:\onedrive\dev\AGENTS.md` |
 | Esta página (fluxos) | `INICIAR_NOVA_TAREFA.md` |
 | Mapa repos | `ECOSYSTEM_CARA_CORE.md` |
 | URLs lojas | `ECOSYSTEM_LOJAS.md` |

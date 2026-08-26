@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-08-15
+**Atualizado:** 2026-08-26 · IAs: `AGENTS.md` na raiz do workspace
 
 ## Posicionamento B2B (copy comercial)
 
@@ -31,8 +31,8 @@ alwaysApply: true
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
 | **PDV Rust — loja** | caracore-pdv-rust-releases | Vitrine comercial | https://rust-pdv.caracore.com.br/ |
-| **PDV Rust — releases** | caracore-rust-pdv-releases (GitHub) | **Download oficial** (artefatos) | https://github.com/chmulato/caracore-rust-pdv-releases/releases |
-| **Hub** | caracore-hub + *-releases | Logística / e-commerce | https://hub.caracore.com.br/ |
+| **PDV Rust — artefatos** | tag v0.1.2 em caracore-pdv-releases | **Download** (nunca `/latest`) | https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 |
+| **Hub** | caracore-hub + *-releases | Encomendas; GA Windows 06/04/2027 | https://hub.caracore.com.br/ |
 | **ETE** | caracore-ete + *-releases | Minerador 4.0 | https://ete.caracore.com.br/ |
 | **Ink** | caracore-ink + *-releases | Agenda | https://ink.caracore.com.br/ |
 | **RU** | caracore-ru + *-releases | Simulador RETRO | https://ru.caracore.com.br/ |
@@ -40,11 +40,11 @@ alwaysApply: true
 | **OIDC** | caracore-oidc + *-releases | Reino OIDC | https://oidc.caracore.com.br/ |
 | **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
-| **CSO** | caracore-cso-frotas / caracore-cso-transportes | Gestão de frotas (Web) | https://cso.caracore.com.br/ |
+| **CSO** | caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 2028) | Gestão de frotas / transportes; **≠ GPS** | https://cso.caracore.com.br/ |
 | **MKT** | caracore-mkt + *-releases | Canais dedicados | https://mkt.caracore.com.br/ |
 
 **Regras de roteamento (2026):**
-- CTAs novos na matriz → **subdomínio da loja** ou **GitHub Releases** (PDV Rust), nunca `/delivery/` como destino principal.
+- CTAs novos na matriz → **subdomínio da loja** ou **tag GitHub v0.1.2** (PDV Rust), nunca `/delivery/` como destino principal.
 - `delivery/` neste repo = stubs HTML (redirect) + `_redirects` / `vercel.json`.
 - Matriz não duplica vitrine longa; portfólio resume e aponta para loja/releases.
 
@@ -72,9 +72,9 @@ alwaysApply: true
 
 ## CaraCore PDV — Rust + Tauri (v0.1.2)
 
-- **Download oficial:** https://github.com/chmulato/caracore-rust-pdv-releases/releases (latest / tag v0.1.2)
-- **Loja (vitrine):** https://rust-pdv.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html` orienta NSIS/MSI/ZIP)
-- **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — CTAs primários → GitHub Releases
+- **Download oficial:** https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 (**não** `/latest` — latest é Java)
+- **Loja (vitrine):** https://rust-pdv.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html`)
+- **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — CTAs primários → tag v0.1.2 (não `/latest`)
 - **_redirects:** `/delivery/pdv-rust/*` → rust-pdv.caracore.com.br
 - **Oficina:** caracore-pdv-rust
 - **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar)
@@ -113,7 +113,7 @@ alwaysApply: true
 ## Retrô (caracore-retro)
 
 - **Repo:** `D:\dev\caracore-retro` · URL https://retro.caracore.com.br/
-- **104 artigos** · convenção `YYYY_MM_DD_article_NN.html` + `*_NN_01.png`
+- **117 artigos** · convenção `YYYY_MM_DD_article_NN.html` + `*_NN_01.png`
 - **Capa inline HTML:** `max-width:300px; float:right` (padrão dez/2026); PNG pode ser gerado 16:9 para `og:image`
 - **B2B / IA (115):** 25/12/2026 — portal PJ, consultoria boutique, FinOps/híbrido · links matriz `#engenharia-b2b`, `#decisoes-engenharia`, `suporte-local.html`
 - **PDV Rust (114):** 20/12/2026 — “Duas linhas no balcão” · coexistência Java/Rust

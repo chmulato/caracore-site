@@ -55,7 +55,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | **Wiki** | caracore-wiki | wiki.caracore.com.br |
 | **Retrô** | caracore-retro | retro.caracore.com.br |
 
-**Regras:** CTAs → loja ou GitHub Releases · matriz → `portfolio.html#{âncora}` · PDV comparação → `#pdv-coexistencia` · sem `/delivery/` em links novos.
+**Regras:** CTAs de download → loja ou GitHub Releases · documentação de produto → wiki.caracore.com.br · matriz → `portfolio.html#{âncora}` · PDV comparação → `#pdv-coexistencia` · sem `/delivery/` em links novos.
 
 ---
 

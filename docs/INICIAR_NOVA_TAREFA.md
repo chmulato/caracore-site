@@ -109,9 +109,10 @@ python tools/sync_docs_status.py --full
 
 | URL | https://wiki.caracore.com.br/ |
 | Publicação | `docs/` → GitHub Pages |
+| Papel | Documentação de **todos** os produtos (alinhamento + manuais). Lojas só vitrine/download/feedback; `/wiki/` nas lojas redireciona para cá. |
 | Portfólio nos links | **www.caracore.com.br** (não wiki) |
 | Eco Mundo wiki | `docs/ecosistema.html` |
-| Hub PDV | `projeto-pdv.html` · `projeto-pdv-rust.html` |
+| Hub PDV | `projeto-pdv.html` · `projeto-pdv-rust.html` · manuais Java em `docs/pdv/` |
 | CSO | `projeto-cso.html` (Frotas + Transportes; ≠ GPS) |
 | Hub | `projeto-hub.html` (encomendas; GA 06/04/2027) |
 

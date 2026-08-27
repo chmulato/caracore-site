@@ -51,7 +51,7 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 | Linha | Oficina | Loja | Release |
 |-------|---------|------|---------|
 | Java · JavaFX | caracore-pdv | pdv.caracore.com.br | **v3.2.2-free** |
-| Rust + Tauri 2 | caracore-pdv-rust | rust-pdv.caracore.com.br | **v0.1.2** |
+| Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br | **v0.1.2** |
 | Releases Rust | caracore-rust-pdv-releases | GitHub Releases | download oficial |
 
 - Filosofia Bunker · SQLite local · **nenhuma linha substitui a outra**

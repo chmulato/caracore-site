@@ -16,7 +16,7 @@ Referência para editar e publicar **caracore.com.br** sem duplicar conteúdo da
 | Home B2B, portfólio, ecossistema, políticas | Vitrine completa de cada produto |
 | Prova de entrega (produtos) + engenharia B2B | Lista de stacks como argumento de venda |
 | CTAs para subdomínios oficiais | Segunda cópia de wiki/download das lojas |
-| Redirects `/delivery/*` → lojas | Canal principal do PDV Rust (use rust-pdv) |
+| Redirects `/delivery/*` → lojas | Canal principal do PDV Rust (use pdv-rust) |
 | Área 51 (`/secure/`) | Sala (canónica: tools.caracore.com.br/sala) |
 | Variantes `aligned/en/` · `aligned/it/` | Tradução literal de “PJ” |
 
@@ -78,7 +78,7 @@ Detalhes: [PORTFOLIO_README.md](PORTFOLIO_README.md).
 
 | | Java | Rust + Tauri 2 |
 |---|------|----------------|
-| Loja / vitrine | pdv.caracore.com.br | rust-pdv.caracore.com.br |
+| Loja / vitrine | pdv.caracore.com.br | pdv-rust.caracore.com.br |
 | Download | loja Java | GitHub Releases |
 | Release | **v3.2.2-free** | **v0.1.2** |
 | Portfólio | `#caracore-pdv` | `#caracore-pdv-rust` |

@@ -30,7 +30,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 **Dois PDVs Desktop (mesmo CaraCore PDV):**
 
 - Java · JavaFX — [pdv.caracore.com.br](https://pdv.caracore.com.br/) — **v3.2.2-free** (maduro)
-- Rust + Tauri 2 — [rust-pdv](https://rust-pdv.caracore.com.br/) + GitHub Releases — **v0.1.2** (piloto)
+- Rust + Tauri 2 — [pdv-rust](https://pdv-rust.caracore.com.br/) + GitHub Releases — **v0.1.2** (piloto)
 
 **Internacional:** `aligned/en/` e `aligned/it/` — B2B engineering (espelho do posicionamento PT).
 
@@ -56,7 +56,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 ### Infraestrutura editorial
 
 - Portfólio: índice por categoria, Bunker, coexistência PDV, releases, sobre
-- PDV Rust: vitrine rust-pdv; redirect `/delivery/pdv-rust`
+- PDV Rust: vitrine pdv-rust; redirect `/delivery/pdv-rust`
 - Documentação: `docs/` integralmente em Markdown; [INDEX.md](INDEX.md)
 - Retrô: art. **115** (B2B/IA, 25/12) · art. **114** (PDV Rust, 20/12) — [retro.caracore.com.br](https://retro.caracore.com.br/)
 
@@ -71,7 +71,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | Produto | Portfólio | Loja | Estado |
 |---------|-----------|------|--------|
 | PDV Java | `#caracore-pdv` | pdv.* | Entrega activa · v3.2.2-free |
-| CaraCore PDV | `#caracore-pdv-rust` | rust-pdv + GitHub | Piloto v0.1.2 |
+| CaraCore PDV | `#caracore-pdv-rust` | pdv-rust + GitHub | Piloto v0.1.2 |
 | Ink Agenda | `#caracore-ink-agenda` | ink.* | v2.0.0 estável |
 | Minerador 4.0 | `#minerador-ete` | ete.* | Entrega activa |
 | Reino OIDC | `#reino-oidc` | oidc.* | Entrega activa |

@@ -1,6 +1,6 @@
 # Ecossistema Cara Core — mapa de repositórios
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 26/08/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 27/08/2026).
 
 **Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `AGENTS.md` na raiz do workspace.
 
@@ -18,7 +18,7 @@ VISÃO GERAL
   caracore-pdv                  Oficina — PDV Desktop (Java · JavaFX)       Quarkus 3, Java 25, JavaFX; canal v3.2.2-free
   caracore-pdv-releases         Loja — PDV Desktop Java                     GitHub Pages: pdv.caracore.com.br
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.2
-  caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            rust-pdv.caracore.com.br (vitrine; download → tag v0.1.2)
+  caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            pdv-rust.caracore.com.br (vitrine; download → tag v0.1.2)
   (GitHub) caracore-pdv-releases       Artefatos Rust oficiais (NSIS/MSI/ZIP)     github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 — NÃO usar /latest
   caracore-hub                  Oficina — CaraCore Hub                      Encomendas; WAR/Tomcat 2.1 pronta; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
   caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
@@ -40,7 +40,7 @@ VISÃO GERAL
   caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
   caracore-cso-quarkus          Oficina — CSO Gestão de Frotas (Web)        Quarkus; produção em cso.caracore.com.br
   caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; lançamento 08/11/2028
-  caracore-cso-releases         Sem vitrine de loja                         Aplicação canónica: cso.caracore.com.br
+  caracore-cso-releases         Loja — vitrine dual CSO                     GitHub Pages: cso-transp.caracore.com.br (app Frotas: cso.caracore.com.br)
   caracore-mkt                  Oficina do Cara Core MKT / Sala             Scripts e portal; oferta gratuita
   caracore-mkt-releases         Loja online do Cara Core MKT                GitHub Pages: mkt.caracore.com.br
   caracore-tools                Tools / Sala Cara Core                      tools.caracore.com.br/sala/
@@ -58,13 +58,13 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
   PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.2-free (maduro)
-  CaraCore PDV             caracore-pdv-rust        rust-pdv + tag GitHub v0.1.2  v0.1.2 (piloto Windows; artefatos em caracore-pdv-releases)
+  CaraCore PDV             caracore-pdv-rust        pdv-rust + tag GitHub v0.1.2  v0.1.2 (piloto Windows; artefatos em caracore-pdv-releases)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
   Não confundir: V3 negócio ≠ canal Java v3.2.x ≠ release Rust v0.1.x.
   Evitar na comunicação: "PDV v3" sozinho, "nova geração", "substitui", "reescrito".
 
-  Matriz site: portfólio #caracore-pdv-rust · loja rust-pdv.caracore.com.br
+  Matriz site: portfólio #caracore-pdv-rust · loja pdv-rust.caracore.com.br
   Wiki institucional: caracore-wiki — projeto-pdv.html (hub), projeto-pdv-rust.html
 
 
@@ -81,15 +81,15 @@ Site e presença pública
 
 Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
-  CaraCore PDV: caracore-pdv-rust + caracore-pdv-rust-releases. Loja: **rust-pdv.caracore.com.br** (sem delivery matriz).
+  CaraCore PDV: caracore-pdv-rust + caracore-pdv-rust-releases. Loja: **pdv-rust.caracore.com.br** (sem delivery matriz).
   Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br (pré-lançamento; GA instalador 06/04/2027). Não é Flask. Retomada: caracore-hub/docs/contexto-rapido.md. Manual: wiki.caracore.com.br/hub/
-  CaraCore CSO: caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 08/11/2028). Aplicação: cso.caracore.com.br. CSO ≠ GPS.
+  CaraCore CSO: caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 08/11/2028). Aplicação: cso.caracore.com.br. Vitrine: cso-transp.caracore.com.br. CSO ≠ GPS.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
-  CaraCore CSO: caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 08/11/2028). Aplicação: cso.caracore.com.br. CSO ≠ GPS.
+  CaraCore CSO: caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 08/11/2028). Aplicação: cso.caracore.com.br. Vitrine: cso-transp.caracore.com.br. CSO ≠ GPS.
   Cara Core MKT: caracore-mkt + caracore-mkt-releases (+ Sala em caracore-tools). Loja: mkt.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação

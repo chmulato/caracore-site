@@ -76,7 +76,7 @@ PDV Rust — bloco leigos remete a `#pdv-coexistencia` (sem repetir tabela).
 
 ### Alterar PDV Rust
 
-- Loja canónica: **rust-pdv.caracore.com.br**
+- Loja canónica: **pdv-rust.caracore.com.br**
 - Coexistência: editar só `#pdv-coexistencia` + headers dos dois PDVs
 - Matriz **sem** `delivery/pdv-rust`
 

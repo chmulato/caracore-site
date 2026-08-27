@@ -67,7 +67,7 @@ Toda a **informação operacional** da Sala de Operações vive na sua versão o
 | **Matriz institucional** (home, portfólio, ecossistema, secure, publications onde aplicável) | Raiz e pastas próprias em `caracore-site` (ex.: `publications/`) | `https://www.caracore.com.br/...` | Não copiar vitrines de produto para a matriz como fonte principal. |
 | **Compatibilidade URL antiga (legado → loja)** | *Transitório:* `caracore-site/delivery/` até **eliminação da pasta** (§1.0a); depois só redirects no hospedeiro | `https://www.caracore.com.br/delivery/...` → **redirect** para lojas / matriz canónica | Estado-alvo: **sem** pasta `delivery/` no repo; `MAPA_ROTAS_*` passa a descrever só regras no edge. |
 
-**Produtos com subdomínio:** mapa de redirects em `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` e `_redirects`. PDV Rust: canónico **rust-pdv.caracore.com.br** (sem conteúdo em `/delivery/pdv-rust`).
+**Produtos com subdomínio:** mapa de redirects em `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` e `_redirects`. PDV Rust: canónico **pdv-rust.caracore.com.br** (sem conteúdo em `/delivery/pdv-rust`).
 
 ---
 

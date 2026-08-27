@@ -69,7 +69,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   CARACORE PDV (RUST + TAURI)
     Portfólio: caracore-site/portfolio.html#caracore-pdv-rust (resumo institucional)
     Oficina: caracore-pdv-rust/
-    Loja:   caracore-pdv-rust-releases/docs/ → rust-pdv.caracore.com.br
+    Loja:   caracore-pdv-rust-releases/docs/ → pdv-rust.caracore.com.br
     index  produto  mercado  download  primeiros-passos  transparencia  wiki/  .nojekyll
     Observacao: vitrine canónica do produto Rust; valor comercial da stack desktop na loja. Redirect: /delivery/pdv-rust → loja.
 
@@ -136,9 +136,10 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
   CARACORE CSO
     Matriz: portfolio.html#caracore-cso
     Oficinas: caracore-cso-quarkus/ · caracore-cso-transportes/
-    Loja:   sem vitrine de loja
-    Aplicação: https://cso.caracore.com.br/
-    Observacao: dual Frotas Web (em produção) + Transportes Desktop (08/11/2028).
+    Loja:   caracore-cso-releases/docs/ → cso-transp.caracore.com.br
+    index  download  tecnologia  canal-feedback  wiki/  .nojekyll
+    Aplicação Frotas: https://cso.caracore.com.br/ (não é a vitrine)
+    Observacao: dual Frotas Web (em produção) + Transportes Desktop (08/11/2028). CSO ≠ GPS.
 
   CARA CORE MKT
     Matriz: portfolio.html#caracore-mkt

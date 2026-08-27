@@ -4,7 +4,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
 **Fonte IAs:** `D:\onedrive\dev\AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`  
-**Atualizado:** 2026-08-26  
+**Atualizado:** 2026-08-27  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
 ---
@@ -72,10 +72,11 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 ### CSO (`caracore-cso-quarkus` + `caracore-cso-transportes`)
 
-| URL canónica | https://cso.caracore.com.br/ (aplicação Frotas; **sem** vitrine Pages) |
+| Aplicação Frotas | https://cso.caracore.com.br/ |
+| Vitrine | https://cso-transp.caracore.com.br/ (`caracore-cso-releases`) |
 | Frotas | Produção · oficina `caracore-cso-quarkus` |
 | Transportes | Garagem 08/11/2028 · oficina `caracore-cso-transportes` |
-| Discurso | CSO ≠ GPS. Virtual Tracker™ é produto separado, 2028 |
+| Discurso | CSO ≠ GPS. Virtual Tracker™ é produto separado, 2028. Loja não substitui a aplicação. |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-cso.html |
 
 ---
@@ -91,7 +92,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 ### Loja PDV Rust (`caracore-pdv-rust-releases`)
 
-| URL vitrine | https://rust-pdv.caracore.com.br/ |
+| URL vitrine | https://pdv-rust.caracore.com.br/ |
 | Download oficial | https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 (**não** `/latest`) |
 | Oficina | `caracore-pdv-rust` |
 | Matriz | `#caracore-pdv-rust` |

@@ -19,7 +19,7 @@ Repositório do site institucional **[caracore.com.br](https://www.caracore.com.
 | Políticas | `politica/` | Privacidade, termos |
 | Área 51 | `secure/` | Login OIDC (Google / Microsoft) |
 
-**Estilos do portfólio:** `assets/css/portfolio.css` · **Redirects legado:** `_redirects` (ex.: `/delivery/pdv-rust` → `rust-pdv.caracore.com.br`).
+**Estilos do portfólio:** `assets/css/portfolio.css` · **Redirects legado:** `_redirects` (ex.: `/delivery/pdv-rust` → `pdv-rust.caracore.com.br`).
 
 ---
 
@@ -28,7 +28,7 @@ Repositório do site institucional **[caracore.com.br](https://www.caracore.com.
 | Linha | Loja canónica | Release |
 |-------|---------------|---------|
 | Java · JavaFX | [pdv.caracore.com.br](https://pdv.caracore.com.br/) | v3.2.2-free |
-| Rust + Tauri 2 | [rust-pdv](https://rust-pdv.caracore.com.br/) · [releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | v0.1.2 |
+| Rust + Tauri 2 | [pdv-rust](https://pdv-rust.caracore.com.br/) · [releases](https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2) | v0.1.2 |
 
 Ambos são **desktop** na máquina da loja. Stacks distintas; **nenhuma substitui a outra**. Portfólio: `#pdv-coexistencia`, `#caracore-pdv`, `#caracore-pdv-rust`.
 

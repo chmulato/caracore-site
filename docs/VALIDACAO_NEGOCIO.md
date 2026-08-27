@@ -26,7 +26,7 @@ PRODUTOS EM FOCO
   #  Produto                         Loja canónica              Release / preço
   -- ------------------------------- -------------------------- ---------------------------
   1  CaraCore PDV Desktop (Java)     pdv.caracore.com.br        v3.2.2-free · Free/Premium
-  2  CaraCore PDV                    rust-pdv + GitHub Releases   v0.1.2 · piloto · transparência loja
+  2  CaraCore PDV                    pdv-rust + GitHub Releases   v0.1.2 · piloto · transparência loja
   3  chmulatoETE Minerador 4.0       ete.caracore.com.br        Free · Ouro 4.0 R$ 29,90
   4  Reino OIDC                      oidc.caracore.com.br        FREE · upgrade R$ 29,90
   5  Circuito Ferradura              circuito.caracore.com.br   FREE PF · escolas R$ 5/aluno/mês
@@ -49,7 +49,7 @@ Gratuito institucional:
 PDV — DUAS LINHAS DESKTOP (discurso fixo)
 
   Java (maduro)     Rust + Tauri 2 (piloto)
-  pdv.*             rust-pdv.*
+  pdv.*             pdv-rust.*
   v3.2.2-free       v0.1.2
   Win/Linux/macOS   Windows · MSI pt-BR
 
@@ -75,7 +75,7 @@ VALIDAÇÃO POR PRODUTO (resumo)
 ### 2.2 PDV Rust
 
   Matriz          OK   portfolio#caracore-pdv-rust, #pdv-coexistencia
-  Loja            OK   rust-pdv.caracore.com.br (sem SEED)
+  Loja            OK   pdv-rust.caracore.com.br (sem SEED)
   Legado          OK   /delivery/pdv-rust → redirect
 
 
@@ -167,7 +167,7 @@ AÇÕES RECOMENDADAS (prioridade)
 ## 3. Release nova → actualizar #portfolio-releases no portfólio
 
 
-## 4. PDV Rust: manter valor comercial da stack na loja rust-pdv (não na matriz)
+## 4. PDV Rust: manter valor comercial da stack na loja pdv-rust (não na matriz)
 
 
 ## 5. Premium PDV Java: decidir se divulga valor no portfólio ou mantém sob consulta

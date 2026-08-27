@@ -47,7 +47,7 @@ Documentação operacional da página pública [ecosistema.html](../ecosistema.h
 | Linha | Release | Loja |
 |-------|---------|------|
 | Java · JavaFX | **v3.2.2-free** | pdv.caracore.com.br |
-| Rust + Tauri 2 | **v0.1.2** | rust-pdv + GitHub Releases |
+| Rust + Tauri 2 | **v0.1.2** | pdv-rust + GitHub Releases |
 
 - Coexistência: link para [portfolio.html#pdv-coexistencia](../portfolio.html#pdv-coexistencia)
 - Evitar: “PDV v3” sozinho, “substitui”, “nova geração”

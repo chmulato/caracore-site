@@ -16,7 +16,7 @@
 | Produto | Rota legado base | Destino oficial | Status |
 |---|---|---|---|
 | PDV | /delivery/pdv/ | https://pdv.caracore.com.br/ | mapeado |
-| PDV Rust | /delivery/pdv-rust/ | https://rust-pdv.caracore.com.br/ | mapeado (stub HTML + _redirects) |
+| PDV Rust | /delivery/pdv-rust/ | https://pdv-rust.caracore.com.br/ | mapeado (stub HTML + _redirects) |
 | Hub | /delivery/hub/ | https://hub.caracore.com.br/ | mapeado |
 | Circuito Ferradura | /delivery/circuito/ | https://circuito.caracore.com.br/ | mapeado |
 | Reino OIDC | /delivery/oidc/ | https://oidc.caracore.com.br/ | mapeado |
@@ -53,9 +53,9 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 | PDV | /delivery/pdv/index.html | https://pdv.caracore.com.br/ |
 | PDV | /delivery/pdv/download.html | https://pdv.caracore.com.br/download.html |
 | PDV | /delivery/pdv/download-oficial.html | https://pdv.caracore.com.br/download.html |
-| PDV Rust | /delivery/pdv-rust/ | https://rust-pdv.caracore.com.br/ |
-| PDV Rust | /delivery/pdv-rust/index.html | https://rust-pdv.caracore.com.br/ |
-| PDV Rust | /delivery/pdv-rust/download.html | https://rust-pdv.caracore.com.br/download.html |
+| PDV Rust | /delivery/pdv-rust/ | https://pdv-rust.caracore.com.br/ |
+| PDV Rust | /delivery/pdv-rust/index.html | https://pdv-rust.caracore.com.br/ |
+| PDV Rust | /delivery/pdv-rust/download.html | https://pdv-rust.caracore.com.br/download.html |
 | Hub | /delivery/hub/ | https://hub.caracore.com.br/ |
 | Hub | /delivery/hub/index.html | https://hub.caracore.com.br/ |
 | Hub | /delivery/hub/download.html | https://hub.caracore.com.br/download.html |
@@ -112,6 +112,6 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 
 ## Edge / hospedeiro (implementado no repo)
 
-- **`_redirects`** (Netlify e compatíveis): na raiz do `caracore-site` — redirects 301 para `/delivery/{produto}/...` → lojas, `/delivery/pdv-rust/*` → rust-pdv, `/delivery/sala/*` → Sala canónica, etc.
+- **`_redirects`** (Netlify e compatíveis): na raiz do `caracore-site` — redirects 301 para `/delivery/{produto}/...` → lojas, `/delivery/pdv-rust/*` → pdv-rust, `/delivery/sala/*` → Sala canónica, etc.
 - **`vercel.json`**: mesma lógica para deploy na Vercel.
 - **GitHub Pages** (produção actual): stubs HTML mínimos em `delivery/{produto}/` (meta refresh + `location.replace`); ver `delivery/README.md`.

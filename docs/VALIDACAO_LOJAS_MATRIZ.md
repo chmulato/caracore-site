@@ -22,12 +22,12 @@ MODELO ACTUAL (desde 2026)
 
   Legado delivery/
     Stubs HTML mínimos (GitHub Pages) + _redirects / vercel.json
-    PDV Rust: redirect → rust-pdv.caracore.com.br
+    PDV Rust: redirect → pdv-rust.caracore.com.br
 
   Pós-deploy 2026-05-31
     52/52 rotas críticas /delivery/* OK em produção (smoke test)
     Portfólio: #pdv-coexistencia, #filosofia-bunker, releases activos
-    rust-pdv.caracore.com.br: 200, sem SEED
+    pdv-rust.caracore.com.br: 200, sem SEED
     Lojas: footers com link portfolio.html#{produto} (2026-05-31)
 
 
@@ -51,8 +51,8 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 2. CARACORE PDV (RUST + TAURI 2)
 
    (M) portfolio.html#caracore-pdv-rust · #pdv-coexistencia
-   (L) caracore-pdv-rust-releases → rust-pdv.caracore.com.br · v0.1.2
-   (R) github.com/chmulato/caracore-rust-pdv-releases/releases — download oficial
+   (L) caracore-pdv-rust-releases → pdv-rust.caracore.com.br · v0.1.2
+   (R) github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 — download oficial Rust (**não** `/latest`)
    Sem delivery/pdv-rust · sem SEED na loja Rust
    Status: OK — piloto multi-OS; CTAs matriz → GitHub Releases; loja = vitrine
 

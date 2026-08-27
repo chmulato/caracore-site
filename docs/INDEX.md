@@ -110,7 +110,7 @@ Detalhes: [SITE_MATRIZ.md §3](SITE_MATRIZ.md).
 | `../_redirects` · `../vercel.json` | Regras para hospedeiros com redirect HTTP |
 | `../delivery/` | Stubs HTML (meta refresh) — GitHub Pages |
 
-PDV Rust: redirect para `https://rust-pdv.caracore.com.br/`. Histórico: [archive/delivery-migracao/](archive/delivery-migracao/).
+PDV Rust: redirect para `https://pdv-rust.caracore.com.br/`. Histórico: [archive/delivery-migracao/](archive/delivery-migracao/).
 
 ---
 

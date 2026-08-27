@@ -30,7 +30,7 @@ alwaysApply: true
 | **PDV Java — oficina** | caracore-pdv | Código Quarkus/JavaFX | privado |
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
-| **PDV Rust — loja** | caracore-pdv-rust-releases | Vitrine comercial | https://rust-pdv.caracore.com.br/ |
+| **PDV Rust — loja** | caracore-pdv-rust-releases | Vitrine comercial | https://pdv-rust.caracore.com.br/ |
 | **PDV Rust — artefatos** | tag v0.1.2 em caracore-pdv-releases | **Download** (nunca `/latest`) | https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 |
 | **Hub** | caracore-hub + *-releases | Encomendas; GA Windows 06/04/2027 | https://hub.caracore.com.br/ |
 | **ETE** | caracore-ete + *-releases | Minerador 4.0 | https://ete.caracore.com.br/ |
@@ -40,7 +40,7 @@ alwaysApply: true
 | **OIDC** | caracore-oidc + *-releases | Reino OIDC | https://oidc.caracore.com.br/ |
 | **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
-| **CSO** | caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 2028) | Gestão de frotas / transportes; **≠ GPS** | https://cso.caracore.com.br/ |
+| **CSO** | caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 2028) | Gestão de frotas / transportes; **≠ GPS** | App: https://cso.caracore.com.br/ · Loja: https://cso-transp.caracore.com.br/ |
 | **MKT** | caracore-mkt + *-releases | Canais dedicados | https://mkt.caracore.com.br/ |
 
 **Regras de roteamento (2026):**
@@ -51,7 +51,7 @@ alwaysApply: true
 ## Documentos de ecossistema (`docs/` neste repo)
 
 - **docs/ECOSYSTEM_CARA_CORE.md** — mapa de repositórios e papéis.
-- **docs/ECOSYSTEM_LOJAS.md** — URLs canónicas (pdv + rust-pdv + demais).
+- **docs/ECOSYSTEM_LOJAS.md** — URLs canónicas (pdv + pdv-rust + demais).
 - **docs/COMPONENTES_LOJA.md** — molde de páginas por loja.
 - **docs/VALIDACAO_LOJAS_MATRIZ.md** — checklist alinhamento portfólio ↔ lojas.
 - **docs/VALIDACAO_NEGOCIO.md** — validação comercial.
@@ -73,12 +73,12 @@ alwaysApply: true
 ## CaraCore PDV — Rust + Tauri (v0.1.2)
 
 - **Download oficial:** https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 (**não** `/latest` — latest é Java)
-- **Loja (vitrine):** https://rust-pdv.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html`)
+- **Loja (vitrine):** https://pdv-rust.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html`)
 - **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — CTAs primários → tag v0.1.2 (não `/latest`)
-- **_redirects:** `/delivery/pdv-rust/*` → rust-pdv.caracore.com.br
+- **_redirects:** `/delivery/pdv-rust/*` → pdv-rust.caracore.com.br
 - **Oficina:** caracore-pdv-rust
 - **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar)
-- **Release v0.1.2:** Windows (MSI/NSIS/ZIP pt-BR); edição gratuita até 100 vendas; transparência em rust-pdv; SHA256 + manifesto no GitHub
+- **Release v0.1.2:** Windows (MSI/NSIS/ZIP pt-BR); edição gratuita até 100 vendas; transparência em pdv-rust; SHA256 + manifesto no GitHub
 - **Mensagem:** dois **PDVs Desktop** do mesmo CaraCore PDV — **nenhuma substitui a outra**
   - **Java:** canal **v3.2.2-free** · Win/Linux/macOS maduro
   - **Rust:** faixa **v0.1.x** · piloto assistido

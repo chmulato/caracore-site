@@ -179,6 +179,7 @@
       <div class="eco-map-row">
         <a href="portfolio.html#caracore-pdv" class="eco-map-node eco-map-node--nucleo">PDV Java</a>
         <a href="portfolio.html#caracore-pdv-rust" class="eco-map-node eco-map-node--nucleo">PDV Rust</a>
+        <a href="portfolio.html#caracore-cso" class="eco-map-node eco-map-node--nucleo">CSO Frotas</a>
       </div>
       <div class="eco-map-core"><i class="bi bi-shield-check me-1"></i> Núcleo Bunker · SQLite local · offline-first</div>
       <div class="eco-map-row">
@@ -196,7 +197,7 @@
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">Hub · Abr/2027</a>
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">RU · Jun/2027</a>
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">Helianto · Dez/2027</a>
-        <a href="#garagem" class="eco-map-node eco-map-node--garagem">CSO · Frotas 2026 / Transp. 2028</a>
+        <a href="#garagem" class="eco-map-node eco-map-node--garagem">CSO Transportes · 2028</a>
       </div>
       <div class="eco-map-legend">
         <span><i class="leg-prateleira"></i> Prateleira</span>
@@ -236,7 +237,7 @@
         <div class="eco-audience-card">
           <i class="bi bi-truck"></i>
           <h3>Centros de distribuição</h3>
-          <p class="small text-muted mb-0">Hub (pré-lançamento · GA 2027) e CSO dual (Frotas 2026 em produção · Transportes 2028) para logística e soberania offline.</p>
+          <p class="small text-muted mb-0">Hub (pré-lançamento · GA 2027) e CSO dual (Frotas em produção · Transportes 08/11/2028) para logística e soberania offline. CSO ≠ GPS.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
@@ -352,6 +353,26 @@
           <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Baixar</a>
           <a href="https://pdv-rust.caracore.com.br/" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">Loja</a>
           <a href="portfolio.html#pdv-coexistencia" class="btn btn-sm btn-outline-secondary">Comparar PDVs</a>
+        </div>
+      </article>
+
+      <article class="eco-product-card eco-product-card--prateleira cc-card-cso">
+        <div class="eco-product-card-head">
+          <i class="bi bi-truck eco-product-icon" aria-hidden="true"></i>
+          <span class="eco-status eco-status-done">Em produção</span>
+        </div>
+        <h3>CaraCore CSO — Gestão de Frotas</h3>
+        <p class="eco-product-stack">Java 21 · Quarkus · PostgreSQL · Qute/HTMX</p>
+        <ul class="eco-product-bullets">
+          <li>Frota no navegador: veículos, custos, equipe e planos</li>
+          <li>Não é rastreador GPS — Virtual Tracker™ é produto separado</li>
+          <li>Transportes desktop permanece na Garagem (08/11/2028)</li>
+        </ul>
+        <p class="eco-product-meta"><strong>Aplicação:</strong> cso.caracore.com.br · <strong>Vitrine:</strong> cso-transp.caracore.com.br</p>
+        <div class="eco-product-cta">
+          <a href="https://cso.caracore.com.br/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Acessar aplicação</a>
+          <a href="https://cso-transp.caracore.com.br/" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">Ver vitrine</a>
+          <a href="portfolio.html#caracore-cso" class="btn btn-sm btn-outline-secondary">Portfólio</a>
         </div>
       </article>
 
@@ -622,12 +643,12 @@
   </div>
 </section>
 
-<!-- Garagem — Hub, RU, CSO -->
+<!-- Garagem — Hub, RU, Helianto, CSO Transportes -->
 <section id="garagem" class="eco-garagem-section ecossistema-section py-5">
   <div class="container-fluid px-0">
         <span class="eco-section-badge eco-section-badge--garagem">Garagem · The Lab</span>
         <h2 class="h3 mb-2">Lançamentos programados</h2>
-        <p class="text-muted mb-4">Produtos em desenvolvimento com data pública de lançamento. <strong>Ink Agenda</strong> e demais itens já na prateleira estão nos cards acima. Veja também o <a href="#roadmap">roadmap</a>.</p>
+        <p class="text-muted mb-4">Produtos em desenvolvimento com data pública de lançamento. A <strong>Gestão de Frotas</strong> do CSO já está na prateleira. Veja também o <a href="#roadmap">roadmap</a>.</p>
         <div class="row g-4 mb-4">
           <div class="col-md-6 col-lg-3">
             <div class="eco-garagem-card cc-card-hub">
@@ -658,11 +679,11 @@
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="eco-garagem-card cc-card-cso">
-              <span class="eco-garagem-badge">Frotas (Web) + Transportes (Desktop)</span>
-              <h3><a href="https://cso-transp.caracore.com.br/" class="eco-garagem-card-title-link" target="_blank" rel="noopener">CaraCore CSO</a></h3>
-              <p class="text-muted small mb-2">Ecossistema dual: <strong>Gestão de Frotas</strong> (Web, em produção) e <strong>Gestão de Transportes</strong> (Desktop JavaFX + SQLite, bunker offline). Captação e gestão no web; soberania de dados no desktop de 2028. CSO ≠ GPS.</p>
-              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Frotas em produção · Transportes 08/11/2028</span>
-              <p class="mb-0 mt-2"><a href="https://cso.caracore.com.br/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Acessar aplicação</a> <a href="https://cso-transp.caracore.com.br/" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">Ver vitrine</a></p>
+              <span class="eco-garagem-badge">Transportes (Desktop bunker)</span>
+              <h3><a href="https://cso-transp.caracore.com.br/" class="eco-garagem-card-title-link" target="_blank" rel="noopener">CSO Transportes</a></h3>
+              <p class="text-muted small mb-2">Módulo desktop (Java 21 · JavaFX · SQLite) acoplado à Gestão de Frotas — não a substitui. Bunker para operação crítica na empresa. A Frotas já está no ar. CSO ≠ GPS.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 08 de novembro de 2028</span>
+              <p class="mb-0 mt-2"><a href="https://cso-transp.caracore.com.br/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Ver vitrine</a> <a href="https://cso.caracore.com.br/" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">Frotas (já no ar)</a></p>
             </div>
           </div>
         </div>
@@ -680,6 +701,11 @@
             <div class="eco-timeline-dot">✓</div>
             <p class="eco-timeline-label">PDV Java</p>
             <p class="eco-timeline-date">v3.2.2-free</p>
+          </div>
+          <div class="eco-timeline-item eco-timeline-done" role="listitem">
+            <div class="eco-timeline-dot">✓</div>
+            <p class="eco-timeline-label">CSO Frotas</p>
+            <p class="eco-timeline-date">em produção</p>
           </div>
           <div class="eco-timeline-item eco-timeline-done" role="listitem">
             <div class="eco-timeline-dot">✓</div>
@@ -708,7 +734,7 @@
           </div>
           <div class="eco-timeline-item eco-timeline-future" role="listitem">
             <div class="eco-timeline-dot">○</div>
-            <p class="eco-timeline-label">CSO</p>
+            <p class="eco-timeline-label">CSO Transportes</p>
             <p class="eco-timeline-date">08/11/2028</p>
           </div>
         </div>
@@ -825,8 +851,8 @@
                 <td class="small">Equipe Cara Core</td>
                 <td><span class="badge bg-warning text-dark">Dual</span></td>
                 <td class="small">25/02/2026</td>
-                <td class="small fw-semibold text-muted">Frotas 08/11/2026 · Transp. 08/11/2028</td>
-                <td class="small">Frotas em producao; Transportes desktop em garagem ate 08/11/2028.</td>
+                <td class="small fw-semibold text-muted">Frotas em produção · Transp. 08/11/2028</td>
+                <td class="small">Frotas em produção (cso.caracore.com.br); vitrine dual em cso-transp.caracore.com.br; Transportes desktop em garagem até 08/11/2028. CSO ≠ GPS.</td>
               </tr>
             </tbody>
           </table>
@@ -930,7 +956,7 @@ flowchart TB
           </div>
         </div>
         <p class="small text-muted mb-4">
-          <strong>Prateleira:</strong> PDV (Java + Rust), OIDC, ETE, Circuito, Ink, Área 51, MKT, Seed, CSO Frotas (2026). <strong>Garagem:</strong> Hub (2027), RU (2027), Helianto (2027), CSO Transportes (2028).
+          <strong>Prateleira:</strong> PDV (Java + Rust), CSO Frotas (em produção), OIDC, ETE, Circuito, Ink, Área 51, MKT, Seed. <strong>Garagem:</strong> Hub (2027), RU (2027), Helianto (2027), CSO Transportes (2028).
         </p>
 
         <div class="eco-cta-block">

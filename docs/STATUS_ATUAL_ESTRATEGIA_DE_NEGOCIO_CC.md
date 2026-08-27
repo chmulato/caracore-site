@@ -82,7 +82,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | Mkt / Sala | `#caracore-mkt` | mkt.* / tools/sala | Gratuito |
 | RU Soberano | `#caracore-ru` | ru.* | Garagem → 18/06/2027 |
 | Helianto | `#caracore-helianto` | helianto.caracore.com.br | Garagem → 30/12/2027 |
-| CSO | `#caracore-cso` | cso.caracore.com.br | Aplicação · Transp. 08/11/2028 |
+| CSO | `#caracore-cso` | cso. + cso-transp. | Frotas em produção · Transp. 08/11/2028 |
 
 Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)  
 Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — 104 artigos; editorial B2B art. 115

@@ -6,17 +6,31 @@
 (function() {
   'use strict';
   
-  // Google Analytics ID (same as legacy site)
+  // Google Analytics ID shared by the public sites
   const GA_MEASUREMENT_ID = 'G-MKFC9G3CL0';
-  
-  // Initialize gtag if not already loaded
+
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag(){window.dataLayer.push(arguments);}
+  window.gtag = window.gtag || gtag;
+
+  const gtagScript = document.createElement('script');
+  gtagScript.async = true;
+  gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_MEASUREMENT_ID)}`;
+  gtagScript.setAttribute('data-caracore-ga4', 'true');
+  document.head.appendChild(gtagScript);
   gtag('js', new Date());
   gtag('config', GA_MEASUREMENT_ID, {
-    'page_path': window.location.pathname,
-    'page_title': document.title,
-    'page_location': window.location.href
+    page_path: window.location.pathname,
+    page_title: document.title,
+    page_location: window.location.href,
+    cookie_domain: '.caracore.com.br',
+    cookie_flags: 'SameSite=None;Secure',
+    cookie_update: true,
+    anonymize_ip: true,
+    send_page_view: true,
+    linker: {
+      domains: ['caracore.com.br', 'personal.caracore.com.br']
+    }
   });
   
   // Track language selection (via flag menu)
@@ -49,24 +63,7 @@
       });
     });
     
-    // Track service page views
-    if (window.location.pathname.includes('services.html')) {
-      gtag('event', 'page_view', {
-        'page_title': 'Services Page',
-        'page_location': window.location.href
-      });
-    }
-    
-    // Track articles page views
-    if (window.location.pathname.includes('articles.html')) {
-      gtag('event', 'page_view', {
-        'page_title': 'Articles Page',
-        'page_location': window.location.href
-      });
-    }
   });
   
-  // Make gtag available globally
-  window.gtag = gtag;
 })();
 

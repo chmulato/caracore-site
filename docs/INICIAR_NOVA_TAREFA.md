@@ -101,7 +101,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-09-05):** Qute Fases 0–7 técnicas. Launcher Windows/Linux/macOS + casca PWA local. T032 (corte v4) bloqueado. Canal público = `v3.2.2-free`. Não substitui o PDV Rust.
+**Estado (2026-09-05):** candidato `v4.0.0-rc1` publicado. Canal maduro = `v3.2.2-free`. T032/GA bloqueado. Não substitui o PDV Rust.
 
 ---
 

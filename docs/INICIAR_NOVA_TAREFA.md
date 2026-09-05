@@ -4,7 +4,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
 **Fonte IAs:** `D:\onedrive\dev\AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`  
-**Atualizado:** 2026-08-27  
+**Atualizado:** 2026-09-05  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
 ---
@@ -101,7 +101,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-09-05):** Qute Fases 1–4 validadas. UI de produção = JavaFX até a Fase 6. Próxima = launcher quiosque. Não substitui o PDV Rust.
+**Estado (2026-09-05):** Qute Fases 0–7 técnicas. Launcher Windows/Linux/macOS + casca PWA local. T032 (corte v4) bloqueado. Canal público = `v3.2.2-free`. Não substitui o PDV Rust.
 
 ---
 

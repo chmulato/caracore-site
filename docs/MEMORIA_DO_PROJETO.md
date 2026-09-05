@@ -56,7 +56,7 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 | Releases Rust | caracore-rust-pdv-releases | GitHub Releases | download oficial |
 
 - Filosofia Bunker · SQLite local · **nenhuma linha substitui a outra**
-- v4 Java: Quarkus + SQLite local + web/PWA + launcher Windows; depende dos gates de paridade e homologação.
+- v4 Java: Quarkus + Qute + SQLite local + web/PWA + launcher; Fases 0–7 técnicas; corte T032 ainda depende de homologação Edge e instalador assinado.
 - Portfólio: `#pdv-coexistencia` · `#caracore-pdv` · `#caracore-pdv-rust`
 - Loja Rust: **sem SEED** na vitrine
 - Discurso: v3.2.x (Java) ≠ v0.1.x (Rust); evitar “PDV v3” sozinho / “substitui”

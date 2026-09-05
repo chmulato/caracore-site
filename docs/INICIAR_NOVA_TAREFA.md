@@ -90,6 +90,20 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 ---
 
+### Oficina PDV Java (`caracore-pdv`)
+
+| Ler | Ficheiro |
+|-----|----------|
+| Entrada IAs | `AGENTS.md` |
+| Handoff | `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` |
+| Plano Qute | `docs/arquitetura/PLANO_MIGRACAO_QUARKUS_QUTE.md` |
+| Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
+| Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
+
+**Estado (2026-09-05):** Qute Fases 1–4 validadas. UI de produção = JavaFX até a Fase 6. Próxima = launcher quiosque. Não substitui o PDV Rust.
+
+---
+
 ### Loja PDV Rust (`caracore-pdv-rust-releases`)
 
 | URL vitrine | https://pdv-rust.caracore.com.br/ |

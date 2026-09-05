@@ -40,7 +40,7 @@ alwaysApply: true
 | **OIDC** | caracore-oidc + *-releases | Reino OIDC | https://oidc.caracore.com.br/ |
 | **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
-| **CSO** | caracore-cso-quarkus (Frotas) + caracore-cso-transportes (Desktop 2028, **sem loja**) + loja `D:\onedrive\dev\caracore-cso-releases` | Gestão de frotas / transportes; um produto em 08/11/2028; **≠ GPS** | App: https://cso.caracore.com.br/ · Loja: https://cso-transp.caracore.com.br/ |
+| **CSO** | caracore-cso-quarkus (Frotas) + caracore-cso-transportes (Desktop 2028, **sem loja**) + loja `D:\onedrive\dev\caracore-cso-releases` | Home da loja = conversão Frotas hoje; landing app com JSON-LD; um produto em 08/11/2028; **≠ GPS** | App: https://cso.caracore.com.br/ · Loja: https://cso-transp.caracore.com.br/ |
 | **MKT** | caracore-mkt + *-releases | Canais dedicados | https://mkt.caracore.com.br/ |
 
 **Regras de roteamento (2026):**

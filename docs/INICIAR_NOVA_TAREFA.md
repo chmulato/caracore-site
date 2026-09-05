@@ -76,7 +76,8 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Loja única | https://cso-transp.caracore.com.br/ · clone `D:\onedrive\dev\caracore-cso-releases` |
 | Frotas | Produção · oficina `caracore-cso-quarkus` (não editar vitrine lá) |
 | Transportes | Garagem 08/11/2028 · oficina `caracore-cso-transportes` (**sem** informação de loja) |
-| Discurso | CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. |
+| Discurso | Home da loja = conversão Frotas hoje (CTAs → /cadastro). CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. Sem depoimento inventado. |
+| Landing app | JSON-LD + cache 5 min + LCP WebP no ar (oficina quarkus) |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-cso.html |
 
 ---

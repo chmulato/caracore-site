@@ -2,7 +2,7 @@
 
 Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar estrutura, portfólio, redirects, copy B2B ou integrações.
 
-**Última actualização:** 2026-06-07  
+**Última actualização:** 2026-09-05
 **Iniciar tarefa:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md)  
 **Posicionamento:** [DILEMA.md](DILEMA.md) · **Índice:** [INDEX.md](INDEX.md)
 
@@ -51,10 +51,12 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 | Linha | Oficina | Loja | Release |
 |-------|---------|------|---------|
 | Java · JavaFX | caracore-pdv | pdv.caracore.com.br | **v3.2.2-free** |
+| Java · Quarkus/Qute (v4 em desenvolvimento) | caracore-pdv | pdv.caracore.com.br/roadmap-2026.html | **08/11/2026 previsto** |
 | Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br | **v0.1.2** |
 | Releases Rust | caracore-rust-pdv-releases | GitHub Releases | download oficial |
 
 - Filosofia Bunker · SQLite local · **nenhuma linha substitui a outra**
+- v4 Java: Quarkus + SQLite local + web/PWA + launcher Windows; depende dos gates de paridade e homologação.
 - Portfólio: `#pdv-coexistencia` · `#caracore-pdv` · `#caracore-pdv-rust`
 - Loja Rust: **sem SEED** na vitrine
 - Discurso: v3.2.x (Java) ≠ v0.1.x (Rust); evitar “PDV v3” sozinho / “substitui”

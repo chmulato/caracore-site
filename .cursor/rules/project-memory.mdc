@@ -1,5 +1,5 @@
 ﻿---
-description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.2-free · PDV Rust v0.1.2
+description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.2-free · PDV v4 08/11/2026 · PDV Rust v0.1.2
 alwaysApply: true
 ---
 
@@ -69,6 +69,14 @@ alwaysApply: true
 - **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.2-free**
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
+
+## PDV v4 — marco previsto 08/11/2026
+
+- **Oficina:** `caracore-pdv`; plano técnico: `docs/arquitetura/ROADMAP_ADEQUACAO_PME.md`.
+- **Escopo público:** Quarkus + SQLite local + interface web/PWA + launcher Windows em modo aplicativo.
+- **Estado:** em desenvolvimento; paridade de negócio, homologação, empacotamento e validação Windows ainda são gates do corte.
+- **Loja:** `https://pdv.caracore.com.br/roadmap-2026.html`.
+- **Regra de comunicação:** manter `v3.2.2-free` como canal atual até o v4 ser efetivamente aprovado e publicado.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.2)
 

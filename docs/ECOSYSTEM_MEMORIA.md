@@ -40,7 +40,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | PDV Rust vitrine | https://pdv-rust.caracore.com.br/ | caracore-pdv-rust-releases |
 | PDV Rust download | https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 | GitHub (artefatos; **não** `/latest`) |
 | CSO Produção (Frotas) | https://cso.caracore.com.br/ | caracore-cso-quarkus |
-| CSO vitrine (Frotas + Transportes) | https://cso-transp.caracore.com.br/ | caracore-cso-releases |
+| CSO loja única (Frotas + Transportes) | https://cso-transp.caracore.com.br/ | caracore-cso-releases · clone `D:\onedrive\dev\caracore-cso-releases` |
 | Hub vitrine | https://hub.caracore.com.br/ | caracore-hub-releases |
 
 **Correção wiki (jun/2026):** portfólio **não** está em `wiki.caracore.com.br/portfolio.html` — usar **www**; wiki tem redirect stub.
@@ -123,6 +123,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-09-05 | CSO: loja única centralizada em `D:\onedrive\dev\caracore-cso-releases` (`cso-transp.caracore.com.br`). Oficina `caracore-cso-transportes` sem URL/copy de loja. Em 08/11/2028 as duas frentes viram um só produto. |
 | 2026-09-05 | PDV Java: trilha Qute Fases 1–4 validadas na oficina `caracore-pdv` (layout, login/dashboard, frente de caixa, cadastros, conferência e relatórios). UI de produção continua JavaFX até a Fase 6. Próxima = launcher quiosque. Memória em `caracore-pdv/AGENTS.md`. Não substitui o PDV Rust. |
 | 2026-08-27 | Hosts novos: loja PDV Rust em `pdv-rust.caracore.com.br` (antes rust-pdv); vitrine CSO em `cso-transp.caracore.com.br`. Aplicação Frotas permanece em `cso.caracore.com.br`. Transportes Desktop 08/11/2028. |
 | 2026-08-26 | Hub: memória de colaboração para o GA Windows 06/04/2027 (`caracore-hub/docs/contexto-rapido.md`). Web 2.1 pronta; instalador SQLite é o trabalho aberto. Manual público em wiki.caracore.com.br/hub/. |

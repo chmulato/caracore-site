@@ -39,8 +39,8 @@ VISÃO GERAL
   caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
   caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
   caracore-cso-quarkus          Oficina — CSO Gestão de Frotas (Web)        Quarkus; produção em cso.caracore.com.br
-  caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; lançamento 08/11/2028
-  caracore-cso-releases         Loja — vitrine dual CSO                     GitHub Pages: cso-transp.caracore.com.br (app Frotas: cso.caracore.com.br)
+  caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; GA 08/11/2028; sem URL/copy de loja
+  caracore-cso-releases         Loja única CSO (Frotas + Transportes)       Clone: D:\onedrive\dev\caracore-cso-releases · Pages: cso-transp.caracore.com.br (app: cso.caracore.com.br)
   caracore-mkt                  Oficina do Cara Core MKT / Sala             Scripts e portal; oferta gratuita
   caracore-mkt-releases         Loja online do Cara Core MKT                GitHub Pages: mkt.caracore.com.br
   caracore-tools                Tools / Sala Cara Core                      tools.caracore.com.br/sala/
@@ -83,13 +83,12 @@ Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
   CaraCore PDV: caracore-pdv-rust + caracore-pdv-rust-releases. Loja: **pdv-rust.caracore.com.br** (sem delivery matriz).
   Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br (pré-lançamento; GA instalador 06/04/2027). Não é Flask. Retomada: caracore-hub/docs/contexto-rapido.md. Manual: wiki.caracore.com.br/hub/
-  CaraCore CSO: caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 08/11/2028). Aplicação: cso.caracore.com.br. Vitrine: cso-transp.caracore.com.br. CSO ≠ GPS.
+  CaraCore CSO: caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 08/11/2028, oficina sem loja). Loja única: D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br. App: cso.caracore.com.br. Um produto em 08/11/2028. CSO ≠ GPS.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
-  CaraCore CSO: caracore-cso-quarkus (Frotas, produção) + caracore-cso-transportes (Desktop 08/11/2028). Aplicação: cso.caracore.com.br. Vitrine: cso-transp.caracore.com.br. CSO ≠ GPS.
   Cara Core MKT: caracore-mkt + caracore-mkt-releases (+ Sala em caracore-tools). Loja: mkt.caracore.com.br
 
 Produtos com vitrine, sem oferta de aplicação

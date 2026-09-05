@@ -73,10 +73,10 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### CSO (`caracore-cso-quarkus` + `caracore-cso-transportes`)
 
 | Aplicação Frotas | https://cso.caracore.com.br/ |
-| Vitrine | https://cso-transp.caracore.com.br/ (`caracore-cso-releases`) |
-| Frotas | Produção · oficina `caracore-cso-quarkus` |
-| Transportes | Garagem 08/11/2028 · oficina `caracore-cso-transportes` |
-| Discurso | CSO ≠ GPS. Virtual Tracker™ é produto separado, 2028. Loja não substitui a aplicação. |
+| Loja única | https://cso-transp.caracore.com.br/ · clone `D:\onedrive\dev\caracore-cso-releases` |
+| Frotas | Produção · oficina `caracore-cso-quarkus` (não editar vitrine lá) |
+| Transportes | Garagem 08/11/2028 · oficina `caracore-cso-transportes` (**sem** informação de loja) |
+| Discurso | CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-cso.html |
 
 ---

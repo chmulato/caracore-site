@@ -22,7 +22,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   Cara Core Seed               https://seed.caracore.com.br/
   Suporte Área 51              https://area51.caracore.com.br/
   RU Soberano                  https://ru.caracore.com.br/
-  CaraCore CSO                 https://cso-transp.caracore.com.br/                      Vitrine dual (Frotas + Transportes). Aplicação Frotas: cso.caracore.com.br. GA desktop 08/11/2028. ≠ GPS
+  CaraCore CSO                 https://cso-transp.caracore.com.br/                      Loja única (Frotas + Transportes). Clone: D:\onedrive\dev\caracore-cso-releases. App: cso.caracore.com.br. GA desktop 08/11/2028. Oficina transportes sem loja. ≠ GPS
   Cara Core MKT                https://mkt.caracore.com.br/                            Gratuito; Sala em tools.caracore.com.br/sala/
   Ink Agenda                   https://ink.caracore.com.br/
   Helianto Condominium         https://helianto.caracore.com.br/                       Vitrine; lançamento 30/12/2027

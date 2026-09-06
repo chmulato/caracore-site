@@ -19,7 +19,7 @@ VISÃO GERAL
   caracore-pdv-releases         Loja — PDV Desktop Java                     pdv.caracore.com.br · CTA demonstração · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.2
   caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            pdv-rust.caracore.com.br (vitrine; download → tag v0.1.2)
-  (GitHub) caracore-pdv-releases       Artefatos Rust oficiais (NSIS/MSI/ZIP)     github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 — NÃO usar /latest
+  (GitHub) caracore-rust-pdv-releases   Artefatos Rust oficiais (NSIS/MSI/ZIP)     github.com/chmulato/caracore-rust-pdv-releases/releases
   caracore-hub                  Oficina — CaraCore Hub                      Encomendas; WAR/Tomcat 2.1 pronta; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
   caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
@@ -58,7 +58,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
   PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.2-free (maduro) · RC1 Qute pré-release · Free 100 vendas/mês
-  CaraCore PDV             caracore-pdv-rust        pdv-rust + tag GitHub v0.1.2  v0.1.2 (piloto Windows; artefatos em caracore-pdv-releases)
+  CaraCore PDV             caracore-pdv-rust        pdv-rust + tag GitHub v0.1.2  v0.1.2 (piloto Windows; artefatos em caracore-rust-pdv-releases)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
   Não confundir: V3 negócio ≠ canal Java v3.2.x ≠ release Rust v0.1.x.

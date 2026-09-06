@@ -110,11 +110,11 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Rust (`caracore-pdv-rust-releases`)
 
 | URL vitrine | https://pdv-rust.caracore.com.br/ |
-| Download oficial | https://github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 (**não** `/latest`) |
+| Download oficial | https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag **v0.1.2**) |
 | Oficina | `caracore-pdv-rust` |
 | Matriz | `#caracore-pdv-rust` |
 
-**Nav loja:** Formatos → `download.html` · botões de download → tag **v0.1.2**, nunca `releases/latest` (latest = Java).
+**Nav loja:** Formatos → `download.html` · botões → `caracore-rust-pdv-releases/releases`. Nunca `/releases/latest` de `caracore-pdv-releases` (Java).
 
 ---
 
@@ -187,7 +187,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 | Matriz / portfólio | www.caracore.com.br/portfolio.html | wiki.caracore.com.br/portfolio.html |
 | Eco Mundo (matriz) | www.caracore.com.br/ecosistema.html | — |
 | Eco Mundo (wiki) | wiki.caracore.com.br/ecosistema.html | — |
-| Download PDV Rust | github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 | `/releases/latest` (Java) ou `caracore-rust-pdv-releases/releases` |
+| Download PDV Rust | github.com/chmulato/caracore-rust-pdv-releases/releases | `/releases/latest` de `caracore-pdv-releases` (Java) |
 | CTAs legado | — | www.caracore.com.br/delivery/... |
 
 ---
@@ -206,7 +206,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 ## 5. Armadilhas que custam tempo
 
 1. **Tratar Rust como substituto do Java** — são linhas paralelas (v3.2.x ≠ v0.1.x).
-2. **Usar `/releases/latest` no PDV Rust** — latest de `caracore-pdv-releases` é o canal **Java**. Usar a tag **v0.1.2**.
+2. **Usar `/releases/latest` de `caracore-pdv-releases` para o Rust** — esse latest é o canal **Java**. Rust = `caracore-rust-pdv-releases/releases`.
 3. **Descrever Hub como Flask / central telefônica** — Hub é encomendas (Jakarta EE). Flask é Área 51.
 4. **Vender CSO como GPS** — Frotas é gestão administrativa; Virtual Tracker™ é produto separado.
 5. **Duplicar vitrine longa na matriz** — resumo + CTA para loja.

@@ -52,7 +52,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 
    (M) portfolio.html#caracore-pdv-rust · #pdv-coexistencia
    (L) caracore-pdv-rust-releases → pdv-rust.caracore.com.br · v0.1.2
-   (R) github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 — download oficial Rust (**não** `/latest`)
+   (R) github.com/chmulato/caracore-rust-pdv-releases/releases — download oficial Rust (tag v0.1.2)
    Sem delivery/pdv-rust · sem SEED na loja Rust
    Status: OK — piloto multi-OS; CTAs matriz → GitHub Releases; loja = vitrine
 

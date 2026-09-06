@@ -13,7 +13,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 1. **Nova tarefa?** → [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) (fluxo por tipo de trabalho)
 2. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`D:\onedrive\dev\AGENTS.md`**
-3. **Produtos-chave:** PDV (Java Free `v3.2.2-free` + candidato `v4.0.0-rc1` / GA 08/11/2026 se T032 + Rust `v0.1.2`) · CSO (Frotas no ar; loja `cso-transp`; Transportes 08/11/2028; ≠ GPS) · Hub (encomendas; GA Windows 06/04/2027)
+3. **Produtos-chave:** PDV (Java Free `v3.2.2-free` + candidato `v4.0.0-rc2` / GA 08/11/2026 se T032 + Rust `v0.1.2`) · CSO (Frotas no ar; loja `cso-transp`; Transportes 08/11/2028; ≠ GPS) · Hub (encomendas; GA Windows 06/04/2027)
 3b. **CSO retomada:** loja `D:\onedrive\dev\caracore-cso-releases` · app `caracore-cso-quarkus` · oficina Transportes **sem** copy de loja · próximo app = COE-5.1 só se cota
 4. **PDV Java:** oficina `caracore-pdv/AGENTS.md` · loja CTA = demonstração presencial. Free (`PlanoLicencaService`): 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e. Premium R$ 79,90/mês. RC1 Qute publicado; T032 não aprovado; canal público = `v3.2.2-free`. Rust piloto = 100 vendas na vida. **Não** substituir o PDV Rust.
 5. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
@@ -65,14 +65,14 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 ## PDV Desktop — referência rápida
 
-**Marco v4:** candidato `v4.0.0-rc1` (Qute + launcher) no ar como pré-release. GA **08/11/2026** se T032 passar (Edge real, suíte completa, instalador assinado). Até o corte, `v3.2.2-free` é o canal Java maduro.
+**Marco v4:** candidato `v4.0.0-rc2` (Qute + launcher; pasta nova + banco `./data/caracore-pdv.db`) no ar como pré-release. GA **08/11/2026** se T032 passar (Edge real, suíte completa, instalador assinado). Até o corte, `v3.2.2-free` é o canal Java maduro.
 
 **Planos Java** (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS recibo/mês, sem PIX/NF-e. Premium = R$ 79,90/mês, vendas ilimitadas, PIX. Loja: CTA = demonstração presencial. Rust `v0.1.2` = 100 vendas na vida do piloto.
 
 | Papel | Repo / URL |
 |-------|------------|
 | Java maduro | pdv.caracore.com.br · **v3.2.2-free** · caracore-pdv |
-| Java v4 RC1 | tag `v4.0.0-rc1` · T032 aberto · não substitui o Free |
+| Java v4 RC2 | tag `v4.0.0-rc2` · T032 aberto · não substitui o Free |
 | Rust piloto | pdv-rust (vitrine) · tag GitHub **v0.1.2** em `caracore-pdv-releases` · caracore-pdv-rust |
 | Coexistência | portfolio `#pdv-coexistencia` · não substituir Java |
 | Comunicação | Retrô art. **115** (B2B/IA) · art. 114 (PDV Rust) · wiki projeto-pdv* |
@@ -128,6 +128,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 | Data | Alteração |
 |------|-----------|
 | 2026-09-05 | PDV planos + loja: Free alinhado a `PlanoLicencaService` (100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e). Premium R$ 79,90/mês. CTA da loja = demonstração presencial. Memória IAs sincronizada. |
+| 2026-09-06 | PDV Java: pré-release **v4.0.0-rc2** (instalação isolada em pasta nova + `./data/caracore-pdv.db`; login `admin/admin`). RC1 não deve ser reutilizado para primeiro acesso. Canal maduro permanece `v3.2.2-free`. T032/GA aberto. |
 | 2026-09-05 | PDV Java: pré-release **v4.0.0-rc1** (Quarkus + Qute, ZIP portátil). Canal maduro permanece `v3.2.2-free`. T032/GA aberto. |
 | 2026-09-05 | PDV Java: loja aponta para ZIPs reais da tag `v3.2.2-free` (Windows, Linux e macOS; nomes `free-free` no GitHub). PWA da vitrine em `pdv.caracore.com.br/pwa.html` — não é o caixa. |
 | 2026-09-05 | PDV Java oficina: paridade Qute Fases 0–7 técnica (cadastros, fiscal, backup, offline, personas). JavaFX removido do caminho de produção da oficina. **T032 corte não aprovado** (Edge real, suíte completa, instalador assinado). Canal público permanece `v3.2.2-free`. Não substitui o PDV Rust. |

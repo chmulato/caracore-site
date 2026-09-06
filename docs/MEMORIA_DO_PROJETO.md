@@ -51,7 +51,7 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 | Linha | Oficina | Loja | Release |
 |-------|---------|------|---------|
 | Java Free (JavaFX publicado) | caracore-pdv | pdv.caracore.com.br | **v3.2.2-free** |
-| Java v4 (Qute RC1) | caracore-pdv | tag `v4.0.0-rc1` · roadmap-2026.html | T032 aberto · GA **08/11/2026** se passar |
+| Java v4 (Qute RC2) | caracore-pdv | tag `v4.0.0-rc2` · roadmap-2026.html | T032 aberto · GA **08/11/2026** se passar |
 | Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br | **v0.1.2** (100 vendas na vida) |
 | Releases Rust | tag v0.1.2 em caracore-pdv-releases | GitHub | **nunca** `/latest` |
 

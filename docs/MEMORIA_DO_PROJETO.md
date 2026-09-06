@@ -50,13 +50,14 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 
 | Linha | Oficina | Loja | Release |
 |-------|---------|------|---------|
-| Java · JavaFX | caracore-pdv | pdv.caracore.com.br | **v3.2.2-free** |
-| Java · Quarkus/Qute (v4 em desenvolvimento) | caracore-pdv | pdv.caracore.com.br/roadmap-2026.html | **08/11/2026 previsto** |
-| Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br | **v0.1.2** |
-| Releases Rust | caracore-rust-pdv-releases | GitHub Releases | download oficial |
+| Java Free (JavaFX publicado) | caracore-pdv | pdv.caracore.com.br | **v3.2.2-free** |
+| Java v4 (Qute RC1) | caracore-pdv | tag `v4.0.0-rc1` · roadmap-2026.html | T032 aberto · GA **08/11/2026** se passar |
+| Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br | **v0.1.2** (100 vendas na vida) |
+| Releases Rust | tag v0.1.2 em caracore-pdv-releases | GitHub | **nunca** `/latest` |
 
 - Filosofia Bunker · SQLite local · **nenhuma linha substitui a outra**
-- v4 Java: Quarkus + Qute + SQLite local + web/PWA + launcher; Fases 0–7 técnicas; corte T032 ainda depende de homologação Edge e instalador assinado.
+- Planos Java (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês, sem PIX/NF-e. Premium R$ 79,90/mês. Loja: CTA = demonstração presencial.
+- v4 Java: Quarkus + Qute + SQLite + launcher; Fases 0–7 técnicas; **T032 não aprovado**.
 - Portfólio: `#pdv-coexistencia` · `#caracore-pdv` · `#caracore-pdv-rust`
 - Loja Rust: **sem SEED** na vitrine
 - Discurso: v3.2.x (Java) ≠ v0.1.x (Rust); evitar “PDV v3” sozinho / “substitui”

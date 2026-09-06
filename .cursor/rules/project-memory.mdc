@@ -1,11 +1,11 @@
 ﻿---
-description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.2-free · PDV v4 08/11/2026 · PDV Rust v0.1.2
+description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.2-free · RC1 Qute · Free 100/mês · PDV Rust v0.1.2
 alwaysApply: true
 ---
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-08-26 · IAs: `AGENTS.md` na raiz do workspace
+**Atualizado:** 2026-09-05 · IAs: `AGENTS.md` na raiz do workspace
 
 ## Posicionamento B2B (copy comercial)
 
@@ -27,7 +27,7 @@ alwaysApply: true
 | **Wiki** | caracore-wiki | Trilhas e hub PDV | https://wiki.caracore.com.br/ |
 | **Retrô** | caracore-retro | Artigos LinkedIn / editorial | https://retro.caracore.com.br/ |
 | **Sala** | caracore-site `sala/` + caracore-mkt | Campanhas, manuais rede | https://tools.caracore.com.br/sala/ |
-| **PDV Java — oficina** | caracore-pdv | Código Quarkus/JavaFX | privado |
+| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (v4 RC1); Free publicado ainda JavaFX | privado |
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
 | **PDV Rust — loja** | caracore-pdv-rust-releases | Vitrine comercial | https://pdv-rust.caracore.com.br/ |
@@ -66,17 +66,17 @@ alwaysApply: true
 ## PDV Desktop Java (oferta madura)
 
 - **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia` · `#decisoes-engenharia`
-- **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.2-free**
+- **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.2-free**. CTA = demonstração presencial.
+- **Planos:** Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`.
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV v4 — marco previsto 08/11/2026
+## PDV v4 — candidato RC1; GA previsto 08/11/2026
 
-- **Oficina:** `caracore-pdv`; plano técnico: `docs/arquitetura/ROADMAP_ADEQUACAO_PME.md`.
-- **Escopo público:** Quarkus + SQLite local + interface web/PWA + launcher Windows em modo aplicativo.
-- **Estado:** em desenvolvimento; paridade de negócio, homologação, empacotamento e validação Windows ainda são gates do corte.
-- **Loja:** `https://pdv.caracore.com.br/roadmap-2026.html`.
-- **Regra de comunicação:** manter `v3.2.2-free` como canal atual até o v4 ser efetivamente aprovado e publicado.
+- **Oficina:** `caracore-pdv`; pré-release **v4.0.0-rc1** (Qute + launcher). T032 não aprovado.
+- **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo.
+- **Loja:** `https://pdv.caracore.com.br/roadmap-2026.html` — RC1 não substitui o Free.
+- **Regra:** manter `v3.2.2-free` como canal atual até o v4 ser aprovado e publicado.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.2)
 

@@ -15,8 +15,8 @@ VISÃO GERAL
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
   caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (117 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
-  caracore-pdv                  Oficina — PDV Desktop Java / v4            v3.2.2-free maduro; v4 Quarkus + SQLite + web/PWA previsto 08/11/2026
-  caracore-pdv-releases         Loja — PDV Desktop Java                     GitHub Pages: pdv.caracore.com.br
+  caracore-pdv                  Oficina — PDV Desktop Java / v4            v3.2.2-free maduro; RC1 Qute; T032/GA 08/11/2026; planos em PlanoLicencaService
+  caracore-pdv-releases         Loja — PDV Desktop Java                     pdv.caracore.com.br · CTA demonstração · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.2
   caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            pdv-rust.caracore.com.br (vitrine; download → tag v0.1.2)
   (GitHub) caracore-pdv-releases       Artefatos Rust oficiais (NSIS/MSI/ZIP)     github.com/chmulato/caracore-pdv-releases/releases/tag/v0.1.2 — NÃO usar /latest
@@ -57,7 +57,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
 
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
-  PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.2-free (maduro)
+  PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.2-free (maduro) · RC1 Qute pré-release · Free 100 vendas/mês
   CaraCore PDV             caracore-pdv-rust        pdv-rust + tag GitHub v0.1.2  v0.1.2 (piloto Windows; artefatos em caracore-pdv-releases)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.

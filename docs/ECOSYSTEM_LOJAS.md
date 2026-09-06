@@ -13,8 +13,8 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   Produto                      Loja online (URL canónica)                              Observação
   ---------------------------- ------------------------------------------------------- ------------------------------------------
   CaraCore PDV Desktop (Java)  https://pdv.caracore.com.br/                            Oferta madura; canal v3.2.2-free; Win/Linux/macOS; PWA da vitrine
-  CaraCore PDV                 https://pdv-rust.caracore.com.br/                       Vitrine; release v0.1.2
-  (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.2   Artefatos NSIS/MSI/ZIP — NÃO usar /latest
+  CaraCore PDV                 https://pdv-rust.caracore.com.br/                       Loja própria (Pages do repo caracore-rust-pdv-releases)
+  (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Mesmo repo da loja; tag v0.1.2. NÃO usar /latest de caracore-pdv-releases (Java)
   Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; GA instalador Windows 06/04/2027
   Circuito Ferradura           https://circuito.caracore.com.br/
   Reino OIDC                   https://oidc.caracore.com.br/

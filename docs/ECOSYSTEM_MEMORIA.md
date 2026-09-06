@@ -2,7 +2,7 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
-**Atualizado:** 2026-09-05  
+**Atualizado:** 2026-09-06  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
 **Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
@@ -18,7 +18,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 4. **PDV Java:** oficina `caracore-pdv/AGENTS.md` · loja CTA = demonstração presencial. Free (`PlanoLicencaService`): 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e. Premium R$ 79,90/mês. Canal público = `v3.2.3-free` (`localhost:8080/login`, `admin`/`admin`). RC2 Qute é pré-release. T032 não aprovado. Rust piloto = 100 vendas na vida. **Não** substituir o PDV Rust.
 5. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
 6. **Hub oficina (GA Windows 06/04/2027):** `caracore-hub/docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` · web 2.1 pronta; trabalho aberto = instalador SQLite. Manual: wiki.caracore.com.br/hub/
-7. **Download Rust:** `pdv-rust.caracore.com.br/download.html` · https://github.com/chmulato/caracore-rust-pdv-releases/releases — **nunca** `/releases/latest` de `caracore-pdv-releases` (Java)
+7. **PDV Rust (loja + artefatos):** um só repo `chmulato/caracore-rust-pdv-releases` — Pages = `pdv-rust.caracore.com.br` · Releases = https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag v0.1.2). Clone local: `caracore-pdv-rust-releases`. **Nunca** `caracore-pdv-releases` (Java).
 8. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia` · tom **FinOps/híbrido** (não anti-cloud na vitrine)
 9. **Suporte PME:** [suporte-local.html](../suporte-local.html) — fora do nav B2B; horários noite/sábado só lá
 
@@ -38,8 +38,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | Retrô | https://retro.caracore.com.br/ | caracore-retro |
 | Sala operações | https://tools.caracore.com.br/sala/ | caracore-site / caracore-mkt |
 | PDV Java loja | https://pdv.caracore.com.br/ | caracore-pdv-releases |
-| PDV Rust vitrine | https://pdv-rust.caracore.com.br/ | caracore-pdv-rust-releases |
-| PDV Rust download | https://github.com/chmulato/caracore-rust-pdv-releases/releases | GitHub (lista só Rust; tag v0.1.2) |
+| PDV Rust loja + artefatos | https://pdv-rust.caracore.com.br/ · https://github.com/chmulato/caracore-rust-pdv-releases/releases | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) |
 | CSO Produção (Frotas) | https://cso.caracore.com.br/ | caracore-cso-quarkus |
 | CSO loja única (Frotas + Transportes) | https://cso-transp.caracore.com.br/ | caracore-cso-releases · clone `D:\onedrive\dev\caracore-cso-releases` |
 | Hub vitrine | https://hub.caracore.com.br/ | caracore-hub-releases |
@@ -73,7 +72,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 |-------|------------|
 | Java maduro | pdv.caracore.com.br · **v3.2.3-free** · caracore-pdv |
 | Java v4 RC2 | tag `v4.0.0-rc2` · T032 aberto · não substitui o Free |
-| Rust piloto | pdv-rust (vitrine) · tag GitHub **v0.1.2** em `caracore-pdv-releases` · caracore-pdv-rust |
+| Rust piloto | pdv-rust (vitrine) · tag GitHub **v0.1.2** em `caracore-rust-pdv-releases` · oficina `caracore-pdv-rust` |
 | Coexistência | portfolio `#pdv-coexistencia` · não substituir Java |
 | Comunicação | Retrô art. **115** (B2B/IA) · art. 114 (PDV Rust) · wiki projeto-pdv* |
 

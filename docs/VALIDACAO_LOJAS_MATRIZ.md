@@ -51,10 +51,10 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 2. CARACORE PDV (RUST + TAURI 2)
 
    (M) portfolio.html#caracore-pdv-rust · #pdv-coexistencia
-   (L) caracore-pdv-rust-releases → pdv-rust.caracore.com.br · v0.1.2
-   (R) github.com/chmulato/caracore-rust-pdv-releases/releases — download oficial Rust (tag v0.1.2)
-   Sem delivery/pdv-rust · sem SEED na loja Rust
-   Status: OK — piloto multi-OS; CTAs matriz → GitHub Releases; loja = vitrine
+   (L+R) caracore-rust-pdv-releases — Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.2)
+   Clone local: caracore-pdv-rust-releases
+   Sem delivery/pdv-rust · sem SEED na loja Rust · não usar caracore-pdv-releases (Java)
+   Status: OK — piloto Windows; CTAs matriz → GitHub Releases do repo Rust; loja e artefatos no mesmo repo
 
 
 ## 3. INK AGENDA

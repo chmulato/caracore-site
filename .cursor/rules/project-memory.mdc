@@ -30,8 +30,7 @@ alwaysApply: true
 | **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (v4 RC1); Free publicado ainda JavaFX | privado |
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
-| **PDV Rust — loja** | caracore-pdv-rust-releases | Vitrine comercial | https://pdv-rust.caracore.com.br/ |
-| **PDV Rust — artefatos** | caracore-rust-pdv-releases | **Download** | https://github.com/chmulato/caracore-rust-pdv-releases/releases |
+| **PDV Rust — loja + artefatos** | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | Pages + Releases no **mesmo** repo | https://pdv-rust.caracore.com.br/ · https://github.com/chmulato/caracore-rust-pdv-releases/releases |
 | **Hub** | caracore-hub + *-releases | Encomendas; GA Windows 06/04/2027 | https://hub.caracore.com.br/ |
 | **ETE** | caracore-ete + *-releases | Minerador 4.0 | https://ete.caracore.com.br/ |
 | **Ink** | caracore-ink + *-releases | Agenda | https://ink.caracore.com.br/ |
@@ -80,8 +79,9 @@ alwaysApply: true
 
 ## CaraCore PDV — Rust + Tauri (v0.1.2)
 
-- **Download oficial:** https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag v0.1.2). Não usar `/latest` de `caracore-pdv-releases` (Java).
-- **Loja (vitrine):** https://pdv-rust.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html`)
+- **Loja + artefatos:** um só repo `chmulato/caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`).
+- **Vitrine:** https://pdv-rust.caracore.com.br/ — produto, mercado, wiki, **Formatos** (`download.html`)
+- **Download oficial:** https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag v0.1.2). Não usar `caracore-pdv-releases` para o Rust (Java).
 - **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — CTAs primários → tag v0.1.2 (não `/latest`)
 - **_redirects:** `/delivery/pdv-rust/*` → pdv-rust.caracore.com.br
 - **Oficina:** caracore-pdv-rust

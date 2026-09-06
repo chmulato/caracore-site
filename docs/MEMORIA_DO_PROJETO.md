@@ -52,8 +52,7 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 |-------|---------|------|---------|
 | Java Free (JavaFX publicado) | caracore-pdv | pdv.caracore.com.br | **v3.2.2-free** |
 | Java v4 (Qute RC2) | caracore-pdv | tag `v4.0.0-rc2` · roadmap-2026.html | T032 aberto · GA **08/11/2026** se passar |
-| Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br | **v0.1.2** (100 vendas na vida) |
-| Releases Rust | caracore-rust-pdv-releases/releases | GitHub | tag v0.1.2; não usar latest do repo Java |
+| Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br + `caracore-rust-pdv-releases/releases` | **v0.1.2** (100 vendas na vida; loja e artefatos no mesmo repo) |
 
 - Filosofia Bunker · SQLite local · **nenhuma linha substitui a outra**
 - Planos Java (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês, sem PIX/NF-e. Premium R$ 79,90/mês. Loja: CTA = demonstração presencial.

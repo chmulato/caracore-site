@@ -107,14 +107,15 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 ---
 
-### Loja PDV Rust (`caracore-pdv-rust-releases`)
+### Loja PDV Rust (`caracore-rust-pdv-releases`)
 
-| URL vitrine | https://pdv-rust.caracore.com.br/ |
+| URL vitrine | https://pdv-rust.caracore.com.br/ (GitHub Pages do **mesmo** repo) |
 | Download oficial | https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag **v0.1.2**) |
+| Clone local | `D:\onedrive\dev\caracore-pdv-rust-releases` (nome da pasta ≠ nome no GitHub) |
 | Oficina | `caracore-pdv-rust` |
 | Matriz | `#caracore-pdv-rust` |
 
-**Nav loja:** Formatos → `download.html` · botões → `caracore-rust-pdv-releases/releases`. Nunca `/releases/latest` de `caracore-pdv-releases` (Java).
+**Nav loja:** Formatos → `download.html` · botões → `caracore-rust-pdv-releases/releases`. Nunca usar `caracore-pdv-releases` para o Rust (Java).
 
 ---
 

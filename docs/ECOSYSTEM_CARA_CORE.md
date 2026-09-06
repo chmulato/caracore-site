@@ -18,8 +18,7 @@ VISÃO GERAL
   caracore-pdv                  Oficina — PDV Desktop Java / v4            v3.2.2-free maduro; RC1 Qute; T032/GA 08/11/2026; planos em PlanoLicencaService
   caracore-pdv-releases         Loja — PDV Desktop Java                     pdv.caracore.com.br · CTA demonstração · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.2
-  caracore-pdv-rust-releases    Loja — PDV Desktop Rust (piloto)            pdv-rust.caracore.com.br (vitrine; download → tag v0.1.2)
-  (GitHub) caracore-rust-pdv-releases   Artefatos Rust oficiais (NSIS/MSI/ZIP)     github.com/chmulato/caracore-rust-pdv-releases/releases
+  caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.2). Clone local: caracore-pdv-rust-releases
   caracore-hub                  Oficina — CaraCore Hub                      Encomendas; WAR/Tomcat 2.1 pronta; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
   caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
@@ -58,7 +57,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
   PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.2-free (maduro) · RC1 Qute pré-release · Free 100 vendas/mês
-  CaraCore PDV             caracore-pdv-rust        pdv-rust + tag GitHub v0.1.2  v0.1.2 (piloto Windows; artefatos em caracore-rust-pdv-releases)
+  CaraCore PDV             caracore-pdv-rust        caracore-rust-pdv-releases    v0.1.2 (piloto Windows; loja + NSIS/MSI/ZIP no mesmo repo)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
   Não confundir: V3 negócio ≠ canal Java v3.2.x ≠ release Rust v0.1.x.
@@ -81,7 +80,7 @@ Site e presença pública
 
 Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
-  CaraCore PDV: caracore-pdv-rust + caracore-pdv-rust-releases. Loja: **pdv-rust.caracore.com.br** (sem delivery matriz).
+  CaraCore PDV: caracore-pdv-rust + caracore-rust-pdv-releases (clone local caracore-pdv-rust-releases). Loja: **pdv-rust.caracore.com.br**. Artefatos: github.com/chmulato/caracore-rust-pdv-releases/releases (mesmo repo). Sem delivery matriz.
   Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br (pré-lançamento; GA instalador 06/04/2027). Não é Flask. Retomada: caracore-hub/docs/contexto-rapido.md. Manual: wiki.caracore.com.br/hub/
   CaraCore CSO: caracore-cso-quarkus (Frotas, produção; landing JSON-LD/cache/WebP) + caracore-cso-transportes (Desktop 08/11/2028, oficina sem loja). Loja única (home de conversão): D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br. App: cso.caracore.com.br. Um produto em 08/11/2028. CSO ≠ GPS.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br

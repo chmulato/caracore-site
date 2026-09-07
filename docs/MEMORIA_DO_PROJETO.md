@@ -50,12 +50,12 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 
 | Linha | Oficina | Loja | Release |
 |-------|---------|------|---------|
-| Java Free (JavaFX publicado) | caracore-pdv | pdv.caracore.com.br | **v3.2.2-free** |
+| Java Free (navegador publicado) | caracore-pdv | pdv.caracore.com.br | **v3.2.4-free** |
 | Java v4 (Qute RC2) | caracore-pdv | tag `v4.0.0-rc2` · roadmap-2026.html | T032 aberto · GA **08/11/2026** se passar |
 | Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br + `caracore-rust-pdv-releases/releases` | **v0.1.2** (100 vendas na vida; loja e artefatos no mesmo repo) |
 
 - Filosofia Bunker · SQLite local · **nenhuma linha substitui a outra**
-- Planos Java (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês, sem PIX/NF-e. Premium R$ 79,90/mês. Loja: CTA = demonstração presencial.
+- Planos Java (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; sem PIX/NF-e. Copy pública **não** anuncia recibo. Premium R$ 79,90/mês. Loja: CTA = **Baixar Free**; Premium via demonstração.
 - v4 Java: Quarkus + Qute + SQLite + launcher; Fases 0–7 técnicas; **T032 não aprovado**.
 - Portfólio: `#pdv-coexistencia` · `#caracore-pdv` · `#caracore-pdv-rust`
 - Loja Rust: **sem SEED** na vitrine

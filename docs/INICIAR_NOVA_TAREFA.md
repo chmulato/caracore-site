@@ -85,9 +85,9 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Java (`caracore-pdv-releases`)
 
 | URL | https://pdv.caracore.com.br/ |
-| Canal | `v3.2.2-free` (download). Candidato `v4.0.0-rc2` = pré-release, não substitui o Free. |
-| Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
-| CTA | Agendar demonstração presencial (`consultoria.html`). Qualidades: offline, checkout, recibo, fechamento. |
+| Canal | `v3.2.4-free` (download). Candidato `v4.0.0-rc2` = pré-release, não substitui o Free. |
+| Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy **não** anuncia recibo. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
+| CTA | **Baixar Free (3.2.4)**. Premium via demonstração (`consultoria.html`). |
 | Oficina | `caracore-pdv` |
 | Matriz | `#caracore-pdv` |
 
@@ -103,7 +103,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-09-06):** candidato `v4.0.0-rc2` publicado (pasta nova + banco isolado). Canal maduro = `v3.2.2-free`. T032/GA bloqueado. Planos = `PlanoLicencaService` (Free 100/mês + 4 vendedores / 1 loja / 10 SMS). Não substitui o PDV Rust.
+**Estado (2026-09-07):** canal maduro = `v3.2.4-free` (navegador `localhost:8080/login`). Candidato `v4.0.0-rc2` publicado (pasta nova + banco isolado). T032/GA bloqueado. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust.
 
 ---
 

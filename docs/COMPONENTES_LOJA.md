@@ -64,7 +64,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     Oficina: caracore-pdv/
     Loja:   caracore-pdv-releases/docs/
     index  download  tecnologia  canal-feedback  wiki/  .nojekyll
-    Observacao: oferta madura multi-plataforma; canal v3.2.2-free. Wiki Fiscal e trilhas comerciais na loja.
+    Observacao: oferta madura multi-plataforma; canal v3.2.4-free. Wiki Fiscal e trilhas comerciais na wiki institucional.
 
   CARACORE PDV (RUST + TAURI)
     Portfólio: caracore-site/portfolio.html#caracore-pdv-rust (resumo institucional)

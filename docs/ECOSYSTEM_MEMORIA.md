@@ -2,7 +2,7 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
-**Atualizado:** 2026-09-06  
+**Atualizado:** 2026-09-07  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
 **Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
@@ -13,9 +13,9 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 1. **Nova tarefa?** → [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) (fluxo por tipo de trabalho)
 2. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`D:\onedrive\dev\AGENTS.md`**
-3. **Produtos-chave:** PDV (Java Free `v3.2.3-free` + candidato `v4.0.0-rc2` / GA 08/11/2026 se T032 + Rust `v0.1.2`) · CSO (Frotas no ar; loja `cso-transp`; Transportes 08/11/2028; ≠ GPS) · Hub (encomendas; GA Windows 06/04/2027)
+3. **Produtos-chave:** PDV (Java Free `v3.2.4-free` + candidato `v4.0.0-rc2` / GA 08/11/2026 se T032 + Rust `v0.1.2`) · CSO (Frotas no ar; loja `cso-transp`; Transportes 08/11/2028; ≠ GPS) · Hub (encomendas; GA Windows 06/04/2027)
 3b. **CSO retomada:** loja `D:\onedrive\dev\caracore-cso-releases` · app `caracore-cso-quarkus` · oficina Transportes **sem** copy de loja · próximo app = COE-5.1 só se cota
-4. **PDV Java:** oficina `caracore-pdv/AGENTS.md` · loja CTA = demonstração presencial. Free (`PlanoLicencaService`): 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e. Premium R$ 79,90/mês. Canal público = `v3.2.3-free` (`localhost:8080/login`, `admin`/`admin`). RC2 Qute é pré-release. T032 não aprovado. Rust piloto = 100 vendas na vida. **Não** substituir o PDV Rust.
+4. **PDV Java:** oficina `caracore-pdv/AGENTS.md` · loja CTA = **Baixar Free**. Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e/NFC-e; copy **não** anuncia recibo. Premium R$ 79,90/mês (PIX integrado, fiscal). Canal público = `v3.2.4-free` (`localhost:8080/login`, `admin`/`admin`). RC2 Qute é pré-release. T032 não aprovado. Rust piloto = 100 vendas na vida. **Não** substituir o PDV Rust.
 5. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
 6. **Hub oficina (GA Windows 06/04/2027):** `caracore-hub/docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` · web 2.1 pronta; trabalho aberto = instalador SQLite. Manual: wiki.caracore.com.br/hub/
 7. **PDV Rust (loja + artefatos):** um só repo `chmulato/caracore-rust-pdv-releases` — Pages = `pdv-rust.caracore.com.br` · Releases = https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag v0.1.2). Clone local: `caracore-pdv-rust-releases`. **Nunca** `caracore-pdv-releases` (Java).
@@ -64,13 +64,13 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 ## PDV Desktop — referência rápida
 
-**Marco v4:** candidato `v4.0.0-rc2` (Qute + launcher; pasta nova + banco `./data/caracore-pdv.db`) no ar como pré-release. GA **08/11/2026** se T032 passar (Edge real, suíte completa, instalador assinado). Até o corte, `v3.2.3-free` é o canal Java maduro.
+**Marco v4:** candidato `v4.0.0-rc2` (Qute + launcher; pasta nova + banco `./data/caracore-pdv.db`) no ar como pré-release. GA **08/11/2026** se T032 passar (Edge real, suíte completa, instalador assinado). Até o corte, `v3.2.4-free` é o canal Java maduro.
 
-**Planos Java** (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS recibo/mês, sem PIX/NF-e. Premium = R$ 79,90/mês, vendas ilimitadas, PIX. Loja: CTA = demonstração presencial. Rust `v0.1.2` = 100 vendas na vida do piloto.
+**Planos Java** (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, sem PIX/NF-e. Copy pública **não** anuncia recibo. Premium = R$ 79,90/mês, sem teto de 100 vendas, PIX integrado. Loja: CTA = **Baixar Free**; Premium via demonstração. Rust `v0.1.2` = 100 vendas na vida do piloto.
 
 | Papel | Repo / URL |
 |-------|------------|
-| Java maduro | pdv.caracore.com.br · **v3.2.3-free** · caracore-pdv |
+| Java maduro | pdv.caracore.com.br · **v3.2.4-free** · caracore-pdv |
 | Java v4 RC2 | tag `v4.0.0-rc2` · T032 aberto · não substitui o Free |
 | Rust piloto | pdv-rust (vitrine) · tag GitHub **v0.1.2** em `caracore-rust-pdv-releases` · oficina `caracore-pdv-rust` |
 | Coexistência | portfolio `#pdv-coexistencia` · não substituir Java |
@@ -114,8 +114,8 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | caracore-hub | `docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` | Web 2.1 pronta; GA Windows 06/04/2027 |
 | caracore-hub-releases | `.cursor/rules/project-memory.mdc` | Loja hub.caracore.com.br |
 | caracore-pdv-rust-releases | Sim | Loja pdv-rust |
-| caracore-pdv | `AGENTS.md` · `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` · `.cursor/rules/project-memory.mdc` | `v3.2.3-free`; RC2 Qute; T032 aberto; planos em `PlanoLicencaService` |
-| caracore-pdv-releases | `.cursor/rules/project-memory.mdc` | Loja pdv.caracore.com.br · CTA demonstração · Free 100/mês + 4 vend. / 1 loja / 10 SMS |
+| caracore-pdv | `AGENTS.md` · `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` · `.cursor/rules/project-memory.mdc` | `v3.2.4-free`; RC2 Qute; T032 aberto; planos em `PlanoLicencaService` |
+| caracore-pdv-releases | `.cursor/rules/project-memory.mdc` | Loja pdv.caracore.com.br · CTA Baixar Free · Free 100/mês · sem PIX integrado |
 | Demais produtos | Sim | ete, ink, ru, … |
 
 Lista completa: `ECOSYSTEM_CARA_CORE.md`.
@@ -126,6 +126,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-09-07 | PDV Java Free **v3.2.4-free**: UI de balcão no browser (produto + venda + dinheiro), porta 8080, `/login`, Java 25+. Sem PIX integrado e sem recibo na copy pública. Substitui a 3.2.3-free no download da loja. ZIP sem LEIA-ME interno (sidecar na release). RC2 continua prévia. |
 | 2026-09-06 | PDV Java Free **v3.2.3-free**: porta 8080, `/login` de operador, launcher Java 25+, boot `3.2.3-free`. Substitui a 3.2.2-free no download da loja. RC2 continua prévia. |
 | 2026-09-05 | PDV planos + loja: Free alinhado a `PlanoLicencaService` (100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e). Premium R$ 79,90/mês. CTA da loja = demonstração presencial. Memória IAs sincronizada. |
 | 2026-09-06 | PDV Java: pré-release **v4.0.0-rc2** (instalação isolada em pasta nova + `./data/caracore-pdv.db`; login `admin/admin`). RC1 não deve ser reutilizado para primeiro acesso. Canal maduro permanece `v3.2.2-free`. T032/GA aberto. |

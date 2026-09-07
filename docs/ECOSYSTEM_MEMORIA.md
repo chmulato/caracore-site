@@ -64,7 +64,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 ## PDV Desktop — referência rápida
 
-**Marco v4:** candidato `v4.0.0-rc2` (Qute + launcher; pasta nova + banco `./data/caracore-pdv.db`) no ar como pré-release. GA **08/11/2026** se T032 passar (Edge real, suíte completa, instalador assinado). Até o corte, `v3.2.4-free` é o canal Java maduro.
+**Marco v4 (estacionado 07/09/2026):** candidato `v4.0.0-rc2` permanece pré-release isolada — ZIP + SHA256 `5e5d55b6d376c7f1d6ce91a9fb9a73f6d606289af27b508adf2d9eb2cdcd955d` + tag git oficina `v4.0.0-rc2` + handoff `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`. Launcher `iniciar_pdv.bat` (underscore); banco só `./data/caracore-pdv.db`. **Não** misturar com Free (`iniciar-pdv.bat` hífen; `%APPDATA%\caracore\`). GA **08/11/2026** se T032 passar. Até o corte, `v3.2.4-free` é o canal Java maduro.
 
 **Planos Java** (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, sem PIX/NF-e. Copy pública **não** anuncia recibo. Premium = R$ 79,90/mês, sem teto de 100 vendas, PIX integrado. Loja: CTA = **Baixar Free**; Premium via demonstração. Rust `v0.1.2` = 100 vendas na vida do piloto.
 
@@ -126,6 +126,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-09-07 | Memórias IAs sincronizadas (AGENTS.md, ecosystem-cara-core.mdc, ECOSYSTEM_MEMORIA, loja/wiki/matriz/oficina): canal loja = `v3.2.4-free`; RC2 **estacionada** para T032; copy Free sem PIX/recibo; SHA RC2 canónico `5e5d55b6…`. |
 | 2026-09-07 | PDV Java Free **v3.2.4-free**: UI de balcão no browser (produto + venda + dinheiro), porta 8080, `/login`, Java 25+. Sem PIX integrado e sem recibo na copy pública. Substitui a 3.2.3-free no download da loja. ZIP sem LEIA-ME interno (sidecar na release). RC2 continua prévia. |
 | 2026-09-06 | PDV Java Free **v3.2.3-free**: porta 8080, `/login` de operador, launcher Java 25+, boot `3.2.3-free`. Substitui a 3.2.2-free no download da loja. RC2 continua prévia. |
 | 2026-09-05 | PDV planos + loja: Free alinhado a `PlanoLicencaService` (100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e). Premium R$ 79,90/mês. CTA da loja = demonstração presencial. Memória IAs sincronizada. |

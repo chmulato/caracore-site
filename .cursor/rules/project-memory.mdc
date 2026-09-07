@@ -1,11 +1,11 @@
 ﻿---
-description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.2-free · RC1 Qute · Free 100/mês · PDV Rust v0.1.2
+description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.4-free · RC2 Qute estacionada · Free 100/mês · PDV Rust v0.1.2
 alwaysApply: true
 ---
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-09-05 · IAs: `AGENTS.md` na raiz do workspace
+**Atualizado:** 2026-09-07 · IAs: `AGENTS.md` na raiz do workspace
 
 ## Posicionamento B2B (copy comercial)
 
@@ -27,7 +27,7 @@ alwaysApply: true
 | **Wiki** | caracore-wiki | Trilhas e hub PDV | https://wiki.caracore.com.br/ |
 | **Retrô** | caracore-retro | Artigos LinkedIn / editorial | https://retro.caracore.com.br/ |
 | **Sala** | caracore-site `sala/` + caracore-mkt | Campanhas, manuais rede | https://tools.caracore.com.br/sala/ |
-| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (v4 RC1); Free publicado ainda JavaFX | privado |
+| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (HEAD `4.0.0-rc2`); loja publica Free `v3.2.4-free` no navegador | privado |
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
 | **PDV Rust — loja + artefatos** | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | Pages + Releases no **mesmo** repo | https://pdv-rust.caracore.com.br/ · https://github.com/chmulato/caracore-rust-pdv-releases/releases |
@@ -65,17 +65,17 @@ alwaysApply: true
 ## PDV Desktop Java (oferta madura)
 
 - **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia` · `#decisoes-engenharia`
-- **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.2-free**. CTA = demonstração presencial.
-- **Planos:** Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja, 10 SMS/mês; sem PIX/NF-e. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`.
+- **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.4-free**. CTA = **Baixar Free**; Premium via demonstração.
+- **Planos:** Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy **não** anuncia recibo. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`.
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV v4 — candidato RC1; GA previsto 08/11/2026
+## PDV v4 — candidato RC2 estacionado; GA previsto 08/11/2026
 
-- **Oficina:** `caracore-pdv`; pré-release **v4.0.0-rc1** (Qute + launcher). T032 não aprovado.
-- **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo.
-- **Loja:** `https://pdv.caracore.com.br/roadmap-2026.html` — RC1 não substitui o Free.
-- **Regra:** manter `v3.2.2-free` como canal atual até o v4 ser aprovado e publicado.
+- **Oficina:** `caracore-pdv`; pré-release **v4.0.0-rc2** (Qute + launcher Edge). T032 não aprovado. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
+- **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
+- **Loja:** `https://pdv.caracore.com.br/roadmap-2026.html` — RC2 **não** substitui o Free.
+- **Regra:** manter `v3.2.4-free` como canal atual até o v4 ser aprovado e publicado. Não misturar pasta nem data.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.2)
 
@@ -88,7 +88,7 @@ alwaysApply: true
 - **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar)
 - **Release v0.1.2:** Windows (MSI/NSIS/ZIP pt-BR); edição gratuita até 100 vendas; transparência em pdv-rust; SHA256 + manifesto no GitHub
 - **Mensagem:** dois **PDVs Desktop** do mesmo CaraCore PDV — **nenhuma substitui a outra**
-  - **Java:** canal **v3.2.2-free** · Win/Linux/macOS maduro
+  - **Java:** canal **v3.2.4-free** · Win/Linux/macOS maduro · UI no navegador
   - **Rust:** faixa **v0.1.x** · piloto assistido
   - **V3 negócio (PME, PIX Split 2027):** comum às duas linhas — ≠ canal Java v3.2.x ≠ release Rust v0.1.x
   - **Evitar:** "PDV v3" sozinho, "substitui", "reescrito", "nova geração"

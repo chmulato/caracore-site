@@ -4,7 +4,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
 **Fonte IAs:** `D:\onedrive\dev\AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`  
-**Atualizado:** 2026-09-05  
+**Atualizado:** 2026-09-07  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
 ---
@@ -103,7 +103,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-09-07):** canal maduro = `v3.2.4-free` (navegador `localhost:8080/login`). Candidato `v4.0.0-rc2` publicado (pasta nova + banco isolado). T032/GA bloqueado. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust.
+**Estado (2026-09-07):** canal maduro da **loja** = `v3.2.4-free` (navegador `localhost:8080/login`). Candidato `v4.0.0-rc2` **estacionado** (pré-release; pasta nova + `./data/caracore-pdv.db`; T032/GA bloqueado). HEAD da oficina = Maven `4.0.0-rc2`, não o ZIP Free. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust.
 
 ---
 

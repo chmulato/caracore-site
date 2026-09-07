@@ -26,7 +26,7 @@ PRODUTOS EM FOCO
   #  Produto                         Loja canónica              Release / preço
   -- ------------------------------- -------------------------- ---------------------------
   1  CaraCore PDV Desktop (Java)     pdv.caracore.com.br        v3.2.4-free · Free/Premium
-  2  CaraCore PDV                    pdv-rust + GitHub Releases   v0.1.2 · piloto · transparência loja
+  2  CaraCore PDV                    pdv-rust + GitHub Releases   v0.1.3 · piloto · transparência loja
   3  chmulatoETE Minerador 4.0       ete.caracore.com.br        Free · Ouro 4.0 R$ 29,90
   4  Reino OIDC                      oidc.caracore.com.br        FREE · upgrade R$ 29,90
   5  Circuito Ferradura              circuito.caracore.com.br   FREE PF · escolas R$ 5/aluno/mês
@@ -50,7 +50,7 @@ PDV — DUAS LINHAS DESKTOP (discurso fixo)
 
   Java (maduro)     Rust + Tauri 2 (piloto)
   pdv.*             pdv-rust.*
-  v3.2.4-free       v0.1.2
+  v3.2.4-free       v0.1.3
   Win/Linux/macOS   Windows · MSI pt-BR
 
   - Mesmo produto CaraCore PDV; stacks distintas; nenhuma substitui a outra.

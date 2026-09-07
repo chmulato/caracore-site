@@ -51,7 +51,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 2. CARACORE PDV (RUST + TAURI 2)
 
    (M) portfolio.html#caracore-pdv-rust · #pdv-coexistencia
-   (L+R) caracore-rust-pdv-releases — Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.2)
+   (L+R) caracore-rust-pdv-releases — Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.3)
    Clone local: caracore-pdv-rust-releases
    Sem delivery/pdv-rust · sem SEED na loja Rust · não usar caracore-pdv-releases (Java)
    Status: OK — piloto Windows; CTAs matriz → GitHub Releases do repo Rust; loja e artefatos no mesmo repo

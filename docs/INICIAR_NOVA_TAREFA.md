@@ -37,7 +37,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Redirects | `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` · `_redirects` |
 | Validação | `scripts/run-site-validation.ps1` |
 
-**PDV Rust na matriz:** CTAs → tag GitHub v0.1.2 (não `/latest`); coexistência em `#pdv-coexistencia`.
+**PDV Rust na matriz:** CTAs → tag GitHub v0.1.3 (não `/latest`); coexistência em `#pdv-coexistencia`.
 
 ---
 
@@ -110,7 +110,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Rust (`caracore-rust-pdv-releases`)
 
 | URL vitrine | https://pdv-rust.caracore.com.br/ (GitHub Pages do **mesmo** repo) |
-| Download oficial | https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag **v0.1.2**) |
+| Download oficial | https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag **v0.1.3**) |
 | Clone local | `D:\onedrive\dev\caracore-pdv-rust-releases` (nome da pasta ≠ nome no GitHub) |
 | Oficina | `caracore-pdv-rust` |
 | Matriz | `#caracore-pdv-rust` |
@@ -136,7 +136,7 @@ cd apps/desktop-tauri; npm test
 python tools/sync_docs_status.py --full
 ```
 
-**Release:** `python tools/run_release_delivery_oneclick.py --tag v0.1.2` · publicar loja: `python tools/publish_portal_assets_loja.py --push`
+**Release:** `python tools/run_release_delivery_oneclick.py --tag v0.1.3` · publicar loja: `python tools/publish_portal_assets_loja.py --push`
 
 **Regra oficina:** não commitar salvo pedido explícito do usuário.
 

@@ -67,6 +67,7 @@ alwaysApply: true
 - **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia` · `#decisoes-engenharia`
 - **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.4-free**. CTA = **Baixar Free**; Premium via demonstração.
 - **Planos:** Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy **não** anuncia recibo. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`.
+- **Quem entra (Free):** `admin` / `admin` · troca obrigatória · 1 operador. `download.html#perfis`. Não misturar com logins Rust.
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
@@ -85,8 +86,8 @@ alwaysApply: true
 - **Portfólio matriz:** `portfolio.html#caracore-pdv-rust` — CTAs primários → tag v0.1.4 (não `/latest`)
 - **_redirects:** `/delivery/pdv-rust/*` → pdv-rust.caracore.com.br
 - **Oficina:** caracore-pdv-rust
-- **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar)
-- **Release v0.1.4:** Windows (MSI/NSIS/ZIP pt-BR); edição gratuita até 100 vendas; transparência em pdv-rust; SHA256 + manifesto no GitHub
+- **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar). Logins do piloto: loja `primeiros-passos.html#perfis` (wiki só aponta).
+- **Release v0.1.4:** Windows (MSI/NSIS/ZIP pt-BR); ZIP SHA256 `7d9cf69879eef8e12fd4972fcc3aaa5dc494df8630fa8554797bf47a98233a37`; edição gratuita até 100 vendas; transparência em pdv-rust
 - **Mensagem:** dois **PDVs Desktop** do mesmo CaraCore PDV — **nenhuma substitui a outra**
   - **Java:** canal **v3.2.4-free** · Win/Linux/macOS maduro · UI no navegador
   - **Rust:** faixa **v0.1.x** · piloto assistido

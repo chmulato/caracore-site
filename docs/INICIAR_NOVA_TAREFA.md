@@ -88,6 +88,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Canal | `v3.2.4-free` (download). Candidato `v4.0.0-rc2` = pré-release, não substitui o Free. |
 | Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy **não** anuncia recibo. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
 | CTA | **Baixar Free (3.2.4)**. Premium via demonstração (`consultoria.html`). |
+| Quem entra | `admin` / `admin` (troca obrigatória). **1 operador** no Free. Copy: `download.html#perfis`. Não usar senhas do Rust. |
 | Oficina | `caracore-pdv` |
 | Matriz | `#caracore-pdv` |
 
@@ -114,6 +115,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Clone local | `D:\onedrive\dev\caracore-pdv-rust-releases` (nome da pasta ≠ nome no GitHub) |
 | Oficina | `caracore-pdv-rust` |
 | Matriz | `#caracore-pdv-rust` |
+| Quem entra | Quatro logins de demonstração em `primeiros-passos.html#perfis` (`admin`/`admin123` na primeira venda). Não são o Java Free. |
 
 **Nav loja:** Formatos → `download.html` · botões → `caracore-rust-pdv-releases/releases`. Nunca usar `caracore-pdv-releases` para o Rust (Java).
 
@@ -146,7 +148,7 @@ python tools/sync_docs_status.py --full
 
 | URL | https://wiki.caracore.com.br/ |
 | Publicação | `docs/` → GitHub Pages |
-| Papel | Documentação de **todos** os produtos (alinhamento + manuais). Lojas só vitrine/download/feedback; `/wiki/` nas lojas redireciona para cá. |
+| Papel | Documentação de **todos** os produtos (alinhamento + manuais). Lojas: vitrine, download, feedback e **quem entra**. Wiki **aponta** senhas para a loja; `/wiki/` nas lojas redireciona para cá. |
 | Portfólio nos links | **www.caracore.com.br** (não wiki) |
 | Eco Mundo wiki | `docs/ecosistema.html` |
 | Hub PDV | `projeto-pdv.html` · `projeto-pdv-rust.html` · manuais Java em `docs/pdv/` |

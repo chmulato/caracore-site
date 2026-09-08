@@ -13,7 +13,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Passo | Ação |
 |-------|------|
-| 0 | Ler `AGENTS.md` na raiz (produtos-chave PDV · CSO · Hub e discurso honesto) |
+| 0 | Ler `AGENTS.md` na raiz (produtos-chave PDV · CSO · Hub e bloco **Frentes até 08/11/2026**) |
 | 1 | Abrir `caracore-site/docs/ECOSYSTEM_MEMORIA.md` (visão actual) |
 | 1b | Posicionamento B2B: `docs/DILEMA.md` · frase-guia em hero e `#engenharia-b2b` |
 | 2 | Abrir `.cursor/rules/project-memory.mdc` **do repo onde vai trabalhar** |
@@ -74,9 +74,9 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Aplicação Frotas | https://cso.caracore.com.br/ |
 | Loja única | https://cso-transp.caracore.com.br/ · clone `D:\onedrive\dev\caracore-cso-releases` |
-| Frotas | Produção · oficina `caracore-cso-quarkus` (não editar vitrine lá) |
-| Transportes | Garagem 08/11/2028 · oficina `caracore-cso-transportes` (**sem** informação de loja) |
-| Discurso | Home da loja = conversão Frotas hoje (CTAs → /cadastro). CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. Sem depoimento inventado. |
+| Frotas | Produção **e em andamento** · oficina `caracore-cso-quarkus` (não editar vitrine lá) · 08/11/2026 = freeze Momento 1, não FRO 24/24 |
+| Transportes | Garagem **08/11/2028** · oficina `caracore-cso-transportes` (**sem** informação de loja) · **não** é a data do PDV v4 |
+| Discurso | Home da loja = conversão Frotas hoje (CTAs → /cadastro). CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. Sem depoimento inventado. Headline pública de 08/11/**2026** = PDV v4. |
 | Landing app | JSON-LD + cache 5 min + LCP WebP no ar (oficina quarkus) |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-cso.html |
 
@@ -100,11 +100,12 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 |-----|----------|
 | Entrada IAs | `AGENTS.md` |
 | Handoff | `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` |
-| Plano Qute | `docs/arquitetura/PLANO_MIGRACAO_QUARKUS_QUTE.md` |
+| Plano de GA 08/11 | `docs/arquitetura/PLANO_LANCAMENTO_V4.md` |
+| Plano Qute | `docs/arquitetura/PLANO_PARIDADE_NEGOCIO_QUTE.md` |
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-09-07):** canal maduro da **loja** = `v3.2.4-free` (navegador `localhost:8080/login`). Candidato `v4.0.0-rc2` **estacionado** (pré-release; pasta nova + `./data/caracore-pdv.db`; T032/GA bloqueado). HEAD da oficina = Maven `4.0.0-rc2`, não o ZIP Free. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust.
+**Estado (2026-09-08):** canal maduro da **loja** = `v3.2.4-free` (navegador `localhost:8080/login`). Candidato `v4.0.0-rc2` **estacionado** (pré-release; pasta nova + `./data/caracore-pdv.db`; T032 aberto). **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`). **Não executar o plano com Cursor em setembro** — retomada **outubro–novembro/2026** (crédito da assinatura). Na mesma data o CSO Frotas só congela Momento 1. HEAD da oficina = Maven `4.0.0-rc2`, não o ZIP Free. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust.
 
 ---
 

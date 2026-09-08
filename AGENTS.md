@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 08/09/2026 (Free `v3.2.4-free` + RC2 + Rust `v0.1.4`) 
+> **Data de Atualização:** 08/09/2026 (Free `v3.2.4-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3`) 
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -214,5 +214,6 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 - Wiki do portal: [`caracore-wiki/docs/projeto-pdv.html`](caracore-wiki/docs/projeto-pdv.html) · [`projeto-cso.html`](caracore-wiki/docs/projeto-cso.html) · [`projeto-hub.html`](caracore-wiki/docs/projeto-hub.html) · manual Hub [`docs/hub/`](caracore-wiki/docs/hub/)
 - Retomada Hub (GA Windows 2027): [`caracore-hub/docs/contexto-rapido.md`](caracore-hub/docs/contexto-rapido.md)
 - Retomada PDV Java (candidato **estacionado** `v4.0.0-rc2`; canal maduro `v3.2.4-free`; **frente GA 08/11/2026**): [`caracore-pdv/AGENTS.md`](caracore-pdv/AGENTS.md) · [`PLANO_LANCAMENTO_V4.md`](caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md) · [`CONTINUIDADE_DESENVOLVIMENTO.md`](caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md)
+- Retomada Minerador 4.0 (canal **v1.2.3**): [`caracore-ete/AGENTS.md`](caracore-ete/AGENTS.md) · loja `ete.caracore.com.br`
 
-**Como outras IAs retomam (08/09/2026):** ler este `AGENTS.md` (bloco **Frentes até 08/11/2026**) → `.cursor/rules/ecosystem-cara-core.mdc` → `caracore-site/docs/ECOSYSTEM_MEMORIA.md` → `INICIAR_NOVA_TAREFA.md` → memória do repo da tarefa. PDV v4: plano escrito; **código Cursor em outubro–novembro** (cota). 08/11/2026 = GA PDV v4 **e** freeze CSO M1 (Frotas já no ar); Transportes = **2028**. Loja Java = Free 3.2.4 (`admin`/`admin`, 1 operador). Rust piloto = `v0.1.4` (quatro logins na loja). v4 = RC2 isolada até T032. Não misturar pasta, launcher, senha nem banco.
+**Como outras IAs retomam (08/09/2026):** ler este `AGENTS.md` (bloco **Frentes até 08/11/2026**) → `.cursor/rules/ecosystem-cara-core.mdc` → `caracore-site/docs/ECOSYSTEM_MEMORIA.md` → `INICIAR_NOVA_TAREFA.md` → memória do repo da tarefa. PDV v4: plano escrito; **código Cursor em outubro–novembro** (cota). 08/11/2026 = GA PDV v4 **e** freeze CSO M1 (Frotas já no ar); Transportes = **2028**. Loja Java = Free 3.2.4 (`admin`/`admin`, 1 operador). Rust piloto = `v0.1.4` (quatro logins na loja). v4 = RC2 isolada até T032. Não misturar pasta, launcher, senha nem banco. Minerador ETE = **v1.2.3** (Windows `.exe`+ZIP; Flask 5150; sem launcher 5 MB nem `pyarmor_runtime` em falta).

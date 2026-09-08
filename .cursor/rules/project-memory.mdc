@@ -109,10 +109,11 @@ alwaysApply: true
 
 ## Matriz ETE — Minerador 4.0
 
-- **Loja:** https://ete.caracore.com.br/
-- **Oficina:** caracore-ete
-- **Canal público:** **v1.2.3** — Windows `.exe` + ZIP, Linux `.tar.gz`, macOS `.dmg`
-- **Matriz:** portfolio + ecosistema → loja + releases GitHub da loja ETE
+- **Loja:** https://ete.caracore.com.br/ · Latest **v1.2.3**
+- **Oficina:** caracore-ete · `AGENTS.md` (Canal público)
+- **Canal público:** Windows `.exe` + ZIP, Linux `.tar.gz`, macOS `.dmg` · Flask `127.0.0.1:5150`
+- **Não regressar:** launcher ~5 MB (v1.2.1) · Flask morto sem `pyarmor_runtime` (v1.2.2)
+- **Matriz:** portfolio `#minerador-ete` · ecosistema · wiki `projeto-minerador.html`
 
 ## RU Soberano (garagem)
 

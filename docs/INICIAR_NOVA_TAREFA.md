@@ -145,6 +145,19 @@ python tools/sync_docs_status.py --full
 
 ---
 
+### Minerador 4.0 / ETE (`caracore-ete` + `caracore-ete-releases`)
+
+| Loja | https://ete.caracore.com.br/ |
+| Canal | **v1.2.3** Latest |
+| Pacotes | Windows `.exe` + `.zip`, Linux `.tar.gz`, macOS `.dmg` |
+| Oficina | `caracore-ete/AGENTS.md` (bloco Canal público) · `.cursor/rules/project-memory.mdc` |
+| Matriz | `#minerador-ete` |
+| Wiki | `projeto-minerador.html` |
+
+**Não regressar:** v1.2.1 launcher ~5 MB sem `_internal`; v1.2.2 Flask morto sem `pyarmor_runtime`. GO = Flask em `127.0.0.1:5150`. Delivery automático da loja falha (PAT) — publicar com `gh` local.
+
+---
+
 ### Wiki (`caracore-wiki`)
 
 | URL | https://wiki.caracore.com.br/ |

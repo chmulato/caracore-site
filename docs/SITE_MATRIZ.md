@@ -80,7 +80,7 @@ Detalhes: [PORTFOLIO_README.md](PORTFOLIO_README.md).
 |---|------|----------------|
 | Loja / vitrine | pdv.caracore.com.br | pdv-rust.caracore.com.br |
 | Download | loja Java | GitHub Releases |
-| Release | **v3.2.4-free** | **v0.1.3** |
+| Release | **v3.2.4-free** | **v0.1.4** |
 | Portfólio | `#caracore-pdv` | `#caracore-pdv-rust` |
 
 Evitar: “PDV v3” sozinho, “substitui”, “nova geração”. Comparação única em `#pdv-coexistencia`.

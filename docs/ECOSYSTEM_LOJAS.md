@@ -14,7 +14,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   ---------------------------- ------------------------------------------------------- ------------------------------------------
   CaraCore PDV Desktop (Java)  https://pdv.caracore.com.br/                            Oferta madura; canal v3.2.4-free; Win/Linux/macOS; PWA da vitrine
   CaraCore PDV                 https://pdv-rust.caracore.com.br/                       Loja própria (Pages do repo caracore-rust-pdv-releases)
-  (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Mesmo repo da loja; tag v0.1.3. NÃO usar /latest de caracore-pdv-releases (Java)
+  (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Mesmo repo da loja; tag v0.1.4. NÃO usar /latest de caracore-pdv-releases (Java)
   Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; GA instalador Windows 06/04/2027
   Circuito Ferradura           https://circuito.caracore.com.br/
   Reino OIDC                   https://oidc.caracore.com.br/

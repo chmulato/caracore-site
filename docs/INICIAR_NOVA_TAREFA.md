@@ -4,7 +4,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
 **Fonte IAs:** `D:\onedrive\dev\AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`  
-**Atualizado:** 2026-09-07  
+**Atualizado:** 2026-09-08  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
 ---
@@ -37,7 +37,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Redirects | `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md` · `_redirects` |
 | Validação | `scripts/run-site-validation.ps1` |
 
-**PDV Rust na matriz:** CTAs → tag GitHub v0.1.3 (não `/latest`); coexistência em `#pdv-coexistencia`.
+**PDV Rust na matriz:** CTAs → tag GitHub v0.1.4 (não `/latest`); coexistência em `#pdv-coexistencia`.
 
 ---
 
@@ -110,7 +110,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Rust (`caracore-rust-pdv-releases`)
 
 | URL vitrine | https://pdv-rust.caracore.com.br/ (GitHub Pages do **mesmo** repo) |
-| Download oficial | https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag **v0.1.3**) |
+| Download oficial | https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag **v0.1.4**) |
 | Clone local | `D:\onedrive\dev\caracore-pdv-rust-releases` (nome da pasta ≠ nome no GitHub) |
 | Oficina | `caracore-pdv-rust` |
 | Matriz | `#caracore-pdv-rust` |
@@ -136,7 +136,7 @@ cd apps/desktop-tauri; npm test
 python tools/sync_docs_status.py --full
 ```
 
-**Release:** `python tools/run_release_delivery_oneclick.py --tag v0.1.3` · publicar loja: `python tools/publish_portal_assets_loja.py --push`
+**Release:** `python tools/run_release_delivery_oneclick.py --tag v0.1.4` · publicar loja: `python tools/publish_portal_assets_loja.py --push`
 
 **Regra oficina:** não commitar salvo pedido explícito do usuário.
 

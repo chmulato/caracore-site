@@ -17,8 +17,8 @@ VISÃO GERAL
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
   caracore-pdv                  Oficina — PDV Desktop Java / v4            v3.2.4-free maduro; RC2 Qute; T032/GA 08/11/2026; planos em PlanoLicencaService
   caracore-pdv-releases         Loja — PDV Desktop Java                     pdv.caracore.com.br · CTA Baixar Free · Free 100 vendas/mês
-  caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.3
-  caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.3). Clone local: caracore-pdv-rust-releases
+  caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
+  caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases
   caracore-hub                  Oficina — CaraCore Hub                      Encomendas; WAR/Tomcat 2.1 pronta; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
   caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
@@ -57,7 +57,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
   PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.4-free (maduro) · RC2 Qute pré-release · Free 100 vendas/mês
-  CaraCore PDV             caracore-pdv-rust        caracore-rust-pdv-releases    v0.1.3 (piloto Windows; loja + NSIS/MSI/ZIP no mesmo repo)
+  CaraCore PDV             caracore-pdv-rust        caracore-rust-pdv-releases    v0.1.4 (piloto Windows; loja + NSIS/MSI/ZIP no mesmo repo)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
   Não confundir: V3 negócio ≠ canal Java v3.2.x ≠ release Rust v0.1.x.

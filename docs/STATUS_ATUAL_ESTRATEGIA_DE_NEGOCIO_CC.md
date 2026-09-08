@@ -30,7 +30,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 **Dois PDVs Desktop (mesmo CaraCore PDV):**
 
 - Java · Quarkus — [pdv.caracore.com.br](https://pdv.caracore.com.br/) — **v3.2.4-free** (maduro)
-- Rust + Tauri 2 — [pdv-rust](https://pdv-rust.caracore.com.br/) + GitHub Releases — **v0.1.3** (piloto)
+- Rust + Tauri 2 — [pdv-rust](https://pdv-rust.caracore.com.br/) + GitHub Releases — **v0.1.4** (piloto)
 
 **Internacional:** `aligned/en/` e `aligned/it/` — B2B engineering (espelho do posicionamento PT).
 
@@ -71,7 +71,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | Produto | Portfólio | Loja | Estado |
 |---------|-----------|------|--------|
 | PDV Java | `#caracore-pdv` | pdv.* | Entrega activa · v3.2.4-free |
-| CaraCore PDV | `#caracore-pdv-rust` | pdv-rust + GitHub | Piloto v0.1.3 |
+| CaraCore PDV | `#caracore-pdv-rust` | pdv-rust + GitHub | Piloto v0.1.4 |
 | Ink Agenda | `#caracore-ink-agenda` | ink.* | v2.0.0 estável |
 | Minerador 4.0 | `#minerador-ete` | ete.* | Entrega activa |
 | Reino OIDC | `#reino-oidc` | oidc.* | Entrega activa |

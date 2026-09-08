@@ -28,7 +28,7 @@ Repositório do site institucional **[caracore.com.br](https://www.caracore.com.
 | Linha | Loja canónica | Release |
 |-------|---------------|---------|
 | Java · Quarkus | [pdv.caracore.com.br](https://pdv.caracore.com.br/) | v3.2.4-free |
-| Rust + Tauri 2 | [pdv-rust](https://pdv-rust.caracore.com.br/) · [releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.3) | v0.1.3 |
+| Rust + Tauri 2 | [pdv-rust](https://pdv-rust.caracore.com.br/) · [releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.4) | v0.1.4 |
 
 Ambos são **desktop** na máquina da loja. Stacks distintas; **nenhuma substitui a outra**. Portfólio: `#pdv-coexistencia`, `#caracore-pdv`, `#caracore-pdv-rust`.
 

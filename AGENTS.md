@@ -130,7 +130,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **CSO Frotas (Web)** | `caracore-cso-quarkus` | `caracore-cso-releases` (loja única · clone `D:\onedrive\dev\caracore-cso-releases`) | Aplicação: `cso.caracore.com.br` · Loja: `cso-transp.caracore.com.br` | Java 21 · Quarkus · PostgreSQL · Qute/HTMX |
 | **CSO Transportes (Desktop)** | `caracore-cso-transportes` (oficina **sem** URL/copy de loja) | `caracore-cso-releases` (a **mesma** loja) | Loja: `cso-transp.caracore.com.br` · GA **08/11/2028** | Quarkus · JavaFX · Vue 3 · SQLite |
 | **Ink Agenda** | `caracore-ink` | `caracore-ink-releases` | `ink.caracore.com.br` | Java 25 · JavaFX · SQLite |
-| **Minerador ETE 4.0** | `caracore-ete` | `caracore-ete-releases` | `ete.caracore.com.br` | Python · Executável Windows |
+| **Minerador ETE 4.0** | `caracore-ete` | `caracore-ete-releases` | `ete.caracore.com.br` | Python · `v1.2.3` Ouro 4.0 · Windows/Linux/macOS |
 | **CaraCore Hub** | `caracore-hub` | `caracore-hub-releases` | `hub.caracore.com.br` | Jakarta EE 10 · WAR/Tomcat · JSP |
 | **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · Lógica / Educação |
 | **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | OAuth 2.1 · OIDC · Executável |
@@ -186,7 +186,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
  - PDV Desktop Java Free (`v3.2.4-free` · 100 vendas/mês · UI no navegador)
  - PDV Java v4 candidato (`v4.0.0-rc2` pré-release; corte T032 / GA **08/11/2026** ainda abertos)
  - Ink Agenda (`v2.0.0` estável em 26/06/2026)
-  - Minerador 4.0 (`v1.2.1` Ouro 4.0)
+  - Minerador 4.0 (`v1.2.3` Ouro 4.0)
   - Reino OIDC (`v2.0.0-RC1`)
   - Circuito Ferradura (Ativo)
   - Suporte Área 51 (Baseline `0.1.0-dev`)

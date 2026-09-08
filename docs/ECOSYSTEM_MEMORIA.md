@@ -5,7 +5,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 **Atualizado:** 2026-09-08  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
-**Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
+**Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace e **cópia git** `caracore-site/AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
 
 ---
 

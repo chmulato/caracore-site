@@ -201,7 +201,8 @@ Redirect legado: `docs/portfolio.html` → matriz.
 - [ ] `VALIDACAO_LOJAS_MATRIZ.md` (se mudou links matriz/loja)
 - [ ] Oficina Rust: `python tools/sync_docs_status.py --full` se mudança relevante
 - [ ] Atualizar `ECOSYSTEM_MEMORIA.md` se mudou **regra de ecossistema** (repo, URL, release)
-- [ ] Atualizar `project-memory.mdc` do repo trabalhado
+- [ ] Atualizar `AGENTS.md` (este repo + raiz do workspace) e `project-memory.mdc` do repo trabalhado
+- [ ] Uma camada por vez (matriz · loja · oficina · wiki); não misturar Java e Rust no mesmo patch
 - [ ] Smoke manual: home → portfólio → loja ou releases → voltar
 
 ---
@@ -217,6 +218,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 7. **Misturar suporte PME na home B2B** — M365/antivírus/horários noite ficam em `suporte-local.html`.
 8. **Tom xiita anti-cloud na vitrine** — usar híbrido/FinOps/resiliência; ideologia fica para backlog wiki/retrô/lojas.
 9. **Commit na oficina** sem pedido explícito do usuário.
+10. **Misturar senhas Java × Rust** — Free = `admin`/`admin` (1 operador). Rust = quatro logins em `primeiros-passos.html#perfis`. Pastas `%APPDATA%\caracore\` ≠ `%APPDATA%\caracore-pdv\`.
 
 ---
 
@@ -225,7 +227,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 | Necessidade | Documento |
 |-------------|-----------|
 | Visão 30 s | `ECOSYSTEM_MEMORIA.md` |
-| IAs (Cursor e outras) | `D:\onedrive\dev\AGENTS.md` |
+| IAs (Cursor e outras) | `AGENTS.md` neste repo · espelho `D:\onedrive\dev\AGENTS.md` |
 | Esta página (fluxos) | `INICIAR_NOVA_TAREFA.md` |
 | Mapa repos | `ECOSYSTEM_CARA_CORE.md` |
 | URLs lojas | `ECOSYSTEM_LOJAS.md` |

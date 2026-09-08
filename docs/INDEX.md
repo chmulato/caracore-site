@@ -10,7 +10,7 @@
 
 | Documento | Para quê |
 |-----------|----------|
-| **[AGENTS.md](../../AGENTS.md)** (raiz do workspace) | Fonte mestre para Cursor e outras IAs |
+| **[AGENTS.md](../AGENTS.md)** (neste repo; espelho da raiz do workspace) | Fonte mestre para Cursor e outras IAs |
 | **[INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md)** | **Ao iniciar nova tarefa** — fluxo por repo e armadilhas |
 | [MEMORIA_DO_PROJETO.md](MEMORIA_DO_PROJETO.md) | Memória rápida do repositório (páginas, PDV, redirects) |
 | [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) | Visão atual do ecossistema + changelog |

@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-09-08 · IAs: `AGENTS.md` na raiz do workspace
+**Atualizado:** 2026-09-08 · IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
 
 ## Posicionamento B2B (copy comercial)
 
@@ -134,3 +134,10 @@ alwaysApply: true
 - **Campanha Ink H2 2026:** artefatos `2026_07_*` … `2026_12_*`
 - **Validação site:** `scripts/run-site-validation.ps1` · `sala/regis/`
 - **Nota:** conteúdo retrô longo migrou para repo **caracore-retro**; evitar duplicar artigos só em `sala/redes/retro/` sem sync
+
+## Colaboração entre IAs
+
+- **Uma camada por vez:** matriz · loja · oficina · wiki. Não misturar Java e Rust no mesmo patch.
+- **Depois de corte ou copy no ar:** `AGENTS.md` (este repo + raiz do workspace) + `docs/ECOSYSTEM_MEMORIA.md` + `.cursor/rules` do repo tocado.
+- **Quem entra:** loja da linha (`download.html#perfis` Java · `primeiros-passos.html#perfis` Rust). Wiki aponta, não é fonte de senha.
+

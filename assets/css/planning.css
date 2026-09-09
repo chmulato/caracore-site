@@ -262,6 +262,19 @@
 .pl-fold {
   border: 1px solid var(--pl-line);
   background: #fff;
+  scroll-margin-top: 5.5rem;
+}
+
+.pl-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+}
+
+.pl-footer-nav a {
+  font-weight: 600;
+  text-decoration: none;
 }
 
 .pl-fold > summary {

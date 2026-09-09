@@ -327,8 +327,44 @@
     }
   }
 
-  if (location.hash) {
-    const target = document.querySelector(location.hash);
-    if (target && target.tagName === "DETAILS") target.open = true;
+  function openHashTarget(hash) {
+    if (!hash || hash === "#") return;
+    var target;
+    try {
+      target = document.querySelector(hash);
+    } catch (err) {
+      return;
+    }
+    if (!target) return;
+    if (target.tagName === "DETAILS") target.open = true;
+    if (target.scrollIntoView) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
+
+  function hashFromHref(href) {
+    var i = href.indexOf("#");
+    return i === -1 ? "" : href.slice(i);
+  }
+
+  function isPlanningPath(path) {
+    return !path || path === location.pathname || /(^|\/)planning\.html$/.test(path);
+  }
+
+  openHashTarget(location.hash);
+
+  window.addEventListener("hashchange", function () {
+    openHashTarget(location.hash);
+  });
+
+  document.addEventListener("click", function (ev) {
+    var a = ev.target.closest("a[href]");
+    if (!a) return;
+    var href = a.getAttribute("href") || "";
+    var hash = hashFromHref(href);
+    if (hash.length < 2) return;
+    var path = href.slice(0, href.indexOf("#"));
+    if (!isPlanningPath(path)) return;
+    openHashTarget(hash);
+  });
 })();

@@ -20,6 +20,35 @@ window.CARACORE_PLANNING = {
     "Onze produtos no checklist. Os principais são PDV, CSO e Hub; o resto são brincos (não mandam na cota). Helianto e MKT ficam fora desta grelha (Garagem / canal gratuito). Um produto pesado por ciclo.",
 
   /**
+   * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
+   * flags[] = só excepções. Produto em ritmo normal não entra aqui.
+   */
+  EXEC: {
+    owner: { period: "set/2026", who: "CSO COE" },
+    ownerNext: { period: "out–08/nov", who: "PDV v4" },
+    next: {
+      when: "08/11/2026",
+      what: "PDV Java v4",
+      gate: "T032",
+      action: "Agent out–nov",
+    },
+    flags: [
+      {
+        id: "pdv-java",
+        kind: "risco",
+        title: "PDV Java · T032 aberto",
+        text: "08/11 deixa de ser GA se outubro não fechar.",
+      },
+      {
+        id: "cso",
+        kind: "desvio",
+        title: "CSO · copy da loja",
+        text: "Plano canónico: FRO 08/04–dez/2027. Loja ainda pode dizer 1.º trim. 2027.",
+      },
+    ],
+  },
+
+  /**
    * Envelope de Funding / Patrocínio. Actualizar só se a assinatura ou o horizonte mudarem.
    * Canónico de capacidade: caracore-site/docs/CALENDARIO_COTA_CURSOR.md
    */
@@ -105,6 +134,8 @@ window.CARACORE_PLANNING = {
       id: "pdv-java",
       n: 1,
       name: "PDV Java",
+      core: true,
+      state: "risk",
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
       hundred: "GA v4 em 08/11/2026 (T032). Free 3.2.4 já no ar.",
@@ -120,6 +151,8 @@ window.CARACORE_PLANNING = {
       id: "pdv-rust",
       n: 2,
       name: "PDV Rust",
+      core: false,
+      state: "ok",
       tone: "rust",
       shop: "https://pdv-rust.caracore.com.br/",
       hundred: "Piloto Windows utilizável, sem substituir o Java, até Mar/2029.",
@@ -135,6 +168,8 @@ window.CARACORE_PLANNING = {
       id: "minerador",
       n: 3,
       name: "Minerador 4.0",
+      core: false,
+      state: "done",
       tone: "ete",
       shop: "https://ete.caracore.com.br/",
       hundred: "Canal público estável (v1.2.3) no horizonte.",
@@ -150,6 +185,8 @@ window.CARACORE_PLANNING = {
       id: "oidc",
       n: 4,
       name: "Reino OIDC",
+      core: false,
+      state: "done",
       tone: "reino",
       shop: "https://oidc.caracore.com.br/",
       hundred: "Sala de estudo Windows com RC público estável.",
@@ -165,6 +202,8 @@ window.CARACORE_PLANNING = {
       id: "circuito",
       n: 5,
       name: "Circuito Ferradura",
+      core: false,
+      state: "done",
       tone: "circuito",
       shop: "https://circuito.caracore.com.br/",
       hundred: "Trilha activa (PF grátis · escolas R$ 5/aluno/mês).",
@@ -180,6 +219,8 @@ window.CARACORE_PLANNING = {
       id: "hub",
       n: 6,
       name: "Hub",
+      core: true,
+      state: "watch",
       tone: "hub",
       shop: "https://hub.caracore.com.br/",
       hundred: "Instalador Windows SQLite em 06/04/2027.",
@@ -195,6 +236,8 @@ window.CARACORE_PLANNING = {
       id: "area51",
       n: 7,
       name: "Área 51",
+      core: false,
+      state: "done",
       tone: "area51",
       shop: "https://area51.caracore.com.br/",
       hundred: "Baseline institucional 0.1.0-dev no ar (loja + wiki).",
@@ -210,6 +253,8 @@ window.CARACORE_PLANNING = {
       id: "ink",
       n: 8,
       name: "Ink Agenda",
+      core: false,
+      state: "ok",
       tone: "ink",
       shop: "https://ink.caracore.com.br/",
       hundred: "Desktop v2 no ar. PWA em roadmap (não antes de 2028).",
@@ -225,6 +270,8 @@ window.CARACORE_PLANNING = {
       id: "seed",
       n: 9,
       name: "Seed",
+      core: false,
+      state: "done",
       tone: "seed",
       shop: "https://seed.caracore.com.br/",
       hundred: "Vitrine honesta: ferramenta interna, sem oferta aberta.",
@@ -240,6 +287,8 @@ window.CARACORE_PLANNING = {
       id: "ru",
       n: 10,
       name: "RU Soberano",
+      core: false,
+      state: "ok",
       tone: "ru",
       shop: "https://ru.caracore.com.br/",
       hundred: "Garagem 18/06/2027 (simulador + sala retrô).",
@@ -255,6 +304,8 @@ window.CARACORE_PLANNING = {
       id: "cso",
       n: 11,
       name: "CSO",
+      core: true,
+      state: "watch",
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
       hundred: "Frotas completa (FRO) + Transportes desktop 08/11/2028.",

@@ -12,16 +12,16 @@
   <link rel="stylesheet" href="assets/css/planning.css">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Planning — torres 0–100% dos 11 produtos | Cara Core Informática</title>
-  <meta name="description" content="Planning Cara Core: onze torres 0–100% e envelope de Funding US$ 20/mês até dezembro de 2029 (US$ 800). PDV, CSO, Hub, Ink, Helianto.">
+  <title>Planning — estado do ecossistema | Cara Core Informática</title>
+  <meta name="description" content="Estado do planning Cara Core: média das 11 torres, riscos, próximo marco. PDV, CSO, Hub.">
   <meta name="author" content="Cara Core Informática">
   <link rel="canonical" href="https://www.caracore.com.br/planning.html">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Planning Cara Core — progresso 2026 a 2029",
-    "description": "Onze produtos em torres de 0 a 100% e plano financeiro Cursor Pro até dezembro de 2029.",
+    "name": "Planning Cara Core — estado do ecossistema",
+    "description": "Média das 11 torres, excepções e próximo marco público até 2029.",
     "url": "https://www.caracore.com.br/planning.html",
     "publisher": {
       "@type": "Organization",
@@ -110,106 +110,122 @@
 
 <main class="pl-page">
   <div class="container">
-    <header class="pl-hero">
-      <p class="pl-kicker">Matriz · acompanhamento mensal</p>
-      <h1>Planning — onze torres do ecossistema</h1>
-      <p class="pl-lead">Cada torre vai de <strong>0 a 100%</strong> até o marco público daquele produto no horizonte <span id="pl-horizon">2026 → 2029</span>. Não é ranking comercial: é o quanto falta para o compromisso escrito no roadmap. Clique numa torre para o histórico mensal.</p>
-      <p class="pl-jump"><a href="#patrocinio">Funding / Patrocínio</a> · <a href="#anos">Anos</a> · <a href="#skyline">Skyline</a></p>
-      <div class="pl-meta">
-        <p><strong id="pl-asof">Setembro de 2026</strong><span>Última actualização</span></p>
-        <p><strong id="pl-avg">—</strong><span>Média das 11 torres</span></p>
-        <p><strong id="pl-fund-total">US$ 800</strong><span>Envelope Cursor até dez/2029</span></p>
-      </div>
-      <p class="pl-caption mt-3" id="pl-note"></p>
-    </header>
+    <h1 class="visually-hidden">Planning Cara Core</h1>
 
-    <section class="pl-section pl-funding" id="patrocinio" aria-labelledby="fund-title">
-      <h2 id="fund-title">Funding — Patrocínio da engenharia</h2>
-      <p class="pl-caption">Envelope que paga a execução assistida do roadmap público. Não é custo de nuvem, domínio nem loja — é a assinatura de Agent até dezembro de 2029. Fonte: <code>CALENDARIO_COTA_CURSOR.md</code>.</p>
-      <p class="pl-fund-verdict" id="pl-fund-verdict"></p>
-      <div class="pl-fund-stats" role="group" aria-label="Envelope financeiro">
-        <p><strong id="pl-fund-month">US$ 20</strong><span>por mês</span></p>
-        <p><strong id="pl-fund-months">40</strong><span>meses</span></p>
-        <p><strong id="pl-fund-range">set/2026 → dez/2029</strong><span>horizonte pago</span></p>
-      </div>
-      <p class="pl-fund-rules" id="pl-fund-rules"></p>
-      <p id="pl-fund-paid" class="pl-caption"></p>
+    <section class="pl-l1" aria-label="Estado do planejamento">
+      <article class="pl-block pl-pulse" id="onde">
+        <p class="pl-kicker">Onde estamos · <time id="pl-asof">Setembro de 2026</time></p>
+        <div class="pl-pulse-grid">
+          <p class="pl-pulse-pct"><strong id="pl-avg">—</strong><span>média das 11 torres</span></p>
+          <p><strong id="pl-done">—</strong><span>estáveis</span></p>
+          <p><strong id="pl-owner">—</strong><span>ciclo actual</span></p>
+          <p><strong id="pl-horizon">2026 → 2029</strong><span>horizonte</span></p>
+        </div>
+      </article>
 
-      <div class="pl-fund-grid">
-        <div>
-          <h3>O que este envelope cobre</h3>
+      <article class="pl-block pl-next" id="proximo">
+        <p class="pl-kicker">Próximo marco</p>
+        <div id="pl-next"></div>
+      </article>
+
+      <article class="pl-block pl-flags" id="atencao">
+        <p class="pl-kicker">O que exige atenção</p>
+        <div id="pl-flags"></div>
+      </article>
+
+      <article class="pl-block pl-towers" id="skyline">
+        <p class="pl-kicker">Status das 11 torres</p>
+        <div class="pl-tower-list" id="pl-tower-rows" role="list"></div>
+        <div class="pl-fiche" id="pl-fiche" hidden></div>
+      </article>
+    </section>
+
+    <section class="pl-l2" aria-label="Detalhe operacional">
+      <details class="pl-fold" id="patrocinio">
+        <summary>Funding</summary>
+        <div class="pl-fold-body">
+          <div class="pl-fund-stats" role="group" aria-label="Envelope">
+            <p><strong id="pl-fund-month">US$ 20</strong><span>/mês</span></p>
+            <p><strong id="pl-fund-months">40</strong><span>meses</span></p>
+            <p><strong id="pl-fund-total">US$ 800</strong><span>até dez/2029</span></p>
+            <p><strong id="pl-fund-range">set/2026 → dez/2029</strong><span>pago</span></p>
+          </div>
+          <p class="pl-line" id="pl-fund-verdict"></p>
           <table class="pl-table">
             <thead>
               <tr>
                 <th scope="col">Marco</th>
-                <th scope="col">Entrega pública</th>
-                <th scope="col">Cota Agent</th>
+                <th scope="col">Entrega</th>
+                <th scope="col">Agent</th>
               </tr>
             </thead>
             <tbody id="pl-fund-covers"></tbody>
           </table>
+          <p class="pl-chips" id="pl-fund-notin"></p>
+          <p class="pl-fund-cta"><a href="index.html#contato">Patrocínio extra</a></p>
         </div>
-        <div>
-          <h3>Dono do ciclo</h3>
+      </details>
+
+      <details class="pl-fold" id="regras">
+        <summary>Regras de Agent</summary>
+        <div class="pl-fold-body">
+          <p class="pl-chips" id="pl-fund-rules"></p>
+          <p class="pl-line" id="pl-fund-paid"></p>
+        </div>
+      </details>
+
+      <details class="pl-fold" id="anos">
+        <summary>Cronograma</summary>
+        <div class="pl-fold-body">
+          <div class="pl-years" id="pl-years"></div>
           <table class="pl-table">
             <thead>
               <tr>
                 <th scope="col">Período</th>
-                <th scope="col">Produto</th>
+                <th scope="col">Dono</th>
               </tr>
             </thead>
             <tbody id="pl-fund-queue"></tbody>
           </table>
         </div>
-      </div>
+      </details>
 
-      <h3>Fora deste envelope (sem patrocínio extra)</h3>
-      <ul class="pl-fund-notin" id="pl-fund-notin"></ul>
-      <p id="pl-fund-sponsor"></p>
-      <p class="pl-fund-cta">
-        Cara Core Informática · CNPJ 23.969.028/0001-37.
-        <a href="index.html#contato">Falar sobre patrocínio</a>
-      </p>
-    </section>
-
-    <section class="pl-section" id="anos" aria-labelledby="anos-title">
-      <h2 id="anos-title">Horizonte por ano</h2>
-      <p class="pl-caption">Quanto do ano civil já está cumprido face aos marcos públicos daquele ano. 2029 = Helianto (30/12).</p>
-      <div class="pl-years" id="pl-years"></div>
-    </section>
-
-    <section class="pl-section" id="skyline" aria-labelledby="skyline-title">
-      <h2 id="skyline-title">Skyline dos 11 produtos</h2>
-      <p class="pl-caption">Linhas horizontais na torre: 25%, 50%, 75%. A altura é o progresso rumo a 100% daquele produto, não o calendário.</p>
-      <div class="pl-skyline-wrap">
-        <div class="pl-axis" aria-hidden="true">
-          <span>100</span>
-          <span>75</span>
-          <span>50</span>
-          <span>25</span>
-          <span>0</span>
+      <details class="pl-fold" id="criterios">
+        <summary>Critérios</summary>
+        <div class="pl-fold-body">
+          <ul class="pl-criteria">
+            <li>100% = marco público do produto até dez/2029.</li>
+            <li>Média = média aritmética das 11 torres.</li>
+            <li>Não é ranking comercial.</li>
+            <li>Núcleo (PDV, CSO, Hub) manda na cota. Brinco cede.</li>
+            <li>Fonte: <a href="ecosistema.html#roadmap">roadmap</a> · <code>CALENDARIO_COTA_CURSOR.md</code>.</li>
+          </ul>
         </div>
-        <div class="pl-skyline" id="pl-skyline" role="list"></div>
+      </details>
+
+      <details class="pl-fold" id="pl-detail">
+        <summary>Histórico</summary>
+        <div class="pl-fold-body">
+          <div class="pl-cards" id="pl-cards"></div>
+        </div>
+      </details>
+    </section>
+
+    <details class="pl-fold pl-l3">
+      <summary>Notas operacionais</summary>
+      <div class="pl-fold-body">
+        <p id="pl-note"></p>
+        <ul id="pl-year-notes" class="pl-criteria"></ul>
+        <p id="pl-fund-sponsor"></p>
+        <ol>
+          <li>Abrir <code>assets/js/planning-data.js</code>.</li>
+          <li>Mudar <code>AS_OF</code> e <code>EXEC</code> (flags, dono, próximo marco).</li>
+          <li>Em cada produto, acrescentar <code>{ m: "YYYY-MM", p: N }</code>.</li>
+          <li>Ajustar <code>YEARS[].pct</code> se o ano mudou.</li>
+          <li><code>FUNDING</code> só muda se a assinatura ou o horizonte mudarem.</li>
+          <li>Não subir percentagem de GA que ainda não saiu.</li>
+        </ol>
       </div>
-    </section>
-
-    <section class="pl-section" id="pl-detail" aria-labelledby="detalhe-title">
-      <h2 id="detalhe-title">Histórico mensal</h2>
-      <p class="pl-caption">Acrescentar um ponto por mês em <code>assets/js/planning-data.js</code>. Datas de GA: <a href="ecosistema.html#roadmap">roadmap</a>. Envelope: <a href="#patrocinio">Funding</a>.</p>
-      <div class="pl-cards" id="pl-cards"></div>
-    </section>
-
-    <details class="pl-howto">
-      <summary>Como actualizar no 1.º dia útil do mês</summary>
-      <ol class="mt-2">
-        <li>Abrir <code>assets/js/planning-data.js</code>.</li>
-        <li>Mudar <code>AS_OF</code> para <code>YYYY-MM</code> e o rótulo em português.</li>
-        <li>Em cada produto, acrescentar <code>{ m: "YYYY-MM", p: N }</code> no array <code>history</code>.</li>
-        <li>Ajustar <code>YEARS[].pct</code> se o ano mudou (2026, 2027, 2028, 2029).</li>
-        <li><code>FUNDING</code> só muda se a assinatura ou o horizonte mudarem (hoje: US$ 20 × 40 meses = US$ 800).</li>
-        <li>Não subir percentagem de GA que ainda não saiu. Publicar a matriz.</li>
-      </ol>
-      <p class="mb-0">Setembro de 2026: PDV v4 ainda não é 100% (T032 aberto). Hub é o dono de dez/2026–06/04/2027. Ink PWA = Tab (não antes de 2028). CSO FRO não arranca em outubro.</p>
     </details>
   </div>
 </main>

@@ -1,7 +1,7 @@
 # Validação de negócio — ecossistema Cara Core
 
 Objetivo: checklist de coerência comercial — produtos, preços, fluxos e discurso.
-Uso interno. Atualizado: 2026-06-07.
+Uso interno. Atualizado: 2026-09-09.
 
 Referências: ECOSYSTEM_LOJAS.md · VALIDACAO_LOJAS_MATRIZ.md · portfolio.html · docs/SITE_MATRIZ.md · DILEMA.md
 Histórico detalhado (delivery/): docs/archive/sessoes-trabalho/VALIDACAO_NEGOCIO_HISTORICO.md
@@ -12,6 +12,7 @@ Histórico detalhado (delivery/): docs/archive/sessoes-trabalho/VALIDACAO_NEGOCI
 
 PREMISSA
 
+- **Principais:** PDV · CSO · Hub. **Brincos:** os demais da lista abaixo. O brinco não manda na fila de Agent nem na headline.
 - Foco em **engenharia B2B boutique** + produtos Bunker como prova de entrega; capacidade limitada (sem braço de startup).
 - Matriz = home B2B (`#engenharia-b2b`), portfólio (`#decisoes-engenharia`), ecossistema; loja = vitrine e download (*.caracore.com.br).
 - Filosofia Bunker: desktop soberano, operação local, SQLite onde aplicável.
@@ -32,7 +33,7 @@ PRODUTOS EM FOCO
   5  Circuito Ferradura              circuito.caracore.com.br   FREE PF · escolas R$ 5/aluno/mês
   6  Cara Core Hub                   hub.caracore.com.br        B2B / sob consulta
   7  Suporte Área 51                 area51.caracore.com.br     serviço institucional
-  8  Ink Agenda                      ink.caracore.com.br        v2.0.0 Windows · PWA 26/06/2027
+  8  Ink Agenda                      ink.caracore.com.br        v2.0.0 Windows · PWA não antes de 2028
   9  CaraCore Seed                   seed.caracore.com.br       app não disponível (interno)
 
 Garagem (portfólio + loja no ar):
@@ -118,7 +119,7 @@ VALIDAÇÃO POR PRODUTO (resumo)
 
 ### 2.9 Ink Agenda
 
-  Matriz          OK   portfolio#caracore-ink-agenda · ecosistema#roadmap (Desktop Concluído · PWA 26/06/2027)
+  Matriz          OK   portfolio#caracore-ink-agenda · ecosistema#roadmap (Desktop Concluído · PWA não antes de 2028)
   Loja            OK   ink.caracore.com.br · download Windows v2.0.0 · novidade pwa.html
 
 

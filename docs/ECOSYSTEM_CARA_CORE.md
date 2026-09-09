@@ -25,7 +25,7 @@ VISÃO GERAL
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
   caracore-seed                 Código do Cara Core Seed                    Ferramenta interna; aplicação não disponível ao público
   caracore-seed-releases        Vitrine do Seed                             Informa que a aplicação não está disponível
-  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX (Windows); PWA 26/06/2027
+  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX (Windows); PWA não antes de 2028
   caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br
   caracore-ru                   Oficina do RU Soberano                      Java 25 + JavaFX; sala RETRO + simulador
   caracore-ru-releases          Loja online e releases RU Soberano          GitHub Pages: ru.caracore.com.br
@@ -85,7 +85,7 @@ Produtos com entrega ativa (matriz + loja online)
   CaraCore CSO: caracore-cso-quarkus (Frotas, produção; landing JSON-LD/cache/WebP) + caracore-cso-transportes (Desktop 08/11/2028, oficina sem loja). Loja única (home de conversão): D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br. App: cso.caracore.com.br. Um produto em 08/11/2028. CSO ≠ GPS.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
-  Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.0 · PWA 26/06/2027 (sem DMG/DEB nativos)
+  Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.0 · PWA não antes de 2028 (sem DMG/DEB nativos)
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
   Cara Core MKT: caracore-mkt + caracore-mkt-releases (+ Sala em caracore-tools). Loja: mkt.caracore.com.br

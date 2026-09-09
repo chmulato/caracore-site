@@ -2,7 +2,7 @@
 
 Índice **curado** para quem edita o site institucional. Toda a pasta `docs/` está em **Markdown** (`.md`); documentação histórica de backend OAuth, migração `delivery/` e sessões antigas está em [archive/](archive/).
 
-**Última atualização:** 2026-08-26
+**Última atualização:** 2026-09-09
 
 ---
 
@@ -14,6 +14,8 @@
 | **[INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md)** | **Ao iniciar nova tarefa** — fluxo por repo e armadilhas |
 | [MEMORIA_DO_PROJETO.md](MEMORIA_DO_PROJETO.md) | Memória rápida do repositório (páginas, PDV, redirects) |
 | [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) | Visão atual do ecossistema + changelog |
+| [CALENDARIO_COTA_CURSOR.md](CALENDARIO_COTA_CURSOR.md) | Fila única de Agent (US$ 20/mês) |
+| [RISCOS_ECOSSISTEMA.md](RISCOS_ECOSSISTEMA.md) | Guia de decisão — o que não abrir / o que desliza |
 | [SITE_MATRIZ.md](SITE_MATRIZ.md) | Páginas, portfólio, redirects, publicação |
 | [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.md) | Matriz vs lojas — uma fonte por tipo de conteúdo |
 | [CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md](CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md) | Antes de PR/deploy visível |

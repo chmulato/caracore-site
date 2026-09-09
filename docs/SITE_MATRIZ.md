@@ -3,7 +3,7 @@
 Referência para editar e publicar **caracore.com.br** sem duplicar conteúdo das lojas.
 
 **Repo:** `caracore-site` · **Domínio:** `www.caracore.com.br`  
-**Retomada:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) · [DILEMA.md](DILEMA.md)
+**Retomada:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) · [RISCOS_ECOSSISTEMA.md](RISCOS_ECOSSISTEMA.md) · [DILEMA.md](DILEMA.md)
 
 **Frase-guia (PT):** *Alocação técnica dedicada ou consultoria por projeto — modelo B2B, código transparente no ambiente do cliente.*
 

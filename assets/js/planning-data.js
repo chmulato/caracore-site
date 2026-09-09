@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "Setembro de 2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Onze produtos do checklist de negócio. Helianto e MKT ficam fora desta grelha (Garagem / canal gratuito). A cota Cursor (US$ 20/mês) define quem sobe cada mês — um produto pesado por ciclo.",
+    "Onze produtos no checklist. Os principais são PDV, CSO e Hub; o resto são brincos (não mandam na cota). Helianto e MKT ficam fora desta grelha (Garagem / canal gratuito). Um produto pesado por ciclo.",
 
   /**
    * Envelope de Funding / Patrocínio. Actualizar só se a assinatura ou o horizonte mudarem.
@@ -40,27 +40,28 @@ window.CARACORE_PLANNING = {
       "A cota não acumula. Mês ocioso ainda é cobrado. Mês cheio não empresta crédito ao seguinte. Tab e autocomplete não entram nesta conta; o que queima o envelope é Agent (Flyway, auth, extract, HTTP).",
     covers: [
       { when: "08/11/2026", item: "PDV Java v4 (GA)", spend: "Agent out–nov/2026" },
-      { when: "06/04/2027", item: "Hub instalador Windows", spend: "Agent 01–07/04/2027; resto Tab" },
-      { when: "26/06/2027", item: "Ink Agenda PWA", spend: "Agent dez/2026–jun/2027" },
+      { when: "06/04/2027", item: "Hub instalador Windows", spend: "Agent dez/2026–06/04/2027" },
+      { when: "08/04–dez/2027", item: "CSO FRO (frota 24/24)", spend: "Agent depois do Hub; app já no ar" },
       { when: "08/11/2028", item: "CSO Transportes desktop", spend: "Agent jan–nov/2028" },
       { when: "30/12/2029", item: "Helianto Condominium (GA)", spend: "Agent 2029" },
     ],
     queue: [
       { period: "set/2026", owner: "CSO COE" },
       { period: "out–08/nov/2026", owner: "PDV v4" },
-      { period: "dez/2026–jun/2027", owner: "Ink PWA" },
-      { period: "01–07/abr/2027", owner: "Hub EXE (leve)" },
-      { period: "jul–dez/2027", owner: "CSO FRO" },
+      { period: "09/nov–dez/2026", owner: "PDV corte + CSO M1" },
+      { period: "dez/2026–06/04/2027", owner: "Hub" },
+      { period: "08/04–dez/2027", owner: "CSO FRO" },
       { period: "2028", owner: "CSO Transportes" },
       { period: "dez/2028", owner: "Buffer Transportes" },
       { period: "2029", owner: "Helianto" },
     ],
     notInEnvelope: [
       "FRO da Frotas em outubro/2026 (briga com o PDV v4)",
-      "Momento 2 e PWA da frota em 2027–2029 (2029 é Helianto)",
+      "Ink PWA com Agent antes de 2028 (brinco; Tab até folga do núcleo)",
+      "Momento 2 e PWA da frota em 2027–2028 (2028 é Transportes)",
       "Virtual Tracker / GPS no mesmo ano do Transportes",
       "RU com mês de Agent",
-      "PIX Split PDV em código no semestre do PWA Ink",
+      "PIX Split PDV em código antes do Hub no ar",
     ],
     sponsorAdds:
       "Patrocínio acima deste envelope (segunda cota, on-demand pontual ou mês extra de Agent) é o que antecipa FRO, abre Momento 2 ou dá mês a RU — não substitui os GAs já calendariados.",
@@ -79,9 +80,9 @@ window.CARACORE_PLANNING = {
     {
       id: "y2027",
       label: "2027",
-      subtitle: "Hub · Ink PWA · FRO",
+      subtitle: "Hub · FRO",
       pct: 12,
-      note: "Hub web 2.1 pronta. Instalador 06/04, PWA 26/06 e FRO no 2.º semestre ainda não começaram em Agent.",
+      note: "Hub web 2.1 pronta. Agent do EXE em dez/2026–06/04. FRO 08/04–dez. Ink PWA = Tab (não antes de 2028).",
     },
     {
       id: "y2028",
@@ -182,7 +183,7 @@ window.CARACORE_PLANNING = {
       tone: "hub",
       shop: "https://hub.caracore.com.br/",
       hundred: "Instalador Windows SQLite em 06/04/2027.",
-      now: "Web 2.1 pronta. Agent do EXE só 01–07/04/2027. Até lá: Tab + mãos.",
+      now: "Web 2.1 pronta. Agent do EXE dez/2026–06/04/2027. Tab em set–nov sem competir com o PDV.",
       history: [
         { m: "2026-06", p: 48 },
         { m: "2026-07", p: 52 },
@@ -211,8 +212,8 @@ window.CARACORE_PLANNING = {
       name: "Ink Agenda",
       tone: "ink",
       shop: "https://ink.caracore.com.br/",
-      hundred: "Desktop v2 no ar + PWA em 26/06/2027.",
-      now: "Windows v2.0.0 publicado. PWA = S0 docs. Agent S1 em dez/2026.",
+      hundred: "Desktop v2 no ar. PWA em roadmap (não antes de 2028).",
+      now: "Windows v2.0.0 publicado. PWA = S0 docs. Sem Agent até folga do núcleo.",
       history: [
         { m: "2026-06", p: 68 },
         { m: "2026-07", p: 70 },
@@ -242,7 +243,7 @@ window.CARACORE_PLANNING = {
       tone: "ru",
       shop: "https://ru.caracore.com.br/",
       hundred: "Garagem 18/06/2027 (simulador + sala retrô).",
-      now: "Vitrine no ar. Sem mês de Agent — copy no junho do Ink PWA.",
+      now: "Vitrine no ar. Sem mês de Agent.",
       history: [
         { m: "2026-06", p: 8 },
         { m: "2026-07", p: 10 },
@@ -257,7 +258,7 @@ window.CARACORE_PLANNING = {
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
       hundred: "Frotas completa (FRO) + Transportes desktop 08/11/2028.",
-      now: "Frotas em produção (COE 27/33). Freeze M1 em 08/11. FRO Agent só jul–dez/2027. Transportes = 2028.",
+      now: "Frotas em produção (COE 27/33). Freeze M1 em 08/11. FRO Agent 08/04–dez/2027. Transportes = 2028.",
       history: [
         { m: "2026-06", p: 30 },
         { m: "2026-07", p: 34 },

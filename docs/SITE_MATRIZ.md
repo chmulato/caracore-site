@@ -32,6 +32,7 @@ Regra de ouro: [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.
 | `suporte-local.html` | Canal PME (M365, TI local) — **fora** do fluxo B2B |
 | `portfolio.html` | `#decisoes-engenharia` · categorias — ver §3 |
 | `ecosistema.html` | Mapa produtos, roadmap, prova de entrega B2B |
+| `planning.html` | Torres 0–100% dos 11 produtos · `#patrocinio` Funding US$ 20×40 = US$ 800 · dados em `assets/js/planning-data.js` (`FUNDING`) |
 | `aligned/en/` · `aligned/it/` | B2B engineering — mesma frase-guia adaptada |
 | `404.html` | Erro amigável |
 | `secure/` | Área 51 OIDC |

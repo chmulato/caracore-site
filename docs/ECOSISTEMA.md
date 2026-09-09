@@ -35,7 +35,7 @@ Documentação operacional da página pública [ecosistema.html](../ecosistema.h
 | Pilares técnicos | `#pilares-tecnicos` |
 | Lojas oficiais | `#lojas-oficiais` — tabela matriz ↔ subdomínio |
 | Garagem | `#garagem` — Hub, RU, CSO |
-| Roadmap | `#roadmap` — timeline + tabela |
+| Roadmap | `#roadmap` — timeline + tabela · skyline e Funding em [planning.html](../planning.html) · [#patrocinio](../planning.html#patrocinio) |
 | Arquitetura | `#arquitetura` — Mermaid integração |
 
 **Navegação:** índice lateral `.eco-toc` · breadcrumb `.eco-breadcrumb` · links finais B2B / cases / portfólio / wiki / contato.

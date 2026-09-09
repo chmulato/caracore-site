@@ -2,9 +2,9 @@
 
 Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 3–5 minutos antes de abrir código.
 
-**Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
+**Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [Cota Cursor](CALENDARIO_COTA_CURSOR.md)  
 **Fonte IAs:** `D:\onedrive\dev\AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`  
-**Atualizado:** 2026-09-08  
+**Atualizado:** 2026-09-09  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
 ---
@@ -13,7 +13,8 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Passo | Ação |
 |-------|------|
-| 0 | Ler `AGENTS.md` na raiz (produtos-chave PDV · CSO · Hub e bloco **Frentes até 08/11/2026**) |
+| 0 | Ler `AGENTS.md` na raiz (produtos-chave PDV · CSO · Hub, bloco **Frentes até 08/11/2026** e **Cota Cursor**) |
+| 0b | Confirmar o **dono do ciclo** em `docs/CALENDARIO_COTA_CURSOR.md`. Não abrir Agent pesado noutro produto. |
 | 1 | Abrir `caracore-site/docs/ECOSYSTEM_MEMORIA.md` (visão actual) |
 | 1b | Posicionamento B2B: `docs/DILEMA.md` · frase-guia em hero e `#engenharia-b2b` |
 | 2 | Abrir `.cursor/rules/project-memory.mdc` **do repo onde vai trabalhar** |

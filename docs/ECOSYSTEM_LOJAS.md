@@ -24,8 +24,8 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   RU Soberano                  https://ru.caracore.com.br/
   CaraCore CSO                 https://cso-transp.caracore.com.br/                      Loja única (Frotas + Transportes). Clone: D:\onedrive\dev\caracore-cso-releases. App: cso.caracore.com.br. GA desktop 08/11/2028. Oficina transportes sem loja. ≠ GPS
   Cara Core MKT                https://mkt.caracore.com.br/                            Gratuito; Sala em tools.caracore.com.br/sala/
-  Ink Agenda                   https://ink.caracore.com.br/
-  Helianto Condominium         https://helianto.caracore.com.br/                       Vitrine; lançamento 30/12/2027
+  Ink Agenda                   https://ink.caracore.com.br/                 Desktop v2.0.0 Windows (download) · PWA 26/06/2027 (novidade /pwa.html)
+  Helianto Condominium         https://helianto.caracore.com.br/                       Vitrine; lançamento 30/12/2029
   Wiki institucional           https://wiki.caracore.com.br/                           caracore-wiki (não é loja de produto)
   Artigos Retrô (editorial)   https://retro.caracore.com.br/                          caracore-retro (não é loja de produto)
 

@@ -15,6 +15,7 @@ Repositório do site institucional **[caracore.com.br](https://www.caracore.com.
 | Home | `index.html` | Hero B2B, `#engenharia-b2b`, produtos, operação, contacto |
 | Portfólio | `portfolio.html` | Cases `#decisoes-engenharia`, coexistência PDV, releases |
 | Ecossistema | `ecosistema.html` | Mapa de produtos e lojas |
+| Planning | `planning.html` | Torres 0–100% · Funding `#patrocinio` (US$ 800 até dez/2029) |
 | EN / IT | `aligned/en/`, `aligned/it/` | B2B engineering (espelho PT) |
 | Políticas | `politica/` | Privacidade, termos |
 | Área 51 | `secure/` | Login OIDC (Google / Microsoft) |

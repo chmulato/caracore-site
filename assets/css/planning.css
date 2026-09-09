@@ -1,0 +1,466 @@
+/**
+ * Planning — skyline 0–100% (onze produtos · 2026–início 2029)
+ */
+
+.pl-page {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+
+.pl-hero h1 {
+  font-size: 1.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.pl-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6c757d;
+  margin-bottom: 0.35rem;
+}
+
+.pl-lead {
+  max-width: 46rem;
+  color: #495057;
+}
+
+.pl-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 1.25rem 0 0;
+}
+
+.pl-meta strong {
+  display: block;
+  font-size: 1.35rem;
+}
+
+.pl-meta span {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.pl-section {
+  margin-top: 2.5rem;
+}
+
+.pl-section h2 {
+  font-size: 1.15rem;
+  margin-bottom: 0.35rem;
+}
+
+.pl-caption {
+  font-size: 0.88rem;
+  color: #6c757d;
+  margin-bottom: 1.25rem;
+}
+
+/* Anos */
+.pl-years {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 767px) {
+  .pl-years {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.pl-year-tower {
+  border: 1px solid #dee2e6;
+  background: #fff;
+  padding: 1rem 0.85rem 0.9rem;
+}
+
+.pl-year-shaft {
+  position: relative;
+  height: 140px;
+  background: #f1f3f5;
+  overflow: hidden;
+}
+
+.pl-year-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--fill);
+  background: #212529;
+}
+
+.pl-year-pct {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.45rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #212529;
+}
+
+.pl-year-label {
+  font-size: 1.1rem;
+  margin: 0.65rem 0 0.15rem;
+}
+
+.pl-year-sub {
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pl-year-note {
+  font-size: 0.78rem;
+  color: #6c757d;
+  margin: 0.35rem 0 0;
+}
+
+/* Skyline dos 11 */
+.pl-skyline-wrap {
+  position: relative;
+  border: 1px solid #dee2e6;
+  background: #f8f9fa;
+  padding: 1.25rem 1rem 0.75rem;
+  overflow-x: auto;
+}
+
+.pl-axis {
+  position: absolute;
+  left: 0.4rem;
+  top: 1.25rem;
+  height: 220px;
+  font-size: 0.65rem;
+  color: #868e96;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.pl-skyline {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55rem;
+  min-width: 720px;
+  height: 280px;
+  padding-left: 2.1rem;
+  padding-bottom: 0.25rem;
+}
+
+.pl-tower {
+  flex: 1 1 0;
+  min-width: 3.2rem;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  cursor: pointer;
+  color: inherit;
+}
+
+.pl-tower-pct {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.2rem;
+}
+
+.pl-tower-shaft {
+  position: relative;
+  height: 220px;
+  background: #e9ecef;
+  border: 1px solid #ced4da;
+}
+
+.pl-tower-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(
+    to top,
+    transparent 24.5%,
+    rgba(0, 0, 0, 0.08) 25%,
+    transparent 25.5%,
+    transparent 49.5%,
+    rgba(0, 0, 0, 0.08) 50%,
+    transparent 50.5%,
+    transparent 74.5%,
+    rgba(0, 0, 0, 0.08) 75%,
+    transparent 75.5%
+  );
+  pointer-events: none;
+}
+
+.pl-tower-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--fill);
+  background: #343a40;
+}
+
+.pl-tower.tone-pdv .pl-tower-fill,
+.pl-card.tone-pdv .pl-card-pct {
+  background: #0d6efd;
+  color: #fff;
+}
+.pl-tower.tone-rust .pl-tower-fill,
+.pl-card.tone-rust .pl-card-pct {
+  background: #fd7e14;
+  color: #212529;
+}
+.pl-tower.tone-ete .pl-tower-fill,
+.pl-card.tone-ete .pl-card-pct {
+  background: #198754;
+  color: #fff;
+}
+.pl-tower.tone-reino .pl-tower-fill,
+.pl-card.tone-reino .pl-card-pct {
+  background: #6f42c1;
+  color: #fff;
+}
+.pl-tower.tone-circuito .pl-tower-fill,
+.pl-card.tone-circuito .pl-card-pct {
+  background: #20c997;
+  color: #212529;
+}
+.pl-tower.tone-hub .pl-tower-fill,
+.pl-card.tone-hub .pl-card-pct {
+  background: #0dcaf0;
+  color: #212529;
+}
+.pl-tower.tone-area51 .pl-tower-fill,
+.pl-card.tone-area51 .pl-card-pct {
+  background: #212529;
+  color: #fff;
+}
+.pl-tower.tone-ink .pl-tower-fill,
+.pl-card.tone-ink .pl-card-pct {
+  background: #d63384;
+  color: #fff;
+}
+.pl-tower.tone-seed .pl-tower-fill,
+.pl-card.tone-seed .pl-card-pct {
+  background: #6c757d;
+  color: #fff;
+}
+.pl-tower.tone-ru .pl-tower-fill,
+.pl-card.tone-ru .pl-card-pct {
+  background: #6610f2;
+  color: #fff;
+}
+.pl-tower.tone-cso .pl-tower-fill,
+.pl-card.tone-cso .pl-card-pct {
+  background: #146c43;
+  color: #fff;
+}
+
+.pl-tower[aria-pressed="true"] .pl-tower-shaft {
+  outline: 2px solid #212529;
+  outline-offset: 2px;
+}
+
+.pl-tower-base {
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.pl-tower-n {
+  display: block;
+  font-size: 0.65rem;
+  color: #868e96;
+}
+
+.pl-tower-name {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* Cartões */
+.pl-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.pl-card {
+  border: 1px solid #dee2e6;
+  background: #fff;
+  padding: 1rem 1rem 0.85rem;
+  scroll-margin-top: 5.5rem;
+}
+
+.pl-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.pl-card-head h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.pl-card-pct {
+  margin: 0;
+  padding: 0.15rem 0.45rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.pl-card p {
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.pl-card-hundred {
+  color: #495057;
+}
+
+.pl-spark {
+  width: 100%;
+  height: 36px;
+  margin: 0.25rem 0 0.5rem;
+}
+
+.pl-spark polyline {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+}
+
+.pl-months {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.25rem;
+  font-size: 0.72rem;
+}
+
+.pl-months li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e9ecef;
+  padding: 0.25rem 0.3rem;
+}
+
+.pl-months span {
+  color: #6c757d;
+}
+
+.pl-card-shop {
+  margin: 0;
+}
+
+.pl-howto {
+  margin-top: 2rem;
+  font-size: 0.85rem;
+}
+
+.pl-jump {
+  font-size: 0.88rem;
+  margin: 0.75rem 0 0;
+}
+
+.pl-jump a {
+  margin-right: 0.35rem;
+}
+
+.pl-funding {
+  border: 1px solid #dee2e6;
+  background: #fff;
+  padding: 1.25rem 1.15rem 1.1rem;
+  scroll-margin-top: 5.5rem;
+}
+
+.pl-fund-verdict {
+  font-size: 1.05rem;
+  font-weight: 600;
+  max-width: 46rem;
+  margin-bottom: 1rem;
+}
+
+.pl-fund-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.pl-fund-stats strong {
+  display: block;
+  font-size: 1.35rem;
+}
+
+.pl-fund-stats span {
+  font-size: 0.8rem;
+  color: #6c757d;
+}
+
+.pl-fund-rules {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.pl-fund-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+}
+
+@media (max-width: 767px) {
+  .pl-fund-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.85rem;
+}
+
+.pl-table th,
+.pl-table td {
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+  padding: 0.4rem 0.35rem;
+  vertical-align: top;
+}
+
+.pl-table th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6c757d;
+}
+
+.pl-funding h3 {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+}
+
+.pl-fund-notin {
+  margin: 0 0 0.75rem;
+  padding-left: 1.15rem;
+  font-size: 0.88rem;
+}
+
+.pl-fund-cta {
+  margin: 1rem 0 0;
+  font-size: 0.88rem;
+}

@@ -60,7 +60,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 - Documentação: `docs/` integralmente em Markdown; [INDEX.md](INDEX.md)
 - Retrô: art. **115** (B2B/IA, 25/12) · art. **114** (PDV Rust, 20/12) — [retro.caracore.com.br](https://retro.caracore.com.br/)
 
-**Páginas-chave:** `index.html` · `suporte-local.html` · `portfolio.html` · `ecosistema.html` · `aligned/` · `secure/`
+**Páginas-chave:** `index.html` · `suporte-local.html` · `portfolio.html` · `ecosistema.html` · `planning.html` · `aligned/` · `secure/`
 
 **Ordem home PT:** Hero → Engenharia B2B → Antifragilidade → Produtos → Sobre → Contato (suporte PME: rodapé → `suporte-local.html`)
 
@@ -72,7 +72,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 |---------|-----------|------|--------|
 | PDV Java | `#caracore-pdv` | pdv.* | Entrega activa · v3.2.4-free |
 | CaraCore PDV | `#caracore-pdv-rust` | pdv-rust + GitHub | Piloto v0.1.4 |
-| Ink Agenda | `#caracore-ink-agenda` | ink.* | v2.0.0 estável |
+| Ink Agenda | `#caracore-ink-agenda` | ink.* | v2.0.0 Windows · PWA 26/06/2027 (novidade) |
 | Minerador 4.0 | `#minerador-ete` | ete.* | Entrega activa |
 | Reino OIDC | `#reino-oidc` | oidc.* | Entrega activa |
 | Circuito Ferradura | `#circuito-python` | circuito.* | Entrega activa |
@@ -81,7 +81,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | Seed | `#caracore-seed` | seed.* | Só informativo |
 | Mkt / Sala | `#caracore-mkt` | mkt.* / tools/sala | Gratuito |
 | RU Soberano | `#caracore-ru` | ru.* | Garagem → 18/06/2027 |
-| Helianto | `#caracore-helianto` | helianto.caracore.com.br | Garagem → 30/12/2027 |
+| Helianto | `#caracore-helianto` | helianto.caracore.com.br | Garagem → 30/12/2029 |
 | CSO | `#caracore-cso` | cso. + cso-transp. | Frotas em produção · Transp. 08/11/2028 |
 
 Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)  

@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 08/09/2026 (Free `v3.2.4-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3`) 
+> **Data de Atualização:** 09/09/2026 (Free `v3.2.4-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3` + Ink PWA **26/06/2027**) 
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -129,7 +129,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **CaraCore PDV (Rust)** | `caracore-pdv-rust` | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | `pdv-rust.caracore.com.br` + [Releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | Rust · Tauri 2 · React · SQLite |
 | **CSO Frotas (Web)** | `caracore-cso-quarkus` | `caracore-cso-releases` (loja única · clone `D:\onedrive\dev\caracore-cso-releases`) | Aplicação: `cso.caracore.com.br` · Loja: `cso-transp.caracore.com.br` | Java 21 · Quarkus · PostgreSQL · Qute/HTMX |
 | **CSO Transportes (Desktop)** | `caracore-cso-transportes` (oficina **sem** URL/copy de loja) | `caracore-cso-releases` (a **mesma** loja) | Loja: `cso-transp.caracore.com.br` · GA **08/11/2028** | Quarkus · JavaFX · Vue 3 · SQLite |
-| **Ink Agenda** | `caracore-ink` | `caracore-ink-releases` | `ink.caracore.com.br` | Java 25 · JavaFX · SQLite |
+| **Ink Agenda** | `caracore-ink` | `caracore-ink-releases` | `ink.caracore.com.br` | Java 25 · JavaFX (Windows v2.0.0) · PWA **26/06/2027** (Mac/Linux/Android; sem DMG/DEB) |
 | **Minerador ETE 4.0** | `caracore-ete` | `caracore-ete-releases` | `ete.caracore.com.br` | Python · `v1.2.3` Ouro 4.0 · Windows/Linux/macOS |
 | **CaraCore Hub** | `caracore-hub` | `caracore-hub-releases` | `hub.caracore.com.br` | Jakarta EE 10 · WAR/Tomcat · JSP |
 | **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · Lógica / Educação |
@@ -185,7 +185,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 * **Concluídos / Em Operação:**
  - PDV Desktop Java Free (`v3.2.4-free` · 100 vendas/mês · UI no navegador)
  - PDV Java v4 candidato (`v4.0.0-rc2` pré-release; corte T032 / GA **08/11/2026** ainda abertos)
- - Ink Agenda (`v2.0.0` estável em 26/06/2026)
+ - Ink Agenda Desktop (`v2.0.0` estável em 26/06/2026)
   - Minerador 4.0 (`v1.2.3` Ouro 4.0)
   - Reino OIDC (`v2.0.0-RC1`)
   - Circuito Ferradura (Ativo)
@@ -196,9 +196,28 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
   - **CaraCore CSO Frotas (já no ar):** freeze Momento 1 em `08/11/2026` (`caracore-cso-quarkus/docs/plano-lancamento-2026-11-08.md`); FRO completo e Momento 2 **não** cabem neste dia
   - **CaraCore Hub (GA Instalador Windows):** `06/04/2027`
   - **RU Soberano (Simulador + Sala Retro):** `18/06/2027`
-  - **Helianto Condominium (SaaS Condominial):** `30/12/2027`
+  - **Ink Agenda PWA:** `26/06/2027` — mesmo backend da v2; Windows/Mac/Linux/Android/tablet no browser; **sem** DMG/DEB nativos; sprints `caracore-ink/docs/PLANO_PWA.md`
   - **CaraCore CSO Transportes (Desktop Bunker):** `08/11/2028` — **dois anos** depois do PDV v4
-  - **Evolução de Negócio PDV V3 (PIX Split PME):** `2027`
+  - **Helianto Condominium (SaaS Condominial):** `30/12/2029` — Agent em 2029 (depois do Transportes)
+  - **Evolução de Negócio PDV V3 (PIX Split PME):** `2027` (papel; Agent depois do PWA Ink)
+
+### Cota Cursor (fila única da empresa)
+
+Assinatura **Pro US$ 20/mês**. A cota **não acumula**. Teto **80%**. Sem on-demand. **Um produto pesado por ciclo.** Tab não conta.
+
+Canónico: [`caracore-site/docs/CALENDARIO_COTA_CURSOR.md`](caracore-site/docs/CALENDARIO_COTA_CURSOR.md)
+
+| Período | Dono do Agent | Marco |
+|---------|---------------|-------|
+| set/2026 | CSO COE | Frotas já no ar |
+| out–08/nov/2026 | **PDV v4** | GA 08/11/2026 |
+| dez/2026–jun/2027 | **Ink PWA** | GA 26/06/2027 |
+| 01–07/04/2027 | Hub EXE (leve) | GA Windows 06/04/2027 |
+| jul–dez/2027 | CSO FRO | núcleo frota (adiado; não out/2026) |
+| 2028 | **CSO Transportes** | GA 08/11/2028 |
+| 2029 | **Helianto** | GA 30/12/2029 |
+
+Não abrir FRO-H em outubro/novembro (é PDV). Não abrir Ink S1 código antes de dezembro. Momento 2 / PWA frota / Virtual Tracker **não** cabem neste envelope até depois de 2029. RU = Garagem sem mês de Agent. Helianto **não** abre Agent em 2027–2028.
 
 ---
 
@@ -207,6 +226,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 - Este ficheiro (`AGENTS.md`) é a **fonte mestre para IAs** (Cursor, Copilot, Claude Code, Gemini, Antigravity).
 - Cursor (sempre ativo): [`.cursor/rules/ecosystem-cara-core.mdc`](.cursor/rules/ecosystem-cara-core.mdc)
 - Visão detalhada de ecossistema: [`caracore-site/docs/ECOSYSTEM_CARA_CORE.md`](caracore-site/docs/ECOSYSTEM_CARA_CORE.md)
+- Cota Cursor (fila única da empresa): [`caracore-site/docs/CALENDARIO_COTA_CURSOR.md`](caracore-site/docs/CALENDARIO_COTA_CURSOR.md)
 - Memória de retomada de tarefas: [`caracore-site/docs/ECOSYSTEM_MEMORIA.md`](caracore-site/docs/ECOSYSTEM_MEMORIA.md)
 - Guia para novas tarefas: [`caracore-site/docs/INICIAR_NOVA_TAREFA.md`](caracore-site/docs/INICIAR_NOVA_TAREFA.md)
 - Validação matriz ↔ lojas: [`caracore-site/docs/VALIDACAO_LOJAS_MATRIZ.md`](caracore-site/docs/VALIDACAO_LOJAS_MATRIZ.md)
@@ -216,4 +236,4 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 - Retomada PDV Java (candidato **estacionado** `v4.0.0-rc2`; canal maduro `v3.2.4-free`; **frente GA 08/11/2026**): [`caracore-pdv/AGENTS.md`](caracore-pdv/AGENTS.md) · [`PLANO_LANCAMENTO_V4.md`](caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md) · [`CONTINUIDADE_DESENVOLVIMENTO.md`](caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md)
 - Retomada Minerador 4.0 (canal **v1.2.3**): [`caracore-ete/AGENTS.md`](caracore-ete/AGENTS.md) · loja `ete.caracore.com.br`
 
-**Como outras IAs retomam (08/09/2026):** ler este `AGENTS.md` (bloco **Frentes até 08/11/2026**) → `.cursor/rules/ecosystem-cara-core.mdc` → `caracore-site/docs/ECOSYSTEM_MEMORIA.md` → `INICIAR_NOVA_TAREFA.md` → memória do repo da tarefa. PDV v4: plano escrito; **código Cursor em outubro–novembro** (cota). 08/11/2026 = GA PDV v4 **e** freeze CSO M1 (Frotas já no ar); Transportes = **2028**. Loja Java = Free 3.2.4 (`admin`/`admin`, 1 operador). Rust piloto = `v0.1.4` (quatro logins na loja). v4 = RC2 isolada até T032. Não misturar pasta, launcher, senha nem banco. Minerador ETE = **v1.2.3** (Windows `.exe`+ZIP; Flask 5150; sem launcher 5 MB nem `pyarmor_runtime` em falta).
+**Como outras IAs retomam (09/09/2026):** ler este `AGENTS.md` (bloco **Frentes até 08/11/2026** + **Cota Cursor**) → `.cursor/rules/ecosystem-cara-core.mdc` → `caracore-site/docs/CALENDARIO_COTA_CURSOR.md` → `caracore-site/docs/ECOSYSTEM_MEMORIA.md` → `INICIAR_NOVA_TAREFA.md` → memória do repo da tarefa. **Um produto pesado por ciclo** (US$ 20/mês). PDV v4: código Cursor **outubro–novembro**. Ink PWA: **dez/2026–jun/2027**. CSO FRO: **jul–dez/2027** (não outubro). 08/11/2026 = GA PDV v4 **e** freeze CSO M1; Transportes = **2028**; Helianto = **30/12/2029**. Loja Java = Free 3.2.4 (`admin`/`admin`, 1 operador). Rust piloto = `v0.1.4` (quatro logins na loja). v4 = RC2 isolada até T032. Não misturar pasta, launcher, senha nem banco. Minerador ETE = **v1.2.3** (Windows `.exe`+ZIP; Flask 5150; sem launcher 5 MB nem `pyarmor_runtime` em falta).

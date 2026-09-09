@@ -131,7 +131,7 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     Oficina: caracore-helianto/
     Loja:   caracore-helianto-releases/docs/
     index  download  canal-feedback  manual/  .nojekyll
-    Observacao: vitrine; lancamento publico 30/12/2027; badge Active/Oficial (nao Seed).
+    Observacao: vitrine; lancamento publico 30/12/2029; badge Active/Oficial (nao Seed).
 
   CARACORE CSO
     Matriz: portfolio.html#caracore-cso

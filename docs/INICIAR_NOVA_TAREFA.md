@@ -4,7 +4,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [Cota Cursor](CALENDARIO_COTA_CURSOR.md) · [Riscos / decisão](RISCOS_ECOSSISTEMA.md)  
 **Fonte IAs:** `D:\onedrive\dev\AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`  
-**Atualizado:** 2026-09-09  
+**Atualizado:** 2026-09-13  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
 ---
@@ -107,7 +107,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-09-08):** canal maduro da **loja** = `v3.2.5-free` (navegador `localhost:8080/login`). Candidato `v4.0.0-rc2` **estacionado** (pré-release; pasta nova + `./data/caracore-pdv.db`; T032 aberto). **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`). **Não executar o plano com Cursor em setembro** — retomada **outubro–novembro/2026** (crédito da assinatura). Na mesma data o CSO Frotas só congela Momento 1. HEAD da oficina = Maven `4.0.0-rc2`, não o ZIP Free. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust.
+**Estado (2026-09-13):** canal maduro da **loja** = `v3.2.5-free` **publicado** (shell lateral + mapa Restrito + seed; navegador `localhost:8080/login`). Código Free = tag `v3.2.5-free` / `feature/free-shell-realista` — **não** o `master`. Candidato `v4.0.0-rc2` **estacionado** (pré-release; pasta nova + `./data/caracore-pdv.db`; T032 aberto). **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`). PERF/T032 com Cursor = **outubro–novembro/2026**. HEAD `master` = Maven `4.0.0-rc2`, não o ZIP Free. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
 
 ---
 

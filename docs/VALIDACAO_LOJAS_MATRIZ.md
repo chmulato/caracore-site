@@ -42,7 +42,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 1. CARACORE PDV DESKTOP (JAVA)
 
    (M) portfolio.html#caracore-pdv · ecosistema.html
-   (L) caracore-pdv-releases → pdv.caracore.com.br · v3.2.4-free
+   (L) caracore-pdv-releases → pdv.caracore.com.br · v3.2.5-free
    Mensagem: dois PDVs desktop; Java = canal maduro multi-plataforma
    Coexistência: #pdv-coexistencia no portfólio
    Status: OK — rever após cada release Java

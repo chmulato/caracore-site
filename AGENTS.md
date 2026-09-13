@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 09/09/2026 (Free `v3.2.4-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3` + Ink PWA **não antes de 2028**) 
+> **Data de Atualização:** 13/09/2026 (Free `v3.2.5-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3` + Ink PWA **não antes de 2028**) 
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -22,7 +22,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 
 | Chave | O que é | Status público honesto |
 |---|---|---|
-| **PDV** | Caixa no computador da loja (duas linhas desktop) | Java Free **`v3.2.4-free`** (100 vendas **por mês**; UI no navegador) · Java candidato **`v4.0.0-rc2`** (pré-release; GA **08/11/2026**) · Rust **`v0.1.4`** piloto Windows |
+| **PDV** | Caixa no computador da loja (duas linhas desktop) | Java Free **`v3.2.5-free`** (100 vendas **por mês**; UI no navegador) · Java candidato **`v4.0.0-rc2`** (pré-release; GA **08/11/2026**) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frota no navegador + Transportes no desktop (2028) | Frotas **em produção** em cso.caracore.com.br · vitrine `cso-transp.caracore.com.br` · **não é GPS** |
 | **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · oficina web 2.1 · GA do instalador Windows **06/04/2027** |
 
@@ -32,7 +32,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 
 | Frente | O que a data significa | O que não é |
 |---|---|---|
-| **PDV Java v4** | **GA público** se T032 + `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md`. **Código com Cursor: outubro–novembro/2026** (cota). | Não é o Free `v3.2.4-free`; não é copiloto PIX Split; não queimar cota em setembro neste plano |
+| **PDV Java v4** | **GA público** se T032 + `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md`. **Código com Cursor: outubro–novembro/2026** (cota). | Não é o Free `v3.2.5-free`; não é copiloto PIX Split; não queimar cota em setembro neste plano |
 | **CSO Gestão de Frotas** | App **já no ar**; **freeze Momento 1** (COE coerente). Trabalho **em andamento** (COE residual → FRO) | Não é FRO 24/24, Momento 2, GPS nem Transportes desktop |
 | **CSO Transportes** | — | GA **08/11/2028**. Não usar a data do PDV |
 
@@ -40,9 +40,9 @@ Headline pública de 08/11/2026 = **PDV v4**. CSO Frotas continua em produção 
 
 | Canal | O que está no ar | O que ainda não está |
 |---|---|---|
-| **PDV Java Free** | Tag `v3.2.4-free` · ZIP Windows/Linux/macOS · `http://localhost:8080/login` · `admin`/`admin` · UI no navegador (criar produto, vender, pagar em dinheiro) · limites em `PlanoLicencaService` (abaixo) | Não é o RC2. Sem PIX integrado (QR/gateway) e sem NF-e/NFC-e. Nomes reais dos ZIP: `caracore-pdv-v3.2.4-free-free-{windows,linux,macos}-x64.zip` |
-| **Loja PDV** | CTA primário = **Baixar Free (3.2.4)**. Premium via demonstração (`consultoria.html`). Qualidades: SQLite offline, venda no navegador, fechamento organizado. Copy Free **não** anuncia recibo. Sem depoimento inventado. | PWA da loja não é o caixa. RC2 não é o download Free |
-| **PDV Java v4** | Pré-release **estacionada** `v4.0.0-rc2` · ZIP `caracore-pdv-4.0.0-rc2-qute-portable.zip` · Qute + launcher Edge (`iniciar_pdv.bat` underscore) · Java 25 + Python 3 · SHA256 `5e5d55b6d376c7f1d6ce91a9fb9a73f6d606289af27b508adf2d9eb2cdcd955d` · pasta nova + banco `./data/caracore-pdv.db` (não reabre `%APPDATA%/caracore/data/banco.db`) · tag git oficina `v4.0.0-rc2` · CI canónico `CI (Quarkus Qute)` + smoke HTTP `pdv-apps` `:8080` · plano de GA `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md` | **T032 não aprovado** (Edge real 1280×800, suíte `mvn -pl pdv-apps -am test`, instalador Windows assinado). Não substitui o Free. Não misturar pasta nem data com a 3.2.4. **Frente de GA 08/11/2026** se T032 passar. Electron/MSI não disparam em tag |
+| **PDV Java Free** | Tag `v3.2.5-free` · Maven `3.2.5` / display `3.2.5-free` · ZIP Windows/Linux/macOS · `http://localhost:8080/login` · `admin`/`admin` · shell com menu lateral (Início/Produtos/Caixa; mapa Premium com **Restrito**) · loja de exemplo opcional · badge `Plano Free · X/100 vendas · Y/100 produtos` · limites em `PlanoLicencaService` (abaixo) | Não é o RC2. Sem PIX integrado (QR/gateway) e sem NF-e/NFC-e. Nomes reais dos ZIP: `caracore-pdv-v3.2.5-free-free-{windows,linux,macos}-x64.zip`. SHA256 Windows `e772ca5d57d1c368d80716ce2e8fce5ada488593cf65e2f00206694e79a00fc0` · Linux `85ca05555bb1da59dd0ca493a6a76f7071f7da97d4100cba92f288eec909c6ca` · macOS `dc6cb9666b07900dc01f5b54446281e841e55c854f4bdf84cd8981387b4f110d`. |
+| **Loja PDV** | CTA primário = **Baixar Free (3.2.5)**. Premium via demonstração (`consultoria.html`). Qualidades: SQLite offline, venda no navegador, fechamento organizado. Copy Free **não** anuncia recibo. Sem depoimento inventado. | PWA da loja não é o caixa. RC2 não é o download Free |
+| **PDV Java v4** | Pré-release **estacionada** `v4.0.0-rc2` · ZIP `caracore-pdv-4.0.0-rc2-qute-portable.zip` · Qute + launcher Edge (`iniciar_pdv.bat` underscore) · Java 25 + Python 3 · SHA256 `5e5d55b6d376c7f1d6ce91a9fb9a73f6d606289af27b508adf2d9eb2cdcd955d` · pasta nova + banco `./data/caracore-pdv.db` (não reabre `%APPDATA%/caracore/data/banco.db`) · tag git oficina `v4.0.0-rc2` · CI canónico `CI (Quarkus Qute)` + smoke HTTP `pdv-apps` `:8080` · plano de GA `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md` | **T032 não aprovado** (Edge real 1280×800, suíte `mvn -pl pdv-apps -am test`, instalador Windows assinado). Não substitui o Free. Não misturar pasta nem data com a 3.2.5. **Frente de GA 08/11/2026** se T032 passar. Electron/MSI não disparam em tag |
 | **PWA** | Loja: vitrine em `pdv.caracore.com.br/pwa.html` (atalho/offline da loja). Oficina: shell local do Quarkus depois do launcher | A PWA da loja **não** é o caixa. Sem Electron |
 | **PDV Rust** | Piloto `v0.1.4` Windows · **loja + artefatos no mesmo repo** `chmulato/caracore-rust-pdv-releases` (Pages = `pdv-rust.caracore.com.br`; Releases = NSIS/MSI/ZIP) | **Nunca** `/releases/latest` de `caracore-pdv-releases` (repo Java; `latest` = Free). Não substitui o Java |
 | **CSO** | Frotas no ar em `cso.caracore.com.br` · loja `cso-transp.caracore.com.br` (home = conversão Frotas) · **em andamento** (COE → FRO; 08/nov = freeze M1, não lançamento novo) | Transportes desktop **08/11/2028**. Não é GPS. Sem depoimento inventado. 08/11/**2026** não é o GA do Transportes |
@@ -60,9 +60,9 @@ Headline pública de 08/11/2026 = **PDV v4**. CSO Frotas continua em produção 
 | Recibos SMS / mês | 10 no serviço | Sem o teto Free |
 | PIX no caixa / emissão fiscal | Não | Sim (trilha Premium) |
 
-Copy pública do Free **não** anuncia recibo: o QA da 3.2.4 validou produto + venda + dinheiro no browser. Pagamentos Free: dinheiro, débito, crédito e outros — “outros” **não** é PIX integrado.
+Copy pública do Free **não** anuncia recibo: a 3.2.5 acrescenta shell com menu lateral (Início/Produtos/Caixa; itens Premium com Restrito), loja de exemplo opcional e badge de limites; o QA do balcão continua produto + venda + dinheiro no browser. Pagamentos Free: dinheiro, débito, crédito e outros — “outros” **não** é PIX integrado.
 
-SHA256 Free (`v3.2.4-free`): Windows `1b9b5062437f34c83d75eac89fd18df7993e6b15d1677dfb6350cfe975635bc8` · Linux `40cfdf0f55f9476725920bb276e090239b2e2c106747719cac5ba39a427f54ba` · macOS `2cbcdead4476e16fe4deb8cda2d0f12fa692999f6d76104abad39cf412447da8`. ZIP **sem** LEIA-ME interno; sidecar na release.
+SHA256 Free (`v3.2.5-free`): Windows `e772ca5d57d1c368d80716ce2e8fce5ada488593cf65e2f00206694e79a00fc0` · Linux `85ca05555bb1da59dd0ca493a6a76f7071f7da97d4100cba92f288eec909c6ca` · macOS `dc6cb9666b07900dc01f5b54446281e841e55c854f4bdf84cd8981387b4f110d`. ZIP **sem** LEIA-ME interno; sidecar na release.
 
 Rust piloto `v0.1.4`: teto de **100 vendas na vida do piloto**, não por mês. ZIP `CaraCore-PDV-v0.1.4-windows.zip` SHA256 `7d9cf69879eef8e12fd4972fcc3aaa5dc494df8630fa8554797bf47a98233a37`. Não misturar com o Free Java.
 
@@ -87,7 +87,7 @@ Wiki **aponta** para essas âncoras; não é a fonte das senhas. Pasta Java `%AP
 
 | Canal | Tag | Launcher | UI | Banco | Estado |
 |---|---|---|---|---|---|
-| **Free / loja** | `v3.2.4-free` (Latest) | `iniciar-pdv.bat` (hífen) | navegador `http://localhost:8080/login` | `%APPDATA%\caracore\` / `~/.caracore/` | **publicado** |
+| **Free / loja** | `v3.2.5-free` (Latest) | `iniciar-pdv.bat` (hífen) | navegador `http://localhost:8080/login` | `%APPDATA%\caracore\` / `~/.caracore/` | **publicado** |
 | **Candidato v4** | `v4.0.0-rc2` (pré-release) | `iniciar_pdv.bat` (underscore) | Edge modo app | `./data/caracore-pdv.db` | **estacionado** até T032 |
 
 A oficina `caracore-pdv` (HEAD Maven `4.0.0-rc2`) **não** é o ZIP da loja. Retomada v4: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`. Não apagar AppData da v3 “para limpar” a v4.
@@ -125,7 +125,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Blog Christian Mulato** | `caracore-personal` | — | `personal.caracore.com.br` | Editorial / 259 artigos / RSS |
 | **Wiki Institucional** | `caracore-wiki` | — | `wiki.caracore.com.br` | HTML5 / Multi-persona |
 | **Artigos Retrô** | `caracore-retro` | — | `retro.caracore.com.br` | Editorial / 117 artigos |
-| **PDV Desktop (Java)** | `caracore-pdv` | `caracore-pdv-releases` | `pdv.caracore.com.br` | Java 25 · Quarkus · SQLite · Free `v3.2.4-free` (navegador `localhost:8080/login`) · v4 RC2 Qute |
+| **PDV Desktop (Java)** | `caracore-pdv` | `caracore-pdv-releases` | `pdv.caracore.com.br` | Java 25 · Quarkus · SQLite · Free `v3.2.5-free` (navegador `localhost:8080/login`) · v4 RC2 Qute |
 | **CaraCore PDV (Rust)** | `caracore-pdv-rust` | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | `pdv-rust.caracore.com.br` + [Releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | Rust · Tauri 2 · React · SQLite |
 | **CSO Frotas (Web)** | `caracore-cso-quarkus` | `caracore-cso-releases` (loja única · clone `D:\onedrive\dev\caracore-cso-releases`) | Aplicação: `cso.caracore.com.br` · Loja: `cso-transp.caracore.com.br` | Java 21 · Quarkus · PostgreSQL · Qute/HTMX |
 | **CSO Transportes (Desktop)** | `caracore-cso-transportes` (oficina **sem** URL/copy de loja) | `caracore-cso-releases` (a **mesma** loja) | Loja: `cso-transp.caracore.com.br` · GA **08/11/2028** | Quarkus · JavaFX · Vue 3 · SQLite |
@@ -156,7 +156,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 1. **Coexistência PDV (Java × Rust):**
  - Ambos são sistemas DESKTOP offline-first independentes.
  - NUNCA afirme que o PDV Rust *"substitui"* ou é uma *"migração forçada"* do PDV Java.
- - Java: canal maduro **`v3.2.4-free`** (Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; porta 8080 + `/login` no navegador; sem PIX integrado) · candidato **`v4.0.0-rc2`** (pré-release; não é o download Free). Loja: CTA = **Baixar Free**; Premium via demonstração.
+ - Java: canal maduro **`v3.2.5-free`** (Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; porta 8080 + `/login` no navegador; sem PIX integrado) · candidato **`v4.0.0-rc2`** (pré-release; não é o download Free). Loja: CTA = **Baixar Free**; Premium via demonstração.
  - Rust piloto `v0.1.4`.
  - V3 é a estratégia de negócio PME (com PIX Split 2027), comum a ambas as tecnologias.
  - Rust: loja própria (`pdv-rust.caracore.com.br`) e entrega própria de artefatos no **mesmo** repositório `chmulato/caracore-rust-pdv-releases` (GitHub Pages + GitHub Releases). Clone local da loja: `caracore-pdv-rust-releases` (nome da pasta ≠ nome no GitHub). Tag atual **`v0.1.4`**. Neste repo Rust, `/releases` e `/latest` são só o piloto. **Não** usar `caracore-pdv-releases` para o Rust (canal Java).
@@ -183,7 +183,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 ## 6. Calendário Oficial do Roadmap (Sincronizado)
 
 * **Concluídos / Em Operação:**
- - PDV Desktop Java Free (`v3.2.4-free` · 100 vendas/mês · UI no navegador)
+ - PDV Desktop Java Free (`v3.2.5-free` · 100 vendas/mês · UI no navegador)
  - PDV Java v4 candidato (`v4.0.0-rc2` pré-release; corte T032 / GA **08/11/2026** ainda abertos)
  - Ink Agenda Desktop (`v2.0.0` estável em 26/06/2026)
   - Minerador 4.0 (`v1.2.3` Ouro 4.0)
@@ -234,7 +234,7 @@ Não abrir FRO-H em outubro/novembro (é PDV). Dezembro = **Hub**, não Ink. Ink
 - Padrão de ambiente de dev: [`AMBIENTE_CENTRALIZADO.md`](AMBIENTE_CENTRALIZADO.md)
 - Wiki do portal: [`caracore-wiki/docs/projeto-pdv.html`](caracore-wiki/docs/projeto-pdv.html) · [`projeto-cso.html`](caracore-wiki/docs/projeto-cso.html) · [`projeto-hub.html`](caracore-wiki/docs/projeto-hub.html) · manual Hub [`docs/hub/`](caracore-wiki/docs/hub/)
 - Retomada Hub (GA Windows 2027): [`caracore-hub/docs/contexto-rapido.md`](caracore-hub/docs/contexto-rapido.md)
-- Retomada PDV Java (candidato **estacionado** `v4.0.0-rc2`; canal maduro `v3.2.4-free`; **frente GA 08/11/2026**): [`caracore-pdv/AGENTS.md`](caracore-pdv/AGENTS.md) · [`PLANO_LANCAMENTO_V4.md`](caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md) · [`CONTINUIDADE_DESENVOLVIMENTO.md`](caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md)
+- Retomada PDV Java (candidato **estacionado** `v4.0.0-rc2`; canal maduro `v3.2.5-free`; **frente GA 08/11/2026**): [`caracore-pdv/AGENTS.md`](caracore-pdv/AGENTS.md) · [`PLANO_LANCAMENTO_V4.md`](caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md) · [`CONTINUIDADE_DESENVOLVIMENTO.md`](caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md)
 - Retomada Minerador 4.0 (canal **v1.2.3**): [`caracore-ete/AGENTS.md`](caracore-ete/AGENTS.md) · loja `ete.caracore.com.br`
 
-**Como outras IAs retomam (09/09/2026):** ler este `AGENTS.md` (bloco **Frentes até 08/11/2026** + **Cota Cursor**) → `.cursor/rules/ecosystem-cara-core.mdc` → `caracore-site/docs/CALENDARIO_COTA_CURSOR.md` → `caracore-site/docs/RISCOS_ECOSSISTEMA.md` (se mudar GA ou dono) → `caracore-site/docs/ECOSYSTEM_MEMORIA.md` → `INICIAR_NOVA_TAREFA.md` → memória do repo da tarefa. **Um produto pesado por ciclo** (US$ 20/mês). PDV v4: código Cursor **outubro–novembro**. Hub: **dez/2026–06/04/2027**. CSO FRO: **08/04–dez/2027**. Ink PWA: Tab; **não antes de 2028**. 08/11/2026 = GA PDV v4 **e** freeze CSO M1; Transportes = **2028**; Helianto = **30/12/2029**. Loja Java = Free 3.2.4 (`admin`/`admin`, 1 operador). Rust piloto = `v0.1.4` (quatro logins na loja). v4 = RC2 isolada até T032. Não misturar pasta, launcher, senha nem banco. Minerador ETE = **v1.2.3** (Windows `.exe`+ZIP; Flask 5150; sem launcher 5 MB nem `pyarmor_runtime` em falta).
+**Como outras IAs retomam (13/09/2026):** ler este `AGENTS.md` (bloco **Frentes até 08/11/2026** + **Cota Cursor**) → `.cursor/rules/ecosystem-cara-core.mdc` → `caracore-site/docs/CALENDARIO_COTA_CURSOR.md` → `caracore-site/docs/RISCOS_ECOSSISTEMA.md` (se mudar GA ou dono) → `caracore-site/docs/ECOSYSTEM_MEMORIA.md` → `INICIAR_NOVA_TAREFA.md` → memória do repo da tarefa. **Um produto pesado por ciclo** (US$ 20/mês). PDV v4: código Cursor **outubro–novembro**. Hub: **dez/2026–06/04/2027**. CSO FRO: **08/04–dez/2027**. Ink PWA: Tab; **não antes de 2028**. 08/11/2026 = GA PDV v4 **e** freeze CSO M1; Transportes = **2028**; Helianto = **30/12/2029**. Loja Java = Free 3.2.5 (`admin`/`admin`, 1 operador). Rust piloto = `v0.1.4` (quatro logins na loja). v4 = RC2 isolada até T032. Não misturar pasta, launcher, senha nem banco. Minerador ETE = **v1.2.3** (Windows `.exe`+ZIP; Flask 5150; sem launcher 5 MB nem `pyarmor_runtime` em falta).

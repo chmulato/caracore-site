@@ -15,7 +15,7 @@ VISÃO GERAL
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
   caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (117 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
-  caracore-pdv                  Oficina — PDV Desktop Java / v4            v3.2.4-free maduro; RC2 Qute; T032/GA 08/11/2026; planos em PlanoLicencaService
+  caracore-pdv                  Oficina — PDV Desktop Java / v4            v3.2.5-free maduro; RC2 Qute; T032/GA 08/11/2026; planos em PlanoLicencaService
   caracore-pdv-releases         Loja — PDV Desktop Java                     pdv.caracore.com.br · CTA Baixar Free · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
   caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases
@@ -56,7 +56,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
 
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
-  PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.4-free (maduro) · RC2 Qute pré-release · Free 100 vendas/mês
+  PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.5-free (maduro) · RC2 Qute pré-release · Free 100 vendas/mês
   CaraCore PDV             caracore-pdv-rust        caracore-rust-pdv-releases    v0.1.4 (piloto Windows; loja + NSIS/MSI/ZIP no mesmo repo)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.

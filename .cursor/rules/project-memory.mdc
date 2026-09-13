@@ -1,5 +1,5 @@
-﻿---
-description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.4-free · RC2 Qute estacionada · Free 100/mês · PDV Rust v0.1.4
+---
+description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.5-free · RC2 Qute estacionada · Free 100/mês · PDV Rust v0.1.4
 alwaysApply: true
 ---
 
@@ -27,7 +27,7 @@ alwaysApply: true
 | **Wiki** | caracore-wiki | Trilhas e hub PDV | https://wiki.caracore.com.br/ |
 | **Retrô** | caracore-retro | Artigos LinkedIn / editorial | https://retro.caracore.com.br/ |
 | **Sala** | caracore-site `sala/` + caracore-mkt | Campanhas, manuais rede | https://tools.caracore.com.br/sala/ |
-| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (HEAD `4.0.0-rc2`); loja publica Free `v3.2.4-free` no navegador | privado |
+| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (HEAD `4.0.0-rc2`); loja publica Free `v3.2.5-free` no navegador | privado |
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
 | **PDV Rust — loja + artefatos** | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | Pages + Releases no **mesmo** repo | https://pdv-rust.caracore.com.br/ · https://github.com/chmulato/caracore-rust-pdv-releases/releases |
@@ -65,7 +65,7 @@ alwaysApply: true
 ## PDV Desktop Java (oferta madura)
 
 - **Matriz:** `portfolio.html#caracore-pdv` · `#pdv-coexistencia` · `#decisoes-engenharia`
-- **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.4-free**. CTA = **Baixar Free**; Premium via demonstração.
+- **Loja:** https://pdv.caracore.com.br/ — canal **v3.2.5-free**. CTA = **Baixar Free**; Premium via demonstração.
 - **Planos:** Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy **não** anuncia recibo. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`.
 - **Quem entra (Free):** `admin` / `admin` · troca obrigatória · 1 operador. `download.html#perfis`. Não misturar com logins Rust.
 - **Oficina:** caracore-pdv
@@ -76,7 +76,7 @@ alwaysApply: true
 - **Oficina:** `caracore-pdv`; pré-release **v4.0.0-rc2** (Qute + launcher Edge). T032 não aprovado. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
 - **Loja:** `https://pdv.caracore.com.br/roadmap-2026.html` — RC2 **não** substitui o Free.
-- **Regra:** manter `v3.2.4-free` como canal atual até o v4 ser aprovado e publicado. Não misturar pasta nem data.
+- **Regra:** manter `v3.2.5-free` como canal atual até o v4 ser aprovado e publicado. Não misturar pasta nem data.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.4)
 
@@ -89,7 +89,7 @@ alwaysApply: true
 - **Wiki institucional:** caracore-wiki — `projeto-pdv.html`, `projeto-pdv-rust.html` (alinhar versão ao publicar). Logins do piloto: loja `primeiros-passos.html#perfis` (wiki só aponta).
 - **Release v0.1.4:** Windows (MSI/NSIS/ZIP pt-BR); ZIP SHA256 `7d9cf69879eef8e12fd4972fcc3aaa5dc494df8630fa8554797bf47a98233a37`; edição gratuita até 100 vendas; transparência em pdv-rust
 - **Mensagem:** dois **PDVs Desktop** do mesmo CaraCore PDV — **nenhuma substitui a outra**
-  - **Java:** canal **v3.2.4-free** · Win/Linux/macOS maduro · UI no navegador
+  - **Java:** canal **v3.2.5-free** · Win/Linux/macOS maduro · UI no navegador
   - **Rust:** faixa **v0.1.x** · piloto assistido
   - **V3 negócio (PME, PIX Split 2027):** comum às duas linhas — ≠ canal Java v3.2.x ≠ release Rust v0.1.x
   - **Evitar:** "PDV v3" sozinho, "substitui", "reescrito", "nova geração"

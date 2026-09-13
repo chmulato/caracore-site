@@ -46,7 +46,7 @@ Documentação operacional da página pública [ecosistema.html](../ecosistema.h
 
 | Linha | Release | Loja |
 |-------|---------|------|
-| Java · Quarkus | **v3.2.4-free** | pdv.caracore.com.br |
+| Java · Quarkus | **v3.2.5-free** | pdv.caracore.com.br |
 | Rust + Tauri 2 | **v0.1.4** | pdv-rust + GitHub Releases |
 
 - Coexistência: link para [portfolio.html#pdv-coexistencia](../portfolio.html#pdv-coexistencia)

@@ -264,7 +264,7 @@
   <div class="container">
     <div class="portfolio-cross-block portfolio-pdv-coexistence">
       <h2><i class="bi bi-diagram-2"></i> Como as duas linhas PDV convivem</h2>
-      <p class="lead">Dois caixas desktop da Cara Core. Cada um tem a sua loja. Nenhuma linha substitui a outra.</p>
+      <p class="lead">Duas linhas de PDV da Cara Core. Cada uma tem a sua loja. Nenhuma substitui a outra.</p>
 
       <div class="pdv-compare-grid">
         <div class="pdv-compare-card java">
@@ -302,10 +302,10 @@
   <div class="project-card">
     <div class="project-header pdv">
       <h2 class="mb-3">
-        <i class="bi bi-cash"></i> CaraCore PDV Desktop
+        <i class="bi bi-cash"></i> CaraCore PDV — linha madura / Free
       </h2>
-      <p class="lead mb-2">Linha madura · Java 25 · Quarkus · SQLite · navegador em localhost:8080</p>
-      <p class="lead mb-3">PDV soberano para pequenos e médios negócios. Mantém a operação de caixa em pé, acompanha a transição tributária e protege a rotina da loja mesmo quando a internet falha. Oferta Free e Premium para crescer sem ruptura.</p>
+      <p class="lead mb-2">Linha madura · Java 25 · Quarkus · SQLite · caixa no navegador em localhost:8080</p>
+      <p class="lead mb-3">PDV soberano para pequenos e médios negócios. Mantém a operação de caixa em pé mesmo quando a internet falha. Plano Free para começar; Premium (PIX integrado e fiscal quando aplicável) para crescer sem trocar de base.</p>
       <div class="alert alert-success mb-3 py-2 px-3" role="alert">
         <i class="bi bi-megaphone-fill"></i> <strong>Canal maduro</strong> — Windows · Linux · macOS · release <strong>v3.2.6-free</strong>.</div>
       <div class="alert alert-info mb-3 py-2 px-3" role="note">
@@ -315,7 +315,7 @@
         <span class="tech-badge">Java 25</span>
         <span class="tech-badge">Quarkus</span>
         <span class="tech-badge">SQLite</span>
-        <span class="tech-badge">Windows Desktop</span>
+        <span class="tech-badge">Windows · Linux · macOS</span>
         <span class="tech-badge">Bootstrap 5</span>
         <span class="tech-badge">HTMX</span>
         <span class="tech-badge">ApexCharts</span>
@@ -331,15 +331,15 @@
               <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
             </h3>
             <p class="mb-2">
-              O <strong>CaraCore PDV Desktop</strong> mantém caixa, fiscal e rotina da loja com previsibilidade — vender, fechar e acompanhar impostos sem improviso.
+              O <strong>CaraCore PDV — linha madura</strong> mantém caixa e rotina da loja com previsibilidade — vender, fechar e acompanhar o movimento sem improviso.
             </p>
             <p class="mb-2"><strong>Benefícios de negócio:</strong></p>
             <ul class="feature-list mb-0">
               <li>Vendas e fechamento mesmo com internet instável</li>
-              <li>Menos risco na transição tributária (2026–2033)</li>
+              <li>Free: até 100 vendas/mês, 100 produtos, 1 operador — caixa real sem custo</li>
               <li>Caixa, recebimento e indicadores em fluxo único</li>
-              <li>Backup e continuidade com dados locais</li>
-              <li>Free para começar; Premium para crescer sem trocar base</li>
+              <li>Backup e continuidade com dados locais (%APPDATA%\caracore\)</li>
+              <li>Free para começar; Premium (PIX integrado, fiscal quando aplicável, suporte prioritário) para crescer sem trocar de base</li>
             </ul>
           </div>
           <div class="alert alert-info mt-3 mb-0" role="alert">
@@ -354,20 +354,22 @@
             <p class="mb-2">Sistema de caixa para lojas — o ZIP Free sobe com <code>iniciar-pdv.bat</code> (Windows) ou <code>iniciar-pdv.sh</code> (Linux/macOS); o caixa abre no navegador em <code>http://localhost:8080/login</code>, banco SQLite em um arquivo.</p>
 
             <div class="block-leigos-sub">
-              <h4>O que faz automaticamente</h4>
+              <h4>O que o Free entrega no caixa</h4>
               <ul class="feature-list mb-0">
-                <li>Calcula impostos e gera QR Code Pix</li>
-                <li>Relatórios de entrada, saída e impostos</li>
-                <li>Lê código de barras pela câmera</li>
+                <li>Cadastro de produtos e busca por nome ou código</li>
+                <li>Abertura de venda, adição de itens e finalização com total</li>
+                <li>Formas de pagamento: dinheiro, débito, crédito e outros</li>
+                <li>Relatórios de movimento (entradas e saídas) — sem fiscal nem NF-e</li>
               </ul>
             </div>
 
             <div class="block-leigos-sub">
               <h4>Como ajuda o operador</h4>
               <ul class="feature-list mb-0">
-                <li>Funciona em PC, tablet e celular</li>
-                <li>Continua vendendo offline</li>
-                <li>Planos Free (100 vendas/mês) e Premium (SMS, contador, suporte remoto)</li>
+                <li>Sobe com <code>iniciar-pdv.bat</code> (Windows) ou <code>.sh</code> (Linux/macOS); caixa abre no PC da loja em <code>localhost:8080/login</code></li>
+                <li>Continua vendendo mesmo offline — banco SQLite no próprio computador</li>
+                <li>Free: até 100 vendas/mês, 100 produtos, 1 operador — sem PIX gateway nem NF-e</li>
+                <li>Premium: PIX integrado, fiscal quando aplicável e suporte prioritário — via demonstração na loja</li>
               </ul>
             </div>
 
@@ -376,7 +378,7 @@
               <ul class="feature-list mb-0">
                 <li>Backup em pendrive ou sync quando decidir</li>
                 <li>Painel de segurança e regras da loja</li>
-                <li>Impostos atualizados quando a lei mudar</li>
+                <li>Dados locais em <code>%APPDATA%\caracore\</code> (Windows) — soberania do lojista</li>
               </ul>
             </div>
           </div>

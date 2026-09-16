@@ -124,7 +124,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Matriz Institucional** | `caracore-site` | — | `www.caracore.com.br` | HTML5 / Bootstrap / B2B |
 | **Blog Christian Mulato** | `caracore-personal` | — | `personal.caracore.com.br` | Editorial / 259 artigos / RSS |
 | **Wiki Institucional** | `caracore-wiki` | — | `wiki.caracore.com.br` | HTML5 / Multi-persona |
-| **Artigos Retrô** | `caracore-retro` | — | `retro.caracore.com.br` | Editorial / 117 artigos |
+| **Artigos Retrô** | `caracore-retro` | — | `retro.caracore.com.br` | Editorial / 138 artigos |
 | **PDV Desktop (Java)** | `caracore-pdv` | `caracore-pdv-releases` | `pdv.caracore.com.br` | Java 25 · Quarkus · SQLite · Free `v3.2.6-free` (navegador `localhost:8080/login`) · v4 RC2 Qute |
 | **CaraCore PDV (Rust)** | `caracore-pdv-rust` | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | `pdv-rust.caracore.com.br` + [Releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | Rust · Tauri 2 · React · SQLite |
 | **CSO Frotas (Web)** | `caracore-cso-quarkus` | `caracore-cso-releases` (loja única · clone `D:\onedrive\dev\caracore-cso-releases`) | Aplicação: `cso.caracore.com.br` · Loja: `cso-transp.caracore.com.br` | Java 21 · Quarkus · PostgreSQL · Qute/HTMX |

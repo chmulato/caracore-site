@@ -2,7 +2,7 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
-**Atualizado:** 2026-09-13  
+**Atualizado:** 2026-09-19  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
 **Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace e **cópia git** `caracore-site/AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
@@ -30,7 +30,9 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 3c. **CSO retomada:** loja `D:\onedrive\dev\caracore-cso-releases` · app `caracore-cso-quarkus` · oficina Transportes **sem** copy de loja · FRO código **jul/2027** (não outubro)
 4. **PDV Java:** oficina `caracore-pdv/AGENTS.md` · plano de GA `docs/arquitetura/PLANO_LANCAMENTO_V4.md` (**execução Cursor: outubro–novembro/2026**, cota; setembro = plano escrito) · loja CTA = **Baixar Free (3.2.6)**. Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e/NFC-e; copy **não** anuncia recibo. Premium R$ 79,90/mês (PIX integrado, fiscal). Canal público = `v3.2.6-free` (`localhost:8080/login`, `admin`/`admin`). RC2 Qute é pré-release. T032 não aprovado. Rust piloto = 100 vendas na vida. **Não** substituir o PDV Rust.
 5. **PDV Rust oficina:** `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` · `caracore-pdv-continuacao.mdc`
-6. **Hub oficina (GA Windows 06/04/2027):** `caracore-hub/docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` · web 2.1 pronta; trabalho aberto = instalador SQLite. Manual: wiki.caracore.com.br/hub/
+6. **Hub oficina (GA Windows 06/04/2027):** `caracore-hub/docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` · backend Java 25 validado com JaCoCo `0.8.14`, Mockito `5.17.0`, Byte Buddy `1.18.14`; `core` 606 testes, `persistence` 541, `api` verde, `web` 274, WAR gerado. Trabalho aberto = instalador SQLite. Manual: wiki.caracore.com.br/hub/
+6a. **Seed oficina:** `caracore-seed/docs/memoria-projeto.txt` · Java 25 validado; JaCoCo `0.8.14`, Mockito `5.17.0`, Byte Buddy `1.18.14`; `CustomerLifecycleTest` verde e bloqueio anterior de bytecode major 69 resolvido. Seed continua brinco e a loja informa honestamente que não há download público.
+6b. **Retrô:** `caracore-retro/.agents/AGENTS.md` · 139 artigos HTML confirmados. A validação editorial permanece amarela/vermelha por BOM/byte extra antes do `DOCTYPE` em muitos artigos e avisos de SEO em `docs/articles.html`; não declarar 100% saudável antes da normalização controlada.
 7. **PDV Rust (loja + artefatos):** um só repo `chmulato/caracore-rust-pdv-releases` — Pages = `pdv-rust.caracore.com.br` · Releases = https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag v0.1.4). Clone local: `caracore-pdv-rust-releases`. **Nunca** `caracore-pdv-releases` (Java).
 8. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia` · tom **FinOps/híbrido** (não anti-cloud na vitrine)
 9. **Suporte PME:** [suporte-local.html](../suporte-local.html) — fora do nav B2B; horários noite/sábado só lá
@@ -140,9 +142,10 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | caracore-site | `docs/ECOSYSTEM_*.md` | Matriz institucional |
 | caracore-wiki | `docs/ecosistema.html` | Wiki institucional |
 | caracore-cso-quarkus | `AGENTS.md` / `docs/memoria-agente-p0.md` | Frotas Web em produção |
-| caracore-retro | Sim | 117 artigos · capa inline `max-width:300px` float-right |
+| caracore-retro | `.agents/AGENTS.md` | 139 artigos · capa inline `max-width:300px` float-right · validação HTML pendente por encoding legado |
 | caracore-pdv-rust | `docs/contexto-rapido.md` | Oficina PDV Rust |
-| caracore-hub | `docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` | Web 2.1 pronta; GA Windows 06/04/2027 |
+| caracore-hub | `docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` | Web 2.1 validada em Java 25; GA Windows 06/04/2027 |
+| caracore-seed | `docs/memoria-projeto.txt` | Testes unitários estabilizados em Java 25; brinco sem download público |
 | caracore-hub-releases | `.cursor/rules/project-memory.mdc` | Loja hub.caracore.com.br |
 | caracore-pdv-rust-releases | Sim | Loja pdv-rust |
 | caracore-pdv | `AGENTS.md` · `docs/arquitetura/PLANO_LANCAMENTO_V4.md` · `CONTINUIDADE_DESENVOLVIMENTO.md` · `.cursor/rules/project-memory.mdc` | `v3.2.6-free`; RC2 Qute; **frente GA 08/11/2026**; T032 aberto; planos em `PlanoLicencaService` |
@@ -159,6 +162,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-09-19 | **Memórias sincronizadas:** Hub backend validado em Java 25 (JaCoCo `0.8.14`, Mockito `5.17.0`, Byte Buddy `1.18.14`; `core` 606, `persistence` 541, `web` 274 e `api` verde; WAR gerado); Seed com bloqueio Java 25/Byte Buddy resolvido e teste crítico verde; Retrô atualizado para 139 artigos, com pendência explícita de BOM/byte extra antes do `DOCTYPE` e SEO de `docs/articles.html`. Referências: memórias locais de `caracore-hub`, `caracore-seed` e `caracore-retro`. |
 | 2026-09-13 | PDV Java Free **v3.2.6-free** no canal da loja (substitui v3.2.5-free): shell PDV em coluna + caixa registradora; **Restrito** empilhado no mapa Premium; login honesto pós-troca de senha; mesmos limites e login inicial `admin`/`admin`; launcher `iniciar-pdv.bat`; banco `%APPDATA%\caracore\`; browser `localhost:8080/login`; sem PIX gateway / NF-e. ZIP `caracore-pdv-v3.2.6-free-free-{windows,linux,macos}-x64.zip`. SHA256 Windows `4b15a12dbe9b525bdb31be59aff5c226f32cbb40f766eca752744996fda634d9` · Linux `028e5987d35650fd0b2f5f4b2146033e92707b413c0cc8242d05df27e1a26e72` · macOS `7e617aebe895d87ffe0446643751886263f29cbab7422a9e2ac3bcdd0aa5deff`. CTA **Baixar Free (3.2.6)**. Código Free = tag `v3.2.6-free` / `feature/free-3.2.6-pdv-ux`. RC2 v4 continua estacionada; Rust `v0.1.4` inalterado. Sync AGENTS.md + loja + wiki + regras Cursor. Handoff IAs: `CONTINUIDADE_DESENVOLVIMENTO.md` · patch Free ≠ `master` Qute. |
 | 2026-09-13 | PDV Java Free **v3.2.5-free** no canal da loja (substitui v3.2.4-free): shell com menu lateral (Início/Produtos/Caixa operáveis; mapa Premium com badges Restrito); opcional «Carregar loja de exemplo» / «Remover exemplos»; empty states; badge `Plano Free · X/100 vendas neste mês · Y/100 produtos`; mesmos limites e login `admin`/`admin`; launcher `iniciar-pdv.bat`; banco `%APPDATA%\caracore\`; browser `localhost:8080/login`; sem PIX gateway / NF-e. ZIP `caracore-pdv-v3.2.5-free-free-{windows,linux,macos}-x64.zip`. SHA256 Windows `e772ca5d57d1c368d80716ce2e8fce5ada488593cf65e2f00206694e79a00fc0` · Linux `85ca05555bb1da59dd0ca493a6a76f7071f7da97d4100cba92f288eec909c6ca` · macOS `dc6cb9666b07900dc01f5b54446281e841e55c854f4bdf84cd8981387b4f110d`. RC2 v4 continua estacionada; Rust `v0.1.4` inalterado. Sync AGENTS.md + loja + wiki + regras Cursor. Handoff IAs: `CONTINUIDADE_DESENVOLVIMENTO.md` (Status 2026-09-13) · patch Free ≠ `master` Qute.
 | 2026-09-09 | **Fila núcleo-primeiro:** dez/2026–06/04/2027 = **Hub** (Agent da janela inteira). FRO = **08/04–dez/2027**. Ink PWA sai das datas que não escorregam: Tab; **sem GA com Agent até folga do núcleo (não antes de 2028)**. 26/06/2027 deixa de ser GA. Copy pública honesta na matriz, loja e wiki. |

@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 13/09/2026 (Free `v3.2.6-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3` + Ink PWA **não antes de 2028**) 
+> **Data de Atualização:** 22/09/2026 (Free `v3.2.6-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3` + Hub SQLite validado + Ink PWA **não antes de 2028**) 
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -169,6 +169,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 3. **CaraCore Hub:**
    - Gestão de **encomendas** para centros de distribuição (Mercado Livre, Shopee, Temu). **Não** é orquestrador interno da Cara Core nem Python/Flask (isso é Área 51).
    - Oficina web **2.1** (Jakarta EE 10 · WAR · Tomcat · JSP · PostgreSQL/Redis). O calendário oficial de GA é o **instalador Windows com SQLite** em **06/04/2027**.
+   - Status oficina (22/09/2026): Flyway 100% validado no SQLite; casts PostgreSQL eliminados em `VolumeDAO`/`IntegracaoEventoDAO`; RBAC canônico (`ADMIN`/`SUPERVISOR`/`OPERADOR`); Spring expurgado do Electron. Trabalho aberto: instalador Windows/Electron.
    - Tia Sócia / Programa Tias Sócias é pitch ilustrativo, não o nome do produto.
    - Retomada para IAs na oficina: `caracore-hub/docs/contexto-rapido.md` · Cursor `.cursor/rules/project-memory.mdc`. Manual de uso público: `wiki.caracore.com.br/hub/`.
 4. **Wiki única no portal:**

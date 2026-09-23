@@ -1,6 +1,6 @@
 # Ecossistema Cara Core — mapa de repositórios
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 05/09/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 22/09/2026).
 
 **Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `AGENTS.md` na raiz do workspace.
 
@@ -19,8 +19,8 @@ VISÃO GERAL
   caracore-pdv-releases         Loja — PDV Desktop Java                     pdv.caracore.com.br · CTA Baixar Free (3.2.6) · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
   caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases
-  caracore-hub                  Oficina — CaraCore Hub                      Encomendas; WAR/Tomcat 2.1 pronta; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
-  caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br
+  caracore-hub                  Oficina — CaraCore Hub                      Encomendas; web 2.1 concluída na oficina; WAR/Tomcat validado; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
+  caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br; sem EXE ou release WAR pública neste momento
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
   caracore-seed                 Código do Cara Core Seed                    Ferramenta interna; aplicação não disponível ao público

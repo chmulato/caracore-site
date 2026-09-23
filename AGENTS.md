@@ -24,7 +24,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 |---|---|---|
 | **PDV** | Caixa no computador da loja (duas linhas desktop) | Java Free **`v3.2.6-free`** (100 vendas **por mês**; UI no navegador) · Java candidato **`v4.0.0-rc2`** (pré-release; GA **08/11/2026**) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frota no navegador + Transportes no desktop (2028) | Frotas **em produção** em cso.caracore.com.br · vitrine `cso-transp.caracore.com.br` · **não é GPS** |
-| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · oficina web 2.1 · GA do instalador Windows **06/04/2027** |
+| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída na oficina · sem release WAR pública · GA do instalador Windows **06/04/2027** |
 
 ### Snapshot 08/09/2026 (ler isto primeiro)
 
@@ -46,7 +46,7 @@ Headline pública de 08/11/2026 = **PDV v4**. CSO Frotas continua em produção 
 | **PWA** | Loja: vitrine em `pdv.caracore.com.br/pwa.html` (atalho/offline da loja). Oficina: shell local do Quarkus depois do launcher | A PWA da loja **não** é o caixa. Sem Electron |
 | **PDV Rust** | Piloto `v0.1.4` Windows · **loja + artefatos no mesmo repo** `chmulato/caracore-rust-pdv-releases` (Pages = `pdv-rust.caracore.com.br`; Releases = NSIS/MSI/ZIP) | **Nunca** `/releases/latest` de `caracore-pdv-releases` (repo Java; `latest` = Free). Não substitui o Java |
 | **CSO** | Frotas no ar em `cso.caracore.com.br` · loja `cso-transp.caracore.com.br` (home = conversão Frotas) · **em andamento** (COE → FRO; 08/nov = freeze M1, não lançamento novo) | Transportes desktop **08/11/2028**. Não é GPS. Sem depoimento inventado. 08/11/**2026** não é o GA do Transportes |
-| **Hub** | Vitrine + oficina web 2.1 (Jakarta EE / Tomcat / PostgreSQL) | Instalador Windows SQLite **06/04/2027**. Não é Flask nem “central” da Cara Core |
+| **Hub** | Vitrine + oficina web 2.1 concluída (Jakarta EE / Tomcat / PostgreSQL) | Instalador Windows Electron + Tomcat embutido + SQLite WAL **06/04/2027**. Sem release WAR pública. Não é Flask nem “central” da Cara Core |
 
 ### Planos Java Free / Premium (fonte: `PlanoLicencaService`)
 
@@ -168,7 +168,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
    - CSO de gestão **não** é rastreador GPS. Virtual Tracker™ é produto futuro, separado, 2028. Na loja: sem depoimento inventado e sem % de economia.
 3. **CaraCore Hub:**
    - Gestão de **encomendas** para centros de distribuição (Mercado Livre, Shopee, Temu). **Não** é orquestrador interno da Cara Core nem Python/Flask (isso é Área 51).
-   - Oficina web **2.1** (Jakarta EE 10 · WAR · Tomcat · JSP · PostgreSQL/Redis). O calendário oficial de GA é o **instalador Windows com SQLite** em **06/04/2027**.
+   - Oficina web **2.1 concluída** (Jakarta EE 10 · WAR · Tomcat · JSP · PostgreSQL/Redis). O WAR é artefato de oficina, não release pública. O calendário oficial de GA é o **instalador Windows com Electron, Tomcat embutido e SQLite WAL** em **06/04/2027**.
    - Status oficina (22/09/2026): Flyway 100% validado no SQLite; casts PostgreSQL eliminados em `VolumeDAO`/`IntegracaoEventoDAO`; RBAC canônico (`ADMIN`/`SUPERVISOR`/`OPERADOR`); Spring expurgado do Electron. Trabalho aberto: instalador Windows/Electron.
    - Tia Sócia / Programa Tias Sócias é pitch ilustrativo, não o nome do produto.
    - Retomada para IAs na oficina: `caracore-hub/docs/contexto-rapido.md` · Cursor `.cursor/rules/project-memory.mdc`. Manual de uso público: `wiki.caracore.com.br/hub/`.

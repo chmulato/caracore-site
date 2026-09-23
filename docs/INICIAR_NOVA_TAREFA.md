@@ -47,7 +47,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | URL | https://hub.caracore.com.br/ |
 | O que é | Encomendas (ML, Shopee, Temu) — não Flask, não “central telefônica” |
-| GA | Instalador Windows 06/04/2027 (SQLite). Oficina web 2.1 ainda PostgreSQL |
+| GA | Instalador Windows 06/04/2027 (Electron + Tomcat embutido + SQLite WAL). Oficina web 2.1 concluída; WAR não é release pública |
 | Oficina | `caracore-hub` |
 | Matriz | `#caracore-hub` |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-hub.html |
@@ -66,7 +66,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Desktop | `electron/README.md` |
 | Ecossistema | `../caracore-site/docs/ECOSYSTEM_MEMORIA.md` |
 
-**Foco até 06/04/2027:** instalador EXE + SQLite local. Não reescrever as fases 1–5 da WAR. Não commitar salvo pedido explícito.
+**Foco até 06/04/2027:** empacotamento do instalador EXE + Tomcat embutido + SQLite local em WAL. Não reescrever as fases 1–5 da WAR nem publicar o WAR como release pública. Não commitar salvo pedido explícito.
 
 **Wiki:** manual operacional em `caracore-wiki/docs/hub/` (público).
 

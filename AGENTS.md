@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 22/09/2026 (Free `v3.2.6-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3` + Hub SQLite validado + Ink PWA **não antes de 2028**) 
+> **Data de Atualização:** 23/09/2026 (Free `v3.2.6-free` + RC2 + Rust `v0.1.4` + Minerador `v1.2.3` + Hub SQLite validado + análise funcional Hub + instalador em andamento + Ink PWA **não antes de 2028**) 
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -25,6 +25,14 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 | **PDV** | Caixa no computador da loja (duas linhas desktop) | Java Free **`v3.2.6-free`** (100 vendas **por mês**; UI no navegador) · Java candidato **`v4.0.0-rc2`** (pré-release; GA **08/11/2026**) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frota no navegador + Transportes no desktop (2028) | Frotas **em produção** em cso.caracore.com.br · vitrine `cso-transp.caracore.com.br` · **não é GPS** |
 | **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída na oficina · sem release WAR pública · GA do instalador Windows **06/04/2027** |
+
+### Registro Hub — 23/09/2026
+
+- **Coerência funcional:** o escopo de negócio está coerente com o código para Mercado Livre, Shopee e Temu. Os três canais possuem webhook, worker e conector; RBAC canônico = `ADMIN`, `SUPERVISOR`, `OPERADOR`; SQLite/WAL e as 11 migrações foram validados.
+- **Ponto de atenção:** `AMAZON` e `B2W` ainda aparecem no enum de domínio, mas não têm webhook, worker ou conector. Não são promessa pública do Hub. Até decisão posterior, tratar como roadmap e não aceitar esses canais na UI/API como se estivessem operacionais.
+- **Instalador em andamento:** o envelope Electron + Tomcat local + JRE Java 25 + WAR + banco `%APPDATA%\\CaraCore Hub\\data\\hub.db` já está integrado. Falta gerar o EXE, executar smoke test de instalação/abertura/reinício/persistência e calcular SHA256 antes de qualquer publicação.
+- **Status honesto:** web 2.1 pronta na oficina; instalador Windows ainda não é release/GA. Não anunciar EXE, Amazon/B2W ou integração pronta além de ML/Shopee/Temu.
+- **Fontes de retomada:** `caracore-hub/docs/contexto-rapido.md`, `caracore-hub/electron/README.md` e `caracore-hub/scripts/build_hub_exe.ps1`.
 
 ### Snapshot 08/09/2026 (ler isto primeiro)
 

@@ -1,6 +1,6 @@
 # Ecossistema Cara Core — mapa de repositórios
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 22/09/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 30/09/2026).
 
 **Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `AGENTS.md` na raiz do workspace.
 
@@ -37,7 +37,7 @@ VISÃO GERAL
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
   caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
   caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
-  caracore-cso-quarkus          Oficina — CSO Gestão de Frotas (Web)        Quarkus; produção em cso.caracore.com.br
+  caracore-cso-quarkus          Oficina — CSO Gestão de Frotas (Web)        Produção `e193d6d` · COE-B/E publicados · freeze M1 até 08/11/2026 · FRO 08/abr–dez/2027
   caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; GA 08/11/2028; sem URL/copy de loja
   caracore-cso-releases         Loja única CSO (Frotas + Transportes)       Clone: D:\onedrive\dev\caracore-cso-releases · Pages: cso-transp.caracore.com.br (app: cso.caracore.com.br)
   caracore-mkt                  Oficina do Cara Core MKT / Sala             Scripts e portal; oferta gratuita
@@ -82,7 +82,7 @@ Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
   CaraCore PDV: caracore-pdv-rust + caracore-rust-pdv-releases (clone local caracore-pdv-rust-releases). Loja: **pdv-rust.caracore.com.br**. Artefatos: github.com/chmulato/caracore-rust-pdv-releases/releases (mesmo repo). Sem delivery matriz.
   Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br (pré-lançamento; GA instalador 06/04/2027). Não é Flask. Retomada: caracore-hub/docs/contexto-rapido.md. Manual: wiki.caracore.com.br/hub/
-  CaraCore CSO: caracore-cso-quarkus (Frotas, produção; landing JSON-LD/cache/WebP) + caracore-cso-transportes (Desktop 08/11/2028, oficina sem loja). Loja única (home de conversão): D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br. App: cso.caracore.com.br. Um produto em 08/11/2028. CSO ≠ GPS.
+  CaraCore CSO: caracore-cso-quarkus (Frotas, produção `e193d6d`; COE-B/E: termos 2.1, convites por chave, categorias/filtros, regras de veículo inativo e KM) + caracore-cso-transportes (Desktop 08/11/2028, oficina sem loja). Freeze M1: 08/11/2026; smoke `-Full`/gates finais ainda pendentes. FRO: 08/abr–dez/2027. Loja única (home de conversão): D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br. App: cso.caracore.com.br. Um produto em 08/11/2028. CSO ≠ GPS; versão Flyway efetiva em produção não confirmada diretamente.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.0 · PWA não antes de 2028 (sem DMG/DEB nativos)

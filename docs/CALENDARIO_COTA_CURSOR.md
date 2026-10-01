@@ -43,7 +43,7 @@ Headline de 08/11/**2026** = PDV v4. CSO Frotas nesse dia = freeze Momento 1 (j�
 
 | Período | Dono | O que entrega | Não abrir |
 |---------|------|---------------|-----------|
-| set/2026 | **CSO COE** | Residual Momento 1 (COE-5.3 só se Spending ≤ 60%) | PDV v4 Agent; Ink S1; Hub H |
+| set/2026 | **CSO COE** | COE-B/E publicados (`e193d6d`); sem novo escopo COE em fila | PDV v4 Agent; Ink S1; Hub H |
 | out/2026 → 08/11/2026 | **PDV v4** | Janela A, T032, corte GA | FRO-H; Ink extract; Hub H; CSO e PDV no mesmo dia |
 | 09/11 → 04/12/2026 | **PDV corte + copy CSO M1** | Freeze M1 (L) | FRO Flyway; Ink S1 |
 | dez/2026 → 06/04/2027 | **Hub** | SQLite + EXE + SHA na loja · **GA 06/04** | Ink S1–S8; FRO-H; PIX Split Agent |
@@ -60,7 +60,7 @@ Tab no Hub (SQLite, scripts) pode andar em set–nov **sem** Agent, sem competir
 
 | Item | Antes (oficina isolada) | Agora |
 |------|-------------------------|--------|
-| CSO FRO 24/24 | out/2026 → mar/2027; depois jul–dez/2027 | **08/04–dez/2027** (depois do Hub) |
+| CSO FRO 24/24 | Propostas anteriores: out/2026 → mar/2027 ou jul–dez/2027 (superadas) | **08/04–dez/2027** (janela vigente, depois do Hub) |
 | Ink PWA Agent | dez/2026–jun/2027 | **Tab**; GA com Agent **não antes de 2028** |
 | CSO Momento 2 / PWA frota | 2027 | **depois de dez/2028** (2028 = Transportes) |
 | Virtual Tracker™ | 08/11/2028 (mesmo dia do Transportes) | **não compete** com Transportes em 2028 |

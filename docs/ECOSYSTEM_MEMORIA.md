@@ -7,7 +7,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
 **Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace e **cópia git** `caracore-site/AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
 
-### Status PDV Java (2026-10-02) — para IAs
+### Status PDV Java (2026-10-03) — para IAs
 
 | Item | Valor |
 |------|--------|
@@ -16,7 +16,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | Checkout oficina `master` | Maven `4.0.0-rc2` · Qute · v4 estacionado até T032 |
 | Próximo Agent pesado | **out–nov/2026** = PERF/T032 v4 (`PLANO_LANCAMENTO_V4.md`) |
 | Handoff | `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` · `caracore-pdv/AGENTS.md` |
-| Retomada local | `V4L-UI-01–05` concluídos; `PERF-001` inconclusivo (`GET /api/dashboard` dispensado); `PERF-002` instrumentação opt-in implementada e 4 testes focados aprovados, captura operacional e correlação HTTP→SQLite pendentes; `PERF-005` sem aceite (shutdown 3/3, startup mediano 19,899 s > alvo 10 s, preflight de 02/10 bloqueado por CPU média 80,82%/pico 100%); ver handoff para evidências e sequência |
+| Retomada local | `V4L-UI-01–05`, `V4L-UX-01`, `V4L-REL-01` (rascunho interno) e `V4L-REL-02` (candidato local) concluídos; suíte Maven T032 833 testes verde; MSI unsigned instalado e smoke básico/reinício/integridade SQLite aprovados; `T032` segue aberto para Edge/Windows 1280×800, roteiro, senha inicial e MSI assinado. `PERF-001–007` congeladas por decisão do usuário; ver `STATUS_ATUAL_APLICACAO.md` e handoff para detalhes |
 
 ---
 
@@ -149,7 +149,7 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 | caracore-seed | `docs/memoria-projeto.txt` | Testes unitários estabilizados em Java 25; brinco sem download público |
 | caracore-hub-releases | `.cursor/rules/project-memory.mdc` | Loja hub.caracore.com.br |
 | caracore-pdv-rust-releases | Sim | Loja pdv-rust |
-| caracore-pdv | `AGENTS.md` · `docs/arquitetura/PLANO_LANCAMENTO_V4.md` · `CONTINUIDADE_DESENVOLVIMENTO.md` · `.cursor/rules/project-memory.mdc` | `v3.2.6-free`; RC2 Qute; **frente GA 08/11/2026**; T032 aberto; planos em `PlanoLicencaService` |
+| caracore-pdv | `AGENTS.md` · `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` · `CONTINUIDADE_DESENVOLVIMENTO.md` · `.cursor/rules/project-memory.mdc` | `v3.2.6-free`; RC2 Qute; suíte T032 833 testes verde; MSI unsigned instalado/smoke básico local; **T032 aberto** para Edge, roteiro, senha inicial e MSI assinado |
 | caracore-pdv-releases | `.cursor/rules/project-memory.mdc` | Loja pdv.caracore.com.br · CTA Baixar Free (3.2.6) · Free 100/mês · sem PIX integrado |
 | caracore-ete | `AGENTS.md` · `.cursor/rules/project-memory.mdc` | Canal **v1.2.3**; Windows onefile+ZIP; PyArmor no bundle; Flask 5150 |
 | caracore-ete-releases | `docs/artifacts/VERSION` | Loja ete.caracore.com.br · Latest v1.2.3 |
@@ -163,6 +163,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-03 | **PDV v4 — estado T032 atualizado:** suíte Maven completa passou com Java 25 (833 testes, 0 falhas/erros, 3 ignorados); MSI WiX unsigned instalado em escopo per-user e smoke básico aprovado (login API, hashes do manifesto, reinício gracioso e integridade SQLite); banco legado Free preservado. T032 segue aberto: falta homologação Edge/Windows 1280×800, roteiro operacional, validação explícita da troca obrigatória de senha inicial e MSI assinado. Uma interação de browser avançou ao dashboard sem definição/verificação deliberada de senha nova; investigar no roteiro, sem considerar o fluxo aceito. `PERF-001–007` permanecem congeladas por decisão do usuário. Handoff/status: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` e `STATUS_ATUAL_APLICACAO.md`; alterações sem commit/publicação. |
 | 2026-10-02 | **PDV v4 — `PERF-002` instrumentada:** filtro HTTP opt-in com request ID e duração, correlação MDC nos logs dos serviços e tempos no gateway SQLite; configuração permanece desligada por padrão. Testes focados: 4/4 aprovados, incluindo ID único e correlação HTTP→serviços em `/dashboard`; gateway SQLite testado fora da requisição, portanto correlação HTTP→SQLite ainda não validada. Captura operacional controlada pendente; não confundir testes da instrumentação com benchmark. `PERF-005` segue sem aceite: preflight 19:25 com 120 amostras, CPU média 80,82% e pico 100%, sem startup executado; `PERF-006` continua bloqueada. `PERF-001` permanece inconclusiva e `GET /api/dashboard` dispensado. Handoff: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`; alterações ainda sem commit. |
 | 2026-10-02 | **Retomada PDV v4 registrada:** `V4L-UI-01–05` concluídos; `PERF-001` permanece inconclusivo (p50/p95 E2E em direções opostas; `GET /api/dashboard` dispensado por decisão do usuário); `PERF-005` tem shutdown validado 3/3, mas startup mediano de 19,899 s acima do alvo de 10 s. Preflight não encontrou baixa carga, então não houve nova medição de startup. Próximo passo é repetir sem JFR sob baixa carga com dados/heartbeat/APPDATA isolados; `PERF-006` aguarda o fechamento de `PERF-005`. Detalhes no handoff da oficina. |
 | 2026-09-30 | **CSO COE-B/E publicados em produção** (`e193d6d`): convites por chave, categorias/filtros, gates de veículos inativos, quilometragem por abastecimento/viagem e termos LGPD 2.1. Freeze M1 segue até 08/11/2026, pendente de smoke `-Full`/gates finais; FRO = **08/abr–dez/2027**. Railway `/` e `/q/health` responderam 200; versão efetiva Flyway em produção não foi consultada diretamente. Atualizados AGENTS, wiki e memória do ecossistema. |

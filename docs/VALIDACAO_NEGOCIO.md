@@ -26,7 +26,7 @@ PRODUTOS EM FOCO
 
   #  Produto                         Loja canónica              Release / preço
   -- ------------------------------- -------------------------- ---------------------------
-  1  CaraCore PDV Desktop (Java)     pdv.caracore.com.br        v3.2.6-free · Free/Premium
+  1  CaraCore PDV Java (web local)   pdv.caracore.com.br        v3.2.6-free · Free/Premium
   2  CaraCore PDV                    pdv-rust + GitHub Releases   v0.1.4 · piloto · transparência loja
   3  chmulatoETE Minerador 4.0       ete.caracore.com.br        Free · Ouro 4.0 R$ 29,90
   4  Reino OIDC                      oidc.caracore.com.br        FREE · upgrade R$ 29,90

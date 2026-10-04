@@ -22,7 +22,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 
 | Chave | O que é | Status público honesto |
 |---|---|---|
-| **PDV** | Caixa no computador da loja (duas linhas desktop) | Java Free **`v3.2.6-free`** (100 vendas **por mês**; UI no navegador) · Java **`v4.0.0-rc4`** (pré-release pública para avaliação; T032 aberto pelo roteiro operacional formal; GA **08/11/2026** condicionado) · Rust **`v0.1.4`** piloto Windows |
+| **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.6-free`** (100 vendas **por mês**; UI no navegador) · Java **`v4.0.0-rc4`** (pré-release pública para avaliação; T032 aberto pelo roteiro operacional formal; GA **08/11/2026** condicionado) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frotas Web + Transportes Desktop (2028) | Frotas em produção · COE-B/E publicados em `e193d6d` · freeze M1 até 08/11/2026 · FRO 08/abr–dez/2027 · **não é GPS** |
 | **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída na oficina · sem release WAR pública · GA do instalador Windows **06/04/2027** |
 
@@ -193,7 +193,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 ## 6. Calendário Oficial do Roadmap (Sincronizado)
 
 * **Concluídos / Em Operação:**
- - PDV Desktop Java Free (`v3.2.6-free` · 100 vendas/mês · UI no navegador; registradora)
+ - PDV Java Free (`v3.2.6-free` · 100 vendas/mês · aplicação web local no navegador; registradora)
  - PDV Java v4 pré-release pública (`v4.0.0-rc4`; T032 aguarda roteiro operacional, GA **08/11/2026** condicionado)
  - Ink Agenda Desktop (`v2.0.0` estável em 26/06/2026)
   - Minerador 4.0 (`v1.2.3` Ouro 4.0)

@@ -15,8 +15,8 @@ VISÃO GERAL
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
   caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (117 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
-  caracore-pdv                  Oficina — PDV Desktop Java / v4            v3.2.6-free maduro; RC3 Qute pré-release; T032/GA 08/11/2026; planos em PlanoLicencaService
-  caracore-pdv-releases         Loja — PDV Desktop Java                     pdv.caracore.com.br · CTA Baixar Free (3.2.6) · Free 100 vendas/mês
+  caracore-pdv                  Oficina — PDV Java web local / v4           v3.2.6-free estável; RC4 Qute pré-release; T032/GA 08/11/2026; planos em PlanoLicencaService
+  caracore-pdv-releases         Loja — PDV Java web local                   pdv.caracore.com.br · CTA Baixar Free (3.2.6) · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
   caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases
   caracore-hub                  Oficina — CaraCore Hub                      Encomendas; web 2.1 concluída na oficina; WAR/Tomcat validado; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
@@ -56,7 +56,7 @@ CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
 
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
-  PDV Desktop Java         caracore-pdv             caracore-pdv-releases        v3.2.6-free (maduro) · RC3 Qute pré-release · Free 100 vendas/mês
+  PDV Java web local       caracore-pdv             caracore-pdv-releases        v3.2.6-free (estável) · RC4 Qute pré-release · Free 100 vendas/mês
   CaraCore PDV             caracore-pdv-rust        caracore-rust-pdv-releases    v0.1.4 (piloto Windows; loja + NSIS/MSI/ZIP no mesmo repo)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.
@@ -79,7 +79,7 @@ Site e presença pública
   Retomada / produtividade: caracore-site/docs/INICIAR_NOVA_TAREFA.md + docs/ECOSYSTEM_MEMORIA.md
 
 Produtos com entrega ativa (matriz + loja online)
-  CaraCore PDV Desktop (Java): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
+  CaraCore PDV Java (web local): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
   CaraCore PDV: caracore-pdv-rust + caracore-rust-pdv-releases (clone local caracore-pdv-rust-releases). Loja: **pdv-rust.caracore.com.br**. Artefatos: github.com/chmulato/caracore-rust-pdv-releases/releases (mesmo repo). Sem delivery matriz.
   Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br (pré-lançamento; GA instalador 06/04/2027). Não é Flask. Retomada: caracore-hub/docs/contexto-rapido.md. Manual: wiki.caracore.com.br/hub/
   CaraCore CSO: caracore-cso-quarkus (Frotas, produção `e193d6d`; COE-B/E: termos 2.1, convites por chave, categorias/filtros, regras de veículo inativo e KM) + caracore-cso-transportes (Desktop 08/11/2028, oficina sem loja). Freeze M1: 08/11/2026; smoke `-Full`/gates finais ainda pendentes. FRO: 08/abr–dez/2027. Loja única (home de conversão): D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br. App: cso.caracore.com.br. Um produto em 08/11/2028. CSO ≠ GPS; versão Flyway efetiva em produção não confirmada diretamente.

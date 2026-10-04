@@ -43,7 +43,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 
    (M) portfolio.html#caracore-pdv · ecosistema.html
    (L) caracore-pdv-releases → pdv.caracore.com.br · v3.2.6-free
-   Mensagem: dois PDVs desktop; Java = canal maduro multi-plataforma
+   Mensagem: Java é uma aplicação web local multiplataforma; Rust é o piloto desktop
    Coexistência: #pdv-coexistencia no portfólio
    Status: OK — rever após cada release Java
 

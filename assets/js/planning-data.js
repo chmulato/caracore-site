@@ -13,37 +13,37 @@
  * Fonte de datas: AGENTS.md · CALENDARIO_COTA_CURSOR.md · ecosistema.html#roadmap
  */
 window.CARACORE_PLANNING = {
-  AS_OF: "2026-09",
-  AS_OF_LABEL: "Setembro de 2026",
+  AS_OF: "2026-10",
+  AS_OF_LABEL: "04/10/2026 · avanço medido até set/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Onze produtos no checklist. Os principais são PDV, CSO e Hub; o resto são brincos (não mandam na cota). Helianto e MKT ficam fora desta grelha (Garagem / canal gratuito). Um produto pesado por ciclo.",
+    "Snapshot operacional atualizado em 04/10/2026; percentuais e séries das torres refletem o fechamento de setembro, sem recalibração em outubro. Os principais são PDV, CSO e Hub; o resto são brincos (não mandam na cota). Helianto e MKT ficam fora desta grelha (Garagem / canal gratuito). Um produto pesado por ciclo.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
    * flags[] = só excepções. Produto em ritmo normal não entra aqui.
    */
   EXEC: {
-    owner: { period: "set/2026", who: "CSO COE" },
-    ownerNext: { period: "out–08/nov", who: "PDV v4" },
+    owner: { period: "out–08/nov/2026", who: "PDV v4" },
+    ownerNext: { period: "09/nov–dez/2026", who: "PDV corte + CSO M1" },
     next: {
       when: "08/11/2026",
-      what: "PDV Java v4",
+      what: "Decisão de GA do PDV Java v4",
       gate: "T032",
-      action: "Agent out–nov",
+      action: "Concluir e aceitar o roteiro operacional formal",
     },
     flags: [
       {
         id: "pdv-java",
         kind: "risco",
-        title: "PDV Java · T032 aberto",
-        text: "08/11 deixa de ser GA se outubro não fechar.",
+        title: "PDV Java · RC4 em avaliação",
+        text: "Pré-release pública v4.0.0-rc4; T032 aguarda o roteiro operacional formal. 08/11 é previsão, não GA confirmado.",
       },
       {
         id: "cso",
         kind: "desvio",
-        title: "CSO · copy da loja",
-        text: "Plano canónico: FRO 08/04–dez/2027. Loja ainda pode dizer 1.º trim. 2027.",
+        title: "CSO · freeze M1 em 08/11/2026",
+        text: "COE 33/33; B/E + landing 47/47. Smoke local passou, mas o deploy das alterações recentes não está confirmado. FRO: 08/04–dez/2027, após Hub.",
       },
     ],
   },
@@ -68,14 +68,14 @@ window.CARACORE_PLANNING = {
     paidNote:
       "A cota não acumula. Mês ocioso ainda é cobrado. Mês cheio não empresta crédito ao seguinte. Tab e autocomplete não entram nesta conta; o que queima o envelope é Agent (Flyway, auth, extract, HTTP).",
     covers: [
-      { when: "08/11/2026", item: "PDV Java v4 (GA)", spend: "Agent out–nov/2026" },
+      { when: "08/11/2026", item: "PDV Java v4 (GA condicionado ao T032)", spend: "Agent out–nov/2026" },
       { when: "06/04/2027", item: "Hub instalador Windows", spend: "Agent dez/2026–06/04/2027" },
       { when: "08/04–dez/2027", item: "CSO FRO (frota 24/24)", spend: "Agent depois do Hub; app já no ar" },
       { when: "08/11/2028", item: "CSO Transportes desktop", spend: "Agent jan–nov/2028" },
       { when: "30/12/2029", item: "Helianto Condominium (GA)", spend: "Agent 2029" },
     ],
     queue: [
-      { period: "set/2026", owner: "CSO COE" },
+      { period: "set/2026", owner: "CSO COE (concluído)" },
       { period: "out–08/nov/2026", owner: "PDV v4" },
       { period: "09/nov–dez/2026", owner: "PDV corte + CSO M1" },
       { period: "dez/2026–06/04/2027", owner: "Hub" },
@@ -104,7 +104,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 72,
-      note: "Free 3.2.4, Ink desktop, Minerador, Circuito e Frotas no ar. Falta o corte T032 (08/11).",
+      note: "Free 3.2.6-free estável; v4.0.0-rc4 pública para avaliação. GA previsto para 08/11, condicionado ao T032. Freeze M1 do CSO é um marco separado.",
     },
     {
       id: "y2027",
@@ -138,8 +138,8 @@ window.CARACORE_PLANNING = {
       state: "risk",
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
-      hundred: "GA v4 em 08/11/2026 (T032). Free 3.2.4 já no ar.",
-      now: "Canal maduro v3.2.6-free. RC3 pública para avaliação; T032 e GA seguem pendentes. Agent: out–nov/2026.",
+      hundred: "Canal estável v3.2.6-free; pré-release v4.0.0-rc4 pública para avaliação. GA previsto em 08/11/2026, condicionado ao T032.",
+      now: "T032 aguarda o roteiro operacional formal. RC4 não é GA; o Free não inclui PIX integrado nem emissão de NF-e/NFC-e. Agent: out–nov/2026.",
       history: [
         { m: "2026-06", p: 62 },
         { m: "2026-07", p: 68 },
@@ -308,8 +308,8 @@ window.CARACORE_PLANNING = {
       state: "watch",
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
-      hundred: "Frotas completa (FRO) + Transportes desktop 08/11/2028.",
-      now: "Frotas em produção (COE 27/33). Freeze M1 em 08/11. FRO Agent 08/04–dez/2027. Transportes = 2028.",
+      hundred: "Frotas em produção; freeze M1 em 08/11/2026. FRO planejado para 08/04–dez/2027; Transportes desktop em 08/11/2028.",
+      now: "COE 33/33; B/E + landing 47/47. Smoke -Full local passou, mas deploy das alterações recentes não está confirmado. FRO começa após Hub.",
       history: [
         { m: "2026-06", p: 30 },
         { m: "2026-07", p: 34 },

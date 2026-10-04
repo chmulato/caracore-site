@@ -24,7 +24,7 @@
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Ecossistema Cara Core — Prova de Entrega B2B e Bunker Digital",
-    "description": "Mapa de produtos Cara Core como prova de entrega da engenharia B2B: PDV Java v3.2.6-free, PDV v4 em desenvolvimento para 08/11/2026 e Rust v0.1.4, além de Reino OIDC, Minerador 4.0, Circuito Ferradura, Ink Agenda, Garagem Hub RU CSO.",
+    "description": "Mapa de produtos Cara Core como prova de entrega da engenharia B2B: PDV Java v3.2.6-free e pré-release v4.0.0-rc4 para avaliação, CSO Frotas em produção e os marcos condicionais do ecossistema.",
     "url": "https://www.caracore.com.br/ecosistema.html",
     "publisher": {
       "@type": "Organization",
@@ -233,7 +233,7 @@
         <div class="eco-audience-card">
           <i class="bi bi-shop"></i>
           <h3>PME de varejo</h3>
-          <p class="small text-muted mb-0">PDV Desktop Java ou Rust, operação local, planos Free e Premium, motor fiscal e caixa que não trava com a internet.</p>
+          <p class="small text-muted mb-0">PDV Desktop Java ou Rust, operação local e caixa que não trava com a internet. O v4 inclui estimativas tributárias; o plano Free não emite NF-e/NFC-e nem inclui PIX integrado.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
@@ -329,7 +329,7 @@
         <p class="eco-product-stack">Java 25 · Quarkus · SQLite · canal v3.2.6-free · localhost:8080/login</p>
         <ul class="eco-product-bullets">
           <li>Desktop multi-plataforma maduro (Windows · Linux · macOS)</li>
-          <li>Operação Bunker e motor fiscal IBS/CBS</li>
+          <li>Operação Bunker e estimativas IBS/CBS no v4; sem emissão fiscal no plano Free</li>
           <li>Coexiste com a linha Rust — mesma família, stacks distintas</li>
         </ul>
         <p class="eco-product-meta"><strong>Loja:</strong> pdv.caracore.com.br</p>
@@ -348,9 +348,10 @@
         <h3>CaraCore PDV v4</h3>
         <p class="eco-product-stack">Quarkus · SQLite local · web/PWA · launcher Windows</p>
         <ul class="eco-product-bullets">
-          <li>Pré-release pública <strong>v4.0.0-rc3</strong> para avaliação; T032/GA ainda abertos</li>
+          <li>Pré-release pública <strong>v4.0.0-rc4</strong> para avaliação; T032 aguarda o roteiro operacional formal</li>
           <li>SQLite local, launcher e casca PWA no computador da loja</li>
-          <li>Lançamento previsto: 08 de novembro de 2026</li>
+          <li>GA previsto: 08/11/2026, condicionado ao T032; RC4 é ZIP portátil Windows x64 unsigned, sem MSI</li>
+          <li>O Free não inclui PIX integrado nem emissão de NF-e/NFC-e</li>
           <li>Não substitui o canal público v3.2.6-free nem a linha Rust</li>
         </ul>
         <p class="eco-product-meta"><strong>Oficina:</strong> caracore-pdv · <strong>Detalhes:</strong> roadmap da loja</p>
@@ -389,6 +390,9 @@
         <p class="eco-product-stack">Java 21 · Quarkus · PostgreSQL · Qute/HTMX</p>
         <ul class="eco-product-bullets">
           <li>Frota no navegador: veículos, custos, equipe e planos</li>
+          <li>COE 33/33; COE-B/E e landing 47/47 concluídos</li>
+          <li>Freeze M1 previsto para 08/11/2026; não equivale ao FRO completo</li>
+          <li>FRO planejado para 08/04–dez/2027, após o Hub; deploy das alterações recentes ainda não confirmado</li>
           <li>Não é rastreador GPS — Virtual Tracker™ é produto separado</li>
           <li>Transportes desktop permanece na Garagem (08/11/2028)</li>
         </ul>
@@ -780,8 +784,8 @@
         </div>
 
         <div class="alert alert-info mt-4 mb-4" role="note">
-          <h3 class="h5 mb-2"><i class="bi bi-calendar2-check me-2"></i>CaraCore-PDV v4 — lançamento previsto para 08/11/2026</h3>
-          <p class="mb-2">A oficina concluiu a paridade Qute das Fases 0–7. O corte público (T032) ainda depende de homologação no Edge, suíte completa e instalador Windows assinado. Até lá, o download continua sendo a <strong>v3.2.6-free</strong> (Windows, Linux e macOS).</p>
+          <h3 class="h5 mb-2"><i class="bi bi-calendar2-check me-2"></i>CaraCore-PDV v4 — RC4 pública; GA previsto para 08/11/2026, condicionado ao T032</h3>
+          <p class="mb-2">A pré-release <strong>v4.0.0-rc4</strong> está disponível para avaliação como ZIP portátil Windows x64 unsigned, sem MSI. A suíte Maven passou com 843 testes (3 ignorados); o T032 ainda aguarda a conclusão e o aceite do roteiro operacional formal. A data de 08/11 é previsão, não GA confirmado. Até a liberação, a versão estável permanece <strong>v3.2.6-free</strong> (Windows, Linux e macOS). O Free não inclui PIX integrado nem emissão de NF-e/NFC-e.</p>
           <div class="row g-3">
             <div class="col-md-6 col-xl-3"><strong>Operação local</strong><br><span class="small">SQLite no computador da loja e menor dependência da internet.</span></div>
             <div class="col-md-6 col-xl-3"><strong>Venda e pagamento</strong><br><span class="small">Carrinho, troco, recibo, pagamentos simples e mistos e baixa de estoque.</span></div>
@@ -917,10 +921,10 @@
                 <td><a href="https://cso.caracore.com.br/" class="fw-semibold text-decoration-none" target="_blank" rel="noopener">CaraCore CSO</a></td>
                 <td class="text-muted small">Dual: Gestao de Frotas (Web) e Gestao de Transportes (Desktop).</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-warning text-dark">Dual</span></td>
+                <td><span class="badge bg-success">Frotas em produção</span></td>
                 <td class="small">25/02/2026</td>
                 <td class="small fw-semibold text-muted">Frotas em produção · Transp. 08/11/2028</td>
-                <td class="small">Frotas em produção (cso.caracore.com.br); vitrine dual em cso-transp.caracore.com.br; Transportes desktop em garagem até 08/11/2028. CSO ≠ GPS.</td>
+                <td class="small">COE 33/33; COE-B/E e landing 47/47 concluídos. Freeze M1 em 08/11/2026; FRO planejado para 08/04–dez/2027, após Hub. Deploy das alterações recentes ainda não confirmado. Transportes desktop em garagem até 08/11/2028. CSO ≠ GPS.</td>
               </tr>
             </tbody>
           </table>

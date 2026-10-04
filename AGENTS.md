@@ -68,7 +68,7 @@ Headline pública de 08/11/2026 = **PDV v4**. CSO Frotas continua em produção 
 | Recibos SMS / mês | 10 no serviço | Sem o teto Free |
 | PIX no caixa / emissão fiscal | Não | Sim (trilha Premium) |
 
-Copy pública do Free **não** anuncia recibo: a 3.2.6 acrescenta shell PDV coluna + caixa registradora (busca/código Enter=+1, total grande, F2/F4/Esc; Restrito empilhado), loja de exemplo opcional e badge de limites; o QA do balcão continua produto + venda + dinheiro no browser. Pagamentos Free: dinheiro, débito, crédito e outros — “outros” **não** é PIX integrado. Primeiro acesso ainda pode ser `admin`/`admin` com troca obrigatória; após a troca, `/login` **não** vende `admin`/`admin` como ainda válido.
+Copy pública do Free pode informar recibo digital por link e PDF, sempre identificado como **sem valor fiscal**; não implica emissão de NF-e/NFC-e. A 3.2.6 acrescenta shell PDV coluna + caixa registradora (busca/código Enter=+1, total grande, F2/F4/Esc; Restrito empilhado), loja de exemplo opcional e badge de limites; o QA do balcão continua produto + venda + dinheiro no browser. Pagamentos Free: dinheiro, débito, crédito e outros — “outros” **não** é PIX integrado. Primeiro acesso ainda pode ser `admin`/`admin` com troca obrigatória; após a troca, `/login` **não** vende `admin`/`admin` como ainda válido.
 
 SHA256 Free (`v3.2.6-free`): Windows `4b15a12dbe9b525bdb31be59aff5c226f32cbb40f766eca752744996fda634d9` · Linux `028e5987d35650fd0b2f5f4b2146033e92707b413c0cc8242d05df27e1a26e72` · macOS `7e617aebe895d87ffe0446643751886263f29cbab7422a9e2ac3bcdd0aa5deff`. ZIP **sem** LEIA-ME interno; sidecar na release.
 
@@ -165,7 +165,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 1. **Coexistência PDV (Java × Rust):**
  - Ambos são sistemas DESKTOP offline-first independentes.
  - NUNCA afirme que o PDV Rust *"substitui"* ou é uma *"migração forçada"* do PDV Java.
- - Java: canal estável **`v3.2.6-free`** (Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; porta 8080 + `/login` no navegador; shell coluna + registradora; sem PIX integrado) · pré-release pública da edição Free **`v4.0.0-rc4`** (até 100 vendas finalizadas por mês civil; roteiro operacional formal ainda pendente; não é GA). Loja: CTA principal = **Baixar Free (3.2.6)**; Premium via demonstração.
+ - Java: canal estável **`v3.2.6-free`** (Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; porta 8080 + `/login` no navegador; shell coluna + registradora; recibo digital por link e PDF sem valor fiscal; sem PIX integrado nem NF-e/NFC-e) · pré-release pública da edição Free **`v4.0.0-rc4`** (até 100 vendas finalizadas por mês civil; roteiro operacional formal ainda pendente; não é GA). Loja: CTA principal = **Baixar Free (3.2.6)**; Premium via demonstração.
  - Rust piloto `v0.1.4`.
  - V3 é a estratégia de negócio PME (com PIX Split 2027), comum a ambas as tecnologias.
  - Rust: loja própria (`pdv-rust.caracore.com.br`) e entrega própria de artefatos no **mesmo** repositório `chmulato/caracore-rust-pdv-releases` (GitHub Pages + GitHub Releases). Clone local da loja: `caracore-pdv-rust-releases` (nome da pasta ≠ nome no GitHub). Tag atual **`v0.1.4`**. Neste repo Rust, `/releases` e `/latest` são só o piloto. **Não** usar `caracore-pdv-releases` para o Rust (canal Java).

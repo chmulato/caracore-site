@@ -49,9 +49,10 @@ VISÃO GERAL
 ---
 
 
-CARACORE PDV — DUAS LINHAS DESKTOP (MESMO PRODUTO)
+CARACORE PDV — DUAS LINHAS INDEPENDENTES
 
-  Ambos são aplicativos DESKTOP instalados no computador da loja (SQLite local, operação Bunker).
+  Java: aplicação web local no navegador, com SQLite local.
+  Rust: aplicativo desktop com Tauri e SQLite local.
   Nenhuma linha substitui a outra. Stacks e faixas de versão são independentes.
 
   Linha                    Oficina                  Loja                         Release / canal

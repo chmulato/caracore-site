@@ -73,10 +73,10 @@ alwaysApply: true
 
 ## PDV v4 — RC3 pública para avaliação; GA previsto 08/11/2026
 
-- **Oficina:** `caracore-pdv`; pré-release pública **v4.0.0-rc3** (Qute + launcher Edge). T032 segue aberto; a publicação não é aceite de GA. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
+- **Oficina:** `caracore-pdv`; pré-release pública da edição Free **v4.0.0-rc3** (Qute + launcher Edge), limitada a 100 vendas finalizadas por mês civil. T032 segue aberto; a publicação não é aceite de GA. ZIP substituído e checksum público confirmado: `51f46120dac04dfbbe7fbfb6d442d4f79717327940452b043cc8ec65b9bcd4f3`. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
 - **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc3.html`.
-- **Loja:** `https://pdv.caracore.com.br/` — RC3 **não** substitui o Free `v3.2.6-free`; RC1/RC2 ficam no histórico.
+- **Loja:** `https://pdv.caracore.com.br/` — `v3.2.6-free` permanece download estável/Latest; RC3 é pré-release de avaliação, não GA; RC1/RC2 ficam no histórico.
 - **Regra:** manter `v3.2.6-free` como download principal até o v4 ser homologado como GA. Não misturar pasta nem data.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.4)

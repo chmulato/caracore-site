@@ -139,7 +139,7 @@ window.CARACORE_PLANNING = {
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
       hundred: "GA v4 em 08/11/2026 (T032). Free 3.2.4 já no ar.",
-      now: "Canal maduro v3.2.4-free. Candidato RC2 estacionado. Agent: out–nov/2026.",
+      now: "Canal maduro v3.2.6-free. RC3 pública para avaliação; T032 e GA seguem pendentes. Agent: out–nov/2026.",
       history: [
         { m: "2026-06", p: 62 },
         { m: "2026-07", p: 68 },

@@ -87,7 +87,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Java (`caracore-pdv-releases`)
 
 | URL | https://pdv.caracore.com.br/ |
-| Canal | `v3.2.6-free` (download). Candidato `v4.0.0-rc2` = pré-release, não substitui o Free. |
+| Canal | `v3.2.6-free` (download). Pré-release pública `v4.0.0-rc3` para avaliação = não homologada nem substitui o Free. |
 | Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy **não** anuncia recibo. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
 | CTA | **Baixar Free (3.2.6)**. Premium via demonstração (`consultoria.html`). |
 | Quem entra | `admin` / `admin` (troca obrigatória). **1 operador** no Free. Copy: `download.html#perfis`. Não usar senhas do Rust. |
@@ -107,7 +107,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-09-13):** canal maduro da **loja** = `v3.2.6-free` **publicado** (shell PDV coluna + caixa registradora; Restrito empilhado; login honesto pós-troca; navegador `localhost:8080/login`). Código Free = tag `v3.2.6-free` / `feature/free-3.2.6-pdv-ux` — **não** o `master`. Candidato `v4.0.0-rc2` **estacionado** (pré-release; pasta nova + `./data/caracore-pdv.db`; T032 aberto). **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`). PERF/T032 com Cursor = **outubro–novembro/2026**. HEAD `master` = Maven `4.0.0-rc2`, não o ZIP Free. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
+**Estado (2026-10-04):** canal maduro da **loja** = `v3.2.6-free` **publicado** (shell PDV coluna + caixa registradora; Restrito empilhado; login honesto pós-troca; navegador `localhost:8080/login`). Código Free = tag `v3.2.6-free` / `feature/free-3.2.6-pdv-ux` — **não** o `master`. Pré-release pública `v4.0.0-rc3` para avaliação, com ZIP unsigned Windows x64 e hash na página de notas; não é GA e T032 segue aberto. **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`) permanece condicionada à homologação. PERF/T032 com Cursor = **outubro–novembro/2026**. HEAD `master` = Maven `4.0.0-rc3`, não o ZIP Free. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
 
 ---
 

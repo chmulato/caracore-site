@@ -1,11 +1,11 @@
 ---
-description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.6-free · RC2 Qute estacionada · Free 100/mês · PDV Rust v0.1.4
+description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.6-free · RC3 Qute pré-release · Free 100/mês · PDV Rust v0.1.4
 alwaysApply: true
 ---
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-09-13 · IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
+**Atualizado:** 2026-10-04 · IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
 
 ## Posicionamento B2B (copy comercial)
 
@@ -27,7 +27,7 @@ alwaysApply: true
 | **Wiki** | caracore-wiki | Trilhas e hub PDV | https://wiki.caracore.com.br/ |
 | **Retrô** | caracore-retro | Artigos LinkedIn / editorial | https://retro.caracore.com.br/ |
 | **Sala** | caracore-site `sala/` + caracore-mkt | Campanhas, manuais rede | https://tools.caracore.com.br/sala/ |
-| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (HEAD `4.0.0-rc2`); loja publica Free `v3.2.6-free` no navegador | privado |
+| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (HEAD `4.0.0-rc3`); loja publica Free `v3.2.6-free` no navegador | privado |
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
 | **PDV Rust — loja + artefatos** | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | Pages + Releases no **mesmo** repo | https://pdv-rust.caracore.com.br/ · https://github.com/chmulato/caracore-rust-pdv-releases/releases |
@@ -71,12 +71,13 @@ alwaysApply: true
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV v4 — candidato RC2 estacionado; GA previsto 08/11/2026
+## PDV v4 — RC3 pública para avaliação; GA previsto 08/11/2026
 
-- **Oficina:** `caracore-pdv`; pré-release **v4.0.0-rc2** (Qute + launcher Edge). T032 não aprovado. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
+- **Oficina:** `caracore-pdv`; pré-release pública **v4.0.0-rc3** (Qute + launcher Edge). T032 segue aberto; a publicação não é aceite de GA. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
-- **Loja:** `https://pdv.caracore.com.br/roadmap-2026.html` — RC2 **não** substitui o Free.
-- **Regra:** manter `v3.2.6-free` como canal atual até o v4 ser aprovado e publicado. Não misturar pasta nem data.
+- **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc3.html`.
+- **Loja:** `https://pdv.caracore.com.br/` — RC3 **não** substitui o Free `v3.2.6-free`; RC1/RC2 ficam no histórico.
+- **Regra:** manter `v3.2.6-free` como download principal até o v4 ser homologado como GA. Não misturar pasta nem data.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.4)
 
@@ -142,4 +143,3 @@ alwaysApply: true
 - **Uma camada por vez:** matriz · loja · oficina · wiki. Não misturar Java e Rust no mesmo patch.
 - **Depois de corte ou copy no ar:** `AGENTS.md` (este repo + raiz do workspace) + `docs/ECOSYSTEM_MEMORIA.md` + `.cursor/rules` do repo tocado.
 - **Quem entra:** loja da linha (`download.html#perfis` Java · `primeiros-passos.html#perfis` Rust). Wiki aponta, não é fonte de senha.
-

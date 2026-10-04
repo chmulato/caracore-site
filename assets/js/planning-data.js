@@ -25,7 +25,7 @@ window.CARACORE_PLANNING = {
    */
   EXEC: {
     owner: { period: "out–08/nov/2026", who: "PDV v4" },
-    ownerNext: { period: "09/nov–dez/2026", who: "PDV corte + CSO M1" },
+    ownerNext: { period: "09/nov–04/dez/2026", who: "PDV corte + copy CSO M1" },
     next: {
       when: "08/11/2026",
       what: "Decisão de GA do PDV Java v4",
@@ -77,7 +77,7 @@ window.CARACORE_PLANNING = {
     queue: [
       { period: "set/2026", owner: "CSO COE (concluído)" },
       { period: "out–08/nov/2026", owner: "PDV v4" },
-      { period: "09/nov–dez/2026", owner: "PDV corte + CSO M1" },
+      { period: "09/nov–04/dez/2026", owner: "PDV corte + copy CSO M1" },
       { period: "dez/2026–06/04/2027", owner: "Hub" },
       { period: "08/04–dez/2027", owner: "CSO FRO" },
       { period: "2028", owner: "CSO Transportes" },

@@ -221,7 +221,7 @@ Canónico: [`caracore-site/docs/CALENDARIO_COTA_CURSOR.md`](caracore-site/docs/C
 |---------|---------------|-------|
 | set/2026 | CSO COE | Frotas já no ar |
 | out–08/nov/2026 | **PDV v4** | GA 08/11/2026 |
-| 09/nov–dez/2026 | PDV corte + CSO M1 | Freeze M1 |
+| 09/nov–04/dez/2026 | PDV corte + copy CSO M1 | Freeze M1 |
 | dez/2026–06/04/2027 | **Hub** | GA Windows 06/04/2027 |
 | 08/04–dez/2027 | **CSO FRO** | núcleo frota 24/24 |
 | 2028 | **CSO Transportes** | GA 08/11/2028 |

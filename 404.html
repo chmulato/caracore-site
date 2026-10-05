@@ -13,16 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página não encontrada - Cara Core</title>
-    <script>
-        // Script para redirecionar SPA rotas para index.html
-        // Detecta se a URL solicitada está relacionada ao caminho seguro
-        const path = window.location.pathname;
-        if (path.startsWith('/secure/')) {
-            window.location.replace('/secure/index.html');
-        } else {
-            window.location.replace('/');
-        }
-    </script>
+    <meta name="robots" content="noindex">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -55,8 +46,9 @@
     <div class="container">
         <h1>Página não encontrada</h1>
         <p>A página que você está procurando não existe ou foi movida.</p>
-        <p>Redirecionando para a página principal...</p>
+        <p>Escolha um destino para continuar navegando.</p>
         <a href="/" class="btn">Ir para a página inicial</a>
+        <a href="/secure/index.html" class="btn">Ir para a área segura</a>
     </div>
 </body>
 </html>

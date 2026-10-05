@@ -61,7 +61,13 @@ esse arquivo é específico do Netlify e a matriz é multipágina.
   têm cache de navegador de 24 horas, sem `immutable`. Uma substituição
   nesses URLs pode levar até 24 horas para alcançar um navegador que já
   os armazenou; para uma atualização urgente, versionar o URL.
-- HTML, APIs e configurações de autenticação não receberam cache longo.
+- As páginas institucionais públicas `/`, `/index.html`, `/ecosistema.html`,
+  `/portfolio.html`, `/planning.html` e `/suporte-local.html` têm cache de
+  navegador por 120 segundos e cache compartilhado (`s-maxage`) por 24h.
+  A cópia do navegador é curta para limitar conteúdo desatualizado; uma
+  nova publicação na Vercel deve invalidar a associação do deployment ativo.
+- Demais páginas HTML, páginas seguras, APIs e configurações de autenticação
+  não receberam cache público explícito.
 - Um HIT da CDN não elimina CDN Requests nem a transferência do corpo
   para o visitante. Cache de navegador e redução de payload atuam sobre
   problemas diferentes.

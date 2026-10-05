@@ -44,15 +44,22 @@ test('legacy logo URLs remain valid and optimized', () => {
     fs.readFileSync(path.join(root, 'images/logo.png')));
 });
 
-test('mutable vendor caching is bounded and never immutable; HTML is not long-cached', () => {
+test('mutable vendor caching is bounded; only public marketing pages receive short browser cache', () => {
   for (const source of ['/css/vendor/:path*', '/js/vendor/:path*']) {
     const rule = config.headers.find(rule => rule.source === source);
     assert.ok(rule);
     assert.ok(rule.headers.some(header => header.key === 'Cache-Control' && header.value === 'public, max-age=86400'));
   }
-  assert.ok(config.headers.filter(rule => rule.headers.some(header => header.key === 'Cache-Control'))
-    .every(rule => rule.source.startsWith('/assets/images/') || rule.source.startsWith('/images/')
-      || rule.source.startsWith('/css/vendor/') || rule.source.startsWith('/js/vendor/')));
+  const publicPages = ['/', '/index.html', '/ecosistema.html', '/portfolio.html', '/planning.html', '/suporte-local.html'];
+  for (const source of publicPages) {
+    const rule = config.headers.find(rule => rule.source === source);
+    assert.ok(rule, `Missing explicit public page cache rule for ${source}`);
+    assert.ok(rule.headers.some(header => header.key === 'Cache-Control'
+      && header.value === 'public, max-age=120, s-maxage=86400'));
+  }
+  for (const source of ['/secure/index.html', '/secure/admin-logs.html', '/secure/access-pending.html', '/api/admin/users']) {
+    assert.ok(!config.headers.some(rule => rule.source === source), `${source} must not receive an explicit public cache rule`);
+  }
 });
 
 test('404 remains an error page without automatic navigation or heavy resources', () => {
@@ -103,6 +110,12 @@ test('local preview serves cache headers, preserves real 404s and redirects lega
     const vendor = await fetch(`${base}/css/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2`, { method: 'HEAD' });
     assert.equal(vendor.status, 200);
     assert.equal(vendor.headers.get('cache-control'), 'public, max-age=86400');
+    const home = await fetch(`${base}/`);
+    assert.equal(home.status, 200);
+    assert.equal(home.headers.get('cache-control'), 'public, max-age=120, s-maxage=86400');
+    const secure = await fetch(`${base}/secure/index.html`);
+    assert.equal(secure.status, 200);
+    assert.equal(secure.headers.get('cache-control'), 'public, max-age=0, must-revalidate');
     const missing = await fetch(`${base}/missing-validation-route`);
     assert.equal(missing.status, 404);
     assert.equal(missing.headers.get('cache-control'), 'public, max-age=0, must-revalidate');

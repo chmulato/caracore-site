@@ -48,6 +48,42 @@
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=86400" }
       ]
+    },
+    {
+      "source": "/",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=120, s-maxage=86400" }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=120, s-maxage=86400" }
+      ]
+    },
+    {
+      "source": "/ecosistema.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=120, s-maxage=86400" }
+      ]
+    },
+    {
+      "source": "/portfolio.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=120, s-maxage=86400" }
+      ]
+    },
+    {
+      "source": "/planning.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=120, s-maxage=86400" }
+      ]
+    },
+    {
+      "source": "/suporte-local.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=120, s-maxage=86400" }
+      ]
     }
   ],
   "redirects": [

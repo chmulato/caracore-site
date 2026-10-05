@@ -84,8 +84,17 @@ antes do reuso; um 304 economiza corpo, mas ainda é uma requisição.
 
 - Um ano + `immutable` exclusivamente para os dois URLs com hash.
 - 24 horas, sem `immutable`, para os PNGs antigos e vendors/fontes.
-- Sem novos headers de cache longo em HTML, APIs ou configurações.
+- `max-age=120, s-maxage=86400` apenas na home e cinco páginas
+  institucionais públicas; o navegador pode reutilizar HTML por dois
+  minutos, enquanto o cache compartilhado pode mantê-lo por 24 horas.
+- Nenhum cache público explícito nas demais páginas HTML, APIs ou
+  configurações de autenticação.
 - Sem alteração das bibliotecas nem redução deliberada do cache de edge.
+
+O cache curto do HTML pode evitar uma nova CDN Request quando o mesmo
+navegador revisita uma dessas páginas em até dois minutos. A redução depende
+de haver visitas repetidas dentro dessa janela; não evita a primeira visita
+nem reduz o número de acessos de clientes/crawlers diferentes.
 
 Regras locais foram testadas em um preview que aplica a configuração.
 **Headers reais da Vercel e redução de consumo precisam ser confirmados

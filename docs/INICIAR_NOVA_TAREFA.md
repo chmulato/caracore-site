@@ -48,7 +48,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | URL | https://hub.caracore.com.br/ |
 | O que é | Encomendas (ML, Shopee, Temu) — não Flask, não “central telefônica” |
 | GA | Instalador Windows 06/04/2027 (Electron + Tomcat embutido + SQLite WAL). Oficina web 2.1 concluída; WAR não é release pública |
-| RC Windows | Pré-release `v2.1.0-rc1` publicada (NSIS unsigned, SHA-256 `f59b959d34c97f5048ebf2cfaadeb42a7e5b7d84597b15db00d790779def29ae`). Não é GA. Mac e Linux fora desta tag. Login do perfil real ainda sem causa confirmada |
+| RC Windows | Pré-release `v2.1.0-rc1` publicada (NSIS unsigned, SHA-256 `86f010a33359f92fbc03452d7a2d5f7a045b75f43c62dd3168c3e3c302c6e4e9`). O asset anterior `f59b959d…` foi substituído na mesma tag; a suíte 9/9 vale para ele. Não é GA. Mac e Linux fora desta tag. Login do perfil real ainda sem causa confirmada |
 | Oficina | `caracore-hub` |
 | Matriz | `#caracore-hub` |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-hub.html |

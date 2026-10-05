@@ -6,6 +6,7 @@
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
 > **Cursor:** `.cursor/rules/ecosystem-cara-core.mdc` aponta para este ficheiro.
+> **Checkpoint Hub:** 05/10/2026 · 05:42 BRT — RC1 em QA; smoke Windows 4/4; login do perfil real ainda não confirmado. Retomada: `caracore-hub/docs/contexto-rapido.md`.
 
 ---
 
@@ -30,7 +31,8 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 
 - **Coerência funcional:** o escopo de negócio está coerente com o código para Mercado Livre, Shopee e Temu. Os três canais possuem webhook, worker e conector; RBAC canônico = `ADMIN`, `SUPERVISOR`, `OPERADOR`; SQLite/WAL e as 11 migrações foram validados.
 - **Ponto de atenção:** `AMAZON` e `B2W` ainda aparecem no enum de domínio, mas não têm webhook, worker ou conector. Não são promessa pública do Hub. Até decisão posterior, tratar como roadmap e não aceitar esses canais na UI/API como se estivessem operacionais.
-- **RC1 em QA (04/10/2026):** CI #5 comprovou instalação/payload nos quatro alvos; CI #7 falhou na readiness Linux (`127.0.0.1:9090`) e os testes Windows/macOS não encontraram o heading de setup. Normalização de `HUB_BASE_URL` e perfil isolado `HUB_USER_DATA_PATH` estão corrigidos localmente. Smoke Playwright local Windows 3/3, regressão SQLite e suíte Electron passaram; isso não substitui a nova CI multiplataforma. S4.2 segue aberta; ainda não há RC1 pública/GA. Detalhes e retomada: `caracore-hub/docs/contexto-rapido.md` e `docs/plano-lancamento-rc1.md`.
+- **RC1 em QA (05/10/2026):** CI #5 comprovou instalação/payload nos quatro alvos; CI #7 falhou na readiness Linux (`127.0.0.1:9090`) e os testes Windows/macOS não encontraram o heading de setup. Normalização de `HUB_BASE_URL` e perfil isolado `HUB_USER_DATA_PATH` corrigidos no código. Smoke Playwright local Windows 4/4 (setup/login, RBAC, persistência, pedido/estoque/CSV), testes Java focados 70/70, regressão SQLite e suíte Electron passaram. S4.3 validada somente no runtime de desenvolvimento Windows; S4.2 segue aberta até nova CI verde nos quatro alvos; S4.4–S4.9 e Sprint 5 pendentes. Sem novo instalador validado nesta rodada; ainda não há RC1 pública/GA. Detalhes: `caracore-hub/docs/contexto-rapido.md`, `project_hub/docs/STATUS-ATUAL.md` e `docs/plano-lancamento-rc1.md`.
+- **Login real — ponto de parada:** corrigidos timestamps SQLite, busca de etiqueta/pedido e consulta de e-mail case-insensitive, mas o erro do screenshot continua sem causa confirmada. O usuário usou `npm run dev`; banco/perfil original não localizado nos caminhos conhecidos. Identificar `HUB_USER_DATA_PATH`, `userData` e WAR efetivos antes de consultar somente existência/status da conta; não solicitar/exibir senha/hash nem apagar banco. Recuperação offline de senha é tarefa separada e pendente. Git observado: `master`/referência local `origin/master` em `7e7fd14`; revalidar ao retomar. Gemini/Cursor devem seguir o handoff da oficina, sem confundir smoke limpo com resolução na conta real.
 - **Status honesto:** web 2.1 pronta na oficina; instalador Windows ainda não é release/GA. Não anunciar EXE, Amazon/B2W ou integração pronta além de ML/Shopee/Temu.
 - **Fontes de retomada:** `caracore-hub/docs/contexto-rapido.md`, `caracore-hub/electron/README.md` e `caracore-hub/scripts/build_hub_exe.ps1`.
 

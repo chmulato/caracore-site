@@ -7,9 +7,9 @@ alwaysApply: true
 
 **Atualizado:** 2026-10-05 · 09:27 BRT · IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
 
-## Checkpoint Hub — 05/10/2026 · 05:42 BRT
+## Checkpoint Hub — 05/10/2026
 
-- Pré-release Windows `v2.1.0-rc1` publicada em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1. NSIS unsigned, 285.746.041 bytes, SHA-256 `f59b959d34c97f5048ebf2cfaadeb42a7e5b7d84597b15db00d790779def29ae`. Não é GA.
+- Pré-release Windows `v2.1.0-rc1` publicada em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1 (`publishedAt` 2026-10-05T20:37:22Z). NSIS unsigned, 285.746.041 bytes, SHA-256 `f59b959d34c97f5048ebf2cfaadeb42a7e5b7d84597b15db00d790779def29ae`. Não é GA. A loja `caracore-hub-releases` em `origin/master` (`2867db3`) aponta esse download.
 - Mac e Linux ficam fora desta tag. Backup e atualização sobre versão anterior não fazem parte deste aceite.
 - Login reportado via Electron `npm run dev` ainda sem causa confirmada: perfil/banco real não localizado. Consultar só existência/status sem senha/hash. GA 06/04/2027 e cota mantidos.
 - Retomada Gemini/Cursor: `caracore-hub/docs/contexto-rapido.md` → `project_hub/docs/STATUS-ATUAL.md` → `docs/plano-lancamento-rc1.md` → `.cursor/rules/project-memory.mdc`. Histórico observado até `7e7fd14`; conferir diff atual antes de colaborar. Atualização de memória não autoriza commit/push.

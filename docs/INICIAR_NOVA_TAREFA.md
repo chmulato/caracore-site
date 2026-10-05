@@ -48,6 +48,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | URL | https://hub.caracore.com.br/ |
 | O que é | Encomendas (ML, Shopee, Temu) — não Flask, não “central telefônica” |
 | GA | Instalador Windows 06/04/2027 (Electron + Tomcat embutido + SQLite WAL). Oficina web 2.1 concluída; WAR não é release pública |
+| RC Windows | Pré-release `v2.1.0-rc1` publicada (NSIS unsigned, SHA-256 `f59b959d34c97f5048ebf2cfaadeb42a7e5b7d84597b15db00d790779def29ae`). Não é GA. Mac e Linux fora desta tag. Login do perfil real ainda sem causa confirmada |
 | Oficina | `caracore-hub` |
 | Matriz | `#caracore-hub` |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-hub.html |
@@ -76,7 +77,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Aplicação Frotas | https://cso.caracore.com.br/ |
 | Loja única | https://cso-transp.caracore.com.br/ · clone `D:\onedrive\dev\caracore-cso-releases` |
-| Frotas | Produção **e em andamento** · oficina `caracore-cso-quarkus` (não editar vitrine lá) · 08/11/2026 = freeze Momento 1, não FRO 24/24 |
+| Frotas | Produção **e em andamento** · oficina `caracore-cso-quarkus` (não editar vitrine lá) · 08/11/2026 = freeze Momento 1, não FRO 24/24. Smoke `-Full` local passou em 03/10; deploy de `febaa3c` ainda não confirmado (`/login` com CSS `20260807c` contra `20261003b`) |
 | Transportes | Garagem **08/11/2028** · oficina `caracore-cso-transportes` (**sem** informação de loja) · **não** é a data do PDV v4 |
 | Discurso | Home da loja = conversão Frotas hoje (CTAs → /cadastro). CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. Sem depoimento inventado. Headline pública de 08/11/**2026** = PDV v4. |
 | Landing app | JSON-LD + cache 5 min + LCP WebP no ar (oficina quarkus) |
@@ -87,8 +88,8 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Java (`caracore-pdv-releases`)
 
 | URL | https://pdv.caracore.com.br/ |
-| Canal | `v3.2.6-free` (download). Pré-release pública `v4.0.0-rc3` para avaliação = não homologada nem substitui o Free. |
-| Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy **não** anuncia recibo. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
+| Canal | `v3.2.6-free` (download estável). Pré-release pública `v4.0.0-rc4` para avaliação = não homologada nem substitui o Free. RC3 fica no histórico. |
+| Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy pode informar recibo digital por link e PDF, sempre sem valor fiscal. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
 | CTA | **Baixar Free (3.2.6)**. Premium via demonstração (`consultoria.html`). |
 | Quem entra | `admin` / `admin` (troca obrigatória). **1 operador** no Free. Copy: `download.html#perfis`. Não usar senhas do Rust. |
 | Oficina | `caracore-pdv` |
@@ -107,7 +108,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-10-04):** canal maduro da **loja** = `v3.2.6-free` **publicado** (shell PDV coluna + caixa registradora; Restrito empilhado; login honesto pós-troca; navegador `localhost:8080/login`). Código Free = tag `v3.2.6-free` / `feature/free-3.2.6-pdv-ux` — **não** o `master`. Pré-release pública `v4.0.0-rc3` para avaliação, com ZIP unsigned Windows x64 e hash na página de notas; não é GA e T032 segue aberto. **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`) permanece condicionada à homologação. PERF/T032 com Cursor = **outubro–novembro/2026**. HEAD `master` = Maven `4.0.0-rc3`, não o ZIP Free. Copy Free sem PIX integrado e sem recibo. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
+**Estado (2026-10-05):** canal maduro da **loja** = `v3.2.6-free` **publicado** (shell PDV coluna + caixa registradora; Restrito empilhado; login honesto pós-troca; navegador `localhost:8080/login`). Código Free = tag `v3.2.6-free` / `feature/free-3.2.6-pdv-ux` — **não** o `master`. Pré-release pública `v4.0.0-rc4` (ZIP unsigned Windows x64, SHA-256 `31a0cdeda68dce058079c5d0d3d5652084ba8a8cc073dfce60e021c4b3c1fdf2`); não é GA. T032 segue aberto pelo roteiro operacional formal; Edge/Windows 1280×800 e a troca obrigatória de senha inicial já estão resolvidos. **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`) permanece condicionada a esse roteiro. `PERF-001–007` congeladas. HEAD `master` = Maven `4.0.0-rc4`, não o ZIP Free. Copy Free sem PIX integrado; recibo digital por link e PDF pode ser citado, sempre sem valor fiscal. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
 
 ---
 

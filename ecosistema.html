@@ -219,7 +219,7 @@
     <p class="text-muted mb-3">Dados e operação crítica ficam no seu computador ou servidor local — não numa nuvem única que, se cair, paralisa a loja.</p>
     <blockquote class="eco-bunker-callout mb-0">
       <p class="mb-2"><strong>Exemplo real:</strong> um mercado ou estúdio continua registrando vendas, consultando estoque e fechando o caixa <em>mesmo com queda total da internet</em>. Quando a rede volta, sincroniza — mas a operação do dia não dependeu dela.</p>
-      <p class="small text-muted mb-0">É o mesmo princípio do PDV (SQLite local), do Ink Agenda (agenda offline) e do Hub planejado (logística Bunker).</p>
+      <p class="small text-muted mb-0">É o mesmo princípio do PDV (SQLite local), do Ink Agenda (agenda offline) e do Hub (encomendas com SQLite local; instalador Windows previsto para 06/04/2027).</p>
     </blockquote>
   </div>
 </section>
@@ -240,7 +240,7 @@
         <div class="eco-audience-card">
           <i class="bi bi-truck"></i>
           <h3>Centros de distribuição</h3>
-          <p class="small text-muted mb-0">Hub (pré-lançamento · GA 2027) e CSO dual (Frotas em produção · Transportes 08/11/2028) para logística e soberania offline. CSO ≠ GPS.</p>
+          <p class="small text-muted mb-0">Hub (encomendas de Mercado Livre, Shopee e Temu; oficina web 2.1; GA do instalador Windows em 06/04/2027) e CSO dual (Frotas em produção · Transportes 08/11/2028). CSO ≠ GPS.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
@@ -413,7 +413,7 @@
         <p class="eco-product-stack">Java 25 · JavaFX (Windows) · PWA · SQLite · v2.0.0</p>
         <ul class="eco-product-bullets">
           <li>Agenda e financeiro para estúdios de tatuagem</li>
-          <li>Desktop Windows v2.0.0 no ar · PWA em roadmap (**não antes de 2028**)</li>
+          <li>Desktop Windows v2.0.0 no ar · PWA em roadmap (não antes de 2028)</li>
           <li>Sem instalador nativo macOS/Linux — o PWA cobre esses sistemas</li>
         </ul>
         <p class="eco-product-meta"><strong>v2.0.0 estável</strong> · 26/06/2026</p>
@@ -683,7 +683,7 @@
             <div class="eco-garagem-card cc-card-hub">
               <span class="eco-garagem-badge">Logística · Hub de distribuição</span>
               <h3><a href="https://hub.caracore.com.br/" class="eco-garagem-card-title-link">CaraCore Hub</a></h3>
-              <p class="text-muted small mb-2">Gestão logística e e-commerce para centros de distribuição: recebimento, triagem, estoque, retirada e integração com marketplaces. Bunker Digital com SQLite local — o núcleo opera offline. <strong>Vitrine e artefatos de pré-lançamento</strong> já em hub.caracore.com.br.</p>
+              <p class="text-muted small mb-2">Encomendas de Mercado Livre, Shopee e Temu para centros de distribuição. Oficina web 2.1 concluída, com SQLite local. A RC1 Free está em QA no Windows e ainda não é release pública. A vitrine está em hub.caracore.com.br.</p>
               <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> GA instalador Windows: 06 de abril de 2027</span>
               <p class="mb-0 mt-2"><a href="https://hub.caracore.com.br/" class="btn btn-sm btn-primary">Ver apresentação</a></p>
             </div>
@@ -790,10 +790,16 @@
             <div class="col-md-6 col-xl-3"><strong>Operação local</strong><br><span class="small">SQLite no computador da loja e menor dependência da internet.</span></div>
             <div class="col-md-6 col-xl-3"><strong>Venda e pagamento</strong><br><span class="small">Carrinho, troco, recibo, pagamentos simples e mistos e baixa de estoque.</span></div>
             <div class="col-md-6 col-xl-3"><strong>Gestão integrada</strong><br><span class="small">Clientes, produtos, estoque, caixa X/Z, relatórios e auditoria por perfil.</span></div>
-            <div class="col-md-6 col-xl-3"><strong>Qualidade e desempenho</strong><br><span class="small">Paridade, benchmark, recuperação, empacotamento e validação Windows antes do corte.</span></div>
+            <div class="col-md-6 col-xl-3"><strong>Qualidade</strong><br><span class="small">Paridade Qute, empacotamento do ZIP e o roteiro operacional antes do corte.</span></div>
           </div>
           <p class="small mb-0 mt-3">O marco é uma previsão pública. A publicação depende dos gates técnicos e de homologação; a oferta atual continua na loja do PDV.</p>
           <a href="https://pdv.caracore.com.br/roadmap-2026.html" class="btn btn-sm btn-primary mt-3" target="_blank" rel="noopener">Ver roadmap detalhado do v4</a>
+        </div>
+
+        <div class="alert alert-secondary mt-0 mb-4" role="note">
+          <h3 class="h5 mb-2"><i class="bi bi-diagram-3 me-2"></i>CSO e Hub no mesmo núcleo</h3>
+          <p class="mb-2">A <strong>Gestão de Frotas</strong> do CSO já está em produção. O freeze de 08/11/2026 estabiliza essa operação; o deploy da responsividade recente ainda não está confirmado. O FRO fica para 08/04–dez/2027, depois do Hub. O desktop de Transportes continua em 08/11/2028. CSO não é GPS.</p>
+          <p class="mb-0">O <strong>Hub</strong> cobre encomendas de Mercado Livre, Shopee e Temu. A oficina web 2.1 está concluída. A RC1 Free <strong>2.1.0-rc1</strong> está em QA no Windows e segue sem aceite em macOS e Linux, por isso não há instalador público. O GA do instalador Windows permanece <strong>06/04/2027</strong>.</p>
         </div>
 
         <div class="alert alert-secondary mt-0 mb-4" role="note">
@@ -879,7 +885,7 @@
                 <td><span class="badge bg-warning text-dark">Em andamento</span></td>
                 <td class="small">19/02/2026</td>
                 <td class="small">06/04/2027</td>
-                <td class="small">Registro publico: desenvolvimento ativo com foco em centros de distribuicao.</td>
+                <td class="small">Oficina web 2.1 concluída. RC1 Free 2.1.0-rc1 em QA no Windows, sem publicação. Canais: Mercado Livre, Shopee e Temu. GA do instalador Windows em 06/04/2027.</td>
               </tr>
               <tr class="eco-roadmap-row-upcoming">
                 <td><a href="https://ru.caracore.com.br/" class="fw-semibold text-decoration-none">RU Soberano</a></td>

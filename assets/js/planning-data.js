@@ -14,10 +14,10 @@
  */
 window.CARACORE_PLANNING = {
   AS_OF: "2026-10",
-  AS_OF_LABEL: "04/10/2026 · avanço medido até set/2026",
+  AS_OF_LABEL: "05/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Snapshot operacional atualizado em 04/10/2026; percentuais e séries das torres refletem o fechamento de setembro, sem recalibração em outubro. Os principais são PDV, CSO e Hub; o resto são brincos (não mandam na cota). Helianto e MKT ficam fora desta grelha (Garagem / canal gratuito). Um produto pesado por ciclo.",
+    "Leitura de 05/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -37,13 +37,19 @@ window.CARACORE_PLANNING = {
         id: "pdv-java",
         kind: "risco",
         title: "PDV Java · RC4 em avaliação",
-        text: "Pré-release pública v4.0.0-rc4; T032 aguarda o roteiro operacional formal. 08/11 é previsão, não GA confirmado.",
+        text: "Pré-release pública v4.0.0-rc4 (ZIP Windows x64, suíte 843 testes). T032 aguarda o roteiro operacional formal. 08/11 é previsão, não GA confirmado. O download estável continua v3.2.6-free.",
       },
       {
         id: "cso",
         kind: "desvio",
         title: "CSO · freeze M1 em 08/11/2026",
-        text: "COE 33/33; B/E + landing 47/47. Smoke local passou, mas o deploy das alterações recentes não está confirmado. FRO: 08/04–dez/2027, após Hub.",
+        text: "Frotas em produção. Smoke local passou; o deploy da responsividade recente ainda não está confirmado. FRO: 08/04–dez/2027, depois do Hub. Não é GPS.",
+      },
+      {
+        id: "hub",
+        kind: "risco",
+        title: "Hub · RC1 sem aceite geral",
+        text: "Oficina web 2.1 pronta. A RC1 Free passou conectores no Windows instalado e continua bloqueada para macOS e Linux. Sem instalador público. GA 06/04/2027.",
       },
     ],
   },
@@ -103,15 +109,15 @@ window.CARACORE_PLANNING = {
       id: "y2026",
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
-      pct: 72,
-      note: "Free 3.2.6-free estável; v4.0.0-rc4 pública para avaliação. GA previsto para 08/11, condicionado ao T032. Freeze M1 do CSO é um marco separado.",
+      pct: 74,
+      note: "Free 3.2.6-free estável. v4.0.0-rc4 pública para avaliação; GA de 08/11 condicionado ao T032. Freeze M1 do CSO é marco separado e ainda não fechado.",
     },
     {
       id: "y2027",
       label: "2027",
       subtitle: "Hub · FRO",
-      pct: 12,
-      note: "Hub web 2.1 pronta. Agent do EXE em dez/2026–06/04. FRO 08/04–dez. Ink PWA = Tab (não antes de 2028).",
+      pct: 14,
+      note: "Hub: web 2.1 pronta e RC1 em QA, sem release pública. Agent do instalador em dez/2026–06/04. FRO 08/04–dez. Ink PWA = Tab, não antes de 2028.",
     },
     {
       id: "y2028",
@@ -139,12 +145,13 @@ window.CARACORE_PLANNING = {
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
       hundred: "Canal estável v3.2.6-free; pré-release v4.0.0-rc4 pública para avaliação. GA previsto em 08/11/2026, condicionado ao T032.",
-      now: "T032 aguarda o roteiro operacional formal. RC4 não é GA; o Free não inclui PIX integrado nem emissão de NF-e/NFC-e. Agent: out–nov/2026.",
+      now: "RC4 pública (843 testes, SHA conferido). Falta o roteiro operacional do T032. Sem PIX integrado nem NF-e/NFC-e no Free. Agent: out–08/nov/2026.",
       history: [
         { m: "2026-06", p: 62 },
         { m: "2026-07", p: 68 },
         { m: "2026-08", p: 74 },
         { m: "2026-09", p: 76 },
+        { m: "2026-10", p: 80 },
       ],
     },
     {
@@ -162,6 +169,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-07", p: 32 },
         { m: "2026-08", p: 36 },
         { m: "2026-09", p: 38 },
+        { m: "2026-10", p: 38 },
       ],
     },
     {
@@ -179,6 +187,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-07", p: 92 },
         { m: "2026-08", p: 100 },
         { m: "2026-09", p: 100 },
+        { m: "2026-10", p: 100 },
       ],
     },
     {
@@ -196,6 +205,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-07", p: 90 },
         { m: "2026-08", p: 92 },
         { m: "2026-09", p: 92 },
+        { m: "2026-10", p: 92 },
       ],
     },
     {
@@ -213,6 +223,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-07", p: 96 },
         { m: "2026-08", p: 98 },
         { m: "2026-09", p: 98 },
+        { m: "2026-10", p: 98 },
       ],
     },
     {
@@ -223,13 +234,14 @@ window.CARACORE_PLANNING = {
       state: "watch",
       tone: "hub",
       shop: "https://hub.caracore.com.br/",
-      hundred: "Instalador Windows SQLite em 06/04/2027.",
-      now: "Web 2.1 pronta. Agent do EXE dez/2026–06/04/2027. Tab em set–nov sem competir com o PDV.",
+      hundred: "Instalador Windows com SQLite em 06/04/2027. Canais: Mercado Livre, Shopee e Temu.",
+      now: "Web 2.1 pronta. RC1 2.1.0-rc1 em QA no Windows; aceite em macOS e Linux ainda aberto. Sem release pública. Agent do instalador: dez/2026–06/04/2027.",
       history: [
         { m: "2026-06", p: 48 },
         { m: "2026-07", p: 52 },
         { m: "2026-08", p: 55 },
         { m: "2026-09", p: 58 },
+        { m: "2026-10", p: 62 },
       ],
     },
     {
@@ -247,6 +259,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-07", p: 95 },
         { m: "2026-08", p: 100 },
         { m: "2026-09", p: 100 },
+        { m: "2026-10", p: 100 },
       ],
     },
     {
@@ -264,6 +277,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-07", p: 70 },
         { m: "2026-08", p: 70 },
         { m: "2026-09", p: 72 },
+        { m: "2026-10", p: 72 },
       ],
     },
     {
@@ -281,6 +295,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-07", p: 100 },
         { m: "2026-08", p: 100 },
         { m: "2026-09", p: 100 },
+        { m: "2026-10", p: 100 },
       ],
     },
     {
@@ -298,6 +313,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-07", p: 10 },
         { m: "2026-08", p: 12 },
         { m: "2026-09", p: 12 },
+        { m: "2026-10", p: 12 },
       ],
     },
     {
@@ -309,12 +325,13 @@ window.CARACORE_PLANNING = {
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
       hundred: "Frotas em produção; freeze M1 em 08/11/2026. FRO planejado para 08/04–dez/2027; Transportes desktop em 08/11/2028.",
-      now: "COE 33/33; B/E + landing 47/47. Smoke -Full local passou, mas deploy das alterações recentes não está confirmado. FRO começa após Hub.",
+      now: "Frotas em produção. Smoke local passou em 03/10; deploy da responsividade recente não confirmado. Freeze M1 em 08/11. FRO depois do Hub.",
       history: [
         { m: "2026-06", p: 30 },
         { m: "2026-07", p: 34 },
         { m: "2026-08", p: 36 },
         { m: "2026-09", p: 38 },
+        { m: "2026-10", p: 40 },
       ],
     },
   ],

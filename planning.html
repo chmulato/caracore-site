@@ -13,7 +13,7 @@
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Planning — estado do ecossistema | Cara Core Informática</title>
-  <meta name="description" content="Estado do planning Cara Core: média das 11 torres, riscos, próximo marco. PDV, CSO, Hub.">
+  <meta name="description" content="Onde está o ecossistema Cara Core: o que exige atenção, o próximo marco e o progresso até dez/2029.">
   <meta name="author" content="Cara Core Informática">
   <link rel="canonical" href="https://www.caracore.com.br/planning.html">
   <script type="application/ld+json">
@@ -21,7 +21,7 @@
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Planning Cara Core — estado do ecossistema",
-    "description": "Média das 11 torres, excepções e próximo marco público até 2029.",
+    "description": "Onde está o ecossistema Cara Core: o que exige atenção, o próximo marco e o progresso até dez/2029.",
     "url": "https://www.caracore.com.br/planning.html",
     "publisher": {
       "@type": "Organization",
@@ -113,13 +113,15 @@
     <h1 class="visually-hidden">Planning Cara Core</h1>
 
     <section class="pl-l1" aria-label="Estado do planejamento">
+      <p class="pl-legend" id="pl-legend">% = progresso rumo ao compromisso público de cada produto até dez/2029 · não é ranking comercial · núcleo = PDV, CSO e Hub (mandam na cota); demais = brincos.</p>
+
       <article class="pl-block pl-pulse" id="onde">
-        <p class="pl-kicker">Onde estamos · <time id="pl-asof" datetime="2026-10-05">05/10/2026</time></p>
+        <p class="pl-kicker">Onde estamos · <time id="pl-asof" datetime="2026-10-05">05/10/2026</time> · <span id="pl-horizon">2026 → 2029</span></p>
         <div class="pl-pulse-grid">
-          <p class="pl-pulse-pct"><strong id="pl-avg">—</strong><span>média das 11 torres</span></p>
-          <p><strong id="pl-done">—</strong><span>estáveis</span></p>
-          <p><strong id="pl-owner">—</strong><span>ciclo actual</span></p>
-          <p><strong id="pl-horizon">2026 → 2029</strong><span>horizonte</span></p>
+          <p class="pl-pulse-pct"><strong id="pl-avg">—</strong><span>média aritmética das 11 · não ponderada pelo núcleo</span></p>
+          <p><strong id="pl-done">—</strong><span>concluídos</span></p>
+          <p class="pl-pulse-alerts"><strong id="pl-alerts">—</strong><span>nas 11 torres</span></p>
+          <p><strong id="pl-owner">—</strong><span>Em foco agora</span></p>
         </div>
       </article>
 
@@ -135,14 +137,23 @@
 
       <article class="pl-block pl-towers" id="skyline">
         <p class="pl-kicker">Status das 11 torres</p>
-        <div class="pl-tower-list" id="pl-tower-rows" role="list"></div>
+        <p class="pl-status-legend">
+          <span class="pl-badge pl-badge-risco">Risco</span>
+          <span class="pl-badge pl-badge-watch">Atenção</span>
+          <span class="pl-badge pl-badge-ok">Ok</span>
+          <span class="pl-badge pl-badge-done">Concluído</span>
+        </p>
+        <div class="pl-tower-groups" id="pl-tower-rows"></div>
         <div class="pl-fiche" id="pl-fiche" hidden></div>
       </article>
     </section>
 
     <section class="pl-l2" aria-label="Detalhe operacional">
       <details class="pl-fold" id="patrocinio">
-        <summary>Funding</summary>
+        <summary>
+          <span class="pl-fold-title">Envelope Cursor</span>
+          <span class="pl-fold-preview" id="pl-preview-fund">US$ 20/mês · set/2026→dez/2029</span>
+        </summary>
         <div class="pl-fold-body">
           <div class="pl-fund-stats" role="group" aria-label="Envelope">
             <p><strong id="pl-fund-month">US$ 20</strong><span>/mês</span></p>
@@ -156,7 +167,7 @@
               <tr>
                 <th scope="col">Marco</th>
                 <th scope="col">Entrega</th>
-                <th scope="col">Agent</th>
+                <th scope="col">Uso da cota</th>
               </tr>
             </thead>
             <tbody id="pl-fund-covers"></tbody>
@@ -167,7 +178,10 @@
       </details>
 
       <details class="pl-fold" id="regras">
-        <summary>Regras de Agent</summary>
+        <summary>
+          <span class="pl-fold-title">Como a cota é gasta</span>
+          <span class="pl-fold-preview" id="pl-preview-rules">1 produto pesado/ciclo · cota não acumula</span>
+        </summary>
         <div class="pl-fold-body">
           <p class="pl-chips" id="pl-fund-rules"></p>
           <p class="pl-line" id="pl-fund-paid"></p>
@@ -175,7 +189,10 @@
       </details>
 
       <details class="pl-fold" id="anos">
-        <summary>Cronograma</summary>
+        <summary>
+          <span class="pl-fold-title">Cronograma</span>
+          <span class="pl-fold-preview" id="pl-preview-cron">PDV corte + copy CSO M1 · 09/nov–04/dez/2026</span>
+        </summary>
         <div class="pl-fold-body">
           <div class="pl-years" id="pl-years"></div>
           <table class="pl-table">
@@ -190,28 +207,28 @@
         </div>
       </details>
 
-      <details class="pl-fold" id="criterios">
-        <summary>Critérios</summary>
+      <details class="pl-fold" id="criterios" open>
+        <summary>
+          <span class="pl-fold-title">Critérios</span>
+          <span class="pl-fold-preview">já está na legenda do topo</span>
+        </summary>
         <div class="pl-fold-body">
-          <ul class="pl-criteria">
-            <li>100% = marco público do produto até dez/2029.</li>
-            <li>Média = média aritmética das 11 torres.</li>
-            <li>Não é ranking comercial.</li>
-            <li>Núcleo (PDV, CSO, Hub) manda na cota. Brinco cede.</li>
-            <li>Fonte: <a href="ecosistema.html#roadmap">roadmap</a> · <code>CALENDARIO_COTA_CURSOR.md</code>.</li>
-          </ul>
+          <p class="pl-line">O percentual, o núcleo e o que não é ranking estão na legenda do topo. Fonte: <a href="ecosistema.html#roadmap">roadmap</a> · <code>CALENDARIO_COTA_CURSOR.md</code>.</p>
         </div>
       </details>
 
       <details class="pl-fold" id="pl-detail">
-        <summary>Histórico</summary>
+        <summary>
+          <span class="pl-fold-title">Histórico</span>
+          <span class="pl-fold-preview" id="pl-preview-hist">11 produtos</span>
+        </summary>
         <div class="pl-fold-body">
           <div class="pl-cards" id="pl-cards"></div>
         </div>
       </details>
     </section>
 
-    <details class="pl-fold pl-l3">
+    <details class="pl-fold pl-l3" id="pl-ops" hidden>
       <summary>Notas operacionais</summary>
       <div class="pl-fold-body">
         <p id="pl-note"></p>
@@ -237,7 +254,7 @@
       Cara Core Informática · CNPJ: 23.969.028/0001-37 · <a href="https://www.caracore.com.br/" class="text-decoration-none">www.caracore.com.br</a>
     </span>
     <nav class="pl-footer-nav mt-2" aria-label="Rodapé">
-      <a href="/planning.html#patrocinio">Funding</a>
+      <a href="/planning.html#patrocinio">Envelope Cursor</a>
       <a href="/ecosistema.html">Ecossistema</a>
       <a href="/ecosistema.html#roadmap">Roadmap</a>
       <a href="/portfolio.html">Portfólio</a>

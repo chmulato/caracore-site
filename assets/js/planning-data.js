@@ -21,7 +21,8 @@ window.CARACORE_PLANNING = {
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
-   * flags[] = só excepções. Produto em ritmo normal não entra aqui.
+   * flags[] = só exceções. Produto em ritmo normal não entra aqui.
+   * text permanece o parágrafo-fonte. lead + detail são as duas linhas públicas; tip vai para hover e ficha.
    */
   EXEC: {
     owner: { period: "out–08/nov/2026", who: "PDV v4" },
@@ -37,18 +38,26 @@ window.CARACORE_PLANNING = {
         id: "pdv-java",
         kind: "risco",
         title: "PDV Java · RC4 em avaliação",
+        lead: "Pré-release pública em avaliação. O roteiro operacional formal ainda aguarda aceite.",
+        detail: "v4.0.0-rc4 · ZIP Windows x64 · suíte 843 testes · download estável v3.2.6-free",
+        tip: "T032 é o gate interno desse roteiro. 08/11 é previsão de lançamento estável, ainda não confirmado.",
         text: "Pré-release pública v4.0.0-rc4 (ZIP Windows x64, suíte 843 testes). T032 aguarda o roteiro operacional formal. 08/11 é previsão, não GA confirmado. O download estável continua v3.2.6-free.",
       },
       {
         id: "cso",
         kind: "desvio",
         title: "CSO · freeze M1 em 08/11/2026",
+        lead: "Frotas em produção. O deploy da responsividade recente ainda não está confirmado.",
+        detail: "Smoke local passou · FRO 08/04–dez/2027, depois do Hub",
+        tip: "Gestão de frotas. Não é rastreador GPS.",
         text: "Frotas em produção. Smoke local passou; o deploy da responsividade recente ainda não está confirmado. FRO: 08/04–dez/2027, depois do Hub. Não é GPS.",
       },
       {
         id: "hub",
         kind: "risco",
         title: "Hub · RC1 Windows publicada",
+        lead: "Pré-release Windows no ar. Lançamento estável previsto para 06/04/2027.",
+        detail: "v2.1.0-rc1 · sem assinatura · Mac e Linux ficam para depois",
         text: "Pré-release Windows v2.1.0-rc1 no ar, sem assinatura. Não é o GA de 06/04/2027. Mac e Linux ficam para depois.",
       },
     ],
@@ -216,8 +225,8 @@ window.CARACORE_PLANNING = {
       state: "done",
       tone: "circuito",
       shop: "https://circuito.caracore.com.br/",
-      hundred: "Trilha activa (PF grátis · escolas R$ 5/aluno/mês).",
-      now: "Fase activa no ecossistema. Sem GA novo neste horizonte.",
+      hundred: "Trilha ativa (PF grátis · escolas R$ 5/aluno/mês).",
+      now: "Fase ativa no ecossistema. Sem GA novo neste horizonte.",
       history: [
         { m: "2026-06", p: 95 },
         { m: "2026-07", p: 96 },

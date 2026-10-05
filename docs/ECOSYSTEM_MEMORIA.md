@@ -2,7 +2,7 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
-**Atualizado:** 2026-10-05 · 05:42 BRT (checkpoint Hub)
+**Atualizado:** 2026-10-05 · 09:27 BRT (checkpoint matriz/CDN local; Hub preservado)
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
 **Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace e **cópia git** `caracore-site/AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
@@ -28,7 +28,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | **MKT / Sala** | Ferramentas e portal de operações; a Sala é acessada em `tools.caracore.com.br/sala/`. | Brinco; não deslocar prioridade dos produtos principais. | `caracore-mkt` · `caracore-tools` |
 | **RU Soberano** | Garagem/roadmap; marco Simulador + Sala Retro previsto para 18/06/2027. | Sem abrir frente pesada fora da fila de cota. | `caracore-ru` |
 | **Helianto** | Roadmap SaaS; GA previsto para 30/12/2029. | Agent em 2029, após CSO Transportes; não antecipar para 2027–2028. | `caracore-helianto` |
-| **Matriz, Central e Suporte Local** | Conteúdo alinhado no repositório: convite da home para a Central de Downloads e menu de `suporte-local.html` alinhado à navegação institucional. | Não inferir publicação/deploy pelo estado do repositório; conferir o site publicado antes de afirmar que está no ar. | `caracore-site/index.html` · `suporte-local.html` · `caracore-loja/docs/download.html` |
+| **Matriz, Central e Suporte Local** | Correções locais de CDN/Vercel: logo branco WebP versionado (−91,51%), PNG legado menor, cache de navegador curto em seis páginas públicas, 404 sem redirect automático, links legados corrigidos; build, 8/8 testes e browser desktop/mobile passaram. | **Não publicado**. Não inferir impacto no dashboard: confirmar deploy, headers reais e métricas depois da publicação. Origem dos requests repetidos ainda não identificada. | `caracore-site/docs/CDN_VERCEL.md` · `vercel.json` · `DEPLOY_STATIC.md` |
 
 ### Status PDV Java (2026-10-04) — para IAs
 
@@ -187,6 +187,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-05 | **Matriz — redução local de CDN/Fast Data Transfer (Vercel Hobby):** Observability indicava ~8,1 mil respostas de `logo_branca.png` × 1.389.022 B ≈ 11,25 GB; peso por resposta confirmado, origem dos acessos repetidos não. Gerados logo branco WebP com hash (117.882 B, −91,51%) e PNG compatível otimizado (456.635 B, −67,13%); logo comum −48,54%. Cache `max-age=120, s-maxage=86400` restrito à home e cinco páginas públicas; cache hashed immutable e vendors 24 h. 404 agora preserva erro e não navega automaticamente; 14 links legados corrigidos, sitemap alinhado e favicon duplicado removido. Build: 100 HTML, 507 referências, 98 verificações JS, 8/8 testes; Edge desktop/mobile passou, uma requisição do logo na primeira visita, cache reutilizado na recarga e zero requests à origem durante 65 s idle desktop. 3 erros JS e 6 source maps ausentes são preexistentes; sem novos erros. **Alterações apenas locais, sem commit/push/deploy**; aferir headers e redução no dashboard depois de publicar. Detalhes: `docs/CDN_VERCEL.md`. |
 | 2026-10-05 | **Hub — pausa e colaboração Gemini/Cursor:** handoff, status atual da oficina, regras Cursor e AGENTS espelhados atualizados. S4.3 passou apenas no runtime local Windows; Java focado 70/70, Playwright 4/4, WAR gerado/copiado com hash conferido. Login real via `npm run dev` permanece sem causa confirmada porque perfil/banco original não foi localizado; próximo passo é identificar runtime/perfil sem ler senha/hash nem alterar dados. Recuperação offline de senha segue tarefa separada. S4.2 depende de CI verde nos quatro alvos; S4.4–S4.9/Sprint 5 abertas; sem RC1 pública ou novo instalador validado. Git observado até `7e7fd14`; sem commit/push pelo assistente nesta atualização. GA e cota inalterados. |
 | 2026-10-04 | **CaraCore Hub — handoff RC1 Free `2.1.0-rc1`:** contexto rápido, regra Cursor e plano atualizados. Sprints 1–3 e S4.1 concluídas; S4.2 segue pendente após falha CI #7: barra final ausente na base Playwright corrigida localmente para Windows/macOS; causa do `ECONNREFUSED` Linux ainda não comprovada. Smoke local Windows passou 3/3 com perfil isolado; migração SQLite e suíte Electron passaram. Alterações locais ainda sem commit/push; próximo gate é CI atualizada nos quatro alvos. RC1 não é GA. Handoff: `caracore-hub/docs/contexto-rapido.md`. |
 | 2026-10-04 | **Memória operacional para Gemini/Cursor:** incluído snapshot de status, gates e handoffs das aplicações; explicitada a precedência do status operacional da oficina e a necessidade de confirmar deploy antes de declarar publicação. Corrigida a copy do recibo Free para “link e PDF, sem valor fiscal” na memória e nos dois `AGENTS.md`. Registrados o convite da home à Central e o alinhamento do menu Suporte Local; deploy dessas páginas não foi verificado nesta atualização. |

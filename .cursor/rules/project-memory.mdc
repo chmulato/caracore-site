@@ -5,7 +5,7 @@ alwaysApply: true
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-10-04 · IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
+**Atualizado:** 2026-10-05 · 09:27 BRT · IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
 
 ## Checkpoint Hub — 05/10/2026 · 05:42 BRT
 
@@ -14,6 +14,15 @@ alwaysApply: true
 - Login reportado via Electron `npm run dev` ainda sem causa confirmada: perfil/banco real não localizado. Não confundir teste de perfil limpo com resolução na conta real; localizar `HUB_USER_DATA_PATH`/`userData` e WAR efetivos, consultar só existência/status sem senha/hash.
 - Recuperação offline de senha é tarefa separada; não resetar senha nem apagar dados como workaround. Sem RC1 pública, sem novo instalador validado nesta rodada; GA 06/04/2027 e cota mantidos.
 - Retomada Gemini/Cursor: `caracore-hub/docs/contexto-rapido.md` → `project_hub/docs/STATUS-ATUAL.md` → `docs/plano-lancamento-rc1.md` → `.cursor/rules/project-memory.mdc`. Histórico observado até `7e7fd14`; conferir diff atual antes de colaborar. Atualização de memória não autoriza commit/push.
+
+## Matriz institucional — CDN/Vercel — 05/10/2026
+
+- Evidência Vercel: cerca de 8,1 mil respostas do logo branco de 1.389.022 B explicam ~11,25 GB de transferência por tamanho do payload; a origem dos acessos recorrentes não está comprovada. Não atribuir automaticamente a bots.
+- Correção local: home usa WebP versionado de 117.882 B (−91,51%) e fallback PNG versionado; PNG legado reduzido a 456.635 B. Logo comum reduzido sem perda de pixels. Não modificar vendor manualmente.
+- Cache no `vercel.json`: um ano immutable apenas para URLs com hash; 24 h para vendor/compatibilidade; 120 s no navegador + 24 h shared (`s-maxage`) apenas para `/`, `/index.html`, `/ecosistema.html`, `/portfolio.html`, `/planning.html` e `/suporte-local.html`. Rotas seguras, APIs/config não receberam cache público explícito.
+- `404.html` não redireciona automaticamente; links quebrados conhecidos para Retrô/Wiki foram corrigidos e destinos canônicos confirmados; sitemap alinhado.
+- Build Node nativo passou (100 HTML, 507 recursos, 98 checagens JS); testes 8/8. Edge desktop/mobile confirmou logos, PNG fallback, menu e cache; home ficou 65 s sem request same-origin/reload. Três erros de sintaxe JS e seis source maps ausentes são preexistentes.
+- **Estado local somente, sem commit/push/deploy.** Não afirmar mudança em produção nem queda de métricas até publicar e conferir headers/dashboard. Handoff: `docs/CDN_VERCEL.md`; comandos e política de cache: `DEPLOY_STATIC.md`.
 
 ## Posicionamento B2B (copy comercial)
 
@@ -66,6 +75,7 @@ alwaysApply: true
 - **docs/DILEMA.md** — posicionamento B2B e status de alinhamento.
 - **docs/MEMORIA_DO_PROJETO.md** — memória resumida da matriz.
 - **docs/ECOSYSTEM_MEMORIA.md** — índice único para retomada.
+- **docs/CDN_VERCEL.md** — evidências, otimizações locais, validação e passos pós-deploy da auditoria de CDN da matriz.
 - **docs/SITE_MATRIZ.md** — guia operacional (portfólio, redirects, publicação).
 
 ---

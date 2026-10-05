@@ -48,8 +48,8 @@ window.CARACORE_PLANNING = {
       {
         id: "hub",
         kind: "risco",
-        title: "Hub · RC1 sem aceite geral",
-        text: "Oficina web 2.1 pronta. A RC1 Free passou conectores no Windows instalado e continua bloqueada para macOS e Linux. Sem instalador público. GA 06/04/2027.",
+        title: "Hub · RC1 Windows publicada",
+        text: "Pré-release Windows v2.1.0-rc1 no ar, sem assinatura. Não é o GA de 06/04/2027. Mac e Linux ficam para depois.",
       },
     ],
   },
@@ -117,7 +117,7 @@ window.CARACORE_PLANNING = {
       label: "2027",
       subtitle: "Hub · FRO",
       pct: 14,
-      note: "Hub: web 2.1 pronta e RC1 em QA, sem release pública. Agent do instalador em dez/2026–06/04. FRO 08/04–dez. Ink PWA = Tab, não antes de 2028.",
+      note: "Hub: pré-release Windows v2.1.0-rc1 publicada. GA do instalador em 06/04. FRO 08/04–dez. Ink PWA = Tab, não antes de 2028.",
     },
     {
       id: "y2028",
@@ -235,13 +235,13 @@ window.CARACORE_PLANNING = {
       tone: "hub",
       shop: "https://hub.caracore.com.br/",
       hundred: "Instalador Windows com SQLite em 06/04/2027. Canais: Mercado Livre, Shopee e Temu.",
-      now: "Web 2.1 pronta. RC1 2.1.0-rc1 em QA no Windows; aceite em macOS e Linux ainda aberto. Sem release pública. Agent do instalador: dez/2026–06/04/2027.",
+      now: "Pré-release Windows v2.1.0-rc1 publicada, sem assinatura. GA 06/04/2027. Mac e Linux fora desta tag.",
       history: [
         { m: "2026-06", p: 48 },
         { m: "2026-07", p: 52 },
         { m: "2026-08", p: 55 },
         { m: "2026-09", p: 58 },
-        { m: "2026-10", p: 62 },
+        { m: "2026-10", p: 70 },
       ],
     },
     {

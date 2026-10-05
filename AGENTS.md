@@ -25,7 +25,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 |---|---|---|
 | **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.6-free`** (100 vendas **por mês**; UI no navegador) · Java **`v4.0.0-rc4`** (pré-release pública para avaliação; T032 aberto pelo roteiro operacional formal; GA **08/11/2026** condicionado) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frotas Web + Transportes Desktop (2028) | Frotas em produção · COE-B/E publicados em `e193d6d` · freeze M1 até 08/11/2026 · FRO 08/abr–dez/2027 · **não é GPS** |
-| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · RC1 Free `2.1.0-rc1` em QA; S4.2 aguarda CI multiplataforma · sem release WAR pública · GA Windows **06/04/2027** |
+| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1` unsigned · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
 
 ### Registro da Matriz — CDN/Vercel — 05/10/2026
 
@@ -38,9 +38,9 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 
 - **Coerência funcional:** o escopo de negócio está coerente com o código para Mercado Livre, Shopee e Temu. Os três canais possuem webhook, worker e conector; RBAC canônico = `ADMIN`, `SUPERVISOR`, `OPERADOR`; SQLite/WAL e as 11 migrações foram validados.
 - **Ponto de atenção:** `AMAZON` e `B2W` ainda aparecem no enum de domínio, mas não têm webhook, worker ou conector. Não são promessa pública do Hub. Até decisão posterior, tratar como roadmap e não aceitar esses canais na UI/API como se estivessem operacionais.
-- **RC1 em QA (05/10/2026):** CI #5 comprovou instalação/payload nos quatro alvos; CI #7 falhou na readiness Linux (`127.0.0.1:9090`) e os testes Windows/macOS não encontraram o heading de setup. Normalização de `HUB_BASE_URL` e perfil isolado `HUB_USER_DATA_PATH` corrigidos no código. Smoke Playwright local Windows 4/4 (setup/login, RBAC, persistência, pedido/estoque/CSV), testes Java focados 70/70, regressão SQLite e suíte Electron passaram. S4.3 validada somente no runtime de desenvolvimento Windows; S4.2 segue aberta até nova CI verde nos quatro alvos; S4.4–S4.9 e Sprint 5 pendentes. Sem novo instalador validado nesta rodada; ainda não há RC1 pública/GA. Detalhes: `caracore-hub/docs/contexto-rapido.md`, `project_hub/docs/STATUS-ATUAL.md` e `docs/plano-lancamento-rc1.md`.
+- **RC1 Windows publicada (05/10/2026):** tag `v2.1.0-rc1` em `caracore-hub-releases`, NSIS x64 unsigned. A suíte no instalador Windows passou 9/9. Mac e Linux não entram nesta tag. Não é GA. Detalhes: `caracore-hub/docs/contexto-rapido.md` e `docs/plano-lancamento-rc1.md`.
 - **Login real — ponto de parada:** corrigidos timestamps SQLite, busca de etiqueta/pedido e consulta de e-mail case-insensitive, mas o erro do screenshot continua sem causa confirmada. O usuário usou `npm run dev`; banco/perfil original não localizado nos caminhos conhecidos. Identificar `HUB_USER_DATA_PATH`, `userData` e WAR efetivos antes de consultar somente existência/status da conta; não solicitar/exibir senha/hash nem apagar banco. Recuperação offline de senha é tarefa separada e pendente. Git observado: `master`/referência local `origin/master` em `7e7fd14`; revalidar ao retomar. Gemini/Cursor devem seguir o handoff da oficina, sem confundir smoke limpo com resolução na conta real.
-- **Status honesto:** web 2.1 pronta na oficina; instalador Windows ainda não é release/GA. Não anunciar EXE, Amazon/B2W ou integração pronta além de ML/Shopee/Temu.
+- **Status honesto:** web 2.1 pronta na oficina. Pré-release Windows `v2.1.0-rc1` publicada em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1 (NSIS unsigned, 285.746.041 bytes, SHA-256 `f59b959d34c97f5048ebf2cfaadeb42a7e5b7d84597b15db00d790779def29ae`). Não é GA. Mac e Linux fora desta tag. Não anunciar Amazon/B2W nem o GA de 06/04/2027 como já entregue.
 - **Fontes de retomada:** `caracore-hub/docs/contexto-rapido.md`, `caracore-hub/electron/README.md` e `caracore-hub/scripts/build_hub_exe.ps1`.
 
 ### Snapshot 08/09/2026 (ler isto primeiro)

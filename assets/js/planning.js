@@ -162,14 +162,14 @@
     const state = p.state || "ok";
     const role = p.core ? "núcleo" : "brinco";
     return (
-      '<button type="button" class="pl-tower is-' +
+      '<div role="listitem"><button type="button" class="pl-tower is-' +
       state +
       (p.core ? " is-core" : " is-brinco") +
       '" data-product="' +
       p.id +
       '" style="--fill:' +
       pct +
-      '%" role="listitem" aria-pressed="false" aria-controls="pl-fiche" aria-label="' +
+      '%" aria-pressed="false" aria-controls="pl-fiche" aria-label="' +
       escapeHtml(p.name) +
       ", " +
       role +
@@ -187,7 +187,7 @@
       pct +
       "%</span>" +
       badge(state) +
-      "</button>"
+      "</button></div>"
     );
   }
 

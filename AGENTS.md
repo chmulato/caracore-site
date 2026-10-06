@@ -166,7 +166,8 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 
 Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer ao setup unificado:
 * **Python Centralizado:** Usar sempre o interpretador em `D:\dev\.venv\Scripts\python.exe`.
-* **Maven Centralizado:** Usar o wrapper em `D:\dev\.mvn\bin\mvn.cmd` e o repositório em `D:\dev\.m2\repository`.
+* **Maven Centralizado:** Usar o wrapper em `D:\onedrive\dev\.mvn\bin\mvn.cmd` e o repositório em `D:\onedrive\dev\.m2\repository`.
+* **Versões Java:** mapa canónico [`APPS_JAVA_VERSION.md`](APPS_JAVA_VERSION.md). PDV (Free `v3.2.6` e v4 `4.0.0-rc4`) **25** · CSO Frotas **21** · CSO Transportes **25** · Hub **25** · Ink **25** · Helianto **25** · RU **25** · Seed **17**. Nesta máquina o `JAVA_HOME` padrão é o JDK 21 (`C:\Program Files\Java\jdk21.0.11_10`); Seed usa `C:\Program Files\Java\jdk-17`; as aplicações 25 usam `C:\Program Files\Java\jdk-25.0.3_9`.
 * **Script de Ativação:** `python D:\dev\bootstrap_env.py`.
 
 ---
@@ -254,6 +255,7 @@ FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro�
 - Guia para novas tarefas: [`caracore-site/docs/INICIAR_NOVA_TAREFA.md`](caracore-site/docs/INICIAR_NOVA_TAREFA.md)
 - Validação matriz ↔ lojas: [`caracore-site/docs/VALIDACAO_LOJAS_MATRIZ.md`](caracore-site/docs/VALIDACAO_LOJAS_MATRIZ.md)
 - Padrão de ambiente de dev: [`AMBIENTE_CENTRALIZADO.md`](AMBIENTE_CENTRALIZADO.md)
+- Versões Java por aplicação (Cursor, Copilot, Gemini/Antigravity): [`APPS_JAVA_VERSION.md`](APPS_JAVA_VERSION.md)
 - Wiki do portal: [`caracore-wiki/docs/projeto-pdv.html`](caracore-wiki/docs/projeto-pdv.html) · [`projeto-cso.html`](caracore-wiki/docs/projeto-cso.html) · [`projeto-hub.html`](caracore-wiki/docs/projeto-hub.html) · manual Hub [`docs/hub/`](caracore-wiki/docs/hub/)
 - Retomada Hub (GA Windows 2027): [`caracore-hub/docs/contexto-rapido.md`](caracore-hub/docs/contexto-rapido.md)
 - Retomada PDV Java (pré-release pública `v4.0.0-rc4`, roteiro operacional formal pendente antes de avaliar GA; canal maduro `v3.2.6-free`; **frente GA 08/11/2026 condicionada a T032**): [`caracore-pdv/AGENTS.md`](caracore-pdv/AGENTS.md) · [`PLANO_LANCAMENTO_V4.md`](caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md) · [`CONTINUIDADE_DESENVOLVIMENTO.md`](caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md)

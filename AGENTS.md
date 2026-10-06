@@ -50,7 +50,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 | Frente | O que a data significa | O que não é |
 |---|---|---|
 | **PDV Java v4** | **GA público** se T032 + `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md`. **Código com Cursor: outubro–novembro/2026** (cota). | Não é o Free `v3.2.6-free`; não é copiloto PIX Split; não queimar cota em setembro neste plano |
-| **CSO Gestão de Frotas** | Último release documentado `e193d6d`; smoke `-Full` local passou em 03/10. `febaa3c` (responsividade) está em `master`/`origin/master`, mas o deploy ainda não foi confirmado: produção `/login` serve CSS `20260807c`, commit atual usa `20261003b`. Gates Railway finais pendentes para o freeze M1 de **08/11/2026** | Não é FRO 24/24, Momento 2, GPS nem Transportes desktop; schema Flyway efetivo em produção ainda não confirmado diretamente |
+| **CSO Gestão de Frotas** | Último release documentado `e193d6d`; smoke `-Full` local passou em 03/10. `febaa3c` (responsividade) está em `master`/`origin/master`. Em 06/10, produção `/login` serve CSS `20261003b`. Gates Railway finais pendentes para o freeze M1 de **08/11/2026** | Não é FRO 24/24, Momento 2, GPS nem Transportes desktop; schema Flyway efetivo em produção ainda não confirmado diretamente |
 | **CSO Transportes** | — | GA **08/11/2028**. Não usar a data do PDV |
 
 Headline pública de 08/11/2026 = **PDV v4**. CSO Frotas continua em produção e no plano COE/FRO sem competir por essa promessa. Hub = 06/04/2027.
@@ -214,7 +214,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
   - CSO Frotas Web (Em produção)
 * **Em Andamento (Garagem / Roadmap Público):**
   - **CaraCore PDV v4 (frente de GA público):** `08/11/2026` — plano `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md`
-  - **CaraCore CSO Frotas:** COE-B/E e termos LGPD 2.1 no último release documentado (`e193d6d`); commits `3c0e41e` (RBAC de convites) e `febaa3c` (responsividade mobile/tablet) sincronizados em `master`/`origin/master`. Smoke `-Full` local passou em 03/10; gates Railway finais/deploy do commit atual pendentes — `/login` em produção ainda referencia CSS `20260807c`, contra `20261003b` atual. Freeze M1 em `08/11/2026` (`caracore-cso-quarkus/docs/plano-lancamento-2026-11-08.md`). FRO completo e Momento 2 **não** cabem neste dia.
+  - **CaraCore CSO Frotas:** COE-B/E e termos LGPD 2.1 no último release documentado (`e193d6d`); commits `3c0e41e` (RBAC de convites) e `febaa3c` (responsividade mobile/tablet) sincronizados em `master`/`origin/master`. Smoke `-Full` local passou em 03/10. Em 06/10, `/login` em produção serve CSS `20261003b`. Gates Railway finais do schema seguem pendentes. Freeze M1 em `08/11/2026` (`caracore-cso-quarkus/docs/plano-lancamento-2026-11-08.md`). FRO completo e Momento 2 **não** cabem neste dia.
   - **CaraCore Hub (GA Instalador Windows):** `06/04/2027`
   - **RU Soberano (Simulador + Sala Retro):** `18/06/2027`
   - **CaraCore CSO Transportes (Desktop Bunker):** `08/11/2028` — **dois anos** depois do PDV v4

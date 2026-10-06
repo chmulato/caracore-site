@@ -49,6 +49,13 @@ docker-compose*.yml
 *.md
 docs/
 
+# Ferramentas Python legadas (nao fazem parte do site estatico)
+run_script.py
+run_tests.py
+requirements.txt
+pyproject.toml
+secrets.txt.template
+
 # Outros
 *.bak
 *.tmp

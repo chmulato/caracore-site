@@ -25,7 +25,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 |---|---|---|
 | **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.6-free`** (100 vendas **por mês**; UI no navegador) · Java **`v4.0.0-rc4`** (pré-release pública para avaliação; T032 aberto pelo roteiro operacional formal; GA **08/11/2026** condicionado) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frotas Web + Transportes Desktop (2028) | Frotas em produção · COE-B/E publicados em `e193d6d` · freeze M1 até 08/11/2026 · FRO 08/abr–dez/2027 · **não é GPS** |
-| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1` unsigned · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
+| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1.1` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
 
 ### Registro da Matriz — CDN/Vercel — 05/10/2026
 

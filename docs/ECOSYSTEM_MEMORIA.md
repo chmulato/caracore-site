@@ -187,6 +187,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-06 | **Hub — matriz, portfólio, planning e wiki alinhados a `v2.1.0-rc1.1`:** o download público deixa de apontar a tag `v2.1.0-rc1`. A pré-release continua sem assinatura, com instalador e ZIP. GA 06/04/2027 inalterado. |
 | 2026-10-06 | **Hub — download da loja em `v2.1.0-rc1.1`:** instalador SHA-256 `841c0ce2da6796bd25b3f958d5ec366ee7ef5758dbf7439d1f44b55617206d3c` (281.521.557 bytes) e ZIP SHA-256 `1b942bbe04dac9d32622f117d6542100c242e0fbb4561238ec4371f436de5058` (333.338.656 bytes). A tag `v2.1.0-rc1` conserva o instalador de 05/10. Não é GA. |
 | 2026-10-05 | **Hub — status vigente separado da suíte 9/9:** o download da tag `v2.1.0-rc1` é o instalador com log (SHA-256 `86f010a3…`). A suíte 9/9 fica no asset anterior `f59b959d…`. A home da loja passa a descrever a pré-release como disponível para avaliação; o GA permanece 06/04/2027. |
 | 2026-10-05 | **Hub — asset da tag `v2.1.0-rc1` substituído:** o download Windows passa a ser o NSIS com log de instalação, 285.745.501 bytes, SHA-256 `86f010a33359f92fbc03452d7a2d5f7a045b75f43c62dd3168c3e3c302c6e4e9`, unsigned. O arquivo anterior `f59b959d34c97f5048ebf2cfaadeb42a7e5b7d84597b15db00d790779def29ae` (285.746.041 bytes) permanece o da suíte 9/9. Não é GA. Causa do `0xC0000005` não confirmada. |

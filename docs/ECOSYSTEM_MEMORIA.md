@@ -2,7 +2,7 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
-**Atualizado:** 2026-10-05 · planning e ecossistema alinhados ao núcleo (PDV RC4, CSO freeze M1, Hub RC1 em QA)
+**Atualizado:** 2026-10-06 · MKT e Helianto fora do mapa de lojas (CNAMEs removidos; `MEMORIA_INFRAESTRUTURA_CARACORE.txt`)
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
 **Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace e **cópia git** `caracore-site/AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
@@ -25,9 +25,9 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | **Ink Agenda** | Desktop Windows `v2.0.0` estável. | PWA não antes de 2028; sem prometer DMG/DEB. | `caracore-ink/docs/PLANO_PWA.md` |
 | **Seed** | Ferramenta interna; sem download público. | Manter a vitrine honesta sobre indisponibilidade pública. | `caracore-seed/docs/memoria-projeto.txt` |
 | **Reino OIDC / Circuito / Área 51** | OIDC `v2.0.0-RC1`; Circuito ativo; Área 51 com baseline `0.1.0-dev` e vitrine de consultoria. | São brincos: cedem prioridade de cota e headline aos produtos principais. | `caracore-oidc` · `caracore-circuito` · `caracore-area51` |
-| **MKT / Sala** | Ferramentas e portal de operações; a Sala é acessada em `tools.caracore.com.br/sala/`. | Brinco; não deslocar prioridade dos produtos principais. | `caracore-mkt` · `caracore-tools` |
+| **MKT / Sala** | Ferramenta interna. Entrada pública na Sala `tools.caracore.com.br/sala/`. Fora do mapa de lojas: CNAME `mkt.caracore.com.br` removido. | Brinco; não deslocar prioridade dos produtos principais. | `caracore-mkt` · `caracore-tools` |
 | **RU Soberano** | Garagem/roadmap; marco Simulador + Sala Retro previsto para 18/06/2027. | Sem abrir frente pesada fora da fila de cota. | `caracore-ru` |
-| **Helianto** | Roadmap SaaS; GA previsto para 30/12/2029. | Agent em 2029, após CSO Transportes; não antecipar para 2027–2028. | `caracore-helianto` |
+| **Helianto** | Oficina/roadmap; GA 30/12/2029. Fora do mapa de lojas: CNAME `helianto.caracore.com.br` removido. Sem subdomínio. | Agent em 2029, após CSO Transportes; não antecipar para 2027–2028. | `caracore-helianto` |
 | **Matriz, Central e Suporte Local** | Correções locais de CDN/Vercel: logo branco WebP versionado (−91,51%), PNG legado menor, cache de navegador curto em seis páginas públicas, 404 sem redirect automático, links legados corrigidos; build, 8/8 testes e browser desktop/mobile passaram. | **Não publicado**. Não inferir impacto no dashboard: confirmar deploy, headers reais e métricas depois da publicação. Origem dos requests repetidos ainda não identificada. | `caracore-site/docs/CDN_VERCEL.md` · `vercel.json` · `DEPLOY_STATIC.md` |
 
 ### Status PDV Java (2026-10-04) — para IAs
@@ -48,7 +48,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 1. **Nova tarefa?** → [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) (fluxo por tipo de trabalho)
 2. **Status das aplicações (Gemini/Cursor):** começar pelo [snapshot acima](#snapshot-das-aplicações-e-frentes-2026-10-05), depois consultar a memória canônica da oficina antes de editar ou anunciar status.
 3. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`D:\onedrive\dev\AGENTS.md`**
-4. **Produtos principais (só estes três):** PDV (Java Free `v3.2.6-free` + pré-release pública `v4.0.0-rc4` / **frente GA 08/11/2026** se T032 + Rust `v0.1.4`) · CSO (Frotas **no ar e em andamento**; freeze M1 08/11/2026; loja `cso-transp`; Transportes **08/11/2028**; ≠ GPS) · Hub (encomendas; GA Windows 06/04/2027). **Brincos:** Ink, OIDC, Seed, Circuito, Área 51, RU, Helianto, MKT, Minerador — existem; em conflito de cota ou headline, **cedem**.
+4. **Produtos principais (só estes três):** PDV (Java Free `v3.2.6-free` + pré-release pública `v4.0.0-rc4` / **frente GA 08/11/2026** se T032 + Rust `v0.1.4`) · CSO (Frotas **no ar e em andamento**; freeze M1 08/11/2026; loja `cso-transp`; Transportes **08/11/2028**; ≠ GPS) · Hub (encomendas; GA Windows 06/04/2027). **Brincos:** Ink, OIDC, Seed, Circuito, Área 51, RU, Helianto, MKT, Minerador — existem; em conflito de cota ou headline, **cedem**. **MKT e Helianto ficam fora do mapa de lojas** (CNAMEs removidos; `MEMORIA_INFRAESTRUTURA_CARACORE.txt`).
 4a. **Frentes 08/11/2026:** PDV v4 = GA público se T032 (`PLANO_LANCAMENTO_V4.md`). CSO Frotas = freeze do Momento 1, não lançamento novo: COE-B/E publicados em `e193d6d`; smoke `-Full` local passou em 03/10, mas deploy/CI e gates Railway finais ainda precisam ser confirmados. Não misturar com Transportes 2028. Headline pública do dia = PDV.
 4b. **Cota Cursor (fila única):** `docs/CALENDARIO_COTA_CURSOR.md` — US$ 20/mês · 1 produto pesado por ciclo. Página pública **Funding / Patrocínio:** `planning.html#patrocinio` (US$ 800 até dez/2029). set = CSO COE · out–nov = PDV v4 · dez/2026–06/04/2027 = **Hub** · 08/04–dez/2027 = **CSO FRO** · 2028 = Transportes · **2029 = Helianto (GA 30/12/2029)**. Ink PWA = Tab; sem Agent até folga (**não antes de 2028**).
 4b2. **Riscos / decisão:** `docs/RISCOS_ECOSSISTEMA.md` — ler antes de mudar GA, dono de ciclo ou abrir Agent noutro produto.
@@ -187,6 +187,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-06 | **MKT e Helianto fora do mapa de lojas:** CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` removidos no Registro.br (limite de 40 registros). Memória: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`. MKT permanece na Sala `tools.caracore.com.br/sala/`. Helianto permanece oficina, GA 30/12/2029, sem subdomínio. Matriz, `AGENTS.md` e mapa de lojas deixam de apontar esses hostnames como vitrine. |
 | 2026-10-06 | **Hub — matriz, portfólio, planning e wiki alinhados a `v2.1.0-rc1.1`:** o download público deixa de apontar a tag `v2.1.0-rc1`. A pré-release continua sem assinatura, com instalador e ZIP. GA 06/04/2027 inalterado. |
 | 2026-10-06 | **Hub — download da loja em `v2.1.0-rc1.1`:** instalador SHA-256 `841c0ce2da6796bd25b3f958d5ec366ee7ef5758dbf7439d1f44b55617206d3c` (281.521.557 bytes) e ZIP SHA-256 `1b942bbe04dac9d32622f117d6542100c242e0fbb4561238ec4371f436de5058` (333.338.656 bytes). A tag `v2.1.0-rc1` conserva o instalador de 05/10. Não é GA. |
 | 2026-10-05 | **Hub — status vigente separado da suíte 9/9:** o download da tag `v2.1.0-rc1` é o instalador com log (SHA-256 `86f010a3…`). A suíte 9/9 fica no asset anterior `f59b959d…`. A home da loja passa a descrever a pré-release como disponível para avaliação; o GA permanece 06/04/2027. |

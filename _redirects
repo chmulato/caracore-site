@@ -86,13 +86,13 @@
 /delivery/ete/     https://ete.caracore.com.br/   301
 /delivery/ete/*    https://ete.caracore.com.br/:splat   301
 
-/delivery/mkt      https://mkt.caracore.com.br/   301
-/delivery/mkt/     https://mkt.caracore.com.br/   301
-/delivery/mkt/*    https://mkt.caracore.com.br/:splat   301
+/delivery/mkt      https://tools.caracore.com.br/sala/   301
+/delivery/mkt/     https://tools.caracore.com.br/sala/   301
+/delivery/mkt/*    https://tools.caracore.com.br/sala/   301
 
-/delivery/helianto      https://helianto.caracore.com.br/   301
-/delivery/helianto/     https://helianto.caracore.com.br/   301
-/delivery/helianto/*    https://helianto.caracore.com.br/:splat   301
+/delivery/helianto      https://www.caracore.com.br/portfolio.html#caracore-helianto   301
+/delivery/helianto/     https://www.caracore.com.br/portfolio.html#caracore-helianto   301
+/delivery/helianto/*    https://www.caracore.com.br/portfolio.html#caracore-helianto   301
 
 
 /favicon.ico    /images/favicon.ico   301

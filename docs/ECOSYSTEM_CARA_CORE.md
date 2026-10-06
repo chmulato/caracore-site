@@ -35,13 +35,13 @@ VISÃO GERAL
   caracore-oidc-releases        Loja online e releases do Reino OIDC        GitHub Pages: oidc.caracore.com.br
   caracore-area51               Oficina da Área 51 (código do sistema)      Desenvolvimento; autenticação enterprise OAuth 2.1/OIDC/PKCE
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
-  caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; multi-tenant SaaS
-  caracore-helianto-releases    Loja online e releases do Helianto          GitHub Pages: helianto.caracore.com.br
+  caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; GA 30/12/2029; sem loja (CNAME removido)
+  caracore-helianto-releases    Fora do mapa de lojas                       Pasta local legada; sem subdomínio
   caracore-cso-quarkus          Oficina — CSO Gestão de Frotas (Web)        Produção `e193d6d` · COE-B/E publicados · freeze M1 até 08/11/2026 · FRO 08/abr–dez/2027
   caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; GA 08/11/2028; sem URL/copy de loja
   caracore-cso-releases         Loja única CSO (Frotas + Transportes)       Clone: D:\onedrive\dev\caracore-cso-releases · Pages: cso-transp.caracore.com.br (app: cso.caracore.com.br)
-  caracore-mkt                  Oficina do Cara Core MKT / Sala             Scripts e portal; oferta gratuita
-  caracore-mkt-releases         Loja online do Cara Core MKT                GitHub Pages: mkt.caracore.com.br
+  caracore-mkt                  Oficina do Cara Core MKT                    Ferramenta interna; sem loja. Sala: tools.caracore.com.br/sala/
+  caracore-mkt-releases         Fora do mapa de lojas                       Pasta local legada; CNAME mkt removido
   caracore-tools                Tools / Sala Cara Core                      tools.caracore.com.br/sala/
   caracore-personal             Blog pessoal de Christian Mulato            personal.caracore.com.br (153 artigos)
 
@@ -88,8 +88,10 @@ Produtos com entrega ativa (matriz + loja online)
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.0 · PWA não antes de 2028 (sem DMG/DEB nativos)
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
-  Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br
-  Cara Core MKT: caracore-mkt + caracore-mkt-releases (+ Sala em caracore-tools). Loja: mkt.caracore.com.br
+
+Fora do mapa de lojas (CNAME removido no Registro.br; ver MEMORIA_INFRAESTRUTURA_CARACORE.txt)
+  Helianto Condominium: oficina caracore-helianto. GA 30/12/2029. Sem subdomínio.
+  Cara Core MKT: oficina caracore-mkt. Entrada pública: Sala em caracore-tools (tools.caracore.com.br/sala/).
 
 Produtos com vitrine, sem oferta de aplicação
   Cara Core Seed: caracore-seed + caracore-seed-releases. Loja: seed.caracore.com.br (ferramenta interna)

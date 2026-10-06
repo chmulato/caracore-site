@@ -40,8 +40,9 @@ Garagem (portfólio + loja no ar):
  10  RU Soberano                       ru.caracore.com.br         lanç. 18/06/2027 · R$ 29,90
  11  CaraCore CSO                      cso.caracore.com.br        aplicação · Transp. 08/11/2028
 
-Gratuito institucional:
-  - Cara Core Mkt / Sala — mkt.caracore.com.br · tools.caracore.com.br/sala/
+Fora do mapa de lojas (CNAME removido):
+  - Cara Core MKT / Sala — tools.caracore.com.br/sala/ · oficina caracore-mkt
+  - Helianto Condominium — oficina caracore-helianto · GA 30/12/2029 · sem subdomínio
 
 
 ---

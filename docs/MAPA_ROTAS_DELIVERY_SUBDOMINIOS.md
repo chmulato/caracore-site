@@ -26,7 +26,7 @@
 | CSO | /delivery/cso/ | https://cso.caracore.com.br/ | mapeado (aplicação) |
 | Ink | /delivery/ink/ | https://ink.caracore.com.br/ | mapeado |
 | ETE | /delivery/ete/ | https://ete.caracore.com.br/ | mapeado |
-| MKT | /delivery/mkt/ | https://mkt.caracore.com.br/ | mapeado |
+| MKT | /delivery/mkt/ | https://tools.caracore.com.br/sala/ | sem loja; CNAME mkt removido |
 
 ## Prioridade por impacto (baseline 2026-04-04)
 Referencias fora de delivery para cada rota legado, usadas para ordenar a migracao.
@@ -96,9 +96,9 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 | CSO | /delivery/cso/index.html | https://cso.caracore.com.br/ |
 | CSO | /delivery/cso/download.html | https://cso.caracore.com.br/ |
 | CSO | /delivery/cso/canal-feedback.html | https://cso.caracore.com.br/ |
-| MKT | /delivery/mkt/ | https://mkt.caracore.com.br/ |
-| MKT | /delivery/mkt/index.html | https://mkt.caracore.com.br/ |
-| MKT | /delivery/mkt/canal-feedback.html | https://mkt.caracore.com.br/canal-feedback.html |
+| MKT | /delivery/mkt/ | https://tools.caracore.com.br/sala/ |
+| MKT | /delivery/mkt/index.html | https://tools.caracore.com.br/sala/ |
+| MKT | /delivery/mkt/canal-feedback.html | https://tools.caracore.com.br/sala/ |
 
 ## Entradas especiais para tratar no Ciclo 0
 - /delivery/publications/

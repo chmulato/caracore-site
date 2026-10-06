@@ -152,11 +152,13 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · Lógica / Educação |
 | **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | OAuth 2.1 · OIDC · Executável |
 | **Área 51** | `caracore-area51` | `caracore-area51-releases` | `area51.caracore.com.br` | Python · Flask · Consultoria OIDC |
-| **Helianto Condominium** | `caracore-helianto` | `caracore-helianto-releases` | `helianto.caracore.com.br` | Java 25 · Spring Boot 4 · React |
+| **Helianto Condominium** | `caracore-helianto` | — | — | Java 25 · Spring Boot 4 · React · GA **30/12/2029** · **sem loja** |
 | **RU Soberano** | `caracore-ru` | `caracore-ru-releases` | `ru.caracore.com.br` | Java 25 · JavaFX · SQLite · Simulador |
 | **Cara Core Seed** | `caracore-seed` | `caracore-seed-releases` | `seed.caracore.com.br` | Ferramenta interna (sem download) |
-| **Cara Core MKT / Sala** | `caracore-mkt` / `caracore-tools` | `caracore-mkt-releases` | `mkt.caracore.com.br` | Ferramentas / `tools.caracore.com.br/sala/` |
+| **Cara Core MKT / Sala** | `caracore-mkt` / `caracore-tools` | — | Sala: `tools.caracore.com.br/sala/` | Ferramenta interna · **sem loja** |
 | **Central de Downloads** | — | `caracore-loja` | `download.caracore.com.br` | HTML5 / Vanilla CSS / Hub Unificado |
+
+**Fora do mapa de lojas:** MKT e Helianto. CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` removidos no Registro.br. Fonte: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`.
 
 ---
 

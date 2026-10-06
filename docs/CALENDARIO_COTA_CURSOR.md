@@ -91,7 +91,7 @@ Se um ciclo bater 80% cedo: **desliza o dono seguinte**, não comprime dois GAs 
 | CSO Frotas | `caracore-cso-quarkus/docs/plano-calendario-cota-2026.md` | set/2026 COE; FRO **08/04–dez/2027** |
 | Ink PWA | `caracore-ink/docs/PLANO_PWA.md` | Tab; Agent **não antes de 2028** |
 | CSO Transportes | oficina `caracore-cso-transportes` | 2028 |
-| Helianto | `caracore-helianto` + loja `caracore-helianto-releases` | **2029** (GA 30/12/2029) |
+| Helianto | oficina `caracore-helianto` (sem loja; CNAME removido) | **2029** (GA 30/12/2029) |
 
 ## Funding / Patrocínio (página pública)
 

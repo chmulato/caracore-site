@@ -77,7 +77,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Aplicação Frotas | https://cso.caracore.com.br/ |
 | Loja única | https://cso-transp.caracore.com.br/ · clone `D:\onedrive\dev\caracore-cso-releases` |
-| Frotas | Produção **e em andamento** · oficina `caracore-cso-quarkus` (não editar vitrine lá) · 08/11/2026 = freeze Momento 1, não FRO 24/24. Smoke `-Full` local passou em 03/10. Em 06/10, `/login` serve CSS `20261003b`. Schema Flyway em produção ainda não confirmado |
+| Frotas | Gestão de frota FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Index `e1e8d63`. 08/11/2026 = freeze do que já está no ar, sem jornada, app offline nem GPS. Oficina `caracore-cso-quarkus` (não editar vitrine lá) |
 | Transportes | Garagem **08/11/2028** · oficina `caracore-cso-transportes` (**sem** informação de loja) · **não** é a data do PDV v4 |
 | Discurso | Home da loja = conversão Frotas hoje (CTAs → /cadastro). CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. Sem depoimento inventado. Headline pública de 08/11/**2026** = PDV v4. |
 | Landing app | JSON-LD + cache 5 min + LCP WebP no ar (oficina quarkus) |

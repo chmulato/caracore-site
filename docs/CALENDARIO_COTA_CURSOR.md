@@ -33,7 +33,7 @@ Sexta: ler Spending, gravar % se o ciclo for de oficina com tracker, cortar o Co
 | Hub instalador Windows | **06/04/2027** | Agent **dez/2026–06/04/2027**. Web 2.1 já existe; o EXE é o trabalho. |
 | CSO Transportes desktop | **08/11/2028** | Agent jan–nov/2028 |
 
-Headline de 08/11/**2026** = PDV v4. CSO Frotas nesse dia = freeze Momento 1 (já no ar), não FRO 24/24.
+Headline de 08/11/**2026** = PDV v4. CSO Frotas nesse dia congela o que já está no ar, inclusive a gestão de frota publicada em 06/10. Sem jornada, app offline nem GPS.
 
 **Brincos (não mandam na fila):** Ink PWA = Tab; **sem GA com Agent** até folga do núcleo (**não antes de 2028**). Helianto = **30/12/2029** (Agent 2029; cede se o CSO precisar do ano). RU 18/06/2027 = Garagem sem Agent. PIX Split = papel até o Hub no ar.
 
@@ -44,10 +44,10 @@ Headline de 08/11/**2026** = PDV v4. CSO Frotas nesse dia = freeze Momento 1 (j�
 | Período | Dono | O que entrega | Não abrir |
 |---------|------|---------------|-----------|
 | set/2026 | **CSO COE** | COE-B/E publicados (`e193d6d`); sem novo escopo COE em fila | PDV v4 Agent; Ink S1; Hub H |
-| out/2026 → 08/11/2026 | **PDV v4** | Janela A, T032, corte GA | FRO-H; Ink extract; Hub H; CSO e PDV no mesmo dia |
-| 09/11 → 04/12/2026 | **PDV corte + copy CSO M1** | Freeze M1 (L) | FRO Flyway; Ink S1 |
-| dez/2026 → 06/04/2027 | **Hub** | SQLite + EXE + SHA na loja · **GA 06/04** | Ink S1–S8; FRO-H; PIX Split Agent |
-| 08/04 → dez/2027 | **CSO FRO** | Núcleo gestão de frota 24/24 | Ink Agent; Helianto; PIX Split Agent; PWA frota |
+| out/2026 → 08/11/2026 | **PDV v4** | Janela A, T032, corte GA | MON-0; reabrir FRO; Ink extract; Hub H; CSO e PDV no mesmo dia |
+| 09/11 → 04/12/2026 | **PDV corte + copy CSO M1** | Freeze M1 (L) | MON-0; V34; Ink S1 |
+| dez/2026 → 06/04/2027 | **Hub** | SQLite + EXE + SHA na loja · **GA 06/04** | Ink S1–S8; reabrir FRO; PIX Split Agent |
+| 08/04 → dez/2027 | — | FRO 24/24 já publicado em 06/10 | Não reabrir o epic; Ink Agent; Helianto; PIX Split Agent; PWA frota |
 | jan–nov/2028 | **CSO Transportes** | Desktop bunker **GA 08/11/2028** | Virtual Tracker / GPS; PWA frota; Helianto Agent; Ink Agent |
 | dez/2028 | buffer | Loja/wiki do Transportes | Não abrir Helianto nem Ink Agent |
 | 2029 | **Helianto** | SaaS condomínio **GA 30/12/2029** | RU Agent; Momento 2 / PWA frota; VT |
@@ -60,7 +60,7 @@ Tab no Hub (SQLite, scripts) pode andar em set–nov **sem** Agent, sem competir
 
 | Item | Antes (oficina isolada) | Agora |
 |------|-------------------------|--------|
-| CSO FRO 24/24 | Propostas anteriores: out/2026 → mar/2027 ou jul–dez/2027 (superadas) | **08/04–dez/2027** (janela vigente, depois do Hub) |
+| CSO FRO 24/24 | Janela planejada 08/04–dez/2027 | **Publicado em 06/10/2026** (decisão explícita). Não reabrir o epic |
 | Ink PWA Agent | dez/2026–jun/2027 | **Tab**; GA com Agent **não antes de 2028** |
 | CSO Momento 2 / PWA frota | 2027 | **depois de dez/2028** (2028 = Transportes) |
 | Virtual Tracker™ | 08/11/2028 (mesmo dia do Transportes) | **não compete** com Transportes em 2028 |

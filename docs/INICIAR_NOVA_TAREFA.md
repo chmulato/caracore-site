@@ -90,9 +90,9 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Java (`caracore-pdv-releases`)
 
 | URL | https://pdv.caracore.com.br/ |
-| Canal | `v3.2.6-free` (download estável). Pré-release pública `v4.0.0-rc4` para avaliação = não homologada nem substitui o Free. RC3 fica no histórico. |
+| Canal | `v3.2.7-free` (download estável). Pré-release pública `v4.0.0-rc5` para avaliação = não é GA nem substitui o Free. RC4 fica no histórico. |
 | Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy pode informar recibo digital por link e PDF, sempre sem valor fiscal. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
-| CTA | **Baixar Free (3.2.6)**. Premium via demonstração (`consultoria.html`). |
+| CTA | **Baixar Free (3.2.7)**. Premium via demonstração (`consultoria.html`). |
 | Quem entra | `admin` / `admin` (troca obrigatória). **1 operador** no Free. Copy: `download.html#perfis`. Não usar senhas do Rust. |
 | Oficina | `caracore-pdv` |
 | Matriz | `#caracore-pdv` |
@@ -110,7 +110,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-10-05):** canal maduro da **loja** = `v3.2.6-free` **publicado** (shell PDV coluna + caixa registradora; Restrito empilhado; login honesto pós-troca; navegador `localhost:8080/login`). Código Free = tag `v3.2.6-free` / `feature/free-3.2.6-pdv-ux` — **não** o `master`. Pré-release pública `v4.0.0-rc4` (ZIP unsigned Windows x64, SHA-256 `31a0cdeda68dce058079c5d0d3d5652084ba8a8cc073dfce60e021c4b3c1fdf2`); não é GA. T032 segue aberto pelo roteiro operacional formal; Edge/Windows 1280×800 e a troca obrigatória de senha inicial já estão resolvidos. **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`) permanece condicionada a esse roteiro. `PERF-001–007` congeladas. HEAD `master` = Maven `4.0.0-rc4`, não o ZIP Free. Copy Free sem PIX integrado; recibo digital por link e PDF pode ser citado, sempre sem valor fiscal. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
+**Estado (2026-10-07):** canal maduro da **loja** = `v3.2.7-free` **publicado** (estoque na venda, turno com X/Z, saldo pelo valor da venda, recibo offline com itens e PDF; shell PDV coluna + caixa registradora; Restrito empilhado; login honesto pós-troca; navegador `localhost:8080/login`; escuta em `127.0.0.1`). Código Free = tag `v3.2.7-free` / `hotfix/3.2.7-free` — **não** o `master`. Histórico imediato: `v3.2.6-free` / `feature/free-3.2.6-pdv-ux`. Pré-release pública `v4.0.0-rc5` (ZIP unsigned Windows x64, SHA-256 `d45d12d9fbf6e3923f69ddbbf6173ef2128be0341e30e75f038b7dc1f3ab6f81`); não é GA. T032 segue aberto pelo roteiro operacional formal. **Frente de GA público 08/11/2026** (`PLANO_LANCAMENTO_V4.md`) permanece condicionada a esse roteiro. `PERF-001–007` congeladas. HEAD `master` = Maven da linha v4 (RC5), não o ZIP Free. Copy Free sem PIX integrado nem NF-e/NFC-e; recibo digital por link e PDF, sempre sem valor fiscal. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
 
 ---
 

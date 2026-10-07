@@ -48,6 +48,7 @@ Este ficheiro **não** é P&L nem tracker de oficina. Serve para **dizer não** 
 | R9 | Uma cadeira, uma pessoa | Folga / incidente / mês a 80% no dia 12 | O dono seguinte herda o atraso. | Não planear on-demand. Segunda cota só com patrocínio explícito (`planning.html#patrocinio`). |
 | R10 | Brinco Helianto a «abrir só um pouco» antes de 2029 | 2027–2028 | Fura a fila do núcleo. | Agent Helianto **só em 2029**. Até lá: Tab, copy, docs. Se CSO precisar de 2029, Helianto cede. |
 | R11 | RU com data pública e sem Agent | 18/06/2027 | Promessa sem capacidade. | Garagem: copy/docs. **Sem** mês de Agent. Não competir com Hub nem FRO. |
+| R13 | Exceção Ink Desktop 2.0.1 (07/10/2026) | out/2026 | Agent do Ink dentro da janela PDV v4. Risco de atrasar T032. | **Decisão explícita do dono em 07/10/2026:** patch Desktop Windows 2.0.1 (achados do QA da 2.0.0: importação, pt-BR, build limpo, promessas da loja, P2). Não é Ink PWA (3.0 segue não antes de 2028). Gera e valida localmente; publicação só com aprovação. Se o PDV v4 precisar da cota, a 2.0.1 pára. |
 | R12 | Canais PDV Java × Rust misturados | Qualquer release | Loja errada, banco errado, senha errada. | Nunca `/releases/latest` de `caracore-pdv-releases` para o Rust. Free Java = `admin`/`admin`, 1 operador. Rust piloto = quatro logins na **loja Rust**. |
 
 ---

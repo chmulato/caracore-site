@@ -146,7 +146,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **CaraCore PDV (Rust)** | `caracore-pdv-rust` | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | `pdv-rust.caracore.com.br` + [Releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | Rust · Tauri 2 · React · SQLite |
 | **CSO Frotas (Web)** | `caracore-cso-quarkus` | `caracore-cso-releases` (loja única · clone `D:\onedrive\dev\caracore-cso-releases`) | Aplicação: `cso.caracore.com.br` · Loja: `cso-transp.caracore.com.br` | Java 21 · Quarkus · PostgreSQL · Qute/HTMX |
 | **CSO Transportes (Desktop)** | `caracore-cso-transportes` (oficina **sem** URL/copy de loja) | `caracore-cso-releases` (a **mesma** loja) | Loja: `cso-transp.caracore.com.br` · GA **08/11/2028** | Quarkus · JavaFX · Vue 3 · SQLite |
-| **Ink Agenda** | `caracore-ink` | `caracore-ink-releases` | `ink.caracore.com.br` | Java 25 · JavaFX (Windows v2.0.0) · **3.0 em PWA** em roadmap (**não antes de 2028**; nova aplicação de lançamento sobre o core da v2; web/Android/Mac/iPhone; nuvem HTTPS, um SQLite por estúdio; substitui o Desktop após importação dos dados; sem DMG/DEB) |
+| **Ink Agenda** | `caracore-ink` | `caracore-ink-releases` | `ink.caracore.com.br` | Java 25 · JavaFX (Windows **v2.0.1** publicada em 07/10/2026 com as correções do QA, jar ofuscado; v2.0.0 no histórico) · **3.0 em PWA** em roadmap (**não antes de 2028**; nova aplicação de lançamento sobre o core da v2; web/Android/Mac/iPhone; nuvem HTTPS, um SQLite por estúdio; substitui o Desktop após importação dos dados; sem DMG/DEB) |
 | **Minerador ETE 4.0** | `caracore-ete` | `caracore-ete-releases` | `ete.caracore.com.br` | Python · `v1.2.3` Ouro 4.0 · Windows/Linux/macOS |
 | **CaraCore Hub** | `caracore-hub` | `caracore-hub-releases` | `hub.caracore.com.br` | Jakarta EE 10 · WAR/Tomcat · JSP |
 | **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · Lógica / Educação |
@@ -207,7 +207,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 * **Concluídos / Em Operação:**
  - PDV Java Free (`v3.2.7-free` · 100 vendas/mês · aplicação web local no navegador; registradora)
  - PDV Java v4 pré-release pública (`v4.0.0-rc5`; validada em testes internos; roteiro formal pendente; GA **08/11/2026** condicionado)
- - Ink Agenda Desktop (`v2.0.0` estável em 26/06/2026)
+ - Ink Agenda Desktop (`v2.0.1` estável, publicada em 07/10/2026 — correções do QA da `v2.0.0`)
   - Minerador 4.0 (`v1.2.3` Ouro 4.0)
   - Reino OIDC (`v2.0.0-RC1`)
   - Circuito Ferradura (Ativo)

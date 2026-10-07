@@ -86,7 +86,7 @@ Produtos com entrega ativa (matriz + loja online)
   CaraCore CSO: caracore-cso-quarkus (Frotas, produção `e193d6d`; COE-B/E: termos 2.1, convites por chave, categorias/filtros, regras de veículo inativo e KM) + caracore-cso-transportes (Desktop 08/11/2028, oficina sem loja). Freeze M1: 08/11/2026; smoke `-Full`/gates finais ainda pendentes. FRO: 08/abr–dez/2027. Loja única (home de conversão): D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br. App: cso.caracore.com.br. Um produto em 08/11/2028. CSO ≠ GPS; versão Flyway efetiva em produção não confirmada diretamente.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
-  Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.0 · PWA não antes de 2028 (sem DMG/DEB nativos)
+  Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.1 (com suporte até a 3.0) · 3.0 em PWA não antes de 2028, substitui o Desktop após importação dos dados (sem DMG/DEB nativos)
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
 
 Fora do mapa de lojas (CNAME removido no Registro.br; ver MEMORIA_INFRAESTRUTURA_CARACORE.txt)

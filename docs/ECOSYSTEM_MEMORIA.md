@@ -2,7 +2,7 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
-**Atualizado:** 2026-10-06 · MKT e Helianto fora do mapa de lojas (CNAMEs removidos; `MEMORIA_INFRAESTRUTURA_CARACORE.txt`)
+**Atualizado:** 2026-10-07 · PDV v4 pré-release `v4.0.0-rc5` (SHA-256 `d45d12d9fbf6e3923f69ddbbf6173ef2128be0341e30e75f038b7dc1f3ab6f81`); validada em testes internos; roteiro formal pendente
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
 **Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace e **cópia git** `caracore-site/AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
@@ -16,7 +16,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | Aplicação / frente | Status registrado | Próximo gate ou limite | Retomada canônica |
 |---|---|---|---|
 | **PDV Java Free** | `v3.2.6-free` estável, Latest e multiplataforma; app web local no navegador. Recibo por link/PDF sem valor fiscal; sem PIX integrado ou NF-e/NFC-e. | Manter como download estável enquanto v4 não passar os gates de GA. | `caracore-pdv` · `AGENTS.md` da oficina |
-| **PDV Java v4** | `v4.0.0-rc4` pré-release pública Free, ZIP portátil Windows x64 unsigned; hash e asset conferidos. Não é GA nem versão estável. | T032 aguarda o roteiro operacional formal; homologação Edge/Windows 1280×800 e troca obrigatória de senha estão concluídas. `PERF-001–007` congeladas: não fazer benchmark/tuning. GA 08/11/2026 condicionado. | `caracore-pdv/docs/arquitetura/STATUS_ATUAL_APLICACAO.md` · `CONTINUIDADE_DESENVOLVIMENTO.md` · `PLANO_LANCAMENTO_V4.md` |
+| **PDV Java v4** | `v4.0.0-rc5` pré-release pública Free, ZIP portátil Windows x64 unsigned; SHA-256 `d45d12d9fbf6e3923f69ddbbf6173ef2128be0341e30e75f038b7dc1f3ab6f81`. Não é GA nem versão estável. | Validada em testes internos; roteiro formal pendente (`https://pdv.caracore.com.br/homologacao-v4.html`). `PERF-001–007` congeladas: não fazer benchmark/tuning. GA 08/11/2026 condicionado. | `caracore-pdv/docs/arquitetura/STATUS_ATUAL_APLICACAO.md` · `CONTINUIDADE_DESENVOLVIMENTO.md` · `PLANO_LANCAMENTO_V4.md` |
 | **PDV Rust** | Piloto Windows `v0.1.4`, linha independente do Java; limite de 100 vendas durante a vida do piloto. Loja e artefatos no mesmo repo de releases. | Não misturar canais, artefatos ou anunciar que substitui o Java. | `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` |
 | **CSO Frotas** | Gestão de frota FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Index com convite principal e roadmap desta versão (`e1e8d63`). Não é GPS. | Freeze M1 em 08/11/2026 estabiliza o que já está no ar. Sem jornada, app offline nem GPS. MON-0 não iniciado. | `caracore-cso-quarkus/docs/plano-lancamento-2026-11-08.md` · `docs/plano-gestao-frota.md` |
 | **CSO Transportes** | Frente desktop em roadmap; GA 08/11/2028. Não é a data do PDV nem uma aplicação web atualmente oferecida. | Oficina sem URL/copy de loja própria; usa a loja única CSO quando apropriado. | `caracore-cso-transportes` |
@@ -36,7 +36,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 |------|--------|
 | Canal loja | **`v3.2.6-free` publicado** (Latest) — shell PDV coluna + caixa registradora; Restrito empilhado; login honesto pós-troca |
 | Código Free | Tag `v3.2.6-free` · ramo `feature/free-3.2.6-pdv-ux` (não misturar com `master`) |
-| Checkout oficina `master` | Maven `4.0.0-rc4` · Qute · pré-release pública RC4; roteiro operacional formal pendente antes de avaliar GA |
+| Checkout oficina `master` | Maven `4.0.0-rc5` · Qute · pré-release pública RC5; validada em testes internos; roteiro formal pendente |
 | Próximo Agent pesado | **out–nov/2026** = PERF/T032 v4 (`PLANO_LANCAMENTO_V4.md`) |
 | Handoff | `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` · `caracore-pdv/AGENTS.md` |
 | Retomada local | `v4.0.0-rc4` é a pré-release pública da edição Free (100 vendas finalizadas/mês), em ZIP portátil Windows x64 unsigned. Smoke local e download remoto concluídos; SHA-256 `31a0cdeda68dce058079c5d0d3d5652084ba8a8cc073dfce60e021c4b3c1fdf2`. T032 segue aberto pelo roteiro operacional formal; `PERF-001–007` congeladas por decisão do usuário; ver `STATUS_ATUAL_APLICACAO.md` e handoff |

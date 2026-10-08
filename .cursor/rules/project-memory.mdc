@@ -53,7 +53,7 @@ alwaysApply: true
 | **Ink** | caracore-ink + *-releases | Agenda | https://ink.caracore.com.br/ |
 | **RU** | caracore-ru + *-releases | Simulador RETRO | https://ru.caracore.com.br/ |
 | **Circuito** | caracore-circuito + *-releases | Curso Python | https://circuito.caracore.com.br/ |
-| **OIDC** | caracore-oidc + *-releases | Reino OIDC Free `v2.0.0` GA; três Eras gratuitas para estudo pessoal, módulo pago opcional só com decks adicionais de Mineração de Chaves | https://oidc.caracore.com.br/ · https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0 |
+| **OIDC** | caracore-oidc + *-releases | Reino OIDC Free `v2.0.1-free`; três Eras gratuitas para estudo pessoal, sem certificado digital e sem módulo pago. A edição paga será entregue depois; o PIX é combinado pelo WhatsApp ou pelo Telegram | https://oidc.caracore.com.br/ · https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free |
 | **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
 | **CSO** | caracore-cso-quarkus (Frotas) + caracore-cso-transportes (Desktop 2028, **sem loja**) + loja `D:\onedrive\dev\caracore-cso-releases` | Home da loja = conversão Frotas hoje; landing app com JSON-LD; um produto em 08/11/2028; **≠ GPS** | App: https://cso.caracore.com.br/ · Loja: https://cso-transp.caracore.com.br/ |

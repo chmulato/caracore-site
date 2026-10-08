@@ -207,8 +207,8 @@ window.CARACORE_PLANNING = {
       state: "done",
       tone: "reino",
       shop: "https://oidc.caracore.com.br/",
-      hundred: "Sala de estudo Windows. Free v2.0.0 publicado como GA.",
-      now: "v2.0.0 GA. Três Eras gratuitas; módulo pago só nos decks extras. Sem mês de Agent na fila 2026–2028.",
+      hundred: "Sala de estudo Windows. Edição Free 2.0.1 publicada.",
+      now: "Edição Free 2.0.1. Três Eras gratuitas. A edição paga está em desenvolvimento, sem PIX nesta etapa. Sem mês de Agent na fila 2026–2028.",
       history: [
         { m: "2026-06", p: 85 },
         { m: "2026-07", p: 90 },

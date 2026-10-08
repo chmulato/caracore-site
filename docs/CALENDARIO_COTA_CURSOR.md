@@ -52,7 +52,7 @@ Headline de 08/11/**2026** = PDV v4. CSO Frotas nesse dia congela o que já est�
 | dez/2028 | buffer | Loja/wiki do Transportes | Não abrir Helianto nem Ink Agent |
 | 2029 | **Helianto** | SaaS condomínio **GA 30/12/2029** | RU Agent; Momento 2 / PWA frota; VT |
 
-Tab no Hub (SQLite, scripts) pode andar em set–nov **sem** Agent, sem competir com o PDV. Ink PWA: Tab + mãos; S1+ de Agent **só** com folga depois do FRO (não antes de 2028).
+Tab no Hub (SQLite, scripts) pode andar em set–nov sem Agent, sem competir com o PDV. Ink PWA: Tab + mãos; Agent só com folga do núcleo (não antes de 2028).
 
 ---
 
@@ -88,14 +88,14 @@ Se um ciclo bater 80% cedo: **desliza o dono seguinte**, não comprime dois GAs 
 | Empresa | — | **Este ficheiro** |
 | PDV v4 | `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md` | out–nov/2026 |
 | Hub Windows | `caracore-hub/docs/contexto-rapido.md` | Agent **dez/2026–06/04/2027** |
-| CSO Frotas | `caracore-cso-quarkus/docs/plano-calendario-cota-2026.md` | set/2026 COE; FRO **08/04–dez/2027** |
+| CSO Frotas | `caracore-cso-quarkus/docs/plano-calendario-cota-2026.md` | FRO 24/24 publicado em 06/10; freeze M1 em 08/11/2026 |
 | Ink PWA | `caracore-ink/docs/PLANO_PWA.md` | Tab; Agent **não antes de 2028** |
 | CSO Transportes | oficina `caracore-cso-transportes` | 2028 |
 | Helianto | oficina `caracore-helianto` (sem loja; CNAME removido) | **2029** (GA 30/12/2029) |
 
 ## Funding / Patrocínio (página pública)
 
-A matriz expõe este envelope em [`planning.html#patrocinio`](../planning.html#patrocinio). Números: **US$ 20/mês · 40 meses · US$ 800** (set/2026 → dez/2029). Não é P&L da empresa (Railway, domínio, Pix ficam fora). Patrocínio extra (segunda cota, on-demand pontual, mês de Agent) pode antecipar FRO, abrir Momento 2, dar mês a RU ou **abrir Agent no Ink**; **não** substitui PDV v4, Hub EXE, FRO, Transportes nem Helianto.
+A matriz expõe este envelope em [`planning.html#patrocinio`](../planning.html#patrocinio). Números: **US$ 20/mês · 40 meses · US$ 800** (set/2026 → dez/2029). Não é P&L da empresa (Railway, domínio, Pix ficam fora). Patrocínio extra (segunda cota, on-demand pontual, mês de Agent) pode abrir Momento 2, dar mês a RU ou abrir Agent no Ink. Não substitui PDV v4, Hub EXE, Transportes nem Helianto, e não reabre o FRO.
 
 ## Riscos (guia de decisão)
 

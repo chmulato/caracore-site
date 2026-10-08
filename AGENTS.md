@@ -107,7 +107,7 @@ Wiki **aponta** para essas âncoras; não é a fonte das senhas. Pasta Java `%AP
 | **Free / loja** | `v3.2.7-free` (Latest) | `iniciar-pdv.bat` (hífen) | navegador `http://localhost:8080/login` | `%APPDATA%\caracore\` / `~/.caracore/` | **publicado** |
 | **Pré-release pública v4** | `v4.0.0-rc5` | `iniciar_pdv.bat` (underscore) | Edge modo app | `./data/caracore-pdv.db` | ZIP publicado; validada em testes internos; roteiro formal pendente |
 
-A oficina `caracore-pdv` (HEAD Maven `4.0.0-rc4`) **não** é o ZIP da loja. Retomada v4: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`. Não apagar AppData da v3 “para limpar” a v4.
+A oficina `caracore-pdv` (HEAD Maven `4.0.0-rc5`) **não** é o ZIP da loja. Retomada v4: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`. Não apagar AppData da v3 “para limpar” a v4.
 
 ---
 

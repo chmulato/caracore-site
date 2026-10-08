@@ -14,10 +14,10 @@
  */
 window.CARACORE_PLANNING = {
   AS_OF: "2026-10",
-  AS_OF_LABEL: "05/10/2026",
+  AS_OF_LABEL: "08/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 05/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
+    "Leitura de 08/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.

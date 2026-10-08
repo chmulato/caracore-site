@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 07/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.1`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA)
+> **Data de Atualização:** 07/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.1`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.0` GA publicado)
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -150,7 +150,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Minerador ETE 4.0** | `caracore-ete` | `caracore-ete-releases` | `ete.caracore.com.br` | Python · `v1.2.3` Ouro 4.0 · Windows/Linux/macOS |
 | **CaraCore Hub** | `caracore-hub` | `caracore-hub-releases` | `hub.caracore.com.br` | Jakarta EE 10 · WAR/Tomcat · JSP |
 | **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · Lógica / Educação |
-| **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | OAuth 2.1 · OIDC · Executável |
+| **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | Free `v2.0.0` GA · OAuth 2.1 · OIDC · Windows .exe |
 | **Área 51** | `caracore-area51` | `caracore-area51-releases` | `area51.caracore.com.br` | Python · Flask · Consultoria OIDC |
 | **Helianto Condominium** | `caracore-helianto` | — | — | Java 25 · Spring Boot 4 · React · GA **30/12/2029** · **sem loja** |
 | **RU Soberano** | `caracore-ru` | `caracore-ru-releases` | `ru.caracore.com.br` | Java 25 · JavaFX · SQLite · Simulador |
@@ -209,7 +209,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
  - PDV Java v4 pré-release pública (`v4.0.0-rc5`; validada em testes internos; roteiro formal pendente; GA **08/11/2026** condicionado)
  - Ink Agenda Desktop (`v2.0.1` estável, publicada em 07/10/2026 — correções do QA da `v2.0.0`)
   - Minerador 4.0 (`v1.2.3` Ouro 4.0)
-  - Reino OIDC (`v2.0.0-RC1`)
+  - Reino OIDC Free (`v2.0.0` GA): três Eras e progressão narrativa gratuitas para estudo pessoal; módulo pago opcional limitado aos decks adicionais de Mineração de Chaves.
   - Circuito Ferradura (Ativo)
   - Suporte Área 51 (Baseline `0.1.0-dev`)
   - CSO Frotas Web (Em produção)
@@ -273,3 +273,5 @@ FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro�
 **Atualização PDV (04/10/2026):** as correções RC4 passaram na suíte Maven com Java 25 (843 testes, 0 falhas/erros, 3 ignorados) e nos testes do empacotador (6/6). O ZIP portátil unsigned foi publicado como pré-release, seu asset foi baixado novamente e o SHA-256 confirmado: `31a0cdeda68dce058079c5d0d3d5652084ba8a8cc073dfce60e021c4b3c1fdf2`. T032 segue aberto pelo roteiro operacional formal; Edge/Windows 1280×800 e troca obrigatória de senha inicial estão resolvidos. MSI não será distribuído e, nessa data, `v3.2.6-free` seguia estável/Latest. `PERF-001–007` continuam congeladas; não fazer benchmark/tuning. Handoff: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`; status canônico: `caracore-pdv/docs/arquitetura/STATUS_ATUAL_APLICACAO.md`.
 
 **Atualização Matriz/CDN (05/10/2026):** logo branco da home reduzido de 1.389.022 B para WebP versionado de 117.882 B; PNG compatível legado reduzido para 456.635 B. Cache local configurado para 120 s de navegador e 24 h de cache compartilhado somente em seis páginas institucionais públicas; assets com hash são immutable. Página 404 não redireciona automaticamente; links legados conhecidos corrigidos. Build Node completo, 8/8 testes e validação Edge desktop/mobile aprovados; três erros JS e seis source maps faltantes permanecem avisos preexistentes. **Sem commit/push/deploy**: confirmar headers e métricas na Vercel depois da publicação. Evidências e caveats: `caracore-site/docs/CDN_VERCEL.md`.
+
+**Atualização Reino OIDC (07/10/2026):** Free `v2.0.0` publicado como GA em https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0. SHA-256 do `ReinoOIDC-v2.exe`: `af0a5bd3bf4f8f6586de6e32a29b7ba750985788e8cca768f87ecf74fd59952d`. As três Eras e a progressão narrativa são gratuitas para estudo pessoal; o módulo pago opcional, R$ 29,90 em valor único, limita-se aos decks adicionais de Mineração de Chaves. Não inclui certificação, consultoria nem suporte técnico.

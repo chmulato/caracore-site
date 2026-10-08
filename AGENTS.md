@@ -1,12 +1,12 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 07/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.0` GA publicado)
+> **Data de Atualização:** 08/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.0` GA publicado)
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
 > **Cursor:** `.cursor/rules/ecosystem-cara-core.mdc` aponta para este ficheiro.
-> **Checkpoint Hub:** 05/10/2026 · 05:42 BRT — RC1 em QA; smoke Windows 4/4; login do perfil real ainda não confirmado. Retomada: `caracore-hub/docs/contexto-rapido.md`.
+> **Checkpoint Hub:** 08/10/2026 — pré-release Windows `v2.1.0-rc1.2` na loja, na matriz e na central de downloads (instalador e ZIP, unsigned). Aceite da QA desta build ainda pendente. GA 06/04/2027. Retomada: `caracore-hub/docs/contexto-rapido.md`.
 
 ---
 
@@ -193,6 +193,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
    - Status em 08/10/2026: a loja oferece a pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned). Mac e Linux ficam fora desta tag. O login da conta real ainda não tem causa confirmada. O GA Windows permanece 06/04/2027.
    - Tia Sócia / Programa Tias Sócias é pitch ilustrativo, não o nome do produto.
    - Retomada para IAs na oficina: `caracore-hub/docs/contexto-rapido.md` · Cursor `.cursor/rules/project-memory.mdc`. Manual de uso público: `wiki.caracore.com.br/hub/`.
+   - **Próxima tag:** outro sufixo, com bytes novos. As tags `v2.1.0-rc1`, `v2.1.0-rc1.1` e `v2.1.0-rc1.2` conservam os arquivos já publicados. A versão do instalador entra em `electron/package.json`; o commit fica com a árvore limpa antes de `scripts/build_hub_exe.ps1`; o manifesto sai com `sourceTreeDirty=false` e `builtAt` no horário do arquivo. Publicar a tag em `caracore-hub-releases`, depois o cartão em `caracore-loja` e a matriz (`ecosistema.html`, `portfolio.html`, planning), e sincronizar este ficheiro com `ECOSYSTEM_MEMORIA.md`. Os POMs Maven permanecem `2.1.0-rc1`. O nome público é `CaraCore.Hub-<versão>-win-x64`. A oficina privada só vai ao remoto quando o dono pedir.
 4. **Wiki única no portal:**
    - Toda a documentação de produto vive em `wiki.caracore.com.br` (`caracore-wiki`).
    - As lojas (`*.caracore.com.br`) ficam com vitrine, download e canal de feedback. URLs antigas `/wiki/` nas lojas redirecionam para o portal.

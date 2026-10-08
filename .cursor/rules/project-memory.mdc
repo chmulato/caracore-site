@@ -5,14 +5,15 @@ alwaysApply: true
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
-**Atualizado:** 2026-10-05 · 09:27 BRT · IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
+**Atualizado:** 2026-10-08 · IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
 
-## Checkpoint Hub — 05/10/2026
+## Checkpoint Hub — 08/10/2026
 
 - Download da loja: tag `v2.1.0-rc1.2` em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.2. Instalador unsigned, 281.529.680 bytes, SHA-256 `50d38ff0ee4defce5bb2598967331d0295fb4817dbec59df5d3e7574b22975e5`. ZIP da mesma edição, 333.342.883 bytes, SHA-256 `ec82b2bd57053c252faac4fdbb0066e9a5cea2df293562b35384107e5cb624b4`. A tag `v2.1.0-rc1.1` conserva o pacote de 06/10. A tag `v2.1.0-rc1` conserva o instalador de 05/10. A suíte 9/9 vale para `f59b959d…`. Não é GA. O aceite da QA desta build ainda não foi feito.
 - Mac e Linux ficam fora desta tag. Backup e atualização sobre versão anterior não fazem parte deste aceite.
 - Login reportado via Electron `npm run dev` ainda sem causa confirmada: perfil/banco real não localizado. Consultar só existência/status sem senha/hash. GA 06/04/2027 e cota mantidos.
-- Retomada Gemini/Cursor: `caracore-hub/docs/contexto-rapido.md` → `project_hub/docs/STATUS-ATUAL.md` → `docs/plano-lancamento-rc1.md` → `.cursor/rules/project-memory.mdc`. Histórico observado até `7e7fd14`; conferir diff atual antes de colaborar. Atualização de memória não autoriza commit/push.
+- Próxima pré-release: outra tag. Versão em `electron/package.json`, commit com árvore limpa, `scripts/build_hub_exe.ps1`, nome público `CaraCore.Hub-<versão>-win-x64`, publicação em `caracore-hub-releases`, depois central e matriz. POMs Maven permanecem `2.1.0-rc1`.
+- Retomada Gemini/Cursor: `caracore-hub/docs/contexto-rapido.md` → `project_hub/docs/STATUS-ATUAL.md` → `docs/plano-lancamento-rc1.md` → `.cursor/rules/project-memory.mdc`. O manifesto publicado aponta o commit `463a854`. A oficina local pode estar à frente do remoto. Atualização de memória no checkout local; publicar a matriz quando o dono pedir o corte.
 
 ## Matriz institucional — CDN/Vercel — 05/10/2026
 

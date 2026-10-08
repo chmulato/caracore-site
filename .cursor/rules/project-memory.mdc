@@ -90,12 +90,12 @@ alwaysApply: true
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV v4 — RC4 pública para avaliação; GA previsto 08/11/2026
+## PDV v4 — RC5 pública para avaliação; GA previsto 08/11/2026
 
-- **Oficina:** `caracore-pdv`; pré-release pública da edição Free **v4.0.0-rc4** (Qute + launcher), limitada a 100 vendas finalizadas por mês civil. T032 segue aberto para o roteiro operacional formal; a publicação não é aceite de GA. ZIP e SHA-256 confirmados: `31a0cdeda68dce058079c5d0d3d5652084ba8a8cc073dfce60e021c4b3c1fdf2`. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
+- **Oficina:** `caracore-pdv`; pré-release pública da edição Free **v4.0.0-rc5** (Qute + launcher), limitada a 100 vendas finalizadas por mês civil. T032 segue aberto para o roteiro operacional formal; a publicação não é aceite de GA. ZIP e SHA-256 confirmados: `d45d12d9fbf6e3923f69ddbbf6173ef2128be0341e30e75f038b7dc1f3ab6f81`. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
-- **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc4.html`.
-- **Loja:** `https://pdv.caracore.com.br/` — `v3.2.7-free` permanece download estável/Latest; RC4 é pré-release de avaliação, não GA; RC1/RC2/RC3 ficam no histórico.
+- **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc5.html`.
+- **Loja:** `https://pdv.caracore.com.br/` — `v3.2.7-free` permanece download estável/Latest; RC5 é pré-release de avaliação, não GA; RC4 fica no histórico.
 - **Regra:** manter `v3.2.7-free` como download principal até o v4 ser homologado como GA. Não misturar pasta nem data.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.4)

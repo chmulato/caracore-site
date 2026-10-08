@@ -30,7 +30,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | **Helianto** | Oficina/roadmap; GA 30/12/2029. Fora do mapa de lojas: CNAME `helianto.caracore.com.br` removido. Sem subdomínio. | Agent em 2029, após CSO Transportes; não antecipar para 2027–2028. | `caracore-helianto` |
 | **Matriz, Central e Suporte Local** | Correções locais de CDN/Vercel: logo branco WebP versionado (−91,51%), PNG legado menor, cache de navegador curto em seis páginas públicas, 404 sem redirect automático, links legados corrigidos; build, 8/8 testes e browser desktop/mobile passaram. | **Não publicado**. Não inferir impacto no dashboard: confirmar deploy, headers reais e métricas depois da publicação. Origem dos requests repetidos ainda não identificada. | `caracore-site/docs/CDN_VERCEL.md` · `vercel.json` · `DEPLOY_STATIC.md` |
 
-### Status PDV Java (2026-10-04) — para IAs
+### Status PDV Java (2026-10-08) — para IAs
 
 | Item | Valor |
 |------|--------|
@@ -39,7 +39,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | Checkout oficina `master` | Maven `4.0.0-rc5` · Qute · pré-release pública RC5; validada em testes internos; roteiro formal pendente |
 | Próximo Agent pesado | **out–nov/2026** = PERF/T032 v4 (`PLANO_LANCAMENTO_V4.md`) |
 | Handoff | `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` · `caracore-pdv/AGENTS.md` |
-| Retomada local | `v4.0.0-rc4` é a pré-release pública da edição Free (100 vendas finalizadas/mês), em ZIP portátil Windows x64 unsigned. Smoke local e download remoto concluídos; SHA-256 `31a0cdeda68dce058079c5d0d3d5652084ba8a8cc073dfce60e021c4b3c1fdf2`. T032 segue aberto pelo roteiro operacional formal; `PERF-001–007` congeladas por decisão do usuário; ver `STATUS_ATUAL_APLICACAO.md` e handoff |
+| Retomada local | `v4.0.0-rc5` é a pré-release pública da edição Free (100 vendas finalizadas/mês), em ZIP portátil Windows x64 unsigned. SHA-256 `d45d12d9fbf6e3923f69ddbbf6173ef2128be0341e30e75f038b7dc1f3ab6f81`. T032 segue aberto pelo roteiro operacional formal; `PERF-001–007` congeladas; ver `STATUS_ATUAL_APLICACAO.md` e handoff. A RC4 fica no histórico |
 
 ---
 
@@ -208,6 +208,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 | 2026-10-06 | **CSO — FRO-2.2 local:** | o form `/veiculos` grava vencimentos, apólice e combustível. O rótulo segue o país do documento. V31 continua sem deploy. Próximo ID: FRO-2.3. |
 | 2026-10-06 | **CSO — CSS de produção e FRO-2.1 local:** `/`, `/q/health` e `/login` responderam 200; `/login` serve `cso.css?v=20261003b`. Schema Flyway efetivo continua não confirmado. Arquivo `V31__documentos_veiculo_fro.sql` (vencimentos genéricos do veículo) está na oficina e ainda não foi publicado. Próximo ID: FRO-2.2. |
 | 2026-10-06 | **MKT e Helianto fora do mapa de lojas:** CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` removidos no Registro.br (limite de 40 registros). Memória: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`. MKT permanece na Sala `tools.caracore.com.br/sala/`. Helianto permanece oficina, GA 30/12/2029, sem subdomínio. Matriz, `AGENTS.md` e mapa de lojas deixam de apontar esses hostnames como vitrine. |
+| 2026-10-08 | **Coerência do planning e da memória:** o planning público passa a ler PDV estável `v3.2.7-free` e pré-release `v4.0.0-rc5`. O FRO 24/24 permanece publicado em 06/10; a janela 08/04–dez/2027 não reabre o epic. A home da loja do Hub marca a RC Windows `v2.1.0-rc1.2` e reserva 06/04/2027 para o GA. |
 | 2026-10-08 | **Hub — wiki alinhada a `v2.1.0-rc1.2`:** `projeto-hub.html`, o manual `docs/hub/` e as trilhas passam a descrever a pré-release Windows para avaliação. O GA do instalador permanece 06/04/2027. |
 | 2026-10-08 | **Hub — memória para outras IAs:** o download vigente é `v2.1.0-rc1.2` na loja, na matriz e na central. A próxima pré-release nasce numa tag nova, com árvore limpa e manifesto fiel. As tags anteriores permanecem. Não é GA. |
 | 2026-10-08 | **Hub — matriz e central de downloads em `v2.1.0-rc1.2`:** ecossistema, portfólio e planning de `www.caracore.com.br`, e o cartão da central `download.caracore.com.br`, passam a oferecer a mesma pré-release Windows da loja do Hub. Instalador SHA-256 `50d38ff0ee4defce5bb2598967331d0295fb4817dbec59df5d3e7574b22975e5`. ZIP SHA-256 `ec82b2bd57053c252faac4fdbb0066e9a5cea2df293562b35384107e5cb624b4`. As tags anteriores permanecem. Não é GA. |

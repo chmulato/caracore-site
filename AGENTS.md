@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 08/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.0` continua GA/Latest; candidato `v2.0.1` gerado localmente, sem assinatura e sem publicação)
+> **Data de Atualização:** 08/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.1-free` publicado na loja, sem certificado digital e sem módulo pago; `v2.0.0` fica no histórico)
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -150,7 +150,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Minerador ETE 4.0** | `caracore-ete` | `caracore-ete-releases` | `ete.caracore.com.br` | Python · `v1.2.3` Ouro 4.0 · Windows/Linux/macOS |
 | **CaraCore Hub** | `caracore-hub` | `caracore-hub-releases` | `hub.caracore.com.br` | Jakarta EE 10 · WAR/Tomcat · JSP |
 | **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · Lógica / Educação |
-| **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | Free `v2.0.0` GA/Latest · candidato local `v2.0.1` sem assinatura e sem publicação · OAuth 2.1 · OIDC · Windows .exe |
+| **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | Free `v2.0.1-free` na loja · sem certificado digital · sem módulo pago · `v2.0.0` no histórico · OAuth 2.1 · OIDC · Windows .exe |
 | **Área 51** | `caracore-area51` | `caracore-area51-releases` | `area51.caracore.com.br` | Python · Flask · Consultoria OIDC |
 | **Helianto Condominium** | `caracore-helianto` | — | — | Java 25 · Spring Boot 4 · React · GA **30/12/2029** · **sem loja** |
 | **RU Soberano** | `caracore-ru` | `caracore-ru-releases` | `ru.caracore.com.br` | Java 25 · JavaFX · SQLite · Simulador |
@@ -210,7 +210,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
  - PDV Java v4 pré-release pública (`v4.0.0-rc5`; validada em testes internos; roteiro formal pendente; GA **08/11/2026** condicionado)
  - Ink Agenda Desktop (`v2.0.1` estável, publicada em 07/10/2026 — correções do QA da `v2.0.0`)
   - Minerador 4.0 (`v1.2.3` Ouro 4.0)
-  - Reino OIDC Free (`v2.0.0` GA): três Eras e progressão narrativa gratuitas para estudo pessoal; módulo pago opcional limitado aos decks adicionais de Mineração de Chaves.
+  - Reino OIDC Free (`v2.0.1-free`): três Eras e progressão narrativa gratuitas para estudo pessoal, sem chave de ativação. O módulo pago não faz parte desta versão.
   - Circuito Ferradura (Ativo)
   - Suporte Área 51 (Baseline `0.1.0-dev`)
   - CSO Frotas Web (Em produção)
@@ -277,4 +277,4 @@ FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro�
 
 **Atualização Reino OIDC (07/10/2026):** Free `v2.0.0` publicado como GA em https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0. SHA-256 do `ReinoOIDC-v2.exe`: `af0a5bd3bf4f8f6586de6e32a29b7ba750985788e8cca768f87ecf74fd59952d`. As três Eras e a progressão narrativa são gratuitas para estudo pessoal; o módulo pago opcional, R$ 29,90 em valor único, limita-se aos decks adicionais de Mineração de Chaves. Não inclui certificação, consultoria nem suporte técnico.
 
-**Atualização Reino OIDC (08/10/2026):** candidato local `v2.0.1` gerado em pasta isolada; 45 testes Python passaram, `pip check` sem dependências quebradas, autocontenção aprovada e smoke test local aprovado (health `2.0.1` e home HTTP 200). EXE sem assinatura Authenticode; candidato e checksums não foram publicados. `v2.0.0` permanece o GA/Latest público. Não substituir o artefato da loja nem divulgar checksums do candidato antes da assinatura e da validação final.
+**Atualização Reino OIDC (08/10/2026):** Free `v2.0.1-free` publicada em https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free. SHA-256 de `ReinoOIDC-v2.exe`: `067352c7201f2e3478d11abcf3a87f212fad6dc1c02768ccebd6ad78de2992b5`. Sem certificado digital e sem chave de ativação. As três Eras continuam gratuitas para estudo pessoal. O módulo pago não entra nesta versão. `v2.0.0` permanece como release anterior. A oficina privada não foi enviada ao remoto.

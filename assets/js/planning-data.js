@@ -226,7 +226,7 @@ window.CARACORE_PLANNING = {
       tone: "circuito",
       shop: "https://circuito.caracore.com.br/",
       hundred: "Trilha ativa (PF grátis · escolas R$ 5/aluno/mês).",
-      now: "Fase ativa no ecossistema. Sem GA novo neste horizonte.",
+      now: "v2.0.23 na loja (08/10/2026). Demo de console Windows sem assinatura; curso HTML e pacote macOS. v2.0.0 no histórico.",
       history: [
         { m: "2026-06", p: 95 },
         { m: "2026-07", p: 96 },

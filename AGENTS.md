@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 08/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.1-free` publicado na loja, sem certificado digital e sem módulo pago; `v2.0.0` fica no histórico)
+> **Data de Atualização:** 08/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.1-free` publicado na loja, sem certificado digital; edição paga em desenvolvimento, sem PIX nesta etapa; `v2.0.0` fica no histórico e não é oferecida no download; Circuito Ferradura `v2.0.23` na loja e na release, executável Windows sem assinatura)
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -149,8 +149,8 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Ink Agenda** | `caracore-ink` | `caracore-ink-releases` | `ink.caracore.com.br` | Java 25 · JavaFX (Windows **v2.0.1** publicada em 07/10/2026 com as correções do QA, jar ofuscado; v2.0.0 no histórico; Desktop com suporte e correções 2.0.x até a 3.0 o substituir) · **3.0 em PWA** em roadmap (**não antes de 2028**; nova aplicação de lançamento sobre o core da v2; web/Android/Mac/iPhone; nuvem HTTPS, um SQLite por estúdio; substitui o Desktop após importação dos dados; sem DMG/DEB) |
 | **Minerador ETE 4.0** | `caracore-ete` | `caracore-ete-releases` | `ete.caracore.com.br` | Python · `v1.2.3` Ouro 4.0 · Windows/Linux/macOS |
 | **CaraCore Hub** | `caracore-hub` | `caracore-hub-releases` | `hub.caracore.com.br` | Jakarta EE 10 · WAR/Tomcat · JSP |
-| **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · Lógica / Educação |
-| **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | Free `v2.0.1-free` na loja · sem certificado digital · sem módulo pago · `v2.0.0` no histórico · OAuth 2.1 · OIDC · Windows .exe |
+| **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · curso e demo de console · **`v2.0.23`** (08/10/2026) · EXE Windows sem assinatura · pacotes Windows, macOS e HTML · `v2.0.0` no histórico |
+| **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | Free `v2.0.1-free` na loja · sem certificado digital · edição paga em desenvolvimento, sem PIX nesta etapa · `v2.0.0` no histórico, fora da página de download · OAuth 2.1 · OIDC · Windows .exe |
 | **Área 51** | `caracore-area51` | `caracore-area51-releases` | `area51.caracore.com.br` | Python · Flask · Consultoria OIDC |
 | **Helianto Condominium** | `caracore-helianto` | — | — | Java 25 · Spring Boot 4 · React · GA **30/12/2029** · **sem loja** |
 | **RU Soberano** | `caracore-ru` | `caracore-ru-releases` | `ru.caracore.com.br` | Java 25 · JavaFX · SQLite · Simulador |
@@ -210,8 +210,8 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
  - PDV Java v4 pré-release pública (`v4.0.0-rc5`; validada em testes internos; roteiro formal pendente; GA **08/11/2026** condicionado)
  - Ink Agenda Desktop (`v2.0.1` estável, publicada em 07/10/2026 — correções do QA da `v2.0.0`)
   - Minerador 4.0 (`v1.2.3` Ouro 4.0)
-  - Reino OIDC Free (`v2.0.1-free`): três Eras e progressão narrativa gratuitas para estudo pessoal, sem chave de ativação. O módulo pago não faz parte desta versão.
-  - Circuito Ferradura (Ativo)
+  - Reino OIDC Free (`v2.0.1-free`): três Eras e progressão narrativa gratuitas para estudo pessoal, sem chave de ativação. A edição paga está em desenvolvimento e a loja não combina PIX nesta etapa.
+  - Circuito Ferradura (`v2.0.23` na loja e na release, 08/10/2026; `v2.0.0` no histórico)
   - Suporte Área 51 (Baseline `0.1.0-dev`)
   - CSO Frotas Web (Em produção)
 * **Em Andamento (Garagem / Roadmap Público):**
@@ -277,4 +277,6 @@ FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro�
 
 **Atualização Reino OIDC (07/10/2026):** Free `v2.0.0` publicado como GA em https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.0. SHA-256 do `ReinoOIDC-v2.exe`: `af0a5bd3bf4f8f6586de6e32a29b7ba750985788e8cca768f87ecf74fd59952d`. As três Eras e a progressão narrativa são gratuitas para estudo pessoal; o módulo pago opcional, R$ 29,90 em valor único, limita-se aos decks adicionais de Mineração de Chaves. Não inclui certificação, consultoria nem suporte técnico.
 
-**Atualização Reino OIDC (08/10/2026):** Free `v2.0.1-free` publicada em https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free. SHA-256 de `ReinoOIDC-v2.exe`: `067352c7201f2e3478d11abcf3a87f212fad6dc1c02768ccebd6ad78de2992b5`. Sem certificado digital e sem chave de ativação. As três Eras continuam gratuitas para estudo pessoal. O módulo pago não entra nesta versão. CTA da loja: **Baixar Free (2.0.1)**; a edição paga será entregue depois e o PIX é combinado pelo WhatsApp ou pelo Telegram (`+55 41 9 9909-7797`). `v2.0.0` permanece como release anterior. A oficina privada não foi enviada ao remoto.
+**Atualização Reino OIDC (08/10/2026):** Free `v2.0.1-free` publicada em https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free. SHA-256 de `ReinoOIDC-v2.exe`: `067352c7201f2e3478d11abcf3a87f212fad6dc1c02768ccebd6ad78de2992b5`. Sem certificado digital e sem chave de ativação. As três Eras continuam gratuitas para estudo pessoal. O módulo pago não entra nesta versão. CTA da loja: **Baixar Free (2.0.1)**. A edição paga está em desenvolvimento; a loja não combina PIX nesta etapa. Quem quiser ser avisado escreve pelo WhatsApp (`+55 41 9 9909-7797`), sem pagamento. A página de download oferece só a tag `v2.0.1-free`. `v2.0.0` fica no histórico, com o módulo pago daquela versão descontinuado; o asset não foi despublicado. A oficina privada não foi enviada ao remoto.
+
+**Atualização Circuito Ferradura (08/10/2026):** `v2.0.23` publicada na loja https://circuito.caracore.com.br/download.html e na release https://github.com/chmulato/caracore-circuito-releases/releases/tag/v2.0.23. SHA-256 do `CircuitoFerradura.exe`: `12df7a9d7d0984f78612b710418d0c76686796e011748001278a399d2ce9e68d`. Windows ZIP `d61d1953ff8193d29859a2c923bac26d91ec9d2fc72b2f6d9fd546cc3ff198d5` · macOS ZIP `989d1b5fe3cfa775e9407ed934c0a292cc705a41a84d38b38349d8158863dc9d` · HTML ZIP `d4c312dcfac8a2289566dda3931681bfedb0331282b44fdd8c457b38475d8d5c`. O pacote macOS traz o curso e o launcher; o executável é só Windows e não tem assinatura digital. `v2.0.0` fica no histórico. A oficina `caracore-circuito` foi enviada ao remoto neste corte.

@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 07/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.1`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.0` GA publicado)
+> **Data de Atualização:** 07/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 pré-release `v4.0.0-rc5`, validada em testes internos, roteiro formal pendente; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.0` GA publicado)
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -25,7 +25,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 |---|---|---|
 | **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.7-free`** (100 vendas **por mês**; UI no navegador) · Java **`v4.0.0-rc5`** (pré-release pública para avaliação; validada em testes internos; roteiro formal pendente; GA **08/11/2026** condicionado) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frotas Web + Transportes Desktop (2028) | Gestão de frota FRO 24/24 em produção desde 06/10 (Flyway V33). Freeze M1 em 08/11/2026. Jornada, app offline e GPS ficam depois. **Não é GPS** |
-| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1.1` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
+| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
 
 ### Registro da Matriz — CDN/Vercel — 05/10/2026
 
@@ -38,9 +38,9 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 
 - **Coerência funcional:** o escopo de negócio está coerente com o código para Mercado Livre, Shopee e Temu. Os três canais possuem webhook, worker e conector; RBAC canônico = `ADMIN`, `SUPERVISOR`, `OPERADOR`; SQLite/WAL e as 11 migrações foram validados.
 - **Ponto de atenção:** `AMAZON` e `B2W` ainda aparecem no enum de domínio, mas não têm webhook, worker ou conector. Não são promessa pública do Hub. Até decisão posterior, tratar como roadmap e não aceitar esses canais na UI/API como se estivessem operacionais.
-- **Pacote Windows atual (06/10/2026):** tag `v2.1.0-rc1.1` em `caracore-hub-releases`, unsigned. Instalador 281.521.557 bytes, SHA-256 `841c0ce2da6796bd25b3f958d5ec366ee7ef5758dbf7439d1f44b55617206d3c`. ZIP da mesma edição, sem instalador, 333.338.656 bytes, SHA-256 `1b942bbe04dac9d32622f117d6542100c242e0fbb4561238ec4371f436de5058`. A tag `v2.1.0-rc1` conserva o instalador de 05/10. A suíte 9/9 exercitou `f59b959d…`. Mac e Linux não entram nesta tag. Não é GA. Detalhes: `caracore-hub/docs/contexto-rapido.md` e `docs/plano-lancamento-rc1.md`.
+- **Pacote Windows atual (08/10/2026):** tag `v2.1.0-rc1.2` em `caracore-hub-releases`, unsigned. Instalador 281.529.680 bytes, SHA-256 `50d38ff0ee4defce5bb2598967331d0295fb4817dbec59df5d3e7574b22975e5`. ZIP da mesma edição, sem instalador, 333.342.883 bytes, SHA-256 `ec82b2bd57053c252faac4fdbb0066e9a5cea2df293562b35384107e5cb624b4`. FileVersion `2.1.0-rc1.2`. Manifesto: commit `463a85413205e772ffa6860d4b506309bb6cc951`, `sourceTreeDirty=false`. A tag `v2.1.0-rc1.1` conserva o pacote de 06/10. A tag `v2.1.0-rc1` conserva o instalador de 05/10. Mac e Linux não entram nesta tag. Não é GA. O aceite da QA desta build ainda não foi feito. Detalhes: `caracore-hub/docs/contexto-rapido.md` e `docs/plano-lancamento-rc1.md`.
 - **Login real — ponto de parada:** corrigidos timestamps SQLite, busca de etiqueta/pedido e consulta de e-mail case-insensitive, mas o erro do screenshot continua sem causa confirmada. O usuário usou `npm run dev`; banco/perfil original não localizado nos caminhos conhecidos. Identificar `HUB_USER_DATA_PATH`, `userData` e WAR efetivos antes de consultar somente existência/status da conta; não solicitar/exibir senha/hash nem apagar banco. Recuperação offline de senha é tarefa separada e pendente. Git observado: `master`/referência local `origin/master` em `7e7fd14`; revalidar ao retomar. Gemini/Cursor devem seguir o handoff da oficina, sem confundir smoke limpo com resolução na conta real.
-- **Status honesto:** web 2.1 pronta na oficina. O download da loja é a pré-release Windows `v2.1.0-rc1.1` em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.1 (instalador e ZIP, unsigned). Não é GA. Mac e Linux fora desta tag. Não anunciar Amazon/B2W nem o GA de 06/04/2027 como já entregue.
+- **Status honesto:** web 2.1 pronta na oficina. O download da loja é a pré-release Windows `v2.1.0-rc1.2` em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.2 (instalador e ZIP, unsigned). Não é GA. Mac e Linux fora desta tag. Não anunciar Amazon/B2W nem o GA de 06/04/2027 como já entregue.
 - **Fontes de retomada:** `caracore-hub/docs/contexto-rapido.md`, `caracore-hub/electron/README.md` e `caracore-hub/scripts/build_hub_exe.ps1`.
 
 ### Snapshot 08/09/2026 (ler isto primeiro)
@@ -63,7 +63,7 @@ Headline pública de 08/11/2026 = **PDV v4**. A gestão de frota do CSO já est�
 | **PWA** | Loja: vitrine em `pdv.caracore.com.br/pwa.html` (atalho/offline da loja). Oficina: shell local do Quarkus depois do launcher | A PWA da loja **não** é o caixa. Sem Electron |
 | **PDV Rust** | Piloto `v0.1.4` Windows · **loja + artefatos no mesmo repo** `chmulato/caracore-rust-pdv-releases` (Pages = `pdv-rust.caracore.com.br`; Releases = NSIS/MSI/ZIP) | **Nunca** `/releases/latest` de `caracore-pdv-releases` (repo Java; `latest` = Free). Não substitui o Java |
 | **CSO** | Gestão de frota no ar em `cso.caracore.com.br` desde 06/10 (`b90d1dc`, Flyway V33): km/L, documentos, pneus, exame, infrações e custo por km. Index `e1e8d63`. Freeze M1 = **08/11/2026**. Loja `cso-transp.caracore.com.br` | Transportes desktop **08/11/2028**. Sem jornada, app offline nem GPS. Sem depoimento inventado. A data de 2026 não é o GA do Transportes |
-| **Hub** | Vitrine + oficina web 2.1 concluída. Pré-release Windows `v2.1.0-rc1.1` (instalador e ZIP, unsigned) na loja | GA Windows **06/04/2027**. Mac e Linux fora desta tag. Login da conta real ainda sem causa confirmada. Não é Flask nem “central” da Cara Core |
+| **Hub** | Vitrine + oficina web 2.1 concluída. Pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) na loja | GA Windows **06/04/2027**. Mac e Linux fora desta tag. Login da conta real ainda sem causa confirmada. Não é Flask nem “central” da Cara Core |
 
 ### Planos Java Free / Premium (fonte: `PlanoLicencaService`)
 
@@ -190,7 +190,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 3. **CaraCore Hub:**
    - Gestão de **encomendas** para centros de distribuição (Mercado Livre, Shopee, Temu). **Não** é orquestrador interno da Cara Core nem Python/Flask (isso é Área 51).
    - Oficina web **2.1 concluída** (Jakarta EE 10 · WAR · Tomcat · JSP · PostgreSQL/Redis). O WAR é artefato de oficina, não release pública. O calendário oficial de GA é o **instalador Windows com Electron, Tomcat embutido e SQLite WAL** em **06/04/2027**.
-   - Status em 06/10/2026: a loja oferece a pré-release Windows `v2.1.0-rc1.1` (instalador e ZIP, unsigned). Mac e Linux ficam fora desta tag. O login da conta real ainda não tem causa confirmada. O GA Windows permanece 06/04/2027.
+   - Status em 08/10/2026: a loja oferece a pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned). Mac e Linux ficam fora desta tag. O login da conta real ainda não tem causa confirmada. O GA Windows permanece 06/04/2027.
    - Tia Sócia / Programa Tias Sócias é pitch ilustrativo, não o nome do produto.
    - Retomada para IAs na oficina: `caracore-hub/docs/contexto-rapido.md` · Cursor `.cursor/rules/project-memory.mdc`. Manual de uso público: `wiki.caracore.com.br/hub/`.
 4. **Wiki única no portal:**

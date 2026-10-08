@@ -31,7 +31,7 @@
   const GLOSSARY = [
     ["v4.0.0-rc4", "Pré-release pública para avaliação, antes do lançamento estável."],
     ["v3.2.6-free", "Versão estável do PDV Java Free, em Windows, Linux e macOS."],
-    ["v2.1.0-rc1.1", "Pré-release Windows para avaliação, com instalador e ZIP. O lançamento estável do Hub está previsto para 06/04/2027."],
+    ["v2.1.0-rc1.2", "Pré-release Windows para avaliação, com instalador e ZIP. O lançamento estável do Hub está previsto para 06/04/2027."],
     ["v2.0.0-RC1", "Release candidate público desta sala de estudo."],
     ["T032", "Gate interno do roteiro operacional."],
     ["Agent", "Sessão pesada do Cursor. É o que consome a cota do mês."],

@@ -57,8 +57,8 @@ window.CARACORE_PLANNING = {
         kind: "risco",
         title: "Hub · pré-release Windows no ar",
         lead: "Pré-release Windows no ar. Lançamento estável previsto para 06/04/2027.",
-        detail: "v2.1.0-rc1.1 · instalador e ZIP · sem assinatura",
-        text: "Pré-release Windows v2.1.0-rc1.1 no ar, com instalador e ZIP, sem assinatura. Não é o GA de 06/04/2027. Mac e Linux ficam para depois.",
+        detail: "v2.1.0-rc1.2 · instalador e ZIP · sem assinatura",
+        text: "Pré-release Windows v2.1.0-rc1.2 no ar, com instalador e ZIP, sem assinatura. Não é o GA de 06/04/2027. Mac e Linux ficam para depois.",
       },
     ],
   },
@@ -126,7 +126,7 @@ window.CARACORE_PLANNING = {
       label: "2027",
       subtitle: "Hub · FRO",
       pct: 14,
-      note: "Hub: pré-release Windows v2.1.0-rc1.1 publicada. GA do instalador em 06/04. FRO 08/04–dez. Ink PWA = Tab, não antes de 2028.",
+      note: "Hub: pré-release Windows v2.1.0-rc1.2 publicada. GA do instalador em 06/04. FRO 08/04–dez. Ink PWA = Tab, não antes de 2028.",
     },
     {
       id: "y2028",
@@ -244,7 +244,7 @@ window.CARACORE_PLANNING = {
       tone: "hub",
       shop: "https://hub.caracore.com.br/",
       hundred: "Instalador Windows com SQLite em 06/04/2027. Canais: Mercado Livre, Shopee e Temu.",
-      now: "Pré-release Windows v2.1.0-rc1.1 publicada, instalador e ZIP, sem assinatura. GA 06/04/2027. Mac e Linux fora desta tag.",
+      now: "Pré-release Windows v2.1.0-rc1.2 publicada, instalador e ZIP, sem assinatura. GA 06/04/2027. Mac e Linux fora desta tag.",
       history: [
         { m: "2026-06", p: 48 },
         { m: "2026-07", p: 52 },

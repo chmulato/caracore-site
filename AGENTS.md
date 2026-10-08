@@ -189,7 +189,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
    - CSO de gestão **não** é rastreador GPS. Virtual Tracker™ é produto futuro, separado, 2028. Na loja: sem depoimento inventado e sem % de economia.
 3. **CaraCore Hub:**
    - Gestão de **encomendas** para centros de distribuição (Mercado Livre, Shopee, Temu). **Não** é orquestrador interno da Cara Core nem Python/Flask (isso é Área 51).
-   - Oficina web **2.1 concluída** (Jakarta EE 10 · WAR · Tomcat · JSP · SQLite local). O WAR é artefato de oficina, não release pública. O calendário oficial de GA é o **instalador Windows com Electron, Tomcat embutido e SQLite WAL** em **06/04/2027**.
+   - Oficina web **2.1 concluída** (Jakarta EE 10 · WAR · Tomcat · JSP · SQLite local em WAL). O banco do produto fica no computador do cliente. O WAR é artefato de oficina, não release pública. O calendário oficial de GA é o **instalador Windows com Electron, Tomcat embutido e o mesmo SQLite** em **06/04/2027**. Stack pública: Java 25, Jakarta EE 10, Tomcat 10.1.
    - Status em 08/10/2026: a loja oferece a pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned). Mac e Linux ficam fora desta tag. O login da conta real ainda não tem causa confirmada. O GA Windows permanece 06/04/2027.
    - Tia Sócia / Programa Tias Sócias é pitch ilustrativo, não o nome do produto.
    - Retomada para IAs na oficina: `caracore-hub/docs/contexto-rapido.md` · Cursor `.cursor/rules/project-memory.mdc`. Manual de uso público: `wiki.caracore.com.br/hub/`.

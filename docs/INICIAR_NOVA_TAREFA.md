@@ -49,6 +49,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | URL | https://hub.caracore.com.br/ |
 | O que é | Encomendas (ML, Shopee, Temu) — não Flask, não “central telefônica” |
 | GA | Instalador Windows 06/04/2027 (Electron + Tomcat embutido + SQLite WAL). Oficina web 2.1 concluída; WAR não é release pública |
+| Banco | SQLite local (WAL) no computador do cliente. Java 25, Jakarta EE 10, Tomcat 10.1 |
 | RC Windows | Download da loja: `v2.1.0-rc1.2` (instalador SHA-256 `50d38ff0ee4defce5bb2598967331d0295fb4817dbec59df5d3e7574b22975e5` e ZIP SHA-256 `ec82b2bd57053c252faac4fdbb0066e9a5cea2df293562b35384107e5cb624b4`). A tag `v2.1.0-rc1.1` conserva o pacote de 06/10. A tag `v2.1.0-rc1` conserva o instalador de 05/10. A suíte 9/9 vale para `f59b959d…`. Não é GA. Mac e Linux fora desta tag. Login do perfil real ainda sem causa confirmada. O aceite da QA desta build ainda não foi feito |
 | Oficina | `caracore-hub` |
 | Matriz | `#caracore-hub` |
@@ -68,7 +69,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Desktop | `electron/README.md` |
 | Ecossistema | `../caracore-site/docs/ECOSYSTEM_MEMORIA.md` |
 
-**Foco até 06/04/2027:** empacotamento do instalador EXE + Tomcat embutido + SQLite local em WAL. Não reescrever as fases 1–5 da WAR nem publicar o WAR como release pública. Não commitar salvo pedido explícito.
+**Foco até 06/04/2027:** empacotamento do instalador EXE + Tomcat embutido. O banco já é SQLite local em WAL, na oficina e na pré-release. Não reescrever as fases 1–5 da WAR nem publicar o WAR como release pública. Não commitar salvo pedido explícito.
 
 **Wiki:** manual operacional em `caracore-wiki/docs/hub/` (público).
 
@@ -231,13 +232,14 @@ Redirect legado: `docs/portfolio.html` → matriz.
 1. **Tratar Rust como substituto do Java** — são linhas paralelas (v3.2.x ≠ v0.1.x).
 2. **Usar `/releases/latest` de `caracore-pdv-releases` para o Rust** — esse latest é o canal **Java**. Rust = `caracore-rust-pdv-releases/releases`.
 3. **Descrever Hub como Flask / central telefônica** — Hub é encomendas (Jakarta EE). Flask é Área 51.
-4. **Vender CSO como GPS** — Frotas é gestão administrativa; Virtual Tracker™ é produto separado.
-5. **Duplicar vitrine longa na matriz** — resumo + CTA para loja.
-6. **Esquecer push da loja** após mudar `caracore-pdv-rust-releases` (Pages demora minutos).
-7. **Misturar suporte PME na home B2B** — M365/antivírus/horários noite ficam em `suporte-local.html`.
-8. **Tom xiita anti-cloud na vitrine** — usar híbrido/FinOps/resiliência; ideologia fica para backlog wiki/retrô/lojas.
-9. **Commit na oficina** sem pedido explícito do usuário.
-10. **Misturar senhas Java × Rust** — Free = `admin`/`admin` (1 operador). Rust = quatro logins em `primeiros-passos.html#perfis`. Pastas `%APPDATA%\caracore\` ≠ `%APPDATA%\caracore-pdv\`.
+4. **Descrever o banco do Hub como PostgreSQL, Docker ou Java 17** — o banco é SQLite local (WAL) no computador. Stack pública: Java 25, Jakarta EE 10, Tomcat 10.1.
+5. **Vender CSO como GPS** — Frotas é gestão administrativa; Virtual Tracker™ é produto separado.
+6. **Duplicar vitrine longa na matriz** — resumo + CTA para loja.
+7. **Esquecer push da loja** após mudar `caracore-pdv-rust-releases` (Pages demora minutos).
+8. **Misturar suporte PME na home B2B** — M365/antivírus/horários noite ficam em `suporte-local.html`.
+9. **Tom xiita anti-cloud na vitrine** — usar híbrido/FinOps/resiliência; ideologia fica para backlog wiki/retrô/lojas.
+10. **Commit na oficina** sem pedido explícito do usuário.
+11. **Misturar senhas Java × Rust** — Free = `admin`/`admin` (1 operador). Rust = quatro logins em `primeiros-passos.html#perfis`. Pastas `%APPDATA%\caracore\` ≠ `%APPDATA%\caracore-pdv\`.
 
 ---
 

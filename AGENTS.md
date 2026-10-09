@@ -255,6 +255,7 @@ FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro�
 - Auditoria/correção local de CDN da matriz (Vercel): [`caracore-site/docs/CDN_VERCEL.md`](caracore-site/docs/CDN_VERCEL.md)
 - Guia para novas tarefas: [`caracore-site/docs/INICIAR_NOVA_TAREFA.md`](caracore-site/docs/INICIAR_NOVA_TAREFA.md)
 - Validação matriz ↔ lojas: [`caracore-site/docs/VALIDACAO_LOJAS_MATRIZ.md`](caracore-site/docs/VALIDACAO_LOJAS_MATRIZ.md)
+- Correções de coerência em aberto (08/10/2026): [`caracore-site/docs/CORRECOES_COERENCIA_ECOSSISTEMA.md`](caracore-site/docs/CORRECOES_COERENCIA_ECOSSISTEMA.md)
 - Padrão de ambiente de dev: [`AMBIENTE_CENTRALIZADO.md`](AMBIENTE_CENTRALIZADO.md)
 - Versões Java por aplicação (Cursor, Copilot, Gemini/Antigravity): [`APPS_JAVA_VERSION.md`](APPS_JAVA_VERSION.md)
 - Wiki do portal: [`caracore-wiki/docs/projeto-pdv.html`](caracore-wiki/docs/projeto-pdv.html) · [`projeto-cso.html`](caracore-wiki/docs/projeto-cso.html) · [`projeto-hub.html`](caracore-wiki/docs/projeto-hub.html) · manual Hub [`docs/hub/`](caracore-wiki/docs/hub/)

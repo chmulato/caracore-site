@@ -50,6 +50,7 @@ Documentos operacionais — **fonte viva** para repos, URLs, checklists e estrat
 | [ECOSYSTEM_LOJAS.md](ECOSYSTEM_LOJAS.md) | URLs canónicas das vitrines (`*.caracore.com.br`) |
 | [COMPONENTES_LOJA.md](COMPONENTES_LOJA.md) | Molde de páginas por loja (`*-releases`) |
 | [VALIDACAO_LOJAS_MATRIZ.md](VALIDACAO_LOJAS_MATRIZ.md) | Checklist alinhamento portfólio ↔ lojas |
+| [CORRECOES_COERENCIA_ECOSSISTEMA.md](CORRECOES_COERENCIA_ECOSSISTEMA.md) | Inconsistências abertas em 08/10/2026 e a correção de cada uma |
 | [VALIDACAO_NEGOCIO.md](VALIDACAO_NEGOCIO.md) | Validação comercial — produtos, preços, fluxos |
 | [STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md](STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md) | Resumo executivo — estado actual e próximos passos |
 | [ECOSSISTEMA_MAPA_VISUAL.md](ECOSSISTEMA_MAPA_VISUAL.md) | Mapa em camadas implementado em `ecosistema.html#mapa-visual` |

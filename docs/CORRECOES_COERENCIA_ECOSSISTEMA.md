@@ -24,7 +24,7 @@ Leitura de checkout. Produção no ar não foi reconsultada nesta data.
 | Frente | Valor vigente |
 |---|---|
 | PDV Java estável | `v3.2.7-free` · CTA **Baixar Free (3.2.7)** |
-| PDV Java v4 | Download público `v4.0.0-rc5`. Candidato de oficina `v4.0.0-rc6`, ZIP local ainda não publicado. GA 08/11/2026 condicionado ao T032 |
+| PDV Java v4 | Download público `v4.0.0-rc5`. `v4.0.0-rc6` em preparação, SHA-256 a publicar. GA 08/11/2026 condicionado ao T032 |
 | PDV Rust | Piloto `v0.1.4` |
 | CSO Frotas | FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Freeze M1 em 08/11/2026. A janela abr–dez/2027 não reabre |
 | CSO Transportes | GA 08/11/2028 |

@@ -92,7 +92,7 @@ alwaysApply: true
 
 ## PDV v4 — RC5 pública para avaliação; GA previsto 08/11/2026
 
-- **Oficina:** `caracore-pdv`; candidato **v4.0.0-rc6** (Qute + launcher), correções do QA do rc5, 100 vendas finalizadas por mês civil. ZIP local SHA-256 `cab76f040cbcef6f030a91808f47fd93f637eededf15005ad6a333b40dac0734`, ainda não publicado. O download público da pré-release continua **v4.0.0-rc5**. T032 segue aberto; a publicação não é aceite de GA. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
+- **Oficina:** `caracore-pdv`; **v4.0.0-rc6** em preparação (Qute + launcher), correções do QA do rc5, 100 vendas finalizadas por mês civil. SHA-256 a publicar. O download público da pré-release continua **v4.0.0-rc5**. O ciclo manual da RC5 no Edge segue pendente. T032 segue aberto; a publicação não é aceite de GA. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
 - **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc5.html`.
 - **Loja:** `https://pdv.caracore.com.br/` — `v3.2.7-free` permanece download estável/Latest; RC5 é pré-release de avaliação, não GA; RC4 fica no histórico.

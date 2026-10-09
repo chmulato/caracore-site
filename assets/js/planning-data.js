@@ -207,8 +207,8 @@ window.CARACORE_PLANNING = {
       state: "done",
       tone: "reino",
       shop: "https://oidc.caracore.com.br/",
-      hundred: "Sala de estudo Windows. Edição Free 2.0.1 publicada.",
-      now: "Edição Free 2.0.1. Três Eras gratuitas. A edição paga está em desenvolvimento, sem PIX nesta etapa. Sem mês de Agent na fila 2026–2028.",
+      hundred: "Sala de estudo Windows. Edição Free 2.0.2 publicada.",
+      now: "Edição Free v2.0.2-free. Três Eras gratuitas. A edição paga está em desenvolvimento, sem PIX nesta etapa. v2.0.1-free e v2.0.0 no histórico. Sem mês de Agent na fila 2026–2028.",
       history: [
         { m: "2026-06", p: 85 },
         { m: "2026-07", p: 90 },
@@ -226,7 +226,7 @@ window.CARACORE_PLANNING = {
       tone: "circuito",
       shop: "https://circuito.caracore.com.br/",
       hundred: "Trilha ativa (PF grátis · escolas R$ 5/aluno/mês).",
-      now: "v2.0.23 na loja (08/10/2026). Demo de console Windows sem assinatura; curso HTML e pacote macOS. v2.0.0 no histórico.",
+      now: "v2.0.24 na loja (08/10/2026). Demo de console Windows sem assinatura; curso HTML e pacote macOS. v2.0.23 no histórico.",
       history: [
         { m: "2026-06", p: 95 },
         { m: "2026-07", p: 96 },

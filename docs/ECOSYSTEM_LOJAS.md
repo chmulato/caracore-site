@@ -15,7 +15,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   CaraCore PDV Java (web local) https://pdv.caracore.com.br/                            Oferta estável; canal v3.2.7-free; Win/Linux/macOS; PWA da vitrine
   CaraCore PDV                 https://pdv-rust.caracore.com.br/                       Loja própria (Pages do repo caracore-rust-pdv-releases)
   (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Mesmo repo da loja; tag v0.1.4. NÃO usar /latest de caracore-pdv-releases (Java)
-  Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; web 2.1 concluída na oficina; sem release pública; GA instalador Windows 06/04/2027
+  Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; web 2.1 concluída na oficina; pré-release Windows v2.1.0-rc1.2 (instalador e ZIP, unsigned); GA instalador Windows 06/04/2027
   Circuito Ferradura           https://circuito.caracore.com.br/
   Reino OIDC                   https://oidc.caracore.com.br/
   Minerador 4.0 ETE            https://ete.caracore.com.br/
@@ -23,7 +23,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   Suporte Área 51              https://area51.caracore.com.br/
   RU Soberano                  https://ru.caracore.com.br/
   CaraCore CSO                 https://cso-transp.caracore.com.br/                      Loja única (Frotas + Transportes). Clone: D:\onedrive\dev\caracore-cso-releases. App: cso.caracore.com.br. GA desktop 08/11/2028. Oficina transportes sem loja. ≠ GPS
-  Ink Agenda                   https://ink.caracore.com.br/                 Desktop v2.0.0 Windows (download) · PWA não antes de 2028 (/pwa.html)
+  Ink Agenda                   https://ink.caracore.com.br/                 Desktop v2.0.1 Windows (download, 07/10/2026) · PWA não antes de 2028 (/pwa.html)
   Wiki institucional           https://wiki.caracore.com.br/                           caracore-wiki (não é loja de produto)
   Artigos Retrô (editorial)   https://retro.caracore.com.br/                          caracore-retro (não é loja de produto)
 
@@ -48,4 +48,4 @@ Retomada de contexto (ler nesta ordem):
 
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
-Atualizado em 27/08/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md
+Atualizado em 09/10/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md

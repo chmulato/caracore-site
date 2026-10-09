@@ -1,5 +1,7 @@
 # Correção de CDN / Fast Data Transfer — Vercel Hobby
 
+**Estado em 09/10/2026:** a Vercel não é o serviço. A matriz pública é GitHub Pages. O WebP `logo_branca.65d940959999.webp` está no ar (117.882 bytes) com `Cache-Control: max-age=600`. O 404 não redireciona sozinho. O relato abaixo é o registo de 05/10 e não descreve o host atual.
+
 Validação local: 05/10/2026. **Sem commit, push ou deploy nesta tarefa.**
 Domínio, DNS, HTTPS, plano e Firewall não foram alterados.
 

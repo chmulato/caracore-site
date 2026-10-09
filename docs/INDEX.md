@@ -2,7 +2,7 @@
 
 Índice **curado** para quem edita o site institucional. Toda a pasta `docs/` está em **Markdown** (`.md`); documentação histórica de backend OAuth, migração `delivery/` e sessões antigas está em [archive/](archive/).
 
-**Última atualização:** 2026-09-09
+**Última atualização:** 2026-10-09
 
 ---
 
@@ -58,7 +58,7 @@ Documentos operacionais — **fonte viva** para repos, URLs, checklists e estrat
 | Presença | URL | Repo |
 |----------|-----|------|
 | Wiki | [wiki.caracore.com.br](https://wiki.caracore.com.br/) | `caracore-wiki` |
-| Retrô | [retro.caracore.com.br](https://retro.caracore.com.br/) | `caracore-retro` — **117 artigos**; art. 117 Fortaleza Digital · art. 115 B2B/IA |
+| Retrô | [retro.caracore.com.br](https://retro.caracore.com.br/) | `caracore-retro` — **139 artigos**; art. 117 Fortaleza Digital · art. 115 B2B/IA |
 | Sala | [tools.caracore.com.br/sala/](https://tools.caracore.com.br/sala/) | campanhas |
 
 **Portfólio publicado:** [www.caracore.com.br/portfolio.html](https://www.caracore.com.br/portfolio.html)

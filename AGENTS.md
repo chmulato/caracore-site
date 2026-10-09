@@ -32,7 +32,9 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 - Observability reportou cerca de 8,1 mil respostas de `assets/images/logo_branca.png`, 1.389.022 bytes cada, aproximadamente 11,25 GB em 12 horas. O tamanho do corpo por resposta explica a transferência; a origem e o motivo dos acessos repetidos permanecem não confirmados.
 - Correções locais no `caracore-site`: WebP do logo branco versionado (117.882 bytes, −91,51%) e PNG compatível no URL legado (456.635 bytes, −67,13%); cache de um ano apenas para logos versionados; 24 h para assets compatíveis/vendors; `max-age=120, s-maxage=86400` somente na home e cinco páginas institucionais públicas. HTML seguro, APIs e configurações ficaram sem regra pública nova.
 - Removido redirect automático da página 404; corrigidos links legados para Retrô/Wiki e duplicidade de favicons. Build estático e oito testes passaram; Edge desktop/mobile validou identidade, fallback PNG, cache de navegador e menu. Home permaneceu 65 s sem requests à mesma origem nem reload.
-- **Não publicado:** mudanças estão no checkout local; não foram feitos commit/push/deploy, nem alterações de DNS, plano ou Firewall. Medir headers e impacto na Vercel após deploy. Relatório: `caracore-site/docs/CDN_VERCEL.md`.
+- Naquela data as mudanças estavam no checkout local, sem commit/push/deploy. Relatório: `caracore-site/docs/CDN_VERCEL.md`.
+
+Em 09/10/2026 a matriz pública é **GitHub Pages**. A Vercel não é o serviço. A home serviu o WebP `logo_branca.65d940959999.webp` (117.882 bytes) com `Cache-Control: max-age=600`. O 404 não redireciona sozinho. O `vercel.json` permanece no repositório e não governa esses headers.
 
 ### Registro Hub — 23/09/2026
 
@@ -58,7 +60,7 @@ Headline pública de 08/11/2026 = **PDV v4**. A gestão de frota do CSO já est�
 | Canal | O que está no ar | O que ainda não está |
 |---|---|---|
 | **PDV Java Free** | Tag `v3.2.7-free` · Maven `3.2.7` / display `3.2.7-free` · ZIP Windows/Linux/macOS · `http://localhost:8080/login` · primeiro acesso `admin`/`admin` (troca obrigatória; `/login` **não** anuncia `admin`/`admin` como válido após a troca) · shell PDV coluna + caixa registradora (busca/código Enter=+1, total grande, F2/F4/Esc; mapa Premium com **Restrito** empilhado) · loja de exemplo opcional · badge `Plano Free · X/100 vendas · Y/100 produtos` · limites em `PlanoLicencaService` (abaixo) | Versão estável da edição Free; a RC5 é a pré-release pública atual. Sem PIX integrado (QR/gateway) e sem NF-e/NFC-e. Nomes reais dos ZIP: `caracore-pdv-v3.2.7-free-free-{windows,linux,macos}-x64.zip`. SHA256 Windows `37110b7c07a045942bd89628fd473e649c7b57756707ce8a71908a1ec4c03c89` · Linux `bc8b67462a4505ad54e2d0afe18982321536101fb66f9e2c06c91bd3f7a63df7` · macOS `c0ffcf3992327df0dd31e5e2e2fc8173f3e1bf32c97178355e22994fa56b630a`. Histórico: `v3.2.6-free` / `feature/free-3.2.6-pdv-ux`. |
-| **Loja PDV** | CTA primário = **Baixar Free (3.2.7)**. Premium via demonstração (`consultoria.html`). Qualidades: SQLite offline, venda no navegador, fechamento organizado. Copy Free pode mencionar recibo digital por link e PDF, identificado como **sem valor fiscal**. Sem depoimento inventado. | PWA da loja não é o caixa. RC4 é pré-release da edição Free, ainda não homologada para produção |
+| **Loja PDV** | CTA primário = **Baixar Free (3.2.7)**. Premium via demonstração (`consultoria.html`). Qualidades: SQLite offline, venda no navegador, fechamento organizado. Copy Free pode mencionar recibo digital por link e PDF, identificado como **sem valor fiscal**. Sem depoimento inventado. | PWA da loja não é o caixa. A pré-release pública `v4.0.0-rc5` foi validada em testes internos; o roteiro formal segue pendente. A `v4.0.0-rc6` está em preparação, SHA-256 a publicar. |
 | **PDV Java v4** | Download público ainda `v4.0.0-rc5` (SHA-256 `d45d12d9fbf6e3923f69ddbbf6173ef2128be0341e30e75f038b7dc1f3ab6f81`). Oficina em `v4.0.0-rc6`, em preparação: SHA-256 a publicar. O ZIP ainda não está no GitHub Releases. Até 100 vendas finalizadas por mês civil · Qute + launcher Edge (`iniciar_pdv.bat` underscore) · Windows x64 + Java 25+ + Python 3 + Microsoft Edge · unsigned, sem MSI · roteiro `https://pdv.caracore.com.br/homologacao-v4.html` · banco `./data/caracore-pdv.db` · `PERF-001–007` congeladas. | **Pré-release Free, não GA.** A `v3.2.7-free` permanece a versão estável e multiplataforma até os gates da 4.0. Não desativar SmartScreen, Defender ou antivírus |
 | **PWA** | Loja: vitrine em `pdv.caracore.com.br/pwa.html` (atalho/offline da loja). Oficina: shell local do Quarkus depois do launcher | A PWA da loja **não** é o caixa. Sem Electron |
 | **PDV Rust** | Piloto `v0.1.4` Windows · **loja + artefatos no mesmo repo** `chmulato/caracore-rust-pdv-releases` (Pages = `pdv-rust.caracore.com.br`; Releases = NSIS/MSI/ZIP) | **Nunca** `/releases/latest` de `caracore-pdv-releases` (repo Java; `latest` = Free). Não substitui o Java |
@@ -139,9 +141,9 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | Produto | Oficina (Código/Dev) | Loja (Vitrine/Release) | Subdomínio Oficial | Stack Principal |
 |---|---|---|---|---|
 | **Matriz Institucional** | `caracore-site` | — | `www.caracore.com.br` | HTML5 / Bootstrap / B2B |
-| **Blog Christian Mulato** | `caracore-personal` | — | `personal.caracore.com.br` | Editorial / 259 artigos / RSS |
+| **Blog Christian Mulato** | `caracore-personal` | — | `personal.caracore.com.br` | Editorial / 264 artigos / RSS |
 | **Wiki Institucional** | `caracore-wiki` | — | `wiki.caracore.com.br` | HTML5 / Multi-persona |
-| **Artigos Retrô** | `caracore-retro` | — | `retro.caracore.com.br` | Editorial / 138 artigos |
+| **Artigos Retrô** | `caracore-retro` | — | `retro.caracore.com.br` | Editorial / 139 artigos |
 | **PDV Desktop (Java)** | `caracore-pdv` | `caracore-pdv-releases` | `pdv.caracore.com.br` | Java 25 · Quarkus · SQLite · Free `v3.2.7-free` (navegador `localhost:8080/login`) · v4 RC5 Qute pré-release |
 | **CaraCore PDV (Rust)** | `caracore-pdv-rust` | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | `pdv-rust.caracore.com.br` + [Releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | Rust · Tauri 2 · React · SQLite |
 | **CSO Frotas (Web)** | `caracore-cso-quarkus` | `caracore-cso-releases` (loja única · clone `D:\onedrive\dev\caracore-cso-releases`) | Aplicação: `cso.caracore.com.br` · Loja: `cso-transp.caracore.com.br` | Java 21 · Quarkus · PostgreSQL · Qute/HTMX |
@@ -252,7 +254,7 @@ FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro�
 - Cota Cursor (fila única da empresa): [`caracore-site/docs/CALENDARIO_COTA_CURSOR.md`](caracore-site/docs/CALENDARIO_COTA_CURSOR.md)
 - Riscos / guia de decisão: [`caracore-site/docs/RISCOS_ECOSSISTEMA.md`](caracore-site/docs/RISCOS_ECOSSISTEMA.md)
 - Memória de retomada de tarefas: [`caracore-site/docs/ECOSYSTEM_MEMORIA.md`](caracore-site/docs/ECOSYSTEM_MEMORIA.md)
-- Auditoria/correção local de CDN da matriz (Vercel): [`caracore-site/docs/CDN_VERCEL.md`](caracore-site/docs/CDN_VERCEL.md)
+- Auditoria local de CDN da matriz em 05/10 (a Vercel não é o serviço; host público = GitHub Pages): [`caracore-site/docs/CDN_VERCEL.md`](caracore-site/docs/CDN_VERCEL.md)
 - Guia para novas tarefas: [`caracore-site/docs/INICIAR_NOVA_TAREFA.md`](caracore-site/docs/INICIAR_NOVA_TAREFA.md)
 - Validação matriz ↔ lojas: [`caracore-site/docs/VALIDACAO_LOJAS_MATRIZ.md`](caracore-site/docs/VALIDACAO_LOJAS_MATRIZ.md)
 - Correções de coerência em aberto (08/10/2026): [`caracore-site/docs/CORRECOES_COERENCIA_ECOSSISTEMA.md`](caracore-site/docs/CORRECOES_COERENCIA_ECOSSISTEMA.md)
@@ -275,6 +277,8 @@ FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro�
 **Atualização PDV (07/10/2026):** pré-release `v4.0.0-rc5`. ZIP `CaraCore-PDV-4.0.0-rc5-qute-portable-windows-x64.zip`, SHA-256 `d45d12d9fbf6e3923f69ddbbf6173ef2128be0341e30e75f038b7dc1f3ab6f81`, igual na loja, no GitHub e na wiki. Leitor Quagga local, recibo com itens, logs contínuos e auditoria dos eventos de caixa. Validada em testes internos; roteiro formal pendente (`docs/homologacao-v4.md` e `https://pdv.caracore.com.br/homologacao-v4.html`). A RC4 fica no histórico. `v3.2.7-free` é o estável/Latest. `PERF-001–007` congeladas.
 
 **Atualização PDV (04/10/2026):** as correções RC4 passaram na suíte Maven com Java 25 (843 testes, 0 falhas/erros, 3 ignorados) e nos testes do empacotador (6/6). O ZIP portátil unsigned foi publicado como pré-release, seu asset foi baixado novamente e o SHA-256 confirmado: `31a0cdeda68dce058079c5d0d3d5652084ba8a8cc073dfce60e021c4b3c1fdf2`. T032 segue aberto pelo roteiro operacional formal; Edge/Windows 1280×800 e troca obrigatória de senha inicial estão resolvidos. MSI não será distribuído e, nessa data, `v3.2.6-free` seguia estável/Latest. `PERF-001–007` continuam congeladas; não fazer benchmark/tuning. Handoff: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`; status canônico: `caracore-pdv/docs/arquitetura/STATUS_ATUAL_APLICACAO.md`.
+
+**Atualização Matriz (09/10/2026):** o host público é GitHub Pages. A Vercel não é o serviço. O WebP do logo branco está no ar com `Cache-Control: max-age=600`. O 404 não redireciona sozinho.
 
 **Atualização Matriz/CDN (05/10/2026):** logo branco da home reduzido de 1.389.022 B para WebP versionado de 117.882 B; PNG compatível legado reduzido para 456.635 B. Cache local configurado para 120 s de navegador e 24 h de cache compartilhado somente em seis páginas institucionais públicas; assets com hash são immutable. Página 404 não redireciona automaticamente; links legados conhecidos corrigidos. Build Node completo, 8/8 testes e validação Edge desktop/mobile aprovados; três erros JS e seis source maps faltantes permanecem avisos preexistentes. **Sem commit/push/deploy**: confirmar headers e métricas na Vercel depois da publicação. Evidências e caveats: `caracore-site/docs/CDN_VERCEL.md`.
 

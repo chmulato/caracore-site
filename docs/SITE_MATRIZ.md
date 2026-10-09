@@ -93,7 +93,7 @@ Evitar: “PDV v3” sozinho, “substitui”, “nova geração”. Comparaçã
 **Produção actual:** GitHub Pages — não aplica `_redirects` sozinho.
 
 - **`delivery/{produto}/`** — HTML mínimo → loja canónica
-- **`_redirects`** / **`vercel.json`** — Netlify/Vercel
+- **`_redirects`** / **`vercel.json`** — ficheiros de redirect. A Vercel não é o serviço. A produção é GitHub Pages.
 
 Mapa: [MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md](MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md).
 

@@ -2,7 +2,7 @@
 
 Objetivo: Verificar alinhamento entre a **matriz institucional** (caracore.com.br) e as **lojas canónicas** (*.caracore.com.br). A matriz apresenta e encaminha; a loja é a fonte de vitrine, download e documentação comercial.
 
-**Última actualização:** 2026-06-07  
+**Última actualização:** 2026-10-09  
 **Referências:** ECOSYSTEM_LOJAS.md · ECOSYSTEM_CARA_CORE.md · COMPONENTES_LOJA.md · docs/FONTES_CANONICAS_MATRIZ_LOJAS.md · docs/SITE_MATRIZ.md
 
 
@@ -60,15 +60,16 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 3. INK AGENDA
 
    (M) portfolio.html#caracore-ink-agenda
-   (L) caracore-ink-releases → ink.caracore.com.br · v2.0.0 Windows (download) · PWA não antes de 2028 em /pwa.html (roadmap; sem DMG/DEB)
+   (L) caracore-ink-releases → ink.caracore.com.br · v2.0.1 Windows (download) · PWA não antes de 2028 em /pwa.html (roadmap; sem DMG/DEB)
    Status: OK
 
 
 ## 4. CARA CORE HUB
 
    (M) portfolio.html#caracore-hub
-   (L) caracore-hub-releases → hub.caracore.com.br
-   Status: OK
+   (L) caracore-hub-releases → hub.caracore.com.br · pré-release Windows v2.1.0-rc1.2 (instalador e ZIP, unsigned)
+   GA Windows 06/04/2027
+   Status: OK — pré-release, não é GA
 
 
 ## 5. CIRCUITO FERRADURA
@@ -82,7 +83,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 6. REINO OIDC
 
    (M) portfolio.html#reino-oidc
-   (L) caracore-oidc-releases → oidc.caracore.com.br · v2.0.0-RC1
+   (L) caracore-oidc-releases → oidc.caracore.com.br · v2.0.2-free
    Oficina: caracore-oidc
    Status: OK
 
@@ -118,13 +119,14 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
     Status: OK — matriz via portfólio (não delivery/ru)
 
 
-## 11. CARACORE CSO (garagem)
+## 11. CARACORE CSO (Frotas em produção)
 
     (M) portfolio.html#caracore-cso
     Aplicação: https://cso.caracore.com.br/
+    Loja: caracore-cso-releases → cso-transp.caracore.com.br
     Oficinas: caracore-cso-quarkus · caracore-cso-transportes
-    Lançamento previsto 08/11/2028 (Transportes); Frotas em produção
-    Status: OK — CTAs da matriz apontam para a aplicação
+    Frotas em produção desde 06/10 (FRO 24/24). Transportes: GA 08/11/2028
+    Status: OK — CTAs da matriz apontam para a aplicação; a loja não substitui o SaaS
 
 
 ## 12. CARA CORE MKT / SALA — fora do mapa de lojas

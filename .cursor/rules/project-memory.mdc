@@ -52,7 +52,7 @@ alwaysApply: true
 | **ETE** | caracore-ete + *-releases | Minerador 4.0 | https://ete.caracore.com.br/ |
 | **Ink** | caracore-ink + *-releases | Agenda | https://ink.caracore.com.br/ |
 | **RU** | caracore-ru + *-releases | Simulador RETRO | https://ru.caracore.com.br/ |
-| **Circuito** | caracore-circuito + *-releases | Curso e demo de console · `v2.0.23` (08/10/2026) · EXE Windows sem assinatura | https://circuito.caracore.com.br/ |
+| **Circuito** | caracore-circuito + *-releases | Curso e demo de console · `v2.0.24` (08/10/2026) · EXE Windows sem assinatura | https://circuito.caracore.com.br/ |
 | **OIDC** | caracore-oidc + *-releases | Reino OIDC Edição Free `v2.0.1-free`; três Eras gratuitas para estudo pessoal, sem certificado digital. A edição paga está em desenvolvimento; a loja não combina PIX nesta etapa. A página de download oferece só essa tag | https://oidc.caracore.com.br/ · https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free |
 | **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |

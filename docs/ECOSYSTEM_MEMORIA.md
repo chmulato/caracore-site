@@ -22,6 +22,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | **CSO Transportes** | Frente desktop em roadmap; GA 08/11/2028. Não é a data do PDV nem uma aplicação web atualmente oferecida. | Oficina sem URL/copy de loja própria; usa a loja única CSO quando apropriado. | `caracore-cso-transportes` |
 | **CaraCore Hub** | Download da loja: tag `v2.1.0-rc1.2` (08/10, unsigned). Banco do produto: SQLite local (WAL) no computador do cliente. Java 25, Jakarta EE 10, Tomcat 10.1. Instalador SHA-256 `50d38ff0ee4defce5bb2598967331d0295fb4817dbec59df5d3e7574b22975e5`. ZIP da mesma edição SHA-256 `ec82b2bd57053c252faac4fdbb0066e9a5cea2df293562b35384107e5cb624b4`. FileVersion `2.1.0-rc1.2`. A tag `v2.1.0-rc1.1` conserva o pacote de 06/10. A tag `v2.1.0-rc1` conserva o instalador de 05/10. Web 2.1 concluída. Mac e Linux fora desta tag. | Login da conta real ainda sem causa confirmada. Aceite da QA desta build ainda não foi feito. Backup/atualização não fazem parte deste aceite. GA 06/04/2027 mantido. Amazon/B2W não operacionais. | `caracore-hub/docs/contexto-rapido.md` · https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.2 |
 | **Minerador ETE** | Canal público `v1.2.3` (Ouro 4.0). | Não regredir para os bundles quebrados `v1.2.1`/`v1.2.2`. | `caracore-ete/AGENTS.md` · `.cursor/rules/project-memory.mdc` |
+| **BioReator 4.0** | Garagem **1.0.0** em 10/10/2026, Community, Windows x64, sem assinatura. EXE 524.800 bytes, SHA-256 `378efe2eb3fd32e4fb5aa167d860ca86df11d45f9b31af53c0d5e65470611c38`. MSI 72.658.944 bytes, SHA-256 `8efc60902c5ba6c37096401f02ba180b545f4dce754247e4a51ea1e96905995e`. Loja `https://ru.caracore.com.br/`. | `publicDownload: false`. Não anunciar GA. A versão 1.0.0 do RU Soberano é outra linha; a data de 18/06/2027 continua a dele. Fora da cota de outubro. | `artifacts/bioreator-1.0.0.txt` · `caracore-ru/docs/PLANO_SPRINTS_BIORREATOR.md` |
 | **Ink Agenda** | Desktop Windows `v2.0.1` estável, publicada em 07/10/2026 (correções do QA da `v2.0.0`; jar ofuscado). | 3.0 em PWA não antes de 2028 (nuvem, SQLite por estúdio; substitui o Desktop após importação); sem prometer DMG/DEB. | `caracore-ink/docs/PLANO_PWA.md` |
 | **Seed** | Ferramenta interna; sem download público. | Manter a vitrine honesta sobre indisponibilidade pública. | `caracore-seed/docs/memoria-projeto.txt` |
 | **Reino OIDC / Circuito / Área 51** | OIDC Edição Free `v2.0.2-free` publicada na loja, sem certificado digital. Três Eras e progressão narrativa gratuitas para estudo pessoal. A edição paga está em desenvolvimento; a loja não combina PIX nesta etapa. A página de download oferece só essa tag. Circuito Ferradura `v2.0.24` publicado na loja e na release em 08/10/2026; EXE Windows sem assinatura; pacotes Windows, macOS e HTML. Área 51 com baseline `0.1.0-dev` e vitrine de consultoria. | OIDC `v2.0.1-free` e `v2.0.0`, e Circuito `v2.0.23`, ficam no histórico. São brincos: cedem prioridade de cota e headline aos produtos principais. | `caracore-oidc` · `caracore-circuito` · `caracore-area51` · https://github.com/chmulato/caracore-circuito-releases/releases/tag/v2.0.24 · https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.2-free |
@@ -48,7 +49,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 1. **Nova tarefa?** → [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) (fluxo por tipo de trabalho). **Compilar Java?** → `D:\onedrive\dev\APPS_JAVA_VERSION.md` (JDK por aplicação; Maven em `D:\onedrive\dev\.m2\repository`).
 2. **Status das aplicações (Gemini/Cursor):** começar pelo [snapshot acima](#snapshot-das-aplicações-e-frentes-2026-10-08), depois consultar a memória canônica da oficina antes de editar ou anunciar status.
 3. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`D:\onedrive\dev\AGENTS.md`**
-4. **Produtos principais (só estes três):** PDV (Java Free `v3.2.7-free` + pré-release pública `v4.0.0-rc6` / **frente GA 08/11/2026** se T032 + Rust `v0.1.4`) · CSO (gestão de frota **no ar**, FRO 24/24; freeze M1 08/11/2026; loja `cso-transp`; Transportes **08/11/2028**; ≠ GPS) · Hub (encomendas; pré-release Windows `v2.1.0-rc1.2`; GA Windows 06/04/2027). **Brincos:** Ink, OIDC, Seed, Circuito, Área 51, RU, Helianto, MKT, Minerador — existem; em conflito de cota ou headline, **cedem**. **MKT e Helianto voltaram ao mapa de lojas em 10/10/2026** (`mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io`; `MEMORIA_INFRAESTRUTURA_CARACORE.txt`).
+4. **Produtos principais (só estes três):** PDV (Java Free `v3.2.7-free` + pré-release pública `v4.0.0-rc6` / **frente GA 08/11/2026** se T032 + Rust `v0.1.4`) · CSO (gestão de frota **no ar**, FRO 24/24; freeze M1 08/11/2026; loja `cso-transp`; Transportes **08/11/2028**; ≠ GPS) · Hub (encomendas; pré-release Windows `v2.1.0-rc1.2`; GA Windows 06/04/2027). **Brincos:** Ink, OIDC, Seed, Circuito, Área 51, RU, BioReator 4.0, Helianto, MKT, Minerador — existem; em conflito de cota ou headline, **cedem**. **MKT e Helianto voltaram ao mapa de lojas em 10/10/2026** (`mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io`; `MEMORIA_INFRAESTRUTURA_CARACORE.txt`).
 4a. **Frentes 08/11/2026:** PDV v4 = GA público se T032 (`PLANO_LANCAMENTO_V4.md`); o download público da pré-release é `v4.0.0-rc6`, com `PERF-001–007` congeladas. CSO = freeze do que já está no ar, inclusive a gestão de frota publicada em 06/10. Headline pública do dia = PDV. Não misturar com Transportes 2028.
 4b. **Cota Cursor (fila única):** `docs/CALENDARIO_COTA_CURSOR.md` — US$ 20/mês · 1 produto pesado por ciclo. Página pública **Funding / Patrocínio:** `planning.html#patrocinio` (US$ 800 até dez/2029). set = CSO COE · out–nov = PDV v4 · dez/2026–06/04/2027 = **Hub** · 2028 = Transportes · **2029 = Helianto (GA 30/12/2029)**. A janela antiga de FRO em 08/abr–dez/2027 foi antecipada: os seis pilares já estão em produção desde 06/10. Ink PWA = Tab; sem Agent até folga (**não antes de 2028**).
 4b2. **Riscos / decisão:** `docs/RISCOS_ECOSSISTEMA.md` — ler antes de mudar GA, dono de ciclo ou abrir Agent noutro produto.
@@ -141,6 +142,25 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 
 ---
 
+## BioReator 4.0 — referência rápida
+
+**Garagem (10/10/2026).** Simulador desktop de bioinsumos e fermentação, no mesmo estilo de estação local do Minerador 4.0. A oficina é a do RU (`caracore-ru`). A loja é o subdomínio **`https://ru.caracore.com.br/`**.
+
+| Papel | Onde está |
+|-------|-----------|
+| Community | *Bradyrhizobium japonicum*, batelada, gráficos, histórico local e CSV. É a edição do pacote Windows local. |
+| Pro | Catálogo, batelada alimentada, custos informados pelo operador e PDF. Sem preço e sem PIX. |
+| Versão | Pacote de oficina **1.0.0**, Community. Maven da oficina permanece `ru-free` `1.0.0-SNAPSHOT`. A versão de loja 1.0.0 do RU Soberano é outra linha. |
+| Artefatos | `BioReator40.exe` 524.800 bytes, SHA-256 `378efe2eb3fd32e4fb5aa167d860ca86df11d45f9b31af53c0d5e65470611c38`. `BioReator40-1.0.0.msi` 72.658.944 bytes, SHA-256 `8efc60902c5ba6c37096401f02ba180b545f4dce754247e4a51ea1e96905995e`. Windows x64, JDK 25 embutido, sem assinatura. `publicDownload: false`. |
+| Loja | `https://ru.caracore.com.br/` · edições em `download.html#bioreator40` · manual `manual-bioreator.html` · inventário `artifacts/bioreator-1.0.0.txt` |
+| Oficina | `caracore-ru/docs/PLANO_SPRINTS_BIORREATOR.md` · `docs/MANUAL_OPERADOR_BIOREATOR.md` |
+| Matriz | `portfolio.html#bioreator40` · `ecosistema.html` |
+| Wiki | `projeto-bioreator.html` |
+
+*Bacillus thuringiensis* descreve só o crescimento. A medição da máquina de 10/10/2026 ficou em 3,8 s e 175 MB, acima dos limites internos de 2,5 s e 120 MB. O lançamento de 18/06/2027 continua sendo o do RU Soberano. Fora da cota de outubro.
+
+---
+
 ## Âncoras portfólio (matriz)
 
 | Produto | Âncora |
@@ -151,6 +171,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | Decisões / impacto | `#decisoes-engenharia` |
 | Hub | `#caracore-hub` |
 | Minerador 4.0 | `#minerador-ete` |
+| BioReator 4.0 | `#bioreator40` |
 | Reino OIDC | `#reino-oidc` |
 | Circuito | `#circuito-python` |
 | Ink | `#caracore-ink-agenda` |
@@ -190,6 +211,8 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-10 | **BioReator 4.0 1.0.0 no inventário.** Pacote Community de oficina: EXE `BioReator40.exe` (524.800 bytes, SHA-256 `378efe2eb3fd32e4fb5aa167d860ca86df11d45f9b31af53c0d5e65470611c38`) e MSI `BioReator40-1.0.0.msi` (72.658.944 bytes, SHA-256 `8efc60902c5ba6c37096401f02ba180b545f4dce754247e4a51ea1e96905995e`). Windows x64, JDK 25, sem assinatura. `publicDownload: false`. Inventário em `caracore-ru-releases/docs/artifacts/bioreator-1.0.0.txt`. Central, matriz, wiki e memórias citam a versão. A 1.0.0 do RU Soberano continua a outra linha, com marco 18/06/2027. Checkout, sem publicação. |
+| 2026-10-10 | **BioReator 4.0 entra no mapa como brinco**, no estilo de estação local do Minerador. Oficina `caracore-ru`. Loja no subdomínio `https://ru.caracore.com.br/`, com as edições em `download.html#bioreator40` e sem arquivo. Community no pacote local; Pro sem preço e sem PIX. A data de 18/06/2027 continua a do RU Soberano. Cota de outubro permanece no PDV v4. Matriz, wiki e memórias alinhadas no checkout, sem publicação. |
 | 2026-10-10 | **Fonte da PDV v4 `v4.0.0-rc6` no `master`:** oficina `caracore-pdv`, commit `b3358fe`, tag `v4.0.0-rc6`. O ZIP público permanece o já publicado (113.889.451 bytes, SHA-256 `a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892`). Latest continua `v3.2.7-free`. Ciclo manual completo do roteiro ainda pendente. |
 | 2026-10-10 | **PDV v4 `v4.0.0-rc6` publicada:** ZIP `CaraCore-PDV-4.0.0-rc6-qute-portable-windows-x64.zip`, 113.889.451 bytes, SHA-256 `a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892`. Pré-release, não Latest. Estável continua `v3.2.7-free`. A `v4.0.0-rc5` fica no histórico. Ciclo manual completo do roteiro ainda pendente. Sem NF-e, NFC-e nem PIX integrado. |
 | 2026-10-10 | **MKT e Helianto de volta ao mapa de lojas:** CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io` (consulta 8.8.8.8 em 10/10). Memória: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`. MKT: vitrine gratuita em `caracore-mkt-releases`; Sala continua em `tools.caracore.com.br/sala/`; não vendemos. Helianto: vitrine em `caracore-helianto-releases`; GA 30/12/2029. Os dois continuam brincos. A remoção de 06/10 fica no histórico. |

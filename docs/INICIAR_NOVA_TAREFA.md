@@ -164,6 +164,21 @@ python tools/sync_docs_status.py --full
 
 ---
 
+### BioReator 4.0 (`caracore-ru` + seção em `caracore-ru-releases`)
+
+| Estilo | Estação desktop local, como o Minerador 4.0 |
+| Versão | Pacote de oficina **1.0.0** Community · Windows x64 · EXE e MSI na oficina · `publicDownload: false` |
+| Loja | https://ru.caracore.com.br/ (subdomínio do RU) · edições em download.html#bioreator40 · inventário artifacts/bioreator-1.0.0.txt |
+| Community | *Bradyrhizobium japonicum*, batelada, histórico e CSV |
+| Pro | Catálogo, batelada alimentada, custos do operador e PDF. Sem preço e sem PIX |
+| Oficina | `caracore-ru/docs/PLANO_SPRINTS_BIORREATOR.md` · `docs/MANUAL_OPERADOR_BIOREATOR.md` |
+| Matriz | `#bioreator40` |
+| Wiki | `projeto-bioreator.html` |
+
+O subdomínio da loja é https://ru.caracore.com.br/. O lançamento de 18/06/2027 continua sendo o do RU Soberano. Fora da cota de outubro.
+
+---
+
 ### Wiki (`caracore-wiki`)
 
 | URL | https://wiki.caracore.com.br/ |

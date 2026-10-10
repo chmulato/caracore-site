@@ -27,8 +27,8 @@ VISÃO GERAL
   caracore-seed-releases        Vitrine do Seed                             Informa que a aplicação não está disponível
   caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX (Windows); PWA não antes de 2028
   caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br
-  caracore-ru                   Oficina do RU Soberano                      Java 25 + JavaFX; sala RETRO + simulador
-  caracore-ru-releases          Loja online e releases RU Soberano          GitHub Pages: ru.caracore.com.br
+  caracore-ru                   Oficina do RU Soberano e do BioReator 4.0  Java 25 + JavaFX; sala RETRO + simulador; BioReator em garagem
+  caracore-ru-releases          Loja do RU e seção do BioReator 4.0        GitHub Pages: ru.caracore.com.br · pacote de oficina 1.0.0 · #bioreator40 sem arquivo
   caracore-circuito             Oficina do Circuito Ferradura               Curso proprietário de lógica e Python
   caracore-circuito-releases    Loja online e releases Circuito Ferradura   GitHub Pages: circuito.caracore.com.br
   caracore-oidc                 Oficina do Reino OIDC (identidade)          OAuth 2.1 / OIDC; ReinoOIDC.exe
@@ -87,7 +87,8 @@ Produtos com entrega ativa (matriz + loja online)
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.1 (com suporte até a 3.0) · 3.0 em PWA não antes de 2028, substitui o Desktop após importação dos dados (sem DMG/DEB nativos)
-  RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
+  RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br. Lançamento 18/06/2027.
+  BioReator 4.0: mesma oficina. Loja: https://ru.caracore.com.br/ (subdomínio do RU; edições em download.html#bioreator40; inventário artifacts/bioreator-1.0.0.txt). Garagem 1.0.0 Community, Windows x64, EXE e MSI na oficina, sem assinatura e sem arquivo na loja. Pro sem preço e sem PIX. A versão 1.0.0 do RU Soberano é outra linha.
 
 Vitrines restauradas em 10/10/2026 (CNAME → chmulato.github.io; ver MEMORIA_INFRAESTRUTURA_CARACORE.txt)
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br. GA 30/12/2029.

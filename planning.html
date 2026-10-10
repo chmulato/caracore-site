@@ -112,84 +112,118 @@
   <div class="container">
     <h1 class="visually-hidden">Planning Cara Core</h1>
 
-    <section class="pl-l1" aria-label="Estado do planejamento">
-      <article class="pl-block pl-towers" id="skyline">
-        <p class="pl-kicker">Status das 11 torres · <time id="pl-asof" datetime="2026-10-09">09/10/2026</time></p>
-        <p class="pl-skyline-meta" id="pl-skyline-meta"></p>
-        <div class="pl-tower-groups" id="pl-tower-rows"></div>
-        <div class="pl-fiche" id="pl-fiche" hidden></div>
+    <nav class="pl-layers" aria-label="Camadas da página">
+      <a href="#visao">Visão</a>
+      <a href="#skyline">Projetos</a>
+      <a href="#anos">Roadmap</a>
+      <a href="#patrocinio">Envelope</a>
+    </nav>
+
+    <section class="pl-l1" id="visao" aria-labelledby="pl-visao-title">
+      <article class="pl-hero">
+        <header class="pl-visao-head">
+          <h2 id="pl-visao-title">Estado do ecossistema</h2>
+          <p class="pl-kicker">Leitura de <time id="pl-asof" datetime="2026-10-09">09/10/2026</time> · <span id="pl-count">11</span> projetos</p>
+        </header>
+        <div class="pl-summary" id="pl-summary" role="list"></div>
       </article>
+      <div class="pl-visao-grid">
+        <figure class="pl-chart" id="pl-doughnut"></figure>
+        <figure class="pl-chart" id="pl-trend"></figure>
+      </div>
+      <h3 class="pl-subhead" id="pl-flags-title">Pontos de atenção</h3>
+      <div id="pl-flags"></div>
     </section>
 
-    <section class="pl-l2" aria-label="Detalhe operacional">
-      <details class="pl-fold" id="patrocinio">
-        <summary>
-          <span class="pl-fold-title">Envelope Cursor</span>
-          <span class="pl-fold-preview" id="pl-preview-fund">US$ 20/mês · set/2026→dez/2029</span>
-        </summary>
-        <div class="pl-fold-body">
-          <div class="pl-fund-stats" role="group" aria-label="Envelope">
-            <p><strong id="pl-fund-month">US$ 20</strong><span>/mês</span></p>
-            <p><strong id="pl-fund-months">40</strong><span>meses</span></p>
-            <p><strong id="pl-fund-total">US$ 800</strong><span>até dez/2029</span></p>
-            <p><strong id="pl-fund-range">set/2026 → dez/2029</strong><span>pago</span></p>
-          </div>
-          <p class="pl-line" id="pl-fund-verdict"></p>
-          <table class="pl-table">
-            <thead>
-              <tr>
-                <th scope="col">Marco</th>
-                <th scope="col">Entrega</th>
-                <th scope="col">Uso da cota</th>
-              </tr>
-            </thead>
-            <tbody id="pl-fund-covers"></tbody>
-          </table>
-          <p class="pl-chips" id="pl-fund-notin"></p>
-          <p class="pl-fund-cta"><a href="index.html#contato">Patrocínio extra</a></p>
-        </div>
-      </details>
+    <section class="pl-layer" id="skyline" aria-labelledby="pl-projetos-title">
+      <header class="pl-layer-head">
+        <h2 id="pl-projetos-title">Status dos projetos</h2>
+        <p class="pl-legend">O percentual é o caminho até o compromisso público de dezembro de 2029. A cor e o ícone são o estado de hoje.</p>
+        <p class="pl-skyline-meta" id="pl-skyline-meta"></p>
+      </header>
+      <div id="pl-tower-rows"></div>
+      <div class="pl-fiche" id="pl-fiche" hidden></div>
+      <figure class="pl-chart" id="pl-heatmap"></figure>
+    </section>
 
+    <section class="pl-block pl-layer" id="anos" aria-labelledby="pl-roadmap-title">
+      <h2 id="pl-roadmap-title">Roadmap</h2>
+      <p class="pl-roadmap-now" id="pl-roadmap-now"></p>
+      <p class="pl-skyline-meta" id="pl-preview-cron"></p>
+      <ol class="pl-timeline" id="pl-timeline"></ol>
+      <h3 class="pl-subhead">Progresso do ano</h3>
+      <div class="pl-years" id="pl-years"></div>
+      <table class="pl-table">
+        <caption>Fila da cota</caption>
+        <thead>
+          <tr>
+            <th scope="col">Período</th>
+            <th scope="col">Dono</th>
+          </tr>
+        </thead>
+        <tbody id="pl-fund-queue"></tbody>
+      </table>
+    </section>
+
+    <section class="pl-block pl-layer" id="patrocinio" aria-labelledby="pl-fund-title">
+      <h2 id="pl-fund-title">Envelope Cursor</h2>
+      <div class="pl-metrics" role="group" aria-label="Envelope">
+        <div class="pl-metric">
+          <i class="bi bi-currency-dollar" aria-hidden="true"></i>
+          <strong id="pl-fund-month">US$ 20</strong>
+          <span>por mês</span>
+        </div>
+        <div class="pl-metric">
+          <i class="bi bi-calendar3" aria-hidden="true"></i>
+          <strong id="pl-fund-range">set/2026 → dez/2029</strong>
+          <span><span id="pl-fund-months">40</span> meses · <span id="pl-fund-total">US$ 800</span></span>
+        </div>
+        <div class="pl-metric">
+          <i class="bi bi-lightning-charge" aria-hidden="true"></i>
+          <strong>1 produto</strong>
+          <span>pesado por ciclo</span>
+        </div>
+        <div class="pl-metric">
+          <i class="bi bi-arrow-repeat" aria-hidden="true"></i>
+          <strong>Cota</strong>
+          <span>não acumulativa</span>
+        </div>
+      </div>
+      <p class="pl-line" id="pl-fund-verdict"></p>
+      <table class="pl-table">
+        <caption>O que o envelope cobre</caption>
+        <thead>
+          <tr>
+            <th scope="col">Marco</th>
+            <th scope="col">Entrega</th>
+            <th scope="col">Uso da cota</th>
+          </tr>
+        </thead>
+        <tbody id="pl-fund-covers"></tbody>
+      </table>
+      <h3 class="pl-subhead">Fora deste envelope</h3>
+      <p class="pl-chips" id="pl-fund-notin"></p>
+      <p class="pl-fund-cta"><a href="index.html#contato">Patrocínio extra</a></p>
       <details class="pl-fold" id="regras">
         <summary>
           <span class="pl-fold-title">Como a cota é gasta</span>
-          <span class="pl-fold-preview" id="pl-preview-rules">1 produto pesado/ciclo · cota não acumula</span>
         </summary>
         <div class="pl-fold-body">
           <p class="pl-chips" id="pl-fund-rules"></p>
           <p class="pl-line" id="pl-fund-paid"></p>
         </div>
       </details>
-
-      <details class="pl-fold" id="anos">
-        <summary>
-          <span class="pl-fold-title">Cronograma</span>
-          <span class="pl-fold-preview" id="pl-preview-cron">PDV corte + copy CSO M1 · 09/nov–04/dez/2026</span>
-        </summary>
-        <div class="pl-fold-body">
-          <div class="pl-years" id="pl-years"></div>
-          <table class="pl-table">
-            <thead>
-              <tr>
-                <th scope="col">Período</th>
-                <th scope="col">Dono</th>
-              </tr>
-            </thead>
-            <tbody id="pl-fund-queue"></tbody>
-          </table>
-        </div>
-      </details>
-
-      <details class="pl-fold" id="pl-detail">
-        <summary>
-          <span class="pl-fold-title">Histórico</span>
-          <span class="pl-fold-preview" id="pl-preview-hist">11 produtos</span>
-        </summary>
-        <div class="pl-fold-body">
-          <div class="pl-cards" id="pl-cards"></div>
-        </div>
-      </details>
     </section>
+
+    <details class="pl-fold" id="pl-detail">
+      <summary>
+        <span class="pl-fold-title">Histórico</span>
+        <span class="pl-fold-preview" id="pl-preview-hist">11 produtos</span>
+      </summary>
+      <div class="pl-fold-body">
+        <div class="pl-cards" id="pl-cards"></div>
+      </div>
+    </details>
 
     <details class="pl-fold pl-l3" id="pl-ops" hidden>
       <summary>Notas operacionais</summary>

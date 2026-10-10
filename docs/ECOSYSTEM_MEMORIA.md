@@ -188,6 +188,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-09 | **Blog — O Efeito Borboleta do Dinheiro:** trilogia local em `caracore-personal` (chamada e Partes 1–3, 10/13/18-10-2026). Acervo em 268 HTML. Assinatura do cartão: Cidadão Global. Navegação entre partes vizinhas no corpo; rodapé só com o início do blog. Home, ciclo ativo, feed e sitemap alinhados no checkout. Sem commit e sem deploy. A contagem 264 do INC-08 fica no histórico. |
 | 2026-10-09 | **Host da matriz:** GitHub Pages. A Vercel não é o serviço. INC-10 fechado com a medição de 09/10: WebP do logo branco no ar (117.882 bytes), `Cache-Control: max-age=600`, 404 sem redirect automático. O `vercel.json` não governa o host público. |
 | 2026-10-09 | **Coerência INC-09 e INC-11:** a copy da frota está no ar em `ecosistema.html`, `wiki.caracore.com.br/projeto-cso.html` e `cso-transp.caracore.com.br`. A home, o ecossistema e o portfólio oferecem Reino OIDC `v2.0.2-free`. **INC-10 permanece aberto:** o host público é GitHub Pages, com `Cache-Control: max-age=600`; o WebP do logo branco está no ar (117.882 bytes) e o 404 não redireciona sozinho. O `vercel.json` não governa esses headers. |
 | 2026-10-09 | **Coerência INC-07:** `planning-data.js` passa o Reino OIDC para a Edição Free `v2.0.2-free`, com `v2.0.1-free` e `v2.0.0` no histórico, e o Circuito Ferradura para `v2.0.24` na loja, com `v2.0.23` no histórico. Checkout local, sem deploy. |

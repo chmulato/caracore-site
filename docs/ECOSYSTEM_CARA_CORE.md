@@ -43,7 +43,7 @@ VISÃO GERAL
   caracore-mkt                  Oficina do Cara Core MKT                    Ferramenta interna; sem loja. Sala: tools.caracore.com.br/sala/
   caracore-mkt-releases         Fora do mapa de lojas                       Pasta local legada; CNAME mkt removido
   caracore-tools                Tools / Sala Cara Core                      tools.caracore.com.br/sala/
-  caracore-personal             Blog pessoal de Christian Mulato            personal.caracore.com.br (264 artigos)
+  caracore-personal             Blog pessoal de Christian Mulato            personal.caracore.com.br (268 artigos)
 
 
 ---

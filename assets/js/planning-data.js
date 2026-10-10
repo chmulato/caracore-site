@@ -14,10 +14,10 @@
  */
 window.CARACORE_PLANNING = {
   AS_OF: "2026-10",
-  AS_OF_LABEL: "08/10/2026",
+  AS_OF_LABEL: "09/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 08/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
+    "Leitura de 09/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -37,24 +37,24 @@ window.CARACORE_PLANNING = {
       {
         id: "pdv-java",
         kind: "risco",
-        title: "PDV Java · RC5 em avaliação",
-        lead: "Pré-release pública em avaliação. O roteiro operacional formal ainda aguarda aceite.",
-        detail: "v4.0.0-rc5 · ZIP Windows x64 · download estável v3.2.7-free",
-        tip: "T032 é o gate interno desse roteiro. 08/11 é previsão de lançamento estável, ainda não confirmado.",
-        text: "Pré-release pública v4.0.0-rc5 (ZIP Windows x64). T032 aguarda o roteiro operacional formal. 08/11 é previsão, não GA confirmado. O download estável continua v3.2.7-free.",
+        title: "PDV Java · RC6 na oficina",
+        lead: "A oficina prepara a v4.0.0-rc6. O download público continua a v4.0.0-rc5. O estável é a v3.2.7-free.",
+        detail: "T032 aberto · GA de 08/11 ainda não confirmado",
+        tip: "T032 é o gate interno do roteiro. O percentual não sobe enquanto o lançamento estável não sair.",
+        text: "Oficina em v4.0.0-rc6, SHA-256 a publicar. Download público continua v4.0.0-rc5. Estável v3.2.7-free. T032 aberto. 08/11 é previsão, não GA confirmado.",
       },
       {
         id: "cso",
         kind: "desvio",
         title: "CSO · freeze M1 em 08/11/2026",
-        lead: "Frotas em produção. O deploy da responsividade recente ainda não está confirmado.",
-        detail: "FRO 24/24 no ar desde 06/10 · freeze M1 em 08/11/2026",
+        lead: "Frotas em produção desde 06/10. O freeze M1 ainda não fechou.",
+        detail: "Transportes desktop em 08/11/2028",
         tip: "Gestão de frotas. Não é rastreador GPS.",
         text: "Frotas em produção desde 06/10. Freeze M1 em 08/11/2026 estabiliza essa versão. Sem jornada, app offline nem GPS.",
       },
       {
         id: "hub",
-        kind: "risco",
+        kind: "desvio",
         title: "Hub · pré-release Windows no ar",
         lead: "Pré-release Windows no ar. Lançamento estável previsto para 06/04/2027.",
         detail: "v2.1.0-rc1.2 · instalador e ZIP · sem assinatura",
@@ -119,7 +119,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 74,
-      note: "Free 3.2.7-free estável. v4.0.0-rc5 pública para avaliação; GA de 08/11 condicionado ao T032. Freeze M1 do CSO é marco separado e ainda não fechado.",
+      note: "Free 3.2.7-free estável. Download público v4.0.0-rc5. Oficina em v4.0.0-rc6, SHA-256 a publicar. GA de 08/11 condicionado ao T032. Freeze M1 do CSO ainda não fechado.",
     },
     {
       id: "y2027",
@@ -153,8 +153,8 @@ window.CARACORE_PLANNING = {
       state: "risk",
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
-      hundred: "Canal estável v3.2.7-free; pré-release v4.0.0-rc5 pública para avaliação. GA previsto em 08/11/2026, condicionado ao T032.",
-      now: "RC5 pública para avaliação. Falta o roteiro operacional do T032. Sem PIX integrado nem NF-e/NFC-e no Free. Agent: out–08/nov/2026.",
+      hundred: "Canal estável v3.2.7-free. Pré-release pública v4.0.0-rc5. Oficina em v4.0.0-rc6. GA em 08/11/2026, condicionado ao T032.",
+      now: "RC6 na oficina, sem SHA publicado. O download público continua a RC5. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
       history: [
         { m: "2026-06", p: 62 },
         { m: "2026-07", p: 68 },
@@ -334,7 +334,7 @@ window.CARACORE_PLANNING = {
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
       hundred: "Frotas em produção desde 06/10; freeze M1 em 08/11/2026. Transportes desktop em 08/11/2028.",
-      now: "Frotas em produção. Freeze M1 em 08/11. A janela 08/04–dez/2027 não reabre o FRO.",
+      now: "Frotas em produção desde 06/10. Freeze M1 em 08/11/2026. Transportes desktop em 08/11/2028.",
       history: [
         { m: "2026-06", p: 30 },
         { m: "2026-07", p: 34 },

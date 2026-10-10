@@ -29,6 +29,7 @@
   };
 
   const GLOSSARY = [
+    ["v4.0.0-rc6", "Candidato da oficina. SHA-256 ainda não publicado. O download público continua a RC5."],
     ["v4.0.0-rc5", "Pré-release pública para avaliação, antes do lançamento estável."],
     ["v3.2.7-free", "Versão estável do PDV Java Free, em Windows, Linux e macOS."],
     ["v2.1.0-rc1.2", "Pré-release Windows para avaliação, com instalador e ZIP. O lançamento estável do Hub está previsto para 06/04/2027."],
@@ -180,7 +181,6 @@
       "%\">" +
       '<span class="pl-tower-name">' +
       escapeHtml(p.name) +
-      (p.core ? "<small>núcleo</small>" : "") +
       "</span>" +
       '<span class="pl-track" aria-hidden="true"><span class="pl-fill"></span></span>' +
       '<span class="pl-tower-pct">' +
@@ -285,8 +285,12 @@
   }
 
   function renderNext() {
-    const el = document.getElementById("pl-next");
     const next = data.EXEC && data.EXEC.next;
+    const meta = document.getElementById("pl-skyline-meta");
+    if (meta && next) {
+      meta.textContent = "Próximo marco · " + next.when + " · " + next.what;
+    }
+    const el = document.getElementById("pl-next");
     if (!el || !next) return;
     let gate = "";
     if (next.gate) {

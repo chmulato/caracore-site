@@ -113,36 +113,9 @@
     <h1 class="visually-hidden">Planning Cara Core</h1>
 
     <section class="pl-l1" aria-label="Estado do planejamento">
-      <p class="pl-legend" id="pl-legend">% = progresso rumo ao compromisso público de cada produto até dez/2029 · não é ranking comercial · núcleo = PDV, CSO e Hub (mandam na cota); demais = brincos.</p>
-
-      <article class="pl-block pl-pulse" id="onde">
-        <p class="pl-kicker">Onde estamos · <time id="pl-asof" datetime="2026-10-08">08/10/2026</time> · <span id="pl-horizon">2026 → 2029</span></p>
-        <div class="pl-pulse-grid">
-          <p class="pl-pulse-pct"><strong id="pl-avg">—</strong><span>média aritmética das 11 · não ponderada pelo núcleo</span></p>
-          <p><strong id="pl-done">—</strong><span>concluídos</span></p>
-          <p class="pl-pulse-alerts"><strong id="pl-alerts">—</strong><span>nas 11 torres</span></p>
-          <p><strong id="pl-owner">—</strong><span>Em foco agora</span></p>
-        </div>
-      </article>
-
-      <article class="pl-block pl-next" id="proximo">
-        <p class="pl-kicker">Próximo marco</p>
-        <div id="pl-next"></div>
-      </article>
-
-      <article class="pl-block pl-flags" id="atencao">
-        <p class="pl-kicker">O que exige atenção</p>
-        <div id="pl-flags"></div>
-      </article>
-
       <article class="pl-block pl-towers" id="skyline">
-        <p class="pl-kicker">Status das 11 torres</p>
-        <p class="pl-status-legend">
-          <span class="pl-badge pl-badge-risco">Risco</span>
-          <span class="pl-badge pl-badge-watch">Atenção</span>
-          <span class="pl-badge pl-badge-ok">Ok</span>
-          <span class="pl-badge pl-badge-done">Concluído</span>
-        </p>
+        <p class="pl-kicker">Status das 11 torres · <time id="pl-asof" datetime="2026-10-09">09/10/2026</time></p>
+        <p class="pl-skyline-meta" id="pl-skyline-meta"></p>
         <div class="pl-tower-groups" id="pl-tower-rows"></div>
         <div class="pl-fiche" id="pl-fiche" hidden></div>
       </article>
@@ -204,16 +177,6 @@
             </thead>
             <tbody id="pl-fund-queue"></tbody>
           </table>
-        </div>
-      </details>
-
-      <details class="pl-fold" id="criterios" open>
-        <summary>
-          <span class="pl-fold-title">Critérios</span>
-          <span class="pl-fold-preview">já está na legenda do topo</span>
-        </summary>
-        <div class="pl-fold-body">
-          <p class="pl-line">O percentual, o núcleo e o que não é ranking estão na legenda do topo. Fonte: <a href="ecosistema.html#roadmap">roadmap</a> · <code>CALENDARIO_COTA_CURSOR.md</code>.</p>
         </div>
       </details>
 

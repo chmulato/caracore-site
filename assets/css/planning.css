@@ -201,11 +201,10 @@
   color: var(--pl-ok);
 }
 
-.pl-status-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  margin: 0 0 0.75rem;
+.pl-skyline-meta {
+  margin: -0.2rem 0 0.85rem;
+  font-size: 0.84rem;
+  color: var(--pl-ink);
 }
 
 .pl-tower-groups {

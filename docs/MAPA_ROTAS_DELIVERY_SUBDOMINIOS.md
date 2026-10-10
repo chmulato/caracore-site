@@ -26,7 +26,10 @@
 | CSO | /delivery/cso/ | https://cso.caracore.com.br/ | mapeado (aplicação) |
 | Ink | /delivery/ink/ | https://ink.caracore.com.br/ | mapeado |
 | ETE | /delivery/ete/ | https://ete.caracore.com.br/ | mapeado |
-| MKT | /delivery/mkt/ | https://tools.caracore.com.br/sala/ | sem loja; CNAME mkt removido |
+| MKT | /delivery/mkt/ | https://mkt.caracore.com.br/ | vitrine restaurada 10/10/2026; Sala: tools.caracore.com.br/sala/ |
+| Helianto | /delivery/helianto/ | https://helianto.caracore.com.br/ | vitrine restaurada 10/10/2026; GA 30/12/2029 |
+
+O destino oficial acima é a vitrine. Em 10/10/2026 o arquivo `_redirects` da matriz ainda envia `/delivery/mkt/` para a Sala e `/delivery/helianto/` para o portfólio. Esse apontamento legado fica para a camada da matriz.
 
 ## Prioridade por impacto (baseline 2026-04-04)
 Referencias fora de delivery para cada rota legado, usadas para ordenar a migracao.
@@ -96,9 +99,12 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 | CSO | /delivery/cso/index.html | https://cso.caracore.com.br/ |
 | CSO | /delivery/cso/download.html | https://cso.caracore.com.br/ |
 | CSO | /delivery/cso/canal-feedback.html | https://cso.caracore.com.br/ |
-| MKT | /delivery/mkt/ | https://tools.caracore.com.br/sala/ |
-| MKT | /delivery/mkt/index.html | https://tools.caracore.com.br/sala/ |
-| MKT | /delivery/mkt/canal-feedback.html | https://tools.caracore.com.br/sala/ |
+| MKT | /delivery/mkt/ | https://mkt.caracore.com.br/ |
+| MKT | /delivery/mkt/index.html | https://mkt.caracore.com.br/ |
+| MKT | /delivery/mkt/canal-feedback.html | https://mkt.caracore.com.br/canal-feedback.html |
+| Helianto | /delivery/helianto/ | https://helianto.caracore.com.br/ |
+| Helianto | /delivery/helianto/index.html | https://helianto.caracore.com.br/ |
+| Helianto | /delivery/helianto/download.html | https://helianto.caracore.com.br/download.html |
 
 ## Entradas especiais para tratar no Ciclo 0
 - /delivery/publications/

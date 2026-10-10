@@ -24,12 +24,10 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   RU Soberano                  https://ru.caracore.com.br/
   CaraCore CSO                 https://cso-transp.caracore.com.br/                      Loja única (Frotas + Transportes). Clone: D:\onedrive\dev\caracore-cso-releases. App: cso.caracore.com.br. GA desktop 08/11/2028. Oficina transportes sem loja. ≠ GPS
   Ink Agenda                   https://ink.caracore.com.br/                 Desktop v2.0.1 Windows (download, 07/10/2026) · PWA não antes de 2028 (/pwa.html)
+  Cara Core MKT                https://mkt.caracore.com.br/                            Vitrine gratuita. Não vendemos. Sala: https://tools.caracore.com.br/sala/. CNAME → chmulato.github.io (restaurado 10/10/2026)
+  Helianto Condominium         https://helianto.caracore.com.br/                       Oficina caracore-helianto. GA 30/12/2029. CNAME → chmulato.github.io (restaurado 10/10/2026)
   Wiki institucional           https://wiki.caracore.com.br/                           caracore-wiki (não é loja de produto)
   Artigos Retrô (editorial)   https://retro.caracore.com.br/                          caracore-retro (não é loja de produto)
-
-Fora do mapa de lojas (06/10/2026; DNS em MEMORIA_INFRAESTRUTURA_CARACORE.txt):
-  MKT                          Sala https://tools.caracore.com.br/sala/                Ferramenta interna. CNAME mkt.caracore.com.br removido.
-  Helianto Condominium         —                                                       Oficina caracore-helianto. GA 30/12/2029. CNAME helianto.caracore.com.br removido.
 
 PDV — duas lojas desktop
   pdv.caracore.com.br (Java) e pdv-rust.caracore.com.br (Rust) — vitrines canónicas; coexistência na comunicação.
@@ -48,4 +46,4 @@ Retomada de contexto (ler nesta ordem):
 
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
-Atualizado em 09/10/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md
+Atualizado em 10/10/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md. DNS: MEMORIA_INFRAESTRUTURA_CARACORE.txt.

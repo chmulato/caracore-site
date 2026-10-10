@@ -1,7 +1,7 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 09/10/2026 (PDV Free estável `v3.2.7-free`; PDV v4 `v4.0.0-rc6` em preparação, SHA-256 a publicar, download público `v4.0.0-rc5`; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.2-free` publicado na loja, sem certificado digital; edição paga em desenvolvimento, sem PIX nesta etapa; `v2.0.0` fica no histórico e não é oferecida no download; Circuito Ferradura `v2.0.24` na loja e na release, executável Windows sem assinatura)
+> **Data de Atualização:** 10/10/2026 (domínios `mkt.caracore.com.br` e `helianto.caracore.com.br` restaurados, CNAME → `chmulato.github.io`; PDV Free estável `v3.2.7-free`; PDV v4 `v4.0.0-rc6` em preparação, SHA-256 a publicar, download público `v4.0.0-rc5`; CSO: gestão de frota FRO 24/24 em produção, Flyway V33; `PERF-001–007` congeladas; Hub permanece pré-release Windows `v2.1.0-rc1.2`, sem GA; Ink Agenda Desktop `v2.0.1` publicada, com suporte até a 3.0 em PWA; Reino OIDC Free `v2.0.2-free` publicado na loja, sem certificado digital; edição paga em desenvolvimento, sem PIX nesta etapa; `v2.0.0` fica no histórico e não é oferecida no download; Circuito Ferradura `v2.0.24` na loja e na release, executável Windows sem assinatura)
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -154,13 +154,13 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Circuito Ferradura** | `caracore-circuito` | `caracore-circuito-releases` | `circuito.caracore.com.br` | Python · curso e demo de console · **`v2.0.24`** (08/10/2026) · EXE Windows sem assinatura · pacotes Windows, macOS e HTML · `v2.0.23` e `v2.0.0` no histórico |
 | **Reino OIDC** | `caracore-oidc` | `caracore-oidc-releases` | `oidc.caracore.com.br` | Free `v2.0.2-free` na loja · sem certificado digital · edição paga em desenvolvimento, sem PIX nesta etapa · `v2.0.0` no histórico, fora da página de download · OAuth 2.1 · OIDC · Windows .exe |
 | **Área 51** | `caracore-area51` | `caracore-area51-releases` | `area51.caracore.com.br` | Python · Flask · Consultoria OIDC |
-| **Helianto Condominium** | `caracore-helianto` | — | — | Java 25 · Spring Boot 4 · React · GA **30/12/2029** · **sem loja** |
+| **Helianto Condominium** | `caracore-helianto` | `caracore-helianto-releases` | `helianto.caracore.com.br` | Java 25 · Spring Boot 4 · React · GA **30/12/2029** · vitrine no ar |
 | **RU Soberano** | `caracore-ru` | `caracore-ru-releases` | `ru.caracore.com.br` | Java 25 · JavaFX · SQLite · Simulador |
 | **Cara Core Seed** | `caracore-seed` | `caracore-seed-releases` | `seed.caracore.com.br` | Ferramenta interna (sem download) |
-| **Cara Core MKT / Sala** | `caracore-mkt` / `caracore-tools` | — | Sala: `tools.caracore.com.br/sala/` | Ferramenta interna · **sem loja** |
+| **Cara Core MKT / Sala** | `caracore-mkt` / `caracore-tools` | `caracore-mkt-releases` | `mkt.caracore.com.br` · Sala: `tools.caracore.com.br/sala/` | Ferramenta interna · vitrine gratuita · não vendemos |
 | **Central de Downloads** | — | `caracore-loja` | `download.caracore.com.br` | HTML5 / Vanilla CSS / Hub Unificado |
 
-**Fora do mapa de lojas:** MKT e Helianto. CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` removidos no Registro.br. Fonte: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`.
+**MKT e Helianto no mapa de lojas (10/10/2026):** CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io`. Fonte: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`. MKT = vitrine gratuita e Sala `tools.caracore.com.br/sala/`. Helianto = vitrine da oficina, GA 30/12/2029. Os dois continuam brincos.
 
 ---
 

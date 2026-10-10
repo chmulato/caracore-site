@@ -57,8 +57,8 @@ alwaysApply: true
 | **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
 | **CSO** | caracore-cso-quarkus (Frotas) + caracore-cso-transportes (Desktop 2028, **sem loja**) + loja `D:\onedrive\dev\caracore-cso-releases` | Home da loja = conversão Frotas hoje; landing app com JSON-LD; um produto em 08/11/2028; **≠ GPS** | App: https://cso.caracore.com.br/ · Loja: https://cso-transp.caracore.com.br/ |
-| **MKT** | caracore-mkt · caracore-tools | Ferramenta interna · sem loja | Sala: https://tools.caracore.com.br/sala/ |
-| **Helianto** | caracore-helianto | Oficina · GA 30/12/2029 · sem loja | — |
+| **MKT** | caracore-mkt · caracore-mkt-releases · caracore-tools | Ferramenta interna · vitrine gratuita · não vendemos | https://mkt.caracore.com.br/ · Sala: https://tools.caracore.com.br/sala/ |
+| **Helianto** | caracore-helianto · caracore-helianto-releases | Oficina · GA 30/12/2029 · vitrine no ar | https://helianto.caracore.com.br/ |
 
 **Regras de roteamento (2026):**
 - CTAs novos na matriz → **subdomínio da loja** ou **tag GitHub v0.1.4** (PDV Rust), nunca `/delivery/` como destino principal.

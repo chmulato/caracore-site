@@ -126,11 +126,12 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     Oficina: caracore-area51 (baseline 0.1.0-dev)
     Observacao: produto licenciado (titularidade GF); entrega via licenca — nao download publico. Suporte Area 51 = servico contratado (niveis 2-3).
 
-  HELIANTO CONDOMINIUM — FORA DO MAPA DE LOJAS
+  HELIANTO CONDOMINIUM
     Matriz: portfolio.html#caracore-helianto
     Oficina: caracore-helianto/
-    Sem loja e sem subdomínio. CNAME helianto.caracore.com.br removido.
-    GA 30/12/2029.
+    Loja:   caracore-helianto-releases/docs/ → helianto.caracore.com.br
+    CNAME → chmulato.github.io (restaurado 10/10/2026)
+    GA 30/12/2029. A vitrine não antecipa o lançamento.
 
   CARACORE CSO
     Matriz: portfolio.html#caracore-cso
@@ -140,11 +141,13 @@ Objetivo: Todas as lojas do ecossistema Cara Core devem ter o mesmo "molde" de c
     Aplicação Frotas: https://cso.caracore.com.br/ (não é a vitrine)
     Observacao: dual Frotas Web (em produção) + Transportes Desktop (08/11/2028). CSO ≠ GPS.
 
-  CARA CORE MKT — FORA DO MAPA DE LOJAS
+  CARA CORE MKT
     Matriz: portfolio.html#caracore-mkt
     Oficina: caracore-mkt/ (+ Sala em caracore-tools)
-    Sem loja. CNAME mkt.caracore.com.br removido.
-    Entrada pública: tools.caracore.com.br/sala/.
+    Loja:   caracore-mkt-releases/docs/ → mkt.caracore.com.br
+    CNAME → chmulato.github.io (restaurado 10/10/2026)
+    Sala: tools.caracore.com.br/sala/
+    Vitrine gratuita. Não vendemos.
 
 
 ---

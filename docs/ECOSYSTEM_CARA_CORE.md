@@ -1,6 +1,6 @@
 # Ecossistema Cara Core — mapa de repositórios
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 09/10/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 10/10/2026).
 
 **Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `AGENTS.md` na raiz do workspace.
 
@@ -35,13 +35,13 @@ VISÃO GERAL
   caracore-oidc-releases        Loja online e releases do Reino OIDC        GitHub Pages: oidc.caracore.com.br
   caracore-area51               Oficina da Área 51 (código do sistema)      Desenvolvimento; autenticação enterprise OAuth 2.1/OIDC/PKCE
   caracore-area51-releases      Loja online do Suporte Área 51              Vitrine do serviço de consultoria; GitHub Pages
-  caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; GA 30/12/2029; sem loja (CNAME removido)
-  caracore-helianto-releases    Fora do mapa de lojas                       Pasta local legada; sem subdomínio
+  caracore-helianto             Oficina do Helianto Condominium             Java 25 + Spring Boot 4 + React; GA 30/12/2029
+  caracore-helianto-releases    Loja do Helianto Condominium                GitHub Pages: helianto.caracore.com.br (CNAME restaurado 10/10/2026)
   caracore-cso-quarkus          Oficina — CSO Gestão de Frotas (Web)        Produção `b90d1dc`, Flyway V33, FRO 24/24 desde 06/10 · freeze M1 até 08/11/2026 · `e193d6d` é commit anterior de COE · janela 08/abr–dez/2027 não reabre
   caracore-cso-transportes      Oficina — CSO Gestão de Transportes         Desktop JavaFX; GA 08/11/2028; sem URL/copy de loja
   caracore-cso-releases         Loja única CSO (Frotas + Transportes)       Clone: D:\onedrive\dev\caracore-cso-releases · Pages: cso-transp.caracore.com.br (app: cso.caracore.com.br)
-  caracore-mkt                  Oficina do Cara Core MKT                    Ferramenta interna; sem loja. Sala: tools.caracore.com.br/sala/
-  caracore-mkt-releases         Fora do mapa de lojas                       Pasta local legada; CNAME mkt removido
+  caracore-mkt                  Oficina do Cara Core MKT                    Ferramenta interna. Sala: tools.caracore.com.br/sala/
+  caracore-mkt-releases         Loja do Cara Core MKT                       GitHub Pages: mkt.caracore.com.br (CNAME restaurado 10/10/2026); vitrine gratuita; não vendemos
   caracore-tools                Tools / Sala Cara Core                      tools.caracore.com.br/sala/
   caracore-personal             Blog pessoal de Christian Mulato            personal.caracore.com.br (268 artigos)
 
@@ -89,9 +89,9 @@ Produtos com entrega ativa (matriz + loja online)
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.1 (com suporte até a 3.0) · 3.0 em PWA não antes de 2028, substitui o Desktop após importação dos dados (sem DMG/DEB nativos)
   RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br
 
-Fora do mapa de lojas (CNAME removido no Registro.br; ver MEMORIA_INFRAESTRUTURA_CARACORE.txt)
-  Helianto Condominium: oficina caracore-helianto. GA 30/12/2029. Sem subdomínio.
-  Cara Core MKT: oficina caracore-mkt. Entrada pública: Sala em caracore-tools (tools.caracore.com.br/sala/).
+Vitrines restauradas em 10/10/2026 (CNAME → chmulato.github.io; ver MEMORIA_INFRAESTRUTURA_CARACORE.txt)
+  Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br. GA 30/12/2029.
+  Cara Core MKT: caracore-mkt + caracore-mkt-releases. Loja: mkt.caracore.com.br. Sala: tools.caracore.com.br/sala/. Vitrine gratuita; não vendemos.
 
 Produtos com vitrine, sem oferta de aplicação
   Cara Core Seed: caracore-seed + caracore-seed-releases. Loja: seed.caracore.com.br (ferramenta interna)

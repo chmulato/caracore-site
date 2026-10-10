@@ -129,20 +129,22 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
     Status: OK — CTAs da matriz apontam para a aplicação; a loja não substitui o SaaS
 
 
-## 12. CARA CORE MKT / SALA — fora do mapa de lojas
+## 12. CARA CORE MKT / SALA
 
     (M) portfolio.html#caracore-mkt
-    Sem loja. CNAME mkt.caracore.com.br removido.
+    (L) caracore-mkt-releases → mkt.caracore.com.br
     Sala: tools.caracore.com.br/sala/
     Oficina: caracore-mkt · caracore-tools
-    Status: alinhado em 06/10/2026
+    Vitrine gratuita. Não vendemos. CNAME → chmulato.github.io (restaurado 10/10/2026)
+    Status: domínio de volta ao mapa em 10/10/2026
 
-## 13. HELIANTO — fora do mapa de lojas
+## 13. HELIANTO
 
     (M) portfolio.html#caracore-helianto
-    Sem loja e sem subdomínio. CNAME helianto.caracore.com.br removido.
+    (L) caracore-helianto-releases → helianto.caracore.com.br
     Oficina: caracore-helianto · GA 30/12/2029
-    Status: alinhado em 06/10/2026
+    CNAME → chmulato.github.io (restaurado 10/10/2026)
+    Status: domínio de volta ao mapa em 10/10/2026
 
 
 ---
@@ -174,7 +176,7 @@ CRITÉRIOS DE VALIDAÇÃO (aplicar em revisão periódica)
 RESUMO
 
   Todos os produtos listados devem ter: resumo na matriz (portfólio/ecossistema) + vitrine na loja.
-  Espelho interno: `mirror-delivery.html` nas lojas Ink e RU. MKT e Helianto ficam fora do mapa de lojas. Demais produtos — footer com portfolio.html#{produto}.
+  Espelho interno: `mirror-delivery.html` nas lojas Ink e RU. MKT e Helianto voltaram ao mapa em 10/10/2026. Demais produtos — footer com portfolio.html#{produto}.
 
   Smoke test pós-alteração:
     home → portfólio → ecossistema → loja de um produto → voltar à matriz

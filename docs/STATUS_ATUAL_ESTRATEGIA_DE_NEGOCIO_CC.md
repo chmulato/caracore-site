@@ -79,9 +79,9 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | Hub | `#caracore-hub` | hub.* | Evolução |
 | Área 51 | `#area-51` | area51.* | Serviço |
 | Seed | `#caracore-seed` | seed.* | Só informativo |
-| Mkt / Sala | `#caracore-mkt` | — (Sala: tools/sala) | Ferramenta interna · sem loja |
+| Mkt / Sala | `#caracore-mkt` | mkt.* (Sala: tools/sala) | Ferramenta interna · vitrine gratuita |
 | RU Soberano | `#caracore-ru` | ru.* | Garagem → 18/06/2027 |
-| Helianto | `#caracore-helianto` | — | Oficina · GA 30/12/2029 · sem loja |
+| Helianto | `#caracore-helianto` | helianto.* | Oficina · GA 30/12/2029 · vitrine no ar |
 | CSO | `#caracore-cso` | cso. + cso-transp. | Frotas em produção · Transp. 08/11/2028 |
 
 Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)  

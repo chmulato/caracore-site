@@ -90,12 +90,12 @@ alwaysApply: true
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV v4 — RC5 pública para avaliação; GA previsto 08/11/2026
+## PDV v4 — RC6 pública para avaliação; GA previsto 08/11/2026
 
-- **Oficina:** `caracore-pdv`; **v4.0.0-rc6** em preparação (Qute + launcher), correções do QA do rc5, 100 vendas finalizadas por mês civil. SHA-256 a publicar. O download público da pré-release continua **v4.0.0-rc5**. O ciclo manual da RC5 no Edge segue pendente. T032 segue aberto; a publicação não é aceite de GA. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
+- **Oficina:** `caracore-pdv` `master`, tag `v4.0.0-rc6`, commit `b3358fe`. Pré-release pública **v4.0.0-rc6** (Qute + launcher), 100 vendas finalizadas por mês civil. SHA-256 `a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892`. O ciclo manual completo do roteiro em `homologacao-v4.html#rc6` segue pendente. T032 segue aberto; a publicação não é aceite de GA. A `v4.0.0-rc5` fica no histórico. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
-- **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc5.html`.
-- **Loja:** `https://pdv.caracore.com.br/` — `v3.2.7-free` permanece download estável/Latest; RC5 é pré-release de avaliação, não GA; RC4 fica no histórico.
+- **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc6.html`.
+- **Loja:** `https://pdv.caracore.com.br/` — `v3.2.7-free` permanece download estável/Latest; RC6 é pré-release de avaliação, não GA; RC5 fica no histórico.
 - **Regra:** manter `v3.2.7-free` como download principal até o v4 ser homologado como GA. Não misturar pasta nem data.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.4)

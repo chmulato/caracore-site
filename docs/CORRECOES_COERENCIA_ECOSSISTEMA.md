@@ -19,12 +19,14 @@ Leitura de checkout. Produção no ar não foi reconsultada nesta data.
 
 ---
 
-## Valor canônico (08/10/2026)
+## Valor canônico (10/10/2026)
+
+O valor vigente sai de `AGENTS.md` e de `docs/ECOSYSTEM_MEMORIA.md`. As linhas INC abaixo registram a correção de 09/10 e não se reescrevem.
 
 | Frente | Valor vigente |
 |---|---|
-| PDV Java estável | `v3.2.7-free` · CTA **Baixar Free (3.2.7)** |
-| PDV Java v4 | Download público `v4.0.0-rc5`. `v4.0.0-rc6` em preparação, SHA-256 a publicar. GA 08/11/2026 condicionado ao T032 |
+| PDV Java estável | `v3.2.7-free` · CTA **Baixar Free (3.2.7)** · Latest |
+| PDV Java v4 | Pré-release pública `v4.0.0-rc6` (SHA-256 `a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892`; fonte `caracore-pdv` `master` commit `b3358fe`, tag `v4.0.0-rc6`). Não é Latest. A `v4.0.0-rc5` fica no histórico. Ciclo manual completo do roteiro ainda pendente. GA 08/11/2026 condicionado ao T032 |
 | PDV Rust | Piloto `v0.1.4` |
 | CSO Frotas | FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Freeze M1 em 08/11/2026. A janela abr–dez/2027 não reabre |
 | CSO Transportes | GA 08/11/2028 |

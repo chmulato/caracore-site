@@ -211,6 +211,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-10 | **Portfólio e ecossistema passam a um produto.** O cartão do RU Soberano sai. A vitrine pública é o BioReator 4.0: Community 1.0.0 na loja, Premium em 18/06/2027, sem preço e sem PIX. |
 | 2026-10-10 | **Planning alinhado ao BioReator.** A torre 10 passa a ler BioReator 4.0: Community 1.0.0 na loja, Premium em 18/06/2027, sem preço e sem PIX. O percentual permanece 12%. Sem torre nova e sem mês de Agent. |
 | 2026-10-10 | **A loja do BioReator não publica página .txt.** Os hashes ficam em `download.html#bioreator40`. O arquivo `artifacts/bioreator-1.0.0.txt` sai do site. |
 | 2026-10-10 | **A loja do RU promete um produto.** BioReator 4.0 Community 1.0.0 é a edição que se baixa. A Premium do mesmo produto fica em 18/06/2027, sem preço, sem PIX e sem arquivo. A data deixa de ser um segundo produto. |

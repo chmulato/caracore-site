@@ -167,7 +167,7 @@ python tools/sync_docs_status.py --full
 ### BioReator 4.0 (`caracore-ru` + seção em `caracore-ru-releases`)
 
 | Estilo | Estação desktop local, como o Minerador 4.0 |
-| Versão | Pacote de oficina **1.0.0** Community · Windows x64 · EXE e MSI na oficina · `publicDownload: false` |
+| Versão | Community **1.0.0** · Windows x64 · release `bioreator-1.0.0` (MSI e ZIP) · EXE dentro do ZIP |
 | Loja | https://ru.caracore.com.br/ (subdomínio do RU) · edições em download.html#bioreator40 · inventário artifacts/bioreator-1.0.0.txt |
 | Community | *Bradyrhizobium japonicum*, batelada, histórico e CSV |
 | Pro | Catálogo, batelada alimentada, custos do operador e PDF. Sem preço e sem PIX |

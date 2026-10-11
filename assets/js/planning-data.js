@@ -14,10 +14,10 @@
  */
 window.CARACORE_PLANNING = {
   AS_OF: "2026-10",
-  AS_OF_LABEL: "09/10/2026",
+  AS_OF_LABEL: "10/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 09/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
+    "Leitura de 10/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. A pré-release pública é a v4.0.0-rc6; o estável continua a v3.2.7-free. BioReator 4.0 Community 1.0.0 está fora desta grelha: o arquivo fica na oficina e a Pro não tem data. Helianto e MKT também ficam fora. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -37,11 +37,11 @@ window.CARACORE_PLANNING = {
       {
         id: "pdv-java",
         kind: "risco",
-        title: "PDV Java · RC6 na oficina",
-        lead: "A oficina prepara a v4.0.0-rc6. O download público continua a v4.0.0-rc5. O estável é a v3.2.7-free.",
+        title: "PDV Java · pré-release v4.0.0-rc6",
+        lead: "A pré-release pública é a v4.0.0-rc6. O estável continua a v3.2.7-free.",
         detail: "T032 aberto · GA de 08/11 ainda não confirmado",
         tip: "T032 é o gate interno do roteiro. O percentual não sobe enquanto o lançamento estável não sair.",
-        text: "Oficina em v4.0.0-rc6, SHA-256 a publicar. Download público continua v4.0.0-rc5. Estável v3.2.7-free. T032 aberto. 08/11 é previsão, não GA confirmado.",
+        text: "Pré-release pública v4.0.0-rc6, SHA-256 a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892. Estável v3.2.7-free. A v4.0.0-rc5 fica no histórico. T032 aberto. 08/11 é previsão, não GA confirmado.",
       },
       {
         id: "cso",
@@ -105,6 +105,7 @@ window.CARACORE_PLANNING = {
       "Momento 2 e PWA da frota em 2027–2028 (2028 é Transportes)",
       "Virtual Tracker / GPS no mesmo ano do Transportes",
       "RU com mês de Agent",
+      "BioReator 4.0 com mês de Agent (Community 1.0.0 já publicada; Pro sem data)",
       "PIX Split PDV em código antes do Hub no ar",
     ],
     sponsorAdds:
@@ -119,7 +120,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 74,
-      note: "Free 3.2.7-free estável. Download público v4.0.0-rc5. Oficina em v4.0.0-rc6, SHA-256 a publicar. GA de 08/11 condicionado ao T032. Freeze M1 do CSO ainda não fechado.",
+      note: "Free 3.2.7-free estável. Pré-release pública v4.0.0-rc6. GA de 08/11 condicionado ao T032. Freeze M1 do CSO ainda não fechado. BioReator Community 1.0.0 fora desta grelha.",
     },
     {
       id: "y2027",
@@ -153,8 +154,8 @@ window.CARACORE_PLANNING = {
       state: "risk",
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
-      hundred: "Canal estável v3.2.7-free. Pré-release pública v4.0.0-rc5. Oficina em v4.0.0-rc6. GA em 08/11/2026, condicionado ao T032.",
-      now: "RC6 na oficina, sem SHA publicado. O download público continua a RC5. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
+      hundred: "Canal estável v3.2.7-free. Pré-release pública v4.0.0-rc6. GA em 08/11/2026, condicionado ao T032.",
+      now: "Pré-release pública v4.0.0-rc6, com SHA publicado. Estável v3.2.7-free. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
       history: [
         { m: "2026-06", p: 62 },
         { m: "2026-07", p: 68 },

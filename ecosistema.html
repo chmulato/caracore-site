@@ -188,6 +188,7 @@
       <div class="eco-map-row">
         <a href="https://oidc.caracore.com.br/" class="eco-map-node eco-map-node--satelite">Reino OIDC</a>
         <a href="https://ete.caracore.com.br/" class="eco-map-node eco-map-node--satelite">Minerador 4.0</a>
+        <a href="https://ru.caracore.com.br/download.html#bioreator40" class="eco-map-node eco-map-node--satelite">BioReator 4.0 · Community</a>
         <a href="https://circuito.caracore.com.br/" class="eco-map-node eco-map-node--satelite">Circuito</a>
         <a href="https://ink.caracore.com.br/" class="eco-map-node eco-map-node--satelite">Ink Agenda</a>
         <a href="https://area51.caracore.com.br/" class="eco-map-node eco-map-node--satelite">Área 51</a>
@@ -199,7 +200,6 @@
       <div class="eco-map-row mt-2">
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">Hub · Abr/2027</a>
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">RU · Jun/2027</a>
-        <a href="https://ru.caracore.com.br/" class="eco-map-node eco-map-node--garagem">BioReator 4.0</a>
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">CSO Transportes · 2028</a>
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">Helianto · Dez/2029</a>
       </div>
@@ -473,7 +473,7 @@
         <ul class="eco-product-bullets">
           <li>Bioinsumos e fermentação no computador do operador</li>
           <li>Community: Bradyrhizobium em batelada, histórico e CSV</li>
-          <li>Pro sem preço e sem PIX</li>
+          <li>Pro sem preço, sem PIX e sem data</li>
         </ul>
         <p class="eco-product-meta"><strong>Loja:</strong> ru.caracore.com.br</p>
         <div class="eco-product-cta">
@@ -699,7 +699,7 @@
   </div>
 </section>
 
-<!-- Garagem — Hub, RU, Helianto, CSO Transportes -->
+<!-- Garagem — Hub, RU, Helianto, CSO Transportes. BioReator Community fica na prateleira. -->
 <section id="garagem" class="eco-garagem-section ecossistema-section py-5">
   <div class="container-fluid px-0">
         <span class="eco-section-badge eco-section-badge--garagem">Garagem · The Lab</span>
@@ -722,15 +722,6 @@
               <p class="text-muted small mb-2">Motor de simulação por eventos discretos (DES) com o RU como laboratório didático: fluxo, filas, throughput e tempo de residência. Oferta gratuita: ambientação RETRO (sala de aula UFPR 1991, Balanço de Massa). Versão paga: simulador de reator, jornada completa e narrativa Lord OIDC (1991 → 2026) em 3D.</p>
               <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 18 de junho de 2027</span>
               <p class="mb-0 mt-2"><a href="https://ru.caracore.com.br/" class="btn btn-sm btn-primary">Ver apresentação</a></p>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3">
-            <div class="eco-garagem-card cc-card-ete">
-              <span class="eco-garagem-badge">Simulação · Bioinsumos</span>
-              <h3><a href="https://ru.caracore.com.br/download.html#bioreator40" class="eco-garagem-card-title-link">BioReator 4.0</a></h3>
-              <p class="text-muted small mb-2">Estação desktop no estilo do Minerador 4.0. Pacote de oficina 1.0.0, Community, Windows, com EXE e MSI. Pro com catálogo, batelada alimentada, custos do operador e PDF, sem preço e sem PIX. A loja não hospeda o arquivo.</p>
-              <span class="eco-launch"><i class="bi bi-tools me-1"></i> Garagem 1.0.0 · sem data de GA</span>
-              <p class="mb-0 mt-2"><a href="portfolio.html#bioreator40" class="btn btn-sm btn-primary">Ver no portfólio</a></p>
             </div>
           </div>
           <div class="col-md-6 col-lg-3">
@@ -1000,6 +991,7 @@ flowchart TB
         P1[PDV Java web local]
         P1r[PDV Rust + Tauri]
         P2[Minerador 4.0]
+        P2b[BioReator 4.0 Community]
         P3[Reino OIDC]
         P4[Circuito Ferradura]
         P5[Cara Core Hub]
@@ -1030,7 +1022,6 @@ flowchart TB
     end
     subgraph GARAGEM["Garagem — futuros lançamentos (em desenvolvimento)"]
         G1[RU Soberano]
-        G1b[BioReator 4.0]
         G2[caracore-ru]
         G3[caracore-ru-releases]
         G4[Cara Core Ink Agenda]
@@ -1043,7 +1034,7 @@ flowchart TB
         G10[Helianto Condominium]
         G11[caracore-helianto]
     end
-    M --> P1 & P1r & P2 & P3 & P4 & P5 & P6 & P7 & P8
+    M --> P1 & P1r & P2 & P2b & P3 & P4 & P5 & P6 & P7 & P8
     P1 --> O1
     P1r --> O1r
     P2 --> O2
@@ -1062,9 +1053,8 @@ flowchart TB
     O6 --> L6
     O7 --> L7
     M --> G1
-    M --> G1b
+    P2b --> G2
     G1 --> G2
-    G1b --> G2
     G2 --> G3
     M --> G4
     G4 --> G5
@@ -1078,7 +1068,7 @@ flowchart TB
           </div>
         </div>
         <p class="small text-muted mb-4">
-          <strong>Prateleira:</strong> PDV (Java + Rust), CSO Frotas (em produção), OIDC, ETE, Circuito, Ink, Área 51, MKT, Seed. <strong>Garagem:</strong> Hub (2027), RU (2027), CSO Transportes (2028), Helianto (2029).
+          <strong>Prateleira:</strong> PDV (Java + Rust), CSO Frotas (em produção), OIDC, ETE, BioReator 4.0 Community 1.0.0, Circuito, Ink, Área 51, MKT, Seed. <strong>Garagem:</strong> Hub (2027), RU (2027), CSO Transportes (2028), Helianto (2029). A Pro do BioReator não tem data.
         </p>
 
         <div class="eco-cta-block">

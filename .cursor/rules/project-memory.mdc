@@ -141,7 +141,7 @@ alwaysApply: true
 - **Loja:** https://ru.caracore.com.br/
 - **Lançamento:** 18/Jun/2027 · R$ 29,90 simulador
 
-## BioReator 4.0 (garagem, estilo Minerador)
+## BioReator 4.0 (Community 1.0.0, estilo Minerador)
 
 - **Matriz:** `portfolio.html#bioreator40` · ecosistema
 - **Versão:** pacote de oficina **1.0.0** Community · Windows x64 · EXE `BioReator40.exe` e MSI `BioReator40-1.0.0.msi` · sem assinatura · `publicDownload: false`
@@ -149,8 +149,8 @@ alwaysApply: true
 - **Wiki:** `projeto-bioreator.html` · `bioreator-tecnico.html`
 - **Oficina:** `caracore-ru` (a mesma do RU) · `docs/PLANO_SPRINTS_BIORREATOR.md`
 - **Community:** *Bradyrhizobium japonicum*, batelada, histórico e CSV
-- **Pro:** catálogo, batelada alimentada, custos do operador e PDF. Sem preço e sem PIX
-- **Subdomínio:** `ru.caracore.com.br`, o mesmo do RU Soberano. **Sem** data de GA. A data de 18/06/2027 continua a do RU Soberano.
+- **Pro:** catálogo, batelada alimentada, custos do operador e PDF. Sem preço, sem PIX e sem data
+- **Subdomínio:** `ru.caracore.com.br`, o mesmo do RU Soberano. A Community 1.0.0 é a edição atual. A data de 18/06/2027 continua a do RU Soberano.
 
 ## Retrô (caracore-retro)
 

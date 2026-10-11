@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "10/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 10/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. A pré-release pública é a v4.0.0-rc6; o estável continua a v3.2.7-free. BioReator 4.0 Community 1.0.0 está fora desta grelha: o arquivo fica na oficina e a Pro não tem data. Helianto e MKT também ficam fora. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
+    "Leitura de 10/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. A pré-release pública é a v4.0.0-rc6; o estável continua a v3.2.7-free. BioReator 4.0 Community 1.0.0 está fora desta grelha: já se baixa na loja. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT também ficam fora. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -104,12 +104,11 @@ window.CARACORE_PLANNING = {
       "Ink PWA com Agent antes de 2028 (brinco; Tab até folga do núcleo)",
       "Momento 2 e PWA da frota em 2027–2028 (2028 é Transportes)",
       "Virtual Tracker / GPS no mesmo ano do Transportes",
-      "RU com mês de Agent",
-      "BioReator 4.0 com mês de Agent (Community 1.0.0 já publicada; Pro sem data)",
+      "BioReator 4.0 com mês de Agent (Community 1.0.0 já publicada; Premium em 18/06/2027, sem preço e sem PIX)",
       "PIX Split PDV em código antes do Hub no ar",
     ],
     sponsorAdds:
-      "Patrocínio acima deste envelope (segunda cota, on-demand pontual ou mês extra de Agent) abre Momento 2 ou dá mês a RU. Não substitui os GAs já calendariados nem reabre o FRO.",
+      "Patrocínio acima deste envelope (segunda cota, on-demand pontual ou mês extra de Agent) abre Momento 2 ou dá mês ao BioReator. Não substitui os GAs já calendariados nem reabre o FRO.",
     contactHref: "index.html#contato",
     source: "docs/CALENDARIO_COTA_CURSOR.md",
   },
@@ -120,7 +119,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 74,
-      note: "Free 3.2.7-free estável. Pré-release pública v4.0.0-rc6. GA de 08/11 condicionado ao T032. Freeze M1 do CSO ainda não fechado. BioReator Community 1.0.0 fora desta grelha.",
+      note: "Free 3.2.7-free estável. Pré-release pública v4.0.0-rc6. GA de 08/11 condicionado ao T032. Freeze M1 do CSO ainda não fechado. BioReator Community 1.0.0 publicada, fora desta grelha. Premium em 18/06/2027.",
     },
     {
       id: "y2027",
@@ -311,13 +310,13 @@ window.CARACORE_PLANNING = {
     {
       id: "ru",
       n: 10,
-      name: "RU Soberano",
+      name: "BioReator 4.0",
       core: false,
       state: "ok",
       tone: "ru",
       shop: "https://ru.caracore.com.br/",
-      hundred: "Garagem 18/06/2027 (simulador + sala retrô).",
-      now: "Vitrine no ar. Sem mês de Agent.",
+      hundred: "Community 1.0.0 publicada. Premium em 18/06/2027, sem preço e sem PIX.",
+      now: "Community 1.0.0 na loja, MSI e ZIP na release. Premium em 18/06/2027. Sem mês de Agent.",
       history: [
         { m: "2026-06", p: 8 },
         { m: "2026-07", p: 10 },

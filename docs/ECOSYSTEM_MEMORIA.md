@@ -211,6 +211,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-10 | **Planning alinhado ao BioReator.** A torre 10 passa a ler BioReator 4.0: Community 1.0.0 na loja, Premium em 18/06/2027, sem preço e sem PIX. O percentual permanece 12%. Sem torre nova e sem mês de Agent. |
 | 2026-10-10 | **A loja do BioReator não publica página .txt.** Os hashes ficam em `download.html#bioreator40`. O arquivo `artifacts/bioreator-1.0.0.txt` sai do site. |
 | 2026-10-10 | **A loja do RU promete um produto.** BioReator 4.0 Community 1.0.0 é a edição que se baixa. A Premium do mesmo produto fica em 18/06/2027, sem preço, sem PIX e sem arquivo. A data deixa de ser um segundo produto. |
 | 2026-10-10 | **Download público do BioReator 4.0 Community 1.0.0.** Release `bioreator-1.0.0` em `caracore-ru-releases`: MSI 72.658.944 bytes, SHA-256 `8efc60902c5ba6c37096401f02ba180b545f4dce754247e4a51ea1e96905995e`; ZIP portátil 73.594.305 bytes, SHA-256 `49e83e5361b77ca8bc1bd854e6acaf77ce50404380b5d84229e15816dad5405a`. O EXE de 524.800 bytes fica dentro do ZIP. Sem assinatura digital. A Pro segue sem preço e sem data. O RU Soberano segue em 18/06/2027. |

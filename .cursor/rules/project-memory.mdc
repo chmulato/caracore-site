@@ -145,7 +145,8 @@ alwaysApply: true
 
 - **Matriz:** `portfolio.html#bioreator40` · ecosistema
 - **Versão:** pacote de oficina **1.0.0** Community · Windows x64 · EXE `BioReator40.exe` e MSI `BioReator40-1.0.0.msi` · sem assinatura · `publicDownload: false`
-- **Loja:** https://ru.caracore.com.br/ (subdomínio do RU) · edições em `download.html#bioreator40` · manual `manual-bioreator.html` · inventário `artifacts/bioreator-1.0.0.txt`
+- **Loja:** https://ru.caracore.com.br/ (subdomínio do RU) · edições em `download.html#bioreator40` · manual `manual-bioreator.html` · exemplo `exemplo-bioreator.html` · inventário `artifacts/bioreator-1.0.0.txt`
+- **Wiki:** `projeto-bioreator.html` · `bioreator-tecnico.html`
 - **Oficina:** `caracore-ru` (a mesma do RU) · `docs/PLANO_SPRINTS_BIORREATOR.md`
 - **Community:** *Bradyrhizobium japonicum*, batelada, histórico e CSV
 - **Pro:** catálogo, batelada alimentada, custos do operador e PDF. Sem preço e sem PIX

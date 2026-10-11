@@ -152,10 +152,10 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | Pro | Catálogo, batelada alimentada, custos informados pelo operador e PDF. Sem preço e sem PIX. |
 | Versão | Pacote de oficina **1.0.0**, Community. Maven da oficina permanece `ru-free` `1.0.0-SNAPSHOT`. A versão de loja 1.0.0 do RU Soberano é outra linha. |
 | Artefatos | `BioReator40.exe` 524.800 bytes, SHA-256 `378efe2eb3fd32e4fb5aa167d860ca86df11d45f9b31af53c0d5e65470611c38`. `BioReator40-1.0.0.msi` 72.658.944 bytes, SHA-256 `8efc60902c5ba6c37096401f02ba180b545f4dce754247e4a51ea1e96905995e`. Windows x64, JDK 25 embutido, sem assinatura. `publicDownload: false`. |
-| Loja | `https://ru.caracore.com.br/` · edições em `download.html#bioreator40` · manual `manual-bioreator.html` · inventário `artifacts/bioreator-1.0.0.txt` |
+| Loja | `https://ru.caracore.com.br/` · edições em `download.html#bioreator40` · manual `manual-bioreator.html` · exemplo `exemplo-bioreator.html` · inventário `artifacts/bioreator-1.0.0.txt` |
 | Oficina | `caracore-ru/docs/PLANO_SPRINTS_BIORREATOR.md` · `docs/MANUAL_OPERADOR_BIOREATOR.md` |
 | Matriz | `portfolio.html#bioreator40` · `ecosistema.html` |
-| Wiki | `projeto-bioreator.html` |
+| Wiki | `projeto-bioreator.html` · `bioreator-tecnico.html` |
 
 *Bacillus thuringiensis* descreve só o crescimento. A medição da máquina de 10/10/2026 ficou em 3,8 s e 175 MB, acima dos limites internos de 2,5 s e 120 MB. O lançamento de 18/06/2027 continua sendo o do RU Soberano. Fora da cota de outubro.
 
@@ -211,6 +211,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-10 | **BioReator 4.0 ganha exemplo e cinética.** Loja `exemplo-bioreator.html`: carga de referência Community, 100 L, *Bradyrhizobium*, leitura de X, S e oxigênio. Wiki `bioreator-tecnico.html`: as mesmas contas, o catálogo calibrado e o contraste de 6 h em batelada alimentada na Pro. Números do simulador 1.0.0, não medição de planta. |
 | 2026-10-10 | **BioReator 4.0 1.0.0 no inventário.** Pacote Community de oficina: EXE `BioReator40.exe` (524.800 bytes, SHA-256 `378efe2eb3fd32e4fb5aa167d860ca86df11d45f9b31af53c0d5e65470611c38`) e MSI `BioReator40-1.0.0.msi` (72.658.944 bytes, SHA-256 `8efc60902c5ba6c37096401f02ba180b545f4dce754247e4a51ea1e96905995e`). Windows x64, JDK 25, sem assinatura. `publicDownload: false`. Inventário em `caracore-ru-releases/docs/artifacts/bioreator-1.0.0.txt`. Central, matriz, wiki e memórias citam a versão. A 1.0.0 do RU Soberano continua a outra linha, com marco 18/06/2027. Checkout, sem publicação. |
 | 2026-10-10 | **BioReator 4.0 entra no mapa como brinco**, no estilo de estação local do Minerador. Oficina `caracore-ru`. Loja no subdomínio `https://ru.caracore.com.br/`, com as edições em `download.html#bioreator40` e sem arquivo. Community no pacote local; Pro sem preço e sem PIX. A data de 18/06/2027 continua a do RU Soberano. Cota de outubro permanece no PDV v4. Matriz, wiki e memórias alinhadas no checkout, sem publicação. |
 | 2026-10-10 | **Fonte da PDV v4 `v4.0.0-rc6` no `master`:** oficina `caracore-pdv`, commit `b3358fe`, tag `v4.0.0-rc6`. O ZIP público permanece o já publicado (113.889.451 bytes, SHA-256 `a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892`). Latest continua `v3.2.7-free`. Ciclo manual completo do roteiro ainda pendente. |

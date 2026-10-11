@@ -45,11 +45,11 @@
   };
 
   const GLOSSARY = [
-    ["v4.0.0-rc6", "Candidato da oficina. SHA-256 ainda não publicado. O download público continua a RC5."],
-    ["v4.0.0-rc5", "Pré-release pública para avaliação, antes do lançamento estável."],
+    ["v4.0.0-rc6", "Pré-release pública da linha v4. SHA-256 publicado. O estável continua a v3.2.7-free. O GA de 08/11/2026 depende do T032."],
+    ["v4.0.0-rc5", "Pré-release anterior. Fica no histórico. O download público da linha v4 é a v4.0.0-rc6."],
     ["v3.2.7-free", "Versão estável do PDV Java Free, em Windows, Linux e macOS."],
     ["v2.1.0-rc1.2", "Pré-release Windows para avaliação, com instalador e ZIP. O lançamento estável do Hub está previsto para 06/04/2027."],
-    ["v2.0.0-RC1", "Release candidate público desta sala de estudo."],
+    ["v2.0.2-free", "Edição Free do Reino OIDC. As três Eras são gratuitas para estudo pessoal. A edição paga está em desenvolvimento, sem PIX nesta etapa."],
     ["T032", "Gate interno do roteiro operacional."],
     ["Agent", "Sessão pesada do Cursor. É o que consome a cota do mês."],
     ["FRO", "Frente da frota 24/24, publicada em 06/10/2026. Freeze M1 em 08/11/2026."],

@@ -211,7 +211,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
-| 2026-10-11 | **O BioReator não cita o Minerador.** A copy do produto fala de bioinsumos, batelada e Community. O Minerador permanece na própria loja e no próprio cartão. |
+| 2026-10-11 | **Planning: glossário da v4 e nota do BioReator.** O verbete de `v4.0.0-rc6` passa a dizer pré-release pública com SHA-256 publicado; a `v4.0.0-rc5` fica no histórico. O verbete `v2.0.0-RC1` sai e entra `v2.0.2-free`. A nota da grelha deixa de dizer que o BioReator está fora: a torre 10 permanece, Community 1.0.0 publicada, percentual em 12%. Premium em 18/06/2027, sem preço e sem PIX. |
 | 2026-10-10 | **Wiki alinhada ao BioReator 4.0.** A ficha, a visão geral, o glossário, a trilha e o mapa da wiki prometem um produto: Community 1.0.0 agora, Premium em 18/06/2027, sem preço e sem PIX. |
 | 2026-10-10 | **Portfólio e ecossistema passam a um produto.** O cartão do RU Soberano sai. A vitrine pública é o BioReator 4.0: Community 1.0.0 na loja, Premium em 18/06/2027, sem preço e sem PIX. |
 | 2026-10-10 | **Planning alinhado ao BioReator.** A torre 10 passa a ler BioReator 4.0: Community 1.0.0 na loja, Premium em 18/06/2027, sem preço e sem PIX. O percentual permanece 12%. Sem torre nova e sem mês de Agent. |

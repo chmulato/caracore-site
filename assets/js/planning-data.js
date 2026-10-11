@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "10/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 10/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. A pré-release pública é a v4.0.0-rc6; o estável continua a v3.2.7-free. BioReator 4.0 Community 1.0.0 está fora desta grelha: já se baixa na loja. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT também ficam fora. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
+    "Leitura de 10/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; o estável continua a v3.2.7-free. A v4.0.0-rc5 fica no histórico. BioReator 4.0 Community 1.0.0 está na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -119,7 +119,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 74,
-      note: "Free 3.2.7-free estável. Pré-release pública v4.0.0-rc6. GA de 08/11 condicionado ao T032. Freeze M1 do CSO ainda não fechado. BioReator Community 1.0.0 publicada, fora desta grelha. Premium em 18/06/2027.",
+      note: "Free 3.2.7-free estável. Pré-release pública v4.0.0-rc6, com SHA-256 publicado. A v4.0.0-rc5 fica no histórico. GA de 08/11 condicionado ao T032. Freeze M1 do CSO ainda não fechado. BioReator Community 1.0.0 publicada na torre 10, percentual em 12%. Premium em 18/06/2027.",
     },
     {
       id: "y2027",

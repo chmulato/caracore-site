@@ -87,8 +87,8 @@ Produtos com entrega ativa (matriz + loja online)
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.1 (com suporte até a 3.0) · 3.0 em PWA não antes de 2028, substitui o Desktop após importação dos dados (sem DMG/DEB nativos)
-  RU Soberano: caracore-ru + caracore-ru-releases. Loja: ru.caracore.com.br. Lançamento 18/06/2027.
-  BioReator 4.0: mesma oficina. Loja: https://ru.caracore.com.br/ (subdomínio do RU; edições em download.html#bioreator40; inventário artifacts/bioreator-1.0.0.txt). Community 1.0.0 é a edição atual, Windows x64, MSI e ZIP na release bioreator-1.0.0, sem assinatura. O EXE fica dentro do ZIP. Pro sem preço, sem PIX e sem data. A versão 1.0.0 do RU Soberano é outra linha.
+  RU Soberano: caracore-ru + caracore-ru-releases. O código de sala fica na oficina. A loja promete o BioReator 4.0.
+  BioReator 4.0: mesma oficina. Loja: https://ru.caracore.com.br/ (subdomínio do RU; edições em download.html#bioreator40; inventário artifacts/bioreator-1.0.0.txt). Community 1.0.0 é a edição atual, Windows x64, MSI e ZIP na release bioreator-1.0.0, sem assinatura. O EXE fica dentro do ZIP. Premium em 18/06/2027, sem preço e sem PIX. A loja promete um produto.
 
 Vitrines restauradas em 10/10/2026 (CNAME → chmulato.github.io; ver MEMORIA_INFRAESTRUTURA_CARACORE.txt)
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br. GA 30/12/2029.

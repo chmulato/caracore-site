@@ -135,11 +135,9 @@ alwaysApply: true
 - **Não regressar:** launcher ~5 MB (v1.2.1) · Flask morto sem `pyarmor_runtime` (v1.2.2)
 - **Matriz:** portfolio `#minerador-ete` · ecosistema · wiki `projeto-minerador.html`
 
-## RU Soberano (garagem)
+## RU Soberano (oficina)
 
-- **Matriz:** `portfolio.html#caracore-ru` · ecosistema (Garagem)
-- **Loja:** https://ru.caracore.com.br/
-- **Lançamento:** 18/Jun/2027 · R$ 29,90 simulador
+- **Oficina:** `caracore-ru`, ao lado do BioReator. A loja promete o BioReator 4.0.
 
 ## BioReator 4.0 (Community 1.0.0, estilo Minerador)
 
@@ -149,8 +147,8 @@ alwaysApply: true
 - **Wiki:** `projeto-bioreator.html` · `bioreator-tecnico.html`
 - **Oficina:** `caracore-ru` (a mesma do RU) · `docs/PLANO_SPRINTS_BIORREATOR.md`
 - **Community:** *Bradyrhizobium japonicum*, batelada, histórico e CSV
-- **Pro:** catálogo, batelada alimentada, custos do operador e PDF. Sem preço, sem PIX e sem data
-- **Subdomínio:** `ru.caracore.com.br`, o mesmo do RU Soberano. A Community 1.0.0 é a edição atual. A data de 18/06/2027 continua a do RU Soberano.
+- **Premium:** catálogo, batelada alimentada, custos do operador e PDF. Data 18/06/2027. Sem preço e sem PIX. A loja promete um produto
+- **Subdomínio:** `ru.caracore.com.br`. A Community 1.0.0 é a edição atual. A data de 18/06/2027 é a da Premium.
 
 ## Retrô (caracore-retro)
 

@@ -144,7 +144,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 
 ## BioReator 4.0 — referência rápida
 
-**Garagem (10/10/2026).** Simulador desktop de bioinsumos e fermentação, no mesmo estilo de estação local do Minerador 4.0. A oficina é a do RU (`caracore-ru`). A loja é o subdomínio **`https://ru.caracore.com.br/`**.
+**Garagem (10/10/2026).** Simulador desktop de bioinsumos e fermentação. A oficina é a do RU (`caracore-ru`). A loja é o subdomínio **`https://ru.caracore.com.br/`**.
 
 | Papel | Onde está |
 |-------|-----------|
@@ -211,6 +211,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-11 | **O BioReator não cita o Minerador.** A copy do produto fala de bioinsumos, batelada e Community. O Minerador permanece na própria loja e no próprio cartão. |
 | 2026-10-10 | **Wiki alinhada ao BioReator 4.0.** A ficha, a visão geral, o glossário, a trilha e o mapa da wiki prometem um produto: Community 1.0.0 agora, Premium em 18/06/2027, sem preço e sem PIX. |
 | 2026-10-10 | **Portfólio e ecossistema passam a um produto.** O cartão do RU Soberano sai. A vitrine pública é o BioReator 4.0: Community 1.0.0 na loja, Premium em 18/06/2027, sem preço e sem PIX. |
 | 2026-10-10 | **Planning alinhado ao BioReator.** A torre 10 passa a ler BioReator 4.0: Community 1.0.0 na loja, Premium em 18/06/2027, sem preço e sem PIX. O percentual permanece 12%. Sem torre nova e sem mês de Agent. |
@@ -222,7 +223,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 | 2026-10-10 | **BioReator 4.0 Community 1.0.0 sai do planejamento.** A edição atual entra em “Já publicado” no roadmap da central e no filtro estável de download.caracore.com.br. A Pro segue sem preço, sem PIX e sem data. O EXE e o MSI continuam na oficina. O marco de 18/06/2027 continua o do RU Soberano. |
 | 2026-10-10 | **BioReator 4.0 ganha exemplo e cinética.** Loja `exemplo-bioreator.html`: carga de referência Community, 100 L, *Bradyrhizobium*, leitura de X, S e oxigênio. Wiki `bioreator-tecnico.html`: as mesmas contas, o catálogo calibrado e o contraste de 6 h em batelada alimentada na Pro. Números do simulador 1.0.0, não medição de planta. |
 | 2026-10-10 | **BioReator 4.0 1.0.0 no inventário.** Pacote Community de oficina: EXE `BioReator40.exe` (524.800 bytes, SHA-256 `378efe2eb3fd32e4fb5aa167d860ca86df11d45f9b31af53c0d5e65470611c38`) e MSI `BioReator40-1.0.0.msi` (72.658.944 bytes, SHA-256 `8efc60902c5ba6c37096401f02ba180b545f4dce754247e4a51ea1e96905995e`). Windows x64, JDK 25, sem assinatura. `publicDownload: false`. Inventário em `caracore-ru-releases/docs/artifacts/bioreator-1.0.0.txt`. Central, matriz, wiki e memórias citam a versão. A 1.0.0 do RU Soberano continua a outra linha, com marco 18/06/2027. Checkout, sem publicação. |
-| 2026-10-10 | **BioReator 4.0 entra no mapa como brinco**, no estilo de estação local do Minerador. Oficina `caracore-ru`. Loja no subdomínio `https://ru.caracore.com.br/`, com as edições em `download.html#bioreator40` e sem arquivo. Community no pacote local; Pro sem preço e sem PIX. A data de 18/06/2027 continua a do RU Soberano. Cota de outubro permanece no PDV v4. Matriz, wiki e memórias alinhadas no checkout, sem publicação. |
+| 2026-10-10 | **BioReator 4.0 entra no mapa como brinco.** Oficina `caracore-ru`. Loja no subdomínio `https://ru.caracore.com.br/`, com as edições em `download.html#bioreator40` e sem arquivo. Community no pacote local; Pro sem preço e sem PIX. A data de 18/06/2027 continua a do RU Soberano. Cota de outubro permanece no PDV v4. Matriz, wiki e memórias alinhadas no checkout, sem publicação. |
 | 2026-10-10 | **Fonte da PDV v4 `v4.0.0-rc6` no `master`:** oficina `caracore-pdv`, commit `b3358fe`, tag `v4.0.0-rc6`. O ZIP público permanece o já publicado (113.889.451 bytes, SHA-256 `a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892`). Latest continua `v3.2.7-free`. Ciclo manual completo do roteiro ainda pendente. |
 | 2026-10-10 | **PDV v4 `v4.0.0-rc6` publicada:** ZIP `CaraCore-PDV-4.0.0-rc6-qute-portable-windows-x64.zip`, 113.889.451 bytes, SHA-256 `a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892`. Pré-release, não Latest. Estável continua `v3.2.7-free`. A `v4.0.0-rc5` fica no histórico. Ciclo manual completo do roteiro ainda pendente. Sem NF-e, NFC-e nem PIX integrado. |
 | 2026-10-10 | **MKT e Helianto de volta ao mapa de lojas:** CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io` (consulta 8.8.8.8 em 10/10). Memória: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`. MKT: vitrine gratuita em `caracore-mkt-releases`; Sala continua em `tools.caracore.com.br/sala/`; não vendemos. Helianto: vitrine em `caracore-helianto-releases`; GA 30/12/2029. Os dois continuam brincos. A remoção de 06/10 fica no histórico. |

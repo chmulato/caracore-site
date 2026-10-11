@@ -152,7 +152,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | Pro | Catálogo, batelada alimentada, custos informados pelo operador e PDF. Sem preço e sem PIX. |
 | Versão | Pacote de oficina **1.0.0**, Community. Maven da oficina permanece `ru-free` `1.0.0-SNAPSHOT`. A versão de loja 1.0.0 do RU Soberano é outra linha. |
 | Artefatos | `BioReator40.exe` 524.800 bytes, SHA-256 `378efe2eb3fd32e4fb5aa167d860ca86df11d45f9b31af53c0d5e65470611c38`. `BioReator40-1.0.0.msi` 72.658.944 bytes, SHA-256 `8efc60902c5ba6c37096401f02ba180b545f4dce754247e4a51ea1e96905995e`. Windows x64, JDK 25 embutido, sem assinatura. `publicDownload: false`. |
-| Loja | `https://ru.caracore.com.br/` · edições em `download.html#bioreator40` · manual `manual-bioreator.html` · exemplo `exemplo-bioreator.html` · inventário `artifacts/bioreator-1.0.0.txt` |
+| Loja | `https://ru.caracore.com.br/bioreator.html` · edições em `download.html#bioreator40` · manual `manual-bioreator.html` · exemplo `exemplo-bioreator.html` · inventário `artifacts/bioreator-1.0.0.txt` |
 | Oficina | `caracore-ru/docs/PLANO_SPRINTS_BIORREATOR.md` · `docs/MANUAL_OPERADOR_BIOREATOR.md` |
 | Matriz | `portfolio.html#bioreator40` · `ecosistema.html` |
 | Wiki | `projeto-bioreator.html` · `bioreator-tecnico.html` |
@@ -211,6 +211,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-10-10 | **Página do BioReator 4.0 na loja do RU.** `bioreator.html` abre pela fermentação no computador, depois explica a batelada e só então as edições. Community 1.0.0 continua a edição atual. EXE e MSI seguem na oficina. A Pro segue sem preço, sem PIX e sem data. O RU Soberano segue com lançamento em 18/06/2027. |
 | 2026-10-10 | **Coerência do vocabulário.** A Community 1.0.0 do BioReator sai da lista de futuros lançamentos na matriz, na loja do RU, na wiki e nas memórias. O planning passa a ler 10/10/2026: pré-release pública do PDV é a `v4.0.0-rc6`, com SHA publicado; estável continua `v3.2.7-free`; T032 aberto. Percentuais das 11 torres não mudam. A Pro do BioReator continua sem data e fora da cota de outubro. |
 | 2026-10-10 | **BioReator 4.0 Community 1.0.0 sai do planejamento.** A edição atual entra em “Já publicado” no roadmap da central e no filtro estável de download.caracore.com.br. A Pro segue sem preço, sem PIX e sem data. O EXE e o MSI continuam na oficina. O marco de 18/06/2027 continua o do RU Soberano. |
 | 2026-10-10 | **BioReator 4.0 ganha exemplo e cinética.** Loja `exemplo-bioreator.html`: carga de referência Community, 100 L, *Bradyrhizobium*, leitura de X, S e oxigênio. Wiki `bioreator-tecnico.html`: as mesmas contas, o catálogo calibrado e o contraste de 6 h em batelada alimentada na Pro. Números do simulador 1.0.0, não medição de planta. |

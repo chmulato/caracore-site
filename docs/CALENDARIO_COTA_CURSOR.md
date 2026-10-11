@@ -29,11 +29,11 @@ Sexta: ler Spending, gravar % se o ciclo for de oficina com tracker, cortar o Co
 
 | Marco | Data | Cota |
 |-------|------|------|
-| PDV Java v4 GA | **08/11/2026** | Agent out–08/nov/2026 |
+| PDV Java v4 | Data de GA em reavaliação desde 11/10 (corte recusado; sem data nova) | Agent out–08/nov/2026 |
 | Hub instalador Windows | **06/04/2027** | Agent **dez/2026–06/04/2027**. Web 2.1 já existe; o EXE é o trabalho. |
 | CSO Transportes desktop | **08/11/2028** | Agent jan–nov/2028 |
 
-Headline de 08/11/**2026** = PDV v4. CSO Frotas nesse dia congela o que já está no ar, inclusive a gestão de frota publicada em 06/10. Sem jornada, app offline nem GPS.
+A headline de GA do PDV v4 em 08/11/**2026** foi recusada em 11/10 e está em reavaliação, sem data nova. O freeze M1 do CSO nessa data permanece: congela o que já está no ar, inclusive a gestão de frota publicada em 06/10. Sem jornada, app offline nem GPS.
 
 **Brincos (não mandam na fila):** Ink PWA = Tab; **sem GA com Agent** até folga do núcleo (**não antes de 2028**). Helianto = **30/12/2029** (Agent 2029; cede se o CSO precisar do ano). RU 18/06/2027 = Garagem sem Agent. PIX Split = papel até o Hub no ar.
 
@@ -44,7 +44,7 @@ Headline de 08/11/**2026** = PDV v4. CSO Frotas nesse dia congela o que já est�
 | Período | Dono | O que entrega | Não abrir |
 |---------|------|---------------|-----------|
 | set/2026 | **CSO COE** | COE-B/E publicados (`e193d6d`); sem novo escopo COE em fila | PDV v4 Agent; Ink S1; Hub H |
-| out/2026 → 08/11/2026 | **PDV v4** | Janela A, T032, corte GA | MON-0; reabrir FRO; Ink extract; Hub H; CSO e PDV no mesmo dia |
+| out/2026 → 08/11/2026 | **PDV v4** | T032 com ressalvas; corte recusado em 11/10 | MON-0; reabrir FRO; Ink extract; Hub H; CSO e PDV no mesmo dia |
 | 09/11 → 04/12/2026 | **PDV corte + copy CSO M1** | Freeze M1 (L) | MON-0; V34; Ink S1 |
 | dez/2026 → 06/04/2027 | **Hub** | SQLite + EXE + SHA na loja · **GA 06/04** | Ink S1–S8; reabrir FRO; PIX Split Agent |
 | 08/04 → dez/2027 | — | FRO 24/24 já publicado em 06/10 | Não reabrir o epic; Ink Agent; Helianto; PIX Split Agent; PWA frota |

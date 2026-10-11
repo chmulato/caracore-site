@@ -72,7 +72,7 @@ Patrocínio acima do envelope (segunda cota, on-demand pontual, mês extra) pode
 
 | Janela | Tem de fechar | Se falhar |
 |--------|---------------|-----------|
-| out–08/nov/2026 | PDV v4: T032 + instalador assinado | 08/11 deixa de ser GA. Dezembro **não** é Ink — é Hub, ou o PDV se ainda não cortou. |
+| out–08/nov/2026 | PDV v4: T032 + corte | Materializado em 11/10: o corte foi recusado e 08/11 deixa de ser GA confirmado, sem data nova. Dezembro **não** é Ink — é Hub, ou o PDV se ainda não cortou. |
 | dez/2026–06/04/2027 | Hub: SQLite + EXE + SHA na loja | GA 06/04 falha. FRO começa tarde. |
 | 08/04–dez/2027 | CSO FRO 24/24 | Frotas segue incompleta; não abrir Helianto, Ink Agent nem PIX Split Agent. |
 | jan–nov/2028 | CSO Transportes desktop | Deslizar Helianto; não abrir VT. |

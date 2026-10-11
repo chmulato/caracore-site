@@ -90,9 +90,9 @@ alwaysApply: true
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV v4 — RC6 pública para avaliação; GA previsto 08/11/2026
+## PDV v4 — RC6 pública para avaliação; data de GA em reavaliação
 
-- **Oficina:** `caracore-pdv` `master`, tag `v4.0.0-rc6`, commit `b3358fe`. Pré-release pública **v4.0.0-rc6** (Qute + launcher), 100 vendas finalizadas por mês civil. SHA-256 `a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892`. O ciclo manual completo do roteiro em `homologacao-v4.html#rc6` segue pendente. T032 segue aberto; a publicação não é aceite de GA. A `v4.0.0-rc5` fica no histórico. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
+- **Oficina:** `caracore-pdv` `master` `681ea32`. A tag Git `v4.0.0-rc6` permanece em `b3358fe`. Pré-release pública **v4.0.0-rc6** (Qute + launcher), 100 vendas finalizadas por mês civil. SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`, 178.166.244 bytes. A frente de caixa tem Abrir menu, Fechar menu e Sair. O ciclo manual completo do roteiro em `homologacao-v4.html#rc6` segue pendente. T032 segue aberto; a publicação não é aceite de GA. A `v4.0.0-rc5` fica no histórico. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
 - **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc6.html`.
 - **Loja:** `https://pdv.caracore.com.br/` — `v3.2.7-free` permanece download estável/Latest; RC6 é pré-release de avaliação, não GA; RC5 fica no histórico.

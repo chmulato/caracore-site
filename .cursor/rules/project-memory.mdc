@@ -139,16 +139,18 @@ alwaysApply: true
 
 - **Oficina:** `caracore-ru`, ao lado do BioReator. A loja promete o BioReator 4.0.
 
-## BioReator 4.0 (Community 1.0.0)
+## BioReator 4.0 (Community 1.1.0)
 
 - **Matriz:** `portfolio.html#bioreator40` · ecosistema
-- **Versão:** Community **1.0.0** · Windows x64 · release `bioreator-1.0.0` (MSI e ZIP) · EXE dentro do ZIP · sem assinatura
+- **Versão:** Community **1.1.0**, publicada em 12/10/2026 · Windows x64 · release `bioreator-1.1.0` (MSI e ZIP) · EXE dentro do ZIP · sem assinatura
+- **Novidades:** efeitos configurados de oxigênio, temperatura e pH, fase lag, decaimento celular, término automático por esgotamento do substrato e estimativa de UFC/mL. Valores são simulações, não validação experimental.
+- **Artefatos:** MSI 72.671.232 bytes, SHA-256 `2bb046569776c3b1b55875c234205fe3c6ec20b1996f0c4dd4ae85749f5129ba`; ZIP 73.588.339 bytes, SHA-256 `0b67407604245766d1e68b7e6ab14a6f0dcece839fd08d8992af7cc573bc9d3b`; EXE 524.800 bytes, SHA-256 `13f2ba7161cbdb6842dc6a05657e25ae50cf3c7dbb544791fc4b6a6e910883b2`.
 - **Loja:** https://ru.caracore.com.br/bioreator.html · edições em `download.html#bioreator40` · manual `manual-bioreator.html` · exemplo `exemplo-bioreator.html`
 - **Wiki:** `projeto-bioreator.html` · `bioreator-tecnico.html`
 - **Oficina:** `caracore-ru` (a mesma do RU) · `docs/PLANO_SPRINTS_BIORREATOR.md`
-- **Community:** *Bradyrhizobium japonicum*, batelada, histórico e CSV
+- **Community:** *Bradyrhizobium japonicum*, batelada, histórico e CSV; o 1.1.0 atualiza a cinética.
 - **Premium:** catálogo, batelada alimentada, custos do operador e PDF. Data 18/06/2027. Sem preço e sem PIX. A loja promete um produto
-- **Subdomínio:** `ru.caracore.com.br`. A Community 1.0.0 é a edição atual. A data de 18/06/2027 é a da Premium.
+- **Subdomínio:** `ru.caracore.com.br`. A Community 1.1.0 é a edição atual. A data de 18/06/2027 é a da Premium.
 
 ## Retrô (caracore-retro)
 

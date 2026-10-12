@@ -27,8 +27,8 @@ VISÃO GERAL
   caracore-seed-releases        Vitrine do Seed                             Informa que a aplicação não está disponível
   caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX (Windows); PWA não antes de 2028
   caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br
-  caracore-ru                   Oficina do RU Soberano e do BioReator 4.0  Java 25 + JavaFX; sala RETRO + simulador; BioReator Community 1.0.0
-  caracore-ru-releases          Loja do RU e seção do BioReator 4.0        GitHub Pages: ru.caracore.com.br · release bioreator-1.0.0 (MSI e ZIP)
+  caracore-ru                   Oficina do RU Soberano e do BioReator 4.0  Java 25 + JavaFX; sala RETRO + simulador; BioReator Community 1.1.0
+  caracore-ru-releases          Loja do RU e seção do BioReator 4.0        GitHub Pages: ru.caracore.com.br · release bioreator-1.1.0 (MSI e ZIP)
   caracore-circuito             Oficina do Circuito Ferradura               Curso proprietário de lógica e Python
   caracore-circuito-releases    Loja online e releases Circuito Ferradura   GitHub Pages: circuito.caracore.com.br
   caracore-oidc                 Oficina do Reino OIDC (identidade)          OAuth 2.1 / OIDC; ReinoOIDC.exe
@@ -88,7 +88,7 @@ Produtos com entrega ativa (matriz + loja online)
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
   Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop Windows v2.0.1 (com suporte até a 3.0) · 3.0 em PWA não antes de 2028, substitui o Desktop após importação dos dados (sem DMG/DEB nativos)
   RU Soberano: caracore-ru + caracore-ru-releases. O código de sala fica na oficina. A loja promete o BioReator 4.0.
-  BioReator 4.0: mesma oficina. Loja: https://ru.caracore.com.br/ (subdomínio do RU; edições em download.html#bioreator40). Community 1.0.0 é a edição atual, Windows x64, MSI e ZIP na release bioreator-1.0.0, sem assinatura. O EXE fica dentro do ZIP. Premium em 18/06/2027, sem preço e sem PIX. A loja promete um produto.
+  BioReator 4.0: mesma oficina. Loja: https://ru.caracore.com.br/ (subdomínio do RU; edições em download.html#bioreator40); Central: download.caracore.com.br/download.html#bioreator40. Community 1.1.0 publicada em 12/10/2026, Windows x64, MSI e ZIP na release bioreator-1.1.0, sem assinatura. O EXE fica dentro do ZIP. Premium em 18/06/2027, sem preço e sem PIX. A loja promete um produto.
 
 Vitrines restauradas em 10/10/2026 (CNAME → chmulato.github.io; ver MEMORIA_INFRAESTRUTURA_CARACORE.txt)
   Helianto Condominium: caracore-helianto + caracore-helianto-releases. Loja: helianto.caracore.com.br. GA 30/12/2029.

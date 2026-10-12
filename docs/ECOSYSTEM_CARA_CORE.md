@@ -15,7 +15,7 @@ VISÃO GERAL
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
   caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (139 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
-  caracore-pdv                  Oficina — PDV Java web local / v4           v3.2.7-free estável; pré-release pública v4.0.0-rc6; T032/GA 08/11/2026; planos em PlanoLicencaService
+  caracore-pdv                  Oficina — PDV Java web local / v4           v3.2.7-free estável; RC6 pública, RC7 QA local; T032 aberto, GA em reavaliação sem data nova; planos em PlanoLicencaService
   caracore-pdv-releases         Loja — PDV Java web local                   pdv.caracore.com.br · CTA Baixar Free (3.2.7) · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
   caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases

@@ -7,6 +7,7 @@
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
 > **Cursor:** `.cursor/rules/ecosystem-cara-core.mdc` aponta para este ficheiro.
 > **Checkpoint Hub:** 08/10/2026 — pré-release Windows `v2.1.0-rc1.2` na loja, na matriz e na central de downloads (instalador e ZIP, unsigned). Aceite da QA desta build ainda pendente. GA 06/04/2027. Retomada: `caracore-hub/docs/contexto-rapido.md`.
+> **Checkpoint PDV — 11/10/2026, 22:27 BRT:** público = Free `v3.2.7-free` estável e RC6 pré-release (build 11/10, SHA `0c00b24b…80d5325`, Windows 10/11 x64 + Edge, Java 25 incluído, sem JDK/Python instalado). RC7 somente em homologação local, sem release; checklist final 1/10 concluído, próximo P1.3. Retomada: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` e `caracore-pdv/docs/relatorio-rc7.md`; commits locais da oficina `1695594` e `0a15958`. Preservar QA/banco/perfil sob `target` antes de clean. GA em reavaliação, sem data nova; PERF congeladas. Ajustes de coerência nos checkouts da loja PDV, central e matriz ainda não publicados; não presumir deploy.
 
 ---
 
@@ -144,7 +145,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Blog Christian Mulato** | `caracore-personal` | — | `personal.caracore.com.br` | Editorial / 268 artigos / RSS |
 | **Wiki Institucional** | `caracore-wiki` | — | `wiki.caracore.com.br` | HTML5 / Multi-persona |
 | **Artigos Retrô** | `caracore-retro` | — | `retro.caracore.com.br` | Editorial / 139 artigos |
-| **PDV Desktop (Java)** | `caracore-pdv` | `caracore-pdv-releases` | `pdv.caracore.com.br` | Java 25 · Quarkus · SQLite · Free `v3.2.7-free` (navegador `localhost:8080/login`) · v4 RC5 Qute pré-release |
+| **PDV Desktop (Java)** | `caracore-pdv` | `caracore-pdv-releases` | `pdv.caracore.com.br` | Java 25 · Quarkus · SQLite · Free `v3.2.7-free` (navegador `localhost:8080/login`) · v4 RC6 pública, RC7 QA local |
 | **CaraCore PDV (Rust)** | `caracore-pdv-rust` | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | `pdv-rust.caracore.com.br` + [Releases](https://github.com/chmulato/caracore-rust-pdv-releases/releases) | Rust · Tauri 2 · React · SQLite |
 | **CSO Frotas (Web)** | `caracore-cso-quarkus` | `caracore-cso-releases` (loja única · clone `D:\onedrive\dev\caracore-cso-releases`) | Aplicação: `cso.caracore.com.br` · Loja: `cso-transp.caracore.com.br` | Java 21 · Quarkus · PostgreSQL · Qute/HTMX |
 | **CSO Transportes (Desktop)** | `caracore-cso-transportes` (oficina **sem** URL/copy de loja) | `caracore-cso-releases` (a **mesma** loja) | Loja: `cso-transp.caracore.com.br` · GA **08/11/2028** | Quarkus · JavaFX · Vue 3 · SQLite |

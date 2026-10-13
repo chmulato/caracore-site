@@ -54,7 +54,7 @@ alwaysApply: true
 | **RU** | caracore-ru + *-releases | Simulador RETRO | https://ru.caracore.com.br/ |
 | **Circuito** | caracore-circuito + *-releases | Curso e demo de console · `v2.0.24` (08/10/2026) · EXE Windows sem assinatura | https://circuito.caracore.com.br/ |
 | **OIDC** | caracore-oidc + *-releases | Reino OIDC Edição Free `v2.0.1-free`; três Eras gratuitas para estudo pessoal, sem certificado digital. A edição paga está em desenvolvimento; a loja não combina PIX nesta etapa. A página de download oferece só essa tag | https://oidc.caracore.com.br/ · https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.1-free |
-| **Seed** | caracore-seed + *-releases | Ferramenta interna (vitrine) | https://seed.caracore.com.br/ |
+| **Seed** | caracore-seed + *-releases | Piloto local gratuito MIT; candidato Windows x64 0.1.3 aguarda homologação independente e teste em perfil limpo; por convite, sem download público; Linux fora desta etapa; sem monitoramento remoto de heartbeats | https://seed.caracore.com.br/ |
 | **Área 51** | caracore-area51 + *-releases | Consultoria | https://area51.caracore.com.br/ |
 | **CSO** | caracore-cso-quarkus (Frotas) + caracore-cso-transportes (Desktop 2028, **sem loja**) + loja `D:\onedrive\dev\caracore-cso-releases` | Home da loja = conversão Frotas hoje; landing app com JSON-LD; um produto em 08/11/2028; **≠ GPS** | App: https://cso.caracore.com.br/ · Loja: https://cso-transp.caracore.com.br/ |
 | **MKT** | caracore-mkt · caracore-mkt-releases · caracore-tools | Ferramenta interna · vitrine gratuita · não vendemos | https://mkt.caracore.com.br/ · Sala: https://tools.caracore.com.br/sala/ |

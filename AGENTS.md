@@ -18,7 +18,7 @@
 A Cara Core Informática desenvolve soluções sob o modelo de **Engenharia B2B**, **Código Transparente no Ambiente do Cliente** e a filosofia do **Bunker Digital**:
 - **Offline-First & Soberania de Dados:** Prioridade para persistência local (SQLite / arquivos locais) onde a operação do cliente nunca é interrompida por instabilidades de rede ou nuvem.
 - **FinOps & Abordagem Híbrida Pragmática:** A nuvem é utilizada para colaboração, captação e telemetria gerencial, sem onerar o cliente com custos recorrentes desnecessários.
-- **Transparência Radical:** O que está pronto é vendido; o que está em desenvolvimento é claramente rotulado como *Garagem*, *Piloto* ou *Roadmap*; ferramentas internas (como o Seed) são declaradas sem falsas promessas de download.
+- **Transparência Radical:** O que está pronto é vendido; o que está em desenvolvimento é claramente rotulado como *Garagem*, *Piloto* ou *Roadmap*. Não anuncie instaladores, acesso ao código ou disponibilidade pública antes de confirmar publicação.
 
 ### Produtos principais (núcleo) e brincos
 
@@ -160,7 +160,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Helianto Condominium** | `caracore-helianto` | `caracore-helianto-releases` | `helianto.caracore.com.br` | Java 25 · Spring Boot 4 · React · GA **30/12/2029** · vitrine no ar |
 | **RU Soberano** | `caracore-ru` | `caracore-ru-releases` | `ru.caracore.com.br` | Java 25 · JavaFX · SQLite · código de sala na oficina · a loja promete o BioReator |
 | **BioReator 4.0** | `caracore-ru` (mesma oficina) | `caracore-ru-releases` | `ru.caracore.com.br` | Java 25 · JavaFX · SQLite · Windows · **Community 1.1.1** publicada em 13/10/2026. Download na release `bioreator-1.1.1`: MSI e ZIP portátil, sem assinatura. Distingue biomassa viável/total, calcula P/V com volume líquido e registra critérios de término. O EXE fica dentro do ZIP. Premium em 18/06/2027, sem preço e sem PIX. A loja promete um produto |
-| **Cara Core Seed** | `caracore-seed` | `caracore-seed-releases` | `seed.caracore.com.br` | Ferramenta interna (sem download) |
+| **Cara Core Seed** | `caracore-seed` | `caracore-seed-releases` | `seed.caracore.com.br` | Piloto local gratuito sob MIT; candidato Windows x64 `0.1.3` com testes automatizados aprovados, aguardando homologação independente/perfil limpo; fechado por convite, sem download público; Linux fora desta etapa; sem monitoramento remoto de heartbeats |
 | **Cara Core MKT / Sala** | `caracore-mkt` / `caracore-tools` | `caracore-mkt-releases` | `mkt.caracore.com.br` · Sala: `tools.caracore.com.br/sala/` | Ferramenta interna · vitrine gratuita · não vendemos |
 | **Central de Downloads** | — | `caracore-loja` | `download.caracore.com.br` | HTML5 / Vanilla CSS / Hub Unificado |
 
@@ -173,7 +173,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer ao setup unificado:
 * **Python Centralizado:** Usar sempre o interpretador em `D:\dev\.venv\Scripts\python.exe`.
 * **Maven Centralizado:** Usar o wrapper em `D:\onedrive\dev\.mvn\bin\mvn.cmd` e o repositório em `D:\onedrive\dev\.m2\repository`.
-* **Versões Java:** mapa canónico [`APPS_JAVA_VERSION.md`](APPS_JAVA_VERSION.md). PDV (Free `v3.2.7`; v4 pré-release pública `4.0.0-rc6`) **25** · CSO Frotas **21** · CSO Transportes **25** · Hub **25** · Ink **25** · Helianto **25** · RU **25** · Seed **17**. Nesta máquina o `JAVA_HOME` padrão é o JDK 21 (`C:\Program Files\Java\jdk21.0.11_10`); Seed usa `C:\Program Files\Java\jdk-17`; as aplicações 25 usam `C:\Program Files\Java\jdk-25.0.3_9`.
+* **Versões Java:** mapa canónico [`APPS_JAVA_VERSION.md`](APPS_JAVA_VERSION.md). PDV (Free `v3.2.7`; v4 pré-release pública `4.0.0-rc6`) **25** · CSO Frotas **21** · CSO Transportes **25** · Hub **25** · Ink **25** · Helianto **25** · RU **25** · Seed **25**. Nesta máquina o `JAVA_HOME` padrão é o JDK 21 (`C:\Program Files\Java\jdk21.0.11_10`); Seed e as aplicações 25 usam `C:\Program Files\Java\jdk-25.0.3_9`.
 * **Script de Ativação:** `python D:\dev\bootstrap_env.py`.
 
 ---
@@ -205,7 +205,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
    - As lojas (`*.caracore.com.br`) ficam com vitrine, download e canal de feedback. URLs antigas `/wiki/` nas lojas redirecionam para o portal.
    - CSO: aplicação em `cso.caracore.com.br`; vitrine em `cso-transp.caracore.com.br`; alinhamento em `projeto-cso.html`.
 5. **Cara Core Seed:**
-   - Produto de licenciamento interno. A vitrine pública informa de forma honesta que o aplicativo não está em oferta aberta.
+   - Piloto local gratuito sob MIT para gerir clientes/licenças; o próprio Seed não exige licença. Candidato Windows x64 `0.1.3`: testes automatizados aprovados, homologação independente e teste em perfil limpo pendentes. Piloto fechado por convite, sem download público; nenhum instalador foi enviado ou publicado. Linux fica fora desta etapa até build e smoke nativos. Não anunciar acesso público à oficina; não há checkout nem pagamento real nem monitoramento remoto de heartbeats. Primeiro acesso `admin`/`admin`, troca obrigatória para senha de exatamente 8 caracteres com confirmação e chave de recuperação. Não orientar a apagar o arquivo de credenciais para recuperar senha. Nunca publicar/distribuir o candidato antes do aceite; os pacotes serão unsigned, sem desativar as proteções do Windows.
 
 ---
 

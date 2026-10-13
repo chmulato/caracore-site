@@ -34,7 +34,7 @@ PRODUTOS EM FOCO
   6  Cara Core Hub                   hub.caracore.com.br        B2B / sob consulta
   7  Suporte Área 51                 area51.caracore.com.br     serviço institucional
   8  Ink Agenda                      ink.caracore.com.br        v2.0.0 Windows · PWA não antes de 2028
-  9  CaraCore Seed                   seed.caracore.com.br       app não disponível (interno)
+  9 CaraCore Seed                   seed.caracore.com.br       piloto local gratuito MIT em validação; sem instalador publicado
 
 Garagem (portfólio + loja no ar):
  10  RU Soberano                       ru.caracore.com.br         lanç. 18/06/2027 · R$ 29,90
@@ -114,8 +114,8 @@ VALIDAÇÃO POR PRODUTO (resumo)
 
 ### 2.8 Seed
 
-  Matriz          OK   portfolio#caracore-seed (sem download/compra)
-  Loja            OK   mensagem "aplicação não disponível"
+  Matriz: portfolio#caracore-seed apresenta piloto gratuito e distribuição fechada por convite; sem link de download público.
+  Loja            OK   informa piloto Windows por convite; Linux aguarda build e smoke nativos.
 
 
 ### 2.9 Ink Agenda

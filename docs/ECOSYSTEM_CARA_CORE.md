@@ -24,7 +24,7 @@ VISÃO GERAL
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
   caracore-seed                 Oficina do Cara Core Seed                   Piloto local MIT; Java 25; candidato Windows 0.1.3 em homologação independente
-  caracore-seed-releases        Vitrine do Seed                             Piloto fechado por convite; sem download público; oficina sem visibilidade pública confirmada
+  caracore-seed-releases Vitrine do Seed Piloto público aberto para avaliação; release Windows 0.1.3 unsigned; homologação pendente; oficina sem visibilidade pública confirmada
   caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX (Windows); PWA não antes de 2028
   caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br
   caracore-ru                   Oficina do RU Soberano e do BioReator 4.0  Java 25 + JavaFX; sala RETRO + simulador; BioReator Community 1.1.1
@@ -95,7 +95,7 @@ Vitrines restauradas em 10/10/2026 (CNAME → chmulato.github.io; ver MEMORIA_IN
   Cara Core MKT: caracore-mkt + caracore-mkt-releases. Loja: mkt.caracore.com.br. Sala: tools.caracore.com.br/sala/. Vitrine gratuita; não vendemos.
 
 Pilotos em validação
-  Cara Core Seed: piloto local gratuito sob MIT, sem ativação do próprio Seed; sem checkout nem monitoramento remoto de heartbeats. Loja: seed.caracore.com.br. Candidato Windows 0.1.3 passou nos testes automatizados; homologação independente e teste em perfil limpo pendentes. Piloto fechado por convite, sem download público; Linux fica fora desta etapa. A oficina não está confirmada como pública.
+  Cara Core Seed: piloto público local gratuito sob MIT, sem ativação do próprio Seed; sem convite, checkout nem monitoramento remoto de heartbeats. Loja: seed.caracore.com.br. Candidato Windows 0.1.3 publicado para avaliação, com SHA-256 verificado; homologação independente e teste em perfil limpo pendentes. Instalador unsigned; Linux fica fora desta etapa. A oficina não está confirmada como pública.
 
 Serviço institucional
   Suporte Área 51: caracore-area51 + caracore-area51-releases. Loja: area51.caracore.com.br

@@ -13,7 +13,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Passo | Ação |
 |-------|------|
-| 0 | Ler `AGENTS.md` na raiz (**principais** PDV · CSO · Hub; o resto é **brinco**, bloco **Frentes até 08/11/2026** e **Cota Cursor**) |
+| 0 | Ler `AGENTS.md` na raiz (**principais** PDV · CSO · Hub; o resto é **brinco**, bloco **Marcos de transição PDV/CSO** e **Cota Cursor**) |
 | 0b | Confirmar o **dono do ciclo** em `docs/CALENDARIO_COTA_CURSOR.md`. Não abrir Agent pesado noutro produto. |
 | 0c | Se a tarefa muda um **GA público**, o **dono do ciclo** ou abre Agent noutro produto → ler `docs/RISCOS_ECOSSISTEMA.md` e aplicar a coluna «Decisão». |
 | 0d | Antes de compilar Java, ler `D:\onedrive\dev\APPS_JAVA_VERSION.md` e usar o JDK daquela aplicação |
@@ -91,7 +91,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Java (`caracore-pdv-releases`)
 
 | URL | https://pdv.caracore.com.br/ |
-| Canal | `v3.2.8-free` (download estável, Latest). Download público da pré-release = `v4.0.0-rc6` (SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; fonte `master` `681ea32`; tag Git em `b3358fe`). Não é GA nem substitui o Free. |
+| Canal | `v3.2.8-free` (última versão da linha 3.2.x; manutenção restrita até 08/11/2026, sem novos recursos). Download público da pré-release = `v4.0.0-rc6` (SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; fonte `master` `681ea32`; tag Git em `b3358fe`). RC7 em QA local. Seguir o ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. |
 | Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy pode informar recibo digital por link e PDF, sempre sem valor fiscal. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
 | CTA | **Baixar Free (3.2.8)**. Premium via demonstração (`consultoria.html`). |
 | Quem entra | `admin` / `admin` (troca obrigatória). **1 operador** no Free. Copy: `download.html#perfis`. Não usar senhas do Rust. |
@@ -111,7 +111,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
 
-**Estado (2026-10-10):** canal maduro da **loja** = `v3.2.7-free` **publicado** (estoque na venda, turno com X/Z, saldo pelo valor da venda, recibo offline com itens e PDF; shell PDV coluna + caixa registradora; Restrito empilhado; login honesto pós-troca; navegador `localhost:8080/login`; escuta em `127.0.0.1`). Código Free = tag `v3.2.7-free` / `hotfix/3.2.7-free` — **não** o `master`. Histórico imediato: `v3.2.6-free` / `feature/free-3.2.6-pdv-ux`. Download público da pré-release = `v4.0.0-rc6` (ZIP unsigned Windows x64, 178.166.244 bytes, SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`). Fonte: `master` `681ea32`. A tag Git permanece em `b3358fe`. Não é GA nem Latest. A `v4.0.0-rc5` fica no histórico. O ciclo manual completo do roteiro em `homologacao-v4.html#rc6` segue pendente; T032 segue aberto. A data 08/11/2026 está em reavaliação (`PLANO_LANCAMENTO_V4.md`). `PERF-001–007` congeladas. Copy Free sem PIX integrado nem NF-e/NFC-e; recibo digital por link e PDF, sempre sem valor fiscal. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
+**Estado (2026-10-14):** Free `v3.2.8-free` é a versão final estável da linha 3.2.x, publicada para Windows/Linux/macOS; manutenção somente até 08/11/2026 e sem novos recursos ou feature branches. Correções nessa linha apenas se críticas, impeditivas à operação ou necessárias à migração; verificar aplicação à v4 quando pertinente. Download público da pré-release = `v4.0.0-rc6` (ZIP unsigned Windows x64, 178.166.244 bytes, SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`). Fonte: `master` `681ea32`; a tag Git permanece em `b3358fe`. RC7 está em QA local, sem publicação. O ciclo completo de homologação segue pendente. 08/11 encerra a manutenção 3.2.8, não é GA da v4; a sucessão passa pelo ciclo de RCs e depende dos gates/aceites formais. `PERF-001–007` congeladas. Copy Free sem PIX integrado nem NF-e/NFC-e; recibo digital por link e PDF, sempre sem valor fiscal. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
 
 ---
 

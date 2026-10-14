@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "14/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 14/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; o estável publicado é a v3.2.8-free. A v4.0.0-rc5 fica no histórico. O corte de GA foi recusado e a data 08/11/2026 está em reavaliação, sem nova data. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
+    "Leitura de 14/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.8 é a versão final da linha 3.2.x, em manutenção até 08/11/2026. Depois, a transição é pela PDV v4 via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; a v4.0.0-rc5 fica no histórico. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -25,23 +25,23 @@ window.CARACORE_PLANNING = {
    * text permanece o parágrafo-fonte. lead + detail são as duas linhas públicas; tip vai para hover e ficha.
    */
   EXEC: {
-    owner: { period: "out–08/nov/2026", who: "PDV v4" },
-    ownerNext: { period: "09/nov–04/dez/2026", who: "PDV corte + copy CSO M1" },
+    owner: { period: "out–08/nov/2026", who: "PDV v4 RCs + transição Free 3.2.8" },
+    ownerNext: { period: "09/nov–04/dez/2026", who: "PDV v4 RCs + copy CSO M1" },
     next: {
       when: "08/11/2026",
-      what: "Decisão de GA do PDV Java v4",
-      gate: "T032",
-      action: "Concluir e aceitar o roteiro operacional formal",
+      what: "Encerramento da manutenção da Free PDV 3.2.8",
+      gate: "Transição para o ciclo de RCs v4",
+      action: "Continuar homologação; promover GA somente após aprovação formal",
     },
     flags: [
       {
         id: "pdv-java",
         kind: "risco",
-        title: "PDV Java · pré-release v4.0.0-rc6",
-        lead: "A pré-release pública é a v4.0.0-rc6. O estável publicado é a v3.2.8-free.",
-        detail: "Corte de GA recusado · 08/11 em reavaliação",
-        tip: "T032 permanece aberto e o corte foi recusado. Não anunciar nova data de GA até concluir a reavaliação.",
-        text: "Pré-release pública v4.0.0-rc6, SHA-256 a2ec0d8019e8f492369aaf6aa2de40b96904b72e87193d5933c212f4c4adf892. Estável v3.2.8-free, publicada e Latest. A v4.0.0-rc5 fica no histórico. T032 aberto; o corte de GA foi recusado e 08/11 está em reavaliação, sem nova data.",
+        title: "PDV Java · transição 3.2.8 para v4",
+        lead: "A v3.2.8-free é a versão final da linha 3.2.x, com encerramento em 08/11. A v4.0.0-rc6 é pré-release pública; RC7 está em QA local.",
+        detail: "A sucessão v4 segue pelas RCs · GA condicionado aos gates e aceites",
+        tip: "08/11 encerra a manutenção da Free 3.2.8, não é data de GA v4. Promover GA somente após aprovação formal das RCs.",
+        text: "Pré-release pública v4.0.0-rc6, SHA-256 0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325. Estável v3.2.8-free, versão final da linha 3.2.x, em manutenção até 08/11/2026. RC7 em QA local. A v4 segue no ciclo de RCs; 08/11 encerra a manutenção da 3.2.8, não é data de GA. T032 e os aceites formais permanecem pendentes.",
       },
       {
         id: "cso",
@@ -83,7 +83,7 @@ window.CARACORE_PLANNING = {
     paidNote:
       "A cota não acumula. Mês ocioso ainda é cobrado. Mês cheio não empresta crédito ao seguinte. Tab e autocomplete não entram nesta conta; o que queima o envelope é Agent (Flyway, auth, extract, HTTP).",
     covers: [
-      { when: "08/11/2026", item: "PDV Java v4 (GA condicionado ao T032)", spend: "Agent out–nov/2026" },
+      { when: "08/11/2026", item: "Encerramento da Free PDV 3.2.8; v4 segue no ciclo de RCs", spend: "Agent out–nov/2026" },
       { when: "06/04/2027", item: "Hub instalador Windows", spend: "Agent dez/2026–06/04/2027" },
       { when: "08/04–dez/2027", item: "Sem dono de Agent", spend: "FRO 24/24 já publicado em 06/10" },
       { when: "08/11/2028", item: "CSO Transportes desktop", spend: "Agent jan–nov/2028" },
@@ -119,7 +119,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 74,
-      note: "Free 3.2.8-free estável e Latest. Pré-release pública v4.0.0-rc6, com SHA-256 publicado. A v4.0.0-rc5 fica no histórico. O corte de GA foi recusado; 08/11/2026 está em reavaliação, sem nova data. Freeze M1 do CSO ainda não fechado. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
+      note: "Free 3.2.8-free é a versão final da linha 3.2.x e encerra em 08/11/2026. Pré-release pública v4.0.0-rc6, com SHA-256 publicado; RC7 em QA local. A sucessão v4 segue pelo ciclo de RCs e o GA depende de gates e aceites formais, sem data automática em 08/11. Freeze M1 do CSO ainda não fechado. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
     },
     {
       id: "y2027",
@@ -153,7 +153,7 @@ window.CARACORE_PLANNING = {
       state: "risk",
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
-      hundred: "Canal estável v3.2.8-free. Pré-release pública v4.0.0-rc6. Corte de GA recusado; data 08/11/2026 em reavaliação.",
+      hundred: "Última versão da linha 3.2.x: v3.2.8-free, manutenção até 08/11/2026. Pré-release pública v4.0.0-rc6; sucessão pelo ciclo de RCs, com GA somente após os gates e aceites formais.",
       now: "Pré-release pública v4.0.0-rc6, com SHA publicado. Estável v3.2.8-free, Latest. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
       history: [
         { m: "2026-06", p: 62 },

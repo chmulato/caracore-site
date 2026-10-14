@@ -25,8 +25,8 @@ O valor vigente sai de `AGENTS.md` e de `docs/ECOSYSTEM_MEMORIA.md`. As linhas I
 
 | Frente | Valor vigente |
 |---|---|
-| PDV Java estável | `v3.2.8-free` · CTA **Baixar Free (3.2.8)** · Latest; QA manual no Edge/leitor ainda pendente, publicação autorizada com ressalva |
-| PDV Java v4 | Pré-release pública `v4.0.0-rc6` (SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; fonte `caracore-pdv` `master` `681ea32`; a tag Git permanece em `b3358fe`). Não é Latest. A `v4.0.0-rc5` fica no histórico. Ciclo manual completo do roteiro ainda pendente. A data 08/11/2026 está em reavaliação |
+| PDV Java estável | `v3.2.8-free` · última versão Free 3.2.x · CTA **Baixar Free (3.2.8)** · Latest; manutenção restrita até 08/11/2026; QA manual no Edge/leitor ainda pendente, publicação autorizada com ressalva |
+| PDV Java v4 | Pré-release pública `v4.0.0-rc6` (SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; fonte `caracore-pdv` `master` `681ea32`; a tag Git permanece em `b3358fe`). Não é Latest. RC7 está em QA local. Ciclo manual completo do roteiro ainda pendente. A v4 segue pelas RCs; GA somente após gates/aceites, sem data automática em 08/11 |
 | PDV Rust | Piloto `v0.1.4` |
 | CSO Frotas | FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Freeze M1 em 08/11/2026. A janela abr–dez/2027 não reabre |
 | CSO Transportes | GA 08/11/2028 |

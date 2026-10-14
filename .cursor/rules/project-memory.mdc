@@ -90,13 +90,13 @@ alwaysApply: true
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV v4 — RC6 pública para avaliação; data de GA em reavaliação
+## PDV v4 — RC6 pública para avaliação; ciclo de RCs sem data presumida de GA
 
 - **Oficina:** `caracore-pdv` `master` `681ea32`. A tag Git `v4.0.0-rc6` permanece em `b3358fe`. Pré-release pública **v4.0.0-rc6** (Qute + launcher), 100 vendas finalizadas por mês civil. SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`, 178.166.244 bytes. A frente de caixa tem Abrir menu, Fechar menu e Sair. O ciclo manual completo do roteiro em `homologacao-v4.html#rc6` segue pendente. T032 segue aberto; a publicação não é aceite de GA. A `v4.0.0-rc5` fica no histórico. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
 - **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc6.html`.
 - **Loja:** `https://pdv.caracore.com.br/` — `v3.2.8-free` é o download estável/Latest; RC6 é pré-release de avaliação, não GA; RC5 fica no histórico.
-- **Regra:** manter `v3.2.8-free` como download principal até o v4 ser homologado como GA. Não misturar pasta nem data.
+- **Regra:** `v3.2.8-free` é a versão final da linha 3.2.x e permanece como download principal durante sua manutenção restrita até 08/11/2026. A v4 avança pelo ciclo de RCs; GA somente após aprovação formal dos gates e aceites, sem promoção automática nessa data. Não misturar pastas, versões ou ciclos.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.4)
 

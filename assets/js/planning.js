@@ -45,9 +45,9 @@
   };
 
   const GLOSSARY = [
-    ["v4.0.0-rc6", "Pré-release pública da linha v4. SHA-256 publicado. O estável continua a v3.2.7-free. O GA de 08/11/2026 depende do T032."],
+    ["v4.0.0-rc6", "Pré-release pública da linha v4. SHA-256 publicado. O estável é a v3.2.8-free. O corte de GA foi recusado; a data 08/11/2026 está em reavaliação."],
     ["v4.0.0-rc5", "Pré-release anterior. Fica no histórico. O download público da linha v4 é a v4.0.0-rc6."],
-    ["v3.2.7-free", "Versão estável do PDV Java Free, em Windows, Linux e macOS."],
+    ["v3.2.8-free", "Versão estável do PDV Java Free, em Windows, Linux e macOS."],
     ["v2.1.0-rc1.2", "Pré-release Windows para avaliação, com instalador e ZIP. O lançamento estável do Hub está previsto para 06/04/2027."],
     ["v2.0.2-free", "Edição Free do Reino OIDC. As três Eras são gratuitas para estudo pessoal. A edição paga está em desenvolvimento, sem PIX nesta etapa."],
     ["T032", "Gate interno do roteiro operacional."],

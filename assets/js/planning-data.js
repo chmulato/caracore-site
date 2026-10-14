@@ -14,10 +14,10 @@
  */
 window.CARACORE_PLANNING = {
   AS_OF: "2026-10",
-  AS_OF_LABEL: "13/10/2026",
+  AS_OF_LABEL: "14/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 13/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; o estável continua a v3.2.7-free. A v4.0.0-rc5 fica no histórico. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
+    "Leitura de 14/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. O ciclo de Agent até 08/11 é o PDV v4. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; o estável publicado é a v3.2.8-free. A v4.0.0-rc5 fica no histórico. O corte de GA foi recusado e a data 08/11/2026 está em reavaliação, sem nova data. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -119,7 +119,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 74,
-      note: "Free 3.2.7-free estável. Pré-release pública v4.0.0-rc6, com SHA-256 publicado. A v4.0.0-rc5 fica no histórico. GA de 08/11 condicionado ao T032. Freeze M1 do CSO ainda não fechado. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
+      note: "Free 3.2.8-free estável e Latest. Pré-release pública v4.0.0-rc6, com SHA-256 publicado. A v4.0.0-rc5 fica no histórico. O corte de GA foi recusado; 08/11/2026 está em reavaliação, sem nova data. Freeze M1 do CSO ainda não fechado. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
     },
     {
       id: "y2027",
@@ -153,8 +153,8 @@ window.CARACORE_PLANNING = {
       state: "risk",
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
-      hundred: "Canal estável v3.2.7-free. Pré-release pública v4.0.0-rc6. GA em 08/11/2026, condicionado ao T032.",
-      now: "Pré-release pública v4.0.0-rc6, com SHA publicado. Estável v3.2.7-free. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
+      hundred: "Canal estável v3.2.8-free. Pré-release pública v4.0.0-rc6. Corte de GA recusado; data 08/11/2026 em reavaliação.",
+      now: "Pré-release pública v4.0.0-rc6, com SHA publicado. Estável v3.2.8-free, Latest. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
       history: [
         { m: "2026-06", p: 62 },
         { m: "2026-07", p: 68 },

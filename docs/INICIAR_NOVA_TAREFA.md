@@ -91,9 +91,9 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 ### Loja PDV Java (`caracore-pdv-releases`)
 
 | URL | https://pdv.caracore.com.br/ |
-| Canal | `v3.2.7-free` (download estável, Latest). Download público da pré-release = `v4.0.0-rc6` (SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; fonte `master` `681ea32`; tag Git em `b3358fe`). Não é GA nem substitui o Free. |
+| Canal | `v3.2.8-free` (download estável, Latest). Download público da pré-release = `v4.0.0-rc6` (SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; fonte `master` `681ea32`; tag Git em `b3358fe`). Não é GA nem substitui o Free. |
 | Planos | Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; UI no navegador; sem PIX integrado e sem NF-e. Copy pode informar recibo digital por link e PDF, sempre sem valor fiscal. Premium R$ 79,90/mês. Fonte: `PlanoLicencaService`. |
-| CTA | **Baixar Free (3.2.7)**. Premium via demonstração (`consultoria.html`). |
+| CTA | **Baixar Free (3.2.8)**. Premium via demonstração (`consultoria.html`). |
 | Quem entra | `admin` / `admin` (troca obrigatória). **1 operador** no Free. Copy: `download.html#perfis`. Não usar senhas do Rust. |
 | Oficina | `caracore-pdv` |
 | Matriz | `#caracore-pdv` |

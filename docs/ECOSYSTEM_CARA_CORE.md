@@ -1,8 +1,9 @@
 # Ecossistema Cara Core — mapa de repositórios
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 10/10/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 14/10/2026).
 
 **Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `AGENTS.md` na raiz do workspace.
+**Transição do PDV:** `v3.2.8-free` é a versão final Free da linha 3.2.x, em manutenção apenas até 08/11/2026. Depois, a sucessão é feita pela PDV v4 através das RCs; GA só após aprovação formal dos gates e aceites, sem data automática em 08/11.
 
 
 ---
@@ -15,7 +16,7 @@ VISÃO GERAL
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
   caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (139 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
-  caracore-pdv                  Oficina — PDV Java web local / v4           v3.2.8-free estável; RC6 pública, RC7 QA local; T032 aberto, GA em reavaliação sem data nova; planos em PlanoLicencaService
+  caracore-pdv                  Oficina — PDV Java web local / v4           v3.2.8-free final da linha 3.2.x (manutenção até 08/11); RC6 pública, RC7 QA local; T032 aberto; v4 avança por RCs, sem GA automático
   caracore-pdv-releases         Loja — PDV Java web local                   pdv.caracore.com.br · CTA Baixar Free (3.2.8) · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
   caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases

@@ -12,7 +12,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
 
   Produto                      Loja online (URL canónica)                              Observação
   ---------------------------- ------------------------------------------------------- ------------------------------------------
-  CaraCore PDV Java (web local) https://pdv.caracore.com.br/                            Oferta estável; canal v3.2.8-free; Win/Linux/macOS; PWA da vitrine
+  CaraCore PDV Java (web local) https://pdv.caracore.com.br/                            Oferta estável final da linha 3.2.x: v3.2.8-free até 08/11/2026; v4 sucede via RCs aprovadas; PWA da vitrine
   CaraCore PDV                 https://pdv-rust.caracore.com.br/                       Loja própria (Pages do repo caracore-rust-pdv-releases)
   (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Mesmo repo da loja; tag v0.1.4. NÃO usar /latest de caracore-pdv-releases (Java)
   Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; web 2.1 concluída na oficina; pré-release Windows v2.1.0-rc1.2 (instalador e ZIP, unsigned); GA instalador Windows 06/04/2027

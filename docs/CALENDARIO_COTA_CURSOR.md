@@ -29,11 +29,12 @@ Sexta: ler Spending, gravar % se o ciclo for de oficina com tracker, cortar o Co
 
 | Marco | Data | Cota |
 |-------|------|------|
-| PDV Java v4 | Data de GA em reavaliação desde 11/10 (corte recusado; sem data nova) | Agent out–08/nov/2026 |
+| PDV Free `v3.2.8` | Encerramento da última versão 3.2.x em **08/11/2026** | Manutenção restrita até a data; sem novas features |
+| PDV Java v4 | Próxima linha, seguindo o ciclo de RCs; GA sem data definida até aceites formais | Agent out/2026 em diante, conforme os gates |
 | Hub instalador Windows | **06/04/2027** | Agent **dez/2026–06/04/2027**. Web 2.1 já existe; o EXE é o trabalho. |
 | CSO Transportes desktop | **08/11/2028** | Agent jan–nov/2028 |
 
-A headline de GA do PDV v4 em 08/11/**2026** foi recusada em 11/10 e está em reavaliação, sem data nova. O freeze M1 do CSO nessa data permanece: congela o que já está no ar, inclusive a gestão de frota publicada em 06/10. Sem jornada, app offline nem GPS.
+08/11/2026 encerra a manutenção de transição da última Free 3.2.x (`v3.2.8`); não é GA da PDV v4. A v4 prossegue pelas RCs, e a promoção a GA depende da aprovação formal dos gates e aceites. O freeze M1 do CSO nessa data permanece: congela o que já está no ar, inclusive a gestão de frota publicada em 06/10. Sem jornada, app offline nem GPS.
 
 **Brincos (não mandam na fila):** Ink PWA = Tab; **sem GA com Agent** até folga do núcleo (**não antes de 2028**). Helianto = **30/12/2029** (Agent 2029; cede se o CSO precisar do ano). RU 18/06/2027 = Garagem sem Agent. PIX Split = papel até o Hub no ar.
 
@@ -44,8 +45,8 @@ A headline de GA do PDV v4 em 08/11/**2026** foi recusada em 11/10 e está em re
 | Período | Dono | O que entrega | Não abrir |
 |---------|------|---------------|-----------|
 | set/2026 | **CSO COE** | COE-B/E publicados (`e193d6d`); sem novo escopo COE em fila | PDV v4 Agent; Ink S1; Hub H |
-| out/2026 → 08/11/2026 | **PDV v4** | T032 com ressalvas; corte recusado em 11/10 | MON-0; reabrir FRO; Ink extract; Hub H; CSO e PDV no mesmo dia |
-| 09/11 → 04/12/2026 | **PDV corte + copy CSO M1** | Freeze M1 (L) | MON-0; V34; Ink S1 |
+| out/2026 → 08/11/2026 | **PDV v4 RCs + transição Free** | Qualificar as RCs; `v3.2.8` encerra em 08/11; sem corte GA nessa data | MON-0; reabrir FRO; Ink extract; Hub H; CSO e PDV no mesmo dia |
+| 09/11 → 04/12/2026 | **PDV v4 RCs + copy CSO M1** | Continuar homologação até aprovação formal; Freeze M1 (L) | MON-0; V34; Ink S1 |
 | dez/2026 → 06/04/2027 | **Hub** | SQLite + EXE + SHA na loja · **GA 06/04** | Ink S1–S8; reabrir FRO; PIX Split Agent |
 | 08/04 → dez/2027 | — | FRO 24/24 já publicado em 06/10 | Não reabrir o epic; Ink Agent; Helianto; PIX Split Agent; PWA frota |
 | jan–nov/2028 | **CSO Transportes** | Desktop bunker **GA 08/11/2028** | Virtual Tracker / GPS; PWA frota; Helianto Agent; Ink Agent |

@@ -1,10 +1,10 @@
 # Cara Core Informática — Guia de Contexto e Memória para IAs (AGENTS.md)
 
 > **Destinado a:** Todas as IAs, assistentes de código e agentes autônomos (Antigravity, Cursor, Copilot, Claude Code, Gemini).  
-> **Data de Atualização:** 14/10/2026 — Free `v3.2.8-free` publicada como Latest em Windows, Linux e macOS; release oficial, hashes e URLs confirmados. Testes automatizados focados: 57, 0 falhas/erros, 1 ignorado; homologação manual completa no Edge/leitor físico ainda pendente, publicação autorizada com essa ressalva. Pré-release v4 `v4.0.0-rc6` permanece separada, sem GA e com a data 08/11/2026 em reavaliação. A linha histórica abaixo registra o estado de 11/10 (`v3.2.7-free` Latest naquela data), não o estado atual.
+> **Data de Atualização:** 14/10/2026 — Free `v3.2.8-free` publicada como Latest em Windows, Linux e macOS; release oficial, hashes e URLs confirmados. Testes automatizados focados: 57, 0 falhas/erros, 1 ignorado; homologação manual completa no Edge/leitor físico ainda pendente, publicação autorizada com essa ressalva. A `v3.2.8-free` é a última versão da linha 3.2.x e encerra em 08/11/2026. Depois, a transição é para a PDV v4 através do ciclo de RCs; não há GA automático nessa data. A linha histórica abaixo registra o estado de 11/10 (`v3.2.7-free` Latest naquela data), não o estado atual.
 > **Atualização BioReator — 12/10/2026:** Community 1.1.0 publicada em `bioreator-1.1.0`, com MSI e ZIP Windows x64, sem assinatura digital. Arquivos e SHA-256 estão alinhados na loja RU, Central de Downloads, matriz e Wiki. A 1.0.0 permanece no histórico.
 > **Atualização BioReator — 13/10/2026:** Community 1.1.1 publicada em `bioreator-1.1.1`, MSI e ZIP Windows x64, sem assinatura digital. Distingue biomassa viável/total, calcula P/V pelo volume líquido e registra o primeiro critério de término em `end_reason`. A loja RU agora inclui manual técnico/critério de fim, fundamentos e exemplo de batelada; a matriz aponta para esses materiais. Hashes: MSI `6eb0dd01006304d78c74f185345711bc8d4e135b03443d2ab583379338b04b21`; ZIP `b36d18a0fae828f359db3c2a6509ad519849e560487d0ebbfaa3c3c85e09e1d7`; EXE dentro do ZIP `88eb22c17b547ded71aed275021bfbbd4121b171cbaba4373dfdca96c11a609a`. A 1.1.0 permanece no histórico.
-> **Atualização PDV Free — 14/10/2026:** `v3.2.8-free` publicada como estável e Latest para Windows, Linux e macOS. Testes automatizados focados: 57 testes, 0 falhas/erros, 1 ignorado. Homologação manual completa no Edge e com leitor físico ainda não concluída; publicação autorizada pelo responsável com essa ressalva. Sem NF-e, NFC-e nem PIX integrado. Fonte: `caracore-pdv` tag `v3.2.8-free` / branch `hotfix/3.2.8-free`.
+> **Atualização PDV Free — 14/10/2026:** `v3.2.8-free` publicada como estável e Latest para Windows, Linux e macOS. É a versão final da linha 3.2.x; manutenção somente até 08/11/2026, sem novos recursos nem branches de feature. Testes automatizados focados: 57 testes, 0 falhas/erros, 1 ignorado. Homologação manual completa no Edge e com leitor físico ainda não concluída; publicação autorizada pelo responsável com essa ressalva. Sem NF-e, NFC-e nem PIX integrado. Fonte: `caracore-pdv` tag `v3.2.8-free` / branch `hotfix/3.2.8-free`.
 > **Workspace Raiz:** `D:\dev` (ou `D:\onedrive\dev`) 
 > **Cópia no Git:** `caracore-site/AGENTS.md` — manter igual a este ficheiro para IAs que clonam só a matriz.  
 > **CNPJ:** 23.969.028/0001-37 — Cara Core Informática 
@@ -27,7 +27,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 
 | Chave | O que é | Status público honesto |
 |---|---|---|
-| **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.8-free`** (100 vendas **por mês**; UI no navegador) · Java pré-release **`v4.0.0-rc6`** (Windows; corte de GA recusado em 11/10, data em reavaliação) · Rust **`v0.1.4`** piloto Windows |
+| **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.8-free`**, versão final da linha 3.2.x (manutenção até 08/11/2026) · Java pré-release **`v4.0.0-rc6`** (Windows; ciclo de RCs, GA só após aprovação formal) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frotas Web + Transportes Desktop (2028) | Gestão de frota FRO 24/24 em produção desde 06/10 (Flyway V33). Freeze M1 em 08/11/2026. Jornada, app offline e GPS ficam depois. **Não é GPS** |
 | **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
 
@@ -49,17 +49,18 @@ Em 09/10/2026 a matriz pública é **GitHub Pages**. A Vercel não é o serviço
 - **Status honesto:** web 2.1 pronta na oficina. O download da loja é a pré-release Windows `v2.1.0-rc1.2` em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.2 (instalador e ZIP, unsigned). Não é GA. Mac e Linux fora desta tag. Não anunciar Amazon/B2W nem o GA de 06/04/2027 como já entregue.
 - **Fontes de retomada:** `caracore-hub/docs/contexto-rapido.md`, `caracore-hub/electron/README.md` e `caracore-hub/scripts/build_hub_exe.ps1`.
 
-### Snapshot 08/09/2026 (ler isto primeiro)
+### Marcos de transição PDV/CSO (base 08/09/2026; atualizado em 14/10/2026)
 
-**Frentes até 08/11/2026 (não são o mesmo lançamento):**
+**Marcos até 08/11/2026 (não são o mesmo lançamento):**
 
 | Frente | O que a data significa | O que não é |
 |---|---|---|
-| **PDV Java v4** | Corte recusado em 11/10. A data 08/11/2026 fica em reavaliação, sem data nova. Plano `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md`. **Código com Cursor: outubro–novembro/2026** (cota). | Não é o Free `v3.2.8-free`; não é copiloto PIX Split; não queimar cota em setembro neste plano |
+| **PDV Java Free 3.2.8** | Última versão da linha Free 3.2.x; encerramento em **08/11/2026**. Até lá, apenas manutenção nos critérios acima. | Não é uma linha para novos recursos nem uma data de GA da v4 |
+| **PDV Java v4** | RC6 é pré-release pública; RC7 segue em QA local. Prosseguir pelo ciclo de RCs; a data de transição GA será definida somente após os gates e aceites. Plano `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md`. **Código com Cursor: outubro–novembro/2026** (cota). | Não é a 3.2.8 nem copiloto PIX Split; não presumir GA em 08/11 |
 | **CSO Gestão de Frotas** | Gestão de frota FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Index `e1e8d63` no ar. Freeze M1 em **08/11/2026** estabiliza o que já está publicado | Não abre jornada, app offline nem GPS. Não é Momento 2 nem Transportes desktop |
 | **CSO Transportes** | — | GA **08/11/2028**. Não usar a data do PDV |
 
-A headline de GA do PDV v4 em 08/11/2026 foi recusada em 11/10 e está em reavaliação. A gestão de frota do CSO já está no ar e o freeze M1 dessa data permanece. Hub = 06/04/2027.
+O marco de 08/11/2026 encerra a linha Free 3.2.8; não é a data de GA da PDV v4. A v4 continua pelas RCs e só será promovida após os gates e aceites. A gestão de frota do CSO já está no ar e o freeze M1 dessa data permanece. Hub = 06/04/2027.
 
 | Canal | O que está no ar | O que ainda não está |
 |---|---|---|
@@ -185,6 +186,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
  - Ambos são sistemas DESKTOP offline-first independentes.
  - NUNCA afirme que o PDV Rust *"substitui"* ou é uma *"migração forçada"* do PDV Java.
  - Java: canal estável **`v3.2.8-free`** (Free: 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; porta 8080 + `/login` no navegador; novo caixa e recibos com subtotal/desconto; sem PIX integrado nem NF-e/NFC-e) · pré-release pública da edição Free **`v4.0.0-rc6`** (até 100 vendas finalizadas por mês civil; não é GA). O T032 segue aberto. Loja: CTA principal = **Baixar Free (3.2.8)**; Premium via demonstração.
+- **Ciclo de vida Java:** `v3.2.8-free` é a última versão Free da linha 3.2.x; até 08/11/2026, somente manutenção crítica, impeditiva à operação ou necessária à migração para v4. Não criar feature branches nem adicionar recursos a essa linha. Após seu encerramento, a evolução e a migração pública seguem as RCs da PDV v4; só promover v4 depois dos gates e aceites, sem presumir GA em 08/11. Avaliar na v4 as correções elegíveis feitas na 3.2.8.
  - Rust piloto `v0.1.4`.
  - V3 é a estratégia de negócio PME (com PIX Split 2027), comum a ambas as tecnologias.
  - Rust: loja própria (`pdv-rust.caracore.com.br`) e entrega própria de artefatos no **mesmo** repositório `chmulato/caracore-rust-pdv-releases` (GitHub Pages + GitHub Releases). Clone local da loja: `caracore-pdv-rust-releases` (nome da pasta ≠ nome no GitHub). Tag atual **`v0.1.4`**. Neste repo Rust, `/releases` e `/latest` são só o piloto. **Não** usar `caracore-pdv-releases` para o Rust (canal Java).
@@ -214,7 +216,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
 
 * **Concluídos / Em Operação:**
  - PDV Java Free (`v3.2.8-free` · 100 vendas/mês · aplicação web local no navegador; caixa redesenhado e recibos detalhados)
- - PDV Java v4 pré-release pública (`v4.0.0-rc6`; corte recusado em 11/10, data em reavaliação)
+ - PDV Java v4 em ciclo de RCs (`v4.0.0-rc6` pública, RC7 em QA local; GA só após aprovação formal dos gates, sem data automática em 08/11)
  - Ink Agenda Desktop (`v2.0.1` estável, publicada em 07/10/2026 — correções do QA da `v2.0.0`)
   - Minerador 4.0 (`v1.2.3` Ouro 4.0)
   - Reino OIDC Free (`v2.0.2-free`): três Eras e progressão narrativa gratuitas para estudo pessoal, sem chave de ativação. A edição paga está em desenvolvimento e a loja não combina PIX nesta etapa.
@@ -222,7 +224,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
   - Suporte Área 51 (Baseline `0.1.0-dev`)
   - CSO Frotas Web (Em produção)
 * **Em Andamento (Garagem / Roadmap Público):**
-  - **CaraCore PDV v4:** corte recusado em 11/10/2026. A data `08/11/2026` fica em reavaliação, sem data nova. Plano `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md`
+  - **CaraCore PDV v4:** prosseguir pelo ciclo de RCs, com GA apenas após gates e aceites formais. `08/11/2026` encerra a manutenção da versão final Free `v3.2.8`; não é data de GA v4. Plano `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md`
   - **CaraCore CSO Frotas:** gestão de frota FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Index pública em `e1e8d63`. Freeze M1 em `08/11/2026` (`caracore-cso-quarkus/docs/plano-lancamento-2026-11-08.md`) estabiliza o que já está no ar, sem jornada, app offline nem GPS.
   - **CaraCore Hub (GA Instalador Windows):** `06/04/2027`
   - **RU Soberano:** o código de sala continua na oficina `caracore-ru`. A loja promete o BioReator 4.0.
@@ -241,14 +243,15 @@ Canónico: [`caracore-site/docs/CALENDARIO_COTA_CURSOR.md`](caracore-site/docs/C
 | Período | Dono do Agent | Marco |
 |---------|---------------|-------|
 | set/2026 | CSO COE | Frotas já no ar |
-| out–08/nov/2026 | **PDV v4** | GA 08/11/2026 |
-| 09/nov–04/dez/2026 | PDV corte + copy CSO M1 | Freeze M1 |
+| até 08/nov/2026 | **PDV Free 3.2.8** | Versão final da linha 3.2.x; manutenção de transição até o encerramento |
+| após o ciclo RC | **PDV v4** | Próxima linha; GA somente após aprovação das RCs e gates, sem data presumida |
+| 09/nov–04/dez/2026 | PDV v4 RCs + copy CSO M1 | Homologação até aprovação formal; Freeze M1 |
 | dez/2026–06/04/2027 | **Hub** | GA Windows 06/04/2027 |
 | 08/04–dez/2027 | — | FRO 24/24 já publicado em 06/10. Não reabrir o epic |
 | 2028 | **CSO Transportes** | GA 08/11/2028 |
 | 2029 | **Helianto** | GA 30/12/2029 |
 
-FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro–08/nov continua com o PDV v4 como dono do Agent. Não abrir MON nem PWA. Dezembro = **Hub**, não Ink. Ink PWA = Tab; Agent só com folga do núcleo (**não antes de 2028**). Momento 2 / PWA frota / Virtual Tracker **não** cabem neste envelope até depois de 2028. RU = Garagem sem mês de Agent. Helianto **não** abre Agent em 2027–2028. Guia se a decisão muda GA ou dono: [`RISCOS_ECOSSISTEMA.md`](caracore-site/docs/RISCOS_ECOSSISTEMA.md).
+FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro–08/nov continua com o PDV v4 e o encerramento da Free 3.2.8 como foco; após isso, continuar as RCs até aprovação. Não abrir MON nem PWA. Dezembro = **Hub**, não Ink. Ink PWA = Tab; Agent só com folga do núcleo (**não antes de 2028**). Momento 2 / PWA frota / Virtual Tracker **não** cabem neste envelope até depois de 2028. RU = Garagem sem mês de Agent. Helianto **não** abre Agent em 2027–2028. Guia se a decisão muda GA ou dono: [`RISCOS_ECOSSISTEMA.md`](caracore-site/docs/RISCOS_ECOSSISTEMA.md).
 
 ---
 
@@ -273,7 +276,7 @@ FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro�
 - Retomada BioReator 4.0 (Community **1.1.1**, publicada em 13/10/2026): oficina `caracore-ru` · plano `docs/PLANO_SPRINTS_BIORREATOR.md` · manual `docs/MANUAL_OPERADOR_BIOREATOR.md` · loja `https://ru.caracore.com.br/bioreator.html` (subdomínio do RU; downloads em `download.html#arquivos`, manual em `manual-bioreator.html`, critérios em `manual-tecnico.html#criterios-fim`, fundamentos em `fundamentos-bioprocesso.html`, exemplo em `exemplo-bioreator.html`; Central `download.caracore.com.br/download.html#bioreator40`; wiki `projeto-bioreator.html` e `bioreator-tecnico.html`). Release `bioreator-1.1.1`, Windows x64 com runtime Java 25, sem assinatura. MSI 72.675.328 bytes, SHA-256 `6eb0dd01006304d78c74f185345711bc8d4e135b03443d2ab583379338b04b21`; ZIP 73.592.557 bytes, SHA-256 `b36d18a0fae828f359db3c2a6509ad519849e560487d0ebbfaa3c3c85e09e1d7`; EXE `BioReator40.exe` 524.800 bytes, SHA-256 `88eb22c17b547ded71aed275021bfbbd4121b171cbaba4373dfdca96c11a609a`, dentro do ZIP. Novidades: biomassa viável/total, P/V pelo volume líquido e primeiro critério de término em `end_reason`; os efeitos configurados de oxigênio, temperatura e pH, fase lag, decaimento celular, encerramento por esgotamento de substrato e estimativa de UFC/mL vêm da 1.1.0. Parâmetros são simulações, não validação experimental. Premium em 18/06/2027, sem preço e sem PIX. A 1.1.0 permanece no histórico.
 - Retomada Ink Agenda 3.0 em PWA (sprints S0–S9; não antes de 2028; nuvem HTTPS + SQLite por estúdio; substitui o Desktop v2 no S9; até lá o Desktop tem suporte e correções 2.0.x): [`caracore-ink/AGENTS.md`](caracore-ink/AGENTS.md) · [`PLANO_PWA.md`](caracore-ink/docs/PLANO_PWA.md) · loja `ink.caracore.com.br/pwa.html`
 
-**Como outras IAs retomam (06/10/2026):** ler este `AGENTS.md` (bloco **Frentes até 08/11/2026** + **Cota Cursor**) → `.cursor/rules/ecosystem-cara-core.mdc` → `caracore-site/docs/CALENDARIO_COTA_CURSOR.md` → `caracore-site/docs/RISCOS_ECOSSISTEMA.md` (se mudar GA ou dono) → `caracore-site/docs/ECOSYSTEM_MEMORIA.md` → `INICIAR_NOVA_TAREFA.md` → oficinas relevantes. **CSO:** gestão de frota FRO 24/24 no ar em 06/10 (`b90d1dc`, Flyway V33). Freeze M1 em 08/11/2026 estabiliza o que já está publicado, sem jornada, app offline nem GPS. Transportes = **08/11/2028**. A aplicação já descreve essa versão. A copy da matriz (`ecosistema.html`, `portfolio.html`), da wiki (`projeto-cso.html`) e da loja `cso-transp` foi alinhada no checkout em 06/10 e **ainda não foi publicada**. **PDV:** Patch Free = checkout `v3.2.7-free` / `hotfix/3.2.7-free`; a pré-release pública da edição Free é a `v4.0.0-rc6`, limitada a 100 vendas finalizadas por mês civil. ZIP em `https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-rc6`; SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; fonte `master` `681ea32`; a tag Git permanece em `b3358fe`. A RC5 fica no histórico. O roteiro público está em `https://pdv.caracore.com.br/homologacao-v4.html#rc6`; o ciclo manual completo no Edge ainda não foi preenchido. O T032 segue aberto. `PERF-001–007` congeladas. ZIP portátil Windows x64 unsigned, MSI não incluído; não desativar proteções do Windows. `v3.2.7-free` permanece estável e Latest. Retomada técnica: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`; não tratar testes de instrumentação como benchmark nem executar nova medição até satisfazer o preflight de baixa carga. **Um produto pesado por ciclo** (US$ 20/mês). Hub: **dez/2026–06/04/2027**. Ink PWA: Tab; **não antes de 2028**. Helianto = **30/12/2029**. Rust piloto = `v0.1.4`. Não misturar pasta, launcher, senha nem banco. Minerador ETE = **v1.2.3**.
+**Como outras IAs retomam (14/10/2026):** ler este `AGENTS.md` (bloco **Marcos de transição PDV/CSO** + **Cota Cursor**) → `.cursor/rules/ecosystem-cara-core.mdc` → `caracore-site/docs/CALENDARIO_COTA_CURSOR.md` → `caracore-site/docs/RISCOS_ECOSSISTEMA.md` (se mudar GA ou dono) → `caracore-site/docs/ECOSYSTEM_MEMORIA.md` → `INICIAR_NOVA_TAREFA.md` → oficinas relevantes. **CSO:** gestão de frota FRO 24/24 no ar em 06/10 (`b90d1dc`, Flyway V33). Freeze M1 em 08/11/2026 estabiliza o que já está publicado, sem jornada, app offline nem GPS. Transportes = **08/11/2028**. A aplicação já descreve essa versão. A copy da matriz (`ecosistema.html`, `portfolio.html`), da wiki (`projeto-cso.html`) e da loja `cso-transp` foi alinhada no checkout em 06/10 e **ainda não foi publicada**. **PDV:** `v3.2.8-free` é a última Free 3.2.x, em manutenção apenas até 08/11; sem novas features/branches, exceto correções críticas, impeditivas ou de migração. A pré-release pública é `v4.0.0-rc6`, limitada a 100 vendas finalizadas por mês civil; a RC7 segue em QA local. ZIP RC6 em `https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-rc6`; SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; fonte `master` `681ea32`; a tag Git permanece em `b3358fe`. A RC5 fica no histórico. O roteiro público está em `https://pdv.caracore.com.br/homologacao-v4.html#rc6`; o ciclo manual completo no Edge ainda não foi preenchido. O T032 segue aberto. `PERF-001–007` congeladas. ZIP portátil Windows x64 unsigned, MSI não incluído; não desativar proteções do Windows. GA v4 somente após aceites formais das RCs, sem data presumida. Retomada técnica: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`; não tratar testes de instrumentação como benchmark nem executar nova medição até satisfazer o preflight de baixa carga. **Um produto pesado por ciclo** (US$ 20/mês). Hub: **dez/2026–06/04/2027**. Ink PWA: Tab; **não antes de 2028**. Helianto = **30/12/2029**. Rust piloto = `v0.1.4`. Não misturar pasta, launcher, senha nem banco. Minerador ETE = **v1.2.3**.
 
 **Atualização Ink Agenda (07/10/2026):** Desktop Windows `v2.0.1` publicada (Latest em `caracore-ink-releases`; correções do QA da v2.0.0; jar ofuscado com ProGuard). Setup SHA256 `49bdd76a10ab97b7902e47b8c393c638ef90ea6b490874224a9734a802f90a6b` · ZIP `3118eac8fafdfa5cc4d3e341969d0cd205d5a29caabbe069e12d7b956a994ff3`. O Desktop continua com suporte (correções 2.0.x, sem funcionalidade nova) até o S9 da 3.0. A 3.0 em PWA (não antes de 2028; nuvem HTTPS, um SQLite por estúdio) substitui o Desktop depois da importação dos dados. Teste das telas do build ofuscado com o dono: `caracore-ink/docs/RELEASE_2.0.1.md`. Retomada: `caracore-ink/AGENTS.md` → `docs/PLANO_PWA.md`.
 

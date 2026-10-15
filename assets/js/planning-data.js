@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "15/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 15/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.8 é a versão final da linha 3.2.x, em manutenção até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4 via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; a v4.0.0-rc5 fica no histórico. O Hub segue em pré-release Windows, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu.",
+    "Leitura de 15/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é uma atualização corretiva da linha 3.2.x, em manutenção até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4 via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; a v4.0.0-rc5 fica no histórico. O Hub segue em pré-release Windows, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -25,11 +25,11 @@ window.CARACORE_PLANNING = {
    * text permanece o parágrafo-fonte. lead + detail são as duas linhas públicas; tip vai para hover e ficha.
    */
   EXEC: {
-    owner: { period: "out–08/nov/2026", who: "PDV v4 RCs + transição Free 3.2.8" },
+    owner: { period: "out–08/nov/2026", who: "PDV v4 RCs + transição Free 3.2.12" },
     ownerNext: { period: "09/nov–04/dez/2026", who: "PDV v4 RCs + copy CSO M1" },
     next: {
       when: "08/11/2026",
-      what: "Encerramento da manutenção da Free PDV 3.2.8",
+      what: "Encerramento da manutenção da Free PDV 3.2.12",
       gate: "Transição para o ciclo de RCs v4",
       action: "Continuar homologação; promover GA somente após aprovação formal",
     },
@@ -37,11 +37,11 @@ window.CARACORE_PLANNING = {
       {
         id: "pdv-java",
         kind: "risco",
-        title: "PDV Java · transição 3.2.8 para v4",
-        lead: "A v3.2.8-free é a versão final da linha 3.2.x, com encerramento em 08/11. A build 2026-10-14.3 foi publicada excepcionalmente com gates pendentes.",
+        title: "PDV Java · transição 3.2.12 para v4",
+        lead: "A v3.2.12-free é uma atualização corretiva da linha 3.2.x, com encerramento em 08/11. A corretiva foi publicada em 15/10/2026 com autorização explícita para validações pendentes; 19/19 testes focados Java 25/H2 aprovados.",
         detail: "Homologação operacional incompleta · RC6 pública · RC7 em QA local",
-        tip: "Na Free, seguem pendentes suíte completa, validação dos upgrades SQLite/V046 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor. 08/11 encerra a manutenção da 3.2.8, não é data de GA v4.",
-        text: "A v3.2.8-free Latest recebeu a build 2026-10-14.3 por autorização excepcional; não declarar homologação operacional completa. Permanecem pendentes suíte completa, validação dos upgrades SQLite/V046 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor físico. A pré-release pública v4.0.0-rc6 tem SHA-256 0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325; RC7 está em QA local. T032 e aceites formais permanecem pendentes. 08/11 encerra a manutenção da 3.2.8, não é data de GA v4.",
+        tip: "Na Free, seguem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
+        text: "A v3.2.12-free foi publicada como estável/Latest em 15/10/2026 por autorização explícita; 19/19 testes focados Java 25/H2 e integridade dos ZIPs aprovados; não declarar homologação operacional completa. Permanecem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor físico. A pré-release pública v4.0.0-rc6 tem SHA-256 0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325; RC7 está em QA local. T032 e aceites formais permanecem pendentes. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
       },
       {
         id: "cso",
@@ -83,7 +83,7 @@ window.CARACORE_PLANNING = {
     paidNote:
       "A cota não acumula. Mês ocioso ainda é cobrado. Mês cheio não empresta crédito ao seguinte. Tab e autocomplete não entram nesta conta; o que queima o envelope é Agent (Flyway, auth, extract, HTTP).",
     covers: [
-      { when: "08/11/2026", item: "Encerramento da Free PDV 3.2.8; v4 segue no ciclo de RCs", spend: "Agent out–nov/2026" },
+      { when: "08/11/2026", item: "Encerramento da Free PDV 3.2.12; v4 segue no ciclo de RCs", spend: "Agent out–nov/2026" },
       { when: "06/04/2027", item: "Hub instalador Windows", spend: "Agent dez/2026–06/04/2027" },
       { when: "08/04–dez/2027", item: "Sem dono de Agent", spend: "FRO 24/24 já publicado em 06/10" },
       { when: "08/11/2028", item: "CSO Transportes desktop", spend: "Agent jan–nov/2028" },
@@ -119,7 +119,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 74,
-      note: "Free 3.2.8-free é a versão final da linha 3.2.x e encerra em 08/11/2026; a build 2026-10-14.3 foi publicada excepcionalmente, com gates e homologação operacional pendentes. Pré-release pública v4.0.0-rc6, com SHA-256 publicado; RC7 em QA local. A sucessão v4 segue pelo ciclo de RCs e o GA depende de gates e aceites formais, sem data automática em 08/11. Freeze M1 do CSO ainda não fechado. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
+      note: "Free 3.2.12-free é uma atualização corretiva da linha 3.2.x e encerra em 08/11/2026; a corretiva foi publicada em 15/10/2026 por autorização explícita, com gates e homologação operacional pendentes. Pré-release pública v4.0.0-rc6, com SHA-256 publicado; RC7 em QA local. A sucessão v4 segue pelo ciclo de RCs e o GA depende de gates e aceites formais, sem data automática em 08/11. Freeze M1 do CSO ainda não fechado. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
     },
     {
       id: "y2027",
@@ -153,8 +153,8 @@ window.CARACORE_PLANNING = {
       state: "risk",
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
-      hundred: "Última versão da linha 3.2.x: v3.2.8-free, manutenção até 08/11/2026. Pré-release pública v4.0.0-rc6; sucessão pelo ciclo de RCs, com GA somente após os gates e aceites formais.",
-      now: "Pré-release pública v4.0.0-rc6, com SHA publicado. Estável v3.2.8-free, Latest. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
+      hundred: "atualização corretiva da linha 3.2.x: v3.2.12-free, manutenção até 08/11/2026. Pré-release pública v4.0.0-rc6; sucessão pelo ciclo de RCs, com GA somente após os gates e aceites formais.",
+      now: "Pré-release pública v4.0.0-rc6, com SHA publicado. Estável v3.2.12-free, Latest. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
       history: [
         { m: "2026-06", p: 62 },
         { m: "2026-07", p: 68 },

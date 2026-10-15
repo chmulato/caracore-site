@@ -308,6 +308,19 @@
       <p class="lead mb-3">PDV soberano para pequenos e médios negócios. Mantém a operação de caixa em pé mesmo quando a internet falha. O Free estável funciona como aplicação web local no computador da loja.</p>
       <div class="alert alert-success mb-3 py-2 px-3" role="alert">
         <i class="bi bi-megaphone-fill"></i> <strong>Canal maduro</strong> — Windows · Linux · macOS · release <strong>v3.2.8-free</strong>.</div>
+      <div class="alert alert-warning mb-3 py-2 px-3" role="note">
+        <strong>Assets atuais: build 2026-10-14.3.</strong> Publicação excepcional autorizada em 14/10/2026, sem mover a tag e sem homologação completa. Build limpo e CRC aprovados; os cinco downloads foram conferidos por SHA-256. A suíte completa ficou incompleta por memória (322 testes concluídos em 46 classes, sem falhas nas classes concluídas). Permanecem pendentes o upgrade SQLite com V046, o smoke/soak Windows desta build, a execução Linux/macOS e os aceites Edge/leitor físico; fonte PDF embutida adiada. Fonte local ainda não commitada; aceites da build anterior não se transferem para esta.
+        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.8-free" class="alert-link">Notas e downloads atuais</a>.
+      </div>
+      <details class="mb-3">
+        <summary>Integridade dos ZIPs — build 2026-10-14.3</summary>
+        <ul class="mt-2">
+          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.8-free/caracore-pdv-v3.2.8-free-windows-x64.zip">Windows x64</a> · SHA-256: <code class="text-break">6b26a710ca5c5d45402bdef4c5859824b66d962e0ab08807c70011d95e92003f</code></li>
+          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.8-free/caracore-pdv-v3.2.8-free-linux-x64.zip">Linux x64</a> · SHA-256: <code class="text-break">93c5919210ac441effebf643375417bf70ac924f9925565d11ce3930fe0c60e2</code></li>
+          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.8-free/caracore-pdv-v3.2.8-free-macos-x64.zip">macOS x64 (Intel)</a> · SHA-256: <code class="text-break">93c5919210ac441effebf643375417bf70ac924f9925565d11ce3930fe0c60e2</code></li>
+        </ul>
+        <p><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.8-free/SHA256SUMS.txt">SHA256SUMS.txt</a> · <a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.8-free/RELEASE_MANIFEST.json">RELEASE_MANIFEST.json</a></p>
+      </details>
       <div class="alert alert-info mb-3 py-2 px-3" role="note">
         <i class="bi bi-calendar-event"></i> <strong>Pré-release para avaliação:</strong> <a href="https://pdv.caracore.com.br/wiki-release-v4-0-0-rc6.html" class="alert-link">v4.0.0-rc6</a>, em ZIP portátil Windows x64 unsigned, sem MSI. Não é GA nem substitui o Free. A v4 avança pelo ciclo de RCs e só será promovida após gates e aceites formais, sem data automática de GA em 08/11. O canal maduro continua <strong>v3.2.8-free</strong>, última versão da linha 3.2.x, em manutenção restrita até 08/11/2026. O plano Free não inclui PIX integrado nem emissão de NF-e/NFC-e. <a href="https://pdv.caracore.com.br/roadmap-2026.html" class="alert-link">Ver roadmap</a>.
       </div>
@@ -1607,8 +1620,8 @@ graph LR
         <div class="release-item">
           <div class="release-product">CaraCore PDV Java (web local)</div>
           <div class="release-version">v3.2.8-free</div>
-          <div class="release-status">Canal maduro · Win / Linux / macOS</div>
-          <a href="https://pdv.caracore.com.br/download.html">Download →</a>
+          <div class="release-status">Build 2026-10-14.3 · Win / Linux / macOS · gates pendentes aceitos</div>
+          <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.8-free">Download e ressalvas →</a>
         </div>
         <div class="release-item">
           <div class="release-product">CaraCore PDV</div>

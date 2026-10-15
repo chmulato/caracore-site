@@ -39,9 +39,9 @@ Este ficheiro **não** é P&L nem tracker de oficina. Serve para **dizer não** 
 |----|--------|------------|--------------|-----------------|
 | R1 | T032 do PDV v4 não fecha | out–08/nov/2026 | Headline de 08/11/2026. Hub e freeze CSO M1 deslizam. | Outubro = só PDV. Se A–D não caberem, **reavaliar a data pública** — não abrir Hub H nem Ink S1 em novembro para «compensar». Dezembro, se o PDV escorregar, **não** vai para o Ink. |
 | R2 | Duas frentes Agent no mesmo ciclo | Qualquer mês | Cota estoura. O dono seguinte perde o mês. | **Não.** CSO + PDV, Hub + FRO, Frotas + Transportes no mesmo dia = proibido. |
-| R3 | Hub EXE não fecha a 06/04 | dez/2026–06/04/2027 | GA Windows do núcleo falha. FRO começa tarde. | Hub **é** o dono desta janela (não uma semana leve). Tab em set–nov sem competir com o PDV. Não abrir Ink S1–S8 nem FRO-H aqui. |
+| R3 | Hub EXE não fecha a 06/04 | dez/2026–06/04/2027 | GA Windows do núcleo falha e pressiona o calendário seguinte. | Hub **é** o dono desta janela (não uma semana leve). Tab em set–nov sem competir com o PDV. Não abrir Ink S1–S8 nem reabrir o FRO já publicado. |
 | R4 | Brinco a ocupar o núcleo | qualquer mês até folga | Ink (ou outro brinco) toma Agent de Hub/FRO/Transportes. | Ink PWA = **Tab**. Sem GA com Agent **não antes de 2028**. Se PDV, Hub ou CSO precisarem do mês, o brinco **cede**. |
-| R5 | Frotas no ar sem FRO até 2028 | set/2026–abr/2027 | Produto em produção incompleto. | COE-B/E foram publicados em `e193d6d`; falta fechar Freeze M1 com smoke `-Full`/gates finais até 08/11/2026. FRO começa **08/04/2027**, depois do Hub, e segue até dez/2027. Não abrir FRO no ciclo PDV nem na janela Hub; não vender FRO 24/24 em 08/11/2026. |
+| R5 | Freeze M1 da Frotas não fecha | até 08/11/2026 | A versão já publicada fica sem a estabilização prevista. | FRO 24/24 está em produção desde 06/10/2026 (`b90d1dc`, Flyway V33). Fechar o Freeze M1 com smoke `-Full`/gates finais até 08/11. Sem jornada, app offline nem GPS; não reabrir o epic FRO na janela de 2027. |
 | R6 | Transportes 2028 atrasa | 2028 | Helianto 30/12/2029 escorrega. | VT/GPS **não** tapa o buraco. Deslizar Helianto se Transportes não cortar em nov/2028. |
 | R7 | Copy pública à frente da loja | Contínuo | Mac/Linux «em breve», PIX no Free, `/releases/latest` cruzado. | Copy de download/perfis **só na loja da linha**. Sem DMG/DEB Ink. Sem PIX no Free Java. Java ≠ Rust (pasta, launcher, senha). Publicar a camada que mudou. |
 | R8 | Envelope Cursor ≠ P&L | Qualquer corte de instalador | Certificado Windows, Railway, domínio, Pix travam Hub EXE ou PDV v4. | Antes de um GA com instalador: confirmar custo **fora** dos US$ 20. Funding extra não substitui os GAs calendariados. |
@@ -64,7 +64,7 @@ Estes itens **não** entram na fila sem actualizar este ficheiro, o calendário 
 - RU Soberano com mês de Agent
 - Segunda linha nativa Ink (`.dmg` / `.deb`) — **cancelada**; canal = PWA quando houver folga do núcleo
 
-Patrocínio acima do envelope (segunda cota, on-demand pontual, mês extra) pode antecipar FRO, abrir Momento 2, dar mês a RU ou **abrir Agent no Ink**. **Não** substitui PDV v4, Hub EXE, FRO, Transportes nem Helianto.
+Patrocínio acima do envelope (segunda cota, on-demand pontual, mês extra) pode abrir Momento 2, dar mês a RU ou **abrir Agent no Ink**. **Não** substitui PDV v4, Hub EXE, Transportes nem Helianto, e não reabre o FRO já publicado.
 
 ---
 
@@ -73,8 +73,8 @@ Patrocínio acima do envelope (segunda cota, on-demand pontual, mês extra) pode
 | Janela | Tem de fechar | Se falhar |
 |--------|---------------|-----------|
 | out–08/nov/2026 | PDV v4: T032 + corte | Materializado em 11/10: o corte foi recusado e 08/11 deixa de ser GA confirmado, sem data nova. Dezembro **não** é Ink — é Hub, ou o PDV se ainda não cortou. |
-| dez/2026–06/04/2027 | Hub: SQLite + EXE + SHA na loja | GA 06/04 falha. FRO começa tarde. |
-| 08/04–dez/2027 | CSO FRO 24/24 | Frotas segue incompleta; não abrir Helianto, Ink Agent nem PIX Split Agent. |
+| dez/2026–06/04/2027 | Hub: SQLite + EXE + SHA na loja | GA 06/04 falha e pressiona a sequência dos marcos do núcleo. |
+| 08/04–dez/2027 | Sem dono de Agent; FRO 24/24 já publicado | Não reabrir o epic FRO; não abrir Helianto, Ink Agent nem PIX Split Agent. |
 | jan–nov/2028 | CSO Transportes desktop | Deslizar Helianto; não abrir VT. |
 | 2029 | Helianto GA 30/12/2029 | Sem segundo produto pesado neste ano. |
 

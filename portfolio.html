@@ -20,8 +20,8 @@
   <link rel="stylesheet" href="assets/css/portfolio.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfólio — Ativos de Engenharia de Elite | Cara Core Informática — Bunker Digital</title>
-  <meta name="description" content="Estudos de caso Cara Core: decisões de arquitetura, impacto operacional e entregas Bunker Digital. PDV offline-first, coexistência de stacks, validação técnica na era da IA.">
+  <title>Portfólio de produtos | Cara Core Informática</title>
+  <meta name="description" content="Conheça os produtos principais, projetos complementares e status de releases da Cara Core Informática.">
   <meta name="keywords" content="Portfólio, Bunker Digital, CaraCore PDV web local, PDV Rust Tauri, Tauri, Minerador 4.0, OIDC, Java 25, JavaFX, Cara Core Informática">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
@@ -29,8 +29,8 @@
   <link rel="canonical" href="https://www.caracore.com.br/portfolio.html">
   
   <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Portfólio de Projetos | Cara Core Informática — Bunker Digital">
-  <meta property="og:description" content="Decisões de engenharia com impacto mensurável: offline-first, coexistência PDV, critério humano sobre código assistido por IA.">
+  <meta property="og:title" content="Portfólio de produtos | Cara Core Informática">
+  <meta property="og:description" content="Produtos principais, projetos complementares e status de releases da Cara Core Informática.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.caracore.com.br/portfolio.html">
   <meta property="og:image" content="https://www.caracore.com.br/assets/images/logo.png">
@@ -111,70 +111,42 @@
     <div class="row align-items-center">
       <div class="col-md-12 text-center">
         <h1 class="display-4 mb-3">
-          <i class="bi bi-folder-fill text-primary"></i> Portfólio — Ativos de Engenharia de Elite
+          <i class="bi bi-folder-fill text-primary"></i> Portfólio de produtos e engenharia
         </h1>
         <p class="lead mb-3">
-          <strong>Decisões de engenharia e impacto operacional</strong> — não lista de linguagens. Cada ativo abaixo documenta o problema, o trade-off e o resultado; stacks aparecem como consequência da decisão.
+          PDV, CSO e Hub são os produtos principais. Os demais projetos complementam o ecossistema e ficam disponíveis para consulta.
         </p>
         <p class="text-muted mb-4 small">
-          Prova de entrega da nossa engenharia B2B · Bunker Digital · releases documentadas · loja própria por produto.
+          Status conferido em 15/10/2026 · releases e limites são apresentados conforme cada canal.
         </p>
 
         <nav class="portfolio-toc" aria-label="Índice do portfólio">
-          <div class="portfolio-toc-title"><i class="bi bi-list-ul"></i> Índice por categoria</div>
-
-          <div class="portfolio-toc-group">
-            <div class="portfolio-toc-group-label">Varejo e caixa</div>
-            <div class="portfolio-toc-links">
-              <a href="#pdv-coexistencia" class="text-decoration-none"><span class="badge nav-badge-pdv-rust fs-6 px-3 py-2"><i class="bi bi-diagram-2"></i> Duas linhas PDV</span></a>
-              <a href="#caracore-pdv" class="text-decoration-none"><span class="badge nav-badge-pdv fs-6 px-3 py-2"><i class="bi bi-cash"></i> PDV Java</span></a>
-              <a href="#caracore-pdv-rust" class="text-decoration-none"><span class="badge nav-badge-pdv-rust fs-6 px-3 py-2"><i class="bi bi-lightning-charge"></i> PDV Rust</span></a>
-              <a href="#caracore-ink-agenda" class="text-decoration-none"><span class="badge nav-badge-ink fs-6 px-3 py-2"><i class="bi bi-calendar-check"></i> Ink Agenda</span></a>
-            </div>
+          <div class="portfolio-toc-title"><i class="bi bi-list-ul"></i> Produtos principais</div>
+          <div class="portfolio-toc-links portfolio-toc-core">
+            <a href="#caracore-pdv" class="text-decoration-none"><span class="badge nav-badge-pdv fs-6 px-3 py-2"><i class="bi bi-cash"></i> PDV</span></a>
+            <a href="#caracore-cso" class="text-decoration-none"><span class="badge bg-info fs-6 px-3 py-2"><i class="bi bi-truck"></i> CSO</span></a>
+            <a href="#caracore-hub" class="text-decoration-none"><span class="badge nav-badge-hub fs-6 px-3 py-2"><i class="bi bi-cart-fill"></i> Hub</span></a>
           </div>
-
-          <div class="portfolio-toc-group">
-            <div class="portfolio-toc-group-label">Operação e distribuição</div>
+          <details class="portfolio-toc-more">
+            <summary>Outros projetos do ecossistema</summary>
             <div class="portfolio-toc-links">
-              <a href="#caracore-hub" class="text-decoration-none"><span class="badge nav-badge-hub fs-6 px-3 py-2"><i class="bi bi-cart-fill"></i> CaraCore Hub</span></a>
-              <a href="#caracore-cso" class="text-decoration-none"><span class="badge bg-info fs-6 px-3 py-2"><i class="bi bi-truck"></i> CaraCore CSO</span></a>
-              <a href="#caracore-helianto" class="text-decoration-none"><span class="badge nav-badge-helianto fs-6 px-3 py-2"><i class="bi bi-building"></i> Helianto Condominium</span></a>
+              <a href="#pdv-coexistencia" class="text-decoration-none"><span class="badge nav-badge-pdv-rust">Duas linhas PDV</span></a>
+              <a href="#caracore-pdv-rust" class="text-decoration-none"><span class="badge nav-badge-pdv-rust">PDV Rust</span></a>
+              <a href="#caracore-ink-agenda" class="text-decoration-none"><span class="badge nav-badge-ink">Ink Agenda</span></a>
+              <a href="#reino-oidc" class="text-decoration-none"><span class="badge nav-badge-reino">Reino OIDC</span></a>
+              <a href="#circuito-python" class="text-decoration-none"><span class="badge nav-badge-python">Circuito Ferradura</span></a>
+              <a href="#caracore-helianto" class="text-decoration-none"><span class="badge nav-badge-helianto">Helianto</span></a>
+              <a href="#area-51" class="text-decoration-none"><span class="badge nav-badge-area51">Área 51</span></a>
+              <a href="#caracore-seed" class="text-decoration-none"><span class="badge nav-badge-seed">Seed</span></a>
+              <a href="#caracore-mkt" class="text-decoration-none"><span class="badge bg-success">MKT / Sala</span></a>
+              <a href="#minerador-ete" class="text-decoration-none"><span class="badge nav-badge-ete">Minerador</span></a>
+              <a href="#bioreator40" class="text-decoration-none"><span class="badge nav-badge-ete">BioReator</span></a>
             </div>
-          </div>
-
-          <div class="portfolio-toc-group">
-            <div class="portfolio-toc-group-label">Educação e formação</div>
-            <div class="portfolio-toc-links">
-              <a href="#reino-oidc" class="text-decoration-none"><span class="badge nav-badge-reino fs-6 px-3 py-2"><i class="bi bi-shield-check"></i> Reino OIDC</span></a>
-              <a href="#circuito-python" class="text-decoration-none"><span class="badge nav-badge-python fs-6 px-3 py-2"><i class="bi bi-mortarboard-fill"></i> Circuito Ferradura</span></a>
-            </div>
-          </div>
-
-          <div class="portfolio-toc-group">
-            <div class="portfolio-toc-group-label">Infraestrutura e interno</div>
-            <div class="portfolio-toc-links">
-              <a href="#area-51" class="text-decoration-none"><span class="badge nav-badge-area51 fs-6 px-3 py-2"><i class="bi bi-shield-lock"></i> Área 51</span></a>
-              <a href="#caracore-seed" class="text-decoration-none"><span class="badge nav-badge-seed fs-6 px-3 py-2"><i class="bi bi-key-fill"></i> CaraCore Seed</span></a>
-              <a href="#caracore-mkt" class="text-decoration-none"><span class="badge bg-success fs-6 px-3 py-2"><i class="bi bi-gift"></i> Sala Cara Core</span></a>
-            </div>
-          </div>
-
-          <div class="portfolio-toc-group">
-            <div class="portfolio-toc-group-label">Nicho e simulação</div>
-            <div class="portfolio-toc-links">
-              <a href="#minerador-ete" class="text-decoration-none"><span class="badge nav-badge-ete fs-6 px-3 py-2"><i class="bi bi-droplet-half"></i> Minerador 4.0</span></a>
-              <a href="#bioreator40" class="text-decoration-none"><span class="badge nav-badge-ete fs-6 px-3 py-2"><i class="bi bi-moisture"></i> BioReator 4.0</span></a>
-            </div>
-          </div>
-
-          <div class="portfolio-toc-group mb-0">
-            <div class="portfolio-toc-group-label">Visão geral</div>
-            <div class="portfolio-toc-links">
-              <a href="#decisoes-engenharia" class="text-decoration-none"><span class="badge bg-success fs-6 px-3 py-2"><i class="bi bi-signpost-split"></i> Decisões e impacto</span></a>
-              <a href="#filosofia-bunker" class="text-decoration-none"><span class="badge bg-dark fs-6 px-3 py-2"><i class="bi bi-shield-fill"></i> Filosofia Bunker</span></a>
-              <a href="#portfolio-releases" class="text-decoration-none"><span class="badge bg-secondary fs-6 px-3 py-2"><i class="bi bi-clock-history"></i> Releases</span></a>
-              <a href="#sobre-caracore" class="text-decoration-none"><span class="badge bg-primary fs-6 px-3 py-2"><i class="bi bi-building"></i> Sobre a Cara Core</span></a>
-            </div>
+          </details>
+          <div class="portfolio-toc-links portfolio-toc-reference">
+            <a href="#decisoes-engenharia">Decisões de engenharia</a>
+            <a href="#portfolio-releases">Releases</a>
+            <a href="#sobre-caracore">Sobre a empresa</a>
           </div>
         </nav>
       </div>
@@ -184,10 +156,12 @@
 
 <!-- Decisões de engenharia — estudos de caso -->
 <section id="decisoes-engenharia" class="py-4">
+  <details class="portfolio-secondary portfolio-context">
+    <summary><strong>Critérios de engenharia</strong> · decisões, resiliência offline e revisão humana</summary>
   <div class="container">
     <div class="portfolio-cross-block portfolio-cases">
-      <h2><i class="bi bi-signpost-split text-success"></i> Decisões de engenharia — o que vendemos na era da IA</h2>
-      <p class="mb-4 text-muted">Saber sintaxe não diferencia mais ninguém. O que importa é <strong>qual problema você resolve</strong>, <strong>qual trade-off escolhe</strong> e <strong>qual resultado entrega</strong>. Três exemplos reais do ecossistema Cara Core.</p>
+      <h2><i class="bi bi-signpost-split text-success"></i> Decisões de engenharia</h2>
+      <p class="mb-4 text-muted">Exemplos de problemas, escolhas técnicas e resultados em produtos do ecossistema Cara Core.</p>
       <div class="portfolio-case-grid">
         <article class="portfolio-case-card">
           <h3><i class="bi bi-diagram-2 text-primary"></i> Coexistência PDV — sem lock-in de stack</h3>
@@ -229,10 +203,13 @@
       <p class="mb-0 mt-4 small text-muted"><i class="bi bi-briefcase"></i> Contratar engenharia B2B: <a href="index.html#engenharia-b2b">alocação técnica dedicada ou consultoria por projeto</a> · <a href="index.html#contato">falar sobre alocação</a></p>
     </div>
   </div>
+  </details>
 </section>
 
 <!-- Filosofia Bunker — o que todos os produtos têm em comum -->
 <section id="filosofia-bunker" class="py-4">
+  <details class="portfolio-secondary portfolio-context">
+    <summary><strong>Princípios Bunker</strong> · soberania local e operação resiliente</summary>
   <div class="container">
     <div class="portfolio-cross-block portfolio-bunker">
       <h2><i class="bi bi-shield-fill text-primary"></i> Filosofia Bunker — o fio condutor</h2>
@@ -257,10 +234,13 @@
       </div>
     </div>
   </div>
+  </details>
 </section>
 
 <!-- Como as duas linhas PDV convivem -->
 <section id="pdv-coexistencia" class="py-4 bg-light">
+  <details class="portfolio-secondary portfolio-context">
+    <summary><strong>Como as linhas PDV convivem</strong> · Java estável e Rust em piloto</summary>
   <div class="container">
     <div class="portfolio-cross-block portfolio-pdv-coexistence">
       <h2><i class="bi bi-diagram-2"></i> Como as duas linhas PDV convivem</h2>
@@ -292,6 +272,7 @@
       </div>
     </div>
   </div>
+  </details>
 </section>
 
 <div class="portfolio-category-divider"><span>Varejo e caixa</span></div>
@@ -309,9 +290,16 @@
       <div class="alert alert-success mb-3 py-2 px-3" role="alert">
         <i class="bi bi-megaphone-fill"></i> <strong>Canal maduro</strong> — Windows · Linux · macOS · release <strong>v3.2.8-free</strong>.</div>
       <div class="alert alert-warning mb-3 py-2 px-3" role="note">
-        <strong>Assets atuais: build 2026-10-14.3.</strong> Publicação excepcional autorizada em 14/10/2026, sem mover a tag e sem homologação completa. Build limpo e CRC aprovados; os cinco downloads foram conferidos por SHA-256. A suíte completa ficou incompleta por memória (322 testes concluídos em 46 classes, sem falhas nas classes concluídas). Permanecem pendentes o upgrade SQLite com V046, o smoke/soak Windows desta build, a execução Linux/macOS e os aceites Edge/leitor físico; fonte PDF embutida adiada. Fonte local ainda não commitada; aceites da build anterior não se transferem para esta.
-        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.8-free" class="alert-link">Notas e downloads atuais</a>.
+        <strong>Build atual: 2026-10-14.3.</strong> Publicada excepcionalmente, sem homologação operacional completa. <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.8-free" class="alert-link">Consulte as notas e os downloads</a>.
       </div>
+      <details class="mb-3">
+        <summary>Gates pendentes desta build</summary>
+        <ul class="mt-2">
+          <li>Suíte completa e validação dos upgrades SQLite 3.2.7/3.2.8 com V046 no pacote.</li>
+          <li>Smoke/soak Windows, execução em runtime Linux/macOS e aceites Edge/leitor físico.</li>
+          <li>A fonte PDF embutida foi adiada; os aceites da build anterior não se transferem para esta.</li>
+        </ul>
+      </details>
       <details class="mb-3">
         <summary>Integridade dos ZIPs — build 2026-10-14.3</summary>
         <ul class="mt-2">
@@ -394,9 +382,6 @@
         <a href="https://wiki.caracore.com.br/projeto-pdv.html" class="btn-project me-2" target="_blank" rel="noopener">
           <i class="bi bi-journal-code"></i> Wiki
         </a>
-        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-download"></i> Download Free (GitHub)
-        </a>
         <div class="mt-3">
           <small class="text-muted">
             <i class="bi bi-lock-fill"></i> Código-fonte privado | 
@@ -419,6 +404,8 @@
 
 <!-- Projeto 1b: CaraCore PDV (Rust + Tauri) — iniciativa de stack, piloto Windows -->
 <section id="caracore-pdv-rust" class="py-5 bg-light">
+  <details class="portfolio-secondary">
+    <summary><strong>PDV Rust</strong> · piloto Windows v0.1.4; linha independente da Java</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header pdv-rust">
@@ -504,10 +491,13 @@
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <!-- Projeto 2: Ink Agenda v2.0.1 — Desktop Windows estável, publicada em 07/10/2026. v2.0.0 permanece histórico (26/06/2026) -->
 <section id="caracore-ink-agenda" class="py-5 bg-light">
+  <details class="portfolio-secondary">
+    <summary><strong>Ink Agenda</strong> · Desktop Windows v2.0.1; PWA não antes de 2028</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header ink">
@@ -601,12 +591,15 @@
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <div class="portfolio-category-divider"><span>Educação e formação</span></div>
 
 <!-- Projeto 4: Reino OIDC -->
 <section id="reino-oidc" class="py-5 bg-light">
+  <details class="portfolio-secondary">
+    <summary><strong>Reino OIDC</strong> · edição Free v2.0.2 disponível</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header reino">
@@ -767,10 +760,13 @@ graph LR
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <!-- Projeto 5: Circuito Ferradura -->
 <section id="circuito-python" class="py-5 bg-light">
+  <details class="portfolio-secondary">
+    <summary><strong>Circuito Ferradura</strong> · v2.0.24 disponível</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header circuito-python">
@@ -951,6 +947,7 @@ graph LR
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <div class="portfolio-category-divider"><span>Operação e distribuição</span></div>
@@ -964,8 +961,8 @@ graph LR
         <i class="bi bi-cart-fill"></i> CaraCore Hub
       </h2>
       <p class="lead mb-3">Centro de controle para operações de e-commerce e distribuição. Reúne pedidos, organiza fluxos e reduz o desgaste operacional de quem precisa escalar com ordem.</p>
-      <div class="alert alert-success mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-megaphone-fill"></i> <strong>Pré-release Windows v2.1.0-rc1.2.</strong> Instalador e ZIP para avaliação em hub.caracore.com.br. O lançamento estável do instalador segue em <strong>06 de abril de 2027</strong>.</div>
+      <div class="alert alert-warning mb-3 py-2 px-3" role="status">
+        <i class="bi bi-info-circle-fill"></i> <strong>Pré-release Windows v2.1.0-rc1.2.</strong> Instalador e ZIP disponíveis para avaliação; o aceite de QA desta build está pendente. GA do instalador previsto para <strong>06/04/2027</strong>.</div>
       <div>
         <span class="tech-badge">Java 25</span>
         <span class="tech-badge">Jakarta EE 10</span>
@@ -1052,6 +1049,8 @@ graph LR
 
 <!-- Projeto: Helianto Condominium -->
 <section id="caracore-helianto" class="py-5 bg-light">
+  <details class="portfolio-secondary">
+    <summary><strong>Helianto Condominium</strong> · roadmap; GA previsto para 30/12/2029</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header hub helianto-header">
@@ -1060,7 +1059,7 @@ graph LR
       </h2>
       <p class="lead mb-3">Sistema de administração condominial completo com soberania de dados, motor financeiro auditável e suporte a BolePix.</p>
       <div class="alert alert-success mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-megaphone-fill"></i> <strong>Lançamento programado.</strong> Desenvolvimento ativo com entrega planejada para 30 de dezembro de 2029.</div>
+        <i class="bi bi-calendar-event"></i> <strong>Em roadmap.</strong> Lançamento público previsto para 30 de dezembro de 2029.</div>
       <div>
         <span class="tech-badge">Java 25</span>
         <span class="tech-badge">Spring Boot 4</span>
@@ -1108,7 +1107,7 @@ graph LR
             <li>Acompanha o extrato financeiro do condomínio em tempo real</li>
             <li>Garante que suas informações pessoais estejam totalmente seguras e em conformidade com a LGPD</li>
           </ul>
-          <p class="text-muted small mb-0"><strong>Em desenvolvimento ativo na garagem.</strong> Lançamento público: 30 de dezembro de 2029.</p>
+          <p class="text-muted small mb-0"><strong>Em roadmap.</strong> Lançamento público previsto para 30 de dezembro de 2029.</p>
         </div>
       </div>
       
@@ -1138,12 +1137,15 @@ graph LR
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <div class="portfolio-category-divider"><span>Infraestrutura e interno</span></div>
 
 <!-- Projeto 7: Área 51 — produto licenciado + Suporte -->
 <section id="area-51" class="py-5">
+  <details class="portfolio-secondary">
+    <summary><strong>Área 51</strong> · pacote licenciado e suporte institucional</summary>
   <div class="container">
   <div class="project-card" data-aos="fade-up" data-aos-delay="300">
     <div class="project-header area51">
@@ -1245,10 +1247,13 @@ graph LR
     </a>
   </div>
   </div>
+  </details>
 </section>
 
 <!-- Cara Core MKT — Portal e Sala Cara Core (gratuito; não vendemos) -->
 <section id="caracore-mkt" class="py-5 bg-light">
+  <details class="portfolio-secondary">
+    <summary><strong>Cara Core MKT / Sala</strong> · oferta gratuita; não vendemos</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header mkt-header">
@@ -1319,10 +1324,13 @@ graph LR
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <!-- CaraCore Seed (piloto público local gratuito sob MIT; pré-release candidata Windows 0.1.5 para avaliação) -->
 <section id="caracore-seed" class="py-5">
+  <details class="portfolio-secondary">
+    <summary><strong>CaraCore Seed</strong> · pré-release candidata 0.1.5; homologação pendente</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header seed">
@@ -1358,6 +1366,7 @@ graph LR
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <!-- CaraCore CSO — Frotas em produção; Transportes Garagem 08/11/2028 -->
@@ -1435,6 +1444,8 @@ graph LR
 
 <!-- Projeto: chmulatoETE Minerador 4.0 -->
 <section id="minerador-ete" class="py-5">
+  <details class="portfolio-secondary">
+    <summary><strong>Minerador ETE</strong> · canal público v1.2.3</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header ete">
@@ -1516,11 +1527,14 @@ graph LR
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <div id="caracore-ru"></div>
 <!-- BioReator 4.0 — Community 1.1.1, Premium em 18/06/2027 -->
 <section id="bioreator40" class="py-5">
+  <details class="portfolio-secondary">
+    <summary><strong>BioReator 4.0</strong> · Community 1.1.1 disponível</summary>
   <div class="container">
   <div class="project-card">
     <div class="project-header ete">
@@ -1609,6 +1623,7 @@ graph LR
     </div>
   </div>
   </div>
+  </details>
 </section>
 
 <!-- Linha do tempo / Releases -->
@@ -1616,18 +1631,32 @@ graph LR
   <div class="container">
     <div class="portfolio-releases">
       <h2><i class="bi bi-clock-history text-primary"></i> Releases e marcos</h2>
+      <details class="portfolio-secondary">
+        <summary>Consultar releases e marcos por produto</summary>
       <div class="release-timeline">
         <div class="release-item">
           <div class="release-product">CaraCore PDV Java (web local)</div>
           <div class="release-version">v3.2.8-free</div>
-          <div class="release-status">Build 2026-10-14.3 · Win / Linux / macOS · gates pendentes aceitos</div>
+          <div class="release-status">Build 2026-10-14.3 publicada excepcionalmente · gates e homologação operacional pendentes</div>
           <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.8-free">Download e ressalvas →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">CaraCore Hub</div>
+          <div class="release-version">v2.1.0-rc1.2</div>
+          <div class="release-status">Pré-release Windows · aceite de QA pendente · GA previsto em 06/04/2027</div>
+          <a href="https://hub.caracore.com.br/download.html">Pré-release →</a>
         </div>
         <div class="release-item">
           <div class="release-product">CaraCore PDV</div>
           <div class="release-version">v0.1.4</div>
           <div class="release-status">Piloto Windows · GitHub Releases · NSIS · MSI pt-BR · ZIP</div>
           <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.4">Download →</a>
+        </div>
+        <div class="release-item">
+          <div class="release-product">CaraCore Seed</div>
+          <div class="release-version">0.1.5 candidata</div>
+          <div class="release-status">Disponível para avaliação · homologação independente pendente</div>
+          <a href="https://github.com/chmulato/caracore-seed-releases/releases/tag/v0.1.5">Pré-release →</a>
         </div>
         <div class="release-item">
           <div class="release-product">Ink Agenda</div>
@@ -1668,7 +1697,7 @@ graph LR
         <div class="release-item">
           <div class="release-product">Helianto Condominium</div>
           <div class="release-version">Garagem</div>
-          <div class="release-status">Sem loja · lançamento previsto 30/12/2029</div>
+          <div class="release-status">Vitrine publicada · lançamento previsto 30/12/2029</div>
           <a href="#caracore-helianto">Portfólio →</a>
         </div>
         <div class="release-item">
@@ -1678,6 +1707,7 @@ graph LR
           <a href="https://cso-transp.caracore.com.br/" target="_blank" rel="noopener">Vitrine →</a>
         </div>
       </div>
+      </details>
     </div>
   </div>
 </section>
@@ -1691,7 +1721,7 @@ graph LR
         A <strong>Cara Core Informática</strong> (CNPJ 23.969.028/0001-37) é consultoria boutique de engenharia de software B2B e desenvolve ativos desktop e educacionais com filosofia <strong>Bunker Digital</strong>: soberania local, operação offline e licenciamento claro.
       </p>
       <p class="mb-0">
-        Este portfólio documenta entregas e produtos próprios — prova de capacidade técnica. Cada produto tem loja, wiki e canal de download no subdomínio próprio. <a href="index.html#engenharia-b2b">Engenharia B2B</a>, implantação e suporte sob demanda.
+        Este portfólio apresenta produtos próprios e projetos complementares. Disponibilidade, downloads e documentação variam por produto; consulte os canais indicados em cada seção. <a href="index.html#engenharia-b2b">Engenharia B2B</a>, implantação e suporte sob demanda.
       </p>
       <div class="portfolio-about-grid">
         <div class="portfolio-about-item">

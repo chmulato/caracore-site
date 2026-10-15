@@ -1,6 +1,6 @@
 # Ecossistema Cara Core — mapa de repositórios
 
-Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 14/10/2026).
+Documento de referência dos repositórios e pastas que compõem o ecossistema da Cara Core Informática (estado em 15/10/2026).
 
 **Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `AGENTS.md` na raiz do workspace.
 **Transição do PDV:** `v3.2.8-free` é a versão final Free da linha 3.2.x, em manutenção apenas até 08/11/2026. Depois, a sucessão é feita pela PDV v4 através das RCs; GA só após aprovação formal dos gates e aceites, sem data automática em 08/11.
@@ -24,8 +24,8 @@ VISÃO GERAL
   caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br; pré-release Windows v2.1.0-rc1.2 (instalador e ZIP, unsigned); GA 06/04/2027
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
-  caracore-seed                 Oficina do Cara Core Seed                   Piloto local MIT; Java 25; candidato Windows 0.1.3 em homologação independente
-  caracore-seed-releases Vitrine do Seed Piloto público aberto para avaliação; release Windows 0.1.3 unsigned; homologação pendente; oficina sem visibilidade pública confirmada
+  caracore-seed                 Oficina do Cara Core Seed                   Piloto local MIT; Java 25; pré-release candidata Windows 0.1.5
+  caracore-seed-releases        Vitrine do Seed e releases                   Piloto público; 0.1.5 candidata unsigned para avaliação; homologação pendente
   caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX (Windows); PWA não antes de 2028
   caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br
   caracore-ru                   Oficina do RU Soberano e do BioReator 4.0  Java 25 + JavaFX; sala RETRO + simulador; BioReator Community 1.1.1
@@ -96,7 +96,7 @@ Vitrines restauradas em 10/10/2026 (CNAME → chmulato.github.io; ver MEMORIA_IN
   Cara Core MKT: caracore-mkt + caracore-mkt-releases. Loja: mkt.caracore.com.br. Sala: tools.caracore.com.br/sala/. Vitrine gratuita; não vendemos.
 
 Pilotos em validação
-  Cara Core Seed: piloto público local gratuito sob MIT, sem ativação do próprio Seed; sem convite, checkout nem monitoramento remoto de heartbeats. Loja: seed.caracore.com.br. Candidato Windows 0.1.3 publicado para avaliação, com SHA-256 verificado; homologação independente e teste em perfil limpo pendentes. Instalador unsigned; Linux fica fora desta etapa. A oficina não está confirmada como pública.
+  Cara Core Seed: piloto público local gratuito sob MIT, sem ativação do próprio Seed; sem convite, checkout nem monitoramento remoto de heartbeats. Loja: seed.caracore.com.br. Pré-release candidata Windows 0.1.5 publicada para avaliação (0.1.4 é a release estável anterior), unsigned; homologação independente pendente. Linux fica fora desta etapa; o código-fonte da oficina não está publicado.
 
 Serviço institucional
   Suporte Área 51: caracore-area51 + caracore-area51-releases. Loja: area51.caracore.com.br
@@ -125,4 +125,4 @@ Alinhamento matriz e lojas
 ---
 
 
-Atualizado em 09/10/2026.
+Atualizado em 15/10/2026.

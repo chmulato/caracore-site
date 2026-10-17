@@ -2,6 +2,42 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### CSO — alinhamento de planejamento em 17/10/2026
+
+Prevalece sobre snapshots anteriores: Frotas Web e Transportes Desktop são
+duas aplicações; Virtual Tracker é capacidade integrada de localização, não
+terceiro produto. Alvo conjunto **08/11/2028**, não garantia de entrega.
+O [plano mestre](../../caracore-cso-transportes/docs/plano_organizado_execucao_cso.md)
+registra 10 sprints locais estimadas + 21 tarefas INT em 6 etapas (0/21).
+INT-01/02/03 validam baseline, viabilidade móvel e capacidade; total de sprints
+e alocação ainda pendentes. MON continua 0/53, com reaproveitamento seletivo.
+O [calendário empresarial](CALENDARIO_COTA_CURSOR.md) agora reconhece esse
+recorte de integração em 2028, sem antecipar implementação ou mudar PDV/Hub.
+
+Frotas permanece online-only. VT planejado: relay E2EE, sem leitura ou
+persistência de posições/rotas/trânsito/envelopes, nem em logs/APM/cache/filas.
+Memória transitória limitada; mapa, histórico e chave privada somente no
+desktop. Presença 120 s quando necessária, posição 60 s em viagem como
+perfil de referência a medir. Sem fila/recuperação offline ou promessa de
+posição instantânea. Protocolo e endpoints ainda serão aprovados.
+
+Matriz e wiki passam a apresentar a mesma proposta da loja: organizar
+entregas e acompanhar deslocamentos pelo celular, com conexão, finalidade
+autorizada e limites explícitos. CTA de interesse leva à loja; Frotas segue
+com acesso separado. Alterações desta revisão são locais: sem commit,
+push, deploy ou implementação de integração/GPS.
+
+Validação local desta revisão: 4/4 testes Node focados no painel de
+planejamento; sintaxe JS e `git diff --check` aprovados nas duas árvores.
+11 páginas HTML alteradas verificadas em UTF-8, com um H1 e sem novos
+links/âncoras locais quebrados ou IDs duplicados; espelhos de `AGENTS.md`
+idênticos. Navegador: ecossistema, portfólio e planning sem overflow em
+390/768/1366 px; painel mostra integração e INT-03, sem a exclusão antiga.
+Wiki CSO tem o mesmo pequeno overflow móvel (14 px em 390 px) observado na
+página Hub não alterada; não corrigido por ser layout preexistente.
+Âncora Virtual Tracker e CTA da loja conferidos. Sem teste real de
+localização, banda, criptografia ou capacidade nesta revisão.
+
 **Atualizado:** 2026-10-15 · PDV Free `v3.2.12-free` estável/Latest; fonte `hotfix/3.2.12-free` `72ace488aed4ee91001c60cf40a3934ddfe8faf1`. Publicação estável/Latest autorizada em 15/10/2026, com validações pendentes. 19/19 testes focados passaram em Java 25/H2; ZIPs e hashes remotos conferidos. Suíte completa, smoke portátil com SQLite/health/navegador, execução Linux/macOS e homologação operacional completa permanecem pendentes. Não transferir aceites da 3.2.8. Windows SHA-256 `6d7a50b0acf2a05620a090eebdd48f049a1dd5599ccb6c40c419c38145f7c0e2`; Linux/macOS `795a396318da61d1bd45dcfe816879d2184706f1c7849f1cd2ad98baa99fd9c1`. Release: https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.12-free. Pacotes locais em `D:\temp_pdv`. A 3.2.8 permanece no histórico e a v4 RC6 continua pré-release separada. Manutenção restrita até 08/11/2026, sem GA v4 automático. Registros anteriores abaixo são históricos.
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
@@ -19,7 +55,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 | **PDV Java v4** | Pré-release pública `v4.0.0-rc6` substituída de novo em 11/10 (SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`, 178.166.244 bytes). Fonte da oficina: `master` `681ea32`. A tag Git permanece em `b3358fe`. Java 25 em `runtime\`. Sem JDK e sem Python do sistema. A frente de caixa tem Abrir menu, Fechar menu e Sair. Não é GA nem Latest. A `v4.0.0-rc5` fica no histórico. | Prosseguir pelo ciclo de RCs e gates de homologação/publicação. A transição estável e a data de GA dependem de aprovação formal; 08/11/2026 é o encerramento da linha 3.2.12, não GA v4. Roteiro completo no Edge ainda pendente. `PERF-001–007` congeladas. | `caracore-pdv/docs/arquitetura/STATUS_ATUAL_APLICACAO.md` · `CONTINUIDADE_DESENVOLVIMENTO.md` · `PLANO_LANCAMENTO_V4.md` |
 | **PDV Rust** | Piloto Windows `v0.1.4`, linha independente do Java; limite de 100 vendas durante a vida do piloto. Loja e artefatos no mesmo repo de releases. | Não misturar canais, artefatos ou anunciar que substitui o Java. | `caracore-pdv-rust/docs/contexto-rapido.md` · `status.md` |
 | **CSO Frotas** | Gestão de frota FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Index com convite principal e roadmap desta versão (`e1e8d63`). Não é GPS. | Freeze M1 em 08/11/2026 estabiliza o que já está no ar. Sem jornada, app offline nem GPS. MON-0 não iniciado. | `caracore-cso-quarkus/docs/plano-lancamento-2026-11-08.md` · `docs/plano-gestao-frota.md` |
-| **CSO Transportes** | Frente desktop em roadmap; GA 08/11/2028. Não é a data do PDV nem uma aplicação web atualmente oferecida. | Oficina sem URL/copy de loja própria; usa a loja única CSO quando apropriado. | `caracore-cso-transportes` |
+| **CSO Transportes + VT** | Desktop e capacidade integrada em desenvolvimento; alvo conjunto 08/11/2028, condicionado aos gates INT. | 10 sprints locais + 21 tarefas integradas (0/21); INT-03 estima total e capacidade. Loja única CSO, sem contratação antecipada. | `caracore-cso-transportes/docs/plano_organizado_execucao_cso.md` |
 | **CaraCore Hub** | Download da loja: tag `v2.1.0-rc1.2` (08/10, unsigned). Banco do produto: SQLite local (WAL) no computador do cliente. Java 25, Jakarta EE 10, Tomcat 10.1. Instalador SHA-256 `50d38ff0ee4defce5bb2598967331d0295fb4817dbec59df5d3e7574b22975e5`. ZIP da mesma edição SHA-256 `ec82b2bd57053c252faac4fdbb0066e9a5cea2df293562b35384107e5cb624b4`. FileVersion `2.1.0-rc1.2`. A tag `v2.1.0-rc1.1` conserva o pacote de 06/10. A tag `v2.1.0-rc1` conserva o instalador de 05/10. Web 2.1 concluída. Mac e Linux fora desta tag. | Login da conta real ainda sem causa confirmada. Aceite da QA desta build ainda não foi feito. Backup/atualização não fazem parte deste aceite. GA 06/04/2027 mantido. Amazon/B2W não operacionais. | `caracore-hub/docs/contexto-rapido.md` · https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.2 |
 | **Minerador ETE** | Canal público `v1.2.3` (Ouro 4.0). | Não regredir para os bundles quebrados `v1.2.1`/`v1.2.2`. | `caracore-ete/AGENTS.md` · `.cursor/rules/project-memory.mdc` |
 | **BioReator 4.0** | Community **1.1.1** publicada em 13/10/2026, Windows x64, sem assinatura. Distingue biomassa viável/total, calcula P/V pelo volume líquido e registra o primeiro critério de término em `end_reason`; mantém as melhorias cinéticas da 1.1.0. | Release `bioreator-1.1.1`: MSI 72.675.328 bytes (SHA-256 `6eb0dd01006304d78c74f185345711bc8d4e135b03443d2ab583379338b04b21`) e ZIP 73.592.557 bytes (SHA-256 `b36d18a0fae828f359db3c2a6509ad519849e560487d0ebbfaa3c3c85e09e1d7`); EXE 524.800 bytes (SHA-256 `88eb22c17b547ded71aed275021bfbbd4121b171cbaba4373dfdca96c11a609a`) fica no ZIP. Premium em 18/06/2027, sem preço e sem PIX. | Loja `ru.caracore.com.br/download.html#arquivos` · `manual-tecnico.html#criterios-fim` · `exemplo-bioreator.html` · `fundamentos-bioprocesso.html` |

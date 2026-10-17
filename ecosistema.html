@@ -241,7 +241,7 @@
         <div class="eco-audience-card">
           <i class="bi bi-truck"></i>
           <h3>Centros de distribuição</h3>
-          <p class="small text-muted mb-0">Hub (encomendas de Mercado Livre, Shopee e Temu; pré-release Windows v2.1.0-rc1.2; GA do instalador em 06/04/2027) e CSO dual (Frotas em produção · Transportes 08/11/2028). CSO ≠ GPS.</p>
+          <p class="small text-muted mb-0">Hub (encomendas de Mercado Livre, Shopee e Temu; pré-release Windows v2.1.0-rc1.2; GA do instalador em 06/04/2027) e CSO: Frotas em produção, sem GPS hoje; Transportes + Virtual Tracker integrado em desenvolvimento, alvo conjunto 08/11/2028 sujeito à validação.</p>
         </div>
       </div>
       <div class="col-md-6 col-lg-4">
@@ -394,7 +394,7 @@
           <li>Frota no navegador: veículos, custos, equipe e planos</li>
           <li>Nesta versão: km/L, documentos, pneus, exame toxicológico, infrações e custo por km</li>
           <li>Freeze M1 em 08/11/2026 estabiliza o que já está no ar</li>
-          <li>Jornada, app offline e GPS permanecem no roadmap posterior</li>
+          <li>Jornada e localização pelo celular são futuras; gestão e acompanhamento exigem conexão, sem fila offline</li>
           <li>Transportes desktop permanece na Garagem (08/11/2028)</li>
         </ul>
         <p class="eco-product-meta"><strong>Aplicação:</strong> cso.caracore.com.br · <strong>Vitrine:</strong> cso-transp.caracore.com.br</p>
@@ -736,10 +736,10 @@
           <div class="col-md-6 col-lg-3">
             <div class="eco-garagem-card cc-card-cso">
               <span class="eco-garagem-badge">Transportes (Desktop bunker)</span>
-              <h3><a href="https://cso-transp.caracore.com.br/" class="eco-garagem-card-title-link" target="_blank" rel="noopener">CSO Transportes</a></h3>
-              <p class="text-muted small mb-2">Módulo desktop (Java 21 · JavaFX · SQLite) acoplado à Gestão de Frotas — não a substitui. Bunker para operação crítica na empresa. A Frotas já está no ar. CSO ≠ GPS.</p>
-              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Lançamento: 08 de novembro de 2028</span>
-              <p class="mb-0 mt-2"><a href="https://cso-transp.caracore.com.br/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Ver vitrine</a> <a href="https://cso.caracore.com.br/" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">Frotas (já no ar)</a></p>
+              <h3><a href="https://cso-transp.caracore.com.br/" class="eco-garagem-card-title-link" target="_blank" rel="noopener">CSO Transportes + Virtual Tracker</a></h3>
+              <p class="text-muted small mb-2">Organize entregas e acompanhe deslocamentos pelo celular do motorista, sem aparelho dedicado. Duas aplicações, uma solução: Frotas conecta e encaminha conteúdo cifrado, sem ler ou guardar trajetos; o desktop mantém mapa e histórico. Exige conexão e base disponível, sem fila offline. Em desenvolvimento, sem contratação antecipada.</p>
+              <span class="eco-launch"><i class="bi bi-calendar-check me-1"></i> Alvo conjunto: 08/11/2028, sujeito à validação e homologação</span>
+              <p class="mb-0 mt-2"><a href="https://cso-transp.caracore.com.br/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Conversar sobre minha operação</a> <a href="https://cso.caracore.com.br/" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">Frotas (já no ar)</a></p>
             </div>
           </div>
         </div>
@@ -800,8 +800,8 @@
           </div>
           <div class="eco-timeline-item eco-timeline-future" role="listitem">
             <div class="eco-timeline-dot">○</div>
-            <p class="eco-timeline-label">CSO Transportes</p>
-            <p class="eco-timeline-date">08/11/2028</p>
+            <p class="eco-timeline-label">CSO Transportes + VT</p>
+            <p class="eco-timeline-date">Alvo: 08/11/2028</p>
           </div>
           <div class="eco-timeline-item eco-timeline-future" role="listitem">
             <div class="eco-timeline-dot">○</div>
@@ -826,7 +826,8 @@
 
         <div class="alert alert-secondary mt-0 mb-4" role="note">
           <h3 class="h5 mb-2"><i class="bi bi-diagram-3 me-2"></i>CSO e Hub no mesmo núcleo</h3>
-          <p class="mb-2">A <strong>Gestão de Frotas</strong> do CSO já está em produção, com km/L, documentos do veículo, pneus, exame toxicológico, infrações e custo por km. O freeze de 08/11/2026 estabiliza essa versão. Jornada, app offline e GPS ficam para depois. O desktop de Transportes continua em 08/11/2028.</p>
+          <p class="mb-2">A <strong>Gestão de Frotas</strong> já está em produção; o freeze de 08/11/2026 estabiliza essa versão, sem GPS. <strong>Transportes + Virtual Tracker</strong> têm alvo conjunto em 08/11/2028, sujeito à prova móvel, capacidade e homologação. VT é uma capacidade integrada, não terceiro produto. Gestão web e acompanhamento exigem conexão; a PWA de gestão offline foi cancelada.</p>
+          <p class="mb-2">Planejamento: 10 sprints locais estimadas + 21 tarefas integradas em 6 etapas (0/21), sem total integrado de sprints fechado. INT-03 dimensiona a entrega; o epic MON não é antecipado por inteiro. Perfil econômico a medir: presença 120 s quando necessária e posição 60 s em viagem, sem promessa de posição instantânea. <a href="https://wiki.caracore.com.br/projeto-cso.html#virtual-tracker" target="_blank" rel="noopener">Entender integração e limites</a>.</p>
           <p class="mb-0">O <strong>Hub</strong> cobre encomendas de Mercado Livre, Shopee e Temu. O banco é SQLite local. A oficina web 2.1 está concluída. A pré-release Windows <strong>v2.1.0-rc1.2</strong> está publicada, sem assinatura e sem homologação de produção, com instalador e ZIP. Mac e Linux não entram nesta tag. O GA do instalador Windows permanece <strong>06/04/2027</strong>. <a href="https://hub.caracore.com.br/download.html">Baixar a pré-release Windows</a>.</p>
         </div>
 
@@ -958,7 +959,7 @@
                 <td><span class="badge bg-success">Frotas em produção</span></td>
                 <td class="small">25/02/2026</td>
                 <td class="small fw-semibold text-muted">Frotas em produção · Transp. 08/11/2028</td>
-                <td class="small">Gestão de frota em produção desde 06/10/2026: km/L, documentos, pneus, exame, infrações e custo por km. Freeze M1 em 08/11/2026 estabiliza essa versão. Jornada, app offline e GPS ficam depois. Transportes desktop em garagem até 08/11/2028.</td>
+                <td class="small">Frotas em produção desde 06/10/2026, sem GPS. Transportes + Virtual Tracker integrado: alvo conjunto 08/11/2028, condicionado à prova móvel, capacidade e homologação. Frotas encaminhará conteúdo cifrado sem guardar trajetos; histórico somente no desktop, com conexão e sem fila offline.</td>
               </tr>
             </tbody>
           </table>

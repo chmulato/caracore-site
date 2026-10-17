@@ -22,7 +22,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   Cara Core Seed               https://seed.caracore.com.br/
   Suporte Área 51              https://area51.caracore.com.br/
   RU Soberano                  https://ru.caracore.com.br/
-  CaraCore CSO                 https://cso-transp.caracore.com.br/                      Loja única (Frotas + Transportes). Clone: D:\onedrive\dev\caracore-cso-releases. App: cso.caracore.com.br. GA desktop 08/11/2028. Oficina transportes sem loja. ≠ GPS
+  CaraCore CSO                 https://cso-transp.caracore.com.br/                      Loja única: Transportes + Virtual Tracker integrado em desenvolvimento, alvo 08/11/2028 condicionado aos gates INT; sem contratação antecipada. Frotas disponível em cso.caracore.com.br, sem GPS. Clone: D:\onedrive\dev\caracore-cso-releases.
   Ink Agenda                   https://ink.caracore.com.br/                 Desktop v2.0.1 Windows (download, 07/10/2026) · PWA não antes de 2028 (/pwa.html)
   Cara Core MKT                https://mkt.caracore.com.br/                            Vitrine gratuita. Não vendemos. Sala: https://tools.caracore.com.br/sala/. CNAME → chmulato.github.io (restaurado 10/10/2026)
   Helianto Condominium         https://helianto.caracore.com.br/                       Oficina caracore-helianto. GA 30/12/2029. CNAME → chmulato.github.io (restaurado 10/10/2026)

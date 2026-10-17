@@ -48,8 +48,8 @@ window.CARACORE_PLANNING = {
         kind: "desvio",
         title: "CSO · freeze M1 em 08/11/2026",
         lead: "Frotas em produção desde 06/10. O freeze M1 ainda não fechou.",
-        detail: "Transportes desktop em 08/11/2028",
-        tip: "Gestão de frotas. Não é rastreador GPS.",
+        detail: "Transportes + Virtual Tracker integrado: alvo conjunto 08/11/2028",
+        tip: "Frotas sem GPS hoje. Integração futura exige prova móvel, capacidade e homologação; histórico somente no desktop.",
         text: "Frotas em produção desde 06/10. Freeze M1 em 08/11/2026 estabiliza essa versão. Sem jornada, app offline nem GPS.",
       },
       {
@@ -79,14 +79,14 @@ window.CARACORE_PLANNING = {
     sessionsPerWeek: 2,
     onDemand: false,
     verdict:
-      "O roadmap público cabe em US$ 20/mês até dezembro de 2029 se a empresa tiver um produto pesado por ciclo e não comprar on-demand.",
+      "Envelope de US$ 20/mês até dezembro de 2029, com um produto pesado por ciclo e sem on-demand. A viabilidade do alvo conjunto Transportes + Virtual Tracker depende da prova móvel e da estimativa INT-03; não é prazo garantido.",
     paidNote:
       "A cota não acumula. Mês ocioso ainda é cobrado. Mês cheio não empresta crédito ao seguinte. Tab e autocomplete não entram nesta conta; o que queima o envelope é Agent (Flyway, auth, extract, HTTP).",
     covers: [
       { when: "08/11/2026", item: "Encerramento da Free PDV 3.2.12; v4 segue no ciclo de RCs", spend: "Agent out–nov/2026" },
       { when: "06/04/2027", item: "Hub instalador Windows", spend: "Agent dez/2026–06/04/2027" },
       { when: "08/04–dez/2027", item: "Sem dono de Agent", spend: "FRO 24/24 já publicado em 06/10" },
-      { when: "08/11/2028", item: "CSO Transportes desktop", spend: "Agent jan–nov/2028" },
+      { when: "Alvo: 08/11/2028", item: "CSO Transportes + Virtual Tracker integrado", spend: "Jan–nov/2028; capacidade a validar em INT-03" },
       { when: "30/12/2029", item: "Helianto Condominium (GA)", spend: "Agent 2029" },
     ],
     queue: [
@@ -95,15 +95,15 @@ window.CARACORE_PLANNING = {
       { period: "09/nov–04/dez/2026", owner: "PDV corte + copy CSO M1" },
       { period: "dez/2026–06/04/2027", owner: "Hub" },
       { period: "08/04–dez/2027", owner: "Sem dono · FRO já publicado" },
-      { period: "2028", owner: "CSO Transportes" },
+      { period: "2028", owner: "CSO Transportes + integração VT, sujeito aos gates INT" },
       { period: "dez/2028", owner: "Buffer Transportes" },
       { period: "2029", owner: "Helianto" },
     ],
     notInEnvelope: [
       "Reabrir o FRO (já publicado em 06/10/2026)",
       "Ink PWA com Agent antes de 2028 (brinco; Tab até folga do núcleo)",
-      "Momento 2 e PWA da frota em 2027–2028 (2028 é Transportes)",
-      "Virtual Tracker / GPS no mesmo ano do Transportes",
+      "Epic Momento 2 completo, além do recorte aprovado para integração INT",
+      "PWA de gestão offline cancelada; sem fila ou recuperação de trajetos offline",
       "BioReator 4.0 com mês de Agent (Community 1.1.1 publicada; Premium em 18/06/2027, sem preço e sem PIX)",
       "PIX Split PDV em código antes do Hub no ar",
     ],
@@ -131,9 +131,9 @@ window.CARACORE_PLANNING = {
     {
       id: "y2028",
       label: "2028",
-      subtitle: "CSO Transportes",
+      subtitle: "CSO Transportes + Virtual Tracker",
       pct: 6,
-      note: "Oficina desktop existe. GA público 08/11/2028. Virtual Tracker não compete neste ano.",
+      note: "Alvo conjunto 08/11/2028, não GA garantido. Duas aplicações, VT como capacidade integrada. 10 sprints locais estimadas + 21 tarefas INT em 6 etapas (0/21); INT-03 fecha o total após baseline e prova móvel. Frotas somente relay E2EE sem ler ou persistir trajetos/envelopes; chave privada, mapa e histórico somente no desktop. Conexão obrigatória, sem fila offline. Perfil a medir: presença 120 s quando necessária e posição 60 s em viagem, não instantânea.",
     },
     {
       id: "y2029",
@@ -333,8 +333,8 @@ window.CARACORE_PLANNING = {
       state: "watch",
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
-      hundred: "Frotas em produção desde 06/10; freeze M1 em 08/11/2026. Transportes desktop em 08/11/2028.",
-      now: "Frotas em produção desde 06/10. Freeze M1 em 08/11/2026. Transportes desktop em 08/11/2028.",
+      hundred: "Frotas disponível e Transportes + Virtual Tracker integrado homologados; alvo conjunto 08/11/2028 condicionado aos gates INT, sem disponibilidade automática.",
+      now: "Frotas em produção desde 06/10, sem GPS hoje; freeze M1 em 08/11/2026. Transportes + VT integrado em desenvolvimento: 0/21 tarefas INT, total de sprints/capacidade pendente em INT-03. Sem contratação antecipada.",
       history: [
         { m: "2026-06", p: 30 },
         { m: "2026-07", p: 34 },

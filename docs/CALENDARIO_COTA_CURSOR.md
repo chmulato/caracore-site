@@ -32,7 +32,7 @@ Sexta: ler Spending, gravar % se o ciclo for de oficina com tracker, cortar o Co
 | PDV Free `v3.2.8` | Encerramento da última versão 3.2.x em **08/11/2026** | Manutenção restrita até a data; sem novas features |
 | PDV Java v4 | Próxima linha, seguindo o ciclo de RCs; GA sem data definida até aceites formais | Agent out/2026 em diante, conforme os gates |
 | Hub instalador Windows | **06/04/2027** | Agent **dez/2026–06/04/2027**. Web 2.1 já existe; o EXE é o trabalho. |
-| CSO Transportes desktop | **08/11/2028** | Agent jan–nov/2028 |
+| CSO Transportes + Virtual Tracker integrado | **08/11/2028 — alvo conjunto** | Janela jan–nov/2028; capacidade e total de sprints dependem de INT-03 |
 
 08/11/2026 encerra a manutenção de transição da última Free 3.2.x (`v3.2.8`); não é GA da PDV v4. A v4 prossegue pelas RCs, e a promoção a GA depende da aprovação formal dos gates e aceites. O freeze M1 do CSO nessa data permanece: congela o que já está no ar, inclusive a gestão de frota publicada em 06/10. Sem jornada, app offline nem GPS.
 
@@ -49,7 +49,7 @@ Sexta: ler Spending, gravar % se o ciclo for de oficina com tracker, cortar o Co
 | 09/11 → 04/12/2026 | **PDV v4 RCs + copy CSO M1** | Continuar homologação até aprovação formal; Freeze M1 (L) | MON-0; V34; Ink S1 |
 | dez/2026 → 06/04/2027 | **Hub** | SQLite + EXE + SHA na loja · **GA 06/04** | Ink S1–S8; reabrir FRO; PIX Split Agent |
 | 08/04 → dez/2027 | — | FRO 24/24 já publicado em 06/10 | Não reabrir o epic; Ink Agent; Helianto; PIX Split Agent; PWA frota |
-| jan–nov/2028 | **CSO Transportes** | Desktop bunker **GA 08/11/2028** | Virtual Tracker / GPS; PWA frota; Helianto Agent; Ink Agent |
+| jan–nov/2028 | **CSO Transportes + integração VT** | Alvo conjunto **08/11/2028**, condicionado à prova móvel, capacidade e homologação | PWA frota/offline móvel; Helianto Agent; Ink Agent; todo MON sem recorte aprovado |
 | dez/2028 | buffer | Loja/wiki do Transportes | Não abrir Helianto nem Ink Agent |
 | 2029 | **Helianto** | SaaS condomínio **GA 30/12/2029** | RU Agent; Momento 2 / PWA frota; VT |
 
@@ -63,10 +63,32 @@ Tab no Hub (SQLite, scripts) pode andar em set–nov sem Agent, sem competir com
 |------|-------------------------|--------|
 | CSO FRO 24/24 | Janela planejada 08/04–dez/2027 | **Publicado em 06/10/2026** (decisão explícita). Não reabrir o epic |
 | Ink PWA Agent | dez/2026–jun/2027 | **Tab**; GA com Agent **não antes de 2028** |
-| CSO Momento 2 / PWA frota | 2027 | **depois de dez/2028** (2028 = Transportes) |
-| Virtual Tracker™ | 08/11/2028 (mesmo dia do Transportes) | **não compete** com Transportes em 2028 |
+| CSO Momento 2 | 2027 | Epic completo sem antecipação automática; reaproveitar somente itens necessários à integração, conforme INT-03. PWA de gestão offline cancelada em 15/10/2026 |
+| Virtual Tracker | Fora do envelope de Transportes em 2028 | Decisão de 17/10/2026: capacidade integrada, não terceiro produto; alvo conjunto **08/11/2028**, condicionado aos gates INT |
 | PIX Split PDV | 2027 código | Papel até o Hub no ar; Agent **só com folga do FRO** |
 | Helianto SaaS | 30/12/2027 código | **30/12/2029**; Agent **2029**; cede se o CSO precisar |
+
+### CSO integrado — decisão de planejamento de 17/10/2026
+
+Esta decisão substitui a exclusão anterior do VT em 2028, mas não libera
+implementação imediata, cota extra ou execução simultânea das duas oficinas.
+PDV, Hub, teto de 80% e um produto pesado por ciclo permanecem.
+
+Fonte operacional: [plano mestre de Transportes, seção 7](../../caracore-cso-transportes/docs/plano_organizado_execucao_cso.md#7-plano-integrado-transportes--virtual-tracker).
+São **10 sprints locais estimadas**, mais **21 tarefas integradas (0/21)** em
+**6 etapas**, não seis sprints. INT-01/02 levantam o baseline e provam o celular;
+INT-03 fecha estimativa total, responsáveis, ciclos e folga antes de confirmar
+a viabilidade da data. MON permanece 0/53; não somar seus itens ao INT como
+trabalho independente, nem antecipar todo o epic.
+
+Frotas continua somente online. No VT planejado, autentica e encaminha
+envelopes cifrados ponta a ponta, sem ler nem persistir posições, rotas,
+trânsito ou envelopes, inclusive em logs/cache/filas. Chave privada,
+mapa e histórico ficam somente no desktop. Relay apenas em memória
+transitória limitada; sem base conectada, não acumula. Perfil econômico
+de referência: presença 120 s quando necessária e posição 60 s em viagem,
+com limites, reconexão progressiva e sem fila offline. Protocolo, endpoints,
+prova móvel e medições ainda pendentes; não vender localização instantânea.
 
 Se um ciclo bater 80% cedo: **desliza o dono seguinte**, não comprime dois GAs no mesmo mês.
 

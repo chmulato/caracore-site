@@ -16,6 +16,26 @@
 
 ## 1. Visão Geral e Filosofia Arquitetural
 
+### CSO — decisão vigente de 17/10/2026
+
+Este bloco substitui referências anteriores a VT separado, exclusão de VT em
+2028 e futura gestão offline. São duas aplicações, Frotas Web e Transportes
+Desktop, com Virtual Tracker como capacidade integrada. Alvo conjunto
+**08/11/2028**, condicionado à prova móvel, capacidade e homologação, sem
+implementação imediata ou alteração da prioridade PDV/Hub.
+Fonte: `caracore-cso-transportes/docs/plano_organizado_execucao_cso.md`, seção 7:
+10 sprints locais estimadas + 21 tarefas INT em 6 etapas (0/21); INT-03 fecha
+o total de sprints/ciclos. MON 0/53, sem somar ou antecipar o epic completo.
+
+Frotas é somente online. No VT planejado, autentica/presença e relay E2EE,
+sem ler nem persistir telemetria/envelopes, inclusive logs/APM/cache/filas.
+Somente memória transitória limitada; privada de descriptografia, mapa e
+histórico somente no desktop. Presença 120 s quando necessária e posição
+60 s em viagem são referências a medir; sem fila offline ou posição
+instantânea. A loja apresenta Transportes + VT em desenvolvimento com CTA
+de conversa, não compra antecipada; Frotas disponível como complemento.
+Não confundir atualização local de copy com publicação ou integração pronta.
+
 A Cara Core Informática desenvolve soluções sob o modelo de **Engenharia B2B**, **Código Transparente no Ambiente do Cliente** e a filosofia do **Bunker Digital**:
 - **Offline-First & Soberania de Dados:** Prioridade para persistência local (SQLite / arquivos locais) onde a operação do cliente nunca é interrompida por instabilidades de rede ou nuvem.
 - **FinOps & Abordagem Híbrida Pragmática:** A nuvem é utilizada para colaboração, captação e telemetria gerencial, sem onerar o cliente com custos recorrentes desnecessários.
@@ -28,7 +48,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 | Chave | O que é | Status público honesto |
 |---|---|---|
 | **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.12-free`**, atualização corretiva da linha 3.2.x (manutenção até 08/11/2026) · Java pré-release **`v4.0.0-rc6`** (Windows; ciclo de RCs, GA só após aprovação formal) · Rust **`v0.1.4`** piloto Windows |
-| **CSO** | Frotas Web + Transportes Desktop (2028) | Gestão de frota FRO 24/24 em produção desde 06/10 (Flyway V33). Freeze M1 em 08/11/2026. Jornada, app offline e GPS ficam depois. **Não é GPS** |
+| **CSO** | Frotas Web + Transportes Desktop, com VT integrado futuro | Frotas em produção desde 06/10, sem GPS hoje. Freeze M1 em 08/11/2026. Transportes + VT: alvo conjunto 08/11/2028 sujeito aos gates INT. Sem gestão offline |
 | **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
 
 ### Registro da Matriz — CDN/Vercel — 05/10/2026
@@ -137,7 +157,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 1. **Oficina (`caracore-<produto>`):** Contém código-fonte, scripts, testes, Docker, `.mvn` e documentação técnica interna.
 2. **Loja (`caracore-<produto>-releases`):** Site estático publicado no GitHub Pages com subdomínio próprio (`*.caracore.com.br`), servindo como a **verdade comercial do produto** (vitrine, download e canal de feedback). A documentação vive em `wiki.caracore.com.br`.
 3. **Sem destinos `/delivery/`:** Links e CTAs institucionais apontam diretamente para os subdomínios oficiais das lojas (o diretório legado `/delivery/` é mantido apenas por redirecionamentos `_redirects`).
-4. **CSO (duas URLs, uma loja):** a **aplicação** Frotas vive em `cso.caracore.com.br`; a **loja única** (Frotas + Transportes) vive em `cso-transp.caracore.com.br`. Clone local canónico: `D:\onedrive\dev\caracore-cso-releases`. A loja não substitui o SaaS. Em 08/11/2028 as duas frentes viram um só produto.
+4. **CSO (duas aplicações, uma solução):** Frotas vive em `cso.caracore.com.br`; loja única em `cso-transp.caracore.com.br`, clone `D:\onedrive\dev\caracore-cso-releases`. Transportes + Virtual Tracker integrado têm alvo conjunto em 08/11/2028, sujeito aos gates INT; não é fusão de aplicações/bancos nem terceiro produto.
 
 ---
 
@@ -192,10 +212,10 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
  - Rust: loja própria (`pdv-rust.caracore.com.br`) e entrega própria de artefatos no **mesmo** repositório `chmulato/caracore-rust-pdv-releases` (GitHub Pages + GitHub Releases). Clone local da loja: `caracore-pdv-rust-releases` (nome da pasta ≠ nome no GitHub). Tag atual **`v0.1.4`**. Neste repo Rust, `/releases` e `/latest` são só o piloto. **Não** usar `caracore-pdv-releases` para o Rust (canal Java).
 2. **CaraCore CSO (Estratégia Dual):**
    - **Frotas (Web):** Em produção em `https://cso.caracore.com.br/` (Quarkus + Postgres). Oficina `caracore-cso-quarkus` (não existe oficina `caracore-cso-frotas`). Desde 06/10 a versão inclui km/L, documentos, pneus, exame toxicológico, infrações e custo por km (`b90d1dc`, Flyway V33; index `e1e8d63`). Até 08/11/2026 o trabalho é o freeze M1 dessa versão. Jornada, app offline e GPS ficam depois.
-   - **Transportes (Desktop):** Produto bunker offline previsto para lançamento em **08/11/2028**. Oficina `caracore-cso-transportes` — **só código e docs técnicos**; sem URL, clone nem copy de loja. **Não** é a data do PDV v4.
-   - **Vitrine (loja única):** clone canónico `D:\onedrive\dev\caracore-cso-releases` → `https://cso-transp.caracore.com.br/`. Home = conversão da Frotas (CTAs → `/cadastro` e planos). 2028/GPS/stack ficam abaixo. Sem instalador público até o GA do desktop. Em **08/11/2028** as duas frentes viram um só produto.
+   - **Transportes (Desktop):** operação administrativa local e integração VT planejada, com alvo conjunto em **08/11/2028** sujeito aos gates INT. Oficina `caracore-cso-transportes` mantém código e documentação; copy comercial na loja separada. Acompanhamento exige conexão, sem fila offline. Não é a data do PDV v4.
+   - **Vitrine (loja única):** clone `D:\onedrive\dev\caracore-cso-releases` → `https://cso-transp.caracore.com.br/`. Home apresenta Transportes + VT integrado em desenvolvimento, alvo conjunto **08/11/2028** condicionado aos gates INT. CTA **Conversar sobre minha operação**; sem contratação antecipada, preço ou instalador não publicado. Frotas é complemento já disponível.
    - **Landing da aplicação (05/09/2026):** JSON-LD (Organization + SoftwareApplication + FAQPage), cache 5 min na `/`, LCP WebP. Copy lidera com “gestão de frotas”. Oficina `caracore-cso-quarkus`.
-   - CSO de gestão **não** é rastreador GPS. Virtual Tracker™ é produto futuro, separado, 2028. Na loja: sem depoimento inventado e sem % de economia.
+   - Frotas disponível hoje não inclui GPS. Virtual Tracker é capacidade integrada futura, não produto separado; não anunciar localização como implementada. Sem depoimento inventado nem % de economia.
 3. **CaraCore Hub:**
    - Gestão de **encomendas** para centros de distribuição (Mercado Livre, Shopee, Temu). **Não** é orquestrador interno da Cara Core nem Python/Flask (isso é Área 51).
    - Oficina web **2.1 concluída** (Jakarta EE 10 · WAR · Tomcat · JSP · SQLite local em WAL). O banco do produto fica no computador do cliente. O WAR é artefato de oficina, não release pública. O calendário oficial de GA é o **instalador Windows com Electron, Tomcat embutido e o mesmo SQLite** em **06/04/2027**. Stack pública: Java 25, Jakarta EE 10, Tomcat 10.1.
@@ -229,7 +249,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
   - **CaraCore Hub (GA Instalador Windows):** `06/04/2027`
   - **RU Soberano:** o código de sala continua na oficina `caracore-ru`. A loja promete o BioReator 4.0.
   - **BioReator 4.0:** Community **1.1.1** publicada em 13/10/2026, na oficina do RU. MSI e ZIP na release `bioreator-1.1.1`, sem assinatura. Distingue biomassa viável/total, calcula P/V pelo volume líquido e registra o primeiro critério de término em `end_reason`; mantém a cinética configurada de oxigênio, temperatura e pH, fase lag, decaimento celular, encerramento por esgotamento do substrato e estimativa de UFC/mL da 1.1.0. Premium em 18/06/2027, sem preço e sem PIX. A loja inclui manual técnico, critérios de término, fundamentos e exemplo. Não desloca a cota de outubro (PDV v4).
-  - **CaraCore CSO Transportes (Desktop Bunker):** `08/11/2028` — **dois anos** depois do PDV v4
+  - **CaraCore CSO Transportes + Virtual Tracker integrado:** alvo conjunto `08/11/2028`, condicionado à prova móvel, capacidade e homologação; independente do calendário PDV
   - **Helianto Condominium (SaaS Condominial):** `30/12/2029` — Agent em 2029 (depois do Transportes)
   - **Ink Agenda PWA:** roadmap — Tab; **sem GA com Agent** até folga do núcleo (**não antes de 2028**); sem DMG/DEB; sprints `caracore-ink/docs/PLANO_PWA.md`
   - **Evolução de Negócio PDV V3 (PIX Split PME):** `2027` (papel; Agent depois do Hub no ar e com folga do FRO)
@@ -248,10 +268,10 @@ Canónico: [`caracore-site/docs/CALENDARIO_COTA_CURSOR.md`](caracore-site/docs/C
 | 09/nov–04/dez/2026 | PDV v4 RCs + copy CSO M1 | Homologação até aprovação formal; Freeze M1 |
 | dez/2026–06/04/2027 | **Hub** | GA Windows 06/04/2027 |
 | 08/04–dez/2027 | — | FRO 24/24 já publicado em 06/10. Não reabrir o epic |
-| 2028 | **CSO Transportes** | GA 08/11/2028 |
+| 2028 | **CSO Transportes + integração VT** | Alvo conjunto 08/11/2028, sujeito aos gates INT |
 | 2029 | **Helianto** | GA 30/12/2029 |
 
-FRO 24/24 já está em produção desde 06/10, por decisão explícita. Outubro–08/nov continua com o PDV v4 e o encerramento da Free 3.2.12 como foco; após isso, continuar as RCs até aprovação. Não abrir MON nem PWA. Dezembro = **Hub**, não Ink. Ink PWA = Tab; Agent só com folga do núcleo (**não antes de 2028**). Momento 2 / PWA frota / Virtual Tracker **não** cabem neste envelope até depois de 2028. RU = Garagem sem mês de Agent. Helianto **não** abre Agent em 2027–2028. Guia se a decisão muda GA ou dono: [`RISCOS_ECOSSISTEMA.md`](caracore-site/docs/RISCOS_ECOSSISTEMA.md).
+FRO 24/24 já está em produção desde 06/10; não reabrir. Prioridades PDV e Hub preservadas. Não abrir implementação MON/VT agora. O recorte integrado VT passa a compor o alvo de Transportes em 2028, sujeito à prova móvel e INT-03, sem cota extra ou antecipação de todo MON. PWA de gestão offline cancelada, não adiada. Ink Agent só com folga do núcleo; RU sem mês de Agent; Helianto não abre Agent em 2027–2028. Calendário: `caracore-site/docs/CALENDARIO_COTA_CURSOR.md`.
 
 ---
 

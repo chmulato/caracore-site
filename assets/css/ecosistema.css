@@ -575,6 +575,78 @@
   background: rgba(108, 117, 125, 0.05);
 }
 
+/* Tabela de Lojas Oficiais */
+.eco-lojas-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.eco-lojas-table th,
+.eco-lojas-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.eco-lojas-table thead th {
+  background: #f8f9fa;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #495057;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.eco-lojas-table .row-group-nucleo {
+  background: rgba(13, 110, 253, 0.08);
+  color: #0a58ca;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: 2px solid rgba(13, 110, 253, 0.2);
+}
+
+.eco-lojas-table .row-group-brinco {
+  background: #f8f9fa;
+  color: #6c757d;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.eco-lojas-table tbody tr:hover td {
+  background: rgba(13, 110, 253, 0.02);
+}
+
+.eco-badge-nucleo {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 6px;
+  background: rgba(13, 110, 253, 0.15);
+  color: #0a58ca;
+}
+
+.eco-badge-brinco {
+  display: inline-block;
+  padding: 0.25rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 6px;
+  background: #e9ecef;
+  color: #6c757d;
+}
+
 /* Diagrama */
 .ecossistema-section .diagram-container {
   max-width: 100%;

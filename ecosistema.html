@@ -648,71 +648,108 @@
 <section id="lojas-oficiais" class="ecossistema-section py-5">
   <div class="container-fluid px-0">
         <h2 class="text-center mb-3">Lojas oficiais do ecossistema (subdominios)</h2>
-        <p class="text-center text-muted mb-4">Cada produto tem vitrine em <strong>subdomínio próprio</strong>. A matriz resume; a loja é a fonte comercial (CSO: vitrine em cso-transp.caracore.com.br; aplicação em cso.caracore.com.br). Índice completo no <a href="portfolio.html">portfólio</a>.</p>
+        <p class="text-center text-muted mb-4">Cada produto tem vitrine em <strong>subdomínio próprio</strong>. A matriz resume; a loja é a fonte comercial. Índice completo no <a href="portfolio.html">portfólio</a>.</p>
         <div class="table-responsive">
-          <table class="table table-bordered align-middle mb-0">
+          <table class="eco-lojas-table table table-bordered align-middle mb-0">
             <thead>
               <tr>
-                <th scope="col">Ordem</th>
-                <th scope="col">Loja</th>
-                <th scope="col">Subdominio</th>
+                <th scope="col" style="width: 70px;" class="text-center">#</th>
+                <th scope="col">Produto / Vitrine</th>
+                <th scope="col" style="width: 140px;" class="text-center">Papel</th>
+                <th scope="col">Subdomínio Oficial</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>CaraCore PDV Java (web local)</td>
-                <td><a href="https://pdv.caracore.com.br/" class="text-decoration-none">pdv.caracore.com.br</a></td>
+              <!-- Núcleo: Produtos Principais -->
+              <tr class="table-primary row-group-nucleo">
+                <th colspan="4" class="py-2 px-3 fw-bold text-primary small text-uppercase">
+                  <i class="bi bi-shield-check me-1"></i> Produtos Principais (Núcleo)
+                </th>
               </tr>
               <tr>
-                <td>2</td>
-                <td>CaraCore PDV</td>
+                <td class="text-center text-muted">1</td>
+                <td class="fw-semibold">CaraCore PDV (Java web local)</td>
+                <td class="text-center"><span class="badge bg-primary eco-badge-nucleo">Núcleo</span></td>
+                <td><a href="https://pdv.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">pdv.caracore.com.br</a></td>
+              </tr>
+              <tr>
+                <td class="text-center text-muted">2</td>
+                <td class="fw-semibold">CaraCore PDV (Rust desktop)</td>
+                <td class="text-center"><span class="badge bg-primary eco-badge-nucleo">Núcleo</span></td>
                 <td><a href="https://pdv-rust.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">pdv-rust.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td>3</td>
-                <td>CaraCore CSO</td>
-                <td><a href="https://cso-transp.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">cso-transp.caracore.com.br</a></td>
+                <td class="text-center text-muted">3</td>
+                <td class="fw-semibold">CaraCore CSO (Frotas e Transportes)</td>
+                <td class="text-center"><span class="badge bg-primary eco-badge-nucleo">Núcleo</span></td>
+                <td><a href="https://cso-transp.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">cso-transp.caracore.com.br</a> <span class="text-muted small">· aplicação em <a href="https://cso.caracore.com.br/" target="_blank" rel="noopener">cso.caracore.com.br</a></span></td>
               </tr>
               <tr>
-                <td>4</td>
-                <td>CaraCore Hub</td>
-                <td><a href="https://hub.caracore.com.br/" class="text-decoration-none">hub.caracore.com.br</a></td>
+                <td class="text-center text-muted">4</td>
+                <td class="fw-semibold">CaraCore Hub (logística e distribuição)</td>
+                <td class="text-center"><span class="badge bg-primary eco-badge-nucleo">Núcleo</span></td>
+                <td><a href="https://hub.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">hub.caracore.com.br</a></td>
+              </tr>
+
+              <!-- Brincos do Portfólio -->
+              <tr class="table-light row-group-brinco">
+                <th colspan="4" class="py-2 px-3 fw-bold text-muted small text-uppercase">
+                  <i class="bi bi-gem me-1"></i> Brincos do Portfólio (Satélites, Educação, Simulação e Ferramentas)
+                </th>
               </tr>
               <tr>
-                <td>5</td>
-                <td>CaraCore Seed</td>
-                <td><a href="https://seed.caracore.com.br/" class="text-decoration-none">seed.caracore.com.br</a> · pré-release candidata Windows 0.1.5, avaliação pública, homologação independente pendente</td>
+                <td class="text-center text-muted">5</td>
+                <td>Ink Agenda</td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://ink.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">ink.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td>6</td>
+                <td class="text-center text-muted">6</td>
                 <td>Reino OIDC</td>
-                <td><a href="https://oidc.caracore.com.br/" class="text-decoration-none">oidc.caracore.com.br</a></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://oidc.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">oidc.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td>7</td>
-                <td>Área 51 — identidade institucional</td>
-                <td><a href="https://area51.caracore.com.br/" class="text-decoration-none">area51.caracore.com.br</a></td>
+                <td class="text-center text-muted">7</td>
+                <td>Área 51 (identidade institucional)</td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://area51.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">area51.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td>8</td>
+                <td class="text-center text-muted">8</td>
                 <td>BioReator 4.0</td>
-                <td><a href="https://ru.caracore.com.br/" class="text-decoration-none">ru.caracore.com.br</a></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://ru.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">ru.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td>9</td>
+                <td class="text-center text-muted">9</td>
                 <td>Minerador 4.0 (ETE)</td>
-                <td><a href="https://ete.caracore.com.br/" class="text-decoration-none">ete.caracore.com.br</a></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://ete.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">ete.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td>10</td>
+                <td class="text-center text-muted">10</td>
                 <td>Circuito Ferradura</td>
-                <td><a href="https://circuito.caracore.com.br/" class="text-decoration-none">circuito.caracore.com.br</a></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://circuito.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">circuito.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td>11</td>
-                <td>Cara Core Ink Agenda</td>
-                <td><a href="https://ink.caracore.com.br/" class="text-decoration-none">ink.caracore.com.br</a></td>
+                <td class="text-center text-muted">11</td>
+                <td>CaraCore Seed</td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://seed.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">seed.caracore.com.br</a></td>
+              </tr>
+              <tr>
+                <td class="text-center text-muted">12</td>
+                <td>Cara Core MKT</td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://mkt.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">mkt.caracore.com.br</a></td>
+              </tr>
+              <tr>
+                <td class="text-center text-muted">13</td>
+                <td>Helianto Condominium</td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://helianto.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">helianto.caracore.com.br</a></td>
               </tr>
             </tbody>
           </table>

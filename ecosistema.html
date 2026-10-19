@@ -15,7 +15,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ecossistema Cara Core: Arquitetura Híbrida e Resiliência | Cara Core Informática</title>
-  <meta name="description" content="Ecossistema Cara Core: produtos como prova de entrega em arquitetura híbrida e resiliência (offline-first/edge, FinOps). PDV Java v3.2.12-free, atualização corretiva da linha 3.2.x, v4 em ciclo de RCs e Rust v0.1.4, além de roadmap e lojas oficiais.">
+  <meta name="description" content="Ecossistema Cara Core: produtos como prova de entrega em arquitetura híbrida e resiliência (offline-first/edge, FinOps). Produtos principais: PDV, CSO e Hub, além de satélites educacionais, ferramentas institucionais e roadmap público.">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
   <link rel="canonical" href="https://www.caracore.com.br/ecosistema.html">
@@ -24,7 +24,7 @@
     "@context": "https://schema.org",
     "@type": "WebPage",
     "name": "Ecossistema Cara Core — Prova de Entrega B2B e Bunker Digital",
-    "description": "Mapa de produtos Cara Core como prova de entrega da engenharia B2B: PDV Java v3.2.12-free, atualização corretiva da linha 3.2.x, v4 em ciclo de RCs, CSO Frotas em produção e marcos do ecossistema.",
+    "description": "Mapa de produtos Cara Core como prova de entrega da engenharia B2B: produtos principais no núcleo (PDV, CSO e Hub) e satélites complementares com soberania de dados.",
     "url": "https://www.caracore.com.br/ecosistema.html",
     "publisher": {
       "@type": "Organization",
@@ -176,15 +176,17 @@
 <section id="mapa-visual" class="ecossistema-section py-4">
   <div class="container-fluid px-0">
     <h2 class="h4 text-center mb-2">Mapa do ecossistema</h2>
-    <p class="text-center text-muted small mb-4">Núcleo comercial, satélites educacionais e simuladores, base institucional e lançamentos na Garagem.</p>
+    <p class="text-center text-muted small mb-4">Produtos principais no núcleo (PDV, CSO e Hub), satélites educacionais, ferramentas base e roadmap na Garagem.</p>
     <div class="eco-map">
-      <p class="eco-map-title">Visão em camadas</p>
+      <p class="eco-map-title">Visão em camadas · Prioridade do ecossistema</p>
       <div class="eco-map-row">
         <a href="portfolio.html#caracore-pdv" class="eco-map-node eco-map-node--nucleo">PDV Java</a>
         <a href="portfolio.html#caracore-pdv-rust" class="eco-map-node eco-map-node--nucleo">PDV Rust</a>
         <a href="portfolio.html#caracore-cso" class="eco-map-node eco-map-node--nucleo">CSO Frotas</a>
+        <a href="portfolio.html#caracore-cso" class="eco-map-node eco-map-node--nucleo">CSO Transportes</a>
+        <a href="portfolio.html#caracore-hub" class="eco-map-node eco-map-node--nucleo">CaraCore Hub</a>
       </div>
-      <div class="eco-map-core"><i class="bi bi-shield-check me-1"></i> Núcleo Bunker · SQLite local · offline-first</div>
+      <div class="eco-map-core"><i class="bi bi-shield-check me-1"></i> Produtos Principais · Núcleo Comercial & Bunker</div>
       <div class="eco-map-row">
         <a href="https://oidc.caracore.com.br/" class="eco-map-node eco-map-node--satelite">Reino OIDC</a>
         <a href="https://ete.caracore.com.br/" class="eco-map-node eco-map-node--satelite">Minerador 4.0</a>
@@ -198,16 +200,14 @@
         <a href="portfolio.html#caracore-seed" class="eco-map-node eco-map-node--gratuito">Seed · piloto público</a>
       </div>
       <div class="eco-map-row mt-2">
-        <a href="#garagem" class="eco-map-node eco-map-node--garagem">Hub · Abr/2027</a>
-        <a href="#garagem" class="eco-map-node eco-map-node--garagem">RU · Jun/2027</a>
-        <a href="#garagem" class="eco-map-node eco-map-node--garagem">CSO Transportes · 2028</a>
+        <a href="#garagem" class="eco-map-node eco-map-node--garagem">BioReator 4.0 Premium · 2027</a>
         <a href="#garagem" class="eco-map-node eco-map-node--garagem">Helianto · Dez/2029</a>
       </div>
       <div class="eco-map-legend">
-        <span><i class="leg-prateleira"></i> Prateleira</span>
-        <span><i class="leg-educacao"></i> Educação / simulação</span>
-        <span><i class="leg-garagem"></i> Garagem</span>
-        <span><i class="leg-gratuito"></i> Gratuito / base</span>
+        <span><i class="leg-prateleira"></i> Produtos principais (núcleo: PDV, CSO, Hub)</span>
+        <span><i class="leg-educacao"></i> Satélites / educação / simulação</span>
+        <span><i class="leg-gratuito"></i> Gratuito / ferramentas base</span>
+        <span><i class="leg-garagem"></i> Garagem / roadmap</span>
       </div>
     </div>
   </div>
@@ -402,6 +402,27 @@
           <a href="https://cso.caracore.com.br/" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Acessar aplicação</a>
           <a href="https://cso-transp.caracore.com.br/" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">Ver vitrine</a>
           <a href="portfolio.html#caracore-cso" class="btn btn-sm btn-outline-secondary">Portfólio</a>
+        </div>
+      </article>
+
+      <article class="eco-product-card eco-product-card--prateleira cc-card-hub">
+        <div class="eco-product-card-head">
+          <i class="bi bi-cart-fill eco-product-icon" aria-hidden="true"></i>
+          <span class="eco-status eco-status-progress">Pré-release v2.1.0-rc1.2</span>
+        </div>
+        <h3>CaraCore Hub (logística e distribuição)</h3>
+        <p class="eco-product-stack">Java 25 · Jakarta EE 10 · SQLite local (WAL) · Tomcat 10.1</p>
+        <ul class="eco-product-bullets">
+          <li>Gestão e conciliação de encomendas para Mercado Livre, Shopee e Temu</li>
+          <li>Banco SQLite local (WAL) no computador da operação — autonomia e Bunker Digital</li>
+          <li>Oficina web 2.1 concluída; pré-release Windows v2.1.0-rc1.2 publicada (instalador e ZIP, unsigned)</li>
+          <li>Produto principal do núcleo logístico; GA do instalador Windows previsto para 06/04/2027</li>
+        </ul>
+        <p class="eco-product-meta"><strong>Loja:</strong> hub.caracore.com.br · <strong>Releases:</strong> GitHub</p>
+        <div class="eco-product-cta">
+          <a href="https://hub.caracore.com.br/download.html" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Baixar pré-release</a>
+          <a href="https://hub.caracore.com.br/" class="btn btn-sm btn-outline-secondary" target="_blank" rel="noopener">Ver apresentação</a>
+          <a href="portfolio.html#caracore-hub" class="btn btn-sm btn-outline-secondary">Portfólio</a>
         </div>
       </article>
 
@@ -699,12 +720,12 @@
   </div>
 </section>
 
-<!-- Garagem — Hub, Premium do BioReator, Helianto, CSO Transportes. Community fica na prateleira. -->
+<!-- Garagem — Lançamentos programados -->
 <section id="garagem" class="eco-garagem-section ecossistema-section py-5">
   <div class="container-fluid px-0">
         <span class="eco-section-badge eco-section-badge--garagem">Garagem · The Lab</span>
         <h2 class="h3 mb-2">Lançamentos programados</h2>
-        <p class="text-muted mb-4">Produtos em desenvolvimento com data pública de lançamento. A <strong>Gestão de Frotas</strong> do CSO já está na prateleira. Veja também o <a href="#roadmap">roadmap</a>.</p>
+        <p class="text-muted mb-4">Roadmap de lançamentos programados e expansões do ecossistema. <strong>PDV, CSO e Hub</strong> formam o núcleo de produtos principais. Veja também o <a href="#roadmap">roadmap</a>.</p>
         <div class="row g-4 mb-4">
           <div class="col-md-6 col-lg-3">
             <div class="eco-garagem-card cc-card-hub">
@@ -980,14 +1001,18 @@ flowchart TB
     subgraph MATRIZ["Site matriz — caracore.com.br"]
         M[Portfólio · Ecossistema · Wiki]
     end
-    subgraph PRODUTOS["Produtos"]
+    subgraph NUCLEO["Produtos Principais — Núcleo"]
         P1[PDV Java web local]
         P1r[PDV Rust + Tauri]
+        P_CSO[CSO Frotas e Transportes]
+        P5[Cara Core Hub]
+    end
+    subgraph BRINCOS["Satélites e Brincos"]
+        P_INK[Ink Agenda]
         P2[Minerador 4.0]
         P2b[BioReator 4.0 Community]
         P3[Reino OIDC]
         P4[Circuito Ferradura]
-        P5[Cara Core Hub]
         P6[Área 51]
         P7[Cara Core Seed]
         P8[Cara Core MKT]
@@ -995,10 +1020,12 @@ flowchart TB
     subgraph OFICINAS["Oficinas — repositórios de código"]
         O1[caracore-pdv]
         O1r[caracore-pdv-rust]
+        O_CSO[caracore-cso-quarkus]
+        O5[caracore-hub]
+        O_INK[caracore-ink]
         O2[caracore-ete]
         O3[caracore-oidc]
         O4[caracore-circuito]
-        O5[caracore-hub]
         O6[caracore-area51]
         O7[caracore-seed]
         O8[caracore-mkt]
@@ -1006,59 +1033,48 @@ flowchart TB
     subgraph LOJAS["Lojas — GitHub Pages"]
         L1[caracore-pdv-releases]
         L1r[caracore-rust-pdv-releases]
+        L_CSO[cso-transp.caracore.com.br]
+        L5[caracore-hub-releases]
+        L_INK[caracore-ink-releases]
         L2[caracore-ete-releases]
         L3[caracore-oidc-releases]
         L4[caracore-circuito-releases]
-        L5[caracore-hub-releases]
         L6[caracore-area51-releases]
         L7[caracore-seed-releases]
     end
-    subgraph GARAGEM["Garagem — futuros lançamentos (em desenvolvimento)"]
-        G2[caracore-ru]
-        G3[caracore-ru-releases]
-        G4[Cara Core Ink Agenda]
-        G5[caracore-ink]
-        G6[caracore-ink-releases]
-        G7[CaraCore CSO]
-        G8[caracore-cso-quarkus]
-        G9[cso.caracore.com.br]
-        G9b[cso-transp.caracore.com.br]
+    subgraph GARAGEM["Garagem — futuros lançamentos"]
+        G2[BioReator 4.0 Premium]
         G10[Helianto Condominium]
-        G11[caracore-helianto]
     end
-    M --> P1 & P1r & P2 & P2b & P3 & P4 & P5 & P6 & P7 & P8
+    M --> P1 & P1r & P_CSO & P5
+    M --> P_INK & P2 & P2b & P3 & P4 & P6 & P7 & P8
     P1 --> O1
     P1r --> O1r
+    P_CSO --> O_CSO
+    P5 --> O5
+    P_INK --> O_INK
     P2 --> O2
     P3 --> O3
     P4 --> O4
-    P5 --> O5
     P6 --> O6
     P7 --> O7
     P8 --> O8
     O1 --> L1
     O1r --> L1r
+    O_CSO --> L_CSO
+    O5 --> L5
+    O_INK --> L_INK
     O2 --> L2
     O3 --> L3
     O4 --> L4
-    O5 --> L5
     O6 --> L6
     O7 --> L7
     P2b --> G2
-    G2 --> G3
-    M --> G4
-    G4 --> G5
-    G5 --> G6
-    M --> G7
-    G7 --> G8
-    G8 --> G9
-    G8 --> G9b
     M --> G10
-    G10 --> G11
           </div>
         </div>
         <p class="small text-muted mb-4">
-          <strong>Prateleira:</strong> PDV (Java + Rust), CSO Frotas (em produção), OIDC, ETE, BioReator 4.0 Community 1.1.1, Circuito, Ink, Área 51, MKT, Seed. <strong>Garagem:</strong> Hub (2027), Premium do BioReator (18/06/2027, sem preço e sem PIX), CSO Transportes (2028), Helianto (2029).
+          <strong>Produtos principais (núcleo):</strong> PDV (Java estável v3.2.12-free, v4 em ciclo de RCs e Rust v0.1.4), CSO (Frotas em produção e Transportes desktop com Virtual Tracker, alvo 2028) e Hub (logística com banco SQLite local, pré-release Windows v2.1.0-rc1.2; GA em 06/04/2027). <strong>Brincos complementares:</strong> Ink Agenda, Reino OIDC, Minerador 4.0, BioReator 4.0 Community 1.1.1 (Premium em 2027), Circuito Ferradura, Área 51, Cara Core MKT, Cara Core Seed e Helianto (2029).
         </p>
 
         <div class="eco-cta-block">

@@ -2,6 +2,20 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### PDV v4 — checkpoint de pausa em 18/10/2026, 14:54 BRT
+
+Trabalho pausado por créditos de IA, sem GA aprovado. `caracore-pdv` está em `master`
+`257e58c`, com Maven local `4.0.0` e alterações não commitadas; isso não é release.
+Estável registrada `v3.2.12-free`; RC6 continua pré-release pública. Novas decisões:
+preservar modelo/dados da 3.2.12 (migração segura ainda bloqueadora) e homologar
+automaticamente em ambiente isolado/simulado, SQLite real de teste, viewport 1280×800
+emulado. Automatizar o fluxo até a entrega, com publicação somente autorizada.
+Relatórios existentes têm 1.294 testes, zero falhas/erros e três ignorados, sem prova
+de execução única completa do candidato; não equivalem a homologação final.
+M11, caminho de publicação e CTA pendentes; PERF congelada. Sem commit/push/publicação
+nesta sessão. Retomar pelo [checkpoint da oficina](../../caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md#checkpoint-de-pausa--18102026-1454-brt)
+e pelas [decisões de GA](../../caracore-pdv/docs/arquitetura/DECISOES_GA_V4.md).
+
 ### CSO — alinhamento de planejamento em 17/10/2026
 
 Prevalece sobre snapshots anteriores: Frotas Web e Transportes Desktop são

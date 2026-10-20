@@ -92,7 +92,7 @@
         <div class="apresentacao-content">
           <h2>1. Sumário Executivo</h2>
           <p>
-            O <strong>Caracore-Seed</strong> é um sistema empresarial de controle de licenças que protege e monetiza o acesso ao <strong>Caracore-Hub</strong>, nossa plataforma unificada de gestão de marketplaces. O sistema implementa um modelo de negócio Software-as-a-Service (SaaS) com cobrança mensal recorrente por Centro de Distribuição, garantindo que apenas clientes autorizados e em dia com pagamentos tenham acesso às funcionalidades premium.
+            O <strong>Caracore-Seed</strong> é um sistema empresarial de controle de licenças que protege e monetiza o acesso ao <strong>Caracore-Hub</strong>, nosso sistema de gestão logística interna para pontos de retirada (PUDOs). O sistema implementa um modelo de negócio Software-as-a-Service (SaaS) com cobrança mensal recorrente por ponto de retirada, garantindo que apenas clientes autorizados e em dia com pagamentos tenham acesso às funcionalidades premium.
           </p>
           
           <h3>1.1 Valor de Negócio Imediato</h3>
@@ -108,7 +108,7 @@
           
           <h3>2.1 O Problema</h3>
           <p>
-            O Caracore-Hub é uma solução tecnológica que unifica operações de múltiplos marketplaces (Mercado Livre, Shopee, Amazon) em uma única plataforma. Antes do Caracore-Seed, não havia controle efetivo sobre:
+            O Caracore-Hub é uma solução tecnológica que organiza o recebimento, a guarda e a retirada de encomendas recebidas de marketplaces (Mercado Livre, Shopee e Temu) em um único sistema local. Antes do Caracore-Seed, não havia controle efetivo sobre:
           </p>
           <ul>
             <li>Quem estava utilizando o sistema</li>
@@ -123,7 +123,7 @@
             O Caracore-Seed implementa um <strong>sistema de licenciamento online obrigatório</strong> que:
           </p>
           <ol>
-            <li><strong>Valida credenciais</strong> de cada Centro de Distribuição em tempo real</li>
+            <li><strong>Valida credenciais</strong> de cada ponto de retirada em tempo real</li>
             <li><strong>Monitora uso</strong> através de heartbeats automáticos a cada 30 minutos</li>
             <li><strong>Controla limites</strong> de usuários simultâneos e operações diárias</li>
             <li><strong>Bloqueia acesso</strong> automaticamente quando licenças expiram</li>
@@ -136,9 +136,9 @@
           
           <h4>Caracore-Hub (Aplicação Cliente)</h4>
           <ul>
-            <li><strong>Função:</strong> Plataforma principal de gestão de marketplaces</li>
+            <li><strong>Função:</strong> Sistema de gestão logística interna do ponto de retirada</li>
             <li><strong>Tecnologia:</strong> Jakarta EE com módulo integrado de validação</li>
-            <li><strong>Localização:</strong> Centros de Distribuição dos clientes</li>
+            <li><strong>Localização:</strong> Pontos de retirada dos clientes</li>
             <li><strong>Dependência:</strong> Requer validação de licença para operações críticas</li>
           </ul>
 
@@ -229,7 +229,7 @@ graph TB
 
           <h3>4.1 Estrutura de Licenciamento</h3>
           <p>
-            O sistema implementa o modelo <strong>"MENSAL_CD_ONLINE"</strong> com granularidade de uma licença por Centro de Distribuição (identificado por CNPJ único), cobrança mensal recorrente por CD ativo, e conectividade online obrigatória para operação.
+            O sistema implementa o modelo de licença <strong>"MENSAL_CD_ONLINE"</strong> (nome interno herdado da especificação do Seed) com granularidade de uma licença por ponto de retirada (identificado por CNPJ único), cobrança mensal recorrente por PUDO ativo, e conectividade online obrigatória para operação.
           </p>
 
           <h3>4.2 Planos Comerciais Disponíveis</h3>
@@ -375,7 +375,7 @@ graph TB
           
           <h4>Volume de Dados</h4>
           <ul>
-            <li><strong>81 Centros de Distribuição</strong> cadastrados</li>
+            <li><strong>81 pontos de retirada</strong> cadastrados</li>
             <li><strong>4 Licenças ativas</strong> em diferentes planos</li>
             <li><strong>Heartbeats processados</strong> sem falhas</li>
             <li><strong>Zero downtime</strong> nas últimas 30 execuções de teste</li>
@@ -386,7 +386,7 @@ graph TB
             <li><strong>Tempo de validação:</strong> < 100ms por requisição</li>
             <li><strong>Throughput:</strong> 1000+ validações por minuto</li>
             <li><strong>Disponibilidade:</strong> 99.9% uptime</li>
-            <li><strong>Escalabilidade:</strong> Testado até 50 CDs simultâneos</li>
+            <li><strong>Escalabilidade:</strong> Testado até 50 PUDOs simultâneos</li>
           </ul>
 
           <h3>6.2 Evolução Recente da Qualidade (Novembro 2025)</h3>
@@ -471,7 +471,6 @@ graph TB
             <li><strong>Operação e suporte:</strong> R$ 60.000 anuais</li>
             <li><strong>Total:</strong> R$ 234.000</li>
           </ul>
-          </ul>
 
           <h4>Receita Projetada</h4>
           
@@ -486,7 +485,7 @@ graph TB
             </thead>
             <tbody>
               <tr>
-                <td><strong>CDs Ativos</strong></td>
+                <td><strong>PUDOs Ativos</strong></td>
                 <td>25</td>
                 <td>75</td>
                 <td>150</td>
@@ -521,10 +520,10 @@ graph TB
 
           <h3>8.2 Cenário Otimista (24 meses)</h3>
           <ul>
-            <li><strong>300+ Centros de Distribuição</strong> ativos</li>
+            <li><strong>300+ pontos de retirada</strong> ativos</li>
             <li><strong>Ticket médio:</strong> R$ 450 (upselling para planos premium)</li>
             <li><strong>ARR:</strong> R$ 1.6M+</li>
-            <li><strong>Market share:</strong> 15% do mercado de gestão de marketplace</li>
+            <li><strong>Market share:</strong> 15% do mercado de gestão de pontos de retirada</li>
           </ul>
 
           <h2>9. Riscos e Mitigações</h2>
@@ -589,13 +588,13 @@ graph TB
           <ol>
             <li><strong>Deployment em produção</strong> com monitoramento 24/7</li>
             <li><strong>Migração gradual</strong> da base atual de clientes</li>
-            <li><strong>Campanha comercial</strong> para novos Centros de Distribuição</li>
+            <li><strong>Campanha comercial</strong> para novos pontos de retirada</li>
             <li><strong>Otimização contínua</strong> baseada em métricas reais</li>
           </ol>
 
           <div class="highlight-box">
             <p>
-              O Caracore-Seed não é apenas um sistema de controle de licenças - é a <strong>fundação tecnológica</strong> que permitirá ao Caracore-Hub evoluir de uma solução pontual para uma <strong>plataforma empresarial</strong> de gestão de marketplace, com potencial de se tornar líder de mercado no segmento.
+              O Caracore-Seed não é apenas um sistema de controle de licenças - é a <strong>fundação tecnológica</strong> que permitirá ao Caracore-Hub evoluir de uma solução pontual para uma <strong>plataforma empresarial</strong> de gestão logística de pontos de retirada, com potencial de se tornar líder de mercado no segmento.
             </p>
             <p>
               <strong>A implementação está completa. O momento é de execução comercial.</strong>

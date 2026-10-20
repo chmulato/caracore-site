@@ -2,6 +2,22 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Hub — reposicionamento para PUDOs em 20/10/2026
+
+Copy pública alinhada em `caracore-hub-releases` (vitrine `docs/` e cópias legadas da
+raiz), `caracore-wiki`, `caracore-loja` e `caracore-site`: o Hub passa a ser descrito
+como **gestão logística interna para pontos de retirada (PUDOs)**, não como ferramenta
+de centro de distribuição nem de marketplace. Encomendas de Mercado Livre, Shopee e
+Temu continuam como origem dos pacotes; Amazon e B2W seguem só no modelo de dados, sem
+conector. Pré-release Windows `v2.1.0-rc1.2` e GA `06/04/2027` inalterados.
+
+Na oficina, `/retirada/scan` deixou de avaliar EL dentro de template literal JS (o
+render falhava com HTTP 500) e o filtro de canais de `PedidosListaServlet` consulta
+`isDisponivelNaEdicaoFree`. Maven `2.1.0-rc1` completo: core 614, persistence 571, api
+841 (8 ignorados), web 283 testes, zero falhas/erros. Commits locais; nada publicado
+no GitHub além do push solicitado.
+
+
 ### PDV v4 — checkpoint de pausa em 18/10/2026, 14:54 BRT
 
 Trabalho pausado por créditos de IA, sem GA aprovado. `caracore-pdv` está em `master`

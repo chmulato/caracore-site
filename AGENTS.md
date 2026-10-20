@@ -49,7 +49,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 |---|---|---|
 | **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.12-free`**, atualização corretiva da linha 3.2.x (manutenção até 08/11/2026) · Java pré-release **`v4.0.0-rc6`** (Windows; ciclo de RCs, GA só após aprovação formal) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frotas Web + Transportes Desktop, com VT integrado futuro | Frotas em produção desde 06/10, sem GPS hoje. Freeze M1 em 08/11/2026. Transportes + VT: alvo conjunto 08/11/2028 sujeito aos gates INT. Sem gestão offline |
-| **Hub** | Encomendas de Mercado Livre, Shopee e Temu | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
+| **Hub** | Gestão logística interna para PUDOs (encomendas de Mercado Livre, Shopee e Temu) | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
 
 ### Registro da Matriz — CDN/Vercel — 05/10/2026
 
@@ -217,7 +217,7 @@ Para garantir uniformidade e evitar retrabalho, todos os agentes devem obedecer 
    - **Landing da aplicação (05/09/2026):** JSON-LD (Organization + SoftwareApplication + FAQPage), cache 5 min na `/`, LCP WebP. Copy lidera com “gestão de frotas”. Oficina `caracore-cso-quarkus`.
    - Frotas disponível hoje não inclui GPS. Virtual Tracker é capacidade integrada futura, não produto separado; não anunciar localização como implementada. Sem depoimento inventado nem % de economia.
 3. **CaraCore Hub:**
-   - Gestão de **encomendas** para centros de distribuição (Mercado Livre, Shopee, Temu). **Não** é orquestrador interno da Cara Core nem Python/Flask (isso é Área 51).
+   - Gestão logística interna de **encomendas** para pontos de retirada (PUDOs), com conectores Mercado Livre, Shopee e Temu. **Não** é orquestrador interno da Cara Core nem Python/Flask (isso é Área 51).
    - Oficina web **2.1 concluída** (Jakarta EE 10 · WAR · Tomcat · JSP · SQLite local em WAL). O banco do produto fica no computador do cliente. O WAR é artefato de oficina, não release pública. O calendário oficial de GA é o **instalador Windows com Electron, Tomcat embutido e o mesmo SQLite** em **06/04/2027**. Stack pública: Java 25, Jakarta EE 10, Tomcat 10.1.
    - Status em 08/10/2026: a loja oferece a pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned). Mac e Linux ficam fora desta tag. O login da conta real ainda não tem causa confirmada. O GA Windows permanece 06/04/2027.
    - Tia Sócia / Programa Tias Sócias é pitch ilustrativo, não o nome do produto.

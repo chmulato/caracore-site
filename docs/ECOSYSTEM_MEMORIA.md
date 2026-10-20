@@ -16,9 +16,10 @@ render falhava com HTTP 500) e o filtro de canais de `PedidosListaServlet` consu
 `isDisponivelNaEdicaoFree`. Maven `2.1.0-rc1` completo: core 614, persistence 571, api
 841 (8 ignorados), web 283 testes, zero falhas/erros. Publicado a pedido do dono:
 `caracore-hub` `981e81c` (fix + docs de posicionamento e stack), `caracore-hub-releases`
-`cd1edb0`, `caracore-wiki` `883cb3b`, `caracore-loja` `4048991`, `caracore-site`
-`841182e`. Os cinco repositórios estão limpos e iguais ao `origin/master`; nenhuma tag ou
-asset novo foi criado — a vitrine pública continua na `v2.1.0-rc1.2`.
+`cd1edb0`, `caracore-wiki` `883cb3b`, `caracore-loja` `4048991`; a matriz registra este
+corte aqui e em `.cursor/rules/project-memory.mdc`. Os cinco repositórios estão limpos e
+iguais ao `origin/master`; nenhuma tag ou asset novo foi criado — a vitrine pública
+continua na `v2.1.0-rc1.2`.
 
 
 ### PDV v4 — checkpoint de pausa em 18/10/2026, 14:54 BRT

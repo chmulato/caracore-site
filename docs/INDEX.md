@@ -73,6 +73,7 @@ Documentos operacionais — **fonte viva** para repos, URLs, checklists e estrat
 | `../portfolio.html` | Portfólio categorizado + estudos de caso |
 | `../ecosistema.html` | Mapa produtos, roadmap, prova de entrega B2B |
 | `../planning.html` | Torres 0–100% + Funding `#patrocinio` (US$ 800 até dez/2029) |
+| `../sites.html` | Planos de desenvolvimento de sites (serviço de engenharia, fora do catálogo) |
 | `../suporte-local.html` | Suporte PME / M365 / TI local (canal separado) |
 | `../aligned/en/` · `../aligned/it/` | Variantes internacionais (B2B engineering) |
 | `../secure/` | Área 51 OIDC |

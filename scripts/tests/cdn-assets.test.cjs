@@ -50,7 +50,7 @@ test('mutable vendor caching is bounded; only public marketing pages receive sho
     assert.ok(rule);
     assert.ok(rule.headers.some(header => header.key === 'Cache-Control' && header.value === 'public, max-age=86400'));
   }
-  const publicPages = ['/', '/index.html', '/ecosistema.html', '/portfolio.html', '/planning.html', '/suporte-local.html'];
+  const publicPages = ['/', '/index.html', '/ecosistema.html', '/portfolio.html', '/planning.html', '/suporte-local.html', '/sites.html'];
   for (const source of publicPages) {
     const rule = config.headers.find(rule => rule.source === source);
     assert.ok(rule, `Missing explicit public page cache rule for ${source}`);
@@ -91,6 +91,25 @@ test('home loads Bootstrap once, declares one favicon and contains no network po
   assert.doesNotMatch(home, /location\s*\.\s*reload|setInterval\s*\(|http-equiv=["']refresh|rel=["'](?:prefetch|preload)|serviceWorker/);
   assert.match(home, /rel="canonical" href="https:\/\/www\.caracore\.com\.br\/"/);
   assert.match(home, /property="og:image" content="https:\/\/www\.caracore\.com\.br\/assets\/images\/logo\.png"/);
+});
+
+test('canonical catalog feeds portfolio and ecosystem; sites plans live in sites.html', () => {
+  for (const file of ['portfolio.html', 'ecosistema.html']) {
+    const page = read(file);
+    assert.match(page, /assets\/css\/catalog\.css/);
+    assert.match(page, /data-cc-catalog\b/);
+    assert.match(page, /data-cc-catalog-legend/);
+    assert.match(page, /assets\/js\/catalog-data\.js" defer>/);
+    assert.match(page, /assets\/js\/catalog\.js" defer>/);
+    assert.match(page, /href="sites\.html"/);
+  }
+  assert.match(read('assets/js/catalog-data.js'), /CARACORE_CATALOG\s*=/);
+  const sites = read('sites.html');
+  for (const price of ['R$ 990', 'R$ 1.790', 'R$ 2.990']) {
+    assert.ok(sites.includes(price), `Missing plan price ${price} in sites.html`);
+  }
+  assert.match(home, /href="sites\.html"/);
+  assert.doesNotMatch(home, /id="mostrar-planos"|id="fechar-planos"/);
 });
 
 test('local preview serves cache headers, preserves real 404s and redirects legacy links once', async () => {

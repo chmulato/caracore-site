@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/lgpd.css">
   <link rel="stylesheet" href="assets/css/ecosistema.css">
+  <link rel="stylesheet" href="assets/css/catalog.css">
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -55,6 +56,7 @@
         <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfólio</a></li>
         <li class="nav-item"><a class="nav-link active" href="ecosistema.html">Ecossistema</a></li>
         <li class="nav-item"><a class="nav-link" href="planning.html">Planning</a></li>
+        <li class="nav-item"><a class="nav-link" href="sites.html">Sites</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#diferenciais">Antifragilidade</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#contato">Contato</a></li>
@@ -152,6 +154,7 @@
 
         <nav class="eco-toc-mobile" aria-label="Atalhos da página">
           <a href="#mapa-visual">Mapa</a>
+          <a href="#catalogo">Catálogo</a>
           <a href="#prateleira">Prateleira</a>
           <a href="#garagem">Garagem</a>
           <a href="#roadmap">Roadmap</a>
@@ -210,6 +213,23 @@
         <span><i class="leg-garagem"></i> Garagem / roadmap</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- Catálogo canônico -->
+<section id="catalogo" class="ecossistema-section py-4">
+  <div class="container-fluid px-0">
+    <span class="eco-section-badge eco-section-badge--prateleira">Catálogo</span>
+    <h2 class="h3 mb-2">Catálogo canônico do ecossistema</h2>
+    <p class="text-muted mb-3">Um nome público por produto, um estágio de maturidade por produto, e o preço somente quando está publicado na loja. A loja de cada produto continua sendo a fonte comercial.</p>
+    <div data-cc-catalog-legend></div>
+    <p class="cc-cat-count mb-3" data-cc-catalog-count></p>
+    <div data-cc-catalog></div>
+    <details class="mt-3">
+      <summary><strong>Regras de nomenclatura e desambiguação</strong></summary>
+      <div class="mt-2" data-cc-catalog-notes></div>
+    </details>
+    <p class="small text-muted mb-0 mt-3">Planos de desenvolvimento de sites são serviço de engenharia, fora deste catálogo: consulte <a href="sites.html">sites.html</a>.</p>
   </div>
 </section>
 
@@ -324,7 +344,7 @@
       <article class="eco-product-card eco-product-card--prateleira cc-card-pdv">
         <div class="eco-product-card-head">
           <i class="bi bi-cash-stack eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-done">Concluído</span>
+          <span class="eco-status eco-status-done">Disponível</span>
         </div>
         <h3>CaraCore PDV Java (aplicação web local)</h3>
         <p class="eco-product-stack">Java 25 · Quarkus · SQLite · canal v3.2.12-free · localhost:8080/login</p>
@@ -344,7 +364,7 @@
       <article class="eco-product-card eco-product-card--prateleira cc-card-pdv">
         <div class="eco-product-card-head">
           <i class="bi bi-calendar2-check eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-progress">Em desenvolvimento</span>
+          <span class="eco-status eco-status-progress">Beta (RC)</span>
         </div>
         <h3>CaraCore PDV v4</h3>
         <p class="eco-product-stack">Quarkus · SQLite local · web/PWA · launcher Windows</p>
@@ -366,9 +386,9 @@
       <article class="eco-product-card eco-product-card--prateleira cc-card-pdv-rust">
         <div class="eco-product-card-head">
           <i class="bi bi-cpu eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-progress">Em andamento</span>
+          <span class="eco-status eco-status-progress">Piloto</span>
         </div>
-        <h3>CaraCore PDV</h3>
+        <h3>CaraCore PDV Rust (piloto)</h3>
         <p class="eco-product-stack">Rust · Tauri 2 · React · release v0.1.4 · PDV local e rede</p>
         <ul class="eco-product-bullets">
           <li>Download oficial: GitHub Releases</li>
@@ -386,7 +406,7 @@
       <article class="eco-product-card eco-product-card--prateleira cc-card-cso">
         <div class="eco-product-card-head">
           <i class="bi bi-truck eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-done">Em produção</span>
+          <span class="eco-status eco-status-done">Disponível</span>
         </div>
         <h3>CaraCore CSO — Gestão de Frotas</h3>
         <p class="eco-product-stack">Java 21 · Quarkus · PostgreSQL · Qute/HTMX</p>
@@ -408,7 +428,7 @@
       <article class="eco-product-card eco-product-card--prateleira cc-card-hub">
         <div class="eco-product-card-head">
           <i class="bi bi-cart-fill eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-progress">Pré-release v2.1.0-rc1.2</span>
+          <span class="eco-status eco-status-progress">Beta (RC) · v2.1.0-rc1.2</span>
         </div>
         <h3>CaraCore Hub (logística e distribuição)</h3>
         <p class="eco-product-stack">Java 25 · Jakarta EE 10 · SQLite local (WAL) · Tomcat 10.1</p>
@@ -429,7 +449,7 @@
       <article class="eco-product-card eco-product-card--prateleira cc-card-ink">
         <div class="eco-product-card-head">
           <i class="bi bi-calendar3 eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-done">Concluído</span>
+          <span class="eco-status eco-status-done">Disponível</span>
         </div>
         <h3>Ink Agenda</h3>
         <p class="eco-product-stack">Java 25 · JavaFX (Windows) · PWA · SQLite · v2.0.1</p>
@@ -449,7 +469,7 @@
       <article class="eco-product-card eco-product-card--educacao cc-card-reino">
         <div class="eco-product-card-head">
           <i class="bi bi-key eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-done">Concluído</span>
+          <span class="eco-status eco-status-done">Disponível</span>
         </div>
         <h3>Reino OIDC</h3>
         <p class="eco-product-stack">Imersão local · v2.0.2-free · Windows .exe</p>
@@ -469,7 +489,7 @@
       <article class="eco-product-card eco-product-card--educacao cc-card-ete">
         <div class="eco-product-card-head">
           <i class="bi bi-gem eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-done">Concluído</span>
+          <span class="eco-status eco-status-done">Disponível</span>
         </div>
         <h3>Minerador 4.0 (ETE)</h3>
         <p class="eco-product-stack">Simulador · Free × Premium Ouro 4.0 · v1.2.3</p>
@@ -488,7 +508,7 @@
       <article class="eco-product-card eco-product-card--educacao cc-card-ete">
         <div class="eco-product-card-head">
           <i class="bi bi-moisture eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-done">Community 1.1.1</span>
+          <span class="eco-status eco-status-done">Disponível · Community 1.1.1</span>
         </div>
         <h3>BioReator 4.0</h3>
         <p class="eco-product-stack">1.1.1 · Community · Windows · batelada</p>
@@ -507,7 +527,7 @@
       <article class="eco-product-card eco-product-card--educacao cc-card-circuito">
         <div class="eco-product-card-head">
           <i class="bi bi-code-slash eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-done">Concluído</span>
+          <span class="eco-status eco-status-done">Disponível</span>
         </div>
         <h3>Circuito Ferradura</h3>
         <p class="eco-product-stack">v2.0.24 · lógica · Python · curso HTML</p>
@@ -526,7 +546,7 @@
       <article class="eco-product-card eco-product-card--institucional cc-card-area51">
         <div class="eco-product-card-head">
           <i class="bi bi-shield-lock eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-done">Concluído</span>
+          <span class="eco-status eco-status-done">Disponível</span>
         </div>
         <h3>Área 51 — identidade e acesso institucional</h3>
         <p class="eco-product-stack">OAuth 2.1 · OIDC · PKCE · baseline 0.1.0-dev</p>
@@ -548,7 +568,7 @@
       <article class="eco-product-card eco-product-card--gratuito cc-card-mkt">
         <div class="eco-product-card-head">
           <i class="bi bi-gift eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-free">Gratuito</span>
+          <span class="eco-status eco-status-free">Disponível</span>
         </div>
         <h3>Cara Core MKT</h3>
         <p class="eco-product-stack">Sala Cara Core · vitrine · operação interna</p>
@@ -568,7 +588,7 @@
       <article class="eco-product-card eco-product-card--institucional cc-card-seed">
         <div class="eco-product-card-head">
           <i class="bi bi-database-lock eco-product-icon" aria-hidden="true"></i>
-          <span class="eco-status eco-status-planned">Piloto público · avaliação</span>
+          <span class="eco-status eco-status-planned">Piloto</span>
         </div>
         <h3>Cara Core Seed</h3>
         <p class="eco-product-stack">Gestão local de clientes e licenças · Windows x64</p>
@@ -595,12 +615,12 @@
   <div class="container-fluid px-0">
     <span class="eco-section-badge eco-section-badge--pilares">Detalhe técnico</span>
     <h2 class="h4 mb-3">Pilares técnicos do ecossistema</h2>
-    <p class="text-muted mb-4">Profundidade sobre três pilares educacionais e de simulação — complemento aos cards da prateleira.</p>
+    <p class="text-muted mb-4">Profundidade sobre quatro pilares educacionais e de simulação — complemento aos cards da prateleira.</p>
         <div class="row g-4">
           <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0 cc-card-reino">
               <div class="card-body">
-                <span class="badge bg-success mb-3">Concluído no roadmap</span>
+                <span class="badge bg-success mb-3">Disponível</span>
                 <h3 class="h5 mb-3">Reino OIDC</h3>
                 <p class="text-muted mb-2">Sala de estudo sobre identidade digital com aplicativo Windows gratuito. As três Eras são gratuitas para estudo pessoal. A edição paga está em desenvolvimento; a loja não combina PIX nesta etapa.</p>
                 <p class="small text-muted mb-3"><strong>Valor técnico:</strong> repertório para auditoria e governança de identidade — cloud, híbrido ou on-prem conforme o contexto, sem lock-in de provedor único.</p>
@@ -611,7 +631,7 @@
           <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0 cc-card-circuito">
               <div class="card-body">
-                <span class="badge bg-success mb-3">Concluído no roadmap</span>
+                <span class="badge bg-success mb-3">Disponível</span>
                 <h3 class="h5 mb-3">Circuito Ferradura</h3>
                 <p class="text-muted mb-2">Trilha educacional do ecossistema para domínio de lógica, Python e leitura técnica de software com disciplina de engenharia e foco em formação gradual.</p>
                 <p class="small text-muted mb-3"><strong>Valor técnico:</strong> ajuda a construir critério para validar código, processo e consistência de soluções com apoio de IA, mantendo a análise humana no centro.</p>
@@ -622,9 +642,9 @@
           <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0 cc-card-ete">
               <div class="card-body">
-                <span class="badge bg-success mb-3">Concluído no roadmap</span>
+                <span class="badge bg-success mb-3">Disponível</span>
                 <h3 class="h5 mb-3">Minerador 4.0</h3>
-                <p class="text-muted mb-2">Produto ETE Free x Premium para simulação, validação intelectual e apoio a processos técnicos com Python aplicado a contexto industrial e químico.</p>
+                <p class="text-muted mb-2">Minerador 4.0 nas edições Free e Premium, para simulação, validação intelectual e apoio a processos técnicos com Python aplicado a contexto industrial e químico.</p>
                 <p class="small text-muted mb-3"><strong>Valor técnico:</strong> conecta teoria, fórmula e validação operacional em um fluxo modular que privilegia método, rastreabilidade e soberania local.</p>
                 <a href="https://ete.caracore.com.br/" class="btn btn-cc-outline-ete btn-sm" target="_blank" rel="noopener">Ver apresentação</a>
               </div>
@@ -633,7 +653,7 @@
           <div class="col-md-4">
             <div class="card h-100 shadow-sm border-0 cc-card-ete">
               <div class="card-body">
-                <span class="badge bg-success mb-3">Community 1.1.1</span>
+                <span class="badge bg-success mb-3">Disponível · Community 1.1.1</span>
                 <h3 class="h5 mb-3">BioReator 4.0</h3>
                 <p class="text-muted mb-2">Estação desktop de bioinsumos e fermentação. A Community 1.1.1 distingue biomassa viável/total, calcula P/V pelo volume líquido e registra o critério de término atingido. A Premium está prevista para 18/06/2027, sem preço e sem PIX.</p>
                 <p class="small text-muted mb-3"><strong>Loja:</strong> ru.caracore.com.br. Community 1.1.1 disponível em MSI e ZIP. Um produto.</p>
@@ -647,7 +667,7 @@
 </section>
 <section id="lojas-oficiais" class="ecossistema-section py-5">
   <div class="container-fluid px-0">
-        <h2 class="text-center mb-3">Lojas oficiais do ecossistema (subdominios)</h2>
+        <h2 class="text-center mb-3">Lojas oficiais do ecossistema (subdomínios)</h2>
         <p class="text-center text-muted mb-4">Cada produto tem vitrine em <strong>subdomínio próprio</strong>. A matriz resume; a loja é a fonte comercial. Índice completo no <a href="portfolio.html">portfólio</a>.</p>
         <div class="table-responsive">
           <table class="eco-lojas-table table table-bordered align-middle mb-0">
@@ -668,13 +688,13 @@
               </tr>
               <tr>
                 <td class="text-center text-muted">1</td>
-                <td class="fw-semibold">CaraCore PDV (Java web local)</td>
+                <td class="fw-semibold">CaraCore PDV Java (linha madura)</td>
                 <td class="text-center"><span class="badge bg-primary eco-badge-nucleo">Núcleo</span></td>
                 <td><a href="https://pdv.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">pdv.caracore.com.br</a></td>
               </tr>
               <tr>
                 <td class="text-center text-muted">2</td>
-                <td class="fw-semibold">CaraCore PDV (Rust desktop)</td>
+                <td class="fw-semibold">CaraCore PDV Rust (piloto)</td>
                 <td class="text-center"><span class="badge bg-primary eco-badge-nucleo">Núcleo</span></td>
                 <td><a href="https://pdv-rust.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">pdv-rust.caracore.com.br</a></td>
               </tr>
@@ -686,7 +706,7 @@
               </tr>
               <tr>
                 <td class="text-center text-muted">4</td>
-                <td class="fw-semibold">CaraCore Hub (logística e distribuição)</td>
+                <td class="fw-semibold">CaraCore Hub</td>
                 <td class="text-center"><span class="badge bg-primary eco-badge-nucleo">Núcleo</span></td>
                 <td><a href="https://hub.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">hub.caracore.com.br</a></td>
               </tr>
@@ -808,7 +828,7 @@
 <section id="roadmap" class="ecossistema-section py-5 bg-light">
   <div class="container-fluid px-0">
         <h2 class="h3 mb-2">Roadmap — cronograma público</h2>
-        <p class="eco-narrativa">A Cara Core documenta o que está pronto e o que está chegando — transparência reduz ansiedade e alinha expectativas com clientes e parceiros. Progresso mensal das onze torres: <a href="planning.html">planning.html</a>. Envelope de engenharia (Cursor Pro até dez/2029): <a href="planning.html#patrocinio">Funding / Patrocínio</a>.</p>
+        <p class="eco-narrativa">A Cara Core documenta o que está pronto e o que está chegando — transparência reduz ansiedade e alinha expectativas com clientes e parceiros. Acompanhamento mensal dos produtos e das frentes ativas: <a href="planning.html">planning.html</a>. Custos da engenharia (Cursor Pro até dez/2029): <a href="planning.html#patrocinio">Envelope de custos e patrocínio</a>.</p>
 
         <div class="eco-timeline" role="list" aria-label="Marcos do roadmap">
           <div class="eco-timeline-item eco-timeline-done" role="listitem">
@@ -915,16 +935,16 @@
                 <td><a href="https://pdv.caracore.com.br/" class="fw-semibold text-decoration-none">CaraCore PDV Java (web local)</a></td>
                 <td class="text-muted small">PDV Java Free · Quarkus + navegador · v3.2.12-free.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-success">Concluído</span></td>
+                <td><span class="badge bg-success">Disponível</span></td>
                 <td class="small">01/04/2026</td>
                 <td class="small">01/05/2026</td>
                 <td class="small">Canal atual v3.2.12-free em <a href="https://pdv.caracore.com.br/" class="text-decoration-none">pdv.caracore.com.br</a>.</td>
               </tr>
               <tr class="eco-roadmap-row-upcoming">
-                <td><a href="https://pdv-rust.caracore.com.br/" class="fw-semibold text-decoration-none" target="_blank" rel="noopener">CaraCore PDV</a></td>
+                <td><a href="https://pdv-rust.caracore.com.br/" class="fw-semibold text-decoration-none" target="_blank" rel="noopener">CaraCore PDV Rust (piloto)</a></td>
                 <td class="text-muted small">Stack Rust + Tauri 2 — release <strong>v0.1.4</strong>, edição gratuita (100 vendas), transparência na loja. Download em GitHub Releases.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-warning text-dark">Em andamento</span></td>
+                <td><span class="badge bg-warning text-dark">Piloto</span></td>
                 <td class="small">01/05/2026</td>
                 <td class="small">02/06/2026</td>
                 <td class="small">Release <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.4" class="text-decoration-none" target="_blank" rel="noopener">v0.1.4</a>. Loja: <a href="https://pdv-rust.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">pdv-rust</a> · <a href="https://pdv-rust.caracore.com.br/transparencia.html#edicao-gratuita" class="text-decoration-none" target="_blank" rel="noopener">Transparência</a>.</td>
@@ -933,7 +953,7 @@
                 <td><a href="https://oidc.caracore.com.br/" class="fw-semibold text-decoration-none">Reino OIDC</a></td>
                 <td class="text-muted small">Ambiente de estudo sobre identidade digital e autenticacao.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-success">Concluído</span></td>
+                <td><span class="badge bg-success">Disponível</span></td>
                 <td class="small">06/02/2026</td>
                 <td class="small">07/10/2026</td>
                 <td class="small">Release Free: <a href="https://github.com/chmulato/caracore-oidc-releases/releases/tag/v2.0.2-free" class="text-decoration-none" target="_blank" rel="noopener">v2.0.2-free</a>. Sem certificado digital. A edição paga está em desenvolvimento, sem pagamento nesta etapa.</td>
@@ -942,7 +962,7 @@
                 <td><a href="https://ete.caracore.com.br/" class="fw-semibold text-decoration-none">Minerador 4.0</a></td>
                 <td class="text-muted small">Simulador industrial com oferta gratuita e premium.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-success">Concluído</span></td>
+                <td><span class="badge bg-success">Disponível</span></td>
                 <td class="small">06/02/2026</td>
                 <td class="small">—</td>
                 <td class="small">Registro publico: <a href="https://github.com/chmulato/caracore-ete-releases/releases/latest" class="text-decoration-none" target="_blank" rel="noopener">release estavel v1.2.3</a>.</td>
@@ -951,7 +971,7 @@
                 <td><a href="https://circuito.caracore.com.br/" class="fw-semibold text-decoration-none">Circuito Ferradura</a></td>
                 <td class="text-muted small">Curso de programacao com trilhas praticas para iniciantes.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-success">Concluído</span></td>
+                <td><span class="badge bg-success">Disponível</span></td>
                 <td class="small">18/02/2026</td>
                 <td class="small">—</td>
                 <td class="small">Registro publico: fase ativa no ecossistema institucional.</td>
@@ -960,16 +980,16 @@
                 <td><a href="https://ink.caracore.com.br/" class="fw-semibold text-decoration-none">Ink Agenda</a></td>
                 <td class="text-muted small">Desktop Windows v2.0.1 — agenda, financeiro e clientes no PC do estúdio.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-success">Concluído</span></td>
+                <td><span class="badge bg-success">Disponível</span></td>
                 <td class="small">13/05/2026</td>
                 <td class="small">07/10/2026</td>
                 <td class="small">Download: <a href="https://ink.caracore.com.br/download.html" class="text-decoration-none">Windows ZIP/setup</a>. Não há DMG/DEB nativos.</td>
               </tr>
               <tr class="eco-roadmap-row-upcoming">
                 <td><a href="https://hub.caracore.com.br/" class="fw-semibold text-decoration-none">CaraCore Hub</a></td>
-                <td class="text-muted small">Plataforma de logistica e distribuicao com operacao local.</td>
+                <td class="text-muted small">Plataforma de logística e distribuição com operação local.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-warning text-dark">Em andamento</span></td>
+                <td><span class="badge bg-warning text-dark">Beta (RC) · v2.1.0-rc1.2</span></td>
                 <td class="small">19/02/2026</td>
                 <td class="small">06/04/2027</td>
                 <td class="small">Banco SQLite local. Oficina web 2.1 concluída. Pré-release Windows <a href="https://hub.caracore.com.br/download.html">v2.1.0-rc1.2</a>, unsigned, instalador e ZIP, para avaliação. Canais: Mercado Livre, Shopee e Temu. Mac e Linux fora desta tag. GA em 06/04/2027.</td>
@@ -978,7 +998,7 @@
                 <td><a href="https://ru.caracore.com.br/" class="fw-semibold text-decoration-none">BioReator 4.0</a></td>
                 <td class="text-muted small">Estação de bioinsumos. Community 1.1.1 publicada. Premium em 18/06/2027, sem preço e sem PIX.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-success">Community 1.1.1</span></td>
+                <td><span class="badge bg-success">Disponível · Community 1.1.1</span></td>
                 <td class="small">13/10/2026</td>
                 <td class="small">18/06/2027</td>
                 <td class="small">Loja em <a href="https://ru.caracore.com.br/download.html#arquivos" class="text-decoration-none">ru.caracore.com.br</a>. Release bioreator-1.1.1 publicada; MSI e ZIP. O EXE fica dentro do ZIP. A data é a da Premium.</td>
@@ -987,7 +1007,7 @@
                 <td><a href="https://ink.caracore.com.br/pwa.html" class="fw-semibold text-decoration-none">Ink Agenda PWA</a></td>
                 <td class="text-muted small">Mesmo backend da v2; instalável no browser em todas as plataformas.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-secondary">Roadmap</span></td>
+                <td><span class="badge bg-secondary">Em desenvolvimento</span></td>
                 <td class="small">09/09/2026</td>
                 <td class="small">não antes de 2028</td>
                 <td class="small">Tab. Depois do Hub. Não substitui o download Windows.</td>
@@ -996,7 +1016,7 @@
                 <td><a href="https://helianto.caracore.com.br/" class="fw-semibold text-decoration-none" target="_blank" rel="noopener">Helianto Condominium</a></td>
                 <td class="text-muted small">Administração condominial com soberania de dados, isolamento multi-tenant robusto e motor financeiro auditável.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-warning text-dark">Em andamento</span></td>
+                <td><span class="badge bg-warning text-dark">Em desenvolvimento</span></td>
                 <td class="small">01/06/2026</td>
                 <td class="small">30/12/2029</td>
                 <td class="small">Vitrine em helianto.caracore.com.br. GA em 30/12/2029.</td>
@@ -1005,7 +1025,7 @@
                 <td><a href="https://area51.caracore.com.br/" class="fw-semibold text-decoration-none">Área 51</a></td>
                 <td class="text-muted small">Produto licenciado de identidade institucional com loja e wiki publicas.</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-success">Concluído</span></td>
+                <td><span class="badge bg-success">Disponível</span></td>
                 <td class="small">06/02/2026</td>
                 <td class="small">—</td>
                 <td class="small">Registro publico: baseline <strong>0.1.0-dev</strong> com documentacao na <a href="https://wiki.caracore.com.br/projeto-area51.html" class="text-decoration-none">wiki</a>.</td>
@@ -1014,7 +1034,7 @@
                 <td><a href="https://cso.caracore.com.br/" class="fw-semibold text-decoration-none" target="_blank" rel="noopener">CaraCore CSO</a></td>
                 <td class="text-muted small">Dual: Gestao de Frotas (Web) e Gestao de Transportes (Desktop).</td>
                 <td class="small">Equipe Cara Core</td>
-                <td><span class="badge bg-success">Frotas em produção</span></td>
+                <td><span class="badge bg-success">Disponível (Frotas)</span></td>
                 <td class="small">25/02/2026</td>
                 <td class="small fw-semibold text-muted">Frotas em produção · Transp. 08/11/2028</td>
                 <td class="small">Frotas em produção desde 06/10/2026, sem GPS. Transportes + Virtual Tracker integrado: alvo conjunto 08/11/2028, condicionado à prova móvel, capacidade e homologação. Frotas encaminhará conteúdo cifrado sem guardar trajetos; histórico somente no desktop, com conexão e sem fila offline.</td>
@@ -1157,6 +1177,9 @@ flowchart TB
       <a href="suporte-local.html" class="text-decoration-none text-secondary fw-semibold me-3" title="Suporte local e produtividade para PME">
         <i class="bi bi-headset"></i> Suporte Local
       </a>
+      <a href="sites.html" class="text-decoration-none text-secondary fw-semibold me-3" title="Planos de desenvolvimento de sites">
+        <i class="bi bi-window"></i> Sites
+      </a>
       <a href="https://wiki.caracore.com.br/" class="text-decoration-none text-secondary fw-semibold me-3" title="Wiki Cara Core">
         <i class="bi bi-compass"></i> Wiki Cara Core
       </a>
@@ -1169,6 +1192,8 @@ flowchart TB
 
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/catalog-data.js" defer></script>
+<script src="assets/js/catalog.js" defer></script>
 <script src="/js/vendor/mermaid/mermaid.min.js"></script>
 <script>
   if (window.mermaid && typeof window.mermaid.initialize === 'function') {

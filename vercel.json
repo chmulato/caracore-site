@@ -84,6 +84,12 @@
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=120, s-maxage=86400" }
       ]
+    },
+    {
+      "source": "/sites.html",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=120, s-maxage=86400" }
+      ]
     }
   ],
   "redirects": [

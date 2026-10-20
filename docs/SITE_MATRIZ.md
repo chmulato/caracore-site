@@ -33,6 +33,7 @@ Regra de ouro: [FONTES_CANONICAS_MATRIZ_LOJAS.md](FONTES_CANONICAS_MATRIZ_LOJAS.
 | `portfolio.html` | `#decisoes-engenharia` · categorias — ver §3 |
 | `ecosistema.html` | Mapa produtos, roadmap, prova de entrega B2B |
 | `planning.html` | Torres 0–100% dos 11 produtos · `#patrocinio` Funding US$ 20×40 = US$ 800 · dados em `assets/js/planning-data.js` (`FUNDING`) |
+| `sites.html` | Planos de desenvolvimento de sites (Essencial R$ 990 · Profissional R$ 1.790 · Premium R$ 2.990) — serviço de engenharia **fora** do catálogo de produtos |
 | `aligned/en/` · `aligned/it/` | B2B engineering — mesma frase-guia adaptada |
 | `404.html` | Erro amigável |
 | `secure/` | Área 51 OIDC |

@@ -8,9 +8,12 @@ Esta pasta centraliza todos os recursos estáticos (CSS, JavaScript e imagens) d
 assets/
 ├── css/
 │   ├── main.css           # Estilos principais compartilhados
-│   └── portfolio.css      # Estilos específicos do portfólio
+│   ├── portfolio.css      # Estilos específicos do portfólio
+│   └── catalog.css        # Grade do catálogo canônico (portfolio e ecossistema)
 ├── js/
-│   ├── main.js           # Scripts principais (planos, interações)
+│   ├── main.js           # Stub de compatibilidade (planos em sites.html)
+│   ├── catalog-data.js   # Catálogo canônico de produtos (fonte única)
+│   ├── catalog.js        # Renderiza o catálogo em portfolio e ecossistema
 │   └── analytics-config.js # Configuração do Google Analytics
 └── images/
     ├── favicon.ico       # Ícone do site
@@ -53,17 +56,47 @@ Estilos específicos da página de portfólio:
 **Usado em:**
 - portfolio.html
 
+### catalog.css
+Estilos da tabela canônica do ecossistema renderizada por `catalog.js`:
+- Tabela (`.cc-cat-table`) e legenda dos estágios
+- Coluna de produto (`.cc-cat-produto`) e links de loja
+- Ajustes de leitura em telas estreitas
+
+**Usado em:**
+- portfolio.html
+- ecosistema.html
+
 ## 📜 JavaScript
 
 ### main.js
-Scripts de funcionalidades interativas:
-- **initPlanosSection()**: Gerencia exibição/ocultação da seção de planos
-  - Evento no botão "Planos Flexíveis"
-  - Evento no botão "Fechar"
-  - Scroll suave
+Script de compatibilidade: permanece carregado pelas páginas públicas, mas não
+controla mais a seção de planos. Os planos de desenvolvimento de sites têm
+página fixa em `sites.html`; a home apenas linka para ela.
 
 **Usado em:**
 - index.html
+- sites.html
+- demais páginas públicas que já referenciavam o arquivo
+
+### catalog-data.js
+Catálogo canônico do ecossistema (`window.CARACORE_CATALOG`): nome público,
+categoria, estágio de maturidade, edição gratuita, oferta paga, preço e loja de
+cada produto. É a fonte única lida por `catalog.js` em `portfolio.html` e
+`ecosistema.html`. Os planos de desenvolvimento de sites **não** entram aqui:
+vivem em `sites.html`.
+
+**Usado em:**
+- portfolio.html
+- ecosistema.html
+
+### catalog.js
+Renderizador do catálogo canônico. Preenche os contêineres marcados na página
+(`[data-cc-catalog]`, `[data-cc-catalog-legend]`, `[data-cc-catalog-count]`,
+`[data-cc-catalog-notes]`). Sem dados ou sem contêiner, permanece inerte.
+
+**Usado em:**
+- portfolio.html
+- ecosistema.html
 
 ### analytics-config.js
 Configuração do Google Analytics:

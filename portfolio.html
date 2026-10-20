@@ -18,6 +18,7 @@
   <!-- Estilos customizados -->
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/portfolio.css">
+  <link rel="stylesheet" href="assets/css/catalog.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Portfólio de produtos | Cara Core Informática</title>
@@ -60,6 +61,7 @@
         <li class="nav-item"><a class="nav-link active" href="portfolio.html">Portfólio</a></li>
         <li class="nav-item"><a class="nav-link" href="ecosistema.html">Ecossistema</a></li>
         <li class="nav-item"><a class="nav-link" href="planning.html">Planning</a></li>
+        <li class="nav-item"><a class="nav-link" href="sites.html">Sites</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#sobre">Sobre</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#diferenciais">Antifragilidade</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#contato">Contato</a></li>
@@ -144,6 +146,7 @@
             </div>
           </details>
           <div class="portfolio-toc-links portfolio-toc-reference">
+            <a href="#catalogo">Catálogo canônico</a>
             <a href="#decisoes-engenharia">Decisões de engenharia</a>
             <a href="#portfolio-releases">Releases</a>
             <a href="#sobre-caracore">Sobre a empresa</a>
@@ -153,6 +156,22 @@
     </div>
   </div>
 </header>
+
+<!-- Catálogo canônico do ecossistema -->
+<section id="catalogo" class="py-4 bg-light">
+  <div class="container">
+    <h2 class="h3 mb-2"><i class="bi bi-table"></i> Catálogo canônico do ecossistema</h2>
+    <p class="text-muted mb-3">Nome público, categoria, estágio de maturidade, edição gratuita e preço de cada produto em um só lugar. A loja de cada produto continua sendo a fonte comercial.</p>
+    <div data-cc-catalog-legend></div>
+    <p class="cc-cat-count mb-3" data-cc-catalog-count></p>
+    <div data-cc-catalog></div>
+    <details class="portfolio-secondary mt-3">
+      <summary><strong>Regras de nomenclatura e desambiguação</strong></summary>
+      <div class="mt-2" data-cc-catalog-notes></div>
+    </details>
+    <p class="small text-muted mb-0 mt-3">Planos de desenvolvimento de sites são serviço de engenharia, fora deste catálogo: consulte <a href="sites.html">sites.html</a>.</p>
+  </div>
+</section>
 
 <!-- Decisões de engenharia — estudos de caso -->
 <section id="decisoes-engenharia" class="py-4">
@@ -1779,6 +1798,9 @@ graph LR
       <a href="politica/termos-servico.html" class="text-decoration-none text-primary fw-semibold me-3">
         <i class="bi bi-file-text"></i> Termos de Serviço
       </a>
+      <a href="sites.html" class="text-decoration-none text-secondary fw-semibold me-3" title="Planos de desenvolvimento de sites">
+        <i class="bi bi-window"></i> Sites
+      </a>
       <a href="https://wiki.caracore.com.br/" class="text-decoration-none text-secondary fw-semibold" title="Wiki Técnico - Guia para Estagiários e Colaboradores">
         <i class="bi bi-journal-code"></i> Wiki Técnico
       </a>
@@ -1789,6 +1811,8 @@ graph LR
 <!-- Scripts -->
 <script src="/js/vendor/bootstrap/bootstrap.bundle.min.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/catalog-data.js" defer></script>
+<script src="assets/js/catalog.js" defer></script>
 <script src="/js/vendor/mermaid/mermaid.min.js"></script>
 
 <!-- Mermaid.js para renderizar diagramas -->

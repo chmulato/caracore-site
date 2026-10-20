@@ -1,0 +1,156 @@
+/* =========================================================
+   Catálogo canônico do ecossistema (assets/js/catalog.js)
+   Usado em portfolio.html e ecosistema.html.
+   ========================================================= */
+
+.cc-cat-table {
+  font-size: 0.875rem;
+  background-color: #fff;
+}
+
+.cc-cat-table > caption {
+  caption-side: top;
+  padding: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  color: #6c757d;
+}
+
+.cc-cat-table > thead > tr > th {
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #495057;
+  background-color: #f8f9fa;
+  white-space: nowrap;
+}
+
+.cc-cat-table > tbody > tr > th,
+.cc-cat-table > tbody > tr > td {
+  vertical-align: top;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.cc-cat-produto {
+  min-width: 14rem;
+}
+
+.cc-cat-produto > a {
+  display: block;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cc-cat-produto > a:hover,
+.cc-cat-produto > a:focus {
+  text-decoration: underline;
+}
+
+.cc-cat-meta {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #6c757d;
+}
+
+.cc-cat-meta--nota {
+  margin-top: 0.35rem;
+  color: #7a7f85;
+  line-height: 1.35;
+}
+
+.cc-cat-preco {
+  min-width: 9rem;
+}
+
+.cc-cat-preco > strong {
+  display: block;
+  font-size: 0.875rem;
+}
+
+/* Estágios canônicos: Disponível · Beta (RC) · Piloto · Em desenvolvimento */
+.cc-cat-mat {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.cc-cat-mat--disponivel {
+  color: #146c43;
+  background-color: #e6f4ec;
+  border-color: #a3cfbb;
+}
+
+.cc-cat-mat--beta {
+  color: #0a58ca;
+  background-color: #e7f1ff;
+  border-color: #a9c7f5;
+}
+
+.cc-cat-mat--piloto {
+  color: #8a6100;
+  background-color: #fff3cd;
+  border-color: #ffda6a;
+}
+
+.cc-cat-mat--desenvolvimento {
+  color: #495057;
+  background-color: #eef0f2;
+  border-color: #cfd3d7;
+}
+
+/* Legenda */
+.cc-cat-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0.75rem 1.25rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-cat-legend-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: flex-start;
+}
+
+.cc-cat-legend-text {
+  font-size: 0.8125rem;
+  color: #5c636a;
+  line-height: 1.4;
+}
+
+/* Contagem e notas */
+.cc-cat-count {
+  font-size: 0.9375rem;
+  color: #495057;
+}
+
+.cc-cat-notes {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.8125rem;
+  color: #5c636a;
+}
+
+.cc-cat-notes > li {
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 767.98px) {
+  .cc-cat-table {
+    font-size: 0.8125rem;
+  }
+
+  .cc-cat-table > thead > tr > th {
+    white-space: normal;
+  }
+}

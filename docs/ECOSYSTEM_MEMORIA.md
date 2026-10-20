@@ -2,6 +2,52 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Hub — documentação pública alinhada à aplicação web 2.1 (20/10/2026)
+
+Segunda passagem do mesmo dia, agora sobre o **texto**: `WAR` e "oficina" saíram
+da copy pública da matriz, da vitrine (`caracore-hub-releases`), da wiki e da
+central (`caracore-loja`). O cliente lê a **aplicação web 2.1 sobre Tomcat
+embutido no instalador, com SQLite local no computador do ponto de retirada**;
+o `WAR` continua existindo como artefato interno de build, fora do discurso
+público. Pré-release `v2.1.0-rc1.2` e GA `06/04/2027` não mudaram; nenhuma tag
+ou asset novo foi criado.
+
+Onde a copy encosta em login e conta, ela passou a seguir o código, conferido
+nesta sessão em `caracore-hub`:
+
+- o login é por **telefone** (`login.jsp`), não por e-mail; "Lembrar" existe e
+  **não** prolonga a sessão; não há `session-timeout`/`MaxInactiveInterval`
+  configurado, então a documentação não promete expiração por inatividade;
+- a recuperação é **offline, por código** de 12 caracteres, de uso único, que
+  invalida os demais (`CodigoRecuperacaoService`); a nova senha exige **≥12**;
+- o setup cria o administrador com **≥12** e a tela de usuários exige **≥6**;
+  a senha temporária gerada quando o campo fica vazio tem **8** caracteres;
+- **não** existe senha por e-mail/SMS nem troca obrigatória no primeiro
+  acesso; as páginas não podem prometer nenhum dos dois.
+
+Camadas tocadas: `caracore-site` (cartão do Hub na home e fechamento de `div`
+que faltava), `caracore-hub-releases` (README, `RELEASE_2.1.0-rc1.md` e nota de
+leitura datada no laudo de 19/09, que fica como histórico), `caracore-wiki`
+(10 páginas do manual, `projeto-hub.html`, glossário, ecossistema e
+tecnologias) e `caracore-loja` (`download.html`). Commits `098fa88`,
+`ceb7a51`, `3fc45d2` e `d5295f0`; o `origin/master` de cada repositório confere
+com o local por `git ls-remote` e as árvores estão limpas.
+
+Validação: varredura de 33 arquivos com 23 ocorrências, todas justificadas —
+`oficina` como nome canônico da camada 3 na matriz e em `caracore-loja/AGENTS.md`,
+o laudo histórico e um falso positivo do filtro em `wiki/docs/hub/admin.html`,
+que afirma que o Hub **não** envia senha por e-mail nem por SMS. Checagem de HTML
+ok nos 29 arquivos alterados, links do manual sem falha e nenhuma âncora
+`#oficina` restante na wiki. Pendências conhecidas: as âncoras de letra do
+`glossario.html` (`#I`, `#K`, `#L`, `#N`, `#Q`, `#U`, `#W`, `#X`, `#Y`, `#Z`,
+`#top`) já estavam quebradas antes deste corte (dívida separada), o `README.md`
+da vitrine ainda aponta o repositório privado `caracore-hub` e não houve smoke
+visual no Edge.
+
+Estado do produto segue o de 16/10: a QA da rodada 4 **não aprovou** a
+`v2.1.0-rc1.2` e os defeitos D1–D6 continuam abertos no plano de lançamento.
+Documentação alinhada não é aceite de QA nem GA.
+
 ### Hub — reposicionamento para PUDOs em 20/10/2026
 
 Copy pública alinhada em `caracore-hub-releases` (vitrine `docs/` e cópias legadas da

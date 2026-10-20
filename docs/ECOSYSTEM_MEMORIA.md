@@ -14,8 +14,11 @@ conector. Pré-release Windows `v2.1.0-rc1.2` e GA `06/04/2027` inalterados.
 Na oficina, `/retirada/scan` deixou de avaliar EL dentro de template literal JS (o
 render falhava com HTTP 500) e o filtro de canais de `PedidosListaServlet` consulta
 `isDisponivelNaEdicaoFree`. Maven `2.1.0-rc1` completo: core 614, persistence 571, api
-841 (8 ignorados), web 283 testes, zero falhas/erros. Commits locais; nada publicado
-no GitHub além do push solicitado.
+841 (8 ignorados), web 283 testes, zero falhas/erros. Publicado a pedido do dono:
+`caracore-hub` `981e81c` (fix + docs de posicionamento e stack), `caracore-hub-releases`
+`cd1edb0`, `caracore-wiki` `883cb3b`, `caracore-loja` `4048991`, `caracore-site`
+`841182e`. Os cinco repositórios estão limpos e iguais ao `origin/master`; nenhuma tag ou
+asset novo foi criado — a vitrine pública continua na `v2.1.0-rc1.2`.
 
 
 ### PDV v4 — checkpoint de pausa em 18/10/2026, 14:54 BRT

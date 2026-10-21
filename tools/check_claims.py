@@ -189,10 +189,7 @@ def main():
         out.append("AVISOS (%d):" % len(warnings))
         out.extend("  - " + w for w in warnings)
 
-    report = "\n".join(out)
-    with io.open(r"D:\temp_hub_smoke\check_claims.txt", "w", encoding="utf-8") as fh:
-        fh.write(report + "\n")
-    print(report)
+    print("\n".join(out))
     return 1 if errors else 0
 
 

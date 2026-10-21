@@ -50,7 +50,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 |---|---|---|
 | **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.12-free`**, atualização corretiva da linha 3.2.x (manutenção até 08/11/2026) · Java pré-release **`v4.0.0-rc6`** (Windows; ciclo de RCs, GA só após aprovação formal) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frotas Web + Transportes Desktop, com VT integrado futuro | Frotas em produção desde 06/10, sem GPS hoje. Freeze M1 em 08/11/2026. Transportes + VT: alvo conjunto 08/11/2028 sujeito aos gates INT. Sem gestão offline |
-| **Hub** | Gestão logística interna para PUDOs (encomendas de Mercado Livre, Shopee e Temu) | Vitrine pública · web 2.1 concluída · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** |
+| **Hub** | Gestão logística interna para PUDOs (encomendas de Mercado Livre, Shopee e Temu) | Vitrine pública · web 2.1 concluída · produto Free · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** · suporte opcional com pagamento recorrente de R$ 79,90/mês a partir do GA |
 
 ### Registro da Matriz — CDN/Vercel — 05/10/2026
 

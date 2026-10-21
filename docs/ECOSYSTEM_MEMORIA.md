@@ -33,10 +33,12 @@ Onde a copy encosta em login e conta, ela passou a seguir o código, conferido
 nesta sessão em `caracore-hub`:
 
 - o login é por **telefone** (`login.jsp`), não por e-mail; "Lembrar" existe e
-  **não** prolonga a sessão; não há `session-timeout`/`MaxInactiveInterval`
-  configurado, então a documentação não promete expiração por inatividade;
-- a recuperação é **offline, por código** de 12 caracteres, de uso único, que
-  invalida os demais (`CodigoRecuperacaoService`); a nova senha exige **≥12**;
+  **não** prolonga a sessão; sem `session-config` no `web.xml`, vale o padrão do
+  Tomcat: a sessão expira após **30 minutos** de inatividade (configuração
+  ausente = default do fornecedor, não promessa de duração infinita);
+- a recuperação é **offline, por código**: `CodigoRecuperacaoService` gera
+  `CODE_COUNT = 10` códigos de uso único de **27 caracteres** (Base64 URL-safe de
+  `CODE_BYTES = 20`), e cada uso invalida os demais; a nova senha exige **≥12**;
 - o setup cria o administrador com **≥12** e a tela de usuários exige **≥6**;
   a senha temporária gerada quando o campo fica vazio tem **8** caracteres;
 - **não** existe senha por e-mail/SMS nem troca obrigatória no primeiro

@@ -2,6 +2,50 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Hub — Sprint 6 fecha autorização anônima no runtime empacotado (21/10/2026)
+
+Trabalho de **oficina** (`caracore-hub`), sem tag, asset ou mudança de copy
+pública: a loja continua servindo `v2.1.0-rc1.2` e o GA segue 06/04/2027.
+
+O item **S6.11 (B1+B2 / D4+D7)** foi fechado no plano. O runner de validação do
+runtime empacotado (`electron/test/validate-local-rc1.cjs`) ganhou
+`verifyAnonymousAuthorization()`, que roda depois do setup e, **sem sessão**,
+comprova: 20 recursos `/api/*` em **401 JSON** com `"status":401` e sem
+`Set-Cookie`; 10 telas administrativas em **302** para `/login`; `/api/health` em
+**200**; e `POST /api/pedidos` em 401 **sem** inserir linha em `pedido`
+(contagem antes/depois via `node:sqlite` somente-leitura). A ordem importa:
+antes do primeiro acesso o `InitialSetupFilter` responde `/setup` e o 302 não
+provaria nada sobre o guarda. Execução de aceite: `npm run test:rc1:local` com
+`EXITCODE=0`, 10/10 em 1,8 min (Tomcat/JRE distribuídos) e 10/10 em 2,2 min
+(Electron); WAR `2d8a1a3d…6624A`.
+
+No mesmo dia, dois commits anteriores fecharam a parte de código dos outros
+defeitos: `2fa0c81` (D2/D3 — `test.jsp`, `usuarios-demo.jsp` e `UsuariosServlet`
+fora; canais AMAZON/B2W travados por `CanalPedido.isDisponivelNaEdicaoFree()` e
+`CanalPedidoTest`; ROOT do Tomcat removida no preparo do pacote; `clean package`
+no CI) e `268d0be` (D1 — pré-compilação JSP `jspc-precompile` + `JspElValidationTest`
++ spec E2E de retirada/scan). Os três commits estão em `chmulato/caracore-hub`
+`master` (`60135c8`); o plano e o laudo da sonda ficaram sem commit nesta data.
+
+**Correção de honestidade registrada:** a nota antiga do item S6.5 afirmava que
+`verifyRemovedDemoRoutes()` já sondava rotas anônimas — não sondava; só verificava
+quatro 404. A sonda passou a existir em `verifyAnonymousAuthorization()` e a nota
+foi corrigida no plano, com a evidência apontada. O que a sonda prova é
+**autenticação**, não RBAC por perfil: 31/32 recursos de `/api/*` fora de
+`/api/admin/*` continuam abertos a usuário autenticado e pertencem a S6.3.
+Rota inexistente não vale como gate: `/api/health/live` e `/api/login` não
+existem (liveness é `/api/health`; login é `/api/auth/login`).
+
+Sprint 6 está em **2 de 14 tarefas com `[x]`** (S6.0 e S6.11); S6.1, S6.4 e S6.5
+têm entrega no código mas seguem abertos porque o critério escrito é o **pacote
+publicado** — a `rc1.2` ainda tem o erro de EL e ainda serve os dois JSP. Antes de
+gerar a `rc1.4` (S6.10) faltam S6.12, S6.6, S6.7, S6.8, S6.9, S6.2 e S6.3; depois
+vem S6.13 (E2E no pacote final, 0 FAIL). O WAR não é reprodutível entre builds
+(sem `project.build.outputTimestamp`), então aceite de bytes só no binário
+publicado. Detalhes: `caracore-hub/docs/contexto-rapido.md`,
+`caracore-hub/docs/relatorio-s611-autorizacao-20261021.md` e
+`caracore-hub/docs/plano-lancamento-rc1.md` (Sprint 6).
+
 ### Hub — produto Free + suporte recorrente (20/10/2026)
 
 Decisão do dono: o **produto é Free** — não há licença mensal pelo Hub. O

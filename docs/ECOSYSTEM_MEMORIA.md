@@ -2,6 +2,23 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Hub — produto Free + suporte recorrente (20/10/2026)
+
+Decisão do dono: o **produto é Free** — não há licença mensal pelo Hub. O
+**suporte é opcional** e tem **pagamento recorrente de R$ 79,90/mês**, o mesmo
+preço do PDV Premium. O motivo é a operação: as integrações com Mercado Livre,
+Shopee e Temu (credenciais, webhooks, etiquetas e mudanças de canal) geram
+chamado com regularidade. A pré-release `v2.1.0-rc1.2` é de avaliação, sem
+cobrança; não há checkout antes do GA de 06/04/2027.
+
+CTA público ajustado nas quatro camadas: loja (`caracore-hub-releases`, raiz e
+`docs/`), central (`caracore-loja/docs/download.html`), matriz
+(`caracore-site/ecosistema.html` e `portfolio.html`) e wiki
+(`caracore-wiki/docs/projeto-hub.html`). O botão primário é "Baixar pré-release
+(Free)"; o secundário é "Suporte recorrente: R$ 79,90/mês", com âncora `#plano`.
+Nas páginas tocadas, "sem assinatura" virou "sem assinatura digital" para não
+confundir o binário unsigned com a cobrança do suporte.
+
 ### Hub — documentação pública alinhada à aplicação web 2.1 (20/10/2026)
 
 Segunda passagem do mesmo dia, agora sobre o **texto**: `WAR` e "oficina" saíram

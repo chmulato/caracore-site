@@ -50,7 +50,7 @@ Os **únicos produtos principais** são **PDV**, **CSO** e **Hub**. O resto do p
 |---|---|---|
 | **PDV** | Caixa no computador da loja (Java web local + Rust desktop) | Java Free **`v3.2.12-free`**, atualização corretiva da linha 3.2.x (manutenção até 08/11/2026) · Java pré-release **`v4.0.0-rc6`** (Windows; ciclo de RCs, GA só após aprovação formal) · Rust **`v0.1.4`** piloto Windows |
 | **CSO** | Frotas Web + Transportes Desktop, com VT integrado futuro | Frotas em produção desde 06/10, sem GPS hoje. Freeze M1 em 08/11/2026. Transportes + VT: alvo conjunto 08/11/2028 sujeito aos gates INT. Sem gestão offline |
-| **Hub** | Gestão logística interna para PUDOs (encomendas de Mercado Livre, Shopee e Temu) | Vitrine pública · web 2.1 concluída · produto Free · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** · suporte opcional com pagamento recorrente de R$ 79,90/mês a partir do GA |
+| **Hub** | Gestão logística interna para PUDOs (encomendas de Mercado Livre, Shopee e Temu) | Vitrine pública · web 2.1 concluída · produto Free · pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) · sem Mac/Linux nesta tag · GA Windows **06/04/2027** · suporte opcional com pagamento recorrente de R$ 79,90/mês a partir do GA, com primeira resposta em até 24 horas |
 
 ### Registro da Matriz — CDN/Vercel — 05/10/2026
 
@@ -91,7 +91,7 @@ O marco de 08/11/2026 encerra a linha Free 3.2.12; não é a data de GA da PDV v
 | **PWA** | Loja: vitrine em `pdv.caracore.com.br/pwa.html` (atalho/offline da loja). Oficina: shell local do Quarkus depois do launcher | A PWA da loja **não** é o caixa. Sem Electron |
 | **PDV Rust** | Piloto `v0.1.4` Windows · **loja + artefatos no mesmo repo** `chmulato/caracore-rust-pdv-releases` (Pages = `pdv-rust.caracore.com.br`; Releases = NSIS/MSI/ZIP) | **Nunca** `/releases/latest` de `caracore-pdv-releases` (repo Java; `latest` = Free). Não substitui o Java |
 | **CSO** | Gestão de frota no ar em `cso.caracore.com.br` desde 06/10 (`b90d1dc`, Flyway V33): km/L, documentos, pneus, exame, infrações e custo por km. Index `e1e8d63`. Freeze M1 = **08/11/2026**. Loja `cso-transp.caracore.com.br` | Transportes desktop **08/11/2028**. Sem jornada, app offline nem GPS. Sem depoimento inventado. A data de 2026 não é o GA do Transportes |
-| **Hub** | Vitrine + aplicação web 2.1 concluída. Pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) na loja | GA Windows **06/04/2027**. Produto Free; o suporte opcional passa a ter pagamento recorrente de R$ 79,90/mês a partir do GA. Mac e Linux fora desta tag. Login da conta real ainda sem causa confirmada. Não é Flask nem “central” da Cara Core |
+| **Hub** | Vitrine + aplicação web 2.1 concluída. Pré-release Windows `v2.1.0-rc1.2` (instalador e ZIP, unsigned) na loja | GA Windows **06/04/2027**. Produto Free; o suporte opcional passa a ter pagamento recorrente de R$ 79,90/mês a partir do GA, com primeira resposta em até 24 horas. Mac e Linux fora desta tag. Login da conta real ainda sem causa confirmada. Não é Flask nem “central” da Cara Core |
 
 ### Planos Java Free / Premium (fonte: `PlanoLicencaService`)
 

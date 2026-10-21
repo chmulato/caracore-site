@@ -24,7 +24,7 @@ import os
 import re
 import sys
 
-DEV = r"D:\onedrive\dev"
+DEV = os.environ.get("CARACORE_DEV", r"D:\onedrive\dev")
 PDV_DOCS = os.path.join(DEV, r"caracore-pdv-releases\docs")
 HUB_DOCS = os.path.join(DEV, r"caracore-hub-releases\docs")
 PLANO = os.path.join(

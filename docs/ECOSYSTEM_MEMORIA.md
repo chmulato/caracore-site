@@ -2,6 +2,16 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### MCP local — DeepSeek direto e NVIDIA NIM (22/10/2026)
+
+No workspace `D:\onedrive\dev`, `.vscode/mcp.json` mantém dois servidores
+isolados: `nvidia-deepseek` (`deepseek-ai/deepseek-v4.1-flash`) e
+`deepseek-direct` (`deepseek-flash`, API oficial). Nenhuma chave é salva nos
+arquivos. O servidor direto usa prompt de segredo protegido do VS Code; uma
+chamada real DeepSeek ainda não foi feita. O teste ao vivo NVIDIA expirou em
+180 s, sem confirmar inferência. Estado detalhado, ferramentas, arquivos e
+passos para retomada: [MEMORIA_CONFIGURACAO_MCP_DEEPSEEK_NVIDIA_2026-10-22.md](./MEMORIA_CONFIGURACAO_MCP_DEEPSEEK_NVIDIA_2026-10-22.md).
+
 ### Hub — Sprint 6 fecha autorização anônima no runtime empacotado (21/10/2026)
 
 Trabalho de **oficina** (`caracore-hub`), sem tag, asset ou mudança de copy

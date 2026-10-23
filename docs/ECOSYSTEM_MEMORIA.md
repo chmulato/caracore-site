@@ -2,6 +2,41 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Hub — Sprint 6 em 4/14 e handoff de continuidade (22/10/2026)
+
+Trabalho de **oficina** (`caracore-hub`), sem tag, asset ou mudança de copy pública: a
+loja continua servindo `v2.1.0-rc1.2` (unsigned, reprovada pela QA da rodada 4) e o GA
+segue 06/04/2027. A oficina está em `2.1.0-rc1.3`, com os POMs em `2.1.0-rc1`.
+
+O quadro real da Sprint 6 é **4 de 14 `[x]`** (S6.0, S6.6, S6.11 e S6.12). Seguem
+abertos S6.1, S6.2, S6.3, S6.4, S6.5, S6.7, S6.8, S6.9, S6.10 e S6.13. Os dois itens
+sem nenhuma entrega são **S6.2** (SQLite real: migrações do zero, varredura de SQL
+PostgreSQL-only, concorrência sem `SQLITE_BUSY`) e **S6.3** (HTTP/REST Assured, CSRF
+dos POST JSON e **RBAC por perfil** nos 31/32 recursos de `/api/*` fora de
+`/api/admin/*`). **S6.9** depende só de decisão do dono (assinatura C7, `UAC.dll` de
+2015 C4, login da conta real, T1 com Defender).
+
+Na rodada de 22/10 o **S6.8** foi executado: **D6 fechado** (`HubCleanTempCopy` no
+`installer.nsh`, resíduo `~nsu*` = 0, smoke do instalador 26/26), **E8 medido**
+(EXE 272.853.525 B `aff44de2…`, ZIP 323.192.638 B `2f03af7a…`, WAR `3d876bbb…` nos dois
+caminhos do pacote) e **C6 medido** (mediana 79.207 ms, `target: null`; primeiro boot
+após instalação 173.386 ms). O **E7 não foi aprovado**: o app empacotado sai com
+`ExitCode 0` porque `window-all-closed` chama `stopTomcat()` e `app.quit()`, e o caso
+`04-order-stock-export` consome ~58 s de um orçamento de 60 s contra o scheduler de 30 s.
+Falta guard `HUB_TEST_NO_QUIT=1` (ou bancada dedicada) e preservar o perfil `mkdtemp`
+quando o teste falha.
+
+O **S6.7** tem o orquestrador `npm run verify` com E1–E6 (`dist_hub/verify/20261022T201709Z`,
+PASS em 18min26s, 2454 testes, 8 ignorados, 10 specs Playwright), mas `promotable=false`
+porque a árvore estava suja (34 arquivos). O **S6.12** está fechado, porém **B7** (smoke
+Linux x64, cofre/`gnome-keyring`/D-Bus) segue vermelho e o run `39774971331` sumiu da API
+do GitHub — o CI **não** vale como prova durável da `rc1.4`.
+
+Nada é publicável nesta data: a `rc1.4` depende de **S6.10**. Handoff para a próxima IA,
+com o quadro dos 14 itens, comandos, armadilhas já pagas e ordem de retomada:
+[`caracore-hub/docs/handoff-sprint6-continuidade-20261022.md`](../../caracore-hub/docs/handoff-sprint6-continuidade-20261022.md).
+
+
 ### MCP local — DeepSeek direto e NVIDIA NIM (22/10/2026)
 
 No workspace `D:\onedrive\dev`, `.vscode/mcp.json` mantém dois servidores

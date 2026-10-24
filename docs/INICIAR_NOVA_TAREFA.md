@@ -237,6 +237,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 - [ ] Oficina Rust: `python tools/sync_docs_status.py --full` se mudança relevante
 - [ ] Atualizar `ECOSYSTEM_MEMORIA.md` se mudou **regra de ecossistema** (repo, URL, release)
 - [ ] Atualizar `AGENTS.md` (este repo + raiz do workspace) e `project-memory.mdc` do repo trabalhado
+- [ ] **Prompt da próxima tarefa em `.txt`** (ASCII, sem markdown, em `docs/` da oficina, nome `prompt-proxima-tarefa-<tema>-<AAAAMMDD>.txt`); o `.md` é só espelho — regra fixa, não perguntar o formato
 - [ ] Uma camada por vez (matriz · loja · oficina · wiki); não misturar Java e Rust no mesmo patch
 - [ ] Smoke manual: home → portfólio → loja ou releases → voltar
 

@@ -135,6 +135,7 @@ Wiki **aponta** para essas âncoras; não é a fonte das senhas. Pasta Java `%AP
 3. **Copy pública de login/perfis:** só na **loja daquela linha**. Wiki alinha produto e linka. Oficina guarda roteiro técnico (`contexto-rapido.md`, smokes).
 4. **Depois de corte ou copy no ar:** atualizar este ficheiro, `ECOSYSTEM_MEMORIA.md` (linha no changelog), regras Cursor do repo tocado e da matriz. Não inventar depoimento, PIX no Free Java nem teto “/mês” no Rust.
 5. **Git:** não commitar nem fazer push salvo pedido explícito. Exceção operacional: o dono pede “subir as novas”.
+6. **Prompt de próxima tarefa:** sempre em **`.txt`** — ASCII, sem markdown, em `docs/` da oficina com o nome `prompt-proxima-tarefa-<tema>-<AAAAMMDD>.txt`. O `.md` de mesmo nome é espelho de leitura (tabelas, links relativos) e **não** substitui o `.txt`. Regra do dono (24/10/2026): não perguntar o formato de novo nem entregar só o `.md`.
 
 ### Canais Java independentes (não misturar)
 

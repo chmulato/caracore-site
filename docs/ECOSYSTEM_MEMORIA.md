@@ -2,6 +2,15 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Convenção — prompt de próxima tarefa sempre em `.txt` (24/10/2026)
+
+Regra do dono, válida para todas as oficinas: o prompt da próxima tarefa é entregue **em `.txt`**
+(ASCII, CRLF, sem markdown) em `docs/` da oficina, com o nome
+`prompt-proxima-tarefa-<tema>-<AAAAMMDD>.txt`. O `.md` de mesmo nome fica como espelho de leitura
+(tabelas e links relativos) e **não** substitui o `.txt`. Não perguntar o formato nem entregar só
+o `.md`. Registrado também em `AGENTS.md` (§ Como IAs colaboram, item 6), no espelho
+`caracore-site/AGENTS.md` e em `caracore-hub/.cursor/rules/project-memory.mdc`.
+
 ### Hub — Sprint 6 em 6/14, retrato de saúde e fila da `rc1.4` (23/10/2026)
 
 Oficina `caracore-hub`, **sem tag e sem asset**: a loja continua servindo `v2.1.0-rc1.2`

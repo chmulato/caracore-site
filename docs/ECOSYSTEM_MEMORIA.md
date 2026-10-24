@@ -2,6 +2,41 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Hub — Sprint 6 em 6/14, retrato de saúde e fila da `rc1.4` (23/10/2026)
+
+Oficina `caracore-hub`, **sem tag e sem asset**: a loja continua servindo `v2.1.0-rc1.2`
+(unsigned, reprovada pela QA da rodada 4) e o GA segue 06/04/2027. A oficina está em
+`2.1.0-rc1.3`, e essa build **falhou na E2E de 20/10** (17 PASS / 2 WARN / 4 FAIL).
+
+O quadro real é **6 de 14 `[x]`** (S6.0, S6.2, S6.3, S6.6, S6.11, S6.12). Fecharam nesta
+rodada o **S6.2** (SQLite real: migração do zero, `SqlPortabilidadeTest`, concorrência sem
+`SQLITE_BUSY` e migração **V16** alinhando os CHECKs de status aos enums) e o **S6.3**
+(HTTP: 22/22 casos, 26 raízes de `/api/*` em 401 JSON sem `Set-Cookie`, 13 telas em 200,
+ADMIN×OPERADOR 200/403), com `clean package` de 2.436 testes e 0 falhas. **Os dois
+fechamentos estão no working tree, sem commit:** quem clona o repo não os vê e
+`npm run verify` continua saindo `promotable=false`.
+
+Seguem abertos S6.1, S6.4, S6.5, S6.7, S6.8, S6.9, S6.10 e S6.13, mais **S6.14 proposto**
+(RBAC por perfil). A fila que destrava a `rc1.4` é **B7** (run verde do smoke Linux x64) →
+**E7** (app empacotado) → **S6.7** (rodada limpa + bloco `verify` no manifesto + job de CI)
+→ **S6.13** (E2E do pacote) → **S6.10** (tag). **S6.9** depende só do dono: assinatura C7,
+`UAC.dll` de 2015 C4, login da conta real e T1 (Defender nesta máquina ou em VM).
+
+Armadilhas conferidas na árvore, não só em laudo: `RolesAllowedDynamicFeature` não é
+registrada (`@RolesAllowed` é decorativo e existe só nas duas `AdminLogsResource`),
+`web.xml` sem `session-config` (30 min é default do Tomcat), `outputTimestamp` ausente nos
+5 POMs (WAR não reprodutível), CSRF só em três servlets de formulário e `/api/health/ready`
+privada por comparação exata de caminho, com `ex.getMessage()` no `detail`.
+
+Retrato de saúde por dimensão, com a evidência de cada nota:
+[`caracore-hub/docs/avaliacao-saude-aplicacao-20261023.md`](../../caracore-hub/docs/avaliacao-saude-aplicacao-20261023.md).
+Próxima tarefa escrita:
+[`prompt-proxima-tarefa-saude-rc14-20261023.md`](../../caracore-hub/docs/prompt-proxima-tarefa-saude-rc14-20261023.md)
+(`.md` e `.txt`). O `README.md` da oficina foi corrigido (dizia "Sistema 100% finalizado e em
+produção" e tratava PostgreSQL/Redis como stack) e `project_hub/docs/` foi marcada como
+**legado congelado**. Sem resposta do dono ainda: o `token.txt` na raiz da oficina e o
+destino dos 230 arquivos dessa árvore legada.
+
 ### Hub — Sprint 6 em 4/14 e handoff de continuidade (22/10/2026)
 
 Trabalho de **oficina** (`caracore-hub`), sem tag, asset ou mudança de copy pública: a

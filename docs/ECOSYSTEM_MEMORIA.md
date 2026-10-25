@@ -11,6 +11,46 @@ Regra do dono, válida para todas as oficinas: o prompt da próxima tarefa é en
 o `.md`. Registrado também em `AGENTS.md` (§ Como IAs colaboram, item 6), no espelho
 `caracore-site/AGENTS.md` e em `caracore-hub/.cursor/rules/project-memory.mdc`.
 
+### Hub — `v2.1.0-rc1.6` publicada, auditoria de coerência e mapa do GA (25/10/2026)
+
+**Publicado, e nada além disso:** a pré-release `v2.1.0-rc1.6` está no ar em
+`chmulato/caracore-hub-releases` como **Pre-release** (não Latest, não GA), unsigned. EXE
+`CaraCore.Hub-2.1.0-rc1.6-win-x64.exe` 274.160.424 B `05b87529…b4afc8c4`; ZIP
+`CaraCore.Hub-2.1.0-rc1.6-win-x64.zip` 324.500.797 B `fe3400c7…17a17c9c0d`; WAR interno 69.447.783 B
+`70a3f900…` idêntico em `web/target`, `electron/app` e `electron/runtime/tomcat/webapps`. Electron
+35.7.5 · Java 25.0.4.1+1 · Tomcat 10.1.60. As quatro camadas foram empurradas e conferidas: loja
+`b3dc257`, central `f919ce6`, matriz `161b536`, wiki `d919cdd`, oficina `40a8657`. As versões `rc1.3`,
+`rc1.4` e `rc1.5` **nunca foram tagueadas**; `rc1.2`, `rc1.1` e `rc1` continuam no histórico.
+
+Gate desta build: `npm run verify` **PASS** em `dist_hub/verify/20261025T214503Z` (17min26s,
+`promotable=true`, `dirtyEntries=0`, 2.555 testes, E6 com 0 Alta/0 Média, OWASP 1 CVE triado) e E2E dos
+bytes publicados com **61 PASS / 1 WARN / 0 FAIL** (instalador) e **59/1/0** (ZIP). **Não homologada:**
+rodada de QA, **B7** (smoke Linux x64) e **S6.9** (decisões do dono) seguem abertos. GA em 06/04/2027.
+
+O que a `rc1.6` entrega e a `rc1.2` não tinha: **RBAC por perfil** na API (ADMIN `200` ×
+OPERADOR/SUPERVISOR `403`, em JSON), **auditoria de usuários persistida** (`V18__cria_usuario_auditoria`,
+`GET /api/auditoria/usuarios`, card em `admin/auditoria.jsp`), **`403` no contrato JSON**
+(`ContratoDeErro` + `ForbiddenExceptionMapper`), freemium/backup/diagnóstico da `rc1.5`, `test.jsp` /
+`usuarios-demo.jsp` / `UsuariosServlet` e a ROOT do Tomcat fora, canais AMAZON/B2W travados.
+
+**Auditoria de coerência do ecossistema contra esses bytes:** versão, hashes, tamanho, data, status
+Pré-release e ressalvas de honestidade bateram nas quatro camadas. **Uma divergência**, com arquivo e
+linha: a loja promete a auditoria de usuários “em **Administração → Auditoria e Logs**”
+(`caracore-hub-releases/docs/download.html:43`), mas `navbar.jsp:107` só aponta `/auditoria/lista`
+(“Log de Auditoria”) e **nenhum** JSP/XML do webapp cita `admin/auditoria` — `AdminAuditoriaServlet` →
+`admin/auditoria.jsp` existe e só é alcançável digitando a URL. A wiki agrava:
+`caracore-wiki/docs/hub/admin.html:123` descreve filtros por usuário/data/tipo e exportação sob
+“Administração → Auditoria”, o que é `/auditoria/lista` (`auditoria/lista.jsp:43,140,249`,
+`/api/auditoria/exportar`) e **não** mostra `usuario_auditoria`. O gate não pega porque
+`scripts/verify_hub_e2e.ps1` sonda `/admin/auditoria` como anônimo (302), `403` JSON e persistência da
+API, mas nunca o caminho de entrada na interface. **Correções:** item de menu → exige **`rc1.7`** (tag
+publicada não se reescreve); separar as duas telas no manual da wiki → pode sair **já**, sem RC; check
+de presença do link no E2E.
+
+**Mapa do caminho até o GA** (três estados, gates abertos, as 8 decisões do dono e ordem de execução):
+`caracore-hub/docs/status-hub-ga-2027-20261025.md`. Memória da oficina: `contexto-rapido.md` (topo) e
+`.cursor/rules/project-memory.mdc`. **Não** chamar a `rc1.6` de estável, de versão final ou de GA.
+
 ### Hub — Sprint 6 em 6/14, retrato de saúde e fila da `rc1.4` (23/10/2026)
 
 Oficina `caracore-hub`, **sem tag e sem asset**: a loja continua servindo `v2.1.0-rc1.2`

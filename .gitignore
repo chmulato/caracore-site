@@ -99,3 +99,4 @@ backend*.zip
 *log*.zip
 azure_logs*/
 test_report*.json
+_tmp_*.*

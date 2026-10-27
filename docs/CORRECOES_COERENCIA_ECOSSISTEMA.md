@@ -30,7 +30,7 @@ O valor vigente sai de `AGENTS.md` e de `docs/ECOSYSTEM_MEMORIA.md`. As linhas I
 | PDV Rust | Piloto `v0.1.4` |
 | CSO Frotas | FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Freeze M1 em 08/11/2026. A janela abr–dez/2027 não reabre |
 | CSO Transportes | GA 08/11/2028 |
-| Hub | Pré-release Windows `v2.1.0-rc1.6` (instalador e ZIP, unsigned, Pre-release, 25/10/2026). Não homologada; GA 06/04/2027 |
+| Hub | Pré-release Windows `v2.1.0-rc1.7` (instalador e ZIP, unsigned, Pre-release, 27/10/2026). Não homologada; GA 06/04/2027 |
 | Ink | Desktop Windows `v2.0.1` (07/10/2026). `v2.0.0` no histórico |
 | Reino OIDC | Free `v2.0.2-free` na página de download |
 | Circuito Ferradura | `v2.0.24`. `v2.0.23` no histórico |

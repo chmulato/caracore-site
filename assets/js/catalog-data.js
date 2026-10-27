@@ -18,7 +18,7 @@
   'use strict';
 
   var CATALOGO = {
-    atualizadoEm: '19/10/2026',
+    atualizadoEm: '26/10/2026',
 
     /**
      * Quatro estágios canônicos. Toda página da matriz usa estes rótulos.
@@ -112,8 +112,8 @@
         nome: 'CaraCore Hub',
         categoria: 'nucleo',
         estagio: 'beta',
-        versao: 'v2.1.0-rc1.2',
-        detalhe: 'Pré-release Windows (instalador e ZIP, unsigned). GA em 06/04/2027.',
+        versao: 'v2.1.0-rc1.6',
+        detalhe: 'Pré-release Windows (instalador e ZIP, unsigned) para avaliação; aceite de QA pendente. GA em 06/04/2027.',
         free: 'Pré-release Windows para avaliação.',
         pago: 'Edição comercial prevista para o GA.',
         preco: 'a definir',

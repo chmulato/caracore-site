@@ -32,7 +32,7 @@ VISÃO GERAL
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
   caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases
   caracore-hub                  Oficina — CaraCore Hub                      Encomendas; aplicação web 2.1 concluída; Tomcat embutido no instalador, SQLite local; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
-  caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br; pré-release Windows v2.1.0-rc1.2 (instalador e ZIP, unsigned); GA 06/04/2027
+  caracore-hub-releases         Loja online e releases do Hub               GitHub Pages: hub.caracore.com.br; pré-release Windows v2.1.0-rc1.6 (instalador e ZIP, unsigned, Pre-release); GA 06/04/2027
   caracore-ete                  Código do Minerador 4.0 (ETE)               chmulatoETE Minerador; Windows .exe
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
   caracore-seed                 Oficina do Cara Core Seed                   Piloto local MIT; Java 25; pré-release candidata Windows 0.1.5
@@ -94,7 +94,7 @@ Site e presença pública
 Produtos com entrega ativa (matriz + loja online)
   CaraCore PDV Java (web local): caracore-pdv + caracore-pdv-releases. Loja: pdv.caracore.com.br
   CaraCore PDV: caracore-pdv-rust + caracore-rust-pdv-releases (clone local caracore-pdv-rust-releases). Loja: **pdv-rust.caracore.com.br**. Artefatos: github.com/chmulato/caracore-rust-pdv-releases/releases (mesmo repo). Sem delivery matriz.
-  Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br. Banco: SQLite local (WAL). Download vigente: pré-release Windows v2.1.0-rc1.2 (instalador e ZIP, unsigned; tag nova na release seguinte). GA instalador 06/04/2027. Central: download.caracore.com.br. Não é Flask. Retomada: caracore-hub/docs/contexto-rapido.md. Manual: wiki.caracore.com.br/hub/
+  Cara Core Hub: caracore-hub + caracore-hub-releases. Loja: hub.caracore.com.br. Banco: SQLite local (WAL). Download vigente: pré-release Windows v2.1.0-rc1.6 (instalador e ZIP, unsigned, Pre-release de 25/10/2026; tag nova na release seguinte). GA instalador 06/04/2027. Central: download.caracore.com.br. Não é Flask. Retomada: caracore-hub/docs/contexto-rapido.md. Manual: wiki.caracore.com.br/hub/
   CaraCore CSO: caracore-cso-quarkus (Frotas em produção desde 06/10, Flyway V33; FRO 24/24) + caracore-cso-transportes (Desktop + integração Virtual Tracker, alvo conjunto 08/11/2028). Freeze M1: 08/11/2026. Não reabrir FRO. Loja única: D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br; apresenta Transportes + VT em desenvolvimento, sem contratação antecipada. App disponível: cso.caracore.com.br, sem GPS. Não inferir SHA atual de produção a partir do checkout.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br

@@ -48,9 +48,9 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | URL | https://hub.caracore.com.br/ |
 | O que é | Encomendas (ML, Shopee, Temu) — não Flask, não “central telefônica” |
-| GA | Instalador Windows 06/04/2027 (Electron + Tomcat embutido + SQLite WAL). Aplicação web 2.1 implementada, sem homologação: a QA da rodada 4 (16/10/2026) não aprovou a build; `WAR` é artefato interno de build, não release pública |
+| GA | Instalador Windows 06/04/2027 (Electron + Tomcat embutido + SQLite WAL). Aplicação web 2.1 implementada, sem homologação: a QA da rodada 4 (16/10/2026) reprovou a `rc1.2` e a rodada 5, sobre a `rc1.6`, ainda não foi feita; `WAR` é artefato interno de build, não release pública |
 | Banco | SQLite local (WAL) no computador do cliente. Java 25, Jakarta EE 10, Tomcat 10.1 |
-| RC Windows | Download da loja: `v2.1.0-rc1.2` (instalador SHA-256 `50d38ff0ee4defce5bb2598967331d0295fb4817dbec59df5d3e7574b22975e5` e ZIP SHA-256 `ec82b2bd57053c252faac4fdbb0066e9a5cea2df293562b35384107e5cb624b4`). A tag `v2.1.0-rc1.1` conserva o pacote de 06/10. A tag `v2.1.0-rc1` conserva o instalador de 05/10. A suíte 9/9 vale para `f59b959d…`. Não é GA. Mac e Linux fora desta tag. Login do perfil real ainda sem causa confirmada. O aceite da QA desta build ainda não foi feito |
+| RC Windows | Download da loja: `v2.1.0-rc1.6` — EXE `CaraCore.Hub-2.1.0-rc1.6-win-x64.exe` 274.160.424 B SHA-256 `05b87529112db79db67e50d1e708c1dc8568daf69c905f73bfb1abe7b4afc8c4`; ZIP `CaraCore.Hub-2.1.0-rc1.6-win-x64.zip` 324.500.797 B SHA-256 `fe3400c7a3d4101452f95d2f26ca82b0c7bfe84d427dbfaa6659af17a17c9c0d`. Publicada em 25/10/2026 como **Pre-release** (não Latest, não GA), unsigned. E2E dos bytes publicados: 61 PASS / 1 WARN / 0 FAIL (instalador) e 59 PASS / 1 WARN / 0 FAIL (ZIP). As tags `v2.1.0-rc1.2`, `v2.1.0-rc1.1` e `v2.1.0-rc1` conservam os pacotes anteriores; `rc1.3`, `rc1.4` e `rc1.5` nunca foram tagueadas. Não homologada: rodada 5 de QA, B7 (smoke Linux x64) e S6.9 abertos. Mac e Linux fora desta tag. Login do perfil real ainda sem causa confirmada. |
 | Oficina | `caracore-hub` |
 | Matriz | `#caracore-hub` |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-hub.html |

@@ -7,7 +7,7 @@ $outFile = Join-Path $siteRoot 'sala\regis\VALIDACAO_DELIVERY_STUBS.txt'
 
 $ProductBases = @{
     'pdv'          = 'https://pdv.caracore.com.br'
-    'pdv-rust'     = 'https://rust-pdv.caracore.com.br'
+    'pdv-rust'     = 'https://pdv-rust.caracore.com.br'
     'hub'          = 'https://hub.caracore.com.br'
     'circuito'     = 'https://circuito.caracore.com.br'
     'oidc'         = 'https://oidc.caracore.com.br'

@@ -48,7 +48,7 @@
     ["v4.0.0-rc6", "Pré-release pública da linha v4. SHA-256 publicado. A v3.2.12-free é uma atualização corretiva da linha 3.2.x, em manutenção até 08/11/2026. A v4 segue pelo ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11."],
     ["v4.0.0-rc5", "Pré-release anterior. Fica no histórico. O download público da linha v4 é a v4.0.0-rc6."],
     ["v3.2.12-free", "Última versão estável do PDV Java Free na linha 3.2.x, para Windows, Linux e macOS; manutenção de transição até 08/11/2026."],
-    ["v2.1.0-rc1.6", "Pré-release Windows para avaliação, com instalador e ZIP. O lançamento estável do Hub está previsto para 06/04/2027."],
+    ["v2.1.0-rc1.7", "Pré-release Windows para avaliação, com instalador e ZIP. O lançamento estável do Hub está previsto para 06/04/2027."],
     ["v2.0.2-free", "Edição Free do Reino OIDC. As três Eras são gratuitas para estudo pessoal. A edição paga está em desenvolvimento, sem PIX nesta etapa."],
     ["T032", "Gate interno do roteiro operacional."],
     ["Agent", "Sessão pesada do Cursor. É o que consome a cota do mês."],

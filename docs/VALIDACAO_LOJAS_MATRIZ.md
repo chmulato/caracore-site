@@ -2,7 +2,7 @@
 
 Objetivo: Verificar alinhamento entre a **matriz institucional** (caracore.com.br) e as **lojas canónicas** (*.caracore.com.br). A matriz apresenta e encaminha; a loja é a fonte de vitrine, download e documentação comercial.
 
-**Última actualização:** 2026-10-26 (Hub `v2.1.0-rc1.6`)  
+**Última actualização:** 2026-10-27 (Hub `v2.1.0-rc1.7`)  
 **Referências:** ECOSYSTEM_LOJAS.md · ECOSYSTEM_CARA_CORE.md · COMPONENTES_LOJA.md · docs/FONTES_CANONICAS_MATRIZ_LOJAS.md · docs/SITE_MATRIZ.md
 
 
@@ -67,7 +67,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 4. CARA CORE HUB
 
    (M) portfolio.html#caracore-hub
-   (L) caracore-hub-releases → hub.caracore.com.br · pré-release Windows v2.1.0-rc1.6 (instalador e ZIP, unsigned, Pre-release, 25/10/2026)
+   (L) caracore-hub-releases → hub.caracore.com.br · pré-release Windows v2.1.0-rc1.7 (instalador e ZIP, unsigned, Pre-release, 27/10/2026)
    GA Windows 06/04/2027
    Status: OK — pré-release, não é GA
 

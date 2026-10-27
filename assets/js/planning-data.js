@@ -14,10 +14,10 @@
  */
 window.CARACORE_PLANNING = {
   AS_OF: "2026-10",
-  AS_OF_LABEL: "26/10/2026",
+  AS_OF_LABEL: "27/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 26/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é uma atualização corretiva da linha 3.2.x, em manutenção até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4 via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; a v4.0.0-rc5 fica no histórico. O Hub segue em pré-release Windows v2.1.0-rc1.6, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu.",
+    "Leitura de 27/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é uma atualização corretiva da linha 3.2.x, em manutenção até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4 via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; a v4.0.0-rc5 fica no histórico. O Hub segue em pré-release Windows v2.1.0-rc1.7, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -57,8 +57,8 @@ window.CARACORE_PLANNING = {
         kind: "desvio",
         title: "Hub · pré-release Windows no ar",
         lead: "Pré-release Windows no ar; o aceite de QA desta build ainda está pendente.",
-        detail: "v2.1.0-rc1.6 · instalador e ZIP · unsigned · GA previsto em 06/04/2027",
-        text: "Pré-release Windows v2.1.0-rc1.6 disponível com instalador e ZIP, sem assinatura; o aceite de QA desta build ainda não foi feito. GA do instalador previsto para 06/04/2027. Mac e Linux ficam fora desta tag.",
+        detail: "v2.1.0-rc1.7 · instalador e ZIP · unsigned · GA previsto em 06/04/2027",
+        text: "Pré-release Windows v2.1.0-rc1.7 disponível com instalador e ZIP, sem assinatura; o aceite de QA desta build ainda não foi feito. GA do instalador previsto para 06/04/2027. Mac e Linux ficam fora desta tag.",
       },
     ],
   },
@@ -126,7 +126,7 @@ window.CARACORE_PLANNING = {
       label: "2027",
       subtitle: "Hub",
       pct: 14,
-      note: "Hub: pré-release Windows v2.1.0-rc1.6 publicada; aceite de QA pendente. GA do instalador em 06/04. A janela 08/04–dez não reabre o FRO. Ink PWA = Tab, não antes de 2028.",
+      note: "Hub: pré-release Windows v2.1.0-rc1.7 publicada; aceite de QA pendente. GA do instalador em 06/04. A janela 08/04–dez não reabre o FRO. Ink PWA = Tab, não antes de 2028.",
     },
     {
       id: "y2028",
@@ -244,7 +244,7 @@ window.CARACORE_PLANNING = {
       tone: "hub",
       shop: "https://hub.caracore.com.br/",
       hundred: "Instalador Windows com SQLite em 06/04/2027. Canais: Mercado Livre, Shopee e Temu.",
-      now: "Pré-release Windows v2.1.0-rc1.6 publicada, instalador e ZIP, sem assinatura. GA 06/04/2027. Mac e Linux fora desta tag.",
+      now: "Pré-release Windows v2.1.0-rc1.7 publicada, instalador e ZIP, sem assinatura. GA 06/04/2027. Mac e Linux fora desta tag.",
       history: [
         { m: "2026-06", p: 48 },
         { m: "2026-07", p: 52 },

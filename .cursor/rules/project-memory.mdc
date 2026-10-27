@@ -14,9 +14,9 @@ alwaysApply: true
 
 **Atualizado:** 2026-10-20 · PDV Free `v3.2.12-free` publicado; BioReator 4.0 Community 1.1.1; Hub com docs públicas alinhadas à aplicação web 2.1; IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
 
-## Checkpoint Hub — 08/10/2026
+## Checkpoint Hub — 25/10/2026 (atualizado em 27/10/2026)
 
-- Banco do produto: SQLite local (WAL) no computador do cliente. Java 25, Jakarta EE 10, Tomcat 10.1. Download da loja: tag `v2.1.0-rc1.2` em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.2. Instalador unsigned, 281.529.680 bytes, SHA-256 `50d38ff0ee4defce5bb2598967331d0295fb4817dbec59df5d3e7574b22975e5`. ZIP da mesma edição, 333.342.883 bytes, SHA-256 `ec82b2bd57053c252faac4fdbb0066e9a5cea2df293562b35384107e5cb624b4`. A tag `v2.1.0-rc1.1` conserva o pacote de 06/10. A tag `v2.1.0-rc1` conserva o instalador de 05/10. A suíte 9/9 vale para `f59b959d…`. Não é GA. A QA da rodada 4 (16/10/2026) não aprovou esta build; D1–D6 seguem abertos.
+- Banco do produto: SQLite local (WAL) no computador do cliente. Java 25, Jakarta EE 10, Tomcat 10.1. Download da loja: tag `v2.1.0-rc1.6` em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.6. Instalador unsigned, 274.160.424 bytes, SHA-256 `05b87529112db79db67e50d1e708c1dc8568daf69c905f73bfb1abe7b4afc8c4`. ZIP da mesma edição, 324.500.797 bytes, SHA-256 `fe3400c7a3d4101452f95d2f26ca82b0c7bfe84d427dbfaa6659af17a17c9c0d`. As tags `v2.1.0-rc1.2` (08/10), `v2.1.0-rc1.1` (06/10) e `v2.1.0-rc1` (05/10) conservam seus pacotes. Não é GA e não está homologada: rodada de QA, **B7** e S6.9 abertos; a `rc1.2` nunca foi aprovada.
 - Mac e Linux ficam fora desta tag. Backup e atualização sobre versão anterior não fazem parte deste aceite.
 - Login reportado via Electron `npm run dev` ainda sem causa confirmada: perfil/banco real não localizado. Consultar só existência/status sem senha/hash. GA 06/04/2027 e cota mantidos.
 - Próxima pré-release: outra tag. Versão em `electron/package.json`, commit com árvore limpa, `scripts/build_hub_exe.ps1`, nome público `CaraCore.Hub-<versão>-win-x64`, publicação em `caracore-hub-releases`, depois central e matriz. POMs Maven permanecem `2.1.0-rc1`.

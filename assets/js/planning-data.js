@@ -39,9 +39,9 @@ window.CARACORE_PLANNING = {
         kind: "risco",
         title: "PDV Java · transição 3.2.12 para v4",
         lead: "A v3.2.12-free é uma atualização corretiva da linha 3.2.x, com encerramento em 08/11. A corretiva foi publicada em 15/10/2026 com autorização explícita para validações pendentes; 19/19 testes focados Java 25/H2 aprovados.",
-        detail: "Homologação operacional incompleta · RC6 pública · RC7 em QA local",
+        detail: "Homologação operacional incompleta · RC6 pública · RC7 não publicada (candidatos locais de 12/10)",
         tip: "Na Free, seguem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
-        text: "A v3.2.12-free foi publicada como estável/Latest em 15/10/2026 por autorização explícita; 19/19 testes focados Java 25/H2 e integridade dos ZIPs aprovados; não declarar homologação operacional completa. Permanecem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor físico. A pré-release pública v4.0.0-rc6 tem SHA-256 0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325; RC7 está em QA local. T032 e aceites formais permanecem pendentes. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
+        text: "A v3.2.12-free foi publicada como estável/Latest em 15/10/2026 por autorização explícita; 19/19 testes focados Java 25/H2 e integridade dos ZIPs aprovados; não declarar homologação operacional completa. Permanecem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor físico. A pré-release pública v4.0.0-rc6 tem SHA-256 0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325; a RC7 não foi publicada — os candidatos de 12/10 ficaram em QA local e a decisão da próxima versão (D-RC7) segue aberta. T032 e aceites formais permanecem pendentes. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
       },
       {
         id: "cso",

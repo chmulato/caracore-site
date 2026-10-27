@@ -11,6 +11,37 @@ Regra do dono, válida para todas as oficinas: o prompt da próxima tarefa é en
 o `.md`. Registrado também em `AGENTS.md` (§ Como IAs colaboram, item 6), no espelho
 `caracore-site/AGENTS.md` e em `caracore-hub/.cursor/rules/project-memory.mdc`.
 
+### Coerência — correções de copy aplicadas (27/10/2026, local, sem nova tag)
+
+Fechadas as divergências da auditoria de 26/10, com evidência de código:
+
+- **Tela de auditoria.** `caracore-hub-releases/docs/download.html:43`, `RELEASE_2.1.0-rc1.6.md`
+  e o **corpo da release no GitHub** (editado em 27/10 por `gh release edit`, sem tocar assets ou tag)
+  passaram a dizer que **Auditoria e Logs** (`/admin/auditoria`, ADMIN —
+  `AdminAuditoriaServlet.java:21`) se abre **pela URL nesta RC**; o item de menu entra na próxima.
+  A wiki (`docs/hub/admin.html:123-124`) separa **Log de Auditoria** (`/auditoria/lista`) de
+  **Auditoria e Logs** (`usuario_auditoria`) e registra que a primeira não mostra as ações da segunda.
+- **Deck Tia Sócia.** `docs/slides/assets/js/apresentacao-tia-socia.js:28` saiu de `rc1.2` para
+  `v2.1.0-rc1.6`.
+- **Memória interna sem `rc1.2` como versão a publicar.** `caracore-loja/AGENTS.md:32,53`,
+  `caracore-loja/README.md:25`, `caracore-wiki/README.md:20`,
+  `caracore-wiki/.cursor/rules/project-memory.mdc:48,50`,
+  `caracore-hub-releases/.cursor/rules/project-memory.mdc` e
+  `caracore-site/.cursor/rules/project-memory.mdc:17-19`. O `project-memory` do hub-releases agora
+  avisa que **só `docs/` é publicado** e que as cópias da raiz são legadas; o README do repo também.
+- **Precisão.** `caracore-site/assets/js/planning-data.js:42,44` → “RC7 não publicada (candidatos
+  locais de 12/10; D-RC7 aberta)”; `caracore-pdv/docs/arquitetura/STATUS_ATUAL_APLICACAO.md:24`
+  marcado como **histórico** (step 7 verde em `40421491568`); nota da `v4.0.0-rc6` (local e corpo no
+  GitHub) trocou “Latest continua v3.2.7-free” por “estável/Latest é a `v3.2.12-free` desde 15/10/2026”.
+
+**Fato novo medido:** a recuperação de senha exige **12 caracteres**
+(`CodigoRecuperacaoService.java:27`, aplicado em `:229-231`), enquanto `Usuario.java:40` ainda declara
+`@Size(min = 6)`. É divergência **de código**, não de copy: dívida para a `rc1.7`.
+
+**Escopo do que está no ar:** apenas os dois corpos de release foram alterados no remoto. Loja, central,
+matriz e wiki seguem com estas correções **locais, sem commit nem push**. Status público inalterado:
+pré-release não homologada, GA 06/04/2027.
+
 ### Hub — `v2.1.0-rc1.6` publicada, auditoria de coerência e mapa do GA (25/10/2026)
 
 **Publicado, e nada além disso:** a pré-release `v2.1.0-rc1.6` está no ar em

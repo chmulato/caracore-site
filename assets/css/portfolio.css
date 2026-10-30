@@ -374,6 +374,16 @@
   padding-top: 1.25rem;
 }
 
+section[id] {
+  scroll-margin-top: 7rem;
+}
+
+@media (max-width: 991.98px) {
+  section[id] {
+    scroll-margin-top: 4.5rem;
+  }
+}
+
 .portfolio-context {
   max-width: 1140px;
   margin: 0 auto;

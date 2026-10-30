@@ -24,7 +24,7 @@ atualizar só o HTML deixa a tela mentindo (foi assim que a Central e a matriz q
 
 | Produto | Estado medido | Onde começar |
 |---|---|---|
-| PDV Java v4 | **GA recusado no Gate E**; rota `rc7` curta + GA em data escrita (`D-GE-7`); HEAD `cd0c29c` (só o prompt `.txt`), último código verde no CI = `0522bbf` (run `40981863947`, 965/3, LINE 52,23%); pacote `ff400efd8737…` com T032 16/16 e matriz 11/11; **SCA não medido** e cenário migrado bloqueado; superfícies públicas no estado B | `caracore-pdv/AGENTS.md` § "Como desenvolver uma feature nova na v4" |
+| PDV Java v4 | **GA recusado no Gate E**; rota `rc7` curta + GA em data escrita (`D-GE-7`); último commit de **código** verde no CI = `0522bbf` (run `40981863947`, 965/3, LINE 52,23%) e os commits acima dele são só documentação; pacote `ff400efd8737…` com T032 16/16 e matriz 11/11; **SCA não medido** e cenário migrado bloqueado; superfícies públicas no estado B | `caracore-pdv/AGENTS.md` § "Como desenvolver uma feature nova na v4" |
 | PDV Java 3.2.12 | **versão anterior** na copy desde 29/10, ainda a indicada para operar; GitHub ainda marca Latest; manutenção só até 08/11/2026 | `caracore-pdv/AGENTS.md` § Diretriz de transição |
 | Hub | `v2.1.0-rc1.7` publicada em 27/10 e **REPROVADA** na QA da rodada 5 (N1/N2 bloqueantes); próxima = `rc1.8` com N1–N8; GA 06/04/2027 | `caracore-hub/.cursor/rules/project-memory.mdc` § "Como desenvolver uma feature nova" |
 

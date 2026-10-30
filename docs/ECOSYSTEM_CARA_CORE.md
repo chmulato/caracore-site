@@ -13,7 +13,7 @@ privada, mapa e histórico. Presença 120 s, posição 60 s em viagem como refer
 a medir; sem fila offline ou promessa de localização instantânea.
 Fonte: [plano mestre](../../caracore-cso-transportes/docs/plano_organizado_execucao_cso.md).
 
-**Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `AGENTS.md` na raiz do workspace.
+**Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `caracore-site/AGENTS.md` + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `AGENTS.md` da raiz do workspace **não existe mais**.
 **Transição do PDV:** `v3.2.12-free` é a versão anterior do PDV Java, última da linha 3.2.x, em manutenção de transição apenas até 08/11/2026 e ainda a indicada para operar. O PDV v4 está em pré-lançamento, com a `v4.0.0-rc6` como prévia pública para avaliação; a sucessão é feita pelas RCs e o GA só vem após aprovação formal dos gates e aceites, sem data automática em 08/11.
 
 

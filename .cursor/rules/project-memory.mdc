@@ -1,5 +1,5 @@
 ---
-description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java v3.2.12-free · RC6 Qute pré-release · Free 100/mês · PDV Rust v0.1.4
+description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java 3.2.12-free (versão anterior) · v4 Gate E recusou o GA em 29/10 e a rota é rc7 curta · PDV Rust v0.1.4 · Hub v2.1.0-rc1.7 pré-release reprovada na QA da rodada 5
 alwaysApply: true
 ---
 
@@ -11,16 +11,24 @@ alwaysApply: true
 - 19/19 testes focados em Java 25/H2 aprovados; CRC/estrutura dos três ZIPs e hashes dos cinco assets remotos conferidos. Suíte completa, smoke portátil SQLite/health/navegador, execução Linux/macOS e homologação operacional completa pendentes. Publicação estável/Latest autorizada explicitamente em 15/10/2026; não significa homologação completa.
 - Corretiva de HTTP 405 e ESTORNADA/CANCELADA, migração V047 e fila em transação independente. Mesmos limites, sem PIX/NF-e/NFC-e.
 
+## PDV v4 — estado de 30/10/2026
 
-**Atualizado:** 2026-10-20 · PDV Free `v3.2.12-free` publicado; BioReator 4.0 Community 1.1.1; Hub com docs públicas alinhadas à aplicação web 2.1; IAs: `AGENTS.md` neste repo (espelho de `D:\onedrive\dev\AGENTS.md`)
+- **O Gate E recusou o GA do v4 em 29/10/2026** (`caracore-pdv/docs/arquitetura/GATE_E_MATRIZ_20261029.md:143`): "GA RECUSADO… `rc7` curta e, depois dela, GA em data escrita". **08/11/2026 é o fim da manutenção da Free 3.2.12, não GA da v4** — mudar isso exige decisão escrita do dono (`D-GA-1`).
+- Medido no HEAD `0522bbf`: run `40981863947` `success` (965 testes, 3 ignorados, LINE 52,23%); pacote `ff400efd8737…` com **T032 16/16** e **matriz M01–M11 + M10b = 11/11**; **M11 segue bloqueado** por PERF-001–007 (bloqueado ≠ aprovado) e o **cenário "banco 3.2.12 migrado" está bloqueado** (fixture apagada do disco, aceite não se transporta).
+- **SCA nunca foi medido** (`D-SCA-1`): não existe "0 CVE" no ecossistema. O ZIP público continua sendo a **RC6 de 11/10** e não contém as correções de 29–30/10.
+- Feature nova vai **só na v4/`master`**; roteiro em `caracore-pdv/AGENTS.md` § "Como desenvolver uma feature nova na v4". Publicação só depois do Gate E e de aprovação escrita do dono (F7).
 
-## Checkpoint Hub — 25/10/2026 (atualizado em 27/10/2026)
+
+**Atualizado:** 2026-10-30 · PDV Free `v3.2.12-free` publicado (na copy pública: **versão anterior, indicada para operar**); BioReator 4.0 Community 1.1.1; PDV v4 com **GA recusado no Gate E** (29/10) e rota `rc7` curta; Hub `v2.1.0-rc1.7` pré-release **reprovada** pela QA da rodada 5. **Fonte mestre para IAs:** `AGENTS.md` neste repo + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `D:\onedrive\dev\AGENTS.md` **não existe mais**.
+
+## Checkpoint Hub — 25/10/2026 (atualizado em 29/10/2026)
 
 - Banco do produto: SQLite local (WAL) no computador do cliente. Java 25, Jakarta EE 10, Tomcat 10.1. Download da loja: tag `v2.1.0-rc1.7` em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.7. Instalador unsigned, 274.162.562 bytes, SHA-256 `1563f1bd343b0044f9a64dd9bb7d3a1604761ee7f1e2354e8663b693cb310ba1`. ZIP da mesma edição, 324.502.796 bytes, SHA-256 `924af1960ccda606e4b3979ff36741f7e78228f8f77c396ccb985878b940b37e`. A `v2.1.0-rc1.6` conserva o pacote de 25/10 e as tags `v2.1.0-rc1.2` (08/10), `v2.1.0-rc1.1` (06/10) e `v2.1.0-rc1` (05/10) os seus. Não é GA e não está homologada: rodada de QA, **B7** e S6.9 abertos; a `rc1.2` nunca foi aprovada.
 - Mac e Linux ficam fora desta tag. Backup e atualização sobre versão anterior não fazem parte deste aceite.
+- **29/10/2026 — a `rc1.7` foi REPROVADA na QA da rodada 5:** 21 PASS · 5 FAIL · 1 MANUAL · 2 NÃO EXECUTADO em 29 CTs. **N1** (pedido vai a PRONTO e "Confirmar retirada" fecha tudo sem conferência volume a volume) e **N2** (`/api/estoque/buscar` 500 em volume alocado → scanner não retira nada) são **bloqueantes**. A promessa pública do Hub ("recebimento, conferência, guarda por posição, etiquetas e retirada conferida volume a volume") **não é entregue de ponta a ponta** pela interface hoje. Próxima entrega = **`rc1.8`** com N1–N8; ver `caracore-hub/docs/handoff-construtora-hub-rc1.7-20261027.txt`.
 - Login reportado via Electron `npm run dev` ainda sem causa confirmada: perfil/banco real não localizado. Consultar só existência/status sem senha/hash. GA 06/04/2027 e cota mantidos.
 - Próxima pré-release: outra tag. Versão em `electron/package.json`, commit com árvore limpa, `scripts/build_hub_exe.ps1`, nome público `CaraCore.Hub-<versão>-win-x64`, publicação em `caracore-hub-releases`, depois central e matriz. POMs Maven permanecem `2.1.0-rc1`.
-- Retomada Gemini/Cursor: `caracore-hub/docs/contexto-rapido.md` → `project_hub/docs/STATUS-ATUAL.md` → `docs/plano-lancamento-rc1.md` → `.cursor/rules/project-memory.mdc`. O manifesto publicado aponta o commit `463a854`. A oficina local pode estar à frente do remoto. Atualização de memória no checkout local; publicar a matriz quando o dono pedir o corte.
+- **Para desenvolver feature nova no Hub:** ler `caracore-hub/.cursor/rules/project-memory.mdc` § "Como desenvolver uma feature nova (oficina Hub)" — regra no serviço/domínio (nunca só no JSP: o N1 nasceu em `Pedido.marcarPronto()`), migração Flyway só para frente + `FreeSqliteStartupMigrationTest`, bancada `mvnw.cmd -B -Ptomcat clean package` (nunca `test`), um teste por item de correção. Retomada: `caracore-hub/docs/contexto-rapido.md` → `docs/handoff-construtora-hub-rc1.7-20261027.txt` → `.cursor/rules/project-memory.mdc`. `project_hub/docs/STATUS-ATUAL.md` é **árvore legada congelada**, não fonte de estado. A oficina local pode estar à frente do remoto; publicar a matriz quando o dono pedir o corte.
 - **20/10/2026:** cartão do Hub na home e copy de `ecosistema.html` e `portfolio.html` alinhados à aplicação web 2.1 (Tomcat embutido no instalador, SQLite local), com login por telefone e recuperação por código; `WAR`/`oficina` fora das páginas públicas. Commit `098fa88`. A QA da rodada 4 segue sem aprovar a `v2.1.0-rc1.2` (D1–D6); `v2.1.0-rc1.2` e GA 06/04/2027 inalterados.
 
 ## Matriz institucional — CDN/Vercel — 05/10/2026
@@ -190,5 +198,6 @@ Alterações locais de planejamento/copy não significam publicação.
 ## Colaboração entre IAs
 
 - **Uma camada por vez:** matriz · loja · oficina · wiki. Não misturar Java e Rust no mesmo patch.
-- **Depois de corte ou copy no ar:** `AGENTS.md` (este repo + raiz do workspace) + `docs/ECOSYSTEM_MEMORIA.md` + `.cursor/rules` do repo tocado.
+- **Depois de corte ou copy no ar:** `AGENTS.md` (este repo — a raiz do workspace **não** tem `AGENTS.md`) + `docs/ECOSYSTEM_MEMORIA.md` + `.cursor/rules` do repo tocado.
+- **Antes de abrir feature nova:** ler o roteiro do produto — `caracore-pdv/AGENTS.md` § "Como desenvolver uma feature nova na v4" ou `caracore-hub/.cursor/rules/project-memory.mdc` § "Como desenvolver uma feature nova (oficina Hub)". Regra comum: o que não tem `arquivo:linha`, teste ou run **não é fato**, e estado se declara antes do adjetivo.
 - **Quem entra:** loja da linha (`download.html#perfis` Java · `primeiros-passos.html#perfis` Rust). Wiki aponta, não é fonte de senha.

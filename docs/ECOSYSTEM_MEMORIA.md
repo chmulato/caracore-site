@@ -2,6 +2,36 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Como uma IA abre uma feature nova (30/10/2026 — ler antes de editar código)
+
+**Fonte mestre:** `caracore-site/AGENTS.md` + este ficheiro. O antigo `D:\onedrive\dev\AGENTS.md` **não existe
+mais**: todo ponteiro para o "AGENTS.md da raiz do workspace" está morto e não deve ser seguido nem citado.
+
+**Ordem de leitura:** `AGENTS.md` → este ficheiro → `INICIAR_NOVA_TAREFA.md` → `project-memory.mdc` **do repo
+da tarefa**. A memória da oficina manda no estado do produto; este documento manda na copy institucional.
+
+**Camadas — uma por vez:** oficina (`caracore-<produto>`, código) → loja (`caracore-<produto>-releases`,
+vitrine e assets) → Central (`caracore-loja`, catálogo único) → matriz (`caracore-site`, resumo + CTA) → wiki
+(`caracore-wiki`, manual e alinhamento). Nunca editar vitrine dentro da oficina, nunca publicar `WAR`/binário de
+build como release.
+
+**Antes de escrever qualquer coisa:** contrato de promessas (`docs/PROMPT_HONESTIDADE_PROMESSAS.md`) — sem
+`arquivo:linha`, teste ou run não é fato; estado antes de adjetivo; tela protegida não é API protegida; default
+do fornecedor se declara; aceite não atravessa builds. Tabela renderizada por `assets/js/*-data.js` **é copy**:
+atualizar só o HTML deixa a tela mentindo (foi assim que a Central e a matriz quase publicaram dado velho).
+
+**Estado por produto (30/10/2026)**
+
+| Produto | Estado medido | Onde começar |
+|---|---|---|
+| PDV Java v4 | **GA recusado no Gate E**; rota `rc7` curta + GA em data escrita (`D-GE-7`); HEAD `cd0c29c` (só o prompt `.txt`), último código verde no CI = `0522bbf` (run `40981863947`, 965/3, LINE 52,23%); pacote `ff400efd8737…` com T032 16/16 e matriz 11/11; **SCA não medido** e cenário migrado bloqueado; superfícies públicas no estado B | `caracore-pdv/AGENTS.md` § "Como desenvolver uma feature nova na v4" |
+| PDV Java 3.2.12 | **versão anterior** na copy desde 29/10, ainda a indicada para operar; GitHub ainda marca Latest; manutenção só até 08/11/2026 | `caracore-pdv/AGENTS.md` § Diretriz de transição |
+| Hub | `v2.1.0-rc1.7` publicada em 27/10 e **REPROVADA** na QA da rodada 5 (N1/N2 bloqueantes); próxima = `rc1.8` com N1–N8; GA 06/04/2027 | `caracore-hub/.cursor/rules/project-memory.mdc` § "Como desenvolver uma feature nova" |
+
+**Entrega:** commit e push só com autorização explícita, por ação; nos repos de site, PR + merge (rebase, sem
+merge commit) só quando pedido. Evidência de execução vale no dia (copiar run + log + artefato). Prompt da
+próxima tarefa sempre em `.txt` em `docs/` da oficina. Publicação é passo separado, nunca efeito de commit.
+
 ### PDV v4 em pré-lançamento — virada de discurso no ecossistema (29/10/2026, loja e wiki publicadas)
 
 Decisão do dono nesta data: **focar o pré-lançamento da v4 e tratar a 3.2.12-free como versão antiga**.
@@ -426,7 +456,7 @@ localização, banda, criptografia ou capacidade nesta revisão.
 **Atualizado:** 2026-10-15 · PDV Free `v3.2.12-free` estável/Latest; fonte `hotfix/3.2.12-free` `72ace488aed4ee91001c60cf40a3934ddfe8faf1`. Publicação estável/Latest autorizada em 15/10/2026, com validações pendentes. 19/19 testes focados passaram em Java 25/H2; ZIPs e hashes remotos conferidos. Suíte completa, smoke portátil com SQLite/health/navegador, execução Linux/macOS e homologação operacional completa permanecem pendentes. Não transferir aceites da 3.2.8. Windows SHA-256 `6d7a50b0acf2a05620a090eebdd48f049a1dd5599ccb6c40c419c38145f7c0e2`; Linux/macOS `795a396318da61d1bd45dcfe816879d2184706f1c7849f1cd2ad98baa99fd9c1`. Release: https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.12-free. Pacotes locais em `D:\temp_pdv`. A 3.2.8 permanece no histórico e a v4 RC6 continua pré-release separada. Manutenção restrita até 08/11/2026, sem GA v4 automático. Registros anteriores abaixo são históricos.
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev`  
 **Guia de produtividade:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) ← use ao **iniciar nova tarefa**  
-**Fonte mestre para IAs:** `AGENTS.md` na raiz do workspace e **cópia git** `caracore-site/AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
+**Fonte mestre para IAs:** `caracore-site/AGENTS.md` — **não existe mais** `D:\onedrive\dev\AGENTS.md`, e qualquer ponteiro que mande ler o `AGENTS.md` da raiz do workspace está morto · Cursor: `.cursor/rules/ecosystem-cara-core.mdc`
 
 ### Como Gemini, Copilot e Cursor devem retomar
 
@@ -470,7 +500,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 
 1. **Nova tarefa?** → [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) (fluxo por tipo de trabalho). **Compilar Java?** → `D:\onedrive\dev\APPS_JAVA_VERSION.md` (JDK por aplicação; Maven em `D:\onedrive\dev\.m2\repository`).
 2. **Status das aplicações (Gemini/Cursor):** começar pelo [snapshot acima](#snapshot-das-aplicações-e-frentes-2026-10-15), depois consultar a memória canônica da oficina antes de editar ou anunciar status.
-3. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`D:\onedrive\dev\AGENTS.md`**
+3. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`caracore-site/AGENTS.md`**
 4. **Produtos principais (só estes três):** PDV (Java Free `v3.2.12-free`, atualização corretiva da linha 3.2.x até 08/11/2026; v4 pelo ciclo de RCs, com GA só após aceites + Rust `v0.1.4`) · CSO (gestão de frota **no ar**, FRO 24/24; freeze M1 08/11/2026; loja `cso-transp`; Transportes **08/11/2028**; ≠ GPS) · Hub (encomendas; pré-release Windows `v2.1.0-rc1.2`; GA Windows 06/04/2027). **Brincos:** Ink, OIDC, Seed, Circuito, Área 51, RU, BioReator 4.0, Helianto, MKT, Minerador — existem; em conflito de cota ou headline, **cedem**. **MKT e Helianto voltaram ao mapa de lojas em 10/10/2026** (`mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io`; `MEMORIA_INFRAESTRUTURA_CARACORE.txt`).
 4a. **Marcos PDV/CSO em 08/11/2026:** encerra a manutenção restrita da linha Free 3.2.x (corretiva atual `v3.2.12-free`); isso não é GA da v4. A pré-release pública `v4.0.0-rc6` segue pelo ciclo de RCs e os gates de homologação. Promover GA apenas após aprovação formal, sem data presumida. CSO = freeze do que já está no ar, inclusive a gestão de frota publicada em 06/10. Não misturar com Transportes 2028.
 4b. **Cota Cursor (fila única):** `docs/CALENDARIO_COTA_CURSOR.md` — US$ 20/mês · 1 produto pesado por ciclo. Página pública **Funding / Patrocínio:** `planning.html#patrocinio` (US$ 800 até dez/2029). set = CSO COE · out–nov = PDV v4 · dez/2026–06/04/2027 = **Hub** · 2028 = Transportes · **2029 = Helianto (GA 30/12/2029)**. A janela antiga de FRO em 08/abr–dez/2027 foi antecipada: os seis pilares já estão em produção desde 06/10. Ink PWA = Tab; sem Agent até folga (**não antes de 2028**).

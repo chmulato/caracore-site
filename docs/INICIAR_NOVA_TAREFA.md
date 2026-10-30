@@ -3,7 +3,7 @@
 Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 3–5 minutos antes de abrir código.
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [Cota Cursor](CALENDARIO_COTA_CURSOR.md) · [Riscos / decisão](RISCOS_ECOSSISTEMA.md)  
-**Fonte IAs:** `D:\onedrive\dev\AGENTS.md` · Cursor: `.cursor/rules/ecosystem-cara-core.mdc` · Java: `D:\onedrive\dev\APPS_JAVA_VERSION.md`  
+**Fonte IAs:** `caracore-site/AGENTS.md` (não existe mais `D:\onedrive\dev\AGENTS.md`) · Cursor: `.cursor/rules/ecosystem-cara-core.mdc` · Java: `D:\onedrive\dev\APPS_JAVA_VERSION.md`  
 **Atualizado:** 2026-09-13  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
@@ -13,7 +13,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Passo | Ação |
 |-------|------|
-| 0 | Ler `AGENTS.md` na raiz (**principais** PDV · CSO · Hub; o resto é **brinco**, bloco **Marcos de transição PDV/CSO** e **Cota Cursor**) |
+| 0 | Ler `caracore-site/AGENTS.md` (**principais** PDV · CSO · Hub; o resto é **brinco**, bloco **Marcos de transição PDV/CSO** e **Cota Cursor**). O `AGENTS.md` da raiz do workspace **não existe mais** |
 | 0b | Confirmar o **dono do ciclo** em `docs/CALENDARIO_COTA_CURSOR.md`. Não abrir Agent pesado noutro produto. |
 | 0c | Se a tarefa muda um **GA público**, o **dono do ciclo** ou abre Agent noutro produto → ler `docs/RISCOS_ECOSSISTEMA.md` e aplicar a coluna «Decisão». |
 | 0d | Antes de compilar Java, ler `D:\onedrive\dev\APPS_JAVA_VERSION.md` e usar o JDK daquela aplicação |
@@ -82,7 +82,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Frotas | Gestão de frota FRO 24/24 em produção desde 06/10 (`b90d1dc`, Flyway V33). Index `e1e8d63`. 08/11/2026 = freeze do que já está no ar, sem jornada, app offline nem GPS. Oficina `caracore-cso-quarkus` (não editar vitrine lá) |
 | Copy da matriz, wiki e loja | Alinhada no checkout em 06/10 (`ecosistema.html`, `portfolio.html`, `projeto-cso.html`, loja `cso-transp`). Ainda sem commit/push. A aplicação já descreve a frota desta versão |
 | Transportes | Garagem **08/11/2028** · oficina `caracore-cso-transportes` (**sem** informação de loja) · **não** é a data do PDV v4 |
-| Discurso | Home da loja = conversão Frotas hoje (CTAs → /cadastro). CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. Sem depoimento inventado. Headline pública de 08/11/**2026** = PDV v4. |
+| Discurso | Home da loja = conversão Frotas hoje (CTAs → /cadastro). CSO ≠ GPS. Um produto em 08/11/2028. Loja não substitui a aplicação. Sem depoimento inventado. 08/11/**2026** encerra a manutenção da Free 3.2.12 e **não** é data de GA do PDV v4 (`D-GA-1` aberta; o Gate E recusou o corte em 29/10). |
 | Landing app | JSON-LD + cache 5 min + LCP WebP no ar (oficina quarkus) |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-cso.html |
 
@@ -110,8 +110,9 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | Plano Qute | `docs/arquitetura/PLANO_PARIDADE_NEGOCIO_QUTE.md` |
 | Status vigente | `docs/arquitetura/STATUS_ATUAL_APLICACAO.md` |
 | Cursor | `.cursor/rules/project-memory.mdc` · `qute-migracao.mdc` |
+| Feature nova | `AGENTS.md` § **"Como desenvolver uma feature nova na v4"** (JDK 25, `mvn -B -ntp verify`, piso 50% dentro do `verify`, evidência do dia, pacote = medição nova) |
 
-**Estado (2026-10-14):** Free `v3.2.12-free` é a versão final estável da linha 3.2.x, publicada para Windows/Linux/macOS; manutenção somente até 08/11/2026 e sem novos recursos ou feature branches. Correções nessa linha apenas se críticas, impeditivas à operação ou necessárias à migração; verificar aplicação à v4 quando pertinente. Download público da pré-release = `v4.0.0-rc6` (ZIP unsigned Windows x64, 178.166.244 bytes, SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`). Fonte: `master` `681ea32`; a tag Git permanece em `b3358fe`. RC7 está em QA local, sem publicação. O ciclo completo de homologação segue pendente. 08/11 encerra a manutenção 3.2.12, não é GA da v4; a sucessão passa pelo ciclo de RCs e depende dos gates/aceites formais. `PERF-001–007` congeladas. Copy Free sem PIX integrado nem NF-e/NFC-e; recibo digital por link e PDF, sempre sem valor fiscal. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
+**Estado (2026-10-30):** **Gate E recusou o GA** (`docs/arquitetura/GATE_E_MATRIZ_20261029.md:143`); rota = **`rc7` curta** e GA em data escrita (`D-GE-7`). HEAD `cd0c29c`, CI verde em `adf0ecc` (run `40921326196`). Superfícies públicas (loja, wiki, matriz, Central e Rust) no **estado B**: v4 em pré-lançamento e 3.2.12-free como versão anterior. Free `v3.2.12-free` é a última da linha 3.2.x e **não recebe recurso novo**; manutenção de transição somente até 08/11/2026 e sem feature branch. Correções nessa linha apenas se críticas, impeditivas à operação ou necessárias à migração; verificar aplicação à v4 quando pertinente. Download público da pré-release = `v4.0.0-rc6` (ZIP unsigned Windows x64, 178.166.244 bytes, SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`). Fonte: `master` `681ea32`; a tag Git permanece em `b3358fe`. RC7 está em QA local, sem publicação. O ciclo completo de homologação segue pendente. 08/11 encerra a manutenção 3.2.12, não é GA da v4; a sucessão passa pelo ciclo de RCs e depende dos gates/aceites formais. `PERF-001–007` congeladas. Copy Free sem PIX integrado nem NF-e/NFC-e; recibo digital por link e PDF, sempre sem valor fiscal. Não substitui o PDV Rust. Handoff: `CONTINUIDADE_DESENVOLVIMENTO.md`.
 
 ---
 
@@ -236,7 +237,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 - [ ] `VALIDACAO_LOJAS_MATRIZ.md` (se mudou links matriz/loja)
 - [ ] Oficina Rust: `python tools/sync_docs_status.py --full` se mudança relevante
 - [ ] Atualizar `ECOSYSTEM_MEMORIA.md` se mudou **regra de ecossistema** (repo, URL, release)
-- [ ] Atualizar `AGENTS.md` (este repo + raiz do workspace) e `project-memory.mdc` do repo trabalhado
+- [ ] Atualizar `caracore-site/AGENTS.md` e o `project-memory.mdc` do repo trabalhado (não existe mais `AGENTS.md` na raiz do workspace)
 - [ ] **Prompt da próxima tarefa em `.txt`** (ASCII, sem markdown, em `docs/` da oficina, nome `prompt-proxima-tarefa-<tema>-<AAAAMMDD>.txt`); o `.md` é só espelho — regra fixa, não perguntar o formato
 - [ ] Uma camada por vez (matriz · loja · oficina · wiki); não misturar Java e Rust no mesmo patch
 - [ ] Smoke manual: home → portfólio → loja ou releases → voltar
@@ -264,7 +265,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 | Necessidade | Documento |
 |-------------|-----------|
 | Visão 30 s | `ECOSYSTEM_MEMORIA.md` |
-| IAs (Cursor e outras) | `AGENTS.md` neste repo · espelho `D:\onedrive\dev\AGENTS.md` |
+| IAs (Cursor e outras) | `caracore-site/AGENTS.md` (fonte única; o antigo `D:\onedrive\dev\AGENTS.md` não existe mais) |
 | Esta página (fluxos) | `INICIAR_NOVA_TAREFA.md` |
 | Mapa repos | `ECOSYSTEM_CARA_CORE.md` |
 | URLs lojas | `ECOSYSTEM_LOJAS.md` |

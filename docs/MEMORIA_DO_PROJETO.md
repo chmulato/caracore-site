@@ -2,8 +2,8 @@
 
 Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar estrutura, portfólio, redirects, copy B2B ou integrações.
 
-**Última actualização:** 2026-10-05
-**Iniciar tarefa:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md)  
+**Última actualização:** 2026-10-30
+**Iniciar tarefa:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) · **Fonte mestre para IAs:** [`../AGENTS.md`](../AGENTS.md) + [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
 **Posicionamento:** [DILEMA.md](DILEMA.md) · **Índice:** [INDEX.md](INDEX.md)
 
 ---
@@ -50,15 +50,15 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 
 | Linha | Oficina | Loja | Release |
 |-------|---------|------|---------|
-| Java Free (navegador publicado) | caracore-pdv | pdv.caracore.com.br | **v3.2.12-free** |
-| Java v4 (Qute RC6 pública) | caracore-pdv | pré-release `v4.0.0-rc6` · notas na loja | T032 aberto · RC7 somente local · ciclo de RCs; GA somente após gates/aceites formais, sem data automática em 08/11 |
+| Java Free (navegador publicado) | caracore-pdv | pdv.caracore.com.br | **v3.2.12-free** — na copy pública: **versão anterior, indicada para operar** (o GitHub ainda a marca como *Latest*) |
+| Java v4 (Qute) | caracore-pdv | pré-release pública `v4.0.0-rc6` · notas na loja | **GA recusado no Gate E de 29/10/2026** (`docs/arquitetura/GATE_E_MATRIZ_20261029.md:143`); rota escrita = **`rc7` curta**, depois GA só com `D-GA-1` decidida pelo dono |
 | Rust + Tauri 2 | caracore-pdv-rust | pdv-rust.caracore.com.br + `caracore-rust-pdv-releases/releases` | **v0.1.4** (100 vendas na vida; loja e artefatos no mesmo repo) |
 
 - Java: aplicação web local no navegador; Rust: aplicativo desktop · SQLite local · **nenhuma linha substitui a outra**
 - Planos Java (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; sem PIX/NF-e. Copy pública pode informar recibo digital por link e PDF, sempre sem valor fiscal. Premium R$ 79,90/mês. Loja: CTA = **Baixar Free (3.2.12)**; Premium via demonstração.
-- v4 Java: Quarkus + Qute + SQLite + launcher; Fases 0–7 técnicas; **T032 não aprovado**.
-- Ciclo de vida: `v3.2.12-free` é a versão anterior, última da linha 3.2.x, e recebe apenas manutenção de transição até 08/11/2026. O PDV v4 está em pré-lançamento. Essa data não define GA da v4; avançar pelas RCs e promover GA somente após aprovação formal.
-- RC6 pública: build 11/10/2026, SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; Windows 10/11 x64 + Edge, Java 25 embutido, sem JDK/Python instalado. RC7: checklist final 1/10 concluído, próximo P1.3; não publicar por evidências de candidatos anteriores. Retomada: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` e `docs/relatorio-rc7.md` na oficina.
+- v4 Java: Quarkus + Qute + SQLite + launcher; Fases 0–7 técnicas; **T032 16/16 e matriz M01–M11 + M10b medidos** no pacote `ff400efd…` (30/10, HEAD `0522bbf`), mas **M11 segue bloqueado** por `PERF-001–007` — bloqueado não é aprovado.
+- Ciclo de vida: `v3.2.12-free` é a versão anterior, última da linha 3.2.x, e recebe apenas manutenção de transição até 08/11/2026. O PDV v4 está em pré-lançamento. Essa data **não** define GA da v4 (`D-GA-1` aberta); avançar pelas RCs e promover GA somente após aprovação formal escrita.
+- RC6 pública: build 11/10/2026, SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; Windows 10/11 x64 + Edge, Java 25 embutido, sem JDK/Python instalado. **O ZIP público não contém as correções de 29–30/10** — pacote novo = medição nova (aceite não atravessa hash). Nada tagueado nem publicado depois da RC6. Retomada: `caracore-pdv/AGENTS.md` (checkpoint no topo + § "Como desenvolver uma feature nova na v4") e `docs/prompt-proxima-tarefa-ga-v4-entrega-20261029.txt` na oficina.
 - Portfólio: `#pdv-coexistencia` · `#caracore-pdv` · `#caracore-pdv-rust`
 - Loja Rust: **sem SEED** na vitrine
 - Discurso: v3.2.x (Java) ≠ v0.1.x (Rust); evitar “PDV v3” sozinho / “substitui”

@@ -89,7 +89,7 @@ Guia: [PORTFOLIO_README.md](PORTFOLIO_README.md) · CSS: `assets/css/portfolio.c
 
 ## Redirects legado `/delivery/*`
 
-- **Produção:** GitHub Pages — stubs HTML + `_redirects` / `vercel.json`
+- **Produção:** GitHub Pages — stubs HTML + `_redirects` (mapa declarado)
 - Mapa: [MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md](MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md)
 - Smoke (2026-05): 52/52 rotas críticas OK
 

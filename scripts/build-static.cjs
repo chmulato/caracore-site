@@ -9,7 +9,6 @@ const files = execFileSync('git', ['ls-files', '--cached', '--others', '--exclud
 const baselineFiles = new Set(execFileSync('git', ['ls-tree', '-r', '--name-only', 'HEAD'], {
   cwd: root, encoding: 'utf8',
 }).trim().split('\n'));
-const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 const errors = [];
 const warnings = [];
 let checked = 0;
@@ -81,8 +80,6 @@ for (const file of scripts) {
   }
 }
 
-if (!Array.isArray(config.headers)) errors.push('vercel.json: headers must be an array');
-if (config.rewrites?.length) errors.push('Unexpected rewrites: this is a multipage static site');
 for (const warning of warnings) console.warn(`WARNING: ${warning}`);
 if (errors.length) {
   for (const error of errors) console.error(`ERROR: ${error}`);
@@ -93,4 +90,4 @@ execFileSync(process.execPath, ['--test', 'scripts/tests/cdn-assets.test.cjs'], 
   cwd: root, stdio: 'inherit',
 });
 console.log(`Static build passed: ${files.filter(file => /\.html$/i.test(file)).length} HTML files; ${checked} resource references; ${scripts.length} JavaScript syntax checks.`);
-console.log('Publish the existing static root (output directory "."); no bundling or runtime dependencies required.');
+console.log('Publicado pelo GitHub Pages a partir da raiz do repositório; sem bundling nem dependências de runtime.');

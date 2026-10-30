@@ -1,5 +1,5 @@
 /**
- * Planning Cara Core — dados mensais das 11 torres (0–100%).
+ * Planning Cara Core — dados mensais das torres (0–100%).
  *
  * Actualização (1.º dia útil do mês):
  * 1. Alterar AS_OF para "YYYY-MM".
@@ -342,6 +342,18 @@ window.CARACORE_PLANNING = {
         { m: "2026-09", p: 38 },
         { m: "2026-10", p: 40 },
       ],
+    },
+    {
+      id: "rebeldia-mecatronica",
+      n: 12,
+      name: "A Rebeldia da Mecatrônica",
+      core: false,
+      state: "ok",
+      tone: "circuito",
+      shop: "https://eng.caracore.com.br/",
+      hundred: "Livro publicado (13 capítulos + 3 apêndices, PDF aberto) e app Universo Rebeldia em piloto.",
+      now: "Livro publicado, leitura online e PDF abertos; app de estudo em piloto. Preço a definir, sem checkout. Não consome a cota de Agent.",
+      history: [{ m: "2026-10", p: 92 }],
     },
   ],
 };

@@ -18,7 +18,7 @@
   'use strict';
 
   var CATALOGO = {
-    atualizadoEm: '27/10/2026',
+    atualizadoEm: '30/10/2026',
 
     /**
      * Quatro estágios canônicos. Toda página da matriz usa estes rótulos.
@@ -204,6 +204,22 @@
         nota: 'Executável apenas Windows, sem assinatura digital.'
       },
       {
+        id: 'rebeldia-mecatronica',
+        nome: 'A Rebeldia da Mecatrônica',
+        categoria: 'educacao',
+        estagio: 'disponivel',
+        versao: 'Livro publicado · app Universo Rebeldia em piloto',
+        detalhe: 'Romance instrutivo de tecnologia e sociedade: 13 capítulos e 3 apêndices em PDF; app de estudo em piloto.',
+        free: 'Leitura online e PDF abertos; app Universo Rebeldia em piloto.',
+        pago: 'Sem edição paga publicada.',
+        preco: 'a definir',
+        pagamento: 'Sem checkout',
+        loja: 'eng.caracore.com.br',
+        url: 'https://eng.caracore.com.br/',
+        portfolio: 'portfolio.html#rebeldia-mecatronica',
+        nota: 'Livro e app de estudo do mesmo produto. É material didático, não núcleo: não consome a cota de Agent.'
+      },
+      {
         id: 'area51',
         nome: 'Área 51',
         categoria: 'institucional',
@@ -278,6 +294,7 @@
       'Produto educacional e oferta institucional: "Reino OIDC" ensina identidade e login; "Área 51" licencia identidade e acesso institucional.',
       '"Área 51" do catálogo é o produto em area51.caracore.com.br; a área restrita do site (secure/) é outro destino.',
       '"Minerador 4.0" é o único nome público; "ETE" descreve o domínio de aplicação e não é um segundo produto.',
+      '"A Rebeldia da Mecatrônica" é o livro; "Universo Rebeldia" é o app de estudo do mesmo produto, não um segundo produto do catálogo.',
       'Estágio não é preço: "Free" e "Community" são edições; "Piloto" e "Beta (RC)" são estágios; "Gratuito" é preço.',
       'Planos de desenvolvimento de sites são serviço de engenharia, fora deste catálogo: consulte a página Sites da matriz.'
     ]

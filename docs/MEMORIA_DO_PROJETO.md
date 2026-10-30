@@ -57,7 +57,7 @@ Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar es
 - Java: aplicação web local no navegador; Rust: aplicativo desktop · SQLite local · **nenhuma linha substitui a outra**
 - Planos Java (`PlanoLicencaService`): Free = 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores, 1 loja; sem PIX/NF-e. Copy pública pode informar recibo digital por link e PDF, sempre sem valor fiscal. Premium R$ 79,90/mês. Loja: CTA = **Baixar Free (3.2.12)**; Premium via demonstração.
 - v4 Java: Quarkus + Qute + SQLite + launcher; Fases 0–7 técnicas; **T032 não aprovado**.
-- Ciclo de vida: `v3.2.12-free` é uma atualização corretiva da linha 3.2.x e recebe apenas manutenção até 08/11/2026. Essa data não define GA da v4; avançar pelas RCs e promover GA somente após aprovação formal.
+- Ciclo de vida: `v3.2.12-free` é a versão anterior, última da linha 3.2.x, e recebe apenas manutenção de transição até 08/11/2026. O PDV v4 está em pré-lançamento. Essa data não define GA da v4; avançar pelas RCs e promover GA somente após aprovação formal.
 - RC6 pública: build 11/10/2026, SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`; Windows 10/11 x64 + Edge, Java 25 embutido, sem JDK/Python instalado. RC7: checklist final 1/10 concluído, próximo P1.3; não publicar por evidências de candidatos anteriores. Retomada: `caracore-pdv/docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md` e `docs/relatorio-rc7.md` na oficina.
 - Portfólio: `#pdv-coexistencia` · `#caracore-pdv` · `#caracore-pdv-rust`
 - Loja Rust: **sem SEED** na vitrine

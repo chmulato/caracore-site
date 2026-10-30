@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "27/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 27/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é uma atualização corretiva da linha 3.2.x, em manutenção até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4 via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A pré-release pública é a v4.0.0-rc6, com SHA-256 publicado; a v4.0.0-rc5 fica no histórico. O Hub segue em pré-release Windows v2.1.0-rc1.7, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu.",
+    "Leitura de 27/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4, em pré-lançamento, via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A prévia pública é a v4.0.0-rc6, com SHA-256 publicado; a v4.0.0-rc5 fica no histórico. O Hub segue em pré-release Windows v2.1.0-rc1.7, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -38,10 +38,10 @@ window.CARACORE_PLANNING = {
         id: "pdv-java",
         kind: "risco",
         title: "PDV Java · transição 3.2.12 para v4",
-        lead: "A v3.2.12-free é uma atualização corretiva da linha 3.2.x, com encerramento em 08/11. A corretiva foi publicada em 15/10/2026 com autorização explícita para validações pendentes; 19/19 testes focados Java 25/H2 aprovados.",
-        detail: "Homologação operacional incompleta · RC6 pública · RC7 não publicada (candidatos locais de 12/10)",
-        tip: "Na Free, seguem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
-        text: "A v3.2.12-free foi publicada como estável/Latest em 15/10/2026 por autorização explícita; 19/19 testes focados Java 25/H2 e integridade dos ZIPs aprovados; não declarar homologação operacional completa. Permanecem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor físico. A pré-release pública v4.0.0-rc6 tem SHA-256 0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325; a RC7 não foi publicada — os candidatos de 12/10 ficaram em QA local e a decisão da próxima versão (D-RC7) segue aberta. T032 e aceites formais permanecem pendentes. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
+        lead: "A v3.2.12-free é a versão anterior, última da linha 3.2.x, com encerramento da manutenção em 08/11. Foi publicada em 15/10/2026 com autorização explícita para validações pendentes; 19/19 testes focados Java 25/H2 aprovados.",
+        detail: "PDV v4 em pré-lançamento · RC6 é a prévia pública · RC7 não publicada (candidatos locais de 12/10)",
+        tip: "Na versão anterior, seguem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
+        text: "A v3.2.12-free foi publicada em 15/10/2026 por autorização explícita e é a versão anterior, ainda a indicada para operar; 19/19 testes focados Java 25/H2 e integridade dos ZIPs aprovados; não declarar homologação operacional completa. Permanecem pendentes suíte completa, validação das migrações SQLite/V047 no pacote, smoke/soak Windows, runtime Linux/macOS e aceites Edge/leitor físico. O PDV v4 está em pré-lançamento: a prévia pública v4.0.0-rc6 tem SHA-256 0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325; a RC7 não foi publicada — os candidatos de 12/10 ficaram em QA local e a decisão da próxima versão (D-RC7) segue aberta. T032 e aceites formais permanecem pendentes. 08/11 encerra a manutenção da 3.2.12, não é data de GA v4.",
       },
       {
         id: "cso",
@@ -119,7 +119,7 @@ window.CARACORE_PLANNING = {
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
       pct: 74,
-      note: "Free 3.2.12-free é uma atualização corretiva da linha 3.2.x e encerra em 08/11/2026; a corretiva foi publicada em 15/10/2026 por autorização explícita, com gates e homologação operacional pendentes. Pré-release pública v4.0.0-rc6, com SHA-256 publicado; RC7 em QA local. A sucessão v4 segue pelo ciclo de RCs e o GA depende de gates e aceites formais, sem data automática em 08/11. Freeze M1 do CSO ainda não fechado. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
+      note: "A Free 3.2.12 é a versão anterior, última da linha 3.2.x, e encerra a manutenção em 08/11/2026; foi publicada em 15/10/2026 por autorização explícita, com gates e homologação operacional pendentes. PDV v4 em pré-lançamento, com a prévia pública v4.0.0-rc6 e SHA-256 publicado; RC7 em QA local. A sucessão v4 segue pelo ciclo de RCs e o GA depende de gates e aceites formais, sem data automática em 08/11. Freeze M1 do CSO ainda não fechado. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
     },
     {
       id: "y2027",
@@ -153,8 +153,8 @@ window.CARACORE_PLANNING = {
       state: "risk",
       tone: "pdv",
       shop: "https://pdv.caracore.com.br/",
-      hundred: "atualização corretiva da linha 3.2.x: v3.2.12-free, manutenção até 08/11/2026. Pré-release pública v4.0.0-rc6; sucessão pelo ciclo de RCs, com GA somente após os gates e aceites formais.",
-      now: "Pré-release pública v4.0.0-rc6, com SHA publicado. Estável v3.2.12-free, Latest. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
+      hundred: "versão anterior: v3.2.12-free, última da linha 3.2.x, em manutenção de transição até 08/11/2026. PDV v4 em pré-lançamento, com a prévia pública v4.0.0-rc6; sucessão pelo ciclo de RCs, com GA somente após os gates e aceites formais.",
+      now: "PDV v4 em pré-lançamento: prévia pública v4.0.0-rc6, com SHA publicado. Versão anterior v3.2.12-free, ainda a indicada para operar. T032 aberto. Sem PIX integrado nem NF-e/NFC-e no Free.",
       history: [
         { m: "2026-06", p: 62 },
         { m: "2026-07", p: 68 },

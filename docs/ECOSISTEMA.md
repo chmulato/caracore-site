@@ -46,11 +46,12 @@ Documentação operacional da página pública [ecosistema.html](../ecosistema.h
 
 | Linha | Release | Loja |
 |-------|---------|------|
-| Java · Quarkus | **v3.2.12-free** | pdv.caracore.com.br |
+| Java · Quarkus | **v3.2.12-free** (versão anterior) · **v4.0.0-rc6** (pré-lançamento) | pdv.caracore.com.br |
 | Rust + Tauri 2 | **v0.1.4** | pdv-rust + GitHub Releases |
 
+- Discurso fixo: a **3.2.12-free é a versão anterior**, última da linha 3.2.x, em manutenção de transição até 08/11/2026 e ainda a indicada para operar; a **v4 está em pré-lançamento**, com a prévia pública 4.0.0-rc6 para avaliação no Windows. Sem GA presumido.
 - Coexistência: link para [portfolio.html#pdv-coexistencia](../portfolio.html#pdv-coexistencia)
-- Evitar: “PDV v3” sozinho, “substitui”, “nova geração”
+- Evitar: “PDV v3” sozinho, “substitui”, “nova geração”; e não chamar a v4 de “estável”, “Latest” ou “GA” antes da decisão escrita (D-GE-7/D-GA-1)
 
 ---
 

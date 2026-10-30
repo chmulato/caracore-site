@@ -23,6 +23,8 @@ Leitura de checkout. Produção no ar não foi reconsultada nesta data.
 
 O valor vigente sai de `AGENTS.md` e de `docs/ECOSYSTEM_MEMORIA.md`. As linhas INC abaixo registram a correção de 09/10 e não se reescrevem.
 
+> **A tabela abaixo é o retrato de 26/10/2026.** Desde 29/10/2026 o PDV usa dois estados: **v4 em pré-lançamento** (prévia `v4.0.0-rc6`) e **`v3.2.12-free` como versão anterior**, ainda a indicada para operar. Onde ela diz "estável", "Latest" ou "atualização corretiva", leia o vocabulário novo — a decisão está em `docs/ECOSYSTEM_MEMORIA.md` (bloco de 29/10/2026).
+
 | Frente | Valor vigente |
 |---|---|
 | PDV Java estável | `v3.2.12-free` · atualização corretiva da linha 3.2.x · CTA **Baixar Free (3.2.12)** · Latest, publicada em 15/10/2026 por autorização explícita com validações pendentes · manutenção restrita até 08/11/2026 · QA manual no Edge/leitor ainda pendente |

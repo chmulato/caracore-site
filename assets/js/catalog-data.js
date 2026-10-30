@@ -64,8 +64,8 @@
         nome: 'CaraCore PDV Java',
         categoria: 'nucleo',
         estagio: 'disponivel',
-        versao: 'v3.2.12-free · v4.0.0-rc6',
-        detalhe: 'Free é a estável/Latest; a v4 segue em ciclo de RCs, sem GA presumido.',
+        versao: 'v3.2.12-free (versão anterior) · v4.0.0-rc6 (pré-lançamento)',
+        detalhe: 'A 3.2.12-free é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026; a v4 está em pré-lançamento, com GA somente após gates e aceites formais.',
         free: 'Até 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores e 1 loja.',
         pago: 'Premium: sem teto de vendas, produtos e operadores.',
         preco: 'R$ 79,90/mês',
@@ -274,7 +274,7 @@
      */
     notas: [
       'Marca: "Cara Core Informática" nomeia a empresa; "CaraCore" é prefixo de produto (CaraCore PDV, CaraCore Hub, CaraCore CSO, CaraCore Seed), como nos instaladores e nas lojas.',
-      'Duas linhas PDV, dois nomes: "CaraCore PDV Java" (web local, estável) e "CaraCore PDV Rust (piloto)" (desktop). Nenhuma substitui a outra.',
+      'Duas linhas PDV, dois nomes: "CaraCore PDV Java" (web local, versão anterior) e "CaraCore PDV Rust (piloto)" (desktop). Nenhuma substitui a outra.',
       'Produto educacional e oferta institucional: "Reino OIDC" ensina identidade e login; "Área 51" licencia identidade e acesso institucional.',
       '"Área 51" do catálogo é o produto em area51.caracore.com.br; a área restrita do site (secure/) é outro destino.',
       '"Minerador 4.0" é o único nome público; "ETE" descreve o domínio de aplicação e não é um segundo produto.',

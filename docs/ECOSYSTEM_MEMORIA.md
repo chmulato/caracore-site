@@ -2,6 +2,52 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### PDV v4 em pré-lançamento — virada de discurso no ecossistema (29/10/2026, loja e wiki publicadas)
+
+Decisão do dono nesta data: **focar o pré-lançamento da v4 e tratar a 3.2.12-free como versão antiga**.
+O discurso passa a ter dois estados, aplicados em loja (`caracore-pdv-releases`), wiki (`caracore-wiki`)
+e matriz (`caracore-site`):
+
+- **PDV v4 = em pré-lançamento.** Prévia pública de avaliação = `v4.0.0-rc6` (Windows x64, SHA-256
+  `0c00b24b…780d5325`). Não é GA, não é “estável”, não é “Latest”; GA só depois dos gates e aceites
+  formais (**D-GE-7/D-GA-1** abertas).
+- **3.2.12-free = versão anterior.** Última da linha 3.2.x, em manutenção de transição até 08/11/2026,
+  **ainda a indicada para operar** até a v4 ser aprovada. Some o rótulo “estável/Latest” da copy pública;
+  o fato histórico da publicação de 15/10 permanece.
+
+**Superfícies alteradas (só árvore de trabalho):** loja `download.html`, `index.html`, `versoes.html`,
+`pwa.html`, `roadmap-2026.html`, `tecnologia.html`, `homologacao-v4.html` + `portal-style.css` (novo selo
+`.selo-anterior`) + `README.md`; wiki `projeto-pdv.html`, `index.html`, `projetos-overview.html`,
+`guia-estagiario.html`, `projeto-pdv-rust.html`, `tecnologias.html`; matriz `index.html`, `portfolio.html`,
+`ecosistema.html`, os dados renderizados em runtime (`assets/js/catalog-data.js`, `planning.js`,
+`planning-data.js`) e os docs de estado (`docs/ECOSISTEMA.md`, `docs/ECOSYSTEM_CARA_CORE.md`,
+`docs/ECOSYSTEM_LOJAS.md`, `docs/INICIAR_NOVA_TAREFA.md`, `docs/MEMORIA_DO_PROJETO.md`, `README.md`).
+Lição repetida da auditoria de 26/10: **tabela renderizada por `assets/js/*-data.js` também é copy** —
+HTML atualizado com o dado antigo no JS é regressão.
+
+**Bloqueado por decisão, não escrever antes do aceite:** nome final da versão, SHA-256 do pacote de GA,
+página `wiki-release-v4-0-0.html` e qualquer “0 CVE” (SCA segue **não medido**, D-SCA-1).
+
+**Publicação (autorizada pelo dono nesta data):** `caracore-pdv-releases` no commit `b29f6a4` e
+`caracore-wiki` no commit `8c8517a`, ambos com GitHub Pages `built` e conferidos ao vivo por `curl` com
+cache-bust. Nada tagueado; o produto em si segue sem publicação (F7 aberta).
+
+**Segunda rodada — Central, Rust e memória interna (mesma data, árvore de trabalho):** por decisão do dono
+(“tudo, incluindo a memória interna”), o mesmo vocabulário foi aplicado em três repositórios.
+`caracore-loja` (Central, `download.caracore.com.br`): `docs/download.html`, `docs/index.html`,
+`docs/mapa.html`, `docs/roadmap.html` e **`docs/assets/data/produtos.json`** — este último é obrigatório
+porque `assets/js/download-app.js:134-145` sobrescreve `.status-badge` a partir do JSON; o catálogo mantém
+o filtro **Estável/Piloto/Preview** (`data-maturity` intacto) e muda só o rótulo visível para
+**“Versão anterior · indicada para operar”** e **“Em pré-lançamento”**.
+`caracore-pdv-rust-releases` (`pdv-rust.caracore.com.br`): `docs/index.html` e `docs/download.html` — a
+caixa de convivência deixou de dizer “linha estável” e “prévia da próxima edição”; esse repo **não** tem
+trap de JSON (só `docs/assets/data/release-latest.json`).
+Memória interna: `caracore-site/AGENTS.md` (bloco novo de 29/10 na cabeça + tabela de produtos, marcos,
+canais, coexistência, calendário e fontes de retomada), `caracore-loja/AGENTS.md` + `README.md`.
+**Regra nova registrada:** *selo é status, data é build* — foi colar data em selo que produziu a leitura
+falsa “a linha antiga é mais nova” (manutenção 15/10/2026 × prévia 10/10/2026) e obrigou a trocar o rótulo
+da linha de comparação para **“Último build”** com nota explicativa.
+
 ### Convenção — prompt de próxima tarefa sempre em `.txt` (24/10/2026)
 
 Regra do dono, válida para todas as oficinas: o prompt da próxima tarefa é entregue **em `.txt`**

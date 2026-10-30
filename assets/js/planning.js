@@ -544,7 +544,9 @@
       w +
       " " +
       h +
-      '" role="img" aria-label="Média das 11 torres: ' +
+      '" role="img" aria-label="Média das ' +
+      data.PRODUCTS.length +
+      " torres: " +
       escapeHtml(caption) +
       '">' +
       grids +
@@ -556,7 +558,9 @@
       '" fill="none" stroke="#175cd3" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>' +
       dots +
       "</svg>" +
-      '<p class="pl-chart-fallback">Média das 11 torres · ' +
+      '<p class="pl-chart-fallback">Média das ' +
+      data.PRODUCTS.length +
+      " torres · " +
       escapeHtml(caption) +
       "</p>";
   }

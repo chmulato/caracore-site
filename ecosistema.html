@@ -34,6 +34,28 @@
     }
   }
   </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "A Rebeldia da Mecatrônica",
+    "url": "https://eng.caracore.com.br/",
+    "inLanguage": "pt-BR",
+    "bookFormat": "https://schema.org/EBook",
+    "genre": "Educação",
+    "description": "Romance instrutivo de tecnologia e sociedade, com trilhas narrativa e maker, desafios práticos e laboratório no Tinkercad.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Cara Core Informática",
+      "url": "https://www.caracore.com.br/",
+      "owns": {
+        "@type": "Book",
+        "name": "A Rebeldia da Mecatrônica",
+        "url": "https://eng.caracore.com.br/"
+      }
+    }
+  }
+  </script>
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/caracore-core-typography.css">
   <link rel="stylesheet" href="/assets/css/caracore-institutional-components.css">
@@ -53,6 +75,7 @@
         <li class="nav-item"><a class="nav-link" href="index.html#home">Início</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#engenharia-b2b">Engenharia B2B</a></li>
         <li class="nav-item"><a class="nav-link" href="index.html#produtos">Produtos</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#rebeldia-mecatronica" title="A Rebeldia da Mecatrônica — Cara Core Informática">Livro</a></li>
         <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfólio</a></li>
         <li class="nav-item"><a class="nav-link active" href="ecosistema.html">Ecossistema</a></li>
         <li class="nav-item"><a class="nav-link" href="planning.html">Planning</a></li>
@@ -544,6 +567,25 @@
         </div>
       </article>
 
+      <article class="eco-product-card eco-product-card--educacao cc-card-circuito">
+        <div class="eco-product-card-head">
+          <i class="bi bi-book eco-product-icon" aria-hidden="true"></i>
+          <span class="eco-status eco-status-done">Disponível</span>
+        </div>
+        <h3>A Rebeldia da Mecatrônica</h3>
+        <p class="eco-product-stack">Livro + app de estudo · Z80 · LiDAR/ROS · Python/C++/Assembly</p>
+        <ul class="eco-product-bullets">
+          <li>13 capítulos e 3 apêndices: trilha narrativa (1986 ↔ 2026) e trilha maker/técnica</li>
+          <li>Desafios práticos Iniciante/Avançado e laboratório no Tinkercad</li>
+          <li>Leitura online e PDF abertos; app Universo Rebeldia em piloto</li>
+        </ul>
+        <p class="eco-product-meta"><strong>Loja:</strong> eng.caracore.com.br</p>
+        <div class="eco-product-cta">
+          <a href="https://eng.caracore.com.br/" class="btn btn-sm btn-primary" target="_blank" rel="noopener" title="A Rebeldia da Mecatrônica — Cara Core Informática">Conhecer o livro</a>
+          <a href="portfolio.html#rebeldia-mecatronica" class="btn btn-sm btn-outline-secondary" title="A Rebeldia da Mecatrônica — Cara Core Informática">Portfólio</a>
+        </div>
+      </article>
+
       <article class="eco-product-card eco-product-card--institucional cc-card-area51">
         <div class="eco-product-card-head">
           <i class="bi bi-shield-lock eco-product-icon" aria-hidden="true"></i>
@@ -756,18 +798,24 @@
               </tr>
               <tr>
                 <td class="text-center text-muted">11</td>
+                <td>A Rebeldia da Mecatrônica</td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td><a href="https://eng.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">eng.caracore.com.br</a></td>
+              </tr>
+              <tr>
+                <td class="text-center text-muted">12</td>
                 <td>CaraCore Seed</td>
                 <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
                 <td><a href="https://seed.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">seed.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td class="text-center text-muted">12</td>
+                <td class="text-center text-muted">13</td>
                 <td>Cara Core MKT</td>
                 <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
                 <td><a href="https://mkt.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">mkt.caracore.com.br</a></td>
               </tr>
               <tr>
-                <td class="text-center text-muted">13</td>
+                <td class="text-center text-muted">14</td>
                 <td>Helianto Condominium</td>
                 <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
                 <td><a href="https://helianto.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">helianto.caracore.com.br</a></td>
@@ -851,6 +899,11 @@
             <div class="eco-timeline-dot">✓</div>
             <p class="eco-timeline-label">OIDC · ETE · Circuito</p>
             <p class="eco-timeline-date">2026</p>
+          </div>
+          <div class="eco-timeline-item eco-timeline-done" role="listitem">
+            <div class="eco-timeline-dot">✓</div>
+            <p class="eco-timeline-label">Rebeldia · livro + app</p>
+            <p class="eco-timeline-date">livro publicado · app em piloto</p>
           </div>
           <div class="eco-timeline-item eco-timeline-done" role="listitem">
             <div class="eco-timeline-dot">✓</div>

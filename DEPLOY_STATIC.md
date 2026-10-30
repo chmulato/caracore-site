@@ -1,35 +1,26 @@
-# Deploy estático (GitHub Pages / Vercel / Netlify)
+# Deploy estático (GitHub Pages)
 
-Este repositório foi ajustado para rodar como um site estático sem dependências de autenticação/OIDC ou infraestrutura Azure.
+Este repositório roda como um site estático, sem dependências de autenticação/OIDC ou infraestrutura Azure.
 
-Opções de hospedagem gratuitas:
+## Publicação
 
-- GitHub Pages (recomendado para site estático simples):
-  1. No GitHub, vá em Settings → Pages e selecione branch `gh-pages` ou `main`/`docs` como source.
-  2. Se preferir usar `gh-pages` branch, rode localmente:
-     - `npm run build` (se houver processo de build)
-     - `git checkout -b gh-pages`
-     - Copie os arquivos estáticos para raiz (ou configure `docs/`) e commit.
-     - Push e ative Pages nas configurações.
-
-- Vercel / Netlify:
-  1. Conecte o repositório e aceite as configurações padrão.
-  2. Defina `build command` apenas se necessário; para site já estático, deixe em branco.
-  3. Defina `output directory` como `.` ou o diretório com os arquivos estáticos.
+- O host público é o **GitHub Pages**, servindo a raiz do repositório da branch `master`.
+- Não há compilação de framework nem bundle: os arquivos da raiz já são a saída publicável.
+- Cada push em `master` dispara o `pages-build-deployment`. O workflow `Site validation` roda as checagens estáticas.
 
 Notas:
+
 - Arquivos de autenticação foram desativados e configs sensíveis foram substituídos por placeholders.
 - Antes de tornar o repositório público novamente, ROTACIONE todas as credenciais comprometidas (Google, Microsoft, Azure, LinkedIn, chaves de tokens).
 - Após rotação, considere limpar o histórico (`git-filter-repo`) se desejar remover segredos do histórico git.
 
 Contato / documentação adicional:
+
 - Para ajuda na publicação, abra uma issue ou peça suporte.
 
-## Build e validação de CDN
+## Build e validação
 
-O site continua estático: os arquivos da raiz já são a saída publicável.
-Não há compilação de framework nem bundle a gerar. O build verifica todos
-os recursos HTML/CSS, a sintaxe JavaScript e os testes de regressão de CDN.
+O build verifica todos os recursos HTML/CSS, a sintaxe JavaScript e os testes de regressão de CDN.
 
 Com Node.js 18+ e Git:
 
@@ -47,49 +38,31 @@ No Windows, preferir o comando Node direto ou `npm run build:windows`.
 `npm run build` exige um Bash funcional; o WSL desta máquina não está
 disponível, sem impedir o build nativo.
 
-Na Vercel, manter **Output Directory = `.`**. O Build Command pode continuar
-em branco ou executar `node scripts/build-static.cjs` em um checkout com Git
-e Node disponíveis. Não adicionar os rewrites genéricos de `_redirects`:
-esse arquivo é específico do Netlify e a matriz é multipágina.
+### Cache
 
-### Política de cache
+O repositório não publica configuração de cache: o GitHub Pages serve o site
+com `Cache-Control: max-age=600` e não lê `_headers`, `_redirects` nem arquivos
+equivalentes. Ao trocar os bytes de um logo com hash no nome, gerar outro
+hash/nome e atualizar as duas imagens da home — o nome versionado é o que
+evita cache antigo no navegador.
 
-- Os dois arquivos de logo branco com hash no nome têm cache de navegador
-  de um ano, `immutable`. Ao mudar os bytes, gerar outro hash/nome, atualizar
-  as duas imagens da home e as regras exatas de `vercel.json`.
-- PNGs de compatibilidade e bibliotecas/fontes em `css/vendor` e `js/vendor`
-  têm cache de navegador de 24 horas, sem `immutable`. Uma substituição
-  nesses URLs pode levar até 24 horas para alcançar um navegador que já
-  os armazenou; para uma atualização urgente, versionar o URL.
-- As páginas institucionais públicas `/`, `/index.html`, `/ecosistema.html`,
-  `/portfolio.html`, `/planning.html` e `/suporte-local.html` têm cache de
-  navegador por 120 segundos e cache compartilhado (`s-maxage`) por 24h.
-  A cópia do navegador é curta para limitar conteúdo desatualizado; uma
-  nova publicação na Vercel deve invalidar a associação do deployment ativo.
-- Demais páginas HTML, páginas seguras, APIs e configurações de autenticação
-  não receberam cache público explícito.
-- Um HIT da CDN não elimina CDN Requests nem a transferência do corpo
-  para o visitante. Cache de navegador e redução de payload atuam sobre
-  problemas diferentes.
-
-Para preview local com as regras de cache/redirect desta configuração:
+## Preview local
 
 ```console
 node scripts/preview-static.cjs
 ```
 
-O preview escuta somente em `http://127.0.0.1:4173`. Ele ajuda a testar a
-configuração, mas não substitui verificar os headers reais após o deploy:
+O preview escuta somente em `http://127.0.0.1:4173`, serve os arquivos e
+mantém 404 real para URL inexistente (sem redirecionamento automático para a
+home). Ele não emula regras de cache ou redirect do host.
+
+## Verificação pós-publicação
 
 ```console
 curl -I https://www.caracore.com.br/assets/images/logo_branca.65d940959999.webp
 curl -I https://www.caracore.com.br/css/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2
-curl -I https://www.caracore.com.br/sala/redes/retro/articles.html
 ```
 
 Verificar também uma URL inexistente: deve continuar retornando HTTP 404,
 sem redirecionamento automático para a home. O erro oferece links manuais
 para a página inicial e a área segura.
-
-Evidências, reduções medidas e limitações:
-[Relatório de CDN/Fast Data Transfer](docs/CDN_VERCEL.md).

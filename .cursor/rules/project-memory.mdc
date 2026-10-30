@@ -31,14 +31,14 @@ alwaysApply: true
 - **Para desenvolver feature nova no Hub:** ler `caracore-hub/.cursor/rules/project-memory.mdc` § "Como desenvolver uma feature nova (oficina Hub)" — regra no serviço/domínio (nunca só no JSP: o N1 nasceu em `Pedido.marcarPronto()`), migração Flyway só para frente + `FreeSqliteStartupMigrationTest`, bancada `mvnw.cmd -B -Ptomcat clean package` (nunca `test`), um teste por item de correção. Retomada: `caracore-hub/docs/contexto-rapido.md` → `docs/handoff-construtora-hub-rc1.7-20261027.txt` → `.cursor/rules/project-memory.mdc`. `project_hub/docs/STATUS-ATUAL.md` é **árvore legada congelada**, não fonte de estado. A oficina local pode estar à frente do remoto; publicar a matriz quando o dono pedir o corte.
 - **20/10/2026:** cartão do Hub na home e copy de `ecosistema.html` e `portfolio.html` alinhados à aplicação web 2.1 (Tomcat embutido no instalador, SQLite local), com login por telefone e recuperação por código; `WAR`/`oficina` fora das páginas públicas. Commit `098fa88`. A QA da rodada 4 segue sem aprovar a `v2.1.0-rc1.2` (D1–D6); `v2.1.0-rc1.2` e GA 06/04/2027 inalterados.
 
-## Matriz institucional — CDN/Vercel — 05/10/2026
+## Matriz institucional — CDN — 05/10/2026
 
-- Evidência Vercel: cerca de 8,1 mil respostas do logo branco de 1.389.022 B explicam ~11,25 GB de transferência por tamanho do payload; a origem dos acessos recorrentes não está comprovada. Não atribuir automaticamente a bots.
+- Evidência do host de então: cerca de 8,1 mil respostas do logo branco de 1.389.022 B explicam ~11,25 GB de transferência por tamanho do payload; a origem dos acessos recorrentes não está comprovada. Não atribuir automaticamente a bots.
 - Correção local: home usa WebP versionado de 117.882 B (−91,51%) e fallback PNG versionado; PNG legado reduzido a 456.635 B. Logo comum reduzido sem perda de pixels. Não modificar vendor manualmente.
-- Cache no `vercel.json`: um ano immutable apenas para URLs com hash; 24 h para vendor/compatibilidade; 120 s no navegador + 24 h shared (`s-maxage`) apenas para `/`, `/index.html`, `/ecosistema.html`, `/portfolio.html`, `/planning.html` e `/suporte-local.html`. Rotas seguras, APIs/config não receberam cache público explícito.
+- As regras de cache por caminho que acompanharam a correção viviam num arquivo de configuração de um host que não usamos; saíram do repo em 30/10/2026. O GitHub Pages serve com `Cache-Control: max-age=600`.
 - `404.html` não redireciona automaticamente; links quebrados conhecidos para Retrô/Wiki foram corrigidos e destinos canônicos confirmados; sitemap alinhado.
 - Build Node nativo passou (100 HTML, 507 recursos, 98 checagens JS); testes 8/8. Edge desktop/mobile confirmou logos, PNG fallback, menu e cache; home ficou 65 s sem request same-origin/reload. Três erros de sintaxe JS e seis source maps ausentes são preexistentes.
-- **Estado local somente, sem commit/push/deploy.** Não afirmar mudança em produção nem queda de métricas até publicar e conferir headers/dashboard. Handoff: `docs/CDN_VERCEL.md`; comandos e política de cache: `DEPLOY_STATIC.md`.
+- **Estado local somente, sem commit/push/deploy.** Não afirmar mudança em produção nem queda de métricas até publicar e conferir headers/dashboard. Comandos de publicação: `DEPLOY_STATIC.md`.
 
 ## Posicionamento B2B (copy comercial)
 
@@ -78,7 +78,7 @@ alwaysApply: true
 
 **Regras de roteamento (2026):**
 - CTAs novos na matriz → **subdomínio da loja** ou **tag GitHub v0.1.4** (PDV Rust), nunca `/delivery/` como destino principal.
-- `delivery/` neste repo = stubs HTML (redirect) + `_redirects` / `vercel.json`.
+- `delivery/` neste repo = stubs HTML (redirect) + `_redirects` (mapa declarado; o Pages não aplica).
 - Matriz não duplica vitrine longa; portfólio resume e aponta para loja/releases.
 
 ## Documentos de ecossistema (`docs/` neste repo)
@@ -103,7 +103,6 @@ Alterações locais de planejamento/copy não significam publicação.
 - **docs/DILEMA.md** — posicionamento B2B e status de alinhamento.
 - **docs/MEMORIA_DO_PROJETO.md** — memória resumida da matriz.
 - **docs/ECOSYSTEM_MEMORIA.md** — índice único para retomada.
-- **docs/CDN_VERCEL.md** — evidências, otimizações locais, validação e passos pós-deploy da auditoria de CDN da matriz.
 - **docs/SITE_MATRIZ.md** — guia operacional (portfólio, redirects, publicação).
 
 ---

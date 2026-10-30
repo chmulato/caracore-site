@@ -1,6 +1,10 @@
 # Ordem: primeira regra que casa ganha. Redirects específicos antes do catch-all SPA.
 # Mapa: docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md · política: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md §1.0a
 
+# Destinos exatos que não existem como ficheiro neste repo (hrefs antigos conhecidos)
+/sala/redes/retro/articles.html    https://retro.caracore.com.br/   301
+/wiki/projetos-overview.html    https://wiki.caracore.com.br/projetos-overview.html   301
+
 /wiki    https://wiki.caracore.com.br/   301
 /wiki/   https://wiki.caracore.com.br/   301
 
@@ -86,9 +90,9 @@
 /delivery/ete/     https://ete.caracore.com.br/   301
 /delivery/ete/*    https://ete.caracore.com.br/:splat   301
 
-/delivery/mkt      https://tools.caracore.com.br/sala/   301
-/delivery/mkt/     https://tools.caracore.com.br/sala/   301
-/delivery/mkt/*    https://tools.caracore.com.br/sala/   301
+/delivery/mkt      https://mkt.caracore.com.br/   301
+/delivery/mkt/     https://mkt.caracore.com.br/   301
+/delivery/mkt/*    https://mkt.caracore.com.br/:splat   301
 
 /delivery/helianto      https://www.caracore.com.br/portfolio.html#caracore-helianto   301
 /delivery/helianto/     https://www.caracore.com.br/portfolio.html#caracore-helianto   301

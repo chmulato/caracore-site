@@ -112,7 +112,7 @@ Detalhes: [SITE_MATRIZ.md §3](SITE_MATRIZ.md).
 | Documento | Conteúdo |
 |-----------|----------|
 | [MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md](MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md) | Mapa URL legado → loja |
-| `../_redirects` · `../vercel.json` | Regras para hospedeiros com redirect HTTP |
+| `../_redirects` | Mapa declarado de redirects (o Pages serve os stubs HTML) |
 | `../delivery/` | Stubs HTML (meta refresh) — GitHub Pages |
 
 PDV Rust: redirect para `https://pdv-rust.caracore.com.br/`. Histórico: [archive/delivery-migracao/](archive/delivery-migracao/).

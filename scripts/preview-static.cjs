@@ -3,7 +3,6 @@ const path = require('node:path');
 const http = require('node:http');
 
 const root = path.resolve(__dirname, '..');
-const config = JSON.parse(fs.readFileSync(path.join(root, 'vercel.json'), 'utf8'));
 const types = {
   '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8', '.json': 'application/json',
@@ -20,17 +19,6 @@ function createPreviewServer() {
       pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
     } catch {
       res.writeHead(400).end('Invalid URL');
-      return;
-    }
-    for (const rule of config.headers) {
-      const prefix = rule.source.endsWith('/:path*') ? rule.source.slice(0, -7) : null;
-      if (rule.source === '/(.*)' || rule.source === pathname || (prefix && pathname.startsWith(`${prefix}/`))) {
-        for (const header of rule.headers) res.setHeader(header.key, header.value);
-      }
-    }
-    const redirect = config.redirects.find(rule => rule.source === pathname);
-    if (redirect) {
-      res.writeHead(redirect.permanent ? 308 : 307, { Location: redirect.destination }).end();
       return;
     }
     let file = path.resolve(root, `.${pathname}`);
@@ -50,7 +38,7 @@ function createPreviewServer() {
     }
     res.setHeader('Content-Type', types[path.extname(file)] || 'application/octet-stream');
     res.setHeader('Content-Length', fs.statSync(file).size);
-    if (!res.hasHeader('Cache-Control') || status === 404) res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
+    res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
     res.writeHead(status);
     if (req.method === 'HEAD') res.end();
     else fs.createReadStream(file).on('error', error => {

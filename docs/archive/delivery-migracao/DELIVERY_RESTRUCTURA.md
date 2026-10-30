@@ -17,7 +17,6 @@ O repositório **não deve precisar** da pasta `delivery/` a longo prazo: compat
 | Mecanismo | Ficheiro / nota |
 |-----------|-----------------|
 | **Netlify** (e compatíveis) | `_redirects` na raiz — inclui `/delivery/{produto}/*` → lojas (ver `docs/MAPA_ROTAS_DELIVERY_SUBDOMINIOS.md`) |
-| **Vercel** | `vercel.json` na raiz — mesma lógica |
 | **GitHub Pages** puro | Replicar regras na **CDN** (ex.: Cloudflare) — o repo não aplica `_redirects` no Pages sozinho |
 | **Azure Static Web Apps** | Regra de redirect ou função |
 

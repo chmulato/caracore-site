@@ -107,7 +107,7 @@ class OIDCLogger {
             // environment guess: local, staging, production
             const host = window.location.hostname || '';
             if (host === 'localhost' || host.startsWith('127.0.0.1')) ctx.environment = 'development';
-            else if (host.includes('github.io') || host.includes('vercel') || host.includes('netlify')) ctx.environment = 'staging';
+            else if (host.includes('github.io') || host.includes('netlify')) ctx.environment = 'staging';
             else ctx.environment = 'production';
 
             // approximate storage usage (number of keys)

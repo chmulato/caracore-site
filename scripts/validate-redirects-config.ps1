@@ -1,4 +1,6 @@
-# Valida regras /delivery/* em _redirects e vercel.json vs lojas canónicas.
+# Valida as regras catch-all /delivery/* declaradas em _redirects vs lojas canonicas.
+# Escopo: apenas _redirects. O GitHub Pages serve o site e nao aplica o ficheiro;
+# ele e o mapa declarado de rotas e o que os stubs HTML replicam.
 # Uso: powershell -File scripts/validate-redirects-config.ps1
 $ErrorActionPreference = 'Stop'
 $siteRoot = Split-Path $PSScriptRoot -Parent
@@ -23,7 +25,6 @@ $ProductBases = @{
 function Normalize-RedirectBase([string]$Url) {
     $d = $Url.Trim().ToLowerInvariant()
     $d = $d -replace '/:splat$', ''
-    $d = $d -replace '/:path\*$', ''
     return $d.TrimEnd('/')
 }
 
@@ -40,25 +41,13 @@ function Parse-RedirectsFile([string]$Path) {
     return $map
 }
 
-function Parse-VercelDelivery([string]$Path) {
-    $map = @{}
-    if (-not (Test-Path -LiteralPath $Path)) { return $map }
-    $json = Get-Content -LiteralPath $Path -Raw -Encoding UTF8 | ConvertFrom-Json
-    foreach ($r in $json.redirects) {
-        $src = [string]$r.source
-        if ($src -match '^/delivery/([a-z0-9-]+)/:path\*$') {
-            $map[$Matches[1]] = [string]$r.destination
-        }
-    }
-    return $map
-}
-
 $issues = New-Object System.Collections.ArrayList
 $redirectsPath = Join-Path $siteRoot '_redirects'
-$vercelPath = Join-Path $siteRoot 'vercel.json'
 
 $netlify = Parse-RedirectsFile $redirectsPath
-$vercel = Parse-VercelDelivery $vercelPath
+if ($netlify.Count -eq 0) {
+    [void]$issues.Add("_redirects: nenhuma regra catch-all /delivery/<produto>/* encontrada em $redirectsPath")
+}
 
 foreach ($product in $ProductBases.Keys | Sort-Object) {
     $expectedBase = Normalize-RedirectBase $ProductBases[$product]
@@ -70,24 +59,16 @@ foreach ($product in $ProductBases.Keys | Sort-Object) {
     } else {
         [void]$issues.Add("_redirects: falta regra catch-all /delivery/$product/*")
     }
-    if ($vercel.ContainsKey($product)) {
-        $dest = Normalize-RedirectBase $vercel[$product]
-        if ($dest -ne $expectedBase) {
-            [void]$issues.Add("vercel.json /delivery/$product/:path* -> '$($vercel[$product])' (esperado base '$($ProductBases[$product])')")
-        }
-    } else {
-        [void]$issues.Add("vercel.json: falta redirect /delivery/$product/:path*")
-    }
 }
 
 $lines = @(
     "Validacao redirects config - $(Get-Date -Format 'yyyy-MM-dd HH:mm')",
     "_redirects: $redirectsPath",
-    "vercel.json: $vercelPath",
+    'Host: GitHub Pages (serve a raiz do repo; _redirects documenta o mapa, stubs HTML replicam).',
     ''
 )
 if ($issues.Count -eq 0) {
-    $lines += 'OK: _redirects e vercel.json alinhados às lojas canónicas.'
+    $lines += 'OK: _redirects alinhado as lojas canonicas.'
 } else {
     $lines += "Problemas: $($issues.Count)"
     $lines += ($issues | Sort-Object)

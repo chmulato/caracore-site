@@ -21,7 +21,7 @@ MODELO ACTUAL (desde 2026)
     Identidade visual própria por produto (§1.0b FONTES_CANONICAS)
 
   Legado delivery/
-    Stubs HTML mínimos (GitHub Pages) + _redirects / vercel.json
+    Stubs HTML mínimos (GitHub Pages) + _redirects (mapa)
     PDV Rust: redirect → pdv-rust.caracore.com.br
 
   Pós-deploy 2026-05-31

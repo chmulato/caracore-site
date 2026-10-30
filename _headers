@@ -1,5 +1,5 @@
-# Cabeçalhos de segurança globais (Netlify).
-# Espelho de vercel.json → headers.
+# Cabeçalhos de segurança globais (Netlify e hospedeiros que respeitam _headers).
+# O GitHub Pages ignora este ficheiro.
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff

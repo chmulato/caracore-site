@@ -118,6 +118,5 @@ Referencias fora de delivery para cada rota legado, usadas para ordenar a migrac
 
 ## Edge / hospedeiro (implementado no repo)
 
-- **`_redirects`** (Netlify e compatíveis): na raiz do `caracore-site` — redirects 301 para `/delivery/{produto}/...` → lojas, `/delivery/pdv-rust/*` → pdv-rust, `/delivery/sala/*` → Sala canónica, etc.
-- **`vercel.json`**: mesma lógica para deploy na Vercel.
+- **`_redirects`** (Netlify e compatíveis): na raiz do `caracore-site` — redirects 301 para `/delivery/{produto}/...` → lojas, `/delivery/pdv-rust/*` → pdv-rust, `/delivery/sala/*` → Sala canónica, etc. É o mapa declarado; o Pages não aplica o ficheiro.
 - **GitHub Pages** (produção actual): stubs HTML mínimos em `delivery/{produto}/` (meta refresh + `location.replace`); ver `delivery/README.md`.

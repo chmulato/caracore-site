@@ -7,7 +7,6 @@ const { test } = require('node:test');
 const root = path.resolve(__dirname, '../..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const home = read('index.html');
-const config = JSON.parse(read('vercel.json'));
 
 test('both logo placements use one hashed WebP and a smaller PNG fallback', () => {
   const pictures = [...home.matchAll(/<picture>([\s\S]*?)<\/picture>/g)];
@@ -27,10 +26,6 @@ test('immutable logo names match their content and stay below bandwidth budgets'
     const digest = crypto.createHash('sha256').update(bytes).digest('hex').slice(0, 12);
     assert.ok(name.includes(`.${digest}.`), `Stale hash in ${name}`);
     assert.ok(bytes.length < (name.endsWith('.webp') ? 130000 : 500000));
-    const rule = config.headers.find(rule => rule.source === name);
-    assert.ok(rule, `Missing cache rule for ${name}`);
-    assert.ok(rule.headers.some(header => header.key === 'Cache-Control'
-      && header.value === 'public, max-age=31536000, immutable'));
   }
 });
 
@@ -44,24 +39,6 @@ test('legacy logo URLs remain valid and optimized', () => {
     fs.readFileSync(path.join(root, 'images/logo.png')));
 });
 
-test('mutable vendor caching is bounded; only public marketing pages receive short browser cache', () => {
-  for (const source of ['/css/vendor/:path*', '/js/vendor/:path*']) {
-    const rule = config.headers.find(rule => rule.source === source);
-    assert.ok(rule);
-    assert.ok(rule.headers.some(header => header.key === 'Cache-Control' && header.value === 'public, max-age=86400'));
-  }
-  const publicPages = ['/', '/index.html', '/ecosistema.html', '/portfolio.html', '/planning.html', '/suporte-local.html', '/sites.html'];
-  for (const source of publicPages) {
-    const rule = config.headers.find(rule => rule.source === source);
-    assert.ok(rule, `Missing explicit public page cache rule for ${source}`);
-    assert.ok(rule.headers.some(header => header.key === 'Cache-Control'
-      && header.value === 'public, max-age=120, s-maxage=86400'));
-  }
-  for (const source of ['/secure/index.html', '/secure/admin-logs.html', '/secure/access-pending.html', '/api/admin/users']) {
-    assert.ok(!config.headers.some(rule => rule.source === source), `${source} must not receive an explicit public cache rule`);
-  }
-});
-
 test('404 remains an error page without automatic navigation or heavy resources', () => {
   const page = read('404.html');
   assert.doesNotMatch(page, /<script\b|location\s*\.|http-equiv=["']refresh/i);
@@ -71,11 +48,21 @@ test('404 remains an error page without automatic navigation or heavy resources'
   assert.match(page, /href="\/secure\/index\.html"/);
 });
 
-test('known missing legacy pages redirect once to canonical domains', () => {
-  assert.deepEqual(config.redirects, [
-    { source: '/sala/redes/retro/articles.html', destination: 'https://retro.caracore.com.br/', permanent: true },
-    { source: '/wiki/projetos-overview.html', destination: 'https://wiki.caracore.com.br/projetos-overview.html', permanent: true },
-  ]);
+test('known missing legacy pages are declared once in _redirects and not linked', () => {
+  const rules = read('_redirects').split(/\r?\n/)
+    .map(line => line.trim())
+    .filter(line => line && !line.startsWith('#'))
+    .map(line => {
+      const [from, to, status] = line.split(/\s+/);
+      return { from, to, status };
+    });
+  for (const [from, to] of [
+    ['/sala/redes/retro/articles.html', 'https://retro.caracore.com.br/'],
+    ['/wiki/projetos-overview.html', 'https://wiki.caracore.com.br/projetos-overview.html'],
+  ]) {
+    assert.ok(rules.some(rule => rule.from === from && rule.to === to && rule.status === '301'),
+      `Missing ${from} -> ${to} in _redirects`);
+  }
   for (const file of ['aligned/en/articles.html', 'aligned/it/articles.html', 'publications/livros/apostila_ms365.html', 'handbook/HANDBOOK.html']) {
     assert.doesNotMatch(read(file), /https:\/\/www\.caracore\.com\.br\/(?:sala\/redes\/retro\/articles\.html|wiki\/projetos-overview\.html)/);
   }
@@ -112,7 +99,7 @@ test('canonical catalog feeds portfolio and ecosystem; sites plans live in sites
   assert.doesNotMatch(home, /id="mostrar-planos"|id="fechar-planos"/);
 });
 
-test('local preview serves cache headers, preserves real 404s and redirects legacy links once', async () => {
+test('local preview serves files and preserves real 404s without emulated host rules', async () => {
   const { createPreviewServer } = require('../preview-static.cjs');
   const server = createPreviewServer();
   await new Promise((resolve, reject) => {
@@ -124,26 +111,18 @@ test('local preview serves cache headers, preserves real 404s and redirects lega
     const logo = await fetch(`${base}/assets/images/logo_branca.65d940959999.webp`);
     assert.equal(logo.status, 200);
     assert.equal(logo.headers.get('content-type'), 'image/webp');
-    assert.equal(logo.headers.get('cache-control'), 'public, max-age=31536000, immutable');
+    assert.equal(logo.headers.get('cache-control'), 'public, max-age=0, must-revalidate');
     assert.equal((await logo.arrayBuffer()).byteLength, 117882);
     const vendor = await fetch(`${base}/css/vendor/bootstrap-icons/fonts/bootstrap-icons.woff2`, { method: 'HEAD' });
     assert.equal(vendor.status, 200);
-    assert.equal(vendor.headers.get('cache-control'), 'public, max-age=86400');
-    const home = await fetch(`${base}/`);
-    assert.equal(home.status, 200);
-    assert.equal(home.headers.get('cache-control'), 'public, max-age=120, s-maxage=86400');
+    const homePage = await fetch(`${base}/`);
+    assert.equal(homePage.status, 200);
     const secure = await fetch(`${base}/secure/index.html`);
     assert.equal(secure.status, 200);
-    assert.equal(secure.headers.get('cache-control'), 'public, max-age=0, must-revalidate');
     const missing = await fetch(`${base}/missing-validation-route`);
     assert.equal(missing.status, 404);
     assert.equal(missing.headers.get('cache-control'), 'public, max-age=0, must-revalidate');
     assert.doesNotMatch(await missing.text(), /<script\b|location\s*\./);
-    for (const rule of config.redirects) {
-      const response = await fetch(base + rule.source, { redirect: 'manual' });
-      assert.equal(response.status, 308);
-      assert.equal(response.headers.get('location'), rule.destination);
-    }
   } finally {
     await new Promise((resolve, reject) => server.close(error => error ? reject(error) : resolve()));
   }

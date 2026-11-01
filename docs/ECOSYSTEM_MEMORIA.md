@@ -24,13 +24,61 @@ atualizar só o HTML deixa a tela mentindo (foi assim que a Central e a matriz q
 
 | Produto | Estado medido | Onde começar |
 |---|---|---|
-| PDV Java v4 | **GA recusado no Gate E**; rota `rc7` curta + GA em data escrita (`D-GE-7`); prévia pública = `v4.0.0-candidato-20261031` (build 31/10, fonte `c343890`, SHA `0c2003b0…83434d`, 178.317.680 B; run `41244424886`, 1.039 testes, 0 falhas, 3 ignorados, LINE 52,82%); `v4.0.0-rc6`/`rc5` no histórico, RC7 sem tag; pacote `ff400efd8737…` mediu T032 16/16 e matriz 11/11 — **não esta candidata**; **SCA não medido** e cenário migrado bloqueado; superfícies públicas no estado B | `caracore-pdv/AGENTS.md` § "Como desenvolver uma feature nova na v4" |
+| PDV Java v4 | **GA recusado no Gate E**; rota `rc7` curta + GA em data escrita (`D-GE-7`); prévia pública = `v4.0.0-candidato-20261031` (build 31/10, fonte `c343890`, SHA `0c2003b0…83434d`, 178.317.680 B; run `41244424886`, 1.039 testes, 0 falhas, 3 ignorados, LINE 52,82%); `v4.0.0-rc6`/`rc5` no histórico, RC7 sem tag; pacote `ff400efd8737…` mediu T032 16/16 e matriz 11/11 — **não esta candidata**; **SCA não medido** e cenário migrado bloqueado; superfícies públicas **publicadas na candidata em 01/11/2026** (loja `e54476d`, wiki `fb040bf`, Central `45835e5`, matriz `fd4b150`, todas com Pages `built`) | `caracore-pdv/AGENTS.md` § "Como desenvolver uma feature nova na v4" |
 | PDV Java 3.2.12 | **versão anterior** na copy desde 29/10, ainda a indicada para operar; GitHub ainda marca Latest; manutenção só até 08/11/2026 | `caracore-pdv/AGENTS.md` § Diretriz de transição |
 | Hub | `v2.1.0-rc1.8` publicada em 31/10 (ZIP portátil, SHA `3c4e61b2…743334`, 324.536.724 B; `clean verify` 2.585/0 e E1–E6 PASS em `9874273`), **sem aceite de QA**; a `rc1.7` foi **REPROVADA** na rodada 5 (N1/N2 bloqueantes); rótulo editorial Beta (RC)/pré-release mantido apesar do Latest no GitHub; GA 06/04/2027 | `caracore-hub/.cursor/rules/project-memory.mdc` § "Como desenvolver uma feature nova" |
 
 **Entrega:** commit e push só com autorização explícita, por ação; nos repos de site, PR + merge (rebase, sem
 merge commit) só quando pedido. Evidência de execução vale no dia (copiar run + log + artefato). Prompt da
 próxima tarefa sempre em `.txt` em `docs/` da oficina. Publicação é passo separado, nunca efeito de commit.
+
+### Checkpoint 01/11/2026 — superfícies publicadas na prévia de 31/10 e fila de retomada
+
+**Estado medido em 01/11/2026.** As quatro superfícies que descrevem o PDV Java foram alinhadas à candidata,
+commitadas, empurradas e conferidas ao vivo; o GitHub Pages construiu o commit exato em todas:
+
+| Repositório | Superfície | Commit | Pages |
+|---|---|---|---|
+| `caracore-pdv-releases` | pdv.caracore.com.br | `e54476d` | `built` |
+| `caracore-wiki` | wiki.caracore.com.br | `fb040bf` | `built` |
+| `caracore-loja` | download.caracore.com.br | `45835e5` | `built` |
+| `caracore-site` | caracore.com.br | `fd4b150` | `built` |
+
+- **Prévia pública = `v4.0.0-candidato-20261031`** (release publicada em 31/10/2026 22:36Z com
+  `prerelease=true` e `draft=false` pelo dono): ZIP `CaraCore-PDV-4.0.0-qute-portable-windows-x64.zip` de
+  **178.317.680 B**, SHA-256 `0c2003b0f99a75328f7ebe632fc20b07cb5834a3f75b6f0e97ccfb7aef83434d`, sidecar de
+  116 B. A vitrine usa `download.html#pre-release-v4`; a RC6 vai para `#rc6` como prévia anterior;
+  `#instalacao-rc6` não existe mais. Selo: **"Em pré-lançamento · prévia candidata"**, sem data
+  (selo é status, data é build).
+- **O canal de atualização continua em `3.2.12-free`** (`https://api.caracore.com.br/releases/latest.json`,
+  medido em 01/11: `version=3.2.12-free`, `sha256=6d7a50b0…`). É o comportamento correto enquanto a v4 for
+  pré-release — não "consertar" o canal antes do GA.
+- **Resíduo de copy conhecido:** o corpo da release `v3.2.12-free` no GitHub — que o canal espelha em
+  `releaseNotes` — ainda diz "A linha v4 RC6 permanece separada, como pré-release". Só se corrige por
+  `gh release edit` (ação de publicação, exige pedido do dono; não muda tag nem asset).
+- **A memória da oficina estava atrás desta publicação:** `caracore-pdv/AGENTS.md` ainda dizia que a prévia
+  pública era a RC6 e que nada tinha sido publicado no ciclo. Corrigido em 01/11/2026 no próprio ficheiro;
+  o que governa é este checkpoint + o checkpoint de Gate E de 30/10.
+
+**Próximas tarefas — em ordem de dependência, cada uma com a evidência que a fecha**
+
+| # | Frente | Tarefa | Fecha com | Onde começar |
+|---|---|---|---|---|
+| 1 | PDV v4 | Rodar o ciclo manual do T032 (16 passos) no ZIP de 31/10 | `16/16` medido no próprio binário, evidência copiada em `scratch/` no dia | `caracore-pdv/docs/prompt-proxima-tarefa-ga-v4-entrega-20261029.txt`; sonda `scripts/sonda_matriz_m_t032.py` |
+| 2 | PDV v4 | Medir a matriz M01–M11 no mesmo pacote | tabela medida no hash; **M11 declarado bloqueado** (PERF-001–007) | `caracore-pdv/scripts/sonda_matriz_m_t032.py`; formato de `caracore-pdv/docs/relatorio-rc7.md` |
+| 3 | PDV v4 | Medir SCA/G1 (`D-SCA-1`) | run do dependency-check com feed atualizado + laudo; **nunca "0 CVE"** | `caracore-pdv/docs/arquitetura/DECISOES_GA_V4.md` § `D-SCA-1`; falta `NVD_API_KEY` |
+| 4 | PDV v4 | Desbloquear o cenário "banco 3.2.12 migrado" | `9/9` no pacote novo, sonda sempre sobre cópia | `caracore-pdv/scripts/cenario_banco_migrado_t032.py` |
+| 5 | PDV v4 | Escrever a `rc7` curta | tag + ZIP + T032/matriz no hash + run de push verde | `D-GE-7`; **aprovação escrita do dono (F7)** |
+| 6 | PDV v4 | GA em data escrita | data escrita + aceites formais + estágio anterior fechado | `caracore-pdv/docs/arquitetura/DECISOES_GA_V4.md` § `D-GA-1` |
+| 7 | PDV v4 | Apontar o canal para a v4 quando promovível | `latest.json` com a v4 + `sha256` + download 200 + notas sem "RC6" | `caracore-cso-quarkus` pacote `br.com.caracore.api.update`; deploy Railway autorizado |
+| 8 | PDV 3.2.12 | Decidir o que acontece com o download depois de 08/11/2026 | decisão escrita do dono refletida nas quatro superfícies; nada muda sozinho | este documento + memória da oficina |
+| 9 | Hub | Aceite de QA da `v2.1.0-rc1.8` | rodada concluída, **N1/N2**, B7 e S6.9 resolvidos; rótulo Beta (RC) só cai com aceite formal | `caracore-hub/docs/contexto-rapido.md` · `docs/handoff-construtora-hub-rc1.7-20261027.txt` |
+| 10 | CSO | Seguir Transportes + VT | INT-03 estima total de sprints/ciclos (hoje 0/21); alvo conjunto 08/11/2028 | `caracore-cso-transportes/docs/plano_organizado_execucao_cso.md` |
+
+**Conferir publicação sem presumir:** `git -C <repo> rev-parse --short HEAD` + `gh api
+repos/chmulato/<repo>/pages/builds/latest --jq '.status + " " + .commit'`; conteúdo ao vivo por `curl` com
+cache-bust (`?cb=...`). O Pages pode servir o build anterior por alguns minutos — build `built` no commit
+certo é o que prova.
 
 ### PDV v4 em pré-lançamento — virada de discurso no ecossistema (29/10/2026, loja e wiki publicadas)
 
@@ -501,7 +549,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 ## Retomada em 30 segundos
 
 1. **Nova tarefa?** → [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) (fluxo por tipo de trabalho). **Compilar Java?** → `D:\onedrive\dev\APPS_JAVA_VERSION.md` (JDK por aplicação; Maven em `D:\onedrive\dev\.m2\repository`).
-2. **Status das aplicações (Gemini/Cursor):** começar pela tabela **Estado por produto (31/10/2026)** no topo deste ficheiro; o [snapshot de 15/10](#snapshot-das-aplicações-e-frentes-2026-10-15) é histórico; depois consultar a memória canônica da oficina antes de editar ou anunciar status.
+2. **Status das aplicações (Gemini/Cursor):** começar pela tabela **Estado por produto (31/10/2026)** e pelo **§ Checkpoint 01/11/2026** (superfícies publicadas + próximas tarefas) no topo deste ficheiro; o [snapshot de 15/10](#snapshot-das-aplicações-e-frentes-2026-10-15) é histórico; depois consultar a memória canônica da oficina antes de editar ou anunciar status.
 3. **Visão ecossistema:** este ficheiro + `ECOSYSTEM_CARA_CORE.md` + `ECOSYSTEM_LOJAS.md` + **`caracore-site/AGENTS.md`**
 4. **Produtos principais (só estes três):** PDV (Java Free `v3.2.12-free`, atualização corretiva da linha 3.2.x até 08/11/2026; v4 pelo ciclo de RCs, com GA só após aceites + Rust `v0.1.4`) · CSO (gestão de frota **no ar**, FRO 24/24; freeze M1 08/11/2026; loja `cso-transp`; Transportes **08/11/2028**; ≠ GPS) · Hub (encomendas; pré-release Windows `v2.1.0-rc1.8`; GA Windows 06/04/2027). **Brincos:** Ink, OIDC, Seed, Circuito, Área 51, RU, BioReator 4.0, Helianto, MKT, Minerador — existem; em conflito de cota ou headline, **cedem**. **MKT e Helianto voltaram ao mapa de lojas em 10/10/2026** (`mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io`; `MEMORIA_INFRAESTRUTURA_CARACORE.txt`).
 4a. **Marcos PDV/CSO em 08/11/2026:** encerra a manutenção restrita da linha Free 3.2.x (corretiva atual `v3.2.12-free`); isso não é GA da v4. A prévia pública `v4.0.0-candidato-20261031` (build 31/10/2026) segue pelo ciclo de RCs e os gates de homologação; rc6/rc5 ficam no histórico e a RC7 é a rota aprovada, sem tag. Promover GA apenas após aprovação formal, sem data presumida. CSO = freeze do que já está no ar, inclusive a gestão de frota publicada em 06/10. Não misturar com Transportes 2028.
@@ -668,6 +716,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 | Data | Alteração |
 |------|-----------|
 
+| 2026-11-01 | **PDV v4 — vitrine, wiki, Central e matriz PUBLICADAS na candidata de 31/10; fila de retomada registrada:** por pedido do dono, `caracore-pdv-releases` `e54476d`, `caracore-wiki` `fb040bf`, `caracore-loja` `45835e5` e `caracore-site` `fd4b150` foram empurrados e o GitHub Pages construiu cada commit (`status=built`); conferido ao vivo com cache-bust. A vitrine serve `download.html#pre-release-v4` (ZIP 178.317.680 B, SHA-256 `0c2003b0…83434d`, sidecar, release no GitHub e registro em markdown) e manda a RC6 para `#rc6`; `#instalacao-rc6` deixou de existir; selo **"Em pré-lançamento · prévia candidata"** sem data. O canal `api.caracore.com.br/releases/latest.json` segue em `3.2.12-free` (`sha256=6d7a50b0…`), correto enquanto a v4 for pré-release. **Resíduo aberto:** o corpo da release `v3.2.12-free` no GitHub, espelhado em `releaseNotes`, ainda cita "a linha v4 RC6"; correção só por `gh release edit`, sob pedido. **Contradição corrigida:** a memória da oficina (`caracore-pdv/AGENTS.md`) ainda dizia que a prévia pública era a RC6 e que nada fora publicado no ciclo — atualizada em 01/11/2026. **Fila registrada** no § "Checkpoint 01/11/2026": T032 manual e matriz M01–M11 no pacote de 31/10; SCA/G1; cenário migrado; `rc7`; GA em data escrita (`D-GA-1`); canal para a v4; decisão sobre 08/11/2026; aceite de QA da `rc1.8`; CSO Transportes. Nada tagueado nesta data; F7 continua valendo para as próximas publicações. |
 | 2026-10-31 | **PDV Java v4 — prévia pública passa à candidata de 31/10 e as três superfícies são alinhadas:** release `v4.0.0-candidato-20261031` em `caracore-pdv-releases` como **pré-release** (não GA, não Latest), asset `CaraCore-PDV-4.0.0-qute-portable-windows-x64.zip`, 178.317.680 bytes, SHA-256 `0c2003b0f99a75328f7ebe632fc20b07cb5834a3f75b6f0e97ccfb7aef83434d`, sidecar `SHA256SUMS` de 116 bytes conferido; fonte `master` `c343890`, build 31/10/2026, Java 25.0.3 embutido, launcher `iniciar_pdv.bat`, `UPDATE_URL` = `https://api.caracore.com.br/releases/latest.json`. Suíte no CI run `41244424886` em `c343890`: 1.039 testes, 0 falhas, 3 ignorados, LINE 52,82% (5.385/10.195) contra piso de 50%. Sobre o pacote: T032 (16 passos) e a matriz M01–M11 foram medidos em `ff400efd`, **não nesta candidata**; SCA não medido (`D-SCA-1`); cenário "banco 3.2.12 migrado" bloqueado; cancelar venda paga na v4 não devolve estoque nem grava `ESTORNADA` (`D-S1`); sem MSI, unsigned. `v4.0.0-rc6` (11/10/2026, SHA `0c00b24b…780d5325`) e `v4.0.0-rc5` ficam no histórico; a RC7 é a rota aprovada do Gate E, ainda sem tag. Loja (`caracore-loja` Central e `caracore-pdv-releases` quando publicado), wiki (`caracore-wiki`) e matriz (`caracore-site`) alinhadas para a candidata, com o selo editorial **Beta (RC)/prévia pública candidata** mantido e o canal de atualização ainda servindo `v3.2.12-free` (a candidata é pré-release e o canal só serve Latest). |
 | 2026-10-31 | **Hub `v2.1.0-rc1.8` publicada e loja, wiki e matriz alinhadas:** release `v2.1.0-rc1.8` em `caracore-hub-releases` com o único asset `CaraCore-Hub-2.1.0-rc1.8-windows-x64.zip`, 324.536.724 B, SHA-256 `3c4e61b2e192fece6667ccfbc79d735f3fad7ce8542e50c492b9ef24a9743334`, unsigned, sem instalador NSIS. A central (`api.caracore.com.br/releases/hub/latest.json`) serve a mesma versão e hash. Mudanças da build: versão alinhada no Maven/Electron, canal de atualização no launcher (`api.caracore.com.br/releases/hub/latest.json`, `UPDATE_URL` só HTTPS/localhost, token não logado), `/api/atualizacao` pública por correspondência exata e cliente tolerante a 200/204/503/erro de rede; `clean verify` 2.585 testes/0 falhas, E1–E6 PASS em `9874273`. A release está marcada como **Latest** no GitHub por autorização do responsável, o que não substitui o aceite formal; o rótulo editorial **Beta (RC)/pré-release** foi mantido. A rodada 5 reprovou a `rc1.7` (N1/N2 bloqueantes) e o aceite de QA da `rc1.8` segue pendente. GA instalador 06/04/2027. |
 | 2026-10-30 | **Matriz: resíduo do host que não usamos removido e `Site validation` verde:** por decisão do dono, o arquivo de configuração do host saiu do repositório. As duas regras exatas de redirect que só existiam nele (retrô e wiki) foram para o `_redirects`; `build-static.cjs`, `preview-static.cjs` e `cdn-assets.test.cjs` deixaram de lê-lo, o preview local passou a servir os arquivos com `must-revalidate` sem emular cache/redirect e o filtro do workflow perdeu o caminho do arquivo. Saíram também `docs/CDN_VERCEL.md`, a condição de host em `secure/js/logger.js` e as menções em `AGENTS.md`, `DEPLOY_STATIC.md` e nos docs de roteamento. **INC-13 fechado:** stubs `/delivery/mkt/*` e `_redirects:89-91` apontam para a vitrine `mkt.caracore.com.br` (200 medido). **INC-14 fechado:** o passo 5 valida só o `_redirects`. Medido: `validate-delivery-stubs` 40 stubs/0 problemas, `validate-redirects-config` 0 problemas, `run-site-validation.ps1` de ponta a ponta com `EXITCODE=0` (passos 1–5) e `node scripts/build-static.cjs` com 8/8 testes. |

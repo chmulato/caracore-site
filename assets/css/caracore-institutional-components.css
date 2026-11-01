@@ -8,6 +8,49 @@
  * Escopo: body.cc-site. A classe também libera o offset do navbar fixo.
  */
 
+/* Contraste AA — tons escurecidos dos utilitários do Bootstrap ---------------
+ * Este arquivo carrega depois do bootstrap.min.css, então as variáveis daqui
+ * valem para o site inteiro. Os valores foram medidos contra os fundos reais
+ * de cada página; nenhum deles chega ao limiar de 4,5:1 por arredondamento. */
+
+:root {
+  --bs-link-color-rgb: 11, 94, 215;
+  --bs-link-hover-color-rgb: 8, 66, 152;
+  --bs-code-color: #b0246b;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: #0a58ca;
+  --bs-btn-border-color: #0a58ca;
+  --bs-btn-hover-bg: #0a58ca;
+  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-active-bg: #084298;
+  --bs-btn-active-border-color: #084298;
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: #495057;
+  --bs-btn-border-color: #495057;
+  --bs-btn-hover-bg: #495057;
+  --bs-btn-hover-border-color: #495057;
+  --bs-btn-active-bg: #343a40;
+  --bs-btn-active-border-color: #343a40;
+}
+
+.btn-outline-success {
+  --bs-btn-color: #146c43;
+  --bs-btn-border-color: #146c43;
+  --bs-btn-hover-bg: #146c43;
+  --bs-btn-hover-border-color: #146c43;
+  --bs-btn-active-bg: #0f5132;
+  --bs-btn-active-border-color: #0f5132;
+}
+
+.badge.bg-warning,
+.badge.bg-info {
+  color: #1f2937;
+}
+
 body.cc-site {
   padding-top: var(--cc-nav-h);
 }

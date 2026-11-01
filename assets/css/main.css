@@ -314,16 +314,22 @@ section, header {
   color: #fff;
 }
 
-/* Seção Sobre */
+/* Seção Sobre — tons escurecidos para o texto e o logo brancos passarem AA */
 #sobre {
-  background: linear-gradient(120deg, #36d1c4 0%, #5b86e5 100%);
+  background: linear-gradient(120deg, #0f766e 0%, #2563eb 100%);
   color: #fff;
+  --bs-secondary-color: rgba(255, 255, 255, 0.92);
+  --bs-link-color-rgb: 255, 255, 255;
+  --bs-link-hover-color-rgb: 233, 213, 255;
 }
 
-/* Seção de Contato */
+/* Seção de Contato — mesmo critério: roxo escuro, texto e links claros */
 #contato {
-  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  background: linear-gradient(120deg, #6d28d9 0%, #4c1d95 100%);
   color: #fff;
+  --bs-secondary-color: rgba(255, 255, 255, 0.92);
+  --bs-link-color-rgb: 255, 255, 255;
+  --bs-link-hover-color-rgb: 233, 213, 255;
 }
 
 /* Links de contato */
@@ -370,6 +376,22 @@ section, header {
 #contato .contact-link:hover {
   background: #fff;
   color: #b91d73 !important;
+}
+
+/* Ícones sociais e botão contornado dentro da faixa roxa: tons claros */
+#contato .text-dark {
+  color: #fff !important;
+}
+
+#contato .btn-outline-primary {
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: rgba(255, 255, 255, 0.85);
+  --bs-btn-hover-color: #4c1d95;
+  --bs-btn-hover-bg: #fff;
+  --bs-btn-hover-border-color: #fff;
+  --bs-btn-active-color: #4c1d95;
+  --bs-btn-active-bg: #fff;
+  --bs-btn-active-border-color: #fff;
 }
 
 .contact-link {
@@ -706,7 +728,7 @@ section, header {
 }
 
 .cc-badge-pdv-rust {
-  background: linear-gradient(120deg, #0b3a66 0%, #14538e 55%, #c45c26 100%) !important;
+  background: linear-gradient(120deg, #0b3a66 0%, #14538e 55%, #a8481f 100%) !important;
 }
 
 .cc-badge-hub,
@@ -751,7 +773,7 @@ section, header {
 
 /* Botão de contato */
 .btn-contato {
-  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  background: linear-gradient(120deg, #6d28d9 0%, #4c1d95 100%);
   color: #fff !important;
   border-radius: 8px;
   padding: 8px 16px;
@@ -760,14 +782,14 @@ section, header {
 }
 
 .btn-contato:hover {
-  background: linear-gradient(120deg, #5f2c82 0%, #8f6ed5 100%);
+  background: linear-gradient(120deg, #4c1d95 0%, #6d28d9 100%);
   color: #fff !important;
   text-decoration: none;
 }
 
 /* Links de recursos no formato de redes sociais */
 #contato .recursos-link {
-  color: #222;
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1.2rem;
   margin-right: 8px;
   text-decoration: none;
@@ -775,7 +797,7 @@ section, header {
 }
 
 #contato .recursos-link:hover {
-  color: #007bff;
+  color: #e9d5ff;
 }
 
 /* Tooltip simples para links de "Recursos" (hover/focus) */
@@ -848,8 +870,14 @@ section, header {
   vertical-align: middle;
 }
 
+/* .table-light pinta a cor do cabeçalho por variável; aqui ela volta a ser branca */
+.horario-tabela thead {
+  --bs-table-bg: transparent;
+  --bs-table-color: #fff;
+}
+
 .horario-tabela th {
-  background: linear-gradient(120deg, #8f6ed5 0%, #5f2c82 100%);
+  background: linear-gradient(120deg, #6d28d9 0%, #4c1d95 100%);
   color: #fff;
   font-weight: 600;
   text-align: left;

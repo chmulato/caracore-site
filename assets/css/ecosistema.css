@@ -32,7 +32,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #6c757d;
+  color: #5c636a;
   margin-bottom: 0.75rem;
 }
 
@@ -57,7 +57,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: #868e96;
+  color: #5c636a;
   margin: 0.85rem 0 0.35rem 0.5rem;
 }
 
@@ -89,11 +89,11 @@
 .eco-breadcrumb {
   font-size: 0.88rem;
   margin-bottom: 1rem;
-  color: #6c757d;
+  color: #5c636a;
 }
 
 .eco-breadcrumb a {
-  color: #0d6efd;
+  color: #0b5ed7;
   text-decoration: none;
 }
 
@@ -142,7 +142,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: #6c757d;
+  color: #5c636a;
   margin-bottom: 1.25rem;
 }
 
@@ -198,7 +198,7 @@
 .eco-map-node--garagem {
   background: rgba(253, 126, 20, 0.08);
   border-color: rgba(253, 126, 20, 0.25);
-  color: #c35a0a;
+  color: #a8481f;
 }
 
 .eco-map-node--gratuito {
@@ -214,7 +214,7 @@
   gap: 0.75rem 1.25rem;
   margin-top: 1.25rem;
   font-size: 0.72rem;
-  color: #6c757d;
+  color: #5c636a;
 }
 
 .eco-map-legend span {
@@ -404,7 +404,7 @@
 
 .eco-section-badge--garagem {
   background: rgba(253, 126, 20, 0.12);
-  color: #c35a0a;
+  color: #a8481f;
 }
 
 .eco-section-badge--pilares {
@@ -422,7 +422,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #fd7e14;
+  color: #b45309;
   margin-bottom: 0.5rem;
 }
 
@@ -521,7 +521,7 @@
 }
 
 .eco-timeline-future .eco-timeline-dot {
-  background: #adb5bd;
+  background: #6c757d;
   color: #fff;
 }
 
@@ -534,13 +534,13 @@
 
 .eco-timeline-date {
   font-size: 0.68rem;
-  color: #6c757d;
+  color: #5c636a;
 }
 
 .eco-roadmap-details summary {
   cursor: pointer;
   font-weight: 600;
-  color: #0d6efd;
+  color: #0b5ed7;
   margin-bottom: 1rem;
   -webkit-user-select: none;
   user-select: none;
@@ -628,6 +628,11 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   border-top: 2px solid rgba(13, 110, 253, 0.2);
+}
+
+/* .text-primary do grupo Núcleo precisa de azul mais escuro sobre o fundo #cfe2ff */
+.eco-lojas-table .table-primary {
+  --bs-primary-rgb: 5, 60, 140;
 }
 
 .eco-lojas-table .row-group-brinco {
@@ -1046,7 +1051,7 @@
 .eco2-flow-down {
   font-size: 1.4rem;
   line-height: 1.2;
-  color: #94a3b8;
+  color: #64748b;
   margin: 0.15rem 0;
 }
 

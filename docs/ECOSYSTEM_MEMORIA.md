@@ -32,6 +32,28 @@ atualizar só o HTML deixa a tela mentindo (foi assim que a Central e a matriz q
 merge commit) só quando pedido. Evidência de execução vale no dia (copiar run + log + artefato). Prompt da
 próxima tarefa sempre em `.txt` em `docs/` da oficina. Publicação é passo separado, nunca efeito de commit.
 
+### Canal de atualização da frota desktop — pdv/hub/cso no mesmo gateway (01/11/2026)
+
+Infra transversal aos três desktops (PDV, Hub, CSO Gestão de Transportes). Gateway único embutido no
+**`caracore-cso-quarkus`** (api.caracore.com.br, Railway), pacote `br.com.caracore.api.update`, rotas
+`/releases/{pdv|hub|cso}/latest(.json)` no Router do Vert.x (fora do JAX-RS); o legado
+`/releases/latest.json` é o app **pdv**.
+
+- **Estado medido ao vivo em 01/11/2026:** pdv → 200 `3.2.12-free` · hub → 200 `2.1.0-rc1.8` ·
+  cso → 204 (fiação armada; falta a 1ª release real e um cliente de atualização no desktop do CSO).
+- **Variáveis reais no Railway:** `CARACORE_API_APPS_HUB_REPO`, `CARACORE_API_APPS_CSO_REPO` e
+  `GITHUB_PAT`. Os nomes curtos `HUB_REPO`/`CSO_REPO` nunca existiram — placeholders do properties
+  alinhados nos commits `a171141`/`ae635a5` do cso-quarkus (pushados e deployados em 01/11).
+- **Contrato:** 200 = JSON com `version`/`downloadUrl`/`sha256`/`releaseNotes`/`mandatory`; 204 = nada
+  publicado (não é erro); cache de 15 min em memória guarda também a ausência; pré-release **não** entra
+  no Latest. Virada do canal = promover a release no GitHub, sem mudar código. Round-trip validado no
+  ambiente real (release dummy → 200 → apagada → 204 após redeploy).
+- **Clientes:** PDV `UpdateManager` (URL compilada, `/releases/latest.json`); Hub
+  `CanalAtualizacaoClient` (`/releases/hub/latest.json`, token de licença no header, nunca em log);
+  CSO desktop ainda sem cliente — é a peça que falta para o trio fechar.
+- **Suporte:** o gateway derruba junto o canal e o SaaS do CSO (mesmo deployment), mas o cliente desktop
+  degrada sem bloquear o operador. Suíte do cso-quarkus: 430 testes/0 falhas (21 do canal).
+
 ### Checkpoint 01/11/2026 — superfícies publicadas na prévia de 31/10 e fila de retomada
 
 **Estado medido em 01/11/2026.** As quatro superfícies que descrevem o PDV Java foram alinhadas à candidata,

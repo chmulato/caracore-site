@@ -1,39 +1,194 @@
-:root {
-  --cc-i-surface: #f8fafc;
-  --cc-i-border: #dbe5ef;
-  --cc-i-text: #203246;
-  --cc-i-muted: #5d6f82;
-  --cc-i-link: #0a6b85;
+/**
+ * Cara Core — componentes institucionais compartilhados.
+ *
+ * Camada única de chrome do site: navbar, cabeçalhos, cartões, botões e
+ * rodapé. As páginas mantêm seus componentes de conteúdo (p2-, pf-, eco-,
+ * pl2-); o que muda é o que aparece igual em todas.
+ *
+ * Escopo: body.cc-site. A classe também libera o offset do navbar fixo.
+ */
+
+body.cc-site {
+  padding-top: var(--cc-nav-h);
 }
 
-body.cc-i-page {
-  color: var(--cc-i-text);
+/* Herói de página escuro ocupa o topo por baixo do navbar */
+body.cc-site.cc-dark-hero {
+  padding-top: 0;
 }
 
-body.cc-i-page .cc-i-topbar {
-  max-width: 980px;
-  margin: 16px auto 0;
-  padding: 10px 14px;
-  border: 1px solid var(--cc-i-border);
-  border-radius: 10px;
-  background: var(--cc-i-surface);
-  font-size: 0.95rem;
+/* Navbar ----------------------------------------------------------------- */
+
+body.cc-site .navbar {
+  min-height: var(--cc-nav-h);
+  padding: 0.45rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-body.cc-i-page .cc-i-backlink {
-  color: var(--cc-i-link);
-  text-decoration: none;
+body.cc-site .navbar .navbar-brand {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+}
+
+body.cc-site .navbar .navbar-nav .nav-link {
+  padding: 0.4rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+  white-space: nowrap;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+body.cc-site .navbar .navbar-nav .nav-link:hover,
+body.cc-site .navbar .navbar-nav .nav-link:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+body.cc-site .navbar .navbar-nav .nav-link.active {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+body.cc-site .navbar .flag-dropdown {
+  margin-left: 0.25rem;
+}
+
+/* Menu recolhido: alvos de toque maiores e folga no fim da lista */
+@media (max-width: 1199.98px) {
+  body.cc-site .navbar .navbar-toggler {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: 44px;
+  }
+
+  body.cc-site .navbar .navbar-collapse {
+    max-height: calc(100vh - var(--cc-nav-h));
+    overflow-y: auto;
+  }
+
+  body.cc-site .navbar .navbar-nav {
+    padding-bottom: 0.5rem;
+  }
+
+  body.cc-site .navbar .navbar-nav .nav-link {
+    padding: 0.75rem;
+  }
+}
+
+/* Topo das páginas ------------------------------------------------------- */
+
+body.cc-site .eco-page-wrap {
+  padding-top: 1.5rem;
+}
+
+body.cc-site .pl-page {
+  padding-top: 1.5rem;
+}
+
+body.cc-site .eco-toc {
+  top: calc(var(--cc-nav-h) + 1rem);
+  max-height: calc(100vh - var(--cc-nav-h) - 2rem);
+}
+
+/* Âncoras internas da home (as seções novas já trazem scroll-margin) */
+body.cc-site #home,
+body.cc-site #engenharia-b2b,
+body.cc-site #servicos,
+body.cc-site #sobre,
+body.cc-site #contato,
+body.cc-site #rebeldia-mecatronica {
+  scroll-margin-top: calc(var(--cc-nav-h) + 1rem);
+}
+
+/* Cabeçalhos ------------------------------------------------------------- */
+
+body.cc-site h1:not(.display-4),
+body.cc-site :is(.p2-hero-title, .eco2-hero-title, .pf-hero-title, .pl2-title) {
+  font-size: var(--cc-fs-page-title);
+  font-weight: 600;
+  line-height: var(--cc-lh-title);
+  letter-spacing: -0.02em;
+}
+
+body.cc-site :is(.eco2-title, .pf-section-title, .pl2-title-sm) {
+  font-size: var(--cc-fs-section-title);
+  font-weight: 600;
+  line-height: 1.22;
+  letter-spacing: -0.012em;
+}
+
+body.cc-site :is(.p2-eyebrow, .eco2-eyebrow, .pf-eyebrow, .pf-hero-eyebrow, .pl2-eyebrow) {
+  font-size: var(--cc-fs-eyebrow);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+body.cc-site :is(.p2-hero-lead, .eco2-hero-lead, .pf-hero-lead, .pl2-lead) {
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+body.cc-site .breadcrumb {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+
+/* Cartões e botões ------------------------------------------------------- */
+
+body.cc-site .card {
+  border: 1px solid var(--cc-line);
+  border-radius: var(--cc-radius-card);
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+body.cc-site .card:hover {
+  transform: none;
+  box-shadow: 0 4px 14px rgba(16, 24, 40, 0.08);
+}
+
+body.cc-site .btn {
+  border-radius: var(--cc-radius-control);
   font-weight: 600;
 }
 
-body.cc-i-page .cc-i-backlink:hover {
-  text-decoration: underline;
+body.cc-site .badge {
+  font-weight: 600;
 }
 
-body.cc-i-page .cc-i-muted {
-  color: var(--cc-i-muted);
+/* Rodapé ----------------------------------------------------------------- */
+
+body.cc-site .site-footer {
+  font-size: 0.9375rem;
 }
 
-body.cc-i-page .cc-i-card {
-  border-radius: 12px;
+body.cc-site .site-footer a {
+  display: inline-block;
+  font-weight: 600;
+}
+
+/* Alvos de toque no celular e no tablet ---------------------------------- */
+
+@media (max-width: 1199.98px) {
+  body.cc-site .btn,
+  body.cc-site .btn-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+  }
+
+  body.cc-site .site-footer .mt-2 > a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.35rem 0.35rem;
+  }
 }

@@ -229,10 +229,6 @@
     return ' · <abbr title="' + escapeHtml(tip) + '">' + escapeHtml(next.gate) + "</abbr>";
   }
 
-  function publicNextTitle(what) {
-    return String(what).replace(/\bGA\b/, "lançamento estável (GA)");
-  }
-
   function yearMeter(y) {
     const pct = Math.max(0, Math.min(100, y.pct));
     return (
@@ -340,46 +336,371 @@
     rows.innerHTML = projectGroup("Núcleo", core, "") + projectGroup("Brincos", other, "Não mandam na cota.");
   }
 
-  function renderSummary(counts) {
-    const el = document.getElementById("pl-summary");
+  function panel() {
+    return data.PANEL || {};
+  }
+
+  function attentionProduct() {
+    return (
+      data.PRODUCTS.find(function (p) {
+        return p.state === "risk";
+      }) ||
+      data.PRODUCTS.find(function (p) {
+        return p.state === "watch";
+      })
+    );
+  }
+
+  function dashTile(o) {
+    const tag = o.href ? "a" : "div";
+    const href = o.href ? ' href="' + o.href + '"' : "";
+    const num = o.num ? '<em class="pl2-tile-num">' + escapeHtml(o.num) + "</em>" : "";
+    return (
+      "<" +
+      tag +
+      ' class="pl2-tile' +
+      (o.cls ? " " + o.cls : "") +
+      '" role="listitem"' +
+      href +
+      ">" +
+      '<span class="pl2-tile-label">' +
+      escapeHtml(o.label) +
+      '</span><span class="pl2-tile-main"><strong>' +
+      escapeHtml(o.value) +
+      "</strong>" +
+      num +
+      '</span><span class="pl2-tile-sub">' +
+      escapeHtml(o.sub) +
+      "</span></" +
+      tag +
+      ">"
+    );
+  }
+
+  function renderDash() {
+    const el = document.getElementById("pl-dash");
     if (!el) return;
-    const items = [
-      ["done", counts.done],
-      ["ok", counts.ok],
-      ["watch", counts.watch],
-      ["risk", counts.risk],
+    const core = data.PRODUCTS.filter(function (p) {
+      return p.core;
+    });
+    const top = core
+      .slice()
+      .sort(function (a, b) {
+        return lastPct(b) - lastPct(a);
+      })[0];
+    const attn = attentionProduct();
+    const next = data.EXEC && data.EXEC.next;
+    const cfg = panel();
+    const why = cfg.semaforo || {};
+
+    const tiles = [
+      dashTile({
+        label: "Projetos ativos",
+        value: String(data.PRODUCTS.length),
+        sub: core.length + " no núcleo · " + (data.PRODUCTS.length - core.length) + " satélites",
+      }),
     ];
-    const tiles = items
-      .map(function (item) {
-        const state = item[0];
-        const n = item[1];
+    if (next) {
+      tiles.push(
+        dashTile({
+          label: "Próximo marco",
+          value: next.when,
+          sub: next.what,
+          href: "#roadmap",
+          cls: "pl2-tile--next",
+        })
+      );
+    }
+    if (top) {
+      tiles.push(
+        dashTile({
+          label: "Projeto mais avançado",
+          value: top.name,
+          num: lastPct(top) + "%",
+          sub: "maior avanço do núcleo",
+          href: "#produto-" + top.id,
+          cls: "pl2-tile--good",
+        })
+      );
+    }
+    if (attn) {
+      tiles.push(
+        dashTile({
+          label: "Exige atenção",
+          value: attn.name,
+          sub: why[attn.id] || STATE_LABEL[attn.state || "ok"],
+          href: "#semaforo",
+          cls: "pl2-tile--risk",
+        })
+      );
+    }
+    el.innerHTML = tiles.join("");
+  }
+
+  function renderCore() {
+    const el = document.getElementById("pl-core");
+    if (!el) return;
+    const cfg = panel().core || {};
+    const order = ["pdv-java", "cso", "hub"];
+    el.innerHTML = order
+      .map(function (id) {
+        const p = productById(id);
+        const c = cfg[id];
+        if (!p || !c) return "";
+        const pct = lastPct(p);
+        const state = p.state || "ok";
         return (
-          '<div class="pl-sum is-' +
+          '<article class="pl2-core-card is-' +
           state +
-          '" role="listitem">' +
-          icon(STATE_ICON[state]) +
-          "<strong>" +
-          n +
-          "</strong><span>" +
-          phrase(state, n) +
-          "</span></div>"
+          '">' +
+          '<header class="pl2-core-head"><span class="pl2-core-kicker">' +
+          escapeHtml(c.kicker) +
+          "</span>" +
+          badge(state) +
+          "</header>" +
+          '<h3 class="pl2-core-name">' +
+          icon(c.icon) +
+          " " +
+          escapeHtml(c.display) +
+          "</h3>" +
+          '<p class="pl2-core-status">' +
+          escapeHtml(c.status) +
+          "</p>" +
+          '<div class="pl2-core-meter"><span class="pl2-track" style="--fill:' +
+          pct +
+          '%" aria-hidden="true"><span class="pl2-fill"></span></span>' +
+          '<p class="pl2-core-pct"><strong>' +
+          pct +
+          "%</strong> do compromisso 2029</p></div>" +
+          '<p class="pl2-core-line">' +
+          glossHtml(c.line) +
+          "</p>" +
+          '<dl class="pl2-core-meta">' +
+          "<div><dt>Próximo marco</dt><dd>" +
+          glossHtml(c.milestone) +
+          "</dd></div>" +
+          "<div><dt>Prioridade</dt><dd><strong>" +
+          escapeHtml(c.priority) +
+          "</strong> · " +
+          escapeHtml(c.priorityNote) +
+          "</dd></div></dl>" +
+          '<p class="pl2-core-actions">' +
+          '<a class="pl2-btn pl2-btn--primary" href="' +
+          escapeHtml(p.shop) +
+          '" rel="noopener">Abrir a loja</a>' +
+          '<a class="pl2-btn" href="#produto-' +
+          p.id +
+          '">Histórico mensal</a></p></article>'
         );
       })
       .join("");
-    const next = data.EXEC && data.EXEC.next;
-    let nextTile = "";
-    if (next) {
-      nextTile =
-        '<a class="pl-sum is-next" role="listitem" href="#anos">' +
-        icon("calendar-event") +
-        "<strong>" +
-        escapeHtml(next.when) +
-        "</strong><span>Próximo marco</span><span class=\"pl-sum-what\">" +
-        glossHtml(next.what) +
-        gateHtml(next) +
-        "</span></a>";
-    }
-    el.innerHTML = tiles + nextTile;
+  }
+
+  function renderSatellites() {
+    const el = document.getElementById("pl-sat");
+    if (!el) return;
+    const groups = panel().satellites || [];
+    el.innerHTML = groups
+      .map(function (g) {
+        const items = (g.items || []).map(productById).filter(Boolean);
+        if (!items.length) return "";
+        const cards = items
+          .map(function (p) {
+            const state = p.state || "ok";
+            return (
+              '<article class="pl2-sat-card is-' +
+              state +
+              '">' +
+              '<p class="pl2-sat-top"><strong>' +
+              escapeHtml(p.name) +
+              '</strong><span class="pl2-sat-pct">' +
+              lastPct(p) +
+              "%</span></p>" +
+              '<p class="pl2-sat-line">' +
+              glossHtml(p.now) +
+              "</p>" +
+              '<p class="pl2-sat-foot">' +
+              badge(state) +
+              '<a href="#produto-' +
+              p.id +
+              '">Detalhe</a>' +
+              '<a href="' +
+              escapeHtml(p.shop) +
+              '" rel="noopener">Loja</a></p></article>'
+            );
+          })
+          .join("");
+        return (
+          '<section class="pl2-sat-group" aria-label="' +
+          escapeHtml(g.label) +
+          '">' +
+          '<header class="pl2-sat-head"><h3>' +
+          icon(g.icon || "circle") +
+          " " +
+          escapeHtml(g.label) +
+          "</h3><p>" +
+          escapeHtml(g.hint || "") +
+          "</p></header>" +
+          '<div class="pl2-sat-grid">' +
+          cards +
+          "</div></section>"
+        );
+      })
+      .join("");
+  }
+
+  function renderSemaforo() {
+    const el = document.getElementById("pl-sem");
+    if (!el) return;
+    const why = panel().semaforo || {};
+    const buckets = [
+      {
+        key: "green",
+        label: "Dentro do planejado",
+        icon: "check-circle-fill",
+        hint: "Publicado e mantido, sem pendência que trave o próximo passo.",
+        states: ["done", "ok"],
+      },
+      {
+        key: "yellow",
+        label: "Requer atenção",
+        icon: "exclamation-triangle-fill",
+        hint: "Publicado, mas com aceite ou escopo ainda aberto.",
+        states: ["watch"],
+      },
+      {
+        key: "red",
+        label: "Bloqueado ou atrasado",
+        icon: "exclamation-octagon-fill",
+        hint: "Gates e aceites pendentes travam a próxima entrega.",
+        states: ["risk"],
+      },
+    ];
+    el.innerHTML = buckets
+      .map(function (b) {
+        const items = data.PRODUCTS.filter(function (p) {
+          return b.states.indexOf(p.state || "ok") !== -1;
+        }).sort(function (a, c) {
+          if (!!a.core !== !!c.core) return a.core ? -1 : 1;
+          return (a.n || 0) - (c.n || 0);
+        });
+        const compact = b.key === "green";
+        const rows = items
+          .map(function (p) {
+            const note = why[p.id] || "";
+            const whyHtml = compact
+              ? ""
+              : '<span class="pl2-sem-why">' + escapeHtml(note) + "</span>";
+            return (
+              '<li><a href="#produto-' +
+              p.id +
+              '" title="' +
+              escapeHtml(p.name + " · " + note) +
+              '"><strong>' +
+              escapeHtml(p.name) +
+              "</strong>" +
+              (p.core ? '<span class="pl2-core-tag">núcleo</span>' : "") +
+              whyHtml +
+              "</a></li>"
+            );
+          })
+          .join("");
+        return (
+          '<article class="pl2-sem is-' +
+          b.key +
+          '">' +
+          '<header class="pl2-sem-head">' +
+          icon(b.icon) +
+          "<strong>" +
+          items.length +
+          "</strong><span>" +
+          escapeHtml(b.label) +
+          "</span></header>" +
+          '<p class="pl2-sem-hint">' +
+          escapeHtml(b.hint) +
+          "</p>" +
+          '<ul class="pl2-sem-list' +
+          (compact ? " pl2-sem-list--compact" : "") +
+          '">' +
+          rows +
+          "</ul></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderNarrative() {
+    const el = document.getElementById("pl-narr");
+    if (!el) return;
+    const steps = panel().roadmap || [];
+    el.innerHTML = steps
+      .map(function (s, i) {
+        return (
+          '<li class="pl2-narr-item' +
+          (i === 0 ? " is-now" : "") +
+          '">' +
+          '<span class="pl2-narr-tag">' +
+          escapeHtml(s.tag) +
+          '</span><p class="pl2-narr-when">' +
+          escapeHtml(s.when) +
+          "</p><h3>" +
+          escapeHtml(s.title) +
+          "</h3>" +
+          '<dl class="pl2-narr-facts">' +
+          "<div><dt>O que será entregue</dt><dd>" +
+          escapeHtml(s.ship) +
+          "</dd></div>" +
+          "<div><dt>Impacto esperado</dt><dd>" +
+          escapeHtml(s.impact) +
+          "</dd></div>" +
+          "<div><dt>Dependências</dt><dd>" +
+          escapeHtml(s.depends) +
+          "</dd></div></dl></li>"
+        );
+      })
+      .join("");
+  }
+
+  function renderRisks() {
+    const el = document.getElementById("pl-risks");
+    if (!el) return;
+    const risks = panel().risks || [];
+    el.innerHTML = risks
+      .map(function (r) {
+        return (
+          '<article class="pl2-risk"><p class="pl2-risk-kind">' +
+          escapeHtml(r.kind) +
+          "</p><h3>" +
+          escapeHtml(r.title) +
+          '</h3><p class="pl2-risk-lead">' +
+          escapeHtml(r.lead) +
+          "</p><dl>" +
+          "<div><dt>Efeito</dt><dd>" +
+          escapeHtml(r.effect) +
+          "</dd></div>" +
+          "<div><dt>Mitigação</dt><dd>" +
+          escapeHtml(r.mitigation) +
+          "</dd></div></dl></article>"
+        );
+      })
+      .join("");
+  }
+
+  function renderGovernance() {
+    const el = document.getElementById("pl-gov");
+    if (!el) return;
+    const items = panel().governance || [];
+    el.innerHTML = items
+      .map(function (g) {
+        return (
+          '<article class="pl2-gov"><h3>' +
+          escapeHtml(g.term) +
+          "</h3><p>" +
+          escapeHtml(g.text) +
+          "</p></article>"
+        );
+      })
+      .join("");
   }
 
   function renderDoughnut(counts) {
@@ -719,39 +1040,6 @@
     );
   }
 
-  function renderNext() {
-    const next = data.EXEC && data.EXEC.next;
-    const meta = document.getElementById("pl-skyline-meta");
-    if (meta && next) {
-      meta.textContent = "Próximo marco · " + next.when + " · " + next.what;
-    }
-    const el = document.getElementById("pl-next");
-    if (!el || !next) return;
-    let gate = "";
-    if (next.gate) {
-      const tip = next.gate === "T032" ? "Gate interno do roteiro operacional." : "Detalhe interno deste marco.";
-      gate =
-        '<p class="pl-next-gate"><abbr title="' +
-        escapeHtml(tip) +
-        '">' +
-        escapeHtml(next.gate) +
-        "</abbr>" +
-        (next.gate === "T032" ? " · gate interno do roteiro operacional" : "") +
-        "</p>";
-    }
-    el.innerHTML =
-      '<h2 class="pl-next-title">' +
-      escapeHtml(publicNextTitle(next.what)) +
-      "</h2>" +
-      '<p class="pl-next-when"><strong>' +
-      escapeHtml(next.when) +
-      '</strong> <span class="pl-badge pl-badge-watch" title="Previsão. O lançamento estável ainda não foi confirmado.">previsão</span></p>' +
-      '<p class="pl-next-action">' +
-      escapeHtml(next.action) +
-      "</p>" +
-      gate;
-  }
-
   function renderFlags() {
     const el = document.getElementById("pl-flags");
     const title = document.getElementById("pl-flags-title");
@@ -892,19 +1180,17 @@
     if (parts) asofEl.setAttribute("datetime", parts[3] + "-" + parts[2] + "-" + parts[1]);
   }
 
-  const exec = data.EXEC;
-  if (exec && exec.owner) {
-    setText("pl-roadmap-now", "Em curso · " + exec.owner.who + " · " + exec.owner.period);
-  }
-  if (exec && exec.ownerNext) {
-    setText("pl-preview-cron", "Em seguida · " + exec.ownerNext.who + " · " + exec.ownerNext.period);
-  }
+  renderDash();
+  renderCore();
+  renderSatellites();
+  renderSemaforo();
+  renderNarrative();
+  renderRisks();
+  renderGovernance();
 
-  renderSummary(counts);
   renderDoughnut(counts);
   renderTrend();
   renderFlags();
-  renderNext();
   renderTowers();
   bindTowers();
   renderHeatmap();

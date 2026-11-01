@@ -375,12 +375,12 @@
 }
 
 section[id] {
-  scroll-margin-top: 7rem;
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
 }
 
 @media (max-width: 991.98px) {
   section[id] {
-    scroll-margin-top: 4.5rem;
+    scroll-margin-top: calc(var(--cc-nav-h) + 1rem);
   }
 }
 
@@ -408,7 +408,7 @@ section[id] {
 
 .portfolio-bunker-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: 1rem;
 }
 
@@ -439,7 +439,7 @@ section[id] {
 
 .portfolio-case-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 1.25rem;
 }
 
@@ -504,7 +504,7 @@ section[id] {
 
 .pdv-compare-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: 1.25rem;
 }
 
@@ -633,7 +633,7 @@ section[id] {
 
 .release-timeline {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
   gap: 1rem;
 }
 
@@ -692,7 +692,7 @@ section[id] {
 
 .portfolio-about-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: 1rem;
   margin-top: 1.25rem;
 }
@@ -730,5 +730,837 @@ section[id] {
   .btn-project {
     width: 100%;
     margin-right: 0 !important;
+  }
+}
+
+/* ==========================================================================
+   Portfólio — reorganização com prioridade de negócio (01/11/2026)
+   Hero · produtos principais · diferenciais · ecossistema · engenharia
+   ========================================================================== */
+
+:root {
+  --pf-ink: #101828;
+  --pf-muted: #475467;
+  --pf-line: #e4e7ec;
+  --pf-brand: #4f46e5;
+  --pf-brand-soft: #eef2ff;
+}
+
+.pf-hero {
+  background: linear-gradient(135deg, #0b1220 0%, #16213a 55%, #2b2a5e 100%);
+  color: #fff;
+  padding: 7.5rem 0 4.5rem;
+}
+
+.pf-hero-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 1rem;
+}
+
+.pf-hero-title {
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+  margin: 0 0 1.25rem;
+}
+
+.pf-hero-lead {
+  font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 62ch;
+  margin: 0 0 2rem;
+}
+
+.pf-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-bottom: 2.25rem;
+}
+
+.pf-hero-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.pf-hero-nav a {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.92rem;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.15rem;
+}
+
+.pf-hero-nav a:hover,
+.pf-hero-nav a:focus-visible {
+  color: #fff;
+  border-bottom-color: rgba(255, 255, 255, 0.5);
+}
+
+.pf-hero-note {
+  margin: 1.25rem 0 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Botões */
+.pf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.4rem;
+  border-radius: 10px;
+  border: 1px solid var(--pf-line);
+  background: #fff;
+  color: var(--pf-ink);
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.pf-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(16, 24, 40, 0.12);
+  color: var(--pf-ink);
+}
+
+.pf-btn--primary {
+  background: linear-gradient(120deg, #4f46e5 0%, #7c3aed 100%);
+  border-color: transparent;
+  color: #fff;
+}
+
+.pf-btn--primary:hover {
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(79, 70, 229, 0.32);
+}
+
+.pf-btn--lg {
+  padding: 0.95rem 1.9rem;
+  font-size: 1.05rem;
+}
+
+.pf-btn--ghost {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.32);
+  color: #fff;
+}
+
+.pf-btn--ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.pf-btn--quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--pf-brand);
+  text-decoration: underline;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.pf-btn--quiet:hover {
+  box-shadow: none;
+  color: #3730a3;
+}
+
+/* Ritmo das seções */
+.pf-section {
+  padding: 4.5rem 0;
+}
+
+.pf-section--alt {
+  background: #f7f8fc;
+  border-top: 1px solid var(--pf-line);
+  border-bottom: 1px solid var(--pf-line);
+}
+
+.pf-section-head {
+  max-width: 780px;
+  margin-bottom: 2.75rem;
+}
+
+.pf-eyebrow {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--pf-brand);
+  margin-bottom: 0.6rem;
+}
+
+.pf-section-title {
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  font-weight: 800;
+  color: var(--pf-ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.85rem;
+}
+
+.pf-section-lead {
+  color: var(--pf-muted);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.pf-legend {
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
+  color: #667085;
+}
+
+/* Produtos principais */
+.pf-core-card {
+  background: #fff;
+  border: 1px solid var(--pf-line);
+  border-radius: 22px;
+  box-shadow: 0 12px 44px rgba(16, 24, 40, 0.08);
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+}
+
+.pf-core-card:last-child {
+  margin-bottom: 0;
+}
+
+.pf-core-head {
+  padding: 2.25rem 2rem 1.85rem;
+  color: #fff;
+}
+
+.pf-core-card--pdv .pf-core-head {
+  background: linear-gradient(120deg, #3730a3 0%, #6d28d9 100%);
+}
+
+.pf-core-card--cso .pf-core-head {
+  background: linear-gradient(120deg, #075985 0%, #0891b2 100%);
+}
+
+.pf-core-card--hub .pf-core-head {
+  background: linear-gradient(120deg, #9a3412 0%, #b45309 100%);
+}
+
+.pf-core-head-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.pf-core-index {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.pf-core-status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+}
+
+.pf-core-name {
+  color: #fff;
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.35rem;
+}
+
+.pf-core-name i {
+  margin-right: 0.4rem;
+}
+
+.pf-core-sub {
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0 0 1rem;
+}
+
+.pf-core-audience {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.82);
+  max-width: 78ch;
+}
+
+.pf-core-audience strong {
+  color: #fff;
+}
+
+.pf-core-body {
+  padding: 2rem;
+}
+
+.pf-core-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pf-brand);
+  margin-bottom: 0.6rem;
+}
+
+.pf-core-block > p {
+  color: var(--pf-muted);
+  margin-bottom: 1.5rem;
+}
+
+.pf-core-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.pf-core-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pf-core-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.55rem;
+  color: #1f2937;
+}
+
+.pf-core-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: linear-gradient(120deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+.pf-core-more {
+  border-top: 1px solid var(--pf-line);
+  margin: 0.5rem 0 1.25rem;
+  padding-top: 1rem;
+}
+
+.pf-core-more > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #344054;
+  padding: 0.25rem 0;
+}
+
+.pf-core-more .pf-core-list {
+  margin-top: 0.85rem;
+}
+
+.pf-core-footnote {
+  font-size: 0.86rem;
+  color: var(--pf-muted);
+  background: #f9fafb;
+  border-left: 3px solid #cbd5e1;
+  border-radius: 0 8px 8px 0;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pf-core-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Diferenciais — neutraliza a regra #diferenciais da home (main.css) */
+#diferenciais.pf-section--alt {
+  background: #f7f8fc;
+  border-top: 1px solid var(--pf-line);
+  border-bottom: 1px solid var(--pf-line);
+  color: var(--pf-ink);
+}
+
+.pf-diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+.pf-diff-card {
+  background: #fff;
+  border: 1px solid var(--pf-line);
+  border-radius: 16px;
+  padding: 1.6rem 1.5rem;
+}
+
+.pf-diff-card i {
+  font-size: 1.55rem;
+  color: var(--pf-brand);
+}
+
+.pf-diff-card h3 {
+  font-size: 1.08rem;
+  color: var(--pf-ink);
+  margin: 0.85rem 0 0.5rem;
+}
+
+.pf-diff-card p {
+  color: var(--pf-muted);
+  font-size: 0.94rem;
+  margin: 0;
+}
+
+/* Ecossistema */
+.pf-eco-group {
+  background: #fff;
+  border: 1px solid var(--pf-line);
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.pf-eco-group > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1.15rem 1.5rem;
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--pf-ink);
+  list-style: none;
+}
+
+.pf-eco-group > summary::-webkit-details-marker {
+  display: none;
+}
+
+.pf-eco-group[open] > summary {
+  background: #fbfcfe;
+  border-bottom: 1px solid var(--pf-line);
+}
+
+.pf-eco-group-title i {
+  color: var(--pf-brand);
+  margin-right: 0.4rem;
+}
+
+.pf-eco-group-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--pf-muted);
+  background: #f2f4f7;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+}
+
+.pf-eco-list {
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.25rem;
+}
+
+.eco-item {
+  background: #fff;
+  border: 1px solid var(--pf-line);
+  border-radius: 12px;
+}
+
+.eco-item[open] {
+  border-color: #c7d2fe;
+  box-shadow: 0 4px 18px rgba(79, 70, 229, 0.08);
+}
+
+.eco-item-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.3rem 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.eco-item-summary::-webkit-details-marker {
+  display: none;
+}
+
+.eco-item-name {
+  font-weight: 700;
+  color: var(--pf-ink);
+}
+
+.eco-item-name i {
+  color: var(--pf-brand);
+  margin-right: 0.4rem;
+}
+
+.eco-item-status {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #344054;
+  background: #f2f4f7;
+  border-radius: 999px;
+  padding: 0.25rem 0.7rem;
+  white-space: nowrap;
+}
+
+.eco-item-chevron {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid #98a2b3;
+  border-bottom: 2px solid #98a2b3;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.eco-item[open] .eco-item-chevron {
+  transform: rotate(-135deg);
+}
+
+.eco-item-desc {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  color: var(--pf-muted);
+}
+
+.eco-item-body {
+  padding: 1.25rem 1.25rem 1.5rem;
+  border-top: 1px solid var(--pf-line);
+}
+
+/* Conteúdo legado (ecossistema e fichas): mesma informação, menor peso visual */
+.eng-ficha {
+  padding-top: 1rem;
+}
+
+.legacy-produto .container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.legacy-produto .project-card {
+  margin: 0;
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.legacy-produto .project-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.legacy-produto .project-header {
+  background: transparent !important;
+  color: var(--pf-ink) !important;
+  padding: 0 0 0.9rem;
+  border-bottom: 1px solid var(--pf-line);
+  border-radius: 0;
+  text-align: left;
+}
+
+.legacy-produto .project-header h2,
+.legacy-produto .project-header h3 {
+  color: var(--pf-muted);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.legacy-produto h3.h4 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.legacy-produto .project-header .lead {
+  color: var(--pf-muted);
+  font-size: 0.95rem;
+}
+
+.legacy-produto .project-header .tech-badge {
+  background: var(--pf-brand-soft);
+  color: #3730a3;
+  font-size: 0.72rem;
+  padding: 0.28rem 0.65rem;
+}
+
+.legacy-produto .card-body {
+  padding: 1.25rem 0 0 !important;
+}
+
+.legacy-produto .project-body {
+  padding: 1.25rem 0 0;
+}
+
+.legacy-produto .diagram-container {
+  box-shadow: none;
+  border: 1px solid var(--pf-line);
+}
+
+.legacy-produto .btn-project {
+  font-size: 0.9rem;
+  padding: 0.6rem 1.1rem;
+}
+
+.legacy-produto .text-start.mt-4 {
+  display: none;
+}
+
+/* Engenharia e releases */
+.eng-item {
+  background: #fff;
+  border: 1px solid var(--pf-line);
+  border-radius: 16px;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.eng-item > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.3rem 1rem;
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.eng-item > summary::-webkit-details-marker {
+  display: none;
+}
+
+.eng-item[open] > summary {
+  background: #fbfcfe;
+  border-bottom: 1px solid var(--pf-line);
+}
+
+.eng-title {
+  font-weight: 700;
+  color: var(--pf-ink);
+}
+
+.eng-title i {
+  color: #667085;
+  margin-right: 0.4rem;
+}
+
+.eng-meta {
+  font-size: 0.85rem;
+  color: var(--pf-muted);
+  margin: 0;
+}
+
+.eng-item-body {
+  padding: 1.5rem;
+}
+
+.eng-item-body > .container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.eng-item-body h4 {
+  font-size: 1rem;
+  color: var(--pf-ink);
+  margin: 1.5rem 0 0.6rem;
+}
+
+.eng-item-body h4:first-child {
+  margin-top: 0;
+}
+
+.eng-list {
+  padding-left: 1.1rem;
+  color: var(--pf-muted);
+}
+
+.eng-list li {
+  margin-bottom: 0.45rem;
+}
+
+.eng-sub {
+  background: #f9fafb;
+  border: 1px solid var(--pf-line);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin: 1rem 0;
+}
+
+.eng-sub > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #344054;
+}
+
+.eng-sub > ul,
+.eng-sub > p {
+  margin: 0.75rem 0 0 0.25rem;
+}
+
+.eng-item-body .portfolio-releases {
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+
+.eng-item-body .portfolio-secondary {
+  background: transparent;
+  border: none;
+  margin-bottom: 0;
+}
+
+.eng-item-body .portfolio-cross-block {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.eng-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.eng-links a {
+  font-weight: 600;
+}
+
+/* Âncoras */
+#produtos-principais,
+#diferenciais,
+#ecossistema-projetos,
+#engenharia,
+#filosofia-bunker,
+.pf-core-card[id],
+.eco-item[id],
+.eng-item[id] {
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
+}
+
+/* Responsivo */
+@media (max-width: 991.98px) {
+  .pf-hero {
+    padding: 6rem 0 3.5rem;
+  }
+
+  .pf-hero-title {
+    max-width: 100%;
+  }
+
+  .pf-section {
+    padding: 3.25rem 0;
+  }
+
+  .pf-core-cols,
+  .pf-diff-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pf-core-body,
+  .pf-core-head {
+    padding: 1.6rem 1.35rem;
+  }
+
+  #produtos-principais,
+  #diferenciais,
+  #ecossistema-projetos,
+  #engenharia,
+  #filosofia-bunker,
+  .pf-core-card[id],
+  .eco-item[id],
+  .eng-item[id] {
+    scroll-margin-top: calc(var(--cc-nav-h) + 1rem);
+  }
+}
+
+@media (max-width: 575.98px) {
+  .pf-hero-actions .pf-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pf-core-actions .pf-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .eco-item-summary {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .eco-item-status {
+    grid-column: 1 / -1;
+    justify-self: start;
+    margin-top: 0.35rem;
+  }
+
+  .eco-item-chevron {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .pf-eco-list {
+    padding: 0.85rem;
+  }
+}
+
+/* Menu recolhido: alvos de toque de 44px também no tablet */
+@media (max-width: 1199.98px) {
+  .portfolio-case-card .case-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .pf-btn--quiet {
+    min-height: 44px;
+  }
+
+  .pf-hero-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .portfolio-about-item a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .pf-core-more > summary,
+  .portfolio-toc-more summary,
+  .eng-sub > summary,
+  details.mb-3 > summary {
+    padding: 0.6rem 0;
+  }
+}
+
+/* Desktop: alvo mínimo de 24px (WCAG 2.5.8) */
+@media (min-width: 1200px) {
+  .portfolio-about-item a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
   }
 }

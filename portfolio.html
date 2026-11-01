@@ -14,40 +14,40 @@
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
   <!-- Estilos adicionais -->
-  <link rel="stylesheet" href="css/additional-styles.css">
+  <link rel="stylesheet" href="css/additional-styles.css?v=20261115">
   <!-- Estilos customizados -->
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/portfolio.css">
-  <link rel="stylesheet" href="assets/css/catalog.css">
+  <link rel="stylesheet" href="assets/css/main.css?v=20261115">
+  <link rel="stylesheet" href="assets/css/portfolio.css?v=20261115">
+  <link rel="stylesheet" href="assets/css/catalog.css?v=20261115">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Portfólio de produtos | Cara Core Informática</title>
-  <meta name="description" content="Conheça os produtos principais, projetos complementares e status de releases da Cara Core Informática.">
-  <meta name="keywords" content="Portfólio, Bunker Digital, CaraCore PDV web local, PDV Rust Tauri, Tauri, Minerador 4.0, OIDC, Java 25, JavaFX, Cara Core Informática">
+  <title>Portfólio | PDV, CSO e Hub | Cara Core Informática</title>
+  <meta name="description" content="PDV, CSO e Hub: software resiliente para operações que não podem parar. Os três produtos principais, os diferenciais e a engenharia por trás de cada entrega.">
+  <meta name="keywords" content="Portfólio, PDV, CSO, Hub, software offline-first, resiliência operacional, Bunker Digital, Cara Core Informática">
   <meta name="author" content="Cara Core Informática">
   <link rel="icon" href="assets/images/favicon.ico" type="image/ico">
   <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
   <link rel="canonical" href="https://www.caracore.com.br/portfolio.html">
   
   <!-- Open Graph / Facebook -->
-  <meta property="og:title" content="Portfólio de produtos | Cara Core Informática">
-  <meta property="og:description" content="Produtos principais, projetos complementares e status de releases da Cara Core Informática.">
+  <meta property="og:title" content="Portfólio | PDV, CSO e Hub | Cara Core Informática">
+  <meta property="og:description" content="PDV, CSO e Hub: software resiliente para operações que não podem parar. Produtos principais, diferenciais e engenharia.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.caracore.com.br/portfolio.html">
   <meta property="og:image" content="https://www.caracore.com.br/assets/images/logo.png">
   
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/caracore-core-typography.css">
-  <link rel="stylesheet" href="/assets/css/caracore-institutional-components.css">
+  <link rel="stylesheet" href="/assets/css/caracore-core-typography.css?v=20261115">
+  <link rel="stylesheet" href="/assets/css/caracore-institutional-components.css?v=20261115">
   
   <!-- Google tag (gtag.js) -->
   <script src="assets/js/analytics-config.js"></script>
   <script src="assets/js/analytics-loader.js"></script>
 </head>
-<body>
+<body class="cc-site cc-dark-hero">
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">Cara Core Informática</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menu de navegação" title="Menu de navegação">
@@ -108,520 +108,454 @@
   </div>
 </nav>
 
-<!-- Header -->
-<header id="portfolio-header" class="bg-light text-dark py-5 mt-5">
+<!-- Header / Hero -->
+<header id="portfolio-header" class="pf-hero">
   <div class="container">
-    <div class="row align-items-center">
-      <div class="col-md-12 text-center">
-        <h1 class="display-4 mb-3">
-          <i class="bi bi-folder-fill text-primary"></i> Portfólio de produtos e engenharia
-        </h1>
-        <p class="lead mb-3">
-          PDV, CSO e Hub são os produtos principais. Os demais projetos complementam o ecossistema e ficam disponíveis para consulta.
-        </p>
-        <p class="text-muted mb-4 small">
-          Status conferido em 27/10/2026 · releases e limites são apresentados conforme cada canal.
-        </p>
-
-        <nav class="portfolio-toc" aria-label="Índice do portfólio">
-          <div class="portfolio-toc-title"><i class="bi bi-list-ul"></i> Produtos principais</div>
-          <div class="portfolio-toc-links portfolio-toc-core">
-            <a href="#caracore-pdv" class="text-decoration-none"><span class="badge nav-badge-pdv fs-6 px-3 py-2"><i class="bi bi-cash"></i> PDV</span></a>
-            <a href="#caracore-cso" class="text-decoration-none"><span class="badge bg-info fs-6 px-3 py-2"><i class="bi bi-truck"></i> CSO</span></a>
-            <a href="#caracore-hub" class="text-decoration-none"><span class="badge nav-badge-hub fs-6 px-3 py-2"><i class="bi bi-cart-fill"></i> Hub</span></a>
-          </div>
-          <details class="portfolio-toc-more">
-            <summary>Outros projetos do ecossistema</summary>
-            <div class="portfolio-toc-links">
-              <a href="#pdv-coexistencia" class="text-decoration-none"><span class="badge nav-badge-pdv-rust">Duas linhas PDV</span></a>
-              <a href="#caracore-pdv-rust" class="text-decoration-none"><span class="badge nav-badge-pdv-rust">PDV Rust</span></a>
-              <a href="#caracore-ink-agenda" class="text-decoration-none"><span class="badge nav-badge-ink">Ink Agenda</span></a>
-              <a href="#reino-oidc" class="text-decoration-none"><span class="badge nav-badge-reino">Reino OIDC</span></a>
-              <a href="#circuito-python" class="text-decoration-none"><span class="badge nav-badge-python">Circuito Ferradura</span></a>
-              <a href="#rebeldia-mecatronica" class="text-decoration-none" title="A Rebeldia da Mecatrônica — Cara Core Informática"><span class="badge nav-badge-python">Livro · Rebeldia</span></a>
-              <a href="#caracore-helianto" class="text-decoration-none"><span class="badge nav-badge-helianto">Helianto</span></a>
-              <a href="#area-51" class="text-decoration-none"><span class="badge nav-badge-area51">Área 51</span></a>
-              <a href="#caracore-seed" class="text-decoration-none"><span class="badge nav-badge-seed">Seed</span></a>
-              <a href="#caracore-mkt" class="text-decoration-none"><span class="badge bg-success">MKT / Sala</span></a>
-              <a href="#minerador-ete" class="text-decoration-none"><span class="badge nav-badge-ete">Minerador</span></a>
-              <a href="#bioreator40" class="text-decoration-none"><span class="badge nav-badge-ete">BioReator</span></a>
-            </div>
-          </details>
-          <div class="portfolio-toc-links portfolio-toc-reference">
-            <a href="#catalogo">Catálogo canônico</a>
-            <a href="#decisoes-engenharia">Decisões de engenharia</a>
-            <a href="#portfolio-releases">Releases</a>
-            <a href="#sobre-caracore">Sobre a empresa</a>
-          </div>
-        </nav>
-      </div>
+    <p class="pf-hero-eyebrow">Cara Core Informática · Portfólio</p>
+    <h1 class="pf-hero-title">Software resiliente para operações que não podem parar.</h1>
+    <p class="pf-hero-lead">Três produtos para vender, operar e conectar negócios mesmo em ambientes com conectividade limitada.</p>
+    <div class="pf-hero-actions">
+      <a href="#produtos-principais" class="pf-btn pf-btn--primary pf-btn--lg">Conheça os produtos</a>
+      <a href="#engenharia" class="pf-btn pf-btn--ghost">Ver engenharia e releases</a>
     </div>
+    <nav class="pf-hero-nav" aria-label="Atalhos do portfólio">
+      <a href="#produtos-principais">Produtos principais</a>
+      <a href="#diferenciais">Diferenciais</a>
+      <a href="#ecossistema-projetos">Ecossistema</a>
+      <a href="#engenharia">Engenharia e releases</a>
+    </nav>
+    <p class="pf-hero-note">PDV e CSO em operação · Hub em pré-release · status conferido em 01/11/2026</p>
   </div>
 </header>
-
-<!-- Catálogo canônico do ecossistema -->
-<section id="catalogo" class="py-4 bg-light">
+<!-- Seção 1 — Produtos principais -->
+<section id="produtos-principais" class="pf-section">
   <div class="container">
-    <h2 class="h3 mb-2"><i class="bi bi-table"></i> Catálogo canônico do ecossistema</h2>
-    <p class="text-muted mb-3">Nome público, categoria, estágio de maturidade, edição gratuita e preço de cada produto em um só lugar. A loja de cada produto continua sendo a fonte comercial.</p>
-    <div data-cc-catalog-legend></div>
-    <p class="cc-cat-count mb-3" data-cc-catalog-count></p>
-    <div data-cc-catalog></div>
-    <details class="portfolio-secondary mt-3">
-      <summary><strong>Regras de nomenclatura e desambiguação</strong></summary>
-      <div class="mt-2" data-cc-catalog-notes></div>
+    <div class="pf-section-head">
+      <p class="pf-eyebrow">Produtos principais</p>
+      <h2 class="pf-section-title">Três sistemas, três operações críticas.</h2>
+      <p class="pf-section-lead">Vender, mover e receber: cada produto resolve uma ponta da operação, com os dados no ambiente do cliente.</p>
+    </div>
+
+    <article id="caracore-pdv" class="pf-core-card pf-core-card--pdv">
+      <header class="pf-core-head">
+        <div class="pf-core-head-top">
+          <span class="pf-core-index">PRODUTO 01</span>
+          <span class="pf-core-status">Em operação · Free 3.2.12</span>
+        </div>
+        <h3 class="pf-core-name"><i class="bi bi-cash" aria-hidden="true"></i> PDV</h3>
+        <p class="pf-core-sub">Sistema de ponto de venda offline-first.</p>
+        <p class="pf-core-audience"><strong>Para quem:</strong> lojas de bairro, comércio de balcão e operações de caixa que não podem parar de vender quando a internet falha.</p>
+      </header>
+      <div class="pf-core-body">
+        <div class="pf-core-block">
+          <h4 class="pf-core-label">O que resolve</h4>
+          <p>Cadastro, venda, recebimento e fechamento em um fluxo único sobre o computador da loja. O caixa continua vendendo com a rede fora, e o turno fecha com número conferido — não com anotação solta.</p>
+        </div>
+        <div class="pf-core-cols">
+          <div class="pf-core-block">
+            <h4 class="pf-core-label">Benefícios</h4>
+            <ul class="pf-core-list">
+              <li>Vende e fecha o turno mesmo com internet instável</li>
+              <li>Relatório X/Z e recibo conferidos, sem improviso no fim do dia</li>
+              <li>Dados na loja, com backup sob o comando do lojista</li>
+            </ul>
+          </div>
+          <div class="pf-core-block">
+            <h4 class="pf-core-label">Principais recursos</h4>
+            <ul class="pf-core-list">
+              <li>Cadastro de produtos, busca e finalização de venda</li>
+              <li>Dinheiro, débito, crédito e outros (sem PIX integrado)</li>
+              <li>Recibo digital por link e PDF, sem valor fiscal</li>
+              <li>Windows, Linux e macOS</li>
+            </ul>
+          </div>
+        </div>
+        <details class="pf-core-more">
+          <summary>Escopo e limites do plano Free</summary>
+          <ul class="pf-core-list">
+            <li>Até 100 vendas finalizadas por mês civil, 100 produtos e 1 operador</li>
+            <li>&ldquo;Outros&rdquo; meios de pagamento não são PIX integrado</li>
+            <li>Sem emissão de NF-e/NFC-e; o recibo não tem valor fiscal</li>
+            <li>Licenciamento: ativo proprietário — implantação, migração e suporte para continuidade operacional</li>
+          </ul>
+        </details>
+        <p class="pf-core-footnote">A versão <strong>3.2.12-free</strong> é a anterior e continua a indicada para operar, em manutenção de transição até 08/11/2026. A v4 está em pré-lançamento e só é promovida após gates e aceites formais.</p>
+        <div class="pf-core-actions">
+          <a class="pf-btn pf-btn--primary" href="https://pdv.caracore.com.br/" target="_blank" rel="noopener">Conhecer o PDV</a>
+          <a class="pf-btn" href="https://pdv.caracore.com.br/download.html">Baixar Free</a>
+          <a class="pf-btn pf-btn--quiet" href="#eng-pdv">Homologação e versões</a>
+        </div>
+      </div>
+    </article>
+
+    <article id="caracore-cso" class="pf-core-card pf-core-card--cso">
+      <header class="pf-core-head">
+        <div class="pf-core-head-top">
+          <span class="pf-core-index">PRODUTO 02</span>
+          <span class="pf-core-status">Frotas em operação</span>
+        </div>
+        <h3 class="pf-core-name"><i class="bi bi-truck" aria-hidden="true"></i> CSO</h3>
+        <p class="pf-core-sub">Gestão operacional para logística e transporte.</p>
+        <p class="pf-core-audience"><strong>Para quem:</strong> transportadoras, distribuidoras e empresas com frota própria que hoje controlam veículo, documento e custo em planilhas separadas.</p>
+      </header>
+      <div class="pf-core-body">
+        <div class="pf-core-block">
+          <h4 class="pf-core-label">O que resolve</h4>
+          <p>Concentra quilometragem, combustível, manutenção, pneus, documentos e multas em um painel só — e mostra o custo por quilômetro que a planilha esconde. As entregas e o deslocamento entram na mesma base.</p>
+        </div>
+        <div class="pf-core-cols">
+          <div class="pf-core-block">
+            <h4 class="pf-core-label">Benefícios</h4>
+            <ul class="pf-core-list">
+              <li>Custo real por veículo, sem montar planilha no fim do mês</li>
+              <li>Prazos de documento, exame e manutenção sob controle</li>
+              <li>Começa grátis com até 3 veículos e cresce com a operação</li>
+            </ul>
+          </div>
+          <div class="pf-core-block">
+            <h4 class="pf-core-label">Principais recursos</h4>
+            <ul class="pf-core-list">
+              <li>Quilometragem, km/L e custo por km</li>
+              <li>Pneus, manutenção, exame toxicológico e infrações</li>
+              <li>Equipe com perfis de acesso e tratamento de dados (LGPD)</li>
+              <li>No navegador: não precisa instalar nada para a Frotas</li>
+            </ul>
+          </div>
+        </div>
+        <details class="pf-core-more">
+          <summary>O que está publicado e o que é roadmap</summary>
+          <ul class="pf-core-list">
+            <li><strong>Frotas (em produção):</strong> veículos, combustível, manutenção, km/L, documentos, pneus, exame, infrações, custo por km, equipe, planos e LGPD</li>
+            <li><strong>Transportes (roadmap):</strong> clientes, entregas e equipe no computador da empresa</li>
+            <li><strong>Virtual Tracker</strong> é capacidade integrada, não um terceiro produto: celular do motorista, viagem autorizada e conexão necessária; sem fila offline</li>
+            <li>A Frotas encaminha conteúdo cifrado sem ler ou persistir trajetos; mapa, histórico e chave privada ficam no desktop</li>
+            <li>Planos FREE_3 a CORPORATE e Pix avulso referem-se à Frotas atual; não incluem automaticamente o futuro VT</li>
+            <li>Gestão web somente online; a PWA de gestão offline foi cancelada</li>
+          </ul>
+        </details>
+        <p class="pf-core-footnote">Frotas em produção desde 06/10/2026, sem GPS, com freeze M1 em 08/11/2026. Transportes + Virtual Tracker têm alvo conjunto em 08/11/2028, sujeito a prova móvel e homologação — não é garantia de lançamento.</p>
+        <div class="pf-core-actions">
+          <a class="pf-btn pf-btn--primary" href="https://cso.caracore.com.br/" target="_blank" rel="noopener">Acessar o CSO</a>
+          <a class="pf-btn" href="https://cso-transp.caracore.com.br/" target="_blank" rel="noopener">Conhecer Transportes + VT</a>
+        </div>
+      </div>
+    </article>
+
+    <article id="caracore-hub" class="pf-core-card pf-core-card--hub">
+      <header class="pf-core-head">
+        <div class="pf-core-head-top">
+          <span class="pf-core-index">PRODUTO 03</span>
+          <span class="pf-core-status">Pré-release</span>
+        </div>
+        <h3 class="pf-core-name"><i class="bi bi-box-seam" aria-hidden="true"></i> Hub</h3>
+        <p class="pf-core-sub">Central de integração e coordenação operacional.</p>
+        <p class="pf-core-audience"><strong>Para quem:</strong> pontos de retirada (PUDOs) e lojas que recebem encomendas de Mercado Livre, Shopee e Temu e entregam no balcão.</p>
+      </header>
+      <div class="pf-core-body">
+        <div class="pf-core-block">
+          <h4 class="pf-core-label">O que resolve</h4>
+          <p>Junta recebimento, conferência, guarda por posição e retirada em um fluxo único — no lugar de caderno, planilha e grupo de mensagens. A visão é operacional: o que chegou, onde está guardado e o que já foi entregue.</p>
+        </div>
+        <div class="pf-core-cols">
+          <div class="pf-core-block">
+            <h4 class="pf-core-label">Benefícios</h4>
+            <ul class="pf-core-list">
+              <li>Menos encomenda perdida e menos tempo procurando volume</li>
+              <li>Retirada conferida por volume, com registro de quem entregou</li>
+              <li>Base pronta para crescer em volume sem perder rastro</li>
+            </ul>
+          </div>
+          <div class="pf-core-block">
+            <h4 class="pf-core-label">Principais recursos</h4>
+            <ul class="pf-core-list">
+              <li>Registro da encomenda na chegada, com status</li>
+              <li>Posição de guarda e alerta de encomenda parada</li>
+              <li>Conferência na retirada, volume por volume</li>
+              <li>SQLite no computador do ponto, sem depender de nuvem</li>
+            </ul>
+          </div>
+        </div>
+        <details class="pf-core-more">
+          <summary>Licenciamento e escopo desta pré-release</summary>
+          <ul class="pf-core-list">
+            <li>O produto é <strong>Free</strong>: não há licença mensal pelo Hub</li>
+            <li>Suporte opcional contratado à parte: R$ 79,90/mês a partir do GA do instalador Windows (06/04/2027), com primeira resposta em até 24 horas, incluindo as integrações Mercado Livre, Shopee e Temu</li>
+            <li>A pré-release atual é de avaliação e não é cobrada</li>
+          </ul>
+        </details>
+        <p class="pf-core-footnote">Pré-release Windows <strong>v2.1.0-rc1.8</strong> em ZIP portátil: o aceite de QA desta build está pendente e o GA do instalador está previsto para 06/04/2027. Mac e Linux ficam fora desta tag.</p>
+        <div class="pf-core-actions">
+          <a class="pf-btn pf-btn--primary" href="https://hub.caracore.com.br/" target="_blank" rel="noopener">Conhecer o Hub</a>
+          <a class="pf-btn" href="https://hub.caracore.com.br/download.html">Baixar pré-release</a>
+          <a class="pf-btn pf-btn--quiet" href="#eng-hub">Homologação</a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+<!-- Seção 2 — Diferenciais -->
+<section id="diferenciais" class="pf-section pf-section--alt">
+  <div class="container">
+    <div class="pf-section-head">
+      <p class="pf-eyebrow">Diferenciais</p>
+      <h2 class="pf-section-title">O que os três produtos têm em comum.</h2>
+      <p class="pf-section-lead">É a filosofia que a Cara Core chama de <strong>Bunker Digital</strong>: a operação crítica fica no ambiente do cliente e a nuvem entra quando agrega — nunca como ponto único de falha.</p>
+    </div>
+    <div class="pf-diff-grid" id="filosofia-bunker">
+      <div class="pf-diff-card">
+        <i class="bi bi-hdd-network" aria-hidden="true"></i>
+        <h3>Operação local</h3>
+        <p>O sistema roda no computador do cliente. O balcão continua atendendo mesmo quando a rede cai.</p>
+      </div>
+      <div class="pf-diff-card">
+        <i class="bi bi-wifi-off" aria-hidden="true"></i>
+        <h3>Offline-first</h3>
+        <p>Registrar e vender vem primeiro; a sincronização acontece quando a conexão volta — não o contrário.</p>
+      </div>
+      <div class="pf-diff-card">
+        <i class="bi bi-shield-check" aria-hidden="true"></i>
+        <h3>Resiliência operacional</h3>
+        <p>Nem link de internet nem provedor de nuvem é ponto único de falha do negócio.</p>
+      </div>
+      <div class="pf-diff-card">
+        <i class="bi bi-database" aria-hidden="true"></i>
+        <h3>Dados sob controle do cliente</h3>
+        <p>SQLite e arquivos no ambiente do cliente, com backup sob o comando de quem opera.</p>
+      </div>
+      <div class="pf-diff-card">
+        <i class="bi bi-diagram-3" aria-hidden="true"></i>
+        <h3>Arquitetura simples</h3>
+        <p>Menos peças móveis para instalar, atualizar e explicar — do balcão à retaguarda.</p>
+      </div>
+      <div class="pf-diff-card">
+        <i class="bi bi-file-earmark-check" aria-hidden="true"></i>
+        <h3>Transparência técnica</h3>
+        <p>Versão, estágio e limites declarados em cada loja. O que é roadmap aparece como roadmap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Seção 3 — Ecossistema -->
+<section id="ecossistema-projetos" class="pf-section">
+  <div class="container">
+    <div class="pf-section-head">
+      <p class="pf-eyebrow">Ecossistema</p>
+      <h2 class="pf-section-title">Projetos que completam a operação.</h2>
+      <p class="pf-section-lead">Pesquisa, formação e ferramentas internas. Nenhum deles tem a prioridade comercial do PDV, do CSO ou do Hub — e todos declaram o próprio estágio.</p>
+    </div>
+    <details class="pf-eco-group" id="eco-pesquisa">
+      <summary>
+        <span class="pf-eco-group-title"><i class="bi bi-eyedropper" aria-hidden="true"></i> Pesquisa e Laboratório</span>
+        <span class="pf-eco-group-count">2 projetos</span>
+      </summary>
+      <div class="pf-eco-list">
+<details class="eco-item" id="minerador-ete">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-droplet-half" aria-hidden="true"></i> Minerador ETE</span>
+    <span class="eco-item-status">Canal público v1.2.3</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Simulação de processos para estudo de viabilidade e refino.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
+  <div class="project-card">
+    <div class="project-header ete">
+      <h2 class="mb-3">
+        <i class="bi bi-droplet-half"></i> chmulatoETE Minerador 4.0
+      </h2>
+      <p class="lead mb-3">Ferramenta de decisão para simulação e validação de processos. Organiza raciocínio técnico, apoia estudos de viabilidade e reduz incerteza antes do investimento.</p>
+      <div>
+        <span class="tech-badge">Python</span>
+        <span class="tech-badge">Streamlit</span>
+        <span class="tech-badge">Hidrometalurgia</span>
+        <span class="tech-badge">ETE</span>
+        <span class="tech-badge">Terras Raras</span>
+        <span class="tech-badge">PyTest</span>
+        <span class="tech-badge">Flask</span>
+        <span class="tech-badge">Linux</span>
+        <span class="tech-badge">Windows</span>
+        <span class="tech-badge">macOS</span>
+      </div>
+    </div>
+
+    <div class="card-body p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="project-content-block block-executive">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+            </h3>
+            <p class="mb-2">
+              O <strong>Minerador 4.0</strong> ajuda a avaliar cenários de refino e viabilidade — leitura executiva antes de investimento ou teste de campo.
+            </p>
+            <ul class="feature-list mb-0">
+              <li>Conecta estudo técnico e leitura econômica</li>
+              <li>Compara cenários com menos improviso</li>
+              <li>Free didático; Premium para operação avançada</li>
+            </ul>
+          </div>
+          <div class="alert alert-info mt-3 mb-0" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — exploração didática gratuita e upgrade premium.</div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="project-content-block block-leigos">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-book-fill"></i> Para Leigos
+            </h3>
+            <p class="mb-2">Simula no computador a separação e refino de minerais valiosos (terras raras) — como uma estação de tratamento de efluentes, com tanques, decantação e controle de pH.</p>
+            <ul class="feature-list mb-0">
+              <li>Instalador Linux, Windows ou macOS — explore sem risco</li>
+              <li>Entenda pureza, óxido por tonelada e margem</li>
+              <li>Manual PDF e laboratório virtual Campo Largo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-4">
+        <a href="https://ete.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Loja e vitrine (releases)
+        </a>
+        <a href="https://ete.caracore.com.br/download.html" class="btn-project me-2">
+          <i class="bi bi-download"></i> Download (site)
+        </a>
+        <a href="https://github.com/chmulato/caracore-ete-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-github"></i> Releases (Linux/Windows/macOS)
+        </a>
+        <div class="mt-3">
+          <small class="text-muted">
+            <i class="bi bi-lock-fill"></i> Oficina privada · Loja ete.caracore.com.br · v1.2.3 · Upgrade Ouro 4.0
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-start mt-4 px-4 pb-3">
+      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-up"></i> Voltar ao Topo
+      </a>
+    </div>
+  </div>
+  </div>
+  </div>
+</details>
+<div id="caracore-ru"></div>
+    <details class="eco-item" id="bioreator40">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-moisture" aria-hidden="true"></i> BioReator 4.0</span>
+    <span class="eco-item-status">Community 1.1.1</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Simulador de bioinsumos e fermentação para o operador.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
+  <div class="project-card">
+    <div class="project-header ete">
+      <h2 class="mb-3">
+        <i class="bi bi-moisture"></i> BioReator 4.0 — Simulador de Bioinsumos
+      </h2>
+      <p class="lead mb-3">Um produto: estação desktop para bioinsumos e fermentação. A loja é <strong>ru.caracore.com.br</strong>. A <strong>Community 1.1.1</strong> está disponível para Windows. A <strong>Premium</strong> está prevista para 18 de junho de 2027, sem preço e sem PIX.</p>
+      <div>
+        <span class="tech-badge">1.1.1</span>
+        <span class="tech-badge">Community</span>
+        <span class="tech-badge">Premium · 18/06/2027</span>
+        <span class="tech-badge">Java 25</span>
+        <span class="tech-badge">JavaFX</span>
+        <span class="tech-badge">SQLite</span>
+        <span class="tech-badge">Windows</span>
+      </div>
+    </div>
+    <div class="card-body p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="h4 mb-3">
+            <i class="bi bi-briefcase-fill text-primary"></i> Visão executiva
+          </h3>
+          <p>
+            O <strong>BioReator 4.0</strong> deixa o operador ensaiar uma batelada no próprio computador: tanque, aeração, oxigênio e o rendimento da biomassa. A edição <strong>Community</strong> trabalha com <em>Bradyrhizobium japonicum</em> em batelada, grava o histórico e exporta CSV.
+          </p>
+          <ul class="feature-list">
+            <li>Roda no computador do operador, com histórico local e CSV</li>
+            <li>Tanques de 50 L a 10.000 L, fração de trabalho de 70% a 80%</li>
+            <li>Crescimento por Monod com fatores configurados de oxigênio, temperatura e pH, além de fase lag e decaimento celular</li>
+            <li>Encerramento automático no esgotamento do substrato; histórico registra o estado final e o motivo</li>
+            <li>A Premium reúne o catálogo, a batelada alimentada, os custos informados pelo operador e o PDF</li>
+          </ul>
+          <div class="alert alert-info mt-3" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Oferta:</strong> a Premium chega em 18/06/2027, sem preço e sem PIX. O perfil de <em>Bacillus thuringiensis</em> descreve só o crescimento.
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h4 mb-3">
+            <i class="bi bi-book-fill text-info"></i> O que já dá para ler
+          </h3>
+          <p>
+            A Community 1.1.1 distingue biomassa viável e total, calcula P/V pelo volume líquido e registra em <code>end_reason</code> o primeiro critério de término atingido. O kLa padrão da carga de referência é 131,0455 h⁻¹. O pacote Windows está publicado na release <code>bioreator-1.1.1</code>: instalador MSI e pasta ZIP, sem assinatura digital; o <code>BioReator40.exe</code> fica dentro do ZIP. Os valores são simulações e precisam de validação experimental antes do uso produtivo.
+          </p>
+          <ul class="feature-list">
+            <li>Community: um perfil, batelada, gráficos, histórico e CSV</li>
+            <li>Premium, em 18/06/2027: quatro perfis a mais, batelada alimentada, conta do lote e PDF</li>
+            <li>Os custos da Premium são os que o operador informa, não uma cotação</li>
+            <li>Sem preço, sem PIX e sem arquivo da Premium nesta data</li>
+          </ul>
+          <p class="text-muted small mb-0"><strong>Community 1.1.1.</strong> Loja em ru.caracore.com.br. MSI e ZIP na release bioreator-1.1.1.</p>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="https://ru.caracore.com.br/bioreator.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Ver o produto
+        </a>
+        <a href="https://ru.caracore.com.br/manual-bioreator.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-journal-text"></i> Manual do operador
+        </a>
+        <a href="https://ru.caracore.com.br/manual-tecnico.html#criterios-fim" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-list-check"></i> Critérios de término
+        </a>
+        <a href="https://ru.caracore.com.br/exemplo-bioreator.html#previa-1-1" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-graph-up"></i> Exemplo da batelada
+        </a>
+        <a href="https://ru.caracore.com.br/fundamentos-bioprocesso.html#previa-1-1" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-journal-code"></i> Fundamentos técnicos
+        </a>
+        <a href="https://ru.caracore.com.br/download.html#arquivos" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-download"></i> Baixar Community 1.1.1
+        </a>
+        <div class="mt-3">
+          <small class="text-muted">
+            <i class="bi bi-lock-fill"></i> Oficina caracore-ru |
+            <i class="bi bi-tools"></i> Community 1.1.1, release bioreator-1.1.1 |
+            <i class="bi bi-moisture text-success"></i> Community no pacote local
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="text-start mt-4 px-4 pb-3">
+      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-up"></i> Voltar ao Topo
+      </a>
+    </div>
+  </div>
+  </div>
+  </div>
+</details>
+      </div>
     </details>
-    <p class="small text-muted mb-0 mt-3">Planos de desenvolvimento de sites são serviço de engenharia, fora deste catálogo: consulte <a href="sites.html">sites.html</a>.</p>
-  </div>
-</section>
-
-<!-- Decisões de engenharia — estudos de caso -->
-<section id="decisoes-engenharia" class="py-4">
-  <details class="portfolio-secondary portfolio-context">
-    <summary><strong>Critérios de engenharia</strong> · decisões, resiliência offline e revisão humana</summary>
-  <div class="container">
-    <div class="portfolio-cross-block portfolio-cases">
-      <h2><i class="bi bi-signpost-split text-success"></i> Decisões de engenharia</h2>
-      <p class="mb-4 text-muted">Exemplos de problemas, escolhas técnicas e resultados em produtos do ecossistema Cara Core.</p>
-      <div class="portfolio-case-grid">
-        <article class="portfolio-case-card">
-          <h3><i class="bi bi-diagram-2 text-primary"></i> Coexistência PDV — sem lock-in de stack</h3>
-          <dl>
-            <dt>Problema</dt>
-            <dd>Loja precisa de PDV local confiável, mas contextos divergem: aplicação Java web local multiplataforma vs piloto Rust desktop com transparência total ao lojista.</dd>
-            <dt>Decisão</dt>
-            <dd>Duas linhas do mesmo CaraCore PDV convivem — canal Java maduro <em>e</em> piloto Rust + Tauri. Nenhuma substitui a outra; escolha por cenário, não por moda.</dd>
-            <dt>Resultado</dt>
-            <dd>Cliente escolhe por operação (Linux/macOS/fiscal consolidado vs piloto Windows/MSI/transparência), sem reescrita forçada nem promessa de “nova geração”.</dd>
-          </dl>
-          <a href="#pdv-coexistencia" class="case-link">Ver comparação completa →</a>
-        </article>
-        <article class="portfolio-case-card">
-          <h3><i class="bi bi-wifi-off text-success"></i> Bunker offline-first — operação que não para</h3>
-          <dl>
-            <dt>Problema</dt>
-            <dd>Caixa, agenda e dados sensíveis não podem ter a operação crítica como <strong>single point of failure na rede</strong> nem depender <strong>exclusivamente de cloud</strong> para funcionar.</dd>
-            <dt>Decisão</dt>
-            <dd>Arquitetura híbrida com camada local (SQLite, edge, dados no ambiente do cliente); sincronização e serviços cloud só quando o trade-off pede — resiliência e FinOps, não ideologia anti-nuvem.</dd>
-            <dt>Resultado</dt>
-            <dd>Venda e operação continuam sem internet; soberania local; cálculo estimado de IBS/CBS no Premium (em validação) — sem emissão de NF-e/NFC-e no plano Free.</dd>
-          </dl>
-          <a href="#filosofia-bunker" class="case-link">Ver filosofia Bunker →</a>
-        </article>
-        <article class="portfolio-case-card">
-          <h3><i class="bi bi-search text-info"></i> Critério humano sobre código assistido por IA</h3>
-          <dl>
-            <dt>Problema</dt>
-            <dd>IA acelera escrita de código, mas não substitui auditoria, governança de login nem consistência de processo em ambientes regulados.</dd>
-            <dt>Decisão</dt>
-            <dd>Formação e ferramentas para <strong>leitura técnica</strong> e validação com método (Circuito Ferradura, Minerador ETE, trilha Reino OIDC, livro A Rebeldia da Mecatrônica) — cognição local, rastreabilidade.</dd>
-            <dt>Resultado</dt>
-            <dd>Repertório para validar entregas assistidas por IA, auditar identidade (OIDC) e manter disciplina de engenharia — decisão de alto nível, não lista de linguagens.</dd>
-          </dl>
-          <a href="#circuito-python" class="case-link">Ver Circuito Ferradura →</a>
-        </article>
-      </div>
-      <p class="mb-0 mt-4 small text-muted"><i class="bi bi-briefcase"></i> Contratar engenharia B2B: <a href="index.html#engenharia-b2b">alocação técnica dedicada ou consultoria por projeto</a> · <a href="index.html#contato">falar sobre alocação</a></p>
-    </div>
-  </div>
-  </details>
-</section>
-
-<!-- Filosofia Bunker — o que todos os produtos têm em comum -->
-<section id="filosofia-bunker" class="py-4">
-  <details class="portfolio-secondary portfolio-context">
-    <summary><strong>Princípios Bunker</strong> · soberania local e operação resiliente</summary>
-  <div class="container">
-    <div class="portfolio-cross-block portfolio-bunker">
-      <h2><i class="bi bi-shield-fill text-primary"></i> Filosofia Bunker — o fio condutor</h2>
-      <p class="mb-3 text-muted">Antes de entrar em cada produto, três princípios que se repetem em todo o ecossistema. Cada ativo detalha o que é específico dele.</p>
-      <div class="portfolio-bunker-grid">
-        <div class="portfolio-bunker-item">
-          <strong><i class="bi bi-hdd-network"></i> Soberania local</strong>
-          Dados e operação crítica sob controle da empresa — cloud quando agrega valor, sem tornar a rede ou um único provedor o ponto único de falha.
-        </div>
-        <div class="portfolio-bunker-item">
-          <strong><i class="bi bi-wifi-off"></i> Operação offline</strong>
-          Caixa, agenda e simulações continuam quando a internet falha; sincronização quando você decidir.
-        </div>
-        <div class="portfolio-bunker-item">
-          <strong><i class="bi bi-database"></i> Base local previsível</strong>
-          SQLite e arquivos locais na maioria dos desktops — instalação simples, backup sob seu comando.
-        </div>
-        <div class="portfolio-bunker-item">
-          <strong><i class="bi bi-shop"></i> Loja própria por produto</strong>
-          Vitrine, download e documentação em subdomínio dedicado — portfólio aqui é apresentação institucional.
-        </div>
-      </div>
-    </div>
-  </div>
-  </details>
-</section>
-
-<!-- Como as duas linhas PDV convivem -->
-<section id="pdv-coexistencia" class="py-4 bg-light">
-  <details class="portfolio-secondary portfolio-context">
-    <summary><strong>Como as linhas PDV convivem</strong> · Java estável e Rust em piloto</summary>
-  <div class="container">
-    <div class="portfolio-cross-block portfolio-pdv-coexistence">
-      <h2><i class="bi bi-diagram-2"></i> Como as duas linhas PDV convivem</h2>
-      <p class="lead">Duas linhas de PDV da Cara Core. Cada uma tem a sua loja. Nenhuma substitui a outra.</p>
-
-      <div class="pdv-compare-grid">
-        <div class="pdv-compare-card java">
-          <span class="release-tag">Versão anterior · v3.2.12-free</span>
-          <h3><i class="bi bi-cash"></i> Loja em produção</h3>
-          <p class="small mb-2">Windows, Linux ou macOS. Continuidade, planos Free/Premium e demonstração presencial.</p>
-          <ul class="feature-list mb-3">
-            <li>Operação regular no balcão</li>
-            <li>Linux ou macOS</li>
-            <li>Já usa o PDV desta loja</li>
-          </ul>
-          <a href="https://pdv.caracore.com.br/" class="btn-project" target="_blank" rel="noopener">Ir à loja do PDV Java</a>
-        </div>
-        <div class="pdv-compare-card rust">
-          <span class="release-tag">Piloto Windows · v0.1.4</span>
-          <h3><i class="bi bi-lightning-charge"></i> Teste curto no Windows</h3>
-          <p class="small mb-2">Piloto no PC da loja, até 100 vendas neste banco. Offline, PIX no caixa, pasta própria.</p>
-          <ul class="feature-list mb-3">
-            <li>Windows e avaliação rápida</li>
-            <li>100 vendas na vida do piloto</li>
-            <li>Local hoje, rede depois — mesmo produto</li>
-          </ul>
-          <a href="https://pdv-rust.caracore.com.br/" class="btn-project" target="_blank" rel="noopener">Ir à loja do piloto Windows</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  </details>
-</section>
-
-<div class="portfolio-category-divider"><span>Varejo e caixa</span></div>
-
-<!-- Projeto 1: CaraCore PDV (app web local Java · Quarkus) — linha madura -->
-<section id="caracore-pdv" class="py-5">
-  <div class="container">
-  <div class="project-card">
-    <div class="project-header pdv">
-      <h2 class="mb-3">
-        <i class="bi bi-cash"></i> CaraCore PDV — versão anterior / Free
-      </h2>
-      <p class="lead mb-2">Java 25 · Quarkus · SQLite · caixa no navegador em localhost:8080</p>
-      <p class="lead mb-3">PDV soberano para pequenos e médios negócios. Mantém a operação de caixa em pé mesmo quando a internet falha. O Free funciona como aplicação web local no computador da loja. O PDV v4 está em pré-lançamento; esta é a versão anterior.</p>
-      <div class="alert alert-secondary mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-megaphone-fill"></i> <strong>Versão anterior</strong> — Windows · Linux · macOS · release <strong>v3.2.12-free</strong>, em manutenção de transição até 08/11/2026 e ainda a indicada para operar.</div>
-      <div class="alert alert-warning mb-3 py-2 px-3" role="note">
-        <strong>Última da linha 3.2.x: 3.2.12-free (15/10/2026).</strong> Publicação autorizada explicitamente em 15/10/2026, sem homologação operacional completa. Corrige HTTP 405 e distingue estorno de cancelamento. Passaram 19/19 testes focados Java 25/H2 e a integridade dos ZIPs/hashes remotos. Fonte: <code>72ace488aed4ee91001c60cf40a3934ddfe8faf1</code>. <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.12-free" class="alert-link">Consulte as notas e os downloads</a>.
-      </div>
-      <details class="mb-3">
-        <summary>Gates pendentes desta build</summary>
-        <ul class="mt-2">
-          <li>Suíte completa e validação das migrações SQLite/V047 no pacote.</li>
-          <li>Smoke portátil com SQLite/health/navegador, execução Linux/macOS e homologação operacional completa, incluindo Edge/leitor físico.</li>
-          <li>Os aceites da 3.2.8 não certificam a 3.2.12. Antes de atualizar, encerre o PDV, faça backup e preserve os dados existentes.</li>
-        </ul>
-      </details>
-      <details class="mb-3">
-        <summary>Integridade dos ZIPs — 3.2.12-free</summary>
-        <ul class="mt-2">
-          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-windows-x64.zip">Windows x64</a> · SHA-256: <code class="text-break">6d7a50b0acf2a05620a090eebdd48f049a1dd5599ccb6c40c419c38145f7c0e2</code></li>
-          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-linux-x64.zip">Linux x64</a> · SHA-256: <code class="text-break">795a396318da61d1bd45dcfe816879d2184706f1c7849f1cd2ad98baa99fd9c1</code></li>
-          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-macos-x64.zip">macOS x64 (Intel)</a> · SHA-256: <code class="text-break">795a396318da61d1bd45dcfe816879d2184706f1c7849f1cd2ad98baa99fd9c1</code></li>
-        </ul>
-        <p><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/SHA256SUMS.txt">SHA256SUMS.txt</a> · <a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/RELEASE_MANIFEST.json">RELEASE_MANIFEST.json</a></p>
-      </details>
-      <div class="alert alert-info mb-3 py-2 px-3" role="note">
-        <i class="bi bi-calendar-event"></i> <strong>PDV v4 em pré-lançamento:</strong> <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-candidato-20261031" class="alert-link">v4.0.0-candidato-20261031</a> (build de 31/10/2026), em ZIP portátil Windows x64 unsigned, sem MSI. A RC6 e a RC5 ficam no histórico. Não é GA nem substitui a versão anterior. A v4 avança pelo ciclo de RCs e só será promovida após gates e aceites formais, sem data automática de GA em 08/11. A versão anterior continua <strong>v3.2.12-free</strong>, última da linha 3.2.x, em manutenção de transição até 08/11/2026. O plano Free não inclui PIX integrado nem emissão de NF-e/NFC-e. <a href="https://pdv.caracore.com.br/roadmap-2026.html" class="alert-link">Ver roadmap</a>.
-      </div>
-      <div>
-        <span class="tech-badge">Java 25</span>
-        <span class="tech-badge">Quarkus</span>
-        <span class="tech-badge">SQLite</span>
-        <span class="tech-badge">Windows · Linux · macOS</span>
-        <span class="tech-badge">Bootstrap 5</span>
-        <span class="tech-badge">HTMX</span>
-        <span class="tech-badge">ApexCharts</span>
-        <span class="tech-badge">Docker</span>
-      </div>
-    </div>
-    
-    <div class="card-body p-4">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="project-content-block block-executive">
-            <h3 class="h4 mb-3">
-              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
-            </h3>
-            <p class="mb-2">
-              O <strong>CaraCore PDV — linha madura</strong> mantém caixa e rotina da loja com previsibilidade — vender, fechar e acompanhar o movimento sem improviso.
-            </p>
-            <p class="mb-2"><strong>Benefícios de negócio:</strong></p>
-            <ul class="feature-list mb-0">
-              <li>Vendas e fechamento mesmo com internet instável</li>
-              <li>Free: até 100 vendas finalizadas/mês civil, 100 produtos, 1 operador — caixa real sem custo</li>
-              <li>Caixa, recebimento e indicadores em fluxo único</li>
-              <li>Backup e continuidade com dados locais (%APPDATA%\caracore\)</li>
-            </ul>
-          </div>
-          <div class="alert alert-info mt-3 mb-0" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — implantação, migração e suporte para continuidade operacional.</div>
-        </div>
-        
-        <div class="col-md-6">
-          <div class="project-content-block block-leigos">
-            <h3 class="h4 mb-3">
-              <i class="bi bi-book-fill"></i> Para Leigos
-            </h3>
-            <p class="mb-2">O Free <strong>3.2.12</strong> (versão anterior) é uma aplicação web local: abra o navegador em <code>http://localhost:8080/login</code>; os dados ficam em SQLite no computador da loja.</p>
-            <div class="block-leigos-sub mb-0">
-              <h4>O que o Free entrega hoje</h4>
-              <ul class="feature-list mb-0">
-                <li>Cadastro de produtos, busca, abertura e finalização de vendas</li>
-                <li>Até 100 vendas finalizadas por mês civil, 100 produtos e 1 operador</li>
-                <li>Pagamentos em dinheiro, débito, crédito e outros — sem PIX integrado</li>
-                <li>Recibo digital por link e PDF, sem valor fiscal</li>
-                <li>Sem emissão de NF-e/NFC-e</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <div class="text-center mt-4">
-        <a href="https://pdv.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Loja e vitrine (releases)
-        </a>
-        <a href="https://pdv.caracore.com.br/download.html" class="btn-project me-2">
-          <i class="bi bi-download"></i> Download da loja
-        </a>
-        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-github"></i> Releases GitHub
-        </a>
-        <a href="https://pdv.caracore.com.br/tecnologia.html" class="btn-project me-2">
-          <i class="bi bi-code-slash"></i> Tecnologia
-        </a>
-        <a href="https://wiki.caracore.com.br/projeto-pdv.html" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-journal-code"></i> Wiki
-        </a>
-        <div class="mt-3">
-          <small class="text-muted">
-            <i class="bi bi-lock-fill"></i> Código-fonte privado | 
-            <i class="bi bi-file-earmark-text"></i> Apresentação pública (GitHub Pages) |
-            <i class="bi bi-handshake"></i> Alocação técnica dedicada e consultoria por projeto (B2B)
-          </small>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Botão Voltar ao Topo -->
-    <div class="text-start mt-4 px-4 pb-3">
-      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-up"></i> Voltar ao Topo
-      </a>
-    </div>
-  </div>
-  </div>
-</section>
-
-<!-- Projeto 1b: CaraCore PDV (Rust + Tauri) — iniciativa de stack, piloto Windows -->
-<section id="caracore-pdv-rust" class="py-5 bg-light">
-  <details class="portfolio-secondary">
-    <summary><strong>PDV Rust</strong> · piloto Windows v0.1.4; linha independente da Java</summary>
-  <div class="container">
-  <div class="project-card">
-    <div class="project-header pdv-rust">
-      <h2 class="mb-3">
-        <i class="bi bi-lightning-charge"></i> CaraCore PDV
-      </h2>
-      <p class="lead mb-2">PDV desktop · Rust · Tauri 2 · React · SQLite local</p>
-      <p class="lead mb-3">O <strong>CaraCore PDV</strong> é a linha desktop em <strong>Rust</strong> + <strong>Tauri 2</strong> + React, dados no PC da loja. Release <strong>v0.1.4</strong> (Windows) — convive com o CaraCore PDV Java, aplicação web local na versão anterior (v3.2.12-free), com a v4 em pré-lançamento. São linhas independentes.</p>
-      <div class="alert alert-warning mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-flag-fill"></i> <strong>Fase piloto.</strong> Baixe em <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.4" class="alert-link" target="_blank" rel="noopener">GitHub Releases</a> (NSIS, MSI pt-BR, ZIP). Limites honestos (free, PIX, fiscal) em <a href="https://pdv-rust.caracore.com.br/transparencia.html#edicao-gratuita" class="alert-link" target="_blank" rel="noopener">Transparência</a> · loja <strong>pdv-rust.caracore.com.br</strong>. Contato: <a href="mailto:suporte@caracore.com.br" class="alert-link">suporte@caracore.com.br</a>.</div>
-      <div>
-        <span class="tech-badge">Rust</span>
-        <span class="tech-badge">Tauri 2</span>
-        <span class="tech-badge">React</span>
-        <span class="tech-badge">SQLite</span>
-        <span class="tech-badge">piloto Windows · v0.1.4</span>
-        <span class="tech-badge">Instaladores pt-BR</span>
-        <span class="tech-badge">WebView2</span>
-      </div>
-    </div>
-
-    <div class="card-body p-4">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="project-content-block block-executive">
-            <h3 class="h4 mb-3">
-              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
-            </h3>
-            <p class="mb-2">
-              Stack <strong>Rust + Tauri 2</strong> no balcão: binário enxuto, instaladores pt-BR, gates de release e operação offline com SQLite — em coexistência com o canal Java.
-            </p>
-            <ul class="feature-list mb-0">
-              <li>Segurança de memória e concorrência (Rust)</li>
-              <li>Shell Tauri 2 + WebView2 — instalador leve</li>
-              <li>Release v0.1.4 — NSIS, MSI pt-BR, ZIP piloto; SHA256 publicado</li>
-              <li>Edição gratuita: teto de 100 vendas na vida deste banco (piloto)</li>
-              <li>PDV local e PDV na rede — evolução sem trocar de sistema</li>
-              <li>Licença CaraCore Seed opcional; Premium sob contrato</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="project-content-block block-leigos">
-            <h3 class="h4 mb-3">
-              <i class="bi bi-book-fill"></i> Para Leigos
-            </h3>
-            <p class="mb-2">Teste no seu PC: até <strong>100 vendas na vida deste banco</strong> na edição gratuita, PIX com QR no balcão e confirmação pelo operador — sem surpresa escondida.</p>
-            <p class="mb-0">Quem escolhe entre as linhas: <a href="#pdv-coexistencia">Como as duas linhas PDV convivem</a>. Limites do piloto: <a href="https://pdv-rust.caracore.com.br/transparencia.html#edicao-gratuita" target="_blank" rel="noopener">Transparência</a>.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center mt-4">
-        <a href="https://pdv-rust.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Loja oficial (pdv-rust.caracore.com.br)
-        </a>
-        <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.4" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-download"></i> Baixar v0.1.4 (GitHub)
-        </a>
-        <a href="https://pdv-rust.caracore.com.br/modalidades.html" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-diagram-2"></i> Local e rede
-        </a>
-        <a href="https://pdv-rust.caracore.com.br/transparencia.html#edicao-gratuita" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shield-check"></i> Transparência
-        </a>
-        <a href="https://pdv-rust.caracore.com.br/download.html" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-file-earmark-text"></i> Formatos
-        </a>
-        <div class="mt-3">
-          <small class="text-muted">
-            <i class="bi bi-lock-fill"></i> Código-fonte privado (oficina) |
-            <i class="bi bi-translate"></i> Instaladores pt-BR |
-            <i class="bi bi-handshake"></i> Piloto assistido
-          </small>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-start mt-4 px-4 pb-3">
-      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-up"></i> Voltar ao Topo
-      </a>
-    </div>
-  </div>
-  </div>
-  </details>
-</section>
-
-<!-- Projeto 2: Ink Agenda v2.0.1 — Desktop Windows estável, publicada em 07/10/2026. v2.0.0 permanece histórico (26/06/2026) -->
-<section id="caracore-ink-agenda" class="py-5 bg-light">
-  <details class="portfolio-secondary">
-    <summary><strong>Ink Agenda</strong> · Desktop Windows v2.0.1; PWA não antes de 2028</summary>
-  <div class="container">
-  <div class="project-card">
-    <div class="project-header ink">
-      <h2 class="mb-3">
-        <i class="bi bi-calendar-check"></i> Ink Agenda
-      </h2>
-      <p class="lead mb-3">Gestão clara para estúdios de tatuagem. Agenda, financeiro e rotina operacional em um único ambiente, com soberania local e foco em previsibilidade do dia a dia.</p>
-      <p class="mb-2"><strong>Versão atual:</strong> <strong>v2.0.1 estável</strong> publicada em 07/10/2026 · Desktop Windows no ar · PWA em roadmap (não antes de 2028; Mac, Linux e Android; sem DMG/DEB nativos).</p>
-      <div class="alert alert-success mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-star-fill"></i> <strong>Linha oficial desktop em produção.</strong> Entrega madura para quem precisa organizar atendimento, caixa e resultado sem depender de plataformas dispersas.</div>
-      <div class="alert alert-info mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-lightning-charge-fill"></i> <strong>Momento do produto:</strong> Desktop Windows v2.0.1 na loja. PWA em roadmap — depois do Hub; <strong>não antes de 2028</strong>. Sem instalador nativo Mac/Linux.</div>
-      <div>
-        <span class="tech-badge">Java 25</span>
-        <span class="tech-badge">JavaFX 21</span>
-        <span class="tech-badge">SQLite</span>
-        <span class="tech-badge">Windows desktop</span>
-        <span class="tech-badge">PWA (Mac/Linux/Android)</span>
-        <span class="tech-badge">v2.0.1</span>
-        <span class="tech-badge">ProGuard</span>
-      </div>
-    </div>
-    <div class="card-body p-4">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="project-content-block block-executive">
-            <h3 class="h4 mb-3">
-              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
-            </h3>
-            <p class="mb-2">
-              O <strong>Ink Agenda</strong> centraliza agenda, clientes e financeiro do estúdio de tatuagem — clareza diária com controle local.
-            </p>
-            <ul class="feature-list mb-0">
-              <li>Reduz perda de horário e desencontro de informação</li>
-              <li>Ajuda a enxergar resultado com mais clareza</li>
-              <li>Base madura para profissionalizar o atendimento</li>
-            </ul>
-          </div>
-          <div class="alert alert-info mt-3 mb-0" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — vitrine pública e suporte sob demanda.</div>
-        </div>
-        <div class="col-md-6">
-          <div class="project-content-block block-leigos">
-            <h3 class="h4 mb-3">
-              <i class="bi bi-book-fill"></i> Para Leigos
-            </h3>
-            <p>
-              O <strong>Ink Agenda</strong> é o aplicativo do estúdio de tatuagem — <strong>Desktop Windows v2.0.1</strong> na loja; PWA em roadmap (não antes de 2028) para Mac, Linux, Android e tablet (sem instalador nativo nesses sistemas). Ajuda a organizar a agenda, o financeiro e o resultado. No Windows os dados ficam na máquina, sem depender de internet para funcionar.
-            </p>
-            <ul class="feature-list mb-0">
-              <li>Veja o dia e o mês com quem está agendado</li>
-              <li>Cadastre cliente, valor, data e hora; marque quem já pagou</li>
-              <li>Registre entradas e despesas; acompanhe o saldo</li>
-              <li>Exportação/importação e backup manual na linha 2.0.0</li>
-            </ul>
-            <p class="text-muted small mt-3 mb-0">
-              <strong>v2.0.0</strong> — Publicada oficialmente em 26 de junho de 2026.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-4">
-        <a href="https://ink.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Loja e vitrine (releases)
-        </a>
-        <a href="https://ink.caracore.com.br/download.html" class="btn-project me-2">
-          <i class="bi bi-download"></i> Download
-        </a>
-        <a href="https://ink.caracore.com.br/pwa.html" class="btn-project me-2">
-          <i class="bi bi-phone"></i> PWA
-        </a>
-        <a href="https://ink.caracore.com.br/tecnologia.html" class="btn-project me-2">
-          <i class="bi bi-code-slash"></i> Tecnologia
-        </a>
-        <a href="https://ink.caracore.com.br/canal-feedback.html" class="btn-project me-2">
-          <i class="bi bi-chat-dots"></i> Canal de feedback
-        </a>
-        <div class="mt-3">
-          <small class="text-muted">
-            <i class="bi bi-star-fill text-warning"></i> Linha oficial desktop |
-            <i class="bi bi-calendar-check"></i> v2.0.1 07/10/2026 · PWA não antes de 2028 |
-            <i class="bi bi-box-seam"></i> Oficina: caracore-ink · Loja: caracore-ink-releases
-          </small>
-        </div>
-      </div>
-    </div>
-    <div class="text-start mt-4 px-4 pb-3">
-      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-up"></i> Voltar ao Topo
-      </a>
-    </div>
-  </div>
-  </div>
-  </details>
-</section>
-
-<div class="portfolio-category-divider"><span>Educação e formação</span></div>
-
-<!-- Projeto 4: Reino OIDC -->
-<section id="reino-oidc" class="py-5 bg-light">
-  <details class="portfolio-secondary">
-    <summary><strong>Reino OIDC</strong> · edição Free v2.0.2 disponível</summary>
-  <div class="container">
+    <details class="pf-eco-group" id="eco-educacao">
+      <summary>
+        <span class="pf-eco-group-title"><i class="bi bi-mortarboard" aria-hidden="true"></i> Educação e Conteúdo</span>
+        <span class="pf-eco-group-count">3 projetos</span>
+      </summary>
+      <div class="pf-eco-list">
+<details class="eco-item" id="reino-oidc">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-shield-check" aria-hidden="true"></i> Reino OIDC</span>
+    <span class="eco-item-status">Free v2.0.2</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Formação em identidade digital: login, acesso e confiança.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
   <div class="project-card">
     <div class="project-header reino">
       <h2 class="mb-3">
@@ -781,14 +715,17 @@ graph LR
     </div>
   </div>
   </div>
-  </details>
-</section>
-
-<!-- Projeto 5: Circuito Ferradura -->
-<section id="circuito-python" class="py-5 bg-light">
-  <details class="portfolio-secondary">
-    <summary><strong>Circuito Ferradura</strong> · v2.0.24 disponível</summary>
-  <div class="container">
+  </div>
+</details>
+<details class="eco-item" id="circuito-python">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-code-slash" aria-hidden="true"></i> Circuito Ferradura</span>
+    <span class="eco-item-status">v2.0.24</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Curso de lógica e Python para jovens, com licença para escolas.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
   <div class="project-card">
     <div class="project-header circuito-python">
       <h2 class="mb-3">
@@ -891,39 +828,39 @@ graph LR
         </h4>
         <div class="mermaid">
 graph LR
-    subgraph "Nível Iniciante"
-        A[📚 Fundamentos<br/>Variáveis e Funções]
-        B[🎮 Primeiro Jogo<br/>Pong com Pygame]
+    subgraph sb1["Nível Iniciante"]
+        A2[📚 Fundamentos<br/>Variáveis e Funções]
+        B2[🎮 Primeiro Jogo<br/>Pong com Pygame]
     end
     
-    subgraph "Nível Intermediário"
-        C[🏗️ Minecraft API<br/>Construções Automáticas]
-        D[🎨 Criação Visual<br/>GIFs e Animações]
+    subgraph sb2["Nível Intermediário"]
+        C2[🏗️ Minecraft API<br/>Construções Automáticas]
+        D2[🎨 Criação Visual<br/>GIFs e Animações]
     end
     
-    subgraph "Nível Avançado"
-        E[🤖 Cognição Local via Python<br/>Árvores de Decisão]
-        F[🔐 Segurança Digital<br/>OAuth e OIDC]
+    subgraph sb3["Nível Avançado"]
+        E2[🤖 Cognição Local via Python<br/>Árvores de Decisão]
+        F2[🔐 Segurança Digital<br/>OAuth e OIDC]
     end
     
-    subgraph "Portfólio"
-        G[🏆 Portfólio GitHub<br/>projeto próprio]
+    subgraph sb4["Portfólio"]
+        G2[🏆 Portfólio GitHub<br/>projeto próprio]
     end
     
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
+    A2 --> B2
+    B2 --> C2
+    C2 --> D2
+    D2 --> E2
+    E2 --> F2
+    F2 --> G2
     
-    style A fill:#e3f2fd
-    style B fill:#f3e5f5
-    style C fill:#e8f5e8
-    style D fill:#fff3e0
-    style E fill:#fce4ec
-    style F fill:#f1f8e9
-    style G fill:#fff8e1
+    style A2 fill:#e3f2fd
+    style B2 fill:#f3e5f5
+    style C2 fill:#e8f5e8
+    style D2 fill:#fff3e0
+    style E2 fill:#fce4ec
+    style F2 fill:#f1f8e9
+    style G2 fill:#fff8e1
         </div>
       </div>
       
@@ -968,14 +905,17 @@ graph LR
     </div>
   </div>
   </div>
-  </details>
-</section>
-
-<!-- Projeto 5b: A Rebeldia da Mecatrônica — livro publicado e app de estudo em piloto -->
-<section id="rebeldia-mecatronica" class="py-5">
-  <details class="portfolio-secondary">
-    <summary><strong>A Rebeldia da Mecatrônica</strong> · livro publicado · app de estudo em piloto</summary>
-  <div class="container">
+  </div>
+</details>
+<details class="eco-item" id="rebeldia-mecatronica">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-book" aria-hidden="true"></i> A Rebeldia da Mecatrônica</span>
+    <span class="eco-item-status">Livro publicado</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Romance instrutivo de engenharia com laboratório no Tinkercad.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
   <div class="project-card">
     <div class="project-header circuito-python">
       <h2 class="mb-3">
@@ -1059,97 +999,110 @@ graph LR
     </div>
   </div>
   </div>
-  </details>
-</section>
-
-<div class="portfolio-category-divider"><span>Operação logística</span></div>
-
-<!-- Projeto 6: CaraCore Hub -->
-<section id="caracore-hub" class="py-5">
-  <div class="container">
+  </div>
+</details>
+      </div>
+    </details>
+    <details class="pf-eco-group" id="eco-ferramentas">
+      <summary>
+        <span class="pf-eco-group-title"><i class="bi bi-tools" aria-hidden="true"></i> Ferramentas Complementares</span>
+        <span class="pf-eco-group-count">4 projetos</span>
+      </summary>
+      <div class="pf-eco-list">
+<details class="eco-item" id="caracore-ink-agenda">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-calendar-check" aria-hidden="true"></i> Ink Agenda</span>
+    <span class="eco-item-status">Desktop v2.0.1</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Agenda e financeiro para estúdios de tatuagem, com dados locais.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
   <div class="project-card">
-    <div class="project-header hub">
+    <div class="project-header ink">
       <h2 class="mb-3">
-        <i class="bi bi-cart-fill"></i> CaraCore Hub
+        <i class="bi bi-calendar-check"></i> Ink Agenda
       </h2>
-      <p class="lead mb-3">Gestão logística interna para pontos de retirada (PUDOs): receba, guarde e entregue encomendas com controle local, sem planilha e sem depender de nuvem.</p>
-      <div class="alert alert-warning mb-3 py-2 px-3" role="status">
-        <i class="bi bi-info-circle-fill"></i> <strong>Pré-release Windows v2.1.0-rc1.8.</strong> ZIP portátil disponível para avaliação; o aceite de QA desta build está pendente. GA do instalador previsto para <strong>06/04/2027</strong>.</div>
+      <p class="lead mb-3">Gestão clara para estúdios de tatuagem. Agenda, financeiro e rotina operacional em um único ambiente, com soberania local e foco em previsibilidade do dia a dia.</p>
+      <p class="mb-2"><strong>Versão atual:</strong> <strong>v2.0.1 estável</strong> publicada em 07/10/2026 · Desktop Windows no ar · PWA em roadmap (não antes de 2028; Mac, Linux e Android; sem DMG/DEB nativos).</p>
+      <div class="alert alert-success mb-3 py-2 px-3" role="alert">
+        <i class="bi bi-star-fill"></i> <strong>Linha oficial desktop em produção.</strong> Entrega madura para quem precisa organizar atendimento, caixa e resultado sem depender de plataformas dispersas.</div>
+      <div class="alert alert-info mb-3 py-2 px-3" role="alert">
+        <i class="bi bi-lightning-charge-fill"></i> <strong>Momento do produto:</strong> Desktop Windows v2.0.1 na loja. PWA em roadmap — depois do Hub; <strong>não antes de 2028</strong>. Sem instalador nativo Mac/Linux.</div>
       <div>
         <span class="tech-badge">Java 25</span>
-        <span class="tech-badge">Jakarta EE 10</span>
+        <span class="tech-badge">JavaFX 21</span>
         <span class="tech-badge">SQLite</span>
-        <span class="tech-badge">Tomcat 10.1</span>
+        <span class="tech-badge">Windows desktop</span>
+        <span class="tech-badge">PWA (Mac/Linux/Android)</span>
+        <span class="tech-badge">v2.0.1</span>
+        <span class="tech-badge">ProGuard</span>
       </div>
     </div>
-    
     <div class="card-body p-4">
       <div class="row">
         <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-briefcase-fill text-warning"></i> Visão Executiva
-          </h3>
-          <p>
-            O <strong>CaraCore Hub</strong> resolve a operação de quem recebe encomenda de terceiros e entrega no balcão. O ponto de retirada (PUDO) passa a ter um fluxo único — recebimento, conferência, guarda por posição e retirada conferida — no lugar de caderno, planilha e grupo de mensagens. A visão é operacional: o que chegou, onde está guardado e o que já foi entregue.
-          </p>
-          <p>
-            <strong>Benefícios de Negócio:</strong>
-          </p>
-          <ul class="feature-list"><li>Um único fluxo para receber, guardar e entregar encomendas</li><li>Menos encomenda perdida e menos tempo procurando volume</li><li>Retirada conferida por volume, com registro de quem entregou</li><li>Controle local dos dados, sem depender de conexão para operar</li><li>Base operacional pronta para crescer em volume sem perder rastro</li></ul>
-          <div class="alert alert-info mt-3" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> software proprietário da Cara Core Informática. O produto é <strong>Free</strong>: não há licença mensal pelo Hub. O suporte é opcional e é contratado à parte, com pagamento recorrente de <strong>R$ 79,90/mês</strong> a partir do GA do instalador Windows (06/04/2027), com primeira resposta em até 24 horas, incluindo as integrações com Mercado Livre, Shopee e Temu. A pré-release atual é de avaliação e não é cobrada.
+          <div class="project-content-block block-executive">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+            </h3>
+            <p class="mb-2">
+              O <strong>Ink Agenda</strong> centraliza agenda, clientes e financeiro do estúdio de tatuagem — clareza diária com controle local.
+            </p>
+            <ul class="feature-list mb-0">
+              <li>Reduz perda de horário e desencontro de informação</li>
+              <li>Ajuda a enxergar resultado com mais clareza</li>
+              <li>Base madura para profissionalizar o atendimento</li>
+            </ul>
+          </div>
+          <div class="alert alert-info mt-3 mb-0" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — vitrine pública e suporte sob demanda.</div>
+        </div>
+        <div class="col-md-6">
+          <div class="project-content-block block-leigos">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-book-fill"></i> Para Leigos
+            </h3>
+            <p>
+              O <strong>Ink Agenda</strong> é o aplicativo do estúdio de tatuagem — <strong>Desktop Windows v2.0.1</strong> na loja; PWA em roadmap (não antes de 2028) para Mac, Linux, Android e tablet (sem instalador nativo nesses sistemas). Ajuda a organizar a agenda, o financeiro e o resultado. No Windows os dados ficam na máquina, sem depender de internet para funcionar.
+            </p>
+            <ul class="feature-list mb-0">
+              <li>Veja o dia e o mês com quem está agendado</li>
+              <li>Cadastre cliente, valor, data e hora; marque quem já pagou</li>
+              <li>Registre entradas e despesas; acompanhe o saldo</li>
+              <li>Exportação/importação e backup manual na linha 2.0.0</li>
+            </ul>
+            <p class="text-muted small mt-3 mb-0">
+              <strong>v2.0.0</strong> — Publicada oficialmente em 26 de junho de 2026.
+            </p>
           </div>
         </div>
-        
-        <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-book-fill text-info"></i> Para Leigos
-          </h3>
-          <p>
-            Imagine o <strong>balcão de um ponto de retirada</strong>: chegam encomendas do Mercado Livre, da Shopee e da Temu, e alguém precisa saber o que chegou, onde guardar e para quem entregar. É isso que o CaraCore Hub organiza — com os dados em <strong>SQLite no computador</strong>, sem depender de nuvem.
-          </p>
-          <p>
-            <strong>Pense assim:</strong> hoje a encomenda chega, é anotada num caderno e guardada em algum canto. Semanas depois, o cliente aparece e começa a busca. Com o CaraCore Hub, cada volume tem posição e status: recebido, guardado, pronto para retirada, entregue.
-          </p>
-          <p>
-            É como ter um <strong>balconista organizado</strong> que:
-          </p>
-          <ul class="feature-list">
-            <li>Registra a encomenda assim que ela chega ao balcão</li>
-            <li>Diz exatamente em que posição o volume foi guardado</li>
-            <li>Confere o volume na hora da retirada, um por um</li>
-            <li>Avisa quando uma encomenda está parada há tempo demais</li>
-            <li>Mostra o que já foi entregue e o que ainda está na prateleira</li>
-          </ul>
-        </div>
       </div>
-      
       <div class="text-center mt-4">
-        <a href="https://hub.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+        <a href="https://ink.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
           <i class="bi bi-shop"></i> Loja e vitrine (releases)
         </a>
-        <a href="https://hub.caracore.com.br/download.html" class="btn-project me-2">
-          <i class="bi bi-download"></i> Pré-release Windows
+        <a href="https://ink.caracore.com.br/download.html" class="btn-project me-2">
+          <i class="bi bi-download"></i> Download
         </a>
-        <a href="https://hub.caracore.com.br/tecnologia.html" class="btn-project me-2">
+        <a href="https://ink.caracore.com.br/pwa.html" class="btn-project me-2">
+          <i class="bi bi-phone"></i> PWA
+        </a>
+        <a href="https://ink.caracore.com.br/tecnologia.html" class="btn-project me-2">
           <i class="bi bi-code-slash"></i> Tecnologia
         </a>
-        <a href="https://hub.caracore.com.br/canal-feedback.html" class="btn-project me-2">
+        <a href="https://ink.caracore.com.br/canal-feedback.html" class="btn-project me-2">
           <i class="bi bi-chat-dots"></i> Canal de feedback
         </a>
-        <a href="https://hub.caracore.com.br/slides/apresentacao_tia_socia.html" class="btn-project me-2">
-          <i class="bi bi-easel"></i> Cenário ilustrativo (Tia Sócia)
-        </a>
         <div class="mt-3">
           <small class="text-muted">
-            <i class="bi bi-lock-fill"></i> Código-fonte privado | 
-            <i class="bi bi-shop"></i> Loja/vitrine (GitHub Pages — caracore-hub-releases)
+            <i class="bi bi-star-fill text-warning"></i> Linha oficial desktop |
+            <i class="bi bi-calendar-check"></i> v2.0.1 07/10/2026 · PWA não antes de 2028 |
+            <i class="bi bi-box-seam"></i> Oficina: caracore-ink · Loja: caracore-ink-releases
           </small>
         </div>
       </div>
     </div>
-    
-    <!-- Botão Voltar ao Topo -->
     <div class="text-start mt-4 px-4 pb-3">
       <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
         <i class="bi bi-arrow-up"></i> Voltar ao Topo
@@ -1157,108 +1110,17 @@ graph LR
     </div>
   </div>
   </div>
-</section>
-
-<!-- Projeto: Helianto Condominium -->
-<section id="caracore-helianto" class="py-5 bg-light">
-  <details class="portfolio-secondary">
-    <summary><strong>Helianto Condominium</strong> · roadmap; GA previsto para 30/12/2029</summary>
-  <div class="container">
-  <div class="project-card">
-    <div class="project-header hub helianto-header">
-      <h2 class="mb-3">
-        <i class="bi bi-building"></i> Helianto Condominium
-      </h2>
-      <p class="lead mb-3">Sistema de administração condominial completo com soberania de dados, motor financeiro auditável e suporte a BolePix.</p>
-      <div class="alert alert-success mb-3 py-2 px-3" role="alert">
-        <i class="bi bi-calendar-event"></i> <strong>Em roadmap.</strong> Lançamento público previsto para 30 de dezembro de 2029.</div>
-      <div>
-        <span class="tech-badge">Java 25</span>
-        <span class="tech-badge">Spring Boot 4</span>
-        <span class="tech-badge">React</span>
-        <span class="tech-badge">PostgreSQL</span>
-        <span class="tech-badge">JasperReports</span>
-        <span class="tech-badge">BolePix</span>
-      </div>
-    </div>
-    
-    <div class="card-body p-4">
-      <div class="row">
-        <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-briefcase-fill text-warning"></i> Visão Executiva
-          </h3>
-          <p>
-            O <strong>Helianto Condominium</strong> é o SaaS residencial da Cara Core para gestão de condomínios. Ele unifica controle de moradores, emissão automática de boletos e baixa de pagamentos com soberania de dados e transparência.
-          </p>
-          <p>
-            <strong>Benefícios de Negócio:</strong>
-          </p>
-          <ul class="feature-list">
-            <li>Isolamento de dados multi-tenant robusto (segurança total dos moradores)</li>
-            <li>Motor financeiro auditável em conformidade com o Código Civil</li>
-            <li>Suporte a BolePix (boleto clássico integrado com Pix de liquidação imediata)</li>
-            <li>Painel de controle de privacidade e consentimentos integrado (LGPD)</li>
-            <li>Layout leve e responsivo adaptado por perfis de usuário (Admin, Síndico, Morador)</li>
-          </ul>
-        </div>
-        
-        <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-book-fill text-info"></i> Para Leigos
-          </h3>
-          <p>
-            O <strong>Helianto Condominium</strong> é uma plataforma moderna para administrar prédios e condomínios. Pense nele como a <strong>central digital do morador e do síndico</strong>.
-          </p>
-          <p>
-            Com ele, você faz o seguinte de forma simples:
-          </p>
-          <ul class="feature-list">
-            <li>Acessa boletos e copia a linha digitável ou QR Code Pix no celular</li>
-            <li>Gerencia o rateio das contas do mês de forma justa (modo fração ideal ou igualitário)</li>
-            <li>Acompanha o extrato financeiro do condomínio em tempo real</li>
-            <li>Garante que suas informações pessoais estejam totalmente seguras e em conformidade com a LGPD</li>
-          </ul>
-          <p class="text-muted small mb-0"><strong>Em roadmap.</strong> Lançamento público previsto para 30 de dezembro de 2029.</p>
-        </div>
-      </div>
-      
-      <div class="text-center mt-4">
-        <p class="mb-2">Oficina em desenvolvimento. A vitrine está em helianto.caracore.com.br. O lançamento público segue em 30/12/2029.</p>
-        <a href="https://helianto.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Ver vitrine
-        </a>
-        <a href="ecosistema.html#garagem" class="btn-project me-2">
-          <i class="bi bi-calendar-event"></i> Ver na garagem
-        </a>
-        <div class="mt-3">
-          <small class="text-muted">
-            <i class="bi bi-lock-fill"></i> Código-fonte privado (caracore-helianto) |
-            <i class="bi bi-calendar-event"></i> Lançamento em 30/12/2029 |
-            <i class="bi bi-database-fill"></i> Multi-tenant, PostgreSQL
-          </small>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Botão Voltar ao Topo -->
-    <div class="text-start mt-4 px-4 pb-3">
-      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-up"></i> Voltar ao Topo
-      </a>
-    </div>
   </div>
-  </div>
-  </details>
-</section>
-
-<div class="portfolio-category-divider"><span>Infraestrutura e interno</span></div>
-
-<!-- Projeto 7: Área 51 — produto licenciado + Suporte -->
-<section id="area-51" class="py-5">
-  <details class="portfolio-secondary">
-    <summary><strong>Área 51</strong> · pacote licenciado e suporte institucional</summary>
-  <div class="container">
+</details>
+<details class="eco-item" id="area-51">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-shield-lock" aria-hidden="true"></i> Área 51</span>
+    <span class="eco-item-status">Baseline 0.1.0-dev</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Identidade e acesso institucional: pacote licenciado e suporte.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
   <div class="project-card" data-aos="fade-up" data-aos-delay="300">
     <div class="project-header area51">
       <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
@@ -1359,14 +1221,17 @@ graph LR
     </a>
   </div>
   </div>
-  </details>
-</section>
-
-<!-- Cara Core MKT — Portal e Sala Cara Core (gratuito; não vendemos) -->
-<section id="caracore-mkt" class="py-5 bg-light">
-  <details class="portfolio-secondary">
-    <summary><strong>Cara Core MKT / Sala</strong> · oferta gratuita; não vendemos</summary>
-  <div class="container">
+  </div>
+</details>
+<details class="eco-item" id="caracore-mkt">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-gift" aria-hidden="true"></i> Cara Core MKT / Sala</span>
+    <span class="eco-item-status">Gratuito</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Ambiente de rotina, execução e presença digital com método.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
   <div class="project-card">
     <div class="project-header mkt-header">
       <h2 class="mb-3">
@@ -1436,14 +1301,17 @@ graph LR
     </div>
   </div>
   </div>
-  </details>
-</section>
-
-<!-- CaraCore Seed (piloto público local gratuito sob MIT; pré-release candidata Windows 0.1.5 para avaliação) -->
-<section id="caracore-seed" class="py-5">
-  <details class="portfolio-secondary">
-    <summary><strong>CaraCore Seed</strong> · pré-release candidata 0.1.5; homologação pendente</summary>
-  <div class="container">
+  </div>
+</details>
+<details class="eco-item" id="caracore-seed">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-key" aria-hidden="true"></i> CaraCore Seed</span>
+    <span class="eco-item-status">Pré-release 0.1.5</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Gestão de clientes e licenças em piloto local gratuito.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
   <div class="project-card">
     <div class="project-header seed">
       <h2 class="mb-3">
@@ -1478,104 +1346,42 @@ graph LR
     </div>
   </div>
   </div>
-  </details>
-</section>
-
-<!-- CaraCore CSO — Frotas em produção; Transportes Garagem 08/11/2028 -->
-<section id="caracore-cso" class="py-5">
-  <div class="container">
-  <div class="project-card">
-    <div class="project-header hub">
-      <h2 class="mb-3">
-        <i class="bi bi-truck"></i> CaraCore CSO — Gestão de Frotas e Transportes
-      </h2>
-      <p class="lead mb-3"><strong>Cuide da frota, organize entregas e acompanhe deslocamentos.</strong> Frotas já opera no navegador, sem GPS. Transportes + Virtual Tracker integrado estão em desenvolvimento, com <strong>alvo conjunto em 08/11/2028</strong>, sujeito à validação e homologação.</p>
-      <div>
-        <span class="tech-badge">Java 21 / Quarkus</span>
-        <span class="tech-badge">PostgreSQL</span>
-        <span class="tech-badge">Qute / HTMX</span>
-        <span class="tech-badge">JavaFX / SQLite</span>
-        <span class="tech-badge">Web &amp; Desktop</span>
-      </div>
-    </div>
-    <div class="card-body p-4">
-      <div class="row">
-        <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
-          </h3>
-          <p>
-            O <strong>CaraCore CSO</strong> tem duas frentes: gestão de frota no navegador (já no ar, com km/L, documentos, pneus, exame, infrações e custo por km) e bunker desktop em 2028, acoplado à Frotas. O freeze M1 de 08/11/2026 estabiliza o que já está publicado. A vitrine apresenta as duas frentes com honestidade de Garagem.
-          </p>
-          <ul class="feature-list"><li>Gestão de frota no site: veículos, combustível, manutenção, km/L, documentos, pneus, exame, infrações, custo por km, equipe, planos e LGPD (em produção)</li><li>Transportes planejado: clientes, entregas e equipe no computador da empresa</li><li>Virtual Tracker integrado, não terceiro produto: celular do motorista, viagem autorizada e conexão necessária; sem fila offline</li><li>Frotas encaminha conteúdo cifrado sem ler ou persistir trajetos; mapa, histórico e chave privada somente no desktop</li><li>Planos FREE_3 a CORPORATE e Pix avulso referem-se à Frotas atual; não incluem automaticamente o futuro VT</li></ul>
-          <div class="alert alert-info mt-3" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Disponibilidade:</strong> Frotas já disponível. Transportes + VT em desenvolvimento, sem contratação antecipada, preço ou instalador público confirmado.</div>
-          <p class="text-muted small mt-3 mb-0">Frotas em produção desde 06/10/2026, com freeze em 08/11/2026. Gestão web somente online; PWA de gestão offline cancelada. Acompanhamento futuro depende de prova móvel, capacidade e homologação.</p>
-        </div>
-        <div class="col-md-6">
-          <h3 class="h4 mb-3">
-            <i class="bi bi-book-fill text-info"></i> Para Leigos
-          </h3>
-          <p>
-            A <strong>Gestão de Frotas</strong> cuida dos carros e custos, começando grátis com até 3 veículos. A <strong>Gestão de Transportes</strong> organizará as entregas. O <strong>Virtual Tracker</strong> permitirá acompanhar o deslocamento pelo celular do motorista, sem aparelho dedicado. São duas aplicações integradas, não três produtos; essa integração ainda não está disponível.
-          </p>
-          <ul class="feature-list">
-            <li>Entra no site hoje; não precisa instalar nada para a Frotas</li>
-            <li>Dados administrativos locais continuam na empresa; novas posições exigem rede e base disponível</li>
-            <li>Duas URLs: aplicação em cso.caracore.com.br · vitrine em cso-transp.caracore.com.br</li>
-          </ul>
-          <p class="text-muted small mb-0"><strong>Frotas:</strong> disponível, sem GPS. <strong>Transportes + VT:</strong> alvo 08/11/2028, não garantia de lançamento.</p>
-        </div>
-      </div>
-      <div class="text-center mt-4">
-        <a href="https://cso.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-box-arrow-up-right"></i> Acessar aplicação
-        </a>
-        <a href="https://cso-transp.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Conhecer Transportes + Virtual Tracker
-        </a>
-        <div class="mt-3">
-          <small class="text-muted">
-            <i class="bi bi-lock-fill"></i> Código-fonte privado |
-            <i class="bi bi-calendar-event"></i> Frotas em produção · Transportes 08/11/2028 |
-            <i class="bi bi-database-fill"></i> PostgreSQL (Frotas) e SQLite (desktop 2028)
-          </small>
-        </div>
-      </div>
-    </div>
-    <div class="text-start mt-4 px-4 pb-3">
-      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
-        <i class="bi bi-arrow-up"></i> Voltar ao Topo
-      </a>
-    </div>
   </div>
-  </div>
-</section>
-
-<div class="portfolio-category-divider"><span>Nicho e simulação</span></div>
-
-<!-- Projeto: chmulatoETE Minerador 4.0 -->
-<section id="minerador-ete" class="py-5">
-  <details class="portfolio-secondary">
-    <summary><strong>Minerador ETE</strong> · canal público v1.2.3</summary>
-  <div class="container">
+</details>
+      </div>
+    </details>
+    <details class="pf-eco-group" id="eco-experimentais">
+      <summary>
+        <span class="pf-eco-group-title"><i class="bi bi-lightbulb" aria-hidden="true"></i> Iniciativas Experimentais</span>
+        <span class="pf-eco-group-count">3 projetos</span>
+      </summary>
+      <div class="pf-eco-list">
+<details class="eco-item" id="caracore-pdv-rust">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-lightning-charge" aria-hidden="true"></i> PDV Rust</span>
+    <span class="eco-item-status">Piloto Windows v0.1.4</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Linha desktop em Rust + Tauri para testar o caixa no Windows.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
   <div class="project-card">
-    <div class="project-header ete">
+    <div class="project-header pdv-rust">
       <h2 class="mb-3">
-        <i class="bi bi-droplet-half"></i> chmulatoETE Minerador 4.0
+        <i class="bi bi-lightning-charge"></i> CaraCore PDV
       </h2>
-      <p class="lead mb-3">Ferramenta de decisão para simulação e validação de processos. Organiza raciocínio técnico, apoia estudos de viabilidade e reduz incerteza antes do investimento.</p>
+      <p class="lead mb-2">PDV desktop · Rust · Tauri 2 · React · SQLite local</p>
+      <p class="lead mb-3">O <strong>CaraCore PDV</strong> é a linha desktop em <strong>Rust</strong> + <strong>Tauri 2</strong> + React, dados no PC da loja. Release <strong>v0.1.4</strong> (Windows) — convive com o CaraCore PDV Java, aplicação web local na versão anterior (v3.2.12-free), com a v4 em pré-lançamento. São linhas independentes.</p>
+      <div class="alert alert-warning mb-3 py-2 px-3" role="alert">
+        <i class="bi bi-flag-fill"></i> <strong>Fase piloto.</strong> Baixe em <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.4" class="alert-link" target="_blank" rel="noopener">GitHub Releases</a> (NSIS, MSI pt-BR, ZIP). Limites honestos (free, PIX, fiscal) em <a href="https://pdv-rust.caracore.com.br/transparencia.html#edicao-gratuita" class="alert-link" target="_blank" rel="noopener">Transparência</a> · loja <strong>pdv-rust.caracore.com.br</strong>. Contato: <a href="mailto:suporte@caracore.com.br" class="alert-link">suporte@caracore.com.br</a>.</div>
       <div>
-        <span class="tech-badge">Python</span>
-        <span class="tech-badge">Streamlit</span>
-        <span class="tech-badge">Hidrometalurgia</span>
-        <span class="tech-badge">ETE</span>
-        <span class="tech-badge">Terras Raras</span>
-        <span class="tech-badge">PyTest</span>
-        <span class="tech-badge">Flask</span>
-        <span class="tech-badge">Linux</span>
-        <span class="tech-badge">Windows</span>
-        <span class="tech-badge">macOS</span>
+        <span class="tech-badge">Rust</span>
+        <span class="tech-badge">Tauri 2</span>
+        <span class="tech-badge">React</span>
+        <span class="tech-badge">SQLite</span>
+        <span class="tech-badge">piloto Windows · v0.1.4</span>
+        <span class="tech-badge">Instaladores pt-BR</span>
+        <span class="tech-badge">WebView2</span>
       </div>
     </div>
 
@@ -1587,46 +1393,50 @@ graph LR
               <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
             </h3>
             <p class="mb-2">
-              O <strong>Minerador 4.0</strong> ajuda a avaliar cenários de refino e viabilidade — leitura executiva antes de investimento ou teste de campo.
+              Stack <strong>Rust + Tauri 2</strong> no balcão: binário enxuto, instaladores pt-BR, gates de release e operação offline com SQLite — em coexistência com o canal Java.
             </p>
             <ul class="feature-list mb-0">
-              <li>Conecta estudo técnico e leitura econômica</li>
-              <li>Compara cenários com menos improviso</li>
-              <li>Free didático; Premium para operação avançada</li>
+              <li>Segurança de memória e concorrência (Rust)</li>
+              <li>Shell Tauri 2 + WebView2 — instalador leve</li>
+              <li>Release v0.1.4 — NSIS, MSI pt-BR, ZIP piloto; SHA256 publicado</li>
+              <li>Edição gratuita: teto de 100 vendas na vida deste banco (piloto)</li>
+              <li>PDV local e PDV na rede — evolução sem trocar de sistema</li>
+              <li>Licença CaraCore Seed opcional; Premium sob contrato</li>
             </ul>
           </div>
-          <div class="alert alert-info mt-3 mb-0" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — exploração didática gratuita e upgrade premium.</div>
         </div>
-
         <div class="col-md-6">
           <div class="project-content-block block-leigos">
             <h3 class="h4 mb-3">
               <i class="bi bi-book-fill"></i> Para Leigos
             </h3>
-            <p class="mb-2">Simula no computador a separação e refino de minerais valiosos (terras raras) — como uma estação de tratamento de efluentes, com tanques, decantação e controle de pH.</p>
-            <ul class="feature-list mb-0">
-              <li>Instalador Linux, Windows ou macOS — explore sem risco</li>
-              <li>Entenda pureza, óxido por tonelada e margem</li>
-              <li>Manual PDF e laboratório virtual Campo Largo</li>
-            </ul>
+            <p class="mb-2">Teste no seu PC: até <strong>100 vendas na vida deste banco</strong> na edição gratuita, PIX com QR no balcão e confirmação pelo operador — sem surpresa escondida.</p>
+            <p class="mb-0">Quem escolhe entre as linhas: <a href="#pdv-coexistencia">Como as duas linhas PDV convivem</a>. Limites do piloto: <a href="https://pdv-rust.caracore.com.br/transparencia.html#edicao-gratuita" target="_blank" rel="noopener">Transparência</a>.</p>
           </div>
         </div>
       </div>
 
       <div class="text-center mt-4">
-        <a href="https://ete.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Loja e vitrine (releases)
+        <a href="https://pdv-rust.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Loja oficial (pdv-rust.caracore.com.br)
         </a>
-        <a href="https://ete.caracore.com.br/download.html" class="btn-project me-2">
-          <i class="bi bi-download"></i> Download (site)
+        <a href="https://github.com/chmulato/caracore-rust-pdv-releases/releases/tag/v0.1.4" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-download"></i> Baixar v0.1.4 (GitHub)
         </a>
-        <a href="https://github.com/chmulato/caracore-ete-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-github"></i> Releases (Linux/Windows/macOS)
+        <a href="https://pdv-rust.caracore.com.br/modalidades.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-diagram-2"></i> Local e rede
+        </a>
+        <a href="https://pdv-rust.caracore.com.br/transparencia.html#edicao-gratuita" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shield-check"></i> Transparência
+        </a>
+        <a href="https://pdv-rust.caracore.com.br/download.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-file-earmark-text"></i> Formatos
         </a>
         <div class="mt-3">
           <small class="text-muted">
-            <i class="bi bi-lock-fill"></i> Oficina privada · Loja ete.caracore.com.br · v1.2.3 · Upgrade Ouro 4.0
+            <i class="bi bi-lock-fill"></i> Código-fonte privado (oficina) |
+            <i class="bi bi-translate"></i> Instaladores pt-BR |
+            <i class="bi bi-handshake"></i> Piloto assistido
           </small>
         </div>
       </div>
@@ -1639,95 +1449,136 @@ graph LR
     </div>
   </div>
   </div>
-  </details>
-</section>
+  </div>
+</details>
+<details class="eco-item" id="pdv-coexistencia">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-diagram-2" aria-hidden="true"></i> Como as duas linhas PDV convivem</span>
+    <span class="eco-item-status">Java maduro · Rust piloto</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Duas linhas do mesmo PDV, cada uma com sua loja; nenhuma substitui a outra.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
+    <div class="portfolio-cross-block portfolio-pdv-coexistence">
+      <h2><i class="bi bi-diagram-2"></i> Como as duas linhas PDV convivem</h2>
+      <p class="lead">Duas linhas de PDV da Cara Core. Cada uma tem a sua loja. Nenhuma substitui a outra.</p>
 
-<div id="caracore-ru"></div>
-<!-- BioReator 4.0 — Community 1.1.1, Premium em 18/06/2027 -->
-<section id="bioreator40" class="py-5">
-  <details class="portfolio-secondary">
-    <summary><strong>BioReator 4.0</strong> · Community 1.1.1 disponível</summary>
-  <div class="container">
-  <div class="project-card">
-    <div class="project-header ete">
-      <h2 class="mb-3">
-        <i class="bi bi-moisture"></i> BioReator 4.0 — Simulador de Bioinsumos
-      </h2>
-      <p class="lead mb-3">Um produto: estação desktop para bioinsumos e fermentação. A loja é <strong>ru.caracore.com.br</strong>. A <strong>Community 1.1.1</strong> está disponível para Windows. A <strong>Premium</strong> está prevista para 18 de junho de 2027, sem preço e sem PIX.</p>
-      <div>
-        <span class="tech-badge">1.1.1</span>
-        <span class="tech-badge">Community</span>
-        <span class="tech-badge">Premium · 18/06/2027</span>
-        <span class="tech-badge">Java 25</span>
-        <span class="tech-badge">JavaFX</span>
-        <span class="tech-badge">SQLite</span>
-        <span class="tech-badge">Windows</span>
+      <div class="pdv-compare-grid">
+        <div class="pdv-compare-card java">
+          <span class="release-tag">Versão anterior · v3.2.12-free</span>
+          <h3><i class="bi bi-cash"></i> Loja em produção</h3>
+          <p class="small mb-2">Windows, Linux ou macOS. Continuidade, planos Free/Premium e demonstração presencial.</p>
+          <ul class="feature-list mb-3">
+            <li>Operação regular no balcão</li>
+            <li>Linux ou macOS</li>
+            <li>Já usa o PDV desta loja</li>
+          </ul>
+          <a href="https://pdv.caracore.com.br/" class="btn-project" target="_blank" rel="noopener">Ir à loja do PDV Java</a>
+        </div>
+        <div class="pdv-compare-card rust">
+          <span class="release-tag">Piloto Windows · v0.1.4</span>
+          <h3><i class="bi bi-lightning-charge"></i> Teste curto no Windows</h3>
+          <p class="small mb-2">Piloto no PC da loja, até 100 vendas neste banco. Offline, PIX no caixa, pasta própria.</p>
+          <ul class="feature-list mb-3">
+            <li>Windows e avaliação rápida</li>
+            <li>100 vendas na vida do piloto</li>
+            <li>Local hoje, rede depois — mesmo produto</li>
+          </ul>
+          <a href="https://pdv-rust.caracore.com.br/" class="btn-project" target="_blank" rel="noopener">Ir à loja do piloto Windows</a>
+        </div>
       </div>
     </div>
+  </div>
+  </div>
+</details>
+<details class="eco-item" id="caracore-helianto">
+  <summary class="eco-item-summary">
+    <span class="eco-item-name"><i class="bi bi-building" aria-hidden="true"></i> Helianto Condominium</span>
+    <span class="eco-item-status">Roadmap · 30/12/2029</span>
+    <span class="eco-item-chevron" aria-hidden="true"></span>
+    <span class="eco-item-desc">Gestão condominial com motor financeiro auditável.</span>
+  </summary>
+  <div class="eco-item-body legacy-produto">
+<div class="container">
+  <div class="project-card">
+    <div class="project-header hub helianto-header">
+      <h2 class="mb-3">
+        <i class="bi bi-building"></i> Helianto Condominium
+      </h2>
+      <p class="lead mb-3">Sistema de administração condominial completo com soberania de dados, motor financeiro auditável e suporte a BolePix.</p>
+      <div class="alert alert-success mb-3 py-2 px-3" role="alert">
+        <i class="bi bi-calendar-event"></i> <strong>Em roadmap.</strong> Lançamento público previsto para 30 de dezembro de 2029.</div>
+      <div>
+        <span class="tech-badge">Java 25</span>
+        <span class="tech-badge">Spring Boot 4</span>
+        <span class="tech-badge">React</span>
+        <span class="tech-badge">PostgreSQL</span>
+        <span class="tech-badge">JasperReports</span>
+        <span class="tech-badge">BolePix</span>
+      </div>
+    </div>
+    
     <div class="card-body p-4">
       <div class="row">
         <div class="col-md-6">
           <h3 class="h4 mb-3">
-            <i class="bi bi-briefcase-fill text-primary"></i> Visão executiva
+            <i class="bi bi-briefcase-fill text-warning"></i> Visão Executiva
           </h3>
           <p>
-            O <strong>BioReator 4.0</strong> deixa o operador ensaiar uma batelada no próprio computador: tanque, aeração, oxigênio e o rendimento da biomassa. A edição <strong>Community</strong> trabalha com <em>Bradyrhizobium japonicum</em> em batelada, grava o histórico e exporta CSV.
+            O <strong>Helianto Condominium</strong> é o SaaS residencial da Cara Core para gestão de condomínios. Ele unifica controle de moradores, emissão automática de boletos e baixa de pagamentos com soberania de dados e transparência.
+          </p>
+          <p>
+            <strong>Benefícios de Negócio:</strong>
           </p>
           <ul class="feature-list">
-            <li>Roda no computador do operador, com histórico local e CSV</li>
-            <li>Tanques de 50 L a 10.000 L, fração de trabalho de 70% a 80%</li>
-            <li>Crescimento por Monod com fatores configurados de oxigênio, temperatura e pH, além de fase lag e decaimento celular</li>
-            <li>Encerramento automático no esgotamento do substrato; histórico registra o estado final e o motivo</li>
-            <li>A Premium reúne o catálogo, a batelada alimentada, os custos informados pelo operador e o PDF</li>
+            <li>Isolamento de dados multi-tenant robusto (segurança total dos moradores)</li>
+            <li>Motor financeiro auditável em conformidade com o Código Civil</li>
+            <li>Suporte a BolePix (boleto clássico integrado com Pix de liquidação imediata)</li>
+            <li>Painel de controle de privacidade e consentimentos integrado (LGPD)</li>
+            <li>Layout leve e responsivo adaptado por perfis de usuário (Admin, Síndico, Morador)</li>
           </ul>
-          <div class="alert alert-info mt-3" role="alert">
-            <i class="bi bi-info-circle-fill"></i> <strong>Oferta:</strong> a Premium chega em 18/06/2027, sem preço e sem PIX. O perfil de <em>Bacillus thuringiensis</em> descreve só o crescimento.
-          </div>
         </div>
+        
         <div class="col-md-6">
           <h3 class="h4 mb-3">
-            <i class="bi bi-book-fill text-info"></i> O que já dá para ler
+            <i class="bi bi-book-fill text-info"></i> Para Leigos
           </h3>
           <p>
-            A Community 1.1.1 distingue biomassa viável e total, calcula P/V pelo volume líquido e registra em <code>end_reason</code> o primeiro critério de término atingido. O kLa padrão da carga de referência é 131,0455 h⁻¹. O pacote Windows está publicado na release <code>bioreator-1.1.1</code>: instalador MSI e pasta ZIP, sem assinatura digital; o <code>BioReator40.exe</code> fica dentro do ZIP. Os valores são simulações e precisam de validação experimental antes do uso produtivo.
+            O <strong>Helianto Condominium</strong> é uma plataforma moderna para administrar prédios e condomínios. Pense nele como a <strong>central digital do morador e do síndico</strong>.
+          </p>
+          <p>
+            Com ele, você faz o seguinte de forma simples:
           </p>
           <ul class="feature-list">
-            <li>Community: um perfil, batelada, gráficos, histórico e CSV</li>
-            <li>Premium, em 18/06/2027: quatro perfis a mais, batelada alimentada, conta do lote e PDF</li>
-            <li>Os custos da Premium são os que o operador informa, não uma cotação</li>
-            <li>Sem preço, sem PIX e sem arquivo da Premium nesta data</li>
+            <li>Acessa boletos e copia a linha digitável ou QR Code Pix no celular</li>
+            <li>Gerencia o rateio das contas do mês de forma justa (modo fração ideal ou igualitário)</li>
+            <li>Acompanha o extrato financeiro do condomínio em tempo real</li>
+            <li>Garante que suas informações pessoais estejam totalmente seguras e em conformidade com a LGPD</li>
           </ul>
-          <p class="text-muted small mb-0"><strong>Community 1.1.1.</strong> Loja em ru.caracore.com.br. MSI e ZIP na release bioreator-1.1.1.</p>
+          <p class="text-muted small mb-0"><strong>Em roadmap.</strong> Lançamento público previsto para 30 de dezembro de 2029.</p>
         </div>
       </div>
+      
       <div class="text-center mt-4">
-        <a href="https://ru.caracore.com.br/bioreator.html" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-shop"></i> Ver o produto
+        <p class="mb-2">Oficina em desenvolvimento. A vitrine está em helianto.caracore.com.br. O lançamento público segue em 30/12/2029.</p>
+        <a href="https://helianto.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Ver vitrine
         </a>
-        <a href="https://ru.caracore.com.br/manual-bioreator.html" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-journal-text"></i> Manual do operador
-        </a>
-        <a href="https://ru.caracore.com.br/manual-tecnico.html#criterios-fim" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-list-check"></i> Critérios de término
-        </a>
-        <a href="https://ru.caracore.com.br/exemplo-bioreator.html#previa-1-1" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-graph-up"></i> Exemplo da batelada
-        </a>
-        <a href="https://ru.caracore.com.br/fundamentos-bioprocesso.html#previa-1-1" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-journal-code"></i> Fundamentos técnicos
-        </a>
-        <a href="https://ru.caracore.com.br/download.html#arquivos" class="btn-project me-2" target="_blank" rel="noopener">
-          <i class="bi bi-download"></i> Baixar Community 1.1.1
+        <a href="ecosistema.html#garagem" class="btn-project me-2">
+          <i class="bi bi-calendar-event"></i> Ver na garagem
         </a>
         <div class="mt-3">
           <small class="text-muted">
-            <i class="bi bi-lock-fill"></i> Oficina caracore-ru |
-            <i class="bi bi-tools"></i> Community 1.1.1, release bioreator-1.1.1 |
-            <i class="bi bi-moisture text-success"></i> Community no pacote local
+            <i class="bi bi-lock-fill"></i> Código-fonte privado (caracore-helianto) |
+            <i class="bi bi-calendar-event"></i> Lançamento em 30/12/2029 |
+            <i class="bi bi-database-fill"></i> Multi-tenant, PostgreSQL
           </small>
         </div>
       </div>
     </div>
+    
+    <!-- Botão Voltar ao Topo -->
     <div class="text-start mt-4 px-4 pb-3">
       <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
         <i class="bi bi-arrow-up"></i> Voltar ao Topo
@@ -1735,14 +1586,48 @@ graph LR
     </div>
   </div>
   </div>
-  </details>
+  </div>
+</details>
+      </div>
+    </details>
+  </div>
 </section>
-
-<!-- Linha do tempo / Releases -->
-<section id="portfolio-releases" class="py-5">
+<!-- Seção 4 — Engenharia e releases -->
+<section id="engenharia" class="pf-section pf-section--alt">
   <div class="container">
+    <div class="pf-section-head">
+      <p class="pf-eyebrow">Engenharia e releases</p>
+      <h2 class="pf-section-title">O que está por trás de cada entrega.</h2>
+      <p class="pf-section-lead">Catálogo, versionamento, homologação, hashes e decisões de arquitetura — na ordem em que a engenharia precisa consultar.</p>
+      <p class="pf-legend">Selo é status; data é build. Estágios usados: <strong>Publicado</strong> · <strong>Pré-release</strong> · <strong>Piloto</strong> · <strong>Roadmap</strong>.</p>
+    </div>
+    <details class="eng-item" id="catalogo">
+      <summary>
+        <span class="eng-title"><i class="bi bi-table" aria-hidden="true"></i> Catálogo canônico</span>
+        <span class="eng-meta">Nome público, estágio, edição gratuita e preço</span>
+      </summary>
+      <div class="eng-item-body">
+<div class="container">
+    <p class="text-muted mb-3">Nome público, categoria, estágio de maturidade, edição gratuita e preço de cada produto em um só lugar. A loja de cada produto continua sendo a fonte comercial.</p>
+    <div data-cc-catalog-legend></div>
+    <p class="cc-cat-count mb-3" data-cc-catalog-count></p>
+    <div data-cc-catalog></div>
+    <details class="portfolio-secondary mt-3">
+      <summary><strong>Regras de nomenclatura e desambiguação</strong></summary>
+      <div class="mt-2" data-cc-catalog-notes></div>
+    </details>
+    <p class="small text-muted mb-0 mt-3">Planos de desenvolvimento de sites são serviço de engenharia, fora deste catálogo: consulte <a href="sites.html">sites.html</a>.</p>
+  </div>
+      </div>
+    </details>
+    <details class="eng-item" id="portfolio-releases">
+      <summary>
+        <span class="eng-title"><i class="bi bi-clock-history" aria-hidden="true"></i> Versões, releases e cronogramas</span>
+        <span class="eng-meta">Cada produto, sua tag e seu estágio</span>
+      </summary>
+      <div class="eng-item-body">
+<div class="container">
     <div class="portfolio-releases">
-      <h2><i class="bi bi-clock-history text-primary"></i> Releases e marcos</h2>
       <details class="portfolio-secondary">
         <summary>Consultar releases e marcos por produto</summary>
       <div class="release-timeline">
@@ -1828,9 +1713,419 @@ graph LR
       </details>
     </div>
   </div>
+      </div>
+    </details>
+    <details class="eng-item" id="eng-pdv">
+      <summary>
+        <span class="eng-title"><i class="bi bi-cash" aria-hidden="true"></i> PDV — homologação, gates e integridade</span>
+        <span class="eng-meta">3.2.12-free (versão anterior) · v4 em pré-lançamento</span>
+      </summary>
+      <div class="eng-item-body">
+<h4>Versão anterior — 3.2.12-free</h4>
+<p>Última da linha 3.2.x, publicada em 15/10/2026 por autorização explícita e sem homologação operacional completa. Em manutenção de transição até 08/11/2026, continua sendo a versão indicada para operar. Corrige o HTTP 405 e distingue estorno de cancelamento.</p>
+<ul class="eng-list">
+  <li>19/19 testes focados Java 25/H2 aprovados; integridade dos ZIPs e hashes remotos conferidos.</li>
+  <li>Fonte: <code>72ace488aed4ee91001c60cf40a3934ddfe8faf1</code> (branch <code>hotfix/3.2.12-free</code>).</li>
+  <li>Gates pendentes: suíte completa e migrações SQLite/V047 no pacote; smoke portátil com SQLite, <code>/health</code> e navegador; execução Linux/macOS; homologação operacional completa, incluindo Edge e leitor físico. Os aceites da 3.2.8 não certificam a 3.2.12.</li>
+</ul>
+<details class="eng-sub">
+  <summary>Integridade dos ZIPs — 3.2.12-free</summary>
+  <ul class="eng-list">
+    <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-windows-x64.zip" target="_blank" rel="noopener">Windows x64</a> · SHA-256: <code class="text-break">6d7a50b0acf2a05620a090eebdd48f049a1dd5599ccb6c40c419c38145f7c0e2</code></li>
+    <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-linux-x64.zip" target="_blank" rel="noopener">Linux x64</a> · SHA-256: <code class="text-break">795a396318da61d1bd45dcfe816879d2184706f1c7849f1cd2ad98baa99fd9c1</code></li>
+    <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-macos-x64.zip" target="_blank" rel="noopener">macOS x64 (Intel)</a> · SHA-256: <code class="text-break">795a396318da61d1bd45dcfe816879d2184706f1c7849f1cd2ad98baa99fd9c1</code></li>
+  </ul>
+  <p><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/SHA256SUMS.txt" target="_blank" rel="noopener">SHA256SUMS.txt</a> · <a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/RELEASE_MANIFEST.json" target="_blank" rel="noopener">RELEASE_MANIFEST.json</a></p>
+</details>
+<h4>v4 em pré-lançamento</h4>
+<p>Prévia pública <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-candidato-20261031" target="_blank" rel="noopener">v4.0.0-candidato-20261031</a> (build de 31/10/2026), em ZIP portátil Windows x64 unsigned, sem MSI. A RC6 e a RC5 ficam no histórico. Não é GA nem substitui a versão anterior: a v4 avança pelo ciclo de RCs e só é promovida após gates e aceites formais, sem data automática de GA em 08/11. O plano Free não inclui PIX integrado nem emissão de NF-e/NFC-e.</p>
+<p class="eng-meta">Stack: Java 25 · Quarkus · SQLite · Bootstrap 5 · HTMX · ApexCharts · Docker · Windows, Linux e macOS (Free 3.2.x).</p>
+<div class="eng-links">
+  <a href="https://pdv.caracore.com.br/roadmap-2026.html" target="_blank" rel="noopener">Roadmap</a>
+  <a href="https://pdv.caracore.com.br/tecnologia.html" target="_blank" rel="noopener">Tecnologia</a>
+  <a href="https://wiki.caracore.com.br/projeto-pdv.html" target="_blank" rel="noopener">Wiki</a>
+  <a href="https://github.com/chmulato/caracore-pdv-releases/releases" target="_blank" rel="noopener">Releases no GitHub</a>
+</div>
+      </div>
+    </details>
+    <details class="eng-item" id="eng-hub">
+      <summary>
+        <span class="eng-title"><i class="bi bi-box-seam" aria-hidden="true"></i> Hub — homologação da pré-release</span>
+        <span class="eng-meta">v2.1.0-rc1.8 · aceite de QA pendente · GA 06/04/2027</span>
+      </summary>
+      <div class="eng-item-body">
+<p>Pré-release Windows <strong>v2.1.0-rc1.8</strong> em ZIP portátil unsigned, publicada para avaliação. O aceite de QA desta build está pendente: não é GA e não foi homologada.</p>
+<ul class="eng-list">
+  <li>GA do instalador Windows previsto para 06/04/2027.</li>
+  <li>Mac e Linux ficam fora desta tag.</li>
+  <li>Produto Free; o suporte é opcional, com pagamento recorrente de R$ 79,90/mês a partir do GA e primeira resposta em até 24 horas.</li>
+  <li>Login por telefone, recuperação por código offline de uso único e sessão com timeout de inatividade de 30 minutos.</li>
+</ul>
+<p class="eng-meta">Stack: Java 25 · Jakarta EE 10 · Tomcat 10.1 · SQLite local (WAL). O WAR é artefato interno de build, não release pública.</p>
+<div class="eng-links">
+  <a href="https://hub.caracore.com.br/download.html" target="_blank" rel="noopener">Pré-release e notas</a>
+  <a href="https://hub.caracore.com.br/tecnologia.html" target="_blank" rel="noopener">Tecnologia</a>
+  <a href="https://wiki.caracore.com.br/projeto-hub.html" target="_blank" rel="noopener">Wiki</a>
+</div>
+      </div>
+    </details>
+    <details class="eng-item" id="eng-fichas">
+      <summary>
+        <span class="eng-title"><i class="bi bi-archive" aria-hidden="true"></i> Fichas completas dos produtos</span>
+        <span class="eng-meta">Texto original preservado · sem peso comercial na página</span>
+      </summary>
+      <div class="eng-item-body">
+        <p class="text-muted">O mesmo conteúdo dos blocos originais de PDV, CSO e Hub, mantido para consulta. A leitura comercial está nos cards de produto, no topo da página.</p>
+        <details class="eng-sub">
+          <summary>PDV — ficha completa</summary>
+          <div class="eng-ficha legacy-produto">
+  <div class="container">
+  <div class="project-card">
+    <div class="project-header pdv">
+      <h2 class="mb-3">
+        <i class="bi bi-cash"></i> CaraCore PDV — versão anterior / Free
+      </h2>
+      <p class="lead mb-2">Java 25 · Quarkus · SQLite · caixa no navegador em localhost:8080</p>
+      <p class="lead mb-3">PDV soberano para pequenos e médios negócios. Mantém a operação de caixa em pé mesmo quando a internet falha. O Free funciona como aplicação web local no computador da loja. O PDV v4 está em pré-lançamento; esta é a versão anterior.</p>
+      <div class="alert alert-secondary mb-3 py-2 px-3" role="alert">
+        <i class="bi bi-megaphone-fill"></i> <strong>Versão anterior</strong> — Windows · Linux · macOS · release <strong>v3.2.12-free</strong>, em manutenção de transição até 08/11/2026 e ainda a indicada para operar.</div>
+      <div class="alert alert-warning mb-3 py-2 px-3" role="note">
+        <strong>Última da linha 3.2.x: 3.2.12-free (15/10/2026).</strong> Publicação autorizada explicitamente em 15/10/2026, sem homologação operacional completa. Corrige HTTP 405 e distingue estorno de cancelamento. Passaram 19/19 testes focados Java 25/H2 e a integridade dos ZIPs/hashes remotos. Fonte: <code>72ace488aed4ee91001c60cf40a3934ddfe8faf1</code>. <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v3.2.12-free" class="alert-link">Consulte as notas e os downloads</a>.
+      </div>
+      <details class="mb-3">
+        <summary>Gates pendentes desta build</summary>
+        <ul class="mt-2">
+          <li>Suíte completa e validação das migrações SQLite/V047 no pacote.</li>
+          <li>Smoke portátil com SQLite/health/navegador, execução Linux/macOS e homologação operacional completa, incluindo Edge/leitor físico.</li>
+          <li>Os aceites da 3.2.8 não certificam a 3.2.12. Antes de atualizar, encerre o PDV, faça backup e preserve os dados existentes.</li>
+        </ul>
+      </details>
+      <details class="mb-3">
+        <summary>Integridade dos ZIPs — 3.2.12-free</summary>
+        <ul class="mt-2">
+          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-windows-x64.zip">Windows x64</a> · SHA-256: <code class="text-break">6d7a50b0acf2a05620a090eebdd48f049a1dd5599ccb6c40c419c38145f7c0e2</code></li>
+          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-linux-x64.zip">Linux x64</a> · SHA-256: <code class="text-break">795a396318da61d1bd45dcfe816879d2184706f1c7849f1cd2ad98baa99fd9c1</code></li>
+          <li><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/caracore-pdv-v3.2.12-free-macos-x64.zip">macOS x64 (Intel)</a> · SHA-256: <code class="text-break">795a396318da61d1bd45dcfe816879d2184706f1c7849f1cd2ad98baa99fd9c1</code></li>
+        </ul>
+        <p><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/SHA256SUMS.txt">SHA256SUMS.txt</a> · <a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/RELEASE_MANIFEST.json">RELEASE_MANIFEST.json</a></p>
+      </details>
+      <div class="alert alert-info mb-3 py-2 px-3" role="note">
+        <i class="bi bi-calendar-event"></i> <strong>PDV v4 em pré-lançamento:</strong> <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-candidato-20261031" class="alert-link">v4.0.0-candidato-20261031</a> (build de 31/10/2026), em ZIP portátil Windows x64 unsigned, sem MSI. A RC6 e a RC5 ficam no histórico. Não é GA nem substitui a versão anterior. A v4 avança pelo ciclo de RCs e só será promovida após gates e aceites formais, sem data automática de GA em 08/11. A versão anterior continua <strong>v3.2.12-free</strong>, última da linha 3.2.x, em manutenção de transição até 08/11/2026. O plano Free não inclui PIX integrado nem emissão de NF-e/NFC-e. <a href="https://pdv.caracore.com.br/roadmap-2026.html" class="alert-link">Ver roadmap</a>.
+      </div>
+      <div>
+        <span class="tech-badge">Java 25</span>
+        <span class="tech-badge">Quarkus</span>
+        <span class="tech-badge">SQLite</span>
+        <span class="tech-badge">Windows · Linux · macOS</span>
+        <span class="tech-badge">Bootstrap 5</span>
+        <span class="tech-badge">HTMX</span>
+        <span class="tech-badge">ApexCharts</span>
+        <span class="tech-badge">Docker</span>
+      </div>
+    </div>
+    
+    <div class="card-body p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="project-content-block block-executive">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+            </h3>
+            <p class="mb-2">
+              O <strong>CaraCore PDV — linha madura</strong> mantém caixa e rotina da loja com previsibilidade — vender, fechar e acompanhar o movimento sem improviso.
+            </p>
+            <p class="mb-2"><strong>Benefícios de negócio:</strong></p>
+            <ul class="feature-list mb-0">
+              <li>Vendas e fechamento mesmo com internet instável</li>
+              <li>Free: até 100 vendas finalizadas/mês civil, 100 produtos, 1 operador — caixa real sem custo</li>
+              <li>Caixa, recebimento e indicadores em fluxo único</li>
+              <li>Backup e continuidade com dados locais (%APPDATA%\caracore\)</li>
+            </ul>
+          </div>
+          <div class="alert alert-info mt-3 mb-0" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> ativo proprietário — implantação, migração e suporte para continuidade operacional.</div>
+        </div>
+        
+        <div class="col-md-6">
+          <div class="project-content-block block-leigos">
+            <h3 class="h4 mb-3">
+              <i class="bi bi-book-fill"></i> Para Leigos
+            </h3>
+            <p class="mb-2">O Free <strong>3.2.12</strong> (versão anterior) é uma aplicação web local: abra o navegador em <code>http://localhost:8080/login</code>; os dados ficam em SQLite no computador da loja.</p>
+            <div class="block-leigos-sub mb-0">
+              <h4>O que o Free entrega hoje</h4>
+              <ul class="feature-list mb-0">
+                <li>Cadastro de produtos, busca, abertura e finalização de vendas</li>
+                <li>Até 100 vendas finalizadas por mês civil, 100 produtos e 1 operador</li>
+                <li>Pagamentos em dinheiro, débito, crédito e outros — sem PIX integrado</li>
+                <li>Recibo digital por link e PDF, sem valor fiscal</li>
+                <li>Sem emissão de NF-e/NFC-e</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-4">
+        <a href="https://pdv.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Loja e vitrine (releases)
+        </a>
+        <a href="https://pdv.caracore.com.br/download.html" class="btn-project me-2">
+          <i class="bi bi-download"></i> Download da loja
+        </a>
+        <a href="https://github.com/chmulato/caracore-pdv-releases/releases/latest" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-github"></i> Releases GitHub
+        </a>
+        <a href="https://pdv.caracore.com.br/tecnologia.html" class="btn-project me-2">
+          <i class="bi bi-code-slash"></i> Tecnologia
+        </a>
+        <a href="https://wiki.caracore.com.br/projeto-pdv.html" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-journal-code"></i> Wiki
+        </a>
+        <div class="mt-3">
+          <small class="text-muted">
+            <i class="bi bi-lock-fill"></i> Código-fonte privado | 
+            <i class="bi bi-file-earmark-text"></i> Apresentação pública (GitHub Pages) |
+            <i class="bi bi-handshake"></i> Alocação técnica dedicada e consultoria por projeto (B2B)
+          </small>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Botão Voltar ao Topo -->
+    <div class="text-start mt-4 px-4 pb-3">
+      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-up"></i> Voltar ao Topo
+      </a>
+    </div>
+  </div>
+  </div>
+          </div>
+        </details>
+        <details class="eng-sub">
+          <summary>CSO — ficha completa</summary>
+          <div class="eng-ficha legacy-produto">
+  <div class="container">
+  <div class="project-card">
+    <div class="project-header hub">
+      <h2 class="mb-3">
+        <i class="bi bi-truck"></i> CaraCore CSO — Gestão de Frotas e Transportes
+      </h2>
+      <p class="lead mb-3"><strong>Cuide da frota, organize entregas e acompanhe deslocamentos.</strong> Frotas já opera no navegador, sem GPS. Transportes + Virtual Tracker integrado estão em desenvolvimento, com <strong>alvo conjunto em 08/11/2028</strong>, sujeito à validação e homologação.</p>
+      <div>
+        <span class="tech-badge">Java 21 / Quarkus</span>
+        <span class="tech-badge">PostgreSQL</span>
+        <span class="tech-badge">Qute / HTMX</span>
+        <span class="tech-badge">JavaFX / SQLite</span>
+        <span class="tech-badge">Web &amp; Desktop</span>
+      </div>
+    </div>
+    <div class="card-body p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="h4 mb-3">
+            <i class="bi bi-briefcase-fill text-primary"></i> Visão Executiva
+          </h3>
+          <p>
+            O <strong>CaraCore CSO</strong> tem duas frentes: gestão de frota no navegador (já no ar, com km/L, documentos, pneus, exame, infrações e custo por km) e bunker desktop em 2028, acoplado à Frotas. O freeze M1 de 08/11/2026 estabiliza o que já está publicado. A vitrine apresenta as duas frentes com honestidade de Garagem.
+          </p>
+          <ul class="feature-list"><li>Gestão de frota no site: veículos, combustível, manutenção, km/L, documentos, pneus, exame, infrações, custo por km, equipe, planos e LGPD (em produção)</li><li>Transportes planejado: clientes, entregas e equipe no computador da empresa</li><li>Virtual Tracker integrado, não terceiro produto: celular do motorista, viagem autorizada e conexão necessária; sem fila offline</li><li>Frotas encaminha conteúdo cifrado sem ler ou persistir trajetos; mapa, histórico e chave privada somente no desktop</li><li>Planos FREE_3 a CORPORATE e Pix avulso referem-se à Frotas atual; não incluem automaticamente o futuro VT</li></ul>
+          <div class="alert alert-info mt-3" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Disponibilidade:</strong> Frotas já disponível. Transportes + VT em desenvolvimento, sem contratação antecipada, preço ou instalador público confirmado.</div>
+          <p class="text-muted small mt-3 mb-0">Frotas em produção desde 06/10/2026, com freeze em 08/11/2026. Gestão web somente online; PWA de gestão offline cancelada. Acompanhamento futuro depende de prova móvel, capacidade e homologação.</p>
+        </div>
+        <div class="col-md-6">
+          <h3 class="h4 mb-3">
+            <i class="bi bi-book-fill text-info"></i> Para Leigos
+          </h3>
+          <p>
+            A <strong>Gestão de Frotas</strong> cuida dos carros e custos, começando grátis com até 3 veículos. A <strong>Gestão de Transportes</strong> organizará as entregas. O <strong>Virtual Tracker</strong> permitirá acompanhar o deslocamento pelo celular do motorista, sem aparelho dedicado. São duas aplicações integradas, não três produtos; essa integração ainda não está disponível.
+          </p>
+          <ul class="feature-list">
+            <li>Entra no site hoje; não precisa instalar nada para a Frotas</li>
+            <li>Dados administrativos locais continuam na empresa; novas posições exigem rede e base disponível</li>
+            <li>Duas URLs: aplicação em cso.caracore.com.br · vitrine em cso-transp.caracore.com.br</li>
+          </ul>
+          <p class="text-muted small mb-0"><strong>Frotas:</strong> disponível, sem GPS. <strong>Transportes + VT:</strong> alvo 08/11/2028, não garantia de lançamento.</p>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="https://cso.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-box-arrow-up-right"></i> Acessar aplicação
+        </a>
+        <a href="https://cso-transp.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Conhecer Transportes + Virtual Tracker
+        </a>
+        <div class="mt-3">
+          <small class="text-muted">
+            <i class="bi bi-lock-fill"></i> Código-fonte privado |
+            <i class="bi bi-calendar-event"></i> Frotas em produção · Transportes 08/11/2028 |
+            <i class="bi bi-database-fill"></i> PostgreSQL (Frotas) e SQLite (desktop 2028)
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="text-start mt-4 px-4 pb-3">
+      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-up"></i> Voltar ao Topo
+      </a>
+    </div>
+  </div>
+  </div>
+          </div>
+        </details>
+        <details class="eng-sub">
+          <summary>Hub — ficha completa</summary>
+          <div class="eng-ficha legacy-produto">
+  <div class="container">
+  <div class="project-card">
+    <div class="project-header hub">
+      <h2 class="mb-3">
+        <i class="bi bi-cart-fill"></i> CaraCore Hub
+      </h2>
+      <p class="lead mb-3">Gestão logística interna para pontos de retirada (PUDOs): receba, guarde e entregue encomendas com controle local, sem planilha e sem depender de nuvem.</p>
+      <div class="alert alert-warning mb-3 py-2 px-3" role="status">
+        <i class="bi bi-info-circle-fill"></i> <strong>Pré-release Windows v2.1.0-rc1.8.</strong> ZIP portátil disponível para avaliação; o aceite de QA desta build está pendente. GA do instalador previsto para <strong>06/04/2027</strong>.</div>
+      <div>
+        <span class="tech-badge">Java 25</span>
+        <span class="tech-badge">Jakarta EE 10</span>
+        <span class="tech-badge">SQLite</span>
+        <span class="tech-badge">Tomcat 10.1</span>
+      </div>
+    </div>
+    
+    <div class="card-body p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="h4 mb-3">
+            <i class="bi bi-briefcase-fill text-warning"></i> Visão Executiva
+          </h3>
+          <p>
+            O <strong>CaraCore Hub</strong> resolve a operação de quem recebe encomenda de terceiros e entrega no balcão. O ponto de retirada (PUDO) passa a ter um fluxo único — recebimento, conferência, guarda por posição e retirada conferida — no lugar de caderno, planilha e grupo de mensagens. A visão é operacional: o que chegou, onde está guardado e o que já foi entregue.
+          </p>
+          <p>
+            <strong>Benefícios de Negócio:</strong>
+          </p>
+          <ul class="feature-list"><li>Um único fluxo para receber, guardar e entregar encomendas</li><li>Menos encomenda perdida e menos tempo procurando volume</li><li>Retirada conferida por volume, com registro de quem entregou</li><li>Controle local dos dados, sem depender de conexão para operar</li><li>Base operacional pronta para crescer em volume sem perder rastro</li></ul>
+          <div class="alert alert-info mt-3" role="alert">
+            <i class="bi bi-info-circle-fill"></i> <strong>Licenciamento:</strong> software proprietário da Cara Core Informática. O produto é <strong>Free</strong>: não há licença mensal pelo Hub. O suporte é opcional e é contratado à parte, com pagamento recorrente de <strong>R$ 79,90/mês</strong> a partir do GA do instalador Windows (06/04/2027), com primeira resposta em até 24 horas, incluindo as integrações com Mercado Livre, Shopee e Temu. A pré-release atual é de avaliação e não é cobrada.
+          </div>
+        </div>
+        
+        <div class="col-md-6">
+          <h3 class="h4 mb-3">
+            <i class="bi bi-book-fill text-info"></i> Para Leigos
+          </h3>
+          <p>
+            Imagine o <strong>balcão de um ponto de retirada</strong>: chegam encomendas do Mercado Livre, da Shopee e da Temu, e alguém precisa saber o que chegou, onde guardar e para quem entregar. É isso que o CaraCore Hub organiza — com os dados em <strong>SQLite no computador</strong>, sem depender de nuvem.
+          </p>
+          <p>
+            <strong>Pense assim:</strong> hoje a encomenda chega, é anotada num caderno e guardada em algum canto. Semanas depois, o cliente aparece e começa a busca. Com o CaraCore Hub, cada volume tem posição e status: recebido, guardado, pronto para retirada, entregue.
+          </p>
+          <p>
+            É como ter um <strong>balconista organizado</strong> que:
+          </p>
+          <ul class="feature-list">
+            <li>Registra a encomenda assim que ela chega ao balcão</li>
+            <li>Diz exatamente em que posição o volume foi guardado</li>
+            <li>Confere o volume na hora da retirada, um por um</li>
+            <li>Avisa quando uma encomenda está parada há tempo demais</li>
+            <li>Mostra o que já foi entregue e o que ainda está na prateleira</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="text-center mt-4">
+        <a href="https://hub.caracore.com.br/" class="btn-project me-2" target="_blank" rel="noopener">
+          <i class="bi bi-shop"></i> Loja e vitrine (releases)
+        </a>
+        <a href="https://hub.caracore.com.br/download.html" class="btn-project me-2">
+          <i class="bi bi-download"></i> Pré-release Windows
+        </a>
+        <a href="https://hub.caracore.com.br/tecnologia.html" class="btn-project me-2">
+          <i class="bi bi-code-slash"></i> Tecnologia
+        </a>
+        <a href="https://hub.caracore.com.br/canal-feedback.html" class="btn-project me-2">
+          <i class="bi bi-chat-dots"></i> Canal de feedback
+        </a>
+        <a href="https://hub.caracore.com.br/slides/apresentacao_tia_socia.html" class="btn-project me-2">
+          <i class="bi bi-easel"></i> Cenário ilustrativo (Tia Sócia)
+        </a>
+        <div class="mt-3">
+          <small class="text-muted">
+            <i class="bi bi-lock-fill"></i> Código-fonte privado | 
+            <i class="bi bi-shop"></i> Loja/vitrine (GitHub Pages — caracore-hub-releases)
+          </small>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Botão Voltar ao Topo -->
+    <div class="text-start mt-4 px-4 pb-3">
+      <a href="#portfolio-header" class="btn btn-outline-secondary btn-sm">
+        <i class="bi bi-arrow-up"></i> Voltar ao Topo
+      </a>
+    </div>
+  </div>
+  </div>
+          </div>
+        </details>
+      </div>
+    </details>
+    <details class="eng-item" id="decisoes-engenharia">
+      <summary>
+        <span class="eng-title"><i class="bi bi-signpost-split" aria-hidden="true"></i> Decisões de engenharia e auditoria técnica</span>
+        <span class="eng-meta">Problema, decisão e resultado em três casos</span>
+      </summary>
+      <div class="eng-item-body">
+<div class="container">
+    <div class="portfolio-cross-block portfolio-cases">
+      <p class="mb-4 text-muted">Exemplos de problemas, escolhas técnicas e resultados em produtos do ecossistema Cara Core.</p>
+      <div class="portfolio-case-grid">
+        <article class="portfolio-case-card">
+          <h3><i class="bi bi-diagram-2 text-primary"></i> Coexistência PDV — sem lock-in de stack</h3>
+          <dl>
+            <dt>Problema</dt>
+            <dd>Loja precisa de PDV local confiável, mas contextos divergem: aplicação Java web local multiplataforma vs piloto Rust desktop com transparência total ao lojista.</dd>
+            <dt>Decisão</dt>
+            <dd>Duas linhas do mesmo CaraCore PDV convivem — canal Java maduro <em>e</em> piloto Rust + Tauri. Nenhuma substitui a outra; escolha por cenário, não por moda.</dd>
+            <dt>Resultado</dt>
+            <dd>Cliente escolhe por operação (Linux/macOS/fiscal consolidado vs piloto Windows/MSI/transparência), sem reescrita forçada nem promessa de “nova geração”.</dd>
+          </dl>
+          <a href="#pdv-coexistencia" class="case-link">Ver comparação completa →</a>
+        </article>
+        <article class="portfolio-case-card">
+          <h3><i class="bi bi-wifi-off text-success"></i> Bunker offline-first — operação que não para</h3>
+          <dl>
+            <dt>Problema</dt>
+            <dd>Caixa, agenda e dados sensíveis não podem ter a operação crítica como <strong>single point of failure na rede</strong> nem depender <strong>exclusivamente de cloud</strong> para funcionar.</dd>
+            <dt>Decisão</dt>
+            <dd>Arquitetura híbrida com camada local (SQLite, edge, dados no ambiente do cliente); sincronização e serviços cloud só quando o trade-off pede — resiliência e FinOps, não ideologia anti-nuvem.</dd>
+            <dt>Resultado</dt>
+            <dd>Venda e operação continuam sem internet; soberania local; cálculo estimado de IBS/CBS no Premium (em validação) — sem emissão de NF-e/NFC-e no plano Free.</dd>
+          </dl>
+          <a href="#filosofia-bunker" class="case-link">Ver filosofia Bunker →</a>
+        </article>
+        <article class="portfolio-case-card">
+          <h3><i class="bi bi-search text-info"></i> Critério humano sobre código assistido por IA</h3>
+          <dl>
+            <dt>Problema</dt>
+            <dd>IA acelera escrita de código, mas não substitui auditoria, governança de login nem consistência de processo em ambientes regulados.</dd>
+            <dt>Decisão</dt>
+            <dd>Formação e ferramentas para <strong>leitura técnica</strong> e validação com método (Circuito Ferradura, Minerador ETE, trilha Reino OIDC, livro A Rebeldia da Mecatrônica) — cognição local, rastreabilidade.</dd>
+            <dt>Resultado</dt>
+            <dd>Repertório para validar entregas assistidas por IA, auditar identidade (OIDC) e manter disciplina de engenharia — decisão de alto nível, não lista de linguagens.</dd>
+          </dl>
+          <a href="#circuito-python" class="case-link">Ver Circuito Ferradura →</a>
+        </article>
+      </div>
+      <p class="mb-0 mt-4 small text-muted"><i class="bi bi-briefcase"></i> Contratar engenharia B2B: <a href="index.html#engenharia-b2b">alocação técnica dedicada ou consultoria por projeto</a> · <a href="index.html#contato">falar sobre alocação</a></p>
+    </div>
+  </div>
+      </div>
+    </details>
+  </div>
 </section>
-
-<!-- Sobre a Cara Core -->
 <section id="sobre-caracore" class="py-5 bg-light">
   <div class="container">
     <div class="portfolio-about">
@@ -1884,11 +2179,10 @@ graph LR
 </section>
 
 <!-- Footer -->
-<footer class="bg-dark text-white text-center py-4">
-  <div class="container">
-    <span class="mb-3 d-block">
-      © 2025 Cara Core Informática. Todos os direitos reservados.<br>
-      Cara Core Informática · CNPJ: 23.969.028/0001-37 · <a href="https://www.caracore.com.br/" class="text-decoration-none text-white">www.caracore.com.br</a> · <a href="mailto:suporte@caracore.com.br" class="text-decoration-none text-white">suporte@caracore.com.br</a><br>
+<footer class="py-3 mt-4 site-footer">
+  <div class="container text-center">
+    <span class="fw-semibold text-secondary">
+      Cara Core Informática · CNPJ: 23.969.028/0001-37 · <a href="https://www.caracore.com.br/" class="text-decoration-none">www.caracore.com.br</a> · <a href="mailto:suporte@caracore.com.br" class="text-decoration-none">suporte@caracore.com.br</a><br>
     </span>
     <div class="mt-2">
       <a href="politica/politica-privacidade.html" class="text-decoration-none text-primary fw-semibold me-3">
@@ -1915,14 +2209,15 @@ graph LR
 <script src="/js/vendor/mermaid/mermaid.min.js"></script>
 
 <script>
-  // Abre o bloco recolhido quando o visitante chega por âncora (ex.: #rebeldia-mecatronica).
+  // Abre os blocos recolhidos (inclusive os pais) quando o visitante chega por âncora.
   function openHashDetails() {
     if (!location.hash || location.hash === '#') return;
     var target;
     try { target = document.querySelector(location.hash); } catch (err) { return; }
     if (!target) return;
-    var details = target.closest('details') || target.querySelector('details');
-    if (details) details.open = true;
+    for (var node = target; node; node = node.parentElement) {
+      if (node.tagName === 'DETAILS') node.open = true;
+    }
   }
   openHashDetails();
   window.addEventListener('hashchange', openHashDetails);

@@ -1,18 +1,67 @@
+/**
+ * Cara Core — tipografia e tokens base do site.
+ *
+ * Carregado depois do Bootstrap em todas as páginas: as regras de elemento
+ * abaixo vencem as do framework por ordem de carregamento. As variáveis
+ * --bs-* são sobrescritas para que a pilha de fontes do site não dependa
+ * do system-ui de cada sistema operacional.
+ */
+
 :root {
-  --cc-font-heading: "Segoe UI", Tahoma, Arial, sans-serif;
-  --cc-font-body: "Segoe UI", Arial, sans-serif;
+  --cc-font-body: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --cc-font-heading: "Segoe UI", "Segoe UI Semibold", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --cc-font-mono: ui-monospace, "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+
+  --cc-ink: #1f2430;
+  --cc-mute: #5a6472;
+  --cc-line: #e3e7ec;
+  --cc-soft: #f7f9fb;
+  --cc-link: #0a6b85;
+
+  --cc-fs-page-title: clamp(1.9rem, 3.4vw, 2.6rem);
+  --cc-fs-section-title: clamp(1.5rem, 2.6vw, 2rem);
+  --cc-fs-eyebrow: 0.72rem;
+  --cc-lh-title: 1.14;
+  --cc-radius-card: 14px;
+  --cc-radius-control: 10px;
+  --cc-nav-h: 60px;
+
+  --bs-body-font-family: var(--cc-font-body);
+  --bs-body-font-size: 1rem;
+  --bs-body-line-height: 1.6;
+  --bs-body-color: var(--cc-ink);
 }
 
-:where(body) {
+body {
   font-family: var(--cc-font-body);
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--cc-ink);
+  -webkit-font-smoothing: antialiased;
 }
 
-:where(h1, h2, h3, h4, h5, h6) {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
   font-family: var(--cc-font-heading);
-  letter-spacing: 0.01em;
 }
 
-:where(button, input, select, textarea, .btn) {
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+code, kbd, pre, samp,
+.font-monospace {
+  font-family: var(--cc-font-mono);
+}
+
+button, input, optgroup, select, textarea {
   font-family: var(--cc-font-body);
+}
+
+body :focus-visible {
+  outline: 2px solid var(--cc-link);
+  outline-offset: 2px;
 }

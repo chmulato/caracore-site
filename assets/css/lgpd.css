@@ -81,6 +81,13 @@
   to { transform: translateY(100%); }
 }
 
+/* Menu recolhido: alvos de toque de 44px também no tablet */
+@media (max-width: 1199.98px) {
+  .lgpd-btn {
+    min-height: 44px;
+  }
+}
+
 /* Responsividade */
 @media (max-width: 768px) {
   .lgpd-content {
@@ -101,6 +108,7 @@
   
   .lgpd-btn {
     flex: 1;
-    max-width: 120px;
+    max-width: 140px;
+    min-height: 44px;
   }
 }

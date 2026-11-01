@@ -23,10 +23,26 @@
   z-index: 1;
 }
 
+.secao-metamorfose h1,
 .secao-metamorfose h2 {
   font-family: inherit;
   text-transform: none;
   letter-spacing: normal;
   color: #ffffff;
   text-shadow: none;
+}
+
+/* A seção usa .py-5 para a vertical; aqui só o respiro lateral encolhe */
+@media (max-width: 991.98px) {
+  .secao-metamorfose {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .secao-metamorfose {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
 }

@@ -1,0 +1,614 @@
+/**
+ * Produtos (home) — vitrine comercial.
+ * Hierarquia: hero → três produtos principais → diferencial → outros → técnico recolhido.
+ * Cores: PDV índigo · CSO petróleo · Hub âmbar (as mesmas do Ecossistema e do Portfólio).
+ */
+
+.p2-section {
+  --p2-ink: #171a1f;
+  --p2-mute: #5a6472;
+  --p2-line: #e3e7ec;
+  --p2-soft: #f7f9fb;
+  --p2-ok: #0f7b4f;
+  --p2-pdv: #4338ca;
+  --p2-cso: #0e7490;
+  --p2-hub: #b45309;
+  background: #fff;
+  color: var(--p2-ink);
+}
+
+.p2-section a:focus-visible,
+.p2-section summary:focus-visible {
+  outline: 2px solid var(--p2-ink);
+  outline-offset: 2px;
+}
+
+/* Hero ----------------------------------------------------------------- */
+
+.p2-hero {
+  max-width: 62rem;
+  margin: 0 auto 3rem;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.p2-eyebrow {
+  margin: 0 0 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p2-mute);
+}
+
+.p2-hero-title {
+  margin: 0 auto 0.85rem;
+  max-width: 24ch;
+  font-size: clamp(1.65rem, 3.4vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+}
+
+.p2-hero-lead {
+  margin: 0 auto 1.6rem;
+  max-width: 58ch;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  color: var(--p2-mute);
+}
+
+.p2-hero-split {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.08rem;
+  color: var(--p2-mute);
+}
+
+.p2-hero-split strong {
+  color: var(--p2-ink);
+  font-weight: 800;
+}
+
+/* Bandas --------------------------------------------------------------- */
+
+.p2-band {
+  margin-top: 2.75rem;
+}
+
+.p2-band-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem 1.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.p2-band-title {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.p2-band-lead {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--p2-mute);
+}
+
+.p2-band-lead a {
+  color: var(--p2-mute);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.p2-band-lead a:hover {
+  color: var(--p2-ink);
+}
+
+/* Produtos principais -------------------------------------------------- */
+
+.p2-core {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.p2-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  border: 1px solid var(--p2-line);
+  border-top: 4px solid var(--p2-accent, var(--p2-line));
+  border-radius: 14px;
+  background: #fff;
+  padding: 1.3rem 1.3rem 1.15rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+.p2-card--pdv { --p2-accent: var(--p2-pdv); }
+.p2-card--cso { --p2-accent: var(--p2-cso); }
+.p2-card--hub { --p2-accent: var(--p2-hub); }
+
+.p2-card-head {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  justify-items: start;
+}
+
+.p2-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.p2-card-icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 10px;
+  background: var(--p2-soft);
+  color: var(--p2-accent);
+  font-size: 1.15rem;
+}
+
+.p2-card-name {
+  margin: 0;
+  font-size: 1.16rem;
+  line-height: 1.2;
+}
+
+.p2-card-sub {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+  color: var(--p2-mute);
+}
+
+.p2-chip {
+  padding: 0.24rem 0.55rem;
+  border: 1px solid var(--p2-line);
+  border-radius: 999px;
+  background: var(--p2-soft);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--p2-mute);
+}
+
+.p2-block {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.p2-label {
+  margin: 0;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--p2-mute);
+}
+
+.p2-text {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.p2-problems,
+.p2-checklist {
+  display: grid;
+  gap: 0.32rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.89rem;
+  line-height: 1.45;
+}
+
+.p2-problems li,
+.p2-checklist li {
+  display: grid;
+  grid-template-columns: 0.9rem 1fr;
+  gap: 0.45rem;
+}
+
+.p2-problems li::before {
+  content: "–";
+  color: var(--p2-mute);
+}
+
+.p2-checklist li::before {
+  content: "✓";
+  font-weight: 800;
+  color: var(--p2-ok);
+}
+
+.p2-card-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.95rem;
+  margin-top: auto;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--p2-line);
+}
+
+.p2-btn {
+  display: inline-block;
+  padding: 0.5rem 0.95rem;
+  border: 1px solid var(--p2-line);
+  border-radius: 9px;
+  background: #fff;
+  font-size: 0.87rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  color: var(--p2-ink);
+}
+
+.p2-btn:hover {
+  border-color: var(--p2-ink);
+  color: var(--p2-ink);
+}
+
+.p2-btn--primary {
+  border-color: var(--p2-accent);
+  background: var(--p2-accent);
+  color: #fff;
+}
+
+.p2-btn--primary:hover {
+  border-color: var(--p2-accent);
+  color: #fff;
+  filter: brightness(1.1);
+}
+
+.p2-link {
+  font-size: 0.84rem;
+  color: var(--p2-mute);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.p2-link:hover {
+  color: var(--p2-ink);
+}
+
+/* Diferencial ---------------------------------------------------------- */
+
+.p2-band--diff {
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--p2-line);
+}
+
+/* Neutraliza a regra #diferenciais da home (main.css) */
+#diferenciais.p2-band--diff {
+  background: none;
+  color: inherit;
+}
+
+.p2-diff {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.1rem 1.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.p2-diff h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 0 0.3rem;
+  font-size: 0.97rem;
+}
+
+.p2-diff h4 i {
+  font-size: 1.05rem;
+  color: var(--p2-pdv);
+}
+
+.p2-diff p {
+  margin: 0;
+  font-size: 0.87rem;
+  line-height: 1.5;
+  color: var(--p2-mute);
+}
+
+/* Outros produtos ------------------------------------------------------ */
+
+.p2-band--others {
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--p2-line);
+}
+
+.p2-others {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.4rem 1.6rem;
+}
+
+.p2-group {
+  padding-left: 0.9rem;
+  border-left: 1px solid var(--p2-line);
+}
+
+.p2-group:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.p2-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin: 0 0 0.6rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--p2-mute);
+}
+
+.p2-group-list {
+  display: grid;
+  gap: 0.65rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.p2-group-list li {
+  display: grid;
+  gap: 0.12rem;
+}
+
+.p2-group-list a {
+  font-size: 0.93rem;
+  font-weight: 700;
+  line-height: 1.3;
+  text-decoration: none;
+  color: var(--p2-ink);
+}
+
+.p2-group-list a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.p2-group-list span {
+  font-size: 0.79rem;
+  line-height: 1.45;
+  color: var(--p2-mute);
+}
+
+.p2-others-foot {
+  margin: 0.9rem 0 0;
+  font-size: 0.84rem;
+  color: var(--p2-mute);
+}
+
+.p2-others-foot a {
+  color: var(--p2-mute);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.p2-others-foot a:hover {
+  color: var(--p2-ink);
+}
+
+/* Detalhes técnicos ---------------------------------------------------- */
+
+.p2-band--tech {
+  padding-top: 2.4rem;
+  border-top: 1px solid var(--p2-line);
+}
+
+.p2-details {
+  border: 1px solid var(--p2-line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.p2-details + .p2-details {
+  margin-top: 0.55rem;
+}
+
+.p2-details summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.2rem 0.8rem;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.p2-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.p2-details summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--p2-mute);
+}
+
+.p2-details[open] summary::after {
+  content: "–";
+}
+
+.p2-details-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.p2-details-meta {
+  font-size: 0.79rem;
+  color: var(--p2-mute);
+}
+
+.p2-details-body {
+  padding: 0 1rem 1rem;
+  border-top: 1px solid var(--p2-line);
+}
+
+.p2-spec {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  gap: 0.45rem 1rem;
+  margin: 0.9rem 0 0;
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.p2-spec dt {
+  font-weight: 700;
+  color: var(--p2-mute);
+}
+
+.p2-spec dd {
+  margin: 0;
+}
+
+.p2-spec a {
+  color: var(--p2-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.p2-spec code {
+  padding: 0.05rem 0.32rem;
+  border-radius: 4px;
+  background: var(--p2-soft);
+  font-size: 0.78rem;
+  word-break: break-all;
+}
+
+.p2-details-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1rem;
+  margin: 0.95rem 0 0;
+  font-size: 0.84rem;
+}
+
+.p2-details-links a {
+  color: var(--p2-ink);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Âncoras -------------------------------------------------------------- */
+
+.p2-section,
+.p2-section [id],
+.p2-section .p2-card,
+.p2-section .p2-details {
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
+}
+
+/* Responsivo ----------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .p2-core {
+    grid-template-columns: 1fr;
+  }
+
+  .p2-diff {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .p2-others {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1199.98px) {
+  .p2-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+  }
+
+  .p2-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .p2-details summary {
+    padding: 0.65rem 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .p2-hero {
+    margin-bottom: 2.2rem;
+    text-align: left;
+  }
+
+  .p2-hero-split {
+    justify-content: flex-start;
+    gap: 0.3rem 1.1rem;
+  }
+
+  .p2-diff,
+  .p2-others {
+    grid-template-columns: 1fr;
+  }
+
+  .p2-group {
+    padding: 0.9rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--p2-line);
+  }
+
+  .p2-spec {
+    grid-template-columns: 1fr;
+    gap: 0.12rem;
+  }
+
+  .p2-spec dd {
+    margin-bottom: 0.55rem;
+  }
+
+  .p2-card-foot {
+    gap: 0.5rem 0.75rem;
+  }
+}
+
+/* Desktop: alvo mínimo de 24px (WCAG 2.5.8) */
+@media (min-width: 1200px) {
+  .p2-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
+}

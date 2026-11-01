@@ -64,6 +64,195 @@ window.CARACORE_PLANNING = {
   },
 
   /**
+   * Camada executiva do painel (2026-11). Só copy e agrupamento:
+   * percentuais continuam em PRODUCTS, datas em EXEC/FUNDING.
+   */
+  PANEL: {
+    core: {
+      "pdv-java": {
+        display: "CaraCore PDV",
+        icon: "cash-stack",
+        kicker: "Produto 01 · Varejo",
+        status: "Em operação · v4 em pré-lançamento",
+        milestone: "08/11/2026 · fim da manutenção da Free 3.2.12",
+        priority: "Máxima",
+        priorityNote: "dono da cota até 08/11/2026",
+        line: "A Free 3.2.12 segue sendo a versão indicada para operar; a v4 avança por RCs até os gates e o aceite formal.",
+      },
+      cso: {
+        display: "CaraCore CSO",
+        icon: "truck",
+        kicker: "Produto 02 · Frotas e transporte",
+        status: "Frotas em operação · Transportes em desenvolvimento",
+        milestone: "08/11/2026 · freeze M1 do Frotas",
+        priority: "Alta",
+        priorityNote: "execução paralela, sem cota de Agent hoje",
+        line: "Frotas roda desde 06/10/2026, sem GPS. Transportes + Virtual Tracker têm alvo conjunto em 08/11/2028, sujeito aos gates INT.",
+      },
+      hub: {
+        display: "CaraCore Hub",
+        icon: "box-seam",
+        kicker: "Produto 03 · Logística de retirada",
+        status: "Pré-release Windows · sem aceite de QA",
+        milestone: "06/04/2027 · GA do instalador Windows",
+        priority: "Alta",
+        priorityNote: "próximo dono da cota, dez/2026–06/04/2027",
+        line: "A rc1.8 está no ar como pré-release unsigned. O GA depende do aceite de QA desta build e dos gates ainda abertos.",
+      },
+    },
+
+    satellites: [
+      {
+        label: "Pesquisa",
+        icon: "diagram-3",
+        hint: "Modelos e simulação aplicada.",
+        items: ["minerador", "ru"],
+      },
+      {
+        label: "Laboratório",
+        icon: "beaker",
+        hint: "Pilotos com limite explícito, fora da fila de execução.",
+        items: ["pdv-rust", "seed"],
+      },
+      {
+        label: "Educação",
+        icon: "mortarboard",
+        hint: "Conteúdo e trilhas de estudo, mantidos sem Agent.",
+        items: ["circuito", "oidc", "rebeldia-mecatronica"],
+      },
+      {
+        label: "Ferramentas complementares",
+        icon: "tools",
+        hint: "Apoio à operação e a projetos de nicho.",
+        items: ["area51", "ink"],
+      },
+    ],
+
+    /** Uma linha por projeto: por que ele está naquela cor do semáforo. */
+    semaforo: {
+      minerador: "v1.2.3 estável; sem GA novo no horizonte.",
+      oidc: "Free 2.0.2 publicada; edição paga em desenvolvimento.",
+      circuito: "v2.0.24 na loja desde 08/10/2026.",
+      area51: "Baseline 0.1.0-dev no ar.",
+      ink: "Desktop 2.0.1 estável; PWA só depois de 2028.",
+      ru: "Community 1.1.1 publicada em 13/10/2026.",
+      "rebeldia-mecatronica": "Livro e PDF publicados; app em estudo.",
+      "pdv-rust": "v0.1.4 no ar; fora da cota.",
+      hub: "Pré-release rc1.8 sem aceite de QA.",
+      cso: "Freeze M1 de 08/11/2026 ainda não fechou.",
+      seed: "Candidata 0.1.5 sem homologação independente.",
+      "pdv-java": "Transição 3.2.12 → v4 com gates e aceites pendentes.",
+    },
+
+    roadmap: [
+      {
+        tag: "Agora",
+        when: "out–nov/2026",
+        title: "PDV v4 em ciclo de RCs",
+        ship: "Candidata v4.0.0-candidato-20261031 publicada em 31/10/2026; homologação em curso.",
+        impact: "Quem já opera continua na 3.2.12, ainda a versão indicada; a v4 só assume depois dos gates.",
+        depends: "Suíte completa, migrações SQLite/V047 no pacote, smoke Windows, runtime Linux/macOS e aceites Edge/leitor físico.",
+      },
+      {
+        tag: "Próximo marco",
+        when: "08/11/2026",
+        title: "Fim da manutenção da Free 3.2.12",
+        ship: "Encerramento da linha 3.2.x; a evolução Java do PDV passa a ser só a v4.",
+        impact: "Menos uma linha para manter e foco total no corte da v4.",
+        depends: "Só a própria transição — e não é data de GA: o GA da v4 depende de gates e aceites formais.",
+      },
+      {
+        tag: "Próxima entrega",
+        when: "06/04/2027",
+        title: "Hub · instalador Windows",
+        ship: "Instalador com Tomcat embutido e SQLite local para pontos de retirada.",
+        impact: "O Hub deixa de ser pré-release e ganha entrada comercial estável.",
+        depends: "Aceite de QA da rc1.8, smoke Linux (B7), decisões de escopo abertas e a janela de cota dez/2026–06/04/2027.",
+      },
+      {
+        tag: "Meta 2029",
+        when: "30/12/2029",
+        title: "Helianto Condominium",
+        ship: "GA do Helianto — e, antes dele, o alvo conjunto de CSO Transportes + Virtual Tracker em 08/11/2028.",
+        impact: "Abre a frente condominial sobre a mesma base de engenharia, sem reabrir o que já está publicado.",
+        depends: "INT-03 fechar a capacidade do Transportes, prova móvel do VT e a cota de 2028–2029 sem on-demand.",
+      },
+    ],
+
+    risks: [
+      {
+        kind: "Gargalo",
+        title: "Uma cota, um produto pesado por ciclo",
+        lead: "O envelope compra uma frente pesada por vez. Mês ocioso não acumula e mês cheio não empresta crédito ao seguinte.",
+        effect: "Um atraso num ciclo passa direto para o próximo dono da fila — o Hub herda o que o PDV não fechar.",
+        mitigation: "Ordem da fila explícita; trabalho leve (Tab, documentação, copy) fica fora da conta.",
+      },
+      {
+        kind: "Dependência externa",
+        title: "Aceite de QA do Hub",
+        lead: "A rc1.7 foi reprovada na rodada 5, com N1 e N2 bloqueantes, e o aceite da rc1.8 segue pendente.",
+        effect: "O GA de 06/04/2027 depende de aceite formal, não só de o pacote estar pronto.",
+        mitigation: "Rodada de QA dedicada e correção dos bloqueantes antes de qualquer nova tag.",
+      },
+      {
+        kind: "Dependência externa",
+        title: "Prova de infraestrutura do Hub",
+        lead: "O smoke Linux x64 (B7) continua aberto e o run histórico que serviria de prova sumiu da API do GitHub.",
+        effect: "O pacote não tem prova durável de execução fora do Windows.",
+        mitigation: "Reexecutar o smoke e arquivar ID, log e artefato no mesmo dia.",
+      },
+      {
+        kind: "Patrocínio",
+        title: "O envelope não cobre tudo o que foi pedido",
+        lead: "US$ 20/mês até 2029 cobrem cinco marcos. Momento 2 do CSO, mês de Agent para o BioReator e PIX Split antes do Hub ficam fora.",
+        effect: "Quem espera essas frentes espera por patrocínio extra, não por uma data.",
+        mitigation: "Segunda cota ou on-demand pontual abre a frente sem reabrir o que já está publicado.",
+      },
+      {
+        kind: "Cronograma",
+        title: "Datas que dependem de capacidade não medida",
+        lead: "O alvo conjunto de CSO Transportes + Virtual Tracker em 08/11/2028 depende do INT-03, que ainda não fechou o total de sprints.",
+        effect: "Se a capacidade não fechar, a data de 2028 escorrega e leva a de 2029 junto.",
+        mitigation: "Fechar INT-03 antes de comprometer prazo público.",
+      },
+      {
+        kind: "Projetos críticos",
+        title: "Três produtos concentram o risco",
+        lead: "PDV está em vermelho; Hub e CSO estão em amarelo. Os outros nove projetos não têm pendência que trave entrega.",
+        effect: "Nenhuma frente satélite compensa um atraso nesses três.",
+        mitigation: "Semáforo acima e a lista de pontos fora do ritmo logo abaixo, item por item.",
+      },
+    ],
+
+    governance: [
+      {
+        term: "Como o percentual é calculado",
+        text: "Cada produto vai de 0 a 100% do compromisso público declarado para dezembro de 2029. É uma estimativa interna revista na primeira leitura de cada mês: sobe quando existe entrega verificável e não sobe por lançamento que ainda não saiu. Não mede qualidade de código nem homologação técnica.",
+      },
+      {
+        term: "Como os marcos são definidos",
+        text: "Marco é uma data pública com três coisas presas a ela: entrega nomeada, impacto esperado e dependências. Nenhuma data desta página é garantia de lançamento — 08/11/2026 encerra a manutenção da Free 3.2.12 e não é o GA da v4.",
+      },
+      {
+        term: "O que significa GA",
+        text: "GA é lançamento estável (general availability): versão com aceite formal de qualidade e suporte assumido. Hoje nenhum dos três núcleos está num GA novo: PDV está em pré-lançamento, Hub em pré-release e o Transportes do CSO ainda não existe. A exceção é o Frotas, em produção desde 06/10/2026.",
+      },
+      {
+        term: "O que significa pré-release",
+        text: "Build publicada para avaliação, com aceite ainda pendente — é o caso do Hub rc1.8 e da candidata v4.0.0-candidato-20261031 do PDV. Pode ser baixada e usada, mas não é o lançamento estável.",
+      },
+      {
+        term: "O que significa piloto",
+        text: "Piloto é produto utilizável com limite explícito e sem promessa de continuidade: o PDV Rust tem teto de 100 vendas na vida do piloto, e o Seed é piloto público sob MIT com homologação independente pendente.",
+      },
+      {
+        term: "O que significa protótipo",
+        text: "Protótipo é prova técnica ou demonstração, sem compromisso de suporte nem de prazo — o baseline 0.1.0-dev da Área 51 está nesse estágio. Protótipo não entra na fila da cota.",
+      },
+    ],
+  },
+
+  /**
    * Envelope de Funding / Patrocínio. Actualizar só se a assinatura ou o horizonte mudarem.
    * Canónico de capacidade: caracore-site/docs/CALENDARIO_COTA_CURSOR.md
    */

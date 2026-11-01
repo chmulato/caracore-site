@@ -466,10 +466,6 @@ section, header {
   box-shadow: inset 0 0 0 1px rgba(20, 83, 142, 0.06);
 }
 
-#produtos .cc-card-pdv-rust {
-  background: linear-gradient(180deg, rgba(11, 58, 102, 0.07) 0%, rgba(255, 255, 255, 0.96) 20%, rgba(255, 255, 255, 0.96) 100%);
-}
-
 .cc-card-hub,
 .cc-card-cso {
   border-color: rgba(247, 151, 30, 0.25) !important;
@@ -509,18 +505,6 @@ section, header {
 .cc-card-mkt {
   border-color: rgba(25, 135, 84, 0.24) !important;
   border-left-color: #198754 !important;
-}
-
-#produtos .cc-card-reino {
-  background: linear-gradient(180deg, rgba(143, 110, 213, 0.06) 0%, rgba(255, 255, 255, 0.96) 18%, rgba(255, 255, 255, 0.96) 100%);
-}
-
-#produtos .cc-card-circuito {
-  background: linear-gradient(180deg, rgba(46, 139, 87, 0.06) 0%, rgba(255, 255, 255, 0.96) 18%, rgba(255, 255, 255, 0.96) 100%);
-}
-
-#produtos .cc-card-ete {
-  background: linear-gradient(180deg, rgba(212, 168, 83, 0.08) 0%, rgba(255, 255, 255, 0.96) 18%, rgba(255, 255, 255, 0.96) 100%);
 }
 
 .btn-cc-pdv,
@@ -975,14 +959,73 @@ section, header {
     font-size: 0.97rem;
   }
 
+  /* Pílula compacta: no celular o card não pode cobrir o rodapé */
   .download-invite {
-    right: 0.75rem;
-    bottom: 0.75rem;
-    width: min(20rem, calc(100vw - 1.5rem));
+    right: 0.65rem;
+    bottom: 0.65rem;
+    width: auto;
+    max-width: calc(100vw - 1.3rem);
   }
 
   .download-invite > a {
-    padding: 0.8rem;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.75rem;
+    border-radius: 0.85rem;
+  }
+
+  .download-invite-icon {
+    flex: 0 0 2rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.6rem;
+    font-size: 0.95rem;
+  }
+
+  .download-invite-copy {
+    gap: 0.1rem;
+    font-size: 0.75rem;
+  }
+
+  .download-invite-copy > strong {
+    font-size: 0.82rem;
+  }
+
+  .download-invite-copy > span:not(.download-invite-link) {
+    display: none;
+  }
+
+  .download-invite-link {
+    margin-top: 0.05rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 1199.98px) {
+  #contato .recursos-link,
+  #contato .mt-3 > a.text-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  #home a:has(> .badge) {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+}
+
+/* Desktop: alvo mínimo de 24px (WCAG 2.5.8) */
+@media (min-width: 1200px) {
+  #contato .mt-3 > a.text-dark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    min-height: 24px;
   }
 }
 

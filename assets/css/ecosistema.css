@@ -281,7 +281,7 @@
 /* Cards de produto padronizados */
 .eco-product-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
   gap: 1.25rem;
 }
 
@@ -548,13 +548,30 @@
 
 .eco-roadmap-wrapper {
   border-radius: 12px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
   border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .eco-roadmap-table {
   font-size: 0.93rem;
+}
+
+@media (max-width: 767.98px) {
+  .eco-roadmap-wrapper {
+    border-radius: 10px;
+  }
+
+  .eco-roadmap-table {
+    font-size: 0.8125rem;
+  }
+
+  .eco-roadmap-table th,
+  .eco-roadmap-table td {
+    padding: 0.5rem 0.6rem;
+  }
 }
 
 .eco-roadmap-table thead th {
@@ -704,5 +721,757 @@
   .eco-main-col {
     padding-left: 2rem;
     padding-right: 2.5rem;
+  }
+}
+
+/* ============================================================
+   Camada executiva do mapa do ecossistema (2026-11)
+   Hierarquia: núcleo (PDV · CSO · Hub) → apoio → garagem → técnico
+   ============================================================ */
+
+:root {
+  --eco2-ink: #1f2937;
+  --eco2-muted: #5b6472;
+  --eco2-line: #e5e7eb;
+  --eco2-brand: #4338ca;
+  --eco2-brand-soft: #eef2ff;
+}
+
+.eco2-hero {
+  background: linear-gradient(160deg, #eef2ff 0%, #ffffff 62%);
+  border: 1px solid var(--eco2-line);
+  border-radius: 20px;
+  padding: clamp(1.75rem, 4vw, 3rem);
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
+}
+
+.eco2-hero-inner {
+  max-width: 46rem;
+}
+
+.eco2-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: var(--eco2-brand);
+  margin-bottom: 0.75rem;
+}
+
+.eco2-hero-title {
+  font-size: clamp(1.9rem, 4.6vw, 2.7rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: var(--eco2-ink);
+  margin-bottom: 0.9rem;
+}
+
+.eco2-hero-lead {
+  font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+  line-height: 1.55;
+  color: var(--eco2-ink);
+  margin-bottom: 0.9rem;
+}
+
+.eco2-hero-text {
+  font-size: 0.98rem;
+  line-height: 1.65;
+  color: var(--eco2-muted);
+  margin-bottom: 0;
+}
+
+.eco2-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.eco2-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.62rem 1.15rem;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.eco2-btn--primary {
+  background: var(--eco2-brand);
+  color: #fff;
+}
+
+.eco2-btn--primary:hover,
+.eco2-btn--primary:focus-visible {
+  background: #3730a3;
+  color: #fff;
+}
+
+.eco2-btn--ghost {
+  background: #fff;
+  border-color: var(--eco2-line);
+  color: var(--eco2-ink);
+}
+
+.eco2-btn--ghost:hover,
+.eco2-btn--ghost:focus-visible {
+  border-color: #c7d2fe;
+  color: var(--eco2-brand);
+}
+
+.eco2-btn--lg {
+  padding: 0.82rem 1.5rem;
+  font-size: 1rem;
+}
+
+.eco2-btn--quiet {
+  padding: 0.5rem 0.65rem;
+  color: var(--eco2-muted);
+  background: transparent;
+}
+
+.eco2-btn--quiet:hover,
+.eco2-btn--quiet:focus-visible {
+  color: var(--eco2-brand);
+}
+
+.eco2-section {
+  padding: 3rem 0;
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
+}
+
+.eco2-section--alt {
+  background: #f7f8fc;
+  border: 1px solid var(--eco2-line);
+  border-radius: 18px;
+  padding: 2.5rem clamp(1rem, 2.2vw, 2rem);
+  margin-bottom: 0.5rem;
+}
+
+.eco2-head {
+  max-width: 46rem;
+  margin-bottom: 1.9rem;
+}
+
+.eco2-title {
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  font-weight: 800;
+  color: var(--eco2-ink);
+  margin-bottom: 0.55rem;
+}
+
+.eco2-lead {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--eco2-muted);
+  margin-bottom: 0;
+}
+
+/* Núcleo — três cards grandes */
+.eco2-core-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 255px), 1fr));
+  gap: 1.15rem;
+}
+
+.eco2-core-card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--eco2-line);
+  border-top: 4px solid var(--eco2-accent, var(--eco2-brand));
+  border-radius: 18px;
+  padding: 1.4rem 1.35rem;
+  box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
+}
+
+.eco2-core-card--pdv { --eco2-accent: #4338ca; }
+.eco2-core-card--cso { --eco2-accent: #0e7490; }
+.eco2-core-card--hub { --eco2-accent: #b45309; }
+
+.eco2-core-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.eco2-core-index {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--eco2-muted);
+}
+
+.eco2-core-status {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.22rem 0.6rem;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #166534;
+  white-space: nowrap;
+}
+
+.eco2-core-status--planned {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.eco2-core-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: var(--eco2-ink);
+  margin-bottom: 0.3rem;
+}
+
+.eco2-core-name .bi {
+  color: var(--eco2-accent, var(--eco2-brand));
+}
+
+.eco2-core-tag {
+  font-size: 0.9rem;
+  color: var(--eco2-muted);
+  margin-bottom: 0.9rem;
+}
+
+.eco2-core-facts {
+  margin: 0 0 0.9rem;
+}
+
+.eco2-core-facts dt {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--eco2-muted);
+  margin-top: 0.8rem;
+}
+
+.eco2-core-facts dt:first-child {
+  margin-top: 0;
+}
+
+.eco2-core-facts dd {
+  margin: 0.15rem 0 0;
+  font-size: 0.93rem;
+  line-height: 1.55;
+  color: var(--eco2-ink);
+}
+
+.eco2-core-note {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--eco2-muted);
+  border-top: 1px dashed var(--eco2-line);
+  padding-top: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.eco2-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: auto;
+}
+
+.eco2-layers {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 1.5rem;
+}
+
+.eco2-layer {
+  font-size: 0.8rem;
+  padding: 0.38rem 0.85rem;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid var(--eco2-line);
+  color: var(--eco2-muted);
+}
+
+.eco2-layer--core {
+  background: var(--eco2-brand-soft);
+  border-color: #c7d2fe;
+  color: #3730a3;
+  font-weight: 700;
+}
+
+/* Bunker Digital */
+.eco2-flow {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0 0 1.5rem;
+}
+
+.eco2-flow-col {
+  background: #fff;
+  border: 1px solid var(--eco2-line);
+  border-radius: 16px;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.eco2-flow-col--off {
+  border-color: #c7d2fe;
+}
+
+.eco2-flow-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: var(--eco2-ink);
+  margin-bottom: 0.15rem;
+}
+
+.eco2-flow-state .bi {
+  color: var(--eco2-brand);
+}
+
+.eco2-flow-down {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: #94a3b8;
+  margin: 0.15rem 0;
+}
+
+.eco2-flow-result {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--eco2-brand);
+  margin-bottom: 0;
+}
+
+.eco2-flow-result--strong {
+  color: #166534;
+}
+
+.eco2-pillars {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  gap: 0.7rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.6rem;
+}
+
+.eco2-pillars li {
+  background: #fff;
+  border: 1px solid var(--eco2-line);
+  border-radius: 12px;
+  padding: 0.8rem 0.9rem;
+}
+
+.eco2-pillars strong {
+  display: block;
+  font-size: 0.86rem;
+  color: var(--eco2-ink);
+}
+
+.eco2-pillars span {
+  font-size: 0.79rem;
+  line-height: 1.45;
+  color: var(--eco2-muted);
+}
+
+/* Ecossistema de apoio */
+.eco2-support-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+  gap: 0.9rem;
+}
+
+.eco2-support-group {
+  background: #fff;
+  border: 1px solid var(--eco2-line);
+  border-radius: 14px;
+  padding: 1.05rem 1.1rem;
+}
+
+.eco2-group-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--eco2-muted);
+  margin-bottom: 0.55rem;
+}
+
+.eco2-group-title .bi {
+  color: #94a3b8;
+}
+
+.eco2-support-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eco2-support-list li {
+  padding: 0.55rem 0;
+  border-top: 1px solid #f1f3f6;
+}
+
+.eco2-support-list li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.eco2-support-list a {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--eco2-ink);
+  text-decoration: none;
+}
+
+.eco2-support-list a:hover,
+.eco2-support-list a:focus-visible {
+  color: var(--eco2-brand);
+  text-decoration: underline;
+}
+
+.eco2-support-list span {
+  display: block;
+  font-size: 0.79rem;
+  line-height: 1.45;
+  color: var(--eco2-muted);
+  margin-top: 0.1rem;
+}
+
+/* Garagem */
+.eco2-garage-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 1rem;
+}
+
+.eco2-garage-card {
+  background: #fff;
+  border: 1px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 1.2rem 1.15rem;
+}
+
+.eco2-garage-badge {
+  display: inline-block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 999px;
+  padding: 0.2rem 0.55rem;
+  margin-bottom: 0.65rem;
+}
+
+.eco2-garage-card h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--eco2-ink);
+  margin-bottom: 0.4rem;
+}
+
+.eco2-garage-card p {
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--eco2-muted);
+  margin-bottom: 0.7rem;
+}
+
+.eco2-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--eco2-brand);
+  text-decoration: none;
+}
+
+.eco2-link:hover,
+.eco2-link:focus-visible {
+  text-decoration: underline;
+}
+
+.eco2-note {
+  font-size: 0.84rem;
+  color: var(--eco2-muted);
+  margin: 1.1rem 0 0;
+}
+
+/* Diferenciais — neutraliza a regra #diferenciais da home (main.css) */
+#diferenciais.eco2-fav {
+  background: #fff;
+  color: var(--eco2-ink);
+}
+
+#valores {
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
+}
+
+.eco2-fav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 0.9rem;
+}
+
+.eco2-fav-card {
+  background: #fff;
+  border: 1px solid var(--eco2-line);
+  border-radius: 14px;
+  padding: 1.05rem 1.1rem;
+}
+
+.eco2-fav-card .bi {
+  font-size: 1.2rem;
+  color: var(--eco2-brand);
+}
+
+.eco2-fav-card h3 {
+  font-size: 0.94rem;
+  font-weight: 700;
+  color: var(--eco2-ink);
+  margin: 0.45rem 0 0.3rem;
+}
+
+.eco2-fav-card p {
+  font-size: 0.81rem;
+  line-height: 1.45;
+  color: var(--eco2-muted);
+  margin-bottom: 0;
+}
+
+/* Explorar */
+.eco2-explore-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr));
+  gap: 0.85rem;
+}
+
+.eco2-explore-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.05rem 1.15rem;
+  background: #fff;
+  border: 1px solid var(--eco2-line);
+  border-radius: 14px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.eco2-explore-card:hover,
+.eco2-explore-card:focus-visible {
+  border-color: #c7d2fe;
+  box-shadow: 0 4px 14px rgba(67, 56, 202, 0.08);
+  color: inherit;
+}
+
+.eco2-explore-card .bi {
+  font-size: 1.15rem;
+  color: var(--eco2-brand);
+  margin-bottom: 0.15rem;
+}
+
+.eco2-explore-title {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--eco2-ink);
+}
+
+.eco2-explore-desc {
+  font-size: 0.81rem;
+  line-height: 1.45;
+  color: var(--eco2-muted);
+}
+
+/* Detalhes técnicos */
+.eco2-tech-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.eco2-detail {
+  background: #fff;
+  border: 1px solid var(--eco2-line);
+  border-radius: 12px;
+  padding: 0 1rem;
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
+}
+
+.eco2-detail summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.85rem 0;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.eco2-detail summary::-webkit-details-marker {
+  display: none;
+}
+
+.eco2-detail summary::after {
+  content: "+";
+  margin-left: auto;
+  font-weight: 700;
+  color: var(--eco2-muted);
+}
+
+.eco2-detail[open] summary::after {
+  content: "–";
+}
+
+.eco2-detail-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--eco2-ink);
+}
+
+.eco2-detail-title .bi {
+  color: var(--eco2-brand);
+}
+
+.eco2-detail-meta {
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--eco2-muted);
+}
+
+.eco2-detail-body {
+  padding: 0.35rem 0 0.9rem;
+  border-top: 1px solid #f1f3f6;
+}
+
+.eco2-detail-body .ecossistema-section {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.eco2-detail-body .ecossistema-section.bg-light,
+.eco2-detail-body .eco-garagem-section {
+  background: transparent;
+}
+
+.eco2-detail-body .eco-section-badge {
+  margin-bottom: 0.35rem;
+}
+
+.eco2-subdetail {
+  margin-top: 0.9rem;
+  border-top: 1px solid var(--eco2-line);
+  padding-top: 0.7rem;
+}
+
+.eco2-subdetail summary {
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--eco2-ink);
+}
+
+.eco2-subdetail-body {
+  padding-top: 0.6rem;
+}
+
+/* Âncoras em blocos legados recolhidos */
+.ecossistema-section,
+#catalogo,
+#roadmap,
+#prateleira,
+#lojas-oficiais,
+#arquitetura,
+#mapa-visual,
+#para-quem,
+#pilares-tecnicos,
+#garagem-detalhe {
+  scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
+}
+
+/* Tablet: 2 colunas fixas para o terceiro card fechar a linha, e explorar em 2x2 */
+@media (min-width: 576px) and (max-width: 1199.98px) {
+  .eco2-core-grid,
+  .eco2-garage-grid,
+  .eco2-explore-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .eco2-core-card--hub,
+  .eco2-garage-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Menu recolhido: alvos de toque de 44px também no tablet */
+@media (max-width: 1199.98px) {
+  .eco2-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .eco-toc-mobile a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .eco-toc a {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .eco2-btn {
+    min-height: 44px;
+  }
+
+  .eco2-subdetail summary,
+  .eco-roadmap-details summary {
+    padding: 0.7rem 0;
+  }
+}
+
+/* Desktop: alvo mínimo de 24px (WCAG 2.5.8) */
+@media (min-width: 1200px) {
+  .eco2-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .eco2-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .eco2-section--alt {
+    padding: 1.75rem 1rem;
   }
 }

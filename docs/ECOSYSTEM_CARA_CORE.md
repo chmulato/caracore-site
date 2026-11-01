@@ -14,7 +14,7 @@ a medir; sem fila offline ou promessa de localização instantânea.
 Fonte: [plano mestre](../../caracore-cso-transportes/docs/plano_organizado_execucao_cso.md).
 
 **Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `caracore-site/AGENTS.md` + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `AGENTS.md` da raiz do workspace **não existe mais**.
-**Transição do PDV:** `v3.2.12-free` é a versão anterior do PDV Java, última da linha 3.2.x, em manutenção de transição apenas até 08/11/2026 e ainda a indicada para operar. O PDV v4 está em pré-lançamento, com a `v4.0.0-rc6` como prévia pública para avaliação; a sucessão é feita pelas RCs e o GA só vem após aprovação formal dos gates e aceites, sem data automática em 08/11.
+**Transição do PDV:** `v3.2.12-free` é a versão anterior do PDV Java, última da linha 3.2.x, em manutenção de transição apenas até 08/11/2026 e ainda a indicada para operar. O PDV v4 está em pré-lançamento, com a `v4.0.0-candidato-20261031` (build de 31/10/2026) como prévia pública para avaliação; as rc6 e rc5 ficam no histórico e a RC7 é a rota aprovada do Gate E, ainda sem tag. A sucessão é feita pelas RCs e o GA só vem após aprovação formal dos gates e aceites, sem data automática em 08/11.
 
 
 ---
@@ -27,7 +27,7 @@ VISÃO GERAL
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
   caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (139 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
-  caracore-pdv                  Oficina — PDV Java web local / v4           v3.2.12-free versão anterior, última da linha 3.2.x (manutenção até 08/11); PDV v4 em pré-lançamento, RC6 é a prévia pública, RC7 QA local; T032 aberto; v4 avança por RCs, sem GA automático
+  caracore-pdv                  Oficina — PDV Java web local / v4           v3.2.12-free versão anterior, última da linha 3.2.x (manutenção até 08/11); PDV v4 em pré-lançamento, candidata 31/10 é a prévia pública, rc6/rc5 no histórico, RC7 rota aprovada sem tag; T032/M01–M11 medidos em ff400efd, SCA não medido; v4 avança por RCs, sem GA automático
   caracore-pdv-releases         Loja — PDV Java web local                   pdv.caracore.com.br · CTA Baixar Free (3.2.12) · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
   caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases
@@ -69,7 +69,7 @@ CARACORE PDV — DUAS LINHAS INDEPENDENTES
 
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
-  PDV Java web local       caracore-pdv             caracore-pdv-releases        v3.2.12-free (versão anterior) · v4 em pré-lançamento, prévia pública 4.0.0-rc6 · Free 100 vendas/mês
+  PDV Java web local       caracore-pdv             caracore-pdv-releases        v3.2.12-free (versão anterior) · v4 em pré-lançamento, prévia pública 4.0.0-candidato-20261031 · Free 100 vendas/mês
   CaraCore PDV             caracore-pdv-rust        caracore-rust-pdv-releases    v0.1.4 (piloto Windows; loja + NSIS/MSI/ZIP no mesmo repo)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.

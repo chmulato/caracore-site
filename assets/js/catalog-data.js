@@ -64,7 +64,7 @@
         nome: 'CaraCore PDV Java',
         categoria: 'nucleo',
         estagio: 'disponivel',
-        versao: 'v3.2.12-free (versão anterior) · v4.0.0-rc6 (pré-lançamento)',
+        versao: 'v3.2.12-free (versão anterior) · v4.0.0-candidato-20261031 (pré-lançamento)',
         detalhe: 'A 3.2.12-free é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026; a v4 está em pré-lançamento, com GA somente após gates e aceites formais.',
         free: 'Até 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores e 1 loja.',
         pago: 'Premium: sem teto de vendas, produtos e operadores.',

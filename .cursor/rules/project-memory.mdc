@@ -1,5 +1,5 @@
 ---
-description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java 3.2.12-free (versão anterior) · v4 Gate E recusou o GA em 29/10 e a rota é rc7 curta · PDV Rust v0.1.4 · Hub v2.1.0-rc1.8 publicada em 31/10 (ZIP portátil, rótulo editorial Beta (RC)/pré-release), aceite de QA pendente
+description: Memória do site Cara Core — matriz B2B, lojas, releases GitHub, ecossistema; PDV Java 3.2.12-free (versão anterior) · v4 em pré-lançamento com prévia pública v4.0.0-candidato-20261031 (build 31/10/2026), rc6/rc5 no histórico e Gate E de 29/10 recusando o GA (rota rc7 curta) · PDV Rust v0.1.4 · Hub v2.1.0-rc1.8 publicada em 31/10 (ZIP portátil, rótulo editorial Beta (RC)/pré-release), aceite de QA pendente
 alwaysApply: true
 ---
 
@@ -7,19 +7,20 @@ alwaysApply: true
 
 ## PDV Free — publicação de 15/10/2026
 
-- Atual: `v3.2.12-free` Latest, fonte `hotfix/3.2.12-free` commit `72ace488aed4ee91001c60cf40a3934ddfe8faf1`. 3.2.8 preservada no histórico; RC6 pré-release separada.
+- Atual: `v3.2.12-free` Latest, fonte `hotfix/3.2.12-free` commit `72ace488aed4ee91001c60cf40a3934ddfe8faf1`. 3.2.8 preservada no histórico; v4 é prévia separada (candidata de 31/10/2026).
 - 19/19 testes focados em Java 25/H2 aprovados; CRC/estrutura dos três ZIPs e hashes dos cinco assets remotos conferidos. Suíte completa, smoke portátil SQLite/health/navegador, execução Linux/macOS e homologação operacional completa pendentes. Publicação estável/Latest autorizada explicitamente em 15/10/2026; não significa homologação completa.
 - Corretiva de HTTP 405 e ESTORNADA/CANCELADA, migração V047 e fila em transação independente. Mesmos limites, sem PIX/NF-e/NFC-e.
 
-## PDV v4 — estado de 30/10/2026
+## PDV v4 — estado de 31/10/2026
 
 - **O Gate E recusou o GA do v4 em 29/10/2026** (`caracore-pdv/docs/arquitetura/GATE_E_MATRIZ_20261029.md:143`): "GA RECUSADO… `rc7` curta e, depois dela, GA em data escrita". **08/11/2026 é o fim da manutenção da Free 3.2.12, não GA da v4** — mudar isso exige decisão escrita do dono (`D-GA-1`).
-- Medido no HEAD `0522bbf`: run `40981863947` `success` (965 testes, 3 ignorados, LINE 52,23%); pacote `ff400efd8737…` com **T032 16/16** e **matriz M01–M11 + M10b = 11/11**; **M11 segue bloqueado** por PERF-001–007 (bloqueado ≠ aprovado) e o **cenário "banco 3.2.12 migrado" está bloqueado** (fixture apagada do disco, aceite não se transporta).
-- **SCA nunca foi medido** (`D-SCA-1`): não existe "0 CVE" no ecossistema. O ZIP público continua sendo a **RC6 de 11/10** e não contém as correções de 29–30/10.
+- **Prévia pública desde 31/10/2026:** `v4.0.0-candidato-20261031`, build 31/10/2026 da fonte `master` `c343890`, 178.317.680 bytes, SHA-256 `0c2003b0f99a75328f7ebe632fc20b07cb5834a3f75b6f0e97ccfb7aef83434d`; suíte no CI run `41244424886`, 1.039 testes, 0 falhas, 3 ignorados, LINE 52,82%. `v4.0.0-rc6` (11/10/2026, SHA `0c00b24b…`) e `v4.0.0-rc5` ficam no histórico; a RC7 é a rota aprovada, ainda sem tag.
+- **T032 16/16** e **matriz M01–M11 + M10b = 11/11** foram medidos no pacote `ff400efd8737…`, **não nesta candidata** — pacote novo exige medição nova. **M11 segue bloqueado** por PERF-001–007 (bloqueado ≠ aprovado) e o **cenário "banco 3.2.12 migrado" está bloqueado** (fixture apagada do disco, aceite não se transporta).
+- **SCA nunca foi medido** (`D-SCA-1`): não existe "0 CVE" no ecossistema.
 - Feature nova vai **só na v4/`master`**; roteiro em `caracore-pdv/AGENTS.md` § "Como desenvolver uma feature nova na v4". Publicação só depois do Gate E e de aprovação escrita do dono (F7).
 
 
-**Atualizado:** 2026-10-31 · PDV Free `v3.2.12-free` publicado (na copy pública: **versão anterior, indicada para operar**); BioReator 4.0 Community 1.1.1; PDV v4 com **GA recusado no Gate E** (29/10) e rota `rc7` curta; Hub `v2.1.0-rc1.8` publicado em 31/10 como **ZIP portátil** (Latest no GitHub por autorização, rótulo editorial **Beta (RC)/pré-release** mantido; aceite de QA pendente). **Fonte mestre para IAs:** `AGENTS.md` neste repo + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `D:\onedrive\dev\AGENTS.md` **não existe mais**.
+**Atualizado:** 2026-10-31 · PDV Free `v3.2.12-free` publicado (na copy pública: **versão anterior, indicada para operar**); BioReator 4.0 Community 1.1.1; PDV v4 em pré-lançamento com prévia `v4.0.0-candidato-20261031` (build 31/10/2026), **GA recusado no Gate E** (29/10) e rota `rc7` curta; Hub `v2.1.0-rc1.8` publicado em 31/10 como **ZIP portátil** (Latest no GitHub por autorização, rótulo editorial **Beta (RC)/pré-release** mantido; aceite de QA pendente). **Fonte mestre para IAs:** `AGENTS.md` neste repo + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `D:\onedrive\dev\AGENTS.md` **não existe mais**.
 
 ## Checkpoint Hub — 25/10/2026 (atualizado em 31/10/2026)
 
@@ -61,7 +62,7 @@ alwaysApply: true
 | **Wiki** | caracore-wiki | Trilhas e hub PDV | https://wiki.caracore.com.br/ |
 | **Retrô** | caracore-retro | Artigos LinkedIn / editorial | https://retro.caracore.com.br/ |
 | **Sala** | caracore-site `sala/` + caracore-mkt | Campanhas, manuais rede | https://tools.caracore.com.br/sala/ |
-| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (linha v4 RC7 em homologação); loja publica Free `v3.2.12-free` no navegador | privado |
+| **PDV Java — oficina** | caracore-pdv | Quarkus/Qute (linha v4 em pré-lançamento, prévia `v4.0.0-candidato-20261031`); loja publica Free `v3.2.12-free` no navegador | privado |
 | **PDV Java — loja** | caracore-pdv-releases | Vitrine + download | https://pdv.caracore.com.br/ |
 | **PDV Rust — oficina** | caracore-pdv-rust | Rust + Tauri 2 + React | privado |
 | **PDV Rust — loja + artefatos** | `caracore-rust-pdv-releases` (clone local `caracore-pdv-rust-releases`) | Pages + Releases no **mesmo** repo | https://pdv-rust.caracore.com.br/ · https://github.com/chmulato/caracore-rust-pdv-releases/releases |
@@ -117,13 +118,13 @@ Alterações locais de planejamento/copy não significam publicação.
 - **Oficina:** caracore-pdv
 - **Legado:** `/delivery/pdv/*` → redirect pdv.caracore.com.br
 
-## PDV v4 — RC6 pública para avaliação; ciclo de RCs sem data presumida de GA
+## PDV v4 — candidata 31/10 pública para avaliação; ciclo de RCs sem data presumida de GA
 
-- **Oficina:** `caracore-pdv` `master` `681ea32`. A tag Git `v4.0.0-rc6` permanece em `b3358fe`. Pré-release pública **v4.0.0-rc6** (Qute + launcher), 100 vendas finalizadas por mês civil. SHA-256 `0c00b24b33b3c365fd1f24ec173bfa4e35bedf1946b2df4151035250780d5325`, 178.166.244 bytes. A frente de caixa tem Abrir menu, Fechar menu e Sair. O ciclo manual completo do roteiro em `homologacao-v4.html#rc6` segue pendente. T032 segue aberto; a publicação não é aceite de GA. A `v4.0.0-rc5` fica no histórico. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
+- **Oficina:** `caracore-pdv` `master` `c343890`. Prévia pública **v4.0.0-candidato-20261031** (build 31/10/2026, Qute + launcher), 100 vendas finalizadas por mês civil. SHA-256 `0c2003b0f99a75328f7ebe632fc20b07cb5834a3f75b6f0e97ccfb7aef83434d`, 178.317.680 bytes. O ciclo manual completo do roteiro em `homologacao-v4.html` segue pendente. A publicação não é aceite de GA. `v4.0.0-rc6` (11/10/2026, SHA `0c00b24b…`, fonte `681ea32`, tag `b3358fe`) e `v4.0.0-rc5` ficam no histórico; a RC7 é a rota aprovada do Gate E, ainda sem tag. Handoff: `docs/arquitetura/CONTINUIDADE_DESENVOLVIMENTO.md`.
 - **Escopo:** Quarkus + SQLite local + web/PWA + launcher em modo aplicativo (`iniciar_pdv.bat` underscore; banco `./data/caracore-pdv.db`).
-- **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://pdv.caracore.com.br/wiki-release-v4-0-0-rc6.html`.
-- **Loja:** `https://pdv.caracore.com.br/` — `v3.2.12-free` é o download estável/Latest; RC6 é pré-release de avaliação, não GA; RC5 fica no histórico.
-- **Regra:** `v3.2.12-free` é uma atualização corretiva da linha 3.2.x e permanece como download principal durante sua manutenção restrita até 08/11/2026. A v4 avança pelo ciclo de RCs; GA somente após aprovação formal dos gates e aceites, sem promoção automática nessa data. Não misturar pastas, versões ou ciclos.
+- **Distribuição:** ZIP portátil Windows x64 sem Authenticode; MSI não incluído. Notas e SHA-256: `https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-candidato-20261031`.
+- **Loja:** `https://pdv.caracore.com.br/` — `v3.2.12-free` é o download estável/Latest; a candidata de 31/10 é prévia de avaliação, não GA; rc6/rc5 no histórico.
+- **Regra:** `v3.2.12-free` é uma atualização corretiva da linha 3.2.x e permanece como download principal durante sua manutenção restrita até 08/11/2026. T032 e a matriz M01–M11 foram medidos em `ff400efd`, não nesta candidata; o SCA segue não medido. A v4 avança pelo ciclo de RCs; GA somente após aprovação formal dos gates e aceites, sem promoção automática nessa data. Não misturar pastas, versões ou ciclos.
 
 ## CaraCore PDV — Rust + Tauri (v0.1.4)
 

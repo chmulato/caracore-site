@@ -17,6 +17,12 @@
 
 /* Estilos para o footer */
 .site-footer {
+    /* Tons escurecidos para passar AA sobre #e3f6fd; as classes .text-* do Bootstrap leem estas variáveis */
+    --bs-primary-rgb: 11, 94, 215;
+    --bs-secondary-rgb: 73, 80, 87;
+    --bs-info-rgb: 5, 81, 96;
+    --bs-link-color-rgb: 11, 94, 215;
+    --bs-link-hover-color-rgb: 8, 66, 152;
     background: #e3f6fd;
     border-top: 2px solid #b6d8e6;
     border-radius: 0 0 18px 18px;

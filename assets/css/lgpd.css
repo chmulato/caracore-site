@@ -50,24 +50,25 @@
   transition: all 0.3s ease;
 }
 
+/* Verde e véu escuros o bastante para o texto branco passar AA sobre o gradiente do banner */
 .lgpd-btn-accept {
-  background: #10b981;
+  background: #047857;
   color: white;
 }
 
 .lgpd-btn-accept:hover {
-  background: #059669;
+  background: #036b52;
   transform: translateY(-1px);
 }
 
 .lgpd-btn-decline {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.35);
   color: white;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .lgpd-btn-decline:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.45);
 }
 
 /* Animações */

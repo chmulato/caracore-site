@@ -32,12 +32,22 @@ atualizar só o HTML deixa a tela mentindo (foi assim que a Central e a matriz q
 merge commit) só quando pedido. Evidência de execução vale no dia (copiar run + log + artefato). Prompt da
 próxima tarefa sempre em `.txt` em `docs/` da oficina. Publicação é passo separado, nunca efeito de commit.
 
-### Canal de atualização da frota desktop — pdv/hub/cso no mesmo gateway (01/11/2026)
+### Canal de atualização da frota desktop — pdv/hub/cso/ink no mesmo gateway (01/11/2026; ink em 02/11/2026)
 
-Infra transversal aos três desktops (PDV, Hub, CSO Gestão de Transportes). Gateway único embutido no
+**Fonte da verdade (decisão de 02/11/2026):** `caracore-api` é a única fonte da verdade do Gateway de
+versões da Cara Core Informática (contrato, `AppCatalogo`, rotas `/releases/{app}/latest(.json)`). O
+`caracore-cso-quarkus` apenas espelha o núcleo (`scripts/verificar_nucleo_cso.py` confere a identidade
+byte a byte); mudanças de contrato nascem no `caracore-api` e são replicadas. Estado em 02/11/2026:
+`ink` no `AppCatalogo` commitado nos dois (`caracore-api` `7054dad`, `caracore-cso-quarkus` `0f6f1a8`).
+**Ressalva:** o `application.properties` do `caracore-api` ainda não tem `caracore.api.apps.ink.*`
+(`repo`, `asset-regex`) — só o `cso-quarkus` tem — e o endpoint de produção hoje roda do deploy do
+`cso-quarkus` (Railway). Portar essas propriedades e a variável `CARACORE_API_APPS_INK_REPO` antes de
+mover o deploy para o `caracore-api`.
+
+Infra transversal aos desktops (PDV, Hub, CSO Gestão de Transportes, Ink Agenda). Gateway embutido hoje no
 **`caracore-cso-quarkus`** (api.caracore.com.br, Railway), pacote `br.com.caracore.api.update`, rotas
-`/releases/{pdv|hub|cso}/latest(.json)` no Router do Vert.x (fora do JAX-RS); o legado
-`/releases/latest.json` é o app **pdv**.
+`/releases/{pdv|hub|cso|ink}/latest(.json)` no Router do Vert.x (fora do JAX-RS); o legado
+`/releases/latest.json` é o app **pdv**. **ink** → 200 `2.0.3` (setup.exe + SHA-256, verificado em 02/11/2026).
 
 - **Estado medido ao vivo em 01/11/2026:** pdv → 200 `3.2.12-free` · hub → 200 `2.1.0-rc1.8` ·
   cso → 204 (fiação armada; falta a 1ª release real e um cliente de atualização no desktop do CSO).

@@ -127,9 +127,9 @@
         id: 'ink',
         nome: 'CaraCore Ink Agenda',
         categoria: 'satelite',
-        estagio: 'disponivel',
-        versao: 'v2.0.1',
-        detalhe: 'Desktop Windows desde 07/10/2026; PWA em roadmap, não antes de 2028.',
+        estagio: 'beta',
+        versao: 'v2.0.2 · candidata para homologação',
+        detalhe: 'Prerelease Windows para homologação; v2.0.1 continua estável/Latest. Candidata sem assinatura digital.',
         free: 'Sem edição gratuita publicada.',
         pago: 'Licença do Desktop v2.0.x.',
         preco: 'conferir na loja',
@@ -137,7 +137,7 @@
         loja: 'ink.caracore.com.br',
         url: 'https://ink.caracore.com.br/',
         portfolio: 'portfolio.html#caracore-ink-agenda',
-        nota: 'Agenda e financeiro offline-first para estúdios. Sem instalador nativo macOS/Linux.'
+        nota: 'Agenda e financeiro offline-first para estúdios. A 2.0.2 é prerelease e ainda não está homologada; PWA não antes de 2028.'
       },
       {
         id: 'minerador',
@@ -302,4 +302,3 @@
 
   global.CARACORE_CATALOG = CATALOGO;
 })(window);
-

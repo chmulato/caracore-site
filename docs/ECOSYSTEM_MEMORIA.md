@@ -36,8 +36,11 @@ próxima tarefa sempre em `.txt` em `docs/` da oficina. Publicação é passo se
 
 **Fonte da verdade (decisão de 02/11/2026):** `caracore-api` é a única fonte da verdade do Gateway de
 versões da Cara Core Informática (contrato, `AppCatalogo`, rotas `/releases/{app}/latest(.json)`). O
-`caracore-cso-quarkus` apenas espelha o núcleo (`scripts/verificar_nucleo_cso.py` confere a identidade
-byte a byte); mudanças de contrato nascem no `caracore-api` e são replicadas. Estado em 02/11/2026:
+`caracore-cso-quarkus` apenas espelha o núcleo. **`AppCatalogo.java` é primário no `caracore-api`** e o
+CSO deve refletir exatamente essa classe (e as outras cinco do núcleo): alterar só no `caracore-api`,
+replicar com `python caracore-api/scripts/sincronizar_nucleo_cso.py --aplicar` sempre que a versão/catálogo
+de um app mudar (ex.: Ink Agenda) e conferir com `verificar_nucleo_cso.py` (byte a byte). Sem CI
+cross-repo (exigiria PAT entre repositórios): a sincronização é manual e nunca faz commit sozinha. Estado em 02/11/2026:
 `ink` no `AppCatalogo` commitado nos dois (`caracore-api` `7054dad`, `caracore-cso-quarkus` `0f6f1a8`).
 **Ressalva:** o `application.properties` do `caracore-api` ainda não tem `caracore.api.apps.ink.*`
 (`repo`, `asset-regex`) — só o `cso-quarkus` tem — e o endpoint de produção hoje roda do deploy do

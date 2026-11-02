@@ -610,6 +610,26 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 
 ---
 
+## Handover multi-IA — Ink Agenda 2.0.3 e Gateway (02/11/2026)
+
+Para Cursor, Gemini/Antigravity, Qoder ou GitHub Copilot retomarem sem depender do histórico de chat.
+
+**Estado (tudo em `master`, árvores limpas e sincronizadas em `caracore-ink`, `caracore-site`, `caracore-wiki`, `caracore-ink-releases`, `caracore-api`, `caracore-cso-quarkus`):**
+- Ink Desktop `v2.0.3` **publicada** (Latest em `caracore-ink-releases`): setup, ZIP e .deb; SHA-256 na linha do Ink do changelog abaixo. Tag `v2.0.3` em `c67407e` (tag object `f8553bf`). Loja `ink.caracore.com.br/download.html` (commit `2a031c4`): Windows em destaque, "Linux (.deb)" com link, "macOS (.dmg): em breve" sem link.
+- Gateway `api.caracore.com.br/releases/ink/latest.json` responde 2.0.3 (setup + SHA-256); cliente 2.0.3 reconhece como CURRENT. Fonte primária da especificação: `caracore-api`; produção ainda faz deploy de `caracore-cso-quarkus` (réplica temporária). Sincronizar o núcleo com `caracore-api/scripts/sincronizar_nucleo_cso.py --aplicar` e conferir com `verificar_nucleo_cso.py`. Rotas neutras (ver seção Gateway acima).
+- App usa **Java 25** embutido (não 21) e JavaFX + SQLite (sem Quarkus no desktop).
+
+**Pendências, em ordem sugerida:**
+1. Corrigir o gerador de notas do job `update-notes` (escreve Java 21 e pasta `AgendaInk\` inexistente); hoje as notas da release foram editadas à mão e a próxima tag as sobrescreveria.
+2. Portar `caracore.api.apps.ink.repo` / `asset-regex` (e a variável `CARACORE_API_APPS_INK_REPO`) para `caracore-api` antes de mover o deploy de produção.
+3. macOS: o GitHub nunca alocou runner. `gh run rerun --failed` reusa o workflow antigo e reconstruiria tudo; o caminho seguro é adicionar ao workflow um `workflow_dispatch` só do job macOS para a tag existente (sem mudar hashes de Windows/Linux), anexar o .dmg, trocar "em breve" pelo link e registrar o SHA-256.
+4. Validação visual de Configurações (1366×768, 100% e 125%) e do botão que abre a página de releases.
+5. Assinatura Authenticode: depende de certificado e `signtool` (inexistentes); textos públicos avisam do SmartScreen.
+
+**Armadilhas conhecidas:** JDK Temurin não traz `jmods` (ProGuard falha), o CI usa Corretto · `token.txt` (gitignored, nunca imprimir) é `NAME=value` com BOM · PowerShell `Set-Content -Encoding utf8` grava BOM (usar `edit` ou UTF-8 sem BOM) · o `download.html` de `caracore-site/delivery/ink` é só redirecionamento; a página real fica em `caracore-ink-releases/docs/` · não anunciar a 3.0 com data · não commitar/push sem pedido explícito do dono, e commits com o trailer `Co-authored-by: Copilot <223556219+Copilot@users.noreply.github.com>` quando feitos pelo Copilot.
+
+---
+
 ## Presenças web (2026-10-05)
 
 | Papel | URL | Repo |

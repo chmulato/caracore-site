@@ -47,6 +47,13 @@ cross-repo (exigiria PAT entre repositórios): a sincronização é manual e nun
 `cso-quarkus` (Railway). Portar essas propriedades e a variável `CARACORE_API_APPS_INK_REPO` antes de
 mover o deploy para o `caracore-api`.
 
+**Estratégia de desacoplamento (02/11/2026):** o `caracore-api` é a fonte primária da *especificação* do
+Gateway de versões; o `caracore-cso-quarkus` só **hospeda temporariamente a réplica** do serviço. Para a
+migração futura a um servidor dedicado sem impacto nos desktops, as rotas usam URLs/interfaces neutras
+(`api.caracore.com.br/releases/{app}/latest(.json)`, sem nome do CSO, contrato JSON estável, URL compilada
+nos clientes): migrar = trocar deploy/DNS. Regra nos dois `AGENTS.md`; wiki em `projeto-cso.html#gateway-versoes`.
+Sem data aprovada para a migração.
+
 Infra transversal aos desktops (PDV, Hub, CSO Gestão de Transportes, Ink Agenda). Gateway embutido hoje no
 **`caracore-cso-quarkus`** (api.caracore.com.br, Railway), pacote `br.com.caracore.api.update`, rotas
 `/releases/{pdv|hub|cso|ink}/latest(.json)` no Router do Vert.x (fora do JAX-RS); o legado

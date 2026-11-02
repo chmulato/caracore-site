@@ -128,8 +128,8 @@
         nome: 'CaraCore Ink Agenda',
         categoria: 'satelite',
         estagio: 'beta',
-        versao: 'v2.0.2 · candidata para homologação',
-        detalhe: 'Prerelease Windows para homologação; v2.0.1 continua estável/Latest. Candidata sem assinatura digital.',
+        versao: 'v2.0.3',
+        detalhe: 'Windows 10/11 com instalador e ZIP portátil, sem assinatura digital (SmartScreen pode avisar).',
         free: 'Sem edição gratuita publicada.',
         pago: 'Licença do Desktop v2.0.x.',
         preco: 'conferir na loja',
@@ -137,7 +137,7 @@
         loja: 'ink.caracore.com.br',
         url: 'https://ink.caracore.com.br/',
         portfolio: 'portfolio.html#caracore-ink-agenda',
-        nota: 'Agenda e financeiro offline-first para estúdios. A 2.0.2 é prerelease e ainda não está homologada; PWA não antes de 2028.'
+        nota: 'Agenda e financeiro offline-first para estúdios. PWA não antes de 2028.'
       },
       {
         id: 'minerador',

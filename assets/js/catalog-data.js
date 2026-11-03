@@ -127,17 +127,17 @@
         id: 'ink',
         nome: 'CaraCore Ink Agenda',
         categoria: 'satelite',
-        estagio: 'beta',
-        versao: 'v2.0.3',
-        detalhe: 'Windows 10/11 com instalador e ZIP portátil, sem assinatura digital (SmartScreen pode avisar).',
+        estagio: 'disponivel',
+        versao: 'v2.1.0',
+        detalhe: 'Desktop Windows e Linux desde 03/11/2026, sem assinatura digital. Um executável com três perfis: Tatuagem, Odontologia e Beleza.',
         free: 'Sem edição gratuita publicada.',
-        pago: 'Licença do Desktop v2.0.x.',
+        pago: 'Licença do Desktop v2.x.',
         preco: 'conferir na loja',
         pagamento: 'Condições e preço na loja do produto.',
         loja: 'ink.caracore.com.br',
         url: 'https://ink.caracore.com.br/',
         portfolio: 'portfolio.html#caracore-ink-agenda',
-        nota: 'Agenda e financeiro offline-first para estúdios. PWA não antes de 2028.'
+        nota: 'Agenda e financeiro offline-first para estúdios, consultórios e beleza. Windows e Linux; macOS sem instalador, pelo navegador na linha 3.0 (não antes de 2028).'
       },
       {
         id: 'minerador',

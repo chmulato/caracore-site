@@ -72,7 +72,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 |---------|-----------|------|--------|
 | PDV Java | `#caracore-pdv` | pdv.* | Entrega activa · v3.2.12-free |
 | CaraCore PDV | `#caracore-pdv-rust` | pdv-rust + GitHub | Piloto v0.1.4 |
-| Ink Agenda | `#caracore-ink-agenda` | ink.* | v2.0.4 Windows e Linux · PWA não antes de 2028 (roadmap) |
+| Ink Agenda | `#caracore-ink-agenda` | ink.* | v2.1.0 Windows e Linux · 3 perfis (Tatuagem, Odontologia e Beleza) · PWA não antes de 2028 (roadmap) |
 | Minerador 4.0 | `#minerador-ete` | ete.* | Entrega activa |
 | Reino OIDC | `#reino-oidc` | oidc.* | Entrega activa |
 | Circuito Ferradura | `#circuito-python` | circuito.* | Entrega activa |

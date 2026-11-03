@@ -33,7 +33,7 @@ PRODUTOS EM FOCO
   5  Circuito Ferradura              circuito.caracore.com.br   FREE PF · escolas R$ 5/aluno/mês
   6  Cara Core Hub                   hub.caracore.com.br        B2B / sob consulta
   7  Suporte Área 51                 area51.caracore.com.br     serviço institucional
-  8  Ink Agenda                      ink.caracore.com.br        v2.0.4 Windows e Linux · PWA não antes de 2028
+  8  Ink Agenda                      ink.caracore.com.br        v2.1.0 Windows e Linux · 3 perfis · PWA não antes de 2028
   9 CaraCore Seed                   seed.caracore.com.br       piloto local gratuito MIT em validação; sem instalador publicado
 
 Garagem (portfólio + loja no ar):
@@ -121,7 +121,8 @@ VALIDAÇÃO POR PRODUTO (resumo)
 ### 2.9 Ink Agenda
 
   Matriz          OK   portfolio#caracore-ink-agenda · ecosistema#roadmap (Desktop Concluído · PWA não antes de 2028)
-  Loja            OK   ink.caracore.com.br · download v2.0.4 para Windows e Linux · novidade pwa.html
+  Loja            OK   ink.caracore.com.br · download v2.1.0 para Windows e Linux · novidade pwa.html
+  Copy 2.1.0      OK   wiki, Central e matriz atualizadas em 03/11/2026; inspeção visual pendente
 
 
 ### 2.10 RU / CSO (garagem)

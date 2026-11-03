@@ -60,7 +60,7 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 3. INK AGENDA
 
    (M) portfolio.html#caracore-ink-agenda
-   (L) caracore-ink-releases → ink.caracore.com.br · v2.0.1 Windows (download) · PWA não antes de 2028 em /pwa.html (roadmap; sem DMG/DEB)
+   (L) caracore-ink-releases → ink.caracore.com.br · v2.0.4 Windows e Linux (download) · PWA não antes de 2028 em /pwa.html (roadmap; sem DMG)
    Status: OK
 
 

@@ -144,7 +144,7 @@ O caso D1–D7 do relatório: o `AGENTS.md` e a wiki repetem o que o código nã
 mais. Rode isto depois de cada corte.
 
 ```
-Compare as notas internas (AGENTS.md da raiz, AGENTS.md das oficinas,
+Compare as notas internas (caracore-site/AGENTS.md, AGENTS.md das oficinas,
 docs/contexto-rapido.md, wiki) com o código na ref atual e liste APENAS as
 divergências factuais: número, formato, prazo, permissão, comportamento, cobertura.
 

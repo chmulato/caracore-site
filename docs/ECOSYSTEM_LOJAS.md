@@ -46,4 +46,4 @@ Retomada de contexto (ler nesta ordem):
 
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
-Atualizado em 10/10/2026. Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md. DNS: MEMORIA_INFRAESTRUTURA_CARACORE.txt.
+Atualizado em 04/11/2026 (Ink `v2.2.1`, Hub `v2.1.0-rc1.8`, PDV `v3.2.12-free` + v4 em pré-lançamento). Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md. DNS: MEMORIA_INFRAESTRUTURA_CARACORE.txt.

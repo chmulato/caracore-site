@@ -4,7 +4,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 **Índice mestre:** [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md) · [Cota Cursor](CALENDARIO_COTA_CURSOR.md) · [Riscos / decisão](RISCOS_ECOSSISTEMA.md)  
 **Fonte IAs:** `caracore-site/AGENTS.md` (não existe mais `D:\onedrive\dev\AGENTS.md`) · Cursor: `.cursor/rules/ecosystem-cara-core.mdc` · Java: `D:\onedrive\dev\APPS_JAVA_VERSION.md`  
-**Atualizado:** 2026-09-13  
+**Atualizado:** 2026-11-04 (estado por produto no § Snapshot de [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md); os blocos datados abaixo são histórico)  
 **Workspace típico:** `D:\dev\` ou `D:\onedrive\dev` (repos irmãos)
 
 ---
@@ -168,9 +168,9 @@ python tools/sync_docs_status.py --full
 ### BioReator 4.0 (`caracore-ru` + seção em `caracore-ru-releases`)
 
 | O que é | Estação desktop de bioinsumos e fermentação |
-| Versão | Community **1.0.0** · Windows x64 · release `bioreator-1.0.0` (MSI e ZIP) · EXE dentro do ZIP |
+| Versão | Community **1.1.1** (13/10/2026) · Windows x64 · release `bioreator-1.1.1` (MSI e ZIP) · EXE dentro do ZIP · sem assinatura |
 | Loja | https://ru.caracore.com.br/ (subdomínio do RU) · edições em download.html#bioreator40 |
-| Community | *Bradyrhizobium japonicum*, batelada, histórico e CSV |
+| Community | *Bradyrhizobium japonicum*, batelada, histórico e CSV; biomassa viável/total, P/V pelo volume líquido e critério de término em `end_reason` |
 | Pro | Catálogo, batelada alimentada, custos do operador e PDF. Sem preço e sem PIX |
 | Oficina | `caracore-ru/docs/PLANO_SPRINTS_BIORREATOR.md` · `docs/MANUAL_OPERADOR_BIOREATOR.md` |
 | Matriz | `#bioreator40` |

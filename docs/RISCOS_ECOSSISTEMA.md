@@ -52,7 +52,7 @@ mapa e chave privada somente no desktop, sem fila offline.
 | R4 | Brinco a ocupar o núcleo | qualquer mês até folga | Ink (ou outro brinco) toma Agent de Hub/FRO/Transportes. | Ink PWA = **Tab**. Sem GA com Agent **não antes de 2028**. Se PDV, Hub ou CSO precisarem do mês, o brinco **cede**. |
 | R5 | Freeze M1 da Frotas não fecha | até 08/11/2026 | A versão já publicada fica sem a estabilização prevista. | FRO 24/24 está em produção desde 06/10/2026 (`b90d1dc`, Flyway V33). Fechar o Freeze M1 com smoke `-Full`/gates finais até 08/11. Sem jornada, app offline nem GPS; não reabrir o epic FRO na janela de 2027. |
 | R6 | Transportes + VT não cabem no alvo | INT-02/03 e homologação em 2028 | Oferta conjunta de 08/11/2028 e fila de Helianto ficam em risco. | Provar viabilidade móvel e estimar backlog local + integrado antes de confirmar prazo. Se não couber, aprovar corte explícito ou nova data e espelhar na loja; deslizar Helianto se necessário. Não ocultar a ausência de VT nem presumir duas oficinas simultâneas. |
-| R7 | Copy pública à frente da loja | Contínuo | Mac/Linux «em breve», PIX no Free, `/releases/latest` cruzado. | Copy de download/perfis **só na loja da linha**. Sem DMG/DEB Ink. Sem PIX no Free Java. Java ≠ Rust (pasta, launcher, senha). Publicar a camada que mudou. |
+| R7 | Copy pública à frente da loja | Contínuo | Mac/Linux «em breve», PIX no Free, `/releases/latest` cruzado. | Copy de download/perfis **só na loja da linha**. O Ink Desktop 2.x publica Windows e Linux (`.deb`) e **não** tem macOS; a 3.0 é PWA e **não** sai com `.dmg`/`.deb`/Electron/GluonFX. Sem PIX no Free Java. Java ≠ Rust (pasta, launcher, senha). Publicar a camada que mudou. |
 | R8 | Envelope Cursor ≠ P&L | Qualquer corte de instalador | Certificado Windows, Railway, domínio, Pix travam Hub EXE ou PDV v4. | Antes de um GA com instalador: confirmar custo **fora** dos US$ 20. Funding extra não substitui os GAs calendariados. |
 | R9 | Uma cadeira, uma pessoa | Folga / incidente / mês a 80% no dia 12 | O dono seguinte herda o atraso. | Não planear on-demand. Segunda cota só com patrocínio explícito (`planning.html#patrocinio`). |
 | R10 | Brinco Helianto a «abrir só um pouco» antes de 2029 | 2027–2028 | Fura a fila do núcleo. | Agent Helianto **só em 2029**. Até lá: Tab, copy, docs. Se CSO precisar de 2029, Helianto cede. |
@@ -71,7 +71,7 @@ Estes itens **não** entram na fila sem actualizar este ficheiro, o calendário 
 - PIX Split PDV em **código** antes do Hub no ar (2027 em papel; Agent só com folga do FRO)
 - Ink PWA com Agent **antes de 2028**
 - RU Soberano com mês de Agent
-- Segunda linha nativa Ink (`.dmg` / `.deb`) — **cancelada**; canal = PWA quando houver folga do núcleo
+- Segunda linha nativa **da 3.0** Ink (`.dmg` / `.deb` / Electron / GluonFX) — **cancelada**; a 3.0 é PWA quando houver folga do núcleo. O Desktop 2.x continua Windows + Linux (`.deb`), em manutenção até o S9
 
 Patrocínio acima do envelope (segunda cota, on-demand pontual, mês extra) pode abrir Momento 2, dar mês a RU ou **abrir Agent no Ink**. **Não** substitui PDV v4, Hub EXE, Transportes nem Helianto, e não reabre o FRO já publicado.
 
@@ -109,7 +109,7 @@ Antes de um Agent pesado ou de uma data nova:
 | Funding público | [`../planning.html#patrocinio`](../planning.html#patrocinio) |
 | Skyline 0–100% | [`../planning.html`](../planning.html) |
 | Retomada | [`ECOSYSTEM_MEMORIA.md`](ECOSYSTEM_MEMORIA.md) · [`INICIAR_NOVA_TAREFA.md`](INICIAR_NOVA_TAREFA.md) |
-| Fonte IAs | `AGENTS.md` (raiz e `caracore-site/AGENTS.md`) |
+| Fonte IAs | `caracore-site/AGENTS.md` + `caracore-site/docs/ECOSYSTEM_MEMORIA.md` (o `AGENTS.md` da raiz do workspace **não existe** — ponteiro morto) |
 | PDV v4 | `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md` |
 | Ink PWA | `caracore-ink/docs/PLANO_PWA.md` |
 | Hub EXE | `caracore-hub/docs/contexto-rapido.md` |

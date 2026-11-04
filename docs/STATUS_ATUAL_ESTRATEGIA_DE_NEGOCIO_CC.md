@@ -1,7 +1,7 @@
 # Status atual e estratégia de negócio
 
 Documento executivo — estado actual e próximos passos.  
-Uso interno. **Atualizado:** 2026-06-07.
+Uso interno. **Atualizado:** 2026-11-04 (a tabela de portfólio e as lojas seguem o § Snapshot de [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md); este documento é estratégico, não registo de release).
 
 Retomada / nova tarefa: [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) · [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
 Posicionamento copy: [DILEMA.md](DILEMA.md)
@@ -85,7 +85,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | CSO | `#caracore-cso` | cso. + cso-transp. | Frotas em produção · Transp. 08/11/2028 |
 
 Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)  
-Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — 104 artigos; editorial B2B art. 115
+Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — **139 artigos** confirmados; editorial B2B art. 115
 
 ---
 
@@ -121,7 +121,7 @@ Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — 104 artigos;
 ### 5.4 Lojas (*-releases)
 
 - CTAs “matriz” → `portfolio.html` ou `ecosistema.html`
-- Ink: lançamento oficial 26/Jun/2026 — confirmar messaging
+- Ink: Desktop em **v2.2.1** (Latest, 04/11/2026; Windows e Linux) — o lançamento oficial do Desktop foi 26/Jun/2026 e a 3.0 em PWA está em roadmap (não antes de 2028, sem data dura); copy pública só na loja `ink.caracore.com.br`
 
 ### 5.5 Processo
 

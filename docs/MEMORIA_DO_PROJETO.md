@@ -2,8 +2,8 @@
 
 Referência rápida do site matriz (caracore.com.br). Actualizar quando mudar estrutura, portfólio, redirects, copy B2B ou integrações.
 
-**Última actualização:** 2026-10-30
-**Iniciar tarefa:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) · **Fonte mestre para IAs:** [`../AGENTS.md`](../AGENTS.md) + [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
+**Última actualização:** 2026-11-04
+**Iniciar tarefa:** [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) · **Fonte mestre para IAs:** [`AGENTS.md` do repo](../AGENTS.md) + [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
 **Posicionamento:** [DILEMA.md](DILEMA.md) · **Índice:** [INDEX.md](INDEX.md)
 
 ---
@@ -116,7 +116,7 @@ Guia: [PORTFOLIO_README.md](PORTFOLIO_README.md) · CSS: `assets/css/portfolio.c
 | Item | Referência |
 |------|------------|
 | URL | https://retro.caracore.com.br/ |
-| Total | **104 artigos** (lacunas históricas na numeração) |
+| Total | **139 artigos** confirmados (lacunas históricas na numeração) |
 | Art. 115 (25/12/2026) | *O Boleto Vence o Debate* — B2B/IA, portal PJ, tom pragmático |
 | Art. 114 (20/12/2026) | PDV Rust — coexistência Java; não migração forçada |
 | Capa inline | `max-width:300px; float:right` (padrão artigos recentes) |

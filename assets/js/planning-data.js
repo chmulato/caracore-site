@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "31/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 31/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4, em pré-lançamento, via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A prévia pública é a build candidata v4.0.0-candidato-20261031, de 31/10/2026, com SHA-256 publicado; as v4.0.0-rc6 e v4.0.0-rc5 ficam no histórico. A RC7 segue como rota aprovada do Gate E, ainda sem tag publicada. O Hub segue em pré-release Windows v2.1.0-rc1.8, em ZIP portátil, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu.",
+    "Leitura de 31/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4, em pré-lançamento, via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A prévia pública é a build candidata v4.0.0-candidato-20261031, de 31/10/2026, com SHA-256 publicado; as v4.0.0-rc6 e v4.0.0-rc5 ficam no histórico. A RC7 segue como rota aprovada do Gate E, ainda sem tag publicada. O Hub segue em pré-release Windows v2.1.0-rc1.8, em ZIP portátil, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu. O Ink Agenda está na v2.2.1 desde 04/11/2026; os percentuais seguem a leitura de 31/10/2026.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -134,7 +134,7 @@ window.CARACORE_PLANNING = {
       oidc: "Free 2.0.2 publicada; edição paga em desenvolvimento.",
       circuito: "v2.0.24 na loja desde 08/10/2026.",
       area51: "Baseline 0.1.0-dev no ar.",
-      ink: "Desktop 2.1.0 publicada em 03/11/2026; PWA só depois de 2028.",
+      ink: "Desktop 2.2.1 publicado em 04/11/2026; PWA só depois de 2028.",
       ru: "Community 1.1.1 publicada em 13/10/2026.",
       "rebeldia-mecatronica": "Livro e PDF publicados; app em estudo.",
       "pdv-rust": "v0.1.4 no ar; fora da cota.",
@@ -468,8 +468,8 @@ window.CARACORE_PLANNING = {
       state: "ok",
       tone: "ink",
       shop: "https://ink.caracore.com.br/",
-      hundred: "Desktop v2 no ar em Windows e Linux. PWA em roadmap (não antes de 2028).",
-      now: "Desktop v2.1.0 publicado em 03/11/2026 para Windows e Linux, com três perfis. PWA em roadmap, não antes de 2028. Sem Agent até folga do núcleo.",
+      hundred: "Desktop v2 no ar em Windows e Linux, com equipe e mensageria. PWA em roadmap (não antes de 2028).",
+      now: "Desktop v2.2.1 publicado em 04/11/2026 para Windows e Linux, com três perfis, equipe com papéis e mensagem por WhatsApp ou Telegram. PWA em roadmap, não antes de 2028. Sem Agent até folga do núcleo.",
       history: [
         { m: "2026-06", p: 68 },
         { m: "2026-07", p: 70 },

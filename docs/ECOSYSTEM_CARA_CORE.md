@@ -37,8 +37,8 @@ VISÃO GERAL
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
   caracore-seed                 Oficina do Cara Core Seed                   Piloto local MIT; Java 25; pré-release candidata Windows 0.1.5
   caracore-seed-releases        Vitrine do Seed e releases                   Piloto público; 0.1.5 candidata unsigned para avaliação; homologação pendente
-  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX; v2.1.0 publicada em 03/11/2026 para Windows e Linux, unsigned; 3 perfis
-  caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br; v2.1.0 é a versão atual (setup, ZIP e .deb); macOS fica para a 3.0 em PWA
+  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX; v2.2.1 publicada em 04/11/2026 para Windows e Linux, unsigned; 3 perfis, equipe com papéis e mensageria
+  caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br; v2.2.1 é a versão atual (setup, ZIP e .deb); macOS fica para a 3.0 em PWA
   caracore-ru                   Oficina do RU Soberano e do BioReator 4.0  Java 25 + JavaFX; sala RETRO + simulador; BioReator Community 1.1.1
   caracore-ru-releases          Loja do RU e seção do BioReator 4.0        GitHub Pages: ru.caracore.com.br · release bioreator-1.1.1 (MSI e ZIP)
   caracore-circuito             Oficina do Circuito Ferradura               Curso proprietário de lógica e Python
@@ -98,7 +98,7 @@ Produtos com entrega ativa (matriz + loja online)
   CaraCore CSO: caracore-cso-quarkus (Frotas em produção desde 06/10, Flyway V33; FRO 24/24) + caracore-cso-transportes (Desktop + integração Virtual Tracker, alvo conjunto 08/11/2028). Freeze M1: 08/11/2026. Não reabrir FRO. Loja única: D:\onedrive\dev\caracore-cso-releases → cso-transp.caracore.com.br; apresenta Transportes + VT em desenvolvimento, sem contratação antecipada. App disponível: cso.caracore.com.br, sem GPS. Não inferir SHA atual de produção a partir do checkout.
   Circuito Ferradura: caracore-circuito + caracore-circuito-releases. Loja: circuito.caracore.com.br
   Reino OIDC: caracore-oidc + caracore-oidc-releases. Loja: oidc.caracore.com.br
-  Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop v2.1.0 (Latest, 03/11/2026) para Windows (setup/ZIP) e Linux (.deb), unsigned, com os perfis Tatuagem, Odontologia e Beleza · 3.0 em PWA não antes de 2028, substitui o Desktop após importação dos dados (macOS sem instalador nativo)
+  Ink Agenda: caracore-ink + caracore-ink-releases. Loja: ink.caracore.com.br · Desktop v2.2.1 (Latest, 04/11/2026) para Windows (setup/ZIP) e Linux (.deb), unsigned, com os perfis Tatuagem, Odontologia e Beleza, equipe com papéis e mensageria WhatsApp/Telegram · 3.0 em PWA não antes de 2028, substitui o Desktop após importação dos dados (macOS sem instalador nativo)
   RU Soberano: caracore-ru + caracore-ru-releases. O código de sala fica na oficina. A loja promete o BioReator 4.0.
   BioReator 4.0: mesma oficina. Loja: https://ru.caracore.com.br/ (subdomínio do RU; edições em download.html#bioreator40); Central: download.caracore.com.br/download.html#bioreator40. Community 1.1.1 publicada em 13/10/2026, Windows x64, MSI e ZIP na release bioreator-1.1.1, sem assinatura. Distingue biomassa viável/total, calcula P/V com volume líquido e registra o primeiro critério de término em end_reason. EXE dentro do ZIP. A loja traz também o manual técnico, os critérios de término, fundamentos e exemplo de batelada. Premium em 18/06/2027, sem preço e sem PIX. A loja promete um produto.
 

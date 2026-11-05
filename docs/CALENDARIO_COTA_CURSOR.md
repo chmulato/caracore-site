@@ -17,6 +17,7 @@ Este ficheiro é o **canónico de capacidade da empresa**. Trackers de escopo co
 | Teto | **80%** do ciclo. Ao tocar 80% → parar Agent até o reset. ≥ 75% → só copy/docs. |
 | Reset | ~dia 5 (confirmar no Spending). |
 | Fila | **1 produto pesado por ciclo.** Duas frentes Agent no mesmo dia = estouro. |
+| Fatia de brinco | Só a aprovada por escrito pelo dono (**05/11/2026: 5 dias/mês ao Desktop 2.3.0**). É cota limitada num produto já publicado, não um segundo dono de ciclo; **não acrescenta sessão** (cabe nas 2 sessões/semana do envelope) e, se o dono do período precisar do mês, a fatia cede. |
 | Sessão | 1 objetivo. **2 sessões Agent / semana.** |
 | Tab | Ilimitado no Pro. Não conta neste envelope. SQLite/copy/instalador podem andar em Tab + mãos. |
 | Agent pesado | Flyway, auth, extract de módulo, HTTP, sync, UI de fluxo novo. |
@@ -38,6 +39,8 @@ Sexta: ler Spending, gravar % se o ciclo for de oficina com tracker, cortar o Co
 
 **Brincos (não mandam na fila):** Ink PWA = Tab; **sem GA com Agent** até folga do núcleo (**não antes de 2028**). Helianto = **30/12/2029** (Agent 2029; cede se o CSO precisar do ano). RU 18/06/2027 = Garagem sem Agent. PIX Split = papel até o Hub no ar.
 
+**Exceção Ink de 05/11/2026 (Desktop 2.3.0):** o dono atribuiu **5 dias de trabalho por mês, de nov/2026 a 06/04/2027**, ao **Desktop 2.3.0** — a fatia P1 (fundação multi-perfil, profissional e presença; P1.4 se couber, `../caracore-ink/docs/ROADMAP_P1.md`). Não é a PWA: S1–S8 continuam fechados na janela do Hub, e o GA 3.0 segue **sem data dura, depois de 06/04/2027**. São 28 dias no total (~20–23 úteis), cabem dentro da janela do Hub **sem tirar dias do Hub nem do PDV**; o que passar de um mês não acumula e o brinco continua cedendo se o núcleo precisar.
+
 ---
 
 ## Dono do ciclo (Agent pesado)
@@ -46,14 +49,14 @@ Sexta: ler Spending, gravar % se o ciclo for de oficina com tracker, cortar o Co
 |---------|------|---------------|-----------|
 | set/2026 | **CSO COE** | COE-B/E publicados (`e193d6d`); sem novo escopo COE em fila | PDV v4 Agent; Ink S1; Hub H |
 | out/2026 → 08/11/2026 | **PDV v4 RCs + transição Free** | Qualificar as RCs; `v3.2.12-free` encerra em 08/11; sem corte GA nessa data | MON-0; reabrir FRO; Ink extract; Hub H; CSO e PDV no mesmo dia |
-| 09/11 → 04/12/2026 | **PDV v4 RCs + copy CSO M1** | Continuar homologação até aprovação formal; Freeze M1 (L) | MON-0; V34; Ink S1 |
-| dez/2026 → 06/04/2027 | **Hub** | SQLite + EXE + SHA na loja · **GA 06/04** | Ink S1–S8; reabrir FRO; PIX Split Agent |
-| 08/04 → dez/2027 | — | FRO 24/24 já publicado em 06/10 | Não reabrir o epic; Ink Agent; Helianto; PIX Split Agent; PWA frota |
+| 09/11 → 04/12/2026 | **PDV v4 RCs + copy CSO M1** | Continuar homologação até aprovação formal; Freeze M1 (L) | MON-0; V34; Ink S1; Ink além dos 5 dias/mês do 2.3.0 |
+| dez/2026 → 06/04/2027 | **Hub** | SQLite + EXE + SHA na loja · **GA 06/04** | Ink S1–S8; reabrir FRO; PIX Split Agent; Ink além dos 5 dias/mês do 2.3.0 |
+| 08/04 → dez/2027 | — | FRO 24/24 já publicado em 06/10 | Não reabrir o epic; Ink Agent (cota a decidir); Helianto; PIX Split Agent; PWA frota |
 | jan–nov/2028 | **CSO Transportes + integração VT** | Alvo conjunto **08/11/2028**, condicionado à prova móvel, capacidade e homologação | PWA frota/offline móvel; Helianto Agent; Ink Agent; todo MON sem recorte aprovado |
 | dez/2028 | buffer | Loja/wiki do Transportes | Não abrir Helianto nem Ink Agent |
 | 2029 | **Helianto** | SaaS condomínio **GA 30/12/2029** | RU Agent; Momento 2 / PWA frota; VT |
 
-Tab no Hub (SQLite, scripts) pode andar em set–nov sem Agent, sem competir com o PDV. Ink PWA: Tab + mãos; Agent só com folga do núcleo (não antes de 2028).
+Tab no Hub (SQLite, scripts) pode andar em set–nov sem Agent, sem competir com o PDV. Ink PWA: Tab + mãos; Agent só com folga do núcleo (não antes de 2028). A exceção de 05/11/2026 é **outra coisa**: 5 dias/mês para o **Desktop 2.3.0**, dentro da janela do Hub, sem tocar em S1–S8.
 
 ---
 
@@ -62,7 +65,7 @@ Tab no Hub (SQLite, scripts) pode andar em set–nov sem Agent, sem competir com
 | Item | Antes (oficina isolada) | Agora |
 |------|-------------------------|--------|
 | CSO FRO 24/24 | Janela planejada 08/04–dez/2027 | **Publicado em 06/10/2026** (decisão explícita). Não reabrir o epic |
-| Ink PWA Agent | dez/2026–jun/2027 | **Tab**; GA com Agent **não antes de 2028** |
+| Ink PWA Agent | dez/2026–jun/2027 | **Tab**; GA com Agent **não antes de 2028**. Exceção de 05/11/2026: **5 dias/mês** para o Desktop **2.3.0** até 06/04/2027, sem antecipar S1–S8 |
 | CSO Momento 2 | 2027 | Epic completo sem antecipação automática; reaproveitar somente itens necessários à integração, conforme INT-03. PWA de gestão offline cancelada em 15/10/2026 |
 | Virtual Tracker | Fora do envelope de Transportes em 2028 | Decisão de 17/10/2026: capacidade integrada, não terceiro produto; alvo conjunto **08/11/2028**, condicionado aos gates INT |
 | PIX Split PDV | 2027 código | Papel até o Hub no ar; Agent **só com folga do FRO** |
@@ -112,7 +115,7 @@ Se um ciclo bater 80% cedo: **desliza o dono seguinte**, não comprime dois GAs 
 | PDV v4 | `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md` | out–nov/2026 |
 | Hub Windows | `caracore-hub/docs/contexto-rapido.md` | Agent **dez/2026–06/04/2027** |
 | CSO Frotas | `caracore-cso-quarkus/docs/plano-calendario-cota-2026.md` | FRO 24/24 publicado em 06/10; freeze M1 em 08/11/2026 |
-| Ink PWA | `caracore-ink/docs/PLANO_PWA.md` | Tab; Agent **não antes de 2028** |
+| Ink PWA | `caracore-ink/docs/PLANO_PWA.md` · 2.3.0 em `docs/ROADMAP_P1.md` | 5 dias/mês até 06/04/2027 (**Desktop 2.3.0**); PWA com Agent **não antes de 2028** |
 | CSO Transportes | oficina `caracore-cso-transportes` | 2028 |
 | Helianto | oficina `caracore-helianto` · vitrine `helianto.caracore.com.br` | **2029** (GA 30/12/2029) |
 

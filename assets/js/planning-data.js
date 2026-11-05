@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "31/10/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de 31/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4, em pré-lançamento, via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A prévia pública é a build candidata v4.0.0-candidato-20261031, de 31/10/2026, com SHA-256 publicado; as v4.0.0-rc6 e v4.0.0-rc5 ficam no histórico. A RC7 segue como rota aprovada do Gate E, ainda sem tag publicada. O Hub segue em pré-release Windows v2.1.0-rc1.8, em ZIP portátil, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu. O Ink Agenda está na v2.2.1 desde 04/11/2026; os percentuais seguem a leitura de 31/10/2026.",
+    "Leitura de 31/10/2026. Os principais são PDV, CSO e Hub; o resto são brincos e não mandam na cota. A Free v3.2.12 é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026; a build publicada excepcionalmente ainda tem gates pendentes e não está homologada por completo. Depois, a transição é pela PDV v4, em pré-lançamento, via ciclo de RCs; GA somente após gates e aceites formais, sem data automática em 08/11. A prévia pública é a build candidata v4.0.0-candidato-20261031, de 31/10/2026, com SHA-256 publicado; as v4.0.0-rc6 e v4.0.0-rc5 ficam no histórico. A RC7 segue como rota aprovada do Gate E, ainda sem tag publicada. O Hub segue em pré-release Windows v2.1.0-rc1.8, em ZIP portátil, com aceite de QA pendente. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Os 5 dias/mês reservados ao Ink até 06/04/2027 cobrem só a atualização 2.3.0 do Desktop, não a PWA, e não tiram dias do Hub nem do PDV. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por GA que ainda não saiu. O Ink Agenda está na v2.2.1 desde 04/11/2026; os percentuais seguem a leitura de 31/10/2026.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -274,6 +274,7 @@ window.CARACORE_PLANNING = {
     covers: [
       { when: "08/11/2026", item: "Encerramento da Free PDV 3.2.12; v4 segue no ciclo de RCs", spend: "Agent out–nov/2026" },
       { when: "06/04/2027", item: "Hub instalador Windows", spend: "Agent dez/2026–06/04/2027" },
+      { when: "06/04/2027", item: "Ink Desktop 2.3.0 (atualização do produto atual)", spend: "5 dias/mês nov/2026–abr/2027; cede ao Hub e ao PDV" },
       { when: "08/04–dez/2027", item: "Sem dono de Agent", spend: "FRO 24/24 já publicado em 06/10" },
       { when: "Alvo: 08/11/2028", item: "CSO Transportes + Virtual Tracker integrado", spend: "Jan–nov/2028; capacidade a validar em INT-03" },
       { when: "30/12/2029", item: "Helianto Condominium (GA)", spend: "Agent 2029" },
@@ -282,7 +283,7 @@ window.CARACORE_PLANNING = {
       { period: "set/2026", owner: "CSO COE (concluído)" },
       { period: "out–08/nov/2026", owner: "PDV v4" },
       { period: "09/nov–04/dez/2026", owner: "PDV corte + copy CSO M1" },
-      { period: "dez/2026–06/04/2027", owner: "Hub" },
+      { period: "dez/2026–06/04/2027", owner: "Hub · atualização Ink 2.3.0 (5 dias/mês)" },
       { period: "08/04–dez/2027", owner: "Sem dono · FRO já publicado" },
       { period: "2028", owner: "CSO Transportes + integração VT, sujeito aos gates INT" },
       { period: "dez/2028", owner: "Buffer Transportes" },
@@ -315,7 +316,7 @@ window.CARACORE_PLANNING = {
       label: "2027",
       subtitle: "Hub",
       pct: 14,
-      note: "Hub: pré-release Windows v2.1.0-rc1.8 publicada; aceite de QA pendente. GA do instalador em 06/04. A janela 08/04–dez não reabre o FRO. Ink PWA = Tab, não antes de 2028.",
+      note: "Hub: pré-release Windows v2.1.0-rc1.8 publicada; aceite de QA pendente. GA do instalador em 06/04, com a fatia de 5 dias/mês do Ink Desktop 2.3.0 no mesmo dia. A janela 08/04–dez não reabre o FRO. Ink PWA = Tab, não antes de 2028.",
     },
     {
       id: "y2028",
@@ -469,7 +470,7 @@ window.CARACORE_PLANNING = {
       tone: "ink",
       shop: "https://ink.caracore.com.br/",
       hundred: "Desktop v2 no ar em Windows e Linux, com equipe e mensageria. PWA em roadmap (não antes de 2028).",
-      now: "Desktop v2.2.1 publicado em 04/11/2026 para Windows e Linux, com três perfis, equipe com papéis e mensagem por WhatsApp ou Telegram. PWA em roadmap, não antes de 2028. Sem Agent até folga do núcleo.",
+      now: "Desktop v2.2.1 publicado em 04/11/2026 para Windows e Linux, com três perfis, equipe com papéis e mensagem por WhatsApp ou Telegram. Próximo: Desktop 2.3.0 em 06/04/2027, com 5 dias/mês de nov/2026 a abril (fatia, não dono de ciclo). PWA em roadmap, não antes de 2028, sem Agent até folga do núcleo.",
       history: [
         { m: "2026-06", p: 68 },
         { m: "2026-07", p: 70 },

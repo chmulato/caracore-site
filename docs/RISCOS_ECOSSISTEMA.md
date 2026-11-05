@@ -24,7 +24,7 @@ mapa e chave privada somente no desktop, sem fila offline.
 2. Abrir Cursor Spending. ≥ 80% → não implementar. ≥ 75% → só copy/docs.
 3. Se a decisão **muda uma data pública**, um **dono de ciclo**, ou **abre Agent noutro produto**: ler a tabela abaixo e aplicar a regra da coluna «Decisão».
 4. Se um ciclo bater 80% cedo: **desliza o dono seguinte**. Não comprimir dois GAs no mesmo mês.
-5. **Principais:** PDV · CSO · Hub. **Brincos:** todo o resto (Ink, Helianto, RU, OIDC, Seed, Circuito, Área 51, MKT, Minerador). O brinco não fura a fila, não toma a headline e **cede** em conflito. Janelas do núcleo (PDV v4, Hub EXE, FRO, Transportes) e o brinco Helianto 2029 só mudam com actualização explícita deste ficheiro + calendário + `AGENTS.md`. Ink PWA **não** tem GA com Agent neste envelope.
+5. **Principais:** PDV · CSO · Hub. **Brincos:** todo o resto (Ink, Helianto, RU, OIDC, Seed, Circuito, Área 51, MKT, Minerador). O brinco não fura a fila, não toma a headline e **cede** em conflito. Janelas do núcleo (PDV v4, Hub EXE, FRO, Transportes) e o brinco Helianto 2029 só mudam com actualização explícita deste ficheiro + calendário + `AGENTS.md`. Ink PWA **não** tem GA com Agent neste envelope; a fatia do **Desktop 2.3.0** é a exceção nomeada em R14.
 
 ---
 
@@ -34,6 +34,7 @@ mapa e chave privada somente no desktop, sem fila offline.
 |----------|--------|-----------|
 | Principais vs brincos | PDV · CSO · Hub mandam; o resto cede | Brinco a furar Agent ou headline do núcleo. |
 | Fila | **1 produto pesado por ciclo** | Estouro. O GA seguinte escorrega. |
+| Fatia de brinco | Só a aprovada por escrito pelo dono (**05/11/2026: 5 dias/mês ao Desktop 2.3.0** até 06/04/2027) | Cota limitada num produto já publicado não é segundo dono de ciclo; fatia a crescer sem decisão nova = R4 violado. |
 | Orçamento Agent | US$ 20/mês, **não acumula**, sem on-demand | Mês ocioso ainda é pago; mês cheio não empresta. |
 | Teto | 80% do ciclo | Parar código até o reset (~dia 5). |
 | Sessão | 1 objectivo · **2 sessões Agent / semana** | Terceira sessão = outro produto a roubar o dono. |
@@ -48,8 +49,8 @@ mapa e chave privada somente no desktop, sem fila offline.
 |----|--------|------------|--------------|-----------------|
 | R1 | T032 do PDV v4 não fecha | out–08/nov/2026 | Headline de 08/11/2026. Hub e freeze CSO M1 deslizam. | Outubro = só PDV. Se A–D não caberem, **reavaliar a data pública** — não abrir Hub H nem Ink S1 em novembro para «compensar». Dezembro, se o PDV escorregar, **não** vai para o Ink. |
 | R2 | Duas frentes Agent no mesmo ciclo | Qualquer mês | Cota estoura. O dono seguinte perde o mês. | **Não.** CSO + PDV, Hub + FRO, Frotas + Transportes no mesmo dia = proibido. |
-| R3 | Hub EXE não fecha a 06/04 | dez/2026–06/04/2027 | GA Windows do núcleo falha e pressiona o calendário seguinte. | Hub **é** o dono desta janela (não uma semana leve). Tab em set–nov sem competir com o PDV. Não abrir Ink S1–S8 nem reabrir o FRO já publicado. |
-| R4 | Brinco a ocupar o núcleo | qualquer mês até folga | Ink (ou outro brinco) toma Agent de Hub/FRO/Transportes. | Ink PWA = **Tab**. Sem GA com Agent **não antes de 2028**. Se PDV, Hub ou CSO precisarem do mês, o brinco **cede**. |
+| R3 | Hub EXE não fecha a 06/04 | dez/2026–06/04/2027 | GA Windows do núcleo falha e pressiona o calendário seguinte. | Hub **é** o dono desta janela (não uma semana leve). Tab em set–nov sem competir com o PDV. Não abrir Ink S1–S8 nem reabrir o FRO já publicado. A fatia de 5 dias/mês do Desktop 2.3.0 (R14) não abre sprint da PWA. |
+| R4 | Brinco a ocupar o núcleo | qualquer mês até folga | Ink (ou outro brinco) toma Agent de Hub/FRO/Transportes. | Ink PWA = **Tab**. Sem GA com Agent **não antes de 2028**. Se PDV, Hub ou CSO precisarem do mês, o brinco **cede** — inclusive a fatia de 5 dias/mês. Sinal de alerta: Ink acima dos 5 dias/mês em qualquer mês da janela do Hub. |
 | R5 | Freeze M1 da Frotas não fecha | até 08/11/2026 | A versão já publicada fica sem a estabilização prevista. | FRO 24/24 está em produção desde 06/10/2026 (`b90d1dc`, Flyway V33). Fechar o Freeze M1 com smoke `-Full`/gates finais até 08/11. Sem jornada, app offline nem GPS; não reabrir o epic FRO na janela de 2027. |
 | R6 | Transportes + VT não cabem no alvo | INT-02/03 e homologação em 2028 | Oferta conjunta de 08/11/2028 e fila de Helianto ficam em risco. | Provar viabilidade móvel e estimar backlog local + integrado antes de confirmar prazo. Se não couber, aprovar corte explícito ou nova data e espelhar na loja; deslizar Helianto se necessário. Não ocultar a ausência de VT nem presumir duas oficinas simultâneas. |
 | R7 | Copy pública à frente da loja | Contínuo | Mac/Linux «em breve», PIX no Free, `/releases/latest` cruzado. | Copy de download/perfis **só na loja da linha**. O Ink Desktop 2.x publica Windows e Linux (`.deb`) e **não** tem macOS; a 3.0 é PWA e **não** sai com `.dmg`/`.deb`/Electron/GluonFX. Sem PIX no Free Java. Java ≠ Rust (pasta, launcher, senha). Publicar a camada que mudou. |
@@ -59,6 +60,7 @@ mapa e chave privada somente no desktop, sem fila offline.
 | R11 | RU com data pública e sem Agent | 18/06/2027 | Promessa sem capacidade. | Garagem: copy/docs. **Sem** mês de Agent. Não competir com Hub nem FRO. |
 | R13 | Exceção Ink Desktop 2.0.1 (07/10/2026) | out/2026 | Agent do Ink dentro da janela PDV v4. Risco de atrasar T032. | **Decisão explícita do dono em 07/10/2026:** patch Desktop Windows 2.0.1 (achados do QA da 2.0.0: importação, pt-BR, build limpo, promessas da loja, P2). Não é Ink PWA (3.0 segue não antes de 2028). Gera e valida localmente; publicação só com aprovação. Se o PDV v4 precisar da cota, a 2.0.1 pára. |
 | R12 | Canais PDV Java × Rust misturados | Qualquer release | Loja errada, banco errado, senha errada. | Nunca `/releases/latest` de `caracore-pdv-releases` para o Rust. Free Java = `admin`/`admin`, 1 operador. Rust piloto = quatro logins na **loja Rust**. |
+| R14 | Fatia Ink a virar dono de ciclo | nov/2026–04/2027 | O 2.3.0 come dias do Hub e o GA de 06/04 escorrega. | **Decisão explícita do dono em 05/11/2026:** **5 dias de trabalho por mês** ao **Desktop 2.3.0** (P1 Onda 1; P1.4 se couber, `../caracore-ink/docs/ROADMAP_P1.md`), de nov/2026 a 06/04/2027 — 28 dias, ~20–23 úteis. Fora do PWA: S1–S8 continuam fechados, a interface PWA e o GA 3.0 seguem pós-Hub, sem data dura. Não acumula mês ocioso, não tira dias do Hub nem do PDV, não vira segunda frente pesada no mesmo dia, e cede inteira se o núcleo precisar. Medido que o GA 3.0 completo (78–108 dias) não cabe na fatia: 06/04/2027 entrega o Desktop 2.3.0, não o 3.0. |
 
 ---
 
@@ -69,7 +71,7 @@ Estes itens **não** entram na fila sem actualizar este ficheiro, o calendário 
 - Epic CSO Momento 2 completo, além do recorte necessário à integração INT
 - Escopo VT adicional ao mínimo aprovado em INT-03; PWA de gestão offline está cancelada, não depende de patrocínio para voltar à fila
 - PIX Split PDV em **código** antes do Hub no ar (2027 em papel; Agent só com folga do FRO)
-- Ink PWA com Agent **antes de 2028**
+- Ink PWA (3.0) com Agent **antes de 2028**; a fatia de 5 dias/mês do Desktop 2.3.0 (R14) não abre S1 nem antecipa a PWA
 - RU Soberano com mês de Agent
 - Segunda linha nativa **da 3.0** Ink (`.dmg` / `.deb` / Electron / GluonFX) — **cancelada**; a 3.0 é PWA quando houver folga do núcleo. O Desktop 2.x continua Windows + Linux (`.deb`), em manutenção até o S9
 
@@ -82,7 +84,7 @@ Patrocínio acima do envelope (segunda cota, on-demand pontual, mês extra) pode
 | Janela | Tem de fechar | Se falhar |
 |--------|---------------|-----------|
 | out–08/nov/2026 | PDV v4: T032 + corte | Materializado em 11/10: o corte foi recusado e 08/11 deixa de ser GA confirmado, sem data nova. Dezembro **não** é Ink — é Hub, ou o PDV se ainda não cortou. |
-| dez/2026–06/04/2027 | Hub: SQLite + EXE + SHA na loja | GA 06/04 falha e pressiona a sequência dos marcos do núcleo. |
+| dez/2026–06/04/2027 | Hub: SQLite + EXE + SHA na loja — e, na fatia de 5 dias/mês, o Ink Desktop 2.3.0 (R14) | GA 06/04 falha e pressiona a sequência dos marcos do núcleo. O 2.3.0 é a primeira coisa a cair: o Hub não desliza por causa do brinco. |
 | 08/04–dez/2027 | Sem dono de Agent; FRO 24/24 já publicado | Não reabrir o epic FRO; não abrir Helianto, Ink Agent nem PIX Split Agent. |
 | jan–nov/2028 | CSO Transportes + Virtual Tracker integrado, alvo 08/11/2028 sujeito aos gates INT | Aprovar recorte ou nova data; espelhar na loja e deslizar Helianto se necessário. |
 | 2029 | Helianto GA 30/12/2029 | Sem segundo produto pesado neste ano. |
@@ -111,7 +113,7 @@ Antes de um Agent pesado ou de uma data nova:
 | Retomada | [`ECOSYSTEM_MEMORIA.md`](ECOSYSTEM_MEMORIA.md) · [`INICIAR_NOVA_TAREFA.md`](INICIAR_NOVA_TAREFA.md) |
 | Fonte IAs | `caracore-site/AGENTS.md` + `caracore-site/docs/ECOSYSTEM_MEMORIA.md` (o `AGENTS.md` da raiz do workspace **não existe** — ponteiro morto) |
 | PDV v4 | `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md` |
-| Ink PWA | `caracore-ink/docs/PLANO_PWA.md` |
+| Ink PWA | `caracore-ink/docs/PLANO_PWA.md` · 2.3.0 em `caracore-ink/docs/ROADMAP_P1.md` |
 | Hub EXE | `caracore-hub/docs/contexto-rapido.md` |
 
 IAs: após corte ou mudança de dono, sincronizar este ficheiro + calendário + `ECOSYSTEM_MEMORIA.md` (linha no changelog) + regras Cursor do repo tocado.

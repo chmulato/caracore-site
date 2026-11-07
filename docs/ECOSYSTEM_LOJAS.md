@@ -15,7 +15,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
   CaraCore PDV Java (web local) https://pdv.caracore.com.br/                            Oferta principal: v4 em pré-lançamento (prévia pública v4.0.0-candidato-20261031, build de 31/10/2026, Windows; rc6/rc5 no histórico); v3.2.12-free é a versão anterior, última da linha 3.2.x, até 08/11/2026; PWA da vitrine
   CaraCore PDV                 https://pdv-rust.caracore.com.br/                       Loja própria (Pages do repo caracore-rust-pdv-releases)
   (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Mesmo repo da loja; tag v0.1.4. NÃO usar /latest de caracore-pdv-releases (Java)
-  Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; web 2.1 concluída na oficina; pré-release Windows v2.1.0-rc1.8 (ZIP portátil, unsigned); GA instalador Windows 06/04/2027
+  Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; web 2.1 concluída na oficina; pré-release Windows v2.1.0-rc1.10 (ZIP portátil, unsigned); GA instalador Windows 06/04/2027
   Circuito Ferradura           https://circuito.caracore.com.br/
   Reino OIDC                   https://oidc.caracore.com.br/
   Minerador 4.0 ETE            https://ete.caracore.com.br/
@@ -46,4 +46,4 @@ Retomada de contexto (ler nesta ordem):
 
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
-Atualizado em 04/11/2026 (Ink `v2.2.1`, Hub `v2.1.0-rc1.8`, PDV `v3.2.12-free` + v4 em pré-lançamento). Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md. DNS: MEMORIA_INFRAESTRUTURA_CARACORE.txt.
+Atualizado em 07/11/2026 (Ink `v2.2.1`, Hub `v2.1.0-rc1.10`, PDV `v3.2.12-free` + v4 em pré-lançamento). Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md. DNS: MEMORIA_INFRAESTRUTURA_CARACORE.txt.

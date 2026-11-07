@@ -48,9 +48,9 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | URL | https://hub.caracore.com.br/ |
 | O que é | Encomendas (ML, Shopee, Temu) — não Flask, não “central telefônica” |
-| GA | Instalador Windows 06/04/2027 (Electron + Tomcat embutido + SQLite WAL). Aplicação web 2.1 implementada, sem homologação: a QA da rodada 5 (27/10/2026) reprovou a `rc1.7` e o aceite da `rc1.8` segue pendente; `WAR` é artefato interno de build, não release pública |
+| GA | Instalador Windows 06/04/2027 (Electron + Tomcat embutido + SQLite WAL). Aplicação web 2.1 implementada, sem homologação: a QA da rodada 5 (27/10/2026) reprovou a `rc1.7` e o aceite da `rc1.10` segue pendente; `WAR` é artefato interno de build, não release pública |
 | Banco | SQLite local (WAL) no computador do cliente. Java 25, Jakarta EE 10, Tomcat 10.1 |
-| RC Windows | Download da loja: `v2.1.0-rc1.8` — ZIP portátil `CaraCore-Hub-2.1.0-rc1.8-windows-x64.zip` 324.536.724 B SHA-256 `3c4e61b2e192fece6667ccfbc79d735f3fad7ce8542e50c492b9ef24a9743334`. Publicada em 31/10/2026, unsigned, **sem instalador NSIS nesta build**. A `v2.1.0-rc1.7` conserva o pacote de 27/10/2026 (EXE e ZIP) e as tags `v2.1.0-rc1.6`, `v2.1.0-rc1.2`, `v2.1.0-rc1.1` e `v2.1.0-rc1` os anteriores; `rc1.3`, `rc1.4` e `rc1.5` nunca foram tagueadas. Não homologada: aceite de QA da `rc1.8` pendente; B7 (smoke Linux x64) e S6.9 abertos. Mac e Linux fora desta tag. Login do perfil real ainda sem causa confirmada. |
+| RC Windows | Download da loja: `v2.1.0-rc1.10` — ZIP portátil `CaraCore-Hub-2.1.0-rc1.10-windows-x64.zip` 228.354.977 B SHA-256 `0b18fbcf3af02d53a341ac5b83af9132a0ef201e698585160f332d3ad8bdae00`. Publicada em 07/11/2026, unsigned, **sem instalador NSIS nesta build**. A `v2.1.0-rc1.8` conserva o pacote de 31/10/2026 (ZIP 324.536.724 B); a `v2.1.0-rc1.7` conserva o de 27/10/2026 (EXE e ZIP) e as tags `v2.1.0-rc1.6`, `v2.1.0-rc1.2`, `v2.1.0-rc1.1` e `v2.1.0-rc1` os anteriores; `rc1.3`, `rc1.4` e `rc1.5` nunca foram tagueadas. Não homologada: aceite de QA da `rc1.10` pendente; B7 (smoke Linux x64) fechado em 07/11/2026; S6.9 aberto. Mac e Linux fora desta tag. Login do perfil real ainda sem causa confirmada. |
 | Oficina | `caracore-hub` |
 | Matriz | `#caracore-hub` |
 | Wiki alinhamento | wiki.caracore.com.br/projeto-hub.html |

@@ -37,7 +37,7 @@ VISÃO GERAL
   caracore-ete-releases         Loja online e releases Minerador 4.0        GitHub Pages: ete.caracore.com.br
   caracore-seed                 Oficina do Cara Core Seed                   Piloto local MIT; Java 25; pré-release candidata Windows 0.1.5
   caracore-seed-releases        Vitrine do Seed e releases                   Piloto público; 0.1.5 candidata unsigned para avaliação; homologação pendente
-  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX; v2.2.1 publicada em 04/11/2026 para Windows e Linux, unsigned; 3 perfis, equipe com papéis e mensageria; Desktop 2.3.0 (06/04/2027, P1 Onda 1) com a Onda 1 fechada tecnicamente em 08/11/2026 (gate 745/0 + 8 LGPD e 825/0, demo V30), sem commit
+  caracore-ink                  Oficina do Cara Core Ink Agenda             Java 25 + JavaFX; v2.2.1 publicada em 04/11/2026 para Windows e Linux, unsigned; 3 perfis, equipe com papéis e mensageria; Desktop 2.3.0 (06/04/2027, P1 Onda 1) com a Onda 1 fechada tecnicamente em 08/11/2026 (gate 745/0 + 8 LGPD e 825/0, demo V30; commitada e empurrada em `3381aa3` em 08/11/2026)
   caracore-ink-releases         Loja online e releases Ink Agenda           GitHub Pages: ink.caracore.com.br; v2.2.1 é a versão atual (setup, ZIP e .deb) e o canal serve os envelopes publicados sem chave no Railway desde 07/11/2026; macOS fica para a 3.0 em PWA
   caracore-ru                   Oficina do RU Soberano e do BioReator 4.0  Java 25 + JavaFX; sala RETRO + simulador; BioReator Community 1.1.1
   caracore-ru-releases          Loja do RU e seção do BioReator 4.0        GitHub Pages: ru.caracore.com.br · release bioreator-1.1.1 (MSI e ZIP)

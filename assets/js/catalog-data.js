@@ -129,7 +129,7 @@
         categoria: 'satelite',
         estagio: 'disponivel',
         versao: 'v2.2.1',
-        detalhe: 'Desktop Windows e Linux desde 04/11/2026, metamórfico com os perfis Tatuagem, Odontologia e Beleza, equipe com papéis e mensagem por WhatsApp ou Telegram; próxima atualização do Desktop, a 2.3.0, em 06/04/2027; PWA em roadmap, não antes de 2028.',
+        detalhe: 'Desktop Windows e Linux desde 04/11/2026, metamórfico com os perfis Tatuagem, Odontologia e Beleza, equipe com papéis e mensagem por WhatsApp ou Telegram; próxima atualização do Desktop, a 2.3.0, em 29/01/2027; PWA em roadmap, não antes de 2028.',
         free: 'Sem edição gratuita publicada.',
         pago: 'Licença do Desktop v2.x.',
         preco: 'conferir na loja',

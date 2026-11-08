@@ -39,7 +39,7 @@ Sexta: ler Spending, gravar % se o ciclo for de oficina com tracker, cortar o Co
 
 **Brincos (não mandam na fila):** Ink PWA = Tab; **sem GA com Agent** até folga do núcleo (**não antes de 2028**). Helianto = **30/12/2029** (Agent 2029; cede se o CSO precisar do ano). RU 18/06/2027 = Garagem sem Agent. PIX Split = papel até o Hub no ar.
 
-**Exceção Ink de 05/11/2026 (Desktop 2.3.0):** o dono atribuiu **5 dias de trabalho por mês, de nov/2026 a 06/04/2027**, ao **Desktop 2.3.0** — a fatia P1 (fundação multi-perfil, profissional e presença; **Onda 1 apenas** — o P1.4 «Hoje com resumo» foi cortado em 06/11/2026 e adiado para a Onda 2, `../caracore-ink/docs/ROADMAP_P1.md`). Não é a PWA: S1–S8 continuam fechados na janela do Hub, e o GA 3.0 segue **sem data dura, depois de 06/04/2027**. São 28 dias no total (~20–23 úteis), cabem dentro da janela do Hub **sem tirar dias do Hub nem do PDV**; o que passar de um mês não acumula e o brinco continua cedendo se o núcleo precisar. **Estado em 08/11/2026:** **3 dos 5 dias de nov/2026 usados** (06, 07 e 08/11) e a **Onda 1 fechada tecnicamente** (P1.1, P1.2.1–P1.2.8, P1.3 e G1; gate `mvn -B verify` 745/0 + 8 LGPD e `mvn -Ptestfx verify` 825/0, demo V30); os **2 dias restantes** vão para a homologação dos prints H-A04, H-A08 e H-C04 na semana de 10–14/11, dez/2026 fica como colchão, e nada foi publicado — a Onda 1 foi **commitada e empurrada em `3381aa3`** em 08/11/2026 (72 ficheiros, +3.214/−262), sobre `b4fe1dd`.
+**Exceção Ink de 05/11/2026 (Desktop 2.3.0), com data revista em 08/11/2026:** o dono atribuiu **5 dias de trabalho por mês**, então até 06/04/2027, ao **Desktop 2.3.0**, e em 08/11/2026 antecipou a entrega para **29/01/2027** — dez/2026 e jan/2027 passam a ser meses de release e **fev–abr/2027 (13 dias) voltam ao envelope do núcleo** — a fatia P1 (fundação multi-perfil, profissional e presença; **Onda 1 apenas** — o P1.4 «Hoje com resumo» foi cortado em 06/11/2026 e adiado para a Onda 2, `../caracore-ink/docs/ROADMAP_P1.md`). Não é a PWA: S1–S8 continuam fechados na janela do Hub, e o GA 3.0 segue **sem data dura, depois de 06/04/2027**. São 28 dias no total (~20–23 úteis), cabem dentro da janela do Hub **sem tirar dias do Hub nem do PDV**; o que passar de um mês não acumula e o brinco continua cedendo se o núcleo precisar. **Estado em 08/11/2026:** **3 dos 5 dias de nov/2026 usados** (06, 07 e 08/11) e a **Onda 1 fechada tecnicamente** (P1.1, P1.2.1–P1.2.8, P1.3 e G1; gate `mvn -B verify` 745/0 + 8 LGPD e `mvn -Ptestfx verify` 825/0, demo V30); os **2 dias restantes** vão para a homologação dos prints H-A04, H-C04, H-C06 e H-A08 na semana de 10–14/11, dez/2026 e jan/2027 ficam para o ensaio de release e o corte de 29/01/2027, e nada foi publicado — a Onda 1 foi **commitada e empurrada em `3381aa3`** em 08/11/2026 (72 ficheiros, +3.214/−262), sobre `b4fe1dd`.
 
 ---
 
@@ -65,7 +65,7 @@ Tab no Hub (SQLite, scripts) pode andar em set–nov sem Agent, sem competir com
 | Item | Antes (oficina isolada) | Agora |
 |------|-------------------------|--------|
 | CSO FRO 24/24 | Janela planejada 08/04–dez/2027 | **Publicado em 06/10/2026** (decisão explícita). Não reabrir o epic |
-| Ink PWA Agent | dez/2026–jun/2027 | **Tab**; GA com Agent **não antes de 2028**. Exceção de 05/11/2026: **5 dias/mês** para o Desktop **2.3.0** até 06/04/2027, sem antecipar S1–S8 |
+| Ink PWA Agent | dez/2026–jun/2027 | **Tab**; GA com Agent **não antes de 2028**. Exceção de 05/11/2026: **5 dias/mês** para o Desktop **2.3.0** até ele sair (data revista para 29/01/2027 em 08/11/2026, com fev–abr/2027 devolvidos ao núcleo), sem antecipar S1–S8 |
 | CSO Momento 2 | 2027 | Epic completo sem antecipação automática; reaproveitar somente itens necessários à integração, conforme INT-03. PWA de gestão offline cancelada em 15/10/2026 |
 | Virtual Tracker | Fora do envelope de Transportes em 2028 | Decisão de 17/10/2026: capacidade integrada, não terceiro produto; alvo conjunto **08/11/2028**, condicionado aos gates INT |
 | PIX Split PDV | 2027 código | Papel até o Hub no ar; Agent **só com folga do FRO** |
@@ -115,7 +115,7 @@ Se um ciclo bater 80% cedo: **desliza o dono seguinte**, não comprime dois GAs 
 | PDV v4 | `caracore-pdv/docs/arquitetura/PLANO_LANCAMENTO_V4.md` | out–nov/2026 · **GA 08/11/2026** |
 | Hub Windows | `caracore-hub/docs/contexto-rapido.md` | Agent **dez/2026–06/04/2027** |
 | CSO Frotas | `caracore-cso-quarkus/docs/plano-calendario-cota-2026.md` | FRO 24/24 publicado em 06/10; freeze M1 em 08/11/2026 |
-| Ink PWA | `caracore-ink/docs/PLANO_PWA.md` · 2.3.0 em `docs/ROADMAP_P1.md` | 5 dias/mês até 06/04/2027 (**Desktop 2.3.0**); PWA com Agent **não antes de 2028** |
+| Ink PWA | `caracore-ink/docs/PLANO_PWA.md` · 2.3.0 em `docs/ROADMAP_P1.md` | 5 dias/mês até o 2.3.0 sair (**Desktop 2.3.0** em 29/01/2027 desde 08/11/2026); PWA com Agent **não antes de 2028** |
 | CSO Transportes | oficina `caracore-cso-transportes` | 2028 |
 | Helianto | oficina `caracore-helianto` · vitrine `helianto.caracore.com.br` | **2029** (GA 30/12/2029) |
 

@@ -81,8 +81,9 @@ Search Console:
 
 1. A **propriedade de domínio** `caracore.com.br` está verificada por registro TXT e cobre
    todos os subdomínios; a meta tag de verificação continua só na home (`index.html`).
-2. Enviar os **sete sitemaps** (matriz, wiki, central, PDV, Hub, Ink e CSO). Regras, inventário
-   e lista de URLs em `INDEXACAO_SEO.md`.
+2. Os **sete sitemaps** (matriz, wiki, central, PDV, Hub, Ink e CSO) foram enviados em
+   09/11/2026 e processados pelo Google com 114 páginas no total. Regras, inventário e lista de
+   URLs em `INDEXACAO_SEO.md`.
 
 ## Leitura do insight de 06/11/2026
 

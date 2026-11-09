@@ -4,12 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Documentação técnica do sistema de autenticação OAuth 2.1 + OIDC da Área 51 - Cara Core Informática">
+    <meta property="og:title" content="Área 51 Wiki - Autenticação OAuth 2.1 + OIDC | Cara Core">
+    <meta property="og:url" content="https://caracore.com.br/area51/wiki/">
+    <meta property="og:image" content="https://caracore.com.br/assets/images/og-cara-core-1200x630.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Cara Core Informática">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="canonical" href="https://caracore.com.br/area51/wiki/">
     <meta name="keywords" content="OAuth 2.1, OIDC, PKCE, autenticação, segurança, Azure, Python, Flask">
     <title>Área 51 Wiki - Autenticação OAuth 2.1 + OIDC | Cara Core</title>
     <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
     <link rel="stylesheet" href="assets/wiki.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "@id": "https://caracore.com.br/area51/wiki/#webpage",
+      "url": "https://caracore.com.br/area51/wiki/",
+      "name": "Área 51 Wiki - Autenticação OAuth 2.1 + OIDC | Cara Core",
+      "description": "Documentação técnica do sistema de autenticação OAuth 2.1 + OIDC da Área 51 - Cara Core Informática",
+      "inLanguage": "pt-BR",
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://caracore.com.br/#website",
+        "name": "Cara Core Informática",
+        "url": "https://caracore.com.br/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://caracore.com.br/#organization",
+        "name": "Cara Core Informática",
+        "url": "https://caracore.com.br/"
+      }
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -127,7 +157,7 @@
                             <p class="mb-0">
                                 <strong>Status:</strong> <span class="badge bg-success">Em Produção</span> | 
                                 <strong>Uptime:</strong> 99.9% | 
-                                <strong>Resposta:</strong> < 200ms
+                                <strong>Resposta:</strong> &lt; 200ms
                             </p>
                         </div>
                         <p>
@@ -150,7 +180,7 @@
                             <p class="text-muted mt-2"><small>Diagrama de Arquitetura da Área 51 - Sistema OAuth 2.1 + OIDC com Refresh Tokens</small></p>
                         </div>
                         <div class="alert alert-info">
-                            <strong>Fases 4, 5, 6 e 7 Concluídas:</strong> A arquitetura inclui sistema completo de autorização (Fase 4), endpoints administrativos (`/api/admin/*`) protegidos por middleware robusto (Fase 5), gestão de usuários com CRUD completo, documentação API completa via Swagger/OpenAPI (Fase 6), e sistema de refresh tokens com criptografia AES-256 (Fase 7). Todos os endpoints são protegidos por validação JWT e hierarquia de roles (user < admin < super_admin). Sessões persistentes garantem continuidade da autenticação sem reautenticação manual.
+                            <strong>Fases 4, 5, 6 e 7 Concluídas:</strong> A arquitetura inclui sistema completo de autorização (Fase 4), endpoints administrativos (`/api/admin/*`) protegidos por middleware robusto (Fase 5), gestão de usuários com CRUD completo, documentação API completa via Swagger/OpenAPI (Fase 6), e sistema de refresh tokens com criptografia AES-256 (Fase 7). Todos os endpoints são protegidos por validação JWT e hierarquia de roles (user &lt; admin &lt; super_admin). Sessões persistentes garantem continuidade da autenticação sem reautenticação manual.
                         </div>
                         <div class="alert alert-success">
                             <strong>Última Atualização (16/11/2025):</strong> Correções críticas da Fase 7 implementadas: sistema agora suporta completamente contas pessoais Microsoft (hotmail.com, outlook.com, live.com) com validação inteligente de tenant, correções de PKCE para garantir correspondência correta de code_verifier, melhorias no tratamento de erros OAuth com diagnóstico detalhado, correção de loop de recarregamento, e verificação automática de autorização no callback Microsoft. Endpoint de auditoria (`/api/audit/access-granted`) corrigido e funcional.
@@ -167,7 +197,7 @@
                             <li><strong>Content Security Policy (CSP):</strong> Implementado para mitigar ataques XSS e configurado para permitir recursos do Swagger UI e outros serviços externos necessários.</li>
                             <li><strong>Autenticação de Super Admin:</strong> Acesso aos painéis administrativos protegido por credenciais separadas e hash de senha seguro (bcrypt).</li>
                             <li><strong>Rate Limiting:</strong> Proteção contra ataques de força bruta nos endpoints de autenticação.</li>
-                            <li><strong>Middleware de Autorização:</strong> Sistema robusto de validação JWT com hierarquia de roles (user < admin < super_admin).</li>
+                            <li><strong>Middleware de Autorização:</strong> Sistema robusto de validação JWT com hierarquia de roles (user &lt; admin &lt; super_admin).</li>
                             <li><strong>Conformidade LGPD:</strong> Consentimento obrigatório registrado com timestamp e versões dos termos.</li>
                         </ul>
                         <div class="alert alert-success">
@@ -319,7 +349,7 @@
                                         <strong>Objetivos Alcançados:</strong>
                                         <ul class="mb-2">
                                             <li>✅ Sistema de autorização robusto com middleware de validação JWT</li>
-                                            <li>✅ Hierarquia de roles funcionando (user < admin < super_admin)</li>
+                                            <li>✅ Hierarquia de roles funcionando (user &lt; admin &lt; super_admin)</li>
                                             <li>✅ Proteção efetiva em 6 endpoints críticos</li>
                                             <li>✅ 100% de aprovação nos testes automatizados (meta era >90%)</li>
                                         </ul>

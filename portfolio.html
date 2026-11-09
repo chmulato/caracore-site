@@ -5,8 +5,6 @@
   <!-- Política de Segurança de Conteúdo (CSP) -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
   
-  <!-- X-Content-Type-Options: Previne MIME sniffing -->
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
   
   <!-- Referrer Policy: Controla informações de referência -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -34,7 +32,9 @@
   <meta property="og:description" content="PDV, CSO, Hub e Ink Agenda: software resiliente para operações que não podem parar. Produtos principais, diferenciais e engenharia.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://caracore.com.br/portfolio.html">
-  <meta property="og:image" content="https://caracore.com.br/assets/images/logo.png">
+  <meta property="og:image" content="https://caracore.com.br/assets/images/og-cara-core-1200x630.png">
+  <meta property="og:site_name" content="Cara Core Informática">
+  <meta name="twitter:card" content="summary_large_image">
   
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/caracore-core-typography.css?v=20261115">
@@ -42,6 +42,29 @@
   
   <!-- Google tag (gtag.js) -->
   <script defer src="assets/js/analytics.js"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://caracore.com.br/portfolio.html#webpage",
+    "url": "https://caracore.com.br/portfolio.html",
+    "name": "Portfólio | PDV, CSO, Hub e Ink Agenda | Cara Core Informática",
+    "description": "PDV, CSO, Hub e Ink Agenda: software resiliente para operações que não podem parar. Os quatro produtos principais, os diferenciais e a engenharia por trás de cada entrega.",
+    "inLanguage": "pt-BR",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://caracore.com.br/#website",
+      "name": "Cara Core Informática",
+      "url": "https://caracore.com.br/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://caracore.com.br/#organization",
+      "name": "Cara Core Informática",
+      "url": "https://caracore.com.br/"
+    }
+  }
+  </script>
 </head>
 <body class="cc-site cc-dark-hero">
 

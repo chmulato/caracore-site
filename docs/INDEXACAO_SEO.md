@@ -1,7 +1,9 @@
 # Indexação: host canônico, sitemaps e robots
 
 Estado de **09/11/2026**. Complementa `GOOGLE_ANALYTICS.md`: ali está a medição, aqui está
-como o Google descobre e escolhe a URL de cada página.
+como o Google descobre e escolhe a URL de cada página. Os sete sitemaps foram enviados no
+Search Console em 09/11/2026 e o Google os processou com as contagens esperadas (§2). O que cada
+página declara sobre si em JSON-LD está em §"Dados estruturados".
 
 ## Host canônico é o apex
 
@@ -59,6 +61,112 @@ declaram `Allow: /` mais a linha `Sitemap:`; o da matriz continua bloqueando `se
 - Toda entrada corresponde a um arquivo rastreado no repositório daquele host.
 - `scripts/tests/cdn-assets.test.cjs` passou a exigir o canonical e o `og:image` no apex.
 
+## Dados estruturados
+
+O JSON-LD diz ao Google o que a página **é** — empresa, produto, versão e preço — em vez de
+deixar o buscador só interpretar o texto. Inventário em 09/11/2026: **as 114 URLs dos sete
+sitemaps têm bloco**, somando 116 páginas e 117 blocos.
+
+| Superfície | Com JSON-LD | Tipos declarados |
+|---|---|---|
+| Matriz | 12 de 101 (10 do sitemap + `aligned/en/`, `aligned/it/`) | `Organization`, `WebPage`, `CollectionPage`, `ContactPage`, `Book` |
+| Central | 4 de 4 | `Organization` (com `@id` e `taxID`), `ItemList` de 14 produtos, `WebPage`, `CollectionPage` |
+| Wiki | 51 de 63 (as outras 12 são redirect ou `noindex`) | `WebSite`, `WebPage`, `CollectionPage` |
+| PDV | 24 de 56 | `SoftwareApplication`, `WebPage`, `CollectionPage`, `ContactPage` |
+| Hub | 5 de 7 | `SoftwareApplication`, `WebPage`, `ContactPage` |
+| Ink | 15 de 17 | `SoftwareApplication`, `WebPage`, `CollectionPage`, `ContactPage` |
+| CSO | 5 de 9 | `SoftwareApplication`, `WebPage`, `ContactPage` |
+
+Ficam sem bloco, de propósito, as páginas que não estão em sitemap nenhum: `/delivery/` (stubs),
+`secure/`, `handbook/`, `cv/`, `personal/`, `sala/`, os livros com `noindex` e os redirects da
+wiki. As duas homes de `aligned/` já tinham bloco e continuam bloqueadas no `robots.txt` — não
+entram no índice, e ali o dado só serve se alguém abrir a página por fora do buscador.
+
+### `SoftwareApplication` nas quatro lojas do núcleo
+
+Aplicado em 09/11/2026 nas oito páginas do núcleo:
+
+| Loja | Páginas | `softwareVersion` | `datePublished` | Ofertas |
+|---|---|---|---|---|
+| PDV | `index.html`, `download.html` | 4.0.0 | 2026-11-08 | Free 0 · Pro 79.90/mês |
+| Hub | `index.html`, `download.html` | 2.1.0-rc1.10 | 2026-11-07 | Free (Starter) 0 · Pro 79.90/mês |
+| Ink | `index.html`, `download.html` | 2.2.1 | 2026-11-04 | Assinatura 79.90/mês |
+| CSO | `index.html`, `disponibilidade.html` | não declarada | não declarada | Grátis 0 · 5.00 · 10.00 · 49.00 por mês |
+
+Cada bloco também declara `name`, `url` (a própria página), `description`,
+`applicationCategory` `BusinessApplication`, `operatingSystem`, `inLanguage` e `publisher` (a
+`Organization` da Cara Core). As ofertas cobradas por mês levam `priceSpecification`
+`UnitPriceSpecification` com `billingDuration` `P1M`; a CSO acrescenta `browserRequirements`
+porque a Frotas exige conexão e não tem fila offline.
+
+Decisões que valem registro:
+
+- **Sem `aggregateRating` nem `review`.** Nenhuma loja tem avaliação publicada, e nota inventada
+  é justamente o dado que rende ação manual por dados estruturados. Sem nota o resultado
+  enriquecido de aplicativo não aparece, mas o bloco continua válido e descreve o produto.
+- **CSO sem versão e sem data.** A loja não publica número de versão nem data de lançamento da
+  Frotas; o campo ficou fora em vez de preenchido por dedução.
+- **CSO: markup na `disponibilidade.html`, não na `download.html`.** A `download.html` da CSO é um
+  stub com `noindex` que redireciona para `disponibilidade.html`; dado estruturado ali não seria
+  lido.
+- **Preço e CTA copiados da própria página.** Cada `Offer.price` bate com o cartão visível, e cada
+  `Offer.url` é o botão que aquela página usa no plano (checkout da CSO, WhatsApp do Hub,
+  `canal-feedback.html` do PDV e do Ink). Dado estruturado que diverge do texto visível é
+  violação de diretriz.
+- **Transportes e Virtual Tracker não entram como oferta.** Estão em desenvolvimento, com alvo
+  08/11/2028 e sem preço definido.
+
+### Páginas secundárias do sitemap
+
+Em 09/11/2026 as 49 páginas que estavam no sitemap sem bloco receberam um nó de página: **37
+`WebPage`**, **6 `CollectionPage`** (portfólio, biblioteca de livros, mapa do ecossistema,
+`area51/wiki` e as duas listas de versões) e **6 `ContactPage`** (os quatro `canal-feedback.html`,
+`consultoria.html` e `suporte-local.html`). Com isso o sitemap passou a ter cobertura total.
+
+Cada bloco declara `@id` `<canonical>#webpage`, `url` igual ao canonical da própria página, `name`
+igual ao `<title>`, `description` copiada da meta description (omitida nas duas páginas que não
+têm uma: `slides/apresentacao_tia_socia.html` e `tecnologia.html` do Ink), `inLanguage`,
+`isPartOf` para `https://<host>/#website` e `publisher` com o `@id`
+`https://caracore.com.br/#organization`. Nenhuma delas declara preço, versão ou data — essas
+páginas não publicam isso, e preencher por dedução seria inventar.
+
+### Validação
+
+Um validador próprio, executado fora dos repositórios e ainda não versionado, varreu as 257
+páginas HTML das sete superfícies e checou: `JSON.parse`, `@context` com schema.org, `@type`
+presente, `@id` absoluto, `@id` repetido na mesma página e entre páginas, referência a `@id` que
+não existe em nenhuma superfície, `@id#webpage` derivando do canonical, `url` do nó de página
+igual ao canonical, campos de `SoftwareApplication` e `Offer` (preço numérico, moeda ISO 4217,
+`billingDuration` ISO-8601), contagem de `ListItem` e presença de nota ou avaliação. Resultado:
+**0 erros e 0 avisos**; os únicos informativos são as páginas bloqueadas e o `ecosistema.html`.
+
+O script foi testado antes contra um repositório-semente com defeitos plantados — JSON inválido,
+vírgula sobrando, `url` relativa, moeda `real`, preço `79,90`, `@id` repetido, `@id` fora do
+canonical e página sem canonical — e acusou todos.
+
+Continua **sem teste automatizado versionado** para JSON-LD: o `cdn-assets.test.cjs` cobre
+canonical e `og:image`, não dados estruturados.
+
+### Divergências encontradas, não corrigidas
+
+- `artifacts/instalacao-macos.html` e `mirror-delivery.html` estão no sitemap do Ink e declaram
+  `noindex` — o sitemap pede indexação e a página recusa. Hoje o Google descarta as duas; ou saem
+  do sitemap, ou perdem o `noindex`.
+- As duas homes de `aligned/` declaram JSON-LD e estão bloqueadas no `robots.txt`.
+- `ecosistema.html` tem dois blocos JSON-LD em vez de um.
+
+### Conferência depois da publicação
+
+O Rich Results Test só valida por URL pública, então a prova final vem depois do deploy:
+
+1. <https://search.google.com/test/rich-results> com `https://pdv.caracore.com.br/`,
+   `https://hub.caracore.com.br/download.html` e `https://cso-transp.caracore.com.br/` — os três
+   devem acusar `SoftwareApplication` válido, sem campo obrigatório faltando.
+2. Search Console → Inspeção de URL → **Testar URL ativa** → seção **Dados estruturados**: é o
+   que o Google extraiu da página ao vivo, útil quando a dúvida é qual entidade ele escolheu.
+3. "Nenhum resultado enriquecido detectado" com itens válidos é o esperado nas lojas sem nota —
+   não é erro e não se resolve inventando avaliação.
+
 ## Passo a passo no Search Console (só o dono)
 
 Só o dono entra no portal do Google. O resto — arquivos, URLs, canonical — já está publicado.
@@ -102,17 +210,38 @@ algum dia o envio falhar com "não foi possível buscar", confira antes no naveg
 Não é preciso reenviar a cada deploy: o Google relê o mesmo endereço e usa o `lastmod` de cada
 URL para decidir o que buscar de novo.
 
+#### Resultado do envio de 09/11/2026
+
+Os sete foram enviados na mesma sessão e, minutos depois, todos apareciam como **Processado**
+com a contagem de páginas igual à do inventário local:
+
+| Host | Enviado | Status | Páginas encontradas |
+|---|---|---|---|
+| Matriz | 09/11/2026 | Processado | 10 |
+| Wiki | 09/11/2026 | Processado | 51 |
+| Central | 09/11/2026 | Processado | 4 |
+| PDV | 09/11/2026 | Processado | 24 |
+| Hub | 09/11/2026 | Processado | 5 |
+| Ink | 09/11/2026 | Processado | 15 |
+| CSO | 09/11/2026 | Processado | 5 |
+
+Soma 114, o mesmo total da verificação por `curl`. Três dos sete (matriz, PDV e Ink) exibiram
+**"Não foi possível buscar"** na linha recém-criada e viraram **Processado** na leitura
+seguinte — a primeira tentativa do Google corre antes de o resultado ser gravado, então esse
+estado isolado nas primeiras horas não é falha: só vale a pena reenviar se persistir depois de
+um dia.
+
 ### 3. Ler a coluna de status
 
 | Status | O que significa | O que fazer |
 |---|---|---|
 | **Em processamento** | o Google ainda está lendo o arquivo | esperar; normal nas primeiras horas |
-| **Sucesso** | arquivo lido; o número de URLs aparece em "Descobertas" | nada, é o estado final |
-| **Não foi possível buscar** | o arquivo não respondeu 200 | abrir a URL no navegador, esperar e clicar em **Enviar** de novo |
+| **Processado** | arquivo lido; a contagem sai em "Páginas encontradas" | nada, é o estado final |
+| **Não foi possível buscar** | a leitura não foi gravada | recarregar a página; se persistir mais de um dia, abrir a URL no navegador e clicar em **Enviar** de novo |
 | **Sitemap com erros** | o arquivo foi lido e alguma URL foi recusada | abrir o detalhe; erro comum é URL que redireciona ou de outro host |
 | **Tipo desconhecido** | formato não reconhecido | conferir se a URL é a do `.xml` e não a de uma pasta |
 
-"Sucesso" pode levar de horas a alguns dias. Reenviar não acelera e não atrapalha.
+"Processado" costuma levar de minutos a algumas horas. Reenviar não acelera e não atrapalha.
 
 ### 4. Conferir a indexação de fato
 
@@ -149,10 +278,15 @@ URL para decidir o que buscar de novo.
 ## Decisões abertas (fora deste ajuste)
 
 - `/aligned/` continua bloqueado no `robots.txt`: 15 páginas trilíngues (EN/IT) fora do índice.
-- A wiki não declara canonical próprio nas 51 páginas do sitemap; o espelho é hoje o próprio
-  host, mas a declaração explícita ainda não existe.
+- A wiki não declara canonical próprio nas 51 páginas do sitemap nem JSON-LD em nenhuma delas
+  (nem `Organization`, nem `WebSite` com `SearchAction`). É o maior bloco de conteúdo do domínio
+  e hoje não diz ao buscador o que é.
 - Os 40 stubs de `/delivery/` respondem 200 e redirecionam no cliente, em vez de 301 no servidor.
 - Os livros (`publications/livros/*.html`) seguem com `noindex` deliberado; só a listagem é
   indexável.
+- A home da matriz declara o `Book` da Rebeldia da Mecatrônica e não uma entidade da empresa: o
+  `@id` canônico `https://caracore.com.br/#organization`, com CNPJ e endereço, só está definido
+  na central. As quatro lojas repetem a `Organization` inline (nome + URL) em vez de apontar
+  para esse `@id`, o que impede o buscador de somar as declarações em uma entidade só.
 - As lojas dos brincos (OIDC, Circuito, Seed, RU/BioReator, Helianto, ETE, Área 51, MKT,
   Rust) continuam sem `robots.txt` e sem `sitemap.xml` próprios.

@@ -59,36 +59,7 @@
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
-  <url>
-    <loc>https://www.caracore.com.br/publications/livros/apostila_ms365.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.caracore.com.br/publications/livros/python_engenharia.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.caracore.com.br/publications/livros/python_escritorios.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.caracore.com.br/publications/livros/tcc.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.caracore.com.br/publications/livros/guia_de_servicos.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://www.caracore.com.br/publications/livros/guia_de_servicos_caracore-pdv.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
-  </url>
+  <!-- Páginas de livro declaram noindex: fora do sitemap; só a listagem acima é indexável -->
 
   <!-- Wiki Cara Core -->
   <url>

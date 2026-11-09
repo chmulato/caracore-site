@@ -59,21 +59,92 @@ declaram `Allow: /` mais a linha `Sitemap:`; o da matriz continua bloqueando `se
 - Toda entrada corresponde a um arquivo rastreado no repositório daquele host.
 - `scripts/tests/cdn-assets.test.cjs` passou a exigir o canonical e o `og:image` no apex.
 
-## O que só o dono faz (Search Console)
+## Passo a passo no Search Console (só o dono)
 
-Propriedade de domínio `caracore.com.br` já verificada por TXT (tela de 09/11/2026). Falta
-enviar os sitemaps, um por host:
+Só o dono entra no portal do Google. O resto — arquivos, URLs, canonical — já está publicado.
 
-1. `https://caracore.com.br/sitemap.xml`
-2. `https://wiki.caracore.com.br/sitemap.xml`
-3. `https://download.caracore.com.br/sitemap.xml`
-4. `https://pdv.caracore.com.br/sitemap.xml`
-5. `https://hub.caracore.com.br/sitemap.xml`
-6. `https://ink.caracore.com.br/sitemap.xml`
-7. `https://cso-transp.caracore.com.br/sitemap.xml`
+### 0. Pré-requisito
 
-Depois do deploy, cada URL precisa responder 200 em `<host>/sitemap.xml` e
-`<host>/robots.txt` — antes disso o envio falha com "não foi possível buscar".
+Os sete sitemaps estão no ar desde 09/11/2026, respondendo **200** e sem redirecionamento. Se
+algum dia o envio falhar com "não foi possível buscar", confira antes no navegador:
+`https://<host>/sitemap.xml` precisa abrir o XML, não uma página de erro.
+
+### 1. Abrir a propriedade certa
+
+1. Entre em <https://search.google.com/search-console> com a conta que já verifica o domínio.
+2. No seletor do canto **superior esquerdo**, escolha `caracore.com.br` — aparece como
+   `sc-domain:caracore.com.br`. É a **propriedade de domínio**, verificada por TXT no DNS.
+3. Essa propriedade cobre **todos os subdomínios**. Não crie propriedade nova por host. Se na
+   lista aparecer também uma de prefixo de URL (`https://www.caracore.com.br/`), ignore: ela é
+   o resto da verificação antiga por meta tag e não enxerga wiki, central nem lojas.
+4. Se a propriedade de domínio não estiver na lista: **Adicionar propriedade → Domínio**, digite
+   `caracore.com.br`, copie o registro TXT que o Google mostrar, crie no DNS e volte para
+   **Verificar**. A propagação costuma levar minutos, mas pode levar horas.
+
+### 2. Enviar os sete sitemaps
+
+1. No menu lateral, abra **Indexação → Sitemaps**.
+2. No campo **Adicionar um novo sitemap**, cole a URL completa do host (ex.:
+   `https://wiki.caracore.com.br/sitemap.xml`). Se o campo já exibir `caracore.com.br/` à
+   esquerda, digite só `sitemap.xml` para a matriz e a URL completa para os subdomínios.
+3. Clique em **Enviar**. Repita para os sete, um por vez.
+
+| Host | Sitemap a enviar | URLs |
+|---|---|---|
+| Matriz | `https://caracore.com.br/sitemap.xml` | 10 |
+| Wiki | `https://wiki.caracore.com.br/sitemap.xml` | 51 |
+| Central | `https://download.caracore.com.br/sitemap.xml` | 4 |
+| PDV | `https://pdv.caracore.com.br/sitemap.xml` | 24 |
+| Hub | `https://hub.caracore.com.br/sitemap.xml` | 5 |
+| Ink | `https://ink.caracore.com.br/sitemap.xml` | 15 |
+| CSO | `https://cso-transp.caracore.com.br/sitemap.xml` | 5 |
+
+Não é preciso reenviar a cada deploy: o Google relê o mesmo endereço e usa o `lastmod` de cada
+URL para decidir o que buscar de novo.
+
+### 3. Ler a coluna de status
+
+| Status | O que significa | O que fazer |
+|---|---|---|
+| **Em processamento** | o Google ainda está lendo o arquivo | esperar; normal nas primeiras horas |
+| **Sucesso** | arquivo lido; o número de URLs aparece em "Descobertas" | nada, é o estado final |
+| **Não foi possível buscar** | o arquivo não respondeu 200 | abrir a URL no navegador, esperar e clicar em **Enviar** de novo |
+| **Sitemap com erros** | o arquivo foi lido e alguma URL foi recusada | abrir o detalhe; erro comum é URL que redireciona ou de outro host |
+| **Tipo desconhecido** | formato não reconhecido | conferir se a URL é a do `.xml` e não a de uma pasta |
+
+"Sucesso" pode levar de horas a alguns dias. Reenviar não acelera e não atrapalha.
+
+### 4. Conferir a indexação de fato
+
+1. **Indexação → Páginas**: acompanha quantas URLs do sitemap já estão em "Indexada". Isso leva
+   dias e não depende de novo envio.
+2. **Inspeção de URL** (barra superior, por URL): cole o endereço e veja se aparece
+   "O URL está no Google" e **qual canonical o Google escolheu**. Use em três páginas de
+   controle: `https://caracore.com.br/`, `https://caracore.com.br/ecosistema.html` e
+   `https://pdv.caracore.com.br/download.html`.
+3. **Solicitar indexação** acelera a primeira visita a uma página específica (cota de poucas
+   por dia). Vale para a home e as páginas comerciais; não faz sentido para as 114.
+4. **Inspeção de `https://www.caracore.com.br/`** deve devolver "Página com redirecionamento"
+   para o apex — é o comportamento correto desde 09/11/2026.
+
+### 5. Acompanhar a virada de www para o apex
+
+- **Desempenho → filtro "Página"** passa a mostrar o apex; URLs `www` que ainda aparecerem são
+  histórico e migram sozinhas em algumas semanas.
+- **Indexação → Páginas** deve encolher a categoria "Página com redirecionamento" e crescer
+  "Indexada" para o apex. Não mexa em nada enquanto isso: o canonical já declara a escolha.
+- Se em 4 semanas o apex ainda não for o canônico escolhido em alguma página, o próximo passo é
+  Inspeção de URL → **Testar URL ativa** e conferir o HTML que o Google recebe.
+
+### 6. Erros conhecidos e a causa
+
+- **"Não foi possível buscar" persistente**: GitHub Pages serve o último commit publicado; antes
+  do build terminar o arquivo responde 404. Espere o build e reenvie.
+- **"URL não permitida"**: o sitemap cita outro host. Era o defeito do sitemap antigo da matriz,
+  que listava wiki, blog pessoal e retrô — entrada de outro domínio é ignorada.
+- **Sitemap lido, poucas URLs descobertas**: é esperado — 91 das 101 páginas HTML da matriz
+  ficam fora de propósito (stubs de `/delivery/`, `secure/`, `aligned/`, `cv/`, `handbook/`,
+  livros com `noindex`). O motivo de cada exclusão está na tabela acima.
 
 ## Decisões abertas (fora deste ajuste)
 

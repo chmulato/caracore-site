@@ -160,15 +160,10 @@ Arquivo criado: `images/portfolio/area51-architecture.mmd`
 
 ### 4. **Google Analytics**
 
-✅ **Tracking automático** já configurado:
-
-- Visualização do card do projeto
-- Cliques nos links de documentação
-- Cliques nos links de apresentação
-- Scroll até o projeto
-- Tempo de visualização
-
-Nenhuma alteração necessária no `analytics-config.js` - o sistema já rastreia todos os `.project-card` automaticamente.
+A tag padrão do ecossistema é `assets/js/analytics.js` (ver `docs/GOOGLE_ANALYTICS.md`). Ela mede
+pageview por `hostname`, cliques externos e de download (Enhanced Measurement) e o evento `contato`
+(WhatsApp, e-mail, telefone). Não existem mais eventos customizados por `.project-card`; a leitura de
+interesse nos cards vem do Enhanced Measurement e do caminho de navegação.
 
 ---
 

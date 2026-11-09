@@ -1,208 +1,107 @@
-﻿# Google Analytics - Documentação de Implementação
+# Google Analytics 4 no ecossistema Cara Core
 
-## Visão Geral
+Fonte única da medição de audiência. Estado de **09/11/2026**.
 
-Configuração completa do Google Analytics GA4 para o site da Cara Core Informática com tracking avançado de eventos personalizados.
+## Decisão de arquitetura
 
-## Informações Principais
+**Uma propriedade, um stream.** O ID `G-MKFC9G3CL0` vale para todo `*.caracore.com.br`;
+a separação entre matriz, wiki, central e lojas é feita pela dimensão `hostname`, e o
+cruzamento entre subdomínios usa cookie em `.caracore.com.br` mais `linker`.
+Alternativas descartadas em 09/11/2026: um stream por subdomínio (15 IDs para manter) e
+uma propriedade por produto (perde o funil matriz → loja → download).
 
-- ID de Medição: G-MKFC9G3CL0
-- Domínio: caracore.com.br
-- Versão: 2.0
-- Data de Implementação: 08/11/2025
+## Onde a tag está
 
-## Arquivos Envolvidos
+Arquivo único `assets/js/analytics.js`, copiado byte a byte em cada repositório e publicado
+em `assets/js/analytics.js` da raiz de cada site. Checksum de referência:
 
-### 1. assets/js/analytics-config.js
-
-Arquivo centralizado com toda a configuração do Google Analytics.
-
-Localização: `d:\dev\site\cara-core\assets\js\analytics-config.js`
-
-### 2. `index.html` e `portfolio.html`
-
-Scripts do GA carregados no `<head>` de ambas as páginas:
-
-```html
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
-<script src="assets/js/analytics-config.js"></script>
+```
+5539dfbb4c40be7686e67787409cf7f7fb6d5f18417f4d790474144185155f30
 ```
 
-## Eventos Rastreados
+| Superfície | Host | Páginas com a tag |
+|---|---|---|
+| Matriz | `caracore.com.br` / `www` | 13 (raiz e `publications/livros/`) + 14 em `aligned/` |
+| Wiki | `wiki.caracore.com.br` | 63 de 63 |
+| Central de Downloads | `download.caracore.com.br` | 4 de 4 |
+| PDV | `pdv.caracore.com.br` | 56 de 56 |
+| Hub | `hub.caracore.com.br` | 7 de 7 |
+| Ink | `ink.caracore.com.br` | 17 de 17 |
+| CSO | `cso-transp.caracore.com.br` | 9 de 9 |
 
-### 1. Page View (Visualização de Página)
+Todas as páginas carregam `<script defer src="/assets/js/analytics.js"></script>` antes de
+`</body>` (na matriz, com caminho relativo `assets/js/analytics.js`).
 
-- Rastreamento automático de todas as páginas
-- Captura: título, URL completa e caminho
+**Fora da medição, de propósito:** `secure/` (área autenticada, bloqueada no `robots.txt`), as
+lojas dos brincos (OIDC, Circuito, Seed, RU, Helianto, ETE, Área 51, MKT e afins) e `404.html`
+(o teste `404 remains an error page without automatic navigation or heavy resources` exige página
+sem `<script>`; e `aligned/index.html`, que é só o seletor de idioma que redireciona em 2 s).
 
-### 2. Outbound Links (Links Externos)
+## Como a tag funciona
 
-- Tracking de cliques em links externos ao domínio caracore.com.br
-- Categoria: `outbound`
-- Label: URL do link clicado
+1. **Consent Mode v2.** Antes de qualquer comando, publica `consent default` com
+   `analytics_storage`, `ad_storage`, `ad_user_data` e `ad_personalization` negados.
+2. **Sem aceite, sem download.** O `gtag.js` só é baixado depois de `analytics_storage`
+   concedido; interação e ociosidade apenas antecipam a carga quando o aceite já existe.
+   Quem recusa não gera cookie nem requisição ao Google.
+3. **Carga adiada.** A tag não compete com o LCP: o `dataLayer` enfileira e o script entra
+   após interação ou ~3 s de ociosidade.
+4. **Banner.** Páginas com `#lgpd-banner` usam o banner próprio (`assets/js/lgpd.js`, que
+   agora só delega para `CaraCoreAnalytics.grant()`/`deny()`); as demais recebem um banner
+   injetado com o mesmo texto e as mesmas cores do site.
+5. **Cookies.** `cookie_domain: '.caracore.com.br'`, padrão do GA4 no restante. Recusar
+   apaga `_ga`, `_gid` e `_gat` do domínio e do host.
+6. **Evento-chave `contato`.** Clique em `wa.me`, `t.me`, `mailto:` ou `tel:` envia
+   `contato` com `metodo` (`whatsapp`, `email`, `telefone`), `link_url` e `link_text`.
+   Download de arquivo e clique externo continuam vindo da medição aprimorada.
+7. **CSP.** As páginas da matriz liberam `https://*.google-analytics.com`,
+   `https://*.analytics.google.com` e `https://www.googletagmanager.com` em `connect-src`.
+   Antes disso o `region1.google-analytics.com` era bloqueado e parte dos hits se perdia.
 
-### 3. Contact Clicks (Cliques em Contato)
+## O que só o dono faz (portal)
 
-- WhatsApp
-- Telegram  
-- Email
-- Categoria: `engagement`
-- Label: Tipo de contato (WhatsApp/Telegram/Email)
+GA4 → Administrador:
 
-### 4. Navigation (Navegação no Menu)
+1. **Fluxos de dados → stream do `caracore.com.br` → Configurar seus domínios**: incluir
+   todos os subdomínios acima (mede o cruzamento matriz → loja).
+2. **Coleta de dados → Medição aprimorada**: manter ativa (page view, rolagem, clique
+   externo, download de arquivo, interação com formulário).
+3. **Exibição de dados → Retenção**: 14 meses (máximo do plano gratuito).
+4. **Vínculos de produto → Search Console**: vincular a propriedade de domínio
+   `caracore.com.br` para habilitar os relatórios de Consulta e o canal orgânico.
+5. **Eventos → Eventos principais**: marcar `contato` e `file_download` como conversões.
+6. **Definições personalizadas**: registrar `metodo` (escopo de evento) para relatar canal
+   de contato.
+7. **Filtros de dados → Tráfego interno**: definir a regra por IP (casa, escritório e as
+   máquinas usadas em verificação) e marcar como `traffic_type`.
+8. **Configurações da propriedade**: fuso `America/Sao_Paulo`, moeda `BRL`.
+9. **Anotações**: registrar 06/11/2026 (release pública da PDV v4.0.0) e 08/11/2026 (GA).
 
-- Tracking de todos os cliques nos itens do menu
-- Categoria: `menu`
-- Label: Nome do item do menu
+Search Console:
 
-### 5. Portfolio - View Item (Visualização de Projetos)
+1. Criar a **propriedade de domínio** `caracore.com.br` por registro TXT no DNS — ela cobre
+   todos os subdomínios. A verificação por meta tag hoje existe só na home
+   (`index.html`), o que deixaria wiki, central e lojas de fora.
+2. Enviar `https://caracore.com.br/sitemap.xml`.
+3. Depois que existirem, enviar os sitemaps da wiki e da central.
 
-- Dispara quando um card de projeto se torna 50% visível na tela
-- Categoria: `portfolio`
-- Label: Nome do projeto (CaraCore Hub, CaraCore Seed, Reino OIDC)
-- Usa Intersection Observer API
+## Leitura do insight de 06/11/2026
 
-### 6. Portfolio - Project Link Clicks
+O "total de usuários em 1 dia" deu 81 contra a faixa prevista de 16–61 no mesmo dia em que a
+PDV v4.0.0 teve a release pública. O pico tem duas origens conhecidas — lançamento mais
+acesso de verificação às páginas publicadas — e nenhuma delas era separável antes deste
+ajuste, porque não havia filtro de tráfego interno. Depois do item 7 da lista do portal,
+picos passam a ter causa atribuível.
 
-- Tracking de cliques em links dos projetos (GitHub, Demo)
-- Categoria: `portfolio`
-- Label: Nome do projeto + Tipo de link
+## Pendências conhecidas
 
-### 7. Scroll Depth (Profundidade de Rolagem)
-
-- Marcos: 25%, 50%, 75%, 90%
-- Categoria: `engagement`
-- Label: Percentual de scroll
-
-### 8. Time on Page (Tempo na Página)
-
-- Marcos: 30s, 60s, 120s, 300s
-- Categoria: `engagement`
-- Label: Tempo em segundos
-
-## ⚙️ Configurações GA4
-
-```javascript
-gtag('config', 'G-MKFC9G3CL0', {
-  'cookie_domain': 'caracore.com.br',
-  'cookie_flags': 'SameSite=None;Secure',
-  'cookie_update': true,
-  'anonymize_ip': true,
-  'send_page_view': true
-});
-```
-
-### Parâmetros:
-
-- cookie_domain: Domínio específico para cookies
-- cookie_flags: Cookies seguros com SameSite=None
-- cookie_update: Atualiza cookies em cada visita
-- anonymize_ip: Anonimiza IPs para compliance LGPD/GDPR
-- send_page_view: Envia pageview automaticamente
-
-## 🔒 Segurança (CSP)
-
-Ambos os arquivos HTML incluem Content Security Policy permitindo:
-
-```text
-script-src 'self' https://www.googletagmanager.com https://cdn.jsdelivr.net 'unsafe-inline'
-img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data:
-connect-src 'self' https://www.google-analytics.com
-```
-
-## 📈 Relatórios Disponíveis no GA4
-
-Com esta implementação, você pode visualizar:
-
-1. Aquisição
-   - Fonte/Mídia de tráfego
-   - Campanhas
-   - Páginas de entrada
-
-2. Engajamento
-   - Páginas mais visitadas
-   - Tempo médio na página
-   - Profundidade de scroll
-   - Taxa de rejeição
-
-3. Eventos Personalizados
-   - Cliques em contato (WhatsApp, Telegram, Email)
-   - Visualizações de projetos do portfolio
-   - Cliques em links de projetos
-   - Navegação no menu
-   - Links externos clicados
-
-4. Conversões
-   - Configure os eventos acima como conversões no GA4
-   - Sugestões: `contact_click`, `project_link_click`
-
-## 🚀 Como Testar
-
-### 1. Modo Real-Time no GA4
-
-1. Acesse [Google Analytics](https://analytics.google.com)
-2. Selecione a propriedade G-MKFC9G3CL0
-3. Vá em Relatórios > Tempo real
-4. Navegue pelo site e observe os eventos
-
-### 2. Chrome DevTools
-
-1. Abra o console (F12)
-2. Vá em Network
-3. Filtre por "collect" ou "analytics"
-4. Interaja com o site e veja as requisições
-
-### 3. Google Tag Assistant
-
-1. Instale a extensão [Tag Assistant](https://chrome.google.com/webstore/detail/tag-assistant-companion/jmekfmbnaedfebfnmakmokmlfpblbfdm)
-2. Abra o site
-3. Clique no ícone da extensão
-4. Veja tags e eventos disparados
-
-## 🛠️ Manutenção
-
-### Adicionar Novo Evento
-
-Edite `assets/js/analytics-config.js` e adicione dentro do `window.addEventListener('load')`:
-
-```javascript
-// Exemplo: tracking de formulário
-document.querySelector('#meuFormulario').addEventListener('submit', function(e) {
-  gtag('event', 'form_submit', {
-    'event_category': 'forms',
-    'event_label': 'Formulário de Contato',
-    'value': 1
-  });
-});
-```
-
-### Alterar ID de Medição
-
-Se precisar alterar o ID do GA4:
-
-1. Em `analytics-config.js`: linha 24, alterar `'G-MKFC9G3CL0'`
-2. Em `index.html` e `portfolio.html`: alterar `?id=G-MKFC9G3CL0`
-
-## 📚 Referências
-
-- [Google Analytics 4](https://support.google.com/analytics/answer/10089681)
-- [Event Reference](https://developers.google.com/analytics/devguides/collection/ga4/reference/events)
-- [gtag.js API](https://developers.google.com/tag-platform/gtagjs/reference)
-- [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
-
-## ✅ Checklist de Verificação
-
-- [x] Script gtag.js carregado no `<head>`
-- [x] Configuração centralizada em arquivo externo
-- [x] Eventos personalizados implementados
-- [x] CSP atualizado para permitir GA
-- [x] Anonimização de IP ativa (LGPD/GDPR)
-- [x] Tracking de conversões (contato, projetos)
-- [x] Documentação completa
-
----
-
-Desenvolvido por: Cara Core Informática  
-Data: 08 de novembro de 2025  
-Versão: 2.0
+- Lojas dos brincos sem tag (10 repositórios).
+- Blog pessoal (`caracore-personal`) com script próprio, que ainda carrega o `gtag.js` sem
+  consultar o consentimento.
+- Wiki e central sem `robots.txt` e sem `sitemap.xml` próprios.
+- `assets/js/analytics.js` é copiado por repositório: qualquer alteração precisa ser
+  propagada e conferida pelo checksum acima.
+- Dívida anterior a este ajuste: `scripts/tests/cdn-assets.test.cjs` reprova dois casos
+  (`404 remains an error page…` e `local preview…`) porque `404.html` carrega seis
+  folhas de estilo e o bundle do Bootstrap desde antes — o teste exige uma página de erro sem
+  recursos externos. Não é consequência da tag: o arquivo está igual ao `HEAD`.

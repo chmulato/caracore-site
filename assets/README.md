@@ -14,7 +14,7 @@ assets/
 │   ├── main.js           # Stub de compatibilidade (planos em sites.html)
 │   ├── catalog-data.js   # Catálogo canônico de produtos (fonte única)
 │   ├── catalog.js        # Renderiza o catálogo em portfolio e ecossistema
-│   └── analytics-config.js # Configuração do Google Analytics
+│   └── analytics.js      # Tag GA4 do ecossistema (Consent Mode v2)
 └── images/
     ├── favicon.ico       # Ícone do site
     ├── logo.png          # Logotipo principal
@@ -98,15 +98,15 @@ Renderizador do catálogo canônico. Preenche os contêineres marcados na págin
 - portfolio.html
 - ecosistema.html
 
-### analytics-config.js
-Configuração do Google Analytics:
-- Inicialização do dataLayer
-- Configuração do gtag
-- Cookie settings para caracore.com.br
+### analytics.js
+Tag padrão do Google Analytics 4 para todo o ecossistema (um stream, `G-MKFC9G3CL0`):
+- Consent Mode v2 com `analytics_storage` negado até o aceite
+- `gtag.js` só baixa após interação ou ociosidade (LCP/TBT)
+- Cookie em `.caracore.com.br` e `linker` para os subdomínios do ecossistema
+- Banner injetado nas páginas que não têm `#lgpd-banner`
+- Evento-chave `contato` em links de WhatsApp, e-mail e telefone
 
-**Usado em:**
-- index.html
-- portfolio.html
+**Usado em:** todas as páginas públicas da matriz (raiz, 404 e `publications/livros/`).
 
 ## 🖼️ Imagens
 
@@ -167,9 +167,8 @@ Contém recursos visuais do portfólio:
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/main.js"></script> <!-- index.html -->
   
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MKFC9G3CL0"></script>
-  <script src="assets/js/analytics-config.js"></script>
+  <!-- Google Analytics (Consent Mode v2) -->
+  <script defer src="assets/js/analytics.js"></script>
 </body>
 ```
 

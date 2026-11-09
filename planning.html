@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
@@ -101,8 +101,8 @@
   <div class="lgpd-content">
     <div class="lgpd-icon">🛡️</div>
     <div class="lgpd-text">
-      <strong>Proteção de Dados (LGPD)</strong><br>
-      Este site utiliza localStorage para melhorar a sua experiência. Ao continuar, concorda com a Política de Privacidade e a LGPD.
+      <strong>Medição de audiência (LGPD)</strong><br>
+      Usamos cookies do Google Analytics para entender quais páginas são úteis. Ao aceitar, os cookies de medição são ativados; ao recusar, nada é gravado. Veja a <a href="/politica/politica-privacidade.html">Política de Privacidade</a>.
     </div>
     <div class="lgpd-buttons">
       <button class="lgpd-btn lgpd-btn-accept" onclick="acceptLGPD()">Aceitar</button>
@@ -347,8 +347,7 @@
 <script src="assets/js/main.js"></script>
 <script src="assets/js/planning-data.js?v=20261109"></script>
 <script src="assets/js/planning.js?v=20261109"></script>
-<script src="assets/js/analytics-config.js"></script>
-<script src="assets/js/analytics-loader.js"></script>
+<script defer src="assets/js/analytics.js"></script>
 <script src="assets/js/lgpd.js"></script>
 </body>
 </html>

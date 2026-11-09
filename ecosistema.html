@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <!-- Política de Segurança de Conteúdo (CSP) -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
@@ -59,7 +59,7 @@
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/caracore-core-typography.css?v=20261115">
   <link rel="stylesheet" href="/assets/css/caracore-institutional-components.css?v=20261116">
-  <!-- GA4: assets/js/analytics-loader.js após consentimento LGPD -->
+  <!-- GA4: tag padrão assets/js/analytics.js, com Consent Mode v2 (mede só após o aceite) -->
 </head>
 <body class="cc-site">
 
@@ -129,8 +129,8 @@
   <div class="lgpd-content">
     <div class="lgpd-icon">🛡️</div>
     <div class="lgpd-text">
-      <strong>Proteção de Dados (LGPD)</strong><br>
-      Este site utiliza localStorage para salvar seu progresso no curso e melhorar sua experiência. Ao continuar navegando, você concorda com o tratamento dos seus dados conforme nossa Política de Privacidade e a Lei Geral de Proteção de Dados (LGPD).
+      <strong>Medição de audiência (LGPD)</strong><br>
+      Usamos cookies do Google Analytics para entender quais páginas são úteis. Ao aceitar, os cookies de medição são ativados; ao recusar, nada é gravado. Veja a <a href="/politica/politica-privacidade.html">Política de Privacidade</a>.
     </div>
     <div class="lgpd-buttons">
       <button class="lgpd-btn lgpd-btn-accept" onclick="acceptLGPD()">Aceitar</button>
@@ -1656,8 +1656,7 @@ flowchart TB
     openHashDetails();
   })();
 </script>
-<script src="assets/js/analytics-config.js"></script>
-<script src="assets/js/analytics-loader.js"></script>
+<script defer src="assets/js/analytics.js"></script>
 <script src="assets/js/lgpd.js"></script>
 </body>
 </html>

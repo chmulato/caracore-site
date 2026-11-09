@@ -1,5 +1,9 @@
 ﻿# Google Analytics - Resumo de Implementação
 
+> **Histórico (superado em 09/11/2026).** Descreve a implementação de 08/11/2025, que carregava o
+> `gtag.js` antes do consentimento. O estado vigente está em
+> [`GOOGLE_ANALYTICS.md`](GOOGLE_ANALYTICS.md).
+
 ## ✅ O que foi ajustado
 
 ### 1. **Arquivo de Configuração Aprimorado**

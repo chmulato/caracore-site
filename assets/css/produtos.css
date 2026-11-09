@@ -1,7 +1,8 @@
 /**
  * Produtos (home) — vitrine comercial.
- * Hierarquia: hero → três produtos principais → diferencial → outros → técnico recolhido.
- * Cores: PDV índigo · CSO petróleo · Hub âmbar (as mesmas do Ecossistema e do Portfólio).
+ * Hierarquia: hero → quatro produtos principais → diferencial → outros → técnico recolhido.
+ * Cores: PDV índigo · CSO petróleo · Hub âmbar · Ink Agenda vinho
+ * (as mesmas do Ecossistema e do Portfólio).
  */
 
 .p2-section {
@@ -13,6 +14,7 @@
   --p2-pdv: #4338ca;
   --p2-cso: #0e7490;
   --p2-hub: #b45309;
+  --p2-agenda: #7a2e5d;
   background: #fff;
   color: var(--p2-ink);
 }
@@ -120,7 +122,7 @@
 
 .p2-core {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
 }
 
@@ -139,6 +141,7 @@
 .p2-card--pdv { --p2-accent: var(--p2-pdv); }
 .p2-card--cso { --p2-accent: var(--p2-cso); }
 .p2-card--hub { --p2-accent: var(--p2-hub); }
+.p2-card--ink { --p2-accent: var(--p2-agenda); }
 
 .p2-card-head {
   display: grid;

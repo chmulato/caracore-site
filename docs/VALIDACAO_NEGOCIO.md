@@ -12,7 +12,7 @@ Histórico detalhado (delivery/): docs/archive/sessoes-trabalho/VALIDACAO_NEGOCI
 
 PREMISSA
 
-- **Principais:** PDV · CSO · Hub. **Brincos:** os demais da lista abaixo. O brinco não manda na fila de Agent nem na headline.
+- **Principais (09/11/2026):** PDV · CSO · Hub · Ink Agenda. **Brincos:** os demais da lista abaixo. O brinco não manda na fila de Agent, na headline nem no catálogo.
 - Foco em **engenharia B2B boutique** + produtos Bunker como prova de entrega; capacidade limitada (sem braço de startup).
 - Matriz = home B2B (`#engenharia-b2b`), portfólio (`#decisoes-engenharia`), ecossistema; loja = vitrine e download (*.caracore.com.br).
 - Filosofia Bunker: desktop soberano, operação local, SQLite onde aplicável.
@@ -26,7 +26,7 @@ PRODUTOS EM FOCO
 
   #  Produto                         Loja canónica              Release / preço
   -- ------------------------------- -------------------------- ---------------------------
-  1  CaraCore PDV Java (web local)   pdv.caracore.com.br        v3.2.12-free (anterior) + v4 pré-lançamento · Free/Premium
+  1  CaraCore PDV Java (web local)   pdv.caracore.com.br        v4.0.0 (08/11/2026) + v3.2.12-free (anterior) · Free/Premium
   2  CaraCore PDV                    pdv-rust + GitHub Releases   v0.1.4 · piloto · transparência loja
   3  chmulatoETE Minerador 4.0       ete.caracore.com.br        Free · Ouro 4.0 R$ 29,90
   4  Reino OIDC                      oidc.caracore.com.br        FREE · upgrade R$ 29,90
@@ -52,8 +52,8 @@ PDV — DUAS LINHAS DESKTOP (discurso fixo)
 
   Java (maduro)     Rust + Tauri 2 (piloto)
   pdv.*             pdv-rust.*
-  v3.2.12-free     v0.1.4
-  Win/Linux/macOS   Windows · MSI pt-BR
+  v4.0.0 · 3.2.12-free     v0.1.4
+  Win10/11 x64 (v4) · Win/Linux/macOS (3.2.12)   Windows · MSI pt-BR
 
   - Mesmo produto CaraCore PDV; stacks distintas; nenhuma substitui a outra.
   - Comparação única no portfólio: #pdv-coexistencia

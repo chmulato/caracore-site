@@ -12,7 +12,7 @@ O site de cada produto **é** o produto na web (oferta, download, docs, feedback
 
   Produto                      Loja online (URL canónica)                              Observação
   ---------------------------- ------------------------------------------------------- ------------------------------------------
-  CaraCore PDV Java (web local) https://pdv.caracore.com.br/                            Oferta principal: v4 em pré-lançamento (prévia pública v4.0.0-candidato-20261031, build de 31/10/2026, Windows; rc6/rc5 no histórico); v3.2.12-free é a versão anterior, última da linha 3.2.x, até 08/11/2026; PWA da vitrine
+  CaraCore PDV Java (web local) https://pdv.caracore.com.br/                            Oferta principal: v4.0.0, lançada em 08/11/2026 para Windows 10/11 x64 (release publicada em 06/11/2026, duas chaves Ed25519); v3.2.12-free é a versão anterior, última da linha 3.2.x, com manutenção encerrada em 08/11/2026 e pacotes ainda disponíveis; PWA da vitrine
   CaraCore PDV                 https://pdv-rust.caracore.com.br/                       Loja própria (Pages do repo caracore-rust-pdv-releases)
   (download oficial Rust)      https://github.com/chmulato/caracore-rust-pdv-releases/releases   Mesmo repo da loja; tag v0.1.4. NÃO usar /latest de caracore-pdv-releases (Java)
   Cara Core Hub                https://hub.caracore.com.br/                            Encomendas; web 2.1 concluída na oficina; pré-release Windows v2.1.0-rc1.10 (ZIP portátil, unsigned); GA instalador Windows 06/04/2027
@@ -46,4 +46,4 @@ Retomada de contexto (ler nesta ordem):
 
 Portfólio institucional: https://www.caracore.com.br/portfolio.html (nunca wiki.caracore.com.br/portfolio).
 
-Atualizado em 07/11/2026 (Ink `v2.2.1`, Hub `v2.1.0-rc1.10`, PDV `v3.2.12-free` + v4 em pré-lançamento). Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md. DNS: MEMORIA_INFRAESTRUTURA_CARACORE.txt.
+Atualizado em 09/11/2026 (Ink `v2.2.1`, Hub `v2.1.0-rc1.10`, PDV `v4.0.0` com `v3.2.12-free` como versão anterior). Política de fontes canónicas: docs/FONTES_CANONICAS_MATRIZ_LOJAS.md. DNS: MEMORIA_INFRAESTRUTURA_CARACORE.txt.

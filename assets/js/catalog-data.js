@@ -18,7 +18,7 @@
   'use strict';
 
   var CATALOGO = {
-    atualizadoEm: '30/10/2026',
+    atualizadoEm: '09/11/2026',
 
     /**
      * Quatro estágios canônicos. Toda página da matriz usa estes rótulos.
@@ -47,11 +47,11 @@
     ],
 
     /**
-     * Categorias comerciais. Núcleo = PDV, CSO e Hub (produtos principais);
-     * os demais são complementos do ecossistema.
+     * Categorias comerciais. Núcleo = PDV, CSO, Hub e Ink Agenda (produtos
+     * principais); os demais são complementos do ecossistema.
      */
     categorias: [
-      { id: 'nucleo', rotulo: 'Núcleo', descricao: 'PDV, CSO e Hub — os produtos principais.' },
+      { id: 'nucleo', rotulo: 'Núcleo', descricao: 'PDV, CSO, Hub e Ink Agenda — os produtos principais.' },
       { id: 'satelite', rotulo: 'Satélite', descricao: 'Verticais próprias que complementam o núcleo.' },
       { id: 'educacao', rotulo: 'Educação', descricao: 'Formação, estudo e critério técnico.' },
       { id: 'institucional', rotulo: 'Institucional', descricao: 'Identidade, licenciamento e ferramentas internas.' },
@@ -64,8 +64,8 @@
         nome: 'CaraCore PDV Java',
         categoria: 'nucleo',
         estagio: 'disponivel',
-        versao: 'v3.2.12-free (versão anterior) · v4.0.0-candidato-20261031 (pré-lançamento)',
-        detalhe: 'A 3.2.12-free é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026; a v4 está em pré-lançamento, com GA somente após gates e aceites formais.',
+        versao: 'v4.0.0 (linha atual, lançada em 08/11/2026) · v3.2.12-free (versão anterior)',
+        detalhe: 'A v4.0.0 teve a release publicada em 06/11/2026, com pacote assinado por duas chaves Ed25519, e foi lançada em 08/11/2026; a 3.2.12-free é a versão anterior, com a manutenção encerrada na mesma data e os pacotes ainda disponíveis.',
         free: 'Até 100 vendas/mês, 100 produtos, 1 operador, 4 vendedores e 1 loja.',
         pago: 'Premium: sem teto de vendas, produtos e operadores.',
         preco: 'R$ 79,90/mês',
@@ -73,23 +73,7 @@
         loja: 'pdv.caracore.com.br',
         url: 'https://pdv.caracore.com.br/',
         portfolio: 'portfolio.html#caracore-pdv',
-        nota: 'Aplicação web local (localhost:8080/login). Não inclui PIX integrado nem NF-e/NFC-e no plano Free.'
-      },
-      {
-        id: 'pdv-rust',
-        nome: 'CaraCore PDV Rust (piloto)',
-        categoria: 'nucleo',
-        estagio: 'piloto',
-        versao: 'v0.1.4',
-        detalhe: 'Piloto Windows; linha independente da Java, nenhuma substitui a outra.',
-        free: 'Piloto gratuito com teto de 100 vendas na vida do banco.',
-        pago: 'Sem edição paga publicada.',
-        preco: 'R$ 0 (piloto)',
-        pagamento: 'Sem checkout; download no GitHub Releases.',
-        loja: 'pdv-rust.caracore.com.br',
-        url: 'https://pdv-rust.caracore.com.br/',
-        portfolio: 'portfolio.html#caracore-pdv-rust',
-        nota: 'Rust + Tauri 2 + React. Não é migração forçada nem substituto do PDV Java.'
+        nota: 'Aplicação local no Windows, aberta pelo launcher no Edge, com banco em ./data. Não inclui PIX integrado nem NF-e/NFC-e no plano Free.'
       },
       {
         id: 'cso',
@@ -126,7 +110,7 @@
       {
         id: 'ink',
         nome: 'CaraCore Ink Agenda',
-        categoria: 'satelite',
+        categoria: 'nucleo',
         estagio: 'disponivel',
         versao: 'v2.2.1',
         detalhe: 'Desktop Windows e Linux desde 04/11/2026, metamórfico com os perfis Tatuagem, Odontologia e Beleza, equipe com papéis e mensagem por WhatsApp ou Telegram; próxima atualização do Desktop, a 2.3.0, em 29/01/2027; PWA em roadmap, não antes de 2028.',
@@ -138,6 +122,22 @@
         url: 'https://ink.caracore.com.br/',
         portfolio: 'portfolio.html#caracore-ink-agenda',
         nota: 'Agenda e financeiro para estúdios, consultórios e espaços de beleza, com os dados no computador. Windows e Linux; macOS sem instalador, pelo navegador na linha 3.0.'
+      },
+      {
+        id: 'pdv-rust',
+        nome: 'CaraCore PDV Rust (piloto)',
+        categoria: 'satelite',
+        estagio: 'piloto',
+        versao: 'v0.1.4',
+        detalhe: 'Piloto Windows; linha independente da Java, nenhuma substitui a outra.',
+        free: 'Piloto gratuito com teto de 100 vendas na vida do banco.',
+        pago: 'Sem edição paga publicada.',
+        preco: 'R$ 0 (piloto)',
+        pagamento: 'Sem checkout; download no GitHub Releases.',
+        loja: 'pdv-rust.caracore.com.br',
+        url: 'https://pdv-rust.caracore.com.br/',
+        portfolio: 'portfolio.html#caracore-pdv-rust',
+        nota: 'Rust + Tauri 2 + React. Não é migração forçada nem substituto do PDV Java.'
       },
       {
         id: 'minerador',

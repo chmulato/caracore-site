@@ -45,11 +45,11 @@
   };
 
   const GLOSSARY = [
-    ["v4.0.0-candidato-20261031", "Prévia pública da linha v4, em pré-lançamento (build de 31/10/2026). SHA-256 publicado. T032 e a matriz M01–M11 foram medidos em ff400efd, não neste pacote; o SCA segue não medido. A v3.2.12-free é a versão anterior, última da linha 3.2.x, em manutenção de transição até 08/11/2026 e ainda a indicada para operar. GA somente após gates e aceites formais, sem data automática em 08/11."],
-    ["v4.0.0-rc6", "Prévia anterior (10/10/2026). Fica no histórico. O download público da linha v4 é a v4.0.0-candidato-20261031."],
+    ["v4.0.0", "Lançamento da linha v4 do PDV Java: release publicada em 06/11/2026 e lançamento em 08/11/2026. ZIP Windows x64 com Java 25 embutido, migração do banco da 3.2.x no primeiro acesso e SHA-256 publicado; o SHA256SUMS é assinado com duas chaves Ed25519."],
+    ["v4.0.0-rc6", "Prévia anterior (10/10/2026). Fica no histórico; a linha atual é a v4.0.0."],
     ["v4.0.0-rc5", "Prévia anterior. Fica no histórico."],
-    ["v3.2.12-free", "Versão anterior do PDV Java Free, última da linha 3.2.x, para Windows, Linux e macOS; manutenção de transição até 08/11/2026."],
-    ["v2.1.0-rc1.10", "Pré-release Windows para avaliação, em ZIP portátil. O lançamento estável do Hub está previsto para 06/04/2027."],
+    ["v3.2.12-free", "Versão anterior do PDV Java Free, última da linha 3.2.x, para Windows, Linux e macOS; manutenção encerrada em 08/11/2026, com os pacotes ainda disponíveis."],
+    ["v2.1.0-rc1.10", "Pré-release Windows publicada em 07/11/2026, em ZIP portátil e sem assinatura. O lançamento estável do Hub está previsto para 06/04/2027."],
     ["v2.0.2-free", "Edição Free do Reino OIDC. As três Eras são gratuitas para estudo pessoal. A edição paga está em desenvolvimento, sem PIX nesta etapa."],
     ["T032", "Gate interno do roteiro operacional."],
     ["Agent", "Sessão pesada do Cursor. É o que consome a cota do mês."],
@@ -441,7 +441,7 @@
     const el = document.getElementById("pl-core");
     if (!el) return;
     const cfg = panel().core || {};
-    const order = ["pdv-java", "cso", "hub"];
+    const order = ["pdv-java", "cso", "hub", "ink"];
     el.innerHTML = order
       .map(function (id) {
         const p = productById(id);

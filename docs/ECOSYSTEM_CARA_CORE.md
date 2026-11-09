@@ -13,8 +13,8 @@ privada, mapa e histórico. Presença 120 s, posição 60 s em viagem como refer
 a medir; sem fila offline ou promessa de localização instantânea.
 Fonte: [plano mestre](../../caracore-cso-transportes/docs/plano_organizado_execucao_cso.md).
 
-**Produtos-chave:** PDV · CSO · Hub. Fonte para IAs: `caracore-site/AGENTS.md` + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `AGENTS.md` da raiz do workspace **não existe mais**.
-**Transição do PDV:** `v3.2.12-free` é a versão anterior do PDV Java, última da linha 3.2.x, em manutenção de transição apenas até 08/11/2026 e ainda a indicada para operar. O PDV v4 está em pré-lançamento, com a `v4.0.0-candidato-20261031` (build de 31/10/2026) como prévia pública para avaliação; as rc6 e rc5 ficam no histórico e a RC7 é a rota aprovada do Gate E, ainda sem tag. A sucessão é feita pelas RCs e o GA só vem após aprovação formal dos gates e aceites, sem data automática em 08/11.
+**Produtos-chave (09/11/2026, quatro):** PDV · CSO · Hub · Ink Agenda. Fonte para IAs: `caracore-site/AGENTS.md` + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `AGENTS.md` da raiz do workspace **não existe mais**.
+**PDV hoje:** a **`v4.0.0` foi lançada em 08/11/2026** e é a versão indicada para operar (release publicada em 06/11/2026 em `caracore-pdv4-releases`, ZIP portátil com duas assinaturas Ed25519; T032 17/17, matriz 11/11 com M11 não medida, banco 3.2.12 migrado 9/9). A **`v3.2.12-free` é a versão anterior**, última da linha 3.2.x, com manutenção encerrada em 08/11/2026 e pacotes ainda disponíveis. A candidata `v4.0.0-candidato-20261031`, a rc6 e a rc5 ficam no histórico. A linha 4.1.0 (Appmax/PlugNotas) está em branch e **não se anuncia**.
 
 
 ---
@@ -27,8 +27,8 @@ VISÃO GERAL
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
   caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (139 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
-  caracore-pdv                  Oficina — PDV Java web local / v4           v3.2.12-free versão anterior, última da linha 3.2.x (manutenção até 08/11); PDV v4 em pré-lançamento, candidata 31/10 é a prévia pública, rc6/rc5 no histórico, RC7 rota aprovada sem tag; T032/M01–M11 medidos em ff400efd, SCA não medido; v4 avança por RCs, sem GA automático
-  caracore-pdv-releases         Loja — PDV Java web local                   pdv.caracore.com.br · CTA Baixar Free (3.2.12) · Free 100 vendas/mês
+  caracore-pdv                  Oficina — PDV Java web local / v4           PDV v4.0.0 lançada em 08/11/2026 (release publicada em 06/11/2026 em caracore-pdv4-releases, duas chaves Ed25519; T032 17/17, matriz 11/11 com M11 não medido, banco migrado 9/9, canal pdv-v4); v3.2.12-free é a versão anterior, última da linha 3.2.x, com pacotes disponíveis; SCA OSV 06/11/2026, NVD não medido; candidata 31/10, rc6 e rc5 no histórico
+  caracore-pdv-releases         Loja — PDV Java web local                   pdv.caracore.com.br · CTA Baixar Free · v4.0.0 (Windows x64) e v3.2.12-free (anterior) · Free 100 vendas/mês
   caracore-pdv-rust             Oficina — PDV Desktop (Rust + Tauri 2)      Rust, Tauri 2, React, SQLite; release v0.1.4
   caracore-rust-pdv-releases    Loja + artefatos — PDV Desktop Rust         UM repo: Pages = pdv-rust.caracore.com.br · Releases = NSIS/MSI/ZIP (tag v0.1.4). Clone local: caracore-pdv-rust-releases
   caracore-hub                  Oficina — CaraCore Hub                      Encomendas; aplicação web 2.1 concluída; Tomcat embutido no instalador, SQLite local; GA Windows 06/04/2027; retomada docs/contexto-rapido.md
@@ -69,7 +69,7 @@ CARACORE PDV — DUAS LINHAS INDEPENDENTES
 
   Linha                    Oficina                  Loja                         Release / canal
   ------------------------ ------------------------ ---------------------------- ---------------------------
-  PDV Java web local       caracore-pdv             caracore-pdv-releases        v3.2.12-free (versão anterior) · v4 em pré-lançamento, prévia pública 4.0.0-candidato-20261031 · Free 100 vendas/mês
+  PDV Java web local       caracore-pdv             caracore-pdv-releases        v4.0.0 lançada em 08/11/2026 · v3.2.12-free (versão anterior) · Free 100 vendas/mês
   CaraCore PDV             caracore-pdv-rust        caracore-rust-pdv-releases    v0.1.4 (piloto Windows; loja + NSIS/MSI/ZIP no mesmo repo)
 
   Posicionamento V3 (negócio): PME, PIX Split 2027 — comum às duas linhas.

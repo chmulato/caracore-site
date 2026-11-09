@@ -42,8 +42,8 @@ Para cada linha: (M) matriz · (L) loja · OK / rever
 ## 1. CARACORE PDV DESKTOP (JAVA)
 
    (M) portfolio.html#caracore-pdv · ecosistema.html
-   (L) caracore-pdv-releases → pdv.caracore.com.br · v3.2.12-free ("versão anterior · indicada para operar") + v4 em pré-lançamento (prévia `v4.0.0-candidato-20261031`)
-   Mensagem: Java é uma aplicação web local multiplataforma; Rust é o piloto desktop
+   (L) caracore-pdv-releases → pdv.caracore.com.br · v4.0.0 lançada em 08/11/2026 (release publicada em 06/11/2026) + v3.2.12-free ("versão anterior · indicada para operar" no histórico, pacotes ainda disponíveis)
+   Mensagem: Java é a aplicação web local (v4 pelo launcher no Edge; 3.2.12 pelo navegador); Rust é o piloto desktop
    Coexistência: #pdv-coexistencia no portfólio
    Status: OK — rever após cada release Java
 

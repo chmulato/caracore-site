@@ -876,10 +876,10 @@
   margin-bottom: 0;
 }
 
-/* Núcleo — três cards grandes */
+/* Núcleo — quatro cards grandes */
 .eco2-core-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 255px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
   gap: 1.15rem;
 }
 
@@ -898,6 +898,7 @@
 .eco2-core-card--pdv { --eco2-accent: #4338ca; }
 .eco2-core-card--cso { --eco2-accent: #0e7490; }
 .eco2-core-card--hub { --eco2-accent: #b45309; }
+.eco2-core-card--ink { --eco2-accent: #7a2e5d; }
 
 .eco2-core-head {
   display: flex;
@@ -1418,7 +1419,7 @@
   scroll-margin-top: calc(var(--cc-nav-h) + 1.5rem);
 }
 
-/* Tablet: 2 colunas fixas para o terceiro card fechar a linha, e explorar em 2x2 */
+/* Tablet: 2 colunas fixas para os quatro cards fecharem em 2x2, e explorar em 2x2 */
 @media (min-width: 576px) and (max-width: 1199.98px) {
   .eco2-core-grid,
   .eco2-garage-grid,
@@ -1426,7 +1427,6 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .eco2-core-card--hub,
   .eco2-garage-card:last-child {
     grid-column: 1 / -1;
   }

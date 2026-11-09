@@ -731,10 +731,13 @@ section, header {
   background: linear-gradient(120deg, #0b3a66 0%, #14538e 55%, #a8481f 100%) !important;
 }
 
-.cc-badge-hub,
-.cc-badge-cso {
+.cc-badge-hub {
   background: linear-gradient(120deg, #f7971e 0%, #ffd200 100%) !important;
   color: #1f2937 !important;
+}
+
+.cc-badge-cso {
+  background: linear-gradient(120deg, #0e7490 0%, #075985 100%) !important;
 }
 
 .cc-badge-seed {
@@ -755,7 +758,7 @@ section, header {
 }
 
 .cc-badge-ink {
-  background: linear-gradient(120deg, #0066ff 0%, #00a3ff 100%) !important;
+  background: linear-gradient(120deg, #a21caf 0%, #7a2e5d 100%) !important;
 }
 
 .cc-badge-mkt {

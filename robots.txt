@@ -13,4 +13,4 @@ Disallow: /publications/
 Disallow: /pdf/
 
 # Sitemap da matriz (páginas institucionais indexáveis; lojas têm sitemap próprio por subdomínio)
-Sitemap: https://www.caracore.com.br/sitemap.xml
+Sitemap: https://caracore.com.br/sitemap.xml

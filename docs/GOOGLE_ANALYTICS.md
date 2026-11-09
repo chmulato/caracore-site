@@ -79,11 +79,10 @@ GA4 → Administrador:
 
 Search Console:
 
-1. Criar a **propriedade de domínio** `caracore.com.br` por registro TXT no DNS — ela cobre
-   todos os subdomínios. A verificação por meta tag hoje existe só na home
-   (`index.html`), o que deixaria wiki, central e lojas de fora.
-2. Enviar `https://caracore.com.br/sitemap.xml`.
-3. Depois que existirem, enviar os sitemaps da wiki e da central.
+1. A **propriedade de domínio** `caracore.com.br` está verificada por registro TXT e cobre
+   todos os subdomínios; a meta tag de verificação continua só na home (`index.html`).
+2. Enviar os **sete sitemaps** (matriz, wiki, central, PDV, Hub, Ink e CSO). Regras, inventário
+   e lista de URLs em `INDEXACAO_SEO.md`.
 
 ## Leitura do insight de 06/11/2026
 
@@ -98,7 +97,8 @@ picos passam a ter causa atribuível.
 - Lojas dos brincos sem tag (10 repositórios).
 - Blog pessoal (`caracore-personal`) com script próprio, que ainda carrega o `gtag.js` sem
   consultar o consentimento.
-- Wiki e central sem `robots.txt` e sem `sitemap.xml` próprios.
+- Lojas dos brincos sem `robots.txt` e sem `sitemap.xml` próprios; o núcleo (matriz, wiki,
+  central e quatro lojas) está coberto — ver `INDEXACAO_SEO.md`.
 - `assets/js/analytics.js` é copiado por repositório: qualquer alteração precisa ser
   propagada e conferida pelo checksum acima.
 - Dívida anterior a este ajuste: `scripts/tests/cdn-assets.test.cjs` reprova dois casos

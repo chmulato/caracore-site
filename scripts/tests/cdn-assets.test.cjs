@@ -76,8 +76,8 @@ test('home loads Bootstrap once, declares one favicon and contains no network po
   assert.equal((home.match(/<script[^>]+src="[^"]*bootstrap\.bundle\.min\.js"/g) || []).length, 1);
   assert.equal((home.match(/<link[^>]+rel="(?:shortcut )?icon"/g) || []).length, 1);
   assert.doesNotMatch(home, /location\s*\.\s*reload|setInterval\s*\(|http-equiv=["']refresh|rel=["'](?:prefetch|preload)|serviceWorker/);
-  assert.match(home, /rel="canonical" href="https:\/\/www\.caracore\.com\.br\/"/);
-  assert.match(home, /property="og:image" content="https:\/\/www\.caracore\.com\.br\/assets\/images\/logo\.png"/);
+  assert.match(home, /rel="canonical" href="https:\/\/caracore\.com\.br\/"/);
+  assert.match(home, /property="og:image" content="https:\/\/caracore\.com\.br\/assets\/images\/logo\.png"/);
 });
 
 test('canonical catalog feeds portfolio and ecosystem; sites plans live in sites.html', () => {

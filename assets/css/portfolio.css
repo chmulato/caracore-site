@@ -1391,13 +1391,15 @@ section[id] {
   padding-right: 0;
 }
 
-.eng-item-body h4 {
+.eng-item-body h4,
+.eng-item-body .keep-h4 {
   font-size: 1rem;
   color: var(--pf-ink);
   margin: 1.5rem 0 0.6rem;
 }
 
-.eng-item-body h4:first-child {
+.eng-item-body h4:first-child,
+.eng-item-body .keep-h4:first-child {
   margin-top: 0;
 }
 

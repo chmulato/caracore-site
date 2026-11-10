@@ -49,6 +49,62 @@ Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, *
 
 **O que não mudou:** nenhuma versão dos quatro produtos foi tocada — PDV `v4.0.0` (lançada em 08/11/2026), Hub `v2.1.0-rc1.10` (pré-release, aceite pendente; GA Windows 06/04/2027), Ink Desktop `v2.2.1` (2.3.0 planejado para 29/01/2027, não publicado) e CSO Frotas no ar desde 06/10 (freeze M1 em 08/11/2026; Transportes + VT em 08/11/2028).
 
+### CSO Frotas — aplicação servida local, sem Cloudflare nem CDN (10/11/2026)
+
+**Publicado em 10/11/2026** na oficina `caracore-cso-quarkus`: commit `f395c10` (`3482282..f395c10`), CI `Quarkus CI Pipeline`
+`42869460638` = `success` e deploy do Railway no mesmo commit = `SUCCESS`. Nenhuma outra superfície foi tocada.
+
+**O que saiu do código:** `TurnstileCaptchaService` (única chamada a `challenges.cloudflare.com`) apagado; widget e `<script>`
+do Turnstile fora de `/cadastro` e `/auth/setup-senha`; chaves `CSO_CAPTCHA_*` fora do `application.properties`, do workflow
+e do `pipeline_local.py` (que reprovava produção sem `CSO_CAPTCHA_ENABLED=true`); Google Fonts e o Pico via jsDelivr fora das
+17 telas. Pico CSS 2.1.1 (83.319 B) e Inter variable latin/latin-ext (48.256 B + 85.068 B) passam a sair da própria aplicação.
+O anti-bot do cadastro continua o de antes: honeypot `website`, `formToken` HMAC e rate limit por IP.
+
+**Vídeo da landing:** o iframe do YouTube era a última requisição externa em tempo de carga; virou fachada click-to-load com
+capa local (`/img/landing-video.jpg`, 82.075 B, 1280×720) e `/js/landing-video.js`, que monta o iframe `youtube-nocookie` só
+no clique. A caixa é a mesma (`inset: 0` no mesmo frame 16:9), então o layout não muda.
+
+**Medido no ar (`cso.caracore.com.br`):**
+
+- **CSP:** `default-src 'self'`, `font-src 'self' data:`, `connect-src 'self'`, sem `challenges.cloudflare.com` e sem CDN;
+  a única origem externa é `frame-src https://www.youtube-nocookie.com https://www.youtube.com`.
+- **Assets:** `/css/pico.min.css` 200 com 83.319 B, `/fonts/inter-latin.woff2` 200 com 48.256 B,
+  `/fonts/inter-latin-ext.woff2` 200 com 85.068 B, `/js/landing-video.js` 200 e `/img/landing-video.jpg` 200.
+- **Landing no Chrome:** 10 recursos, **todos do próprio host, 0 domínio externo**, Inter carregada do local e nenhum iframe
+  antes do clique; o clique real na capa monta `https://www.youtube-nocookie.com/embed/QxDKWjRASsI?autoplay=1` com
+  `allowfullscreen` e a fachada desaparece.
+- **Telas com `base.html`** (medidas na página de erro 404, que usa o mesmo layout): `pico.min.css?v=20261110` carregado e
+  aplicado, 0 recurso externo.
+- **`/cadastro`** 200 sem menção a Turnstile/Cloudflare, com `name="website"` e `name="formToken"` presentes; `/login` e
+  `/ops/login` 200 com 0 referência externa.
+- **Saúde:** `/` 200, `/q/health` e `/q/health/ready` `UP` (inclui o banco) e `/q/openapi` 404 — o checklist do README segue
+  verdadeiro.
+
+**O que não mudou:** nenhuma versão, tag, loja ou data de produto. O CSO Frotas segue no ar desde 06/10 e a captação continua
+com as três camadas locais.
+
+### CSO Frotas — cadastro em 500 por sequence do seed, corrigido na V34 (10/11/2026)
+
+**Medido no ar:** o smoke de cadastro com dados válidos devolvia **500** e o log do container mostrava `duplicate key value
+violates unique constraint "tenant_pkey"`, `Key (id)=(1)`, em `TenantService.criarComPlano`. Causa: `V3__seed_cso.sql` insere
+o tenant de demonstração com **id explícito**, caminho em que o Postgres não avança a sequence; a `V13` religou as sequences
+das tabelas `tb_*` mas deixou `tenant` de fora. O primeiro `nextval` devolvia 1 e colidia com o seed — ou seja, **nenhum
+cadastro novo gravava**, e não era caso de borda.
+
+**Correção publicada** na oficina `caracore-cso-quarkus`: commit `22bee2d` (`f395c10..22bee2d`), CI `Quarkus CI Pipeline`
+`42873488518` = `success` e deploy do Railway no mesmo commit = `SUCCESS`. `V34__resync_sequences_seed.sql` faz
+`setval(pg_get_serial_sequence('tenant','id'), GREATEST((SELECT COALESCE(MAX(id),1) FROM tenant),1))`; o Flyway aplicou no
+boot (`Current version 33` → `Migrating to version 34` → `now at version v34`). `tb_cambio_referencia` ficou fora: o `id` dela
+é `SMALLINT` explícito, sem sequence — um `setval` ali devolveria NULL e derrubaria o boot.
+
+**Prova do fluxo completo:** `GET /cadastro` 200 com `formToken`; `POST /cadastro` com dados válidos → **200** com a página
+de chave de recuperação e os cookies de sessão; `GET /api/v1/usuarios` com essa sessão → usuário `53`, `tenantId` `2`,
+perfil `ADMIN`; `/dashboard` → `303` para `/lgpd/termos`, o onboarding do tenant novo. O POST antes da correção devolvia o
+500 e a transação era revertida — nada ficou pela metade.
+
+**Lixo de teste:** o smoke criou o tenant `2` (`SMOKE QA CSO 20261110`, sem CNPJ) e o usuário `53`
+(`smoke.qa.20261110@example.com`); a remoção é pelo painel de Ops (`/ops/tenants/2/purgar`), que exige a sessão do dono.
+
 ### Núcleo público passa a quatro produtos — PDV, CSO, Hub e Ink Agenda (09/11/2026)
 
 **Decisão do dono em 09/11/2026:** os produtos principais deixam de ser três e passam a **quatro** — **PDV**, **CSO**,
@@ -1048,6 +1104,8 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-11-10 | **CSO Frotas: cadastro devolvia 500 por sequence do seed, corrigido na V34 e publicado (`22bee2d`, CI `42873488518` `success`, Railway `SUCCESS`, Flyway `now at version v34`):** o smoke com dados válidos bateu em `duplicate key value violates unique constraint "tenant_pkey"` (Key `(id)=(1)`), porque `V3__seed_cso.sql` insere o tenant de demonstração com id explícito e o Postgres não avança a sequence; a `V13` religou as tabelas `tb_*` mas esqueceu `tenant`. A `V34__resync_sequences_seed.sql` faz `setval(pg_get_serial_sequence('tenant','id'), GREATEST(MAX(id),1))`; `tb_cambio_referencia` não entra porque o id dela é `SMALLINT` explícito, sem sequence. Prova depois do deploy: `POST /cadastro` 200 com chave de recuperação e sessão, `GET /api/v1/usuarios` devolvendo usuário `53` / `tenantId` `2` / `ADMIN`, `/dashboard` 303 para `/lgpd/termos`. O smoke criou tenant `2` (`SMOKE QA CSO 20261110`, sem CNPJ) e usuário `53` (`smoke.qa.20261110@example.com`), removíveis em `/ops/tenants/2/purgar` com a sessão do dono. Nenhuma versão, tag ou data de produto mudou. |
+| 2026-11-10 | **CSO Frotas: aplicação servida local, sem Cloudflare nem CDN, publicada em `f395c10` (CI `42869460638` `success`, Railway `SUCCESS` no mesmo commit):** `TurnstileCaptchaService` e as chaves `CSO_CAPTCHA_*` removidos (do código, do workflow e do `pipeline_local.py`), Pico 2.1.1 e Inter latin/latin-ext servidos pela própria aplicação, Google Fonts e jsDelivr fora das 17 telas, e o iframe do YouTube virou fachada click-to-load com capa local. No ar: CSP sem `challenges.cloudflare.com` e sem CDN (só `frame-src` do YouTube), assets 200 com os bytes locais, landing com 0 requisição externa antes do clique, `/cadastro` sem Turnstile e com honeypot + `formToken`, `/q/health` `UP` e `/q/openapi` 404. Anti-bot do cadastro continua local (honeypot, HMAC e rate limit). Nenhuma versão, tag ou data de produto mudou. |
 | 2026-11-10 | **Blog pessoal: trava de consentimento do GA4 no `analytics.js`, publicada em `df71835` com Pages `built` em `d73b8d7`:** antes da correção, medido ao vivo, o blog carregava o `gtag.js` e gravava `_ga`/`_ga_MKFC9G3CL0` em `.caracore.com.br` na própria carga, sem banner e sem consultar consentimento. Passa a seguir a matriz — Consent Mode v2 negado por padrão, `cc-ga-consent` com migração de `lgpd-consent`, banner Aceitar/Recusar de 44 px, exclusão de `_ga`/`_gid`/`_gat` ao recusar e tag só depois do aceite. Seis cenários medidos no site publicado (0 requisição e 0 cookie antes da ação; 2 requisições e cookies só no aceite; legado `accepted` tratado como aceite), 280 de 282 páginas cobertas (3 diretas + 277 pelo `main.js`; `articles.html` e um `README.html` não rastreiam) e layout de 390×147 no celular e 1366×73 no desktop. Arquivo no ar idêntico ao local (7.605 B, `b282fd24…c2cf`). Ressalva: sem `?v=`, com `max-age=600`, quem tinha o arquivo velho em cache pode disparar GA por até 10 min. Nenhuma versão de produto mudou. |
 | 2026-11-10 | **Regra de superfície local fixada e lote de assets publicado nas 8 lojas (push + Pages `built` + conferência ao vivo):** navbar da loja OIDC em 2 linhas e sem overflow (`1eb9b0b`), 190 páginas com `rel="icon"` e as seis lojas com o ícone institucional (`719c237`, `4ddb23a`, `8f6e770`, `25e8cb8`, `0911e99`, `9e47694`), e ícone órfão do PDV removido (`6fe7d0c`). Nenhuma versão dos quatro produtos mudou. |
 | 2026-11-09 | **Núcleo público passa de três para quatro produtos: PDV, CSO, Hub e Ink Agenda (decisão do dono; nada commitado nem publicado):** o Ink Agenda deixa de ser brinco e entra no núcleo; PDV Rust piloto, Minerador, BioReator, OIDC, Circuito, Seed, Helianto, MKT e Área 51 continuam brincos e **não disputam** headline, CTA, catálogo nem destaque. A ordem canónica ficou **PDV, CSO, Hub, Ink** em prosa e em cartões. Na Central de Downloads (`caracore-loja`) a vitrine passou a destacar os quatro. Na matriz (`caracore-site`), `catalog-data.js`, `planning-data.js` (NOTE e `notInEnvelope`) e `planning.js` foram conferidos — `portfolio.html` já trazia o Ink como `PRODUTO 04`. Na wiki (`caracore-wiki`): `ecosistema.html` (linha de núcleo com quatro cartões, Ink fora de "Demais produtos", subtítulo "Quatro produtos-chave"), `projetos-overview.html` (catálogo renumerado 1…13, quatro primeiros primeiro, Ink em `#caracore-ink`), `trilha-cliente.html` (quarto cenário e selo "PDV, Hub, CSO, Ink"), `status.html` (acordeão próprio do Ink), `index.html` (quarto cartão e o link "Agendar e Receber"), `trilha-socio.html`, `guia-estagiario.html`, `assets/js/wiki-search.js` e o grid de quatro colunas em `wiki-responsive.css`. Nos canónicos: `AGENTS.md` (cabeçalho, parágrafo do núcleo, tabela de produtos com linha nova do Ink e nota datada, gravados por bytes para não tocar a codificação legada), `.cursor/rules/ecosystem-cara-core.mdc`, `docs/RISCOS_ECOSSISTEMA.md`, `docs/CALENDARIO_COTA_CURSOR.md`, `docs/VALIDACAO_NEGOCIO.md`, `docs/INICIAR_NOVA_TAREFA.md` e `docs/PORTFOLIO_README.md`. **Sem efeito em versão, data ou gate:** Ink 2.3.0 continua planejado para 29/01/2027 com conteúdo não publicado, Hub em `v2.1.0-rc1.10` com aceite pendente, CSO Transportes em 08/11/2028, linha 4.1.0 do PDV não anunciada; a cota segue em **um produto pesado por ciclo** e a fatia de 5 dias/mês do Ink 2.3.0 continua cedendo ao núcleo. |

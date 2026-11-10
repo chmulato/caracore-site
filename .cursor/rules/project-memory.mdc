@@ -20,7 +20,14 @@ alwaysApply: true
 - **01/11/2026 — as quatro superfícies foram publicadas na candidata:** `caracore-pdv-releases` `e54476d`, `caracore-wiki` `fb040bf`, `caracore-loja` `45835e5` e `caracore-site` `fd4b150`, todas com GitHub Pages `built` no commit. O canal `latest.json` segue em `3.2.12-free`, correto para a linha 3.2. **Próximas tarefas e evidência exigida:** `docs/ECOSYSTEM_MEMORIA.md`.
 
 
-**Atualizado:** 2026-11-09 · núcleo público de **quatro produtos** (PDV, CSO, Hub e Ink Agenda; o resto é brinco e não disputa headline nem catálogo) · PDV v4.0.0 **lançada em 08/11/2026** (release de 06/11 assinada com duas chaves Ed25519) e a 3.2.12-free como **versão anterior** com os pacotes disponíveis; BioReator 4.0 Community 1.1.1; Hub `v2.1.0-rc1.10` publicado em 07/11 como **ZIP portátil** com base de atualização assinada (Latest no GitHub por autorização, rótulo editorial **Beta (RC)/pré-release** mantido; aceite de QA pendente); Ink Desktop 2.3.0 planejado para 29/01/2027. **Fonte mestre para IAs:** `AGENTS.md` neste repo + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `D:\onedrive\dev\AGENTS.md` **não existe mais**.
+**Atualizado:** 2026-11-10 · núcleo público de **quatro produtos** (PDV, CSO, Hub e Ink Agenda; o resto é brinco e não disputa headline nem catálogo) · PDV v4.0.0 **lançada em 08/11/2026** (release de 06/11 assinada com duas chaves Ed25519) e a 3.2.12-free como **versão anterior** com os pacotes disponíveis; BioReator 4.0 Community 1.1.1; Hub `v2.1.0-rc1.10` publicado em 07/11 como **ZIP portátil** com base de atualização assinada (Latest no GitHub por autorização, rótulo editorial **Beta (RC)/pré-release** mantido; aceite de QA pendente); Ink Desktop 2.3.0 planejado para 29/01/2027. **Fonte mestre para IAs:** `AGENTS.md` neste repo + `docs/ECOSYSTEM_MEMORIA.md` — o antigo `D:\onedrive\dev\AGENTS.md` **não existe mais**.
+
+## Superfícies locais — 10/11/2026
+
+- **Regra:** nenhuma página publicada depende de CDN externo ou de Cloudflare ou equivalente — matriz, wiki, lojas, blogs, Sala e Central servem os próprios assets e abrem por servidor local, com paridade de layout e desempenho em mobile, tablet e desktop.
+- **Lote publicado em 10/11/2026** (push + Pages `built` + conferência ao vivo): navbar da loja OIDC em 2 linhas sem overflow (`caracore-oidc-releases` `1eb9b0b`); `rel="icon"` em 190 páginas e as seis lojas com o ícone institucional (`area51` `719c237`, `mkt` `4ddb23a`, `ete` `8f6e770`, `circuito` `25e8cb8`, `seed` `0911e99`, `tools` `9e47694`); `bootstrap-icons.min.css` órfão removido da loja PDV (`caracore-pdv-releases` `6fe7d0c`).
+- **Armadilha:** build de Pages `errored` com `duration=0` é infraestrutura, não conteúdo; reconstruir com `POST /repos/{owner}/{repo}/pages/builds`.
+- Nenhuma versão dos quatro produtos mudou neste lote: PDV `v4.0.0` (08/11/2026), Hub `v2.1.0-rc1.10` (pré-release, GA 06/04/2027), Ink `v2.2.1` (2.3.0 em 29/01/2027), CSO Frotas no ar com freeze M1 em 08/11/2026.
 
 ## Checkpoint Hub — 25/10/2026 (atualizado em 31/10/2026)
 

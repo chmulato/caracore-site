@@ -22,6 +22,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 | 2 | Abrir `.cursor/rules/project-memory.mdc` **do repo onde vai trabalhar** |
 | 3 | Confirmar **qual camada** edita: matriz · loja · oficina · wiki · retrô · releases GitHub |
 | 4 | **Não** usar `/delivery/` nem `wiki.caracore.com.br/portfolio.html` em CTAs novos |
+| 4b | **Nenhum CDN externo** (Cloudflare ou similar) em página publicada: o asset é servido pelo próprio domínio e a superfície abre por servidor local, com layout e desempenho equivalentes em mobile, tablet e desktop |
 
 **Portfólio institucional:** sempre `https://www.caracore.com.br/portfolio.html` (âncoras `#decisoes-engenharia`, `#caracore-pdv`, `#caracore-pdv-rust`, `#pdv-coexistencia`).
 
@@ -261,6 +262,7 @@ Redirect legado: `docs/portfolio.html` → matriz.
 9. **Tom xiita anti-cloud na vitrine** — usar híbrido/FinOps/resiliência; ideologia fica para backlog wiki/retrô/lojas.
 10. **Commit na oficina** sem pedido explícito do usuário.
 11. **Misturar senhas Java × Rust** — Free = `admin`/`admin` (1 operador). Rust = quatro logins em `primeiros-passos.html#perfis`. Pastas `%APPDATA%\caracore\` ≠ `%APPDATA%\caracore-pdv\`.
+12. **Puxar biblioteca de CDN externo** (jsDelivr, cdnjs, unpkg, Tailwind Play) — matriz, wiki, lojas, blogs, Sala e Central servem os próprios assets; o que faltar entra vendorizado e subsetado, porque a superfície precisa abrir local/offline.
 
 ---
 

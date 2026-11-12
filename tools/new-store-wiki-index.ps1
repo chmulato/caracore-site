@@ -1,5 +1,9 @@
-# Gera docs/wiki/index.html em cada loja (UTF-8 sem BOM).
-param([string]$DevRoot = (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)))
+# Gera docs/wiki/index.html em cada loja (UTF-8 sem BOM), usando apenas assets locais.
+# -OutRoot grava em outra arvore (ensaio) mantendo a leitura dos assets em -DevRoot.
+param(
+    [string]$DevRoot = (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)),
+    [string]$OutRoot
+)
 
 $utf8NoBom = New-Object System.Text.UTF8Encoding($false)
 
@@ -24,13 +28,13 @@ $tpl = @'
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wiki — __TITLE__ | Loja oficial Cara Core</title>
     <meta name="description" content="Wiki do produto __TITLE__ nesta loja (subdomínio). Documentação e links permanecem no ambiente da loja; ecossistema completo em wiki.caracore.com.br.">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="assets/css/wiki.css">
-    <link rel="stylesheet" href="assets/css/wiki-unified.css">
-    <link rel="icon" href="../assets/images/favicon.ico" type="image/ico">
-    <link rel="stylesheet" href="/assets/caracore-core-typography.css">
-    <link rel="stylesheet" href="/assets/caracore-institutional-components.css">
+    <link href="__BOOTSTRAP_CSS__" rel="stylesheet">
+    <link rel="stylesheet" href="__BOOTSTRAP_ICONS__">
+    <link rel="stylesheet" href="__WIKI_CSS__">
+    <link rel="stylesheet" href="__WIKI_UNIFIED__">
+    <link rel="icon" href="__FAVICON__">
+    <link rel="stylesheet" href="__TYPOGRAPHY__">
+    <link rel="stylesheet" href="__INSTITUTIONAL__">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark wiki-nav">
@@ -74,20 +78,121 @@ $tpl = @'
             </div>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="__BOOTSTRAP_JS__"></script>
 </body>
 </html>
 '@
 
+# Cada loja guarda Bootstrap/icones em caminhos diferentes: o primeiro que existir vence.
+# Caminhos relativos a docs/ (raiz publicada da loja) e emitidos como URL absoluta de raiz.
+$assetCandidates = [ordered]@{
+    BOOTSTRAP_CSS   = @("assets/vendor/bootstrap/css/bootstrap.min.css", "assets/css/bootstrap.min.css", "assets/bootstrap/css/bootstrap.min.css")
+    BOOTSTRAP_JS    = @("assets/vendor/bootstrap/js/bootstrap.bundle.min.js", "assets/js/bootstrap.bundle.min.js")
+    BOOTSTRAP_ICONS = @("assets/vendor/bootstrap-icons/bootstrap-icons.min.css", "assets/css/bootstrap-icons.min.css")
+    WIKI_CSS        = @("wiki/assets/css/wiki.css", "assets/css/wiki.css")
+    WIKI_UNIFIED    = @("wiki/assets/css/wiki-unified.css", "assets/css/wiki-unified.css")
+    FAVICON         = @("assets/images/favicon.ico", "assets/img/favicon.ico", "assets/brand/favicon.svg", "favicon.ico")
+    TYPOGRAPHY      = @("assets/caracore-core-typography.css", "assets/css/caracore-core-typography.css")
+    INSTITUTIONAL   = @("assets/caracore-institutional-components.css", "assets/css/caracore-institutional-components.css")
+}
+
+# Sem estes dois a pagina nao funciona; os demais ausentes apenas tem a linha omitida (nunca CDN).
+$requiredAssets = @("BOOTSTRAP_CSS", "BOOTSTRAP_JS")
+
+function Get-LocalAssetPath {
+    param([string]$StoreDocs, [string[]]$Candidates)
+    foreach ($c in $Candidates) {
+        if (Test-Path -LiteralPath (Join-Path $StoreDocs $c)) {
+            return "/" + $c
+        }
+    }
+    return $null
+}
+
+# Algumas lojas tem o CSS de icones apontando para uma fonte que nao existe no disco:
+# nesse caso a pagina sai sem icones em vez de carregar um CSS quebrado.
+function Test-IconsFont {
+    param([string]$StoreDocs, [string]$CssUrl)
+    $cssPath = Join-Path $StoreDocs $CssUrl.TrimStart("/")
+    if (-not (Test-Path -LiteralPath $cssPath)) { return $false }
+    $match = [regex]::Match([IO.File]::ReadAllText($cssPath), 'url\("?([^")]+\.woff2?)[^")]*"?\)')
+    if (-not $match.Success) { return $false }
+    $fontUrl = $match.Groups[1].Value
+    if ($fontUrl -match '^https?:') { return $false }
+    if ($fontUrl.StartsWith("/")) {
+        return Test-Path -LiteralPath (Join-Path $StoreDocs $fontUrl.TrimStart("/"))
+    }
+    return Test-Path -LiteralPath (Join-Path (Split-Path -Path $cssPath -Parent) $fontUrl)
+}
+
+function Set-AssetPlaceholder {
+    param([string]$Html, [string]$Name, [string]$Value)
+    $token = "__" + $Name + "__"
+    if ($Value) {
+        return $Html.Replace($token, $Value)
+    }
+    return [regex]::Replace($Html, "(?m)^[ \t]*[^\r\n]*" + [regex]::Escape($token) + "[^\r\n]*(?:\r?\n)?", "")
+}
+
 $fixScript = Join-Path $PSScriptRoot "fix-html-mojibake.ps1"
+$targetRoot = if ($OutRoot) { $OutRoot } else { $DevRoot }
+$failures = 0
 
 foreach ($it in $items) {
-    $out = Join-Path (Join-Path $DevRoot $it.Dir) "docs\wiki\index.html"
-    $html = $tpl.Replace("__TITLE__", $it.Title).Replace("__DESC__", $it.Desc).Replace("__PROJ__", $it.Proj).Replace("__EXTRA_HREF__", $it.ExtraHref).Replace("__EXTRA_LABEL__", $it.ExtraLabel)
+    $storeDocs = Join-Path (Join-Path $DevRoot $it.Dir) "docs"
+    $outWiki = Join-Path (Join-Path (Join-Path $targetRoot $it.Dir) "docs") "wiki"
+    $out = Join-Path $outWiki "index.html"
+
+    if (-not (Test-Path -LiteralPath $storeDocs)) {
+        Write-Warning "$($it.Dir): pasta docs nao encontrada em $DevRoot"
+        $failures++
+        continue
+    }
+
+    $resolved = @{}
+    $missing = @()
+    foreach ($name in $assetCandidates.Keys) {
+        $resolved[$name] = Get-LocalAssetPath -StoreDocs $storeDocs -Candidates $assetCandidates[$name]
+        if (-not $resolved[$name]) { $missing += $name }
+    }
+
+    $missingRequired = @($missing | Where-Object { $requiredAssets -contains $_ })
+    if ($missingRequired.Count -gt 0) {
+        Write-Warning "$($it.Dir): sem asset obrigatorio ($($missingRequired -join ', ')) - loja ignorada, nada foi escrito"
+        $failures++
+        continue
+    }
+
+    if ($resolved["BOOTSTRAP_ICONS"] -and -not (Test-IconsFont -StoreDocs $storeDocs -CssUrl $resolved["BOOTSTRAP_ICONS"])) {
+        Write-Warning "$($it.Dir): $($resolved['BOOTSTRAP_ICONS']) cita fonte de icones inexistente - pagina gerada sem icones"
+        $resolved["BOOTSTRAP_ICONS"] = $null
+    }
+
+    $html = $tpl
+    foreach ($name in $assetCandidates.Keys) {
+        $html = Set-AssetPlaceholder -Html $html -Name $name -Value $resolved[$name]
+    }
+    if (-not $resolved["BOOTSTRAP_ICONS"]) {
+        $html = [regex]::Replace($html, '[ \t]*<i class="bi [^"]*"></i>', "")
+    }
+    if ($missing.Count -gt 0) {
+        Write-Warning "$($it.Dir): sem asset local para $($missing -join ', ') - linha omitida da pagina"
+    }
+
+    $html = $html.Replace("__TITLE__", $it.Title).Replace("__DESC__", $it.Desc).Replace("__PROJ__", $it.Proj).Replace("__EXTRA_HREF__", $it.ExtraHref).Replace("__EXTRA_LABEL__", $it.ExtraLabel)
+
+    if (-not (Test-Path -LiteralPath $outWiki)) {
+        New-Item -ItemType Directory -Path $outWiki -Force | Out-Null
+    }
     [IO.File]::WriteAllText($out, $html, $utf8NoBom)
     Write-Host "Wrote $out"
+
     if (Test-Path -LiteralPath $fixScript) {
-        $wikiRoot = Join-Path (Join-Path $DevRoot $it.Dir) "docs\wiki"
-        & $fixScript -RootPath $wikiRoot -HtmlOnly | Out-Null
+        & $fixScript -RootPath $outWiki -HtmlOnly | Out-Null
     }
+}
+
+if ($failures -gt 0) {
+    Write-Warning "$failures loja(s) sem geracao. Corrija os assets locais e rode de novo."
+    exit 1
 }

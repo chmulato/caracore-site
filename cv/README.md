@@ -22,7 +22,6 @@ Quando ha registro tecnico de acesso para auditoria e seguranca, a coleta deve p
 | Resumo institucional multilingue | Apresenta o perfil resumido em Portugues, Ingles e Italiano |
 | Perfil institucional completo | Disponibiliza historico ampliado com aviso previo de privacidade |
 | Avatar corporativo | Substitui identificacao pessoal nominal por identidade institucional |
-| PDF institucional | Permite exportacao controlada do perfil apresentado |
 | Servidor local | Suporta execucao local para revisao e homologacao |
 
 ## Execucao local
@@ -55,7 +54,6 @@ python server.py
 | Frontend | HTML, CSS e JavaScript |
 | Dados | JSON |
 | Servidor local | Python com `http.server` |
-| Exportacao | `html2pdf.js` |
 
 ## Validacao
 

@@ -58,19 +58,6 @@ header h2 {
     color: #3498db;
 }
 
-/* PDF download icon specific styling */
-#downloadPdfIcon {
-    color: #e74c3c;
-    font-weight: bold;
-    transition: all 0.3s ease;
-}
-
-#downloadPdfIcon:hover {
-    color: #c0392b !important;
-    transform: scale(1.1);
-    text-decoration: none;
-}
-
 /* Adiciona espaço entre os ícones e o texto no cabeçalho */
 .contact-info i {
     margin-right: 8px;

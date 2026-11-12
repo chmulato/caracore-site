@@ -93,7 +93,6 @@
         "Python Automation with AI": "Using Python scripts and AI libraries to automate tasks, manipulate data, and create intelligent solutions.",
         "Jakarta EE": "It is the evolution of Java EE, an open-source platform for developing modern, cloud-native, and microservices-based Java applications."
     },
-    "downloadPdfText": "PDF",
     "showFullResume": "View Full Resume",
     "noticeModalTitle": "Privacy and Access Notice",
     "noticeModalText": "<b>Attention:</b> Access to the full resume uses minimal institutional technical logging for auditing, security, and abuse prevention. This flow operates through an institutional avatar and does not expose personal founder identification.",

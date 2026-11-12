@@ -955,6 +955,82 @@ section, header {
   50% { transform: translate3d(0, -9px, 0) rotate(1.5deg); }
 }
 
+/* Convite em cartão: assume o lugar do personagem abaixo de 1280px, onde o
+   fantasminha fica escondido para não cobrir a leitura. Fica compacto (pílula
+   com ícone, chamada e link) para ocupar o menor canto possível. */
+.download-invite {
+  display: none;
+  position: fixed;
+  right: max(0.65rem, env(safe-area-inset-right));
+  bottom: max(0.65rem, env(safe-area-inset-bottom));
+  z-index: 1030;
+  width: auto;
+  max-width: calc(100vw - 1.3rem);
+}
+
+.download-invite > a {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.75rem;
+  color: #172033;
+  text-decoration: none;
+  background: #fff;
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  border-radius: 0.85rem;
+  box-shadow: 0 0.5rem 1.75rem rgba(15, 23, 42, 0.2);
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.download-invite > a:hover {
+  color: #172033;
+  transform: translateY(-3px);
+  box-shadow: 0 0.75rem 2rem rgba(15, 23, 42, 0.24);
+}
+
+.download-invite > a:focus-visible {
+  outline: 3px solid #059669;
+  outline-offset: 3px;
+}
+
+.download-invite-icon {
+  display: grid;
+  flex: 0 0 2rem;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  color: #fff;
+  background: #047857;
+  border-radius: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.download-invite-copy,
+.download-invite-link {
+  display: flex;
+  flex-direction: column;
+}
+
+.download-invite-copy {
+  gap: 0.1rem;
+  font-size: 0.75rem;
+  line-height: 1.35;
+}
+
+.download-invite-copy > strong {
+  font-size: 0.82rem;
+}
+
+.download-invite-link {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.05rem;
+  color: #047857;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
 /* Responsividade */
 @media (max-width: 576px) {
   .navbar-brand img {
@@ -1004,11 +1080,15 @@ section, header {
   }
 }
 
-/* Abaixo de 1280px o convite fica escondido: medido em toda a página, o
-   personagem passaria por cima de linhas de texto. */
+/* Abaixo de 1280px o personagem fica escondido: medido em toda a página, ele
+   passaria por cima de linhas de texto. O cartão de convite assume o lugar. */
 @media (max-width: 1279.98px) {
   .gaspar-invite {
     display: none;
+  }
+
+  .download-invite {
+    display: block;
   }
 }
 
@@ -1028,7 +1108,8 @@ section, header {
 }
 
 @media print {
-  .gaspar-invite {
+  .gaspar-invite,
+  .download-invite {
     display: none;
   }
 }

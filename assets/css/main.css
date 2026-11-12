@@ -900,74 +900,59 @@ section, header {
   color: #333;
 }
 
-.download-invite {
+/* Convite flutuante: o Gaspar leva à Central de Downloads.
+   Medido a 60px de largura e 10px da borda: a partir de 1280px o personagem
+   não encosta em nenhuma linha de texto em toda a página. Abaixo disso ele
+   fica escondido, porque a coluna de conteúdo ocupa a margem e o convite
+   passaria por cima da leitura. */
+.gaspar-invite {
   position: fixed;
-  right: 1.25rem;
-  bottom: 1.25rem;
+  right: max(0.625rem, env(safe-area-inset-right));
+  bottom: max(0.875rem, env(safe-area-inset-bottom));
   z-index: 1030;
-  width: min(22rem, calc(100vw - 2rem));
-}
-
-.download-invite > a {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.85rem;
-  padding: 1rem;
-  color: #172033;
-  text-decoration: none;
-  background: #fff;
-  border: 1px solid rgba(16, 185, 129, 0.35);
-  border-radius: 1rem;
-  box-shadow: 0 0.5rem 1.75rem rgba(15, 23, 42, 0.2);
-  transition: transform 160ms ease, box-shadow 160ms ease;
-}
-
-.download-invite > a:hover {
-  color: #172033;
-  transform: translateY(-3px);
-  box-shadow: 0 0.75rem 2rem rgba(15, 23, 42, 0.24);
-}
-
-.download-invite > a:focus-visible {
-  outline: 3px solid #059669;
-  outline-offset: 3px;
-}
-
-.download-invite-icon {
-  display: grid;
-  flex: 0 0 2.5rem;
-  width: 2.5rem;
-  height: 2.5rem;
-  place-items: center;
-  color: #fff;
-  background: #047857;
-  border-radius: 0.75rem;
-  font-size: 1.15rem;
-}
-
-.download-invite-copy,
-.download-invite-link {
-  display: flex;
-  flex-direction: column;
-}
-
-.download-invite-copy {
-  gap: 0.2rem;
-  font-size: 0.82rem;
-  line-height: 1.35;
-}
-
-.download-invite-copy > strong {
-  font-size: 0.95rem;
-}
-
-.download-invite-link {
-  flex-direction: row;
-  align-items: center;
-  gap: 0.3rem;
-  margin-top: 0.25rem;
+  display: block;
+  width: 60px;
   color: #047857;
-  font-weight: 700;
+  text-decoration: none;
+  transition: transform 160ms ease;
+}
+
+.gaspar-invite:hover,
+.gaspar-invite:focus-visible {
+  color: #047857;
+  transform: translateY(-3px);
+}
+
+.gaspar-invite:focus-visible {
+  outline: 3px solid #059669;
+  outline-offset: 4px;
+  border-radius: 1rem;
+}
+
+.gaspar-invite-float {
+  display: block;
+  width: 100%;
+  opacity: 0.72;
+  animation: gaspar-flutua 7s ease-in-out infinite;
+  will-change: transform;
+  transition: opacity 160ms ease;
+}
+
+.gaspar-invite:hover .gaspar-invite-float,
+.gaspar-invite:focus-visible .gaspar-invite-float {
+  opacity: 1;
+}
+
+.gaspar-invite-float img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 12px 18px rgba(6, 78, 59, 0.28));
+}
+
+@keyframes gaspar-flutua {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1.5deg); }
+  50% { transform: translate3d(0, -9px, 0) rotate(1.5deg); }
 }
 
 /* Responsividade */
@@ -988,47 +973,6 @@ section, header {
   
   .horario-tabela {
     font-size: 0.97rem;
-  }
-
-  /* Pílula compacta: no celular o card não pode cobrir o rodapé */
-  .download-invite {
-    right: 0.65rem;
-    bottom: 0.65rem;
-    width: auto;
-    max-width: calc(100vw - 1.3rem);
-  }
-
-  .download-invite > a {
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.55rem 0.75rem;
-    border-radius: 0.85rem;
-  }
-
-  .download-invite-icon {
-    flex: 0 0 2rem;
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.6rem;
-    font-size: 0.95rem;
-  }
-
-  .download-invite-copy {
-    gap: 0.1rem;
-    font-size: 0.75rem;
-  }
-
-  .download-invite-copy > strong {
-    font-size: 0.82rem;
-  }
-
-  .download-invite-copy > span:not(.download-invite-link) {
-    display: none;
-  }
-
-  .download-invite-link {
-    margin-top: 0.05rem;
-    font-size: 0.75rem;
   }
 }
 
@@ -1060,8 +1004,31 @@ section, header {
   }
 }
 
+/* Abaixo de 1280px o convite fica escondido: medido em toda a página, o
+   personagem passaria por cima de linhas de texto. */
+@media (max-width: 1279.98px) {
+  .gaspar-invite {
+    display: none;
+  }
+}
+
+/* Sem hover, o personagem fica um pouco mais presente para o toque achar. */
+@media (hover: none) {
+  .gaspar-invite-float {
+    opacity: 0.86;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .download-invite > a {
+  .gaspar-invite,
+  .gaspar-invite-float {
+    animation: none;
     transition: none;
+  }
+}
+
+@media print {
+  .gaspar-invite {
+    display: none;
   }
 }

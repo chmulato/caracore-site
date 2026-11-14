@@ -2,6 +2,22 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Publicações dos blogs — 14/11/2026
+
+**Retrô — artigos 145 e 146:** publicados no blog em `https://retro.caracore.com.br/articles/2027_08_17_article_145.html` e `https://retro.caracore.com.br/articles/2027_08_25_article_146.html` (ambos responderam HTTP 200). O commit `b9c9609` foi publicado pelo workflow `43593863756`, com `validate`, `deploy` e `publish-linkedin` concluídos. LinkedIn: artigo 145 `urn:li:share:7527343782082535424`; artigo 146 `urn:li:share:7527343790320431105`.
+
+**Blog pessoal — dois artigos da série A Evolução Cíclica da TI:** páginas no ar (HTTP 200): [Ato I, 19/11](https://personal.caracore.com.br/articles/2026_11_19_serie_evolucao_ciclica_ti_ato01_passado.html) e [Ato II, 23/11](https://personal.caracore.com.br/articles/2026_11_23_serie_evolucao_ciclica_ti_ato02_presente.html). A pedido do dono, ambos foram publicados antecipadamente no LinkedIn em 14/11: Actions `43594621070` (Ato I, `urn:li:share:7527345675974635520`) e `43594730483` (Ato II, `urn:li:share:7527346023921479680`), sucesso com `DRY_RUN=false`. O ledger foi atualizado pelo workflow.
+
+**Cuidado com o histórico do blog pessoal:** o ledger já listava esses dois artigos antes, mas isso não refletia uma publicação real; a execução antiga `34722217279` (12/09) era `DRY_RUN=true` e apontava para outro artigo. Para confirmar publicação, conferir no log do Actions `DRY_RUN=false` e a mensagem `Artigo publicado no LinkedIn` com o URN. O `workflow_dispatch` publica imediatamente (não agenda); `dry_run` tem padrão `true` e `force=true` ignora o ledger, então só usar com autorização e após verificar o histórico do artigo.
+
+### Agendamento LinkedIn — 14/11/2026
+
+Os workflows de `caracore-retro` (`ee99cc2`) e `caracore-personal` (`39bfebb`) foram ativados em `master` para publicar artigos pela data editorial às **07h30 em `America/Sao_Paulo`**. O início de um workflow agendado pode atrasar por fila do GitHub Actions; a hora não é uma garantia de execução exata. A seleção de código limita publicações agendadas a 2026, até 31/12, e pushes não publicam antecipadamente artigos dessas datas.
+
+**Retrô:** agenda #109 em 30/11; #110 em 03/12; #111 em 08/12; #112 em 12/12; #113 em 18/12; #114 em 20/12; #115 em 25/12; #116 em 30/12. Todas as oito páginas responderam HTTP 200. O push da configuração passou no Actions `43596389605`. Por autorização, o #108 (14/11) foi publicado com atraso no LinkedIn pelo workflow `43596519937`, com sucesso e thumbnail: `urn:li:share:7527351856835133440`; o ledger foi atualizado pelo bot no commit `76ff62a`.
+
+**Blog pessoal:** agenda 16/11, 27/11 e 30/11; 05/12, 10/12, 15/12, 22/12 e 29/12. As oito páginas responderam HTTP 200. O ledger foi limpo apenas para esses artigos, cujos registros antigos eram marcações de 12/09 sem evidência de publicação. Ato I (19/11) e Ato II (23/11) foram excluídos porque já foram publicados antecipadamente em 14/11 (Actions `43594621070` e `43594730483`). O episódio de 26/11 de “O Silêncio na Escala” não entrou na agenda porque o ledger o marca como publicado em 10/10; a lista de execuções atualmente acessível não contém evidência para confirmar esse post. Em 14/11, o dono confirmou mantê-lo fora da agenda para evitar uma possível duplicidade.
+
 ### Checkpoint 10/11/2026 — estado do ecossistema para retomada (fim do dia)
 
 **Comece por aqui.** Se você é outra IA e está retomando o ecossistema, este é o retrato medido no fim de 10/11/2026; os blocos datados abaixo são histórico, não estado.

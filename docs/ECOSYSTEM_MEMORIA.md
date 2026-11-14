@@ -18,6 +18,16 @@ Os workflows de `caracore-retro` (`ee99cc2`) e `caracore-personal` (`39bfebb`) f
 
 **Blog pessoal:** agenda 16/11, 27/11 e 30/11; 05/12, 10/12, 15/12, 22/12 e 29/12. As oito páginas responderam HTTP 200. O ledger foi limpo apenas para esses artigos, cujos registros antigos eram marcações de 12/09 sem evidência de publicação. Ato I (19/11) e Ato II (23/11) foram excluídos porque já foram publicados antecipadamente em 14/11 (Actions `43594621070` e `43594730483`). O episódio de 26/11 de “O Silêncio na Escala” não entrou na agenda porque o ledger o marca como publicado em 10/10; a lista de execuções atualmente acessível não contém evidência para confirmar esse post. Em 14/11, o dono confirmou mantê-lo fora da agenda para evitar uma possível duplicidade.
 
+### Relançamentos no LinkedIn — 14/11/2026 (agenda de abril e maio de 2027)
+
+A trilogia *A Engenharia do Choque Controlado* (chamada + ep01–ep03) foi **antecipada** para 14/11/2026: as quatro páginas passaram a `2026_11_14_serie_engenharia_urgencia_*`, com imagens, home e `ciclo-ativo.html` no dia novo, e os quatro posts saíram no LinkedIn no mesmo dia com thumbnail, um por `workflow_dispatch` (`force=true`, `dry_run=false`): chamada `43650577716` `urn:li:share:7527504559997628416`; ep01 `43650639356` `urn:li:share:7527504772547895296`; ep02 `43650703980` `urn:li:share:7527504977783787520`; ep03 `43650769923` `urn:li:share:7527505177927454720`. Por decisão do dono, as datas editoriais originais ficaram registradas como **relançamento**: 20/04 (chamada), 26/04 (ep01), 06/05 (ep02) e 16/05/2027 (ep03).
+
+O registro vive no próprio blog, em `caracore-personal/linkedin_republicacoes.json` (`data → arquivos`), e é a **única** exceção ao bloqueio de datas fora da janela de 2026 do agendador: no modo agendado o script soma esses arquivos aos artigos do dia e ignora o ledger (`linkedin_published.json`) **somente** para eles. O workflow ganhou os crons `30 7 20,26 4 *` e `30 7 6,16 5 *` (`America/Sao_Paulo`), além de três testes novos; a bateria local ficou em 25 testes verdes.
+
+Os endereços antigos (`2027_04_20_*`, `2027_04_26_*`, `2027_05_06_*`, `2027_05_16_*`) são páginas `noindex` de redirecionamento para os atuais e ficaram fora de `feed.xml`, `sitemap.xml` e do validador de metadados (`SKIP_NAMES`/`REDIRECTS`), para não virarem artigos duplicados.
+
+**Pré-requisitos para outra IA retomar em 2027:** (a) o `LINKEDIN_ACCESS_TOKEN` gerado em 10/11/2026 expira ~09/01/2027 — renovar antes de abril; (b) o GitHub desativa workflow agendado após 60 dias sem atividade no repositório — reativar em Actions e conferir com `workflow_dispatch` (`dry_run=true`); (c) se a execução falhar, publicar à mão com `workflow_dispatch` (`force=true`, `dry_run=false`), que publica imediatamente; (d) a imagem de capa é a mesma dos artigos (`2026_11_14_IMAGE_001..004.png`). O estado detalhado do blog está em `caracore-personal/AGENTS.md` § "Republicações registradas" e na regra `.cursor/rules/blog-personal-workspace.mdc`.
+
 ### Checkpoint 10/11/2026 — estado do ecossistema para retomada (fim do dia)
 
 **Comece por aqui.** Se você é outra IA e está retomando o ecossistema, este é o retrato medido no fim de 10/11/2026; os blocos datados abaixo são histórico, não estado.

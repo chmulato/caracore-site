@@ -2,7 +2,7 @@
 
 **Vigência:** 09/09/2026 → 31/12/2029  
 **Assinatura:** Cursor Pro **US$ 20/mês** · teto operacional **80%** · **sem on-demand**  
-**Porquê:** o roadmap público só cabe se a **empresa** tiver um dono por ciclo. **Principais (09/11/2026):** PDV · CSO · Hub · Ink Agenda. **Brincos** (PDV Rust piloto, Helianto, RU, etc.) não mandam na fila; em conflito, cedem — e o Ink, agora principal, continua limitado à fatia escrita abaixo, não a um ciclo. O calendário do CSO de 07/set/2026 reservava sozinho US$ 540 até 08/11/2028; não pode coexistir com os outros GAs do núcleo.
+**Porquê:** o roadmap público só cabe se a **empresa** tiver um dono por ciclo. **Principais (09/11/2026):** PDV · CSO · Hub · Ink Agenda. **Satélites** (PDV Rust piloto, Helianto, RU, etc.) não mandam na fila; em conflito, cedem — e o Ink, agora principal, continua limitado à fatia escrita abaixo, não a um ciclo. O calendário do CSO de 07/set/2026 reservava sozinho US$ 540 até 08/11/2028; não pode coexistir com os outros GAs do núcleo.
 
 Este ficheiro é o **canónico de capacidade da empresa**. Trackers de escopo continuam nas oficinas. Datas públicas continuam em `AGENTS.md`, `ecosistema.html#roadmap` e o skyline mensal em `planning.html`. Envelope visível a patrocinadores: **`planning.html#patrocinio`** (US$ 20 × 40 meses = **US$ 800**, set/2026 → dez/2029).
 
@@ -17,7 +17,7 @@ Este ficheiro é o **canónico de capacidade da empresa**. Trackers de escopo co
 | Teto | **80%** do ciclo. Ao tocar 80% → parar Agent até o reset. ≥ 75% → só copy/docs. |
 | Reset | ~dia 5 (confirmar no Spending). |
 | Fila | **1 produto pesado por ciclo.** Duas frentes Agent no mesmo dia = estouro. |
-| Fatia de brinco | Só a aprovada por escrito pelo dono (**05/11/2026: 5 dias/mês ao Desktop 2.3.0**). É cota limitada num produto já publicado, não um segundo dono de ciclo; **não acrescenta sessão** (cabe nas 2 sessões/semana do envelope) e, se o dono do período precisar do mês, a fatia cede. |
+| Fatia de satélite | Só a aprovada por escrito pelo dono (**05/11/2026: 5 dias/mês ao Desktop 2.3.0**). É cota limitada num produto já publicado, não um segundo dono de ciclo; **não acrescenta sessão** (cabe nas 2 sessões/semana do envelope) e, se o dono do período precisar do mês, a fatia cede. |
 | Sessão | 1 objetivo. **2 sessões Agent / semana.** |
 | Tab | Ilimitado no Pro. Não conta neste envelope. SQLite/copy/instalador podem andar em Tab + mãos. |
 | Agent pesado | Flyway, auth, extract de módulo, HTTP, sync, UI de fluxo novo. |

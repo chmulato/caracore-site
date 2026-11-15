@@ -5,7 +5,7 @@
 **Vigência:** 09/09/2026 → 31/12/2029  
 **Actualizar:** quando um GA público mudar, quando a assinatura mudar, ou no 1.º dia útil do mês se um risco materializou.
 
-Este ficheiro **não** é P&L nem tracker de oficina. Serve para **dizer não** (ou deslizar o dono seguinte) antes de abrir Agent, mudar data pública ou meter um **brinco** na fila dos produtos principais.
+Este ficheiro **não** é P&L nem tracker de oficina. Serve para **dizer não** (ou deslizar o dono seguinte) antes de abrir Agent, mudar data pública ou meter um **satélite** na fila dos produtos principais.
 
 **Decisão CSO de 17/10/2026:** Transportes + Virtual Tracker integrado passam
 a ter alvo conjunto em 08/11/2028, não garantia de GA. VT não é terceiro
@@ -24,7 +24,7 @@ mapa e chave privada somente no desktop, sem fila offline.
 2. Abrir Cursor Spending. ≥ 80% → não implementar. ≥ 75% → só copy/docs.
 3. Se a decisão **muda uma data pública**, um **dono de ciclo**, ou **abre Agent noutro produto**: ler a tabela abaixo e aplicar a regra da coluna «Decisão».
 4. Se um ciclo bater 80% cedo: **desliza o dono seguinte**. Não comprimir dois GAs no mesmo mês.
-5. **Principais (09/11/2026, substitui o trio):** PDV · CSO · Hub · Ink Agenda. **Brincos:** todo o resto (PDV Rust piloto, Helianto, RU, OIDC, Seed, Circuito, Área 51, MKT, Minerador). O brinco não fura a fila, não toma a headline nem o catálogo e **cede** em conflito. Janelas do núcleo (PDV v4, Hub EXE, FRO, Transportes) e o brinco Helianto 2029 só mudam com actualização explícita deste ficheiro + calendário + `AGENTS.md`. Ink PWA **não** tem GA com Agent neste envelope; a fatia do **Desktop 2.3.0** é a exceção nomeada em R14 e **não cresce** por o Ink ter entrado no núcleo.
+5. **Principais (09/11/2026, substitui o trio):** PDV · CSO · Hub · Ink Agenda. **Satélites:** todo o resto (PDV Rust piloto, Helianto, RU, OIDC, Seed, Circuito, Área 51, MKT, Minerador). O satélite não fura a fila, não toma a headline nem o catálogo e **cede** em conflito. Janelas do núcleo (PDV v4, Hub EXE, FRO, Transportes) e o satélite Helianto 2029 só mudam com actualização explícita deste ficheiro + calendário + `AGENTS.md`. Ink PWA **não** tem GA com Agent neste envelope; a fatia do **Desktop 2.3.0** é a exceção nomeada em R14 e **não cresce** por o Ink ter entrado no núcleo.
 
 ---
 
@@ -32,7 +32,7 @@ mapa e chave privada somente no desktop, sem fila offline.
 
 | Premissa | Valor | Se violar |
 |----------|--------|-----------|
-| Principais vs brincos | PDV · CSO · Hub · Ink Agenda mandam (09/11/2026); o resto cede | Brinco a furar Agent, headline ou catálogo do núcleo. |
+| Principais vs satélites | PDV · CSO · Hub · Ink Agenda mandam (09/11/2026); o resto cede | Satélite a furar Agent, headline ou catálogo do núcleo. |
 | Fila | **1 produto pesado por ciclo** | Estouro. O GA seguinte escorrega. |
 | Fatia limitada | Só a aprovada por escrito pelo dono (**05/11/2026: 5 dias/mês ao Desktop 2.3.0** até a entrega em 29/01/2027) | Cota limitada num produto já publicado não é segundo dono de ciclo; fatia a crescer sem decisão nova = R4 violado. |
 | Orçamento Agent | US$ 20/mês, **não acumula**, sem on-demand | Mês ocioso ainda é pago; mês cheio não empresta. |
@@ -56,7 +56,7 @@ mapa e chave privada somente no desktop, sem fila offline.
 | R7 | Copy pública à frente da loja | Contínuo | Mac/Linux «em breve», PIX no Free, `/releases/latest` cruzado. | Copy de download/perfis **só na loja da linha**. O Ink Desktop 2.x publica Windows e Linux (`.deb`) e **não** tem macOS; a 3.0 é PWA e **não** sai com `.dmg`/`.deb`/Electron/GluonFX. Sem PIX no Free Java. Java ≠ Rust (pasta, launcher, senha). Publicar a camada que mudou. |
 | R8 | Envelope Cursor ≠ P&L | Qualquer corte de instalador | Certificado Windows, Railway, domínio, Pix travam Hub EXE ou PDV v4. | Antes de um GA com instalador: confirmar custo **fora** dos US$ 20. Funding extra não substitui os GAs calendariados. |
 | R9 | Uma cadeira, uma pessoa | Folga / incidente / mês a 80% no dia 12 | O dono seguinte herda o atraso. | Não planear on-demand. Segunda cota só com patrocínio explícito (`planning.html#patrocinio`). |
-| R10 | Brinco Helianto a «abrir só um pouco» antes de 2029 | 2027–2028 | Fura a fila do núcleo. | Agent Helianto **só em 2029**. Até lá: Tab, copy, docs. Se CSO precisar de 2029, Helianto cede. |
+| R10 | Satélite Helianto a «abrir só um pouco» antes de 2029 | 2027–2028 | Fura a fila do núcleo. | Agent Helianto **só em 2029**. Até lá: Tab, copy, docs. Se CSO precisar de 2029, Helianto cede. |
 | R11 | RU com data pública e sem Agent | 18/06/2027 | Promessa sem capacidade. | Garagem: copy/docs. **Sem** mês de Agent. Não competir com Hub nem FRO. |
 | R13 | Exceção Ink Desktop 2.0.1 (07/10/2026) | out/2026 | Agent do Ink dentro da janela PDV v4. Risco de atrasar T032. | **Decisão explícita do dono em 07/10/2026:** patch Desktop Windows 2.0.1 (achados do QA da 2.0.0: importação, pt-BR, build limpo, promessas da loja, P2). Não é Ink PWA (3.0 segue não antes de 2028). Gera e valida localmente; publicação só com aprovação. Se o PDV v4 precisar da cota, a 2.0.1 pára. |
 | R12 | Canais PDV Java × Rust misturados | Qualquer release | Loja errada, banco errado, senha errada. | Nunca `/releases/latest` de `caracore-pdv-releases` para o Rust. Free Java = `admin`/`admin`, 1 operador. Rust piloto = quatro logins na **loja Rust**. |
@@ -98,7 +98,7 @@ Antes de um Agent pesado ou de uma data nova:
 1. Isto é o **dono deste ciclo**? Se não, parar.
 2. Spending ≥ 75%? Se sim, só copy. ≥ 80%? Só tracker/handoff.
 3. Isto muda um GA da tabela «não escorregam»? Se sim, actualizar `AGENTS.md`, `ecosistema.html#roadmap`, `planning-data.js` e este ficheiro **no mesmo movimento**.
-4. Isto é **brinco** a furar PDV/CSO/Hub/Ink, ou fatia limitada a crescer? Se sim, cede — não «só um extract». Revisão da fila só com actualização explícita dos canónicos.
+4. Isto é **satélite** a furar PDV/CSO/Hub/Ink, ou fatia limitada a crescer? Se sim, cede — não «só um extract». Revisão da fila só com actualização explícita dos canónicos.
 5. A loja daquela linha já diz a verdade? Se a copy pública mentir (Mac «em breve», PIX no Free), **corrigir a loja antes** de mais código.
 
 ---

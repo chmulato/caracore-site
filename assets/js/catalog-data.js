@@ -18,7 +18,7 @@
   'use strict';
 
   var CATALOGO = {
-    atualizadoEm: '09/11/2026',
+    atualizadoEm: '14/11/2026',
 
     /**
      * Quatro estágios canônicos. Toda página da matriz usa estes rótulos.
@@ -81,7 +81,7 @@
         categoria: 'nucleo',
         estagio: 'disponivel',
         versao: 'Frotas em produção',
-        detalhe: 'Frotas no ar desde 06/10/2026; Transportes + Virtual Tracker em desenvolvimento (alvo 08/11/2028).',
+        detalhe: 'Auditoria operacional da frota; Frotas no ar desde 06/10/2026. Transportes + Virtual Tracker em desenvolvimento (alvo 08/11/2028).',
         free: 'Frotas: grátis até 3 veículos, sem cartão no cadastro.',
         pago: 'Frotas: planos P5, P10 e Corporate por limite de veículos. Transportes não é vendido.',
         preco: 'R$ 5,00 · R$ 10,00 · R$ 49,00/mês',
@@ -89,7 +89,7 @@
         loja: 'cso-transp.caracore.com.br',
         url: 'https://cso-transp.caracore.com.br/',
         portfolio: 'portfolio.html#caracore-cso',
-        nota: 'Duas aplicações, uma solução. Sem GPS hoje; gestão e acompanhamento exigem conexão.'
+        nota: 'Não emite nota fiscal. Placa única e histórico por veículo (km, combustível e manutenção) dão lastro operacional à apuração de CBS/IBS. Sem GPS; uso online.'
       },
       {
         id: 'hub',

@@ -15,7 +15,7 @@
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ecossistema Cara Core: PDV, CSO, Hub e Ink Agenda | Cara Core Informática</title>
-  <meta name="description" content="Ecossistema Cara Core: quatro produtos principais — PDV para vender, CSO para operar, Hub para conectar encomendas e Ink Agenda para agendar. Bunker Digital: operação local, SQLite e continuidade quando a internet falha.">
+  <meta name="description" content="Ecossistema Cara Core: quatro produtos principais — PDV para vender, CSO para comprovar a operação da frota, Hub para conectar encomendas e Ink Agenda para agendar. Bunker Digital: operação local, SQLite e continuidade quando a internet falha.">
   <meta property="og:title" content="Ecossistema Cara Core: PDV, CSO, Hub e Ink Agenda | Cara Core Informática">
   <meta property="og:url" content="https://caracore.com.br/ecosistema.html">
   <meta property="og:image" content="https://caracore.com.br/assets/images/og-cara-core-1200x630.png">
@@ -248,16 +248,16 @@
           <span class="eco2-core-status">Em operação</span>
         </header>
         <h3 class="eco2-core-name"><i class="bi bi-truck" aria-hidden="true"></i> CaraCore CSO</h3>
-        <p class="eco2-core-tag">Gestão operacional para logística e transporte.</p>
+        <p class="eco2-core-tag">Auditoria operacional e governança de ativos da frota.</p>
         <dl class="eco2-core-facts">
           <dt>O que é</dt>
-          <dd>Gestão de frota no navegador: quilometragem, combustível, manutenção, pneus, documentos, infrações e custo por quilômetro.</dd>
+          <dd>Camada de auditoria operacional da frota, ao lado do emissor fiscal e da contabilidade: quilometragem, combustível, manutenção, pneus, documentos, infrações e custo por quilômetro.</dd>
           <dt>Para quem é</dt>
-          <dd>Transportadoras, distribuidoras e empresas com frota própria.</dd>
+          <dd>Transportadoras, distribuidoras, empresas com frota própria e seus contadores.</dd>
           <dt>Benefício principal</dt>
-          <dd>O custo real por veículo e por quilômetro aparece sozinho — sem planilha no fim do mês.</dd>
+          <dd>Placa única por veículo e histórico rastreável dão lastro operacional à apuração de CBS/IBS — sem trocar o emissor fiscal nem o ERP.</dd>
         </dl>
-        <p class="eco2-core-note">Frotas em produção desde 06/10/2026, sem GPS nesta versão · Transportes + Virtual Tracker em desenvolvimento.</p>
+        <p class="eco2-core-note">Frotas em produção desde 06/10/2026, sem GPS nesta versão · não emite nota fiscal · Transportes + Virtual Tracker em desenvolvimento.</p>
         <div class="eco2-actions">
           <a class="eco2-btn eco2-btn--primary" href="https://cso.caracore.com.br/" target="_blank" rel="noopener">Conhecer o CSO</a>
           <a class="eco2-btn eco2-btn--quiet" href="https://cso-transp.caracore.com.br/" target="_blank" rel="noopener">Ver a vitrine</a>
@@ -905,12 +905,14 @@
           <i class="bi bi-truck eco-product-icon" aria-hidden="true"></i>
           <span class="eco-status eco-status-done">Disponível</span>
         </div>
-        <h3>CaraCore CSO — Gestão de Frotas</h3>
+        <h3>CaraCore CSO — Auditoria Operacional de Frota</h3>
         <p class="eco-product-stack">Java 21 · Quarkus · PostgreSQL · Qute/HTMX</p>
         <ul class="eco-product-bullets">
-          <li>Frota no navegador: veículos, custos, equipe e planos</li>
+          <li>Camada de auditoria e governança da frota: veículos, custos, equipe e planos</li>
+          <li>Placa única por veículo e histórico de km, abastecimento e manutenção para lastro de CBS/IBS</li>
           <li>Nesta versão: km/L, documentos, pneus, exame toxicológico, infrações e custo por km</li>
-          <li>Freeze M1 marcado para 08/11/2026: estabiliza o que já está no ar, sem registro de fechamento</li>
+          <li>Não emite NF-e, NFC-e ou CT-e e não substitui a contabilidade</li>
+          <li>Freeze M1 desde 08/11/2026: estabiliza o que já está no ar</li>
           <li>Jornada e localização pelo celular são futuras; gestão e acompanhamento exigem conexão, sem fila offline</li>
           <li>Transportes desktop permanece na Garagem (08/11/2028)</li>
         </ul>

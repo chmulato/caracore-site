@@ -261,7 +261,7 @@
   function projectCardFace(p) {
     const pct = lastPct(p);
     const state = p.state || "ok";
-    const role = p.core ? "Núcleo" : "Brinco";
+    const role = p.core ? "Núcleo" : "Satélite";
     const delivery = nextDelivery(p);
     return (
       '<article class="pl-proj is-' +
@@ -333,7 +333,7 @@
     const other = products.filter(function (p) {
       return !p.core;
     });
-    rows.innerHTML = projectGroup("Núcleo", core, "") + projectGroup("Brincos", other, "Não mandam na cota.");
+    rows.innerHTML = projectGroup("Núcleo", core, "") + projectGroup("Satélites", other, "Cada um declara o estágio. Não mandam na cota.");
   }
 
   function panel() {
@@ -1004,7 +1004,7 @@
         return "<li><span>" + fmtMonth(pt.m) + "</span><strong>" + pt.p + "%</strong></li>";
       })
       .join("");
-    const role = p.core ? "Núcleo" : "Brinco";
+    const role = p.core ? "Núcleo" : "Satélite";
     return (
       '<article class="pl-card is-' +
       state +
@@ -1082,7 +1082,7 @@
     const p = productById(id);
     if (!box || !p) return;
     const flag = flagById(id);
-    const role = p.core ? "Núcleo" : "Brinco";
+    const role = p.core ? "Núcleo" : "Satélite";
     const state = p.state || "ok";
     box.hidden = false;
     box.className = "pl-fiche is-" + state;

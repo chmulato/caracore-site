@@ -669,7 +669,7 @@
 
         <div class="alert alert-secondary mt-0 mb-4" role="note">
           <h3 class="h5 mb-2"><i class="bi bi-diagram-3 me-2"></i>CSO e Hub: frota e encomendas</h3>
-          <p class="mb-2">A <strong>Gestão de Frotas</strong> já está em produção; o freeze de 08/11/2026 estabiliza essa versão, sem GPS. <strong>Transportes + Virtual Tracker</strong> têm alvo conjunto em 08/11/2028, sujeito à prova móvel, capacidade e homologação. VT é uma capacidade integrada, não terceiro produto. Gestão web e acompanhamento exigem conexão; a PWA de gestão offline foi cancelada.</p>
+          <p class="mb-2">A <strong>Gestão de Frotas</strong> já está em produção; o freeze de 08/11/2026 está agendado, sem fechamento registrado, e a versão segue sem GPS. <strong>Transportes + Virtual Tracker</strong> têm alvo conjunto em 08/11/2028, sujeito à prova móvel, capacidade e homologação. VT é uma capacidade integrada, não terceiro produto. Gestão web e acompanhamento exigem conexão; a PWA de gestão offline foi cancelada.</p>
           <p class="mb-2">Planejamento: 10 sprints locais estimadas + 21 tarefas integradas em 6 etapas (0/21), sem total integrado de sprints fechado. INT-03 dimensiona a entrega; o epic MON não é antecipado por inteiro. Perfil econômico a medir: presença 120 s quando necessária e posição 60 s em viagem, sem promessa de posição instantânea. <a href="https://wiki.caracore.com.br/projeto-cso.html#virtual-tracker" target="_blank" rel="noopener">Entender integração e limites</a>.</p>
           <p class="mb-0">O <strong>Hub</strong> é a gestão logística interna de um ponto de retirada (PUDO): recebimento, guarda e retirada de encomendas do Mercado Livre, Shopee e Temu. O banco é SQLite local. A aplicação web 2.1 está concluída. A pré-release Windows <strong>v2.1.0-rc1.10</strong> está publicada, sem assinatura digital e sem homologação de produção, em ZIP portátil. Mac e Linux não entram nesta tag. O GA do instalador Windows permanece <strong>06/04/2027</strong>. O produto é Free; o suporte opcional tem pagamento recorrente de <strong>R$ 79,90/mês</strong> a partir do GA, com primeira resposta em até 24 horas. <a href="https://hub.caracore.com.br/download.html">Baixar a pré-release Windows</a>.</p>
         </div>
@@ -912,7 +912,7 @@
           <li>Placa única por veículo e histórico de km, abastecimento e manutenção para lastro de CBS/IBS</li>
           <li>Nesta versão: km/L, documentos, pneus, exame toxicológico, infrações e custo por km</li>
           <li>Não emite NF-e, NFC-e ou CT-e e não substitui a contabilidade</li>
-          <li>Freeze M1 desde 08/11/2026: estabiliza o que já está no ar</li>
+          <li>Freeze M1 agendado para 08/11/2026; fechamento não registrado</li>
           <li>Jornada e localização pelo celular são futuras; gestão e acompanhamento exigem conexão, sem fila offline</li>
           <li>Transportes desktop permanece na Garagem (08/11/2028)</li>
         </ul>
@@ -1406,70 +1406,80 @@
                 <td><a href="https://ink.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">ink.caracore.com.br</a></td>
               </tr>
 
-              <!-- Brincos do Portfólio -->
+              <!-- Satélites do Portfólio -->
               <tr class="table-light row-group-brinco">
                 <th colspan="4" class="py-2 px-3 fw-bold text-muted small text-uppercase">
-                  <i class="bi bi-gem me-1"></i> Brincos do Portfólio (Satélites, Educação, Simulação e Ferramentas)
+                  <i class="bi bi-gem me-1"></i> Satélites do Portfólio (8) · estágio próprio
                 </th>
               </tr>
               <tr>
                 <td class="text-center text-muted">5</td>
                 <td>CaraCore PDV Rust (piloto)</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Satélite</span></td>
                 <td><a href="https://pdv-rust.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">pdv-rust.caracore.com.br</a></td>
               </tr>
               <tr>
                 <td class="text-center text-muted">6</td>
                 <td>Reino OIDC</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Satélite</span></td>
                 <td><a href="https://oidc.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">oidc.caracore.com.br</a></td>
               </tr>
               <tr>
                 <td class="text-center text-muted">7</td>
                 <td>Área 51 (identidade institucional)</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Satélite</span></td>
                 <td><a href="https://area51.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">area51.caracore.com.br</a></td>
               </tr>
               <tr>
                 <td class="text-center text-muted">8</td>
                 <td>BioReator 4.0</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Satélite</span></td>
                 <td><a href="https://ru.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">ru.caracore.com.br</a></td>
               </tr>
               <tr>
                 <td class="text-center text-muted">9</td>
                 <td>Minerador 4.0 (ETE)</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Satélite</span></td>
                 <td><a href="https://ete.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">ete.caracore.com.br</a></td>
               </tr>
               <tr>
                 <td class="text-center text-muted">10</td>
                 <td>Circuito Ferradura</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Satélite</span></td>
                 <td><a href="https://circuito.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">circuito.caracore.com.br</a></td>
               </tr>
               <tr>
                 <td class="text-center text-muted">11</td>
                 <td>A Rebeldia da Mecatrônica</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Satélite</span></td>
                 <td><a href="https://eng.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">eng.caracore.com.br</a></td>
               </tr>
               <tr>
                 <td class="text-center text-muted">12</td>
                 <td>CaraCore Seed</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Satélite</span></td>
                 <td><a href="https://seed.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">seed.caracore.com.br</a></td>
+              </tr>
+              <tr class="table-light row-group-brinco">
+                <th colspan="4" class="py-2 px-3 fw-bold text-muted small text-uppercase">
+                  <i class="bi bi-gift me-1"></i> Gratuito (1)
+                </th>
               </tr>
               <tr>
                 <td class="text-center text-muted">13</td>
                 <td>Cara Core MKT</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-success">Gratuito</span></td>
                 <td><a href="https://mkt.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">mkt.caracore.com.br</a></td>
+              </tr>
+              <tr class="table-light row-group-brinco">
+                <th colspan="4" class="py-2 px-3 fw-bold text-muted small text-uppercase">
+                  <i class="bi bi-tools me-1"></i> Garagem · roadmap (1)
+                </th>
               </tr>
               <tr>
                 <td class="text-center text-muted">14</td>
                 <td>Helianto Condominium</td>
-                <td class="text-center"><span class="badge bg-secondary eco-badge-brinco">Brinco</span></td>
+                <td class="text-center"><span class="badge bg-warning text-dark">Garagem</span></td>
                 <td><a href="https://helianto.caracore.com.br/" class="text-decoration-none" target="_blank" rel="noopener">helianto.caracore.com.br</a></td>
               </tr>
             </tbody>
@@ -1503,7 +1513,7 @@ flowchart TB
         P_CSO[CSO Frotas e Transportes]
         P_INK[Ink Agenda]
     end
-    subgraph BRINCOS["Satélites e Brincos"]
+    subgraph BRINCOS["Satélites"]
         P1r[PDV Rust + Tauri — piloto]
         P2[Minerador 4.0]
         P2b[BioReator 4.0 Community]
@@ -1570,7 +1580,7 @@ flowchart TB
           </div>
         </div>
         <p class="small text-muted mb-4">
-          <strong>Produtos principais (núcleo):</strong> PDV (v4.0.0 lançada em 08/11/2026, com a v3.2.12-free como versão anterior), Hub (gestão logística de ponto de retirada com banco SQLite local, pré-release Windows v2.1.0-rc1.10 com aceite de QA pendente; GA planejado para 06/04/2027), CSO (Frotas em produção e Transportes desktop com Virtual Tracker, alvo 2028) e Ink Agenda (Desktop v2.2.1 publicado em 04/11/2026; 2.3.0 planejada para 29/01/2027). <strong>Brincos complementares:</strong> PDV Rust (piloto v0.1.4), Reino OIDC, Minerador 4.0, BioReator 4.0 Community 1.1.1 (Premium em 2027), Circuito Ferradura, Área 51, Cara Core MKT, Cara Core Seed e Helianto (2029).
+          <strong>Produtos principais (núcleo):</strong> PDV (v4.0.0 lançada em 08/11/2026, com a v3.2.12-free como versão anterior), Hub (gestão logística de ponto de retirada com banco SQLite local, pré-release Windows v2.1.0-rc1.10 com aceite de QA pendente; GA planejado para 06/04/2027), CSO (Frotas em produção e Transportes desktop com Virtual Tracker, alvo 2028) e Ink Agenda (Desktop v2.2.1 publicado em 04/11/2026; 2.3.0 planejada para 29/01/2027). <strong>Satélites complementares:</strong> PDV Rust (piloto v0.1.4), Reino OIDC, Minerador 4.0, BioReator 4.0 Community 1.1.1 (Premium em 2027), Circuito Ferradura, Área 51, Cara Core MKT, Cara Core Seed e Helianto (2029).
         </p>
 
         

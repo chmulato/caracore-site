@@ -17,7 +17,7 @@ window.CARACORE_PLANNING = {
   AS_OF_LABEL: "15/11/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de percentuais em 15/11/2026. Os principais são PDV, CSO, Hub e Ink Agenda; o resto são brincos e não mandam na cota. A PDV v4.0.0 foi lançada em 08/11/2026 — release publicada em 06/11/2026, pacote assinado com duas chaves Ed25519 — e é a versão indicada para operar; a v3.2.12-free passa a versão anterior, com a manutenção encerrada em 08/11/2026 e os pacotes ainda disponíveis. A v4.0.0-rc6 e a v4.0.0-rc5 ficam no histórico. O Hub segue em pré-release Windows v2.1.0-rc1.10, em ZIP portátil, com aceite de QA pendente. O Ink Agenda está na v2.2.1 desde 04/11/2026 e o Desktop 2.3.0 tem entrega planejada para 29/01/2027. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Os 5 dias/mês reservados ao Ink até o 2.3.0 sair cobrem só a atualização 2.3.0 do Desktop, não a PWA, e não tiram dias do Hub nem do PDV. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por lançamento que ainda não saiu.",
+    "Leitura de percentuais em 15/11/2026. Os principais são PDV, CSO, Hub e Ink Agenda; o resto é satélite e não manda na cota. A PDV v4.0.0 foi lançada em 08/11/2026 — release publicada em 06/11/2026, pacote assinado com duas chaves Ed25519 — e é a versão indicada para operar; a v3.2.12-free passa a versão anterior, com a manutenção encerrada em 08/11/2026 e os pacotes ainda disponíveis. A v4.0.0-rc6 e a v4.0.0-rc5 ficam no histórico. O Hub segue em pré-release Windows v2.1.0-rc1.10, em ZIP portátil, com aceite de QA pendente. O Ink Agenda está na v2.2.1 desde 04/11/2026 e o Desktop 2.3.0 tem entrega planejada para 29/01/2027. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Os 5 dias/mês reservados ao Ink até o 2.3.0 sair cobrem só a atualização 2.3.0 do Desktop, não a PWA, e não tiram dias do Hub nem do PDV. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por lançamento que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -37,11 +37,11 @@ window.CARACORE_PLANNING = {
       {
         id: "cso",
         kind: "desvio",
-        title: "CSO · freeze M1 em 08/11/2026",
-        lead: "Frotas em produção desde 06/10. O freeze M1 não tem fechamento registrado.",
+        title: "CSO · freeze M1 agendado para 08/11/2026",
+        lead: "Frotas em produção desde 06/10. O freeze M1 está agendado para 08/11/2026 e não tem fechamento registrado.",
         detail: "Transportes + Virtual Tracker integrado: alvo conjunto 08/11/2028",
         tip: "Frotas sem GPS hoje. Integração futura exige prova móvel, capacidade e homologação; histórico somente no desktop.",
-        text: "Frotas em produção desde 06/10. Freeze M1 em 08/11/2026 estabiliza essa versão, sem registro de fechamento até aqui. Sem jornada, app offline nem GPS.",
+        text: "Frotas em produção desde 06/10. Freeze M1 agendado para 08/11/2026, sem registro de fechamento até aqui. Sem jornada, app offline nem GPS.",
       },
       {
         id: "hub",
@@ -185,8 +185,15 @@ window.CARACORE_PLANNING = {
         kind: "Gargalo",
         title: "Uma cota, um produto pesado por ciclo",
         lead: "O envelope compra uma frente pesada por vez. Mês ocioso não acumula e mês cheio não empresta crédito ao seguinte.",
-        effect: "Um atraso num ciclo passa direto para o próximo dono da fila; o Hub começa em dez/2026.",
+        effect: "Um atraso num ciclo passa direto para o próximo dono da fila; o Hub começa em dez/2026. Entre 08/04 e dez/2027 a fila não tem dono de Agent: as frentes de 2027 fora do Hub não têm data pública.",
         mitigation: "Ordem da fila explícita; trabalho leve (Tab, documentação, copy) fica fora da conta.",
+      },
+      {
+        kind: "Capacidade",
+        title: "O CSO executa sem cota de Agent",
+        lead: "É produto núcleo, está em 40% e o freeze M1 de 2026 não tem fechamento registrado. A execução é paralela, sem dono de ciclo.",
+        effect: "O alvo de Transportes em 08/11/2028 depende de capacidade que hoje não está alocada; o atraso do CSO não tem para onde escorrer.",
+        mitigation: "Dar um ciclo ao CSO em 2027 ou revisar o alvo de 2028 antes de comprometer prazo.",
       },
       {
         kind: "Dependência externa",
@@ -228,7 +235,7 @@ window.CARACORE_PLANNING = {
     governance: [
       {
         term: "Como o percentual é calculado",
-        text: "Cada produto vai de 0 a 100% do compromisso público declarado para dezembro de 2029. É uma estimativa interna revista na primeira leitura de cada mês: sobe quando existe entrega verificável e não sobe por lançamento que ainda não saiu. Não mede qualidade de código nem homologação técnica.",
+        text: "Cada produto vai de 0 a 100% do compromisso público declarado para dezembro de 2029. É uma estimativa interna revista na primeira leitura de cada mês: sobe quando existe entrega verificável e não sobe por lançamento que ainda não saiu. O percentual do ano segue a mesma lógica editorial e não é a soma automática dos produtos. Não mede qualidade de código nem homologação técnica.",
       },
       {
         term: "Como os marcos são definidos",
@@ -309,8 +316,8 @@ window.CARACORE_PLANNING = {
       id: "y2026",
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
-      pct: 78,
-      note: "A PDV v4.0.0 foi lançada em 08/11/2026, com a release publicada em 06/11/2026 e o pacote assinado por duas chaves Ed25519; a 3.2.12-free passa a versão anterior, com a manutenção encerrada na mesma data e os pacotes ainda disponíveis. As v4.0.0-rc6 e v4.0.0-rc5 ficam no histórico. O Hub publicou a pré-release v2.1.0-rc1.10 em 07/11. O freeze M1 do CSO não tem registro de fechamento. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
+      pct: 77,
+      note: "A PDV v4.0.0 foi lançada em 08/11/2026, com a release publicada em 06/11/2026 e o pacote assinado por duas chaves Ed25519; a 3.2.12-free passa a versão anterior, com a manutenção encerrada na mesma data e os pacotes ainda disponíveis. As v4.0.0-rc6 e v4.0.0-rc5 ficam no histórico. O Hub publicou a pré-release v2.1.0-rc1.10 em 07/11, com aceite de QA pendente; por isso permanece em 70% e o ano fica em 77%. O freeze M1 do CSO não tem registro de fechamento. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
     },
     {
       id: "y2027",
@@ -447,7 +454,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 55 },
         { m: "2026-09", p: 58 },
         { m: "2026-10", p: 70 },
-        { m: "2026-11", p: 72 },
+        { m: "2026-11", p: 70 },
       ],
     },
     {
@@ -535,7 +542,7 @@ window.CARACORE_PLANNING = {
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
       hundred: "Frotas disponível e Transportes + Virtual Tracker integrado homologados; alvo conjunto 08/11/2028 condicionado aos gates INT, sem disponibilidade automática.",
-      now: "Frotas em produção desde 06/10, sem GPS hoje; freeze M1 em 08/11/2026. Transportes + VT integrado em desenvolvimento: 0/21 tarefas INT, total de sprints/capacidade pendente em INT-03. Sem contratação antecipada.",
+      now: "Frotas em produção desde 06/10, sem GPS hoje; freeze M1 agendado para 08/11/2026, sem fechamento registrado. Transportes + VT integrado em desenvolvimento: 0/21 tarefas INT, total de sprints/capacidade pendente em INT-03. Sem contratação antecipada.",
       history: [
         { m: "2026-06", p: 30 },
         { m: "2026-07", p: 34 },

@@ -39,7 +39,7 @@ Os endereços antigos (`2027_04_20_*`, `2027_04_26_*`, `2027_05_06_*`, `2027_05_
 | **PDV Java** | **`v4.0.0` lançada em 08/11/2026.** Release publicada em 06/11/2026 em `caracore-pdv4-releases` (tag `v4.0.0`): ZIP portátil Windows 10/11 x64 de 176.613.179 B, SHA-256 `9557e0b16d77a85e0bb68971eb0e8710356977261337a8c1c05593e893d81eac`, `SHA256SUMS` com duas assinaturas Ed25519. A `v3.2.12-free` é a **versão anterior**, com manutenção encerrada em 08/11/2026 e pacotes ainda disponíveis. | A 4.1.0 (Appmax/PlugNotas) existe só em branch e **não** se anuncia. SCA por OSV (NVD não medido). `PERF-001–007` congeladas. |
 | **CSO Frotas** | Gestão de frota FRO 24/24 **no ar** desde 06/10 (`b90d1dc`, Flyway V33). Em 10/11 passou a servir os próprios assets — **sem Cloudflare, sem CDN e sem Turnstile** (`f395c10`) — e o cadastro voltou a gravar (V34, `22bee2d`). | Freeze M1 aplicado em 08/11/2026. Transportes + VT têm alvo conjunto em 08/11/2028, sujeito aos gates INT. Sem GPS hoje. |
 | **Hub** | Pré-release Windows **`v2.1.0-rc1.10`** (07/11/2026, ZIP portátil 228.354.977 B, SHA-256 `0b18fbcf3af02d53a341ac5b83af9132a0ef201e698585160f332d3ad8bdae00`, unsigned), com base de atualização assinada Ed25519 embutida. Web 2.1 concluída; SQLite local no computador do cliente. | **Aceite de QA da `rc1.10` pendente** — a rodada 5 reprovou a `rc1.7` (N1/N2); B7 fechado em 07/11 e S6.9 aberto. GA Windows 06/04/2027. Não é GA e não foi homologada. Mac e Linux fora desta tag. |
-| **Ink Agenda** | Desktop **`v2.2.1`** (Latest, 04/11/2026), Windows (setup/ZIP) e Linux (`.deb`), unsigned, três perfis e equipe com papéis. | Desktop **2.3.0** planejado para **29/01/2027** — Onda 1 fechada tecnicamente e empurrada em `3381aa3`; a homologação manual de **15/11/2026** fechou H-A04, H-C04, H-C06, H-B02 e H-B03, com H-A09 parcial e H-B01 pendentes do relogin do dono e o H-A08 escorregado para dez/2026. 3.0 em PWA **não antes de 2028**. |
+| **Ink Agenda** | Desktop **`v2.2.1`** (Latest, 04/11/2026), Windows (setup/ZIP) e Linux (`.deb`), unsigned, três perfis e equipe com papéis. | Desktop **2.3.0** planejado para **29/01/2027** — Onda 1 fechada tecnicamente e empurrada em `3381aa3`; a homologação manual de **15/11/2026** fechou H-A04, H-C04, H-C06, H-B02 e H-B03, com H-A09 parcial e H-B01 pendentes do relogin do dono e o H-A08 escorregado para dez/2026. **Ponto de parada registado em 15/11/2026:** a retomada de H-B01/H-A09 entra na cota de **dez/2026**, em sandbox nova com senha e frase de recuperação anotadas pelo dono. 3.0 em PWA **não antes de 2028**. |
 
 **Regra de superfície (fixada em 10/11/2026):** nenhuma superfície publicada depende de CDN externo, Cloudflare ou equivalente — matriz, wiki, lojas, blogs, Sala e Central servem os próprios assets, com layout equivalente em mobile, tablet e desktop. Medido em 21 superfícies sem carga de CDN. GA4 só depois do aceite (Consent Mode v2): matriz, wiki, quatro lojas do núcleo e blog pessoal (este último corrigido em 10/11, `df71835`).
 
@@ -53,7 +53,7 @@ Os endereços antigos (`2027_04_20_*`, `2027_04_26_*`, `2027_05_06_*`, `2027_05_
 **Pendências abertas ao fim do dia (não presumir fechadas):**
 
 1. **Hub:** aceite de QA da `rc1.10` e **S6.9** — mapa em `caracore-hub/docs/status-hub-ga-2027-20261025.md`.
-2. **Ink:** prints H-A04, H-C04, H-C06 e H-A08 na semana de 10–14/11.
+2. **Ink:** retomada de H-B01/H-A09 na cota de **dez/2026** (sandbox nova, senha e frase anotadas pelo dono) e **H-A08** (restore de `.inkbak` 2.2.1) no mesmo mês; H-A04, H-C04 e H-C06 executados em 15/11/2026.
 3. **CSO, decisão do dono:** PITR/Pro (pago) versus a proteção atual de dump diário; apagar o `tokens.txt` local (gitignored) que guarda a credencial antiga e mais dois segredos, já sem valor de acesso.
 4. **CSO, limpeza em produção:** o smoke criou o tenant `2` (`SMOKE QA CSO 20261110`) e o usuário `53`, removíveis em `/ops/tenants/2/purgar` com a sessão do dono.
 5. **Matriz:** 2 conflitos sitemap × `noindex` no Ink sem decisão (`docs/INDEXACAO_SEO.md`).
@@ -187,8 +187,8 @@ quatro colunas no desktop. Nos canónicos: `AGENTS.md` (parágrafo do núcleo, t
 `docs/INICIAR_NOVA_TAREFA.md`, `.cursor/rules/ecosystem-cara-core.mdc` e `docs/PORTFOLIO_README.md` do workspace.
 
 **O que não mudou:** nenhuma versão, data ou gate foi tocado por esta decisão. O **Ink Desktop 2.3.0** continua
-**planejado para 29/01/2027** com conteúdo **não publicado** (Onda 1 fechada tecnicamente em 08/11/2026; prints
-H-A04, H-C04, H-C06 e H-A08 pendentes), o **Hub** segue em **`v2.1.0-rc1.10`** com aceite de QA pendente e GA em
+**planejado para 29/01/2027** com conteúdo **não publicado** (Onda 1 fechada tecnicamente em 08/11/2026; homologação de
+15/11/2026 executada com H-C04, H-C06, H-B02 e H-B03 conformes, H-A09 parcial e H-B01 em dez/2026), o **Hub** segue em **`v2.1.0-rc1.10`** com aceite de QA pendente e GA em
 06/04/2027, o **CSO Transportes + VT** mantém o alvo de **08/11/2028** e a **linha 4.1.0 do PDV**
 (Appmax/PlugNotas) **não se anuncia**. A **cota não ganhou dias**: continua **um produto pesado por ciclo** e a
 fatia de **5 dias/mês** do Desktop 2.3.0, que **cede** se o núcleo precisar — o Ink ter entrado no núcleo muda a
@@ -228,9 +228,9 @@ núcleo e a tabela de produtos), sem reescrever o ficheiro; a nota datada no top
 **P1.2.1** em 06/11/2026 e **P1.2.2–P1.2.8**, **P1.3.1–P1.3.4** e **G1** em 08/11/2026 — 17 de 17
 sub-itens (o **P1.2.8** nasceu do plano de alinhamento e fechou AL-01/AL-02 no mesmo dia). Nada
 publicado: o produto no ar continua o **Desktop 2.2.1** e o canal segue keyless desde 07/11/2026.
-Falta a **homologação de prints** (H-A04, H-C04, H-C06 e H-A08) na semana de 10–14/11. A data da entrega foi revista no mesmo dia de 06/04/2027 para **29/01/2027**: o corte cai na Fase 2A do Hub (G2 em 05/02) e mar–abr/2027 ficam intocados; a fatia gasta nov+dez+jan (15 dias) e devolve **13 dias (fev–abr) ao envelope do núcleo**.
+A **homologação de prints** ficou para 15/11/2026 (resultado no parágrafo seguinte). A data da entrega foi revista no mesmo dia de 06/04/2027 para **29/01/2027**: o corte cai na Fase 2A do Hub (G2 em 05/02) e mar–abr/2027 ficam intocados; a fatia gasta nov+dez+jan (15 dias) e devolve **13 dias (fev–abr) ao envelope do núcleo**.
 
-**Homologação manual de 15/11/2026 (sandbox B1):** H-A04, H-C04, H-C06 e o bloco dos dois logins executados com prints e contagens locais (pasta `docs/evidencias/homolog-p1-20261115/`, fora do Git) — **conformes** H-C04, H-C06, H-B02 e H-B03; **H-A09 ficou parcial** (login da Ana provado, relogin do dono não executado) e **H-B01 pendente**; o **H-A08 escorregou para dez/2026** (falta um `.inkbak` 2.2.1) e o aceite formal continua no P1.11.4. Nada publicado e nenhum caso muda de status por intenção.
+**Homologação manual de 15/11/2026 (sandbox B1):** H-A04, H-C04, H-C06 e o bloco dos dois logins executados com prints e contagens locais (pasta `docs/evidencias/homolog-p1-20261115/`, fora do Git) — **conformes** H-C04, H-C06, H-B02 e H-B03; **H-A09 ficou parcial** (login da Ana provado, relogin do dono não executado) e **H-B01 pendente**; o **H-A08 escorregou para dez/2026** (falta um `.inkbak` 2.2.1) e o aceite formal continua no P1.11.4. Nada publicado e nenhum caso muda de status por intenção. **Ponto de parada (15/11/2026, a pedido do dono):** nov/2026 fechou com **5 de 5 dias** (14/11 foi o P1.2.9; 15/11, a homologação) e a retomada de H-B01/H-A09 vai para a cota de **dez/2026**, em sandbox nova em que o dono anota senha e frase de recuperação no gerenciador dele — a senha da B1 não foi anotada e não há como recuperá-la, por isso a sessão parou em vez de insistir. O passo a passo da retomada e o retrato da base B1 no fecho estão em `../caracore-ink/agenda-java/docs/CHECKLIST_HOMOLOGACAO_P1.md` (secção «Retomada da homologação — estado em 15/11/2026») e o registro datado, em `../caracore-ink/docs/ROADMAP_P1.md` («Estado e bloqueios», commit `8333f63`).
 
 **Ramo de agendamento (P1.2.6/P1.2.7):** a **V30** acrescenta `attends_sessions` e `specialty` a
 `app_users`. O cadastro de equipe pergunta «Atende sessões» e a especialidade; a **recepção** agenda

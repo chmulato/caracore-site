@@ -13,11 +13,11 @@
  * Fonte de datas: AGENTS.md · CALENDARIO_COTA_CURSOR.md · ecosistema.html#roadmap
  */
 window.CARACORE_PLANNING = {
-  AS_OF: "2026-10",
-  AS_OF_LABEL: "31/10/2026",
+  AS_OF: "2026-11",
+  AS_OF_LABEL: "15/11/2026",
   HORIZON: "2026 → 2029",
   NOTE:
-    "Leitura de percentuais em 31/10/2026; estado dos produtos revisto em 09/11/2026. Os principais são PDV, CSO, Hub e Ink Agenda; o resto são brincos e não mandam na cota. A PDV v4.0.0 foi lançada em 08/11/2026 — release publicada em 06/11/2026, pacote assinado com duas chaves Ed25519 — e é a versão indicada para operar; a v3.2.12-free passa a versão anterior, com a manutenção encerrada em 08/11/2026 e os pacotes ainda disponíveis. A v4.0.0-rc6 e a v4.0.0-rc5 ficam no histórico. O Hub segue em pré-release Windows v2.1.0-rc1.10, em ZIP portátil, com aceite de QA pendente. O Ink Agenda está na v2.2.1 desde 04/11/2026 e o Desktop 2.3.0 tem entrega planejada para 29/01/2027. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Os 5 dias/mês reservados ao Ink até o 2.3.0 sair cobrem só a atualização 2.3.0 do Desktop, não a PWA, e não tiram dias do Hub nem do PDV. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por lançamento que ainda não saiu.",
+    "Leitura de percentuais em 15/11/2026. Os principais são PDV, CSO, Hub e Ink Agenda; o resto são brincos e não mandam na cota. A PDV v4.0.0 foi lançada em 08/11/2026 — release publicada em 06/11/2026, pacote assinado com duas chaves Ed25519 — e é a versão indicada para operar; a v3.2.12-free passa a versão anterior, com a manutenção encerrada em 08/11/2026 e os pacotes ainda disponíveis. A v4.0.0-rc6 e a v4.0.0-rc5 ficam no histórico. O Hub segue em pré-release Windows v2.1.0-rc1.10, em ZIP portátil, com aceite de QA pendente. O Ink Agenda está na v2.2.1 desde 04/11/2026 e o Desktop 2.3.0 tem entrega planejada para 29/01/2027. Seed 0.1.5 é pré-release candidata para avaliação, sem homologação independente. BioReator 4.0 Community 1.1.1 foi publicada em 13/10; permanece na torre 10, com o percentual em 12%. A Premium chega em 18/06/2027, sem preço e sem PIX. Helianto e MKT ficam fora desta grelha. Um produto pesado por ciclo. Os 5 dias/mês reservados ao Ink até o 2.3.0 sair cobrem só a atualização 2.3.0 do Desktop, não a PWA, e não tiram dias do Hub nem do PDV. Percentual representa avanço rumo ao compromisso público, não homologação técnica, e não sobe por lançamento que ainda não saiu.",
 
   /**
    * Camada executiva (L1). Actualizar no 1.º dia útil com AS_OF.
@@ -125,7 +125,7 @@ window.CARACORE_PLANNING = {
         label: "Ferramentas complementares",
         icon: "tools",
         hint: "Apoio à operação e a projetos de nicho.",
-        items: ["area51", "ink"],
+        items: ["area51"],
       },
     ],
 
@@ -218,8 +218,8 @@ window.CARACORE_PLANNING = {
       },
       {
         kind: "Projetos críticos",
-        title: "Dois produtos concentram o risco",
-        lead: "Hub e CSO estão em amarelo; o PDV saiu do vermelho com o lançamento da v4.0.0 em 08/11/2026. Os outros dez projetos não têm pendência que trave entrega.",
+        title: "Três produtos concentram o risco",
+        lead: "Hub, CSO e Seed estão em amarelo; o PDV saiu do vermelho com o lançamento da v4.0.0 em 08/11/2026. Os outros nove projetos não têm pendência que trave entrega.",
         effect: "Nenhuma frente satélite compensa um atraso no Hub ou no Transportes.",
         mitigation: "Semáforo acima e a lista de pontos fora do ritmo logo abaixo, item por item.",
       },
@@ -309,7 +309,7 @@ window.CARACORE_PLANNING = {
       id: "y2026",
       label: "2026",
       subtitle: "PDV v4 · freeze CSO M1",
-      pct: 74,
+      pct: 78,
       note: "A PDV v4.0.0 foi lançada em 08/11/2026, com a release publicada em 06/11/2026 e o pacote assinado por duas chaves Ed25519; a 3.2.12-free passa a versão anterior, com a manutenção encerrada na mesma data e os pacotes ainda disponíveis. As v4.0.0-rc6 e v4.0.0-rc5 ficam no histórico. O Hub publicou a pré-release v2.1.0-rc1.10 em 07/11. O freeze M1 do CSO não tem registro de fechamento. BioReator Community 1.1.1 publicada em 13/10 na torre 10, percentual em 12%. Premium em 18/06/2027.",
     },
     {
@@ -352,6 +352,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 74 },
         { m: "2026-09", p: 76 },
         { m: "2026-10", p: 80 },
+        { m: "2026-11", p: 84 },
       ],
     },
     {
@@ -370,6 +371,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 36 },
         { m: "2026-09", p: 38 },
         { m: "2026-10", p: 38 },
+        { m: "2026-11", p: 38 },
       ],
     },
     {
@@ -388,6 +390,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 100 },
         { m: "2026-09", p: 100 },
         { m: "2026-10", p: 100 },
+        { m: "2026-11", p: 100 },
       ],
     },
     {
@@ -406,6 +409,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 92 },
         { m: "2026-09", p: 92 },
         { m: "2026-10", p: 92 },
+        { m: "2026-11", p: 92 },
       ],
     },
     {
@@ -424,6 +428,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 98 },
         { m: "2026-09", p: 98 },
         { m: "2026-10", p: 98 },
+        { m: "2026-11", p: 98 },
       ],
     },
     {
@@ -442,6 +447,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 55 },
         { m: "2026-09", p: 58 },
         { m: "2026-10", p: 70 },
+        { m: "2026-11", p: 72 },
       ],
     },
     {
@@ -460,6 +466,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 100 },
         { m: "2026-09", p: 100 },
         { m: "2026-10", p: 100 },
+        { m: "2026-11", p: 100 },
       ],
     },
     {
@@ -478,6 +485,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 70 },
         { m: "2026-09", p: 72 },
         { m: "2026-10", p: 72 },
+        { m: "2026-11", p: 75 },
       ],
     },
     {
@@ -496,6 +504,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 100 },
         { m: "2026-09", p: 100 },
         { m: "2026-10", p: 100 },
+        { m: "2026-11", p: 100 },
       ],
     },
     {
@@ -514,6 +523,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 12 },
         { m: "2026-09", p: 12 },
         { m: "2026-10", p: 12 },
+        { m: "2026-11", p: 12 },
       ],
     },
     {
@@ -532,6 +542,7 @@ window.CARACORE_PLANNING = {
         { m: "2026-08", p: 36 },
         { m: "2026-09", p: 38 },
         { m: "2026-10", p: 40 },
+        { m: "2026-11", p: 40 },
       ],
     },
     {
@@ -544,7 +555,10 @@ window.CARACORE_PLANNING = {
       shop: "https://eng.caracore.com.br/",
       hundred: "Livro publicado (13 capítulos + 3 apêndices, PDF aberto) e app Universo Rebeldia em piloto.",
       now: "Livro publicado, leitura online e PDF abertos; app de estudo em piloto. Preço a definir, sem checkout. Não consome a cota de Agent.",
-      history: [{ m: "2026-10", p: 92 }],
+      history: [
+        { m: "2026-10", p: 92 },
+        { m: "2026-11", p: 92 },
+      ],
     },
   ],
 };

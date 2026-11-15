@@ -2,6 +2,16 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Capas da home do blog pessoal — 15/11/2026 (correção publicada)
+
+A home de `personal.caracore.com.br` monta os cards em JavaScript (`caracore-personal/docs/articles/assets/js/main.js`) e resolvia a capa **só pela data do artigo** (`<data>_IMAGE_001`). Como a trilogia *A Engenharia do Choque Controlado* tem quatro textos na mesma data (14/11/2026), os quatro cards exibiam a `2026_11_14_IMAGE_001.webp`, apesar de as imagens 002/003/004 existirem e cada página de artigo usar a sua.
+
+**Correção publicada:** commit `98f57d8` no `caracore-personal` (só o `main.js`, 11 linhas novas e 1 trocada), com push para `master` e Pages `built` em 101.882 ms no commit seguinte, `2a3f51e` (o bot do blog cria esse commit de feed/sitemap). O `main.js` servido tem SHA-256 `7a382803…011132`, idêntico ao arquivo local. A resolução da capa passou a ser **`coverByArticle[slug do artigo]` → `coverFallbacks[data]` → `<data>_IMAGE_001`**, ou seja, **o artigo vem antes da data**. Entraram cinco entradas: `ep01`→`002`, `ep02`→`003`, `ep03`→`004` (a chamada já caía na `001`) e, por terem o mesmo defeito latente, `2026_04_23_a_ressaca_da_ia…`→`002` e `2026_04_30_a_era_da_ia_costurada…`→`002`.
+
+**Prova medida:** varredura dos 276 cards do arquivo mostrou **apenas essas cinco capas alteradas** (as três restantes que divergem do hero do próprio artigo são quedas de data intencionais, anteriores); na home publicada, os 276/276 cards foram montados sem nenhum fallback para `.png`, cada capa confere com o hero do seu artigo e as imagens respondem 200 com bytes iguais aos locais.
+
+**Regra para outras IAs:** artigo novo que **divide a data** com outro e tem imagem própria (`_IMAGE_002+`) precisa de linha em `coverByArticle` antes do commit — sem ela, todos os cards daquela data repetem a `_IMAGE_001`. Regra de ouro: **a capa do card é a mesma imagem que o artigo usa como hero.** O detalhe mora em `caracore-personal/AGENTS.md` §3.1 item 4, na regra `.cursor/rules/blog-personal-workspace.mdc` e em `.agents/AGENTS.md` § Convenção de Imagens.
+
 ### Publicações dos blogs — 14/11/2026
 
 **Retrô — artigos 145 e 146:** publicados no blog em `https://retro.caracore.com.br/articles/2027_08_17_article_145.html` e `https://retro.caracore.com.br/articles/2027_08_25_article_146.html` (ambos responderam HTTP 200). O commit `b9c9609` foi publicado pelo workflow `43593863756`, com `validate`, `deploy` e `publish-linkedin` concluídos. LinkedIn: artigo 145 `urn:li:share:7527343782082535424`; artigo 146 `urn:li:share:7527343790320431105`.

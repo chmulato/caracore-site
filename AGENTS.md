@@ -73,9 +73,9 @@ A Cara Core Informática desenvolve soluções sob o modelo de **Engenharia B2B*
 - **FinOps & Abordagem Híbrida Pragmática:** A nuvem é utilizada para colaboração, captação e telemetria gerencial, sem onerar o cliente com custos recorrentes desnecessários.
 - **Transparência Radical:** O que está pronto é vendido; o que está em desenvolvimento é claramente rotulado como *Garagem*, *Piloto* ou *Roadmap*. Não anuncie instaladores, acesso ao código ou disponibilidade pública antes de confirmar publicação.
 
-### Produtos principais (núcleo) e satélites
+### Produtos principais (núcleo) e demais frentes
 
-Os **quatro produtos principais** são **PDV**, **CSO**, **Hub** e **Ink Agenda** (decisão de 09/11/2026; substitui o trio anterior). O resto do portfólio (PDV Rust piloto, OIDC, Seed, Circuito, Área 51, RU, BioReator 4.0, Helianto, MKT, Minerador) são **satélites**: existem, têm loja ou vitrine, e **não** mandam na fila de Agent, na headline pública, no catálogo nem no discurso de negócio. Em conflito de cota ou de data, o satélite **cede**.
+Os **quatro produtos principais** são **PDV**, **CSO**, **Hub** e **Ink Agenda** (decisão de 09/11/2026; substitui o trio anterior). As demais frentes do portfólio (PDV Rust piloto, OIDC, Seed, Circuito, Área 51, RU, BioReator 4.0, Helianto, MKT, Minerador) ficam **fora do núcleo** — satélites, o MKT gratuito e o Helianto na garagem: existem, têm loja ou vitrine, e **não** mandam na fila de Agent, na headline pública, no catálogo nem no discurso de negócio. Em conflito de cota ou de data, a frente **cede**.
 
 | Chave | O que é | Status público honesto |
 |---|---|---|
@@ -220,7 +220,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | **Cara Core MKT / Sala** | `caracore-mkt` / `caracore-tools` | `caracore-mkt-releases` | `mkt.caracore.com.br` · Sala: `tools.caracore.com.br/sala/` | Ferramenta interna · vitrine gratuita · não vendemos |
 | **Central de Downloads** | — | `caracore-loja` | `download.caracore.com.br` | HTML5 / Vanilla CSS / Hub Unificado |
 
-**MKT e Helianto no mapa de lojas (10/10/2026):** CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io`. Fonte: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`. MKT = vitrine gratuita e Sala `tools.caracore.com.br/sala/`. Helianto = vitrine da oficina, GA 30/12/2029. Os dois continuam satélites.
+**MKT e Helianto no mapa de lojas (10/10/2026):** CNAMEs `mkt.caracore.com.br` e `helianto.caracore.com.br` → `chmulato.github.io`. Fonte: `MEMORIA_INFRAESTRUTURA_CARACORE.txt`. MKT = vitrine gratuita e Sala `tools.caracore.com.br/sala/`. Helianto = vitrine da oficina, GA 30/12/2029. Os dois continuam fora do núcleo.
 
 ---
 

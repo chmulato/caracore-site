@@ -288,5 +288,5 @@ um dia.
   `@id` canônico `https://caracore.com.br/#organization`, com CNPJ e endereço, só está definido
   na central. As quatro lojas repetem a `Organization` inline (nome + URL) em vez de apontar
   para esse `@id`, o que impede o buscador de somar as declarações em uma entidade só.
-- As lojas dos satélites (OIDC, Circuito, Seed, RU/BioReator, Helianto, ETE, Área 51, MKT,
+- As lojas fora do núcleo (OIDC, Circuito, Seed, RU/BioReator, Helianto, ETE, Área 51, MKT,
   Rust) continuam sem `robots.txt` e sem `sitemap.xml` próprios.

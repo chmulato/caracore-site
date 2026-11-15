@@ -12,7 +12,7 @@ Histórico detalhado (delivery/): docs/archive/sessoes-trabalho/VALIDACAO_NEGOCI
 
 PREMISSA
 
-- **Principais (09/11/2026):** PDV · CSO · Hub · Ink Agenda. **Satélites:** os demais da lista abaixo. O satélite não manda na fila de Agent, na headline nem no catálogo.
+- **Principais (09/11/2026):** PDV · CSO · Hub · Ink Agenda. **Fora do núcleo:** os demais da lista abaixo. Nenhum deles manda na fila de Agent, na headline nem no catálogo.
 - Foco em **engenharia B2B boutique** + produtos Bunker como prova de entrega; capacidade limitada (sem braço de startup).
 - Matriz = home B2B (`#engenharia-b2b`), portfólio (`#decisoes-engenharia`), ecossistema; loja = vitrine e download (*.caracore.com.br).
 - Filosofia Bunker: desktop soberano, operação local, SQLite onde aplicável.

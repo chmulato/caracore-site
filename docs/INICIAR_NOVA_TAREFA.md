@@ -13,7 +13,7 @@ Guia de **produtividade** para retomar trabalho dias ou semanas depois. Leia em 
 
 | Passo | Ação |
 |-------|------|
-| 0 | Ler `caracore-site/AGENTS.md` (**principais** PDV · CSO · Hub · Ink Agenda; o resto é **satélite**, bloco **Marcos de transição PDV/CSO** e **Cota Cursor**). O `AGENTS.md` da raiz do workspace **não existe mais** |
+| 0 | Ler `caracore-site/AGENTS.md` (**principais** PDV · CSO · Hub · Ink Agenda; o resto fica **fora do núcleo**, bloco **Marcos de transição PDV/CSO** e **Cota Cursor**). O `AGENTS.md` da raiz do workspace **não existe mais** |
 | 0b | Confirmar o **dono do ciclo** em `docs/CALENDARIO_COTA_CURSOR.md`. Não abrir Agent pesado noutro produto. |
 | 0c | Se a tarefa muda um **GA público**, o **dono do ciclo** ou abre Agent noutro produto → ler `docs/RISCOS_ECOSSISTEMA.md` e aplicar a coluna «Decisão». |
 | 0d | Antes de compilar Java, ler `D:\onedrive\dev\APPS_JAVA_VERSION.md` e usar o JDK daquela aplicação |

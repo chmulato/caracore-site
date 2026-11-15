@@ -635,7 +635,7 @@
   --bs-primary-rgb: 5, 60, 140;
 }
 
-.eco-lojas-table .row-group-brinco {
+.eco-lojas-table .row-group-secundario {
   background: #f8f9fa;
   color: #6c757d;
   font-weight: 700;
@@ -659,7 +659,7 @@
   color: #0a58ca;
 }
 
-.eco-badge-brinco {
+.eco-badge-satelite {
   display: inline-block;
   padding: 0.25rem 0.55rem;
   font-size: 0.72rem;

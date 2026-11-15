@@ -33,7 +33,7 @@ Todas as páginas carregam `<script defer src="/assets/js/analytics.js"></script
 `</body>` (na matriz, com caminho relativo `assets/js/analytics.js`).
 
 **Fora da medição, de propósito:** `secure/` (área autenticada, bloqueada no `robots.txt`), as
-lojas dos satélites (OIDC, Circuito, Seed, RU, Helianto, ETE, Área 51, MKT e afins) e `404.html`
+lojas fora do núcleo (OIDC, Circuito, Seed, RU, Helianto, ETE, Área 51, MKT e afins) e `404.html`
 (o teste `404 remains an error page without automatic navigation or heavy resources` exige página
 sem `<script>`; e `aligned/index.html`, que é só o seletor de idioma que redireciona em 2 s).
 
@@ -95,10 +95,10 @@ picos passam a ter causa atribuível.
 
 ## Pendências conhecidas
 
-- Lojas dos satélites sem tag (10 repositórios).
+- Lojas fora do núcleo sem tag (10 repositórios).
 - Blog pessoal (`caracore-personal`) com script próprio, que ainda carrega o `gtag.js` sem
   consultar o consentimento.
-- Lojas dos satélites sem `robots.txt` e sem `sitemap.xml` próprios; o núcleo (matriz, wiki,
+- Lojas fora do núcleo sem `robots.txt` e sem `sitemap.xml` próprios; o núcleo (matriz, wiki,
   central e quatro lojas) está coberto — ver `INDEXACAO_SEO.md`.
 - `assets/js/analytics.js` é copiado por repositório: qualquer alteração precisa ser
   propagada e conferida pelo checksum acima.

@@ -37,6 +37,33 @@ Cada host tem o seu `sitemap.xml`, gerado a partir dos arquivos rastreados no gi
    `weekly`/`1.0`, o primeiro nível `monthly`/`0.9` e o resto `monthly`/`0.7`. O Google ignora
    os dois campos: eles ficam como documentação da intenção.
 
+### Blogs Retrô e Personal — ajuste local de 19/11/2026
+
+Alterações **locais, ainda não publicadas**; o inventário e o envio ao Search Console abaixo
+continuam sendo o registro de 09/11 para as sete superfícies, não para estes blogs.
+
+| Blog | Sitemap local | Entradas | Critério |
+|---|---|---:|---|
+| Retrô | `caracore-retro/docs/sitemap.xml` e `docs/robots.txt` | 149 | Home, privacidade e 147 artigos do índice; sem filtrar datas futuras |
+| Personal | `caracore-personal/docs/sitemap.xml` | 284 | Home, seis páginas editoriais e 277 artigos; quatro redirecionamentos e `articles.html` fora |
+
+Na revisão editorial local, 196 links “Sobre” do Personal passaram a apontar para a página do autor; quatro âncoras já existentes foram preservadas. Os artigos sobre continuidade no balcão foram conectados entre os blogs, e a série do PDV ganhou links entre capítulos. O RSS do Personal foi atualizado; o artigo 130 e o RSS do Retrô não foram alterados. Dos 196 artigos alterados no Personal, 141 já tinham alcançado a data editorial em 19/11 e todos constavam no registro local do LinkedIn; isso não verifica o estado remoto. Antes de qualquer publicação, conferir a automação, o registro remoto e a diferença preexistente em relação ao remoto.
+
+Ainda em 19/11, a revisão local dos artigos do Personal de 23/04 e 30/04 separou estimativas de investimento, limites de IA local e custos; o título e o resumo da IA costurada foram alinhados ao texto e à home. No Retrô, o artigo 101 passou a distinguir a análise de maio de 2026 de funções efetivamente entregues. Os três mantêm as datas e URLs originais e perderam blocos de dados estruturados duplicados. Essas revisões também estão locais, sem publicação nem envio às redes.
+
+Nos dois mapas, `lastmod` foi omitido porque as datas de alteração efetiva não foram
+comprovadas: a data editorial do artigo e a data de geração não demonstram uma alteração.
+Também foram omitidos `changefreq` e `priority`, que o Google ignora. No Personal,
+`ciclo-ativo.html` permanece fora porque não declara canonical próprio. Os mapas e suas
+páginas são verificados localmente quanto a canonical, `noindex` e redirecionamento por
+`meta refresh`; isso não comprova indexação. Nesta entrega, nenhum mapa foi enviado ao
+Search Console.
+
+Ao atualizar o catálogo do Retrô, executar `python tools/validate_site.py --write-sitemap` e
+`python tools/validate_site.py`; a validação existente recusa mapa desatualizado. No Personal,
+executar `python update_sitemap.py` e `python update_sitemap.py --check`. Gerar o mapa do Retrô
+não altera o RSS. Nenhum destes comandos publica conteúdo ou dispara redes sociais.
+
 ## Inventário
 
 | Superfície | Arquivo publicado | URLs | Fora, por motivo |

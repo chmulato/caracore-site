@@ -202,7 +202,7 @@ Todo o ecossistema é organizado rigorosamente em 4 camadas:
 | Produto | Oficina (Código/Dev) | Loja (Vitrine/Release) | Subdomínio Oficial | Stack Principal |
 |---|---|---|---|---|
 | **Matriz Institucional** | `caracore-site` | — | `www.caracore.com.br` | HTML5 / Bootstrap / B2B |
-| **Blog Christian Mulato** | `caracore-personal` | — | `personal.caracore.com.br` | Editorial / 268 artigos / RSS |
+| **Blog Christian Mulato** | `caracore-personal` | — | `personal.caracore.com.br` | Editorial / 277 artigos / RSS |
 | **Wiki Institucional** | `caracore-wiki` | — | `wiki.caracore.com.br` | HTML5 / Multi-persona |
 | **Artigos Retrô** | `caracore-retro` | — | `retro.caracore.com.br` | Editorial / 139 artigos |
 | **PDV Desktop (Java)** | `caracore-pdv` | `caracore-pdv-releases` | `pdv.caracore.com.br` | Java 25 · Quarkus · SQLite · Free `v3.2.12-free` (versão anterior; navegador `localhost:8080/login`) · v4 **com GA em 08/11/2026** (decisão de 04/11; candidata 31/10 é a prévia pública, rc6/rc5 no histórico, RC7 rota aprovada sem tag) |

@@ -5,6 +5,14 @@ alwaysApply: true
 
 # Memória — Cara Core Informática (matriz e ambientes)
 
+## SEO publicado — 19/11/2026
+
+- Alinhamento publicado no Retrô (`7016f65`), Personal (`3a847a3`, seguido de `3257f0e`) e matriz (`0e68d84`, junto com `703ff3b`); deploy/validação e Pages passaram.
+- Verificação pública: sitemaps com 150/284/10 URLs; RSS Personal com 277 artigos; artigo 148 do Retrô com data `2027-09-07` e imagem HTTP 200.
+- A rota inexistente da matriz responde 404 personalizado, `noindex`, sem JavaScript ou stylesheet externo.
+- LinkedIn concluiu sem novos posts; Facebook não foi acionado. Envio dos sitemaps dos blogs ao Search Console continua pendente do proprietário.
+- Evidências e IDs dos workflows: `docs/INDEXACAO_SEO.md`.
+
 ## PDV Free 3.2.12 — publicação de 15/10/2026 (agora versão anterior)
 
 - **Versão anterior:** `v3.2.12-free`, última da linha 3.2.x, manutenção encerrada em **08/11/2026** e pacotes ainda disponíveis (Windows · Linux · macOS). Fonte `hotfix/3.2.12-free`, commit `72ace488aed4ee91001c60cf40a3934ddfe8faf1`. 3.2.8 preservada no histórico.

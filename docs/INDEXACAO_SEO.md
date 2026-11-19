@@ -59,7 +59,7 @@ páginas são verificados localmente quanto a canonical, `noindex` e redireciona
 `meta refresh`; isso não comprova indexação. Os sitemaps dos blogs não foram enviados ao
 Search Console.
 
-#### Personal — alinhamento local do JSON-LD ao padrão de página
+#### Personal — alinhamento publicado do JSON-LD ao padrão de página
 
 A auditoria do sitemap de 284 URLs encontrou 258 artigos com blocos JSON-LD repetidos:
 255 conjuntos eram cópias idênticas e três continham descrições diferentes. Também havia
@@ -67,19 +67,22 @@ A auditoria do sitemap de 284 URLs encontrou 258 artigos com blocos JSON-LD repe
 sem dados estruturados. Canonicals, URLs do sitemap e o `Sitemap:` do `robots.txt` já estavam
 corretos.
 
-O alinhamento foi aplicado localmente, sem push: cada URL indexável agora tem um único grafo
-`schema.org` e um nó `WebPage` com `@id` `<canonical>#webpage`, URL canônica, título, meta
+O alinhamento foi publicado em 19/11/2026 no commit `3a847a3`: cada URL indexável agora tem um
+único grafo `schema.org` e um nó `WebPage` com `@id` `<canonical>#webpage`, URL canônica, título, meta
 description e idioma da página. O grafo do blog usa `WebSite` e `Blog` na home, `BlogPosting`
 nos 277 artigos e uma entidade `Person` na página “Sobre o Autor”; as referências usam IDs
 estáveis e resolvidos. Nos três casos com descrições conflitantes, foi mantida a meta
-description visível da própria página. O validador passou nas 284 URLs. Este estado estruturado
-continua local e **não está publicado nem foi enviado ao Search Console**.
+description visível da própria página. O validador passou nas 284 URLs. O workflow do LinkedIn
+(run `44611249599`) e o de saúde do site (`44611249753`) passaram sem novos posts; o Pages foi
+reconstruído com sucesso no run `44611391102` após o bot atualizar o `lastBuildDate` do feed
+(commit `3257f0e`). O sitemap publicado tem 284 URLs e o feed 277 artigos. O JSON-LD está no ar;
+os sitemaps dos blogs ainda **não foram enviados ao Search Console**.
 
 Como o Personal é um blog pessoal, `author` e `publisher` referenciam a entidade `Person`
 da página “Sobre o Autor”, em vez de declarar a `Organization` usada nas páginas institucionais
 e lojas. Essa diferença é intencional e evita atribuir a publicação a outra entidade.
 
-#### Retrô — alinhamento local dos metadados sociais e JSON-LD
+#### Retrô — alinhamento publicado dos metadados sociais e JSON-LD
 
 O sitemap contém 150 URLs: home, privacidade e 148 artigos, incluindo o artigo 148 de
 07/09/2027. O gerador remove metadados e blocos JSON-LD anteriores antes de escrever um único
@@ -87,13 +90,16 @@ grafo coerente por página, preservando a imagem social válida. A home declara 
 e `WebPage`; cada artigo declara `BlogPosting` e `WebPage`, com IDs estáveis e referências
 resolvidas à organização institucional.
 
-O estado local passou no validador das 150 URLs (148 `BlogPosting` e 150 `WebPage`), nas 939
+O estado passou no validador das 150 URLs (148 `BlogPosting` e 150 `WebPage`), nas 939
 verificações de integridade e nos testes dos arquivos ativos. Dois testes novos garantem que a
 geração do artigo e da página de privacidade é idempotente, inclusive para entradas com CRLF;
 o workflow de deploy executa esses testes antes da validação e da publicação. **As alterações
-do Retrô ainda não foram enviadas nem publicadas.**
+foram publicadas em 19/11/2026 no commit `7016f65`: o deploy (`44611247538`) e o build do Pages
+(`44611247365`) passaram. No site ao vivo, o sitemap responde com 150 URLs; o artigo 148 responde
+200, declara `datePublished` `2027-09-07` e sua imagem responde 200. Os dois jobs pós-deploy do
+LinkedIn concluíram sem novas postagens.
 
-#### Matriz institucional — alinhamento local de metadados e entidades
+#### Matriz institucional — alinhamento publicado de metadados e entidades
 
 As 10 URLs do sitemap foram normalizadas para canonical único e metadados Open Graph/Twitter
 com título, descrição e imagem consistentes. A home declara `Organization`, `WebSite`,
@@ -105,9 +111,13 @@ canonicals, nós `WebPage` e referências; seus dois casos passaram. O workflow
 `site-validation.yml` também executa `scripts/tests/cdn-assets.test.cjs`; os 10 casos combinados
 passaram. A página `404.html` foi simplificada para preservar a resposta de erro sem JavaScript
 ou folhas de estilo externas, mantendo navegação acessível e responsiva. A validação
-institucional local aprovou cinco etapas, sem links internos ausentes, erros de entrega ou
-problemas de redirects. **As mudanças institucionais também permanecem locais, sem push ou
-publicação.**
+institucional aprovou cinco etapas, sem links internos ausentes, erros de entrega ou problemas de
+redirects. A publicação ocorreu em 19/11/2026 no commit `0e68d84`, junto com o commit documental
+anterior `703ff3b`; o site validation (`44611247100`) e o Pages (`44611245808`) passaram. No ar,
+as 10 URLs do sitemap e as páginas principais respondem 200; canonical e JSON-LD foram
+verificados na home e em `ecosistema.html`.
+Uma rota inexistente real responde HTTP 404 com a página personalizada, `noindex` e sem JavaScript
+ou folha de estilo externa.
 
 Ao atualizar o catálogo do Retrô, executar `python tools/validate_site.py --write-sitemap` e
 `python tools/validate_site.py`; a validação existente recusa mapa desatualizado. No Personal,

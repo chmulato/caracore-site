@@ -2,6 +2,20 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### SEO dos três sites — publicação e verificação final — 19/11/2026
+
+O alinhamento de metadados sociais, JSON-LD e validação foi publicado nas três superfícies:
+Retrô `7016f65`, Personal `3a847a3` (seguido do commit de feed `3257f0e`) e matriz
+institucional `0e68d84` (junto com `703ff3b`). Os workflows de deploy/validação e Pages
+concluíram com sucesso. A verificação pública confirmou sitemaps com 150 URLs no Retrô,
+284 no Personal e 10 na matriz; o feed do Personal tem 277 artigos. O artigo 148 responde
+200, declara `datePublished` `2027-09-07` e a imagem responde 200. A rota inexistente da matriz
+responde HTTP 404 com página personalizada, `noindex` e sem JavaScript ou stylesheet externo.
+
+Os workflows de LinkedIn concluíram sem novas postagens; Facebook não foi acionado. Os
+sitemaps dos blogs continuam pendentes de envio ao Search Console pelo proprietário. Evidência
+detalhada e IDs dos workflows: `docs/INDEXACAO_SEO.md`.
+
 ### Capas da home do blog pessoal — 15/11/2026 (correção publicada)
 
 A home de `personal.caracore.com.br` monta os cards em JavaScript (`caracore-personal/docs/articles/assets/js/main.js`) e resolvia a capa **só pela data do artigo** (`<data>_IMAGE_001`). Como a trilogia *A Engenharia do Choque Controlado* tem quatro textos na mesma data (14/11/2026), os quatro cards exibiam a `2026_11_14_IMAGE_001.webp`, apesar de as imagens 002/003/004 existirem e cada página de artigo usar a sua.

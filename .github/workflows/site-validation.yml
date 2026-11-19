@@ -40,6 +40,10 @@ jobs:
         shell: pwsh
         run: ./scripts/run-site-validation.ps1
 
+      - name: Validate SEO sitemap and structured data
+        shell: pwsh
+        run: node --test scripts/tests/seo-structured-data.test.cjs scripts/tests/cdn-assets.test.cjs
+
       - name: Validate README encoding
         shell: pwsh
         run: python tools/validate_encoding.py readme --root .

@@ -1,90 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Política de Segurança de Conteúdo (CSP) -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
-
-    <!-- X-Content-Type-Options: Previne MIME sniffing -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-
-    <!-- Referrer Policy: Controla informações de referência -->
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página não encontrada - Cara Core</title>
     <meta name="robots" content="noindex">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; base-uri 'none'; object-src 'none'">
+    <title>Página não encontrada - Cara Core</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="/css/additional-styles.css?v=20261116">
-    <link rel="stylesheet" href="/assets/css/main.css?v=20261117">
-    <link rel="stylesheet" href="/css/vendor/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/caracore-core-typography.css?v=20261115">
-    <link rel="stylesheet" href="/assets/css/caracore-institutional-components.css?v=20261116">
     <style>
-        .cc-404 {
-            max-width: 34rem;
-            margin: 0 auto;
-            padding: 3rem 0 2rem;
+        :root {
+            color-scheme: light;
+            font-family: system-ui, sans-serif;
+            color: #172033;
+            background: #f5f7fb;
         }
 
-        .cc-404-code {
-            margin: 0 0 0.5rem;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 0.14em;
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 1.5rem;
+        }
+
+        main {
+            width: min(100%, 42rem);
+            padding: clamp(1.5rem, 5vw, 3rem);
+            background: #fff;
+            border: 1px solid #dce3ee;
+            border-radius: 1rem;
+        }
+
+        .code {
+            margin: 0 0 .5rem;
+            color: #52637a;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .12em;
             text-transform: uppercase;
-            color: var(--cc-mute);
         }
 
-        .cc-404-lead {
-            color: var(--cc-mute);
+        h1 {
+            margin: 0;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+        }
+
+        .lead {
+            color: #52637a;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+            margin-top: 1.5rem;
+        }
+
+        a {
+            display: inline-block;
+            padding: .7rem 1rem;
+            border: 1px solid #2457a7;
+            border-radius: .5rem;
+            color: #17488f;
+            font-weight: 650;
+            text-decoration: none;
+        }
+
+        a:focus-visible {
+            outline: 3px solid #f4b400;
+            outline-offset: 3px;
         }
     </style>
 </head>
-<body class="cc-site">
-
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="/">Cara Core Inform&aacute;tica</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Menu de navegação">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="/">Início</a></li>
-        <li class="nav-item"><a class="nav-link" href="/portfolio.html">Portfólio</a></li>
-        <li class="nav-item"><a class="nav-link" href="/ecosistema.html">Ecossistema</a></li>
-        <li class="nav-item"><a class="nav-link" href="/planning.html">Planning</a></li>
-        <li class="nav-item"><a class="nav-link" href="/sites.html">Sites</a></li>
-        <li class="nav-item"><a class="nav-link" href="/suporte-local.html">Suporte Local</a></li>
-        <li class="nav-item"><a class="nav-link" href="/#contato">Contato</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<main class="container">
-  <div class="cc-404 text-center">
-    <p class="cc-404-code">Erro 404</p>
+<body>
+<main>
+    <p class="code">Erro 404</p>
     <h1>Página não encontrada</h1>
-    <p class="cc-404-lead mb-4">A página que você procura não existe ou foi movida. Escolha um destino para continuar navegando.</p>
-    <div class="d-flex flex-wrap justify-content-center gap-2">
-      <a href="/" class="btn btn-primary"><i class="bi bi-house"></i> Ir para a página inicial</a>
-      <a href="/portfolio.html" class="btn btn-outline-primary"><i class="bi bi-folder"></i> Ver o portfólio</a>
-      <a href="/secure/index.html" class="btn btn-outline-primary"><i class="bi bi-shield-lock"></i> Área restrita</a>
-    </div>
-  </div>
+    <p class="lead">A página que você procura não existe ou foi movida. Escolha um destino para continuar.</p>
+    <nav aria-label="Destinos">
+        <a href="/">Ir para a página inicial</a>
+        <a href="/secure/index.html">Área restrita</a>
+        <a href="/portfolio.html">Ver o portfólio</a>
+    </nav>
 </main>
-
-<footer class="py-3 mt-4 site-footer">
-  <div class="container text-center">
-    <span class="fw-semibold text-secondary">
-      Cara Core Informática · CNPJ: 23.969.028/0001-37 · <a href="https://www.caracore.com.br/" class="text-decoration-none">www.caracore.com.br</a> · <a href="mailto:suporte@caracore.com.br" class="text-decoration-none">suporte@caracore.com.br</a>
-    </span>
-  </div>
-</footer>
-
-<script src="/js/vendor/bootstrap/bootstrap-collapse.js"></script>
 </body>
 </html>

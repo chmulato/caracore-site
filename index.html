@@ -1,16 +1,12 @@
 
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="UTF-8">
+<head>  <meta charset="UTF-8">
   <!-- Política de Segurança de Conteúdo (CSP) -->
   <!-- Nota: frame-ancestors só funciona em cabeçalhos HTTP, não em meta tags -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://*.tile.openstreetmap.org https://www.openstreetmap.org data: https:; connect-src 'self' https://caracore-backend-docker.azurewebsites.net https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://accounts.google.com https://login.microsoftonline.com https://oauth2.googleapis.com; font-src 'self' data:; frame-src 'self' https://www.google.com https://www.openstreetmap.org https://accounts.google.com https://login.microsoftonline.com; base-uri 'self'; form-action 'self' https://accounts.google.com https://login.microsoftonline.com; object-src 'none'; upgrade-insecure-requests">
-  
-  
   <!-- Referrer Policy: Controla informações de referência -->
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="/css/vendor/bootstrap-icons/bootstrap-icons.min.css">
   <!-- Estilos adicionais -->
@@ -18,10 +14,8 @@
   <!-- Estilos customizados -->
   <link rel="stylesheet" href="assets/css/main.css?v=20261119">
   <link rel="stylesheet" href="assets/css/logo.css?v=20261115">
-
   <!-- LGPD Styles -->
   <link rel="stylesheet" href="assets/css/lgpd.css?v=20261116">
-
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cara Core Informática | Engenharia B2B — Arquitetura Híbrida e Soberania de Dados</title>
@@ -33,40 +27,79 @@
   <link rel="canonical" href="https://caracore.com.br/">
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Cara Core Informática | Engenharia B2B — Arquitetura Híbrida">
-  <meta property="og:description" content="Arquitetura híbrida e soberania de dados: resiliência, FinOps e integração consciente com cloud. Alocação técnica dedicada ou consultoria por projeto — modelo B2B.">
+  <meta property="og:description" content="Arquitetura híbrida e soberania de dados — offline-first/edge para resiliência e controle de custos (FinOps). Alocação técnica dedicada ou consultoria por projeto, modelo B2B, código transparente no ambiente do cliente. ~18 anos de trade-offs de engenharia.">
   <meta property="og:type" content="website">
+  <meta name="twitter:title" content="Cara Core Informática | Engenharia B2B — Arquitetura Híbrida">
+  <meta name="twitter:description" content="Arquitetura híbrida e soberania de dados — offline-first/edge para resiliência e controle de custos (FinOps). Alocação técnica dedicada ou consultoria por projeto, modelo B2B, código transparente no ambiente do cliente. ~18 anos de trade-offs de engenharia.">
+  <meta name="twitter:image" content="https://caracore.com.br/assets/images/og-cara-core-1200x630.png">
   <meta property="og:url" content="https://caracore.com.br/">
   <meta property="og:image" content="https://caracore.com.br/assets/images/og-cara-core-1200x630.png">
   <meta property="og:site_name" content="Cara Core Informática">
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cara Core Informática | Engenharia B2B — Arquitetura Híbrida">
-  <meta name="twitter:description" content="Arquitetura híbrida e soberania de dados — resiliência e FinOps, não ideologia anti-cloud. ~18 anos de engenharia B2B.">
-  <meta name="twitter:image" content="https://caracore.com.br/assets/images/logo.png">
   <link href="/css/vendor/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/metamorfose.css?v=20261115">
   <link rel="stylesheet" href="/assets/css/caracore-core-typography.css?v=20261115">
   <link rel="stylesheet" href="/assets/css/caracore-institutional-components.css?v=20261116">
   <link rel="stylesheet" href="assets/css/produtos.css?v=20261115">
-
   <!-- GA4: tag padrão assets/js/analytics.js, com Consent Mode v2 (mede só após o aceite) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "A Rebeldia da Mecatrônica",
-    "url": "https://eng.caracore.com.br/",
-    "inLanguage": "pt-BR",
-    "bookFormat": "https://schema.org/EBook",
-    "genre": "Educação",
-    "description": "Romance instrutivo de tecnologia e sociedade: 13 capítulos e 3 apêndices, com trilhas narrativa e maker, desafios práticos e laboratório no Tinkercad.",
-    "publisher": {
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://caracore.com.br/#organization",
       "@type": "Organization",
-      "name": "Cara Core Informática",
+      "name": "Cara Core Inform?tica",
       "url": "https://caracore.com.br/"
+    },
+    {
+      "@id": "https://caracore.com.br/#website",
+      "@type": "WebSite",
+      "name": "Cara Core Inform?tica",
+      "url": "https://caracore.com.br/",
+      "inLanguage": "pt-br",
+      "publisher": {
+        "@id": "https://caracore.com.br/#organization"
+      },
+      "description": "Arquitetura híbrida e soberania de dados — offline-first/edge para resiliência e controle de custos (FinOps). Alocação técnica dedicada ou consultoria por projeto, modelo B2B, código transparente no ambiente do cliente. ~18 anos de trade-offs de engenharia."
+    },
+    {
+      "@id": "https://caracore.com.br/#webpage",
+      "@type": "WebPage",
+      "name": "Cara Core Informática | Engenharia B2B — Arquitetura Híbrida e Soberania de Dados",
+      "description": "Arquitetura híbrida e soberania de dados — offline-first/edge para resiliência e controle de custos (FinOps). Alocação técnica dedicada ou consultoria por projeto, modelo B2B, código transparente no ambiente do cliente. ~18 anos de trade-offs de engenharia.",
+      "url": "https://caracore.com.br/",
+      "inLanguage": "pt-br",
+      "isPartOf": {
+        "@id": "https://caracore.com.br/#website"
+      },
+      "publisher": {
+        "@id": "https://caracore.com.br/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://caracore.com.br/#organization"
+      },
+      "about": {
+        "@id": "https://eng.caracore.com.br/#book"
+      }
+    },
+    {
+      "@id": "https://eng.caracore.com.br/#book",
+      "@type": "Book",
+      "name": "A Rebeldia da Mecatrônica",
+      "url": "https://eng.caracore.com.br/",
+      "inLanguage": "pt-BR",
+      "bookFormat": "https://schema.org/EBook",
+      "genre": "Educação",
+      "description": "Romance instrutivo de tecnologia e sociedade: 13 capítulos e 3 apêndices, com trilhas narrativa e maker, desafios práticos e laboratório no Tinkercad.",
+      "publisher": {
+        "@id": "https://caracore.com.br/#organization"
+      }
     }
-  }
-  </script>
+  ]
+}
+</script>
 </head>
   <body class="cc-site">
 

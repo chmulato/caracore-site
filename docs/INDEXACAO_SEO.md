@@ -1,6 +1,6 @@
 # Indexação: host canônico, sitemaps e robots
 
-Estado de **09/11/2026**. Complementa `GOOGLE_ANALYTICS.md`: ali está a medição, aqui está
+Estado de **19/11/2026**. Complementa `GOOGLE_ANALYTICS.md`: ali está a medição, aqui está
 como o Google descobre e escolhe a URL de cada página. Os sete sitemaps foram enviados no
 Search Console em 09/11/2026 e o Google os processou com as contagens esperadas (§2). O que cada
 página declara sobre si em JSON-LD está em §"Dados estruturados".
@@ -37,27 +37,77 @@ Cada host tem o seu `sitemap.xml`, gerado a partir dos arquivos rastreados no gi
    `weekly`/`1.0`, o primeiro nível `monthly`/`0.9` e o resto `monthly`/`0.7`. O Google ignora
    os dois campos: eles ficam como documentação da intenção.
 
-### Blogs Retrô e Personal — ajuste local de 19/11/2026
+### Blogs Retrô e Personal — inventário e atualização de 19/11/2026
 
-Alterações **locais, ainda não publicadas**; o inventário e o envio ao Search Console abaixo
-continuam sendo o registro de 09/11 para as sete superfícies, não para estes blogs.
+O inventário e o envio ao Search Console das sete superfícies abaixo continuam sendo o registro
+de 09/11; os blogs têm sitemaps próprios e não fazem parte daqueles sete envios.
 
 | Blog | Sitemap local | Entradas | Critério |
 |---|---|---:|---|
-| Retrô | `caracore-retro/docs/sitemap.xml` e `docs/robots.txt` | 149 | Home, privacidade e 147 artigos do índice; sem filtrar datas futuras |
-| Personal | `caracore-personal/docs/sitemap.xml` | 284 | Home, seis páginas editoriais e 277 artigos; quatro redirecionamentos e `articles.html` fora |
+| Retrô | `caracore-retro/docs/sitemap.xml` e `docs/robots.txt` | 150 | Home, privacidade e 148 artigos do índice; sem filtrar datas futuras |
+| Personal | `caracore-personal/docs/sitemap.xml` e `docs/robots.txt` | 284 | Home, seis páginas editoriais e 277 artigos; quatro redirecionamentos e `articles.html` fora |
 
-Na revisão editorial local, 196 links “Sobre” do Personal passaram a apontar para a página do autor; quatro âncoras já existentes foram preservadas. Os artigos sobre continuidade no balcão foram conectados entre os blogs, e a série do PDV ganhou links entre capítulos. O RSS do Personal foi atualizado; o artigo 130 e o RSS do Retrô não foram alterados. Dos 196 artigos alterados no Personal, 141 já tinham alcançado a data editorial em 19/11 e todos constavam no registro local do LinkedIn; isso não verifica o estado remoto. Antes de qualquer publicação, conferir a automação, o registro remoto e a diferença preexistente em relação ao remoto.
+**Personal — conteúdo publicado em 19/11/2026:** 196 links “Sobre” passaram a apontar para a página do autor; quatro âncoras existentes foram preservadas. Os artigos sobre continuidade no balcão foram conectados entre os blogs, a série do PDV ganhou links entre capítulos e o RSS foi atualizado. Home, RSS e sitemap responderam HTTP 200; o RSS contém 277 artigos e o sitemap 284 URLs. O workflow de LinkedIn concluiu sem novos posts: os artigos selecionados já estavam no ledger. O artigo 130 e o RSS do Retrô não foram alterados por essa publicação.
 
-Ainda em 19/11, a revisão local dos artigos do Personal de 23/04 e 30/04 separou estimativas de investimento, limites de IA local e custos; o título e o resumo da IA costurada foram alinhados ao texto e à home. No Retrô, o artigo 101 passou a distinguir a análise de maio de 2026 de funções efetivamente entregues. Os três mantêm as datas e URLs originais e perderam blocos de dados estruturados duplicados. Essas revisões também estão locais, sem publicação nem envio às redes.
+As revisões dos artigos do Personal de 23/04 e 30/04 — separação entre estimativas de investimento, limites de IA local e custos, além do alinhamento do título e resumo da IA costurada — também foram publicadas em 19/11. A revisão do artigo 101 do Retrô é uma alteração separada e não fez parte desse deploy. Nenhuma dessas mudanças alterou as datas editoriais ou URLs dos artigos.
 
 Nos dois mapas, `lastmod` foi omitido porque as datas de alteração efetiva não foram
 comprovadas: a data editorial do artigo e a data de geração não demonstram uma alteração.
 Também foram omitidos `changefreq` e `priority`, que o Google ignora. No Personal,
 `ciclo-ativo.html` permanece fora porque não declara canonical próprio. Os mapas e suas
 páginas são verificados localmente quanto a canonical, `noindex` e redirecionamento por
-`meta refresh`; isso não comprova indexação. Nesta entrega, nenhum mapa foi enviado ao
+`meta refresh`; isso não comprova indexação. Os sitemaps dos blogs não foram enviados ao
 Search Console.
+
+#### Personal — alinhamento local do JSON-LD ao padrão de página
+
+A auditoria do sitemap de 284 URLs encontrou 258 artigos com blocos JSON-LD repetidos:
+255 conjuntos eram cópias idênticas e três continham descrições diferentes. Também havia
+754 blocos e 754 metas `article:published_time` excedentes, além de seis páginas editoriais
+sem dados estruturados. Canonicals, URLs do sitemap e o `Sitemap:` do `robots.txt` já estavam
+corretos.
+
+O alinhamento foi aplicado localmente, sem push: cada URL indexável agora tem um único grafo
+`schema.org` e um nó `WebPage` com `@id` `<canonical>#webpage`, URL canônica, título, meta
+description e idioma da página. O grafo do blog usa `WebSite` e `Blog` na home, `BlogPosting`
+nos 277 artigos e uma entidade `Person` na página “Sobre o Autor”; as referências usam IDs
+estáveis e resolvidos. Nos três casos com descrições conflitantes, foi mantida a meta
+description visível da própria página. O validador passou nas 284 URLs. Este estado estruturado
+continua local e **não está publicado nem foi enviado ao Search Console**.
+
+Como o Personal é um blog pessoal, `author` e `publisher` referenciam a entidade `Person`
+da página “Sobre o Autor”, em vez de declarar a `Organization` usada nas páginas institucionais
+e lojas. Essa diferença é intencional e evita atribuir a publicação a outra entidade.
+
+#### Retrô — alinhamento local dos metadados sociais e JSON-LD
+
+O sitemap contém 150 URLs: home, privacidade e 148 artigos, incluindo o artigo 148 de
+07/09/2027. O gerador remove metadados e blocos JSON-LD anteriores antes de escrever um único
+grafo coerente por página, preservando a imagem social válida. A home declara `WebSite`, `Blog`
+e `WebPage`; cada artigo declara `BlogPosting` e `WebPage`, com IDs estáveis e referências
+resolvidas à organização institucional.
+
+O estado local passou no validador das 150 URLs (148 `BlogPosting` e 150 `WebPage`), nas 939
+verificações de integridade e nos testes dos arquivos ativos. Dois testes novos garantem que a
+geração do artigo e da página de privacidade é idempotente, inclusive para entradas com CRLF;
+o workflow de deploy executa esses testes antes da validação e da publicação. **As alterações
+do Retrô ainda não foram enviadas nem publicadas.**
+
+#### Matriz institucional — alinhamento local de metadados e entidades
+
+As 10 URLs do sitemap foram normalizadas para canonical único e metadados Open Graph/Twitter
+com título, descrição e imagem consistentes. A home declara `Organization`, `WebSite`,
+`WebPage` e `Book`; `ecosistema.html` usa um único grafo e referencia o livro definido na home,
+sem redefinir a entidade.
+
+O teste `scripts/tests/seo-structured-data.test.cjs` verifica as 10 URLs, os metadados,
+canonicals, nós `WebPage` e referências; seus dois casos passaram. O workflow
+`site-validation.yml` também executa `scripts/tests/cdn-assets.test.cjs`; os 10 casos combinados
+passaram. A página `404.html` foi simplificada para preservar a resposta de erro sem JavaScript
+ou folhas de estilo externas, mantendo navegação acessível e responsiva. A validação
+institucional local aprovou cinco etapas, sem links internos ausentes, erros de entrega ou
+problemas de redirects. **As mudanças institucionais também permanecem locais, sem push ou
+publicação.**
 
 Ao atualizar o catálogo do Retrô, executar `python tools/validate_site.py --write-sitemap` e
 `python tools/validate_site.py`; a validação existente recusa mapa desatualizado. No Personal,
@@ -171,8 +221,10 @@ O script foi testado antes contra um repositório-semente com defeitos plantados
 vírgula sobrando, `url` relativa, moeda `real`, preço `79,90`, `@id` repetido, `@id` fora do
 canonical e página sem canonical — e acusou todos.
 
-Continua **sem teste automatizado versionado** para JSON-LD: o `cdn-assets.test.cjs` cobre
-canonical e `og:image`, não dados estruturados.
+O teste institucional versionado `scripts/tests/seo-structured-data.test.cjs` cobre os
+canonicals, metadados sociais, grafos JSON-LD e referências das URLs do sitemap. O validador
+amplo das sete superfícies descrito acima continua sendo uma ferramenta local, fora dos
+repositórios. O teste legado `cdn-assets.test.cjs` não substitui esse gate de SEO.
 
 ### Divergências encontradas, não corrigidas
 
@@ -180,7 +232,6 @@ canonical e `og:image`, não dados estruturados.
   `noindex` — o sitemap pede indexação e a página recusa. Hoje o Google descarta as duas; ou saem
   do sitemap, ou perdem o `noindex`.
 - As duas homes de `aligned/` declaram JSON-LD e estão bloqueadas no `robots.txt`.
-- `ecosistema.html` tem dois blocos JSON-LD em vez de um.
 
 ### Conferência depois da publicação
 

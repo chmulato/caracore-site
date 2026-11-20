@@ -2,6 +2,33 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Campanha Facebook do Retrô — fila até fevereiro de 2027 (20/11/2026)
+
+**Estado confirmado:** `caracore-retro` publicou o commit `b89c642` na `master`; o deploy do Pages concluiu com sucesso na execução `44737098411`. A fila aprovada contém os artigos **#107–#122**, sempre terça ou quinta às **09h de Brasília** (`America/Sao_Paulo`). Os rascunhos #121 e #122 tiveram as descrições sociais truncadas corrigidas antes do deploy. Não houve publicação imediata.
+
+**Fila local não é o Planejador.** A Meta confirmou os agendamentos **#107–#112**: #107 em 26/11; #108 em 01/12; #109 em 03/12; #110 em 08/12; #111 em 10/12; #112 em 15/12. Em 20/11, as reservas duráveis `facebook-reservas` existiam para esses seis artigos e para o #148 (publicação imediata anterior). Os artigos #113–#122 estão nos arquivos `facebook_campaign_article_*.json`, mas ainda não têm reserva/ID confirmado da Meta.
+
+**Por que o calendário parece vazio:** a Pages API aceita `scheduled_publish_time` de 10 minutos até no máximo 30 dias no futuro ([documentação oficial](https://developers.facebook.com/documentation/pages-api/posts)); em 20/11, com o horário padrão do compositor, o seletor mostrou 20/12/2026 desabilitado (19/12 era o último dia selecionável). Portanto, a semana 20–26/12 estava vazia: #113 (22/12) e #114 (24/12) ainda não podiam ser enviados. A fila não deve ser alterada nem enviada por outro caminho para “preencher” meses que ainda estão fora da janela.
+
+O workflow `.github/workflows/facebook.yml` roda terças e quintas às **06h** e envia os itens aprovados entre 15 minutos e menos de 30 dias antes da publicação. Previsão das primeiras execuções que podem incluí-los:
+
+| Artigo | Publicação no Planejador | Primeira execução elegível prevista (06h) |
+|---|---:|---:|
+| #113 | 22/12/2026 | 24/11/2026 |
+| #114 | 24/12/2026 | 26/11/2026 |
+| #115 | 29/12/2026 | 01/12/2026 |
+| #116 | 31/12/2026 | 03/12/2026 |
+| #117 | 05/01/2027 | 08/12/2026 |
+| #118 | 12/01/2027 | 15/12/2026 |
+| #119 | 21/01/2027 | 24/12/2026 |
+| #120 | 02/02/2027 | 05/01/2027 |
+| #121 | 11/02/2027 | 14/01/2027 |
+| #122 | 23/02/2027 | 26/01/2027 |
+
+As datas acima são previsões baseadas no cron atual; somente o log com “A Meta aceitou o agendamento” e a reserva `ID_RECEBIDO` comprovam que o post entrou no Planejador. A rotina automática usa `facebook-auto` (`FACEBOOK_PAGE_TOKEN`); o acionamento individual manual mantém revisão/aprovação no ambiente `facebook`. A reserva por página/artigo impede repetição: estado `ID_RECEBIDO` com digest igual é ignorado; estado sem confirmação ou divergente bloqueia a campanha para conferência manual. **Nunca repetir uma tentativa incerta nem agendar manualmente pela interface sem antes reconciliar a reserva e o Planejador**, pois isso pode criar duplicidade.
+
+**Referências de manutenção:** `caracore-retro/README.md` (“Chamadas no Facebook”), `.github/workflows/facebook.yml`, `tools/facebook_campaign.py`, `tools/facebook_github.py` e `test_facebook_campaign.py`. Testes focados conferidos em 20/11: 68 testes da campanha/rascunhos/reservas e 2 testes de metadados passaram. A última execução automática com seis confirmações foi `44735784711`; o deploy da extensão até fevereiro foi `44737098411`.
+
 ### SEO dos três sites — publicação e verificação final — 19/11/2026
 
 O alinhamento de metadados sociais, JSON-LD e validação foi publicado nas três superfícies:

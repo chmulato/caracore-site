@@ -1,9 +1,29 @@
 # Indexação: host canônico, sitemaps e robots
 
-Estado de **19/11/2026**. Complementa `GOOGLE_ANALYTICS.md`: ali está a medição, aqui está
+Estado de **21/11/2026**. Complementa `GOOGLE_ANALYTICS.md`: ali está a medição, aqui está
 como o Google descobre e escolhe a URL de cada página. Os sete sitemaps foram enviados no
 Search Console em 09/11/2026 e o Google os processou com as contagens esperadas (§2). O que cada
-página declara sobre si em JSON-LD está em §"Dados estruturados".
+página declara sobre si em JSON-LD está em §"Dados estruturados". A contagem vigente do blog
+Retrô, medida no site ao vivo após a publicação do artigo 149, está na primeira seção abaixo.
+
+## Retrô — 151 URLs desde 21/11/2026
+
+O lote do artigo 149 foi publicado em 21/11/2026 no commit `3618764` de `caracore-retro`
+(run de push `44951195298` verde nos dois jobs e GitHub Pages `built`). As contagens vigentes
+do blog, conferidas no que está servindo:
+
+| Item | Medido em 21/11/2026 | Onde se mede |
+|---|---:|---|
+| Entradas do `docs/sitemap.xml` | **151** — home, privacidade e 149 artigos | `retro.caracore.com.br/sitemap.xml` |
+| Itens do `docs/feed.xml` | **149** | `retro.caracore.com.br/feed.xml` |
+| Artigos catalogados | **149** (numeração 01–149 contínua; 32 em 2024, 33 em 2025, 51 em 2026, 33 em 2027) | `docs/index.html` |
+| Validações do `tools/validate_site.py` | **945**, sem falha | local, no SHA publicado |
+| JSON-LD (`tools/validate_social_metadata.py`) | 151 URLs · **149** `BlogPosting` · **151** `WebPage` | local, no SHA publicado |
+
+As seções datadas de 19/11/2026 abaixo conservam **150 URLs / 148 artigos**: registram aquela
+medição e não são o estado de hoje. Neste mesmo lote as três capas do artigo 148 passaram para
+o nome com data (`2027_09_07_article_148_01.*`); os caminhos legados `article_148_01.png` e
+`article_148_01_720.webp` respondem **404** e nenhum arquivo do repositório os referencia.
 
 ## Host canônico é o apex
 

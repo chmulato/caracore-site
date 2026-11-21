@@ -85,7 +85,7 @@ Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYST
 | CSO | `#caracore-cso` | cso. + cso-transp. | Frotas em produção · Transp. 08/11/2028 |
 
 Wiki: [wiki.caracore.com.br](https://wiki.caracore.com.br/) (repo `caracore-wiki`)  
-Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — **139 artigos** confirmados; editorial B2B art. 115
+Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — **149 artigos** confirmados; editorial B2B art. 115
 
 ---
 

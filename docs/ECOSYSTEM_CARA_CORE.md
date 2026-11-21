@@ -25,7 +25,7 @@ VISÃO GERAL
   Diretório / Repositório       Papel                                      Observação
   ----------------------------- ------------------------------------------ ----------------------------------------------------------
   caracore-site                 Site oficial (matriz institucional)         caracore.com.br — portfólio, ecossistema, redirects /delivery
-  caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (139 artigos)
+  caracore-retro                Artigos Retrô (LinkedIn / editorial)        GitHub Pages: retro.caracore.com.br (149 artigos)
   caracore-wiki                 Wiki institucional                          GitHub Pages: wiki.caracore.com.br
   caracore-pdv                  Oficina — PDV Java web local / v4           PDV v4.0.0 lançada em 08/11/2026 (release publicada em 06/11/2026 em caracore-pdv4-releases, duas chaves Ed25519; T032 17/17, matriz 11/11 com M11 não medido, banco migrado 9/9, canal pdv-v4); v3.2.12-free é a versão anterior, última da linha 3.2.x, com pacotes disponíveis; SCA OSV 06/11/2026, NVD não medido; candidata 31/10, rc6 e rc5 no histórico
   caracore-pdv-releases         Loja — PDV Java web local                   pdv.caracore.com.br · CTA Baixar Free · v4.0.0 (Windows x64) e v3.2.12-free (anterior) · Free 100 vendas/mês

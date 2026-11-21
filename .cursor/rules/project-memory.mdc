@@ -198,8 +198,8 @@ Alterações locais de planejamento/copy não significam publicação.
 ## Retrô (caracore-retro)
 
 - **Repo:** `D:\dev\caracore-retro` · URL https://retro.caracore.com.br/
-- **139 artigos** · convenção `YYYY_MM_DD_article_NN.html` + `*_NN_01.png`
-- **Capa inline HTML:** `max-width:300px; float:right` (padrão dez/2026); PNG pode ser gerado 16:9 para `og:image`
+- **149 artigos** · convenção `YYYY_MM_DD_article_NN.html` + `*_NN_01.png`
+- **Capa no artigo:** `<picture class="article-hero">` com WebP 720 (≤680 px), WebP 1600 e PNG de reserva — os 149 artigos (medido em 21/11/2026); o mesmo PNG 16:9 serve `og:image` e `twitter:image`
 - **B2B / IA (115):** 25/12/2026 — portal PJ, consultoria boutique, FinOps/híbrido · links matriz `#engenharia-b2b`, `#decisoes-engenharia`, `suporte-local.html`
 - **PDV Rust (114):** 20/12/2026 — “Duas linhas no balcão” · coexistência Java/Rust
 - **Memória Cursor:** `caracore-retro/.cursor/rules/project-memory.mdc`

@@ -116,8 +116,8 @@ Guia: [PORTFOLIO_README.md](PORTFOLIO_README.md) · CSS: `assets/css/portfolio.c
 | Item | Referência |
 |------|------------|
 | URL | https://retro.caracore.com.br/ |
-| Total | **139 artigos** confirmados (lacunas históricas na numeração) |
+| Total | **149 artigos** confirmados (numeração 01–149 contínua, medida em 21/11/2026) |
 | Art. 115 (25/12/2026) | *O Boleto Vence o Debate* — B2B/IA, portal PJ, tom pragmático |
 | Art. 114 (20/12/2026) | PDV Rust — coexistência Java; não migração forçada |
-| Capa inline | `max-width:300px; float:right` (padrão artigos recentes) |
-| Prompt capa | `assets/img/YYYY_MM_DD_article_NN_PROMPT_IMAGEM.txt` (geração 16:9) |
+| Capa no artigo | `<picture class="article-hero">` (WebP 720 até 680 px, WebP 1600, PNG de reserva) — os 149 artigos; nenhum usa `float:right` |
+| Prompt de capa | `docs/articles/assets/prompts/YYYY_MM_DD_article_NN.txt` (geração 16:9) — 9 arquivos no repo (116, 131–134, 143–145); o PNG 16:9 serve `og:image` |

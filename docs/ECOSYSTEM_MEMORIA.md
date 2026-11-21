@@ -2,6 +2,70 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Retrô — artigo 149 publicado e contagens do acervo alinhadas — 21/11/2026
+
+**O que foi publicado:** o lote do artigo 149 (*O que tem dentro da caixa*, 15/09/2027) saiu em
+`caracore-retro` no commit **`3618764`** — **16 arquivos, +246/−25**: o HTML novo do 149 (193
+linhas, 17.979 B), três capas novas (`2027_09_15_article_149_01.png` 3.513.453 B, `_720.webp`
+49.006 B, `_1600.webp` 177.568 B), as três capas do 148 renomeadas para o padrão com data (R100,
+zero byte alterado), o elo novo no fim do 148 («Continue em: O que tem dentro da caixa»),
+`docs/feed.xml`, `docs/index.html`, `docs/sitemap.xml`, `docs/assets/js/editorial-index.js` e os
+quatro documentos do próprio repo que contavam o acervo (README, `.agents/AGENTS.md`,
+`.github/copilot-instructions.md`, `.cursor/rules/project-memory.mdc`). A mensagem do commit traz
+**`[skip linkedin]`**, que é o que `deploy.yml:75` e `:125` leem para não postar em rede social
+num push de docs.
+
+**Gate nos bytes publicados:** `tools/validate_site.py` **945** verificações APROVADO (o registro
+anterior do repo, antes deste lote, era 916), `tools/validate_social_metadata.py` **151 URLs · 149
+`BlogPosting` · 151 `WebPage`** e os **2** testes unitários do gerador de metadados. O feed é
+gerado a partir dos cartões de `docs/index.html` e o sitemap é regenerado do mesmo catálogo,
+então mexer no corpo de um artigo não muda os bytes de nenhum dos dois.
+
+**Prova do que está no ar (medida em 21/11/2026, depois do dispatch):**
+
+- Run de push `44951195298` **success** nos quatro jobs, com `publish-linkedin` e
+  `publish-linkedin-company` **skipped** exatamente pelo `[skip linkedin]`; Pages **built** no SHA
+  publicado em 79 s.
+- Dez arquivos conferidos **byte a byte**: o SHA-256 servido é o do blob do commit
+  (`git show 3618764:arquivo | sha256sum`). O 149 serve 200 com 17.979 B e SHA-256 `9bac020b…`.
+- Sitemap ao vivo com **151** `<loc>`, feed ao vivo com **149** `<item>`.
+- As capas legadas do 148 respondem **404** (`article_148_01.png`, `article_148_01_720.webp`);
+  as renomeadas respondem 200. O elo «Continue em» do 148 resolve
+  `https://retro.caracore.com.br/articles/2027_09_15_article_149.html` em **200** e o `og:image`
+  do 149 em **200**.
+
+**LinkedIn — despacho pedido pelo dono para o 149:** `workflow_dispatch` com `article=149` no
+workflow «Deploy GitHub Pages», run **`44951604416`** `completed success` nos quatro jobs. No
+perfil pessoal: `PUBLICADO [com thumbnail]: …/2027_09_15_article_149.html`
+`urn:li:share:7530019304625561601`. O bot gravou o ledger em **`0dc789e`**
+(`chore: registra publicacoes no LinkedIn [skip ci]`, push `3618764..0dc789e`), que é a ponta atual
+da `master`: o `linkedin_published.json` remoto passou a ter a chave do 149 e esse commit muda só
+esse arquivo — fora de `docs/`, portanto não exige novo deploy. **Na página da empresa o 149 não
+foi publicado**: sem `LINKEDIN_ORG_ACCESS_TOKEN` e `LINKEDIN_ORG_URN` o canal entrou em
+`MODO DRY-RUN` com o `::warning::` de projeto, e o `linkedin_company_published.json` não mudou.
+
+**Contagens da matriz corrigidas (este commit, `caracore-site`):** sete arquivos / dez linhas
+que ainda diziam **139 artigos** ou descreviam a capa errada — `AGENTS.md:215`,
+`.cursor/rules/project-memory.mdc:201-202`, `docs/INDEX.md:61`,
+`docs/MEMORIA_DO_PROJETO.md:119` e `:122-123`, `docs/STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md:88`,
+`docs/ECOSYSTEM_CARA_CORE.md:28` e os itens **6b** (`:1154`, depois deste próprio bloco entrar no
+ficheiro) e da tabela (`:1326`).
+**Ficam como estão, porque são registro datado e não estado:** `AGENTS.md:22` (adendo de 04/11),
+as linhas `:1367` e `:1472` deste ficheiro e as seções de 19/11/2026 do
+`docs/INDEXACAO_SEO.md` (`:67`, `:107`, `:113`, `:118`), que dizem 150/148 porque mediram 150/148.
+
+**Três afirmações falsas achadas ao conferir, e corrigidas no lugar:** a capa **não** é
+`<img>` com `max-width:300px; float:right` — 0 de 149 artigos usam isso e **149 de 149** usam
+`<picture class="article-hero">` com WebP 720 (≤680 px), WebP 1600 e PNG de reserva; **não** há
+«BOM em muitos artigos» nem validação HTML pendente por encoding — 0 dos 149 artigos têm BOM e os
+30 arquivos com BOM do repositório estão todos em `docs/regis/`; e o prompt de capa não vive em
+`assets/img/…_PROMPT_IMAGEM.txt` — o caminho real é `docs/articles/assets/prompts/YYYY_MM_DD_article_NN.txt`,
+com 9 arquivos no repo (116, 131–134, 143–145).
+
+**O que este registro não muda:** nenhuma versão, tag, artefato ou data de produto; os artigos
+seguem o mesmo calendário editorial; o canal da página da empresa continua dormente pelo mesmo
+motivo de antes (falta de secrets), e a campanha Facebook do Retrô não foi tocada.
+
 ### Discurso comercial do Gaspar — 21/11/2026 (publicado nas cinco superfícies)
 
 **Estado confirmado:** o Gaspar deixou de ser apresentado como “mascote com SMS em nuvem” e passou a ser **mensageria local sem mensalidade por SMS** — o módulo que dá o recado do caixa no celular da loja, no chip e no plano que a loja já tem. A identidade nova está no ar em cinco repositórios: loja `caracore-mascote` **`4cf36c6`**, Central `caracore-loja` **`9f7ba96`**, matriz `caracore-site` **`e8f1011`**, `caracore-pdv-releases` **`3c2bba4`** e `caracore-hub-releases` **`10f4618`**. Dez arquivos, todos de copy/metadado; **nenhum código de produto foi tocado**.
@@ -1088,7 +1152,7 @@ Comece por este documento para obter o snapshot e os handoffs; consulte em segui
 7. **Hub oficina (GA Windows 06/04/2027):** [handoff](../../caracore-hub/docs/contexto-rapido.md) → [status atual](../../caracore-hub/project_hub/docs/STATUS-ATUAL.md) → [plano RC1](../../caracore-hub/docs/plano-lancamento-rc1.md) → [memória Cursor](../../caracore-hub/.cursor/rules/project-memory.mdc). Web 2.1 concluída. O download da loja é a tag `v2.1.0-rc1.8` em https://github.com/chmulato/caracore-hub-releases/releases/tag/v2.1.0-rc1.8 (ZIP portátil 324.536.724 B, SHA-256 `3c4e61b2e192fece6667ccfbc79d735f3fad7ce8542e50c492b9ef24a9743334`; sem instalador NSIS nesta build). A `v2.1.0-rc1.7` conserva o pacote de 27/10 (EXE e ZIP), a `v2.1.0-rc1.6` o de 25/10/2026 e a `v2.1.0-rc1.1` o de 06/10; a `v2.1.0-rc1` conserva o instalador de 05/10. A release está marcada como **Latest** no GitHub por autorização do responsável, o que não substitui o aceite formal; o rótulo editorial segue **Beta (RC)/pré-release**. Evidência da build: `clean verify` 2.585 testes/0 falhas e E1–E6 PASS em `9874273`. Mac e Linux fora desta tag. Não é GA: aceite de QA pendente (a rodada 5 reprovou a `rc1.7`; N1/N2 bloqueantes). **Login real ainda aberto:** usuário usou `npm run dev`, perfil/banco original não localizado; consultar apenas existência/status após identificar `HUB_USER_DATA_PATH`/`userData` e WAR efetivos, sem senha/hash. Recuperação offline de senha é tarefa separada. Manual: wiki.caracore.com.br/hub/
 7a. **Próxima pré-release do Hub:** outra tag, com bytes novos. `v2.1.0-rc1`, `v2.1.0-rc1.1`, `v2.1.0-rc1.2`, `v2.1.0-rc1.6`, `v2.1.0-rc1.7`, `v2.1.0-rc1.8` e `v2.1.0-rc1.10` permanecem; `rc1.3`, `rc1.4` e `rc1.5` nunca foram tagueadas. Ordem: versão em `electron/package.json` e nos POMs (`2.1.0-rc1.10` desde 07/11/2026); commit com árvore limpa; instalador `scripts/build_hub_exe.ps1` (recusa árvore suja e commit posterior ao artefato), nome público `CaraCore.Hub-<versão>-win-x64.exe`, ou ZIP portátil `scripts/build_hub_portable.py` com nome `CaraCore-Hub-<versão>-windows-x64.zip`; tag em `caracore-hub-releases`; cartão em `caracore-loja/docs/download.html`; matriz em `ecosistema.html`, `portfolio.html` e `assets/js/planning-data.js` / `planning.js`; sincronizar `AGENTS.md`, este ficheiro e as regras Cursor. A oficina privada só vai ao remoto quando o dono pedir. Sem certificado no repositório e sem anunciar GA.
 6a. **Seed oficina:** `caracore-seed/docs/memoria-projeto.txt` · Java 25, launcher Tomcat embutido, runtime reduzido e Electron para piloto local gratuito sob MIT; app administra clientes/licenças, auditoria, alertas e registros locais de heartbeats; `StubPaymentGateway` não processa pagamentos reais. Piloto público aberto, sem convite ou cadastro prévio. Pré-release candidata Windows x64 `0.1.5` publicada para avaliação: [release](https://github.com/chmulato/caracore-seed-releases/releases/tag/v0.1.5), 216.466.586 bytes, SHA-256 `e449ca2cee74fda135ac098d2333fe674c2c476773a7d4adb60bc016a767db16`, unsigned; `0.1.4` é a release estável anterior. API protegida por sessão ADMIN/CSRF e token por licença; Host validado e porta local dinâmica. Heartbeats usam UTC do servidor; o cliente recebe `signedPayload` RSA documentado. Migração V8 preserva bancos 0.1.3/0.1.4 e chaves; Swagger UI/OpenAPI locais sem CDN. Homologação independente pendente; não declarar pronto para produção. Linux fora desta etapa; SQLite local, sem monitoramento remoto; código-fonte não publicado. Preservar banco e chaves ao atualizar; licenças antigas podem exigir emissão/rotação de token. Seed é complementar; cada produto mantém o próprio aplicativo e banco.
-6b. **Retrô:** `caracore-retro/.agents/AGENTS.md` · 139 artigos HTML confirmados. A validação editorial permanece amarela/vermelha por BOM/byte extra antes do `DOCTYPE` em muitos artigos e avisos de SEO em `docs/articles.html`; não declarar 100% saudável antes da normalização controlada.
+6b. **Retrô:** `caracore-retro/.agents/AGENTS.md` · **149 artigos** HTML (numeração 01–149 contínua; 32 em 2024, 33 em 2025, 51 em 2026, 33 em 2027 — medido em 21/11/2026). Gates locais verdes no lote do 149: `tools/validate_site.py` **945 verificações APROVADO**, `tools/validate_social_metadata.py` **151 URLs · 149 BlogPosting · 151 WebPage** e 2 testes unitários OK. A dívida de BOM não alcança o catálogo: **0** dos 149 artigos têm BOM; os 30 HTML com BOM em `docs/` estão todos em `docs/regis/` (legado, fora do índice e do sitemap). `docs/articles.html` é um stub de redirect de 498 B com canonical para `/` — não é página indexável nem fonte de aviso de SEO.
 7. **PDV Rust (loja + artefatos):** um só repo `chmulato/caracore-rust-pdv-releases` — Pages = `pdv-rust.caracore.com.br` · Releases = https://github.com/chmulato/caracore-rust-pdv-releases/releases (tag v0.1.4). Clone local: `caracore-pdv-rust-releases`. **Nunca** `caracore-pdv-releases` (Java).
 8. **Copy B2B:** [DILEMA.md](DILEMA.md) · hero `#engenharia-b2b` · portfólio `#decisoes-engenharia` · tom **FinOps/híbrido** (não anti-cloud na vitrine)
 9. **Suporte PME:** [suporte-local.html](../suporte-local.html) — fora do nav B2B; horários noite/sábado só lá
@@ -1260,7 +1324,7 @@ Para Cursor, Gemini/Antigravity, Qoder ou GitHub Copilot retomarem sem depender 
 | caracore-site | `docs/ECOSYSTEM_*.md` | Matriz institucional |
 | caracore-wiki | `docs/ecosistema.html` | Wiki institucional |
 | caracore-cso-quarkus | `AGENTS.md` / `docs/memoria-agente-p0.md` | Frotas Web em produção |
-| caracore-retro | `.agents/AGENTS.md` | 139 artigos · capa inline `max-width:300px` float-right · validação HTML pendente por encoding legado |
+| caracore-retro | `.agents/AGENTS.md` | 149 artigos · capa `<picture class="article-hero">` (WebP 720/1600 + PNG) · gate local 945 APROVADO · BOM só em `docs/regis/` (30), nenhum nos artigos |
 | caracore-pdv-rust | `docs/contexto-rapido.md` | Oficina PDV Rust |
 | caracore-hub | `docs/contexto-rapido.md` · `.cursor/rules/project-memory.mdc` | Web 2.1 validada em Java 25; GA Windows 06/04/2027 |
 | caracore-seed | `docs/memoria-projeto.txt` | Piloto público MIT local; pré-release candidata Windows 0.1.5 para avaliação, sem convite; API protegida e porta dinâmica; documentação local sem CDN; homologação independente pendente; Linux fora desta etapa |

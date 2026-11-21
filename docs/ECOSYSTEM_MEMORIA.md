@@ -40,9 +40,28 @@ perfil pessoal: `PUBLICADO [com thumbnail]: …/2027_09_15_article_149.html`
 `urn:li:share:7530019304625561601`. O bot gravou o ledger em **`0dc789e`**
 (`chore: registra publicacoes no LinkedIn [skip ci]`, push `3618764..0dc789e`), que é a ponta atual
 da `master`: o `linkedin_published.json` remoto passou a ter a chave do 149 e esse commit muda só
-esse arquivo — fora de `docs/`, portanto não exige novo deploy. **Na página da empresa o 149 não
-foi publicado**: sem `LINKEDIN_ORG_ACCESS_TOKEN` e `LINKEDIN_ORG_URN` o canal entrou em
-`MODO DRY-RUN` com o `::warning::` de projeto, e o `linkedin_company_published.json` não mudou.
+esse arquivo — fora de `docs/`, portanto não exige novo deploy. **O despacho não publicou na página
+da empresa:** naquele run, sem `LINKEDIN_ORG_ACCESS_TOKEN` e `LINKEDIN_ORG_URN` o canal entrou em
+`MODO DRY-RUN` com o `::warning::` de projeto e o `linkedin_company_published.json` não mudou.
+
+**Página da empresa — 148 e 149 gravados no ledger à mão (21/11/2026, 21:48Z):** o painel da página
+mostrou o 148 no ar (≈20/11) sem constar no ledger, e o dono publicou o 149 na sequência, pelo
+painel, sem credencial de organização. As duas chaves entraram em `linkedin_company_published.json`
+no commit **`5aee24d`** (`chore: registra 148 e 149 no ledger da pagina da empresa [skip linkedin]`,
+push `0dc789e..5aee24d`, `git ls-remote origin master` conferido igual ao HEAD), que deixa o ledger
+com **7** chaves — as cinco anteriores (#143, #108, #145, #146, #147) e agora #148 e #149. Prova da
+sonda sem credencial: `python tools/publish_linkedin.py --article 149 --ledger linkedin_company_published.json`
+responde `JA PUBLICADO: 2027_09_15_article_149.html (…)` e `Nenhum artigo novo detectado; nada a publicar.`
+O run do push **`44953402339`** fechou `success` (`validate` 16 s, `deploy` 49 s) com
+`publish-linkedin` e `publish-linkedin-company` **`skipped`** pela cláusula `[skip linkedin]` da
+mensagem, e o Pages ficou `built` em `5aee24d`. **Correção da justificativa que circulei antes de
+gravar:** o risco não era o `--due-today` de 07/09 e 15/09/2027 — `scheduled_articles()`
+(`caracore-retro/tools/publish_linkedin.py:179-186`) devolve lista vazia fora da janela
+`SCHEDULE_START 15/11/2026` … `SCHEDULE_END 31/12/2026` (medido: 2026-11-21, 2027-09-07 e 2027-09-15
+→ `[]`), então artigo de 2027 nunca entra pelo agendamento. O ledger serve às entradas manuais e de
+esteira que **não** filtram por data — `--latest`, `--article N` e o `git diff` do push — e mantém a
+contabilidade do canal igual ao que a página realmente mostra. O canal segue dormente para artigo novo
+até os secrets `LINKEDIN_ORG_*` serem cadastrados.
 
 **Contagens da matriz corrigidas (este commit, `caracore-site`):** sete arquivos / dez linhas
 que ainda diziam **139 artigos** ou descreviam a capa errada — `AGENTS.md:215`,

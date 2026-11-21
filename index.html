@@ -588,6 +588,8 @@
             <dd>Java 25 · Quarkus · SQLite local · interface no navegador. Piloto em Rust + Tauri 2 + React.</dd>
             <dt>Requisitos</dt>
             <dd>Windows, Linux ou macOS; aplicação local em <code>127.0.0.1:8080</code>. A v4 exige Windows x64 e Edge. Planos Free e Premium; o Free não inclui PIX integrado nem emissão de NF-e/NFC-e.</dd>
+            <dt>Recado no celular</dt>
+            <dd>O aviso no celular do cliente sai pelo <a href="https://gaspar.caracore.com.br/">Gaspar</a>, ferramenta do PDV 4 com instalação separada: usa o chip e o plano da loja, sem mensalidade por mensagem. No PDV 4.0.0 publicado, quem chama o envio é você no painel do Gaspar; a chamada automática pelo PDV não tem versão nem data combinadas.</dd>
             <dt>Cronograma</dt>
             <dd>Manutenção da 3.2.12 encerrada em 08/11/2026, quando a v4.0.0 foi lançada.</dd>
           </dl>
@@ -608,13 +610,13 @@
         <div class="p2-details-body">
           <dl class="p2-spec">
             <dt>Papel</dt>
-            <dd>Mascote de desktop e ponte de aviso por SMS do PDV 4. Instala separado e não é necessário para vender.</dd>
+            <dd>Leva o recado do caixa até o celular da loja, no chip e no plano que você já tem, e faz presença discreta no desktop. Instala separado e não é necessário para vender.</dd>
             <dt>Publicado</dt>
-            <dd><strong>v1.7.4</strong> para Windows e Linux, em 13/11/2026; aplicativo Android <strong>1.7</strong>, instalado por cabo, fora da Play Store. O app 1.7 também guarda a senha do Wi-Fi da loja, aprova desconto, cancelamento e sangria com digital ou PIN e recebe a licença digitada no painel (não lê SMS); o envio desses pedidos pelo PDV entra na versão 4.1.0.</dd>
+            <dd><strong>v1.7.4</strong> para Windows e Linux, em 13/11/2026; aplicativo Android <strong>1.7</strong>, instalado por cabo, fora da Play Store. O app 1.7 também guarda a senha do Wi-Fi da loja, aprova desconto, cancelamento e sangria com digital ou PIN e recebe a licença digitada no painel (não lê as mensagens recebidas).</dd>
             <dt>Integração</dt>
-            <dd>O PDV 4.0.0 publicado ainda não chama o Gaspar; a chamada entra na versão 4.1.0, ainda sem data pública.</dd>
+            <dd>O PDV 4.0.0 publicado ainda não chama o Gaspar: hoje o recado é chamado por você no painel dele. A chamada automática é possibilidade futura, sem compromisso de inclusão na v4.1.0 e sem data definida.</dd>
             <dt>Rede</dt>
-            <dd>O SMS circula na rede Wi-Fi local entre o computador e o celular pareado, cifrado de ponta a ponta com o app do celular. A única consulta à internet é o canal de atualização: o aviso de versão nova é automático e a instalação só começa com o seu aceite (no Windows ela roda em silêncio; no Linux, o botão abre a página de download).</dd>
+            <dd>O recado circula na rede Wi-Fi local entre o computador e o celular pareado, cifrado até o app do celular, com teto de fábrica de 20 envios por minuto e 300 por dia. A única consulta à internet é o canal de atualização: o aviso de versão nova é automático e a instalação só começa com o seu aceite (no Windows ela roda em silêncio; no Linux, o botão abre a página de download).</dd>
             <dt>Stack</dt>
             <dd>Python no desktop; aplicativo Android nativo.</dd>
             <dt>Requisitos</dt>

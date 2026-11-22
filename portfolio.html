@@ -160,7 +160,7 @@
           <span class="pf-core-status">Em operação · v4.0.0</span>
         </div>
         <h3 class="pf-core-name"><i class="bi bi-cash" aria-hidden="true"></i> PDV</h3>
-        <p class="pf-core-sub">Sistema de ponto de venda offline-first.</p>
+        <p class="pf-core-sub">Frente de caixa Local-First, no computador da loja.</p>
         <p class="pf-core-audience"><strong>Para quem:</strong> lojas de bairro, comércio de balcão e operações de caixa que não podem parar de vender quando a internet falha.</p>
       </header>
       <div class="pf-core-body">
@@ -172,9 +172,10 @@
           <div class="pf-core-block">
             <h4 class="pf-core-label">Benefícios</h4>
             <ul class="pf-core-list">
-              <li>Vende e fecha o turno mesmo com internet instável</li>
+              <li>Vende e fecha o turno mesmo com a internet fora</li>
               <li>Relatório X/Z e recibo conferidos, sem improviso no fim do dia</li>
-              <li>Dados na loja, com backup sob o comando do lojista</li>
+              <li>Banco local na loja, com backup sob o comando do lojista</li>
+              <li>Free sem mensalidade e sem cobrança por cupom emitido</li>
             </ul>
           </div>
           <div class="pf-core-block">
@@ -192,14 +193,15 @@
           <ul class="pf-core-list">
             <li>Até 100 vendas finalizadas por mês civil, 100 produtos e 1 operador</li>
             <li>&ldquo;Outros&rdquo; meios de pagamento não são PIX integrado</li>
-            <li>Sem emissão de NF-e/NFC-e; o recibo não tem valor fiscal</li>
+            <li>Sem emissão de NF-e/NFC-e na v4.0.0 — no Free e no Pro; o recibo não tem valor fiscal</li>
             <li>Licenciamento: ativo proprietário — implantação, migração e suporte para continuidade operacional</li>
           </ul>
         </details>
-        <p class="pf-core-footnote">A versão <strong>3.2.12-free</strong> é a anterior, com os pacotes ainda disponíveis e manutenção de transição encerrada em 08/11/2026. A <strong>v4.0.0</strong> foi lançada em 08/11/2026.</p>
+        <p class="pf-core-footnote">A versão <strong>3.2.12-free</strong> é a anterior, com os pacotes ainda disponíveis e manutenção de transição encerrada em 08/11/2026. A <strong>v4.0.0</strong> foi lançada em 08/11/2026. PIX no caixa (Mercado Pago) e NFC-e sob demanda (PlugNotas) são módulos em desenvolvimento para a <strong>v4.1.0</strong>, com meta em 24/03/2027, sujeita a testes e homologação — não estão na v4.0.0 que se baixa hoje. NF-e e NFS-e não estão no escopo planejado.</p>
         <div class="pf-core-actions">
-          <a class="pf-btn pf-btn--primary" href="https://pdv.caracore.com.br/" target="_blank" rel="noopener">Conhecer o PDV</a>
-          <a class="pf-btn" href="https://pdv.caracore.com.br/download.html">Baixar Free</a>
+          <a class="pf-btn pf-btn--primary" href="https://pdv.caracore.com.br/" target="_blank" rel="noopener">Conhecer o CaraCore PDV</a>
+          <a class="pf-btn" href="https://pdv.caracore.com.br/download.html">Baixar Free v4.0.0</a>
+          <a class="pf-btn pf-btn--quiet" href="https://pdv.caracore.com.br/tecnologia.html" target="_blank" rel="noopener">Ver Arquitetura Local-First</a>
           <a class="pf-btn pf-btn--quiet" href="#eng-pdv">Homologação e versões</a>
         </div>
       </div>
@@ -1714,7 +1716,7 @@ graph LR
   <p><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/SHA256SUMS.txt" target="_blank" rel="noopener">SHA256SUMS.txt</a> · <a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/RELEASE_MANIFEST.json" target="_blank" rel="noopener">RELEASE_MANIFEST.json</a></p>
 </details>
 <h3 class="keep-h4">v4.0.0 lançada em 08/11/2026</h3>
-<p>O pacote final da <a href="https://github.com/chmulato/caracore-pdv4-releases/releases/tag/v4.0.0" target="_blank" rel="noopener">v4.0.0</a> foi publicado em 06/11/2026: ZIP portátil Windows x64 de 176.613.179 bytes, SHA-256 <code class="text-break">9557e0b16d77a85e0bb68971eb0e8710356977261337a8c1c05593e893d81eac</code>, com duas assinaturas Ed25519. No próprio ZIP: T032 17/17, matriz com 11 itens medidos e 11 aprovados (a medição de desempenho, M11, não foi feita), banco 3.2.12 migrado 9/9 e sonda de promessas 20/0/1/0; SCA por OSV de 06/11/2026, com NVD não medido. A <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-candidato-20261031" target="_blank" rel="noopener">v4.0.0-candidato-20261031</a> (build de 31/10/2026) fica no histórico como prévia de avaliação, junto da RC6. O lançamento foi em 08/11/2026. O plano Free não inclui PIX integrado nem emissão de NF-e/NFC-e.</p>
+<p>O pacote final da <a href="https://github.com/chmulato/caracore-pdv4-releases/releases/tag/v4.0.0" target="_blank" rel="noopener">v4.0.0</a> foi publicado em 06/11/2026: ZIP portátil Windows x64 de 176.613.179 bytes, SHA-256 <code class="text-break">9557e0b16d77a85e0bb68971eb0e8710356977261337a8c1c05593e893d81eac</code>, com duas assinaturas Ed25519. No próprio ZIP: T032 17/17, matriz com 11 itens medidos e 11 aprovados (a medição de desempenho, M11, não foi feita), banco 3.2.12 migrado 9/9 e sonda de promessas 20/0/1/0; SCA por OSV de 06/11/2026, com NVD não medido. A <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-candidato-20261031" target="_blank" rel="noopener">v4.0.0-candidato-20261031</a> (build de 31/10/2026) fica no histórico como prévia de avaliação, junto da RC6. O lançamento foi em 08/11/2026. Sem PIX integrado nem emissão de NF-e/NFC-e na v4.0.0 — no Free e no Pro.</p>
 <p class="eng-meta">Stack: Java 25 · Quarkus · SQLite · Bootstrap 5 · HTMX · ApexCharts · Docker · Windows, Linux e macOS (Free 3.2.x).</p>
 <div class="eng-links">
   <a href="https://pdv.caracore.com.br/roadmap-2026.html" target="_blank" rel="noopener">Roadmap</a>
@@ -1786,7 +1788,7 @@ graph LR
         <p><a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/SHA256SUMS.txt">SHA256SUMS.txt</a> · <a href="https://github.com/chmulato/caracore-pdv-releases/releases/download/v3.2.12-free/RELEASE_MANIFEST.json">RELEASE_MANIFEST.json</a></p>
       </details>
       <div class="alert alert-info mb-3 py-2 px-3" role="note">
-        <i class="bi bi-calendar-event"></i> <strong>PDV v4.0.0 lançada em 08/11/2026:</strong> <a href="https://github.com/chmulato/caracore-pdv4-releases/releases/tag/v4.0.0" class="alert-link">release v4.0.0</a> publicada em 06/11/2026, ZIP portátil Windows x64 de 176.613.179 bytes, SHA-256 <code>9557e0b1…d81eac</code> e duas assinaturas Ed25519; T032 17/17, matriz com 11 itens medidos e 11 aprovados (M11 não medido), banco 3.2.12 migrado 9/9 e sonda 20/0/1/0 no próprio ZIP. A <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-candidato-20261031" class="alert-link">v4.0.0-candidato-20261031</a> (build de 31/10/2026) fica no histórico como prévia de avaliação. A versão anterior continua <strong>v3.2.12-free</strong>, última da linha 3.2.x, com manutenção de transição encerrada em 08/11/2026 e os pacotes ainda disponíveis. O plano Free não inclui PIX integrado nem emissão de NF-e/NFC-e. <a href="https://pdv.caracore.com.br/roadmap-2026.html" class="alert-link">Ver roadmap</a>.
+        <i class="bi bi-calendar-event"></i> <strong>PDV v4.0.0 lançada em 08/11/2026:</strong> <a href="https://github.com/chmulato/caracore-pdv4-releases/releases/tag/v4.0.0" class="alert-link">release v4.0.0</a> publicada em 06/11/2026, ZIP portátil Windows x64 de 176.613.179 bytes, SHA-256 <code>9557e0b1…d81eac</code> e duas assinaturas Ed25519; T032 17/17, matriz com 11 itens medidos e 11 aprovados (M11 não medido), banco 3.2.12 migrado 9/9 e sonda 20/0/1/0 no próprio ZIP. A <a href="https://github.com/chmulato/caracore-pdv-releases/releases/tag/v4.0.0-candidato-20261031" class="alert-link">v4.0.0-candidato-20261031</a> (build de 31/10/2026) fica no histórico como prévia de avaliação. A versão anterior continua <strong>v3.2.12-free</strong>, última da linha 3.2.x, com manutenção de transição encerrada em 08/11/2026 e os pacotes ainda disponíveis. Sem PIX integrado nem emissão de NF-e/NFC-e na v4.0.0 — no Free e no Pro; o PIX (Mercado Pago) e a NFC-e sob demanda (PlugNotas) são módulos em desenvolvimento para a v4.1.0. <a href="https://pdv.caracore.com.br/roadmap-2026.html" class="alert-link">Ver roadmap</a>.
       </div>
       <div>
         <span class="tech-badge">Java 25</span>

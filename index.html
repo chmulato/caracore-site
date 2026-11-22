@@ -324,7 +324,7 @@
               <span class="p2-card-icon" aria-hidden="true"><i class="bi bi-cash-coin"></i></span>
               <h4 class="p2-card-name">CaraCore PDV</h4>
             </div>
-            <p class="p2-card-sub">Ponto de venda resiliente.</p>
+            <p class="p2-card-sub">Frente de caixa Local-First, no computador da loja.</p>
           </header>
 
           <div class="p2-block">
@@ -337,22 +337,22 @@
             <ul class="p2-problems">
               <li>Internet instável interrompe a venda</li>
               <li>Continuidade do caixa em risco</li>
-              <li>Operação local sem autonomia</li>
+              <li>Dados e operação reféns de servidor externo</li>
             </ul>
           </div>
 
           <div class="p2-block">
             <h5 class="p2-label">Benefícios</h5>
             <ul class="p2-checklist">
-              <li>Continua funcionando localmente</li>
-              <li>Dados sob controle do cliente</li>
-              <li>Implantação simples</li>
-              <li>Evolução controlada</li>
+              <li>Vende e fecha o caixa mesmo sem internet</li>
+              <li>Banco SQLite local: os dados ficam na loja</li>
+              <li>Estoque, turno, recibo e relatórios no mesmo programa</li>
+              <li>Free sem mensalidade; sem cobrança por cupom emitido</li>
             </ul>
           </div>
 
           <footer class="p2-card-foot">
-            <a class="p2-btn p2-btn--primary" href="https://pdv.caracore.com.br/index.html" target="_blank" rel="noopener">Conhecer o PDV</a>
+            <a class="p2-btn p2-btn--primary" href="https://pdv.caracore.com.br/index.html" target="_blank" rel="noopener">Conhecer o CaraCore PDV</a>
             <a class="p2-link" href="#contato">Avaliar na minha operação</a>
           </footer>
         </article>
@@ -587,7 +587,9 @@
             <dt>Stack</dt>
             <dd>Java 25 · Quarkus · SQLite local · interface no navegador. Piloto em Rust + Tauri 2 + React.</dd>
             <dt>Requisitos</dt>
-            <dd>Windows, Linux ou macOS; aplicação local em <code>127.0.0.1:8080</code>. A v4 exige Windows x64 e Edge. Planos Free e Premium; o Free não inclui PIX integrado nem emissão de NF-e/NFC-e.</dd>
+            <dd>Windows, Linux ou macOS; aplicação local em <code>127.0.0.1:8080</code>. A v4 exige Windows x64 e Edge. Planos Free e Pro: na <strong>v4.0.0 publicada</strong> não há PIX integrado nem emissão de NF-e/NFC-e, no Free ou no Pro.</dd>
+            <dt>Pagamento e fiscal</dt>
+            <dd>PIX no caixa (Mercado Pago) e NFC-e sob demanda (PlugNotas) são <strong>módulos em desenvolvimento para a v4.1.0</strong>, com meta em 24/03/2027, sujeita a testes, homologação e aprovação — não estão na v4.0.0 que se baixa hoje. NF-e e NFS-e fora do escopo planejado. A Cara Core não cobra por cupom emitido; integrações de provedor externo têm condições e custos próprios.</dd>
             <dt>Recado no celular</dt>
             <dd>O aviso no celular do cliente sai pelo <a href="https://gaspar.caracore.com.br/">Gaspar</a>, ferramenta do PDV 4 com instalação separada: usa o chip e o plano da loja, sem mensalidade por mensagem. No PDV 4.0.0 publicado, quem chama o envio é você no painel do Gaspar; a chamada automática pelo PDV não tem versão nem data combinadas.</dd>
             <dt>Cronograma</dt>
@@ -595,6 +597,7 @@
           </dl>
           <p class="p2-details-links">
             <a href="https://pdv.caracore.com.br/index.html">Loja</a>
+            <a href="https://pdv.caracore.com.br/tecnologia.html">Arquitetura Local-First</a>
             <a href="https://pdv.caracore.com.br/roadmap-2026.html">Roadmap</a>
             <a href="https://pdv.caracore.com.br/homologacao-v4.html">Homologação da v4</a>
             <a href="portfolio.html#caracore-pdv">Portfólio</a>

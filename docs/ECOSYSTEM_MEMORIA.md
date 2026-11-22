@@ -2,6 +2,111 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### PDV Local-First — três superfícies e a wiki alinhadas ao mesmo texto — 22/11/2026
+
+**O que mudou no discurso:** cinco frases do ecossistema diziam que **só o plano Free** não tinha
+PIX integrado nem NF-e/NFC-e. Medido no pacote que se baixa hoje (`v4.0.0`, release de 06/11 e
+lançamento em 08/11/2026), **nenhum dos dois planos** emite nota fiscal nem opera PIX pelo sistema.
+A redação canônica, igual em loja, matriz e wiki:
+
+> `Na v4.0.0, nem o Free nem o Premium emitem NF-e/NFC-e nem fazem PIX pelo sistema — o PIX é feito
+> pela maquininha do banco, fora do PDV. PIX integrado (Mercado Pago) e NFC-e sob demanda (TecnoSpeed
+> PlugNotas, já desenhada para a transição IBS/CBS) são módulos em desenvolvimento para a v4.1.0, com
+> meta em 24/03/2027. NF-e e NFS-e não estão no escopo planejado.`
+
+Saiu de circulação o **«roadmap, sem data»** (0 ocorrências em `caracore-wiki/docs/` e 0 nas seis
+páginas ao vivo). O motivo de dizer «em desenvolvimento» e não «pronto», medido no repositório: os
+módulos estão **fora** do que se baixa. No tronco `feature/4.1.0-mp-plugnotas` — aberto em
+**11/11/2026** com `baddab4` (branch do Mercado Pago), `3106403` (branch da PlugNotas), `ae757d5`
+(«trunk novo MP + PlugNotas», o elo que os junta) e `5e28536` (o PIX no caixa com QR) — há **20**
+arquivos em `integration/mercadopago/`, **19** em `integration/plugnotas/` e **41** Java citando a
+PlugNotas; na `master` os três contadores são **0**, e `master..feature/4.1.0-mp-plugnotas` devolve a
+cadeia inteira. O que a `master` tem é um **placeholder** honesto:
+`service/gateway/MercadoPagoGatewayService.java:15` declara «Provedor MercadoPago (placeholder —
+integracao real requer SDK MP)», o `generatePixQRCode` loga «nao implementado» em `:30` e atira
+`UnsupportedOperationException` em `:31` — nem no tronco principal há chamada real ao provedor. O
+`8244494` de 17/11/2026 é checkpoint posterior desse tronco, não a primeira entrada. A NFC-e é
+**«sob demanda, botão no caixa»** (decisão do dono em 11/11/2026), nunca automática. O pilar que
+entrou no lugar do rótulo fiscal é o **Local-First**: cadastro, venda e fechamento de turno na
+máquina da loja, mesmo com a internet fora, com os dados em SQLite local e sem servidor de
+terceiros no meio do caminho.
+
+**Publicado em três lotes (commit e numstat conferidos em cada repo):**
+
+| Camada | Repo · commit | Arquivos | Linhas |
+|---|---|---|---|
+| Loja | `caracore-pdv-releases` `691e73d` | `docs/index.html` 48/15 · `docs/tecnologia.html` 7/7 | 55/22 |
+| Matriz | `caracore-site` `82f7e43` | `index.html` 11/8 · `portfolio.html` 11/9 · `ecosistema.html` 8/8 · `assets/js/catalog-data.js` 1/1 | 31/26 |
+| Wiki | `caracore-wiki` `2e8a555` | os 7 arquivos abaixo | 20/20 |
+
+**A passada da wiki (7 arquivos, 20 inserções / 20 remoções):** `assets/js/wiki-search.js` 1/1 (o
+cartão do índice de busca), `glossario.html` 1/1, `pdv/contador.html` 2/2, `pdv/index.html` 2/2,
+`pdv/parceiros.html` 5/5, `projeto-pdv.html` 4/4, `projetos-overview.html` 5/5.
+
+**Trava anti-duplicação, nascida nesta passada:** onde o parágrafo já trazia uma afirmação própria
+dos dois planos — a chamada em negrito «Nenhum plano do PDV emite…» ou o qualificador adiantado
+«Sem PIX integrado e sem NF-e/NFC-e na v4.0.0 — no Free e no Pro.» — a cauda canônica entrou **sem a
+cláusula de abertura** (`pdv/index.html:129`, `pdv/contador.html:128`, `pdv/parceiros.html:336`) e,
+nos dois pontos em que o qualificador adiantado competia com ela, foi trocado por **«Sem servidor de
+terceiros no meio do caminho.»** (`glossario.html:400`, `projetos-overview.html:277`). Uma afirmação
+por parágrafo; o escaneamento linha a linha dos sete arquivos fechou com 0 duplicidades.
+
+**Ficou como estava, porque é afirmação verdadeira e não divergência:** `pdv/contador.html:139` («No
+PDV Free, a Reforma Tributária não é um benefício… Ele não calcula CBS/IBS» — fala do Free, e o Free
+realmente não calcula), `projeto-pdv.html:205` (linha de tabela escopo do Free: «“outros” não é PIX
+integrado. Sem QR/gateway e sem NF-e/NFC-e.»), o bullet de planos em `projetos-overview.html:290`
+(mesma coisa, escopo do Free) e `projeto-pdv-rust.html:138` — «PIX com QR Code e confirmação no
+caixa» é do **piloto Rust** (`v0.1.4`), outra linha, outro produto, e continua verdadeiro.
+
+**Três achados contra a minha própria anotação, corrigidos neste mesmo registro:** (a) eu tinha
+anotado «primeiro código `8244494`, 17/11/2026» para a entrada do Mercado Pago/PlugNotas — medido o
+`git log` do tronco, a cadeia começa em **11/11/2026** (`baddab4`, `3106403`, `ae757d5`, `5e28536`) e o
+`8244494` é checkpoint posterior; (b) atribuí a frase do Rust com QR a `projetos-overview.html:233`,
+que é um cartão do **Ink** — a frase está em `projeto-pdv-rust.html:138`; (c) escrevi que os módulos
+«existem **só** no tronco», e a `master` tem seis arquivos Java que citam Mercado Pago — ao ler o
+código, são o `MercadoPagoGatewayService` placeholder (`:15`, `:30`, `:31`) mais o registro de
+provedores e seus testes, que **não** chamam o provedor. A frase correta é «0 arquivos dos pacotes
+`integration/mercadopago` e `integration/plugnotas` na `master`». Lição gravada: «só no tronco» é
+afirmação de árvore e se mede por pacote, não por presença de nome.
+
+**Dois julgamentos propostos pelo agente e ratificados pelo dono na aprovação:** (a) caiu a frase «o
+ciclo manual completo no Edge ainda não foi preenchido» do parágrafo da prévia — não há medição dela
+para a `v4.0.0` publicada, em nenhum dos dois sentidos, então não se pode afirmar nem negar; (b) «ZIP
+portátil unsigned» permanece **só** no histórico do candidato de 31/10, porque é a descrição do
+arquivo daquela tag. O parágrafo `projeto-pdv.html:233` passou de «prévia em circulação» para
+**histórico da prévia**, com o link da tag `v4.0.0-candidato-20261031`, os 178.317.680 B e o SHA-256
+`0c2003b0…83434d` mantidos como dados do arquivo de 31/10, e as `rc6`/`rc5` declaradas histórico.
+
+**Validação local antes do commit:** `git status` com exatamente os 7 arquivos (nenhum CSS ou skin
+tocado); 0 linhas de `<meta>` alteradas; saldo de tags nulo contra o HEAD em 12 marcas; 1 `<h1>` e 1
+canonical por página; JSON-LD parseando. **Armadilha de EOL medida:** `docs/pdv/index.html` (162 CR /
+162 linhas) e `docs/projeto-pdv.html` (362/362) estão `w/crlf` na árvore do dono com `i/lf` no índice
+(`core.autocrlf=true`); os outros cinco são LF. O numstat continua só de conteúdo e **os bytes servidos
+são os LF do blob** — por isso o SHA-256 servido bate com `git show HEAD:arquivo | sha256sum`.
+
+**Prova do que está no ar (medida em 22/11/2026, depois do push):** `e5a6e62..2e8a555` empurrado,
+`git ls-remote origin refs/heads/master` igual ao HEAD, árvore limpa e Pages **`built`** em `2e8a555`
+com `duration` 22.116 ms. Os sete caminhos públicos — a wiki serve sem o prefixo `docs/` — respondem
+**200** e o SHA-256 servido é o do blob commitado: `projeto-pdv.html` `f5e5ec870364`,
+`projetos-overview.html` `e07142679b2a`, `glossario.html` `22970c94320f`, `pdv/index.html`
+`8091724877af`, `pdv/contador.html` `9bd1ce37f8f7`, `pdv/parceiros.html` `a305468607cd`,
+`assets/js/wiki-search.js` `90f45748e407`. Ao vivo: «roadmap, sem data» **0**, «Nenhum plano do PDV
+emite NF-e/NFC-e» 2, «nem o Free nem o Premium emitem NF-e/NFC-e» 10, «v4.1.0, com meta em
+24/03/2027» 14, «NF-e e NFS-e não estão no escopo planejado» 12, «Local-First» 7, «ciclo manual
+completo no Edge» **0** e «ZIP portátil unsigned» só em `projeto-pdv.html:233`.
+
+**Armadilha de prova que segue valendo:** `git rev-parse HEAD:arquivo` devolve SHA-1 do **blob** e
+fabrica divergência contra o arquivo servido; a conferência é `git show HEAD:arquivo | sha256sum`.
+Série medida desta wiki nas últimas oito construções: **13.054–23.035 ms** — o `duration` não é sinal
+de problema; o que é sinal é `errored` com `duration=0` (travamento da plataforma, que se resolve com
+rebuild pela API, não com novo commit).
+
+**Ficam abertos, sem ação nesta passada:** as duas divergências da wiki à espera de decisão do dono
+(`docs/projeto-hub.html:169` chama de «Concluída» a fila Mercado Livre/WhatsApp e
+`docs/hub/admin.html:128` fala senha de 6 e temporária de 8 contra os **12** publicados desde a
+`rc1.7`); a passada dedicada do contraste AA do hero; e nada de produto, versão, hash ou preço mudou
+por estes lotes — é texto.
+
 ### Retrô — artigo 149 publicado e contagens do acervo alinhadas — 21/11/2026
 
 **O que foi publicado:** o lote do artigo 149 (*O que tem dentro da caixa*, 15/09/2027) saiu em
@@ -1363,6 +1468,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-11-22 | **Ink Agenda (Desktop 2.3.0): dia 1 da cota de dezembro fechou as quatro etapas da OS `PROMPT_INK_BUILDER_2026-12-01.txt` — P1.13 implementado, R-C06 ensaiado três vezes e H-A08 executado.** `RestoreService` passou a aceitar que **a senha do dossiê autorize o vínculo à máquina nova** (`app_identity.hardware_id` regrava; dossiê legado sem senha continua preso à origem; falha em instalação limpa apaga o resíduo; trilha `event=dossier.restore.link` só com hashes curtos, sem migração — `V31` segue livre). Gate remédio na árvore: `mvn -B verify` **759/0** (+8 LGPD = **767**), `mvn -Ptestfx verify` **852/0** (85 ITs), demo **V30**. Homologação: **H-A09 e H-B01 viraram Conforme** (relogin do dono executado em `b1-20261201`), H-B02/H-B03 reconfirmados e o **H-A08** foi registrado como **evidência de release do RK-01 sem mudar de status** (`.inkbak` criado pela **2.2.1 publicada** — 11 225 B, SHA-256 `1f680083…609f` — restaurado em `b7` limpa: contagens e UUIDs idênticos, schema V30, `outcome=kept`, nenhum agendamento sem profissional). Observação do caminho de **restauro** (a migração V26→V30 roda dentro do `RestoreService` e não chama o `snapshotBeforeMigration` do R-C04, então quem sobe por dossiê fica sem a «cópia anterior à actualização») **decidida no mesmo dia pelo dono como `RK-30`, limitação declarada para a 2.3.0**, sem código de banco antes do corte; contorno declarado nas notas e em `agenda-java/docs/BACKUP.md`: o próprio `.inkbak` de origem é a cópia externa imutável anterior à operação. Tudo em sandbox (`b3`/`b1`/`b4`–`b7`), base real do AppData conferida intacta; **commit local do lote P1.13 + registro documental a pedido do dono; sem push, sem etiqueta, sem publicação** — produto no ar segue o **2.2.1** com canal keyless; entrega do 2.3.0 continua **29/01/2027**. Evidência local (fora do Git): `caracore-ink/docs/evidencias/homolog-p1-20261201/`.
 | 2026-11-10 | **Blogs Retrô e pessoal publicando no LinkedIn com thumbnail da capa, validado ponta a ponta nos dois:** a capa do artigo (`og:image`) sobe pela Images API (`initializeUpload` → PUT dos bytes → `urn:li:image` no `thumbnail` do card; o LinkedIn não faz scraping de URL) e falha de upload não bloqueia o post. **Retrô** (`caracore-retro`): `tools/publish_linkedin.py` + job `publish-linkedin` do `deploy.yml`, modo manual por `workflow_dispatch` (input `article`), header `LinkedIn-Version: 202601` obrigatório, URL nunca solta no commentary (o markdown corrompe `_`), página de privacidade nova em `docs/privacidade.html` — posts 143 e 144 republicados com capa e **imagem confirmada no card** (`urn:li:share:7526091630282596352`, `urn:li:share:7526092112099082241`). **Pessoal** (`caracore-personal`): `linkedin_rss_auto.py` + `publish-linkedin.yml` (ledger `linkedin_published.json`, log do `urn:li:share` para validação externa), artigo de 09/11 republicado com `force` e **imagem confirmada no card**. **Credenciais:** secrets `LINKEDIN_ACCESS_TOKEN` + `LINKEDIN_AUTHOR_URN` (Retrô, app «Artigos Retrô») e `LINKEDIN_ACCESS_TOKEN` + `PERSON_URN` (pessoal, app «Blog Dev») — o `sub` é pairwise por app, os URNs **não** são intercambiáveis; tokens gerados em 10/11/2026, expiram **~09/01/2027** → renovar até **05/01/2027** (lembretes `.ics`, um por blog, em Downloads). Detalhes completos nas memórias locais `.cursor/rules` dos dois repos. Pendências do dono: apagar posts antigos sem imagem/duplicados e cadastrar a URL de privacidade nas Settings do app LinkedIn. Nenhuma versão de produto mudou. |
 | 2026-11-10 | **CSO em produção: rede de segurança própria (dump diário em HD removível, restauração provada) e senha do banco rotacionada:** o Postgres do Railway está no plano **HOBBY** e não tem PITR, bucket nem backup agendado (`railway postgres history`, medido em 10/11/2026). A proteção passou a ser a rotina `E:\CC_BAK_CSO\backup-cso.sh`: `pg_dump -Fc -Z9` por `railway ssh`, retenção de **30** arquivos, log em `logs/backup.log`, lock com tratamento de resíduo velho, 3 tentativas com 10 s em timeout, agendamento diário por `schtasks` mais launcher VBS na pasta Iniciar (o `onlogon` exige elevação) para catch-up com `StartWhenAvailable` e sem bloqueio por bateria. Cada arquivo é checado por magic `PGDMP`, tamanho > 1 KB, TOC por `pg_restore -l` conferido contra `select count(*) from pg_tables where schemaname='public'` (22) e `sha256` ao lado. **Restauração provada** em container descartável `postgres:18`: contagens idênticas às da produção (tenant=2, usuario=4, veiculo=7, migracoes=30, tabelas=22). Limite declarado: é dump diário, **não** PITR — perde-se até o dia; PITR/Pro segue **decisão de custo do dono**. No mesmo dia a **senha do usuário `postgres` foi rotacionada** (escopo autorizado pelo dono): 6 variáveis literais atualizadas (`Postgres`: `POSTGRES_PASSWORD`, `PGPASSWORD`, `DATABASE_URL`; `caracore-cso-quarkus`: `DATABASE_PASSWORD`, `PGPASSWORD`, `DATABASE_URL`), `ALTER USER`, deploy `f7b103d8` SUCCESS às 21:42Z e `/q/health/ready` UP com o check de banco; prova positiva e negativa **pela rede privada**, porque `local`, `127.0.0.1/32` e `::1/128` são `trust` no `pg_hba` e o loopback daria verde falso. Motivo da rotação: a senha havia sido impressa no chat por `railway connect --tunnel-only`. O banco não tem endpoint público (só `postgres.railway.internal`). Nenhuma versão, tag, data ou gate de produto mudou. |
 | 2026-11-10 | **Checkpoint de fim do dia registrado no topo deste ficheiro**, com o estado dos quatro produtos, a regra de superfície local, a operação/segurança do CSO e seis pendências abertas (aceite da `rc1.10`, prints do Ink, PITR × dump diário, purga do tenant `2`/usuário `53`, conflitos sitemap × `noindex`, rodapé da Central sem commit). Correção de coerência junto: a «Retomada em 30 segundos» ainda dizia **três** produtos principais e listava o **Ink como satélite**, contra a decisão de 09/11/2026 — passou a quatro, com o Ink no núcleo. |

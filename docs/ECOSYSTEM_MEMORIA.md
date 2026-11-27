@@ -2,6 +2,93 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### PDV — PIX e NFC-e como módulos do Plano Pro na v4.1.0: alinhamento das quatro superfícies — 27/11/2026
+
+**O que mudou no discurso:** a fórmula «são módulos **em desenvolvimento** para a v4.1.0» saiu de
+circulação e passou a «são **módulos do Plano Pro na v4.1.0, cada um ativado pela credencial do
+próprio provedor, com meta em 24/03/2027**». A redação é a mesma nas quatro superfícies (loja, matriz,
+wiki, Central). **O portão que a copy descrevia não existia:** `roadmap-2026.html:132` prometia os
+módulos «como módulos opcionais para um **plano pago superior**» — no código medido não há plano acima
+do Pro. Em `pdv-apps/src/main/java/br/com/caracore/pdv/service/PlanoLicencaService.java` há **um**
+portão, `isPremium()` (`:111`), para o qual delegam `isPixHabilitado()` (`:132-133`) e
+`isNfceHabilitado()` (`:128-129`); o que separa PIX de PIX + fiscal é a **credencial salva** do
+provedor (`MercadoPagoCredencialService`, `PlugnotasCredencialService`), não uma faixa de preço
+adicional. **Por que «em desenvolvimento» deixou de ser a palavra:** a mesma auditoria que motivou o
+adendo de 22/11 está vencida pelo próprio tronco — em `feature/4.1.0-mp-plugnotas` `0f7399e` o reator é
+`4.1.0`, `integration/mercadopago` e `integration/plugnotas` estão na árvore, as migrações
+`V057`–`V072` também, e o gate medido é **1.814 · 0 · 0 · 3** com LINE **57,52%** e scripts **165/165**.
+**Por que «disponível» ainda não é a palavra:** **0** tags da 4.1.0 no repositório e **0** no de
+distribuição (43 tags, nenhuma da linha), e nenhuma mídia 4.1.0 na prateleira — o que se baixa hoje é a
+`v4.0.0`. A frase vira «disponível» com **corte e empacotamento oficiais da v4.1.0 publicados**
+(fila `PKG-F1`/I2, T032 rodado no próprio pacote); para a NFC-e soma-se a homologação real (P6/#74),
+porque o sandbox é simulação e não alcança SEFAZ/município/ADN (**D-FOCO-1**, 24/11).
+
+**Propagação medida (antes × depois):**
+
+| Superfície | Arquivos tocados | Das 24 ocorrências | Variantes irmãs | Depois |
+|---|---|---|---|---|
+| Loja `caracore-pdv-releases` | 3 `.html` + 1 `.md` | 2 (`docs/index.html:295`, `docs/tecnologia.html:105`) | 4 (`roadmap-2026.html:114`, `:127`, `:132` e `README.md:29`) | 0 |
+| Wiki `caracore-wiki` | 6 `.html` | 15 (`glossario` 1, `pdv/contador` 2, `pdv/index` 1, `pdv/parceiros` 5, `projeto-pdv` 3, `projetos-overview` 3) | 0 — os 2 banners ganharam a âncora `na v4.0.0` | 0 |
+| Matriz `caracore-site` | 3 `.html` + 2 `.md` | 7 (`ecosistema.html:233/868/1308`, `index.html:592`, `portfolio.html:1791`, `AGENTS.md`, este arquivo) | 0 | 0 |
+| Central `caracore-loja` | 1 `.html` | 0 | 1 (`docs/index.html:293`) | 0 |
+| Oficina `caracore-pdv` | 0 | 0 | 0 | 0 |
+
+**A quarta variante irmã apareceu na validação, não no inventário:** `caracore-pdv-releases/README.md:29`
+dizia «PIX integrado e emissão fiscal **em desenvolvimento (roadmap)**, não disponíveis hoje» sem o verbo
+da forma que a varredura procurava (`estão em desenvolvimento`), e por isso ficou de fora das 24 + 3. É a
+mesma família e é página viva (o GitHub renderiza o README do repositório de distribuição), então entrou
+no lote.
+
+**Formas verbais encontradas** (a regex `est[ãa]o? em desenvolvimento` não basta): K1 plural «são
+módulos em desenvolvimento para a v4.1.0» (**20**, das quais **2** fechando período —
+`caracore-pdv-releases/docs/index.html:295` e `caracore-site/portfolio.html:1791` — e **1** com o
+`<strong>` abraçando o sintagma inteiro, `caracore-site/index.html:592`), K2 «estão em desenvolvimento
+para a v4.1.0» (**1**, `ecosistema.html:1308`), K3 singular «está em desenvolvimento para a v4.1.0»
+(**3**: `tecnologia.html:105`, `projetos-overview.html:284`, `parceiros.html:347`). 20 + 1 + 3 = **24** ✓.
+Âncora e data: **6** linhas que omitiam `24/03/2027` passaram a trazê-la (as **2** do K1 com período,
+`pdv/parceiros.html:347`, `roadmap-2026.html:114`, `caracore-loja/docs/index.html:293` e o
+`README.md:29` da loja); `roadmap-2026.html:132` fica **sem** a data de propósito, porque a frase descreve
+a topologia de planos e a data já está em `:114`, `:118` e `:127`. Os dois banners da wiki que
+diziam «Nenhum plano do PDV emite NF-e/NFC-e nem faz PIX pelo sistema» agora dizem **na v4.0.0**
+(`pdv/index.html:129`, `pdv/contador.html:128`), porque a afirmação é do artefato baixável, não da
+família. **Nos 14 arquivos de página (13 `.html` + o `README.md` da loja) nenhuma linha foi criada nem
+removida** — substituição in-place, numstat simétrico linha a linha (`3/3`, `1/1`, `5/5`, `2/2`); linhas
+novas só nos dois documentos canônicos, que recebem o adendo e esta seção (`AGENTS.md` `3/1`; aqui, só
+adições).
+
+**Armadilha de instrumento, nova:** neste Perl do Git Bash, `"\x{00e3}"` resolve para o **byte único
+`0xE3`**, não para o par UTF-8 `C3 A3`. Uma variante escrita com escapes `\x{…}` casa **0** vezes contra
+texto UTF-8 cru sem dar erro nenhum — o script roda, o residual parece alto e a tentação é ampliar o
+padrão. A forma que funciona é texto literal UTF-8 no fonte do script com leitura e escrita em `:raw`.
+**Armadilha de contagem:** `git grep -c -o` devolve **0** num arquivo que tem 1 ocorrência quando a
+linha é longa demais; a contagem por arquivo é `grep -c -a -F` direto no caminho. **Armadilha de EOL,
+já conhecida e agora medida nos 16:** `core.autocrlf=true` e **5** dos 16 arquivos estão `w/crlf` na
+árvore com `i/lf` no índice (`caracore-pdv-releases/docs/index.html`, `roadmap-2026.html`,
+`caracore-wiki/docs/projeto-pdv.html`, `caracore-wiki/docs/pdv/index.html`,
+`caracore-loja/docs/index.html`); a prova de integridade é `CR == nº de linhas` (CRLF uniforme) ou
+`CR == 0` (LF puro) — conferir o hash do arquivo em disco contra o congelado acusaria os cinco. Os outros
+**11** estão `w/lf`. Desses, **6** disparam o aviso «LF will be replaced by CRLF the next time Git touches
+it» (`README.md` e `docs/tecnologia.html` da loja, e os 4 `.html` da wiki que não são `w/crlf`): os três
+repositórios não têm `.gitattributes`, e com `core.autocrlf=true` o próximo checkout deles reconvertê-los-ia
+— o `caracore-site` não avisa nada porque fixa `* text=auto eol=lf`. É ruído do checkout seguinte, não
+desta edição: em disco os arquivos seguem intactos e o blob do commit fica LF.
+
+**Resíduos nomeados, sem edição nesta passada:** (a) `caracore-site/assets/js/catalog-data.js:76`
+carrega **1** ocorrência da frase antiga — `.js`, fora do recorte `.html`/`.md` aprovado; (b) quatro
+linhas vivas da loja afirmam «NF-e/NFC-e: roadmap, sem data» ou «não está disponível em nenhum plano»
+(`readme.html:216`, `:232`, `:344`, `download.html:267`) — verdadeiro para NF-e, contrariado para NFC-e
+pela redação nova, e por isso o par merece passada própria com o dono; (c) a wiki chama o plano pago de
+**Premium** em seus 6 arquivos (Pro = **0** ocorrências ali), enquanto loja e matriz usam **Pro**; a
+equivalência «Pro (o Premium da loja 3.2.12)» está publicada em 4 páginas da loja e em **nenhuma** da
+wiki; (d) `caracore-pdv-releases/README.md:27` diz «desktop local (Windows, Linux e macOS)», contra a
+matriz de empacotamento de 23/11/2026 (Windows x64 e Linux x64, **macOS cortado**) — é a frente de
+plataforma, não desta fórmula. As notas históricas `wiki-release-v3-2-*.html` ficam como história medida.
+
+**Estado dos repositórios:** 1 commit local por repositório tocado, **0** `git push`, **0** tag nova,
+nenhum `.java`/`.py`/`.sql`/`.wxs`/workflow alterado, banco Free intacto em `663.552 B`
+(`99ae26f2f59dfcb1776d3f30f65aad932541e3df308c365222c612188702fd5b`, mtime 15/10/2026 09:40:40) e
+`%APPDATA%\CaraCorePDV` inexistente.
+
 ### PDV Local-First — três superfícies e a wiki alinhadas ao mesmo texto — 22/11/2026
 
 **O que mudou no discurso:** cinco frases do ecossistema diziam que **só o plano Free** não tinha

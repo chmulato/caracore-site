@@ -84,10 +84,30 @@ wiki; (d) `caracore-pdv-releases/README.md:27` diz «desktop local (Windows, Lin
 matriz de empacotamento de 23/11/2026 (Windows x64 e Linux x64, **macOS cortado**) — é a frente de
 plataforma, não desta fórmula. As notas históricas `wiki-release-v3-2-*.html` ficam como história medida.
 
-**Estado dos repositórios:** 1 commit local por repositório tocado, **0** `git push`, **0** tag nova,
+**Correção datada do mesmo dia (27/11) — o «resíduo 0» das páginas estava sub-medido:** a varredura que
+fechou o lote usou `git grep -c -F 'em desenvolvimento para a v4.1.0' -- '*.html'`, e o `grep` lê **uma
+linha por vez**: não casa a frase quebrada entre duas linhas nem o sintagma interrompido por `<strong>`.
+Refeita em multilinha (`perl -0777` sobre `em desenvolvimento.{0,120}v4\.1\.0` no arquivo inteiro, inclusive
+o `git show HEAD:arquivo`) e em varredura literal de `em desenvolvimento` por extensão, a fórmula antiga
+estava viva em **3** páginas, não em 0: `caracore-pdv-releases/docs/index.html:122-123` (frase partida),
+`caracore-site/portfolio.html:200` (nota de rodapé com `<strong>` no meio) e
+`caracore-pdv-releases/docs/tecnologia.html:30` (descrição JSON-LD na forma curta «Emissão de NF-e/NFC-e em
+desenvolvimento», sem verbo e sem `v4.1.0` na vizinhança — classe que a regex multilinha também não
+cobria). Os três receberam a redação canônica neste lote (numstat `3/2`, `1/1` e `1/1`), com o EOL
+preservado — `docs/index.html` segue CRLF uniforme (`CR 392 == linhas 392`) e os outros dois LF puro — e o
+bloco JSON-LD revalidado como JSON. **Recontado:** **0** nos `.html` dos cinco repositórios pelo
+instrumento multilinha e **1** fora do recorte aprovado, o `.js` do item (a) acima. Lição de instrumento
+que entra na regra da casa: varredura de fórmula em HTML se faz em multilinha **e** por extensão, e o
+veredito «resíduo 0» exige o nome do comando **com sua limitação declarada** ao lado do número.
+
+**Estado dos repositórios (snapshot do lote, antes do envio):** 1 commit local por repositório tocado,
+**0** `git push`, **0** tag nova,
 nenhum `.java`/`.py`/`.sql`/`.wxs`/workflow alterado, banco Free intacto em `663.552 B`
 (`99ae26f2f59dfcb1776d3f30f65aad932541e3df308c365222c612188702fd5b`, mtime 15/10/2026 09:40:40) e
-`%APPDATA%\CaraCorePDV` inexistente.
+`%APPDATA%\CaraCorePDV` inexistente. **O que veio depois:** os quatro commits foram **empurrados em 27/11**
+com autorização do dono — fast-forward, sem `--force`, sem tag, Pages `built` nos quatro SHA novos e o
+corpo servido conferido por SHA-256 contra o blob do `HEAD` — e o lote da correção de resíduo do parágrafo
+acima soma **1** commit local em `caracore-site` e **1** em `caracore-pdv-releases`, **sem push e sem tag**.
 
 ### PDV Local-First — três superfícies e a wiki alinhadas ao mesmo texto — 22/11/2026
 

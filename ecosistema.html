@@ -150,6 +150,7 @@
           <p class="eco-toc-title">Nesta página</p>
           <a href="#ecossistema">Visão geral</a>
           <a href="#nucleo">Núcleo do ecossistema</a>
+          <a href="#compromisso-2036">Compromisso 2026–2036</a>
           <a href="#bunker-digital">Bunker Digital</a>
           <a href="#apoio">Ecossistema de apoio</a>
           <a href="#garagem">Garagem</a>
@@ -180,6 +181,7 @@
 
         <nav class="eco-toc-mobile" aria-label="Atalhos da página">
           <a href="#nucleo">Núcleo</a>
+          <a href="#compromisso-2036">Compromisso</a>
           <a href="#bunker-digital">Bunker Digital</a>
           <a href="#apoio">Apoio</a>
           <a href="#garagem">Garagem</a>
@@ -310,6 +312,91 @@
       <span class="eco2-layer">Apoio — educação, pesquisa e ferramentas</span>
       <span class="eco2-layer">Garagem — em desenvolvimento</span>
     </div>
+  </div>
+</section>
+
+<!-- Compromisso 2026–2036 -->
+<section id="compromisso-2036" class="eco2-section">
+  <div class="container-fluid px-0">
+    <div class="eco2-head">
+      <p class="eco2-eyebrow">Compromisso · 2026 → 2036</p>
+      <h2 class="eco2-title">Dez anos de sustentação para a base instalada</h2>
+      <p class="eco2-lead">Os quatro produtos do núcleo e os complementos são projetados para um horizonte operacional de dez anos, de 2026 a 2036. Evolução de versão, de motor ou de interface não pode quebrar o banco de dados de quem já opera: as migrações de schema são retrocompatíveis e aditivas, e o histórico do cliente permanece inteiro.</p>
+    </div>
+
+    <ul class="eco2-pillars">
+      <li><strong>Nenhuma base abandonada</strong><span>Quem está operando continua recebendo correções e uma rota de upgrade documentada para a versão seguinte durante todo o horizonte.</span></li>
+      <li><strong>Migração aditiva</strong><span>Tabela nova e coluna nova, sem reescrever o que já foi gravado — a base existente abre na versão seguinte.</span></li>
+      <li><strong>Dados no ambiente do cliente</strong><span>SQLite local no PDV, no Hub e no Ink Agenda; o CSO Frotas usa PostgreSQL na nuvem da Cara Core.</span></li>
+      <li><strong>Operação sem nuvem obrigatória</strong><span>Windows nas linhas PDV e Hub, Windows e Linux no Ink e no Gaspar. A conexão acelera e sincroniza; não libera a venda.</span></li>
+      <li><strong>Integração pela credencial do próprio provedor</strong><span>PIX (Mercado Pago) e NFC-e (TecnoSpeed PlugNotas) só funcionam com a chave do lojista salva no equipamento dele — o núcleo não depende de órgão público nem de gateway nosso.</span></li>
+    </ul>
+
+    <div class="eco2-support-grid">
+
+      <div class="eco2-support-group">
+        <h3 class="eco2-group-title"><i class="bi bi-check-circle" aria-hidden="true"></i> Em produção</h3>
+        <ul class="eco2-support-list">
+          <li>
+            <a href="https://pdv.caracore.com.br/" target="_blank" rel="noopener">CaraCore PDV v4.0.0</a>
+            <span>Release publicada em 06/11/2026 e lançada em 08/11/2026, com a lista de somas SHA-256 assinada por duas chaves Ed25519. Free com tetos declarados; Pro a R$ 79,90/mês.</span>
+          </li>
+          <li>
+            <a href="https://cso.caracore.com.br/" target="_blank" rel="noopener">CSO Gestão de Frotas</a>
+            <span>Em produção desde 06/10/2026, somente online, sem GPS nesta versão e sem emitir nota fiscal.</span>
+          </li>
+          <li>
+            <a href="https://ink.caracore.com.br/" target="_blank" rel="noopener">Ink Agenda Desktop v2.2.1</a>
+            <span>Publicado em 04/11/2026 para Windows e Linux. Um plano, R$ 79,90/mês, com correções e novas versões enquanto a assinatura estiver ativa.</span>
+          </li>
+          <li>
+            <a href="https://gaspar.caracore.com.br/" target="_blank" rel="noopener">Gaspar v1.7.4</a>
+            <span>Complemento do PDV: leva o recado do caixa ao celular da própria loja, no chip e no plano já contratados, sem mensalidade por mensagem.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="eco2-support-group">
+        <h3 class="eco2-group-title"><i class="bi bi-hourglass-split" aria-hidden="true"></i> Em pré-release</h3>
+        <ul class="eco2-support-list">
+          <li>
+            <a href="https://hub.caracore.com.br/download.html" target="_blank" rel="noopener">CaraCore Hub v2.1.0-rc1.10</a>
+            <span>ZIP portátil Windows, sem assinatura digital, com aceite de QA pendente — é o que se baixa hoje, e não é GA. Encomendas de Mercado Livre, Shopee e Temu no computador do ponto de retirada.</span>
+          </li>
+        </ul>
+        <p class="eco2-note">Nenhuma edição nova do PDV está nesta faixa: o que circula da v4 é a 4.0.0 publicada, e a v3.2.12-free segue como versão anterior.</p>
+      </div>
+
+      <div class="eco2-support-group">
+        <h3 class="eco2-group-title"><i class="bi bi-signpost-split" aria-hidden="true"></i> Planejado</h3>
+        <ul class="eco2-support-list">
+          <li>
+            <a href="https://pdv.caracore.com.br/roadmap-2026.html" target="_blank" rel="noopener">PDV v4.1.0 — meta 24/03/2027</a>
+            <span>PIX integrado (Mercado Pago) e NFC-e sob demanda (PlugNotas) como módulos do Plano Pro, cada um ativado pela credencial do próprio provedor, sujeitos a testes, homologação e aprovação.</span>
+          </li>
+          <li>
+            <a href="https://hub.caracore.com.br/" target="_blank" rel="noopener">Hub — GA planejado para 06/04/2027</a>
+            <span>Instalador Windows previsto para esta data. A linha 2.2 existe no código da oficina e ainda não foi cortada nem publicada.</span>
+          </li>
+          <li>
+            <a href="https://ink.caracore.com.br/" target="_blank" rel="noopener">Ink 2.3.0 — 29/01/2027</a>
+            <span>Atualização do Desktop nesta data; a linha 3.0 em PWA vem depois, não antes de 2028.</span>
+          </li>
+          <li>
+            <a href="https://cso-transp.caracore.com.br/" target="_blank" rel="noopener">CSO Transportes + Virtual Tracker</a>
+            <span>Em desenvolvimento, alvo conjunto planejado para 08/11/2028, condicionado à prova móvel, à capacidade e à homologação — sem instalador público e sem venda antecipada.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <blockquote class="eco-bunker-callout">
+      <p class="mb-2"><strong>Distribuição verificável:</strong> cada versão tem página própria na loja do produto, com tamanho e SHA-256 publicados, e a <a href="https://download.caracore.com.br/download.html#ajuda-integridade" target="_blank" rel="noopener">Central de Downloads explica como conferir</a> no Windows e no Linux.</p>
+      <p class="small text-muted mb-0">Autenticidade por Ed25519 está publicada como arquivo assinado hoje apenas no PDV v4.0.0 (duas chaves); no Ink e no Hub a mesma conferência vive na assinatura do manifesto que o próprio aplicativo verifica ao atualizar. Nenhum instalador tem assinatura digital de código: o SHA-256 confere a integridade do download, não a origem do arquivo.</p>
+    </blockquote>
+
+    <p class="eco2-note">O horizonte de 2026 a 2036 é o compromisso de sustentação da base instalada, não um cronograma de recursos: o que entra em cada versão é decidido por produto e publicado no <a href="#roadmap">roadmap desta página</a> e em <a href="planning.html">Planning</a>. Data escrita como planejada ou como meta não é promessa de entrega — só conta como publicado o pacote que está na loja do produto, e só vale para a versão que se baixa hoje o que está descrito nela.</p>
   </div>
 </section>
 

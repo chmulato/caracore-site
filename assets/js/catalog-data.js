@@ -73,7 +73,7 @@
         loja: 'pdv.caracore.com.br',
         url: 'https://pdv.caracore.com.br/',
         portfolio: 'portfolio.html#caracore-pdv',
-        nota: 'Frente de caixa Local-First: aplicação local no Windows, aberta pelo launcher no Edge, com banco em ./data. Sem PIX integrado nem NF-e/NFC-e na v4.0.0 — no Free e no Pro. PIX (Mercado Pago) e NFC-e sob demanda (PlugNotas) estão em desenvolvimento para a v4.1.0, com meta em 24/03/2027.'
+        nota: 'Frente de caixa Local-First: aplicação local no Windows, aberta pelo launcher no Edge, com banco em ./data. Sem PIX integrado nem NF-e/NFC-e na v4.0.0 — no Free e no Pro. PIX (Mercado Pago) e NFC-e sob demanda (PlugNotas) são módulos do Plano Pro na v4.1.0, cada um ativado pela credencial do próprio provedor, com meta em 24/03/2027.'
       },
       {
         id: 'cso',

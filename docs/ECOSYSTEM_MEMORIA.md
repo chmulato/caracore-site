@@ -107,7 +107,10 @@ nenhum `.java`/`.py`/`.sql`/`.wxs`/workflow alterado, banco Free intacto em `663
 `%APPDATA%\CaraCorePDV` inexistente. **O que veio depois:** os quatro commits foram **empurrados em 27/11**
 com autorização do dono — fast-forward, sem `--force`, sem tag, Pages `built` nos quatro SHA novos e o
 corpo servido conferido por SHA-256 contra o blob do `HEAD` — e o lote da correção de resíduo do parágrafo
-acima soma **1** commit local em `caracore-site` e **1** em `caracore-pdv-releases`, **sem push e sem tag**.
+acima saiu em **1** commit por repositório (`caracore-site` `d55bee0`, `caracore-pdv-releases` `8f1dcae`),
+**empurrados em 27/11** com Pages `built` nos dois SHA novos e o mesmo par de provas: `pdv.caracore.com.br/`
+`dd4342d1…`, `pdv.caracore.com.br/tecnologia` `9715798f…` e `caracore.com.br/portfolio` `fe8c896b…`, todos
+**200**, com SHA-256 do corpo **idêntico ao blob** e resíduo da fórmula aposentada **0** nas três.
 
 ### PDV Local-First — três superfícies e a wiki alinhadas ao mesmo texto — 22/11/2026
 

@@ -141,8 +141,12 @@ foi por leitura de memória ou de documento: cada linha tem o instrumento ao lad
 | «Distribuição com SHA-256 + Ed25519 na Central» | A Central publica SHA-256 por cartão e nomeia Ed25519 só no PDV v4.0.0; o próprio texto de integridade dela diz que os instaladores são sem assinatura e que «o SHA-256 confere a integridade do download, não a origem do arquivo» | Redação literal do texto da Central, sem prometer assinatura |
 | «10 recibos SMS/mês no Free» | **0** linhas com `sms` ou `recibo` em `PlanoLicencaService.java`; o nome do campo só existe no legado `caracore-pdv/docs/openapi/openapi-2026-05-01.yaml:2509` (`limiteSmsPlanoFree`), sem valor conferido | O número não foi repetido |
 
-**Descobertas vizinhas, nomeadas e não corrigidas (fora do escopo do pedido):** `ecosistema.html:667` com
-linha envelhecida do freeze do CSO; no GitHub a etiqueta
+**Descobertas vizinhas, nomeadas na época e agora tratadas:** a linha envelhecida do freeze do CSO — o
+ponteiro `ecosistema.html:667` deste documento e do `AGENTS.md` estava errado e foi corrigido em
+28/11/2026: as duas linhas do freeze são `:754` e `:997`, e a `:667` é o `<h2>` «Roadmap — cronograma
+público», medido no `HEAD`. A copy dessas linhas saiu de circulação no mesmo dia em `fdf6bd5`, que levou
+também `portfolio.html:258` e `:1909` e `assets/js/planning-data.js:40`, `:41`, `:44` e `:545`. No GitHub
+a etiqueta
 `v2.1.0-rc1.10` do Hub com `isPrerelease:false`, medida por `gh release view --json isPrerelease`, enquanto a
 loja a chama de pré-release; `assets/js/catalog-data.js` misturando o rótulo legado «Premium» com o nome
 real do plano no código (**Pro**) — tratado no mesmo dia pela auditoria de conformidade, na entrada

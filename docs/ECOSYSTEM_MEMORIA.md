@@ -161,9 +161,53 @@ têm `lastmod` 2026-11-27 e o último commit que tocou cada uma das dez páginas
 linha do `ecosistema.html` — e a auditoria, uma hora depois, fechou exatamente essas **9** linhas (numstat
 `9/9`, linha `sitemap.xml` da tabela da entrada seguinte). A contradição ficou no próprio documento: a frase
 «não corrigida» conviveu com a tabela que registrava o «9/9 fechado», e foi lida como pendência.
-**Armadilha de instrumento:** o zero depende de ler a data que o commit carrega (−0300, 27/11); forçada em UTC
-(`--date=format-local` com `TZ=UTC`), a mesma medição dá 28/11 00:40 e aí **10 de 10** atrasariam — o
-convencional da casa é a data local, a mesma que aparece nas páginas e no rodapé.
+
+**Recontado de novo em 28/11/2026, 05:25 BRT — o «0» das 00:20 abriu 1 e voltou a 0 em dois commits.** O
+parágrafo acima media o arquivo como estava às 00:20, e o lote residual da manhã o tornou incompleto.
+`48a56f8` (28/11 05:04 −0300) fechou as duas linhas atrasadas que `fdf6bd5` abriu (`ecosistema.html`,
+`portfolio.html`) **e abriu uma terceira no próprio movimento**: ao bumpar `planning-data.js?v=20261116`
+para `?v=20261128` em `planning.html:368`, passou a ser o último commit que tocava aquela página com o
+`lastmod` ainda em 2026-11-27 — medido no corpo servido, **1 de 10** atrasava. `a2c6db5` (28/11
+05:12 −0300) moveu só essa linha para 2026-11-28. Tabela refeita sobre o `sitemap.xml` servido (10 pares
+`loc`/`lastmod`, host ápice):
+
+| arquivo | `lastmod` | último commit que tocou | veredito |
+|---|---|---|---|
+| `area51/wiki/index.html` | 2026-11-27 | `d03a9b5` (27/11) | ok |
+| `ecosistema.html` | 2026-11-28 | `fdf6bd5` (28/11) | ok |
+| `index.html` | 2026-11-27 | `d03a9b5` (27/11) | ok |
+| `planning.html` | 2026-11-28 | `48a56f8` (28/11) | ok |
+| `politica/politica-privacidade.html` | 2026-11-27 | `d03a9b5` (27/11) | ok |
+| `politica/termos-servico.html` | 2026-11-27 | `d03a9b5` (27/11) | ok |
+| `portfolio.html` | 2026-11-28 | `fdf6bd5` (28/11) | ok |
+| `publications/livros/index.html` | 2026-11-27 | `d03a9b5` (27/11) | ok |
+| `sites.html` | 2026-11-27 | `d03a9b5` (27/11) | ok |
+| `suporte-local.html` | 2026-11-27 | `d03a9b5` (27/11) | ok |
+
+**0 de 10 atrasam**, com hora: `lastmod` é derivado do histórico, então qualquer commit futuro que toque
+uma das dez páginas reabre a contagem — foi exatamente assim que `48a56f8` abriu a linha que `a2c6db5`
+fechou. **Duas armadilhas de instrumento, desta passada:** rodar o `git log` com **um** `--date` por arquivo
+(`git log -1 --date=short --format='%h %ad' -- <arquivo>`); a primeira corrida, nesta passada das 05:25,
+passou `--date` duas vezes, o `%d` do format virou *ref-names*, a coluna de data saiu como texto literal e
+o «0 atrasam» que saiu dali não media nada. A contagem das 00:20, acima, usava `--date=format:%Y-%m-%d`
+uma vez só e estava correta. E mapear `<loc>` pelo prefixo `www.` devolve «atrasada» nas dez linhas, porque
+o arquivo usa o ápice `https://caracore.com.br` e o `git log` não acha caminho nenhum. A terceira armadilha
+é a do fuso, no parágrafo seguinte, e o número dela mudou com estas três linhas.
+
+**Armadilha de instrumento:** o zero depende de ler a data que o commit carrega (−0300, 27/11); forçada em
+UTC (`--date=format-local`), a mesma medição dá `d03a9b5` em 28/11 00:40 e aí **10 de 10** teriam atrasado
+às 00:20, quando nenhuma linha do mapa tinha 2026-11-28. Reconfirmando em 28/11/2026 às 05:39 BRT, com as
+três linhas já em 2026-11-28: **7 de 10** atrasam em UTC — as sete que seguem com `d03a9b5` e `lastmod`
+2026-11-27 (`area51/wiki/index.html`, `index.html`, `politica/politica-privacidade.html`,
+`politica/termos-servico.html`, `publications/livros/index.html`, `sites.html`, `suporte-local.html`);
+`ecosistema.html`, `portfolio.html` e `planning.html` não atrasam porque os commits delas são de 28/11 nos
+dois fusos. **O UTC aqui é escolha de instrumento, não fato novo:** os sete atrasos são os sete pares em que
+o commit carrega 27/11 21:40 −0300 — a mesma hora que em UTC vira 28/11 00:40. Ressalva medida duas vezes
+nesta máquina, às 05:34 e às 05:39: sem `TZ`, o `--date=format-local` devolve `2026-11-27T21:40:24-0300`;
+com `TZ=UTC` devolve `2026-11-28T00:40:24+0000`; e `TZ=America/Sao_Paulo` e `TZ=Etc/GMT+3` devolveram o
+mesmo `+0000` do `TZ=UTC` — o git/Windows não resolve esses nomes, então por `TZ` só se consegue UTC, e o
+−0300 vem de não definir nada. O convencional da casa é a data local do commit, a mesma que aparece nas
+páginas e no rodapé, e é com ela que a tabela acima fecha em 0 de 10.
 
 **Estado e validação.** `699e757` esteve **local** até o lote da série fechar em `5f5dc86` (push
 fast-forward, `ls-remote` igual ao HEAD, Pages `built` nesse SHA, SHA-256 dos `.md` servidos igual ao blob do

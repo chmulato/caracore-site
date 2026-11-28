@@ -142,12 +142,24 @@ foi por leitura de memória ou de documento: cada linha tem o instrumento ao lad
 | «10 recibos SMS/mês no Free» | **0** linhas com `sms` ou `recibo` em `PlanoLicencaService.java`; o nome do campo só existe no legado `caracore-pdv/docs/openapi/openapi-2026-05-01.yaml:2509` (`limiteSmsPlanoFree`), sem valor conferido | O número não foi repetido |
 
 **Descobertas vizinhas, nomeadas e não corrigidas (fora do escopo do pedido):** `ecosistema.html:667` com
-linha envelhecida do freeze do CSO; **9** dos **10** `lastmod` do `sitemap.xml` atrasando o último commit
-que tocou a página (a casa trata `lastmod` como editorial, não como fato de build); no GitHub a etiqueta
+linha envelhecida do freeze do CSO; no GitHub a etiqueta
 `v2.1.0-rc1.10` do Hub com `isPrerelease:false`, medida por `gh release view --json isPrerelease`, enquanto a
 loja a chama de pré-release; `assets/js/catalog-data.js` misturando o rótulo legado «Premium» com o nome
 real do plano no código (**Pro**) — tratado no mesmo dia pela auditoria de conformidade, na entrada
 seguinte.
+
+**Saiu da lista por estar vencida — recontado no lugar em 28/11/2026, 00:20 BRT.** Esta entrada afirmava que
+**9** dos **10** `lastmod` do `sitemap.xml` seguiam atrasando o último commit que tocou a página. Recontado
+URL por URL (`git log -1 --format='%h|%ad' --date=format:%Y-%m-%d -- <arquivo>`), **0** atrasam: as dez linhas
+têm `lastmod` 2026-11-27 e o último commit que tocou cada uma das dez páginas é `d03a9b5`, de 2026-11-27
+21:40 −0300. O «9» foi verdadeiro na hora em que foi escrito — em `699e757` (27/11 20:27) o arquivo tinha
+**9** datas velhas (2026-08-08 ×2, 2026-08-14 ×1, 2026-11-09 ×6, 2026-11-15 ×1) e o diff **1/1** moveu só a
+linha do `ecosistema.html` — e a auditoria, uma hora depois, fechou exatamente essas **9** linhas (numstat
+`9/9`, linha `sitemap.xml` da tabela da entrada seguinte). A contradição ficou no próprio documento: a frase
+«não corrigida» conviveu com a tabela que registrava o «9/9 fechado», e foi lida como pendência.
+**Armadilha de instrumento:** o zero depende de ler a data que o commit carrega (−0300, 27/11); forçada em UTC
+(`--date=format-local` com `TZ=UTC`), a mesma medição dá 28/11 00:40 e aí **10 de 10** atrasariam — o
+convencional da casa é a data local, a mesma que aparece nas páginas e no rodapé.
 
 **Estado e validação.** `699e757` esteve **local** até o lote da série fechar em `5f5dc86` (push
 fast-forward, `ls-remote` igual ao HEAD, Pages `built` nesse SHA, SHA-256 dos `.md` servidos igual ao blob do

@@ -92,9 +92,150 @@ separadores byte a byte.
 **Estado na data desta entrada (envelhece no push, por isso vai datado):** `master` em `9d4fa1d`, **3**
 commits à frente de `origin/master` = `f69aed3` — `699e757` (compromisso de sustentação 2026–2036),
 `d03a9b5` (auditoria de conformidade LGPD/CDC e das promessas públicas, amendado do `33b7095`) e `9d4fa1d`
-(isolamento) — **sem push, sem tag, sem release**. **Duas passagens da mesma série seguem sem registro
-canônico** até o dono pedir: o compromisso 2026–2036 e a auditoria de conformidade não têm seção nesta
-memória nem adendo no `AGENTS.md`; esta entrada registra só o isolamento, como foi pedido.
+(isolamento) — **sem tag, sem release** e, na medição daquela hora, **sem push**. O dono autorizou no
+mesmo dia e a série fechou em `5f5dc86`: `ls-remote` igual ao HEAD, Pages `built` nesse SHA, SHA-256 dos
+dois documentos servidos idêntico ao blob do commit e as cinco URLs internas que davam 200 passando a dar
+404. **As duas passagens desta série têm registro próprio:** o compromisso 2026–2036 e a auditoria de
+conformidade ganharam seção abaixo e adendo no `AGENTS.md` — pedido na noite de 27/11, registro escrito na
+virada para 28/11; a redação anterior desta mesma entrada dizia que não tinham, e a frase foi corrigida
+aqui, no lugar.
+
+### Matriz — a seção «Compromisso · 2026 → 2036» na página Ecossistema — 27/11/2026
+
+**Esta entrada foi aberta à 00h de 28/11/2026, a pedido do dono, para registrar uma passagem de
+27/11/2026.** O trabalho, o commit e as medições são de 27/11; o que mudou na virada é só o estado do
+remoto, reconferido antes de escrever.
+
+**O que o brief pedia e o que virou superfície pública:** expor na matriz o compromisso de sustentação de
+dez anos da base instalada. A política não nasce aqui — é a **Regra de Longevidade 2026–2036**, decisão do
+dono em 22/11/2026 já registrada no `AGENTS.md` (migrações estritamente retrocompatíveis e aditivas,
+histórico local preservado, nenhuma evolução de versão, motor ou interface podendo quebrar o banco do
+cliente). A página mostra o compromisso; não cria obrigação nova.
+
+Publicado em `ecosistema.html` como `<section id="compromisso-2036">`, linhas **319-401**, entre `#nucleo` e
+`#bunker-digital`, com entrada no TOC lateral e nos atalhos mobile (2 ocorrências da âncora). Geometria
+medida no arquivo, linha a linha:
+
+| Elemento | Linhas | Conteúdo medido |
+|---|---|---|
+| Cabeçalho | `:322-324` | eyebrow «Compromisso · 2026 → 2036», h2 «Dez anos de sustentação para a base instalada», lead |
+| Pilares | `:328-332` | `eco2-pillars` com **5** itens |
+| Em produção | `:340-355` | `eco2-support-grid`, primeira faixa: **4** cartões |
+| Em pré-release | `:363-367` | segunda faixa: **1** cartão + `eco2-note` |
+| Planejado | `:374-388` | terceira faixa: **4** cartões |
+| Chamada e fecho | `:394-399` | `eco-bunker-callout` e `eco2-note` final |
+
+**Zero CSS novo** — a seção só reusa classes que já existiam na página. **10** âncoras `https` no trecho,
+**0** sem `rel="noopener"`. Diff do commit `699e757`: `ecosistema.html` **87/0** e `sitemap.xml` **1/1** (só
+o `lastmod` da página, para 2026-11-27).
+
+**As seis premissas do brief que a medição recusou — e o que saiu publicado em vez delas.** Nenhuma recusa
+foi por leitura de memória ou de documento: cada linha tem o instrumento ao lado.
+
+| Premissa do brief | O que a medição deu | O que saiu na página |
+|---|---|---|
+| CSO «em fase de Release Candidate, fechamento até o final de 2026» | Oficina `caracore-cso-transportes` com **0** etiquetas (`git tag \| wc -l` = 0, HEAD `dcb1f20` de 27/11) e releases não expostas pela API (`gh api repos/chmulato/caracore-cso-transportes/releases` = **404**, repo privado — logo o «zero» é provável localmente, não pelo remoto); a loja `cso-transp` fala em alvo conjunto **08/11/2028** | «em desenvolvimento, alvo conjunto 08/11/2028», sem instalador prometido |
+| «Checker virtual» como módulo de inventário e vistoria do veículo | A expressão exata dá **0** em `git grep -i 'checker virtual' HEAD`. Os **5** arquivos `.js` que casam com `checker` solto são `checkbox` e `authorization-check` — não há módulo de vistoria | Não entrou na copy |
+| Hub «em evolução na linha rc1.x rumo à v2.2.0» | `2.2.0-rc1` só aparece em `electron/package.json` e nos POMs; nunca foi cortado nem publicado. O que se baixa é `v2.1.0-rc1.10` | Pré-release `rc1.10` + nota explícita de que a linha 2.2 é só código |
+| «SQLite/H2 sob controle do proprietário» | H2 é motor de teste; em produto embarcam SQLite (PDV, Hub, Ink) e PostgreSQL na nuvem da Cara Core (CSO Frotas) | SQLite local sob controle do cliente; PostgreSQL na nuvem da Cara Core para o CSO |
+| «Distribuição com SHA-256 + Ed25519 na Central» | A Central publica SHA-256 por cartão e nomeia Ed25519 só no PDV v4.0.0; o próprio texto de integridade dela diz que os instaladores são sem assinatura e que «o SHA-256 confere a integridade do download, não a origem do arquivo» | Redação literal do texto da Central, sem prometer assinatura |
+| «10 recibos SMS/mês no Free» | **0** linhas com `sms` ou `recibo` em `PlanoLicencaService.java`; o nome do campo só existe no legado `caracore-pdv/docs/openapi/openapi-2026-05-01.yaml:2509` (`limiteSmsPlanoFree`), sem valor conferido | O número não foi repetido |
+
+**Descobertas vizinhas, nomeadas e não corrigidas (fora do escopo do pedido):** `ecosistema.html:667` com
+linha envelhecida do freeze do CSO; **9** dos **10** `lastmod` do `sitemap.xml` atrasando o último commit
+que tocou a página (a casa trata `lastmod` como editorial, não como fato de build); no GitHub a etiqueta
+`v2.1.0-rc1.10` do Hub com `isPrerelease:false`, medida por `gh release view --json isPrerelease`, enquanto a
+loja a chama de pré-release; `assets/js/catalog-data.js` misturando o rótulo legado «Premium» com o nome
+real do plano no código (**Pro**) — tratado no mesmo dia pela auditoria de conformidade, na entrada
+seguinte.
+
+**Estado e validação.** `699e757` esteve **local** até o lote da série fechar em `5f5dc86` (push
+fast-forward, `ls-remote` igual ao HEAD, Pages `built` nesse SHA, SHA-256 dos `.md` servidos igual ao blob do
+commit, e as cinco URLs internas de backend aposentado passando de 200 a 404). Refeito neste HEAD:
+`npm run build` **8/8** testes com *101 HTML files; 527 resource references; 103 JavaScript syntax checks*;
+as suítes de SEO, CDN e planning em `scripts/tests/*.test.cjs` **14/14**; `scripts/varredura-copy.cjs` e
+`scripts/varredura-termos.cjs` com exit **0**; **0** links markdown para `infra/` ou `docs/archive/`.
+
+**Armadilhas de instrumento medidas nesta passada:** (a) `node --test scripts/tests/` com o diretório como
+argumento devolve `MODULE_NOT_FOUND` — o runner daqui não expande diretório; é preciso listar os três
+`.test.cjs`, e só então os 14 testes aparecem; (b) `git grep -i checker` casa `checkbox` e
+`authorization-check` em 5 arquivos e daria a sensação de que o «Checker virtual» existe — a asserção só
+vale com a expressão exata, e aí o resultado é 0; (c) a faixa de linhas da seção é **319-401**, não 318-402
+como registrou a nota de trabalho da época, que não vinha de medição.
+
+### Matriz — auditoria de conformidade LGPD, CDC e das promessas públicas — 27/11/2026
+
+**Registro aberto à 00h de 28/11/2026, a pedido do dono; o trabalho, o commit e as medições são de
+27/11/2026.** Commit `d03a9b5`, **19 arquivos, +279/−109**, emendado do `33b7095` só para trocar **1** byte
+de texto da mensagem e fechá-la em ASCII puro (árvore idêntica `e8b66b42c87e8d583a4d3e4bdd026d6a8cdb2da4`; o
+método da emenda está registrado na entrada do isolamento).
+
+**Base legal conferida artigo por artigo antes de citar — nenhum número de protocolo ou registro da ANPD foi
+inventado:** LGPD art. 33 II e art. 41 §1º; Lei 6.404/1976 art. 178 (livro contábil); CTN art. 173
+(decadência); CDC art. 49 (direito de arrependimento) e art. 101 I (fórum do consumidor). As duas páginas de
+política citam esses artigos no corpo, e `scripts/varredura-termos.cjs` fecha exit **0** sobre elas.
+
+**Delta por arquivo, conferido no numstat do commit:**
+
+| Arquivo | +/− | O que entrou |
+|---|---|---|
+| `politica/politica-privacidade.html` | 107/11 | h2 **11 → 15**; novos `0.1 Arquitetura local-first`, `4. Segurança` (desdobrado da antiga «Segurança e retenção»), `4.1 Prazos de retenção`, `6. Cookies e armazenamento local`, `6.1 Transferência internacional de dados`, `6.2 Encarregado pelo tratamento de dados (DPO)`; 10.828 → **25.454** B |
+| `politica/termos-servico.html` | 57/12 | h2 **11 → 15**; quatro cláusulas que não existiam — **6 Licenciamento de software (EULA)**, **7 Planos, assinatura, renovação e cancelamento**, **8 Direito de arrependimento (art. 49 do CDC)**, **9 Suporte, prazos e atendimento**; antigo bloco 6-11 renumerado para 10-15; `11. Contato` virou `15. Contato e identificação`; 9.955 → **16.938** B |
+| `area51/wiki/index.html` | 23/24 | **a correção de promessa mais grave da matriz**: «100% Testes Aprovados» → **«17 de 22 testes aprovados»**, `<h3>100%</h3>` → `<h3>77,3%</h3>`, `aria-valuenow` 100 → 77, com a nota de que a meta era acima de 90% e não foi alcançada; «Conformidade LGPD» → «Tratamento de dados sob a LGPD»; o link à API do host aposentado virou bloco neutro «Fora do ar» (NXDOMAIN medido em 27/11). **5** linhas ganharam `rel="noopener"` |
+| `index.html` | 18/15 | **9** `rel="noopener"`; bloco do Hub com os planos reais (Free Starter 150/300 e Pro R$ 79,90/mês); mapa OpenStreetMap convertido em fachada com clique; frase local-first no rodapé |
+| `404.html` | 21/0 | estilo `.foot` e rodapé cadastral novo: CNPJ 23.969.028/0001-37, Campo Largo/PR, suporte@caracore.com.br e os dois links de política |
+| `assets/js/catalog-data.js` | 12/12 | `atualizadoEm` 27/11/2026; PDV de «Premium» para **Pro**; CSO com limites **5/10/50** no lugar dos rótulos P5/P10/Corporate; Hub Free (Starter) e Pro **R$ 79,90/mês** com «Sem checkout no aplicativo»; Ink deixando de dizer «conferir na loja» para repetir o **R$ 79,90/mês** que a loja do Ink já publica |
+| `portfolio.html` | 10/8 | planos do Hub escritos como na loja (Free Starter 150/300 · Pro R$ 79,90/mês · «Site e aplicativo não processam pagamento»), Minerador qualificado como «simulação, sem ligação com planta real», licenciamento do Circuito para escolas, política de privacidade própria do Helianto declarada como pendente de produto em roadmap, e a frase local-first no rodapé. **Nenhuma linha com `noopener` neste arquivo** |
+| `ecosistema.html` | 4/3 | `eco2-note` dizendo que 2026→2036 é compromisso de sustentação e não cronograma de recursos, descrição do Hub como PUDO, planos do Hub e frase local-first no rodapé |
+| `sitemap.xml` | 9/9 | `lastmod` 2026-11-27 nas 9 linhas tocadas; com isso as **10** URLs do arquivo ficam na data |
+| `aligned/it/articles.html` | 6/6 | só atributos: **6** `rel="noopener"` |
+| `secure/consent.html` | 2/2 | **2** âncoras com `noopener`, atributo apenas |
+| `secure/first-access.html` | 2/2 | **2** âncoras com `noopener`, atributo apenas |
+| `planning.html` | 2/1 | rodapé: linha cadastral com o site e a frase local-first. Sem `noopener` |
+| `folders/folder_py.html` | 1/1 | **1** `rel="noopener"` |
+| `publications/livros/index.html` | 1/1 | **1** âncora com `noopener`; os rótulos de consentimento LGPD passaram a linkar a política |
+| `secure/access-pending.html` | 1/1 | **1** âncora com `noopener`, atributo apenas |
+| `sites.html` | 1/0 | só a frase local-first no rodapé |
+| `suporte-local.html` | 1/0 | só a frase local-first no rodapé |
+
+**`rel="noopener"` somado no diff: 27 linhas adicionadas, 0 removidas**, em **8** arquivos (contado por
+arquivo com `git diff -U0`): `index.html` 9, `aligned/it/articles.html` 6, `area51/wiki/index.html` 5,
+`secure/consent.html` 2, `secure/first-access.html` 2, `folders/folder_py.html` 1,
+`publications/livros/index.html` 1, `secure/access-pending.html` 1. Os demais arquivos tocados não ganharam
+âncora — ganharam rodapé, copy de plano ou `lastmod`.
+
+**Frase local-first nos rodapés:** entrou em **6** páginas (`index.html`, `ecosistema.html`,
+`portfolio.html`, `planning.html`, `sites.html`, `suporte-local.html`), e o texto é o mesmo nas seis: «Dados
+de venda, agenda, encomendas e clientes ficam no equipamento da loja: os produtos operam local-first».
+
+**Mapa sob consentimento, medido no `index.html`:** o iframe do OpenStreetMap deixou de ser montado na carga
+da página. Botão `#maps-load`; `carregarMapaAproximado()` definida em `:976` e ligada **só** em `:1003`;
+iframe construído em `:994` com bbox de ±0,012 em torno de −25,4606 / −49,5369, `loading="lazy"`,
+`referrerPolicy="no-referrer"` e `sandbox='allow-scripts allow-same-origin'`; o comentário em `:1000`
+declara o motivo («o mapa é de terceiro: só carrega no clique, nunca na carga da página»).
+
+**Alegação do próprio commit que a recontagem corrigiu:** a bala «dados cadastrais no rodapé das páginas» é
+mais larga que o fato. Medido antes/depois por arquivo, o CNPJ **já estava** nas seis páginas de rodapé (1
+ocorrência antes, 1 depois; `portfolio.html` tem 4) — nelas entrou apenas a frase local-first. Quem passou a
+ter dados cadastrais foi **só** a `404.html`, que não tinha rodapé nenhum.
+
+**Intocável por restrição do pedido:** `js/session-manager.js` e a lógica de `secure/`. Nos três arquivos de
+`secure/` tocados mudaram **só atributos de âncora** — nenhuma rota, script ou fluxo de login. **Nenhum
+preço novo, nenhuma versão, nenhum hash de instalador e nenhuma data oficial mudaram:** os R$ 79,90/mês
+citados são os que as lojas do Hub e do Ink já publicam, e o `catalog-data.js` deixou de dizer «conferir na
+loja» para dizer o mesmo número.
+
+**O que a auditoria não resolve, medido depois dela:** o host aposentado `caracore-backend-docker` segue em
+**51** arquivos versionados / **83** ocorrências (`git grep -c 'caracore-backend-docker' HEAD`, somado pelo
+campo de contagem), **27** deles sob `secure/`, com exatamente **1** ocorrência em cada um de `index.html`,
+`ecosistema.html`, `portfolio.html` e `planning.html` — todas dentro da meta `Content-Security-Policy` — e
+como API base padrão em `js/session-manager.js:24`. `.well-known/security.txt` responde **404**. `robots.txt`
+segue `Allow: /` com Disallows de caminho, o que não bloqueia acesso direto por URL. O contraste AA do hero
+fica para a passada dedicada.
+
+**Armadilha de instrumento, para não repetir:** contar esse host na árvore de trabalho com `grep -r` dá
+número maior e distorcido, porque o `htmlcov/` (gitignored, **404** no ar) repassa as strings do código
+fonte. A mediação que vale é no ref (`git grep … HEAD`), como manda a regra da casa.
 
 ### PDV — PIX e NFC-e como módulos do Plano Pro na v4.1.0: alinhamento das quatro superfícies — 27/11/2026
 
@@ -1692,6 +1833,8 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 | Data | Alteração |
 |------|-----------|
 | 2026-11-27 | **Matriz: 174 arquivos de backend aposentado e de arquivo saem da árvore que o GitHub Pages serve** — medido no ar antes do corte (`app.py` 200/178.497 B, `authorized_users.json` 200/2.576 B, `.azure/config` 200/118 B, `.env.example` 200/732 B, `API_DOCUMENTATION.md` 200/3.227 B), cortado com `git rm -r --cached` + regras `/infra/` e `/docs/archive/` em `.gitignore:108-109`, disco preservado (653K e 1.4M), **10** ponteiros markdown consertados em 3 documentos, commit local `9d4fa1d` (numstat 178 arquivos, +23/−49.762) com build revalidado **8/8** e 101/527/103 idênticos ao pré-corte; o `htmlcov/` **nunca** foi publicado (alegação do relatório anterior, corrigida); os bytes seguem no histórico de um repo público e a retirada de lá é decisão do dono (rewrite, GitHub Support, repo privado ou Pages em build `workflow`); `js/session-manager.js` e `secure/` intocados por restrição. Sem push: `master` em `9d4fa1d`, 3 à frente de `origin/master` `f69aed3`. § «Matriz — o arquivo morto do backend e o `docs/archive/` fora da árvore publicada pelo Pages — 27/11/2026» |
+| 2026-11-27 | **Matriz: auditoria de conformidade LGPD, CDC e das promessas públicas** (`d03a9b5`, emendado do `33b7095` para fechar a mensagem em ASCII puro com árvore idêntica; **19 arquivos, +279/−109**) — o «100% Testes Aprovados» da Área 51 virou **«17 de 22 (77,3%)»**, com a meta acima de 90% declarada como não alcançada; as duas políticas ganharam base legal conferida artigo por artigo (LGPD art. 33 II e art. 41 §1º, Lei 6.404/1976 art. 178, CTN art. 173, CDC art. 49 e art. 101 I) e cresceram de 10.828 → **25.454** B e 9.955 → **16.938** B, com EULA, planos e direito de arrependimento nas cláusulas que faltavam; **27** `rel="noopener"` em 8 arquivos; o mapa da home passou a carregar **só no clique**; o catálogo deixou de dizer «Premium» onde o código diz **Pro** e de dizer «conferir na loja» onde a loja do Ink publica R$ 79,90/mês; `sitemap.xml` fechou as **10** URLs em 2026-11-27. **Corrigida a alegação do próprio commit:** as seis páginas de rodapé já tinham o CNPJ — quem passou a ter dados cadastrais foi só a `404.html`. Fica aberto: o host aposentado em **51** arquivos / **83** ocorrências (**27** sob `secure/`, CSP em 4 páginas, API base em `js/session-manager.js:24`) e `security.txt` **404**. Detalhe por arquivo, deltas e instrumento de cada número: § «Matriz — auditoria de conformidade LGPD, CDC e das promessas públicas — 27/11/2026». |
+| 2026-11-27 | **Matriz: seção «Compromisso · 2026 → 2036» na página Ecossistema** (`699e757`, `ecosistema.html` **87/0** + `sitemap.xml` **1/1**, só o `lastmod` da página) — `<section id="compromisso-2036">` nas linhas **319-401**, entre `#nucleo` e `#bunker-digital`: **5** pilares, `eco2-support-grid` em três faixas (4 cartões em produção / 1 em pré-release / 4 planejados), `eco-bunker-callout` e nota de fecho, **zero CSS novo**, **10** âncoras `https` todas com `rel="noopener"`. A página expõe a Regra de Longevidade 2026–2036 decidida em 22/11/2026; não cria obrigação. **Seis premissas do brief caíram na medição e não saíram como vieram:** CSO sem etiqueta e sem release (0 tags; API do remoto 404) e sim com alvo conjunto 08/11/2028; «Checker virtual» com **0** ocorrências da expressão exata; a linha 2.2 do Hub é só código, o que se baixa é `v2.1.0-rc1.10`; H2 é motor de teste; a Central não promete Ed25519 fora do PDV v4.0.0; o teto de 10 recibos SMS/mês não está em `PlanoLicencaService`. Nenhum preço, versão, hash ou data oficial mudou; `699e757` esteve local até o lote da série fechar em `5f5dc86`. Detalhe e tabela de recusa por premissa: § «Matriz — a seção «Compromisso · 2026 → 2036» na página Ecossistema — 27/11/2026». |
 | 2026-11-22 | **Ink Agenda (Desktop 2.3.0): dia 1 da cota de dezembro fechou as quatro etapas da OS `PROMPT_INK_BUILDER_2026-12-01.txt` — P1.13 implementado, R-C06 ensaiado três vezes e H-A08 executado.** `RestoreService` passou a aceitar que **a senha do dossiê autorize o vínculo à máquina nova** (`app_identity.hardware_id` regrava; dossiê legado sem senha continua preso à origem; falha em instalação limpa apaga o resíduo; trilha `event=dossier.restore.link` só com hashes curtos, sem migração — `V31` segue livre). Gate remédio na árvore: `mvn -B verify` **759/0** (+8 LGPD = **767**), `mvn -Ptestfx verify` **852/0** (85 ITs), demo **V30**. Homologação: **H-A09 e H-B01 viraram Conforme** (relogin do dono executado em `b1-20261201`), H-B02/H-B03 reconfirmados e o **H-A08** foi registrado como **evidência de release do RK-01 sem mudar de status** (`.inkbak` criado pela **2.2.1 publicada** — 11 225 B, SHA-256 `1f680083…609f` — restaurado em `b7` limpa: contagens e UUIDs idênticos, schema V30, `outcome=kept`, nenhum agendamento sem profissional). Observação do caminho de **restauro** (a migração V26→V30 roda dentro do `RestoreService` e não chama o `snapshotBeforeMigration` do R-C04, então quem sobe por dossiê fica sem a «cópia anterior à actualização») **decidida no mesmo dia pelo dono como `RK-30`, limitação declarada para a 2.3.0**, sem código de banco antes do corte; contorno declarado nas notas e em `agenda-java/docs/BACKUP.md`: o próprio `.inkbak` de origem é a cópia externa imutável anterior à operação. Tudo em sandbox (`b3`/`b1`/`b4`–`b7`), base real do AppData conferida intacta; **commit local do lote P1.13 + registro documental a pedido do dono; sem push, sem etiqueta, sem publicação** — produto no ar segue o **2.2.1** com canal keyless; entrega do 2.3.0 continua **29/01/2027**. Evidência local (fora do Git): `caracore-ink/docs/evidencias/homolog-p1-20261201/`.
 | 2026-11-10 | **Blogs Retrô e pessoal publicando no LinkedIn com thumbnail da capa, validado ponta a ponta nos dois:** a capa do artigo (`og:image`) sobe pela Images API (`initializeUpload` → PUT dos bytes → `urn:li:image` no `thumbnail` do card; o LinkedIn não faz scraping de URL) e falha de upload não bloqueia o post. **Retrô** (`caracore-retro`): `tools/publish_linkedin.py` + job `publish-linkedin` do `deploy.yml`, modo manual por `workflow_dispatch` (input `article`), header `LinkedIn-Version: 202601` obrigatório, URL nunca solta no commentary (o markdown corrompe `_`), página de privacidade nova em `docs/privacidade.html` — posts 143 e 144 republicados com capa e **imagem confirmada no card** (`urn:li:share:7526091630282596352`, `urn:li:share:7526092112099082241`). **Pessoal** (`caracore-personal`): `linkedin_rss_auto.py` + `publish-linkedin.yml` (ledger `linkedin_published.json`, log do `urn:li:share` para validação externa), artigo de 09/11 republicado com `force` e **imagem confirmada no card**. **Credenciais:** secrets `LINKEDIN_ACCESS_TOKEN` + `LINKEDIN_AUTHOR_URN` (Retrô, app «Artigos Retrô») e `LINKEDIN_ACCESS_TOKEN` + `PERSON_URN` (pessoal, app «Blog Dev») — o `sub` é pairwise por app, os URNs **não** são intercambiáveis; tokens gerados em 10/11/2026, expiram **~09/01/2027** → renovar até **05/01/2027** (lembretes `.ics`, um por blog, em Downloads). Detalhes completos nas memórias locais `.cursor/rules` dos dois repos. Pendências do dono: apagar posts antigos sem imagem/duplicados e cadastrar a URL de privacidade nas Settings do app LinkedIn. Nenhuma versão de produto mudou. |
 | 2026-11-10 | **CSO em produção: rede de segurança própria (dump diário em HD removível, restauração provada) e senha do banco rotacionada:** o Postgres do Railway está no plano **HOBBY** e não tem PITR, bucket nem backup agendado (`railway postgres history`, medido em 10/11/2026). A proteção passou a ser a rotina `E:\CC_BAK_CSO\backup-cso.sh`: `pg_dump -Fc -Z9` por `railway ssh`, retenção de **30** arquivos, log em `logs/backup.log`, lock com tratamento de resíduo velho, 3 tentativas com 10 s em timeout, agendamento diário por `schtasks` mais launcher VBS na pasta Iniciar (o `onlogon` exige elevação) para catch-up com `StartWhenAvailable` e sem bloqueio por bateria. Cada arquivo é checado por magic `PGDMP`, tamanho > 1 KB, TOC por `pg_restore -l` conferido contra `select count(*) from pg_tables where schemaname='public'` (22) e `sha256` ao lado. **Restauração provada** em container descartável `postgres:18`: contagens idênticas às da produção (tenant=2, usuario=4, veiculo=7, migracoes=30, tabelas=22). Limite declarado: é dump diário, **não** PITR — perde-se até o dia; PITR/Pro segue **decisão de custo do dono**. No mesmo dia a **senha do usuário `postgres` foi rotacionada** (escopo autorizado pelo dono): 6 variáveis literais atualizadas (`Postgres`: `POSTGRES_PASSWORD`, `PGPASSWORD`, `DATABASE_URL`; `caracore-cso-quarkus`: `DATABASE_PASSWORD`, `PGPASSWORD`, `DATABASE_URL`), `ALTER USER`, deploy `f7b103d8` SUCCESS às 21:42Z e `/q/health/ready` UP com o check de banco; prova positiva e negativa **pela rede privada**, porque `local`, `127.0.0.1/32` e `::1/128` são `trust` no `pg_hba` e o loopback daria verde falso. Motivo da rotação: a senha havia sido impressa no chat por `railway connect --tunnel-only`. O banco não tem endpoint público (só `postgres.railway.internal`). Nenhuma versão, tag, data ou gate de produto mudou. |

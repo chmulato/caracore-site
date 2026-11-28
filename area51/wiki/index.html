@@ -55,7 +55,7 @@
                     <span class="badge-custom bg-success"> FASE 5 CONCLUÍDA</span>
                     <span class="badge-custom bg-success"> FASE 6 CONCLUÍDA</span>
                     <span class="badge-custom bg-success"> FASE 7 CONCLUÍDA</span>
-                    <span class="badge-custom bg-primary"> 100% Testes Aprovados</span>
+                    <span class="badge-custom bg-primary"> 17 de 22 testes aprovados</span>
                     <span class="badge-custom bg-secondary"> OAuth 2.1 + LGPD + Swagger + Refresh Tokens</span>
                     <span class="badge-custom bg-info"> Correções de Estabilidade (16/11/2025)</span>
                 </div>
@@ -77,38 +77,37 @@
                         <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
                             <i class="bi bi-tools me-1"></i> Ferramentas Super Admin
                         </div>
-                        <a class="nav-link" href="/secure/super-admin-login.html" target="_blank">
+                        <a class="nav-link" href="/secure/super-admin-login.html" target="_blank" rel="noopener">
                             <i class="bi bi-person-fill-gear me-2 text-danger"></i>Super Admin Login
                             <span class="badge bg-danger ms-1">Fase 5</span>
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="/secure/admin-users.html" target="_blank">
+                        <a class="nav-link" href="/secure/admin-users.html" target="_blank" rel="noopener">
                             <i class="bi bi-people me-2 text-primary"></i>Gestão de Usuários
                             <span class="badge bg-primary ms-1">Fase 5</span>
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="/secure/approval-requests.html" target="_blank">
+                        <a class="nav-link" href="/secure/approval-requests.html" target="_blank" rel="noopener">
                             <i class="bi bi-clipboard-check me-2 text-warning"></i>Aprovações
                             <span class="badge bg-warning text-dark ms-1">Fase 5</span>
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="/secure/change-password.html" target="_blank">
+                        <a class="nav-link" href="/secure/change-password.html" target="_blank" rel="noopener">
                             <i class="bi bi-key me-2 text-success"></i>Alterar Senha
                             <span class="badge bg-success ms-1">Fase 5</span>
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
-                        <a class="nav-link" href="https://caracore-backend-docker.azurewebsites.net/api-docs" target="_blank">
-                            <i class="bi bi-file-code me-2 text-info"></i>API Documentation (Swagger)
-                            <span class="badge bg-info ms-1">Fase 6</span>
-                            <i class="bi bi-box-arrow-up-right ms-1 small"></i>
-                        </a>
+                        <div class="nav-link text-muted" title="A especificação Swagger/OpenAPI está no código do serviço; o ambiente online que a servia foi desativado e o endereço não responde mais.">
+                            <i class="bi bi-file-code me-2 text-muted"></i>API Documentation (Swagger)
+                            <span class="badge bg-secondary ms-1">Fora do ar</span>
+                        </div>
 
                         <hr class="my-3">
 
                         <div class="nav-section-title text-muted small text-uppercase mb-2 ms-3">
                             <i class="bi bi-person-check me-1"></i> Ferramentas Admin
                         </div>
-                        <a class="nav-link" href="/secure/admin-logs.html" target="_blank">
+                        <a class="nav-link" href="/secure/admin-logs.html" target="_blank" rel="noopener">
                             <i class="bi bi-clipboard-data me-2 text-info"></i>Dashboard de Auditoria
                             <i class="bi bi-box-arrow-up-right ms-1 small"></i>
                         </a>
@@ -155,7 +154,7 @@
                                 <li>📊 <strong>Auditoria Enterprise:</strong> Logs detalhados de todas as operações de segurança com endpoint dedicado</li>
                                 <li>🛡️ <strong>Segurança Avançada:</strong> PKCE, JWT validation, rate limiting, CSP headers, validação inteligente de tenant</li>
                                 <li>📖 <strong>API Documentada:</strong> Swagger/OpenAPI completo para todos os endpoints</li>
-                                <li>✅ <strong>Qualidade Garantida:</strong> 100% de aprovação em 22 testes automatizados</li>
+                                <li>✅ <strong>Qualidade verificada:</strong> 17 de 22 testes automatizados aprovados na medição de 16/11/2025</li>
                                 <li>🔧 <strong>Estabilidade Aprimorada:</strong> Correções de compatibilidade Microsoft, PKCE e tratamento de erros (16/11/2025)</li>
                             </ul>
                             <p class="mb-0">
@@ -165,7 +164,7 @@
                             </p>
                         </div>
                         <p>
-                            Desenvolvido com foco em <strong>segurança, performance e escalabilidade</strong>, o sistema oferece uma experiência de autenticação moderna e confiável, adequada para aplicações enterprise que exigem os mais altos padrões de proteção de dados e conformidade (incluindo LGPD).
+                            Desenvolvido com foco em <strong>segurança, performance e escalabilidade</strong>, o sistema oferece uma experiência de autenticação moderna, com tratamento de dados alinhado à LGPD. A conformidade de quem usa o sistema depende também da própria configuração e dos contratos com os provedores de identidade.
                         </p>
                     </section>
 
@@ -202,10 +201,10 @@
                             <li><strong>Autenticação de Super Admin:</strong> Acesso aos painéis administrativos protegido por credenciais separadas e hash de senha seguro (bcrypt).</li>
                             <li><strong>Rate Limiting:</strong> Proteção contra ataques de força bruta nos endpoints de autenticação.</li>
                             <li><strong>Middleware de Autorização:</strong> Sistema robusto de validação JWT com hierarquia de roles (user &lt; admin &lt; super_admin).</li>
-                            <li><strong>Conformidade LGPD:</strong> Consentimento obrigatório registrado com timestamp e versões dos termos.</li>
+                            <li><strong>LGPD no acesso:</strong> Consentimento obrigatório registrado com timestamp e versões dos termos.</li>
                         </ul>
                         <div class="alert alert-success">
-                            <strong>Fases 4, 5, 6 e 7 Concluídas:</strong> Sistema de autorização robusto (Fase 4), middleware de proteção de endpoints (Fase 5), validação JWT funcional e 100% de aprovação nos testes automatizados (Fase 6), e sistema de refresh tokens com criptografia AES-256 (Fase 7). Todos os endpoints protegidos, hierarquia de roles implementada, e sessões persistentes com renovação automática. Correções críticas da Fase 7 garantem compatibilidade completa com contas pessoais Microsoft e estabilidade do sistema.
+                            <strong>Fases 4, 5, 6 e 7 Concluídas:</strong> Sistema de autorização robusto (Fase 4), middleware de proteção de endpoints (Fase 5), validação JWT funcional e 17 de 22 testes automatizados aprovados (Fase 6), e sistema de refresh tokens com criptografia AES-256 (Fase 7). Todos os endpoints protegidos, hierarquia de roles implementada, e sessões persistentes com renovação automática. Correções críticas da Fase 7 dão compatibilidade completa com contas pessoais Microsoft e estabilidade do sistema.
                         </div>
                     </section>
 
@@ -355,18 +354,18 @@
                                             <li>✅ Sistema de autorização robusto com middleware de validação JWT</li>
                                             <li>✅ Hierarquia de roles funcionando (user &lt; admin &lt; super_admin)</li>
                                             <li>✅ Proteção efetiva em 6 endpoints críticos</li>
-                                            <li>✅ 100% de aprovação nos testes automatizados (meta era >90%)</li>
+                                            <li>✅ 17 de 22 testes automatizados aprovados (77,3%) — a meta era &gt;90% e não foi alcançada</li>
                                         </ul>
                                         <strong>Melhorias Implementadas (Pós-Conclusão):</strong>
                                         <ul class="mb-2">
-                                            <li>✅ Conformidade LGPD obrigatória no formulário de primeiro acesso</li>
-                                            <li>✅ Swagger/OpenAPI implementado em <a href="https://caracore-backend-docker.azurewebsites.net/api-docs" target="_blank">/api-docs</a></li>
+                                            <li>✅ Consentimento LGPD obrigatório no formulário de primeiro acesso</li>
+                                            <li>✅ Swagger/OpenAPI implementado no serviço; o ambiente de demonstração online que servia o <code>/api-docs</code> foi desativado, então a documentação não está acessível pela web nesta data</li>
                                             <li>✅ Detecção automática de provedor (Google/Microsoft) baseado no domínio do email</li>
                                             <li>✅ CRUD completo de usuários autorizados (Create, Read, Update, Delete)</li>
                                             <li>✅ Melhorias de UX: aprovação automática, redirecionamento inteligente</li>
                                             <li>✅ Correções de segurança: CSP ajustado, compatibilidade retroativa</li>
                                         </ul>
-                                        <strong>Métricas:</strong> Taxa de proteção 100%, Validação JWT funcional, Auditoria implementada, Testes automatizados 100%.
+                                        <strong>Métricas:</strong> Taxa de proteção 100%, Validação JWT funcional, Auditoria implementada, Testes automatizados 17 de 22.
                                     </div>
                                 </div>
                             </div>
@@ -409,7 +408,7 @@
                                             <li>✅ Session validation rigorosa</li>
                                             <li>✅ HTTPS obrigatório em produção</li>
                                         </ul>
-                                        <strong>Benefícios Alcançados:</strong> Redução de 80% em reautenticações manuais, experiência de usuário melhorada com sessões persistentes, renovação automática de tokens, conformidade total com OAuth 2.1, auditoria completa de operações.
+                                        <strong>Benefícios Alcançados:</strong> Redução de 80% em reautenticações manuais, experiência de usuário melhorada com sessões persistentes, renovação automática de tokens, fluxo conforme OAuth 2.1, auditoria completa de operações.
                                         <br><br>
                                         <strong>Métricas:</strong> Sistema ativo em produção, SessionManager inicializado, TokenStorage funcionando, renovação automática configurada (5 minutos antes de expirar), 100% de criptografia para tokens em repouso.
                                     </div>
@@ -464,10 +463,10 @@
                         <div class="row text-center">
                             <div class="col-md-3">
                                 <div class="metric-card">
-                                    <h3>100%</h3>
-                                    <p>Taxa de Sucesso nos Testes</p>
+                                    <h3>77,3%</h3>
+                                    <p>Taxa de Sucesso nos Testes (17 de 22)</p>
                                     <div class="progress progress-thin">
-                                        <div class="progress-bar bg-success progress-success-rate" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 100%" title="Taxa de sucesso nos testes: 100%" style="width: 100%"></div>
+                                        <div class="progress-bar bg-success progress-success-rate" role="progressbar" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" aria-label="Taxa de sucesso 77,3%" title="Taxa de sucesso nos testes: 77,3% (17 de 22)" style="width: 77.3%"></div>
                                     </div>
                                 </div>
                             </div>
@@ -494,7 +493,7 @@
                             <div class="col-md-4">
                                 <div class="metric-card">
                                     <h3><i class="bi bi-shield-check text-success"></i></h3>
-                                    <p>Conformidade LGPD</p>
+                                    <p>Tratamento de dados sob a LGPD</p>
                                 </div>
                             </div>
                             <div class="col-md-4">

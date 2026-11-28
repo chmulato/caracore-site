@@ -78,6 +78,27 @@
     ul {
       padding-left: 1.25rem;
     }
+    .tabela-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .lgpd-tabela {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .lgpd-tabela th,
+    .lgpd-tabela td {
+      border: 1px solid #cbd5e1;
+      padding: 0.6rem 0.7rem;
+      text-align: left;
+      vertical-align: top;
+    }
+    .lgpd-tabela thead th {
+      background: #f8fafc;
+      font-weight: 600;
+    }
     section + section {
       margin-top: 2rem;
     }
@@ -140,8 +161,29 @@
 
     <section>
       <h2>0. Controlador e referência legal (LGPD)</h2>
-      <p>Para fins da Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018), a <strong>Cara Core Informática</strong> atua como <strong>Controladora</strong> dos dados tratados em seus canais próprios. Esta política deve ser lida em conjunto com os <a href="termos-servico.html">Termos de Serviço</a>.</p>
+      <p>Para fins da Lei Geral de Proteção de Dados Pessoais (Lei nº 13.709/2018), a <strong>Cara Core Informática</strong> atua como <strong>Controladora</strong> dos dados tratados em seus canais próprios — este site, a Central de Downloads, os blogs e os formulários de contato. Esta política deve ser lida em conjunto com os <a href="termos-servico.html">Termos de Serviço</a>, que incluem a seção de licenciamento de software.</p>
       <p>Canal de privacidade e atendimento ao titular: <a href="mailto:suporte@caracore.com.br?subject=Solicita%C3%A7%C3%A3o%20LGPD%20-%20Titular">suporte@caracore.com.br</a>.</p>
+      <p><strong>Cara Core Informática</strong> · CNPJ 23.969.028/0001-37 · domicílio comercial em Campo Largo/PR, Brasil. A operação é remota: o endereço completo é informado mediante solicitação ao canal oficial, na etapa de confirmação do atendimento.</p>
+    </section>
+
+    <section>
+      <h2>0.1 Arquitetura local-first: quem controla os dados do seu caixa, agenda ou depósito</h2>
+      <p>Os produtos da suíte foram desenhados para operar no computador da loja, mesmo sem internet. Isso tem uma consequência jurídica que precisamos declarar com clareza: <strong>quem registra dados num sistema local é o controlador desses dados</strong>, e a Cara Core Informática nem hospeda, nem centraliza, nem acessa essas bases.</p>
+      <div class="tabela-scroll">
+        <table class="lgpd-tabela">
+          <thead>
+            <tr><th scope="col">Produto</th><th scope="col">Onde ficam os dados operacionais</th><th scope="col">Papel da Cara Core</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>PDV (Java e Rust)</td><td>SQLite no computador da loja (banco local).</td><td>Fornecedora do software. Não temos cópia das vendas, clientes ou recibos.</td></tr>
+            <tr><td>Hub</td><td>SQLite local em modo WAL, no computador do ponto de retirada.</td><td>Fornecedora do software. Credenciais de canal (Mercado Livre, Shopee, Temu) são da loja.</td></tr>
+            <tr><td>Ink Agenda</td><td>SQLite no computador do estúdio (agenda, clientes, financeiro).</td><td>Fornecedora do software.</td></tr>
+            <tr><td>Gaspar</td><td>Configuração local; as mensagens saem pelo chip e pelo plano do celular da loja. O aplicativo não lê SMS recebidos.</td><td>Fornecedora do software.</td></tr>
+            <tr><td>CSO Frotas (web)</td><td><strong>Exceção:</strong> PostgreSQL na infraestrutura que a Cara Core contrata (hospedagem em nuvem).</td><td>Aqui atuamos como <strong>operadores</strong> dos dados que o cliente cadastra, sob as instruções dele, além de controladores do cadastro comercial.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Para os consumidores, pacientes e destinatários de encomendas cujos registros estão na sua máquina, <strong>o controlador é o seu estabelecimento</strong>. Isso significa que a política de privacidade, a base legal e os direitos desses titulares são atendidos por você, com as ferramentas que o produto oferece (exportação, correção, exclusão e cópia de segurança locais). Recomendamos manter a sua própria política publicada e, quando houver tratamento por terceiros (contabilidade, transportadora, laboratório), formalizar instrumento de operador. A Cara Core responde pelo que processa para licenciar, faturar, autenticar a assinatura e prestar suporte — e nada além disso.</p>
     </section>
 
     <section>
@@ -149,21 +191,31 @@
       <p>Coletamos apenas os dados estritamente necessários para prestar nossos serviços com qualidade e segurança, incluindo:</p>
       <ul>
         <li>Dados de contato (nome, e-mail, telefone) fornecidos voluntariamente por formulários ou canais de atendimento.</li>
+        <li>Dados cadastrais e fiscais de quem contrata (razão social ou nome, CNPJ ou CPF, endereço de cobrança, item e periodicidade contratados): servem para licenciar a instalação, emitir recibo ou nota e autenticar a assinatura.</li>
         <li>Credenciais corporativas utilizadas em fluxos de autenticação OIDC (por exemplo, Microsoft Entra ID ou Google) para liberar acessos à Área 51.</li>
         <li>Logs técnicos e métricas essenciais para monitoramento, segurança e melhoria contínua das soluções ofertadas.</li>
       </ul>
       <p>Somente solicitamos dados sensíveis quando estritamente necessários e mediante consentimento explícito.</p>
+      <p><strong>O que não coletamos.</strong> Não recebemos, não espelhamos e não centralizamos os dados de operação dos produtos locais: vendas e clientes do PDV, encomendas e destinatários do Hub, agenda, pacientes e financeiro do Ink, mensagens do Gaspar. Quem os registra é o estabelecimento que usa o sistema, e é ele o controlador desses registros — veja a seção 0.1.</p>
     </section>
 
     <section>
       <h2>2. Finalidade do tratamento</h2>
       <p>Utilizamos as informações coletadas para:</p>
       <ul>
-        <li>Prestar serviços contratados de consultoria, suporte e desenvolvimento.</li>
+        <li>Executar os serviços contratados de consultoria, suporte e desenvolvimento.</li>
+        <li><strong>Licenciar a instalação, autenticar a assinatura e emitir o documento fiscal</strong> correspondente à contratação — é para isso que servem a razão social, o CNPJ/CPF e o endereço de cobrança.</li>
         <li>Gerenciar o acesso seguro a áreas restritas e materiais exclusivos.</li>
         <li>Personalizar a comunicação institucional e comercial.</li>
-        <li>Cumprir obrigações legais e regulatórias aplicáveis.</li>
+        <li>Cumprir obrigações legais e regulatórias aplicáveis, inclusive a guarda contábil e fiscal (ver seção 4.1).</li>
       </ul>
+      <p>Não usamos dados de contato comercial para exibir publicidade comportamental em outros sites, e não mantemos servidor de coleta desses formulários. O que você digita é montado como mensagem no canal que você escolher, e o envio depende de um clique seu:</p>
+      <ul>
+        <li><strong>E-mail:</strong> o texto vai para o seu próprio cliente de e-mail (link <code>mailto:</code>). Nada sai do navegador antes de você enviar.</li>
+        <li><strong>WhatsApp:</strong> o conteúdo do formulário é passado como parâmetro ao link <code>wa.me</code>, serviço da Meta, que abre a conversa pronta. Nesse trecho, o texto chega ao provedor do mensageiro — use este canal só com o que você concorda em enviar a ele.</li>
+        <li><strong>Telegram:</strong> abre-se apenas o atalho <code>t.me</code>; o texto fica num campo nesta página, para você copiar e colar na conversa.</li>
+      </ul>
+      <p>Esses textos de lead não são gravados por nenhum sistema nosso: a única cópia é a conversa ou o e-mail que você mesmo envia.</p>
     </section>
 
     <section>
@@ -183,13 +235,30 @@
       <ul>
         <li>Exigido por lei, decisão judicial ou autoridade competente.</li>
         <li>Necessário para integrar-se com provedores de identidade (por exemplo, Microsoft, Google) no contexto de autenticação.</li>
+        <li>Necessário à operação técnica, com fornecedores que tratam dados em nosso nome: <strong>GitHub Pages</strong> (hospedagem deste site, das lojas e dos blogs) e a plataforma de nuvem que hospeda o banco do <strong>CSO Frotas</strong>.</li>
+        <li>Necessário à medição de audiência, com <strong>Google Analytics 4</strong>, somente após consentimento (ver seção 6).</li>
+        <li>Necessário ao mapa da página inicial, com <strong>OpenStreetMap</strong>, somente depois de você clicar em «Carregar mapa» — antes do clique a página não consulta esse serviço.</li>
         <li>Requerido para operação com parceiros contratados que prestam serviços em nosso nome, sempre sob acordos de confidencialidade.</li>
       </ul>
+      <p><strong>Provedores ativados pela credencial do próprio cliente.</strong> Nos módulos de PIX integrado (Mercado Pago) e de NFC-e sob demanda (TecnoSpeed PlugNotas), previstos para a v4.1.0 do PDV, quem contrata e guarda a credencial é a loja. O envio dos dados da operação vai do computador do cliente diretamente ao provedor escolhido por ele: esses dados não passam pelos nossos servidores nem ficam em banco nosso. Nesse trajeto a Cara Core Informática não é controladora nem operadora dos dados enviados ao provedor.</p>
     </section>
 
     <section>
-      <h2>4. Segurança e retenção</h2>
-      <p>Empregamos práticas técnicas e administrativas para proteger os dados contra acessos não autorizados, perda, alteração ou divulgação indevida. Os dados são armazenados pelo tempo necessário ao cumprimento das finalidades descritas ou até que haja solicitação de exclusão, observadas as obrigações legais.</p>
+      <h2>4. Segurança</h2>
+      <p>Empregamos práticas técnicas e administrativas para proteger os dados contra acessos não autorizados, perda, alteração ou divulgação indevida: acesso restrito por credencial individual, comunicação sob HTTPS nos canais publicados, princípio do menor privilégio nas integrações e conferência de integridade dos pacotes distribuídos por SHA-256. O que não fazemos — e é importante dizer —: não prometemos segurança absoluta contra falhas de provedor, de dispositivo ou de configuração do cliente, e não desativamos proteções do sistema operacional em nome de ninguém.</p>
+    </section>
+
+    <section>
+      <h2>4.1 Prazos de retenção</h2>
+      <p>A retenção segue critério objetivo por categoria, e não «o tempo necessário» genérico:</p>
+      <ul>
+        <li><strong>Cadastro comercial e histórico de atendimento:</strong> enquanto durar a relação contratual; após o encerramento, 5 anos para documentos com efeito fiscal (art. 173 do Código Tributário Nacional) e 10 anos para a escrituração contábil (art. 178 da Lei nº 6.404/1976).</li>
+        <li><strong>Registro da escolha de consentimento:</strong> fica no navegador do visitante, nas chaves <code>cc-ga-consent</code> e <code>cc-ga-consent-date</code>, até que o titular altere a preferência ou limpe os dados do navegador. Não conservamos uma cópia centralizada dessas escolhas.</li>
+        <li><strong>Medição de audiência (Google Analytics 4):</strong> o script deste site envia apenas a navegação (página, origem, dispositivo aproximado) e nunca nome, e-mail, telefone ou dado de cadastro — o identificador de usuário e as dimensões personalizadas não são configurados em <code>assets/js/analytics.js</code>. O prazo de retenção dos eventos é o ajustado na propriedade do Google Analytics 4; o valor vigente informamos a pedido, pelo canal da seção 0.</li>
+        <li><strong>Logs técnicos de segurança e erro:</strong> conservados pelo período necessário a investigar incidentes e a cumprir obrigação legal; quando a obrigação cessa, são descartados na renovação do ambiente.</li>
+        <li><strong>Banco de dados do cliente nos produtos locais:</strong> permanece no equipamento do cliente pelo tempo que ele definir, inclusive depois de cancelada a assinatura — não o apagamos nem o migramos por iniciativa própria.</li>
+      </ul>
+      <p>Se um prazo destes divergir da configuração real do serviço na data em que você lê este texto, prevalece a configuração efetiva, que informamos a pedido pelo canal da seção 0.</p>
     </section>
 
     <section>
@@ -201,12 +270,38 @@
         <li>Anonimização, bloqueio ou eliminação de dados desnecessários.</li>
         <li>Portabilidade ou revogação do consentimento previamente concedido.</li>
       </ul>
-  <p>As solicitações devem ser encaminhadas para <a href="mailto:suporte@caracore.com.br?subject=Solicita%C3%A7%C3%A3o%20LGPD%20-%20Titular">suporte@caracore.com.br</a>, com o assunto <strong>Solicitação LGPD - Titular</strong> e identificação mínima para validação de autenticidade. Respondemos às demandas dentro dos prazos previstos na legislação.</p>
+      <p>As solicitações devem ser encaminhadas para <a href="mailto:suporte@caracore.com.br?subject=Solicita%C3%A7%C3%A3o%20LGPD%20-%20Titular">suporte@caracore.com.br</a>, com o assunto <strong>Solicitação LGPD - Titular</strong> e identificação mínima para validação de autenticidade. Respondemos dentro dos prazos legais: <strong>15 dias</strong> para a confirmação da existência de tratamento e para o acesso, e <strong>20 dias</strong> para os demais direitos, prorrogáveis mediante comunicação expressa, conforme a Lei nº 13.709/2018 e o Decreto nº 8.737/2019. Se você é cliente de um estabelecimento que usa nossos produtos, o titular dos seus dados é atendido por esse estabelecimento, que é o controlador (seção 0.1); você pode nos acionar para que orientemos o responsável.</p>
     </section>
 
     <section>
-      <h2>6. Cookies e tecnologias similares</h2>
-      <p>Utilizamos cookies essenciais para manter sessões autenticadas e melhorar a experiência nos ambientes restritos. Cookies analíticos ou de terceiros são usados apenas mediante consentimento específico e podem ser configurados diretamente pelo navegador.</p>
+      <h2>6. Cookies e armazenamento local</h2>
+      <p>Este site não usa cookie publicitário, pixel de rede social nem identificador de dispositivo próprio. Há duas categorias: os <strong>estritamente necessários</strong> à autenticicação nas áreas restritas e os <strong>analíticos</strong>, criados apenas depois de consentimento explícito. Quem define cada cookie analítico é o Google Analytics 4, por script carregado do nosso <code>assets/js/analytics.js</code>, no domínio <code>.caracore.com.br</code>:</p>
+      <div class="tabela-scroll">
+        <table class="lgpd-tabela">
+          <thead>
+            <tr><th scope="col">Nome</th><th scope="col">Onde</th><th scope="col">Finalidade</th><th scope="col">Quando passa a existir</th><th scope="col">Duração</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>_ga</code></td><td>cookie, <code>.caracore.com.br</code></td><td>diferenciar visitantes e sustentar a contagem de sessão.</td><td>só após <strong>Aceitar</strong> no banner de consentimento.</td><td>padrão do Google Analytics 4 (cerca de 13 meses, renovado a cada visita).</td></tr>
+            <tr><td><code>_ga_MKFC9G3CL0</code></td><td>cookie, <code>.caracore.com.br</code></td><td>guardar o estado da medição da propriedade <code>G-MKFC9G3CL0</code>.</td><td>só após <strong>Aceitar</strong>.</td><td>padrão do Google Analytics 4.</td></tr>
+            <tr><td><code>_gid</code>, <code>_gat</code></td><td>cookie, <code>.caracore.com.br</code></td><td>identificar a sessão e limitar a frequência das requisições do próprio script de medição.</td><td>só após <strong>Aceitar</strong>.</td><td>cerca de 24 horas e 10 minutos, respectivamente.</td></tr>
+            <tr><td><code>cc-ga-consent</code>, <code>cc-ga-consent-date</code></td><td><code>localStorage</code>, neste domínio</td><td>registrar a sua escolha (aceito ou recusado) e a data dela, para não perguntar de novo a cada página.</td><td>no primeiro aceite ou na primeira recusa.</td><td>até você alterar a preferência ou limpar os dados do navegador.</td></tr>
+            <tr><td>cookie de sessão</td><td>cookie de sessão</td><td>manter você autenticado nas áreas restritas que exigem login.</td><td>no acesso autenticado.</td><td>enquanto o navegador permanecer aberto.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>Ao recusar</strong>, o site apaga <code>_ga</code>, <code>_gid</code> e <code>_gat</code> e não baixa o script do Google. <strong>Aceitar</strong> habilita também a marcação de domínio cruzado (<em>linker</em>) entre os 19 subdomínios do ecossistema listados em <code>analytics.js</code> — <code>caracore.com.br</code>, <code>personal</code>, <code>wiki</code>, <code>download</code>, <code>pdv</code>, <code>pdv-rust</code>, <code>hub</code>, <code>ink</code>, <code>cso</code>, <code>cso-transp</code>, <code>retro</code>, <code>oidc</code>, <code>circuito</code>, <code>ete</code>, <code>ru</code>, <code>seed</code>, <code>helianto</code>, <code>area51</code> e <code>mkt</code>. Na prática, o mesmo identificador de visitante circula entre essas páginas, e cada superfície é separada pela dimensão <code>hostname</code>. Você pode revogar quando quiser no link <strong>Privacidade</strong>, no rodapé.</p>
+    </section>
+
+    <section>
+      <h2>6.1 Transferência internacional de dados</h2>
+      <p>Fazem transferência internacional de dados, e somente elas: a medição de audiência (Google Ireland/Google LLC, com infraestrutura na União Europeia e nos Estados Unidos), a autenticação por provedor de identidade (Microsoft Entra ID, Google) e a hospedagem de código e páginas no GitHub (Estados Unidos) — o GitHub Pages publica os arquivos deste repositório, que não contêm dados pessoais de clientes.</p>
+      <p>Esses fornecedores operam com cláusulas contratuais-padrão de proteção de dados, mecanismo que consideramos para o art. 33, inciso II da LGPD. <strong>Os dados operacionais dos produtos não são transferidos</strong>, porque ficam no equipamento do cliente (seção 0.1). No CSO Frotas o banco está na nuvem que contratamos, e a localização da infraestrutura é informada ao cliente que a solicitar pelo canal da seção 0.</p>
+    </section>
+
+    <section>
+      <h2>6.2 Encarregado pelo tratamento de dados (DPO)</h2>
+      <p>Optamos por manter um <strong>canal direto e dedicado ao titular</strong> — <a href="mailto:suporte@caracore.com.br?subject=Solicita%C3%A7%C3%A3o%20LGPD%20-%20Titular">suporte@caracore.com.br</a>, com os prazos da seção 5 — em vez de publicar o nome de um encarregado. O art. 41, § 1º da LGPD admite essa simplificação para microempresas e empresas de pequeno porte, e a Resolução CD/ANPD nº 2/2022 prevê regime diferenciado de obrigações para agentes de pequeno porte. A dispensa não alcança os direitos do titular, que continuam garantidos: confirmação, acesso, correção, anonimização, bloqueio, eliminação, portabilidade e revogação do consentimento. Cliente corporativo que precisar de encarregado nomeado ou de acordo de tratamento por escrito é atendido pelo mesmo canal.</p>
     </section>
 
     <section>
@@ -216,7 +311,8 @@
 
     <section>
       <h2>8. Contato</h2>
-      <p>A Cara Core Informática opera de forma remota, sem endereço físico fixo em Campo Largo ou qualquer outra localidade específica. Em caso de dúvidas sobre esta Política ou sobre o tratamento de dados pessoais, entre em contato exclusivamente pelo e-mail <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a> ou pelos canais listados na <a href="../index.html#contato">página inicial</a>.</p>
+      <p><strong>Cara Core Informática</strong> · CNPJ 23.969.028/0001-37 · domicílio comercial em Campo Largo/PR, Brasil. A operação é remota: o endereço completo é informado mediante solicitação ao canal oficial, na etapa de confirmação do atendimento.</p>
+      <p>Para dúvidas sobre esta Política, pedidos de titular ou qualquer comunicação relacionada ao tratamento de dados pessoais, use exclusivamente o e-mail <a href="mailto:suporte@caracore.com.br?subject=Solicita%C3%A7%C3%A3o%20LGPD%20-%20Titular">suporte@caracore.com.br</a> ou os canais listados na <a href="../index.html#contato">página inicial</a>. Na matriz institucional — página inicial, Ecossistema e lista de Sites — o rodapé traz o link <strong>Privacidade</strong>, que reabre a preferência de consentimento a qualquer momento.</p>
     </section>
 
     <section>
@@ -224,11 +320,11 @@
       <p>Se você entender que sua solicitação não foi tratada adequadamente, poderá apresentar reclamação à Autoridade Nacional de Proteção de Dados (ANPD), após tentativa de resolução pelos nossos canais de atendimento.</p>
     </section>
 
-    <p><strong>Última atualização:</strong> 14 de março de 2026.</p>
+    <p><strong>Última atualização:</strong> 27 de novembro de 2026.</p>
   </main>
 
   <footer>
-    <p>© 2025 Cara Core Informática. Todos os direitos reservados. Consulte também os nossos <a href="termos-servico.html">Termos de Serviço</a>.</p>
+    <p>© 2026 Cara Core Informática · CNPJ 23.969.028/0001-37 · Campo Largo/PR · <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a>. Consulte também os nossos <a href="termos-servico.html">Termos de Serviço</a>.</p>
   </footer>
 </body>
 </html>

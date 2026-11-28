@@ -678,7 +678,7 @@
             <dt>Requisitos</dt>
             <dd>Windows x64; aplicação web local, sem dependência de nuvem. Login por telefone com recuperação por código offline de uso único.</dd>
             <dt>Suporte</dt>
-            <dd>Produto Free. Suporte opcional com pagamento recorrente de R$ 79,90/mês a partir do GA, com primeira resposta em até 24 horas.</dd>
+            <dd>Dois planos na loja: Free (Starter), até 150 pacotes em estoque e 300 pedidos por mês civil, e Pro sem teto. O Pro é R$ 79,90/mês, com primeira resposta em até 24 horas; site e app não processam pagamento.</dd>
           </dl>
           <p class="p2-details-links">
             <a href="https://hub.caracore.com.br/index.html">Loja</a>
@@ -829,16 +829,17 @@
           <i class="bi bi-shield-check"></i>
           Em conformidade com boas práticas de segurança e privacidade, o endereço completo é disponibilizado somente na etapa de confirmação do atendimento.
         </p>
-        <!-- Mapa Google (carregado sob consentimento LGPD) -->
+        <!-- Mapa aproximado (OpenStreetMap): so carrega sob clique, sem requisicao a terceiros no carregamento da pagina -->
         <div class="mb-3">
           <div id="maps-container">
             <div id="maps-placeholder">
               <div class="maps-placeholder-inner">
                 <i class="bi bi-map" aria-hidden="true"></i>
                 <div class="hint">
-                  Usaremos um mapa aproximado para privacidade. O link do Google Maps abre uma busca genérica da cidade.
+                  Mapa aproximado, sem marcador. O traçado é do OpenStreetMap e só carrega com o seu clique — até aí, nenhuma requisição a terceiros.
                 </div>
                 <div class="actions">
+                  <button type="button" id="maps-load" class="btn btn-primary btn-sm me-2">Carregar mapa</button>
                   <a href="https://www.google.com/maps/search/?api=1&query=Campo+Largo,+PR" target="_blank" rel="noopener" class="btn btn-outline-secondary btn-sm">Abrir no Google Maps</a>
                 </div>
               </div>
@@ -866,33 +867,33 @@
           <a href="https://personal.caracore.com.br/" target="_blank" rel="noopener" class="recursos-link" title="Artigos pessoais (blog)">
             <i class="bi bi-person-lines-fill"></i>
           </a>
-          <a href="cv/public/index.html" target="_blank" class="recursos-link" title="Ver Resume">
+          <a href="cv/public/index.html" target="_blank" rel="noopener" class="recursos-link" title="Ver Resume">
             <i class="bi bi-briefcase"></i>
           </a>
           <!--
-          <a href="publications/articles.html" target="_blank" class="recursos-link" title="Ver publicações">
+          <a href="publications/articles.html" target="_blank" rel="noopener" class="recursos-link" title="Ver publicações">
             <i class="bi bi-collection"></i>
           </a>
           -->
-          <a href="publications/livros/python_escritorios.html" target="_blank" class="recursos-link" title="Ver Livro Python Escritórios">
+          <a href="publications/livros/python_escritorios.html" target="_blank" rel="noopener" class="recursos-link" title="Ver Livro Python Escritórios">
             <i class="bi bi-book"></i>
           </a>
-          <a href="publications/livros/python_engenharia.html" target="_blank" class="recursos-link" title="Ver livro Python Engenharia">
+          <a href="publications/livros/python_engenharia.html" target="_blank" rel="noopener" class="recursos-link" title="Ver livro Python Engenharia">
             <i class="bi bi-book"></i>
           </a>
-          <a href="https://eng.caracore.com.br/index.html" target="_blank" class="recursos-link" title="Ver livro A Rebeldia da Mecatrônica">
+          <a href="https://eng.caracore.com.br/index.html" target="_blank" rel="noopener" class="recursos-link" title="Ver livro A Rebeldia da Mecatrônica">
             <i class="bi bi-book"></i>
           </a>
-          <a href="publications/livros/apostila_ms365.html" target="_blank" class="recursos-link" title="Ver Apostila MS365">
+          <a href="publications/livros/apostila_ms365.html" target="_blank" rel="noopener" class="recursos-link" title="Ver Apostila MS365">
             <i class="bi bi-journal-bookmark"></i>
           </a>
-          <a href="publications/livros/guia_de_servicos.html" target="_blank" class="recursos-link" title="Ver Guia de Serviços">
+          <a href="publications/livros/guia_de_servicos.html" target="_blank" rel="noopener" class="recursos-link" title="Ver Guia de Serviços">
             <i class="bi bi-journal-bookmark"></i>
           </a>
-          <a href="publications/livros/guia_de_servicos_caracore-pdv.html" target="_blank" class="recursos-link" title="Ver Guia de Serviços (CaraCore PDV)">
+          <a href="publications/livros/guia_de_servicos_caracore-pdv.html" target="_blank" rel="noopener" class="recursos-link" title="Ver Guia de Serviços (CaraCore PDV)">
             <i class="bi bi-shop"></i>
           </a>
-          <a href="folders/folder_py.html" target="_blank" class="recursos-link" title="Ver folder digital">
+          <a href="folders/folder_py.html" target="_blank" rel="noopener" class="recursos-link" title="Ver folder digital">
             <i class="bi bi-file-earmark-text"></i>
           </a>
           <a href="sites.html" class="recursos-link" title="Ver planos de desenvolvimento de sites">
@@ -941,6 +942,7 @@
     <span class="fw-semibold text-secondary">
       Cara Core Informática · CNPJ: 23.969.028/0001-37 · <a href="https://www.caracore.com.br/" class="text-decoration-none">www.caracore.com.br</a> · <a href="mailto:suporte@caracore.com.br" class="text-decoration-none">suporte@caracore.com.br</a><br>
     </span>
+    <span class="d-block small text-secondary">Dados de venda, agenda, encomendas e clientes ficam no equipamento da loja: os produtos operam local-first e a Cara Core não hospeda nem centraliza essas bases. <a href="politica/politica-privacidade.html" class="text-decoration-none">Como tratamos os dados</a>.</span>
     <div class="mt-2">
       <a href="politica/politica-privacidade.html" class="text-decoration-none text-primary fw-semibold me-3">
         <i class="bi bi-shield-lock"></i> Política de Privacidade
@@ -971,7 +973,7 @@
 <script src="/js/vendor/bootstrap/bootstrap-collapse.js"></script>
 <script src="assets/js/main.js"></script>
   <script>
-    function loadGoogleMaps(){
+    function carregarMapaAproximado(){
       try {
         const container = document.getElementById('maps-container');
         const placeholder = document.getElementById('maps-placeholder');
@@ -995,9 +997,10 @@
         console.debug('Maps embed skipped:', e);
       }
     }
-    // Load OpenStreetMap automatically on page load
+    // O mapa e de terceiro: so carrega no clique, nunca na carga da pagina.
     document.addEventListener('DOMContentLoaded', function(){
-      try { loadGoogleMaps(); } catch(e) { console.debug('Auto map load failed', e); }
+      const botao = document.getElementById('maps-load');
+      if (botao) botao.addEventListener('click', carregarMapaAproximado);
     });
   </script>
 

@@ -162,6 +162,7 @@
         <li>Prestar serviços com diligência, observando as melhores práticas técnicas e de segurança.</li>
         <li>Informar sobre alterações relevantes que impactem a continuidade das soluções contratadas.</li>
         <li>Proteger dados pessoais e corporativos conforme descrito na <a href="politica-privacidade.html">Política de Privacidade</a>.</li>
+        <li><strong>Continuidade e retrocompatibilidade dos dados:</strong> os produtos da suíte são projetados para horizonte operacional de 10 anos (2026–2036). Evolução de versão, de motor de persistência ou de interface não pode invalidar a base de dados existente do cliente: as migrações de schema são aditivas e retrocompatíveis, preservando o histórico local (SQLite) ou dedicado (PostgreSQL). É compromisso de projeto, não garantia de resultado — falhas de disco, de sistema operacional ou de intervenção externa ao software permanecem sob a responsabilidade de manutenção do ambiente do cliente, que deve conservar as cópias de segurança.</li>
       </ul>
     </section>
 
@@ -180,44 +181,88 @@
     </section>
 
     <section>
-      <h2>6. Limitação de responsabilidade</h2>
+      <h2>6. Licenciamento de software (EULA)</h2>
+      <p>Os produtos da suíte Cara Core (PDV, Hub, CSO, Ink Agenda e Gaspar) são licenciados para <strong>uso</strong>, nunca vendidos. A licença é pessoal, intransferível e vinculada à instalação ou ao estabelecimento para o qual foi contratada, não ao dispositivo nem a um usuário individual.</p>
+      <ul>
+        <li><strong>O que a licença autoriza:</strong> instalar e operar o programa no ambiente do cliente, conservar cópia de segurança do banco de dados e do instalador baixado, e utilizar os recursos da versão efetivamente distribuída.</li>
+        <li><strong>O que a licença não autoriza:</strong> redistribuir, sublicenciar, revender ou colocar o programa à disposição de terceiros; modificar, descompilar ou aplicar engenharia reversa (ver seção 2); remover avisos de versão, marca ou somas de verificação; usar o produto para operar em nome de terceiros sem contrato próprio.</li>
+        <li><strong>Escopo do que se contrata:</strong> a licença vale sobre a versão publicada na loja do produto. Recursos anunciados como planejados, em pré-release, em homologação ou com data futura <strong>não</strong> fazem parte da licença até serem publicados. Os tetos de uso, os limites de edição e o preço vigente são os publicados na loja do produto na data da contratação.</li>
+        <li><strong>Código aberto:</strong> quando o produto ou módulo for distribuído sob licença aberta (por exemplo, MIT), aplicam-se as condições do arquivo de licença que acompanha o pacote, que prevalecem sobre esta seção no que for incompatível.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>7. Planos, assinatura, renovação e cancelamento</h2>
+      <ul>
+        <li><strong>Contratação:</strong> feita pelo canal oficial indicado na loja do produto (e-mail ou telefone/WhatsApp publicados no rodapé e na própria loja). O valor, a periodicidade e o que cada plano inclui são os publicados na loja no momento da contratação; nada é cobrado dentro do aplicativo de operação local.</li>
+        <li><strong>Renovação:</strong> a assinatura mensal renova-se período a período enquanto ativa. Não há período de fidelidade nem multa rescisória salvo indicação expressa, escrita e aceita pelo cliente na proposta comercial.</li>
+        <li><strong>Cancelamento:</strong> pode ser comunicado a qualquer momento pelo canal oficial, com a identificação da instalação. O cancelamento produz efeito a partir do ciclo de cobrança seguinte e não gera cobrança adicional; interrompidos os pagamentos, os recursos do plano pago deixam de ser prestados.</li>
+        <li><strong>Dados após o cancelamento:</strong> o histórico do cliente permanece no banco local instalado no equipamento dele, sob controle do cliente. Encerrar a assinatura não apaga, não retém nem migra dados por iniciativa da Cara Core.</li>
+        <li><strong>Reembolso:</strong> segue a seção 8 (direito de arrependimento) e, fora dela, os termos do meio de pagamento utilizado.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>8. Direito de arrependimento (art. 49 do CDC)</h2>
+      <p>Contratação realizada à distância — pela internet, por telefone ou por mensagem — pode ser desfeita em até <strong>7 (sete) dias corridos</strong>, contados da data da contratação ou da liberação do acesso, o que ocorrer por último, sem necessidade de justificativa e sem multa.</p>
+      <ul>
+        <li>Exercite o direito escrevendo para <a href="mailto:suporte@caracore.com.br?subject=Arrependimento%20-%20art.%2049%20CDC">suporte@caracore.com.br</a> com o assunto <strong>Arrependimento - art. 49 CDC</strong>, identificando a instalação ou o pedido.</li>
+        <li>O valor cobrado é devolvido sem retenção, pelo mesmo meio de pagamento utilizado, no menor prazo operacional possível.</li>
+        <li>Se, dentro do prazo, o cliente tiver solicitado serviço sob demanda e específico, a devolução considera o que efetivamente foi prestado, conforme o parágrafo único do art. 49 do CDC.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>9. Suporte, prazos e atendimento</h2>
+      <ul>
+        <li><strong>Canal:</strong> <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a> e, onde a loja do produto indicar, telefone/WhatsApp publicado nela.</li>
+        <li><strong>Primeira resposta em até 24 horas</strong> — contadas em horas corridas do registro no canal — aplica-se aos contratos que a prevejam expressamente, como o plano <strong>Pro</strong> do CaraCore Hub, publicado na loja do produto com esse prazo. Fora desses contratos, não há prazo de resposta garantido.</li>
+        <li><strong>Horário de atendimento</strong> do suporte de produto e TI local: o publicado em <a href="../suporte-local.html">Suporte Local</a>. Projetos de engenharia B2B seguem o calendário e o ritmo acordados com o cliente.</li>
+        <li><strong>Manifestações de conformidade e reclamações</strong> podem ser apresentadas pelo mesmo canal e, se não resolvidas, perante os órgãos de proteção ao consumidor ou a plataforma <em>consumidor.gov.br</em>.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>10. Limitação de responsabilidade</h2>
       <p>Empregamos esforços para garantir disponibilidade e segurança das plataformas. Ainda assim, a Cara Core Informática não se responsabiliza por danos indiretos, lucros cessantes ou falhas decorrentes de fatores alheios ao nosso controle (falhas de provedores externos, indisponibilidade da internet, atos de terceiros etc.).</p>
     </section>
 
     <section>
-      <h2>7. Suspensão e encerramento</h2>
-      <p>Podemos suspender ou encerrar o acesso a serviços em caso de descumprimento destes Termos ou de obrigações contratuais. O cliente será comunicado previamente sempre que possível, respeitados requisitos legais e contratuais.</p>
+      <h2>11. Suspensão e encerramento</h2>
+      <p>Podemos suspender ou encerrar o acesso a serviços em caso de descumprimento destes Termos ou de obrigações contratuais. O cliente será comunicado previamente sempre que possível, respeitados requisitos legais e contratuais. A suspensão interrompe os recursos do plano pago e <strong>não</strong> apaga nem retém o banco de dados local do cliente.</p>
     </section>
 
     <section>
-      <h2>8. Alterações dos termos</h2>
-      <p>Reservamo-nos o direito de atualizar este documento a qualquer momento. A versão vigente permanecerá disponível neste endereço eletrônico. Mudanças substanciais serão comunicadas pelos canais de relacionamento.</p>
+      <h2>12. Alterações dos termos</h2>
+      <p>Reservamo-nos o direito de atualizar este documento a qualquer momento. A versão vigente permanecerá disponível neste endereço eletrônico. Mudanças substanciais serão comunicadas pelos canais de relacionamento e passam a valer para o cliente a partir do ciclo de cobrança seguinte, sem retroatividade.</p>
     </section>
 
     <section>
-      <h2>9. Legislação aplicável e foro</h2>
-      <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Eventuais controvérsias serão dirimidas no foro da comarca de Curitiba/PR, salvo disposição contratual em contrário.</p>
+      <h2>13. Legislação aplicável e foro</h2>
+      <p>Estes Termos são regidos pelas leis da República Federativa do Brasil. Entre empresas, eventuais controvérsias serão dirimidas no foro da comarca de Curitiba/PR, salvo disposição contratual em contrário. <strong>Sendo o cliente consumidor final nos termos do CDC, esta eleição de foro não se aplica</strong>: prevalece o foro do domicílio do consumidor, conforme o art. 101, inciso I, da Lei nº 8.078/1990.</p>
     </section>
 
     <section>
-      <h2>10. Proteção de dados pessoais (LGPD)</h2>
+      <h2>14. Proteção de dados pessoais (LGPD)</h2>
       <ul>
         <li>O tratamento de dados pessoais relacionado à prestação dos serviços segue a Lei nº 13.709/2018 (LGPD) e a <a href="politica-privacidade.html">Política de Privacidade</a>.</li>
+        <li>Nos produtos de operação local, os dados operacionais do estabelecimento (vendas, agenda, encomendas, clientes) ficam no equipamento do cliente, que é o <strong>Controlador</strong> desses registros; a Cara Core Informática responde como operadora do que processa para licenciar, faturar e dar suporte.</li>
         <li>Quando o tratamento depender de consentimento, o titular poderá revogá-lo a qualquer momento, sem prejuízo da legalidade do tratamento realizado anteriormente.</li>
         <li>Solicitações de direitos do titular devem ser encaminhadas para <a href="mailto:suporte@caracore.com.br?subject=Solicita%C3%A7%C3%A3o%20LGPD%20-%20Titular">suporte@caracore.com.br</a>.</li>
       </ul>
     </section>
 
     <section>
-      <h2>11. Contato</h2>
-      <p>Dúvidas, solicitações ou notificações relacionadas a estes Termos devem ser direcionadas exclusivamente para <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a> ou pelos meios indicados em nossa <a href="../index.html#contato">página inicial</a>, uma vez que a Cara Core Informática opera de forma remota sem endereço físico fixo.</p>
+      <h2>15. Contato e identificação</h2>
+      <p>Dúvidas, solicitações ou notificações relacionadas a estes Termos devem ser direcionadas para <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a> ou pelos meios indicados em nossa <a href="../index.html#contato">página inicial</a>.</p>
+      <p><strong>Cara Core Informática</strong> · CNPJ 23.969.028/0001-37 · domicílio comercial em Campo Largo/PR, Brasil. A operação é remota: o endereço completo é informado mediante solicitação ao canal oficial, na etapa de confirmação do atendimento.</p>
     </section>
 
-    <p><strong>Última atualização:</strong> 14 de março de 2026.</p>
+    <p><strong>Última atualização:</strong> 27 de novembro de 2026.</p>
   </main>
 
   <footer>
-    <p>© 2025 Cara Core Informática. Todos os direitos reservados. Consulte também nossa <a href="politica-privacidade.html">Política de Privacidade</a>.</p>
+    <p>© 2026 Cara Core Informática · CNPJ 23.969.028/0001-37 · Campo Largo/PR · <a href="mailto:suporte@caracore.com.br">suporte@caracore.com.br</a>. Consulte também nossa <a href="politica-privacidade.html">Política de Privacidade</a>.</p>
   </footer>
 </body>
 </html>

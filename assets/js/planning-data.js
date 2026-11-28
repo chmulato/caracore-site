@@ -541,7 +541,7 @@ window.CARACORE_PLANNING = {
       state: "watch",
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
-      hundred: "Frotas disponível e Transportes + Virtual Tracker integrado homologados; alvo conjunto 08/11/2028 condicionado aos gates INT, sem disponibilidade automática.",
+      hundred: "Meta em 08/11/2028: Frotas disponível e Transportes + Virtual Tracker integrado homologados — condicionado aos gates INT, sem disponibilidade automática.",
       now: "Frotas em produção desde 06/10, sem GPS hoje; freeze M1 agendado para 08/11/2026, sem fechamento registrado. Transportes + VT integrado em desenvolvimento: 0/21 tarefas INT, total de sprints/capacidade pendente em INT-03. Sem contratação antecipada.",
       history: [
         { m: "2026-06", p: 30 },

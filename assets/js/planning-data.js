@@ -37,11 +37,11 @@ window.CARACORE_PLANNING = {
       {
         id: "cso",
         kind: "desvio",
-        title: "CSO · freeze M1 agendado para 08/11/2026",
-        lead: "Frotas em produção desde 06/10. O freeze M1 está agendado para 08/11/2026 e não tem fechamento registrado.",
+        title: "CSO · freeze M1 de 08/11/2026 passou sem fechamento",
+        lead: "Frotas em produção desde 06/10. O freeze M1 de 08/11/2026 é marco de estabilização da versão já publicada; a data passou e não há registro de fechamento.",
         detail: "Transportes + Virtual Tracker integrado: alvo conjunto 08/11/2028",
         tip: "Frotas sem GPS hoje. Integração futura exige prova móvel, capacidade e homologação; histórico somente no desktop.",
-        text: "Frotas em produção desde 06/10. Freeze M1 agendado para 08/11/2026, sem registro de fechamento até aqui. Sem jornada, app offline nem GPS.",
+        text: "Frotas em produção desde 06/10. Freeze M1 de 08/11/2026, marco de estabilização da versão já publicada, sem registro de fechamento até aqui. Sem jornada, app offline nem GPS.",
       },
       {
         id: "hub",
@@ -542,7 +542,7 @@ window.CARACORE_PLANNING = {
       tone: "cso",
       shop: "https://cso-transp.caracore.com.br/",
       hundred: "Meta em 08/11/2028: Frotas disponível e Transportes + Virtual Tracker integrado homologados — condicionado aos gates INT, sem disponibilidade automática.",
-      now: "Frotas em produção desde 06/10, sem GPS hoje; freeze M1 agendado para 08/11/2026, sem fechamento registrado. Transportes + VT integrado em desenvolvimento: 0/21 tarefas INT, total de sprints/capacidade pendente em INT-03. Sem contratação antecipada.",
+      now: "Frotas em produção desde 06/10, sem GPS hoje; freeze M1 de 08/11/2026, marco de estabilização da versão já publicada, sem fechamento registrado. Transportes + VT integrado em desenvolvimento: 0/21 tarefas INT, total de sprints/capacidade pendente em INT-03. Sem contratação antecipada.",
       history: [
         { m: "2026-06", p: 30 },
         { m: "2026-07", p: 34 },

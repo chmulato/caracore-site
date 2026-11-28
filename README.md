@@ -66,7 +66,7 @@ caracore-site/
 ├── docs/            # Documentação do site (índice em docs/INDEX.md)
 ├── publications/    # Acervo editorial na matriz
 └── politica/        # Privacidade e termos
-├── infra/backend.disabled/  # Backend arquivado (movido)
+├── infra/backend.disabled/  # Backend arquivado (movido; fora da árvore publicada)
 ```
 
 URLs antigas `/delivery/{produto}/` redirecionam para as lojas via `_redirects`; **não** manter conteúdo comercial duplicado na matriz.
@@ -91,6 +91,7 @@ Backend OAuth (opcional): ver [secure/README.md](secure/README.md) e `backend/.e
 O backend foi arquivado e movido para `infra/backend.disabled/backend`. O site público funciona agora como um site estático e a Área 51 usa uma simulação em JavaScript, sem integrações ativas com Google/Microsoft/Azure.
 
 - Localizar backend arquivado: `infra/backend.disabled/backend`
+- Desde 27/11/2026, `infra/` e `docs/archive/` estão **fora da árvore publicada**: os arquivos continuam no disco e no histórico do repositório, mas não integram o commit que o GitHub Pages serve (o build é `legacy`, fonte `master /`, com `.nojekyll` — ou seja, tudo que está versionado na raiz é publicado).
 - Simulação de autenticação: a API do cliente OIDC simulada está em `secure/js/auth.js` e expõe `window.CaraCoreOIDC` (ex.: `getUser()`, `isAuthenticated()`). Ela retorna um usuário público simulado `PUBLIC_USER` para compatibilidade com a UI.
 
 Para testar o site estático localmente, execute um servidor simples na raiz do repositório:
@@ -108,7 +109,7 @@ Se precisar restaurar o backend para desenvolvimento, mova `infra/backend.disabl
 
 - **Site estático:** GitHub Pages / hospedeiro com suporte a `_redirects` e `CNAME`.
 - **Checklist:** [docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md](docs/CHECKLIST_MANUTENCAO_PUBLICACAO_MATRIZ.md).
-- **Backend Azure:** documentação histórica em [docs/archive/backend-auth/](docs/archive/backend-auth/) (não faz parte do dia-a-dia do site estático).
+- **Backend Azure:** documentação histórica em `docs/archive/backend-auth/` (não faz parte do dia-a-dia do site estático, e desde 27/11/2026 não é servida pelo Pages).
 
 ---
 

@@ -6,7 +6,7 @@ Uso interno. **Atualizado:** 2026-11-04 (a tabela de portfólio e as lojas segue
 Retomada / nova tarefa: [INICIAR_NOVA_TAREFA.md](INICIAR_NOVA_TAREFA.md) · [ECOSYSTEM_MEMORIA.md](ECOSYSTEM_MEMORIA.md)  
 Posicionamento copy: [DILEMA.md](DILEMA.md)
 
-Histórico detalhado (2025–2026, delivery/): [archive/sessoes-trabalho/STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC_HISTORICO.md](archive/sessoes-trabalho/STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC_HISTORICO.md)
+Histórico detalhado (2025–2026, delivery/): `docs/archive/sessoes-trabalho/STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC_HISTORICO.md` (caminho local e no histórico; a pasta saiu da árvore publicada em 27/11/2026)
 
 Referências vivas: [ECOSYSTEM_CARA_CORE.md](ECOSYSTEM_CARA_CORE.md) · [ECOSYSTEM_LOJAS.md](ECOSYSTEM_LOJAS.md) · [VALIDACAO_LOJAS_MATRIZ.md](VALIDACAO_LOJAS_MATRIZ.md) · [VALIDACAO_NEGOCIO.md](VALIDACAO_NEGOCIO.md) · [SITE_MATRIZ.md](SITE_MATRIZ.md)
 
@@ -135,7 +135,7 @@ Retrô: [retro.caracore.com.br](https://retro.caracore.com.br/) — **149 artigo
 - Recriar portais `delivery/` na matriz
 - SEED na loja Rust
 - Duplicar wikis comerciais na matriz
-- Expandir documentação OAuth/backend no README ([archive/backend-auth/](archive/backend-auth/))
+- Expandir documentação OAuth/backend no README (`docs/archive/backend-auth/`, caminho local — fora da árvore publicada)
 
 ---
 

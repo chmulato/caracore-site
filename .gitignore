@@ -100,3 +100,10 @@ backend*.zip
 azure_logs*/
 test_report*.json
 _tmp_*.*
+# Arquivo operacional: fica no disco para consulta local, mas nao integra a
+# arvore que o GitHub Pages serve. A matriz publica a raiz da master em build
+# legacy (source /, .nojekyll), entao o que esta versionado esta publicado: os
+# dois caminhos abaixo documentam e empacotam o backend OAuth desativado e
+# incluem dados de autorizacao e runbooks de nuvem. Medido em 27/11/2026.
+/infra/
+/docs/archive/

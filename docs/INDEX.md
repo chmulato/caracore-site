@@ -1,8 +1,8 @@
 # Documentação — Site matriz (caracore-site)
 
-Índice **curado** para quem edita o site institucional. Toda a pasta `docs/` está em **Markdown** (`.md`); documentação histórica de backend OAuth, migração `delivery/` e sessões antigas está em [archive/](archive/).
+Índice **curado** para quem edita o site institucional. Toda a pasta `docs/` está em **Markdown** (`.md`); documentação histórica de backend OAuth, migração `delivery/` e sessões antigas está em `docs/archive/` — pasta que, desde 27/11/2026, fica **fora da árvore publicada** pelo GitHub Pages (continua no disco e no histórico do repositório, então não há link a seguir: consulte o caminho local).
 
-**Última atualização:** 2026-10-09
+**Última atualização:** 2026-11-27
 
 ---
 
@@ -115,7 +115,7 @@ Detalhes: [SITE_MATRIZ.md §3](SITE_MATRIZ.md).
 | `../_redirects` | Mapa declarado de redirects (o Pages serve os stubs HTML) |
 | `../delivery/` | Stubs HTML (meta refresh) — GitHub Pages |
 
-PDV Rust: redirect para `https://pdv-rust.caracore.com.br/`. Histórico: [archive/delivery-migracao/](archive/delivery-migracao/).
+PDV Rust: redirect para `https://pdv-rust.caracore.com.br/`. Histórico: `docs/archive/delivery-migracao/`.
 
 ---
 
@@ -135,7 +135,7 @@ PDV Rust: redirect para `https://pdv-rust.caracore.com.br/`. Histórico: [archiv
 |-----------|----------|
 | [../secure/README.md](../secure/README.md) | Fluxo OIDC na matriz |
 | [AREA51_PORTFOLIO.md](AREA51_PORTFOLIO.md) | Bloco Área 51 no portfólio |
-| [archive/backend-auth/](archive/backend-auth/) | Deploy Azure, OAuth, fases (histórico) |
+| `docs/archive/backend-auth/` | Deploy Azure, OAuth, fases (histórico; fora da árvore publicada) |
 
 ---
 
@@ -150,12 +150,14 @@ PDV Rust: redirect para `https://pdv-rust.caracore.com.br/`. Histórico: [archiv
 
 ## Arquivo (`docs/archive/`)
 
+Fora da árvore publicada desde 27/11/2026: os arquivos continuam no disco e no histórico do repositório, mas o Pages não os serve — por isso as entradas abaixo são caminhos, não links.
+
 | Pasta / documento | Conteúdo |
 |-------------------|----------|
-| [archive/README.md](archive/README.md) | Índice do arquivo |
-| [archive/sessoes-trabalho/](archive/sessoes-trabalho/) | `VALIDACAO_NEGOCIO_HISTORICO.md`, `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC_HISTORICO.md`, levantamentos |
-| [archive/delivery-migracao/](archive/delivery-migracao/) | Desativação de `delivery/` |
-| [archive/backend-auth/](archive/backend-auth/) | OAuth, Azure, fases 2–7 |
+| `docs/archive/README.md` | Índice do arquivo |
+| `docs/archive/sessoes-trabalho/` | `VALIDACAO_NEGOCIO_HISTORICO.md`, `STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC_HISTORICO.md`, levantamentos |
+| `docs/archive/delivery-migracao/` | Desativação de `delivery/` |
+| `docs/archive/backend-auth/` | OAuth, Azure, fases 2–7 |
 
 ---
 

@@ -2,6 +2,100 @@
 
 Referência única para alinhar **matriz**, **lojas**, **oficinas**, **wiki**, **retrô** e **releases** ao retomar trabalho.
 
+### Matriz — o arquivo morto do backend e o `docs/archive/` fora da árvore publicada pelo Pages — 27/11/2026
+
+**O que estava publicado, medido URL por URL** em `www.caracore.com.br` antes do corte:
+
+| Caminho servido | Resposta | Bytes |
+|---|---|---|
+| `infra/backend.disabled/backend/app.py` | 200 | 178.497 |
+| `infra/backend.disabled/backend/data/authorized_users.json` | 200 | 2.576 |
+| `infra/backend.disabled/backend/.azure/config` | 200 | 118 |
+| `infra/backend.disabled/backend/.env.example` | 200 | 732 |
+| `docs/archive/backend-auth/API_DOCUMENTATION.md` | 200 | 3.227 |
+| `htmlcov/index.html` | **404** | — (ver a alegação corrigida abaixo) |
+| listagem de diretório (`infra/`, `docs/`) | 404 | — o Pages não expõe índice |
+
+**Por que nada filtrava:** o Pages da matriz é `build_type: legacy`, fonte `master /`, com `.nojekyll`
+presente — **tudo que está versionado na raiz é publicado**, não há caminho de configuração para
+excluir um diretório, e `robots.txt` não interfere no acesso direto por URL. **Alavanca descartada por
+não ser medida:** renomear para pasta de ponto (`.github/workflows/*` e `.cursor/rules/*.mdc` respondem
+404 no ar, mas `.gitignore` responde 200 e `infra/backend.disabled/backend/.azure/config` — diretório de
+ponto **aninhado** — também responde 200). A regra «ponto não é servido» é inferência de duas
+observações, não documentação do provedor, e o renomeamento quebraria as citações de caminho absoluto
+que outros repositórios do ecossistema fazem a estes arquivos.
+
+**Aplicado:** `git rm -r --cached infra docs/archive` — **174** arquivos saindo da árvore (46 em `infra/`,
+128 em `docs/archive/`: **117** `backend-auth`, **6** `delivery-migracao`, **4** `sessoes-trabalho`, **1**
+README) — mais as regras `/infra/` (`.gitignore:108`) e `/docs/archive/` (`:109`). **Nada foi apagado do
+disco:** `infra/` 653K e `docs/archive/` 1.4M permanecem, o `app.py` continua os mesmos 178.497 B locais,
+porque a memória de outros produtos cita esses caminhos. **Pré-requisitos conferidos antes de cortar:**
+**0** referências a `infra/` ou `docs/archive/` em HTML/CSS/JS/XML/JSON servidos (`git grep --cached`),
+**0** arquivos `.html` dentro dos dois conjuntos e o `scripts/build-static.cjs` enumera entradas com
+`git ls-files --cached --others --exclude-standard -z` já pulando `infra/` — desversionar não altera o build.
+
+**Conteúdo sensível medido, sem transcrever valor:** o `authorized_users.json` tem a estrutura
+`{version, updated_at, users[2], pending_requests[2], settings{…}, audit_log[4]}` e **3** endereços de
+e-mail únicos entre as duas cópias (uma em `data/`, outra em `data/backups/`); **0** chave privada, token
+ou hash de senha no conjunto — os únicos achados do padrão de segredo são placeholders (`GOCSPX-xxxx…`,
+`<seu-client-secret>`); o `.env.example` expõe os **nomes** `SESSION_SECRET_KEY` e `TOKEN_ENCRYPTION_KEY`,
+não valores. Idade no histórico: o JSON entrou em `infra/` em 14/08/2026 (`6b6adf6`, a virada para site
+estático) e o `API_DOCUMENTATION.md` está no repositório desde 31/05/2026 (`e238da3`).
+
+**10 ponteiros consertados na mesma passada** — eram links markdown vivos para a área isolada e passaram a
+caminho local com data e motivo: `README.md` **1**, `docs/INDEX.md` **7** (intro, §Redirects, tabela da
+Área 51 e as 4 linhas do §Arquivo) e `docs/STATUS_ATUAL_ESTRATEGIA_DE_NEGOCIO_CC.md` **2** (`:9`, `:138`).
+Depois do corte, **0** links para `infra/` ou `docs/archive/` em `.md` versionado.
+
+**Fica publicado de propósito, e isto é decisão pendente, não cobertura:** `AGENTS.md` (150.397 B) e os
+`.md` de `docs/` — incluindo esta memória (281.424 B), **34** arquivos entre a raiz e `docs/` — continuam
+versionados e servidos crus, porque são a fonte de memória citada pelo ecossistema e se referenciam entre
+si. A exposição ali é de **topologia interna e decisões**, não de credencial: varredura nos `.md` do `HEAD`
+devolve **0** padrões de segredo real, e-mails apenas em `@users.noreply.github.com` (autor de commit),
+`@example.com` (placeholder) e `@caracore.com.br` (já publicado no site), e **8** menções a caminhos de
+custódia (`CC_KEYS`, `CC_BAK`) — endereço, não chave.
+
+**Alegação errada, corrigida no lugar:** o relatório anterior desta série afirmava que o `htmlcov/` estava
+alcançável no ar. Não estava nem está — já era ignorado pelo `.gitignore` e responde **404**; o item não
+precisava de tratamento e a cobertura alegada era falsa.
+
+**O que este corte não resolve:** os bytes removidos continuam no histórico de um repositório **público** e
+seguem alcanáveis por `raw.githubusercontent.com/chmulato/caracore-site/<SHA-antigo>/infra/…`. As alavancas
+reais, todas decisão do dono: (a) reescrever histórico com `--force`, (b) pedido de remoção de dados ao
+GitHub Support, (c) tornar o repositório privado — derruba o site, (d) mover o Pages para build `workflow`
+com filtro explícito no artefato — muda como tudo é publicado. **Intocável por restrição do pedido:**
+`js/session-manager.js` e `secure/` (**122** arquivos versionados, **108** HTML) — o host do backend
+aposentado continua sendo a API base padrão e aparece nas CSPs; é o que impede a Área 51 de quebrar.
+Sem `.well-known/security.txt` (**404**), fora do escopo nomeado desta passada.
+
+**Mensagem de commit em ASCII puro (item separado do mesmo pedido):** o `33b7095` virou `d03a9b5` trocando
+**1** byte de texto na linha 13 da mensagem («o que nao é garantia» → «o que nao e garantia»), com árvore
+**idêntica** (`e8b66b42c87e8d583a4d3e4bdd026d6a8cdb2da4`), `git diff --stat 33b7095 HEAD` vazio, mensagem
+2054 → 2053 bytes, **0** linhas não-ASCII (`LC_ALL=C grep -c -P '[^\x00-\x7F]'`) e **0** ocorrências do SHA
+antigo em arquivo versionado — nenhuma referência virou órfã.
+
+**Validação refeita no HEAD novo:** `npm run build` **8/8** testes, 0 falhas, com *Static build passed: 101
+HTML files; 527 resource references; 103 JavaScript syntax checks* — os três números idênticos aos da corrida
+pré-isolamento; `scripts/varredura-copy.cjs` e `scripts/varredura-termos.cjs` **exit 0** nos dois; commit
+`9d4fa1d` com numstat **178 arquivos, +23/−49.762**; `git status --porcelain` **0** linhas;
+`git ls-tree -r --name-only HEAD` com **0** arquivos sob `infra/` ou `docs/archive/`; `git check-ignore -v`
+batendo nas duas regras novas.
+
+**EOL conferido com instrumento refeito:** os dois documentos desta entrada estão em **LF puro** na árvore e no
+índice — contagem de `CR+LF` = **0**, quebras de linha = 400 no `AGENTS.md` e 1.815 nesta memória (medido antes desta entrada), e **0** CR no blob do
+`HEAD` nos dois; a regra vem de `.gitattributes:1` (`* text=auto eol=lf`, com `.bat`/`.cmd`/`.ps1` em CRLF), então não
+há armadilha de EOL a declarar aqui. A checagem inicial contou presença de carriage return com `grep` e devolveu
+«CR == nº de linhas» nos dois ficheiros: o padrão chegou **vazio** ao utilitário pela passagem de argumentos, ou seja
+media todas as linhas e não media CR coisa nenhuma — instrumento errado, alegação refeita em Python separando os dois
+separadores byte a byte.
+
+**Estado na data desta entrada (envelhece no push, por isso vai datado):** `master` em `9d4fa1d`, **3**
+commits à frente de `origin/master` = `f69aed3` — `699e757` (compromisso de sustentação 2026–2036),
+`d03a9b5` (auditoria de conformidade LGPD/CDC e das promessas públicas, amendado do `33b7095`) e `9d4fa1d`
+(isolamento) — **sem push, sem tag, sem release**. **Duas passagens da mesma série seguem sem registro
+canônico** até o dono pedir: o compromisso 2026–2036 e a auditoria de conformidade não têm seção nesta
+memória nem adendo no `AGENTS.md`; esta entrada registra só o isolamento, como foi pedido.
+
 ### PDV — PIX e NFC-e como módulos do Plano Pro na v4.1.0: alinhamento das quatro superfícies — 27/11/2026
 
 **O que mudou no discurso:** a fórmula «são módulos **em desenvolvimento** para a v4.1.0» saiu de
@@ -1597,6 +1691,7 @@ Lista completa: `ECOSYSTEM_CARA_CORE.md`.
 
 | Data | Alteração |
 |------|-----------|
+| 2026-11-27 | **Matriz: 174 arquivos de backend aposentado e de arquivo saem da árvore que o GitHub Pages serve** — medido no ar antes do corte (`app.py` 200/178.497 B, `authorized_users.json` 200/2.576 B, `.azure/config` 200/118 B, `.env.example` 200/732 B, `API_DOCUMENTATION.md` 200/3.227 B), cortado com `git rm -r --cached` + regras `/infra/` e `/docs/archive/` em `.gitignore:108-109`, disco preservado (653K e 1.4M), **10** ponteiros markdown consertados em 3 documentos, commit local `9d4fa1d` (numstat 178 arquivos, +23/−49.762) com build revalidado **8/8** e 101/527/103 idênticos ao pré-corte; o `htmlcov/` **nunca** foi publicado (alegação do relatório anterior, corrigida); os bytes seguem no histórico de um repo público e a retirada de lá é decisão do dono (rewrite, GitHub Support, repo privado ou Pages em build `workflow`); `js/session-manager.js` e `secure/` intocados por restrição. Sem push: `master` em `9d4fa1d`, 3 à frente de `origin/master` `f69aed3`. § «Matriz — o arquivo morto do backend e o `docs/archive/` fora da árvore publicada pelo Pages — 27/11/2026» |
 | 2026-11-22 | **Ink Agenda (Desktop 2.3.0): dia 1 da cota de dezembro fechou as quatro etapas da OS `PROMPT_INK_BUILDER_2026-12-01.txt` — P1.13 implementado, R-C06 ensaiado três vezes e H-A08 executado.** `RestoreService` passou a aceitar que **a senha do dossiê autorize o vínculo à máquina nova** (`app_identity.hardware_id` regrava; dossiê legado sem senha continua preso à origem; falha em instalação limpa apaga o resíduo; trilha `event=dossier.restore.link` só com hashes curtos, sem migração — `V31` segue livre). Gate remédio na árvore: `mvn -B verify` **759/0** (+8 LGPD = **767**), `mvn -Ptestfx verify` **852/0** (85 ITs), demo **V30**. Homologação: **H-A09 e H-B01 viraram Conforme** (relogin do dono executado em `b1-20261201`), H-B02/H-B03 reconfirmados e o **H-A08** foi registrado como **evidência de release do RK-01 sem mudar de status** (`.inkbak` criado pela **2.2.1 publicada** — 11 225 B, SHA-256 `1f680083…609f` — restaurado em `b7` limpa: contagens e UUIDs idênticos, schema V30, `outcome=kept`, nenhum agendamento sem profissional). Observação do caminho de **restauro** (a migração V26→V30 roda dentro do `RestoreService` e não chama o `snapshotBeforeMigration` do R-C04, então quem sobe por dossiê fica sem a «cópia anterior à actualização») **decidida no mesmo dia pelo dono como `RK-30`, limitação declarada para a 2.3.0**, sem código de banco antes do corte; contorno declarado nas notas e em `agenda-java/docs/BACKUP.md`: o próprio `.inkbak` de origem é a cópia externa imutável anterior à operação. Tudo em sandbox (`b3`/`b1`/`b4`–`b7`), base real do AppData conferida intacta; **commit local do lote P1.13 + registro documental a pedido do dono; sem push, sem etiqueta, sem publicação** — produto no ar segue o **2.2.1** com canal keyless; entrega do 2.3.0 continua **29/01/2027**. Evidência local (fora do Git): `caracore-ink/docs/evidencias/homolog-p1-20261201/`.
 | 2026-11-10 | **Blogs Retrô e pessoal publicando no LinkedIn com thumbnail da capa, validado ponta a ponta nos dois:** a capa do artigo (`og:image`) sobe pela Images API (`initializeUpload` → PUT dos bytes → `urn:li:image` no `thumbnail` do card; o LinkedIn não faz scraping de URL) e falha de upload não bloqueia o post. **Retrô** (`caracore-retro`): `tools/publish_linkedin.py` + job `publish-linkedin` do `deploy.yml`, modo manual por `workflow_dispatch` (input `article`), header `LinkedIn-Version: 202601` obrigatório, URL nunca solta no commentary (o markdown corrompe `_`), página de privacidade nova em `docs/privacidade.html` — posts 143 e 144 republicados com capa e **imagem confirmada no card** (`urn:li:share:7526091630282596352`, `urn:li:share:7526092112099082241`). **Pessoal** (`caracore-personal`): `linkedin_rss_auto.py` + `publish-linkedin.yml` (ledger `linkedin_published.json`, log do `urn:li:share` para validação externa), artigo de 09/11 republicado com `force` e **imagem confirmada no card**. **Credenciais:** secrets `LINKEDIN_ACCESS_TOKEN` + `LINKEDIN_AUTHOR_URN` (Retrô, app «Artigos Retrô») e `LINKEDIN_ACCESS_TOKEN` + `PERSON_URN` (pessoal, app «Blog Dev») — o `sub` é pairwise por app, os URNs **não** são intercambiáveis; tokens gerados em 10/11/2026, expiram **~09/01/2027** → renovar até **05/01/2027** (lembretes `.ics`, um por blog, em Downloads). Detalhes completos nas memórias locais `.cursor/rules` dos dois repos. Pendências do dono: apagar posts antigos sem imagem/duplicados e cadastrar a URL de privacidade nas Settings do app LinkedIn. Nenhuma versão de produto mudou. |
 | 2026-11-10 | **CSO em produção: rede de segurança própria (dump diário em HD removível, restauração provada) e senha do banco rotacionada:** o Postgres do Railway está no plano **HOBBY** e não tem PITR, bucket nem backup agendado (`railway postgres history`, medido em 10/11/2026). A proteção passou a ser a rotina `E:\CC_BAK_CSO\backup-cso.sh`: `pg_dump -Fc -Z9` por `railway ssh`, retenção de **30** arquivos, log em `logs/backup.log`, lock com tratamento de resíduo velho, 3 tentativas com 10 s em timeout, agendamento diário por `schtasks` mais launcher VBS na pasta Iniciar (o `onlogon` exige elevação) para catch-up com `StartWhenAvailable` e sem bloqueio por bateria. Cada arquivo é checado por magic `PGDMP`, tamanho > 1 KB, TOC por `pg_restore -l` conferido contra `select count(*) from pg_tables where schemaname='public'` (22) e `sha256` ao lado. **Restauração provada** em container descartável `postgres:18`: contagens idênticas às da produção (tenant=2, usuario=4, veiculo=7, migracoes=30, tabelas=22). Limite declarado: é dump diário, **não** PITR — perde-se até o dia; PITR/Pro segue **decisão de custo do dono**. No mesmo dia a **senha do usuário `postgres` foi rotacionada** (escopo autorizado pelo dono): 6 variáveis literais atualizadas (`Postgres`: `POSTGRES_PASSWORD`, `PGPASSWORD`, `DATABASE_URL`; `caracore-cso-quarkus`: `DATABASE_PASSWORD`, `PGPASSWORD`, `DATABASE_URL`), `ALTER USER`, deploy `f7b103d8` SUCCESS às 21:42Z e `/q/health/ready` UP com o check de banco; prova positiva e negativa **pela rede privada**, porque `local`, `127.0.0.1/32` e `::1/128` são `trust` no `pg_hba` e o loopback daria verde falso. Motivo da rotação: a senha havia sido impressa no chat por `railway connect --tunnel-only`. O banco não tem endpoint público (só `postgres.railway.internal`). Nenhuma versão, tag, data ou gate de produto mudou. |
